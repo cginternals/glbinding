@@ -4,6 +4,17 @@
 #include <glowwindow/Window.h>
 #include <glowwindow/WindowEventHandler.h>
 
+#include <GL/glx.h>
+
+#define getProcAddress(name) (*glXGetProcAddressARB)(name)
+
+namespace {
+
+    void (*glowClear) (GLbitfield);
+    void (*glowClearColor) (GLfloat, GLfloat, GLfloat, GLfloat);
+
+}
+
 class EventHandler : public glowwindow::WindowEventHandler
 {
 public:
@@ -17,10 +28,12 @@ public:
 
     virtual void initialize(glowwindow::Window &) override
     {
-        /*
-        glow::debugmessageoutput::enable();
+        glowClear = reinterpret_cast<void (*) (GLbitfield)>(getProcAddress(reinterpret_cast<const GLubyte*>("glClear")));
+        glowClearColor = reinterpret_cast<void (*) (GLfloat, GLfloat, GLfloat, GLfloat)>(getProcAddress(reinterpret_cast<const GLubyte*>("glClearColor")));
 
-        glClearColor(0.2f, 0.3f, 0.4f, 1.f);
+        glowClearColor(0.2f, 0.3f, 0.4f, 1.f);
+        glowClear(GL_COLOR_BUFFER_BIT);
+        /*glClearColor(0.2f, 0.3f, 0.4f, 1.f);
         CheckGLError();
 
 
@@ -76,9 +89,9 @@ public:
         vao->drawArrays(GL_TRIANGLE_STRIP, 0, 4);*/
     }
 
-    virtual void idle(glowwindow::Window & window) override
+    virtual void idle(glowwindow::Window & /*window*/) override
     {
-        window.repaint();
+        //window.repaint();
     }
 
 private:
