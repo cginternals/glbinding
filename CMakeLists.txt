@@ -5,24 +5,17 @@ set(target glBindingExample)
 
 find_package(OpenGL)
 find_package(GLOW)
-find_package(GLEW)
 
 include_directories(
     ${OPENGL_INCLUDE_DIR}
-    ${GLEW_INCLUDE_DIR}
-#    ${GLOW_BASE_INCLUDE_DIR}
-    ${GLOW_INCLUDE_DIR}
-    ${GLOW_UTILS_INCLUDE_DIR}
+    ${GLOW_BASE_INCLUDE_DIR}
     ${GLOW_WINDOW_INCLUDE_DIR}
     ${CMAKE_SOURCE_DIR}/source
 )
 
 set(libs
     ${OPENGL_LIBRARY}
-    ${GLEW_LIBRARY}
-#    ${GLOW_BASE_LIBRARY}
-    ${GLOW_LIBRARY}
-    ${GLOW_UTILS_LIBRARY}
+    ${GLOW_BASE_LIBRARY}
     ${GLOW_WINDOW_LIBRARY}
 )
 
