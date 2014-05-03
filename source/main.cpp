@@ -3,13 +3,8 @@
 #define GLM_FORCE_RADIANS
 
 #include <glow/VertexArrayObject.h>
-#include <glow/Error.h>
-#include <glow/StaticStringSource.h>
-#include <glow/Program.h>
 #include <glow/Buffer.h>
 #include <glow/VertexAttributeBinding.h>
-
-#include <glowutils/StringTemplate.h>
 
 #include <glowwindow/Context.h>
 #include <glowwindow/ContextFormat.h>
@@ -167,6 +162,9 @@ namespace {
     GlowFunction<void, GLuint> glowLinkProgram;
     GlowFunction<void, GLuint> glowCompileShader;
     GlowFunction<void, GLuint, GLuint> glowAttachShader;
+    GlowFunction<GLuint, GLenum> glowCreateShader;
+    GlowFunction<void, GLuint> glowDeleteShader;
+    GlowFunction<void, GLuint, GLsizei, const GLchar**, const GLint*> glowShaderSource;
 }
 
 class EventHandler : public glowwindow::WindowEventHandler
@@ -181,6 +179,8 @@ public:
         glowDeleteBuffers(1, &m_cornerBuffer);
         glowDeleteProgram(m_program);
         glowDeleteVertexArrays(1, &m_vao);
+        glowDeleteShader(m_vertexShader);
+        glowDeleteShader(m_fragmentShader);
     }
 
     virtual void initialize(glowwindow::Window &) override
@@ -201,11 +201,11 @@ public:
         initializeGlowFunction("glLinkProgram", glowLinkProgram);
         initializeGlowFunction("glCompileShader", glowCompileShader);
         initializeGlowFunction("glAttachShader", glowAttachShader);
+        initializeGlowFunction("glCreateShader", glowCreateShader);
+        initializeGlowFunction("glDeleteShader", glowDeleteShader);
+        initializeGlowFunction("glShaderSource", glowShaderSource);
 
         glowClearColor(0.2f, 0.3f, 0.4f, 1.f);
-
-        auto vertexShaderSource = new glow::StaticStringSource(vertexShaderCode);
-        auto fragmentShaderSource = new glow::StaticStringSource(fragmentShaderCode);
 
         glowGenBuffers(1, &m_cornerBuffer);
         m_program = glowCreateProgram();
@@ -216,13 +216,11 @@ public:
         vao = glow::VertexArrayObject::fromId(m_vao, false);
         vao->ref();
 
-        glow::Shader* vertexShader = new glow::Shader(GL_VERTEX_SHADER, vertexShaderSource);
-        vertexShader->ref();
-        glow::Shader* fragmentShader = new glow::Shader(GL_FRAGMENT_SHADER, fragmentShaderSource);
-        fragmentShader->ref();
+        m_vertexShader = glowCreateShader(GL_VERTEX_SHADER);
+        m_fragmentShader = glowCreateShader(GL_FRAGMENT_SHADER);
 
-        m_vertexShader = vertexShader->id();
-        m_fragmentShader = fragmentShader->id();
+        glowShaderSource(m_vertexShader, 1, &vertexShaderCode, nullptr);
+        glowShaderSource(m_fragmentShader, 1, &fragmentShaderCode, nullptr);
 
         cornerBuffer->setData(std::array<glm::vec2, 4>{ {
             glm::vec2(0, 0),
