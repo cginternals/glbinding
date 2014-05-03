@@ -7,9 +7,9 @@
 
 namespace glbinding {
 
-void CheckGlowError()
+void CheckError()
 {
-    assert(glowGetError() == GL_NO_ERROR);
+    assert(getError() == GL_NO_ERROR);
 }
 
 }

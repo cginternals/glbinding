@@ -4,6 +4,6 @@
 
 namespace glbinding {
 
-void GLBINDING_API CheckGlowError();
+void GLBINDING_API CheckError();
 
 } // namespace glbinding

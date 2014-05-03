@@ -49,9 +49,9 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 set(api_includes
     ${include_path}/glbinding_api.h
     ${include_path}/glbinding.h
-    ${include_path}/GlowFunction.h
-    ${include_path}/GlowFunction.hpp
     ${include_path}/Error.h
+    ${include_path}/Function.h
+    ${include_path}/Function.hpp
 )
 
 set(sources

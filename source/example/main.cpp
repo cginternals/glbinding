@@ -1,4 +1,3 @@
-#include <type_traits>
 #include <array>
 
 #define GLM_FORCE_RADIANS
@@ -55,28 +54,28 @@ public:
 
     virtual ~EventHandler()
     {
-        glowDeleteBuffers(1, &m_cornerBuffer);
-        glowDeleteProgram(m_program);
-        glowDeleteVertexArrays(1, &m_vao);
-        glowDeleteShader(m_vertexShader);
-        glowDeleteShader(m_fragmentShader);
+        deleteBuffers(1, &m_cornerBuffer);
+        deleteProgram(m_program);
+        deleteVertexArrays(1, &m_vao);
+        deleteShader(m_vertexShader);
+        deleteShader(m_fragmentShader);
     }
 
     virtual void initialize(glowwindow::Window &) override
     {
         glbinding::initialize();
 
-        glowClearColor(0.2f, 0.3f, 0.4f, 1.f);
+        clearColor(0.2f, 0.3f, 0.4f, 1.f);
 
-        glowGenBuffers(1, &m_cornerBuffer);
-        m_program = glowCreateProgram();
-        glowGenVertexArrays(1, &m_vao);
+        genBuffers(1, &m_cornerBuffer);
+        m_program = createProgram();
+        genVertexArrays(1, &m_vao);
 
-        m_vertexShader = glowCreateShader(GL_VERTEX_SHADER);
-        m_fragmentShader = glowCreateShader(GL_FRAGMENT_SHADER);
+        m_vertexShader = createShader(GL_VERTEX_SHADER);
+        m_fragmentShader = createShader(GL_FRAGMENT_SHADER);
 
-        glowShaderSource(m_vertexShader, 1, &vertexShaderCode, nullptr);
-        glowShaderSource(m_fragmentShader, 1, &fragmentShaderCode, nullptr);
+        shaderSource(m_vertexShader, 1, &vertexShaderCode, nullptr);
+        shaderSource(m_fragmentShader, 1, &fragmentShaderCode, nullptr);
 
         std::array<glm::vec2, 4> corners{{
             glm::vec2(0, 0),
@@ -85,38 +84,38 @@ public:
             glm::vec2(1, 1)
         }};
 
-        glowBindBuffer(GL_ARRAY_BUFFER, m_cornerBuffer);
-        glowBufferData(GL_ARRAY_BUFFER, static_cast<GLsizei>(4 * sizeof(glm::vec2)), corners.data(), GL_STATIC_DRAW);
+        bindBuffer(GL_ARRAY_BUFFER, m_cornerBuffer);
+        bufferData(GL_ARRAY_BUFFER, static_cast<GLsizei>(4 * sizeof(glm::vec2)), corners.data(), GL_STATIC_DRAW);
 
-        glowBindVertexArray(m_vao);
-        glowVertexAttribBinding(/* attributeIndex */ 0, /* bindingIndex */ 0);
-        glowBindVertexBuffer(0, m_cornerBuffer, 0, sizeof(glm::vec2));
-        glowVertexAttribFormat(0, 2, GL_FLOAT, false, 0);
-        glowEnableVertexAttribArray(0);
+        bindVertexArray(m_vao);
+        vertexAttribBinding(/* attributeIndex */ 0, /* bindingIndex */ 0);
+        bindVertexBuffer(0, m_cornerBuffer, 0, sizeof(glm::vec2));
+        vertexAttribFormat(0, 2, GL_FLOAT, false, 0);
+        enableVertexAttribArray(0);
 
-        glowCompileShader(m_vertexShader);
-        glowCompileShader(m_fragmentShader);
+        compileShader(m_vertexShader);
+        compileShader(m_fragmentShader);
 
-        glowAttachShader(m_program, m_vertexShader);
-        glowAttachShader(m_program, m_fragmentShader);
+        attachShader(m_program, m_vertexShader);
+        attachShader(m_program, m_fragmentShader);
 
-        glowLinkProgram(m_program);
+        linkProgram(m_program);
     }
 
     virtual void framebufferResizeEvent(glowwindow::ResizeEvent & event) override
     {
-        glowViewport(0, 0, event.width(), event.height());
+        viewport(0, 0, event.width(), event.height());
     }
 
     virtual void paintEvent(glowwindow::PaintEvent &) override
     {
-        glowClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glowBindVertexArray(m_vao);
-        glowUseProgram(m_program);
-        glowDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-        glowUseProgram(0);
-        glowBindVertexArray(0);
+        bindVertexArray(m_vao);
+        useProgram(m_program);
+        drawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        useProgram(0);
+        bindVertexArray(0);
     }
 
     virtual void idle(glowwindow::Window & /*window*/) override

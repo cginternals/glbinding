@@ -3,13 +3,13 @@
 namespace glbinding {
 
 template <typename ReturnType, typename... Arguments>
-class GlowFunction
+class Function
 {
 public:
     using FunctionSignature = ReturnType (*) (Arguments...);
 
-    GlowFunction();
-    GlowFunction(FunctionSignature functionPointer);
+    Function();
+    Function(FunctionSignature functionPointer);
 
     void setFunction(FunctionSignature functionPointer);
 
@@ -20,13 +20,13 @@ protected:
 };
 
 template <typename... Arguments>
-class GlowFunction<void, Arguments...>
+class Function<void, Arguments...>
 {
 public:
     using FunctionSignature = void (*) (Arguments...);
 
-    GlowFunction();
-    GlowFunction(FunctionSignature functionPointer);
+    Function();
+    Function(FunctionSignature functionPointer);
 
     void setFunction(FunctionSignature functionPointer);
 
@@ -38,4 +38,4 @@ protected:
 
 } // namespace glbinding
 
-#include <glbinding/GlowFunction.hpp>
+#include <glbinding/Function.hpp>

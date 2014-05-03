@@ -8,31 +8,31 @@ namespace {
 
 namespace glbinding {
 
-GLenum (*glowGetError) (void);
-GlowFunction<void, GLbitfield> glowClear;
-GlowFunction<void, GLfloat, GLfloat, GLfloat, GLfloat> glowClearColor;
-GlowFunction<void, GLsizei, GLuint*> glowGenBuffers;
-GlowFunction<void, GLsizei, GLuint*> glowDeleteBuffers;
-GlowFunction<void, GLint, GLint, GLsizei, GLsizei> glowViewport;
-GlowFunction<void, GLuint> glowBindVertexArray;
-GlowFunction<void, GLuint> glowUseProgram;
-GlowFunction<void, GLenum, GLint, GLsizei> glowDrawArrays;
-GlowFunction<GLuint> glowCreateProgram;
-GlowFunction<void, GLuint> glowDeleteProgram;
-GlowFunction<void, GLsizei, GLuint*> glowGenVertexArrays;
-GlowFunction<void, GLsizei, GLuint*> glowDeleteVertexArrays;
-GlowFunction<void, GLuint> glowLinkProgram;
-GlowFunction<void, GLuint> glowCompileShader;
-GlowFunction<void, GLuint, GLuint> glowAttachShader;
-GlowFunction<GLuint, GLenum> glowCreateShader;
-GlowFunction<void, GLuint> glowDeleteShader;
-GlowFunction<void, GLuint, GLsizei, const GLchar**, const GLint*> glowShaderSource;
-GlowFunction<void, GLenum, GLuint> glowBindBuffer;
-GlowFunction<void, GLenum, GLsizei, GLvoid*, GLenum> glowBufferData;
-GlowFunction<void, GLuint, GLuint> glowVertexAttribBinding;
-GlowFunction<void, GLuint, GLuint, GLsizeiptr, GLsizei> glowBindVertexBuffer;
-GlowFunction<void, GLuint, GLsizei, GLenum, GLboolean, GLsizeiptr> glowVertexAttribFormat;
-GlowFunction<void, GLuint> glowEnableVertexAttribArray;
+GLenum (*getError) (void);
+Function<void, GLbitfield> clear;
+Function<void, GLfloat, GLfloat, GLfloat, GLfloat> clearColor;
+Function<void, GLsizei, GLuint*> genBuffers;
+Function<void, GLsizei, GLuint*> deleteBuffers;
+Function<void, GLint, GLint, GLsizei, GLsizei> viewport;
+Function<void, GLuint> bindVertexArray;
+Function<void, GLuint> useProgram;
+Function<void, GLenum, GLint, GLsizei> drawArrays;
+Function<GLuint> createProgram;
+Function<void, GLuint> deleteProgram;
+Function<void, GLsizei, GLuint*> genVertexArrays;
+Function<void, GLsizei, GLuint*> deleteVertexArrays;
+Function<void, GLuint> linkProgram;
+Function<void, GLuint> compileShader;
+Function<void, GLuint, GLuint> attachShader;
+Function<GLuint, GLenum> createShader;
+Function<void, GLuint> deleteShader;
+Function<void, GLuint, GLsizei, const GLchar**, const GLint*> shaderSource;
+Function<void, GLenum, GLuint> bindBuffer;
+Function<void, GLenum, GLsizei, GLvoid*, GLenum> bufferData;
+Function<void, GLuint, GLuint> vertexAttribBinding;
+Function<void, GLuint, GLuint, GLsizeiptr, GLsizei> bindVertexBuffer;
+Function<void, GLuint, GLsizei, GLenum, GLboolean, GLsizeiptr> vertexAttribFormat;
+Function<void, GLuint> enableVertexAttribArray;
 
 bool initialize()
 {
@@ -41,31 +41,31 @@ bool initialize()
         return false;
     }
 
-    initializeGlowFunction("glGetError", glowGetError);
-    initializeGlowFunction("glClear", glowClear);
-    initializeGlowFunction("glClearColor", glowClearColor);
-    initializeGlowFunction("glGenBuffers", glowGenBuffers);
-    initializeGlowFunction("glDeleteBuffers", glowDeleteBuffers);
-    initializeGlowFunction("glViewport", glowViewport);
-    initializeGlowFunction("glBindVertexArray", glowBindVertexArray);
-    initializeGlowFunction("glUseProgram", glowUseProgram);
-    initializeGlowFunction("glDrawArrays", glowDrawArrays);
-    initializeGlowFunction("glCreateProgram", glowCreateProgram);
-    initializeGlowFunction("glDeleteProgram", glowDeleteProgram);
-    initializeGlowFunction("glGenVertexArrays", glowGenVertexArrays);
-    initializeGlowFunction("glDeleteVertexArrays", glowDeleteVertexArrays);
-    initializeGlowFunction("glLinkProgram", glowLinkProgram);
-    initializeGlowFunction("glCompileShader", glowCompileShader);
-    initializeGlowFunction("glAttachShader", glowAttachShader);
-    initializeGlowFunction("glCreateShader", glowCreateShader);
-    initializeGlowFunction("glDeleteShader", glowDeleteShader);
-    initializeGlowFunction("glShaderSource", glowShaderSource);
-    initializeGlowFunction("glBindBuffer", glowBindBuffer);
-    initializeGlowFunction("glBufferData", glowBufferData);
-    initializeGlowFunction("glVertexAttribBinding", glowVertexAttribBinding);
-    initializeGlowFunction("glBindVertexBuffer", glowBindVertexBuffer);
-    initializeGlowFunction("glVertexAttribFormat", glowVertexAttribFormat);
-    initializeGlowFunction("glEnableVertexAttribArray", glowEnableVertexAttribArray);
+    initializeFunction("glGetError", getError);
+    initializeFunction("glClear", clear);
+    initializeFunction("glClearColor", clearColor);
+    initializeFunction("glGenBuffers", genBuffers);
+    initializeFunction("glDeleteBuffers", deleteBuffers);
+    initializeFunction("glViewport", viewport);
+    initializeFunction("glBindVertexArray", bindVertexArray);
+    initializeFunction("glUseProgram", useProgram);
+    initializeFunction("glDrawArrays", drawArrays);
+    initializeFunction("glCreateProgram", createProgram);
+    initializeFunction("glDeleteProgram", deleteProgram);
+    initializeFunction("glGenVertexArrays", genVertexArrays);
+    initializeFunction("glDeleteVertexArrays", deleteVertexArrays);
+    initializeFunction("glLinkProgram", linkProgram);
+    initializeFunction("glCompileShader", compileShader);
+    initializeFunction("glAttachShader", attachShader);
+    initializeFunction("glCreateShader", createShader);
+    initializeFunction("glDeleteShader", deleteShader);
+    initializeFunction("glShaderSource", shaderSource);
+    initializeFunction("glBindBuffer", bindBuffer);
+    initializeFunction("glBufferData", bufferData);
+    initializeFunction("glVertexAttribBinding", vertexAttribBinding);
+    initializeFunction("glBindVertexBuffer", bindVertexBuffer);
+    initializeFunction("glVertexAttribFormat", vertexAttribFormat);
+    initializeFunction("glEnableVertexAttribArray", enableVertexAttribArray);
 
     initialized = true;
 
