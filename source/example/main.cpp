@@ -71,8 +71,8 @@ public:
         m_program = createProgram();
         genVertexArrays(1, &m_vao);
 
-        m_vertexShader = createShader(GL_VERTEX_SHADER);
-        m_fragmentShader = createShader(GL_FRAGMENT_SHADER);
+        m_vertexShader = createShader(ShaderType::VERTEX_SHADER);
+        m_fragmentShader = createShader(ShaderType::FRAGMENT_SHADER);
 
         shaderSource(m_vertexShader, 1, &vertexShaderCode, nullptr);
         shaderSource(m_fragmentShader, 1, &fragmentShaderCode, nullptr);
@@ -84,13 +84,13 @@ public:
             glm::vec2(1, 1)
         }};
 
-        bindBuffer(GL_ARRAY_BUFFER, m_cornerBuffer);
-        bufferData(GL_ARRAY_BUFFER, static_cast<GLsizei>(4 * sizeof(glm::vec2)), corners.data(), GL_STATIC_DRAW);
+        bindBuffer(BufferTarget::ARRAY_BUFFER, m_cornerBuffer);
+        bufferData(BufferTarget::ARRAY_BUFFER, static_cast<GLsizei>(4 * sizeof(glm::vec2)), corners.data(), AccessMode::STATIC_DRAW);
 
         bindVertexArray(m_vao);
         vertexAttribBinding(/* attributeIndex */ 0, /* bindingIndex */ 0);
         bindVertexBuffer(0, m_cornerBuffer, 0, sizeof(glm::vec2));
-        vertexAttribFormat(0, 2, GL_FLOAT, false, 0);
+        vertexAttribFormat(0, 2, DataType::FLOAT, false, 0);
         enableVertexAttribArray(0);
 
         compileShader(m_vertexShader);
@@ -109,11 +109,11 @@ public:
 
     virtual void paintEvent(glowwindow::PaintEvent &) override
     {
-        clear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        clear(Bit::COLOR_BUFFER_BIT | Bit::DEPTH_BUFFER_BIT);
 
         bindVertexArray(m_vao);
         useProgram(m_program);
-        drawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        drawArrays(Primitive::TRIANGLE_STRIP, 0, 4);
         useProgram(0);
         bindVertexArray(0);
     }
@@ -124,11 +124,11 @@ public:
     }
 
 private:
-    GLuint m_vao;
-    GLuint m_cornerBuffer;
-    GLuint m_program;
-    GLuint m_vertexShader;
-    GLuint m_fragmentShader;
+    GLBuint m_vao;
+    GLBuint m_cornerBuffer;
+    GLBuint m_program;
+    GLBuint m_vertexShader;
+    GLBuint m_fragmentShader;
 };
 
 int main(int /*argc*/, char* /*argv*/[])

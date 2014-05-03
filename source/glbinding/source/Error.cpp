@@ -1,15 +1,15 @@
 #include <glbinding/Error.h>
 
 #include <cassert>
-#include <GL/gl.h>
 
 #include <glbinding/glbinding.h>
+#include <glbinding/constants.h>
 
 namespace glbinding {
 
 void CheckError()
 {
-    assert(getError() == GL_NO_ERROR);
+    assert(getError() == Error::NO_ERROR);
 }
 
 }

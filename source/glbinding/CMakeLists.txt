@@ -13,7 +13,6 @@ find_package(OpenGL)
 #
 
 include_directories(
-    ${OPENGL_INCLUDE_DIR}
 )
 
 include_directories(
@@ -48,10 +47,13 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
     ${include_path}/glbinding_api.h
+    
+    ${include_path}/constants.h
     ${include_path}/glbinding.h
     ${include_path}/Error.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
+    ${include_path}/types.h
 )
 
 set(sources

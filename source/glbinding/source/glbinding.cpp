@@ -1,6 +1,10 @@
 #include <glbinding/glbinding.h>
 
-#include <GL/glx.h>
+extern "C" {
+
+extern void (*glXGetProcAddress(const unsigned char *procname))( void );
+
+}
 
 namespace {
     bool initialized = false;
@@ -8,33 +12,33 @@ namespace {
 
 namespace glbinding {
 
-FunctionPointer (*getProcAddress) (const GLubyte*) = glXGetProcAddress;
+FunctionPointer (*getProcAddress) (const char*) = reinterpret_cast<FunctionPointer (*) (const char*)>(glXGetProcAddress);
 
-GLenum (*getError) (void);
-Function<void, GLbitfield> clear;
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> clearColor;
-Function<void, GLsizei, GLuint*> genBuffers;
-Function<void, GLsizei, GLuint*> deleteBuffers;
-Function<void, GLint, GLint, GLsizei, GLsizei> viewport;
-Function<void, GLuint> bindVertexArray;
-Function<void, GLuint> useProgram;
-Function<void, GLenum, GLint, GLsizei> drawArrays;
-Function<GLuint> createProgram;
-Function<void, GLuint> deleteProgram;
-Function<void, GLsizei, GLuint*> genVertexArrays;
-Function<void, GLsizei, GLuint*> deleteVertexArrays;
-Function<void, GLuint> linkProgram;
-Function<void, GLuint> compileShader;
-Function<void, GLuint, GLuint> attachShader;
-Function<GLuint, GLenum> createShader;
-Function<void, GLuint> deleteShader;
-Function<void, GLuint, GLsizei, const GLchar**, const GLint*> shaderSource;
-Function<void, GLenum, GLuint> bindBuffer;
-Function<void, GLenum, GLsizei, GLvoid*, GLenum> bufferData;
-Function<void, GLuint, GLuint> vertexAttribBinding;
-Function<void, GLuint, GLuint, GLsizeiptr, GLsizei> bindVertexBuffer;
-Function<void, GLuint, GLsizei, GLenum, GLboolean, GLsizeiptr> vertexAttribFormat;
-Function<void, GLuint> enableVertexAttribArray;
+Error (*getError) (void);
+Function<void, GLBbitfield> clear;
+Function<void, GLBfloat, GLBfloat, GLBfloat, GLBfloat> clearColor;
+Function<void, GLBsizei, GLBuint*> genBuffers;
+Function<void, GLBsizei, GLBuint*> deleteBuffers;
+Function<void, GLBint, GLBint, GLBsizei, GLBsizei> viewport;
+Function<void, GLBuint> bindVertexArray;
+Function<void, GLBuint> useProgram;
+Function<void, Primitive, GLBint, GLBsizei> drawArrays;
+Function<GLBuint> createProgram;
+Function<void, GLBuint> deleteProgram;
+Function<void, GLBsizei, GLBuint*> genVertexArrays;
+Function<void, GLBsizei, GLBuint*> deleteVertexArrays;
+Function<void, GLBuint> linkProgram;
+Function<void, GLBuint> compileShader;
+Function<void, GLBuint, GLBuint> attachShader;
+Function<GLBuint, ShaderType> createShader;
+Function<void, GLBuint> deleteShader;
+Function<void, GLBuint, GLBsizei, const GLBbyte**, const GLBint*> shaderSource;
+Function<void, BufferTarget, GLBuint> bindBuffer;
+Function<void, BufferTarget, GLBsizei, void*, AccessMode> bufferData;
+Function<void, GLBuint, GLBuint> vertexAttribBinding;
+Function<void, GLBuint, GLBuint, GLBint, GLBsizei> bindVertexBuffer;
+Function<void, GLBuint, GLBsizei, DataType, GLBbool, GLBint> vertexAttribFormat;
+Function<void, GLBuint> enableVertexAttribArray;
 
 bool initialize()
 {
