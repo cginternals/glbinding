@@ -1,16 +1,14 @@
 #pragma once
 
 #include <GL/gl.h>
-#include <GL/glx.h>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/Function.h>
 
-namespace {
-    __GLXextFuncPtr (*getProcAddress) (const GLubyte*) = glXGetProcAddressARB;
-}
-
 namespace glbinding {
+
+using FunctionPointer = void(*)();
+extern FunctionPointer (*getProcAddress) (const GLubyte*);
 
 template <typename ReturnType, typename... Arguments>
 void initializeFunction(const char* name, Function<ReturnType, Arguments...> & functor)

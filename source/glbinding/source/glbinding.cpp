@@ -1,12 +1,14 @@
 #include <glbinding/glbinding.h>
 
+#include <GL/glx.h>
+
 namespace {
-
     bool initialized = false;
-
 }
 
 namespace glbinding {
+
+FunctionPointer (*getProcAddress) (const GLubyte*) = glXGetProcAddress;
 
 GLenum (*getError) (void);
 Function<void, GLbitfield> clear;
