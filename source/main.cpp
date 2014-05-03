@@ -1,10 +1,7 @@
 #include <type_traits>
+#include <array>
 
 #define GLM_FORCE_RADIANS
-
-#include <glow/VertexArrayObject.h>
-#include <glow/Buffer.h>
-#include <glow/VertexAttributeBinding.h>
 
 #include <glowwindow/Context.h>
 #include <glowwindow/ContextFormat.h>
@@ -165,6 +162,12 @@ namespace {
     GlowFunction<GLuint, GLenum> glowCreateShader;
     GlowFunction<void, GLuint> glowDeleteShader;
     GlowFunction<void, GLuint, GLsizei, const GLchar**, const GLint*> glowShaderSource;
+    GlowFunction<void, GLenum, GLuint> glowBindBuffer;
+    GlowFunction<void, GLenum, GLsizei, GLvoid*, GLenum> glowBufferData;
+    GlowFunction<void, GLuint, GLuint> glowVertexAttribBinding;
+    GlowFunction<void, GLuint, GLuint, GLsizeiptr, GLsizei> glowBindVertexBuffer;
+    GlowFunction<void, GLuint, GLsizei, GLenum, GLboolean, GLsizeiptr> glowVertexAttribFormat;
+    GlowFunction<void, GLuint> glowEnableVertexAttribArray;
 }
 
 class EventHandler : public glowwindow::WindowEventHandler
@@ -204,6 +207,12 @@ public:
         initializeGlowFunction("glCreateShader", glowCreateShader);
         initializeGlowFunction("glDeleteShader", glowDeleteShader);
         initializeGlowFunction("glShaderSource", glowShaderSource);
+        initializeGlowFunction("glBindBuffer", glowBindBuffer);
+        initializeGlowFunction("glBufferData", glowBufferData);
+        initializeGlowFunction("glVertexAttribBinding", glowVertexAttribBinding);
+        initializeGlowFunction("glBindVertexBuffer", glowBindVertexBuffer);
+        initializeGlowFunction("glVertexAttribFormat", glowVertexAttribFormat);
+        initializeGlowFunction("glEnableVertexAttribArray", glowEnableVertexAttribArray);
 
         glowClearColor(0.2f, 0.3f, 0.4f, 1.f);
 
@@ -211,28 +220,27 @@ public:
         m_program = glowCreateProgram();
         glowGenVertexArrays(1, &m_vao);
 
-        cornerBuffer = glow::Buffer::fromId(m_cornerBuffer, false);
-        cornerBuffer->ref();
-        vao = glow::VertexArrayObject::fromId(m_vao, false);
-        vao->ref();
-
         m_vertexShader = glowCreateShader(GL_VERTEX_SHADER);
         m_fragmentShader = glowCreateShader(GL_FRAGMENT_SHADER);
 
         glowShaderSource(m_vertexShader, 1, &vertexShaderCode, nullptr);
         glowShaderSource(m_fragmentShader, 1, &fragmentShaderCode, nullptr);
 
-        cornerBuffer->setData(std::array<glm::vec2, 4>{ {
+        std::array<glm::vec2, 4> corners{{
             glm::vec2(0, 0),
             glm::vec2(1, 0),
             glm::vec2(0, 1),
             glm::vec2(1, 1)
-        } });
+        }};
 
-        vao->binding(0)->setAttribute(0);
-        vao->binding(0)->setBuffer(cornerBuffer, 0, sizeof(glm::vec2));
-        vao->binding(0)->setFormat(2, GL_FLOAT);
-        vao->enable(0);
+        glowBindBuffer(GL_ARRAY_BUFFER, m_cornerBuffer);
+        glowBufferData(GL_ARRAY_BUFFER, static_cast<GLsizei>(4 * sizeof(glm::vec2)), corners.data(), GL_STATIC_DRAW);
+
+        glowBindVertexArray(m_vao);
+        glowVertexAttribBinding(/* attributeIndex */ 0, /* bindingIndex */ 0);
+        glowBindVertexBuffer(0, m_cornerBuffer, 0, sizeof(glm::vec2));
+        glowVertexAttribFormat(0, 2, GL_FLOAT, false, 0);
+        glowEnableVertexAttribArray(0);
 
         glowCompileShader(m_vertexShader);
         glowCompileShader(m_fragmentShader);
@@ -252,7 +260,7 @@ public:
     {
         glowClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        glowBindVertexArray(vao->id());
+        glowBindVertexArray(m_vao);
         glowUseProgram(m_program);
         glowDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
         glowUseProgram(0);
@@ -270,8 +278,6 @@ private:
     GLuint m_program;
     GLuint m_vertexShader;
     GLuint m_fragmentShader;
-    glow::VertexArrayObject* vao;
-    glow::Buffer* cornerBuffer;
 };
 
 int main(int /*argc*/, char* /*argv*/[])
