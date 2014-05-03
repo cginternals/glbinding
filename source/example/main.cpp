@@ -10,7 +10,7 @@
 #include <glowwindow/WindowEventHandler.h>
 #include <glowwindow/events.h>
 
-#include <GL/glx.h>
+#include <glbinding/glbinding.h>
 
 namespace {
     const char* vertexShaderCode = R"(
@@ -44,131 +44,7 @@ void main()
 )";
 }
 
-namespace {
-    __GLXextFuncPtr (*glowGetProcAddress) (const GLubyte*) = glXGetProcAddressARB;
-
-    GLenum (*glowGetError) (void);
-
-    inline void CheckGlowError()
-    {
-        assert(glowGetError() == GL_NO_ERROR);
-    }
-
-    template <typename ReturnType, typename... Arguments>
-    class GlowFunction
-    {
-    public:
-        using FunctionSignature = ReturnType (*) (Arguments...);
-
-        GlowFunction()
-        : m_valid(false)
-        {
-        }
-
-        GlowFunction(FunctionSignature functionPointer)
-        : m_functionPointer(functionPointer)
-        , m_valid(true)
-        {
-        }
-
-        void setFunction(FunctionSignature functionPointer)
-        {
-            m_valid = true;
-
-            m_functionPointer = functionPointer;
-        }
-
-        ReturnType operator()(Arguments... arguments)
-        {
-            assert(m_valid);
-
-            ReturnType returnValue = m_functionPointer(std::forward<Arguments>(arguments)...);
-            CheckGlowError();
-
-            return returnValue;
-        }
-    protected:
-        FunctionSignature m_functionPointer;
-        bool m_valid;
-    };
-
-    template <typename... Arguments>
-    class GlowFunction<void, Arguments...>
-    {
-    public:
-        using FunctionSignature = void (*) (Arguments...);
-
-        GlowFunction()
-        : m_valid(false)
-        {
-        }
-
-        GlowFunction(FunctionSignature functionPointer)
-        : m_functionPointer(functionPointer)
-        , m_valid(true)
-        {
-        }
-
-        void setFunction(FunctionSignature functionPointer)
-        {
-            m_valid = true;
-
-            m_functionPointer = functionPointer;
-        }
-
-        void operator()(Arguments... arguments)
-        {
-            assert(m_valid);
-
-            m_functionPointer(std::forward<Arguments>(arguments)...);
-            CheckGlowError();
-        }
-    protected:
-        FunctionSignature m_functionPointer;
-        bool m_valid;
-    };
-
-    template <typename ReturnType, typename... Arguments>
-    void initializeGlowFunction(const char* name, GlowFunction<ReturnType, Arguments...> & functor)
-    {
-        functor.setFunction(
-            reinterpret_cast<typename GlowFunction<ReturnType, Arguments...>::FunctionSignature>(
-                glowGetProcAddress(reinterpret_cast<const GLubyte*>(name))
-            )
-        );
-    }
-
-    template <typename FunctionSignature>
-    void initializeGlowFunction(const char* name, FunctionSignature & functionPointer)
-    {
-        functionPointer = reinterpret_cast<FunctionSignature>(glowGetProcAddress(reinterpret_cast<const GLubyte*>(name)));
-    }
-
-    GlowFunction<void, GLbitfield> glowClear;
-    GlowFunction<void, GLfloat, GLfloat, GLfloat, GLfloat> glowClearColor;
-    GlowFunction<void, GLsizei, GLuint*> glowGenBuffers;
-    GlowFunction<void, GLsizei, GLuint*> glowDeleteBuffers;
-    GlowFunction<void, GLint, GLint, GLsizei, GLsizei> glowViewport;
-    GlowFunction<void, GLuint> glowBindVertexArray;
-    GlowFunction<void, GLuint> glowUseProgram;
-    GlowFunction<void, GLenum, GLint, GLsizei> glowDrawArrays;
-    GlowFunction<GLuint> glowCreateProgram;
-    GlowFunction<void, GLuint> glowDeleteProgram;
-    GlowFunction<void, GLsizei, GLuint*> glowGenVertexArrays;
-    GlowFunction<void, GLsizei, GLuint*> glowDeleteVertexArrays;
-    GlowFunction<void, GLuint> glowLinkProgram;
-    GlowFunction<void, GLuint> glowCompileShader;
-    GlowFunction<void, GLuint, GLuint> glowAttachShader;
-    GlowFunction<GLuint, GLenum> glowCreateShader;
-    GlowFunction<void, GLuint> glowDeleteShader;
-    GlowFunction<void, GLuint, GLsizei, const GLchar**, const GLint*> glowShaderSource;
-    GlowFunction<void, GLenum, GLuint> glowBindBuffer;
-    GlowFunction<void, GLenum, GLsizei, GLvoid*, GLenum> glowBufferData;
-    GlowFunction<void, GLuint, GLuint> glowVertexAttribBinding;
-    GlowFunction<void, GLuint, GLuint, GLsizeiptr, GLsizei> glowBindVertexBuffer;
-    GlowFunction<void, GLuint, GLsizei, GLenum, GLboolean, GLsizeiptr> glowVertexAttribFormat;
-    GlowFunction<void, GLuint> glowEnableVertexAttribArray;
-}
+using namespace glbinding;
 
 class EventHandler : public glowwindow::WindowEventHandler
 {
@@ -188,31 +64,7 @@ public:
 
     virtual void initialize(glowwindow::Window &) override
     {
-        initializeGlowFunction("glGetError", glowGetError);
-        initializeGlowFunction("glClear", glowClear);
-        initializeGlowFunction("glClearColor", glowClearColor);
-        initializeGlowFunction("glGenBuffers", glowGenBuffers);
-        initializeGlowFunction("glDeleteBuffers", glowDeleteBuffers);
-        initializeGlowFunction("glViewport", glowViewport);
-        initializeGlowFunction("glBindVertexArray", glowBindVertexArray);
-        initializeGlowFunction("glUseProgram", glowUseProgram);
-        initializeGlowFunction("glDrawArrays", glowDrawArrays);
-        initializeGlowFunction("glCreateProgram", glowCreateProgram);
-        initializeGlowFunction("glDeleteProgram", glowDeleteProgram);
-        initializeGlowFunction("glGenVertexArrays", glowGenVertexArrays);
-        initializeGlowFunction("glDeleteVertexArrays", glowDeleteVertexArrays);
-        initializeGlowFunction("glLinkProgram", glowLinkProgram);
-        initializeGlowFunction("glCompileShader", glowCompileShader);
-        initializeGlowFunction("glAttachShader", glowAttachShader);
-        initializeGlowFunction("glCreateShader", glowCreateShader);
-        initializeGlowFunction("glDeleteShader", glowDeleteShader);
-        initializeGlowFunction("glShaderSource", glowShaderSource);
-        initializeGlowFunction("glBindBuffer", glowBindBuffer);
-        initializeGlowFunction("glBufferData", glowBufferData);
-        initializeGlowFunction("glVertexAttribBinding", glowVertexAttribBinding);
-        initializeGlowFunction("glBindVertexBuffer", glowBindVertexBuffer);
-        initializeGlowFunction("glVertexAttribFormat", glowVertexAttribFormat);
-        initializeGlowFunction("glEnableVertexAttribArray", glowEnableVertexAttribArray);
+        glbinding::initialize();
 
         glowClearColor(0.2f, 0.3f, 0.4f, 1.f);
 
