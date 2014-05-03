@@ -137,7 +137,7 @@ namespace {
     };
 
     template <typename ReturnType, typename... Arguments>
-    void initializeCheckedGlowFunction(const char* name, GlowFunction<ReturnType, Arguments...> & functor)
+    void initializeGlowFunction(const char* name, GlowFunction<ReturnType, Arguments...> & functor)
     {
         functor.setFunction(
             reinterpret_cast<typename GlowFunction<ReturnType, Arguments...>::FunctionSignature>(
@@ -156,6 +156,17 @@ namespace {
     GlowFunction<void, GLfloat, GLfloat, GLfloat, GLfloat> glowClearColor;
     GlowFunction<void, GLsizei, GLuint*> glowGenBuffers;
     GlowFunction<void, GLsizei, GLuint*> glowDeleteBuffers;
+    GlowFunction<void, GLint, GLint, GLsizei, GLsizei> glowViewport;
+    GlowFunction<void, GLuint> glowBindVertexArray;
+    GlowFunction<void, GLuint> glowUseProgram;
+    GlowFunction<void, GLenum, GLint, GLsizei> glowDrawArrays;
+    GlowFunction<GLuint> glowCreateProgram;
+    GlowFunction<void, GLuint> glowDeleteProgram;
+    GlowFunction<void, GLsizei, GLuint*> glowGenVertexArrays;
+    GlowFunction<void, GLsizei, GLuint*> glowDeleteVertexArrays;
+    GlowFunction<void, GLuint> glowLinkProgram;
+    GlowFunction<void, GLuint> glowCompileShader;
+    GlowFunction<void, GLuint, GLuint> glowAttachShader;
 }
 
 class EventHandler : public glowwindow::WindowEventHandler
@@ -167,43 +178,51 @@ public:
 
     virtual ~EventHandler()
     {
-        cornerBuffer->unref();
-        program->unref();
-        vao->unref();
-
         glowDeleteBuffers(1, &m_cornerBuffer);
-        CheckGlowError();
+        glowDeleteProgram(m_program);
+        glowDeleteVertexArrays(1, &m_vao);
     }
 
     virtual void initialize(glowwindow::Window &) override
     {
         initializeGlowFunction("glGetError", glowGetError);
-        initializeCheckedGlowFunction("glClear", glowClear);
-        initializeCheckedGlowFunction("glClearColor", glowClearColor);
-        initializeCheckedGlowFunction("glGenBuffers", glowGenBuffers);
-        initializeCheckedGlowFunction("glDeleteBuffers", glowDeleteBuffers);
+        initializeGlowFunction("glClear", glowClear);
+        initializeGlowFunction("glClearColor", glowClearColor);
+        initializeGlowFunction("glGenBuffers", glowGenBuffers);
+        initializeGlowFunction("glDeleteBuffers", glowDeleteBuffers);
+        initializeGlowFunction("glViewport", glowViewport);
+        initializeGlowFunction("glBindVertexArray", glowBindVertexArray);
+        initializeGlowFunction("glUseProgram", glowUseProgram);
+        initializeGlowFunction("glDrawArrays", glowDrawArrays);
+        initializeGlowFunction("glCreateProgram", glowCreateProgram);
+        initializeGlowFunction("glDeleteProgram", glowDeleteProgram);
+        initializeGlowFunction("glGenVertexArrays", glowGenVertexArrays);
+        initializeGlowFunction("glDeleteVertexArrays", glowDeleteVertexArrays);
+        initializeGlowFunction("glLinkProgram", glowLinkProgram);
+        initializeGlowFunction("glCompileShader", glowCompileShader);
+        initializeGlowFunction("glAttachShader", glowAttachShader);
 
         glowClearColor(0.2f, 0.3f, 0.4f, 1.f);
-        CheckGlowError();
-
 
         auto vertexShaderSource = new glow::StaticStringSource(vertexShaderCode);
         auto fragmentShaderSource = new glow::StaticStringSource(fragmentShaderCode);
 
         glowGenBuffers(1, &m_cornerBuffer);
-        CheckGlowError();
+        m_program = glowCreateProgram();
+        glowGenVertexArrays(1, &m_vao);
 
         cornerBuffer = glow::Buffer::fromId(m_cornerBuffer, false);
         cornerBuffer->ref();
-        program = new glow::Program();
-        program->ref();
-        vao = new glow::VertexArrayObject();
+        vao = glow::VertexArrayObject::fromId(m_vao, false);
         vao->ref();
 
-        program->attach(
-                        new glow::Shader(GL_VERTEX_SHADER, vertexShaderSource),
-                        new glow::Shader(GL_FRAGMENT_SHADER, fragmentShaderSource)
-                        );
+        glow::Shader* vertexShader = new glow::Shader(GL_VERTEX_SHADER, vertexShaderSource);
+        vertexShader->ref();
+        glow::Shader* fragmentShader = new glow::Shader(GL_FRAGMENT_SHADER, fragmentShaderSource);
+        fragmentShader->ref();
+
+        m_vertexShader = vertexShader->id();
+        m_fragmentShader = fragmentShader->id();
 
         cornerBuffer->setData(std::array<glm::vec2, 4>{ {
             glm::vec2(0, 0),
@@ -216,21 +235,30 @@ public:
         vao->binding(0)->setBuffer(cornerBuffer, 0, sizeof(glm::vec2));
         vao->binding(0)->setFormat(2, GL_FLOAT);
         vao->enable(0);
+
+        glowCompileShader(m_vertexShader);
+        glowCompileShader(m_fragmentShader);
+
+        glowAttachShader(m_program, m_vertexShader);
+        glowAttachShader(m_program, m_fragmentShader);
+
+        glowLinkProgram(m_program);
     }
 
     virtual void framebufferResizeEvent(glowwindow::ResizeEvent & event) override
     {
-        glViewport(0, 0, event.width(), event.height());
-        CheckGlowError();
+        glowViewport(0, 0, event.width(), event.height());
     }
 
     virtual void paintEvent(glowwindow::PaintEvent &) override
     {
         glowClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        CheckGlowError();
 
-        program->use();
-        vao->drawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glowBindVertexArray(vao->id());
+        glowUseProgram(m_program);
+        glowDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        glowUseProgram(0);
+        glowBindVertexArray(0);
     }
 
     virtual void idle(glowwindow::Window & /*window*/) override
@@ -242,9 +270,10 @@ private:
     GLuint m_vao;
     GLuint m_cornerBuffer;
     GLuint m_program;
+    GLuint m_vertexShader;
+    GLuint m_fragmentShader;
     glow::VertexArrayObject* vao;
     glow::Buffer* cornerBuffer;
-    glow::Program* program;
 };
 
 int main(int /*argc*/, char* /*argv*/[])
