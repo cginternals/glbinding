@@ -1,12 +1,13 @@
 #pragma once
 
-#include <glbinding/Function.h>
+#include "Function.h"
 
 #include <cassert>
 #include <utility>
 
 #include <glbinding/Error.h>
-#include <glbinding/ProcedureAddressResolution.h>
+
+#include "ProcedureAddressResolution.h"
 
 namespace glbinding {
 

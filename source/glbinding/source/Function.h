@@ -76,4 +76,4 @@ protected:
 
 } // namespace glbinding
 
-#include <glbinding/Function.hpp>
+#include "Function.hpp"

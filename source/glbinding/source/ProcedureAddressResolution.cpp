@@ -1,4 +1,4 @@
-#include <glbinding/ProcedureAddressResolution.h>
+#include "ProcedureAddressResolution.h"
 
 extern "C" {
 
