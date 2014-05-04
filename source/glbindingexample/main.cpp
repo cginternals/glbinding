@@ -1,4 +1,6 @@
 #include <array>
+#include <chrono>
+#include <iostream>
 
 #define GLM_FORCE_RADIANS
 
@@ -100,6 +102,8 @@ public:
         glbAttachShader(m_program, m_fragmentShader);
 
         glbLinkProgram(m_program);
+
+        //lastRender = std::chrono::system_clock::now();
     }
 
     virtual void framebufferResizeEvent(glowwindow::ResizeEvent & event) override
@@ -109,6 +113,11 @@ public:
 
     virtual void paintEvent(glowwindow::PaintEvent &) override
     {
+        //std::chrono::time_point<std::chrono::system_clock> current = std::chrono::system_clock::now();
+
+        //std::cout << (current - lastRender).count() << std::endl;
+        //lastRender = current;
+
         glbClear(Bit::COLOR_BUFFER_BIT | Bit::DEPTH_BUFFER_BIT);
 
         glbBindVertexArray(m_vao);
@@ -124,6 +133,7 @@ public:
     }
 
 private:
+    //std::chrono::time_point<std::chrono::system_clock> lastRender;
     GLBuint m_vao;
     GLBuint m_cornerBuffer;
     GLBuint m_program;
@@ -140,9 +150,9 @@ int main(int /*argc*/, char* /*argv*/[])
 
     window.setEventHandler(new EventHandler());
 
-    if (window.create(format, "GLBindings Example"))
+    if (window.create(format, "GLBinding Example"))
     {
-        window.context()->setSwapInterval(glowwindow::Context::VerticalSyncronization);
+        window.context()->setSwapInterval(glowwindow::Context::NoVerticalSyncronization);
 
         window.show();
 

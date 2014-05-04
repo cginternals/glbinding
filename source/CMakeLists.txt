@@ -16,7 +16,8 @@ add_subdirectory(glbinding)
 
 # Applications
 set(IDE_FOLDER "Applications")
-add_subdirectory(example)
+add_subdirectory(glbindingexample)
+add_subdirectory(glewexample)
 
 # Tests
 set(IDE_FOLDER "Tests")
