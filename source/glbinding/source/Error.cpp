@@ -9,7 +9,7 @@ namespace glbinding {
 
 void CheckError()
 {
-    assert(getError() == Error::NO_ERROR);
+    assert(glbGetError() == Error::NO_ERROR);
 }
 
 }

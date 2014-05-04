@@ -54,11 +54,15 @@ set(api_includes
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/types.h
+    ${include_path}/ProcedureAddressResolution.h
 )
 
 set(sources
     ${source_path}/glbinding.cpp
     ${source_path}/Error.cpp
+    ${source_path}/ProcedureAddressResolution.cpp
+    ${source_path}/FunctionObjects.cpp
+    ${source_path}/FunctionObjects.h
 )
 
 # Group source files
