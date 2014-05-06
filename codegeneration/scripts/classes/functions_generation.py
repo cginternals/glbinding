@@ -116,7 +116,7 @@ namespace gl {
 } // namespace gl
 		""")
 
-def generateFunctionFiles(inputfile):
+def generateFunctions(inputfile):
 	tree = ET.parse(inputfile)
 	registry = tree.getroot()
 
