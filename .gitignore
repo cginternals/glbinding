@@ -5,3 +5,6 @@ CMakeLists.txt.*
 # generated code
 codegeneration/*.h
 codegeneration/*.cpp
+
+#backup files
+*~

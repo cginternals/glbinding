@@ -11,7 +11,7 @@ namespace gl {
 
 """)
 		for enum in enums:
-			file.write("const GLenum %s = %s;\n" % (enum.baseName(), enum.value))
+			file.write("const %s %s = %s;\n" % (enum.type, enum.baseName(), enum.value))
 		file.write("""
 } // namespace gl
 """)
