@@ -3,6 +3,7 @@
 #include "ProcedureAddressResolution.h"
 
 #include <set>
+#include <string>
 #include <functional>
 
 namespace gl {
@@ -10,25 +11,36 @@ namespace gl {
 class AbstractFunction
 {
 public:
-    using Callback = std::function<void(const AbstractFunction &)>;
-
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
+
+    void initialize();
+    static void initializeFunctions();
 
     const char * name() const;
     bool isValid() const;
 
-    static void initializeFunctions();
+    void enableCallbacks();
+    void disableCallbacks();
 
+    static void enableCallbacksForAll();
+    static void disableCallbacksForAll();
+    static void enableCallbacksForAllExcept(const std::set<std::string> & blackList);
+
+    using Callback = std::function<void(const AbstractFunction &)>;
+    static void setBeforeCallback(Callback callback);
+    static void setAfterCallback(Callback callback);
 protected:
     const char * m_name;
     bool m_valid;
-    bool m_useCallbacks;
+    bool m_callbacksEnabled;
 
-    void initialize();
+    static Callback s_beforeCallback;
+    static Callback s_afterCallback;
+
     virtual void initializeFunctionPointer(FunctionPointer functionPointer) = 0;
 
-    bool useCallbacks() const;
+    bool callbacksEnabled() const;
 
     void before();
     void after();

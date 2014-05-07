@@ -45,7 +45,7 @@ void main()
 )";
 }
 
-using namespace gl;
+//using namespace gl;
 
 class EventHandler : public glowwindow::WindowEventHandler
 {

@@ -4,10 +4,9 @@
 
 #include <cassert>
 #include <utility>
+#include <functional>
 
 #include "ProcedureAddressResolution.h"
-
-#include <iostream>
 
 namespace {
 
@@ -58,7 +57,7 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
 {
     assert(m_valid);
 
-    if (useCallbacks())
+    if (callbacksEnabled())
     {
         return FunctionHelper<ReturnType, Arguments...>()(m_functionPointer, [this]() { before(); }, [this]() { after(); }, std::forward<Arguments>(arguments)...);
     }

@@ -2,6 +2,10 @@
 
 #include "AbstractFunction.h"
 
+#include <glbinding/functions.h>
+
+#include <iostream>
+
 namespace {
     bool initialized = false;
 }
@@ -16,6 +20,18 @@ bool initialize()
     }
 
     AbstractFunction::initializeFunctions();
+
+    AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
+    AbstractFunction::setBeforeCallback([](const AbstractFunction & f) {
+        std::cout << f.name() << std::endl;
+    });
+    AbstractFunction::setAfterCallback([](const AbstractFunction &) {
+        GLenum error = GetError();
+        if (error != NO_ERROR)
+        {
+            std::cout << "Error!" << std::endl;
+        }
+    });
 
     initialized = true;
 
