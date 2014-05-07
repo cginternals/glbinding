@@ -1,3 +1,7 @@
 build*
 *_build
 CMakeLists.txt.*
+
+# generated code
+codegeneration/*.h
+codegeneration/*.cpp

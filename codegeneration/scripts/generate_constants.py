@@ -5,7 +5,6 @@ from classes.constants_generation import *
 
 def main(argv):
 	inputfile = "gl.xml"
-	outputfile = "gl_constants.h"
 
 	try:
 		opts, args = getopt.getopt(argv[1:], "i:", ["input="])

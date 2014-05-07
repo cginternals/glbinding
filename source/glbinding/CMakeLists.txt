@@ -57,7 +57,6 @@ set(api_includes
 set(sources
     ${source_path}/glbinding.cpp
     ${source_path}/functions.cpp
-    ${source_path}/constants.cpp
     ${source_path}/ProcedureAddressResolution.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/FunctionObjects.h

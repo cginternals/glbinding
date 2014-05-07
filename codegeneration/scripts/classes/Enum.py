@@ -17,6 +17,8 @@ class Enum:
 		
 		if n == "DOMAIN":
 			return "_DOMAIN"
+		if n == "MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB":
+			return "_MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB"
 		
 		if first.isalpha():
 			return n
