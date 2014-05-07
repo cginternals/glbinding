@@ -7,18 +7,42 @@
 
 #include "ProcedureAddressResolution.h"
 
+#include <iostream>
+
 namespace {
 
-//template <typename Function, typename... Arguments>
-//auto call(Function function, Arguments... arguments);
+using Callback = std::function<void()>;
+
+template <typename ReturnType, typename... Arguments>
+struct FunctionHelper
+{
+    ReturnType operator()(ReturnType (*f)(Arguments...), Callback before, Callback after, Arguments... arguments) const
+    {
+        before();
+        ReturnType value = f(std::forward<Arguments>(arguments)...);
+        after();
+        return value;
+    }
+};
+
+template <typename... Arguments>
+struct FunctionHelper<void, Arguments...>
+{
+    void operator()(void (*f)(Arguments...), Callback before, Callback after, Arguments... arguments) const
+    {
+        before();
+        f(std::forward<Arguments>(arguments)...);
+        after();
+    }
+};
 
 }
 
 namespace gl {
 
 template <typename ReturnType, typename... Arguments>
-Function<ReturnType, Arguments...>::Function(const char * name)
-: AbstractFunction(name)
+Function<ReturnType, Arguments...>::Function(const char * _name)
+: AbstractFunction(_name)
 , m_functionPointer(nullptr)
 {
 }
@@ -34,37 +58,14 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
 {
     assert(m_valid);
 
-    return m_functionPointer(std::forward<Arguments>(arguments)...);
+    if (useCallbacks())
+    {
+        return FunctionHelper<ReturnType, Arguments...>()(m_functionPointer, [this]() { before(); }, [this]() { after(); }, std::forward<Arguments>(arguments)...);
+    }
+    else
+    {
+        return m_functionPointer(std::forward<Arguments>(arguments)...);
+    }
 }
-
-
-/*template <typename... Arguments>
-Function<void, Arguments...>::Function(const char* name)
-: m_name(name)
-, m_valid(false)
-{
-}
-
-template <typename... Arguments>
-void Function<void, Arguments...>::setFunction(FunctionSignature functionPointer)
-{
-    m_valid = true;
-
-    m_functionPointer = functionPointer;
-}
-
-template <typename... Arguments>
-void Function<void, Arguments...>::initialize()
-{
-    setFunction(reinterpret_cast<FunctionSignature>(getProcAddress(m_name)));
-}
-
-template <typename... Arguments>
-void Function<void, Arguments...>::operator()(Arguments... arguments)
-{
-    assert(m_valid);
-
-    m_functionPointer(std::forward<Arguments>(arguments)...);
-}*/
 
 } // namespace gl

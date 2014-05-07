@@ -18,16 +18,43 @@ std::set<AbstractFunction*> & functions()
 
 }
 
-AbstractFunction::AbstractFunction(const char * name)
-: m_name(name)
+AbstractFunction::AbstractFunction(const char * _name)
+: m_name(_name)
 , m_valid(false)
+, m_useCallbacks(false)
 {
+    m_useCallbacks = true;
     functions().insert(this);
 }
 
 AbstractFunction::~AbstractFunction()
 {
     functions().erase(this);
+}
+
+const char * AbstractFunction::name() const
+{
+    return m_name;
+}
+
+bool AbstractFunction::isValid() const
+{
+    return m_valid;
+}
+
+bool AbstractFunction::useCallbacks() const
+{
+    return m_useCallbacks;
+}
+
+void AbstractFunction::before()
+{
+    //std::cout << "before " << name() << std::endl;
+}
+
+void AbstractFunction::after()
+{
+    std::cout << "after " << name() << std::endl;
 }
 
 void AbstractFunction::initializeFunctions()
