@@ -1,47 +1,32 @@
 
-# GLOW_FOUND
+# GLBINDING_FOUND
 
-# GLOW_LIBRARIES
-# GLOW_INCLUDES
+# GLBINDING_LIBRARIES
+# GLBINDING_INCLUDES
 
-# GLOW_BASE_LIBRARY
-# GLOW_BASE_LIBRARY_RELEASE
-# GLOW_BASE_LIBRARY_DEBUG
-# GLOW_BASE_INCLUDE_DIR
-
-# GLOW_LIBRARY
-# GLOW_LIBRARY_RELEASE
-# GLOW_LIBRARY_DEBUG
-# GLOW_INCLUDE_DIR
-
-# GLOW_UTILS_LIBRARY
-# GLOW_UTILS_LIBRARY_RELEASE
-# GLOW_UTILS_LIBRARY_DEBUG
-# GLOW_UTILS_INCLUDE_DIR
-
-# GLOW_WINDOW_LIBRARY
-# GLOW_WINDOW_LIBRARY_RELEASE
-# GLOW_WINDOW_LIBRARY_DEBUG
-# GLOW_WINDOW_INCLUDE_DIR
+# GLBINDING_LIBRARY
+# GLBINDING_LIBRARY_RELEASE
+# GLBINDING_LIBRARY_DEBUG
+# GLBINDING_INCLUDE_DIR
 
 include(FindPackageHandleStandardArgs)
 
 if(CMAKE_CURRENT_LIST_FILE)
-    get_filename_component(GLOW_DIR ${CMAKE_CURRENT_LIST_FILE} PATH)
+    get_filename_component(GLBINDING_DIR ${CMAKE_CURRENT_LIST_FILE} PATH)
 endif()
 
 file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" ENVPROGRAMFILES)
-file(TO_CMAKE_PATH "$ENV{GLOW_DIR}" ENVGLOW_DIR)
+file(TO_CMAKE_PATH "$ENV{GLBINDING_DIR}" ENVGLBINDING_DIR)
 
 set(LIB_PATHS   
-    ${GLOW_DIR}/build
-    ${GLOW_DIR}/build/Release
-    ${GLOW_DIR}/build/Debug
-    ${GLOW_DIR}/build-release
-    ${GLOW_DIR}/build-debug
-    ${ENVGLOW_DIR}/lib
-    ${GLOW_DIR}/lib
-    ${ENVPROGRAMFILES}/glow/lib
+    ${GLBINDING_DIR}/build
+    ${GLBINDING_DIR}/build/Release
+    ${GLBINDING_DIR}/build/Debug
+    ${GLBINDING_DIR}/build-release
+    ${GLBINDING_DIR}/build-debug
+    ${ENVGLBINDING_DIR}/lib
+    ${GLBINDING_DIR}/lib
+    ${ENVPROGRAMFILES}/glbinding/lib
     /usr/lib
     /usr/local/lib
     /sw/lib
@@ -55,20 +40,20 @@ set(LIB_PATHS
 macro (find LIB_NAME HEADER)
     set(HINT_PATHS ${ARGN})
 
-    if (${LIB_NAME} STREQUAL "glow")
-        set(LIB_NAME_UPPER GLOW)
-        set(LIBNAME glow)
+    if (${LIB_NAME} STREQUAL "glbinding")
+        set(LIB_NAME_UPPER GLBINDING)
+        set(LIBNAME glbinding)
     else()
-        string(TOUPPER GLOW_${LIB_NAME} LIB_NAME_UPPER)
-        set(LIBNAME glow${LIB_NAME})
+        string(TOUPPER GLBINDING_${LIB_NAME} LIB_NAME_UPPER)
+        set(LIBNAME glbinding${LIB_NAME})
     endif()
 
     find_path(${LIB_NAME_UPPER}_INCLUDE_DIR ${HEADER}
-        ${ENVGLOW_DIR}/include
-        ${ENVTEMPLATE_DIR}/source/${LIBNAME}/include
-        ${GLOW_DIR}/include
-        ${GLOW_DIR}/source/${LIBNAME}/include
-        ${ENVPROGRAMFILES}/glow/include
+        ${ENVGLBINDING_DIR}/include
+        ${ENVGLBINDING_DIR}/source/${LIBNAME}/include
+        ${GLBINDING_DIR}/include
+        ${GLBINDING_DIR}/source/${LIBNAME}/include
+        ${ENVPROGRAMFILES}/glbinding/include
         /usr/include
         /usr/local/include
         /sw/include
@@ -92,8 +77,8 @@ macro (find LIB_NAME HEADER)
         set(${LIB_NAME_UPPER}_LIBRARY ${${LIB_NAME_UPPER}_LIBRARY_DEBUG})
     endif()
 
-    set(GLOW_INCLUDES  ${GLOW_INCLUDES}  ${${LIB_NAME_UPPER}_INCLUDE_DIR})
-    set(GLOW_LIBRARIES ${GLOW_LIBRARIES} ${${LIB_NAME_UPPER}_LIBRARY})
+    set(GLBINDING_INCLUDES  ${GLBINDING_INCLUDES}  ${${LIB_NAME_UPPER}_INCLUDE_DIR})
+    set(GLBINDING_LIBRARIES ${GLBINDING_LIBRARIES} ${${LIB_NAME_UPPER}_LIBRARY})
 
     # DEBUG
     #message("${LIB_NAME_UPPER}_INCLUDE_DIR     = ${${LIB_NAME_UPPER}_INCLUDE_DIR}")
@@ -103,14 +88,11 @@ macro (find LIB_NAME HEADER)
 
 endmacro()
 
-find(base glowbase/glowbase_api.h ${LIB_PATHS})
-find(glow   glow/glow_api.h             ${LIB_PATHS})
-find(utils  glowutils/glowutils_api.h   ${LIB_PATHS})
-find(window glowwindow/glowwindow_api.h ${LIB_PATHS})
+find(glbinding glbinding/glbinding_api.h ${LIB_PATHS})
 
 # DEBUG
-#message("GLOW_INCLUDES  = ${GLOW_INCLUDES}")
-#message("GLOW_LIBRARIES = ${GLOW_LIBRARIES}")
+#message("GLBINDING_INCLUDES  = ${GLBINDING_INCLUDES}")
+#message("GLBINDING_LIBRARIES = ${GLBINDING_LIBRARIES}")
 
-find_package_handle_standard_args(GLOW DEFAULT_MSG GLOW_LIBRARIES GLOW_INCLUDES)
-mark_as_advanced(GLOW_FOUND)
+find_package_handle_standard_args(GLBINDING DEFAULT_MSG GLBINDING_LIBRARIES GLBINDING_INCLUDES)
+mark_as_advanced(GLBINDING_FOUND)
