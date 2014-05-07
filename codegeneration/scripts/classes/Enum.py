@@ -11,13 +11,26 @@ class Enum:
 	def __lt__(self, other):
 		return self.name < other.name
 		
+	def baseName(self):
+		first = self.name[3]
+		n = self.name[3:]
+		
+		if n == "DOMAIN":
+			return "_DOMAIN"
+		
+		if first.isalpha():
+			return n
+		else:
+			return "_" + n
 		
 def parseEnums(xml):
 	enums = set()
 	
 	for enumGroup in xml.iter("enums"):
-		if enumGroup.attrib.get("namespace", "") == "GL":
+		#~ if enumGroup.attrib.get("namespace", "") == "GL":
 			for enum in enumGroup.findall("enum"):
+				if "api" in enum.attrib and enum.attrib["api"] != "gl":
+					continue
 				enums.add(Enum(enum))
 
 	return enums

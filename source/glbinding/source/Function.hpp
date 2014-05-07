@@ -5,93 +5,28 @@
 #include <cassert>
 #include <utility>
 
-#include <glbinding/Error.h>
-
 #include "ProcedureAddressResolution.h"
 
-namespace glbinding {
+namespace {
+
+//template <typename Function, typename... Arguments>
+//auto call(Function function, Arguments... arguments);
+
+}
+
+namespace gl {
 
 template <typename ReturnType, typename... Arguments>
-BasicFunction<ReturnType, Arguments...>::BasicFunction(const char* name)
-: m_name(name)
-, m_valid(false)
-{
-}
-
-template <typename ReturnType, typename... Arguments>
-void BasicFunction<ReturnType, Arguments...>::setFunction(FunctionSignature functionPointer)
-{
-    m_valid = true;
-
-    m_functionPointer = functionPointer;
-}
-
-template <typename ReturnType, typename... Arguments>
-void BasicFunction<ReturnType, Arguments...>::initialize()
-{
-    setFunction(reinterpret_cast<FunctionSignature>(getProcAddress(m_name)));
-}
-
-template <typename ReturnType, typename... Arguments>
-ReturnType BasicFunction<ReturnType, Arguments...>::operator()(Arguments... arguments)
-{
-    assert(m_valid);
-
-    ReturnType returnValue = m_functionPointer(std::forward<Arguments>(arguments)...);
-
-    return returnValue;
-}
-
-
-template <typename... Arguments>
-BasicFunction<void, Arguments...>::BasicFunction(const char* name)
-: m_name(name)
-, m_valid(false)
-{
-}
-
-template <typename... Arguments>
-void BasicFunction<void, Arguments...>::setFunction(FunctionSignature functionPointer)
-{
-    m_valid = true;
-
-    m_functionPointer = functionPointer;
-}
-
-template <typename... Arguments>
-void BasicFunction<void, Arguments...>::initialize()
-{
-    setFunction(reinterpret_cast<FunctionSignature>(getProcAddress(m_name)));
-}
-
-template <typename... Arguments>
-void BasicFunction<void, Arguments...>::operator()(Arguments... arguments)
-{
-    assert(m_valid);
-
-    m_functionPointer(std::forward<Arguments>(arguments)...);
-}
-
-
-template <typename ReturnType, typename... Arguments>
-Function<ReturnType, Arguments...>::Function(const char* name)
-: m_name(name)
-, m_valid(false)
+Function<ReturnType, Arguments...>::Function(const char * name)
+: AbstractFunction(name)
+, m_functionPointer(nullptr)
 {
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::setFunction(FunctionSignature functionPointer)
+void Function<ReturnType, Arguments...>::initializeFunctionPointer(FunctionPointer functionPointer)
 {
-    m_valid = true;
-
-    m_functionPointer = functionPointer;
-}
-
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::initialize()
-{
-    setFunction(reinterpret_cast<FunctionSignature>(getProcAddress(m_name)));
+    m_functionPointer = reinterpret_cast<Signature>(functionPointer);
 }
 
 template <typename ReturnType, typename... Arguments>
@@ -99,14 +34,11 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
 {
     assert(m_valid);
 
-    ReturnType returnValue = m_functionPointer(std::forward<Arguments>(arguments)...);
-    CheckError();
-
-    return returnValue;
+    return m_functionPointer(std::forward<Arguments>(arguments)...);
 }
 
 
-template <typename... Arguments>
+/*template <typename... Arguments>
 Function<void, Arguments...>::Function(const char* name)
 : m_name(name)
 , m_valid(false)
@@ -133,7 +65,6 @@ void Function<void, Arguments...>::operator()(Arguments... arguments)
     assert(m_valid);
 
     m_functionPointer(std::forward<Arguments>(arguments)...);
-    CheckError();
-}
+}*/
 
-} // namespace glbinding
+} // namespace gl

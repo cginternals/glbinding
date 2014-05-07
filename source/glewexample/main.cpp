@@ -4,6 +4,8 @@
 
 #define GLM_FORCE_RADIANS
 
+#include <GL/glew.h>
+
 #include <glowwindow/Context.h>
 #include <glowwindow/ContextFormat.h>
 #include <glowwindow/MainLoop.h>
@@ -11,7 +13,6 @@
 #include <glowwindow/WindowEventHandler.h>
 #include <glowwindow/events.h>
 
-#include <GL/glew.h>
 
 namespace {
     const char* vertexShaderCode = R"(

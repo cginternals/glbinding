@@ -6,8 +6,8 @@ extern void (*glXGetProcAddress(const unsigned char *procname))( void );
 
 }
 
-namespace glbinding {
+namespace gl {
 
-FunctionPointer (*getProcAddress) (const char*) = reinterpret_cast<FunctionPointer (*) (const char*)>(glXGetProcAddress);
+FunctionResolution getProcAddress = reinterpret_cast<FunctionResolution>(glXGetProcAddress);
 
-} // namespace glbinding
+} // namespace gl

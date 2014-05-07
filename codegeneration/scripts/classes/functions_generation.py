@@ -1,28 +1,21 @@
 import xml.etree.ElementTree as ET
 from Function import *
 
-#~ pre = \
-#~ """#include <GL/glew.h>
-#~ #include <unordered_map>
-
-#~ const std::unordered_multimap<GLuint64, const char*> GLconstants = {
-#~ """
-#~ post = "};\n"
 
 def functionTemplate(function):
-	params = ", ".join(["gl::"+p.baseType() for p in function.params])
-	return 'GLFunction<%s> %s("%s");' % (params, function.baseName(), function.name)
+	params = ", ".join([function.returntype] + [p.baseType() for p in function.params])
+	return 'Function<%s> %s("%s");' % (params, function.baseName(), function.name)
 	
 def functionDeclaration(function):
-	params = ", ".join(["gl::"+p.baseType()  for p in function.params])
-	return 'extern GLFunction<%s> %s;' % (params, function.baseName())
+	params = ", ".join([function.returntype] + [p.baseType()  for p in function.params])
+	return 'extern Function<%s> %s;' % (params, function.baseName())
 	
 def functionWrapperDeclaration(function):
-	params = ", ".join(["gl::"+p.baseType()+" "+p.name for p in function.params])
+	params = ", ".join([p.baseType()+" "+p.name for p in function.params])
 	return 'GLBINDING_API %s %s(%s);' % (function.returntype, function.baseName(), params)
 	
 def functionWrapper(function):
-	params = ", ".join(["gl::"+p.baseType()+" "+p.name for p in function.params])
+	params = ", ".join([p.baseType()+" "+p.name for p in function.params])
 	paramNames = ", ".join([p.name for p in function.params])
 	
 	return """%s %s(%s)
@@ -132,5 +125,5 @@ def generateFunctions(inputfile):
 	generateFunctionObjectsHeader(functions, "FunctionObjects.h")
 	generateFunctionObjectsSource(functions, "FunctionObjects.cpp")
 	
-	generateFunctionWrapperHeader(functions, "glbinding.h")
-	generateFunctionWrapperSource(functions, "glbinding.cpp")
+	generateFunctionWrapperHeader(functions, "functions.h")
+	generateFunctionWrapperSource(functions, "functions.cpp")

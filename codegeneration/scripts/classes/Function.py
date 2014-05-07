@@ -2,12 +2,15 @@ import sys
 import xml.etree.ElementTree as ET
 
 def baseType(type):
-	return type[2].upper() + type[3:] 
+	return type#.replace("GL", "gl::")
+	#type[2].upper() + type[3:] 
 
 class Parameter:
 	def __init__(self, xml):
 		self.name = xml.find("name").text
 		self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
+		if self.name == "getProcAddress":
+			self.name = "_getProcAddress"
 		
 	def __str__(self):
 		return "%s %s" % (self.type, self.name)
@@ -28,7 +31,7 @@ class Function:
 			self.params.append(Parameter(param))
 			
 	def baseName(self):
-		return self.name[2].lower() + self.name[3:]
+		return self.name[2:]
 		
 	def baseReturnType(self):
 		return baseType(self.returntype)

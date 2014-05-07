@@ -2,41 +2,56 @@
 
 #include <glbinding/glbinding_api.h>
 
-namespace glbinding {
+#include <cstddef>
+#include <cstdint>
 
-/*
-<type>typedef unsigned int <name>GLenum</name>;</type>
-<type>typedef unsigned char <name>GLboolean</name>;</type>
-<type>typedef unsigned int <name>GLbitfield</name>;</type>
-<type comment="Not an actual GL type, though used in headers in the past">typedef void <name>GLvoid</name>;</type>
-<type>typedef signed char <name>GLbyte</name>;</type>
-<type>typedef short <name>GLshort</name>;</type>
-<type>typedef int <name>GLint</name>;</type>
-<type>typedef int <name>GLclampx</name>;</type>
-<type>typedef unsigned char <name>GLubyte</name>;</type>
-<type>typedef unsigned short <name>GLushort</name>;</type>
-<type>typedef unsigned int <name>GLuint</name>;</type>
-<type>typedef int <name>GLsizei</name>;</type>
-<type>typedef float <name>GLfloat</name>;</type>
-<type>typedef float <name>GLclampf</name>;</type>
-<type>typedef double <name>GLdouble</name>;</type>
-<type>typedef double <name>GLclampd</name>;</type>
-<type>typedef void *<name>GLeglImageOES</name>;</type>
-<type>typedef char <name>GLchar</name>;</type>
-<type>typedef char <name>GLcharARB</name>;</type>
-*/
-using GLBbool = unsigned int;
-using GLBbitfield = unsigned int;
-using GLBbyte = char;
-using GLBshort = short;
-using GLBint = int;
-using GLBubyte = unsigned char;
-using GLBushort = unsigned short;
-using GLBuint = unsigned int;
-using GLBsizei = int;
-using GLBfloat = float;
-using GLBclampf = float;
-using GLBdouble = double;
-using GLBclampd = double;
+namespace gl {
 
-} // namespace glbinding
+using GLenum = unsigned int;
+using GLbitfield = unsigned int;
+using GLboolean = unsigned int;
+using GLvoid = void;
+using GLbyte = signed char;
+using GLshort = short;
+using GLint = int;
+using GLclampx = int;
+using GLubyte = unsigned char;
+using GLushort = unsigned short;
+using GLuint = unsigned int;
+using GLsizei = int;
+using GLfloat = float;
+using GLclampf = float;
+using GLdouble = double;
+using GLclampd = double;
+using GLeglImageOES = void *;
+using GLhalfARB = unsigned short;
+using GLchar = char;
+using GLcharARB = char;
+
+#ifdef __APPLE__
+using GLhandleARB = void*;
+#else
+using GLhandleARB = unsigned int;
+#endif
+
+using GLhalf = unsigned short;
+using GLfixed = GLint;
+using GLintptr = ptrdiff_t;
+using GLsizeiptr = ptrdiff_t;
+using GLint64 = int64_t;
+using GLuint64 = uint64_t;
+using GLintptrARB = ptrdiff_t;
+using GLsizeiptrARB = ptrdiff_t;
+using GLint64EXT = int64_t;
+using GLuint64EXT = uint64_t;
+using GLsync = struct __GLsync *;
+
+using GLDEBUGPROC = void (*)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * message, const void * userParam);
+using GLDEBUGPROCARB = void (*)(GLenum source, GLenum type,GLuint id, GLenum severity, GLsizei length, const GLchar * message, const void * userParam);
+using GLDEBUGPROCKHR = void (*)(GLenum source, GLenum type,GLuint id, GLenum severity, GLsizei length, const GLchar * message, const void * userParam);
+using GLDEBUGPROCAMD =void (*)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar * message, void * userParam);
+
+using GLhalfNV = unsigned short;
+using GLvdpauSurfaceNV = GLintptr;
+
+} // namespace gl

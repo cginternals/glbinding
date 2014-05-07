@@ -45,7 +45,7 @@ void main()
 )";
 }
 
-using namespace glbinding;
+using namespace gl;
 
 class EventHandler : public glowwindow::WindowEventHandler
 {
@@ -56,28 +56,28 @@ public:
 
     virtual ~EventHandler()
     {
-        glbDeleteBuffers(1, &m_cornerBuffer);
-        glbDeleteProgram(m_program);
-        glbDeleteVertexArrays(1, &m_vao);
-        glbDeleteShader(m_vertexShader);
-        glbDeleteShader(m_fragmentShader);
+        gl::DeleteBuffers(1, &m_cornerBuffer);
+        gl::DeleteProgram(m_program);
+        gl::DeleteVertexArrays(1, &m_vao);
+        gl::DeleteShader(m_vertexShader);
+        gl::DeleteShader(m_fragmentShader);
     }
 
     virtual void initialize(glowwindow::Window &) override
     {
-        glbinding::initialize();
+        gl::initialize();
 
-        glbClearColor(0.2f, 0.3f, 0.4f, 1.f);
+        gl::ClearColor(0.2f, 0.3f, 0.4f, 1.f);
 
-        glbGenBuffers(1, &m_cornerBuffer);
-        m_program = glbCreateProgram();
-        glbGenVertexArrays(1, &m_vao);
+        gl::GenBuffers(1, &m_cornerBuffer);
+        m_program = gl::CreateProgram();
+        gl::GenVertexArrays(1, &m_vao);
 
-        m_vertexShader = glbCreateShader(ShaderType::VERTEX_SHADER);
-        m_fragmentShader = glbCreateShader(ShaderType::FRAGMENT_SHADER);
+        m_vertexShader = gl::CreateShader(gl::VERTEX_SHADER);
+        m_fragmentShader = gl::CreateShader(gl::FRAGMENT_SHADER);
 
-        glbShaderSource(m_vertexShader, 1, &vertexShaderCode, nullptr);
-        glbShaderSource(m_fragmentShader, 1, &fragmentShaderCode, nullptr);
+        gl::ShaderSource(m_vertexShader, 1, &vertexShaderCode, nullptr);
+        gl::ShaderSource(m_fragmentShader, 1, &fragmentShaderCode, nullptr);
 
         std::array<glm::vec2, 4> corners{{
             glm::vec2(0, 0),
@@ -86,29 +86,29 @@ public:
             glm::vec2(1, 1)
         }};
 
-        glbBindBuffer(BufferTarget::ARRAY_BUFFER, m_cornerBuffer);
-        glbBufferData(BufferTarget::ARRAY_BUFFER, static_cast<GLsizei>(4 * sizeof(glm::vec2)), corners.data(), AccessMode::STATIC_DRAW);
+        gl::BindBuffer(gl::ARRAY_BUFFER, m_cornerBuffer);
+        gl::BufferData(gl::ARRAY_BUFFER, static_cast<GLsizei>(4 * sizeof(glm::vec2)), corners.data(), gl::STATIC_DRAW);
 
-        glbBindVertexArray(m_vao);
-        glbVertexAttribBinding(/* attributeIndex */ 0, /* bindingIndex */ 0);
-        glbBindVertexBuffer(0, m_cornerBuffer, 0, sizeof(glm::vec2));
-        glbVertexAttribFormat(0, 2, DataType::FLOAT, false, 0);
-        glbEnableVertexAttribArray(0);
+        gl::BindVertexArray(m_vao);
+        gl::VertexAttribBinding(/* attributeIndex */ 0, /* bindingIndex */ 0);
+        gl::BindVertexBuffer(0, m_cornerBuffer, 0, sizeof(glm::vec2));
+        gl::VertexAttribFormat(0, 2, gl::FLOAT, false, 0);
+        gl::EnableVertexAttribArray(0);
 
-        glbCompileShader(m_vertexShader);
-        glbCompileShader(m_fragmentShader);
+        gl::CompileShader(m_vertexShader);
+        gl::CompileShader(m_fragmentShader);
 
-        glbAttachShader(m_program, m_vertexShader);
-        glbAttachShader(m_program, m_fragmentShader);
+        gl::AttachShader(m_program, m_vertexShader);
+        gl::AttachShader(m_program, m_fragmentShader);
 
-        glbLinkProgram(m_program);
+        gl::LinkProgram(m_program);
 
         //lastRender = std::chrono::system_clock::now();
     }
 
     virtual void framebufferResizeEvent(glowwindow::ResizeEvent & event) override
     {
-        glbViewport(0, 0, event.width(), event.height());
+        gl::Viewport(0, 0, event.width(), event.height());
     }
 
     virtual void paintEvent(glowwindow::PaintEvent &) override
@@ -118,13 +118,13 @@ public:
         //std::cout << (current - lastRender).count() << std::endl;
         //lastRender = current;
 
-        glbClear(Bit::COLOR_BUFFER_BIT | Bit::DEPTH_BUFFER_BIT);
+        gl::Clear(gl::COLOR_BUFFER_BIT | gl::DEPTH_BUFFER_BIT);
 
-        glbBindVertexArray(m_vao);
-        glbUseProgram(m_program);
-        glbDrawArrays(Primitive::TRIANGLE_STRIP, 0, 4);
-        glbUseProgram(0);
-        glbBindVertexArray(0);
+        gl::BindVertexArray(m_vao);
+        gl::UseProgram(m_program);
+        gl::DrawArrays(gl::TRIANGLE_STRIP, 0, 4);
+        gl::UseProgram(0);
+        gl::BindVertexArray(0);
     }
 
     virtual void idle(glowwindow::Window & /*window*/) override
@@ -134,11 +134,11 @@ public:
 
 private:
     //std::chrono::time_point<std::chrono::system_clock> lastRender;
-    GLBuint m_vao;
-    GLBuint m_cornerBuffer;
-    GLBuint m_program;
-    GLBuint m_vertexShader;
-    GLBuint m_fragmentShader;
+    GLuint m_vao;
+    GLuint m_cornerBuffer;
+    GLuint m_program;
+    GLuint m_vertexShader;
+    GLuint m_fragmentShader;
 };
 
 int main(int /*argc*/, char* /*argv*/[])
@@ -150,7 +150,7 @@ int main(int /*argc*/, char* /*argv*/[])
 
     window.setEventHandler(new EventHandler());
 
-    if (window.create(format, "GLBinding Example"))
+    if (window.create(format, "glbinding Example"))
     {
         window.context()->setSwapInterval(glowwindow::Context::NoVerticalSyncronization);
 

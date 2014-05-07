@@ -50,16 +50,19 @@ set(api_includes
     
     ${include_path}/constants.h
     ${include_path}/glbinding.h
-    ${include_path}/Error.h
+    ${include_path}/functions.h
     ${include_path}/types.h
 )
 
 set(sources
     ${source_path}/glbinding.cpp
-    ${source_path}/Error.cpp
+    ${source_path}/functions.cpp
+    ${source_path}/constants.cpp
     ${source_path}/ProcedureAddressResolution.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/FunctionObjects.h
+    ${source_path}/AbstractFunction.h
+    ${source_path}/AbstractFunction.cpp
     ${source_path}/Function.h
     ${source_path}/Function.hpp
     ${source_path}/ProcedureAddressResolution.h

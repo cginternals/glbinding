@@ -1,36 +1,40 @@
 import xml.etree.ElementTree as ET
 from Enum import *
 
-from Type import *
+def generateConstantsHeader(enums, outputfile):		
+	with open(outputfile, 'w') as file:
+		file.write("""#pragma once
 
-pre = \
-"""#include <GL/glew.h>
-#include <unordered_map>
+#include <glbinding/types.h>
+#include <glbinding/glbinding_api.h>
 
-const std::unordered_multimap<GLuint64, const char*> GLconstants = {
-"""
-post = "};\n"
+namespace gl {
+
+""")
+		for enum in enums:
+			file.write("extern GLBINDING_API const GLenum %s;\n" % enum.baseName())
+		file.write("""
+} // namespace gl
+""")
+
+def generateConstantsSource(enums, outputfile):		
+	with open(outputfile, 'w') as file:
+		file.write("""#include <glbinding/constants.h>
+
+namespace gl {
+
+""")
+		for enum in enums:
+			file.write("const GLenum %s = %s;\n" % (enum.baseName(), enum.value))
+		file.write("""
+} // namespace gl
+""")
 
 def generateConstants(inputfile):
 	tree = ET.parse(inputfile)
 	registry = tree.getroot()
 
-	#~ enums = sorted(parseEnums(registry))
+	enums = sorted(parseEnums(registry))
 		
-	#~ for enum in enums:
-		#~ print(str(enum))
-		
-	types = parseTypes(registry)
-		
-	for type in types:
-		print(str(type))
-
-	#~ outputfile = "enums.h"
-
-	#~ with open(outputfile, 'w') as file:
-		#~ file.write(pre)
-		#~ for enum in enums:
-			#~ file.write("#ifdef %s\n" % enum.name)
-			#~ file.write('\t{ %s, "%s" },\n' % (enum.name, enum.name))
-			#~ file.write("#endif\n")
-		#~ file.write(post)
+	generateConstantsHeader(enums, "constants.h")
+	generateConstantsSource(enums, "constants.cpp")

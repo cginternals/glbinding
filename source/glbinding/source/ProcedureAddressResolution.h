@@ -1,8 +1,10 @@
 #pragma once
 
-namespace glbinding {
+namespace gl {
 
 using FunctionPointer = void(*)();
-extern FunctionPointer (*getProcAddress) (const char*);
+using FunctionResolution = FunctionPointer(*)(const char *);
 
-}
+extern FunctionResolution getProcAddress;
+
+} // namespace gl
