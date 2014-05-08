@@ -138,7 +138,7 @@ install(FILES LICENSE               DESTINATION ${INSTALL_ROOT})
 create_revision_file(${CMAKE_BINARY_DIR}/revision ${INSTALL_ROOT})
 
 # Data files
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA})
+# install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA})
 
 
 #
