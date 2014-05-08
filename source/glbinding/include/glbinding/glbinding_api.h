@@ -41,12 +41,3 @@
 #       define NOEXCEPT noexcept
 #   endif
 #endif
-
-
-/**
- * \namespace glbinding
- *
- * \brief Contains all the core classes that ... functionality.
- *
- * TODO: Detailed documentation for GLBINDING here.
- */

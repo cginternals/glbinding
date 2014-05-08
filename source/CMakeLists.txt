@@ -17,11 +17,6 @@ add_subdirectory(glbinding)
 # Applications
 set(IDE_FOLDER "Applications")
 
-if(OPTION_BUILD_EXAMPLES)
-	add_subdirectory(glbindingexample)
-	add_subdirectory(glewexample)
-endif()
-
 # Tests
 set(IDE_FOLDER "Tests")
 add_subdirectory(tests)
