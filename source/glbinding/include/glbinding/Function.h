@@ -18,7 +18,7 @@ public:
 protected:
     Signature m_functionPointer;
 
-    virtual void initializeFunctionPointer(ProcAddress functionPointer) override;
+    virtual void initializeFunctionPointer(ProcAddress _functionPointer) override;
 };
 
 } // namespace gl

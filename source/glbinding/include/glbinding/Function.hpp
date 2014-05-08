@@ -51,9 +51,9 @@ ProcAddress Function<ReturnType, Arguments...>::functionPointer() const
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::initializeFunctionPointer(ProcAddress functionPointer)
+void Function<ReturnType, Arguments...>::initializeFunctionPointer(ProcAddress _functionPointer)
 {
-    m_functionPointer = reinterpret_cast<Signature>(functionPointer);
+    m_functionPointer = reinterpret_cast<Signature>(_functionPointer);
 }
 
 template <typename ReturnType, typename... Arguments>
