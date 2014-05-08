@@ -1,24 +1,12 @@
 #include <glbinding/GetProcAddress.h>
 
-extern "C" {
-
-extern void (*glXGetProcAddress(const unsigned char *procname))( void );
-
-}
-
-namespace {
-
-using GetProcAddressSignature = gl::ProcAddress(*)(const char *);
-
-GetProcAddressSignature getProcAddress = reinterpret_cast<GetProcAddressSignature>(glXGetProcAddress);
-
-}
+#include <GLFW/glfw3.h>
 
 namespace gl {
 
 ProcAddress GetProcAddress(const char * name)
 {
-    return getProcAddress(name);
+    return glfwGetProcAddress(name);
 }
 
 } // namespace gl

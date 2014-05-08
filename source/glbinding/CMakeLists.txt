@@ -6,13 +6,15 @@ message(STATUS "Lib ${target}")
 # External libraries
 #
 
-find_package(OpenGL)
+find_package(OpenGL REQUIRED)
+find_package(GLFW REQUIRED)
 
 #
 # Includes
 #
 
 include_directories(
+	${GLFW_INCLUDE_DIR}
 )
 
 include_directories(
@@ -26,6 +28,7 @@ include_directories(
 
 set(libs
     ${OPENGL_LIBRARY}
+    ${GLFW_LIBRARY}
 )
 
 #
