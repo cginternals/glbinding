@@ -3,7 +3,7 @@
 #include <glbinding/types.h>
 #include <glbinding/constants.h>
 
-#include "Function.h"
+#include <glbinding/Function.h>
 
 namespace gl {
 namespace functions {

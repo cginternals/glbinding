@@ -51,20 +51,20 @@ set(api_includes
     ${include_path}/constants.h
     ${include_path}/glbinding.h
     ${include_path}/functions.h
+    ${include_path}/GetProcAddress.h
+    ${include_path}/Function.h
+    ${include_path}/Function.hpp
+    ${include_path}/FunctionObjects.h
+    ${include_path}/AbstractFunction.h
     ${include_path}/types.h
 )
 
 set(sources
     ${source_path}/glbinding.cpp
     ${source_path}/functions.cpp
-    ${source_path}/ProcedureAddressResolution.cpp
+    ${source_path}/GetProcAddress.cpp
     ${source_path}/FunctionObjects.cpp
-    ${source_path}/FunctionObjects.h
-    ${source_path}/AbstractFunction.h
     ${source_path}/AbstractFunction.cpp
-    ${source_path}/Function.h
-    ${source_path}/Function.hpp
-    ${source_path}/ProcedureAddressResolution.h
 )
 
 # Group source files

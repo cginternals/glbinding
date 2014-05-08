@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ProcedureAddressResolution.h"
+#include <glbinding/glbinding_api.h>
+#include <glbinding/GetProcAddress.h>
 
 #include <set>
 #include <string>
@@ -8,7 +9,7 @@
 
 namespace gl {
 
-class AbstractFunction
+class GLBINDING_API AbstractFunction
 {
 public:
     AbstractFunction(const char * name);
@@ -38,7 +39,7 @@ protected:
     static Callback s_beforeCallback;
     static Callback s_afterCallback;
 
-    virtual void initializeFunctionPointer(FunctionPointer functionPointer) = 0;
+    virtual void initializeFunctionPointer(ProcAddress functionPointer) = 0;
 
     bool callbacksEnabled() const;
 

@@ -1,12 +1,10 @@
 #pragma once
 
-#include "Function.h"
+#include <glbinding/Function.h>
 
 #include <cassert>
 #include <utility>
 #include <functional>
-
-#include "ProcedureAddressResolution.h"
 
 namespace {
 
@@ -47,7 +45,7 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::initializeFunctionPointer(FunctionPointer functionPointer)
+void Function<ReturnType, Arguments...>::initializeFunctionPointer(ProcAddress functionPointer)
 {
     m_functionPointer = reinterpret_cast<Signature>(functionPointer);
 }

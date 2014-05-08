@@ -1,6 +1,6 @@
 #pragma once
 
-#include "AbstractFunction.h"
+#include <glbinding/AbstractFunction.h>
 
 namespace gl {
 
@@ -16,9 +16,9 @@ public:
 protected:
     Signature m_functionPointer;
 
-    virtual void initializeFunctionPointer(FunctionPointer functionPointer) override;
+    virtual void initializeFunctionPointer(ProcAddress functionPointer) override;
 };
 
 } // namespace gl
 
-#include "Function.hpp"
+#include <glbinding/Function.hpp>

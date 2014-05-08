@@ -1,6 +1,6 @@
 #include <glbinding/glbinding.h>
 
-#include "AbstractFunction.h"
+#include <glbinding/AbstractFunction.h>
 
 #include <glbinding/functions.h>
 
@@ -21,7 +21,7 @@ bool initialize()
 
     AbstractFunction::initializeFunctions();
 
-    AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
+    /*AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
     AbstractFunction::setBeforeCallback([](const AbstractFunction & f) {
         std::cout << f.name() << std::endl;
     });
@@ -31,7 +31,7 @@ bool initialize()
         {
             std::cout << "Error!" << std::endl;
         }
-    });
+    });*/
 
     initialized = true;
 

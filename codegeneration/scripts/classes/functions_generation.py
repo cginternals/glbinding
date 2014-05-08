@@ -32,7 +32,7 @@ def generateFunctionObjectsHeader(functions, outputfile):
 #include <glbinding/types.h>
 #include <glbinding/constants.h>
 
-#include "Function.h"
+#include <glbinding/Function.h>
 
 namespace gl {
 namespace functions {
@@ -52,7 +52,7 @@ namespace functions {
 
 def generateFunctionObjectsSource(functions, outputfile):	
 	with open(outputfile, 'w') as file:
-		file.write("""#include "FunctionObjects.h"
+		file.write("""#include <glbinding/FunctionObjects.h>
 
 namespace gl {
 namespace functions {
@@ -93,8 +93,7 @@ namespace gl {
 def generateFunctionWrapperSource(functions, outputfile):	
 	with open(outputfile, 'w') as file:
 		file.write("""#include <glbinding/glbinding.h>
-
-#include "FunctionObjects.h"
+#include <glbinding/FunctionObjects.h>
 
 namespace gl {
 

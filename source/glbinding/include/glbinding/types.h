@@ -1,7 +1,5 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
-
 #include <cstddef>
 #include <cstdint>
 

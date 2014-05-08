@@ -1,6 +1,5 @@
 #include <glbinding/glbinding.h>
-
-#include "FunctionObjects.h"
+#include <glbinding/FunctionObjects.h>
 
 namespace gl {
 

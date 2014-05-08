@@ -1,4 +1,4 @@
-#include "AbstractFunction.h"
+#include <glbinding/AbstractFunction.h>
 
 #include <iostream>
 #include <memory>
@@ -127,7 +127,7 @@ void AbstractFunction::initializeFunctions()
 
 void AbstractFunction::initialize()
 {
-    FunctionPointer function = getProcAddress(m_name);
+    ProcAddress function = GetProcAddress(m_name);
 
     if (function)
     {
