@@ -1,108 +1,77 @@
-import xml.etree.ElementTree as ET
-
-from Feature import *
 from Extension import *
 
+#==========================================
+extensionHeaderTemplate = """#pragma once
 
-def findExtensionVersions(extensions, features):
-	featureMap = dict()
-	deprecatedMap = dict()
+namespace gl {
 
-	for f in filter(lambda f: f.prefix=="GL_VERSION", features):
-		for req in f.requirements:
-			if not req in featureMap:
-				featureMap[req] = set()
-			featureMap[req].add(f)
-		for dep in f.deprecates:
-			if not dep in deprecatedMap:
-				deprecatedMap[dep] = set()
-			deprecatedMap[dep].add(f)
+enum class Extension : int
+{
+	Unknown = -1,
+	%s
+};
 
-	for e in extensions:
-		required = dict()
-		deprecated = dict()
-		for r in e.requirements:
-			required[r] = featureMap.get(r, None)
-			if required[r] == None and r.endswith("ARB"):
-				required[r] = featureMap.get(r[:-3].rstrip("_"), None)
-				
-			if r in deprecatedMap:
-				deprecated[r] = deprecatedMap[r]
-			
-		if len(required)>0 and not any(v is None for v in required.values()):
-			s = set()
-			for fs in required.values():
-				for f in fs:
-					s.add(f) 
-			#print("\tsince: %s" % max(s))
-			e.incore = max(s)
-			"""
-			if len(deprecated)>0:
-				d = set()
-				for k,v in deprecated.items():
-					d.add("%s -> %s" % (k,min(v)))
-				print("\tdeprecated: %s" % list(d))
-			"""
-
-def generateExtensionFiles(inputfile, outputfile, outputfile2):
-	tree = ET.parse(inputfile)
-	registry = tree.getroot()
-
-	extensions = parseExtensions(registry)
-	features = parseFeatures(registry)
-	
-	findExtensionVersions(extensions, features)
-	
-	enumDecl = "enum Extension\n{\n"
-	namesMap = "const std::unordered_map<glow::Extension, std::string, std::hash<unsigned int>> extensionStrings = {\n"
-	extensionMap = "const std::unordered_map<std::string, glow::Extension> extensions = {\n"
-	incoreMap = "const std::unordered_map<glow::Extension, glow::Version, std::hash<unsigned int>> extensionVersions = {\n"
-
-	for e in extensions:
-		enumDecl += "\t%s,\n" % e.enumName()
-		namesMap += '\t{ glow::%s, "%s" },\n' % (e.enumName(), e.name)
-		extensionMap += '\t{ "%s", glow::%s },\n' % (e.name, e.enumName())
-		if e.incore:
-			incoreMap += "\t{ glow::%s, glow::Version(%s, %s) },\n" % (e.enumName(), e.incore.major, e.incore.minor)
-		
-	enumDecl += "\tGLOW_Unknown_Extension\n};"
-	namesMap += "};\n"
-	extensionMap += "};\n"
-	incoreMap += "};\n"
-			
-	pre = \
-"""#pragma once
-
-namespace glow {
-
+} // namespace gl
 """
-	post = \
-"""
+#==========================================
+extensionNamesTemplate = """#include <glbinding/Extension.h>
 
-} // namespace glow
-"""
-
-	with open(outputfile, 'w') as file:
-		file.write(pre)
-		file.write(enumDecl)
-		file.write(post)
-		
-	pre = \
-"""#include <string>
+#include <string>
 #include <unordered_map>
 
-#include <glow/Extension.h>
-#include <glow/Version.h>
+namespace gl {
 
+const std::unordered_map<Extension, std::string> extensionNames = {
+	{ Extension::Unknown, "Unknown" },
+	%s
+};
+
+const std::unordered_map<std::string, Extension> namesToExtension = {
+	{ "Unknown", Extension::Unknown },
+	%s
+};
+	
+} // namespace gl
 """
-	post = ""
+#==========================================
+extensionVersionsTemplate = """#include <glbinding/Extension.h>
+
+#include <utility>
+#include <string>
+#include <unordered_map>
+
+using version = std::pair<unsigned char, unsigned char>;
+
+namespace gl {
+
+const std::unordered_map<glow::Extension, version> extensionVersions = {
+	%s
+};
+
+} // namespace gl
+"""
+#==========================================
+
+def enumToName(extension):
+	return '{ Extension::%s, "%s" }' % (extension.baseName(), extension.name)
+	
+def nameToEnum(extension):
+	return '{ "%s", %s }' % (extension.name, extension.baseName())
+	
+def extensionToVersion(extension):
+	return "Extension::%s, version(%s, %s)" % (extension.baseName(), extension.incore.major, extension.incore.minor)
+
+def generateExtensionHeader(extensions, outputfile):
+	with open(outputfile, 'w') as file:
+		file.write(extensionHeaderTemplate % ",\n\t".join([ e.baseName() for e in extensions ]))
+
+def generateExtensionNamesSource(extensions, outputfile):	
+	with open(outputfile, 'w') as file:
+		file.write(extensionNamesTemplate % (
+			",\n\t".join([ enumToName(e) for e in extensions ]),
+			",\n\t".join([ nameToEnum(e) for e in extensions ])
+			))
 			
-	with open(outputfile2, 'w') as file:
-		file.write(pre)
-		file.write(namesMap)
-		file.write("\n")
-		file.write(extensionMap)
-		file.write("\n")
-		file.write(incoreMap)
-		file.write(post)
-			
+def generateExtensionVersionsSource(extensions, outputfile):
+	with open(outputfile, 'w') as file:
+		file.write(extensionVersionsTemplate % ",\n\t".join([ extensionToVersion(e) for e in extensions if e.incore ]))
