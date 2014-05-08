@@ -5,6 +5,7 @@
 
 #include <string>
 #include <vector>
+#include <set>
 
 namespace gl {
 namespace meta {
@@ -24,6 +25,8 @@ Extension extensionFromString(const std::string & name);
 std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension);
 
 std::vector<Extension> allExtensions();
+std::set<gl::GLuint64> allValues();
+std::set<gl::GLenum> allEnums();
 
 } // namespace meta
 } // namespace gl

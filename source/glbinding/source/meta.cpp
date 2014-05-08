@@ -94,10 +94,41 @@ std::vector<Extension> allExtensions()
 
     for (auto & pair : extensionNames)
     {
+        if (pair.first == Extension::Unknown)
+            continue;
+
         extensions.push_back(pair.first);
     }
 
     return extensions;
+}
+
+std::set<gl::GLuint64> allValues()
+{
+    std::set<gl::GLuint64> values;
+
+    for (auto & pair : constantsNames)
+    {
+        values.insert(pair.first);
+    }
+
+    return values;
+}
+
+std::set<gl::GLenum> allEnums()
+{
+    std::set<gl::GLenum> values;
+
+    for (auto & pair : constantsNames)
+    {
+        gl::GLuint64 value = pair.first;
+        if (value > std::numeric_limits<gl::GLenum>::max())
+            continue;
+
+        values.insert(static_cast<gl::GLenum>(value));
+    }
+
+    return values;
 }
 
 } // namespace meta
