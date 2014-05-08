@@ -114,6 +114,7 @@ GLBINDING_API void Binormal3svEXT(const GLshort * v);
 GLBINDING_API void BinormalPointerEXT(GLenum type, GLsizei stride, const void * pointer);
 GLBINDING_API void Bitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte * bitmap);
 GLBINDING_API void BitmapxOES(GLsizei width, GLsizei height, GLfixed xorig, GLfixed yorig, GLfixed xmove, GLfixed ymove, const GLubyte * bitmap);
+GLBINDING_API void BlendBarrierKHR();
 GLBINDING_API void BlendBarrierNV();
 GLBINDING_API void BlendColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
 GLBINDING_API void BlendColorEXT(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
@@ -1359,9 +1360,11 @@ GLBINDING_API void MatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 GLBINDING_API void MatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
 GLBINDING_API void MatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
 GLBINDING_API void MemoryBarrier(GLbitfield barriers);
+GLBINDING_API void MemoryBarrierByRegion(GLbitfield barriers);
 GLBINDING_API void MemoryBarrierEXT(GLbitfield barriers);
 GLBINDING_API void MinSampleShading(GLfloat value);
 GLBINDING_API void MinSampleShadingARB(GLfloat value);
+GLBINDING_API void MinSampleShadingOES(GLfloat value);
 GLBINDING_API void Minmax(GLenum target, GLenum internalformat, GLboolean sink);
 GLBINDING_API void MinmaxEXT(GLenum target, GLenum internalformat, GLboolean sink);
 GLBINDING_API void MultMatrixd(const GLdouble * m);
@@ -2224,6 +2227,7 @@ GLBINDING_API void TexStorage2DMultisample(GLenum target, GLsizei samples, GLenu
 GLBINDING_API void TexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 GLBINDING_API void TexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 GLBINDING_API void TexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLBINDING_API void TexStorage3DMultisampleOES(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 GLBINDING_API void TexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
 GLBINDING_API void TexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 GLBINDING_API void TexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);

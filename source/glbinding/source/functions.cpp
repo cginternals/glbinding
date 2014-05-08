@@ -543,6 +543,11 @@ void BitmapxOES(GLsizei width, GLsizei height, GLfixed xorig, GLfixed yorig, GLf
 	return functions::BitmapxOES(width, height, xorig, yorig, xmove, ymove, bitmap);
 }
 
+void BlendBarrierKHR()
+{
+	return functions::BlendBarrierKHR();
+}
+
 void BlendBarrierNV()
 {
 	return functions::BlendBarrierNV();
@@ -6768,6 +6773,11 @@ void MemoryBarrier(GLbitfield barriers)
 	return functions::MemoryBarrier(barriers);
 }
 
+void MemoryBarrierByRegion(GLbitfield barriers)
+{
+	return functions::MemoryBarrierByRegion(barriers);
+}
+
 void MemoryBarrierEXT(GLbitfield barriers)
 {
 	return functions::MemoryBarrierEXT(barriers);
@@ -6781,6 +6791,11 @@ void MinSampleShading(GLfloat value)
 void MinSampleShadingARB(GLfloat value)
 {
 	return functions::MinSampleShadingARB(value);
+}
+
+void MinSampleShadingOES(GLfloat value)
+{
+	return functions::MinSampleShadingOES(value);
 }
 
 void Minmax(GLenum target, GLenum internalformat, GLboolean sink)
@@ -11091,6 +11106,11 @@ void TexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsiz
 void TexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
 	return functions::TexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+}
+
+void TexStorage3DMultisampleOES(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+{
+	return functions::TexStorage3DMultisampleOES(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
 
 void TexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags)

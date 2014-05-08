@@ -111,6 +111,7 @@ Function<void, const GLshort *> Binormal3svEXT("glBinormal3svEXT");
 Function<void, GLenum, GLsizei, const void *> BinormalPointerEXT("glBinormalPointerEXT");
 Function<void, GLsizei, GLsizei, GLfloat, GLfloat, GLfloat, GLfloat, const GLubyte *> Bitmap("glBitmap");
 Function<void, GLsizei, GLsizei, GLfixed, GLfixed, GLfixed, GLfixed, const GLubyte *> BitmapxOES("glBitmapxOES");
+Function<void> BlendBarrierKHR("glBlendBarrierKHR");
 Function<void> BlendBarrierNV("glBlendBarrierNV");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> BlendColor("glBlendColor");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> BlendColorEXT("glBlendColorEXT");
@@ -1356,9 +1357,11 @@ Function<void, GLenum, GLfloat, GLfloat, GLfloat> MatrixScalefEXT("glMatrixScale
 Function<void, GLenum, GLdouble, GLdouble, GLdouble> MatrixTranslatedEXT("glMatrixTranslatedEXT");
 Function<void, GLenum, GLfloat, GLfloat, GLfloat> MatrixTranslatefEXT("glMatrixTranslatefEXT");
 Function<void, GLbitfield> MemoryBarrier("glMemoryBarrier");
+Function<void, GLbitfield> MemoryBarrierByRegion("glMemoryBarrierByRegion");
 Function<void, GLbitfield> MemoryBarrierEXT("glMemoryBarrierEXT");
 Function<void, GLfloat> MinSampleShading("glMinSampleShading");
 Function<void, GLfloat> MinSampleShadingARB("glMinSampleShadingARB");
+Function<void, GLfloat> MinSampleShadingOES("glMinSampleShadingOES");
 Function<void, GLenum, GLenum, GLboolean> Minmax("glMinmax");
 Function<void, GLenum, GLenum, GLboolean> MinmaxEXT("glMinmaxEXT");
 Function<void, const GLdouble *> MultMatrixd("glMultMatrixd");
@@ -2221,6 +2224,7 @@ Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> TexStorage2
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> TexStorage3D("glTexStorage3D");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> TexStorage3DEXT("glTexStorage3DEXT");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> TexStorage3DMultisample("glTexStorage3DMultisample");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> TexStorage3DMultisampleOES("glTexStorage3DMultisampleOES");
 Function<void, GLenum, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, GLbitfield> TexStorageSparseAMD("glTexStorageSparseAMD");
 Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> TexSubImage1D("glTexSubImage1D");
 Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> TexSubImage1DEXT("glTexSubImage1DEXT");
