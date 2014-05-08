@@ -58,6 +58,7 @@ set(api_includes
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/FunctionObjects.h
+    ${include_path}/Extension.h
     ${include_path}/AbstractFunction.h
     ${include_path}/types.h
 )
@@ -68,6 +69,9 @@ set(sources
     ${source_path}/GetProcAddress.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/AbstractFunction.cpp
+    ${source_path}/extension_info.h
+    ${source_path}/extension_names.cpp
+    ${source_path}/extension_versions.cpp
 )
 
 # Group source files

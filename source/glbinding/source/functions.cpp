@@ -14184,6 +14184,4 @@ void WriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, 
 }
 
 
-
 } // namespace gl
-		

@@ -25,6 +25,7 @@ def generate(inputfile, directory):
 		"functionWrapperSource" : "source/functions.cpp",
 		
 		"extensionsHeader" : "include/glbinding/Extension.h",
+		"extensionsInfoHeader" : "source/extension_info.h",
 		"extensionsNamesSource" : "source/extension_names.cpp",
 		"extensionsVersionsSource" : "source/extension_versions.cpp"
 	}
@@ -40,6 +41,7 @@ def generate(inputfile, directory):
 	generateFunctionWrapperSource(functions, files["functionWrapperSource"])
 	
 	generateExtensionHeader(extensions, files["extensionsHeader"])
+	generateExtensionInfoHeader(extensions, files["extensionsInfoHeader"])
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
 	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
 	

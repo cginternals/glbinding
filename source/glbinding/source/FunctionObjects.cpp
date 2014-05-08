@@ -2840,7 +2840,5 @@ Function<void, GLshort, GLshort, GLshort, GLshort> WindowPos4sMESA("glWindowPos4
 Function<void, const GLshort *> WindowPos4svMESA("glWindowPos4svMESA");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> WriteMaskEXT("glWriteMaskEXT");
 
-
 } // namespace functions
 } // namespace gl
-		

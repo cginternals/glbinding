@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python scripts/generate.py -s gl.xml -d generated
+python scripts/generate.py -s gl.xml -d ../source/glbinding

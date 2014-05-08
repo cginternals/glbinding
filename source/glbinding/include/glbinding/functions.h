@@ -2843,6 +2843,4 @@ GLBINDING_API void WindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w);
 GLBINDING_API void WindowPos4svMESA(const GLshort * v);
 GLBINDING_API void WriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
 
-
 } // namespace gl
-		

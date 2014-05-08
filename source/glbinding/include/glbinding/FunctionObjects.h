@@ -2845,7 +2845,5 @@ extern Function<void, GLshort, GLshort, GLshort, GLshort> WindowPos4sMESA;
 extern Function<void, const GLshort *> WindowPos4svMESA;
 extern Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> WriteMaskEXT;
 
-
 } // namespace functions
 } // namespace gl
-		
