@@ -1,5 +1,9 @@
 #include <glbinding/Extension.h>
-#include "extension_info.h"
+
+#include "declarations.h"
+
+#include <utility>
+#include <unordered_map>
 
 using ucharpair = std::pair<unsigned char, unsigned char>;
 

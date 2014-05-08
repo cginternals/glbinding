@@ -18,6 +18,7 @@ def generate(inputfile, directory):
 	
 	files = {
 		"constantsHeader" : "include/glbinding/constants.h",
+		"constantsNamesSource" : "source/constant_names.cpp",
 		
 		"functionObjectsHeader" : "include/glbinding/FunctionObjects.h",
 		"functionObjectsSource" : "source/FunctionObjects.cpp",
@@ -25,7 +26,6 @@ def generate(inputfile, directory):
 		"functionWrapperSource" : "source/functions.cpp",
 		
 		"extensionsHeader" : "include/glbinding/Extension.h",
-		"extensionsInfoHeader" : "source/extension_info.h",
 		"extensionsNamesSource" : "source/extension_names.cpp",
 		"extensionsVersionsSource" : "source/extension_versions.cpp"
 	}
@@ -34,6 +34,7 @@ def generate(inputfile, directory):
 		files[key] = directory + "/" + value
 	
 	generateConstantsHeader(enums, files["constantsHeader"])
+	generateConstantNamesSource(enums, files["constantsNamesSource"])
 	
 	generateFunctionObjectsHeader(functions, files["functionObjectsHeader"])
 	generateFunctionObjectsSource(functions, files["functionObjectsSource"])
@@ -41,7 +42,6 @@ def generate(inputfile, directory):
 	generateFunctionWrapperSource(functions, files["functionWrapperSource"])
 	
 	generateExtensionHeader(extensions, files["extensionsHeader"])
-	generateExtensionInfoHeader(extensions, files["extensionsInfoHeader"])
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
 	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
 	

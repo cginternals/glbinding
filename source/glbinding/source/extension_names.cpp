@@ -1,5 +1,9 @@
 #include <glbinding/Extension.h>
-#include "extension_info.h"
+
+#include "declarations.h"
+
+#include <string>
+#include <unordered_map>
 
 namespace gl {
 

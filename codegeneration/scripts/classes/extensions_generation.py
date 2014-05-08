@@ -1,23 +1,6 @@
 from Extension import *
 
 #==========================================
-extensionsInfoHeaderTemplate = """#pragma once
-
-#include <glbinding/Extension.h>
-
-#include <string>
-#include <utility>
-#include <unordered_map>
-
-namespace gl {
-
-extern const std::unordered_map<Extension, std::string> extensionNames;
-extern const std::unordered_map<std::string, Extension> namesToExtension;
-extern const std::unordered_map<Extension, std::pair<unsigned char, unsigned char>> extensionVersions;
-
-} // namespace gl
-"""
-#==========================================
 extensionHeaderTemplate = """#pragma once
 
 #include <functional>
@@ -48,7 +31,11 @@ struct hash<gl::Extension>
 """
 #==========================================
 extensionNamesTemplate = """#include <glbinding/Extension.h>
-#include "extension_info.h"
+
+#include "declarations.h"
+
+#include <string>
+#include <unordered_map>
 
 namespace gl {
 
@@ -66,7 +53,11 @@ const std::unordered_map<std::string, Extension> namesToExtension = {
 """
 #==========================================
 extensionVersionsTemplate = """#include <glbinding/Extension.h>
-#include "extension_info.h"
+
+#include "declarations.h"
+
+#include <utility>
+#include <unordered_map>
 
 using ucharpair = std::pair<unsigned char, unsigned char>;
 
@@ -93,10 +84,6 @@ def generateExtensionHeader(extensions, outputfile):
 	with open(outputfile, 'w') as file:
 		file.write(extensionHeaderTemplate % ",\n\t".join([ e.baseName() for e in extensions ]))
 		
-def generateExtensionInfoHeader(extensions, outputfile):
-	with open(outputfile, 'w') as file:
-		file.write(extensionsInfoHeaderTemplate)
-
 def generateExtensionNamesSource(extensions, outputfile):	
 	with open(outputfile, 'w') as file:
 		file.write(extensionNamesTemplate % (
