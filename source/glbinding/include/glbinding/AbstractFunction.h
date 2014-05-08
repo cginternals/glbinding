@@ -21,6 +21,8 @@ public:
     const char * name() const;
     bool isValid() const;
 
+    static const std::set<AbstractFunction*> & functions();
+
     void enableCallbacks();
     void disableCallbacks();
 

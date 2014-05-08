@@ -10,7 +10,7 @@ namespace {
 
 std::unique_ptr<std::set<AbstractFunction*>> g_functions;
 
-std::set<AbstractFunction*> & functions()
+std::set<AbstractFunction*> & allFunctions()
 {
     if (!g_functions)
     {
@@ -35,12 +35,17 @@ AbstractFunction::AbstractFunction(const char * _name)
 , m_valid(false)
 , m_callbacksEnabled(false)
 {
-    functions().insert(this);
+    allFunctions().insert(this);
 }
 
 AbstractFunction::~AbstractFunction()
 {
-    functions().erase(this);
+    allFunctions().erase(this);
+}
+
+const std::set<AbstractFunction*> & AbstractFunction::functions()
+{
+    return allFunctions();
 }
 
 const char * AbstractFunction::name() const
@@ -119,7 +124,7 @@ void AbstractFunction::after()
 
 void AbstractFunction::initializeFunctions()
 {
-    for (AbstractFunction * function : functions())
+    for (AbstractFunction * function : allFunctions())
     {
         function->initialize();
     }
@@ -133,10 +138,6 @@ void AbstractFunction::initialize()
     {
         initializeFunctionPointer(function);
         m_valid = true;
-    }
-    else
-    {
-        std::cout << "Could not initialize " << m_name << std::endl;
     }
 }
 
