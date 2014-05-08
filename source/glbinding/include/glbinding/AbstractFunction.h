@@ -21,6 +21,8 @@ public:
     const char * name() const;
     bool isValid() const;
 
+    virtual ProcAddress functionPointer() const = 0;
+
     static const std::set<AbstractFunction*> & functions();
 
     void enableCallbacks();
