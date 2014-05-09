@@ -5,6 +5,7 @@
 
 #include <set>
 #include <string>
+#include <vector>
 #include <functional>
 
 namespace gl {
@@ -15,15 +16,18 @@ public:
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
 
-    void initialize();
-    static void initializeFunctions();
+    void initialize(int context);
+    static void initializeFunctions(int context);
 
     const char * name() const;
     bool isValid() const;
+    bool isValid(int context) const;
 
-    virtual ProcAddress functionPointer() const = 0;
+    ProcAddress address() const;
 
     static const std::set<AbstractFunction*> & functions();
+
+    static void setContext(int context);
 
     void enableCallbacks();
     void disableCallbacks();
@@ -37,18 +41,19 @@ public:
     static void setAfterCallback(Callback callback);
 protected:
     const char * m_name;
-    bool m_valid;
     bool m_callbacksEnabled;
+    std::vector<ProcAddress> m_addresses;
+
+    static int s_context;
 
     static Callback s_beforeCallback;
     static Callback s_afterCallback;
-
-    virtual void initializeFunctionPointer(ProcAddress functionPointer) = 0;
 
     bool callbacksEnabled() const;
 
     void before();
     void after();
+    void invalid();
 };
 
 } // namespace gl

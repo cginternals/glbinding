@@ -34,7 +34,7 @@ int main(int /*argc*/, char* /*argv*/[])
     {
         if (function->isValid())
         {
-            std::cout << reinterpret_cast<void*>(function->functionPointer()) << " " << function->name() << std::endl;
+            std::cout << reinterpret_cast<void*>(function->address()) << " " << function->name() << std::endl;
             validFunctionCount++;
         }
         else

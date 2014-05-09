@@ -2,7 +2,6 @@
 
 #include <glbinding/Function.h>
 
-#include <cassert>
 #include <utility>
 #include <functional>
 
@@ -40,34 +39,31 @@ namespace gl {
 template <typename ReturnType, typename... Arguments>
 Function<ReturnType, Arguments...>::Function(const char * _name)
 : AbstractFunction(_name)
-, m_functionPointer(nullptr)
 {
-}
-
-template <typename ReturnType, typename... Arguments>
-ProcAddress Function<ReturnType, Arguments...>::functionPointer() const
-{
-    return reinterpret_cast<ProcAddress>(m_functionPointer);
-}
-
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::initializeFunctionPointer(ProcAddress _functionPointer)
-{
-    m_functionPointer = reinterpret_cast<Signature>(_functionPointer);
 }
 
 template <typename ReturnType, typename... Arguments>
 ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments)
 {
-    assert(m_valid);
-
-    if (callbacksEnabled())
+    if(isValid())
     {
-        return FunctionHelper<ReturnType, Arguments...>()(m_functionPointer, [this]() { before(); }, [this]() { after(); }, std::forward<Arguments>(arguments)...);
+        Signature function = reinterpret_cast<Signature>(address());
+
+        if (callbacksEnabled())
+        {
+            return FunctionHelper<ReturnType, Arguments...>()(function, [this]() { before(); }, [this]() { after(); }, std::forward<Arguments>(arguments)...);
+        }
+        else
+        {
+            return function(std::forward<Arguments>(arguments)...);
+        }
     }
     else
     {
-        return m_functionPointer(std::forward<Arguments>(arguments)...);
+         if (callbacksEnabled())
+            invalid();
+
+         return ReturnType();
     }
 }
 

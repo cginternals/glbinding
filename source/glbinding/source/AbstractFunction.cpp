@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 #include <set>
+#include <cassert>
 
 namespace gl {
 
@@ -25,9 +26,11 @@ bool contains(const std::set<std::string> & list, const char * name)
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
 AbstractFunction::Callback AbstractFunction::s_afterCallback;
 
+int AbstractFunction::s_context = 0;
+
+
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
-, m_valid(false)
 , m_callbacksEnabled(false)
 {
     allFunctions().insert(this);
@@ -43,6 +46,11 @@ const std::set<AbstractFunction*> & AbstractFunction::functions()
     return allFunctions();
 }
 
+void AbstractFunction::setContext(int context)
+{
+    s_context = context;
+}
+
 const char * AbstractFunction::name() const
 {
     return m_name;
@@ -50,7 +58,19 @@ const char * AbstractFunction::name() const
 
 bool AbstractFunction::isValid() const
 {
-    return m_valid;
+    return isValid(s_context);
+}
+
+bool AbstractFunction::isValid(int context) const
+{
+    return m_addresses[context] != nullptr;
+}
+
+ProcAddress AbstractFunction::address() const
+{
+    assert(m_addresses.size() >= static_cast<unsigned>(s_context));
+
+    return m_addresses[s_context];
 }
 
 bool AbstractFunction::callbacksEnabled() const
@@ -117,23 +137,28 @@ void AbstractFunction::after()
         s_afterCallback(*this);
 }
 
-void AbstractFunction::initializeFunctions()
+void AbstractFunction::invalid()
+{
+    // TODO: invalid callback
+    assert(false);
+}
+
+void AbstractFunction::initializeFunctions(int context)
 {
     for (AbstractFunction * function : allFunctions())
     {
-        function->initialize();
+        function->initialize(context);
     }
 }
 
-void AbstractFunction::initialize()
+void AbstractFunction::initialize(int context)
 {
-    ProcAddress function = GetProcAddress(m_name);
+    ProcAddress _address = GetProcAddress(m_name);
 
-    if (function)
-    {
-        initializeFunctionPointer(function);
-        m_valid = true;
-    }
+    if (m_addresses.size() <= static_cast<unsigned>(context))
+        m_addresses.resize(context+1);
+
+    m_addresses[context] = _address;
 }
 
 } // namespace gl

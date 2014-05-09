@@ -19,7 +19,7 @@ bool initialize()
         return false;
     }
 
-    AbstractFunction::initializeFunctions();
+    AbstractFunction::initializeFunctions(0);
 
     /*AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
     AbstractFunction::setBeforeCallback([](const AbstractFunction & f) {

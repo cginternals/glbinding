@@ -12,13 +12,7 @@ public:
 
     Function(const char * name);
 
-    virtual ProcAddress functionPointer() const override;
-
     ReturnType operator()(Arguments... arguments);
-protected:
-    Signature m_functionPointer;
-
-    virtual void initializeFunctionPointer(ProcAddress _functionPointer) override;
 };
 
 } // namespace gl
