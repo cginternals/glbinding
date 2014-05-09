@@ -25,6 +25,7 @@ bool contains(const std::set<std::string> & list, const char * name)
 
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
 AbstractFunction::Callback AbstractFunction::s_afterCallback;
+AbstractFunction::Callback AbstractFunction::s_invalidCallback;
 
 int AbstractFunction::s_context = 0;
 
@@ -125,6 +126,11 @@ void AbstractFunction::setAfterCallback(Callback callback)
     s_afterCallback = callback;
 }
 
+void AbstractFunction::setInvalidCallback(Callback callback)
+{
+    s_invalidCallback = callback;
+}
+
 void AbstractFunction::before()
 {
     if (s_beforeCallback)
@@ -139,8 +145,8 @@ void AbstractFunction::after()
 
 void AbstractFunction::invalid()
 {
-    // TODO: invalid callback
-    assert(false);
+    if (s_invalidCallback)
+        s_invalidCallback(*this);
 }
 
 void AbstractFunction::initializeFunctions(int context)

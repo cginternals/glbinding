@@ -39,6 +39,7 @@ public:
     using Callback = std::function<void(const AbstractFunction &)>;
     static void setBeforeCallback(Callback callback);
     static void setAfterCallback(Callback callback);
+    static void setInvalidCallback(Callback callback);
 protected:
     const char * m_name;
     bool m_callbacksEnabled;
@@ -48,6 +49,7 @@ protected:
 
     static Callback s_beforeCallback;
     static Callback s_afterCallback;
+    static Callback s_invalidCallback;
 
     bool callbacksEnabled() const;
 
