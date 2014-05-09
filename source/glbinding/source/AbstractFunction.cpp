@@ -8,16 +8,11 @@ namespace gl {
 
 namespace {
 
-std::unique_ptr<std::set<AbstractFunction*>> g_functions;
-
 std::set<AbstractFunction*> & allFunctions()
 {
-    if (!g_functions)
-    {
-        g_functions.reset(new std::set<AbstractFunction*>());
-    }
+    static std::set<AbstractFunction*> functions;
 
-    return *g_functions;
+    return functions;
 }
 
 bool contains(const std::set<std::string> & list, const char * name)
