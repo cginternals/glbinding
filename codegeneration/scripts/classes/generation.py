@@ -39,7 +39,6 @@ def generate(inputfile, directory):
 		
 	generateTypesHeader(types, files["typesHeader"])
 	
-"""
 	generateConstantsHeader(enums, files["constantsHeader"])
 	generateConstantNamesSource(enums, files["constantsNamesSource"])
 	
@@ -52,6 +51,5 @@ def generate(inputfile, directory):
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
 	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
 	generateExtensionRequirementsSource(extensions, files["extensionsRequirementsSource"])
-"""
 	
 	
