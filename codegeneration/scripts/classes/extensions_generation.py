@@ -1,4 +1,5 @@
 from classes.Extension import *
+from classes.name_translation import *
 
 #==========================================
 extensionHeaderTemplate = """#pragma once
@@ -70,6 +71,27 @@ const std::unordered_map<Extension, ucharpair> extensionVersions = {
 } // namespace gl
 """
 #==========================================
+extensionRequirementsTemplate = """#include <glbinding/Extension.h>
+
+#include "declarations.h"
+
+#include <unordered_map>
+#include <set>
+#include <string>
+
+namespace gl {
+
+const std::unordered_map<Extension, std::set<std::string>> requiredFunctionsByExtension = {
+	%s
+};
+
+const std::unordered_map<std::string, std::set<Extension>> extensionsRequiringFunction = {
+	%s
+};
+
+} // namespace gl
+"""
+#==========================================
 
 def enumToName(extension):
 	return '{ Extension::%s, "%s" }' % (extension.baseName(), extension.name)
@@ -79,6 +101,12 @@ def nameToEnum(extension):
 	
 def extensionToVersion(extension):
 	return "{ Extension::%s, ucharpair(%s, %s) }" % (extension.baseName(), extension.incore.major, extension.incore.minor)
+	
+def extensionRequiredFunctions(extension):
+	return "{ Extension::%s, { %s } }" % (extension.baseName(), ", ".join([ '"%s"' % f for f in extension.requiredFunctions ]))
+
+def functionRequiredByExtensions(function, extensions):
+	return '{ "%s", { %s } }' % (function, ", ".join([ "Extension::"+e.baseName() for e in extensions ]))
 
 def generateExtensionHeader(extensions, outputfile):
 	with open(outputfile, 'w') as file:
@@ -94,3 +122,18 @@ def generateExtensionNamesSource(extensions, outputfile):
 def generateExtensionVersionsSource(extensions, outputfile):
 	with open(outputfile, 'w') as file:
 		file.write(extensionVersionsTemplate % ",\n\t".join([ extensionToVersion(e) for e in extensions if e.incore ]))
+
+def generateExtensionRequirementsSource(extensions, outputfile):	
+	funcToExtension = dict()
+	for e in extensions:
+		for f in e.requiredFunctions:
+			if not f in funcToExtension:
+				funcToExtension[f] = set()
+			funcToExtension[f].add(e)
+			
+	with open(outputfile, 'w') as file:		
+		file.write(extensionRequirementsTemplate % (
+			",\n\t".join([ extensionRequiredFunctions(e) for e in extensions if len(e.requiredFunctions)>0 ]),
+			",\n\t".join([functionRequiredByExtensions(f, es) for f, es in funcToExtension.items() ])
+			))
+		

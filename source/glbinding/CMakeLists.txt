@@ -71,6 +71,7 @@ set(sources
     ${source_path}/extension_names.cpp
     ${source_path}/extension_versions.cpp
     ${source_path}/constant_names.cpp
+    ${source_path}/extension_requirements.cpp
     ${source_path}/meta.cpp
 )
 

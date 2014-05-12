@@ -42,7 +42,7 @@ ProcAddress GetProcAddress(const char * name)
 #else
 
     typedef void (* PROCADDRESS)();
-    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
+    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(glxGetProcAddress(name));
 
 #endif
 

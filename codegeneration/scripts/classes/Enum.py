@@ -1,4 +1,4 @@
-import sys
+from classes.name_translation import *
 
 def translateType(t, name):
 	if name in [ "GL_TRUE", "GL_FALSE" ]:
@@ -24,20 +24,9 @@ class Enum:
 		
 	def __lt__(self, other):
 		return self.name < other.name
-		
-	exceptions = [ "DOMAIN", "MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB", "FALSE", "TRUE", "NO_ERROR", "WAIT_FAILED" ]
-		
+			
 	def baseName(self):
-		first = self.name[3]
-		n = self.name[3:]
-		
-		if n in Enum.exceptions:
-			return n + "_" 
-		
-		if first.isalpha():
-			return n
-		else:
-			return "_" + n
+		return enumBaseName(self.name)
 		
 def parseEnums(xml):
 	enums = set()

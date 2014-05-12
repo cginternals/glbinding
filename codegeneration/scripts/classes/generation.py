@@ -27,7 +27,8 @@ def generate(inputfile, directory):
 		
 		"extensionsHeader" : "include/glbinding/Extension.h",
 		"extensionsNamesSource" : "source/extension_names.cpp",
-		"extensionsVersionsSource" : "source/extension_versions.cpp"
+		"extensionsVersionsSource" : "source/extension_versions.cpp",
+		"extensionsRequirementsSource" : "source/extension_requirements.cpp"
 	}
 	
 	for key, value in files.items():
@@ -44,4 +45,5 @@ def generate(inputfile, directory):
 	generateExtensionHeader(extensions, files["extensionsHeader"])
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
 	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
+	generateExtensionRequirementsSource(extensions, files["extensionsRequirementsSource"])
 	

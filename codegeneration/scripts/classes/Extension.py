@@ -29,11 +29,18 @@ class Extension:
 		self.name = xml.attrib["name"]
 		self.incore = None
 		
+		self.requiredEnums = []
+		self.requiredFunctions = []
+		
 		self.requirements = []
 		for req in xml.findall("require"):
 			for child in req:
 				if child.tag in ("enum", "command"):
 					self.requirements.append(child.attrib["name"])
+					if child.tag == "enum":
+						self.requiredEnums.append(child.attrib["name"])
+					else:
+						self.requiredFunctions.append(child.attrib["name"])
 		
 	def __str__(self):
 		return "Extension(%s)" % (self.name)

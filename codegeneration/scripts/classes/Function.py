@@ -1,9 +1,8 @@
-import sys
 import xml.etree.ElementTree as ET
+from classes.name_translation import *
 
 def baseType(type):
-	return type#.replace("GL", "gl::")
-	#type[2].upper() + type[3:] 
+	return type
 
 class Parameter:
 	def __init__(self, xml):
@@ -31,7 +30,7 @@ class Function:
 			self.params.append(Parameter(param))
 			
 	def baseName(self):
-		return self.name[2:]
+		return functionBaseName(self.name)
 		
 	def baseReturnType(self):
 		return baseType(self.returntype)

@@ -6,6 +6,7 @@
 #include <string>
 #include <utility>
 #include <unordered_map>
+#include <set>
 
 namespace gl {
 
@@ -14,5 +15,7 @@ extern const std::unordered_map<std::string, Extension> namesToExtension;
 extern const std::unordered_map<Extension, std::pair<unsigned char, unsigned char>> extensionVersions;
 extern const std::unordered_multimap<gl::GLuint64, std::string> constantsNames;
 extern const std::unordered_map<std::string, gl::GLuint64> namesToConstants;
+extern const std::unordered_map<Extension, std::set<std::string>> requiredFunctionsByExtension;
+extern const std::unordered_map<std::string, std::set<Extension>> extensionsRequiringFunction;
 
 } // namespace gl
