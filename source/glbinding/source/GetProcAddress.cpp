@@ -6,7 +6,6 @@
     #include <windows.h>
 #elif __APPLE__
     #include <string>
-//    #include <mach-o/dyld.h>
     #include <dlfcn.h>
 #else
     #include <GL/glx.h>
@@ -21,7 +20,7 @@ ProcAddress GetProcAddress(const char * name)
     typedef void (__stdcall * PROCADDRESS)();
     PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(wglGetProcAddress(name));
 
-    if(nullptr == procAddress)
+    if (procAddress == nullptr)
     {
         static HMODULE module = LoadLibrary(L"OPENGL32.DLL");
         procAddress = reinterpret_cast<PROCADDRESS>(::GetProcAddress(module, name));
@@ -31,17 +30,17 @@ ProcAddress GetProcAddress(const char * name)
 
     typedef void * PROCADDRESS;
 
-    void* library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
+    void * library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
     assert(library != nullptr);
 
-    void* symbol = dlsym(library, name);
+    void * symbol = dlsym(library, name);
 
     PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(symbol);
 
 #else
 
     typedef void (* PROCADDRESS)();
-    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(glxGetProcAddress(name));
+    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
 
 #endif
 
