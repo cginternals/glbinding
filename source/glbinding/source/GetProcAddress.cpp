@@ -1,11 +1,13 @@
 #include <glbinding/GetProcAddress.h>
+#include <cassert>
 
 #ifdef WIN32
     #include <string>
     #include <windows.h>
 #elif __APPLE__
     #include <string>
-    #include <mach-o/dyld.h>
+//    #include <mach-o/dyld.h>
+    #include <dlfcn.h>
 #else
     #include <GL/glx.h>
 #endif
@@ -29,15 +31,12 @@ ProcAddress GetProcAddress(const char * name)
 
     typedef void * PROCADDRESS;
 
-    std::string string(name);
-    string = "_" + string;
+    void* library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
+    assert(library != nullptr);
 
-    NSSymbol symbol(nullptr);
+    void* symbol = dlsym(library, name);
 
-    if (NSIsSymbolNameDefined(string.c_str()))
-        symbol = NSLookupAndBindSymbol(string.c_str());
-
-    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(symbol ? NSAddressOfSymbol(symbol) : nullptr);
+    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(symbol);
 
 #else
 
