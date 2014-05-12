@@ -25,7 +25,7 @@ class Enum:
 	def __lt__(self, other):
 		return self.name < other.name
 		
-	exceptions = [ "DOMAIN", "MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB" ]
+	exceptions = [ "DOMAIN", "MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB", "FALSE", "TRUE", "NO_ERROR", "WAIT_FAILED" ]
 		
 	def baseName(self):
 		first = self.name[3]
