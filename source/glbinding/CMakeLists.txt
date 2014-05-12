@@ -25,7 +25,7 @@ include_directories(
 #
 
 set(libs
-    ${OPENGL_LIBRARY}
+    ${OPENGL_LIBRARIES}
 )
 
 #
@@ -93,7 +93,7 @@ else()
     add_library(${target} SHARED ${api_includes} ${sources})
 endif()
 
-target_link_libraries(${target} ${libs})
+target_link_libraries(${target} ${libs} ${EXTRA_LIBS})
 
 set_target_properties(${target}
     PROPERTIES

@@ -1,5 +1,4 @@
 #include <glbinding/GetProcAddress.h>
-#include <cassert>
 
 #ifdef WIN32
     #include <string>
