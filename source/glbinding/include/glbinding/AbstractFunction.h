@@ -2,6 +2,7 @@
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/GetProcAddress.h>
+#include <glbinding/Extension.h>
 
 #include <set>
 #include <string>
@@ -24,6 +25,8 @@ public:
     bool isValid(int context) const;
 
     ProcAddress address() const;
+
+    std::set<Extension> extensions() const;
 
     static const std::set<AbstractFunction*> & functions();
 

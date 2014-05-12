@@ -1,4 +1,5 @@
 #include <glbinding/AbstractFunction.h>
+#include <glbinding/meta.h>
 
 #include <iostream>
 #include <memory>
@@ -45,6 +46,11 @@ AbstractFunction::~AbstractFunction()
 const std::set<AbstractFunction*> & AbstractFunction::functions()
 {
     return allFunctions();
+}
+
+std::set<Extension> AbstractFunction::extensions() const
+{
+    return meta::getExtensionsRequiring(m_name);
 }
 
 void AbstractFunction::setContext(int context)
