@@ -6,10 +6,10 @@ cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
 # Project description
 #
 
-set(META_PROJECT_NAME        "glBinding")
+set(META_PROJECT_NAME        "glbinding")
 set(META_PROJECT_DESCRIPTION "OpenGL C++ Binding")
 set(META_VERSION_MAJOR       "0")
-set(META_VERSION_MINOR       "0")
+set(META_VERSION_MINOR       "1")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_AUTHOR_ORGANIZATION "hpicgs group")
