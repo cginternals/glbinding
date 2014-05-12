@@ -43,6 +43,8 @@ using GLsizeiptrARB = ptrdiff_t;
 using GLint64EXT = int64_t;
 using GLuint64EXT = uint64_t;
 using GLsync = struct __GLsync *;
+struct _cl_context;
+struct _cl_event;
 
 using GLDEBUGPROC = void (*)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * message, const void * userParam);
 using GLDEBUGPROCARB = void (*)(GLenum source, GLenum type,GLuint id, GLenum severity, GLsizei length, const GLchar * message, const void * userParam);
