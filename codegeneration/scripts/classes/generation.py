@@ -37,8 +37,9 @@ def generate(inputfile, directory):
 	for key, value in files.items():
 		files[key] = directory + "/" + value
 		
-	generateTypesHeader(types, files["typesHeader"])
-	
+#	generateTypesHeader(types, files["typesHeader"])
+	generateMetaTypeHeader(types)
+	"""
 	generateConstantsHeader(enums, files["constantsHeader"])
 	generateConstantNamesSource(enums, files["constantsNamesSource"])
 	
@@ -51,5 +52,5 @@ def generate(inputfile, directory):
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
 	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
 	generateExtensionRequirementsSource(extensions, files["extensionsRequirementsSource"])
-	
+	"""
 	
