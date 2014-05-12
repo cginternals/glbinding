@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glbinding/glbinding_api.h>
 #include <glbinding/Extension.h>
 #include <glbinding/types.h>
 
@@ -10,23 +11,23 @@
 namespace gl {
 namespace meta {
 
-std::string getName(gl::GLenum constant);
-std::string getName(gl::GLuint64 constant);
+GLBINDING_API std::string getName(gl::GLenum constant);
+GLBINDING_API std::string getName(gl::GLuint64 constant);
 
-gl::GLuint64 getValue(const std::string & name);
-gl::GLenum getEnum(const std::string & name);
+GLBINDING_API gl::GLuint64 getValue(const std::string & name);
+GLBINDING_API gl::GLenum getEnum(const std::string & name);
 
-std::vector<std::string> getNames(gl::GLenum constant);
-std::vector<std::string> getNames(gl::GLuint64 constant);
+GLBINDING_API std::vector<std::string> getNames(gl::GLenum constant);
+GLBINDING_API std::vector<std::string> getNames(gl::GLuint64 constant);
 
-std::string getName(Extension extension);
-Extension extensionFromString(const std::string & name);
+GLBINDING_API std::string getName(Extension extension);
+GLBINDING_API Extension extensionFromString(const std::string & name);
 
-std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension);
+GLBINDING_API std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension);
 
-std::vector<Extension> allExtensions();
-std::set<gl::GLuint64> allValues();
-std::set<gl::GLenum> allEnums();
+GLBINDING_API std::vector<Extension> allExtensions();
+GLBINDING_API std::set<gl::GLuint64> allValues();
+GLBINDING_API std::set<gl::GLenum> allEnums();
 
 } // namespace meta
 } // namespace gl
