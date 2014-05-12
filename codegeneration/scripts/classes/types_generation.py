@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from Type import *
+from classes.Type import *
 
 def generateTypes(inputfile):
 	tree = ET.parse(inputfile)

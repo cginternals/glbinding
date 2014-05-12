@@ -1,4 +1,4 @@
-from Extension import *
+from classes.Extension import *
 
 #==========================================
 extensionHeaderTemplate = """#pragma once

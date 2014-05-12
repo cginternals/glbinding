@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from Enum import *
+from classes.Enum import *
 
 #==========================================
 constantsHeaderTemplate = """#pragma once

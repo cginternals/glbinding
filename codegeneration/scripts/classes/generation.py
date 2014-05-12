@@ -1,12 +1,12 @@
 import xml.etree.ElementTree as ET
 
-from Enum import *
-from Function import *
-from Extension import *
+from classes.Enum import *
+from classes.Function import *
+from classes.Extension import *
 
-from constants_generation import *
-from functions_generation import *
-from extensions_generation import *
+from classes.constants_generation import *
+from classes.functions_generation import *
+from classes.extensions_generation import *
 
 def generate(inputfile, directory):
 	tree = ET.parse(inputfile)
@@ -30,7 +30,7 @@ def generate(inputfile, directory):
 		"extensionsVersionsSource" : "source/extension_versions.cpp"
 	}
 	
-	for key, value in files.iteritems():
+	for key, value in files.items():
 		files[key] = directory + "/" + value
 	
 	generateConstantsHeader(enums, files["constantsHeader"])

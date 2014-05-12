@@ -1,4 +1,4 @@
-from Function import *
+from classes.Function import *
 
 #==========================================
 functionObjectsHeaderTemplate = """#pragma once

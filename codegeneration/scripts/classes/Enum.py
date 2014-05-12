@@ -32,7 +32,7 @@ class Enum:
 		n = self.name[3:]
 		
 		if n in Enum.exceptions:
-			return "_" + n
+			return n + "_" 
 		
 		if first.isalpha():
 			return n
