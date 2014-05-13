@@ -34,6 +34,7 @@ int AbstractFunction::s_context = 0;
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
 , m_callbacksEnabled(false)
+, m_sendParameters(false)
 {
     allFunctions().insert(this);
 }
@@ -83,6 +84,11 @@ ProcAddress AbstractFunction::address() const
 bool AbstractFunction::callbacksEnabled() const
 {
     return m_callbacksEnabled;
+}
+
+bool AbstractFunction::sendParameters() const
+{
+    return m_sendParameters || true;
 }
 
 void AbstractFunction::enableCallbacks()
@@ -141,6 +147,11 @@ void AbstractFunction::before()
 {
     if (s_beforeCallback)
         s_beforeCallback(*this);
+}
+
+void AbstractFunction::before(const std::vector<Parameter> & /*parameters*/)
+{
+
 }
 
 void AbstractFunction::after()

@@ -3,6 +3,7 @@
 #include <glbinding/glbinding_api.h>
 #include <glbinding/GetProcAddress.h>
 #include <glbinding/Extension.h>
+#include <glbinding/Parameter.h>
 
 #include <set>
 #include <string>
@@ -46,6 +47,7 @@ public:
 protected:
     const char * m_name;
     bool m_callbacksEnabled;
+    bool m_sendParameters;
     std::vector<ProcAddress> m_addresses;
 
     static int s_context;
@@ -55,8 +57,10 @@ protected:
     static Callback s_invalidCallback;
 
     bool callbacksEnabled() const;
+    bool sendParameters() const;
 
     void before();
+    void before(const std::vector<Parameter> & parameters);
     void after();
     void invalid();
 };

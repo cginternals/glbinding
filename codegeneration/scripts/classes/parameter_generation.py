@@ -56,19 +56,24 @@ Parameter::~Parameter()
 """
 #==========================================
 	
-parameterTypes = [ "GLenum", "GLbyte", "GLshort", "GLint", "GLubyte", "GLushort", "GLuint", "GLfloat", "GLdouble", "GLint64", "GLuint64", "GLsync", "GLDEBUGPROC", "GLvoid *" ]
+parameterBaseTypes = [ "GLenum", "GLbyte", "GLchar", "GLshort", "GLint", "GLubyte", "GLushort", "GLuint", "GLfloat", "GLdouble", "GLint64", "GLuint64" ]
+
+def parameterTypes():
+	return parameterBaseTypes + [ "GLsync", "GLDEBUGPROC", "GLDEBUGPROCAMD", "_cl_event*" ] +\
+		[ t+" *" for t in parameterBaseTypes+["GLvoid"] ] +\
+		[ t+" const *" for t in parameterBaseTypes+["GLvoid"] ] +\
+		[ t+" * *" for t in parameterBaseTypes+["GLvoid"] ] +\
+		[ t+ " const * *" for t in parameterBaseTypes+["GLvoid"] ] +\
+		[ t+" const * const *" for t in parameterBaseTypes+["GLvoid"] ]
+
+def parameterBase(t):
+	return t.replace("*", "ptr").replace(" ", "_").strip()
 
 def parameterType(t):
-	if "*" in t:
-		base = t.replace("*", "").strip()
-		return base+"ptr_type"
-	return t+"_type"
+	return parameterBase(t)+"_type"
 
 def parameterValueName(t):
-	if "*" in t:
-		base = t.replace("*", "").strip()
-		return base+"ptr_value"
-	return t+"_value"
+	return parameterBase(t)+"_value"
 
 def parameterValue(t):
 	return t+" "+parameterValueName(t)+";"
@@ -88,9 +93,9 @@ def generateParameterHeader(outputfile):
 	with open(outputfile, 'w') as file:
 		file.write(
 			parameterHeaderTemplate % (
-				",\n\t\t".join([ parameterType(t) for t in parameterTypes ]),
-				"\n\t\t".join([ parameterValue(t) for t in parameterTypes ]),
-				"\n".join([ parameterCreationSpecialization(t) for t in parameterTypes ])
+				",\n\t\t".join([ parameterType(t) for t in parameterTypes() ]),
+				"\n\t\t".join([ parameterValue(t) for t in parameterTypes() ]),
+				"\n".join([ parameterCreationSpecialization(t) for t in parameterTypes() ])
 			)
 		)
 
@@ -98,6 +103,6 @@ def generateParameterSource(outputfile):
 	with open(outputfile, 'w') as file:
 		file.write(
 			parameterSourceTemplate % (
-				"\n\n".join([ parameterCreationSpecializationSource(t) for t in parameterTypes ])
+				"\n\n".join([ parameterCreationSpecializationSource(t) for t in parameterTypes() ])
 			)
 		)
