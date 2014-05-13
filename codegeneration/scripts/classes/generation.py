@@ -16,10 +16,13 @@ def generate(inputfile, directory):
 	types = parseTypes(registry)
 	enums = sorted(parseEnums(registry))
 	functions = sorted(parseFunctions(registry))
-	extensions = parseExtensions(registry)
+	extensions = sorted(parseExtensions(registry))
 	
 	files = {
 		"typesHeader" : "include/glbinding/types.h",
+		"parameterHeader" : "include/glbinding/Parameter.h",
+		"parameterSource" : "source/Parameter.cpp",
+		
 		"constantsHeader" : "include/glbinding/constants.h",
 		"constantsNamesSource" : "source/constant_names.cpp",
 		
@@ -37,9 +40,11 @@ def generate(inputfile, directory):
 	for key, value in files.items():
 		files[key] = directory + "/" + value
 		
-#	generateTypesHeader(types, files["typesHeader"])
-	generateMetaTypeHeader(types)
-	"""
+	generateTypesHeader(types, files["typesHeader"])
+	
+	generateMetaTypeHeader(types, files["parameterHeader"])
+	generateMetaTypeSource(types, files["parameterSource"])
+
 	generateConstantsHeader(enums, files["constantsHeader"])
 	generateConstantNamesSource(enums, files["constantsNamesSource"])
 	
@@ -52,5 +57,4 @@ def generate(inputfile, directory):
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
 	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
 	generateExtensionRequirementsSource(extensions, files["extensionsRequirementsSource"])
-	"""
 	

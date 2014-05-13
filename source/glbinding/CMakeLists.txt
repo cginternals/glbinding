@@ -56,6 +56,7 @@ set(api_includes
     ${include_path}/AbstractFunction.h
     ${include_path}/types.h
     ${include_path}/meta.h
+    ${include_path}/Parameter.h
 )
 
 set(sources
@@ -70,6 +71,7 @@ set(sources
     ${source_path}/constant_names.cpp
     ${source_path}/extension_requirements.cpp
     ${source_path}/meta.cpp
+    ${source_path}/Parameter.cpp
 )
 
 # Group source files
