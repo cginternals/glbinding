@@ -18,7 +18,7 @@ int main(int /*argc*/, char* /*argv*/[])
     {
         auto names = meta::getNames(e);
 
-        std::cout << "0x" << std::hex << e << " = ";
+        std::cout << "0x" << std::hex << static_cast<unsigned int>(e) << " = ";
 
         for (unsigned i = 0; i < names.size(); ++i)
         {

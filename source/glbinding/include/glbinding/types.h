@@ -2,10 +2,11 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <functional>
 
 namespace gl {
 
-using GLenum = unsigned int;
+enum class GLenum : unsigned int;
 using GLboolean = unsigned char;
 using GLbitfield = unsigned int;
 using GLvoid = void;
@@ -51,3 +52,17 @@ using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
 
 } // namespace gl
+
+namespace std {
+
+template<>
+struct hash<gl::GLenum>
+{
+    hash<unsigned int>::result_type operator()(const gl::GLenum & e) const
+    {
+        return hash<unsigned int>()(static_cast<unsigned int>(e));
+    }
+};
+
+}
+

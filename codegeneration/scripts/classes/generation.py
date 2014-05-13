@@ -5,6 +5,7 @@ from classes.Function import *
 from classes.Extension import *
 
 from classes.types_generation import *
+from classes.parameter_generation import *
 from classes.constants_generation import *
 from classes.functions_generation import *
 from classes.extensions_generation import *
@@ -42,8 +43,8 @@ def generate(inputfile, directory):
 		
 	generateTypesHeader(types, files["typesHeader"])
 	
-	generateMetaTypeHeader(types, files["parameterHeader"])
-	generateMetaTypeSource(types, files["parameterSource"])
+	generateParameterHeader(files["parameterHeader"])
+	generateParameterSource(files["parameterSource"])
 
 	generateConstantsHeader(enums, files["constantsHeader"])
 	generateConstantNamesSource(enums, files["constantsNamesSource"])

@@ -25,33 +25,25 @@ Extension extensionFromString(const std::string & name)
     return it->second;
 }
 
-gl::GLuint64 getValue(const std::string & name)
+//gl::GLuint64 getValue(const std::string & name)
+//{
+//    auto it = namesToConstants.find(name);
+//    if (it == namesToConstants.end())
+//        return -1;
+
+//    return it->second;
+//}
+
+gl::GLenum getEnum(const std::string & name)
 {
     auto it = namesToConstants.find(name);
     if (it == namesToConstants.end())
-        return -1;
+        return static_cast<gl::GLenum>(static_cast<unsigned int>(-1));
 
     return it->second;
 }
 
-gl::GLenum getEnum(const std::string & name)
-{
-    gl::GLuint64 value = getValue(name);
-
-    if (value > std::numeric_limits<gl::GLenum>::max())
-    {
-        return -1;
-    }
-
-    return static_cast<gl::GLenum>(value);
-}
-
 std::string getName(gl::GLenum constant)
-{
-    return getName(static_cast<gl::GLuint64>(constant));
-}
-
-std::string getName(gl::GLuint64 constant)
 {
     auto it = constantsNames.find(constant);
     if (it == constantsNames.end())
@@ -60,12 +52,16 @@ std::string getName(gl::GLuint64 constant)
     return it->second;
 }
 
-std::vector<std::string> getNames(gl::GLenum constant)
-{
-    return getNames(static_cast<gl::GLuint64>(constant));
-}
+//std::string getName(gl::GLuint64 constant)
+//{
+//    auto it = constantsNames.find(constant);
+//    if (it == constantsNames.end())
+//        return "Unknown";
 
-std::vector<std::string> getNames(gl::GLuint64 constant)
+//    return it->second;
+//}
+
+std::vector<std::string> getNames(gl::GLenum constant)
 {
     std::vector<std::string> names;
 
@@ -78,6 +74,20 @@ std::vector<std::string> getNames(gl::GLuint64 constant)
 
     return names;
 }
+
+//std::vector<std::string> getNames(gl::GLuint64 constant)
+//{
+//    std::vector<std::string> names;
+
+//    auto range = constantsNames.equal_range(constant);
+
+//    for (auto it = range.first; it != range.second; ++it)
+//    {
+//        names.push_back(it->second);
+//    }
+
+//    return names;
+//}
 
 std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension)
 {
@@ -103,17 +113,17 @@ std::vector<Extension> allExtensions()
     return extensions;
 }
 
-std::set<gl::GLuint64> allValues()
-{
-    std::set<gl::GLuint64> values;
+//std::set<gl::GLuint64> allValues()
+//{
+//    std::set<gl::GLuint64> values;
 
-    for (auto & pair : constantsNames)
-    {
-        values.insert(pair.first);
-    }
+//    for (auto & pair : constantsNames)
+//    {
+//        values.insert(pair.first);
+//    }
 
-    return values;
-}
+//    return values;
+//}
 
 std::set<gl::GLenum> allEnums()
 {
@@ -121,9 +131,9 @@ std::set<gl::GLenum> allEnums()
 
     for (auto & pair : constantsNames)
     {
-        gl::GLuint64 value = pair.first;
-        if (value > std::numeric_limits<gl::GLenum>::max())
-            continue;
+        gl::GLenum value = pair.first;
+//        if (value > std::numeric_limits<gl::GLenum>::max())
+//            continue;
 
         values.insert(static_cast<gl::GLenum>(value));
     }
