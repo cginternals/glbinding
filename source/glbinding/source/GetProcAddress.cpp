@@ -1,10 +1,10 @@
 #include <glbinding/GetProcAddress.h>
-#include <cassert>
 
 #ifdef WIN32
     #include <string>
     #include <windows.h>
 #elif __APPLE__
+    #include <cassert>
     #include <string>
     #include <dlfcn.h>
 #else
