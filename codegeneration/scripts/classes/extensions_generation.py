@@ -134,6 +134,6 @@ def generateExtensionRequirementsSource(extensions, outputfile):
 	with open(outputfile, 'w') as file:		
 		file.write(extensionRequirementsTemplate % (
 			",\n\t".join([ extensionRequiredFunctions(e) for e in extensions if len(e.requiredFunctions)>0 ]),
-			",\n\t".join([functionRequiredByExtensions(f, es) for f, es in funcToExtension.items() ])
+			",\n\t".join([functionRequiredByExtensions(f, sorted(funcToExtension[f])) for f in sorted(funcToExtension.keys()) ])
 			))
 		
