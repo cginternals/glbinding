@@ -7,19 +7,19 @@
 
 namespace {
 
-void addParameters(std::vector<gl::Parameter> &)
+void addParameters(std::vector<gl::AbstractParameter*> &)
 {
 }
 
 template <typename Arg, typename... Arguments>
-void addParameters(std::vector<gl::Parameter> & parameters, Arg arg, Arguments... args)
+void addParameters(std::vector<gl::AbstractParameter*> & parameters, Arg arg, Arguments... args)
 {
-    parameters.push_back(gl::createParameter<Arg>(arg));
+    parameters.push_back(new gl::Parameter<Arg>(arg));
     addParameters(parameters, args...);
 }
 
 using Callback = std::function<void()>;
-using Callback2 = std::function<void(std::vector<gl::Parameter> &)>;
+using Callback2 = std::function<void(std::vector<gl::AbstractParameter*> &)>;
 
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
@@ -34,10 +34,13 @@ struct FunctionHelper
 
     ReturnType call(ReturnType (*f)(Arguments...), Callback2 before, Callback after, Arguments... arguments) const
     {
-        std::vector<gl::Parameter> parameters;
+        std::vector<gl::AbstractParameter*> parameters;
         addParameters(parameters, arguments...);
 
         before(parameters);
+
+        for (gl::AbstractParameter* p : parameters) delete p;
+
         ReturnType value = f(std::forward<Arguments>(arguments)...);
         after();
         return value;
@@ -56,10 +59,13 @@ struct FunctionHelper<void, Arguments...>
 
     void call(void (*f)(Arguments...), Callback2 before, Callback after, Arguments... arguments) const
     {
-        std::vector<gl::Parameter> parameters;
+        std::vector<gl::AbstractParameter*> parameters;
         addParameters(parameters, arguments...);
 
         before(parameters);
+
+        for (gl::AbstractParameter* p : parameters) delete p;
+
         f(std::forward<Arguments>(arguments)...);
         after();
     }
@@ -86,7 +92,7 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
         {
             if (sendParameters())
             {
-                return FunctionHelper<ReturnType, Arguments...>().call(function, [this](std::vector<gl::Parameter> & parameters) { before(parameters); }, [this]() { after(); }, std::forward<Arguments>(arguments)...);
+                return FunctionHelper<ReturnType, Arguments...>().call(function, [this](std::vector<gl::AbstractParameter*> & parameters) { before(parameters); }, [this]() { after(); }, std::forward<Arguments>(arguments)...);
             }
             else
             {

@@ -60,7 +60,7 @@ protected:
     bool sendParameters() const;
 
     void before();
-    void before(const std::vector<Parameter> & parameters);
+    void before(const std::vector<AbstractParameter*> & parameters);
     void after();
     void invalid();
 };

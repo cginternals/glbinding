@@ -21,8 +21,6 @@ def generate(inputfile, directory):
 	
 	files = {
 		"typesHeader" : "include/glbinding/types.h",
-		"parameterHeader" : "include/glbinding/Parameter.h",
-		"parameterSource" : "source/Parameter.cpp",
 		
 		"constantsHeader" : "include/glbinding/constants.h",
 		"constantsNamesSource" : "source/constant_names.cpp",
@@ -42,9 +40,6 @@ def generate(inputfile, directory):
 		files[key] = directory + "/" + value
 		
 	generateTypesHeader(types, files["typesHeader"])
-	
-	generateParameterHeader(files["parameterHeader"])
-	generateParameterSource(files["parameterSource"])
 
 	generateConstantsHeader(enums, files["constantsHeader"])
 	generateConstantNamesSource(enums, files["constantsNamesSource"])

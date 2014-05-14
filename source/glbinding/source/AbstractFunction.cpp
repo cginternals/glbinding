@@ -6,6 +6,8 @@
 #include <set>
 #include <cassert>
 
+#include <iostream>
+
 namespace gl {
 
 namespace {
@@ -83,7 +85,7 @@ ProcAddress AbstractFunction::address() const
 
 bool AbstractFunction::callbacksEnabled() const
 {
-    return m_callbacksEnabled;
+    return m_callbacksEnabled || true;
 }
 
 bool AbstractFunction::sendParameters() const
@@ -149,9 +151,16 @@ void AbstractFunction::before()
         s_beforeCallback(*this);
 }
 
-void AbstractFunction::before(const std::vector<Parameter> & /*parameters*/)
+void AbstractFunction::before(const std::vector<AbstractParameter*> & parameters)
 {
-
+    std::cout << m_name << "(";
+    for (unsigned i = 0; i<parameters.size(); ++i)
+    {
+        parameters[i]->printOn(std::cout);
+        if (i<parameters.size()-1)
+            std::cout << ", ";
+    }
+    std::cout << ")" << std::endl;
 }
 
 void AbstractFunction::after()
