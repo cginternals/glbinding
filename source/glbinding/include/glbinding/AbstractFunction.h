@@ -3,7 +3,7 @@
 #include <glbinding/glbinding_api.h>
 #include <glbinding/GetProcAddress.h>
 #include <glbinding/Extension.h>
-#include <glbinding/Parameter.h>
+#include <glbinding/AbstractValue.h>
 
 #include <set>
 #include <string>
@@ -60,8 +60,9 @@ protected:
     bool sendParameters() const;
 
     void before();
-    void before(const std::vector<AbstractParameter*> & parameters);
+    void before(const std::vector<AbstractValue*> & parameters);
     void after();
+    void after(AbstractValue * returnValue);
     void invalid();
 };
 

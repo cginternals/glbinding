@@ -151,7 +151,7 @@ void AbstractFunction::before()
         s_beforeCallback(*this);
 }
 
-void AbstractFunction::before(const std::vector<AbstractParameter*> & parameters)
+void AbstractFunction::before(const std::vector<AbstractValue*> & parameters)
 {
     std::cout << m_name << "(";
     for (unsigned i = 0; i<parameters.size(); ++i)
@@ -161,12 +161,29 @@ void AbstractFunction::before(const std::vector<AbstractParameter*> & parameters
             std::cout << ", ";
     }
     std::cout << ")" << std::endl;
+
+    for (gl::AbstractValue * p : parameters)
+    {
+        delete p;
+    }
 }
 
 void AbstractFunction::after()
 {
     if (s_afterCallback)
         s_afterCallback(*this);
+}
+
+void AbstractFunction::after(AbstractValue * returnValue)
+{
+    std::cout << "returns ";
+    if (returnValue)
+        returnValue->printOn(std::cout);
+    else
+        std::cout << "nothing";
+    std::cout << std::endl;
+
+    delete returnValue;
 }
 
 void AbstractFunction::invalid()
