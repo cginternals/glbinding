@@ -40,14 +40,23 @@ public:
     static void disableCallbacksForAll();
     static void enableCallbacksForAllExcept(const std::set<std::string> & blackList);
 
+    void setCallbackVerbose(bool on);
+    static void setCallbackVerboseForAll(bool on);
+
     using Callback = std::function<void(const AbstractFunction &)>;
+    using ParametersCallback = std::function<void(const AbstractFunction &, const std::vector<AbstractValue*> &)>;
+    using ReturnValueCallback = std::function<void(const AbstractFunction &, const AbstractValue*)>;
+
     static void setBeforeCallback(Callback callback);
     static void setAfterCallback(Callback callback);
     static void setInvalidCallback(Callback callback);
+
+    static void setParametersCallback(ParametersCallback callback);
+    static void setReturnValueCallback(ReturnValueCallback callback);
 protected:
     const char * m_name;
     bool m_callbacksEnabled;
-    bool m_sendParameters;
+    bool m_verboseCallbacks;
     std::vector<ProcAddress> m_addresses;
 
     static int s_context;
@@ -55,14 +64,16 @@ protected:
     static Callback s_beforeCallback;
     static Callback s_afterCallback;
     static Callback s_invalidCallback;
+    static ParametersCallback s_parametersCallback;
+    static ReturnValueCallback s_returnValueCallback;
 
     bool callbacksEnabled() const;
-    bool sendParameters() const;
+    bool verboseCallbacks() const;
 
     void before();
-    void before(const std::vector<AbstractValue*> & parameters);
+    void parameters(const std::vector<AbstractValue*> & values);
+    void returnValue(const AbstractValue * value);
     void after();
-    void after(AbstractValue * returnValue);
     void invalid();
 };
 

@@ -19,11 +19,13 @@ struct FunctionHelper
         return value;
     }
 
-    ReturnType call2(gl::Function<ReturnType, Arguments...> & function, Arguments... arguments) const
+    ReturnType callVerbose(gl::Function<ReturnType, Arguments...> & function, Arguments... arguments) const
     {
-        function.before(gl::createValues(std::forward<Arguments>(arguments)...));
+        function.before();
+        function.parameters(gl::createValues(std::forward<Arguments>(arguments)...));
         ReturnType value = reinterpret_cast<typename gl::Function<ReturnType, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
-        function.after(gl::createValue(value));
+        function.returnValue(gl::createValue(value));
+        function.after();
         return value;
     }
 };
@@ -38,11 +40,13 @@ struct FunctionHelper<void, Arguments...>
         function.after();
     }
 
-    void call2(gl::Function<void, Arguments...> & function, Arguments... arguments) const
+    void callVerbose(gl::Function<void, Arguments...> & function, Arguments... arguments) const
     {
-        function.before(gl::createValues(std::forward<Arguments>(arguments)...));
+        function.before();
+        function.parameters(gl::createValues(std::forward<Arguments>(arguments)...));
         reinterpret_cast<typename gl::Function<void, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
-        function.after(nullptr);
+        function.returnValue(nullptr);
+        function.after();
     }
 };
 
@@ -67,13 +71,13 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
         }
         else
         {
-            if (!sendParameters())
+            if (!verboseCallbacks())
             {
                 return FunctionHelper<ReturnType, Arguments...>().call(*this, std::forward<Arguments>(arguments)...);
             }
             else
             {
-                return FunctionHelper<ReturnType, Arguments...>().call2(*this, std::forward<Arguments>(arguments)...);
+                return FunctionHelper<ReturnType, Arguments...>().callVerbose(*this, std::forward<Arguments>(arguments)...);
             }
         }
     }

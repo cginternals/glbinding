@@ -29,6 +29,8 @@ bool contains(const std::set<std::string> & list, const char * name)
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
 AbstractFunction::Callback AbstractFunction::s_afterCallback;
 AbstractFunction::Callback AbstractFunction::s_invalidCallback;
+AbstractFunction::ParametersCallback AbstractFunction::s_parametersCallback;
+AbstractFunction::ReturnValueCallback AbstractFunction::s_returnValueCallback;
 
 int AbstractFunction::s_context = 0;
 
@@ -36,7 +38,7 @@ int AbstractFunction::s_context = 0;
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
 , m_callbacksEnabled(false)
-, m_sendParameters(false)
+, m_verboseCallbacks(false)
 {
     allFunctions().insert(this);
 }
@@ -85,12 +87,12 @@ ProcAddress AbstractFunction::address() const
 
 bool AbstractFunction::callbacksEnabled() const
 {
-    return m_callbacksEnabled || true;
+    return m_callbacksEnabled;
 }
 
-bool AbstractFunction::sendParameters() const
+bool AbstractFunction::verboseCallbacks() const
 {
-    return m_sendParameters || true;
+    return m_verboseCallbacks;
 }
 
 void AbstractFunction::enableCallbacks()
@@ -101,6 +103,19 @@ void AbstractFunction::enableCallbacks()
 void AbstractFunction::disableCallbacks()
 {
     m_callbacksEnabled = false;
+}
+
+void AbstractFunction::setCallbackVerbose(bool on)
+{
+    m_verboseCallbacks = on;
+}
+
+void AbstractFunction::setCallbackVerboseForAll(bool on)
+{
+    for (AbstractFunction * function : functions())
+    {
+        function->setCallbackVerbose(on);
+    }
 }
 
 void AbstractFunction::enableCallbacksForAll()
@@ -145,27 +160,20 @@ void AbstractFunction::setInvalidCallback(Callback callback)
     s_invalidCallback = callback;
 }
 
+void AbstractFunction::setParametersCallback(ParametersCallback callback)
+{
+    s_parametersCallback = callback;
+}
+
+void AbstractFunction::setReturnValueCallback(ReturnValueCallback callback)
+{
+    s_returnValueCallback = callback;
+}
+
 void AbstractFunction::before()
 {
     if (s_beforeCallback)
         s_beforeCallback(*this);
-}
-
-void AbstractFunction::before(const std::vector<AbstractValue*> & parameters)
-{
-    std::cout << m_name << "(";
-    for (unsigned i = 0; i<parameters.size(); ++i)
-    {
-        parameters[i]->printOn(std::cout);
-        if (i<parameters.size()-1)
-            std::cout << ", ";
-    }
-    std::cout << ")" << std::endl;
-
-    for (gl::AbstractValue * p : parameters)
-    {
-        delete p;
-    }
 }
 
 void AbstractFunction::after()
@@ -174,16 +182,24 @@ void AbstractFunction::after()
         s_afterCallback(*this);
 }
 
-void AbstractFunction::after(AbstractValue * returnValue)
+void AbstractFunction::parameters(const std::vector<AbstractValue*> & values)
 {
-    std::cout << "returns ";
-    if (returnValue)
-        returnValue->printOn(std::cout);
-    else
-        std::cout << "nothing";
-    std::cout << std::endl;
+    if (s_parametersCallback)
+        s_parametersCallback(*this, values);
 
-    delete returnValue;
+    for (gl::AbstractValue * value : values)
+    {
+        delete value;
+    }
+}
+
+
+void AbstractFunction::returnValue(const AbstractValue * value)
+{
+    if (s_returnValueCallback)
+        s_returnValueCallback(*this, value);
+
+    delete value;
 }
 
 void AbstractFunction::invalid()
