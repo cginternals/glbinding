@@ -29,8 +29,8 @@ GLBINDING_API std::vector<Extension> allExtensions();
 GLBINDING_API std::set<gl::GLuint64> allValues();
 GLBINDING_API std::set<gl::GLenum> allEnums();
 
-GLBINDING_API std::set<std::string> getRequiredFunctions(Extension extension);
-GLBINDING_API std::set<Extension> getExtensionsRequiring(const std::string & functionName);
+GLBINDING_API std::vector<std::string> getRequiredFunctions(Extension extension);
+GLBINDING_API std::vector<Extension> getExtensionsRequiring(const std::string & functionName);
 
 } // namespace meta
 } // namespace gl

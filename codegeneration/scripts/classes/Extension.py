@@ -45,6 +45,9 @@ class Extension:
 	def __str__(self):
 		return "Extension(%s)" % (self.name)
 		
+	def __lt__(self, other):
+		return self.name < other.name
+
 	exceptions = [ ]
 		
 	def baseName(self):

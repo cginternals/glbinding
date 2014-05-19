@@ -48,7 +48,7 @@ const std::set<AbstractFunction*> & AbstractFunction::functions()
     return allFunctions();
 }
 
-std::set<Extension> AbstractFunction::extensions() const
+std::vector<Extension> AbstractFunction::extensions() const
 {
     return meta::getExtensionsRequiring(m_name);
 }
