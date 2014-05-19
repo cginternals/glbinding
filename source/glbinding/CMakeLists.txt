@@ -81,6 +81,7 @@ set(sources
     #generated
     ${source_path}/functions.cpp
     ${source_path}/FunctionObjects.cpp
+    ${source_path}/function_list.cpp
     ${source_path}/enum_to_name.cpp
     ${source_path}/name_to_enum.cpp
     ${source_path}/extension_to_name.cpp

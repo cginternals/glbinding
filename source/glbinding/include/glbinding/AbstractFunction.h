@@ -5,8 +5,8 @@
 #include <glbinding/Extension.h>
 #include <glbinding/AbstractValue.h>
 
-#include <set>
 #include <string>
+#include <set>
 #include <vector>
 #include <functional>
 
@@ -29,7 +29,7 @@ public:
 
     std::vector<Extension> extensions() const;
 
-    static const std::set<AbstractFunction*> & functions();
+    static const std::vector<AbstractFunction*> & functions();
 
     static void setContext(int context);
 

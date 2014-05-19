@@ -1,4 +1,3 @@
-#include <glbinding/glbinding.h>
 #include <glbinding/FunctionObjects.h>
 
 namespace gl {

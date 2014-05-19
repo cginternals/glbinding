@@ -4,6 +4,7 @@
 #include "declarations.h"
 
 #include <limits>
+#include <sstream>
 
 namespace gl {
 namespace meta {
@@ -43,7 +44,11 @@ std::string getName(gl::GLenum constant)
     auto it = enum_to_name.find(constant);
 
     if (it == enum_to_name.end())
-        return "UnknownEnum";
+    {
+        std::stringstream ss;
+        ss << "UnknownEnum(0x" << std::hex << constant.value << ")";
+        return ss.str();
+    }
 
     return it->second;
 }

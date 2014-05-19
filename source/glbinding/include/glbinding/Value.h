@@ -19,12 +19,12 @@ protected:
     T value;
 };
 
-template <> void Value<GLenum>::printOn(std::ostream & stream) const;
-template <> void Value<const GLubyte *>::printOn(std::ostream & stream) const;
-template <> void Value<const GLchar *>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<GLenum>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<const GLubyte *>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<const GLchar *>::printOn(std::ostream & stream) const;
 
 template <typename Argument>
-AbstractValue* createValue(Argument argument);
+AbstractValue * createValue(Argument argument);
 
 template <typename... Arguments>
 std::vector<AbstractValue*> createValues(Arguments... arguments);

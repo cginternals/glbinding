@@ -32,6 +32,7 @@ def generate(inputfile, directory):
 		"functionObjectsSource" : "source/FunctionObjects.cpp",
 		"functionWrapperHeader" : "include/glbinding/functions.h",
 		"functionWrapperSource" : "source/functions.cpp",
+		"functionListSource" : "source/function_list.cpp",
 		
 		"extensionsHeader" : "include/glbinding/Extension.h",
 		"extensionsNamesSource" : "source/extension_to_name.cpp",
@@ -57,6 +58,7 @@ def generate(inputfile, directory):
 	generateFunctionObjectsSource(functions, files["functionObjectsSource"])
 	generateFunctionWrapperHeader(functions, files["functionWrapperHeader"])
 	generateFunctionWrapperSource(functions, files["functionWrapperSource"])
+	generateFunctionListSource(functions, files["functionListSource"])
 	
 	generateExtensionHeader(extensions, files["extensionsHeader"])
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])

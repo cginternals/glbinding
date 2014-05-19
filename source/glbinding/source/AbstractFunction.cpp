@@ -1,6 +1,8 @@
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/meta.h>
 
+#include "declarations.h"
+
 #include <iostream>
 #include <memory>
 #include <set>
@@ -9,22 +11,6 @@
 #include <iostream>
 
 namespace gl {
-
-namespace {
-
-std::set<AbstractFunction*> & allFunctions()
-{
-    static std::set<AbstractFunction*> functions;
-
-    return functions;
-}
-
-bool contains(const std::set<std::string> & list, const char * name)
-{
-    return list.find(name) != list.end();
-}
-
-}
 
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
 AbstractFunction::Callback AbstractFunction::s_afterCallback;
@@ -40,17 +26,15 @@ AbstractFunction::AbstractFunction(const char * _name)
 , m_callbacksEnabled(false)
 , m_verboseCallbacks(false)
 {
-    allFunctions().insert(this);
 }
 
 AbstractFunction::~AbstractFunction()
 {
-    allFunctions().erase(this);
 }
 
-const std::set<AbstractFunction*> & AbstractFunction::functions()
+const std::vector<AbstractFunction*> & AbstractFunction::functions()
 {
-    return allFunctions();
+    return functionList;
 }
 
 std::vector<Extension> AbstractFunction::extensions() const
@@ -130,7 +114,7 @@ void AbstractFunction::enableCallbacksForAllExcept(const std::set<std::string> &
 {
     for (AbstractFunction * function : functions())
     {
-        if (!contains(blackList, function->name()))
+        if (blackList.find(function->name()) == blackList.end())
         {
             function->enableCallbacks();
         }
@@ -210,7 +194,7 @@ void AbstractFunction::invalid()
 
 void AbstractFunction::initializeFunctions(int context)
 {
-    for (AbstractFunction * function : allFunctions())
+    for (AbstractFunction * function : functions())
     {
         function->initialize(context);
     }

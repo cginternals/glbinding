@@ -10,6 +10,8 @@
 
 namespace gl {
 
+class AbstractFunction;
+
 extern const std::unordered_map<gl::GLenum, std::string> enum_to_name;
 extern const std::unordered_map<std::string, gl::GLenum> name_to_enum;
 
@@ -20,5 +22,7 @@ extern const std::unordered_map<Extension, std::pair<unsigned char, unsigned cha
 
 extern const std::unordered_map<std::string, std::vector<Extension>> function_to_extensions;
 extern const std::unordered_map<Extension, std::vector<std::string>> extension_to_functions;
+
+extern const std::vector<AbstractFunction*> functionList;
 
 } // namespace gl

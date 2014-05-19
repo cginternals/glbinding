@@ -28,6 +28,19 @@ namespace functions {
 } // namespace gl
 """
 #==========================================
+functionListTemplate = """#include <glbinding/AbstractFunction.h>
+#include <glbinding/FunctionObjects.h>
+#include "declarations.h"
+
+namespace gl {
+
+const std::vector<AbstractFunction*> functionList = {
+	%s
+};
+
+} // namespace gl
+"""
+#==========================================
 functionsWrapperHeaderTemplate = """#pragma once
 
 #include <glbinding/glbinding_api.h>
@@ -41,8 +54,7 @@ namespace gl {
 } // namespace gl
 """
 #==========================================
-functionsWrapperSourceTemplate = """#include <glbinding/glbinding.h>
-#include <glbinding/FunctionObjects.h>
+functionsWrapperSourceTemplate = """#include <glbinding/FunctionObjects.h>
 
 namespace gl {
 
@@ -93,3 +105,7 @@ def generateFunctionWrapperHeader(functions, outputfile):
 def generateFunctionWrapperSource(functions, outputfile):
 	with open(outputfile, 'w') as file:
 		file.write(functionsWrapperSourceTemplate % "\n".join([functionWrapper(f) for f in functions ]))
+		
+def generateFunctionListSource(functions, outputfile):
+	with open(outputfile, 'w') as file:
+		file.write(functionListTemplate % ",\n\t".join([ "&functions::"+f.baseName() for f in functions ]))
