@@ -80,11 +80,6 @@ def groupByValue(enums):
 	for key in d.keys():
 		d[key] = sortByExtension(d[key])
 		
-	for v, es in d.items():
-		if "GL_TRIANGLE_STRIP" in [ e.name for e in es ]:
-			print([e.name for e in es ])
-			print([extPriority(e.name) for e in es ])
-		
 	return d
 
 def sortByExtension(enums):
