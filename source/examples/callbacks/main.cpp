@@ -49,11 +49,11 @@ void doSomeOpenGLStuff()
 {
     std::set<gl::Extension> extensions;
     int num = 0;
-    gl::GetIntegerv(gl::GLenum::NUM_EXTENSIONS, &num);
+    gl::GetIntegerv(gl::NUM_EXTENSIONS, &num);
 
     for (int i = 0; i < std::min(num, 5); ++i)
     {
-        const unsigned char * name = gl::GetStringi(gl::GLenum::EXTENSIONS, i);
+        const unsigned char * name = gl::GetStringi(gl::EXTENSIONS, i);
         gl::Extension extension = gl::meta::extensionFromString(reinterpret_cast<const char*>(name));
         if (extension != gl::Extension::Unknown)
             extensions.insert(extension);
@@ -67,11 +67,11 @@ void doSomeOpenGLStuff()
     gl::GenBuffers(1, &cornerBufferId);
     GLuint programId = gl::CreateProgram();
 
-    GLuint vertexShaderId = gl::CreateShader(gl::GLenum::VERTEX_SHADER);
+    GLuint vertexShaderId = gl::CreateShader(gl::VERTEX_SHADER);
     gl::ShaderSource(vertexShaderId, 1, &vertexShaderCode, 0);
     gl::CompileShader(vertexShaderId);
 
-    GLuint fragmentShaderId = gl::CreateShader(gl::GLenum::FRAGMENT_SHADER);
+    GLuint fragmentShaderId = gl::CreateShader(gl::FRAGMENT_SHADER);
     gl::ShaderSource(fragmentShaderId, 1, &fragmentShaderCode, 0);
     gl::CompileShader(fragmentShaderId);
 
@@ -88,8 +88,8 @@ void doSomeOpenGLStuff()
         vec2{1, 1}
     };
 
-    gl::BindBuffer(gl::GLenum::ARRAY_BUFFER, cornerBufferId);
-    gl::BufferData(gl::GLenum::ARRAY_BUFFER, sizeof(vec2)*4, cornerData, gl::GLenum::STATIC_DRAW);
+    gl::BindBuffer(gl::ARRAY_BUFFER, cornerBufferId);
+    gl::BufferData(gl::ARRAY_BUFFER, sizeof(vec2)*4, cornerData, gl::STATIC_DRAW);
 
     gl::BindVertexArray(vaoId);
 
@@ -97,12 +97,12 @@ void doSomeOpenGLStuff()
     GLint bindingIndex = 0;
     gl::VertexAttribBinding(attributeIndex, bindingIndex);
     gl::BindVertexBuffer(bindingIndex, cornerBufferId, 0, sizeof(vec2));
-    gl::VertexAttribFormat(attributeIndex, 2, gl::GLenum::FLOAT, gl::FALSE_, 0);
+    gl::VertexAttribFormat(attributeIndex, 2, gl::FLOAT, gl::FALSE_, 0);
     gl::EnableVertexAttribArray(attributeIndex);
 
     gl::UseProgram(programId);
 
-    gl::DrawArrays(gl::GLenum::TRIANGLE_STRIP, 0, 4);
+    gl::DrawArrays(gl::TRIANGLE_STRIP, 0, 4);
 
     gl::DeleteProgram(programId);
     gl::DeleteBuffers(1, &cornerBufferId);

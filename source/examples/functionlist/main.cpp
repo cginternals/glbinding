@@ -60,10 +60,10 @@ int main(int /*argc*/, char* /*argv*/[])
 
     std::set<gl::Extension> extensions;
     int num = 0;
-    gl::GetIntegerv(gl::GLenum::NUM_EXTENSIONS, &num);
+    gl::GetIntegerv(gl::NUM_EXTENSIONS, &num);
     for (int i = 0; i < num; ++i)
     {
-        const unsigned char * name = gl::GetStringi(gl::GLenum::EXTENSIONS, i);
+        const unsigned char * name = gl::GetStringi(gl::EXTENSIONS, i);
         gl::Extension extension = gl::meta::extensionFromString(reinterpret_cast<const char*>(name));
         if (extension != gl::Extension::Unknown)
             extensions.insert(extension);

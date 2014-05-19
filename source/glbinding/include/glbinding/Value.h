@@ -2,6 +2,7 @@
 
 #include <glbinding/AbstractValue.h>
 #include <glbinding/types.h>
+#include <glbinding/GLenum.h>
 
 #include <vector>
 
@@ -20,6 +21,7 @@ protected:
 
 template <> void Value<GLenum>::printOn(std::ostream & stream) const;
 template <> void Value<const GLubyte *>::printOn(std::ostream & stream) const;
+template <> void Value<const GLchar *>::printOn(std::ostream & stream) const;
 
 template <typename Argument>
 AbstractValue* createValue(Argument argument);

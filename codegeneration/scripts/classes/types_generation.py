@@ -6,7 +6,6 @@ typesHeaderTemplate = """#pragma once
 
 #include <cstddef>
 #include <cstdint>
-#include <functional>
 
 namespace gl {
 
@@ -14,18 +13,7 @@ namespace gl {
 
 } // namespace gl
 
-namespace std {
-
-template<>
-struct hash<gl::GLenum>
-{
-    hash<unsigned int>::result_type operator()(const gl::GLenum & e) const
-    {
-        return hash<unsigned int>()(static_cast<unsigned int>(e));
-    }
-};
-
-}
+#include <glbinding/GLenum.h>
 
 """
 #==========================================
@@ -44,7 +32,7 @@ def convertTypedef(t):
 		return multilineConvertTypedef(t)
 		
 	if t.name == "GLenum":
-		return "enum class GLenum : unsigned int;"
+		return "struct GLenum;"
 		
 	if not t.value.startswith("typedef"):
 		return t.value

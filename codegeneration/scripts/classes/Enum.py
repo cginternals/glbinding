@@ -9,6 +9,8 @@ def translateType(t, name):
 		"ull" : "GLuint64"
 	}.get(t, "GLuint")
 
+extensionSuffixes =  ["ARB","EXT","NV","AMD","ATI","KHR","SGIS","SGIX","IBM","INGR","APPLE","PGI","QCOM","OES","INTEL","IMG","WEBGL"]
+
 class Enum:
 	def __init__(self, xml, group, groupType):
 		self.name = xml.attrib["name"]
@@ -53,4 +55,38 @@ def groupByType(enums):
 		d[e.type].append(e)
 		
 	return d
+
+def extPriority(name):
+	index = name.rfind("_")
+	if index<0:
+		return -1
+		
+	ext = name[index+1:]
+	
+	if ext not in extensionSuffixes:
+		return -1
+	
+	return extensionSuffixes.index(ext)
+	
+def groupByValue(enums):
+	d = dict()
+	
+	for e in enums:
+		v = int(e.value, 0)
+		if not v in d:
+			d[v] = []
+		d[v].append(e)
+	
+	for key in d.keys():
+		d[key] = sortByExtension(d[key])
+		
+	for v, es in d.items():
+		if "GL_TRIANGLE_STRIP" in [ e.name for e in es ]:
+			print([e.name for e in es ])
+			print([extPriority(e.name) for e in es ])
+		
+	return d
+
+def sortByExtension(enums):
+	return sorted(enums, key = lambda e : extPriority(e.name))
 

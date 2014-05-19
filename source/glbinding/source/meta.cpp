@@ -1,4 +1,5 @@
 #include <glbinding/meta.h>
+#include <glbinding/GLenum.h>
 
 #include "declarations.h"
 
@@ -25,15 +26,6 @@ Extension extensionFromString(const std::string & name)
     return it->second;
 }
 
-//gl::GLuint64 getValue(const std::string & name)
-//{
-//    auto it = namesToConstants.find(name);
-//    if (it == namesToConstants.end())
-//        return -1;
-
-//    return it->second;
-//}
-
 gl::GLenum getEnum(const std::string & name)
 {
     auto it = namesToConstants.find(name);
@@ -51,43 +43,6 @@ std::string getName(gl::GLenum constant)
 
     return it->second;
 }
-
-//std::string getName(gl::GLuint64 constant)
-//{
-//    auto it = constantsNames.find(constant);
-//    if (it == constantsNames.end())
-//        return "Unknown";
-
-//    return it->second;
-//}
-
-std::vector<std::string> getNames(gl::GLenum constant)
-{
-    std::vector<std::string> names;
-
-    auto range = constantsNames.equal_range(constant);
-
-    for (auto it = range.first; it != range.second; ++it)
-    {
-        names.push_back(it->second);
-    }
-
-    return names;
-}
-
-//std::vector<std::string> getNames(gl::GLuint64 constant)
-//{
-//    std::vector<std::string> names;
-
-//    auto range = constantsNames.equal_range(constant);
-
-//    for (auto it = range.first; it != range.second; ++it)
-//    {
-//        names.push_back(it->second);
-//    }
-
-//    return names;
-//}
 
 std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension)
 {

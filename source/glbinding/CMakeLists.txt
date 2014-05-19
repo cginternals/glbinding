@@ -45,10 +45,12 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 set(api_includes
     ${include_path}/glbinding_api.h
     
+    ${include_path}/enums.h
     ${include_path}/constants.h
     ${include_path}/glbinding.h
     ${include_path}/functions.h
     ${include_path}/GetProcAddress.h
+    ${include_path}/GLenum.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/FunctionObjects.h
@@ -64,6 +66,7 @@ set(api_includes
 set(sources
     ${source_path}/glbinding.cpp
     ${source_path}/functions.cpp
+    ${source_path}/GLenum.cpp
     ${source_path}/GetProcAddress.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/AbstractFunction.cpp

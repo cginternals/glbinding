@@ -13,7 +13,7 @@ namespace gl {
 extern const std::unordered_map<Extension, std::string> extensionNames;
 extern const std::unordered_map<std::string, Extension> namesToExtension;
 extern const std::unordered_map<Extension, std::pair<unsigned char, unsigned char>> extensionVersions;
-extern const std::unordered_multimap<gl::GLenum, std::string> constantsNames;
+extern const std::unordered_map<gl::GLenum, std::string> constantsNames;
 extern const std::unordered_map<std::string, gl::GLenum> namesToConstants;
 extern const std::unordered_map<Extension, std::set<std::string>> requiredFunctionsByExtension;
 extern const std::unordered_map<std::string, std::set<Extension>> extensionsRequiringFunction;

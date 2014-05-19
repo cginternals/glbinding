@@ -2,16 +2,24 @@ import xml.etree.ElementTree as ET
 from classes.Enum import *
 
 #==========================================
-constantsHeaderTemplate = """#pragma once
+enumsHeaderTemplate = """#pragma once
 
 #include <glbinding/types.h>
+#include <glbinding/GLenum.h>
 
 namespace gl {
 
-enum class GLenum : unsigned int
-{
-	%s
-};
+%s
+
+} // namespace gl
+"""
+#==========================================
+constantsHeaderTemplate = """#pragma once
+
+#include <glbinding/types.h>
+#include <glbinding/enums.h>
+
+namespace gl {
 
 %s
 
@@ -28,7 +36,7 @@ constantsNamesTemplate = """#include <glbinding/types.h>
 
 namespace gl {
 
-const std::unordered_multimap<gl::GLenum, std::string> constantsNames = {
+const std::unordered_map<gl::GLenum, std::string> constantsNames = {
 	%s
 };
 
@@ -50,17 +58,23 @@ def correctValue(t):
 		return "static_cast<unsigned int>(%s)" % t
 	
 def enumDefinition(enum):
-	return "%s = %s" % (enum.baseName(), correctValue(enum.value))
+	return "const GLenum %s = %s;" % (enum.baseName(), correctValue(enum.value))
 		
 def enumToName(enum):
-	return '{ gl::GLenum::%s, "%s" }' % (enum.baseName(), enum.name)
+	return '{ gl::%s, "%s" }' % (enum.baseName(), enum.name)
 	
 def nameToEnum(enum):
-	return '{ "%s", gl::GLenum::%s }' % (enum.name, enum.baseName())
+	return '{ "%s", gl::%s }' % (enum.name, enum.baseName())
+
+def generateEnumsHeader(enums, outputfile):
+	d = groupByType(enums)
+	pureEnums = d["GLenum"]
+	
+	with open(outputfile, 'w') as file:
+		file.write(enumsHeaderTemplate % ("\n".join([ enumDefinition(e) for e in pureEnums ])))
 
 def generateConstantsHeader(enums, outputfile):
 	d = groupByType(enums)
-	pureEnums = d["GLenum"]
 	del d["GLenum"]
 	
 	groups = []	
@@ -69,13 +83,15 @@ def generateConstantsHeader(enums, outputfile):
 	
 	with open(outputfile, 'w') as file:
 		file.write(constantsHeaderTemplate % (
-			",\n\t".join([ enumDefinition(e) for e in pureEnums ]),
 			"\n\n".join(groups))
 		)
 		
 def generateConstantNamesSource(enums, outputfile):
+	pureEnums = [ e for e in enums if e.type == "GLenum" ]
+	d = sorted([ es[0] for v, es in groupByValue(pureEnums).items() ])
+	
 	with open(outputfile, 'w') as file:
 		file.write(constantsNamesTemplate % (
-			",\n\t".join([ enumToName(e) for e in enums if e.type == "GLenum" ]),
-			",\n\t".join([ nameToEnum(e) for e in enums if e.type == "GLenum" ])
+			",\n\t".join([ enumToName(e) for e in d ]),
+			",\n\t".join([ nameToEnum(e) for e in pureEnums ])
 		))

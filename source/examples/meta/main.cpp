@@ -16,18 +16,9 @@ int main(int /*argc*/, char* /*argv*/[])
 
     for (GLenum e : enumVector)
     {
-        auto names = meta::getNames(e);
+        std::string name = meta::getName(e);
 
-        std::cout << "0x" << std::hex << static_cast<unsigned int>(e) << " = ";
-
-        for (unsigned i = 0; i < names.size(); ++i)
-        {
-            std::cout << names[i];
-            if (i<names.size()-1)
-                std::cout << ", ";
-        }
-
-        std::cout << std::endl;
+        std::cout << "0x" << std::hex << static_cast<unsigned int>(e) << " = " << name << std::endl;
     }
 
     std::cout << "Extensions:" << std::endl;
