@@ -9,7 +9,7 @@ using ucharpair = std::pair<unsigned char, unsigned char>;
 
 namespace gl {
 
-const std::unordered_map<Extension, ucharpair> extensionVersions = {
+const std::unordered_map<Extension, ucharpair> extension_core_versions = {
 	{ Extension::AMD_seamless_cubemap_per_texture, ucharpair(3, 2) },
 	{ Extension::ARB_ES2_compatibility, ucharpair(4, 1) },
 	{ Extension::ARB_ES3_compatibility, ucharpair(4, 3) },

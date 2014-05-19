@@ -14,10 +14,20 @@ namespace gl {
 } // namespace gl
 """
 #==========================================
+bitfieldsHeaderTemplate = """#pragma once
+
+#include <glbinding/types.h>
+
+namespace gl {
+
+%s
+
+} // namespace gl
+"""
+#==========================================
 constantsHeaderTemplate = """#pragma once
 
 #include <glbinding/types.h>
-#include <glbinding/enums.h>
 
 namespace gl {
 
@@ -27,20 +37,27 @@ namespace gl {
 """
 #==========================================
 constantsNamesTemplate = """#include <glbinding/types.h>
-#include <glbinding/constants.h>
+#include <glbinding/enums.h>
 
 #include "declarations.h"
 
-#include <unordered_map>
-#include <string>
-
 namespace gl {
 
-const std::unordered_map<gl::GLenum, std::string> constantsNames = {
+const std::unordered_map<gl::GLenum, std::string> enum_to_name = {
 	%s
 };
 
-const std::unordered_map<std::string, gl::GLenum> namesToConstants = {
+} // namespace gl
+"""
+#==========================================
+constantsByNameTemplate = """#include <glbinding/types.h>
+#include <glbinding/enums.h>
+
+#include "declarations.h"
+
+namespace gl {
+
+const std::unordered_map<std::string, gl::GLenum> name_to_enum = {
 	%s
 };
 
@@ -73,9 +90,19 @@ def generateEnumsHeader(enums, outputfile):
 	with open(outputfile, 'w') as file:
 		file.write(enumsHeaderTemplate % ("\n".join([ enumDefinition(e) for e in pureEnums ])))
 
+def generateBitfieldsHeader(enums, outputfile):
+	d = groupByType(enums)
+	bitfields = groupByGroup(d["GLbitfield"])
+	
+	a = sorted([ "// %s\n%s" % (group, "\n".join([ constantDefinition(e) for e in values ]))  for group, values in bitfields.items() ])
+	
+	with open(outputfile, 'w') as file:
+		file.write(bitfieldsHeaderTemplate % ("\n\n".join(a)))
+
 def generateConstantsHeader(enums, outputfile):
 	d = groupByType(enums)
 	del d["GLenum"]
+	del d["GLbitfield"]
 	
 	groups = []	
 	for t in sorted(d.keys()):
@@ -91,7 +118,10 @@ def generateConstantNamesSource(enums, outputfile):
 	d = sorted([ es[0] for v, es in groupByValue(pureEnums).items() ])
 	
 	with open(outputfile, 'w') as file:
-		file.write(constantsNamesTemplate % (
-			",\n\t".join([ enumToName(e) for e in d ]),
-			",\n\t".join([ nameToEnum(e) for e in pureEnums ])
-		))
+		file.write(constantsNamesTemplate % (",\n\t".join([ enumToName(e) for e in d ])))	
+		
+def generateConstantsByNameSource(enums, outputfile):
+	pureEnums = [ e for e in enums if e.type == "GLenum" ]
+	
+	with open(outputfile, 'w') as file:
+		file.write(constantsByNameTemplate % (",\n\t".join([ nameToEnum(e) for e in pureEnums ])))

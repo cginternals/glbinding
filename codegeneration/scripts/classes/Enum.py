@@ -56,6 +56,20 @@ def groupByType(enums):
 		
 	return d
 
+def groupByGroup(enums):
+	d = dict()
+	
+	for e in enums:
+		if not e.group in d:
+			d[e.group] = []
+		d[e.group].append(e)
+	
+	
+	for key in d.keys():
+		d[key] = sorted(d[key], key = lambda e: e.value)
+		
+	return d
+
 def extPriority(name):
 	index = name.rfind("_")
 	if index<0:

@@ -22,8 +22,11 @@ def generate(inputfile, directory):
 		"typesHeader" : "include/glbinding/types.h",
 		
 		"enumsHeader" : "include/glbinding/enums.h",
-		"constantsHeader" : "include/glbinding/constants.h",
-		"constantsNamesSource" : "source/constant_names.cpp",
+		"bitfieldsHeader" : "include/glbinding/bitfields.h",
+		"constantsHeader" : "include/glbinding/special_values.h",
+		
+		"constantsNamesSource" : "source/enum_to_name.cpp",
+		"constantsByNameSource" : "source/name_to_enum.cpp",
 		
 		"functionObjectsHeader" : "include/glbinding/FunctionObjects.h",
 		"functionObjectsSource" : "source/FunctionObjects.cpp",
@@ -31,9 +34,11 @@ def generate(inputfile, directory):
 		"functionWrapperSource" : "source/functions.cpp",
 		
 		"extensionsHeader" : "include/glbinding/Extension.h",
-		"extensionsNamesSource" : "source/extension_names.cpp",
-		"extensionsVersionsSource" : "source/extension_versions.cpp",
-		"extensionsRequirementsSource" : "source/extension_requirements.cpp"
+		"extensionsNamesSource" : "source/extension_to_name.cpp",
+		"extensionsByNameSource" : "source/name_to_extension.cpp",
+		"extensionsVersionsSource" : "source/extension_core_versions.cpp",
+		"extensionToFunctionsSource" : "source/extension_to_functions.cpp",
+		"functionToExtensionsSource" : "source/function_to_extensions.cpp"
 	}
 	
 	for key, value in files.items():
@@ -42,8 +47,11 @@ def generate(inputfile, directory):
 	generateTypesHeader(types, files["typesHeader"])
 
 	generateEnumsHeader(enums, files["enumsHeader"])
+	generateBitfieldsHeader(enums, files["bitfieldsHeader"])
+	
 	generateConstantsHeader(enums, files["constantsHeader"])
 	generateConstantNamesSource(enums, files["constantsNamesSource"])
+	generateConstantsByNameSource(enums, files["constantsByNameSource"])
 	
 	generateFunctionObjectsHeader(functions, files["functionObjectsHeader"])
 	generateFunctionObjectsSource(functions, files["functionObjectsSource"])
@@ -52,6 +60,8 @@ def generate(inputfile, directory):
 	
 	generateExtensionHeader(extensions, files["extensionsHeader"])
 	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
+	generateExtensionsByNameSource(extensions, files["extensionsByNameSource"])
 	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
-	generateExtensionRequirementsSource(extensions, files["extensionsRequirementsSource"])
+	generateExtensionToFunctionsSource(extensions, files["extensionToFunctionsSource"])
+	generateFunctionsToExtensionSource(extensions, files["functionToExtensionsSource"])
 	
