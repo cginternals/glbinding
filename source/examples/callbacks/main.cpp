@@ -133,8 +133,8 @@ int main(int /*argc*/, char* /*argv*/[])
         return 1;
     }
 
-    gl::AbstractFunction::enableCallbacksForAll();
-    gl::AbstractFunction::setCallbackVerboseForAll(true);
+    gl::AbstractFunction::setCallbackLevelForAll(gl::AbstractFunction::CallbackLevel::All);
+
     gl::AbstractFunction::setBeforeCallback([](const gl::AbstractFunction & f) {
         std::cout << f.name();
     });

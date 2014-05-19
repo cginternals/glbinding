@@ -15,13 +15,24 @@ namespace gl {
 class GLBINDING_API AbstractFunction
 {
 public:
+    enum class CallbackLevel : unsigned char
+    {
+        None = 0x0,
+        Before = 0x1,
+        After = 0x2,
+        Parameters = 0x3,
+        ReturnValue = 0x4,
+        BeforeAndAfter = Before | After,
+        All = Before | After | Parameters | ReturnValue
+    };
+
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
 
     void initialize(int context);
-    static void initializeFunctions(int context);
 
     const char * name() const;
+
     bool isValid() const;
     bool isValid(int context) const;
 
@@ -29,20 +40,14 @@ public:
 
     std::vector<Extension> extensions() const;
 
+    void setCallbackLevel(CallbackLevel level);
+public:
     static const std::vector<AbstractFunction*> & functions();
 
     static void setContext(int context);
+    static void initializeFunctions(int context);
 
-    void enableCallbacks();
-    void disableCallbacks();
-
-    static void enableCallbacksForAll();
-    static void disableCallbacksForAll();
-    static void enableCallbacksForAllExcept(const std::set<std::string> & blackList);
-
-    void setCallbackVerbose(bool on);
-    static void setCallbackVerboseForAll(bool on);
-
+public:
     using Callback = std::function<void(const AbstractFunction &)>;
     using ParametersCallback = std::function<void(const AbstractFunction &, const std::vector<AbstractValue*> &)>;
     using ReturnValueCallback = std::function<void(const AbstractFunction &, const AbstractValue*)>;
@@ -50,13 +55,15 @@ public:
     static void setBeforeCallback(Callback callback);
     static void setAfterCallback(Callback callback);
     static void setInvalidCallback(Callback callback);
-
     static void setParametersCallback(ParametersCallback callback);
     static void setReturnValueCallback(ReturnValueCallback callback);
+
+    static void setCallbackLevelForAll(CallbackLevel level);
+    static void setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList);
+
 protected:
     const char * m_name;
-    bool m_callbacksEnabled;
-    bool m_verboseCallbacks;
+    CallbackLevel m_callbackLevel;
     std::vector<ProcAddress> m_addresses;
 
     static int s_context;
@@ -68,7 +75,7 @@ protected:
     static ReturnValueCallback s_returnValueCallback;
 
     bool callbacksEnabled() const;
-    bool verboseCallbacks() const;
+    bool isEnabled(CallbackLevel level);
 
     void before();
     void parameters(const std::vector<AbstractValue*> & values);

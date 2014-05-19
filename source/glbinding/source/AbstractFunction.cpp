@@ -23,8 +23,7 @@ int AbstractFunction::s_context = 0;
 
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
-, m_callbacksEnabled(false)
-, m_verboseCallbacks(false)
+, m_callbackLevel(CallbackLevel::None)
 {
 }
 
@@ -35,6 +34,24 @@ AbstractFunction::~AbstractFunction()
 const std::vector<AbstractFunction*> & AbstractFunction::functions()
 {
     return functionList;
+}
+
+void AbstractFunction::initializeFunctions(int context)
+{
+    for (AbstractFunction * function : functions())
+    {
+        function->initialize(context);
+    }
+}
+
+void AbstractFunction::initialize(int context)
+{
+    ProcAddress _address = GetProcAddress(m_name);
+
+    if (m_addresses.size() <= static_cast<unsigned>(context))
+        m_addresses.resize(context+1);
+
+    m_addresses[context] = _address;
 }
 
 std::vector<Extension> AbstractFunction::extensions() const
@@ -71,61 +88,35 @@ ProcAddress AbstractFunction::address() const
 
 bool AbstractFunction::callbacksEnabled() const
 {
-    return m_callbacksEnabled;
+    return m_callbackLevel != CallbackLevel::None;
 }
 
-bool AbstractFunction::verboseCallbacks() const
+bool AbstractFunction::isEnabled(CallbackLevel level)
 {
-    return m_verboseCallbacks;
+    return (static_cast<unsigned char>(m_callbackLevel) & static_cast<unsigned char>(level)) == static_cast<unsigned char>(level);
 }
 
-void AbstractFunction::enableCallbacks()
+void AbstractFunction::setCallbackLevel(CallbackLevel level)
 {
-    m_callbacksEnabled = true;
+    m_callbackLevel = level;
 }
 
-void AbstractFunction::disableCallbacks()
-{
-    m_callbacksEnabled = false;
-}
-
-void AbstractFunction::setCallbackVerbose(bool on)
-{
-    m_verboseCallbacks = on;
-}
-
-void AbstractFunction::setCallbackVerboseForAll(bool on)
+void AbstractFunction::setCallbackLevelForAll(CallbackLevel level)
 {
     for (AbstractFunction * function : functions())
     {
-        function->setCallbackVerbose(on);
+        function->setCallbackLevel(level);
     }
 }
 
-void AbstractFunction::enableCallbacksForAll()
-{
-    for (AbstractFunction * function : functions())
-    {
-        function->enableCallbacks();
-    }
-}
-
-void AbstractFunction::enableCallbacksForAllExcept(const std::set<std::string> & blackList)
+void AbstractFunction::setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : functions())
     {
         if (blackList.find(function->name()) == blackList.end())
         {
-            function->enableCallbacks();
+            function->setCallbackLevel(level);
         }
-    }
-}
-
-void AbstractFunction::disableCallbacksForAll()
-{
-    for (AbstractFunction * function : functions())
-    {
-        function->disableCallbacks();
     }
 }
 
@@ -177,7 +168,6 @@ void AbstractFunction::parameters(const std::vector<AbstractValue*> & values)
     }
 }
 
-
 void AbstractFunction::returnValue(const AbstractValue * value)
 {
     if (s_returnValueCallback)
@@ -190,24 +180,6 @@ void AbstractFunction::invalid()
 {
     if (s_invalidCallback)
         s_invalidCallback(*this);
-}
-
-void AbstractFunction::initializeFunctions(int context)
-{
-    for (AbstractFunction * function : functions())
-    {
-        function->initialize(context);
-    }
-}
-
-void AbstractFunction::initialize(int context)
-{
-    ProcAddress _address = GetProcAddress(m_name);
-
-    if (m_addresses.size() <= static_cast<unsigned>(context))
-        m_addresses.resize(context+1);
-
-    m_addresses[context] = _address;
 }
 
 } // namespace gl
