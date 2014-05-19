@@ -76,16 +76,16 @@ extensionRequirementsTemplate = """#include <glbinding/Extension.h>
 #include "declarations.h"
 
 #include <unordered_map>
-#include <set>
+#include <vector>
 #include <string>
 
 namespace gl {
 
-const std::unordered_map<Extension, std::set<std::string>> requiredFunctionsByExtension = {
+const std::unordered_map<Extension, std::vector<std::string>> requiredFunctionsByExtension = {
 	%s
 };
 
-const std::unordered_map<std::string, std::set<Extension>> extensionsRequiringFunction = {
+const std::unordered_map<std::string, std::vector<Extension>> extensionsRequiringFunction = {
 	%s
 };
 

@@ -618,6 +618,11 @@ void BlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 	return functions::BlendEquationSeparateiARB(buf, modeRGB, modeAlpha);
 }
 
+void BlendEquationSeparateiEXT(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
+{
+	return functions::BlendEquationSeparateiEXT(buf, modeRGB, modeAlpha);
+}
+
 void BlendEquationi(GLuint buf, GLenum mode)
 {
 	return functions::BlendEquationi(buf, mode);
@@ -626,6 +631,11 @@ void BlendEquationi(GLuint buf, GLenum mode)
 void BlendEquationiARB(GLuint buf, GLenum mode)
 {
 	return functions::BlendEquationiARB(buf, mode);
+}
+
+void BlendEquationiEXT(GLuint buf, GLenum mode)
+{
+	return functions::BlendEquationiEXT(buf, mode);
 }
 
 void BlendFunc(GLenum sfactor, GLenum dfactor)
@@ -673,6 +683,11 @@ void BlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcA
 	return functions::BlendFuncSeparateiARB(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
 
+void BlendFuncSeparateiEXT(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
+{
+	return functions::BlendFuncSeparateiEXT(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+}
+
 void BlendFunci(GLuint buf, GLenum src, GLenum dst)
 {
 	return functions::BlendFunci(buf, src, dst);
@@ -681,6 +696,11 @@ void BlendFunci(GLuint buf, GLenum src, GLenum dst)
 void BlendFunciARB(GLuint buf, GLenum src, GLenum dst)
 {
 	return functions::BlendFunciARB(buf, src, dst);
+}
+
+void BlendFunciEXT(GLuint buf, GLenum src, GLenum dst)
+{
+	return functions::BlendFunciEXT(buf, src, dst);
 }
 
 void BlendParameteriNV(GLenum pname, GLint value)
@@ -1258,6 +1278,11 @@ void ColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a
 	return functions::ColorMaski(index, r, g, b, a);
 }
 
+void ColorMaskiEXT(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
+{
+	return functions::ColorMaskiEXT(index, r, g, b, a);
+}
+
 void ColorMaterial(GLenum face, GLenum mode)
 {
 	return functions::ColorMaterial(face, mode);
@@ -1651,6 +1676,11 @@ void CopyConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLint x, G
 void CopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
 {
 	return functions::CopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
+}
+
+void CopyImageSubDataEXT(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+	return functions::CopyImageSubDataEXT(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
 }
 
 void CopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
@@ -2293,6 +2323,11 @@ void Disablei(GLenum target, GLuint index)
 	return functions::Disablei(target, index);
 }
 
+void DisableiEXT(GLenum target, GLuint index)
+{
+	return functions::DisableiEXT(target, index);
+}
+
 void DiscardFramebufferEXT(GLenum target, GLsizei numAttachments, const GLenum * attachments)
 {
 	return functions::DiscardFramebufferEXT(target, numAttachments, attachments);
@@ -2676,6 +2711,11 @@ void EnableVertexAttribArrayARB(GLuint index)
 void Enablei(GLenum target, GLuint index)
 {
 	return functions::Enablei(target, index);
+}
+
+void EnableiEXT(GLenum target, GLuint index)
+{
+	return functions::EnableiEXT(target, index);
 }
 
 void End()
@@ -5003,9 +5043,19 @@ void GetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint * params)
 	return functions::GetSamplerParameterIiv(sampler, pname, params);
 }
 
+void GetSamplerParameterIivEXT(GLuint sampler, GLenum pname, GLint * params)
+{
+	return functions::GetSamplerParameterIivEXT(sampler, pname, params);
+}
+
 void GetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint * params)
 {
 	return functions::GetSamplerParameterIuiv(sampler, pname, params);
+}
+
+void GetSamplerParameterIuivEXT(GLuint sampler, GLenum pname, GLuint * params)
+{
+	return functions::GetSamplerParameterIuivEXT(sampler, pname, params);
 }
 
 void GetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat * params)
@@ -5966,6 +6016,11 @@ GLboolean IsEnabledIndexedEXT(GLenum target, GLuint index)
 GLboolean IsEnabledi(GLenum target, GLuint index)
 {
 	return functions::IsEnabledi(target, index);
+}
+
+GLboolean IsEnablediEXT(GLenum target, GLuint index)
+{
+	return functions::IsEnablediEXT(target, index);
 }
 
 GLboolean IsFenceAPPLE(GLuint fence)
@@ -7958,6 +8013,11 @@ void PatchParameteri(GLenum pname, GLint value)
 	return functions::PatchParameteri(pname, value);
 }
 
+void PatchParameteriEXT(GLenum pname, GLint value)
+{
+	return functions::PatchParameteriEXT(pname, value);
+}
+
 void PathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat * coeffs)
 {
 	return functions::PathColorGenNV(color, genMode, colorFormat, coeffs);
@@ -9828,9 +9888,19 @@ void SamplerParameterIiv(GLuint sampler, GLenum pname, const GLint * param)
 	return functions::SamplerParameterIiv(sampler, pname, param);
 }
 
+void SamplerParameterIivEXT(GLuint sampler, GLenum pname, const GLint * param)
+{
+	return functions::SamplerParameterIivEXT(sampler, pname, param);
+}
+
 void SamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint * param)
 {
 	return functions::SamplerParameterIuiv(sampler, pname, param);
+}
+
+void SamplerParameterIuivEXT(GLuint sampler, GLenum pname, const GLuint * param)
+{
+	return functions::SamplerParameterIuivEXT(sampler, pname, param);
 }
 
 void SamplerParameterf(GLuint sampler, GLenum pname, GLfloat param)
@@ -10416,6 +10486,11 @@ void TexBufferEXT(GLenum target, GLenum internalformat, GLuint buffer)
 void TexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
 	return functions::TexBufferRange(target, internalformat, buffer, offset, size);
+}
+
+void TexBufferRangeEXT(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
+{
+	return functions::TexBufferRangeEXT(target, internalformat, buffer, offset, size);
 }
 
 void TexBumpParameterfvATI(GLenum pname, const GLfloat * param)
@@ -11321,6 +11396,11 @@ void TextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoff
 void TextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
 {
 	return functions::TextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
+}
+
+void TextureViewEXT(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
+{
+	return functions::TextureViewEXT(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
 }
 
 void TrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum transform)

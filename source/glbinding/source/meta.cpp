@@ -131,20 +131,20 @@ std::set<gl::GLenum> allEnums()
     return values;
 }
 
-std::set<std::string> getRequiredFunctions(Extension extension)
+std::vector<std::string> getRequiredFunctions(Extension extension)
 {
     auto it = requiredFunctionsByExtension.find(extension);
     if (it == requiredFunctionsByExtension.end())
-        return std::set<std::string>();
+        return std::vector<std::string>();
 
     return it->second;
 }
 
-std::set<Extension> getExtensionsRequiring(const std::string & functionName)
+std::vector<Extension> getExtensionsRequiring(const std::string & functionName)
 {
     auto it = extensionsRequiringFunction.find(functionName);
     if (it == extensionsRequiringFunction.end())
-        return std::set<Extension>();
+        return std::vector<Extension>();
 
     return it->second;
 }

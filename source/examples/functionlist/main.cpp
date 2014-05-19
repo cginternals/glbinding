@@ -17,7 +17,7 @@ void errorfun(int errnum, const char* errmsg)
 
 void printExtensionInfo(const gl::AbstractFunction * function, const std::set<gl::Extension> & extensions)
 {
-    std::set<gl::Extension> required = function->extensions();
+    std::vector<gl::Extension> required = function->extensions();
     if (!required.empty())
     {
         std::cout << "\t\t(";
