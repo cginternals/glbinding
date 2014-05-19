@@ -27,7 +27,7 @@ public:
 
     ProcAddress address() const;
 
-    std::set<Extension> extensions() const;
+    std::vector<Extension> extensions() const;
 
     static const std::set<AbstractFunction*> & functions();
 
