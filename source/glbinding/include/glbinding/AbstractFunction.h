@@ -20,15 +20,17 @@ public:
         None = 0x0,
         Before = 0x1,
         After = 0x2,
-        Parameters = 0x3,
-        ReturnValue = 0x4,
+        Parameters = 0x4,
+        ReturnValue = 0x8,
+        Invalid = 0x10,
         BeforeAndAfter = Before | After,
-        All = Before | After | Parameters | ReturnValue
+        All = Before | After | Parameters | ReturnValue | Invalid
     };
 
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
 
+    void initialize();
     void initialize(int context);
 
     const char * name() const;
@@ -45,6 +47,7 @@ public:
     static const std::vector<AbstractFunction*> & functions();
 
     static void setContext(int context);
+    static void initializeFunctions();
     static void initializeFunctions(int context);
 
 public:
@@ -64,7 +67,16 @@ public:
 protected:
     const char * m_name;
     CallbackLevel m_callbackLevel;
-    std::vector<ProcAddress> m_addresses;
+
+    struct State
+    {
+        State();
+
+        ProcAddress address;
+        bool initialized;
+    };
+
+    std::vector<State> m_states;
 
     static int s_context;
 
@@ -73,6 +85,16 @@ protected:
     static Callback s_invalidCallback;
     static ParametersCallback s_parametersCallback;
     static ReturnValueCallback s_returnValueCallback;
+
+    bool hasState(int context) const;
+    bool hasState() const;
+
+    State & getState(int context);
+    const State & getState(int context) const;
+
+    State & currentState();
+    const State & currentState() const;
+
 
     bool callbacksEnabled() const;
     bool isEnabled(CallbackLevel level);

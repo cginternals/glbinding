@@ -65,11 +65,13 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 template <typename ReturnType, typename... Arguments>
 ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments)
 {
-    if(isValid())
+    ProcAddress myAddress = address();
+
+    if (myAddress != nullptr)
     {
         if (!callbacksEnabled())
         {
-            return reinterpret_cast<Signature>(address())(std::forward<Arguments>(arguments)...);
+            return reinterpret_cast<Signature>(myAddress)(std::forward<Arguments>(arguments)...);
         }
         else
         {

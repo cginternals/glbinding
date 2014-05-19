@@ -27,6 +27,12 @@ AbstractFunction::AbstractFunction(const char * _name)
 {
 }
 
+AbstractFunction::State::State()
+: address(nullptr)
+, initialized(false)
+{
+}
+
 AbstractFunction::~AbstractFunction()
 {
 }
@@ -34,6 +40,44 @@ AbstractFunction::~AbstractFunction()
 const std::vector<AbstractFunction*> & AbstractFunction::functions()
 {
     return functionList;
+}
+
+bool AbstractFunction::hasState() const
+{
+    return hasState(s_context);
+}
+
+bool AbstractFunction::hasState(int context) const
+{
+    return m_states.size() < static_cast<unsigned>(context);
+}
+
+const AbstractFunction::State & AbstractFunction::getState(int context) const
+{
+    return m_states.at(context);
+}
+
+AbstractFunction::State & AbstractFunction::getState(int context)
+{
+    if (m_states.size() <= static_cast<unsigned>(context))
+        m_states.resize(context+1);
+
+    return m_states[context];
+}
+
+AbstractFunction::State & AbstractFunction::currentState()
+{
+    return getState(s_context);
+}
+
+const AbstractFunction::State & AbstractFunction::currentState() const
+{
+    return getState(s_context);
+}
+
+void AbstractFunction::initializeFunctions()
+{
+    initializeFunctions(s_context);
 }
 
 void AbstractFunction::initializeFunctions(int context)
@@ -44,14 +88,20 @@ void AbstractFunction::initializeFunctions(int context)
     }
 }
 
+void AbstractFunction::initialize()
+{
+    initialize(s_context);
+}
+
 void AbstractFunction::initialize(int context)
 {
-    ProcAddress _address = GetProcAddress(m_name);
+    State & state = getState(context);
 
-    if (m_addresses.size() <= static_cast<unsigned>(context))
-        m_addresses.resize(context+1);
-
-    m_addresses[context] = _address;
+    if (!state.initialized)
+    {
+        state.address = GetProcAddress(m_name);
+        state.initialized = true;
+    }
 }
 
 std::vector<Extension> AbstractFunction::extensions() const
@@ -76,14 +126,25 @@ bool AbstractFunction::isValid() const
 
 bool AbstractFunction::isValid(int context) const
 {
-    return m_addresses[context] != nullptr;
+    if (!hasState(context))
+        return false;
+
+    return address() != nullptr;
 }
 
 ProcAddress AbstractFunction::address() const
 {
-    assert(m_addresses.size() >= static_cast<unsigned>(s_context));
+    const State & state = currentState();
 
-    return m_addresses[s_context];
+    /*if (!state.initialized)
+    {
+        const_cast<AbstractFunction*>(this)->initialize();
+
+        return currentState().address;
+        // TODO: lazy initialization
+    }*/
+
+    return state.address;
 }
 
 bool AbstractFunction::callbacksEnabled() const

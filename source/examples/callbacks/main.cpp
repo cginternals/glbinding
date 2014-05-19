@@ -135,6 +135,10 @@ int main(int /*argc*/, char* /*argv*/[])
 
     gl::AbstractFunction::setCallbackLevelForAll(gl::AbstractFunction::CallbackLevel::All);
 
+    gl::AbstractFunction::setInvalidCallback([](const gl::AbstractFunction & f) {
+        std::cout << "Calling unresolved function: " << f.name() << std::endl;
+    });
+
     gl::AbstractFunction::setBeforeCallback([](const gl::AbstractFunction & f) {
         std::cout << f.name();
     });
