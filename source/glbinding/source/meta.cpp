@@ -1,88 +1,62 @@
 #include <glbinding/meta.h>
+#include <glbinding/GLenum.h>
 
 #include "declarations.h"
 
 #include <limits>
+#include <sstream>
 
 namespace gl {
 namespace meta {
 
 std::string getName(Extension extension)
 {
-    auto it = extensionNames.find(extension);
-    if (it == extensionNames.end())
-        return "Unknown";
+    auto it = extension_to_name.find(extension);
+
+    if (it == extension_to_name.end())
+        return "UnknownExtension";
 
     return it->second;
 }
 
 Extension extensionFromString(const std::string & name)
 {
-    auto it = namesToExtension.find(name);
-    if (it == namesToExtension.end())
+    auto it = name_to_extension.find(name);
+
+    if (it == name_to_extension.end())
         return Extension::Unknown;
-
-    return it->second;
-}
-
-gl::GLuint64 getValue(const std::string & name)
-{
-    auto it = namesToConstants.find(name);
-    if (it == namesToConstants.end())
-        return -1;
 
     return it->second;
 }
 
 gl::GLenum getEnum(const std::string & name)
 {
-    gl::GLuint64 value = getValue(name);
+    auto it = name_to_enum.find(name);
 
-    if (value > std::numeric_limits<gl::GLenum>::max())
-    {
-        return -1;
-    }
-
-    return static_cast<gl::GLenum>(value);
-}
-
-std::string getName(gl::GLenum constant)
-{
-    return getName(static_cast<gl::GLuint64>(constant));
-}
-
-std::string getName(gl::GLuint64 constant)
-{
-    auto it = constantsNames.find(constant);
-    if (it == constantsNames.end())
-        return "Unknown";
+    if (it == name_to_enum.end())
+        return gl::GLenum(static_cast<unsigned int>(-1));
 
     return it->second;
 }
 
-std::vector<std::string> getNames(gl::GLenum constant)
+std::string getName(gl::GLenum constant)
 {
-    return getNames(static_cast<gl::GLuint64>(constant));
-}
+    auto it = enum_to_name.find(constant);
 
-std::vector<std::string> getNames(gl::GLuint64 constant)
-{
-    std::vector<std::string> names;
-
-    auto range = constantsNames.equal_range(constant);
-
-    for (auto it = range.first; it != range.second; ++it)
+    if (it == enum_to_name.end())
     {
-        names.push_back(it->second);
+        std::stringstream ss;
+        ss << "UnknownEnum(0x" << std::hex << constant.value << ")";
+        return ss.str();
     }
 
-    return names;
+    return it->second;
 }
 
 std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension)
 {
-    auto it = extensionVersions.find(extension);
-    if (it == extensionVersions.end())
+    auto it = extension_core_versions.find(extension);
+    if (it == extension_core_versions.end())
         return std::pair<unsigned char, unsigned char>(0, 0);
 
     return it->second;
@@ -92,7 +66,7 @@ std::vector<Extension> allExtensions()
 {
     std::vector<Extension> extensions;
 
-    for (auto & pair : extensionNames)
+    for (auto & pair : extension_to_name)
     {
         if (pair.first == Extension::Unknown)
             continue;
@@ -103,11 +77,11 @@ std::vector<Extension> allExtensions()
     return extensions;
 }
 
-std::set<gl::GLuint64> allValues()
+std::set<gl::GLenum> allEnums()
 {
-    std::set<gl::GLuint64> values;
+    std::set<gl::GLenum> values;
 
-    for (auto & pair : constantsNames)
+    for (auto & pair : enum_to_name)
     {
         values.insert(pair.first);
     }
@@ -115,26 +89,11 @@ std::set<gl::GLuint64> allValues()
     return values;
 }
 
-std::set<gl::GLenum> allEnums()
-{
-    std::set<gl::GLenum> values;
-
-    for (auto & pair : constantsNames)
-    {
-        gl::GLuint64 value = pair.first;
-        if (value > std::numeric_limits<gl::GLenum>::max())
-            continue;
-
-        values.insert(static_cast<gl::GLenum>(value));
-    }
-
-    return values;
-}
-
 std::vector<std::string> getRequiredFunctions(Extension extension)
 {
-    auto it = requiredFunctionsByExtension.find(extension);
-    if (it == requiredFunctionsByExtension.end())
+    auto it = extension_to_functions.find(extension);
+
+    if (it == extension_to_functions.end())
         return std::vector<std::string>();
 
     return it->second;
@@ -142,8 +101,9 @@ std::vector<std::string> getRequiredFunctions(Extension extension)
 
 std::vector<Extension> getExtensionsRequiring(const std::string & functionName)
 {
-    auto it = extensionsRequiringFunction.find(functionName);
-    if (it == extensionsRequiringFunction.end())
+    auto it = function_to_extensions.find(functionName);
+
+    if (it == function_to_extensions.end())
         return std::vector<Extension>();
 
     return it->second;

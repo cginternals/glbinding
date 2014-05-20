@@ -1,51 +1,97 @@
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/meta.h>
 
+#include "declarations.h"
+
 #include <iostream>
 #include <memory>
 #include <set>
 #include <cassert>
 
+#include <iostream>
+
 namespace gl {
-
-namespace {
-
-std::set<AbstractFunction*> & allFunctions()
-{
-    static std::set<AbstractFunction*> functions;
-
-    return functions;
-}
-
-bool contains(const std::set<std::string> & list, const char * name)
-{
-    return list.find(name) != list.end();
-}
-
-}
 
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
 AbstractFunction::Callback AbstractFunction::s_afterCallback;
-AbstractFunction::Callback AbstractFunction::s_invalidCallback;
+AbstractFunction::Callback AbstractFunction::s_unresolvedCallback;
+AbstractFunction::ParametersCallback AbstractFunction::s_parametersCallback;
+AbstractFunction::ReturnValueCallback AbstractFunction::s_returnValueCallback;
 
 int AbstractFunction::s_context = 0;
 
 
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
-, m_callbacksEnabled(false)
+, m_callbackLevel(CallbackLevel::None)
 {
-    allFunctions().insert(this);
+}
+
+AbstractFunction::State::State()
+: address(nullptr)
+, initialized(false)
+{
 }
 
 AbstractFunction::~AbstractFunction()
 {
-    allFunctions().erase(this);
 }
 
-const std::set<AbstractFunction*> & AbstractFunction::functions()
+const std::vector<AbstractFunction*> & AbstractFunction::functions()
 {
-    return allFunctions();
+    return functionList;
+}
+
+bool AbstractFunction::hasState() const
+{
+    return hasState(s_context);
+}
+
+bool AbstractFunction::hasState(int context) const
+{
+    return m_states.size() < static_cast<unsigned>(context);
+}
+
+AbstractFunction::State & AbstractFunction::getState(int context) const
+{
+    if (m_states.size() <= static_cast<unsigned>(context))
+        m_states.resize(context+1);
+
+    return m_states[context];
+}
+
+AbstractFunction::State & AbstractFunction::currentState() const
+{
+    return getState(s_context);
+}
+
+void AbstractFunction::initializeFunctions()
+{
+    initializeFunctions(s_context);
+}
+
+void AbstractFunction::initializeFunctions(int context)
+{
+    for (AbstractFunction * function : functions())
+    {
+        function->initialize(context);
+    }
+}
+
+void AbstractFunction::initialize()
+{
+    initialize(s_context);
+}
+
+void AbstractFunction::initialize(int context)
+{
+    State & state = getState(context);
+
+    if (!state.initialized)
+    {
+        state.address = GetProcAddress(m_name);
+        state.initialized = true;
+    }
 }
 
 std::vector<Extension> AbstractFunction::extensions() const
@@ -63,62 +109,62 @@ const char * AbstractFunction::name() const
     return m_name;
 }
 
-bool AbstractFunction::isValid() const
+bool AbstractFunction::isResolved() const
 {
-    return isValid(s_context);
+    return isResolved(s_context);
 }
 
-bool AbstractFunction::isValid(int context) const
+bool AbstractFunction::isResolved(int context) const
 {
-    return m_addresses[context] != nullptr;
+    if (!hasState(context))
+        return false;
+
+    return currentState().address != nullptr;
 }
 
 ProcAddress AbstractFunction::address() const
 {
-    assert(m_addresses.size() >= static_cast<unsigned>(s_context));
+    const State & state = currentState();
 
-    return m_addresses[s_context];
+    if (!state.initialized)
+    {
+        const_cast<AbstractFunction*>(this)->initialize();
+    }
+
+    return state.address;
 }
 
 bool AbstractFunction::callbacksEnabled() const
 {
-    return m_callbacksEnabled;
+    return m_callbackLevel != CallbackLevel::None;
 }
 
-void AbstractFunction::enableCallbacks()
+bool AbstractFunction::isEnabled(CallbackLevel level)
 {
-    m_callbacksEnabled = true;
+    return (static_cast<unsigned char>(m_callbackLevel) & static_cast<unsigned char>(level)) == static_cast<unsigned char>(level);
 }
 
-void AbstractFunction::disableCallbacks()
+void AbstractFunction::setCallbackLevel(CallbackLevel level)
 {
-    m_callbacksEnabled = false;
+    m_callbackLevel = level;
 }
 
-void AbstractFunction::enableCallbacksForAll()
+void AbstractFunction::setCallbackLevelForAll(CallbackLevel level)
 {
     for (AbstractFunction * function : functions())
     {
-        function->enableCallbacks();
+        function->setCallbackLevel(level);
     }
 }
 
-void AbstractFunction::enableCallbacksForAllExcept(const std::set<std::string> & blackList)
+void AbstractFunction::setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : functions())
     {
-        if (!contains(blackList, function->name()))
+        if (blackList.find(function->name()) == blackList.end())
         {
-            function->enableCallbacks();
+            function->setCallbackLevel(level);
         }
-    }
-}
-
-void AbstractFunction::disableCallbacksForAll()
-{
-    for (AbstractFunction * function : functions())
-    {
-        function->disableCallbacks();
     }
 }
 
@@ -132,45 +178,66 @@ void AbstractFunction::setAfterCallback(Callback callback)
     s_afterCallback = callback;
 }
 
-void AbstractFunction::setInvalidCallback(Callback callback)
+void AbstractFunction::setUnresolvedCallback(Callback callback)
 {
-    s_invalidCallback = callback;
+    s_unresolvedCallback = callback;
+}
+
+void AbstractFunction::setParametersCallback(ParametersCallback callback)
+{
+    s_parametersCallback = callback;
+}
+
+void AbstractFunction::setReturnValueCallback(ReturnValueCallback callback)
+{
+    s_returnValueCallback = callback;
 }
 
 void AbstractFunction::before()
 {
     if (s_beforeCallback)
+    {
         s_beforeCallback(*this);
+    }
 }
 
 void AbstractFunction::after()
 {
     if (s_afterCallback)
-        s_afterCallback(*this);
-}
-
-void AbstractFunction::invalid()
-{
-    if (s_invalidCallback)
-        s_invalidCallback(*this);
-}
-
-void AbstractFunction::initializeFunctions(int context)
-{
-    for (AbstractFunction * function : allFunctions())
     {
-        function->initialize(context);
+        s_afterCallback(*this);
     }
 }
 
-void AbstractFunction::initialize(int context)
+void AbstractFunction::parameters(const std::vector<AbstractValue*> & values)
 {
-    ProcAddress _address = GetProcAddress(m_name);
+    if (s_parametersCallback)
+    {
+        s_parametersCallback(*this, values);
+    }
 
-    if (m_addresses.size() <= static_cast<unsigned>(context))
-        m_addresses.resize(context+1);
+    for (gl::AbstractValue * value : values)
+    {
+        delete value;
+    }
+}
 
-    m_addresses[context] = _address;
+void AbstractFunction::returnValue(const AbstractValue * value)
+{
+    if (s_returnValueCallback)
+    {
+        s_returnValueCallback(*this, value);
+    }
+
+    delete value;
+}
+
+void AbstractFunction::unresolved()
+{
+    if (s_unresolvedCallback)
+    {
+        s_unresolvedCallback(*this);
+    }
 }
 
 } // namespace gl

@@ -47,29 +47,48 @@ set(api_includes
     
     ${include_path}/constants.h
     ${include_path}/glbinding.h
-    ${include_path}/functions.h
     ${include_path}/GetProcAddress.h
+    ${include_path}/GLenum.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
-    ${include_path}/FunctionObjects.h
     ${include_path}/Extension.h
     ${include_path}/AbstractFunction.h
-    ${include_path}/types.h
     ${include_path}/meta.h
+    ${include_path}/AbstractValue.h
+    ${include_path}/Value.h
+    ${include_path}/Value.hpp
+    
+    # generated
+    ${include_path}/types.h
+    ${include_path}/enums.h
+    ${include_path}/bitfields.h
+    ${include_path}/special_values.h
+    ${include_path}/functions.h
+    ${include_path}/FunctionObjects.h
 )
 
 set(sources
     ${source_path}/glbinding.cpp
-    ${source_path}/functions.cpp
+    ${source_path}/GLenum.cpp
     ${source_path}/GetProcAddress.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/AbstractFunction.cpp
     ${source_path}/declarations.h
-    ${source_path}/extension_names.cpp
-    ${source_path}/extension_versions.cpp
-    ${source_path}/constant_names.cpp
-    ${source_path}/extension_requirements.cpp
     ${source_path}/meta.cpp
+    ${source_path}/AbstractValue.cpp
+    ${source_path}/Value.cpp
+    
+    #generated
+    ${source_path}/functions.cpp
+    ${source_path}/FunctionObjects.cpp
+    ${source_path}/function_list.cpp
+    ${source_path}/enum_to_name.cpp
+    ${source_path}/name_to_enum.cpp
+    ${source_path}/extension_to_name.cpp
+    ${source_path}/name_to_extension.cpp
+    ${source_path}/extension_core_versions.cpp
+    ${source_path}/function_to_extensions.cpp
+    ${source_path}/extension_to_functions.cpp
 )
 
 # Group source files

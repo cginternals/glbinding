@@ -7,11 +7,20 @@ typesHeaderTemplate = """#pragma once
 #include <cstddef>
 #include <cstdint>
 
+#ifdef _MSC_VER
+#include <windows.h>
+#else
+#define APIENTRY
+#endif
+
 namespace gl {
 
 %s
 
 } // namespace gl
+
+#include <glbinding/GLenum.h>
+
 """
 #==========================================
 
@@ -28,17 +37,18 @@ def convertTypedef(t):
 	if '\n' in t.value:
 		return multilineConvertTypedef(t)
 		
+	if t.name == "GLenum":
+		return "struct GLenum;"
+		
 	if not t.value.startswith("typedef"):
 		return t.value
 	else:
 		return "using "+t.name+" = "+t.typevalue[8:]
-		
 
 def convertType(t):
-	return convertTypedef(t).replace(" ;", ";").replace("( *)", "(*)")
+	return convertTypedef(t).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(APIENTRY *)")
 
 def generateTypesHeader(types, outputfile):
 	with open(outputfile, 'w') as file:
 		file.write(typesHeaderTemplate % "\n".join([convertType(t) for t in types ]))
-		
-		
+
