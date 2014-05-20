@@ -315,7 +315,7 @@ int main(int /*argc*/, char* /*argv*/[])
 
     gl::AbstractFunction::setAfterCallback([](const gl::AbstractFunction &) {
         gl::GLenum error = gl::GetError();
-        if (error.value != gl::NO_ERROR_)
+        if (error != gl::NO_ERROR_)
         {
             std::cout << "Error: " << error.toString() << std::endl;
         }
