@@ -175,6 +175,8 @@ void glbindingExample()
 
 void compare()
 {
+    const int ITERATIONS = 10000;
+
     Timer timer;
 
     timer.start("glewInit()");
@@ -189,16 +191,17 @@ void compare()
 
     timer.restart("glew calls");
 
-    glewExample();
+    for (int i = 0; i < ITERATIONS; ++i)
+        glewExample();
 
     timer.restart("glbinding calls");
 
-    glbindingExample();
+    for (int i = 0; i < ITERATIONS; ++i)
+        glbindingExample();
 
     timer.stop();
 
-    gl::AbstractFunction::setCallbackLevelForAllExcept(gl::AbstractFunction::CallbackLevel::All, { "glGetError" });
-    gl::AbstractFunction::setBeforeCallback([](const gl::AbstractFunction & ) {});
+    gl::AbstractFunction::setCallbackLevelForAllExcept(gl::AbstractFunction::CallbackLevel::After, { "glGetError" });
     gl::AbstractFunction::setAfterCallback([](const gl::AbstractFunction &) {
         gl::GLenum error = gl::GetError();
         if (error.value != gl::NO_ERROR_)
@@ -206,12 +209,15 @@ void compare()
             std::cout << "Error: " << error.toString() << std::endl;
         }
     });
-    gl::AbstractFunction::setParametersCallback([](const gl::AbstractFunction &, const std::vector<gl::AbstractValue*> & ) {});
-    gl::AbstractFunction::setReturnValueCallback([](const gl::AbstractFunction &, const gl::AbstractValue* ) {});
-
     timer.start("glbinding calls with callbacks");
 
-    glbindingExample();
+    for (int i = 0; i < ITERATIONS; ++i)
+        glbindingExample();
+
+    timer.restart("glew calls");
+
+    for (int i = 0; i < ITERATIONS; ++i)
+        glewExample();
 
     timer.stop();
 }
