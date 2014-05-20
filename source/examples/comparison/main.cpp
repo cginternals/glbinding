@@ -13,6 +13,7 @@
 #include <iostream>
 #include <chrono>
 #include <ratio>
+#include <thread>
 
 class Timer
 {
@@ -132,6 +133,81 @@ void glewExample()
     glDeleteVertexArrays(1, &vaoId);
 }
 
+void glewCheckGLError()
+{
+    GLenum error = glGetError();
+    if (error != GL_NO_ERROR)
+    {
+        std::cout << "Error: 0x" << std::hex << error << std::endl;
+    }
+}
+
+void glewExampleWithErrorChecking()
+{
+    GLuint vaoId;
+    GLuint cornerBufferId;
+    glGenVertexArrays(1, &vaoId);
+    glewCheckGLError();
+    glGenBuffers(1, &cornerBufferId);
+    glewCheckGLError();
+    GLuint programId = glCreateProgram();
+    glewCheckGLError();
+
+    GLuint vertexShaderId = glCreateShader(GL_VERTEX_SHADER);
+    glewCheckGLError();
+    glShaderSource(vertexShaderId, 1, &vertexShaderCode, 0);
+    glewCheckGLError();
+    glCompileShader(vertexShaderId);
+    glewCheckGLError();
+
+    GLuint fragmentShaderId = glCreateShader(GL_FRAGMENT_SHADER);
+    glewCheckGLError();
+    glShaderSource(fragmentShaderId, 1, &fragmentShaderCode, 0);
+    glewCheckGLError();
+    glCompileShader(fragmentShaderId);
+    glewCheckGLError();
+
+    glAttachShader(programId, vertexShaderId);
+    glewCheckGLError();
+    glAttachShader(programId, fragmentShaderId);
+    glewCheckGLError();
+    glLinkProgram(programId);
+    glewCheckGLError();
+
+    glBindBuffer(GL_ARRAY_BUFFER, cornerBufferId);
+    glewCheckGLError();
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vec2)*4, cornerData, GL_STATIC_DRAW);
+    glewCheckGLError();
+
+    glBindVertexArray(vaoId);
+    glewCheckGLError();
+
+    GLint attributeIndex = glGetAttribLocation(programId, "corner");
+    glewCheckGLError();
+    GLint bindingIndex = 0;
+    glVertexAttribBinding(attributeIndex, bindingIndex);
+    glewCheckGLError();
+    glBindVertexBuffer(bindingIndex, cornerBufferId, 0, sizeof(vec2));
+    glewCheckGLError();
+    glVertexAttribFormat(attributeIndex, 2, GL_FLOAT, GL_FALSE, 0);
+    glewCheckGLError();
+    glEnableVertexAttribArray(attributeIndex);
+    glewCheckGLError();
+
+    glUseProgram(programId);
+    glewCheckGLError();
+
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glewCheckGLError();
+
+    glDeleteProgram(programId);
+    glewCheckGLError();
+    glDeleteBuffers(1, &cornerBufferId);
+    glewCheckGLError();
+    glDeleteVertexArrays(1, &vaoId);
+    glewCheckGLError();
+}
+
 void glbindingExample()
 {
     gl::GLuint vaoId;
@@ -189,6 +265,9 @@ void compare()
     if (!gl::initialize())
         return;
 
+    timer.restart("sleep");
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+
     timer.restart("glew calls");
 
     for (int i = 0; i < ITERATIONS; ++i)
@@ -202,22 +281,16 @@ void compare()
     timer.stop();
 
     gl::AbstractFunction::setCallbackLevelForAllExcept(gl::AbstractFunction::CallbackLevel::After, { "glGetError" });
-    gl::AbstractFunction::setAfterCallback([](const gl::AbstractFunction &) {
-        gl::GLenum error = gl::GetError();
-        if (error.value != gl::NO_ERROR_)
-        {
-            std::cout << "Error: " << error.toString() << std::endl;
-        }
-    });
-    timer.start("glbinding calls with callbacks");
+
+    timer.start("glew calls wiith check error");
+
+    for (int i = 0; i < ITERATIONS; ++i)
+        glewExampleWithErrorChecking();
+
+    timer.restart("glbinding calls with check error (by after-callback)");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glbindingExample();
-
-    timer.restart("glew calls");
-
-    for (int i = 0; i < ITERATIONS; ++i)
-        glewExample();
 
     timer.stop();
 }
@@ -239,6 +312,14 @@ int main(int /*argc*/, char* /*argv*/[])
     }
 
     glfwMakeContextCurrent(window);
+
+    gl::AbstractFunction::setAfterCallback([](const gl::AbstractFunction &) {
+        gl::GLenum error = gl::GetError();
+        if (error.value != gl::NO_ERROR_)
+        {
+            std::cout << "Error: " << error.toString() << std::endl;
+        }
+    });
 
     compare();
 
