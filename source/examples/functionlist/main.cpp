@@ -43,7 +43,7 @@ int main(int /*argc*/, char* /*argv*/[])
 
     glfwSetErrorCallback(errorfun);
 
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Dummy Window", NULL, NULL);
+    GLFWwindow * window = glfwCreateWindow(640, 480, "Dummy Window", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
