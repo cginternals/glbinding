@@ -282,7 +282,7 @@ void compare()
 
     gl::AbstractFunction::setCallbackLevelForAllExcept(gl::AbstractFunction::CallbackLevel::After, { "glGetError" });
 
-    timer.start("glew calls wiith check error");
+    timer.start("glew calls with check error");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glewExampleWithErrorChecking();
