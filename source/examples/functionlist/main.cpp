@@ -73,7 +73,7 @@ int main(int /*argc*/, char* /*argv*/[])
     std::set<const gl::AbstractFunction*> invalidFunctions;
     for (const gl::AbstractFunction* function : gl::AbstractFunction::functions())
     {
-        if (function->isValid())
+        if (function->isResolved())
         {
             std::cout << reinterpret_cast<void*>(function->address()) << " " << function->name();
             printExtensionInfo(function, extensions);

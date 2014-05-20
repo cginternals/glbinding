@@ -14,7 +14,7 @@ namespace gl {
 
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
 AbstractFunction::Callback AbstractFunction::s_afterCallback;
-AbstractFunction::Callback AbstractFunction::s_invalidCallback;
+AbstractFunction::Callback AbstractFunction::s_unresolvedCallback;
 AbstractFunction::ParametersCallback AbstractFunction::s_parametersCallback;
 AbstractFunction::ReturnValueCallback AbstractFunction::s_returnValueCallback;
 
@@ -52,12 +52,7 @@ bool AbstractFunction::hasState(int context) const
     return m_states.size() < static_cast<unsigned>(context);
 }
 
-const AbstractFunction::State & AbstractFunction::getState(int context) const
-{
-    return m_states.at(context);
-}
-
-AbstractFunction::State & AbstractFunction::getState(int context)
+AbstractFunction::State & AbstractFunction::getState(int context) const
 {
     if (m_states.size() <= static_cast<unsigned>(context))
         m_states.resize(context+1);
@@ -65,12 +60,7 @@ AbstractFunction::State & AbstractFunction::getState(int context)
     return m_states[context];
 }
 
-AbstractFunction::State & AbstractFunction::currentState()
-{
-    return getState(s_context);
-}
-
-const AbstractFunction::State & AbstractFunction::currentState() const
+AbstractFunction::State & AbstractFunction::currentState() const
 {
     return getState(s_context);
 }
@@ -119,30 +109,27 @@ const char * AbstractFunction::name() const
     return m_name;
 }
 
-bool AbstractFunction::isValid() const
+bool AbstractFunction::isResolved() const
 {
-    return isValid(s_context);
+    return isResolved(s_context);
 }
 
-bool AbstractFunction::isValid(int context) const
+bool AbstractFunction::isResolved(int context) const
 {
     if (!hasState(context))
         return false;
 
-    return address() != nullptr;
+    return currentState().address != nullptr;
 }
 
 ProcAddress AbstractFunction::address() const
 {
     const State & state = currentState();
 
-    /*if (!state.initialized)
+    if (!state.initialized)
     {
         const_cast<AbstractFunction*>(this)->initialize();
-
-        return currentState().address;
-        // TODO: lazy initialization
-    }*/
+    }
 
     return state.address;
 }
@@ -191,9 +178,9 @@ void AbstractFunction::setAfterCallback(Callback callback)
     s_afterCallback = callback;
 }
 
-void AbstractFunction::setInvalidCallback(Callback callback)
+void AbstractFunction::setUnresolvedCallback(Callback callback)
 {
-    s_invalidCallback = callback;
+    s_unresolvedCallback = callback;
 }
 
 void AbstractFunction::setParametersCallback(ParametersCallback callback)
@@ -209,19 +196,25 @@ void AbstractFunction::setReturnValueCallback(ReturnValueCallback callback)
 void AbstractFunction::before()
 {
     if (s_beforeCallback)
+    {
         s_beforeCallback(*this);
+    }
 }
 
 void AbstractFunction::after()
 {
     if (s_afterCallback)
+    {
         s_afterCallback(*this);
+    }
 }
 
 void AbstractFunction::parameters(const std::vector<AbstractValue*> & values)
 {
     if (s_parametersCallback)
+    {
         s_parametersCallback(*this, values);
+    }
 
     for (gl::AbstractValue * value : values)
     {
@@ -232,15 +225,19 @@ void AbstractFunction::parameters(const std::vector<AbstractValue*> & values)
 void AbstractFunction::returnValue(const AbstractValue * value)
 {
     if (s_returnValueCallback)
+    {
         s_returnValueCallback(*this, value);
+    }
 
     delete value;
 }
 
-void AbstractFunction::invalid()
+void AbstractFunction::unresolved()
 {
-    if (s_invalidCallback)
-        s_invalidCallback(*this);
+    if (s_unresolvedCallback)
+    {
+        s_unresolvedCallback(*this);
+    }
 }
 
 } // namespace gl

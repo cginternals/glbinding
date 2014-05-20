@@ -82,7 +82,7 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
     {
          if (callbacksEnabled())
          {
-            invalid();
+            unresolved();
          }
 
          return ReturnType();

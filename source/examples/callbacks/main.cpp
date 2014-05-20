@@ -127,15 +127,15 @@ int main(int /*argc*/, char* /*argv*/[])
 
     glfwMakeContextCurrent(window);
 
-    if (!gl::initialize())
+    /*if (!gl::initialize())
     {
         glfwTerminate();
         return 1;
-    }
+    }*/
 
     gl::AbstractFunction::setCallbackLevelForAll(gl::AbstractFunction::CallbackLevel::All);
 
-    gl::AbstractFunction::setInvalidCallback([](const gl::AbstractFunction & f) {
+    gl::AbstractFunction::setUnresolvedCallback([](const gl::AbstractFunction & f) {
         std::cout << "Calling unresolved function: " << f.name() << std::endl;
     });
 

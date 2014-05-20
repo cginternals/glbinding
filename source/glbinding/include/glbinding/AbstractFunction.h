@@ -22,9 +22,9 @@ public:
         After = 0x2,
         Parameters = 0x4,
         ReturnValue = 0x8,
-        Invalid = 0x10,
+        Unresolved = 0x10,
         BeforeAndAfter = Before | After,
-        All = Before | After | Parameters | ReturnValue | Invalid
+        All = Before | After | Parameters | ReturnValue | Unresolved
     };
 
     AbstractFunction(const char * name);
@@ -35,8 +35,8 @@ public:
 
     const char * name() const;
 
-    bool isValid() const;
-    bool isValid(int context) const;
+    bool isResolved() const;
+    bool isResolved(int context) const;
 
     ProcAddress address() const;
 
@@ -44,7 +44,7 @@ public:
 
     void setCallbackLevel(CallbackLevel level);
 public:
-    static const std::vector<AbstractFunction*> & functions();
+    static const std::vector<AbstractFunction *> & functions();
 
     static void setContext(int context);
     static void initializeFunctions();
@@ -52,12 +52,12 @@ public:
 
 public:
     using Callback = std::function<void(const AbstractFunction &)>;
-    using ParametersCallback = std::function<void(const AbstractFunction &, const std::vector<AbstractValue*> &)>;
-    using ReturnValueCallback = std::function<void(const AbstractFunction &, const AbstractValue*)>;
+    using ParametersCallback = std::function<void(const AbstractFunction &, const std::vector<AbstractValue *> &)>;
+    using ReturnValueCallback = std::function<void(const AbstractFunction &, const AbstractValue *)>;
 
     static void setBeforeCallback(Callback callback);
     static void setAfterCallback(Callback callback);
-    static void setInvalidCallback(Callback callback);
+    static void setUnresolvedCallback(Callback callback);
     static void setParametersCallback(ParametersCallback callback);
     static void setReturnValueCallback(ReturnValueCallback callback);
 
@@ -76,24 +76,21 @@ protected:
         bool initialized;
     };
 
-    std::vector<State> m_states;
+    mutable std::vector<State> m_states;
 
     static int s_context;
 
     static Callback s_beforeCallback;
     static Callback s_afterCallback;
-    static Callback s_invalidCallback;
+    static Callback s_unresolvedCallback;
     static ParametersCallback s_parametersCallback;
     static ReturnValueCallback s_returnValueCallback;
 
     bool hasState(int context) const;
     bool hasState() const;
 
-    State & getState(int context);
-    const State & getState(int context) const;
-
-    State & currentState();
-    const State & currentState() const;
+    State & getState(int context) const;
+    State & currentState() const;
 
 
     bool callbacksEnabled() const;
@@ -103,7 +100,7 @@ protected:
     void parameters(const std::vector<AbstractValue*> & values);
     void returnValue(const AbstractValue * value);
     void after();
-    void invalid();
+    void unresolved();
 };
 
 } // namespace gl
