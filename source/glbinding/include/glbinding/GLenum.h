@@ -7,10 +7,10 @@ namespace gl {
 
 struct GLenum
 {
-    GLenum();
-    GLenum(unsigned int value);
+    constexpr GLenum() : value(0) {}
+    constexpr GLenum(unsigned int _value) : value(_value) {}
 
-    operator unsigned int() const;
+    constexpr operator unsigned int() const { return value; }
 
     GLenum & operator=(unsigned int value);
 

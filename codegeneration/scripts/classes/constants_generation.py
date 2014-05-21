@@ -66,7 +66,7 @@ const std::unordered_map<std::string, gl::GLenum> name_to_enum = {
 #==========================================
 	
 def constantDefinition(enum):
-	return "const %s %s = %s;" % (enum.type, enum.baseName(), enum.value)
+	return "constexpr %s %s = %s;" % (enum.type, enum.baseName(), enum.value)
 	
 def correctValue(t):
 	if not t.startswith("-"):
@@ -75,7 +75,7 @@ def correctValue(t):
 		return "static_cast<unsigned int>(%s)" % t
 	
 def enumDefinition(enum):
-	return "const GLenum %s = %s;" % (enum.baseName(), correctValue(enum.value))
+	return "constexpr GLenum %s = %s;" % (enum.baseName(), correctValue(enum.value))
 		
 def enumToName(enum):
 	return '{ gl::%s, "%s" }' % (enum.baseName(), enum.name)

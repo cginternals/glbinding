@@ -4,21 +4,6 @@
 
 namespace gl {
 
-GLenum::GLenum()
-: value(0)
-{
-}
-
-GLenum::GLenum(unsigned int _value)
-: value(_value)
-{
-}
-
-GLenum::operator unsigned int() const
-{
-    return value;
-}
-
 GLenum & GLenum::operator=(unsigned int _value)
 {
     value = _value;
