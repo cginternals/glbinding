@@ -8,7 +8,7 @@ message(STATUS "Example ${target}")
 
 find_package(OpenGL REQUIRED)
 find_package(GLFW REQUIRED)
-find_package(GLEW)
+find_package(GLEW REQUIRED)
 
 #
 # Includes

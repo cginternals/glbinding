@@ -20,21 +20,21 @@ struct hash<gl::GLenum>
 
 }
 
-bool operator==(const gl::GLenum & a, unsigned int b);
-bool operator!=(const gl::GLenum & a, unsigned int b);
-bool operator<(const gl::GLenum & a, unsigned int b);
-bool operator<=(const gl::GLenum & a, unsigned int b);
-bool operator>(const gl::GLenum & a, unsigned int b);
-bool operator>=(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator==(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator!=(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator<(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator<=(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator>(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator>=(const gl::GLenum & a, unsigned int b);
 
-bool operator==(unsigned int a, const gl::GLenum & b);
-bool operator!=(unsigned int a, const gl::GLenum & b);
-bool operator<(unsigned int a, const gl::GLenum & b);
-bool operator<=(unsigned int a, const gl::GLenum & b);
-bool operator>(unsigned int a, const gl::GLenum & b);
-bool operator>=(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator==(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator!=(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator<(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator<=(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator>(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator>=(unsigned int a, const gl::GLenum & b);
 
-gl::GLenum operator+(const gl::GLenum & a, unsigned int b);
-gl::GLenum operator-(const gl::GLenum & a, unsigned int b);
+GLBINDING_API gl::GLenum operator+(const gl::GLenum & a, unsigned int b);
+GLBINDING_API gl::GLenum operator-(const gl::GLenum & a, unsigned int b);
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value);
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value);

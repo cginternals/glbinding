@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include <GLFW/glfw3.h>
-
 #include <glbinding/glbinding.h>
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/functions.h>
 #include <glbinding/constants.h>
 #include <glbinding/meta.h>
+
+#include <GLFW/glfw3.h>
 
 #include <iostream>
 
