@@ -446,7 +446,7 @@ GLBINDING_API void DepthBoundsEXT(GLclampd zmin, GLclampd zmax);
 GLBINDING_API void DepthBoundsdNV(GLdouble zmin, GLdouble zmax);
 GLBINDING_API void DepthFunc(GLenum func);
 GLBINDING_API void DepthMask(GLboolean flag);
-GLBINDING_API void DepthRange(GLdouble near, GLdouble far);
+GLBINDING_API void DepthRange(GLdouble near_, GLdouble far_);
 GLBINDING_API void DepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v);
 GLBINDING_API void DepthRangeIndexed(GLuint index, GLdouble n, GLdouble f);
 GLBINDING_API void DepthRangedNV(GLdouble zNear, GLdouble zFar);
@@ -2420,7 +2420,7 @@ GLBINDING_API void UseProgramStagesEXT(GLuint pipeline, GLbitfield stages, GLuin
 GLBINDING_API void UseShaderProgramEXT(GLenum type, GLuint program);
 GLBINDING_API void VDPAUFiniNV();
 GLBINDING_API void VDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
-GLBINDING_API void VDPAUInitNV(const void * vdpDevice, const void * _getProcAddress);
+GLBINDING_API void VDPAUInitNV(const void * vdpDevice, const void * getProcAddress_);
 GLBINDING_API GLboolean VDPAUIsSurfaceNV(GLvdpauSurfaceNV surface);
 GLBINDING_API void VDPAUMapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV * surfaces);
 GLBINDING_API GLvdpauSurfaceNV VDPAURegisterOutputSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames);

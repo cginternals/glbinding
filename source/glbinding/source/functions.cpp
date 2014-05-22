@@ -2202,9 +2202,9 @@ void DepthMask(GLboolean flag)
 	return functions::DepthMask(flag);
 }
 
-void DepthRange(GLdouble near, GLdouble far)
+void DepthRange(GLdouble near_, GLdouble far_)
 {
-	return functions::DepthRange(near, far);
+	return functions::DepthRange(near_, far_);
 }
 
 void DepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v)
@@ -12072,9 +12072,9 @@ void VDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize
 	return functions::VDPAUGetSurfaceivNV(surface, pname, bufSize, length, values);
 }
 
-void VDPAUInitNV(const void * vdpDevice, const void * _getProcAddress)
+void VDPAUInitNV(const void * vdpDevice, const void * getProcAddress_)
 {
-	return functions::VDPAUInitNV(vdpDevice, _getProcAddress);
+	return functions::VDPAUInitNV(vdpDevice, getProcAddress_);
 }
 
 GLboolean VDPAUIsSurfaceNV(GLvdpauSurfaceNV surface)
