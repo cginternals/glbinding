@@ -54,7 +54,8 @@ namespace gl {
 } // namespace gl
 """
 #==========================================
-functionsWrapperSourceTemplate = """#include <glbinding/FunctionObjects.h>
+functionsWrapperSourceTemplate = """#include <glbinding/functions.h>
+#include <glbinding/FunctionObjects.h>
 
 namespace gl {
 
