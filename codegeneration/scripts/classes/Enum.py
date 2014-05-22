@@ -7,7 +7,7 @@ def translateType(t, name):
 	return {
 		"u" : "GLuint",
 		"ull" : "GLuint64"
-	}.get(t, "GLuint")
+	}.get(t, "GLenum")
 
 extensionSuffixes =  ["ARB","EXT","NV","AMD","ATI","KHR","SGIS","SGIX","IBM","INGR","APPLE","PGI","QCOM","OES","INTEL","IMG","WEBGL"]
 

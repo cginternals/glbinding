@@ -11,7 +11,7 @@
 
 namespace gl {
 
-struct GLenum;
+enum class GLenum : unsigned int;
 using GLboolean = unsigned char;
 using GLbitfield = unsigned int;
 using GLvoid = void;
@@ -58,5 +58,5 @@ using GLvdpauSurfaceNV = GLintptr;
 
 } // namespace gl
 
-#include <glbinding/GLenum.h>
+#include <glbinding/type_integration.h>
 

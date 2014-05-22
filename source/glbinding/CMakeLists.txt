@@ -48,7 +48,6 @@ set(api_includes
     ${include_path}/constants.h
     ${include_path}/glbinding.h
     ${include_path}/GetProcAddress.h
-    ${include_path}/GLenum.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/Extension.h
@@ -57,6 +56,7 @@ set(api_includes
     ${include_path}/AbstractValue.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
+    ${include_path}/type_integration.h
     
     # generated
     ${include_path}/types.h
@@ -69,7 +69,6 @@ set(api_includes
 
 set(sources
     ${source_path}/glbinding.cpp
-    ${source_path}/GLenum.cpp
     ${source_path}/GetProcAddress.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/AbstractFunction.cpp
@@ -77,6 +76,7 @@ set(sources
     ${source_path}/meta.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Value.cpp
+    ${source_path}/type_integration.cpp
     
     #generated
     ${source_path}/functions.cpp

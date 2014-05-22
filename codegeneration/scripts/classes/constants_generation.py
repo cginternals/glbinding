@@ -5,9 +5,15 @@ from classes.Enum import *
 enumsHeaderTemplate = """#pragma once
 
 #include <glbinding/types.h>
-#include <glbinding/GLenum.h>
 
 namespace gl {
+
+enum class GLenum : unsigned int
+{
+	%s
+};
+
+// import enums to namespace
 
 %s
 
@@ -66,7 +72,7 @@ const std::unordered_map<std::string, gl::GLenum> name_to_enum = {
 #==========================================
 	
 def constantDefinition(enum):
-	return "constexpr %s %s = %s;" % (enum.type, enum.baseName(), enum.value)
+	return "static const %s %s = %s;" % (enum.type, enum.baseName(), enum.value)
 	
 def correctValue(t):
 	if not t.startswith("-"):
@@ -75,7 +81,10 @@ def correctValue(t):
 		return "static_cast<unsigned int>(%s)" % t
 	
 def enumDefinition(enum):
-	return "constexpr GLenum %s = %s;" % (enum.baseName(), correctValue(enum.value))
+	return "%s = %s" % (enum.baseName(), correctValue(enum.value))	
+	
+def enumImportDefinition(enum):
+	return "static const GLenum %s = GLenum::%s;" % (enum.baseName(), enum.baseName())
 		
 def enumToName(enum):
 	return '{ gl::%s, "%s" }' % (enum.baseName(), enum.name)
@@ -88,7 +97,11 @@ def generateEnumsHeader(enums, outputfile):
 	pureEnums = d["GLenum"]
 	
 	with open(outputfile, 'w') as file:
-		file.write(enumsHeaderTemplate % ("\n".join([ enumDefinition(e) for e in pureEnums ])))
+		file.write(enumsHeaderTemplate % (
+			",\n\t".join([ enumDefinition(e) for e in pureEnums ]),
+			"\n".join([ enumImportDefinition(e) for e in pureEnums ])
+			)
+		)
 
 def generateBitfieldsHeader(enums, outputfile):
 	d = groupByType(enums)

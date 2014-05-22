@@ -1,8 +1,9 @@
 #pragma once
 
+#include <glbinding/glbinding_api.h>
+
 #include <glbinding/AbstractValue.h>
 #include <glbinding/types.h>
-#include <glbinding/GLenum.h>
 
 #include <vector>
 

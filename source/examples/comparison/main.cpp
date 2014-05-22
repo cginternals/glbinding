@@ -8,7 +8,6 @@
 #include <glbinding/functions.h>
 #include <glbinding/constants.h>
 #include <glbinding/meta.h>
-#include <glbinding/GLenum.h>
 
 #include <iostream>
 #include <chrono>
@@ -318,7 +317,7 @@ int main(int /*argc*/, char* /*argv*/[])
         gl::GLenum error = gl::GetError();
         if (error != gl::NO_ERROR_)
         {
-            std::cout << "Error: " << error.toString() << std::endl;
+            std::cout << "Error: " << error << std::endl;
         }
     });
 

@@ -1,5 +1,4 @@
 #include <glbinding/meta.h>
-#include <glbinding/GLenum.h>
 
 #include "declarations.h"
 
@@ -46,7 +45,7 @@ std::string getName(gl::GLenum constant)
     if (it == enum_to_name.end())
     {
         std::stringstream ss;
-        ss << "UnknownEnum(0x" << std::hex << constant.value << ")";
+        ss << "UnknownEnum(0x" << std::hex << static_cast<unsigned int>(constant) << ")";
         return ss.str();
     }
 

@@ -19,7 +19,7 @@ namespace gl {
 
 } // namespace gl
 
-#include <glbinding/GLenum.h>
+#include <glbinding/type_integration.h>
 
 """
 #==========================================
@@ -38,7 +38,7 @@ def convertTypedef(t):
 		return multilineConvertTypedef(t)
 		
 	if t.name == "GLenum":
-		return "struct GLenum;"
+		return "enum class GLenum : unsigned int;"
 		
 	if not t.value.startswith("typedef"):
 		return t.value
