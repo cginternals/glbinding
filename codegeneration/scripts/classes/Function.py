@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 from classes.name_translation import *
 
+exceptions = ["getProcAddress", "near", "far"]
+
 def baseType(type):
 	return type
 
@@ -8,8 +10,8 @@ class Parameter:
 	def __init__(self, xml):
 		self.name = xml.find("name").text
 		self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
-		if self.name == "getProcAddress":
-			self.name = "_getProcAddress"
+		if self.name in exceptions:
+			self.name += "_"
 		
 	def __str__(self):
 		return "%s %s" % (self.type, self.name)
