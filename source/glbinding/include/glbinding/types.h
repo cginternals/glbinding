@@ -4,9 +4,9 @@
 #include <cstdint>
 
 #ifdef _MSC_VER
-#include <windows.h>
+#define GL_APIENTRY __stdcall
 #else
-#define APIENTRY
+#define GL_APIENTRY
 #endif
 
 namespace gl {
@@ -49,10 +49,10 @@ using GLuint64EXT = uint64_t;
 using GLsync = struct __GLsync *;
 struct _cl_context;
 struct _cl_event;
-using GLDEBUGPROC = void (APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
-using GLDEBUGPROCARB = void (APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
-using GLDEBUGPROCKHR = void (APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
-using GLDEBUGPROCAMD = void (APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
+using GLDEBUGPROC = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROCARB = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROCKHR = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROCAMD = void (GL_APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
 using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
 
