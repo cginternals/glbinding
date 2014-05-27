@@ -21,11 +21,12 @@ set(META_AUTHOR_MAINTAINER   "willy.scheibel@student.hpi.uni-potsdam.de")
 # Options
 #
 
-option(OPTION_LIMIT_CONFIGS    "Generate limited configs (Release; Debug)" ON)
-option(OPTION_PORTABLE_INSTALL "Install into a self-contained directory" OFF)
-option(OPTION_BUILD_STATIC     "Build static libraries" OFF)
-option(OPTION_BUILD_TESTS      "Build tests (if gmock and gtest are found)" ON)
-option(OPTION_BUILD_EXAMPLES "Build examples" ON)
+option(OPTION_LIMIT_CONFIGS          "Generate limited configs (Release; Debug)" ON)
+option(OPTION_PORTABLE_INSTALL       "Install into a self-contained directory" OFF)
+option(OPTION_BUILD_STATIC           "Build static libraries" OFF)
+option(OPTION_BUILD_TESTS            "Build tests (if gmock and gtest are found)" ON)
+option(OPTION_BUILD_EXAMPLES         "Build examples" ON)
+option(OPTION_UNOPTIMIZED_LIST_FILES "compile list files without optimiztion" OFF)
 
 
 #

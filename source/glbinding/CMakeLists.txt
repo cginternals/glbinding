@@ -67,6 +67,17 @@ set(api_includes
     ${include_path}/FunctionObjects.h
 )
 
+set(list_files
+    ${source_path}/function_list.cpp
+    ${source_path}/enum_to_name.cpp
+    ${source_path}/name_to_enum.cpp
+    ${source_path}/extension_to_name.cpp
+    ${source_path}/name_to_extension.cpp
+    ${source_path}/extension_core_versions.cpp
+    ${source_path}/function_to_extensions.cpp
+    ${source_path}/extension_to_functions.cpp
+)
+
 set(sources
     ${source_path}/glbinding.cpp
     ${source_path}/GetProcAddress.cpp
@@ -81,14 +92,7 @@ set(sources
     #generated
     ${source_path}/functions.cpp
     ${source_path}/FunctionObjects.cpp
-    ${source_path}/function_list.cpp
-    ${source_path}/enum_to_name.cpp
-    ${source_path}/name_to_enum.cpp
-    ${source_path}/extension_to_name.cpp
-    ${source_path}/name_to_extension.cpp
-    ${source_path}/extension_core_versions.cpp
-    ${source_path}/function_to_extensions.cpp
-    ${source_path}/extension_to_functions.cpp
+    ${list_files}
 )
 
 # Group source files
@@ -98,6 +102,12 @@ source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$"
     ${header_group} ${api_includes})
 source_group_by_path(${source_path} "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
     ${source_group} ${sources})
+
+if (OPTION_UNOPTIMIZED_LIST_FILES)
+  foreach(list_file ${list_files})
+    set_source_files_properties(${list_file} PROPERTIES COMPILE_FLAGS ${UNOPTIMIZED_COMPILE_FLAGS})
+  endforeach()
+endif()
 
 #
 # Build library

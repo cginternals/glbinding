@@ -18,9 +18,8 @@ set(DEFAULT_COMPILE_DEFS_RELEASE
     NDEBUG                      # Release build
 )
 
-
 set(WIN32_COMPILE_FLAGS
-    "/nologo /Zc:wchar_t /Zc:forScope /GL /GF /GR /GS- /Zi /fp:precise /MP /W3 /wd4251"
+    "/nologo /Zc:wchar_t /Zc:forScope /GL- /GF /GR /GS- /Zi /fp:precise /MP /W3 /wd4251"
     # nologo       -> no logo
     # Zc:wchar_t   -> treat wchar_t as built-in type: yes
     # Zc:forScope  -> force conformance in for loop scope: Yes
@@ -75,7 +74,7 @@ set(WIN32_COMPILE_FLAGS
 
 
 set(DEFAULT_COMPILE_FLAGS ${WIN32_COMPILE_FLAGS})
-
+set(UNOPTIMIZED_COMPILE_FLAGS "${WIN32_COMPILE_FLAGS} /Od")
 
 set(WIN32_LINKER_FLAGS
     "/NOLOGO /INCREMENTAL:NO /NXCOMPAT /DYNAMICBASE:NO"
@@ -88,18 +87,16 @@ set(WIN32_LINKER_FLAGS
 )
 
 set(DEFAULT_LINKER_FLAGS_DEBUG
-    "${WIN32_LINKER_FLAGS} /DEBUG"
+    "${WIN32_LINKER_FLAGS} /DEBUG /OPT:NOICF"
     # DEBUG        -> create debug info
 )
 
 set(DEFAULT_LINKER_FLAGS_RELEASE
-    "${WIN32_LINKER_FLAGS} /OPT:REF /LTCG /OPT:ICF /DELAY:UNLOAD"
+    "${WIN32_LINKER_FLAGS} /OPT:REF /OPT:NOICF /DELAY:UNLOAD"
     # OPT:REF      -> references: eliminate unreferenced data
     # OPT:ICF      -> enable comdat folding: remove redundant comdats
-    # LTCG         -> link time code generation: use link time code generation
     # DELAY:UNLOAD -> delay loaded dll: support unload
 )
-
 
 # Add platform specific libraries for linking
 set(EXTRA_LIBS "")
