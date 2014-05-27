@@ -46,7 +46,7 @@ set(MINGW_COMPILE_FLAGS "-pthread -pipe -fPIC -Wreturn-type -Wall -Wextra -Wfloa
 # -Wreturn-type -Werror=return-type -> missing returns in functions and methods are handled as errors which stops the compilation
 
 set(DEFAULT_COMPILE_FLAGS ${MINGW_COMPILE_FLAGS})
-
+set(UNOPTIMIZED_COMPILE_FLAGS "${MINGW_COMPILE_FLAGS} -O0")
 
 # Add platform specific libraries for linking
 set(EXTRA_LIBS "")
