@@ -9,9 +9,11 @@
 #define GL_APIENTRY
 #endif
 
-namespace gl {
+namespace gl 
+{
 
 enum class GLenum : unsigned int;
+
 using GLboolean = unsigned char;
 using GLbitfield = unsigned int;
 using GLvoid = void;
@@ -59,4 +61,3 @@ using GLvdpauSurfaceNV = GLintptr;
 } // namespace gl
 
 #include <glbinding/type_integration.h>
-

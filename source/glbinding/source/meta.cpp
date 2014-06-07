@@ -1,112 +1,102 @@
-#include <glbinding/meta.h>
 
-#include "declarations.h"
+#include <glbinding/Meta.h>
 
-#include <limits>
 #include <sstream>
 
-namespace gl {
-namespace meta {
+#include <glbinding/enums.h>
+#include <glbinding/Extension.h>
 
-std::string getName(Extension extension)
+
+namespace gl 
 {
-    auto it = extension_to_name.find(extension);
 
-    if (it == extension_to_name.end())
-        return "UnknownExtension";
-
-    return it->second;
-}
-
-Extension extensionFromString(const std::string & name)
+const std::string & Meta::getString(const gl::GLenum glenum)
 {
-    auto it = name_to_extension.find(name);
+    auto i = s_stringsByEnum.find(glenum);
 
-    if (it == name_to_extension.end())
-        return Extension::Unknown;
-
-    return it->second;
-}
-
-gl::GLenum getEnum(const std::string & name)
-{
-    auto it = name_to_enum.find(name);
-
-    if (it == name_to_enum.end())
-        return gl::GLenum(static_cast<unsigned int>(-1));
-
-    return it->second;
-}
-
-std::string getName(gl::GLenum constant)
-{
-    auto it = enum_to_name.find(constant);
-
-    if (it == enum_to_name.end())
+    if (i == s_stringsByEnum.end())
     {
-        std::stringstream ss;
-        ss << "UnknownEnum(0x" << std::hex << static_cast<unsigned int>(constant) << ")";
-        return ss.str();
+        static const std::string none;
+        return none;
     }
-
-    return it->second;
+    return i->second;
 }
 
-std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension)
+gl::GLenum Meta::getEnum(const std::string & glenum)
 {
-    auto it = extension_core_versions.find(extension);
-    if (it == extension_core_versions.end())
-        return std::pair<unsigned char, unsigned char>(0, 0);
+    auto i = s_enumsByString.find(glenum);
 
-    return it->second;
+    if (i == s_enumsByString.end())
+        return static_cast<GLenum>(-1);
+
+    return i->second;
 }
 
-std::vector<Extension> allExtensions()
+const std::string & Meta::getString(const Extension extension)
 {
-    std::vector<Extension> extensions;
+    auto i = s_stringsByExtension.find(extension);
 
-    for (auto & pair : extension_to_name)
+    if (i == s_stringsByExtension.end())
     {
-        if (pair.first == Extension::Unknown)
-            continue;
-
-        extensions.push_back(pair.first);
+        static const std::string none;
+        return none;
     }
-
-    return extensions;
+    return i->second;
 }
 
-std::set<gl::GLenum> allEnums()
+Extension Meta::getExtension(const std::string & extension)
 {
-    std::set<gl::GLenum> values;
+    auto i = s_extensionsByString.find(extension);
 
-    for (auto & pair : enum_to_name)
+    if (i == s_extensionsByString.end())
+        return Extension::UNKNOWN;
+
+    return i->second;
+}
+
+const Meta::ucharpair & Meta::getRequiringVersion(const Extension extension)
+{
+    auto i = s_reqVersionsByExtension.find(extension);
+    if (i == s_reqVersionsByExtension.end())
     {
-        values.insert(pair.first);
+        static const ucharpair none(0, 0);
+        return none;
     }
-
-    return values;
+    return i->second;
 }
 
-std::vector<std::string> getRequiredFunctions(Extension extension)
+//const Meta::ucharpair & Meta::getRemovingVersion(const Extension extension)
+//{
+//    //auto i = s_remVersionsByExtension.find(extension);
+//    //if (i == s_remVersionsByExtension.end())
+//    //    return ucharpair(0, 0);
+//
+//    //return i->second;
+//    return ucharpair(0, 0);
+//}
+
+const std::vector<std::string> & Meta::getRequiredFunctions(const Extension extension)
 {
-    auto it = extension_to_functions.find(extension);
+    auto i = s_functionStringsByExtension.find(extension);
 
-    if (it == extension_to_functions.end())
-        return std::vector<std::string>();
-
-    return it->second;
+    if (i == s_functionStringsByExtension.end())
+    {
+        static const std::vector<std::string> none;
+        return none;
+    }
+    return i->second;
 }
 
-std::vector<Extension> getExtensionsRequiring(const std::string & functionName)
+const std::vector<Extension> & Meta::getExtensionsRequiring(const std::string & function)
 {
-    auto it = function_to_extensions.find(functionName);
+    auto i = s_extensionsByFunctionString.find(function);
 
-    if (it == function_to_extensions.end())
-        return std::vector<Extension>();
-
-    return it->second;
+    if (i == s_extensionsByFunctionString.end())
+    {
+        static const std::vector<Extension> none;
+        return none;
+    }
+    return i->second;
 }
 
-} // namespace meta
 } // namespace gl

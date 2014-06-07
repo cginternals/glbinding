@@ -1,7 +1,10 @@
-#include <glbinding/FunctionObjects.h>
 
-namespace gl {
-namespace functions {
+#include "function_objects.h"
+
+namespace gl 
+{
+namespace functions 
+{
 
 Function<void, GLenum, GLfloat> Accum("glAccum");
 Function<void, GLenum, GLfixed> AccumxOES("glAccumxOES");

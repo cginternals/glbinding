@@ -6,113 +6,132 @@ extensionHeaderTemplate = """#pragma once
 
 #include <functional>
 
-namespace gl {
+namespace gl 
+{
 
 enum class Extension : int
 {
-	Unknown = -1,
-	%s
+    UNKNOWN = -1,
+    %s
 };
 
 } // namespace gl
 
-namespace std {
+namespace std 
+{
 
 template<>
 struct hash<gl::Extension>
 {
-	hash<int>::result_type operator()(gl::Extension extension) const
-	{
-		return hash<int>()(static_cast<int>(extension));
-	}
+    hash<int>::result_type operator()(gl::Extension extension) const
+    {
+        return hash<int>()(static_cast<int>(extension));
+    }
 };
 
 } // namespace std
 
 """
 #==========================================
-extensionNamesTemplate = """#include <glbinding/Extension.h>
+extensionsToStringTemplate = """
+#include <glbinding/Meta.h>
 
-#include "declarations.h"
+#include <glbinding/Extension.h>
 
-namespace gl {
 
-const std::unordered_map<Extension, std::string> extension_to_name = {
-	{ Extension::Unknown, "Unknown" },
-	%s
-};
-	
-} // namespace gl
-"""
-#==========================================
-extensionByNameTemplate = """#include <glbinding/Extension.h>
+namespace gl
+{
 
-#include "declarations.h"
-
-namespace gl {
-
-const std::unordered_map<std::string, Extension> name_to_extension = {
-	{ "Unknown", Extension::Unknown },
-	%s
-};
-	
-} // namespace gl
-"""
-#==========================================
-extensionVersionsTemplate = """#include <glbinding/Extension.h>
-
-#include "declarations.h"
-
-#include <utility>
-#include <unordered_map>
-
-using ucharpair = std::pair<unsigned char, unsigned char>;
-
-namespace gl {
-
-const std::unordered_map<Extension, ucharpair> extension_core_versions = {
-	%s
+const std::unordered_map<Extension, std::string> Meta::s_stringsByExtension =
+{
+#ifdef STRINGS_BY_GL
+    %s
+#endif
 };
 
 } // namespace gl
 """
 #==========================================
-extensionToFunctionsTemplate = """#include <glbinding/Extension.h>
+stringsToExtensionTemplate = """
+#include <glbinding/Meta.h>
 
-#include "declarations.h"
+#include <glbinding/Extension.h>
 
-namespace gl {
 
-const std::unordered_map<Extension, std::vector<std::string>> extension_to_functions = {
-	%s
+namespace gl
+{
+
+const std::unordered_map<std::string, Extension> Meta::s_extensionsByString =
+{
+#ifdef GL_BY_STRINGS
+    %s
+#endif
 };
 
 } // namespace gl
 """
 #==========================================
-functionToExtensionsTemplate = """#include <glbinding/Extension.h>
+extensionsToRequiringVersionTemplate = """
+#include <glbinding/Meta.h>
 
-#include "declarations.h"
+#include <glbinding/Extension.h>
 
-namespace gl {
 
-const std::unordered_map<std::string, std::vector<Extension>> function_to_extensions = {
-	%s
+namespace gl 
+{
+
+const std::unordered_map<Extension, Meta::ucharpair> Meta::s_reqVersionsByExtension = 
+{
+    %s
+};
+
+} // namespace gl
+"""
+#==========================================
+extensionToFunctionsTemplate = """
+#include <glbinding/Meta.h>
+
+#include <glbinding/Extension.h>
+
+
+namespace gl 
+{
+
+const std::unordered_map<Extension, std::vector<std::string>> Meta::s_functionStringsByExtension = 
+{
+    %s
+};
+
+} // namespace gl
+"""
+#==========================================
+functionToExtensionsTemplate = """
+#include <glbinding/Meta.h>
+
+#include <glbinding/Extension.h>
+
+
+namespace gl 
+{
+
+const std::unordered_map<std::string, std::vector<Extension>> Meta::s_extensionsByFunctionString = 
+{
+    %s
 };
 
 } // namespace gl
 """
 #==========================================
 
-def enumToName(extension):
+def extensionToString(extension):
 	return '{ Extension::%s, "%s" }' % (extension.baseName(), extension.name)
-	
-def nameToEnum(extension):
+
+def stringToExtension(extension):
 	return '{ "%s", Extension::%s }' % (extension.name, extension.baseName())
-	
-def extensionToVersion(extension):
+
+def extensionToRequiringVersion(extension):
 	return "{ Extension::%s, ucharpair(%s, %s) }" % (extension.baseName(), extension.incore.major, extension.incore.minor)
-	
+
 def extensionRequiredFunctions(extension):
 	return "{ Extension::%s, { %s } }" % (extension.baseName(), ", ".join([ '"%s"' % f for f in extension.requiredFunctions ]))
 
@@ -121,28 +140,28 @@ def functionRequiredByExtensions(function, extensions):
 
 def generateExtensionHeader(extensions, outputfile):
 	with open(outputfile, 'w') as file:
-		file.write(extensionHeaderTemplate % ",\n\t".join([ e.baseName() for e in extensions ]))
+		file.write(extensionHeaderTemplate % ",\n    ".join([ e.baseName() for e in extensions ]))
 		
-def generateExtensionNamesSource(extensions, outputfile):	
+def generateExtensionsToStringSource(extensions, outputfile):	
 	with open(outputfile, 'w') as file:
-		file.write(extensionNamesTemplate % (
-			",\n\t".join([ enumToName(e) for e in extensions ])
+		file.write(extensionsToStringTemplate % (
+			",\n    ".join([ extensionToString(e) for e in extensions ])
 			))
 
-def generateExtensionsByNameSource(extensions, outputfile):	
+def generateStringsToExtensionSource(extensions, outputfile):	
 	with open(outputfile, 'w') as file:
-		file.write(extensionByNameTemplate % (
-			",\n\t".join([ nameToEnum(e) for e in extensions ])
+		file.write(stringsToExtensionTemplate % (
+			",\n    ".join([ stringToExtension(e) for e in extensions ])
 			))
 			
-def generateExtensionVersionsSource(extensions, outputfile):
+def generateExtensionsToRequiringVersionSource(extensions, outputfile):
 	with open(outputfile, 'w') as file:
-		file.write(extensionVersionsTemplate % ",\n\t".join([ extensionToVersion(e) for e in extensions if e.incore ]))
+		file.write(extensionsToRequiringVersionTemplate % ",\n    ".join([ extensionToRequiringVersion(e) for e in extensions if e.incore ]))
 
 def generateExtensionToFunctionsSource(extensions, outputfile):				
 	with open(outputfile, 'w') as file:		
 		file.write(extensionToFunctionsTemplate % (
-			",\n\t".join([ extensionRequiredFunctions(e) for e in extensions if len(e.requiredFunctions)>0 ])
+			",\n    ".join([ extensionRequiredFunctions(e) for e in extensions if len(e.requiredFunctions)>0 ])
 			))
 
 def generateFunctionsToExtensionSource(extensions, outputfile):	
@@ -155,6 +174,5 @@ def generateFunctionsToExtensionSource(extensions, outputfile):
 			
 	with open(outputfile, 'w') as file:		
 		file.write(functionToExtensionsTemplate % (
-			",\n\t".join([functionRequiredByExtensions(f, sorted(funcToExtension[f])) for f in sorted(funcToExtension.keys()) ])
+			",\n    ".join([functionRequiredByExtensions(f, sorted(funcToExtension[f])) for f in sorted(funcToExtension.keys()) ])
 			))
-		

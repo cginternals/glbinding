@@ -1,16 +1,19 @@
+
 #include <glbinding/glbinding.h>
-
-#include <glbinding/AbstractFunction.h>
-
-#include <glbinding/functions.h>
 
 #include <iostream>
 
-namespace {
+#include <glbinding/AbstractFunction.h>
+#include <glbinding/functions.h>
+
+
+namespace 
+{
     bool initialized = false;
 }
 
-namespace gl {
+namespace gl 
+{
 
 bool initialize()
 {

@@ -19,51 +19,60 @@ def generate(inputfile, directory):
 	extensions = sorted(parseExtensions(registry))
 	
 	files = {
-		"typesHeader" : "include/glbinding/types.h",
-		
-		"enumsHeader" : "include/glbinding/enums.h",
-		"bitfieldsHeader" : "include/glbinding/bitfields.h",
-		"constantsHeader" : "include/glbinding/special_values.h",
-		
-		"constantsNamesSource" : "source/enum_to_name.cpp",
-		"constantsByNameSource" : "source/name_to_enum.cpp",
-		
-		"functionObjectsHeader" : "include/glbinding/FunctionObjects.h",
-		"functionObjectsSource" : "source/FunctionObjects.cpp",
-		"functionWrapperHeader" : "include/glbinding/functions.h",
-		"functionWrapperSource" : "source/functions.cpp",
-		"functionListSource" : "source/function_list.cpp",
-		
-		"extensionsHeader" : "include/glbinding/Extension.h",
-		"extensionsNamesSource" : "source/extension_to_name.cpp",
-		"extensionsByNameSource" : "source/name_to_extension.cpp",
-		"extensionsVersionsSource" : "source/extension_core_versions.cpp",
-		"extensionToFunctionsSource" : "source/extension_to_functions.cpp",
-		"functionToExtensionsSource" : "source/function_to_extensions.cpp"
-	}
+		"typesHeader"                : "include/glbinding/types.h",
+
+		"enumsHeader"                : "include/glbinding/enums.h",
+		"bitfieldsHeader"            : "include/glbinding/bitfields.h",
+		"constantsHeader"            : "include/glbinding/special_values.h",
 	
+		"functionObjectsHeader"      : "source/function_objects.h",
+		"functionObjectsSource"      : "source/function_objects.cpp",
+		"functionWrapperHeader"      : "include/glbinding/functions.h",
+		"functionWrapperSource"      : "source/functions.cpp",
+		"functionListSource"         : "source/function_list.cpp",
+
+		"extensionsHeader"           : "include/glbinding/Extension.h",
+
+		#meta
+
+		"enumsToStringSource"        : "source/meta_strings_by_enum.cpp",
+		"stringsToEnumSource"        : "source/meta_enums_by_string.cpp",
+		"extensionsToStringSource"   : "source/meta_strings_by_extension.cpp",
+		"stringsToExtensionSource"   : "source/meta_extensions_by_string.cpp",
+
+		"extensionToFunctionsSource" : "source/meta_function_strings_by_extension.cpp",
+		"functionToExtensionsSource" : "source/meta_extensions_by_function_string.cpp",
+
+		"extensionsToRequiringVersionSource"  : "source/meta_req_versions_by_extension.cpp"
+		#"extensionsToRemovingVersionSource"  : "source/meta_rem_versions_by_extension.cpp",
+	}
+
 	for key, value in files.items():
 		files[key] = directory + "/" + value
-		
+
 	generateTypesHeader(types, files["typesHeader"])
 
 	generateEnumsHeader(enums, files["enumsHeader"])
 	generateBitfieldsHeader(enums, files["bitfieldsHeader"])
-	
 	generateConstantsHeader(enums, files["constantsHeader"])
-	generateConstantNamesSource(enums, files["constantsNamesSource"])
-	generateConstantsByNameSource(enums, files["constantsByNameSource"])
-	
+
 	generateFunctionObjectsHeader(functions, files["functionObjectsHeader"])
 	generateFunctionObjectsSource(functions, files["functionObjectsSource"])
 	generateFunctionWrapperHeader(functions, files["functionWrapperHeader"])
 	generateFunctionWrapperSource(functions, files["functionWrapperSource"])
-	generateFunctionListSource(functions, files["functionListSource"])
 	
+	generateFunctionListSource(functions, files["functionListSource"])
+
 	generateExtensionHeader(extensions, files["extensionsHeader"])
-	generateExtensionNamesSource(extensions, files["extensionsNamesSource"])
-	generateExtensionsByNameSource(extensions, files["extensionsByNameSource"])
-	generateExtensionVersionsSource(extensions, files["extensionsVersionsSource"])
+
+	generateEnumsToStringSource(enums, files["enumsToStringSource"])
+	generateStringsToEnumSource(enums, files["stringsToEnumSource"])
+	
+	generateExtensionsToStringSource(extensions, files["extensionsToStringSource"])
+	generateStringsToExtensionSource(extensions, files["stringsToExtensionSource"])
+
+	generateExtensionsToRequiringVersionSource(extensions, files["extensionsToRequiringVersionSource"])
+	#generateExtensionsToRemovingVersionSource(extensions, files["extensionsToRemovingVersionSource"])
 	generateExtensionToFunctionsSource(extensions, files["extensionToFunctionsSource"])
 	generateFunctionsToExtensionSource(extensions, files["functionToExtensionsSource"])
 	

@@ -2,7 +2,8 @@
 
 #include <glbinding/types.h>
 
-namespace gl {
+namespace gl 
+{
 
 // AttribMask
 static const GLbitfield CURRENT_BIT = 0x00000001;

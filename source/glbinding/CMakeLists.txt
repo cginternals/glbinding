@@ -35,6 +35,14 @@ else()
     add_definitions("-DGLBINDING_EXPORTS")
 endif()
 
+if (OPTION_STRINGS_BY_GL)
+    add_definitions("-DSTRINGS_BY_GL")
+endif()
+if (OPTION_GL_BY_STRINGS)
+    add_definitions("-DGL_BY_STRINGS")
+endif()
+
+
 #
 # Sources
 #
@@ -52,7 +60,7 @@ set(api_includes
     ${include_path}/Function.hpp
     ${include_path}/Extension.h
     ${include_path}/AbstractFunction.h
-    ${include_path}/meta.h
+    ${include_path}/Meta.h
     ${include_path}/AbstractValue.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
@@ -64,31 +72,32 @@ set(api_includes
     ${include_path}/bitfields.h
     ${include_path}/special_values.h
     ${include_path}/functions.h
-    ${include_path}/FunctionObjects.h
 )
 
 set(sources
     ${source_path}/glbinding.cpp
     ${source_path}/GetProcAddress.cpp
-    ${source_path}/FunctionObjects.cpp
     ${source_path}/AbstractFunction.cpp
-    ${source_path}/declarations.h
-    ${source_path}/meta.cpp
+    #${source_path}/declarations.h
+    ${source_path}/Meta.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Value.cpp
     ${source_path}/type_integration.cpp
-    
+
     #generated
     ${source_path}/functions.cpp
-    ${source_path}/FunctionObjects.cpp
+    ${source_path}/function_objects.cpp
+    ${source_path}/function_objects.h
     ${source_path}/function_list.cpp
-    ${source_path}/enum_to_name.cpp
-    ${source_path}/name_to_enum.cpp
-    ${source_path}/extension_to_name.cpp
-    ${source_path}/name_to_extension.cpp
-    ${source_path}/extension_core_versions.cpp
-    ${source_path}/function_to_extensions.cpp
-    ${source_path}/extension_to_functions.cpp
+    #stringification (sources generated)
+    ${source_path}/meta_extensions_by_function_string.cpp
+    ${source_path}/meta_function_strings_by_extension.cpp
+    ${source_path}/meta_req_versions_by_extension.cpp
+    #${source_path}/meta_rem_versions_by_extension.cpp
+    ${source_path}/meta_strings_by_enum.cpp
+    ${source_path}/meta_enums_by_string.cpp
+    ${source_path}/meta_strings_by_extension.cpp
+    ${source_path}/meta_extensions_by_string.cpp
 )
 
 # Group source files

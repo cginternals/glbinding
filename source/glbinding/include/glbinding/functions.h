@@ -1,10 +1,12 @@
 #pragma once
 
 #include <glbinding/glbinding_api.h>
+
 #include <glbinding/constants.h>
 #include <glbinding/types.h>
 
-namespace gl {
+namespace gl 
+{
 
 GLBINDING_API void Accum(GLenum op, GLfloat value);
 GLBINDING_API void AccumxOES(GLenum op, GLfixed value);

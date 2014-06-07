@@ -1,16 +1,15 @@
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/meta.h>
 
-#include "declarations.h"
+#include <glbinding/AbstractFunction.h>
 
 #include <iostream>
 #include <memory>
 #include <set>
 #include <cassert>
 
-#include <iostream>
+#include <glbinding/Meta.h>
 
-namespace gl {
+namespace gl 
+{
 
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
 AbstractFunction::Callback AbstractFunction::s_afterCallback;
@@ -37,9 +36,9 @@ AbstractFunction::~AbstractFunction()
 {
 }
 
-const std::vector<AbstractFunction*> & AbstractFunction::functions()
+const std::vector<AbstractFunction *> & AbstractFunction::functions()
 {
-    return functionList;
+    return s_functions;
 }
 
 bool AbstractFunction::hasState() const
@@ -96,7 +95,7 @@ void AbstractFunction::initialize(int context)
 
 std::vector<Extension> AbstractFunction::extensions() const
 {
-    return meta::getExtensionsRequiring(m_name);
+    return Meta::getExtensionsRequiring(m_name);
 }
 
 void AbstractFunction::setContext(int context)
@@ -241,4 +240,3 @@ void AbstractFunction::unresolved()
 }
 
 } // namespace gl
-

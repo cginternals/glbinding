@@ -2,12 +2,13 @@
 
 #include <glbinding/glbinding_api.h>
 
+#include <vector>
+
 #include <glbinding/AbstractValue.h>
 #include <glbinding/types.h>
 
-#include <vector>
-
-namespace gl {
+namespace gl 
+{
 
 template <typename T>
 class Value : public AbstractValue

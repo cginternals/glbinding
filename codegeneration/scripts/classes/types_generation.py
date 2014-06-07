@@ -13,14 +13,14 @@ typesHeaderTemplate = """#pragma once
 #define GL_APIENTRY
 #endif
 
-namespace gl {
+namespace gl 
+{
 
 %s
 
 } // namespace gl
 
 #include <glbinding/type_integration.h>
-
 """
 #==========================================
 
@@ -36,10 +36,10 @@ def multilineConvertTypedef(t):
 def convertTypedef(t):
 	if '\n' in t.value:
 		return multilineConvertTypedef(t)
-		
+
 	if t.name == "GLenum":
-		return "enum class GLenum : unsigned int;"
-		
+		return "enum class GLenum : unsigned int;\n"
+
 	if not t.value.startswith("typedef"):
 		return t.value
 	else:
@@ -50,5 +50,4 @@ def convertType(t):
 
 def generateTypesHeader(types, outputfile):
 	with open(outputfile, 'w') as file:
-		file.write(typesHeaderTemplate % "\n".join([convertType(t) for t in types ]))
-
+		file.write(typesHeaderTemplate % "\n".join([ convertType(t) for t in types ]))

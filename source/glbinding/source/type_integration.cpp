@@ -1,6 +1,7 @@
+
 #include <glbinding/type_integration.h>
 
-#include <glbinding/meta.h>
+#include <glbinding/Meta.h>
 
 bool operator==(const gl::GLenum & a, unsigned int b)
 {
@@ -74,6 +75,6 @@ gl::GLenum operator-(const gl::GLenum & a, unsigned int b)
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value)
 {
-    stream << gl::meta::getName(value);
+    stream << gl::Meta::getString(value);
     return stream;
 }

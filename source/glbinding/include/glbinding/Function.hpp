@@ -6,7 +6,8 @@
 #include <utility>
 #include <functional>
 
-namespace {
+namespace 
+{
 
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
@@ -54,7 +55,9 @@ struct FunctionHelper<void, Arguments...>
 
 }
 
-namespace gl {
+
+namespace gl 
+{
 
 template <typename ReturnType, typename... Arguments>
 Function<ReturnType, Arguments...>::Function(const char * _name)

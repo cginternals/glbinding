@@ -2,7 +2,8 @@
 
 #include <glbinding/types.h>
 
-namespace gl {
+namespace gl 
+{
 
 enum class GLenum : unsigned int
 {

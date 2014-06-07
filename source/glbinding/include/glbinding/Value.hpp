@@ -2,7 +2,8 @@
 
 #include <glbinding/Value.h>
 
-namespace {
+namespace 
+{
 
 void addValuesTo(std::vector<gl::AbstractValue*> &)
 {
@@ -17,7 +18,8 @@ void addValuesTo(std::vector<gl::AbstractValue*> & values, Argument value, Argum
 
 }
 
-namespace gl {
+namespace gl 
+{
 
 template <typename T>
 Value<T>::Value(T _value)

@@ -5,8 +5,10 @@
 
 #include <glbinding/Function.h>
 
-namespace gl {
-namespace functions {
+namespace gl 
+{
+namespace functions 
+{
 
 extern Function<void, GLenum, GLfloat> Accum;
 extern Function<void, GLenum, GLfixed> AccumxOES;

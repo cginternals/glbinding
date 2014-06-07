@@ -2,7 +2,8 @@
 
 #include <glbinding/types.h>
 
-namespace gl {
+namespace gl 
+{
 
 static const GLboolean FALSE_ = 0;
 static const GLboolean TRUE_ = 1;

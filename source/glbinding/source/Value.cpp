@@ -1,9 +1,12 @@
+
 #include <glbinding/Value.h>
-#include <glbinding/meta.h>
 
 #include <sstream>
 
-namespace {
+#include <glbinding/Meta.h>
+
+namespace 
+{
 
 std::string wrapString(const char * value)
 {
@@ -16,12 +19,13 @@ std::string wrapString(const char * value)
 
 }
 
-namespace gl {
+namespace gl 
+{
 
 template <>
 void Value<GLenum>::printOn(std::ostream & stream) const
 {
-    std::string name = meta::getName(value);
+    std::string name = Meta::getString(value);
     stream.write(name.c_str(), name.size());
 }
 

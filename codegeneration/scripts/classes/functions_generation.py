@@ -8,8 +8,10 @@ functionObjectsHeaderTemplate = """#pragma once
 
 #include <glbinding/Function.h>
 
-namespace gl {
-namespace functions {
+namespace gl 
+{
+namespace functions 
+{
 
 %s
 
@@ -17,10 +19,13 @@ namespace functions {
 } // namespace gl
 """
 #==========================================
-functionObjectsSourceTemplate = """#include <glbinding/FunctionObjects.h>
+functionObjectsSourceTemplate = """
+#include "function_objects.h"
 
-namespace gl {
-namespace functions {
+namespace gl 
+{
+namespace functions 
+{
 
 %s
 
@@ -28,14 +33,17 @@ namespace functions {
 } // namespace gl
 """
 #==========================================
-functionListTemplate = """#include <glbinding/AbstractFunction.h>
-#include <glbinding/FunctionObjects.h>
-#include "declarations.h"
+functionListTemplate = """
+#include <glbinding/AbstractFunction.h>
 
-namespace gl {
+#include "function_objects.h"
 
-const std::vector<AbstractFunction*> functionList = {
-	%s
+namespace gl 
+{
+
+const std::vector<AbstractFunction*> AbstractFunction::s_functions = 
+{
+    %s
 };
 
 } // namespace gl
@@ -44,20 +52,25 @@ const std::vector<AbstractFunction*> functionList = {
 functionsWrapperHeaderTemplate = """#pragma once
 
 #include <glbinding/glbinding_api.h>
+
 #include <glbinding/constants.h>
 #include <glbinding/types.h>
 
-namespace gl {
+namespace gl 
+{
 
 %s
 
 } // namespace gl
 """
 #==========================================
-functionsWrapperSourceTemplate = """#include <glbinding/functions.h>
-#include <glbinding/FunctionObjects.h>
+functionsWrapperSourceTemplate = """
+#include <glbinding/functions.h>
 
-namespace gl {
+#include "function_objects.h"
+
+namespace gl 
+{
 
 %s
 
@@ -66,7 +79,7 @@ namespace gl {
 #==========================================
 functionWrapperTemplate = """%s %s(%s)
 {
-	return functions::%s(%s);
+    return functions::%s(%s);
 }
 """
 #==========================================
@@ -109,4 +122,4 @@ def generateFunctionWrapperSource(functions, outputfile):
 		
 def generateFunctionListSource(functions, outputfile):
 	with open(outputfile, 'w') as file:
-		file.write(functionListTemplate % ",\n\t".join([ "&functions::"+f.baseName() for f in functions ]))
+		file.write(functionListTemplate % ",\n    ".join([ "&functions::"+f.baseName() for f in functions ]))

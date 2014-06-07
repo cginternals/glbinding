@@ -1,28 +1,31 @@
 #pragma once
 
 #include <glbinding/glbinding_api.h>
-#include <glbinding/GetProcAddress.h>
-#include <glbinding/Extension.h>
-#include <glbinding/AbstractValue.h>
 
 #include <string>
 #include <set>
 #include <vector>
 #include <functional>
 
-namespace gl {
+#include <glbinding/GetProcAddress.h>
+#include <glbinding/Extension.h>
+#include <glbinding/AbstractValue.h>
+
+
+namespace gl 
+{
 
 class GLBINDING_API AbstractFunction
 {
 public:
     enum class CallbackLevel : unsigned char
     {
-        None = 0x0,
-        Before = 0x1,
-        After = 0x2,
-        Parameters = 0x4,
+        None        = 0x0,
+        Before      = 0x1,
+        After       = 0x2,
+        Parameters  = 0x4,
         ReturnValue = 0x8,
-        Unresolved = 0x10,
+        Unresolved  = 0x10,
         BeforeAndAfter = Before | After,
         All = Before | After | Parameters | ReturnValue | Unresolved
     };
@@ -43,6 +46,7 @@ public:
     std::vector<Extension> extensions() const;
 
     void setCallbackLevel(CallbackLevel level);
+
 public:
     static const std::vector<AbstractFunction *> & functions();
 
@@ -65,9 +69,6 @@ public:
     static void setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList);
 
 protected:
-    const char * m_name;
-    CallbackLevel m_callbackLevel;
-
     struct State
     {
         State();
@@ -75,16 +76,6 @@ protected:
         ProcAddress address;
         bool initialized;
     };
-
-    mutable std::vector<State> m_states;
-
-    static int s_context;
-
-    static Callback s_beforeCallback;
-    static Callback s_afterCallback;
-    static Callback s_unresolvedCallback;
-    static ParametersCallback s_parametersCallback;
-    static ReturnValueCallback s_returnValueCallback;
 
     bool hasState(int context) const;
     bool hasState() const;
@@ -101,7 +92,22 @@ protected:
     void returnValue(const AbstractValue * value);
     void after();
     void unresolved();
+
+protected:
+    const char * m_name;
+    CallbackLevel m_callbackLevel;
+
+    mutable std::vector<State> m_states;
+
+    static int s_context;
+
+    static Callback s_beforeCallback;
+    static Callback s_afterCallback;
+    static Callback s_unresolvedCallback;
+    static ParametersCallback s_parametersCallback;
+    static ReturnValueCallback s_returnValueCallback;
+
+    static const std::vector<AbstractFunction*> s_functions;
 };
 
 } // namespace gl
-

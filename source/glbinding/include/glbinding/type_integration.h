@@ -1,13 +1,15 @@
 #pragma once
 
 #include <glbinding/glbinding_api.h>
-#include <glbinding/types.h>
 
 #include <functional>
 #include <ostream>
 #include <string>
 
-namespace std {
+#include <glbinding/types.h>
+
+namespace std 
+{
 
 template<>
 struct hash<gl::GLenum>
@@ -22,16 +24,16 @@ struct hash<gl::GLenum>
 
 GLBINDING_API bool operator==(const gl::GLenum & a, unsigned int b);
 GLBINDING_API bool operator!=(const gl::GLenum & a, unsigned int b);
-GLBINDING_API bool operator<(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator< (const gl::GLenum & a, unsigned int b);
 GLBINDING_API bool operator<=(const gl::GLenum & a, unsigned int b);
-GLBINDING_API bool operator>(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator> (const gl::GLenum & a, unsigned int b);
 GLBINDING_API bool operator>=(const gl::GLenum & a, unsigned int b);
 
 GLBINDING_API bool operator==(unsigned int a, const gl::GLenum & b);
 GLBINDING_API bool operator!=(unsigned int a, const gl::GLenum & b);
-GLBINDING_API bool operator<(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator< (unsigned int a, const gl::GLenum & b);
 GLBINDING_API bool operator<=(unsigned int a, const gl::GLenum & b);
-GLBINDING_API bool operator>(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator> (unsigned int a, const gl::GLenum & b);
 GLBINDING_API bool operator>=(unsigned int a, const gl::GLenum & b);
 
 GLBINDING_API gl::GLenum operator+(const gl::GLenum & a, unsigned int b);

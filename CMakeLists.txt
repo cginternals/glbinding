@@ -32,6 +32,10 @@ option(OPTION_BUILD_STATIC     "Build static libraries" OFF)
 option(OPTION_BUILD_TESTS      "Build tests (if gmock and gtest are found)" ON)
 option(OPTION_BUILD_EXAMPLES   "Build examples" ON)
 
+option(OPTION_GL_BY_STRINGS    "Support String to OpenGL enum, extension, and function conversion (Meta)" ON)
+option(OPTION_STRINGS_BY_GL    "Support OpenGL enum, extension, and function to String conversion (Meta)" ON)
+
+
 if(OPTION_BUILD_STATIC)
    set(BUILD_SHARED_LIBS OFF)
    message("Note: ${META_PROJECT_NAME_UPPER}_STATIC needs to be defined for static linking.")

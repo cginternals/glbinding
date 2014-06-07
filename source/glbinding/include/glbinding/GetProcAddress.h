@@ -2,7 +2,8 @@
 
 #include <glbinding/glbinding_api.h>
 
-namespace gl {
+namespace gl 
+{
 
 using ProcAddress = void(*)();
 

@@ -1,30 +1,49 @@
 #pragma once
 
 #include <glbinding/glbinding_api.h>
-#include <glbinding/Extension.h>
-#include <glbinding/types.h>
 
 #include <string>
+#include <utility>
 #include <vector>
-#include <set>
+#include <unordered_map>
 
-namespace gl {
-namespace meta {
+#include <glbinding/types.h>
+#include <glbinding/Extension.h>
+#include <glbinding/enums.h>
 
-GLBINDING_API std::string getName(gl::GLenum constant);
+namespace gl 
+{
 
-GLBINDING_API gl::GLenum getEnum(const std::string & name);
+class GLBINDING_API  Meta
+{
+public:
+    Meta() = delete;
 
-GLBINDING_API std::string getName(Extension extension);
-GLBINDING_API Extension extensionFromString(const std::string & name);
+    static const std::string & getString(gl::GLenum glenum);
+    static gl::GLenum getEnum(const std::string & glenum);
 
-GLBINDING_API std::pair<unsigned char, unsigned char> coreVersionForExtension(Extension extension);
+    static const std::string & getString(Extension extension);
+    static Extension getExtension(const std::string & extension);
 
-GLBINDING_API std::vector<Extension> allExtensions();
-GLBINDING_API std::set<gl::GLenum> allEnums();
+    static const std::vector<std::string> & getRequiredFunctions(Extension extension);
+    static const std::vector<Extension> & getExtensionsRequiring(const std::string & function);
 
-GLBINDING_API std::vector<std::string> getRequiredFunctions(Extension extension);
-GLBINDING_API std::vector<Extension> getExtensionsRequiring(const std::string & functionName);
+    using ucharpair = std::pair<unsigned char, unsigned char>;
+    static const ucharpair & getRequiringVersion(Extension extension);
+    //static const ucharpair & getRemovingVersion(Extension extension);
 
-} // namespace meta
+protected:
+    static const std::unordered_map<std::string, GLenum> s_enumsByString;
+    static const std::unordered_map<GLenum, std::string> s_stringsByEnum;
+
+    static const std::unordered_map<std::string, Extension> s_extensionsByString;
+    static const std::unordered_map<Extension, std::string> s_stringsByExtension;
+
+    static const std::unordered_map<Extension, ucharpair> s_reqVersionsByExtension;
+    //static const std::unordered_map<Extension, ucharpair> s_remVersionsByExtension;
+
+    static const std::unordered_map<Extension, std::vector<std::string>> s_functionStringsByExtension;
+    static const std::unordered_map<std::string, std::vector<Extension>> s_extensionsByFunctionString;
+};
+
 } // namespace gl
