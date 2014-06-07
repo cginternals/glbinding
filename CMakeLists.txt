@@ -5,7 +5,6 @@ cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
 #
 # Project description
 #
-
 set(META_PROJECT_NAME        "glbinding")
 set(META_PROJECT_DESCRIPTION "OpenGL C++ Binding")
 set(META_VERSION_MAJOR       "0")
@@ -16,16 +15,29 @@ set(META_AUTHOR_ORGANIZATION "hpicgs group")
 set(META_AUTHOR_DOMAIN       "https://github.com/hpicgs/glbinding")
 set(META_AUTHOR_MAINTAINER   "willy.scheibel@student.hpi.uni-potsdam.de")
 
+string(TOUPPER ${META_PROJECT_NAME} META_PROJECT_NAME_UPPER)
+
+# Limit supported configuration types
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Limited Configs" FORCE)
+
+# Set project name and type (C/C++)
+project(${META_PROJECT_NAME} C CXX)
+
 
 #
-# Options
+# Configuration options
 #
-
-option(OPTION_LIMIT_CONFIGS    "Generate limited configs (Release; Debug)" ON)
 option(OPTION_PORTABLE_INSTALL "Install into a self-contained directory" OFF)
 option(OPTION_BUILD_STATIC     "Build static libraries" OFF)
 option(OPTION_BUILD_TESTS      "Build tests (if gmock and gtest are found)" ON)
-option(OPTION_BUILD_EXAMPLES "Build examples" ON)
+option(OPTION_BUILD_EXAMPLES   "Build examples" ON)
+
+if(OPTION_BUILD_STATIC)
+   set(BUILD_SHARED_LIBS OFF)
+   message("Note: ${META_PROJECT_NAME_UPPER}_STATIC needs to be defined for static linking.")
+else()
+    set(BUILD_SHARED_LIBS ON)
+endif()
 
 
 #
@@ -40,19 +52,6 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 
-# Set configuration types
-if(OPTION_LIMIT_CONFIGS)
-    set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Limited Configs" FORCE)
-endif()
-set(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Choose the type of build, options are: ${CMAKE_CONFIGURATION_TYPES}")
-# Reorder CMAKE_CONFIGURATION_TYPES list so that the chosen CMAKE_BUILD_TYPE is the first element.
-if (NOT "${CMAKE_BUILD_TYPE}" STREQUAL "")
-    list(REMOVE_ITEM CMAKE_CONFIGURATION_TYPES "${CMAKE_BUILD_TYPE}")
-    list(INSERT CMAKE_CONFIGURATION_TYPES 0 "${CMAKE_BUILD_TYPE}")
-endif()
-
-# Project
-project(${META_PROJECT_NAME} C CXX)
 
 # Generate folders for IDE targets (e.g., VisualStudio solutions)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)

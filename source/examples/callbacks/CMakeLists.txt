@@ -35,6 +35,14 @@ set(libs
 )
 
 #
+# Compiler definitions
+#
+
+if (OPTION_BUILD_STATIC)
+    add_definitions("-DGLBINDING_STATIC")
+endif()
+
+#
 # Sources
 #
 
