@@ -1,11 +1,11 @@
 
-#include <glbinding/Meta.h>
+#include "Meta_StringsByEnum.hpp"
 
 
 namespace gl
 {
 
-const std::unordered_map<GLenum, std::string> Meta::s_stringsByEnum =
+const std::unordered_map<GLenum, std::string> Meta_StringsByEnum::s_strings =
 {
 #ifdef STRINGS_BY_GL
     { gl::_1PASS_EXT, "GL_1PASS_EXT" },

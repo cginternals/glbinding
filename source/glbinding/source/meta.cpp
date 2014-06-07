@@ -2,101 +2,67 @@
 #include <glbinding/Meta.h>
 
 #include <sstream>
+#include <unordered_map>
 
 #include <glbinding/enums.h>
 #include <glbinding/Extension.h>
+
+#include "Meta_StringsByEnum.hpp"
+#include "Meta_EnumsByString.hpp"
+
+#include "Meta_StringsByExtension.hpp"
+#include "Meta_ExtensionsByString.hpp"
+
+#include "Meta_ExtensionsByFunctionString.hpp"
+#include "Meta_FunctionStringsByExtension.hpp"
+
+#include "Meta_ReqVersionsByExtension.hpp"
+//#include "Meta_RemVersionsByExtension.hpp"
 
 
 namespace gl 
 {
 
+
 const std::string & Meta::getString(const gl::GLenum glenum)
 {
-    auto i = s_stringsByEnum.find(glenum);
-
-    if (i == s_stringsByEnum.end())
-    {
-        static const std::string none;
-        return none;
-    }
-    return i->second;
+    return Meta_StringsByEnum::get(glenum);
 }
 
-gl::GLenum Meta::getEnum(const std::string & glenum)
+GLenum Meta::getEnum(const std::string & glenum)
 {
-    auto i = s_enumsByString.find(glenum);
-
-    if (i == s_enumsByString.end())
-        return static_cast<GLenum>(-1);
-
-    return i->second;
+    return Meta_EnumsByString::get(glenum);
 }
 
 const std::string & Meta::getString(const Extension extension)
 {
-    auto i = s_stringsByExtension.find(extension);
-
-    if (i == s_stringsByExtension.end())
-    {
-        static const std::string none;
-        return none;
-    }
-    return i->second;
+    return Meta_StringsByExtension::get(extension);
 }
 
 Extension Meta::getExtension(const std::string & extension)
 {
-    auto i = s_extensionsByString.find(extension);
-
-    if (i == s_extensionsByString.end())
-        return Extension::UNKNOWN;
-
-    return i->second;
+    return Meta_ExtensionsByString::get(extension);
 }
 
 const Meta::ucharpair & Meta::getRequiringVersion(const Extension extension)
 {
-    auto i = s_reqVersionsByExtension.find(extension);
-    if (i == s_reqVersionsByExtension.end())
-    {
-        static const ucharpair none(0, 0);
-        return none;
-    }
-    return i->second;
+    return Meta_ReqVersionsByExtension::get(extension);
 }
 
 //const Meta::ucharpair & Meta::getRemovingVersion(const Extension extension)
 //{
-//    //auto i = s_remVersionsByExtension.find(extension);
-//    //if (i == s_remVersionsByExtension.end())
-//    //    return ucharpair(0, 0);
-//
-//    //return i->second;
-//    return ucharpair(0, 0);
+//    return Meta_RemVersionsByExtension::get(extension);
 //}
+
 
 const std::vector<std::string> & Meta::getRequiredFunctions(const Extension extension)
 {
-    auto i = s_functionStringsByExtension.find(extension);
-
-    if (i == s_functionStringsByExtension.end())
-    {
-        static const std::vector<std::string> none;
-        return none;
-    }
-    return i->second;
+    return Meta_FunctionStringsByExtension::get(extension);
 }
 
 const std::vector<Extension> & Meta::getExtensionsRequiring(const std::string & function)
 {
-    auto i = s_extensionsByFunctionString.find(function);
-
-    if (i == s_extensionsByFunctionString.end())
-    {
-        static const std::vector<Extension> none;
-        return none;
-    }
-    return i->second;
+    return Meta_ExtensionsByFunctionString::get(function);
 }
 
 } // namespace gl

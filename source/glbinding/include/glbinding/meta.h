@@ -5,14 +5,14 @@
 #include <string>
 #include <utility>
 #include <vector>
-#include <unordered_map>
 
 #include <glbinding/types.h>
-#include <glbinding/Extension.h>
-#include <glbinding/enums.h>
 
 namespace gl 
 {
+
+enum class GLenum : unsigned int;
+enum class Extension : int;
 
 class GLBINDING_API  Meta
 {
@@ -31,19 +31,6 @@ public:
     using ucharpair = std::pair<unsigned char, unsigned char>;
     static const ucharpair & getRequiringVersion(Extension extension);
     //static const ucharpair & getRemovingVersion(Extension extension);
-
-protected:
-    static const std::unordered_map<std::string, GLenum> s_enumsByString;
-    static const std::unordered_map<GLenum, std::string> s_stringsByEnum;
-
-    static const std::unordered_map<std::string, Extension> s_extensionsByString;
-    static const std::unordered_map<Extension, std::string> s_stringsByExtension;
-
-    static const std::unordered_map<Extension, ucharpair> s_reqVersionsByExtension;
-    //static const std::unordered_map<Extension, ucharpair> s_remVersionsByExtension;
-
-    static const std::unordered_map<Extension, std::vector<std::string>> s_functionStringsByExtension;
-    static const std::unordered_map<std::string, std::vector<Extension>> s_extensionsByFunctionString;
 };
 
 } // namespace gl

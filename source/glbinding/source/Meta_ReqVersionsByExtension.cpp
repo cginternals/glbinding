@@ -1,11 +1,11 @@
 
-#include <glbinding/Meta.h>
+#include "Meta_ReqVersionsByExtension.hpp"
 
 
 namespace gl 
 {
 
-const std::unordered_map<Extension, Meta::ucharpair> Meta::s_reqVersionsByExtension = 
+const std::unordered_map<Extension, Meta_ReqVersionsByExtension::ucharpair> Meta_ReqVersionsByExtension::s_versions = 
 {
     { Extension::AMD_seamless_cubemap_per_texture, ucharpair(3, 2) },
     { Extension::ARB_ES2_compatibility, ucharpair(4, 1) },

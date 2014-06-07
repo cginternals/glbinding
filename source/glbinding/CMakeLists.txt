@@ -90,14 +90,22 @@ set(sources
     ${source_path}/function_objects.h
     ${source_path}/function_list.cpp
     #stringification (sources generated)
-    ${source_path}/meta_extensions_by_function_string.cpp
-    ${source_path}/meta_function_strings_by_extension.cpp
-    ${source_path}/meta_req_versions_by_extension.cpp
-    #${source_path}/meta_rem_versions_by_extension.cpp
-    ${source_path}/meta_strings_by_enum.cpp
-    ${source_path}/meta_enums_by_string.cpp
-    ${source_path}/meta_strings_by_extension.cpp
-    ${source_path}/meta_extensions_by_string.cpp
+    ${source_path}/Meta_ExtensionsByFunctionString.cpp
+    ${source_path}/Meta_ExtensionsByFunctionString.hpp
+    ${source_path}/Meta_FunctionStringsByExtension.cpp
+    ${source_path}/Meta_FunctionStringsByExtension.hpp
+    ${source_path}/Meta_ReqVersionsByExtension.cpp
+    ${source_path}/Meta_ReqVersionsByExtension.hpp
+    #${source_path}/Meta_RemVersionsByExtension.cpp
+    #${source_path}/Meta_RemVersionsByExtension.hpp
+    ${source_path}/Meta_StringsByEnum.cpp
+    ${source_path}/Meta_StringsByEnum.hpp
+    ${source_path}/Meta_EnumsByString.cpp
+    ${source_path}/Meta_EnumsByString.hpp
+    ${source_path}/Meta_StringsByExtension.cpp
+    ${source_path}/Meta_StringsByExtension.hpp
+    ${source_path}/Meta_ExtensionsByString.cpp
+    ${source_path}/Meta_ExtensionsByString.hpp
 )
 
 # Group source files

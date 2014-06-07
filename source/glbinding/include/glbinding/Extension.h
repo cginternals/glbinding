@@ -662,3 +662,4 @@ struct hash<gl::Extension>
 };
 
 } // namespace std
+

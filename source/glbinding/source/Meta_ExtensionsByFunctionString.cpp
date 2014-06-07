@@ -1,12 +1,13 @@
 
-#include <glbinding/Meta.h>
+#include "Meta_ExtensionsByFunctionString.hpp"
 
 
 namespace gl 
 {
 
-const std::unordered_map<std::string, std::vector<Extension>> Meta::s_extensionsByFunctionString = 
+const std::unordered_map<std::string, std::vector<Extension>> Meta_ExtensionsByFunctionString::s_extensions = 
 {
+#ifdef GL_BY_STRINGS
     { "glAccumxOES", { Extension::OES_fixed_point } },
     { "glActiveProgramEXT", { Extension::EXT_separate_shader_objects } },
     { "glActiveShaderProgram", { Extension::ARB_separate_shader_objects } },
@@ -2200,6 +2201,7 @@ const std::unordered_map<std::string, std::vector<Extension>> Meta::s_extensions
     { "glWindowPos4sMESA", { Extension::MESA_window_pos } },
     { "glWindowPos4svMESA", { Extension::MESA_window_pos } },
     { "glWriteMaskEXT", { Extension::EXT_vertex_shader } }
+#endif
 };
 
 } // namespace gl

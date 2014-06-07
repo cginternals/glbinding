@@ -4,7 +4,7 @@
 
 namespace gl 
 {
-
+        
 enum class GLenum : unsigned int
 {
 	_1PASS_EXT = 0x80A1,

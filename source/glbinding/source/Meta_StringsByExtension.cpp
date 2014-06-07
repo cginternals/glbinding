@@ -1,11 +1,11 @@
 
-#include <glbinding/Meta.h>
+#include "Meta_StringsByExtension.hpp"
 
 
 namespace gl
 {
 
-const std::unordered_map<Extension, std::string> Meta::s_stringsByExtension =
+const std::unordered_map<Extension, std::string> Meta_StringsByExtension::s_strings =
 {
 #ifdef STRINGS_BY_GL
     { Extension::_3DFX_multisample, "GL_3DFX_multisample" },

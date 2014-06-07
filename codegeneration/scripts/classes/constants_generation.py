@@ -46,15 +46,13 @@ namespace gl
 """
 #==========================================
 enumsToStringTemplate = """
-#include <glbinding/Meta.h>
-
-#include <glbinding/enums.h>
+#include "Meta_StringsByEnum.hpp"
 
 
 namespace gl
 {
 
-const std::unordered_map<GLenum, std::string> Meta::s_stringsByEnum =
+const std::unordered_map<GLenum, std::string> Meta_StringsByEnum::s_strings =
 {
 #ifdef STRINGS_BY_GL
     %s
@@ -65,15 +63,13 @@ const std::unordered_map<GLenum, std::string> Meta::s_stringsByEnum =
 """
 #==========================================
 stringsToEnumTemplate = """
-#include <glbinding/Meta.h>
-
-#include <glbinding/enums.h>
+#include "Meta_EnumsByString.hpp"
 
 
 namespace gl 
 {
 
-const std::unordered_map<std::string, GLenum> Meta::s_enumsByString = 
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString::s_enums = 
 {
 #ifdef GL_BY_STRINGS
     %s

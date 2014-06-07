@@ -35,16 +35,16 @@ def generate(inputfile, directory):
 
 		#meta
 
-		"enumsToStringSource"        : "source/meta_strings_by_enum.cpp",
-		"stringsToEnumSource"        : "source/meta_enums_by_string.cpp",
-		"extensionsToStringSource"   : "source/meta_strings_by_extension.cpp",
-		"stringsToExtensionSource"   : "source/meta_extensions_by_string.cpp",
+		"enumsToStringSource"        : "source/Meta_StringsByEnum.cpp",
+		"stringsToEnumSource"        : "source/Meta_EnumsByString.cpp",
+		"extensionsToStringSource"   : "source/Meta_StringsByExtension.cpp",
+		"stringsToExtensionSource"   : "source/Meta_ExtensionsByString.cpp",
 
-		"extensionToFunctionsSource" : "source/meta_function_strings_by_extension.cpp",
-		"functionToExtensionsSource" : "source/meta_extensions_by_function_string.cpp",
+		"extensionToFunctionsSource" : "source/Meta_FunctionStringsByExtension.cpp",
+		"functionToExtensionsSource" : "source/Meta_ExtensionsByFunctionString.cpp",
 
-		"extensionsToRequiringVersionSource"  : "source/meta_req_versions_by_extension.cpp"
-		#"extensionsToRemovingVersionSource"  : "source/meta_rem_versions_by_extension.cpp",
+		"extensionsToRequiringVersionSource"  : "source/Meta_ReqVersionsByExtension.cpp"
+		#"extensionsToRemovingVersionSource"  : "source/Meta_RemVersionsByExtension.cpp",
 	}
 
 	for key, value in files.items():

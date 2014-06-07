@@ -34,15 +34,13 @@ struct hash<gl::Extension>
 """
 #==========================================
 extensionsToStringTemplate = """
-#include <glbinding/Meta.h>
-
-#include <glbinding/Extension.h>
+#include "Meta_StringsByExtension.hpp"
 
 
 namespace gl
 {
 
-const std::unordered_map<Extension, std::string> Meta::s_stringsByExtension =
+const std::unordered_map<Extension, std::string> Meta_StringsByExtension::s_strings =
 {
 #ifdef STRINGS_BY_GL
     %s
@@ -53,15 +51,13 @@ const std::unordered_map<Extension, std::string> Meta::s_stringsByExtension =
 """
 #==========================================
 stringsToExtensionTemplate = """
-#include <glbinding/Meta.h>
-
-#include <glbinding/Extension.h>
+#include "Meta_ExtensionsByString.hpp"
 
 
 namespace gl
 {
 
-const std::unordered_map<std::string, Extension> Meta::s_extensionsByString =
+const std::unordered_map<std::string, Extension> Meta_ExtensionsByString::s_extensions =
 {
 #ifdef GL_BY_STRINGS
     %s
@@ -72,15 +68,13 @@ const std::unordered_map<std::string, Extension> Meta::s_extensionsByString =
 """
 #==========================================
 extensionsToRequiringVersionTemplate = """
-#include <glbinding/Meta.h>
-
-#include <glbinding/Extension.h>
+#include "Meta_ReqVersionsByExtension.hpp"
 
 
 namespace gl 
 {
 
-const std::unordered_map<Extension, Meta::ucharpair> Meta::s_reqVersionsByExtension = 
+const std::unordered_map<Extension, Meta_ReqVersionsByExtension::ucharpair> Meta_ReqVersionsByExtension::s_versions = 
 {
     %s
 };
@@ -89,34 +83,34 @@ const std::unordered_map<Extension, Meta::ucharpair> Meta::s_reqVersionsByExtens
 """
 #==========================================
 extensionToFunctionsTemplate = """
-#include <glbinding/Meta.h>
-
-#include <glbinding/Extension.h>
+#include "Meta_FunctionStringsByExtension.hpp"
 
 
 namespace gl 
 {
 
-const std::unordered_map<Extension, std::vector<std::string>> Meta::s_functionStringsByExtension = 
+const std::unordered_map<Extension, std::vector<std::string>> Meta_FunctionStringsByExtension::s_strings = 
 {
+#ifdef STRINGS_BY_GL
     %s
+#endif
 };
 
 } // namespace gl
 """
 #==========================================
 functionToExtensionsTemplate = """
-#include <glbinding/Meta.h>
-
-#include <glbinding/Extension.h>
+#include "Meta_ExtensionsByFunctionString.hpp"
 
 
 namespace gl 
 {
 
-const std::unordered_map<std::string, std::vector<Extension>> Meta::s_extensionsByFunctionString = 
+const std::unordered_map<std::string, std::vector<Extension>> Meta_ExtensionsByFunctionString::s_extensions = 
 {
+#ifdef GL_BY_STRINGS
     %s
+#endif
 };
 
 } // namespace gl
