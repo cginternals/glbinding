@@ -37133,6 +37133,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FRAMEBUFFER_SRGB_CAPABLE_EXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_geometry_point_size" supported="gles2"/>
         <extension name="GL_EXT_geometry_shader" supported="gles2">
             <require>
                 <enum name="GL_GEOMETRY_SHADER_EXT"/>
@@ -37770,6 +37771,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glTexSubImage2DEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_tessellation_point_size" supported="gles2"/>
         <extension name="GL_EXT_tessellation_shader" supported="gles2">
             <require>
                 <enum name="GL_PATCHES_EXT"/>
