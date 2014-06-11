@@ -21,7 +21,7 @@ def generate(inputfile, directory):
 	files = {
 		"typesHeader"                : "include/glbinding/types.h",
 
-		"enumsHeader"                : "include/glbinding/enums.h",
+		"enumsHeader"                : "include/glbinding/GLenum.h",
 		"bitfieldsHeader"            : "include/glbinding/bitfields.h",
 		"constantsHeader"            : "include/glbinding/special_values.h",
 	
@@ -31,20 +31,19 @@ def generate(inputfile, directory):
 		"functionWrapperSource"      : "source/functions.cpp",
 		"functionListSource"         : "source/function_list.cpp",
 
-		"extensionsHeader"           : "include/glbinding/Extension.h",
+		"extensionsHeader"           : "include/glbinding/GLextension.h",
 
 		#meta
 
-		"enumsToStringSource"        : "source/Meta_StringsByEnum.cpp",
-		"stringsToEnumSource"        : "source/Meta_EnumsByString.cpp",
-		"extensionsToStringSource"   : "source/Meta_StringsByExtension.cpp",
-		"stringsToExtensionSource"   : "source/Meta_ExtensionsByString.cpp",
+		"enumsToStringSource"        : "source/GLMeta_StringsByEnum.cpp",
+		"stringsToEnumSource"        : "source/GLMeta_EnumsByString.cpp",
+		"extensionsToStringSource"   : "source/GLMeta_StringsByExtension.cpp",
+		"stringsToExtensionSource"   : "source/GLMeta_ExtensionsByString.cpp",
 
-		"extensionToFunctionsSource" : "source/Meta_FunctionStringsByExtension.cpp",
-		"functionToExtensionsSource" : "source/Meta_ExtensionsByFunctionString.cpp",
+		"extensionToFunctionsSource" : "source/GLMeta_FunctionStringsByExtension.cpp",
+		"functionToExtensionsSource" : "source/GLMeta_ExtensionsByFunctionString.cpp",
 
-		"extensionsToRequiringVersionSource"  : "source/Meta_ReqVersionsByExtension.cpp"
-		#"extensionsToRemovingVersionSource"  : "source/Meta_RemVersionsByExtension.cpp",
+		"extensionsToRequiringVersionSource"  : "source/GLMeta_ReqVersionsByExtension.cpp"
 	}
 
 	for key, value in files.items():

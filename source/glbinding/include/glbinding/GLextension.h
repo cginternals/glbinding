@@ -2,10 +2,7 @@
 
 #include <functional>
 
-namespace gl 
-{
-
-enum class Extension : int
+enum class GLextension : int
 {
     UNKNOWN = -1,
     _3DFX_multisample,
@@ -647,19 +644,16 @@ enum class Extension : int
     WIN_specular_fog
 };
 
-} // namespace gl
-
 namespace std 
 {
 
 template<>
-struct hash<gl::Extension>
+struct hash<GLextension>
 {
-    hash<int>::result_type operator()(gl::Extension extension) const
+    hash<int>::result_type operator()(GLextension extension) const
     {
         return hash<int>()(static_cast<int>(extension));
     }
 };
 
 } // namespace std
-

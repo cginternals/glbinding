@@ -6,114 +6,93 @@ extensionHeaderTemplate = """#pragma once
 
 #include <functional>
 
-namespace gl 
-{
-
-enum class Extension : int
+enum class GLextension : int
 {
     UNKNOWN = -1,
     %s
 };
 
-} // namespace gl
-
 namespace std 
 {
 
 template<>
-struct hash<gl::Extension>
+struct hash<GLextension>
 {
-    hash<int>::result_type operator()(gl::Extension extension) const
+    hash<int>::result_type operator()(GLextension extension) const
     {
         return hash<int>()(static_cast<int>(extension));
     }
 };
 
 } // namespace std
-
 """
 #==========================================
 extensionsToStringTemplate = """
-#include "Meta_StringsByExtension.hpp"
+#include "GLMeta_StringsByExtension.h"
+
+#include <glbinding/GLextension.h>
 
 
-namespace gl
-{
-
-const std::unordered_map<Extension, std::string> Meta_StringsByExtension::s_strings =
+const std::unordered_map<GLextension, std::string> GLMeta_StringsByExtension =
 {
 #ifdef STRINGS_BY_GL
     %s
 #endif
 };
-
-} // namespace gl
 """
 #==========================================
 stringsToExtensionTemplate = """
-#include "Meta_ExtensionsByString.hpp"
+#include "GLMeta_ExtensionsByString.h"
+
+#include <glbinding/GLextension.h>
 
 
-namespace gl
-{
-
-const std::unordered_map<std::string, Extension> Meta_ExtensionsByString::s_extensions =
+const std::unordered_map<std::string, GLextension> GLMeta_ExtensionsByString =
 {
 #ifdef GL_BY_STRINGS
     %s
 #endif
 };
-
-} // namespace gl
 """
 #==========================================
 extensionsToRequiringVersionTemplate = """
-#include "Meta_ReqVersionsByExtension.hpp"
+#include "GLMeta_ReqVersionsByExtension.h"
+
+#include <glbinding/GLextension.h>
 
 
-namespace gl 
-{
-
-const std::unordered_map<Extension, Meta_ReqVersionsByExtension::ucharpair> Meta_ReqVersionsByExtension::s_versions = 
+const std::unordered_map<GLextension, Meta_ReqVersionsByExtension::ucharpair> GLMeta_ReqVersionsByExtension = 
 {
     %s
 };
-
-} // namespace gl
 """
 #==========================================
 extensionToFunctionsTemplate = """
-#include "Meta_FunctionStringsByExtension.hpp"
+#include "GLMeta_FunctionStringsByExtension.h"
+
+#include <glbinding/GLextension.h>
 
 
-namespace gl 
-{
-
-const std::unordered_map<Extension, std::vector<std::string>> Meta_FunctionStringsByExtension::s_strings = 
+const std::unordered_map<Extension, std::vector<std::string>> GLMeta_FunctionStringsByExtension = 
 {
 #ifdef STRINGS_BY_GL
     %s
 #endif
 };
-
-} // namespace gl
 """
 #==========================================
 functionToExtensionsTemplate = """
-#include "Meta_ExtensionsByFunctionString.hpp"
+#include "GLMeta_ExtensionsByFunctionString.h"
+
+#include <glbinding/GLextension.h>
 
 
-namespace gl 
-{
-
-const std::unordered_map<std::string, std::vector<Extension>> Meta_ExtensionsByFunctionString::s_extensions = 
+const std::unordered_map<std::string, std::vector<GLextension>> GLMeta_ExtensionsByFunctionString = 
 {
 #ifdef GL_BY_STRINGS
     %s
 #endif
 };
-
-} // namespace gl
 """
 #==========================================
 

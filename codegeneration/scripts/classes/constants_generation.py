@@ -6,9 +6,6 @@ enumsHeaderTemplate = """#pragma once
 
 #include <glbinding/types.h>
 
-namespace gl 
-{
-
 enum class GLenum : unsigned int
 {
 	%s
@@ -17,8 +14,6 @@ enum class GLenum : unsigned int
 // import enums to namespace
 
 %s
-
-} // namespace gl
 """
 #==========================================
 bitfieldsHeaderTemplate = """#pragma once
@@ -46,37 +41,31 @@ namespace gl
 """
 #==========================================
 enumsToStringTemplate = """
-#include "Meta_StringsByEnum.hpp"
+#include "GLMeta_StringsByEnum.h"
+
+#include <glbinding/GLenum.h>
 
 
-namespace gl
-{
-
-const std::unordered_map<GLenum, std::string> Meta_StringsByEnum::s_strings =
+const std::unordered_map<GLenum, std::string> GLMeta_StringsByEnum =
 {
 #ifdef STRINGS_BY_GL
     %s
 #endif
 };
-
-} // namespace gl
 """
 #==========================================
 stringsToEnumTemplate = """
-#include "Meta_EnumsByString.hpp"
+#include "GLMeta_EnumsByString.h"
+
+#include <glbinding/GLenum.h>
 
 
-namespace gl 
-{
-
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString::s_enums = 
+const std::unordered_map<std::string, GLenum> GLMeta_EnumsByString = 
 {
 #ifdef GL_BY_STRINGS
     %s
 #endif
 };
-
-} // namespace gl
 """
 #==========================================
 	
