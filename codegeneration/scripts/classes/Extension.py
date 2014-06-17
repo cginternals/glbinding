@@ -1,114 +1,83 @@
-class Feature:
-	def __init__(self, xml):
-		self.name = xml.attrib["name"]
-		
-		self.prefix = self.name[:-4]
-		self.major = self.name[-3:-2]
-		self.minor = self.name[-1:]
-		
-		self.requirements = []
-		for req in xml.findall("require"):
-			for child in req:
-				if child.tag in ("enum", "command"):
-					self.requirements.append(child.attrib["name"])
-					
-		self.deprecates = []
-		for rem in xml.findall("remove"):
-			for child in rem:
-				if child.tag in ("enum", "command"):
-					self.deprecates.append(child.attrib["name"])
-		
-	def __str__(self):
-		return "Feature(%s:%s.%s)" % (self.prefix, self.major, self.minor)
-		
-	def __lt__(self, other):
-		return self.major<other.major or (self.major==other.major and self.minor<other.minor)
+from classes.Feature import *
 
 class Extension:
+
+	suffixes = ["ARB","EXT","NV","AMD","ATI","KHR","SGIS","SGIX","IBM","INGR","APPLE","PGI","QCOM","OES","INTEL","IMG","WEBGL"]
+
 	def __init__(self, xml):
-		self.name = xml.attrib["name"]
-		self.incore = None
-		
-		self.requiredEnums = []
-		self.requiredFunctions = []
-		
-		self.requirements = []
-		for req in xml.findall("require"):
-			for child in req:
+
+		self.name      = xml.attrib["name"] 	 # e.g., GL_ARB_compute_variable_group_size
+		self.supported = xml.attrib["supported"] # e.g., gl, gles2, gl|glcore
+		self.incore    = None	# the lates feature by which all requires are in core
+
+		# required enums and commands (only identifier for now)
+		self.enums     = []
+		self.commands  = []
+
+		self.requires  = [] # enums and commands
+
+		for require in xml.findall("require"):
+			for child in require:
 				if child.tag in ("enum", "command"):
-					self.requirements.append(child.attrib["name"])
+					self.requires.append(child.attrib["name"])
 					if child.tag == "enum":
-						self.requiredEnums.append(child.attrib["name"])
+						self.enums.append(child.attrib["name"])
 					else:
-						self.requiredFunctions.append(child.attrib["name"])
-		
+						self.commands.append(child.attrib["name"])
+
 	def __str__(self):
 		return "Extension(%s)" % (self.name)
 		
 	def __lt__(self, other):
 		return self.name < other.name
 
-	exceptions = [ ]
-		
-	def baseName(self):
-		first = self.name[3]
-		n = self.name[3:]
-		
-		if n in Extension.exceptions:
-			return "_" + n
-		
-		if first.isalpha():
-			return n
-		else:
-			return "_" + n
-		
-def findExtensionVersions(extensions, features):
-	featureMap = dict()
-	deprecatedMap = dict()
 
-	for f in filter(lambda f: f.prefix=="GL_VERSION", features):
-		for req in f.requirements:
-			if not req in featureMap:
-				featureMap[req] = set()
-			featureMap[req].add(f)
-		for dep in f.deprecates:
-			if not dep in deprecatedMap:
-				deprecatedMap[dep] = set()
-			deprecatedMap[dep].add(f)
+def resolveInCore(extensions, features):
+	# note: remove/outcore is not a thing to do here, since
+	# after beeing added to gl/glcore the extension is no more
+
+	glFeaturesByRequires = dict() # dict<(enum or command), feature>
+
+	# initialize 
+	for f in filter(lambda f: f.api == "gl", features):
+		
+		for r in f.requires:
+			if not r in glFeaturesByRequires:
+				glFeaturesByRequires[r] = set()
+			glFeaturesByRequires[r].add(f)
 
 	for e in extensions:
-		required = dict()
-		deprecated = dict()
-		for r in e.requirements:
-			required[r] = featureMap.get(r, None)
-			if required[r] == None and r.endswith("ARB"):
-				required[r] = featureMap.get(r[:-3].rstrip("_"), None)
-				
-			if r in deprecatedMap:
-				deprecated[r] = deprecatedMap[r]
+
+		requires = dict()
+
+		# find for every extension matching features based on its 
+		# required enums and commands
+
+		for r in e.requires:
+			requires[r] = glFeaturesByRequires.get(r, None)
+			# if enum or command not found and ends with ARB, try without
+			if requires[r] == None and r.endswith("ARB"):
+				requires[r] = glFeaturesByRequires.get(r[:-3].rstrip("_"), None)
 			
-		if len(required)>0 and not any(v is None for v in required.values()):
+		# features were found and every extensions enum or command is a core
+		# (inverted: no enum or core has yet no feature)
+		if len(requires) > 0 and not any(v is None for v in requires.values()):
 			s = set()
-			for fs in required.values():
+			# in the case were some requires are already featured earlier, 
+			# take latest feature of all requiries
+			for fs in requires.values():
 				for f in fs:
-					s.add(f) 
+					s.add(f)
 			e.incore = max(s)
-		
-def parseFeatures(xml):
-	features = []
-	for feature in xml.iter("feature"):
-		features.append(Feature(feature))
-		
-	return features
-		
-def parseExtensions(xml):
-	features = parseFeatures(xml)
+
+
+def parseExtensions(xml, features):
 	extensions = []
-	
+
 	for extensionGroup in xml.iter("extensions"):
 		for extension in xml.iter("extension"):
 			extensions.append(Extension(extension))
-			
-	findExtensionVersions(extensions, features)
+
+	resolveInCore(extensions, features)
 			
 	return extensions

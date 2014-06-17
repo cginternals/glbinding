@@ -1,0 +1,23 @@
+#pragma once
+
+#include <functional>
+
+enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
+{
+    UNKNOWN = -1,
+    %s
+};
+
+namespace std 
+{
+
+template<>
+struct hash<GLextension>
+{
+    hash<int>::result_type operator()(GLextension extension) const
+    {
+        return hash<int>()(static_cast<int>(extension));
+    }
+};
+
+} // namespace std
