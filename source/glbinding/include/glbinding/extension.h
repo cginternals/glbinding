@@ -2,6 +2,10 @@
 
 #include <functional>
 
+
+namespace gl
+{
+
 enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
 {
     UNKNOWN = -1,
@@ -643,6 +647,9 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_WIN_phong_shading,
     GL_WIN_specular_fog
 };
+
+} // namespace gl
+
 
 namespace std 
 {

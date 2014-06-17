@@ -4,7 +4,12 @@
 #include <glbinding/GLextension.h>
 
 
+namespace gl
+{
+
 const std::unordered_map<GLextension, Meta_ReqVersionsByExtension::ucharpair> GLMeta_ReqVersionsByExtension = 
 {
     %s
 };
+
+} // namespace gl

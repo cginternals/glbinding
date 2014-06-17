@@ -2,11 +2,18 @@
 
 #include <functional>
 
+
+namespace gl
+{
+
 enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
 {
     UNKNOWN = -1,
     %s
 };
+
+} // namespace gl
+
 
 namespace std 
 {

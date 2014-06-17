@@ -2,9 +2,15 @@
 
 #include <glbinding/types.h>
 
+
+namespace gl
+{
+
 enum class GLbitfield : unsigned int
 {%s
 };
 
 // import bitfields to namespace
 %s
+
+} // namespace gl

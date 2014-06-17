@@ -4,6 +4,9 @@
 #include <glbinding/GLextension.h>
 
 
+namespace gl
+{
+
 const std::unordered_map<std::string, GLextension> GLMeta_ExtensionsByString =
 {
 #ifdef GL_BY_STRINGS
@@ -646,3 +649,5 @@ const std::unordered_map<std::string, GLextension> GLMeta_ExtensionsByString =
     { "GL_WIN_specular_fog", GLextension::GL_WIN_specular_fog }
 #endif
 };
+
+} // namespace gl

@@ -2,4 +2,10 @@
 
 #include <glbinding/types.h>
 
+
+namespace gl
+{
+
 %s
+
+} // namespace gl

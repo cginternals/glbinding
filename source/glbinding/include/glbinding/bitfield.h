@@ -2,6 +2,10 @@
 
 #include <glbinding/types.h>
 
+
+namespace gl
+{
+
 enum class GLbitfield : unsigned int
 {
     // AttribMask
@@ -472,3 +476,5 @@ static const GLbitfield GL_TEXCOORD1_BIT_PGI = GLbitfield::GL_TEXCOORD1_BIT_PGI;
 static const GLbitfield GL_TEXCOORD2_BIT_PGI = GLbitfield::GL_TEXCOORD2_BIT_PGI;
 static const GLbitfield GL_TEXCOORD3_BIT_PGI = GLbitfield::GL_TEXCOORD3_BIT_PGI;
 static const GLbitfield GL_TEXCOORD4_BIT_PGI = GLbitfield::GL_TEXCOORD4_BIT_PGI;
+
+} // namespace gl

@@ -4,9 +4,14 @@
 #include <glbinding/GLenum.h>
 
 
+namespace gl
+{
+
 const std::unordered_map<GLenum, std::string> GLMeta_StringsByEnum =
 {
 #ifdef STRINGS_BY_GL
     %s
 #endif
 };
+
+} // namespace gl

@@ -2,6 +2,10 @@
 
 #include <glbinding/types.h>
 
+
+namespace gl
+{
+
 enum class GLenum : unsigned int
 {
 	GL_1PASS_EXT = 0x80A1,
@@ -10014,3 +10018,5 @@ static const GLenum GL_ZERO_EXT = GLenum::GL_ZERO_EXT;
 static const GLenum GL_ZOOM_X = GLenum::GL_ZOOM_X;
 static const GLenum GL_ZOOM_Y = GLenum::GL_ZOOM_Y;
 static const GLenum GL_Z_EXT = GLenum::GL_Z_EXT;
+
+} // namespace gl

@@ -4,6 +4,9 @@
 #include <glbinding/GLenum.h>
 
 
+namespace gl
+{
+
 const std::unordered_map<std::string, GLenum> GLMeta_EnumsByString = 
 {
 #ifdef GL_BY_STRINGS
@@ -5012,3 +5015,5 @@ const std::unordered_map<std::string, GLenum> GLMeta_EnumsByString =
     { "GL_Z_EXT", GLenum::GL_Z_EXT }
 #endif
 };
+
+} // namespace gl

@@ -4,9 +4,14 @@
 #include <glbinding/GLextension.h>
 
 
+namespace gl
+{
+
 const std::unordered_map<GLextension, std::string> GLMeta_StringsByExtension =
 {
 #ifdef STRINGS_BY_GL
     %s
 #endif
 };
+
+} // namespace gl
