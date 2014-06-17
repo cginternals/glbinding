@@ -29,15 +29,15 @@ def genMetaStringsByEnum(enums, outputdir, outputfile):
 	pureEnums = [ e for e in enums if e.type == "GLenum" ]
 	d = sorted([ es[0] for v, es in groupEnumsByValue(pureEnums).items() ])
 	
-	with open(outputfile, 'w') as file:
-		file.write(template(outputfile) % (",\n    ".join(
+	with open(outputdir + outputfile, 'w') as file:
+		file.write(template(outputfile) % ((",\n" + tab).join(
 			[ metaEnumToString(e) for e in d ])))	
 
 def genMetaEnumsByString(enums, outputdir, outputfile):
 	pureEnums = [ e for e in enums if e.type == "GLenum" ]
 
 	with open(outputdir + outputfile, 'w') as file:
-		file.write(template(outputfile) % (",\n    ".join(
+		file.write(template(outputfile) % ((",\n" + tab).join(
 			[ metaStringToEnum(e) for e in pureEnums ])))
 
 

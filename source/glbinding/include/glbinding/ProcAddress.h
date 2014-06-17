@@ -7,6 +7,6 @@ namespace gl
 
 using ProcAddress = void(*)();
 
-GLBINDING_API ProcAddress GetProcAddress(const char * name);
+GLBINDING_API ProcAddress getProcAddress(const char * name);
 
 } // namespace gl

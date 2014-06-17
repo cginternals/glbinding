@@ -15,8 +15,12 @@ from binding import *
 #from classes.types_generation import *
 #from classes.constants_generation import *
 #from classes.functions_generation import *
+
 from gen_enums import *
 from gen_bitfields import *
+from gen_booleans import *
+from gen_values import *
+
 from gen_extensions import *
 from gen_meta import *
 
@@ -95,15 +99,18 @@ def generate(inputfile, targetdir):
 	includedir = targetdir + "/include/glbinding/"
 	sourcedir  = targetdir + "/source/"
 
-	genEnums 					(enums,      includedir, "GLenum.h")
-	genBitfields			    (enums,      includedir, "GLbitfield.h")
-	genExtensions			   	(extensions, includedir, "GLextension.h")
+	genEnums 					(enums,      includedir, "enum.h")
+	genBitfields			    (enums,      includedir, "bitfield.h")
+	genBooleans			   	    (enums,      includedir, "boolean.h")
+	genValues		   	        (enums,      includedir, "values.h")
 
-	genMetaStringsByEnum	    (enums,      sourcedir,  "GLMeta_StringsByEnum.cpp")
-	genMetaEnumsByString	    (enums,      sourcedir,  "GLMeta_EnumsByString.cpp")
+	genExtensions			   	(extensions, includedir, "extension.h")
 
-	genMetaStringsByExtension	(extensions, sourcedir,  "GLMeta_StringsByExtension.cpp")
-	genMetaExtensionsByString	(extensions, sourcedir,  "GLMeta_ExtensionsByString.cpp")
+	genMetaStringsByEnum	    (enums,      sourcedir,  "Meta_StringsByEnum.cpp")
+	genMetaEnumsByString	    (enums,      sourcedir,  "Meta_EnumsByString.cpp")
+
+	genMetaStringsByExtension	(extensions, sourcedir,  "Meta_StringsByExtension.cpp")
+	genMetaExtensionsByString	(extensions, sourcedir,  "Meta_ExtensionsByString.cpp")
 
 def main(argv):
 	try:

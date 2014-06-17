@@ -1,0 +1,5 @@
+#pragma once
+
+#include <glbinding/types.h>
+
+%s
