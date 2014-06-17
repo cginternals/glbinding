@@ -1,11 +1,14 @@
 
+import os, sys
+
 template_dir = "templates/"
-tab  = "    "
-tab2 = tab + tab
+tab          = "    "
+tab2         = tab + tab
+exec_dir     = os.path.dirname(os.path.abspath(sys.argv[0])) + "/"
 
 def template(outputfile):
-	with open (template_dir + outputfile + ".in", "r") as f:
-		return f.read()
+	with open (exec_dir + template_dir + outputfile + ".in", "r") as file:
+		return file.read()
 
 # enum_binding_name_exceptions = [ "DOMAIN", "MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB", "FALSE", "TRUE", "NO_ERROR", "WAIT_FAILED" ]
 

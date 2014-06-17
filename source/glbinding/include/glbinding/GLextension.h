@@ -2,7 +2,7 @@
 
 #include <functional>
 
-enum class GLextension : int
+enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
 {
     UNKNOWN = -1,
     GL_3DFX_multisample,
