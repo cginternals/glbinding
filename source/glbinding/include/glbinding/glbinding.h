@@ -4,9 +4,3 @@
 #include <glbinding/constants.h>
 #include <glbinding/types.h>
 #include <glbinding/functions.h>
-
-namespace gl {
-
-GLBINDING_API bool initialize();
-
-} // namespace gl

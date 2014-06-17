@@ -47,12 +47,14 @@ set(api_includes
     
     ${include_path}/constants.h
     ${include_path}/glbinding.h
+    ${include_path}/initialize.h
     ${include_path}/GetProcAddress.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/Extension.h
     ${include_path}/AbstractFunction.h
     ${include_path}/meta.h
+    ${include_path}/noGL.h
     ${include_path}/AbstractValue.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
@@ -68,7 +70,7 @@ set(api_includes
 )
 
 set(sources
-    ${source_path}/glbinding.cpp
+    ${source_path}/initialize.cpp
     ${source_path}/GetProcAddress.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/AbstractFunction.cpp

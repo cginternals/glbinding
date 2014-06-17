@@ -38,15 +38,20 @@ set(libs
 # Sources
 #
 
+set(headers
+	impl.h
+)
+
 set(sources
     main.cpp
+    impl.cpp
 )
 
 #
 # Build executable
 #
 
-add_executable(${target} ${sources})
+add_executable(${target} ${headers} ${sources})
 
 target_link_libraries(${target} ${libs})
 

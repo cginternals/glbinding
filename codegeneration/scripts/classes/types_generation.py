@@ -4,6 +4,8 @@ from classes.Type import *
 #==========================================
 typesHeaderTemplate = """#pragma once
 
+#include <glbinding/noGL.h>
+
 #include <cstddef>
 #include <cstdint>
 

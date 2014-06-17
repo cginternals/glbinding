@@ -3,6 +3,8 @@ from classes.Function import *
 #==========================================
 functionObjectsHeaderTemplate = """#pragma once
 
+#include <glbinding/noGL.h>
+
 #include <glbinding/types.h>
 #include <glbinding/constants.h>
 
@@ -42,6 +44,8 @@ const std::vector<AbstractFunction*> functionList = {
 """
 #==========================================
 functionsWrapperHeaderTemplate = """#pragma once
+
+#include <glbinding/noGL.h>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/constants.h>

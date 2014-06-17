@@ -4,6 +4,8 @@ from classes.Enum import *
 #==========================================
 enumsHeaderTemplate = """#pragma once
 
+#include <glbinding/noGL.h>
+
 #include <glbinding/types.h>
 
 namespace gl {
@@ -22,6 +24,8 @@ enum class GLenum : unsigned int
 #==========================================
 bitfieldsHeaderTemplate = """#pragma once
 
+#include <glbinding/noGL.h>
+
 #include <glbinding/types.h>
 
 namespace gl {
@@ -32,6 +36,8 @@ namespace gl {
 """
 #==========================================
 constantsHeaderTemplate = """#pragma once
+
+#include <glbinding/noGL.h>
 
 #include <glbinding/types.h>
 
