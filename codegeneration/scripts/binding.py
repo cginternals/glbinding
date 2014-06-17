@@ -3,6 +3,10 @@ template_dir = "templates/"
 tab  = "    "
 tab2 = tab + tab
 
+def template(outputfile):
+	with open (template_dir + outputfile + ".in", "r") as f:
+		return f.read()
+
 # enum_binding_name_exceptions = [ "DOMAIN", "MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB", "FALSE", "TRUE", "NO_ERROR", "WAIT_FAILED" ]
 
 def enumBindingIdentifier(enum):
