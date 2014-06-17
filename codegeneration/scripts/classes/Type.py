@@ -1,6 +1,7 @@
 import sys
 
 class Type:
+
 	def __init__(self, xml):
 		self.value = "".join([ t for t in xml.itertext() ])
 		if "name" in xml.attrib:

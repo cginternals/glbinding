@@ -1,0 +1,32 @@
+namespace std
+{
+
+template<>
+struct hash<gl::%t>
+{
+    hash<%v>::result_type operator()(const gl::%t & t) const
+    {
+        return hash<%v>()(static_cast<%v>(t));
+    }
+};
+
+}
+
+GLBINDING_API bool operator==(const gl::%t & a, %v b);
+GLBINDING_API bool operator!=(const gl::%t & a, %v b);
+GLBINDING_API bool operator< (const gl::%t & a, %v b);
+GLBINDING_API bool operator<=(const gl::%t & a, %v b);
+GLBINDING_API bool operator> (const gl::%t & a, %v b);
+GLBINDING_API bool operator>=(const gl::%t & a, %v b);
+
+GLBINDING_API bool operator==(%v a, const gl::%t & b);
+GLBINDING_API bool operator!=(%v a, const gl::%t & b);
+GLBINDING_API bool operator< (%v a, const gl::%t & b);
+GLBINDING_API bool operator<=(%v a, const gl::%t & b);
+GLBINDING_API bool operator> (%v a, const gl::%t & b);
+GLBINDING_API bool operator>=(%v a, const gl::%t & b);
+
+GLBINDING_API gl::%t operator+(const gl::%t & a, %v b);
+GLBINDING_API gl::%t operator-(const gl::%t & a, %v b);
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::%t & value);

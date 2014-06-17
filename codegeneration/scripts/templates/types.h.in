@@ -1,0 +1,28 @@
+#pragma once
+
+#include <glbinding/glbinding_api.h>
+
+#include <cstddef>
+#include <cstdint>
+
+#include <functional>
+#include <ostream>
+#include <string>
+
+#ifdef _MSC_VER
+#define GL_APIENTRY __stdcall
+#else
+#define GL_APIENTRY
+#endif
+
+namespace gl 
+{
+
+%s
+
+} // namespace gl
+
+
+// Type Integrations
+
+%s

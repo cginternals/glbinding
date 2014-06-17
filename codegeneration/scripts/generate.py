@@ -16,10 +16,11 @@ from binding import *
 #from classes.constants_generation import *
 #from classes.functions_generation import *
 
-from gen_enums import *
 from gen_bitfields import *
 from gen_booleans import *
+from gen_enums import *
 from gen_values import *
+from gen_types import *
 
 from gen_extensions import *
 from gen_meta import *
@@ -99,10 +100,12 @@ def generate(inputfile, targetdir):
 	includedir = targetdir + "/include/glbinding/"
 	sourcedir  = targetdir + "/source/"
 
-	genEnums 					(enums,      includedir, "enum.h")
 	genBitfields			    (enums,      includedir, "bitfield.h")
 	genBooleans			   	    (enums,      includedir, "boolean.h")
+	genEnums 					(enums,      includedir, "enum.h")
 	genValues		   	        (enums,      includedir, "values.h")
+	
+	genTypes                    (types,      includedir, "types.h")  
 
 	genExtensions			   	(extensions, includedir, "extension.h")
 
