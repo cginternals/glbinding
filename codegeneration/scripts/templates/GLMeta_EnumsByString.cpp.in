@@ -1,0 +1,12 @@
+
+#include "GLMeta_EnumsByString.h"
+
+#include <glbinding/GLenum.h>
+
+
+const std::unordered_map<std::string, GLenum> GLMeta_EnumsByString = 
+{
+#ifdef GL_BY_STRINGS
+    %s
+#endif
+};

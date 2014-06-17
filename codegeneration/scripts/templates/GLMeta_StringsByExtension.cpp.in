@@ -1,0 +1,12 @@
+
+#include "GLMeta_StringsByExtension.h"
+
+#include <glbinding/GLextension.h>
+
+
+const std::unordered_map<GLextension, std::string> GLMeta_StringsByExtension =
+{
+#ifdef STRINGS_BY_GL
+    %s
+#endif
+};

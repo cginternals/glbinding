@@ -1,0 +1,12 @@
+
+#include "GLMeta_ExtensionsByFunctionString.h"
+
+#include <glbinding/GLextension.h>
+
+
+const std::unordered_map<std::string, std::vector<GLextension>> GLMeta_ExtensionsByFunctionString = 
+{
+#ifdef GL_BY_STRINGS
+    %s
+#endif
+};
