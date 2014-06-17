@@ -3,7 +3,7 @@
 
 #include <glbinding/types.h>
 
-enum class GLenum : unsigned int
+enum class GLbitfield : unsigned int
 {
     // AttribMask
     GL_CURRENT_BIT = 0x00000001;
