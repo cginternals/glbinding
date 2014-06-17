@@ -18,7 +18,7 @@ class Enum:
 
 		self.group     = group
 		self.groupType = groupType
-		
+
 		if group == "SpecialNumbers":
 			self.type = translateType(xml.attrib.get("type", ""), self.name)
 		elif groupType == "bitmask":

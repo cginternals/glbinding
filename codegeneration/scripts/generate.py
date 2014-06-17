@@ -102,7 +102,7 @@ def generate(inputfile, targetdir):
 
 	genBitfields			    (enums,      includedir, "bitfield.h")
 	genBooleans			   	    (enums,      includedir, "boolean.h")
-	genEnums 					(enums,      includedir, "enum.h")
+	genEnums 			 		(enums,      includedir, "enum.h")
 	genValues		   	        (enums,      includedir, "values.h")
 	
 	genTypes                    (types,      includedir, "types.h")  

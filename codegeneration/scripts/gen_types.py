@@ -3,12 +3,6 @@ from classes.Type import *
 
 # ToDo: move this to Type class? (as well as convert an multiline convert)
 
-def parseType(type):
-	if type.value.startswith("typedef"):
-		return type.typevalue[8:-1]
-	else: 
-		return type.value
-
 def convertTypedefLine(line, name):		
 	if not line.startswith("typedef"):
 		return line

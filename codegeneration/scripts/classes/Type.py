@@ -30,3 +30,12 @@ def parseTypes(xml):
 			types.append(Type(t))
 
 	return types
+
+# returns the type of a typedef, e.g., 
+# "typedef unsigned int" returns "unsigned int"
+
+def parseType(type):
+	if type.value.startswith("typedef"):
+		return type.typevalue[8:-1]
+	else: 
+		return type.value

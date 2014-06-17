@@ -65,6 +65,7 @@ using GLvdpauSurfaceNV = GLintptr;
 
 } // namespace gl
 
+
 // Type Integrations
 
 namespace std
