@@ -46,59 +46,26 @@ def parseEnums(xml):
 
 	return enums
 
+
+def groupEnumsByType(enums):
+	d = dict()
 	
-#def groupByType(enums):
-#	d = dict()
-#	
-#	for e in enums:
-#		if not e.type in d:
-#			d[e.type] = []
-#		d[e.type].append(e)
-#		
-#	return d
-#
-#def groupByGroup(enums):
-#	d = dict()
-#	
-#	for e in enums:
-#		if not e.group in d:
-#			d[e.group] = []
-#		d[e.group].append(e)
-#	
-#	
-#	for key in d.keys():
-#		d[key] = sorted(d[key], key = lambda e: e.value)
-#		
-#	return d
-#
-#def groupByValue(enums):
-#	d = dict()
-#	
-#	for e in enums:
-#		v = int(e.value, 0)
-#		if not v in d:
-#			d[v] = []
-#		d[v].append(e)
-#	
-#	for key in d.keys():
-#		d[key] = sortBySuffix(d[key])
-#		
-#	return d
-#
-#
-#def suffixPriority(name):
-#	index = name.rfind("_")
-#	if index < 0:
-#		return -1
-#
-#	ext = name[index + 1:]
-#
-#	if ext not in Extension.suffixes:
-#		return -1
-#	
-#	return Extension.suffixes.index(ext)
-#
-#
-#def sortBySuffix(enums):
-#	return sorted(enums, key = lambda e : suffixPriority(e.name))
-#
+	for e in enums:
+		if not e.type in d:
+			d[e.type] = []
+		d[e.type].append(e)
+		
+	return d
+
+def groupEnumsByGroup(enums):
+	d = dict()
+	
+	for e in enums:
+		if not e.group in d:
+			d[e.group] = []
+		d[e.group].append(e)
+
+	for key in d.keys():
+		d[key] = sorted(d[key], key = lambda e: e.value)
+
+	return d	

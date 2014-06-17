@@ -5,27 +5,35 @@ import sys, getopt
 import xml.etree.ElementTree as ET
 
 from classes.Feature import *
-#from classes.Enum import *
+from classes.Enum import *
 #from classes.Function import *
 from classes.Extension import *
+from classes.Type import *
 
 from binding import *
 
 #from classes.types_generation import *
 #from classes.constants_generation import *
 #from classes.functions_generation import *
+from gen_enums import *
+from gen_bitfields import *
 from gen_extensions import *
+from gen_meta import *
 
 def generate(inputfile, targetdir):
 
-	tree = ET.parse(inputfile)
-	registry = tree.getroot()
+	tree       = ET.parse(inputfile)
+	registry   = tree.getroot()
 
-	features = parseFeatures(registry)
-#	types = parseTypes(registry)
-#	enums = sorted(parseEnums(registry))
-#	functions = sorted(parseFunctions(registry))
+	types 	   = parseTypes(registry)
+
+	features   = parseFeatures(registry)
+
+	enums      = sorted(parseEnums(registry))
 	extensions = sorted(parseExtensions(registry, features))
+
+
+#	functions = sorted(parseFunctions(registry))
 
 #	files = {
 #		"typesHeader"                : "include/glbinding/types.h",
@@ -87,8 +95,15 @@ def generate(inputfile, targetdir):
 	includedir = targetdir + "/include/glbinding/"
 	sourcedir  = targetdir + "/source/"
 
-	genExtensionHeader(extensions, includedir, "GLextension.h")
+	genEnums 					(enums,      includedir, "GLenum.h")
+	genBitfields			    (enums,      includedir, "GLbitfield.h")
+	genExtensions			   	(extensions, includedir, "GLextension.h")
 
+	genMetaStringsByEnum	    (enums,      sourcedir,  "GLMeta_StringsByEnum.cpp")
+	genMetaEnumsByString	    (enums,      sourcedir,  "GLMeta_EnumsByString.cpp")
+
+	genMetaStringsByExtension	(extensions, sourcedir,  "GLMeta_StringsByExtension.cpp")
+	genMetaExtensionsByString	(extensions, sourcedir,  "GLMeta_ExtensionsByString.cpp")
 
 def main(argv):
 	try:

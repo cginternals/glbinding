@@ -1,0 +1,11 @@
+
+#pragma once
+
+#include <glbinding/types.h>
+
+enum class GLenum : unsigned int
+{%s
+};
+
+// import bitfields to namespace
+%s
