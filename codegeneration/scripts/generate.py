@@ -45,8 +45,9 @@ def generate(inputfile, targetdir):
 	genBooleans			   	    (enums,      includedir, "boolean.h")
 	genEnums 			 		(enums,      includedir, "enum.h")
 	genValues		   	        (enums,      includedir, "values.h")
-	
-	genTypes                    (types,      includedir, "types.h")  
+
+	genTypes_h                  (types,      includedir, "types.h")  
+	genTypes_cpp                (types,      sourcedir,  "types.cpp")  
 
 	genExtensions			   	(extensions, includedir, "extension.h")
 

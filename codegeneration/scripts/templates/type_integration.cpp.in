@@ -1,0 +1,78 @@
+
+// %t Type Integration
+
+bool operator==(const gl::%t & a, %v b)
+{
+    return static_cast<%v>(a) == b;
+}
+
+bool operator!=(const gl::%t & a, %v b)
+{
+    return static_cast<%v>(a) != b;
+}
+
+bool operator<(const gl::%t & a, %v b)
+{
+    return static_cast<%v>(a) < b;
+}
+
+bool operator<=(const gl::%t & a, %v b)
+{
+    return static_cast<%v>(a) <= b;
+}
+
+bool operator>(const gl::%t & a, %v b)
+{
+    return static_cast<%v>(a) > b;
+}
+
+bool operator>=(const gl::%t & a, %v b)
+{
+    return static_cast<%v>(a) >= b;
+}
+
+bool operator==(%v a, const gl::%t & b)
+{
+    return a == static_cast<%v>(b);
+}
+
+bool operator!=(%v a, const gl::%t & b)
+{
+    return a != static_cast<%v>(b);
+}
+
+bool operator<(%v a, const gl::%t & b)
+{
+    return a < static_cast<%v>(b);
+}
+
+bool operator<=(%v a, const gl::%t & b)
+{
+    return a <= static_cast<%v>(b);
+}
+
+bool operator>(%v a, const gl::%t & b)
+{
+    return a > static_cast<%v>(b);
+}
+
+bool operator>=(%v a, const gl::%t & b)
+{
+    return a >= static_cast<%v>(b);
+}
+
+gl::%t operator+(const gl::%t & a, %v b)
+{
+    return static_cast<gl::%t>(static_cast<%v>(a) + b);
+}
+
+gl::%t operator-(const gl::%t & a, %v b)
+{
+    return static_cast<gl::%t>(static_cast<%v>(a) - b);
+}
+
+std::ostream & operator<<(std::ostream & stream, const gl::%t & value)
+{
+    stream << gl::Meta::getString(value);
+    return stream;
+}

@@ -33,14 +33,24 @@ def convertTypedef(type):
 def convertType(type):
 	return convertTypedef(type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(GL_APIENTRY *)")
 
-def genTypes(types, outputdir, outputfile):
+def genTypes_h(types, outputdir, outputfile):
 
 	type_integrations = []
 	for type in types:
 		if type.name in enum_class_exceptions:
-			type_integrations.append(template("type_integration").replace("%t", type.name).replace("%v", parseType(type)))
+			type_integrations.append(template("type_integration.h").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (
 			("\n".join([ convertType(t) for t in types ])),
 			("\n".join([ t for t in type_integrations ]))))
+
+def genTypes_cpp(types, outputdir, outputfile):
+
+	type_integrations = []
+	for type in types:
+		if type.name in enum_class_exceptions:
+			type_integrations.append(template("type_integration.cpp").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
+
+	with open(outputdir + outputfile, 'w') as file:
+		file.write(template(outputfile) % ("\n".join([ t for t in type_integrations ])))

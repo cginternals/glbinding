@@ -69,38 +69,44 @@ using GLvdpauSurfaceNV = GLintptr;
 
 // Type Integrations
 
+
+// GLenum Type Integration
+
 namespace std
 {
 
 template<>
 struct hash<gl::GLenum>
 {
-    hash<unsigned int >::result_type operator()(const gl::GLenum & t) const
+    hash<unsigned int>::result_type operator()(const gl::GLenum & t) const
     {
-        return hash<unsigned int >()(static_cast<unsigned int >(t));
+        return hash<unsigned int>()(static_cast<unsigned int>(t));
     }
 };
 
 }
 
-GLBINDING_API bool operator==(const gl::GLenum & a, unsigned int  b);
-GLBINDING_API bool operator!=(const gl::GLenum & a, unsigned int  b);
-GLBINDING_API bool operator< (const gl::GLenum & a, unsigned int  b);
-GLBINDING_API bool operator<=(const gl::GLenum & a, unsigned int  b);
-GLBINDING_API bool operator> (const gl::GLenum & a, unsigned int  b);
-GLBINDING_API bool operator>=(const gl::GLenum & a, unsigned int  b);
+GLBINDING_API bool operator==(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator!=(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator< (const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator<=(const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator> (const gl::GLenum & a, unsigned int b);
+GLBINDING_API bool operator>=(const gl::GLenum & a, unsigned int b);
 
-GLBINDING_API bool operator==(unsigned int  a, const gl::GLenum & b);
-GLBINDING_API bool operator!=(unsigned int  a, const gl::GLenum & b);
-GLBINDING_API bool operator< (unsigned int  a, const gl::GLenum & b);
-GLBINDING_API bool operator<=(unsigned int  a, const gl::GLenum & b);
-GLBINDING_API bool operator> (unsigned int  a, const gl::GLenum & b);
-GLBINDING_API bool operator>=(unsigned int  a, const gl::GLenum & b);
+GLBINDING_API bool operator==(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator!=(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator< (unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator<=(unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator> (unsigned int a, const gl::GLenum & b);
+GLBINDING_API bool operator>=(unsigned int a, const gl::GLenum & b);
 
-GLBINDING_API gl::GLenum operator+(const gl::GLenum & a, unsigned int  b);
-GLBINDING_API gl::GLenum operator-(const gl::GLenum & a, unsigned int  b);
+GLBINDING_API gl::GLenum operator+(const gl::GLenum & a, unsigned int b);
+GLBINDING_API gl::GLenum operator-(const gl::GLenum & a, unsigned int b);
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value);
+
+
+// GLboolean Type Integration
 
 namespace std
 {
@@ -108,32 +114,35 @@ namespace std
 template<>
 struct hash<gl::GLboolean>
 {
-    hash<unsigned char >::result_type operator()(const gl::GLboolean & t) const
+    hash<unsigned char>::result_type operator()(const gl::GLboolean & t) const
     {
-        return hash<unsigned char >()(static_cast<unsigned char >(t));
+        return hash<unsigned char>()(static_cast<unsigned char>(t));
     }
 };
 
 }
 
-GLBINDING_API bool operator==(const gl::GLboolean & a, unsigned char  b);
-GLBINDING_API bool operator!=(const gl::GLboolean & a, unsigned char  b);
-GLBINDING_API bool operator< (const gl::GLboolean & a, unsigned char  b);
-GLBINDING_API bool operator<=(const gl::GLboolean & a, unsigned char  b);
-GLBINDING_API bool operator> (const gl::GLboolean & a, unsigned char  b);
-GLBINDING_API bool operator>=(const gl::GLboolean & a, unsigned char  b);
+GLBINDING_API bool operator==(const gl::GLboolean & a, unsigned char b);
+GLBINDING_API bool operator!=(const gl::GLboolean & a, unsigned char b);
+GLBINDING_API bool operator< (const gl::GLboolean & a, unsigned char b);
+GLBINDING_API bool operator<=(const gl::GLboolean & a, unsigned char b);
+GLBINDING_API bool operator> (const gl::GLboolean & a, unsigned char b);
+GLBINDING_API bool operator>=(const gl::GLboolean & a, unsigned char b);
 
-GLBINDING_API bool operator==(unsigned char  a, const gl::GLboolean & b);
-GLBINDING_API bool operator!=(unsigned char  a, const gl::GLboolean & b);
-GLBINDING_API bool operator< (unsigned char  a, const gl::GLboolean & b);
-GLBINDING_API bool operator<=(unsigned char  a, const gl::GLboolean & b);
-GLBINDING_API bool operator> (unsigned char  a, const gl::GLboolean & b);
-GLBINDING_API bool operator>=(unsigned char  a, const gl::GLboolean & b);
+GLBINDING_API bool operator==(unsigned char a, const gl::GLboolean & b);
+GLBINDING_API bool operator!=(unsigned char a, const gl::GLboolean & b);
+GLBINDING_API bool operator< (unsigned char a, const gl::GLboolean & b);
+GLBINDING_API bool operator<=(unsigned char a, const gl::GLboolean & b);
+GLBINDING_API bool operator> (unsigned char a, const gl::GLboolean & b);
+GLBINDING_API bool operator>=(unsigned char a, const gl::GLboolean & b);
 
-GLBINDING_API gl::GLboolean operator+(const gl::GLboolean & a, unsigned char  b);
-GLBINDING_API gl::GLboolean operator-(const gl::GLboolean & a, unsigned char  b);
+GLBINDING_API gl::GLboolean operator+(const gl::GLboolean & a, unsigned char b);
+GLBINDING_API gl::GLboolean operator-(const gl::GLboolean & a, unsigned char b);
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
+
+
+// GLbitfield Type Integration
 
 namespace std
 {
@@ -141,29 +150,29 @@ namespace std
 template<>
 struct hash<gl::GLbitfield>
 {
-    hash<unsigned int >::result_type operator()(const gl::GLbitfield & t) const
+    hash<unsigned int>::result_type operator()(const gl::GLbitfield & t) const
     {
-        return hash<unsigned int >()(static_cast<unsigned int >(t));
+        return hash<unsigned int>()(static_cast<unsigned int>(t));
     }
 };
 
 }
 
-GLBINDING_API bool operator==(const gl::GLbitfield & a, unsigned int  b);
-GLBINDING_API bool operator!=(const gl::GLbitfield & a, unsigned int  b);
-GLBINDING_API bool operator< (const gl::GLbitfield & a, unsigned int  b);
-GLBINDING_API bool operator<=(const gl::GLbitfield & a, unsigned int  b);
-GLBINDING_API bool operator> (const gl::GLbitfield & a, unsigned int  b);
-GLBINDING_API bool operator>=(const gl::GLbitfield & a, unsigned int  b);
+GLBINDING_API bool operator==(const gl::GLbitfield & a, unsigned int b);
+GLBINDING_API bool operator!=(const gl::GLbitfield & a, unsigned int b);
+GLBINDING_API bool operator< (const gl::GLbitfield & a, unsigned int b);
+GLBINDING_API bool operator<=(const gl::GLbitfield & a, unsigned int b);
+GLBINDING_API bool operator> (const gl::GLbitfield & a, unsigned int b);
+GLBINDING_API bool operator>=(const gl::GLbitfield & a, unsigned int b);
 
-GLBINDING_API bool operator==(unsigned int  a, const gl::GLbitfield & b);
-GLBINDING_API bool operator!=(unsigned int  a, const gl::GLbitfield & b);
-GLBINDING_API bool operator< (unsigned int  a, const gl::GLbitfield & b);
-GLBINDING_API bool operator<=(unsigned int  a, const gl::GLbitfield & b);
-GLBINDING_API bool operator> (unsigned int  a, const gl::GLbitfield & b);
-GLBINDING_API bool operator>=(unsigned int  a, const gl::GLbitfield & b);
+GLBINDING_API bool operator==(unsigned int a, const gl::GLbitfield & b);
+GLBINDING_API bool operator!=(unsigned int a, const gl::GLbitfield & b);
+GLBINDING_API bool operator< (unsigned int a, const gl::GLbitfield & b);
+GLBINDING_API bool operator<=(unsigned int a, const gl::GLbitfield & b);
+GLBINDING_API bool operator> (unsigned int a, const gl::GLbitfield & b);
+GLBINDING_API bool operator>=(unsigned int a, const gl::GLbitfield & b);
 
-GLBINDING_API gl::GLbitfield operator+(const gl::GLbitfield & a, unsigned int  b);
-GLBINDING_API gl::GLbitfield operator-(const gl::GLbitfield & a, unsigned int  b);
+GLBINDING_API gl::GLbitfield operator+(const gl::GLbitfield & a, unsigned int b);
+GLBINDING_API gl::GLbitfield operator-(const gl::GLbitfield & a, unsigned int b);
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLbitfield & value);

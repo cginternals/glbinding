@@ -1,0 +1,7 @@
+
+#include <glbinding/types.h>
+
+#include <glbinding/Meta.h>
+
+
+%s
