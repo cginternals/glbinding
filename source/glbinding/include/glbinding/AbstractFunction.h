@@ -48,14 +48,13 @@ public:
     void setCallbackLevel(CallbackLevel level);
 
 public:
-    static const std::vector<AbstractFunction *> & functions();
-
     static void setContext(int context);
     static void initializeFunctions();
     static void initializeFunctions(int context);
 
 public:
     using Callback = std::function<void(const AbstractFunction &)>;
+
     using ParametersCallback = std::function<void(const AbstractFunction &, const std::vector<AbstractValue *> &)>;
     using ReturnValueCallback = std::function<void(const AbstractFunction &, const AbstractValue *)>;
 
@@ -104,10 +103,9 @@ protected:
     static Callback s_beforeCallback;
     static Callback s_afterCallback;
     static Callback s_unresolvedCallback;
+
     static ParametersCallback s_parametersCallback;
     static ReturnValueCallback s_returnValueCallback;
-
-    static const std::vector<AbstractFunction *> s_functions;
 };
 
 } // namespace gl

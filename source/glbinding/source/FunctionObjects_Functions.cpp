@@ -1,13 +1,11 @@
 
-#include <glbinding/AbstractFunction.h>
-
-#include "function_objects.h"
+#include <glbinding/FunctionObjects.h>
 
 
 namespace gl 
 {
 
-const std::vector<AbstractFunction *> AbstractFunction::s_functions = 
+const std::vector<AbstractFunction *> FunctionObjects::s_functions = 
 {
     &functions::glAccum,
     &functions::glAccumxOES,

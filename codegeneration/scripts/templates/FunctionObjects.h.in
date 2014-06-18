@@ -12,7 +12,12 @@ namespace gl
 class GLBINDING_API FunctionObjects
 {
 public:
+    static const std::vector<AbstractFunction *> & functions();
+
 %s
+
+protected:
+    static const std::vector<AbstractFunction *> s_functions;
 }
 
 } // namespace gl

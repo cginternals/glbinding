@@ -12,6 +12,8 @@ namespace gl
 class GLBINDING_API FunctionObjects
 {
 public:
+    static const std::vector<AbstractFunction *> & functions();
+
     Function<void, GLenum, GLfloat> Accum;
     Function<void, GLenum, GLfixed> AccumxOES;
     Function<void, GLuint> ActiveProgramEXT;
@@ -2868,6 +2870,9 @@ public:
     Function<void, GLshort, GLshort, GLshort, GLshort> WindowPos4sMESA;
     Function<void, const GLshort *> WindowPos4svMESA;
     Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> WriteMaskEXT;
+
+protected:
+    static const std::vector<AbstractFunction *> s_functions;
 }
 
 } // namespace gl

@@ -50,11 +50,12 @@ def generate(inputfile, targetdir):
 
 	genExtensions			   	(extensions, includedir, "extension.h")
 
+	genFunctions        	    (functions,  includedir, "functions.h")
+
 	genFunctionObjects_h        (functions,  includedir, "FunctionObjects.h")
 	genFunctionObjects_cpp      (functions,  sourcedir,  "FunctionObjects.cpp")
-	genFunctions        	    (functions,  includedir, "functions.h")
-	genFunctionList             (functions,  sourcedir,  "AbstractFunction_Functions.cpp")
-
+	genFunctionList             (functions,  sourcedir,  "FunctionObjects_Functions.cpp")
+	
 	genMetaStringsByEnum	    (enums,      sourcedir,  "Meta_StringsByEnum.cpp")
 	genMetaEnumsByString	    (enums,      sourcedir,  "Meta_EnumsByString.cpp")
 
