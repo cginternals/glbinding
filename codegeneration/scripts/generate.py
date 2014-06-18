@@ -21,6 +21,8 @@ from gen_types import *
 from gen_extensions import *
 from gen_functions import *
 
+from gen_versions import *
+
 from gen_meta import *
 
 def generate(inputfile, targetdir):
@@ -57,7 +59,9 @@ def generate(inputfile, targetdir):
     genFunctionObjects_cpp      (functions,  sourcedir,  "FunctionObjects.cpp")
     genFunctionList             (functions,  sourcedir,  "FunctionObjects_Functions.cpp")
 
-	# ToDo: the generation of enum to/from string will probably be unified...
+    genVersions                 (features,   sourcedir,  "Version_ValidVersions.cpp")
+
+    # ToDo: the generation of enum to/from string will probably be unified...
 
     genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByBitfield.cpp", "GLbitfield")
     genMetaEnumsByString        (enums,      sourcedir,  "Meta_BitfieldsByString.cpp", "GLbitfield")

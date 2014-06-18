@@ -7,6 +7,12 @@
 namespace gl
 {
 
+// ToDo: this is currently insufficient, since lots of bitfields use 
+// the same values. It might help to apply the concept of groups here.
+
+// The same issue applies for enums in general, but there overlapping
+// values mostly occur within the same application context.
+
 const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield =
 {
 #ifdef STRINGS_BY_GL
