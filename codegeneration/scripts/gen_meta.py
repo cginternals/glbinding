@@ -72,25 +72,24 @@ def enumSuffixPriority(name):
 
 
 
+def extensionVersionPair(extension):
+	return "{ GLextension::%s, { %s, %s } }" % (
+		extensionBID(extension), extension.incore.major, extension.incore.minor)
+
+def genReqVersionsByExtension(extensions, outputdir, outputfile):
+	with open(outputdir + outputfile, 'w') as file:
+		file.write(template(outputfile) % (",\n" + tab).join(
+			[ extensionVersionPair(e) for e in extensions if e.incore ]))
 
 
 
-
-def extensionToRequiringVersion(extension):
-	return "{ GLextension::%s, ucharpair(%s, %s) }" % (extensionBindingName(extension), extension.incore.major, extension.incore.minor)
+# ToDo
 
 def extensionRequiredFunctions(extension):
 	return "{ GLextension::%s, { %s } }" % (extensionBindingName(extension), ", ".join([ '"%s"' % f for f in extension.commands ]))
 
 def functionRequiredByExtensions(function, extensions):
 	return '{ "%s", { %s } }' % (function, ", ".join([ "GLextension::"+extensionBindingName(e) for e in extensions ]))
-
-	
-
-			
-def generateExtensionsToRequiringVersionSource(extensions, outputfile):
-	with open(outputfile, 'w') as file:
-		file.write(extensionsToRequiringVersionTemplate % ",\n    ".join([ extensionToRequiringVersion(e) for e in extensions if e.incore ]))
 
 def generateExtensionToFunctionsSource(extensions, outputfile):				
 	with open(outputfile, 'w') as file:		
@@ -110,5 +109,3 @@ def generateFunctionsToExtensionSource(extensions, outputfile):
 		file.write(functionToExtensionsTemplate % (
 			",\n    ".join([functionRequiredByExtensions(c, sorted(extensionsByCommands[c])) for c in sorted(extensionsByCommands.keys()) ])
 			))
-
-

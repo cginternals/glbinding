@@ -8,14 +8,13 @@
 
 #include <glbinding/types.h>
 
-enum class GLenum : unsigned int;
-enum class GLextension : int;
+namespace gl
+{
 
-
-class GLBINDING_API  GLMeta
+class GLBINDING_API Meta
 {
 public:
-    GLMeta() = delete;
+    Meta() = delete;
 
     static const std::string & getString(GLenum glenum);
     static GLenum getEnum(const std::string & glenum);
@@ -35,5 +34,7 @@ public:
     static const std::vector<GLextension> & getExtensionsRequiring(const std::string & function);
 
     using ucharpair = std::pair<unsigned char, unsigned char>;
-    static const ucharpair & getRequiringVersion(GLextension extension);
+    static const Version & getRequiringVersion(GLextension extension);
 };
+
+} // namespace gl

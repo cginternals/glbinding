@@ -1,14 +1,14 @@
 
-#include "GLMeta_ReqVersionsByExtension.h"
+#include "Meta_Maps.h"
 
 #include <glbinding/extension.h>
-#include <glbinding/version.h>
+#include <glbinding/Version.h>
 
 
 namespace gl
 {
 
-const std::unordered_map<GLextension, Meta_ReqVersionsByExtension::ucharpair> GLMeta_ReqVersionsByExtension = 
+const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension = 
 {
     %s
 };

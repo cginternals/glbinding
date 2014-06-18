@@ -73,6 +73,8 @@ def generate(inputfile, targetdir):
     genMetaStringsByExtension   (extensions, sourcedir,  "Meta_StringsByExtension.cpp")
     genMetaExtensionsByString   (extensions, sourcedir,  "Meta_ExtensionsByString.cpp")
 
+    genReqVersionsByExtension   (extensions, sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+
 
 def main(argv):
     try:

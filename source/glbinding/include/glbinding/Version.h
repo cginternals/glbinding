@@ -1,10 +1,10 @@
 #pragma once
 
+#include <glbinding/glbinding_api.h>
+
 #include <string>
 #include <utility>
 #include <set>
-
-#include <glbinding/glbinding_api.h>
 
 
 namespace gl
@@ -42,4 +42,4 @@ protected:
     static const std::set<Version> s_validVersions;
 };
 
-} // namespace glow
+} // namespace gl
