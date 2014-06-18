@@ -1,13 +1,13 @@
 
-#include "GLMeta_ExtensionsByString.h"
+#include "Meta_Maps.h"
 
-#include <glbinding/GLextension.h>
+#include <glbinding/extension.h>
 
 
 namespace gl
 {
 
-const std::unordered_map<std::string, GLextension> GLMeta_ExtensionsByString =
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString =
 {
 #ifdef GL_BY_STRINGS
     { "GL_3DFX_multisample", GLextension::GL_3DFX_multisample },

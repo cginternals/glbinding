@@ -1,0 +1,17 @@
+
+#include "Meta_Maps.h"
+
+#include <glbinding/bitfield.h>
+
+
+namespace gl
+{
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString = 
+{
+#ifdef GL_BY_STRINGS
+    %s
+#endif
+};
+
+} // namespace gl

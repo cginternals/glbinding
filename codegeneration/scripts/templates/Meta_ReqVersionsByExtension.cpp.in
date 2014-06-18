@@ -1,7 +1,8 @@
 
 #include "GLMeta_ReqVersionsByExtension.h"
 
-#include <glbinding/GLextension.h>
+#include <glbinding/extension.h>
+#include <glbinding/version.h>
 
 
 namespace gl

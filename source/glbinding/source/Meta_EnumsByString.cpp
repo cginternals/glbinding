@@ -1,13 +1,13 @@
 
-#include "GLMeta_EnumsByString.h"
+#include "Meta_Maps.h"
 
-#include <glbinding/GLenum.h>
+#include <glbinding/enum.h>
 
 
 namespace gl
 {
 
-const std::unordered_map<std::string, GLenum> GLMeta_EnumsByString = 
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString = 
 {
 #ifdef GL_BY_STRINGS
     { "GL_1PASS_EXT", GLenum::GL_1PASS_EXT },

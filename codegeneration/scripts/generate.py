@@ -25,67 +25,74 @@ from gen_meta import *
 
 def generate(inputfile, targetdir):
 
-	tree       = ET.parse(inputfile)
-	registry   = tree.getroot()
+    tree       = ET.parse(inputfile)
+    registry   = tree.getroot()
 
-	types 	   = parseTypes(registry)
+    types        = parseTypes(registry)
 
-	features   = parseFeatures(registry)
+    features   = parseFeatures(registry)
 
-	enums      = sorted(parseEnums(registry))
-	extensions = sorted(parseExtensions(registry, features))
+    enums      = sorted(parseEnums(registry))
+    extensions = sorted(parseExtensions(registry, features))
 
-	functions  = sorted(parseFunctions(registry))
+    functions  = sorted(parseFunctions(registry))
 
-	includedir = targetdir + "/include/glbinding/"
-	sourcedir  = targetdir + "/source/"
+    includedir = targetdir + "/include/glbinding/"
+    sourcedir  = targetdir + "/source/"
 
 
-	genBitfields			    (enums,      includedir, "bitfield.h")
-	genBooleans			   	    (enums,      includedir, "boolean.h")
-	genEnums 			 		(enums,      includedir, "enum.h")
-	genValues		   	        (enums,      includedir, "values.h")
+    genBitfields                (enums,      includedir, "bitfield.h")
+    genBooleans                 (enums,      includedir, "boolean.h")
+    genEnums                    (enums,      includedir, "enum.h")
+    genValues                   (enums,      includedir, "values.h")
 
-	genTypes_h                  (types,      includedir, "types.h")  
-	genTypes_cpp                (types,      sourcedir,  "types.cpp")  
+    genTypes_h                  (types,      includedir, "types.h")  
+    genTypes_cpp                (types,      sourcedir,  "types.cpp")  
 
-	genExtensions			   	(extensions, includedir, "extension.h")
+    genExtensions               (extensions, includedir, "extension.h")
 
-	genFunctions        	    (functions,  includedir, "functions.h")
+    genFunctions                (functions,  includedir, "functions.h")
 
-	genFunctionObjects_h        (functions,  includedir, "FunctionObjects.h")
-	genFunctionObjects_cpp      (functions,  sourcedir,  "FunctionObjects.cpp")
-	genFunctionList             (functions,  sourcedir,  "FunctionObjects_Functions.cpp")
-	
-	genMetaStringsByEnum	    (enums,      sourcedir,  "Meta_StringsByEnum.cpp")
-	genMetaEnumsByString	    (enums,      sourcedir,  "Meta_EnumsByString.cpp")
+    genFunctionObjects_h        (functions,  includedir, "FunctionObjects.h")
+    genFunctionObjects_cpp      (functions,  sourcedir,  "FunctionObjects.cpp")
+    genFunctionList             (functions,  sourcedir,  "FunctionObjects_Functions.cpp")
+    
 
-	genMetaStringsByExtension	(extensions, sourcedir,  "Meta_StringsByExtension.cpp")
-	genMetaExtensionsByString	(extensions, sourcedir,  "Meta_ExtensionsByString.cpp")
+#    genMetaStringsByBitfield    (enums,      sourcedir,  "Meta_StringsByBitfield.cpp")
+#    genMetaBitfieldsByString    (enums,      sourcedir,  "Meta_BitfieldsByString.cpp")
+
+#    genMetaStringsByBoolean     (enums,      sourcedir,  "Meta_StringsByBoolean.cpp")
+#    genMetaBooleansByString     (enums,      sourcedir,  "Meta_BooleansByString.cpp")
+
+    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByEnum.cpp")
+    genMetaEnumsByString        (enums,      sourcedir,  "Meta_EnumsByString.cpp")
+
+    genMetaStringsByExtension   (extensions, sourcedir,  "Meta_StringsByExtension.cpp")
+    genMetaExtensionsByString   (extensions, sourcedir,  "Meta_ExtensionsByString.cpp")
 
 
 def main(argv):
-	try:
-		opts, args = getopt.getopt(argv[1:], "s:d:", ["spec=", "directory="])
-	except getopt.GetoptError:
-		print("usage: %s -s <GL spec> [-d <output directory>]" % argv[0])
-		sys.exit(1)
-		
-	targetdir = "."
-	inputfile = None
-	
-	for opt, arg in opts:
-		if opt in ("-s", "--spec"):
-			inputfile = arg
-			
-		if opt in ("-d", "--directory"):
-			targetdir = arg
-			
-	if inputfile == None:
-		print("No GL spec file given")
-		sys.exit(1)
+    try:
+        opts, args = getopt.getopt(argv[1:], "s:d:", ["spec=", "directory="])
+    except getopt.GetoptError:
+        print("usage: %s -s <GL spec> [-d <output directory>]" % argv[0])
+        sys.exit(1)
+        
+    targetdir = "."
+    inputfile = None
+    
+    for opt, arg in opts:
+        if opt in ("-s", "--spec"):
+            inputfile = arg
+            
+        if opt in ("-d", "--directory"):
+            targetdir = arg
+            
+    if inputfile == None:
+        print("No GL spec file given")
+        sys.exit(1)
 
-	generate(inputfile, targetdir)
+    generate(inputfile, targetdir)
 
 if __name__ == "__main__":
-	main(sys.argv)
+    main(sys.argv)

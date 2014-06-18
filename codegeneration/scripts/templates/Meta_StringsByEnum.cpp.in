@@ -1,13 +1,13 @@
 
-#include "GLMeta_StringsByEnum.h"
+#include "Meta_Maps.h"
 
-#include <glbinding/GLenum.h>
+#include <glbinding/enum.h>
 
 
 namespace gl
 {
 
-const std::unordered_map<GLenum, std::string> GLMeta_StringsByEnum =
+const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
 {
 #ifdef STRINGS_BY_GL
     %s

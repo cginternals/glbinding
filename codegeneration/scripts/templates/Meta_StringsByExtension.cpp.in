@@ -1,13 +1,13 @@
 
-#include "GLMeta_StringsByExtension.h"
+#include "Meta_Maps.h"
 
-#include <glbinding/GLextension.h>
+#include <glbinding/extension.h>
 
 
 namespace gl
 {
 
-const std::unordered_map<GLextension, std::string> GLMeta_StringsByExtension =
+const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
 {
 #ifdef STRINGS_BY_GL
     %s
