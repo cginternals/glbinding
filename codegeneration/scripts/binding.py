@@ -23,4 +23,4 @@ def extensionBID(extension):
 
 
 def functionBID(function):
-	return function.name[2:]
+	return function.name

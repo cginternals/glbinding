@@ -88,7 +88,7 @@ protected:
     bool isEnabled(CallbackLevel level);
 
     void before();
-    void parameters(const std::vector<AbstractValue*> & values);
+    void parameters(const std::vector<AbstractValue *> & values);
     void returnValue(const AbstractValue * value);
     void after();
     void unresolved();
@@ -107,7 +107,7 @@ protected:
     static ParametersCallback s_parametersCallback;
     static ReturnValueCallback s_returnValueCallback;
 
-    static const std::vector<AbstractFunction*> s_functions;
+    static const std::vector<AbstractFunction *> s_functions;
 };
 
 } // namespace gl

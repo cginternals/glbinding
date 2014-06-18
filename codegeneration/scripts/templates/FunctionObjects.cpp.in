@@ -1,0 +1,14 @@
+
+#include <glbinding/FunctionObjects.h>
+
+#include <glbinding/bitfield.h>
+#include <glbinding/boolean.h>
+#include <glbinding/enum.h>
+#include <glbinding/values.h>
+
+namespace gl 
+{
+
+%s
+
+} // namespace gl

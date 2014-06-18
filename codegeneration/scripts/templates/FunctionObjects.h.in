@@ -1,0 +1,18 @@
+#pragma once
+
+#include <glbinding/glbinding_api.h>
+
+#include <glbinding/types.h>
+#include <glbinding/Function.h>
+
+
+namespace gl 
+{
+
+class GLBINDING_API FunctionObjects
+{
+public:
+%s
+}
+
+} // namespace gl
