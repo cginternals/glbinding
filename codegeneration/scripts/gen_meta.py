@@ -19,26 +19,26 @@ def genMetaExtensionsByString(extensions, outputdir, outputfile):
 			[ metaStringToExtension(e) for e in extensions ]))
 
 
-def metaEnumToString(enum):
-	return '{ GLenum::%s, "%s" }' % (enumBID(enum), enum.name)
-def metaStringToEnum(enum):
-	return '{ "%s", GLenum::%s }' % (enum.name, enumBID(enum))
+def metaEnumToString(enum, type):
+	return ('{ ' + type + '::%s, "%s" }') % (enumBID(enum), enum.name)
+def metaStringToEnum(enum, type):
+	return ('{ "%s", ' + type + '::%s }') % (enum.name, enumBID(enum))
 
 
-def genMetaStringsByEnum(enums, outputdir, outputfile):
-	pureEnums = [ e for e in enums if e.type == "GLenum" ]
+def genMetaStringsByEnum(enums, outputdir, outputfile, type):
+	pureEnums = [ e for e in enums if e.type == type ]
 	d = sorted([ es[0] for v, es in groupEnumsByValue(pureEnums).items() ])
 	
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % ((",\n" + tab).join(
-			[ metaEnumToString(e) for e in d ])))	
+			[ metaEnumToString(e, type) for e in d ])))	
 
-def genMetaEnumsByString(enums, outputdir, outputfile):
-	pureEnums = [ e for e in enums if e.type == "GLenum" ]
+def genMetaEnumsByString(enums, outputdir, outputfile, type):
+	pureEnums = [ e for e in enums if e.type == type ]
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % ((",\n" + tab).join(
-			[ metaStringToEnum(e) for e in pureEnums ])))
+			[ metaStringToEnum(e, type) for e in pureEnums ])))
 
 
 def groupEnumsByValue(enums):

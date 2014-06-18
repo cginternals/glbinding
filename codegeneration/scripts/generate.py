@@ -56,16 +56,15 @@ def generate(inputfile, targetdir):
     genFunctionObjects_h        (functions,  includedir, "FunctionObjects.h")
     genFunctionObjects_cpp      (functions,  sourcedir,  "FunctionObjects.cpp")
     genFunctionList             (functions,  sourcedir,  "FunctionObjects_Functions.cpp")
-    
 
-#    genMetaStringsByBitfield    (enums,      sourcedir,  "Meta_StringsByBitfield.cpp")
-#    genMetaBitfieldsByString    (enums,      sourcedir,  "Meta_BitfieldsByString.cpp")
+	# ToDo: the generation of enum to/from string will probably be unified...
 
-#    genMetaStringsByBoolean     (enums,      sourcedir,  "Meta_StringsByBoolean.cpp")
-#    genMetaBooleansByString     (enums,      sourcedir,  "Meta_BooleansByString.cpp")
-
-    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByEnum.cpp")
-    genMetaEnumsByString        (enums,      sourcedir,  "Meta_EnumsByString.cpp")
+    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByBitfield.cpp", "GLbitfield")
+    genMetaEnumsByString        (enums,      sourcedir,  "Meta_BitfieldsByString.cpp", "GLbitfield")
+    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
+    genMetaEnumsByString        (enums,      sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
+    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
+    genMetaEnumsByString        (enums,      sourcedir,  "Meta_EnumsByString.cpp",     "GLenum")
 
     genMetaStringsByExtension   (extensions, sourcedir,  "Meta_StringsByExtension.cpp")
     genMetaExtensionsByString   (extensions, sourcedir,  "Meta_ExtensionsByString.cpp")
