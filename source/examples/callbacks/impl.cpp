@@ -7,6 +7,7 @@
 #include <glbinding/meta.h>
 
 #include <iostream>
+#include <algorithm>
 
 using namespace gl;
 
