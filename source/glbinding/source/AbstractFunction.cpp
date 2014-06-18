@@ -126,9 +126,7 @@ ProcAddress AbstractFunction::address() const
     const State & state = currentState();
 
     if (!state.initialized)
-    {
         const_cast<AbstractFunction*>(this)->initialize();
-    }
 
     return state.address;
 }

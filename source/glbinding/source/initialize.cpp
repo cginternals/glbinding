@@ -1,27 +1,14 @@
 
-#include <glbinding/glbinding.h>
-
-#include <iostream>
+#include <glbinding/initialize.h>
 
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/functions.h>
 
-
-namespace 
-{
-    bool initialized = false;
-}
 
 namespace gl 
 {
 
-bool initialize()
+void initialize()
 {
-    if (initialized)
-    {
-        return false;
-    }
-
     AbstractFunction::initializeFunctions(0);
 
     /*AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
@@ -35,10 +22,6 @@ bool initialize()
             std::cout << "Error!" << std::endl;
         }
     });*/
-
-    initialized = true;
-
-    return true;
 }
 
 } // namespace gl

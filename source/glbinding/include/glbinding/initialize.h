@@ -5,6 +5,6 @@
 namespace gl 
 {
 
-GLBINDING_API bool initialize();
+GLBINDING_API void initialize();
 
 } // namespace gl
