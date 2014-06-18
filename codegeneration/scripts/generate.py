@@ -43,37 +43,40 @@ def generate(inputfile, targetdir):
     sourcedir  = targetdir + "/source/"
 
 
-    genBitfields                (enums,      includedir, "bitfield.h")
-    genBooleans                 (enums,      includedir, "boolean.h")
-    genEnums                    (enums,      includedir, "enum.h")
-    genValues                   (enums,      includedir, "values.h")
+    genBitfields                 (enums,      includedir, "bitfield.h")
+    genBooleans                  (enums,      includedir, "boolean.h")
+    genEnums                     (enums,      includedir, "enum.h")
+    genValues                    (enums,      includedir, "values.h")
 
-    genTypes_h                  (types,      includedir, "types.h")  
-    genTypes_cpp                (types,      sourcedir,  "types.cpp")  
+    genTypes_h                   (types,      includedir, "types.h")  
+    genTypes_cpp                 (types,      sourcedir,  "types.cpp")  
 
-    genExtensions               (extensions, includedir, "extension.h")
+    genExtensions                (extensions, includedir, "extension.h")
 
-    genFunctions                (functions,  includedir, "functions.h")
+    genFunctions                 (functions,  includedir, "functions.h")
 
-    genFunctionObjects_h        (functions,  includedir, "FunctionObjects.h")
-    genFunctionObjects_cpp      (functions,  sourcedir,  "FunctionObjects.cpp")
-    genFunctionList             (functions,  sourcedir,  "FunctionObjects_Functions.cpp")
+    genFunctionObjects_h         (functions,  includedir, "FunctionObjects.h")
+    genFunctionObjects_cpp       (functions,  sourcedir,  "FunctionObjects.cpp")
+    genFunctionList              (functions,  sourcedir,  "FunctionObjects_Functions.cpp")
 
-    genVersions                 (features,   sourcedir,  "Version_ValidVersions.cpp")
+    genVersions                  (features,   sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
 
-    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByBitfield.cpp", "GLbitfield")
-    genMetaEnumsByString        (enums,      sourcedir,  "Meta_BitfieldsByString.cpp", "GLbitfield")
-    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
-    genMetaEnumsByString        (enums,      sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
-    genMetaStringsByEnum        (enums,      sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
-    genMetaEnumsByString        (enums,      sourcedir,  "Meta_EnumsByString.cpp",     "GLenum")
+    genMetaStringsByEnum         (enums,      sourcedir,  "Meta_StringsByBitfield.cpp", "GLbitfield")
+    genMetaEnumsByString         (enums,      sourcedir,  "Meta_BitfieldsByString.cpp", "GLbitfield")
+    genMetaStringsByEnum         (enums,      sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
+    genMetaEnumsByString         (enums,      sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
+    genMetaStringsByEnum         (enums,      sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
+    genMetaEnumsByString         (enums,      sourcedir,  "Meta_EnumsByString.cpp",     "GLenum")
 
-    genMetaStringsByExtension   (extensions, sourcedir,  "Meta_StringsByExtension.cpp")
-    genMetaExtensionsByString   (extensions, sourcedir,  "Meta_ExtensionsByString.cpp")
+    genMetaStringsByExtension    (extensions, sourcedir,  "Meta_StringsByExtension.cpp")
+    genMetaExtensionsByString    (extensions, sourcedir,  "Meta_ExtensionsByString.cpp")
 
-    genReqVersionsByExtension   (extensions, sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+    genReqVersionsByExtension    (extensions, sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+
+    genFunctionStringsByExtension(extensions, sourcedir,  "Meta_FunctionStringsByExtension.cpp")
+    genExtensionsByFunctionString(extensions, sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
 
 
 def main(argv):

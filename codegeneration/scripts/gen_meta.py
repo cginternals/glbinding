@@ -82,22 +82,21 @@ def genReqVersionsByExtension(extensions, outputdir, outputfile):
 			[ extensionVersionPair(e) for e in extensions if e.incore ]))
 
 
-
-# ToDo
-
 def extensionRequiredFunctions(extension):
-	return "{ GLextension::%s, { %s } }" % (extensionBindingName(extension), ", ".join([ '"%s"' % f for f in extension.commands ]))
+	return "{ GLextension::%s, { %s } }" % (extensionBID(extension), ", ".join(
+		[ '"%s"' % f for f in extension.commands ]))
 
 def functionRequiredByExtensions(function, extensions):
-	return '{ "%s", { %s } }' % (function, ", ".join([ "GLextension::"+extensionBindingName(e) for e in extensions ]))
+	return '{ "%s", { %s } }' % (function, ", ".join(
+		[ "GLextension::" + extensionBID(e) for e in extensions ]))
 
-def generateExtensionToFunctionsSource(extensions, outputfile):				
-	with open(outputfile, 'w') as file:		
-		file.write(extensionToFunctionsTemplate % (
-			",\n    ".join([ extensionRequiredFunctions(e) for e in extensions if len(e.commands) > 0 ])
-			))
+def genFunctionStringsByExtension(extensions, outputdir, outputfile):				
+	with open(outputdir + outputfile, 'w') as file:		
+		file.write(template(outputfile) % ((",\n" + tab).join(
+			[ extensionRequiredFunctions(e) for e in extensions if len(e.commands) > 0 ])))
 
-def generateFunctionsToExtensionSource(extensions, outputfile):	
+def genExtensionsByFunctionString(extensions, outputdir, outputfile):	
+
 	extensionsByCommands = dict()
 	for e in extensions:
 		for c in e.commands:
@@ -105,7 +104,6 @@ def generateFunctionsToExtensionSource(extensions, outputfile):
 				extensionsByCommands[c] = set()
 			extensionsByCommands[c].add(e)
 
-	with open(outputfile, 'w') as file:		
-		file.write(functionToExtensionsTemplate % (
-			",\n    ".join([functionRequiredByExtensions(c, sorted(extensionsByCommands[c])) for c in sorted(extensionsByCommands.keys()) ])
-			))
+	with open(outputdir + outputfile, 'w') as file:		
+		file.write(template(outputfile) % ((",\n" + tab).join(
+			[ functionRequiredByExtensions(c, sorted(extensionsByCommands[c])) for c in sorted(extensionsByCommands.keys()) ])))
