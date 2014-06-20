@@ -1,4 +1,5 @@
-#include <glbinding/GetProcAddress.h>
+
+#include <glbinding/ProcAddress.h>
 
 #ifdef WIN32
     #include <string>
@@ -11,9 +12,10 @@
     #include <GL/glx.h>
 #endif
 
-namespace gl {
+namespace gl 
+{
 
-ProcAddress GetProcAddress(const char * name)
+ProcAddress getProcAddress(const char * name)
 {
 #ifdef WIN32
 

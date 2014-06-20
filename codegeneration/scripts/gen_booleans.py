@@ -10,6 +10,8 @@ def booleanImportDefinition(enum):
 
 
 def genBooleans(enums, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	tgrouped = groupEnumsByType(enums)
 	pureBooleans = tgrouped["GLboolean"]
 

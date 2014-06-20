@@ -14,10 +14,18 @@ class GLBINDING_API FunctionObjects
 public:
     static const std::vector<AbstractFunction *> & functions();
 
+    static void initialize();
+    static void initialize(int context);
+
+    inline static int context() { return s_context; }
+    static void setContext(int context);
+
 %s
 
 protected:
     static const std::vector<AbstractFunction *> s_functions;
-}
+
+    static int s_context;
+};
 
 } // namespace gl

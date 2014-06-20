@@ -27,16 +27,19 @@ from gen_meta import *
 
 def generate(inputfile, targetdir):
 
+    print "parsing " + inputfile
     tree       = ET.parse(inputfile)
     registry   = tree.getroot()
 
+    print "parsing types"
     types        = parseTypes(registry)
-
+    print "parsing features"
     features   = parseFeatures(registry)
-
+    print "parsing enums"
     enums      = sorted(parseEnums(registry))
+    print "parsing extensions"
     extensions = sorted(parseExtensions(registry, features))
-
+    print "parsing functions"
     functions  = sorted(parseFunctions(registry))
 
     includedir = targetdir + "/include/glbinding/"
@@ -62,7 +65,6 @@ def generate(inputfile, targetdir):
     genVersions                  (features,   sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
-
     genMetaStringsByEnum         (enums,      sourcedir,  "Meta_StringsByBitfield.cpp", "GLbitfield")
     genMetaEnumsByString         (enums,      sourcedir,  "Meta_BitfieldsByString.cpp", "GLbitfield")
     genMetaStringsByEnum         (enums,      sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")

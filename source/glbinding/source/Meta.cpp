@@ -4,17 +4,41 @@
 #include <sstream>
 #include <unordered_map>
 
-#include <glbinding/GLbitfield.h>
-#include <glbinding/GLboolean.h>
-#include <glbinding/GLenum.h>
+#include <glbinding/bitfield.h>
+#include <glbinding/boolean.h>
+#include <glbinding/enum.h>
 
-#include <glbinding/GLextension.h>
+#include <glbinding/extension.h>
+
+#include <glbinding/Version.h>
 
 #include "Meta_Maps.h"
 
 
 namespace gl
 {
+
+const std::string & Meta::getString(const GLbitfield bitfield)
+{
+    auto i = Meta_StringsByBitfield.find(bitfield);
+    if (i == Meta_StringsByBitfield.end())
+    {
+        static const std::string none;
+        return none;
+    }
+    return i->second;
+}
+
+const std::string & Meta::getString(const GLboolean boolean)
+{
+    auto i = Meta_StringsByBoolean.find(boolean);
+    if (i == Meta_StringsByBoolean.end())
+    {
+        static const std::string none;
+        return none;
+    }
+    return i->second;
+}
 
 const std::string & Meta::getString(const GLenum glenum)
 {
@@ -25,7 +49,6 @@ const std::string & Meta::getString(const GLenum glenum)
         return none;
     }
     return i->second;
-
 }
 
 GLenum Meta::getEnum(const std::string & glenum)

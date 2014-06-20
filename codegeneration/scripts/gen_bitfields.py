@@ -3,13 +3,15 @@ from classes.Enum import *
 
 
 def bitfieldDefinition(enum):
-	return "%s = %s;" % (enumBID(enum), enum.value)
+	return "%s = %s," % (enumBID(enum), enum.value)
 
 def bitfieldImportDefinition(enum):
 	return "static const GLbitfield %s = GLbitfield::%s;" % (enumBID(enum), enumBID(enum))
 
 
 def genBitfields(enums, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	tgrouped = groupEnumsByType(enums)
 	
 	pureBitfields    = tgrouped["GLbitfield"]
@@ -23,4 +25,4 @@ def genBitfields(enums, outputdir, outputfile):
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (
-			(",\n").join(a), ("\n") .join(b)))
+			("\n").join(a), ("\n") .join(b)))

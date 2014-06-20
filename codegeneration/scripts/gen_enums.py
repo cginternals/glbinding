@@ -14,6 +14,8 @@ def enumImportDefinition(enum):
 
 
 def genEnums(enums, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	tgrouped = groupEnumsByType(enums)
 	pureEnums = tgrouped["GLenum"]
 

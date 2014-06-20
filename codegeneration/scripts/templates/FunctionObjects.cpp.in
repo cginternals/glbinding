@@ -9,6 +9,26 @@
 namespace gl 
 {
 
+int FunctionObjects::s_context = 0;
+
+
+void FunctionObjects::initialize()
+{
+    initialize(s_context);
+}
+
+void FunctionObjects::initialize(const int context)
+{
+    for (AbstractFunction * function : functions())
+        function->initialize(context);
+}
+
+void FunctionObjects::setContext(int context)
+{
+    s_context = context;
+}
+
+
 %s
 
 } // namespace gl

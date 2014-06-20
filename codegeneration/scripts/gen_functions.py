@@ -10,12 +10,12 @@ functionForwardTemplate = """inline %s %s(%s)
 
 def functionTemplate(function):
 	params = ", ".join([function.returntype] + [ p.baseType() for p in function.params ])
-	return 'Function<%s> FunctionObject::%s("%s");' % (params,
+	return 'Function<%s> FunctionObjects::%s("%s");' % (params,
 		functionBID(function)[2:], function.name)
 
 def functionDecl(function):
 	params = ", ".join([function.returntype] + [ p.baseType() for p in function.params ])
-	return tab + "Function<%s> %s;" % (params, functionBID(function)[2:])
+	return tab + "static Function<%s> %s;" % (params, functionBID(function)[2:])
 
 def functionForward(function):
 	params = ", ".join([p.baseType()+" "+p.name for p in function.params])
@@ -26,21 +26,29 @@ def functionForward(function):
 
 
 def genFunctionObjects_h(functions, outputdir, outputfile):	
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % "\n".join(
 			[ functionDecl(f) for f in functions ]))
 
 def genFunctionObjects_cpp(functions, outputdir, outputfile):	
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % "\n".join(
 			[ functionTemplate(f) for f in functions ]))
 
 def genFunctionList(functions, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % ",\n    ".join(
-			[ "&functions::"+ functionBID(f) for f in functions ]))
+			[ "&FunctionObjects::"+ functionBID(f)[2:] for f in functions ]))
 
 def genFunctions(functions, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % "\n".join(
 			[ functionForward(f) for f in functions ]))

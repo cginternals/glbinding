@@ -6,6 +6,8 @@ def valueDefinition(enum):
 	return "static const %s %s = %s;" % (enum.type, enumBID(enum), enum.value)
 
 def genValues(enums, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	tgrouped = groupEnumsByType(enums)
 	del tgrouped["GLboolean"]
 	del tgrouped["GLenum"]

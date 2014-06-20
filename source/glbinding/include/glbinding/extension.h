@@ -655,9 +655,9 @@ namespace std
 {
 
 template<>
-struct hash<GLextension>
+struct hash<gl::GLextension>
 {
-    hash<int>::result_type operator()(GLextension extension) const
+    hash<int>::result_type operator()(gl::GLextension extension) const
     {
         return hash<int>()(static_cast<int>(extension));
     }

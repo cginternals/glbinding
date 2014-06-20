@@ -9,11 +9,15 @@ def metaStringToExtension(extension):
 
 
 def genMetaStringsByExtension(extensions, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (",\n" + tab).join(
 			[ metaExtensionToString(e) for e in extensions ]))
 
 def genMetaExtensionsByString(extensions, outputdir, outputfile):	
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (",\n" + tab).join(
 			[ metaStringToExtension(e) for e in extensions ]))
@@ -26,6 +30,8 @@ def metaStringToEnum(enum, type):
 
 
 def genMetaStringsByEnum(enums, outputdir, outputfile, type):
+	status(outputdir + outputfile)
+
 	pureEnums = [ e for e in enums if e.type == type ]
 	d = sorted([ es[0] for v, es in groupEnumsByValue(pureEnums).items() ])
 	
@@ -34,12 +40,13 @@ def genMetaStringsByEnum(enums, outputdir, outputfile, type):
 			[ metaEnumToString(e, type) for e in d ])))	
 
 def genMetaEnumsByString(enums, outputdir, outputfile, type):
+	status(outputdir + outputfile)
+
 	pureEnums = [ e for e in enums if e.type == type ]
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % ((",\n" + tab).join(
 			[ metaStringToEnum(e, type) for e in pureEnums ])))
-
 
 def groupEnumsByValue(enums):
 	d = dict()
@@ -77,10 +84,11 @@ def extensionVersionPair(extension):
 		extensionBID(extension), extension.incore.major, extension.incore.minor)
 
 def genReqVersionsByExtension(extensions, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (",\n" + tab).join(
 			[ extensionVersionPair(e) for e in extensions if e.incore ]))
-
 
 def extensionRequiredFunctions(extension):
 	return "{ GLextension::%s, { %s } }" % (extensionBID(extension), ", ".join(
@@ -91,11 +99,14 @@ def functionRequiredByExtensions(function, extensions):
 		[ "GLextension::" + extensionBID(e) for e in extensions ]))
 
 def genFunctionStringsByExtension(extensions, outputdir, outputfile):				
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:		
 		file.write(template(outputfile) % ((",\n" + tab).join(
 			[ extensionRequiredFunctions(e) for e in extensions if len(e.commands) > 0 ])))
 
 def genExtensionsByFunctionString(extensions, outputdir, outputfile):	
+	status(outputdir + outputfile)
 
 	extensionsByCommands = dict()
 	for e in extensions:

@@ -19,6 +19,7 @@
 namespace gl 
 {
 
+enum class GLextension : int;
 enum class GLenum : unsigned int;
 enum class GLboolean : unsigned char;
 enum class GLbitfield : unsigned int;

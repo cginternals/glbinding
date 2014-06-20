@@ -56,17 +56,17 @@ bool Version::operator<=(const Version & version) const
 
 Version::operator std::pair<unsigned char, unsigned char>() const
 {
-    return std::makepair(major, minor);
+    return std::make_pair(major, minor);
 }
 
 Version::operator std::pair<unsigned short, unsigned short>() const
 {
-    return std::makepair(major, minor);
+    return std::make_pair(major, minor);
 }
 
 Version::operator std::pair<unsigned int, unsigned int>() const
 {
-    return std::makepair(major, minor);
+    return std::make_pair(major, minor);
 }
 
 std::string Version::toString() const
@@ -84,14 +84,14 @@ bool Version::isNull() const
 
 bool Version::isValid() const
 {
-    return validVersions.find(*this) != validVersions.end();
+    return s_validVersions.find(*this) != s_validVersions.end();
 }
 
-Version Version::nearestValidVersion() const
+Version Version::nearest() const
 {
-    std::set<Version>::iterator iterator = validVersions.lower_bound(*this);
+    std::set<Version>::iterator iterator = s_validVersions.lower_bound(*this);
 
-    if (iterator == validVersions.end())
+    if (iterator == s_validVersions.end())
     {
         return *(--iterator);
     }

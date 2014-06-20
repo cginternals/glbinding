@@ -34,6 +34,7 @@ def convertType(type):
 	return convertTypedef(type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(GL_APIENTRY *)")
 
 def genTypes_h(types, outputdir, outputfile):
+	status(outputdir + outputfile)
 
 	type_integrations = []
 	for type in types:
@@ -46,6 +47,7 @@ def genTypes_h(types, outputdir, outputfile):
 			("\n".join([ t for t in type_integrations ]))))
 
 def genTypes_cpp(types, outputdir, outputfile):
+	status(outputdir + outputfile)
 
 	type_integrations = []
 	for type in types:

@@ -7,7 +7,8 @@ def version(feature):
 
 
 def genVersions(features, outputdir, outputfile):
+	status(outputdir + outputfile)
+
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (",\n" + tab).join(
 			[ version(f) for f in features if f.api == "gl"]))
-

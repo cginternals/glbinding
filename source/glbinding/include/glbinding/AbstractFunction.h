@@ -7,9 +7,10 @@
 #include <vector>
 #include <functional>
 
-#include <glbinding/GetProcAddress.h>
-#include <glbinding/Extension.h>
+#include <glbinding/ProcAddress.h>
 #include <glbinding/AbstractValue.h>
+
+#include <glbinding/types.h>
 
 
 namespace gl 
@@ -43,14 +44,9 @@ public:
 
     ProcAddress address() const;
 
-    std::vector<Extension> extensions() const;
+    std::vector<GLextension> extensions() const;
 
     void setCallbackLevel(CallbackLevel level);
-
-public:
-    static void setContext(int context);
-    static void initializeFunctions();
-    static void initializeFunctions(int context);
 
 public:
     using Callback = std::function<void(const AbstractFunction &)>;
@@ -97,8 +93,6 @@ protected:
     CallbackLevel m_callbackLevel;
 
     mutable std::vector<State> m_states;
-
-    static int s_context;
 
     static Callback s_beforeCallback;
     static Callback s_afterCallback;

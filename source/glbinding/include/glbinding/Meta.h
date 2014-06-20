@@ -8,8 +8,12 @@
 
 #include <glbinding/types.h>
 
+
 namespace gl
 {
+
+class Version;
+
 
 class GLBINDING_API Meta
 {
@@ -22,7 +26,7 @@ public:
     static const std::string & getString(GLbitfield bitfield);
     static GLbitfield getBitfield(const std::string & bitfield);
 
-    static const std::string & getString(GLbooelan boolean);
+    static const std::string & getString(GLboolean boolean);
     static GLboolean getBoolean(const std::string & boolean);
 
 

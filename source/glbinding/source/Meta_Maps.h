@@ -6,9 +6,13 @@
 #include <vector>
 
 #include <glbinding/types.h>
+#include <glbinding/extension.h>
+
 
 namespace gl
 {
+
+class Version;
 
 extern const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString;
 extern const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield;
@@ -25,7 +29,7 @@ extern const std::unordered_map<GLextension, std::string> Meta_StringsByExtensio
 extern const std::unordered_map<std::string, std::vector<GLextension>> Meta_ExtensionsByFunctionString;
 extern const std::unordered_map<GLextension, std::vector<std::string>> Meta_FunctionStringsByExtension;
 
-extern const std::unordered_map<GLextension, GLversion> Meta_ReqVersionsByExtension;
+extern const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension;
 
 
 } // namespace gl

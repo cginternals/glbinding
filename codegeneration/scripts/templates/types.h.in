@@ -19,6 +19,7 @@
 namespace gl 
 {
 
+enum class GLextension : int;
 %s
 
 } // namespace gl

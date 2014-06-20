@@ -1,7 +1,7 @@
 
 #include <glbinding/initialize.h>
 
-#include <glbinding/AbstractFunction.h>
+#include <glbinding/FunctionObjects.h>
 
 
 namespace gl 
@@ -9,7 +9,7 @@ namespace gl
 
 void initialize()
 {
-    AbstractFunction::initializeFunctions(0);
+    FunctionObjects::initialize(0);
 
     /*AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
     AbstractFunction::setBeforeCallback([](const AbstractFunction & f) {

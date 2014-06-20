@@ -53,63 +53,54 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 set(api_includes
     ${include_path}/glbinding_api.h
 
-    ${include_path}/constants.h
+    ${include_path}/gl.h
     ${include_path}/glbinding.h
-    ${include_path}/GetProcAddress.h
-    ${include_path}/Function.h
-    ${include_path}/Function.hpp
-    
+
+    ${include_path}/bitfield.h
+    ${include_path}/boolean.h
+    ${include_path}/enum.h
+    ${include_path}/extension.h
+    ${include_path}/functions.h
+    ${include_path}/initialize.h
+    ${include_path}/types.h
+    ${include_path}/values.h
+
     ${include_path}/AbstractFunction.h
-    
     ${include_path}/AbstractValue.h
+    ${include_path}/Function.h
+    ${include_path}/FunctionObjects.h
+    ${include_path}/Meta.h
+    ${include_path}/ProcAddress.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
-    ${include_path}/type_integration.h
-
-    ${include_path}/GLMeta.h
-    
-    # generated
-    ${include_path}/GLextension.h
-    ${include_path}/GLenum.h
-
-    ${include_path}/types.h 
-    ${include_path}/bitfields.h
-    ${include_path}/special_values.h
-    ${include_path}/functions.h
+    ${include_path}/Version.h
 )
 
 set(sources
-    ${source_path}/glbinding.cpp
-    ${source_path}/GetProcAddress.cpp
-    ${source_path}/AbstractFunction.cpp
-    #${source_path}/declarations.h
-    ${source_path}/GLMeta.cpp
-    ${source_path}/AbstractValue.cpp
-    ${source_path}/Value.cpp
-    ${source_path}/type_integration.cpp
+    ${source_path}/initialize.cpp
+    ${source_path}/types.cpp
 
-    # generated
-    ${source_path}/functions.cpp
-    ${source_path}/function_objects.cpp
-    ${source_path}/function_objects.h
-    ${source_path}/function_list.cpp
-    # gl by strings (sources generated)
-    ${source_path}/GLMeta_EnumsByString.cpp
-    ${source_path}/GLMeta_EnumsByString.h
-    ${source_path}/GLMeta_ExtensionsByString.cpp
-    ${source_path}/GLMeta_ExtensionsByString.h
-    ${source_path}/GLMeta_ExtensionsByFunctionString.cpp
-    ${source_path}/GLMeta_ExtensionsByFunctionString.h
-    # strings by gl (sources generated)
-    ${source_path}/GLMeta_FunctionStringsByExtension.cpp
-    ${source_path}/GLMeta_FunctionStringsByExtension.h
-    ${source_path}/GLMeta_StringsByEnum.cpp
-    ${source_path}/GLMeta_StringsByEnum.h
-    ${source_path}/GLMeta_StringsByExtension.cpp
-    ${source_path}/GLMeta_StringsByExtension.h
-    # version (source generated)
-    ${source_path}/GLMeta_ReqVersionsByExtension.cpp
-    ${source_path}/GLMeta_ReqVersionsByExtension.h
+    ${source_path}/AbstractFunction.cpp
+    ${source_path}/AbstractValue.cpp
+    ${source_path}/FunctionObjects.cpp
+    ${source_path}/FunctionObjects_Functions.cpp
+    ${source_path}/ProcAddress.cpp
+    ${source_path}/Value.cpp
+    ${source_path}/Version.cpp
+    ${source_path}/Version_ValidVersions.cpp
+
+    ${source_path}/Meta.cpp
+    ${source_path}/Meta_BitfieldsByString.cpp
+    ${source_path}/Meta_BooleansByString.cpp
+    ${source_path}/Meta_EnumsByString.cpp
+    ${source_path}/Meta_ExtensionsByFunctionString.cpp
+    ${source_path}/Meta_ExtensionsByString.cpp
+    ${source_path}/Meta_FunctionStringsByExtension.cpp
+    ${source_path}/Meta_ReqVersionsByExtension.cpp
+    ${source_path}/Meta_StringsByBitfield.cpp
+    ${source_path}/Meta_StringsByBoolean.cpp
+    ${source_path}/Meta_StringsByEnum.cpp
+    ${source_path}/Meta_StringsByExtension.cpp
 )
 
 # Group source files
