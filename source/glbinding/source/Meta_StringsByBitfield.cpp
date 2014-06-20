@@ -16,6 +16,7 @@ namespace gl
 const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield =
 {
 #ifdef STRINGS_BY_GL
+/*
     { GLbitfield::GL_ACCUM_BUFFER_BIT, "GL_ACCUM_BUFFER_BIT" },
     { GLbitfield::GL_ALL_ATTRIB_BITS, "GL_ALL_ATTRIB_BITS" },
     { GLbitfield::GL_ATOMIC_COUNTER_BARRIER_BIT, "GL_ATOMIC_COUNTER_BARRIER_BIT" },
@@ -51,6 +52,7 @@ const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield =
     { GLbitfield::GL_TEXTURE_BIT, "GL_TEXTURE_BIT" },
     { GLbitfield::GL_TRACE_ALL_BITS_MESA, "GL_TRACE_ALL_BITS_MESA" },
     { GLbitfield::GL_TRANSFORM_FEEDBACK_BARRIER_BIT, "GL_TRANSFORM_FEEDBACK_BARRIER_BIT" }
+*/
 #endif
 };
 

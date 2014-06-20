@@ -12,7 +12,7 @@ namespace gl
 class GLBINDING_API FunctionObjects
 {
 public:
-    static const std::vector<AbstractFunction *> & functions();
+    inline static const std::vector<AbstractFunction *> & functions() { return s_functions; }
 
     static void initialize();
     static void initialize(int context);
