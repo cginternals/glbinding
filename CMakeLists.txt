@@ -1,27 +1,30 @@
 
-cmake_minimum_required(VERSION 2.8.9 FATAL_ERROR)
-
+# Test for minimum required CMake version 2.8.12
+cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 
 #
-# Project description
+# Project description and (meta) information
 #
 set(META_PROJECT_NAME        "glbinding")
 set(META_PROJECT_DESCRIPTION "OpenGL C++ Binding")
-set(META_VERSION_MAJOR       "0")
-set(META_VERSION_MINOR       "1")
+set(META_VERSION_MAJOR       "1")
+set(META_VERSION_MINOR       "0")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_AUTHOR_ORGANIZATION "hpicgs group")
 set(META_AUTHOR_DOMAIN       "https://github.com/hpicgs/glbinding")
-set(META_AUTHOR_MAINTAINER   "willy.scheibel@student.hpi.uni-potsdam.de")
+set(META_AUTHOR_MAINTAINER   "daniel.limberger@hpi.de")
 
 string(TOUPPER ${META_PROJECT_NAME} META_PROJECT_NAME_UPPER)
+
 
 # Limit supported configuration types
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Limited Configs" FORCE)
 
 # Set project name and type (C/C++)
 project(${META_PROJECT_NAME} C CXX)
+
+
 
 
 #
