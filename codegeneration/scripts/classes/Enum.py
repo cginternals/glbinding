@@ -1,4 +1,6 @@
+from classes.Feature import *
 from classes.Extension import *
+
 
 def translateType(t, name):
 
@@ -10,7 +12,7 @@ def translateType(t, name):
 
 class Enum:
 
-	def __init__(self, xml, group, groupType):
+	def __init__(self, xml, features, group, groupType):
 
 		self.name  = xml.attrib["name"]
 		self.value = xml.attrib["value"]
@@ -24,6 +26,18 @@ class Enum:
 		elif groupType == "bitmask":
 			self.type = "GLbitfield"
 
+		self.required = None
+		for feature in features:
+			if self.name in feature.requires:
+				self.required = feature
+				break
+
+		self.removed = None
+		for feature in features:
+			if self.name in feature.removes:
+				self.removed = feature
+				break
+
 
 	def __str__(self):
 		return "Enum(%s, %s)" % (self.name, self.value)
@@ -31,8 +45,16 @@ class Enum:
 	def __lt__(self, other):
 		return self.name < other.name
 
+	def supported(self, feature, core):
+		if feature == None:
+			return True
+		if core:
+			return self.required <= feature and (not self.removed or self.removed > feature) 
+		else:
+			return self.required <= feature
 
-def parseEnums(xml):
+
+def parseEnums(xml, features):
 	enums = set()
 	
 	for enumGroup in xml.iter("enums"):
@@ -42,7 +64,7 @@ def parseEnums(xml):
 		for enum in enumGroup.findall("enum"):
 			if "api" in enum.attrib and enum.attrib["api"] != "gl":
 				continue
-			enums.add(Enum(enum, group, groupType))
+			enums.add(Enum(enum, features, group, groupType))
 
 	return enums
 

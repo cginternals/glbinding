@@ -5,9 +5,9 @@
 #include <glbinding/FunctionObjects.h>
 
 
-namespace gl 
+namespace gl?
 {
 
-%s
+%s%s
 
-} // namespace gl
+} // namespace gl?

@@ -1,5 +1,5 @@
 from binding import *
-from classes.Function import *
+from classes.Command import *
 
 
 functionForwardTemplate = """inline %s %s(%s)
@@ -25,30 +25,56 @@ def functionForward(function):
 		functionBID(function), params, functionBID(function)[2:], paramNames)
 
 
-def genFunctionObjects_h(functions, outputdir, outputfile):	
+def genFunctionObjects_h(commands, outputdir, outputfile):	
 	status(outputdir + outputfile)
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % "\n".join(
-			[ functionDecl(f) for f in functions ]))
+			[ functionDecl(f) for f in commands ]))
 
-def genFunctionObjects_cpp(functions, outputdir, outputfile):	
+def genFunctionObjects_cpp(commands, outputdir, outputfile):	
 	status(outputdir + outputfile)
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % "\n".join(
-			[ functionTemplate(f) for f in functions ]))
+			[ functionTemplate(f) for f in commands ]))
 
-def genFunctionList(functions, outputdir, outputfile):
+def genFunctionList(commands, outputdir, outputfile):
 	status(outputdir + outputfile)
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % ",\n    ".join(
-			[ "&FunctionObjects::"+ functionBID(f)[2:] for f in functions ]))
+			[ "&FunctionObjects::"+ functionBID(f)[2:] for f in commands ]))
 
-def genFunctions(functions, outputdir, outputfile):
-	status(outputdir + outputfile)
 
-	with open(outputdir + outputfile, 'w') as file:
-		file.write(template(outputfile) % "\n".join(
-			[ functionForward(f) for f in functions ]))
+def genFunctionsAll(commands, outputdir, outputfile):
+
+	genFeatureFunctions(commands, None, outputdir, outputfile, None)
+
+
+def genFunctionsFeatureGrouped(commands, features, outputdir, outputfile):
+
+	# gen functions feature grouped
+	for f in features:
+		if f.api == "gl":
+			genFeatureFunctions(commands, f, outputdir, outputfile, False)
+			if f.major > 3 or (f.major == 3 and f.minor >= 2):
+				genFeatureFunctions(commands, f, outputdir, outputfile, True)
+
+
+def genFeatureFunctions(commands, feature, outputdir, outputfile, core):
+
+	of_all = outputfile.replace("?", "")
+
+	version = ""
+	if feature:
+		version = str(feature.major) + str(feature.minor) + ("core" if core else "")
+
+	t = template(of_all).replace("?", version)
+	of = outputfile.replace("?", version)
+
+	status(outputdir + of)
+
+	with open(outputdir + of, 'w') as file:
+		file.write(t % ("using namespace gl;\n\n" if feature else "", "\n".join(
+			[ functionForward(c) for c in commands if c.supported(feature, core)])))

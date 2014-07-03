@@ -1,3 +1,4 @@
+
 #define NOMINMAX
 
 #include <iostream>
@@ -7,11 +8,10 @@
 
 #include <glbinding/glbinding.h>
 #include <glbinding/AbstractFunction.h>
+#include <glbinding/Meta.h>
 #include <glbinding/functions.h>
 #include <glbinding/constants.h>
-#include <glbinding/meta.h>
 
-#include <iostream>
 
 void errorfun(int errnum, const char* errmsg)
 {
@@ -57,8 +57,8 @@ void doSomeOpenGLStuff()
     for (int i = 0; i < std::min(num, 5); ++i)
     {
         const unsigned char * name = gl::GetStringi(gl::EXTENSIONS, i);
-        gl::Extension extension = gl::meta::extensionFromString(reinterpret_cast<const char*>(name));
-        if (extension != gl::Extension::Unknown)
+        gl::Extension extension = gl::Meta::getExtension(reinterpret_cast<const char*>(name));
+        if (extension != gl::Extension::UNKNOWN)
             extensions.insert(extension);
     }
 

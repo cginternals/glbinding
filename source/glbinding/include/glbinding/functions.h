@@ -5,7 +5,7 @@
 #include <glbinding/FunctionObjects.h>
 
 
-namespace gl 
+namespace gl
 {
 
 inline void glAccum(GLenum op, GLfloat value)
@@ -12078,9 +12078,9 @@ inline void glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsize
    	return FunctionObjects::VDPAUGetSurfaceivNV(surface, pname, bufSize, length, values);
 }
 
-inline void glVDPAUInitNV(const void * vdpDevice, const void * getProcAddress_)
+inline void glVDPAUInitNV(const void * vdpDevice, const void * getProcAddress)
 {
-   	return FunctionObjects::VDPAUInitNV(vdpDevice, getProcAddress_);
+   	return FunctionObjects::VDPAUInitNV(vdpDevice, getProcAddress);
 }
 
 inline GLboolean glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface)

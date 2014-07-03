@@ -26,7 +26,17 @@ class Feature:
 		return "Feature(%s:%s.%s)" % (self.api, self.major, self.minor)
 
 	def __lt__(self, other):
-		return self.major < other.major or (self.major == other.major and self.minor < other.minor)
+		if not other:
+			return False
+		else:
+			return self.major < other.major or (self.major == other.major and self.minor < other.minor)
+
+	def __ge__(self, other):
+		if not other:
+			return False
+		else:
+			return self.major > other.major or (self.major == other.major and self.minor >= other.minor)
+
 
 
 def parseFeatures(xml):
