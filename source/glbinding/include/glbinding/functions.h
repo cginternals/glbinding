@@ -8423,6 +8423,11 @@ inline void glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime,
    	return FunctionObjects::PresentFrameKeyedNV(video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, key0, target1, fill1, key1);
 }
 
+inline void glPrimitiveBoundingBoxEXT(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW)
+{
+   	return FunctionObjects::PrimitiveBoundingBoxEXT(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW);
+}
+
 inline void glPrimitiveRestartIndex(GLuint index)
 {
    	return FunctionObjects::PrimitiveRestartIndex(index);
@@ -11413,7 +11418,7 @@ inline void glTrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum
    	return FunctionObjects::TrackMatrixNV(target, address, matrix, transform);
 }
 
-inline void glTransformFeedbackAttribsNV(GLuint count, const GLint * attribs, GLenum bufferMode)
+inline void glTransformFeedbackAttribsNV(GLsizei count, const GLint * attribs, GLenum bufferMode)
 {
    	return FunctionObjects::TransformFeedbackAttribsNV(count, attribs, bufferMode);
 }

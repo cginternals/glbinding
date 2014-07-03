@@ -1690,6 +1690,7 @@ const std::vector<AbstractFunction *> FunctionObjects::s_functions =
     &FunctionObjects::PopName,
     &FunctionObjects::PresentFrameDualFillNV,
     &FunctionObjects::PresentFrameKeyedNV,
+    &FunctionObjects::PrimitiveBoundingBoxEXT,
     &FunctionObjects::PrimitiveRestartIndex,
     &FunctionObjects::PrimitiveRestartIndexNV,
     &FunctionObjects::PrimitiveRestartNV,

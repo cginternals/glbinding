@@ -1712,6 +1712,7 @@ Function<void> FunctionObjects::PopMatrix("glPopMatrix");
 Function<void> FunctionObjects::PopName("glPopName");
 Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint> FunctionObjects::PresentFrameDualFillNV("glPresentFrameDualFillNV");
 Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLuint, GLenum, GLuint, GLuint> FunctionObjects::PresentFrameKeyedNV("glPresentFrameKeyedNV");
+Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::PrimitiveBoundingBoxEXT("glPrimitiveBoundingBoxEXT");
 Function<void, GLuint> FunctionObjects::PrimitiveRestartIndex("glPrimitiveRestartIndex");
 Function<void, GLuint> FunctionObjects::PrimitiveRestartIndexNV("glPrimitiveRestartIndexNV");
 Function<void> FunctionObjects::PrimitiveRestartNV("glPrimitiveRestartNV");
@@ -2310,7 +2311,7 @@ Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLs
 Function<void, GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint> FunctionObjects::TextureView("glTextureView");
 Function<void, GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint> FunctionObjects::TextureViewEXT("glTextureViewEXT");
 Function<void, GLenum, GLuint, GLenum, GLenum> FunctionObjects::TrackMatrixNV("glTrackMatrixNV");
-Function<void, GLuint, const GLint *, GLenum> FunctionObjects::TransformFeedbackAttribsNV("glTransformFeedbackAttribsNV");
+Function<void, GLsizei, const GLint *, GLenum> FunctionObjects::TransformFeedbackAttribsNV("glTransformFeedbackAttribsNV");
 Function<void, GLsizei, const GLint *, GLsizei, const GLint *, GLenum> FunctionObjects::TransformFeedbackStreamAttribsNV("glTransformFeedbackStreamAttribsNV");
 Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> FunctionObjects::TransformFeedbackVaryings("glTransformFeedbackVaryings");
 Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> FunctionObjects::TransformFeedbackVaryingsEXT("glTransformFeedbackVaryingsEXT");

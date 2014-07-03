@@ -39,7 +39,6 @@ enum class GLbitfield : unsigned int
     GL_GEOMETRY_SHADER_BIT = 0x00000004,
     GL_TESS_CONTROL_SHADER_BIT = 0x00000008,
     GL_TESS_EVALUATION_SHADER_BIT = 0x00000010,
-    GL_COMPUTE_SHADER_BIT = 0x00000020,
     GL_ALL_SHADER_BITS = 0xFFFFFFFF,
 };
 
@@ -74,7 +73,6 @@ static const GLbitfield GL_FRAGMENT_SHADER_BIT = GLbitfield::GL_FRAGMENT_SHADER_
 static const GLbitfield GL_GEOMETRY_SHADER_BIT = GLbitfield::GL_GEOMETRY_SHADER_BIT;
 static const GLbitfield GL_TESS_CONTROL_SHADER_BIT = GLbitfield::GL_TESS_CONTROL_SHADER_BIT;
 static const GLbitfield GL_TESS_EVALUATION_SHADER_BIT = GLbitfield::GL_TESS_EVALUATION_SHADER_BIT;
-static const GLbitfield GL_COMPUTE_SHADER_BIT = GLbitfield::GL_COMPUTE_SHADER_BIT;
 static const GLbitfield GL_ALL_SHADER_BITS = GLbitfield::GL_ALL_SHADER_BITS;
 
 } // namespace gl41core

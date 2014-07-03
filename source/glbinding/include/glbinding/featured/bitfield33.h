@@ -56,9 +56,6 @@ enum class GLbitfield : unsigned int
 
     // SyncObjectMask
     GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001,
-
-    // UseProgramStageMask
-    GL_COMPUTE_SHADER_BIT = 0x00000020,
 };
 
 // import bitfields to namespace
@@ -109,8 +106,5 @@ static const GLbitfield GL_MAP_UNSYNCHRONIZED_BIT = GLbitfield::GL_MAP_UNSYNCHRO
 
 // SyncObjectMask
 static const GLbitfield GL_SYNC_FLUSH_COMMANDS_BIT = GLbitfield::GL_SYNC_FLUSH_COMMANDS_BIT;
-
-// UseProgramStageMask
-static const GLbitfield GL_COMPUTE_SHADER_BIT = GLbitfield::GL_COMPUTE_SHADER_BIT;
 
 } // namespace gl33

@@ -76,6 +76,10 @@ set(api_includes
     ${include_path}/Version.h
 )
 
+# add featured headers
+file(GLOB featured_includes ${include_path}/featured/*.h)
+list(APPEND api_includes ${featured_includes})
+
 set(sources
     ${source_path}/initialize.cpp
     ${source_path}/types.cpp

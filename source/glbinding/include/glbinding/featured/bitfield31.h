@@ -49,9 +49,6 @@ enum class GLbitfield : unsigned int
     GL_MAP_INVALIDATE_BUFFER_BIT = 0x0008,
     GL_MAP_FLUSH_EXPLICIT_BIT = 0x0010,
     GL_MAP_UNSYNCHRONIZED_BIT = 0x0020,
-
-    // UseProgramStageMask
-    GL_COMPUTE_SHADER_BIT = 0x00000020,
 };
 
 // import bitfields to namespace
@@ -95,8 +92,5 @@ static const GLbitfield GL_MAP_INVALIDATE_RANGE_BIT = GLbitfield::GL_MAP_INVALID
 static const GLbitfield GL_MAP_INVALIDATE_BUFFER_BIT = GLbitfield::GL_MAP_INVALIDATE_BUFFER_BIT;
 static const GLbitfield GL_MAP_FLUSH_EXPLICIT_BIT = GLbitfield::GL_MAP_FLUSH_EXPLICIT_BIT;
 static const GLbitfield GL_MAP_UNSYNCHRONIZED_BIT = GLbitfield::GL_MAP_UNSYNCHRONIZED_BIT;
-
-// UseProgramStageMask
-static const GLbitfield GL_COMPUTE_SHADER_BIT = GLbitfield::GL_COMPUTE_SHADER_BIT;
 
 } // namespace gl31

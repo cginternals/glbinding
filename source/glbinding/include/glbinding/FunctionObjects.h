@@ -1703,6 +1703,7 @@ public:
     static Function<void> PopName;
     static Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint> PresentFrameDualFillNV;
     static Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLuint, GLenum, GLuint, GLuint> PresentFrameKeyedNV;
+    static Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> PrimitiveBoundingBoxEXT;
     static Function<void, GLuint> PrimitiveRestartIndex;
     static Function<void, GLuint> PrimitiveRestartIndexNV;
     static Function<void> PrimitiveRestartNV;
@@ -2301,7 +2302,7 @@ public:
     static Function<void, GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint> TextureView;
     static Function<void, GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint> TextureViewEXT;
     static Function<void, GLenum, GLuint, GLenum, GLenum> TrackMatrixNV;
-    static Function<void, GLuint, const GLint *, GLenum> TransformFeedbackAttribsNV;
+    static Function<void, GLsizei, const GLint *, GLenum> TransformFeedbackAttribsNV;
     static Function<void, GLsizei, const GLint *, GLsizei, const GLint *, GLenum> TransformFeedbackStreamAttribsNV;
     static Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> TransformFeedbackVaryings;
     static Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> TransformFeedbackVaryingsEXT;
