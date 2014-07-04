@@ -60,6 +60,15 @@ GLenum Meta::getEnum(const std::string & glenum)
     return i->second;
 }
 
+std::vector<GLenum> Meta::getEnums()
+{
+    std::vector<GLenum> enums;
+    for (auto p : Meta_StringsByEnum)
+        enums.push_back(p.first);
+
+    return enums;
+}
+
 const std::string & Meta::getString(const GLextension extension)
 {
     auto i = Meta_StringsByExtension.find(extension);
@@ -78,6 +87,15 @@ GLextension Meta::getExtension(const std::string & extension)
         return GLextension::UNKNOWN;
 
     return i->second;
+}
+
+std::vector<GLextension> Meta::getExtensions()
+{
+    std::vector<GLextension> extensions;
+    for (auto p : Meta_StringsByExtension)
+        extensions.push_back(p.first);
+
+    return extensions;
 }
 
 const Version & Meta::getRequiringVersion(const GLextension extension)

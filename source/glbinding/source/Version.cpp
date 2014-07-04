@@ -72,7 +72,7 @@ Version::operator std::pair<unsigned int, unsigned int>() const
 std::string Version::toString() const
 {
 	std::stringstream stream;
-	stream << major << "." << minor;
+	stream << static_cast<int>(major) << "." << static_cast<int>(minor);
 
     return stream.str();
 }

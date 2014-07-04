@@ -5,52 +5,37 @@
 
 #include <glbinding/Meta.h>
 
-#include <glbinding/enums.h>
-#include <glbinding/Extension.h>
+#include <glbinding/enum.h>
+#include <glbinding/extension.h>
+#include <glbinding/Version.h>
 
 
-using namespace gl;
+
+using namespace gl; 
 
 int main(int /*argc*/, char* /*argv*/[])
 {
-    std::cout << "Enums:" << std::endl;
-
-
-    std::set<GLenum> enums;
-#ifdef GL_BY_STRINGS
+   
+#ifdef STRINGS_BY_GL
     
+    //// enlist all enums
+    for (GLenum e : Meta::getEnums()) // c++ 14 ...
+        std::cout << "0x" << std::hex << static_cast<std::underlying_type<GLenum>::type>(e) 
+            << " = " << Meta::getString(e) << std::endl;
+
+    // enlist all extensions
+    std::vector<GLextension> extensions = Meta::getExtensions();
+    for (GLextension e : extensions)
+    {
+        const Version v = Meta::getRequiringVersion(e);
+        std::cout << Meta::getString(e) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
+    }
+
+#else
+
+    std::cout << "Enums cannot be enlisted (STRINGS_BY_GL not defined)." << std::endl;
+
 #endif
-
-    /*auto enums = meta::allEnums();
-    std::vector<GLenum> enumVector(enums.begin(), enums.end());
-    std::sort(enumVector.begin(), enumVector.end());
-
-
-    for (GLenum e : enumVector)
-    {
-        std::string name = Meta::getString(e);
-
-        std::cout << "0x" << std::hex << static_cast<unsigned int>(e) << " = " << name << std::endl;
-    }
-
-    std::cout << "Extensions:" << std::endl;
-
-    for (Extension extension : meta::allExtensions())
-    {
-        auto name = Meta::getString(extension);
-        auto pair = Meta::getRequiringVersion(extension);
-
-        std::cout << "\t" << name;
-
-        if (pair.first>0)
-        {
-            std::cout << " (in core since " << (int)pair.first << "." << (int)pair.second << ")";
-        }
-
-        std::cout << std::endl;
-    }
-*/
-    std::cout << std::endl;
 
 	return 0;
 }
