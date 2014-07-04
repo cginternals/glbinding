@@ -152,9 +152,10 @@ endif()
 #
 
 # Project meta files
-install(FILES glbinding-config.cmake DESTINATION ${INSTALL_ROOT})
-install(FILES AUTHORS               DESTINATION ${INSTALL_ROOT})
-install(FILES LICENSE               DESTINATION ${INSTALL_ROOT})
+install(FILES glbinding-config.cmake     DESTINATION ${INSTALL_ROOT})
+install(FILES AUTHORS                    DESTINATION ${INSTALL_ROOT})
+install(FILES LICENSE                    DESTINATION ${INSTALL_ROOT})
+install(FILES codegeneration/gl.revision DESTINATION ${INSTALL_ROOT})
 
 # Add a revision file containing the git-head tag for cpack and install
 create_revision_file(${CMAKE_BINARY_DIR}/revision ${INSTALL_ROOT})
