@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
+#include <glbinding/featured/gl32core.h>
 
 #include <glbinding/FunctionObjects.h>
 
@@ -10,14 +10,15 @@ namespace gl32core
 
 using namespace gl;
 
-inline void glActiveTexture(GLenum texture)
+
+inline void glActiveTexture(gl32core::GLenum texture)
 {
-   	return FunctionObjects::ActiveTexture(texture);
+   	return FunctionObjects::ActiveTexture(static_cast<gl::GLenum>(texture));
 }
 
-inline void glAlphaFuncx(GLenum func, GLfixed ref)
+inline void glAlphaFuncx(gl32core::GLenum func, GLfixed ref)
 {
-   	return FunctionObjects::AlphaFuncx(func, ref);
+   	return FunctionObjects::AlphaFuncx(static_cast<gl::GLenum>(func), ref);
 }
 
 inline void glAttachShader(GLuint program, GLuint shader)
@@ -25,19 +26,19 @@ inline void glAttachShader(GLuint program, GLuint shader)
    	return FunctionObjects::AttachShader(program, shader);
 }
 
-inline void glBeginConditionalRender(GLuint id, GLenum mode)
+inline void glBeginConditionalRender(GLuint id, gl32core::GLenum mode)
 {
-   	return FunctionObjects::BeginConditionalRender(id, mode);
+   	return FunctionObjects::BeginConditionalRender(id, static_cast<gl::GLenum>(mode));
 }
 
-inline void glBeginQuery(GLenum target, GLuint id)
+inline void glBeginQuery(gl32core::GLenum target, GLuint id)
 {
-   	return FunctionObjects::BeginQuery(target, id);
+   	return FunctionObjects::BeginQuery(static_cast<gl::GLenum>(target), id);
 }
 
-inline void glBeginTransformFeedback(GLenum primitiveMode)
+inline void glBeginTransformFeedback(gl32core::GLenum primitiveMode)
 {
-   	return FunctionObjects::BeginTransformFeedback(primitiveMode);
+   	return FunctionObjects::BeginTransformFeedback(static_cast<gl::GLenum>(primitiveMode));
 }
 
 inline void glBindAttribLocation(GLuint program, GLuint index, const GLchar * name)
@@ -45,19 +46,19 @@ inline void glBindAttribLocation(GLuint program, GLuint index, const GLchar * na
    	return FunctionObjects::BindAttribLocation(program, index, name);
 }
 
-inline void glBindBuffer(GLenum target, GLuint buffer)
+inline void glBindBuffer(gl32core::GLenum target, GLuint buffer)
 {
-   	return FunctionObjects::BindBuffer(target, buffer);
+   	return FunctionObjects::BindBuffer(static_cast<gl::GLenum>(target), buffer);
 }
 
-inline void glBindBufferBase(GLenum target, GLuint index, GLuint buffer)
+inline void glBindBufferBase(gl32core::GLenum target, GLuint index, GLuint buffer)
 {
-   	return FunctionObjects::BindBufferBase(target, index, buffer);
+   	return FunctionObjects::BindBufferBase(static_cast<gl::GLenum>(target), index, buffer);
 }
 
-inline void glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
+inline void glBindBufferRange(gl32core::GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
-   	return FunctionObjects::BindBufferRange(target, index, buffer, offset, size);
+   	return FunctionObjects::BindBufferRange(static_cast<gl::GLenum>(target), index, buffer, offset, size);
 }
 
 inline void glBindFragDataLocation(GLuint program, GLuint color, const GLchar * name)
@@ -65,19 +66,19 @@ inline void glBindFragDataLocation(GLuint program, GLuint color, const GLchar * 
    	return FunctionObjects::BindFragDataLocation(program, color, name);
 }
 
-inline void glBindFramebuffer(GLenum target, GLuint framebuffer)
+inline void glBindFramebuffer(gl32core::GLenum target, GLuint framebuffer)
 {
-   	return FunctionObjects::BindFramebuffer(target, framebuffer);
+   	return FunctionObjects::BindFramebuffer(static_cast<gl::GLenum>(target), framebuffer);
 }
 
-inline void glBindRenderbuffer(GLenum target, GLuint renderbuffer)
+inline void glBindRenderbuffer(gl32core::GLenum target, GLuint renderbuffer)
 {
-   	return FunctionObjects::BindRenderbuffer(target, renderbuffer);
+   	return FunctionObjects::BindRenderbuffer(static_cast<gl::GLenum>(target), renderbuffer);
 }
 
-inline void glBindTexture(GLenum target, GLuint texture)
+inline void glBindTexture(gl32core::GLenum target, GLuint texture)
 {
-   	return FunctionObjects::BindTexture(target, texture);
+   	return FunctionObjects::BindTexture(static_cast<gl::GLenum>(target), texture);
 }
 
 inline void glBindVertexArray(GLuint array)
@@ -90,74 +91,74 @@ inline void glBlendColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha
    	return FunctionObjects::BlendColor(red, green, blue, alpha);
 }
 
-inline void glBlendEquation(GLenum mode)
+inline void glBlendEquation(gl32core::GLenum mode)
 {
-   	return FunctionObjects::BlendEquation(mode);
+   	return FunctionObjects::BlendEquation(static_cast<gl::GLenum>(mode));
 }
 
-inline void glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha)
+inline void glBlendEquationSeparate(gl32core::GLenum modeRGB, gl32core::GLenum modeAlpha)
 {
-   	return FunctionObjects::BlendEquationSeparate(modeRGB, modeAlpha);
+   	return FunctionObjects::BlendEquationSeparate(static_cast<gl::GLenum>(modeRGB), static_cast<gl::GLenum>(modeAlpha));
 }
 
-inline void glBlendFunc(GLenum sfactor, GLenum dfactor)
+inline void glBlendFunc(gl32core::GLenum sfactor, gl32core::GLenum dfactor)
 {
-   	return FunctionObjects::BlendFunc(sfactor, dfactor);
+   	return FunctionObjects::BlendFunc(static_cast<gl::GLenum>(sfactor), static_cast<gl::GLenum>(dfactor));
 }
 
-inline void glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
+inline void glBlendFuncSeparate(gl32core::GLenum sfactorRGB, gl32core::GLenum dfactorRGB, gl32core::GLenum sfactorAlpha, gl32core::GLenum dfactorAlpha)
 {
-   	return FunctionObjects::BlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+   	return FunctionObjects::BlendFuncSeparate(static_cast<gl::GLenum>(sfactorRGB), static_cast<gl::GLenum>(dfactorRGB), static_cast<gl::GLenum>(sfactorAlpha), static_cast<gl::GLenum>(dfactorAlpha));
 }
 
-inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, gl32core::GLbitfield mask, gl32core::GLenum filter)
 {
-   	return FunctionObjects::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+   	return FunctionObjects::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, static_cast<gl::GLbitfield>(mask), static_cast<gl::GLenum>(filter));
 }
 
-inline void glBufferData(GLenum target, GLsizeiptr size, const void * data, GLenum usage)
+inline void glBufferData(gl32core::GLenum target, GLsizeiptr size, const void * data, gl32core::GLenum usage)
 {
-   	return FunctionObjects::BufferData(target, size, data, usage);
+   	return FunctionObjects::BufferData(static_cast<gl::GLenum>(target), size, data, static_cast<gl::GLenum>(usage));
 }
 
-inline void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data)
+inline void glBufferSubData(gl32core::GLenum target, GLintptr offset, GLsizeiptr size, const void * data)
 {
-   	return FunctionObjects::BufferSubData(target, offset, size, data);
+   	return FunctionObjects::BufferSubData(static_cast<gl::GLenum>(target), offset, size, data);
 }
 
-inline GLenum glCheckFramebufferStatus(GLenum target)
+inline GLenum glCheckFramebufferStatus(gl32core::GLenum target)
 {
-   	return FunctionObjects::CheckFramebufferStatus(target);
+   	return static_cast<gl32core::GLenum>(FunctionObjects::CheckFramebufferStatus(static_cast<gl::GLenum>(target)));
 }
 
-inline void glClampColor(GLenum target, GLenum clamp)
+inline void glClampColor(gl32core::GLenum target, gl32core::GLenum clamp)
 {
-   	return FunctionObjects::ClampColor(target, clamp);
+   	return FunctionObjects::ClampColor(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(clamp));
 }
 
-inline void glClear(GLbitfield mask)
+inline void glClear(gl32core::GLbitfield mask)
 {
-   	return FunctionObjects::Clear(mask);
+   	return FunctionObjects::Clear(static_cast<gl::GLbitfield>(mask));
 }
 
-inline void glClearBufferfi(GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil)
+inline void glClearBufferfi(gl32core::GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil)
 {
-   	return FunctionObjects::ClearBufferfi(buffer, drawbuffer, depth, stencil);
+   	return FunctionObjects::ClearBufferfi(static_cast<gl::GLenum>(buffer), drawbuffer, depth, stencil);
 }
 
-inline void glClearBufferfv(GLenum buffer, GLint drawbuffer, const GLfloat * value)
+inline void glClearBufferfv(gl32core::GLenum buffer, GLint drawbuffer, const GLfloat * value)
 {
-   	return FunctionObjects::ClearBufferfv(buffer, drawbuffer, value);
+   	return FunctionObjects::ClearBufferfv(static_cast<gl::GLenum>(buffer), drawbuffer, value);
 }
 
-inline void glClearBufferiv(GLenum buffer, GLint drawbuffer, const GLint * value)
+inline void glClearBufferiv(gl32core::GLenum buffer, GLint drawbuffer, const GLint * value)
 {
-   	return FunctionObjects::ClearBufferiv(buffer, drawbuffer, value);
+   	return FunctionObjects::ClearBufferiv(static_cast<gl::GLenum>(buffer), drawbuffer, value);
 }
 
-inline void glClearBufferuiv(GLenum buffer, GLint drawbuffer, const GLuint * value)
+inline void glClearBufferuiv(gl32core::GLenum buffer, GLint drawbuffer, const GLuint * value)
 {
-   	return FunctionObjects::ClearBufferuiv(buffer, drawbuffer, value);
+   	return FunctionObjects::ClearBufferuiv(static_cast<gl::GLenum>(buffer), drawbuffer, value);
 }
 
 inline void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
@@ -185,19 +186,19 @@ inline void glClearStencil(GLint s)
    	return FunctionObjects::ClearStencil(s);
 }
 
-inline GLenum glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
+inline GLenum glClientWaitSync(GLsync sync, gl32core::GLbitfield flags, GLuint64 timeout)
 {
-   	return FunctionObjects::ClientWaitSync(sync, flags, timeout);
+   	return static_cast<gl32core::GLenum>(FunctionObjects::ClientWaitSync(sync, static_cast<gl::GLbitfield>(flags), timeout));
 }
 
-inline void glClipPlanef(GLenum p, const GLfloat * eqn)
+inline void glClipPlanef(gl32core::GLenum p, const GLfloat * eqn)
 {
-   	return FunctionObjects::ClipPlanef(p, eqn);
+   	return FunctionObjects::ClipPlanef(static_cast<gl::GLenum>(p), eqn);
 }
 
-inline void glClipPlanex(GLenum plane, const GLfixed * equation)
+inline void glClipPlanex(gl32core::GLenum plane, const GLfixed * equation)
 {
-   	return FunctionObjects::ClipPlanex(plane, equation);
+   	return FunctionObjects::ClipPlanex(static_cast<gl::GLenum>(plane), equation);
 }
 
 inline void glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
@@ -220,64 +221,64 @@ inline void glCompileShader(GLuint shader)
    	return FunctionObjects::CompileShader(shader);
 }
 
-inline void glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * data)
+inline void glCompressedTexImage1D(gl32core::GLenum target, GLint level, gl32core::GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * data)
 {
-   	return FunctionObjects::CompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
+   	return FunctionObjects::CompressedTexImage1D(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(internalformat), width, border, imageSize, data);
 }
 
-inline void glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * data)
+inline void glCompressedTexImage2D(gl32core::GLenum target, GLint level, gl32core::GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * data)
 {
-   	return FunctionObjects::CompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+   	return FunctionObjects::CompressedTexImage2D(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(internalformat), width, height, border, imageSize, data);
 }
 
-inline void glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data)
+inline void glCompressedTexImage3D(gl32core::GLenum target, GLint level, gl32core::GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data)
 {
-   	return FunctionObjects::CompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+   	return FunctionObjects::CompressedTexImage3D(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(internalformat), width, height, depth, border, imageSize, data);
 }
 
-inline void glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data)
+inline void glCompressedTexSubImage1D(gl32core::GLenum target, GLint level, GLint xoffset, GLsizei width, gl32core::GLenum format, GLsizei imageSize, const void * data)
 {
-   	return FunctionObjects::CompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
+   	return FunctionObjects::CompressedTexSubImage1D(static_cast<gl::GLenum>(target), level, xoffset, width, static_cast<gl::GLenum>(format), imageSize, data);
 }
 
-inline void glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data)
+inline void glCompressedTexSubImage2D(gl32core::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, gl32core::GLenum format, GLsizei imageSize, const void * data)
 {
-   	return FunctionObjects::CompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+   	return FunctionObjects::CompressedTexSubImage2D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, width, height, static_cast<gl::GLenum>(format), imageSize, data);
 }
 
-inline void glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data)
+inline void glCompressedTexSubImage3D(gl32core::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, gl32core::GLenum format, GLsizei imageSize, const void * data)
 {
-   	return FunctionObjects::CompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+   	return FunctionObjects::CompressedTexSubImage3D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, zoffset, width, height, depth, static_cast<gl::GLenum>(format), imageSize, data);
 }
 
-inline void glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
+inline void glCopyBufferSubData(gl32core::GLenum readTarget, gl32core::GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
 {
-   	return FunctionObjects::CopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+   	return FunctionObjects::CopyBufferSubData(static_cast<gl::GLenum>(readTarget), static_cast<gl::GLenum>(writeTarget), readOffset, writeOffset, size);
 }
 
-inline void glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
+inline void glCopyTexImage1D(gl32core::GLenum target, GLint level, gl32core::GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-   	return FunctionObjects::CopyTexImage1D(target, level, internalformat, x, y, width, border);
+   	return FunctionObjects::CopyTexImage1D(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(internalformat), x, y, width, border);
 }
 
-inline void glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
+inline void glCopyTexImage2D(gl32core::GLenum target, GLint level, gl32core::GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-   	return FunctionObjects::CopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+   	return FunctionObjects::CopyTexImage2D(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(internalformat), x, y, width, height, border);
 }
 
-inline void glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
+inline void glCopyTexSubImage1D(gl32core::GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-   	return FunctionObjects::CopyTexSubImage1D(target, level, xoffset, x, y, width);
+   	return FunctionObjects::CopyTexSubImage1D(static_cast<gl::GLenum>(target), level, xoffset, x, y, width);
 }
 
-inline void glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+inline void glCopyTexSubImage2D(gl32core::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-   	return FunctionObjects::CopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+   	return FunctionObjects::CopyTexSubImage2D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, x, y, width, height);
 }
 
-inline void glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+inline void glCopyTexSubImage3D(gl32core::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-   	return FunctionObjects::CopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+   	return FunctionObjects::CopyTexSubImage3D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, zoffset, x, y, width, height);
 }
 
 inline GLuint glCreateProgram()
@@ -285,14 +286,14 @@ inline GLuint glCreateProgram()
    	return FunctionObjects::CreateProgram();
 }
 
-inline GLuint glCreateShader(GLenum type)
+inline GLuint glCreateShader(gl32core::GLenum type)
 {
-   	return FunctionObjects::CreateShader(type);
+   	return FunctionObjects::CreateShader(static_cast<gl::GLenum>(type));
 }
 
-inline void glCullFace(GLenum mode)
+inline void glCullFace(gl32core::GLenum mode)
 {
-   	return FunctionObjects::CullFace(mode);
+   	return FunctionObjects::CullFace(static_cast<gl::GLenum>(mode));
 }
 
 inline void glDeleteBuffers(GLsizei n, const GLuint * buffers)
@@ -340,9 +341,9 @@ inline void glDeleteVertexArrays(GLsizei n, const GLuint * arrays)
    	return FunctionObjects::DeleteVertexArrays(n, arrays);
 }
 
-inline void glDepthFunc(GLenum func)
+inline void glDepthFunc(gl32core::GLenum func)
 {
-   	return FunctionObjects::DepthFunc(func);
+   	return FunctionObjects::DepthFunc(static_cast<gl::GLenum>(func));
 }
 
 inline void glDepthMask(GLboolean flag)
@@ -365,9 +366,9 @@ inline void glDetachShader(GLuint program, GLuint shader)
    	return FunctionObjects::DetachShader(program, shader);
 }
 
-inline void glDisable(GLenum cap)
+inline void glDisable(gl32core::GLenum cap)
 {
-   	return FunctionObjects::Disable(cap);
+   	return FunctionObjects::Disable(static_cast<gl::GLenum>(cap));
 }
 
 inline void glDisableVertexAttribArray(GLuint index)
@@ -375,64 +376,64 @@ inline void glDisableVertexAttribArray(GLuint index)
    	return FunctionObjects::DisableVertexAttribArray(index);
 }
 
-inline void glDisablei(GLenum target, GLuint index)
+inline void glDisablei(gl32core::GLenum target, GLuint index)
 {
-   	return FunctionObjects::Disablei(target, index);
+   	return FunctionObjects::Disablei(static_cast<gl::GLenum>(target), index);
 }
 
-inline void glDrawArrays(GLenum mode, GLint first, GLsizei count)
+inline void glDrawArrays(gl32core::GLenum mode, GLint first, GLsizei count)
 {
-   	return FunctionObjects::DrawArrays(mode, first, count);
+   	return FunctionObjects::DrawArrays(static_cast<gl::GLenum>(mode), first, count);
 }
 
-inline void glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei instancecount)
+inline void glDrawArraysInstanced(gl32core::GLenum mode, GLint first, GLsizei count, GLsizei instancecount)
 {
-   	return FunctionObjects::DrawArraysInstanced(mode, first, count, instancecount);
+   	return FunctionObjects::DrawArraysInstanced(static_cast<gl::GLenum>(mode), first, count, instancecount);
 }
 
-inline void glDrawBuffer(GLenum mode)
+inline void glDrawBuffer(gl32core::GLenum mode)
 {
-   	return FunctionObjects::DrawBuffer(mode);
+   	return FunctionObjects::DrawBuffer(static_cast<gl::GLenum>(mode));
 }
 
-inline void glDrawBuffers(GLsizei n, const GLenum * bufs)
+inline void glDrawBuffers(GLsizei n, const gl32core::GLenum * bufs)
 {
-   	return FunctionObjects::DrawBuffers(n, bufs);
+   	return FunctionObjects::DrawBuffers(n, reinterpret_cast<const gl::GLenum *>(bufs));
 }
 
-inline void glDrawElements(GLenum mode, GLsizei count, GLenum type, const void * indices)
+inline void glDrawElements(gl32core::GLenum mode, GLsizei count, gl32core::GLenum type, const void * indices)
 {
-   	return FunctionObjects::DrawElements(mode, count, type, indices);
+   	return FunctionObjects::DrawElements(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices);
 }
 
-inline void glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex)
+inline void glDrawElementsBaseVertex(gl32core::GLenum mode, GLsizei count, gl32core::GLenum type, const void * indices, GLint basevertex)
 {
-   	return FunctionObjects::DrawElementsBaseVertex(mode, count, type, indices, basevertex);
+   	return FunctionObjects::DrawElementsBaseVertex(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices, basevertex);
 }
 
-inline void glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount)
+inline void glDrawElementsInstanced(gl32core::GLenum mode, GLsizei count, gl32core::GLenum type, const void * indices, GLsizei instancecount)
 {
-   	return FunctionObjects::DrawElementsInstanced(mode, count, type, indices, instancecount);
+   	return FunctionObjects::DrawElementsInstanced(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices, instancecount);
 }
 
-inline void glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex)
+inline void glDrawElementsInstancedBaseVertex(gl32core::GLenum mode, GLsizei count, gl32core::GLenum type, const void * indices, GLsizei instancecount, GLint basevertex)
 {
-   	return FunctionObjects::DrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
+   	return FunctionObjects::DrawElementsInstancedBaseVertex(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices, instancecount, basevertex);
 }
 
-inline void glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices)
+inline void glDrawRangeElements(gl32core::GLenum mode, GLuint start, GLuint end, GLsizei count, gl32core::GLenum type, const void * indices)
 {
-   	return FunctionObjects::DrawRangeElements(mode, start, end, count, type, indices);
+   	return FunctionObjects::DrawRangeElements(static_cast<gl::GLenum>(mode), start, end, count, static_cast<gl::GLenum>(type), indices);
 }
 
-inline void glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex)
+inline void glDrawRangeElementsBaseVertex(gl32core::GLenum mode, GLuint start, GLuint end, GLsizei count, gl32core::GLenum type, const void * indices, GLint basevertex)
 {
-   	return FunctionObjects::DrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+   	return FunctionObjects::DrawRangeElementsBaseVertex(static_cast<gl::GLenum>(mode), start, end, count, static_cast<gl::GLenum>(type), indices, basevertex);
 }
 
-inline void glEnable(GLenum cap)
+inline void glEnable(gl32core::GLenum cap)
 {
-   	return FunctionObjects::Enable(cap);
+   	return FunctionObjects::Enable(static_cast<gl::GLenum>(cap));
 }
 
 inline void glEnableVertexAttribArray(GLuint index)
@@ -440,9 +441,9 @@ inline void glEnableVertexAttribArray(GLuint index)
    	return FunctionObjects::EnableVertexAttribArray(index);
 }
 
-inline void glEnablei(GLenum target, GLuint index)
+inline void glEnablei(gl32core::GLenum target, GLuint index)
 {
-   	return FunctionObjects::Enablei(target, index);
+   	return FunctionObjects::Enablei(static_cast<gl::GLenum>(target), index);
 }
 
 inline void glEndConditionalRender()
@@ -450,9 +451,9 @@ inline void glEndConditionalRender()
    	return FunctionObjects::EndConditionalRender();
 }
 
-inline void glEndQuery(GLenum target)
+inline void glEndQuery(gl32core::GLenum target)
 {
-   	return FunctionObjects::EndQuery(target);
+   	return FunctionObjects::EndQuery(static_cast<gl::GLenum>(target));
 }
 
 inline void glEndTransformFeedback()
@@ -460,9 +461,9 @@ inline void glEndTransformFeedback()
    	return FunctionObjects::EndTransformFeedback();
 }
 
-inline GLsync glFenceSync(GLenum condition, GLbitfield flags)
+inline GLsync glFenceSync(gl32core::GLenum condition, gl32core::GLbitfield flags)
 {
-   	return FunctionObjects::FenceSync(condition, flags);
+   	return FunctionObjects::FenceSync(static_cast<gl::GLenum>(condition), static_cast<gl::GLbitfield>(flags));
 }
 
 inline void glFinish()
@@ -475,54 +476,54 @@ inline void glFlush()
    	return FunctionObjects::Flush();
 }
 
-inline void glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
+inline void glFlushMappedBufferRange(gl32core::GLenum target, GLintptr offset, GLsizeiptr length)
 {
-   	return FunctionObjects::FlushMappedBufferRange(target, offset, length);
+   	return FunctionObjects::FlushMappedBufferRange(static_cast<gl::GLenum>(target), offset, length);
 }
 
-inline void glFogx(GLenum pname, GLfixed param)
+inline void glFogx(gl32core::GLenum pname, GLfixed param)
 {
-   	return FunctionObjects::Fogx(pname, param);
+   	return FunctionObjects::Fogx(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glFogxv(GLenum pname, const GLfixed * param)
+inline void glFogxv(gl32core::GLenum pname, const GLfixed * param)
 {
-   	return FunctionObjects::Fogxv(pname, param);
+   	return FunctionObjects::Fogxv(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+inline void glFramebufferRenderbuffer(gl32core::GLenum target, gl32core::GLenum attachment, gl32core::GLenum renderbuffertarget, GLuint renderbuffer)
 {
-   	return FunctionObjects::FramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
+   	return FunctionObjects::FramebufferRenderbuffer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), static_cast<gl::GLenum>(renderbuffertarget), renderbuffer);
 }
 
-inline void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
+inline void glFramebufferTexture(gl32core::GLenum target, gl32core::GLenum attachment, GLuint texture, GLint level)
 {
-   	return FunctionObjects::FramebufferTexture(target, attachment, texture, level);
+   	return FunctionObjects::FramebufferTexture(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), texture, level);
 }
 
-inline void glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+inline void glFramebufferTexture1D(gl32core::GLenum target, gl32core::GLenum attachment, gl32core::GLenum textarget, GLuint texture, GLint level)
 {
-   	return FunctionObjects::FramebufferTexture1D(target, attachment, textarget, texture, level);
+   	return FunctionObjects::FramebufferTexture1D(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), static_cast<gl::GLenum>(textarget), texture, level);
 }
 
-inline void glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+inline void glFramebufferTexture2D(gl32core::GLenum target, gl32core::GLenum attachment, gl32core::GLenum textarget, GLuint texture, GLint level)
 {
-   	return FunctionObjects::FramebufferTexture2D(target, attachment, textarget, texture, level);
+   	return FunctionObjects::FramebufferTexture2D(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), static_cast<gl::GLenum>(textarget), texture, level);
 }
 
-inline void glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+inline void glFramebufferTexture3D(gl32core::GLenum target, gl32core::GLenum attachment, gl32core::GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-   	return FunctionObjects::FramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
+   	return FunctionObjects::FramebufferTexture3D(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), static_cast<gl::GLenum>(textarget), texture, level, zoffset);
 }
 
-inline void glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
+inline void glFramebufferTextureLayer(gl32core::GLenum target, gl32core::GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-   	return FunctionObjects::FramebufferTextureLayer(target, attachment, texture, level, layer);
+   	return FunctionObjects::FramebufferTextureLayer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), texture, level, layer);
 }
 
-inline void glFrontFace(GLenum mode)
+inline void glFrontFace(gl32core::GLenum mode)
 {
-   	return FunctionObjects::FrontFace(mode);
+   	return FunctionObjects::FrontFace(static_cast<gl::GLenum>(mode));
 }
 
 inline void glFrustumf(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
@@ -565,19 +566,19 @@ inline void glGenVertexArrays(GLsizei n, GLuint * arrays)
    	return FunctionObjects::GenVertexArrays(n, arrays);
 }
 
-inline void glGenerateMipmap(GLenum target)
+inline void glGenerateMipmap(gl32core::GLenum target)
 {
-   	return FunctionObjects::GenerateMipmap(target);
+   	return FunctionObjects::GenerateMipmap(static_cast<gl::GLenum>(target));
 }
 
-inline void glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name)
+inline void glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, gl32core::GLenum * type, GLchar * name)
 {
-   	return FunctionObjects::GetActiveAttrib(program, index, bufSize, length, size, type, name);
+   	return FunctionObjects::GetActiveAttrib(program, index, bufSize, length, size, reinterpret_cast<gl::GLenum *>(type), name);
 }
 
-inline void glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name)
+inline void glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, gl32core::GLenum * type, GLchar * name)
 {
-   	return FunctionObjects::GetActiveUniform(program, index, bufSize, length, size, type, name);
+   	return FunctionObjects::GetActiveUniform(program, index, bufSize, length, size, reinterpret_cast<gl::GLenum *>(type), name);
 }
 
 inline void glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformBlockName)
@@ -585,9 +586,9 @@ inline void glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex
    	return FunctionObjects::GetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
 }
 
-inline void glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint * params)
+inline void glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetActiveUniformBlockiv(program, uniformBlockIndex, pname, params);
+   	return FunctionObjects::GetActiveUniformBlockiv(program, uniformBlockIndex, static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformName)
@@ -595,9 +596,9 @@ inline void glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei 
    	return FunctionObjects::GetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
 }
 
-inline void glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint * uniformIndices, GLenum pname, GLint * params)
+inline void glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint * uniformIndices, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetActiveUniformsiv(program, uniformCount, uniformIndices, pname, params);
+   	return FunctionObjects::GetActiveUniformsiv(program, uniformCount, uniformIndices, static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei * count, GLuint * shaders)
@@ -610,69 +611,69 @@ inline GLint glGetAttribLocation(GLuint program, const GLchar * name)
    	return FunctionObjects::GetAttribLocation(program, name);
 }
 
-inline void glGetBooleani_v(GLenum target, GLuint index, GLboolean * data)
+inline void glGetBooleani_v(gl32core::GLenum target, GLuint index, GLboolean * data)
 {
-   	return FunctionObjects::GetBooleani_v(target, index, data);
+   	return FunctionObjects::GetBooleani_v(static_cast<gl::GLenum>(target), index, data);
 }
 
-inline void glGetBooleanv(GLenum pname, GLboolean * data)
+inline void glGetBooleanv(gl32core::GLenum pname, GLboolean * data)
 {
-   	return FunctionObjects::GetBooleanv(pname, data);
+   	return FunctionObjects::GetBooleanv(static_cast<gl::GLenum>(pname), data);
 }
 
-inline void glGetBufferParameteri64v(GLenum target, GLenum pname, GLint64 * params)
+inline void glGetBufferParameteri64v(gl32core::GLenum target, gl32core::GLenum pname, GLint64 * params)
 {
-   	return FunctionObjects::GetBufferParameteri64v(target, pname, params);
+   	return FunctionObjects::GetBufferParameteri64v(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetBufferParameteriv(GLenum target, GLenum pname, GLint * params)
+inline void glGetBufferParameteriv(gl32core::GLenum target, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetBufferParameteriv(target, pname, params);
+   	return FunctionObjects::GetBufferParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetBufferPointerv(GLenum target, GLenum pname, void ** params)
+inline void glGetBufferPointerv(gl32core::GLenum target, gl32core::GLenum pname, void ** params)
 {
-   	return FunctionObjects::GetBufferPointerv(target, pname, params);
+   	return FunctionObjects::GetBufferPointerv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, void * data)
+inline void glGetBufferSubData(gl32core::GLenum target, GLintptr offset, GLsizeiptr size, void * data)
 {
-   	return FunctionObjects::GetBufferSubData(target, offset, size, data);
+   	return FunctionObjects::GetBufferSubData(static_cast<gl::GLenum>(target), offset, size, data);
 }
 
-inline void glGetClipPlanef(GLenum plane, GLfloat * equation)
+inline void glGetClipPlanef(gl32core::GLenum plane, GLfloat * equation)
 {
-   	return FunctionObjects::GetClipPlanef(plane, equation);
+   	return FunctionObjects::GetClipPlanef(static_cast<gl::GLenum>(plane), equation);
 }
 
-inline void glGetClipPlanex(GLenum plane, GLfixed * equation)
+inline void glGetClipPlanex(gl32core::GLenum plane, GLfixed * equation)
 {
-   	return FunctionObjects::GetClipPlanex(plane, equation);
+   	return FunctionObjects::GetClipPlanex(static_cast<gl::GLenum>(plane), equation);
 }
 
-inline void glGetCompressedTexImage(GLenum target, GLint level, void * img)
+inline void glGetCompressedTexImage(gl32core::GLenum target, GLint level, void * img)
 {
-   	return FunctionObjects::GetCompressedTexImage(target, level, img);
+   	return FunctionObjects::GetCompressedTexImage(static_cast<gl::GLenum>(target), level, img);
 }
 
-inline void glGetDoublev(GLenum pname, GLdouble * data)
+inline void glGetDoublev(gl32core::GLenum pname, GLdouble * data)
 {
-   	return FunctionObjects::GetDoublev(pname, data);
+   	return FunctionObjects::GetDoublev(static_cast<gl::GLenum>(pname), data);
 }
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl32core::GLenum>(FunctionObjects::GetError());
 }
 
-inline void glGetFixedv(GLenum pname, GLfixed * params)
+inline void glGetFixedv(gl32core::GLenum pname, GLfixed * params)
 {
-   	return FunctionObjects::GetFixedv(pname, params);
+   	return FunctionObjects::GetFixedv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetFloatv(GLenum pname, GLfloat * data)
+inline void glGetFloatv(gl32core::GLenum pname, GLfloat * data)
 {
-   	return FunctionObjects::GetFloatv(pname, data);
+   	return FunctionObjects::GetFloatv(static_cast<gl::GLenum>(pname), data);
 }
 
 inline GLint glGetFragDataLocation(GLuint program, const GLchar * name)
@@ -680,44 +681,44 @@ inline GLint glGetFragDataLocation(GLuint program, const GLchar * name)
    	return FunctionObjects::GetFragDataLocation(program, name);
 }
 
-inline void glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint * params)
+inline void glGetFramebufferAttachmentParameteriv(gl32core::GLenum target, gl32core::GLenum attachment, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetFramebufferAttachmentParameteriv(target, attachment, pname, params);
+   	return FunctionObjects::GetFramebufferAttachmentParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetInteger64i_v(GLenum target, GLuint index, GLint64 * data)
+inline void glGetInteger64i_v(gl32core::GLenum target, GLuint index, GLint64 * data)
 {
-   	return FunctionObjects::GetInteger64i_v(target, index, data);
+   	return FunctionObjects::GetInteger64i_v(static_cast<gl::GLenum>(target), index, data);
 }
 
-inline void glGetInteger64v(GLenum pname, GLint64 * data)
+inline void glGetInteger64v(gl32core::GLenum pname, GLint64 * data)
 {
-   	return FunctionObjects::GetInteger64v(pname, data);
+   	return FunctionObjects::GetInteger64v(static_cast<gl::GLenum>(pname), data);
 }
 
-inline void glGetIntegeri_v(GLenum target, GLuint index, GLint * data)
+inline void glGetIntegeri_v(gl32core::GLenum target, GLuint index, GLint * data)
 {
-   	return FunctionObjects::GetIntegeri_v(target, index, data);
+   	return FunctionObjects::GetIntegeri_v(static_cast<gl::GLenum>(target), index, data);
 }
 
-inline void glGetIntegerv(GLenum pname, GLint * data)
+inline void glGetIntegerv(gl32core::GLenum pname, GLint * data)
 {
-   	return FunctionObjects::GetIntegerv(pname, data);
+   	return FunctionObjects::GetIntegerv(static_cast<gl::GLenum>(pname), data);
 }
 
-inline void glGetLightxv(GLenum light, GLenum pname, GLfixed * params)
+inline void glGetLightxv(gl32core::GLenum light, gl32core::GLenum pname, GLfixed * params)
 {
-   	return FunctionObjects::GetLightxv(light, pname, params);
+   	return FunctionObjects::GetLightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetMaterialxv(GLenum face, GLenum pname, GLfixed * params)
+inline void glGetMaterialxv(gl32core::GLenum face, gl32core::GLenum pname, GLfixed * params)
 {
-   	return FunctionObjects::GetMaterialxv(face, pname, params);
+   	return FunctionObjects::GetMaterialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetMultisamplefv(GLenum pname, GLuint index, GLfloat * val)
+inline void glGetMultisamplefv(gl32core::GLenum pname, GLuint index, GLfloat * val)
 {
-   	return FunctionObjects::GetMultisamplefv(pname, index, val);
+   	return FunctionObjects::GetMultisamplefv(static_cast<gl::GLenum>(pname), index, val);
 }
 
 inline void glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei * length, GLchar * infoLog)
@@ -725,29 +726,29 @@ inline void glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei * lengt
    	return FunctionObjects::GetProgramInfoLog(program, bufSize, length, infoLog);
 }
 
-inline void glGetProgramiv(GLuint program, GLenum pname, GLint * params)
+inline void glGetProgramiv(GLuint program, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetProgramiv(program, pname, params);
+   	return FunctionObjects::GetProgramiv(program, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetQueryObjectiv(GLuint id, GLenum pname, GLint * params)
+inline void glGetQueryObjectiv(GLuint id, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetQueryObjectiv(id, pname, params);
+   	return FunctionObjects::GetQueryObjectiv(id, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint * params)
+inline void glGetQueryObjectuiv(GLuint id, gl32core::GLenum pname, GLuint * params)
 {
-   	return FunctionObjects::GetQueryObjectuiv(id, pname, params);
+   	return FunctionObjects::GetQueryObjectuiv(id, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetQueryiv(GLenum target, GLenum pname, GLint * params)
+inline void glGetQueryiv(gl32core::GLenum target, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetQueryiv(target, pname, params);
+   	return FunctionObjects::GetQueryiv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint * params)
+inline void glGetRenderbufferParameteriv(gl32core::GLenum target, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetRenderbufferParameteriv(target, pname, params);
+   	return FunctionObjects::GetRenderbufferParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * infoLog)
@@ -760,74 +761,74 @@ inline void glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei * length, 
    	return FunctionObjects::GetShaderSource(shader, bufSize, length, source);
 }
 
-inline void glGetShaderiv(GLuint shader, GLenum pname, GLint * params)
+inline void glGetShaderiv(GLuint shader, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetShaderiv(shader, pname, params);
+   	return FunctionObjects::GetShaderiv(shader, static_cast<gl::GLenum>(pname), params);
 }
 
-inline const GLubyte * glGetString(GLenum name)
+inline const GLubyte * glGetString(gl32core::GLenum name)
 {
-   	return FunctionObjects::GetString(name);
+   	return FunctionObjects::GetString(static_cast<gl::GLenum>(name));
 }
 
-inline const GLubyte * glGetStringi(GLenum name, GLuint index)
+inline const GLubyte * glGetStringi(gl32core::GLenum name, GLuint index)
 {
-   	return FunctionObjects::GetStringi(name, index);
+   	return FunctionObjects::GetStringi(static_cast<gl::GLenum>(name), index);
 }
 
-inline void glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values)
+inline void glGetSynciv(GLsync sync, gl32core::GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values)
 {
-   	return FunctionObjects::GetSynciv(sync, pname, bufSize, length, values);
+   	return FunctionObjects::GetSynciv(sync, static_cast<gl::GLenum>(pname), bufSize, length, values);
 }
 
-inline void glGetTexEnvxv(GLenum target, GLenum pname, GLfixed * params)
+inline void glGetTexEnvxv(gl32core::GLenum target, gl32core::GLenum pname, GLfixed * params)
 {
-   	return FunctionObjects::GetTexEnvxv(target, pname, params);
+   	return FunctionObjects::GetTexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void * pixels)
+inline void glGetTexImage(gl32core::GLenum target, GLint level, gl32core::GLenum format, gl32core::GLenum type, void * pixels)
 {
-   	return FunctionObjects::GetTexImage(target, level, format, type, pixels);
+   	return FunctionObjects::GetTexImage(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat * params)
+inline void glGetTexLevelParameterfv(gl32core::GLenum target, GLint level, gl32core::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetTexLevelParameterfv(target, level, pname, params);
+   	return FunctionObjects::GetTexLevelParameterfv(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint * params)
+inline void glGetTexLevelParameteriv(gl32core::GLenum target, GLint level, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetTexLevelParameteriv(target, level, pname, params);
+   	return FunctionObjects::GetTexLevelParameteriv(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexParameterIiv(GLenum target, GLenum pname, GLint * params)
+inline void glGetTexParameterIiv(gl32core::GLenum target, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetTexParameterIiv(target, pname, params);
+   	return FunctionObjects::GetTexParameterIiv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint * params)
+inline void glGetTexParameterIuiv(gl32core::GLenum target, gl32core::GLenum pname, GLuint * params)
 {
-   	return FunctionObjects::GetTexParameterIuiv(target, pname, params);
+   	return FunctionObjects::GetTexParameterIuiv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params)
+inline void glGetTexParameterfv(gl32core::GLenum target, gl32core::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetTexParameterfv(target, pname, params);
+   	return FunctionObjects::GetTexParameterfv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexParameteriv(GLenum target, GLenum pname, GLint * params)
+inline void glGetTexParameteriv(gl32core::GLenum target, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetTexParameteriv(target, pname, params);
+   	return FunctionObjects::GetTexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexParameterxv(GLenum target, GLenum pname, GLfixed * params)
+inline void glGetTexParameterxv(gl32core::GLenum target, gl32core::GLenum pname, GLfixed * params)
 {
-   	return FunctionObjects::GetTexParameterxv(target, pname, params);
+   	return FunctionObjects::GetTexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name)
+inline void glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, gl32core::GLenum * type, GLchar * name)
 {
-   	return FunctionObjects::GetTransformFeedbackVarying(program, index, bufSize, length, size, type, name);
+   	return FunctionObjects::GetTransformFeedbackVarying(program, index, bufSize, length, size, reinterpret_cast<gl::GLenum *>(type), name);
 }
 
 inline GLuint glGetUniformBlockIndex(GLuint program, const GLchar * uniformBlockName)
@@ -860,39 +861,39 @@ inline void glGetUniformuiv(GLuint program, GLint location, GLuint * params)
    	return FunctionObjects::GetUniformuiv(program, location, params);
 }
 
-inline void glGetVertexAttribIiv(GLuint index, GLenum pname, GLint * params)
+inline void glGetVertexAttribIiv(GLuint index, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetVertexAttribIiv(index, pname, params);
+   	return FunctionObjects::GetVertexAttribIiv(index, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetVertexAttribIuiv(GLuint index, GLenum pname, GLuint * params)
+inline void glGetVertexAttribIuiv(GLuint index, gl32core::GLenum pname, GLuint * params)
 {
-   	return FunctionObjects::GetVertexAttribIuiv(index, pname, params);
+   	return FunctionObjects::GetVertexAttribIuiv(index, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetVertexAttribPointerv(GLuint index, GLenum pname, void ** pointer)
+inline void glGetVertexAttribPointerv(GLuint index, gl32core::GLenum pname, void ** pointer)
 {
-   	return FunctionObjects::GetVertexAttribPointerv(index, pname, pointer);
+   	return FunctionObjects::GetVertexAttribPointerv(index, static_cast<gl::GLenum>(pname), pointer);
 }
 
-inline void glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble * params)
+inline void glGetVertexAttribdv(GLuint index, gl32core::GLenum pname, GLdouble * params)
 {
-   	return FunctionObjects::GetVertexAttribdv(index, pname, params);
+   	return FunctionObjects::GetVertexAttribdv(index, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat * params)
+inline void glGetVertexAttribfv(GLuint index, gl32core::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetVertexAttribfv(index, pname, params);
+   	return FunctionObjects::GetVertexAttribfv(index, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetVertexAttribiv(GLuint index, GLenum pname, GLint * params)
+inline void glGetVertexAttribiv(GLuint index, gl32core::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetVertexAttribiv(index, pname, params);
+   	return FunctionObjects::GetVertexAttribiv(index, static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glHint(GLenum target, GLenum mode)
+inline void glHint(gl32core::GLenum target, gl32core::GLenum mode)
 {
-   	return FunctionObjects::Hint(target, mode);
+   	return FunctionObjects::Hint(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(mode));
 }
 
 inline GLboolean glIsBuffer(GLuint buffer)
@@ -900,14 +901,14 @@ inline GLboolean glIsBuffer(GLuint buffer)
    	return FunctionObjects::IsBuffer(buffer);
 }
 
-inline GLboolean glIsEnabled(GLenum cap)
+inline GLboolean glIsEnabled(gl32core::GLenum cap)
 {
-   	return FunctionObjects::IsEnabled(cap);
+   	return FunctionObjects::IsEnabled(static_cast<gl::GLenum>(cap));
 }
 
-inline GLboolean glIsEnabledi(GLenum target, GLuint index)
+inline GLboolean glIsEnabledi(gl32core::GLenum target, GLuint index)
 {
-   	return FunctionObjects::IsEnabledi(target, index);
+   	return FunctionObjects::IsEnabledi(static_cast<gl::GLenum>(target), index);
 }
 
 inline GLboolean glIsFramebuffer(GLuint framebuffer)
@@ -950,24 +951,24 @@ inline GLboolean glIsVertexArray(GLuint array)
    	return FunctionObjects::IsVertexArray(array);
 }
 
-inline void glLightModelx(GLenum pname, GLfixed param)
+inline void glLightModelx(gl32core::GLenum pname, GLfixed param)
 {
-   	return FunctionObjects::LightModelx(pname, param);
+   	return FunctionObjects::LightModelx(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glLightModelxv(GLenum pname, const GLfixed * param)
+inline void glLightModelxv(gl32core::GLenum pname, const GLfixed * param)
 {
-   	return FunctionObjects::LightModelxv(pname, param);
+   	return FunctionObjects::LightModelxv(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glLightx(GLenum light, GLenum pname, GLfixed param)
+inline void glLightx(gl32core::GLenum light, gl32core::GLenum pname, GLfixed param)
 {
-   	return FunctionObjects::Lightx(light, pname, param);
+   	return FunctionObjects::Lightx(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glLightxv(GLenum light, GLenum pname, const GLfixed * params)
+inline void glLightxv(gl32core::GLenum light, gl32core::GLenum pname, const GLfixed * params)
 {
-   	return FunctionObjects::Lightxv(light, pname, params);
+   	return FunctionObjects::Lightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glLineWidth(GLfloat width)
@@ -990,34 +991,34 @@ inline void glLoadMatrixx(const GLfixed * m)
    	return FunctionObjects::LoadMatrixx(m);
 }
 
-inline void glLogicOp(GLenum opcode)
+inline void glLogicOp(gl32core::GLenum opcode)
 {
-   	return FunctionObjects::LogicOp(opcode);
+   	return FunctionObjects::LogicOp(static_cast<gl::GLenum>(opcode));
 }
 
-inline void * glMapBuffer(GLenum target, GLenum access)
+inline void * glMapBuffer(gl32core::GLenum target, gl32core::GLenum access)
 {
-   	return FunctionObjects::MapBuffer(target, access);
+   	return FunctionObjects::MapBuffer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(access));
 }
 
-inline void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
+inline void * glMapBufferRange(gl32core::GLenum target, GLintptr offset, GLsizeiptr length, gl32core::GLbitfield access)
 {
-   	return FunctionObjects::MapBufferRange(target, offset, length, access);
+   	return FunctionObjects::MapBufferRange(static_cast<gl::GLenum>(target), offset, length, static_cast<gl::GLbitfield>(access));
 }
 
-inline void glMaterialx(GLenum face, GLenum pname, GLfixed param)
+inline void glMaterialx(gl32core::GLenum face, gl32core::GLenum pname, GLfixed param)
 {
-   	return FunctionObjects::Materialx(face, pname, param);
+   	return FunctionObjects::Materialx(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glMaterialxv(GLenum face, GLenum pname, const GLfixed * param)
+inline void glMaterialxv(gl32core::GLenum face, gl32core::GLenum pname, const GLfixed * param)
 {
-   	return FunctionObjects::Materialxv(face, pname, param);
+   	return FunctionObjects::Materialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glMemoryBarrierByRegion(GLbitfield barriers)
+inline void glMemoryBarrierByRegion(gl32core::GLbitfield barriers)
 {
-   	return FunctionObjects::MemoryBarrierByRegion(barriers);
+   	return FunctionObjects::MemoryBarrierByRegion(static_cast<gl::GLbitfield>(barriers));
 }
 
 inline void glMultMatrixx(const GLfixed * m)
@@ -1025,24 +1026,24 @@ inline void glMultMatrixx(const GLfixed * m)
    	return FunctionObjects::MultMatrixx(m);
 }
 
-inline void glMultiDrawArrays(GLenum mode, const GLint * first, const GLsizei * count, GLsizei drawcount)
+inline void glMultiDrawArrays(gl32core::GLenum mode, const GLint * first, const GLsizei * count, GLsizei drawcount)
 {
-   	return FunctionObjects::MultiDrawArrays(mode, first, count, drawcount);
+   	return FunctionObjects::MultiDrawArrays(static_cast<gl::GLenum>(mode), first, count, drawcount);
 }
 
-inline void glMultiDrawElements(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount)
+inline void glMultiDrawElements(gl32core::GLenum mode, const GLsizei * count, gl32core::GLenum type, const void *const* indices, GLsizei drawcount)
 {
-   	return FunctionObjects::MultiDrawElements(mode, count, type, indices, drawcount);
+   	return FunctionObjects::MultiDrawElements(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices, drawcount);
 }
 
-inline void glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex)
+inline void glMultiDrawElementsBaseVertex(gl32core::GLenum mode, const GLsizei * count, gl32core::GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex)
 {
-   	return FunctionObjects::MultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
+   	return FunctionObjects::MultiDrawElementsBaseVertex(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices, drawcount, basevertex);
 }
 
-inline void glMultiTexCoord4x(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
+inline void glMultiTexCoord4x(gl32core::GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
 {
-   	return FunctionObjects::MultiTexCoord4x(texture, s, t, r, q);
+   	return FunctionObjects::MultiTexCoord4x(static_cast<gl::GLenum>(texture), s, t, r, q);
 }
 
 inline void glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
@@ -1060,44 +1061,44 @@ inline void glOrthox(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfi
    	return FunctionObjects::Orthox(l, r, b, t, n, f);
 }
 
-inline void glPixelStoref(GLenum pname, GLfloat param)
+inline void glPixelStoref(gl32core::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::PixelStoref(pname, param);
+   	return FunctionObjects::PixelStoref(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glPixelStorei(GLenum pname, GLint param)
+inline void glPixelStorei(gl32core::GLenum pname, GLint param)
 {
-   	return FunctionObjects::PixelStorei(pname, param);
+   	return FunctionObjects::PixelStorei(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glPointParameterf(GLenum pname, GLfloat param)
+inline void glPointParameterf(gl32core::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::PointParameterf(pname, param);
+   	return FunctionObjects::PointParameterf(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glPointParameterfv(GLenum pname, const GLfloat * params)
+inline void glPointParameterfv(gl32core::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::PointParameterfv(pname, params);
+   	return FunctionObjects::PointParameterfv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glPointParameteri(GLenum pname, GLint param)
+inline void glPointParameteri(gl32core::GLenum pname, GLint param)
 {
-   	return FunctionObjects::PointParameteri(pname, param);
+   	return FunctionObjects::PointParameteri(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glPointParameteriv(GLenum pname, const GLint * params)
+inline void glPointParameteriv(gl32core::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::PointParameteriv(pname, params);
+   	return FunctionObjects::PointParameteriv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glPointParameterx(GLenum pname, GLfixed param)
+inline void glPointParameterx(gl32core::GLenum pname, GLfixed param)
 {
-   	return FunctionObjects::PointParameterx(pname, param);
+   	return FunctionObjects::PointParameterx(static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glPointParameterxv(GLenum pname, const GLfixed * params)
+inline void glPointParameterxv(gl32core::GLenum pname, const GLfixed * params)
 {
-   	return FunctionObjects::PointParameterxv(pname, params);
+   	return FunctionObjects::PointParameterxv(static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glPointSize(GLfloat size)
@@ -1110,9 +1111,9 @@ inline void glPointSizex(GLfixed size)
    	return FunctionObjects::PointSizex(size);
 }
 
-inline void glPolygonMode(GLenum face, GLenum mode)
+inline void glPolygonMode(gl32core::GLenum face, gl32core::GLenum mode)
 {
-   	return FunctionObjects::PolygonMode(face, mode);
+   	return FunctionObjects::PolygonMode(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(mode));
 }
 
 inline void glPolygonOffset(GLfloat factor, GLfloat units)
@@ -1130,29 +1131,29 @@ inline void glPrimitiveRestartIndex(GLuint index)
    	return FunctionObjects::PrimitiveRestartIndex(index);
 }
 
-inline void glProvokingVertex(GLenum mode)
+inline void glProvokingVertex(gl32core::GLenum mode)
 {
-   	return FunctionObjects::ProvokingVertex(mode);
+   	return FunctionObjects::ProvokingVertex(static_cast<gl::GLenum>(mode));
 }
 
-inline void glReadBuffer(GLenum mode)
+inline void glReadBuffer(gl32core::GLenum mode)
 {
-   	return FunctionObjects::ReadBuffer(mode);
+   	return FunctionObjects::ReadBuffer(static_cast<gl::GLenum>(mode));
 }
 
-inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels)
+inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, gl32core::GLenum format, gl32core::GLenum type, void * pixels)
 {
-   	return FunctionObjects::ReadPixels(x, y, width, height, format, type, pixels);
+   	return FunctionObjects::ReadPixels(x, y, width, height, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
+inline void glRenderbufferStorage(gl32core::GLenum target, gl32core::GLenum internalformat, GLsizei width, GLsizei height)
 {
-   	return FunctionObjects::RenderbufferStorage(target, internalformat, width, height);
+   	return FunctionObjects::RenderbufferStorage(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(internalformat), width, height);
 }
 
-inline void glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
+inline void glRenderbufferStorageMultisample(gl32core::GLenum target, GLsizei samples, gl32core::GLenum internalformat, GLsizei width, GLsizei height)
 {
-   	return FunctionObjects::RenderbufferStorageMultisample(target, samples, internalformat, width, height);
+   	return FunctionObjects::RenderbufferStorageMultisample(static_cast<gl::GLenum>(target), samples, static_cast<gl::GLenum>(internalformat), width, height);
 }
 
 inline void glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
@@ -1170,9 +1171,9 @@ inline void glSampleCoveragex(GLclampx value, GLboolean invert)
    	return FunctionObjects::SampleCoveragex(value, invert);
 }
 
-inline void glSampleMaski(GLuint maskNumber, GLbitfield mask)
+inline void glSampleMaski(GLuint maskNumber, gl32core::GLbitfield mask)
 {
-   	return FunctionObjects::SampleMaski(maskNumber, mask);
+   	return FunctionObjects::SampleMaski(maskNumber, static_cast<gl::GLbitfield>(mask));
 }
 
 inline void glScalex(GLfixed x, GLfixed y, GLfixed z)
@@ -1190,14 +1191,14 @@ inline void glShaderSource(GLuint shader, GLsizei count, const GLchar *const* st
    	return FunctionObjects::ShaderSource(shader, count, string, length);
 }
 
-inline void glStencilFunc(GLenum func, GLint ref, GLuint mask)
+inline void glStencilFunc(gl32core::GLenum func, GLint ref, GLuint mask)
 {
-   	return FunctionObjects::StencilFunc(func, ref, mask);
+   	return FunctionObjects::StencilFunc(static_cast<gl::GLenum>(func), ref, mask);
 }
 
-inline void glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask)
+inline void glStencilFuncSeparate(gl32core::GLenum face, gl32core::GLenum func, GLint ref, GLuint mask)
 {
-   	return FunctionObjects::StencilFuncSeparate(face, func, ref, mask);
+   	return FunctionObjects::StencilFuncSeparate(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(func), ref, mask);
 }
 
 inline void glStencilMask(GLuint mask)
@@ -1205,119 +1206,119 @@ inline void glStencilMask(GLuint mask)
    	return FunctionObjects::StencilMask(mask);
 }
 
-inline void glStencilMaskSeparate(GLenum face, GLuint mask)
+inline void glStencilMaskSeparate(gl32core::GLenum face, GLuint mask)
 {
-   	return FunctionObjects::StencilMaskSeparate(face, mask);
+   	return FunctionObjects::StencilMaskSeparate(static_cast<gl::GLenum>(face), mask);
 }
 
-inline void glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
+inline void glStencilOp(gl32core::GLenum fail, gl32core::GLenum zfail, gl32core::GLenum zpass)
 {
-   	return FunctionObjects::StencilOp(fail, zfail, zpass);
+   	return FunctionObjects::StencilOp(static_cast<gl::GLenum>(fail), static_cast<gl::GLenum>(zfail), static_cast<gl::GLenum>(zpass));
 }
 
-inline void glStencilOpSeparate(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass)
+inline void glStencilOpSeparate(gl32core::GLenum face, gl32core::GLenum sfail, gl32core::GLenum dpfail, gl32core::GLenum dppass)
 {
-   	return FunctionObjects::StencilOpSeparate(face, sfail, dpfail, dppass);
+   	return FunctionObjects::StencilOpSeparate(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(sfail), static_cast<gl::GLenum>(dpfail), static_cast<gl::GLenum>(dppass));
 }
 
-inline void glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
+inline void glTexBuffer(gl32core::GLenum target, gl32core::GLenum internalformat, GLuint buffer)
 {
-   	return FunctionObjects::TexBuffer(target, internalformat, buffer);
+   	return FunctionObjects::TexBuffer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(internalformat), buffer);
 }
 
-inline void glTexEnvx(GLenum target, GLenum pname, GLfixed param)
+inline void glTexEnvx(gl32core::GLenum target, gl32core::GLenum pname, GLfixed param)
 {
-   	return FunctionObjects::TexEnvx(target, pname, param);
+   	return FunctionObjects::TexEnvx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glTexEnvxv(GLenum target, GLenum pname, const GLfixed * params)
+inline void glTexEnvxv(gl32core::GLenum target, gl32core::GLenum pname, const GLfixed * params)
 {
-   	return FunctionObjects::TexEnvxv(target, pname, params);
+   	return FunctionObjects::TexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels)
+inline void glTexImage1D(gl32core::GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, gl32core::GLenum format, gl32core::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexImage1D(target, level, internalformat, width, border, format, type, pixels);
+   	return FunctionObjects::TexImage1D(static_cast<gl::GLenum>(target), level, internalformat, width, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels)
+inline void glTexImage2D(gl32core::GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, gl32core::GLenum format, gl32core::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+   	return FunctionObjects::TexImage2D(static_cast<gl::GLenum>(target), level, internalformat, width, height, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glTexImage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+inline void glTexImage2DMultisample(gl32core::GLenum target, GLsizei samples, gl32core::GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
-   	return FunctionObjects::TexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+   	return FunctionObjects::TexImage2DMultisample(static_cast<gl::GLenum>(target), samples, static_cast<gl::GLenum>(internalformat), width, height, fixedsamplelocations);
 }
 
-inline void glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels)
+inline void glTexImage3D(gl32core::GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, gl32core::GLenum format, gl32core::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+   	return FunctionObjects::TexImage3D(static_cast<gl::GLenum>(target), level, internalformat, width, height, depth, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glTexImage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+inline void glTexImage3DMultisample(gl32core::GLenum target, GLsizei samples, gl32core::GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
-   	return FunctionObjects::TexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+   	return FunctionObjects::TexImage3DMultisample(static_cast<gl::GLenum>(target), samples, static_cast<gl::GLenum>(internalformat), width, height, depth, fixedsamplelocations);
 }
 
-inline void glTexParameterIiv(GLenum target, GLenum pname, const GLint * params)
+inline void glTexParameterIiv(gl32core::GLenum target, gl32core::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::TexParameterIiv(target, pname, params);
+   	return FunctionObjects::TexParameterIiv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexParameterIuiv(GLenum target, GLenum pname, const GLuint * params)
+inline void glTexParameterIuiv(gl32core::GLenum target, gl32core::GLenum pname, const GLuint * params)
 {
-   	return FunctionObjects::TexParameterIuiv(target, pname, params);
+   	return FunctionObjects::TexParameterIuiv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexParameterf(GLenum target, GLenum pname, GLfloat param)
+inline void glTexParameterf(gl32core::GLenum target, gl32core::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::TexParameterf(target, pname, param);
+   	return FunctionObjects::TexParameterf(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glTexParameterfv(GLenum target, GLenum pname, const GLfloat * params)
+inline void glTexParameterfv(gl32core::GLenum target, gl32core::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::TexParameterfv(target, pname, params);
+   	return FunctionObjects::TexParameterfv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexParameteri(GLenum target, GLenum pname, GLint param)
+inline void glTexParameteri(gl32core::GLenum target, gl32core::GLenum pname, GLint param)
 {
-   	return FunctionObjects::TexParameteri(target, pname, param);
+   	return FunctionObjects::TexParameteri(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glTexParameteriv(GLenum target, GLenum pname, const GLint * params)
+inline void glTexParameteriv(gl32core::GLenum target, gl32core::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::TexParameteriv(target, pname, params);
+   	return FunctionObjects::TexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexParameterx(GLenum target, GLenum pname, GLfixed param)
+inline void glTexParameterx(gl32core::GLenum target, gl32core::GLenum pname, GLfixed param)
 {
-   	return FunctionObjects::TexParameterx(target, pname, param);
+   	return FunctionObjects::TexParameterx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
 }
 
-inline void glTexParameterxv(GLenum target, GLenum pname, const GLfixed * params)
+inline void glTexParameterxv(gl32core::GLenum target, gl32core::GLenum pname, const GLfixed * params)
 {
-   	return FunctionObjects::TexParameterxv(target, pname, params);
+   	return FunctionObjects::TexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels)
+inline void glTexSubImage1D(gl32core::GLenum target, GLint level, GLint xoffset, GLsizei width, gl32core::GLenum format, gl32core::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexSubImage1D(target, level, xoffset, width, format, type, pixels);
+   	return FunctionObjects::TexSubImage1D(static_cast<gl::GLenum>(target), level, xoffset, width, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
+inline void glTexSubImage2D(gl32core::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, gl32core::GLenum format, gl32core::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
+   	return FunctionObjects::TexSubImage2D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, width, height, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels)
+inline void glTexSubImage3D(gl32core::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, gl32core::GLenum format, gl32core::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+   	return FunctionObjects::TexSubImage3D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, zoffset, width, height, depth, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
 }
 
-inline void glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar *const* varyings, GLenum bufferMode)
+inline void glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar *const* varyings, gl32core::GLenum bufferMode)
 {
-   	return FunctionObjects::TransformFeedbackVaryings(program, count, varyings, bufferMode);
+   	return FunctionObjects::TransformFeedbackVaryings(program, count, varyings, static_cast<gl::GLenum>(bufferMode));
 }
 
 inline void glTranslatex(GLfixed x, GLfixed y, GLfixed z)
@@ -1495,9 +1496,9 @@ inline void glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transp
    	return FunctionObjects::UniformMatrix4x3fv(location, count, transpose, value);
 }
 
-inline GLboolean glUnmapBuffer(GLenum target)
+inline GLboolean glUnmapBuffer(gl32core::GLenum target)
 {
-   	return FunctionObjects::UnmapBuffer(target);
+   	return FunctionObjects::UnmapBuffer(static_cast<gl::GLenum>(target));
 }
 
 inline void glUseProgram(GLuint program)
@@ -1790,14 +1791,14 @@ inline void glVertexAttribI4usv(GLuint index, const GLushort * v)
    	return FunctionObjects::VertexAttribI4usv(index, v);
 }
 
-inline void glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer)
+inline void glVertexAttribIPointer(GLuint index, GLint size, gl32core::GLenum type, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::VertexAttribIPointer(index, size, type, stride, pointer);
+   	return FunctionObjects::VertexAttribIPointer(index, size, static_cast<gl::GLenum>(type), stride, pointer);
 }
 
-inline void glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void * pointer)
+inline void glVertexAttribPointer(GLuint index, GLint size, gl32core::GLenum type, GLboolean normalized, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::VertexAttribPointer(index, size, type, normalized, stride, pointer);
+   	return FunctionObjects::VertexAttribPointer(index, size, static_cast<gl::GLenum>(type), normalized, stride, pointer);
 }
 
 inline void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
@@ -1805,9 +1806,9 @@ inline void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
    	return FunctionObjects::Viewport(x, y, width, height);
 }
 
-inline void glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
+inline void glWaitSync(GLsync sync, gl32core::GLbitfield flags, GLuint64 timeout)
 {
-   	return FunctionObjects::WaitSync(sync, flags, timeout);
+   	return FunctionObjects::WaitSync(sync, static_cast<gl::GLbitfield>(flags), timeout);
 }
 
 

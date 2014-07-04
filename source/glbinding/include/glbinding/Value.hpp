@@ -1,7 +1,5 @@
 #pragma once
 
-#include <glbinding/Value.h>
-
 namespace 
 {
 
@@ -34,7 +32,7 @@ void Value<T>::printOn(std::ostream & stream) const
 }
 
 template <typename Argument>
-AbstractValue* createValue(Argument argument)
+AbstractValue * createValue(Argument argument)
 {
     return new Value<Argument>(argument);
 }

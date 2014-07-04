@@ -25,6 +25,7 @@ from gen_functions import *
 from gen_versions import *
 
 from gen_meta import *
+from gen_test import *
 
 def generate(inputfile, targetdir):
 
@@ -89,6 +90,8 @@ def generate(inputfile, targetdir):
 
     genFunctionStringsByExtension(extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
     genExtensionsByFunctionString(extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
+
+    genTest                      (features,           sourcedir,  "test.cpp")
 
 
 def main(argv):

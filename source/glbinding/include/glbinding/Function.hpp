@@ -73,20 +73,14 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
     if (myAddress != nullptr)
     {
         if (!callbacksEnabled())
-        {
             return reinterpret_cast<Signature>(myAddress)(std::forward<Arguments>(arguments)...);
-        }
         else
-        {
             return FunctionHelper<ReturnType, Arguments...>().call(*this, std::forward<Arguments>(arguments)...);
-        }
     }
     else
     {
          if (callbacksEnabled())
-         {
             unresolved();
-         }
 
          return ReturnType();
     }

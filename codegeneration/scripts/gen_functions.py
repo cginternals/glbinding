@@ -2,11 +2,18 @@ from binding import *
 from classes.Command import *
 
 
+
 functionForwardTemplate = """inline %s %s(%s)
 {
    	return FunctionObjects::%s(%s);
 }
 """
+functionForwardTemplateRValueCast = """inline %s %s(%s)
+{
+   	return static_cast<gl%s::%s>(FunctionObjects::%s(%s));
+}
+"""
+
 
 def functionTemplate(function):
 	params = ", ".join([function.returntype] + [ p.baseType() for p in function.params ])
@@ -17,13 +24,45 @@ def functionDecl(function):
 	params = ", ".join([function.returntype] + [ p.baseType() for p in function.params ])
 	return tab + "static Function<%s> %s;" % (params, functionBID(function)[2:])
 
-def functionForward(function):
-	params = ", ".join([p.baseType()+" "+p.name for p in function.params])
-	paramNames = ", ".join([p.name for p in function.params])
+def functionForward(function, feature, core):
+	params = ", ".join([paramSignature(p, feature, core) + " " + p.name for p in function.params])
+	paramNames = ", ".join([(paramPass(p, feature)) for p in function.params])
 
-	return functionForwardTemplate % (function.returntype, 
-		functionBID(function), params, functionBID(function)[2:], paramNames)
+	if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
+		return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
+			versionBID(feature, core), function.returntype, functionBID(function)[2:], paramNames)
+	else:
+		return functionForwardTemplate % (function.returntype, functionBID(function), params,
+			functionBID(function)[2:], paramNames)
 
+def paramSignature(param, feature, core):
+	t = param.baseType()
+	if not feature:
+		return t
+	elif "GLenum" in t:
+		return t.replace("GLenum", "gl" + versionBID(feature, core) + "::GLenum")
+	elif "GLbitfield" in t:
+		return t.replace("GLbitfield", "gl" + versionBID(feature, core) + "::GLbitfield")
+	else:
+		return t
+
+def paramPass(param, feature):
+	# this returns a string used for passing the param by its name to a function object.
+	# if this is inside a featured function, the param will be cast from featured GLenum 
+	# and GLbitfield to gl::GLenum and gl::GLbitfield, required for function object.
+	t = param.baseType()
+	if not feature:
+		return param.name
+	elif t == "GLenum":
+		return "static_cast<gl::GLenum>(" + param.name + ")"
+	elif "GLenum" in t and "*" in t:
+		return ("reinterpret_cast<" + t + ">").replace("GLenum", "gl::GLenum") + "(" + param.name + ")"
+	elif t == "GLbitfield":
+		return "static_cast<gl::GLbitfield>(" + param.name + ")"
+	elif "GLbitfield" in t and "*" in t:
+		return ("reinterpret_cast<" + t + ">").replace("GLbitfield", "gl::GLbitfield") + "(" + param.name + ")"
+	else:
+		return param.name
 
 def genFunctionObjects_h(commands, outputdir, outputfile):	
 	status(outputdir + outputfile)
@@ -66,15 +105,16 @@ def genFeatureFunctions(commands, feature, outputdir, outputfile, core):
 
 	of_all = outputfile.replace("?", "")
 
-	version = ""
-	if feature:
-		version = str(feature.major) + str(feature.minor) + ("core" if core else "")
-
+	version = versionBID(feature, core)
 	t = template(of_all).replace("?", version)
+
 	of = outputfile.replace("?", version)
 
 	status(outputdir + of)
 
+	gl_include = "featured/" if feature else ""
+	using_namespace = "using namespace gl;\n\n\n" if feature else ""
+
 	with open(outputdir + of, 'w') as file:
-		file.write(t % ("using namespace gl;\n\n" if feature else "", "\n".join(
-			[ functionForward(c) for c in commands if c.supported(feature, core)])))
+		file.write(t % (gl_include, using_namespace, "\n".join(
+			[ functionForward(c, feature, core) for c in commands if c.supported(feature, core)])))

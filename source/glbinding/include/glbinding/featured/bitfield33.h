@@ -11,6 +11,7 @@ using namespace gl;
 enum class GLbitfield : unsigned int
 {
     // AttribMask
+
     GL_CURRENT_BIT = 0x00000001,
     GL_POINT_BIT = 0x00000002,
     GL_LINE_BIT = 0x00000004,
@@ -35,18 +36,22 @@ enum class GLbitfield : unsigned int
     GL_ALL_ATTRIB_BITS = 0xFFFFFFFF,
 
     // ClientAttribMask
+
     GL_CLIENT_PIXEL_STORE_BIT = 0x00000001,
     GL_CLIENT_VERTEX_ARRAY_BIT = 0x00000002,
     GL_CLIENT_ALL_ATTRIB_BITS = 0xFFFFFFFF,
 
     // ContextFlagMask
+
     GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001,
 
     // ContextProfileMask
+
     GL_CONTEXT_CORE_PROFILE_BIT = 0x00000001,
     GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002,
 
     // MapBufferUsageMask
+
     GL_MAP_READ_BIT = 0x0001,
     GL_MAP_WRITE_BIT = 0x0002,
     GL_MAP_INVALIDATE_RANGE_BIT = 0x0004,
@@ -55,12 +60,14 @@ enum class GLbitfield : unsigned int
     GL_MAP_UNSYNCHRONIZED_BIT = 0x0020,
 
     // SyncObjectMask
+
     GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001,
 };
 
 // import bitfields to namespace
 
 // AttribMask
+
 static const GLbitfield GL_CURRENT_BIT = GLbitfield::GL_CURRENT_BIT;
 static const GLbitfield GL_POINT_BIT = GLbitfield::GL_POINT_BIT;
 static const GLbitfield GL_LINE_BIT = GLbitfield::GL_LINE_BIT;
@@ -85,18 +92,22 @@ static const GLbitfield GL_MULTISAMPLE_BIT = GLbitfield::GL_MULTISAMPLE_BIT;
 static const GLbitfield GL_ALL_ATTRIB_BITS = GLbitfield::GL_ALL_ATTRIB_BITS;
 
 // ClientAttribMask
+
 static const GLbitfield GL_CLIENT_PIXEL_STORE_BIT = GLbitfield::GL_CLIENT_PIXEL_STORE_BIT;
 static const GLbitfield GL_CLIENT_VERTEX_ARRAY_BIT = GLbitfield::GL_CLIENT_VERTEX_ARRAY_BIT;
 static const GLbitfield GL_CLIENT_ALL_ATTRIB_BITS = GLbitfield::GL_CLIENT_ALL_ATTRIB_BITS;
 
 // ContextFlagMask
+
 static const GLbitfield GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = GLbitfield::GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT;
 
 // ContextProfileMask
+
 static const GLbitfield GL_CONTEXT_CORE_PROFILE_BIT = GLbitfield::GL_CONTEXT_CORE_PROFILE_BIT;
 static const GLbitfield GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = GLbitfield::GL_CONTEXT_COMPATIBILITY_PROFILE_BIT;
 
 // MapBufferUsageMask
+
 static const GLbitfield GL_MAP_READ_BIT = GLbitfield::GL_MAP_READ_BIT;
 static const GLbitfield GL_MAP_WRITE_BIT = GLbitfield::GL_MAP_WRITE_BIT;
 static const GLbitfield GL_MAP_INVALIDATE_RANGE_BIT = GLbitfield::GL_MAP_INVALIDATE_RANGE_BIT;
@@ -105,6 +116,7 @@ static const GLbitfield GL_MAP_FLUSH_EXPLICIT_BIT = GLbitfield::GL_MAP_FLUSH_EXP
 static const GLbitfield GL_MAP_UNSYNCHRONIZED_BIT = GLbitfield::GL_MAP_UNSYNCHRONIZED_BIT;
 
 // SyncObjectMask
+
 static const GLbitfield GL_SYNC_FLUSH_COMMANDS_BIT = GLbitfield::GL_SYNC_FLUSH_COMMANDS_BIT;
 
 } // namespace gl33

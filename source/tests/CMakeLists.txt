@@ -9,12 +9,11 @@ endif()
 function(add_test_without_ctest target)
 
     add_subdirectory(${target})
-
     add_dependencies(test ${target})
     add_custom_command(TARGET test POST_BUILD 
         COMMAND cmake -E echo
         COMMAND cmake -E echo run $<TARGET_FILE:${target}>:
-        COMMAND $<TARGET_FILE:${target}>)
+        COMMAND $<TARGET_FILE:${target}> --gtest_output=xml:gtests.xml)
 
 endfunction()
 
@@ -38,10 +37,10 @@ if(OPTION_BUILD_TESTS AND GMOCK_FOUND AND GTEST_FOUND)
     )
 
     # Target 'test'
-    add_custom_target(tests)
-    set_target_properties(tests PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+    add_custom_target(test)
+    set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 
     # Tests
-    # add_test_without_ctest(fiblib-tests)
+    #add_test_without_ctest(#-test)
 
 endif()

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
+#include <glbinding/gl.h>
 
 #include <glbinding/FunctionObjects.h>
 

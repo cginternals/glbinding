@@ -9,6 +9,7 @@ namespace gl
 enum class GLbitfield : unsigned int
 {
     // AttribMask
+
     GL_CURRENT_BIT = 0x00000001,
     GL_POINT_BIT = 0x00000002,
     GL_LINE_BIT = 0x00000004,
@@ -36,6 +37,7 @@ enum class GLbitfield : unsigned int
     GL_ALL_ATTRIB_BITS = 0xFFFFFFFF,
 
     // BufferBitQCOM
+
     GL_COLOR_BUFFER_BIT0_QCOM = 0x00000001,
     GL_COLOR_BUFFER_BIT1_QCOM = 0x00000002,
     GL_COLOR_BUFFER_BIT2_QCOM = 0x00000004,
@@ -70,38 +72,46 @@ enum class GLbitfield : unsigned int
     GL_MULTISAMPLE_BUFFER_BIT7_QCOM = 0x80000000,
 
     // ClearBufferMask
+
     GL_COVERAGE_BUFFER_BIT_NV = 0x00008000,
 
     // ClientAttribMask
+
     GL_CLIENT_PIXEL_STORE_BIT = 0x00000001,
     GL_CLIENT_VERTEX_ARRAY_BIT = 0x00000002,
     GL_CLIENT_ALL_ATTRIB_BITS = 0xFFFFFFFF,
 
     // ContextFlagMask
+
     GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001,
     GL_CONTEXT_FLAG_DEBUG_BIT = 0x00000002,
     GL_CONTEXT_FLAG_DEBUG_BIT_KHR = 0x00000002,
     GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = 0x00000004,
 
     // ContextProfileMask
+
     GL_CONTEXT_CORE_PROFILE_BIT = 0x00000001,
     GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002,
 
     // FfdMaskSGIX
+
     GL_TEXTURE_DEFORMATION_BIT_SGIX = 0x00000001,
     GL_GEOMETRY_DEFORMATION_BIT_SGIX = 0x00000002,
 
     // FragmentShaderColorModMaskATI
+
     GL_COMP_BIT_ATI = 0x00000002,
     GL_NEGATE_BIT_ATI = 0x00000004,
     GL_BIAS_BIT_ATI = 0x00000008,
 
     // FragmentShaderDestMaskATI
+
     GL_RED_BIT_ATI = 0x00000001,
     GL_GREEN_BIT_ATI = 0x00000002,
     GL_BLUE_BIT_ATI = 0x00000004,
 
     // FragmentShaderDestModMaskATI
+
     GL_2X_BIT_ATI = 0x00000001,
     GL_4X_BIT_ATI = 0x00000002,
     GL_8X_BIT_ATI = 0x00000004,
@@ -111,6 +121,7 @@ enum class GLbitfield : unsigned int
     GL_SATURATE_BIT_ATI = 0x00000040,
 
     // MapBufferUsageMask
+
     GL_MAP_READ_BIT = 0x0001,
     GL_MAP_READ_BIT_EXT = 0x0001,
     GL_MAP_WRITE_BIT = 0x0002,
@@ -129,6 +140,7 @@ enum class GLbitfield : unsigned int
     GL_CLIENT_STORAGE_BIT = 0x0200,
 
     // MemoryBarrierMask
+
     GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT = 0x00000001,
     GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT = 0x00000001,
     GL_ELEMENT_ARRAY_BARRIER_BIT = 0x00000002,
@@ -161,6 +173,7 @@ enum class GLbitfield : unsigned int
     GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFF,
 
     // PathRenderingMaskNV
+
     GL_FONT_X_MIN_BOUNDS_BIT_NV = 0x00010000,
     GL_FONT_Y_MIN_BOUNDS_BIT_NV = 0x00020000,
     GL_FONT_X_MAX_BOUNDS_BIT_NV = 0x00040000,
@@ -187,17 +200,21 @@ enum class GLbitfield : unsigned int
     GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV = 0x80,
 
     // PerformanceQueryCapsMaskINTEL
+
     GL_PERFQUERY_SINGLE_CONTEXT_INTEL = 0x00000000,
     GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = 0x00000001,
 
     // SyncObjectMask
+
     GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001,
     GL_SYNC_FLUSH_COMMANDS_BIT_APPLE = 0x00000001,
 
     // TextureStorageMaskAMD
+
     GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = 0x00000001,
 
     // TraceMaskMESA
+
     GL_TRACE_OPERATIONS_BIT_MESA = 0x0001,
     GL_TRACE_PRIMITIVES_BIT_MESA = 0x0002,
     GL_TRACE_ARRAYS_BIT_MESA = 0x0004,
@@ -207,6 +224,7 @@ enum class GLbitfield : unsigned int
     GL_TRACE_ALL_BITS_MESA = 0xFFFF,
 
     // UseProgramStageMask
+
     GL_VERTEX_SHADER_BIT = 0x00000001,
     GL_VERTEX_SHADER_BIT_EXT = 0x00000001,
     GL_FRAGMENT_SHADER_BIT = 0x00000002,
@@ -222,6 +240,7 @@ enum class GLbitfield : unsigned int
     GL_ALL_SHADER_BITS_EXT = 0xFFFFFFFF,
 
     // VertexHintsMaskPGI
+
     GL_VERTEX23_BIT_PGI = 0x00000004,
     GL_VERTEX4_BIT_PGI = 0x00000008,
     GL_COLOR3_BIT_PGI = 0x00010000,
@@ -245,6 +264,7 @@ enum class GLbitfield : unsigned int
 // import bitfields to namespace
 
 // AttribMask
+
 static const GLbitfield GL_CURRENT_BIT = GLbitfield::GL_CURRENT_BIT;
 static const GLbitfield GL_POINT_BIT = GLbitfield::GL_POINT_BIT;
 static const GLbitfield GL_LINE_BIT = GLbitfield::GL_LINE_BIT;
@@ -272,6 +292,7 @@ static const GLbitfield GL_MULTISAMPLE_BIT_EXT = GLbitfield::GL_MULTISAMPLE_BIT_
 static const GLbitfield GL_ALL_ATTRIB_BITS = GLbitfield::GL_ALL_ATTRIB_BITS;
 
 // BufferBitQCOM
+
 static const GLbitfield GL_COLOR_BUFFER_BIT0_QCOM = GLbitfield::GL_COLOR_BUFFER_BIT0_QCOM;
 static const GLbitfield GL_COLOR_BUFFER_BIT1_QCOM = GLbitfield::GL_COLOR_BUFFER_BIT1_QCOM;
 static const GLbitfield GL_COLOR_BUFFER_BIT2_QCOM = GLbitfield::GL_COLOR_BUFFER_BIT2_QCOM;
@@ -306,38 +327,46 @@ static const GLbitfield GL_MULTISAMPLE_BUFFER_BIT6_QCOM = GLbitfield::GL_MULTISA
 static const GLbitfield GL_MULTISAMPLE_BUFFER_BIT7_QCOM = GLbitfield::GL_MULTISAMPLE_BUFFER_BIT7_QCOM;
 
 // ClearBufferMask
+
 static const GLbitfield GL_COVERAGE_BUFFER_BIT_NV = GLbitfield::GL_COVERAGE_BUFFER_BIT_NV;
 
 // ClientAttribMask
+
 static const GLbitfield GL_CLIENT_PIXEL_STORE_BIT = GLbitfield::GL_CLIENT_PIXEL_STORE_BIT;
 static const GLbitfield GL_CLIENT_VERTEX_ARRAY_BIT = GLbitfield::GL_CLIENT_VERTEX_ARRAY_BIT;
 static const GLbitfield GL_CLIENT_ALL_ATTRIB_BITS = GLbitfield::GL_CLIENT_ALL_ATTRIB_BITS;
 
 // ContextFlagMask
+
 static const GLbitfield GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = GLbitfield::GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT;
 static const GLbitfield GL_CONTEXT_FLAG_DEBUG_BIT = GLbitfield::GL_CONTEXT_FLAG_DEBUG_BIT;
 static const GLbitfield GL_CONTEXT_FLAG_DEBUG_BIT_KHR = GLbitfield::GL_CONTEXT_FLAG_DEBUG_BIT_KHR;
 static const GLbitfield GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = GLbitfield::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB;
 
 // ContextProfileMask
+
 static const GLbitfield GL_CONTEXT_CORE_PROFILE_BIT = GLbitfield::GL_CONTEXT_CORE_PROFILE_BIT;
 static const GLbitfield GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = GLbitfield::GL_CONTEXT_COMPATIBILITY_PROFILE_BIT;
 
 // FfdMaskSGIX
+
 static const GLbitfield GL_TEXTURE_DEFORMATION_BIT_SGIX = GLbitfield::GL_TEXTURE_DEFORMATION_BIT_SGIX;
 static const GLbitfield GL_GEOMETRY_DEFORMATION_BIT_SGIX = GLbitfield::GL_GEOMETRY_DEFORMATION_BIT_SGIX;
 
 // FragmentShaderColorModMaskATI
+
 static const GLbitfield GL_COMP_BIT_ATI = GLbitfield::GL_COMP_BIT_ATI;
 static const GLbitfield GL_NEGATE_BIT_ATI = GLbitfield::GL_NEGATE_BIT_ATI;
 static const GLbitfield GL_BIAS_BIT_ATI = GLbitfield::GL_BIAS_BIT_ATI;
 
 // FragmentShaderDestMaskATI
+
 static const GLbitfield GL_RED_BIT_ATI = GLbitfield::GL_RED_BIT_ATI;
 static const GLbitfield GL_GREEN_BIT_ATI = GLbitfield::GL_GREEN_BIT_ATI;
 static const GLbitfield GL_BLUE_BIT_ATI = GLbitfield::GL_BLUE_BIT_ATI;
 
 // FragmentShaderDestModMaskATI
+
 static const GLbitfield GL_2X_BIT_ATI = GLbitfield::GL_2X_BIT_ATI;
 static const GLbitfield GL_4X_BIT_ATI = GLbitfield::GL_4X_BIT_ATI;
 static const GLbitfield GL_8X_BIT_ATI = GLbitfield::GL_8X_BIT_ATI;
@@ -347,6 +376,7 @@ static const GLbitfield GL_EIGHTH_BIT_ATI = GLbitfield::GL_EIGHTH_BIT_ATI;
 static const GLbitfield GL_SATURATE_BIT_ATI = GLbitfield::GL_SATURATE_BIT_ATI;
 
 // MapBufferUsageMask
+
 static const GLbitfield GL_MAP_READ_BIT = GLbitfield::GL_MAP_READ_BIT;
 static const GLbitfield GL_MAP_READ_BIT_EXT = GLbitfield::GL_MAP_READ_BIT_EXT;
 static const GLbitfield GL_MAP_WRITE_BIT = GLbitfield::GL_MAP_WRITE_BIT;
@@ -365,6 +395,7 @@ static const GLbitfield GL_DYNAMIC_STORAGE_BIT = GLbitfield::GL_DYNAMIC_STORAGE_
 static const GLbitfield GL_CLIENT_STORAGE_BIT = GLbitfield::GL_CLIENT_STORAGE_BIT;
 
 // MemoryBarrierMask
+
 static const GLbitfield GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT = GLbitfield::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT;
 static const GLbitfield GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT = GLbitfield::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT;
 static const GLbitfield GL_ELEMENT_ARRAY_BARRIER_BIT = GLbitfield::GL_ELEMENT_ARRAY_BARRIER_BIT;
@@ -397,6 +428,7 @@ static const GLbitfield GL_ALL_BARRIER_BITS = GLbitfield::GL_ALL_BARRIER_BITS;
 static const GLbitfield GL_ALL_BARRIER_BITS_EXT = GLbitfield::GL_ALL_BARRIER_BITS_EXT;
 
 // PathRenderingMaskNV
+
 static const GLbitfield GL_FONT_X_MIN_BOUNDS_BIT_NV = GLbitfield::GL_FONT_X_MIN_BOUNDS_BIT_NV;
 static const GLbitfield GL_FONT_Y_MIN_BOUNDS_BIT_NV = GLbitfield::GL_FONT_Y_MIN_BOUNDS_BIT_NV;
 static const GLbitfield GL_FONT_X_MAX_BOUNDS_BIT_NV = GLbitfield::GL_FONT_X_MAX_BOUNDS_BIT_NV;
@@ -423,17 +455,21 @@ static const GLbitfield GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV = GLbitfield::GL_GLYP
 static const GLbitfield GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV = GLbitfield::GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV;
 
 // PerformanceQueryCapsMaskINTEL
+
 static const GLbitfield GL_PERFQUERY_SINGLE_CONTEXT_INTEL = GLbitfield::GL_PERFQUERY_SINGLE_CONTEXT_INTEL;
 static const GLbitfield GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = GLbitfield::GL_PERFQUERY_GLOBAL_CONTEXT_INTEL;
 
 // SyncObjectMask
+
 static const GLbitfield GL_SYNC_FLUSH_COMMANDS_BIT = GLbitfield::GL_SYNC_FLUSH_COMMANDS_BIT;
 static const GLbitfield GL_SYNC_FLUSH_COMMANDS_BIT_APPLE = GLbitfield::GL_SYNC_FLUSH_COMMANDS_BIT_APPLE;
 
 // TextureStorageMaskAMD
+
 static const GLbitfield GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = GLbitfield::GL_TEXTURE_STORAGE_SPARSE_BIT_AMD;
 
 // TraceMaskMESA
+
 static const GLbitfield GL_TRACE_OPERATIONS_BIT_MESA = GLbitfield::GL_TRACE_OPERATIONS_BIT_MESA;
 static const GLbitfield GL_TRACE_PRIMITIVES_BIT_MESA = GLbitfield::GL_TRACE_PRIMITIVES_BIT_MESA;
 static const GLbitfield GL_TRACE_ARRAYS_BIT_MESA = GLbitfield::GL_TRACE_ARRAYS_BIT_MESA;
@@ -443,6 +479,7 @@ static const GLbitfield GL_TRACE_ERRORS_BIT_MESA = GLbitfield::GL_TRACE_ERRORS_B
 static const GLbitfield GL_TRACE_ALL_BITS_MESA = GLbitfield::GL_TRACE_ALL_BITS_MESA;
 
 // UseProgramStageMask
+
 static const GLbitfield GL_VERTEX_SHADER_BIT = GLbitfield::GL_VERTEX_SHADER_BIT;
 static const GLbitfield GL_VERTEX_SHADER_BIT_EXT = GLbitfield::GL_VERTEX_SHADER_BIT_EXT;
 static const GLbitfield GL_FRAGMENT_SHADER_BIT = GLbitfield::GL_FRAGMENT_SHADER_BIT;
@@ -458,6 +495,7 @@ static const GLbitfield GL_ALL_SHADER_BITS = GLbitfield::GL_ALL_SHADER_BITS;
 static const GLbitfield GL_ALL_SHADER_BITS_EXT = GLbitfield::GL_ALL_SHADER_BITS_EXT;
 
 // VertexHintsMaskPGI
+
 static const GLbitfield GL_VERTEX23_BIT_PGI = GLbitfield::GL_VERTEX23_BIT_PGI;
 static const GLbitfield GL_VERTEX4_BIT_PGI = GLbitfield::GL_VERTEX4_BIT_PGI;
 static const GLbitfield GL_COLOR3_BIT_PGI = GLbitfield::GL_COLOR3_BIT_PGI;

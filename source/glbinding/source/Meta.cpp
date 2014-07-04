@@ -53,7 +53,6 @@ const std::string & Meta::getString(const GLenum glenum)
 
 GLenum Meta::getEnum(const std::string & glenum)
 {
-
     auto i = Meta_EnumsByString.find(glenum);
     if (i == Meta_EnumsByString.end())
         return static_cast<GLenum>(-1);
