@@ -5,6 +5,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <set>
 
 #include <glbinding/types.h>
 
@@ -20,9 +21,14 @@ class GLBINDING_API Meta
 public:
     Meta() = delete;
 
+    static bool stringsByGL();
+    static bool glByStrings();
+
+    static int glRevision();
+
     static const std::string & getString(GLenum glenum);
     static GLenum getEnum(const std::string & glenum);
-    static std::vector<GLenum> getEnums();
+    static std::vector<GLenum> enums();
 
     static const std::string & getString(GLbitfield bitfield);
     static GLbitfield getBitfield(const std::string & bitfield);
@@ -32,13 +38,13 @@ public:
 
     static const std::string & getString(GLextension extension);
     static GLextension getExtension(const std::string & extension);
-    static std::vector<GLextension> getExtensions();
+    static std::vector<GLextension> extensions();
 
     static const std::vector<std::string> & getRequiredFunctions(GLextension extension);
     static const std::vector<GLextension> & getExtensionsRequiring(const std::string & function);
 
-    using ucharpair = std::pair<unsigned char, unsigned char>;
     static const Version & getRequiringVersion(GLextension extension);
+    static const std::set<Version> & versions();
 };
 
 } // namespace gl

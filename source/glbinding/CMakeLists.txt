@@ -54,6 +54,7 @@ set(api_includes
     ${include_path}/glbinding_api.h
 
     ${include_path}/gl.h
+    ${include_path}/nogl.h
     ${include_path}/glbinding.h
 
     ${include_path}/bitfield.h

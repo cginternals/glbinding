@@ -12,11 +12,35 @@
 
 #include <glbinding/Version.h>
 
+#include "glrevision.h"
 #include "Meta_Maps.h"
 
 
 namespace gl
 {
+
+bool Meta::stringsByGL()
+{
+#ifdef STRINGS_BY_GL
+    return true;
+#else
+    return false;
+#endif
+}
+
+bool Meta::glByStrings()
+{
+#ifdef GL_BY_STRINGS
+    return true;
+#else
+    return false;
+#endif
+}
+
+int Meta::glRevision()
+{
+    return GL_REVISION;
+}
 
 const std::string & Meta::getString(const GLbitfield bitfield)
 {
@@ -60,7 +84,7 @@ GLenum Meta::getEnum(const std::string & glenum)
     return i->second;
 }
 
-std::vector<GLenum> Meta::getEnums()
+std::vector<GLenum> Meta::enums()
 {
     std::vector<GLenum> enums;
     for (auto p : Meta_StringsByEnum)
@@ -89,7 +113,7 @@ GLextension Meta::getExtension(const std::string & extension)
     return i->second;
 }
 
-std::vector<GLextension> Meta::getExtensions()
+std::vector<GLextension> Meta::extensions()
 {
     std::vector<GLextension> extensions;
     for (auto p : Meta_StringsByExtension)
@@ -129,6 +153,11 @@ const std::vector<GLextension> & Meta::getExtensionsRequiring(const std::string 
         return none;
     }
     return i->second;
+}
+
+const std::set<Version> & Meta::versions()
+{
+    return Version::versions();
 }
 
 } // namespace gl

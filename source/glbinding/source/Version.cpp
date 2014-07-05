@@ -92,11 +92,14 @@ Version Version::nearest() const
     std::set<Version>::iterator iterator = s_validVersions.lower_bound(*this);
 
     if (iterator == s_validVersions.end())
-    {
         return *(--iterator);
-    }
 
     return *iterator;
+}
+
+const std::set<Version> & Version::versions()
+{
+    return s_validVersions;
 }
 
 } // namespace gl

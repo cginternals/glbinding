@@ -1,7 +1,7 @@
 
 if(OPTION_BUILD_EXAMPLES)
-	add_subdirectory("functionlist")
+#	add_subdirectory("callbacks")
+#	add_subdirectory("comparison")
 	add_subdirectory("meta")
-	add_subdirectory("callbacks")
-	add_subdirectory("comparison")
+#	add_subdirectory("functionlist")
 endif()

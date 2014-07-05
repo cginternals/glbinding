@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glbinding/nogl.h>
 #include <glbinding/types.h>
 
 

@@ -7,7 +7,6 @@ message(STATUS "Example ${target}")
 #
 
 find_package(OpenGL REQUIRED)
-find_package(GLFW REQUIRED)
 
 #
 # Includes
@@ -15,7 +14,6 @@ find_package(GLFW REQUIRED)
 
 include_directories(
     ${OPENGL_INCLUDE_DIR}
-    ${GLFW_INCLUDE_DIR}
 )
 
 include_directories(
@@ -30,7 +28,6 @@ include_directories(
 
 set(libs
     ${OPENGL_LIBRARIES}
-    ${GLFW_LIBRARY}
     glbinding
 )
 

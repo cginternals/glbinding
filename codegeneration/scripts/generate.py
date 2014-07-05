@@ -12,6 +12,8 @@ from classes.Type import *
 
 from binding import *
 
+from gen_revision import *
+
 from gen_features import *
 from gen_bitfields import *
 from gen_booleans import *
@@ -27,7 +29,14 @@ from gen_versions import *
 from gen_meta import *
 from gen_test import *
 
-def generate(inputfile, targetdir):
+def generate(inputfile, targetdir, revisionfile):
+
+    print "parsing revision"
+
+    file = open(revisionfile, "r")
+    revision = int(file.readline())
+    file.close()    
+
 
     print "parsing " + inputfile
     tree       = ET.parse(inputfile)
@@ -48,6 +57,7 @@ def generate(inputfile, targetdir):
     includedir_featured = includedir + "featured/"
     sourcedir  = targetdir + "/source/"
 
+    genRevision                  (revision,           sourcedir, "glrevision.h")
 
     genFeatures                  (features,           includedir_featured, "gl?.h")
 
@@ -96,9 +106,9 @@ def generate(inputfile, targetdir):
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv[1:], "s:d:", ["spec=", "directory="])
+        opts, args = getopt.getopt(argv[1:], "s:d:r:", ["spec=", "directory=" , "revision="])
     except getopt.GetoptError:
-        print("usage: %s -s <GL spec> [-d <output directory>]" % argv[0])
+        print("usage: %s -s <GL spec> [-d <output directory>] [-r <revision file>]" % argv[0])
         sys.exit(1)
         
     targetdir = "."
@@ -110,12 +120,15 @@ def main(argv):
             
         if opt in ("-d", "--directory"):
             targetdir = arg
+
+        if opt in ("-r", "--revision"):
+            revision  = arg
             
     if inputfile == None:
         print("No GL spec file given")
         sys.exit(1)
 
-    generate(inputfile, targetdir)
+    generate(inputfile, targetdir, revision)
 
 if __name__ == "__main__":
     main(sys.argv)

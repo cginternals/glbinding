@@ -34,6 +34,8 @@ public:
 
     Version nearest() const;
 
+    static const std::set<Version> & versions();
+
 public:
     unsigned char major;
     unsigned char minor;

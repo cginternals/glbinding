@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glbinding/nogl.h>
 #include <glbinding/featured/gl41.h>
 
 #include <glbinding/FunctionObjects.h>
