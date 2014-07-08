@@ -12,7 +12,7 @@
 
 using namespace gl; 
 
-int main(int /*argc*/, char* /*argv*/[])
+int main(int, char * [])
 {
 
     // enlist gl revision

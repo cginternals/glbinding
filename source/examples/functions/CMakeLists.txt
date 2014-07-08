@@ -1,5 +1,5 @@
 
-set(target functionlist)
+set(target functions)
 message(STATUS "Example ${target}")
 
 #
