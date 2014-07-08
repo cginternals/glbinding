@@ -4,6 +4,7 @@
 
 #include <unordered_map>
 #include <vector>
+#include <set>
 
 #include <glbinding/types.h>
 #include <glbinding/extension.h>
@@ -26,8 +27,8 @@ extern const std::unordered_map<GLenum, std::string> Meta_StringsByEnum;
 extern const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString;
 extern const std::unordered_map<GLextension, std::string> Meta_StringsByExtension;
 
-extern const std::unordered_map<std::string, std::vector<GLextension>> Meta_ExtensionsByFunctionString;
-extern const std::unordered_map<GLextension, std::vector<std::string>> Meta_FunctionStringsByExtension;
+extern const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString;
+extern const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
 
 extern const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension;
 

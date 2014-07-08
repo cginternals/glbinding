@@ -44,7 +44,7 @@ public:
 
     ProcAddress address() const;
 
-    std::vector<GLextension> extensions() const;
+    const std::set<GLextension> & extensions() const;
 
     void setCallbackLevel(CallbackLevel level);
 

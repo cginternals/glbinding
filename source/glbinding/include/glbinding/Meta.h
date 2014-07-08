@@ -38,10 +38,10 @@ public:
 
     static const std::string & getString(GLextension extension);
     static GLextension getExtension(const std::string & extension);
-    static std::vector<GLextension> extensions();
+    static std::set<GLextension> extensions();
 
-    static const std::vector<std::string> & getRequiredFunctions(GLextension extension);
-    static const std::vector<GLextension> & getExtensionsRequiring(const std::string & function);
+    static const std::set<std::string> & getRequiredFunctions(GLextension extension);
+    static const std::set<GLextension> & getExtensionsRequiring(const std::string & function);
 
     static const Version & getRequiringVersion(GLextension extension);
     static const std::set<Version> & versions();

@@ -113,11 +113,11 @@ GLextension Meta::getExtension(const std::string & extension)
     return i->second;
 }
 
-std::vector<GLextension> Meta::extensions()
+std::set<GLextension> Meta::extensions()
 {
-    std::vector<GLextension> extensions;
+    std::set<GLextension> extensions;
     for (auto p : Meta_StringsByExtension)
-        extensions.push_back(p.first);
+        extensions.insert(p.first);
 
     return extensions;
 }
@@ -133,23 +133,23 @@ const Version & Meta::getRequiringVersion(const GLextension extension)
     return i->second;
 }
 
-const std::vector<std::string> & Meta::getRequiredFunctions(const GLextension extension)
+const std::set<std::string> & Meta::getRequiredFunctions(const GLextension extension)
 {
     auto i = Meta_FunctionStringsByExtension.find(extension);
     if (i == Meta_FunctionStringsByExtension.end())
     {
-        static const std::vector<std::string> none;
+        static const std::set<std::string> none;
         return none;
     }
     return i->second;
 }
 
-const std::vector<GLextension> & Meta::getExtensionsRequiring(const std::string & function)
+const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & function)
 {
     auto i = Meta_ExtensionsByFunctionString.find(function);
     if (i == Meta_ExtensionsByFunctionString.end())
     {
-        static const std::vector<GLextension> none;
+        static const std::set<GLextension> none;
         return none;
     }
     return i->second;

@@ -74,7 +74,7 @@ void AbstractFunction::initialize(int context)
     }
 }
 
-std::vector<GLextension> AbstractFunction::extensions() const
+const std::set<GLextension> & AbstractFunction::extensions() const
 {
     return Meta::getExtensionsRequiring(m_name);
 }
