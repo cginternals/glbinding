@@ -2,9 +2,12 @@
 
 #include <glbinding/glbinding_api.h>
 
+#include <ostream>
 #include <string>
-#include <utility>
 #include <set>
+#include <utility>
+
+#include <glbinding/types.h>
 
 
 namespace gl
@@ -14,7 +17,7 @@ class GLBINDING_API Version
 {
 public:
     Version();
-    Version(unsigned int major, unsigned int minor);
+    Version(GLint major, GLint minor);
 
     bool operator< (const Version & version) const;
     bool operator> (const Version & version) const;
@@ -37,11 +40,13 @@ public:
     static const std::set<Version> & versions();
 
 public:
-    unsigned char major;
-    unsigned char minor;
+    GLint major;
+    GLint minor;
 
 protected:
     static const std::set<Version> s_validVersions;
 };
 
 } // namespace gl
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::Version & version);

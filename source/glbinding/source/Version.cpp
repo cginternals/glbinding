@@ -2,6 +2,7 @@
 #include <glbinding/Version.h>
 
 #include <sstream>
+#include <string>
 #include <set>
 
 
@@ -14,7 +15,7 @@ Version::Version()
 {
 }
 
-Version::Version(const unsigned int major, const unsigned int minor)
+Version::Version(const GLint major, const GLint minor)
 : major(major)
 , minor(minor)
 {
@@ -72,7 +73,10 @@ Version::operator std::pair<unsigned int, unsigned int>() const
 std::string Version::toString() const
 {
 	std::stringstream stream;
-	stream << static_cast<int>(major) << "." << static_cast<int>(minor);
+    if (0 == major && 0 == minor)
+        stream << "-.-";
+    else
+    	stream << static_cast<int>(major) << "." << static_cast<int>(minor);
 
     return stream.str();
 }
@@ -102,4 +106,12 @@ const std::set<Version> & Version::versions()
     return s_validVersions;
 }
 
+
 } // namespace gl
+
+
+std::ostream & operator<<(std::ostream & stream, const gl::Version & version)
+{
+    stream << version.toString();
+    return stream;
+}
