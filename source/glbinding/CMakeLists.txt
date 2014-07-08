@@ -30,7 +30,7 @@ set(libs
 #
 
 if (OPTION_BUILD_STATIC)
-    add_definitions("-DGLBINDING_STATIC")
+    add_definitions("-D${META_PROJECT_NAME_UPPER}_STATIC")
 else()
     add_definitions("-DGLBINDING_EXPORTS")
 endif()
@@ -55,7 +55,6 @@ set(api_includes
 
     ${include_path}/gl.h
     ${include_path}/nogl.h
-    ${include_path}/glbinding.h
 
     ${include_path}/bitfield.h
     ${include_path}/boolean.h
