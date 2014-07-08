@@ -71,6 +71,7 @@ set(api_includes
     ${include_path}/FunctionObjects.h
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
+    ${include_path}/Query.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
     ${include_path}/Version.h
@@ -89,6 +90,7 @@ set(sources
     ${source_path}/FunctionObjects.cpp
     ${source_path}/FunctionObjects_Functions.cpp
     ${source_path}/ProcAddress.cpp
+    ${source_path}/Query.cpp
     ${source_path}/Value.cpp
     ${source_path}/Version.cpp
     ${source_path}/Version_ValidVersions.cpp
