@@ -9,7 +9,7 @@ namespace gl
 
 void initialize()
 {
-    FunctionObjects::initialize(0);
+    FunctionObjects::initialize();
 
     /*AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
     AbstractFunction::setBeforeCallback([](const AbstractFunction & f) {
