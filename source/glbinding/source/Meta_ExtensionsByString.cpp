@@ -9,7 +9,6 @@ namespace gl
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString
 {
-#ifdef GL_BY_STRINGS
     { "GL_3DFX_multisample", GLextension::GL_3DFX_multisample },
     { "GL_3DFX_tbuffer", GLextension::GL_3DFX_tbuffer },
     { "GL_3DFX_texture_compression_FXT1", GLextension::GL_3DFX_texture_compression_FXT1 },
@@ -649,7 +648,6 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString
     { "GL_VIV_shader_binary", GLextension::GL_VIV_shader_binary },
     { "GL_WIN_phong_shading", GLextension::GL_WIN_phong_shading },
     { "GL_WIN_specular_fog", GLextension::GL_WIN_specular_fog }
-#endif
 };
 
 } // namespace gl

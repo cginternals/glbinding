@@ -52,12 +52,17 @@ def resolveInCore(extensions, features):
 
 		# find for every extension matching features based on its 
 		# required enums and commands
-
+		
 		for r in e.requires:
 			requires[r] = glFeaturesByRequires.get(r, None)
 			# if enum or command not found and ends with ARB, try without
 			if requires[r] == None and r.endswith("ARB"):
 				requires[r] = glFeaturesByRequires.get(r[:-3].rstrip("_"), None)
+			
+		#~ if any(v is None for v in requires.values()) and "ARB" in e.name:
+			#~ print(e.name)
+			#~ print("\trequires: "+", ".join(e.requires))
+			#~ print("\tnot found: "+", ".join([ str(k) for k,r in requires.items() if r is None ]))
 			
 		# features were found and every extensions enum or command is a core
 		# (inverted: no enum or core has yet no feature)

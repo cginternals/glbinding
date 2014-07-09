@@ -106,7 +106,7 @@ int main(int, char *[])
 
     std::cout << std::endl << std::endl << "[UNKNOWN EXTENSIONS]" << std::endl << std::endl;
     for (const std::string & ext : unknownExts)
-        std::cout << ext << " (supported)" << std::endl;
+        std::cout << ext << std::endl;
 
     // print summary
 
