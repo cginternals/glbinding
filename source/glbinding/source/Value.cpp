@@ -30,6 +30,20 @@ void Value<GLenum>::printOn(std::ostream & stream) const
 }
 
 template <>
+void Value<GLbitfield>::printOn(std::ostream & stream) const
+{
+    std::string name = Meta::getString(value);
+    stream.write(name.c_str(), name.size());
+}
+
+template <>
+void Value<GLboolean>::printOn(std::ostream & stream) const
+{
+    std::string name = Meta::getString(value);
+    stream.write(name.c_str(), name.size());
+}
+
+template <>
 void Value<const GLubyte *>::printOn(std::ostream & stream) const
 {
     std::string s = wrapString(reinterpret_cast<const char*>(value));
