@@ -1,127 +1,64 @@
 
-#define NOMINMAX
-
 #include <iostream>
 #include <algorithm>
 
+#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <glbinding/glbinding.h>
+#include <glbinding/featured/gl32.h>
+
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Meta.h>
-#include <glbinding/functions.h>
-#include <glbinding/constants.h>
 
 
-void errorfun(int errnum, const char* errmsg)
+using namespace gl32;
+
+
+void error(int errnum, const char * errmsg)
 {
     std::cerr << errnum << ": " << errmsg << std::endl;
 }
 
-const char* vertexShaderCode = R"(
-#version 140
-#extension GL_ARB_explicit_attrib_location : require
-
-layout (location = 0) in vec2 corner;
-
-out vec4 color;
-
-void main()
+namespace
 {
-gl_Position = vec4(corner * 2.0 - 1.0, 0.0, 1.0);
-color = vec4(corner, 0.0, 1.0);
+    const GLchar * vertSource = R"(
+        #version 150
+        #extension GL_ARB_explicit_attrib_location : require
+
+        layout (location = 0) in vec2 a_vertex;
+
+        out vec4 color;
+
+        void main()
+        {
+            gl_Position = vec4(a_vertex, 0.0, 1.0);
+            color = vec4(a_vertex * 0.5 + 0.5, 0.0, 1.0);
+        }
+        )";
+
+    const GLchar * fragSource = R"(
+        #version 150
+        #extension GL_ARB_explicit_attrib_location : require
+
+        layout (location = 0) out vec4 fragColor;
+
+        in vec4 color;
+
+        void main()
+        {
+            fragColor = color;
+        }
+        )";
 }
 
-)";
-const char* fragmentShaderCode = R"(
-#version 140
-#extension GL_ARB_explicit_attrib_location : require
-
-layout (location = 0) out vec4 fragColor;
-
-in vec4 color;
-
-void main()
-{
-fragColor = color;
-}
-
-)";
-
-void doSomeOpenGLStuff()
-{
-    std::set<gl::Extension> extensions;
-    int num = 0;
-    gl::GetIntegerv(gl::NUM_EXTENSIONS, &num);
-
-    for (int i = 0; i < std::min(num, 5); ++i)
-    {
-        const unsigned char * name = gl::GetStringi(gl::EXTENSIONS, i);
-        gl::Extension extension = gl::Meta::getExtension(reinterpret_cast<const char*>(name));
-        if (extension != gl::Extension::UNKNOWN)
-            extensions.insert(extension);
-    }
-
-    std::cout << std::endl;
-
-    GLuint vaoId;
-    GLuint cornerBufferId;
-    gl::GenVertexArrays(1, &vaoId);
-    gl::GenBuffers(1, &cornerBufferId);
-    GLuint programId = gl::CreateProgram();
-
-    GLuint vertexShaderId = gl::CreateShader(gl::VERTEX_SHADER);
-    gl::ShaderSource(vertexShaderId, 1, &vertexShaderCode, 0);
-    gl::CompileShader(vertexShaderId);
-
-    GLuint fragmentShaderId = gl::CreateShader(gl::FRAGMENT_SHADER);
-    gl::ShaderSource(fragmentShaderId, 1, &fragmentShaderCode, 0);
-    gl::CompileShader(fragmentShaderId);
-
-    gl::AttachShader(programId, vertexShaderId);
-    gl::AttachShader(programId, fragmentShaderId);
-    gl::LinkProgram(programId);
-
-    struct vec2 { float x; float y; };
-
-    const vec2 cornerData[4] = {
-        vec2{0, 0},
-        vec2{1, 0},
-        vec2{0, 1},
-        vec2{1, 1}
-    };
-
-    gl::BindBuffer(gl::ARRAY_BUFFER, cornerBufferId);
-    gl::BufferData(gl::ARRAY_BUFFER, sizeof(vec2)*4, cornerData, gl::STATIC_DRAW);
-
-    gl::BindVertexArray(vaoId);
-
-    GLint attributeIndex = gl::GetAttribLocation(programId, "corner");
-    GLint bindingIndex = 0;
-    gl::VertexAttribBinding(attributeIndex, bindingIndex);
-    gl::BindVertexBuffer(bindingIndex, cornerBufferId, 0, sizeof(vec2));
-    gl::VertexAttribFormat(attributeIndex, 2, gl::FLOAT, gl::FALSE_, 0);
-    gl::EnableVertexAttribArray(attributeIndex);
-
-    gl::UseProgram(programId);
-
-    gl::DrawArrays(gl::TRIANGLE_STRIP, 0, 4);
-
-    gl::DeleteProgram(programId);
-    gl::DeleteBuffers(1, &cornerBufferId);
-    gl::DeleteVertexArrays(1, &vaoId);
-}
-
-int main(int /*argc*/, char* /*argv*/[])
+int main(int, char * [])
 {
     if (!glfwInit())
-    {
         return 1;
-    }
 
-    glfwSetErrorCallback(errorfun);
+    glfwSetErrorCallback(error);
 
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Dummy Window", NULL, NULL);
+    GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -130,43 +67,101 @@ int main(int /*argc*/, char* /*argv*/[])
 
     glfwMakeContextCurrent(window);
 
-    /*if (!gl::initialize())
-    {
-        glfwTerminate();
-        return 1;
-    }*/
+    initialize();
 
-    gl::AbstractFunction::setCallbackLevelForAll(gl::AbstractFunction::CallbackLevel::All);
 
-    gl::AbstractFunction::setUnresolvedCallback([](const gl::AbstractFunction & f) {
-        std::cout << "Calling unresolved function: " << f.name() << std::endl;
-    });
+    AbstractFunction::setCallbackLevelForAll(AbstractFunction::CallbackLevel::All);
 
-    gl::AbstractFunction::setBeforeCallback([](const gl::AbstractFunction & f) {
-        std::cout << f.name();
-    });
-    gl::AbstractFunction::setAfterCallback([](const gl::AbstractFunction &) {
-        std::cout << std::endl;
-    });
-    gl::AbstractFunction::setParametersCallback([](const gl::AbstractFunction &, const std::vector<gl::AbstractValue*> & parameters) {
-        std::cout << "(";
-        for (unsigned i = 0; i < parameters.size(); ++i)
+    AbstractFunction::setUnresolvedCallback([](const AbstractFunction & f) 
+        { std::cout << "Calling unresolved function: " << f.name() << std::endl; });
+
+    AbstractFunction::setBeforeCallback([](const AbstractFunction & f) 
+        { std::cout << f.name(); });
+
+    AbstractFunction::setAfterCallback([](const AbstractFunction &) 
+        { std::cout << std::endl; });
+
+    AbstractFunction::setParametersCallback([](const AbstractFunction &
+        , const std::vector<AbstractValue *> & parameters) 
         {
-            parameters[i]->printOn(std::cout);
-            if (i < parameters.size()-1)
-                std::cout << ", ";
-        }
-        std::cout << ")";
-    });
-    gl::AbstractFunction::setReturnValueCallback([](const gl::AbstractFunction &, const gl::AbstractValue* returnValue) {
-        if (returnValue)
-        {
-            std::cout << " -> ";
-            returnValue->printOn(std::cout);
-        }
-    });
+            std::cout << "(";
 
-    doSomeOpenGLStuff();
+            for (unsigned i = 0; i < parameters.size(); ++i)
+            {
+                parameters[i]->printOn(std::cout);
+                if (i < parameters.size() - 1)
+                    std::cout << ", ";
+            }
+            std::cout << ")";
+        });
+    
+    AbstractFunction::setReturnValueCallback([](const AbstractFunction &
+        , const AbstractValue * returnValue) 
+        {
+            if (returnValue)
+            {
+                std::cout << " -> ";
+                returnValue->printOn(std::cout);
+            }
+        });
+
+
+    // do gl stuff
+
+    // setup
+
+    GLuint program = glCreateProgram();
+
+    GLuint vs = glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vs, 1, &vertSource, 0);
+    glCompileShader(vs);
+
+    GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fs, 1, &fragSource, 0);
+    glCompileShader(fs);
+
+    glAttachShader(program, vs);
+    glAttachShader(program, fs);
+    glLinkProgram(program);
+
+    // prepare data
+
+    GLuint vao;
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    struct vec2 { float x; float y; };
+
+    const vec2 vertices[4] = { { +1.f, -1.f }, { +1.f, +1.f }, { -1.f, -1.f }, { -1.f, +1.f } };
+
+    GLuint buffer;
+    glGenBuffers(1, &buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * 4, vertices, GL_STATIC_DRAW);
+
+    GLint a_vertex = glGetAttribLocation(program, "a_vertex");
+    glEnableVertexAttribArray(a_vertex);
+    glVertexAttribPointer(a_vertex, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+    // draw
+    glViewport(0, 0, 320, 240);
+
+    // ToDo: operators here...
+    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_DEPTH_BUFFER_BIT);
+
+    glUseProgram(program);
+
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    glfwSwapBuffers(window);
+
+    // clean up
+
+    glDeleteProgram(program);
+    glDeleteBuffers(1, &buffer);
+    glDeleteVertexArrays(1, &vao);
+
 
     glfwTerminate();
     return 0;
