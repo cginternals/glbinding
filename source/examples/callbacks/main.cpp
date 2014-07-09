@@ -9,6 +9,8 @@
 
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Meta.h>
+#include <glbinding/Query.h>
+#include <glbinding/Version.h>
 
 
 using namespace gl32;
@@ -66,6 +68,14 @@ int main(int, char * [])
     }
 
     glfwMakeContextCurrent(window);
+
+    // print some gl infos (query)
+
+    std::cout << std::endl
+        << "OpenGL Version:  " << Query::version() << std::endl
+        << "OpenGL Vendor:   " << Query::vendor() << std::endl
+        << "OpenGL Renderer: " << Query::renderer() << std::endl
+        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     // initialize(); // rely on lazy init
 
@@ -165,6 +175,8 @@ int main(int, char * [])
     glDeleteBuffers(1, &buffer);
     glDeleteVertexArrays(1, &vao);
 
+
+    std::cout << std::endl;
 
     glfwTerminate();
     return 0;
