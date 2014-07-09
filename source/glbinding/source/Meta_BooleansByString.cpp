@@ -7,7 +7,7 @@
 namespace gl
 {
 
-const std::unordered_map<std::string, GLboolean> Meta_BooleansByString = 
+const std::unordered_map<std::string, GLboolean> Meta_BooleansByString
 {
 #ifdef GL_BY_STRINGS
     { "GL_FALSE", GLboolean::GL_FALSE },

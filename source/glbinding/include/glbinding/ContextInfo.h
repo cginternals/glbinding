@@ -13,10 +13,10 @@ enum class GLextension;
 class Version;
 
 
-class GLBINDING_API Query
+class GLBINDING_API ContextInfo
 {
 public:
-    Query() = delete;
+    ContextInfo() = delete;
 
     static std::set<GLextension> extensions(std::set<std::string> * unknown = nullptr);
 

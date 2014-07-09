@@ -7,7 +7,7 @@
 namespace gl
 {
 
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString = 
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString
 {
 #ifdef GL_BY_STRINGS
     { "GL_1PASS_EXT", GLenum::GL_1PASS_EXT },

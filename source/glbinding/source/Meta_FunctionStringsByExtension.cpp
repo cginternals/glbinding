@@ -7,7 +7,7 @@
 namespace gl
 {
 
-const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension = 
+const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension
 {
 #ifdef STRINGS_BY_GL
     { GLextension::GL_3DFX_tbuffer, { "glTbufferMask3DFX" } },

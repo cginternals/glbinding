@@ -13,7 +13,7 @@ namespace gl
 // The same issue applies for enums in general, but there overlapping
 // values mostly occur within the same application context.
 
-const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield =
+const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield
 {
 #ifdef STRINGS_BY_GL
 /*

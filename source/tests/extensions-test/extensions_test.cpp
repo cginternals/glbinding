@@ -167,7 +167,7 @@ TEST_F(extensions_test, VerifyVersion43Completeness)
 
     //EXPECT_EQ(Version(4, 3), Meta::getRequiringVersion(GLextension::GL_ARB_debug_group));
     //EXPECT_EQ(Version(4, 3), Meta::getRequiringVersion(GLextension::GL_ARB_debug_label)); // GLextension::GL_EXT_debug_label ?
-    EXPECT_EQ(Version(4, 3), Meta::getRequiringVersion(GLextension::GL_ARB_debug_output));
+    EXPECT_EQ(Version(4, 3), Meta::getRequiringVersion(GLextension::GL_ARB_debug_output)); // GLextension::GL_KHR_debug_output ?
     //EXPECT_EQ(Version(4, 3), Meta::getRequiringVersion(GLextension::GL_ARB_debug_output2));
 
     EXPECT_EQ(Version(4, 3), Meta::getRequiringVersion(GLextension::GL_ARB_ES3_compatibility));

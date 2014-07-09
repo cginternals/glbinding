@@ -8,7 +8,7 @@
 namespace gl
 {
 
-const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension = 
+const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
 {
     { GLextension::GL_AMD_seamless_cubemap_per_texture, { 3, 2 } },
     { GLextension::GL_ARB_ES2_compatibility, { 4, 1 } },

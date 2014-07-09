@@ -150,8 +150,8 @@ int main(int, char * [])
     glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * 4, vertices, GL_STATIC_DRAW);
 
     GLint a_vertex = glGetAttribLocation(program, "a_vertex");
-    glEnableVertexAttribArray(a_vertex);
-    glVertexAttribPointer(a_vertex, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glEnableVertexAttribArray(static_cast<GLuint>(a_vertex));
+    glVertexAttribPointer(static_cast<GLuint>(a_vertex), 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 
     // draw
     glViewport(0, 0, 320, 240);
