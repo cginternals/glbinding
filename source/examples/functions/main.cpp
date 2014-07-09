@@ -26,7 +26,7 @@ void error(int errnum, const char * errmsg)
 
 inline void coutFunc(const AbstractFunction * func)
 {
-    std::cout << "\t" << "(0x" << reinterpret_cast<void *>(func->address()) << ") " << func->name() << std::endl;
+    std::cout << func->name() << " (0x" << reinterpret_cast<void *>(func->address()) << ") " << std::endl;
 }
 
 int main(int, char *[])
@@ -79,10 +79,10 @@ int main(int, char *[])
 
     for (auto i : extsByVer)
     {   
-        std::cout << std::endl << std::endl << "[" << i.first << " EXTENSIONS]" << std::endl;
+        std::cout << std::endl << std::endl << "[" << i.first << " EXTENSIONS]" << std::endl << std::endl;
         for (GLextension ext : i.second)
         {
-            std::cout << std::endl << Meta::getString(ext) << (supportedExts.find(ext) != supportedExts.cend() ? " (supported)" : "") << std::endl;
+            std::cout << Meta::getString(ext) << (supportedExts.find(ext) != supportedExts.cend() ? " (supported)" : "") << std::endl;
             for (auto func : funcsByExt[ext])
             {
                 coutFunc(func);
@@ -91,12 +91,6 @@ int main(int, char *[])
             }                
         }
     }
-
-    // show unknown extensions
-
-    std::cout << std::endl << std::endl << "[UNKNOWN EXTENSIONS]" << std::endl << std::endl;
-    for (const std::string & ext : unknownExts)
-        std::cout << ext << " (supported)" << std::endl;
 
     // show non ext functions
 
@@ -108,11 +102,20 @@ int main(int, char *[])
             ++resolved;
     }
 
+    // show unknown extensions
+
+    std::cout << std::endl << std::endl << "[UNKNOWN EXTENSIONS]" << std::endl << std::endl;
+    for (const std::string & ext : unknownExts)
+        std::cout << ext << " (supported)" << std::endl;
+
     // print summary
 
     std::cout << std::endl << std::endl << "[SUMMARY]" << std::endl << std::endl;
-    std::cout << "# Functions:     " << FunctionObjects::functions().size() << " (" << resolved << " resolved)" << std::endl;
-    std::cout << "# Extensions:    " << allExts.size() + unknownExts.size() << " (" << supportedExts.size() + unknownExts.size() << " supported, " << unknownExts.size() << " of which are unknown)" << std::endl;
+    std::cout << "# Functions:     " << resolved << "/" << FunctionObjects::functions().size() << " (" << (FunctionObjects::functions().size()-resolved) << " unresolved)" << std::endl;
+//    std::cout << "# Extensions:    " << allExts.size() + unknownExts.size() << " (" << supportedExts.size() + unknownExts.size() << " supported, " << unknownExts.size() << " of which are unknown)" << std::endl;
+
+    std::cout << "# Extensions:    " << supportedExts.size() + unknownExts.size() << "/" << allExts.size() << " (" << unknownExts.size() << " unknown)" << std::endl;
+
     for (auto p : extsByVer)
         std::cout << "  # " << p.first << " assoc.:  " << p.second.size() << std::endl;
 
