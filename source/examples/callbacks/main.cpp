@@ -9,7 +9,7 @@
 
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Meta.h>
-#include <glbinding/Query.h>
+#include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
 
@@ -72,9 +72,9 @@ int main(int, char * [])
     // print some gl infos (query)
 
     std::cout << std::endl
-        << "OpenGL Version:  " << Query::version() << std::endl
-        << "OpenGL Vendor:   " << Query::vendor() << std::endl
-        << "OpenGL Renderer: " << Query::renderer() << std::endl
+        << "OpenGL Version:  " << ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     // initialize(); // rely on lazy init
