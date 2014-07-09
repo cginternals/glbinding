@@ -14,23 +14,23 @@ using namespace gl30;
 
 std::set<GLextension> Query::extensions(std::set<std::string> * unknown)
 {
-    std::set<GLextension> exts;
+    std::set<GLextension> extensions;
 
-    int num = 0;
-    glGetIntegerv(GL_NUM_EXTENSIONS, &num);
+    int numExtensions = 0;
+    glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
 
-    for (GLuint i = 0; i < static_cast<GLuint>(num); ++i)
+    for (GLuint i = 0; i < static_cast<GLuint>(numExtensions); ++i)
     {
         const GLubyte * name = glGetStringi(GL_EXTENSIONS, i);
 
-        GLextension ext = Meta::getExtension(reinterpret_cast<const char *>(name));
-        if (GLextension::UNKNOWN != ext)
-            exts.insert(ext);
+        GLextension extension = Meta::getExtension(reinterpret_cast<const char *>(name));
+        if (GLextension::UNKNOWN != extension)
+            extensions.insert(extension);
         else if (unknown)
             unknown->insert(reinterpret_cast<const char *>(name));
     }
 
-    return exts;
+    return extensions;
 }
 
 std::string Query::renderer()
@@ -45,18 +45,19 @@ std::string Query::vendor()
 
 Version Query::version()
 {
-    Version v;
-    glGetIntegerv(GL_MAJOR_VERSION, &v.m_major);
-    glGetIntegerv(GL_MINOR_VERSION, &v.m_minor);
+    Version version;
+    glGetIntegerv(GL_MAJOR_VERSION, &version.m_major);
+    glGetIntegerv(GL_MINOR_VERSION, &version.m_minor);
 
     // probably version below 3.0
     if (GL_INVALID_ENUM == glGetError())
     {
-        const GLubyte * vstr(glGetString(GL_VERSION));
-        v.m_major = vstr[0];
-        v.m_minor = vstr[2];
+        const GLubyte * versionString = glGetString(GL_VERSION);
+        version.m_major = versionString[0];
+        version.m_minor = versionString[2];
     }
-    return v;
+
+    return version;
 }
 
 } // namespace gl
