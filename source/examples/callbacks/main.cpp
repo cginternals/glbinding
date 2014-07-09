@@ -67,7 +67,7 @@ int main(int, char * [])
 
     glfwMakeContextCurrent(window);
 
-    initialize();
+    // initialize(); // rely on lazy init
 
 
     AbstractFunction::setCallbackLevelForAll(AbstractFunction::CallbackLevel::All);
@@ -153,6 +153,9 @@ int main(int, char * [])
     glUseProgram(program);
 
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+    glUseProgram(0);
+    glBindVertexArray(0);
 
     glfwSwapBuffers(window);
 
