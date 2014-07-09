@@ -2,6 +2,7 @@
 #include <glbinding/Value.h>
 
 #include <sstream>
+#include <bitset>
 
 #include <glbinding/Meta.h>
 
@@ -32,8 +33,13 @@ void Value<GLenum>::printOn(std::ostream & stream) const
 template <>
 void Value<GLbitfield>::printOn(std::ostream & stream) const
 {
-    std::string name = Meta::getString(value);
-    stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
+    /*std::string name = Meta::getString(value);
+    stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));*/
+    /*std::bitset<sizeof(unsigned)*4> bitset(static_cast<unsigned>(value));
+    stream << bitset;*/
+    std::stringstream ss;
+    ss << "0x" << std::hex << static_cast<unsigned>(value);
+    stream << ss.str();
 }
 
 template <>

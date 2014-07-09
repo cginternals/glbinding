@@ -1,5 +1,5 @@
 
-#include <glbinding/Query.h>
+#include <glbinding/ContextInfo.h>
 
 #include <glbinding/featured/gl30.h>
 
@@ -12,7 +12,7 @@ namespace gl
 
 using namespace gl30;
 
-std::set<GLextension> Query::extensions(std::set<std::string> * unknown)
+std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 {
     std::set<GLextension> extensions;
 
@@ -33,28 +33,28 @@ std::set<GLextension> Query::extensions(std::set<std::string> * unknown)
     return extensions;
 }
 
-std::string Query::renderer()
+std::string ContextInfo::renderer()
 {
     return std::string(reinterpret_cast<const char *>(glGetString(GL_RENDERER)));
 }
 
-std::string Query::vendor()
+std::string ContextInfo::vendor()
 {
     return std::string(reinterpret_cast<const char *>(glGetString(GL_VENDOR)));
 }
 
-Version Query::version()
+Version ContextInfo::version()
 {
     Version version;
     glGetIntegerv(GL_MAJOR_VERSION, &version.m_major);
     glGetIntegerv(GL_MINOR_VERSION, &version.m_minor);
 
     // probably version below 3.0
-    if (GL_INVALID_ENUM == glGetError())
+    if (GL_INVALID_ENUM == glGetError()) // TODO: what if error was already handled in a callback
     {
         const GLubyte * versionString = glGetString(GL_VERSION);
-        version.m_major = versionString[0];
-        version.m_minor = versionString[2];
+        version.m_major = versionString[0] - '0';
+        version.m_minor = versionString[2] - '0';
     }
 
     return version;
