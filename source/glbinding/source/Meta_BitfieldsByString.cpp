@@ -7,7 +7,7 @@
 namespace gl
 {
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString = 
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
 {
 #ifdef GL_BY_STRINGS
     { "GL_2X_BIT_ATI", GLbitfield::GL_2X_BIT_ATI },

@@ -7,7 +7,7 @@
 namespace gl
 {
 
-const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
+const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
 {
 #ifdef STRINGS_BY_GL
     %s

@@ -47,10 +47,10 @@ bool AbstractFunction::hasState(int context) const
 
 AbstractFunction::State & AbstractFunction::getState(int context) const
 {
-    if (m_states.size() <= static_cast<unsigned>(context))
-        m_states.resize(context + 1);
+    if (m_states.size() <= static_cast<std::size_t>(context))
+        m_states.resize(static_cast<std::size_t>(context) + 1);
 
-    return m_states[context];
+    return m_states[static_cast<std::size_t>(context)];
 }
 
 AbstractFunction::State & AbstractFunction::currentState() const

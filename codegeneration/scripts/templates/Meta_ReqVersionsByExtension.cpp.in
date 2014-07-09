@@ -8,7 +8,7 @@
 namespace gl
 {
 
-const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension = 
+const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
 {
     %s
 };
