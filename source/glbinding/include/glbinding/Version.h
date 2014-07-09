@@ -17,7 +17,7 @@ class GLBINDING_API Version
 {
 public:
     Version();
-    Version(GLint major, GLint minor);
+    Version(GLint majorVersion, GLint minorVersion);
 
     bool operator< (const Version & version) const;
     bool operator> (const Version & version) const;
@@ -40,8 +40,8 @@ public:
     static const std::set<Version> & versions();
 
 public:
-    GLint major;
-    GLint minor;
+    GLint m_major;
+    GLint m_minor;
 
 protected:
     static const std::set<Version> s_validVersions;

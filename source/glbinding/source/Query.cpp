@@ -46,15 +46,15 @@ std::string Query::vendor()
 Version Query::version()
 {
     Version v;
-    glGetIntegerv(GL_MAJOR_VERSION, &v.major);
-    glGetIntegerv(GL_MINOR_VERSION, &v.minor);
+    glGetIntegerv(GL_MAJOR_VERSION, &v.m_major);
+    glGetIntegerv(GL_MINOR_VERSION, &v.m_minor);
 
     // probably version below 3.0
     if (GL_INVALID_ENUM == glGetError())
     {
         const GLubyte * vstr(glGetString(GL_VERSION));
-        v.major = vstr[0];
-        v.minor = vstr[2];
+        v.m_major = vstr[0];
+        v.m_minor = vstr[2];
     }
     return v;
 }

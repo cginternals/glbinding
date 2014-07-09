@@ -10,39 +10,39 @@ namespace gl
 {
 
 Version::Version()
-: major(0)
-, minor(0)
+: m_major(0)
+, m_minor(0)
 {
 }
 
-Version::Version(const GLint major, const GLint minor)
-: major(major)
-, minor(minor)
+Version::Version(const GLint majorVersion, const GLint minorVersion)
+: m_major(majorVersion)
+, m_minor(minorVersion)
 {
 }
 
 bool Version::operator<(const Version & version) const
 {
-    return major < version.major
-        || (major == version.major && minor < version.minor);
+    return m_major < version.m_major
+        || (m_major == version.m_major && m_minor < version.m_minor);
 }
 
 bool Version::operator>(const Version & version) const
 {
-    return major > version.major
-        || (major == version.major && minor > version.minor);
+    return m_major > version.m_major
+        || (m_major == version.m_major && m_minor > version.m_minor);
 }
 
 bool Version::operator==(const Version & version) const
 {
-    return major == version.major
-        && minor == version.minor;
+    return m_major == version.m_major
+        && m_minor == version.m_minor;
 }
 
 bool Version::operator!=(const Version & version) const
 {
-    return major != version.major
-        || minor != version.minor;
+    return m_major != version.m_major
+        || m_minor != version.m_minor;
 }
 
 bool Version::operator>=(const Version & version) const
@@ -57,33 +57,33 @@ bool Version::operator<=(const Version & version) const
 
 Version::operator std::pair<unsigned char, unsigned char>() const
 {
-    return std::make_pair(major, minor);
+    return std::make_pair(m_major, m_minor);
 }
 
 Version::operator std::pair<unsigned short, unsigned short>() const
 {
-    return std::make_pair(major, minor);
+    return std::make_pair(m_major, m_minor);
 }
 
 Version::operator std::pair<unsigned int, unsigned int>() const
 {
-    return std::make_pair(major, minor);
+    return std::make_pair(m_major, m_minor);
 }
 
 std::string Version::toString() const
 {
 	std::stringstream stream;
-    if (0 == major && 0 == minor)
+    if (0 == m_major && 0 == m_minor)
         stream << "-.-";
     else
-    	stream << static_cast<int>(major) << "." << static_cast<int>(minor);
+    	stream << static_cast<int>(m_major) << "." << static_cast<int>(m_minor);
 
     return stream.str();
 }
 
 bool Version::isNull() const
 {
-    return major == 0 && minor == 0;
+    return m_major == 0 && m_minor == 0;
 }
 
 bool Version::isValid() const
