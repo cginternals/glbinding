@@ -23,8 +23,8 @@ TEST_F(extensions_test, VerifyVersion30Completeness)
 {
     // #22
 
-    EXPECT_EQ(Version(3, 0), Meta::getRequiringVersion(GLextension::GL_APPLE_flush_buffer_range));  // GLextension::GL_ARB_map_buffer_range
-    EXPECT_EQ(Version(3, 0), Meta::getRequiringVersion(GLextension::GL_APPLE_vertex_array_object)); // GLextension::GL_ARB_vertex_array_object
+    //EXPECT_EQ(Version(3, 0), Meta::getRequiringVersion(GLextension::GL_APPLE_flush_buffer_range));  // GLextension::GL_ARB_map_buffer_range
+    //EXPECT_EQ(Version(3, 0), Meta::getRequiringVersion(GLextension::GL_APPLE_vertex_array_object)); // GLextension::GL_ARB_vertex_array_object
     EXPECT_EQ(Version(3, 0), Meta::getRequiringVersion(GLextension::GL_ARB_color_buffer_float));
     EXPECT_EQ(Version(3, 0), Meta::getRequiringVersion(GLextension::GL_ARB_depth_buffer_float));
     
