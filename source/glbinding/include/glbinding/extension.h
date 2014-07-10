@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glbinding/nogl.h>
-#include <functional>
 
 
 namespace gl
@@ -653,17 +652,3 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
 
 } // namespace gl
 
-
-namespace std 
-{
-
-template<>
-struct hash<gl::GLextension>
-{
-    hash<int>::result_type operator()(gl::GLextension extension) const
-    {
-        return hash<int>()(static_cast<int>(extension));
-    }
-};
-
-} // namespace std

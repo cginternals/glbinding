@@ -12,7 +12,13 @@ def convertTypedefLine(line, name):
 def multilineConvertTypedef(type):
 	return "\n".join([ convertTypedefLine(line, type.name) for line in type.value.split('\n') ])
 
-enum_class_exceptions = [ "GLbitfield", "GLboolean", "GLenum" ]
+enum_classes = [ "GLbitfield", "GLboolean", "GLenum" ]
+type_integration_map = {
+	"GLextension" : [ "hashable", "streamable" ], 
+	"GLbitfield" : [ "hashable", "streamable", "bitfieldable" ], 
+	"GLboolean" : [ "hashable", "streamable" ],
+	"GLenum" : [ "hashable", "streamable", "addable", "comparable" ]
+}
 
 
 def convertTypedef(type):
@@ -22,7 +28,7 @@ def convertTypedef(type):
 
 	t = parseType(type)
 
-	if type.name in enum_class_exceptions:
+	if type.name in enum_classes:
 		return "enum class " + type.name + " : " + t + ";"
 
 	if not type.value.startswith("typedef"):
@@ -37,9 +43,12 @@ def genTypes_h(types, outputdir, outputfile):
 	status(outputdir + outputfile)
 
 	type_integrations = []
-	for type in types:
-		if type.name in enum_class_exceptions:
-			type_integrations.append(template("type_integration.h").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
+	for typename, integrations in type_integration_map.items():
+		for integration in integrations:
+			type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", typename))		
+	#~ for type in types:
+		#~ if type.name in enum_classes:
+			#~ type_integrations.append(template("type_integration.h").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (
@@ -50,9 +59,12 @@ def genTypes_cpp(types, outputdir, outputfile):
 	status(outputdir + outputfile)
 
 	type_integrations = []
-	for type in types:
-		if type.name in enum_class_exceptions:
-			type_integrations.append(template("type_integration.cpp").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
+	for typename, integrations in type_integration_map.items():
+		for integration in integrations:
+			type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", typename))		
+	#~ for type in types:
+		#~ if type.name in enum_classes:
+			#~ type_integrations.append(template("type_integration.cpp").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % ("\n".join([ t for t in type_integrations ])))

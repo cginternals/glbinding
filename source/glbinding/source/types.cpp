@@ -5,77 +5,6 @@
 
 
 
-// GLenum Type Integration
-
-bool operator==(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) == b;
-}
-
-bool operator!=(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) != b;
-}
-
-bool operator<(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) < b;
-}
-
-bool operator<=(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) <= b;
-}
-
-bool operator>(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) > b;
-}
-
-bool operator>=(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) >= b;
-}
-
-bool operator==(unsigned int a, const gl::GLenum & b)
-{
-    return a == static_cast<unsigned int>(b);
-}
-
-bool operator!=(unsigned int a, const gl::GLenum & b)
-{
-    return a != static_cast<unsigned int>(b);
-}
-
-bool operator<(unsigned int a, const gl::GLenum & b)
-{
-    return a < static_cast<unsigned int>(b);
-}
-
-bool operator<=(unsigned int a, const gl::GLenum & b)
-{
-    return a <= static_cast<unsigned int>(b);
-}
-
-bool operator>(unsigned int a, const gl::GLenum & b)
-{
-    return a > static_cast<unsigned int>(b);
-}
-
-bool operator>=(unsigned int a, const gl::GLenum & b)
-{
-    return a >= static_cast<unsigned int>(b);
-}
-
-gl::GLenum operator+(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<gl::GLenum>(static_cast<unsigned int>(a) + b);
-}
-
-gl::GLenum operator-(const gl::GLenum & a, unsigned int b)
-{
-    return static_cast<gl::GLenum>(static_cast<unsigned int>(a) - b);
-}
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value)
 {
@@ -84,77 +13,78 @@ std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value)
 }
 
 
-// GLboolean Type Integration
-
-bool operator==(const gl::GLboolean & a, unsigned char b)
+gl::GLenum operator+(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return static_cast<unsigned char>(a) == b;
+    return static_cast<gl::GLenum>(static_cast<std::underlying_type<gl::GLenum>::type>(a) + b);
 }
 
-bool operator!=(const gl::GLboolean & a, unsigned char b)
+gl::GLenum operator-(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return static_cast<unsigned char>(a) != b;
+    return static_cast<gl::GLenum>(static_cast<std::underlying_type<gl::GLenum>::type>(a) - b);
 }
 
-bool operator<(const gl::GLboolean & a, unsigned char b)
+
+bool operator==(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return static_cast<unsigned char>(a) < b;
+    return static_cast<std::underlying_type<gl::GLenum>::type>(a) == b;
 }
 
-bool operator<=(const gl::GLboolean & a, unsigned char b)
+bool operator!=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return static_cast<unsigned char>(a) <= b;
+    return static_cast<std::underlying_type<gl::GLenum>::type>(a) != b;
 }
 
-bool operator>(const gl::GLboolean & a, unsigned char b)
+bool operator<(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return static_cast<unsigned char>(a) > b;
+    return static_cast<std::underlying_type<gl::GLenum>::type>(a) < b;
 }
 
-bool operator>=(const gl::GLboolean & a, unsigned char b)
+bool operator<=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return static_cast<unsigned char>(a) >= b;
+    return static_cast<std::underlying_type<gl::GLenum>::type>(a) <= b;
 }
 
-bool operator==(unsigned char a, const gl::GLboolean & b)
+bool operator>(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return a == static_cast<unsigned char>(b);
+    return static_cast<std::underlying_type<gl::GLenum>::type>(a) > b;
 }
 
-bool operator!=(unsigned char a, const gl::GLboolean & b)
+bool operator>=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
-    return a != static_cast<unsigned char>(b);
+    return static_cast<std::underlying_type<gl::GLenum>::type>(a) >= b;
 }
 
-bool operator<(unsigned char a, const gl::GLboolean & b)
+bool operator==(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
-    return a < static_cast<unsigned char>(b);
+    return a == static_cast<std::underlying_type<gl::GLenum>::type>(b);
 }
 
-bool operator<=(unsigned char a, const gl::GLboolean & b)
+bool operator!=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
-    return a <= static_cast<unsigned char>(b);
+    return a != static_cast<std::underlying_type<gl::GLenum>::type>(b);
 }
 
-bool operator>(unsigned char a, const gl::GLboolean & b)
+bool operator<(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
-    return a > static_cast<unsigned char>(b);
+    return a < static_cast<std::underlying_type<gl::GLenum>::type>(b);
 }
 
-bool operator>=(unsigned char a, const gl::GLboolean & b)
+bool operator<=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
-    return a >= static_cast<unsigned char>(b);
+    return a <= static_cast<std::underlying_type<gl::GLenum>::type>(b);
 }
 
-gl::GLboolean operator+(const gl::GLboolean & a, unsigned char b)
+bool operator>(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
-    return static_cast<gl::GLboolean>(static_cast<unsigned char>(a) + b);
+    return a > static_cast<std::underlying_type<gl::GLenum>::type>(b);
 }
 
-gl::GLboolean operator-(const gl::GLboolean & a, unsigned char b)
+bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
-    return static_cast<gl::GLboolean>(static_cast<unsigned char>(a) - b);
+    return a >= static_cast<std::underlying_type<gl::GLenum>::type>(b);
 }
+
+
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
 {
@@ -163,79 +93,27 @@ std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
 }
 
 
-// GLbitfield Type Integration
-
-bool operator==(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) == b;
-}
-
-bool operator!=(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) != b;
-}
-
-bool operator<(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) < b;
-}
-
-bool operator<=(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) <= b;
-}
-
-bool operator>(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) > b;
-}
-
-bool operator>=(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<unsigned int>(a) >= b;
-}
-
-bool operator==(unsigned int a, const gl::GLbitfield & b)
-{
-    return a == static_cast<unsigned int>(b);
-}
-
-bool operator!=(unsigned int a, const gl::GLbitfield & b)
-{
-    return a != static_cast<unsigned int>(b);
-}
-
-bool operator<(unsigned int a, const gl::GLbitfield & b)
-{
-    return a < static_cast<unsigned int>(b);
-}
-
-bool operator<=(unsigned int a, const gl::GLbitfield & b)
-{
-    return a <= static_cast<unsigned int>(b);
-}
-
-bool operator>(unsigned int a, const gl::GLbitfield & b)
-{
-    return a > static_cast<unsigned int>(b);
-}
-
-bool operator>=(unsigned int a, const gl::GLbitfield & b)
-{
-    return a >= static_cast<unsigned int>(b);
-}
-
-gl::GLbitfield operator+(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<gl::GLbitfield>(static_cast<unsigned int>(a) + b);
-}
-
-gl::GLbitfield operator-(const gl::GLbitfield & a, unsigned int b)
-{
-    return static_cast<gl::GLbitfield>(static_cast<unsigned int>(a) - b);
-}
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLbitfield & value)
+{
+    stream << gl::Meta::getString(value);
+    return stream;
+}
+
+
+gl::GLbitfield operator|(const gl::GLbitfield & a, const gl::GLbitfield & b)
+{
+	return static_cast<gl::GLbitfield>(static_cast<std::underlying_type<gl::GLbitfield>::type>(a) | static_cast<std::underlying_type<gl::GLbitfield>::type>(b));
+}
+
+gl::GLbitfield operator&(const gl::GLbitfield & a, const gl::GLbitfield & b)
+{
+	return static_cast<gl::GLbitfield>(static_cast<std::underlying_type<gl::GLbitfield>::type>(a) & static_cast<std::underlying_type<gl::GLbitfield>::type>(b));
+}
+
+
+
+std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
 {
     stream << gl::Meta::getString(value);
     return stream;
