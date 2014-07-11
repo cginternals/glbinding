@@ -6,10 +6,20 @@
 
 namespace gl?
 {
-
-%senum class GLbitfield : unsigned int
-{%s
+%s
+class GenericBitmask
+{
+public:
+	GenericBitfield() : value(0) {}
+	GenericBitfield(unsigned int v) : value(v) {}
+	template <typename T> GenericBitfield(T v) : value(static_cast<unsigned int>(v)) {}
+	
+	operator unsigned int() { return value; }
+protected:
+	unsigned int value;
 };
+
+%s
 
 // import bitfields to namespace
 %s

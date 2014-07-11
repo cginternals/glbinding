@@ -137,7 +137,7 @@ inline void glBlendFuncSeparate(gl31::GLenum sfactorRGB, gl31::GLenum dfactorRGB
    	return FunctionObjects::BlendFuncSeparate(static_cast<gl::GLenum>(sfactorRGB), static_cast<gl::GLenum>(dfactorRGB), static_cast<gl::GLenum>(sfactorAlpha), static_cast<gl::GLenum>(dfactorAlpha));
 }
 
-inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, gl31::GLbitfield mask, gl31::GLenum filter)
+inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, gl31::ClearBufferMask mask, gl31::GLenum filter)
 {
    	return FunctionObjects::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, static_cast<gl::GLbitfield>(mask), static_cast<gl::GLenum>(filter));
 }
@@ -172,7 +172,7 @@ inline void glClampColor(gl31::GLenum target, gl31::GLenum clamp)
    	return FunctionObjects::ClampColor(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(clamp));
 }
 
-inline void glClear(gl31::GLbitfield mask)
+inline void glClear(gl31::ClearBufferMask mask)
 {
    	return FunctionObjects::Clear(static_cast<gl::GLbitfield>(mask));
 }
@@ -1482,7 +1482,7 @@ inline void * glMapBuffer(gl31::GLenum target, gl31::GLenum access)
    	return FunctionObjects::MapBuffer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(access));
 }
 
-inline void * glMapBufferRange(gl31::GLenum target, GLintptr offset, GLsizeiptr length, gl31::GLbitfield access)
+inline void * glMapBufferRange(gl31::GLenum target, GLintptr offset, GLsizeiptr length, gl31::BufferAccessMask access)
 {
    	return FunctionObjects::MapBufferRange(static_cast<gl::GLenum>(target), offset, length, static_cast<gl::GLbitfield>(access));
 }
@@ -1902,12 +1902,12 @@ inline void glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLflo
    	return FunctionObjects::PrioritizeTextures(n, textures, priorities);
 }
 
-inline void glPushAttrib(gl31::GLbitfield mask)
+inline void glPushAttrib(gl31::AttribMask mask)
 {
    	return FunctionObjects::PushAttrib(static_cast<gl::GLbitfield>(mask));
 }
 
-inline void glPushClientAttrib(gl31::GLbitfield mask)
+inline void glPushClientAttrib(gl31::ClientAttribMask mask)
 {
    	return FunctionObjects::PushClientAttrib(static_cast<gl::GLbitfield>(mask));
 }

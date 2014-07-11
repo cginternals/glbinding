@@ -47,7 +47,7 @@ inline void glCallLists(GLsizei n, gl10::GLenum type, const void * lists)
    	return FunctionObjects::CallLists(n, static_cast<gl::GLenum>(type), lists);
 }
 
-inline void glClear(gl10::GLbitfield mask)
+inline void glClear(gl10::ClearBufferMask mask)
 {
    	return FunctionObjects::Clear(static_cast<gl::GLbitfield>(mask));
 }
@@ -927,7 +927,7 @@ inline void glPopName()
    	return FunctionObjects::PopName();
 }
 
-inline void glPushAttrib(gl10::GLbitfield mask)
+inline void glPushAttrib(gl10::AttribMask mask)
 {
    	return FunctionObjects::PushAttrib(static_cast<gl::GLbitfield>(mask));
 }

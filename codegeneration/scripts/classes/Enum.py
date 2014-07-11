@@ -26,6 +26,8 @@ class Enum:
 		if "alias" in xml.attrib:
 			self.aliasString = xml.attrib["alias"]
 
+		self.groups = set()
+
 		self.group     = group
 		self.groupType = groupType
 
@@ -74,30 +76,68 @@ class Enum:
 		# every featured functions include should not contain enums from extensions.
 
 		#if len(self.reqFeatures) == 0 and len(self.reqExtensions) > 0:
-	 	#	return True
-	 	if len(self.reqFeatures) == 0:
-	 		return aliasSupported
+		#	return True
+		
+		if len(self.reqFeatures) == 0:
+			return aliasSupported
 
-	 	if core:
-	 		sSelf = min(self.reqFeatures) <= feature and (not self.remFeatures or min(self.remFeatures) > feature) 
-	 		return sSelf or aliasSupported
-	 	else:
-	 		sSelf = min(self.reqFeatures) <= feature
+		if core:
+			sSelf = min(self.reqFeatures) <= feature and (not self.remFeatures or min(self.remFeatures) > feature) 
+			return sSelf or aliasSupported
+		else:
+			sSelf = min(self.reqFeatures) <= feature
 			return sSelf or aliasSupported
 
+class Group:	
+	def __init__(self, xml):
+		self.enums = []
+		if isinstance (xml, basestring):
+			self.name = xml
+			return
+			
+		self.name = xml.attrib["name"]
+		for e in xml.iter("enum"):
+			self.enums.append(e.attrib["name"])
+				
+	def __str__(self):
+		return "Group(%s, %s)" % (self.name, str(len(self.enums)))
 
-def parseEnums(xml, features, extensions, api):
+	def __lt__(self, other):
+		return self.name < other.name
+		
+def parseGroups(xml, enums):
+	groups = []
+	groupByName = dict()
+	
+	for G in xml.iter("groups"):
+		for g in G.iter("group"):
+			group = Group(g)
+			groups.append(group)
+			groupByName[group.name] = group
+			
+	for e in enums:
+		if e.group is None:
+			continue
+		if e.group not in groupByName:
+			group = Group(e.group)
+			groupByName[group.name] = group			
+		groupByName[group.name].enums.append(e.name)
+		
+	return sorted(groupByName.values())
+
+def parseEnums(xml, features, extensions, commands, api):
 
 	enums = set()
 	
 	for E in xml.iter("enums"):
 
-		group     = E.attrib.get("group", "")
-		groupType = E.attrib.get("type", "")
+		group     = E.attrib.get("group", None)
+		groupType = E.attrib.get("type", None)
 
 		# only parse enum if 
 		# (1) no comment attribute exists for <enum> starting with "Not an API enum. ..."
 		# (2) at least one feature or extension of the requested api requires the enum of requested api
+		# (3) if the enum has a group and at least one command has a parameter in that group
 
 		for enum in E.findall("enum"):
 
@@ -113,7 +153,7 @@ def parseEnums(xml, features, extensions, api):
 			 and \
 			   not any(name in extension.reqEnumStrings \
 			   for extension in extensions if len(extension.reqEnumStrings) > 0):
-				continue
+			    continue
 
 			if "api" in enum.attrib and enum.attrib["api"] != api:
 				continue
@@ -122,13 +162,18 @@ def parseEnums(xml, features, extensions, api):
 
 	return sorted(enums)
 
+def resolveGroups(groups, enumsByName):
+	for g in groups:
+		g.enums = [ enumsByName[e] for e in g.enums if e in enumsByName ]
+		for e in g.enums:
+			e.groups.add(g)
 
 def resolveEnums(enums, enumsByName):
-
 	for e in enums:
 		# aliases might be from other api?
 		if e.aliasString != "" and e.aliasString in enumsByName:
 			e.alias = enumsByName[e.aliasString]
+		
 
 
 def groupEnumsByType(enums):
@@ -143,7 +188,6 @@ def groupEnumsByType(enums):
 	return d
 
 def groupEnumsByGroup(enums):
-
 	d = dict()
 	
 	for e in enums:

@@ -67,7 +67,7 @@ inline void glCallLists(GLsizei n, gl13::GLenum type, const void * lists)
    	return FunctionObjects::CallLists(n, static_cast<gl::GLenum>(type), lists);
 }
 
-inline void glClear(gl13::GLbitfield mask)
+inline void glClear(gl13::ClearBufferMask mask)
 {
    	return FunctionObjects::Clear(static_cast<gl::GLbitfield>(mask));
 }
@@ -1287,12 +1287,12 @@ inline void glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLflo
    	return FunctionObjects::PrioritizeTextures(n, textures, priorities);
 }
 
-inline void glPushAttrib(gl13::GLbitfield mask)
+inline void glPushAttrib(gl13::AttribMask mask)
 {
    	return FunctionObjects::PushAttrib(static_cast<gl::GLbitfield>(mask));
 }
 
-inline void glPushClientAttrib(gl13::GLbitfield mask)
+inline void glPushClientAttrib(gl13::ClientAttribMask mask)
 {
    	return FunctionObjects::PushClientAttrib(static_cast<gl::GLbitfield>(mask));
 }

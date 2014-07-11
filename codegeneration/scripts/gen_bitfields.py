@@ -2,13 +2,21 @@ from binding import *
 from classes.Enum import *
 from classes.Feature import *
 
+bitfieldGroupTemplate = """enum class %s : unsigned int
+{
+	%s
+};
+"""
+
 
 def bitfieldDefinition(enum):
 	return "%s = %s," % (enumBID(enum), enum.value)
 
 def bitfieldImportDefinition(enum):
-	return "static const GLbitfield %s = GLbitfield::%s;" % (enumBID(enum), enumBID(enum))
+	return "static const %s %s = %s::%s;" % (enum.group, enumBID(enum), enum.group, enumBID(enum))
 
+def bitfieldGroup(group, enums):
+	return bitfieldGroupTemplate % (group, "\n\t".join([ bitfieldDefinition(e) for e in enums ]))
 
 def genBitfieldsAll(enums, outputdir, outputfile):
 
@@ -43,14 +51,12 @@ def genFeatureBitfields(enums, feature, outputdir, outputfile, core):
 	pureBitfields    = [ b for b in tgrouped["GLbitfield"] if b.supported(feature, core) ]
 	groupedBitfields = groupEnumsByGroup(pureBitfields)
 
-	a = sorted([ ("\n" + tab + "// %s\n\n" + tab + "%s") % (group, ("\n" + tab).join(
-		[ bitfieldDefinition(e) for e in values ])) 
-			for group, values in groupedBitfields.items() ])
-
-	b = sorted([ ("\n// %s\n\n" + "%s") % (group, "\n".join(
+	a = [ bitfieldGroup(group, enums) for group, enums in groupedBitfields.items()  ]
+	
+	b = sorted([ "\n// %s\n\n%s" % (group, "\n".join(
 		[ bitfieldImportDefinition(e) for e in values ])) 
 			for group, values in groupedBitfields.items() ])
 
 	with open(outputdir + of, 'w') as file:
-		file.write(t % ("using namespace gl;\n\n" if feature else "", # using namespace,
-			("\n").join(a), ("\n") .join(b)))
+		file.write(t % ("\nusing namespace gl;\n" if feature else "",
+			"\n".join(a), "\n".join(b)))

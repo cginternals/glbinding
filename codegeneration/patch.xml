@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registry>
+	<commands namespace="GL">
+		<command>
+			<proto>void <name>glBufferStorage</name></proto>
+			<param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+		</command>
+		<command>
+			<proto><ptype>GLenum</ptype> <name>glClientWaitSync</name></proto>
+			<param group="SyncObjectMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+		</command>
+		<command>
+			<proto>void *<name>glMapTexture2DINTEL</name></proto>
+			<param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>access</name></param>
+		</command>
+		<command>
+			<proto>void <name>glMemoryBarrier</name></proto>
+			<param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
+		</command>
+		<command>
+			<proto>void <name>glMemoryBarrierEXT</name></proto>
+			<param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
+		</command>
+		<command>
+			<proto>void <name>glNamedBufferStorageEXT</name></proto>
+			<param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+		</command>
+		<command>
+			<proto>void <name>glTexStorageSparseAMD</name></proto>
+			<param group="TextureStorageMaskAMD"><ptype>GLbitfield</ptype> <name>flags</name></param>
+		</command>
+		<command>
+			<proto>void <name>glTextureStorageSparseAMD</name></proto>
+			<param group="TextureStorageMaskAMD"><ptype>GLbitfield</ptype> <name>flags</name></param>
+		</command>
+		<command>
+			<proto>void <name>glUseProgramStages</name></proto>
+			<param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
+		</command>
+	</commands>
+</registry>

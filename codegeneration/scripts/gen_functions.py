@@ -1,8 +1,6 @@
 from binding import *
 from classes.Command import *
 
-
-
 functionForwardTemplate = """inline %s %s(%s)
 {
    	return FunctionObjects::%s(%s);
@@ -14,18 +12,30 @@ functionForwardTemplateRValueCast = """inline %s %s(%s)
 }
 """
 
+def bitfieldType(param, bid):
+	return "gl::GenericBitmask" if param.group is None else "gl" + bid + "::" + param.group
+
+		
+def paramSignature(param, bid=""):
+	t = param.type
+	if "GLenum" in t:
+		return t.replace("GLenum", "gl" + bid + "::GLenum")
+	elif "GLbitfield" in t:
+		return t.replace("GLbitfield", bitfieldType(param, bid))
+	else:
+		return t
 
 def functionTemplate(function):
-	params = ", ".join([function.returntype] + [ p.baseType() for p in function.params ])
+	params = ", ".join([function.returntype] + [ paramSignature(p) for p in function.params ])
 	return 'Function<%s> FunctionObjects::%s("%s");' % (params,
 		functionBID(function)[2:], function.name)
 
 def functionDecl(function):
-	params = ", ".join([function.returntype] + [ p.baseType() for p in function.params ])
+	params = ", ".join([function.returntype] + [ paramSignature(p) for p in function.params ])
 	return tab + "static Function<%s> %s;" % (params, functionBID(function)[2:])
 
 def functionForward(function, feature, core):
-	params = ", ".join([paramSignature(p, feature, core) + " " + p.name for p in function.params])
+	params = ", ".join([paramSignature(p, versionBID(feature, core)) + " " + p.name for p in function.params])
 	paramNames = ", ".join([(paramPass(p, feature)) for p in function.params])
 
 	if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
@@ -35,22 +45,11 @@ def functionForward(function, feature, core):
 		return functionForwardTemplate % (function.returntype, functionBID(function), params,
 			functionBID(function)[2:], paramNames)
 
-def paramSignature(param, feature, core):
-	t = param.baseType()
-	if not feature:
-		return t
-	elif "GLenum" in t:
-		return t.replace("GLenum", "gl" + versionBID(feature, core) + "::GLenum")
-	elif "GLbitfield" in t:
-		return t.replace("GLbitfield", "gl" + versionBID(feature, core) + "::GLbitfield")
-	else:
-		return t
-
 def paramPass(param, feature):
 	# this returns a string used for passing the param by its name to a function object.
 	# if this is inside a featured function, the param will be cast from featured GLenum 
 	# and GLbitfield to gl::GLenum and gl::GLbitfield, required for function object.
-	t = param.baseType()
+	t = param.type
 	if not feature:
 		return param.name
 	elif t == "GLenum":

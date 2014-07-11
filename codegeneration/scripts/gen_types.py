@@ -15,7 +15,7 @@ def multilineConvertTypedef(type):
 enum_classes = [ "GLbitfield", "GLboolean", "GLenum" ]
 type_integration_map = {
 	"GLextension" : [ "hashable", "streamable" ], 
-	"GLbitfield"  : [ "hashable", "streamable", "bit_operatable" ], 
+	#"GLbitfield"  : [ "hashable", "streamable", "bit_operatable" ], 
 	"GLboolean"   : [ "hashable", "streamable" ],
 	"GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
 }
@@ -42,7 +42,7 @@ def convertType(type):
 	return convertTypedef(type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(GL_APIENTRY *)")
 
 
-def genTypes_h(types, outputdir, outputfile):
+def genTypes_h(types, bitfieldgroups, outputdir, outputfile):
 
 	status(outputdir + outputfile)
 
@@ -50,11 +50,13 @@ def genTypes_h(types, outputdir, outputfile):
 	for typename, integrations in type_integration_map.items():
 		for integration in integrations:
 			type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", typename))		
-
+			
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (
-			("\n".join([ convertType(t) for t in types ])),
-			("\n".join([ t for t in type_integrations ]))))
+			("\n".join([ convertType(t) for t in types if t.name != "GLbitfield" ])),
+			"\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfieldgroups ]),
+			("\n".join([ t for t in type_integrations ]))
+		))
 
 
 def genTypes_cpp(types, outputdir, outputfile):

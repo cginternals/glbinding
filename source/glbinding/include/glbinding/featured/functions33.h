@@ -147,7 +147,7 @@ inline void glBlendFuncSeparate(gl33::GLenum sfactorRGB, gl33::GLenum dfactorRGB
    	return FunctionObjects::BlendFuncSeparate(static_cast<gl::GLenum>(sfactorRGB), static_cast<gl::GLenum>(dfactorRGB), static_cast<gl::GLenum>(sfactorAlpha), static_cast<gl::GLenum>(dfactorAlpha));
 }
 
-inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, gl33::GLbitfield mask, gl33::GLenum filter)
+inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, gl33::ClearBufferMask mask, gl33::GLenum filter)
 {
    	return FunctionObjects::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, static_cast<gl::GLbitfield>(mask), static_cast<gl::GLenum>(filter));
 }
@@ -182,7 +182,7 @@ inline void glClampColor(gl33::GLenum target, gl33::GLenum clamp)
    	return FunctionObjects::ClampColor(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(clamp));
 }
 
-inline void glClear(gl33::GLbitfield mask)
+inline void glClear(gl33::ClearBufferMask mask)
 {
    	return FunctionObjects::Clear(static_cast<gl::GLbitfield>(mask));
 }
@@ -237,7 +237,7 @@ inline void glClientActiveTexture(gl33::GLenum texture)
    	return FunctionObjects::ClientActiveTexture(static_cast<gl::GLenum>(texture));
 }
 
-inline GLenum glClientWaitSync(GLsync sync, gl33::GLbitfield flags, GLuint64 timeout)
+inline GLenum glClientWaitSync(GLsync sync, gl33::SyncObjectMask flags, GLuint64 timeout)
 {
    	return static_cast<gl33::GLenum>(FunctionObjects::ClientWaitSync(sync, static_cast<gl::GLbitfield>(flags), timeout));
 }
@@ -807,7 +807,7 @@ inline void glFeedbackBuffer(GLsizei size, gl33::GLenum type, GLfloat * buffer)
    	return FunctionObjects::FeedbackBuffer(size, static_cast<gl::GLenum>(type), buffer);
 }
 
-inline GLsync glFenceSync(gl33::GLenum condition, gl33::GLbitfield flags)
+inline GLsync glFenceSync(gl33::GLenum condition, gl::GenericBitmask flags)
 {
    	return FunctionObjects::FenceSync(static_cast<gl::GLenum>(condition), static_cast<gl::GLbitfield>(flags));
 }
@@ -1627,7 +1627,7 @@ inline void * glMapBuffer(gl33::GLenum target, gl33::GLenum access)
    	return FunctionObjects::MapBuffer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(access));
 }
 
-inline void * glMapBufferRange(gl33::GLenum target, GLintptr offset, GLsizeiptr length, gl33::GLbitfield access)
+inline void * glMapBufferRange(gl33::GLenum target, GLintptr offset, GLsizeiptr length, gl33::BufferAccessMask access)
 {
    	return FunctionObjects::MapBufferRange(static_cast<gl::GLenum>(target), offset, length, static_cast<gl::GLbitfield>(access));
 }
@@ -2107,12 +2107,12 @@ inline void glProvokingVertex(gl33::GLenum mode)
    	return FunctionObjects::ProvokingVertex(static_cast<gl::GLenum>(mode));
 }
 
-inline void glPushAttrib(gl33::GLbitfield mask)
+inline void glPushAttrib(gl33::AttribMask mask)
 {
    	return FunctionObjects::PushAttrib(static_cast<gl::GLbitfield>(mask));
 }
 
-inline void glPushClientAttrib(gl33::GLbitfield mask)
+inline void glPushClientAttrib(gl33::ClientAttribMask mask)
 {
    	return FunctionObjects::PushClientAttrib(static_cast<gl::GLbitfield>(mask));
 }
@@ -2332,7 +2332,7 @@ inline void glSampleCoverage(GLfloat value, GLboolean invert)
    	return FunctionObjects::SampleCoverage(value, invert);
 }
 
-inline void glSampleMaski(GLuint maskNumber, gl33::GLbitfield mask)
+inline void glSampleMaski(GLuint maskNumber, gl::GenericBitmask mask)
 {
    	return FunctionObjects::SampleMaski(maskNumber, static_cast<gl::GLbitfield>(mask));
 }
@@ -3547,7 +3547,7 @@ inline void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
    	return FunctionObjects::Viewport(x, y, width, height);
 }
 
-inline void glWaitSync(GLsync sync, gl33::GLbitfield flags, GLuint64 timeout)
+inline void glWaitSync(GLsync sync, gl::GenericBitmask flags, GLuint64 timeout)
 {
    	return FunctionObjects::WaitSync(sync, static_cast<gl::GLbitfield>(flags), timeout);
 }

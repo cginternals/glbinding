@@ -9,9 +9,19 @@ namespace gl10
 
 using namespace gl;
 
-enum class GLbitfield : unsigned int
+class GenericBitmask
 {
+public:
+	GenericBitfield() : value(0) {}
+	GenericBitfield(unsigned int v) : value(v) {}
+	template <typename T> GenericBitfield(T v) : value(static_cast<unsigned int>(v)) {}
+	
+	operator unsigned int() { return value; }
+protected:
+	unsigned int value;
 };
+
+
 
 // import bitfields to namespace
 

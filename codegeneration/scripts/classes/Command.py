@@ -1,12 +1,8 @@
 from classes.Feature import *
 from classes.Extension import *
 
-
-# near and far are deinfes by windows.h ... :( 
+# near and far are defined by windows.h ... :( 
 exceptions = ["GetProcAddress", "near", "far"]
-
-def baseType(type):
-	return type
 
 class Parameter:
 
@@ -16,13 +12,11 @@ class Parameter:
 		self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
 		if self.name in exceptions:
 			self.name += "_"
+			
+		self.group = xml.attrib.get("group", None)
 		
 	def __str__(self):
 		return "%s %s" % (self.type, self.name)
-		
-	def baseType(self):
-		return baseType(self.type)
-
 
 class Command:
 
@@ -55,12 +49,6 @@ class Command:
 		for extension in extensions:
 			if extension.api == api and self.name in extension.reqCommandStrings:
 				self.reqExtensions.append(extensions)
-
-
-	def baseReturnType(self):
-
-		return baseType(self.returntype)
-
 		
 	def __str__(self):
 
@@ -81,9 +69,10 @@ class Command:
 		# every featured functions include should not contain commands from extensions.
 
 		#if len(self.reqFeatures) == 0 and len(self.reqExtensions) > 0:
-	 	#	return True
-	 	if len(self.reqFeatures) == 0:
-	 		return False
+		#	return True
+		
+		if len(self.reqFeatures) == 0:
+			return False
 
 	 	if core:
 	 		return min(self.reqFeatures) <= feature and (not self.remFeatures or min(self.remFeatures) > feature) 
@@ -107,11 +96,11 @@ def parseCommands(xml, features, extensions, api):
 
 			# enforce constraint (1)
 			if not any(name in feature.reqCommandStrings \
-			   for feature in features if len(feature.reqCommandStrings) > 0) \
-			 and \
-			   not any(name in extension.reqCommandStrings \
-			   for extension in extensions if len(extension.reqCommandStrings) > 0):
-				continue
+				for feature in features if len(feature.reqCommandStrings) > 0) \
+				and \
+				not any(name in extension.reqCommandStrings \
+				for extension in extensions if len(extension.reqCommandStrings) > 0):
+					continue
 
 			if "api" in command.attrib and command.attrib["api"] != api:
 				continue
@@ -119,3 +108,19 @@ def parseCommands(xml, features, extensions, api):
 			commands.append(Command(command, features, extensions, api))
 
 	return sorted(commands)
+	
+def patchCommands(commandsByName, patches):
+	for patch in patches:
+		command = commandsByName[patch.name]
+		for param in command.params:
+			if param.type == "GLbitfield" and param.group is None:
+				patchedParam = next((p for p in patch.params if p.name == param.name), None)
+				if patchedParam is not None and patchedParam.group is not None:
+					param.group = patchedParam.group				
+
+def verifyCommands(commands):
+	for command in commands:
+		for param in command.params:
+			if param.type == "GLbitfield" and param.group is None:
+				print("No bitfield group for %s - %s" % (command.name, param.name))
+				
