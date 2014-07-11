@@ -15,7 +15,7 @@ def multilineConvertTypedef(type):
 enum_classes = [ "GLbitfield", "GLboolean", "GLenum" ]
 type_integration_map = {
 	"GLextension" : [ "hashable", "streamable" ], 
-	"GLbitfield"  : [ "hashable", "streamable", "bitfieldable" ], 
+	"GLbitfield"  : [ "hashable", "streamable", "bit_operatable" ], 
 	"GLboolean"   : [ "hashable", "streamable" ],
 	"GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
 }

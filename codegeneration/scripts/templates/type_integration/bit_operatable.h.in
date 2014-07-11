@@ -1,3 +1,4 @@
 
 GLBINDING_API gl::%t operator|(const gl::%t & a, const gl::%t & b);
 GLBINDING_API gl::%t operator&(const gl::%t & a, const gl::%t & b);
+GLBINDING_API gl::%t operator^(const gl::%t & a, const gl::%t & b);
