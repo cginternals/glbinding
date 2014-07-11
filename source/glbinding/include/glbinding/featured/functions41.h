@@ -32,11 +32,6 @@ inline void glAlphaFunc(gl41::GLenum func, GLfloat ref)
    	return FunctionObjects::AlphaFunc(static_cast<gl::GLenum>(func), ref);
 }
 
-inline void glAlphaFuncx(gl41::GLenum func, GLfixed ref)
-{
-   	return FunctionObjects::AlphaFuncx(static_cast<gl::GLenum>(func), ref);
-}
-
 inline GLboolean glAreTexturesResident(GLsizei n, const GLuint * textures, GLboolean * residences)
 {
    	return FunctionObjects::AreTexturesResident(n, textures, residences);
@@ -262,11 +257,6 @@ inline void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha
    	return FunctionObjects::ClearColor(red, green, blue, alpha);
 }
 
-inline void glClearColorx(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::ClearColorx(red, green, blue, alpha);
-}
-
 inline void glClearDepth(GLdouble depth)
 {
    	return FunctionObjects::ClearDepth(depth);
@@ -275,11 +265,6 @@ inline void glClearDepth(GLdouble depth)
 inline void glClearDepthf(GLfloat d)
 {
    	return FunctionObjects::ClearDepthf(d);
-}
-
-inline void glClearDepthx(GLfixed depth)
-{
-   	return FunctionObjects::ClearDepthx(depth);
 }
 
 inline void glClearIndex(GLfloat c)
@@ -305,16 +290,6 @@ inline GLenum glClientWaitSync(GLsync sync, gl41::GLbitfield flags, GLuint64 tim
 inline void glClipPlane(gl41::GLenum plane, const GLdouble * equation)
 {
    	return FunctionObjects::ClipPlane(static_cast<gl::GLenum>(plane), equation);
-}
-
-inline void glClipPlanef(gl41::GLenum p, const GLfloat * eqn)
-{
-   	return FunctionObjects::ClipPlanef(static_cast<gl::GLenum>(p), eqn);
-}
-
-inline void glClipPlanex(gl41::GLenum plane, const GLfixed * equation)
-{
-   	return FunctionObjects::ClipPlanex(static_cast<gl::GLenum>(plane), equation);
 }
 
 inline void glColor3b(GLbyte red, GLbyte green, GLbyte blue)
@@ -475,11 +450,6 @@ inline void glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alp
 inline void glColor4usv(const GLushort * v)
 {
    	return FunctionObjects::Color4usv(v);
-}
-
-inline void glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::Color4x(red, green, blue, alpha);
 }
 
 inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
@@ -705,11 +675,6 @@ inline void glDepthRangeIndexed(GLuint index, GLdouble n, GLdouble f)
 inline void glDepthRangef(GLfloat n, GLfloat f)
 {
    	return FunctionObjects::DepthRangef(n, f);
-}
-
-inline void glDepthRangex(GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::DepthRangex(n, f);
 }
 
 inline void glDetachShader(GLuint program, GLuint shader)
@@ -1007,16 +972,6 @@ inline void glFogiv(gl41::GLenum pname, const GLint * params)
    	return FunctionObjects::Fogiv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glFogx(gl41::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Fogx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glFogxv(gl41::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Fogxv(static_cast<gl::GLenum>(pname), param);
-}
-
 inline void glFramebufferRenderbuffer(gl41::GLenum target, gl41::GLenum attachment, gl41::GLenum renderbuffertarget, GLuint renderbuffer)
 {
    	return FunctionObjects::FramebufferRenderbuffer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), static_cast<gl::GLenum>(renderbuffertarget), renderbuffer);
@@ -1055,16 +1010,6 @@ inline void glFrontFace(gl41::GLenum mode)
 inline void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
    	return FunctionObjects::Frustum(left, right, bottom, top, zNear, zFar);
-}
-
-inline void glFrustumf(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Frustumf(l, r, b, t, n, f);
-}
-
-inline void glFrustumx(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Frustumx(l, r, b, t, n, f);
 }
 
 inline void glGenBuffers(GLsizei n, GLuint * buffers)
@@ -1212,16 +1157,6 @@ inline void glGetClipPlane(gl41::GLenum plane, GLdouble * equation)
    	return FunctionObjects::GetClipPlane(static_cast<gl::GLenum>(plane), equation);
 }
 
-inline void glGetClipPlanef(gl41::GLenum plane, GLfloat * equation)
-{
-   	return FunctionObjects::GetClipPlanef(static_cast<gl::GLenum>(plane), equation);
-}
-
-inline void glGetClipPlanex(gl41::GLenum plane, GLfixed * equation)
-{
-   	return FunctionObjects::GetClipPlanex(static_cast<gl::GLenum>(plane), equation);
-}
-
 inline void glGetCompressedTexImage(gl41::GLenum target, GLint level, void * img)
 {
    	return FunctionObjects::GetCompressedTexImage(static_cast<gl::GLenum>(target), level, img);
@@ -1240,11 +1175,6 @@ inline void glGetDoublev(gl41::GLenum pname, GLdouble * data)
 inline GLenum glGetError()
 {
    	return static_cast<gl41::GLenum>(FunctionObjects::GetError());
-}
-
-inline void glGetFixedv(gl41::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetFixedv(static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetFloati_v(gl41::GLenum target, GLuint index, GLfloat * data)
@@ -1302,11 +1232,6 @@ inline void glGetLightiv(gl41::GLenum light, gl41::GLenum pname, GLint * params)
    	return FunctionObjects::GetLightiv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetLightxv(gl41::GLenum light, gl41::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetLightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glGetMapdv(gl41::GLenum target, gl41::GLenum query, GLdouble * v)
 {
    	return FunctionObjects::GetMapdv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(query), v);
@@ -1330,11 +1255,6 @@ inline void glGetMaterialfv(gl41::GLenum face, gl41::GLenum pname, GLfloat * par
 inline void glGetMaterialiv(gl41::GLenum face, gl41::GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetMaterialiv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
-}
-
-inline void glGetMaterialxv(gl41::GLenum face, gl41::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetMaterialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetMultisamplefv(gl41::GLenum pname, GLuint index, GLfloat * val)
@@ -1507,11 +1427,6 @@ inline void glGetTexEnviv(gl41::GLenum target, gl41::GLenum pname, GLint * param
    	return FunctionObjects::GetTexEnviv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glGetTexEnvxv(gl41::GLenum target, gl41::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glGetTexGendv(gl41::GLenum coord, gl41::GLenum pname, GLdouble * params)
 {
    	return FunctionObjects::GetTexGendv(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), params);
@@ -1560,11 +1475,6 @@ inline void glGetTexParameterfv(gl41::GLenum target, gl41::GLenum pname, GLfloat
 inline void glGetTexParameteriv(gl41::GLenum target, gl41::GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetTexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
-inline void glGetTexParameterxv(gl41::GLenum target, gl41::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, gl41::GLenum * type, GLchar * name)
@@ -1817,16 +1727,6 @@ inline void glLightModeliv(gl41::GLenum pname, const GLint * params)
    	return FunctionObjects::LightModeliv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glLightModelx(gl41::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::LightModelx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightModelxv(gl41::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::LightModelxv(static_cast<gl::GLenum>(pname), param);
-}
-
 inline void glLightf(gl41::GLenum light, gl41::GLenum pname, GLfloat param)
 {
    	return FunctionObjects::Lightf(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), param);
@@ -1847,16 +1747,6 @@ inline void glLightiv(gl41::GLenum light, gl41::GLenum pname, const GLint * para
    	return FunctionObjects::Lightiv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glLightx(gl41::GLenum light, gl41::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Lightx(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightxv(gl41::GLenum light, gl41::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::Lightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glLineStipple(GLint factor, GLushort pattern)
 {
    	return FunctionObjects::LineStipple(factor, pattern);
@@ -1865,11 +1755,6 @@ inline void glLineStipple(GLint factor, GLushort pattern)
 inline void glLineWidth(GLfloat width)
 {
    	return FunctionObjects::LineWidth(width);
-}
-
-inline void glLineWidthx(GLfixed width)
-{
-   	return FunctionObjects::LineWidthx(width);
 }
 
 inline void glLinkProgram(GLuint program)
@@ -1895,11 +1780,6 @@ inline void glLoadMatrixd(const GLdouble * m)
 inline void glLoadMatrixf(const GLfloat * m)
 {
    	return FunctionObjects::LoadMatrixf(m);
-}
-
-inline void glLoadMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::LoadMatrixx(m);
 }
 
 inline void glLoadName(GLuint name)
@@ -1992,24 +1872,9 @@ inline void glMaterialiv(gl41::GLenum face, gl41::GLenum pname, const GLint * pa
    	return FunctionObjects::Materialiv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glMaterialx(gl41::GLenum face, gl41::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Materialx(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glMaterialxv(gl41::GLenum face, gl41::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Materialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
-}
-
 inline void glMatrixMode(gl41::GLenum mode)
 {
    	return FunctionObjects::MatrixMode(static_cast<gl::GLenum>(mode));
-}
-
-inline void glMemoryBarrierByRegion(gl41::GLbitfield barriers)
-{
-   	return FunctionObjects::MemoryBarrierByRegion(static_cast<gl::GLbitfield>(barriers));
 }
 
 inline void glMinSampleShading(GLfloat value)
@@ -2025,11 +1890,6 @@ inline void glMultMatrixd(const GLdouble * m)
 inline void glMultMatrixf(const GLfloat * m)
 {
    	return FunctionObjects::MultMatrixf(m);
-}
-
-inline void glMultMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::MultMatrixx(m);
 }
 
 inline void glMultTransposeMatrixd(const GLdouble * m)
@@ -2217,11 +2077,6 @@ inline void glMultiTexCoord4sv(gl41::GLenum target, const GLshort * v)
    	return FunctionObjects::MultiTexCoord4sv(static_cast<gl::GLenum>(target), v);
 }
 
-inline void glMultiTexCoord4x(gl41::GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
-{
-   	return FunctionObjects::MultiTexCoord4x(static_cast<gl::GLenum>(texture), s, t, r, q);
-}
-
 inline void glMultiTexCoordP1ui(gl41::GLenum texture, gl41::GLenum type, GLuint coords)
 {
    	return FunctionObjects::MultiTexCoordP1ui(static_cast<gl::GLenum>(texture), static_cast<gl::GLenum>(type), coords);
@@ -2317,11 +2172,6 @@ inline void glNormal3sv(const GLshort * v)
    	return FunctionObjects::Normal3sv(v);
 }
 
-inline void glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
-{
-   	return FunctionObjects::Normal3x(nx, ny, nz);
-}
-
 inline void glNormalP3ui(gl41::GLenum type, GLuint coords)
 {
    	return FunctionObjects::NormalP3ui(static_cast<gl::GLenum>(type), coords);
@@ -2340,16 +2190,6 @@ inline void glNormalPointer(gl41::GLenum type, GLsizei stride, const void * poin
 inline void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
    	return FunctionObjects::Ortho(left, right, bottom, top, zNear, zFar);
-}
-
-inline void glOrthof(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Orthof(l, r, b, t, n, f);
-}
-
-inline void glOrthox(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Orthox(l, r, b, t, n, f);
 }
 
 inline void glPassThrough(GLfloat token)
@@ -2432,24 +2272,9 @@ inline void glPointParameteriv(gl41::GLenum pname, const GLint * params)
    	return FunctionObjects::PointParameteriv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glPointParameterx(gl41::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::PointParameterx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glPointParameterxv(gl41::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::PointParameterxv(static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glPointSize(GLfloat size)
 {
    	return FunctionObjects::PointSize(size);
-}
-
-inline void glPointSizex(GLfixed size)
-{
-   	return FunctionObjects::PointSizex(size);
 }
 
 inline void glPolygonMode(gl41::GLenum face, gl41::GLenum mode)
@@ -2460,11 +2285,6 @@ inline void glPolygonMode(gl41::GLenum face, gl41::GLenum mode)
 inline void glPolygonOffset(GLfloat factor, GLfloat units)
 {
    	return FunctionObjects::PolygonOffset(factor, units);
-}
-
-inline void glPolygonOffsetx(GLfixed factor, GLfixed units)
-{
-   	return FunctionObjects::PolygonOffsetx(factor, units);
 }
 
 inline void glPolygonStipple(const GLubyte * mask)
@@ -2997,19 +2817,9 @@ inline void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
    	return FunctionObjects::Rotatef(angle, x, y, z);
 }
 
-inline void glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Rotatex(angle, x, y, z);
-}
-
 inline void glSampleCoverage(GLfloat value, GLboolean invert)
 {
    	return FunctionObjects::SampleCoverage(value, invert);
-}
-
-inline void glSampleCoveragex(GLclampx value, GLboolean invert)
-{
-   	return FunctionObjects::SampleCoveragex(value, invert);
 }
 
 inline void glSampleMaski(GLuint maskNumber, gl41::GLbitfield mask)
@@ -3055,11 +2865,6 @@ inline void glScaled(GLdouble x, GLdouble y, GLdouble z)
 inline void glScalef(GLfloat x, GLfloat y, GLfloat z)
 {
    	return FunctionObjects::Scalef(x, y, z);
-}
-
-inline void glScalex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Scalex(x, y, z);
 }
 
 inline void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
@@ -3457,16 +3262,6 @@ inline void glTexEnviv(gl41::GLenum target, gl41::GLenum pname, const GLint * pa
    	return FunctionObjects::TexEnviv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexEnvx(gl41::GLenum target, gl41::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexEnvx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glTexEnvxv(gl41::GLenum target, gl41::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glTexGend(gl41::GLenum coord, gl41::GLenum pname, GLdouble param)
 {
    	return FunctionObjects::TexGend(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), param);
@@ -3552,16 +3347,6 @@ inline void glTexParameteriv(gl41::GLenum target, gl41::GLenum pname, const GLin
    	return FunctionObjects::TexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexParameterx(gl41::GLenum target, gl41::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexParameterx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glTexParameterxv(gl41::GLenum target, gl41::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glTexSubImage1D(gl41::GLenum target, GLint level, GLint xoffset, GLsizei width, gl41::GLenum format, gl41::GLenum type, const void * pixels)
 {
    	return FunctionObjects::TexSubImage1D(static_cast<gl::GLenum>(target), level, xoffset, width, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
@@ -3590,11 +3375,6 @@ inline void glTranslated(GLdouble x, GLdouble y, GLdouble z)
 inline void glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 {
    	return FunctionObjects::Translatef(x, y, z);
-}
-
-inline void glTranslatex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Translatex(x, y, z);
 }
 
 inline void glUniform1d(GLint location, GLdouble x)

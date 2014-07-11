@@ -3,19 +3,26 @@ from classes.Extension import *
 
 
 def metaExtensionToString(extension):
+
 	return '{ GLextension::%s, "%s" }' % (extensionBID(extension), extension.name)
+
+
 def metaStringToExtension(extension):
+
 	return '{ "%s", GLextension::%s }' % (extension.name, extensionBID(extension))
 
 
 def genMetaStringsByExtension(extensions, outputdir, outputfile):
+
 	status(outputdir + outputfile)
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (",\n" + tab).join(
 			[ metaExtensionToString(e) for e in extensions ]))
 
+
 def genMetaExtensionsByString(extensions, outputdir, outputfile):	
+
 	status(outputdir + outputfile)
 
 	with open(outputdir + outputfile, 'w') as file:
@@ -24,12 +31,17 @@ def genMetaExtensionsByString(extensions, outputdir, outputfile):
 
 
 def metaEnumToString(enum, type):
+
 	return ('{ ' + type + '::%s, "%s" }') % (enumBID(enum), enum.name)
+
+
 def metaStringToEnum(enum, type):
+
 	return ('{ "%s", ' + type + '::%s }') % (enum.name, enumBID(enum))
 
 
 def genMetaStringsByEnum(enums, outputdir, outputfile, type):
+
 	status(outputdir + outputfile)
 
 	pureEnums = [ e for e in enums if e.type == type ]
@@ -39,7 +51,9 @@ def genMetaStringsByEnum(enums, outputdir, outputfile, type):
 		file.write(template(outputfile) % ((",\n" + tab).join(
 			[ metaEnumToString(e, type) for e in d ])))	
 
+
 def genMetaEnumsByString(enums, outputdir, outputfile, type):
+
 	status(outputdir + outputfile)
 
 	pureEnums = [ e for e in enums if e.type == type ]
@@ -48,7 +62,9 @@ def genMetaEnumsByString(enums, outputdir, outputfile, type):
 		file.write(template(outputfile) % ((",\n" + tab).join(
 			[ metaStringToEnum(e, type) for e in pureEnums ])))
 
+
 def groupEnumsByValue(enums):
+
 	d = dict()
 
 	for e in enums:
@@ -62,10 +78,14 @@ def groupEnumsByValue(enums):
 		
 	return d
 
+
 def sortEnumsBySuffix(enums):
+
 	return sorted(enums, key = lambda e : enumSuffixPriority(e.name))
 
+
 def enumSuffixPriority(name):
+
 	index = name.rfind("_")
 	if index < 0:
 		return -1
@@ -80,37 +100,50 @@ def enumSuffixPriority(name):
 
 
 def extensionVersionPair(extension):
+
 	return "{ GLextension::%s, { %s, %s } }" % (
 		extensionBID(extension), extension.incore.major, extension.incore.minor)
 
+
 def genReqVersionsByExtension(extensions, outputdir, outputfile):
+
 	status(outputdir + outputfile)
+
+	sortedExts = sorted(extensions, key = lambda e: e.incore)
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (",\n" + tab).join(
-			[ extensionVersionPair(e) for e in extensions if e.incore ]))
+			[ extensionVersionPair(e) for e in sortedExts if e.incore ]))
+
 
 def extensionRequiredFunctions(extension):
+
 	return "{ GLextension::%s, { %s } }" % (extensionBID(extension), ", ".join(
-		[ '"%s"' % f for f in extension.commands ]))
+		[ '"%s"' % f.name for f in extension.reqCommands ]))
+
 
 def functionRequiredByExtensions(function, extensions):
-	return '{ "%s", { %s } }' % (function, ", ".join(
+
+	return '{ "%s", { %s } }' % (function.name, ", ".join(
 		[ "GLextension::" + extensionBID(e) for e in extensions ]))
 
+
 def genFunctionStringsByExtension(extensions, outputdir, outputfile):				
+
 	status(outputdir + outputfile)
 
 	with open(outputdir + outputfile, 'w') as file:		
 		file.write(template(outputfile) % ((",\n" + tab).join(
-			[ extensionRequiredFunctions(e) for e in extensions if len(e.commands) > 0 ])))
+			[ extensionRequiredFunctions(e) for e in extensions if len(e.reqCommands) > 0 ])))
+
 
 def genExtensionsByFunctionString(extensions, outputdir, outputfile):	
+
 	status(outputdir + outputfile)
 
 	extensionsByCommands = dict()
 	for e in extensions:
-		for c in e.commands:
+		for c in e.reqCommands:
 			if not c in extensionsByCommands:
 				extensionsByCommands[c] = set()
 			extensionsByCommands[c].add(e)

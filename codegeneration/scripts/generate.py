@@ -31,27 +31,54 @@ from gen_test import *
 
 def generate(inputfile, targetdir, revisionfile):
 
-    print "parsing revision"
+    api     = "gl" # ToDo: other apis are untested yet
+    print "parsing for " + api + " api"
 
+
+    print "parsing revision"
     file = open(revisionfile, "r")
     revision = int(file.readline())
     file.close()    
+    print " revision is " + str(revision)
 
 
     print "parsing " + inputfile
     tree       = ET.parse(inputfile)
     registry   = tree.getroot()
 
-    print "parsing types"
-    types        = parseTypes(registry)
     print "parsing features"
-    features   = parseFeatures(registry)
-    print "parsing enums"
-    enums      = sorted(parseEnums(registry, features))
+    features   = parseFeatures(registry, api)
+    print " # " + str(len(features)) + " features parsed"
+
+    print "parsing types"
+    types      = parseTypes(registry, api)
+    print " # " + str(len(types)) + " types parsed"
+
     print "parsing extensions"
-    extensions = sorted(parseExtensions(registry, features))
+    extensions = parseExtensions(registry, features, api)
+    print " # " + str(len(extensions)) + " extensions parsed"
+
     print "parsing commands"
-    commands   = sorted(parseCommands(registry, features))
+    commands   = parseCommands(registry, features, extensions, api)
+    print " # " + str(len(commands)) + " commands parsed"
+
+    print "parsing enums"
+    enums      = parseEnums(registry, features, extensions, api)
+    print " # " + str(len(enums)) + " enums parsed"
+
+
+    enumsByName = dict([(enum.name, enum) for enum in enums])
+    commandsByName = dict([(command.name, command) for command in commands])
+
+    print "resolving features"
+    resolveFeatures(features, enumsByName, commandsByName)
+
+    print "resolving extensions"
+    resolveExtensions(extensions, enumsByName, commandsByName, features, api)
+
+    print "resolving enums"
+    resolveEnums(enums, enumsByName)
+
 
     includedir = targetdir + "/include/glbinding/"
     includedir_featured = includedir + "featured/"

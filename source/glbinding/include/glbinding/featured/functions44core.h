@@ -22,11 +22,6 @@ inline void glActiveTexture(gl44core::GLenum texture)
    	return FunctionObjects::ActiveTexture(static_cast<gl::GLenum>(texture));
 }
 
-inline void glAlphaFuncx(gl44core::GLenum func, GLfixed ref)
-{
-   	return FunctionObjects::AlphaFuncx(static_cast<gl::GLenum>(func), ref);
-}
-
 inline void glAttachShader(GLuint program, GLuint shader)
 {
    	return FunctionObjects::AttachShader(program, shader);
@@ -272,11 +267,6 @@ inline void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha
    	return FunctionObjects::ClearColor(red, green, blue, alpha);
 }
 
-inline void glClearColorx(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::ClearColorx(red, green, blue, alpha);
-}
-
 inline void glClearDepth(GLdouble depth)
 {
    	return FunctionObjects::ClearDepth(depth);
@@ -285,11 +275,6 @@ inline void glClearDepth(GLdouble depth)
 inline void glClearDepthf(GLfloat d)
 {
    	return FunctionObjects::ClearDepthf(d);
-}
-
-inline void glClearDepthx(GLfixed depth)
-{
-   	return FunctionObjects::ClearDepthx(depth);
 }
 
 inline void glClearStencil(GLint s)
@@ -310,21 +295,6 @@ inline void glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint
 inline GLenum glClientWaitSync(GLsync sync, gl44core::GLbitfield flags, GLuint64 timeout)
 {
    	return static_cast<gl44core::GLenum>(FunctionObjects::ClientWaitSync(sync, static_cast<gl::GLbitfield>(flags), timeout));
-}
-
-inline void glClipPlanef(gl44core::GLenum p, const GLfloat * eqn)
-{
-   	return FunctionObjects::ClipPlanef(static_cast<gl::GLenum>(p), eqn);
-}
-
-inline void glClipPlanex(gl44core::GLenum plane, const GLfixed * equation)
-{
-   	return FunctionObjects::ClipPlanex(static_cast<gl::GLenum>(plane), equation);
-}
-
-inline void glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::Color4x(red, green, blue, alpha);
 }
 
 inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
@@ -552,11 +522,6 @@ inline void glDepthRangef(GLfloat n, GLfloat f)
    	return FunctionObjects::DepthRangef(n, f);
 }
 
-inline void glDepthRangex(GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::DepthRangex(n, f);
-}
-
 inline void glDetachShader(GLuint program, GLuint shader)
 {
    	return FunctionObjects::DetachShader(program, shader);
@@ -737,16 +702,6 @@ inline void glFlushMappedBufferRange(gl44core::GLenum target, GLintptr offset, G
    	return FunctionObjects::FlushMappedBufferRange(static_cast<gl::GLenum>(target), offset, length);
 }
 
-inline void glFogx(gl44core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Fogx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glFogxv(gl44core::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Fogxv(static_cast<gl::GLenum>(pname), param);
-}
-
 inline void glFramebufferParameteri(gl44core::GLenum target, gl44core::GLenum pname, GLint param)
 {
    	return FunctionObjects::FramebufferParameteri(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
@@ -785,16 +740,6 @@ inline void glFramebufferTextureLayer(gl44core::GLenum target, gl44core::GLenum 
 inline void glFrontFace(gl44core::GLenum mode)
 {
    	return FunctionObjects::FrontFace(static_cast<gl::GLenum>(mode));
-}
-
-inline void glFrustumf(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Frustumf(l, r, b, t, n, f);
-}
-
-inline void glFrustumx(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Frustumx(l, r, b, t, n, f);
 }
 
 inline void glGenBuffers(GLsizei n, GLuint * buffers)
@@ -937,16 +882,6 @@ inline void glGetBufferSubData(gl44core::GLenum target, GLintptr offset, GLsizei
    	return FunctionObjects::GetBufferSubData(static_cast<gl::GLenum>(target), offset, size, data);
 }
 
-inline void glGetClipPlanef(gl44core::GLenum plane, GLfloat * equation)
-{
-   	return FunctionObjects::GetClipPlanef(static_cast<gl::GLenum>(plane), equation);
-}
-
-inline void glGetClipPlanex(gl44core::GLenum plane, GLfixed * equation)
-{
-   	return FunctionObjects::GetClipPlanex(static_cast<gl::GLenum>(plane), equation);
-}
-
 inline void glGetCompressedTexImage(gl44core::GLenum target, GLint level, void * img)
 {
    	return FunctionObjects::GetCompressedTexImage(static_cast<gl::GLenum>(target), level, img);
@@ -970,11 +905,6 @@ inline void glGetDoublev(gl44core::GLenum pname, GLdouble * data)
 inline GLenum glGetError()
 {
    	return static_cast<gl44core::GLenum>(FunctionObjects::GetError());
-}
-
-inline void glGetFixedv(gl44core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetFixedv(static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetFloati_v(gl44core::GLenum target, GLuint index, GLfloat * data)
@@ -1035,16 +965,6 @@ inline void glGetInternalformati64v(gl44core::GLenum target, gl44core::GLenum in
 inline void glGetInternalformativ(gl44core::GLenum target, gl44core::GLenum internalformat, gl44core::GLenum pname, GLsizei bufSize, GLint * params)
 {
    	return FunctionObjects::GetInternalformativ(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(internalformat), static_cast<gl::GLenum>(pname), bufSize, params);
-}
-
-inline void glGetLightxv(gl44core::GLenum light, gl44core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetLightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
-}
-
-inline void glGetMaterialxv(gl44core::GLenum face, gl44core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetMaterialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetMultisamplefv(gl44core::GLenum pname, GLuint index, GLfloat * val)
@@ -1222,11 +1142,6 @@ inline void glGetSynciv(GLsync sync, gl44core::GLenum pname, GLsizei bufSize, GL
    	return FunctionObjects::GetSynciv(sync, static_cast<gl::GLenum>(pname), bufSize, length, values);
 }
 
-inline void glGetTexEnvxv(gl44core::GLenum target, gl44core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glGetTexImage(gl44core::GLenum target, GLint level, gl44core::GLenum format, gl44core::GLenum type, void * pixels)
 {
    	return FunctionObjects::GetTexImage(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
@@ -1260,11 +1175,6 @@ inline void glGetTexParameterfv(gl44core::GLenum target, gl44core::GLenum pname,
 inline void glGetTexParameteriv(gl44core::GLenum target, gl44core::GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetTexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
-inline void glGetTexParameterxv(gl44core::GLenum target, gl44core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, gl44core::GLenum * type, GLchar * name)
@@ -1452,44 +1362,14 @@ inline GLboolean glIsVertexArray(GLuint array)
    	return FunctionObjects::IsVertexArray(array);
 }
 
-inline void glLightModelx(gl44core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::LightModelx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightModelxv(gl44core::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::LightModelxv(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightx(gl44core::GLenum light, gl44core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Lightx(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightxv(gl44core::GLenum light, gl44core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::Lightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glLineWidth(GLfloat width)
 {
    	return FunctionObjects::LineWidth(width);
 }
 
-inline void glLineWidthx(GLfixed width)
-{
-   	return FunctionObjects::LineWidthx(width);
-}
-
 inline void glLinkProgram(GLuint program)
 {
    	return FunctionObjects::LinkProgram(program);
-}
-
-inline void glLoadMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::LoadMatrixx(m);
 }
 
 inline void glLogicOp(gl44core::GLenum opcode)
@@ -1507,34 +1387,14 @@ inline void * glMapBufferRange(gl44core::GLenum target, GLintptr offset, GLsizei
    	return FunctionObjects::MapBufferRange(static_cast<gl::GLenum>(target), offset, length, static_cast<gl::GLbitfield>(access));
 }
 
-inline void glMaterialx(gl44core::GLenum face, gl44core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Materialx(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glMaterialxv(gl44core::GLenum face, gl44core::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Materialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
-}
-
 inline void glMemoryBarrier(gl44core::GLbitfield barriers)
 {
    	return FunctionObjects::MemoryBarrier(static_cast<gl::GLbitfield>(barriers));
 }
 
-inline void glMemoryBarrierByRegion(gl44core::GLbitfield barriers)
-{
-   	return FunctionObjects::MemoryBarrierByRegion(static_cast<gl::GLbitfield>(barriers));
-}
-
 inline void glMinSampleShading(GLfloat value)
 {
    	return FunctionObjects::MinSampleShading(value);
-}
-
-inline void glMultMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::MultMatrixx(m);
 }
 
 inline void glMultiDrawArrays(gl44core::GLenum mode, const GLint * first, const GLsizei * count, GLsizei drawcount)
@@ -1560,11 +1420,6 @@ inline void glMultiDrawElementsBaseVertex(gl44core::GLenum mode, const GLsizei *
 inline void glMultiDrawElementsIndirect(gl44core::GLenum mode, gl44core::GLenum type, const void * indirect, GLsizei drawcount, GLsizei stride)
 {
    	return FunctionObjects::MultiDrawElementsIndirect(static_cast<gl::GLenum>(mode), static_cast<gl::GLenum>(type), indirect, drawcount, stride);
-}
-
-inline void glMultiTexCoord4x(gl44core::GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
-{
-   	return FunctionObjects::MultiTexCoord4x(static_cast<gl::GLenum>(texture), s, t, r, q);
 }
 
 inline void glMultiTexCoordP1ui(gl44core::GLenum texture, gl44core::GLenum type, GLuint coords)
@@ -1607,11 +1462,6 @@ inline void glMultiTexCoordP4uiv(gl44core::GLenum texture, gl44core::GLenum type
    	return FunctionObjects::MultiTexCoordP4uiv(static_cast<gl::GLenum>(texture), static_cast<gl::GLenum>(type), coords);
 }
 
-inline void glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
-{
-   	return FunctionObjects::Normal3x(nx, ny, nz);
-}
-
 inline void glNormalP3ui(gl44core::GLenum type, GLuint coords)
 {
    	return FunctionObjects::NormalP3ui(static_cast<gl::GLenum>(type), coords);
@@ -1630,16 +1480,6 @@ inline void glObjectLabel(gl44core::GLenum identifier, GLuint name, GLsizei leng
 inline void glObjectPtrLabel(const void * ptr, GLsizei length, const GLchar * label)
 {
    	return FunctionObjects::ObjectPtrLabel(ptr, length, label);
-}
-
-inline void glOrthof(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Orthof(l, r, b, t, n, f);
-}
-
-inline void glOrthox(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Orthox(l, r, b, t, n, f);
 }
 
 inline void glPatchParameterfv(gl44core::GLenum pname, const GLfloat * values)
@@ -1687,24 +1527,9 @@ inline void glPointParameteriv(gl44core::GLenum pname, const GLint * params)
    	return FunctionObjects::PointParameteriv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glPointParameterx(gl44core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::PointParameterx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glPointParameterxv(gl44core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::PointParameterxv(static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glPointSize(GLfloat size)
 {
    	return FunctionObjects::PointSize(size);
-}
-
-inline void glPointSizex(GLfixed size)
-{
-   	return FunctionObjects::PointSizex(size);
 }
 
 inline void glPolygonMode(gl44core::GLenum face, gl44core::GLenum mode)
@@ -1715,11 +1540,6 @@ inline void glPolygonMode(gl44core::GLenum face, gl44core::GLenum mode)
 inline void glPolygonOffset(GLfloat factor, GLfloat units)
 {
    	return FunctionObjects::PolygonOffset(factor, units);
-}
-
-inline void glPolygonOffsetx(GLfixed factor, GLfixed units)
-{
-   	return FunctionObjects::PolygonOffsetx(factor, units);
 }
 
 inline void glPopDebugGroup()
@@ -2037,19 +1857,9 @@ inline void glResumeTransformFeedback()
    	return FunctionObjects::ResumeTransformFeedback();
 }
 
-inline void glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Rotatex(angle, x, y, z);
-}
-
 inline void glSampleCoverage(GLfloat value, GLboolean invert)
 {
    	return FunctionObjects::SampleCoverage(value, invert);
-}
-
-inline void glSampleCoveragex(GLclampx value, GLboolean invert)
-{
-   	return FunctionObjects::SampleCoveragex(value, invert);
 }
 
 inline void glSampleMaski(GLuint maskNumber, gl44core::GLbitfield mask)
@@ -2085,11 +1895,6 @@ inline void glSamplerParameteri(GLuint sampler, gl44core::GLenum pname, GLint pa
 inline void glSamplerParameteriv(GLuint sampler, gl44core::GLenum pname, const GLint * param)
 {
    	return FunctionObjects::SamplerParameteriv(sampler, static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glScalex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Scalex(x, y, z);
 }
 
 inline void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
@@ -2217,16 +2022,6 @@ inline void glTexCoordP4uiv(gl44core::GLenum type, const GLuint * coords)
    	return FunctionObjects::TexCoordP4uiv(static_cast<gl::GLenum>(type), coords);
 }
 
-inline void glTexEnvx(gl44core::GLenum target, gl44core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexEnvx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glTexEnvxv(gl44core::GLenum target, gl44core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glTexImage1D(gl44core::GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, gl44core::GLenum format, gl44core::GLenum type, const void * pixels)
 {
    	return FunctionObjects::TexImage1D(static_cast<gl::GLenum>(target), level, internalformat, width, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
@@ -2282,16 +2077,6 @@ inline void glTexParameteriv(gl44core::GLenum target, gl44core::GLenum pname, co
    	return FunctionObjects::TexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexParameterx(gl44core::GLenum target, gl44core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexParameterx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glTexParameterxv(gl44core::GLenum target, gl44core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glTexStorage1D(gl44core::GLenum target, GLsizei levels, gl44core::GLenum internalformat, GLsizei width)
 {
    	return FunctionObjects::TexStorage1D(static_cast<gl::GLenum>(target), levels, static_cast<gl::GLenum>(internalformat), width);
@@ -2340,11 +2125,6 @@ inline void glTextureView(GLuint texture, gl44core::GLenum target, GLuint origte
 inline void glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar *const* varyings, gl44core::GLenum bufferMode)
 {
    	return FunctionObjects::TransformFeedbackVaryings(program, count, varyings, static_cast<gl::GLenum>(bufferMode));
-}
-
-inline void glTranslatex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Translatex(x, y, z);
 }
 
 inline void glUniform1d(GLint location, GLdouble x)

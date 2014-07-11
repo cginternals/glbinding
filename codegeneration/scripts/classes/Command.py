@@ -1,4 +1,5 @@
 from classes.Feature import *
+from classes.Extension import *
 
 
 # near and far are deinfes by windows.h ... :( 
@@ -25,55 +26,96 @@ class Parameter:
 
 class Command:
 
-	def __init__(self, xml, features):
+	def __init__(self, xml, features, extensions, api):
+
+		self.api = api 
 
 		proto = xml.find("proto")
 
+		self.name       = proto.find("name").text
 		self.returntype = " ".join([t.strip() for t in proto.itertext()][:-1]).strip()
-		self.name = proto.find("name").text
 
-		self.params = []		
-		for param in xml.iter("param"):								
+		self.params = []
+
+		for param in xml.iter("param"):
 			self.params.append(Parameter(param))
 
-		self.required = None
+		self.reqFeatures   = []
+		self.remFeatures   = [] # len(remF) should always be < 2
+		self.reqExtensions = []
+		
 		for feature in features:
-			if self.name in feature.requires:
-				self.required = feature
-				break
-		self.removed = None
+			if feature.api == api and self.name in feature.reqCommandStrings:
+				self.reqFeatures.append(feature)
+
 		for feature in features:
-			if self.name in feature.removes:
-				self.removed = feature
-				break
+			if feature.api == api and self.name in feature.remCommandStrings:
+				self.remFeatures.append(feature)
+
+		for extension in extensions:
+			if extension.api == api and self.name in extension.reqCommandStrings:
+				self.reqExtensions.append(extensions)
 
 
 	def baseReturnType(self):
+
 		return baseType(self.returntype)
 
 		
 	def __str__(self):
-		return "%s %s ( %s )" % (self.returntype, self.baseName(), ", ".join([str(p) for p in self.params]))
+
+		return "%s %s ( %s )" % (self.returntype, self.name, ", ".join([str(p) for p in self.params]))
 
 
 	def __lt__(self, other):
+
 		return self.name < other.name
 
-
+	# this compares the given feature with the lowest requiring feature
 	def supported(self, feature, core):
-		if feature == None:
+
+		if feature is None:
 			return True
-		if core:
-			return self.required <= feature and (not self.removed or self.removed > feature) 
-		else:
-			return self.required <= feature
+
+		# Note: design decission:
+		# every featured functions include should not contain commands from extensions.
+
+		#if len(self.reqFeatures) == 0 and len(self.reqExtensions) > 0:
+	 	#	return True
+	 	if len(self.reqFeatures) == 0:
+	 		return False
+
+	 	if core:
+	 		return min(self.reqFeatures) <= feature and (not self.remFeatures or min(self.remFeatures) > feature) 
+	 	else:
+	 		return min(self.reqFeatures) <= feature
 
 		
-def parseCommands(xml, features):
-	commands = set()
+def parseCommands(xml, features, extensions, api):
 
-	for cs in xml.iter("commands"):
-		for c in cs.iter("command"):
-			commands.add(Command(c, features))
+	commands = []
 
-	return commands
+	for C in xml.iter("commands"):
+
+		# only parse command if 
+		# (1) at least one feature or extension requires this command of requested api
+
+		for command in C.iter("command"):
+
+			proto = command.find("proto")
+			name = proto.find("name").text
+
+			# enforce constraint (1)
+			if not any(name in feature.reqCommandStrings \
+			   for feature in features if len(feature.reqCommandStrings) > 0) \
+			 and \
+			   not any(name in extension.reqCommandStrings \
+			   for extension in extensions if len(extension.reqCommandStrings) > 0):
+				continue
+
+			if "api" in command.attrib and command.attrib["api"] != api:
+				continue
+
+			commands.append(Command(command, features, extensions, api))
+
+	return sorted(commands)

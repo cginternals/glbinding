@@ -1,14 +1,18 @@
-import sys
+
+def inner(xml):
+	return str("".join([ t for t in xml.itertext() ]))
 
 class Type:
 
 	def __init__(self, xml):
-		self.value = "".join([ t for t in xml.itertext() ])
+		self.value = inner(xml)
 		if "name" in xml.attrib:
 			self.name = xml.attrib["name"]
 		else:
 			self.name = xml.find("name").text
 		self.typevalue = "".join([ t for t in xml.itertext() if t != self.name ])
+
+		# ToDo: required and removed ... for now glbinding discards this
 
 	def __str__(self):
 		return "%s: %s" % (self.name, self.value)
@@ -17,17 +21,29 @@ class Type:
 		return self.name < other.name
 
 
-def parseTypes(xml):
+def parseTypes(xml, api):
+
 	types = []
-	
-	for typeGroup in xml.iter("types"):
-		for t in typeGroup.findall("type"):
-			if "name" in t.attrib and t.attrib["name"] != "GLhandleARB":
+	for T in xml.iter("types"):
+
+		# only parse type if 
+		# (1) api attribute is not given or if its equal to requested api
+		# (2) starts with typedef or struct and or is exception, e.g., GLhandleARB 
+
+		for type in T.findall("type"):
+
+			# enorce constraint (1)
+			if "api" in type.attrib and type.attrib["api"] != api:
 				continue
-			if "requires" in t.attrib and t.attrib["requires"] == "khrplatform":
+
+			# enorce constraint (2)
+			if not inner(type).startswith("typedef ") and \
+			   not inner(type).startswith("struct ") \
+			 and ("name" not in type.attrib or type.attrib["name"] \
+			   not in ["GLhandleARB"]):
 				continue
-				
-			types.append(Type(t))
+
+			types.append(Type(type))
 
 	return types
 
@@ -35,6 +51,7 @@ def parseTypes(xml):
 # "typedef unsigned int" returns "unsigned int"
 
 def parseType(type):
+
 	if type.value.startswith("typedef"):
 		return type.typevalue[8:-1]
 	else: 

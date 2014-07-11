@@ -22,11 +22,6 @@ inline void glActiveTexture(gl41core::GLenum texture)
    	return FunctionObjects::ActiveTexture(static_cast<gl::GLenum>(texture));
 }
 
-inline void glAlphaFuncx(gl41core::GLenum func, GLfixed ref)
-{
-   	return FunctionObjects::AlphaFuncx(static_cast<gl::GLenum>(func), ref);
-}
-
 inline void glAttachShader(GLuint program, GLuint shader)
 {
    	return FunctionObjects::AttachShader(program, shader);
@@ -217,11 +212,6 @@ inline void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha
    	return FunctionObjects::ClearColor(red, green, blue, alpha);
 }
 
-inline void glClearColorx(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::ClearColorx(red, green, blue, alpha);
-}
-
 inline void glClearDepth(GLdouble depth)
 {
    	return FunctionObjects::ClearDepth(depth);
@@ -232,11 +222,6 @@ inline void glClearDepthf(GLfloat d)
    	return FunctionObjects::ClearDepthf(d);
 }
 
-inline void glClearDepthx(GLfixed depth)
-{
-   	return FunctionObjects::ClearDepthx(depth);
-}
-
 inline void glClearStencil(GLint s)
 {
    	return FunctionObjects::ClearStencil(s);
@@ -245,21 +230,6 @@ inline void glClearStencil(GLint s)
 inline GLenum glClientWaitSync(GLsync sync, gl41core::GLbitfield flags, GLuint64 timeout)
 {
    	return static_cast<gl41core::GLenum>(FunctionObjects::ClientWaitSync(sync, static_cast<gl::GLbitfield>(flags), timeout));
-}
-
-inline void glClipPlanef(gl41core::GLenum p, const GLfloat * eqn)
-{
-   	return FunctionObjects::ClipPlanef(static_cast<gl::GLenum>(p), eqn);
-}
-
-inline void glClipPlanex(gl41core::GLenum plane, const GLfixed * equation)
-{
-   	return FunctionObjects::ClipPlanex(static_cast<gl::GLenum>(plane), equation);
-}
-
-inline void glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::Color4x(red, green, blue, alpha);
 }
 
 inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
@@ -467,11 +437,6 @@ inline void glDepthRangef(GLfloat n, GLfloat f)
    	return FunctionObjects::DepthRangef(n, f);
 }
 
-inline void glDepthRangex(GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::DepthRangex(n, f);
-}
-
 inline void glDetachShader(GLuint program, GLuint shader)
 {
    	return FunctionObjects::DetachShader(program, shader);
@@ -617,16 +582,6 @@ inline void glFlushMappedBufferRange(gl41core::GLenum target, GLintptr offset, G
    	return FunctionObjects::FlushMappedBufferRange(static_cast<gl::GLenum>(target), offset, length);
 }
 
-inline void glFogx(gl41core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Fogx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glFogxv(gl41core::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Fogxv(static_cast<gl::GLenum>(pname), param);
-}
-
 inline void glFramebufferRenderbuffer(gl41core::GLenum target, gl41core::GLenum attachment, gl41core::GLenum renderbuffertarget, GLuint renderbuffer)
 {
    	return FunctionObjects::FramebufferRenderbuffer(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(attachment), static_cast<gl::GLenum>(renderbuffertarget), renderbuffer);
@@ -660,16 +615,6 @@ inline void glFramebufferTextureLayer(gl41core::GLenum target, gl41core::GLenum 
 inline void glFrontFace(gl41core::GLenum mode)
 {
    	return FunctionObjects::FrontFace(static_cast<gl::GLenum>(mode));
-}
-
-inline void glFrustumf(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Frustumf(l, r, b, t, n, f);
-}
-
-inline void glFrustumx(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Frustumx(l, r, b, t, n, f);
 }
 
 inline void glGenBuffers(GLsizei n, GLuint * buffers)
@@ -807,16 +752,6 @@ inline void glGetBufferSubData(gl41core::GLenum target, GLintptr offset, GLsizei
    	return FunctionObjects::GetBufferSubData(static_cast<gl::GLenum>(target), offset, size, data);
 }
 
-inline void glGetClipPlanef(gl41core::GLenum plane, GLfloat * equation)
-{
-   	return FunctionObjects::GetClipPlanef(static_cast<gl::GLenum>(plane), equation);
-}
-
-inline void glGetClipPlanex(gl41core::GLenum plane, GLfixed * equation)
-{
-   	return FunctionObjects::GetClipPlanex(static_cast<gl::GLenum>(plane), equation);
-}
-
 inline void glGetCompressedTexImage(gl41core::GLenum target, GLint level, void * img)
 {
    	return FunctionObjects::GetCompressedTexImage(static_cast<gl::GLenum>(target), level, img);
@@ -835,11 +770,6 @@ inline void glGetDoublev(gl41core::GLenum pname, GLdouble * data)
 inline GLenum glGetError()
 {
    	return static_cast<gl41core::GLenum>(FunctionObjects::GetError());
-}
-
-inline void glGetFixedv(gl41core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetFixedv(static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetFloati_v(gl41core::GLenum target, GLuint index, GLfloat * data)
@@ -885,16 +815,6 @@ inline void glGetIntegeri_v(gl41core::GLenum target, GLuint index, GLint * data)
 inline void glGetIntegerv(gl41core::GLenum pname, GLint * data)
 {
    	return FunctionObjects::GetIntegerv(static_cast<gl::GLenum>(pname), data);
-}
-
-inline void glGetLightxv(gl41core::GLenum light, gl41core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetLightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
-}
-
-inline void glGetMaterialxv(gl41core::GLenum face, gl41core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetMaterialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetMultisamplefv(gl41core::GLenum pname, GLuint index, GLfloat * val)
@@ -1032,11 +952,6 @@ inline void glGetSynciv(GLsync sync, gl41core::GLenum pname, GLsizei bufSize, GL
    	return FunctionObjects::GetSynciv(sync, static_cast<gl::GLenum>(pname), bufSize, length, values);
 }
 
-inline void glGetTexEnvxv(gl41core::GLenum target, gl41core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glGetTexImage(gl41core::GLenum target, GLint level, gl41core::GLenum format, gl41core::GLenum type, void * pixels)
 {
    	return FunctionObjects::GetTexImage(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
@@ -1070,11 +985,6 @@ inline void glGetTexParameterfv(gl41core::GLenum target, gl41core::GLenum pname,
 inline void glGetTexParameteriv(gl41core::GLenum target, gl41core::GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetTexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
-inline void glGetTexParameterxv(gl41core::GLenum target, gl41core::GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
 inline void glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, gl41core::GLenum * type, GLchar * name)
@@ -1232,44 +1142,14 @@ inline GLboolean glIsVertexArray(GLuint array)
    	return FunctionObjects::IsVertexArray(array);
 }
 
-inline void glLightModelx(gl41core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::LightModelx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightModelxv(gl41core::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::LightModelxv(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightx(gl41core::GLenum light, gl41core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Lightx(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glLightxv(gl41core::GLenum light, gl41core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::Lightxv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glLineWidth(GLfloat width)
 {
    	return FunctionObjects::LineWidth(width);
 }
 
-inline void glLineWidthx(GLfixed width)
-{
-   	return FunctionObjects::LineWidthx(width);
-}
-
 inline void glLinkProgram(GLuint program)
 {
    	return FunctionObjects::LinkProgram(program);
-}
-
-inline void glLoadMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::LoadMatrixx(m);
 }
 
 inline void glLogicOp(gl41core::GLenum opcode)
@@ -1287,29 +1167,9 @@ inline void * glMapBufferRange(gl41core::GLenum target, GLintptr offset, GLsizei
    	return FunctionObjects::MapBufferRange(static_cast<gl::GLenum>(target), offset, length, static_cast<gl::GLbitfield>(access));
 }
 
-inline void glMaterialx(gl41core::GLenum face, gl41core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Materialx(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glMaterialxv(gl41core::GLenum face, gl41core::GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Materialxv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glMemoryBarrierByRegion(gl41core::GLbitfield barriers)
-{
-   	return FunctionObjects::MemoryBarrierByRegion(static_cast<gl::GLbitfield>(barriers));
-}
-
 inline void glMinSampleShading(GLfloat value)
 {
    	return FunctionObjects::MinSampleShading(value);
-}
-
-inline void glMultMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::MultMatrixx(m);
 }
 
 inline void glMultiDrawArrays(gl41core::GLenum mode, const GLint * first, const GLsizei * count, GLsizei drawcount)
@@ -1325,11 +1185,6 @@ inline void glMultiDrawElements(gl41core::GLenum mode, const GLsizei * count, gl
 inline void glMultiDrawElementsBaseVertex(gl41core::GLenum mode, const GLsizei * count, gl41core::GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex)
 {
    	return FunctionObjects::MultiDrawElementsBaseVertex(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices, drawcount, basevertex);
-}
-
-inline void glMultiTexCoord4x(gl41core::GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
-{
-   	return FunctionObjects::MultiTexCoord4x(static_cast<gl::GLenum>(texture), s, t, r, q);
 }
 
 inline void glMultiTexCoordP1ui(gl41core::GLenum texture, gl41core::GLenum type, GLuint coords)
@@ -1372,11 +1227,6 @@ inline void glMultiTexCoordP4uiv(gl41core::GLenum texture, gl41core::GLenum type
    	return FunctionObjects::MultiTexCoordP4uiv(static_cast<gl::GLenum>(texture), static_cast<gl::GLenum>(type), coords);
 }
 
-inline void glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
-{
-   	return FunctionObjects::Normal3x(nx, ny, nz);
-}
-
 inline void glNormalP3ui(gl41core::GLenum type, GLuint coords)
 {
    	return FunctionObjects::NormalP3ui(static_cast<gl::GLenum>(type), coords);
@@ -1385,16 +1235,6 @@ inline void glNormalP3ui(gl41core::GLenum type, GLuint coords)
 inline void glNormalP3uiv(gl41core::GLenum type, const GLuint * coords)
 {
    	return FunctionObjects::NormalP3uiv(static_cast<gl::GLenum>(type), coords);
-}
-
-inline void glOrthof(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Orthof(l, r, b, t, n, f);
-}
-
-inline void glOrthox(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Orthox(l, r, b, t, n, f);
 }
 
 inline void glPatchParameterfv(gl41core::GLenum pname, const GLfloat * values)
@@ -1442,24 +1282,9 @@ inline void glPointParameteriv(gl41core::GLenum pname, const GLint * params)
    	return FunctionObjects::PointParameteriv(static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glPointParameterx(gl41core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::PointParameterx(static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glPointParameterxv(gl41core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::PointParameterxv(static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glPointSize(GLfloat size)
 {
    	return FunctionObjects::PointSize(size);
-}
-
-inline void glPointSizex(GLfixed size)
-{
-   	return FunctionObjects::PointSizex(size);
 }
 
 inline void glPolygonMode(gl41core::GLenum face, gl41core::GLenum mode)
@@ -1470,11 +1295,6 @@ inline void glPolygonMode(gl41core::GLenum face, gl41core::GLenum mode)
 inline void glPolygonOffset(GLfloat factor, GLfloat units)
 {
    	return FunctionObjects::PolygonOffset(factor, units);
-}
-
-inline void glPolygonOffsetx(GLfixed factor, GLfixed units)
-{
-   	return FunctionObjects::PolygonOffsetx(factor, units);
 }
 
 inline void glPrimitiveRestartIndex(GLuint index)
@@ -1782,19 +1602,9 @@ inline void glResumeTransformFeedback()
    	return FunctionObjects::ResumeTransformFeedback();
 }
 
-inline void glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Rotatex(angle, x, y, z);
-}
-
 inline void glSampleCoverage(GLfloat value, GLboolean invert)
 {
    	return FunctionObjects::SampleCoverage(value, invert);
-}
-
-inline void glSampleCoveragex(GLclampx value, GLboolean invert)
-{
-   	return FunctionObjects::SampleCoveragex(value, invert);
 }
 
 inline void glSampleMaski(GLuint maskNumber, gl41core::GLbitfield mask)
@@ -1830,11 +1640,6 @@ inline void glSamplerParameteri(GLuint sampler, gl41core::GLenum pname, GLint pa
 inline void glSamplerParameteriv(GLuint sampler, gl41core::GLenum pname, const GLint * param)
 {
    	return FunctionObjects::SamplerParameteriv(sampler, static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glScalex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Scalex(x, y, z);
 }
 
 inline void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
@@ -1952,16 +1757,6 @@ inline void glTexCoordP4uiv(gl41core::GLenum type, const GLuint * coords)
    	return FunctionObjects::TexCoordP4uiv(static_cast<gl::GLenum>(type), coords);
 }
 
-inline void glTexEnvx(gl41core::GLenum target, gl41core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexEnvx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glTexEnvxv(gl41core::GLenum target, gl41core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexEnvxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glTexImage1D(gl41core::GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, gl41core::GLenum format, gl41core::GLenum type, const void * pixels)
 {
    	return FunctionObjects::TexImage1D(static_cast<gl::GLenum>(target), level, internalformat, width, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
@@ -2017,16 +1812,6 @@ inline void glTexParameteriv(gl41core::GLenum target, gl41core::GLenum pname, co
    	return FunctionObjects::TexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
 }
 
-inline void glTexParameterx(gl41core::GLenum target, gl41core::GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexParameterx(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
-}
-
-inline void glTexParameterxv(gl41core::GLenum target, gl41core::GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexParameterxv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
-}
-
 inline void glTexSubImage1D(gl41core::GLenum target, GLint level, GLint xoffset, GLsizei width, gl41core::GLenum format, gl41core::GLenum type, const void * pixels)
 {
    	return FunctionObjects::TexSubImage1D(static_cast<gl::GLenum>(target), level, xoffset, width, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
@@ -2045,11 +1830,6 @@ inline void glTexSubImage3D(gl41core::GLenum target, GLint level, GLint xoffset,
 inline void glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar *const* varyings, gl41core::GLenum bufferMode)
 {
    	return FunctionObjects::TransformFeedbackVaryings(program, count, varyings, static_cast<gl::GLenum>(bufferMode));
-}
-
-inline void glTranslatex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Translatex(x, y, z);
 }
 
 inline void glUniform1d(GLint location, GLdouble x)

@@ -29,11 +29,6 @@ inline void glActiveShaderProgram(GLuint pipeline, GLuint program)
    	return FunctionObjects::ActiveShaderProgram(pipeline, program);
 }
 
-inline void glActiveShaderProgramEXT(GLuint pipeline, GLuint program)
-{
-   	return FunctionObjects::ActiveShaderProgramEXT(pipeline, program);
-}
-
 inline void glActiveStencilFaceEXT(GLenum face)
 {
    	return FunctionObjects::ActiveStencilFaceEXT(face);
@@ -72,16 +67,6 @@ inline void glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint a
 inline void glAlphaFunc(GLenum func, GLfloat ref)
 {
    	return FunctionObjects::AlphaFunc(func, ref);
-}
-
-inline void glAlphaFuncQCOM(GLenum func, GLclampf ref)
-{
-   	return FunctionObjects::AlphaFuncQCOM(func, ref);
-}
-
-inline void glAlphaFuncx(GLenum func, GLfixed ref)
-{
-   	return FunctionObjects::AlphaFuncx(func, ref);
 }
 
 inline void glAlphaFuncxOES(GLenum func, GLfixed ref)
@@ -187,11 +172,6 @@ inline void glBeginQuery(GLenum target, GLuint id)
 inline void glBeginQueryARB(GLenum target, GLuint id)
 {
    	return FunctionObjects::BeginQueryARB(target, id);
-}
-
-inline void glBeginQueryEXT(GLenum target, GLuint id)
-{
-   	return FunctionObjects::BeginQueryEXT(target, id);
 }
 
 inline void glBeginQueryIndexed(GLenum target, GLuint index, GLuint id)
@@ -324,11 +304,6 @@ inline void glBindFramebufferEXT(GLenum target, GLuint framebuffer)
    	return FunctionObjects::BindFramebufferEXT(target, framebuffer);
 }
 
-inline void glBindFramebufferOES(GLenum target, GLuint framebuffer)
-{
-   	return FunctionObjects::BindFramebufferOES(target, framebuffer);
-}
-
 inline void glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format)
 {
    	return FunctionObjects::BindImageTexture(unit, texture, level, layered, layer, access, format);
@@ -379,11 +354,6 @@ inline void glBindProgramPipeline(GLuint pipeline)
    	return FunctionObjects::BindProgramPipeline(pipeline);
 }
 
-inline void glBindProgramPipelineEXT(GLuint pipeline)
-{
-   	return FunctionObjects::BindProgramPipelineEXT(pipeline);
-}
-
 inline void glBindRenderbuffer(GLenum target, GLuint renderbuffer)
 {
    	return FunctionObjects::BindRenderbuffer(target, renderbuffer);
@@ -392,11 +362,6 @@ inline void glBindRenderbuffer(GLenum target, GLuint renderbuffer)
 inline void glBindRenderbufferEXT(GLenum target, GLuint renderbuffer)
 {
    	return FunctionObjects::BindRenderbufferEXT(target, renderbuffer);
-}
-
-inline void glBindRenderbufferOES(GLenum target, GLuint renderbuffer)
-{
-   	return FunctionObjects::BindRenderbufferOES(target, renderbuffer);
 }
 
 inline void glBindSampler(GLuint unit, GLuint sampler)
@@ -452,11 +417,6 @@ inline void glBindVertexArray(GLuint array)
 inline void glBindVertexArrayAPPLE(GLuint array)
 {
    	return FunctionObjects::BindVertexArrayAPPLE(array);
-}
-
-inline void glBindVertexArrayOES(GLuint array)
-{
-   	return FunctionObjects::BindVertexArrayOES(array);
 }
 
 inline void glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
@@ -549,11 +509,6 @@ inline void glBitmapxOES(GLsizei width, GLsizei height, GLfixed xorig, GLfixed y
    	return FunctionObjects::BitmapxOES(width, height, xorig, yorig, xmove, ymove, bitmap);
 }
 
-inline void glBlendBarrierKHR()
-{
-   	return FunctionObjects::BlendBarrierKHR();
-}
-
 inline void glBlendBarrierNV()
 {
    	return FunctionObjects::BlendBarrierNV();
@@ -589,11 +544,6 @@ inline void glBlendEquationIndexedAMD(GLuint buf, GLenum mode)
    	return FunctionObjects::BlendEquationIndexedAMD(buf, mode);
 }
 
-inline void glBlendEquationOES(GLenum mode)
-{
-   	return FunctionObjects::BlendEquationOES(mode);
-}
-
 inline void glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha)
 {
    	return FunctionObjects::BlendEquationSeparate(modeRGB, modeAlpha);
@@ -609,11 +559,6 @@ inline void glBlendEquationSeparateIndexedAMD(GLuint buf, GLenum modeRGB, GLenum
    	return FunctionObjects::BlendEquationSeparateIndexedAMD(buf, modeRGB, modeAlpha);
 }
 
-inline void glBlendEquationSeparateOES(GLenum modeRGB, GLenum modeAlpha)
-{
-   	return FunctionObjects::BlendEquationSeparateOES(modeRGB, modeAlpha);
-}
-
 inline void glBlendEquationSeparatei(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 {
    	return FunctionObjects::BlendEquationSeparatei(buf, modeRGB, modeAlpha);
@@ -624,11 +569,6 @@ inline void glBlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeA
    	return FunctionObjects::BlendEquationSeparateiARB(buf, modeRGB, modeAlpha);
 }
 
-inline void glBlendEquationSeparateiEXT(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
-{
-   	return FunctionObjects::BlendEquationSeparateiEXT(buf, modeRGB, modeAlpha);
-}
-
 inline void glBlendEquationi(GLuint buf, GLenum mode)
 {
    	return FunctionObjects::BlendEquationi(buf, mode);
@@ -637,11 +577,6 @@ inline void glBlendEquationi(GLuint buf, GLenum mode)
 inline void glBlendEquationiARB(GLuint buf, GLenum mode)
 {
    	return FunctionObjects::BlendEquationiARB(buf, mode);
-}
-
-inline void glBlendEquationiEXT(GLuint buf, GLenum mode)
-{
-   	return FunctionObjects::BlendEquationiEXT(buf, mode);
 }
 
 inline void glBlendFunc(GLenum sfactor, GLenum dfactor)
@@ -674,11 +609,6 @@ inline void glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum srcRGB, GLenum dstR
    	return FunctionObjects::BlendFuncSeparateIndexedAMD(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
 
-inline void glBlendFuncSeparateOES(GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
-{
-   	return FunctionObjects::BlendFuncSeparateOES(srcRGB, dstRGB, srcAlpha, dstAlpha);
-}
-
 inline void glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 {
    	return FunctionObjects::BlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
@@ -687,11 +617,6 @@ inline void glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenu
 inline void glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 {
    	return FunctionObjects::BlendFuncSeparateiARB(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
-}
-
-inline void glBlendFuncSeparateiEXT(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
-{
-   	return FunctionObjects::BlendFuncSeparateiEXT(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
 
 inline void glBlendFunci(GLuint buf, GLenum src, GLenum dst)
@@ -704,11 +629,6 @@ inline void glBlendFunciARB(GLuint buf, GLenum src, GLenum dst)
    	return FunctionObjects::BlendFunciARB(buf, src, dst);
 }
 
-inline void glBlendFunciEXT(GLuint buf, GLenum src, GLenum dst)
-{
-   	return FunctionObjects::BlendFunciEXT(buf, src, dst);
-}
-
 inline void glBlendParameteriNV(GLenum pname, GLint value)
 {
    	return FunctionObjects::BlendParameteriNV(pname, value);
@@ -719,19 +639,9 @@ inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1
    	return FunctionObjects::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
-inline void glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
-{
-   	return FunctionObjects::BlitFramebufferANGLE(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-}
-
 inline void glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
    	return FunctionObjects::BlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-}
-
-inline void glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
-{
-   	return FunctionObjects::BlitFramebufferNV(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
 inline void glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length)
@@ -787,11 +697,6 @@ inline GLenum glCheckFramebufferStatus(GLenum target)
 inline GLenum glCheckFramebufferStatusEXT(GLenum target)
 {
    	return FunctionObjects::CheckFramebufferStatusEXT(target);
-}
-
-inline GLenum glCheckFramebufferStatusOES(GLenum target)
-{
-   	return FunctionObjects::CheckFramebufferStatusOES(target);
 }
 
 inline GLenum glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target)
@@ -869,11 +774,6 @@ inline void glClearColorIuiEXT(GLuint red, GLuint green, GLuint blue, GLuint alp
    	return FunctionObjects::ClearColorIuiEXT(red, green, blue, alpha);
 }
 
-inline void glClearColorx(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::ClearColorx(red, green, blue, alpha);
-}
-
 inline void glClearColorxOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
 {
    	return FunctionObjects::ClearColorxOES(red, green, blue, alpha);
@@ -897,11 +797,6 @@ inline void glClearDepthf(GLfloat d)
 inline void glClearDepthfOES(GLclampf depth)
 {
    	return FunctionObjects::ClearDepthfOES(depth);
-}
-
-inline void glClearDepthx(GLfixed depth)
-{
-   	return FunctionObjects::ClearDepthx(depth);
 }
 
 inline void glClearDepthxOES(GLfixed depth)
@@ -964,39 +859,14 @@ inline GLenum glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
    	return FunctionObjects::ClientWaitSync(sync, flags, timeout);
 }
 
-inline GLenum glClientWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout)
-{
-   	return FunctionObjects::ClientWaitSyncAPPLE(sync, flags, timeout);
-}
-
 inline void glClipPlane(GLenum plane, const GLdouble * equation)
 {
    	return FunctionObjects::ClipPlane(plane, equation);
 }
 
-inline void glClipPlanef(GLenum p, const GLfloat * eqn)
-{
-   	return FunctionObjects::ClipPlanef(p, eqn);
-}
-
-inline void glClipPlanefIMG(GLenum p, const GLfloat * eqn)
-{
-   	return FunctionObjects::ClipPlanefIMG(p, eqn);
-}
-
 inline void glClipPlanefOES(GLenum plane, const GLfloat * equation)
 {
    	return FunctionObjects::ClipPlanefOES(plane, equation);
-}
-
-inline void glClipPlanex(GLenum plane, const GLfixed * equation)
-{
-   	return FunctionObjects::ClipPlanex(plane, equation);
-}
-
-inline void glClipPlanexIMG(GLenum p, const GLfixed * eqn)
-{
-   	return FunctionObjects::ClipPlanexIMG(p, eqn);
 }
 
 inline void glClipPlanexOES(GLenum plane, const GLfixed * equation)
@@ -1234,11 +1104,6 @@ inline void glColor4usv(const GLushort * v)
    	return FunctionObjects::Color4usv(v);
 }
 
-inline void glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
-{
-   	return FunctionObjects::Color4x(red, green, blue, alpha);
-}
-
 inline void glColor4xOES(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha)
 {
    	return FunctionObjects::Color4xOES(red, green, blue, alpha);
@@ -1282,11 +1147,6 @@ inline void glColorMaskIndexedEXT(GLuint index, GLboolean r, GLboolean g, GLbool
 inline void glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
    	return FunctionObjects::ColorMaski(index, r, g, b, a);
-}
-
-inline void glColorMaskiEXT(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
-{
-   	return FunctionObjects::ColorMaskiEXT(index, r, g, b, a);
 }
 
 inline void glColorMaterial(GLenum face, GLenum mode)
@@ -1489,11 +1349,6 @@ inline void glCompressedTexImage3DARB(GLenum target, GLint level, GLenum interna
    	return FunctionObjects::CompressedTexImage3DARB(target, level, internalformat, width, height, depth, border, imageSize, data);
 }
 
-inline void glCompressedTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data)
-{
-   	return FunctionObjects::CompressedTexImage3DOES(target, level, internalformat, width, height, depth, border, imageSize, data);
-}
-
 inline void glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data)
 {
    	return FunctionObjects::CompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
@@ -1522,11 +1377,6 @@ inline void glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset,
 inline void glCompressedTexSubImage3DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data)
 {
    	return FunctionObjects::CompressedTexSubImage3DARB(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
-}
-
-inline void glCompressedTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data)
-{
-   	return FunctionObjects::CompressedTexSubImage3DOES(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 }
 
 inline void glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * bits)
@@ -1634,11 +1484,6 @@ inline void glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr 
    	return FunctionObjects::CopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
 }
 
-inline void glCopyBufferSubDataNV(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
-{
-   	return FunctionObjects::CopyBufferSubDataNV(readTarget, writeTarget, readOffset, writeOffset, size);
-}
-
 inline void glCopyColorSubTable(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width)
 {
    	return FunctionObjects::CopyColorSubTable(target, start, x, y, width);
@@ -1682,11 +1527,6 @@ inline void glCopyConvolutionFilter2DEXT(GLenum target, GLenum internalformat, G
 inline void glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
 {
    	return FunctionObjects::CopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
-}
-
-inline void glCopyImageSubDataEXT(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
-{
-   	return FunctionObjects::CopyImageSubDataEXT(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
 }
 
 inline void glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
@@ -1779,11 +1619,6 @@ inline void glCopyTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GL
    	return FunctionObjects::CopyTexSubImage3DEXT(target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
 
-inline void glCopyTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
-{
-   	return FunctionObjects::CopyTexSubImage3DOES(target, level, xoffset, yoffset, zoffset, x, y, width, height);
-}
-
 inline void glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
    	return FunctionObjects::CopyTextureImage1DEXT(texture, target, level, internalformat, x, y, width, border);
@@ -1792,11 +1627,6 @@ inline void glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, 
 inline void glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
    	return FunctionObjects::CopyTextureImage2DEXT(texture, target, level, internalformat, x, y, width, height, border);
-}
-
-inline void glCopyTextureLevelsAPPLE(GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount)
-{
-   	return FunctionObjects::CopyTextureLevelsAPPLE(destinationTexture, sourceTexture, sourceBaseLevel, sourceLevelCount);
 }
 
 inline void glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
@@ -1834,16 +1664,6 @@ inline void glCoverStrokePathNV(GLuint path, GLenum coverMode)
    	return FunctionObjects::CoverStrokePathNV(path, coverMode);
 }
 
-inline void glCoverageMaskNV(GLboolean mask)
-{
-   	return FunctionObjects::CoverageMaskNV(mask);
-}
-
-inline void glCoverageOperationNV(GLenum operation)
-{
-   	return FunctionObjects::CoverageOperationNV(operation);
-}
-
 inline void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle)
 {
    	return FunctionObjects::CreatePerfQueryINTEL(queryId, queryHandle);
@@ -1879,11 +1699,6 @@ inline GLuint glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar *c
    	return FunctionObjects::CreateShaderProgramv(type, count, strings);
 }
 
-inline GLuint glCreateShaderProgramvEXT(GLenum type, GLsizei count, const GLchar ** strings)
-{
-   	return FunctionObjects::CreateShaderProgramvEXT(type, count, strings);
-}
-
 inline GLsync glCreateSyncFromCLeventARB(struct _cl_context * context, struct _cl_event * event, GLbitfield flags)
 {
    	return FunctionObjects::CreateSyncFromCLeventARB(context, event, flags);
@@ -1909,11 +1724,6 @@ inline void glCurrentPaletteMatrixARB(GLint index)
    	return FunctionObjects::CurrentPaletteMatrixARB(index);
 }
 
-inline void glCurrentPaletteMatrixOES(GLuint matrixpaletteindex)
-{
-   	return FunctionObjects::CurrentPaletteMatrixOES(matrixpaletteindex);
-}
-
 inline void glDebugMessageCallback(GLDEBUGPROC callback, const void * userParam)
 {
    	return FunctionObjects::DebugMessageCallback(callback, userParam);
@@ -1929,11 +1739,6 @@ inline void glDebugMessageCallbackARB(GLDEBUGPROCARB callback, const void * user
    	return FunctionObjects::DebugMessageCallbackARB(callback, userParam);
 }
 
-inline void glDebugMessageCallbackKHR(GLDEBUGPROCKHR callback, const void * userParam)
-{
-   	return FunctionObjects::DebugMessageCallbackKHR(callback, userParam);
-}
-
 inline void glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled)
 {
    	return FunctionObjects::DebugMessageControl(source, type, severity, count, ids, enabled);
@@ -1942,11 +1747,6 @@ inline void glDebugMessageControl(GLenum source, GLenum type, GLenum severity, G
 inline void glDebugMessageControlARB(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled)
 {
    	return FunctionObjects::DebugMessageControlARB(source, type, severity, count, ids, enabled);
-}
-
-inline void glDebugMessageControlKHR(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled)
-{
-   	return FunctionObjects::DebugMessageControlKHR(source, type, severity, count, ids, enabled);
 }
 
 inline void glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint * ids, GLboolean enabled)
@@ -1967,11 +1767,6 @@ inline void glDebugMessageInsertAMD(GLenum category, GLenum severity, GLuint id,
 inline void glDebugMessageInsertARB(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf)
 {
    	return FunctionObjects::DebugMessageInsertARB(source, type, id, severity, length, buf);
-}
-
-inline void glDebugMessageInsertKHR(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar * buf)
-{
-   	return FunctionObjects::DebugMessageInsertKHR(source, type, id, severity, length, buf);
 }
 
 inline void glDeformSGIX(GLbitfield mask)
@@ -2029,11 +1824,6 @@ inline void glDeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers)
    	return FunctionObjects::DeleteFramebuffersEXT(n, framebuffers);
 }
 
-inline void glDeleteFramebuffersOES(GLsizei n, const GLuint * framebuffers)
-{
-   	return FunctionObjects::DeleteFramebuffersOES(n, framebuffers);
-}
-
 inline void glDeleteLists(GLuint list, GLsizei range)
 {
    	return FunctionObjects::DeleteLists(list, range);
@@ -2084,11 +1874,6 @@ inline void glDeleteProgramPipelines(GLsizei n, const GLuint * pipelines)
    	return FunctionObjects::DeleteProgramPipelines(n, pipelines);
 }
 
-inline void glDeleteProgramPipelinesEXT(GLsizei n, const GLuint * pipelines)
-{
-   	return FunctionObjects::DeleteProgramPipelinesEXT(n, pipelines);
-}
-
 inline void glDeleteProgramsARB(GLsizei n, const GLuint * programs)
 {
    	return FunctionObjects::DeleteProgramsARB(n, programs);
@@ -2109,11 +1894,6 @@ inline void glDeleteQueriesARB(GLsizei n, const GLuint * ids)
    	return FunctionObjects::DeleteQueriesARB(n, ids);
 }
 
-inline void glDeleteQueriesEXT(GLsizei n, const GLuint * ids)
-{
-   	return FunctionObjects::DeleteQueriesEXT(n, ids);
-}
-
 inline void glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers)
 {
    	return FunctionObjects::DeleteRenderbuffers(n, renderbuffers);
@@ -2122,11 +1902,6 @@ inline void glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers)
 inline void glDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers)
 {
    	return FunctionObjects::DeleteRenderbuffersEXT(n, renderbuffers);
-}
-
-inline void glDeleteRenderbuffersOES(GLsizei n, const GLuint * renderbuffers)
-{
-   	return FunctionObjects::DeleteRenderbuffersOES(n, renderbuffers);
 }
 
 inline void glDeleteSamplers(GLsizei count, const GLuint * samplers)
@@ -2142,11 +1917,6 @@ inline void glDeleteShader(GLuint shader)
 inline void glDeleteSync(GLsync sync)
 {
    	return FunctionObjects::DeleteSync(sync);
-}
-
-inline void glDeleteSyncAPPLE(GLsync sync)
-{
-   	return FunctionObjects::DeleteSyncAPPLE(sync);
 }
 
 inline void glDeleteTextures(GLsizei n, const GLuint * textures)
@@ -2177,11 +1947,6 @@ inline void glDeleteVertexArrays(GLsizei n, const GLuint * arrays)
 inline void glDeleteVertexArraysAPPLE(GLsizei n, const GLuint * arrays)
 {
    	return FunctionObjects::DeleteVertexArraysAPPLE(n, arrays);
-}
-
-inline void glDeleteVertexArraysOES(GLsizei n, const GLuint * arrays)
-{
-   	return FunctionObjects::DeleteVertexArraysOES(n, arrays);
 }
 
 inline void glDeleteVertexShaderEXT(GLuint id)
@@ -2239,11 +2004,6 @@ inline void glDepthRangefOES(GLclampf n, GLclampf f)
    	return FunctionObjects::DepthRangefOES(n, f);
 }
 
-inline void glDepthRangex(GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::DepthRangex(n, f);
-}
-
 inline void glDepthRangexOES(GLfixed n, GLfixed f)
 {
    	return FunctionObjects::DepthRangexOES(n, f);
@@ -2282,11 +2042,6 @@ inline void glDisableClientStateIndexedEXT(GLenum array, GLuint index)
 inline void glDisableClientStateiEXT(GLenum array, GLuint index)
 {
    	return FunctionObjects::DisableClientStateiEXT(array, index);
-}
-
-inline void glDisableDriverControlQCOM(GLuint driverControl)
-{
-   	return FunctionObjects::DisableDriverControlQCOM(driverControl);
 }
 
 inline void glDisableIndexedEXT(GLenum target, GLuint index)
@@ -2329,16 +2084,6 @@ inline void glDisablei(GLenum target, GLuint index)
    	return FunctionObjects::Disablei(target, index);
 }
 
-inline void glDisableiEXT(GLenum target, GLuint index)
-{
-   	return FunctionObjects::DisableiEXT(target, index);
-}
-
-inline void glDiscardFramebufferEXT(GLenum target, GLsizei numAttachments, const GLenum * attachments)
-{
-   	return FunctionObjects::DiscardFramebufferEXT(target, numAttachments, attachments);
-}
-
 inline void glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
 {
    	return FunctionObjects::DispatchCompute(num_groups_x, num_groups_y, num_groups_z);
@@ -2374,11 +2119,6 @@ inline void glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsiz
    	return FunctionObjects::DrawArraysInstanced(mode, first, count, instancecount);
 }
 
-inline void glDrawArraysInstancedANGLE(GLenum mode, GLint first, GLsizei count, GLsizei primcount)
-{
-   	return FunctionObjects::DrawArraysInstancedANGLE(mode, first, count, primcount);
-}
-
 inline void glDrawArraysInstancedARB(GLenum mode, GLint first, GLsizei count, GLsizei primcount)
 {
    	return FunctionObjects::DrawArraysInstancedARB(mode, first, count, primcount);
@@ -2392,11 +2132,6 @@ inline void glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei 
 inline void glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
    	return FunctionObjects::DrawArraysInstancedEXT(mode, start, count, primcount);
-}
-
-inline void glDrawArraysInstancedNV(GLenum mode, GLint first, GLsizei count, GLsizei primcount)
-{
-   	return FunctionObjects::DrawArraysInstancedNV(mode, first, count, primcount);
 }
 
 inline void glDrawBuffer(GLenum mode)
@@ -2417,21 +2152,6 @@ inline void glDrawBuffersARB(GLsizei n, const GLenum * bufs)
 inline void glDrawBuffersATI(GLsizei n, const GLenum * bufs)
 {
    	return FunctionObjects::DrawBuffersATI(n, bufs);
-}
-
-inline void glDrawBuffersEXT(GLsizei n, const GLenum * bufs)
-{
-   	return FunctionObjects::DrawBuffersEXT(n, bufs);
-}
-
-inline void glDrawBuffersIndexedEXT(GLint n, const GLenum * location, const GLint * indices)
-{
-   	return FunctionObjects::DrawBuffersIndexedEXT(n, location, indices);
-}
-
-inline void glDrawBuffersNV(GLsizei n, const GLenum * bufs)
-{
-   	return FunctionObjects::DrawBuffersNV(n, bufs);
 }
 
 inline void glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count)
@@ -2464,11 +2184,6 @@ inline void glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, con
    	return FunctionObjects::DrawElementsInstanced(mode, count, type, indices, instancecount);
 }
 
-inline void glDrawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount)
-{
-   	return FunctionObjects::DrawElementsInstancedANGLE(mode, count, type, indices, primcount);
-}
-
 inline void glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount)
 {
    	return FunctionObjects::DrawElementsInstancedARB(mode, count, type, indices, primcount);
@@ -2492,11 +2207,6 @@ inline void glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei c
 inline void glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount)
 {
    	return FunctionObjects::DrawElementsInstancedEXT(mode, count, type, indices, primcount);
-}
-
-inline void glDrawElementsInstancedNV(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount)
-{
-   	return FunctionObjects::DrawElementsInstancedNV(mode, count, type, indices, primcount);
 }
 
 inline void glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width)
@@ -2534,49 +2244,9 @@ inline void glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsize
    	return FunctionObjects::DrawRangeElementsEXT(mode, start, end, count, type, indices);
 }
 
-inline void glDrawTexfOES(GLfloat x, GLfloat y, GLfloat z, GLfloat width, GLfloat height)
-{
-   	return FunctionObjects::DrawTexfOES(x, y, z, width, height);
-}
-
-inline void glDrawTexfvOES(const GLfloat * coords)
-{
-   	return FunctionObjects::DrawTexfvOES(coords);
-}
-
-inline void glDrawTexiOES(GLint x, GLint y, GLint z, GLint width, GLint height)
-{
-   	return FunctionObjects::DrawTexiOES(x, y, z, width, height);
-}
-
-inline void glDrawTexivOES(const GLint * coords)
-{
-   	return FunctionObjects::DrawTexivOES(coords);
-}
-
-inline void glDrawTexsOES(GLshort x, GLshort y, GLshort z, GLshort width, GLshort height)
-{
-   	return FunctionObjects::DrawTexsOES(x, y, z, width, height);
-}
-
-inline void glDrawTexsvOES(const GLshort * coords)
-{
-   	return FunctionObjects::DrawTexsvOES(coords);
-}
-
 inline void glDrawTextureNV(GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1)
 {
    	return FunctionObjects::DrawTextureNV(texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1);
-}
-
-inline void glDrawTexxOES(GLfixed x, GLfixed y, GLfixed z, GLfixed width, GLfixed height)
-{
-   	return FunctionObjects::DrawTexxOES(x, y, z, width, height);
-}
-
-inline void glDrawTexxvOES(const GLfixed * coords)
-{
-   	return FunctionObjects::DrawTexxvOES(coords);
 }
 
 inline void glDrawTransformFeedback(GLenum mode, GLuint id)
@@ -2602,16 +2272,6 @@ inline void glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream)
 inline void glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount)
 {
    	return FunctionObjects::DrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
-}
-
-inline void glEGLImageTargetRenderbufferStorageOES(GLenum target, GLeglImageOES image)
-{
-   	return FunctionObjects::EGLImageTargetRenderbufferStorageOES(target, image);
-}
-
-inline void glEGLImageTargetTexture2DOES(GLenum target, GLeglImageOES image)
-{
-   	return FunctionObjects::EGLImageTargetTexture2DOES(target, image);
 }
 
 inline void glEdgeFlag(GLboolean flag)
@@ -2674,11 +2334,6 @@ inline void glEnableClientStateiEXT(GLenum array, GLuint index)
    	return FunctionObjects::EnableClientStateiEXT(array, index);
 }
 
-inline void glEnableDriverControlQCOM(GLuint driverControl)
-{
-   	return FunctionObjects::EnableDriverControlQCOM(driverControl);
-}
-
 inline void glEnableIndexedEXT(GLenum target, GLuint index)
 {
    	return FunctionObjects::EnableIndexedEXT(target, index);
@@ -2717,11 +2372,6 @@ inline void glEnableVertexAttribArrayARB(GLuint index)
 inline void glEnablei(GLenum target, GLuint index)
 {
    	return FunctionObjects::Enablei(target, index);
-}
-
-inline void glEnableiEXT(GLenum target, GLuint index)
-{
-   	return FunctionObjects::EnableiEXT(target, index);
 }
 
 inline void glEnd()
@@ -2779,19 +2429,9 @@ inline void glEndQueryARB(GLenum target)
    	return FunctionObjects::EndQueryARB(target);
 }
 
-inline void glEndQueryEXT(GLenum target)
-{
-   	return FunctionObjects::EndQueryEXT(target);
-}
-
 inline void glEndQueryIndexed(GLenum target, GLuint index)
 {
    	return FunctionObjects::EndQueryIndexed(target, index);
-}
-
-inline void glEndTilingQCOM(GLbitfield preserveMask)
-{
-   	return FunctionObjects::EndTilingQCOM(preserveMask);
 }
 
 inline void glEndTransformFeedback()
@@ -2909,66 +2549,6 @@ inline void glExecuteProgramNV(GLenum target, GLuint id, const GLfloat * params)
    	return FunctionObjects::ExecuteProgramNV(target, id, params);
 }
 
-inline void glExtGetBufferPointervQCOM(GLenum target, void ** params)
-{
-   	return FunctionObjects::ExtGetBufferPointervQCOM(target, params);
-}
-
-inline void glExtGetBuffersQCOM(GLuint * buffers, GLint maxBuffers, GLint * numBuffers)
-{
-   	return FunctionObjects::ExtGetBuffersQCOM(buffers, maxBuffers, numBuffers);
-}
-
-inline void glExtGetFramebuffersQCOM(GLuint * framebuffers, GLint maxFramebuffers, GLint * numFramebuffers)
-{
-   	return FunctionObjects::ExtGetFramebuffersQCOM(framebuffers, maxFramebuffers, numFramebuffers);
-}
-
-inline void glExtGetProgramBinarySourceQCOM(GLuint program, GLenum shadertype, GLchar * source, GLint * length)
-{
-   	return FunctionObjects::ExtGetProgramBinarySourceQCOM(program, shadertype, source, length);
-}
-
-inline void glExtGetProgramsQCOM(GLuint * programs, GLint maxPrograms, GLint * numPrograms)
-{
-   	return FunctionObjects::ExtGetProgramsQCOM(programs, maxPrograms, numPrograms);
-}
-
-inline void glExtGetRenderbuffersQCOM(GLuint * renderbuffers, GLint maxRenderbuffers, GLint * numRenderbuffers)
-{
-   	return FunctionObjects::ExtGetRenderbuffersQCOM(renderbuffers, maxRenderbuffers, numRenderbuffers);
-}
-
-inline void glExtGetShadersQCOM(GLuint * shaders, GLint maxShaders, GLint * numShaders)
-{
-   	return FunctionObjects::ExtGetShadersQCOM(shaders, maxShaders, numShaders);
-}
-
-inline void glExtGetTexLevelParameterivQCOM(GLuint texture, GLenum face, GLint level, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::ExtGetTexLevelParameterivQCOM(texture, face, level, pname, params);
-}
-
-inline void glExtGetTexSubImageQCOM(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, void * texels)
-{
-   	return FunctionObjects::ExtGetTexSubImageQCOM(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, texels);
-}
-
-inline void glExtGetTexturesQCOM(GLuint * textures, GLint maxTextures, GLint * numTextures)
-{
-   	return FunctionObjects::ExtGetTexturesQCOM(textures, maxTextures, numTextures);
-}
-
-inline GLboolean glExtIsProgramBinaryQCOM(GLuint program)
-{
-   	return FunctionObjects::ExtIsProgramBinaryQCOM(program);
-}
-
-inline void glExtTexObjectStateOverrideiQCOM(GLenum target, GLenum pname, GLint param)
-{
-   	return FunctionObjects::ExtTexObjectStateOverrideiQCOM(target, pname, param);
-}
-
 inline void glExtractComponentEXT(GLuint res, GLuint src, GLuint num)
 {
    	return FunctionObjects::ExtractComponentEXT(res, src, num);
@@ -2987,11 +2567,6 @@ inline void glFeedbackBufferxOES(GLsizei n, GLenum type, const GLfixed * buffer)
 inline GLsync glFenceSync(GLenum condition, GLbitfield flags)
 {
    	return FunctionObjects::FenceSync(condition, flags);
-}
-
-inline GLsync glFenceSyncAPPLE(GLenum condition, GLbitfield flags)
-{
-   	return FunctionObjects::FenceSyncAPPLE(condition, flags);
 }
 
 inline void glFinalCombinerInputNV(GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage)
@@ -3042,11 +2617,6 @@ inline void glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr 
 inline void glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsizeiptr size)
 {
    	return FunctionObjects::FlushMappedBufferRangeAPPLE(target, offset, size);
-}
-
-inline void glFlushMappedBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length)
-{
-   	return FunctionObjects::FlushMappedBufferRangeEXT(target, offset, length);
 }
 
 inline void glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length)
@@ -3174,19 +2744,9 @@ inline void glFogiv(GLenum pname, const GLint * params)
    	return FunctionObjects::Fogiv(pname, params);
 }
 
-inline void glFogx(GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Fogx(pname, param);
-}
-
 inline void glFogxOES(GLenum pname, GLfixed param)
 {
    	return FunctionObjects::FogxOES(pname, param);
-}
-
-inline void glFogxv(GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Fogxv(pname, param);
 }
 
 inline void glFogxvOES(GLenum pname, const GLfixed * param)
@@ -3299,11 +2859,6 @@ inline void glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenu
    	return FunctionObjects::FramebufferRenderbufferEXT(target, attachment, renderbuffertarget, renderbuffer);
 }
 
-inline void glFramebufferRenderbufferOES(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
-{
-   	return FunctionObjects::FramebufferRenderbufferOES(target, attachment, renderbuffertarget, renderbuffer);
-}
-
 inline void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
    	return FunctionObjects::FramebufferTexture(target, attachment, texture, level);
@@ -3329,21 +2884,6 @@ inline void glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum t
    	return FunctionObjects::FramebufferTexture2DEXT(target, attachment, textarget, texture, level);
 }
 
-inline void glFramebufferTexture2DMultisampleEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples)
-{
-   	return FunctionObjects::FramebufferTexture2DMultisampleEXT(target, attachment, textarget, texture, level, samples);
-}
-
-inline void glFramebufferTexture2DMultisampleIMG(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples)
-{
-   	return FunctionObjects::FramebufferTexture2DMultisampleIMG(target, attachment, textarget, texture, level, samples);
-}
-
-inline void glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
-{
-   	return FunctionObjects::FramebufferTexture2DOES(target, attachment, textarget, texture, level);
-}
-
 inline void glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
    	return FunctionObjects::FramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
@@ -3352,11 +2892,6 @@ inline void glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum text
 inline void glFramebufferTexture3DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
    	return FunctionObjects::FramebufferTexture3DEXT(target, attachment, textarget, texture, level, zoffset);
-}
-
-inline void glFramebufferTexture3DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
-{
-   	return FunctionObjects::FramebufferTexture3DOES(target, attachment, textarget, texture, level, zoffset);
 }
 
 inline void glFramebufferTextureARB(GLenum target, GLenum attachment, GLuint texture, GLint level)
@@ -3409,19 +2944,9 @@ inline void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble t
    	return FunctionObjects::Frustum(left, right, bottom, top, zNear, zFar);
 }
 
-inline void glFrustumf(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Frustumf(l, r, b, t, n, f);
-}
-
 inline void glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
 {
    	return FunctionObjects::FrustumfOES(l, r, b, t, n, f);
-}
-
-inline void glFrustumx(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Frustumx(l, r, b, t, n, f);
 }
 
 inline void glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
@@ -3469,11 +2994,6 @@ inline void glGenFramebuffersEXT(GLsizei n, GLuint * framebuffers)
    	return FunctionObjects::GenFramebuffersEXT(n, framebuffers);
 }
 
-inline void glGenFramebuffersOES(GLsizei n, GLuint * framebuffers)
-{
-   	return FunctionObjects::GenFramebuffersOES(n, framebuffers);
-}
-
 inline GLuint glGenLists(GLsizei range)
 {
    	return FunctionObjects::GenLists(range);
@@ -3504,11 +3024,6 @@ inline void glGenProgramPipelines(GLsizei n, GLuint * pipelines)
    	return FunctionObjects::GenProgramPipelines(n, pipelines);
 }
 
-inline void glGenProgramPipelinesEXT(GLsizei n, GLuint * pipelines)
-{
-   	return FunctionObjects::GenProgramPipelinesEXT(n, pipelines);
-}
-
 inline void glGenProgramsARB(GLsizei n, GLuint * programs)
 {
    	return FunctionObjects::GenProgramsARB(n, programs);
@@ -3529,11 +3044,6 @@ inline void glGenQueriesARB(GLsizei n, GLuint * ids)
    	return FunctionObjects::GenQueriesARB(n, ids);
 }
 
-inline void glGenQueriesEXT(GLsizei n, GLuint * ids)
-{
-   	return FunctionObjects::GenQueriesEXT(n, ids);
-}
-
 inline void glGenRenderbuffers(GLsizei n, GLuint * renderbuffers)
 {
    	return FunctionObjects::GenRenderbuffers(n, renderbuffers);
@@ -3542,11 +3052,6 @@ inline void glGenRenderbuffers(GLsizei n, GLuint * renderbuffers)
 inline void glGenRenderbuffersEXT(GLsizei n, GLuint * renderbuffers)
 {
    	return FunctionObjects::GenRenderbuffersEXT(n, renderbuffers);
-}
-
-inline void glGenRenderbuffersOES(GLsizei n, GLuint * renderbuffers)
-{
-   	return FunctionObjects::GenRenderbuffersOES(n, renderbuffers);
 }
 
 inline void glGenSamplers(GLsizei count, GLuint * samplers)
@@ -3589,11 +3094,6 @@ inline void glGenVertexArraysAPPLE(GLsizei n, GLuint * arrays)
    	return FunctionObjects::GenVertexArraysAPPLE(n, arrays);
 }
 
-inline void glGenVertexArraysOES(GLsizei n, GLuint * arrays)
-{
-   	return FunctionObjects::GenVertexArraysOES(n, arrays);
-}
-
 inline GLuint glGenVertexShadersEXT(GLuint range)
 {
    	return FunctionObjects::GenVertexShadersEXT(range);
@@ -3607,11 +3107,6 @@ inline void glGenerateMipmap(GLenum target)
 inline void glGenerateMipmapEXT(GLenum target)
 {
    	return FunctionObjects::GenerateMipmapEXT(target);
-}
-
-inline void glGenerateMipmapOES(GLenum target)
-{
-   	return FunctionObjects::GenerateMipmapOES(target);
 }
 
 inline void glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target)
@@ -3764,11 +3259,6 @@ inline void glGetBufferPointervARB(GLenum target, GLenum pname, void ** params)
    	return FunctionObjects::GetBufferPointervARB(target, pname, params);
 }
 
-inline void glGetBufferPointervOES(GLenum target, GLenum pname, void ** params)
-{
-   	return FunctionObjects::GetBufferPointervOES(target, pname, params);
-}
-
 inline void glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, void * data)
 {
    	return FunctionObjects::GetBufferSubData(target, offset, size, data);
@@ -3784,19 +3274,9 @@ inline void glGetClipPlane(GLenum plane, GLdouble * equation)
    	return FunctionObjects::GetClipPlane(plane, equation);
 }
 
-inline void glGetClipPlanef(GLenum plane, GLfloat * equation)
-{
-   	return FunctionObjects::GetClipPlanef(plane, equation);
-}
-
 inline void glGetClipPlanefOES(GLenum plane, GLfloat * equation)
 {
    	return FunctionObjects::GetClipPlanefOES(plane, equation);
-}
-
-inline void glGetClipPlanex(GLenum plane, GLfixed * equation)
-{
-   	return FunctionObjects::GetClipPlanex(plane, equation);
 }
 
 inline void glGetClipPlanexOES(GLenum plane, GLfixed * equation)
@@ -3944,11 +3424,6 @@ inline GLuint glGetDebugMessageLogARB(GLuint count, GLsizei bufSize, GLenum * so
    	return FunctionObjects::GetDebugMessageLogARB(count, bufSize, sources, types, ids, severities, lengths, messageLog);
 }
 
-inline GLuint glGetDebugMessageLogKHR(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog)
-{
-   	return FunctionObjects::GetDebugMessageLogKHR(count, bufSize, sources, types, ids, severities, lengths, messageLog);
-}
-
 inline void glGetDetailTexFuncSGIS(GLenum target, GLfloat * points)
 {
    	return FunctionObjects::GetDetailTexFuncSGIS(target, points);
@@ -3974,16 +3449,6 @@ inline void glGetDoublev(GLenum pname, GLdouble * data)
    	return FunctionObjects::GetDoublev(pname, data);
 }
 
-inline void glGetDriverControlStringQCOM(GLuint driverControl, GLsizei bufSize, GLsizei * length, GLchar * driverControlString)
-{
-   	return FunctionObjects::GetDriverControlStringQCOM(driverControl, bufSize, length, driverControlString);
-}
-
-inline void glGetDriverControlsQCOM(GLint * num, GLsizei size, GLuint * driverControls)
-{
-   	return FunctionObjects::GetDriverControlsQCOM(num, size, driverControls);
-}
-
 inline GLenum glGetError()
 {
    	return FunctionObjects::GetError();
@@ -4007,11 +3472,6 @@ inline void glGetFinalCombinerInputParameterivNV(GLenum variable, GLenum pname, 
 inline void glGetFirstPerfQueryIdINTEL(GLuint * queryId)
 {
    	return FunctionObjects::GetFirstPerfQueryIdINTEL(queryId);
-}
-
-inline void glGetFixedv(GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetFixedv(pname, params);
 }
 
 inline void glGetFixedvOES(GLenum pname, GLfixed * params)
@@ -4089,11 +3549,6 @@ inline void glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attac
    	return FunctionObjects::GetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
 }
 
-inline void glGetFramebufferAttachmentParameterivOES(GLenum target, GLenum attachment, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::GetFramebufferAttachmentParameterivOES(target, attachment, pname, params);
-}
-
 inline void glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetFramebufferParameteriv(target, pname, params);
@@ -4107,11 +3562,6 @@ inline void glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLi
 inline GLenum glGetGraphicsResetStatusARB()
 {
    	return FunctionObjects::GetGraphicsResetStatusARB();
-}
-
-inline GLenum glGetGraphicsResetStatusEXT()
-{
-   	return FunctionObjects::GetGraphicsResetStatusEXT();
 }
 
 inline GLhandleARB glGetHandleARB(GLenum pname)
@@ -4194,11 +3644,6 @@ inline void glGetInteger64v(GLenum pname, GLint64 * data)
    	return FunctionObjects::GetInteger64v(pname, data);
 }
 
-inline void glGetInteger64vAPPLE(GLenum pname, GLint64 * params)
-{
-   	return FunctionObjects::GetInteger64vAPPLE(pname, params);
-}
-
 inline void glGetIntegerIndexedvEXT(GLenum target, GLuint index, GLint * data)
 {
    	return FunctionObjects::GetIntegerIndexedvEXT(target, index, data);
@@ -4207,11 +3652,6 @@ inline void glGetIntegerIndexedvEXT(GLenum target, GLuint index, GLint * data)
 inline void glGetIntegeri_v(GLenum target, GLuint index, GLint * data)
 {
    	return FunctionObjects::GetIntegeri_v(target, index, data);
-}
-
-inline void glGetIntegeri_vEXT(GLenum target, GLuint index, GLint * data)
-{
-   	return FunctionObjects::GetIntegeri_vEXT(target, index, data);
 }
 
 inline void glGetIntegerui64i_vNV(GLenum value, GLuint index, GLuint64EXT * result)
@@ -4267,16 +3707,6 @@ inline void glGetLightiv(GLenum light, GLenum pname, GLint * params)
 inline void glGetLightxOES(GLenum light, GLenum pname, GLfixed * params)
 {
    	return FunctionObjects::GetLightxOES(light, pname, params);
-}
-
-inline void glGetLightxv(GLenum light, GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetLightxv(light, pname, params);
-}
-
-inline void glGetLightxvOES(GLenum light, GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetLightxvOES(light, pname, params);
 }
 
 inline void glGetListParameterfvSGIX(GLuint list, GLenum pname, GLfloat * params)
@@ -4362,16 +3792,6 @@ inline void glGetMaterialiv(GLenum face, GLenum pname, GLint * params)
 inline void glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param)
 {
    	return FunctionObjects::GetMaterialxOES(face, pname, param);
-}
-
-inline void glGetMaterialxv(GLenum face, GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetMaterialxv(face, pname, params);
-}
-
-inline void glGetMaterialxvOES(GLenum face, GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetMaterialxvOES(face, pname, params);
 }
 
 inline void glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values)
@@ -4574,11 +3994,6 @@ inline void glGetObjectLabelEXT(GLenum type, GLuint object, GLsizei bufSize, GLs
    	return FunctionObjects::GetObjectLabelEXT(type, object, bufSize, length, label);
 }
 
-inline void glGetObjectLabelKHR(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei * length, GLchar * label)
-{
-   	return FunctionObjects::GetObjectLabelKHR(identifier, name, bufSize, length, label);
-}
-
 inline void glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat * params)
 {
    	return FunctionObjects::GetObjectParameterfvARB(obj, pname, params);
@@ -4597,11 +4012,6 @@ inline void glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint * par
 inline void glGetObjectPtrLabel(const void * ptr, GLsizei bufSize, GLsizei * length, GLchar * label)
 {
    	return FunctionObjects::GetObjectPtrLabel(ptr, bufSize, length, label);
-}
-
-inline void glGetObjectPtrLabelKHR(const void * ptr, GLsizei bufSize, GLsizei * length, GLchar * label)
-{
-   	return FunctionObjects::GetObjectPtrLabelKHR(ptr, bufSize, length, label);
 }
 
 inline void glGetOcclusionQueryivNV(GLuint id, GLenum pname, GLint * params)
@@ -4789,11 +4199,6 @@ inline void glGetPointervEXT(GLenum pname, void ** params)
    	return FunctionObjects::GetPointervEXT(pname, params);
 }
 
-inline void glGetPointervKHR(GLenum pname, void ** params)
-{
-   	return FunctionObjects::GetPointervKHR(pname, params);
-}
-
 inline void glGetPolygonStipple(GLubyte * mask)
 {
    	return FunctionObjects::GetPolygonStipple(mask);
@@ -4802,11 +4207,6 @@ inline void glGetPolygonStipple(GLubyte * mask)
 inline void glGetProgramBinary(GLuint program, GLsizei bufSize, GLsizei * length, GLenum * binaryFormat, void * binary)
 {
    	return FunctionObjects::GetProgramBinary(program, bufSize, length, binaryFormat, binary);
-}
-
-inline void glGetProgramBinaryOES(GLuint program, GLsizei bufSize, GLsizei * length, GLenum * binaryFormat, void * binary)
-{
-   	return FunctionObjects::GetProgramBinaryOES(program, bufSize, length, binaryFormat, binary);
 }
 
 inline void glGetProgramEnvParameterIivNV(GLenum target, GLuint index, GLint * params)
@@ -4884,19 +4284,9 @@ inline void glGetProgramPipelineInfoLog(GLuint pipeline, GLsizei bufSize, GLsize
    	return FunctionObjects::GetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog);
 }
 
-inline void glGetProgramPipelineInfoLogEXT(GLuint pipeline, GLsizei bufSize, GLsizei * length, GLchar * infoLog)
-{
-   	return FunctionObjects::GetProgramPipelineInfoLogEXT(pipeline, bufSize, length, infoLog);
-}
-
 inline void glGetProgramPipelineiv(GLuint pipeline, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetProgramPipelineiv(pipeline, pname, params);
-}
-
-inline void glGetProgramPipelineivEXT(GLuint pipeline, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::GetProgramPipelineivEXT(pipeline, pname, params);
 }
 
 inline GLuint glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar * name)
@@ -4984,11 +4374,6 @@ inline void glGetQueryObjectivARB(GLuint id, GLenum pname, GLint * params)
    	return FunctionObjects::GetQueryObjectivARB(id, pname, params);
 }
 
-inline void glGetQueryObjectivEXT(GLuint id, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::GetQueryObjectivEXT(id, pname, params);
-}
-
 inline void glGetQueryObjectui64v(GLuint id, GLenum pname, GLuint64 * params)
 {
    	return FunctionObjects::GetQueryObjectui64v(id, pname, params);
@@ -5009,11 +4394,6 @@ inline void glGetQueryObjectuivARB(GLuint id, GLenum pname, GLuint * params)
    	return FunctionObjects::GetQueryObjectuivARB(id, pname, params);
 }
 
-inline void glGetQueryObjectuivEXT(GLuint id, GLenum pname, GLuint * params)
-{
-   	return FunctionObjects::GetQueryObjectuivEXT(id, pname, params);
-}
-
 inline void glGetQueryiv(GLenum target, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetQueryiv(target, pname, params);
@@ -5022,11 +4402,6 @@ inline void glGetQueryiv(GLenum target, GLenum pname, GLint * params)
 inline void glGetQueryivARB(GLenum target, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetQueryivARB(target, pname, params);
-}
-
-inline void glGetQueryivEXT(GLenum target, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::GetQueryivEXT(target, pname, params);
 }
 
 inline void glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint * params)
@@ -5039,29 +4414,14 @@ inline void glGetRenderbufferParameterivEXT(GLenum target, GLenum pname, GLint *
    	return FunctionObjects::GetRenderbufferParameterivEXT(target, pname, params);
 }
 
-inline void glGetRenderbufferParameterivOES(GLenum target, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::GetRenderbufferParameterivOES(target, pname, params);
-}
-
 inline void glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetSamplerParameterIiv(sampler, pname, params);
 }
 
-inline void glGetSamplerParameterIivEXT(GLuint sampler, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::GetSamplerParameterIivEXT(sampler, pname, params);
-}
-
 inline void glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint * params)
 {
    	return FunctionObjects::GetSamplerParameterIuiv(sampler, pname, params);
-}
-
-inline void glGetSamplerParameterIuivEXT(GLuint sampler, GLenum pname, GLuint * params)
-{
-   	return FunctionObjects::GetSamplerParameterIuivEXT(sampler, pname, params);
 }
 
 inline void glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat * params)
@@ -5139,11 +4499,6 @@ inline void glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * le
    	return FunctionObjects::GetSynciv(sync, pname, bufSize, length, values);
 }
 
-inline void glGetSyncivAPPLE(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values)
-{
-   	return FunctionObjects::GetSyncivAPPLE(sync, pname, bufSize, length, values);
-}
-
 inline void glGetTexBumpParameterfvATI(GLenum pname, GLfloat * param)
 {
    	return FunctionObjects::GetTexBumpParameterfvATI(pname, param);
@@ -5162,11 +4517,6 @@ inline void glGetTexEnvfv(GLenum target, GLenum pname, GLfloat * params)
 inline void glGetTexEnviv(GLenum target, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetTexEnviv(target, pname, params);
-}
-
-inline void glGetTexEnvxv(GLenum target, GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexEnvxv(target, pname, params);
 }
 
 inline void glGetTexEnvxvOES(GLenum target, GLenum pname, GLfixed * params)
@@ -5189,19 +4539,9 @@ inline void glGetTexGenfv(GLenum coord, GLenum pname, GLfloat * params)
    	return FunctionObjects::GetTexGenfv(coord, pname, params);
 }
 
-inline void glGetTexGenfvOES(GLenum coord, GLenum pname, GLfloat * params)
-{
-   	return FunctionObjects::GetTexGenfvOES(coord, pname, params);
-}
-
 inline void glGetTexGeniv(GLenum coord, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetTexGeniv(coord, pname, params);
-}
-
-inline void glGetTexGenivOES(GLenum coord, GLenum pname, GLint * params)
-{
-   	return FunctionObjects::GetTexGenivOES(coord, pname, params);
 }
 
 inline void glGetTexGenxvOES(GLenum coord, GLenum pname, GLfixed * params)
@@ -5262,11 +4602,6 @@ inline void glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params)
 inline void glGetTexParameteriv(GLenum target, GLenum pname, GLint * params)
 {
    	return FunctionObjects::GetTexParameteriv(target, pname, params);
-}
-
-inline void glGetTexParameterxv(GLenum target, GLenum pname, GLfixed * params)
-{
-   	return FunctionObjects::GetTexParameterxv(target, pname, params);
 }
 
 inline void glGetTexParameterxvOES(GLenum target, GLenum pname, GLfixed * params)
@@ -5347,11 +4682,6 @@ inline void glGetTransformFeedbackVaryingEXT(GLuint program, GLuint index, GLsiz
 inline void glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint * location)
 {
    	return FunctionObjects::GetTransformFeedbackVaryingNV(program, index, location);
-}
-
-inline void glGetTranslatedShaderSourceANGLE(GLuint shader, GLsizei bufsize, GLsizei * length, GLchar * source)
-{
-   	return FunctionObjects::GetTranslatedShaderSourceANGLE(shader, bufsize, length, source);
 }
 
 inline GLuint glGetUniformBlockIndex(GLuint program, const GLchar * uniformBlockName)
@@ -5724,19 +5054,9 @@ inline void glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, 
    	return FunctionObjects::GetnUniformfvARB(program, location, bufSize, params);
 }
 
-inline void glGetnUniformfvEXT(GLuint program, GLint location, GLsizei bufSize, GLfloat * params)
-{
-   	return FunctionObjects::GetnUniformfvEXT(program, location, bufSize, params);
-}
-
 inline void glGetnUniformivARB(GLuint program, GLint location, GLsizei bufSize, GLint * params)
 {
    	return FunctionObjects::GetnUniformivARB(program, location, bufSize, params);
-}
-
-inline void glGetnUniformivEXT(GLuint program, GLint location, GLsizei bufSize, GLint * params)
-{
-   	return FunctionObjects::GetnUniformivEXT(program, location, bufSize, params);
 }
 
 inline void glGetnUniformuivARB(GLuint program, GLint location, GLsizei bufSize, GLuint * params)
@@ -6024,11 +5344,6 @@ inline GLboolean glIsEnabledi(GLenum target, GLuint index)
    	return FunctionObjects::IsEnabledi(target, index);
 }
 
-inline GLboolean glIsEnablediEXT(GLenum target, GLuint index)
-{
-   	return FunctionObjects::IsEnablediEXT(target, index);
-}
-
 inline GLboolean glIsFenceAPPLE(GLuint fence)
 {
    	return FunctionObjects::IsFenceAPPLE(fence);
@@ -6047,11 +5362,6 @@ inline GLboolean glIsFramebuffer(GLuint framebuffer)
 inline GLboolean glIsFramebufferEXT(GLuint framebuffer)
 {
    	return FunctionObjects::IsFramebufferEXT(framebuffer);
-}
-
-inline GLboolean glIsFramebufferOES(GLuint framebuffer)
-{
-   	return FunctionObjects::IsFramebufferOES(framebuffer);
 }
 
 inline GLboolean glIsImageHandleResidentARB(GLuint64 handle)
@@ -6129,11 +5439,6 @@ inline GLboolean glIsProgramPipeline(GLuint pipeline)
    	return FunctionObjects::IsProgramPipeline(pipeline);
 }
 
-inline GLboolean glIsProgramPipelineEXT(GLuint pipeline)
-{
-   	return FunctionObjects::IsProgramPipelineEXT(pipeline);
-}
-
 inline GLboolean glIsQuery(GLuint id)
 {
    	return FunctionObjects::IsQuery(id);
@@ -6144,11 +5449,6 @@ inline GLboolean glIsQueryARB(GLuint id)
    	return FunctionObjects::IsQueryARB(id);
 }
 
-inline GLboolean glIsQueryEXT(GLuint id)
-{
-   	return FunctionObjects::IsQueryEXT(id);
-}
-
 inline GLboolean glIsRenderbuffer(GLuint renderbuffer)
 {
    	return FunctionObjects::IsRenderbuffer(renderbuffer);
@@ -6157,11 +5457,6 @@ inline GLboolean glIsRenderbuffer(GLuint renderbuffer)
 inline GLboolean glIsRenderbufferEXT(GLuint renderbuffer)
 {
    	return FunctionObjects::IsRenderbufferEXT(renderbuffer);
-}
-
-inline GLboolean glIsRenderbufferOES(GLuint renderbuffer)
-{
-   	return FunctionObjects::IsRenderbufferOES(renderbuffer);
 }
 
 inline GLboolean glIsSampler(GLuint sampler)
@@ -6177,11 +5472,6 @@ inline GLboolean glIsShader(GLuint shader)
 inline GLboolean glIsSync(GLsync sync)
 {
    	return FunctionObjects::IsSync(sync);
-}
-
-inline GLboolean glIsSyncAPPLE(GLsync sync)
-{
-   	return FunctionObjects::IsSyncAPPLE(sync);
 }
 
 inline GLboolean glIsTexture(GLuint texture)
@@ -6229,11 +5519,6 @@ inline GLboolean glIsVertexArrayAPPLE(GLuint array)
    	return FunctionObjects::IsVertexArrayAPPLE(array);
 }
 
-inline GLboolean glIsVertexArrayOES(GLuint array)
-{
-   	return FunctionObjects::IsVertexArrayOES(array);
-}
-
 inline GLboolean glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname)
 {
    	return FunctionObjects::IsVertexAttribEnabledAPPLE(index, pname);
@@ -6269,19 +5554,9 @@ inline void glLightModeliv(GLenum pname, const GLint * params)
    	return FunctionObjects::LightModeliv(pname, params);
 }
 
-inline void glLightModelx(GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::LightModelx(pname, param);
-}
-
 inline void glLightModelxOES(GLenum pname, GLfixed param)
 {
    	return FunctionObjects::LightModelxOES(pname, param);
-}
-
-inline void glLightModelxv(GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::LightModelxv(pname, param);
 }
 
 inline void glLightModelxvOES(GLenum pname, const GLfixed * param)
@@ -6309,19 +5584,9 @@ inline void glLightiv(GLenum light, GLenum pname, const GLint * params)
    	return FunctionObjects::Lightiv(light, pname, params);
 }
 
-inline void glLightx(GLenum light, GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Lightx(light, pname, param);
-}
-
 inline void glLightxOES(GLenum light, GLenum pname, GLfixed param)
 {
    	return FunctionObjects::LightxOES(light, pname, param);
-}
-
-inline void glLightxv(GLenum light, GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::Lightxv(light, pname, params);
 }
 
 inline void glLightxvOES(GLenum light, GLenum pname, const GLfixed * params)
@@ -6337,11 +5602,6 @@ inline void glLineStipple(GLint factor, GLushort pattern)
 inline void glLineWidth(GLfloat width)
 {
    	return FunctionObjects::LineWidth(width);
-}
-
-inline void glLineWidthx(GLfixed width)
-{
-   	return FunctionObjects::LineWidthx(width);
 }
 
 inline void glLineWidthxOES(GLfixed width)
@@ -6404,11 +5664,6 @@ inline void glLoadMatrixf(const GLfloat * m)
    	return FunctionObjects::LoadMatrixf(m);
 }
 
-inline void glLoadMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::LoadMatrixx(m);
-}
-
 inline void glLoadMatrixxOES(const GLfixed * m)
 {
    	return FunctionObjects::LoadMatrixxOES(m);
@@ -6417,11 +5672,6 @@ inline void glLoadMatrixxOES(const GLfixed * m)
 inline void glLoadName(GLuint name)
 {
    	return FunctionObjects::LoadName(name);
-}
-
-inline void glLoadPaletteFromModelViewMatrixOES()
-{
-   	return FunctionObjects::LoadPaletteFromModelViewMatrixOES();
 }
 
 inline void glLoadProgramNV(GLenum target, GLuint id, GLsizei len, const GLubyte * program)
@@ -6564,19 +5814,9 @@ inline void * glMapBufferARB(GLenum target, GLenum access)
    	return FunctionObjects::MapBufferARB(target, access);
 }
 
-inline void * glMapBufferOES(GLenum target, GLenum access)
-{
-   	return FunctionObjects::MapBufferOES(target, access);
-}
-
 inline void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
    	return FunctionObjects::MapBufferRange(target, offset, length, access);
-}
-
-inline void * glMapBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
-{
-   	return FunctionObjects::MapBufferRangeEXT(target, offset, length, access);
 }
 
 inline void glMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const void * points)
@@ -6684,19 +5924,9 @@ inline void glMaterialiv(GLenum face, GLenum pname, const GLint * params)
    	return FunctionObjects::Materialiv(face, pname, params);
 }
 
-inline void glMaterialx(GLenum face, GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::Materialx(face, pname, param);
-}
-
 inline void glMaterialxOES(GLenum face, GLenum pname, GLfixed param)
 {
    	return FunctionObjects::MaterialxOES(face, pname, param);
-}
-
-inline void glMaterialxv(GLenum face, GLenum pname, const GLfixed * param)
-{
-   	return FunctionObjects::Materialxv(face, pname, param);
 }
 
 inline void glMaterialxvOES(GLenum face, GLenum pname, const GLfixed * param)
@@ -6712,11 +5942,6 @@ inline void glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdou
 inline void glMatrixIndexPointerARB(GLint size, GLenum type, GLsizei stride, const void * pointer)
 {
    	return FunctionObjects::MatrixIndexPointerARB(size, type, stride, pointer);
-}
-
-inline void glMatrixIndexPointerOES(GLint size, GLenum type, GLsizei stride, const void * pointer)
-{
-   	return FunctionObjects::MatrixIndexPointerOES(size, type, stride, pointer);
 }
 
 inline void glMatrixIndexubvARB(GLint size, const GLubyte * indices)
@@ -6834,11 +6059,6 @@ inline void glMemoryBarrier(GLbitfield barriers)
    	return FunctionObjects::MemoryBarrier(barriers);
 }
 
-inline void glMemoryBarrierByRegion(GLbitfield barriers)
-{
-   	return FunctionObjects::MemoryBarrierByRegion(barriers);
-}
-
 inline void glMemoryBarrierEXT(GLbitfield barriers)
 {
    	return FunctionObjects::MemoryBarrierEXT(barriers);
@@ -6852,11 +6072,6 @@ inline void glMinSampleShading(GLfloat value)
 inline void glMinSampleShadingARB(GLfloat value)
 {
    	return FunctionObjects::MinSampleShadingARB(value);
-}
-
-inline void glMinSampleShadingOES(GLfloat value)
-{
-   	return FunctionObjects::MinSampleShadingOES(value);
 }
 
 inline void glMinmax(GLenum target, GLenum internalformat, GLboolean sink)
@@ -6877,11 +6092,6 @@ inline void glMultMatrixd(const GLdouble * m)
 inline void glMultMatrixf(const GLfloat * m)
 {
    	return FunctionObjects::MultMatrixf(m);
-}
-
-inline void glMultMatrixx(const GLfixed * m)
-{
-   	return FunctionObjects::MultMatrixx(m);
 }
 
 inline void glMultMatrixxOES(const GLfixed * m)
@@ -7434,11 +6644,6 @@ inline void glMultiTexCoord4svARB(GLenum target, const GLshort * v)
    	return FunctionObjects::MultiTexCoord4svARB(target, v);
 }
 
-inline void glMultiTexCoord4x(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
-{
-   	return FunctionObjects::MultiTexCoord4x(texture, s, t, r, q);
-}
-
 inline void glMultiTexCoord4xOES(GLenum texture, GLfixed s, GLfixed t, GLfixed r, GLfixed q)
 {
    	return FunctionObjects::MultiTexCoord4xOES(texture, s, t, r, q);
@@ -7829,11 +7034,6 @@ inline void glNormal3sv(const GLshort * v)
    	return FunctionObjects::Normal3sv(v);
 }
 
-inline void glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
-{
-   	return FunctionObjects::Normal3x(nx, ny, nz);
-}
-
 inline void glNormal3xOES(GLfixed nx, GLfixed ny, GLfixed nz)
 {
    	return FunctionObjects::Normal3xOES(nx, ny, nz);
@@ -7934,19 +7134,9 @@ inline void glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const 
    	return FunctionObjects::ObjectLabel(identifier, name, length, label);
 }
 
-inline void glObjectLabelKHR(GLenum identifier, GLuint name, GLsizei length, const GLchar * label)
-{
-   	return FunctionObjects::ObjectLabelKHR(identifier, name, length, label);
-}
-
 inline void glObjectPtrLabel(const void * ptr, GLsizei length, const GLchar * label)
 {
    	return FunctionObjects::ObjectPtrLabel(ptr, length, label);
-}
-
-inline void glObjectPtrLabelKHR(const void * ptr, GLsizei length, const GLchar * label)
-{
-   	return FunctionObjects::ObjectPtrLabelKHR(ptr, length, label);
 }
 
 inline GLenum glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option)
@@ -7964,19 +7154,9 @@ inline void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top
    	return FunctionObjects::Ortho(left, right, bottom, top, zNear, zFar);
 }
 
-inline void glOrthof(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
-{
-   	return FunctionObjects::Orthof(l, r, b, t, n, f);
-}
-
 inline void glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
 {
    	return FunctionObjects::OrthofOES(l, r, b, t, n, f);
-}
-
-inline void glOrthox(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
-{
-   	return FunctionObjects::Orthox(l, r, b, t, n, f);
 }
 
 inline void glOrthoxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f)
@@ -8017,11 +7197,6 @@ inline void glPatchParameterfv(GLenum pname, const GLfloat * values)
 inline void glPatchParameteri(GLenum pname, GLint value)
 {
    	return FunctionObjects::PatchParameteri(pname, value);
-}
-
-inline void glPatchParameteriEXT(GLenum pname, GLint value)
-{
-   	return FunctionObjects::PatchParameteriEXT(pname, value);
 }
 
 inline void glPathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat * coeffs)
@@ -8299,21 +7474,6 @@ inline void glPointParameterivNV(GLenum pname, const GLint * params)
    	return FunctionObjects::PointParameterivNV(pname, params);
 }
 
-inline void glPointParameterx(GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::PointParameterx(pname, param);
-}
-
-inline void glPointParameterxOES(GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::PointParameterxOES(pname, param);
-}
-
-inline void glPointParameterxv(GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::PointParameterxv(pname, params);
-}
-
 inline void glPointParameterxvOES(GLenum pname, const GLfixed * params)
 {
    	return FunctionObjects::PointParameterxvOES(pname, params);
@@ -8322,16 +7482,6 @@ inline void glPointParameterxvOES(GLenum pname, const GLfixed * params)
 inline void glPointSize(GLfloat size)
 {
    	return FunctionObjects::PointSize(size);
-}
-
-inline void glPointSizePointerOES(GLenum type, GLsizei stride, const void * pointer)
-{
-   	return FunctionObjects::PointSizePointerOES(type, stride, pointer);
-}
-
-inline void glPointSizex(GLfixed size)
-{
-   	return FunctionObjects::PointSizex(size);
 }
 
 inline void glPointSizexOES(GLfixed size)
@@ -8364,11 +7514,6 @@ inline void glPolygonOffsetEXT(GLfloat factor, GLfloat bias)
    	return FunctionObjects::PolygonOffsetEXT(factor, bias);
 }
 
-inline void glPolygonOffsetx(GLfixed factor, GLfixed units)
-{
-   	return FunctionObjects::PolygonOffsetx(factor, units);
-}
-
 inline void glPolygonOffsetxOES(GLfixed factor, GLfixed units)
 {
    	return FunctionObjects::PolygonOffsetxOES(factor, units);
@@ -8394,11 +7539,6 @@ inline void glPopDebugGroup()
    	return FunctionObjects::PopDebugGroup();
 }
 
-inline void glPopDebugGroupKHR()
-{
-   	return FunctionObjects::PopDebugGroupKHR();
-}
-
 inline void glPopGroupMarkerEXT()
 {
    	return FunctionObjects::PopGroupMarkerEXT();
@@ -8422,11 +7562,6 @@ inline void glPresentFrameDualFillNV(GLuint video_slot, GLuint64EXT minPresentTi
 inline void glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1)
 {
    	return FunctionObjects::PresentFrameKeyedNV(video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, key0, target1, fill1, key1);
-}
-
-inline void glPrimitiveBoundingBoxEXT(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW)
-{
-   	return FunctionObjects::PrimitiveBoundingBoxEXT(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW);
 }
 
 inline void glPrimitiveRestartIndex(GLuint index)
@@ -8462,11 +7597,6 @@ inline void glPrioritizeTexturesxOES(GLsizei n, const GLuint * textures, const G
 inline void glProgramBinary(GLuint program, GLenum binaryFormat, const void * binary, GLsizei length)
 {
    	return FunctionObjects::ProgramBinary(program, binaryFormat, binary, length);
-}
-
-inline void glProgramBinaryOES(GLuint program, GLenum binaryFormat, const void * binary, GLint length)
-{
-   	return FunctionObjects::ProgramBinaryOES(program, binaryFormat, binary, length);
 }
 
 inline void glProgramBufferParametersIivNV(GLenum target, GLuint bindingIndex, GLuint wordIndex, GLsizei count, const GLint * params)
@@ -9314,11 +8444,6 @@ inline void glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLc
    	return FunctionObjects::PushDebugGroup(source, id, length, message);
 }
 
-inline void glPushDebugGroupKHR(GLenum source, GLuint id, GLsizei length, const GLchar * message)
-{
-   	return FunctionObjects::PushDebugGroupKHR(source, id, length, message);
-}
-
 inline void glPushGroupMarkerEXT(GLsizei length, const GLchar * marker)
 {
    	return FunctionObjects::PushGroupMarkerEXT(length, marker);
@@ -9337,11 +8462,6 @@ inline void glPushName(GLuint name)
 inline void glQueryCounter(GLuint id, GLenum target)
 {
    	return FunctionObjects::QueryCounter(id, target);
-}
-
-inline void glQueryCounterEXT(GLuint id, GLenum target)
-{
-   	return FunctionObjects::QueryCounterEXT(id, target);
 }
 
 inline GLbitfield glQueryMatrixxOES(GLfixed * mantissa, GLint * exponent)
@@ -9509,16 +8629,6 @@ inline void glReadBuffer(GLenum mode)
    	return FunctionObjects::ReadBuffer(mode);
 }
 
-inline void glReadBufferIndexedEXT(GLenum src, GLint index)
-{
-   	return FunctionObjects::ReadBufferIndexedEXT(src, index);
-}
-
-inline void glReadBufferNV(GLenum mode)
-{
-   	return FunctionObjects::ReadBufferNV(mode);
-}
-
 inline void glReadInstrumentsSGIX(GLint marker)
 {
    	return FunctionObjects::ReadInstrumentsSGIX(marker);
@@ -9532,11 +8642,6 @@ inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum
 inline void glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data)
 {
    	return FunctionObjects::ReadnPixelsARB(x, y, width, height, format, type, bufSize, data);
-}
-
-inline void glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data)
-{
-   	return FunctionObjects::ReadnPixelsEXT(x, y, width, height, format, type, bufSize, data);
 }
 
 inline void glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
@@ -9619,16 +8724,6 @@ inline void glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLe
    	return FunctionObjects::RenderbufferStorageMultisample(target, samples, internalformat, width, height);
 }
 
-inline void glRenderbufferStorageMultisampleANGLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
-{
-   	return FunctionObjects::RenderbufferStorageMultisampleANGLE(target, samples, internalformat, width, height);
-}
-
-inline void glRenderbufferStorageMultisampleAPPLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
-{
-   	return FunctionObjects::RenderbufferStorageMultisampleAPPLE(target, samples, internalformat, width, height);
-}
-
 inline void glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
    	return FunctionObjects::RenderbufferStorageMultisampleCoverageNV(target, coverageSamples, colorSamples, internalformat, width, height);
@@ -9637,21 +8732,6 @@ inline void glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei co
 inline void glRenderbufferStorageMultisampleEXT(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
    	return FunctionObjects::RenderbufferStorageMultisampleEXT(target, samples, internalformat, width, height);
-}
-
-inline void glRenderbufferStorageMultisampleIMG(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
-{
-   	return FunctionObjects::RenderbufferStorageMultisampleIMG(target, samples, internalformat, width, height);
-}
-
-inline void glRenderbufferStorageMultisampleNV(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
-{
-   	return FunctionObjects::RenderbufferStorageMultisampleNV(target, samples, internalformat, width, height);
-}
-
-inline void glRenderbufferStorageOES(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
-{
-   	return FunctionObjects::RenderbufferStorageOES(target, internalformat, width, height);
 }
 
 inline void glReplacementCodePointerSUN(GLenum type, GLsizei stride, const void ** pointer)
@@ -9799,11 +8879,6 @@ inline void glResizeBuffersMESA()
    	return FunctionObjects::ResizeBuffersMESA();
 }
 
-inline void glResolveMultisampleFramebufferAPPLE()
-{
-   	return FunctionObjects::ResolveMultisampleFramebufferAPPLE();
-}
-
 inline void glResumeTransformFeedback()
 {
    	return FunctionObjects::ResumeTransformFeedback();
@@ -9824,11 +8899,6 @@ inline void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
    	return FunctionObjects::Rotatef(angle, x, y, z);
 }
 
-inline void glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Rotatex(angle, x, y, z);
-}
-
 inline void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
 {
    	return FunctionObjects::RotatexOES(angle, x, y, z);
@@ -9847,16 +8917,6 @@ inline void glSampleCoverageARB(GLfloat value, GLboolean invert)
 inline void glSampleCoverageOES(GLfixed value, GLboolean invert)
 {
    	return FunctionObjects::SampleCoverageOES(value, invert);
-}
-
-inline void glSampleCoveragex(GLclampx value, GLboolean invert)
-{
-   	return FunctionObjects::SampleCoveragex(value, invert);
-}
-
-inline void glSampleCoveragexOES(GLclampx value, GLboolean invert)
-{
-   	return FunctionObjects::SampleCoveragexOES(value, invert);
 }
 
 inline void glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle)
@@ -9899,19 +8959,9 @@ inline void glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint * pa
    	return FunctionObjects::SamplerParameterIiv(sampler, pname, param);
 }
 
-inline void glSamplerParameterIivEXT(GLuint sampler, GLenum pname, const GLint * param)
-{
-   	return FunctionObjects::SamplerParameterIivEXT(sampler, pname, param);
-}
-
 inline void glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint * param)
 {
    	return FunctionObjects::SamplerParameterIuiv(sampler, pname, param);
-}
-
-inline void glSamplerParameterIuivEXT(GLuint sampler, GLenum pname, const GLuint * param)
-{
-   	return FunctionObjects::SamplerParameterIuivEXT(sampler, pname, param);
 }
 
 inline void glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param)
@@ -9942,11 +8992,6 @@ inline void glScaled(GLdouble x, GLdouble y, GLdouble z)
 inline void glScalef(GLfloat x, GLfloat y, GLfloat z)
 {
    	return FunctionObjects::Scalef(x, y, z);
-}
-
-inline void glScalex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Scalex(x, y, z);
 }
 
 inline void glScalexOES(GLfixed x, GLfixed y, GLfixed z)
@@ -10294,11 +9339,6 @@ inline void glStartInstrumentsSGIX()
    	return FunctionObjects::StartInstrumentsSGIX();
 }
 
-inline void glStartTilingQCOM(GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask)
-{
-   	return FunctionObjects::StartTilingQCOM(x, y, width, height, preserveMask);
-}
-
 inline void glStencilClearTagEXT(GLsizei stencilTagBits, GLuint stencilClearTag)
 {
    	return FunctionObjects::StencilClearTagEXT(stencilTagBits, stencilClearTag);
@@ -10497,11 +9537,6 @@ inline void glTexBufferEXT(GLenum target, GLenum internalformat, GLuint buffer)
 inline void glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
    	return FunctionObjects::TexBufferRange(target, internalformat, buffer, offset, size);
-}
-
-inline void glTexBufferRangeEXT(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
-{
-   	return FunctionObjects::TexBufferRangeEXT(target, internalformat, buffer, offset, size);
 }
 
 inline void glTexBumpParameterfvATI(GLenum pname, const GLfloat * param)
@@ -10949,19 +9984,9 @@ inline void glTexEnviv(GLenum target, GLenum pname, const GLint * params)
    	return FunctionObjects::TexEnviv(target, pname, params);
 }
 
-inline void glTexEnvx(GLenum target, GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexEnvx(target, pname, param);
-}
-
 inline void glTexEnvxOES(GLenum target, GLenum pname, GLfixed param)
 {
    	return FunctionObjects::TexEnvxOES(target, pname, param);
-}
-
-inline void glTexEnvxv(GLenum target, GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexEnvxv(target, pname, params);
 }
 
 inline void glTexEnvxvOES(GLenum target, GLenum pname, const GLfixed * params)
@@ -10989,19 +10014,9 @@ inline void glTexGenf(GLenum coord, GLenum pname, GLfloat param)
    	return FunctionObjects::TexGenf(coord, pname, param);
 }
 
-inline void glTexGenfOES(GLenum coord, GLenum pname, GLfloat param)
-{
-   	return FunctionObjects::TexGenfOES(coord, pname, param);
-}
-
 inline void glTexGenfv(GLenum coord, GLenum pname, const GLfloat * params)
 {
    	return FunctionObjects::TexGenfv(coord, pname, params);
-}
-
-inline void glTexGenfvOES(GLenum coord, GLenum pname, const GLfloat * params)
-{
-   	return FunctionObjects::TexGenfvOES(coord, pname, params);
 }
 
 inline void glTexGeni(GLenum coord, GLenum pname, GLint param)
@@ -11009,19 +10024,9 @@ inline void glTexGeni(GLenum coord, GLenum pname, GLint param)
    	return FunctionObjects::TexGeni(coord, pname, param);
 }
 
-inline void glTexGeniOES(GLenum coord, GLenum pname, GLint param)
-{
-   	return FunctionObjects::TexGeniOES(coord, pname, param);
-}
-
 inline void glTexGeniv(GLenum coord, GLenum pname, const GLint * params)
 {
    	return FunctionObjects::TexGeniv(coord, pname, params);
-}
-
-inline void glTexGenivOES(GLenum coord, GLenum pname, const GLint * params)
-{
-   	return FunctionObjects::TexGenivOES(coord, pname, params);
 }
 
 inline void glTexGenxOES(GLenum coord, GLenum pname, GLfixed param)
@@ -11074,11 +10079,6 @@ inline void glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSam
    	return FunctionObjects::TexImage3DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
 }
 
-inline void glTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels)
-{
-   	return FunctionObjects::TexImage3DOES(target, level, internalformat, width, height, depth, border, format, type, pixels);
-}
-
 inline void glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const void * pixels)
 {
    	return FunctionObjects::TexImage4DSGIS(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
@@ -11129,19 +10129,9 @@ inline void glTexParameteriv(GLenum target, GLenum pname, const GLint * params)
    	return FunctionObjects::TexParameteriv(target, pname, params);
 }
 
-inline void glTexParameterx(GLenum target, GLenum pname, GLfixed param)
-{
-   	return FunctionObjects::TexParameterx(target, pname, param);
-}
-
 inline void glTexParameterxOES(GLenum target, GLenum pname, GLfixed param)
 {
    	return FunctionObjects::TexParameterxOES(target, pname, param);
-}
-
-inline void glTexParameterxv(GLenum target, GLenum pname, const GLfixed * params)
-{
-   	return FunctionObjects::TexParameterxv(target, pname, params);
 }
 
 inline void glTexParameterxvOES(GLenum target, GLenum pname, const GLfixed * params)
@@ -11159,19 +10149,9 @@ inline void glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat,
    	return FunctionObjects::TexStorage1D(target, levels, internalformat, width);
 }
 
-inline void glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
-{
-   	return FunctionObjects::TexStorage1DEXT(target, levels, internalformat, width);
-}
-
 inline void glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
    	return FunctionObjects::TexStorage2D(target, levels, internalformat, width, height);
-}
-
-inline void glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
-{
-   	return FunctionObjects::TexStorage2DEXT(target, levels, internalformat, width, height);
 }
 
 inline void glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
@@ -11184,19 +10164,9 @@ inline void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat,
    	return FunctionObjects::TexStorage3D(target, levels, internalformat, width, height, depth);
 }
 
-inline void glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
-{
-   	return FunctionObjects::TexStorage3DEXT(target, levels, internalformat, width, height, depth);
-}
-
 inline void glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
    	return FunctionObjects::TexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
-}
-
-inline void glTexStorage3DMultisampleOES(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
-{
-   	return FunctionObjects::TexStorage3DMultisampleOES(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
 
 inline void glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags)
@@ -11232,11 +10202,6 @@ inline void glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yof
 inline void glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels)
 {
    	return FunctionObjects::TexSubImage3DEXT(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
-}
-
-inline void glTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels)
-{
-   	return FunctionObjects::TexSubImage3DOES(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
 
 inline void glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const void * pixels)
@@ -11409,11 +10374,6 @@ inline void glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLe
    	return FunctionObjects::TextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
 }
 
-inline void glTextureViewEXT(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers)
-{
-   	return FunctionObjects::TextureViewEXT(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
-}
-
 inline void glTrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum transform)
 {
    	return FunctionObjects::TrackMatrixNV(target, address, matrix, transform);
@@ -11457,11 +10417,6 @@ inline void glTranslated(GLdouble x, GLdouble y, GLdouble z)
 inline void glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 {
    	return FunctionObjects::Translatef(x, y, z);
-}
-
-inline void glTranslatex(GLfixed x, GLfixed y, GLfixed z)
-{
-   	return FunctionObjects::Translatex(x, y, z);
 }
 
 inline void glTranslatexOES(GLfixed x, GLfixed y, GLfixed z)
@@ -11884,11 +10839,6 @@ inline void glUniformMatrix2x3fv(GLint location, GLsizei count, GLboolean transp
    	return FunctionObjects::UniformMatrix2x3fv(location, count, transpose, value);
 }
 
-inline void glUniformMatrix2x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
-{
-   	return FunctionObjects::UniformMatrix2x3fvNV(location, count, transpose, value);
-}
-
 inline void glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
    	return FunctionObjects::UniformMatrix2x4dv(location, count, transpose, value);
@@ -11897,11 +10847,6 @@ inline void glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transp
 inline void glUniformMatrix2x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
    	return FunctionObjects::UniformMatrix2x4fv(location, count, transpose, value);
-}
-
-inline void glUniformMatrix2x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
-{
-   	return FunctionObjects::UniformMatrix2x4fvNV(location, count, transpose, value);
 }
 
 inline void glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
@@ -11929,11 +10874,6 @@ inline void glUniformMatrix3x2fv(GLint location, GLsizei count, GLboolean transp
    	return FunctionObjects::UniformMatrix3x2fv(location, count, transpose, value);
 }
 
-inline void glUniformMatrix3x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
-{
-   	return FunctionObjects::UniformMatrix3x2fvNV(location, count, transpose, value);
-}
-
 inline void glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
    	return FunctionObjects::UniformMatrix3x4dv(location, count, transpose, value);
@@ -11942,11 +10882,6 @@ inline void glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transp
 inline void glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
    	return FunctionObjects::UniformMatrix3x4fv(location, count, transpose, value);
-}
-
-inline void glUniformMatrix3x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
-{
-   	return FunctionObjects::UniformMatrix3x4fvNV(location, count, transpose, value);
 }
 
 inline void glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
@@ -11974,11 +10909,6 @@ inline void glUniformMatrix4x2fv(GLint location, GLsizei count, GLboolean transp
    	return FunctionObjects::UniformMatrix4x2fv(location, count, transpose, value);
 }
 
-inline void glUniformMatrix4x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
-{
-   	return FunctionObjects::UniformMatrix4x2fvNV(location, count, transpose, value);
-}
-
 inline void glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
    	return FunctionObjects::UniformMatrix4x3dv(location, count, transpose, value);
@@ -11987,11 +10917,6 @@ inline void glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transp
 inline void glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
    	return FunctionObjects::UniformMatrix4x3fv(location, count, transpose, value);
-}
-
-inline void glUniformMatrix4x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
-{
-   	return FunctionObjects::UniformMatrix4x3fvNV(location, count, transpose, value);
 }
 
 inline void glUniformSubroutinesuiv(GLenum shadertype, GLsizei count, const GLuint * indices)
@@ -12022,11 +10947,6 @@ inline GLboolean glUnmapBuffer(GLenum target)
 inline GLboolean glUnmapBufferARB(GLenum target)
 {
    	return FunctionObjects::UnmapBufferARB(target);
-}
-
-inline GLboolean glUnmapBufferOES(GLenum target)
-{
-   	return FunctionObjects::UnmapBufferOES(target);
 }
 
 inline GLboolean glUnmapNamedBufferEXT(GLuint buffer)
@@ -12062,11 +10982,6 @@ inline void glUseProgramObjectARB(GLhandleARB programObj)
 inline void glUseProgramStages(GLuint pipeline, GLbitfield stages, GLuint program)
 {
    	return FunctionObjects::UseProgramStages(pipeline, stages, program);
-}
-
-inline void glUseProgramStagesEXT(GLuint pipeline, GLbitfield stages, GLuint program)
-{
-   	return FunctionObjects::UseProgramStagesEXT(pipeline, stages, program);
 }
 
 inline void glUseShaderProgramEXT(GLenum type, GLuint program)
@@ -12137,11 +11052,6 @@ inline void glValidateProgramARB(GLhandleARB programObj)
 inline void glValidateProgramPipeline(GLuint pipeline)
 {
    	return FunctionObjects::ValidateProgramPipeline(pipeline);
-}
-
-inline void glValidateProgramPipelineEXT(GLuint pipeline)
-{
-   	return FunctionObjects::ValidateProgramPipelineEXT(pipeline);
 }
 
 inline void glVariantArrayObjectATI(GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset)
@@ -13059,24 +11969,9 @@ inline void glVertexAttribDivisor(GLuint index, GLuint divisor)
    	return FunctionObjects::VertexAttribDivisor(index, divisor);
 }
 
-inline void glVertexAttribDivisorANGLE(GLuint index, GLuint divisor)
-{
-   	return FunctionObjects::VertexAttribDivisorANGLE(index, divisor);
-}
-
 inline void glVertexAttribDivisorARB(GLuint index, GLuint divisor)
 {
    	return FunctionObjects::VertexAttribDivisorARB(index, divisor);
-}
-
-inline void glVertexAttribDivisorEXT(GLuint index, GLuint divisor)
-{
-   	return FunctionObjects::VertexAttribDivisorEXT(index, divisor);
-}
-
-inline void glVertexAttribDivisorNV(GLuint index, GLuint divisor)
-{
-   	return FunctionObjects::VertexAttribDivisorNV(index, divisor);
 }
 
 inline void glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
@@ -13949,11 +12844,6 @@ inline void glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
    	return FunctionObjects::WaitSync(sync, flags, timeout);
 }
 
-inline void glWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout)
-{
-   	return FunctionObjects::WaitSyncAPPLE(sync, flags, timeout);
-}
-
 inline void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights)
 {
    	return FunctionObjects::WeightPathsNV(resultPath, numPaths, paths, weights);
@@ -13962,11 +12852,6 @@ inline void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * 
 inline void glWeightPointerARB(GLint size, GLenum type, GLsizei stride, const void * pointer)
 {
    	return FunctionObjects::WeightPointerARB(size, type, stride, pointer);
-}
-
-inline void glWeightPointerOES(GLint size, GLenum type, GLsizei stride, const void * pointer)
-{
-   	return FunctionObjects::WeightPointerOES(size, type, stride, pointer);
 }
 
 inline void glWeightbvARB(GLint size, const GLbyte * weights)

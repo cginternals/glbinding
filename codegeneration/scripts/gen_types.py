@@ -15,9 +15,9 @@ def multilineConvertTypedef(type):
 enum_classes = [ "GLbitfield", "GLboolean", "GLenum" ]
 type_integration_map = {
 	"GLextension" : [ "hashable", "streamable" ], 
-	"GLbitfield" : [ "hashable", "streamable", "bitfieldable" ], 
-	"GLboolean" : [ "hashable", "streamable" ],
-	"GLenum" : [ "hashable", "streamable", "addable", "comparable" ]
+	"GLbitfield"  : [ "hashable", "streamable", "bitfieldable" ], 
+	"GLboolean"   : [ "hashable", "streamable" ],
+	"GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
 }
 
 
@@ -36,35 +36,35 @@ def convertTypedef(type):
 	else:
 		return "using " + type.name + " = " + t + ";"
 
+
 def convertType(type):
+
 	return convertTypedef(type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(GL_APIENTRY *)")
 
+
 def genTypes_h(types, outputdir, outputfile):
+
 	status(outputdir + outputfile)
 
 	type_integrations = []
 	for typename, integrations in type_integration_map.items():
 		for integration in integrations:
 			type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", typename))		
-	#~ for type in types:
-		#~ if type.name in enum_classes:
-			#~ type_integrations.append(template("type_integration.h").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (
 			("\n".join([ convertType(t) for t in types ])),
 			("\n".join([ t for t in type_integrations ]))))
 
+
 def genTypes_cpp(types, outputdir, outputfile):
+
 	status(outputdir + outputfile)
 
 	type_integrations = []
 	for typename, integrations in type_integration_map.items():
 		for integration in integrations:
 			type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", typename))		
-	#~ for type in types:
-		#~ if type.name in enum_classes:
-			#~ type_integrations.append(template("type_integration.cpp").replace("%t", type.name).replace("%v", parseType(type)[:-1]))
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % ("\n".join([ t for t in type_integrations ])))
