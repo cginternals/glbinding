@@ -3,15 +3,31 @@
 namespace 
 {
 
-void addValuesTo(std::vector<gl::AbstractValue*> &)
+template <typename... Arguments>
+struct ValueAdder;
+
+template <>
+struct ValueAdder<>
 {
-}
+    static void add(std::vector<gl::AbstractValue*> &)
+    {
+    }
+};
 
 template <typename Argument, typename... Arguments>
-void addValuesTo(std::vector<gl::AbstractValue*> & values, Argument value, Arguments... rest)
+struct ValueAdder<Argument, Arguments...>
 {
-    values.push_back(gl::createValue<Argument>(value));
-    addValuesTo(values, std::forward<Arguments>(rest)...);
+    static void add(std::vector<gl::AbstractValue*> & values, Argument value, Arguments... rest)
+    {
+        values.push_back(gl::createValue<Argument>(value));
+        ValueAdder<Arguments...>::add(values, std::forward<Arguments>(rest)...);
+    }
+};
+
+template <typename... Arguments>
+void addValuesTo(std::vector<gl::AbstractValue*> & values, Arguments... arguments)
+{
+    ValueAdder<Arguments...>::add(values, std::forward<Arguments>(arguments)...);
 }
 
 }

@@ -111,6 +111,11 @@ gl::GLbitfield operator&(const gl::GLbitfield & a, const gl::GLbitfield & b)
 	return static_cast<gl::GLbitfield>(static_cast<std::underlying_type<gl::GLbitfield>::type>(a) & static_cast<std::underlying_type<gl::GLbitfield>::type>(b));
 }
 
+gl::GLbitfield operator^(const gl::GLbitfield & a, const gl::GLbitfield & b)
+{
+	return static_cast<gl::GLbitfield>(static_cast<std::underlying_type<gl::GLbitfield>::type>(a) ^ static_cast<std::underlying_type<gl::GLbitfield>::type>(b));
+}
+
 
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)

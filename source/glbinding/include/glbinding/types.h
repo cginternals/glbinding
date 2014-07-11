@@ -147,6 +147,7 @@ GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLbitfi
 
 GLBINDING_API gl::GLbitfield operator|(const gl::GLbitfield & a, const gl::GLbitfield & b);
 GLBINDING_API gl::GLbitfield operator&(const gl::GLbitfield & a, const gl::GLbitfield & b);
+GLBINDING_API gl::GLbitfield operator^(const gl::GLbitfield & a, const gl::GLbitfield & b);
 
 
 namespace std
