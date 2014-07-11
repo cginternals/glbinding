@@ -46,6 +46,7 @@ def generate(inputfile, targetdir, revisionfile):
     tree       = ET.parse(inputfile)
     registry   = tree.getroot()
 
+
     print "parsing features"
     features   = parseFeatures(registry, api)
     print " # " + str(len(features)) + " features parsed"

@@ -3,15 +3,15 @@
 #include <glbinding/nogl.h>
 #include <glbinding/types.h>
 
+#include <glbinding/bitfield.h>
 
-namespace gl
+
+namespace gl%f
 {
 
-enum class GLbitfield : unsigned int
-{%s
-};
+using namespace gl;
 
 // import bitfields to namespace
 %s
 
-} // namespace gl
+} // namespace gl%f

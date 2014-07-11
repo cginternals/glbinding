@@ -3,51 +3,13 @@
 #include <glbinding/nogl.h>
 #include <glbinding/types.h>
 
+#include <glbinding/bitfield.h>
+
 
 namespace gl41core
 {
 
 using namespace gl;
-
-enum class GLbitfield : unsigned int
-{
-    // AttribMask
-
-    GL_DEPTH_BUFFER_BIT = 0x00000100,
-    GL_STENCIL_BUFFER_BIT = 0x00000400,
-    GL_COLOR_BUFFER_BIT = 0x00004000,
-
-    // ContextFlagMask
-
-    GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001,
-
-    // ContextProfileMask
-
-    GL_CONTEXT_CORE_PROFILE_BIT = 0x00000001,
-    GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002,
-
-    // MapBufferUsageMask
-
-    GL_MAP_READ_BIT = 0x0001,
-    GL_MAP_WRITE_BIT = 0x0002,
-    GL_MAP_INVALIDATE_RANGE_BIT = 0x0004,
-    GL_MAP_INVALIDATE_BUFFER_BIT = 0x0008,
-    GL_MAP_FLUSH_EXPLICIT_BIT = 0x0010,
-    GL_MAP_UNSYNCHRONIZED_BIT = 0x0020,
-
-    // SyncObjectMask
-
-    GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001,
-
-    // UseProgramStageMask
-
-    GL_VERTEX_SHADER_BIT = 0x00000001,
-    GL_FRAGMENT_SHADER_BIT = 0x00000002,
-    GL_GEOMETRY_SHADER_BIT = 0x00000004,
-    GL_TESS_CONTROL_SHADER_BIT = 0x00000008,
-    GL_TESS_EVALUATION_SHADER_BIT = 0x00000010,
-    GL_ALL_SHADER_BITS = 0xFFFFFFFF,
-};
 
 // import bitfields to namespace
 

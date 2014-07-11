@@ -6,13 +6,13 @@
 #include <glbinding/enum.h>
 
 
-namespace gl10
+namespace gl%f
 {
 
 using namespace gl;
 
 // import enums to namespace
 
+%s
 
-
-} // namespace gl10
+} // namespace gl%f

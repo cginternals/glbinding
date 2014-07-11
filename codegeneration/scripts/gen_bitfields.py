@@ -27,13 +27,13 @@ def genBitfieldsFeatureGrouped(enums, features, outputdir, outputfile):
 
 def genFeatureBitfields(enums, feature, outputdir, outputfile, core):
 
-	of_all = outputfile.replace("?", "")
+	of_all = outputfile.replace("?", "F")
 
 	version = ""
 	if feature:
 		version = str(feature.major) + str(feature.minor) + ("core" if core else "")
 
-	t = template(of_all).replace("?", version)
+	t = template(of_all).replace("%f", version)
 	of = outputfile.replace("?", version)
 
 	status(outputdir + of)
@@ -43,14 +43,20 @@ def genFeatureBitfields(enums, feature, outputdir, outputfile, core):
 	pureBitfields    = [ b for b in tgrouped["GLbitfield"] if b.supported(feature, core) ]
 	groupedBitfields = groupEnumsByGroup(pureBitfields)
 
-	a = sorted([ ("\n" + tab + "// %s\n\n" + tab + "%s") % (group, ("\n" + tab).join(
-		[ bitfieldDefinition(e) for e in values ])) 
-			for group, values in groupedBitfields.items() ])
-
-	b = sorted([ ("\n// %s\n\n" + "%s") % (group, "\n".join(
+	importToNamespace = sorted([ ("\n// %s\n\n" + "%s") % (group, "\n".join(
 		[ bitfieldImportDefinition(e) for e in values ])) 
 			for group, values in groupedBitfields.items() ])
 
 	with open(outputdir + of, 'w') as file:
-		file.write(t % ("using namespace gl;\n\n" if feature else "", # using namespace,
-			("\n").join(a), ("\n") .join(b)))
+
+		if not feature:
+
+			definitions = sorted([ ("\n" + tab + "// %s\n\n" + tab + "%s") % (group, ("\n" + tab).join(
+				[ bitfieldDefinition(e) for e in values ])) 
+					for group, values in groupedBitfields.items() ])
+
+			file.write(t % (("\n") .join(definitions), ("\n") .join(importToNamespace)))
+
+		else:
+			# the "original", non-featured bitfields are imported to the featured namespace
+			file.write(t % (("\n") .join(importToNamespace)))

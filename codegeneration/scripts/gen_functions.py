@@ -8,12 +8,11 @@ functionForwardTemplate = """inline %s %s(%s)
    	return FunctionObjects::%s(%s);
 }
 """
-functionForwardTemplateRValueCast = """inline %s %s(%s)
-{
-   	return static_cast<gl%s::%s>(FunctionObjects::%s(%s));
-}
-"""
-
+#functionForwardTemplateRValueCast = """inline %s %s(%s)
+#{
+#   	return static_cast<gl%s::%s>(FunctionObjects::%s(%s));
+#}
+#"""
 
 def functionTemplate(function):
 	params = ", ".join([function.returntype] + [ p.baseType() for p in function.params ])
@@ -28,12 +27,12 @@ def functionForward(function, feature, core):
 	params = ", ".join([paramSignature(p, feature, core) + " " + p.name for p in function.params])
 	paramNames = ", ".join([(paramPass(p, feature)) for p in function.params])
 
-	if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
-		return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
-			versionBID(feature, core), function.returntype, functionBID(function)[2:], paramNames)
-	else:
-		return functionForwardTemplate % (function.returntype, functionBID(function), params,
-			functionBID(function)[2:], paramNames)
+	# if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
+	#	return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
+	#		versionBID(feature, core), function.returntype, functionBID(function)[2:], paramNames)
+	# else:
+	return functionForwardTemplate % (function.returntype, functionBID(function), params,
+		functionBID(function)[2:], paramNames)
 
 def paramSignature(param, feature, core):
 	t = param.baseType()
@@ -53,14 +52,14 @@ def paramPass(param, feature):
 	t = param.baseType()
 	if not feature:
 		return param.name
-	elif t == "GLenum":
-		return "static_cast<gl::GLenum>(" + param.name + ")"
-	elif "GLenum" in t and "*" in t:
-		return ("reinterpret_cast<" + t + ">").replace("GLenum", "gl::GLenum") + "(" + param.name + ")"
-	elif t == "GLbitfield":
-		return "static_cast<gl::GLbitfield>(" + param.name + ")"
-	elif "GLbitfield" in t and "*" in t:
-		return ("reinterpret_cast<" + t + ">").replace("GLbitfield", "gl::GLbitfield") + "(" + param.name + ")"
+	# elif t == "GLenum":
+	#	return "static_cast<gl::GLenum>(" + param.name + ")"
+	# elif "GLenum" in t and "*" in t:
+	#	return ("reinterpret_cast<" + t + ">").replace("GLenum", "gl::GLenum") + "(" + param.name + ")"
+	# elif t == "GLbitfield":
+	#	return "static_cast<gl::GLbitfield>(" + param.name + ")"
+	# elif "GLbitfield" in t and "*" in t:
+	#	return ("reinterpret_cast<" + t + ">").replace("GLbitfield", "gl::GLbitfield") + "(" + param.name + ")"
 	else:
 		return param.name
 
@@ -106,7 +105,7 @@ def genFeatureFunctions(commands, feature, outputdir, outputfile, core):
 	of_all = outputfile.replace("?", "")
 
 	version = versionBID(feature, core)
-	t = template(of_all).replace("?", version)
+	t = template(of_all).replace("%f", version)
 
 	of = outputfile.replace("?", version)
 

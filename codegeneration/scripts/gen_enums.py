@@ -31,13 +31,13 @@ def genEnumsFeatureGrouped(enums, features, outputdir, outputfile):
 
 def genFeatureEnums(enums, feature, outputdir, outputfile, core):
 
-	of_all = outputfile.replace("?", "")
+	of_all = outputfile.replace("?", "F")
 
 	version = ""
 	if feature:
 		version = str(feature.major) + str(feature.minor) + ("core" if core else "")
 
-	t = template(of_all).replace("?", version)
+	t = template(of_all).replace("%f", version)
 	of = outputfile.replace("?", version)
 
 	status(outputdir + of)
@@ -45,7 +45,16 @@ def genFeatureEnums(enums, feature, outputdir, outputfile, core):
 	tgrouped = groupEnumsByType(enums)
 	pureEnums = tgrouped["GLenum"]
 
+	# the "original", non-featured enums are imported to the featured namespace
+	importToNamespace = [ enumImportDefinition(e) for e in pureEnums if e.supported(feature, core)]
+
 	with open(outputdir + of, 'w') as file:
-		file.write(t % ("using namespace gl;\n\n" if feature else "", # using namespace
-			(",\n" + tab).join([ enumDefinition(e) for e in pureEnums if e.supported(feature, core)]),
-			("\n") .join([ enumImportDefinition(e) for e in pureEnums if e.supported(feature, core)])))
+		if not feature:
+
+			definitions = [ enumDefinition(e) for e in pureEnums if e.supported(feature, core)]
+
+			file.write(t % ((",\n" + tab).join(definitions), ("\n") .join(importToNamespace)))
+
+		else:
+			# the "original", non-featured enums are imported to the featured namespace
+			file.write(t % (("\n") .join(importToNamespace)))

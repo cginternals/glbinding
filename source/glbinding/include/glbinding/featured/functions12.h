@@ -14,12 +14,12 @@ using namespace gl;
 
 inline void glAccum(gl12::GLenum op, GLfloat value)
 {
-   	return FunctionObjects::Accum(static_cast<gl::GLenum>(op), value);
+   	return FunctionObjects::Accum(op, value);
 }
 
 inline void glAlphaFunc(gl12::GLenum func, GLfloat ref)
 {
-   	return FunctionObjects::AlphaFunc(static_cast<gl::GLenum>(func), ref);
+   	return FunctionObjects::AlphaFunc(func, ref);
 }
 
 inline GLboolean glAreTexturesResident(GLsizei n, const GLuint * textures, GLboolean * residences)
@@ -34,12 +34,12 @@ inline void glArrayElement(GLint i)
 
 inline void glBegin(gl12::GLenum mode)
 {
-   	return FunctionObjects::Begin(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::Begin(mode);
 }
 
 inline void glBindTexture(gl12::GLenum target, GLuint texture)
 {
-   	return FunctionObjects::BindTexture(static_cast<gl::GLenum>(target), texture);
+   	return FunctionObjects::BindTexture(target, texture);
 }
 
 inline void glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte * bitmap)
@@ -49,7 +49,7 @@ inline void glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig
 
 inline void glBlendFunc(gl12::GLenum sfactor, gl12::GLenum dfactor)
 {
-   	return FunctionObjects::BlendFunc(static_cast<gl::GLenum>(sfactor), static_cast<gl::GLenum>(dfactor));
+   	return FunctionObjects::BlendFunc(sfactor, dfactor);
 }
 
 inline void glCallList(GLuint list)
@@ -59,12 +59,12 @@ inline void glCallList(GLuint list)
 
 inline void glCallLists(GLsizei n, gl12::GLenum type, const void * lists)
 {
-   	return FunctionObjects::CallLists(n, static_cast<gl::GLenum>(type), lists);
+   	return FunctionObjects::CallLists(n, type, lists);
 }
 
 inline void glClear(gl12::GLbitfield mask)
 {
-   	return FunctionObjects::Clear(static_cast<gl::GLbitfield>(mask));
+   	return FunctionObjects::Clear(mask);
 }
 
 inline void glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
@@ -94,7 +94,7 @@ inline void glClearStencil(GLint s)
 
 inline void glClipPlane(gl12::GLenum plane, const GLdouble * equation)
 {
-   	return FunctionObjects::ClipPlane(static_cast<gl::GLenum>(plane), equation);
+   	return FunctionObjects::ClipPlane(plane, equation);
 }
 
 inline void glColor3b(GLbyte red, GLbyte green, GLbyte blue)
@@ -264,47 +264,47 @@ inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolea
 
 inline void glColorMaterial(gl12::GLenum face, gl12::GLenum mode)
 {
-   	return FunctionObjects::ColorMaterial(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::ColorMaterial(face, mode);
 }
 
 inline void glColorPointer(GLint size, gl12::GLenum type, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::ColorPointer(size, static_cast<gl::GLenum>(type), stride, pointer);
+   	return FunctionObjects::ColorPointer(size, type, stride, pointer);
 }
 
 inline void glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, gl12::GLenum type)
 {
-   	return FunctionObjects::CopyPixels(x, y, width, height, static_cast<gl::GLenum>(type));
+   	return FunctionObjects::CopyPixels(x, y, width, height, type);
 }
 
 inline void glCopyTexImage1D(gl12::GLenum target, GLint level, gl12::GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-   	return FunctionObjects::CopyTexImage1D(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(internalformat), x, y, width, border);
+   	return FunctionObjects::CopyTexImage1D(target, level, internalformat, x, y, width, border);
 }
 
 inline void glCopyTexImage2D(gl12::GLenum target, GLint level, gl12::GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-   	return FunctionObjects::CopyTexImage2D(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(internalformat), x, y, width, height, border);
+   	return FunctionObjects::CopyTexImage2D(target, level, internalformat, x, y, width, height, border);
 }
 
 inline void glCopyTexSubImage1D(gl12::GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-   	return FunctionObjects::CopyTexSubImage1D(static_cast<gl::GLenum>(target), level, xoffset, x, y, width);
+   	return FunctionObjects::CopyTexSubImage1D(target, level, xoffset, x, y, width);
 }
 
 inline void glCopyTexSubImage2D(gl12::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-   	return FunctionObjects::CopyTexSubImage2D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, x, y, width, height);
+   	return FunctionObjects::CopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 }
 
 inline void glCopyTexSubImage3D(gl12::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-   	return FunctionObjects::CopyTexSubImage3D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, zoffset, x, y, width, height);
+   	return FunctionObjects::CopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
 
 inline void glCullFace(gl12::GLenum mode)
 {
-   	return FunctionObjects::CullFace(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::CullFace(mode);
 }
 
 inline void glDeleteLists(GLuint list, GLsizei range)
@@ -319,7 +319,7 @@ inline void glDeleteTextures(GLsizei n, const GLuint * textures)
 
 inline void glDepthFunc(gl12::GLenum func)
 {
-   	return FunctionObjects::DepthFunc(static_cast<gl::GLenum>(func));
+   	return FunctionObjects::DepthFunc(func);
 }
 
 inline void glDepthMask(GLboolean flag)
@@ -334,37 +334,37 @@ inline void glDepthRange(GLdouble near_, GLdouble far_)
 
 inline void glDisable(gl12::GLenum cap)
 {
-   	return FunctionObjects::Disable(static_cast<gl::GLenum>(cap));
+   	return FunctionObjects::Disable(cap);
 }
 
 inline void glDisableClientState(gl12::GLenum array)
 {
-   	return FunctionObjects::DisableClientState(static_cast<gl::GLenum>(array));
+   	return FunctionObjects::DisableClientState(array);
 }
 
 inline void glDrawArrays(gl12::GLenum mode, GLint first, GLsizei count)
 {
-   	return FunctionObjects::DrawArrays(static_cast<gl::GLenum>(mode), first, count);
+   	return FunctionObjects::DrawArrays(mode, first, count);
 }
 
 inline void glDrawBuffer(gl12::GLenum mode)
 {
-   	return FunctionObjects::DrawBuffer(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::DrawBuffer(mode);
 }
 
 inline void glDrawElements(gl12::GLenum mode, GLsizei count, gl12::GLenum type, const void * indices)
 {
-   	return FunctionObjects::DrawElements(static_cast<gl::GLenum>(mode), count, static_cast<gl::GLenum>(type), indices);
+   	return FunctionObjects::DrawElements(mode, count, type, indices);
 }
 
 inline void glDrawPixels(GLsizei width, GLsizei height, gl12::GLenum format, gl12::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::DrawPixels(width, height, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::DrawPixels(width, height, format, type, pixels);
 }
 
 inline void glDrawRangeElements(gl12::GLenum mode, GLuint start, GLuint end, GLsizei count, gl12::GLenum type, const void * indices)
 {
-   	return FunctionObjects::DrawRangeElements(static_cast<gl::GLenum>(mode), start, end, count, static_cast<gl::GLenum>(type), indices);
+   	return FunctionObjects::DrawRangeElements(mode, start, end, count, type, indices);
 }
 
 inline void glEdgeFlag(GLboolean flag)
@@ -384,12 +384,12 @@ inline void glEdgeFlagv(const GLboolean * flag)
 
 inline void glEnable(gl12::GLenum cap)
 {
-   	return FunctionObjects::Enable(static_cast<gl::GLenum>(cap));
+   	return FunctionObjects::Enable(cap);
 }
 
 inline void glEnableClientState(gl12::GLenum array)
 {
-   	return FunctionObjects::EnableClientState(static_cast<gl::GLenum>(array));
+   	return FunctionObjects::EnableClientState(array);
 }
 
 inline void glEnd()
@@ -444,12 +444,12 @@ inline void glEvalCoord2fv(const GLfloat * u)
 
 inline void glEvalMesh1(gl12::GLenum mode, GLint i1, GLint i2)
 {
-   	return FunctionObjects::EvalMesh1(static_cast<gl::GLenum>(mode), i1, i2);
+   	return FunctionObjects::EvalMesh1(mode, i1, i2);
 }
 
 inline void glEvalMesh2(gl12::GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 {
-   	return FunctionObjects::EvalMesh2(static_cast<gl::GLenum>(mode), i1, i2, j1, j2);
+   	return FunctionObjects::EvalMesh2(mode, i1, i2, j1, j2);
 }
 
 inline void glEvalPoint1(GLint i)
@@ -464,7 +464,7 @@ inline void glEvalPoint2(GLint i, GLint j)
 
 inline void glFeedbackBuffer(GLsizei size, gl12::GLenum type, GLfloat * buffer)
 {
-   	return FunctionObjects::FeedbackBuffer(size, static_cast<gl::GLenum>(type), buffer);
+   	return FunctionObjects::FeedbackBuffer(size, type, buffer);
 }
 
 inline void glFinish()
@@ -479,27 +479,27 @@ inline void glFlush()
 
 inline void glFogf(gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::Fogf(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::Fogf(pname, param);
 }
 
 inline void glFogfv(gl12::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::Fogfv(static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::Fogfv(pname, params);
 }
 
 inline void glFogi(gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::Fogi(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::Fogi(pname, param);
 }
 
 inline void glFogiv(gl12::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::Fogiv(static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::Fogiv(pname, params);
 }
 
 inline void glFrontFace(gl12::GLenum mode)
 {
-   	return FunctionObjects::FrontFace(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::FrontFace(mode);
 }
 
 inline void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
@@ -519,87 +519,87 @@ inline void glGenTextures(GLsizei n, GLuint * textures)
 
 inline void glGetBooleanv(gl12::GLenum pname, GLboolean * data)
 {
-   	return FunctionObjects::GetBooleanv(static_cast<gl::GLenum>(pname), data);
+   	return FunctionObjects::GetBooleanv(pname, data);
 }
 
 inline void glGetClipPlane(gl12::GLenum plane, GLdouble * equation)
 {
-   	return FunctionObjects::GetClipPlane(static_cast<gl::GLenum>(plane), equation);
+   	return FunctionObjects::GetClipPlane(plane, equation);
 }
 
 inline void glGetDoublev(gl12::GLenum pname, GLdouble * data)
 {
-   	return FunctionObjects::GetDoublev(static_cast<gl::GLenum>(pname), data);
+   	return FunctionObjects::GetDoublev(pname, data);
 }
 
 inline GLenum glGetError()
 {
-   	return static_cast<gl12::GLenum>(FunctionObjects::GetError());
+   	return FunctionObjects::GetError();
 }
 
 inline void glGetFloatv(gl12::GLenum pname, GLfloat * data)
 {
-   	return FunctionObjects::GetFloatv(static_cast<gl::GLenum>(pname), data);
+   	return FunctionObjects::GetFloatv(pname, data);
 }
 
 inline void glGetIntegerv(gl12::GLenum pname, GLint * data)
 {
-   	return FunctionObjects::GetIntegerv(static_cast<gl::GLenum>(pname), data);
+   	return FunctionObjects::GetIntegerv(pname, data);
 }
 
 inline void glGetLightfv(gl12::GLenum light, gl12::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetLightfv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetLightfv(light, pname, params);
 }
 
 inline void glGetLightiv(gl12::GLenum light, gl12::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetLightiv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetLightiv(light, pname, params);
 }
 
 inline void glGetMapdv(gl12::GLenum target, gl12::GLenum query, GLdouble * v)
 {
-   	return FunctionObjects::GetMapdv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(query), v);
+   	return FunctionObjects::GetMapdv(target, query, v);
 }
 
 inline void glGetMapfv(gl12::GLenum target, gl12::GLenum query, GLfloat * v)
 {
-   	return FunctionObjects::GetMapfv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(query), v);
+   	return FunctionObjects::GetMapfv(target, query, v);
 }
 
 inline void glGetMapiv(gl12::GLenum target, gl12::GLenum query, GLint * v)
 {
-   	return FunctionObjects::GetMapiv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(query), v);
+   	return FunctionObjects::GetMapiv(target, query, v);
 }
 
 inline void glGetMaterialfv(gl12::GLenum face, gl12::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetMaterialfv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetMaterialfv(face, pname, params);
 }
 
 inline void glGetMaterialiv(gl12::GLenum face, gl12::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetMaterialiv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetMaterialiv(face, pname, params);
 }
 
 inline void glGetPixelMapfv(gl12::GLenum map, GLfloat * values)
 {
-   	return FunctionObjects::GetPixelMapfv(static_cast<gl::GLenum>(map), values);
+   	return FunctionObjects::GetPixelMapfv(map, values);
 }
 
 inline void glGetPixelMapuiv(gl12::GLenum map, GLuint * values)
 {
-   	return FunctionObjects::GetPixelMapuiv(static_cast<gl::GLenum>(map), values);
+   	return FunctionObjects::GetPixelMapuiv(map, values);
 }
 
 inline void glGetPixelMapusv(gl12::GLenum map, GLushort * values)
 {
-   	return FunctionObjects::GetPixelMapusv(static_cast<gl::GLenum>(map), values);
+   	return FunctionObjects::GetPixelMapusv(map, values);
 }
 
 inline void glGetPointerv(gl12::GLenum pname, void ** params)
 {
-   	return FunctionObjects::GetPointerv(static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetPointerv(pname, params);
 }
 
 inline void glGetPolygonStipple(GLubyte * mask)
@@ -609,62 +609,62 @@ inline void glGetPolygonStipple(GLubyte * mask)
 
 inline const GLubyte * glGetString(gl12::GLenum name)
 {
-   	return FunctionObjects::GetString(static_cast<gl::GLenum>(name));
+   	return FunctionObjects::GetString(name);
 }
 
 inline void glGetTexEnvfv(gl12::GLenum target, gl12::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetTexEnvfv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexEnvfv(target, pname, params);
 }
 
 inline void glGetTexEnviv(gl12::GLenum target, gl12::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetTexEnviv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexEnviv(target, pname, params);
 }
 
 inline void glGetTexGendv(gl12::GLenum coord, gl12::GLenum pname, GLdouble * params)
 {
-   	return FunctionObjects::GetTexGendv(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexGendv(coord, pname, params);
 }
 
 inline void glGetTexGenfv(gl12::GLenum coord, gl12::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetTexGenfv(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexGenfv(coord, pname, params);
 }
 
 inline void glGetTexGeniv(gl12::GLenum coord, gl12::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetTexGeniv(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexGeniv(coord, pname, params);
 }
 
 inline void glGetTexImage(gl12::GLenum target, GLint level, gl12::GLenum format, gl12::GLenum type, void * pixels)
 {
-   	return FunctionObjects::GetTexImage(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::GetTexImage(target, level, format, type, pixels);
 }
 
 inline void glGetTexLevelParameterfv(gl12::GLenum target, GLint level, gl12::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetTexLevelParameterfv(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexLevelParameterfv(target, level, pname, params);
 }
 
 inline void glGetTexLevelParameteriv(gl12::GLenum target, GLint level, gl12::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetTexLevelParameteriv(static_cast<gl::GLenum>(target), level, static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexLevelParameteriv(target, level, pname, params);
 }
 
 inline void glGetTexParameterfv(gl12::GLenum target, gl12::GLenum pname, GLfloat * params)
 {
-   	return FunctionObjects::GetTexParameterfv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexParameterfv(target, pname, params);
 }
 
 inline void glGetTexParameteriv(gl12::GLenum target, gl12::GLenum pname, GLint * params)
 {
-   	return FunctionObjects::GetTexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::GetTexParameteriv(target, pname, params);
 }
 
 inline void glHint(gl12::GLenum target, gl12::GLenum mode)
 {
-   	return FunctionObjects::Hint(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::Hint(target, mode);
 }
 
 inline void glIndexMask(GLuint mask)
@@ -674,7 +674,7 @@ inline void glIndexMask(GLuint mask)
 
 inline void glIndexPointer(gl12::GLenum type, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::IndexPointer(static_cast<gl::GLenum>(type), stride, pointer);
+   	return FunctionObjects::IndexPointer(type, stride, pointer);
 }
 
 inline void glIndexd(GLdouble c)
@@ -734,12 +734,12 @@ inline void glInitNames()
 
 inline void glInterleavedArrays(gl12::GLenum format, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::InterleavedArrays(static_cast<gl::GLenum>(format), stride, pointer);
+   	return FunctionObjects::InterleavedArrays(format, stride, pointer);
 }
 
 inline GLboolean glIsEnabled(gl12::GLenum cap)
 {
-   	return FunctionObjects::IsEnabled(static_cast<gl::GLenum>(cap));
+   	return FunctionObjects::IsEnabled(cap);
 }
 
 inline GLboolean glIsList(GLuint list)
@@ -754,42 +754,42 @@ inline GLboolean glIsTexture(GLuint texture)
 
 inline void glLightModelf(gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::LightModelf(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::LightModelf(pname, param);
 }
 
 inline void glLightModelfv(gl12::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::LightModelfv(static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::LightModelfv(pname, params);
 }
 
 inline void glLightModeli(gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::LightModeli(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::LightModeli(pname, param);
 }
 
 inline void glLightModeliv(gl12::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::LightModeliv(static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::LightModeliv(pname, params);
 }
 
 inline void glLightf(gl12::GLenum light, gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::Lightf(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::Lightf(light, pname, param);
 }
 
 inline void glLightfv(gl12::GLenum light, gl12::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::Lightfv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::Lightfv(light, pname, params);
 }
 
 inline void glLighti(gl12::GLenum light, gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::Lighti(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::Lighti(light, pname, param);
 }
 
 inline void glLightiv(gl12::GLenum light, gl12::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::Lightiv(static_cast<gl::GLenum>(light), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::Lightiv(light, pname, params);
 }
 
 inline void glLineStipple(GLint factor, GLushort pattern)
@@ -829,27 +829,27 @@ inline void glLoadName(GLuint name)
 
 inline void glLogicOp(gl12::GLenum opcode)
 {
-   	return FunctionObjects::LogicOp(static_cast<gl::GLenum>(opcode));
+   	return FunctionObjects::LogicOp(opcode);
 }
 
 inline void glMap1d(gl12::GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points)
 {
-   	return FunctionObjects::Map1d(static_cast<gl::GLenum>(target), u1, u2, stride, order, points);
+   	return FunctionObjects::Map1d(target, u1, u2, stride, order, points);
 }
 
 inline void glMap1f(gl12::GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points)
 {
-   	return FunctionObjects::Map1f(static_cast<gl::GLenum>(target), u1, u2, stride, order, points);
+   	return FunctionObjects::Map1f(target, u1, u2, stride, order, points);
 }
 
 inline void glMap2d(gl12::GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points)
 {
-   	return FunctionObjects::Map2d(static_cast<gl::GLenum>(target), u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+   	return FunctionObjects::Map2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
 inline void glMap2f(gl12::GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points)
 {
-   	return FunctionObjects::Map2f(static_cast<gl::GLenum>(target), u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+   	return FunctionObjects::Map2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
 inline void glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
@@ -874,27 +874,27 @@ inline void glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, 
 
 inline void glMaterialf(gl12::GLenum face, gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::Materialf(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::Materialf(face, pname, param);
 }
 
 inline void glMaterialfv(gl12::GLenum face, gl12::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::Materialfv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::Materialfv(face, pname, params);
 }
 
 inline void glMateriali(gl12::GLenum face, gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::Materiali(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::Materiali(face, pname, param);
 }
 
 inline void glMaterialiv(gl12::GLenum face, gl12::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::Materialiv(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::Materialiv(face, pname, params);
 }
 
 inline void glMatrixMode(gl12::GLenum mode)
 {
-   	return FunctionObjects::MatrixMode(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::MatrixMode(mode);
 }
 
 inline void glMultMatrixd(const GLdouble * m)
@@ -909,7 +909,7 @@ inline void glMultMatrixf(const GLfloat * m)
 
 inline void glNewList(GLuint list, gl12::GLenum mode)
 {
-   	return FunctionObjects::NewList(list, static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::NewList(list, mode);
 }
 
 inline void glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
@@ -964,7 +964,7 @@ inline void glNormal3sv(const GLshort * v)
 
 inline void glNormalPointer(gl12::GLenum type, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::NormalPointer(static_cast<gl::GLenum>(type), stride, pointer);
+   	return FunctionObjects::NormalPointer(type, stride, pointer);
 }
 
 inline void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
@@ -979,37 +979,37 @@ inline void glPassThrough(GLfloat token)
 
 inline void glPixelMapfv(gl12::GLenum map, GLsizei mapsize, const GLfloat * values)
 {
-   	return FunctionObjects::PixelMapfv(static_cast<gl::GLenum>(map), mapsize, values);
+   	return FunctionObjects::PixelMapfv(map, mapsize, values);
 }
 
 inline void glPixelMapuiv(gl12::GLenum map, GLsizei mapsize, const GLuint * values)
 {
-   	return FunctionObjects::PixelMapuiv(static_cast<gl::GLenum>(map), mapsize, values);
+   	return FunctionObjects::PixelMapuiv(map, mapsize, values);
 }
 
 inline void glPixelMapusv(gl12::GLenum map, GLsizei mapsize, const GLushort * values)
 {
-   	return FunctionObjects::PixelMapusv(static_cast<gl::GLenum>(map), mapsize, values);
+   	return FunctionObjects::PixelMapusv(map, mapsize, values);
 }
 
 inline void glPixelStoref(gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::PixelStoref(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::PixelStoref(pname, param);
 }
 
 inline void glPixelStorei(gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::PixelStorei(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::PixelStorei(pname, param);
 }
 
 inline void glPixelTransferf(gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::PixelTransferf(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::PixelTransferf(pname, param);
 }
 
 inline void glPixelTransferi(gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::PixelTransferi(static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::PixelTransferi(pname, param);
 }
 
 inline void glPixelZoom(GLfloat xfactor, GLfloat yfactor)
@@ -1024,7 +1024,7 @@ inline void glPointSize(GLfloat size)
 
 inline void glPolygonMode(gl12::GLenum face, gl12::GLenum mode)
 {
-   	return FunctionObjects::PolygonMode(static_cast<gl::GLenum>(face), static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::PolygonMode(face, mode);
 }
 
 inline void glPolygonOffset(GLfloat factor, GLfloat units)
@@ -1064,12 +1064,12 @@ inline void glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLflo
 
 inline void glPushAttrib(gl12::GLbitfield mask)
 {
-   	return FunctionObjects::PushAttrib(static_cast<gl::GLbitfield>(mask));
+   	return FunctionObjects::PushAttrib(mask);
 }
 
 inline void glPushClientAttrib(gl12::GLbitfield mask)
 {
-   	return FunctionObjects::PushClientAttrib(static_cast<gl::GLbitfield>(mask));
+   	return FunctionObjects::PushClientAttrib(mask);
 }
 
 inline void glPushMatrix()
@@ -1204,12 +1204,12 @@ inline void glRasterPos4sv(const GLshort * v)
 
 inline void glReadBuffer(gl12::GLenum mode)
 {
-   	return FunctionObjects::ReadBuffer(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::ReadBuffer(mode);
 }
 
 inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, gl12::GLenum format, gl12::GLenum type, void * pixels)
 {
-   	return FunctionObjects::ReadPixels(x, y, width, height, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::ReadPixels(x, y, width, height, format, type, pixels);
 }
 
 inline void glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
@@ -1254,7 +1254,7 @@ inline void glRectsv(const GLshort * v1, const GLshort * v2)
 
 inline GLint glRenderMode(gl12::GLenum mode)
 {
-   	return FunctionObjects::RenderMode(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::RenderMode(mode);
 }
 
 inline void glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
@@ -1289,12 +1289,12 @@ inline void glSelectBuffer(GLsizei size, GLuint * buffer)
 
 inline void glShadeModel(gl12::GLenum mode)
 {
-   	return FunctionObjects::ShadeModel(static_cast<gl::GLenum>(mode));
+   	return FunctionObjects::ShadeModel(mode);
 }
 
 inline void glStencilFunc(gl12::GLenum func, GLint ref, GLuint mask)
 {
-   	return FunctionObjects::StencilFunc(static_cast<gl::GLenum>(func), ref, mask);
+   	return FunctionObjects::StencilFunc(func, ref, mask);
 }
 
 inline void glStencilMask(GLuint mask)
@@ -1304,7 +1304,7 @@ inline void glStencilMask(GLuint mask)
 
 inline void glStencilOp(gl12::GLenum fail, gl12::GLenum zfail, gl12::GLenum zpass)
 {
-   	return FunctionObjects::StencilOp(static_cast<gl::GLenum>(fail), static_cast<gl::GLenum>(zfail), static_cast<gl::GLenum>(zpass));
+   	return FunctionObjects::StencilOp(fail, zfail, zpass);
 }
 
 inline void glTexCoord1d(GLdouble s)
@@ -1469,107 +1469,107 @@ inline void glTexCoord4sv(const GLshort * v)
 
 inline void glTexCoordPointer(GLint size, gl12::GLenum type, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::TexCoordPointer(size, static_cast<gl::GLenum>(type), stride, pointer);
+   	return FunctionObjects::TexCoordPointer(size, type, stride, pointer);
 }
 
 inline void glTexEnvf(gl12::GLenum target, gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::TexEnvf(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::TexEnvf(target, pname, param);
 }
 
 inline void glTexEnvfv(gl12::GLenum target, gl12::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::TexEnvfv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::TexEnvfv(target, pname, params);
 }
 
 inline void glTexEnvi(gl12::GLenum target, gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::TexEnvi(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::TexEnvi(target, pname, param);
 }
 
 inline void glTexEnviv(gl12::GLenum target, gl12::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::TexEnviv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::TexEnviv(target, pname, params);
 }
 
 inline void glTexGend(gl12::GLenum coord, gl12::GLenum pname, GLdouble param)
 {
-   	return FunctionObjects::TexGend(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::TexGend(coord, pname, param);
 }
 
 inline void glTexGendv(gl12::GLenum coord, gl12::GLenum pname, const GLdouble * params)
 {
-   	return FunctionObjects::TexGendv(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::TexGendv(coord, pname, params);
 }
 
 inline void glTexGenf(gl12::GLenum coord, gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::TexGenf(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::TexGenf(coord, pname, param);
 }
 
 inline void glTexGenfv(gl12::GLenum coord, gl12::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::TexGenfv(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::TexGenfv(coord, pname, params);
 }
 
 inline void glTexGeni(gl12::GLenum coord, gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::TexGeni(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::TexGeni(coord, pname, param);
 }
 
 inline void glTexGeniv(gl12::GLenum coord, gl12::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::TexGeniv(static_cast<gl::GLenum>(coord), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::TexGeniv(coord, pname, params);
 }
 
 inline void glTexImage1D(gl12::GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, gl12::GLenum format, gl12::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexImage1D(static_cast<gl::GLenum>(target), level, internalformat, width, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::TexImage1D(target, level, internalformat, width, border, format, type, pixels);
 }
 
 inline void glTexImage2D(gl12::GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, gl12::GLenum format, gl12::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexImage2D(static_cast<gl::GLenum>(target), level, internalformat, width, height, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 }
 
 inline void glTexImage3D(gl12::GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, gl12::GLenum format, gl12::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexImage3D(static_cast<gl::GLenum>(target), level, internalformat, width, height, depth, border, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::TexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
 }
 
 inline void glTexParameterf(gl12::GLenum target, gl12::GLenum pname, GLfloat param)
 {
-   	return FunctionObjects::TexParameterf(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::TexParameterf(target, pname, param);
 }
 
 inline void glTexParameterfv(gl12::GLenum target, gl12::GLenum pname, const GLfloat * params)
 {
-   	return FunctionObjects::TexParameterfv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::TexParameterfv(target, pname, params);
 }
 
 inline void glTexParameteri(gl12::GLenum target, gl12::GLenum pname, GLint param)
 {
-   	return FunctionObjects::TexParameteri(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), param);
+   	return FunctionObjects::TexParameteri(target, pname, param);
 }
 
 inline void glTexParameteriv(gl12::GLenum target, gl12::GLenum pname, const GLint * params)
 {
-   	return FunctionObjects::TexParameteriv(static_cast<gl::GLenum>(target), static_cast<gl::GLenum>(pname), params);
+   	return FunctionObjects::TexParameteriv(target, pname, params);
 }
 
 inline void glTexSubImage1D(gl12::GLenum target, GLint level, GLint xoffset, GLsizei width, gl12::GLenum format, gl12::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexSubImage1D(static_cast<gl::GLenum>(target), level, xoffset, width, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::TexSubImage1D(target, level, xoffset, width, format, type, pixels);
 }
 
 inline void glTexSubImage2D(gl12::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, gl12::GLenum format, gl12::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexSubImage2D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, width, height, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
 
 inline void glTexSubImage3D(gl12::GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, gl12::GLenum format, gl12::GLenum type, const void * pixels)
 {
-   	return FunctionObjects::TexSubImage3D(static_cast<gl::GLenum>(target), level, xoffset, yoffset, zoffset, width, height, depth, static_cast<gl::GLenum>(format), static_cast<gl::GLenum>(type), pixels);
+   	return FunctionObjects::TexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
 
 inline void glTranslated(GLdouble x, GLdouble y, GLdouble z)
@@ -1704,7 +1704,7 @@ inline void glVertex4sv(const GLshort * v)
 
 inline void glVertexPointer(GLint size, gl12::GLenum type, GLsizei stride, const void * pointer)
 {
-   	return FunctionObjects::VertexPointer(size, static_cast<gl::GLenum>(type), stride, pointer);
+   	return FunctionObjects::VertexPointer(size, type, stride, pointer);
 }
 
 inline void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)

@@ -20,10 +20,10 @@ def genFeature(feature, outputdir, outputfile, core):
 	if feature:
 		version = str(feature.major) + str(feature.minor) + ("core" if core else "")
 
-	t = template(of_all).replace("?", version)
+	t = template(of_all).replace("%f", version)
 	of = outputfile.replace("?", version)
 
 	status(outputdir + of)
 
 	with open(outputdir + of, 'w') as file:
-		file.write(t.replace("?", version))
+		file.write(t.replace("%f", version))
