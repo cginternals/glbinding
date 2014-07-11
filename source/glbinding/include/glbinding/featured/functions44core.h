@@ -219,7 +219,7 @@ inline void glBufferSubData(gl44core::GLenum target, GLintptr offset, GLsizeiptr
 
 inline GLenum glCheckFramebufferStatus(gl44core::GLenum target)
 {
-   	return FunctionObjects::CheckFramebufferStatus(target);
+   	return static_cast<gl44core::GLenum>(FunctionObjects::CheckFramebufferStatus(target));
 }
 
 inline void glClampColor(gl44core::GLenum target, gl44core::GLenum clamp)
@@ -294,7 +294,7 @@ inline void glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint
 
 inline GLenum glClientWaitSync(GLsync sync, gl44core::SyncObjectMask flags, GLuint64 timeout)
 {
-   	return FunctionObjects::ClientWaitSync(sync, flags, timeout);
+   	return static_cast<gl44core::GLenum>(FunctionObjects::ClientWaitSync(sync, flags, timeout));
 }
 
 inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
@@ -904,7 +904,7 @@ inline void glGetDoublev(gl44core::GLenum pname, GLdouble * data)
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl44core::GLenum>(FunctionObjects::GetError());
 }
 
 inline void glGetFloati_v(gl44core::GLenum target, GLuint index, GLfloat * data)

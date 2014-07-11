@@ -164,7 +164,7 @@ inline void glCallLists(GLsizei n, gl32::GLenum type, const void * lists)
 
 inline GLenum glCheckFramebufferStatus(gl32::GLenum target)
 {
-   	return FunctionObjects::CheckFramebufferStatus(target);
+   	return static_cast<gl32::GLenum>(FunctionObjects::CheckFramebufferStatus(target));
 }
 
 inline void glClampColor(gl32::GLenum target, gl32::GLenum clamp)
@@ -229,7 +229,7 @@ inline void glClientActiveTexture(gl32::GLenum texture)
 
 inline GLenum glClientWaitSync(GLsync sync, gl32::SyncObjectMask flags, GLuint64 timeout)
 {
-   	return FunctionObjects::ClientWaitSync(sync, flags, timeout);
+   	return static_cast<gl32::GLenum>(FunctionObjects::ClientWaitSync(sync, flags, timeout));
 }
 
 inline void glClipPlane(gl32::GLenum plane, const GLdouble * equation)
@@ -1004,7 +1004,7 @@ inline void glGetDoublev(gl32::GLenum pname, GLdouble * data)
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl32::GLenum>(FunctionObjects::GetError());
 }
 
 inline void glGetFloatv(gl32::GLenum pname, GLfloat * data)

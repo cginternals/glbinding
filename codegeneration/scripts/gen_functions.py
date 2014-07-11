@@ -47,17 +47,6 @@ def functionForward(function, feature, core):
 		return functionForwardTemplate % (function.returntype, functionBID(function), params,
 			functionBID(function)[2:], paramNames)
 
-def paramSignature(param, feature, core):
-	t = param.baseType()
-	if not feature:
-		return t
-	elif "GLenum" in t:
-		return t.replace("GLenum", "gl" + versionBID(feature, core) + "::GLenum")
-	elif "GLbitfield" in t:
-		return t.replace("GLbitfield", "gl" + versionBID(feature, core) + "::GLbitfield")
-	else:
-		return t
-
 def paramPass(param, feature):
 	# this returns a string used for passing the param by its name to a function object.
 	# if this is inside a featured function, the param will be cast from featured GLenum 

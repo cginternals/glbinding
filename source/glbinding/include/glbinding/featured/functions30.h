@@ -164,7 +164,7 @@ inline void glCallLists(GLsizei n, gl30::GLenum type, const void * lists)
 
 inline GLenum glCheckFramebufferStatus(gl30::GLenum target)
 {
-   	return FunctionObjects::CheckFramebufferStatus(target);
+   	return static_cast<gl30::GLenum>(FunctionObjects::CheckFramebufferStatus(target));
 }
 
 inline void glClampColor(gl30::GLenum target, gl30::GLenum clamp)
@@ -929,7 +929,7 @@ inline void glGetDoublev(gl30::GLenum pname, GLdouble * data)
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl30::GLenum>(FunctionObjects::GetError());
 }
 
 inline void glGetFloatv(gl30::GLenum pname, GLfloat * data)

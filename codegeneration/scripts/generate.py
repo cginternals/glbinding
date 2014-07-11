@@ -101,7 +101,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     for b in bitfieldgroups:
 	    print(b.name)
     
-    sys.exit(0)
+    #~ sys.exit(0)
 
     includedir = targetdir + "/include/glbinding/"
     includedir_featured = includedir + "featured/"

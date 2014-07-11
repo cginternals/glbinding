@@ -759,7 +759,7 @@ inline void glGetDoublev(gl21::GLenum pname, GLdouble * data)
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl21::GLenum>(FunctionObjects::GetError());
 }
 
 inline void glGetFloatv(gl21::GLenum pname, GLfloat * data)

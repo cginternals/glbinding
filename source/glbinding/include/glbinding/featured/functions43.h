@@ -224,7 +224,7 @@ inline void glCallLists(GLsizei n, gl43::GLenum type, const void * lists)
 
 inline GLenum glCheckFramebufferStatus(gl43::GLenum target)
 {
-   	return FunctionObjects::CheckFramebufferStatus(target);
+   	return static_cast<gl43::GLenum>(FunctionObjects::CheckFramebufferStatus(target));
 }
 
 inline void glClampColor(gl43::GLenum target, gl43::GLenum clamp)
@@ -304,7 +304,7 @@ inline void glClientActiveTexture(gl43::GLenum texture)
 
 inline GLenum glClientWaitSync(GLsync sync, gl43::SyncObjectMask flags, GLuint64 timeout)
 {
-   	return FunctionObjects::ClientWaitSync(sync, flags, timeout);
+   	return static_cast<gl43::GLenum>(FunctionObjects::ClientWaitSync(sync, flags, timeout));
 }
 
 inline void glClipPlane(gl43::GLenum plane, const GLdouble * equation)
@@ -1264,7 +1264,7 @@ inline void glGetDoublev(gl43::GLenum pname, GLdouble * data)
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl43::GLenum>(FunctionObjects::GetError());
 }
 
 inline void glGetFloati_v(gl43::GLenum target, GLuint index, GLfloat * data)

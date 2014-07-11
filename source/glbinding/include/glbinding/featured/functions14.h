@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -84,7 +82,7 @@ inline void glCallLists(GLsizei n, gl14::GLenum type, const void * lists)
    	return FunctionObjects::CallLists(n, type, lists);
 }
 
-inline void glClear(gl14::GLbitfield mask)
+inline void glClear(gl14::ClearBufferMask mask)
 {
    	return FunctionObjects::Clear(mask);
 }
@@ -621,7 +619,7 @@ inline void glGetDoublev(gl14::GLenum pname, GLdouble * data)
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl14::GLenum>(FunctionObjects::GetError());
 }
 
 inline void glGetFloatv(gl14::GLenum pname, GLfloat * data)
@@ -1359,12 +1357,12 @@ inline void glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLflo
    	return FunctionObjects::PrioritizeTextures(n, textures, priorities);
 }
 
-inline void glPushAttrib(gl14::GLbitfield mask)
+inline void glPushAttrib(gl14::AttribMask mask)
 {
    	return FunctionObjects::PushAttrib(mask);
 }
 
-inline void glPushClientAttrib(gl14::GLbitfield mask)
+inline void glPushClientAttrib(gl14::ClientAttribMask mask)
 {
    	return FunctionObjects::PushClientAttrib(mask);
 }
@@ -2181,4 +2179,3 @@ inline void glWindowPos3sv(const GLshort * v)
 
 
 } // namespace gl14
->>>>>>> c10220af1a77b4a4d9bb283bdde62eb9626266ad

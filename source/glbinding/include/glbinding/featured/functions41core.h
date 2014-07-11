@@ -174,7 +174,7 @@ inline void glBufferSubData(gl41core::GLenum target, GLintptr offset, GLsizeiptr
 
 inline GLenum glCheckFramebufferStatus(gl41core::GLenum target)
 {
-   	return FunctionObjects::CheckFramebufferStatus(target);
+   	return static_cast<gl41core::GLenum>(FunctionObjects::CheckFramebufferStatus(target));
 }
 
 inline void glClampColor(gl41core::GLenum target, gl41core::GLenum clamp)
@@ -229,7 +229,7 @@ inline void glClearStencil(GLint s)
 
 inline GLenum glClientWaitSync(GLsync sync, gl41core::SyncObjectMask flags, GLuint64 timeout)
 {
-   	return FunctionObjects::ClientWaitSync(sync, flags, timeout);
+   	return static_cast<gl41core::GLenum>(FunctionObjects::ClientWaitSync(sync, flags, timeout));
 }
 
 inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
@@ -769,7 +769,7 @@ inline void glGetDoublev(gl41core::GLenum pname, GLdouble * data)
 
 inline GLenum glGetError()
 {
-   	return FunctionObjects::GetError();
+   	return static_cast<gl41core::GLenum>(FunctionObjects::GetError());
 }
 
 inline void glGetFloati_v(gl41core::GLenum target, GLuint index, GLfloat * data)
