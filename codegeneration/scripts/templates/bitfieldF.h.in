@@ -1,0 +1,17 @@
+#pragma once
+
+#include <glbinding/nogl.h>
+#include <glbinding/types.h>
+
+#include <glbinding/bitfield.h>
+
+
+namespace gl%f
+{
+
+using namespace gl;
+
+// import bitfields to namespace
+%s
+
+} // namespace gl%f

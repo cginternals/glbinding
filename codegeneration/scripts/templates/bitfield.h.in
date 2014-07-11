@@ -4,7 +4,7 @@
 #include <glbinding/types.h>
 
 
-namespace gl?
+namespace gl
 {
 %s
 class GenericBitmask
@@ -24,4 +24,4 @@ protected:
 // import bitfields to namespace
 %s
 
-} // namespace gl?
+} // namespace gl

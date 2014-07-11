@@ -5,13 +5,13 @@
 
 #include <glbinding/types.h>
 
-#include <glbinding/featured/bitfield?.h>
+#include <glbinding/featured/bitfield%f.h>
 #include <glbinding/boolean.h>
-#include <glbinding/featured/enum?.h>
+#include <glbinding/featured/enum%f.h>
 #include <glbinding/values.h>
 
 #include <glbinding/extension.h>
 
-#include <glbinding/featured/functions?.h>
+#include <glbinding/featured/functions%f.h>
 
 #include <glbinding/initialize.h>

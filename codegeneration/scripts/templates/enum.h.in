@@ -4,10 +4,10 @@
 #include <glbinding/types.h>
 
 
-namespace gl?
+namespace gl
 {
 
-%senum class GLenum : unsigned int
+enum class GLenum : unsigned int
 {
 	%s
 };
@@ -16,4 +16,4 @@ namespace gl?
 
 %s
 
-} // namespace gl?
+} // namespace gl

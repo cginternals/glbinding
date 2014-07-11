@@ -1,6 +1,8 @@
 from binding import *
 from classes.Command import *
 
+
+
 functionForwardTemplate = """inline %s %s(%s)
 {
    	return FunctionObjects::%s(%s);
@@ -45,6 +47,17 @@ def functionForward(function, feature, core):
 		return functionForwardTemplate % (function.returntype, functionBID(function), params,
 			functionBID(function)[2:], paramNames)
 
+def paramSignature(param, feature, core):
+	t = param.baseType()
+	if not feature:
+		return t
+	elif "GLenum" in t:
+		return t.replace("GLenum", "gl" + versionBID(feature, core) + "::GLenum")
+	elif "GLbitfield" in t:
+		return t.replace("GLbitfield", "gl" + versionBID(feature, core) + "::GLbitfield")
+	else:
+		return t
+
 def paramPass(param, feature):
 	# this returns a string used for passing the param by its name to a function object.
 	# if this is inside a featured function, the param will be cast from featured GLenum 
@@ -52,14 +65,14 @@ def paramPass(param, feature):
 	t = param.type
 	if not feature:
 		return param.name
-	elif t == "GLenum":
-		return "static_cast<gl::GLenum>(" + param.name + ")"
-	elif "GLenum" in t and "*" in t:
-		return ("reinterpret_cast<" + t + ">").replace("GLenum", "gl::GLenum") + "(" + param.name + ")"
-	elif t == "GLbitfield":
-		return "static_cast<gl::GLbitfield>(" + param.name + ")"
-	elif "GLbitfield" in t and "*" in t:
-		return ("reinterpret_cast<" + t + ">").replace("GLbitfield", "gl::GLbitfield") + "(" + param.name + ")"
+	# elif t == "GLenum":
+	#	return "static_cast<gl::GLenum>(" + param.name + ")"
+	# elif "GLenum" in t and "*" in t:
+	#	return ("reinterpret_cast<" + t + ">").replace("GLenum", "gl::GLenum") + "(" + param.name + ")"
+	# elif t == "GLbitfield":
+	#	return "static_cast<gl::GLbitfield>(" + param.name + ")"
+	# elif "GLbitfield" in t and "*" in t:
+	#	return ("reinterpret_cast<" + t + ">").replace("GLbitfield", "gl::GLbitfield") + "(" + param.name + ")"
 	else:
 		return param.name
 
@@ -105,7 +118,7 @@ def genFeatureFunctions(commands, feature, outputdir, outputfile, core):
 	of_all = outputfile.replace("?", "")
 
 	version = versionBID(feature, core)
-	t = template(of_all).replace("?", version)
+	t = template(of_all).replace("%f", version)
 
 	of = outputfile.replace("?", version)
 

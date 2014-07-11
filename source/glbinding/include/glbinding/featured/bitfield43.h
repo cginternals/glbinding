@@ -3,12 +3,15 @@
 #include <glbinding/nogl.h>
 #include <glbinding/types.h>
 
+#include <glbinding/bitfield.h>
+
 
 namespace gl43
 {
 
 using namespace gl;
 
+<<<<<<< HEAD
 class GenericBitmask
 {
 public:
@@ -111,6 +114,8 @@ enum class ClientAttribMask : unsigned int
 };
 
 
+=======
+>>>>>>> c10220af1a77b4a4d9bb283bdde62eb9626266ad
 // import bitfields to namespace
 
 // AttribMask
