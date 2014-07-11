@@ -26,7 +26,7 @@ void error(int errnum, const char * errmsg)
 
 inline void coutFunc(const AbstractFunction * func)
 {
-    std::cout << func->name() << " (0x" << reinterpret_cast<void *>(func->address()) << ") " << std::endl;
+    std::cout << "\t(0x" << reinterpret_cast<void *>(func->address()) << ") " << func->name() << std::endl;
 }
 
 int main(int, char *[])
@@ -50,6 +50,9 @@ int main(int, char *[])
 
     // gather available extensions
 
+    unsigned int resolved(0);
+    unsigned int assigned(0);
+
     std::set<std::string> unknownExts;
 
     const std::set<GLextension> & supportedExts = ContextInfo::extensions(&unknownExts);
@@ -66,55 +69,64 @@ int main(int, char *[])
     std::map<GLextension, std::set<const AbstractFunction *>> funcsByExt;
     std::set<const AbstractFunction *> nonExtFuncs;
 
-    for (AbstractFunction * f : FunctionObjects::functions())
-        if (f->extensions().empty())
-            nonExtFuncs.insert(f);
-        else
-            for (GLextension ext : f->extensions())
-                funcsByExt[ext].insert(f);
+    for (AbstractFunction * func : FunctionObjects::functions())
+    {
+        if (func->isResolved())
+            ++resolved;
 
-    unsigned int resolved(0);
+        if (func->extensions().empty())
+            nonExtFuncs.insert(func);
+        else
+        {
+            for (GLextension ext : func->extensions())
+                funcsByExt[ext].insert(func);
+            ++assigned;
+        }
+    }
 
     // print all extensions with support info and functions 
 
     for (auto i : extsByVer)
     {   
-        std::cout << std::endl << std::endl << "[" << i.first << " EXTENSIONS]" << std::endl << std::endl;
+        std::cout << std::endl << std::endl << "[" << i.first << " EXTENSIONS]" << std::endl;
         for (GLextension ext : i.second)
         {
-            std::cout << Meta::getString(ext) << (supportedExts.find(ext) != supportedExts.cend() ? " (supported)" : "") << std::endl;
-            for (auto func : funcsByExt[ext])
-            {
-                coutFunc(func);
-                if (func->isResolved())
-                    ++resolved;
-            }                
+            std::cout << std::endl << Meta::getString(ext) << (supportedExts.find(ext) != supportedExts.cend() ? " (supported)" : "") << std::endl;
+            if (funcsByExt.find(ext) != funcsByExt.cend())
+                for (auto func : funcsByExt[ext])
+                    coutFunc(func);
         }
-    }
-
-    // show non ext functions
-
-    std::cout << std::endl << std::endl << "[NON-EXTENSION FUNCTIONS]" << std::endl << std::endl;
-    for (const AbstractFunction * func : nonExtFuncs)
-    {
-        coutFunc(func);
-        if (func->isResolved())
-            ++resolved;
     }
 
     // show unknown extensions
 
-    std::cout << std::endl << std::endl << "[UNKNOWN EXTENSIONS]" << std::endl << std::endl;
+    std::cout << std::endl << std::endl << "[EXTENSIONS NOT COVERED BY GLBINDING]" << std::endl << std::endl;
     for (const std::string & ext : unknownExts)
         std::cout << ext << std::endl;
+
+    // show non ext functions
+
+    std::cout << std::endl << std::endl << "[NON-EXTENSION OR NOT-COVERED-EXTENSION FUNCTIONS]" << std::endl << std::endl;
+    for (const AbstractFunction * func : nonExtFuncs)
+        coutFunc(func);
 
     // print summary
 
     std::cout << std::endl << std::endl << "[SUMMARY]" << std::endl << std::endl;
-    std::cout << "# Functions:     " << resolved << "/" << FunctionObjects::functions().size() << " (" << (FunctionObjects::functions().size()-resolved) << " unresolved)" << std::endl;
-//    std::cout << "# Extensions:    " << allExts.size() + unknownExts.size() << " (" << supportedExts.size() + unknownExts.size() << " supported, " << unknownExts.size() << " of which are unknown)" << std::endl;
 
-    std::cout << "# Extensions:    " << supportedExts.size() + unknownExts.size() << "/" << allExts.size() << " (" << unknownExts.size() << " unknown)" << std::endl;
+    std::cout << "# Functions:     " << resolved << " of " << FunctionObjects::functions().size() << " resolved"
+        << " (" << (FunctionObjects::functions().size() - resolved) << " unresolved)" << std::endl;
+
+    std::cout << "                 " << assigned << " assigned to extensions";
+
+    if (!Meta::glByStrings())
+        std::cout << " (none assigned, since the glbinding used was compiled without GL_BY_STRINGS support)." << std::endl;
+    else
+        std::cout << "." << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "# Extensions:    " << (supportedExts.size() + unknownExts.size()) << " of " << allExts.size() + unknownExts.size() << " supported"
+        << " (" << unknownExts.size() << " of which are unknown to glbinding)" << std::endl;
 
     for (auto p : extsByVer)
         std::cout << "  # " << p.first << " assoc.:  " << p.second.size() << std::endl;
@@ -126,7 +138,6 @@ int main(int, char *[])
         << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
         << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl;
-
 
     glfwTerminate();
     return 0;

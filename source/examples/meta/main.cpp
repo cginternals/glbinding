@@ -31,12 +31,12 @@ int main(int, char * [])
         std::cout << std::endl << "ENUMS (" << Meta::extensions().size() << ")" << std::endl;
 
         for (GLenum e : Meta::enums()) // c++ 14 ...
-            std::cout << Meta::getString(e) << " (0x" << std::hex << static_cast<std::underlying_type<GLenum>::type>(e) << ")" << std::endl;
+            std::cout << Meta::getString(e) << " (0x" << std::hex << static_cast<std::underlying_type<GLenum>::type>(e) << ")" << std::dec << std::endl;
 
         std::cout << std::dec;
     }
     else
-        std::cout << std::endl << "ENUMS cannot be enlisted (STRINGS_BY_GL not available)." << std::endl;
+        std::cout << std::endl << "ENUMS cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
 
     // enlist all extensions
     if (Meta::stringsByGL())
@@ -50,7 +50,7 @@ int main(int, char * [])
         }
     }
     else
-        std::cout << std::endl << "EXTENSIONS cannot be enlisted (STRINGS_BY_GL not available)." << std::endl;
+        std::cout << std::endl << "EXTENSIONS cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
 
 
 	return 0;
