@@ -23,7 +23,10 @@ namespace gl
 enum class GLextension : int;
 %s
 
-class GenericBitmask;
+
+// fallback for commands with missing bitfield group specifier
+class GLbitfield;
+
 %s
 
 } // namespace gl

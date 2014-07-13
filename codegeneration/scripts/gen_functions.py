@@ -15,7 +15,7 @@ functionForwardTemplateRValueCast = """inline %s %s(%s)
 """
 
 def bitfieldType(param, bid):
-	return "gl::GenericBitmask" if param.group is None else "gl" + bid + "::" + param.group
+	return "gl::GLbitfield" if param.groupString is None else "gl" + bid + "::" + param.groupString
 
 		
 def paramSignature(param, bid=""):

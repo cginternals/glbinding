@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
+
+	<!-- non-standard bitfield group for not used mask parameters -->
+	<enums namespace="GL" group="NotUsedMask" type="bitmask">
+        <enum value="0x00000000" name="GL_NOT_USED_BIT"/>
+    </enums>
+
+    <groups>
+
+        <group name="BufferAccessMask">
+	        <enum name="GL_MAP_READ_BIT"/>
+	        <enum name="GL_MAP_WRITE_BIT"/>
+	        <enum name="GL_MAP_INVALIDATE_RANGE_BIT"/>
+	        <enum name="GL_MAP_INVALIDATE_BUFFER_BIT"/>
+	        <enum name="GL_MAP_FLUSH_EXPLICIT_BIT"/>
+	        <enum name="GL_MAP_UNSYNCHRONIZED_BIT"/>
+	        <enum name="GL_MAP_PERSISTENT_BIT"/>
+	        <enum name="GL_MAP_COHERENT_BIT"/>
+        </group>
+
+        <group name="PathFontStyle">
+	        <enum name="GL_NONE"/>
+	        <enum name="BOLD_BIT_NV"/>
+	        <enum name="GL_ITALIC_BIT_NV"/>
+        </group>
+
+    </groups>
+
 	<commands namespace="GL">
+
+		<!-- patch missing groups for parameter of type GLbitfield -->
 		<command>
 			<proto>void <name>glBufferStorage</name></proto>
 			<param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
@@ -37,5 +66,45 @@
 			<proto>void <name>glUseProgramStages</name></proto>
 			<param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
 		</command>
+		<command>
+			<proto>void <name>glUseProgramStages</name></proto>
+			<param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
+		</command>
+
+		<!-- patch non existent, not specified groups for parameters of type GLbitfield -->
+        <command>
+            <proto>void <name>glSampleMaskIndexedNV</name></proto>
+            <param><ptype>GLbitfield</ptype> <name>mask</name></param>
+        </command>
+
+		<!-- patch unused parameters of type GLbitfield by using NotUsedMask -->
+        <command>
+            <proto>void <name>glWaitSync</name></proto>
+            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto group="sync"><ptype>GLsync</ptype> <name>glFenceSync</name></proto>
+            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto group="sync"><ptype>GLsync</ptype> <name>glImportSyncEXT</name></proto>
+            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto group="sync"><ptype>GLsync</ptype> <name>glCreateSyncFromCLeventARB</name></proto>
+            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+
+        <!-- patch probably wrongly named parameter groups -->
+        <command>
+            <proto>void <name>glGetPathMetricRangeNV</name></proto>
+            <param group="PathRenderingMaskNV"><ptype>GLbitfield</ptype> <name>metricQueryMask</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetPathMetricsNV</name></proto>
+            <param group="PathRenderingMaskNV"><ptype>GLbitfield</ptype> <name>metricQueryMask</name></param>
+        </command>
+
 	</commands>
+
 </registry>

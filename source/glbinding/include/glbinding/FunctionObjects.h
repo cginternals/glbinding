@@ -358,7 +358,7 @@ public:
     static Function<GLhandleARB, gl::GLenum> CreateShaderObjectARB;
     static Function<GLuint, gl::GLenum, const GLchar *> CreateShaderProgramEXT;
     static Function<GLuint, gl::GLenum, GLsizei, const GLchar *const*> CreateShaderProgramv;
-    static Function<GLsync, struct _cl_context *, struct _cl_event *, gl::GenericBitmask> CreateSyncFromCLeventARB;
+    static Function<GLsync, struct _cl_context *, struct _cl_event *, gl::NotUsedMask> CreateSyncFromCLeventARB;
     static Function<void, gl::GLenum> CullFace;
     static Function<void, gl::GLenum, GLdouble *> CullParameterdvEXT;
     static Function<void, gl::GLenum, GLfloat *> CullParameterfvEXT;
@@ -531,7 +531,7 @@ public:
     static Function<void, GLuint, GLuint, GLuint> ExtractComponentEXT;
     static Function<void, GLsizei, gl::GLenum, GLfloat *> FeedbackBuffer;
     static Function<void, GLsizei, gl::GLenum, const GLfixed *> FeedbackBufferxOES;
-    static Function<GLsync, gl::GLenum, gl::GenericBitmask> FenceSync;
+    static Function<GLsync, gl::GLenum, gl::NotUsedMask> FenceSync;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> FinalCombinerInputNV;
     static Function<void> Finish;
     static Function<GLint, GLuint *> FinishAsyncSGIX;
@@ -829,8 +829,8 @@ public:
     static Function<void, GLuint, GLfloat *> GetPathCoordsNV;
     static Function<void, GLuint, GLfloat *> GetPathDashArrayNV;
     static Function<GLfloat, GLuint, GLsizei, GLsizei> GetPathLengthNV;
-    static Function<void, gl::PathMetricMask, GLuint, GLsizei, GLsizei, GLfloat *> GetPathMetricRangeNV;
-    static Function<void, gl::PathMetricMask, GLsizei, gl::GLenum, const void *, GLuint, GLsizei, GLfloat *> GetPathMetricsNV;
+    static Function<void, gl::PathRenderingMaskNV, GLuint, GLsizei, GLsizei, GLfloat *> GetPathMetricRangeNV;
+    static Function<void, gl::PathRenderingMaskNV, GLsizei, gl::GLenum, const void *, GLuint, GLsizei, GLfloat *> GetPathMetricsNV;
     static Function<void, GLuint, gl::GLenum, GLfloat *> GetPathParameterfvNV;
     static Function<void, GLuint, gl::GLenum, GLint *> GetPathParameterivNV;
     static Function<void, gl::GLenum, GLsizei, gl::GLenum, const void *, GLuint, GLfloat, GLfloat, gl::GLenum, GLfloat *> GetPathSpacingNV;
@@ -1048,7 +1048,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, const GLfloat *> ImageTransformParameterfvHP;
     static Function<void, gl::GLenum, gl::GLenum, GLint> ImageTransformParameteriHP;
     static Function<void, gl::GLenum, gl::GLenum, const GLint *> ImageTransformParameterivHP;
-    static Function<GLsync, gl::GLenum, GLintptr, gl::GenericBitmask> ImportSyncEXT;
+    static Function<GLsync, gl::GLenum, GLintptr, gl::NotUsedMask> ImportSyncEXT;
     static Function<void, gl::GLenum, GLsizei> IndexFormatNV;
     static Function<void, gl::GLenum, GLclampf> IndexFuncEXT;
     static Function<void, GLuint> IndexMask;
@@ -1804,9 +1804,9 @@ public:
     static Function<void, GLfixed, GLboolean> SampleCoverageOES;
     static Function<void, GLuint, GLuint, gl::GLenum> SampleMapATI;
     static Function<void, GLclampf, GLboolean> SampleMaskEXT;
-    static Function<void, GLuint, gl::SampleMaskNV> SampleMaskIndexedNV;
+    static Function<void, GLuint, gl::GLbitfield> SampleMaskIndexedNV;
     static Function<void, GLclampf, GLboolean> SampleMaskSGIS;
-    static Function<void, GLuint, gl::GenericBitmask> SampleMaski;
+    static Function<void, GLuint, gl::GLbitfield> SampleMaski;
     static Function<void, gl::GLenum> SamplePatternEXT;
     static Function<void, gl::GLenum> SamplePatternSGIS;
     static Function<void, GLuint, gl::GLenum, const GLint *> SamplerParameterIiv;
@@ -2586,7 +2586,7 @@ public:
     static Function<void, GLuint, GLsizei, const GLfloat *> ViewportArrayv;
     static Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> ViewportIndexedf;
     static Function<void, GLuint, const GLfloat *> ViewportIndexedfv;
-    static Function<void, GLsync, gl::GenericBitmask, GLuint64> WaitSync;
+    static Function<void, GLsync, gl::NotUsedMask, GLuint64> WaitSync;
     static Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> WeightPathsNV;
     static Function<void, GLint, gl::GLenum, GLsizei, const void *> WeightPointerARB;
     static Function<void, GLint, const GLbyte *> WeightbvARB;

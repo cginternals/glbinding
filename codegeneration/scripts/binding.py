@@ -10,8 +10,11 @@ def template(outputfile):
 	with open (execdir + templatedir + outputfile + ".in", "r") as file:
 		return file.read()
 
+class Status:
+	targetdir = ""
+
 def status(file):
-	print "generating " + file
+	print "generating " + file.replace(Status.targetdir, "")
 
 def versionBID(feature, core):
 	if feature:

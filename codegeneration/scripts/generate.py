@@ -31,21 +31,27 @@ from gen_test import *
 
 def generate(inputfile, patchfile, targetdir, revisionfile):
 
+    # preparing
+
+    print ""
+    print "PREPARING"
+
     api     = "gl" # ToDo: other apis are untested yet
-    print "parsing for " + api + " api"
 
-
-    print "parsing revision"
+    print "checking revision"
     file = open(revisionfile, "r")
     revision = int(file.readline())
     file.close()    
     print " revision is " + str(revision)
 
-
-    print "parsing " + inputfile
+    print "loading " + inputfile
     tree       = ET.parse(inputfile)
     registry   = tree.getroot()
 
+    # parsing
+
+    print ""
+    print "PARSING (" + api + " API)"
 
     print "parsing features"
     features   = parseFeatures(registry, api)
@@ -66,23 +72,45 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print "parsing enums"
     enums      = parseEnums(registry, features, extensions, commands, api)
     print " # " + str(len(enums)) + " enums parsed"
-    
-    print "parsing groups"
-    groups = parseGroups(registry, enums)
 
-    enumsByName = dict([(enum.name, enum) for enum in enums])
-    groupsByName = dict([(group.name, group) for group in groups])
-    commandsByName = dict([(command.name, command) for command in commands])
+    print "parsing enum groups"
+    groups     = parseGroups(registry, enums)
+    print " # " + str(len(groups)) + " enum groups parsed"
+
+    # patching
+
+    print ""
+    print "PATCHING"
 
     if patchfile is not None:
+
         print "parsing " + patchfile
-        patchtree       = ET.parse(patchfile)
-        patchregistry   = patchtree.getroot()
-        patchcommands = parseCommands(patchregistry, features, extensions, api)
+        patchtree     = ET.parse(patchfile)
+        patchregistry = patchtree.getroot()
+
         print "patching commands"
-        patchCommands(commandsByName, patchcommands)
-        verifyCommands(commands)
-        #~ sys.exit(0)
+        patch = parseCommands(patchregistry, features, extensions, api)
+        patchCommands(commands, patch)
+
+        print "patching features"
+        print " WARNING: todo"
+
+        print "patching enums"
+        patch = parseEnums(patchregistry, features, extensions, commands, api)
+        patchEnums(enums, patch, groups)
+
+        print "patching groups"
+        patch = parseGroups(patchregistry, enums)
+        patchGroups(groups, patch)
+
+    # resolving references for classes
+
+    enumsByName    = dict([(enum.name, enum) for enum in enums])
+    groupsByName   = dict([(group.name, group) for group in groups])
+    commandsByName = dict([(command.name, command) for command in commands])
+
+    print ""
+    print "RESOLVING"
 
     print "resolving features"
     resolveFeatures(features, enumsByName, commandsByName)
@@ -94,14 +122,26 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     resolveGroups(groups, enumsByName)
         
     print "resolving enums"
-    resolveEnums(enums, enumsByName)
-        
-    bitfieldgroups = [ g for g in groups if len(g.enums)>0 and list(g.enums)[0].type == "GLbitfield" ]
-    
-    for b in bitfieldgroups:
-	    print(b.name)
-    
-    #~ sys.exit(0)
+    resolveEnums(enums, enumsByName, groupsByName)
+
+    # verifying 
+
+    print ""
+    print "VERIFYING"
+
+    bitfGroups = [ g for g in groups 
+        if len(g.enums) > 0 and any(enum.type == "GLbitfield" for enum in g.enums) ]
+
+    print "verifying groups"
+    verifyGroups(groups, enums)
+
+    print "verifying commands"
+    verifyCommands(commands, bitfGroups)
+
+    # generating
+
+    print ""
+    print "GENERATING"
 
     includedir = targetdir + "/include/glbinding/"
     includedir_featured = includedir + "featured/"
@@ -121,7 +161,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genValues                    (enums,              includedir, "values.h")
 
-    genTypes_h                   (types, bitfieldgroups,             includedir, "types.h")  
+    genTypes_h                   (types, bitfGroups,  includedir, "types.h")  
     genTypes_cpp                 (types,              sourcedir,  "types.cpp")  
 
     genExtensions                (extensions,         includedir, "extension.h")
@@ -153,6 +193,8 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genTest                      (features,           sourcedir,  "test.cpp")
 
+    print ""
+
 
 def main(argv):
     try:
@@ -179,8 +221,10 @@ def main(argv):
             revision  = arg
             
     if inputfile == None:
-        print("No GL spec file given")
+        print("no GL spec file given")
         sys.exit(1)
+
+    Status.targetdir = targetdir
 
     generate(inputfile, patchfile, targetdir, revision)
 

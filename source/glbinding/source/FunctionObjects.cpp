@@ -367,7 +367,7 @@ Function<GLuint, gl::GLenum> FunctionObjects::CreateShader("glCreateShader");
 Function<GLhandleARB, gl::GLenum> FunctionObjects::CreateShaderObjectARB("glCreateShaderObjectARB");
 Function<GLuint, gl::GLenum, const GLchar *> FunctionObjects::CreateShaderProgramEXT("glCreateShaderProgramEXT");
 Function<GLuint, gl::GLenum, GLsizei, const GLchar *const*> FunctionObjects::CreateShaderProgramv("glCreateShaderProgramv");
-Function<GLsync, struct _cl_context *, struct _cl_event *, gl::GenericBitmask> FunctionObjects::CreateSyncFromCLeventARB("glCreateSyncFromCLeventARB");
+Function<GLsync, struct _cl_context *, struct _cl_event *, gl::NotUsedMask> FunctionObjects::CreateSyncFromCLeventARB("glCreateSyncFromCLeventARB");
 Function<void, gl::GLenum> FunctionObjects::CullFace("glCullFace");
 Function<void, gl::GLenum, GLdouble *> FunctionObjects::CullParameterdvEXT("glCullParameterdvEXT");
 Function<void, gl::GLenum, GLfloat *> FunctionObjects::CullParameterfvEXT("glCullParameterfvEXT");
@@ -540,7 +540,7 @@ Function<void, gl::GLenum, GLuint, const GLfloat *> FunctionObjects::ExecuteProg
 Function<void, GLuint, GLuint, GLuint> FunctionObjects::ExtractComponentEXT("glExtractComponentEXT");
 Function<void, GLsizei, gl::GLenum, GLfloat *> FunctionObjects::FeedbackBuffer("glFeedbackBuffer");
 Function<void, GLsizei, gl::GLenum, const GLfixed *> FunctionObjects::FeedbackBufferxOES("glFeedbackBufferxOES");
-Function<GLsync, gl::GLenum, gl::GenericBitmask> FunctionObjects::FenceSync("glFenceSync");
+Function<GLsync, gl::GLenum, gl::NotUsedMask> FunctionObjects::FenceSync("glFenceSync");
 Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> FunctionObjects::FinalCombinerInputNV("glFinalCombinerInputNV");
 Function<void> FunctionObjects::Finish("glFinish");
 Function<GLint, GLuint *> FunctionObjects::FinishAsyncSGIX("glFinishAsyncSGIX");
@@ -838,8 +838,8 @@ Function<void, GLuint, GLubyte *> FunctionObjects::GetPathCommandsNV("glGetPathC
 Function<void, GLuint, GLfloat *> FunctionObjects::GetPathCoordsNV("glGetPathCoordsNV");
 Function<void, GLuint, GLfloat *> FunctionObjects::GetPathDashArrayNV("glGetPathDashArrayNV");
 Function<GLfloat, GLuint, GLsizei, GLsizei> FunctionObjects::GetPathLengthNV("glGetPathLengthNV");
-Function<void, gl::PathMetricMask, GLuint, GLsizei, GLsizei, GLfloat *> FunctionObjects::GetPathMetricRangeNV("glGetPathMetricRangeNV");
-Function<void, gl::PathMetricMask, GLsizei, gl::GLenum, const void *, GLuint, GLsizei, GLfloat *> FunctionObjects::GetPathMetricsNV("glGetPathMetricsNV");
+Function<void, gl::PathRenderingMaskNV, GLuint, GLsizei, GLsizei, GLfloat *> FunctionObjects::GetPathMetricRangeNV("glGetPathMetricRangeNV");
+Function<void, gl::PathRenderingMaskNV, GLsizei, gl::GLenum, const void *, GLuint, GLsizei, GLfloat *> FunctionObjects::GetPathMetricsNV("glGetPathMetricsNV");
 Function<void, GLuint, gl::GLenum, GLfloat *> FunctionObjects::GetPathParameterfvNV("glGetPathParameterfvNV");
 Function<void, GLuint, gl::GLenum, GLint *> FunctionObjects::GetPathParameterivNV("glGetPathParameterivNV");
 Function<void, gl::GLenum, GLsizei, gl::GLenum, const void *, GLuint, GLfloat, GLfloat, gl::GLenum, GLfloat *> FunctionObjects::GetPathSpacingNV("glGetPathSpacingNV");
@@ -1057,7 +1057,7 @@ Function<void, gl::GLenum, gl::GLenum, GLfloat> FunctionObjects::ImageTransformP
 Function<void, gl::GLenum, gl::GLenum, const GLfloat *> FunctionObjects::ImageTransformParameterfvHP("glImageTransformParameterfvHP");
 Function<void, gl::GLenum, gl::GLenum, GLint> FunctionObjects::ImageTransformParameteriHP("glImageTransformParameteriHP");
 Function<void, gl::GLenum, gl::GLenum, const GLint *> FunctionObjects::ImageTransformParameterivHP("glImageTransformParameterivHP");
-Function<GLsync, gl::GLenum, GLintptr, gl::GenericBitmask> FunctionObjects::ImportSyncEXT("glImportSyncEXT");
+Function<GLsync, gl::GLenum, GLintptr, gl::NotUsedMask> FunctionObjects::ImportSyncEXT("glImportSyncEXT");
 Function<void, gl::GLenum, GLsizei> FunctionObjects::IndexFormatNV("glIndexFormatNV");
 Function<void, gl::GLenum, GLclampf> FunctionObjects::IndexFuncEXT("glIndexFuncEXT");
 Function<void, GLuint> FunctionObjects::IndexMask("glIndexMask");
@@ -1813,9 +1813,9 @@ Function<void, GLfloat, GLboolean> FunctionObjects::SampleCoverageARB("glSampleC
 Function<void, GLfixed, GLboolean> FunctionObjects::SampleCoverageOES("glSampleCoverageOES");
 Function<void, GLuint, GLuint, gl::GLenum> FunctionObjects::SampleMapATI("glSampleMapATI");
 Function<void, GLclampf, GLboolean> FunctionObjects::SampleMaskEXT("glSampleMaskEXT");
-Function<void, GLuint, gl::SampleMaskNV> FunctionObjects::SampleMaskIndexedNV("glSampleMaskIndexedNV");
+Function<void, GLuint, gl::GLbitfield> FunctionObjects::SampleMaskIndexedNV("glSampleMaskIndexedNV");
 Function<void, GLclampf, GLboolean> FunctionObjects::SampleMaskSGIS("glSampleMaskSGIS");
-Function<void, GLuint, gl::GenericBitmask> FunctionObjects::SampleMaski("glSampleMaski");
+Function<void, GLuint, gl::GLbitfield> FunctionObjects::SampleMaski("glSampleMaski");
 Function<void, gl::GLenum> FunctionObjects::SamplePatternEXT("glSamplePatternEXT");
 Function<void, gl::GLenum> FunctionObjects::SamplePatternSGIS("glSamplePatternSGIS");
 Function<void, GLuint, gl::GLenum, const GLint *> FunctionObjects::SamplerParameterIiv("glSamplerParameterIiv");
@@ -2595,7 +2595,7 @@ Function<void, GLint, GLint, GLsizei, GLsizei> FunctionObjects::Viewport("glView
 Function<void, GLuint, GLsizei, const GLfloat *> FunctionObjects::ViewportArrayv("glViewportArrayv");
 Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ViewportIndexedf("glViewportIndexedf");
 Function<void, GLuint, const GLfloat *> FunctionObjects::ViewportIndexedfv("glViewportIndexedfv");
-Function<void, GLsync, gl::GenericBitmask, GLuint64> FunctionObjects::WaitSync("glWaitSync");
+Function<void, GLsync, gl::NotUsedMask, GLuint64> FunctionObjects::WaitSync("glWaitSync");
 Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> FunctionObjects::WeightPathsNV("glWeightPathsNV");
 Function<void, GLint, gl::GLenum, GLsizei, const void *> FunctionObjects::WeightPointerARB("glWeightPointerARB");
 Function<void, GLint, const GLbyte *> FunctionObjects::WeightbvARB("glWeightbvARB");

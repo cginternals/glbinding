@@ -1699,7 +1699,7 @@ inline GLuint glCreateShaderProgramv(gl::GLenum type, GLsizei count, const GLcha
    	return FunctionObjects::CreateShaderProgramv(type, count, strings);
 }
 
-inline GLsync glCreateSyncFromCLeventARB(struct _cl_context * context, struct _cl_event * event, gl::GenericBitmask flags)
+inline GLsync glCreateSyncFromCLeventARB(struct _cl_context * context, struct _cl_event * event, gl::NotUsedMask flags)
 {
    	return FunctionObjects::CreateSyncFromCLeventARB(context, event, flags);
 }
@@ -2564,7 +2564,7 @@ inline void glFeedbackBufferxOES(GLsizei n, gl::GLenum type, const GLfixed * buf
    	return FunctionObjects::FeedbackBufferxOES(n, type, buffer);
 }
 
-inline GLsync glFenceSync(gl::GLenum condition, gl::GenericBitmask flags)
+inline GLsync glFenceSync(gl::GLenum condition, gl::NotUsedMask flags)
 {
    	return FunctionObjects::FenceSync(condition, flags);
 }
@@ -4054,12 +4054,12 @@ inline GLfloat glGetPathLengthNV(GLuint path, GLsizei startSegment, GLsizei numS
    	return FunctionObjects::GetPathLengthNV(path, startSegment, numSegments);
 }
 
-inline void glGetPathMetricRangeNV(gl::PathMetricMask metricQueryMask, GLuint firstPathName, GLsizei numPaths, GLsizei stride, GLfloat * metrics)
+inline void glGetPathMetricRangeNV(gl::PathRenderingMaskNV metricQueryMask, GLuint firstPathName, GLsizei numPaths, GLsizei stride, GLfloat * metrics)
 {
    	return FunctionObjects::GetPathMetricRangeNV(metricQueryMask, firstPathName, numPaths, stride, metrics);
 }
 
-inline void glGetPathMetricsNV(gl::PathMetricMask metricQueryMask, GLsizei numPaths, gl::GLenum pathNameType, const void * paths, GLuint pathBase, GLsizei stride, GLfloat * metrics)
+inline void glGetPathMetricsNV(gl::PathRenderingMaskNV metricQueryMask, GLsizei numPaths, gl::GLenum pathNameType, const void * paths, GLuint pathBase, GLsizei stride, GLfloat * metrics)
 {
    	return FunctionObjects::GetPathMetricsNV(metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics);
 }
@@ -5149,7 +5149,7 @@ inline void glImageTransformParameterivHP(gl::GLenum target, gl::GLenum pname, c
    	return FunctionObjects::ImageTransformParameterivHP(target, pname, params);
 }
 
-inline GLsync glImportSyncEXT(gl::GLenum external_sync_type, GLintptr external_sync, gl::GenericBitmask flags)
+inline GLsync glImportSyncEXT(gl::GLenum external_sync_type, GLintptr external_sync, gl::NotUsedMask flags)
 {
    	return FunctionObjects::ImportSyncEXT(external_sync_type, external_sync, flags);
 }
@@ -8929,7 +8929,7 @@ inline void glSampleMaskEXT(GLclampf value, GLboolean invert)
    	return FunctionObjects::SampleMaskEXT(value, invert);
 }
 
-inline void glSampleMaskIndexedNV(GLuint index, gl::SampleMaskNV mask)
+inline void glSampleMaskIndexedNV(GLuint index, gl::GLbitfield mask)
 {
    	return FunctionObjects::SampleMaskIndexedNV(index, mask);
 }
@@ -8939,7 +8939,7 @@ inline void glSampleMaskSGIS(GLclampf value, GLboolean invert)
    	return FunctionObjects::SampleMaskSGIS(value, invert);
 }
 
-inline void glSampleMaski(GLuint maskNumber, gl::GenericBitmask mask)
+inline void glSampleMaski(GLuint maskNumber, gl::GLbitfield mask)
 {
    	return FunctionObjects::SampleMaski(maskNumber, mask);
 }
@@ -12839,7 +12839,7 @@ inline void glViewportIndexedfv(GLuint index, const GLfloat * v)
    	return FunctionObjects::ViewportIndexedfv(index, v);
 }
 
-inline void glWaitSync(GLsync sync, gl::GenericBitmask flags, GLuint64 timeout)
+inline void glWaitSync(GLsync sync, gl::NotUsedMask flags, GLuint64 timeout)
 {
    	return FunctionObjects::WaitSync(sync, flags, timeout);
 }

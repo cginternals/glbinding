@@ -7,17 +7,20 @@
 namespace gl
 {
 
-class GenericBitmask
+class GLbitfield
 {
 public:
-	GenericBitfield() : value(0) {}
-	GenericBitfield(unsigned int v) : value(v) {}
-	template <typename T> GenericBitfield(T v) : value(static_cast<unsigned int>(v)) {}
+    GLbitfield() : bitfield(0) { }
+    GLbitfield(unsigned int v) : bitfield(v) { }
+
+    template <typename T> GLbitfield(T v) : bitfield(static_cast<unsigned int>(v)) { }
 	
-	operator unsigned int() { return value; }
+	operator unsigned int() { return bitfield; }
+
 protected:
-	unsigned int value;
+	unsigned int bitfield;
 };
+
 
 %s
 

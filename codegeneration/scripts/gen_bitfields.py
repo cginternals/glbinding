@@ -9,14 +9,21 @@ bitfieldGroupTemplate = """enum class %s : unsigned int
 """
 
 
-def bitfieldDefinition(enum):
-	return "%s = %s," % (enumBID(enum), enum.value)
+def bitfieldDefinition(enum, maxlen):
+
+	spaces = " " * (maxlen - len(enumBID(enum)))
+	return "%s %s= %s," % (enumBID(enum), spaces, enum.value)
+
 
 def bitfieldImportDefinition(enum):
-	return "static const %s %s = %s::%s;" % (enum.group, enumBID(enum), enum.group, enumBID(enum))
 
-def bitfieldGroup(group, enums):
-	return bitfieldGroupTemplate % (group, "\n\t".join([ bitfieldDefinition(e) for e in enums ]))
+	return "static const %s %s = %s::%s;" % (enum.groupString, enumBID(enum), enum.groupString, enumBID(enum))
+
+
+def bitfieldGroup(group, enums, maxlen):
+
+	return bitfieldGroupTemplate % (group, "\n\t".join([ bitfieldDefinition(e, maxlen) for e in enums ]))
+
 
 def genBitfieldsAll(enums, outputdir, outputfile):
 
@@ -59,7 +66,8 @@ def genFeatureBitfields(enums, feature, outputdir, outputfile, core):
 
 		if not feature:
 
-			definitions = [ bitfieldGroup(group, enums) for group, enums in groupedBitfields.items()  ]
+			maxlen = max([len(enum.name) for enum in pureBitfields]) if len(pureBitfields) > 0 else 0
+			definitions = [ bitfieldGroup(group, enums, maxlen) for group, enums in groupedBitfields.items()  ]
 
 			file.write(t % (("\n") .join(definitions), ("\n") .join(importToNamespace)))
 

@@ -17,6 +17,7 @@ public:
     Value(T value);
 
     virtual void printOn(std::ostream & stream) const override;
+
 protected:
     T value;
 };

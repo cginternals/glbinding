@@ -1,5 +1,6 @@
 from binding import *
 from classes.Type import *
+from classes.Enum import *
 
 # ToDo: move this to Type class? (as well as convert an multiline convert)
 
@@ -42,7 +43,7 @@ def convertType(type):
 	return convertTypedef(type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(GL_APIENTRY *)")
 
 
-def genTypes_h(types, bitfieldgroups, outputdir, outputfile):
+def genTypes_h(types, bitfGroups, outputdir, outputfile):
 
 	status(outputdir + outputfile)
 
@@ -54,7 +55,7 @@ def genTypes_h(types, bitfieldgroups, outputdir, outputfile):
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % (
 			("\n".join([ convertType(t) for t in types if t.name != "GLbitfield" ])),
-			"\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfieldgroups ]),
+			 "\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ]),
 			("\n".join([ t for t in type_integrations ]))
 		))
 

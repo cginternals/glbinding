@@ -16,9 +16,7 @@ namespace gl
 const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield
 {
 #ifdef STRINGS_BY_GL
-/*
     %s
-*/
 #endif
 };
 

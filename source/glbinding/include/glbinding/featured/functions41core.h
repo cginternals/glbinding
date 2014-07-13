@@ -562,7 +562,7 @@ inline void glEndTransformFeedback()
    	return FunctionObjects::EndTransformFeedback();
 }
 
-inline GLsync glFenceSync(gl41core::GLenum condition, gl::GenericBitmask flags)
+inline GLsync glFenceSync(gl41core::GLenum condition, gl41core::NotUsedMask flags)
 {
    	return FunctionObjects::FenceSync(condition, flags);
 }
@@ -1607,7 +1607,7 @@ inline void glSampleCoverage(GLfloat value, GLboolean invert)
    	return FunctionObjects::SampleCoverage(value, invert);
 }
 
-inline void glSampleMaski(GLuint maskNumber, gl::GenericBitmask mask)
+inline void glSampleMaski(GLuint maskNumber, gl::GLbitfield mask)
 {
    	return FunctionObjects::SampleMaski(maskNumber, mask);
 }
@@ -2547,7 +2547,7 @@ inline void glViewportIndexedfv(GLuint index, const GLfloat * v)
    	return FunctionObjects::ViewportIndexedfv(index, v);
 }
 
-inline void glWaitSync(GLsync sync, gl::GenericBitmask flags, GLuint64 timeout)
+inline void glWaitSync(GLsync sync, gl41core::NotUsedMask flags, GLuint64 timeout)
 {
    	return FunctionObjects::WaitSync(sync, flags, timeout);
 }

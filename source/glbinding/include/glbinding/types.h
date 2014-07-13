@@ -65,12 +65,16 @@ using GLDEBUGPROCAMD = void (GL_APIENTRY *)(GLuint id,GLenum category,GLenum sev
 using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
 
-class GenericBitmask;
+
+// fallback for commands with missing bitfield group specifier
+class GLbitfield;
+
 enum class AttribMask : unsigned int;
 enum class ClearBufferMask : unsigned int;
 enum class ClientAttribMask : unsigned int;
 enum class ContextFlagMask : unsigned int;
 enum class ContextProfileMask : unsigned int;
+enum class FfdMaskSGIX : unsigned int;
 enum class FragmentShaderColorModMaskATI : unsigned int;
 enum class FragmentShaderDestMaskATI : unsigned int;
 enum class FragmentShaderDestModMaskATI : unsigned int;
@@ -82,6 +86,9 @@ enum class SyncObjectMask : unsigned int;
 enum class TextureStorageMaskAMD : unsigned int;
 enum class UseProgramStageMask : unsigned int;
 enum class VertexHintsMaskPGI : unsigned int;
+enum class NotUsedMask : unsigned int;
+enum class BufferAccessMask : unsigned int;
+enum class PathFontStyle : unsigned int;
 
 } // namespace gl
 
