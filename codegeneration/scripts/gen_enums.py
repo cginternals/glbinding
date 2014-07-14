@@ -2,16 +2,39 @@ from binding import *
 from classes.Enum import *
 from classes.Feature import *
 
+enumGroupTemplate = """	// %s
 
-def enumDefinition(enum):
-	if not enum.value.startswith("-"):
-		t = enum.value
+	%s
+"""
+
+def castEnumValue(value):
+	if not value.startswith("-"):
+		return value
 	else:
-		t = "static_cast<unsigned int>(%s)" % enum.value
-	return "%s = %s" % (enumBID(enum), t)
+		return "static_cast<unsigned int>(%s)" % value	
 
-def enumImportDefinition(enum):
-	return "static const GLenum %s = GLenum::%s;" % (enumBID(enum), enumBID(enum))
+def enumDefinition(group, enum, usedEnumsByName):
+	if enum.name not in usedEnumsByName:
+		usedEnumsByName[enum.name] = group
+		return "%s = %s," % (enumBID(enum), castEnumValue(enum.value))
+	else:
+		reuse = usedEnumsByName[enum.name]
+		return "//  %s = %s, // reuse %s" % (enumBID(enum), castEnumValue(enum.value), reuse)
+
+
+def enumImportDefinition(enum, group, usedEnumsByName):
+	if enum.name not in usedEnumsByName:
+		usedEnumsByName[enum.name] = group
+		return "static const GLenum %s = GLenum::%s;" % (enumBID(enum), enumBID(enum))
+	else:
+		reuse = usedEnumsByName[enum.name]
+		return "// static const GLenum %s = GLenum::%s; // reuse %s" % (enumBID(enum), enumBID(enum), reuse)
+
+def enumGroup(group, enums, usedEnumsByName, feature, core):
+	featureEnums = [ e for e in enums if e.supported(feature, core) ]
+	if len(featureEnums)==0:
+		return ""
+	return enumGroupTemplate % (group, "\n\t".join([ enumDefinition(group, e, usedEnumsByName) for e in sorted(featureEnums, key=lambda e: e.value) ]))
 
 
 def genEnumsAll(enums, outputdir, outputfile):
@@ -44,16 +67,20 @@ def genFeatureEnums(enums, feature, outputdir, outputfile, core):
 
 	tgrouped = groupEnumsByType(enums)
 	pureEnums = tgrouped["GLenum"]
+	
+	groupedEnums = groupEnumsByGroup(pureEnums)
+	usedEnumsByName = dict()
+	
+	importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join([ enumImportDefinition(e, group, usedEnumsByName) for e in enums if e.supported(feature, core) ]))  for group, enums in sorted(groupedEnums.items()) ]
 
-	# the "original", non-featured enums are imported to the featured namespace
-	importToNamespace = [ enumImportDefinition(e) for e in pureEnums if e.supported(feature, core)]
+	usedEnumsByName.clear()
 
 	with open(outputdir + of, 'w') as file:
 		if not feature:
 
-			definitions = [ enumDefinition(e) for e in pureEnums if e.supported(feature, core)]
+			definitions = [ enumGroup(group, enums, usedEnumsByName, feature, core) for group, enums in sorted(groupedEnums.items(), key=lambda x: x[0]) ]
 
-			file.write(t % ((",\n" + tab).join(definitions), ("\n") .join(importToNamespace)))
+			file.write(t % ("\n".join(definitions), ("\n") .join(importToNamespace)))
 
 		else:
 			# the "original", non-featured enums are imported to the featured namespace

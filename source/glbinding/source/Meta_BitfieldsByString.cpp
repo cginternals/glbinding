@@ -152,6 +152,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
     { "GL_ALL_BARRIER_BITS_EXT", GLbitfield::GL_ALL_BARRIER_BITS_EXT },
     { "GL_ALL_SHADER_BITS", GLbitfield::GL_ALL_SHADER_BITS },
     { "GL_CLIENT_ALL_ATTRIB_BITS", GLbitfield::GL_CLIENT_ALL_ATTRIB_BITS },
+    { "GL_NONE_BIT", GLbitfield::GL_NONE_BIT },
     { "GL_NOT_USED_BIT", GLbitfield::GL_NOT_USED_BIT }
 #endif
 };

@@ -13,20 +13,13 @@ using namespace gl;
 
 // import enums to namespace
 
-static const GLenum GL_NONE = GLenum::GL_NONE;
-static const GLenum GL_NO_ERROR = GLenum::GL_NO_ERROR;
-static const GLenum GL_ZERO = GLenum::GL_ZERO;
-static const GLenum GL_POINTS = GLenum::GL_POINTS;
-static const GLenum GL_LINES = GLenum::GL_LINES;
-static const GLenum GL_LINE_LOOP = GLenum::GL_LINE_LOOP;
-static const GLenum GL_LINE_STRIP = GLenum::GL_LINE_STRIP;
-static const GLenum GL_TRIANGLES = GLenum::GL_TRIANGLES;
-static const GLenum GL_TRIANGLE_STRIP = GLenum::GL_TRIANGLE_STRIP;
-static const GLenum GL_TRIANGLE_FAN = GLenum::GL_TRIANGLE_FAN;
-static const GLenum GL_LINES_ADJACENCY = GLenum::GL_LINES_ADJACENCY;
-static const GLenum GL_LINE_STRIP_ADJACENCY = GLenum::GL_LINE_STRIP_ADJACENCY;
-static const GLenum GL_TRIANGLES_ADJACENCY = GLenum::GL_TRIANGLES_ADJACENCY;
-static const GLenum GL_TRIANGLE_STRIP_ADJACENCY = GLenum::GL_TRIANGLE_STRIP_ADJACENCY;
+
+// AccumOp
+
+
+
+// AlphaFunction
+
 static const GLenum GL_NEVER = GLenum::GL_NEVER;
 static const GLenum GL_LESS = GLenum::GL_LESS;
 static const GLenum GL_EQUAL = GLenum::GL_EQUAL;
@@ -35,53 +28,230 @@ static const GLenum GL_GREATER = GLenum::GL_GREATER;
 static const GLenum GL_NOTEQUAL = GLenum::GL_NOTEQUAL;
 static const GLenum GL_GEQUAL = GLenum::GL_GEQUAL;
 static const GLenum GL_ALWAYS = GLenum::GL_ALWAYS;
+
+// BlendEquationModeEXT
+
+
+
+// BlendingFactorDest
+
+static const GLenum GL_ZERO = GLenum::GL_ZERO;
 static const GLenum GL_SRC_COLOR = GLenum::GL_SRC_COLOR;
 static const GLenum GL_ONE_MINUS_SRC_COLOR = GLenum::GL_ONE_MINUS_SRC_COLOR;
 static const GLenum GL_SRC_ALPHA = GLenum::GL_SRC_ALPHA;
 static const GLenum GL_ONE_MINUS_SRC_ALPHA = GLenum::GL_ONE_MINUS_SRC_ALPHA;
 static const GLenum GL_DST_ALPHA = GLenum::GL_DST_ALPHA;
 static const GLenum GL_ONE_MINUS_DST_ALPHA = GLenum::GL_ONE_MINUS_DST_ALPHA;
+static const GLenum GL_ONE = GLenum::GL_ONE;
+
+// BlendingFactorSrc
+
+// static const GLenum GL_ZERO = GLenum::GL_ZERO; // reuse BlendingFactorDest
+// static const GLenum GL_SRC_ALPHA = GLenum::GL_SRC_ALPHA; // reuse BlendingFactorDest
+// static const GLenum GL_ONE_MINUS_SRC_ALPHA = GLenum::GL_ONE_MINUS_SRC_ALPHA; // reuse BlendingFactorDest
+// static const GLenum GL_DST_ALPHA = GLenum::GL_DST_ALPHA; // reuse BlendingFactorDest
+// static const GLenum GL_ONE_MINUS_DST_ALPHA = GLenum::GL_ONE_MINUS_DST_ALPHA; // reuse BlendingFactorDest
 static const GLenum GL_DST_COLOR = GLenum::GL_DST_COLOR;
 static const GLenum GL_ONE_MINUS_DST_COLOR = GLenum::GL_ONE_MINUS_DST_COLOR;
 static const GLenum GL_SRC_ALPHA_SATURATE = GLenum::GL_SRC_ALPHA_SATURATE;
+// static const GLenum GL_ONE = GLenum::GL_ONE; // reuse BlendingFactorDest
+
+// ClipPlaneName
+
+static const GLenum GL_CLIP_DISTANCE0 = GLenum::GL_CLIP_DISTANCE0;
+static const GLenum GL_CLIP_DISTANCE1 = GLenum::GL_CLIP_DISTANCE1;
+static const GLenum GL_CLIP_DISTANCE2 = GLenum::GL_CLIP_DISTANCE2;
+static const GLenum GL_CLIP_DISTANCE3 = GLenum::GL_CLIP_DISTANCE3;
+static const GLenum GL_CLIP_DISTANCE4 = GLenum::GL_CLIP_DISTANCE4;
+static const GLenum GL_CLIP_DISTANCE5 = GLenum::GL_CLIP_DISTANCE5;
+static const GLenum GL_CLIP_DISTANCE6 = GLenum::GL_CLIP_DISTANCE6;
+static const GLenum GL_CLIP_DISTANCE7 = GLenum::GL_CLIP_DISTANCE7;
+
+// ColorMaterialFace
+
+static const GLenum GL_FRONT = GLenum::GL_FRONT;
+static const GLenum GL_BACK = GLenum::GL_BACK;
+static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK;
+
+// ColorMaterialParameter
+
+
+
+// ColorPointerType
+
+static const GLenum GL_BYTE = GLenum::GL_BYTE;
+static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE;
+static const GLenum GL_SHORT = GLenum::GL_SHORT;
+static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT;
+static const GLenum GL_INT = GLenum::GL_INT;
+static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT;
+static const GLenum GL_FLOAT = GLenum::GL_FLOAT;
+static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE;
+
+// ColorTableParameterPNameSGI
+
+
+
+// ColorTableTargetSGI
+
+
+
+// ConvolutionBorderModeEXT
+
+
+
+// ConvolutionParameterEXT
+
+
+
+// ConvolutionTargetEXT
+
+
+
+// CullFaceMode
+
+// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
+// static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+
+// DepthFunction
+
+// static const GLenum GL_NEVER = GLenum::GL_NEVER; // reuse AlphaFunction
+// static const GLenum GL_LESS = GLenum::GL_LESS; // reuse AlphaFunction
+// static const GLenum GL_EQUAL = GLenum::GL_EQUAL; // reuse AlphaFunction
+// static const GLenum GL_LEQUAL = GLenum::GL_LEQUAL; // reuse AlphaFunction
+// static const GLenum GL_GREATER = GLenum::GL_GREATER; // reuse AlphaFunction
+// static const GLenum GL_NOTEQUAL = GLenum::GL_NOTEQUAL; // reuse AlphaFunction
+// static const GLenum GL_GEQUAL = GLenum::GL_GEQUAL; // reuse AlphaFunction
+// static const GLenum GL_ALWAYS = GLenum::GL_ALWAYS; // reuse AlphaFunction
+
+// DrawBufferMode
+
+static const GLenum GL_NONE = GLenum::GL_NONE;
 static const GLenum GL_FRONT_LEFT = GLenum::GL_FRONT_LEFT;
 static const GLenum GL_FRONT_RIGHT = GLenum::GL_FRONT_RIGHT;
 static const GLenum GL_BACK_LEFT = GLenum::GL_BACK_LEFT;
 static const GLenum GL_BACK_RIGHT = GLenum::GL_BACK_RIGHT;
-static const GLenum GL_FRONT = GLenum::GL_FRONT;
-static const GLenum GL_BACK = GLenum::GL_BACK;
+// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
 static const GLenum GL_LEFT = GLenum::GL_LEFT;
 static const GLenum GL_RIGHT = GLenum::GL_RIGHT;
-static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK;
+// static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+
+// EnableCap
+
+static const GLenum GL_LINE_SMOOTH = GLenum::GL_LINE_SMOOTH;
+static const GLenum GL_POLYGON_SMOOTH = GLenum::GL_POLYGON_SMOOTH;
+static const GLenum GL_CULL_FACE = GLenum::GL_CULL_FACE;
+static const GLenum GL_DEPTH_TEST = GLenum::GL_DEPTH_TEST;
+static const GLenum GL_STENCIL_TEST = GLenum::GL_STENCIL_TEST;
+static const GLenum GL_DITHER = GLenum::GL_DITHER;
+static const GLenum GL_BLEND = GLenum::GL_BLEND;
+static const GLenum GL_COLOR_LOGIC_OP = GLenum::GL_COLOR_LOGIC_OP;
+static const GLenum GL_SCISSOR_TEST = GLenum::GL_SCISSOR_TEST;
+static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D;
+static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D;
+static const GLenum GL_POLYGON_OFFSET_POINT = GLenum::GL_POLYGON_OFFSET_POINT;
+static const GLenum GL_POLYGON_OFFSET_LINE = GLenum::GL_POLYGON_OFFSET_LINE;
+static const GLenum GL_POLYGON_OFFSET_FILL = GLenum::GL_POLYGON_OFFSET_FILL;
+
+// ErrorCode
+
+static const GLenum GL_NO_ERROR = GLenum::GL_NO_ERROR;
 static const GLenum GL_INVALID_ENUM = GLenum::GL_INVALID_ENUM;
 static const GLenum GL_INVALID_VALUE = GLenum::GL_INVALID_VALUE;
 static const GLenum GL_INVALID_OPERATION = GLenum::GL_INVALID_OPERATION;
 static const GLenum GL_OUT_OF_MEMORY = GLenum::GL_OUT_OF_MEMORY;
 static const GLenum GL_INVALID_FRAMEBUFFER_OPERATION = GLenum::GL_INVALID_FRAMEBUFFER_OPERATION;
+
+// FeedBackToken
+
+
+
+// FeedbackType
+
+
+
+// FfdTargetSGIX
+
+
+
+// FogCoordinatePointerType
+
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+
+// FogMode
+
+static const GLenum GL_LINEAR = GLenum::GL_LINEAR;
+
+// FogParameter
+
+
+
+// FogPointerTypeEXT
+
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+
+// FogPointerTypeIBM
+
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+
+// FragmentLightModelParameterSGIX
+
+
+
+// FrontFaceDirection
+
 static const GLenum GL_CW = GLenum::GL_CW;
 static const GLenum GL_CCW = GLenum::GL_CCW;
+
+// GetColorTableParameterPNameSGI
+
+
+
+// GetConvolutionParameter
+
+
+
+// GetHistogramParameterPNameEXT
+
+
+
+// GetMapQuery
+
+
+
+// GetMinmaxParameterPNameEXT
+
+
+
+// GetPName
+
 static const GLenum GL_POINT_SIZE = GLenum::GL_POINT_SIZE;
 static const GLenum GL_POINT_SIZE_RANGE = GLenum::GL_POINT_SIZE_RANGE;
 static const GLenum GL_SMOOTH_POINT_SIZE_RANGE = GLenum::GL_SMOOTH_POINT_SIZE_RANGE;
 static const GLenum GL_POINT_SIZE_GRANULARITY = GLenum::GL_POINT_SIZE_GRANULARITY;
 static const GLenum GL_SMOOTH_POINT_SIZE_GRANULARITY = GLenum::GL_SMOOTH_POINT_SIZE_GRANULARITY;
-static const GLenum GL_LINE_SMOOTH = GLenum::GL_LINE_SMOOTH;
+// static const GLenum GL_LINE_SMOOTH = GLenum::GL_LINE_SMOOTH; // reuse EnableCap
 static const GLenum GL_LINE_WIDTH = GLenum::GL_LINE_WIDTH;
 static const GLenum GL_LINE_WIDTH_RANGE = GLenum::GL_LINE_WIDTH_RANGE;
 static const GLenum GL_SMOOTH_LINE_WIDTH_RANGE = GLenum::GL_SMOOTH_LINE_WIDTH_RANGE;
 static const GLenum GL_LINE_WIDTH_GRANULARITY = GLenum::GL_LINE_WIDTH_GRANULARITY;
 static const GLenum GL_SMOOTH_LINE_WIDTH_GRANULARITY = GLenum::GL_SMOOTH_LINE_WIDTH_GRANULARITY;
 static const GLenum GL_POLYGON_MODE = GLenum::GL_POLYGON_MODE;
-static const GLenum GL_POLYGON_SMOOTH = GLenum::GL_POLYGON_SMOOTH;
-static const GLenum GL_CULL_FACE = GLenum::GL_CULL_FACE;
+// static const GLenum GL_POLYGON_SMOOTH = GLenum::GL_POLYGON_SMOOTH; // reuse EnableCap
+// static const GLenum GL_CULL_FACE = GLenum::GL_CULL_FACE; // reuse EnableCap
 static const GLenum GL_CULL_FACE_MODE = GLenum::GL_CULL_FACE_MODE;
 static const GLenum GL_FRONT_FACE = GLenum::GL_FRONT_FACE;
 static const GLenum GL_DEPTH_RANGE = GLenum::GL_DEPTH_RANGE;
-static const GLenum GL_DEPTH_TEST = GLenum::GL_DEPTH_TEST;
+// static const GLenum GL_DEPTH_TEST = GLenum::GL_DEPTH_TEST; // reuse EnableCap
 static const GLenum GL_DEPTH_WRITEMASK = GLenum::GL_DEPTH_WRITEMASK;
 static const GLenum GL_DEPTH_CLEAR_VALUE = GLenum::GL_DEPTH_CLEAR_VALUE;
 static const GLenum GL_DEPTH_FUNC = GLenum::GL_DEPTH_FUNC;
-static const GLenum GL_STENCIL_TEST = GLenum::GL_STENCIL_TEST;
+// static const GLenum GL_STENCIL_TEST = GLenum::GL_STENCIL_TEST; // reuse EnableCap
 static const GLenum GL_STENCIL_CLEAR_VALUE = GLenum::GL_STENCIL_CLEAR_VALUE;
 static const GLenum GL_STENCIL_FUNC = GLenum::GL_STENCIL_FUNC;
 static const GLenum GL_STENCIL_VALUE_MASK = GLenum::GL_STENCIL_VALUE_MASK;
@@ -91,16 +261,16 @@ static const GLenum GL_STENCIL_PASS_DEPTH_PASS = GLenum::GL_STENCIL_PASS_DEPTH_P
 static const GLenum GL_STENCIL_REF = GLenum::GL_STENCIL_REF;
 static const GLenum GL_STENCIL_WRITEMASK = GLenum::GL_STENCIL_WRITEMASK;
 static const GLenum GL_VIEWPORT = GLenum::GL_VIEWPORT;
-static const GLenum GL_DITHER = GLenum::GL_DITHER;
+// static const GLenum GL_DITHER = GLenum::GL_DITHER; // reuse EnableCap
 static const GLenum GL_BLEND_DST = GLenum::GL_BLEND_DST;
 static const GLenum GL_BLEND_SRC = GLenum::GL_BLEND_SRC;
-static const GLenum GL_BLEND = GLenum::GL_BLEND;
+// static const GLenum GL_BLEND = GLenum::GL_BLEND; // reuse EnableCap
 static const GLenum GL_LOGIC_OP_MODE = GLenum::GL_LOGIC_OP_MODE;
-static const GLenum GL_COLOR_LOGIC_OP = GLenum::GL_COLOR_LOGIC_OP;
+// static const GLenum GL_COLOR_LOGIC_OP = GLenum::GL_COLOR_LOGIC_OP; // reuse EnableCap
 static const GLenum GL_DRAW_BUFFER = GLenum::GL_DRAW_BUFFER;
 static const GLenum GL_READ_BUFFER = GLenum::GL_READ_BUFFER;
 static const GLenum GL_SCISSOR_BOX = GLenum::GL_SCISSOR_BOX;
-static const GLenum GL_SCISSOR_TEST = GLenum::GL_SCISSOR_TEST;
+// static const GLenum GL_SCISSOR_TEST = GLenum::GL_SCISSOR_TEST; // reuse EnableCap
 static const GLenum GL_COLOR_CLEAR_VALUE = GLenum::GL_COLOR_CLEAR_VALUE;
 static const GLenum GL_COLOR_WRITEMASK = GLenum::GL_COLOR_WRITEMASK;
 static const GLenum GL_DOUBLEBUFFER = GLenum::GL_DOUBLEBUFFER;
@@ -123,24 +293,130 @@ static const GLenum GL_MAX_CLIP_DISTANCES = GLenum::GL_MAX_CLIP_DISTANCES;
 static const GLenum GL_MAX_TEXTURE_SIZE = GLenum::GL_MAX_TEXTURE_SIZE;
 static const GLenum GL_MAX_VIEWPORT_DIMS = GLenum::GL_MAX_VIEWPORT_DIMS;
 static const GLenum GL_SUBPIXEL_BITS = GLenum::GL_SUBPIXEL_BITS;
-static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D;
-static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D;
+// static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
+// static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
+static const GLenum GL_POLYGON_OFFSET_UNITS = GLenum::GL_POLYGON_OFFSET_UNITS;
+// static const GLenum GL_POLYGON_OFFSET_POINT = GLenum::GL_POLYGON_OFFSET_POINT; // reuse EnableCap
+// static const GLenum GL_POLYGON_OFFSET_LINE = GLenum::GL_POLYGON_OFFSET_LINE; // reuse EnableCap
+// static const GLenum GL_POLYGON_OFFSET_FILL = GLenum::GL_POLYGON_OFFSET_FILL; // reuse EnableCap
+static const GLenum GL_POLYGON_OFFSET_FACTOR = GLenum::GL_POLYGON_OFFSET_FACTOR;
+static const GLenum GL_TEXTURE_BINDING_1D = GLenum::GL_TEXTURE_BINDING_1D;
+static const GLenum GL_TEXTURE_BINDING_2D = GLenum::GL_TEXTURE_BINDING_2D;
+static const GLenum GL_TEXTURE_BINDING_3D = GLenum::GL_TEXTURE_BINDING_3D;
+static const GLenum GL_ALIASED_LINE_WIDTH_RANGE = GLenum::GL_ALIASED_LINE_WIDTH_RANGE;
+
+// GetPixelMap
+
+
+
+// GetPointervPName
+
+
+
+// GetTextureParameter
+
 static const GLenum GL_TEXTURE_WIDTH = GLenum::GL_TEXTURE_WIDTH;
 static const GLenum GL_TEXTURE_HEIGHT = GLenum::GL_TEXTURE_HEIGHT;
 static const GLenum GL_TEXTURE_INTERNAL_FORMAT = GLenum::GL_TEXTURE_INTERNAL_FORMAT;
 static const GLenum GL_TEXTURE_BORDER_COLOR = GLenum::GL_TEXTURE_BORDER_COLOR;
+static const GLenum GL_TEXTURE_MAG_FILTER = GLenum::GL_TEXTURE_MAG_FILTER;
+static const GLenum GL_TEXTURE_MIN_FILTER = GLenum::GL_TEXTURE_MIN_FILTER;
+static const GLenum GL_TEXTURE_WRAP_S = GLenum::GL_TEXTURE_WRAP_S;
+static const GLenum GL_TEXTURE_WRAP_T = GLenum::GL_TEXTURE_WRAP_T;
+static const GLenum GL_TEXTURE_RED_SIZE = GLenum::GL_TEXTURE_RED_SIZE;
+static const GLenum GL_TEXTURE_GREEN_SIZE = GLenum::GL_TEXTURE_GREEN_SIZE;
+static const GLenum GL_TEXTURE_BLUE_SIZE = GLenum::GL_TEXTURE_BLUE_SIZE;
+static const GLenum GL_TEXTURE_ALPHA_SIZE = GLenum::GL_TEXTURE_ALPHA_SIZE;
+
+// HintMode
+
 static const GLenum GL_DONT_CARE = GLenum::GL_DONT_CARE;
 static const GLenum GL_FASTEST = GLenum::GL_FASTEST;
 static const GLenum GL_NICEST = GLenum::GL_NICEST;
-static const GLenum GL_BYTE = GLenum::GL_BYTE;
-static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE;
-static const GLenum GL_SHORT = GLenum::GL_SHORT;
-static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT;
-static const GLenum GL_INT = GLenum::GL_INT;
-static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT;
-static const GLenum GL_FLOAT = GLenum::GL_FLOAT;
-static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE;
-static const GLenum GL_HALF_FLOAT = GLenum::GL_HALF_FLOAT;
+
+// HintTarget
+
+// static const GLenum GL_LINE_SMOOTH_HINT = GLenum::GL_LINE_SMOOTH_HINT; // reuse GetPName
+// static const GLenum GL_POLYGON_SMOOTH_HINT = GLenum::GL_POLYGON_SMOOTH_HINT; // reuse GetPName
+static const GLenum GL_TEXTURE_COMPRESSION_HINT = GLenum::GL_TEXTURE_COMPRESSION_HINT;
+static const GLenum GL_FRAGMENT_SHADER_DERIVATIVE_HINT = GLenum::GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
+
+// HistogramTargetEXT
+
+
+
+// IndexPointerType
+
+// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+
+// InterleavedArrayFormat
+
+
+
+// InternalFormat
+
+static const GLenum GL_R3_G3_B2 = GLenum::GL_R3_G3_B2;
+static const GLenum GL_RGB4 = GLenum::GL_RGB4;
+static const GLenum GL_RGB5 = GLenum::GL_RGB5;
+static const GLenum GL_RGB8 = GLenum::GL_RGB8;
+static const GLenum GL_RGB10 = GLenum::GL_RGB10;
+static const GLenum GL_RGB12 = GLenum::GL_RGB12;
+static const GLenum GL_RGB16 = GLenum::GL_RGB16;
+static const GLenum GL_RGBA2 = GLenum::GL_RGBA2;
+static const GLenum GL_RGBA4 = GLenum::GL_RGBA4;
+static const GLenum GL_RGB5_A1 = GLenum::GL_RGB5_A1;
+static const GLenum GL_RGBA8 = GLenum::GL_RGBA8;
+static const GLenum GL_RGB10_A2 = GLenum::GL_RGB10_A2;
+static const GLenum GL_RGBA12 = GLenum::GL_RGBA12;
+static const GLenum GL_RGBA16 = GLenum::GL_RGBA16;
+
+// LightEnvModeSGIX
+
+static const GLenum GL_REPLACE = GLenum::GL_REPLACE;
+
+// LightEnvParameterSGIX
+
+
+
+// LightModelColorControl
+
+
+
+// LightModelParameter
+
+
+
+// LightName
+
+
+
+// LightParameter
+
+
+
+// ListMode
+
+
+
+// ListNameType
+
+// static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
+// static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+
+// ListParameterName
+
+
+
+// LogicOp
+
 static const GLenum GL_CLEAR = GLenum::GL_CLEAR;
 static const GLenum GL_AND = GLenum::GL_AND;
 static const GLenum GL_AND_REVERSE = GLenum::GL_AND_REVERSE;
@@ -157,10 +433,66 @@ static const GLenum GL_COPY_INVERTED = GLenum::GL_COPY_INVERTED;
 static const GLenum GL_OR_INVERTED = GLenum::GL_OR_INVERTED;
 static const GLenum GL_NAND = GLenum::GL_NAND;
 static const GLenum GL_SET = GLenum::GL_SET;
+
+// MapTarget
+
+
+
+// MapTextureFormatINTEL
+
+
+
+// MaterialFace
+
+// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
+// static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+
+// MaterialParameter
+
+
+
+// MatrixMode
+
 static const GLenum GL_TEXTURE = GLenum::GL_TEXTURE;
+
+// MeshMode1
+
+static const GLenum GL_POINT = GLenum::GL_POINT;
+static const GLenum GL_LINE = GLenum::GL_LINE;
+
+// MeshMode2
+
+// static const GLenum GL_POINT = GLenum::GL_POINT; // reuse MeshMode1
+// static const GLenum GL_LINE = GLenum::GL_LINE; // reuse MeshMode1
+static const GLenum GL_FILL = GLenum::GL_FILL;
+
+// MinmaxTargetEXT
+
+
+
+// NormalPointerType
+
+// static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
+// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+
+// OcclusionQueryEventMaskAMD
+
+
+
+// PixelCopyType
+
 static const GLenum GL_COLOR = GLenum::GL_COLOR;
 static const GLenum GL_DEPTH = GLenum::GL_DEPTH;
 static const GLenum GL_STENCIL = GLenum::GL_STENCIL;
+
+// PixelFormat
+
+// static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
 static const GLenum GL_STENCIL_INDEX = GLenum::GL_STENCIL_INDEX;
 static const GLenum GL_DEPTH_COMPONENT = GLenum::GL_DEPTH_COMPONENT;
 static const GLenum GL_RED = GLenum::GL_RED;
@@ -169,40 +501,232 @@ static const GLenum GL_BLUE = GLenum::GL_BLUE;
 static const GLenum GL_ALPHA = GLenum::GL_ALPHA;
 static const GLenum GL_RGB = GLenum::GL_RGB;
 static const GLenum GL_RGBA = GLenum::GL_RGBA;
-static const GLenum GL_POINT = GLenum::GL_POINT;
-static const GLenum GL_LINE = GLenum::GL_LINE;
-static const GLenum GL_FILL = GLenum::GL_FILL;
+
+// PixelMap
+
+
+
+// PixelStoreParameter
+
+// static const GLenum GL_UNPACK_SWAP_BYTES = GLenum::GL_UNPACK_SWAP_BYTES; // reuse GetPName
+// static const GLenum GL_UNPACK_LSB_FIRST = GLenum::GL_UNPACK_LSB_FIRST; // reuse GetPName
+// static const GLenum GL_UNPACK_ROW_LENGTH = GLenum::GL_UNPACK_ROW_LENGTH; // reuse GetPName
+// static const GLenum GL_UNPACK_SKIP_ROWS = GLenum::GL_UNPACK_SKIP_ROWS; // reuse GetPName
+// static const GLenum GL_UNPACK_SKIP_PIXELS = GLenum::GL_UNPACK_SKIP_PIXELS; // reuse GetPName
+// static const GLenum GL_UNPACK_ALIGNMENT = GLenum::GL_UNPACK_ALIGNMENT; // reuse GetPName
+// static const GLenum GL_PACK_SWAP_BYTES = GLenum::GL_PACK_SWAP_BYTES; // reuse GetPName
+// static const GLenum GL_PACK_LSB_FIRST = GLenum::GL_PACK_LSB_FIRST; // reuse GetPName
+// static const GLenum GL_PACK_ROW_LENGTH = GLenum::GL_PACK_ROW_LENGTH; // reuse GetPName
+// static const GLenum GL_PACK_SKIP_ROWS = GLenum::GL_PACK_SKIP_ROWS; // reuse GetPName
+// static const GLenum GL_PACK_SKIP_PIXELS = GLenum::GL_PACK_SKIP_PIXELS; // reuse GetPName
+// static const GLenum GL_PACK_ALIGNMENT = GLenum::GL_PACK_ALIGNMENT; // reuse GetPName
+static const GLenum GL_PACK_SKIP_IMAGES = GLenum::GL_PACK_SKIP_IMAGES;
+static const GLenum GL_PACK_IMAGE_HEIGHT = GLenum::GL_PACK_IMAGE_HEIGHT;
+static const GLenum GL_UNPACK_SKIP_IMAGES = GLenum::GL_UNPACK_SKIP_IMAGES;
+static const GLenum GL_UNPACK_IMAGE_HEIGHT = GLenum::GL_UNPACK_IMAGE_HEIGHT;
+
+// PixelStoreResampleMode
+
+
+
+// PixelStoreSubsampleRate
+
+
+
+// PixelTexGenMode
+
+// static const GLenum GL_NONE = GLenum::GL_NONE; // reuse DrawBufferMode
+// static const GLenum GL_RGB = GLenum::GL_RGB; // reuse PixelFormat
+// static const GLenum GL_RGBA = GLenum::GL_RGBA; // reuse PixelFormat
+
+// PixelTexGenParameterNameSGIS
+
+
+
+// PixelTransferParameter
+
+
+
+// PixelType
+
+// static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
+// static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+static const GLenum GL_UNSIGNED_BYTE_3_3_2 = GLenum::GL_UNSIGNED_BYTE_3_3_2;
+static const GLenum GL_UNSIGNED_SHORT_4_4_4_4 = GLenum::GL_UNSIGNED_SHORT_4_4_4_4;
+static const GLenum GL_UNSIGNED_SHORT_5_5_5_1 = GLenum::GL_UNSIGNED_SHORT_5_5_5_1;
+static const GLenum GL_UNSIGNED_INT_8_8_8_8 = GLenum::GL_UNSIGNED_INT_8_8_8_8;
+static const GLenum GL_UNSIGNED_INT_10_10_10_2 = GLenum::GL_UNSIGNED_INT_10_10_10_2;
+
+// PointParameterNameSGIS
+
+static const GLenum GL_POINT_FADE_THRESHOLD_SIZE = GLenum::GL_POINT_FADE_THRESHOLD_SIZE;
+
+// PolygonMode
+
+// static const GLenum GL_POINT = GLenum::GL_POINT; // reuse MeshMode1
+// static const GLenum GL_LINE = GLenum::GL_LINE; // reuse MeshMode1
+// static const GLenum GL_FILL = GLenum::GL_FILL; // reuse MeshMode2
+
+// PrimitiveType
+
+static const GLenum GL_POINTS = GLenum::GL_POINTS;
+static const GLenum GL_LINES = GLenum::GL_LINES;
+static const GLenum GL_LINE_LOOP = GLenum::GL_LINE_LOOP;
+static const GLenum GL_LINE_STRIP = GLenum::GL_LINE_STRIP;
+static const GLenum GL_TRIANGLES = GLenum::GL_TRIANGLES;
+static const GLenum GL_TRIANGLE_STRIP = GLenum::GL_TRIANGLE_STRIP;
+static const GLenum GL_TRIANGLE_FAN = GLenum::GL_TRIANGLE_FAN;
+static const GLenum GL_LINES_ADJACENCY = GLenum::GL_LINES_ADJACENCY;
+static const GLenum GL_LINE_STRIP_ADJACENCY = GLenum::GL_LINE_STRIP_ADJACENCY;
+static const GLenum GL_TRIANGLES_ADJACENCY = GLenum::GL_TRIANGLES_ADJACENCY;
+static const GLenum GL_TRIANGLE_STRIP_ADJACENCY = GLenum::GL_TRIANGLE_STRIP_ADJACENCY;
+
+// ReadBufferMode
+
+// static const GLenum GL_FRONT_LEFT = GLenum::GL_FRONT_LEFT; // reuse DrawBufferMode
+// static const GLenum GL_FRONT_RIGHT = GLenum::GL_FRONT_RIGHT; // reuse DrawBufferMode
+// static const GLenum GL_BACK_LEFT = GLenum::GL_BACK_LEFT; // reuse DrawBufferMode
+// static const GLenum GL_BACK_RIGHT = GLenum::GL_BACK_RIGHT; // reuse DrawBufferMode
+// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
+// static const GLenum GL_LEFT = GLenum::GL_LEFT; // reuse DrawBufferMode
+// static const GLenum GL_RIGHT = GLenum::GL_RIGHT; // reuse DrawBufferMode
+
+// RenderingMode
+
+
+
+// SamplePatternSGIS
+
+
+
+// SeparableTargetEXT
+
+
+
+// ShadingModel
+
+
+
+// StencilFunction
+
+// static const GLenum GL_NEVER = GLenum::GL_NEVER; // reuse AlphaFunction
+// static const GLenum GL_LESS = GLenum::GL_LESS; // reuse AlphaFunction
+// static const GLenum GL_EQUAL = GLenum::GL_EQUAL; // reuse AlphaFunction
+// static const GLenum GL_LEQUAL = GLenum::GL_LEQUAL; // reuse AlphaFunction
+// static const GLenum GL_GREATER = GLenum::GL_GREATER; // reuse AlphaFunction
+// static const GLenum GL_NOTEQUAL = GLenum::GL_NOTEQUAL; // reuse AlphaFunction
+// static const GLenum GL_GEQUAL = GLenum::GL_GEQUAL; // reuse AlphaFunction
+// static const GLenum GL_ALWAYS = GLenum::GL_ALWAYS; // reuse AlphaFunction
+
+// StencilOp
+
+// static const GLenum GL_ZERO = GLenum::GL_ZERO; // reuse BlendingFactorDest
+// static const GLenum GL_INVERT = GLenum::GL_INVERT; // reuse LogicOp
 static const GLenum GL_KEEP = GLenum::GL_KEEP;
-static const GLenum GL_REPLACE = GLenum::GL_REPLACE;
+// static const GLenum GL_REPLACE = GLenum::GL_REPLACE; // reuse LightEnvModeSGIX
 static const GLenum GL_INCR = GLenum::GL_INCR;
 static const GLenum GL_DECR = GLenum::GL_DECR;
+
+// StringName
+
 static const GLenum GL_VENDOR = GLenum::GL_VENDOR;
 static const GLenum GL_RENDERER = GLenum::GL_RENDERER;
 static const GLenum GL_VERSION = GLenum::GL_VERSION;
 static const GLenum GL_EXTENSIONS = GLenum::GL_EXTENSIONS;
+
+// TexCoordPointerType
+
+// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+
+// TextureCoordName
+
+
+
+// TextureEnvMode
+
+// static const GLenum GL_BLEND = GLenum::GL_BLEND; // reuse EnableCap
+
+// TextureEnvParameter
+
+
+
+// TextureEnvTarget
+
+
+
+// TextureFilterFuncSGIS
+
+
+
+// TextureGenMode
+
+
+
+// TextureGenParameter
+
+
+
+// TextureMagFilter
+
 static const GLenum GL_NEAREST = GLenum::GL_NEAREST;
-static const GLenum GL_LINEAR = GLenum::GL_LINEAR;
+// static const GLenum GL_LINEAR = GLenum::GL_LINEAR; // reuse FogMode
+
+// TextureMinFilter
+
+// static const GLenum GL_NEAREST = GLenum::GL_NEAREST; // reuse TextureMagFilter
+// static const GLenum GL_LINEAR = GLenum::GL_LINEAR; // reuse FogMode
 static const GLenum GL_NEAREST_MIPMAP_NEAREST = GLenum::GL_NEAREST_MIPMAP_NEAREST;
 static const GLenum GL_LINEAR_MIPMAP_NEAREST = GLenum::GL_LINEAR_MIPMAP_NEAREST;
 static const GLenum GL_NEAREST_MIPMAP_LINEAR = GLenum::GL_NEAREST_MIPMAP_LINEAR;
 static const GLenum GL_LINEAR_MIPMAP_LINEAR = GLenum::GL_LINEAR_MIPMAP_LINEAR;
-static const GLenum GL_TEXTURE_MAG_FILTER = GLenum::GL_TEXTURE_MAG_FILTER;
-static const GLenum GL_TEXTURE_MIN_FILTER = GLenum::GL_TEXTURE_MIN_FILTER;
-static const GLenum GL_TEXTURE_WRAP_S = GLenum::GL_TEXTURE_WRAP_S;
-static const GLenum GL_TEXTURE_WRAP_T = GLenum::GL_TEXTURE_WRAP_T;
+
+// TextureParameterName
+
+// static const GLenum GL_TEXTURE_BORDER_COLOR = GLenum::GL_TEXTURE_BORDER_COLOR; // reuse GetTextureParameter
+// static const GLenum GL_TEXTURE_MAG_FILTER = GLenum::GL_TEXTURE_MAG_FILTER; // reuse GetTextureParameter
+// static const GLenum GL_TEXTURE_MIN_FILTER = GLenum::GL_TEXTURE_MIN_FILTER; // reuse GetTextureParameter
+// static const GLenum GL_TEXTURE_WRAP_S = GLenum::GL_TEXTURE_WRAP_S; // reuse GetTextureParameter
+// static const GLenum GL_TEXTURE_WRAP_T = GLenum::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
+static const GLenum GL_TEXTURE_WRAP_R = GLenum::GL_TEXTURE_WRAP_R;
+
+// TextureTarget
+
+// static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
+// static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
+static const GLenum GL_PROXY_TEXTURE_1D = GLenum::GL_PROXY_TEXTURE_1D;
+static const GLenum GL_PROXY_TEXTURE_2D = GLenum::GL_PROXY_TEXTURE_2D;
+static const GLenum GL_TEXTURE_3D = GLenum::GL_TEXTURE_3D;
+static const GLenum GL_PROXY_TEXTURE_3D = GLenum::GL_PROXY_TEXTURE_3D;
+static const GLenum GL_TEXTURE_MIN_LOD = GLenum::GL_TEXTURE_MIN_LOD;
+static const GLenum GL_TEXTURE_MAX_LOD = GLenum::GL_TEXTURE_MAX_LOD;
+static const GLenum GL_TEXTURE_BASE_LEVEL = GLenum::GL_TEXTURE_BASE_LEVEL;
+static const GLenum GL_TEXTURE_MAX_LEVEL = GLenum::GL_TEXTURE_MAX_LEVEL;
+
+// TextureWrapMode
+
 static const GLenum GL_REPEAT = GLenum::GL_REPEAT;
-static const GLenum GL_POLYGON_OFFSET_UNITS = GLenum::GL_POLYGON_OFFSET_UNITS;
-static const GLenum GL_POLYGON_OFFSET_POINT = GLenum::GL_POLYGON_OFFSET_POINT;
-static const GLenum GL_POLYGON_OFFSET_LINE = GLenum::GL_POLYGON_OFFSET_LINE;
-static const GLenum GL_R3_G3_B2 = GLenum::GL_R3_G3_B2;
-static const GLenum GL_CLIP_DISTANCE0 = GLenum::GL_CLIP_DISTANCE0;
-static const GLenum GL_CLIP_DISTANCE1 = GLenum::GL_CLIP_DISTANCE1;
-static const GLenum GL_CLIP_DISTANCE2 = GLenum::GL_CLIP_DISTANCE2;
-static const GLenum GL_CLIP_DISTANCE3 = GLenum::GL_CLIP_DISTANCE3;
-static const GLenum GL_CLIP_DISTANCE4 = GLenum::GL_CLIP_DISTANCE4;
-static const GLenum GL_CLIP_DISTANCE5 = GLenum::GL_CLIP_DISTANCE5;
-static const GLenum GL_CLIP_DISTANCE6 = GLenum::GL_CLIP_DISTANCE6;
-static const GLenum GL_CLIP_DISTANCE7 = GLenum::GL_CLIP_DISTANCE7;
+static const GLenum GL_CLAMP_TO_BORDER = GLenum::GL_CLAMP_TO_BORDER;
+static const GLenum GL_CLAMP_TO_EDGE = GLenum::GL_CLAMP_TO_EDGE;
+
+// VertexPointerType
+
+// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+
+// __UNGROUPED__
+
+static const GLenum GL_HALF_FLOAT = GLenum::GL_HALF_FLOAT;
 static const GLenum GL_CONSTANT_COLOR = GLenum::GL_CONSTANT_COLOR;
 static const GLenum GL_ONE_MINUS_CONSTANT_COLOR = GLenum::GL_ONE_MINUS_CONSTANT_COLOR;
 static const GLenum GL_CONSTANT_ALPHA = GLenum::GL_CONSTANT_ALPHA;
@@ -213,43 +737,7 @@ static const GLenum GL_MAX = GLenum::GL_MAX;
 static const GLenum GL_BLEND_EQUATION_RGB = GLenum::GL_BLEND_EQUATION_RGB;
 static const GLenum GL_FUNC_SUBTRACT = GLenum::GL_FUNC_SUBTRACT;
 static const GLenum GL_FUNC_REVERSE_SUBTRACT = GLenum::GL_FUNC_REVERSE_SUBTRACT;
-static const GLenum GL_UNSIGNED_BYTE_3_3_2 = GLenum::GL_UNSIGNED_BYTE_3_3_2;
-static const GLenum GL_UNSIGNED_SHORT_4_4_4_4 = GLenum::GL_UNSIGNED_SHORT_4_4_4_4;
-static const GLenum GL_UNSIGNED_SHORT_5_5_5_1 = GLenum::GL_UNSIGNED_SHORT_5_5_5_1;
-static const GLenum GL_UNSIGNED_INT_8_8_8_8 = GLenum::GL_UNSIGNED_INT_8_8_8_8;
-static const GLenum GL_UNSIGNED_INT_10_10_10_2 = GLenum::GL_UNSIGNED_INT_10_10_10_2;
-static const GLenum GL_POLYGON_OFFSET_FILL = GLenum::GL_POLYGON_OFFSET_FILL;
-static const GLenum GL_POLYGON_OFFSET_FACTOR = GLenum::GL_POLYGON_OFFSET_FACTOR;
-static const GLenum GL_RGB4 = GLenum::GL_RGB4;
-static const GLenum GL_RGB5 = GLenum::GL_RGB5;
-static const GLenum GL_RGB8 = GLenum::GL_RGB8;
-static const GLenum GL_RGB10 = GLenum::GL_RGB10;
-static const GLenum GL_RGB12 = GLenum::GL_RGB12;
-static const GLenum GL_RGB16 = GLenum::GL_RGB16;
-static const GLenum GL_RGBA2 = GLenum::GL_RGBA2;
-static const GLenum GL_RGBA4 = GLenum::GL_RGBA4;
-static const GLenum GL_RGB5_A1 = GLenum::GL_RGB5_A1;
-static const GLenum GL_RGBA8 = GLenum::GL_RGBA8;
-static const GLenum GL_RGB10_A2 = GLenum::GL_RGB10_A2;
-static const GLenum GL_RGBA12 = GLenum::GL_RGBA12;
-static const GLenum GL_RGBA16 = GLenum::GL_RGBA16;
-static const GLenum GL_TEXTURE_RED_SIZE = GLenum::GL_TEXTURE_RED_SIZE;
-static const GLenum GL_TEXTURE_GREEN_SIZE = GLenum::GL_TEXTURE_GREEN_SIZE;
-static const GLenum GL_TEXTURE_BLUE_SIZE = GLenum::GL_TEXTURE_BLUE_SIZE;
-static const GLenum GL_TEXTURE_ALPHA_SIZE = GLenum::GL_TEXTURE_ALPHA_SIZE;
-static const GLenum GL_PROXY_TEXTURE_1D = GLenum::GL_PROXY_TEXTURE_1D;
-static const GLenum GL_PROXY_TEXTURE_2D = GLenum::GL_PROXY_TEXTURE_2D;
-static const GLenum GL_TEXTURE_BINDING_1D = GLenum::GL_TEXTURE_BINDING_1D;
-static const GLenum GL_TEXTURE_BINDING_2D = GLenum::GL_TEXTURE_BINDING_2D;
-static const GLenum GL_TEXTURE_BINDING_3D = GLenum::GL_TEXTURE_BINDING_3D;
-static const GLenum GL_PACK_SKIP_IMAGES = GLenum::GL_PACK_SKIP_IMAGES;
-static const GLenum GL_PACK_IMAGE_HEIGHT = GLenum::GL_PACK_IMAGE_HEIGHT;
-static const GLenum GL_UNPACK_SKIP_IMAGES = GLenum::GL_UNPACK_SKIP_IMAGES;
-static const GLenum GL_UNPACK_IMAGE_HEIGHT = GLenum::GL_UNPACK_IMAGE_HEIGHT;
-static const GLenum GL_TEXTURE_3D = GLenum::GL_TEXTURE_3D;
-static const GLenum GL_PROXY_TEXTURE_3D = GLenum::GL_PROXY_TEXTURE_3D;
 static const GLenum GL_TEXTURE_DEPTH = GLenum::GL_TEXTURE_DEPTH;
-static const GLenum GL_TEXTURE_WRAP_R = GLenum::GL_TEXTURE_WRAP_R;
 static const GLenum GL_MAX_3D_TEXTURE_SIZE = GLenum::GL_MAX_3D_TEXTURE_SIZE;
 static const GLenum GL_MULTISAMPLE = GLenum::GL_MULTISAMPLE;
 static const GLenum GL_SAMPLE_ALPHA_TO_COVERAGE = GLenum::GL_SAMPLE_ALPHA_TO_COVERAGE;
@@ -267,13 +755,6 @@ static const GLenum GL_BGR = GLenum::GL_BGR;
 static const GLenum GL_BGRA = GLenum::GL_BGRA;
 static const GLenum GL_MAX_ELEMENTS_VERTICES = GLenum::GL_MAX_ELEMENTS_VERTICES;
 static const GLenum GL_MAX_ELEMENTS_INDICES = GLenum::GL_MAX_ELEMENTS_INDICES;
-static const GLenum GL_POINT_FADE_THRESHOLD_SIZE = GLenum::GL_POINT_FADE_THRESHOLD_SIZE;
-static const GLenum GL_CLAMP_TO_BORDER = GLenum::GL_CLAMP_TO_BORDER;
-static const GLenum GL_CLAMP_TO_EDGE = GLenum::GL_CLAMP_TO_EDGE;
-static const GLenum GL_TEXTURE_MIN_LOD = GLenum::GL_TEXTURE_MIN_LOD;
-static const GLenum GL_TEXTURE_MAX_LOD = GLenum::GL_TEXTURE_MAX_LOD;
-static const GLenum GL_TEXTURE_BASE_LEVEL = GLenum::GL_TEXTURE_BASE_LEVEL;
-static const GLenum GL_TEXTURE_MAX_LEVEL = GLenum::GL_TEXTURE_MAX_LEVEL;
 static const GLenum GL_DEPTH_COMPONENT16 = GLenum::GL_DEPTH_COMPONENT16;
 static const GLenum GL_DEPTH_COMPONENT24 = GLenum::GL_DEPTH_COMPONENT24;
 static const GLenum GL_DEPTH_COMPONENT32 = GLenum::GL_DEPTH_COMPONENT32;
@@ -325,7 +806,6 @@ static const GLenum GL_UNSIGNED_SHORT_1_5_5_5_REV = GLenum::GL_UNSIGNED_SHORT_1_
 static const GLenum GL_UNSIGNED_INT_8_8_8_8_REV = GLenum::GL_UNSIGNED_INT_8_8_8_8_REV;
 static const GLenum GL_UNSIGNED_INT_2_10_10_10_REV = GLenum::GL_UNSIGNED_INT_2_10_10_10_REV;
 static const GLenum GL_MIRRORED_REPEAT = GLenum::GL_MIRRORED_REPEAT;
-static const GLenum GL_ALIASED_LINE_WIDTH_RANGE = GLenum::GL_ALIASED_LINE_WIDTH_RANGE;
 static const GLenum GL_TEXTURE0 = GLenum::GL_TEXTURE0;
 static const GLenum GL_TEXTURE1 = GLenum::GL_TEXTURE1;
 static const GLenum GL_TEXTURE2 = GLenum::GL_TEXTURE2;
@@ -362,7 +842,6 @@ static const GLenum GL_ACTIVE_TEXTURE = GLenum::GL_ACTIVE_TEXTURE;
 static const GLenum GL_MAX_RENDERBUFFER_SIZE = GLenum::GL_MAX_RENDERBUFFER_SIZE;
 static const GLenum GL_COMPRESSED_RGB = GLenum::GL_COMPRESSED_RGB;
 static const GLenum GL_COMPRESSED_RGBA = GLenum::GL_COMPRESSED_RGBA;
-static const GLenum GL_TEXTURE_COMPRESSION_HINT = GLenum::GL_TEXTURE_COMPRESSION_HINT;
 static const GLenum GL_TEXTURE_RECTANGLE = GLenum::GL_TEXTURE_RECTANGLE;
 static const GLenum GL_TEXTURE_BINDING_RECTANGLE = GLenum::GL_TEXTURE_BINDING_RECTANGLE;
 static const GLenum GL_PROXY_TEXTURE_RECTANGLE = GLenum::GL_PROXY_TEXTURE_RECTANGLE;
@@ -560,7 +1039,6 @@ static const GLenum GL_ACTIVE_UNIFORM_MAX_LENGTH = GLenum::GL_ACTIVE_UNIFORM_MAX
 static const GLenum GL_SHADER_SOURCE_LENGTH = GLenum::GL_SHADER_SOURCE_LENGTH;
 static const GLenum GL_ACTIVE_ATTRIBUTES = GLenum::GL_ACTIVE_ATTRIBUTES;
 static const GLenum GL_ACTIVE_ATTRIBUTE_MAX_LENGTH = GLenum::GL_ACTIVE_ATTRIBUTE_MAX_LENGTH;
-static const GLenum GL_FRAGMENT_SHADER_DERIVATIVE_HINT = GLenum::GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
 static const GLenum GL_SHADING_LANGUAGE_VERSION = GLenum::GL_SHADING_LANGUAGE_VERSION;
 static const GLenum GL_ACTIVE_PROGRAM_EXT = GLenum::GL_ACTIVE_PROGRAM_EXT;
 static const GLenum GL_CURRENT_PROGRAM = GLenum::GL_CURRENT_PROGRAM;
@@ -799,6 +1277,5 @@ static const GLenum GL_MAX_GEOMETRY_INPUT_COMPONENTS = GLenum::GL_MAX_GEOMETRY_I
 static const GLenum GL_MAX_GEOMETRY_OUTPUT_COMPONENTS = GLenum::GL_MAX_GEOMETRY_OUTPUT_COMPONENTS;
 static const GLenum GL_MAX_FRAGMENT_INPUT_COMPONENTS = GLenum::GL_MAX_FRAGMENT_INPUT_COMPONENTS;
 static const GLenum GL_CONTEXT_PROFILE_MASK = GLenum::GL_CONTEXT_PROFILE_MASK;
-static const GLenum GL_ONE = GLenum::GL_ONE;
 
 } // namespace gl33core

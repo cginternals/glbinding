@@ -9,7 +9,7 @@ namespace gl
 
 enum class GLenum : unsigned int
 {
-	%s
+%s
 };
 
 // import enums to namespace

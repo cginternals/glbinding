@@ -17,7 +17,7 @@ const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield
 {
 #ifdef STRINGS_BY_GL
 /*
-    { GLbitfield::GL_NOT_USED_BIT, "GL_NOT_USED_BIT" },
+    { GLbitfield::GL_NONE_BIT, "GL_NONE_BIT" },
     { GLbitfield::GL_CLIENT_PIXEL_STORE_BIT, "GL_CLIENT_PIXEL_STORE_BIT" },
     { GLbitfield::GL_CLIENT_VERTEX_ARRAY_BIT, "GL_CLIENT_VERTEX_ARRAY_BIT" },
     { GLbitfield::GL_GEOMETRY_SHADER_BIT, "GL_GEOMETRY_SHADER_BIT" },

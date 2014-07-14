@@ -297,7 +297,6 @@ def patchEnums(enums, patches, groups):
         if patch.name not in enumsByName:
             createGroup_ifImplicit(groups, groupsByName, patch)
             enums.append(patch)
-            continue
 
         # ToDo: probably more fixes might be appropriate
 
@@ -307,10 +306,12 @@ def patchGroups(groups, patches):
     groupsByName = dict([(group.name, group) for group in groups])
 
     for patch in patches:
-
         if patch.name not in groupsByName:
             groups.append(patch)
-            continue
+        else:
+            g = groupsByName[patch.name]
+            for e in patch.enumStrings:
+                g.enumStrings.append(e)
 
 def groupEnumsByType(enums):
 
@@ -328,7 +329,14 @@ def groupEnumsByGroup(enums):
 
     d = dict()
     
+    ungroupedName = "__UNGROUPED__"
+    
     for e in enums:
+        if len(e.groups)==0:
+            if not ungroupedName in d:
+                d[ungroupedName] = []
+            d[ungroupedName].append(e)
+            continue
         for g in e.groups:
             if not g.name in d:
                 d[g.name] = []

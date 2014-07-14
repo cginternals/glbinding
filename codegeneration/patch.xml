@@ -3,9 +3,12 @@
 
 	<!-- non-standard bitfield group for not used mask parameters -->
 	<enums namespace="GL" group="NotUsedMask" type="bitmask">
-        <enum value="0x00000000" name="GL_NOT_USED_BIT"/>
-    </enums>
-
+		<enum value="0x00000000" name="GL_NOT_USED_BIT"/>
+	</enums>
+        <enum value="0x00000000" name="GL_NONE_BIT"/>
+	<enums namespace="GL" group="PathFontStyle" type="bitmask">
+		<enum value="0x00" name="GL_NONE_BIT"/>
+	</enums>
     <groups>
 
         <group name="BufferAccessMask">
@@ -20,7 +23,7 @@
         </group>
 
         <group name="PathFontStyle">
-	        <enum name="GL_NONE"/>
+	        <enum name="GL_NONE_BIT"/>
 	        <enum name="GL_BOLD_BIT_NV"/>
 	        <enum name="GL_ITALIC_BIT_NV"/>
         </group>

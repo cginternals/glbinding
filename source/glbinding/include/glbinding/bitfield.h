@@ -152,6 +152,7 @@ enum class GLbitfield : unsigned int
 
     // PathFontStyle
 
+    GL_NONE_BIT                                = 0x00,
     GL_BOLD_BIT_NV                             = 0x01,
     GL_ITALIC_BIT_NV                           = 0x02,
 
@@ -373,6 +374,7 @@ static const GLbitfield GL_NOT_USED_BIT = GLbitfield::GL_NOT_USED_BIT;
 
 // PathFontStyle
 
+static const GLbitfield GL_NONE_BIT = GLbitfield::GL_NONE_BIT;
 static const GLbitfield GL_BOLD_BIT_NV = GLbitfield::GL_BOLD_BIT_NV;
 static const GLbitfield GL_ITALIC_BIT_NV = GLbitfield::GL_ITALIC_BIT_NV;
 
