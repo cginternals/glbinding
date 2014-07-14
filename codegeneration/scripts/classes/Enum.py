@@ -118,23 +118,25 @@ def parseGroups(xml, enums):
     
     groups = []
     groupsByName = dict()
-
+    
     for G in xml.iter("groups"):
         for g in G.iter("group"):
             group = Group(g)
             groups.append(group)
             groupsByName[group.name] = group
+            for e in g.iter("enum"):
+                group.enumStrings.append(e.attrib["name"])
 
     # if groups are not listed in groups section 
     # they can be implicitly specified by enums
 
     for enum in enums:
-        createGroup_ifImplicitly(groups, groupsByName, enum)
+        createGroup_ifImplicit(groups, groupsByName, enum)
 
     return sorted(groups)
 
 
-def createGroup_ifImplicitly(groups, groupsByName, enum):
+def createGroup_ifImplicit(groups, groupsByName, enum):
 
     name = enum.groupString
 
@@ -189,15 +191,15 @@ def verifyGroups(groups, enums):
     # has only one group (important for namespace import)
 
     overflows = set()
-
+    
     for enum in enums:
-        if enum.type == "GLbitfield" and len(enum.groups) > 2:
+        if enum.type == "GLbitfield" and len(enum.groups) > 1:
             overflows.add(enum)
 
     if len(overflows) > 0:
-        print " WARNING: " + str(len(overflows)) + " multiple groups per enum:"
+        print " WARNING: " + str(len(overflows)) + " enums are in multiple groups:"
         for enum in overflows:
-            print ("  %s groups (in %s)" % (str(len(enum.groups)), enum.name))
+            print ("  %s groups for %s (%s)" % (str(len(enum.groups)), enum.name, ", ".join([g.name for g in enum.groups])))
 
 
 def parseEnums(xml, features, extensions, commands, api):
@@ -293,7 +295,7 @@ def patchEnums(enums, patches, groups):
     for patch in patches:
 
         if patch.name not in enumsByName:
-            createGroup_ifImplicitly(groups, groupsByName, patch)
+            createGroup_ifImplicit(groups, groupsByName, patch)
             enums.append(patch)
             continue
 
@@ -327,9 +329,10 @@ def groupEnumsByGroup(enums):
     d = dict()
     
     for e in enums:
-        if not e.groupString in d:
-            d[e.groupString] = []
-        d[e.groupString].append(e)
+        for g in e.groups:
+            if not g.name in d:
+                d[g.name] = []
+            d[g.name].append(e)
 
     for key in d.keys():
         d[key] = sorted(d[key], key = lambda e: e.value)

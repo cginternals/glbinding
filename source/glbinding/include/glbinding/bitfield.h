@@ -24,6 +24,10 @@ protected:
 
 enum class ClearBufferMask : unsigned int
 {
+	GL_DEPTH_BUFFER_BIT                        = 0x00000100,
+	GL_ACCUM_BUFFER_BIT                        = 0x00000200,
+	GL_STENCIL_BUFFER_BIT                      = 0x00000400,
+	GL_COLOR_BUFFER_BIT                        = 0x00004000,
 	GL_COVERAGE_BUFFER_BIT_NV                  = 0x00008000,
 };
 
@@ -224,6 +228,23 @@ enum class NotUsedMask : unsigned int
 	GL_NOT_USED_BIT                            = 0x00000000,
 };
 
+enum class BufferAccessMask : unsigned int
+{
+	GL_MAP_READ_BIT                            = 0x0001,
+	GL_MAP_WRITE_BIT                           = 0x0002,
+	GL_MAP_INVALIDATE_RANGE_BIT                = 0x0004,
+	GL_MAP_INVALIDATE_BUFFER_BIT               = 0x0008,
+	GL_MAP_FLUSH_EXPLICIT_BIT                  = 0x0010,
+	GL_MAP_UNSYNCHRONIZED_BIT                  = 0x0020,
+	GL_MAP_PERSISTENT_BIT                      = 0x0040,
+	GL_MAP_COHERENT_BIT                        = 0x0080,
+};
+
+enum class PathFontStyle : unsigned int
+{
+	GL_ITALIC_BIT_NV                           = 0x02,
+};
+
 enum class ClientAttribMask : unsigned int
 {
 	GL_CLIENT_PIXEL_STORE_BIT                  = 0x00000001,
@@ -268,8 +289,23 @@ static const AttribMask GL_MULTISAMPLE_BIT_ARB = AttribMask::GL_MULTISAMPLE_BIT_
 static const AttribMask GL_MULTISAMPLE_BIT_EXT = AttribMask::GL_MULTISAMPLE_BIT_EXT;
 static const AttribMask GL_ALL_ATTRIB_BITS = AttribMask::GL_ALL_ATTRIB_BITS;
 
+// BufferAccessMask
+
+static const MapBufferUsageMask GL_MAP_READ_BIT = MapBufferUsageMask::GL_MAP_READ_BIT;
+static const MapBufferUsageMask GL_MAP_WRITE_BIT = MapBufferUsageMask::GL_MAP_WRITE_BIT;
+static const MapBufferUsageMask GL_MAP_INVALIDATE_RANGE_BIT = MapBufferUsageMask::GL_MAP_INVALIDATE_RANGE_BIT;
+static const MapBufferUsageMask GL_MAP_INVALIDATE_BUFFER_BIT = MapBufferUsageMask::GL_MAP_INVALIDATE_BUFFER_BIT;
+static const MapBufferUsageMask GL_MAP_FLUSH_EXPLICIT_BIT = MapBufferUsageMask::GL_MAP_FLUSH_EXPLICIT_BIT;
+static const MapBufferUsageMask GL_MAP_UNSYNCHRONIZED_BIT = MapBufferUsageMask::GL_MAP_UNSYNCHRONIZED_BIT;
+static const MapBufferUsageMask GL_MAP_PERSISTENT_BIT = MapBufferUsageMask::GL_MAP_PERSISTENT_BIT;
+static const MapBufferUsageMask GL_MAP_COHERENT_BIT = MapBufferUsageMask::GL_MAP_COHERENT_BIT;
+
 // ClearBufferMask
 
+static const AttribMask GL_DEPTH_BUFFER_BIT = AttribMask::GL_DEPTH_BUFFER_BIT;
+static const AttribMask GL_ACCUM_BUFFER_BIT = AttribMask::GL_ACCUM_BUFFER_BIT;
+static const AttribMask GL_STENCIL_BUFFER_BIT = AttribMask::GL_STENCIL_BUFFER_BIT;
+static const AttribMask GL_COLOR_BUFFER_BIT = AttribMask::GL_COLOR_BUFFER_BIT;
 static const ClearBufferMask GL_COVERAGE_BUFFER_BIT_NV = ClearBufferMask::GL_COVERAGE_BUFFER_BIT_NV;
 
 // ClientAttribMask
@@ -365,6 +401,10 @@ static const MemoryBarrierMask GL_ALL_BARRIER_BITS_EXT = MemoryBarrierMask::GL_A
 // NotUsedMask
 
 static const NotUsedMask GL_NOT_USED_BIT = NotUsedMask::GL_NOT_USED_BIT;
+
+// PathFontStyle
+
+static const PathRenderingMaskNV GL_ITALIC_BIT_NV = PathRenderingMaskNV::GL_ITALIC_BIT_NV;
 
 // PathRenderingMaskNV
 
