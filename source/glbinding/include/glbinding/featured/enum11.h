@@ -98,26 +98,6 @@ static const gl::GLenum GL_UNSIGNED_INT = gl::GLenum::GL_UNSIGNED_INT;
 static const gl::GLenum GL_FLOAT = gl::GLenum::GL_FLOAT;
 static const gl::GLenum GL_DOUBLE = gl::GLenum::GL_DOUBLE;
 
-// ColorTableParameterPNameSGI
-
-
-
-// ColorTableTargetSGI
-
-
-
-// ConvolutionBorderModeEXT
-
-
-
-// ConvolutionParameterEXT
-
-
-
-// ConvolutionTargetEXT
-
-
-
 // CullFaceMode
 
 // static const gl::GLenum GL_FRONT = gl::GLenum::GL_FRONT; // reuse ColorMaterialFace
@@ -250,10 +230,6 @@ static const gl::GLenum GL_3D_COLOR = gl::GLenum::GL_3D_COLOR;
 static const gl::GLenum GL_3D_COLOR_TEXTURE = gl::GLenum::GL_3D_COLOR_TEXTURE;
 static const gl::GLenum GL_4D_COLOR_TEXTURE = gl::GLenum::GL_4D_COLOR_TEXTURE;
 
-// FfdTargetSGIX
-
-
-
 // FogCoordinatePointerType
 
 // static const gl::GLenum GL_FLOAT = gl::GLenum::GL_FLOAT; // reuse ColorPointerType
@@ -284,36 +260,16 @@ static const gl::GLenum GL_FOG_COLOR = gl::GLenum::GL_FOG_COLOR;
 // static const gl::GLenum GL_FLOAT = gl::GLenum::GL_FLOAT; // reuse ColorPointerType
 // static const gl::GLenum GL_DOUBLE = gl::GLenum::GL_DOUBLE; // reuse ColorPointerType
 
-// FragmentLightModelParameterSGIX
-
-
-
 // FrontFaceDirection
 
 static const gl::GLenum GL_CW = gl::GLenum::GL_CW;
 static const gl::GLenum GL_CCW = gl::GLenum::GL_CCW;
-
-// GetColorTableParameterPNameSGI
-
-
-
-// GetConvolutionParameter
-
-
-
-// GetHistogramParameterPNameEXT
-
-
 
 // GetMapQuery
 
 static const gl::GLenum GL_COEFF = gl::GLenum::GL_COEFF;
 static const gl::GLenum GL_ORDER = gl::GLenum::GL_ORDER;
 static const gl::GLenum GL_DOMAIN = gl::GLenum::GL_DOMAIN;
-
-// GetMinmaxParameterPNameEXT
-
-
 
 // GetPName
 
@@ -621,10 +577,6 @@ static const gl::GLenum GL_NICEST = gl::GLenum::GL_NICEST;
 // static const gl::GLenum GL_POLYGON_SMOOTH_HINT = gl::GLenum::GL_POLYGON_SMOOTH_HINT; // reuse GetPName
 // static const gl::GLenum GL_FOG_HINT = gl::GLenum::GL_FOG_HINT; // reuse GetPName
 
-// HistogramTargetEXT
-
-
-
 // IndexPointerType
 
 // static const gl::GLenum GL_SHORT = gl::GLenum::GL_SHORT; // reuse ColorPointerType
@@ -691,14 +643,6 @@ static const gl::GLenum GL_RGBA16 = gl::GLenum::GL_RGBA16;
 static const gl::GLenum GL_REPLACE = gl::GLenum::GL_REPLACE;
 static const gl::GLenum GL_MODULATE = gl::GLenum::GL_MODULATE;
 
-// LightEnvParameterSGIX
-
-
-
-// LightModelColorControl
-
-
-
 // LightModelParameter
 
 // static const gl::GLenum GL_LIGHT_MODEL_LOCAL_VIEWER = gl::GLenum::GL_LIGHT_MODEL_LOCAL_VIEWER; // reuse GetPName
@@ -747,10 +691,6 @@ static const gl::GLenum GL_2_BYTES = gl::GLenum::GL_2_BYTES;
 static const gl::GLenum GL_3_BYTES = gl::GLenum::GL_3_BYTES;
 static const gl::GLenum GL_4_BYTES = gl::GLenum::GL_4_BYTES;
 
-// ListParameterName
-
-
-
 // LogicOp
 
 static const gl::GLenum GL_CLEAR = gl::GLenum::GL_CLEAR;
@@ -791,10 +731,6 @@ static const gl::GLenum GL_SET = gl::GLenum::GL_SET;
 // static const gl::GLenum GL_MAP2_VERTEX_3 = gl::GLenum::GL_MAP2_VERTEX_3; // reuse EnableCap
 // static const gl::GLenum GL_MAP2_VERTEX_4 = gl::GLenum::GL_MAP2_VERTEX_4; // reuse EnableCap
 
-// MapTextureFormatINTEL
-
-
-
 // MaterialFace
 
 // static const gl::GLenum GL_FRONT = gl::GLenum::GL_FRONT; // reuse ColorMaterialFace
@@ -828,10 +764,6 @@ static const gl::GLenum GL_LINE = gl::GLenum::GL_LINE;
 // static const gl::GLenum GL_LINE = gl::GLenum::GL_LINE; // reuse MeshMode1
 static const gl::GLenum GL_FILL = gl::GLenum::GL_FILL;
 
-// MinmaxTargetEXT
-
-
-
 // NormalPointerType
 
 // static const gl::GLenum GL_BYTE = gl::GLenum::GL_BYTE; // reuse ColorPointerType
@@ -839,10 +771,6 @@ static const gl::GLenum GL_FILL = gl::GLenum::GL_FILL;
 // static const gl::GLenum GL_INT = gl::GLenum::GL_INT; // reuse ColorPointerType
 // static const gl::GLenum GL_FLOAT = gl::GLenum::GL_FLOAT; // reuse ColorPointerType
 // static const gl::GLenum GL_DOUBLE = gl::GLenum::GL_DOUBLE; // reuse ColorPointerType
-
-// OcclusionQueryEventMaskAMD
-
-
 
 // PixelCopyType
 
@@ -894,14 +822,6 @@ static const gl::GLenum GL_LUMINANCE_ALPHA = gl::GLenum::GL_LUMINANCE_ALPHA;
 // static const gl::GLenum GL_PACK_SKIP_PIXELS = gl::GLenum::GL_PACK_SKIP_PIXELS; // reuse GetPName
 // static const gl::GLenum GL_PACK_ALIGNMENT = gl::GLenum::GL_PACK_ALIGNMENT; // reuse GetPName
 
-// PixelStoreResampleMode
-
-
-
-// PixelStoreSubsampleRate
-
-
-
 // PixelTexGenMode
 
 // static const gl::GLenum GL_NONE = gl::GLenum::GL_NONE; // reuse DrawBufferMode
@@ -909,10 +829,6 @@ static const gl::GLenum GL_LUMINANCE_ALPHA = gl::GLenum::GL_LUMINANCE_ALPHA;
 // static const gl::GLenum GL_RGBA = gl::GLenum::GL_RGBA; // reuse PixelFormat
 // static const gl::GLenum GL_LUMINANCE = gl::GLenum::GL_LUMINANCE; // reuse PixelFormat
 // static const gl::GLenum GL_LUMINANCE_ALPHA = gl::GLenum::GL_LUMINANCE_ALPHA; // reuse PixelFormat
-
-// PixelTexGenParameterNameSGIS
-
-
 
 // PixelTransferParameter
 
@@ -941,10 +857,6 @@ static const gl::GLenum GL_LUMINANCE_ALPHA = gl::GLenum::GL_LUMINANCE_ALPHA;
 // static const gl::GLenum GL_UNSIGNED_INT = gl::GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
 // static const gl::GLenum GL_FLOAT = gl::GLenum::GL_FLOAT; // reuse ColorPointerType
 static const gl::GLenum GL_BITMAP = gl::GLenum::GL_BITMAP;
-
-// PointParameterNameSGIS
-
-
 
 // PolygonMode
 
@@ -985,14 +897,6 @@ static const gl::GLenum GL_POLYGON = gl::GLenum::GL_POLYGON;
 static const gl::GLenum GL_RENDER = gl::GLenum::GL_RENDER;
 static const gl::GLenum GL_FEEDBACK = gl::GLenum::GL_FEEDBACK;
 static const gl::GLenum GL_SELECT = gl::GLenum::GL_SELECT;
-
-// SamplePatternSGIS
-
-
-
-// SeparableTargetEXT
-
-
 
 // ShadingModel
 
@@ -1056,10 +960,6 @@ static const gl::GLenum GL_TEXTURE_ENV_COLOR = gl::GLenum::GL_TEXTURE_ENV_COLOR;
 
 static const gl::GLenum GL_TEXTURE_ENV = gl::GLenum::GL_TEXTURE_ENV;
 
-// TextureFilterFuncSGIS
-
-
-
 // TextureGenMode
 
 static const gl::GLenum GL_EYE_LINEAR = gl::GLenum::GL_EYE_LINEAR;
@@ -1113,9 +1013,5 @@ static const gl::GLenum GL_REPEAT = gl::GLenum::GL_REPEAT;
 // static const gl::GLenum GL_INT = gl::GLenum::GL_INT; // reuse ColorPointerType
 // static const gl::GLenum GL_FLOAT = gl::GLenum::GL_FLOAT; // reuse ColorPointerType
 // static const gl::GLenum GL_DOUBLE = gl::GLenum::GL_DOUBLE; // reuse ColorPointerType
-
-// __UNGROUPED__
-
-
 
 } // namespace gl11

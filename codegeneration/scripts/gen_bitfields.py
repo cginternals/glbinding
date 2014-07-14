@@ -38,9 +38,13 @@ def bitfieldImportDefinition(enum, group, usedBitfsByName, feature):
 
 def bitfieldGroup(group, enums, usedBitfsByName):
 
+    if len(enums) == 0:
+        return
+
     maxlen = max([len(enum.name) for enum in enums]) if len(enums) > 0 else 0
 
-    return bitfieldGroupTemplate % (group, "\n".join([ bitfieldDefinition(e, group, maxlen, usedBitfsByName) for e in enums ]))
+    return bitfieldGroupTemplate % (group, "\n".join(
+        [ bitfieldDefinition(e, group, maxlen, usedBitfsByName) for e in enums ]))
 
 
 def genBitfieldsAll(enums, outputdir, outputfile):

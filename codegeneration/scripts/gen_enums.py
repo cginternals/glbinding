@@ -41,16 +41,15 @@ def enumImportDefinition(enum, group, usedEnumsByName, feature):
             qualifier, enumBID(enum), qualifier, enumBID(enum), reuse)
 
 
-def enumGroup(group, enums, usedEnumsByName, feature, core):
+def enumGroup(group, enums, usedEnumsByName):
 
-    featureEnums = [ e for e in enums if e.supported(feature, core) ]
+    if len(enums) == 0:
+        return
 
     maxlen = max([len(enum.name) for enum in enums]) if len(enums) > 0 else 0
 
-    if len(featureEnums) == 0:
-        return ""
-
-    return enumGroupTemplate % (group, "\n".join([ enumDefinition(group, e, maxlen, usedEnumsByName) for e in sorted(featureEnums, key=lambda e: e.value) ]))
+    return enumGroupTemplate % (group, "\n".join(
+        [ enumDefinition(group, e, maxlen, usedEnumsByName) for e in sorted(enums, key = lambda e: e.value) ]))
 
 
 def genEnumsAll(enums, outputdir, outputfile):
@@ -81,10 +80,11 @@ def genFeatureEnums(enums, feature, outputdir, outputfile, core):
 
     status(outputdir + of)
 
-    tgrouped = groupEnumsByType(enums)
-    pureEnums = tgrouped["GLenum"]
-    
+    tgrouped     = groupEnumsByType(enums)
+
+    pureEnums    = [ e for e in tgrouped["GLenum"] if e.supported(feature, core) ]
     groupedEnums = groupEnumsByGroup(pureEnums)
+
     usedEnumsByName = dict()
     
     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
@@ -97,7 +97,8 @@ def genFeatureEnums(enums, feature, outputdir, outputfile, core):
     with open(outputdir + of, 'w') as file:
         if not feature:
 
-            definitions = [ enumGroup(group, enums, usedEnumsByName, feature, core) for group, enums in sorted(groupedEnums.items(), key=lambda x: x[0]) ]
+            definitions = [ enumGroup(group, enums, usedEnumsByName) 
+                for group, enums in sorted(groupedEnums.items(), key = lambda x: x[0]) ]
 
             file.write(t % ("\n".join(definitions), ("\n") .join(importToNamespace)))
 
