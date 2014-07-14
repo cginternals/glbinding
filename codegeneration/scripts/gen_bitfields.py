@@ -20,19 +20,25 @@ def bitfieldDefinition(enum, group, maxlen, usedBitfsByName):
         return "//  %s %s= %s, // reuse %s" % (enumBID(enum), spaces, enum.value, reuse)
 
 
-def bitfieldImportDefinition(enum, group, usedBitfsByName):
+def bitfieldImportDefinition(enum, group, usedBitfsByName, feature):
+
+    qualifier = "GLbitfield" if feature is None else "gl::GLbitfield"
 
     if enum.name not in usedBitfsByName:
         usedBitfsByName[enum.name] = group
-        return "static const GLbitfield %s = GLbitfield::%s;" % (enumBID(enum), enumBID(enum))
+        return "static const %s %s = %s::%s;" % (
+            qualifier, enumBID(enum), qualifier, enumBID(enum))
     else:
         reuse = usedBitfsByName[enum.name]
-        return "// static const GLbitfield %s = GLbitfield::%s; // reuse %s" % (enumBID(enum), enumBID(enum), reuse)
+        return "// static const %s %s = %s::%s; // reuse %s" % (
+            qualifier, enumBID(enum), qualifier, enumBID(enum), reuse)
 
     # return "static const %s %s = %s::%s;" % (enum.groupString, enumBID(enum), enum.groupString, enumBID(enum))
 
 
-def bitfieldGroup(group, enums, maxlen, usedBitfsByName):
+def bitfieldGroup(group, enums, usedBitfsByName):
+
+    maxlen = max([len(enum.name) for enum in enums]) if len(enums) > 0 else 0
 
     return bitfieldGroupTemplate % (group, "\n".join([ bitfieldDefinition(e, group, maxlen, usedBitfsByName) for e in enums ]))
 
@@ -73,7 +79,7 @@ def genFeatureBitfields(enums, feature, outputdir, outputfile, core):
     usedBitfsByName = dict()
 
     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-        [ bitfieldImportDefinition(e, group, usedBitfsByName) for e in values ])) 
+        [ bitfieldImportDefinition(e, group, usedBitfsByName, feature) for e in values ])) 
             for group, values in sorted(groupedBitfields.items()) ]
 
     usedBitfsByName.clear()
@@ -82,9 +88,8 @@ def genFeatureBitfields(enums, feature, outputdir, outputfile, core):
 
         if not feature:
 
-            maxlen = max([len(enum.name) for enum in pureBitfields]) if len(pureBitfields) > 0 else 0
             #definitions = [ bitfieldGroup(group, enums, maxlen) for group, enums in groupedBitfields.items() ]
-            definitions = [ bitfieldGroup(group, enums, maxlen, usedBitfsByName) 
+            definitions = [ bitfieldGroup(group, enums, usedBitfsByName) 
                 for group, enums in sorted(groupedBitfields.items()) ]
 
             file.write(t % (("\n") .join(definitions), ("\n") .join(importToNamespace)))

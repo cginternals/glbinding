@@ -9,8 +9,6 @@
 namespace gl10
 {
 
-using namespace gl;
-
 // import enums to namespace
 
 

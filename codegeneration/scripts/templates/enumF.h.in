@@ -9,8 +9,6 @@
 namespace gl%f
 {
 
-using namespace gl;
-
 // import enums to namespace
 
 %s

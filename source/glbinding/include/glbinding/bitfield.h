@@ -11,150 +11,150 @@ enum class GLbitfield : unsigned int
 {
     // AttribMask
 
-    GL_CURRENT_BIT                             = 0x00000001,
-    GL_POINT_BIT                               = 0x00000002,
-    GL_LINE_BIT                                = 0x00000004,
-    GL_POLYGON_BIT                             = 0x00000008,
-    GL_POLYGON_STIPPLE_BIT                     = 0x00000010,
-    GL_PIXEL_MODE_BIT                          = 0x00000020,
-    GL_LIGHTING_BIT                            = 0x00000040,
-    GL_FOG_BIT                                 = 0x00000080,
-    GL_DEPTH_BUFFER_BIT                        = 0x00000100,
-    GL_ACCUM_BUFFER_BIT                        = 0x00000200,
-    GL_STENCIL_BUFFER_BIT                      = 0x00000400,
-    GL_VIEWPORT_BIT                            = 0x00000800,
-    GL_TRANSFORM_BIT                           = 0x00001000,
-    GL_ENABLE_BIT                              = 0x00002000,
-    GL_COLOR_BUFFER_BIT                        = 0x00004000,
-    GL_HINT_BIT                                = 0x00008000,
-    GL_EVAL_BIT                                = 0x00010000,
-    GL_LIST_BIT                                = 0x00020000,
-    GL_TEXTURE_BIT                             = 0x00040000,
-    GL_SCISSOR_BIT                             = 0x00080000,
-    GL_MULTISAMPLE_BIT                         = 0x20000000,
-    GL_MULTISAMPLE_BIT_3DFX                    = 0x20000000,
-    GL_MULTISAMPLE_BIT_ARB                     = 0x20000000,
-    GL_MULTISAMPLE_BIT_EXT                     = 0x20000000,
-    GL_ALL_ATTRIB_BITS                         = 0xFFFFFFFF,
+    GL_CURRENT_BIT          = 0x00000001,
+    GL_POINT_BIT            = 0x00000002,
+    GL_LINE_BIT             = 0x00000004,
+    GL_POLYGON_BIT          = 0x00000008,
+    GL_POLYGON_STIPPLE_BIT  = 0x00000010,
+    GL_PIXEL_MODE_BIT       = 0x00000020,
+    GL_LIGHTING_BIT         = 0x00000040,
+    GL_FOG_BIT              = 0x00000080,
+    GL_DEPTH_BUFFER_BIT     = 0x00000100,
+    GL_ACCUM_BUFFER_BIT     = 0x00000200,
+    GL_STENCIL_BUFFER_BIT   = 0x00000400,
+    GL_VIEWPORT_BIT         = 0x00000800,
+    GL_TRANSFORM_BIT        = 0x00001000,
+    GL_ENABLE_BIT           = 0x00002000,
+    GL_COLOR_BUFFER_BIT     = 0x00004000,
+    GL_HINT_BIT             = 0x00008000,
+    GL_EVAL_BIT             = 0x00010000,
+    GL_LIST_BIT             = 0x00020000,
+    GL_TEXTURE_BIT          = 0x00040000,
+    GL_SCISSOR_BIT          = 0x00080000,
+    GL_MULTISAMPLE_BIT      = 0x20000000,
+    GL_MULTISAMPLE_BIT_3DFX = 0x20000000,
+    GL_MULTISAMPLE_BIT_ARB  = 0x20000000,
+    GL_MULTISAMPLE_BIT_EXT  = 0x20000000,
+    GL_ALL_ATTRIB_BITS      = 0xFFFFFFFF,
 
     // BufferAccessMask
 
-    GL_MAP_READ_BIT                            = 0x0001,
-    GL_MAP_WRITE_BIT                           = 0x0002,
-    GL_MAP_INVALIDATE_RANGE_BIT                = 0x0004,
-    GL_MAP_INVALIDATE_BUFFER_BIT               = 0x0008,
-    GL_MAP_FLUSH_EXPLICIT_BIT                  = 0x0010,
-    GL_MAP_UNSYNCHRONIZED_BIT                  = 0x0020,
-    GL_MAP_PERSISTENT_BIT                      = 0x0040,
-    GL_MAP_COHERENT_BIT                        = 0x0080,
+    GL_MAP_READ_BIT              = 0x0001,
+    GL_MAP_WRITE_BIT             = 0x0002,
+    GL_MAP_INVALIDATE_RANGE_BIT  = 0x0004,
+    GL_MAP_INVALIDATE_BUFFER_BIT = 0x0008,
+    GL_MAP_FLUSH_EXPLICIT_BIT    = 0x0010,
+    GL_MAP_UNSYNCHRONIZED_BIT    = 0x0020,
+    GL_MAP_PERSISTENT_BIT        = 0x0040,
+    GL_MAP_COHERENT_BIT          = 0x0080,
 
     // ClearBufferMask
 
-//  GL_DEPTH_BUFFER_BIT                        = 0x00000100, // reuse AttribMask
-//  GL_ACCUM_BUFFER_BIT                        = 0x00000200, // reuse AttribMask
-//  GL_STENCIL_BUFFER_BIT                      = 0x00000400, // reuse AttribMask
-//  GL_COLOR_BUFFER_BIT                        = 0x00004000, // reuse AttribMask
-    GL_COVERAGE_BUFFER_BIT_NV                  = 0x00008000,
+//  GL_DEPTH_BUFFER_BIT       = 0x00000100, // reuse AttribMask
+//  GL_ACCUM_BUFFER_BIT       = 0x00000200, // reuse AttribMask
+//  GL_STENCIL_BUFFER_BIT     = 0x00000400, // reuse AttribMask
+//  GL_COLOR_BUFFER_BIT       = 0x00004000, // reuse AttribMask
+    GL_COVERAGE_BUFFER_BIT_NV = 0x00008000,
 
     // ClientAttribMask
 
-    GL_CLIENT_PIXEL_STORE_BIT                  = 0x00000001,
-    GL_CLIENT_VERTEX_ARRAY_BIT                 = 0x00000002,
-    GL_CLIENT_ALL_ATTRIB_BITS                  = 0xFFFFFFFF,
+    GL_CLIENT_PIXEL_STORE_BIT  = 0x00000001,
+    GL_CLIENT_VERTEX_ARRAY_BIT = 0x00000002,
+    GL_CLIENT_ALL_ATTRIB_BITS  = 0xFFFFFFFF,
 
     // ContextFlagMask
 
-    GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT     = 0x00000001,
-    GL_CONTEXT_FLAG_DEBUG_BIT                  = 0x00000002,
-    GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB      = 0x00000004,
+    GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001,
+    GL_CONTEXT_FLAG_DEBUG_BIT              = 0x00000002,
+    GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB  = 0x00000004,
 
     // ContextProfileMask
 
-    GL_CONTEXT_CORE_PROFILE_BIT                = 0x00000001,
-    GL_CONTEXT_COMPATIBILITY_PROFILE_BIT       = 0x00000002,
+    GL_CONTEXT_CORE_PROFILE_BIT          = 0x00000001,
+    GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002,
 
     // FfdMaskSGIX
 
-    GL_TEXTURE_DEFORMATION_BIT_SGIX            = 0x00000001,
-    GL_GEOMETRY_DEFORMATION_BIT_SGIX           = 0x00000002,
+    GL_TEXTURE_DEFORMATION_BIT_SGIX  = 0x00000001,
+    GL_GEOMETRY_DEFORMATION_BIT_SGIX = 0x00000002,
 
     // FragmentShaderColorModMaskATI
 
-    GL_COMP_BIT_ATI                            = 0x00000002,
-    GL_NEGATE_BIT_ATI                          = 0x00000004,
-    GL_BIAS_BIT_ATI                            = 0x00000008,
+    GL_COMP_BIT_ATI   = 0x00000002,
+    GL_NEGATE_BIT_ATI = 0x00000004,
+    GL_BIAS_BIT_ATI   = 0x00000008,
 
     // FragmentShaderDestMaskATI
 
-    GL_RED_BIT_ATI                             = 0x00000001,
-    GL_GREEN_BIT_ATI                           = 0x00000002,
-    GL_BLUE_BIT_ATI                            = 0x00000004,
+    GL_RED_BIT_ATI   = 0x00000001,
+    GL_GREEN_BIT_ATI = 0x00000002,
+    GL_BLUE_BIT_ATI  = 0x00000004,
 
     // FragmentShaderDestModMaskATI
 
-    GL_2X_BIT_ATI                              = 0x00000001,
-    GL_4X_BIT_ATI                              = 0x00000002,
-    GL_8X_BIT_ATI                              = 0x00000004,
-    GL_HALF_BIT_ATI                            = 0x00000008,
-    GL_QUARTER_BIT_ATI                         = 0x00000010,
-    GL_EIGHTH_BIT_ATI                          = 0x00000020,
-    GL_SATURATE_BIT_ATI                        = 0x00000040,
+    GL_2X_BIT_ATI       = 0x00000001,
+    GL_4X_BIT_ATI       = 0x00000002,
+    GL_8X_BIT_ATI       = 0x00000004,
+    GL_HALF_BIT_ATI     = 0x00000008,
+    GL_QUARTER_BIT_ATI  = 0x00000010,
+    GL_EIGHTH_BIT_ATI   = 0x00000020,
+    GL_SATURATE_BIT_ATI = 0x00000040,
 
     // MapBufferUsageMask
 
-//  GL_MAP_READ_BIT                            = 0x0001, // reuse BufferAccessMask
-//  GL_MAP_WRITE_BIT                           = 0x0002, // reuse BufferAccessMask
-//  GL_MAP_INVALIDATE_RANGE_BIT                = 0x0004, // reuse BufferAccessMask
-//  GL_MAP_INVALIDATE_BUFFER_BIT               = 0x0008, // reuse BufferAccessMask
-//  GL_MAP_FLUSH_EXPLICIT_BIT                  = 0x0010, // reuse BufferAccessMask
-//  GL_MAP_UNSYNCHRONIZED_BIT                  = 0x0020, // reuse BufferAccessMask
-//  GL_MAP_PERSISTENT_BIT                      = 0x0040, // reuse BufferAccessMask
-//  GL_MAP_COHERENT_BIT                        = 0x0080, // reuse BufferAccessMask
-    GL_DYNAMIC_STORAGE_BIT                     = 0x0100,
-    GL_CLIENT_STORAGE_BIT                      = 0x0200,
+//  GL_MAP_READ_BIT              = 0x0001, // reuse BufferAccessMask
+//  GL_MAP_WRITE_BIT             = 0x0002, // reuse BufferAccessMask
+//  GL_MAP_INVALIDATE_RANGE_BIT  = 0x0004, // reuse BufferAccessMask
+//  GL_MAP_INVALIDATE_BUFFER_BIT = 0x0008, // reuse BufferAccessMask
+//  GL_MAP_FLUSH_EXPLICIT_BIT    = 0x0010, // reuse BufferAccessMask
+//  GL_MAP_UNSYNCHRONIZED_BIT    = 0x0020, // reuse BufferAccessMask
+//  GL_MAP_PERSISTENT_BIT        = 0x0040, // reuse BufferAccessMask
+//  GL_MAP_COHERENT_BIT          = 0x0080, // reuse BufferAccessMask
+    GL_DYNAMIC_STORAGE_BIT       = 0x0100,
+    GL_CLIENT_STORAGE_BIT        = 0x0200,
 
     // MemoryBarrierMask
 
-    GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT         = 0x00000001,
-    GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT     = 0x00000001,
-    GL_ELEMENT_ARRAY_BARRIER_BIT               = 0x00000002,
-    GL_ELEMENT_ARRAY_BARRIER_BIT_EXT           = 0x00000002,
-    GL_UNIFORM_BARRIER_BIT                     = 0x00000004,
-    GL_UNIFORM_BARRIER_BIT_EXT                 = 0x00000004,
-    GL_TEXTURE_FETCH_BARRIER_BIT               = 0x00000008,
-    GL_TEXTURE_FETCH_BARRIER_BIT_EXT           = 0x00000008,
-    GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV     = 0x00000010,
-    GL_SHADER_IMAGE_ACCESS_BARRIER_BIT         = 0x00000020,
-    GL_SHADER_IMAGE_ACCESS_BARRIER_BIT_EXT     = 0x00000020,
-    GL_COMMAND_BARRIER_BIT                     = 0x00000040,
-    GL_COMMAND_BARRIER_BIT_EXT                 = 0x00000040,
-    GL_PIXEL_BUFFER_BARRIER_BIT                = 0x00000080,
-    GL_PIXEL_BUFFER_BARRIER_BIT_EXT            = 0x00000080,
-    GL_TEXTURE_UPDATE_BARRIER_BIT              = 0x00000100,
-    GL_TEXTURE_UPDATE_BARRIER_BIT_EXT          = 0x00000100,
-    GL_BUFFER_UPDATE_BARRIER_BIT               = 0x00000200,
-    GL_BUFFER_UPDATE_BARRIER_BIT_EXT           = 0x00000200,
-    GL_FRAMEBUFFER_BARRIER_BIT                 = 0x00000400,
-    GL_FRAMEBUFFER_BARRIER_BIT_EXT             = 0x00000400,
-    GL_TRANSFORM_FEEDBACK_BARRIER_BIT          = 0x00000800,
-    GL_TRANSFORM_FEEDBACK_BARRIER_BIT_EXT      = 0x00000800,
-    GL_ATOMIC_COUNTER_BARRIER_BIT              = 0x00001000,
-    GL_ATOMIC_COUNTER_BARRIER_BIT_EXT          = 0x00001000,
-    GL_SHADER_STORAGE_BARRIER_BIT              = 0x00002000,
-    GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT        = 0x00004000,
-    GL_QUERY_BUFFER_BARRIER_BIT                = 0x00008000,
-    GL_ALL_BARRIER_BITS                        = 0xFFFFFFFF,
-    GL_ALL_BARRIER_BITS_EXT                    = 0xFFFFFFFF,
+    GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT     = 0x00000001,
+    GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT = 0x00000001,
+    GL_ELEMENT_ARRAY_BARRIER_BIT           = 0x00000002,
+    GL_ELEMENT_ARRAY_BARRIER_BIT_EXT       = 0x00000002,
+    GL_UNIFORM_BARRIER_BIT                 = 0x00000004,
+    GL_UNIFORM_BARRIER_BIT_EXT             = 0x00000004,
+    GL_TEXTURE_FETCH_BARRIER_BIT           = 0x00000008,
+    GL_TEXTURE_FETCH_BARRIER_BIT_EXT       = 0x00000008,
+    GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV = 0x00000010,
+    GL_SHADER_IMAGE_ACCESS_BARRIER_BIT     = 0x00000020,
+    GL_SHADER_IMAGE_ACCESS_BARRIER_BIT_EXT = 0x00000020,
+    GL_COMMAND_BARRIER_BIT                 = 0x00000040,
+    GL_COMMAND_BARRIER_BIT_EXT             = 0x00000040,
+    GL_PIXEL_BUFFER_BARRIER_BIT            = 0x00000080,
+    GL_PIXEL_BUFFER_BARRIER_BIT_EXT        = 0x00000080,
+    GL_TEXTURE_UPDATE_BARRIER_BIT          = 0x00000100,
+    GL_TEXTURE_UPDATE_BARRIER_BIT_EXT      = 0x00000100,
+    GL_BUFFER_UPDATE_BARRIER_BIT           = 0x00000200,
+    GL_BUFFER_UPDATE_BARRIER_BIT_EXT       = 0x00000200,
+    GL_FRAMEBUFFER_BARRIER_BIT             = 0x00000400,
+    GL_FRAMEBUFFER_BARRIER_BIT_EXT         = 0x00000400,
+    GL_TRANSFORM_FEEDBACK_BARRIER_BIT      = 0x00000800,
+    GL_TRANSFORM_FEEDBACK_BARRIER_BIT_EXT  = 0x00000800,
+    GL_ATOMIC_COUNTER_BARRIER_BIT          = 0x00001000,
+    GL_ATOMIC_COUNTER_BARRIER_BIT_EXT      = 0x00001000,
+    GL_SHADER_STORAGE_BARRIER_BIT          = 0x00002000,
+    GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT    = 0x00004000,
+    GL_QUERY_BUFFER_BARRIER_BIT            = 0x00008000,
+    GL_ALL_BARRIER_BITS                    = 0xFFFFFFFF,
+    GL_ALL_BARRIER_BITS_EXT                = 0xFFFFFFFF,
 
     // NotUsedMask
 
-    GL_NOT_USED_BIT                            = 0x00000000,
+    GL_NOT_USED_BIT = 0x00000000,
 
     // PathFontStyle
 
-    GL_NONE_BIT                                = 0x00,
-    GL_BOLD_BIT_NV                             = 0x01,
-    GL_ITALIC_BIT_NV                           = 0x02,
+    GL_NONE_BIT      = 0x00,
+    GL_BOLD_BIT_NV   = 0x01,
+    GL_ITALIC_BIT_NV = 0x02,
 
     // PathRenderingMaskNV
 
@@ -185,47 +185,47 @@ enum class GLbitfield : unsigned int
 
     // PerformanceQueryCapsMaskINTEL
 
-    GL_PERFQUERY_SINGLE_CONTEXT_INTEL          = 0x00000000,
-    GL_PERFQUERY_GLOBAL_CONTEXT_INTEL          = 0x00000001,
+    GL_PERFQUERY_SINGLE_CONTEXT_INTEL = 0x00000000,
+    GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = 0x00000001,
 
     // SyncObjectMask
 
-    GL_SYNC_FLUSH_COMMANDS_BIT                 = 0x00000001,
+    GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001,
 
     // TextureStorageMaskAMD
 
-    GL_TEXTURE_STORAGE_SPARSE_BIT_AMD          = 0x00000001,
+    GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = 0x00000001,
 
     // UseProgramStageMask
 
-    GL_VERTEX_SHADER_BIT                       = 0x00000001,
-    GL_FRAGMENT_SHADER_BIT                     = 0x00000002,
-    GL_GEOMETRY_SHADER_BIT                     = 0x00000004,
-    GL_TESS_CONTROL_SHADER_BIT                 = 0x00000008,
-    GL_TESS_EVALUATION_SHADER_BIT              = 0x00000010,
-    GL_COMPUTE_SHADER_BIT                      = 0x00000020,
-    GL_ALL_SHADER_BITS                         = 0xFFFFFFFF,
+    GL_VERTEX_SHADER_BIT          = 0x00000001,
+    GL_FRAGMENT_SHADER_BIT        = 0x00000002,
+    GL_GEOMETRY_SHADER_BIT        = 0x00000004,
+    GL_TESS_CONTROL_SHADER_BIT    = 0x00000008,
+    GL_TESS_EVALUATION_SHADER_BIT = 0x00000010,
+    GL_COMPUTE_SHADER_BIT         = 0x00000020,
+    GL_ALL_SHADER_BITS            = 0xFFFFFFFF,
 
     // VertexHintsMaskPGI
 
-    GL_VERTEX23_BIT_PGI                        = 0x00000004,
-    GL_VERTEX4_BIT_PGI                         = 0x00000008,
-    GL_COLOR3_BIT_PGI                          = 0x00010000,
-    GL_COLOR4_BIT_PGI                          = 0x00020000,
-    GL_EDGEFLAG_BIT_PGI                        = 0x00040000,
-    GL_INDEX_BIT_PGI                           = 0x00080000,
-    GL_MAT_AMBIENT_BIT_PGI                     = 0x00100000,
-    GL_MAT_AMBIENT_AND_DIFFUSE_BIT_PGI         = 0x00200000,
-    GL_MAT_DIFFUSE_BIT_PGI                     = 0x00400000,
-    GL_MAT_EMISSION_BIT_PGI                    = 0x00800000,
-    GL_MAT_COLOR_INDEXES_BIT_PGI               = 0x01000000,
-    GL_MAT_SHININESS_BIT_PGI                   = 0x02000000,
-    GL_MAT_SPECULAR_BIT_PGI                    = 0x04000000,
-    GL_NORMAL_BIT_PGI                          = 0x08000000,
-    GL_TEXCOORD1_BIT_PGI                       = 0x10000000,
-    GL_TEXCOORD2_BIT_PGI                       = 0x20000000,
-    GL_TEXCOORD3_BIT_PGI                       = 0x40000000,
-    GL_TEXCOORD4_BIT_PGI                       = 0x80000000,
+    GL_VERTEX23_BIT_PGI                = 0x00000004,
+    GL_VERTEX4_BIT_PGI                 = 0x00000008,
+    GL_COLOR3_BIT_PGI                  = 0x00010000,
+    GL_COLOR4_BIT_PGI                  = 0x00020000,
+    GL_EDGEFLAG_BIT_PGI                = 0x00040000,
+    GL_INDEX_BIT_PGI                   = 0x00080000,
+    GL_MAT_AMBIENT_BIT_PGI             = 0x00100000,
+    GL_MAT_AMBIENT_AND_DIFFUSE_BIT_PGI = 0x00200000,
+    GL_MAT_DIFFUSE_BIT_PGI             = 0x00400000,
+    GL_MAT_EMISSION_BIT_PGI            = 0x00800000,
+    GL_MAT_COLOR_INDEXES_BIT_PGI       = 0x01000000,
+    GL_MAT_SHININESS_BIT_PGI           = 0x02000000,
+    GL_MAT_SPECULAR_BIT_PGI            = 0x04000000,
+    GL_NORMAL_BIT_PGI                  = 0x08000000,
+    GL_TEXCOORD1_BIT_PGI               = 0x10000000,
+    GL_TEXCOORD2_BIT_PGI               = 0x20000000,
+    GL_TEXCOORD3_BIT_PGI               = 0x40000000,
+    GL_TEXCOORD4_BIT_PGI               = 0x80000000,
 
 };
 
