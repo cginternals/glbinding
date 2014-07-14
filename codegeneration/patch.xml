@@ -21,7 +21,7 @@
 
         <group name="PathFontStyle">
 	        <enum name="GL_NONE"/>
-	        <enum name="BOLD_BIT_NV"/>
+	        <enum name="GL_BOLD_BIT_NV"/>
 	        <enum name="GL_ITALIC_BIT_NV"/>
         </group>
 

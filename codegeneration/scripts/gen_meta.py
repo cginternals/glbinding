@@ -32,14 +32,14 @@ def genMetaExtensionsByString(extensions, outputdir, outputfile):
 
 def metaEnumToString(enum, type):
 
-    t = (enum.groupString if type == "GLbitfield" else type)
-    return ('{ ' + t + '::%s, "%s" }') % (enumBID(enum), enum.name)
+    # t = (enum.groupString if type == "GLbitfield" else type)
+    return ('{ ' + type + '::%s, "%s" }') % (enumBID(enum), enum.name)
 
 
 def metaStringToEnum(enum, type):
 
-    t = (enum.groupString if type == "GLbitfield" else type)
-    return ('{ "%s", ' + t + '::%s }') % (enum.name, enumBID(enum))
+    # t = (enum.groupString if type == "GLbitfield" else type)
+    return ('{ "%s", ' + type + '::%s }') % (enum.name, enumBID(enum))
 
 
 def genMetaStringsByEnum(enums, outputdir, outputfile, type):

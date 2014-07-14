@@ -15,40 +15,40 @@ using namespace gl;
 
 // AttribMask
 
-static const AttribMask GL_CURRENT_BIT = AttribMask::GL_CURRENT_BIT;
-static const AttribMask GL_POINT_BIT = AttribMask::GL_POINT_BIT;
-static const AttribMask GL_LINE_BIT = AttribMask::GL_LINE_BIT;
-static const AttribMask GL_POLYGON_BIT = AttribMask::GL_POLYGON_BIT;
-static const AttribMask GL_POLYGON_STIPPLE_BIT = AttribMask::GL_POLYGON_STIPPLE_BIT;
-static const AttribMask GL_PIXEL_MODE_BIT = AttribMask::GL_PIXEL_MODE_BIT;
-static const AttribMask GL_LIGHTING_BIT = AttribMask::GL_LIGHTING_BIT;
-static const AttribMask GL_FOG_BIT = AttribMask::GL_FOG_BIT;
-static const AttribMask GL_DEPTH_BUFFER_BIT = AttribMask::GL_DEPTH_BUFFER_BIT;
-static const AttribMask GL_ACCUM_BUFFER_BIT = AttribMask::GL_ACCUM_BUFFER_BIT;
-static const AttribMask GL_STENCIL_BUFFER_BIT = AttribMask::GL_STENCIL_BUFFER_BIT;
-static const AttribMask GL_VIEWPORT_BIT = AttribMask::GL_VIEWPORT_BIT;
-static const AttribMask GL_TRANSFORM_BIT = AttribMask::GL_TRANSFORM_BIT;
-static const AttribMask GL_ENABLE_BIT = AttribMask::GL_ENABLE_BIT;
-static const AttribMask GL_COLOR_BUFFER_BIT = AttribMask::GL_COLOR_BUFFER_BIT;
-static const AttribMask GL_HINT_BIT = AttribMask::GL_HINT_BIT;
-static const AttribMask GL_EVAL_BIT = AttribMask::GL_EVAL_BIT;
-static const AttribMask GL_LIST_BIT = AttribMask::GL_LIST_BIT;
-static const AttribMask GL_TEXTURE_BIT = AttribMask::GL_TEXTURE_BIT;
-static const AttribMask GL_SCISSOR_BIT = AttribMask::GL_SCISSOR_BIT;
-static const AttribMask GL_MULTISAMPLE_BIT = AttribMask::GL_MULTISAMPLE_BIT;
-static const AttribMask GL_ALL_ATTRIB_BITS = AttribMask::GL_ALL_ATTRIB_BITS;
+static const GLbitfield GL_CURRENT_BIT = GLbitfield::GL_CURRENT_BIT;
+static const GLbitfield GL_POINT_BIT = GLbitfield::GL_POINT_BIT;
+static const GLbitfield GL_LINE_BIT = GLbitfield::GL_LINE_BIT;
+static const GLbitfield GL_POLYGON_BIT = GLbitfield::GL_POLYGON_BIT;
+static const GLbitfield GL_POLYGON_STIPPLE_BIT = GLbitfield::GL_POLYGON_STIPPLE_BIT;
+static const GLbitfield GL_PIXEL_MODE_BIT = GLbitfield::GL_PIXEL_MODE_BIT;
+static const GLbitfield GL_LIGHTING_BIT = GLbitfield::GL_LIGHTING_BIT;
+static const GLbitfield GL_FOG_BIT = GLbitfield::GL_FOG_BIT;
+static const GLbitfield GL_DEPTH_BUFFER_BIT = GLbitfield::GL_DEPTH_BUFFER_BIT;
+static const GLbitfield GL_ACCUM_BUFFER_BIT = GLbitfield::GL_ACCUM_BUFFER_BIT;
+static const GLbitfield GL_STENCIL_BUFFER_BIT = GLbitfield::GL_STENCIL_BUFFER_BIT;
+static const GLbitfield GL_VIEWPORT_BIT = GLbitfield::GL_VIEWPORT_BIT;
+static const GLbitfield GL_TRANSFORM_BIT = GLbitfield::GL_TRANSFORM_BIT;
+static const GLbitfield GL_ENABLE_BIT = GLbitfield::GL_ENABLE_BIT;
+static const GLbitfield GL_COLOR_BUFFER_BIT = GLbitfield::GL_COLOR_BUFFER_BIT;
+static const GLbitfield GL_HINT_BIT = GLbitfield::GL_HINT_BIT;
+static const GLbitfield GL_EVAL_BIT = GLbitfield::GL_EVAL_BIT;
+static const GLbitfield GL_LIST_BIT = GLbitfield::GL_LIST_BIT;
+static const GLbitfield GL_TEXTURE_BIT = GLbitfield::GL_TEXTURE_BIT;
+static const GLbitfield GL_SCISSOR_BIT = GLbitfield::GL_SCISSOR_BIT;
+static const GLbitfield GL_MULTISAMPLE_BIT = GLbitfield::GL_MULTISAMPLE_BIT;
+static const GLbitfield GL_ALL_ATTRIB_BITS = GLbitfield::GL_ALL_ATTRIB_BITS;
 
 // ClearBufferMask
 
-static const AttribMask GL_DEPTH_BUFFER_BIT = AttribMask::GL_DEPTH_BUFFER_BIT;
-static const AttribMask GL_ACCUM_BUFFER_BIT = AttribMask::GL_ACCUM_BUFFER_BIT;
-static const AttribMask GL_STENCIL_BUFFER_BIT = AttribMask::GL_STENCIL_BUFFER_BIT;
-static const AttribMask GL_COLOR_BUFFER_BIT = AttribMask::GL_COLOR_BUFFER_BIT;
+// static const GLbitfield GL_DEPTH_BUFFER_BIT = GLbitfield::GL_DEPTH_BUFFER_BIT; // reuse AttribMask
+// static const GLbitfield GL_ACCUM_BUFFER_BIT = GLbitfield::GL_ACCUM_BUFFER_BIT; // reuse AttribMask
+// static const GLbitfield GL_STENCIL_BUFFER_BIT = GLbitfield::GL_STENCIL_BUFFER_BIT; // reuse AttribMask
+// static const GLbitfield GL_COLOR_BUFFER_BIT = GLbitfield::GL_COLOR_BUFFER_BIT; // reuse AttribMask
 
 // ClientAttribMask
 
-static const ClientAttribMask GL_CLIENT_PIXEL_STORE_BIT = ClientAttribMask::GL_CLIENT_PIXEL_STORE_BIT;
-static const ClientAttribMask GL_CLIENT_VERTEX_ARRAY_BIT = ClientAttribMask::GL_CLIENT_VERTEX_ARRAY_BIT;
-static const ClientAttribMask GL_CLIENT_ALL_ATTRIB_BITS = ClientAttribMask::GL_CLIENT_ALL_ATTRIB_BITS;
+static const GLbitfield GL_CLIENT_PIXEL_STORE_BIT = GLbitfield::GL_CLIENT_PIXEL_STORE_BIT;
+static const GLbitfield GL_CLIENT_VERTEX_ARRAY_BIT = GLbitfield::GL_CLIENT_VERTEX_ARRAY_BIT;
+static const GLbitfield GL_CLIENT_ALL_ATTRIB_BITS = GLbitfield::GL_CLIENT_ALL_ATTRIB_BITS;
 
 } // namespace gl21

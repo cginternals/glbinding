@@ -23,6 +23,7 @@ namespace gl
 enum class GLextension : int;
 enum class GLenum : unsigned int;
 enum class GLboolean : unsigned char;
+enum class GLbitfield : unsigned int;
 using GLvoid = void;
 using GLbyte = signed char;
 using GLshort = short;
@@ -64,31 +65,6 @@ using GLDEBUGPROCKHR = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,
 using GLDEBUGPROCAMD = void (GL_APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
 using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
-
-
-// fallback for commands with missing bitfield group specifier
-class GLbitfield;
-
-enum class AttribMask : unsigned int;
-enum class ClearBufferMask : unsigned int;
-enum class ClientAttribMask : unsigned int;
-enum class ContextFlagMask : unsigned int;
-enum class ContextProfileMask : unsigned int;
-enum class FfdMaskSGIX : unsigned int;
-enum class FragmentShaderColorModMaskATI : unsigned int;
-enum class FragmentShaderDestMaskATI : unsigned int;
-enum class FragmentShaderDestModMaskATI : unsigned int;
-enum class MapBufferUsageMask : unsigned int;
-enum class MemoryBarrierMask : unsigned int;
-enum class PathRenderingMaskNV : unsigned int;
-enum class PerformanceQueryCapsMaskINTEL : unsigned int;
-enum class SyncObjectMask : unsigned int;
-enum class TextureStorageMaskAMD : unsigned int;
-enum class UseProgramStageMask : unsigned int;
-enum class VertexHintsMaskPGI : unsigned int;
-enum class NotUsedMask : unsigned int;
-enum class BufferAccessMask : unsigned int;
-enum class PathFontStyle : unsigned int;
 
 } // namespace gl
 
@@ -149,6 +125,29 @@ struct hash<gl::GLboolean>
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLbitfield>
+{
+    hash<std::underlying_type<gl::GLbitfield>::type>::result_type operator()(const gl::GLbitfield & t) const
+    {
+        return hash<std::underlying_type<gl::GLbitfield>::type>()(static_cast<std::underlying_type<gl::GLbitfield>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLbitfield & value);
+
+
+GLBINDING_API gl::GLbitfield operator|(const gl::GLbitfield & a, const gl::GLbitfield & b);
+GLBINDING_API gl::GLbitfield operator&(const gl::GLbitfield & a, const gl::GLbitfield & b);
+GLBINDING_API gl::GLbitfield operator^(const gl::GLbitfield & a, const gl::GLbitfield & b);
 
 
 namespace std

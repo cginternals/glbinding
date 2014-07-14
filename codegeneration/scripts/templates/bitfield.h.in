@@ -7,22 +7,10 @@
 namespace gl
 {
 
-class GLbitfield
+enum class GLbitfield : unsigned int 
 {
-public:
-    GLbitfield() : bitfield(0) { }
-    GLbitfield(unsigned int v) : bitfield(v) { }
-
-    template <typename T> GLbitfield(T v) : bitfield(static_cast<unsigned int>(v)) { }
-	
-	operator unsigned int() { return bitfield; }
-
-protected:
-	unsigned int bitfield;
-};
-
-
 %s
+};
 
 // import bitfields to namespace
 %s
