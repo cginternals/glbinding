@@ -5,11 +5,15 @@
 #include <set>
 #include <string>
 
-
 namespace gl
 {
+    enum class GLextension;
+}
 
-enum class GLextension;
+
+namespace glbinding
+{
+
 class Version;
 
 
@@ -18,7 +22,7 @@ class GLBINDING_API ContextInfo
 public:
     ContextInfo() = delete;
 
-    static std::set<GLextension> extensions(std::set<std::string> * unknown = nullptr);
+    static std::set<gl::GLextension> extensions(std::set<std::string> * unknown = nullptr);
 
     static std::string renderer();
     static std::string vendor();
@@ -26,4 +30,4 @@ public:
     static Version version();
 };
 
-} // namespace gl
+} // namespace glbinding

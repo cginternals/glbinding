@@ -16,7 +16,9 @@
 #include "Meta_Maps.h"
 
 
-namespace gl
+using namespace gl;
+
+namespace glbinding
 {
 
 bool Meta::stringsByGL()
@@ -160,4 +162,4 @@ const std::set<Version> & Meta::versions()
     return Version::versions();
 }
 
-} // namespace gl
+} // namespace glbinding

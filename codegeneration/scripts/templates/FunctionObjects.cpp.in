@@ -6,7 +6,10 @@
 #include <glbinding/enum.h>
 #include <glbinding/values.h>
 
-namespace gl 
+
+using namespace gl;
+
+namespace glbinding
 {
 
 int FunctionObjects::s_context = 0;
@@ -31,4 +34,4 @@ void FunctionObjects::setContext(int context)
 
 %s
 
-} // namespace gl
+} // namespace glbinding

@@ -6,7 +6,7 @@
 #include <glbinding/Function.h>
 
 
-namespace gl 
+namespace glbinding
 {
 
 class GLBINDING_API FunctionObjects

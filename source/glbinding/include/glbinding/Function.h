@@ -7,7 +7,7 @@ namespace
     template <typename ReturnType, typename... Arguments> struct FunctionHelper;
 }
 
-namespace gl 
+namespace glbinding 
 {
 
 template <typename ReturnType, typename... Arguments>
@@ -22,6 +22,6 @@ public:
     ReturnType operator()(Arguments... arguments);
 };
 
-} // namespace gl
+} // namespace glbinding
 
 #include <glbinding/Function.hpp>

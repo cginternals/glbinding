@@ -9,7 +9,7 @@
 #include <glbinding/FunctionObjects.h>
 #include <glbinding/Meta.h>
 
-namespace gl 
+namespace glbinding 
 {
 
 AbstractFunction::Callback AbstractFunction::s_beforeCallback;
@@ -74,7 +74,7 @@ void AbstractFunction::initialize(int context)
     }
 }
 
-const std::set<GLextension> & AbstractFunction::extensions() const
+const std::set<gl::GLextension> & AbstractFunction::extensions() const
 {
     return Meta::getExtensionsRequiring(m_name);
 }
@@ -177,7 +177,7 @@ void AbstractFunction::parameters(const std::vector<AbstractValue*> & values)
     if (s_parametersCallback)
         s_parametersCallback(*this, values);
 
-    for (gl::AbstractValue * value : values)
+    for (AbstractValue * value : values)
         delete value;
 }
 
@@ -195,4 +195,4 @@ void AbstractFunction::unresolved()
         s_unresolvedCallback(*this);
 }
 
-} // namespace gl
+} // namespace glbinding

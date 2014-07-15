@@ -5,7 +5,9 @@
 #include <glbinding/Version.h>
 
 
-namespace gl
+using namespace gl;
+
+namespace glbinding
 {
 
 const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
@@ -121,4 +123,4 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
     { GLextension::GL_ARB_vertex_type_10f_11f_11f_rev, { 4, 4 } }
 };
 
-} // namespace gl
+} // namespace glbinding

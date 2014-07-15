@@ -6,7 +6,7 @@
 #include <set>
 
 
-namespace gl
+namespace glbinding
 {
 
 Version::Version()
@@ -15,7 +15,7 @@ Version::Version()
 {
 }
 
-Version::Version(const GLint majorVersion, const GLint minorVersion)
+Version::Version(const gl::GLint majorVersion, const gl::GLint minorVersion)
 : m_major(majorVersion)
 , m_minor(minorVersion)
 {
@@ -107,10 +107,10 @@ const std::set<Version> & Version::versions()
 }
 
 
-} // namespace gl
+} // namespace glbinding
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::Version & version)
+std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version)
 {
     stream << version.toString();
     return stream;

@@ -4,7 +4,9 @@
 #include <glbinding/bitfield.h>
 
 
-namespace gl
+using namespace gl;
+
+namespace glbinding
 {
 
 // ToDo: this is currently insufficient, since lots of bitfields use 
@@ -22,4 +24,4 @@ const std::unordered_map<GLbitfield, std::string> Meta_StringsByBitfield
 #endif
 };
 
-} // namespace gl
+} // namespace glbinding

@@ -4,7 +4,9 @@
 #include <glbinding/enum.h>
 
 
-namespace gl
+using namespace gl;
+
+namespace glbinding
 {
 
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString
@@ -4404,4 +4406,4 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString
 #endif
 };
 
-} // namespace gl
+} // namespace glbinding

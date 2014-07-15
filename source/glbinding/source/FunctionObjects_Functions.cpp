@@ -2,7 +2,7 @@
 #include <glbinding/FunctionObjects.h>
 
 
-namespace gl 
+namespace glbinding 
 {
 
 const std::vector<AbstractFunction *> FunctionObjects::s_functions = 
@@ -2643,4 +2643,4 @@ const std::vector<AbstractFunction *> FunctionObjects::s_functions =
     &FunctionObjects::WriteMaskEXT
 };
 
-} // namespace gl
+} // namespace glbinding

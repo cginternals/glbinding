@@ -96,6 +96,7 @@ set(sources
     ${source_path}/Version_ValidVersions.cpp
 
     ${source_path}/Meta.cpp
+    ${source_path}/Meta_Maps.h
     ${source_path}/Meta_BitfieldsByString.cpp
     ${source_path}/Meta_BooleansByString.cpp
     ${source_path}/Meta_EnumsByString.cpp

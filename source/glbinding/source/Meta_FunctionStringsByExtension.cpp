@@ -4,7 +4,9 @@
 #include <glbinding/extension.h>
 
 
-namespace gl
+using namespace gl;
+
+namespace glbinding
 {
 
 const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension
@@ -260,4 +262,4 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
 #endif
 };
 
-} // namespace gl
+} // namespace glbinding

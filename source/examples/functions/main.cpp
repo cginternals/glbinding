@@ -17,6 +17,7 @@
 
 
 using namespace gl;
+using namespace glbinding;
 
 
 void error(int errnum, const char * errmsg)

@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-namespace gl 
+namespace glbinding 
 {
 
 class GLBINDING_API AbstractValue
@@ -16,4 +16,4 @@ public:
     virtual void printOn(std::ostream & stream) const = 0;
 };
 
-} // namespace gl
+} // namespace glbinding

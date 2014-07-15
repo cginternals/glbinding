@@ -7,7 +7,7 @@
 #include <glbinding/AbstractValue.h>
 #include <glbinding/types.h>
 
-namespace gl 
+namespace glbinding 
 {
 
 template <typename T>
@@ -22,11 +22,11 @@ protected:
     T value;
 };
 
-template <> GLBINDING_API void Value<GLenum>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<GLbitfield>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<GLboolean>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<const GLubyte *>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<const GLchar *>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<gl::GLenum>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<gl::GLbitfield>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<gl::GLboolean>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const;
+template <> GLBINDING_API void Value<const gl::GLchar *>::printOn(std::ostream & stream) const;
 
 template <typename Argument>
 AbstractValue * createValue(Argument argument);
@@ -34,6 +34,6 @@ AbstractValue * createValue(Argument argument);
 template <typename... Arguments>
 std::vector<AbstractValue*> createValues(Arguments... arguments);
 
-} // namespace gl
+} // namespace glbinding
 
 #include <glbinding/Value.hpp>

@@ -7,7 +7,7 @@
 #include <glbinding/Version.h>
 
 
-namespace gl
+namespace glbinding
 {
 
 using namespace gl30;
@@ -60,4 +60,4 @@ Version ContextInfo::version()
     return version;
 }
 
-} // namespace gl
+} // namespace glbinding

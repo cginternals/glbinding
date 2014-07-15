@@ -6,7 +6,10 @@
 #include <glbinding/enum.h>
 #include <glbinding/values.h>
 
-namespace gl 
+
+using namespace gl;
+
+namespace glbinding
 {
 
 int FunctionObjects::s_context = 0;
@@ -2664,4 +2667,4 @@ Function<void, GLshort, GLshort, GLshort, GLshort> FunctionObjects::WindowPos4sM
 Function<void, const GLshort *> FunctionObjects::WindowPos4svMESA("glWindowPos4svMESA");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> FunctionObjects::WriteMaskEXT("glWriteMaskEXT");
 
-} // namespace gl
+} // namespace glbinding

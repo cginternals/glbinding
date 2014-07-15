@@ -10,7 +10,7 @@
 #include <glbinding/types.h>
 
 
-namespace gl
+namespace glbinding
 {
 
 class Version;
@@ -26,24 +26,24 @@ public:
 
     static int glRevision();
 
-    static const std::string & getString(GLenum glenum);
-    static GLenum getEnum(const std::string & glenum);
-    static std::vector<GLenum> enums();
+    static const std::string & getString(gl::GLenum glenum);
+    static gl::GLenum getEnum(const std::string & glenum);
+    static std::vector<gl::GLenum> enums();
 
-    static const std::string & getString(GLbitfield bitfield);
-    static GLbitfield getBitfield(const std::string & bitfield);
+    static const std::string & getString(gl::GLbitfield bitfield);
+    static gl::GLbitfield getBitfield(const std::string & bitfield);
 
-    static const std::string & getString(GLboolean boolean);
-    static GLboolean getBoolean(const std::string & boolean);
+    static const std::string & getString(gl::GLboolean boolean);
+    static gl::GLboolean getBoolean(const std::string & boolean);
 
-    static const std::string & getString(GLextension extension);
-    static GLextension getExtension(const std::string & extension);
-    static std::set<GLextension> extensions();
+    static const std::string & getString(gl::GLextension extension);
+    static gl::GLextension getExtension(const std::string & extension);
+    static std::set<gl::GLextension> extensions();
 
-    static const std::set<std::string> & getRequiredFunctions(GLextension extension);
-    static const std::set<GLextension> & getExtensionsRequiring(const std::string & function);
+    static const std::set<std::string> & getRequiredFunctions(gl::GLextension extension);
+    static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & function);
 
-    static const Version & getRequiringVersion(GLextension extension);
+    static const Version & getRequiringVersion(gl::GLextension extension);
     static const std::set<Version> & versions();
 };
 

@@ -4,7 +4,9 @@
 #include <glbinding/bitfield.h>
 
 
-namespace gl
+using namespace gl;
+
+namespace glbinding
 {
 
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
@@ -157,4 +159,4 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
 #endif
 };
 
-} // namespace gl
+} // namespace glbinding

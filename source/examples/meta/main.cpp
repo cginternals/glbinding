@@ -11,6 +11,7 @@
 
 
 using namespace gl; 
+using namespace glbinding;
 
 int main(int, char * [])
 {

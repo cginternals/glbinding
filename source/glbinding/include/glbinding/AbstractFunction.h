@@ -13,7 +13,7 @@
 #include <glbinding/types.h>
 
 
-namespace gl 
+namespace glbinding 
 {
 
 class GLBINDING_API AbstractFunction
@@ -44,7 +44,7 @@ public:
 
     ProcAddress address() const;
 
-    const std::set<GLextension> & extensions() const;
+    const std::set<gl::GLextension> & extensions() const;
 
     void setCallbackLevel(CallbackLevel level);
 
@@ -102,4 +102,4 @@ protected:
     static ReturnValueCallback s_returnValueCallback;
 };
 
-} // namespace gl
+} // namespace glbinding

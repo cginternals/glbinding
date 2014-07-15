@@ -2,11 +2,11 @@
 
 #include <glbinding/glbinding_api.h>
 
-namespace gl 
+namespace glbinding 
 {
 
 using ProcAddress = void(*)();
 
 GLBINDING_API ProcAddress getProcAddress(const char * name);
 
-} // namespace gl
+} // namespace glbinding

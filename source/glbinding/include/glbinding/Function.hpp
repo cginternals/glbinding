@@ -12,20 +12,20 @@ namespace
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
 {    
-    ReturnType call(gl::Function<ReturnType, Arguments...> & function, Arguments... arguments) const
+    ReturnType call(glbinding::Function<ReturnType, Arguments...> & function, Arguments... arguments) const
     {
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::Before))
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Before))
             function.before();
 
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::Parameters))
-            function.parameters(gl::createValues(std::forward<Arguments>(arguments)...));
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Parameters))
+            function.parameters(glbinding::createValues(std::forward<Arguments>(arguments)...));
 
-        ReturnType value = reinterpret_cast<typename gl::Function<ReturnType, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
+        ReturnType value = reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
 
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::ReturnValue))
-            function.returnValue(gl::createValue(value));
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::ReturnValue))
+            function.returnValue(glbinding::createValue(value));
 
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::After))
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::After))
             function.after();
 
         return value;
@@ -35,20 +35,20 @@ struct FunctionHelper
 template <typename... Arguments>
 struct FunctionHelper<void, Arguments...>
 {
-    void call(gl::Function<void, Arguments...> & function, Arguments... arguments) const
+    void call(glbinding::Function<void, Arguments...> & function, Arguments... arguments) const
     {
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::Before))
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Before))
             function.before();
 
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::Parameters))
-            function.parameters(gl::createValues(std::forward<Arguments>(arguments)...));
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Parameters))
+            function.parameters(glbinding::createValues(std::forward<Arguments>(arguments)...));
 
-        reinterpret_cast<typename gl::Function<void, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
+        reinterpret_cast<typename glbinding::Function<void, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
 
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::ReturnValue))
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::ReturnValue))
             function.returnValue(nullptr);
 
-        if (function.isEnabled(gl::AbstractFunction::CallbackLevel::After))
+        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::After))
             function.after();
     }
 };
@@ -56,7 +56,7 @@ struct FunctionHelper<void, Arguments...>
 }
 
 
-namespace gl 
+namespace glbinding 
 {
 
 template <typename ReturnType, typename... Arguments>
@@ -86,4 +86,4 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
     }
 }
 
-} // namespace gl
+} // namespace glbinding

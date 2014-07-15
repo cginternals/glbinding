@@ -8,7 +8,7 @@
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value)
 {
-    stream << gl::Meta::getString(value);
+    stream << glbinding::Meta::getString(value);
     return stream;
 }
 
@@ -88,7 +88,7 @@ bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
 {
-    stream << gl::Meta::getString(value);
+    stream << glbinding::Meta::getString(value);
     return stream;
 }
 
@@ -96,7 +96,7 @@ std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLbitfield & value)
 {
-    stream << gl::Meta::getString(value);
+    stream << glbinding::Meta::getString(value);
     return stream;
 }
 
@@ -120,7 +120,7 @@ gl::GLbitfield operator^(const gl::GLbitfield & a, const gl::GLbitfield & b)
 
 std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
 {
-    stream << gl::Meta::getString(value);
+    stream << glbinding::Meta::getString(value);
     return stream;
 }
 

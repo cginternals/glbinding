@@ -10,14 +10,14 @@
 #include <glbinding/types.h>
 
 
-namespace gl
+namespace glbinding
 {
 
 class GLBINDING_API Version
 {
 public:
     Version();
-    Version(GLint majorVersion, GLint minorVersion);
+    Version(gl::GLint majorVersion, gl::GLint minorVersion);
 
     bool operator< (const Version & version) const;
     bool operator> (const Version & version) const;
@@ -40,13 +40,13 @@ public:
     static const std::set<Version> & versions();
 
 public:
-    GLint m_major;
-    GLint m_minor;
+    gl::GLint m_major;
+    gl::GLint m_minor;
 
 protected:
     static const std::set<Version> s_validVersions;
 };
 
-} // namespace gl
+} // namespace glbinding
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::Version & version);
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version);

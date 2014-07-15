@@ -2,7 +2,7 @@
 #include <glbinding/Version.h>
 
 
-namespace gl
+namespace glbinding
 {
 
 const std::set<Version> Version::s_validVersions = 
@@ -10,4 +10,4 @@ const std::set<Version> Version::s_validVersions =
     %s
 };
 
-} // namespace gl
+} // namespace glbinding

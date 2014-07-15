@@ -23,9 +23,6 @@ namespace gl%f
 namespace gl%f
 {
 
-using FunctionObjects = gl::FunctionObjects;
-
-
 %s
 
 } // namespace gl%f

@@ -9,7 +9,7 @@ struct ValueAdder;
 template <>
 struct ValueAdder<>
 {
-    static void add(std::vector<gl::AbstractValue*> &)
+    static void add(std::vector<glbinding::AbstractValue*> &)
     {
     }
 };
@@ -17,22 +17,22 @@ struct ValueAdder<>
 template <typename Argument, typename... Arguments>
 struct ValueAdder<Argument, Arguments...>
 {
-    static void add(std::vector<gl::AbstractValue*> & values, Argument value, Arguments... rest)
+    static void add(std::vector<glbinding::AbstractValue*> & values, Argument value, Arguments... rest)
     {
-        values.push_back(gl::createValue<Argument>(value));
+        values.push_back(glbinding::createValue<Argument>(value));
         ValueAdder<Arguments...>::add(values, std::forward<Arguments>(rest)...);
     }
 };
 
 template <typename... Arguments>
-void addValuesTo(std::vector<gl::AbstractValue*> & values, Arguments... arguments)
+void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments... arguments)
 {
     ValueAdder<Arguments...>::add(values, std::forward<Arguments>(arguments)...);
 }
 
 }
 
-namespace gl 
+namespace glbinding 
 {
 
 template <typename T>
@@ -56,9 +56,9 @@ AbstractValue * createValue(Argument argument)
 template <typename... Arguments>
 std::vector<AbstractValue*> createValues(Arguments... arguments)
 {
-    std::vector<gl::AbstractValue*> values;
+    std::vector<AbstractValue*> values;
     addValuesTo(values, std::forward<Arguments>(arguments)...);
     return values;
 }
 
-} // namespace gl
+} // namespace glbinding

@@ -1,6 +1,7 @@
 #include <glbinding/AbstractValue.h>
 
-namespace gl {
+namespace glbinding
+{
 
 AbstractValue::AbstractValue()
 {
@@ -10,4 +11,4 @@ AbstractValue::~AbstractValue()
 {
 }
 
-} // namespace gl
+} // namespace glbinding
