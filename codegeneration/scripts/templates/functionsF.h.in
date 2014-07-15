@@ -1,0 +1,31 @@
+#pragma once
+
+#include <glbinding/nogl.h>
+
+#include <glbinding/types.h>
+
+#include <glbinding/values.h>
+#include <glbinding/boolean.h>
+
+namespace gl%f
+{
+
+#include <glbinding/featured/types.inl>
+
+#include <glbinding/featured/values.inl>
+#include <glbinding/featured/boolean.inl>
+
+} // namespace gl%f
+
+
+#include <glbinding/FunctionObjects.h>
+
+namespace gl%f
+{
+
+using FunctionObjects = gl::FunctionObjects;
+
+
+%s
+
+} // namespace gl%f

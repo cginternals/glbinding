@@ -358,7 +358,7 @@ public:
     static Function<GLhandleARB, GLenum> CreateShaderObjectARB;
     static Function<GLuint, GLenum, const GLchar *> CreateShaderProgramEXT;
     static Function<GLuint, GLenum, GLsizei, const GLchar *const*> CreateShaderProgramv;
-    static Function<GLsync, struct _cl_context *, struct _cl_event *, GLbitfield> CreateSyncFromCLeventARB;
+    static Function<GLsync, _cl_context *, _cl_event *, GLbitfield> CreateSyncFromCLeventARB;
     static Function<void, GLenum> CullFace;
     static Function<void, GLenum, GLdouble *> CullParameterdvEXT;
     static Function<void, GLenum, GLfloat *> CullParameterfvEXT;

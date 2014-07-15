@@ -88,6 +88,10 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
         patchtree     = ET.parse(patchfile)
         patchregistry = patchtree.getroot()
 
+        print "patching types"
+        patch = parseTypes(patchregistry, api)
+        patchTypes(types, patch)
+
         print "patching commands"
         patch = parseCommands(patchregistry, features, extensions, api)
         patchCommands(commands, patch)
@@ -149,9 +153,17 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genRevision                  (revision,           sourcedir, "glrevision.h")
 
-    genFeatures                  (features,           includedir_featured, "gl?.h")
+    genExtensions                (extensions,         includedir, "extension.h")
 
     genBooleans                  (enums,              includedir, "boolean.h")
+    genBooleansForward           (enums,              includedir_featured, "boolean.inl")
+
+    genValues                    (enums,              includedir, "values.h")
+    genValuesForwards            (enums,              includedir_featured, "values.inl")
+
+    genTypes_h                   (types, bitfGroups,  includedir, "types.h") 
+    genTypesForward_h            (types, bitfGroups,  includedir_featured, "types.inl") 
+    genTypes_cpp                 (types,              sourcedir,  "types.cpp")  
 
     genBitfieldsAll              (enums,              includedir, "bitfield.h")
     genBitfieldsFeatureGrouped   (enums, features,    includedir_featured, "bitfield?.h")
@@ -159,19 +171,14 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genEnumsAll                  (enums,              includedir, "enum.h")
     genEnumsFeatureGrouped       (enums, features,    includedir_featured, "enum?.h")
 
-    genValues                    (enums,              includedir, "values.h")
-
-    genTypes_h                   (types, bitfGroups,  includedir, "types.h")  
-    genTypes_cpp                 (types,              sourcedir,  "types.cpp")  
-
-    genExtensions                (extensions,         includedir, "extension.h")
-
     genFunctionsAll              (commands,           includedir, "functions.h")
     genFunctionsFeatureGrouped   (commands, features, includedir_featured, "functions?.h")
 
     genFunctionObjects_h         (commands,           includedir, "FunctionObjects.h")
     genFunctionObjects_cpp       (commands,           sourcedir,  "FunctionObjects.cpp")
     genFunctionList              (commands,           sourcedir,  "FunctionObjects_Functions.cpp")
+
+    genFeatures                  (features,           includedir_featured, "gl?.h")
 
     genVersions                  (features,           sourcedir,  "Version_ValidVersions.cpp")
 

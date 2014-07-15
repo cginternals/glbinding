@@ -10,9 +10,10 @@ def genTest(features, outputdir, outputfile):
 
 	for f in features:
 		if f.api == "gl": # ToDo: probably seperate for all apis
-			featured_includes.append(featured_include.replace("?", versionBID(f, False)))
+			featured_includes.append(featured_include.replace("?", versionBID(f)))
 			if f.major > 3 or (f.major == 3 and f.minor >= 2):
 				featured_includes.append(featured_include.replace("?", versionBID(f, True)))
+			featured_includes.append(featured_include.replace("?", versionBID(f, False, True)))
 
 	with open(outputdir + outputfile, 'w') as file:
 		file.write(template(outputfile) % 

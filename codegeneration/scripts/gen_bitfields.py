@@ -57,34 +57,37 @@ def genBitfieldsFeatureGrouped(enums, features, outputdir, outputfile):
     # gen bitfields feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureBitfields(enums, f, outputdir, outputfile, False)
+            genFeatureBitfields(enums, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureBitfields(enums, f, outputdir, outputfile, True)
+            genFeatureBitfields(enums, f, outputdir, outputfile, False, True)
 
 
-def genFeatureBitfields(enums, feature, outputdir, outputfile, core):
+def genFeatureBitfields(enums, feature, outputdir, outputfile, core = False, ext = False):
+
+    if core and ext:
+        return 
 
     of_all = outputfile.replace("?", "F")
 
-    version = ""
-    if feature:
-        version = str(feature.major) + str(feature.minor) + ("core" if core else "")
+    version = versionBID(feature, core, ext)
 
     t = template(of_all).replace("%f", version)
     of = outputfile.replace("?", version)
 
     status(outputdir + of)
 
-    tgrouped = groupEnumsByType(enums)
+    tgrouped  = groupEnumsByType(enums)
 
-    pureBitfields    = [ b for b in tgrouped["GLbitfield"] if b.supported(feature, core) ]
+    pureBitfields    = [ b for b in tgrouped["GLbitfield"] if 
+      (not ext and b.supported(feature, core)) or (ext and not b.supported(feature, False)) ]
     groupedBitfields = groupEnumsByGroup(pureBitfields)
 
     usedBitfsByName = dict()
 
     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-        [ bitfieldImportDefinition(e, group, usedBitfsByName, feature) for e in values ])) 
-            for group, values in sorted(groupedBitfields.items()) ]
+      [ bitfieldImportDefinition(e, group, usedBitfsByName, feature) for e in values ])) 
+        for group, values in sorted(groupedBitfields.items()) ]
 
     usedBitfsByName.clear()
 

@@ -1,15 +1,29 @@
 #pragma once
 
 #include <glbinding/nogl.h>
-#include <glbinding/featured/gl40core.h>
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/types.h>
 
+#include <glbinding/values.h>
+#include <glbinding/boolean.h>
 
 namespace gl40core
 {
 
-using namespace gl;
+#include <glbinding/featured/types.inl>
+
+#include <glbinding/featured/values.inl>
+#include <glbinding/featured/boolean.inl>
+
+} // namespace gl40core
+
+
+#include <glbinding/FunctionObjects.h>
+
+namespace gl40core
+{
+
+using FunctionObjects = gl::FunctionObjects;
 
 
 inline void glActiveTexture(GLenum texture)

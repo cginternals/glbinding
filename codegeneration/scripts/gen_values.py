@@ -3,19 +3,33 @@ from classes.Enum import *
 
 
 def valueDefinition(enum):
-	return "static const %s %s = %s;" % (enum.type, enumBID(enum), enum.value)
 
-def genValues(enums, outputdir, outputfile):
-	status(outputdir + outputfile)
+    return "static const %s %s = %s;" % (enum.type, enumBID(enum), enum.value)
 
-	tgrouped = groupEnumsByType(enums)
-	del tgrouped["GLboolean"]
-	del tgrouped["GLenum"]
-	del tgrouped["GLbitfield"]
 
-	groups = []	
-	for t in sorted(tgrouped.keys()):
-		groups.append("\n".join([ valueDefinition(c) for c in tgrouped[t] ]))
+def genValuesForwards(enums, outputdir, outputfile):
 
-	with open(outputdir + outputfile, 'w') as file:
-		file.write(template(outputfile) % ("\n\n".join(groups)))
+    genValues(enums, outputdir, outputfile, True)
+
+
+def genValues(enums, outputdir, outputfile, forward = False):
+
+    of_all = outputfile.replace("?", "F")
+
+    t = template(of_all)
+    of = outputfile.replace("?", "")
+
+    status(outputdir + of)
+
+
+    tgrouped = groupEnumsByType(enums)
+    del tgrouped["GLboolean"]
+    del tgrouped["GLenum"]
+    del tgrouped["GLbitfield"]
+
+    groups = []    
+    for type in sorted(tgrouped.keys()):
+        groups.append("\n".join([ valueDefinition(c) for c in tgrouped[type] ]))
+
+    with open(outputdir + of, 'w') as file:
+        file.write(t % ("\n\n".join(groups)))

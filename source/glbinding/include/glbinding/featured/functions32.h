@@ -1,15 +1,29 @@
 #pragma once
 
 #include <glbinding/nogl.h>
-#include <glbinding/featured/gl32.h>
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/types.h>
 
+#include <glbinding/values.h>
+#include <glbinding/boolean.h>
 
 namespace gl32
 {
 
-using namespace gl;
+#include <glbinding/featured/types.inl>
+
+#include <glbinding/featured/values.inl>
+#include <glbinding/featured/boolean.inl>
+
+} // namespace gl32
+
+
+#include <glbinding/FunctionObjects.h>
+
+namespace gl32
+{
+
+using FunctionObjects = gl::FunctionObjects;
 
 
 inline void glAccum(GLenum op, GLfloat value)

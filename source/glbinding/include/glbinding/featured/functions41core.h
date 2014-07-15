@@ -1,15 +1,29 @@
 #pragma once
 
 #include <glbinding/nogl.h>
-#include <glbinding/featured/gl41core.h>
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/types.h>
 
+#include <glbinding/values.h>
+#include <glbinding/boolean.h>
 
 namespace gl41core
 {
 
-using namespace gl;
+#include <glbinding/featured/types.inl>
+
+#include <glbinding/featured/values.inl>
+#include <glbinding/featured/boolean.inl>
+
+} // namespace gl41core
+
+
+#include <glbinding/FunctionObjects.h>
+
+namespace gl41core
+{
+
+using FunctionObjects = gl::FunctionObjects;
 
 
 inline void glActiveShaderProgram(GLuint pipeline, GLuint program)

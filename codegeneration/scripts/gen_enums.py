@@ -62,18 +62,17 @@ def genEnumsFeatureGrouped(enums, features, outputdir, outputfile):
     # gen enums feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureEnums(enums, f, outputdir, outputfile, False)
+            genFeatureEnums(enums, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureEnums(enums, f, outputdir, outputfile, True)
+            genFeatureEnums(enums, f, outputdir, outputfile, False, True)
 
 
-def genFeatureEnums(enums, feature, outputdir, outputfile, core):
+def genFeatureEnums(enums, feature, outputdir, outputfile, core = False, ext = False):
 
     of_all = outputfile.replace("?", "F")
 
-    version = ""
-    if feature:
-        version = str(feature.major) + str(feature.minor) + ("core" if core else "")
+    version = versionBID(feature, core, ext)
 
     t = template(of_all).replace("%f", version)
     of = outputfile.replace("?", version)
@@ -82,15 +81,15 @@ def genFeatureEnums(enums, feature, outputdir, outputfile, core):
 
     tgrouped     = groupEnumsByType(enums)
 
-    pureEnums    = [ e for e in tgrouped["GLenum"] if e.supported(feature, core) ]
+    pureEnums    = [ e for e in tgrouped["GLenum"] if 
+        (not ext and e.supported(feature, core)) or (ext and not e.supported(feature, False)) ]
     groupedEnums = groupEnumsByGroup(pureEnums)
 
     usedEnumsByName = dict()
     
     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-      [ enumImportDefinition(e, group, usedEnumsByName, feature) 
-        for e in enums if e.supported(feature, core) ]))  
-      for group, enums in sorted(groupedEnums.items()) ]
+      [ enumImportDefinition(e, group, usedEnumsByName, feature) for e in enums ]))  
+        for group, enums in sorted(groupedEnums.items()) ]
 
     usedEnumsByName.clear()
 

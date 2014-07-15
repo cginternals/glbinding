@@ -36,26 +36,33 @@ def paramSignature(param, bid = ""):
 
 
 def functionTemplate(function):
+
     params = ", ".join([function.returntype] + [ paramSignature(p) for p in function.params ])
     return 'Function<%s> FunctionObjects::%s("%s");' % (params,
         functionBID(function)[2:], function.name)
 
+
 def functionDecl(function):
+
     params = ", ".join([function.returntype] + [ paramSignature(p) for p in function.params ])
     return tab + "static Function<%s> %s;" % (params, functionBID(function)[2:])
 
-def functionForward(function, feature, core):
-    params = ", ".join([paramSignature(p, versionBID(feature, core)) + " " + p.name for p in function.params])
+
+def functionForward(function, feature, version):
+
+    params = ", ".join([paramSignature(p, version) + " " + p.name for p in function.params])
     paramNames = ", ".join([(paramPass(p, feature)) for p in function.params])
 
     if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
         return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
-            versionBID(feature, core), function.returntype, functionBID(function)[2:], paramNames)
+            version, function.returntype, functionBID(function)[2:], paramNames)
     else:
         return functionForwardTemplate % (function.returntype, functionBID(function), params,
             functionBID(function)[2:], paramNames)
 
+
 def paramPass(param, feature):
+
     # this returns a string used for passing the param by its name to a function object.
     # if this is inside a featured function, the param will be cast from featured GLenum 
     # and GLbitfield to gl::GLenum and gl::GLbitfield, required for function object.
@@ -73,21 +80,27 @@ def paramPass(param, feature):
     else:
         return param.name
 
+
 def genFunctionObjects_h(commands, outputdir, outputfile):    
+
     status(outputdir + outputfile)
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % "\n".join(
             [ functionDecl(f) for f in commands ]))
 
+
 def genFunctionObjects_cpp(commands, outputdir, outputfile):    
+
     status(outputdir + outputfile)
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % "\n".join(
             [ functionTemplate(f) for f in commands ]))
 
+
 def genFunctionList(commands, outputdir, outputfile):
+
     status(outputdir + outputfile)
 
     with open(outputdir + outputfile, 'w') as file:
@@ -104,26 +117,31 @@ def genFunctionsFeatureGrouped(commands, features, outputdir, outputfile):
 
     # gen functions feature grouped
     for f in features:
-        if f.api == "gl":
-            genFeatureFunctions(commands, f, outputdir, outputfile, False)
+        if f.api == "gl": # ToDo: probably seperate for all apis
+            genFeatureFunctions(commands, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureFunctions(commands, f, outputdir, outputfile, True)
+            genFeatureFunctions(commands, f, outputdir, outputfile, False, True)
 
 
-def genFeatureFunctions(commands, feature, outputdir, outputfile, core):
+def genFeatureFunctions(commands, feature, outputdir, outputfile, core = False, ext = False):
 
-    of_all = outputfile.replace("?", "")
+    of_all = outputfile.replace("?", "F")
 
-    version = versionBID(feature, core)
+    version = versionBID(feature, core, ext)
+
     t = template(of_all).replace("%f", version)
-
     of = outputfile.replace("?", version)
 
     status(outputdir + of)
 
-    gl_include = "featured/" if feature else ""
-    using_namespace = "using namespace gl;\n\n\n" if feature else ""
+    pureCommands = [ c for c in commands if
+        (not ext and c.supported(feature, core)) or (ext and not c.supported(feature, False)) ]
 
     with open(outputdir + of, 'w') as file:
-        file.write(t % (gl_include, using_namespace, "\n".join(
-            [ functionForward(c, feature, core) for c in commands if c.supported(feature, core)])))
+        if not feature:
+            file.write(t % ("\n".join(
+                [ functionForward(c, feature, version) for c in pureCommands ])))
+        else:
+            file.write(t % ("\n".join(
+                [ functionForward(c, feature, version) for c in pureCommands ])))

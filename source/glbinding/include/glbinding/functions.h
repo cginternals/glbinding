@@ -1,7 +1,7 @@
 #pragma once
 
 #include <glbinding/nogl.h>
-#include <glbinding/gl.h>
+#include <glbinding/types.h>
 
 #include <glbinding/FunctionObjects.h>
 
@@ -1699,7 +1699,7 @@ inline GLuint glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar *c
     return FunctionObjects::CreateShaderProgramv(type, count, strings);
 }
 
-inline GLsync glCreateSyncFromCLeventARB(struct _cl_context * context, struct _cl_event * event, GLbitfield flags)
+inline GLsync glCreateSyncFromCLeventARB(_cl_context * context, _cl_event * event, GLbitfield flags)
 {
     return FunctionObjects::CreateSyncFromCLeventARB(context, event, flags);
 }

@@ -12,8 +12,14 @@
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
-
 using namespace gl32;
+
+
+using AbstractFunction = gl::AbstractFunction;
+using AbstractValue = gl::AbstractValue;
+using Meta = gl::Meta;
+using ContextInfo = gl::ContextInfo;
+using Version = gl::Version;
 
 
 void error(int errnum, const char * errmsg)

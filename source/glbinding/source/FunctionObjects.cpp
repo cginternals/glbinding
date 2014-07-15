@@ -367,7 +367,7 @@ Function<GLuint, GLenum> FunctionObjects::CreateShader("glCreateShader");
 Function<GLhandleARB, GLenum> FunctionObjects::CreateShaderObjectARB("glCreateShaderObjectARB");
 Function<GLuint, GLenum, const GLchar *> FunctionObjects::CreateShaderProgramEXT("glCreateShaderProgramEXT");
 Function<GLuint, GLenum, GLsizei, const GLchar *const*> FunctionObjects::CreateShaderProgramv("glCreateShaderProgramv");
-Function<GLsync, struct _cl_context *, struct _cl_event *, GLbitfield> FunctionObjects::CreateSyncFromCLeventARB("glCreateSyncFromCLeventARB");
+Function<GLsync, _cl_context *, _cl_event *, GLbitfield> FunctionObjects::CreateSyncFromCLeventARB("glCreateSyncFromCLeventARB");
 Function<void, GLenum> FunctionObjects::CullFace("glCullFace");
 Function<void, GLenum, GLdouble *> FunctionObjects::CullParameterdvEXT("glCullParameterdvEXT");
 Function<void, GLenum, GLfloat *> FunctionObjects::CullParameterfvEXT("glCullParameterfvEXT");

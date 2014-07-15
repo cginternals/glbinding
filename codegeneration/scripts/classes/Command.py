@@ -9,10 +9,14 @@ class Parameter:
     def __init__(self, xml):
 
         self.name = xml.find("name").text
+
         self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
         if self.name in exceptions:
             self.name += "_"
-            
+
+        if self.type.startswith("struct "):
+            self.type = self.type[7:]
+
         self.groupString = xml.attrib.get("group", None)
         
 
