@@ -2,8 +2,9 @@
 
 #include <glbinding/glbinding_api.h>
 
-namespace gl {
+namespace gl 
+{
 
-GLBINDING_API bool initialize();
+GLBINDING_API void initialize();
 
 } // namespace gl

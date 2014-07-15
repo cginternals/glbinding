@@ -1,0 +1,31 @@
+#pragma once
+
+#include <glbinding/glbinding_api.h>
+
+#include <glbinding/types.h>
+#include <glbinding/Function.h>
+
+
+namespace glbinding
+{
+
+class GLBINDING_API FunctionObjects
+{
+public:
+    inline static const std::vector<AbstractFunction *> & functions() { return s_functions; }
+
+    static void initialize();
+    static void initialize(int context);
+
+    inline static int context() { return s_context; }
+    static void setContext(int context);
+
+%s
+
+protected:
+    static const std::vector<AbstractFunction *> s_functions;
+
+    static int s_context;
+};
+
+} // namespace gl

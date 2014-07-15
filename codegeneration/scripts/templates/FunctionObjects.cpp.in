@@ -1,0 +1,37 @@
+
+#include <glbinding/FunctionObjects.h>
+
+#include <glbinding/bitfield.h>
+#include <glbinding/boolean.h>
+#include <glbinding/enum.h>
+#include <glbinding/values.h>
+
+
+using namespace gl;
+
+namespace glbinding
+{
+
+int FunctionObjects::s_context = 0;
+
+
+void FunctionObjects::initialize()
+{
+    initialize(s_context);
+}
+
+void FunctionObjects::initialize(const int context)
+{
+    for (AbstractFunction * function : functions())
+        function->initialize(context);
+}
+
+void FunctionObjects::setContext(int context)
+{
+    s_context = context;
+}
+
+
+%s
+
+} // namespace glbinding

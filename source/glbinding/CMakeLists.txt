@@ -30,10 +30,18 @@ set(libs
 #
 
 if (OPTION_BUILD_STATIC)
-    add_definitions("-DGLBINDING_STATIC")
+    add_definitions("-D${META_PROJECT_NAME_UPPER}_STATIC")
 else()
     add_definitions("-DGLBINDING_EXPORTS")
 endif()
+
+if (OPTION_STRINGS_BY_GL)
+    add_definitions("-DSTRINGS_BY_GL")
+endif()
+if (OPTION_GL_BY_STRINGS)
+    add_definitions("-DGL_BY_STRINGS")
+endif()
+
 
 #
 # Sources
@@ -44,53 +52,64 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
     ${include_path}/glbinding_api.h
-    
-    ${include_path}/constants.h
-    ${include_path}/glbinding.h
+
+    ${include_path}/gl.h
+    ${include_path}/nogl.h
+
+    ${include_path}/bitfield.h
+    ${include_path}/boolean.h
+    ${include_path}/enum.h
+    ${include_path}/extension.h
+    ${include_path}/functions.h
     ${include_path}/initialize.h
-    ${include_path}/GetProcAddress.h
-    ${include_path}/Function.h
-    ${include_path}/Function.hpp
-    ${include_path}/Extension.h
+    ${include_path}/types.h
+    ${include_path}/values.h
+
     ${include_path}/AbstractFunction.h
-    ${include_path}/meta.h
-    ${include_path}/noGL.h
     ${include_path}/AbstractValue.h
+    ${include_path}/Function.h
+    ${include_path}/FunctionObjects.h
+    ${include_path}/Meta.h
+    ${include_path}/ProcAddress.h
+    ${include_path}/ContextInfo.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
-    ${include_path}/type_integration.h
-    
-    # generated
-    ${include_path}/types.h
-    ${include_path}/enums.h
-    ${include_path}/bitfields.h
-    ${include_path}/special_values.h
-    ${include_path}/functions.h
-    ${include_path}/FunctionObjects.h
+    ${include_path}/Version.h
 )
+
+# add featured headers
+file(GLOB featured_includes ${include_path}/featured/*.h)
+list(APPEND api_includes ${featured_includes})
 
 set(sources
     ${source_path}/initialize.cpp
-    ${source_path}/GetProcAddress.cpp
-    ${source_path}/FunctionObjects.cpp
+    ${source_path}/types.cpp
+
     ${source_path}/AbstractFunction.cpp
-    ${source_path}/declarations.h
-    ${source_path}/meta.cpp
     ${source_path}/AbstractValue.cpp
-    ${source_path}/Value.cpp
-    ${source_path}/type_integration.cpp
-    
-    #generated
-    ${source_path}/functions.cpp
     ${source_path}/FunctionObjects.cpp
-    ${source_path}/function_list.cpp
-    ${source_path}/enum_to_name.cpp
-    ${source_path}/name_to_enum.cpp
-    ${source_path}/extension_to_name.cpp
-    ${source_path}/name_to_extension.cpp
-    ${source_path}/extension_core_versions.cpp
-    ${source_path}/function_to_extensions.cpp
-    ${source_path}/extension_to_functions.cpp
+    ${source_path}/FunctionObjects_Functions.cpp
+    ${source_path}/ProcAddress.cpp
+    ${source_path}/ContextInfo.cpp
+    ${source_path}/Value.cpp
+    ${source_path}/Version.cpp
+    ${source_path}/Version_ValidVersions.cpp
+
+    ${source_path}/Meta.cpp
+    ${source_path}/Meta_Maps.h
+    ${source_path}/Meta_BitfieldsByString.cpp
+    ${source_path}/Meta_BooleansByString.cpp
+    ${source_path}/Meta_EnumsByString.cpp
+    ${source_path}/Meta_ExtensionsByFunctionString.cpp
+    ${source_path}/Meta_ExtensionsByString.cpp
+    ${source_path}/Meta_FunctionStringsByExtension.cpp
+    ${source_path}/Meta_ReqVersionsByExtension.cpp
+    ${source_path}/Meta_StringsByBitfield.cpp
+    ${source_path}/Meta_StringsByBoolean.cpp
+    ${source_path}/Meta_StringsByEnum.cpp
+    ${source_path}/Meta_StringsByExtension.cpp
+
+    ${source_path}/test.cpp
 )
 
 # Group source files
@@ -105,11 +124,7 @@ source_group_by_path(${source_path} "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$"
 # Build library
 #
 
-if(OPTION_BUILD_STATIC)
-    add_library(${target} ${api_includes} ${sources})
-else()
-    add_library(${target} SHARED ${api_includes} ${sources})
-endif()
+add_library(${target} ${api_includes} ${sources})
 
 target_link_libraries(${target} ${libs} ${EXTRA_LIBS})
 

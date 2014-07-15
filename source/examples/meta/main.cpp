@@ -1,44 +1,58 @@
+
 #include <iostream>
 #include <algorithm>
+#include <set>
 
-#include <glbinding/meta.h>
+#include <glbinding/enum.h>
+#include <glbinding/extension.h>
 
-using namespace gl;
+#include <glbinding/Meta.h>
+#include <glbinding/Version.h>
 
-int main(int /*argc*/, char* /*argv*/[])
+
+using namespace gl; 
+using namespace glbinding;
+
+int main(int, char * [])
 {
-    std::cout << "Enums:" << std::endl;
 
-    auto enums = meta::allEnums();
-    std::vector<GLenum> enumVector(enums.begin(), enums.end());
-    std::sort(enumVector.begin(), enumVector.end());
+    // enlist gl revision
+    std::cout << std::endl << "REVISION" << std::endl;
+    std::cout << "gl.xml revision: " << Meta::glRevision() << std::endl;
 
+    // enlist all versions
+    std::cout << std::endl << "VERSIONS (" << Meta::versions().size() << ")" << std::endl;
 
-    for (GLenum e : enumVector)
+    for (Version v : Meta::versions())
+        std::cout << v.toString() << std::endl;
+
+    // enlist all enums
+    if (Meta::stringsByGL())
     {
-        std::string name = meta::getName(e);
+        std::cout << std::endl << "ENUMS (" << Meta::extensions().size() << ")" << std::endl;
 
-        std::cout << "0x" << std::hex << static_cast<unsigned int>(e) << " = " << name << std::endl;
+        for (GLenum e : Meta::enums()) // c++ 14 ...
+            std::cout << Meta::getString(e) << " (0x" << std::hex << static_cast<std::underlying_type<GLenum>::type>(e) << ")" << std::dec << std::endl;
+
+        std::cout << std::dec;
     }
+    else
+        std::cout << std::endl << "ENUMS cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
 
-    std::cout << "Extensions:" << std::endl;
-
-    for (Extension extension : meta::allExtensions())
+    // enlist all extensions
+    if (Meta::stringsByGL())
     {
-        auto name = meta::getName(extension);
-        auto pair = meta::coreVersionForExtension(extension);
+        std::cout << std::endl << "EXTENSIONS (" << Meta::extensions().size() << ")" << std::endl;
 
-        std::cout << "\t" << name;
-
-        if (pair.first>0)
+        for (GLextension e : Meta::extensions())
         {
-            std::cout << " (in core since " << (int)pair.first << "." << (int)pair.second << ")";
+            const Version v = Meta::getRequiringVersion(e);
+            std::cout << Meta::getString(e) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
         }
-
-        std::cout << std::endl;
     }
+    else
+        std::cout << std::endl << "EXTENSIONS cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
 
-    std::cout << std::endl;
 
 	return 0;
 }

@@ -1,9 +1,13 @@
+
 #include <glbinding/Value.h>
-#include <glbinding/meta.h>
 
 #include <sstream>
+#include <bitset>
 
-namespace {
+#include <glbinding/Meta.h>
+
+namespace 
+{
 
 std::string wrapString(const char * value)
 {
@@ -16,27 +20,47 @@ std::string wrapString(const char * value)
 
 }
 
-namespace gl {
+namespace glbinding 
+{
 
 template <>
-void Value<GLenum>::printOn(std::ostream & stream) const
+void Value<gl::GLenum>::printOn(std::ostream & stream) const
 {
-    std::string name = meta::getName(value);
-    stream.write(name.c_str(), name.size());
+    std::string name = Meta::getString(value);
+    stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
 }
 
 template <>
-void Value<const GLubyte *>::printOn(std::ostream & stream) const
+void Value<gl::GLbitfield>::printOn(std::ostream & stream) const
+{
+    /*std::string name = Meta::getString(value);
+    stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));*/
+    /*std::bitset<sizeof(unsigned)*4> bitset(static_cast<unsigned>(value));
+    stream << bitset;*/
+    std::stringstream ss;
+    ss << "0x" << std::hex << static_cast<unsigned>(value);
+    stream << ss.str();
+}
+
+template <>
+void Value<gl::GLboolean>::printOn(std::ostream & stream) const
+{
+    std::string name = Meta::getString(value);
+    stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
+}
+
+template <>
+void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const
 {
     std::string s = wrapString(reinterpret_cast<const char*>(value));
-    stream.write(s.c_str(), s.size());
+    stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
 }
 
 template <>
-void Value<const GLchar *>::printOn(std::ostream & stream) const
+void Value<const gl::GLchar *>::printOn(std::ostream & stream) const
 {
     std::string s = wrapString(reinterpret_cast<const char*>(value));
-    stream.write(s.c_str(), s.size());
+    stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
 }
 
-} // namespace gl
+} // namespace glbinding

@@ -35,23 +35,26 @@ set(libs
 )
 
 #
+# Compiler definitions
+#
+
+if (OPTION_BUILD_STATIC)
+    add_definitions("-DGLBINDING_STATIC")
+endif()
+
+#
 # Sources
 #
 
-set(headers
-    impl.h
-)
-
 set(sources
     main.cpp
-    impl.cpp
 )
 
 #
 # Build executable
 #
 
-add_executable(${target} ${headers} ${sources})
+add_executable(${target} ${sources})
 
 target_link_libraries(${target} ${libs})
 

@@ -1,0 +1,13 @@
+
+#include <glbinding/FunctionObjects.h>
+
+
+namespace glbinding 
+{
+
+const std::vector<AbstractFunction *> FunctionObjects::s_functions = 
+{
+    %s
+};
+
+} // namespace glbinding

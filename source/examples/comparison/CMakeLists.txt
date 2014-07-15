@@ -38,26 +38,26 @@ set(libs
 )
 
 #
+# Compiler definitions
+#
+
+if (OPTION_BUILD_STATIC)
+    add_definitions("-DGLBINDING_STATIC")
+endif()
+
+#
 # Sources
 #
 
-set(headers
-    impl.h
-    Timer.hpp
-)
-
 set(sources
     main.cpp
-    glbindingImpl.cpp
-    glewImpl.cpp
-    data.cpp
 )
 
 #
 # Build executable
 #
 
-add_executable(${target} ${headers} ${sources})
+add_executable(${target} ${sources})
 
 target_link_libraries(${target} ${libs})
 

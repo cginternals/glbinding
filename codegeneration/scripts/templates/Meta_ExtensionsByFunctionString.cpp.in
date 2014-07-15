@@ -1,0 +1,19 @@
+
+#include "Meta_Maps.h"
+
+#include <glbinding/extension.h>
+
+
+using namespace gl;
+
+namespace glbinding
+{
+
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString
+{
+#ifdef GL_BY_STRINGS
+    %s
+#endif
+};
+
+} // namespace glbinding

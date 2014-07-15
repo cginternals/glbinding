@@ -1,9 +1,14 @@
 #pragma once
 
-#include <glbinding/noGL.h>
+#include <glbinding/nogl.h>
+#include <glbinding/glbinding_api.h>
 
 #include <cstddef>
 #include <cstdint>
+
+#include <functional>
+#include <ostream>
+#include <string>
 
 #ifdef _MSC_VER
 #define GL_APIENTRY __stdcall
@@ -11,11 +16,14 @@
 #define GL_APIENTRY
 #endif
 
-namespace gl {
 
+namespace gl 
+{
+
+enum class GLextension : int;
 enum class GLenum : unsigned int;
-using GLboolean = unsigned char;
-using GLbitfield = unsigned int;
+enum class GLboolean : unsigned char;
+enum class GLbitfield : unsigned int;
 using GLvoid = void;
 using GLbyte = signed char;
 using GLshort = short;
@@ -60,5 +68,101 @@ using GLvdpauSurfaceNV = GLintptr;
 
 } // namespace gl
 
-#include <glbinding/type_integration.h>
 
+// Type Integrations
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLenum>
+{
+    hash<std::underlying_type<gl::GLenum>::type>::result_type operator()(const gl::GLenum & t) const
+    {
+        return hash<std::underlying_type<gl::GLenum>::type>()(static_cast<std::underlying_type<gl::GLenum>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value);
+
+
+GLBINDING_API gl::GLenum operator+(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+GLBINDING_API gl::GLenum operator-(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+
+
+GLBINDING_API bool operator==(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+GLBINDING_API bool operator!=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+GLBINDING_API bool operator< (const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+GLBINDING_API bool operator<=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+GLBINDING_API bool operator> (const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+GLBINDING_API bool operator>=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
+
+GLBINDING_API bool operator==(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
+GLBINDING_API bool operator!=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
+GLBINDING_API bool operator< (std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
+GLBINDING_API bool operator<=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
+GLBINDING_API bool operator> (std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
+GLBINDING_API bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLboolean>
+{
+    hash<std::underlying_type<gl::GLboolean>::type>::result_type operator()(const gl::GLboolean & t) const
+    {
+        return hash<std::underlying_type<gl::GLboolean>::type>()(static_cast<std::underlying_type<gl::GLboolean>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLbitfield>
+{
+    hash<std::underlying_type<gl::GLbitfield>::type>::result_type operator()(const gl::GLbitfield & t) const
+    {
+        return hash<std::underlying_type<gl::GLbitfield>::type>()(static_cast<std::underlying_type<gl::GLbitfield>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLbitfield & value);
+
+
+GLBINDING_API gl::GLbitfield operator|(const gl::GLbitfield & a, const gl::GLbitfield & b);
+GLBINDING_API gl::GLbitfield operator&(const gl::GLbitfield & a, const gl::GLbitfield & b);
+GLBINDING_API gl::GLbitfield operator^(const gl::GLbitfield & a, const gl::GLbitfield & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLextension>
+{
+    hash<std::underlying_type<gl::GLextension>::type>::result_type operator()(const gl::GLextension & t) const
+    {
+        return hash<std::underlying_type<gl::GLextension>::type>()(static_cast<std::underlying_type<gl::GLextension>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);

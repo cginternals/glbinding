@@ -1,0 +1,3 @@
+
+using GLextension = gl::GLextension;
+%s

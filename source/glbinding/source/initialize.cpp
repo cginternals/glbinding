@@ -1,23 +1,15 @@
+
 #include <glbinding/initialize.h>
 
-#include <glbinding/glbinding.h>
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/functions.h>
+#include <glbinding/FunctionObjects.h>
 
-namespace {
-    bool initialized = false;
-}
 
-namespace gl {
-
-bool initialize()
+namespace gl 
 {
-    if (initialized)
-    {
-        return false;
-    }
 
-    AbstractFunction::initializeFunctions(0);
+void initialize()
+{
+    glbinding::FunctionObjects::initialize();
 
     /*AbstractFunction::enableCallbacksForAllExcept({ "glGetError" });
     AbstractFunction::setBeforeCallback([](const AbstractFunction & f) {
@@ -30,10 +22,6 @@ bool initialize()
             std::cout << "Error!" << std::endl;
         }
     });*/
-
-    initialized = true;
-
-    return true;
 }
 
 } // namespace gl

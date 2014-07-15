@@ -2,11 +2,13 @@
 
 #include <glbinding/AbstractFunction.h>
 
-namespace {
-template <typename ReturnType, typename... Arguments> struct FunctionHelper;
+namespace 
+{
+    template <typename ReturnType, typename... Arguments> struct FunctionHelper;
 }
 
-namespace gl {
+namespace glbinding 
+{
 
 template <typename ReturnType, typename... Arguments>
 class Function : public AbstractFunction
@@ -20,6 +22,6 @@ public:
     ReturnType operator()(Arguments... arguments);
 };
 
-} // namespace gl
+} // namespace glbinding
 
 #include <glbinding/Function.hpp>

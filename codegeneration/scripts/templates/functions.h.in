@@ -1,0 +1,14 @@
+#pragma once
+
+#include <glbinding/nogl.h>
+#include <glbinding/types.h>
+
+#include <glbinding/FunctionObjects.h>
+
+
+namespace gl
+{
+
+%s
+
+} // namespace gl
