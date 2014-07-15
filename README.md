@@ -1,6 +1,8 @@
 OpenGL C++ Binding
 ====
 
+ToDo: Renvew 
+
 Some first measurements (glbinding vs. glew):
 
  * glewInit(): 4.93557 ms
