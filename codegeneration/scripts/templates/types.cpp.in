@@ -1,5 +1,5 @@
 
-#include <glbinding/types.h>
+#include <glbinding/%a/types.h>
 
 #include <glbinding/Meta.h>
 

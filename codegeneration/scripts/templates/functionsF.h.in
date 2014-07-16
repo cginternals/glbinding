@@ -1,28 +1,28 @@
 #pragma once
 
-#include <glbinding/nogl.h>
+#include <glbinding/%a/nogl.h>
 
-#include <glbinding/types.h>
+#include <glbinding/%a/types.h>
 
-#include <glbinding/values.h>
-#include <glbinding/boolean.h>
+#include <glbinding/%a/values.h>
+#include <glbinding/%a/boolean.h>
 
-namespace gl%f
+namespace %a%f
 {
 
-#include <glbinding/featured/types.inl>
+#include <glbinding/%a/types.inl>
 
-#include <glbinding/featured/values.inl>
-#include <glbinding/featured/boolean.inl>
+#include <glbinding/%a/values.inl>
+#include <glbinding/%a/boolean.inl>
 
-} // namespace gl%f
+} // namespace %a%f
 
 
 #include <glbinding/FunctionObjects.h>
 
-namespace gl%f
+namespace %a%f
 {
 
 %s
 
-} // namespace gl%f
+} // namespace %a%f

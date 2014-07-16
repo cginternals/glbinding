@@ -1,10 +1,10 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/bitfield.h>
+#include <glbinding/gl/bitfield.h>
 
 
-using namespace gl;
+using namespace gl; // ToDo: multiple APIs?
 
 namespace glbinding
 {

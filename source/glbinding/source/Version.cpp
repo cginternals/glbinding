@@ -15,7 +15,7 @@ Version::Version()
 {
 }
 
-Version::Version(const gl::GLint majorVersion, const gl::GLint minorVersion)
+Version::Version(const int majorVersion, const int minorVersion)
 : m_major(majorVersion)
 , m_minor(minorVersion)
 {

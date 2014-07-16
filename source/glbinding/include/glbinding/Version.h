@@ -7,8 +7,6 @@
 #include <set>
 #include <utility>
 
-#include <glbinding/types.h>
-
 
 namespace glbinding
 {
@@ -17,7 +15,7 @@ class GLBINDING_API Version
 {
 public:
     Version();
-    Version(gl::GLint majorVersion, gl::GLint minorVersion);
+    Version(int majorVersion, int minorVersion);
 
     bool operator< (const Version & version) const;
     bool operator> (const Version & version) const;
@@ -40,8 +38,8 @@ public:
     static const std::set<Version> & versions();
 
 public:
-    gl::GLint m_major;
-    gl::GLint m_minor;
+    int m_major;
+    int m_minor;
 
 protected:
     static const std::set<Version> s_validVersions;

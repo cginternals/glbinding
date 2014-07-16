@@ -43,9 +43,9 @@ def functionTemplate(function):
         functionBID(function)[2:], function.name)
 
 
-def functionDecl(function):
+def functionDecl(api, function):
 
-    params = ", ".join([namespacify(function.returntype, "gl")] + [ namespacify(paramSignature(p), "gl") for p in function.params ])
+    params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p), api) for p in function.params ])
     return tab + "static Function<%s> %s;" % (params, functionBID(function)[2:])
 
 
@@ -87,54 +87,64 @@ def paramPass(param):
 
 def genFunctionObjects_h(commands, outputdir, outputfile):    
 
-    status(outputdir + outputfile)
+    of = outputfile
+    t = template(of)
 
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % "\n".join(
-            [ functionDecl(f) for f in commands ]))
+    status(outputdir + of)
+
+    with open(outputdir + of, 'w') as file:
+        file.write(t % "\n".join(
+            # ToDo: multiple APIs
+            [ functionDecl("gl", f) for f in commands ]))
 
 
 def genFunctionObjects_cpp(commands, outputdir, outputfile):    
 
-    status(outputdir + outputfile)
+    of = outputfile
+    t = template(of)
 
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % "\n".join(
+    status(outputdir + of)
+
+    with open(outputdir + of, 'w') as file:
+        file.write(t % "\n".join(
             [ functionTemplate(f) for f in commands ]))
 
 
 def genFunctionList(commands, outputdir, outputfile):
 
-    status(outputdir + outputfile)
+    of = outputfile
+    t = template(of)
 
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % ",\n    ".join(
+    status(outputdir + of)
+
+    with open(outputdir + of, 'w') as file:
+        file.write(t % ",\n    ".join(
             [ "&FunctionObjects::"+ functionBID(f)[2:] for f in commands ]))
 
 
-def genFunctionsAll(commands, outputdir, outputfile):
+def genFunctionsAll(api, commands, outputdir, outputfile):
 
-    genFeatureFunctions(commands, None, outputdir, outputfile, None)
+    genFeatureFunctions(api, commands, None, outputdir, outputfile, None)
 
 
-def genFunctionsFeatureGrouped(commands, features, outputdir, outputfile):
+def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
 
     # gen functions feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureFunctions(commands, f, outputdir, outputfile)
+            genFeatureFunctions(api, commands, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureFunctions(commands, f, outputdir, outputfile, True)
-            genFeatureFunctions(commands, f, outputdir, outputfile, False, True)
+                genFeatureFunctions(api, commands, f, outputdir, outputfile, True)
+            genFeatureFunctions(api, commands, f, outputdir, outputfile, False, True)
 
 
-def genFeatureFunctions(commands, feature, outputdir, outputfile, core = False, ext = False):
+def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = False, ext = False):
 
     of_all = outputfile.replace("?", "F")
 
     version = versionBID(feature, core, ext)
 
-    t = template(of_all).replace("%f", version)
+    t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
 
     status(outputdir + of)

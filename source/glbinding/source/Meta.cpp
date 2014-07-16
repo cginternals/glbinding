@@ -4,11 +4,12 @@
 #include <sstream>
 #include <unordered_map>
 
-#include <glbinding/bitfield.h>
-#include <glbinding/boolean.h>
-#include <glbinding/enum.h>
+#include <glbinding/gl/bitfield.h>
+#include <glbinding/gl/boolean.h>
+#include <glbinding/gl/enum.h>
+#include <glbinding/gl/extension.h>
 
-#include <glbinding/extension.h>
+// ToDo: multiple APIs
 
 #include <glbinding/Version.h>
 

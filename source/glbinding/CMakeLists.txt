@@ -53,17 +53,17 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 set(api_includes
     ${include_path}/glbinding_api.h
 
-    ${include_path}/gl.h
-    ${include_path}/nogl.h
+    ${include_path}/gl/gl.h
+    ${include_path}/gl/nogl.h
 
-    ${include_path}/bitfield.h
-    ${include_path}/boolean.h
-    ${include_path}/enum.h
-    ${include_path}/extension.h
-    ${include_path}/functions.h
-    ${include_path}/initialize.h
-    ${include_path}/types.h
-    ${include_path}/values.h
+    ${include_path}/gl/bitfield.h
+    ${include_path}/gl/boolean.h
+    ${include_path}/gl/enum.h
+    ${include_path}/gl/extension.h
+    ${include_path}/gl/functions.h
+    ${include_path}/gl/initialize.h
+    ${include_path}/gl/types.h
+    ${include_path}/gl/values.h
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
@@ -78,12 +78,13 @@ set(api_includes
 )
 
 # add featured headers
-file(GLOB featured_includes ${include_path}/featured/*.h)
+file(GLOB featured_includes ${include_path}/gl/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
-    ${source_path}/initialize.cpp
-    ${source_path}/types.cpp
+    ${source_path}/gl/initialize.cpp
+    ${source_path}/gl/types.cpp
+    ${source_path}/gl/test.cpp
 
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
@@ -108,8 +109,6 @@ set(sources
     ${source_path}/Meta_StringsByBoolean.cpp
     ${source_path}/Meta_StringsByEnum.cpp
     ${source_path}/Meta_StringsByExtension.cpp
-
-    ${source_path}/test.cpp
 )
 
 # Group source files

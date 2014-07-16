@@ -1,14 +1,14 @@
 #pragma once
 
-#include <glbinding/nogl.h>
-#include <glbinding/types.h>
+#include <glbinding/%a/nogl.h>
+#include <glbinding/%a/types.h>
 
 #include <glbinding/FunctionObjects.h>
 
 
-namespace gl
+namespace %a
 {
 
 %s
 
-} // namespace gl
+} // namespace %a

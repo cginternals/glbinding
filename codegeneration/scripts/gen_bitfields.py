@@ -20,9 +20,9 @@ def bitfieldDefinition(enum, group, maxlen, usedBitfsByName):
         return "//  %s %s= %s, // reuse %s" % (enumBID(enum), spaces, enum.value, reuse)
 
 
-def bitfieldImportDefinition(enum, group, usedBitfsByName, feature):
+def bitfieldImportDefinition(api, enum, group, usedBitfsByName, feature):
 
-    qualifier = "GLbitfield" if feature is None else "gl::GLbitfield"
+    qualifier = "GLbitfield" if feature is None else api + "::GLbitfield"
 
     if enum.name not in usedBitfsByName:
         usedBitfsByName[enum.name] = group
@@ -47,23 +47,23 @@ def bitfieldGroup(group, enums, usedBitfsByName):
         [ bitfieldDefinition(e, group, maxlen, usedBitfsByName) for e in enums ]))
 
 
-def genBitfieldsAll(enums, outputdir, outputfile):
+def genBitfieldsAll(api, enums, outputdir, outputfile):
 
-    genFeatureBitfields(enums, None, outputdir, outputfile, None)
+    genFeatureBitfields(api, enums, None, outputdir, outputfile, None)
 
 
-def genBitfieldsFeatureGrouped(enums, features, outputdir, outputfile):
+def genBitfieldsFeatureGrouped(api, enums, features, outputdir, outputfile):
 
     # gen bitfields feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureBitfields(enums, f, outputdir, outputfile)
+            genFeatureBitfields(api, enums, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureBitfields(enums, f, outputdir, outputfile, True)
-            genFeatureBitfields(enums, f, outputdir, outputfile, False, True)
+                genFeatureBitfields(api, enums, f, outputdir, outputfile, True)
+            genFeatureBitfields(api, enums, f, outputdir, outputfile, False, True)
 
 
-def genFeatureBitfields(enums, feature, outputdir, outputfile, core = False, ext = False):
+def genFeatureBitfields(api, enums, feature, outputdir, outputfile, core = False, ext = False):
 
     if core and ext:
         return 
@@ -72,7 +72,7 @@ def genFeatureBitfields(enums, feature, outputdir, outputfile, core = False, ext
 
     version = versionBID(feature, core, ext)
 
-    t = template(of_all).replace("%f", version)
+    t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
 
     status(outputdir + of)
@@ -86,7 +86,7 @@ def genFeatureBitfields(enums, feature, outputdir, outputfile, core = False, ext
     usedBitfsByName = dict()
 
     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-      [ bitfieldImportDefinition(e, group, usedBitfsByName, feature) for e in values ])) 
+      [ bitfieldImportDefinition(api, e, group, usedBitfsByName, feature) for e in values ])) 
         for group, values in sorted(groupedBitfields.items()) ]
 
     usedBitfsByName.clear()

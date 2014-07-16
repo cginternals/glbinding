@@ -1,10 +1,10 @@
 
 #include <glbinding/ContextInfo.h>
 
-#include <glbinding/featured/gl30.h>
-
 #include <glbinding/Meta.h>
 #include <glbinding/Version.h>
+
+#include <glbinding/gl/gl30.h>
 
 
 namespace glbinding

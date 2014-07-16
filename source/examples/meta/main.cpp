@@ -3,11 +3,11 @@
 #include <algorithm>
 #include <set>
 
-#include <glbinding/enum.h>
-#include <glbinding/extension.h>
-
 #include <glbinding/Meta.h>
 #include <glbinding/Version.h>
+
+#include <glbinding/gl/enum.h>
+#include <glbinding/gl/extension.h>
 
 
 using namespace gl; 

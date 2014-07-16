@@ -1,10 +1,10 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/enum.h>
+#include <glbinding/gl/enum.h>
 
 
-using namespace gl;
+using namespace gl; // ToDo: multiple APIs?
 
 namespace glbinding
 {

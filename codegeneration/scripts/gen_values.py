@@ -7,16 +7,16 @@ def valueDefinition(enum):
     return "static const %s %s = %s;" % (enum.type, enumBID(enum), enum.value)
 
 
-def genValuesForwards(enums, outputdir, outputfile):
+def genValuesForwards(api, enums, outputdir, outputfile):
 
-    genValues(enums, outputdir, outputfile, True)
+    genValues(api, enums, outputdir, outputfile, True)
 
 
-def genValues(enums, outputdir, outputfile, forward = False):
+def genValues(api, enums, outputdir, outputfile, forward = False):
 
     of_all = outputfile.replace("?", "F")
 
-    t = template(of_all)
+    t = template(of_all).replace("%a", api)
     of = outputfile.replace("?", "")
 
     status(outputdir + of)

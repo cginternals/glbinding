@@ -1,7 +1,7 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/boolean.h>
+#include <glbinding/gl/boolean.h>
 
 
 using namespace gl;

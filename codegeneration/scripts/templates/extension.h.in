@@ -1,9 +1,9 @@
 #pragma once
 
-#include <glbinding/nogl.h>
+#include <glbinding/%a/nogl.h>
 
 
-namespace gl
+namespace %a
 {
 
 enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
@@ -12,5 +12,5 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     %s
 };
 
-} // namespace gl
+} // namespace %a
 

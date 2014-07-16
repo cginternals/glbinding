@@ -27,9 +27,9 @@ def enumDefinition(group, enum, maxlen, usedEnumsByName):
         return "//  %s %s= %s, // reuse %s" % (enumBID(enum), spaces, castEnumValue(enum.value), reuse)
 
 
-def enumImportDefinition(enum, group, usedEnumsByName, feature):
+def enumImportDefinition(api, enum, group, usedEnumsByName, feature):
 
-    qualifier = "GLenum" if feature is None else "gl::GLenum"
+    qualifier = "GLenum" if feature is None else api + "::GLenum"
 
     if enum.name not in usedEnumsByName:
         usedEnumsByName[enum.name] = group
@@ -52,29 +52,29 @@ def enumGroup(group, enums, usedEnumsByName):
         [ enumDefinition(group, e, maxlen, usedEnumsByName) for e in sorted(enums, key = lambda e: e.value) ]))
 
 
-def genEnumsAll(enums, outputdir, outputfile):
+def genEnumsAll(api, enums, outputdir, outputfile):
 
-    genFeatureEnums(enums, None, outputdir, outputfile, None)
+    genFeatureEnums(api, enums, None, outputdir, outputfile, None)
 
 
-def genEnumsFeatureGrouped(enums, features, outputdir, outputfile):
+def genEnumsFeatureGrouped(api, enums, features, outputdir, outputfile):
 
     # gen enums feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureEnums(enums, f, outputdir, outputfile)
+            genFeatureEnums(api, enums, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureEnums(enums, f, outputdir, outputfile, True)
-            genFeatureEnums(enums, f, outputdir, outputfile, False, True)
+                genFeatureEnums(api, enums, f, outputdir, outputfile, True)
+            genFeatureEnums(api, enums, f, outputdir, outputfile, False, True)
 
 
-def genFeatureEnums(enums, feature, outputdir, outputfile, core = False, ext = False):
+def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ext = False):
 
     of_all = outputfile.replace("?", "F")
 
     version = versionBID(feature, core, ext)
 
-    t = template(of_all).replace("%f", version)
+    t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
 
     status(outputdir + of)
@@ -88,7 +88,7 @@ def genFeatureEnums(enums, feature, outputdir, outputfile, core = False, ext = F
     usedEnumsByName = dict()
     
     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-      [ enumImportDefinition(e, group, usedEnumsByName, feature) for e in enums ]))  
+      [ enumImportDefinition(api, e, group, usedEnumsByName, feature) for e in enums ]))  
         for group, enums in sorted(groupedEnums.items()) ]
 
     usedEnumsByName.clear()

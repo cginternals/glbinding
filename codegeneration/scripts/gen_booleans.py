@@ -17,16 +17,16 @@ def forwardBoolean(enum):
     return "static const GLboolean %s = GLboolean::%s;" % (enumBID(enum), enumBID(enum))
 
 
-def genBooleansForward(enums, outputdir, outputfile):
+def genBooleansForward(api, enums, outputdir, outputfile):
 
-    genBooleans(enums, outputdir, outputfile, True)
+    genBooleans(api, enums, outputdir, outputfile, True)
 
 
-def genBooleans(enums, outputdir, outputfile, forward = False):
+def genBooleans(api, enums, outputdir, outputfile, forward = False):
 
     of_all = outputfile.replace("?", "F")
 
-    t = template(of_all)
+    t = template(of_all).replace("%a", api)
     of = outputfile.replace("?", "")
 
     status(outputdir + of)

@@ -5,12 +5,12 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <glbinding/featured/gl32.h>
-
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Meta.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
+
+#include <glbinding/gl/gl32.h>
 
 
 using namespace gl32;

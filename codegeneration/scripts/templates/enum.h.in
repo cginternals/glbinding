@@ -1,10 +1,10 @@
 #pragma once
 
-#include <glbinding/nogl.h>
-#include <glbinding/types.h>
+#include <glbinding/%a/nogl.h>
+#include <glbinding/%a/types.h>
 
 
-namespace gl
+namespace %a
 {
 
 enum class GLenum : unsigned int
@@ -16,4 +16,4 @@ enum class GLenum : unsigned int
 
 %s
 
-} // namespace gl
+} // namespace %a

@@ -6,8 +6,8 @@
 #include <vector>
 #include <set>
 
-#include <glbinding/types.h>
-#include <glbinding/extension.h>
+#include <glbinding/gl/types.h>
+#include <glbinding/gl/extension.h>
 
 
 namespace glbinding

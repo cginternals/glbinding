@@ -5,7 +5,7 @@
 #include <vector>
 
 #include <glbinding/AbstractValue.h>
-#include <glbinding/types.h>
+#include <glbinding/gl/types.h>
 
 namespace glbinding 
 {

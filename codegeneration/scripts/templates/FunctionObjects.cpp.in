@@ -1,13 +1,13 @@
 
 #include <glbinding/FunctionObjects.h>
 
-#include <glbinding/bitfield.h>
-#include <glbinding/boolean.h>
-#include <glbinding/enum.h>
-#include <glbinding/values.h>
+#include <glbinding/gl/bitfield.h>
+#include <glbinding/gl/boolean.h>
+#include <glbinding/gl/enum.h>
+#include <glbinding/gl/values.h>
 
 
-using namespace gl;
+using namespace gl; // ToDo: multiple APIs?
 
 namespace glbinding
 {

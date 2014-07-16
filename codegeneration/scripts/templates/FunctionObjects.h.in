@@ -2,7 +2,7 @@
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/types.h>
+#include <glbinding/gl/types.h>
 #include <glbinding/Function.h>
 
 
@@ -28,4 +28,4 @@ protected:
     static int s_context;
 };
 
-} // namespace gl
+} // namespace glbinding

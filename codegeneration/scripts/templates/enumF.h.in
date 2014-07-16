@@ -1,16 +1,16 @@
 #pragma once
 
-#include <glbinding/nogl.h>
-#include <glbinding/types.h>
+#include <glbinding/%a/nogl.h>
+#include <glbinding/%a/types.h>
 
-#include <glbinding/enum.h>
+#include <glbinding/%a/enum.h>
 
 
-namespace gl%f
+namespace %a%f
 {
 
 // import enums to namespace
 
 %s
 
-} // namespace gl%f
+} // namespace %a%f

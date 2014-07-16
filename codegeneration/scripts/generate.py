@@ -148,37 +148,45 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print "GENERATING"
 
     includedir = targetdir + "/include/glbinding/"
-    includedir_featured = includedir + "featured/"
     sourcedir  = targetdir + "/source/"
 
-    genRevision                  (revision,           sourcedir, "glrevision.h")
+    includedir_api = includedir + api + "/"
+    sourcedir_api  = sourcedir  + api + "/"
 
-    genExtensions                (extensions,         includedir, "extension.h")
+    # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
-    genBooleans                  (enums,              includedir, "boolean.h")
-    genBooleansForward           (enums,              includedir_featured, "boolean.inl")
+    genRevision                  (     revision,           sourcedir,      "glrevision.h")
 
-    genValues                    (enums,              includedir, "values.h")
-    genValuesForwards            (enums,              includedir_featured, "values.inl")
+    genExtensions                (api, extensions,         includedir_api, "extension.h")
 
-    genTypes_h                   (types, bitfGroups,  includedir, "types.h") 
-    genTypesForward_h            (types, bitfGroups,  includedir_featured, "types.inl") 
-    genTypes_cpp                 (types,              sourcedir,  "types.cpp")  
+    genBooleans                  (api, enums,              includedir_api, "boolean.h")
+    genBooleansForward           (api, enums,              includedir_api, "boolean.inl")
 
-    genBitfieldsAll              (enums,              includedir, "bitfield.h")
-    genBitfieldsFeatureGrouped   (enums, features,    includedir_featured, "bitfield?.h")
+    genValues                    (api, enums,              includedir_api, "values.h")
+    genValuesForwards            (api, enums,              includedir_api, "values.inl")
 
-    genEnumsAll                  (enums,              includedir, "enum.h")
-    genEnumsFeatureGrouped       (enums, features,    includedir_featured, "enum?.h")
+    genTypes_h                   (api, types, bitfGroups,  includedir_api, "types.h") 
+    genTypesForward_h            (api, types, bitfGroups,  includedir_api, "types.inl") 
+    genTypes_cpp                 (api, types,              sourcedir_api,  "types.cpp")  
 
-    genFunctionsAll              (commands,           includedir, "functions.h")
-    genFunctionsFeatureGrouped   (commands, features, includedir_featured, "functions?.h")
+    genBitfieldsAll              (api, enums,              includedir_api, "bitfield.h")
+    genBitfieldsFeatureGrouped   (api, enums, features,    includedir_api, "bitfield?.h")
+
+    genEnumsAll                  (api, enums,              includedir_api, "enum.h")
+    genEnumsFeatureGrouped       (api, enums, features,    includedir_api, "enum?.h")
+
+    genFunctionsAll              (api, commands,           includedir_api, "functions.h")
+    genFunctionsFeatureGrouped   (api, commands, features, includedir_api, "functions?.h")
+
+    genFeatures                  (api, features,           includedir_api, "gl?.h")
+
+    genTest                      (api, features,           sourcedir_api,  "test.cpp")
+
+    # Generate GLBINDING namespace classes
 
     genFunctionObjects_h         (commands,           includedir, "FunctionObjects.h")
     genFunctionObjects_cpp       (commands,           sourcedir,  "FunctionObjects.cpp")
     genFunctionList              (commands,           sourcedir,  "FunctionObjects_Functions.cpp")
-
-    genFeatures                  (features,           includedir_featured, "gl?.h")
 
     genVersions                  (features,           sourcedir,  "Version_ValidVersions.cpp")
 
@@ -198,7 +206,6 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFunctionStringsByExtension(extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
     genExtensionsByFunctionString(extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
 
-    genTest                      (features,           sourcedir,  "test.cpp")
 
     print ""
 
