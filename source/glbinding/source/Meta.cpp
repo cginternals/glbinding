@@ -144,7 +144,7 @@ const std::set<std::string> & Meta::getRequiredFunctions(const GLextension exten
         static const std::set<std::string> none;
         return none;
     }
-    return i->second;
+	return std::set<std::string>(i->second.begin(), i->second.end());
 }
 
 const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & function)
