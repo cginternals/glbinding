@@ -28,7 +28,7 @@ extern const std::unordered_map<std::string, gl::GLextension> Meta_ExtensionsByS
 extern const std::unordered_map<gl::GLextension, std::string> Meta_StringsByExtension;
 
 extern const std::unordered_map<std::string, std::set<gl::GLextension>> Meta_ExtensionsByFunctionString;
-extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
+extern const std::unordered_map<gl::GLextension, std::vector<std::string>> Meta_FunctionStringsByExtension;
 
 extern const std::unordered_map<gl::GLextension, Version> Meta_ReqVersionsByExtension;
 
