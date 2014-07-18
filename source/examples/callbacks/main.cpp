@@ -157,8 +157,7 @@ int main(int, char * [])
     glViewport(0, 0, 320, 240);
 
     // ToDo: operators here...
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClear(GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glUseProgram(program);
 

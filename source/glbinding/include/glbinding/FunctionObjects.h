@@ -145,13 +145,13 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum> BlendFunci;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum> BlendFunciARB;
     static Function<void, gl::GLenum, gl::GLint> BlendParameteriNV;
-    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLbitfield, gl::GLenum> BlitFramebuffer;
-    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLbitfield, gl::GLenum> BlitFramebufferEXT;
+    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebuffer;
+    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferEXT;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64EXT, gl::GLsizeiptr> BufferAddressRangeNV;
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLenum> BufferData;
     static Function<void, gl::GLenum, gl::GLsizeiptrARB, const void *, gl::GLenum> BufferDataARB;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> BufferParameteriAPPLE;
-    static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLbitfield> BufferStorage;
+    static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> BufferStorage;
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData;
     static Function<void, gl::GLenum, gl::GLintptrARB, gl::GLsizeiptrARB, const void *> BufferSubDataARB;
     static Function<void, gl::GLuint> CallList;
@@ -161,7 +161,7 @@ public:
     static Function<gl::GLenum, gl::GLuint, gl::GLenum> CheckNamedFramebufferStatusEXT;
     static Function<void, gl::GLenum, gl::GLenum> ClampColor;
     static Function<void, gl::GLenum, gl::GLenum> ClampColorARB;
-    static Function<void, gl::GLbitfield> Clear;
+    static Function<void, gl::ClearBufferMask> Clear;
     static Function<void, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> ClearAccum;
     static Function<void, gl::GLfixed, gl::GLfixed, gl::GLfixed, gl::GLfixed> ClearAccumxOES;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum, const void *> ClearBufferData;
@@ -188,8 +188,8 @@ public:
     static Function<void, gl::GLenum> ClientActiveTexture;
     static Function<void, gl::GLenum> ClientActiveTextureARB;
     static Function<void, gl::GLenum> ClientActiveVertexStreamATI;
-    static Function<void, gl::GLbitfield> ClientAttribDefaultEXT;
-    static Function<gl::GLenum, gl::GLsync, gl::GLbitfield, gl::GLuint64> ClientWaitSync;
+    static Function<void, gl::ClientAttribMask> ClientAttribDefaultEXT;
+    static Function<gl::GLenum, gl::GLsync, gl::SyncObjectMask, gl::GLuint64> ClientWaitSync;
     static Function<void, gl::GLenum, const gl::GLdouble *> ClipPlane;
     static Function<void, gl::GLenum, const gl::GLfloat *> ClipPlanefOES;
     static Function<void, gl::GLenum, const gl::GLfixed *> ClipPlanexOES;
@@ -358,7 +358,7 @@ public:
     static Function<gl::GLhandleARB, gl::GLenum> CreateShaderObjectARB;
     static Function<gl::GLuint, gl::GLenum, const gl::GLchar *> CreateShaderProgramEXT;
     static Function<gl::GLuint, gl::GLenum, gl::GLsizei, const gl::GLchar *const*> CreateShaderProgramv;
-    static Function<gl::GLsync, gl::_cl_context *, gl::_cl_event *, gl::GLbitfield> CreateSyncFromCLeventARB;
+    static Function<gl::GLsync, gl::_cl_context *, gl::_cl_event *, gl::UnusedMask> CreateSyncFromCLeventARB;
     static Function<void, gl::GLenum> CullFace;
     static Function<void, gl::GLenum, gl::GLdouble *> CullParameterdvEXT;
     static Function<void, gl::GLenum, gl::GLfloat *> CullParameterfvEXT;
@@ -372,7 +372,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizei, const gl::GLchar *> DebugMessageInsert;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLchar *> DebugMessageInsertAMD;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizei, const gl::GLchar *> DebugMessageInsertARB;
-    static Function<void, gl::GLbitfield> DeformSGIX;
+    static Function<void, gl::FfdMaskSGIX> DeformSGIX;
     static Function<void, gl::GLenum, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, const gl::GLdouble *> DeformationMap3dSGIX;
     static Function<void, gl::GLenum, gl::GLfloat, gl::GLfloat, gl::GLint, gl::GLint, gl::GLfloat, gl::GLfloat, gl::GLint, gl::GLint, gl::GLfloat, gl::GLfloat, gl::GLint, gl::GLint, const gl::GLfloat *> DeformationMap3fSGIX;
     static Function<void, gl::GLuint, gl::GLsizei> DeleteAsyncMarkersSGIX;
@@ -531,7 +531,7 @@ public:
     static Function<void, gl::GLuint, gl::GLuint, gl::GLuint> ExtractComponentEXT;
     static Function<void, gl::GLsizei, gl::GLenum, gl::GLfloat *> FeedbackBuffer;
     static Function<void, gl::GLsizei, gl::GLenum, const gl::GLfixed *> FeedbackBufferxOES;
-    static Function<gl::GLsync, gl::GLenum, gl::GLbitfield> FenceSync;
+    static Function<gl::GLsync, gl::GLenum, gl::UnusedMask> FenceSync;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> FinalCombinerInputNV;
     static Function<void> Finish;
     static Function<gl::GLint, gl::GLuint *> FinishAsyncSGIX;
@@ -829,8 +829,8 @@ public:
     static Function<void, gl::GLuint, gl::GLfloat *> GetPathCoordsNV;
     static Function<void, gl::GLuint, gl::GLfloat *> GetPathDashArrayNV;
     static Function<gl::GLfloat, gl::GLuint, gl::GLsizei, gl::GLsizei> GetPathLengthNV;
-    static Function<void, gl::GLbitfield, gl::GLuint, gl::GLsizei, gl::GLsizei, gl::GLfloat *> GetPathMetricRangeNV;
-    static Function<void, gl::GLbitfield, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLsizei, gl::GLfloat *> GetPathMetricsNV;
+    static Function<void, gl::PathRenderingMaskNV, gl::GLuint, gl::GLsizei, gl::GLsizei, gl::GLfloat *> GetPathMetricRangeNV;
+    static Function<void, gl::PathRenderingMaskNV, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLsizei, gl::GLfloat *> GetPathMetricsNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLfloat *> GetPathParameterfvNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetPathParameterivNV;
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLenum, gl::GLfloat *> GetPathSpacingNV;
@@ -1048,7 +1048,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLfloat *> ImageTransformParameterfvHP;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> ImageTransformParameteriHP;
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLint *> ImageTransformParameterivHP;
-    static Function<gl::GLsync, gl::GLenum, gl::GLintptr, gl::GLbitfield> ImportSyncEXT;
+    static Function<gl::GLsync, gl::GLenum, gl::GLintptr, gl::UnusedMask> ImportSyncEXT;
     static Function<void, gl::GLenum, gl::GLsizei> IndexFormatNV;
     static Function<void, gl::GLenum, gl::GLclampf> IndexFuncEXT;
     static Function<void, gl::GLuint> IndexMask;
@@ -1148,7 +1148,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint> ListParameteriSGIX;
     static Function<void, gl::GLuint, gl::GLenum, const gl::GLint *> ListParameterivSGIX;
     static Function<void> LoadIdentity;
-    static Function<void, gl::GLbitfield> LoadIdentityDeformationMapSGIX;
+    static Function<void, gl::FfdMaskSGIX> LoadIdentityDeformationMapSGIX;
     static Function<void, const gl::GLdouble *> LoadMatrixd;
     static Function<void, const gl::GLfloat *> LoadMatrixf;
     static Function<void, const gl::GLfixed *> LoadMatrixxOES;
@@ -1181,7 +1181,7 @@ public:
     static Function<void, gl::GLenum, gl::GLfixed, gl::GLfixed, gl::GLint, gl::GLint, gl::GLfixed, gl::GLfixed, gl::GLint, gl::GLint, gl::GLfixed> Map2xOES;
     static Function<void *, gl::GLenum, gl::GLenum> MapBuffer;
     static Function<void *, gl::GLenum, gl::GLenum> MapBufferARB;
-    static Function<void *, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLbitfield> MapBufferRange;
+    static Function<void *, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapBufferRange;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLint, gl::GLint, gl::GLboolean, const void *> MapControlPointsNV;
     static Function<void, gl::GLint, gl::GLdouble, gl::GLdouble> MapGrid1d;
     static Function<void, gl::GLint, gl::GLfloat, gl::GLfloat> MapGrid1f;
@@ -1190,11 +1190,11 @@ public:
     static Function<void, gl::GLint, gl::GLfloat, gl::GLfloat, gl::GLint, gl::GLfloat, gl::GLfloat> MapGrid2f;
     static Function<void, gl::GLint, gl::GLfixed, gl::GLfixed, gl::GLfixed, gl::GLfixed> MapGrid2xOES;
     static Function<void *, gl::GLuint, gl::GLenum> MapNamedBufferEXT;
-    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLbitfield> MapNamedBufferRangeEXT;
+    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapNamedBufferRangeEXT;
     static Function<void *, gl::GLuint> MapObjectBufferATI;
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLfloat *> MapParameterfvNV;
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLint *> MapParameterivNV;
-    static Function<void *, gl::GLuint, gl::GLint, gl::GLbitfield, gl::GLint *, gl::GLenum *> MapTexture2DINTEL;
+    static Function<void *, gl::GLuint, gl::GLint, gl::MapBufferUsageMask, gl::GLint *, gl::GLenum *> MapTexture2DINTEL;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, const gl::GLdouble *> MapVertexAttrib1dAPPLE;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLint, gl::GLint, const gl::GLfloat *> MapVertexAttrib1fAPPLE;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, const gl::GLdouble *> MapVertexAttrib2dAPPLE;
@@ -1229,8 +1229,8 @@ public:
     static Function<void, gl::GLenum, gl::GLfloat, gl::GLfloat, gl::GLfloat> MatrixScalefEXT;
     static Function<void, gl::GLenum, gl::GLdouble, gl::GLdouble, gl::GLdouble> MatrixTranslatedEXT;
     static Function<void, gl::GLenum, gl::GLfloat, gl::GLfloat, gl::GLfloat> MatrixTranslatefEXT;
-    static Function<void, gl::GLbitfield> MemoryBarrier;
-    static Function<void, gl::GLbitfield> MemoryBarrierEXT;
+    static Function<void, gl::MemoryBarrierMask> MemoryBarrier;
+    static Function<void, gl::MemoryBarrierMask> MemoryBarrierEXT;
     static Function<void, gl::GLfloat> MinSampleShading;
     static Function<void, gl::GLfloat> MinSampleShadingARB;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLboolean> Minmax;
@@ -1382,7 +1382,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage2DEXT;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage3DEXT;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferDataEXT;
-    static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLbitfield> NamedBufferStorageEXT;
+    static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> NamedBufferStorageEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubDataEXT;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLintptr, gl::GLintptr, gl::GLsizeiptr> NamedCopyBufferSubDataEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint> NamedFramebufferParameteriEXT;
@@ -1464,8 +1464,8 @@ public:
     static Function<void, gl::GLenum> PathCoverDepthFuncNV;
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLfloat *> PathDashArrayNV;
     static Function<void, gl::GLenum> PathFogGenNV;
-    static Function<void, gl::GLuint, gl::GLenum, const void *, gl::GLbitfield, gl::GLuint, gl::GLsizei, gl::GLenum, gl::GLuint, gl::GLfloat> PathGlyphRangeNV;
-    static Function<void, gl::GLuint, gl::GLenum, const void *, gl::GLbitfield, gl::GLsizei, gl::GLenum, const void *, gl::GLenum, gl::GLuint, gl::GLfloat> PathGlyphsNV;
+    static Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLsizei, gl::GLenum, gl::GLuint, gl::GLfloat> PathGlyphRangeNV;
+    static Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLsizei, gl::GLenum, const void *, gl::GLenum, gl::GLuint, gl::GLfloat> PathGlyphsNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLfloat> PathParameterfNV;
     static Function<void, gl::GLuint, gl::GLenum, const gl::GLfloat *> PathParameterfvNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint> PathParameteriNV;
@@ -1703,9 +1703,9 @@ public:
     static Function<void, gl::GLenum, gl::GLint> ProgramVertexLimitNV;
     static Function<void, gl::GLenum> ProvokingVertex;
     static Function<void, gl::GLenum> ProvokingVertexEXT;
-    static Function<void, gl::GLbitfield> PushAttrib;
-    static Function<void, gl::GLbitfield> PushClientAttrib;
-    static Function<void, gl::GLbitfield> PushClientAttribDefaultEXT;
+    static Function<void, gl::AttribMask> PushAttrib;
+    static Function<void, gl::ClientAttribMask> PushClientAttrib;
+    static Function<void, gl::ClientAttribMask> PushClientAttribDefaultEXT;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLchar *> PushDebugGroup;
     static Function<void, gl::GLsizei, const gl::GLchar *> PushGroupMarkerEXT;
     static Function<void> PushMatrix;
@@ -2052,7 +2052,7 @@ public:
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLboolean> TexStorage2DMultisample;
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei> TexStorage3D;
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLboolean> TexStorage3DMultisample;
-    static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLbitfield> TexStorageSparseAMD;
+    static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::TextureStorageMaskAMD> TexStorageSparseAMD;
     static Function<void, gl::GLenum, gl::GLint, gl::GLint, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TexSubImage1D;
     static Function<void, gl::GLenum, gl::GLint, gl::GLint, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TexSubImage1DEXT;
     static Function<void, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TexSubImage2D;
@@ -2088,7 +2088,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLboolean> TextureStorage2DMultisampleEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei> TextureStorage3DEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLboolean> TextureStorage3DMultisampleEXT;
-    static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLbitfield> TextureStorageSparseAMD;
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::TextureStorageMaskAMD> TextureStorageSparseAMD;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TextureSubImage1DEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TextureSubImage2DEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TextureSubImage3DEXT;
@@ -2214,7 +2214,7 @@ public:
     static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const void *, gl::GLenum> UpdateObjectBufferATI;
     static Function<void, gl::GLuint> UseProgram;
     static Function<void, gl::GLhandleARB> UseProgramObjectARB;
-    static Function<void, gl::GLuint, gl::GLbitfield, gl::GLuint> UseProgramStages;
+    static Function<void, gl::GLuint, gl::UseProgramStageMask, gl::GLuint> UseProgramStages;
     static Function<void, gl::GLenum, gl::GLuint> UseShaderProgramEXT;
     static Function<void> VDPAUFiniNV;
     static Function<void, gl::GLvdpauSurfaceNV, gl::GLenum, gl::GLsizei, gl::GLsizei *, gl::GLint *> VDPAUGetSurfaceivNV;
@@ -2586,7 +2586,7 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLfloat *> ViewportArrayv;
     static Function<void, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> ViewportIndexedf;
     static Function<void, gl::GLuint, const gl::GLfloat *> ViewportIndexedfv;
-    static Function<void, gl::GLsync, gl::GLbitfield, gl::GLuint64> WaitSync;
+    static Function<void, gl::GLsync, gl::UnusedMask, gl::GLuint64> WaitSync;
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLfloat *> WeightPathsNV;
     static Function<void, gl::GLint, gl::GLenum, gl::GLsizei, const void *> WeightPointerARB;
     static Function<void, gl::GLint, const gl::GLbyte *> WeightbvARB;

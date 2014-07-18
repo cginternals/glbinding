@@ -167,7 +167,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genTypes_h                   (api, types, bitfGroups,  includedir_api, "types.h") 
     genTypesForward_h            (api, types, bitfGroups,  includedir_api, "types.inl") 
-    genTypes_cpp                 (api, types,              sourcedir_api,  "types.cpp")  
+    genTypes_cpp                 (api, types, bitfGroups,  sourcedir_api,  "types.cpp")  
 
     genBitfieldsAll              (api, enums,              includedir_api, "bitfield.h")
     genBitfieldsFeatureGrouped   (api, enums, features,    includedir_api, "bitfield?.h")

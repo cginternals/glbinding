@@ -17,11 +17,10 @@ def multilineConvertTypedef(type):
     return "\n".join([ convertTypedefLine(line, type.name) for line in type.value.split('\n') ])
 
 
-enum_classes = [ "GLbitfield", "GLboolean", "GLenum" ]
+enum_classes = [ "GLboolean", "GLenum" ]
 
 type_integration_map = {
     "GLextension" : [ "hashable", "streamable" ], 
-    "GLbitfield"  : [ "hashable", "streamable", "bit_operatable" ], 
     "GLboolean"   : [ "hashable", "streamable" ],
     "GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
 }
@@ -71,7 +70,10 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
 
         if forward:
 
-            file.write(t % (("\n".join([ forwardType(api, t) for t in types ]))))
+            file.write(t %
+                ("\n".join([ forwardType(api, t) for t in types ]),
+                "\n".join([ "using %s = gl::%s;" % (g.name, g.name) for g in bitfGroups ]),)
+            )
 
         else:            
             type_integrations = []
@@ -80,14 +82,18 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
                 for integration in integrations:
                     type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", typename))
 
+            for group in bitfGroups:
+                for integration in [ "streamable", "bit_operatable"]:
+                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", group.name))
+
             file.write(t % (
                 ("\n".join([ convertType(t) for t in types ])), # if t.name != "GLbitfield" 
-                 #"\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ]),
+                 "\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ]),
                 ("\n".join([ t for t in type_integrations ]))
             ))
 
 
-def genTypes_cpp(api, types, outputdir, outputfile):
+def genTypes_cpp(api, types, bitfGroups, outputdir, outputfile):
 
     of = outputfile
     t = template(of).replace("%a", api)
@@ -98,6 +104,11 @@ def genTypes_cpp(api, types, outputdir, outputfile):
     for typename, integrations in type_integration_map.items():
         for integration in integrations:
             type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", typename)) 
+
+    for group in bitfGroups:
+        for integration in [ "streamable2", "bit_operatable"]:
+            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", group.name))
+
 
     with open(outputdir + of, 'w') as file:
         file.write(t % ("\n".join([ type for type in type_integrations ])))

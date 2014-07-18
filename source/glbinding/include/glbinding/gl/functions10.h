@@ -58,7 +58,7 @@ inline void glCallLists(GLsizei n, GLenum type, const void * lists)
     return glbinding::FunctionObjects::CallLists(n, type, lists);
 }
 
-inline void glClear(GLbitfield mask)
+inline void glClear(ClearBufferMask mask)
 {
     return glbinding::FunctionObjects::Clear(mask);
 }
@@ -938,7 +938,7 @@ inline void glPopName()
     return glbinding::FunctionObjects::PopName();
 }
 
-inline void glPushAttrib(GLbitfield mask)
+inline void glPushAttrib(AttribMask mask)
 {
     return glbinding::FunctionObjects::PushAttrib(mask);
 }

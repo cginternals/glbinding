@@ -208,7 +208,7 @@ inline void glBlendFunci(GLuint buf, GLenum src, GLenum dst)
     return glbinding::FunctionObjects::BlendFunci(buf, src, dst);
 }
 
-inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter)
 {
     return glbinding::FunctionObjects::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
@@ -218,7 +218,7 @@ inline void glBufferData(GLenum target, GLsizeiptr size, const void * data, GLen
     return glbinding::FunctionObjects::BufferData(target, size, data, usage);
 }
 
-inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, GLbitfield flags)
+inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
 {
     return glbinding::FunctionObjects::BufferStorage(target, size, data, flags);
 }
@@ -238,7 +238,7 @@ inline void glClampColor(GLenum target, GLenum clamp)
     return glbinding::FunctionObjects::ClampColor(target, clamp);
 }
 
-inline void glClear(GLbitfield mask)
+inline void glClear(ClearBufferMask mask)
 {
     return glbinding::FunctionObjects::Clear(mask);
 }
@@ -303,7 +303,7 @@ inline void glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint
     return glbinding::FunctionObjects::ClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
 }
 
-inline GLenum glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
+inline GLenum glClientWaitSync(GLsync sync, SyncObjectMask flags, GLuint64 timeout)
 {
     return static_cast<gl44core::GLenum>(glbinding::FunctionObjects::ClientWaitSync(sync, flags, timeout));
 }
@@ -693,7 +693,7 @@ inline void glEndTransformFeedback()
     return glbinding::FunctionObjects::EndTransformFeedback();
 }
 
-inline GLsync glFenceSync(GLenum condition, GLbitfield flags)
+inline GLsync glFenceSync(GLenum condition, UnusedMask flags)
 {
     return glbinding::FunctionObjects::FenceSync(condition, flags);
 }
@@ -1393,12 +1393,12 @@ inline void * glMapBuffer(GLenum target, GLenum access)
     return glbinding::FunctionObjects::MapBuffer(target, access);
 }
 
-inline void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
+inline void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
 {
     return glbinding::FunctionObjects::MapBufferRange(target, offset, length, access);
 }
 
-inline void glMemoryBarrier(GLbitfield barriers)
+inline void glMemoryBarrier(MemoryBarrierMask barriers)
 {
     return glbinding::FunctionObjects::MemoryBarrier(barriers);
 }
@@ -2408,7 +2408,7 @@ inline void glUseProgram(GLuint program)
     return glbinding::FunctionObjects::UseProgram(program);
 }
 
-inline void glUseProgramStages(GLuint pipeline, GLbitfield stages, GLuint program)
+inline void glUseProgramStages(GLuint pipeline, UseProgramStageMask stages, GLuint program)
 {
     return glbinding::FunctionObjects::UseProgramStages(pipeline, stages, program);
 }
@@ -2878,7 +2878,7 @@ inline void glViewportIndexedfv(GLuint index, const GLfloat * v)
     return glbinding::FunctionObjects::ViewportIndexedfv(index, v);
 }
 
-inline void glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout)
+inline void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout)
 {
     return glbinding::FunctionObjects::WaitSync(sync, flags, timeout);
 }

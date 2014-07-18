@@ -3,9 +3,11 @@ from classes.Enum import *
 from classes.Feature import *
 
 #bitfieldGroupTemplate = """enum class %s : unsigned int
-bitfieldGroupTemplate = """    // %s
-
+bitfieldGroupTemplate = """enum class %s : unsigned int
+{
 %s
+};
+
 """
 
 
@@ -17,24 +19,17 @@ def bitfieldDefinition(enum, group, maxlen, usedBitfsByName):
         return "    %s %s= %s," % (enumBID(enum), spaces, enum.value)
     else:
         reuse = usedBitfsByName[enum.name]
-        return "//  %s %s= %s, // reuse %s" % (enumBID(enum), spaces, enum.value, reuse)
+        return "    %s %s= %s, // reuse from %s" % (enumBID(enum), spaces, enum.value, reuse)
 
 
-def bitfieldImportDefinition(api, enum, group, usedBitfsByName, feature):
-
-    qualifier = "GLbitfield" if feature is None else api + "::GLbitfield"
-
-    if enum.name not in usedBitfsByName:
-        usedBitfsByName[enum.name] = group
-        return "static const %s %s = %s::%s;" % (
-            qualifier, enumBID(enum), qualifier, enumBID(enum))
-    else:
-        reuse = usedBitfsByName[enum.name]
-        return "// static const %s %s = %s::%s; // reuse %s" % (
-            qualifier, enumBID(enum), qualifier, enumBID(enum), reuse)
-
-    # return "static const %s %s = %s::%s;" % (enum.groupString, enumBID(enum), enum.groupString, enumBID(enum))
-
+def bitfieldImportDefinition(api, enum, feature):
+	qualifier = "" if feature is None else api + "::"
+	group = sorted(enum.groups)[0].name
+	if len(enum.groups) == 1:
+		return "static const %s %s = %s::%s;" % (qualifier+group, enumBID(enum), qualifier+group, enumBID(enum))
+	else:
+		groups = ", ".join([ qualifier+g.name for g in sorted(enum.groups) ])
+		return "static const glbinding::SharedBitfield<%s> %s = %s::%s;" % (groups, enumBID(enum), qualifier+group, enumBID(enum))
 
 def bitfieldGroup(group, enums, usedBitfsByName):
 
@@ -85,9 +80,10 @@ def genFeatureBitfields(api, enums, feature, outputdir, outputfile, core = False
 
     usedBitfsByName = dict()
 
-    importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-      [ bitfieldImportDefinition(api, e, group, usedBitfsByName, feature) for e in values ])) 
-        for group, values in sorted(groupedBitfields.items()) ]
+    #~ importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
+      #~ [ bitfieldImportDefinition(api, e, group, usedBitfsByName, feature) for e in values ])) 
+        #~ for group, values in sorted(groupedBitfields.items()) ]
+    importToNamespace = [ bitfieldImportDefinition(api, e, feature) for e in sorted(pureBitfields) ]
 
     usedBitfsByName.clear()
 

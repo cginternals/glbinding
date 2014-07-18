@@ -148,7 +148,7 @@ inline void glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfa
     return glbinding::FunctionObjects::BlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 }
 
-inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+inline void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter)
 {
     return glbinding::FunctionObjects::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
@@ -183,7 +183,7 @@ inline void glClampColor(GLenum target, GLenum clamp)
     return glbinding::FunctionObjects::ClampColor(target, clamp);
 }
 
-inline void glClear(GLbitfield mask)
+inline void glClear(ClearBufferMask mask)
 {
     return glbinding::FunctionObjects::Clear(mask);
 }
@@ -1448,7 +1448,7 @@ inline void * glMapBuffer(GLenum target, GLenum access)
     return glbinding::FunctionObjects::MapBuffer(target, access);
 }
 
-inline void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
+inline void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
 {
     return glbinding::FunctionObjects::MapBufferRange(target, offset, length, access);
 }
@@ -1863,12 +1863,12 @@ inline void glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLflo
     return glbinding::FunctionObjects::PrioritizeTextures(n, textures, priorities);
 }
 
-inline void glPushAttrib(GLbitfield mask)
+inline void glPushAttrib(AttribMask mask)
 {
     return glbinding::FunctionObjects::PushAttrib(mask);
 }
 
-inline void glPushClientAttrib(GLbitfield mask)
+inline void glPushClientAttrib(ClientAttribMask mask)
 {
     return glbinding::FunctionObjects::PushClientAttrib(mask);
 }

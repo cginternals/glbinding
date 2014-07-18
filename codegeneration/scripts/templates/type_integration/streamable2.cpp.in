@@ -1,0 +1,6 @@
+
+std::ostream & operator<<(std::ostream & stream, const gl::%t & value)
+{
+    stream << static_cast<std::underlying_type<gl::%t>::type>(value);
+    return stream;
+}

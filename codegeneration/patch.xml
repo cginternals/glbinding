@@ -2,8 +2,8 @@
 <registry>
 
 	<!-- non-standard bitfield group for not used mask parameters -->
-	<enums namespace="GL" group="NotUsedMask" type="bitmask">
-		<enum value="0x00000000" name="GL_NOT_USED_BIT"/>
+	<enums namespace="GL" group="UnusedMask" type="bitmask">
+		<enum value="0x00000000" name="GL_UNUSED_BIT"/>
 	</enums>
         <enum value="0x00000000" name="GL_NONE_BIT"/>
 	<enums namespace="GL" group="PathFontStyle" type="bitmask">
@@ -80,22 +80,22 @@
             <param><ptype>GLbitfield</ptype> <name>mask</name></param>
         </command>
 
-		<!-- patch unused parameters of type GLbitfield by using NotUsedMask -->
+		<!-- patch unused parameters of type GLbitfield by using UnusedMask -->
         <command>
             <proto>void <name>glWaitSync</name></proto>
-            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="UnusedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto group="sync"><ptype>GLsync</ptype> <name>glFenceSync</name></proto>
-            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="UnusedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto group="sync"><ptype>GLsync</ptype> <name>glImportSyncEXT</name></proto>
-            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="UnusedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto group="sync"><ptype>GLsync</ptype> <name>glCreateSyncFromCLeventARB</name></proto>
-            <param group="NotUsedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="UnusedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
 
         <!-- patch probably wrongly named parameter groups -->
