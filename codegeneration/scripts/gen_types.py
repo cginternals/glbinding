@@ -83,7 +83,7 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
                     type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", typename))
 
             for group in bitfGroups:
-                for integration in [ "streamable", "bit_operatable"]:
+                for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
                     type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", group.name))
 
             file.write(t % (
@@ -106,7 +106,7 @@ def genTypes_cpp(api, types, bitfGroups, outputdir, outputfile):
             type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", typename)) 
 
     for group in bitfGroups:
-        for integration in [ "streamable2", "bit_operatable"]:
+        for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
             type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", group.name))
 
 

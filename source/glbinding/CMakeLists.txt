@@ -66,6 +66,7 @@ set(api_includes
     ${include_path}/gl/values.h
     ${include_path}/gl/types.inl
     ${include_path}/gl/values.inl
+    ${include_path}/gl/boolean.inl
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h

@@ -41,9 +41,27 @@ def metaStringToEnum(enum, type):
     # t = (enum.groupString if type == "GLbitfield" else type)
     return ('{ "%s", ' + type + '::%s }') % (enum.name, enumBID(enum))
 
+def metaStringToBitfieldGroupMap(group):
+    return "extern const std::unordered_map<std::string, gl::%s> Meta_%sByString;" % (group.name, group.name)
+
+def metaBitfieldGroupToStringMap(group):
+    return "extern const std::unordered_map<gl::%s, std::string> Meta_StringsBy%s;" % (group.name, group.name)
+
+def metaStringsByBitfieldGroup(group):
+    return """const std::unordered_map<%s, std::string> Meta_StringsBy%s 
+{
+#ifdef STRINGS_BY_GL
+    %s
+#endif
+};
+    """ % (group.name, group.name, ",\n\t".join([ metaEnumToString(e, group.name) for e in sorted(group.enums) ]))
+
+def genMetaMaps(enums, outputdir, outputfile, bitfGroups):
+    status(outputdir + outputfile)
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % ("\n".join([ metaBitfieldGroupToStringMap(g) for g in bitfGroups ])))
 
 def genMetaStringsByEnum(enums, outputdir, outputfile, type):
-
     status(outputdir + outputfile)
 
     pureEnums = [ e for e in enums if e.type == type ]
@@ -52,6 +70,14 @@ def genMetaStringsByEnum(enums, outputdir, outputfile, type):
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % ((",\n" + tab).join(
             [ metaEnumToString(e, type) for e in d ])))    
+
+def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
+    status(outputdir + outputfile)
+
+    d = sorted([ metaStringsByBitfieldGroup(g) for g in bitfGroups ])
+    
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % "\n".join(d))
 
 
 def genMetaEnumsByString(enums, outputdir, outputfile, type):

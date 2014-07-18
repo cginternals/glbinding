@@ -2,6 +2,49 @@
 #include <glbinding/gl/types.h>
 
 #include <glbinding/Meta.h>
+#include "../Meta_Maps.h"
+
+#include <bitset>
+#include <sstream>
+
+template <typename T>
+std::string bitfieldString(T value, const std::unordered_map<T, std::string> & map)
+{
+	using U = typename std::underlying_type<T>::type;
+	
+	std::bitset<sizeof(U)*8> bits(static_cast<U>(value));
+	
+	std::stringstream ss;
+	bool first = true;
+	
+	for (size_t i = 0; i<sizeof(U)*8; ++i)
+	{
+		if (bits.test(i))
+		{
+			if (first)
+			{
+				first = false;
+			}
+			else
+			{
+				ss << " | ";
+			}
+			
+			U bit = 1 << i;
+			auto it = map.find(static_cast<T>(bit));
+			if (it == map.end())
+			{
+				ss << "1 << " << i;
+			}
+			else
+			{
+				ss << it->second;
+			}
+		}
+	}
+	
+	return ss.str();
+};
 
 
 
@@ -101,9 +144,10 @@ std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::AttribMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::AttribMask>::type>(value);
+    stream << bitfieldString<gl::AttribMask>(value, glbinding::Meta_StringsByAttribMask);
     return stream;
 }
 
@@ -124,9 +168,10 @@ gl::AttribMask operator^(const gl::AttribMask & a, const gl::AttribMask & b)
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::ClearBufferMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::ClearBufferMask>::type>(value);
+    stream << bitfieldString<gl::ClearBufferMask>(value, glbinding::Meta_StringsByClearBufferMask);
     return stream;
 }
 
@@ -147,9 +192,10 @@ gl::ClearBufferMask operator^(const gl::ClearBufferMask & a, const gl::ClearBuff
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::ClientAttribMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::ClientAttribMask>::type>(value);
+    stream << bitfieldString<gl::ClientAttribMask>(value, glbinding::Meta_StringsByClientAttribMask);
     return stream;
 }
 
@@ -170,9 +216,10 @@ gl::ClientAttribMask operator^(const gl::ClientAttribMask & a, const gl::ClientA
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::ContextFlagMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::ContextFlagMask>::type>(value);
+    stream << bitfieldString<gl::ContextFlagMask>(value, glbinding::Meta_StringsByContextFlagMask);
     return stream;
 }
 
@@ -193,9 +240,10 @@ gl::ContextFlagMask operator^(const gl::ContextFlagMask & a, const gl::ContextFl
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::ContextProfileMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::ContextProfileMask>::type>(value);
+    stream << bitfieldString<gl::ContextProfileMask>(value, glbinding::Meta_StringsByContextProfileMask);
     return stream;
 }
 
@@ -216,9 +264,10 @@ gl::ContextProfileMask operator^(const gl::ContextProfileMask & a, const gl::Con
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::FfdMaskSGIX & value)
 {
-    stream << static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(value);
+    stream << bitfieldString<gl::FfdMaskSGIX>(value, glbinding::Meta_StringsByFfdMaskSGIX);
     return stream;
 }
 
@@ -239,9 +288,10 @@ gl::FfdMaskSGIX operator^(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderColorModMaskATI & value)
 {
-    stream << static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(value);
+    stream << bitfieldString<gl::FragmentShaderColorModMaskATI>(value, glbinding::Meta_StringsByFragmentShaderColorModMaskATI);
     return stream;
 }
 
@@ -262,9 +312,10 @@ gl::FragmentShaderColorModMaskATI operator^(const gl::FragmentShaderColorModMask
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMaskATI & value)
 {
-    stream << static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(value);
+    stream << bitfieldString<gl::FragmentShaderDestMaskATI>(value, glbinding::Meta_StringsByFragmentShaderDestMaskATI);
     return stream;
 }
 
@@ -285,9 +336,10 @@ gl::FragmentShaderDestMaskATI operator^(const gl::FragmentShaderDestMaskATI & a,
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestModMaskATI & value)
 {
-    stream << static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(value);
+    stream << bitfieldString<gl::FragmentShaderDestModMaskATI>(value, glbinding::Meta_StringsByFragmentShaderDestModMaskATI);
     return stream;
 }
 
@@ -308,9 +360,10 @@ gl::FragmentShaderDestModMaskATI operator^(const gl::FragmentShaderDestModMaskAT
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::MapBufferUsageMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(value);
+    stream << bitfieldString<gl::MapBufferUsageMask>(value, glbinding::Meta_StringsByMapBufferUsageMask);
     return stream;
 }
 
@@ -331,9 +384,10 @@ gl::MapBufferUsageMask operator^(const gl::MapBufferUsageMask & a, const gl::Map
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::MemoryBarrierMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(value);
+    stream << bitfieldString<gl::MemoryBarrierMask>(value, glbinding::Meta_StringsByMemoryBarrierMask);
     return stream;
 }
 
@@ -354,9 +408,10 @@ gl::MemoryBarrierMask operator^(const gl::MemoryBarrierMask & a, const gl::Memor
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::PathRenderingMaskNV & value)
 {
-    stream << static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(value);
+    stream << bitfieldString<gl::PathRenderingMaskNV>(value, glbinding::Meta_StringsByPathRenderingMaskNV);
     return stream;
 }
 
@@ -377,9 +432,10 @@ gl::PathRenderingMaskNV operator^(const gl::PathRenderingMaskNV & a, const gl::P
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::PerformanceQueryCapsMaskINTEL & value)
 {
-    stream << static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(value);
+    stream << bitfieldString<gl::PerformanceQueryCapsMaskINTEL>(value, glbinding::Meta_StringsByPerformanceQueryCapsMaskINTEL);
     return stream;
 }
 
@@ -400,9 +456,10 @@ gl::PerformanceQueryCapsMaskINTEL operator^(const gl::PerformanceQueryCapsMaskIN
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::SyncObjectMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::SyncObjectMask>::type>(value);
+    stream << bitfieldString<gl::SyncObjectMask>(value, glbinding::Meta_StringsBySyncObjectMask);
     return stream;
 }
 
@@ -423,9 +480,10 @@ gl::SyncObjectMask operator^(const gl::SyncObjectMask & a, const gl::SyncObjectM
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::TextureStorageMaskAMD & value)
 {
-    stream << static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(value);
+    stream << bitfieldString<gl::TextureStorageMaskAMD>(value, glbinding::Meta_StringsByTextureStorageMaskAMD);
     return stream;
 }
 
@@ -446,9 +504,10 @@ gl::TextureStorageMaskAMD operator^(const gl::TextureStorageMaskAMD & a, const g
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::UseProgramStageMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(value);
+    stream << bitfieldString<gl::UseProgramStageMask>(value, glbinding::Meta_StringsByUseProgramStageMask);
     return stream;
 }
 
@@ -469,9 +528,10 @@ gl::UseProgramStageMask operator^(const gl::UseProgramStageMask & a, const gl::U
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::VertexHintsMaskPGI & value)
 {
-    stream << static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(value);
+    stream << bitfieldString<gl::VertexHintsMaskPGI>(value, glbinding::Meta_StringsByVertexHintsMaskPGI);
     return stream;
 }
 
@@ -492,9 +552,10 @@ gl::VertexHintsMaskPGI operator^(const gl::VertexHintsMaskPGI & a, const gl::Ver
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value)
 {
-    stream << static_cast<std::underlying_type<gl::PathFontStyle>::type>(value);
+    stream << bitfieldString<gl::PathFontStyle>(value, glbinding::Meta_StringsByPathFontStyle);
     return stream;
 }
 
@@ -515,9 +576,10 @@ gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::UnusedMask>::type>(value);
+    stream << bitfieldString<gl::UnusedMask>(value, glbinding::Meta_StringsByUnusedMask);
     return stream;
 }
 
@@ -538,9 +600,10 @@ gl::UnusedMask operator^(const gl::UnusedMask & a, const gl::UnusedMask & b)
 }
 
 
+
 std::ostream & operator<<(std::ostream & stream, const gl::BufferAccessMask & value)
 {
-    stream << static_cast<std::underlying_type<gl::BufferAccessMask>::type>(value);
+    stream << bitfieldString<gl::BufferAccessMask>(value, glbinding::Meta_StringsByBufferAccessMask);
     return stream;
 }
 

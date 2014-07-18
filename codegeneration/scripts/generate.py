@@ -191,7 +191,8 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genVersions                  (features,           sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
-    genMetaStringsByEnum         (enums,              sourcedir,  "Meta_StringsByBitfield.cpp", "GLbitfield")
+    genMetaMaps		         (enums,              sourcedir,  "Meta_Maps.h", bitfGroups)
+    genMetaStringsByBitfield     (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
     genMetaEnumsByString         (enums,              sourcedir,  "Meta_BitfieldsByString.cpp", "GLbitfield")
     genMetaStringsByEnum         (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
     genMetaEnumsByString         (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")

@@ -165,12 +165,42 @@ struct hash<gl::GLextension>
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::AttribMask>
+{
+    hash<std::underlying_type<gl::AttribMask>::type>::result_type operator()(const gl::AttribMask & t) const
+    {
+        return hash<std::underlying_type<gl::AttribMask>::type>()(static_cast<std::underlying_type<gl::AttribMask>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::AttribMask & value);
 
 
 GLBINDING_API gl::AttribMask operator|(const gl::AttribMask & a, const gl::AttribMask & b);
 GLBINDING_API gl::AttribMask operator&(const gl::AttribMask & a, const gl::AttribMask & b);
 GLBINDING_API gl::AttribMask operator^(const gl::AttribMask & a, const gl::AttribMask & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::ClearBufferMask>
+{
+    hash<std::underlying_type<gl::ClearBufferMask>::type>::result_type operator()(const gl::ClearBufferMask & t) const
+    {
+        return hash<std::underlying_type<gl::ClearBufferMask>::type>()(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ClearBufferMask & value);
@@ -181,12 +211,42 @@ GLBINDING_API gl::ClearBufferMask operator&(const gl::ClearBufferMask & a, const
 GLBINDING_API gl::ClearBufferMask operator^(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::ClientAttribMask>
+{
+    hash<std::underlying_type<gl::ClientAttribMask>::type>::result_type operator()(const gl::ClientAttribMask & t) const
+    {
+        return hash<std::underlying_type<gl::ClientAttribMask>::type>()(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ClientAttribMask & value);
 
 
 GLBINDING_API gl::ClientAttribMask operator|(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
 GLBINDING_API gl::ClientAttribMask operator&(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
 GLBINDING_API gl::ClientAttribMask operator^(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::ContextFlagMask>
+{
+    hash<std::underlying_type<gl::ContextFlagMask>::type>::result_type operator()(const gl::ContextFlagMask & t) const
+    {
+        return hash<std::underlying_type<gl::ContextFlagMask>::type>()(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ContextFlagMask & value);
@@ -197,12 +257,42 @@ GLBINDING_API gl::ContextFlagMask operator&(const gl::ContextFlagMask & a, const
 GLBINDING_API gl::ContextFlagMask operator^(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::ContextProfileMask>
+{
+    hash<std::underlying_type<gl::ContextProfileMask>::type>::result_type operator()(const gl::ContextProfileMask & t) const
+    {
+        return hash<std::underlying_type<gl::ContextProfileMask>::type>()(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ContextProfileMask & value);
 
 
 GLBINDING_API gl::ContextProfileMask operator|(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
 GLBINDING_API gl::ContextProfileMask operator&(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
 GLBINDING_API gl::ContextProfileMask operator^(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::FfdMaskSGIX>
+{
+    hash<std::underlying_type<gl::FfdMaskSGIX>::type>::result_type operator()(const gl::FfdMaskSGIX & t) const
+    {
+        return hash<std::underlying_type<gl::FfdMaskSGIX>::type>()(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FfdMaskSGIX & value);
@@ -213,12 +303,42 @@ GLBINDING_API gl::FfdMaskSGIX operator&(const gl::FfdMaskSGIX & a, const gl::Ffd
 GLBINDING_API gl::FfdMaskSGIX operator^(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::FragmentShaderColorModMaskATI>
+{
+    hash<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>::result_type operator()(const gl::FragmentShaderColorModMaskATI & t) const
+    {
+        return hash<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>()(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderColorModMaskATI & value);
 
 
 GLBINDING_API gl::FragmentShaderColorModMaskATI operator|(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
 GLBINDING_API gl::FragmentShaderColorModMaskATI operator&(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
 GLBINDING_API gl::FragmentShaderColorModMaskATI operator^(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::FragmentShaderDestMaskATI>
+{
+    hash<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>::result_type operator()(const gl::FragmentShaderDestMaskATI & t) const
+    {
+        return hash<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>()(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMaskATI & value);
@@ -229,12 +349,42 @@ GLBINDING_API gl::FragmentShaderDestMaskATI operator&(const gl::FragmentShaderDe
 GLBINDING_API gl::FragmentShaderDestMaskATI operator^(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::FragmentShaderDestModMaskATI>
+{
+    hash<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>::result_type operator()(const gl::FragmentShaderDestModMaskATI & t) const
+    {
+        return hash<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>()(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestModMaskATI & value);
 
 
 GLBINDING_API gl::FragmentShaderDestModMaskATI operator|(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
 GLBINDING_API gl::FragmentShaderDestModMaskATI operator&(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
 GLBINDING_API gl::FragmentShaderDestModMaskATI operator^(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::MapBufferUsageMask>
+{
+    hash<std::underlying_type<gl::MapBufferUsageMask>::type>::result_type operator()(const gl::MapBufferUsageMask & t) const
+    {
+        return hash<std::underlying_type<gl::MapBufferUsageMask>::type>()(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::MapBufferUsageMask & value);
@@ -245,12 +395,42 @@ GLBINDING_API gl::MapBufferUsageMask operator&(const gl::MapBufferUsageMask & a,
 GLBINDING_API gl::MapBufferUsageMask operator^(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::MemoryBarrierMask>
+{
+    hash<std::underlying_type<gl::MemoryBarrierMask>::type>::result_type operator()(const gl::MemoryBarrierMask & t) const
+    {
+        return hash<std::underlying_type<gl::MemoryBarrierMask>::type>()(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::MemoryBarrierMask & value);
 
 
 GLBINDING_API gl::MemoryBarrierMask operator|(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
 GLBINDING_API gl::MemoryBarrierMask operator&(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
 GLBINDING_API gl::MemoryBarrierMask operator^(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::PathRenderingMaskNV>
+{
+    hash<std::underlying_type<gl::PathRenderingMaskNV>::type>::result_type operator()(const gl::PathRenderingMaskNV & t) const
+    {
+        return hash<std::underlying_type<gl::PathRenderingMaskNV>::type>()(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathRenderingMaskNV & value);
@@ -261,12 +441,42 @@ GLBINDING_API gl::PathRenderingMaskNV operator&(const gl::PathRenderingMaskNV & 
 GLBINDING_API gl::PathRenderingMaskNV operator^(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::PerformanceQueryCapsMaskINTEL>
+{
+    hash<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>::result_type operator()(const gl::PerformanceQueryCapsMaskINTEL & t) const
+    {
+        return hash<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>()(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PerformanceQueryCapsMaskINTEL & value);
 
 
 GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator|(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
 GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator&(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
 GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator^(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::SyncObjectMask>
+{
+    hash<std::underlying_type<gl::SyncObjectMask>::type>::result_type operator()(const gl::SyncObjectMask & t) const
+    {
+        return hash<std::underlying_type<gl::SyncObjectMask>::type>()(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::SyncObjectMask & value);
@@ -277,12 +487,42 @@ GLBINDING_API gl::SyncObjectMask operator&(const gl::SyncObjectMask & a, const g
 GLBINDING_API gl::SyncObjectMask operator^(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::TextureStorageMaskAMD>
+{
+    hash<std::underlying_type<gl::TextureStorageMaskAMD>::type>::result_type operator()(const gl::TextureStorageMaskAMD & t) const
+    {
+        return hash<std::underlying_type<gl::TextureStorageMaskAMD>::type>()(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::TextureStorageMaskAMD & value);
 
 
 GLBINDING_API gl::TextureStorageMaskAMD operator|(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
 GLBINDING_API gl::TextureStorageMaskAMD operator&(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
 GLBINDING_API gl::TextureStorageMaskAMD operator^(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::UseProgramStageMask>
+{
+    hash<std::underlying_type<gl::UseProgramStageMask>::type>::result_type operator()(const gl::UseProgramStageMask & t) const
+    {
+        return hash<std::underlying_type<gl::UseProgramStageMask>::type>()(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::UseProgramStageMask & value);
@@ -293,12 +533,42 @@ GLBINDING_API gl::UseProgramStageMask operator&(const gl::UseProgramStageMask & 
 GLBINDING_API gl::UseProgramStageMask operator^(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::VertexHintsMaskPGI>
+{
+    hash<std::underlying_type<gl::VertexHintsMaskPGI>::type>::result_type operator()(const gl::VertexHintsMaskPGI & t) const
+    {
+        return hash<std::underlying_type<gl::VertexHintsMaskPGI>::type>()(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::VertexHintsMaskPGI & value);
 
 
 GLBINDING_API gl::VertexHintsMaskPGI operator|(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
 GLBINDING_API gl::VertexHintsMaskPGI operator&(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
 GLBINDING_API gl::VertexHintsMaskPGI operator^(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::PathFontStyle>
+{
+    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
+    {
+        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value);
@@ -309,12 +579,42 @@ GLBINDING_API gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl:
 GLBINDING_API gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
 
 
+namespace std
+{
+
+template<>
+struct hash<gl::UnusedMask>
+{
+    hash<std::underlying_type<gl::UnusedMask>::type>::result_type operator()(const gl::UnusedMask & t) const
+    {
+        return hash<std::underlying_type<gl::UnusedMask>::type>()(static_cast<std::underlying_type<gl::UnusedMask>::type>(t));
+    }
+};
+
+}
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value);
 
 
 GLBINDING_API gl::UnusedMask operator|(const gl::UnusedMask & a, const gl::UnusedMask & b);
 GLBINDING_API gl::UnusedMask operator&(const gl::UnusedMask & a, const gl::UnusedMask & b);
 GLBINDING_API gl::UnusedMask operator^(const gl::UnusedMask & a, const gl::UnusedMask & b);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::BufferAccessMask>
+{
+    hash<std::underlying_type<gl::BufferAccessMask>::type>::result_type operator()(const gl::BufferAccessMask & t) const
+    {
+        return hash<std::underlying_type<gl::BufferAccessMask>::type>()(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(t));
+    }
+};
+
+}
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::BufferAccessMask & value);
