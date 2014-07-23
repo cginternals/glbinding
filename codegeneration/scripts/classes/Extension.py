@@ -239,7 +239,6 @@ def resolveExtensions(extensions, enumsByName, commandsByName, features, api):
 			"GL_ARB_vertex_attrib_binding"
 			],
 		"4.4": [
-			"GL_ARB_bindless_texture",
 			"GL_ARB_buffer_storage",
 			"GL_ARB_clear_texture",
 			"GL_ARB_enhanced_layouts",

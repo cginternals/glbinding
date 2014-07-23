@@ -112,7 +112,6 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
     { GLextension::GL_ARB_texture_view, { 4, 3 } },
     { GLextension::GL_ARB_vertex_attrib_binding, { 4, 3 } },
     { GLextension::GL_EXT_debug_label, { 4, 3 } },
-    { GLextension::GL_ARB_bindless_texture, { 4, 4 } },
     { GLextension::GL_ARB_buffer_storage, { 4, 4 } },
     { GLextension::GL_ARB_clear_texture, { 4, 4 } },
     { GLextension::GL_ARB_enhanced_layouts, { 4, 4 } },
