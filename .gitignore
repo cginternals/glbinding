@@ -8,3 +8,6 @@ codegeneration/*.cpp
 
 #backup files
 *~
+
+# config
+.localconfig
