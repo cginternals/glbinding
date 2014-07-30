@@ -39,13 +39,13 @@ def paramSignature(param):
 def functionMember(function):
 
     params = ", ".join([function.returntype] + [ paramSignature(p) for p in function.params ])
-    return tab+'%s("%s")' % (functionBID(function)[2:], function.name)
+    return tab+'%s("%s")' % (functionBID(function), function.name)
 
 
 def functionDecl(api, function):
 
     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p), api) for p in function.params ])
-    return tab + "Function<%s> %s;" % (params, functionBID(function)[2:])
+    return tab + "Function<%s> %s;" % (params, functionBID(function))
 
 
 def functionForward(function, feature, version):
@@ -55,10 +55,10 @@ def functionForward(function, feature, version):
 
     if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
         return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
-            version, function.returntype, functionBID(function)[2:], paramNames)
+            version, function.returntype, functionBID(function), paramNames)
     else:
         return functionForwardTemplate % (function.returntype, functionBID(function), params,
-            functionBID(function)[2:], paramNames)
+            functionBID(function), paramNames)
 
 
 def paramPass(param):
@@ -84,8 +84,8 @@ def paramPass(param):
     #    return param.name
 
 def functionList(commands):
-    #return "std::vector<AbstractFunction*>(&%s, %s)" % (commands[0].name[2:], len(commands))
-    return ",\n        ".join([ "&"+ functionBID(f)[2:] for f in commands ])
+    #return "std::vector<AbstractFunction*>(&%s, %s)" % (commands[0].name, len(commands))
+    return ",\n        ".join([ "&"+ functionBID(f) for f in commands ])
 
 def genFunctionObjects_h(commands, outputdir, outputfile):    
 
