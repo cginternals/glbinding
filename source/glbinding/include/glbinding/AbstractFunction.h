@@ -29,14 +29,15 @@ public:
 
     const std::set<gl::GLextension> & extensions() const;
 
-    void setCallbackLevel(CallbackLevel level);
+    void setCallbackMask(CallbackMask mask);
 
 public:
-    static void setCallbackLevelForAll(CallbackLevel level);
-    static void setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList);
+    static void setCallbackMaskForAll(CallbackMask mask);
+    static void setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList);
 
 protected:
-    bool isEnabled(CallbackLevel level) const;
+    bool isEnabled(CallbackMask mask) const;
+    bool isAnyEnabled(CallbackMask mask) const;
 
 protected:
     void unresolved() const;
@@ -47,7 +48,7 @@ protected:
     const char * m_name;
     ProcAddress m_address;
     bool m_initialized;
-    CallbackLevel m_callbackLevel;
+    CallbackMask m_callbackMask;
 };
 
 } // namespace glbinding

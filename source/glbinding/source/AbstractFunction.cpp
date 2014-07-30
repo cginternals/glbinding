@@ -18,7 +18,7 @@ AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
 , m_address(nullptr)
 , m_initialized(false)
-, m_callbackLevel(CallbackLevel::None)
+, m_callbackMask(CallbackMask::None)
 {
 }
 
@@ -59,27 +59,32 @@ ProcAddress AbstractFunction::address() const
     return m_address;
 }
 
-bool AbstractFunction::isEnabled(CallbackLevel level) const
+bool AbstractFunction::isEnabled(CallbackMask mask) const
 {
-    return (static_cast<unsigned char>(m_callbackLevel) & static_cast<unsigned char>(level)) == static_cast<unsigned char>(level);
+    return (static_cast<unsigned int>(m_callbackMask) & static_cast<unsigned int>(mask)) == static_cast<unsigned int>(mask);
 }
 
-void AbstractFunction::setCallbackLevel(CallbackLevel level)
+bool AbstractFunction::isAnyEnabled(CallbackMask mask) const
 {
-    m_callbackLevel = level;
+    return (static_cast<unsigned int>(m_callbackMask) ^ static_cast<unsigned int>(mask)) != 0;
 }
 
-void AbstractFunction::setCallbackLevelForAll(CallbackLevel level)
+void AbstractFunction::setCallbackMask(CallbackMask mask)
+{
+    m_callbackMask = mask;
+}
+
+void AbstractFunction::setCallbackMaskForAll(CallbackMask mask)
 {
     for (AbstractFunction * function : FunctionObjects::current().functions())
-        function->setCallbackLevel(level);
+        function->setCallbackMask(mask);
 }
 
-void AbstractFunction::setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList)
+void AbstractFunction::setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : FunctionObjects::current().functions())
         if (blackList.find(function->name()) == blackList.end())
-            function->setCallbackLevel(level);
+            function->setCallbackMask(mask);
 }
 
 void AbstractFunction::unresolved() const
