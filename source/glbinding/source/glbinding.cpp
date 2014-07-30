@@ -34,12 +34,17 @@ void initialize()
 
 void initialize(ContextId contextId, bool _useContext, bool _resolveFunctions)
 {
+    mutex.lock(); // TODO: use read lock
     if (g_FunctionObjectsMap.find(contextId) != g_FunctionObjectsMap.end())
+    {
+        mutex.unlock();
         return;
+    }
+    mutex.unlock();
 
     FunctionObjects * functions = new FunctionObjects();
 
-    mutex.lock();
+    mutex.lock(); // TODO: use write lock
     g_FunctionObjectsMap[contextId] = functions;
     mutex.unlock();
 
@@ -67,10 +72,14 @@ void useContext(ContextId contextId)
 {
     g_currentContextId = contextId;
 
+    mutex.lock(); // TODO: use read lock
     if (g_FunctionObjectsMap.find(g_currentContextId) == g_FunctionObjectsMap.end())
         initialize(g_currentContextId);
+    mutex.unlock();
 
+    mutex.lock(); // TODO: use read lock
     g_currentFunctionObjects = g_FunctionObjectsMap[g_currentContextId];
+    mutex.unlock();
 }
 
 
@@ -88,8 +97,13 @@ void finalizeCurrentContext()
 
 void finalizeContext(ContextId contextId)
 {
+    mutex.lock(); // TODO: use read lock
     delete g_FunctionObjectsMap[contextId];
+    mutex.unlock();
+
+    mutex.lock(); // TODO: use write lock
     g_FunctionObjectsMap.erase(contextId);
+    mutex.unlock();
 
     if (g_currentContextId == contextId)
     {

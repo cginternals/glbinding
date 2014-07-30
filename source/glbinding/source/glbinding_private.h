@@ -1,9 +1,8 @@
 #pragma once
 
-#include <glbinding/glbinding.h>
-#include <glbinding/FunctionObjects.h>
-
 namespace glbinding {
+
+class FunctionObjects;
 
 FunctionObjects & currentFunctionObjects();
 
