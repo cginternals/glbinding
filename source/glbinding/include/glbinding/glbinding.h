@@ -6,7 +6,7 @@
 namespace glbinding {
 
 GLBINDING_API void initialize();
-GLBINDING_API void initialize(ContextId contextId, bool useContext = true, bool resolveFunctions = false);
+GLBINDING_API void initialize(ContextId contextId, bool useContext = true, bool resolveFunctions = true);
 
 GLBINDING_API void resolveFunctions();
 
