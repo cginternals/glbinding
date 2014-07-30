@@ -79,6 +79,14 @@ def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % "\n".join(d))
 
+def genMetaBitfieldByString(bitfGroups, outputdir, outputfile):
+    
+    status(outputdir + outputfile)
+
+    map = [ (",\n"+tab).join([ '{ "%s", static_cast<GLbitfield>(%s::%s) }' % (e.name, g.name, e.name) for e in g.enums ]) for g in bitfGroups ]
+
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % ((",\n" + tab).join(map)))
 
 def genMetaEnumsByString(enums, outputdir, outputfile, type):
 
