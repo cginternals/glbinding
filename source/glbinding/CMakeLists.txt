@@ -52,6 +52,7 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
     ${include_path}/glbinding_api.h
+    ${include_path}/glbinding.h
 
     ${include_path}/gl/gl.h
     ${include_path}/gl/nogl.h
@@ -61,9 +62,11 @@ set(api_includes
     ${include_path}/gl/enum.h
     ${include_path}/gl/extension.h
     ${include_path}/gl/functions.h
-    ${include_path}/gl/initialize.h
     ${include_path}/gl/types.h
     ${include_path}/gl/values.h
+    ${include_path}/gl/types.inl
+    ${include_path}/gl/values.inl
+    ${include_path}/gl/boolean.inl
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
@@ -75,6 +78,7 @@ set(api_includes
     ${include_path}/Value.h
     ${include_path}/Value.hpp
     ${include_path}/Version.h
+    ${include_path}/SharedBitfield.hpp
 )
 
 # add featured headers
@@ -82,14 +86,15 @@ file(GLOB featured_includes ${include_path}/gl/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
-    ${source_path}/gl/initialize.cpp
+    ${source_path}/glbinding.cpp
+    ${source_path}/glbinding_private.h
+    
     ${source_path}/gl/types.cpp
     ${source_path}/gl/test.cpp
 
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/FunctionObjects.cpp
-    ${source_path}/FunctionObjects_Functions.cpp
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextInfo.cpp
     ${source_path}/Value.cpp

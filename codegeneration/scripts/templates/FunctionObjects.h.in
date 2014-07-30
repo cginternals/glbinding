@@ -12,20 +12,17 @@ namespace glbinding
 class GLBINDING_API FunctionObjects
 {
 public:
-    inline static const std::vector<AbstractFunction *> & functions() { return s_functions; }
+	FunctionObjects();
+	
+	static FunctionObjects & current();
 
-    static void initialize();
-    static void initialize(int context);
+	const std::vector<AbstractFunction *> & functions() const;
 
-    inline static int context() { return s_context; }
-    static void setContext(int context);
-
+public:
 %s
 
 protected:
-    static const std::vector<AbstractFunction *> s_functions;
-
-    static int s_context;
+    std::vector<AbstractFunction *> m_functions;
 };
 
 } // namespace glbinding

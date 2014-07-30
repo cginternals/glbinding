@@ -30,7 +30,7 @@ inline void coutFunc(const AbstractFunction * func)
     std::cout << "\t(0x" << reinterpret_cast<void *>(func->address()) << ") " << func->name() << std::endl;
 }
 
-int main(int, char *[])
+int main()
 {
     if (!glfwInit())
         return 1;
@@ -70,7 +70,7 @@ int main(int, char *[])
     std::map<GLextension, std::set<const AbstractFunction *>> funcsByExt;
     std::set<const AbstractFunction *> nonExtFuncs;
 
-    for (AbstractFunction * func : FunctionObjects::functions())
+    for (AbstractFunction * func : FunctionObjects::current().functions())
     {
         if (func->isResolved())
             ++resolved;
@@ -115,8 +115,8 @@ int main(int, char *[])
 
     std::cout << std::endl << std::endl << "[SUMMARY]" << std::endl << std::endl;
 
-    std::cout << "# Functions:     " << resolved << " of " << FunctionObjects::functions().size() << " resolved"
-        << " (" << (FunctionObjects::functions().size() - resolved) << " unresolved)" << std::endl;
+    std::cout << "# Functions:     " << resolved << " of " << FunctionObjects::current().functions().size() << " resolved"
+        << " (" << (FunctionObjects::current().functions().size() - resolved) << " unresolved)" << std::endl;
 
     std::cout << "                 " << assigned << " assigned to extensions";
 

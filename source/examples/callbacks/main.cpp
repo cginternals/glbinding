@@ -53,7 +53,7 @@ namespace
         )";
 }
 
-int main(int, char * [])
+int main()
 {
     if (!glfwInit())
         return 1;
@@ -70,6 +70,8 @@ int main(int, char * [])
     glfwMakeContextCurrent(window);
 
     // print some gl infos (query)
+
+    glbinding::initialize();
 
     std::cout << std::endl
         << "OpenGL Version:  " << ContextInfo::version() << std::endl
@@ -156,9 +158,7 @@ int main(int, char * [])
     // draw
     glViewport(0, 0, 320, 240);
 
-    // ToDo: operators here...
-    glClear(GL_COLOR_BUFFER_BIT);
-    glClear(GL_DEPTH_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glUseProgram(program);
 

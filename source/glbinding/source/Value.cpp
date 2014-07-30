@@ -30,17 +30,13 @@ void Value<gl::GLenum>::printOn(std::ostream & stream) const
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
 }
 
-template <>
+/*template <>
 void Value<gl::GLbitfield>::printOn(std::ostream & stream) const
 {
-    /*std::string name = Meta::getString(value);
-    stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));*/
-    /*std::bitset<sizeof(unsigned)*4> bitset(static_cast<unsigned>(value));
-    stream << bitset;*/
     std::stringstream ss;
     ss << "0x" << std::hex << static_cast<unsigned>(value);
     stream << ss.str();
-}
+}*/
 
 template <>
 void Value<gl::GLboolean>::printOn(std::ostream & stream) const

@@ -44,7 +44,7 @@ Value<T>::Value(T _value)
 template <typename T>
 void Value<T>::printOn(std::ostream & stream) const
 {
-    stream.operator<<(value);
+    stream << value;
 }
 
 template <typename Argument>

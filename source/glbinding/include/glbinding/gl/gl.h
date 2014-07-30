@@ -2,7 +2,7 @@
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/gl/initialize.h>
+#include <glbinding/glbinding.h>
 
 #include <glbinding/gl/extension.h>
 

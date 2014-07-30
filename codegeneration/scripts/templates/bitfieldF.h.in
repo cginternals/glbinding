@@ -5,6 +5,7 @@
 
 #include <glbinding/%a/bitfield.h>
 
+#include <glbinding/SharedBitfield.hpp>
 
 namespace %a%f
 {

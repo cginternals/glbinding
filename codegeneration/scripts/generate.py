@@ -167,7 +167,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genTypes_h                   (api, types, bitfGroups,  includedir_api, "types.h") 
     genTypesForward_h            (api, types, bitfGroups,  includedir_api, "types.inl") 
-    genTypes_cpp                 (api, types,              sourcedir_api,  "types.cpp")  
+    genTypes_cpp                 (api, types, bitfGroups,  sourcedir_api,  "types.cpp")  
 
     genBitfieldsAll              (api, enums,              includedir_api, "bitfield.h")
     genBitfieldsFeatureGrouped   (api, enums, features,    includedir_api, "bitfield?.h")
@@ -186,13 +186,13 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genFunctionObjects_h         (commands,           includedir, "FunctionObjects.h")
     genFunctionObjects_cpp       (commands,           sourcedir,  "FunctionObjects.cpp")
-    genFunctionList              (commands,           sourcedir,  "FunctionObjects_Functions.cpp")
 
     genVersions                  (features,           sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
-    genMetaStringsByEnum         (enums,              sourcedir,  "Meta_StringsByBitfield.cpp", "GLbitfield")
-    genMetaEnumsByString         (enums,              sourcedir,  "Meta_BitfieldsByString.cpp", "GLbitfield")
+    genMetaMaps		         (enums,              sourcedir,  "Meta_Maps.h", bitfGroups)
+    genMetaStringsByBitfield     (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
+    genMetaBitfieldByString      (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
     genMetaStringsByEnum         (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
     genMetaEnumsByString         (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
     genMetaStringsByEnum         (enums,              sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")

@@ -35,12 +35,10 @@ public:
     virtual ~AbstractFunction();
 
     void initialize();
-    void initialize(int context);
 
     const char * name() const;
 
     bool isResolved() const;
-    bool isResolved(int context) const;
 
     ProcAddress address() const;
 
@@ -64,20 +62,6 @@ public:
     static void setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList);
 
 protected:
-    struct State
-    {
-        State();
-
-        ProcAddress address;
-        bool initialized;
-    };
-
-    bool hasState(int context) const;
-    bool hasState() const;
-
-    State & getState(int context) const;
-    State & currentState() const;
-
 
     bool callbacksEnabled() const;
     bool isEnabled(CallbackLevel level);
@@ -90,9 +74,9 @@ protected:
 
 protected:
     const char * m_name;
+    ProcAddress m_address;
+    bool m_initialized;
     CallbackLevel m_callbackLevel;
-
-    mutable std::vector<State> m_states;
 
     static Callback s_beforeCallback;
     static Callback s_afterCallback;
