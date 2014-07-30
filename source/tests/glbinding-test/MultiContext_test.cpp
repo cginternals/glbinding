@@ -53,7 +53,7 @@ TEST_F(MultiContext_test, Test)
 
     glfwMakeContextCurrent(window1);
 
-#ifdef _MSC_VER
+#ifdef  _WIN32
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
     EXPECT_EQ(nullptr, FunctionObjects::DispatchCompute.address());
 #elif defined(MAC_OS)
@@ -66,7 +66,7 @@ TEST_F(MultiContext_test, Test)
 
     glfwMakeContextCurrent(window2);
 
-#ifdef _MSC_VER
+#ifdef _WIN32
     EXPECT_EQ(Version(4, 4), ContextInfo::version());
     EXPECT_NE(nullptr, FunctionObjects::DispatchCompute.address());
 #elif defined(MAC_OS)
