@@ -2,6 +2,7 @@
 
 #include <glbinding/glbinding_api.h>
 
+#include <string>
 #include <iostream>
 
 namespace glbinding 
@@ -14,6 +15,8 @@ public:
     virtual ~AbstractValue();
 
     virtual void printOn(std::ostream & stream) const = 0;
+
+    std::string asString() const;
 };
 
 } // namespace glbinding

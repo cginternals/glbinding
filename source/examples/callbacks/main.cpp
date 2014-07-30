@@ -1,14 +1,18 @@
 
 #include <iostream>
 #include <algorithm>
+#include <thread>
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
 #include <glbinding/AbstractFunction.h>
+#include <glbinding/callbacks.h>
 #include <glbinding/Meta.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
+
+#include <glbinding/FunctionObjects.h>
 
 #include <glbinding/gl/gl32.h>
 
@@ -53,73 +57,8 @@ namespace
         )";
 }
 
-int main()
+void doGLStuff(GLFWwindow * window)
 {
-    if (!glfwInit())
-        return 1;
-
-    glfwSetErrorCallback(error);
-
-    GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
-
-    glfwMakeContextCurrent(window);
-
-    // print some gl infos (query)
-
-    glbinding::initialize();
-
-    std::cout << std::endl
-        << "OpenGL Version:  " << ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
-
-    // initialize(); // rely on lazy init
-
-
-    AbstractFunction::setCallbackLevelForAll(AbstractFunction::CallbackLevel::All);
-
-    AbstractFunction::setUnresolvedCallback([](const AbstractFunction & f) 
-        { std::cout << "Calling unresolved function: " << f.name() << std::endl; });
-
-    AbstractFunction::setBeforeCallback([](const AbstractFunction & f) 
-        { std::cout << f.name(); });
-
-    AbstractFunction::setAfterCallback([](const AbstractFunction &) 
-        { std::cout << std::endl; });
-
-    AbstractFunction::setParametersCallback([](const AbstractFunction &
-        , const std::vector<AbstractValue *> & parameters) 
-        {
-            std::cout << "(";
-
-            for (unsigned i = 0; i < parameters.size(); ++i)
-            {
-                parameters[i]->printOn(std::cout);
-                if (i < parameters.size() - 1)
-                    std::cout << ", ";
-            }
-            std::cout << ")";
-        });
-    
-    AbstractFunction::setReturnValueCallback([](const AbstractFunction &
-        , const AbstractValue * returnValue) 
-        {
-            if (returnValue)
-            {
-                std::cout << " -> ";
-                returnValue->printOn(std::cout);
-            }
-        });
-
-
-    // do gl stuff
-
     // setup
 
     GLuint program = glCreateProgram();
@@ -169,12 +108,64 @@ int main()
 
     glfwSwapBuffers(window);
 
+    //std::this_thread::sleep_for(std::chrono::seconds(2));
+
     // clean up
 
     glDeleteProgram(program);
     glDeleteBuffers(1, &buffer);
     glDeleteVertexArrays(1, &vao);
+}
 
+int main()
+{
+    if (!glfwInit())
+        return 1;
+
+    glfwSetErrorCallback(error);
+
+    GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
+
+    glfwMakeContextCurrent(window);
+
+    // print some gl infos (query)
+
+    glbinding::initialize();
+
+    std::cout << std::endl
+        << "OpenGL Version:  " << ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
+        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+
+    AbstractFunction::setCallbackMaskForAll(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+
+    setAfterCallback([](const FunctionCall & call) {
+        std::cout << call.function.name() << "(";
+
+        for (unsigned i = 0; i < call.parameters.size(); ++i)
+        {
+            std::cout << call.parameters[i]->asString();
+            if (i < call.parameters.size() - 1)
+                std::cout << ", ";
+        }
+
+        std::cout << ")";
+
+        if (call.returnValue)
+        {
+            std::cout << " -> " << call.returnValue->asString();
+        }
+
+        std::cout << std::endl;
+    });
+
+    doGLStuff(window);
 
     std::cout << std::endl;
 

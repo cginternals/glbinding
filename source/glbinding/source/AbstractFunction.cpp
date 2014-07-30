@@ -9,21 +9,16 @@
 #include <glbinding/FunctionObjects.h>
 #include <glbinding/Meta.h>
 
+#include "callbacks_private.h"
+
 namespace glbinding 
 {
-
-AbstractFunction::Callback AbstractFunction::s_beforeCallback;
-AbstractFunction::Callback AbstractFunction::s_afterCallback;
-AbstractFunction::Callback AbstractFunction::s_unresolvedCallback;
-AbstractFunction::ParametersCallback AbstractFunction::s_parametersCallback;
-AbstractFunction::ReturnValueCallback AbstractFunction::s_returnValueCallback;
-
 
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
 , m_address(nullptr)
 , m_initialized(false)
-, m_callbackLevel(CallbackLevel::None)
+, m_callbackMask(CallbackMask::None)
 {
 }
 
@@ -64,92 +59,46 @@ ProcAddress AbstractFunction::address() const
     return m_address;
 }
 
-bool AbstractFunction::callbacksEnabled() const
+bool AbstractFunction::isEnabled(CallbackMask mask) const
 {
-    return m_callbackLevel != CallbackLevel::None;
+    return (static_cast<unsigned int>(m_callbackMask) & static_cast<unsigned int>(mask)) == static_cast<unsigned int>(mask);
 }
 
-bool AbstractFunction::isEnabled(CallbackLevel level)
+bool AbstractFunction::isAnyEnabled(CallbackMask mask) const
 {
-    return (static_cast<unsigned char>(m_callbackLevel) & static_cast<unsigned char>(level)) == static_cast<unsigned char>(level);
+    return (static_cast<unsigned int>(m_callbackMask) ^ static_cast<unsigned int>(mask)) != 0;
 }
 
-void AbstractFunction::setCallbackLevel(CallbackLevel level)
+void AbstractFunction::setCallbackMask(CallbackMask mask)
 {
-    m_callbackLevel = level;
+    m_callbackMask = mask;
 }
 
-void AbstractFunction::setCallbackLevelForAll(CallbackLevel level)
+void AbstractFunction::setCallbackMaskForAll(CallbackMask mask)
 {
     for (AbstractFunction * function : FunctionObjects::current().functions())
-        function->setCallbackLevel(level);
+        function->setCallbackMask(mask);
 }
 
-void AbstractFunction::setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList)
+void AbstractFunction::setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : FunctionObjects::current().functions())
         if (blackList.find(function->name()) == blackList.end())
-            function->setCallbackLevel(level);
+            function->setCallbackMask(mask);
 }
 
-void AbstractFunction::setBeforeCallback(Callback callback)
+void AbstractFunction::unresolved() const
 {
-    s_beforeCallback = callback;
+    glbinding::unresolved(this);
 }
 
-void AbstractFunction::setAfterCallback(Callback callback)
+void AbstractFunction::before(const FunctionCall & call) const
 {
-    s_afterCallback = callback;
+    glbinding::before(call);
 }
-
-void AbstractFunction::setUnresolvedCallback(Callback callback)
+void AbstractFunction::after(const FunctionCall & call) const
 {
-    s_unresolvedCallback = callback;
-}
-
-void AbstractFunction::setParametersCallback(ParametersCallback callback)
-{
-    s_parametersCallback = callback;
-}
-
-void AbstractFunction::setReturnValueCallback(ReturnValueCallback callback)
-{
-    s_returnValueCallback = callback;
-}
-
-void AbstractFunction::before()
-{
-    if (s_beforeCallback)
-        s_beforeCallback(*this);
-}
-
-void AbstractFunction::after()
-{
-    if (s_afterCallback)
-        s_afterCallback(*this);
-}
-
-void AbstractFunction::parameters(const std::vector<AbstractValue*> & values)
-{
-    if (s_parametersCallback)
-        s_parametersCallback(*this, values);
-
-    for (AbstractValue * value : values)
-        delete value;
-}
-
-void AbstractFunction::returnValue(const AbstractValue * value)
-{
-    if (s_returnValueCallback)
-        s_returnValueCallback(*this, value);
-
-    delete value;
-}
-
-void AbstractFunction::unresolved()
-{
-    if (s_unresolvedCallback)
-        s_unresolvedCallback(*this);
+    glbinding::after(call);
 }
 
 } // namespace glbinding

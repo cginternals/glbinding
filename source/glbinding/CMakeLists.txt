@@ -53,6 +53,7 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 set(api_includes
     ${include_path}/glbinding_api.h
     ${include_path}/glbinding.h
+    ${include_path}/callbacks.h
 
     ${include_path}/gl/gl.h
     ${include_path}/gl/nogl.h
@@ -71,6 +72,7 @@ set(api_includes
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
     ${include_path}/Function.h
+    ${include_path}/Function.hpp
     ${include_path}/FunctionObjects.h
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
@@ -89,6 +91,8 @@ list(APPEND api_includes ${featured_includes})
 set(sources
     ${source_path}/glbinding.cpp
     ${source_path}/glbinding_private.h
+    ${source_path}/callbacks.cpp
+    ${source_path}/callbacks_private.h
     
     ${source_path}/gl/types.cpp
     ${source_path}/gl/test.cpp
