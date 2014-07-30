@@ -12,6 +12,8 @@
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
+#include <glbinding/FunctionObjects.h>
+
 #include <glbinding/gl/gl32.h>
 
 

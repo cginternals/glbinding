@@ -12,7 +12,7 @@ namespace
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
 {    
-    ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments... arguments) const
+    ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) const
     {
         glbinding::FunctionCall functionCall(function);
 
@@ -22,7 +22,15 @@ struct FunctionHelper
         if (function->isEnabled(glbinding::CallbackMask::Before))
             function->before(functionCall);
 
+        if (!function->m_beforeCallbacks.empty())
+            for (auto callback : function->m_beforeCallbacks)
+                callback(std::forward<Arguments>(arguments)...);
+
         ReturnType value = reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+
+        if (!function->m_afterCallbacks.empty())
+            for (auto callback : function->m_afterCallbacks)
+                callback(std::forward<Arguments>(arguments)..., value);
 
         if (function->isEnabled(glbinding::CallbackMask::After))
         {
@@ -39,7 +47,7 @@ struct FunctionHelper
 template <typename... Arguments>
 struct FunctionHelper<void, Arguments...>
 {
-    void call(const glbinding::Function<void, Arguments...> * function, Arguments... arguments) const
+    void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments) const
     {
         glbinding::FunctionCall functionCall(function);
 
@@ -49,7 +57,15 @@ struct FunctionHelper<void, Arguments...>
         if (function->isEnabled(glbinding::CallbackMask::Before))
             function->before(functionCall);
 
+        if (!function->m_beforeCallbacks.empty())
+            for (auto callback : function->m_beforeCallbacks)
+                callback(std::forward<Arguments>(arguments)...);
+
         reinterpret_cast<typename glbinding::Function<void, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+
+        if (!function->m_afterCallbacks.empty())
+            for (auto callback : function->m_afterCallbacks)
+                callback(std::forward<Arguments>(arguments)...);
 
         if (function->isEnabled(glbinding::CallbackMask::After))
             function->after(functionCall);
@@ -87,6 +103,18 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments
 
          return ReturnType();
     }
+}
+
+template <typename ReturnType, typename... Arguments>
+void Function<ReturnType, Arguments...>::addBeforeCallback(BeforeCallback callback)
+{
+    m_beforeCallbacks.push_back(callback);
+}
+
+template <typename ReturnType, typename... Arguments>
+void Function<ReturnType, Arguments...>::addAfterCallback(AfterCallback callback)
+{
+    m_afterCallbacks.push_back(callback);
 }
 
 } // namespace glbinding
