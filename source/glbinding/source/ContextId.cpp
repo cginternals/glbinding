@@ -4,7 +4,7 @@
 #ifdef WIN32
 #include <windows.h>
 #elif __APPLE__
-//#include <...>
+#include <OpenGL/OpenGL.h>
 #else
 #include <GL/glxew.h>
 #endif
@@ -20,7 +20,8 @@ ContextId getCurrentContextId()
     const HGLRC context = wglGetCurrentContext();
     id = reinterpret_cast<ContextId>(context);
 #elif __APPLE__
-
+    CGLContextObj contextObj = CGLGetCurrentContext();
+    id = reinterpret_cast<ContextId>(contextObj);
 #else
     const GLXContext context = glXGetCurrentContext();
     id = reinterpret_cast<ContextId>(context);

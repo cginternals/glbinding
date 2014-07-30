@@ -13,8 +13,8 @@ namespace glbinding {
 
 namespace {
 
-thread_local ContextId g_currentContextId = 0;
-thread_local FunctionObjects * g_currentFunctionObjects = nullptr;
+__thread ContextId g_currentContextId = 0;
+__thread FunctionObjects * g_currentFunctionObjects = nullptr;
 
 std::mutex mutex;
 std::unordered_map<ContextId, FunctionObjects*> g_FunctionObjectsMap;
