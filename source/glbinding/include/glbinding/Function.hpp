@@ -12,21 +12,25 @@ namespace
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
 {    
-    ReturnType call(glbinding::Function<ReturnType, Arguments...> & function, Arguments... arguments) const
+    ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments... arguments) const
     {
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Before))
-            function.before();
+        glbinding::FunctionCall call(function);
 
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Parameters))
-            function.parameters(glbinding::createValues(std::forward<Arguments>(arguments)...));
+        if (function->isEnabled(glbinding::CallbackLevel::EnableParametersAndReturnValue))
+            call.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
 
-        ReturnType value = reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
+        if (function->isEnabled(glbinding::CallbackLevel::Before))
+            function->before(call);
 
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::ReturnValue))
-            function.returnValue(glbinding::createValue(value));
+        ReturnType value = reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
 
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::After))
-            function.after();
+        if (function->isEnabled(glbinding::CallbackLevel::After))
+        {
+            if (function->isEnabled(glbinding::CallbackLevel::EnableParametersAndReturnValue))
+                call.returnValue = glbinding::createValue(value);
+
+            function->after(call);
+        }
 
         return value;
     }
@@ -35,21 +39,20 @@ struct FunctionHelper
 template <typename... Arguments>
 struct FunctionHelper<void, Arguments...>
 {
-    void call(glbinding::Function<void, Arguments...> & function, Arguments... arguments) const
+    void call(const glbinding::Function<void, Arguments...> * function, Arguments... arguments) const
     {
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Before))
-            function.before();
+        glbinding::FunctionCall call(function);
 
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::Parameters))
-            function.parameters(glbinding::createValues(std::forward<Arguments>(arguments)...));
+        if (function->isEnabled(glbinding::CallbackLevel::EnableParametersAndReturnValue))
+            call.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
 
-        reinterpret_cast<typename glbinding::Function<void, Arguments...>::Signature>(function.address())(std::forward<Arguments>(arguments)...);
+        if (function->isEnabled(glbinding::CallbackLevel::Before))
+            function->before(call);
 
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::ReturnValue))
-            function.returnValue(nullptr);
+        reinterpret_cast<typename glbinding::Function<void, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
 
-        if (function.isEnabled(glbinding::AbstractFunction::CallbackLevel::After))
-            function.after();
+        if (function->isEnabled(glbinding::CallbackLevel::After))
+            function->after(call);
     }
 };
 
@@ -66,20 +69,20 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 }
 
 template <typename ReturnType, typename... Arguments>
-ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments)
+ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments) const
 {
     ProcAddress myAddress = address();
 
     if (myAddress != nullptr)
     {
-        if (!callbacksEnabled())
-            return reinterpret_cast<Signature>(myAddress)(std::forward<Arguments>(arguments)...);
+        if (isEnabled(CallbackLevel::Before) || isEnabled(CallbackLevel::After))
+            return FunctionHelper<ReturnType, Arguments...>().call(this, std::forward<Arguments>(arguments)...);
         else
-            return FunctionHelper<ReturnType, Arguments...>().call(*this, std::forward<Arguments>(arguments)...);
+            return reinterpret_cast<Signature>(myAddress)(std::forward<Arguments>(arguments)...);
     }
     else
     {
-         if (callbacksEnabled())
+         if (isEnabled(CallbackLevel::Unresolved))
             unresolved();
 
          return ReturnType();

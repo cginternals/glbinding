@@ -19,7 +19,7 @@ public:
 
     Function(const char * name);
 
-    ReturnType operator()(Arguments... arguments);
+    ReturnType operator()(Arguments... arguments) const;
 };
 
 } // namespace glbinding

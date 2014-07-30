@@ -82,18 +82,18 @@ int main()
     // initialize(); // rely on lazy init
 
 
-    AbstractFunction::setCallbackLevelForAll(AbstractFunction::CallbackLevel::All);
+    AbstractFunction::setCallbackLevelForAll(CallbackLevel::Before | CallbackLevel::After | CallbackLevel::EnableParametersAndReturnValue);
 
-    AbstractFunction::setUnresolvedCallback([](const AbstractFunction & f) 
-        { std::cout << "Calling unresolved function: " << f.name() << std::endl; });
+//    setUnresolvedCallback([](const AbstractFunction & f)
+//        { std::cout << "Calling unresolved function: " << f.name() << std::endl; });
 
-    AbstractFunction::setBeforeCallback([](const AbstractFunction & f) 
+    setBeforeCallback([](const AbstractFunction & f)
         { std::cout << f.name(); });
 
-    AbstractFunction::setAfterCallback([](const AbstractFunction &) 
+    setAfterCallback([](const AbstractFunction &)
         { std::cout << std::endl; });
 
-    AbstractFunction::setParametersCallback([](const AbstractFunction &
+    /*AbstractFunction::setParametersCallback([](const AbstractFunction &
         , const std::vector<AbstractValue *> & parameters) 
         {
             std::cout << "(";
@@ -115,7 +115,7 @@ int main()
                 std::cout << " -> ";
                 returnValue->printOn(std::cout);
             }
-        });
+        });*/
 
 
     // do gl stuff
