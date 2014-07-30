@@ -1,6 +1,6 @@
 
-set(target multicontext)
-message(STATUS "Example ${target}")
+set(target glbinding-test)
+message(STATUS "Test ${target}")
 
 #
 # External libraries
@@ -21,7 +21,6 @@ include_directories(
 include_directories(
     BEFORE
     ${CMAKE_SOURCE_DIR}/source/glbinding/include
-    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 #
@@ -31,16 +30,10 @@ include_directories(
 set(libs
     ${OPENGL_LIBRARIES}
     ${GLFW_LIBRARY}
+    ${GMOCK_LIBRARIES}
+    ${GTEST_LIBRARIES}
     glbinding
 )
-
-#
-# Compiler definitions
-#
-
-if (OPTION_BUILD_STATIC)
-    add_definitions("-DGLBINDING_STATIC")
-endif()
 
 #
 # Sources
@@ -48,6 +41,7 @@ endif()
 
 set(sources
     main.cpp
+    MultiContext_test.cpp
 )
 
 #
@@ -67,14 +61,5 @@ set_target_properties(${target}
     COMPILE_FLAGS               "${DEFAULT_COMPILE_FLAGS}"
     LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
+    LINK_FLAGS          "${DEFAULT_LINKER_FLAGS}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
-
-#
-# Deployment
-#
-
-install(TARGETS ${target}
-    RUNTIME DESTINATION ${INSTALL_EXAMPLES}
-#   LIBRARY DESTINATION ${INSTALL_SHARED}
-#   ARCHIVE DESTINATION ${INSTALL_LIB}
-)
