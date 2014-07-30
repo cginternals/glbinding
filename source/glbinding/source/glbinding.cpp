@@ -8,13 +8,18 @@
 #include <mutex>
 #include <cassert>
 
+#ifdef _MSC_VER
+#define THREAD_LOCAL  __declspec(thread)
+#else
+#define THREAD_LOCAL __thread
+#endif
 
 namespace glbinding {
 
 namespace {
 
-__thread ContextId g_currentContextId = 0;
-__thread FunctionObjects * g_currentFunctionObjects = nullptr;
+THREAD_LOCAL ContextId g_currentContextId = 0;
+THREAD_LOCAL FunctionObjects * g_currentFunctionObjects = nullptr;
 
 std::mutex mutex;
 std::unordered_map<ContextId, FunctionObjects*> g_FunctionObjectsMap;
