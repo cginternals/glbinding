@@ -52,29 +52,31 @@ TEST_F(MultiContext_test, Test)
     EXPECT_NE(nullptr, window2);
 
     glfwMakeContextCurrent(window1);
+    glbinding::initialize(1);
 
 #ifdef  _WIN32
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
-    EXPECT_EQ(nullptr, FunctionObjects::DispatchCompute.address());
+    EXPECT_EQ(nullptr, FunctionObjects::current().DispatchCompute.address());
 #elif defined(MAC_OS)
     EXPECT_EQ(Version(4, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, FunctionObjects::DispatchCompute.address());
+    EXPECT_EQ(nullptr, FunctionObjects::current().DispatchCompute.address());
 #else // Linux
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
-    EXPECT_NE(nullptr, FunctionObjects::DispatchCompute.address());
+    EXPECT_NE(nullptr, FunctionObjects::current().DispatchCompute.address());
 #endif
 
     glfwMakeContextCurrent(window2);
+    glbinding::initialize(2);
 
 #ifdef _WIN32
     EXPECT_EQ(Version(4, 4), ContextInfo::version());
-    EXPECT_NE(nullptr, FunctionObjects::DispatchCompute.address());
+    EXPECT_NE(nullptr, FunctionObjects::current().DispatchCompute.address());
 #elif defined(MAC_OS)
     EXPECT_EQ(Version(2, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, FunctionObjects::DispatchCompute.address());
+    EXPECT_EQ(nullptr, FunctionObjects::current().DispatchCompute.address());
 #else // Linux
     EXPECT_EQ(Version(4, 4), ContextInfo::version());
-    EXPECT_NE(nullptr, FunctionObjects::DispatchCompute.address());
+    EXPECT_NE(nullptr, FunctionObjects::current().DispatchCompute.address());
 #endif
 
     glfwTerminate();
