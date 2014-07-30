@@ -32,24 +32,35 @@ void initialize()
     initialize(getCurrentContextId());
 }
 
-void initialize(ContextId contextId, bool use)
+void initialize(ContextId contextId, bool _useContext, bool _resolveFunctions)
 {
     if (g_FunctionObjectsMap.find(contextId) != g_FunctionObjectsMap.end())
         return;
 
     FunctionObjects * functions = new FunctionObjects();
 
-    for (AbstractFunction * function : functions->functions())
-    {
-        function->initialize();
-    }
-
     mutex.lock();
     g_FunctionObjectsMap[contextId] = functions;
     mutex.unlock();
 
-    if (use)
+    if (_useContext)
         useContext(contextId);
+
+    if (_resolveFunctions)
+        resolveFunctions();
+}
+
+void resolveFunctions()
+{
+    for (AbstractFunction * function : currentFunctionObjects().functions())
+    {
+        function->resolveAddress();
+    }
+}
+
+void useCurrentContext()
+{
+    useContext(getCurrentContextId());
 }
 
 void useContext(ContextId contextId)
@@ -62,16 +73,29 @@ void useContext(ContextId contextId)
     g_currentFunctionObjects = g_FunctionObjectsMap[g_currentContextId];
 }
 
-//void releaseContext()
-//{
-
-//}
 
 FunctionObjects & currentFunctionObjects()
 {
     assert(g_currentFunctionObjects != nullptr);
 
     return *g_currentFunctionObjects;
+}
+
+void finalizeCurrentContext()
+{
+    finalizeContext(getCurrentContextId());
+}
+
+void finalizeContext(ContextId contextId)
+{
+    delete g_FunctionObjectsMap[contextId];
+    g_FunctionObjectsMap.erase(contextId);
+
+    if (g_currentContextId == contextId)
+    {
+        g_currentFunctionObjects = nullptr;
+        g_currentContextId = 0;
+    }
 }
 
 } // namespace glbinding

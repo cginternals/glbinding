@@ -34,7 +34,7 @@ public:
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
 
-    void initialize();
+    void resolveAddress();
 
     const char * name() const;
 

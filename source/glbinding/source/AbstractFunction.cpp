@@ -32,7 +32,7 @@ AbstractFunction::~AbstractFunction()
 }
 
 
-void AbstractFunction::initialize()
+void AbstractFunction::resolveAddress()
 {
     if (!m_initialized)
     {
@@ -59,7 +59,7 @@ bool AbstractFunction::isResolved() const
 ProcAddress AbstractFunction::address() const
 {
     if (!m_initialized)
-        const_cast<AbstractFunction*>(this)->initialize();
+        const_cast<AbstractFunction*>(this)->resolveAddress();
 
     return m_address;
 }
