@@ -74,6 +74,7 @@ set(api_includes
     ${include_path}/FunctionObjects.h
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
+    ${include_path}/ContextId.h
     ${include_path}/ContextInfo.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
@@ -96,6 +97,7 @@ set(sources
     ${source_path}/AbstractValue.cpp
     ${source_path}/FunctionObjects.cpp
     ${source_path}/ProcAddress.cpp
+    ${source_path}/ContextId.cpp
     ${source_path}/ContextInfo.cpp
     ${source_path}/Value.cpp
     ${source_path}/Version.cpp

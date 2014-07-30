@@ -8,6 +8,7 @@
 #include <mutex>
 #include <cassert>
 
+
 namespace glbinding {
 
 namespace {
@@ -23,7 +24,7 @@ std::unordered_map<ContextId, FunctionObjects*> g_FunctionObjectsMap;
 
 void initialize()
 {
-    initialize(0);
+    initialize(getCurrentContextId());
 }
 
 void initialize(ContextId contextId, bool use)

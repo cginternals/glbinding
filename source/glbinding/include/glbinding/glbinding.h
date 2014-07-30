@@ -1,14 +1,15 @@
 #pragma once
 
+#include <glbinding/glbinding_api.h>
+#include <glbinding/ContextId.h>
+
 namespace glbinding {
 
-using ContextId = long long;
+GLBINDING_API void initialize();
 
-void initialize();
+GLBINDING_API void initialize(ContextId contextId, bool use = true);
 
-void initialize(ContextId contextId, bool use = true);
-
-void useContext(ContextId contextId);
-//void releaseContext();
+GLBINDING_API void useContext(ContextId contextId);
+//GLBINDING_API void releaseContext();
 
 } // namespace glbinding

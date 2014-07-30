@@ -52,7 +52,7 @@ TEST_F(MultiContext_test, Test)
     EXPECT_NE(nullptr, window2);
 
     glfwMakeContextCurrent(window1);
-    glbinding::initialize(1);
+    glbinding::initialize();
 
 #ifdef  _WIN32
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
@@ -66,7 +66,7 @@ TEST_F(MultiContext_test, Test)
 #endif
 
     glfwMakeContextCurrent(window2);
-    glbinding::initialize(2);
+    glbinding::initialize();
 
 #ifdef _WIN32
     EXPECT_EQ(Version(4, 4), ContextInfo::version());
