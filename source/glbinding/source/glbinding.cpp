@@ -1,0 +1,71 @@
+
+#include <glbinding/glbinding.h>
+#include "glbinding_private.h"
+
+#include <glbinding/FunctionObjects.h>
+
+#include <unordered_map>
+#include <mutex>
+#include <cassert>
+
+namespace glbinding {
+
+namespace {
+
+thread_local ContextId g_currentContextId = 0;
+thread_local FunctionObjects * g_currentFunctionObjects = nullptr;
+
+std::mutex mutex;
+std::unordered_map<ContextId, FunctionObjects*> g_FunctionObjectsMap;
+
+}
+
+
+void initialize()
+{
+    initialize(0);
+}
+
+void initialize(ContextId contextId, bool use)
+{
+    if (g_FunctionObjectsMap.find(contextId) != g_FunctionObjectsMap.end())
+        return;
+
+    FunctionObjects * functions = new FunctionObjects();
+
+    for (AbstractFunction * function : functions->functions())
+    {
+        function->initialize();
+    }
+
+    mutex.lock();
+    g_FunctionObjectsMap[contextId] = functions;
+    mutex.unlock();
+
+    if (use)
+        useContext(contextId);
+}
+
+void useContext(ContextId contextId)
+{
+    g_currentContextId = contextId;
+
+    if (g_FunctionObjectsMap.find(g_currentContextId) == g_FunctionObjectsMap.end())
+        initialize(g_currentContextId);
+
+    g_currentFunctionObjects = g_FunctionObjectsMap[g_currentContextId];
+}
+
+//void releaseContext()
+//{
+
+//}
+
+FunctionObjects & currentFunctionObjects()
+{
+    assert(g_currentFunctionObjects != nullptr);
+
+    return *g_currentFunctionObjects;
+}
+
+} // namespace glbinding

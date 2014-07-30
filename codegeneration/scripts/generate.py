@@ -186,7 +186,6 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genFunctionObjects_h         (commands,           includedir, "FunctionObjects.h")
     genFunctionObjects_cpp       (commands,           sourcedir,  "FunctionObjects.cpp")
-    genFunctionList              (commands,           sourcedir,  "FunctionObjects_Functions.cpp")
 
     genVersions                  (features,           sourcedir,  "Version_ValidVersions.cpp")
 

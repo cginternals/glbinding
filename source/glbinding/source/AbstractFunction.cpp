@@ -21,13 +21,9 @@ AbstractFunction::ReturnValueCallback AbstractFunction::s_returnValueCallback;
 
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
+, m_address(nullptr)
+, m_initialized(false)
 , m_callbackLevel(CallbackLevel::None)
-{
-}
-
-AbstractFunction::State::State()
-: address(nullptr)
-, initialized(false)
 {
 }
 
@@ -35,42 +31,13 @@ AbstractFunction::~AbstractFunction()
 {
 }
 
-bool AbstractFunction::hasState() const
-{
-    return hasState(FunctionObjects::context());
-}
-
-bool AbstractFunction::hasState(int context) const
-{
-    return m_states.size() > static_cast<unsigned>(context);
-}
-
-AbstractFunction::State & AbstractFunction::getState(int context) const
-{
-    if (m_states.size() <= static_cast<std::size_t>(context))
-        m_states.resize(static_cast<std::size_t>(context) + 1);
-
-    return m_states[static_cast<std::size_t>(context)];
-}
-
-AbstractFunction::State & AbstractFunction::currentState() const
-{
-    return getState(FunctionObjects::context());
-}
 
 void AbstractFunction::initialize()
 {
-    initialize(FunctionObjects::context());
-}
-
-void AbstractFunction::initialize(int context)
-{
-    State & state = getState(context);
-
-    if (!state.initialized)
+    if (!m_initialized)
     {
-        state.address = getProcAddress(m_name);
-        state.initialized = true;
+        m_address = getProcAddress(m_name);
+        m_initialized = true;
     }
 }
 
@@ -86,25 +53,15 @@ const char * AbstractFunction::name() const
 
 bool AbstractFunction::isResolved() const
 {
-    return isResolved(FunctionObjects::context());
-}
-
-bool AbstractFunction::isResolved(int context) const
-{
-    if (!hasState(context))
-        return false;
-
-    return currentState().address != nullptr;
+    return m_address != nullptr;
 }
 
 ProcAddress AbstractFunction::address() const
 {
-    const State & state = currentState();
-
-    if (!state.initialized)
+    if (!m_initialized)
         const_cast<AbstractFunction*>(this)->initialize();
 
-    return state.address;
+    return m_address;
 }
 
 bool AbstractFunction::callbacksEnabled() const
@@ -124,13 +81,13 @@ void AbstractFunction::setCallbackLevel(CallbackLevel level)
 
 void AbstractFunction::setCallbackLevelForAll(CallbackLevel level)
 {
-    for (AbstractFunction * function : FunctionObjects::functions())
+    for (AbstractFunction * function : FunctionObjects::current().functions())
         function->setCallbackLevel(level);
 }
 
 void AbstractFunction::setCallbackLevelForAllExcept(CallbackLevel level, const std::set<std::string> & blackList)
 {
-    for (AbstractFunction * function : FunctionObjects::functions())
+    for (AbstractFunction * function : FunctionObjects::current().functions())
         if (blackList.find(function->name()) == blackList.end())
             function->setCallbackLevel(level);
 }
