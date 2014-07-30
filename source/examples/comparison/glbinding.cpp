@@ -14,8 +14,9 @@ void glbindingInitialize()
 
 void glbindingEnableErrorCheck(bool /*on*/)
 {
-    glbinding::AbstractFunction::setCallbackLevelForAllExcept(glbinding::AbstractFunction::CallbackLevel::After, { "glGetError" });
-    glbinding::AbstractFunction::setAfterCallback([](const glbinding::AbstractFunction &) {
+    glbinding::AbstractFunction::setCallbackMaskForAllExcept(glbinding::CallbackMask::After, { "glGetError" });
+
+    glbinding::setAfterCallback([](const glbinding::FunctionCall &) {
         gl::GLenum error = gl::glGetError();
         if (error != gl::GL_NO_ERROR)
         {
