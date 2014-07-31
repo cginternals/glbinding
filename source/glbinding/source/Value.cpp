@@ -60,7 +60,7 @@ void Value<const gl::GLchar *>::printOn(std::ostream & stream) const
 }
 
 template <>
-void Value<const gl::GLuint_array_2>::printOn(std::ostream & stream) const
+void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) const
 {
     std::stringstream ss;
     ss << "{ " << value[0] << ", " << value[1] << " }";

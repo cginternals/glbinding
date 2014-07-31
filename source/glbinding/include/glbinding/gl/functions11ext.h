@@ -5,11 +5,15 @@
 #include <glbinding/gl/nogl.h>
 
 #include <glbinding/gl/functions.h>
+#include <glbinding/gl/values.h>
+#include <glbinding/gl/boolean.h>
 
 namespace gl11ext
 {
 
 #include <glbinding/gl/types.inl>
+#include <glbinding/gl/boolean.inl>
+#include <glbinding/gl/values.inl>
 
 } // namespace gl11ext
 
