@@ -1,3 +1,7 @@
+import sys
+
+import xml.etree.ElementTree as ET
+
 from classes.Feature import *
 from classes.Extension import *
 
@@ -10,7 +14,16 @@ class Parameter:
 
         self.name = xml.find("name").text
 
-        self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
+        i = -1
+
+        # check for array params (which should not be used anyways, but ...)
+        self.array = "" # this extends the type and should be used everywhere
+        if list(xml.itertext())[-1] != self.name:
+            self.array = list(xml.itertext())[-1]
+            i = -2
+
+        self.type = " ".join([t.strip() for t in xml.itertext()][:i]).strip()
+
         if self.name in exceptions:
             self.name += "_"
 
@@ -18,11 +31,11 @@ class Parameter:
             self.type = self.type[7:]
 
         self.groupString = xml.attrib.get("group", None)
-        
+
 
     def __str__(self):
 
-        return "%s %s" % (self.type, self.name)
+        return "%s %s%s" % (self.type, self.name, self.array)
 
 
 class Command:

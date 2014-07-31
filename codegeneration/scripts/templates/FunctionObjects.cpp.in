@@ -14,22 +14,39 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding 
 {
 
-const std::vector<AbstractFunction *> & FunctionObjects::functions() const
-{
-	return m_functions;
-}
-
 FunctionObjects & FunctionObjects::current()
 {
 	return currentFunctionObjects();
 }
 
-FunctionObjects::FunctionObjects() :
-%s
+FunctionObjects::iterator FunctionObjects::begin()
 {
-	m_functions = {
-		%s
-	};
+	return iterator(&%b);
+}
+
+FunctionObjects::iterator FunctionObjects::end()
+{
+	return iterator(&%e);
+}
+
+FunctionObjects::const_iterator FunctionObjects::begin() const
+{
+	return const_iterator(&%b);
+}
+
+FunctionObjects::const_iterator FunctionObjects::end() const
+{
+	return const_iterator(&%e);
+}
+
+size_t FunctionObjects::size() const
+{
+	return %s;
+}
+
+FunctionObjects::FunctionObjects()
+{
+%s
 }
 
 } // namespace glbinding

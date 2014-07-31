@@ -30,28 +30,32 @@ def bitfieldType(param):
     return param.groupString if param.groupString else "GLbitfield" 
 
 
-def paramSignature(param):
+def paramSignature(param, forward):
     if param.type == "GLbitfield":
         return bitfieldType(param)
-    return param.type
+
+    if forward and param.array is not "":
+        return param.type + " " + param.array
+    else:
+        return param.type
 
 
 def functionMember(function):
 
-    params = ", ".join([function.returntype] + [ paramSignature(p) for p in function.params ])
-    return tab+'%s("%s")' % (functionBID(function), function.name)
+    params = ", ".join([function.returntype] + [ paramSignature(p, False) for p in function.params ])
+    return tab+'%s.setName("%s");' % (functionBID(function), function.name)
 
 
 def functionDecl(api, function):
 
-    params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p), api) for p in function.params ])
+    params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
     return tab + "Function<%s> %s;" % (params, functionBID(function))
 
 
 def functionForward(function, feature, version):
 
-    params = ", ".join([paramSignature(p) + " " + p.name for p in function.params])
-    paramNames = ", ".join([(paramPass(p)) for p in function.params])
+    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    paramNames = ", ".join([p.name for p in function.params])
 
     if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
         return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
@@ -61,9 +65,9 @@ def functionForward(function, feature, version):
             functionBID(function), paramNames)
 
 
-def paramPass(param):
+def paramPass(param): 
 
-    return param.name
+    return param.name + param.array
 
     # this returns a string used for passing the param by its name to a function object.
     # if this is inside a featured function, the param will be cast from featured GLenum 
@@ -107,9 +111,10 @@ def genFunctionObjects_cpp(commands, outputdir, outputfile):
     status(outputdir + of)
 
     with open(outputdir + of, 'w') as file:
-        file.write(t % (
-            ",\n".join([ functionMember(f) for f in commands ]),
-            functionList(commands)
+        file.write(t.replace("%b", commands[0].name).replace("%e", commands[-1].name) % (
+            len(commands),
+            "\n".join([ functionMember(f) for f in commands ])
+            #,functionList(commands)
         ))
 
 

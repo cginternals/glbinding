@@ -1,9 +1,11 @@
 #include <glbinding/callbacks.h>
 #include <glbinding/AbstractValue.h>
 
-namespace glbinding {
+namespace glbinding 
+{
 
-namespace {
+namespace 
+{
 
 SimpleFunctionCallback g_unresolvedCallback;
 FunctionCallback g_beforeCallback;

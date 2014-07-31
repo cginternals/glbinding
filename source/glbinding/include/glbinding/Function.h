@@ -35,6 +35,7 @@ public:
 
 public:
 
+    Function();
     Function(const char * name);
 
     ReturnType operator()(Arguments... arguments) const;

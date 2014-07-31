@@ -50,8 +50,8 @@ void glbindingTest()
 
     gl::glBindVertexArray(vaoId);
 
-    gl::GLint attributeIndex = gl::glGetAttribLocation(programId, "corner");
-    gl::GLint bindingIndex = 0;
+    gl::GLuint attributeIndex = static_cast<gl::GLuint>(gl::glGetAttribLocation(programId, "corner"));
+    gl::GLuint bindingIndex = 0;
     gl::glVertexAttribBinding(attributeIndex, bindingIndex);
     gl::glBindVertexBuffer(bindingIndex, cornerBufferId, 0, sizeof(vec2));
     gl::glVertexAttribFormat(attributeIndex, 2, gl::GL_FLOAT, gl::GL_FALSE, 0);

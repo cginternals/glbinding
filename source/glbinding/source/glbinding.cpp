@@ -57,7 +57,7 @@ void initialize(ContextId contextId, bool _useContext, bool _resolveFunctions)
 
 void resolveFunctions()
 {
-    for (AbstractFunction * function : currentFunctionObjects().functions())
+    for (AbstractFunction * function : currentFunctionObjects())
     {
         function->resolveAddress();
     }
