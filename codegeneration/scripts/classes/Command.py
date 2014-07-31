@@ -16,7 +16,7 @@ class Parameter:
 
         # check for additional params
         if list(xml.itertext())[-1] != self.name:
-            print " WARNING: unexpected parameter format"
+            print " WARNING: unexpected parameter format for " + self.name
 
         self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
 

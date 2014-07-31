@@ -27,10 +27,12 @@ def namespacify(type, namespace):
 
 
 def bitfieldType(param):
+
     return param.groupString if param.groupString else "GLbitfield" 
 
 
 def paramSignature(param, forward):
+
     if param.type == "GLbitfield":
         return bitfieldType(param)
 
