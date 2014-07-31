@@ -1,6 +1,3 @@
-glbinding
-====
-
 glbinding is an automatically generated C++ binding for OpenGL (using the gl.xml).
 The implementation uses modern C++11 features like enum classes, lambdas and variadic templates.
 All defined OpenGL symbols are real functions and variables, they don't rely on macros.
@@ -49,12 +46,12 @@ Besides the actual binding, glbinding comes with these additional features:
 * Multi-context support (explicit switch required)
 * Multi-threading support
 
-Run-time dependencies
+### Run-time dependencies
 ----------
 
  * OpenGL library dynamically linked into your application
 
-Compile-time dependencies
+### Compile-time dependencies
 ---------------
 
  * CMake (2.8.12)
@@ -65,3 +62,16 @@ Optional dependencies
  * Qt for some examples
  * GLFW for some examples
  * GLEW for some examples
+
+### Development Notes
+
+If you are contributing to this project, please keep the following notes in mind:
+* Add your name and email to the AUTHORS file.
+* Follow coding conventions according to google's [C++ Style Guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml).
+* Commits should provide a meaningful  message, which uses the imperative, present tense: "change", not "changed" nor "changes", AND start with a capital letter.
+* Commits should always refer to an issue: use ```#xxx```, ```fix #xxx```, or ```close #xxx```.
+* Pull Requests are reviewed by at least one other developer on another platform.
+* Use lazy initialization as often as possible for time consuming tasks.
+* Member Variables always start with ```m_```, ```g_```, and ```s_``` (e.g.,```m_member```, ```g_global```, and ```s_static```)..
+* Interface or abstract class names always start with Abstract (e.g., ```AbstractArray```).
+* Enforce strict include sequence: cpp-related header, std, glbinding.
