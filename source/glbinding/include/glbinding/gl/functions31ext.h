@@ -5513,7 +5513,7 @@ inline GLenum glPathGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, c
     return static_cast<gl31ext::GLenum>(glbinding::FunctionObjects::current().glPathGlyphIndexArrayNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale));
 }
 
-inline GLenum glPathGlyphIndexRangeNV(GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint pathParameterTemplate, GLfloat emScale, GLuint  baseAndCount baseAndCount)
+inline GLenum glPathGlyphIndexRangeNV(GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint pathParameterTemplate, GLfloat emScale, GLuint baseAndCount[2])
 {
     return static_cast<gl31ext::GLenum>(glbinding::FunctionObjects::current().glPathGlyphIndexRangeNV(fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount));
 }
