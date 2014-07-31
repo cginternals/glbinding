@@ -62,8 +62,15 @@ int main(int, char *[])
     // sort extensions by version
 
     std::map<Version, std::set<GLextension>> extsByVer;
+    std::map<Version, int> suppByVer; // num supported exts by version
+
     for (GLextension ext : allExts)
-        extsByVer[Meta::getRequiringVersion(ext)].insert(ext);
+    {
+
+        const Version v = Meta::getRequiringVersion(ext);
+        extsByVer[v].insert(ext);
+        suppByVer[v] = 0;
+    }
 
     // go through all extensions by version and show functions
 
@@ -92,7 +99,11 @@ int main(int, char *[])
         std::cout << std::endl << std::endl << "[" << i.first << " EXTENSIONS]" << std::endl;
         for (GLextension ext : i.second)
         {
-            std::cout << std::endl << Meta::getString(ext) << (supportedExts.find(ext) != supportedExts.cend() ? " (supported)" : "") << std::endl;
+            const bool supported = supportedExts.find(ext) != supportedExts.cend();
+            if (supported)
+                ++suppByVer[i.first];
+
+            std::cout << std::endl << Meta::getString(ext) << (supported ? " (supported)" : "") << std::endl;
             if (funcsByExt.find(ext) != funcsByExt.cend())
                 for (auto func : funcsByExt[ext])
                     coutFunc(func);
@@ -130,7 +141,7 @@ int main(int, char *[])
         << " (" << unknownExts.size() << " of which are unknown to glbinding)" << std::endl;
 
     for (auto p : extsByVer)
-        std::cout << "  # " << p.first << " assoc.:  " << p.second.size() << std::endl;
+        std::cout << "  # " << p.first << " assoc.:  " << suppByVer[p.first] << " / " << p.second.size() << std::endl;
 
     // print some gl infos (query)
 
