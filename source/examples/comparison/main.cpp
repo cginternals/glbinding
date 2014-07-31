@@ -11,7 +11,7 @@
 class Timer
 {
 public:
-    Timer() : m_msg(nullptr) {}
+    Timer() : m_msg(nullptr), m_steps(1) {}
 
     void start(const char * msg)
     {
@@ -19,23 +19,33 @@ public:
         time = std::chrono::system_clock::now();
     }
 
-    void stop()
+    void setSteps(int steps)
+    {
+        m_steps = steps;
+    }
+
+    float stop()
     {
         auto delta = std::chrono::system_clock::now() - time;
 
-        float ms = std::chrono::duration_cast<std::chrono::duration<float, std::milli>>(delta).count();
+        float us = std::chrono::duration_cast<std::chrono::duration<float, std::micro>>(delta / m_steps).count();
 
-        std::cout << m_msg << ": " << ms << " ms" << std::endl;
+        std::cout << m_msg << ": " << us << " micro seconds" << std::endl;
+
+        return us;
     }
 
-    void restart(const char * msg)
+    float restart(const char * msg)
     {
-        stop();
+        float us = stop();
         start(msg);
+
+        return us;
     }
 
 protected:
     const char * m_msg;
+    int m_steps;
     std::chrono::time_point<std::chrono::system_clock> time;
 };
 
@@ -53,36 +63,53 @@ void compare()
 
     glbindingInitialize();
 
-    timer.restart("sleep");
+    timer.stop();
+
+    std::cout << "sleep" << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
-    timer.restart("glew calls");
+    std::cout << "glew warmup" << std::endl;
+    for (int i = 0; i < ITERATIONS; ++i)
+        glewTest();
+
+    std::cout << "glbinding warmup" << std::endl;
+    for (int i = 0; i < ITERATIONS; ++i)
+        glbindingTest();
+
+    timer.setSteps(25 * ITERATIONS);
+
+    timer.start("glew average call");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glewTest();
 
-    timer.restart("glbinding calls");
+    float glewTime = timer.restart("glbinding average call");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glbindingTest();
 
-    timer.stop();
+    float glbindingTime = timer.stop();
 
     glewEnableErrorCheck(true);
 
-    timer.start("glew calls with check error");
+    std::cout << "enable error checks after each OpenGL call" << std::endl;
+
+    timer.start("glew average call");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glewTest();
 
-    timer.restart("glbinding calls with check error (by after-callback)");
+    float glewWithErrorCheckTime = timer.restart("glbinding average call");
 
     glbindingEnableErrorCheck(true);
 
     for (int i = 0; i < ITERATIONS; ++i)
         glbindingTest();
 
-    timer.stop();
+    float glbindingWithErrorCheckTime = timer.stop();
+
+    std::cout << "glbinding/glew performance decrease: " << (glbindingTime / glewTime - 1.0) * 100 << "%" << std::endl;
+    std::cout << "glbinding/glew with error check performance decrease: " << (glbindingWithErrorCheckTime / glewWithErrorCheckTime - 1.0) * 100 << "%" << std::endl;
 }
 
 void errorfun(int errnum, const char * errmsg)
