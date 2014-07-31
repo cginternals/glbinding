@@ -11,7 +11,7 @@ functionForwardImplTemplate = """%s %s(%s)
 }
 """
 
-functionForwardImplTemplateFoo = """%s %s(%s)
+functionForwardTemplateInline = """%s %s(%s)
 {
     return gl::%s(%s);
 }
@@ -79,14 +79,14 @@ def functionForward(function, feature, version, impl):
 
     if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
         if impl:
-            return functionForwardImplTemplateRValueCast % (function.returntype, functionBID(function), params,
-                version, function.returntype, functionBID(function), paramNames)
+            return functionForwardTemplateInline % (function.returntype, functionBID(function), params,
+                    functionBID(function), paramNames)
         else:
             return functionForwardTemplate % (function.returntype, functionBID(function), params)
     else:
         if impl:
             if feature:
-                return functionForwardImplTemplateFoo % (function.returntype, functionBID(function), params,
+                return functionForwardTemplateInline % (function.returntype, functionBID(function), params,
                     functionBID(function), paramNames)
             else:
                 return functionForwardImplTemplate % (function.returntype, functionBID(function), params,
@@ -164,23 +164,18 @@ def genFunctionsAll_cpp(api, commands, outputdir, outputfile):
 
 def genFunctionsFeatureGrouped_h(api, commands, features, outputdir, outputfile):
 
-    genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile, False)
+    genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile)
 
 
-def genFunctionsFeatureGrouped_cpp(api, commands, features, outputdir, outputfile):
-
-    genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile, True)
-
-
-def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile, impl):
+def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
 
     # gen functions feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureFunctions(api, commands, f, outputdir, outputfile, impl)
+            genFeatureFunctions(api, commands, f, outputdir, outputfile, True)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureFunctions(api, commands, f, outputdir, outputfile, impl, True)
-            genFeatureFunctions(api, commands, f, outputdir, outputfile, impl, False, True)
+                genFeatureFunctions(api, commands, f, outputdir, outputfile, True, True)
+            genFeatureFunctions(api, commands, f, outputdir, outputfile, True, False, True)
 
 
 def genFeatureFunctions(api, commands, feature, outputdir, outputfile, impl, core = False, ext = False):
