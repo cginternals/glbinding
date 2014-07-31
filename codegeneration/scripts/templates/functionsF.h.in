@@ -5,11 +5,15 @@
 #include <glbinding/%a/nogl.h>
 
 #include <glbinding/%a/types.h>
+#include <glbinding/%a/values.h>
+#include <glbinding/%a/boolean.h>
 
 namespace %a%f
 {
 
 #include <glbinding/%a/types.inl>
+#include <glbinding/%a/boolean.inl>
+#include <glbinding/%a/values.inl>
 
 } // namespace %a%f
 

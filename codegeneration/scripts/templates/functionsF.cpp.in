@@ -3,18 +3,6 @@
 
 #include <glbinding/%a/functions.h>
 
-#include <glbinding/%a/values.h>
-#include <glbinding/%a/boolean.h>
-
-namespace %a%f
-{
-
-#include <glbinding/%a/values.inl>
-#include <glbinding/%a/boolean.inl>
-
-} // namespace %a%f
-
-
 #include <glbinding/Binding.h>
 
 

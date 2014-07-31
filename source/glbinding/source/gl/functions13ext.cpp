@@ -3,18 +3,6 @@
 
 #include <glbinding/gl/functions.h>
 
-#include <glbinding/gl/values.h>
-#include <glbinding/gl/boolean.h>
-
-namespace gl13ext
-{
-
-#include <glbinding/gl/values.inl>
-#include <glbinding/gl/boolean.inl>
-
-} // namespace gl13ext
-
-
 #include <glbinding/Binding.h>
 
 
