@@ -11,7 +11,7 @@ functionForwardImplTemplate = """%s %s(%s)
 }
 """
 
-functionForwardTemplateInline = """%s %s(%s)
+functionForwardTemplateInline = """inline %s %s(%s)
 {
     return gl::%s(%s);
 }

@@ -21,1532 +21,1532 @@ namespace gl10
 namespace gl10
 {
 
-void glAccum(GLenum op, GLfloat value)
+inline void glAccum(GLenum op, GLfloat value)
 {
     return gl::glAccum(op, value);
 }
 
-void glAlphaFunc(GLenum func, GLfloat ref)
+inline void glAlphaFunc(GLenum func, GLfloat ref)
 {
     return gl::glAlphaFunc(func, ref);
 }
 
-void glBegin(GLenum mode)
+inline void glBegin(GLenum mode)
 {
     return gl::glBegin(mode);
 }
 
-void glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte * bitmap)
+inline void glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte * bitmap)
 {
     return gl::glBitmap(width, height, xorig, yorig, xmove, ymove, bitmap);
 }
 
-void glBlendFunc(GLenum sfactor, GLenum dfactor)
+inline void glBlendFunc(GLenum sfactor, GLenum dfactor)
 {
     return gl::glBlendFunc(sfactor, dfactor);
 }
 
-void glCallList(GLuint list)
+inline void glCallList(GLuint list)
 {
     return gl::glCallList(list);
 }
 
-void glCallLists(GLsizei n, GLenum type, const void * lists)
+inline void glCallLists(GLsizei n, GLenum type, const void * lists)
 {
     return gl::glCallLists(n, type, lists);
 }
 
-void glClear(ClearBufferMask mask)
+inline void glClear(ClearBufferMask mask)
 {
     return gl::glClear(mask);
 }
 
-void glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+inline void glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
     return gl::glClearAccum(red, green, blue, alpha);
 }
 
-void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+inline void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
     return gl::glClearColor(red, green, blue, alpha);
 }
 
-void glClearDepth(GLdouble depth)
+inline void glClearDepth(GLdouble depth)
 {
     return gl::glClearDepth(depth);
 }
 
-void glClearIndex(GLfloat c)
+inline void glClearIndex(GLfloat c)
 {
     return gl::glClearIndex(c);
 }
 
-void glClearStencil(GLint s)
+inline void glClearStencil(GLint s)
 {
     return gl::glClearStencil(s);
 }
 
-void glClipPlane(GLenum plane, const GLdouble * equation)
+inline void glClipPlane(GLenum plane, const GLdouble * equation)
 {
     return gl::glClipPlane(plane, equation);
 }
 
-void glColor3b(GLbyte red, GLbyte green, GLbyte blue)
+inline void glColor3b(GLbyte red, GLbyte green, GLbyte blue)
 {
     return gl::glColor3b(red, green, blue);
 }
 
-void glColor3bv(const GLbyte * v)
+inline void glColor3bv(const GLbyte * v)
 {
     return gl::glColor3bv(v);
 }
 
-void glColor3d(GLdouble red, GLdouble green, GLdouble blue)
+inline void glColor3d(GLdouble red, GLdouble green, GLdouble blue)
 {
     return gl::glColor3d(red, green, blue);
 }
 
-void glColor3dv(const GLdouble * v)
+inline void glColor3dv(const GLdouble * v)
 {
     return gl::glColor3dv(v);
 }
 
-void glColor3f(GLfloat red, GLfloat green, GLfloat blue)
+inline void glColor3f(GLfloat red, GLfloat green, GLfloat blue)
 {
     return gl::glColor3f(red, green, blue);
 }
 
-void glColor3fv(const GLfloat * v)
+inline void glColor3fv(const GLfloat * v)
 {
     return gl::glColor3fv(v);
 }
 
-void glColor3i(GLint red, GLint green, GLint blue)
+inline void glColor3i(GLint red, GLint green, GLint blue)
 {
     return gl::glColor3i(red, green, blue);
 }
 
-void glColor3iv(const GLint * v)
+inline void glColor3iv(const GLint * v)
 {
     return gl::glColor3iv(v);
 }
 
-void glColor3s(GLshort red, GLshort green, GLshort blue)
+inline void glColor3s(GLshort red, GLshort green, GLshort blue)
 {
     return gl::glColor3s(red, green, blue);
 }
 
-void glColor3sv(const GLshort * v)
+inline void glColor3sv(const GLshort * v)
 {
     return gl::glColor3sv(v);
 }
 
-void glColor3ub(GLubyte red, GLubyte green, GLubyte blue)
+inline void glColor3ub(GLubyte red, GLubyte green, GLubyte blue)
 {
     return gl::glColor3ub(red, green, blue);
 }
 
-void glColor3ubv(const GLubyte * v)
+inline void glColor3ubv(const GLubyte * v)
 {
     return gl::glColor3ubv(v);
 }
 
-void glColor3ui(GLuint red, GLuint green, GLuint blue)
+inline void glColor3ui(GLuint red, GLuint green, GLuint blue)
 {
     return gl::glColor3ui(red, green, blue);
 }
 
-void glColor3uiv(const GLuint * v)
+inline void glColor3uiv(const GLuint * v)
 {
     return gl::glColor3uiv(v);
 }
 
-void glColor3us(GLushort red, GLushort green, GLushort blue)
+inline void glColor3us(GLushort red, GLushort green, GLushort blue)
 {
     return gl::glColor3us(red, green, blue);
 }
 
-void glColor3usv(const GLushort * v)
+inline void glColor3usv(const GLushort * v)
 {
     return gl::glColor3usv(v);
 }
 
-void glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
+inline void glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
 {
     return gl::glColor4b(red, green, blue, alpha);
 }
 
-void glColor4bv(const GLbyte * v)
+inline void glColor4bv(const GLbyte * v)
 {
     return gl::glColor4bv(v);
 }
 
-void glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
+inline void glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
 {
     return gl::glColor4d(red, green, blue, alpha);
 }
 
-void glColor4dv(const GLdouble * v)
+inline void glColor4dv(const GLdouble * v)
 {
     return gl::glColor4dv(v);
 }
 
-void glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+inline void glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
     return gl::glColor4f(red, green, blue, alpha);
 }
 
-void glColor4fv(const GLfloat * v)
+inline void glColor4fv(const GLfloat * v)
 {
     return gl::glColor4fv(v);
 }
 
-void glColor4i(GLint red, GLint green, GLint blue, GLint alpha)
+inline void glColor4i(GLint red, GLint green, GLint blue, GLint alpha)
 {
     return gl::glColor4i(red, green, blue, alpha);
 }
 
-void glColor4iv(const GLint * v)
+inline void glColor4iv(const GLint * v)
 {
     return gl::glColor4iv(v);
 }
 
-void glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha)
+inline void glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha)
 {
     return gl::glColor4s(red, green, blue, alpha);
 }
 
-void glColor4sv(const GLshort * v)
+inline void glColor4sv(const GLshort * v)
 {
     return gl::glColor4sv(v);
 }
 
-void glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
+inline void glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
 {
     return gl::glColor4ub(red, green, blue, alpha);
 }
 
-void glColor4ubv(const GLubyte * v)
+inline void glColor4ubv(const GLubyte * v)
 {
     return gl::glColor4ubv(v);
 }
 
-void glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha)
+inline void glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha)
 {
     return gl::glColor4ui(red, green, blue, alpha);
 }
 
-void glColor4uiv(const GLuint * v)
+inline void glColor4uiv(const GLuint * v)
 {
     return gl::glColor4uiv(v);
 }
 
-void glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha)
+inline void glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha)
 {
     return gl::glColor4us(red, green, blue, alpha);
 }
 
-void glColor4usv(const GLushort * v)
+inline void glColor4usv(const GLushort * v)
 {
     return gl::glColor4usv(v);
 }
 
-void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
+inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
     return gl::glColorMask(red, green, blue, alpha);
 }
 
-void glColorMaterial(GLenum face, GLenum mode)
+inline void glColorMaterial(GLenum face, GLenum mode)
 {
     return gl::glColorMaterial(face, mode);
 }
 
-void glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
+inline void glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
 {
     return gl::glCopyPixels(x, y, width, height, type);
 }
 
-void glCullFace(GLenum mode)
+inline void glCullFace(GLenum mode)
 {
     return gl::glCullFace(mode);
 }
 
-void glDeleteLists(GLuint list, GLsizei range)
+inline void glDeleteLists(GLuint list, GLsizei range)
 {
     return gl::glDeleteLists(list, range);
 }
 
-void glDepthFunc(GLenum func)
+inline void glDepthFunc(GLenum func)
 {
     return gl::glDepthFunc(func);
 }
 
-void glDepthMask(GLboolean flag)
+inline void glDepthMask(GLboolean flag)
 {
     return gl::glDepthMask(flag);
 }
 
-void glDepthRange(GLdouble near_, GLdouble far_)
+inline void glDepthRange(GLdouble near_, GLdouble far_)
 {
     return gl::glDepthRange(near_, far_);
 }
 
-void glDisable(GLenum cap)
+inline void glDisable(GLenum cap)
 {
     return gl::glDisable(cap);
 }
 
-void glDrawBuffer(GLenum buf)
+inline void glDrawBuffer(GLenum buf)
 {
     return gl::glDrawBuffer(buf);
 }
 
-void glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
+inline void glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
 {
     return gl::glDrawPixels(width, height, format, type, pixels);
 }
 
-void glEdgeFlag(GLboolean flag)
+inline void glEdgeFlag(GLboolean flag)
 {
     return gl::glEdgeFlag(flag);
 }
 
-void glEdgeFlagv(const GLboolean * flag)
+inline void glEdgeFlagv(const GLboolean * flag)
 {
     return gl::glEdgeFlagv(flag);
 }
 
-void glEnable(GLenum cap)
+inline void glEnable(GLenum cap)
 {
     return gl::glEnable(cap);
 }
 
-void glEnd()
+inline void glEnd()
 {
     return gl::glEnd();
 }
 
-void glEndList()
+inline void glEndList()
 {
     return gl::glEndList();
 }
 
-void glEvalCoord1d(GLdouble u)
+inline void glEvalCoord1d(GLdouble u)
 {
     return gl::glEvalCoord1d(u);
 }
 
-void glEvalCoord1dv(const GLdouble * u)
+inline void glEvalCoord1dv(const GLdouble * u)
 {
     return gl::glEvalCoord1dv(u);
 }
 
-void glEvalCoord1f(GLfloat u)
+inline void glEvalCoord1f(GLfloat u)
 {
     return gl::glEvalCoord1f(u);
 }
 
-void glEvalCoord1fv(const GLfloat * u)
+inline void glEvalCoord1fv(const GLfloat * u)
 {
     return gl::glEvalCoord1fv(u);
 }
 
-void glEvalCoord2d(GLdouble u, GLdouble v)
+inline void glEvalCoord2d(GLdouble u, GLdouble v)
 {
     return gl::glEvalCoord2d(u, v);
 }
 
-void glEvalCoord2dv(const GLdouble * u)
+inline void glEvalCoord2dv(const GLdouble * u)
 {
     return gl::glEvalCoord2dv(u);
 }
 
-void glEvalCoord2f(GLfloat u, GLfloat v)
+inline void glEvalCoord2f(GLfloat u, GLfloat v)
 {
     return gl::glEvalCoord2f(u, v);
 }
 
-void glEvalCoord2fv(const GLfloat * u)
+inline void glEvalCoord2fv(const GLfloat * u)
 {
     return gl::glEvalCoord2fv(u);
 }
 
-void glEvalMesh1(GLenum mode, GLint i1, GLint i2)
+inline void glEvalMesh1(GLenum mode, GLint i1, GLint i2)
 {
     return gl::glEvalMesh1(mode, i1, i2);
 }
 
-void glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
+inline void glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 {
     return gl::glEvalMesh2(mode, i1, i2, j1, j2);
 }
 
-void glEvalPoint1(GLint i)
+inline void glEvalPoint1(GLint i)
 {
     return gl::glEvalPoint1(i);
 }
 
-void glEvalPoint2(GLint i, GLint j)
+inline void glEvalPoint2(GLint i, GLint j)
 {
     return gl::glEvalPoint2(i, j);
 }
 
-void glFeedbackBuffer(GLsizei size, GLenum type, GLfloat * buffer)
+inline void glFeedbackBuffer(GLsizei size, GLenum type, GLfloat * buffer)
 {
     return gl::glFeedbackBuffer(size, type, buffer);
 }
 
-void glFinish()
+inline void glFinish()
 {
     return gl::glFinish();
 }
 
-void glFlush()
+inline void glFlush()
 {
     return gl::glFlush();
 }
 
-void glFogf(GLenum pname, GLfloat param)
+inline void glFogf(GLenum pname, GLfloat param)
 {
     return gl::glFogf(pname, param);
 }
 
-void glFogfv(GLenum pname, const GLfloat * params)
+inline void glFogfv(GLenum pname, const GLfloat * params)
 {
     return gl::glFogfv(pname, params);
 }
 
-void glFogi(GLenum pname, GLint param)
+inline void glFogi(GLenum pname, GLint param)
 {
     return gl::glFogi(pname, param);
 }
 
-void glFogiv(GLenum pname, const GLint * params)
+inline void glFogiv(GLenum pname, const GLint * params)
 {
     return gl::glFogiv(pname, params);
 }
 
-void glFrontFace(GLenum mode)
+inline void glFrontFace(GLenum mode)
 {
     return gl::glFrontFace(mode);
 }
 
-void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+inline void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
     return gl::glFrustum(left, right, bottom, top, zNear, zFar);
 }
 
-GLuint glGenLists(GLsizei range)
+inline GLuint glGenLists(GLsizei range)
 {
     return gl::glGenLists(range);
 }
 
-void glGetBooleanv(GLenum pname, GLboolean * data)
+inline void glGetBooleanv(GLenum pname, GLboolean * data)
 {
     return gl::glGetBooleanv(pname, data);
 }
 
-void glGetClipPlane(GLenum plane, GLdouble * equation)
+inline void glGetClipPlane(GLenum plane, GLdouble * equation)
 {
     return gl::glGetClipPlane(plane, equation);
 }
 
-void glGetDoublev(GLenum pname, GLdouble * data)
+inline void glGetDoublev(GLenum pname, GLdouble * data)
 {
     return gl::glGetDoublev(pname, data);
 }
 
-GLenum glGetError()
+inline GLenum glGetError()
 {
     return gl::glGetError();
 }
 
-void glGetFloatv(GLenum pname, GLfloat * data)
+inline void glGetFloatv(GLenum pname, GLfloat * data)
 {
     return gl::glGetFloatv(pname, data);
 }
 
-void glGetIntegerv(GLenum pname, GLint * data)
+inline void glGetIntegerv(GLenum pname, GLint * data)
 {
     return gl::glGetIntegerv(pname, data);
 }
 
-void glGetLightfv(GLenum light, GLenum pname, GLfloat * params)
+inline void glGetLightfv(GLenum light, GLenum pname, GLfloat * params)
 {
     return gl::glGetLightfv(light, pname, params);
 }
 
-void glGetLightiv(GLenum light, GLenum pname, GLint * params)
+inline void glGetLightiv(GLenum light, GLenum pname, GLint * params)
 {
     return gl::glGetLightiv(light, pname, params);
 }
 
-void glGetMapdv(GLenum target, GLenum query, GLdouble * v)
+inline void glGetMapdv(GLenum target, GLenum query, GLdouble * v)
 {
     return gl::glGetMapdv(target, query, v);
 }
 
-void glGetMapfv(GLenum target, GLenum query, GLfloat * v)
+inline void glGetMapfv(GLenum target, GLenum query, GLfloat * v)
 {
     return gl::glGetMapfv(target, query, v);
 }
 
-void glGetMapiv(GLenum target, GLenum query, GLint * v)
+inline void glGetMapiv(GLenum target, GLenum query, GLint * v)
 {
     return gl::glGetMapiv(target, query, v);
 }
 
-void glGetMaterialfv(GLenum face, GLenum pname, GLfloat * params)
+inline void glGetMaterialfv(GLenum face, GLenum pname, GLfloat * params)
 {
     return gl::glGetMaterialfv(face, pname, params);
 }
 
-void glGetMaterialiv(GLenum face, GLenum pname, GLint * params)
+inline void glGetMaterialiv(GLenum face, GLenum pname, GLint * params)
 {
     return gl::glGetMaterialiv(face, pname, params);
 }
 
-void glGetPixelMapfv(GLenum map, GLfloat * values)
+inline void glGetPixelMapfv(GLenum map, GLfloat * values)
 {
     return gl::glGetPixelMapfv(map, values);
 }
 
-void glGetPixelMapuiv(GLenum map, GLuint * values)
+inline void glGetPixelMapuiv(GLenum map, GLuint * values)
 {
     return gl::glGetPixelMapuiv(map, values);
 }
 
-void glGetPixelMapusv(GLenum map, GLushort * values)
+inline void glGetPixelMapusv(GLenum map, GLushort * values)
 {
     return gl::glGetPixelMapusv(map, values);
 }
 
-void glGetPolygonStipple(GLubyte * mask)
+inline void glGetPolygonStipple(GLubyte * mask)
 {
     return gl::glGetPolygonStipple(mask);
 }
 
-const GLubyte * glGetString(GLenum name)
+inline const GLubyte * glGetString(GLenum name)
 {
     return gl::glGetString(name);
 }
 
-void glGetTexEnvfv(GLenum target, GLenum pname, GLfloat * params)
+inline void glGetTexEnvfv(GLenum target, GLenum pname, GLfloat * params)
 {
     return gl::glGetTexEnvfv(target, pname, params);
 }
 
-void glGetTexEnviv(GLenum target, GLenum pname, GLint * params)
+inline void glGetTexEnviv(GLenum target, GLenum pname, GLint * params)
 {
     return gl::glGetTexEnviv(target, pname, params);
 }
 
-void glGetTexGendv(GLenum coord, GLenum pname, GLdouble * params)
+inline void glGetTexGendv(GLenum coord, GLenum pname, GLdouble * params)
 {
     return gl::glGetTexGendv(coord, pname, params);
 }
 
-void glGetTexGenfv(GLenum coord, GLenum pname, GLfloat * params)
+inline void glGetTexGenfv(GLenum coord, GLenum pname, GLfloat * params)
 {
     return gl::glGetTexGenfv(coord, pname, params);
 }
 
-void glGetTexGeniv(GLenum coord, GLenum pname, GLint * params)
+inline void glGetTexGeniv(GLenum coord, GLenum pname, GLint * params)
 {
     return gl::glGetTexGeniv(coord, pname, params);
 }
 
-void glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void * pixels)
+inline void glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void * pixels)
 {
     return gl::glGetTexImage(target, level, format, type, pixels);
 }
 
-void glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat * params)
+inline void glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat * params)
 {
     return gl::glGetTexLevelParameterfv(target, level, pname, params);
 }
 
-void glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint * params)
+inline void glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint * params)
 {
     return gl::glGetTexLevelParameteriv(target, level, pname, params);
 }
 
-void glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params)
+inline void glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params)
 {
     return gl::glGetTexParameterfv(target, pname, params);
 }
 
-void glGetTexParameteriv(GLenum target, GLenum pname, GLint * params)
+inline void glGetTexParameteriv(GLenum target, GLenum pname, GLint * params)
 {
     return gl::glGetTexParameteriv(target, pname, params);
 }
 
-void glHint(GLenum target, GLenum mode)
+inline void glHint(GLenum target, GLenum mode)
 {
     return gl::glHint(target, mode);
 }
 
-void glIndexMask(GLuint mask)
+inline void glIndexMask(GLuint mask)
 {
     return gl::glIndexMask(mask);
 }
 
-void glIndexd(GLdouble c)
+inline void glIndexd(GLdouble c)
 {
     return gl::glIndexd(c);
 }
 
-void glIndexdv(const GLdouble * c)
+inline void glIndexdv(const GLdouble * c)
 {
     return gl::glIndexdv(c);
 }
 
-void glIndexf(GLfloat c)
+inline void glIndexf(GLfloat c)
 {
     return gl::glIndexf(c);
 }
 
-void glIndexfv(const GLfloat * c)
+inline void glIndexfv(const GLfloat * c)
 {
     return gl::glIndexfv(c);
 }
 
-void glIndexi(GLint c)
+inline void glIndexi(GLint c)
 {
     return gl::glIndexi(c);
 }
 
-void glIndexiv(const GLint * c)
+inline void glIndexiv(const GLint * c)
 {
     return gl::glIndexiv(c);
 }
 
-void glIndexs(GLshort c)
+inline void glIndexs(GLshort c)
 {
     return gl::glIndexs(c);
 }
 
-void glIndexsv(const GLshort * c)
+inline void glIndexsv(const GLshort * c)
 {
     return gl::glIndexsv(c);
 }
 
-void glInitNames()
+inline void glInitNames()
 {
     return gl::glInitNames();
 }
 
-GLboolean glIsEnabled(GLenum cap)
+inline GLboolean glIsEnabled(GLenum cap)
 {
     return gl::glIsEnabled(cap);
 }
 
-GLboolean glIsList(GLuint list)
+inline GLboolean glIsList(GLuint list)
 {
     return gl::glIsList(list);
 }
 
-void glLightModelf(GLenum pname, GLfloat param)
+inline void glLightModelf(GLenum pname, GLfloat param)
 {
     return gl::glLightModelf(pname, param);
 }
 
-void glLightModelfv(GLenum pname, const GLfloat * params)
+inline void glLightModelfv(GLenum pname, const GLfloat * params)
 {
     return gl::glLightModelfv(pname, params);
 }
 
-void glLightModeli(GLenum pname, GLint param)
+inline void glLightModeli(GLenum pname, GLint param)
 {
     return gl::glLightModeli(pname, param);
 }
 
-void glLightModeliv(GLenum pname, const GLint * params)
+inline void glLightModeliv(GLenum pname, const GLint * params)
 {
     return gl::glLightModeliv(pname, params);
 }
 
-void glLightf(GLenum light, GLenum pname, GLfloat param)
+inline void glLightf(GLenum light, GLenum pname, GLfloat param)
 {
     return gl::glLightf(light, pname, param);
 }
 
-void glLightfv(GLenum light, GLenum pname, const GLfloat * params)
+inline void glLightfv(GLenum light, GLenum pname, const GLfloat * params)
 {
     return gl::glLightfv(light, pname, params);
 }
 
-void glLighti(GLenum light, GLenum pname, GLint param)
+inline void glLighti(GLenum light, GLenum pname, GLint param)
 {
     return gl::glLighti(light, pname, param);
 }
 
-void glLightiv(GLenum light, GLenum pname, const GLint * params)
+inline void glLightiv(GLenum light, GLenum pname, const GLint * params)
 {
     return gl::glLightiv(light, pname, params);
 }
 
-void glLineStipple(GLint factor, GLushort pattern)
+inline void glLineStipple(GLint factor, GLushort pattern)
 {
     return gl::glLineStipple(factor, pattern);
 }
 
-void glLineWidth(GLfloat width)
+inline void glLineWidth(GLfloat width)
 {
     return gl::glLineWidth(width);
 }
 
-void glListBase(GLuint base)
+inline void glListBase(GLuint base)
 {
     return gl::glListBase(base);
 }
 
-void glLoadIdentity()
+inline void glLoadIdentity()
 {
     return gl::glLoadIdentity();
 }
 
-void glLoadMatrixd(const GLdouble * m)
+inline void glLoadMatrixd(const GLdouble * m)
 {
     return gl::glLoadMatrixd(m);
 }
 
-void glLoadMatrixf(const GLfloat * m)
+inline void glLoadMatrixf(const GLfloat * m)
 {
     return gl::glLoadMatrixf(m);
 }
 
-void glLoadName(GLuint name)
+inline void glLoadName(GLuint name)
 {
     return gl::glLoadName(name);
 }
 
-void glLogicOp(GLenum opcode)
+inline void glLogicOp(GLenum opcode)
 {
     return gl::glLogicOp(opcode);
 }
 
-void glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points)
+inline void glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points)
 {
     return gl::glMap1d(target, u1, u2, stride, order, points);
 }
 
-void glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points)
+inline void glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points)
 {
     return gl::glMap1f(target, u1, u2, stride, order, points);
 }
 
-void glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points)
+inline void glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points)
 {
     return gl::glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
-void glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points)
+inline void glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points)
 {
     return gl::glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
-void glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
+inline void glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
 {
     return gl::glMapGrid1d(un, u1, u2);
 }
 
-void glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
+inline void glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
 {
     return gl::glMapGrid1f(un, u1, u2);
 }
 
-void glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
+inline void glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
     return gl::glMapGrid2d(un, u1, u2, vn, v1, v2);
 }
 
-void glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
+inline void glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 {
     return gl::glMapGrid2f(un, u1, u2, vn, v1, v2);
 }
 
-void glMaterialf(GLenum face, GLenum pname, GLfloat param)
+inline void glMaterialf(GLenum face, GLenum pname, GLfloat param)
 {
     return gl::glMaterialf(face, pname, param);
 }
 
-void glMaterialfv(GLenum face, GLenum pname, const GLfloat * params)
+inline void glMaterialfv(GLenum face, GLenum pname, const GLfloat * params)
 {
     return gl::glMaterialfv(face, pname, params);
 }
 
-void glMateriali(GLenum face, GLenum pname, GLint param)
+inline void glMateriali(GLenum face, GLenum pname, GLint param)
 {
     return gl::glMateriali(face, pname, param);
 }
 
-void glMaterialiv(GLenum face, GLenum pname, const GLint * params)
+inline void glMaterialiv(GLenum face, GLenum pname, const GLint * params)
 {
     return gl::glMaterialiv(face, pname, params);
 }
 
-void glMatrixMode(GLenum mode)
+inline void glMatrixMode(GLenum mode)
 {
     return gl::glMatrixMode(mode);
 }
 
-void glMultMatrixd(const GLdouble * m)
+inline void glMultMatrixd(const GLdouble * m)
 {
     return gl::glMultMatrixd(m);
 }
 
-void glMultMatrixf(const GLfloat * m)
+inline void glMultMatrixf(const GLfloat * m)
 {
     return gl::glMultMatrixf(m);
 }
 
-void glNewList(GLuint list, GLenum mode)
+inline void glNewList(GLuint list, GLenum mode)
 {
     return gl::glNewList(list, mode);
 }
 
-void glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
+inline void glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
 {
     return gl::glNormal3b(nx, ny, nz);
 }
 
-void glNormal3bv(const GLbyte * v)
+inline void glNormal3bv(const GLbyte * v)
 {
     return gl::glNormal3bv(v);
 }
 
-void glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
+inline void glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
 {
     return gl::glNormal3d(nx, ny, nz);
 }
 
-void glNormal3dv(const GLdouble * v)
+inline void glNormal3dv(const GLdouble * v)
 {
     return gl::glNormal3dv(v);
 }
 
-void glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
+inline void glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
 {
     return gl::glNormal3f(nx, ny, nz);
 }
 
-void glNormal3fv(const GLfloat * v)
+inline void glNormal3fv(const GLfloat * v)
 {
     return gl::glNormal3fv(v);
 }
 
-void glNormal3i(GLint nx, GLint ny, GLint nz)
+inline void glNormal3i(GLint nx, GLint ny, GLint nz)
 {
     return gl::glNormal3i(nx, ny, nz);
 }
 
-void glNormal3iv(const GLint * v)
+inline void glNormal3iv(const GLint * v)
 {
     return gl::glNormal3iv(v);
 }
 
-void glNormal3s(GLshort nx, GLshort ny, GLshort nz)
+inline void glNormal3s(GLshort nx, GLshort ny, GLshort nz)
 {
     return gl::glNormal3s(nx, ny, nz);
 }
 
-void glNormal3sv(const GLshort * v)
+inline void glNormal3sv(const GLshort * v)
 {
     return gl::glNormal3sv(v);
 }
 
-void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+inline void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
     return gl::glOrtho(left, right, bottom, top, zNear, zFar);
 }
 
-void glPassThrough(GLfloat token)
+inline void glPassThrough(GLfloat token)
 {
     return gl::glPassThrough(token);
 }
 
-void glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat * values)
+inline void glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat * values)
 {
     return gl::glPixelMapfv(map, mapsize, values);
 }
 
-void glPixelMapuiv(GLenum map, GLsizei mapsize, const GLuint * values)
+inline void glPixelMapuiv(GLenum map, GLsizei mapsize, const GLuint * values)
 {
     return gl::glPixelMapuiv(map, mapsize, values);
 }
 
-void glPixelMapusv(GLenum map, GLsizei mapsize, const GLushort * values)
+inline void glPixelMapusv(GLenum map, GLsizei mapsize, const GLushort * values)
 {
     return gl::glPixelMapusv(map, mapsize, values);
 }
 
-void glPixelStoref(GLenum pname, GLfloat param)
+inline void glPixelStoref(GLenum pname, GLfloat param)
 {
     return gl::glPixelStoref(pname, param);
 }
 
-void glPixelStorei(GLenum pname, GLint param)
+inline void glPixelStorei(GLenum pname, GLint param)
 {
     return gl::glPixelStorei(pname, param);
 }
 
-void glPixelTransferf(GLenum pname, GLfloat param)
+inline void glPixelTransferf(GLenum pname, GLfloat param)
 {
     return gl::glPixelTransferf(pname, param);
 }
 
-void glPixelTransferi(GLenum pname, GLint param)
+inline void glPixelTransferi(GLenum pname, GLint param)
 {
     return gl::glPixelTransferi(pname, param);
 }
 
-void glPixelZoom(GLfloat xfactor, GLfloat yfactor)
+inline void glPixelZoom(GLfloat xfactor, GLfloat yfactor)
 {
     return gl::glPixelZoom(xfactor, yfactor);
 }
 
-void glPointSize(GLfloat size)
+inline void glPointSize(GLfloat size)
 {
     return gl::glPointSize(size);
 }
 
-void glPolygonMode(GLenum face, GLenum mode)
+inline void glPolygonMode(GLenum face, GLenum mode)
 {
     return gl::glPolygonMode(face, mode);
 }
 
-void glPolygonStipple(const GLubyte * mask)
+inline void glPolygonStipple(const GLubyte * mask)
 {
     return gl::glPolygonStipple(mask);
 }
 
-void glPopAttrib()
+inline void glPopAttrib()
 {
     return gl::glPopAttrib();
 }
 
-void glPopMatrix()
+inline void glPopMatrix()
 {
     return gl::glPopMatrix();
 }
 
-void glPopName()
+inline void glPopName()
 {
     return gl::glPopName();
 }
 
-void glPushAttrib(AttribMask mask)
+inline void glPushAttrib(AttribMask mask)
 {
     return gl::glPushAttrib(mask);
 }
 
-void glPushMatrix()
+inline void glPushMatrix()
 {
     return gl::glPushMatrix();
 }
 
-void glPushName(GLuint name)
+inline void glPushName(GLuint name)
 {
     return gl::glPushName(name);
 }
 
-void glRasterPos2d(GLdouble x, GLdouble y)
+inline void glRasterPos2d(GLdouble x, GLdouble y)
 {
     return gl::glRasterPos2d(x, y);
 }
 
-void glRasterPos2dv(const GLdouble * v)
+inline void glRasterPos2dv(const GLdouble * v)
 {
     return gl::glRasterPos2dv(v);
 }
 
-void glRasterPos2f(GLfloat x, GLfloat y)
+inline void glRasterPos2f(GLfloat x, GLfloat y)
 {
     return gl::glRasterPos2f(x, y);
 }
 
-void glRasterPos2fv(const GLfloat * v)
+inline void glRasterPos2fv(const GLfloat * v)
 {
     return gl::glRasterPos2fv(v);
 }
 
-void glRasterPos2i(GLint x, GLint y)
+inline void glRasterPos2i(GLint x, GLint y)
 {
     return gl::glRasterPos2i(x, y);
 }
 
-void glRasterPos2iv(const GLint * v)
+inline void glRasterPos2iv(const GLint * v)
 {
     return gl::glRasterPos2iv(v);
 }
 
-void glRasterPos2s(GLshort x, GLshort y)
+inline void glRasterPos2s(GLshort x, GLshort y)
 {
     return gl::glRasterPos2s(x, y);
 }
 
-void glRasterPos2sv(const GLshort * v)
+inline void glRasterPos2sv(const GLshort * v)
 {
     return gl::glRasterPos2sv(v);
 }
 
-void glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
+inline void glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
 {
     return gl::glRasterPos3d(x, y, z);
 }
 
-void glRasterPos3dv(const GLdouble * v)
+inline void glRasterPos3dv(const GLdouble * v)
 {
     return gl::glRasterPos3dv(v);
 }
 
-void glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
+inline void glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
 {
     return gl::glRasterPos3f(x, y, z);
 }
 
-void glRasterPos3fv(const GLfloat * v)
+inline void glRasterPos3fv(const GLfloat * v)
 {
     return gl::glRasterPos3fv(v);
 }
 
-void glRasterPos3i(GLint x, GLint y, GLint z)
+inline void glRasterPos3i(GLint x, GLint y, GLint z)
 {
     return gl::glRasterPos3i(x, y, z);
 }
 
-void glRasterPos3iv(const GLint * v)
+inline void glRasterPos3iv(const GLint * v)
 {
     return gl::glRasterPos3iv(v);
 }
 
-void glRasterPos3s(GLshort x, GLshort y, GLshort z)
+inline void glRasterPos3s(GLshort x, GLshort y, GLshort z)
 {
     return gl::glRasterPos3s(x, y, z);
 }
 
-void glRasterPos3sv(const GLshort * v)
+inline void glRasterPos3sv(const GLshort * v)
 {
     return gl::glRasterPos3sv(v);
 }
 
-void glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+inline void glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
     return gl::glRasterPos4d(x, y, z, w);
 }
 
-void glRasterPos4dv(const GLdouble * v)
+inline void glRasterPos4dv(const GLdouble * v)
 {
     return gl::glRasterPos4dv(v);
 }
 
-void glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+inline void glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
     return gl::glRasterPos4f(x, y, z, w);
 }
 
-void glRasterPos4fv(const GLfloat * v)
+inline void glRasterPos4fv(const GLfloat * v)
 {
     return gl::glRasterPos4fv(v);
 }
 
-void glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
+inline void glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
 {
     return gl::glRasterPos4i(x, y, z, w);
 }
 
-void glRasterPos4iv(const GLint * v)
+inline void glRasterPos4iv(const GLint * v)
 {
     return gl::glRasterPos4iv(v);
 }
 
-void glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w)
+inline void glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
     return gl::glRasterPos4s(x, y, z, w);
 }
 
-void glRasterPos4sv(const GLshort * v)
+inline void glRasterPos4sv(const GLshort * v)
 {
     return gl::glRasterPos4sv(v);
 }
 
-void glReadBuffer(GLenum src)
+inline void glReadBuffer(GLenum src)
 {
     return gl::glReadBuffer(src);
 }
 
-void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels)
+inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels)
 {
     return gl::glReadPixels(x, y, width, height, format, type, pixels);
 }
 
-void glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+inline void glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
     return gl::glRectd(x1, y1, x2, y2);
 }
 
-void glRectdv(const GLdouble * v1, const GLdouble * v2)
+inline void glRectdv(const GLdouble * v1, const GLdouble * v2)
 {
     return gl::glRectdv(v1, v2);
 }
 
-void glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+inline void glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
     return gl::glRectf(x1, y1, x2, y2);
 }
 
-void glRectfv(const GLfloat * v1, const GLfloat * v2)
+inline void glRectfv(const GLfloat * v1, const GLfloat * v2)
 {
     return gl::glRectfv(v1, v2);
 }
 
-void glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
+inline void glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
 {
     return gl::glRecti(x1, y1, x2, y2);
 }
 
-void glRectiv(const GLint * v1, const GLint * v2)
+inline void glRectiv(const GLint * v1, const GLint * v2)
 {
     return gl::glRectiv(v1, v2);
 }
 
-void glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+inline void glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
     return gl::glRects(x1, y1, x2, y2);
 }
 
-void glRectsv(const GLshort * v1, const GLshort * v2)
+inline void glRectsv(const GLshort * v1, const GLshort * v2)
 {
     return gl::glRectsv(v1, v2);
 }
 
-GLint glRenderMode(GLenum mode)
+inline GLint glRenderMode(GLenum mode)
 {
     return gl::glRenderMode(mode);
 }
 
-void glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
+inline void glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
     return gl::glRotated(angle, x, y, z);
 }
 
-void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+inline void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
     return gl::glRotatef(angle, x, y, z);
 }
 
-void glScaled(GLdouble x, GLdouble y, GLdouble z)
+inline void glScaled(GLdouble x, GLdouble y, GLdouble z)
 {
     return gl::glScaled(x, y, z);
 }
 
-void glScalef(GLfloat x, GLfloat y, GLfloat z)
+inline void glScalef(GLfloat x, GLfloat y, GLfloat z)
 {
     return gl::glScalef(x, y, z);
 }
 
-void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
+inline void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
 {
     return gl::glScissor(x, y, width, height);
 }
 
-void glSelectBuffer(GLsizei size, GLuint * buffer)
+inline void glSelectBuffer(GLsizei size, GLuint * buffer)
 {
     return gl::glSelectBuffer(size, buffer);
 }
 
-void glShadeModel(GLenum mode)
+inline void glShadeModel(GLenum mode)
 {
     return gl::glShadeModel(mode);
 }
 
-void glStencilFunc(GLenum func, GLint ref, GLuint mask)
+inline void glStencilFunc(GLenum func, GLint ref, GLuint mask)
 {
     return gl::glStencilFunc(func, ref, mask);
 }
 
-void glStencilMask(GLuint mask)
+inline void glStencilMask(GLuint mask)
 {
     return gl::glStencilMask(mask);
 }
 
-void glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
+inline void glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 {
     return gl::glStencilOp(fail, zfail, zpass);
 }
 
-void glTexCoord1d(GLdouble s)
+inline void glTexCoord1d(GLdouble s)
 {
     return gl::glTexCoord1d(s);
 }
 
-void glTexCoord1dv(const GLdouble * v)
+inline void glTexCoord1dv(const GLdouble * v)
 {
     return gl::glTexCoord1dv(v);
 }
 
-void glTexCoord1f(GLfloat s)
+inline void glTexCoord1f(GLfloat s)
 {
     return gl::glTexCoord1f(s);
 }
 
-void glTexCoord1fv(const GLfloat * v)
+inline void glTexCoord1fv(const GLfloat * v)
 {
     return gl::glTexCoord1fv(v);
 }
 
-void glTexCoord1i(GLint s)
+inline void glTexCoord1i(GLint s)
 {
     return gl::glTexCoord1i(s);
 }
 
-void glTexCoord1iv(const GLint * v)
+inline void glTexCoord1iv(const GLint * v)
 {
     return gl::glTexCoord1iv(v);
 }
 
-void glTexCoord1s(GLshort s)
+inline void glTexCoord1s(GLshort s)
 {
     return gl::glTexCoord1s(s);
 }
 
-void glTexCoord1sv(const GLshort * v)
+inline void glTexCoord1sv(const GLshort * v)
 {
     return gl::glTexCoord1sv(v);
 }
 
-void glTexCoord2d(GLdouble s, GLdouble t)
+inline void glTexCoord2d(GLdouble s, GLdouble t)
 {
     return gl::glTexCoord2d(s, t);
 }
 
-void glTexCoord2dv(const GLdouble * v)
+inline void glTexCoord2dv(const GLdouble * v)
 {
     return gl::glTexCoord2dv(v);
 }
 
-void glTexCoord2f(GLfloat s, GLfloat t)
+inline void glTexCoord2f(GLfloat s, GLfloat t)
 {
     return gl::glTexCoord2f(s, t);
 }
 
-void glTexCoord2fv(const GLfloat * v)
+inline void glTexCoord2fv(const GLfloat * v)
 {
     return gl::glTexCoord2fv(v);
 }
 
-void glTexCoord2i(GLint s, GLint t)
+inline void glTexCoord2i(GLint s, GLint t)
 {
     return gl::glTexCoord2i(s, t);
 }
 
-void glTexCoord2iv(const GLint * v)
+inline void glTexCoord2iv(const GLint * v)
 {
     return gl::glTexCoord2iv(v);
 }
 
-void glTexCoord2s(GLshort s, GLshort t)
+inline void glTexCoord2s(GLshort s, GLshort t)
 {
     return gl::glTexCoord2s(s, t);
 }
 
-void glTexCoord2sv(const GLshort * v)
+inline void glTexCoord2sv(const GLshort * v)
 {
     return gl::glTexCoord2sv(v);
 }
 
-void glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
+inline void glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
 {
     return gl::glTexCoord3d(s, t, r);
 }
 
-void glTexCoord3dv(const GLdouble * v)
+inline void glTexCoord3dv(const GLdouble * v)
 {
     return gl::glTexCoord3dv(v);
 }
 
-void glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
+inline void glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
 {
     return gl::glTexCoord3f(s, t, r);
 }
 
-void glTexCoord3fv(const GLfloat * v)
+inline void glTexCoord3fv(const GLfloat * v)
 {
     return gl::glTexCoord3fv(v);
 }
 
-void glTexCoord3i(GLint s, GLint t, GLint r)
+inline void glTexCoord3i(GLint s, GLint t, GLint r)
 {
     return gl::glTexCoord3i(s, t, r);
 }
 
-void glTexCoord3iv(const GLint * v)
+inline void glTexCoord3iv(const GLint * v)
 {
     return gl::glTexCoord3iv(v);
 }
 
-void glTexCoord3s(GLshort s, GLshort t, GLshort r)
+inline void glTexCoord3s(GLshort s, GLshort t, GLshort r)
 {
     return gl::glTexCoord3s(s, t, r);
 }
 
-void glTexCoord3sv(const GLshort * v)
+inline void glTexCoord3sv(const GLshort * v)
 {
     return gl::glTexCoord3sv(v);
 }
 
-void glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q)
+inline void glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
     return gl::glTexCoord4d(s, t, r, q);
 }
 
-void glTexCoord4dv(const GLdouble * v)
+inline void glTexCoord4dv(const GLdouble * v)
 {
     return gl::glTexCoord4dv(v);
 }
 
-void glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q)
+inline void glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
     return gl::glTexCoord4f(s, t, r, q);
 }
 
-void glTexCoord4fv(const GLfloat * v)
+inline void glTexCoord4fv(const GLfloat * v)
 {
     return gl::glTexCoord4fv(v);
 }
 
-void glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
+inline void glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
 {
     return gl::glTexCoord4i(s, t, r, q);
 }
 
-void glTexCoord4iv(const GLint * v)
+inline void glTexCoord4iv(const GLint * v)
 {
     return gl::glTexCoord4iv(v);
 }
 
-void glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q)
+inline void glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q)
 {
     return gl::glTexCoord4s(s, t, r, q);
 }
 
-void glTexCoord4sv(const GLshort * v)
+inline void glTexCoord4sv(const GLshort * v)
 {
     return gl::glTexCoord4sv(v);
 }
 
-void glTexEnvf(GLenum target, GLenum pname, GLfloat param)
+inline void glTexEnvf(GLenum target, GLenum pname, GLfloat param)
 {
     return gl::glTexEnvf(target, pname, param);
 }
 
-void glTexEnvfv(GLenum target, GLenum pname, const GLfloat * params)
+inline void glTexEnvfv(GLenum target, GLenum pname, const GLfloat * params)
 {
     return gl::glTexEnvfv(target, pname, params);
 }
 
-void glTexEnvi(GLenum target, GLenum pname, GLint param)
+inline void glTexEnvi(GLenum target, GLenum pname, GLint param)
 {
     return gl::glTexEnvi(target, pname, param);
 }
 
-void glTexEnviv(GLenum target, GLenum pname, const GLint * params)
+inline void glTexEnviv(GLenum target, GLenum pname, const GLint * params)
 {
     return gl::glTexEnviv(target, pname, params);
 }
 
-void glTexGend(GLenum coord, GLenum pname, GLdouble param)
+inline void glTexGend(GLenum coord, GLenum pname, GLdouble param)
 {
     return gl::glTexGend(coord, pname, param);
 }
 
-void glTexGendv(GLenum coord, GLenum pname, const GLdouble * params)
+inline void glTexGendv(GLenum coord, GLenum pname, const GLdouble * params)
 {
     return gl::glTexGendv(coord, pname, params);
 }
 
-void glTexGenf(GLenum coord, GLenum pname, GLfloat param)
+inline void glTexGenf(GLenum coord, GLenum pname, GLfloat param)
 {
     return gl::glTexGenf(coord, pname, param);
 }
 
-void glTexGenfv(GLenum coord, GLenum pname, const GLfloat * params)
+inline void glTexGenfv(GLenum coord, GLenum pname, const GLfloat * params)
 {
     return gl::glTexGenfv(coord, pname, params);
 }
 
-void glTexGeni(GLenum coord, GLenum pname, GLint param)
+inline void glTexGeni(GLenum coord, GLenum pname, GLint param)
 {
     return gl::glTexGeni(coord, pname, param);
 }
 
-void glTexGeniv(GLenum coord, GLenum pname, const GLint * params)
+inline void glTexGeniv(GLenum coord, GLenum pname, const GLint * params)
 {
     return gl::glTexGeniv(coord, pname, params);
 }
 
-void glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels)
+inline void glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels)
 {
     return gl::glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
 }
 
-void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels)
+inline void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels)
 {
     return gl::glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 }
 
-void glTexParameterf(GLenum target, GLenum pname, GLfloat param)
+inline void glTexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
     return gl::glTexParameterf(target, pname, param);
 }
 
-void glTexParameterfv(GLenum target, GLenum pname, const GLfloat * params)
+inline void glTexParameterfv(GLenum target, GLenum pname, const GLfloat * params)
 {
     return gl::glTexParameterfv(target, pname, params);
 }
 
-void glTexParameteri(GLenum target, GLenum pname, GLint param)
+inline void glTexParameteri(GLenum target, GLenum pname, GLint param)
 {
     return gl::glTexParameteri(target, pname, param);
 }
 
-void glTexParameteriv(GLenum target, GLenum pname, const GLint * params)
+inline void glTexParameteriv(GLenum target, GLenum pname, const GLint * params)
 {
     return gl::glTexParameteriv(target, pname, params);
 }
 
-void glTranslated(GLdouble x, GLdouble y, GLdouble z)
+inline void glTranslated(GLdouble x, GLdouble y, GLdouble z)
 {
     return gl::glTranslated(x, y, z);
 }
 
-void glTranslatef(GLfloat x, GLfloat y, GLfloat z)
+inline void glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 {
     return gl::glTranslatef(x, y, z);
 }
 
-void glVertex2d(GLdouble x, GLdouble y)
+inline void glVertex2d(GLdouble x, GLdouble y)
 {
     return gl::glVertex2d(x, y);
 }
 
-void glVertex2dv(const GLdouble * v)
+inline void glVertex2dv(const GLdouble * v)
 {
     return gl::glVertex2dv(v);
 }
 
-void glVertex2f(GLfloat x, GLfloat y)
+inline void glVertex2f(GLfloat x, GLfloat y)
 {
     return gl::glVertex2f(x, y);
 }
 
-void glVertex2fv(const GLfloat * v)
+inline void glVertex2fv(const GLfloat * v)
 {
     return gl::glVertex2fv(v);
 }
 
-void glVertex2i(GLint x, GLint y)
+inline void glVertex2i(GLint x, GLint y)
 {
     return gl::glVertex2i(x, y);
 }
 
-void glVertex2iv(const GLint * v)
+inline void glVertex2iv(const GLint * v)
 {
     return gl::glVertex2iv(v);
 }
 
-void glVertex2s(GLshort x, GLshort y)
+inline void glVertex2s(GLshort x, GLshort y)
 {
     return gl::glVertex2s(x, y);
 }
 
-void glVertex2sv(const GLshort * v)
+inline void glVertex2sv(const GLshort * v)
 {
     return gl::glVertex2sv(v);
 }
 
-void glVertex3d(GLdouble x, GLdouble y, GLdouble z)
+inline void glVertex3d(GLdouble x, GLdouble y, GLdouble z)
 {
     return gl::glVertex3d(x, y, z);
 }
 
-void glVertex3dv(const GLdouble * v)
+inline void glVertex3dv(const GLdouble * v)
 {
     return gl::glVertex3dv(v);
 }
 
-void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
+inline void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 {
     return gl::glVertex3f(x, y, z);
 }
 
-void glVertex3fv(const GLfloat * v)
+inline void glVertex3fv(const GLfloat * v)
 {
     return gl::glVertex3fv(v);
 }
 
-void glVertex3i(GLint x, GLint y, GLint z)
+inline void glVertex3i(GLint x, GLint y, GLint z)
 {
     return gl::glVertex3i(x, y, z);
 }
 
-void glVertex3iv(const GLint * v)
+inline void glVertex3iv(const GLint * v)
 {
     return gl::glVertex3iv(v);
 }
 
-void glVertex3s(GLshort x, GLshort y, GLshort z)
+inline void glVertex3s(GLshort x, GLshort y, GLshort z)
 {
     return gl::glVertex3s(x, y, z);
 }
 
-void glVertex3sv(const GLshort * v)
+inline void glVertex3sv(const GLshort * v)
 {
     return gl::glVertex3sv(v);
 }
 
-void glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+inline void glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
     return gl::glVertex4d(x, y, z, w);
 }
 
-void glVertex4dv(const GLdouble * v)
+inline void glVertex4dv(const GLdouble * v)
 {
     return gl::glVertex4dv(v);
 }
 
-void glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+inline void glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
     return gl::glVertex4f(x, y, z, w);
 }
 
-void glVertex4fv(const GLfloat * v)
+inline void glVertex4fv(const GLfloat * v)
 {
     return gl::glVertex4fv(v);
 }
 
-void glVertex4i(GLint x, GLint y, GLint z, GLint w)
+inline void glVertex4i(GLint x, GLint y, GLint z, GLint w)
 {
     return gl::glVertex4i(x, y, z, w);
 }
 
-void glVertex4iv(const GLint * v)
+inline void glVertex4iv(const GLint * v)
 {
     return gl::glVertex4iv(v);
 }
 
-void glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w)
+inline void glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
     return gl::glVertex4s(x, y, z, w);
 }
 
-void glVertex4sv(const GLshort * v)
+inline void glVertex4sv(const GLshort * v)
 {
     return gl::glVertex4sv(v);
 }
 
-void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
+inline void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
     return gl::glViewport(x, y, width, height);
 }
