@@ -32,7 +32,7 @@ template <typename Argument>
 AbstractValue * createValue(Argument argument);
 
 template <typename... Arguments>
-std::vector<AbstractValue*> createValues(Arguments... arguments);
+std::vector<AbstractValue*> createValues(Arguments&&... arguments);
 
 } // namespace glbinding
 

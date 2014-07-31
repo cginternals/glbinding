@@ -17,7 +17,7 @@ struct ValueAdder<>
 template <typename Argument, typename... Arguments>
 struct ValueAdder<Argument, Arguments...>
 {
-    static void add(std::vector<glbinding::AbstractValue*> & values, Argument value, Arguments... rest)
+    static void add(std::vector<glbinding::AbstractValue*> & values, Argument value, Arguments&&... rest)
     {
         values.push_back(glbinding::createValue<Argument>(value));
         ValueAdder<Arguments...>::add(values, std::forward<Arguments>(rest)...);
@@ -25,7 +25,7 @@ struct ValueAdder<Argument, Arguments...>
 };
 
 template <typename... Arguments>
-void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments... arguments)
+void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments&&... arguments)
 {
     ValueAdder<Arguments...>::add(values, std::forward<Arguments>(arguments)...);
 }
@@ -54,7 +54,7 @@ AbstractValue * createValue(Argument argument)
 }
 
 template <typename... Arguments>
-std::vector<AbstractValue*> createValues(Arguments... arguments)
+std::vector<AbstractValue*> createValues(Arguments&&... arguments)
 {
     std::vector<AbstractValue*> values;
     addValuesTo(values, std::forward<Arguments>(arguments)...);
