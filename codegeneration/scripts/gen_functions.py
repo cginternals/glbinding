@@ -43,7 +43,7 @@ def paramSignature(param, forward):
 def functionMember(function):
 
     params = ", ".join([function.returntype] + [ paramSignature(p, False) for p in function.params ])
-    return tab+'%s("%s")' % (functionBID(function), function.name)
+    return tab+'%s.setName("%s");' % (functionBID(function), function.name)
 
 
 def functionDecl(api, function):
@@ -111,9 +111,10 @@ def genFunctionObjects_cpp(commands, outputdir, outputfile):
     status(outputdir + of)
 
     with open(outputdir + of, 'w') as file:
-        file.write(t % (
-            ",\n".join([ functionMember(f) for f in commands ]),
-            functionList(commands)
+        file.write(t.replace("%b", commands[0].name).replace("%e", commands[-1].name) % (
+            len(commands),
+            "\n".join([ functionMember(f) for f in commands ])
+            #,functionList(commands)
         ))
 
 

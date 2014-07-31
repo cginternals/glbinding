@@ -4,6 +4,7 @@
 
 #include <glbinding/gl/types.h>
 #include <glbinding/Function.h>
+#include <glbinding/PointerIterator.h>
 
 
 namespace glbinding
@@ -12,12 +13,19 @@ namespace glbinding
 class GLBINDING_API FunctionObjects
 {
 public:
+	using iterator = PointerIterator<AbstractFunction, sizeof(Function<void>)>;
+	using const_iterator = PointerIterator<const AbstractFunction, sizeof(Function<void>)>;
+
 	FunctionObjects();
 	
-	static const FunctionObjects & current();
+	static FunctionObjects & current();
+	
+	iterator begin();
+	iterator end();	
+	const_iterator begin() const;
+	const_iterator end() const;
 
-	const std::vector<AbstractFunction *> & functions() const;
-
+	size_t size() const;
 public:
     Function<void, gl::GLenum , gl::GLfloat > glAccum;
     Function<void, gl::GLenum , gl::GLfixed > glAccumxOES;
@@ -2671,8 +2679,6 @@ public:
     Function<void, const gl::GLshort * > glWindowPos4svMESA;
     Function<void, gl::GLuint , gl::GLuint , gl::GLenum , gl::GLenum , gl::GLenum , gl::GLenum > glWriteMaskEXT;
 
-protected:
-    std::vector<AbstractFunction *> m_functions;
 };
 
 } // namespace glbinding

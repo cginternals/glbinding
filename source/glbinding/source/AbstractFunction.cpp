@@ -10,9 +10,18 @@
 #include <glbinding/Meta.h>
 
 #include "callbacks_private.h"
+#include "glbinding_private.h"
 
 namespace glbinding 
 {
+
+AbstractFunction::AbstractFunction()
+: m_name(nullptr)
+, m_address(nullptr)
+, m_initialized(false)
+, m_callbackMask(CallbackMask::None)
+{
+}
 
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
@@ -26,6 +35,12 @@ AbstractFunction::~AbstractFunction()
 {
 }
 
+void AbstractFunction::setName(const char * _name)
+{
+    m_name = _name;
+    m_address = nullptr;
+    m_initialized = false;
+}
 
 void AbstractFunction::resolveAddress()
 {
@@ -76,13 +91,13 @@ void AbstractFunction::setCallbackMask(CallbackMask mask)
 
 void AbstractFunction::setCallbackMaskForAll(CallbackMask mask)
 {
-    for (AbstractFunction * function : FunctionObjects::current().functions())
+    for (AbstractFunction * function : currentFunctionObjects())
         function->setCallbackMask(mask);
 }
 
 void AbstractFunction::setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList)
 {
-    for (AbstractFunction * function : FunctionObjects::current().functions())
+    for (AbstractFunction * function : currentFunctionObjects())
         if (blackList.find(function->name()) == blackList.end())
             function->setCallbackMask(mask);
 }
