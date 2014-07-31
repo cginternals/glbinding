@@ -1,9 +1,12 @@
 #pragma once
 
 #include <glbinding/glbinding_api.h>
+
 #include <glbinding/ContextId.h>
 
-namespace glbinding {
+
+namespace glbinding 
+{
 
 class Binding;
 

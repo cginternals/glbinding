@@ -1,0 +1,24 @@
+
+#include <glbinding/%a/functions%f.h>
+
+#include <glbinding/%a/values.h>
+#include <glbinding/%a/boolean.h>
+
+namespace %a%f
+{
+
+#include <glbinding/%a/values.inl>
+#include <glbinding/%a/boolean.inl>
+
+} // namespace %a%f
+
+
+#include <glbinding/Binding.h>
+
+
+namespace %a%f
+{
+
+%s
+
+} // namespace %a%f

@@ -123,6 +123,10 @@ set(sources
     ${source_path}/Meta_StringsByExtension.cpp
 )
 
+file(GLOB featured_sources ${source_path}/gl/*.cpp)
+list(APPEND sources ${featured_sources})
+
+
 # Group source files
 set(header_group "Header Files (API)")
 set(source_group "Source Files")

@@ -3,6 +3,7 @@
 #include <glbinding/glbinding_api.h>
 
 #include <glbinding/gl/types.h>
+
 #include <glbinding/Function.h>
 #include <glbinding/PointerIterator.h>
 

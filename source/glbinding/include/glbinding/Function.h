@@ -1,9 +1,13 @@
 #pragma once
 
-#include <glbinding/AbstractFunction.h>
 #include <functional>
 
-namespace {
+
+#include <glbinding/AbstractFunction.h>
+
+namespace 
+{
+
 template <typename ReturnType, typename... Arguments> struct FunctionHelper;
 
 template <typename ReturnType, typename... Arguments>
