@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
 
+	<types>
+		<type comment="fix for bad parameter signature">typedef std::array&lt;GLuint, 2&gt; <name>GLuint2</name>;</type>
+	</types>
+
 	<!-- non-standard bitfield group for not used mask parameters -->
 	<enums namespace="GL" group="UnusedMask" type="bitmask">
 		<enum value="0x00000000" name="GL_UNUSED_BIT"/>
@@ -9,6 +13,7 @@
 	<enums namespace="GL" group="PathFontStyle" type="bitmask">
 		<enum value="0x00" name="GL_NONE_BIT"/>
 	</enums>
+
     <groups>
 
         <group name="BufferAccessMask">
@@ -31,6 +36,12 @@
     </groups>
 
 	<commands namespace="GL">
+
+		<!-- patch non-compliant parameter signatures -->
+		<command>
+            <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexRangeNV</name></proto>
+            <param><ptype>GLuint2</ptype> <name>baseAndCount</name></param>
+        </command>
 
 		<!-- patch missing groups for parameter of type GLbitfield -->
 		<command>

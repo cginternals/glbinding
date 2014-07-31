@@ -61,7 +61,10 @@ def parseTypes(xml, api):
 
 def patchTypes(types, patches):
 
-    return
+    # currently only adding types is supported
+
+    for patch in patches:
+        types.append(patch)
 
 # returns the type of a typedef, e.g., 
 # "typedef unsigned int" returns "unsigned int"

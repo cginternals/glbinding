@@ -1481,7 +1481,7 @@ public:
     Function<void, gl::GLuint, gl::GLsizei, const gl::GLfloat *> glPathDashArrayNV;
     Function<void, gl::GLenum> glPathFogGenNV;
     Function<gl::GLenum, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLsizei, gl::GLuint, gl::GLfloat> glPathGlyphIndexArrayNV;
-    Function<gl::GLenum, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLfloat, gl::GLuint [2]> glPathGlyphIndexRangeNV;
+    Function<gl::GLenum, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLfloat, gl::GLuint2> glPathGlyphIndexRangeNV;
     Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLsizei, gl::GLenum, gl::GLuint, gl::GLfloat> glPathGlyphRangeNV;
     Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLsizei, gl::GLenum, const void *, gl::GLenum, gl::GLuint, gl::GLfloat> glPathGlyphsNV;
     Function<gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLsizei, gl::GLuint, gl::GLsizei, gl::GLuint, gl::GLfloat> glPathMemoryGlyphIndexArrayNV;

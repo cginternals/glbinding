@@ -14,15 +14,11 @@ class Parameter:
 
         self.name = xml.find("name").text
 
-        i = -1
-
-        # check for array params (which should not be used anyways, but ...)
-        self.array = "" # this extends the type and should be used everywhere
+        # check for additional params
         if list(xml.itertext())[-1] != self.name:
-            self.array = list(xml.itertext())[-1]
-            i = -2
+            print " WARNING: unexpected parameter format"
 
-        self.type = " ".join([t.strip() for t in xml.itertext()][:i]).strip()
+        self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
 
         if self.name in exceptions:
             self.name += "_"
@@ -35,7 +31,7 @@ class Parameter:
 
     def __str__(self):
 
-        return "%s %s%s" % (self.type, self.name, self.array)
+        return "%s %s" % (self.type, self.name)
 
 
 class Command:
@@ -143,11 +139,12 @@ def patchCommands(commands, patches):
         command = commandsByName[patch.name]
 
         for param in command.params:
-            if param.type == "GLbitfield":
-                patchedParam = next((p for p in patch.params if p.name == param.name), None)
 
-                if patchedParam is not None:
-                    param.groupString = patchedParam.groupString
+            patchedParam = next((p for p in patch.params if p.name == param.name), None)
+
+            if patchedParam is not None:
+                param.groupString = patchedParam.groupString
+                param.type = patchedParam.type
 
 
 def verifyCommands(commands, bitfGroups):

@@ -34,10 +34,10 @@ def paramSignature(param, forward):
     if param.type == "GLbitfield":
         return bitfieldType(param)
 
-    if forward and param.array is not "":
-        return param.type + " " + param.array
-    else:
-        return param.type
+#    if forward and param.array is not "":
+#        return param.type + " " + param.array
+#    else:
+    return param.type
 
 
 def functionMember(function):
@@ -67,7 +67,7 @@ def functionForward(function, feature, version):
 
 def paramPass(param): 
 
-    return param.name + param.array
+    return param.name # + param.array
 
     # this returns a string used for passing the param by its name to a function object.
     # if this is inside a featured function, the param will be cast from featured GLenum 
