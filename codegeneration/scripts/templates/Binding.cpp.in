@@ -14,6 +14,10 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding 
 {
 
+// instanciate all templates
+%s
+
+
 Binding & Binding::current()
 {
 	return currentBinding();
@@ -21,22 +25,22 @@ Binding & Binding::current()
 
 Binding::iterator Binding::begin()
 {
-	return iterator(&%b);
+	return iterator(%b);
 }
 
 Binding::iterator Binding::end()
 {
-	return iterator(&%e);
+	return iterator(%e);
 }
 
 Binding::const_iterator Binding::begin() const
 {
-	return const_iterator(&%b);
+	return const_iterator(%b);
 }
 
 Binding::const_iterator Binding::end() const
 {
-	return const_iterator(&%e);
+	return const_iterator(%e);
 }
 
 size_t Binding::size() const

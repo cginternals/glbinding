@@ -49,8 +49,8 @@ public:
 
 protected:
 
-    std::vector<BeforeCallback> m_beforeCallbacks;
-    std::vector<AfterCallback> m_afterCallbacks;
+//    std::vector<BeforeCallback> m_beforeCallbacks;
+//    std::vector<AfterCallback> m_afterCallbacks;
 };
 
 } // namespace glbinding

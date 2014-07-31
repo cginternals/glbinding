@@ -1,6 +1,8 @@
 
 #include <glbinding/%a/functions%f.h>
 
+#include <glbinding/%a/functions.h>
+
 #include <glbinding/%a/values.h>
 #include <glbinding/%a/boolean.h>
 

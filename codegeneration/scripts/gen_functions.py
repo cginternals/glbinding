@@ -3,17 +3,23 @@ from classes.Command import *
 
 
 
-functionForwardTemplate = """inline GLBINDING_API %s %s(%s);"""
+functionForwardTemplate = """GLBINDING_API %s %s(%s);"""
 
 functionForwardImplTemplate = """%s %s(%s)
 {
-    return glbinding::currentBinding().%s(%s);
+    return (*glbinding::currentBinding().%s)(%s);
+}
+"""
+
+functionForwardImplTemplateFoo = """%s %s(%s)
+{
+    return gl::%s(%s);
 }
 """
 
 functionForwardImplTemplateRValueCast = """%s %s(%s)
 {
-    return static_cast<gl%s::%s>(glbinding::currentBinding().%s(%s));
+    return static_cast<gl%s::%s>((*glbinding::currentBinding().%s)(%s));
 }
 """
 
@@ -48,13 +54,22 @@ def paramSignature(param, forward):
 def functionMember(function):
 
     params = ", ".join([function.returntype] + [ paramSignature(p, False) for p in function.params ])
-    return tab+'%s.setName("%s");' % (functionBID(function), function.name)
+    return tab+'%s = new Function<%s>("%s");' % (functionBID(function), params, function.name)
 
 
 def functionDecl(api, function):
 
     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
-    return tab + "Function<%s> %s;" % (params, functionBID(function))
+    return tab + "Function<%s> * %s;" % (params, functionBID(function))
+
+
+def functionSignature(api, function, extern = True):
+
+    params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
+    if extern:
+        return "extern template Function<%s>;" % (params)
+    else:
+        return "template Function<%s>;" % (params)
 
 
 def functionForward(function, feature, version, impl):
@@ -70,8 +85,12 @@ def functionForward(function, feature, version, impl):
             return functionForwardTemplate % (function.returntype, functionBID(function), params)
     else:
         if impl:
-            return functionForwardImplTemplate % (function.returntype, functionBID(function), params,
-                functionBID(function), paramNames)
+            if feature:
+                return functionForwardImplTemplateFoo % (function.returntype, functionBID(function), params,
+                    functionBID(function), paramNames)
+            else:
+                return functionForwardImplTemplate % (function.returntype, functionBID(function), params,
+                    functionBID(function), paramNames)
         else:
             return functionForwardTemplate % (function.returntype, functionBID(function), params)
 
@@ -109,10 +128,12 @@ def genFunctionObjects_h(commands, outputdir, outputfile):
 
     status(outputdir + of)
 
+    extern_templates = set([ functionSignature("gl", f) for f in commands])
+
     with open(outputdir + of, 'w') as file:
-        file.write(t % "\n".join(
-            # ToDo: multiple APIs
-            [ functionDecl("gl", f) for f in commands ]))
+        file.write(t % (
+            "\n".join(sorted(extern_templates)), 
+            "\n".join([ functionDecl("gl", f) for f in commands ])))
 
 def genFunctionObjects_cpp(commands, outputdir, outputfile):
 
@@ -121,8 +142,11 @@ def genFunctionObjects_cpp(commands, outputdir, outputfile):
 
     status(outputdir + of)
 
+    extern_templates = set([ functionSignature("gl", f, False) for f in commands])
+
     with open(outputdir + of, 'w') as file:
         file.write(t.replace("%b", commands[0].name).replace("%e", commands[-1].name) % (
+            "\n".join(sorted(extern_templates)), 
             len(commands),
             "\n".join([ functionMember(f) for f in commands ])
             #,functionList(commands)

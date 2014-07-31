@@ -11,11 +11,15 @@
 namespace glbinding
 {
 
+// forwarding declaring all templates
+%s
+
+
 class GLBINDING_API Binding
 {
 public:
-	using iterator = PointerIterator<AbstractFunction, sizeof(Function<void>)>;
-	using const_iterator = PointerIterator<const AbstractFunction, sizeof(Function<void>)>;
+	using iterator = PointerIterator<AbstractFunction, sizeof(void *)>;
+	using const_iterator = PointerIterator<const AbstractFunction, sizeof(void *)>;
 
 	Binding();
 	
@@ -27,6 +31,7 @@ public:
 	const_iterator end() const;
 
 	size_t size() const;
+
 public:
 %s
 

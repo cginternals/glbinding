@@ -15,7 +15,10 @@ struct GLBINDING_API FunctionCall
     FunctionCall(const AbstractFunction * _function);
     ~FunctionCall();
 
+    FunctionCall & operator=(const FunctionCall &) = delete;
+
     const AbstractFunction & function;
+
     std::vector<AbstractValue *> parameters;
     AbstractValue * returnValue;
 };
