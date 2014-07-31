@@ -4,12 +4,13 @@
 #include <vector>
 #include <functional>
 
-namespace glbinding {
+namespace glbinding 
+{
 
 class AbstractFunction;
 class AbstractValue;
 
-struct FunctionCall
+GLBINDING_API struct FunctionCall
 {
     FunctionCall(const AbstractFunction * _function);
     ~FunctionCall();

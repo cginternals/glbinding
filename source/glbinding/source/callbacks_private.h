@@ -3,7 +3,8 @@
 #include <vector>
 #include <glbinding/callbacks.h>
 
-namespace glbinding {
+namespace glbinding 
+{
 
 void unresolved(const AbstractFunction * function);
 void before(const FunctionCall & call);
