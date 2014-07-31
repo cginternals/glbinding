@@ -879,6 +879,7 @@ public:
     Function<gl::GLint, gl::GLuint, gl::GLenum, const gl::GLchar *> glGetProgramResourceLocation;
     Function<gl::GLint, gl::GLuint, gl::GLenum, const gl::GLchar *> glGetProgramResourceLocationIndex;
     Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLsizei, gl::GLsizei *, gl::GLchar *> glGetProgramResourceName;
+    Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLenum *, gl::GLsizei, gl::GLsizei *, gl::GLfloat *> glGetProgramResourcefvNV;
     Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLenum *, gl::GLsizei, gl::GLsizei *, gl::GLint *> glGetProgramResourceiv;
     Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLint *> glGetProgramStageiv;
     Function<void, gl::GLenum, gl::GLenum, void *> glGetProgramStringARB;
@@ -1209,12 +1210,18 @@ public:
     Function<void, gl::GLint, const gl::GLubyte *> glMatrixIndexubvARB;
     Function<void, gl::GLint, const gl::GLuint *> glMatrixIndexuivARB;
     Function<void, gl::GLint, const gl::GLushort *> glMatrixIndexusvARB;
+    Function<void, gl::GLenum, const gl::GLfloat *> glMatrixLoad3x2fNV;
+    Function<void, gl::GLenum, const gl::GLfloat *> glMatrixLoad3x3fNV;
     Function<void, gl::GLenum> glMatrixLoadIdentityEXT;
+    Function<void, gl::GLenum, const gl::GLfloat *> glMatrixLoadTranspose3x3fNV;
     Function<void, gl::GLenum, const gl::GLdouble *> glMatrixLoadTransposedEXT;
     Function<void, gl::GLenum, const gl::GLfloat *> glMatrixLoadTransposefEXT;
     Function<void, gl::GLenum, const gl::GLdouble *> glMatrixLoaddEXT;
     Function<void, gl::GLenum, const gl::GLfloat *> glMatrixLoadfEXT;
     Function<void, gl::GLenum> glMatrixMode;
+    Function<void, gl::GLenum, const gl::GLfloat *> glMatrixMult3x2fNV;
+    Function<void, gl::GLenum, const gl::GLfloat *> glMatrixMult3x3fNV;
+    Function<void, gl::GLenum, const gl::GLfloat *> glMatrixMultTranspose3x3fNV;
     Function<void, gl::GLenum, const gl::GLdouble *> glMatrixMultTransposedEXT;
     Function<void, gl::GLenum, const gl::GLfloat *> glMatrixMultTransposefEXT;
     Function<void, gl::GLenum, const gl::GLdouble *> glMatrixMultdEXT;
@@ -1246,6 +1253,7 @@ public:
     Function<void, gl::GLenum, const gl::GLint *, const gl::GLsizei *, gl::GLsizei> glMultiDrawArraysEXT;
     Function<void, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei> glMultiDrawArraysIndirect;
     Function<void, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei> glMultiDrawArraysIndirectAMD;
+    Function<void, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLint> glMultiDrawArraysIndirectBindlessCountNV;
     Function<void, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLint> glMultiDrawArraysIndirectBindlessNV;
     Function<void, gl::GLenum, gl::GLintptr, gl::GLintptr, gl::GLsizei, gl::GLsizei> glMultiDrawArraysIndirectCountARB;
     Function<void, gl::GLenum, const gl::GLint *, const gl::GLsizei *, gl::GLsizei> glMultiDrawElementArrayAPPLE;
@@ -1254,6 +1262,7 @@ public:
     Function<void, gl::GLenum, const gl::GLsizei *, gl::GLenum, const void *const*, gl::GLsizei> glMultiDrawElementsEXT;
     Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei> glMultiDrawElementsIndirect;
     Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei> glMultiDrawElementsIndirectAMD;
+    Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLint> glMultiDrawElementsIndirectBindlessCountNV;
     Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLint> glMultiDrawElementsIndirectBindlessNV;
     Function<void, gl::GLenum, gl::GLenum, gl::GLintptr, gl::GLintptr, gl::GLsizei, gl::GLsizei> glMultiDrawElementsIndirectCountARB;
     Function<void, gl::GLenum, gl::GLuint, gl::GLuint, const gl::GLint *, const gl::GLsizei *, gl::GLsizei> glMultiDrawRangeElementArrayAPPLE;
@@ -1463,8 +1472,11 @@ public:
     Function<void, gl::GLenum> glPathCoverDepthFuncNV;
     Function<void, gl::GLuint, gl::GLsizei, const gl::GLfloat *> glPathDashArrayNV;
     Function<void, gl::GLenum> glPathFogGenNV;
+    Function<gl::GLenum, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLsizei, gl::GLuint, gl::GLfloat> glPathGlyphIndexArrayNV;
+    Function<gl::GLenum, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLfloat, gl::GLuint  baseAndCount> glPathGlyphIndexRangeNV;
     Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLsizei, gl::GLenum, gl::GLuint, gl::GLfloat> glPathGlyphRangeNV;
     Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLsizei, gl::GLenum, const void *, gl::GLenum, gl::GLuint, gl::GLfloat> glPathGlyphsNV;
+    Function<gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLsizei, gl::GLuint, gl::GLsizei, gl::GLuint, gl::GLfloat> glPathMemoryGlyphIndexArrayNV;
     Function<void, gl::GLuint, gl::GLenum, gl::GLfloat> glPathParameterfNV;
     Function<void, gl::GLuint, gl::GLenum, const gl::GLfloat *> glPathParameterfvNV;
     Function<void, gl::GLuint, gl::GLenum, gl::GLint> glPathParameteriNV;
@@ -1575,6 +1587,7 @@ public:
     Function<void, gl::GLuint, gl::GLenum, gl::GLint> glProgramParameteriEXT;
     Function<void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLdouble *> glProgramParameters4dvNV;
     Function<void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLfloat *> glProgramParameters4fvNV;
+    Function<void, gl::GLuint, gl::GLint, gl::GLenum, gl::GLint, const gl::GLfloat *> glProgramPathFragmentInputGenNV;
     Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, const void *> glProgramStringARB;
     Function<void, gl::GLenum, gl::GLsizei, const gl::GLuint *> glProgramSubroutineParametersuivNV;
     Function<void, gl::GLuint, gl::GLint, gl::GLdouble> glProgramUniform1d;
@@ -1899,6 +1912,10 @@ public:
     Function<void, gl::GLenum, gl::GLuint> glStencilOpValueAMD;
     Function<void, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLint, gl::GLuint, gl::GLenum, const gl::GLfloat *> glStencilStrokePathInstancedNV;
     Function<void, gl::GLuint, gl::GLint, gl::GLuint> glStencilStrokePathNV;
+    Function<void, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLenum, const gl::GLfloat *> glStencilThenCoverFillPathInstancedNV;
+    Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLenum> glStencilThenCoverFillPathNV;
+    Function<void, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLint, gl::GLuint, gl::GLenum, gl::GLenum, const gl::GLfloat *> glStencilThenCoverStrokePathInstancedNV;
+    Function<void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLenum> glStencilThenCoverStrokePathNV;
     Function<void, gl::GLint> glStopInstrumentsSGIX;
     Function<void, gl::GLsizei, const void *> glStringMarkerGREMEDY;
     Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> glSwizzleEXT;
@@ -2238,7 +2255,7 @@ public:
     Function<void, gl::GLuint, const gl::GLubyte *> glVariantubvEXT;
     Function<void, gl::GLuint, const gl::GLuint *> glVariantuivEXT;
     Function<void, gl::GLuint, const gl::GLushort *> glVariantusvEXT;
-    Function<void, gl::GLbyte> glVertex2bOES;
+    Function<void, gl::GLbyte, gl::GLbyte> glVertex2bOES;
     Function<void, const gl::GLbyte *> glVertex2bvOES;
     Function<void, gl::GLdouble, gl::GLdouble> glVertex2d;
     Function<void, const gl::GLdouble *> glVertex2dv;
@@ -2252,7 +2269,7 @@ public:
     Function<void, const gl::GLshort *> glVertex2sv;
     Function<void, gl::GLfixed> glVertex2xOES;
     Function<void, const gl::GLfixed *> glVertex2xvOES;
-    Function<void, gl::GLbyte, gl::GLbyte> glVertex3bOES;
+    Function<void, gl::GLbyte, gl::GLbyte, gl::GLbyte> glVertex3bOES;
     Function<void, const gl::GLbyte *> glVertex3bvOES;
     Function<void, gl::GLdouble, gl::GLdouble, gl::GLdouble> glVertex3d;
     Function<void, const gl::GLdouble *> glVertex3dv;
@@ -2266,7 +2283,7 @@ public:
     Function<void, const gl::GLshort *> glVertex3sv;
     Function<void, gl::GLfixed, gl::GLfixed> glVertex3xOES;
     Function<void, const gl::GLfixed *> glVertex3xvOES;
-    Function<void, gl::GLbyte, gl::GLbyte, gl::GLbyte> glVertex4bOES;
+    Function<void, gl::GLbyte, gl::GLbyte, gl::GLbyte, gl::GLbyte> glVertex4bOES;
     Function<void, const gl::GLbyte *> glVertex4bvOES;
     Function<void, gl::GLdouble, gl::GLdouble, gl::GLdouble, gl::GLdouble> glVertex4d;
     Function<void, const gl::GLdouble *> glVertex4dv;

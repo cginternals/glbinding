@@ -201,6 +201,7 @@ enum class PathRenderingMaskNV : unsigned int
     GL_GLYPH_HAS_KERNING_BIT_NV                = 0x100,
     GL_FONT_HAS_KERNING_BIT_NV                 = 0x10000000,
     GL_GLYPH_VERTICAL_BEARING_X_BIT_NV         = 0x20,
+    GL_FONT_NUM_GLYPH_INDICES_BIT_NV           = 0x20000000,
     GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV         = 0x40,
     GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV   = 0x80,
 };
@@ -399,6 +400,7 @@ static const PathRenderingMaskNV GL_GLYPH_HAS_KERNING_BIT_NV = PathRenderingMask
 static const PathRenderingMaskNV GL_FONT_HAS_KERNING_BIT_NV = PathRenderingMaskNV::GL_FONT_HAS_KERNING_BIT_NV;
 static const VertexHintsMaskPGI GL_TEXCOORD1_BIT_PGI = VertexHintsMaskPGI::GL_TEXCOORD1_BIT_PGI;
 static const PathRenderingMaskNV GL_GLYPH_VERTICAL_BEARING_X_BIT_NV = PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_X_BIT_NV;
+static const PathRenderingMaskNV GL_FONT_NUM_GLYPH_INDICES_BIT_NV = PathRenderingMaskNV::GL_FONT_NUM_GLYPH_INDICES_BIT_NV;
 static const AttribMask GL_MULTISAMPLE_BIT = AttribMask::GL_MULTISAMPLE_BIT;
 static const AttribMask GL_MULTISAMPLE_BIT_3DFX = AttribMask::GL_MULTISAMPLE_BIT_3DFX;
 static const AttribMask GL_MULTISAMPLE_BIT_ARB = AttribMask::GL_MULTISAMPLE_BIT_ARB;

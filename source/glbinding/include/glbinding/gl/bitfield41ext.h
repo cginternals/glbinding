@@ -104,6 +104,7 @@ static const gl::PathRenderingMaskNV GL_GLYPH_HAS_KERNING_BIT_NV = gl::PathRende
 static const gl::PathRenderingMaskNV GL_FONT_HAS_KERNING_BIT_NV = gl::PathRenderingMaskNV::GL_FONT_HAS_KERNING_BIT_NV;
 static const gl::VertexHintsMaskPGI GL_TEXCOORD1_BIT_PGI = gl::VertexHintsMaskPGI::GL_TEXCOORD1_BIT_PGI;
 static const gl::PathRenderingMaskNV GL_GLYPH_VERTICAL_BEARING_X_BIT_NV = gl::PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_X_BIT_NV;
+static const gl::PathRenderingMaskNV GL_FONT_NUM_GLYPH_INDICES_BIT_NV = gl::PathRenderingMaskNV::GL_FONT_NUM_GLYPH_INDICES_BIT_NV;
 static const gl::AttribMask GL_MULTISAMPLE_BIT_3DFX = gl::AttribMask::GL_MULTISAMPLE_BIT_3DFX;
 static const gl::AttribMask GL_MULTISAMPLE_BIT_ARB = gl::AttribMask::GL_MULTISAMPLE_BIT_ARB;
 static const gl::AttribMask GL_MULTISAMPLE_BIT_EXT = gl::AttribMask::GL_MULTISAMPLE_BIT_EXT;

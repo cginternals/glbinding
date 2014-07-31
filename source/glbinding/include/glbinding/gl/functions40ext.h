@@ -3098,6 +3098,11 @@ inline void glGetProgramResourceName(GLuint program, GLenum programInterface, GL
     return glbinding::FunctionObjects::current().glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
 }
 
+inline void glGetProgramResourcefvNV(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLfloat * params)
+{
+    return glbinding::FunctionObjects::current().glGetProgramResourcefvNV(program, programInterface, index, propCount, props, bufSize, length, params);
+}
+
 inline void glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLint * params)
 {
     return glbinding::FunctionObjects::current().glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
@@ -4198,9 +4203,24 @@ inline void glMatrixIndexusvARB(GLint size, const GLushort * indices)
     return glbinding::FunctionObjects::current().glMatrixIndexusvARB(size, indices);
 }
 
+inline void glMatrixLoad3x2fNV(GLenum matrixMode, const GLfloat * m)
+{
+    return glbinding::FunctionObjects::current().glMatrixLoad3x2fNV(matrixMode, m);
+}
+
+inline void glMatrixLoad3x3fNV(GLenum matrixMode, const GLfloat * m)
+{
+    return glbinding::FunctionObjects::current().glMatrixLoad3x3fNV(matrixMode, m);
+}
+
 inline void glMatrixLoadIdentityEXT(GLenum mode)
 {
     return glbinding::FunctionObjects::current().glMatrixLoadIdentityEXT(mode);
+}
+
+inline void glMatrixLoadTranspose3x3fNV(GLenum matrixMode, const GLfloat * m)
+{
+    return glbinding::FunctionObjects::current().glMatrixLoadTranspose3x3fNV(matrixMode, m);
 }
 
 inline void glMatrixLoadTransposedEXT(GLenum mode, const GLdouble * m)
@@ -4221,6 +4241,21 @@ inline void glMatrixLoaddEXT(GLenum mode, const GLdouble * m)
 inline void glMatrixLoadfEXT(GLenum mode, const GLfloat * m)
 {
     return glbinding::FunctionObjects::current().glMatrixLoadfEXT(mode, m);
+}
+
+inline void glMatrixMult3x2fNV(GLenum matrixMode, const GLfloat * m)
+{
+    return glbinding::FunctionObjects::current().glMatrixMult3x2fNV(matrixMode, m);
+}
+
+inline void glMatrixMult3x3fNV(GLenum matrixMode, const GLfloat * m)
+{
+    return glbinding::FunctionObjects::current().glMatrixMult3x3fNV(matrixMode, m);
+}
+
+inline void glMatrixMultTranspose3x3fNV(GLenum matrixMode, const GLfloat * m)
+{
+    return glbinding::FunctionObjects::current().glMatrixMultTranspose3x3fNV(matrixMode, m);
 }
 
 inline void glMatrixMultTransposedEXT(GLenum mode, const GLdouble * m)
@@ -4348,6 +4383,11 @@ inline void glMultiDrawArraysIndirectAMD(GLenum mode, const void * indirect, GLs
     return glbinding::FunctionObjects::current().glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
 }
 
+inline void glMultiDrawArraysIndirectBindlessCountNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount)
+{
+    return glbinding::FunctionObjects::current().glMultiDrawArraysIndirectBindlessCountNV(mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount);
+}
+
 inline void glMultiDrawArraysIndirectBindlessNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount)
 {
     return glbinding::FunctionObjects::current().glMultiDrawArraysIndirectBindlessNV(mode, indirect, drawCount, stride, vertexBufferCount);
@@ -4376,6 +4416,11 @@ inline void glMultiDrawElementsIndirect(GLenum mode, GLenum type, const void * i
 inline void glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const void * indirect, GLsizei primcount, GLsizei stride)
 {
     return glbinding::FunctionObjects::current().glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
+}
+
+inline void glMultiDrawElementsIndirectBindlessCountNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount)
+{
+    return glbinding::FunctionObjects::current().glMultiDrawElementsIndirectBindlessCountNV(mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount);
 }
 
 inline void glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount)
@@ -5133,6 +5178,16 @@ inline void glPathFogGenNV(GLenum genMode)
     return glbinding::FunctionObjects::current().glPathFogGenNV(genMode);
 }
 
+inline GLenum glPathGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
+{
+    return static_cast<gl40ext::GLenum>(glbinding::FunctionObjects::current().glPathGlyphIndexArrayNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale));
+}
+
+inline GLenum glPathGlyphIndexRangeNV(GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint pathParameterTemplate, GLfloat emScale, GLuint  baseAndCount baseAndCount)
+{
+    return static_cast<gl40ext::GLenum>(glbinding::FunctionObjects::current().glPathGlyphIndexRangeNV(fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount));
+}
+
 inline void glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
 {
     return glbinding::FunctionObjects::current().glPathGlyphRangeNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale);
@@ -5141,6 +5196,11 @@ inline void glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const vo
 inline void glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLsizei numGlyphs, GLenum type, const void * charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
 {
     return glbinding::FunctionObjects::current().glPathGlyphsNV(firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale);
+}
+
+inline GLenum glPathMemoryGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, GLsizeiptr fontSize, const void * fontData, GLsizei faceIndex, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
+{
+    return static_cast<gl40ext::GLenum>(glbinding::FunctionObjects::current().glPathMemoryGlyphIndexArrayNV(firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale));
 }
 
 inline void glPathParameterfNV(GLuint path, GLenum pname, GLfloat value)
@@ -5576,6 +5636,11 @@ inline void glProgramParameters4dvNV(GLenum target, GLuint index, GLsizei count,
 inline void glProgramParameters4fvNV(GLenum target, GLuint index, GLsizei count, const GLfloat * v)
 {
     return glbinding::FunctionObjects::current().glProgramParameters4fvNV(target, index, count, v);
+}
+
+inline void glProgramPathFragmentInputGenNV(GLuint program, GLint location, GLenum genMode, GLint components, const GLfloat * coeffs)
+{
+    return glbinding::FunctionObjects::current().glProgramPathFragmentInputGenNV(program, location, genMode, components, coeffs);
 }
 
 inline void glProgramStringARB(GLenum target, GLenum format, GLsizei len, const void * string)
@@ -6773,6 +6838,26 @@ inline void glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask)
     return glbinding::FunctionObjects::current().glStencilStrokePathNV(path, reference, mask);
 }
 
+inline void glStencilThenCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat * transformValues)
+{
+    return glbinding::FunctionObjects::current().glStencilThenCoverFillPathInstancedNV(numPaths, pathNameType, paths, pathBase, fillMode, mask, coverMode, transformType, transformValues);
+}
+
+inline void glStencilThenCoverFillPathNV(GLuint path, GLenum fillMode, GLuint mask, GLenum coverMode)
+{
+    return glbinding::FunctionObjects::current().glStencilThenCoverFillPathNV(path, fillMode, mask, coverMode);
+}
+
+inline void glStencilThenCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const void * paths, GLuint pathBase, GLint reference, GLuint mask, GLenum coverMode, GLenum transformType, const GLfloat * transformValues)
+{
+    return glbinding::FunctionObjects::current().glStencilThenCoverStrokePathInstancedNV(numPaths, pathNameType, paths, pathBase, reference, mask, coverMode, transformType, transformValues);
+}
+
+inline void glStencilThenCoverStrokePathNV(GLuint path, GLint reference, GLuint mask, GLenum coverMode)
+{
+    return glbinding::FunctionObjects::current().glStencilThenCoverStrokePathNV(path, reference, mask, coverMode);
+}
+
 inline void glStopInstrumentsSGIX(GLint marker)
 {
     return glbinding::FunctionObjects::current().glStopInstrumentsSGIX(marker);
@@ -7848,9 +7933,9 @@ inline void glVariantusvEXT(GLuint id, const GLushort * addr)
     return glbinding::FunctionObjects::current().glVariantusvEXT(id, addr);
 }
 
-inline void glVertex2bOES(GLbyte x)
+inline void glVertex2bOES(GLbyte x, GLbyte y)
 {
-    return glbinding::FunctionObjects::current().glVertex2bOES(x);
+    return glbinding::FunctionObjects::current().glVertex2bOES(x, y);
 }
 
 inline void glVertex2bvOES(const GLbyte * coords)
@@ -7878,9 +7963,9 @@ inline void glVertex2xvOES(const GLfixed * coords)
     return glbinding::FunctionObjects::current().glVertex2xvOES(coords);
 }
 
-inline void glVertex3bOES(GLbyte x, GLbyte y)
+inline void glVertex3bOES(GLbyte x, GLbyte y, GLbyte z)
 {
-    return glbinding::FunctionObjects::current().glVertex3bOES(x, y);
+    return glbinding::FunctionObjects::current().glVertex3bOES(x, y, z);
 }
 
 inline void glVertex3bvOES(const GLbyte * coords)
@@ -7908,9 +7993,9 @@ inline void glVertex3xvOES(const GLfixed * coords)
     return glbinding::FunctionObjects::current().glVertex3xvOES(coords);
 }
 
-inline void glVertex4bOES(GLbyte x, GLbyte y, GLbyte z)
+inline void glVertex4bOES(GLbyte x, GLbyte y, GLbyte z, GLbyte w)
 {
-    return glbinding::FunctionObjects::current().glVertex4bOES(x, y, z);
+    return glbinding::FunctionObjects::current().glVertex4bOES(x, y, z, w);
 }
 
 inline void glVertex4bvOES(const GLbyte * coords)

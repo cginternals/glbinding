@@ -538,9 +538,9 @@ inline void glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei 
     return glbinding::FunctionObjects::current().glDrawArraysInstancedBaseInstance(mode, first, count, instancecount, baseinstance);
 }
 
-inline void glDrawBuffer(GLenum mode)
+inline void glDrawBuffer(GLenum buf)
 {
-    return glbinding::FunctionObjects::current().glDrawBuffer(mode);
+    return glbinding::FunctionObjects::current().glDrawBuffer(buf);
 }
 
 inline void glDrawBuffers(GLsizei n, const GLenum * bufs)
@@ -1793,9 +1793,9 @@ inline void glQueryCounter(GLuint id, GLenum target)
     return glbinding::FunctionObjects::current().glQueryCounter(id, target);
 }
 
-inline void glReadBuffer(GLenum mode)
+inline void glReadBuffer(GLenum src)
 {
-    return glbinding::FunctionObjects::current().glReadBuffer(mode);
+    return glbinding::FunctionObjects::current().glReadBuffer(src);
 }
 
 inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels)

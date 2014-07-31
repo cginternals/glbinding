@@ -73,6 +73,19 @@
 			<proto>void <name>glUseProgramStages</name></proto>
 			<param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
 		</command>
+        <command>
+            <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexRangeNV</name></proto>
+            <param group="PathFontStyle"><ptype>GLbitfield</ptype> <name>fontStyle</name></param>
+        </command>
+		<command>
+            <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexArrayNV</name></proto>
+            <param group="PathFontStyle"><ptype>GLbitfield</ptype> <name>fontStyle</name></param>
+        </command>
+
+<!--	<command>
+            <proto>void <name>glSampleMaski</name></proto>
+            <param group="SampleMaskNV"><ptype>GLbitfield</ptype> <name>mask</name></param>
+        </command>-->
 
 		<!-- patch non existent, not specified groups for parameters of type GLbitfield -->
         <command>
