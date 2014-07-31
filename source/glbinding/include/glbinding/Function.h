@@ -38,7 +38,7 @@ public:
     Function();
     Function(const char * name);
 
-    ReturnType operator()(Arguments... arguments) const;
+    ReturnType operator()(Arguments&... arguments) const;
 
     void addBeforeCallback(BeforeCallback callback);
     void addAfterCallback(AfterCallback callback);

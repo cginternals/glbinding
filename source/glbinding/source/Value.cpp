@@ -59,4 +59,12 @@ void Value<const gl::GLchar *>::printOn(std::ostream & stream) const
     stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
 }
 
+template <>
+void Value<const gl::GLuint_array_2>::printOn(std::ostream & stream) const
+{
+    std::stringstream ss;
+    ss << "{ " << value[0] << ", " << value[1] << " }";
+    stream << ss.str();
+}
+
 } // namespace glbinding

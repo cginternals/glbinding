@@ -17,12 +17,12 @@ namespace glbinding
 
 class GLBINDING_API AbstractFunction
 {
+    friend class FunctionObjects;
 public:
     AbstractFunction();
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
 
-    void setName(const char * name);
     const char * name() const;
 
     void resolveAddress();
@@ -36,6 +36,9 @@ public:
 public:
     static void setCallbackMaskForAll(CallbackMask mask);
     static void setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList);
+
+protected:
+    void setName(const char * name);
 
 protected:
     bool isEnabled(CallbackMask mask) const;
