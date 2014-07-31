@@ -1,8 +1,7 @@
 
 #include <glbinding/glbinding.h>
-#include "glbinding_private.h"
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/Binding.h>
 
 #include <unordered_map>
 #include <mutex>
@@ -19,10 +18,10 @@ namespace glbinding {
 namespace {
 
 THREAD_LOCAL ContextId g_currentContextId = 0;
-THREAD_LOCAL FunctionObjects * g_currentFunctionObjects = nullptr;
+THREAD_LOCAL Binding * g_currentBinding = nullptr;
 
 std::mutex mutex;
-std::unordered_map<ContextId, FunctionObjects*> g_FunctionObjectsMap;
+std::unordered_map<ContextId, Binding*> g_Bindings;
 
 }
 
@@ -35,17 +34,17 @@ void initialize()
 void initialize(ContextId contextId, bool _useContext, bool _resolveFunctions)
 {
     mutex.lock(); // TODO: use read lock
-    if (g_FunctionObjectsMap.find(contextId) != g_FunctionObjectsMap.end())
+    if (g_Bindings.find(contextId) != g_Bindings.end())
     {
         mutex.unlock();
         return;
     }
     mutex.unlock();
 
-    FunctionObjects * functions = new FunctionObjects();
+    Binding * functions = new Binding();
 
     mutex.lock(); // TODO: use write lock
-    g_FunctionObjectsMap[contextId] = functions;
+    g_Bindings[contextId] = functions;
     mutex.unlock();
 
     if (_useContext)
@@ -57,7 +56,7 @@ void initialize(ContextId contextId, bool _useContext, bool _resolveFunctions)
 
 void resolveFunctions()
 {
-    for (AbstractFunction * function : currentFunctionObjects())
+    for (AbstractFunction * function : currentBinding())
     {
         function->resolveAddress();
     }
@@ -73,21 +72,21 @@ void useContext(ContextId contextId)
     g_currentContextId = contextId;
 
     mutex.lock(); // TODO: use read lock
-    if (g_FunctionObjectsMap.find(g_currentContextId) == g_FunctionObjectsMap.end())
+    if (g_Bindings.find(g_currentContextId) == g_Bindings.end())
         initialize(g_currentContextId);
     mutex.unlock();
 
     mutex.lock(); // TODO: use read lock
-    g_currentFunctionObjects = g_FunctionObjectsMap[g_currentContextId];
+    g_currentBinding = g_Bindings[g_currentContextId];
     mutex.unlock();
 }
 
 
-FunctionObjects & currentFunctionObjects()
+Binding & currentBinding()
 {
-    assert(g_currentFunctionObjects != nullptr);
+    assert(g_currentBinding != nullptr);
 
-    return *g_currentFunctionObjects;
+    return *g_currentBinding;
 }
 
 void finalizeCurrentContext()
@@ -98,16 +97,16 @@ void finalizeCurrentContext()
 void finalizeContext(ContextId contextId)
 {
     mutex.lock(); // TODO: use read lock
-    delete g_FunctionObjectsMap[contextId];
+    delete g_Bindings[contextId];
     mutex.unlock();
 
     mutex.lock(); // TODO: use write lock
-    g_FunctionObjectsMap.erase(contextId);
+    g_Bindings.erase(contextId);
     mutex.unlock();
 
     if (g_currentContextId == contextId)
     {
-        g_currentFunctionObjects = nullptr;
+        g_currentBinding = nullptr;
         g_currentContextId = 0;
     }
 }

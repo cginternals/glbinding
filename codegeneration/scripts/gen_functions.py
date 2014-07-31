@@ -5,12 +5,12 @@ from classes.Command import *
 
 functionForwardTemplate = """inline %s %s(%s)
 {
-    return glbinding::FunctionObjects::current().%s(%s);
+    return glbinding::currentBinding().%s(%s);
 }
 """
 functionForwardTemplateRValueCast = """inline %s %s(%s)
 {
-    return static_cast<gl%s::%s>(glbinding::FunctionObjects::current().%s(%s));
+    return static_cast<gl%s::%s>(glbinding::currentBinding().%s(%s));
 }
 """
 

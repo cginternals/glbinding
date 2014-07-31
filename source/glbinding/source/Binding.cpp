@@ -1,12 +1,12 @@
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/Binding.h>
 
 #include <glbinding/gl/bitfield.h>
 #include <glbinding/gl/boolean.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/values.h>
 
-#include "glbinding_private.h"
+#include <glbinding/glbinding.h>
 
 
 using namespace gl; // ToDo: multiple APIs?
@@ -14,37 +14,37 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding 
 {
 
-FunctionObjects & FunctionObjects::current()
+Binding & Binding::current()
 {
-	return currentFunctionObjects();
+	return currentBinding();
 }
 
-FunctionObjects::iterator FunctionObjects::begin()
+Binding::iterator Binding::begin()
 {
 	return iterator(&glAccum);
 }
 
-FunctionObjects::iterator FunctionObjects::end()
+Binding::iterator Binding::end()
 {
 	return iterator(&glWriteMaskEXT);
 }
 
-FunctionObjects::const_iterator FunctionObjects::begin() const
+Binding::const_iterator Binding::begin() const
 {
 	return const_iterator(&glAccum);
 }
 
-FunctionObjects::const_iterator FunctionObjects::end() const
+Binding::const_iterator Binding::end() const
 {
 	return const_iterator(&glWriteMaskEXT);
 }
 
-size_t FunctionObjects::size() const
+size_t Binding::size() const
 {
 	return 2651;
 }
 
-FunctionObjects::FunctionObjects()
+Binding::Binding()
 {
     glAccum.setName("glAccum");
     glAccumxOES.setName("glAccumxOES");

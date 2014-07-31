@@ -12,7 +12,7 @@
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl32.h>
 
@@ -169,7 +169,7 @@ int main()
 
     std::cout << std::endl;
 
-    /*for (auto f : FunctionObjects::current())
+    /*for (auto f : Binding::current())
     {
         std::cout << f->name() << std::endl;
     }*/

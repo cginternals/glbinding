@@ -10,15 +10,15 @@
 namespace glbinding
 {
 
-class GLBINDING_API FunctionObjects
+class GLBINDING_API Binding
 {
 public:
 	using iterator = PointerIterator<AbstractFunction, sizeof(Function<void>)>;
 	using const_iterator = PointerIterator<const AbstractFunction, sizeof(Function<void>)>;
 
-	FunctionObjects();
+	Binding();
 	
-	static FunctionObjects & current();
+	static Binding & current();
 	
 	iterator begin();
 	iterator end();	

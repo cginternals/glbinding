@@ -18,1689 +18,1690 @@ namespace gl11
 } // namespace gl11
 
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/glbinding.h>
+#include <glbinding/Binding.h>
 
 namespace gl11
 {
 
 inline void glAccum(GLenum op, GLfloat value)
 {
-    return glbinding::FunctionObjects::current().glAccum(op, value);
+    return glbinding::currentBinding().glAccum(op, value);
 }
 
 inline void glAlphaFunc(GLenum func, GLfloat ref)
 {
-    return glbinding::FunctionObjects::current().glAlphaFunc(func, ref);
+    return glbinding::currentBinding().glAlphaFunc(func, ref);
 }
 
 inline GLboolean glAreTexturesResident(GLsizei n, const GLuint * textures, GLboolean * residences)
 {
-    return glbinding::FunctionObjects::current().glAreTexturesResident(n, textures, residences);
+    return glbinding::currentBinding().glAreTexturesResident(n, textures, residences);
 }
 
 inline void glArrayElement(GLint i)
 {
-    return glbinding::FunctionObjects::current().glArrayElement(i);
+    return glbinding::currentBinding().glArrayElement(i);
 }
 
 inline void glBegin(GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glBegin(mode);
+    return glbinding::currentBinding().glBegin(mode);
 }
 
 inline void glBindTexture(GLenum target, GLuint texture)
 {
-    return glbinding::FunctionObjects::current().glBindTexture(target, texture);
+    return glbinding::currentBinding().glBindTexture(target, texture);
 }
 
 inline void glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte * bitmap)
 {
-    return glbinding::FunctionObjects::current().glBitmap(width, height, xorig, yorig, xmove, ymove, bitmap);
+    return glbinding::currentBinding().glBitmap(width, height, xorig, yorig, xmove, ymove, bitmap);
 }
 
 inline void glBlendFunc(GLenum sfactor, GLenum dfactor)
 {
-    return glbinding::FunctionObjects::current().glBlendFunc(sfactor, dfactor);
+    return glbinding::currentBinding().glBlendFunc(sfactor, dfactor);
 }
 
 inline void glCallList(GLuint list)
 {
-    return glbinding::FunctionObjects::current().glCallList(list);
+    return glbinding::currentBinding().glCallList(list);
 }
 
 inline void glCallLists(GLsizei n, GLenum type, const void * lists)
 {
-    return glbinding::FunctionObjects::current().glCallLists(n, type, lists);
+    return glbinding::currentBinding().glCallLists(n, type, lists);
 }
 
 inline void glClear(ClearBufferMask mask)
 {
-    return glbinding::FunctionObjects::current().glClear(mask);
+    return glbinding::currentBinding().glClear(mask);
 }
 
 inline void glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-    return glbinding::FunctionObjects::current().glClearAccum(red, green, blue, alpha);
+    return glbinding::currentBinding().glClearAccum(red, green, blue, alpha);
 }
 
 inline void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-    return glbinding::FunctionObjects::current().glClearColor(red, green, blue, alpha);
+    return glbinding::currentBinding().glClearColor(red, green, blue, alpha);
 }
 
 inline void glClearDepth(GLdouble depth)
 {
-    return glbinding::FunctionObjects::current().glClearDepth(depth);
+    return glbinding::currentBinding().glClearDepth(depth);
 }
 
 inline void glClearIndex(GLfloat c)
 {
-    return glbinding::FunctionObjects::current().glClearIndex(c);
+    return glbinding::currentBinding().glClearIndex(c);
 }
 
 inline void glClearStencil(GLint s)
 {
-    return glbinding::FunctionObjects::current().glClearStencil(s);
+    return glbinding::currentBinding().glClearStencil(s);
 }
 
 inline void glClipPlane(GLenum plane, const GLdouble * equation)
 {
-    return glbinding::FunctionObjects::current().glClipPlane(plane, equation);
+    return glbinding::currentBinding().glClipPlane(plane, equation);
 }
 
 inline void glColor3b(GLbyte red, GLbyte green, GLbyte blue)
 {
-    return glbinding::FunctionObjects::current().glColor3b(red, green, blue);
+    return glbinding::currentBinding().glColor3b(red, green, blue);
 }
 
 inline void glColor3bv(const GLbyte * v)
 {
-    return glbinding::FunctionObjects::current().glColor3bv(v);
+    return glbinding::currentBinding().glColor3bv(v);
 }
 
 inline void glColor3d(GLdouble red, GLdouble green, GLdouble blue)
 {
-    return glbinding::FunctionObjects::current().glColor3d(red, green, blue);
+    return glbinding::currentBinding().glColor3d(red, green, blue);
 }
 
 inline void glColor3dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glColor3dv(v);
+    return glbinding::currentBinding().glColor3dv(v);
 }
 
 inline void glColor3f(GLfloat red, GLfloat green, GLfloat blue)
 {
-    return glbinding::FunctionObjects::current().glColor3f(red, green, blue);
+    return glbinding::currentBinding().glColor3f(red, green, blue);
 }
 
 inline void glColor3fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glColor3fv(v);
+    return glbinding::currentBinding().glColor3fv(v);
 }
 
 inline void glColor3i(GLint red, GLint green, GLint blue)
 {
-    return glbinding::FunctionObjects::current().glColor3i(red, green, blue);
+    return glbinding::currentBinding().glColor3i(red, green, blue);
 }
 
 inline void glColor3iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glColor3iv(v);
+    return glbinding::currentBinding().glColor3iv(v);
 }
 
 inline void glColor3s(GLshort red, GLshort green, GLshort blue)
 {
-    return glbinding::FunctionObjects::current().glColor3s(red, green, blue);
+    return glbinding::currentBinding().glColor3s(red, green, blue);
 }
 
 inline void glColor3sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glColor3sv(v);
+    return glbinding::currentBinding().glColor3sv(v);
 }
 
 inline void glColor3ub(GLubyte red, GLubyte green, GLubyte blue)
 {
-    return glbinding::FunctionObjects::current().glColor3ub(red, green, blue);
+    return glbinding::currentBinding().glColor3ub(red, green, blue);
 }
 
 inline void glColor3ubv(const GLubyte * v)
 {
-    return glbinding::FunctionObjects::current().glColor3ubv(v);
+    return glbinding::currentBinding().glColor3ubv(v);
 }
 
 inline void glColor3ui(GLuint red, GLuint green, GLuint blue)
 {
-    return glbinding::FunctionObjects::current().glColor3ui(red, green, blue);
+    return glbinding::currentBinding().glColor3ui(red, green, blue);
 }
 
 inline void glColor3uiv(const GLuint * v)
 {
-    return glbinding::FunctionObjects::current().glColor3uiv(v);
+    return glbinding::currentBinding().glColor3uiv(v);
 }
 
 inline void glColor3us(GLushort red, GLushort green, GLushort blue)
 {
-    return glbinding::FunctionObjects::current().glColor3us(red, green, blue);
+    return glbinding::currentBinding().glColor3us(red, green, blue);
 }
 
 inline void glColor3usv(const GLushort * v)
 {
-    return glbinding::FunctionObjects::current().glColor3usv(v);
+    return glbinding::currentBinding().glColor3usv(v);
 }
 
 inline void glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4b(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4b(red, green, blue, alpha);
 }
 
 inline void glColor4bv(const GLbyte * v)
 {
-    return glbinding::FunctionObjects::current().glColor4bv(v);
+    return glbinding::currentBinding().glColor4bv(v);
 }
 
 inline void glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4d(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4d(red, green, blue, alpha);
 }
 
 inline void glColor4dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glColor4dv(v);
+    return glbinding::currentBinding().glColor4dv(v);
 }
 
 inline void glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4f(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4f(red, green, blue, alpha);
 }
 
 inline void glColor4fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glColor4fv(v);
+    return glbinding::currentBinding().glColor4fv(v);
 }
 
 inline void glColor4i(GLint red, GLint green, GLint blue, GLint alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4i(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4i(red, green, blue, alpha);
 }
 
 inline void glColor4iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glColor4iv(v);
+    return glbinding::currentBinding().glColor4iv(v);
 }
 
 inline void glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4s(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4s(red, green, blue, alpha);
 }
 
 inline void glColor4sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glColor4sv(v);
+    return glbinding::currentBinding().glColor4sv(v);
 }
 
 inline void glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4ub(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4ub(red, green, blue, alpha);
 }
 
 inline void glColor4ubv(const GLubyte * v)
 {
-    return glbinding::FunctionObjects::current().glColor4ubv(v);
+    return glbinding::currentBinding().glColor4ubv(v);
 }
 
 inline void glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4ui(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4ui(red, green, blue, alpha);
 }
 
 inline void glColor4uiv(const GLuint * v)
 {
-    return glbinding::FunctionObjects::current().glColor4uiv(v);
+    return glbinding::currentBinding().glColor4uiv(v);
 }
 
 inline void glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha)
 {
-    return glbinding::FunctionObjects::current().glColor4us(red, green, blue, alpha);
+    return glbinding::currentBinding().glColor4us(red, green, blue, alpha);
 }
 
 inline void glColor4usv(const GLushort * v)
 {
-    return glbinding::FunctionObjects::current().glColor4usv(v);
+    return glbinding::currentBinding().glColor4usv(v);
 }
 
 inline void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
-    return glbinding::FunctionObjects::current().glColorMask(red, green, blue, alpha);
+    return glbinding::currentBinding().glColorMask(red, green, blue, alpha);
 }
 
 inline void glColorMaterial(GLenum face, GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glColorMaterial(face, mode);
+    return glbinding::currentBinding().glColorMaterial(face, mode);
 }
 
 inline void glColorPointer(GLint size, GLenum type, GLsizei stride, const void * pointer)
 {
-    return glbinding::FunctionObjects::current().glColorPointer(size, type, stride, pointer);
+    return glbinding::currentBinding().glColorPointer(size, type, stride, pointer);
 }
 
 inline void glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
 {
-    return glbinding::FunctionObjects::current().glCopyPixels(x, y, width, height, type);
+    return glbinding::currentBinding().glCopyPixels(x, y, width, height, type);
 }
 
 inline void glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-    return glbinding::FunctionObjects::current().glCopyTexImage1D(target, level, internalformat, x, y, width, border);
+    return glbinding::currentBinding().glCopyTexImage1D(target, level, internalformat, x, y, width, border);
 }
 
 inline void glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-    return glbinding::FunctionObjects::current().glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+    return glbinding::currentBinding().glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
 }
 
 inline void glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-    return glbinding::FunctionObjects::current().glCopyTexSubImage1D(target, level, xoffset, x, y, width);
+    return glbinding::currentBinding().glCopyTexSubImage1D(target, level, xoffset, x, y, width);
 }
 
 inline void glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    return glbinding::FunctionObjects::current().glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+    return glbinding::currentBinding().glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 }
 
 inline void glCullFace(GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glCullFace(mode);
+    return glbinding::currentBinding().glCullFace(mode);
 }
 
 inline void glDeleteLists(GLuint list, GLsizei range)
 {
-    return glbinding::FunctionObjects::current().glDeleteLists(list, range);
+    return glbinding::currentBinding().glDeleteLists(list, range);
 }
 
 inline void glDeleteTextures(GLsizei n, const GLuint * textures)
 {
-    return glbinding::FunctionObjects::current().glDeleteTextures(n, textures);
+    return glbinding::currentBinding().glDeleteTextures(n, textures);
 }
 
 inline void glDepthFunc(GLenum func)
 {
-    return glbinding::FunctionObjects::current().glDepthFunc(func);
+    return glbinding::currentBinding().glDepthFunc(func);
 }
 
 inline void glDepthMask(GLboolean flag)
 {
-    return glbinding::FunctionObjects::current().glDepthMask(flag);
+    return glbinding::currentBinding().glDepthMask(flag);
 }
 
 inline void glDepthRange(GLdouble near_, GLdouble far_)
 {
-    return glbinding::FunctionObjects::current().glDepthRange(near_, far_);
+    return glbinding::currentBinding().glDepthRange(near_, far_);
 }
 
 inline void glDisable(GLenum cap)
 {
-    return glbinding::FunctionObjects::current().glDisable(cap);
+    return glbinding::currentBinding().glDisable(cap);
 }
 
 inline void glDisableClientState(GLenum array)
 {
-    return glbinding::FunctionObjects::current().glDisableClientState(array);
+    return glbinding::currentBinding().glDisableClientState(array);
 }
 
 inline void glDrawArrays(GLenum mode, GLint first, GLsizei count)
 {
-    return glbinding::FunctionObjects::current().glDrawArrays(mode, first, count);
+    return glbinding::currentBinding().glDrawArrays(mode, first, count);
 }
 
 inline void glDrawBuffer(GLenum buf)
 {
-    return glbinding::FunctionObjects::current().glDrawBuffer(buf);
+    return glbinding::currentBinding().glDrawBuffer(buf);
 }
 
 inline void glDrawElements(GLenum mode, GLsizei count, GLenum type, const void * indices)
 {
-    return glbinding::FunctionObjects::current().glDrawElements(mode, count, type, indices);
+    return glbinding::currentBinding().glDrawElements(mode, count, type, indices);
 }
 
 inline void glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::FunctionObjects::current().glDrawPixels(width, height, format, type, pixels);
+    return glbinding::currentBinding().glDrawPixels(width, height, format, type, pixels);
 }
 
 inline void glEdgeFlag(GLboolean flag)
 {
-    return glbinding::FunctionObjects::current().glEdgeFlag(flag);
+    return glbinding::currentBinding().glEdgeFlag(flag);
 }
 
 inline void glEdgeFlagPointer(GLsizei stride, const void * pointer)
 {
-    return glbinding::FunctionObjects::current().glEdgeFlagPointer(stride, pointer);
+    return glbinding::currentBinding().glEdgeFlagPointer(stride, pointer);
 }
 
 inline void glEdgeFlagv(const GLboolean * flag)
 {
-    return glbinding::FunctionObjects::current().glEdgeFlagv(flag);
+    return glbinding::currentBinding().glEdgeFlagv(flag);
 }
 
 inline void glEnable(GLenum cap)
 {
-    return glbinding::FunctionObjects::current().glEnable(cap);
+    return glbinding::currentBinding().glEnable(cap);
 }
 
 inline void glEnableClientState(GLenum array)
 {
-    return glbinding::FunctionObjects::current().glEnableClientState(array);
+    return glbinding::currentBinding().glEnableClientState(array);
 }
 
 inline void glEnd()
 {
-    return glbinding::FunctionObjects::current().glEnd();
+    return glbinding::currentBinding().glEnd();
 }
 
 inline void glEndList()
 {
-    return glbinding::FunctionObjects::current().glEndList();
+    return glbinding::currentBinding().glEndList();
 }
 
 inline void glEvalCoord1d(GLdouble u)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord1d(u);
+    return glbinding::currentBinding().glEvalCoord1d(u);
 }
 
 inline void glEvalCoord1dv(const GLdouble * u)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord1dv(u);
+    return glbinding::currentBinding().glEvalCoord1dv(u);
 }
 
 inline void glEvalCoord1f(GLfloat u)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord1f(u);
+    return glbinding::currentBinding().glEvalCoord1f(u);
 }
 
 inline void glEvalCoord1fv(const GLfloat * u)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord1fv(u);
+    return glbinding::currentBinding().glEvalCoord1fv(u);
 }
 
 inline void glEvalCoord2d(GLdouble u, GLdouble v)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord2d(u, v);
+    return glbinding::currentBinding().glEvalCoord2d(u, v);
 }
 
 inline void glEvalCoord2dv(const GLdouble * u)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord2dv(u);
+    return glbinding::currentBinding().glEvalCoord2dv(u);
 }
 
 inline void glEvalCoord2f(GLfloat u, GLfloat v)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord2f(u, v);
+    return glbinding::currentBinding().glEvalCoord2f(u, v);
 }
 
 inline void glEvalCoord2fv(const GLfloat * u)
 {
-    return glbinding::FunctionObjects::current().glEvalCoord2fv(u);
+    return glbinding::currentBinding().glEvalCoord2fv(u);
 }
 
 inline void glEvalMesh1(GLenum mode, GLint i1, GLint i2)
 {
-    return glbinding::FunctionObjects::current().glEvalMesh1(mode, i1, i2);
+    return glbinding::currentBinding().glEvalMesh1(mode, i1, i2);
 }
 
 inline void glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 {
-    return glbinding::FunctionObjects::current().glEvalMesh2(mode, i1, i2, j1, j2);
+    return glbinding::currentBinding().glEvalMesh2(mode, i1, i2, j1, j2);
 }
 
 inline void glEvalPoint1(GLint i)
 {
-    return glbinding::FunctionObjects::current().glEvalPoint1(i);
+    return glbinding::currentBinding().glEvalPoint1(i);
 }
 
 inline void glEvalPoint2(GLint i, GLint j)
 {
-    return glbinding::FunctionObjects::current().glEvalPoint2(i, j);
+    return glbinding::currentBinding().glEvalPoint2(i, j);
 }
 
 inline void glFeedbackBuffer(GLsizei size, GLenum type, GLfloat * buffer)
 {
-    return glbinding::FunctionObjects::current().glFeedbackBuffer(size, type, buffer);
+    return glbinding::currentBinding().glFeedbackBuffer(size, type, buffer);
 }
 
 inline void glFinish()
 {
-    return glbinding::FunctionObjects::current().glFinish();
+    return glbinding::currentBinding().glFinish();
 }
 
 inline void glFlush()
 {
-    return glbinding::FunctionObjects::current().glFlush();
+    return glbinding::currentBinding().glFlush();
 }
 
 inline void glFogf(GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glFogf(pname, param);
+    return glbinding::currentBinding().glFogf(pname, param);
 }
 
 inline void glFogfv(GLenum pname, const GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glFogfv(pname, params);
+    return glbinding::currentBinding().glFogfv(pname, params);
 }
 
 inline void glFogi(GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glFogi(pname, param);
+    return glbinding::currentBinding().glFogi(pname, param);
 }
 
 inline void glFogiv(GLenum pname, const GLint * params)
 {
-    return glbinding::FunctionObjects::current().glFogiv(pname, params);
+    return glbinding::currentBinding().glFogiv(pname, params);
 }
 
 inline void glFrontFace(GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glFrontFace(mode);
+    return glbinding::currentBinding().glFrontFace(mode);
 }
 
 inline void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-    return glbinding::FunctionObjects::current().glFrustum(left, right, bottom, top, zNear, zFar);
+    return glbinding::currentBinding().glFrustum(left, right, bottom, top, zNear, zFar);
 }
 
 inline GLuint glGenLists(GLsizei range)
 {
-    return glbinding::FunctionObjects::current().glGenLists(range);
+    return glbinding::currentBinding().glGenLists(range);
 }
 
 inline void glGenTextures(GLsizei n, GLuint * textures)
 {
-    return glbinding::FunctionObjects::current().glGenTextures(n, textures);
+    return glbinding::currentBinding().glGenTextures(n, textures);
 }
 
 inline void glGetBooleanv(GLenum pname, GLboolean * data)
 {
-    return glbinding::FunctionObjects::current().glGetBooleanv(pname, data);
+    return glbinding::currentBinding().glGetBooleanv(pname, data);
 }
 
 inline void glGetClipPlane(GLenum plane, GLdouble * equation)
 {
-    return glbinding::FunctionObjects::current().glGetClipPlane(plane, equation);
+    return glbinding::currentBinding().glGetClipPlane(plane, equation);
 }
 
 inline void glGetDoublev(GLenum pname, GLdouble * data)
 {
-    return glbinding::FunctionObjects::current().glGetDoublev(pname, data);
+    return glbinding::currentBinding().glGetDoublev(pname, data);
 }
 
 inline GLenum glGetError()
 {
-    return static_cast<gl11::GLenum>(glbinding::FunctionObjects::current().glGetError());
+    return static_cast<gl11::GLenum>(glbinding::currentBinding().glGetError());
 }
 
 inline void glGetFloatv(GLenum pname, GLfloat * data)
 {
-    return glbinding::FunctionObjects::current().glGetFloatv(pname, data);
+    return glbinding::currentBinding().glGetFloatv(pname, data);
 }
 
 inline void glGetIntegerv(GLenum pname, GLint * data)
 {
-    return glbinding::FunctionObjects::current().glGetIntegerv(pname, data);
+    return glbinding::currentBinding().glGetIntegerv(pname, data);
 }
 
 inline void glGetLightfv(GLenum light, GLenum pname, GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glGetLightfv(light, pname, params);
+    return glbinding::currentBinding().glGetLightfv(light, pname, params);
 }
 
 inline void glGetLightiv(GLenum light, GLenum pname, GLint * params)
 {
-    return glbinding::FunctionObjects::current().glGetLightiv(light, pname, params);
+    return glbinding::currentBinding().glGetLightiv(light, pname, params);
 }
 
 inline void glGetMapdv(GLenum target, GLenum query, GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glGetMapdv(target, query, v);
+    return glbinding::currentBinding().glGetMapdv(target, query, v);
 }
 
 inline void glGetMapfv(GLenum target, GLenum query, GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glGetMapfv(target, query, v);
+    return glbinding::currentBinding().glGetMapfv(target, query, v);
 }
 
 inline void glGetMapiv(GLenum target, GLenum query, GLint * v)
 {
-    return glbinding::FunctionObjects::current().glGetMapiv(target, query, v);
+    return glbinding::currentBinding().glGetMapiv(target, query, v);
 }
 
 inline void glGetMaterialfv(GLenum face, GLenum pname, GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glGetMaterialfv(face, pname, params);
+    return glbinding::currentBinding().glGetMaterialfv(face, pname, params);
 }
 
 inline void glGetMaterialiv(GLenum face, GLenum pname, GLint * params)
 {
-    return glbinding::FunctionObjects::current().glGetMaterialiv(face, pname, params);
+    return glbinding::currentBinding().glGetMaterialiv(face, pname, params);
 }
 
 inline void glGetPixelMapfv(GLenum map, GLfloat * values)
 {
-    return glbinding::FunctionObjects::current().glGetPixelMapfv(map, values);
+    return glbinding::currentBinding().glGetPixelMapfv(map, values);
 }
 
 inline void glGetPixelMapuiv(GLenum map, GLuint * values)
 {
-    return glbinding::FunctionObjects::current().glGetPixelMapuiv(map, values);
+    return glbinding::currentBinding().glGetPixelMapuiv(map, values);
 }
 
 inline void glGetPixelMapusv(GLenum map, GLushort * values)
 {
-    return glbinding::FunctionObjects::current().glGetPixelMapusv(map, values);
+    return glbinding::currentBinding().glGetPixelMapusv(map, values);
 }
 
 inline void glGetPointerv(GLenum pname, void ** params)
 {
-    return glbinding::FunctionObjects::current().glGetPointerv(pname, params);
+    return glbinding::currentBinding().glGetPointerv(pname, params);
 }
 
 inline void glGetPolygonStipple(GLubyte * mask)
 {
-    return glbinding::FunctionObjects::current().glGetPolygonStipple(mask);
+    return glbinding::currentBinding().glGetPolygonStipple(mask);
 }
 
 inline const GLubyte * glGetString(GLenum name)
 {
-    return glbinding::FunctionObjects::current().glGetString(name);
+    return glbinding::currentBinding().glGetString(name);
 }
 
 inline void glGetTexEnvfv(GLenum target, GLenum pname, GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexEnvfv(target, pname, params);
+    return glbinding::currentBinding().glGetTexEnvfv(target, pname, params);
 }
 
 inline void glGetTexEnviv(GLenum target, GLenum pname, GLint * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexEnviv(target, pname, params);
+    return glbinding::currentBinding().glGetTexEnviv(target, pname, params);
 }
 
 inline void glGetTexGendv(GLenum coord, GLenum pname, GLdouble * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexGendv(coord, pname, params);
+    return glbinding::currentBinding().glGetTexGendv(coord, pname, params);
 }
 
 inline void glGetTexGenfv(GLenum coord, GLenum pname, GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexGenfv(coord, pname, params);
+    return glbinding::currentBinding().glGetTexGenfv(coord, pname, params);
 }
 
 inline void glGetTexGeniv(GLenum coord, GLenum pname, GLint * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexGeniv(coord, pname, params);
+    return glbinding::currentBinding().glGetTexGeniv(coord, pname, params);
 }
 
 inline void glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void * pixels)
 {
-    return glbinding::FunctionObjects::current().glGetTexImage(target, level, format, type, pixels);
+    return glbinding::currentBinding().glGetTexImage(target, level, format, type, pixels);
 }
 
 inline void glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexLevelParameterfv(target, level, pname, params);
+    return glbinding::currentBinding().glGetTexLevelParameterfv(target, level, pname, params);
 }
 
 inline void glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexLevelParameteriv(target, level, pname, params);
+    return glbinding::currentBinding().glGetTexLevelParameteriv(target, level, pname, params);
 }
 
 inline void glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexParameterfv(target, pname, params);
+    return glbinding::currentBinding().glGetTexParameterfv(target, pname, params);
 }
 
 inline void glGetTexParameteriv(GLenum target, GLenum pname, GLint * params)
 {
-    return glbinding::FunctionObjects::current().glGetTexParameteriv(target, pname, params);
+    return glbinding::currentBinding().glGetTexParameteriv(target, pname, params);
 }
 
 inline void glHint(GLenum target, GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glHint(target, mode);
+    return glbinding::currentBinding().glHint(target, mode);
 }
 
 inline void glIndexMask(GLuint mask)
 {
-    return glbinding::FunctionObjects::current().glIndexMask(mask);
+    return glbinding::currentBinding().glIndexMask(mask);
 }
 
 inline void glIndexPointer(GLenum type, GLsizei stride, const void * pointer)
 {
-    return glbinding::FunctionObjects::current().glIndexPointer(type, stride, pointer);
+    return glbinding::currentBinding().glIndexPointer(type, stride, pointer);
 }
 
 inline void glIndexd(GLdouble c)
 {
-    return glbinding::FunctionObjects::current().glIndexd(c);
+    return glbinding::currentBinding().glIndexd(c);
 }
 
 inline void glIndexdv(const GLdouble * c)
 {
-    return glbinding::FunctionObjects::current().glIndexdv(c);
+    return glbinding::currentBinding().glIndexdv(c);
 }
 
 inline void glIndexf(GLfloat c)
 {
-    return glbinding::FunctionObjects::current().glIndexf(c);
+    return glbinding::currentBinding().glIndexf(c);
 }
 
 inline void glIndexfv(const GLfloat * c)
 {
-    return glbinding::FunctionObjects::current().glIndexfv(c);
+    return glbinding::currentBinding().glIndexfv(c);
 }
 
 inline void glIndexi(GLint c)
 {
-    return glbinding::FunctionObjects::current().glIndexi(c);
+    return glbinding::currentBinding().glIndexi(c);
 }
 
 inline void glIndexiv(const GLint * c)
 {
-    return glbinding::FunctionObjects::current().glIndexiv(c);
+    return glbinding::currentBinding().glIndexiv(c);
 }
 
 inline void glIndexs(GLshort c)
 {
-    return glbinding::FunctionObjects::current().glIndexs(c);
+    return glbinding::currentBinding().glIndexs(c);
 }
 
 inline void glIndexsv(const GLshort * c)
 {
-    return glbinding::FunctionObjects::current().glIndexsv(c);
+    return glbinding::currentBinding().glIndexsv(c);
 }
 
 inline void glIndexub(GLubyte c)
 {
-    return glbinding::FunctionObjects::current().glIndexub(c);
+    return glbinding::currentBinding().glIndexub(c);
 }
 
 inline void glIndexubv(const GLubyte * c)
 {
-    return glbinding::FunctionObjects::current().glIndexubv(c);
+    return glbinding::currentBinding().glIndexubv(c);
 }
 
 inline void glInitNames()
 {
-    return glbinding::FunctionObjects::current().glInitNames();
+    return glbinding::currentBinding().glInitNames();
 }
 
 inline void glInterleavedArrays(GLenum format, GLsizei stride, const void * pointer)
 {
-    return glbinding::FunctionObjects::current().glInterleavedArrays(format, stride, pointer);
+    return glbinding::currentBinding().glInterleavedArrays(format, stride, pointer);
 }
 
 inline GLboolean glIsEnabled(GLenum cap)
 {
-    return glbinding::FunctionObjects::current().glIsEnabled(cap);
+    return glbinding::currentBinding().glIsEnabled(cap);
 }
 
 inline GLboolean glIsList(GLuint list)
 {
-    return glbinding::FunctionObjects::current().glIsList(list);
+    return glbinding::currentBinding().glIsList(list);
 }
 
 inline GLboolean glIsTexture(GLuint texture)
 {
-    return glbinding::FunctionObjects::current().glIsTexture(texture);
+    return glbinding::currentBinding().glIsTexture(texture);
 }
 
 inline void glLightModelf(GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glLightModelf(pname, param);
+    return glbinding::currentBinding().glLightModelf(pname, param);
 }
 
 inline void glLightModelfv(GLenum pname, const GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glLightModelfv(pname, params);
+    return glbinding::currentBinding().glLightModelfv(pname, params);
 }
 
 inline void glLightModeli(GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glLightModeli(pname, param);
+    return glbinding::currentBinding().glLightModeli(pname, param);
 }
 
 inline void glLightModeliv(GLenum pname, const GLint * params)
 {
-    return glbinding::FunctionObjects::current().glLightModeliv(pname, params);
+    return glbinding::currentBinding().glLightModeliv(pname, params);
 }
 
 inline void glLightf(GLenum light, GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glLightf(light, pname, param);
+    return glbinding::currentBinding().glLightf(light, pname, param);
 }
 
 inline void glLightfv(GLenum light, GLenum pname, const GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glLightfv(light, pname, params);
+    return glbinding::currentBinding().glLightfv(light, pname, params);
 }
 
 inline void glLighti(GLenum light, GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glLighti(light, pname, param);
+    return glbinding::currentBinding().glLighti(light, pname, param);
 }
 
 inline void glLightiv(GLenum light, GLenum pname, const GLint * params)
 {
-    return glbinding::FunctionObjects::current().glLightiv(light, pname, params);
+    return glbinding::currentBinding().glLightiv(light, pname, params);
 }
 
 inline void glLineStipple(GLint factor, GLushort pattern)
 {
-    return glbinding::FunctionObjects::current().glLineStipple(factor, pattern);
+    return glbinding::currentBinding().glLineStipple(factor, pattern);
 }
 
 inline void glLineWidth(GLfloat width)
 {
-    return glbinding::FunctionObjects::current().glLineWidth(width);
+    return glbinding::currentBinding().glLineWidth(width);
 }
 
 inline void glListBase(GLuint base)
 {
-    return glbinding::FunctionObjects::current().glListBase(base);
+    return glbinding::currentBinding().glListBase(base);
 }
 
 inline void glLoadIdentity()
 {
-    return glbinding::FunctionObjects::current().glLoadIdentity();
+    return glbinding::currentBinding().glLoadIdentity();
 }
 
 inline void glLoadMatrixd(const GLdouble * m)
 {
-    return glbinding::FunctionObjects::current().glLoadMatrixd(m);
+    return glbinding::currentBinding().glLoadMatrixd(m);
 }
 
 inline void glLoadMatrixf(const GLfloat * m)
 {
-    return glbinding::FunctionObjects::current().glLoadMatrixf(m);
+    return glbinding::currentBinding().glLoadMatrixf(m);
 }
 
 inline void glLoadName(GLuint name)
 {
-    return glbinding::FunctionObjects::current().glLoadName(name);
+    return glbinding::currentBinding().glLoadName(name);
 }
 
 inline void glLogicOp(GLenum opcode)
 {
-    return glbinding::FunctionObjects::current().glLogicOp(opcode);
+    return glbinding::currentBinding().glLogicOp(opcode);
 }
 
 inline void glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points)
 {
-    return glbinding::FunctionObjects::current().glMap1d(target, u1, u2, stride, order, points);
+    return glbinding::currentBinding().glMap1d(target, u1, u2, stride, order, points);
 }
 
 inline void glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points)
 {
-    return glbinding::FunctionObjects::current().glMap1f(target, u1, u2, stride, order, points);
+    return glbinding::currentBinding().glMap1f(target, u1, u2, stride, order, points);
 }
 
 inline void glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points)
 {
-    return glbinding::FunctionObjects::current().glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+    return glbinding::currentBinding().glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
 inline void glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat * points)
 {
-    return glbinding::FunctionObjects::current().glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+    return glbinding::currentBinding().glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
 
 inline void glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
 {
-    return glbinding::FunctionObjects::current().glMapGrid1d(un, u1, u2);
+    return glbinding::currentBinding().glMapGrid1d(un, u1, u2);
 }
 
 inline void glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
 {
-    return glbinding::FunctionObjects::current().glMapGrid1f(un, u1, u2);
+    return glbinding::currentBinding().glMapGrid1f(un, u1, u2);
 }
 
 inline void glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
-    return glbinding::FunctionObjects::current().glMapGrid2d(un, u1, u2, vn, v1, v2);
+    return glbinding::currentBinding().glMapGrid2d(un, u1, u2, vn, v1, v2);
 }
 
 inline void glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 {
-    return glbinding::FunctionObjects::current().glMapGrid2f(un, u1, u2, vn, v1, v2);
+    return glbinding::currentBinding().glMapGrid2f(un, u1, u2, vn, v1, v2);
 }
 
 inline void glMaterialf(GLenum face, GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glMaterialf(face, pname, param);
+    return glbinding::currentBinding().glMaterialf(face, pname, param);
 }
 
 inline void glMaterialfv(GLenum face, GLenum pname, const GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glMaterialfv(face, pname, params);
+    return glbinding::currentBinding().glMaterialfv(face, pname, params);
 }
 
 inline void glMateriali(GLenum face, GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glMateriali(face, pname, param);
+    return glbinding::currentBinding().glMateriali(face, pname, param);
 }
 
 inline void glMaterialiv(GLenum face, GLenum pname, const GLint * params)
 {
-    return glbinding::FunctionObjects::current().glMaterialiv(face, pname, params);
+    return glbinding::currentBinding().glMaterialiv(face, pname, params);
 }
 
 inline void glMatrixMode(GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glMatrixMode(mode);
+    return glbinding::currentBinding().glMatrixMode(mode);
 }
 
 inline void glMultMatrixd(const GLdouble * m)
 {
-    return glbinding::FunctionObjects::current().glMultMatrixd(m);
+    return glbinding::currentBinding().glMultMatrixd(m);
 }
 
 inline void glMultMatrixf(const GLfloat * m)
 {
-    return glbinding::FunctionObjects::current().glMultMatrixf(m);
+    return glbinding::currentBinding().glMultMatrixf(m);
 }
 
 inline void glNewList(GLuint list, GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glNewList(list, mode);
+    return glbinding::currentBinding().glNewList(list, mode);
 }
 
 inline void glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
 {
-    return glbinding::FunctionObjects::current().glNormal3b(nx, ny, nz);
+    return glbinding::currentBinding().glNormal3b(nx, ny, nz);
 }
 
 inline void glNormal3bv(const GLbyte * v)
 {
-    return glbinding::FunctionObjects::current().glNormal3bv(v);
+    return glbinding::currentBinding().glNormal3bv(v);
 }
 
 inline void glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
 {
-    return glbinding::FunctionObjects::current().glNormal3d(nx, ny, nz);
+    return glbinding::currentBinding().glNormal3d(nx, ny, nz);
 }
 
 inline void glNormal3dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glNormal3dv(v);
+    return glbinding::currentBinding().glNormal3dv(v);
 }
 
 inline void glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
 {
-    return glbinding::FunctionObjects::current().glNormal3f(nx, ny, nz);
+    return glbinding::currentBinding().glNormal3f(nx, ny, nz);
 }
 
 inline void glNormal3fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glNormal3fv(v);
+    return glbinding::currentBinding().glNormal3fv(v);
 }
 
 inline void glNormal3i(GLint nx, GLint ny, GLint nz)
 {
-    return glbinding::FunctionObjects::current().glNormal3i(nx, ny, nz);
+    return glbinding::currentBinding().glNormal3i(nx, ny, nz);
 }
 
 inline void glNormal3iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glNormal3iv(v);
+    return glbinding::currentBinding().glNormal3iv(v);
 }
 
 inline void glNormal3s(GLshort nx, GLshort ny, GLshort nz)
 {
-    return glbinding::FunctionObjects::current().glNormal3s(nx, ny, nz);
+    return glbinding::currentBinding().glNormal3s(nx, ny, nz);
 }
 
 inline void glNormal3sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glNormal3sv(v);
+    return glbinding::currentBinding().glNormal3sv(v);
 }
 
 inline void glNormalPointer(GLenum type, GLsizei stride, const void * pointer)
 {
-    return glbinding::FunctionObjects::current().glNormalPointer(type, stride, pointer);
+    return glbinding::currentBinding().glNormalPointer(type, stride, pointer);
 }
 
 inline void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-    return glbinding::FunctionObjects::current().glOrtho(left, right, bottom, top, zNear, zFar);
+    return glbinding::currentBinding().glOrtho(left, right, bottom, top, zNear, zFar);
 }
 
 inline void glPassThrough(GLfloat token)
 {
-    return glbinding::FunctionObjects::current().glPassThrough(token);
+    return glbinding::currentBinding().glPassThrough(token);
 }
 
 inline void glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat * values)
 {
-    return glbinding::FunctionObjects::current().glPixelMapfv(map, mapsize, values);
+    return glbinding::currentBinding().glPixelMapfv(map, mapsize, values);
 }
 
 inline void glPixelMapuiv(GLenum map, GLsizei mapsize, const GLuint * values)
 {
-    return glbinding::FunctionObjects::current().glPixelMapuiv(map, mapsize, values);
+    return glbinding::currentBinding().glPixelMapuiv(map, mapsize, values);
 }
 
 inline void glPixelMapusv(GLenum map, GLsizei mapsize, const GLushort * values)
 {
-    return glbinding::FunctionObjects::current().glPixelMapusv(map, mapsize, values);
+    return glbinding::currentBinding().glPixelMapusv(map, mapsize, values);
 }
 
 inline void glPixelStoref(GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glPixelStoref(pname, param);
+    return glbinding::currentBinding().glPixelStoref(pname, param);
 }
 
 inline void glPixelStorei(GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glPixelStorei(pname, param);
+    return glbinding::currentBinding().glPixelStorei(pname, param);
 }
 
 inline void glPixelTransferf(GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glPixelTransferf(pname, param);
+    return glbinding::currentBinding().glPixelTransferf(pname, param);
 }
 
 inline void glPixelTransferi(GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glPixelTransferi(pname, param);
+    return glbinding::currentBinding().glPixelTransferi(pname, param);
 }
 
 inline void glPixelZoom(GLfloat xfactor, GLfloat yfactor)
 {
-    return glbinding::FunctionObjects::current().glPixelZoom(xfactor, yfactor);
+    return glbinding::currentBinding().glPixelZoom(xfactor, yfactor);
 }
 
 inline void glPointSize(GLfloat size)
 {
-    return glbinding::FunctionObjects::current().glPointSize(size);
+    return glbinding::currentBinding().glPointSize(size);
 }
 
 inline void glPolygonMode(GLenum face, GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glPolygonMode(face, mode);
+    return glbinding::currentBinding().glPolygonMode(face, mode);
 }
 
 inline void glPolygonOffset(GLfloat factor, GLfloat units)
 {
-    return glbinding::FunctionObjects::current().glPolygonOffset(factor, units);
+    return glbinding::currentBinding().glPolygonOffset(factor, units);
 }
 
 inline void glPolygonStipple(const GLubyte * mask)
 {
-    return glbinding::FunctionObjects::current().glPolygonStipple(mask);
+    return glbinding::currentBinding().glPolygonStipple(mask);
 }
 
 inline void glPopAttrib()
 {
-    return glbinding::FunctionObjects::current().glPopAttrib();
+    return glbinding::currentBinding().glPopAttrib();
 }
 
 inline void glPopClientAttrib()
 {
-    return glbinding::FunctionObjects::current().glPopClientAttrib();
+    return glbinding::currentBinding().glPopClientAttrib();
 }
 
 inline void glPopMatrix()
 {
-    return glbinding::FunctionObjects::current().glPopMatrix();
+    return glbinding::currentBinding().glPopMatrix();
 }
 
 inline void glPopName()
 {
-    return glbinding::FunctionObjects::current().glPopName();
+    return glbinding::currentBinding().glPopName();
 }
 
 inline void glPrioritizeTextures(GLsizei n, const GLuint * textures, const GLfloat * priorities)
 {
-    return glbinding::FunctionObjects::current().glPrioritizeTextures(n, textures, priorities);
+    return glbinding::currentBinding().glPrioritizeTextures(n, textures, priorities);
 }
 
 inline void glPushAttrib(AttribMask mask)
 {
-    return glbinding::FunctionObjects::current().glPushAttrib(mask);
+    return glbinding::currentBinding().glPushAttrib(mask);
 }
 
 inline void glPushClientAttrib(ClientAttribMask mask)
 {
-    return glbinding::FunctionObjects::current().glPushClientAttrib(mask);
+    return glbinding::currentBinding().glPushClientAttrib(mask);
 }
 
 inline void glPushMatrix()
 {
-    return glbinding::FunctionObjects::current().glPushMatrix();
+    return glbinding::currentBinding().glPushMatrix();
 }
 
 inline void glPushName(GLuint name)
 {
-    return glbinding::FunctionObjects::current().glPushName(name);
+    return glbinding::currentBinding().glPushName(name);
 }
 
 inline void glRasterPos2d(GLdouble x, GLdouble y)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2d(x, y);
+    return glbinding::currentBinding().glRasterPos2d(x, y);
 }
 
 inline void glRasterPos2dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2dv(v);
+    return glbinding::currentBinding().glRasterPos2dv(v);
 }
 
 inline void glRasterPos2f(GLfloat x, GLfloat y)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2f(x, y);
+    return glbinding::currentBinding().glRasterPos2f(x, y);
 }
 
 inline void glRasterPos2fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2fv(v);
+    return glbinding::currentBinding().glRasterPos2fv(v);
 }
 
 inline void glRasterPos2i(GLint x, GLint y)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2i(x, y);
+    return glbinding::currentBinding().glRasterPos2i(x, y);
 }
 
 inline void glRasterPos2iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2iv(v);
+    return glbinding::currentBinding().glRasterPos2iv(v);
 }
 
 inline void glRasterPos2s(GLshort x, GLshort y)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2s(x, y);
+    return glbinding::currentBinding().glRasterPos2s(x, y);
 }
 
 inline void glRasterPos2sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos2sv(v);
+    return glbinding::currentBinding().glRasterPos2sv(v);
 }
 
 inline void glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3d(x, y, z);
+    return glbinding::currentBinding().glRasterPos3d(x, y, z);
 }
 
 inline void glRasterPos3dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3dv(v);
+    return glbinding::currentBinding().glRasterPos3dv(v);
 }
 
 inline void glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3f(x, y, z);
+    return glbinding::currentBinding().glRasterPos3f(x, y, z);
 }
 
 inline void glRasterPos3fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3fv(v);
+    return glbinding::currentBinding().glRasterPos3fv(v);
 }
 
 inline void glRasterPos3i(GLint x, GLint y, GLint z)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3i(x, y, z);
+    return glbinding::currentBinding().glRasterPos3i(x, y, z);
 }
 
 inline void glRasterPos3iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3iv(v);
+    return glbinding::currentBinding().glRasterPos3iv(v);
 }
 
 inline void glRasterPos3s(GLshort x, GLshort y, GLshort z)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3s(x, y, z);
+    return glbinding::currentBinding().glRasterPos3s(x, y, z);
 }
 
 inline void glRasterPos3sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos3sv(v);
+    return glbinding::currentBinding().glRasterPos3sv(v);
 }
 
 inline void glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4d(x, y, z, w);
+    return glbinding::currentBinding().glRasterPos4d(x, y, z, w);
 }
 
 inline void glRasterPos4dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4dv(v);
+    return glbinding::currentBinding().glRasterPos4dv(v);
 }
 
 inline void glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4f(x, y, z, w);
+    return glbinding::currentBinding().glRasterPos4f(x, y, z, w);
 }
 
 inline void glRasterPos4fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4fv(v);
+    return glbinding::currentBinding().glRasterPos4fv(v);
 }
 
 inline void glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4i(x, y, z, w);
+    return glbinding::currentBinding().glRasterPos4i(x, y, z, w);
 }
 
 inline void glRasterPos4iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4iv(v);
+    return glbinding::currentBinding().glRasterPos4iv(v);
 }
 
 inline void glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4s(x, y, z, w);
+    return glbinding::currentBinding().glRasterPos4s(x, y, z, w);
 }
 
 inline void glRasterPos4sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glRasterPos4sv(v);
+    return glbinding::currentBinding().glRasterPos4sv(v);
 }
 
 inline void glReadBuffer(GLenum src)
 {
-    return glbinding::FunctionObjects::current().glReadBuffer(src);
+    return glbinding::currentBinding().glReadBuffer(src);
 }
 
 inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels)
 {
-    return glbinding::FunctionObjects::current().glReadPixels(x, y, width, height, format, type, pixels);
+    return glbinding::currentBinding().glReadPixels(x, y, width, height, format, type, pixels);
 }
 
 inline void glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
-    return glbinding::FunctionObjects::current().glRectd(x1, y1, x2, y2);
+    return glbinding::currentBinding().glRectd(x1, y1, x2, y2);
 }
 
 inline void glRectdv(const GLdouble * v1, const GLdouble * v2)
 {
-    return glbinding::FunctionObjects::current().glRectdv(v1, v2);
+    return glbinding::currentBinding().glRectdv(v1, v2);
 }
 
 inline void glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
-    return glbinding::FunctionObjects::current().glRectf(x1, y1, x2, y2);
+    return glbinding::currentBinding().glRectf(x1, y1, x2, y2);
 }
 
 inline void glRectfv(const GLfloat * v1, const GLfloat * v2)
 {
-    return glbinding::FunctionObjects::current().glRectfv(v1, v2);
+    return glbinding::currentBinding().glRectfv(v1, v2);
 }
 
 inline void glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
 {
-    return glbinding::FunctionObjects::current().glRecti(x1, y1, x2, y2);
+    return glbinding::currentBinding().glRecti(x1, y1, x2, y2);
 }
 
 inline void glRectiv(const GLint * v1, const GLint * v2)
 {
-    return glbinding::FunctionObjects::current().glRectiv(v1, v2);
+    return glbinding::currentBinding().glRectiv(v1, v2);
 }
 
 inline void glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
-    return glbinding::FunctionObjects::current().glRects(x1, y1, x2, y2);
+    return glbinding::currentBinding().glRects(x1, y1, x2, y2);
 }
 
 inline void glRectsv(const GLshort * v1, const GLshort * v2)
 {
-    return glbinding::FunctionObjects::current().glRectsv(v1, v2);
+    return glbinding::currentBinding().glRectsv(v1, v2);
 }
 
 inline GLint glRenderMode(GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glRenderMode(mode);
+    return glbinding::currentBinding().glRenderMode(mode);
 }
 
 inline void glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
-    return glbinding::FunctionObjects::current().glRotated(angle, x, y, z);
+    return glbinding::currentBinding().glRotated(angle, x, y, z);
 }
 
 inline void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-    return glbinding::FunctionObjects::current().glRotatef(angle, x, y, z);
+    return glbinding::currentBinding().glRotatef(angle, x, y, z);
 }
 
 inline void glScaled(GLdouble x, GLdouble y, GLdouble z)
 {
-    return glbinding::FunctionObjects::current().glScaled(x, y, z);
+    return glbinding::currentBinding().glScaled(x, y, z);
 }
 
 inline void glScalef(GLfloat x, GLfloat y, GLfloat z)
 {
-    return glbinding::FunctionObjects::current().glScalef(x, y, z);
+    return glbinding::currentBinding().glScalef(x, y, z);
 }
 
 inline void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    return glbinding::FunctionObjects::current().glScissor(x, y, width, height);
+    return glbinding::currentBinding().glScissor(x, y, width, height);
 }
 
 inline void glSelectBuffer(GLsizei size, GLuint * buffer)
 {
-    return glbinding::FunctionObjects::current().glSelectBuffer(size, buffer);
+    return glbinding::currentBinding().glSelectBuffer(size, buffer);
 }
 
 inline void glShadeModel(GLenum mode)
 {
-    return glbinding::FunctionObjects::current().glShadeModel(mode);
+    return glbinding::currentBinding().glShadeModel(mode);
 }
 
 inline void glStencilFunc(GLenum func, GLint ref, GLuint mask)
 {
-    return glbinding::FunctionObjects::current().glStencilFunc(func, ref, mask);
+    return glbinding::currentBinding().glStencilFunc(func, ref, mask);
 }
 
 inline void glStencilMask(GLuint mask)
 {
-    return glbinding::FunctionObjects::current().glStencilMask(mask);
+    return glbinding::currentBinding().glStencilMask(mask);
 }
 
 inline void glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 {
-    return glbinding::FunctionObjects::current().glStencilOp(fail, zfail, zpass);
+    return glbinding::currentBinding().glStencilOp(fail, zfail, zpass);
 }
 
 inline void glTexCoord1d(GLdouble s)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1d(s);
+    return glbinding::currentBinding().glTexCoord1d(s);
 }
 
 inline void glTexCoord1dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1dv(v);
+    return glbinding::currentBinding().glTexCoord1dv(v);
 }
 
 inline void glTexCoord1f(GLfloat s)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1f(s);
+    return glbinding::currentBinding().glTexCoord1f(s);
 }
 
 inline void glTexCoord1fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1fv(v);
+    return glbinding::currentBinding().glTexCoord1fv(v);
 }
 
 inline void glTexCoord1i(GLint s)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1i(s);
+    return glbinding::currentBinding().glTexCoord1i(s);
 }
 
 inline void glTexCoord1iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1iv(v);
+    return glbinding::currentBinding().glTexCoord1iv(v);
 }
 
 inline void glTexCoord1s(GLshort s)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1s(s);
+    return glbinding::currentBinding().glTexCoord1s(s);
 }
 
 inline void glTexCoord1sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord1sv(v);
+    return glbinding::currentBinding().glTexCoord1sv(v);
 }
 
 inline void glTexCoord2d(GLdouble s, GLdouble t)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2d(s, t);
+    return glbinding::currentBinding().glTexCoord2d(s, t);
 }
 
 inline void glTexCoord2dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2dv(v);
+    return glbinding::currentBinding().glTexCoord2dv(v);
 }
 
 inline void glTexCoord2f(GLfloat s, GLfloat t)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2f(s, t);
+    return glbinding::currentBinding().glTexCoord2f(s, t);
 }
 
 inline void glTexCoord2fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2fv(v);
+    return glbinding::currentBinding().glTexCoord2fv(v);
 }
 
 inline void glTexCoord2i(GLint s, GLint t)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2i(s, t);
+    return glbinding::currentBinding().glTexCoord2i(s, t);
 }
 
 inline void glTexCoord2iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2iv(v);
+    return glbinding::currentBinding().glTexCoord2iv(v);
 }
 
 inline void glTexCoord2s(GLshort s, GLshort t)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2s(s, t);
+    return glbinding::currentBinding().glTexCoord2s(s, t);
 }
 
 inline void glTexCoord2sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord2sv(v);
+    return glbinding::currentBinding().glTexCoord2sv(v);
 }
 
 inline void glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3d(s, t, r);
+    return glbinding::currentBinding().glTexCoord3d(s, t, r);
 }
 
 inline void glTexCoord3dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3dv(v);
+    return glbinding::currentBinding().glTexCoord3dv(v);
 }
 
 inline void glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3f(s, t, r);
+    return glbinding::currentBinding().glTexCoord3f(s, t, r);
 }
 
 inline void glTexCoord3fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3fv(v);
+    return glbinding::currentBinding().glTexCoord3fv(v);
 }
 
 inline void glTexCoord3i(GLint s, GLint t, GLint r)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3i(s, t, r);
+    return glbinding::currentBinding().glTexCoord3i(s, t, r);
 }
 
 inline void glTexCoord3iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3iv(v);
+    return glbinding::currentBinding().glTexCoord3iv(v);
 }
 
 inline void glTexCoord3s(GLshort s, GLshort t, GLshort r)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3s(s, t, r);
+    return glbinding::currentBinding().glTexCoord3s(s, t, r);
 }
 
 inline void glTexCoord3sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord3sv(v);
+    return glbinding::currentBinding().glTexCoord3sv(v);
 }
 
 inline void glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4d(s, t, r, q);
+    return glbinding::currentBinding().glTexCoord4d(s, t, r, q);
 }
 
 inline void glTexCoord4dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4dv(v);
+    return glbinding::currentBinding().glTexCoord4dv(v);
 }
 
 inline void glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4f(s, t, r, q);
+    return glbinding::currentBinding().glTexCoord4f(s, t, r, q);
 }
 
 inline void glTexCoord4fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4fv(v);
+    return glbinding::currentBinding().glTexCoord4fv(v);
 }
 
 inline void glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4i(s, t, r, q);
+    return glbinding::currentBinding().glTexCoord4i(s, t, r, q);
 }
 
 inline void glTexCoord4iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4iv(v);
+    return glbinding::currentBinding().glTexCoord4iv(v);
 }
 
 inline void glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4s(s, t, r, q);
+    return glbinding::currentBinding().glTexCoord4s(s, t, r, q);
 }
 
 inline void glTexCoord4sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glTexCoord4sv(v);
+    return glbinding::currentBinding().glTexCoord4sv(v);
 }
 
 inline void glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const void * pointer)
 {
-    return glbinding::FunctionObjects::current().glTexCoordPointer(size, type, stride, pointer);
+    return glbinding::currentBinding().glTexCoordPointer(size, type, stride, pointer);
 }
 
 inline void glTexEnvf(GLenum target, GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glTexEnvf(target, pname, param);
+    return glbinding::currentBinding().glTexEnvf(target, pname, param);
 }
 
 inline void glTexEnvfv(GLenum target, GLenum pname, const GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glTexEnvfv(target, pname, params);
+    return glbinding::currentBinding().glTexEnvfv(target, pname, params);
 }
 
 inline void glTexEnvi(GLenum target, GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glTexEnvi(target, pname, param);
+    return glbinding::currentBinding().glTexEnvi(target, pname, param);
 }
 
 inline void glTexEnviv(GLenum target, GLenum pname, const GLint * params)
 {
-    return glbinding::FunctionObjects::current().glTexEnviv(target, pname, params);
+    return glbinding::currentBinding().glTexEnviv(target, pname, params);
 }
 
 inline void glTexGend(GLenum coord, GLenum pname, GLdouble param)
 {
-    return glbinding::FunctionObjects::current().glTexGend(coord, pname, param);
+    return glbinding::currentBinding().glTexGend(coord, pname, param);
 }
 
 inline void glTexGendv(GLenum coord, GLenum pname, const GLdouble * params)
 {
-    return glbinding::FunctionObjects::current().glTexGendv(coord, pname, params);
+    return glbinding::currentBinding().glTexGendv(coord, pname, params);
 }
 
 inline void glTexGenf(GLenum coord, GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glTexGenf(coord, pname, param);
+    return glbinding::currentBinding().glTexGenf(coord, pname, param);
 }
 
 inline void glTexGenfv(GLenum coord, GLenum pname, const GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glTexGenfv(coord, pname, params);
+    return glbinding::currentBinding().glTexGenfv(coord, pname, params);
 }
 
 inline void glTexGeni(GLenum coord, GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glTexGeni(coord, pname, param);
+    return glbinding::currentBinding().glTexGeni(coord, pname, param);
 }
 
 inline void glTexGeniv(GLenum coord, GLenum pname, const GLint * params)
 {
-    return glbinding::FunctionObjects::current().glTexGeniv(coord, pname, params);
+    return glbinding::currentBinding().glTexGeniv(coord, pname, params);
 }
 
 inline void glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::FunctionObjects::current().glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
+    return glbinding::currentBinding().glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
 }
 
 inline void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::FunctionObjects::current().glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+    return glbinding::currentBinding().glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 }
 
 inline void glTexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
-    return glbinding::FunctionObjects::current().glTexParameterf(target, pname, param);
+    return glbinding::currentBinding().glTexParameterf(target, pname, param);
 }
 
 inline void glTexParameterfv(GLenum target, GLenum pname, const GLfloat * params)
 {
-    return glbinding::FunctionObjects::current().glTexParameterfv(target, pname, params);
+    return glbinding::currentBinding().glTexParameterfv(target, pname, params);
 }
 
 inline void glTexParameteri(GLenum target, GLenum pname, GLint param)
 {
-    return glbinding::FunctionObjects::current().glTexParameteri(target, pname, param);
+    return glbinding::currentBinding().glTexParameteri(target, pname, param);
 }
 
 inline void glTexParameteriv(GLenum target, GLenum pname, const GLint * params)
 {
-    return glbinding::FunctionObjects::current().glTexParameteriv(target, pname, params);
+    return glbinding::currentBinding().glTexParameteriv(target, pname, params);
 }
 
 inline void glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::FunctionObjects::current().glTexSubImage1D(target, level, xoffset, width, format, type, pixels);
+    return glbinding::currentBinding().glTexSubImage1D(target, level, xoffset, width, format, type, pixels);
 }
 
 inline void glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::FunctionObjects::current().glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
+    return glbinding::currentBinding().glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
 
 inline void glTranslated(GLdouble x, GLdouble y, GLdouble z)
 {
-    return glbinding::FunctionObjects::current().glTranslated(x, y, z);
+    return glbinding::currentBinding().glTranslated(x, y, z);
 }
 
 inline void glTranslatef(GLfloat x, GLfloat y, GLfloat z)
 {
-    return glbinding::FunctionObjects::current().glTranslatef(x, y, z);
+    return glbinding::currentBinding().glTranslatef(x, y, z);
 }
 
 inline void glVertex2d(GLdouble x, GLdouble y)
 {
-    return glbinding::FunctionObjects::current().glVertex2d(x, y);
+    return glbinding::currentBinding().glVertex2d(x, y);
 }
 
 inline void glVertex2dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glVertex2dv(v);
+    return glbinding::currentBinding().glVertex2dv(v);
 }
 
 inline void glVertex2f(GLfloat x, GLfloat y)
 {
-    return glbinding::FunctionObjects::current().glVertex2f(x, y);
+    return glbinding::currentBinding().glVertex2f(x, y);
 }
 
 inline void glVertex2fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glVertex2fv(v);
+    return glbinding::currentBinding().glVertex2fv(v);
 }
 
 inline void glVertex2i(GLint x, GLint y)
 {
-    return glbinding::FunctionObjects::current().glVertex2i(x, y);
+    return glbinding::currentBinding().glVertex2i(x, y);
 }
 
 inline void glVertex2iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glVertex2iv(v);
+    return glbinding::currentBinding().glVertex2iv(v);
 }
 
 inline void glVertex2s(GLshort x, GLshort y)
 {
-    return glbinding::FunctionObjects::current().glVertex2s(x, y);
+    return glbinding::currentBinding().glVertex2s(x, y);
 }
 
 inline void glVertex2sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glVertex2sv(v);
+    return glbinding::currentBinding().glVertex2sv(v);
 }
 
 inline void glVertex3d(GLdouble x, GLdouble y, GLdouble z)
 {
-    return glbinding::FunctionObjects::current().glVertex3d(x, y, z);
+    return glbinding::currentBinding().glVertex3d(x, y, z);
 }
 
 inline void glVertex3dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glVertex3dv(v);
+    return glbinding::currentBinding().glVertex3dv(v);
 }
 
 inline void glVertex3f(GLfloat x, GLfloat y, GLfloat z)
 {
-    return glbinding::FunctionObjects::current().glVertex3f(x, y, z);
+    return glbinding::currentBinding().glVertex3f(x, y, z);
 }
 
 inline void glVertex3fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glVertex3fv(v);
+    return glbinding::currentBinding().glVertex3fv(v);
 }
 
 inline void glVertex3i(GLint x, GLint y, GLint z)
 {
-    return glbinding::FunctionObjects::current().glVertex3i(x, y, z);
+    return glbinding::currentBinding().glVertex3i(x, y, z);
 }
 
 inline void glVertex3iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glVertex3iv(v);
+    return glbinding::currentBinding().glVertex3iv(v);
 }
 
 inline void glVertex3s(GLshort x, GLshort y, GLshort z)
 {
-    return glbinding::FunctionObjects::current().glVertex3s(x, y, z);
+    return glbinding::currentBinding().glVertex3s(x, y, z);
 }
 
 inline void glVertex3sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glVertex3sv(v);
+    return glbinding::currentBinding().glVertex3sv(v);
 }
 
 inline void glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-    return glbinding::FunctionObjects::current().glVertex4d(x, y, z, w);
+    return glbinding::currentBinding().glVertex4d(x, y, z, w);
 }
 
 inline void glVertex4dv(const GLdouble * v)
 {
-    return glbinding::FunctionObjects::current().glVertex4dv(v);
+    return glbinding::currentBinding().glVertex4dv(v);
 }
 
 inline void glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-    return glbinding::FunctionObjects::current().glVertex4f(x, y, z, w);
+    return glbinding::currentBinding().glVertex4f(x, y, z, w);
 }
 
 inline void glVertex4fv(const GLfloat * v)
 {
-    return glbinding::FunctionObjects::current().glVertex4fv(v);
+    return glbinding::currentBinding().glVertex4fv(v);
 }
 
 inline void glVertex4i(GLint x, GLint y, GLint z, GLint w)
 {
-    return glbinding::FunctionObjects::current().glVertex4i(x, y, z, w);
+    return glbinding::currentBinding().glVertex4i(x, y, z, w);
 }
 
 inline void glVertex4iv(const GLint * v)
 {
-    return glbinding::FunctionObjects::current().glVertex4iv(v);
+    return glbinding::currentBinding().glVertex4iv(v);
 }
 
 inline void glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w)
 {
-    return glbinding::FunctionObjects::current().glVertex4s(x, y, z, w);
+    return glbinding::currentBinding().glVertex4s(x, y, z, w);
 }
 
 inline void glVertex4sv(const GLshort * v)
 {
-    return glbinding::FunctionObjects::current().glVertex4sv(v);
+    return glbinding::currentBinding().glVertex4sv(v);
 }
 
 inline void glVertexPointer(GLint size, GLenum type, GLsizei stride, const void * pointer)
 {
-    return glbinding::FunctionObjects::current().glVertexPointer(size, type, stride, pointer);
+    return glbinding::currentBinding().glVertexPointer(size, type, stride, pointer);
 }
 
 inline void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    return glbinding::FunctionObjects::current().glViewport(x, y, width, height);
+    return glbinding::currentBinding().glViewport(x, y, width, height);
 }
 
 

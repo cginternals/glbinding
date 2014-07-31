@@ -18,7 +18,8 @@ namespace %a%f
 } // namespace %a%f
 
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/glbinding.h>
+#include <glbinding/Binding.h>
 
 namespace %a%f
 {

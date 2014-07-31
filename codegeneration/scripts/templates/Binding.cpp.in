@@ -1,0 +1,52 @@
+
+#include <glbinding/Binding.h>
+
+#include <glbinding/gl/bitfield.h>
+#include <glbinding/gl/boolean.h>
+#include <glbinding/gl/enum.h>
+#include <glbinding/gl/values.h>
+
+#include <glbinding/glbinding.h>
+
+
+using namespace gl; // ToDo: multiple APIs?
+
+namespace glbinding 
+{
+
+Binding & Binding::current()
+{
+	return currentBinding();
+}
+
+Binding::iterator Binding::begin()
+{
+	return iterator(&%b);
+}
+
+Binding::iterator Binding::end()
+{
+	return iterator(&%e);
+}
+
+Binding::const_iterator Binding::begin() const
+{
+	return const_iterator(&%b);
+}
+
+Binding::const_iterator Binding::end() const
+{
+	return const_iterator(&%e);
+}
+
+size_t Binding::size() const
+{
+	return %s;
+}
+
+Binding::Binding()
+{
+%s
+}
+
+} // namespace glbinding

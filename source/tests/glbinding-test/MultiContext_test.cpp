@@ -8,7 +8,7 @@
 #include <glbinding/Meta.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl.h>
 
@@ -56,13 +56,13 @@ TEST_F(MultiContext_test, Test)
 
 #ifdef  _WIN32
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
-    EXPECT_EQ(nullptr, FunctionObjects::current().glDispatchCompute.address());
+    EXPECT_EQ(nullptr, Binding::current().glDispatchCompute.address());
 #elif defined(MAC_OS)
     EXPECT_EQ(Version(4, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, FunctionObjects::current().glDispatchCompute.address());
+    EXPECT_EQ(nullptr, Binding::current().glDispatchCompute.address());
 #else // Linux
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
-    EXPECT_NE(nullptr, FunctionObjects::current().glDispatchCompute.address());
+    EXPECT_NE(nullptr, Binding::current().glDispatchCompute.address());
 #endif
 
     glfwMakeContextCurrent(window2);
@@ -70,13 +70,13 @@ TEST_F(MultiContext_test, Test)
 
 #ifdef _WIN32
     EXPECT_EQ(Version(4, 4), ContextInfo::version());
-    EXPECT_NE(nullptr, FunctionObjects::current().glDispatchCompute.address());
+    EXPECT_NE(nullptr, Binding::current().glDispatchCompute.address());
 #elif defined(MAC_OS)
     EXPECT_EQ(Version(2, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, FunctionObjects::current().glDispatchCompute.address());
+    EXPECT_EQ(nullptr, Binding::current().glDispatchCompute.address());
 #else // Linux
     EXPECT_EQ(Version(4, 4), ContextInfo::version());
-    EXPECT_NE(nullptr, FunctionObjects::current().glDispatchCompute.address());
+    EXPECT_NE(nullptr, Binding::current().glDispatchCompute.address());
 #endif
 
     glfwTerminate();
