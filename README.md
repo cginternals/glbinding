@@ -1,7 +1,8 @@
 glbinding is an automatically generated C++ binding for OpenGL (using the gl.xml).
+The current release is [glbinding-v1.0.0](https://github.com/hpicgs/glbinding/releases/tag/v1.0.0).
 The implementation uses modern C++11 features like enum classes, lambdas and variadic templates.
 All defined OpenGL symbols are real functions and variables, they don't rely on macros.
-It should serve as an alternative to other OpenGL bindings like GLEW [1] and glad [2].
+It should serve as an alternative to other OpenGL bindings like [GLEW](http://glew.sourceforge.net/) and [glad](https://github.com/Dav1dde/glad).
 
 The standard glbinding API setup looks like
 ```
@@ -46,13 +47,14 @@ Besides the actual binding, glbinding comes with these additional features:
 * Multi-context support (explicit switch required)
 * Multi-threading support
 
-### Run-time dependencies
-----------
+As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
+The necessary python scripts are provided in this repository.
 
- * OpenGL library dynamically linked into your application
+### Run-time dependencies
+
+The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL dynamically linked library, linked with your application.
 
 ### Compile-time dependencies
----------------
 
  * CMake (2.8.12)
  * C++11-Compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3)
@@ -60,7 +62,7 @@ Besides the actual binding, glbinding comes with these additional features:
 Optional dependencies
  * Python 2 or 3 to generate the binding
  * Qt for some examples
- * GLFW for some examples
+ * [GLFW 3](http://www.glfw.org/) for some examples
  * GLEW for some examples
 
 ### Development Notes
