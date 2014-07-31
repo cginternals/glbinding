@@ -10,7 +10,7 @@ namespace glbinding
 class AbstractFunction;
 class AbstractValue;
 
-GLBINDING_API struct FunctionCall
+struct GLBINDING_API FunctionCall
 {
     FunctionCall(const AbstractFunction * _function);
     ~FunctionCall();

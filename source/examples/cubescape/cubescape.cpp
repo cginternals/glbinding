@@ -203,17 +203,17 @@ CubeScape::CubeScape()
     // setup uniforms
 
     a_vertex = glGetAttribLocation(m_program, "a_vertex");
-    glEnableVertexAttribArray(a_vertex);
+    glEnableVertexAttribArray(static_cast<GLuint>(a_vertex));
 
-    glVertexAttribPointer(a_vertex, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+    glVertexAttribPointer(static_cast<GLuint>(a_vertex), 3, GL_FLOAT, GL_FALSE, 0, nullptr);
 
     u_transform = glGetUniformLocation(m_program, "modelViewProjection");
     u_time = glGetUniformLocation(m_program, "time");
 
     m_time = clock::now();
 
-    GLuint terrain = glGetUniformLocation(m_program, "terrain");
-    GLuint patches = glGetUniformLocation(m_program, "patches");
+    GLint terrain = glGetUniformLocation(m_program, "terrain");
+    GLint patches = glGetUniformLocation(m_program, "patches");
 
     // since only single program and single data is used, bind only once 
 

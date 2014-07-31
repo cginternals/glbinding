@@ -6,6 +6,6 @@ namespace glbinding {
 
 class FunctionObjects;
 
-FunctionObjects & currentFunctionObjects();
+const FunctionObjects & currentFunctionObjects();
 
 } // namespace glbinding

@@ -83,7 +83,7 @@ void useContext(ContextId contextId)
 }
 
 
-FunctionObjects & currentFunctionObjects()
+const FunctionObjects & currentFunctionObjects()
 {
     assert(g_currentFunctionObjects != nullptr);
 

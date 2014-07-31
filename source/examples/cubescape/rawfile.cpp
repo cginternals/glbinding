@@ -1,5 +1,5 @@
 
-#include "RawFile.h"
+#include "rawfile.h"
 
 #include <fstream>
 #include <iostream>
@@ -25,7 +25,7 @@ const char * RawFile::data() const
     return m_data.data();
 }
 
-const size_t RawFile::size() const
+size_t RawFile::size() const
 {
     return m_data.size();
 }
@@ -51,9 +51,9 @@ void RawFile::readRawData(std::ifstream & ifs)
 {
     ifs.seekg(0, std::ios::end);
 
-    const size_t size = ifs.tellg();
+    const size_t size = static_cast<size_t>(ifs.tellg());
     m_data.resize(size);
 
     ifs.seekg(0, std::ios::beg);
-    ifs.read(m_data.data(), size);
+    ifs.read(m_data.data(), static_cast<std::streamsize>(size));
 }
