@@ -97,6 +97,7 @@ set(sources
     
     ${source_path}/gl/types.cpp
     ${source_path}/gl/test.cpp
+    ${source_path}/gl/functions.cpp
 
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
@@ -123,8 +124,8 @@ set(sources
     ${source_path}/Meta_StringsByExtension.cpp
 )
 
-file(GLOB featured_sources ${source_path}/gl/*.cpp)
-list(APPEND sources ${featured_sources})
+# file(GLOB featured_sources ${source_path}/gl/*.cpp)
+# list(APPEND sources ${featured_sources})
 
 
 # Group source files

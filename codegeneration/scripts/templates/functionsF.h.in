@@ -4,7 +4,7 @@
 
 #include <glbinding/%a/nogl.h>
 
-#include <glbinding/%a/types.h>
+#include <glbinding/%a/functions.h>
 
 namespace %a%f
 {
@@ -13,8 +13,6 @@ namespace %a%f
 
 } // namespace %a%f
 
-
-#include <glbinding/glbinding.h>
 
 namespace %a%f
 {
