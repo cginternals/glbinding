@@ -11,7 +11,7 @@
 using namespace gl32core;
 
 
-void compile_info(const GLint shader)
+void compile_info(const GLuint shader)
 {
     GLint status(0);
     glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
@@ -72,8 +72,8 @@ mat4 mat4::perspective(GLfloat fovy, GLfloat aspect, GLfloat zNear, GLfloat zFar
 {
     mat4 m;
 
-    const float zRange = zNear - zFar;
-    const float f = 1.f / tan(fovy * 0.5f * 0.01745329251994329576923690768489f);
+    //const float zRange = zNear - zFar;
+    const float f = 1.f / static_cast<float>(tan(fovy * 0.5f * 0.01745329251994329576923690768489f));
 
     m[ 0] = f / aspect;
     m[ 5] = f;
@@ -148,14 +148,14 @@ mat4 mat4::rotate(GLfloat a, GLfloat x, GLfloat y, GLfloat z)
 {
     mat4 m;
 
-    GLfloat l = 1.f / sqrt(x * x + y * y + z * z);
+    GLfloat l = 1.f / static_cast<float>(sqrt(x * x + y * y + z * z));
 
     x *= l;
     y *= l;
     z *= l;
 
-    const GLfloat c = cos(a);
-    const GLfloat s = sin(a);
+    const GLfloat c = static_cast<float>(cos(a));
+    const GLfloat s = static_cast<float>(sin(a));
 
     const GLfloat d = 1.f - c;
 
@@ -224,7 +224,7 @@ vec3 & vec3::operator/(const vec3 rhs)
 
 GLfloat vec3::length()
 {
-    return sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
+    return static_cast<float>(sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]));
 }
 
 void vec3::normalize()

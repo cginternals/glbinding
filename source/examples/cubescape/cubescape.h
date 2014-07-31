@@ -26,7 +26,7 @@ protected:
     gl::GLuint m_indices;
     gl::GLuint m_vertices;
 
-    gl::GLint m_program;
+    gl::GLuint m_program;
 
     gl::GLuint m_textures[2];
 

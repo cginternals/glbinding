@@ -19,7 +19,7 @@ const std::vector<AbstractFunction *> & FunctionObjects::functions() const
 	return m_functions;
 }
 
-FunctionObjects & FunctionObjects::current()
+const FunctionObjects & FunctionObjects::current()
 {
 	return currentFunctionObjects();
 }

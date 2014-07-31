@@ -14,7 +14,7 @@ class GLBINDING_API FunctionObjects
 public:
 	FunctionObjects();
 	
-	static FunctionObjects & current();
+	static const FunctionObjects & current();
 
 	const std::vector<AbstractFunction *> & functions() const;
 

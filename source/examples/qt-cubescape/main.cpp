@@ -9,7 +9,7 @@
 
 #include <glbinding/gl/gl.h>
 
-#include "cubescape.h"
+#include "../cubescape/cubescape.h"
 
 
 using namespace gl;
@@ -28,12 +28,12 @@ void error(int errnum, const char * errmsg)
 }
 
 
-void framebuffer_size_callback(GLFWwindow * window, int width, int height)
+void framebuffer_size_callback(GLFWwindow * /*window*/, int width, int height)
 {
     cubescape->resize(width, height);
 }
 
-void key_callback(GLFWwindow * window, int key, int scancode, int action, int mods)
+void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, int /*mods*/)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, 1);
@@ -60,7 +60,7 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    AbstractFunction::setAfterCallback([](const AbstractFunction &) 
+    setAfterCallback([](const FunctionCall &)
     {
         gl::GLenum error = glGetError();
         if (error != GL_NO_ERROR)
