@@ -18,9 +18,11 @@ namespace glbinding
 class GLBINDING_API AbstractFunction
 {
 public:
+    AbstractFunction();
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
 
+    void setName(const char * name);
     const char * name() const;
 
     void resolveAddress();

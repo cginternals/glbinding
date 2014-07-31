@@ -169,6 +169,11 @@ int main()
 
     std::cout << std::endl;
 
+    /*for (auto f : FunctionObjects::current())
+    {
+        std::cout << f->name() << std::endl;
+    }*/
+
     glfwTerminate();
     return 0;
 }

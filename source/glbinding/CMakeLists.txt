@@ -74,6 +74,8 @@ set(api_includes
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/FunctionObjects.h
+    ${include_path}/PointerIterator.h
+    ${include_path}/PointerIterator.hpp
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
     ${include_path}/ContextId.h
