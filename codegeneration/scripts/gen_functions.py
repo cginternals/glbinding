@@ -34,7 +34,7 @@ def paramSignature(param, forward):
     if param.type == "GLbitfield":
         return bitfieldType(param)
 
-    if forward and param.array is not None:
+    if forward and param.array is not "":
         return param.type + " " + param.array
     else:
         return param.type
