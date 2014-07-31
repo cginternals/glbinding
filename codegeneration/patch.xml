@@ -1,99 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
 
-	<!-- non-standard bitfield group for not used mask parameters -->
-	<enums namespace="GL" group="UnusedMask" type="bitmask">
-		<enum value="0x00000000" name="GL_UNUSED_BIT"/>
-	</enums>
+    <types>
+        <type comment="fix for bad parameter signature">typedef std::array&lt;GLuint, 2&gt; <name>GLuint_array_2</name>;</type>
+    </types>
+
+    <!-- non-standard bitfield group for not used mask parameters -->
+    <enums namespace="GL" group="UnusedMask" type="bitmask">
+        <enum value="0x00000000" name="GL_UNUSED_BIT"/>
+    </enums>
         <enum value="0x00000000" name="GL_NONE_BIT"/>
-	<enums namespace="GL" group="PathFontStyle" type="bitmask">
-		<enum value="0x00" name="GL_NONE_BIT"/>
-	</enums>
+    <enums namespace="GL" group="PathFontStyle" type="bitmask">
+        <enum value="0x00" name="GL_NONE_BIT"/>
+    </enums>
+
     <groups>
 
         <group name="BufferAccessMask">
-	        <enum name="GL_MAP_READ_BIT"/>
-	        <enum name="GL_MAP_WRITE_BIT"/>
-	        <enum name="GL_MAP_INVALIDATE_RANGE_BIT"/>
-	        <enum name="GL_MAP_INVALIDATE_BUFFER_BIT"/>
-	        <enum name="GL_MAP_FLUSH_EXPLICIT_BIT"/>
-	        <enum name="GL_MAP_UNSYNCHRONIZED_BIT"/>
-	        <enum name="GL_MAP_PERSISTENT_BIT"/>
-	        <enum name="GL_MAP_COHERENT_BIT"/>
+            <enum name="GL_MAP_READ_BIT"/>
+            <enum name="GL_MAP_WRITE_BIT"/>
+            <enum name="GL_MAP_INVALIDATE_RANGE_BIT"/>
+            <enum name="GL_MAP_INVALIDATE_BUFFER_BIT"/>
+            <enum name="GL_MAP_FLUSH_EXPLICIT_BIT"/>
+            <enum name="GL_MAP_UNSYNCHRONIZED_BIT"/>
+            <enum name="GL_MAP_PERSISTENT_BIT"/>
+            <enum name="GL_MAP_COHERENT_BIT"/>
         </group>
 
         <group name="PathFontStyle">
-	        <enum name="GL_NONE_BIT"/>
-	        <enum name="GL_BOLD_BIT_NV"/>
-	        <enum name="GL_ITALIC_BIT_NV"/>
+            <enum name="GL_NONE_BIT"/>
+            <enum name="GL_BOLD_BIT_NV"/>
+            <enum name="GL_ITALIC_BIT_NV"/>
         </group>
 
     </groups>
 
-	<commands namespace="GL">
+    <commands namespace="GL">
 
-		<!-- patch missing groups for parameter of type GLbitfield -->
-		<command>
-			<proto>void <name>glBufferStorage</name></proto>
-			<param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
-		</command>
-		<command>
-			<proto><ptype>GLenum</ptype> <name>glClientWaitSync</name></proto>
-			<param group="SyncObjectMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
-		</command>
-		<command>
-			<proto>void *<name>glMapTexture2DINTEL</name></proto>
-			<param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>access</name></param>
-		</command>
-		<command>
-			<proto>void <name>glMemoryBarrier</name></proto>
-			<param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
-		</command>
-		<command>
-			<proto>void <name>glMemoryBarrierEXT</name></proto>
-			<param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
-		</command>
-		<command>
-			<proto>void <name>glNamedBufferStorageEXT</name></proto>
-			<param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
-		</command>
-		<command>
-			<proto>void <name>glTexStorageSparseAMD</name></proto>
-			<param group="TextureStorageMaskAMD"><ptype>GLbitfield</ptype> <name>flags</name></param>
-		</command>
-		<command>
-			<proto>void <name>glTextureStorageSparseAMD</name></proto>
-			<param group="TextureStorageMaskAMD"><ptype>GLbitfield</ptype> <name>flags</name></param>
-		</command>
-		<command>
-			<proto>void <name>glUseProgramStages</name></proto>
-			<param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
-		</command>
-		<command>
-			<proto>void <name>glUseProgramStages</name></proto>
-			<param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
-		</command>
+        <!-- patch non-compliant parameter signatures -->
+        <command>
+            <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexRangeNV</name></proto>
+            <param><ptype>GLuint_array_2</ptype> <name>baseAndCount</name></param>
+        </command>
+
+        <!-- patch missing groups for parameter of type GLbitfield -->
+        <command>
+            <proto>void <name>glBufferStorage</name></proto>
+            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto><ptype>GLenum</ptype> <name>glClientWaitSync</name></proto>
+            <param group="SyncObjectMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto>void *<name>glMapTexture2DINTEL</name></proto>
+            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>access</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMemoryBarrier</name></proto>
+            <param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMemoryBarrierEXT</name></proto>
+            <param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
+        </command>
+        <command>
+            <proto>void <name>glNamedBufferStorageEXT</name></proto>
+            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto>void <name>glTexStorageSparseAMD</name></proto>
+            <param group="TextureStorageMaskAMD"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto>void <name>glTextureStorageSparseAMD</name></proto>
+            <param group="TextureStorageMaskAMD"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto>void <name>glUseProgramStages</name></proto>
+            <param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
+        </command>
+        <command>
+            <proto>void <name>glUseProgramStages</name></proto>
+            <param group="UseProgramStageMask"><ptype>GLbitfield</ptype> <name>stages</name></param>
+        </command>
         <command>
             <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexRangeNV</name></proto>
             <param group="PathFontStyle"><ptype>GLbitfield</ptype> <name>fontStyle</name></param>
         </command>
-		<command>
+        <command>
             <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexArrayNV</name></proto>
             <param group="PathFontStyle"><ptype>GLbitfield</ptype> <name>fontStyle</name></param>
         </command>
 
-<!--	<command>
+<!--    <command>
             <proto>void <name>glSampleMaski</name></proto>
             <param group="SampleMaskNV"><ptype>GLbitfield</ptype> <name>mask</name></param>
         </command>-->
 
-		<!-- patch non existent, not specified groups for parameters of type GLbitfield -->
+        <!-- patch non existent, not specified groups for parameters of type GLbitfield -->
         <command>
             <proto>void <name>glSampleMaskIndexedNV</name></proto>
             <param><ptype>GLbitfield</ptype> <name>mask</name></param>
         </command>
 
-		<!-- patch unused parameters of type GLbitfield by using UnusedMask -->
+        <!-- patch unused parameters of type GLbitfield by using UnusedMask -->
         <command>
             <proto>void <name>glWaitSync</name></proto>
             <param group="UnusedMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
@@ -121,6 +132,6 @@
             <param group="PathRenderingMaskNV"><ptype>GLbitfield</ptype> <name>metricQueryMask</name></param>
         </command>
 
-	</commands>
+    </commands>
 
 </registry>

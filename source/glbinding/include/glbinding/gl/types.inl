@@ -40,6 +40,7 @@ using GLDEBUGPROCKHR = gl::GLDEBUGPROCKHR;
 using GLDEBUGPROCAMD = gl::GLDEBUGPROCAMD;
 using GLhalfNV = gl::GLhalfNV;
 using GLvdpauSurfaceNV = gl::GLvdpauSurfaceNV;
+using GLuint_array_2 = gl::GLuint_array_2;
 using AttribMask = gl::AttribMask;
 using ClearBufferMask = gl::ClearBufferMask;
 using ClientAttribMask = gl::ClientAttribMask;

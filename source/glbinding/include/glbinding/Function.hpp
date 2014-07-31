@@ -91,7 +91,7 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 }
 
 template <typename ReturnType, typename... Arguments>
-ReturnType Function<ReturnType, Arguments...>::operator()(Arguments... arguments) const
+ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
 {
     ProcAddress myAddress = address();
 
