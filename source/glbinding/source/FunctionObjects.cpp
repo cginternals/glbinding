@@ -41,7 +41,7 @@ FunctionObjects::const_iterator FunctionObjects::end() const
 
 size_t FunctionObjects::size() const
 {
-	return 2634;
+	return 2651;
 }
 
 FunctionObjects::FunctionObjects()
@@ -906,6 +906,7 @@ FunctionObjects::FunctionObjects()
     glGetProgramResourceLocation.setName("glGetProgramResourceLocation");
     glGetProgramResourceLocationIndex.setName("glGetProgramResourceLocationIndex");
     glGetProgramResourceName.setName("glGetProgramResourceName");
+    glGetProgramResourcefvNV.setName("glGetProgramResourcefvNV");
     glGetProgramResourceiv.setName("glGetProgramResourceiv");
     glGetProgramStageiv.setName("glGetProgramStageiv");
     glGetProgramStringARB.setName("glGetProgramStringARB");
@@ -1236,12 +1237,18 @@ FunctionObjects::FunctionObjects()
     glMatrixIndexubvARB.setName("glMatrixIndexubvARB");
     glMatrixIndexuivARB.setName("glMatrixIndexuivARB");
     glMatrixIndexusvARB.setName("glMatrixIndexusvARB");
+    glMatrixLoad3x2fNV.setName("glMatrixLoad3x2fNV");
+    glMatrixLoad3x3fNV.setName("glMatrixLoad3x3fNV");
     glMatrixLoadIdentityEXT.setName("glMatrixLoadIdentityEXT");
+    glMatrixLoadTranspose3x3fNV.setName("glMatrixLoadTranspose3x3fNV");
     glMatrixLoadTransposedEXT.setName("glMatrixLoadTransposedEXT");
     glMatrixLoadTransposefEXT.setName("glMatrixLoadTransposefEXT");
     glMatrixLoaddEXT.setName("glMatrixLoaddEXT");
     glMatrixLoadfEXT.setName("glMatrixLoadfEXT");
     glMatrixMode.setName("glMatrixMode");
+    glMatrixMult3x2fNV.setName("glMatrixMult3x2fNV");
+    glMatrixMult3x3fNV.setName("glMatrixMult3x3fNV");
+    glMatrixMultTranspose3x3fNV.setName("glMatrixMultTranspose3x3fNV");
     glMatrixMultTransposedEXT.setName("glMatrixMultTransposedEXT");
     glMatrixMultTransposefEXT.setName("glMatrixMultTransposefEXT");
     glMatrixMultdEXT.setName("glMatrixMultdEXT");
@@ -1273,6 +1280,7 @@ FunctionObjects::FunctionObjects()
     glMultiDrawArraysEXT.setName("glMultiDrawArraysEXT");
     glMultiDrawArraysIndirect.setName("glMultiDrawArraysIndirect");
     glMultiDrawArraysIndirectAMD.setName("glMultiDrawArraysIndirectAMD");
+    glMultiDrawArraysIndirectBindlessCountNV.setName("glMultiDrawArraysIndirectBindlessCountNV");
     glMultiDrawArraysIndirectBindlessNV.setName("glMultiDrawArraysIndirectBindlessNV");
     glMultiDrawArraysIndirectCountARB.setName("glMultiDrawArraysIndirectCountARB");
     glMultiDrawElementArrayAPPLE.setName("glMultiDrawElementArrayAPPLE");
@@ -1281,6 +1289,7 @@ FunctionObjects::FunctionObjects()
     glMultiDrawElementsEXT.setName("glMultiDrawElementsEXT");
     glMultiDrawElementsIndirect.setName("glMultiDrawElementsIndirect");
     glMultiDrawElementsIndirectAMD.setName("glMultiDrawElementsIndirectAMD");
+    glMultiDrawElementsIndirectBindlessCountNV.setName("glMultiDrawElementsIndirectBindlessCountNV");
     glMultiDrawElementsIndirectBindlessNV.setName("glMultiDrawElementsIndirectBindlessNV");
     glMultiDrawElementsIndirectCountARB.setName("glMultiDrawElementsIndirectCountARB");
     glMultiDrawRangeElementArrayAPPLE.setName("glMultiDrawRangeElementArrayAPPLE");
@@ -1490,8 +1499,11 @@ FunctionObjects::FunctionObjects()
     glPathCoverDepthFuncNV.setName("glPathCoverDepthFuncNV");
     glPathDashArrayNV.setName("glPathDashArrayNV");
     glPathFogGenNV.setName("glPathFogGenNV");
+    glPathGlyphIndexArrayNV.setName("glPathGlyphIndexArrayNV");
+    glPathGlyphIndexRangeNV.setName("glPathGlyphIndexRangeNV");
     glPathGlyphRangeNV.setName("glPathGlyphRangeNV");
     glPathGlyphsNV.setName("glPathGlyphsNV");
+    glPathMemoryGlyphIndexArrayNV.setName("glPathMemoryGlyphIndexArrayNV");
     glPathParameterfNV.setName("glPathParameterfNV");
     glPathParameterfvNV.setName("glPathParameterfvNV");
     glPathParameteriNV.setName("glPathParameteriNV");
@@ -1602,6 +1614,7 @@ FunctionObjects::FunctionObjects()
     glProgramParameteriEXT.setName("glProgramParameteriEXT");
     glProgramParameters4dvNV.setName("glProgramParameters4dvNV");
     glProgramParameters4fvNV.setName("glProgramParameters4fvNV");
+    glProgramPathFragmentInputGenNV.setName("glProgramPathFragmentInputGenNV");
     glProgramStringARB.setName("glProgramStringARB");
     glProgramSubroutineParametersuivNV.setName("glProgramSubroutineParametersuivNV");
     glProgramUniform1d.setName("glProgramUniform1d");
@@ -1926,6 +1939,10 @@ FunctionObjects::FunctionObjects()
     glStencilOpValueAMD.setName("glStencilOpValueAMD");
     glStencilStrokePathInstancedNV.setName("glStencilStrokePathInstancedNV");
     glStencilStrokePathNV.setName("glStencilStrokePathNV");
+    glStencilThenCoverFillPathInstancedNV.setName("glStencilThenCoverFillPathInstancedNV");
+    glStencilThenCoverFillPathNV.setName("glStencilThenCoverFillPathNV");
+    glStencilThenCoverStrokePathInstancedNV.setName("glStencilThenCoverStrokePathInstancedNV");
+    glStencilThenCoverStrokePathNV.setName("glStencilThenCoverStrokePathNV");
     glStopInstrumentsSGIX.setName("glStopInstrumentsSGIX");
     glStringMarkerGREMEDY.setName("glStringMarkerGREMEDY");
     glSwizzleEXT.setName("glSwizzleEXT");

@@ -413,9 +413,9 @@ inline void glDrawArrays(GLenum mode, GLint first, GLsizei count)
     return glbinding::FunctionObjects::current().glDrawArrays(mode, first, count);
 }
 
-inline void glDrawBuffer(GLenum mode)
+inline void glDrawBuffer(GLenum buf)
 {
-    return glbinding::FunctionObjects::current().glDrawBuffer(mode);
+    return glbinding::FunctionObjects::current().glDrawBuffer(buf);
 }
 
 inline void glDrawElements(GLenum mode, GLsizei count, GLenum type, const void * indices)
@@ -1508,9 +1508,9 @@ inline void glRasterPos4sv(const GLshort * v)
     return glbinding::FunctionObjects::current().glRasterPos4sv(v);
 }
 
-inline void glReadBuffer(GLenum mode)
+inline void glReadBuffer(GLenum src)
 {
-    return glbinding::FunctionObjects::current().glReadBuffer(mode);
+    return glbinding::FunctionObjects::current().glReadBuffer(src);
 }
 
 inline void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels)
