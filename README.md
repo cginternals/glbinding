@@ -48,3 +48,20 @@ Besides the actual binding, glbinding comes with these additional features:
   * string to GL symbol conversion
 * Multi-context support (explicit switch required)
 * Multi-threading support
+
+Run-time dependencies
+----------
+
+ * OpenGL library dynamically linked into your application
+
+Compile-time dependencies
+---------------
+
+ * CMake (2.8.12)
+ * C++11-Compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3)
+
+Optional dependencies
+ * Python 2 or 3 to generate the binding
+ * Qt for some examples
+ * GLFW for some examples
+ * GLEW for some examples
