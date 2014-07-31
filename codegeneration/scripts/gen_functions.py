@@ -67,9 +67,9 @@ def functionSignature(api, function, extern = True):
 
     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
     if extern:
-        return "extern template Function<%s>;" % (params)
+        return "extern template class Function<%s>;" % (params)
     else:
-        return "template Function<%s>;" % (params)
+        return "template class Function<%s>;" % (params)
 
 
 def functionForward(function, feature, version, impl):

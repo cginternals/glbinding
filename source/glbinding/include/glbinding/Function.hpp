@@ -112,13 +112,13 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... argument
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::addBeforeCallback(BeforeCallback callback)
+void Function<ReturnType, Arguments...>::addBeforeCallback(BeforeCallback /*callback*/)
 {
     //m_beforeCallbacks.push_back(callback);
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::addAfterCallback(AfterCallback callback)
+void Function<ReturnType, Arguments...>::addAfterCallback(AfterCallback /*callback*/)
 {
     //m_afterCallbacks.push_back(callback);
 }
