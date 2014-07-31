@@ -50,6 +50,8 @@ Besides the actual binding, glbinding comes with these additional features:
 As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
 The necessary python scripts are provided in this repository.
 
+Check out the [wiki](https://github.com/hpicgs/glbinding/wiki) for detailed examples.
+
 ### Run-time dependencies
 
 The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL dynamically linked library, linked with your application.
