@@ -23,7 +23,7 @@ protected:
 };
 
 template <> GLBINDING_API void Value<gl::GLenum>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<gl::GLbitfield>::printOn(std::ostream & stream) const;
+//template <> GLBINDING_API void Value<gl::GLbitfield>::printOn(std::ostream & stream) const;
 template <> GLBINDING_API void Value<gl::GLboolean>::printOn(std::ostream & stream) const;
 template <> GLBINDING_API void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const;
 template <> GLBINDING_API void Value<const gl::GLchar *>::printOn(std::ostream & stream) const;

@@ -5,6 +5,7 @@
 
 #include <glbinding/gl/bitfield.h>
 
+#include <glbinding/SharedBitfield.hpp>
 
 namespace gl10
 {

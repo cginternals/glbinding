@@ -45,17 +45,6 @@ int Meta::glRevision()
     return GL_REVISION;
 }
 
-const std::string & Meta::getString(const GLbitfield bitfield)
-{
-    auto i = Meta_StringsByBitfield.find(bitfield);
-    if (i == Meta_StringsByBitfield.end())
-    {
-        static const std::string none;
-        return none;
-    }
-    return i->second;
-}
-
 const std::string & Meta::getString(const GLboolean boolean)
 {
     auto i = Meta_StringsByBoolean.find(boolean);

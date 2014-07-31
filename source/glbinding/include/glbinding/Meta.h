@@ -30,9 +30,6 @@ public:
     static gl::GLenum getEnum(const std::string & glenum);
     static std::vector<gl::GLenum> enums();
 
-    static const std::string & getString(gl::GLbitfield bitfield);
-    static gl::GLbitfield getBitfield(const std::string & bitfield);
-
     static const std::string & getString(gl::GLboolean boolean);
     static gl::GLboolean getBoolean(const std::string & boolean);
 

@@ -6,2665 +6,5296 @@
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/values.h>
 
+#include "glbinding_private.h"
+
 
 using namespace gl; // ToDo: multiple APIs?
 
-namespace glbinding
+namespace glbinding 
 {
 
-int FunctionObjects::s_context = 0;
-
-
-void FunctionObjects::initialize()
+const std::vector<AbstractFunction *> & FunctionObjects::functions() const
 {
-    initialize(s_context);
+	return m_functions;
 }
 
-void FunctionObjects::initialize(const int context)
+FunctionObjects & FunctionObjects::current()
 {
-    for (AbstractFunction * function : functions())
-        function->initialize(context);
+	return currentFunctionObjects();
 }
 
-void FunctionObjects::setContext(int context)
+FunctionObjects::FunctionObjects() :
+    glAccum("glAccum"),
+    glAccumxOES("glAccumxOES"),
+    glActiveProgramEXT("glActiveProgramEXT"),
+    glActiveShaderProgram("glActiveShaderProgram"),
+    glActiveStencilFaceEXT("glActiveStencilFaceEXT"),
+    glActiveTexture("glActiveTexture"),
+    glActiveTextureARB("glActiveTextureARB"),
+    glActiveVaryingNV("glActiveVaryingNV"),
+    glAlphaFragmentOp1ATI("glAlphaFragmentOp1ATI"),
+    glAlphaFragmentOp2ATI("glAlphaFragmentOp2ATI"),
+    glAlphaFragmentOp3ATI("glAlphaFragmentOp3ATI"),
+    glAlphaFunc("glAlphaFunc"),
+    glAlphaFuncxOES("glAlphaFuncxOES"),
+    glApplyTextureEXT("glApplyTextureEXT"),
+    glAreProgramsResidentNV("glAreProgramsResidentNV"),
+    glAreTexturesResident("glAreTexturesResident"),
+    glAreTexturesResidentEXT("glAreTexturesResidentEXT"),
+    glArrayElement("glArrayElement"),
+    glArrayElementEXT("glArrayElementEXT"),
+    glArrayObjectATI("glArrayObjectATI"),
+    glAsyncMarkerSGIX("glAsyncMarkerSGIX"),
+    glAttachObjectARB("glAttachObjectARB"),
+    glAttachShader("glAttachShader"),
+    glBegin("glBegin"),
+    glBeginConditionalRender("glBeginConditionalRender"),
+    glBeginConditionalRenderNV("glBeginConditionalRenderNV"),
+    glBeginConditionalRenderNVX("glBeginConditionalRenderNVX"),
+    glBeginFragmentShaderATI("glBeginFragmentShaderATI"),
+    glBeginOcclusionQueryNV("glBeginOcclusionQueryNV"),
+    glBeginPerfMonitorAMD("glBeginPerfMonitorAMD"),
+    glBeginPerfQueryINTEL("glBeginPerfQueryINTEL"),
+    glBeginQuery("glBeginQuery"),
+    glBeginQueryARB("glBeginQueryARB"),
+    glBeginQueryIndexed("glBeginQueryIndexed"),
+    glBeginTransformFeedback("glBeginTransformFeedback"),
+    glBeginTransformFeedbackEXT("glBeginTransformFeedbackEXT"),
+    glBeginTransformFeedbackNV("glBeginTransformFeedbackNV"),
+    glBeginVertexShaderEXT("glBeginVertexShaderEXT"),
+    glBeginVideoCaptureNV("glBeginVideoCaptureNV"),
+    glBindAttribLocation("glBindAttribLocation"),
+    glBindAttribLocationARB("glBindAttribLocationARB"),
+    glBindBuffer("glBindBuffer"),
+    glBindBufferARB("glBindBufferARB"),
+    glBindBufferBase("glBindBufferBase"),
+    glBindBufferBaseEXT("glBindBufferBaseEXT"),
+    glBindBufferBaseNV("glBindBufferBaseNV"),
+    glBindBufferOffsetEXT("glBindBufferOffsetEXT"),
+    glBindBufferOffsetNV("glBindBufferOffsetNV"),
+    glBindBufferRange("glBindBufferRange"),
+    glBindBufferRangeEXT("glBindBufferRangeEXT"),
+    glBindBufferRangeNV("glBindBufferRangeNV"),
+    glBindBuffersBase("glBindBuffersBase"),
+    glBindBuffersRange("glBindBuffersRange"),
+    glBindFragDataLocation("glBindFragDataLocation"),
+    glBindFragDataLocationEXT("glBindFragDataLocationEXT"),
+    glBindFragDataLocationIndexed("glBindFragDataLocationIndexed"),
+    glBindFragmentShaderATI("glBindFragmentShaderATI"),
+    glBindFramebuffer("glBindFramebuffer"),
+    glBindFramebufferEXT("glBindFramebufferEXT"),
+    glBindImageTexture("glBindImageTexture"),
+    glBindImageTextureEXT("glBindImageTextureEXT"),
+    glBindImageTextures("glBindImageTextures"),
+    glBindLightParameterEXT("glBindLightParameterEXT"),
+    glBindMaterialParameterEXT("glBindMaterialParameterEXT"),
+    glBindMultiTextureEXT("glBindMultiTextureEXT"),
+    glBindParameterEXT("glBindParameterEXT"),
+    glBindProgramARB("glBindProgramARB"),
+    glBindProgramNV("glBindProgramNV"),
+    glBindProgramPipeline("glBindProgramPipeline"),
+    glBindRenderbuffer("glBindRenderbuffer"),
+    glBindRenderbufferEXT("glBindRenderbufferEXT"),
+    glBindSampler("glBindSampler"),
+    glBindSamplers("glBindSamplers"),
+    glBindTexGenParameterEXT("glBindTexGenParameterEXT"),
+    glBindTexture("glBindTexture"),
+    glBindTextureEXT("glBindTextureEXT"),
+    glBindTextureUnitParameterEXT("glBindTextureUnitParameterEXT"),
+    glBindTextures("glBindTextures"),
+    glBindTransformFeedback("glBindTransformFeedback"),
+    glBindTransformFeedbackNV("glBindTransformFeedbackNV"),
+    glBindVertexArray("glBindVertexArray"),
+    glBindVertexArrayAPPLE("glBindVertexArrayAPPLE"),
+    glBindVertexBuffer("glBindVertexBuffer"),
+    glBindVertexBuffers("glBindVertexBuffers"),
+    glBindVertexShaderEXT("glBindVertexShaderEXT"),
+    glBindVideoCaptureStreamBufferNV("glBindVideoCaptureStreamBufferNV"),
+    glBindVideoCaptureStreamTextureNV("glBindVideoCaptureStreamTextureNV"),
+    glBinormal3bEXT("glBinormal3bEXT"),
+    glBinormal3bvEXT("glBinormal3bvEXT"),
+    glBinormal3dEXT("glBinormal3dEXT"),
+    glBinormal3dvEXT("glBinormal3dvEXT"),
+    glBinormal3fEXT("glBinormal3fEXT"),
+    glBinormal3fvEXT("glBinormal3fvEXT"),
+    glBinormal3iEXT("glBinormal3iEXT"),
+    glBinormal3ivEXT("glBinormal3ivEXT"),
+    glBinormal3sEXT("glBinormal3sEXT"),
+    glBinormal3svEXT("glBinormal3svEXT"),
+    glBinormalPointerEXT("glBinormalPointerEXT"),
+    glBitmap("glBitmap"),
+    glBitmapxOES("glBitmapxOES"),
+    glBlendBarrierNV("glBlendBarrierNV"),
+    glBlendColor("glBlendColor"),
+    glBlendColorEXT("glBlendColorEXT"),
+    glBlendColorxOES("glBlendColorxOES"),
+    glBlendEquation("glBlendEquation"),
+    glBlendEquationEXT("glBlendEquationEXT"),
+    glBlendEquationIndexedAMD("glBlendEquationIndexedAMD"),
+    glBlendEquationSeparate("glBlendEquationSeparate"),
+    glBlendEquationSeparateEXT("glBlendEquationSeparateEXT"),
+    glBlendEquationSeparateIndexedAMD("glBlendEquationSeparateIndexedAMD"),
+    glBlendEquationSeparatei("glBlendEquationSeparatei"),
+    glBlendEquationSeparateiARB("glBlendEquationSeparateiARB"),
+    glBlendEquationi("glBlendEquationi"),
+    glBlendEquationiARB("glBlendEquationiARB"),
+    glBlendFunc("glBlendFunc"),
+    glBlendFuncIndexedAMD("glBlendFuncIndexedAMD"),
+    glBlendFuncSeparate("glBlendFuncSeparate"),
+    glBlendFuncSeparateEXT("glBlendFuncSeparateEXT"),
+    glBlendFuncSeparateINGR("glBlendFuncSeparateINGR"),
+    glBlendFuncSeparateIndexedAMD("glBlendFuncSeparateIndexedAMD"),
+    glBlendFuncSeparatei("glBlendFuncSeparatei"),
+    glBlendFuncSeparateiARB("glBlendFuncSeparateiARB"),
+    glBlendFunci("glBlendFunci"),
+    glBlendFunciARB("glBlendFunciARB"),
+    glBlendParameteriNV("glBlendParameteriNV"),
+    glBlitFramebuffer("glBlitFramebuffer"),
+    glBlitFramebufferEXT("glBlitFramebufferEXT"),
+    glBufferAddressRangeNV("glBufferAddressRangeNV"),
+    glBufferData("glBufferData"),
+    glBufferDataARB("glBufferDataARB"),
+    glBufferParameteriAPPLE("glBufferParameteriAPPLE"),
+    glBufferStorage("glBufferStorage"),
+    glBufferSubData("glBufferSubData"),
+    glBufferSubDataARB("glBufferSubDataARB"),
+    glCallList("glCallList"),
+    glCallLists("glCallLists"),
+    glCheckFramebufferStatus("glCheckFramebufferStatus"),
+    glCheckFramebufferStatusEXT("glCheckFramebufferStatusEXT"),
+    glCheckNamedFramebufferStatusEXT("glCheckNamedFramebufferStatusEXT"),
+    glClampColor("glClampColor"),
+    glClampColorARB("glClampColorARB"),
+    glClear("glClear"),
+    glClearAccum("glClearAccum"),
+    glClearAccumxOES("glClearAccumxOES"),
+    glClearBufferData("glClearBufferData"),
+    glClearBufferSubData("glClearBufferSubData"),
+    glClearBufferfi("glClearBufferfi"),
+    glClearBufferfv("glClearBufferfv"),
+    glClearBufferiv("glClearBufferiv"),
+    glClearBufferuiv("glClearBufferuiv"),
+    glClearColor("glClearColor"),
+    glClearColorIiEXT("glClearColorIiEXT"),
+    glClearColorIuiEXT("glClearColorIuiEXT"),
+    glClearColorxOES("glClearColorxOES"),
+    glClearDepth("glClearDepth"),
+    glClearDepthdNV("glClearDepthdNV"),
+    glClearDepthf("glClearDepthf"),
+    glClearDepthfOES("glClearDepthfOES"),
+    glClearDepthxOES("glClearDepthxOES"),
+    glClearIndex("glClearIndex"),
+    glClearNamedBufferDataEXT("glClearNamedBufferDataEXT"),
+    glClearNamedBufferSubDataEXT("glClearNamedBufferSubDataEXT"),
+    glClearStencil("glClearStencil"),
+    glClearTexImage("glClearTexImage"),
+    glClearTexSubImage("glClearTexSubImage"),
+    glClientActiveTexture("glClientActiveTexture"),
+    glClientActiveTextureARB("glClientActiveTextureARB"),
+    glClientActiveVertexStreamATI("glClientActiveVertexStreamATI"),
+    glClientAttribDefaultEXT("glClientAttribDefaultEXT"),
+    glClientWaitSync("glClientWaitSync"),
+    glClipPlane("glClipPlane"),
+    glClipPlanefOES("glClipPlanefOES"),
+    glClipPlanexOES("glClipPlanexOES"),
+    glColor3b("glColor3b"),
+    glColor3bv("glColor3bv"),
+    glColor3d("glColor3d"),
+    glColor3dv("glColor3dv"),
+    glColor3f("glColor3f"),
+    glColor3fVertex3fSUN("glColor3fVertex3fSUN"),
+    glColor3fVertex3fvSUN("glColor3fVertex3fvSUN"),
+    glColor3fv("glColor3fv"),
+    glColor3hNV("glColor3hNV"),
+    glColor3hvNV("glColor3hvNV"),
+    glColor3i("glColor3i"),
+    glColor3iv("glColor3iv"),
+    glColor3s("glColor3s"),
+    glColor3sv("glColor3sv"),
+    glColor3ub("glColor3ub"),
+    glColor3ubv("glColor3ubv"),
+    glColor3ui("glColor3ui"),
+    glColor3uiv("glColor3uiv"),
+    glColor3us("glColor3us"),
+    glColor3usv("glColor3usv"),
+    glColor3xOES("glColor3xOES"),
+    glColor3xvOES("glColor3xvOES"),
+    glColor4b("glColor4b"),
+    glColor4bv("glColor4bv"),
+    glColor4d("glColor4d"),
+    glColor4dv("glColor4dv"),
+    glColor4f("glColor4f"),
+    glColor4fNormal3fVertex3fSUN("glColor4fNormal3fVertex3fSUN"),
+    glColor4fNormal3fVertex3fvSUN("glColor4fNormal3fVertex3fvSUN"),
+    glColor4fv("glColor4fv"),
+    glColor4hNV("glColor4hNV"),
+    glColor4hvNV("glColor4hvNV"),
+    glColor4i("glColor4i"),
+    glColor4iv("glColor4iv"),
+    glColor4s("glColor4s"),
+    glColor4sv("glColor4sv"),
+    glColor4ub("glColor4ub"),
+    glColor4ubVertex2fSUN("glColor4ubVertex2fSUN"),
+    glColor4ubVertex2fvSUN("glColor4ubVertex2fvSUN"),
+    glColor4ubVertex3fSUN("glColor4ubVertex3fSUN"),
+    glColor4ubVertex3fvSUN("glColor4ubVertex3fvSUN"),
+    glColor4ubv("glColor4ubv"),
+    glColor4ui("glColor4ui"),
+    glColor4uiv("glColor4uiv"),
+    glColor4us("glColor4us"),
+    glColor4usv("glColor4usv"),
+    glColor4xOES("glColor4xOES"),
+    glColor4xvOES("glColor4xvOES"),
+    glColorFormatNV("glColorFormatNV"),
+    glColorFragmentOp1ATI("glColorFragmentOp1ATI"),
+    glColorFragmentOp2ATI("glColorFragmentOp2ATI"),
+    glColorFragmentOp3ATI("glColorFragmentOp3ATI"),
+    glColorMask("glColorMask"),
+    glColorMaskIndexedEXT("glColorMaskIndexedEXT"),
+    glColorMaski("glColorMaski"),
+    glColorMaterial("glColorMaterial"),
+    glColorP3ui("glColorP3ui"),
+    glColorP3uiv("glColorP3uiv"),
+    glColorP4ui("glColorP4ui"),
+    glColorP4uiv("glColorP4uiv"),
+    glColorPointer("glColorPointer"),
+    glColorPointerEXT("glColorPointerEXT"),
+    glColorPointerListIBM("glColorPointerListIBM"),
+    glColorPointervINTEL("glColorPointervINTEL"),
+    glColorSubTable("glColorSubTable"),
+    glColorSubTableEXT("glColorSubTableEXT"),
+    glColorTable("glColorTable"),
+    glColorTableEXT("glColorTableEXT"),
+    glColorTableParameterfv("glColorTableParameterfv"),
+    glColorTableParameterfvSGI("glColorTableParameterfvSGI"),
+    glColorTableParameteriv("glColorTableParameteriv"),
+    glColorTableParameterivSGI("glColorTableParameterivSGI"),
+    glColorTableSGI("glColorTableSGI"),
+    glCombinerInputNV("glCombinerInputNV"),
+    glCombinerOutputNV("glCombinerOutputNV"),
+    glCombinerParameterfNV("glCombinerParameterfNV"),
+    glCombinerParameterfvNV("glCombinerParameterfvNV"),
+    glCombinerParameteriNV("glCombinerParameteriNV"),
+    glCombinerParameterivNV("glCombinerParameterivNV"),
+    glCombinerStageParameterfvNV("glCombinerStageParameterfvNV"),
+    glCompileShader("glCompileShader"),
+    glCompileShaderARB("glCompileShaderARB"),
+    glCompileShaderIncludeARB("glCompileShaderIncludeARB"),
+    glCompressedMultiTexImage1DEXT("glCompressedMultiTexImage1DEXT"),
+    glCompressedMultiTexImage2DEXT("glCompressedMultiTexImage2DEXT"),
+    glCompressedMultiTexImage3DEXT("glCompressedMultiTexImage3DEXT"),
+    glCompressedMultiTexSubImage1DEXT("glCompressedMultiTexSubImage1DEXT"),
+    glCompressedMultiTexSubImage2DEXT("glCompressedMultiTexSubImage2DEXT"),
+    glCompressedMultiTexSubImage3DEXT("glCompressedMultiTexSubImage3DEXT"),
+    glCompressedTexImage1D("glCompressedTexImage1D"),
+    glCompressedTexImage1DARB("glCompressedTexImage1DARB"),
+    glCompressedTexImage2D("glCompressedTexImage2D"),
+    glCompressedTexImage2DARB("glCompressedTexImage2DARB"),
+    glCompressedTexImage3D("glCompressedTexImage3D"),
+    glCompressedTexImage3DARB("glCompressedTexImage3DARB"),
+    glCompressedTexSubImage1D("glCompressedTexSubImage1D"),
+    glCompressedTexSubImage1DARB("glCompressedTexSubImage1DARB"),
+    glCompressedTexSubImage2D("glCompressedTexSubImage2D"),
+    glCompressedTexSubImage2DARB("glCompressedTexSubImage2DARB"),
+    glCompressedTexSubImage3D("glCompressedTexSubImage3D"),
+    glCompressedTexSubImage3DARB("glCompressedTexSubImage3DARB"),
+    glCompressedTextureImage1DEXT("glCompressedTextureImage1DEXT"),
+    glCompressedTextureImage2DEXT("glCompressedTextureImage2DEXT"),
+    glCompressedTextureImage3DEXT("glCompressedTextureImage3DEXT"),
+    glCompressedTextureSubImage1DEXT("glCompressedTextureSubImage1DEXT"),
+    glCompressedTextureSubImage2DEXT("glCompressedTextureSubImage2DEXT"),
+    glCompressedTextureSubImage3DEXT("glCompressedTextureSubImage3DEXT"),
+    glConvolutionFilter1D("glConvolutionFilter1D"),
+    glConvolutionFilter1DEXT("glConvolutionFilter1DEXT"),
+    glConvolutionFilter2D("glConvolutionFilter2D"),
+    glConvolutionFilter2DEXT("glConvolutionFilter2DEXT"),
+    glConvolutionParameterf("glConvolutionParameterf"),
+    glConvolutionParameterfEXT("glConvolutionParameterfEXT"),
+    glConvolutionParameterfv("glConvolutionParameterfv"),
+    glConvolutionParameterfvEXT("glConvolutionParameterfvEXT"),
+    glConvolutionParameteri("glConvolutionParameteri"),
+    glConvolutionParameteriEXT("glConvolutionParameteriEXT"),
+    glConvolutionParameteriv("glConvolutionParameteriv"),
+    glConvolutionParameterivEXT("glConvolutionParameterivEXT"),
+    glConvolutionParameterxOES("glConvolutionParameterxOES"),
+    glConvolutionParameterxvOES("glConvolutionParameterxvOES"),
+    glCopyBufferSubData("glCopyBufferSubData"),
+    glCopyColorSubTable("glCopyColorSubTable"),
+    glCopyColorSubTableEXT("glCopyColorSubTableEXT"),
+    glCopyColorTable("glCopyColorTable"),
+    glCopyColorTableSGI("glCopyColorTableSGI"),
+    glCopyConvolutionFilter1D("glCopyConvolutionFilter1D"),
+    glCopyConvolutionFilter1DEXT("glCopyConvolutionFilter1DEXT"),
+    glCopyConvolutionFilter2D("glCopyConvolutionFilter2D"),
+    glCopyConvolutionFilter2DEXT("glCopyConvolutionFilter2DEXT"),
+    glCopyImageSubData("glCopyImageSubData"),
+    glCopyImageSubDataNV("glCopyImageSubDataNV"),
+    glCopyMultiTexImage1DEXT("glCopyMultiTexImage1DEXT"),
+    glCopyMultiTexImage2DEXT("glCopyMultiTexImage2DEXT"),
+    glCopyMultiTexSubImage1DEXT("glCopyMultiTexSubImage1DEXT"),
+    glCopyMultiTexSubImage2DEXT("glCopyMultiTexSubImage2DEXT"),
+    glCopyMultiTexSubImage3DEXT("glCopyMultiTexSubImage3DEXT"),
+    glCopyPathNV("glCopyPathNV"),
+    glCopyPixels("glCopyPixels"),
+    glCopyTexImage1D("glCopyTexImage1D"),
+    glCopyTexImage1DEXT("glCopyTexImage1DEXT"),
+    glCopyTexImage2D("glCopyTexImage2D"),
+    glCopyTexImage2DEXT("glCopyTexImage2DEXT"),
+    glCopyTexSubImage1D("glCopyTexSubImage1D"),
+    glCopyTexSubImage1DEXT("glCopyTexSubImage1DEXT"),
+    glCopyTexSubImage2D("glCopyTexSubImage2D"),
+    glCopyTexSubImage2DEXT("glCopyTexSubImage2DEXT"),
+    glCopyTexSubImage3D("glCopyTexSubImage3D"),
+    glCopyTexSubImage3DEXT("glCopyTexSubImage3DEXT"),
+    glCopyTextureImage1DEXT("glCopyTextureImage1DEXT"),
+    glCopyTextureImage2DEXT("glCopyTextureImage2DEXT"),
+    glCopyTextureSubImage1DEXT("glCopyTextureSubImage1DEXT"),
+    glCopyTextureSubImage2DEXT("glCopyTextureSubImage2DEXT"),
+    glCopyTextureSubImage3DEXT("glCopyTextureSubImage3DEXT"),
+    glCoverFillPathInstancedNV("glCoverFillPathInstancedNV"),
+    glCoverFillPathNV("glCoverFillPathNV"),
+    glCoverStrokePathInstancedNV("glCoverStrokePathInstancedNV"),
+    glCoverStrokePathNV("glCoverStrokePathNV"),
+    glCreatePerfQueryINTEL("glCreatePerfQueryINTEL"),
+    glCreateProgram("glCreateProgram"),
+    glCreateProgramObjectARB("glCreateProgramObjectARB"),
+    glCreateShader("glCreateShader"),
+    glCreateShaderObjectARB("glCreateShaderObjectARB"),
+    glCreateShaderProgramEXT("glCreateShaderProgramEXT"),
+    glCreateShaderProgramv("glCreateShaderProgramv"),
+    glCreateSyncFromCLeventARB("glCreateSyncFromCLeventARB"),
+    glCullFace("glCullFace"),
+    glCullParameterdvEXT("glCullParameterdvEXT"),
+    glCullParameterfvEXT("glCullParameterfvEXT"),
+    glCurrentPaletteMatrixARB("glCurrentPaletteMatrixARB"),
+    glDebugMessageCallback("glDebugMessageCallback"),
+    glDebugMessageCallbackAMD("glDebugMessageCallbackAMD"),
+    glDebugMessageCallbackARB("glDebugMessageCallbackARB"),
+    glDebugMessageControl("glDebugMessageControl"),
+    glDebugMessageControlARB("glDebugMessageControlARB"),
+    glDebugMessageEnableAMD("glDebugMessageEnableAMD"),
+    glDebugMessageInsert("glDebugMessageInsert"),
+    glDebugMessageInsertAMD("glDebugMessageInsertAMD"),
+    glDebugMessageInsertARB("glDebugMessageInsertARB"),
+    glDeformSGIX("glDeformSGIX"),
+    glDeformationMap3dSGIX("glDeformationMap3dSGIX"),
+    glDeformationMap3fSGIX("glDeformationMap3fSGIX"),
+    glDeleteAsyncMarkersSGIX("glDeleteAsyncMarkersSGIX"),
+    glDeleteBuffers("glDeleteBuffers"),
+    glDeleteBuffersARB("glDeleteBuffersARB"),
+    glDeleteFencesAPPLE("glDeleteFencesAPPLE"),
+    glDeleteFencesNV("glDeleteFencesNV"),
+    glDeleteFragmentShaderATI("glDeleteFragmentShaderATI"),
+    glDeleteFramebuffers("glDeleteFramebuffers"),
+    glDeleteFramebuffersEXT("glDeleteFramebuffersEXT"),
+    glDeleteLists("glDeleteLists"),
+    glDeleteNamedStringARB("glDeleteNamedStringARB"),
+    glDeleteNamesAMD("glDeleteNamesAMD"),
+    glDeleteObjectARB("glDeleteObjectARB"),
+    glDeleteOcclusionQueriesNV("glDeleteOcclusionQueriesNV"),
+    glDeletePathsNV("glDeletePathsNV"),
+    glDeletePerfMonitorsAMD("glDeletePerfMonitorsAMD"),
+    glDeletePerfQueryINTEL("glDeletePerfQueryINTEL"),
+    glDeleteProgram("glDeleteProgram"),
+    glDeleteProgramPipelines("glDeleteProgramPipelines"),
+    glDeleteProgramsARB("glDeleteProgramsARB"),
+    glDeleteProgramsNV("glDeleteProgramsNV"),
+    glDeleteQueries("glDeleteQueries"),
+    glDeleteQueriesARB("glDeleteQueriesARB"),
+    glDeleteRenderbuffers("glDeleteRenderbuffers"),
+    glDeleteRenderbuffersEXT("glDeleteRenderbuffersEXT"),
+    glDeleteSamplers("glDeleteSamplers"),
+    glDeleteShader("glDeleteShader"),
+    glDeleteSync("glDeleteSync"),
+    glDeleteTextures("glDeleteTextures"),
+    glDeleteTexturesEXT("glDeleteTexturesEXT"),
+    glDeleteTransformFeedbacks("glDeleteTransformFeedbacks"),
+    glDeleteTransformFeedbacksNV("glDeleteTransformFeedbacksNV"),
+    glDeleteVertexArrays("glDeleteVertexArrays"),
+    glDeleteVertexArraysAPPLE("glDeleteVertexArraysAPPLE"),
+    glDeleteVertexShaderEXT("glDeleteVertexShaderEXT"),
+    glDepthBoundsEXT("glDepthBoundsEXT"),
+    glDepthBoundsdNV("glDepthBoundsdNV"),
+    glDepthFunc("glDepthFunc"),
+    glDepthMask("glDepthMask"),
+    glDepthRange("glDepthRange"),
+    glDepthRangeArrayv("glDepthRangeArrayv"),
+    glDepthRangeIndexed("glDepthRangeIndexed"),
+    glDepthRangedNV("glDepthRangedNV"),
+    glDepthRangef("glDepthRangef"),
+    glDepthRangefOES("glDepthRangefOES"),
+    glDepthRangexOES("glDepthRangexOES"),
+    glDetachObjectARB("glDetachObjectARB"),
+    glDetachShader("glDetachShader"),
+    glDetailTexFuncSGIS("glDetailTexFuncSGIS"),
+    glDisable("glDisable"),
+    glDisableClientState("glDisableClientState"),
+    glDisableClientStateIndexedEXT("glDisableClientStateIndexedEXT"),
+    glDisableClientStateiEXT("glDisableClientStateiEXT"),
+    glDisableIndexedEXT("glDisableIndexedEXT"),
+    glDisableVariantClientStateEXT("glDisableVariantClientStateEXT"),
+    glDisableVertexArrayAttribEXT("glDisableVertexArrayAttribEXT"),
+    glDisableVertexArrayEXT("glDisableVertexArrayEXT"),
+    glDisableVertexAttribAPPLE("glDisableVertexAttribAPPLE"),
+    glDisableVertexAttribArray("glDisableVertexAttribArray"),
+    glDisableVertexAttribArrayARB("glDisableVertexAttribArrayARB"),
+    glDisablei("glDisablei"),
+    glDispatchCompute("glDispatchCompute"),
+    glDispatchComputeGroupSizeARB("glDispatchComputeGroupSizeARB"),
+    glDispatchComputeIndirect("glDispatchComputeIndirect"),
+    glDrawArrays("glDrawArrays"),
+    glDrawArraysEXT("glDrawArraysEXT"),
+    glDrawArraysIndirect("glDrawArraysIndirect"),
+    glDrawArraysInstanced("glDrawArraysInstanced"),
+    glDrawArraysInstancedARB("glDrawArraysInstancedARB"),
+    glDrawArraysInstancedBaseInstance("glDrawArraysInstancedBaseInstance"),
+    glDrawArraysInstancedEXT("glDrawArraysInstancedEXT"),
+    glDrawBuffer("glDrawBuffer"),
+    glDrawBuffers("glDrawBuffers"),
+    glDrawBuffersARB("glDrawBuffersARB"),
+    glDrawBuffersATI("glDrawBuffersATI"),
+    glDrawElementArrayAPPLE("glDrawElementArrayAPPLE"),
+    glDrawElementArrayATI("glDrawElementArrayATI"),
+    glDrawElements("glDrawElements"),
+    glDrawElementsBaseVertex("glDrawElementsBaseVertex"),
+    glDrawElementsIndirect("glDrawElementsIndirect"),
+    glDrawElementsInstanced("glDrawElementsInstanced"),
+    glDrawElementsInstancedARB("glDrawElementsInstancedARB"),
+    glDrawElementsInstancedBaseInstance("glDrawElementsInstancedBaseInstance"),
+    glDrawElementsInstancedBaseVertex("glDrawElementsInstancedBaseVertex"),
+    glDrawElementsInstancedBaseVertexBaseInstance("glDrawElementsInstancedBaseVertexBaseInstance"),
+    glDrawElementsInstancedEXT("glDrawElementsInstancedEXT"),
+    glDrawMeshArraysSUN("glDrawMeshArraysSUN"),
+    glDrawPixels("glDrawPixels"),
+    glDrawRangeElementArrayAPPLE("glDrawRangeElementArrayAPPLE"),
+    glDrawRangeElementArrayATI("glDrawRangeElementArrayATI"),
+    glDrawRangeElements("glDrawRangeElements"),
+    glDrawRangeElementsBaseVertex("glDrawRangeElementsBaseVertex"),
+    glDrawRangeElementsEXT("glDrawRangeElementsEXT"),
+    glDrawTextureNV("glDrawTextureNV"),
+    glDrawTransformFeedback("glDrawTransformFeedback"),
+    glDrawTransformFeedbackInstanced("glDrawTransformFeedbackInstanced"),
+    glDrawTransformFeedbackNV("glDrawTransformFeedbackNV"),
+    glDrawTransformFeedbackStream("glDrawTransformFeedbackStream"),
+    glDrawTransformFeedbackStreamInstanced("glDrawTransformFeedbackStreamInstanced"),
+    glEdgeFlag("glEdgeFlag"),
+    glEdgeFlagFormatNV("glEdgeFlagFormatNV"),
+    glEdgeFlagPointer("glEdgeFlagPointer"),
+    glEdgeFlagPointerEXT("glEdgeFlagPointerEXT"),
+    glEdgeFlagPointerListIBM("glEdgeFlagPointerListIBM"),
+    glEdgeFlagv("glEdgeFlagv"),
+    glElementPointerAPPLE("glElementPointerAPPLE"),
+    glElementPointerATI("glElementPointerATI"),
+    glEnable("glEnable"),
+    glEnableClientState("glEnableClientState"),
+    glEnableClientStateIndexedEXT("glEnableClientStateIndexedEXT"),
+    glEnableClientStateiEXT("glEnableClientStateiEXT"),
+    glEnableIndexedEXT("glEnableIndexedEXT"),
+    glEnableVariantClientStateEXT("glEnableVariantClientStateEXT"),
+    glEnableVertexArrayAttribEXT("glEnableVertexArrayAttribEXT"),
+    glEnableVertexArrayEXT("glEnableVertexArrayEXT"),
+    glEnableVertexAttribAPPLE("glEnableVertexAttribAPPLE"),
+    glEnableVertexAttribArray("glEnableVertexAttribArray"),
+    glEnableVertexAttribArrayARB("glEnableVertexAttribArrayARB"),
+    glEnablei("glEnablei"),
+    glEnd("glEnd"),
+    glEndConditionalRender("glEndConditionalRender"),
+    glEndConditionalRenderNV("glEndConditionalRenderNV"),
+    glEndConditionalRenderNVX("glEndConditionalRenderNVX"),
+    glEndFragmentShaderATI("glEndFragmentShaderATI"),
+    glEndList("glEndList"),
+    glEndOcclusionQueryNV("glEndOcclusionQueryNV"),
+    glEndPerfMonitorAMD("glEndPerfMonitorAMD"),
+    glEndPerfQueryINTEL("glEndPerfQueryINTEL"),
+    glEndQuery("glEndQuery"),
+    glEndQueryARB("glEndQueryARB"),
+    glEndQueryIndexed("glEndQueryIndexed"),
+    glEndTransformFeedback("glEndTransformFeedback"),
+    glEndTransformFeedbackEXT("glEndTransformFeedbackEXT"),
+    glEndTransformFeedbackNV("glEndTransformFeedbackNV"),
+    glEndVertexShaderEXT("glEndVertexShaderEXT"),
+    glEndVideoCaptureNV("glEndVideoCaptureNV"),
+    glEvalCoord1d("glEvalCoord1d"),
+    glEvalCoord1dv("glEvalCoord1dv"),
+    glEvalCoord1f("glEvalCoord1f"),
+    glEvalCoord1fv("glEvalCoord1fv"),
+    glEvalCoord1xOES("glEvalCoord1xOES"),
+    glEvalCoord1xvOES("glEvalCoord1xvOES"),
+    glEvalCoord2d("glEvalCoord2d"),
+    glEvalCoord2dv("glEvalCoord2dv"),
+    glEvalCoord2f("glEvalCoord2f"),
+    glEvalCoord2fv("glEvalCoord2fv"),
+    glEvalCoord2xOES("glEvalCoord2xOES"),
+    glEvalCoord2xvOES("glEvalCoord2xvOES"),
+    glEvalMapsNV("glEvalMapsNV"),
+    glEvalMesh1("glEvalMesh1"),
+    glEvalMesh2("glEvalMesh2"),
+    glEvalPoint1("glEvalPoint1"),
+    glEvalPoint2("glEvalPoint2"),
+    glExecuteProgramNV("glExecuteProgramNV"),
+    glExtractComponentEXT("glExtractComponentEXT"),
+    glFeedbackBuffer("glFeedbackBuffer"),
+    glFeedbackBufferxOES("glFeedbackBufferxOES"),
+    glFenceSync("glFenceSync"),
+    glFinalCombinerInputNV("glFinalCombinerInputNV"),
+    glFinish("glFinish"),
+    glFinishAsyncSGIX("glFinishAsyncSGIX"),
+    glFinishFenceAPPLE("glFinishFenceAPPLE"),
+    glFinishFenceNV("glFinishFenceNV"),
+    glFinishObjectAPPLE("glFinishObjectAPPLE"),
+    glFinishTextureSUNX("glFinishTextureSUNX"),
+    glFlush("glFlush"),
+    glFlushMappedBufferRange("glFlushMappedBufferRange"),
+    glFlushMappedBufferRangeAPPLE("glFlushMappedBufferRangeAPPLE"),
+    glFlushMappedNamedBufferRangeEXT("glFlushMappedNamedBufferRangeEXT"),
+    glFlushPixelDataRangeNV("glFlushPixelDataRangeNV"),
+    glFlushRasterSGIX("glFlushRasterSGIX"),
+    glFlushStaticDataIBM("glFlushStaticDataIBM"),
+    glFlushVertexArrayRangeAPPLE("glFlushVertexArrayRangeAPPLE"),
+    glFlushVertexArrayRangeNV("glFlushVertexArrayRangeNV"),
+    glFogCoordFormatNV("glFogCoordFormatNV"),
+    glFogCoordPointer("glFogCoordPointer"),
+    glFogCoordPointerEXT("glFogCoordPointerEXT"),
+    glFogCoordPointerListIBM("glFogCoordPointerListIBM"),
+    glFogCoordd("glFogCoordd"),
+    glFogCoorddEXT("glFogCoorddEXT"),
+    glFogCoorddv("glFogCoorddv"),
+    glFogCoorddvEXT("glFogCoorddvEXT"),
+    glFogCoordf("glFogCoordf"),
+    glFogCoordfEXT("glFogCoordfEXT"),
+    glFogCoordfv("glFogCoordfv"),
+    glFogCoordfvEXT("glFogCoordfvEXT"),
+    glFogCoordhNV("glFogCoordhNV"),
+    glFogCoordhvNV("glFogCoordhvNV"),
+    glFogFuncSGIS("glFogFuncSGIS"),
+    glFogf("glFogf"),
+    glFogfv("glFogfv"),
+    glFogi("glFogi"),
+    glFogiv("glFogiv"),
+    glFogxOES("glFogxOES"),
+    glFogxvOES("glFogxvOES"),
+    glFragmentColorMaterialSGIX("glFragmentColorMaterialSGIX"),
+    glFragmentLightModelfSGIX("glFragmentLightModelfSGIX"),
+    glFragmentLightModelfvSGIX("glFragmentLightModelfvSGIX"),
+    glFragmentLightModeliSGIX("glFragmentLightModeliSGIX"),
+    glFragmentLightModelivSGIX("glFragmentLightModelivSGIX"),
+    glFragmentLightfSGIX("glFragmentLightfSGIX"),
+    glFragmentLightfvSGIX("glFragmentLightfvSGIX"),
+    glFragmentLightiSGIX("glFragmentLightiSGIX"),
+    glFragmentLightivSGIX("glFragmentLightivSGIX"),
+    glFragmentMaterialfSGIX("glFragmentMaterialfSGIX"),
+    glFragmentMaterialfvSGIX("glFragmentMaterialfvSGIX"),
+    glFragmentMaterialiSGIX("glFragmentMaterialiSGIX"),
+    glFragmentMaterialivSGIX("glFragmentMaterialivSGIX"),
+    glFrameTerminatorGREMEDY("glFrameTerminatorGREMEDY"),
+    glFrameZoomSGIX("glFrameZoomSGIX"),
+    glFramebufferDrawBufferEXT("glFramebufferDrawBufferEXT"),
+    glFramebufferDrawBuffersEXT("glFramebufferDrawBuffersEXT"),
+    glFramebufferParameteri("glFramebufferParameteri"),
+    glFramebufferReadBufferEXT("glFramebufferReadBufferEXT"),
+    glFramebufferRenderbuffer("glFramebufferRenderbuffer"),
+    glFramebufferRenderbufferEXT("glFramebufferRenderbufferEXT"),
+    glFramebufferTexture("glFramebufferTexture"),
+    glFramebufferTexture1D("glFramebufferTexture1D"),
+    glFramebufferTexture1DEXT("glFramebufferTexture1DEXT"),
+    glFramebufferTexture2D("glFramebufferTexture2D"),
+    glFramebufferTexture2DEXT("glFramebufferTexture2DEXT"),
+    glFramebufferTexture3D("glFramebufferTexture3D"),
+    glFramebufferTexture3DEXT("glFramebufferTexture3DEXT"),
+    glFramebufferTextureARB("glFramebufferTextureARB"),
+    glFramebufferTextureEXT("glFramebufferTextureEXT"),
+    glFramebufferTextureFaceARB("glFramebufferTextureFaceARB"),
+    glFramebufferTextureFaceEXT("glFramebufferTextureFaceEXT"),
+    glFramebufferTextureLayer("glFramebufferTextureLayer"),
+    glFramebufferTextureLayerARB("glFramebufferTextureLayerARB"),
+    glFramebufferTextureLayerEXT("glFramebufferTextureLayerEXT"),
+    glFreeObjectBufferATI("glFreeObjectBufferATI"),
+    glFrontFace("glFrontFace"),
+    glFrustum("glFrustum"),
+    glFrustumfOES("glFrustumfOES"),
+    glFrustumxOES("glFrustumxOES"),
+    glGenAsyncMarkersSGIX("glGenAsyncMarkersSGIX"),
+    glGenBuffers("glGenBuffers"),
+    glGenBuffersARB("glGenBuffersARB"),
+    glGenFencesAPPLE("glGenFencesAPPLE"),
+    glGenFencesNV("glGenFencesNV"),
+    glGenFragmentShadersATI("glGenFragmentShadersATI"),
+    glGenFramebuffers("glGenFramebuffers"),
+    glGenFramebuffersEXT("glGenFramebuffersEXT"),
+    glGenLists("glGenLists"),
+    glGenNamesAMD("glGenNamesAMD"),
+    glGenOcclusionQueriesNV("glGenOcclusionQueriesNV"),
+    glGenPathsNV("glGenPathsNV"),
+    glGenPerfMonitorsAMD("glGenPerfMonitorsAMD"),
+    glGenProgramPipelines("glGenProgramPipelines"),
+    glGenProgramsARB("glGenProgramsARB"),
+    glGenProgramsNV("glGenProgramsNV"),
+    glGenQueries("glGenQueries"),
+    glGenQueriesARB("glGenQueriesARB"),
+    glGenRenderbuffers("glGenRenderbuffers"),
+    glGenRenderbuffersEXT("glGenRenderbuffersEXT"),
+    glGenSamplers("glGenSamplers"),
+    glGenSymbolsEXT("glGenSymbolsEXT"),
+    glGenTextures("glGenTextures"),
+    glGenTexturesEXT("glGenTexturesEXT"),
+    glGenTransformFeedbacks("glGenTransformFeedbacks"),
+    glGenTransformFeedbacksNV("glGenTransformFeedbacksNV"),
+    glGenVertexArrays("glGenVertexArrays"),
+    glGenVertexArraysAPPLE("glGenVertexArraysAPPLE"),
+    glGenVertexShadersEXT("glGenVertexShadersEXT"),
+    glGenerateMipmap("glGenerateMipmap"),
+    glGenerateMipmapEXT("glGenerateMipmapEXT"),
+    glGenerateMultiTexMipmapEXT("glGenerateMultiTexMipmapEXT"),
+    glGenerateTextureMipmapEXT("glGenerateTextureMipmapEXT"),
+    glGetActiveAtomicCounterBufferiv("glGetActiveAtomicCounterBufferiv"),
+    glGetActiveAttrib("glGetActiveAttrib"),
+    glGetActiveAttribARB("glGetActiveAttribARB"),
+    glGetActiveSubroutineName("glGetActiveSubroutineName"),
+    glGetActiveSubroutineUniformName("glGetActiveSubroutineUniformName"),
+    glGetActiveSubroutineUniformiv("glGetActiveSubroutineUniformiv"),
+    glGetActiveUniform("glGetActiveUniform"),
+    glGetActiveUniformARB("glGetActiveUniformARB"),
+    glGetActiveUniformBlockName("glGetActiveUniformBlockName"),
+    glGetActiveUniformBlockiv("glGetActiveUniformBlockiv"),
+    glGetActiveUniformName("glGetActiveUniformName"),
+    glGetActiveUniformsiv("glGetActiveUniformsiv"),
+    glGetActiveVaryingNV("glGetActiveVaryingNV"),
+    glGetArrayObjectfvATI("glGetArrayObjectfvATI"),
+    glGetArrayObjectivATI("glGetArrayObjectivATI"),
+    glGetAttachedObjectsARB("glGetAttachedObjectsARB"),
+    glGetAttachedShaders("glGetAttachedShaders"),
+    glGetAttribLocation("glGetAttribLocation"),
+    glGetAttribLocationARB("glGetAttribLocationARB"),
+    glGetBooleanIndexedvEXT("glGetBooleanIndexedvEXT"),
+    glGetBooleani_v("glGetBooleani_v"),
+    glGetBooleanv("glGetBooleanv"),
+    glGetBufferParameteri64v("glGetBufferParameteri64v"),
+    glGetBufferParameteriv("glGetBufferParameteriv"),
+    glGetBufferParameterivARB("glGetBufferParameterivARB"),
+    glGetBufferParameterui64vNV("glGetBufferParameterui64vNV"),
+    glGetBufferPointerv("glGetBufferPointerv"),
+    glGetBufferPointervARB("glGetBufferPointervARB"),
+    glGetBufferSubData("glGetBufferSubData"),
+    glGetBufferSubDataARB("glGetBufferSubDataARB"),
+    glGetClipPlane("glGetClipPlane"),
+    glGetClipPlanefOES("glGetClipPlanefOES"),
+    glGetClipPlanexOES("glGetClipPlanexOES"),
+    glGetColorTable("glGetColorTable"),
+    glGetColorTableEXT("glGetColorTableEXT"),
+    glGetColorTableParameterfv("glGetColorTableParameterfv"),
+    glGetColorTableParameterfvEXT("glGetColorTableParameterfvEXT"),
+    glGetColorTableParameterfvSGI("glGetColorTableParameterfvSGI"),
+    glGetColorTableParameteriv("glGetColorTableParameteriv"),
+    glGetColorTableParameterivEXT("glGetColorTableParameterivEXT"),
+    glGetColorTableParameterivSGI("glGetColorTableParameterivSGI"),
+    glGetColorTableSGI("glGetColorTableSGI"),
+    glGetCombinerInputParameterfvNV("glGetCombinerInputParameterfvNV"),
+    glGetCombinerInputParameterivNV("glGetCombinerInputParameterivNV"),
+    glGetCombinerOutputParameterfvNV("glGetCombinerOutputParameterfvNV"),
+    glGetCombinerOutputParameterivNV("glGetCombinerOutputParameterivNV"),
+    glGetCombinerStageParameterfvNV("glGetCombinerStageParameterfvNV"),
+    glGetCompressedMultiTexImageEXT("glGetCompressedMultiTexImageEXT"),
+    glGetCompressedTexImage("glGetCompressedTexImage"),
+    glGetCompressedTexImageARB("glGetCompressedTexImageARB"),
+    glGetCompressedTextureImageEXT("glGetCompressedTextureImageEXT"),
+    glGetConvolutionFilter("glGetConvolutionFilter"),
+    glGetConvolutionFilterEXT("glGetConvolutionFilterEXT"),
+    glGetConvolutionParameterfv("glGetConvolutionParameterfv"),
+    glGetConvolutionParameterfvEXT("glGetConvolutionParameterfvEXT"),
+    glGetConvolutionParameteriv("glGetConvolutionParameteriv"),
+    glGetConvolutionParameterivEXT("glGetConvolutionParameterivEXT"),
+    glGetConvolutionParameterxvOES("glGetConvolutionParameterxvOES"),
+    glGetDebugMessageLog("glGetDebugMessageLog"),
+    glGetDebugMessageLogAMD("glGetDebugMessageLogAMD"),
+    glGetDebugMessageLogARB("glGetDebugMessageLogARB"),
+    glGetDetailTexFuncSGIS("glGetDetailTexFuncSGIS"),
+    glGetDoubleIndexedvEXT("glGetDoubleIndexedvEXT"),
+    glGetDoublei_v("glGetDoublei_v"),
+    glGetDoublei_vEXT("glGetDoublei_vEXT"),
+    glGetDoublev("glGetDoublev"),
+    glGetError("glGetError"),
+    glGetFenceivNV("glGetFenceivNV"),
+    glGetFinalCombinerInputParameterfvNV("glGetFinalCombinerInputParameterfvNV"),
+    glGetFinalCombinerInputParameterivNV("glGetFinalCombinerInputParameterivNV"),
+    glGetFirstPerfQueryIdINTEL("glGetFirstPerfQueryIdINTEL"),
+    glGetFixedvOES("glGetFixedvOES"),
+    glGetFloatIndexedvEXT("glGetFloatIndexedvEXT"),
+    glGetFloati_v("glGetFloati_v"),
+    glGetFloati_vEXT("glGetFloati_vEXT"),
+    glGetFloatv("glGetFloatv"),
+    glGetFogFuncSGIS("glGetFogFuncSGIS"),
+    glGetFragDataIndex("glGetFragDataIndex"),
+    glGetFragDataLocation("glGetFragDataLocation"),
+    glGetFragDataLocationEXT("glGetFragDataLocationEXT"),
+    glGetFragmentLightfvSGIX("glGetFragmentLightfvSGIX"),
+    glGetFragmentLightivSGIX("glGetFragmentLightivSGIX"),
+    glGetFragmentMaterialfvSGIX("glGetFragmentMaterialfvSGIX"),
+    glGetFragmentMaterialivSGIX("glGetFragmentMaterialivSGIX"),
+    glGetFramebufferAttachmentParameteriv("glGetFramebufferAttachmentParameteriv"),
+    glGetFramebufferAttachmentParameterivEXT("glGetFramebufferAttachmentParameterivEXT"),
+    glGetFramebufferParameteriv("glGetFramebufferParameteriv"),
+    glGetFramebufferParameterivEXT("glGetFramebufferParameterivEXT"),
+    glGetGraphicsResetStatusARB("glGetGraphicsResetStatusARB"),
+    glGetHandleARB("glGetHandleARB"),
+    glGetHistogram("glGetHistogram"),
+    glGetHistogramEXT("glGetHistogramEXT"),
+    glGetHistogramParameterfv("glGetHistogramParameterfv"),
+    glGetHistogramParameterfvEXT("glGetHistogramParameterfvEXT"),
+    glGetHistogramParameteriv("glGetHistogramParameteriv"),
+    glGetHistogramParameterivEXT("glGetHistogramParameterivEXT"),
+    glGetHistogramParameterxvOES("glGetHistogramParameterxvOES"),
+    glGetImageHandleARB("glGetImageHandleARB"),
+    glGetImageHandleNV("glGetImageHandleNV"),
+    glGetImageTransformParameterfvHP("glGetImageTransformParameterfvHP"),
+    glGetImageTransformParameterivHP("glGetImageTransformParameterivHP"),
+    glGetInfoLogARB("glGetInfoLogARB"),
+    glGetInstrumentsSGIX("glGetInstrumentsSGIX"),
+    glGetInteger64i_v("glGetInteger64i_v"),
+    glGetInteger64v("glGetInteger64v"),
+    glGetIntegerIndexedvEXT("glGetIntegerIndexedvEXT"),
+    glGetIntegeri_v("glGetIntegeri_v"),
+    glGetIntegerui64i_vNV("glGetIntegerui64i_vNV"),
+    glGetIntegerui64vNV("glGetIntegerui64vNV"),
+    glGetIntegerv("glGetIntegerv"),
+    glGetInternalformati64v("glGetInternalformati64v"),
+    glGetInternalformativ("glGetInternalformativ"),
+    glGetInvariantBooleanvEXT("glGetInvariantBooleanvEXT"),
+    glGetInvariantFloatvEXT("glGetInvariantFloatvEXT"),
+    glGetInvariantIntegervEXT("glGetInvariantIntegervEXT"),
+    glGetLightfv("glGetLightfv"),
+    glGetLightiv("glGetLightiv"),
+    glGetLightxOES("glGetLightxOES"),
+    glGetListParameterfvSGIX("glGetListParameterfvSGIX"),
+    glGetListParameterivSGIX("glGetListParameterivSGIX"),
+    glGetLocalConstantBooleanvEXT("glGetLocalConstantBooleanvEXT"),
+    glGetLocalConstantFloatvEXT("glGetLocalConstantFloatvEXT"),
+    glGetLocalConstantIntegervEXT("glGetLocalConstantIntegervEXT"),
+    glGetMapAttribParameterfvNV("glGetMapAttribParameterfvNV"),
+    glGetMapAttribParameterivNV("glGetMapAttribParameterivNV"),
+    glGetMapControlPointsNV("glGetMapControlPointsNV"),
+    glGetMapParameterfvNV("glGetMapParameterfvNV"),
+    glGetMapParameterivNV("glGetMapParameterivNV"),
+    glGetMapdv("glGetMapdv"),
+    glGetMapfv("glGetMapfv"),
+    glGetMapiv("glGetMapiv"),
+    glGetMapxvOES("glGetMapxvOES"),
+    glGetMaterialfv("glGetMaterialfv"),
+    glGetMaterialiv("glGetMaterialiv"),
+    glGetMaterialxOES("glGetMaterialxOES"),
+    glGetMinmax("glGetMinmax"),
+    glGetMinmaxEXT("glGetMinmaxEXT"),
+    glGetMinmaxParameterfv("glGetMinmaxParameterfv"),
+    glGetMinmaxParameterfvEXT("glGetMinmaxParameterfvEXT"),
+    glGetMinmaxParameteriv("glGetMinmaxParameteriv"),
+    glGetMinmaxParameterivEXT("glGetMinmaxParameterivEXT"),
+    glGetMultiTexEnvfvEXT("glGetMultiTexEnvfvEXT"),
+    glGetMultiTexEnvivEXT("glGetMultiTexEnvivEXT"),
+    glGetMultiTexGendvEXT("glGetMultiTexGendvEXT"),
+    glGetMultiTexGenfvEXT("glGetMultiTexGenfvEXT"),
+    glGetMultiTexGenivEXT("glGetMultiTexGenivEXT"),
+    glGetMultiTexImageEXT("glGetMultiTexImageEXT"),
+    glGetMultiTexLevelParameterfvEXT("glGetMultiTexLevelParameterfvEXT"),
+    glGetMultiTexLevelParameterivEXT("glGetMultiTexLevelParameterivEXT"),
+    glGetMultiTexParameterIivEXT("glGetMultiTexParameterIivEXT"),
+    glGetMultiTexParameterIuivEXT("glGetMultiTexParameterIuivEXT"),
+    glGetMultiTexParameterfvEXT("glGetMultiTexParameterfvEXT"),
+    glGetMultiTexParameterivEXT("glGetMultiTexParameterivEXT"),
+    glGetMultisamplefv("glGetMultisamplefv"),
+    glGetMultisamplefvNV("glGetMultisamplefvNV"),
+    glGetNamedBufferParameterivEXT("glGetNamedBufferParameterivEXT"),
+    glGetNamedBufferParameterui64vNV("glGetNamedBufferParameterui64vNV"),
+    glGetNamedBufferPointervEXT("glGetNamedBufferPointervEXT"),
+    glGetNamedBufferSubDataEXT("glGetNamedBufferSubDataEXT"),
+    glGetNamedFramebufferAttachmentParameterivEXT("glGetNamedFramebufferAttachmentParameterivEXT"),
+    glGetNamedFramebufferParameterivEXT("glGetNamedFramebufferParameterivEXT"),
+    glGetNamedProgramLocalParameterIivEXT("glGetNamedProgramLocalParameterIivEXT"),
+    glGetNamedProgramLocalParameterIuivEXT("glGetNamedProgramLocalParameterIuivEXT"),
+    glGetNamedProgramLocalParameterdvEXT("glGetNamedProgramLocalParameterdvEXT"),
+    glGetNamedProgramLocalParameterfvEXT("glGetNamedProgramLocalParameterfvEXT"),
+    glGetNamedProgramStringEXT("glGetNamedProgramStringEXT"),
+    glGetNamedProgramivEXT("glGetNamedProgramivEXT"),
+    glGetNamedRenderbufferParameterivEXT("glGetNamedRenderbufferParameterivEXT"),
+    glGetNamedStringARB("glGetNamedStringARB"),
+    glGetNamedStringivARB("glGetNamedStringivARB"),
+    glGetNextPerfQueryIdINTEL("glGetNextPerfQueryIdINTEL"),
+    glGetObjectBufferfvATI("glGetObjectBufferfvATI"),
+    glGetObjectBufferivATI("glGetObjectBufferivATI"),
+    glGetObjectLabel("glGetObjectLabel"),
+    glGetObjectLabelEXT("glGetObjectLabelEXT"),
+    glGetObjectParameterfvARB("glGetObjectParameterfvARB"),
+    glGetObjectParameterivAPPLE("glGetObjectParameterivAPPLE"),
+    glGetObjectParameterivARB("glGetObjectParameterivARB"),
+    glGetObjectPtrLabel("glGetObjectPtrLabel"),
+    glGetOcclusionQueryivNV("glGetOcclusionQueryivNV"),
+    glGetOcclusionQueryuivNV("glGetOcclusionQueryuivNV"),
+    glGetPathColorGenfvNV("glGetPathColorGenfvNV"),
+    glGetPathColorGenivNV("glGetPathColorGenivNV"),
+    glGetPathCommandsNV("glGetPathCommandsNV"),
+    glGetPathCoordsNV("glGetPathCoordsNV"),
+    glGetPathDashArrayNV("glGetPathDashArrayNV"),
+    glGetPathLengthNV("glGetPathLengthNV"),
+    glGetPathMetricRangeNV("glGetPathMetricRangeNV"),
+    glGetPathMetricsNV("glGetPathMetricsNV"),
+    glGetPathParameterfvNV("glGetPathParameterfvNV"),
+    glGetPathParameterivNV("glGetPathParameterivNV"),
+    glGetPathSpacingNV("glGetPathSpacingNV"),
+    glGetPathTexGenfvNV("glGetPathTexGenfvNV"),
+    glGetPathTexGenivNV("glGetPathTexGenivNV"),
+    glGetPerfCounterInfoINTEL("glGetPerfCounterInfoINTEL"),
+    glGetPerfMonitorCounterDataAMD("glGetPerfMonitorCounterDataAMD"),
+    glGetPerfMonitorCounterInfoAMD("glGetPerfMonitorCounterInfoAMD"),
+    glGetPerfMonitorCounterStringAMD("glGetPerfMonitorCounterStringAMD"),
+    glGetPerfMonitorCountersAMD("glGetPerfMonitorCountersAMD"),
+    glGetPerfMonitorGroupStringAMD("glGetPerfMonitorGroupStringAMD"),
+    glGetPerfMonitorGroupsAMD("glGetPerfMonitorGroupsAMD"),
+    glGetPerfQueryDataINTEL("glGetPerfQueryDataINTEL"),
+    glGetPerfQueryIdByNameINTEL("glGetPerfQueryIdByNameINTEL"),
+    glGetPerfQueryInfoINTEL("glGetPerfQueryInfoINTEL"),
+    glGetPixelMapfv("glGetPixelMapfv"),
+    glGetPixelMapuiv("glGetPixelMapuiv"),
+    glGetPixelMapusv("glGetPixelMapusv"),
+    glGetPixelMapxv("glGetPixelMapxv"),
+    glGetPixelTexGenParameterfvSGIS("glGetPixelTexGenParameterfvSGIS"),
+    glGetPixelTexGenParameterivSGIS("glGetPixelTexGenParameterivSGIS"),
+    glGetPixelTransformParameterfvEXT("glGetPixelTransformParameterfvEXT"),
+    glGetPixelTransformParameterivEXT("glGetPixelTransformParameterivEXT"),
+    glGetPointerIndexedvEXT("glGetPointerIndexedvEXT"),
+    glGetPointeri_vEXT("glGetPointeri_vEXT"),
+    glGetPointerv("glGetPointerv"),
+    glGetPointervEXT("glGetPointervEXT"),
+    glGetPolygonStipple("glGetPolygonStipple"),
+    glGetProgramBinary("glGetProgramBinary"),
+    glGetProgramEnvParameterIivNV("glGetProgramEnvParameterIivNV"),
+    glGetProgramEnvParameterIuivNV("glGetProgramEnvParameterIuivNV"),
+    glGetProgramEnvParameterdvARB("glGetProgramEnvParameterdvARB"),
+    glGetProgramEnvParameterfvARB("glGetProgramEnvParameterfvARB"),
+    glGetProgramInfoLog("glGetProgramInfoLog"),
+    glGetProgramInterfaceiv("glGetProgramInterfaceiv"),
+    glGetProgramLocalParameterIivNV("glGetProgramLocalParameterIivNV"),
+    glGetProgramLocalParameterIuivNV("glGetProgramLocalParameterIuivNV"),
+    glGetProgramLocalParameterdvARB("glGetProgramLocalParameterdvARB"),
+    glGetProgramLocalParameterfvARB("glGetProgramLocalParameterfvARB"),
+    glGetProgramNamedParameterdvNV("glGetProgramNamedParameterdvNV"),
+    glGetProgramNamedParameterfvNV("glGetProgramNamedParameterfvNV"),
+    glGetProgramParameterdvNV("glGetProgramParameterdvNV"),
+    glGetProgramParameterfvNV("glGetProgramParameterfvNV"),
+    glGetProgramPipelineInfoLog("glGetProgramPipelineInfoLog"),
+    glGetProgramPipelineiv("glGetProgramPipelineiv"),
+    glGetProgramResourceIndex("glGetProgramResourceIndex"),
+    glGetProgramResourceLocation("glGetProgramResourceLocation"),
+    glGetProgramResourceLocationIndex("glGetProgramResourceLocationIndex"),
+    glGetProgramResourceName("glGetProgramResourceName"),
+    glGetProgramResourceiv("glGetProgramResourceiv"),
+    glGetProgramStageiv("glGetProgramStageiv"),
+    glGetProgramStringARB("glGetProgramStringARB"),
+    glGetProgramStringNV("glGetProgramStringNV"),
+    glGetProgramSubroutineParameteruivNV("glGetProgramSubroutineParameteruivNV"),
+    glGetProgramiv("glGetProgramiv"),
+    glGetProgramivARB("glGetProgramivARB"),
+    glGetProgramivNV("glGetProgramivNV"),
+    glGetQueryIndexediv("glGetQueryIndexediv"),
+    glGetQueryObjecti64v("glGetQueryObjecti64v"),
+    glGetQueryObjecti64vEXT("glGetQueryObjecti64vEXT"),
+    glGetQueryObjectiv("glGetQueryObjectiv"),
+    glGetQueryObjectivARB("glGetQueryObjectivARB"),
+    glGetQueryObjectui64v("glGetQueryObjectui64v"),
+    glGetQueryObjectui64vEXT("glGetQueryObjectui64vEXT"),
+    glGetQueryObjectuiv("glGetQueryObjectuiv"),
+    glGetQueryObjectuivARB("glGetQueryObjectuivARB"),
+    glGetQueryiv("glGetQueryiv"),
+    glGetQueryivARB("glGetQueryivARB"),
+    glGetRenderbufferParameteriv("glGetRenderbufferParameteriv"),
+    glGetRenderbufferParameterivEXT("glGetRenderbufferParameterivEXT"),
+    glGetSamplerParameterIiv("glGetSamplerParameterIiv"),
+    glGetSamplerParameterIuiv("glGetSamplerParameterIuiv"),
+    glGetSamplerParameterfv("glGetSamplerParameterfv"),
+    glGetSamplerParameteriv("glGetSamplerParameteriv"),
+    glGetSeparableFilter("glGetSeparableFilter"),
+    glGetSeparableFilterEXT("glGetSeparableFilterEXT"),
+    glGetShaderInfoLog("glGetShaderInfoLog"),
+    glGetShaderPrecisionFormat("glGetShaderPrecisionFormat"),
+    glGetShaderSource("glGetShaderSource"),
+    glGetShaderSourceARB("glGetShaderSourceARB"),
+    glGetShaderiv("glGetShaderiv"),
+    glGetSharpenTexFuncSGIS("glGetSharpenTexFuncSGIS"),
+    glGetString("glGetString"),
+    glGetStringi("glGetStringi"),
+    glGetSubroutineIndex("glGetSubroutineIndex"),
+    glGetSubroutineUniformLocation("glGetSubroutineUniformLocation"),
+    glGetSynciv("glGetSynciv"),
+    glGetTexBumpParameterfvATI("glGetTexBumpParameterfvATI"),
+    glGetTexBumpParameterivATI("glGetTexBumpParameterivATI"),
+    glGetTexEnvfv("glGetTexEnvfv"),
+    glGetTexEnviv("glGetTexEnviv"),
+    glGetTexEnvxvOES("glGetTexEnvxvOES"),
+    glGetTexFilterFuncSGIS("glGetTexFilterFuncSGIS"),
+    glGetTexGendv("glGetTexGendv"),
+    glGetTexGenfv("glGetTexGenfv"),
+    glGetTexGeniv("glGetTexGeniv"),
+    glGetTexGenxvOES("glGetTexGenxvOES"),
+    glGetTexImage("glGetTexImage"),
+    glGetTexLevelParameterfv("glGetTexLevelParameterfv"),
+    glGetTexLevelParameteriv("glGetTexLevelParameteriv"),
+    glGetTexLevelParameterxvOES("glGetTexLevelParameterxvOES"),
+    glGetTexParameterIiv("glGetTexParameterIiv"),
+    glGetTexParameterIivEXT("glGetTexParameterIivEXT"),
+    glGetTexParameterIuiv("glGetTexParameterIuiv"),
+    glGetTexParameterIuivEXT("glGetTexParameterIuivEXT"),
+    glGetTexParameterPointervAPPLE("glGetTexParameterPointervAPPLE"),
+    glGetTexParameterfv("glGetTexParameterfv"),
+    glGetTexParameteriv("glGetTexParameteriv"),
+    glGetTexParameterxvOES("glGetTexParameterxvOES"),
+    glGetTextureHandleARB("glGetTextureHandleARB"),
+    glGetTextureHandleNV("glGetTextureHandleNV"),
+    glGetTextureImageEXT("glGetTextureImageEXT"),
+    glGetTextureLevelParameterfvEXT("glGetTextureLevelParameterfvEXT"),
+    glGetTextureLevelParameterivEXT("glGetTextureLevelParameterivEXT"),
+    glGetTextureParameterIivEXT("glGetTextureParameterIivEXT"),
+    glGetTextureParameterIuivEXT("glGetTextureParameterIuivEXT"),
+    glGetTextureParameterfvEXT("glGetTextureParameterfvEXT"),
+    glGetTextureParameterivEXT("glGetTextureParameterivEXT"),
+    glGetTextureSamplerHandleARB("glGetTextureSamplerHandleARB"),
+    glGetTextureSamplerHandleNV("glGetTextureSamplerHandleNV"),
+    glGetTrackMatrixivNV("glGetTrackMatrixivNV"),
+    glGetTransformFeedbackVarying("glGetTransformFeedbackVarying"),
+    glGetTransformFeedbackVaryingEXT("glGetTransformFeedbackVaryingEXT"),
+    glGetTransformFeedbackVaryingNV("glGetTransformFeedbackVaryingNV"),
+    glGetUniformBlockIndex("glGetUniformBlockIndex"),
+    glGetUniformBufferSizeEXT("glGetUniformBufferSizeEXT"),
+    glGetUniformIndices("glGetUniformIndices"),
+    glGetUniformLocation("glGetUniformLocation"),
+    glGetUniformLocationARB("glGetUniformLocationARB"),
+    glGetUniformOffsetEXT("glGetUniformOffsetEXT"),
+    glGetUniformSubroutineuiv("glGetUniformSubroutineuiv"),
+    glGetUniformdv("glGetUniformdv"),
+    glGetUniformfv("glGetUniformfv"),
+    glGetUniformfvARB("glGetUniformfvARB"),
+    glGetUniformi64vNV("glGetUniformi64vNV"),
+    glGetUniformiv("glGetUniformiv"),
+    glGetUniformivARB("glGetUniformivARB"),
+    glGetUniformui64vNV("glGetUniformui64vNV"),
+    glGetUniformuiv("glGetUniformuiv"),
+    glGetUniformuivEXT("glGetUniformuivEXT"),
+    glGetVariantArrayObjectfvATI("glGetVariantArrayObjectfvATI"),
+    glGetVariantArrayObjectivATI("glGetVariantArrayObjectivATI"),
+    glGetVariantBooleanvEXT("glGetVariantBooleanvEXT"),
+    glGetVariantFloatvEXT("glGetVariantFloatvEXT"),
+    glGetVariantIntegervEXT("glGetVariantIntegervEXT"),
+    glGetVariantPointervEXT("glGetVariantPointervEXT"),
+    glGetVaryingLocationNV("glGetVaryingLocationNV"),
+    glGetVertexArrayIntegeri_vEXT("glGetVertexArrayIntegeri_vEXT"),
+    glGetVertexArrayIntegervEXT("glGetVertexArrayIntegervEXT"),
+    glGetVertexArrayPointeri_vEXT("glGetVertexArrayPointeri_vEXT"),
+    glGetVertexArrayPointervEXT("glGetVertexArrayPointervEXT"),
+    glGetVertexAttribArrayObjectfvATI("glGetVertexAttribArrayObjectfvATI"),
+    glGetVertexAttribArrayObjectivATI("glGetVertexAttribArrayObjectivATI"),
+    glGetVertexAttribIiv("glGetVertexAttribIiv"),
+    glGetVertexAttribIivEXT("glGetVertexAttribIivEXT"),
+    glGetVertexAttribIuiv("glGetVertexAttribIuiv"),
+    glGetVertexAttribIuivEXT("glGetVertexAttribIuivEXT"),
+    glGetVertexAttribLdv("glGetVertexAttribLdv"),
+    glGetVertexAttribLdvEXT("glGetVertexAttribLdvEXT"),
+    glGetVertexAttribLi64vNV("glGetVertexAttribLi64vNV"),
+    glGetVertexAttribLui64vARB("glGetVertexAttribLui64vARB"),
+    glGetVertexAttribLui64vNV("glGetVertexAttribLui64vNV"),
+    glGetVertexAttribPointerv("glGetVertexAttribPointerv"),
+    glGetVertexAttribPointervARB("glGetVertexAttribPointervARB"),
+    glGetVertexAttribPointervNV("glGetVertexAttribPointervNV"),
+    glGetVertexAttribdv("glGetVertexAttribdv"),
+    glGetVertexAttribdvARB("glGetVertexAttribdvARB"),
+    glGetVertexAttribdvNV("glGetVertexAttribdvNV"),
+    glGetVertexAttribfv("glGetVertexAttribfv"),
+    glGetVertexAttribfvARB("glGetVertexAttribfvARB"),
+    glGetVertexAttribfvNV("glGetVertexAttribfvNV"),
+    glGetVertexAttribiv("glGetVertexAttribiv"),
+    glGetVertexAttribivARB("glGetVertexAttribivARB"),
+    glGetVertexAttribivNV("glGetVertexAttribivNV"),
+    glGetVideoCaptureStreamdvNV("glGetVideoCaptureStreamdvNV"),
+    glGetVideoCaptureStreamfvNV("glGetVideoCaptureStreamfvNV"),
+    glGetVideoCaptureStreamivNV("glGetVideoCaptureStreamivNV"),
+    glGetVideoCaptureivNV("glGetVideoCaptureivNV"),
+    glGetVideoi64vNV("glGetVideoi64vNV"),
+    glGetVideoivNV("glGetVideoivNV"),
+    glGetVideoui64vNV("glGetVideoui64vNV"),
+    glGetVideouivNV("glGetVideouivNV"),
+    glGetnColorTableARB("glGetnColorTableARB"),
+    glGetnCompressedTexImageARB("glGetnCompressedTexImageARB"),
+    glGetnConvolutionFilterARB("glGetnConvolutionFilterARB"),
+    glGetnHistogramARB("glGetnHistogramARB"),
+    glGetnMapdvARB("glGetnMapdvARB"),
+    glGetnMapfvARB("glGetnMapfvARB"),
+    glGetnMapivARB("glGetnMapivARB"),
+    glGetnMinmaxARB("glGetnMinmaxARB"),
+    glGetnPixelMapfvARB("glGetnPixelMapfvARB"),
+    glGetnPixelMapuivARB("glGetnPixelMapuivARB"),
+    glGetnPixelMapusvARB("glGetnPixelMapusvARB"),
+    glGetnPolygonStippleARB("glGetnPolygonStippleARB"),
+    glGetnSeparableFilterARB("glGetnSeparableFilterARB"),
+    glGetnTexImageARB("glGetnTexImageARB"),
+    glGetnUniformdvARB("glGetnUniformdvARB"),
+    glGetnUniformfvARB("glGetnUniformfvARB"),
+    glGetnUniformivARB("glGetnUniformivARB"),
+    glGetnUniformuivARB("glGetnUniformuivARB"),
+    glGlobalAlphaFactorbSUN("glGlobalAlphaFactorbSUN"),
+    glGlobalAlphaFactordSUN("glGlobalAlphaFactordSUN"),
+    glGlobalAlphaFactorfSUN("glGlobalAlphaFactorfSUN"),
+    glGlobalAlphaFactoriSUN("glGlobalAlphaFactoriSUN"),
+    glGlobalAlphaFactorsSUN("glGlobalAlphaFactorsSUN"),
+    glGlobalAlphaFactorubSUN("glGlobalAlphaFactorubSUN"),
+    glGlobalAlphaFactoruiSUN("glGlobalAlphaFactoruiSUN"),
+    glGlobalAlphaFactorusSUN("glGlobalAlphaFactorusSUN"),
+    glHint("glHint"),
+    glHintPGI("glHintPGI"),
+    glHistogram("glHistogram"),
+    glHistogramEXT("glHistogramEXT"),
+    glIglooInterfaceSGIX("glIglooInterfaceSGIX"),
+    glImageTransformParameterfHP("glImageTransformParameterfHP"),
+    glImageTransformParameterfvHP("glImageTransformParameterfvHP"),
+    glImageTransformParameteriHP("glImageTransformParameteriHP"),
+    glImageTransformParameterivHP("glImageTransformParameterivHP"),
+    glImportSyncEXT("glImportSyncEXT"),
+    glIndexFormatNV("glIndexFormatNV"),
+    glIndexFuncEXT("glIndexFuncEXT"),
+    glIndexMask("glIndexMask"),
+    glIndexMaterialEXT("glIndexMaterialEXT"),
+    glIndexPointer("glIndexPointer"),
+    glIndexPointerEXT("glIndexPointerEXT"),
+    glIndexPointerListIBM("glIndexPointerListIBM"),
+    glIndexd("glIndexd"),
+    glIndexdv("glIndexdv"),
+    glIndexf("glIndexf"),
+    glIndexfv("glIndexfv"),
+    glIndexi("glIndexi"),
+    glIndexiv("glIndexiv"),
+    glIndexs("glIndexs"),
+    glIndexsv("glIndexsv"),
+    glIndexub("glIndexub"),
+    glIndexubv("glIndexubv"),
+    glIndexxOES("glIndexxOES"),
+    glIndexxvOES("glIndexxvOES"),
+    glInitNames("glInitNames"),
+    glInsertComponentEXT("glInsertComponentEXT"),
+    glInsertEventMarkerEXT("glInsertEventMarkerEXT"),
+    glInstrumentsBufferSGIX("glInstrumentsBufferSGIX"),
+    glInterleavedArrays("glInterleavedArrays"),
+    glInterpolatePathsNV("glInterpolatePathsNV"),
+    glInvalidateBufferData("glInvalidateBufferData"),
+    glInvalidateBufferSubData("glInvalidateBufferSubData"),
+    glInvalidateFramebuffer("glInvalidateFramebuffer"),
+    glInvalidateSubFramebuffer("glInvalidateSubFramebuffer"),
+    glInvalidateTexImage("glInvalidateTexImage"),
+    glInvalidateTexSubImage("glInvalidateTexSubImage"),
+    glIsAsyncMarkerSGIX("glIsAsyncMarkerSGIX"),
+    glIsBuffer("glIsBuffer"),
+    glIsBufferARB("glIsBufferARB"),
+    glIsBufferResidentNV("glIsBufferResidentNV"),
+    glIsEnabled("glIsEnabled"),
+    glIsEnabledIndexedEXT("glIsEnabledIndexedEXT"),
+    glIsEnabledi("glIsEnabledi"),
+    glIsFenceAPPLE("glIsFenceAPPLE"),
+    glIsFenceNV("glIsFenceNV"),
+    glIsFramebuffer("glIsFramebuffer"),
+    glIsFramebufferEXT("glIsFramebufferEXT"),
+    glIsImageHandleResidentARB("glIsImageHandleResidentARB"),
+    glIsImageHandleResidentNV("glIsImageHandleResidentNV"),
+    glIsList("glIsList"),
+    glIsNameAMD("glIsNameAMD"),
+    glIsNamedBufferResidentNV("glIsNamedBufferResidentNV"),
+    glIsNamedStringARB("glIsNamedStringARB"),
+    glIsObjectBufferATI("glIsObjectBufferATI"),
+    glIsOcclusionQueryNV("glIsOcclusionQueryNV"),
+    glIsPathNV("glIsPathNV"),
+    glIsPointInFillPathNV("glIsPointInFillPathNV"),
+    glIsPointInStrokePathNV("glIsPointInStrokePathNV"),
+    glIsProgram("glIsProgram"),
+    glIsProgramARB("glIsProgramARB"),
+    glIsProgramNV("glIsProgramNV"),
+    glIsProgramPipeline("glIsProgramPipeline"),
+    glIsQuery("glIsQuery"),
+    glIsQueryARB("glIsQueryARB"),
+    glIsRenderbuffer("glIsRenderbuffer"),
+    glIsRenderbufferEXT("glIsRenderbufferEXT"),
+    glIsSampler("glIsSampler"),
+    glIsShader("glIsShader"),
+    glIsSync("glIsSync"),
+    glIsTexture("glIsTexture"),
+    glIsTextureEXT("glIsTextureEXT"),
+    glIsTextureHandleResidentARB("glIsTextureHandleResidentARB"),
+    glIsTextureHandleResidentNV("glIsTextureHandleResidentNV"),
+    glIsTransformFeedback("glIsTransformFeedback"),
+    glIsTransformFeedbackNV("glIsTransformFeedbackNV"),
+    glIsVariantEnabledEXT("glIsVariantEnabledEXT"),
+    glIsVertexArray("glIsVertexArray"),
+    glIsVertexArrayAPPLE("glIsVertexArrayAPPLE"),
+    glIsVertexAttribEnabledAPPLE("glIsVertexAttribEnabledAPPLE"),
+    glLabelObjectEXT("glLabelObjectEXT"),
+    glLightEnviSGIX("glLightEnviSGIX"),
+    glLightModelf("glLightModelf"),
+    glLightModelfv("glLightModelfv"),
+    glLightModeli("glLightModeli"),
+    glLightModeliv("glLightModeliv"),
+    glLightModelxOES("glLightModelxOES"),
+    glLightModelxvOES("glLightModelxvOES"),
+    glLightf("glLightf"),
+    glLightfv("glLightfv"),
+    glLighti("glLighti"),
+    glLightiv("glLightiv"),
+    glLightxOES("glLightxOES"),
+    glLightxvOES("glLightxvOES"),
+    glLineStipple("glLineStipple"),
+    glLineWidth("glLineWidth"),
+    glLineWidthxOES("glLineWidthxOES"),
+    glLinkProgram("glLinkProgram"),
+    glLinkProgramARB("glLinkProgramARB"),
+    glListBase("glListBase"),
+    glListParameterfSGIX("glListParameterfSGIX"),
+    glListParameterfvSGIX("glListParameterfvSGIX"),
+    glListParameteriSGIX("glListParameteriSGIX"),
+    glListParameterivSGIX("glListParameterivSGIX"),
+    glLoadIdentity("glLoadIdentity"),
+    glLoadIdentityDeformationMapSGIX("glLoadIdentityDeformationMapSGIX"),
+    glLoadMatrixd("glLoadMatrixd"),
+    glLoadMatrixf("glLoadMatrixf"),
+    glLoadMatrixxOES("glLoadMatrixxOES"),
+    glLoadName("glLoadName"),
+    glLoadProgramNV("glLoadProgramNV"),
+    glLoadTransposeMatrixd("glLoadTransposeMatrixd"),
+    glLoadTransposeMatrixdARB("glLoadTransposeMatrixdARB"),
+    glLoadTransposeMatrixf("glLoadTransposeMatrixf"),
+    glLoadTransposeMatrixfARB("glLoadTransposeMatrixfARB"),
+    glLoadTransposeMatrixxOES("glLoadTransposeMatrixxOES"),
+    glLockArraysEXT("glLockArraysEXT"),
+    glLogicOp("glLogicOp"),
+    glMakeBufferNonResidentNV("glMakeBufferNonResidentNV"),
+    glMakeBufferResidentNV("glMakeBufferResidentNV"),
+    glMakeImageHandleNonResidentARB("glMakeImageHandleNonResidentARB"),
+    glMakeImageHandleNonResidentNV("glMakeImageHandleNonResidentNV"),
+    glMakeImageHandleResidentARB("glMakeImageHandleResidentARB"),
+    glMakeImageHandleResidentNV("glMakeImageHandleResidentNV"),
+    glMakeNamedBufferNonResidentNV("glMakeNamedBufferNonResidentNV"),
+    glMakeNamedBufferResidentNV("glMakeNamedBufferResidentNV"),
+    glMakeTextureHandleNonResidentARB("glMakeTextureHandleNonResidentARB"),
+    glMakeTextureHandleNonResidentNV("glMakeTextureHandleNonResidentNV"),
+    glMakeTextureHandleResidentARB("glMakeTextureHandleResidentARB"),
+    glMakeTextureHandleResidentNV("glMakeTextureHandleResidentNV"),
+    glMap1d("glMap1d"),
+    glMap1f("glMap1f"),
+    glMap1xOES("glMap1xOES"),
+    glMap2d("glMap2d"),
+    glMap2f("glMap2f"),
+    glMap2xOES("glMap2xOES"),
+    glMapBuffer("glMapBuffer"),
+    glMapBufferARB("glMapBufferARB"),
+    glMapBufferRange("glMapBufferRange"),
+    glMapControlPointsNV("glMapControlPointsNV"),
+    glMapGrid1d("glMapGrid1d"),
+    glMapGrid1f("glMapGrid1f"),
+    glMapGrid1xOES("glMapGrid1xOES"),
+    glMapGrid2d("glMapGrid2d"),
+    glMapGrid2f("glMapGrid2f"),
+    glMapGrid2xOES("glMapGrid2xOES"),
+    glMapNamedBufferEXT("glMapNamedBufferEXT"),
+    glMapNamedBufferRangeEXT("glMapNamedBufferRangeEXT"),
+    glMapObjectBufferATI("glMapObjectBufferATI"),
+    glMapParameterfvNV("glMapParameterfvNV"),
+    glMapParameterivNV("glMapParameterivNV"),
+    glMapTexture2DINTEL("glMapTexture2DINTEL"),
+    glMapVertexAttrib1dAPPLE("glMapVertexAttrib1dAPPLE"),
+    glMapVertexAttrib1fAPPLE("glMapVertexAttrib1fAPPLE"),
+    glMapVertexAttrib2dAPPLE("glMapVertexAttrib2dAPPLE"),
+    glMapVertexAttrib2fAPPLE("glMapVertexAttrib2fAPPLE"),
+    glMaterialf("glMaterialf"),
+    glMaterialfv("glMaterialfv"),
+    glMateriali("glMateriali"),
+    glMaterialiv("glMaterialiv"),
+    glMaterialxOES("glMaterialxOES"),
+    glMaterialxvOES("glMaterialxvOES"),
+    glMatrixFrustumEXT("glMatrixFrustumEXT"),
+    glMatrixIndexPointerARB("glMatrixIndexPointerARB"),
+    glMatrixIndexubvARB("glMatrixIndexubvARB"),
+    glMatrixIndexuivARB("glMatrixIndexuivARB"),
+    glMatrixIndexusvARB("glMatrixIndexusvARB"),
+    glMatrixLoadIdentityEXT("glMatrixLoadIdentityEXT"),
+    glMatrixLoadTransposedEXT("glMatrixLoadTransposedEXT"),
+    glMatrixLoadTransposefEXT("glMatrixLoadTransposefEXT"),
+    glMatrixLoaddEXT("glMatrixLoaddEXT"),
+    glMatrixLoadfEXT("glMatrixLoadfEXT"),
+    glMatrixMode("glMatrixMode"),
+    glMatrixMultTransposedEXT("glMatrixMultTransposedEXT"),
+    glMatrixMultTransposefEXT("glMatrixMultTransposefEXT"),
+    glMatrixMultdEXT("glMatrixMultdEXT"),
+    glMatrixMultfEXT("glMatrixMultfEXT"),
+    glMatrixOrthoEXT("glMatrixOrthoEXT"),
+    glMatrixPopEXT("glMatrixPopEXT"),
+    glMatrixPushEXT("glMatrixPushEXT"),
+    glMatrixRotatedEXT("glMatrixRotatedEXT"),
+    glMatrixRotatefEXT("glMatrixRotatefEXT"),
+    glMatrixScaledEXT("glMatrixScaledEXT"),
+    glMatrixScalefEXT("glMatrixScalefEXT"),
+    glMatrixTranslatedEXT("glMatrixTranslatedEXT"),
+    glMatrixTranslatefEXT("glMatrixTranslatefEXT"),
+    glMemoryBarrier("glMemoryBarrier"),
+    glMemoryBarrierEXT("glMemoryBarrierEXT"),
+    glMinSampleShading("glMinSampleShading"),
+    glMinSampleShadingARB("glMinSampleShadingARB"),
+    glMinmax("glMinmax"),
+    glMinmaxEXT("glMinmaxEXT"),
+    glMultMatrixd("glMultMatrixd"),
+    glMultMatrixf("glMultMatrixf"),
+    glMultMatrixxOES("glMultMatrixxOES"),
+    glMultTransposeMatrixd("glMultTransposeMatrixd"),
+    glMultTransposeMatrixdARB("glMultTransposeMatrixdARB"),
+    glMultTransposeMatrixf("glMultTransposeMatrixf"),
+    glMultTransposeMatrixfARB("glMultTransposeMatrixfARB"),
+    glMultTransposeMatrixxOES("glMultTransposeMatrixxOES"),
+    glMultiDrawArrays("glMultiDrawArrays"),
+    glMultiDrawArraysEXT("glMultiDrawArraysEXT"),
+    glMultiDrawArraysIndirect("glMultiDrawArraysIndirect"),
+    glMultiDrawArraysIndirectAMD("glMultiDrawArraysIndirectAMD"),
+    glMultiDrawArraysIndirectBindlessNV("glMultiDrawArraysIndirectBindlessNV"),
+    glMultiDrawArraysIndirectCountARB("glMultiDrawArraysIndirectCountARB"),
+    glMultiDrawElementArrayAPPLE("glMultiDrawElementArrayAPPLE"),
+    glMultiDrawElements("glMultiDrawElements"),
+    glMultiDrawElementsBaseVertex("glMultiDrawElementsBaseVertex"),
+    glMultiDrawElementsEXT("glMultiDrawElementsEXT"),
+    glMultiDrawElementsIndirect("glMultiDrawElementsIndirect"),
+    glMultiDrawElementsIndirectAMD("glMultiDrawElementsIndirectAMD"),
+    glMultiDrawElementsIndirectBindlessNV("glMultiDrawElementsIndirectBindlessNV"),
+    glMultiDrawElementsIndirectCountARB("glMultiDrawElementsIndirectCountARB"),
+    glMultiDrawRangeElementArrayAPPLE("glMultiDrawRangeElementArrayAPPLE"),
+    glMultiModeDrawArraysIBM("glMultiModeDrawArraysIBM"),
+    glMultiModeDrawElementsIBM("glMultiModeDrawElementsIBM"),
+    glMultiTexBufferEXT("glMultiTexBufferEXT"),
+    glMultiTexCoord1bOES("glMultiTexCoord1bOES"),
+    glMultiTexCoord1bvOES("glMultiTexCoord1bvOES"),
+    glMultiTexCoord1d("glMultiTexCoord1d"),
+    glMultiTexCoord1dARB("glMultiTexCoord1dARB"),
+    glMultiTexCoord1dv("glMultiTexCoord1dv"),
+    glMultiTexCoord1dvARB("glMultiTexCoord1dvARB"),
+    glMultiTexCoord1f("glMultiTexCoord1f"),
+    glMultiTexCoord1fARB("glMultiTexCoord1fARB"),
+    glMultiTexCoord1fv("glMultiTexCoord1fv"),
+    glMultiTexCoord1fvARB("glMultiTexCoord1fvARB"),
+    glMultiTexCoord1hNV("glMultiTexCoord1hNV"),
+    glMultiTexCoord1hvNV("glMultiTexCoord1hvNV"),
+    glMultiTexCoord1i("glMultiTexCoord1i"),
+    glMultiTexCoord1iARB("glMultiTexCoord1iARB"),
+    glMultiTexCoord1iv("glMultiTexCoord1iv"),
+    glMultiTexCoord1ivARB("glMultiTexCoord1ivARB"),
+    glMultiTexCoord1s("glMultiTexCoord1s"),
+    glMultiTexCoord1sARB("glMultiTexCoord1sARB"),
+    glMultiTexCoord1sv("glMultiTexCoord1sv"),
+    glMultiTexCoord1svARB("glMultiTexCoord1svARB"),
+    glMultiTexCoord1xOES("glMultiTexCoord1xOES"),
+    glMultiTexCoord1xvOES("glMultiTexCoord1xvOES"),
+    glMultiTexCoord2bOES("glMultiTexCoord2bOES"),
+    glMultiTexCoord2bvOES("glMultiTexCoord2bvOES"),
+    glMultiTexCoord2d("glMultiTexCoord2d"),
+    glMultiTexCoord2dARB("glMultiTexCoord2dARB"),
+    glMultiTexCoord2dv("glMultiTexCoord2dv"),
+    glMultiTexCoord2dvARB("glMultiTexCoord2dvARB"),
+    glMultiTexCoord2f("glMultiTexCoord2f"),
+    glMultiTexCoord2fARB("glMultiTexCoord2fARB"),
+    glMultiTexCoord2fv("glMultiTexCoord2fv"),
+    glMultiTexCoord2fvARB("glMultiTexCoord2fvARB"),
+    glMultiTexCoord2hNV("glMultiTexCoord2hNV"),
+    glMultiTexCoord2hvNV("glMultiTexCoord2hvNV"),
+    glMultiTexCoord2i("glMultiTexCoord2i"),
+    glMultiTexCoord2iARB("glMultiTexCoord2iARB"),
+    glMultiTexCoord2iv("glMultiTexCoord2iv"),
+    glMultiTexCoord2ivARB("glMultiTexCoord2ivARB"),
+    glMultiTexCoord2s("glMultiTexCoord2s"),
+    glMultiTexCoord2sARB("glMultiTexCoord2sARB"),
+    glMultiTexCoord2sv("glMultiTexCoord2sv"),
+    glMultiTexCoord2svARB("glMultiTexCoord2svARB"),
+    glMultiTexCoord2xOES("glMultiTexCoord2xOES"),
+    glMultiTexCoord2xvOES("glMultiTexCoord2xvOES"),
+    glMultiTexCoord3bOES("glMultiTexCoord3bOES"),
+    glMultiTexCoord3bvOES("glMultiTexCoord3bvOES"),
+    glMultiTexCoord3d("glMultiTexCoord3d"),
+    glMultiTexCoord3dARB("glMultiTexCoord3dARB"),
+    glMultiTexCoord3dv("glMultiTexCoord3dv"),
+    glMultiTexCoord3dvARB("glMultiTexCoord3dvARB"),
+    glMultiTexCoord3f("glMultiTexCoord3f"),
+    glMultiTexCoord3fARB("glMultiTexCoord3fARB"),
+    glMultiTexCoord3fv("glMultiTexCoord3fv"),
+    glMultiTexCoord3fvARB("glMultiTexCoord3fvARB"),
+    glMultiTexCoord3hNV("glMultiTexCoord3hNV"),
+    glMultiTexCoord3hvNV("glMultiTexCoord3hvNV"),
+    glMultiTexCoord3i("glMultiTexCoord3i"),
+    glMultiTexCoord3iARB("glMultiTexCoord3iARB"),
+    glMultiTexCoord3iv("glMultiTexCoord3iv"),
+    glMultiTexCoord3ivARB("glMultiTexCoord3ivARB"),
+    glMultiTexCoord3s("glMultiTexCoord3s"),
+    glMultiTexCoord3sARB("glMultiTexCoord3sARB"),
+    glMultiTexCoord3sv("glMultiTexCoord3sv"),
+    glMultiTexCoord3svARB("glMultiTexCoord3svARB"),
+    glMultiTexCoord3xOES("glMultiTexCoord3xOES"),
+    glMultiTexCoord3xvOES("glMultiTexCoord3xvOES"),
+    glMultiTexCoord4bOES("glMultiTexCoord4bOES"),
+    glMultiTexCoord4bvOES("glMultiTexCoord4bvOES"),
+    glMultiTexCoord4d("glMultiTexCoord4d"),
+    glMultiTexCoord4dARB("glMultiTexCoord4dARB"),
+    glMultiTexCoord4dv("glMultiTexCoord4dv"),
+    glMultiTexCoord4dvARB("glMultiTexCoord4dvARB"),
+    glMultiTexCoord4f("glMultiTexCoord4f"),
+    glMultiTexCoord4fARB("glMultiTexCoord4fARB"),
+    glMultiTexCoord4fv("glMultiTexCoord4fv"),
+    glMultiTexCoord4fvARB("glMultiTexCoord4fvARB"),
+    glMultiTexCoord4hNV("glMultiTexCoord4hNV"),
+    glMultiTexCoord4hvNV("glMultiTexCoord4hvNV"),
+    glMultiTexCoord4i("glMultiTexCoord4i"),
+    glMultiTexCoord4iARB("glMultiTexCoord4iARB"),
+    glMultiTexCoord4iv("glMultiTexCoord4iv"),
+    glMultiTexCoord4ivARB("glMultiTexCoord4ivARB"),
+    glMultiTexCoord4s("glMultiTexCoord4s"),
+    glMultiTexCoord4sARB("glMultiTexCoord4sARB"),
+    glMultiTexCoord4sv("glMultiTexCoord4sv"),
+    glMultiTexCoord4svARB("glMultiTexCoord4svARB"),
+    glMultiTexCoord4xOES("glMultiTexCoord4xOES"),
+    glMultiTexCoord4xvOES("glMultiTexCoord4xvOES"),
+    glMultiTexCoordP1ui("glMultiTexCoordP1ui"),
+    glMultiTexCoordP1uiv("glMultiTexCoordP1uiv"),
+    glMultiTexCoordP2ui("glMultiTexCoordP2ui"),
+    glMultiTexCoordP2uiv("glMultiTexCoordP2uiv"),
+    glMultiTexCoordP3ui("glMultiTexCoordP3ui"),
+    glMultiTexCoordP3uiv("glMultiTexCoordP3uiv"),
+    glMultiTexCoordP4ui("glMultiTexCoordP4ui"),
+    glMultiTexCoordP4uiv("glMultiTexCoordP4uiv"),
+    glMultiTexCoordPointerEXT("glMultiTexCoordPointerEXT"),
+    glMultiTexEnvfEXT("glMultiTexEnvfEXT"),
+    glMultiTexEnvfvEXT("glMultiTexEnvfvEXT"),
+    glMultiTexEnviEXT("glMultiTexEnviEXT"),
+    glMultiTexEnvivEXT("glMultiTexEnvivEXT"),
+    glMultiTexGendEXT("glMultiTexGendEXT"),
+    glMultiTexGendvEXT("glMultiTexGendvEXT"),
+    glMultiTexGenfEXT("glMultiTexGenfEXT"),
+    glMultiTexGenfvEXT("glMultiTexGenfvEXT"),
+    glMultiTexGeniEXT("glMultiTexGeniEXT"),
+    glMultiTexGenivEXT("glMultiTexGenivEXT"),
+    glMultiTexImage1DEXT("glMultiTexImage1DEXT"),
+    glMultiTexImage2DEXT("glMultiTexImage2DEXT"),
+    glMultiTexImage3DEXT("glMultiTexImage3DEXT"),
+    glMultiTexParameterIivEXT("glMultiTexParameterIivEXT"),
+    glMultiTexParameterIuivEXT("glMultiTexParameterIuivEXT"),
+    glMultiTexParameterfEXT("glMultiTexParameterfEXT"),
+    glMultiTexParameterfvEXT("glMultiTexParameterfvEXT"),
+    glMultiTexParameteriEXT("glMultiTexParameteriEXT"),
+    glMultiTexParameterivEXT("glMultiTexParameterivEXT"),
+    glMultiTexRenderbufferEXT("glMultiTexRenderbufferEXT"),
+    glMultiTexSubImage1DEXT("glMultiTexSubImage1DEXT"),
+    glMultiTexSubImage2DEXT("glMultiTexSubImage2DEXT"),
+    glMultiTexSubImage3DEXT("glMultiTexSubImage3DEXT"),
+    glNamedBufferDataEXT("glNamedBufferDataEXT"),
+    glNamedBufferStorageEXT("glNamedBufferStorageEXT"),
+    glNamedBufferSubDataEXT("glNamedBufferSubDataEXT"),
+    glNamedCopyBufferSubDataEXT("glNamedCopyBufferSubDataEXT"),
+    glNamedFramebufferParameteriEXT("glNamedFramebufferParameteriEXT"),
+    glNamedFramebufferRenderbufferEXT("glNamedFramebufferRenderbufferEXT"),
+    glNamedFramebufferTexture1DEXT("glNamedFramebufferTexture1DEXT"),
+    glNamedFramebufferTexture2DEXT("glNamedFramebufferTexture2DEXT"),
+    glNamedFramebufferTexture3DEXT("glNamedFramebufferTexture3DEXT"),
+    glNamedFramebufferTextureEXT("glNamedFramebufferTextureEXT"),
+    glNamedFramebufferTextureFaceEXT("glNamedFramebufferTextureFaceEXT"),
+    glNamedFramebufferTextureLayerEXT("glNamedFramebufferTextureLayerEXT"),
+    glNamedProgramLocalParameter4dEXT("glNamedProgramLocalParameter4dEXT"),
+    glNamedProgramLocalParameter4dvEXT("glNamedProgramLocalParameter4dvEXT"),
+    glNamedProgramLocalParameter4fEXT("glNamedProgramLocalParameter4fEXT"),
+    glNamedProgramLocalParameter4fvEXT("glNamedProgramLocalParameter4fvEXT"),
+    glNamedProgramLocalParameterI4iEXT("glNamedProgramLocalParameterI4iEXT"),
+    glNamedProgramLocalParameterI4ivEXT("glNamedProgramLocalParameterI4ivEXT"),
+    glNamedProgramLocalParameterI4uiEXT("glNamedProgramLocalParameterI4uiEXT"),
+    glNamedProgramLocalParameterI4uivEXT("glNamedProgramLocalParameterI4uivEXT"),
+    glNamedProgramLocalParameters4fvEXT("glNamedProgramLocalParameters4fvEXT"),
+    glNamedProgramLocalParametersI4ivEXT("glNamedProgramLocalParametersI4ivEXT"),
+    glNamedProgramLocalParametersI4uivEXT("glNamedProgramLocalParametersI4uivEXT"),
+    glNamedProgramStringEXT("glNamedProgramStringEXT"),
+    glNamedRenderbufferStorageEXT("glNamedRenderbufferStorageEXT"),
+    glNamedRenderbufferStorageMultisampleCoverageEXT("glNamedRenderbufferStorageMultisampleCoverageEXT"),
+    glNamedRenderbufferStorageMultisampleEXT("glNamedRenderbufferStorageMultisampleEXT"),
+    glNamedStringARB("glNamedStringARB"),
+    glNewList("glNewList"),
+    glNewObjectBufferATI("glNewObjectBufferATI"),
+    glNormal3b("glNormal3b"),
+    glNormal3bv("glNormal3bv"),
+    glNormal3d("glNormal3d"),
+    glNormal3dv("glNormal3dv"),
+    glNormal3f("glNormal3f"),
+    glNormal3fVertex3fSUN("glNormal3fVertex3fSUN"),
+    glNormal3fVertex3fvSUN("glNormal3fVertex3fvSUN"),
+    glNormal3fv("glNormal3fv"),
+    glNormal3hNV("glNormal3hNV"),
+    glNormal3hvNV("glNormal3hvNV"),
+    glNormal3i("glNormal3i"),
+    glNormal3iv("glNormal3iv"),
+    glNormal3s("glNormal3s"),
+    glNormal3sv("glNormal3sv"),
+    glNormal3xOES("glNormal3xOES"),
+    glNormal3xvOES("glNormal3xvOES"),
+    glNormalFormatNV("glNormalFormatNV"),
+    glNormalP3ui("glNormalP3ui"),
+    glNormalP3uiv("glNormalP3uiv"),
+    glNormalPointer("glNormalPointer"),
+    glNormalPointerEXT("glNormalPointerEXT"),
+    glNormalPointerListIBM("glNormalPointerListIBM"),
+    glNormalPointervINTEL("glNormalPointervINTEL"),
+    glNormalStream3bATI("glNormalStream3bATI"),
+    glNormalStream3bvATI("glNormalStream3bvATI"),
+    glNormalStream3dATI("glNormalStream3dATI"),
+    glNormalStream3dvATI("glNormalStream3dvATI"),
+    glNormalStream3fATI("glNormalStream3fATI"),
+    glNormalStream3fvATI("glNormalStream3fvATI"),
+    glNormalStream3iATI("glNormalStream3iATI"),
+    glNormalStream3ivATI("glNormalStream3ivATI"),
+    glNormalStream3sATI("glNormalStream3sATI"),
+    glNormalStream3svATI("glNormalStream3svATI"),
+    glObjectLabel("glObjectLabel"),
+    glObjectPtrLabel("glObjectPtrLabel"),
+    glObjectPurgeableAPPLE("glObjectPurgeableAPPLE"),
+    glObjectUnpurgeableAPPLE("glObjectUnpurgeableAPPLE"),
+    glOrtho("glOrtho"),
+    glOrthofOES("glOrthofOES"),
+    glOrthoxOES("glOrthoxOES"),
+    glPNTrianglesfATI("glPNTrianglesfATI"),
+    glPNTrianglesiATI("glPNTrianglesiATI"),
+    glPassTexCoordATI("glPassTexCoordATI"),
+    glPassThrough("glPassThrough"),
+    glPassThroughxOES("glPassThroughxOES"),
+    glPatchParameterfv("glPatchParameterfv"),
+    glPatchParameteri("glPatchParameteri"),
+    glPathColorGenNV("glPathColorGenNV"),
+    glPathCommandsNV("glPathCommandsNV"),
+    glPathCoordsNV("glPathCoordsNV"),
+    glPathCoverDepthFuncNV("glPathCoverDepthFuncNV"),
+    glPathDashArrayNV("glPathDashArrayNV"),
+    glPathFogGenNV("glPathFogGenNV"),
+    glPathGlyphRangeNV("glPathGlyphRangeNV"),
+    glPathGlyphsNV("glPathGlyphsNV"),
+    glPathParameterfNV("glPathParameterfNV"),
+    glPathParameterfvNV("glPathParameterfvNV"),
+    glPathParameteriNV("glPathParameteriNV"),
+    glPathParameterivNV("glPathParameterivNV"),
+    glPathStencilDepthOffsetNV("glPathStencilDepthOffsetNV"),
+    glPathStencilFuncNV("glPathStencilFuncNV"),
+    glPathStringNV("glPathStringNV"),
+    glPathSubCommandsNV("glPathSubCommandsNV"),
+    glPathSubCoordsNV("glPathSubCoordsNV"),
+    glPathTexGenNV("glPathTexGenNV"),
+    glPauseTransformFeedback("glPauseTransformFeedback"),
+    glPauseTransformFeedbackNV("glPauseTransformFeedbackNV"),
+    glPixelDataRangeNV("glPixelDataRangeNV"),
+    glPixelMapfv("glPixelMapfv"),
+    glPixelMapuiv("glPixelMapuiv"),
+    glPixelMapusv("glPixelMapusv"),
+    glPixelMapx("glPixelMapx"),
+    glPixelStoref("glPixelStoref"),
+    glPixelStorei("glPixelStorei"),
+    glPixelStorex("glPixelStorex"),
+    glPixelTexGenParameterfSGIS("glPixelTexGenParameterfSGIS"),
+    glPixelTexGenParameterfvSGIS("glPixelTexGenParameterfvSGIS"),
+    glPixelTexGenParameteriSGIS("glPixelTexGenParameteriSGIS"),
+    glPixelTexGenParameterivSGIS("glPixelTexGenParameterivSGIS"),
+    glPixelTexGenSGIX("glPixelTexGenSGIX"),
+    glPixelTransferf("glPixelTransferf"),
+    glPixelTransferi("glPixelTransferi"),
+    glPixelTransferxOES("glPixelTransferxOES"),
+    glPixelTransformParameterfEXT("glPixelTransformParameterfEXT"),
+    glPixelTransformParameterfvEXT("glPixelTransformParameterfvEXT"),
+    glPixelTransformParameteriEXT("glPixelTransformParameteriEXT"),
+    glPixelTransformParameterivEXT("glPixelTransformParameterivEXT"),
+    glPixelZoom("glPixelZoom"),
+    glPixelZoomxOES("glPixelZoomxOES"),
+    glPointAlongPathNV("glPointAlongPathNV"),
+    glPointParameterf("glPointParameterf"),
+    glPointParameterfARB("glPointParameterfARB"),
+    glPointParameterfEXT("glPointParameterfEXT"),
+    glPointParameterfSGIS("glPointParameterfSGIS"),
+    glPointParameterfv("glPointParameterfv"),
+    glPointParameterfvARB("glPointParameterfvARB"),
+    glPointParameterfvEXT("glPointParameterfvEXT"),
+    glPointParameterfvSGIS("glPointParameterfvSGIS"),
+    glPointParameteri("glPointParameteri"),
+    glPointParameteriNV("glPointParameteriNV"),
+    glPointParameteriv("glPointParameteriv"),
+    glPointParameterivNV("glPointParameterivNV"),
+    glPointParameterxvOES("glPointParameterxvOES"),
+    glPointSize("glPointSize"),
+    glPointSizexOES("glPointSizexOES"),
+    glPollAsyncSGIX("glPollAsyncSGIX"),
+    glPollInstrumentsSGIX("glPollInstrumentsSGIX"),
+    glPolygonMode("glPolygonMode"),
+    glPolygonOffset("glPolygonOffset"),
+    glPolygonOffsetEXT("glPolygonOffsetEXT"),
+    glPolygonOffsetxOES("glPolygonOffsetxOES"),
+    glPolygonStipple("glPolygonStipple"),
+    glPopAttrib("glPopAttrib"),
+    glPopClientAttrib("glPopClientAttrib"),
+    glPopDebugGroup("glPopDebugGroup"),
+    glPopGroupMarkerEXT("glPopGroupMarkerEXT"),
+    glPopMatrix("glPopMatrix"),
+    glPopName("glPopName"),
+    glPresentFrameDualFillNV("glPresentFrameDualFillNV"),
+    glPresentFrameKeyedNV("glPresentFrameKeyedNV"),
+    glPrimitiveRestartIndex("glPrimitiveRestartIndex"),
+    glPrimitiveRestartIndexNV("glPrimitiveRestartIndexNV"),
+    glPrimitiveRestartNV("glPrimitiveRestartNV"),
+    glPrioritizeTextures("glPrioritizeTextures"),
+    glPrioritizeTexturesEXT("glPrioritizeTexturesEXT"),
+    glPrioritizeTexturesxOES("glPrioritizeTexturesxOES"),
+    glProgramBinary("glProgramBinary"),
+    glProgramBufferParametersIivNV("glProgramBufferParametersIivNV"),
+    glProgramBufferParametersIuivNV("glProgramBufferParametersIuivNV"),
+    glProgramBufferParametersfvNV("glProgramBufferParametersfvNV"),
+    glProgramEnvParameter4dARB("glProgramEnvParameter4dARB"),
+    glProgramEnvParameter4dvARB("glProgramEnvParameter4dvARB"),
+    glProgramEnvParameter4fARB("glProgramEnvParameter4fARB"),
+    glProgramEnvParameter4fvARB("glProgramEnvParameter4fvARB"),
+    glProgramEnvParameterI4iNV("glProgramEnvParameterI4iNV"),
+    glProgramEnvParameterI4ivNV("glProgramEnvParameterI4ivNV"),
+    glProgramEnvParameterI4uiNV("glProgramEnvParameterI4uiNV"),
+    glProgramEnvParameterI4uivNV("glProgramEnvParameterI4uivNV"),
+    glProgramEnvParameters4fvEXT("glProgramEnvParameters4fvEXT"),
+    glProgramEnvParametersI4ivNV("glProgramEnvParametersI4ivNV"),
+    glProgramEnvParametersI4uivNV("glProgramEnvParametersI4uivNV"),
+    glProgramLocalParameter4dARB("glProgramLocalParameter4dARB"),
+    glProgramLocalParameter4dvARB("glProgramLocalParameter4dvARB"),
+    glProgramLocalParameter4fARB("glProgramLocalParameter4fARB"),
+    glProgramLocalParameter4fvARB("glProgramLocalParameter4fvARB"),
+    glProgramLocalParameterI4iNV("glProgramLocalParameterI4iNV"),
+    glProgramLocalParameterI4ivNV("glProgramLocalParameterI4ivNV"),
+    glProgramLocalParameterI4uiNV("glProgramLocalParameterI4uiNV"),
+    glProgramLocalParameterI4uivNV("glProgramLocalParameterI4uivNV"),
+    glProgramLocalParameters4fvEXT("glProgramLocalParameters4fvEXT"),
+    glProgramLocalParametersI4ivNV("glProgramLocalParametersI4ivNV"),
+    glProgramLocalParametersI4uivNV("glProgramLocalParametersI4uivNV"),
+    glProgramNamedParameter4dNV("glProgramNamedParameter4dNV"),
+    glProgramNamedParameter4dvNV("glProgramNamedParameter4dvNV"),
+    glProgramNamedParameter4fNV("glProgramNamedParameter4fNV"),
+    glProgramNamedParameter4fvNV("glProgramNamedParameter4fvNV"),
+    glProgramParameter4dNV("glProgramParameter4dNV"),
+    glProgramParameter4dvNV("glProgramParameter4dvNV"),
+    glProgramParameter4fNV("glProgramParameter4fNV"),
+    glProgramParameter4fvNV("glProgramParameter4fvNV"),
+    glProgramParameteri("glProgramParameteri"),
+    glProgramParameteriARB("glProgramParameteriARB"),
+    glProgramParameteriEXT("glProgramParameteriEXT"),
+    glProgramParameters4dvNV("glProgramParameters4dvNV"),
+    glProgramParameters4fvNV("glProgramParameters4fvNV"),
+    glProgramStringARB("glProgramStringARB"),
+    glProgramSubroutineParametersuivNV("glProgramSubroutineParametersuivNV"),
+    glProgramUniform1d("glProgramUniform1d"),
+    glProgramUniform1dEXT("glProgramUniform1dEXT"),
+    glProgramUniform1dv("glProgramUniform1dv"),
+    glProgramUniform1dvEXT("glProgramUniform1dvEXT"),
+    glProgramUniform1f("glProgramUniform1f"),
+    glProgramUniform1fEXT("glProgramUniform1fEXT"),
+    glProgramUniform1fv("glProgramUniform1fv"),
+    glProgramUniform1fvEXT("glProgramUniform1fvEXT"),
+    glProgramUniform1i("glProgramUniform1i"),
+    glProgramUniform1i64NV("glProgramUniform1i64NV"),
+    glProgramUniform1i64vNV("glProgramUniform1i64vNV"),
+    glProgramUniform1iEXT("glProgramUniform1iEXT"),
+    glProgramUniform1iv("glProgramUniform1iv"),
+    glProgramUniform1ivEXT("glProgramUniform1ivEXT"),
+    glProgramUniform1ui("glProgramUniform1ui"),
+    glProgramUniform1ui64NV("glProgramUniform1ui64NV"),
+    glProgramUniform1ui64vNV("glProgramUniform1ui64vNV"),
+    glProgramUniform1uiEXT("glProgramUniform1uiEXT"),
+    glProgramUniform1uiv("glProgramUniform1uiv"),
+    glProgramUniform1uivEXT("glProgramUniform1uivEXT"),
+    glProgramUniform2d("glProgramUniform2d"),
+    glProgramUniform2dEXT("glProgramUniform2dEXT"),
+    glProgramUniform2dv("glProgramUniform2dv"),
+    glProgramUniform2dvEXT("glProgramUniform2dvEXT"),
+    glProgramUniform2f("glProgramUniform2f"),
+    glProgramUniform2fEXT("glProgramUniform2fEXT"),
+    glProgramUniform2fv("glProgramUniform2fv"),
+    glProgramUniform2fvEXT("glProgramUniform2fvEXT"),
+    glProgramUniform2i("glProgramUniform2i"),
+    glProgramUniform2i64NV("glProgramUniform2i64NV"),
+    glProgramUniform2i64vNV("glProgramUniform2i64vNV"),
+    glProgramUniform2iEXT("glProgramUniform2iEXT"),
+    glProgramUniform2iv("glProgramUniform2iv"),
+    glProgramUniform2ivEXT("glProgramUniform2ivEXT"),
+    glProgramUniform2ui("glProgramUniform2ui"),
+    glProgramUniform2ui64NV("glProgramUniform2ui64NV"),
+    glProgramUniform2ui64vNV("glProgramUniform2ui64vNV"),
+    glProgramUniform2uiEXT("glProgramUniform2uiEXT"),
+    glProgramUniform2uiv("glProgramUniform2uiv"),
+    glProgramUniform2uivEXT("glProgramUniform2uivEXT"),
+    glProgramUniform3d("glProgramUniform3d"),
+    glProgramUniform3dEXT("glProgramUniform3dEXT"),
+    glProgramUniform3dv("glProgramUniform3dv"),
+    glProgramUniform3dvEXT("glProgramUniform3dvEXT"),
+    glProgramUniform3f("glProgramUniform3f"),
+    glProgramUniform3fEXT("glProgramUniform3fEXT"),
+    glProgramUniform3fv("glProgramUniform3fv"),
+    glProgramUniform3fvEXT("glProgramUniform3fvEXT"),
+    glProgramUniform3i("glProgramUniform3i"),
+    glProgramUniform3i64NV("glProgramUniform3i64NV"),
+    glProgramUniform3i64vNV("glProgramUniform3i64vNV"),
+    glProgramUniform3iEXT("glProgramUniform3iEXT"),
+    glProgramUniform3iv("glProgramUniform3iv"),
+    glProgramUniform3ivEXT("glProgramUniform3ivEXT"),
+    glProgramUniform3ui("glProgramUniform3ui"),
+    glProgramUniform3ui64NV("glProgramUniform3ui64NV"),
+    glProgramUniform3ui64vNV("glProgramUniform3ui64vNV"),
+    glProgramUniform3uiEXT("glProgramUniform3uiEXT"),
+    glProgramUniform3uiv("glProgramUniform3uiv"),
+    glProgramUniform3uivEXT("glProgramUniform3uivEXT"),
+    glProgramUniform4d("glProgramUniform4d"),
+    glProgramUniform4dEXT("glProgramUniform4dEXT"),
+    glProgramUniform4dv("glProgramUniform4dv"),
+    glProgramUniform4dvEXT("glProgramUniform4dvEXT"),
+    glProgramUniform4f("glProgramUniform4f"),
+    glProgramUniform4fEXT("glProgramUniform4fEXT"),
+    glProgramUniform4fv("glProgramUniform4fv"),
+    glProgramUniform4fvEXT("glProgramUniform4fvEXT"),
+    glProgramUniform4i("glProgramUniform4i"),
+    glProgramUniform4i64NV("glProgramUniform4i64NV"),
+    glProgramUniform4i64vNV("glProgramUniform4i64vNV"),
+    glProgramUniform4iEXT("glProgramUniform4iEXT"),
+    glProgramUniform4iv("glProgramUniform4iv"),
+    glProgramUniform4ivEXT("glProgramUniform4ivEXT"),
+    glProgramUniform4ui("glProgramUniform4ui"),
+    glProgramUniform4ui64NV("glProgramUniform4ui64NV"),
+    glProgramUniform4ui64vNV("glProgramUniform4ui64vNV"),
+    glProgramUniform4uiEXT("glProgramUniform4uiEXT"),
+    glProgramUniform4uiv("glProgramUniform4uiv"),
+    glProgramUniform4uivEXT("glProgramUniform4uivEXT"),
+    glProgramUniformHandleui64ARB("glProgramUniformHandleui64ARB"),
+    glProgramUniformHandleui64NV("glProgramUniformHandleui64NV"),
+    glProgramUniformHandleui64vARB("glProgramUniformHandleui64vARB"),
+    glProgramUniformHandleui64vNV("glProgramUniformHandleui64vNV"),
+    glProgramUniformMatrix2dv("glProgramUniformMatrix2dv"),
+    glProgramUniformMatrix2dvEXT("glProgramUniformMatrix2dvEXT"),
+    glProgramUniformMatrix2fv("glProgramUniformMatrix2fv"),
+    glProgramUniformMatrix2fvEXT("glProgramUniformMatrix2fvEXT"),
+    glProgramUniformMatrix2x3dv("glProgramUniformMatrix2x3dv"),
+    glProgramUniformMatrix2x3dvEXT("glProgramUniformMatrix2x3dvEXT"),
+    glProgramUniformMatrix2x3fv("glProgramUniformMatrix2x3fv"),
+    glProgramUniformMatrix2x3fvEXT("glProgramUniformMatrix2x3fvEXT"),
+    glProgramUniformMatrix2x4dv("glProgramUniformMatrix2x4dv"),
+    glProgramUniformMatrix2x4dvEXT("glProgramUniformMatrix2x4dvEXT"),
+    glProgramUniformMatrix2x4fv("glProgramUniformMatrix2x4fv"),
+    glProgramUniformMatrix2x4fvEXT("glProgramUniformMatrix2x4fvEXT"),
+    glProgramUniformMatrix3dv("glProgramUniformMatrix3dv"),
+    glProgramUniformMatrix3dvEXT("glProgramUniformMatrix3dvEXT"),
+    glProgramUniformMatrix3fv("glProgramUniformMatrix3fv"),
+    glProgramUniformMatrix3fvEXT("glProgramUniformMatrix3fvEXT"),
+    glProgramUniformMatrix3x2dv("glProgramUniformMatrix3x2dv"),
+    glProgramUniformMatrix3x2dvEXT("glProgramUniformMatrix3x2dvEXT"),
+    glProgramUniformMatrix3x2fv("glProgramUniformMatrix3x2fv"),
+    glProgramUniformMatrix3x2fvEXT("glProgramUniformMatrix3x2fvEXT"),
+    glProgramUniformMatrix3x4dv("glProgramUniformMatrix3x4dv"),
+    glProgramUniformMatrix3x4dvEXT("glProgramUniformMatrix3x4dvEXT"),
+    glProgramUniformMatrix3x4fv("glProgramUniformMatrix3x4fv"),
+    glProgramUniformMatrix3x4fvEXT("glProgramUniformMatrix3x4fvEXT"),
+    glProgramUniformMatrix4dv("glProgramUniformMatrix4dv"),
+    glProgramUniformMatrix4dvEXT("glProgramUniformMatrix4dvEXT"),
+    glProgramUniformMatrix4fv("glProgramUniformMatrix4fv"),
+    glProgramUniformMatrix4fvEXT("glProgramUniformMatrix4fvEXT"),
+    glProgramUniformMatrix4x2dv("glProgramUniformMatrix4x2dv"),
+    glProgramUniformMatrix4x2dvEXT("glProgramUniformMatrix4x2dvEXT"),
+    glProgramUniformMatrix4x2fv("glProgramUniformMatrix4x2fv"),
+    glProgramUniformMatrix4x2fvEXT("glProgramUniformMatrix4x2fvEXT"),
+    glProgramUniformMatrix4x3dv("glProgramUniformMatrix4x3dv"),
+    glProgramUniformMatrix4x3dvEXT("glProgramUniformMatrix4x3dvEXT"),
+    glProgramUniformMatrix4x3fv("glProgramUniformMatrix4x3fv"),
+    glProgramUniformMatrix4x3fvEXT("glProgramUniformMatrix4x3fvEXT"),
+    glProgramUniformui64NV("glProgramUniformui64NV"),
+    glProgramUniformui64vNV("glProgramUniformui64vNV"),
+    glProgramVertexLimitNV("glProgramVertexLimitNV"),
+    glProvokingVertex("glProvokingVertex"),
+    glProvokingVertexEXT("glProvokingVertexEXT"),
+    glPushAttrib("glPushAttrib"),
+    glPushClientAttrib("glPushClientAttrib"),
+    glPushClientAttribDefaultEXT("glPushClientAttribDefaultEXT"),
+    glPushDebugGroup("glPushDebugGroup"),
+    glPushGroupMarkerEXT("glPushGroupMarkerEXT"),
+    glPushMatrix("glPushMatrix"),
+    glPushName("glPushName"),
+    glQueryCounter("glQueryCounter"),
+    glQueryMatrixxOES("glQueryMatrixxOES"),
+    glQueryObjectParameteruiAMD("glQueryObjectParameteruiAMD"),
+    glRasterPos2d("glRasterPos2d"),
+    glRasterPos2dv("glRasterPos2dv"),
+    glRasterPos2f("glRasterPos2f"),
+    glRasterPos2fv("glRasterPos2fv"),
+    glRasterPos2i("glRasterPos2i"),
+    glRasterPos2iv("glRasterPos2iv"),
+    glRasterPos2s("glRasterPos2s"),
+    glRasterPos2sv("glRasterPos2sv"),
+    glRasterPos2xOES("glRasterPos2xOES"),
+    glRasterPos2xvOES("glRasterPos2xvOES"),
+    glRasterPos3d("glRasterPos3d"),
+    glRasterPos3dv("glRasterPos3dv"),
+    glRasterPos3f("glRasterPos3f"),
+    glRasterPos3fv("glRasterPos3fv"),
+    glRasterPos3i("glRasterPos3i"),
+    glRasterPos3iv("glRasterPos3iv"),
+    glRasterPos3s("glRasterPos3s"),
+    glRasterPos3sv("glRasterPos3sv"),
+    glRasterPos3xOES("glRasterPos3xOES"),
+    glRasterPos3xvOES("glRasterPos3xvOES"),
+    glRasterPos4d("glRasterPos4d"),
+    glRasterPos4dv("glRasterPos4dv"),
+    glRasterPos4f("glRasterPos4f"),
+    glRasterPos4fv("glRasterPos4fv"),
+    glRasterPos4i("glRasterPos4i"),
+    glRasterPos4iv("glRasterPos4iv"),
+    glRasterPos4s("glRasterPos4s"),
+    glRasterPos4sv("glRasterPos4sv"),
+    glRasterPos4xOES("glRasterPos4xOES"),
+    glRasterPos4xvOES("glRasterPos4xvOES"),
+    glReadBuffer("glReadBuffer"),
+    glReadInstrumentsSGIX("glReadInstrumentsSGIX"),
+    glReadPixels("glReadPixels"),
+    glReadnPixelsARB("glReadnPixelsARB"),
+    glRectd("glRectd"),
+    glRectdv("glRectdv"),
+    glRectf("glRectf"),
+    glRectfv("glRectfv"),
+    glRecti("glRecti"),
+    glRectiv("glRectiv"),
+    glRects("glRects"),
+    glRectsv("glRectsv"),
+    glRectxOES("glRectxOES"),
+    glRectxvOES("glRectxvOES"),
+    glReferencePlaneSGIX("glReferencePlaneSGIX"),
+    glReleaseShaderCompiler("glReleaseShaderCompiler"),
+    glRenderMode("glRenderMode"),
+    glRenderbufferStorage("glRenderbufferStorage"),
+    glRenderbufferStorageEXT("glRenderbufferStorageEXT"),
+    glRenderbufferStorageMultisample("glRenderbufferStorageMultisample"),
+    glRenderbufferStorageMultisampleCoverageNV("glRenderbufferStorageMultisampleCoverageNV"),
+    glRenderbufferStorageMultisampleEXT("glRenderbufferStorageMultisampleEXT"),
+    glReplacementCodePointerSUN("glReplacementCodePointerSUN"),
+    glReplacementCodeubSUN("glReplacementCodeubSUN"),
+    glReplacementCodeubvSUN("glReplacementCodeubvSUN"),
+    glReplacementCodeuiColor3fVertex3fSUN("glReplacementCodeuiColor3fVertex3fSUN"),
+    glReplacementCodeuiColor3fVertex3fvSUN("glReplacementCodeuiColor3fVertex3fvSUN"),
+    glReplacementCodeuiColor4fNormal3fVertex3fSUN("glReplacementCodeuiColor4fNormal3fVertex3fSUN"),
+    glReplacementCodeuiColor4fNormal3fVertex3fvSUN("glReplacementCodeuiColor4fNormal3fVertex3fvSUN"),
+    glReplacementCodeuiColor4ubVertex3fSUN("glReplacementCodeuiColor4ubVertex3fSUN"),
+    glReplacementCodeuiColor4ubVertex3fvSUN("glReplacementCodeuiColor4ubVertex3fvSUN"),
+    glReplacementCodeuiNormal3fVertex3fSUN("glReplacementCodeuiNormal3fVertex3fSUN"),
+    glReplacementCodeuiNormal3fVertex3fvSUN("glReplacementCodeuiNormal3fVertex3fvSUN"),
+    glReplacementCodeuiSUN("glReplacementCodeuiSUN"),
+    glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN"),
+    glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN"),
+    glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN("glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN"),
+    glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN("glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN"),
+    glReplacementCodeuiTexCoord2fVertex3fSUN("glReplacementCodeuiTexCoord2fVertex3fSUN"),
+    glReplacementCodeuiTexCoord2fVertex3fvSUN("glReplacementCodeuiTexCoord2fVertex3fvSUN"),
+    glReplacementCodeuiVertex3fSUN("glReplacementCodeuiVertex3fSUN"),
+    glReplacementCodeuiVertex3fvSUN("glReplacementCodeuiVertex3fvSUN"),
+    glReplacementCodeuivSUN("glReplacementCodeuivSUN"),
+    glReplacementCodeusSUN("glReplacementCodeusSUN"),
+    glReplacementCodeusvSUN("glReplacementCodeusvSUN"),
+    glRequestResidentProgramsNV("glRequestResidentProgramsNV"),
+    glResetHistogram("glResetHistogram"),
+    glResetHistogramEXT("glResetHistogramEXT"),
+    glResetMinmax("glResetMinmax"),
+    glResetMinmaxEXT("glResetMinmaxEXT"),
+    glResizeBuffersMESA("glResizeBuffersMESA"),
+    glResumeTransformFeedback("glResumeTransformFeedback"),
+    glResumeTransformFeedbackNV("glResumeTransformFeedbackNV"),
+    glRotated("glRotated"),
+    glRotatef("glRotatef"),
+    glRotatexOES("glRotatexOES"),
+    glSampleCoverage("glSampleCoverage"),
+    glSampleCoverageARB("glSampleCoverageARB"),
+    glSampleCoverageOES("glSampleCoverageOES"),
+    glSampleMapATI("glSampleMapATI"),
+    glSampleMaskEXT("glSampleMaskEXT"),
+    glSampleMaskIndexedNV("glSampleMaskIndexedNV"),
+    glSampleMaskSGIS("glSampleMaskSGIS"),
+    glSampleMaski("glSampleMaski"),
+    glSamplePatternEXT("glSamplePatternEXT"),
+    glSamplePatternSGIS("glSamplePatternSGIS"),
+    glSamplerParameterIiv("glSamplerParameterIiv"),
+    glSamplerParameterIuiv("glSamplerParameterIuiv"),
+    glSamplerParameterf("glSamplerParameterf"),
+    glSamplerParameterfv("glSamplerParameterfv"),
+    glSamplerParameteri("glSamplerParameteri"),
+    glSamplerParameteriv("glSamplerParameteriv"),
+    glScaled("glScaled"),
+    glScalef("glScalef"),
+    glScalexOES("glScalexOES"),
+    glScissor("glScissor"),
+    glScissorArrayv("glScissorArrayv"),
+    glScissorIndexed("glScissorIndexed"),
+    glScissorIndexedv("glScissorIndexedv"),
+    glSecondaryColor3b("glSecondaryColor3b"),
+    glSecondaryColor3bEXT("glSecondaryColor3bEXT"),
+    glSecondaryColor3bv("glSecondaryColor3bv"),
+    glSecondaryColor3bvEXT("glSecondaryColor3bvEXT"),
+    glSecondaryColor3d("glSecondaryColor3d"),
+    glSecondaryColor3dEXT("glSecondaryColor3dEXT"),
+    glSecondaryColor3dv("glSecondaryColor3dv"),
+    glSecondaryColor3dvEXT("glSecondaryColor3dvEXT"),
+    glSecondaryColor3f("glSecondaryColor3f"),
+    glSecondaryColor3fEXT("glSecondaryColor3fEXT"),
+    glSecondaryColor3fv("glSecondaryColor3fv"),
+    glSecondaryColor3fvEXT("glSecondaryColor3fvEXT"),
+    glSecondaryColor3hNV("glSecondaryColor3hNV"),
+    glSecondaryColor3hvNV("glSecondaryColor3hvNV"),
+    glSecondaryColor3i("glSecondaryColor3i"),
+    glSecondaryColor3iEXT("glSecondaryColor3iEXT"),
+    glSecondaryColor3iv("glSecondaryColor3iv"),
+    glSecondaryColor3ivEXT("glSecondaryColor3ivEXT"),
+    glSecondaryColor3s("glSecondaryColor3s"),
+    glSecondaryColor3sEXT("glSecondaryColor3sEXT"),
+    glSecondaryColor3sv("glSecondaryColor3sv"),
+    glSecondaryColor3svEXT("glSecondaryColor3svEXT"),
+    glSecondaryColor3ub("glSecondaryColor3ub"),
+    glSecondaryColor3ubEXT("glSecondaryColor3ubEXT"),
+    glSecondaryColor3ubv("glSecondaryColor3ubv"),
+    glSecondaryColor3ubvEXT("glSecondaryColor3ubvEXT"),
+    glSecondaryColor3ui("glSecondaryColor3ui"),
+    glSecondaryColor3uiEXT("glSecondaryColor3uiEXT"),
+    glSecondaryColor3uiv("glSecondaryColor3uiv"),
+    glSecondaryColor3uivEXT("glSecondaryColor3uivEXT"),
+    glSecondaryColor3us("glSecondaryColor3us"),
+    glSecondaryColor3usEXT("glSecondaryColor3usEXT"),
+    glSecondaryColor3usv("glSecondaryColor3usv"),
+    glSecondaryColor3usvEXT("glSecondaryColor3usvEXT"),
+    glSecondaryColorFormatNV("glSecondaryColorFormatNV"),
+    glSecondaryColorP3ui("glSecondaryColorP3ui"),
+    glSecondaryColorP3uiv("glSecondaryColorP3uiv"),
+    glSecondaryColorPointer("glSecondaryColorPointer"),
+    glSecondaryColorPointerEXT("glSecondaryColorPointerEXT"),
+    glSecondaryColorPointerListIBM("glSecondaryColorPointerListIBM"),
+    glSelectBuffer("glSelectBuffer"),
+    glSelectPerfMonitorCountersAMD("glSelectPerfMonitorCountersAMD"),
+    glSeparableFilter2D("glSeparableFilter2D"),
+    glSeparableFilter2DEXT("glSeparableFilter2DEXT"),
+    glSetFenceAPPLE("glSetFenceAPPLE"),
+    glSetFenceNV("glSetFenceNV"),
+    glSetFragmentShaderConstantATI("glSetFragmentShaderConstantATI"),
+    glSetInvariantEXT("glSetInvariantEXT"),
+    glSetLocalConstantEXT("glSetLocalConstantEXT"),
+    glSetMultisamplefvAMD("glSetMultisamplefvAMD"),
+    glShadeModel("glShadeModel"),
+    glShaderBinary("glShaderBinary"),
+    glShaderOp1EXT("glShaderOp1EXT"),
+    glShaderOp2EXT("glShaderOp2EXT"),
+    glShaderOp3EXT("glShaderOp3EXT"),
+    glShaderSource("glShaderSource"),
+    glShaderSourceARB("glShaderSourceARB"),
+    glShaderStorageBlockBinding("glShaderStorageBlockBinding"),
+    glSharpenTexFuncSGIS("glSharpenTexFuncSGIS"),
+    glSpriteParameterfSGIX("glSpriteParameterfSGIX"),
+    glSpriteParameterfvSGIX("glSpriteParameterfvSGIX"),
+    glSpriteParameteriSGIX("glSpriteParameteriSGIX"),
+    glSpriteParameterivSGIX("glSpriteParameterivSGIX"),
+    glStartInstrumentsSGIX("glStartInstrumentsSGIX"),
+    glStencilClearTagEXT("glStencilClearTagEXT"),
+    glStencilFillPathInstancedNV("glStencilFillPathInstancedNV"),
+    glStencilFillPathNV("glStencilFillPathNV"),
+    glStencilFunc("glStencilFunc"),
+    glStencilFuncSeparate("glStencilFuncSeparate"),
+    glStencilFuncSeparateATI("glStencilFuncSeparateATI"),
+    glStencilMask("glStencilMask"),
+    glStencilMaskSeparate("glStencilMaskSeparate"),
+    glStencilOp("glStencilOp"),
+    glStencilOpSeparate("glStencilOpSeparate"),
+    glStencilOpSeparateATI("glStencilOpSeparateATI"),
+    glStencilOpValueAMD("glStencilOpValueAMD"),
+    glStencilStrokePathInstancedNV("glStencilStrokePathInstancedNV"),
+    glStencilStrokePathNV("glStencilStrokePathNV"),
+    glStopInstrumentsSGIX("glStopInstrumentsSGIX"),
+    glStringMarkerGREMEDY("glStringMarkerGREMEDY"),
+    glSwizzleEXT("glSwizzleEXT"),
+    glSyncTextureINTEL("glSyncTextureINTEL"),
+    glTagSampleBufferSGIX("glTagSampleBufferSGIX"),
+    glTangent3bEXT("glTangent3bEXT"),
+    glTangent3bvEXT("glTangent3bvEXT"),
+    glTangent3dEXT("glTangent3dEXT"),
+    glTangent3dvEXT("glTangent3dvEXT"),
+    glTangent3fEXT("glTangent3fEXT"),
+    glTangent3fvEXT("glTangent3fvEXT"),
+    glTangent3iEXT("glTangent3iEXT"),
+    glTangent3ivEXT("glTangent3ivEXT"),
+    glTangent3sEXT("glTangent3sEXT"),
+    glTangent3svEXT("glTangent3svEXT"),
+    glTangentPointerEXT("glTangentPointerEXT"),
+    glTbufferMask3DFX("glTbufferMask3DFX"),
+    glTessellationFactorAMD("glTessellationFactorAMD"),
+    glTessellationModeAMD("glTessellationModeAMD"),
+    glTestFenceAPPLE("glTestFenceAPPLE"),
+    glTestFenceNV("glTestFenceNV"),
+    glTestObjectAPPLE("glTestObjectAPPLE"),
+    glTexBuffer("glTexBuffer"),
+    glTexBufferARB("glTexBufferARB"),
+    glTexBufferEXT("glTexBufferEXT"),
+    glTexBufferRange("glTexBufferRange"),
+    glTexBumpParameterfvATI("glTexBumpParameterfvATI"),
+    glTexBumpParameterivATI("glTexBumpParameterivATI"),
+    glTexCoord1bOES("glTexCoord1bOES"),
+    glTexCoord1bvOES("glTexCoord1bvOES"),
+    glTexCoord1d("glTexCoord1d"),
+    glTexCoord1dv("glTexCoord1dv"),
+    glTexCoord1f("glTexCoord1f"),
+    glTexCoord1fv("glTexCoord1fv"),
+    glTexCoord1hNV("glTexCoord1hNV"),
+    glTexCoord1hvNV("glTexCoord1hvNV"),
+    glTexCoord1i("glTexCoord1i"),
+    glTexCoord1iv("glTexCoord1iv"),
+    glTexCoord1s("glTexCoord1s"),
+    glTexCoord1sv("glTexCoord1sv"),
+    glTexCoord1xOES("glTexCoord1xOES"),
+    glTexCoord1xvOES("glTexCoord1xvOES"),
+    glTexCoord2bOES("glTexCoord2bOES"),
+    glTexCoord2bvOES("glTexCoord2bvOES"),
+    glTexCoord2d("glTexCoord2d"),
+    glTexCoord2dv("glTexCoord2dv"),
+    glTexCoord2f("glTexCoord2f"),
+    glTexCoord2fColor3fVertex3fSUN("glTexCoord2fColor3fVertex3fSUN"),
+    glTexCoord2fColor3fVertex3fvSUN("glTexCoord2fColor3fVertex3fvSUN"),
+    glTexCoord2fColor4fNormal3fVertex3fSUN("glTexCoord2fColor4fNormal3fVertex3fSUN"),
+    glTexCoord2fColor4fNormal3fVertex3fvSUN("glTexCoord2fColor4fNormal3fVertex3fvSUN"),
+    glTexCoord2fColor4ubVertex3fSUN("glTexCoord2fColor4ubVertex3fSUN"),
+    glTexCoord2fColor4ubVertex3fvSUN("glTexCoord2fColor4ubVertex3fvSUN"),
+    glTexCoord2fNormal3fVertex3fSUN("glTexCoord2fNormal3fVertex3fSUN"),
+    glTexCoord2fNormal3fVertex3fvSUN("glTexCoord2fNormal3fVertex3fvSUN"),
+    glTexCoord2fVertex3fSUN("glTexCoord2fVertex3fSUN"),
+    glTexCoord2fVertex3fvSUN("glTexCoord2fVertex3fvSUN"),
+    glTexCoord2fv("glTexCoord2fv"),
+    glTexCoord2hNV("glTexCoord2hNV"),
+    glTexCoord2hvNV("glTexCoord2hvNV"),
+    glTexCoord2i("glTexCoord2i"),
+    glTexCoord2iv("glTexCoord2iv"),
+    glTexCoord2s("glTexCoord2s"),
+    glTexCoord2sv("glTexCoord2sv"),
+    glTexCoord2xOES("glTexCoord2xOES"),
+    glTexCoord2xvOES("glTexCoord2xvOES"),
+    glTexCoord3bOES("glTexCoord3bOES"),
+    glTexCoord3bvOES("glTexCoord3bvOES"),
+    glTexCoord3d("glTexCoord3d"),
+    glTexCoord3dv("glTexCoord3dv"),
+    glTexCoord3f("glTexCoord3f"),
+    glTexCoord3fv("glTexCoord3fv"),
+    glTexCoord3hNV("glTexCoord3hNV"),
+    glTexCoord3hvNV("glTexCoord3hvNV"),
+    glTexCoord3i("glTexCoord3i"),
+    glTexCoord3iv("glTexCoord3iv"),
+    glTexCoord3s("glTexCoord3s"),
+    glTexCoord3sv("glTexCoord3sv"),
+    glTexCoord3xOES("glTexCoord3xOES"),
+    glTexCoord3xvOES("glTexCoord3xvOES"),
+    glTexCoord4bOES("glTexCoord4bOES"),
+    glTexCoord4bvOES("glTexCoord4bvOES"),
+    glTexCoord4d("glTexCoord4d"),
+    glTexCoord4dv("glTexCoord4dv"),
+    glTexCoord4f("glTexCoord4f"),
+    glTexCoord4fColor4fNormal3fVertex4fSUN("glTexCoord4fColor4fNormal3fVertex4fSUN"),
+    glTexCoord4fColor4fNormal3fVertex4fvSUN("glTexCoord4fColor4fNormal3fVertex4fvSUN"),
+    glTexCoord4fVertex4fSUN("glTexCoord4fVertex4fSUN"),
+    glTexCoord4fVertex4fvSUN("glTexCoord4fVertex4fvSUN"),
+    glTexCoord4fv("glTexCoord4fv"),
+    glTexCoord4hNV("glTexCoord4hNV"),
+    glTexCoord4hvNV("glTexCoord4hvNV"),
+    glTexCoord4i("glTexCoord4i"),
+    glTexCoord4iv("glTexCoord4iv"),
+    glTexCoord4s("glTexCoord4s"),
+    glTexCoord4sv("glTexCoord4sv"),
+    glTexCoord4xOES("glTexCoord4xOES"),
+    glTexCoord4xvOES("glTexCoord4xvOES"),
+    glTexCoordFormatNV("glTexCoordFormatNV"),
+    glTexCoordP1ui("glTexCoordP1ui"),
+    glTexCoordP1uiv("glTexCoordP1uiv"),
+    glTexCoordP2ui("glTexCoordP2ui"),
+    glTexCoordP2uiv("glTexCoordP2uiv"),
+    glTexCoordP3ui("glTexCoordP3ui"),
+    glTexCoordP3uiv("glTexCoordP3uiv"),
+    glTexCoordP4ui("glTexCoordP4ui"),
+    glTexCoordP4uiv("glTexCoordP4uiv"),
+    glTexCoordPointer("glTexCoordPointer"),
+    glTexCoordPointerEXT("glTexCoordPointerEXT"),
+    glTexCoordPointerListIBM("glTexCoordPointerListIBM"),
+    glTexCoordPointervINTEL("glTexCoordPointervINTEL"),
+    glTexEnvf("glTexEnvf"),
+    glTexEnvfv("glTexEnvfv"),
+    glTexEnvi("glTexEnvi"),
+    glTexEnviv("glTexEnviv"),
+    glTexEnvxOES("glTexEnvxOES"),
+    glTexEnvxvOES("glTexEnvxvOES"),
+    glTexFilterFuncSGIS("glTexFilterFuncSGIS"),
+    glTexGend("glTexGend"),
+    glTexGendv("glTexGendv"),
+    glTexGenf("glTexGenf"),
+    glTexGenfv("glTexGenfv"),
+    glTexGeni("glTexGeni"),
+    glTexGeniv("glTexGeniv"),
+    glTexGenxOES("glTexGenxOES"),
+    glTexGenxvOES("glTexGenxvOES"),
+    glTexImage1D("glTexImage1D"),
+    glTexImage2D("glTexImage2D"),
+    glTexImage2DMultisample("glTexImage2DMultisample"),
+    glTexImage2DMultisampleCoverageNV("glTexImage2DMultisampleCoverageNV"),
+    glTexImage3D("glTexImage3D"),
+    glTexImage3DEXT("glTexImage3DEXT"),
+    glTexImage3DMultisample("glTexImage3DMultisample"),
+    glTexImage3DMultisampleCoverageNV("glTexImage3DMultisampleCoverageNV"),
+    glTexImage4DSGIS("glTexImage4DSGIS"),
+    glTexPageCommitmentARB("glTexPageCommitmentARB"),
+    glTexParameterIiv("glTexParameterIiv"),
+    glTexParameterIivEXT("glTexParameterIivEXT"),
+    glTexParameterIuiv("glTexParameterIuiv"),
+    glTexParameterIuivEXT("glTexParameterIuivEXT"),
+    glTexParameterf("glTexParameterf"),
+    glTexParameterfv("glTexParameterfv"),
+    glTexParameteri("glTexParameteri"),
+    glTexParameteriv("glTexParameteriv"),
+    glTexParameterxOES("glTexParameterxOES"),
+    glTexParameterxvOES("glTexParameterxvOES"),
+    glTexRenderbufferNV("glTexRenderbufferNV"),
+    glTexStorage1D("glTexStorage1D"),
+    glTexStorage2D("glTexStorage2D"),
+    glTexStorage2DMultisample("glTexStorage2DMultisample"),
+    glTexStorage3D("glTexStorage3D"),
+    glTexStorage3DMultisample("glTexStorage3DMultisample"),
+    glTexStorageSparseAMD("glTexStorageSparseAMD"),
+    glTexSubImage1D("glTexSubImage1D"),
+    glTexSubImage1DEXT("glTexSubImage1DEXT"),
+    glTexSubImage2D("glTexSubImage2D"),
+    glTexSubImage2DEXT("glTexSubImage2DEXT"),
+    glTexSubImage3D("glTexSubImage3D"),
+    glTexSubImage3DEXT("glTexSubImage3DEXT"),
+    glTexSubImage4DSGIS("glTexSubImage4DSGIS"),
+    glTextureBarrierNV("glTextureBarrierNV"),
+    glTextureBufferEXT("glTextureBufferEXT"),
+    glTextureBufferRangeEXT("glTextureBufferRangeEXT"),
+    glTextureColorMaskSGIS("glTextureColorMaskSGIS"),
+    glTextureImage1DEXT("glTextureImage1DEXT"),
+    glTextureImage2DEXT("glTextureImage2DEXT"),
+    glTextureImage2DMultisampleCoverageNV("glTextureImage2DMultisampleCoverageNV"),
+    glTextureImage2DMultisampleNV("glTextureImage2DMultisampleNV"),
+    glTextureImage3DEXT("glTextureImage3DEXT"),
+    glTextureImage3DMultisampleCoverageNV("glTextureImage3DMultisampleCoverageNV"),
+    glTextureImage3DMultisampleNV("glTextureImage3DMultisampleNV"),
+    glTextureLightEXT("glTextureLightEXT"),
+    glTextureMaterialEXT("glTextureMaterialEXT"),
+    glTextureNormalEXT("glTextureNormalEXT"),
+    glTexturePageCommitmentEXT("glTexturePageCommitmentEXT"),
+    glTextureParameterIivEXT("glTextureParameterIivEXT"),
+    glTextureParameterIuivEXT("glTextureParameterIuivEXT"),
+    glTextureParameterfEXT("glTextureParameterfEXT"),
+    glTextureParameterfvEXT("glTextureParameterfvEXT"),
+    glTextureParameteriEXT("glTextureParameteriEXT"),
+    glTextureParameterivEXT("glTextureParameterivEXT"),
+    glTextureRangeAPPLE("glTextureRangeAPPLE"),
+    glTextureRenderbufferEXT("glTextureRenderbufferEXT"),
+    glTextureStorage1DEXT("glTextureStorage1DEXT"),
+    glTextureStorage2DEXT("glTextureStorage2DEXT"),
+    glTextureStorage2DMultisampleEXT("glTextureStorage2DMultisampleEXT"),
+    glTextureStorage3DEXT("glTextureStorage3DEXT"),
+    glTextureStorage3DMultisampleEXT("glTextureStorage3DMultisampleEXT"),
+    glTextureStorageSparseAMD("glTextureStorageSparseAMD"),
+    glTextureSubImage1DEXT("glTextureSubImage1DEXT"),
+    glTextureSubImage2DEXT("glTextureSubImage2DEXT"),
+    glTextureSubImage3DEXT("glTextureSubImage3DEXT"),
+    glTextureView("glTextureView"),
+    glTrackMatrixNV("glTrackMatrixNV"),
+    glTransformFeedbackAttribsNV("glTransformFeedbackAttribsNV"),
+    glTransformFeedbackStreamAttribsNV("glTransformFeedbackStreamAttribsNV"),
+    glTransformFeedbackVaryings("glTransformFeedbackVaryings"),
+    glTransformFeedbackVaryingsEXT("glTransformFeedbackVaryingsEXT"),
+    glTransformFeedbackVaryingsNV("glTransformFeedbackVaryingsNV"),
+    glTransformPathNV("glTransformPathNV"),
+    glTranslated("glTranslated"),
+    glTranslatef("glTranslatef"),
+    glTranslatexOES("glTranslatexOES"),
+    glUniform1d("glUniform1d"),
+    glUniform1dv("glUniform1dv"),
+    glUniform1f("glUniform1f"),
+    glUniform1fARB("glUniform1fARB"),
+    glUniform1fv("glUniform1fv"),
+    glUniform1fvARB("glUniform1fvARB"),
+    glUniform1i("glUniform1i"),
+    glUniform1i64NV("glUniform1i64NV"),
+    glUniform1i64vNV("glUniform1i64vNV"),
+    glUniform1iARB("glUniform1iARB"),
+    glUniform1iv("glUniform1iv"),
+    glUniform1ivARB("glUniform1ivARB"),
+    glUniform1ui("glUniform1ui"),
+    glUniform1ui64NV("glUniform1ui64NV"),
+    glUniform1ui64vNV("glUniform1ui64vNV"),
+    glUniform1uiEXT("glUniform1uiEXT"),
+    glUniform1uiv("glUniform1uiv"),
+    glUniform1uivEXT("glUniform1uivEXT"),
+    glUniform2d("glUniform2d"),
+    glUniform2dv("glUniform2dv"),
+    glUniform2f("glUniform2f"),
+    glUniform2fARB("glUniform2fARB"),
+    glUniform2fv("glUniform2fv"),
+    glUniform2fvARB("glUniform2fvARB"),
+    glUniform2i("glUniform2i"),
+    glUniform2i64NV("glUniform2i64NV"),
+    glUniform2i64vNV("glUniform2i64vNV"),
+    glUniform2iARB("glUniform2iARB"),
+    glUniform2iv("glUniform2iv"),
+    glUniform2ivARB("glUniform2ivARB"),
+    glUniform2ui("glUniform2ui"),
+    glUniform2ui64NV("glUniform2ui64NV"),
+    glUniform2ui64vNV("glUniform2ui64vNV"),
+    glUniform2uiEXT("glUniform2uiEXT"),
+    glUniform2uiv("glUniform2uiv"),
+    glUniform2uivEXT("glUniform2uivEXT"),
+    glUniform3d("glUniform3d"),
+    glUniform3dv("glUniform3dv"),
+    glUniform3f("glUniform3f"),
+    glUniform3fARB("glUniform3fARB"),
+    glUniform3fv("glUniform3fv"),
+    glUniform3fvARB("glUniform3fvARB"),
+    glUniform3i("glUniform3i"),
+    glUniform3i64NV("glUniform3i64NV"),
+    glUniform3i64vNV("glUniform3i64vNV"),
+    glUniform3iARB("glUniform3iARB"),
+    glUniform3iv("glUniform3iv"),
+    glUniform3ivARB("glUniform3ivARB"),
+    glUniform3ui("glUniform3ui"),
+    glUniform3ui64NV("glUniform3ui64NV"),
+    glUniform3ui64vNV("glUniform3ui64vNV"),
+    glUniform3uiEXT("glUniform3uiEXT"),
+    glUniform3uiv("glUniform3uiv"),
+    glUniform3uivEXT("glUniform3uivEXT"),
+    glUniform4d("glUniform4d"),
+    glUniform4dv("glUniform4dv"),
+    glUniform4f("glUniform4f"),
+    glUniform4fARB("glUniform4fARB"),
+    glUniform4fv("glUniform4fv"),
+    glUniform4fvARB("glUniform4fvARB"),
+    glUniform4i("glUniform4i"),
+    glUniform4i64NV("glUniform4i64NV"),
+    glUniform4i64vNV("glUniform4i64vNV"),
+    glUniform4iARB("glUniform4iARB"),
+    glUniform4iv("glUniform4iv"),
+    glUniform4ivARB("glUniform4ivARB"),
+    glUniform4ui("glUniform4ui"),
+    glUniform4ui64NV("glUniform4ui64NV"),
+    glUniform4ui64vNV("glUniform4ui64vNV"),
+    glUniform4uiEXT("glUniform4uiEXT"),
+    glUniform4uiv("glUniform4uiv"),
+    glUniform4uivEXT("glUniform4uivEXT"),
+    glUniformBlockBinding("glUniformBlockBinding"),
+    glUniformBufferEXT("glUniformBufferEXT"),
+    glUniformHandleui64ARB("glUniformHandleui64ARB"),
+    glUniformHandleui64NV("glUniformHandleui64NV"),
+    glUniformHandleui64vARB("glUniformHandleui64vARB"),
+    glUniformHandleui64vNV("glUniformHandleui64vNV"),
+    glUniformMatrix2dv("glUniformMatrix2dv"),
+    glUniformMatrix2fv("glUniformMatrix2fv"),
+    glUniformMatrix2fvARB("glUniformMatrix2fvARB"),
+    glUniformMatrix2x3dv("glUniformMatrix2x3dv"),
+    glUniformMatrix2x3fv("glUniformMatrix2x3fv"),
+    glUniformMatrix2x4dv("glUniformMatrix2x4dv"),
+    glUniformMatrix2x4fv("glUniformMatrix2x4fv"),
+    glUniformMatrix3dv("glUniformMatrix3dv"),
+    glUniformMatrix3fv("glUniformMatrix3fv"),
+    glUniformMatrix3fvARB("glUniformMatrix3fvARB"),
+    glUniformMatrix3x2dv("glUniformMatrix3x2dv"),
+    glUniformMatrix3x2fv("glUniformMatrix3x2fv"),
+    glUniformMatrix3x4dv("glUniformMatrix3x4dv"),
+    glUniformMatrix3x4fv("glUniformMatrix3x4fv"),
+    glUniformMatrix4dv("glUniformMatrix4dv"),
+    glUniformMatrix4fv("glUniformMatrix4fv"),
+    glUniformMatrix4fvARB("glUniformMatrix4fvARB"),
+    glUniformMatrix4x2dv("glUniformMatrix4x2dv"),
+    glUniformMatrix4x2fv("glUniformMatrix4x2fv"),
+    glUniformMatrix4x3dv("glUniformMatrix4x3dv"),
+    glUniformMatrix4x3fv("glUniformMatrix4x3fv"),
+    glUniformSubroutinesuiv("glUniformSubroutinesuiv"),
+    glUniformui64NV("glUniformui64NV"),
+    glUniformui64vNV("glUniformui64vNV"),
+    glUnlockArraysEXT("glUnlockArraysEXT"),
+    glUnmapBuffer("glUnmapBuffer"),
+    glUnmapBufferARB("glUnmapBufferARB"),
+    glUnmapNamedBufferEXT("glUnmapNamedBufferEXT"),
+    glUnmapObjectBufferATI("glUnmapObjectBufferATI"),
+    glUnmapTexture2DINTEL("glUnmapTexture2DINTEL"),
+    glUpdateObjectBufferATI("glUpdateObjectBufferATI"),
+    glUseProgram("glUseProgram"),
+    glUseProgramObjectARB("glUseProgramObjectARB"),
+    glUseProgramStages("glUseProgramStages"),
+    glUseShaderProgramEXT("glUseShaderProgramEXT"),
+    glVDPAUFiniNV("glVDPAUFiniNV"),
+    glVDPAUGetSurfaceivNV("glVDPAUGetSurfaceivNV"),
+    glVDPAUInitNV("glVDPAUInitNV"),
+    glVDPAUIsSurfaceNV("glVDPAUIsSurfaceNV"),
+    glVDPAUMapSurfacesNV("glVDPAUMapSurfacesNV"),
+    glVDPAURegisterOutputSurfaceNV("glVDPAURegisterOutputSurfaceNV"),
+    glVDPAURegisterVideoSurfaceNV("glVDPAURegisterVideoSurfaceNV"),
+    glVDPAUSurfaceAccessNV("glVDPAUSurfaceAccessNV"),
+    glVDPAUUnmapSurfacesNV("glVDPAUUnmapSurfacesNV"),
+    glVDPAUUnregisterSurfaceNV("glVDPAUUnregisterSurfaceNV"),
+    glValidateProgram("glValidateProgram"),
+    glValidateProgramARB("glValidateProgramARB"),
+    glValidateProgramPipeline("glValidateProgramPipeline"),
+    glVariantArrayObjectATI("glVariantArrayObjectATI"),
+    glVariantPointerEXT("glVariantPointerEXT"),
+    glVariantbvEXT("glVariantbvEXT"),
+    glVariantdvEXT("glVariantdvEXT"),
+    glVariantfvEXT("glVariantfvEXT"),
+    glVariantivEXT("glVariantivEXT"),
+    glVariantsvEXT("glVariantsvEXT"),
+    glVariantubvEXT("glVariantubvEXT"),
+    glVariantuivEXT("glVariantuivEXT"),
+    glVariantusvEXT("glVariantusvEXT"),
+    glVertex2bOES("glVertex2bOES"),
+    glVertex2bvOES("glVertex2bvOES"),
+    glVertex2d("glVertex2d"),
+    glVertex2dv("glVertex2dv"),
+    glVertex2f("glVertex2f"),
+    glVertex2fv("glVertex2fv"),
+    glVertex2hNV("glVertex2hNV"),
+    glVertex2hvNV("glVertex2hvNV"),
+    glVertex2i("glVertex2i"),
+    glVertex2iv("glVertex2iv"),
+    glVertex2s("glVertex2s"),
+    glVertex2sv("glVertex2sv"),
+    glVertex2xOES("glVertex2xOES"),
+    glVertex2xvOES("glVertex2xvOES"),
+    glVertex3bOES("glVertex3bOES"),
+    glVertex3bvOES("glVertex3bvOES"),
+    glVertex3d("glVertex3d"),
+    glVertex3dv("glVertex3dv"),
+    glVertex3f("glVertex3f"),
+    glVertex3fv("glVertex3fv"),
+    glVertex3hNV("glVertex3hNV"),
+    glVertex3hvNV("glVertex3hvNV"),
+    glVertex3i("glVertex3i"),
+    glVertex3iv("glVertex3iv"),
+    glVertex3s("glVertex3s"),
+    glVertex3sv("glVertex3sv"),
+    glVertex3xOES("glVertex3xOES"),
+    glVertex3xvOES("glVertex3xvOES"),
+    glVertex4bOES("glVertex4bOES"),
+    glVertex4bvOES("glVertex4bvOES"),
+    glVertex4d("glVertex4d"),
+    glVertex4dv("glVertex4dv"),
+    glVertex4f("glVertex4f"),
+    glVertex4fv("glVertex4fv"),
+    glVertex4hNV("glVertex4hNV"),
+    glVertex4hvNV("glVertex4hvNV"),
+    glVertex4i("glVertex4i"),
+    glVertex4iv("glVertex4iv"),
+    glVertex4s("glVertex4s"),
+    glVertex4sv("glVertex4sv"),
+    glVertex4xOES("glVertex4xOES"),
+    glVertex4xvOES("glVertex4xvOES"),
+    glVertexArrayBindVertexBufferEXT("glVertexArrayBindVertexBufferEXT"),
+    glVertexArrayColorOffsetEXT("glVertexArrayColorOffsetEXT"),
+    glVertexArrayEdgeFlagOffsetEXT("glVertexArrayEdgeFlagOffsetEXT"),
+    glVertexArrayFogCoordOffsetEXT("glVertexArrayFogCoordOffsetEXT"),
+    glVertexArrayIndexOffsetEXT("glVertexArrayIndexOffsetEXT"),
+    glVertexArrayMultiTexCoordOffsetEXT("glVertexArrayMultiTexCoordOffsetEXT"),
+    glVertexArrayNormalOffsetEXT("glVertexArrayNormalOffsetEXT"),
+    glVertexArrayParameteriAPPLE("glVertexArrayParameteriAPPLE"),
+    glVertexArrayRangeAPPLE("glVertexArrayRangeAPPLE"),
+    glVertexArrayRangeNV("glVertexArrayRangeNV"),
+    glVertexArraySecondaryColorOffsetEXT("glVertexArraySecondaryColorOffsetEXT"),
+    glVertexArrayTexCoordOffsetEXT("glVertexArrayTexCoordOffsetEXT"),
+    glVertexArrayVertexAttribBindingEXT("glVertexArrayVertexAttribBindingEXT"),
+    glVertexArrayVertexAttribDivisorEXT("glVertexArrayVertexAttribDivisorEXT"),
+    glVertexArrayVertexAttribFormatEXT("glVertexArrayVertexAttribFormatEXT"),
+    glVertexArrayVertexAttribIFormatEXT("glVertexArrayVertexAttribIFormatEXT"),
+    glVertexArrayVertexAttribIOffsetEXT("glVertexArrayVertexAttribIOffsetEXT"),
+    glVertexArrayVertexAttribLFormatEXT("glVertexArrayVertexAttribLFormatEXT"),
+    glVertexArrayVertexAttribLOffsetEXT("glVertexArrayVertexAttribLOffsetEXT"),
+    glVertexArrayVertexAttribOffsetEXT("glVertexArrayVertexAttribOffsetEXT"),
+    glVertexArrayVertexBindingDivisorEXT("glVertexArrayVertexBindingDivisorEXT"),
+    glVertexArrayVertexOffsetEXT("glVertexArrayVertexOffsetEXT"),
+    glVertexAttrib1d("glVertexAttrib1d"),
+    glVertexAttrib1dARB("glVertexAttrib1dARB"),
+    glVertexAttrib1dNV("glVertexAttrib1dNV"),
+    glVertexAttrib1dv("glVertexAttrib1dv"),
+    glVertexAttrib1dvARB("glVertexAttrib1dvARB"),
+    glVertexAttrib1dvNV("glVertexAttrib1dvNV"),
+    glVertexAttrib1f("glVertexAttrib1f"),
+    glVertexAttrib1fARB("glVertexAttrib1fARB"),
+    glVertexAttrib1fNV("glVertexAttrib1fNV"),
+    glVertexAttrib1fv("glVertexAttrib1fv"),
+    glVertexAttrib1fvARB("glVertexAttrib1fvARB"),
+    glVertexAttrib1fvNV("glVertexAttrib1fvNV"),
+    glVertexAttrib1hNV("glVertexAttrib1hNV"),
+    glVertexAttrib1hvNV("glVertexAttrib1hvNV"),
+    glVertexAttrib1s("glVertexAttrib1s"),
+    glVertexAttrib1sARB("glVertexAttrib1sARB"),
+    glVertexAttrib1sNV("glVertexAttrib1sNV"),
+    glVertexAttrib1sv("glVertexAttrib1sv"),
+    glVertexAttrib1svARB("glVertexAttrib1svARB"),
+    glVertexAttrib1svNV("glVertexAttrib1svNV"),
+    glVertexAttrib2d("glVertexAttrib2d"),
+    glVertexAttrib2dARB("glVertexAttrib2dARB"),
+    glVertexAttrib2dNV("glVertexAttrib2dNV"),
+    glVertexAttrib2dv("glVertexAttrib2dv"),
+    glVertexAttrib2dvARB("glVertexAttrib2dvARB"),
+    glVertexAttrib2dvNV("glVertexAttrib2dvNV"),
+    glVertexAttrib2f("glVertexAttrib2f"),
+    glVertexAttrib2fARB("glVertexAttrib2fARB"),
+    glVertexAttrib2fNV("glVertexAttrib2fNV"),
+    glVertexAttrib2fv("glVertexAttrib2fv"),
+    glVertexAttrib2fvARB("glVertexAttrib2fvARB"),
+    glVertexAttrib2fvNV("glVertexAttrib2fvNV"),
+    glVertexAttrib2hNV("glVertexAttrib2hNV"),
+    glVertexAttrib2hvNV("glVertexAttrib2hvNV"),
+    glVertexAttrib2s("glVertexAttrib2s"),
+    glVertexAttrib2sARB("glVertexAttrib2sARB"),
+    glVertexAttrib2sNV("glVertexAttrib2sNV"),
+    glVertexAttrib2sv("glVertexAttrib2sv"),
+    glVertexAttrib2svARB("glVertexAttrib2svARB"),
+    glVertexAttrib2svNV("glVertexAttrib2svNV"),
+    glVertexAttrib3d("glVertexAttrib3d"),
+    glVertexAttrib3dARB("glVertexAttrib3dARB"),
+    glVertexAttrib3dNV("glVertexAttrib3dNV"),
+    glVertexAttrib3dv("glVertexAttrib3dv"),
+    glVertexAttrib3dvARB("glVertexAttrib3dvARB"),
+    glVertexAttrib3dvNV("glVertexAttrib3dvNV"),
+    glVertexAttrib3f("glVertexAttrib3f"),
+    glVertexAttrib3fARB("glVertexAttrib3fARB"),
+    glVertexAttrib3fNV("glVertexAttrib3fNV"),
+    glVertexAttrib3fv("glVertexAttrib3fv"),
+    glVertexAttrib3fvARB("glVertexAttrib3fvARB"),
+    glVertexAttrib3fvNV("glVertexAttrib3fvNV"),
+    glVertexAttrib3hNV("glVertexAttrib3hNV"),
+    glVertexAttrib3hvNV("glVertexAttrib3hvNV"),
+    glVertexAttrib3s("glVertexAttrib3s"),
+    glVertexAttrib3sARB("glVertexAttrib3sARB"),
+    glVertexAttrib3sNV("glVertexAttrib3sNV"),
+    glVertexAttrib3sv("glVertexAttrib3sv"),
+    glVertexAttrib3svARB("glVertexAttrib3svARB"),
+    glVertexAttrib3svNV("glVertexAttrib3svNV"),
+    glVertexAttrib4Nbv("glVertexAttrib4Nbv"),
+    glVertexAttrib4NbvARB("glVertexAttrib4NbvARB"),
+    glVertexAttrib4Niv("glVertexAttrib4Niv"),
+    glVertexAttrib4NivARB("glVertexAttrib4NivARB"),
+    glVertexAttrib4Nsv("glVertexAttrib4Nsv"),
+    glVertexAttrib4NsvARB("glVertexAttrib4NsvARB"),
+    glVertexAttrib4Nub("glVertexAttrib4Nub"),
+    glVertexAttrib4NubARB("glVertexAttrib4NubARB"),
+    glVertexAttrib4Nubv("glVertexAttrib4Nubv"),
+    glVertexAttrib4NubvARB("glVertexAttrib4NubvARB"),
+    glVertexAttrib4Nuiv("glVertexAttrib4Nuiv"),
+    glVertexAttrib4NuivARB("glVertexAttrib4NuivARB"),
+    glVertexAttrib4Nusv("glVertexAttrib4Nusv"),
+    glVertexAttrib4NusvARB("glVertexAttrib4NusvARB"),
+    glVertexAttrib4bv("glVertexAttrib4bv"),
+    glVertexAttrib4bvARB("glVertexAttrib4bvARB"),
+    glVertexAttrib4d("glVertexAttrib4d"),
+    glVertexAttrib4dARB("glVertexAttrib4dARB"),
+    glVertexAttrib4dNV("glVertexAttrib4dNV"),
+    glVertexAttrib4dv("glVertexAttrib4dv"),
+    glVertexAttrib4dvARB("glVertexAttrib4dvARB"),
+    glVertexAttrib4dvNV("glVertexAttrib4dvNV"),
+    glVertexAttrib4f("glVertexAttrib4f"),
+    glVertexAttrib4fARB("glVertexAttrib4fARB"),
+    glVertexAttrib4fNV("glVertexAttrib4fNV"),
+    glVertexAttrib4fv("glVertexAttrib4fv"),
+    glVertexAttrib4fvARB("glVertexAttrib4fvARB"),
+    glVertexAttrib4fvNV("glVertexAttrib4fvNV"),
+    glVertexAttrib4hNV("glVertexAttrib4hNV"),
+    glVertexAttrib4hvNV("glVertexAttrib4hvNV"),
+    glVertexAttrib4iv("glVertexAttrib4iv"),
+    glVertexAttrib4ivARB("glVertexAttrib4ivARB"),
+    glVertexAttrib4s("glVertexAttrib4s"),
+    glVertexAttrib4sARB("glVertexAttrib4sARB"),
+    glVertexAttrib4sNV("glVertexAttrib4sNV"),
+    glVertexAttrib4sv("glVertexAttrib4sv"),
+    glVertexAttrib4svARB("glVertexAttrib4svARB"),
+    glVertexAttrib4svNV("glVertexAttrib4svNV"),
+    glVertexAttrib4ubNV("glVertexAttrib4ubNV"),
+    glVertexAttrib4ubv("glVertexAttrib4ubv"),
+    glVertexAttrib4ubvARB("glVertexAttrib4ubvARB"),
+    glVertexAttrib4ubvNV("glVertexAttrib4ubvNV"),
+    glVertexAttrib4uiv("glVertexAttrib4uiv"),
+    glVertexAttrib4uivARB("glVertexAttrib4uivARB"),
+    glVertexAttrib4usv("glVertexAttrib4usv"),
+    glVertexAttrib4usvARB("glVertexAttrib4usvARB"),
+    glVertexAttribArrayObjectATI("glVertexAttribArrayObjectATI"),
+    glVertexAttribBinding("glVertexAttribBinding"),
+    glVertexAttribDivisor("glVertexAttribDivisor"),
+    glVertexAttribDivisorARB("glVertexAttribDivisorARB"),
+    glVertexAttribFormat("glVertexAttribFormat"),
+    glVertexAttribFormatNV("glVertexAttribFormatNV"),
+    glVertexAttribI1i("glVertexAttribI1i"),
+    glVertexAttribI1iEXT("glVertexAttribI1iEXT"),
+    glVertexAttribI1iv("glVertexAttribI1iv"),
+    glVertexAttribI1ivEXT("glVertexAttribI1ivEXT"),
+    glVertexAttribI1ui("glVertexAttribI1ui"),
+    glVertexAttribI1uiEXT("glVertexAttribI1uiEXT"),
+    glVertexAttribI1uiv("glVertexAttribI1uiv"),
+    glVertexAttribI1uivEXT("glVertexAttribI1uivEXT"),
+    glVertexAttribI2i("glVertexAttribI2i"),
+    glVertexAttribI2iEXT("glVertexAttribI2iEXT"),
+    glVertexAttribI2iv("glVertexAttribI2iv"),
+    glVertexAttribI2ivEXT("glVertexAttribI2ivEXT"),
+    glVertexAttribI2ui("glVertexAttribI2ui"),
+    glVertexAttribI2uiEXT("glVertexAttribI2uiEXT"),
+    glVertexAttribI2uiv("glVertexAttribI2uiv"),
+    glVertexAttribI2uivEXT("glVertexAttribI2uivEXT"),
+    glVertexAttribI3i("glVertexAttribI3i"),
+    glVertexAttribI3iEXT("glVertexAttribI3iEXT"),
+    glVertexAttribI3iv("glVertexAttribI3iv"),
+    glVertexAttribI3ivEXT("glVertexAttribI3ivEXT"),
+    glVertexAttribI3ui("glVertexAttribI3ui"),
+    glVertexAttribI3uiEXT("glVertexAttribI3uiEXT"),
+    glVertexAttribI3uiv("glVertexAttribI3uiv"),
+    glVertexAttribI3uivEXT("glVertexAttribI3uivEXT"),
+    glVertexAttribI4bv("glVertexAttribI4bv"),
+    glVertexAttribI4bvEXT("glVertexAttribI4bvEXT"),
+    glVertexAttribI4i("glVertexAttribI4i"),
+    glVertexAttribI4iEXT("glVertexAttribI4iEXT"),
+    glVertexAttribI4iv("glVertexAttribI4iv"),
+    glVertexAttribI4ivEXT("glVertexAttribI4ivEXT"),
+    glVertexAttribI4sv("glVertexAttribI4sv"),
+    glVertexAttribI4svEXT("glVertexAttribI4svEXT"),
+    glVertexAttribI4ubv("glVertexAttribI4ubv"),
+    glVertexAttribI4ubvEXT("glVertexAttribI4ubvEXT"),
+    glVertexAttribI4ui("glVertexAttribI4ui"),
+    glVertexAttribI4uiEXT("glVertexAttribI4uiEXT"),
+    glVertexAttribI4uiv("glVertexAttribI4uiv"),
+    glVertexAttribI4uivEXT("glVertexAttribI4uivEXT"),
+    glVertexAttribI4usv("glVertexAttribI4usv"),
+    glVertexAttribI4usvEXT("glVertexAttribI4usvEXT"),
+    glVertexAttribIFormat("glVertexAttribIFormat"),
+    glVertexAttribIFormatNV("glVertexAttribIFormatNV"),
+    glVertexAttribIPointer("glVertexAttribIPointer"),
+    glVertexAttribIPointerEXT("glVertexAttribIPointerEXT"),
+    glVertexAttribL1d("glVertexAttribL1d"),
+    glVertexAttribL1dEXT("glVertexAttribL1dEXT"),
+    glVertexAttribL1dv("glVertexAttribL1dv"),
+    glVertexAttribL1dvEXT("glVertexAttribL1dvEXT"),
+    glVertexAttribL1i64NV("glVertexAttribL1i64NV"),
+    glVertexAttribL1i64vNV("glVertexAttribL1i64vNV"),
+    glVertexAttribL1ui64ARB("glVertexAttribL1ui64ARB"),
+    glVertexAttribL1ui64NV("glVertexAttribL1ui64NV"),
+    glVertexAttribL1ui64vARB("glVertexAttribL1ui64vARB"),
+    glVertexAttribL1ui64vNV("glVertexAttribL1ui64vNV"),
+    glVertexAttribL2d("glVertexAttribL2d"),
+    glVertexAttribL2dEXT("glVertexAttribL2dEXT"),
+    glVertexAttribL2dv("glVertexAttribL2dv"),
+    glVertexAttribL2dvEXT("glVertexAttribL2dvEXT"),
+    glVertexAttribL2i64NV("glVertexAttribL2i64NV"),
+    glVertexAttribL2i64vNV("glVertexAttribL2i64vNV"),
+    glVertexAttribL2ui64NV("glVertexAttribL2ui64NV"),
+    glVertexAttribL2ui64vNV("glVertexAttribL2ui64vNV"),
+    glVertexAttribL3d("glVertexAttribL3d"),
+    glVertexAttribL3dEXT("glVertexAttribL3dEXT"),
+    glVertexAttribL3dv("glVertexAttribL3dv"),
+    glVertexAttribL3dvEXT("glVertexAttribL3dvEXT"),
+    glVertexAttribL3i64NV("glVertexAttribL3i64NV"),
+    glVertexAttribL3i64vNV("glVertexAttribL3i64vNV"),
+    glVertexAttribL3ui64NV("glVertexAttribL3ui64NV"),
+    glVertexAttribL3ui64vNV("glVertexAttribL3ui64vNV"),
+    glVertexAttribL4d("glVertexAttribL4d"),
+    glVertexAttribL4dEXT("glVertexAttribL4dEXT"),
+    glVertexAttribL4dv("glVertexAttribL4dv"),
+    glVertexAttribL4dvEXT("glVertexAttribL4dvEXT"),
+    glVertexAttribL4i64NV("glVertexAttribL4i64NV"),
+    glVertexAttribL4i64vNV("glVertexAttribL4i64vNV"),
+    glVertexAttribL4ui64NV("glVertexAttribL4ui64NV"),
+    glVertexAttribL4ui64vNV("glVertexAttribL4ui64vNV"),
+    glVertexAttribLFormat("glVertexAttribLFormat"),
+    glVertexAttribLFormatNV("glVertexAttribLFormatNV"),
+    glVertexAttribLPointer("glVertexAttribLPointer"),
+    glVertexAttribLPointerEXT("glVertexAttribLPointerEXT"),
+    glVertexAttribP1ui("glVertexAttribP1ui"),
+    glVertexAttribP1uiv("glVertexAttribP1uiv"),
+    glVertexAttribP2ui("glVertexAttribP2ui"),
+    glVertexAttribP2uiv("glVertexAttribP2uiv"),
+    glVertexAttribP3ui("glVertexAttribP3ui"),
+    glVertexAttribP3uiv("glVertexAttribP3uiv"),
+    glVertexAttribP4ui("glVertexAttribP4ui"),
+    glVertexAttribP4uiv("glVertexAttribP4uiv"),
+    glVertexAttribParameteriAMD("glVertexAttribParameteriAMD"),
+    glVertexAttribPointer("glVertexAttribPointer"),
+    glVertexAttribPointerARB("glVertexAttribPointerARB"),
+    glVertexAttribPointerNV("glVertexAttribPointerNV"),
+    glVertexAttribs1dvNV("glVertexAttribs1dvNV"),
+    glVertexAttribs1fvNV("glVertexAttribs1fvNV"),
+    glVertexAttribs1hvNV("glVertexAttribs1hvNV"),
+    glVertexAttribs1svNV("glVertexAttribs1svNV"),
+    glVertexAttribs2dvNV("glVertexAttribs2dvNV"),
+    glVertexAttribs2fvNV("glVertexAttribs2fvNV"),
+    glVertexAttribs2hvNV("glVertexAttribs2hvNV"),
+    glVertexAttribs2svNV("glVertexAttribs2svNV"),
+    glVertexAttribs3dvNV("glVertexAttribs3dvNV"),
+    glVertexAttribs3fvNV("glVertexAttribs3fvNV"),
+    glVertexAttribs3hvNV("glVertexAttribs3hvNV"),
+    glVertexAttribs3svNV("glVertexAttribs3svNV"),
+    glVertexAttribs4dvNV("glVertexAttribs4dvNV"),
+    glVertexAttribs4fvNV("glVertexAttribs4fvNV"),
+    glVertexAttribs4hvNV("glVertexAttribs4hvNV"),
+    glVertexAttribs4svNV("glVertexAttribs4svNV"),
+    glVertexAttribs4ubvNV("glVertexAttribs4ubvNV"),
+    glVertexBindingDivisor("glVertexBindingDivisor"),
+    glVertexBlendARB("glVertexBlendARB"),
+    glVertexBlendEnvfATI("glVertexBlendEnvfATI"),
+    glVertexBlendEnviATI("glVertexBlendEnviATI"),
+    glVertexFormatNV("glVertexFormatNV"),
+    glVertexP2ui("glVertexP2ui"),
+    glVertexP2uiv("glVertexP2uiv"),
+    glVertexP3ui("glVertexP3ui"),
+    glVertexP3uiv("glVertexP3uiv"),
+    glVertexP4ui("glVertexP4ui"),
+    glVertexP4uiv("glVertexP4uiv"),
+    glVertexPointer("glVertexPointer"),
+    glVertexPointerEXT("glVertexPointerEXT"),
+    glVertexPointerListIBM("glVertexPointerListIBM"),
+    glVertexPointervINTEL("glVertexPointervINTEL"),
+    glVertexStream1dATI("glVertexStream1dATI"),
+    glVertexStream1dvATI("glVertexStream1dvATI"),
+    glVertexStream1fATI("glVertexStream1fATI"),
+    glVertexStream1fvATI("glVertexStream1fvATI"),
+    glVertexStream1iATI("glVertexStream1iATI"),
+    glVertexStream1ivATI("glVertexStream1ivATI"),
+    glVertexStream1sATI("glVertexStream1sATI"),
+    glVertexStream1svATI("glVertexStream1svATI"),
+    glVertexStream2dATI("glVertexStream2dATI"),
+    glVertexStream2dvATI("glVertexStream2dvATI"),
+    glVertexStream2fATI("glVertexStream2fATI"),
+    glVertexStream2fvATI("glVertexStream2fvATI"),
+    glVertexStream2iATI("glVertexStream2iATI"),
+    glVertexStream2ivATI("glVertexStream2ivATI"),
+    glVertexStream2sATI("glVertexStream2sATI"),
+    glVertexStream2svATI("glVertexStream2svATI"),
+    glVertexStream3dATI("glVertexStream3dATI"),
+    glVertexStream3dvATI("glVertexStream3dvATI"),
+    glVertexStream3fATI("glVertexStream3fATI"),
+    glVertexStream3fvATI("glVertexStream3fvATI"),
+    glVertexStream3iATI("glVertexStream3iATI"),
+    glVertexStream3ivATI("glVertexStream3ivATI"),
+    glVertexStream3sATI("glVertexStream3sATI"),
+    glVertexStream3svATI("glVertexStream3svATI"),
+    glVertexStream4dATI("glVertexStream4dATI"),
+    glVertexStream4dvATI("glVertexStream4dvATI"),
+    glVertexStream4fATI("glVertexStream4fATI"),
+    glVertexStream4fvATI("glVertexStream4fvATI"),
+    glVertexStream4iATI("glVertexStream4iATI"),
+    glVertexStream4ivATI("glVertexStream4ivATI"),
+    glVertexStream4sATI("glVertexStream4sATI"),
+    glVertexStream4svATI("glVertexStream4svATI"),
+    glVertexWeightPointerEXT("glVertexWeightPointerEXT"),
+    glVertexWeightfEXT("glVertexWeightfEXT"),
+    glVertexWeightfvEXT("glVertexWeightfvEXT"),
+    glVertexWeighthNV("glVertexWeighthNV"),
+    glVertexWeighthvNV("glVertexWeighthvNV"),
+    glVideoCaptureNV("glVideoCaptureNV"),
+    glVideoCaptureStreamParameterdvNV("glVideoCaptureStreamParameterdvNV"),
+    glVideoCaptureStreamParameterfvNV("glVideoCaptureStreamParameterfvNV"),
+    glVideoCaptureStreamParameterivNV("glVideoCaptureStreamParameterivNV"),
+    glViewport("glViewport"),
+    glViewportArrayv("glViewportArrayv"),
+    glViewportIndexedf("glViewportIndexedf"),
+    glViewportIndexedfv("glViewportIndexedfv"),
+    glWaitSync("glWaitSync"),
+    glWeightPathsNV("glWeightPathsNV"),
+    glWeightPointerARB("glWeightPointerARB"),
+    glWeightbvARB("glWeightbvARB"),
+    glWeightdvARB("glWeightdvARB"),
+    glWeightfvARB("glWeightfvARB"),
+    glWeightivARB("glWeightivARB"),
+    glWeightsvARB("glWeightsvARB"),
+    glWeightubvARB("glWeightubvARB"),
+    glWeightuivARB("glWeightuivARB"),
+    glWeightusvARB("glWeightusvARB"),
+    glWindowPos2d("glWindowPos2d"),
+    glWindowPos2dARB("glWindowPos2dARB"),
+    glWindowPos2dMESA("glWindowPos2dMESA"),
+    glWindowPos2dv("glWindowPos2dv"),
+    glWindowPos2dvARB("glWindowPos2dvARB"),
+    glWindowPos2dvMESA("glWindowPos2dvMESA"),
+    glWindowPos2f("glWindowPos2f"),
+    glWindowPos2fARB("glWindowPos2fARB"),
+    glWindowPos2fMESA("glWindowPos2fMESA"),
+    glWindowPos2fv("glWindowPos2fv"),
+    glWindowPos2fvARB("glWindowPos2fvARB"),
+    glWindowPos2fvMESA("glWindowPos2fvMESA"),
+    glWindowPos2i("glWindowPos2i"),
+    glWindowPos2iARB("glWindowPos2iARB"),
+    glWindowPos2iMESA("glWindowPos2iMESA"),
+    glWindowPos2iv("glWindowPos2iv"),
+    glWindowPos2ivARB("glWindowPos2ivARB"),
+    glWindowPos2ivMESA("glWindowPos2ivMESA"),
+    glWindowPos2s("glWindowPos2s"),
+    glWindowPos2sARB("glWindowPos2sARB"),
+    glWindowPos2sMESA("glWindowPos2sMESA"),
+    glWindowPos2sv("glWindowPos2sv"),
+    glWindowPos2svARB("glWindowPos2svARB"),
+    glWindowPos2svMESA("glWindowPos2svMESA"),
+    glWindowPos3d("glWindowPos3d"),
+    glWindowPos3dARB("glWindowPos3dARB"),
+    glWindowPos3dMESA("glWindowPos3dMESA"),
+    glWindowPos3dv("glWindowPos3dv"),
+    glWindowPos3dvARB("glWindowPos3dvARB"),
+    glWindowPos3dvMESA("glWindowPos3dvMESA"),
+    glWindowPos3f("glWindowPos3f"),
+    glWindowPos3fARB("glWindowPos3fARB"),
+    glWindowPos3fMESA("glWindowPos3fMESA"),
+    glWindowPos3fv("glWindowPos3fv"),
+    glWindowPos3fvARB("glWindowPos3fvARB"),
+    glWindowPos3fvMESA("glWindowPos3fvMESA"),
+    glWindowPos3i("glWindowPos3i"),
+    glWindowPos3iARB("glWindowPos3iARB"),
+    glWindowPos3iMESA("glWindowPos3iMESA"),
+    glWindowPos3iv("glWindowPos3iv"),
+    glWindowPos3ivARB("glWindowPos3ivARB"),
+    glWindowPos3ivMESA("glWindowPos3ivMESA"),
+    glWindowPos3s("glWindowPos3s"),
+    glWindowPos3sARB("glWindowPos3sARB"),
+    glWindowPos3sMESA("glWindowPos3sMESA"),
+    glWindowPos3sv("glWindowPos3sv"),
+    glWindowPos3svARB("glWindowPos3svARB"),
+    glWindowPos3svMESA("glWindowPos3svMESA"),
+    glWindowPos4dMESA("glWindowPos4dMESA"),
+    glWindowPos4dvMESA("glWindowPos4dvMESA"),
+    glWindowPos4fMESA("glWindowPos4fMESA"),
+    glWindowPos4fvMESA("glWindowPos4fvMESA"),
+    glWindowPos4iMESA("glWindowPos4iMESA"),
+    glWindowPos4ivMESA("glWindowPos4ivMESA"),
+    glWindowPos4sMESA("glWindowPos4sMESA"),
+    glWindowPos4svMESA("glWindowPos4svMESA"),
+    glWriteMaskEXT("glWriteMaskEXT")
 {
-    s_context = context;
+	m_functions = {
+		&glAccum,
+        &glAccumxOES,
+        &glActiveProgramEXT,
+        &glActiveShaderProgram,
+        &glActiveStencilFaceEXT,
+        &glActiveTexture,
+        &glActiveTextureARB,
+        &glActiveVaryingNV,
+        &glAlphaFragmentOp1ATI,
+        &glAlphaFragmentOp2ATI,
+        &glAlphaFragmentOp3ATI,
+        &glAlphaFunc,
+        &glAlphaFuncxOES,
+        &glApplyTextureEXT,
+        &glAreProgramsResidentNV,
+        &glAreTexturesResident,
+        &glAreTexturesResidentEXT,
+        &glArrayElement,
+        &glArrayElementEXT,
+        &glArrayObjectATI,
+        &glAsyncMarkerSGIX,
+        &glAttachObjectARB,
+        &glAttachShader,
+        &glBegin,
+        &glBeginConditionalRender,
+        &glBeginConditionalRenderNV,
+        &glBeginConditionalRenderNVX,
+        &glBeginFragmentShaderATI,
+        &glBeginOcclusionQueryNV,
+        &glBeginPerfMonitorAMD,
+        &glBeginPerfQueryINTEL,
+        &glBeginQuery,
+        &glBeginQueryARB,
+        &glBeginQueryIndexed,
+        &glBeginTransformFeedback,
+        &glBeginTransformFeedbackEXT,
+        &glBeginTransformFeedbackNV,
+        &glBeginVertexShaderEXT,
+        &glBeginVideoCaptureNV,
+        &glBindAttribLocation,
+        &glBindAttribLocationARB,
+        &glBindBuffer,
+        &glBindBufferARB,
+        &glBindBufferBase,
+        &glBindBufferBaseEXT,
+        &glBindBufferBaseNV,
+        &glBindBufferOffsetEXT,
+        &glBindBufferOffsetNV,
+        &glBindBufferRange,
+        &glBindBufferRangeEXT,
+        &glBindBufferRangeNV,
+        &glBindBuffersBase,
+        &glBindBuffersRange,
+        &glBindFragDataLocation,
+        &glBindFragDataLocationEXT,
+        &glBindFragDataLocationIndexed,
+        &glBindFragmentShaderATI,
+        &glBindFramebuffer,
+        &glBindFramebufferEXT,
+        &glBindImageTexture,
+        &glBindImageTextureEXT,
+        &glBindImageTextures,
+        &glBindLightParameterEXT,
+        &glBindMaterialParameterEXT,
+        &glBindMultiTextureEXT,
+        &glBindParameterEXT,
+        &glBindProgramARB,
+        &glBindProgramNV,
+        &glBindProgramPipeline,
+        &glBindRenderbuffer,
+        &glBindRenderbufferEXT,
+        &glBindSampler,
+        &glBindSamplers,
+        &glBindTexGenParameterEXT,
+        &glBindTexture,
+        &glBindTextureEXT,
+        &glBindTextureUnitParameterEXT,
+        &glBindTextures,
+        &glBindTransformFeedback,
+        &glBindTransformFeedbackNV,
+        &glBindVertexArray,
+        &glBindVertexArrayAPPLE,
+        &glBindVertexBuffer,
+        &glBindVertexBuffers,
+        &glBindVertexShaderEXT,
+        &glBindVideoCaptureStreamBufferNV,
+        &glBindVideoCaptureStreamTextureNV,
+        &glBinormal3bEXT,
+        &glBinormal3bvEXT,
+        &glBinormal3dEXT,
+        &glBinormal3dvEXT,
+        &glBinormal3fEXT,
+        &glBinormal3fvEXT,
+        &glBinormal3iEXT,
+        &glBinormal3ivEXT,
+        &glBinormal3sEXT,
+        &glBinormal3svEXT,
+        &glBinormalPointerEXT,
+        &glBitmap,
+        &glBitmapxOES,
+        &glBlendBarrierNV,
+        &glBlendColor,
+        &glBlendColorEXT,
+        &glBlendColorxOES,
+        &glBlendEquation,
+        &glBlendEquationEXT,
+        &glBlendEquationIndexedAMD,
+        &glBlendEquationSeparate,
+        &glBlendEquationSeparateEXT,
+        &glBlendEquationSeparateIndexedAMD,
+        &glBlendEquationSeparatei,
+        &glBlendEquationSeparateiARB,
+        &glBlendEquationi,
+        &glBlendEquationiARB,
+        &glBlendFunc,
+        &glBlendFuncIndexedAMD,
+        &glBlendFuncSeparate,
+        &glBlendFuncSeparateEXT,
+        &glBlendFuncSeparateINGR,
+        &glBlendFuncSeparateIndexedAMD,
+        &glBlendFuncSeparatei,
+        &glBlendFuncSeparateiARB,
+        &glBlendFunci,
+        &glBlendFunciARB,
+        &glBlendParameteriNV,
+        &glBlitFramebuffer,
+        &glBlitFramebufferEXT,
+        &glBufferAddressRangeNV,
+        &glBufferData,
+        &glBufferDataARB,
+        &glBufferParameteriAPPLE,
+        &glBufferStorage,
+        &glBufferSubData,
+        &glBufferSubDataARB,
+        &glCallList,
+        &glCallLists,
+        &glCheckFramebufferStatus,
+        &glCheckFramebufferStatusEXT,
+        &glCheckNamedFramebufferStatusEXT,
+        &glClampColor,
+        &glClampColorARB,
+        &glClear,
+        &glClearAccum,
+        &glClearAccumxOES,
+        &glClearBufferData,
+        &glClearBufferSubData,
+        &glClearBufferfi,
+        &glClearBufferfv,
+        &glClearBufferiv,
+        &glClearBufferuiv,
+        &glClearColor,
+        &glClearColorIiEXT,
+        &glClearColorIuiEXT,
+        &glClearColorxOES,
+        &glClearDepth,
+        &glClearDepthdNV,
+        &glClearDepthf,
+        &glClearDepthfOES,
+        &glClearDepthxOES,
+        &glClearIndex,
+        &glClearNamedBufferDataEXT,
+        &glClearNamedBufferSubDataEXT,
+        &glClearStencil,
+        &glClearTexImage,
+        &glClearTexSubImage,
+        &glClientActiveTexture,
+        &glClientActiveTextureARB,
+        &glClientActiveVertexStreamATI,
+        &glClientAttribDefaultEXT,
+        &glClientWaitSync,
+        &glClipPlane,
+        &glClipPlanefOES,
+        &glClipPlanexOES,
+        &glColor3b,
+        &glColor3bv,
+        &glColor3d,
+        &glColor3dv,
+        &glColor3f,
+        &glColor3fVertex3fSUN,
+        &glColor3fVertex3fvSUN,
+        &glColor3fv,
+        &glColor3hNV,
+        &glColor3hvNV,
+        &glColor3i,
+        &glColor3iv,
+        &glColor3s,
+        &glColor3sv,
+        &glColor3ub,
+        &glColor3ubv,
+        &glColor3ui,
+        &glColor3uiv,
+        &glColor3us,
+        &glColor3usv,
+        &glColor3xOES,
+        &glColor3xvOES,
+        &glColor4b,
+        &glColor4bv,
+        &glColor4d,
+        &glColor4dv,
+        &glColor4f,
+        &glColor4fNormal3fVertex3fSUN,
+        &glColor4fNormal3fVertex3fvSUN,
+        &glColor4fv,
+        &glColor4hNV,
+        &glColor4hvNV,
+        &glColor4i,
+        &glColor4iv,
+        &glColor4s,
+        &glColor4sv,
+        &glColor4ub,
+        &glColor4ubVertex2fSUN,
+        &glColor4ubVertex2fvSUN,
+        &glColor4ubVertex3fSUN,
+        &glColor4ubVertex3fvSUN,
+        &glColor4ubv,
+        &glColor4ui,
+        &glColor4uiv,
+        &glColor4us,
+        &glColor4usv,
+        &glColor4xOES,
+        &glColor4xvOES,
+        &glColorFormatNV,
+        &glColorFragmentOp1ATI,
+        &glColorFragmentOp2ATI,
+        &glColorFragmentOp3ATI,
+        &glColorMask,
+        &glColorMaskIndexedEXT,
+        &glColorMaski,
+        &glColorMaterial,
+        &glColorP3ui,
+        &glColorP3uiv,
+        &glColorP4ui,
+        &glColorP4uiv,
+        &glColorPointer,
+        &glColorPointerEXT,
+        &glColorPointerListIBM,
+        &glColorPointervINTEL,
+        &glColorSubTable,
+        &glColorSubTableEXT,
+        &glColorTable,
+        &glColorTableEXT,
+        &glColorTableParameterfv,
+        &glColorTableParameterfvSGI,
+        &glColorTableParameteriv,
+        &glColorTableParameterivSGI,
+        &glColorTableSGI,
+        &glCombinerInputNV,
+        &glCombinerOutputNV,
+        &glCombinerParameterfNV,
+        &glCombinerParameterfvNV,
+        &glCombinerParameteriNV,
+        &glCombinerParameterivNV,
+        &glCombinerStageParameterfvNV,
+        &glCompileShader,
+        &glCompileShaderARB,
+        &glCompileShaderIncludeARB,
+        &glCompressedMultiTexImage1DEXT,
+        &glCompressedMultiTexImage2DEXT,
+        &glCompressedMultiTexImage3DEXT,
+        &glCompressedMultiTexSubImage1DEXT,
+        &glCompressedMultiTexSubImage2DEXT,
+        &glCompressedMultiTexSubImage3DEXT,
+        &glCompressedTexImage1D,
+        &glCompressedTexImage1DARB,
+        &glCompressedTexImage2D,
+        &glCompressedTexImage2DARB,
+        &glCompressedTexImage3D,
+        &glCompressedTexImage3DARB,
+        &glCompressedTexSubImage1D,
+        &glCompressedTexSubImage1DARB,
+        &glCompressedTexSubImage2D,
+        &glCompressedTexSubImage2DARB,
+        &glCompressedTexSubImage3D,
+        &glCompressedTexSubImage3DARB,
+        &glCompressedTextureImage1DEXT,
+        &glCompressedTextureImage2DEXT,
+        &glCompressedTextureImage3DEXT,
+        &glCompressedTextureSubImage1DEXT,
+        &glCompressedTextureSubImage2DEXT,
+        &glCompressedTextureSubImage3DEXT,
+        &glConvolutionFilter1D,
+        &glConvolutionFilter1DEXT,
+        &glConvolutionFilter2D,
+        &glConvolutionFilter2DEXT,
+        &glConvolutionParameterf,
+        &glConvolutionParameterfEXT,
+        &glConvolutionParameterfv,
+        &glConvolutionParameterfvEXT,
+        &glConvolutionParameteri,
+        &glConvolutionParameteriEXT,
+        &glConvolutionParameteriv,
+        &glConvolutionParameterivEXT,
+        &glConvolutionParameterxOES,
+        &glConvolutionParameterxvOES,
+        &glCopyBufferSubData,
+        &glCopyColorSubTable,
+        &glCopyColorSubTableEXT,
+        &glCopyColorTable,
+        &glCopyColorTableSGI,
+        &glCopyConvolutionFilter1D,
+        &glCopyConvolutionFilter1DEXT,
+        &glCopyConvolutionFilter2D,
+        &glCopyConvolutionFilter2DEXT,
+        &glCopyImageSubData,
+        &glCopyImageSubDataNV,
+        &glCopyMultiTexImage1DEXT,
+        &glCopyMultiTexImage2DEXT,
+        &glCopyMultiTexSubImage1DEXT,
+        &glCopyMultiTexSubImage2DEXT,
+        &glCopyMultiTexSubImage3DEXT,
+        &glCopyPathNV,
+        &glCopyPixels,
+        &glCopyTexImage1D,
+        &glCopyTexImage1DEXT,
+        &glCopyTexImage2D,
+        &glCopyTexImage2DEXT,
+        &glCopyTexSubImage1D,
+        &glCopyTexSubImage1DEXT,
+        &glCopyTexSubImage2D,
+        &glCopyTexSubImage2DEXT,
+        &glCopyTexSubImage3D,
+        &glCopyTexSubImage3DEXT,
+        &glCopyTextureImage1DEXT,
+        &glCopyTextureImage2DEXT,
+        &glCopyTextureSubImage1DEXT,
+        &glCopyTextureSubImage2DEXT,
+        &glCopyTextureSubImage3DEXT,
+        &glCoverFillPathInstancedNV,
+        &glCoverFillPathNV,
+        &glCoverStrokePathInstancedNV,
+        &glCoverStrokePathNV,
+        &glCreatePerfQueryINTEL,
+        &glCreateProgram,
+        &glCreateProgramObjectARB,
+        &glCreateShader,
+        &glCreateShaderObjectARB,
+        &glCreateShaderProgramEXT,
+        &glCreateShaderProgramv,
+        &glCreateSyncFromCLeventARB,
+        &glCullFace,
+        &glCullParameterdvEXT,
+        &glCullParameterfvEXT,
+        &glCurrentPaletteMatrixARB,
+        &glDebugMessageCallback,
+        &glDebugMessageCallbackAMD,
+        &glDebugMessageCallbackARB,
+        &glDebugMessageControl,
+        &glDebugMessageControlARB,
+        &glDebugMessageEnableAMD,
+        &glDebugMessageInsert,
+        &glDebugMessageInsertAMD,
+        &glDebugMessageInsertARB,
+        &glDeformSGIX,
+        &glDeformationMap3dSGIX,
+        &glDeformationMap3fSGIX,
+        &glDeleteAsyncMarkersSGIX,
+        &glDeleteBuffers,
+        &glDeleteBuffersARB,
+        &glDeleteFencesAPPLE,
+        &glDeleteFencesNV,
+        &glDeleteFragmentShaderATI,
+        &glDeleteFramebuffers,
+        &glDeleteFramebuffersEXT,
+        &glDeleteLists,
+        &glDeleteNamedStringARB,
+        &glDeleteNamesAMD,
+        &glDeleteObjectARB,
+        &glDeleteOcclusionQueriesNV,
+        &glDeletePathsNV,
+        &glDeletePerfMonitorsAMD,
+        &glDeletePerfQueryINTEL,
+        &glDeleteProgram,
+        &glDeleteProgramPipelines,
+        &glDeleteProgramsARB,
+        &glDeleteProgramsNV,
+        &glDeleteQueries,
+        &glDeleteQueriesARB,
+        &glDeleteRenderbuffers,
+        &glDeleteRenderbuffersEXT,
+        &glDeleteSamplers,
+        &glDeleteShader,
+        &glDeleteSync,
+        &glDeleteTextures,
+        &glDeleteTexturesEXT,
+        &glDeleteTransformFeedbacks,
+        &glDeleteTransformFeedbacksNV,
+        &glDeleteVertexArrays,
+        &glDeleteVertexArraysAPPLE,
+        &glDeleteVertexShaderEXT,
+        &glDepthBoundsEXT,
+        &glDepthBoundsdNV,
+        &glDepthFunc,
+        &glDepthMask,
+        &glDepthRange,
+        &glDepthRangeArrayv,
+        &glDepthRangeIndexed,
+        &glDepthRangedNV,
+        &glDepthRangef,
+        &glDepthRangefOES,
+        &glDepthRangexOES,
+        &glDetachObjectARB,
+        &glDetachShader,
+        &glDetailTexFuncSGIS,
+        &glDisable,
+        &glDisableClientState,
+        &glDisableClientStateIndexedEXT,
+        &glDisableClientStateiEXT,
+        &glDisableIndexedEXT,
+        &glDisableVariantClientStateEXT,
+        &glDisableVertexArrayAttribEXT,
+        &glDisableVertexArrayEXT,
+        &glDisableVertexAttribAPPLE,
+        &glDisableVertexAttribArray,
+        &glDisableVertexAttribArrayARB,
+        &glDisablei,
+        &glDispatchCompute,
+        &glDispatchComputeGroupSizeARB,
+        &glDispatchComputeIndirect,
+        &glDrawArrays,
+        &glDrawArraysEXT,
+        &glDrawArraysIndirect,
+        &glDrawArraysInstanced,
+        &glDrawArraysInstancedARB,
+        &glDrawArraysInstancedBaseInstance,
+        &glDrawArraysInstancedEXT,
+        &glDrawBuffer,
+        &glDrawBuffers,
+        &glDrawBuffersARB,
+        &glDrawBuffersATI,
+        &glDrawElementArrayAPPLE,
+        &glDrawElementArrayATI,
+        &glDrawElements,
+        &glDrawElementsBaseVertex,
+        &glDrawElementsIndirect,
+        &glDrawElementsInstanced,
+        &glDrawElementsInstancedARB,
+        &glDrawElementsInstancedBaseInstance,
+        &glDrawElementsInstancedBaseVertex,
+        &glDrawElementsInstancedBaseVertexBaseInstance,
+        &glDrawElementsInstancedEXT,
+        &glDrawMeshArraysSUN,
+        &glDrawPixels,
+        &glDrawRangeElementArrayAPPLE,
+        &glDrawRangeElementArrayATI,
+        &glDrawRangeElements,
+        &glDrawRangeElementsBaseVertex,
+        &glDrawRangeElementsEXT,
+        &glDrawTextureNV,
+        &glDrawTransformFeedback,
+        &glDrawTransformFeedbackInstanced,
+        &glDrawTransformFeedbackNV,
+        &glDrawTransformFeedbackStream,
+        &glDrawTransformFeedbackStreamInstanced,
+        &glEdgeFlag,
+        &glEdgeFlagFormatNV,
+        &glEdgeFlagPointer,
+        &glEdgeFlagPointerEXT,
+        &glEdgeFlagPointerListIBM,
+        &glEdgeFlagv,
+        &glElementPointerAPPLE,
+        &glElementPointerATI,
+        &glEnable,
+        &glEnableClientState,
+        &glEnableClientStateIndexedEXT,
+        &glEnableClientStateiEXT,
+        &glEnableIndexedEXT,
+        &glEnableVariantClientStateEXT,
+        &glEnableVertexArrayAttribEXT,
+        &glEnableVertexArrayEXT,
+        &glEnableVertexAttribAPPLE,
+        &glEnableVertexAttribArray,
+        &glEnableVertexAttribArrayARB,
+        &glEnablei,
+        &glEnd,
+        &glEndConditionalRender,
+        &glEndConditionalRenderNV,
+        &glEndConditionalRenderNVX,
+        &glEndFragmentShaderATI,
+        &glEndList,
+        &glEndOcclusionQueryNV,
+        &glEndPerfMonitorAMD,
+        &glEndPerfQueryINTEL,
+        &glEndQuery,
+        &glEndQueryARB,
+        &glEndQueryIndexed,
+        &glEndTransformFeedback,
+        &glEndTransformFeedbackEXT,
+        &glEndTransformFeedbackNV,
+        &glEndVertexShaderEXT,
+        &glEndVideoCaptureNV,
+        &glEvalCoord1d,
+        &glEvalCoord1dv,
+        &glEvalCoord1f,
+        &glEvalCoord1fv,
+        &glEvalCoord1xOES,
+        &glEvalCoord1xvOES,
+        &glEvalCoord2d,
+        &glEvalCoord2dv,
+        &glEvalCoord2f,
+        &glEvalCoord2fv,
+        &glEvalCoord2xOES,
+        &glEvalCoord2xvOES,
+        &glEvalMapsNV,
+        &glEvalMesh1,
+        &glEvalMesh2,
+        &glEvalPoint1,
+        &glEvalPoint2,
+        &glExecuteProgramNV,
+        &glExtractComponentEXT,
+        &glFeedbackBuffer,
+        &glFeedbackBufferxOES,
+        &glFenceSync,
+        &glFinalCombinerInputNV,
+        &glFinish,
+        &glFinishAsyncSGIX,
+        &glFinishFenceAPPLE,
+        &glFinishFenceNV,
+        &glFinishObjectAPPLE,
+        &glFinishTextureSUNX,
+        &glFlush,
+        &glFlushMappedBufferRange,
+        &glFlushMappedBufferRangeAPPLE,
+        &glFlushMappedNamedBufferRangeEXT,
+        &glFlushPixelDataRangeNV,
+        &glFlushRasterSGIX,
+        &glFlushStaticDataIBM,
+        &glFlushVertexArrayRangeAPPLE,
+        &glFlushVertexArrayRangeNV,
+        &glFogCoordFormatNV,
+        &glFogCoordPointer,
+        &glFogCoordPointerEXT,
+        &glFogCoordPointerListIBM,
+        &glFogCoordd,
+        &glFogCoorddEXT,
+        &glFogCoorddv,
+        &glFogCoorddvEXT,
+        &glFogCoordf,
+        &glFogCoordfEXT,
+        &glFogCoordfv,
+        &glFogCoordfvEXT,
+        &glFogCoordhNV,
+        &glFogCoordhvNV,
+        &glFogFuncSGIS,
+        &glFogf,
+        &glFogfv,
+        &glFogi,
+        &glFogiv,
+        &glFogxOES,
+        &glFogxvOES,
+        &glFragmentColorMaterialSGIX,
+        &glFragmentLightModelfSGIX,
+        &glFragmentLightModelfvSGIX,
+        &glFragmentLightModeliSGIX,
+        &glFragmentLightModelivSGIX,
+        &glFragmentLightfSGIX,
+        &glFragmentLightfvSGIX,
+        &glFragmentLightiSGIX,
+        &glFragmentLightivSGIX,
+        &glFragmentMaterialfSGIX,
+        &glFragmentMaterialfvSGIX,
+        &glFragmentMaterialiSGIX,
+        &glFragmentMaterialivSGIX,
+        &glFrameTerminatorGREMEDY,
+        &glFrameZoomSGIX,
+        &glFramebufferDrawBufferEXT,
+        &glFramebufferDrawBuffersEXT,
+        &glFramebufferParameteri,
+        &glFramebufferReadBufferEXT,
+        &glFramebufferRenderbuffer,
+        &glFramebufferRenderbufferEXT,
+        &glFramebufferTexture,
+        &glFramebufferTexture1D,
+        &glFramebufferTexture1DEXT,
+        &glFramebufferTexture2D,
+        &glFramebufferTexture2DEXT,
+        &glFramebufferTexture3D,
+        &glFramebufferTexture3DEXT,
+        &glFramebufferTextureARB,
+        &glFramebufferTextureEXT,
+        &glFramebufferTextureFaceARB,
+        &glFramebufferTextureFaceEXT,
+        &glFramebufferTextureLayer,
+        &glFramebufferTextureLayerARB,
+        &glFramebufferTextureLayerEXT,
+        &glFreeObjectBufferATI,
+        &glFrontFace,
+        &glFrustum,
+        &glFrustumfOES,
+        &glFrustumxOES,
+        &glGenAsyncMarkersSGIX,
+        &glGenBuffers,
+        &glGenBuffersARB,
+        &glGenFencesAPPLE,
+        &glGenFencesNV,
+        &glGenFragmentShadersATI,
+        &glGenFramebuffers,
+        &glGenFramebuffersEXT,
+        &glGenLists,
+        &glGenNamesAMD,
+        &glGenOcclusionQueriesNV,
+        &glGenPathsNV,
+        &glGenPerfMonitorsAMD,
+        &glGenProgramPipelines,
+        &glGenProgramsARB,
+        &glGenProgramsNV,
+        &glGenQueries,
+        &glGenQueriesARB,
+        &glGenRenderbuffers,
+        &glGenRenderbuffersEXT,
+        &glGenSamplers,
+        &glGenSymbolsEXT,
+        &glGenTextures,
+        &glGenTexturesEXT,
+        &glGenTransformFeedbacks,
+        &glGenTransformFeedbacksNV,
+        &glGenVertexArrays,
+        &glGenVertexArraysAPPLE,
+        &glGenVertexShadersEXT,
+        &glGenerateMipmap,
+        &glGenerateMipmapEXT,
+        &glGenerateMultiTexMipmapEXT,
+        &glGenerateTextureMipmapEXT,
+        &glGetActiveAtomicCounterBufferiv,
+        &glGetActiveAttrib,
+        &glGetActiveAttribARB,
+        &glGetActiveSubroutineName,
+        &glGetActiveSubroutineUniformName,
+        &glGetActiveSubroutineUniformiv,
+        &glGetActiveUniform,
+        &glGetActiveUniformARB,
+        &glGetActiveUniformBlockName,
+        &glGetActiveUniformBlockiv,
+        &glGetActiveUniformName,
+        &glGetActiveUniformsiv,
+        &glGetActiveVaryingNV,
+        &glGetArrayObjectfvATI,
+        &glGetArrayObjectivATI,
+        &glGetAttachedObjectsARB,
+        &glGetAttachedShaders,
+        &glGetAttribLocation,
+        &glGetAttribLocationARB,
+        &glGetBooleanIndexedvEXT,
+        &glGetBooleani_v,
+        &glGetBooleanv,
+        &glGetBufferParameteri64v,
+        &glGetBufferParameteriv,
+        &glGetBufferParameterivARB,
+        &glGetBufferParameterui64vNV,
+        &glGetBufferPointerv,
+        &glGetBufferPointervARB,
+        &glGetBufferSubData,
+        &glGetBufferSubDataARB,
+        &glGetClipPlane,
+        &glGetClipPlanefOES,
+        &glGetClipPlanexOES,
+        &glGetColorTable,
+        &glGetColorTableEXT,
+        &glGetColorTableParameterfv,
+        &glGetColorTableParameterfvEXT,
+        &glGetColorTableParameterfvSGI,
+        &glGetColorTableParameteriv,
+        &glGetColorTableParameterivEXT,
+        &glGetColorTableParameterivSGI,
+        &glGetColorTableSGI,
+        &glGetCombinerInputParameterfvNV,
+        &glGetCombinerInputParameterivNV,
+        &glGetCombinerOutputParameterfvNV,
+        &glGetCombinerOutputParameterivNV,
+        &glGetCombinerStageParameterfvNV,
+        &glGetCompressedMultiTexImageEXT,
+        &glGetCompressedTexImage,
+        &glGetCompressedTexImageARB,
+        &glGetCompressedTextureImageEXT,
+        &glGetConvolutionFilter,
+        &glGetConvolutionFilterEXT,
+        &glGetConvolutionParameterfv,
+        &glGetConvolutionParameterfvEXT,
+        &glGetConvolutionParameteriv,
+        &glGetConvolutionParameterivEXT,
+        &glGetConvolutionParameterxvOES,
+        &glGetDebugMessageLog,
+        &glGetDebugMessageLogAMD,
+        &glGetDebugMessageLogARB,
+        &glGetDetailTexFuncSGIS,
+        &glGetDoubleIndexedvEXT,
+        &glGetDoublei_v,
+        &glGetDoublei_vEXT,
+        &glGetDoublev,
+        &glGetError,
+        &glGetFenceivNV,
+        &glGetFinalCombinerInputParameterfvNV,
+        &glGetFinalCombinerInputParameterivNV,
+        &glGetFirstPerfQueryIdINTEL,
+        &glGetFixedvOES,
+        &glGetFloatIndexedvEXT,
+        &glGetFloati_v,
+        &glGetFloati_vEXT,
+        &glGetFloatv,
+        &glGetFogFuncSGIS,
+        &glGetFragDataIndex,
+        &glGetFragDataLocation,
+        &glGetFragDataLocationEXT,
+        &glGetFragmentLightfvSGIX,
+        &glGetFragmentLightivSGIX,
+        &glGetFragmentMaterialfvSGIX,
+        &glGetFragmentMaterialivSGIX,
+        &glGetFramebufferAttachmentParameteriv,
+        &glGetFramebufferAttachmentParameterivEXT,
+        &glGetFramebufferParameteriv,
+        &glGetFramebufferParameterivEXT,
+        &glGetGraphicsResetStatusARB,
+        &glGetHandleARB,
+        &glGetHistogram,
+        &glGetHistogramEXT,
+        &glGetHistogramParameterfv,
+        &glGetHistogramParameterfvEXT,
+        &glGetHistogramParameteriv,
+        &glGetHistogramParameterivEXT,
+        &glGetHistogramParameterxvOES,
+        &glGetImageHandleARB,
+        &glGetImageHandleNV,
+        &glGetImageTransformParameterfvHP,
+        &glGetImageTransformParameterivHP,
+        &glGetInfoLogARB,
+        &glGetInstrumentsSGIX,
+        &glGetInteger64i_v,
+        &glGetInteger64v,
+        &glGetIntegerIndexedvEXT,
+        &glGetIntegeri_v,
+        &glGetIntegerui64i_vNV,
+        &glGetIntegerui64vNV,
+        &glGetIntegerv,
+        &glGetInternalformati64v,
+        &glGetInternalformativ,
+        &glGetInvariantBooleanvEXT,
+        &glGetInvariantFloatvEXT,
+        &glGetInvariantIntegervEXT,
+        &glGetLightfv,
+        &glGetLightiv,
+        &glGetLightxOES,
+        &glGetListParameterfvSGIX,
+        &glGetListParameterivSGIX,
+        &glGetLocalConstantBooleanvEXT,
+        &glGetLocalConstantFloatvEXT,
+        &glGetLocalConstantIntegervEXT,
+        &glGetMapAttribParameterfvNV,
+        &glGetMapAttribParameterivNV,
+        &glGetMapControlPointsNV,
+        &glGetMapParameterfvNV,
+        &glGetMapParameterivNV,
+        &glGetMapdv,
+        &glGetMapfv,
+        &glGetMapiv,
+        &glGetMapxvOES,
+        &glGetMaterialfv,
+        &glGetMaterialiv,
+        &glGetMaterialxOES,
+        &glGetMinmax,
+        &glGetMinmaxEXT,
+        &glGetMinmaxParameterfv,
+        &glGetMinmaxParameterfvEXT,
+        &glGetMinmaxParameteriv,
+        &glGetMinmaxParameterivEXT,
+        &glGetMultiTexEnvfvEXT,
+        &glGetMultiTexEnvivEXT,
+        &glGetMultiTexGendvEXT,
+        &glGetMultiTexGenfvEXT,
+        &glGetMultiTexGenivEXT,
+        &glGetMultiTexImageEXT,
+        &glGetMultiTexLevelParameterfvEXT,
+        &glGetMultiTexLevelParameterivEXT,
+        &glGetMultiTexParameterIivEXT,
+        &glGetMultiTexParameterIuivEXT,
+        &glGetMultiTexParameterfvEXT,
+        &glGetMultiTexParameterivEXT,
+        &glGetMultisamplefv,
+        &glGetMultisamplefvNV,
+        &glGetNamedBufferParameterivEXT,
+        &glGetNamedBufferParameterui64vNV,
+        &glGetNamedBufferPointervEXT,
+        &glGetNamedBufferSubDataEXT,
+        &glGetNamedFramebufferAttachmentParameterivEXT,
+        &glGetNamedFramebufferParameterivEXT,
+        &glGetNamedProgramLocalParameterIivEXT,
+        &glGetNamedProgramLocalParameterIuivEXT,
+        &glGetNamedProgramLocalParameterdvEXT,
+        &glGetNamedProgramLocalParameterfvEXT,
+        &glGetNamedProgramStringEXT,
+        &glGetNamedProgramivEXT,
+        &glGetNamedRenderbufferParameterivEXT,
+        &glGetNamedStringARB,
+        &glGetNamedStringivARB,
+        &glGetNextPerfQueryIdINTEL,
+        &glGetObjectBufferfvATI,
+        &glGetObjectBufferivATI,
+        &glGetObjectLabel,
+        &glGetObjectLabelEXT,
+        &glGetObjectParameterfvARB,
+        &glGetObjectParameterivAPPLE,
+        &glGetObjectParameterivARB,
+        &glGetObjectPtrLabel,
+        &glGetOcclusionQueryivNV,
+        &glGetOcclusionQueryuivNV,
+        &glGetPathColorGenfvNV,
+        &glGetPathColorGenivNV,
+        &glGetPathCommandsNV,
+        &glGetPathCoordsNV,
+        &glGetPathDashArrayNV,
+        &glGetPathLengthNV,
+        &glGetPathMetricRangeNV,
+        &glGetPathMetricsNV,
+        &glGetPathParameterfvNV,
+        &glGetPathParameterivNV,
+        &glGetPathSpacingNV,
+        &glGetPathTexGenfvNV,
+        &glGetPathTexGenivNV,
+        &glGetPerfCounterInfoINTEL,
+        &glGetPerfMonitorCounterDataAMD,
+        &glGetPerfMonitorCounterInfoAMD,
+        &glGetPerfMonitorCounterStringAMD,
+        &glGetPerfMonitorCountersAMD,
+        &glGetPerfMonitorGroupStringAMD,
+        &glGetPerfMonitorGroupsAMD,
+        &glGetPerfQueryDataINTEL,
+        &glGetPerfQueryIdByNameINTEL,
+        &glGetPerfQueryInfoINTEL,
+        &glGetPixelMapfv,
+        &glGetPixelMapuiv,
+        &glGetPixelMapusv,
+        &glGetPixelMapxv,
+        &glGetPixelTexGenParameterfvSGIS,
+        &glGetPixelTexGenParameterivSGIS,
+        &glGetPixelTransformParameterfvEXT,
+        &glGetPixelTransformParameterivEXT,
+        &glGetPointerIndexedvEXT,
+        &glGetPointeri_vEXT,
+        &glGetPointerv,
+        &glGetPointervEXT,
+        &glGetPolygonStipple,
+        &glGetProgramBinary,
+        &glGetProgramEnvParameterIivNV,
+        &glGetProgramEnvParameterIuivNV,
+        &glGetProgramEnvParameterdvARB,
+        &glGetProgramEnvParameterfvARB,
+        &glGetProgramInfoLog,
+        &glGetProgramInterfaceiv,
+        &glGetProgramLocalParameterIivNV,
+        &glGetProgramLocalParameterIuivNV,
+        &glGetProgramLocalParameterdvARB,
+        &glGetProgramLocalParameterfvARB,
+        &glGetProgramNamedParameterdvNV,
+        &glGetProgramNamedParameterfvNV,
+        &glGetProgramParameterdvNV,
+        &glGetProgramParameterfvNV,
+        &glGetProgramPipelineInfoLog,
+        &glGetProgramPipelineiv,
+        &glGetProgramResourceIndex,
+        &glGetProgramResourceLocation,
+        &glGetProgramResourceLocationIndex,
+        &glGetProgramResourceName,
+        &glGetProgramResourceiv,
+        &glGetProgramStageiv,
+        &glGetProgramStringARB,
+        &glGetProgramStringNV,
+        &glGetProgramSubroutineParameteruivNV,
+        &glGetProgramiv,
+        &glGetProgramivARB,
+        &glGetProgramivNV,
+        &glGetQueryIndexediv,
+        &glGetQueryObjecti64v,
+        &glGetQueryObjecti64vEXT,
+        &glGetQueryObjectiv,
+        &glGetQueryObjectivARB,
+        &glGetQueryObjectui64v,
+        &glGetQueryObjectui64vEXT,
+        &glGetQueryObjectuiv,
+        &glGetQueryObjectuivARB,
+        &glGetQueryiv,
+        &glGetQueryivARB,
+        &glGetRenderbufferParameteriv,
+        &glGetRenderbufferParameterivEXT,
+        &glGetSamplerParameterIiv,
+        &glGetSamplerParameterIuiv,
+        &glGetSamplerParameterfv,
+        &glGetSamplerParameteriv,
+        &glGetSeparableFilter,
+        &glGetSeparableFilterEXT,
+        &glGetShaderInfoLog,
+        &glGetShaderPrecisionFormat,
+        &glGetShaderSource,
+        &glGetShaderSourceARB,
+        &glGetShaderiv,
+        &glGetSharpenTexFuncSGIS,
+        &glGetString,
+        &glGetStringi,
+        &glGetSubroutineIndex,
+        &glGetSubroutineUniformLocation,
+        &glGetSynciv,
+        &glGetTexBumpParameterfvATI,
+        &glGetTexBumpParameterivATI,
+        &glGetTexEnvfv,
+        &glGetTexEnviv,
+        &glGetTexEnvxvOES,
+        &glGetTexFilterFuncSGIS,
+        &glGetTexGendv,
+        &glGetTexGenfv,
+        &glGetTexGeniv,
+        &glGetTexGenxvOES,
+        &glGetTexImage,
+        &glGetTexLevelParameterfv,
+        &glGetTexLevelParameteriv,
+        &glGetTexLevelParameterxvOES,
+        &glGetTexParameterIiv,
+        &glGetTexParameterIivEXT,
+        &glGetTexParameterIuiv,
+        &glGetTexParameterIuivEXT,
+        &glGetTexParameterPointervAPPLE,
+        &glGetTexParameterfv,
+        &glGetTexParameteriv,
+        &glGetTexParameterxvOES,
+        &glGetTextureHandleARB,
+        &glGetTextureHandleNV,
+        &glGetTextureImageEXT,
+        &glGetTextureLevelParameterfvEXT,
+        &glGetTextureLevelParameterivEXT,
+        &glGetTextureParameterIivEXT,
+        &glGetTextureParameterIuivEXT,
+        &glGetTextureParameterfvEXT,
+        &glGetTextureParameterivEXT,
+        &glGetTextureSamplerHandleARB,
+        &glGetTextureSamplerHandleNV,
+        &glGetTrackMatrixivNV,
+        &glGetTransformFeedbackVarying,
+        &glGetTransformFeedbackVaryingEXT,
+        &glGetTransformFeedbackVaryingNV,
+        &glGetUniformBlockIndex,
+        &glGetUniformBufferSizeEXT,
+        &glGetUniformIndices,
+        &glGetUniformLocation,
+        &glGetUniformLocationARB,
+        &glGetUniformOffsetEXT,
+        &glGetUniformSubroutineuiv,
+        &glGetUniformdv,
+        &glGetUniformfv,
+        &glGetUniformfvARB,
+        &glGetUniformi64vNV,
+        &glGetUniformiv,
+        &glGetUniformivARB,
+        &glGetUniformui64vNV,
+        &glGetUniformuiv,
+        &glGetUniformuivEXT,
+        &glGetVariantArrayObjectfvATI,
+        &glGetVariantArrayObjectivATI,
+        &glGetVariantBooleanvEXT,
+        &glGetVariantFloatvEXT,
+        &glGetVariantIntegervEXT,
+        &glGetVariantPointervEXT,
+        &glGetVaryingLocationNV,
+        &glGetVertexArrayIntegeri_vEXT,
+        &glGetVertexArrayIntegervEXT,
+        &glGetVertexArrayPointeri_vEXT,
+        &glGetVertexArrayPointervEXT,
+        &glGetVertexAttribArrayObjectfvATI,
+        &glGetVertexAttribArrayObjectivATI,
+        &glGetVertexAttribIiv,
+        &glGetVertexAttribIivEXT,
+        &glGetVertexAttribIuiv,
+        &glGetVertexAttribIuivEXT,
+        &glGetVertexAttribLdv,
+        &glGetVertexAttribLdvEXT,
+        &glGetVertexAttribLi64vNV,
+        &glGetVertexAttribLui64vARB,
+        &glGetVertexAttribLui64vNV,
+        &glGetVertexAttribPointerv,
+        &glGetVertexAttribPointervARB,
+        &glGetVertexAttribPointervNV,
+        &glGetVertexAttribdv,
+        &glGetVertexAttribdvARB,
+        &glGetVertexAttribdvNV,
+        &glGetVertexAttribfv,
+        &glGetVertexAttribfvARB,
+        &glGetVertexAttribfvNV,
+        &glGetVertexAttribiv,
+        &glGetVertexAttribivARB,
+        &glGetVertexAttribivNV,
+        &glGetVideoCaptureStreamdvNV,
+        &glGetVideoCaptureStreamfvNV,
+        &glGetVideoCaptureStreamivNV,
+        &glGetVideoCaptureivNV,
+        &glGetVideoi64vNV,
+        &glGetVideoivNV,
+        &glGetVideoui64vNV,
+        &glGetVideouivNV,
+        &glGetnColorTableARB,
+        &glGetnCompressedTexImageARB,
+        &glGetnConvolutionFilterARB,
+        &glGetnHistogramARB,
+        &glGetnMapdvARB,
+        &glGetnMapfvARB,
+        &glGetnMapivARB,
+        &glGetnMinmaxARB,
+        &glGetnPixelMapfvARB,
+        &glGetnPixelMapuivARB,
+        &glGetnPixelMapusvARB,
+        &glGetnPolygonStippleARB,
+        &glGetnSeparableFilterARB,
+        &glGetnTexImageARB,
+        &glGetnUniformdvARB,
+        &glGetnUniformfvARB,
+        &glGetnUniformivARB,
+        &glGetnUniformuivARB,
+        &glGlobalAlphaFactorbSUN,
+        &glGlobalAlphaFactordSUN,
+        &glGlobalAlphaFactorfSUN,
+        &glGlobalAlphaFactoriSUN,
+        &glGlobalAlphaFactorsSUN,
+        &glGlobalAlphaFactorubSUN,
+        &glGlobalAlphaFactoruiSUN,
+        &glGlobalAlphaFactorusSUN,
+        &glHint,
+        &glHintPGI,
+        &glHistogram,
+        &glHistogramEXT,
+        &glIglooInterfaceSGIX,
+        &glImageTransformParameterfHP,
+        &glImageTransformParameterfvHP,
+        &glImageTransformParameteriHP,
+        &glImageTransformParameterivHP,
+        &glImportSyncEXT,
+        &glIndexFormatNV,
+        &glIndexFuncEXT,
+        &glIndexMask,
+        &glIndexMaterialEXT,
+        &glIndexPointer,
+        &glIndexPointerEXT,
+        &glIndexPointerListIBM,
+        &glIndexd,
+        &glIndexdv,
+        &glIndexf,
+        &glIndexfv,
+        &glIndexi,
+        &glIndexiv,
+        &glIndexs,
+        &glIndexsv,
+        &glIndexub,
+        &glIndexubv,
+        &glIndexxOES,
+        &glIndexxvOES,
+        &glInitNames,
+        &glInsertComponentEXT,
+        &glInsertEventMarkerEXT,
+        &glInstrumentsBufferSGIX,
+        &glInterleavedArrays,
+        &glInterpolatePathsNV,
+        &glInvalidateBufferData,
+        &glInvalidateBufferSubData,
+        &glInvalidateFramebuffer,
+        &glInvalidateSubFramebuffer,
+        &glInvalidateTexImage,
+        &glInvalidateTexSubImage,
+        &glIsAsyncMarkerSGIX,
+        &glIsBuffer,
+        &glIsBufferARB,
+        &glIsBufferResidentNV,
+        &glIsEnabled,
+        &glIsEnabledIndexedEXT,
+        &glIsEnabledi,
+        &glIsFenceAPPLE,
+        &glIsFenceNV,
+        &glIsFramebuffer,
+        &glIsFramebufferEXT,
+        &glIsImageHandleResidentARB,
+        &glIsImageHandleResidentNV,
+        &glIsList,
+        &glIsNameAMD,
+        &glIsNamedBufferResidentNV,
+        &glIsNamedStringARB,
+        &glIsObjectBufferATI,
+        &glIsOcclusionQueryNV,
+        &glIsPathNV,
+        &glIsPointInFillPathNV,
+        &glIsPointInStrokePathNV,
+        &glIsProgram,
+        &glIsProgramARB,
+        &glIsProgramNV,
+        &glIsProgramPipeline,
+        &glIsQuery,
+        &glIsQueryARB,
+        &glIsRenderbuffer,
+        &glIsRenderbufferEXT,
+        &glIsSampler,
+        &glIsShader,
+        &glIsSync,
+        &glIsTexture,
+        &glIsTextureEXT,
+        &glIsTextureHandleResidentARB,
+        &glIsTextureHandleResidentNV,
+        &glIsTransformFeedback,
+        &glIsTransformFeedbackNV,
+        &glIsVariantEnabledEXT,
+        &glIsVertexArray,
+        &glIsVertexArrayAPPLE,
+        &glIsVertexAttribEnabledAPPLE,
+        &glLabelObjectEXT,
+        &glLightEnviSGIX,
+        &glLightModelf,
+        &glLightModelfv,
+        &glLightModeli,
+        &glLightModeliv,
+        &glLightModelxOES,
+        &glLightModelxvOES,
+        &glLightf,
+        &glLightfv,
+        &glLighti,
+        &glLightiv,
+        &glLightxOES,
+        &glLightxvOES,
+        &glLineStipple,
+        &glLineWidth,
+        &glLineWidthxOES,
+        &glLinkProgram,
+        &glLinkProgramARB,
+        &glListBase,
+        &glListParameterfSGIX,
+        &glListParameterfvSGIX,
+        &glListParameteriSGIX,
+        &glListParameterivSGIX,
+        &glLoadIdentity,
+        &glLoadIdentityDeformationMapSGIX,
+        &glLoadMatrixd,
+        &glLoadMatrixf,
+        &glLoadMatrixxOES,
+        &glLoadName,
+        &glLoadProgramNV,
+        &glLoadTransposeMatrixd,
+        &glLoadTransposeMatrixdARB,
+        &glLoadTransposeMatrixf,
+        &glLoadTransposeMatrixfARB,
+        &glLoadTransposeMatrixxOES,
+        &glLockArraysEXT,
+        &glLogicOp,
+        &glMakeBufferNonResidentNV,
+        &glMakeBufferResidentNV,
+        &glMakeImageHandleNonResidentARB,
+        &glMakeImageHandleNonResidentNV,
+        &glMakeImageHandleResidentARB,
+        &glMakeImageHandleResidentNV,
+        &glMakeNamedBufferNonResidentNV,
+        &glMakeNamedBufferResidentNV,
+        &glMakeTextureHandleNonResidentARB,
+        &glMakeTextureHandleNonResidentNV,
+        &glMakeTextureHandleResidentARB,
+        &glMakeTextureHandleResidentNV,
+        &glMap1d,
+        &glMap1f,
+        &glMap1xOES,
+        &glMap2d,
+        &glMap2f,
+        &glMap2xOES,
+        &glMapBuffer,
+        &glMapBufferARB,
+        &glMapBufferRange,
+        &glMapControlPointsNV,
+        &glMapGrid1d,
+        &glMapGrid1f,
+        &glMapGrid1xOES,
+        &glMapGrid2d,
+        &glMapGrid2f,
+        &glMapGrid2xOES,
+        &glMapNamedBufferEXT,
+        &glMapNamedBufferRangeEXT,
+        &glMapObjectBufferATI,
+        &glMapParameterfvNV,
+        &glMapParameterivNV,
+        &glMapTexture2DINTEL,
+        &glMapVertexAttrib1dAPPLE,
+        &glMapVertexAttrib1fAPPLE,
+        &glMapVertexAttrib2dAPPLE,
+        &glMapVertexAttrib2fAPPLE,
+        &glMaterialf,
+        &glMaterialfv,
+        &glMateriali,
+        &glMaterialiv,
+        &glMaterialxOES,
+        &glMaterialxvOES,
+        &glMatrixFrustumEXT,
+        &glMatrixIndexPointerARB,
+        &glMatrixIndexubvARB,
+        &glMatrixIndexuivARB,
+        &glMatrixIndexusvARB,
+        &glMatrixLoadIdentityEXT,
+        &glMatrixLoadTransposedEXT,
+        &glMatrixLoadTransposefEXT,
+        &glMatrixLoaddEXT,
+        &glMatrixLoadfEXT,
+        &glMatrixMode,
+        &glMatrixMultTransposedEXT,
+        &glMatrixMultTransposefEXT,
+        &glMatrixMultdEXT,
+        &glMatrixMultfEXT,
+        &glMatrixOrthoEXT,
+        &glMatrixPopEXT,
+        &glMatrixPushEXT,
+        &glMatrixRotatedEXT,
+        &glMatrixRotatefEXT,
+        &glMatrixScaledEXT,
+        &glMatrixScalefEXT,
+        &glMatrixTranslatedEXT,
+        &glMatrixTranslatefEXT,
+        &glMemoryBarrier,
+        &glMemoryBarrierEXT,
+        &glMinSampleShading,
+        &glMinSampleShadingARB,
+        &glMinmax,
+        &glMinmaxEXT,
+        &glMultMatrixd,
+        &glMultMatrixf,
+        &glMultMatrixxOES,
+        &glMultTransposeMatrixd,
+        &glMultTransposeMatrixdARB,
+        &glMultTransposeMatrixf,
+        &glMultTransposeMatrixfARB,
+        &glMultTransposeMatrixxOES,
+        &glMultiDrawArrays,
+        &glMultiDrawArraysEXT,
+        &glMultiDrawArraysIndirect,
+        &glMultiDrawArraysIndirectAMD,
+        &glMultiDrawArraysIndirectBindlessNV,
+        &glMultiDrawArraysIndirectCountARB,
+        &glMultiDrawElementArrayAPPLE,
+        &glMultiDrawElements,
+        &glMultiDrawElementsBaseVertex,
+        &glMultiDrawElementsEXT,
+        &glMultiDrawElementsIndirect,
+        &glMultiDrawElementsIndirectAMD,
+        &glMultiDrawElementsIndirectBindlessNV,
+        &glMultiDrawElementsIndirectCountARB,
+        &glMultiDrawRangeElementArrayAPPLE,
+        &glMultiModeDrawArraysIBM,
+        &glMultiModeDrawElementsIBM,
+        &glMultiTexBufferEXT,
+        &glMultiTexCoord1bOES,
+        &glMultiTexCoord1bvOES,
+        &glMultiTexCoord1d,
+        &glMultiTexCoord1dARB,
+        &glMultiTexCoord1dv,
+        &glMultiTexCoord1dvARB,
+        &glMultiTexCoord1f,
+        &glMultiTexCoord1fARB,
+        &glMultiTexCoord1fv,
+        &glMultiTexCoord1fvARB,
+        &glMultiTexCoord1hNV,
+        &glMultiTexCoord1hvNV,
+        &glMultiTexCoord1i,
+        &glMultiTexCoord1iARB,
+        &glMultiTexCoord1iv,
+        &glMultiTexCoord1ivARB,
+        &glMultiTexCoord1s,
+        &glMultiTexCoord1sARB,
+        &glMultiTexCoord1sv,
+        &glMultiTexCoord1svARB,
+        &glMultiTexCoord1xOES,
+        &glMultiTexCoord1xvOES,
+        &glMultiTexCoord2bOES,
+        &glMultiTexCoord2bvOES,
+        &glMultiTexCoord2d,
+        &glMultiTexCoord2dARB,
+        &glMultiTexCoord2dv,
+        &glMultiTexCoord2dvARB,
+        &glMultiTexCoord2f,
+        &glMultiTexCoord2fARB,
+        &glMultiTexCoord2fv,
+        &glMultiTexCoord2fvARB,
+        &glMultiTexCoord2hNV,
+        &glMultiTexCoord2hvNV,
+        &glMultiTexCoord2i,
+        &glMultiTexCoord2iARB,
+        &glMultiTexCoord2iv,
+        &glMultiTexCoord2ivARB,
+        &glMultiTexCoord2s,
+        &glMultiTexCoord2sARB,
+        &glMultiTexCoord2sv,
+        &glMultiTexCoord2svARB,
+        &glMultiTexCoord2xOES,
+        &glMultiTexCoord2xvOES,
+        &glMultiTexCoord3bOES,
+        &glMultiTexCoord3bvOES,
+        &glMultiTexCoord3d,
+        &glMultiTexCoord3dARB,
+        &glMultiTexCoord3dv,
+        &glMultiTexCoord3dvARB,
+        &glMultiTexCoord3f,
+        &glMultiTexCoord3fARB,
+        &glMultiTexCoord3fv,
+        &glMultiTexCoord3fvARB,
+        &glMultiTexCoord3hNV,
+        &glMultiTexCoord3hvNV,
+        &glMultiTexCoord3i,
+        &glMultiTexCoord3iARB,
+        &glMultiTexCoord3iv,
+        &glMultiTexCoord3ivARB,
+        &glMultiTexCoord3s,
+        &glMultiTexCoord3sARB,
+        &glMultiTexCoord3sv,
+        &glMultiTexCoord3svARB,
+        &glMultiTexCoord3xOES,
+        &glMultiTexCoord3xvOES,
+        &glMultiTexCoord4bOES,
+        &glMultiTexCoord4bvOES,
+        &glMultiTexCoord4d,
+        &glMultiTexCoord4dARB,
+        &glMultiTexCoord4dv,
+        &glMultiTexCoord4dvARB,
+        &glMultiTexCoord4f,
+        &glMultiTexCoord4fARB,
+        &glMultiTexCoord4fv,
+        &glMultiTexCoord4fvARB,
+        &glMultiTexCoord4hNV,
+        &glMultiTexCoord4hvNV,
+        &glMultiTexCoord4i,
+        &glMultiTexCoord4iARB,
+        &glMultiTexCoord4iv,
+        &glMultiTexCoord4ivARB,
+        &glMultiTexCoord4s,
+        &glMultiTexCoord4sARB,
+        &glMultiTexCoord4sv,
+        &glMultiTexCoord4svARB,
+        &glMultiTexCoord4xOES,
+        &glMultiTexCoord4xvOES,
+        &glMultiTexCoordP1ui,
+        &glMultiTexCoordP1uiv,
+        &glMultiTexCoordP2ui,
+        &glMultiTexCoordP2uiv,
+        &glMultiTexCoordP3ui,
+        &glMultiTexCoordP3uiv,
+        &glMultiTexCoordP4ui,
+        &glMultiTexCoordP4uiv,
+        &glMultiTexCoordPointerEXT,
+        &glMultiTexEnvfEXT,
+        &glMultiTexEnvfvEXT,
+        &glMultiTexEnviEXT,
+        &glMultiTexEnvivEXT,
+        &glMultiTexGendEXT,
+        &glMultiTexGendvEXT,
+        &glMultiTexGenfEXT,
+        &glMultiTexGenfvEXT,
+        &glMultiTexGeniEXT,
+        &glMultiTexGenivEXT,
+        &glMultiTexImage1DEXT,
+        &glMultiTexImage2DEXT,
+        &glMultiTexImage3DEXT,
+        &glMultiTexParameterIivEXT,
+        &glMultiTexParameterIuivEXT,
+        &glMultiTexParameterfEXT,
+        &glMultiTexParameterfvEXT,
+        &glMultiTexParameteriEXT,
+        &glMultiTexParameterivEXT,
+        &glMultiTexRenderbufferEXT,
+        &glMultiTexSubImage1DEXT,
+        &glMultiTexSubImage2DEXT,
+        &glMultiTexSubImage3DEXT,
+        &glNamedBufferDataEXT,
+        &glNamedBufferStorageEXT,
+        &glNamedBufferSubDataEXT,
+        &glNamedCopyBufferSubDataEXT,
+        &glNamedFramebufferParameteriEXT,
+        &glNamedFramebufferRenderbufferEXT,
+        &glNamedFramebufferTexture1DEXT,
+        &glNamedFramebufferTexture2DEXT,
+        &glNamedFramebufferTexture3DEXT,
+        &glNamedFramebufferTextureEXT,
+        &glNamedFramebufferTextureFaceEXT,
+        &glNamedFramebufferTextureLayerEXT,
+        &glNamedProgramLocalParameter4dEXT,
+        &glNamedProgramLocalParameter4dvEXT,
+        &glNamedProgramLocalParameter4fEXT,
+        &glNamedProgramLocalParameter4fvEXT,
+        &glNamedProgramLocalParameterI4iEXT,
+        &glNamedProgramLocalParameterI4ivEXT,
+        &glNamedProgramLocalParameterI4uiEXT,
+        &glNamedProgramLocalParameterI4uivEXT,
+        &glNamedProgramLocalParameters4fvEXT,
+        &glNamedProgramLocalParametersI4ivEXT,
+        &glNamedProgramLocalParametersI4uivEXT,
+        &glNamedProgramStringEXT,
+        &glNamedRenderbufferStorageEXT,
+        &glNamedRenderbufferStorageMultisampleCoverageEXT,
+        &glNamedRenderbufferStorageMultisampleEXT,
+        &glNamedStringARB,
+        &glNewList,
+        &glNewObjectBufferATI,
+        &glNormal3b,
+        &glNormal3bv,
+        &glNormal3d,
+        &glNormal3dv,
+        &glNormal3f,
+        &glNormal3fVertex3fSUN,
+        &glNormal3fVertex3fvSUN,
+        &glNormal3fv,
+        &glNormal3hNV,
+        &glNormal3hvNV,
+        &glNormal3i,
+        &glNormal3iv,
+        &glNormal3s,
+        &glNormal3sv,
+        &glNormal3xOES,
+        &glNormal3xvOES,
+        &glNormalFormatNV,
+        &glNormalP3ui,
+        &glNormalP3uiv,
+        &glNormalPointer,
+        &glNormalPointerEXT,
+        &glNormalPointerListIBM,
+        &glNormalPointervINTEL,
+        &glNormalStream3bATI,
+        &glNormalStream3bvATI,
+        &glNormalStream3dATI,
+        &glNormalStream3dvATI,
+        &glNormalStream3fATI,
+        &glNormalStream3fvATI,
+        &glNormalStream3iATI,
+        &glNormalStream3ivATI,
+        &glNormalStream3sATI,
+        &glNormalStream3svATI,
+        &glObjectLabel,
+        &glObjectPtrLabel,
+        &glObjectPurgeableAPPLE,
+        &glObjectUnpurgeableAPPLE,
+        &glOrtho,
+        &glOrthofOES,
+        &glOrthoxOES,
+        &glPNTrianglesfATI,
+        &glPNTrianglesiATI,
+        &glPassTexCoordATI,
+        &glPassThrough,
+        &glPassThroughxOES,
+        &glPatchParameterfv,
+        &glPatchParameteri,
+        &glPathColorGenNV,
+        &glPathCommandsNV,
+        &glPathCoordsNV,
+        &glPathCoverDepthFuncNV,
+        &glPathDashArrayNV,
+        &glPathFogGenNV,
+        &glPathGlyphRangeNV,
+        &glPathGlyphsNV,
+        &glPathParameterfNV,
+        &glPathParameterfvNV,
+        &glPathParameteriNV,
+        &glPathParameterivNV,
+        &glPathStencilDepthOffsetNV,
+        &glPathStencilFuncNV,
+        &glPathStringNV,
+        &glPathSubCommandsNV,
+        &glPathSubCoordsNV,
+        &glPathTexGenNV,
+        &glPauseTransformFeedback,
+        &glPauseTransformFeedbackNV,
+        &glPixelDataRangeNV,
+        &glPixelMapfv,
+        &glPixelMapuiv,
+        &glPixelMapusv,
+        &glPixelMapx,
+        &glPixelStoref,
+        &glPixelStorei,
+        &glPixelStorex,
+        &glPixelTexGenParameterfSGIS,
+        &glPixelTexGenParameterfvSGIS,
+        &glPixelTexGenParameteriSGIS,
+        &glPixelTexGenParameterivSGIS,
+        &glPixelTexGenSGIX,
+        &glPixelTransferf,
+        &glPixelTransferi,
+        &glPixelTransferxOES,
+        &glPixelTransformParameterfEXT,
+        &glPixelTransformParameterfvEXT,
+        &glPixelTransformParameteriEXT,
+        &glPixelTransformParameterivEXT,
+        &glPixelZoom,
+        &glPixelZoomxOES,
+        &glPointAlongPathNV,
+        &glPointParameterf,
+        &glPointParameterfARB,
+        &glPointParameterfEXT,
+        &glPointParameterfSGIS,
+        &glPointParameterfv,
+        &glPointParameterfvARB,
+        &glPointParameterfvEXT,
+        &glPointParameterfvSGIS,
+        &glPointParameteri,
+        &glPointParameteriNV,
+        &glPointParameteriv,
+        &glPointParameterivNV,
+        &glPointParameterxvOES,
+        &glPointSize,
+        &glPointSizexOES,
+        &glPollAsyncSGIX,
+        &glPollInstrumentsSGIX,
+        &glPolygonMode,
+        &glPolygonOffset,
+        &glPolygonOffsetEXT,
+        &glPolygonOffsetxOES,
+        &glPolygonStipple,
+        &glPopAttrib,
+        &glPopClientAttrib,
+        &glPopDebugGroup,
+        &glPopGroupMarkerEXT,
+        &glPopMatrix,
+        &glPopName,
+        &glPresentFrameDualFillNV,
+        &glPresentFrameKeyedNV,
+        &glPrimitiveRestartIndex,
+        &glPrimitiveRestartIndexNV,
+        &glPrimitiveRestartNV,
+        &glPrioritizeTextures,
+        &glPrioritizeTexturesEXT,
+        &glPrioritizeTexturesxOES,
+        &glProgramBinary,
+        &glProgramBufferParametersIivNV,
+        &glProgramBufferParametersIuivNV,
+        &glProgramBufferParametersfvNV,
+        &glProgramEnvParameter4dARB,
+        &glProgramEnvParameter4dvARB,
+        &glProgramEnvParameter4fARB,
+        &glProgramEnvParameter4fvARB,
+        &glProgramEnvParameterI4iNV,
+        &glProgramEnvParameterI4ivNV,
+        &glProgramEnvParameterI4uiNV,
+        &glProgramEnvParameterI4uivNV,
+        &glProgramEnvParameters4fvEXT,
+        &glProgramEnvParametersI4ivNV,
+        &glProgramEnvParametersI4uivNV,
+        &glProgramLocalParameter4dARB,
+        &glProgramLocalParameter4dvARB,
+        &glProgramLocalParameter4fARB,
+        &glProgramLocalParameter4fvARB,
+        &glProgramLocalParameterI4iNV,
+        &glProgramLocalParameterI4ivNV,
+        &glProgramLocalParameterI4uiNV,
+        &glProgramLocalParameterI4uivNV,
+        &glProgramLocalParameters4fvEXT,
+        &glProgramLocalParametersI4ivNV,
+        &glProgramLocalParametersI4uivNV,
+        &glProgramNamedParameter4dNV,
+        &glProgramNamedParameter4dvNV,
+        &glProgramNamedParameter4fNV,
+        &glProgramNamedParameter4fvNV,
+        &glProgramParameter4dNV,
+        &glProgramParameter4dvNV,
+        &glProgramParameter4fNV,
+        &glProgramParameter4fvNV,
+        &glProgramParameteri,
+        &glProgramParameteriARB,
+        &glProgramParameteriEXT,
+        &glProgramParameters4dvNV,
+        &glProgramParameters4fvNV,
+        &glProgramStringARB,
+        &glProgramSubroutineParametersuivNV,
+        &glProgramUniform1d,
+        &glProgramUniform1dEXT,
+        &glProgramUniform1dv,
+        &glProgramUniform1dvEXT,
+        &glProgramUniform1f,
+        &glProgramUniform1fEXT,
+        &glProgramUniform1fv,
+        &glProgramUniform1fvEXT,
+        &glProgramUniform1i,
+        &glProgramUniform1i64NV,
+        &glProgramUniform1i64vNV,
+        &glProgramUniform1iEXT,
+        &glProgramUniform1iv,
+        &glProgramUniform1ivEXT,
+        &glProgramUniform1ui,
+        &glProgramUniform1ui64NV,
+        &glProgramUniform1ui64vNV,
+        &glProgramUniform1uiEXT,
+        &glProgramUniform1uiv,
+        &glProgramUniform1uivEXT,
+        &glProgramUniform2d,
+        &glProgramUniform2dEXT,
+        &glProgramUniform2dv,
+        &glProgramUniform2dvEXT,
+        &glProgramUniform2f,
+        &glProgramUniform2fEXT,
+        &glProgramUniform2fv,
+        &glProgramUniform2fvEXT,
+        &glProgramUniform2i,
+        &glProgramUniform2i64NV,
+        &glProgramUniform2i64vNV,
+        &glProgramUniform2iEXT,
+        &glProgramUniform2iv,
+        &glProgramUniform2ivEXT,
+        &glProgramUniform2ui,
+        &glProgramUniform2ui64NV,
+        &glProgramUniform2ui64vNV,
+        &glProgramUniform2uiEXT,
+        &glProgramUniform2uiv,
+        &glProgramUniform2uivEXT,
+        &glProgramUniform3d,
+        &glProgramUniform3dEXT,
+        &glProgramUniform3dv,
+        &glProgramUniform3dvEXT,
+        &glProgramUniform3f,
+        &glProgramUniform3fEXT,
+        &glProgramUniform3fv,
+        &glProgramUniform3fvEXT,
+        &glProgramUniform3i,
+        &glProgramUniform3i64NV,
+        &glProgramUniform3i64vNV,
+        &glProgramUniform3iEXT,
+        &glProgramUniform3iv,
+        &glProgramUniform3ivEXT,
+        &glProgramUniform3ui,
+        &glProgramUniform3ui64NV,
+        &glProgramUniform3ui64vNV,
+        &glProgramUniform3uiEXT,
+        &glProgramUniform3uiv,
+        &glProgramUniform3uivEXT,
+        &glProgramUniform4d,
+        &glProgramUniform4dEXT,
+        &glProgramUniform4dv,
+        &glProgramUniform4dvEXT,
+        &glProgramUniform4f,
+        &glProgramUniform4fEXT,
+        &glProgramUniform4fv,
+        &glProgramUniform4fvEXT,
+        &glProgramUniform4i,
+        &glProgramUniform4i64NV,
+        &glProgramUniform4i64vNV,
+        &glProgramUniform4iEXT,
+        &glProgramUniform4iv,
+        &glProgramUniform4ivEXT,
+        &glProgramUniform4ui,
+        &glProgramUniform4ui64NV,
+        &glProgramUniform4ui64vNV,
+        &glProgramUniform4uiEXT,
+        &glProgramUniform4uiv,
+        &glProgramUniform4uivEXT,
+        &glProgramUniformHandleui64ARB,
+        &glProgramUniformHandleui64NV,
+        &glProgramUniformHandleui64vARB,
+        &glProgramUniformHandleui64vNV,
+        &glProgramUniformMatrix2dv,
+        &glProgramUniformMatrix2dvEXT,
+        &glProgramUniformMatrix2fv,
+        &glProgramUniformMatrix2fvEXT,
+        &glProgramUniformMatrix2x3dv,
+        &glProgramUniformMatrix2x3dvEXT,
+        &glProgramUniformMatrix2x3fv,
+        &glProgramUniformMatrix2x3fvEXT,
+        &glProgramUniformMatrix2x4dv,
+        &glProgramUniformMatrix2x4dvEXT,
+        &glProgramUniformMatrix2x4fv,
+        &glProgramUniformMatrix2x4fvEXT,
+        &glProgramUniformMatrix3dv,
+        &glProgramUniformMatrix3dvEXT,
+        &glProgramUniformMatrix3fv,
+        &glProgramUniformMatrix3fvEXT,
+        &glProgramUniformMatrix3x2dv,
+        &glProgramUniformMatrix3x2dvEXT,
+        &glProgramUniformMatrix3x2fv,
+        &glProgramUniformMatrix3x2fvEXT,
+        &glProgramUniformMatrix3x4dv,
+        &glProgramUniformMatrix3x4dvEXT,
+        &glProgramUniformMatrix3x4fv,
+        &glProgramUniformMatrix3x4fvEXT,
+        &glProgramUniformMatrix4dv,
+        &glProgramUniformMatrix4dvEXT,
+        &glProgramUniformMatrix4fv,
+        &glProgramUniformMatrix4fvEXT,
+        &glProgramUniformMatrix4x2dv,
+        &glProgramUniformMatrix4x2dvEXT,
+        &glProgramUniformMatrix4x2fv,
+        &glProgramUniformMatrix4x2fvEXT,
+        &glProgramUniformMatrix4x3dv,
+        &glProgramUniformMatrix4x3dvEXT,
+        &glProgramUniformMatrix4x3fv,
+        &glProgramUniformMatrix4x3fvEXT,
+        &glProgramUniformui64NV,
+        &glProgramUniformui64vNV,
+        &glProgramVertexLimitNV,
+        &glProvokingVertex,
+        &glProvokingVertexEXT,
+        &glPushAttrib,
+        &glPushClientAttrib,
+        &glPushClientAttribDefaultEXT,
+        &glPushDebugGroup,
+        &glPushGroupMarkerEXT,
+        &glPushMatrix,
+        &glPushName,
+        &glQueryCounter,
+        &glQueryMatrixxOES,
+        &glQueryObjectParameteruiAMD,
+        &glRasterPos2d,
+        &glRasterPos2dv,
+        &glRasterPos2f,
+        &glRasterPos2fv,
+        &glRasterPos2i,
+        &glRasterPos2iv,
+        &glRasterPos2s,
+        &glRasterPos2sv,
+        &glRasterPos2xOES,
+        &glRasterPos2xvOES,
+        &glRasterPos3d,
+        &glRasterPos3dv,
+        &glRasterPos3f,
+        &glRasterPos3fv,
+        &glRasterPos3i,
+        &glRasterPos3iv,
+        &glRasterPos3s,
+        &glRasterPos3sv,
+        &glRasterPos3xOES,
+        &glRasterPos3xvOES,
+        &glRasterPos4d,
+        &glRasterPos4dv,
+        &glRasterPos4f,
+        &glRasterPos4fv,
+        &glRasterPos4i,
+        &glRasterPos4iv,
+        &glRasterPos4s,
+        &glRasterPos4sv,
+        &glRasterPos4xOES,
+        &glRasterPos4xvOES,
+        &glReadBuffer,
+        &glReadInstrumentsSGIX,
+        &glReadPixels,
+        &glReadnPixelsARB,
+        &glRectd,
+        &glRectdv,
+        &glRectf,
+        &glRectfv,
+        &glRecti,
+        &glRectiv,
+        &glRects,
+        &glRectsv,
+        &glRectxOES,
+        &glRectxvOES,
+        &glReferencePlaneSGIX,
+        &glReleaseShaderCompiler,
+        &glRenderMode,
+        &glRenderbufferStorage,
+        &glRenderbufferStorageEXT,
+        &glRenderbufferStorageMultisample,
+        &glRenderbufferStorageMultisampleCoverageNV,
+        &glRenderbufferStorageMultisampleEXT,
+        &glReplacementCodePointerSUN,
+        &glReplacementCodeubSUN,
+        &glReplacementCodeubvSUN,
+        &glReplacementCodeuiColor3fVertex3fSUN,
+        &glReplacementCodeuiColor3fVertex3fvSUN,
+        &glReplacementCodeuiColor4fNormal3fVertex3fSUN,
+        &glReplacementCodeuiColor4fNormal3fVertex3fvSUN,
+        &glReplacementCodeuiColor4ubVertex3fSUN,
+        &glReplacementCodeuiColor4ubVertex3fvSUN,
+        &glReplacementCodeuiNormal3fVertex3fSUN,
+        &glReplacementCodeuiNormal3fVertex3fvSUN,
+        &glReplacementCodeuiSUN,
+        &glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN,
+        &glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN,
+        &glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN,
+        &glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN,
+        &glReplacementCodeuiTexCoord2fVertex3fSUN,
+        &glReplacementCodeuiTexCoord2fVertex3fvSUN,
+        &glReplacementCodeuiVertex3fSUN,
+        &glReplacementCodeuiVertex3fvSUN,
+        &glReplacementCodeuivSUN,
+        &glReplacementCodeusSUN,
+        &glReplacementCodeusvSUN,
+        &glRequestResidentProgramsNV,
+        &glResetHistogram,
+        &glResetHistogramEXT,
+        &glResetMinmax,
+        &glResetMinmaxEXT,
+        &glResizeBuffersMESA,
+        &glResumeTransformFeedback,
+        &glResumeTransformFeedbackNV,
+        &glRotated,
+        &glRotatef,
+        &glRotatexOES,
+        &glSampleCoverage,
+        &glSampleCoverageARB,
+        &glSampleCoverageOES,
+        &glSampleMapATI,
+        &glSampleMaskEXT,
+        &glSampleMaskIndexedNV,
+        &glSampleMaskSGIS,
+        &glSampleMaski,
+        &glSamplePatternEXT,
+        &glSamplePatternSGIS,
+        &glSamplerParameterIiv,
+        &glSamplerParameterIuiv,
+        &glSamplerParameterf,
+        &glSamplerParameterfv,
+        &glSamplerParameteri,
+        &glSamplerParameteriv,
+        &glScaled,
+        &glScalef,
+        &glScalexOES,
+        &glScissor,
+        &glScissorArrayv,
+        &glScissorIndexed,
+        &glScissorIndexedv,
+        &glSecondaryColor3b,
+        &glSecondaryColor3bEXT,
+        &glSecondaryColor3bv,
+        &glSecondaryColor3bvEXT,
+        &glSecondaryColor3d,
+        &glSecondaryColor3dEXT,
+        &glSecondaryColor3dv,
+        &glSecondaryColor3dvEXT,
+        &glSecondaryColor3f,
+        &glSecondaryColor3fEXT,
+        &glSecondaryColor3fv,
+        &glSecondaryColor3fvEXT,
+        &glSecondaryColor3hNV,
+        &glSecondaryColor3hvNV,
+        &glSecondaryColor3i,
+        &glSecondaryColor3iEXT,
+        &glSecondaryColor3iv,
+        &glSecondaryColor3ivEXT,
+        &glSecondaryColor3s,
+        &glSecondaryColor3sEXT,
+        &glSecondaryColor3sv,
+        &glSecondaryColor3svEXT,
+        &glSecondaryColor3ub,
+        &glSecondaryColor3ubEXT,
+        &glSecondaryColor3ubv,
+        &glSecondaryColor3ubvEXT,
+        &glSecondaryColor3ui,
+        &glSecondaryColor3uiEXT,
+        &glSecondaryColor3uiv,
+        &glSecondaryColor3uivEXT,
+        &glSecondaryColor3us,
+        &glSecondaryColor3usEXT,
+        &glSecondaryColor3usv,
+        &glSecondaryColor3usvEXT,
+        &glSecondaryColorFormatNV,
+        &glSecondaryColorP3ui,
+        &glSecondaryColorP3uiv,
+        &glSecondaryColorPointer,
+        &glSecondaryColorPointerEXT,
+        &glSecondaryColorPointerListIBM,
+        &glSelectBuffer,
+        &glSelectPerfMonitorCountersAMD,
+        &glSeparableFilter2D,
+        &glSeparableFilter2DEXT,
+        &glSetFenceAPPLE,
+        &glSetFenceNV,
+        &glSetFragmentShaderConstantATI,
+        &glSetInvariantEXT,
+        &glSetLocalConstantEXT,
+        &glSetMultisamplefvAMD,
+        &glShadeModel,
+        &glShaderBinary,
+        &glShaderOp1EXT,
+        &glShaderOp2EXT,
+        &glShaderOp3EXT,
+        &glShaderSource,
+        &glShaderSourceARB,
+        &glShaderStorageBlockBinding,
+        &glSharpenTexFuncSGIS,
+        &glSpriteParameterfSGIX,
+        &glSpriteParameterfvSGIX,
+        &glSpriteParameteriSGIX,
+        &glSpriteParameterivSGIX,
+        &glStartInstrumentsSGIX,
+        &glStencilClearTagEXT,
+        &glStencilFillPathInstancedNV,
+        &glStencilFillPathNV,
+        &glStencilFunc,
+        &glStencilFuncSeparate,
+        &glStencilFuncSeparateATI,
+        &glStencilMask,
+        &glStencilMaskSeparate,
+        &glStencilOp,
+        &glStencilOpSeparate,
+        &glStencilOpSeparateATI,
+        &glStencilOpValueAMD,
+        &glStencilStrokePathInstancedNV,
+        &glStencilStrokePathNV,
+        &glStopInstrumentsSGIX,
+        &glStringMarkerGREMEDY,
+        &glSwizzleEXT,
+        &glSyncTextureINTEL,
+        &glTagSampleBufferSGIX,
+        &glTangent3bEXT,
+        &glTangent3bvEXT,
+        &glTangent3dEXT,
+        &glTangent3dvEXT,
+        &glTangent3fEXT,
+        &glTangent3fvEXT,
+        &glTangent3iEXT,
+        &glTangent3ivEXT,
+        &glTangent3sEXT,
+        &glTangent3svEXT,
+        &glTangentPointerEXT,
+        &glTbufferMask3DFX,
+        &glTessellationFactorAMD,
+        &glTessellationModeAMD,
+        &glTestFenceAPPLE,
+        &glTestFenceNV,
+        &glTestObjectAPPLE,
+        &glTexBuffer,
+        &glTexBufferARB,
+        &glTexBufferEXT,
+        &glTexBufferRange,
+        &glTexBumpParameterfvATI,
+        &glTexBumpParameterivATI,
+        &glTexCoord1bOES,
+        &glTexCoord1bvOES,
+        &glTexCoord1d,
+        &glTexCoord1dv,
+        &glTexCoord1f,
+        &glTexCoord1fv,
+        &glTexCoord1hNV,
+        &glTexCoord1hvNV,
+        &glTexCoord1i,
+        &glTexCoord1iv,
+        &glTexCoord1s,
+        &glTexCoord1sv,
+        &glTexCoord1xOES,
+        &glTexCoord1xvOES,
+        &glTexCoord2bOES,
+        &glTexCoord2bvOES,
+        &glTexCoord2d,
+        &glTexCoord2dv,
+        &glTexCoord2f,
+        &glTexCoord2fColor3fVertex3fSUN,
+        &glTexCoord2fColor3fVertex3fvSUN,
+        &glTexCoord2fColor4fNormal3fVertex3fSUN,
+        &glTexCoord2fColor4fNormal3fVertex3fvSUN,
+        &glTexCoord2fColor4ubVertex3fSUN,
+        &glTexCoord2fColor4ubVertex3fvSUN,
+        &glTexCoord2fNormal3fVertex3fSUN,
+        &glTexCoord2fNormal3fVertex3fvSUN,
+        &glTexCoord2fVertex3fSUN,
+        &glTexCoord2fVertex3fvSUN,
+        &glTexCoord2fv,
+        &glTexCoord2hNV,
+        &glTexCoord2hvNV,
+        &glTexCoord2i,
+        &glTexCoord2iv,
+        &glTexCoord2s,
+        &glTexCoord2sv,
+        &glTexCoord2xOES,
+        &glTexCoord2xvOES,
+        &glTexCoord3bOES,
+        &glTexCoord3bvOES,
+        &glTexCoord3d,
+        &glTexCoord3dv,
+        &glTexCoord3f,
+        &glTexCoord3fv,
+        &glTexCoord3hNV,
+        &glTexCoord3hvNV,
+        &glTexCoord3i,
+        &glTexCoord3iv,
+        &glTexCoord3s,
+        &glTexCoord3sv,
+        &glTexCoord3xOES,
+        &glTexCoord3xvOES,
+        &glTexCoord4bOES,
+        &glTexCoord4bvOES,
+        &glTexCoord4d,
+        &glTexCoord4dv,
+        &glTexCoord4f,
+        &glTexCoord4fColor4fNormal3fVertex4fSUN,
+        &glTexCoord4fColor4fNormal3fVertex4fvSUN,
+        &glTexCoord4fVertex4fSUN,
+        &glTexCoord4fVertex4fvSUN,
+        &glTexCoord4fv,
+        &glTexCoord4hNV,
+        &glTexCoord4hvNV,
+        &glTexCoord4i,
+        &glTexCoord4iv,
+        &glTexCoord4s,
+        &glTexCoord4sv,
+        &glTexCoord4xOES,
+        &glTexCoord4xvOES,
+        &glTexCoordFormatNV,
+        &glTexCoordP1ui,
+        &glTexCoordP1uiv,
+        &glTexCoordP2ui,
+        &glTexCoordP2uiv,
+        &glTexCoordP3ui,
+        &glTexCoordP3uiv,
+        &glTexCoordP4ui,
+        &glTexCoordP4uiv,
+        &glTexCoordPointer,
+        &glTexCoordPointerEXT,
+        &glTexCoordPointerListIBM,
+        &glTexCoordPointervINTEL,
+        &glTexEnvf,
+        &glTexEnvfv,
+        &glTexEnvi,
+        &glTexEnviv,
+        &glTexEnvxOES,
+        &glTexEnvxvOES,
+        &glTexFilterFuncSGIS,
+        &glTexGend,
+        &glTexGendv,
+        &glTexGenf,
+        &glTexGenfv,
+        &glTexGeni,
+        &glTexGeniv,
+        &glTexGenxOES,
+        &glTexGenxvOES,
+        &glTexImage1D,
+        &glTexImage2D,
+        &glTexImage2DMultisample,
+        &glTexImage2DMultisampleCoverageNV,
+        &glTexImage3D,
+        &glTexImage3DEXT,
+        &glTexImage3DMultisample,
+        &glTexImage3DMultisampleCoverageNV,
+        &glTexImage4DSGIS,
+        &glTexPageCommitmentARB,
+        &glTexParameterIiv,
+        &glTexParameterIivEXT,
+        &glTexParameterIuiv,
+        &glTexParameterIuivEXT,
+        &glTexParameterf,
+        &glTexParameterfv,
+        &glTexParameteri,
+        &glTexParameteriv,
+        &glTexParameterxOES,
+        &glTexParameterxvOES,
+        &glTexRenderbufferNV,
+        &glTexStorage1D,
+        &glTexStorage2D,
+        &glTexStorage2DMultisample,
+        &glTexStorage3D,
+        &glTexStorage3DMultisample,
+        &glTexStorageSparseAMD,
+        &glTexSubImage1D,
+        &glTexSubImage1DEXT,
+        &glTexSubImage2D,
+        &glTexSubImage2DEXT,
+        &glTexSubImage3D,
+        &glTexSubImage3DEXT,
+        &glTexSubImage4DSGIS,
+        &glTextureBarrierNV,
+        &glTextureBufferEXT,
+        &glTextureBufferRangeEXT,
+        &glTextureColorMaskSGIS,
+        &glTextureImage1DEXT,
+        &glTextureImage2DEXT,
+        &glTextureImage2DMultisampleCoverageNV,
+        &glTextureImage2DMultisampleNV,
+        &glTextureImage3DEXT,
+        &glTextureImage3DMultisampleCoverageNV,
+        &glTextureImage3DMultisampleNV,
+        &glTextureLightEXT,
+        &glTextureMaterialEXT,
+        &glTextureNormalEXT,
+        &glTexturePageCommitmentEXT,
+        &glTextureParameterIivEXT,
+        &glTextureParameterIuivEXT,
+        &glTextureParameterfEXT,
+        &glTextureParameterfvEXT,
+        &glTextureParameteriEXT,
+        &glTextureParameterivEXT,
+        &glTextureRangeAPPLE,
+        &glTextureRenderbufferEXT,
+        &glTextureStorage1DEXT,
+        &glTextureStorage2DEXT,
+        &glTextureStorage2DMultisampleEXT,
+        &glTextureStorage3DEXT,
+        &glTextureStorage3DMultisampleEXT,
+        &glTextureStorageSparseAMD,
+        &glTextureSubImage1DEXT,
+        &glTextureSubImage2DEXT,
+        &glTextureSubImage3DEXT,
+        &glTextureView,
+        &glTrackMatrixNV,
+        &glTransformFeedbackAttribsNV,
+        &glTransformFeedbackStreamAttribsNV,
+        &glTransformFeedbackVaryings,
+        &glTransformFeedbackVaryingsEXT,
+        &glTransformFeedbackVaryingsNV,
+        &glTransformPathNV,
+        &glTranslated,
+        &glTranslatef,
+        &glTranslatexOES,
+        &glUniform1d,
+        &glUniform1dv,
+        &glUniform1f,
+        &glUniform1fARB,
+        &glUniform1fv,
+        &glUniform1fvARB,
+        &glUniform1i,
+        &glUniform1i64NV,
+        &glUniform1i64vNV,
+        &glUniform1iARB,
+        &glUniform1iv,
+        &glUniform1ivARB,
+        &glUniform1ui,
+        &glUniform1ui64NV,
+        &glUniform1ui64vNV,
+        &glUniform1uiEXT,
+        &glUniform1uiv,
+        &glUniform1uivEXT,
+        &glUniform2d,
+        &glUniform2dv,
+        &glUniform2f,
+        &glUniform2fARB,
+        &glUniform2fv,
+        &glUniform2fvARB,
+        &glUniform2i,
+        &glUniform2i64NV,
+        &glUniform2i64vNV,
+        &glUniform2iARB,
+        &glUniform2iv,
+        &glUniform2ivARB,
+        &glUniform2ui,
+        &glUniform2ui64NV,
+        &glUniform2ui64vNV,
+        &glUniform2uiEXT,
+        &glUniform2uiv,
+        &glUniform2uivEXT,
+        &glUniform3d,
+        &glUniform3dv,
+        &glUniform3f,
+        &glUniform3fARB,
+        &glUniform3fv,
+        &glUniform3fvARB,
+        &glUniform3i,
+        &glUniform3i64NV,
+        &glUniform3i64vNV,
+        &glUniform3iARB,
+        &glUniform3iv,
+        &glUniform3ivARB,
+        &glUniform3ui,
+        &glUniform3ui64NV,
+        &glUniform3ui64vNV,
+        &glUniform3uiEXT,
+        &glUniform3uiv,
+        &glUniform3uivEXT,
+        &glUniform4d,
+        &glUniform4dv,
+        &glUniform4f,
+        &glUniform4fARB,
+        &glUniform4fv,
+        &glUniform4fvARB,
+        &glUniform4i,
+        &glUniform4i64NV,
+        &glUniform4i64vNV,
+        &glUniform4iARB,
+        &glUniform4iv,
+        &glUniform4ivARB,
+        &glUniform4ui,
+        &glUniform4ui64NV,
+        &glUniform4ui64vNV,
+        &glUniform4uiEXT,
+        &glUniform4uiv,
+        &glUniform4uivEXT,
+        &glUniformBlockBinding,
+        &glUniformBufferEXT,
+        &glUniformHandleui64ARB,
+        &glUniformHandleui64NV,
+        &glUniformHandleui64vARB,
+        &glUniformHandleui64vNV,
+        &glUniformMatrix2dv,
+        &glUniformMatrix2fv,
+        &glUniformMatrix2fvARB,
+        &glUniformMatrix2x3dv,
+        &glUniformMatrix2x3fv,
+        &glUniformMatrix2x4dv,
+        &glUniformMatrix2x4fv,
+        &glUniformMatrix3dv,
+        &glUniformMatrix3fv,
+        &glUniformMatrix3fvARB,
+        &glUniformMatrix3x2dv,
+        &glUniformMatrix3x2fv,
+        &glUniformMatrix3x4dv,
+        &glUniformMatrix3x4fv,
+        &glUniformMatrix4dv,
+        &glUniformMatrix4fv,
+        &glUniformMatrix4fvARB,
+        &glUniformMatrix4x2dv,
+        &glUniformMatrix4x2fv,
+        &glUniformMatrix4x3dv,
+        &glUniformMatrix4x3fv,
+        &glUniformSubroutinesuiv,
+        &glUniformui64NV,
+        &glUniformui64vNV,
+        &glUnlockArraysEXT,
+        &glUnmapBuffer,
+        &glUnmapBufferARB,
+        &glUnmapNamedBufferEXT,
+        &glUnmapObjectBufferATI,
+        &glUnmapTexture2DINTEL,
+        &glUpdateObjectBufferATI,
+        &glUseProgram,
+        &glUseProgramObjectARB,
+        &glUseProgramStages,
+        &glUseShaderProgramEXT,
+        &glVDPAUFiniNV,
+        &glVDPAUGetSurfaceivNV,
+        &glVDPAUInitNV,
+        &glVDPAUIsSurfaceNV,
+        &glVDPAUMapSurfacesNV,
+        &glVDPAURegisterOutputSurfaceNV,
+        &glVDPAURegisterVideoSurfaceNV,
+        &glVDPAUSurfaceAccessNV,
+        &glVDPAUUnmapSurfacesNV,
+        &glVDPAUUnregisterSurfaceNV,
+        &glValidateProgram,
+        &glValidateProgramARB,
+        &glValidateProgramPipeline,
+        &glVariantArrayObjectATI,
+        &glVariantPointerEXT,
+        &glVariantbvEXT,
+        &glVariantdvEXT,
+        &glVariantfvEXT,
+        &glVariantivEXT,
+        &glVariantsvEXT,
+        &glVariantubvEXT,
+        &glVariantuivEXT,
+        &glVariantusvEXT,
+        &glVertex2bOES,
+        &glVertex2bvOES,
+        &glVertex2d,
+        &glVertex2dv,
+        &glVertex2f,
+        &glVertex2fv,
+        &glVertex2hNV,
+        &glVertex2hvNV,
+        &glVertex2i,
+        &glVertex2iv,
+        &glVertex2s,
+        &glVertex2sv,
+        &glVertex2xOES,
+        &glVertex2xvOES,
+        &glVertex3bOES,
+        &glVertex3bvOES,
+        &glVertex3d,
+        &glVertex3dv,
+        &glVertex3f,
+        &glVertex3fv,
+        &glVertex3hNV,
+        &glVertex3hvNV,
+        &glVertex3i,
+        &glVertex3iv,
+        &glVertex3s,
+        &glVertex3sv,
+        &glVertex3xOES,
+        &glVertex3xvOES,
+        &glVertex4bOES,
+        &glVertex4bvOES,
+        &glVertex4d,
+        &glVertex4dv,
+        &glVertex4f,
+        &glVertex4fv,
+        &glVertex4hNV,
+        &glVertex4hvNV,
+        &glVertex4i,
+        &glVertex4iv,
+        &glVertex4s,
+        &glVertex4sv,
+        &glVertex4xOES,
+        &glVertex4xvOES,
+        &glVertexArrayBindVertexBufferEXT,
+        &glVertexArrayColorOffsetEXT,
+        &glVertexArrayEdgeFlagOffsetEXT,
+        &glVertexArrayFogCoordOffsetEXT,
+        &glVertexArrayIndexOffsetEXT,
+        &glVertexArrayMultiTexCoordOffsetEXT,
+        &glVertexArrayNormalOffsetEXT,
+        &glVertexArrayParameteriAPPLE,
+        &glVertexArrayRangeAPPLE,
+        &glVertexArrayRangeNV,
+        &glVertexArraySecondaryColorOffsetEXT,
+        &glVertexArrayTexCoordOffsetEXT,
+        &glVertexArrayVertexAttribBindingEXT,
+        &glVertexArrayVertexAttribDivisorEXT,
+        &glVertexArrayVertexAttribFormatEXT,
+        &glVertexArrayVertexAttribIFormatEXT,
+        &glVertexArrayVertexAttribIOffsetEXT,
+        &glVertexArrayVertexAttribLFormatEXT,
+        &glVertexArrayVertexAttribLOffsetEXT,
+        &glVertexArrayVertexAttribOffsetEXT,
+        &glVertexArrayVertexBindingDivisorEXT,
+        &glVertexArrayVertexOffsetEXT,
+        &glVertexAttrib1d,
+        &glVertexAttrib1dARB,
+        &glVertexAttrib1dNV,
+        &glVertexAttrib1dv,
+        &glVertexAttrib1dvARB,
+        &glVertexAttrib1dvNV,
+        &glVertexAttrib1f,
+        &glVertexAttrib1fARB,
+        &glVertexAttrib1fNV,
+        &glVertexAttrib1fv,
+        &glVertexAttrib1fvARB,
+        &glVertexAttrib1fvNV,
+        &glVertexAttrib1hNV,
+        &glVertexAttrib1hvNV,
+        &glVertexAttrib1s,
+        &glVertexAttrib1sARB,
+        &glVertexAttrib1sNV,
+        &glVertexAttrib1sv,
+        &glVertexAttrib1svARB,
+        &glVertexAttrib1svNV,
+        &glVertexAttrib2d,
+        &glVertexAttrib2dARB,
+        &glVertexAttrib2dNV,
+        &glVertexAttrib2dv,
+        &glVertexAttrib2dvARB,
+        &glVertexAttrib2dvNV,
+        &glVertexAttrib2f,
+        &glVertexAttrib2fARB,
+        &glVertexAttrib2fNV,
+        &glVertexAttrib2fv,
+        &glVertexAttrib2fvARB,
+        &glVertexAttrib2fvNV,
+        &glVertexAttrib2hNV,
+        &glVertexAttrib2hvNV,
+        &glVertexAttrib2s,
+        &glVertexAttrib2sARB,
+        &glVertexAttrib2sNV,
+        &glVertexAttrib2sv,
+        &glVertexAttrib2svARB,
+        &glVertexAttrib2svNV,
+        &glVertexAttrib3d,
+        &glVertexAttrib3dARB,
+        &glVertexAttrib3dNV,
+        &glVertexAttrib3dv,
+        &glVertexAttrib3dvARB,
+        &glVertexAttrib3dvNV,
+        &glVertexAttrib3f,
+        &glVertexAttrib3fARB,
+        &glVertexAttrib3fNV,
+        &glVertexAttrib3fv,
+        &glVertexAttrib3fvARB,
+        &glVertexAttrib3fvNV,
+        &glVertexAttrib3hNV,
+        &glVertexAttrib3hvNV,
+        &glVertexAttrib3s,
+        &glVertexAttrib3sARB,
+        &glVertexAttrib3sNV,
+        &glVertexAttrib3sv,
+        &glVertexAttrib3svARB,
+        &glVertexAttrib3svNV,
+        &glVertexAttrib4Nbv,
+        &glVertexAttrib4NbvARB,
+        &glVertexAttrib4Niv,
+        &glVertexAttrib4NivARB,
+        &glVertexAttrib4Nsv,
+        &glVertexAttrib4NsvARB,
+        &glVertexAttrib4Nub,
+        &glVertexAttrib4NubARB,
+        &glVertexAttrib4Nubv,
+        &glVertexAttrib4NubvARB,
+        &glVertexAttrib4Nuiv,
+        &glVertexAttrib4NuivARB,
+        &glVertexAttrib4Nusv,
+        &glVertexAttrib4NusvARB,
+        &glVertexAttrib4bv,
+        &glVertexAttrib4bvARB,
+        &glVertexAttrib4d,
+        &glVertexAttrib4dARB,
+        &glVertexAttrib4dNV,
+        &glVertexAttrib4dv,
+        &glVertexAttrib4dvARB,
+        &glVertexAttrib4dvNV,
+        &glVertexAttrib4f,
+        &glVertexAttrib4fARB,
+        &glVertexAttrib4fNV,
+        &glVertexAttrib4fv,
+        &glVertexAttrib4fvARB,
+        &glVertexAttrib4fvNV,
+        &glVertexAttrib4hNV,
+        &glVertexAttrib4hvNV,
+        &glVertexAttrib4iv,
+        &glVertexAttrib4ivARB,
+        &glVertexAttrib4s,
+        &glVertexAttrib4sARB,
+        &glVertexAttrib4sNV,
+        &glVertexAttrib4sv,
+        &glVertexAttrib4svARB,
+        &glVertexAttrib4svNV,
+        &glVertexAttrib4ubNV,
+        &glVertexAttrib4ubv,
+        &glVertexAttrib4ubvARB,
+        &glVertexAttrib4ubvNV,
+        &glVertexAttrib4uiv,
+        &glVertexAttrib4uivARB,
+        &glVertexAttrib4usv,
+        &glVertexAttrib4usvARB,
+        &glVertexAttribArrayObjectATI,
+        &glVertexAttribBinding,
+        &glVertexAttribDivisor,
+        &glVertexAttribDivisorARB,
+        &glVertexAttribFormat,
+        &glVertexAttribFormatNV,
+        &glVertexAttribI1i,
+        &glVertexAttribI1iEXT,
+        &glVertexAttribI1iv,
+        &glVertexAttribI1ivEXT,
+        &glVertexAttribI1ui,
+        &glVertexAttribI1uiEXT,
+        &glVertexAttribI1uiv,
+        &glVertexAttribI1uivEXT,
+        &glVertexAttribI2i,
+        &glVertexAttribI2iEXT,
+        &glVertexAttribI2iv,
+        &glVertexAttribI2ivEXT,
+        &glVertexAttribI2ui,
+        &glVertexAttribI2uiEXT,
+        &glVertexAttribI2uiv,
+        &glVertexAttribI2uivEXT,
+        &glVertexAttribI3i,
+        &glVertexAttribI3iEXT,
+        &glVertexAttribI3iv,
+        &glVertexAttribI3ivEXT,
+        &glVertexAttribI3ui,
+        &glVertexAttribI3uiEXT,
+        &glVertexAttribI3uiv,
+        &glVertexAttribI3uivEXT,
+        &glVertexAttribI4bv,
+        &glVertexAttribI4bvEXT,
+        &glVertexAttribI4i,
+        &glVertexAttribI4iEXT,
+        &glVertexAttribI4iv,
+        &glVertexAttribI4ivEXT,
+        &glVertexAttribI4sv,
+        &glVertexAttribI4svEXT,
+        &glVertexAttribI4ubv,
+        &glVertexAttribI4ubvEXT,
+        &glVertexAttribI4ui,
+        &glVertexAttribI4uiEXT,
+        &glVertexAttribI4uiv,
+        &glVertexAttribI4uivEXT,
+        &glVertexAttribI4usv,
+        &glVertexAttribI4usvEXT,
+        &glVertexAttribIFormat,
+        &glVertexAttribIFormatNV,
+        &glVertexAttribIPointer,
+        &glVertexAttribIPointerEXT,
+        &glVertexAttribL1d,
+        &glVertexAttribL1dEXT,
+        &glVertexAttribL1dv,
+        &glVertexAttribL1dvEXT,
+        &glVertexAttribL1i64NV,
+        &glVertexAttribL1i64vNV,
+        &glVertexAttribL1ui64ARB,
+        &glVertexAttribL1ui64NV,
+        &glVertexAttribL1ui64vARB,
+        &glVertexAttribL1ui64vNV,
+        &glVertexAttribL2d,
+        &glVertexAttribL2dEXT,
+        &glVertexAttribL2dv,
+        &glVertexAttribL2dvEXT,
+        &glVertexAttribL2i64NV,
+        &glVertexAttribL2i64vNV,
+        &glVertexAttribL2ui64NV,
+        &glVertexAttribL2ui64vNV,
+        &glVertexAttribL3d,
+        &glVertexAttribL3dEXT,
+        &glVertexAttribL3dv,
+        &glVertexAttribL3dvEXT,
+        &glVertexAttribL3i64NV,
+        &glVertexAttribL3i64vNV,
+        &glVertexAttribL3ui64NV,
+        &glVertexAttribL3ui64vNV,
+        &glVertexAttribL4d,
+        &glVertexAttribL4dEXT,
+        &glVertexAttribL4dv,
+        &glVertexAttribL4dvEXT,
+        &glVertexAttribL4i64NV,
+        &glVertexAttribL4i64vNV,
+        &glVertexAttribL4ui64NV,
+        &glVertexAttribL4ui64vNV,
+        &glVertexAttribLFormat,
+        &glVertexAttribLFormatNV,
+        &glVertexAttribLPointer,
+        &glVertexAttribLPointerEXT,
+        &glVertexAttribP1ui,
+        &glVertexAttribP1uiv,
+        &glVertexAttribP2ui,
+        &glVertexAttribP2uiv,
+        &glVertexAttribP3ui,
+        &glVertexAttribP3uiv,
+        &glVertexAttribP4ui,
+        &glVertexAttribP4uiv,
+        &glVertexAttribParameteriAMD,
+        &glVertexAttribPointer,
+        &glVertexAttribPointerARB,
+        &glVertexAttribPointerNV,
+        &glVertexAttribs1dvNV,
+        &glVertexAttribs1fvNV,
+        &glVertexAttribs1hvNV,
+        &glVertexAttribs1svNV,
+        &glVertexAttribs2dvNV,
+        &glVertexAttribs2fvNV,
+        &glVertexAttribs2hvNV,
+        &glVertexAttribs2svNV,
+        &glVertexAttribs3dvNV,
+        &glVertexAttribs3fvNV,
+        &glVertexAttribs3hvNV,
+        &glVertexAttribs3svNV,
+        &glVertexAttribs4dvNV,
+        &glVertexAttribs4fvNV,
+        &glVertexAttribs4hvNV,
+        &glVertexAttribs4svNV,
+        &glVertexAttribs4ubvNV,
+        &glVertexBindingDivisor,
+        &glVertexBlendARB,
+        &glVertexBlendEnvfATI,
+        &glVertexBlendEnviATI,
+        &glVertexFormatNV,
+        &glVertexP2ui,
+        &glVertexP2uiv,
+        &glVertexP3ui,
+        &glVertexP3uiv,
+        &glVertexP4ui,
+        &glVertexP4uiv,
+        &glVertexPointer,
+        &glVertexPointerEXT,
+        &glVertexPointerListIBM,
+        &glVertexPointervINTEL,
+        &glVertexStream1dATI,
+        &glVertexStream1dvATI,
+        &glVertexStream1fATI,
+        &glVertexStream1fvATI,
+        &glVertexStream1iATI,
+        &glVertexStream1ivATI,
+        &glVertexStream1sATI,
+        &glVertexStream1svATI,
+        &glVertexStream2dATI,
+        &glVertexStream2dvATI,
+        &glVertexStream2fATI,
+        &glVertexStream2fvATI,
+        &glVertexStream2iATI,
+        &glVertexStream2ivATI,
+        &glVertexStream2sATI,
+        &glVertexStream2svATI,
+        &glVertexStream3dATI,
+        &glVertexStream3dvATI,
+        &glVertexStream3fATI,
+        &glVertexStream3fvATI,
+        &glVertexStream3iATI,
+        &glVertexStream3ivATI,
+        &glVertexStream3sATI,
+        &glVertexStream3svATI,
+        &glVertexStream4dATI,
+        &glVertexStream4dvATI,
+        &glVertexStream4fATI,
+        &glVertexStream4fvATI,
+        &glVertexStream4iATI,
+        &glVertexStream4ivATI,
+        &glVertexStream4sATI,
+        &glVertexStream4svATI,
+        &glVertexWeightPointerEXT,
+        &glVertexWeightfEXT,
+        &glVertexWeightfvEXT,
+        &glVertexWeighthNV,
+        &glVertexWeighthvNV,
+        &glVideoCaptureNV,
+        &glVideoCaptureStreamParameterdvNV,
+        &glVideoCaptureStreamParameterfvNV,
+        &glVideoCaptureStreamParameterivNV,
+        &glViewport,
+        &glViewportArrayv,
+        &glViewportIndexedf,
+        &glViewportIndexedfv,
+        &glWaitSync,
+        &glWeightPathsNV,
+        &glWeightPointerARB,
+        &glWeightbvARB,
+        &glWeightdvARB,
+        &glWeightfvARB,
+        &glWeightivARB,
+        &glWeightsvARB,
+        &glWeightubvARB,
+        &glWeightuivARB,
+        &glWeightusvARB,
+        &glWindowPos2d,
+        &glWindowPos2dARB,
+        &glWindowPos2dMESA,
+        &glWindowPos2dv,
+        &glWindowPos2dvARB,
+        &glWindowPos2dvMESA,
+        &glWindowPos2f,
+        &glWindowPos2fARB,
+        &glWindowPos2fMESA,
+        &glWindowPos2fv,
+        &glWindowPos2fvARB,
+        &glWindowPos2fvMESA,
+        &glWindowPos2i,
+        &glWindowPos2iARB,
+        &glWindowPos2iMESA,
+        &glWindowPos2iv,
+        &glWindowPos2ivARB,
+        &glWindowPos2ivMESA,
+        &glWindowPos2s,
+        &glWindowPos2sARB,
+        &glWindowPos2sMESA,
+        &glWindowPos2sv,
+        &glWindowPos2svARB,
+        &glWindowPos2svMESA,
+        &glWindowPos3d,
+        &glWindowPos3dARB,
+        &glWindowPos3dMESA,
+        &glWindowPos3dv,
+        &glWindowPos3dvARB,
+        &glWindowPos3dvMESA,
+        &glWindowPos3f,
+        &glWindowPos3fARB,
+        &glWindowPos3fMESA,
+        &glWindowPos3fv,
+        &glWindowPos3fvARB,
+        &glWindowPos3fvMESA,
+        &glWindowPos3i,
+        &glWindowPos3iARB,
+        &glWindowPos3iMESA,
+        &glWindowPos3iv,
+        &glWindowPos3ivARB,
+        &glWindowPos3ivMESA,
+        &glWindowPos3s,
+        &glWindowPos3sARB,
+        &glWindowPos3sMESA,
+        &glWindowPos3sv,
+        &glWindowPos3svARB,
+        &glWindowPos3svMESA,
+        &glWindowPos4dMESA,
+        &glWindowPos4dvMESA,
+        &glWindowPos4fMESA,
+        &glWindowPos4fvMESA,
+        &glWindowPos4iMESA,
+        &glWindowPos4ivMESA,
+        &glWindowPos4sMESA,
+        &glWindowPos4svMESA,
+        &glWriteMaskEXT
+	};
 }
-
-
-Function<void, GLenum, GLfloat> FunctionObjects::Accum("glAccum");
-Function<void, GLenum, GLfixed> FunctionObjects::AccumxOES("glAccumxOES");
-Function<void, GLuint> FunctionObjects::ActiveProgramEXT("glActiveProgramEXT");
-Function<void, GLuint, GLuint> FunctionObjects::ActiveShaderProgram("glActiveShaderProgram");
-Function<void, GLenum> FunctionObjects::ActiveStencilFaceEXT("glActiveStencilFaceEXT");
-Function<void, GLenum> FunctionObjects::ActiveTexture("glActiveTexture");
-Function<void, GLenum> FunctionObjects::ActiveTextureARB("glActiveTextureARB");
-Function<void, GLuint, const GLchar *> FunctionObjects::ActiveVaryingNV("glActiveVaryingNV");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::AlphaFragmentOp1ATI("glAlphaFragmentOp1ATI");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::AlphaFragmentOp2ATI("glAlphaFragmentOp2ATI");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::AlphaFragmentOp3ATI("glAlphaFragmentOp3ATI");
-Function<void, GLenum, GLfloat> FunctionObjects::AlphaFunc("glAlphaFunc");
-Function<void, GLenum, GLfixed> FunctionObjects::AlphaFuncxOES("glAlphaFuncxOES");
-Function<void, GLenum> FunctionObjects::ApplyTextureEXT("glApplyTextureEXT");
-Function<GLboolean, GLsizei, const GLuint *, GLboolean *> FunctionObjects::AreProgramsResidentNV("glAreProgramsResidentNV");
-Function<GLboolean, GLsizei, const GLuint *, GLboolean *> FunctionObjects::AreTexturesResident("glAreTexturesResident");
-Function<GLboolean, GLsizei, const GLuint *, GLboolean *> FunctionObjects::AreTexturesResidentEXT("glAreTexturesResidentEXT");
-Function<void, GLint> FunctionObjects::ArrayElement("glArrayElement");
-Function<void, GLint> FunctionObjects::ArrayElementEXT("glArrayElementEXT");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLuint, GLuint> FunctionObjects::ArrayObjectATI("glArrayObjectATI");
-Function<void, GLuint> FunctionObjects::AsyncMarkerSGIX("glAsyncMarkerSGIX");
-Function<void, GLhandleARB, GLhandleARB> FunctionObjects::AttachObjectARB("glAttachObjectARB");
-Function<void, GLuint, GLuint> FunctionObjects::AttachShader("glAttachShader");
-Function<void, GLenum> FunctionObjects::Begin("glBegin");
-Function<void, GLuint, GLenum> FunctionObjects::BeginConditionalRender("glBeginConditionalRender");
-Function<void, GLuint, GLenum> FunctionObjects::BeginConditionalRenderNV("glBeginConditionalRenderNV");
-Function<void, GLuint> FunctionObjects::BeginConditionalRenderNVX("glBeginConditionalRenderNVX");
-Function<void> FunctionObjects::BeginFragmentShaderATI("glBeginFragmentShaderATI");
-Function<void, GLuint> FunctionObjects::BeginOcclusionQueryNV("glBeginOcclusionQueryNV");
-Function<void, GLuint> FunctionObjects::BeginPerfMonitorAMD("glBeginPerfMonitorAMD");
-Function<void, GLuint> FunctionObjects::BeginPerfQueryINTEL("glBeginPerfQueryINTEL");
-Function<void, GLenum, GLuint> FunctionObjects::BeginQuery("glBeginQuery");
-Function<void, GLenum, GLuint> FunctionObjects::BeginQueryARB("glBeginQueryARB");
-Function<void, GLenum, GLuint, GLuint> FunctionObjects::BeginQueryIndexed("glBeginQueryIndexed");
-Function<void, GLenum> FunctionObjects::BeginTransformFeedback("glBeginTransformFeedback");
-Function<void, GLenum> FunctionObjects::BeginTransformFeedbackEXT("glBeginTransformFeedbackEXT");
-Function<void, GLenum> FunctionObjects::BeginTransformFeedbackNV("glBeginTransformFeedbackNV");
-Function<void> FunctionObjects::BeginVertexShaderEXT("glBeginVertexShaderEXT");
-Function<void, GLuint> FunctionObjects::BeginVideoCaptureNV("glBeginVideoCaptureNV");
-Function<void, GLuint, GLuint, const GLchar *> FunctionObjects::BindAttribLocation("glBindAttribLocation");
-Function<void, GLhandleARB, GLuint, const GLcharARB *> FunctionObjects::BindAttribLocationARB("glBindAttribLocationARB");
-Function<void, GLenum, GLuint> FunctionObjects::BindBuffer("glBindBuffer");
-Function<void, GLenum, GLuint> FunctionObjects::BindBufferARB("glBindBufferARB");
-Function<void, GLenum, GLuint, GLuint> FunctionObjects::BindBufferBase("glBindBufferBase");
-Function<void, GLenum, GLuint, GLuint> FunctionObjects::BindBufferBaseEXT("glBindBufferBaseEXT");
-Function<void, GLenum, GLuint, GLuint> FunctionObjects::BindBufferBaseNV("glBindBufferBaseNV");
-Function<void, GLenum, GLuint, GLuint, GLintptr> FunctionObjects::BindBufferOffsetEXT("glBindBufferOffsetEXT");
-Function<void, GLenum, GLuint, GLuint, GLintptr> FunctionObjects::BindBufferOffsetNV("glBindBufferOffsetNV");
-Function<void, GLenum, GLuint, GLuint, GLintptr, GLsizeiptr> FunctionObjects::BindBufferRange("glBindBufferRange");
-Function<void, GLenum, GLuint, GLuint, GLintptr, GLsizeiptr> FunctionObjects::BindBufferRangeEXT("glBindBufferRangeEXT");
-Function<void, GLenum, GLuint, GLuint, GLintptr, GLsizeiptr> FunctionObjects::BindBufferRangeNV("glBindBufferRangeNV");
-Function<void, GLenum, GLuint, GLsizei, const GLuint *> FunctionObjects::BindBuffersBase("glBindBuffersBase");
-Function<void, GLenum, GLuint, GLsizei, const GLuint *, const GLintptr *, const GLsizeiptr *> FunctionObjects::BindBuffersRange("glBindBuffersRange");
-Function<void, GLuint, GLuint, const GLchar *> FunctionObjects::BindFragDataLocation("glBindFragDataLocation");
-Function<void, GLuint, GLuint, const GLchar *> FunctionObjects::BindFragDataLocationEXT("glBindFragDataLocationEXT");
-Function<void, GLuint, GLuint, GLuint, const GLchar *> FunctionObjects::BindFragDataLocationIndexed("glBindFragDataLocationIndexed");
-Function<void, GLuint> FunctionObjects::BindFragmentShaderATI("glBindFragmentShaderATI");
-Function<void, GLenum, GLuint> FunctionObjects::BindFramebuffer("glBindFramebuffer");
-Function<void, GLenum, GLuint> FunctionObjects::BindFramebufferEXT("glBindFramebufferEXT");
-Function<void, GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLenum> FunctionObjects::BindImageTexture("glBindImageTexture");
-Function<void, GLuint, GLuint, GLint, GLboolean, GLint, GLenum, GLint> FunctionObjects::BindImageTextureEXT("glBindImageTextureEXT");
-Function<void, GLuint, GLsizei, const GLuint *> FunctionObjects::BindImageTextures("glBindImageTextures");
-Function<GLuint, GLenum, GLenum> FunctionObjects::BindLightParameterEXT("glBindLightParameterEXT");
-Function<GLuint, GLenum, GLenum> FunctionObjects::BindMaterialParameterEXT("glBindMaterialParameterEXT");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::BindMultiTextureEXT("glBindMultiTextureEXT");
-Function<GLuint, GLenum> FunctionObjects::BindParameterEXT("glBindParameterEXT");
-Function<void, GLenum, GLuint> FunctionObjects::BindProgramARB("glBindProgramARB");
-Function<void, GLenum, GLuint> FunctionObjects::BindProgramNV("glBindProgramNV");
-Function<void, GLuint> FunctionObjects::BindProgramPipeline("glBindProgramPipeline");
-Function<void, GLenum, GLuint> FunctionObjects::BindRenderbuffer("glBindRenderbuffer");
-Function<void, GLenum, GLuint> FunctionObjects::BindRenderbufferEXT("glBindRenderbufferEXT");
-Function<void, GLuint, GLuint> FunctionObjects::BindSampler("glBindSampler");
-Function<void, GLuint, GLsizei, const GLuint *> FunctionObjects::BindSamplers("glBindSamplers");
-Function<GLuint, GLenum, GLenum, GLenum> FunctionObjects::BindTexGenParameterEXT("glBindTexGenParameterEXT");
-Function<void, GLenum, GLuint> FunctionObjects::BindTexture("glBindTexture");
-Function<void, GLenum, GLuint> FunctionObjects::BindTextureEXT("glBindTextureEXT");
-Function<GLuint, GLenum, GLenum> FunctionObjects::BindTextureUnitParameterEXT("glBindTextureUnitParameterEXT");
-Function<void, GLuint, GLsizei, const GLuint *> FunctionObjects::BindTextures("glBindTextures");
-Function<void, GLenum, GLuint> FunctionObjects::BindTransformFeedback("glBindTransformFeedback");
-Function<void, GLenum, GLuint> FunctionObjects::BindTransformFeedbackNV("glBindTransformFeedbackNV");
-Function<void, GLuint> FunctionObjects::BindVertexArray("glBindVertexArray");
-Function<void, GLuint> FunctionObjects::BindVertexArrayAPPLE("glBindVertexArrayAPPLE");
-Function<void, GLuint, GLuint, GLintptr, GLsizei> FunctionObjects::BindVertexBuffer("glBindVertexBuffer");
-Function<void, GLuint, GLsizei, const GLuint *, const GLintptr *, const GLsizei *> FunctionObjects::BindVertexBuffers("glBindVertexBuffers");
-Function<void, GLuint> FunctionObjects::BindVertexShaderEXT("glBindVertexShaderEXT");
-Function<void, GLuint, GLuint, GLenum, GLintptrARB> FunctionObjects::BindVideoCaptureStreamBufferNV("glBindVideoCaptureStreamBufferNV");
-Function<void, GLuint, GLuint, GLenum, GLenum, GLuint> FunctionObjects::BindVideoCaptureStreamTextureNV("glBindVideoCaptureStreamTextureNV");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::Binormal3bEXT("glBinormal3bEXT");
-Function<void, const GLbyte *> FunctionObjects::Binormal3bvEXT("glBinormal3bvEXT");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::Binormal3dEXT("glBinormal3dEXT");
-Function<void, const GLdouble *> FunctionObjects::Binormal3dvEXT("glBinormal3dvEXT");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::Binormal3fEXT("glBinormal3fEXT");
-Function<void, const GLfloat *> FunctionObjects::Binormal3fvEXT("glBinormal3fvEXT");
-Function<void, GLint, GLint, GLint> FunctionObjects::Binormal3iEXT("glBinormal3iEXT");
-Function<void, const GLint *> FunctionObjects::Binormal3ivEXT("glBinormal3ivEXT");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::Binormal3sEXT("glBinormal3sEXT");
-Function<void, const GLshort *> FunctionObjects::Binormal3svEXT("glBinormal3svEXT");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::BinormalPointerEXT("glBinormalPointerEXT");
-Function<void, GLsizei, GLsizei, GLfloat, GLfloat, GLfloat, GLfloat, const GLubyte *> FunctionObjects::Bitmap("glBitmap");
-Function<void, GLsizei, GLsizei, GLfixed, GLfixed, GLfixed, GLfixed, const GLubyte *> FunctionObjects::BitmapxOES("glBitmapxOES");
-Function<void> FunctionObjects::BlendBarrierNV("glBlendBarrierNV");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::BlendColor("glBlendColor");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::BlendColorEXT("glBlendColorEXT");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::BlendColorxOES("glBlendColorxOES");
-Function<void, GLenum> FunctionObjects::BlendEquation("glBlendEquation");
-Function<void, GLenum> FunctionObjects::BlendEquationEXT("glBlendEquationEXT");
-Function<void, GLuint, GLenum> FunctionObjects::BlendEquationIndexedAMD("glBlendEquationIndexedAMD");
-Function<void, GLenum, GLenum> FunctionObjects::BlendEquationSeparate("glBlendEquationSeparate");
-Function<void, GLenum, GLenum> FunctionObjects::BlendEquationSeparateEXT("glBlendEquationSeparateEXT");
-Function<void, GLuint, GLenum, GLenum> FunctionObjects::BlendEquationSeparateIndexedAMD("glBlendEquationSeparateIndexedAMD");
-Function<void, GLuint, GLenum, GLenum> FunctionObjects::BlendEquationSeparatei("glBlendEquationSeparatei");
-Function<void, GLuint, GLenum, GLenum> FunctionObjects::BlendEquationSeparateiARB("glBlendEquationSeparateiARB");
-Function<void, GLuint, GLenum> FunctionObjects::BlendEquationi("glBlendEquationi");
-Function<void, GLuint, GLenum> FunctionObjects::BlendEquationiARB("glBlendEquationiARB");
-Function<void, GLenum, GLenum> FunctionObjects::BlendFunc("glBlendFunc");
-Function<void, GLuint, GLenum, GLenum> FunctionObjects::BlendFuncIndexedAMD("glBlendFuncIndexedAMD");
-Function<void, GLenum, GLenum, GLenum, GLenum> FunctionObjects::BlendFuncSeparate("glBlendFuncSeparate");
-Function<void, GLenum, GLenum, GLenum, GLenum> FunctionObjects::BlendFuncSeparateEXT("glBlendFuncSeparateEXT");
-Function<void, GLenum, GLenum, GLenum, GLenum> FunctionObjects::BlendFuncSeparateINGR("glBlendFuncSeparateINGR");
-Function<void, GLuint, GLenum, GLenum, GLenum, GLenum> FunctionObjects::BlendFuncSeparateIndexedAMD("glBlendFuncSeparateIndexedAMD");
-Function<void, GLuint, GLenum, GLenum, GLenum, GLenum> FunctionObjects::BlendFuncSeparatei("glBlendFuncSeparatei");
-Function<void, GLuint, GLenum, GLenum, GLenum, GLenum> FunctionObjects::BlendFuncSeparateiARB("glBlendFuncSeparateiARB");
-Function<void, GLuint, GLenum, GLenum> FunctionObjects::BlendFunci("glBlendFunci");
-Function<void, GLuint, GLenum, GLenum> FunctionObjects::BlendFunciARB("glBlendFunciARB");
-Function<void, GLenum, GLint> FunctionObjects::BlendParameteriNV("glBlendParameteriNV");
-Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum> FunctionObjects::BlitFramebuffer("glBlitFramebuffer");
-Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum> FunctionObjects::BlitFramebufferEXT("glBlitFramebufferEXT");
-Function<void, GLenum, GLuint, GLuint64EXT, GLsizeiptr> FunctionObjects::BufferAddressRangeNV("glBufferAddressRangeNV");
-Function<void, GLenum, GLsizeiptr, const void *, GLenum> FunctionObjects::BufferData("glBufferData");
-Function<void, GLenum, GLsizeiptrARB, const void *, GLenum> FunctionObjects::BufferDataARB("glBufferDataARB");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::BufferParameteriAPPLE("glBufferParameteriAPPLE");
-Function<void, GLenum, GLsizeiptr, const void *, GLbitfield> FunctionObjects::BufferStorage("glBufferStorage");
-Function<void, GLenum, GLintptr, GLsizeiptr, const void *> FunctionObjects::BufferSubData("glBufferSubData");
-Function<void, GLenum, GLintptrARB, GLsizeiptrARB, const void *> FunctionObjects::BufferSubDataARB("glBufferSubDataARB");
-Function<void, GLuint> FunctionObjects::CallList("glCallList");
-Function<void, GLsizei, GLenum, const void *> FunctionObjects::CallLists("glCallLists");
-Function<GLenum, GLenum> FunctionObjects::CheckFramebufferStatus("glCheckFramebufferStatus");
-Function<GLenum, GLenum> FunctionObjects::CheckFramebufferStatusEXT("glCheckFramebufferStatusEXT");
-Function<GLenum, GLuint, GLenum> FunctionObjects::CheckNamedFramebufferStatusEXT("glCheckNamedFramebufferStatusEXT");
-Function<void, GLenum, GLenum> FunctionObjects::ClampColor("glClampColor");
-Function<void, GLenum, GLenum> FunctionObjects::ClampColorARB("glClampColorARB");
-Function<void, GLbitfield> FunctionObjects::Clear("glClear");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ClearAccum("glClearAccum");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::ClearAccumxOES("glClearAccumxOES");
-Function<void, GLenum, GLenum, GLenum, GLenum, const void *> FunctionObjects::ClearBufferData("glClearBufferData");
-Function<void, GLenum, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, const void *> FunctionObjects::ClearBufferSubData("glClearBufferSubData");
-Function<void, GLenum, GLint, GLfloat, GLint> FunctionObjects::ClearBufferfi("glClearBufferfi");
-Function<void, GLenum, GLint, const GLfloat *> FunctionObjects::ClearBufferfv("glClearBufferfv");
-Function<void, GLenum, GLint, const GLint *> FunctionObjects::ClearBufferiv("glClearBufferiv");
-Function<void, GLenum, GLint, const GLuint *> FunctionObjects::ClearBufferuiv("glClearBufferuiv");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ClearColor("glClearColor");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::ClearColorIiEXT("glClearColorIiEXT");
-Function<void, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ClearColorIuiEXT("glClearColorIuiEXT");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::ClearColorxOES("glClearColorxOES");
-Function<void, GLdouble> FunctionObjects::ClearDepth("glClearDepth");
-Function<void, GLdouble> FunctionObjects::ClearDepthdNV("glClearDepthdNV");
-Function<void, GLfloat> FunctionObjects::ClearDepthf("glClearDepthf");
-Function<void, GLclampf> FunctionObjects::ClearDepthfOES("glClearDepthfOES");
-Function<void, GLfixed> FunctionObjects::ClearDepthxOES("glClearDepthxOES");
-Function<void, GLfloat> FunctionObjects::ClearIndex("glClearIndex");
-Function<void, GLuint, GLenum, GLenum, GLenum, const void *> FunctionObjects::ClearNamedBufferDataEXT("glClearNamedBufferDataEXT");
-Function<void, GLuint, GLenum, GLsizeiptr, GLsizeiptr, GLenum, GLenum, const void *> FunctionObjects::ClearNamedBufferSubDataEXT("glClearNamedBufferSubDataEXT");
-Function<void, GLint> FunctionObjects::ClearStencil("glClearStencil");
-Function<void, GLuint, GLint, GLenum, GLenum, const void *> FunctionObjects::ClearTexImage("glClearTexImage");
-Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ClearTexSubImage("glClearTexSubImage");
-Function<void, GLenum> FunctionObjects::ClientActiveTexture("glClientActiveTexture");
-Function<void, GLenum> FunctionObjects::ClientActiveTextureARB("glClientActiveTextureARB");
-Function<void, GLenum> FunctionObjects::ClientActiveVertexStreamATI("glClientActiveVertexStreamATI");
-Function<void, GLbitfield> FunctionObjects::ClientAttribDefaultEXT("glClientAttribDefaultEXT");
-Function<GLenum, GLsync, GLbitfield, GLuint64> FunctionObjects::ClientWaitSync("glClientWaitSync");
-Function<void, GLenum, const GLdouble *> FunctionObjects::ClipPlane("glClipPlane");
-Function<void, GLenum, const GLfloat *> FunctionObjects::ClipPlanefOES("glClipPlanefOES");
-Function<void, GLenum, const GLfixed *> FunctionObjects::ClipPlanexOES("glClipPlanexOES");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::Color3b("glColor3b");
-Function<void, const GLbyte *> FunctionObjects::Color3bv("glColor3bv");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::Color3d("glColor3d");
-Function<void, const GLdouble *> FunctionObjects::Color3dv("glColor3dv");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::Color3f("glColor3f");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Color3fVertex3fSUN("glColor3fVertex3fSUN");
-Function<void, const GLfloat *, const GLfloat *> FunctionObjects::Color3fVertex3fvSUN("glColor3fVertex3fvSUN");
-Function<void, const GLfloat *> FunctionObjects::Color3fv("glColor3fv");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::Color3hNV("glColor3hNV");
-Function<void, const GLhalfNV *> FunctionObjects::Color3hvNV("glColor3hvNV");
-Function<void, GLint, GLint, GLint> FunctionObjects::Color3i("glColor3i");
-Function<void, const GLint *> FunctionObjects::Color3iv("glColor3iv");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::Color3s("glColor3s");
-Function<void, const GLshort *> FunctionObjects::Color3sv("glColor3sv");
-Function<void, GLubyte, GLubyte, GLubyte> FunctionObjects::Color3ub("glColor3ub");
-Function<void, const GLubyte *> FunctionObjects::Color3ubv("glColor3ubv");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::Color3ui("glColor3ui");
-Function<void, const GLuint *> FunctionObjects::Color3uiv("glColor3uiv");
-Function<void, GLushort, GLushort, GLushort> FunctionObjects::Color3us("glColor3us");
-Function<void, const GLushort *> FunctionObjects::Color3usv("glColor3usv");
-Function<void, GLfixed, GLfixed, GLfixed> FunctionObjects::Color3xOES("glColor3xOES");
-Function<void, const GLfixed *> FunctionObjects::Color3xvOES("glColor3xvOES");
-Function<void, GLbyte, GLbyte, GLbyte, GLbyte> FunctionObjects::Color4b("glColor4b");
-Function<void, const GLbyte *> FunctionObjects::Color4bv("glColor4bv");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::Color4d("glColor4d");
-Function<void, const GLdouble *> FunctionObjects::Color4dv("glColor4dv");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Color4f("glColor4f");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Color4fNormal3fVertex3fSUN("glColor4fNormal3fVertex3fSUN");
-Function<void, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::Color4fNormal3fVertex3fvSUN("glColor4fNormal3fVertex3fvSUN");
-Function<void, const GLfloat *> FunctionObjects::Color4fv("glColor4fv");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::Color4hNV("glColor4hNV");
-Function<void, const GLhalfNV *> FunctionObjects::Color4hvNV("glColor4hvNV");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::Color4i("glColor4i");
-Function<void, const GLint *> FunctionObjects::Color4iv("glColor4iv");
-Function<void, GLshort, GLshort, GLshort, GLshort> FunctionObjects::Color4s("glColor4s");
-Function<void, const GLshort *> FunctionObjects::Color4sv("glColor4sv");
-Function<void, GLubyte, GLubyte, GLubyte, GLubyte> FunctionObjects::Color4ub("glColor4ub");
-Function<void, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat> FunctionObjects::Color4ubVertex2fSUN("glColor4ubVertex2fSUN");
-Function<void, const GLubyte *, const GLfloat *> FunctionObjects::Color4ubVertex2fvSUN("glColor4ubVertex2fvSUN");
-Function<void, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat> FunctionObjects::Color4ubVertex3fSUN("glColor4ubVertex3fSUN");
-Function<void, const GLubyte *, const GLfloat *> FunctionObjects::Color4ubVertex3fvSUN("glColor4ubVertex3fvSUN");
-Function<void, const GLubyte *> FunctionObjects::Color4ubv("glColor4ubv");
-Function<void, GLuint, GLuint, GLuint, GLuint> FunctionObjects::Color4ui("glColor4ui");
-Function<void, const GLuint *> FunctionObjects::Color4uiv("glColor4uiv");
-Function<void, GLushort, GLushort, GLushort, GLushort> FunctionObjects::Color4us("glColor4us");
-Function<void, const GLushort *> FunctionObjects::Color4usv("glColor4usv");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::Color4xOES("glColor4xOES");
-Function<void, const GLfixed *> FunctionObjects::Color4xvOES("glColor4xvOES");
-Function<void, GLint, GLenum, GLsizei> FunctionObjects::ColorFormatNV("glColorFormatNV");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ColorFragmentOp1ATI("glColorFragmentOp1ATI");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ColorFragmentOp2ATI("glColorFragmentOp2ATI");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ColorFragmentOp3ATI("glColorFragmentOp3ATI");
-Function<void, GLboolean, GLboolean, GLboolean, GLboolean> FunctionObjects::ColorMask("glColorMask");
-Function<void, GLuint, GLboolean, GLboolean, GLboolean, GLboolean> FunctionObjects::ColorMaskIndexedEXT("glColorMaskIndexedEXT");
-Function<void, GLuint, GLboolean, GLboolean, GLboolean, GLboolean> FunctionObjects::ColorMaski("glColorMaski");
-Function<void, GLenum, GLenum> FunctionObjects::ColorMaterial("glColorMaterial");
-Function<void, GLenum, GLuint> FunctionObjects::ColorP3ui("glColorP3ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::ColorP3uiv("glColorP3uiv");
-Function<void, GLenum, GLuint> FunctionObjects::ColorP4ui("glColorP4ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::ColorP4uiv("glColorP4uiv");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::ColorPointer("glColorPointer");
-Function<void, GLint, GLenum, GLsizei, GLsizei, const void *> FunctionObjects::ColorPointerEXT("glColorPointerEXT");
-Function<void, GLint, GLenum, GLint, const void **, GLint> FunctionObjects::ColorPointerListIBM("glColorPointerListIBM");
-Function<void, GLint, GLenum, const void **> FunctionObjects::ColorPointervINTEL("glColorPointervINTEL");
-Function<void, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ColorSubTable("glColorSubTable");
-Function<void, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ColorSubTableEXT("glColorSubTableEXT");
-Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ColorTable("glColorTable");
-Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ColorTableEXT("glColorTableEXT");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::ColorTableParameterfv("glColorTableParameterfv");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::ColorTableParameterfvSGI("glColorTableParameterfvSGI");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::ColorTableParameteriv("glColorTableParameteriv");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::ColorTableParameterivSGI("glColorTableParameterivSGI");
-Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ColorTableSGI("glColorTableSGI");
-Function<void, GLenum, GLenum, GLenum, GLenum, GLenum, GLenum> FunctionObjects::CombinerInputNV("glCombinerInputNV");
-Function<void, GLenum, GLenum, GLenum, GLenum, GLenum, GLenum, GLenum, GLboolean, GLboolean, GLboolean> FunctionObjects::CombinerOutputNV("glCombinerOutputNV");
-Function<void, GLenum, GLfloat> FunctionObjects::CombinerParameterfNV("glCombinerParameterfNV");
-Function<void, GLenum, const GLfloat *> FunctionObjects::CombinerParameterfvNV("glCombinerParameterfvNV");
-Function<void, GLenum, GLint> FunctionObjects::CombinerParameteriNV("glCombinerParameteriNV");
-Function<void, GLenum, const GLint *> FunctionObjects::CombinerParameterivNV("glCombinerParameterivNV");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::CombinerStageParameterfvNV("glCombinerStageParameterfvNV");
-Function<void, GLuint> FunctionObjects::CompileShader("glCompileShader");
-Function<void, GLhandleARB> FunctionObjects::CompileShaderARB("glCompileShaderARB");
-Function<void, GLuint, GLsizei, const GLchar *const*, const GLint *> FunctionObjects::CompileShaderIncludeARB("glCompileShaderIncludeARB");
-Function<void, GLenum, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedMultiTexImage1DEXT("glCompressedMultiTexImage1DEXT");
-Function<void, GLenum, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedMultiTexImage2DEXT("glCompressedMultiTexImage2DEXT");
-Function<void, GLenum, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedMultiTexImage3DEXT("glCompressedMultiTexImage3DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedMultiTexSubImage1DEXT("glCompressedMultiTexSubImage1DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedMultiTexSubImage2DEXT("glCompressedMultiTexSubImage2DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedMultiTexSubImage3DEXT("glCompressedMultiTexSubImage3DEXT");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTexImage1D("glCompressedTexImage1D");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTexImage1DARB("glCompressedTexImage1DARB");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTexImage2D("glCompressedTexImage2D");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTexImage2DARB("glCompressedTexImage2DARB");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTexImage3D("glCompressedTexImage3D");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTexImage3DARB("glCompressedTexImage3DARB");
-Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTexSubImage1D("glCompressedTexSubImage1D");
-Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTexSubImage1DARB("glCompressedTexSubImage1DARB");
-Function<void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTexSubImage2D("glCompressedTexSubImage2D");
-Function<void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTexSubImage2DARB("glCompressedTexSubImage2DARB");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTexSubImage3D("glCompressedTexSubImage3D");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTexSubImage3DARB("glCompressedTexSubImage3DARB");
-Function<void, GLuint, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTextureImage1DEXT("glCompressedTextureImage1DEXT");
-Function<void, GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTextureImage2DEXT("glCompressedTextureImage2DEXT");
-Function<void, GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const void *> FunctionObjects::CompressedTextureImage3DEXT("glCompressedTextureImage3DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTextureSubImage1DEXT("glCompressedTextureSubImage1DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTextureSubImage2DEXT("glCompressedTextureSubImage2DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> FunctionObjects::CompressedTextureSubImage3DEXT("glCompressedTextureSubImage3DEXT");
-Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ConvolutionFilter1D("glConvolutionFilter1D");
-Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ConvolutionFilter1DEXT("glConvolutionFilter1DEXT");
-Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ConvolutionFilter2D("glConvolutionFilter2D");
-Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::ConvolutionFilter2DEXT("glConvolutionFilter2DEXT");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::ConvolutionParameterf("glConvolutionParameterf");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::ConvolutionParameterfEXT("glConvolutionParameterfEXT");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::ConvolutionParameterfv("glConvolutionParameterfv");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::ConvolutionParameterfvEXT("glConvolutionParameterfvEXT");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::ConvolutionParameteri("glConvolutionParameteri");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::ConvolutionParameteriEXT("glConvolutionParameteriEXT");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::ConvolutionParameteriv("glConvolutionParameteriv");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::ConvolutionParameterivEXT("glConvolutionParameterivEXT");
-Function<void, GLenum, GLenum, GLfixed> FunctionObjects::ConvolutionParameterxOES("glConvolutionParameterxOES");
-Function<void, GLenum, GLenum, const GLfixed *> FunctionObjects::ConvolutionParameterxvOES("glConvolutionParameterxvOES");
-Function<void, GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr> FunctionObjects::CopyBufferSubData("glCopyBufferSubData");
-Function<void, GLenum, GLsizei, GLint, GLint, GLsizei> FunctionObjects::CopyColorSubTable("glCopyColorSubTable");
-Function<void, GLenum, GLsizei, GLint, GLint, GLsizei> FunctionObjects::CopyColorSubTableEXT("glCopyColorSubTableEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei> FunctionObjects::CopyColorTable("glCopyColorTable");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei> FunctionObjects::CopyColorTableSGI("glCopyColorTableSGI");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei> FunctionObjects::CopyConvolutionFilter1D("glCopyConvolutionFilter1D");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei> FunctionObjects::CopyConvolutionFilter1DEXT("glCopyConvolutionFilter1DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyConvolutionFilter2D("glCopyConvolutionFilter2D");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyConvolutionFilter2DEXT("glCopyConvolutionFilter2DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> FunctionObjects::CopyImageSubData("glCopyImageSubData");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> FunctionObjects::CopyImageSubDataNV("glCopyImageSubDataNV");
-Function<void, GLenum, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint> FunctionObjects::CopyMultiTexImage1DEXT("glCopyMultiTexImage1DEXT");
-Function<void, GLenum, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint> FunctionObjects::CopyMultiTexImage2DEXT("glCopyMultiTexImage2DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei> FunctionObjects::CopyMultiTexSubImage1DEXT("glCopyMultiTexSubImage1DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyMultiTexSubImage2DEXT("glCopyMultiTexSubImage2DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyMultiTexSubImage3DEXT("glCopyMultiTexSubImage3DEXT");
-Function<void, GLuint, GLuint> FunctionObjects::CopyPathNV("glCopyPathNV");
-Function<void, GLint, GLint, GLsizei, GLsizei, GLenum> FunctionObjects::CopyPixels("glCopyPixels");
-Function<void, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint> FunctionObjects::CopyTexImage1D("glCopyTexImage1D");
-Function<void, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint> FunctionObjects::CopyTexImage1DEXT("glCopyTexImage1DEXT");
-Function<void, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint> FunctionObjects::CopyTexImage2D("glCopyTexImage2D");
-Function<void, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint> FunctionObjects::CopyTexImage2DEXT("glCopyTexImage2DEXT");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei> FunctionObjects::CopyTexSubImage1D("glCopyTexSubImage1D");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei> FunctionObjects::CopyTexSubImage1DEXT("glCopyTexSubImage1DEXT");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyTexSubImage2D("glCopyTexSubImage2D");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyTexSubImage2DEXT("glCopyTexSubImage2DEXT");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyTexSubImage3D("glCopyTexSubImage3D");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyTexSubImage3DEXT("glCopyTexSubImage3DEXT");
-Function<void, GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint> FunctionObjects::CopyTextureImage1DEXT("glCopyTextureImage1DEXT");
-Function<void, GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint> FunctionObjects::CopyTextureImage2DEXT("glCopyTextureImage2DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei> FunctionObjects::CopyTextureSubImage1DEXT("glCopyTextureSubImage1DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyTextureSubImage2DEXT("glCopyTextureSubImage2DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::CopyTextureSubImage3DEXT("glCopyTextureSubImage3DEXT");
-Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLenum, const GLfloat *> FunctionObjects::CoverFillPathInstancedNV("glCoverFillPathInstancedNV");
-Function<void, GLuint, GLenum> FunctionObjects::CoverFillPathNV("glCoverFillPathNV");
-Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLenum, const GLfloat *> FunctionObjects::CoverStrokePathInstancedNV("glCoverStrokePathInstancedNV");
-Function<void, GLuint, GLenum> FunctionObjects::CoverStrokePathNV("glCoverStrokePathNV");
-Function<void, GLuint, GLuint *> FunctionObjects::CreatePerfQueryINTEL("glCreatePerfQueryINTEL");
-Function<GLuint> FunctionObjects::CreateProgram("glCreateProgram");
-Function<GLhandleARB> FunctionObjects::CreateProgramObjectARB("glCreateProgramObjectARB");
-Function<GLuint, GLenum> FunctionObjects::CreateShader("glCreateShader");
-Function<GLhandleARB, GLenum> FunctionObjects::CreateShaderObjectARB("glCreateShaderObjectARB");
-Function<GLuint, GLenum, const GLchar *> FunctionObjects::CreateShaderProgramEXT("glCreateShaderProgramEXT");
-Function<GLuint, GLenum, GLsizei, const GLchar *const*> FunctionObjects::CreateShaderProgramv("glCreateShaderProgramv");
-Function<GLsync, _cl_context *, _cl_event *, GLbitfield> FunctionObjects::CreateSyncFromCLeventARB("glCreateSyncFromCLeventARB");
-Function<void, GLenum> FunctionObjects::CullFace("glCullFace");
-Function<void, GLenum, GLdouble *> FunctionObjects::CullParameterdvEXT("glCullParameterdvEXT");
-Function<void, GLenum, GLfloat *> FunctionObjects::CullParameterfvEXT("glCullParameterfvEXT");
-Function<void, GLint> FunctionObjects::CurrentPaletteMatrixARB("glCurrentPaletteMatrixARB");
-Function<void, GLDEBUGPROC, const void *> FunctionObjects::DebugMessageCallback("glDebugMessageCallback");
-Function<void, GLDEBUGPROCAMD, void *> FunctionObjects::DebugMessageCallbackAMD("glDebugMessageCallbackAMD");
-Function<void, GLDEBUGPROCARB, const void *> FunctionObjects::DebugMessageCallbackARB("glDebugMessageCallbackARB");
-Function<void, GLenum, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> FunctionObjects::DebugMessageControl("glDebugMessageControl");
-Function<void, GLenum, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> FunctionObjects::DebugMessageControlARB("glDebugMessageControlARB");
-Function<void, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> FunctionObjects::DebugMessageEnableAMD("glDebugMessageEnableAMD");
-Function<void, GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar *> FunctionObjects::DebugMessageInsert("glDebugMessageInsert");
-Function<void, GLenum, GLenum, GLuint, GLsizei, const GLchar *> FunctionObjects::DebugMessageInsertAMD("glDebugMessageInsertAMD");
-Function<void, GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar *> FunctionObjects::DebugMessageInsertARB("glDebugMessageInsertARB");
-Function<void, GLbitfield> FunctionObjects::DeformSGIX("glDeformSGIX");
-Function<void, GLenum, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> FunctionObjects::DeformationMap3dSGIX("glDeformationMap3dSGIX");
-Function<void, GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *> FunctionObjects::DeformationMap3fSGIX("glDeformationMap3fSGIX");
-Function<void, GLuint, GLsizei> FunctionObjects::DeleteAsyncMarkersSGIX("glDeleteAsyncMarkersSGIX");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteBuffers("glDeleteBuffers");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteBuffersARB("glDeleteBuffersARB");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteFencesAPPLE("glDeleteFencesAPPLE");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteFencesNV("glDeleteFencesNV");
-Function<void, GLuint> FunctionObjects::DeleteFragmentShaderATI("glDeleteFragmentShaderATI");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteFramebuffers("glDeleteFramebuffers");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteFramebuffersEXT("glDeleteFramebuffersEXT");
-Function<void, GLuint, GLsizei> FunctionObjects::DeleteLists("glDeleteLists");
-Function<void, GLint, const GLchar *> FunctionObjects::DeleteNamedStringARB("glDeleteNamedStringARB");
-Function<void, GLenum, GLuint, const GLuint *> FunctionObjects::DeleteNamesAMD("glDeleteNamesAMD");
-Function<void, GLhandleARB> FunctionObjects::DeleteObjectARB("glDeleteObjectARB");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteOcclusionQueriesNV("glDeleteOcclusionQueriesNV");
-Function<void, GLuint, GLsizei> FunctionObjects::DeletePathsNV("glDeletePathsNV");
-Function<void, GLsizei, GLuint *> FunctionObjects::DeletePerfMonitorsAMD("glDeletePerfMonitorsAMD");
-Function<void, GLuint> FunctionObjects::DeletePerfQueryINTEL("glDeletePerfQueryINTEL");
-Function<void, GLuint> FunctionObjects::DeleteProgram("glDeleteProgram");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteProgramPipelines("glDeleteProgramPipelines");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteProgramsARB("glDeleteProgramsARB");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteProgramsNV("glDeleteProgramsNV");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteQueries("glDeleteQueries");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteQueriesARB("glDeleteQueriesARB");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteRenderbuffers("glDeleteRenderbuffers");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteRenderbuffersEXT("glDeleteRenderbuffersEXT");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteSamplers("glDeleteSamplers");
-Function<void, GLuint> FunctionObjects::DeleteShader("glDeleteShader");
-Function<void, GLsync> FunctionObjects::DeleteSync("glDeleteSync");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteTextures("glDeleteTextures");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteTexturesEXT("glDeleteTexturesEXT");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteTransformFeedbacks("glDeleteTransformFeedbacks");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteTransformFeedbacksNV("glDeleteTransformFeedbacksNV");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteVertexArrays("glDeleteVertexArrays");
-Function<void, GLsizei, const GLuint *> FunctionObjects::DeleteVertexArraysAPPLE("glDeleteVertexArraysAPPLE");
-Function<void, GLuint> FunctionObjects::DeleteVertexShaderEXT("glDeleteVertexShaderEXT");
-Function<void, GLclampd, GLclampd> FunctionObjects::DepthBoundsEXT("glDepthBoundsEXT");
-Function<void, GLdouble, GLdouble> FunctionObjects::DepthBoundsdNV("glDepthBoundsdNV");
-Function<void, GLenum> FunctionObjects::DepthFunc("glDepthFunc");
-Function<void, GLboolean> FunctionObjects::DepthMask("glDepthMask");
-Function<void, GLdouble, GLdouble> FunctionObjects::DepthRange("glDepthRange");
-Function<void, GLuint, GLsizei, const GLdouble *> FunctionObjects::DepthRangeArrayv("glDepthRangeArrayv");
-Function<void, GLuint, GLdouble, GLdouble> FunctionObjects::DepthRangeIndexed("glDepthRangeIndexed");
-Function<void, GLdouble, GLdouble> FunctionObjects::DepthRangedNV("glDepthRangedNV");
-Function<void, GLfloat, GLfloat> FunctionObjects::DepthRangef("glDepthRangef");
-Function<void, GLclampf, GLclampf> FunctionObjects::DepthRangefOES("glDepthRangefOES");
-Function<void, GLfixed, GLfixed> FunctionObjects::DepthRangexOES("glDepthRangexOES");
-Function<void, GLhandleARB, GLhandleARB> FunctionObjects::DetachObjectARB("glDetachObjectARB");
-Function<void, GLuint, GLuint> FunctionObjects::DetachShader("glDetachShader");
-Function<void, GLenum, GLsizei, const GLfloat *> FunctionObjects::DetailTexFuncSGIS("glDetailTexFuncSGIS");
-Function<void, GLenum> FunctionObjects::Disable("glDisable");
-Function<void, GLenum> FunctionObjects::DisableClientState("glDisableClientState");
-Function<void, GLenum, GLuint> FunctionObjects::DisableClientStateIndexedEXT("glDisableClientStateIndexedEXT");
-Function<void, GLenum, GLuint> FunctionObjects::DisableClientStateiEXT("glDisableClientStateiEXT");
-Function<void, GLenum, GLuint> FunctionObjects::DisableIndexedEXT("glDisableIndexedEXT");
-Function<void, GLuint> FunctionObjects::DisableVariantClientStateEXT("glDisableVariantClientStateEXT");
-Function<void, GLuint, GLuint> FunctionObjects::DisableVertexArrayAttribEXT("glDisableVertexArrayAttribEXT");
-Function<void, GLuint, GLenum> FunctionObjects::DisableVertexArrayEXT("glDisableVertexArrayEXT");
-Function<void, GLuint, GLenum> FunctionObjects::DisableVertexAttribAPPLE("glDisableVertexAttribAPPLE");
-Function<void, GLuint> FunctionObjects::DisableVertexAttribArray("glDisableVertexAttribArray");
-Function<void, GLuint> FunctionObjects::DisableVertexAttribArrayARB("glDisableVertexAttribArrayARB");
-Function<void, GLenum, GLuint> FunctionObjects::Disablei("glDisablei");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::DispatchCompute("glDispatchCompute");
-Function<void, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::DispatchComputeGroupSizeARB("glDispatchComputeGroupSizeARB");
-Function<void, GLintptr> FunctionObjects::DispatchComputeIndirect("glDispatchComputeIndirect");
-Function<void, GLenum, GLint, GLsizei> FunctionObjects::DrawArrays("glDrawArrays");
-Function<void, GLenum, GLint, GLsizei> FunctionObjects::DrawArraysEXT("glDrawArraysEXT");
-Function<void, GLenum, const void *> FunctionObjects::DrawArraysIndirect("glDrawArraysIndirect");
-Function<void, GLenum, GLint, GLsizei, GLsizei> FunctionObjects::DrawArraysInstanced("glDrawArraysInstanced");
-Function<void, GLenum, GLint, GLsizei, GLsizei> FunctionObjects::DrawArraysInstancedARB("glDrawArraysInstancedARB");
-Function<void, GLenum, GLint, GLsizei, GLsizei, GLuint> FunctionObjects::DrawArraysInstancedBaseInstance("glDrawArraysInstancedBaseInstance");
-Function<void, GLenum, GLint, GLsizei, GLsizei> FunctionObjects::DrawArraysInstancedEXT("glDrawArraysInstancedEXT");
-Function<void, GLenum> FunctionObjects::DrawBuffer("glDrawBuffer");
-Function<void, GLsizei, const GLenum *> FunctionObjects::DrawBuffers("glDrawBuffers");
-Function<void, GLsizei, const GLenum *> FunctionObjects::DrawBuffersARB("glDrawBuffersARB");
-Function<void, GLsizei, const GLenum *> FunctionObjects::DrawBuffersATI("glDrawBuffersATI");
-Function<void, GLenum, GLint, GLsizei> FunctionObjects::DrawElementArrayAPPLE("glDrawElementArrayAPPLE");
-Function<void, GLenum, GLsizei> FunctionObjects::DrawElementArrayATI("glDrawElementArrayATI");
-Function<void, GLenum, GLsizei, GLenum, const void *> FunctionObjects::DrawElements("glDrawElements");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLint> FunctionObjects::DrawElementsBaseVertex("glDrawElementsBaseVertex");
-Function<void, GLenum, GLenum, const void *> FunctionObjects::DrawElementsIndirect("glDrawElementsIndirect");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei> FunctionObjects::DrawElementsInstanced("glDrawElementsInstanced");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei> FunctionObjects::DrawElementsInstancedARB("glDrawElementsInstancedARB");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLuint> FunctionObjects::DrawElementsInstancedBaseInstance("glDrawElementsInstancedBaseInstance");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint> FunctionObjects::DrawElementsInstancedBaseVertex("glDrawElementsInstancedBaseVertex");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint, GLuint> FunctionObjects::DrawElementsInstancedBaseVertexBaseInstance("glDrawElementsInstancedBaseVertexBaseInstance");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei> FunctionObjects::DrawElementsInstancedEXT("glDrawElementsInstancedEXT");
-Function<void, GLenum, GLint, GLsizei, GLsizei> FunctionObjects::DrawMeshArraysSUN("glDrawMeshArraysSUN");
-Function<void, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::DrawPixels("glDrawPixels");
-Function<void, GLenum, GLuint, GLuint, GLint, GLsizei> FunctionObjects::DrawRangeElementArrayAPPLE("glDrawRangeElementArrayAPPLE");
-Function<void, GLenum, GLuint, GLuint, GLsizei> FunctionObjects::DrawRangeElementArrayATI("glDrawRangeElementArrayATI");
-Function<void, GLenum, GLuint, GLuint, GLsizei, GLenum, const void *> FunctionObjects::DrawRangeElements("glDrawRangeElements");
-Function<void, GLenum, GLuint, GLuint, GLsizei, GLenum, const void *, GLint> FunctionObjects::DrawRangeElementsBaseVertex("glDrawRangeElementsBaseVertex");
-Function<void, GLenum, GLuint, GLuint, GLsizei, GLenum, const void *> FunctionObjects::DrawRangeElementsEXT("glDrawRangeElementsEXT");
-Function<void, GLuint, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::DrawTextureNV("glDrawTextureNV");
-Function<void, GLenum, GLuint> FunctionObjects::DrawTransformFeedback("glDrawTransformFeedback");
-Function<void, GLenum, GLuint, GLsizei> FunctionObjects::DrawTransformFeedbackInstanced("glDrawTransformFeedbackInstanced");
-Function<void, GLenum, GLuint> FunctionObjects::DrawTransformFeedbackNV("glDrawTransformFeedbackNV");
-Function<void, GLenum, GLuint, GLuint> FunctionObjects::DrawTransformFeedbackStream("glDrawTransformFeedbackStream");
-Function<void, GLenum, GLuint, GLuint, GLsizei> FunctionObjects::DrawTransformFeedbackStreamInstanced("glDrawTransformFeedbackStreamInstanced");
-Function<void, GLboolean> FunctionObjects::EdgeFlag("glEdgeFlag");
-Function<void, GLsizei> FunctionObjects::EdgeFlagFormatNV("glEdgeFlagFormatNV");
-Function<void, GLsizei, const void *> FunctionObjects::EdgeFlagPointer("glEdgeFlagPointer");
-Function<void, GLsizei, GLsizei, const GLboolean *> FunctionObjects::EdgeFlagPointerEXT("glEdgeFlagPointerEXT");
-Function<void, GLint, const GLboolean **, GLint> FunctionObjects::EdgeFlagPointerListIBM("glEdgeFlagPointerListIBM");
-Function<void, const GLboolean *> FunctionObjects::EdgeFlagv("glEdgeFlagv");
-Function<void, GLenum, const void *> FunctionObjects::ElementPointerAPPLE("glElementPointerAPPLE");
-Function<void, GLenum, const void *> FunctionObjects::ElementPointerATI("glElementPointerATI");
-Function<void, GLenum> FunctionObjects::Enable("glEnable");
-Function<void, GLenum> FunctionObjects::EnableClientState("glEnableClientState");
-Function<void, GLenum, GLuint> FunctionObjects::EnableClientStateIndexedEXT("glEnableClientStateIndexedEXT");
-Function<void, GLenum, GLuint> FunctionObjects::EnableClientStateiEXT("glEnableClientStateiEXT");
-Function<void, GLenum, GLuint> FunctionObjects::EnableIndexedEXT("glEnableIndexedEXT");
-Function<void, GLuint> FunctionObjects::EnableVariantClientStateEXT("glEnableVariantClientStateEXT");
-Function<void, GLuint, GLuint> FunctionObjects::EnableVertexArrayAttribEXT("glEnableVertexArrayAttribEXT");
-Function<void, GLuint, GLenum> FunctionObjects::EnableVertexArrayEXT("glEnableVertexArrayEXT");
-Function<void, GLuint, GLenum> FunctionObjects::EnableVertexAttribAPPLE("glEnableVertexAttribAPPLE");
-Function<void, GLuint> FunctionObjects::EnableVertexAttribArray("glEnableVertexAttribArray");
-Function<void, GLuint> FunctionObjects::EnableVertexAttribArrayARB("glEnableVertexAttribArrayARB");
-Function<void, GLenum, GLuint> FunctionObjects::Enablei("glEnablei");
-Function<void> FunctionObjects::End("glEnd");
-Function<void> FunctionObjects::EndConditionalRender("glEndConditionalRender");
-Function<void> FunctionObjects::EndConditionalRenderNV("glEndConditionalRenderNV");
-Function<void> FunctionObjects::EndConditionalRenderNVX("glEndConditionalRenderNVX");
-Function<void> FunctionObjects::EndFragmentShaderATI("glEndFragmentShaderATI");
-Function<void> FunctionObjects::EndList("glEndList");
-Function<void> FunctionObjects::EndOcclusionQueryNV("glEndOcclusionQueryNV");
-Function<void, GLuint> FunctionObjects::EndPerfMonitorAMD("glEndPerfMonitorAMD");
-Function<void, GLuint> FunctionObjects::EndPerfQueryINTEL("glEndPerfQueryINTEL");
-Function<void, GLenum> FunctionObjects::EndQuery("glEndQuery");
-Function<void, GLenum> FunctionObjects::EndQueryARB("glEndQueryARB");
-Function<void, GLenum, GLuint> FunctionObjects::EndQueryIndexed("glEndQueryIndexed");
-Function<void> FunctionObjects::EndTransformFeedback("glEndTransformFeedback");
-Function<void> FunctionObjects::EndTransformFeedbackEXT("glEndTransformFeedbackEXT");
-Function<void> FunctionObjects::EndTransformFeedbackNV("glEndTransformFeedbackNV");
-Function<void> FunctionObjects::EndVertexShaderEXT("glEndVertexShaderEXT");
-Function<void, GLuint> FunctionObjects::EndVideoCaptureNV("glEndVideoCaptureNV");
-Function<void, GLdouble> FunctionObjects::EvalCoord1d("glEvalCoord1d");
-Function<void, const GLdouble *> FunctionObjects::EvalCoord1dv("glEvalCoord1dv");
-Function<void, GLfloat> FunctionObjects::EvalCoord1f("glEvalCoord1f");
-Function<void, const GLfloat *> FunctionObjects::EvalCoord1fv("glEvalCoord1fv");
-Function<void, GLfixed> FunctionObjects::EvalCoord1xOES("glEvalCoord1xOES");
-Function<void, const GLfixed *> FunctionObjects::EvalCoord1xvOES("glEvalCoord1xvOES");
-Function<void, GLdouble, GLdouble> FunctionObjects::EvalCoord2d("glEvalCoord2d");
-Function<void, const GLdouble *> FunctionObjects::EvalCoord2dv("glEvalCoord2dv");
-Function<void, GLfloat, GLfloat> FunctionObjects::EvalCoord2f("glEvalCoord2f");
-Function<void, const GLfloat *> FunctionObjects::EvalCoord2fv("glEvalCoord2fv");
-Function<void, GLfixed, GLfixed> FunctionObjects::EvalCoord2xOES("glEvalCoord2xOES");
-Function<void, const GLfixed *> FunctionObjects::EvalCoord2xvOES("glEvalCoord2xvOES");
-Function<void, GLenum, GLenum> FunctionObjects::EvalMapsNV("glEvalMapsNV");
-Function<void, GLenum, GLint, GLint> FunctionObjects::EvalMesh1("glEvalMesh1");
-Function<void, GLenum, GLint, GLint, GLint, GLint> FunctionObjects::EvalMesh2("glEvalMesh2");
-Function<void, GLint> FunctionObjects::EvalPoint1("glEvalPoint1");
-Function<void, GLint, GLint> FunctionObjects::EvalPoint2("glEvalPoint2");
-Function<void, GLenum, GLuint, const GLfloat *> FunctionObjects::ExecuteProgramNV("glExecuteProgramNV");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::ExtractComponentEXT("glExtractComponentEXT");
-Function<void, GLsizei, GLenum, GLfloat *> FunctionObjects::FeedbackBuffer("glFeedbackBuffer");
-Function<void, GLsizei, GLenum, const GLfixed *> FunctionObjects::FeedbackBufferxOES("glFeedbackBufferxOES");
-Function<GLsync, GLenum, GLbitfield> FunctionObjects::FenceSync("glFenceSync");
-Function<void, GLenum, GLenum, GLenum, GLenum> FunctionObjects::FinalCombinerInputNV("glFinalCombinerInputNV");
-Function<void> FunctionObjects::Finish("glFinish");
-Function<GLint, GLuint *> FunctionObjects::FinishAsyncSGIX("glFinishAsyncSGIX");
-Function<void, GLuint> FunctionObjects::FinishFenceAPPLE("glFinishFenceAPPLE");
-Function<void, GLuint> FunctionObjects::FinishFenceNV("glFinishFenceNV");
-Function<void, GLenum, GLint> FunctionObjects::FinishObjectAPPLE("glFinishObjectAPPLE");
-Function<void> FunctionObjects::FinishTextureSUNX("glFinishTextureSUNX");
-Function<void> FunctionObjects::Flush("glFlush");
-Function<void, GLenum, GLintptr, GLsizeiptr> FunctionObjects::FlushMappedBufferRange("glFlushMappedBufferRange");
-Function<void, GLenum, GLintptr, GLsizeiptr> FunctionObjects::FlushMappedBufferRangeAPPLE("glFlushMappedBufferRangeAPPLE");
-Function<void, GLuint, GLintptr, GLsizeiptr> FunctionObjects::FlushMappedNamedBufferRangeEXT("glFlushMappedNamedBufferRangeEXT");
-Function<void, GLenum> FunctionObjects::FlushPixelDataRangeNV("glFlushPixelDataRangeNV");
-Function<void> FunctionObjects::FlushRasterSGIX("glFlushRasterSGIX");
-Function<void, GLenum> FunctionObjects::FlushStaticDataIBM("glFlushStaticDataIBM");
-Function<void, GLsizei, void *> FunctionObjects::FlushVertexArrayRangeAPPLE("glFlushVertexArrayRangeAPPLE");
-Function<void> FunctionObjects::FlushVertexArrayRangeNV("glFlushVertexArrayRangeNV");
-Function<void, GLenum, GLsizei> FunctionObjects::FogCoordFormatNV("glFogCoordFormatNV");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::FogCoordPointer("glFogCoordPointer");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::FogCoordPointerEXT("glFogCoordPointerEXT");
-Function<void, GLenum, GLint, const void **, GLint> FunctionObjects::FogCoordPointerListIBM("glFogCoordPointerListIBM");
-Function<void, GLdouble> FunctionObjects::FogCoordd("glFogCoordd");
-Function<void, GLdouble> FunctionObjects::FogCoorddEXT("glFogCoorddEXT");
-Function<void, const GLdouble *> FunctionObjects::FogCoorddv("glFogCoorddv");
-Function<void, const GLdouble *> FunctionObjects::FogCoorddvEXT("glFogCoorddvEXT");
-Function<void, GLfloat> FunctionObjects::FogCoordf("glFogCoordf");
-Function<void, GLfloat> FunctionObjects::FogCoordfEXT("glFogCoordfEXT");
-Function<void, const GLfloat *> FunctionObjects::FogCoordfv("glFogCoordfv");
-Function<void, const GLfloat *> FunctionObjects::FogCoordfvEXT("glFogCoordfvEXT");
-Function<void, GLhalfNV> FunctionObjects::FogCoordhNV("glFogCoordhNV");
-Function<void, const GLhalfNV *> FunctionObjects::FogCoordhvNV("glFogCoordhvNV");
-Function<void, GLsizei, const GLfloat *> FunctionObjects::FogFuncSGIS("glFogFuncSGIS");
-Function<void, GLenum, GLfloat> FunctionObjects::Fogf("glFogf");
-Function<void, GLenum, const GLfloat *> FunctionObjects::Fogfv("glFogfv");
-Function<void, GLenum, GLint> FunctionObjects::Fogi("glFogi");
-Function<void, GLenum, const GLint *> FunctionObjects::Fogiv("glFogiv");
-Function<void, GLenum, GLfixed> FunctionObjects::FogxOES("glFogxOES");
-Function<void, GLenum, const GLfixed *> FunctionObjects::FogxvOES("glFogxvOES");
-Function<void, GLenum, GLenum> FunctionObjects::FragmentColorMaterialSGIX("glFragmentColorMaterialSGIX");
-Function<void, GLenum, GLfloat> FunctionObjects::FragmentLightModelfSGIX("glFragmentLightModelfSGIX");
-Function<void, GLenum, const GLfloat *> FunctionObjects::FragmentLightModelfvSGIX("glFragmentLightModelfvSGIX");
-Function<void, GLenum, GLint> FunctionObjects::FragmentLightModeliSGIX("glFragmentLightModeliSGIX");
-Function<void, GLenum, const GLint *> FunctionObjects::FragmentLightModelivSGIX("glFragmentLightModelivSGIX");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::FragmentLightfSGIX("glFragmentLightfSGIX");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::FragmentLightfvSGIX("glFragmentLightfvSGIX");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::FragmentLightiSGIX("glFragmentLightiSGIX");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::FragmentLightivSGIX("glFragmentLightivSGIX");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::FragmentMaterialfSGIX("glFragmentMaterialfSGIX");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::FragmentMaterialfvSGIX("glFragmentMaterialfvSGIX");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::FragmentMaterialiSGIX("glFragmentMaterialiSGIX");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::FragmentMaterialivSGIX("glFragmentMaterialivSGIX");
-Function<void> FunctionObjects::FrameTerminatorGREMEDY("glFrameTerminatorGREMEDY");
-Function<void, GLint> FunctionObjects::FrameZoomSGIX("glFrameZoomSGIX");
-Function<void, GLuint, GLenum> FunctionObjects::FramebufferDrawBufferEXT("glFramebufferDrawBufferEXT");
-Function<void, GLuint, GLsizei, const GLenum *> FunctionObjects::FramebufferDrawBuffersEXT("glFramebufferDrawBuffersEXT");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::FramebufferParameteri("glFramebufferParameteri");
-Function<void, GLuint, GLenum> FunctionObjects::FramebufferReadBufferEXT("glFramebufferReadBufferEXT");
-Function<void, GLenum, GLenum, GLenum, GLuint> FunctionObjects::FramebufferRenderbuffer("glFramebufferRenderbuffer");
-Function<void, GLenum, GLenum, GLenum, GLuint> FunctionObjects::FramebufferRenderbufferEXT("glFramebufferRenderbufferEXT");
-Function<void, GLenum, GLenum, GLuint, GLint> FunctionObjects::FramebufferTexture("glFramebufferTexture");
-Function<void, GLenum, GLenum, GLenum, GLuint, GLint> FunctionObjects::FramebufferTexture1D("glFramebufferTexture1D");
-Function<void, GLenum, GLenum, GLenum, GLuint, GLint> FunctionObjects::FramebufferTexture1DEXT("glFramebufferTexture1DEXT");
-Function<void, GLenum, GLenum, GLenum, GLuint, GLint> FunctionObjects::FramebufferTexture2D("glFramebufferTexture2D");
-Function<void, GLenum, GLenum, GLenum, GLuint, GLint> FunctionObjects::FramebufferTexture2DEXT("glFramebufferTexture2DEXT");
-Function<void, GLenum, GLenum, GLenum, GLuint, GLint, GLint> FunctionObjects::FramebufferTexture3D("glFramebufferTexture3D");
-Function<void, GLenum, GLenum, GLenum, GLuint, GLint, GLint> FunctionObjects::FramebufferTexture3DEXT("glFramebufferTexture3DEXT");
-Function<void, GLenum, GLenum, GLuint, GLint> FunctionObjects::FramebufferTextureARB("glFramebufferTextureARB");
-Function<void, GLenum, GLenum, GLuint, GLint> FunctionObjects::FramebufferTextureEXT("glFramebufferTextureEXT");
-Function<void, GLenum, GLenum, GLuint, GLint, GLenum> FunctionObjects::FramebufferTextureFaceARB("glFramebufferTextureFaceARB");
-Function<void, GLenum, GLenum, GLuint, GLint, GLenum> FunctionObjects::FramebufferTextureFaceEXT("glFramebufferTextureFaceEXT");
-Function<void, GLenum, GLenum, GLuint, GLint, GLint> FunctionObjects::FramebufferTextureLayer("glFramebufferTextureLayer");
-Function<void, GLenum, GLenum, GLuint, GLint, GLint> FunctionObjects::FramebufferTextureLayerARB("glFramebufferTextureLayerARB");
-Function<void, GLenum, GLenum, GLuint, GLint, GLint> FunctionObjects::FramebufferTextureLayerEXT("glFramebufferTextureLayerEXT");
-Function<void, GLuint> FunctionObjects::FreeObjectBufferATI("glFreeObjectBufferATI");
-Function<void, GLenum> FunctionObjects::FrontFace("glFrontFace");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::Frustum("glFrustum");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::FrustumfOES("glFrustumfOES");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::FrustumxOES("glFrustumxOES");
-Function<GLuint, GLsizei> FunctionObjects::GenAsyncMarkersSGIX("glGenAsyncMarkersSGIX");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenBuffers("glGenBuffers");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenBuffersARB("glGenBuffersARB");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenFencesAPPLE("glGenFencesAPPLE");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenFencesNV("glGenFencesNV");
-Function<GLuint, GLuint> FunctionObjects::GenFragmentShadersATI("glGenFragmentShadersATI");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenFramebuffers("glGenFramebuffers");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenFramebuffersEXT("glGenFramebuffersEXT");
-Function<GLuint, GLsizei> FunctionObjects::GenLists("glGenLists");
-Function<void, GLenum, GLuint, GLuint *> FunctionObjects::GenNamesAMD("glGenNamesAMD");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenOcclusionQueriesNV("glGenOcclusionQueriesNV");
-Function<GLuint, GLsizei> FunctionObjects::GenPathsNV("glGenPathsNV");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenPerfMonitorsAMD("glGenPerfMonitorsAMD");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenProgramPipelines("glGenProgramPipelines");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenProgramsARB("glGenProgramsARB");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenProgramsNV("glGenProgramsNV");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenQueries("glGenQueries");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenQueriesARB("glGenQueriesARB");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenRenderbuffers("glGenRenderbuffers");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenRenderbuffersEXT("glGenRenderbuffersEXT");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenSamplers("glGenSamplers");
-Function<GLuint, GLenum, GLenum, GLenum, GLuint> FunctionObjects::GenSymbolsEXT("glGenSymbolsEXT");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenTextures("glGenTextures");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenTexturesEXT("glGenTexturesEXT");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenTransformFeedbacks("glGenTransformFeedbacks");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenTransformFeedbacksNV("glGenTransformFeedbacksNV");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenVertexArrays("glGenVertexArrays");
-Function<void, GLsizei, GLuint *> FunctionObjects::GenVertexArraysAPPLE("glGenVertexArraysAPPLE");
-Function<GLuint, GLuint> FunctionObjects::GenVertexShadersEXT("glGenVertexShadersEXT");
-Function<void, GLenum> FunctionObjects::GenerateMipmap("glGenerateMipmap");
-Function<void, GLenum> FunctionObjects::GenerateMipmapEXT("glGenerateMipmapEXT");
-Function<void, GLenum, GLenum> FunctionObjects::GenerateMultiTexMipmapEXT("glGenerateMultiTexMipmapEXT");
-Function<void, GLuint, GLenum> FunctionObjects::GenerateTextureMipmapEXT("glGenerateTextureMipmapEXT");
-Function<void, GLuint, GLuint, GLenum, GLint *> FunctionObjects::GetActiveAtomicCounterBufferiv("glGetActiveAtomicCounterBufferiv");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLint *, GLenum *, GLchar *> FunctionObjects::GetActiveAttrib("glGetActiveAttrib");
-Function<void, GLhandleARB, GLuint, GLsizei, GLsizei *, GLint *, GLenum *, GLcharARB *> FunctionObjects::GetActiveAttribARB("glGetActiveAttribARB");
-Function<void, GLuint, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetActiveSubroutineName("glGetActiveSubroutineName");
-Function<void, GLuint, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetActiveSubroutineUniformName("glGetActiveSubroutineUniformName");
-Function<void, GLuint, GLenum, GLuint, GLenum, GLint *> FunctionObjects::GetActiveSubroutineUniformiv("glGetActiveSubroutineUniformiv");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLint *, GLenum *, GLchar *> FunctionObjects::GetActiveUniform("glGetActiveUniform");
-Function<void, GLhandleARB, GLuint, GLsizei, GLsizei *, GLint *, GLenum *, GLcharARB *> FunctionObjects::GetActiveUniformARB("glGetActiveUniformARB");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetActiveUniformBlockName("glGetActiveUniformBlockName");
-Function<void, GLuint, GLuint, GLenum, GLint *> FunctionObjects::GetActiveUniformBlockiv("glGetActiveUniformBlockiv");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetActiveUniformName("glGetActiveUniformName");
-Function<void, GLuint, GLsizei, const GLuint *, GLenum, GLint *> FunctionObjects::GetActiveUniformsiv("glGetActiveUniformsiv");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLsizei *, GLenum *, GLchar *> FunctionObjects::GetActiveVaryingNV("glGetActiveVaryingNV");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetArrayObjectfvATI("glGetArrayObjectfvATI");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetArrayObjectivATI("glGetArrayObjectivATI");
-Function<void, GLhandleARB, GLsizei, GLsizei *, GLhandleARB *> FunctionObjects::GetAttachedObjectsARB("glGetAttachedObjectsARB");
-Function<void, GLuint, GLsizei, GLsizei *, GLuint *> FunctionObjects::GetAttachedShaders("glGetAttachedShaders");
-Function<GLint, GLuint, const GLchar *> FunctionObjects::GetAttribLocation("glGetAttribLocation");
-Function<GLint, GLhandleARB, const GLcharARB *> FunctionObjects::GetAttribLocationARB("glGetAttribLocationARB");
-Function<void, GLenum, GLuint, GLboolean *> FunctionObjects::GetBooleanIndexedvEXT("glGetBooleanIndexedvEXT");
-Function<void, GLenum, GLuint, GLboolean *> FunctionObjects::GetBooleani_v("glGetBooleani_v");
-Function<void, GLenum, GLboolean *> FunctionObjects::GetBooleanv("glGetBooleanv");
-Function<void, GLenum, GLenum, GLint64 *> FunctionObjects::GetBufferParameteri64v("glGetBufferParameteri64v");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetBufferParameteriv("glGetBufferParameteriv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetBufferParameterivARB("glGetBufferParameterivARB");
-Function<void, GLenum, GLenum, GLuint64EXT *> FunctionObjects::GetBufferParameterui64vNV("glGetBufferParameterui64vNV");
-Function<void, GLenum, GLenum, void **> FunctionObjects::GetBufferPointerv("glGetBufferPointerv");
-Function<void, GLenum, GLenum, void **> FunctionObjects::GetBufferPointervARB("glGetBufferPointervARB");
-Function<void, GLenum, GLintptr, GLsizeiptr, void *> FunctionObjects::GetBufferSubData("glGetBufferSubData");
-Function<void, GLenum, GLintptrARB, GLsizeiptrARB, void *> FunctionObjects::GetBufferSubDataARB("glGetBufferSubDataARB");
-Function<void, GLenum, GLdouble *> FunctionObjects::GetClipPlane("glGetClipPlane");
-Function<void, GLenum, GLfloat *> FunctionObjects::GetClipPlanefOES("glGetClipPlanefOES");
-Function<void, GLenum, GLfixed *> FunctionObjects::GetClipPlanexOES("glGetClipPlanexOES");
-Function<void, GLenum, GLenum, GLenum, void *> FunctionObjects::GetColorTable("glGetColorTable");
-Function<void, GLenum, GLenum, GLenum, void *> FunctionObjects::GetColorTableEXT("glGetColorTableEXT");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetColorTableParameterfv("glGetColorTableParameterfv");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetColorTableParameterfvEXT("glGetColorTableParameterfvEXT");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetColorTableParameterfvSGI("glGetColorTableParameterfvSGI");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetColorTableParameteriv("glGetColorTableParameteriv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetColorTableParameterivEXT("glGetColorTableParameterivEXT");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetColorTableParameterivSGI("glGetColorTableParameterivSGI");
-Function<void, GLenum, GLenum, GLenum, void *> FunctionObjects::GetColorTableSGI("glGetColorTableSGI");
-Function<void, GLenum, GLenum, GLenum, GLenum, GLfloat *> FunctionObjects::GetCombinerInputParameterfvNV("glGetCombinerInputParameterfvNV");
-Function<void, GLenum, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetCombinerInputParameterivNV("glGetCombinerInputParameterivNV");
-Function<void, GLenum, GLenum, GLenum, GLfloat *> FunctionObjects::GetCombinerOutputParameterfvNV("glGetCombinerOutputParameterfvNV");
-Function<void, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetCombinerOutputParameterivNV("glGetCombinerOutputParameterivNV");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetCombinerStageParameterfvNV("glGetCombinerStageParameterfvNV");
-Function<void, GLenum, GLenum, GLint, void *> FunctionObjects::GetCompressedMultiTexImageEXT("glGetCompressedMultiTexImageEXT");
-Function<void, GLenum, GLint, void *> FunctionObjects::GetCompressedTexImage("glGetCompressedTexImage");
-Function<void, GLenum, GLint, void *> FunctionObjects::GetCompressedTexImageARB("glGetCompressedTexImageARB");
-Function<void, GLuint, GLenum, GLint, void *> FunctionObjects::GetCompressedTextureImageEXT("glGetCompressedTextureImageEXT");
-Function<void, GLenum, GLenum, GLenum, void *> FunctionObjects::GetConvolutionFilter("glGetConvolutionFilter");
-Function<void, GLenum, GLenum, GLenum, void *> FunctionObjects::GetConvolutionFilterEXT("glGetConvolutionFilterEXT");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetConvolutionParameterfv("glGetConvolutionParameterfv");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetConvolutionParameterfvEXT("glGetConvolutionParameterfvEXT");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetConvolutionParameteriv("glGetConvolutionParameteriv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetConvolutionParameterivEXT("glGetConvolutionParameterivEXT");
-Function<void, GLenum, GLenum, GLfixed *> FunctionObjects::GetConvolutionParameterxvOES("glGetConvolutionParameterxvOES");
-Function<GLuint, GLuint, GLsizei, GLenum *, GLenum *, GLuint *, GLenum *, GLsizei *, GLchar *> FunctionObjects::GetDebugMessageLog("glGetDebugMessageLog");
-Function<GLuint, GLuint, GLsizei, GLenum *, GLuint *, GLuint *, GLsizei *, GLchar *> FunctionObjects::GetDebugMessageLogAMD("glGetDebugMessageLogAMD");
-Function<GLuint, GLuint, GLsizei, GLenum *, GLenum *, GLuint *, GLenum *, GLsizei *, GLchar *> FunctionObjects::GetDebugMessageLogARB("glGetDebugMessageLogARB");
-Function<void, GLenum, GLfloat *> FunctionObjects::GetDetailTexFuncSGIS("glGetDetailTexFuncSGIS");
-Function<void, GLenum, GLuint, GLdouble *> FunctionObjects::GetDoubleIndexedvEXT("glGetDoubleIndexedvEXT");
-Function<void, GLenum, GLuint, GLdouble *> FunctionObjects::GetDoublei_v("glGetDoublei_v");
-Function<void, GLenum, GLuint, GLdouble *> FunctionObjects::GetDoublei_vEXT("glGetDoublei_vEXT");
-Function<void, GLenum, GLdouble *> FunctionObjects::GetDoublev("glGetDoublev");
-Function<GLenum> FunctionObjects::GetError("glGetError");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetFenceivNV("glGetFenceivNV");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetFinalCombinerInputParameterfvNV("glGetFinalCombinerInputParameterfvNV");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetFinalCombinerInputParameterivNV("glGetFinalCombinerInputParameterivNV");
-Function<void, GLuint *> FunctionObjects::GetFirstPerfQueryIdINTEL("glGetFirstPerfQueryIdINTEL");
-Function<void, GLenum, GLfixed *> FunctionObjects::GetFixedvOES("glGetFixedvOES");
-Function<void, GLenum, GLuint, GLfloat *> FunctionObjects::GetFloatIndexedvEXT("glGetFloatIndexedvEXT");
-Function<void, GLenum, GLuint, GLfloat *> FunctionObjects::GetFloati_v("glGetFloati_v");
-Function<void, GLenum, GLuint, GLfloat *> FunctionObjects::GetFloati_vEXT("glGetFloati_vEXT");
-Function<void, GLenum, GLfloat *> FunctionObjects::GetFloatv("glGetFloatv");
-Function<void, GLfloat *> FunctionObjects::GetFogFuncSGIS("glGetFogFuncSGIS");
-Function<GLint, GLuint, const GLchar *> FunctionObjects::GetFragDataIndex("glGetFragDataIndex");
-Function<GLint, GLuint, const GLchar *> FunctionObjects::GetFragDataLocation("glGetFragDataLocation");
-Function<GLint, GLuint, const GLchar *> FunctionObjects::GetFragDataLocationEXT("glGetFragDataLocationEXT");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetFragmentLightfvSGIX("glGetFragmentLightfvSGIX");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetFragmentLightivSGIX("glGetFragmentLightivSGIX");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetFragmentMaterialfvSGIX("glGetFragmentMaterialfvSGIX");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetFragmentMaterialivSGIX("glGetFragmentMaterialivSGIX");
-Function<void, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetFramebufferAttachmentParameteriv("glGetFramebufferAttachmentParameteriv");
-Function<void, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetFramebufferAttachmentParameterivEXT("glGetFramebufferAttachmentParameterivEXT");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetFramebufferParameteriv("glGetFramebufferParameteriv");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetFramebufferParameterivEXT("glGetFramebufferParameterivEXT");
-Function<GLenum> FunctionObjects::GetGraphicsResetStatusARB("glGetGraphicsResetStatusARB");
-Function<GLhandleARB, GLenum> FunctionObjects::GetHandleARB("glGetHandleARB");
-Function<void, GLenum, GLboolean, GLenum, GLenum, void *> FunctionObjects::GetHistogram("glGetHistogram");
-Function<void, GLenum, GLboolean, GLenum, GLenum, void *> FunctionObjects::GetHistogramEXT("glGetHistogramEXT");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetHistogramParameterfv("glGetHistogramParameterfv");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetHistogramParameterfvEXT("glGetHistogramParameterfvEXT");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetHistogramParameteriv("glGetHistogramParameteriv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetHistogramParameterivEXT("glGetHistogramParameterivEXT");
-Function<void, GLenum, GLenum, GLfixed *> FunctionObjects::GetHistogramParameterxvOES("glGetHistogramParameterxvOES");
-Function<GLuint64, GLuint, GLint, GLboolean, GLint, GLenum> FunctionObjects::GetImageHandleARB("glGetImageHandleARB");
-Function<GLuint64, GLuint, GLint, GLboolean, GLint, GLenum> FunctionObjects::GetImageHandleNV("glGetImageHandleNV");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetImageTransformParameterfvHP("glGetImageTransformParameterfvHP");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetImageTransformParameterivHP("glGetImageTransformParameterivHP");
-Function<void, GLhandleARB, GLsizei, GLsizei *, GLcharARB *> FunctionObjects::GetInfoLogARB("glGetInfoLogARB");
-Function<GLint> FunctionObjects::GetInstrumentsSGIX("glGetInstrumentsSGIX");
-Function<void, GLenum, GLuint, GLint64 *> FunctionObjects::GetInteger64i_v("glGetInteger64i_v");
-Function<void, GLenum, GLint64 *> FunctionObjects::GetInteger64v("glGetInteger64v");
-Function<void, GLenum, GLuint, GLint *> FunctionObjects::GetIntegerIndexedvEXT("glGetIntegerIndexedvEXT");
-Function<void, GLenum, GLuint, GLint *> FunctionObjects::GetIntegeri_v("glGetIntegeri_v");
-Function<void, GLenum, GLuint, GLuint64EXT *> FunctionObjects::GetIntegerui64i_vNV("glGetIntegerui64i_vNV");
-Function<void, GLenum, GLuint64EXT *> FunctionObjects::GetIntegerui64vNV("glGetIntegerui64vNV");
-Function<void, GLenum, GLint *> FunctionObjects::GetIntegerv("glGetIntegerv");
-Function<void, GLenum, GLenum, GLenum, GLsizei, GLint64 *> FunctionObjects::GetInternalformati64v("glGetInternalformati64v");
-Function<void, GLenum, GLenum, GLenum, GLsizei, GLint *> FunctionObjects::GetInternalformativ("glGetInternalformativ");
-Function<void, GLuint, GLenum, GLboolean *> FunctionObjects::GetInvariantBooleanvEXT("glGetInvariantBooleanvEXT");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetInvariantFloatvEXT("glGetInvariantFloatvEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetInvariantIntegervEXT("glGetInvariantIntegervEXT");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetLightfv("glGetLightfv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetLightiv("glGetLightiv");
-Function<void, GLenum, GLenum, GLfixed *> FunctionObjects::GetLightxOES("glGetLightxOES");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetListParameterfvSGIX("glGetListParameterfvSGIX");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetListParameterivSGIX("glGetListParameterivSGIX");
-Function<void, GLuint, GLenum, GLboolean *> FunctionObjects::GetLocalConstantBooleanvEXT("glGetLocalConstantBooleanvEXT");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetLocalConstantFloatvEXT("glGetLocalConstantFloatvEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetLocalConstantIntegervEXT("glGetLocalConstantIntegervEXT");
-Function<void, GLenum, GLuint, GLenum, GLfloat *> FunctionObjects::GetMapAttribParameterfvNV("glGetMapAttribParameterfvNV");
-Function<void, GLenum, GLuint, GLenum, GLint *> FunctionObjects::GetMapAttribParameterivNV("glGetMapAttribParameterivNV");
-Function<void, GLenum, GLuint, GLenum, GLsizei, GLsizei, GLboolean, void *> FunctionObjects::GetMapControlPointsNV("glGetMapControlPointsNV");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetMapParameterfvNV("glGetMapParameterfvNV");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetMapParameterivNV("glGetMapParameterivNV");
-Function<void, GLenum, GLenum, GLdouble *> FunctionObjects::GetMapdv("glGetMapdv");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetMapfv("glGetMapfv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetMapiv("glGetMapiv");
-Function<void, GLenum, GLenum, GLfixed *> FunctionObjects::GetMapxvOES("glGetMapxvOES");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetMaterialfv("glGetMaterialfv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetMaterialiv("glGetMaterialiv");
-Function<void, GLenum, GLenum, GLfixed> FunctionObjects::GetMaterialxOES("glGetMaterialxOES");
-Function<void, GLenum, GLboolean, GLenum, GLenum, void *> FunctionObjects::GetMinmax("glGetMinmax");
-Function<void, GLenum, GLboolean, GLenum, GLenum, void *> FunctionObjects::GetMinmaxEXT("glGetMinmaxEXT");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetMinmaxParameterfv("glGetMinmaxParameterfv");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetMinmaxParameterfvEXT("glGetMinmaxParameterfvEXT");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetMinmaxParameteriv("glGetMinmaxParameteriv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetMinmaxParameterivEXT("glGetMinmaxParameterivEXT");
-Function<void, GLenum, GLenum, GLenum, GLfloat *> FunctionObjects::GetMultiTexEnvfvEXT("glGetMultiTexEnvfvEXT");
-Function<void, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetMultiTexEnvivEXT("glGetMultiTexEnvivEXT");
-Function<void, GLenum, GLenum, GLenum, GLdouble *> FunctionObjects::GetMultiTexGendvEXT("glGetMultiTexGendvEXT");
-Function<void, GLenum, GLenum, GLenum, GLfloat *> FunctionObjects::GetMultiTexGenfvEXT("glGetMultiTexGenfvEXT");
-Function<void, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetMultiTexGenivEXT("glGetMultiTexGenivEXT");
-Function<void, GLenum, GLenum, GLint, GLenum, GLenum, void *> FunctionObjects::GetMultiTexImageEXT("glGetMultiTexImageEXT");
-Function<void, GLenum, GLenum, GLint, GLenum, GLfloat *> FunctionObjects::GetMultiTexLevelParameterfvEXT("glGetMultiTexLevelParameterfvEXT");
-Function<void, GLenum, GLenum, GLint, GLenum, GLint *> FunctionObjects::GetMultiTexLevelParameterivEXT("glGetMultiTexLevelParameterivEXT");
-Function<void, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetMultiTexParameterIivEXT("glGetMultiTexParameterIivEXT");
-Function<void, GLenum, GLenum, GLenum, GLuint *> FunctionObjects::GetMultiTexParameterIuivEXT("glGetMultiTexParameterIuivEXT");
-Function<void, GLenum, GLenum, GLenum, GLfloat *> FunctionObjects::GetMultiTexParameterfvEXT("glGetMultiTexParameterfvEXT");
-Function<void, GLenum, GLenum, GLenum, GLint *> FunctionObjects::GetMultiTexParameterivEXT("glGetMultiTexParameterivEXT");
-Function<void, GLenum, GLuint, GLfloat *> FunctionObjects::GetMultisamplefv("glGetMultisamplefv");
-Function<void, GLenum, GLuint, GLfloat *> FunctionObjects::GetMultisamplefvNV("glGetMultisamplefvNV");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetNamedBufferParameterivEXT("glGetNamedBufferParameterivEXT");
-Function<void, GLuint, GLenum, GLuint64EXT *> FunctionObjects::GetNamedBufferParameterui64vNV("glGetNamedBufferParameterui64vNV");
-Function<void, GLuint, GLenum, void **> FunctionObjects::GetNamedBufferPointervEXT("glGetNamedBufferPointervEXT");
-Function<void, GLuint, GLintptr, GLsizeiptr, void *> FunctionObjects::GetNamedBufferSubDataEXT("glGetNamedBufferSubDataEXT");
-Function<void, GLuint, GLenum, GLenum, GLint *> FunctionObjects::GetNamedFramebufferAttachmentParameterivEXT("glGetNamedFramebufferAttachmentParameterivEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetNamedFramebufferParameterivEXT("glGetNamedFramebufferParameterivEXT");
-Function<void, GLuint, GLenum, GLuint, GLint *> FunctionObjects::GetNamedProgramLocalParameterIivEXT("glGetNamedProgramLocalParameterIivEXT");
-Function<void, GLuint, GLenum, GLuint, GLuint *> FunctionObjects::GetNamedProgramLocalParameterIuivEXT("glGetNamedProgramLocalParameterIuivEXT");
-Function<void, GLuint, GLenum, GLuint, GLdouble *> FunctionObjects::GetNamedProgramLocalParameterdvEXT("glGetNamedProgramLocalParameterdvEXT");
-Function<void, GLuint, GLenum, GLuint, GLfloat *> FunctionObjects::GetNamedProgramLocalParameterfvEXT("glGetNamedProgramLocalParameterfvEXT");
-Function<void, GLuint, GLenum, GLenum, void *> FunctionObjects::GetNamedProgramStringEXT("glGetNamedProgramStringEXT");
-Function<void, GLuint, GLenum, GLenum, GLint *> FunctionObjects::GetNamedProgramivEXT("glGetNamedProgramivEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetNamedRenderbufferParameterivEXT("glGetNamedRenderbufferParameterivEXT");
-Function<void, GLint, const GLchar *, GLsizei, GLint *, GLchar *> FunctionObjects::GetNamedStringARB("glGetNamedStringARB");
-Function<void, GLint, const GLchar *, GLenum, GLint *> FunctionObjects::GetNamedStringivARB("glGetNamedStringivARB");
-Function<void, GLuint, GLuint *> FunctionObjects::GetNextPerfQueryIdINTEL("glGetNextPerfQueryIdINTEL");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetObjectBufferfvATI("glGetObjectBufferfvATI");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetObjectBufferivATI("glGetObjectBufferivATI");
-Function<void, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetObjectLabel("glGetObjectLabel");
-Function<void, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetObjectLabelEXT("glGetObjectLabelEXT");
-Function<void, GLhandleARB, GLenum, GLfloat *> FunctionObjects::GetObjectParameterfvARB("glGetObjectParameterfvARB");
-Function<void, GLenum, GLuint, GLenum, GLint *> FunctionObjects::GetObjectParameterivAPPLE("glGetObjectParameterivAPPLE");
-Function<void, GLhandleARB, GLenum, GLint *> FunctionObjects::GetObjectParameterivARB("glGetObjectParameterivARB");
-Function<void, const void *, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetObjectPtrLabel("glGetObjectPtrLabel");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetOcclusionQueryivNV("glGetOcclusionQueryivNV");
-Function<void, GLuint, GLenum, GLuint *> FunctionObjects::GetOcclusionQueryuivNV("glGetOcclusionQueryuivNV");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetPathColorGenfvNV("glGetPathColorGenfvNV");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetPathColorGenivNV("glGetPathColorGenivNV");
-Function<void, GLuint, GLubyte *> FunctionObjects::GetPathCommandsNV("glGetPathCommandsNV");
-Function<void, GLuint, GLfloat *> FunctionObjects::GetPathCoordsNV("glGetPathCoordsNV");
-Function<void, GLuint, GLfloat *> FunctionObjects::GetPathDashArrayNV("glGetPathDashArrayNV");
-Function<GLfloat, GLuint, GLsizei, GLsizei> FunctionObjects::GetPathLengthNV("glGetPathLengthNV");
-Function<void, GLbitfield, GLuint, GLsizei, GLsizei, GLfloat *> FunctionObjects::GetPathMetricRangeNV("glGetPathMetricRangeNV");
-Function<void, GLbitfield, GLsizei, GLenum, const void *, GLuint, GLsizei, GLfloat *> FunctionObjects::GetPathMetricsNV("glGetPathMetricsNV");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetPathParameterfvNV("glGetPathParameterfvNV");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetPathParameterivNV("glGetPathParameterivNV");
-Function<void, GLenum, GLsizei, GLenum, const void *, GLuint, GLfloat, GLfloat, GLenum, GLfloat *> FunctionObjects::GetPathSpacingNV("glGetPathSpacingNV");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetPathTexGenfvNV("glGetPathTexGenfvNV");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetPathTexGenivNV("glGetPathTexGenivNV");
-Function<void, GLuint, GLuint, GLuint, GLchar *, GLuint, GLchar *, GLuint *, GLuint *, GLuint *, GLuint *, GLuint64 *> FunctionObjects::GetPerfCounterInfoINTEL("glGetPerfCounterInfoINTEL");
-Function<void, GLuint, GLenum, GLsizei, GLuint *, GLint *> FunctionObjects::GetPerfMonitorCounterDataAMD("glGetPerfMonitorCounterDataAMD");
-Function<void, GLuint, GLuint, GLenum, void *> FunctionObjects::GetPerfMonitorCounterInfoAMD("glGetPerfMonitorCounterInfoAMD");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetPerfMonitorCounterStringAMD("glGetPerfMonitorCounterStringAMD");
-Function<void, GLuint, GLint *, GLint *, GLsizei, GLuint *> FunctionObjects::GetPerfMonitorCountersAMD("glGetPerfMonitorCountersAMD");
-Function<void, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetPerfMonitorGroupStringAMD("glGetPerfMonitorGroupStringAMD");
-Function<void, GLint *, GLsizei, GLuint *> FunctionObjects::GetPerfMonitorGroupsAMD("glGetPerfMonitorGroupsAMD");
-Function<void, GLuint, GLuint, GLsizei, GLvoid *, GLuint *> FunctionObjects::GetPerfQueryDataINTEL("glGetPerfQueryDataINTEL");
-Function<void, GLchar *, GLuint *> FunctionObjects::GetPerfQueryIdByNameINTEL("glGetPerfQueryIdByNameINTEL");
-Function<void, GLuint, GLuint, GLchar *, GLuint *, GLuint *, GLuint *, GLuint *> FunctionObjects::GetPerfQueryInfoINTEL("glGetPerfQueryInfoINTEL");
-Function<void, GLenum, GLfloat *> FunctionObjects::GetPixelMapfv("glGetPixelMapfv");
-Function<void, GLenum, GLuint *> FunctionObjects::GetPixelMapuiv("glGetPixelMapuiv");
-Function<void, GLenum, GLushort *> FunctionObjects::GetPixelMapusv("glGetPixelMapusv");
-Function<void, GLenum, GLint, GLfixed *> FunctionObjects::GetPixelMapxv("glGetPixelMapxv");
-Function<void, GLenum, GLfloat *> FunctionObjects::GetPixelTexGenParameterfvSGIS("glGetPixelTexGenParameterfvSGIS");
-Function<void, GLenum, GLint *> FunctionObjects::GetPixelTexGenParameterivSGIS("glGetPixelTexGenParameterivSGIS");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetPixelTransformParameterfvEXT("glGetPixelTransformParameterfvEXT");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetPixelTransformParameterivEXT("glGetPixelTransformParameterivEXT");
-Function<void, GLenum, GLuint, void **> FunctionObjects::GetPointerIndexedvEXT("glGetPointerIndexedvEXT");
-Function<void, GLenum, GLuint, void **> FunctionObjects::GetPointeri_vEXT("glGetPointeri_vEXT");
-Function<void, GLenum, void **> FunctionObjects::GetPointerv("glGetPointerv");
-Function<void, GLenum, void **> FunctionObjects::GetPointervEXT("glGetPointervEXT");
-Function<void, GLubyte *> FunctionObjects::GetPolygonStipple("glGetPolygonStipple");
-Function<void, GLuint, GLsizei, GLsizei *, GLenum *, void *> FunctionObjects::GetProgramBinary("glGetProgramBinary");
-Function<void, GLenum, GLuint, GLint *> FunctionObjects::GetProgramEnvParameterIivNV("glGetProgramEnvParameterIivNV");
-Function<void, GLenum, GLuint, GLuint *> FunctionObjects::GetProgramEnvParameterIuivNV("glGetProgramEnvParameterIuivNV");
-Function<void, GLenum, GLuint, GLdouble *> FunctionObjects::GetProgramEnvParameterdvARB("glGetProgramEnvParameterdvARB");
-Function<void, GLenum, GLuint, GLfloat *> FunctionObjects::GetProgramEnvParameterfvARB("glGetProgramEnvParameterfvARB");
-Function<void, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetProgramInfoLog("glGetProgramInfoLog");
-Function<void, GLuint, GLenum, GLenum, GLint *> FunctionObjects::GetProgramInterfaceiv("glGetProgramInterfaceiv");
-Function<void, GLenum, GLuint, GLint *> FunctionObjects::GetProgramLocalParameterIivNV("glGetProgramLocalParameterIivNV");
-Function<void, GLenum, GLuint, GLuint *> FunctionObjects::GetProgramLocalParameterIuivNV("glGetProgramLocalParameterIuivNV");
-Function<void, GLenum, GLuint, GLdouble *> FunctionObjects::GetProgramLocalParameterdvARB("glGetProgramLocalParameterdvARB");
-Function<void, GLenum, GLuint, GLfloat *> FunctionObjects::GetProgramLocalParameterfvARB("glGetProgramLocalParameterfvARB");
-Function<void, GLuint, GLsizei, const GLubyte *, GLdouble *> FunctionObjects::GetProgramNamedParameterdvNV("glGetProgramNamedParameterdvNV");
-Function<void, GLuint, GLsizei, const GLubyte *, GLfloat *> FunctionObjects::GetProgramNamedParameterfvNV("glGetProgramNamedParameterfvNV");
-Function<void, GLenum, GLuint, GLenum, GLdouble *> FunctionObjects::GetProgramParameterdvNV("glGetProgramParameterdvNV");
-Function<void, GLenum, GLuint, GLenum, GLfloat *> FunctionObjects::GetProgramParameterfvNV("glGetProgramParameterfvNV");
-Function<void, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetProgramPipelineInfoLog("glGetProgramPipelineInfoLog");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetProgramPipelineiv("glGetProgramPipelineiv");
-Function<GLuint, GLuint, GLenum, const GLchar *> FunctionObjects::GetProgramResourceIndex("glGetProgramResourceIndex");
-Function<GLint, GLuint, GLenum, const GLchar *> FunctionObjects::GetProgramResourceLocation("glGetProgramResourceLocation");
-Function<GLint, GLuint, GLenum, const GLchar *> FunctionObjects::GetProgramResourceLocationIndex("glGetProgramResourceLocationIndex");
-Function<void, GLuint, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetProgramResourceName("glGetProgramResourceName");
-Function<void, GLuint, GLenum, GLuint, GLsizei, const GLenum *, GLsizei, GLsizei *, GLint *> FunctionObjects::GetProgramResourceiv("glGetProgramResourceiv");
-Function<void, GLuint, GLenum, GLenum, GLint *> FunctionObjects::GetProgramStageiv("glGetProgramStageiv");
-Function<void, GLenum, GLenum, void *> FunctionObjects::GetProgramStringARB("glGetProgramStringARB");
-Function<void, GLuint, GLenum, GLubyte *> FunctionObjects::GetProgramStringNV("glGetProgramStringNV");
-Function<void, GLenum, GLuint, GLuint *> FunctionObjects::GetProgramSubroutineParameteruivNV("glGetProgramSubroutineParameteruivNV");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetProgramiv("glGetProgramiv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetProgramivARB("glGetProgramivARB");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetProgramivNV("glGetProgramivNV");
-Function<void, GLenum, GLuint, GLenum, GLint *> FunctionObjects::GetQueryIndexediv("glGetQueryIndexediv");
-Function<void, GLuint, GLenum, GLint64 *> FunctionObjects::GetQueryObjecti64v("glGetQueryObjecti64v");
-Function<void, GLuint, GLenum, GLint64 *> FunctionObjects::GetQueryObjecti64vEXT("glGetQueryObjecti64vEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetQueryObjectiv("glGetQueryObjectiv");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetQueryObjectivARB("glGetQueryObjectivARB");
-Function<void, GLuint, GLenum, GLuint64 *> FunctionObjects::GetQueryObjectui64v("glGetQueryObjectui64v");
-Function<void, GLuint, GLenum, GLuint64 *> FunctionObjects::GetQueryObjectui64vEXT("glGetQueryObjectui64vEXT");
-Function<void, GLuint, GLenum, GLuint *> FunctionObjects::GetQueryObjectuiv("glGetQueryObjectuiv");
-Function<void, GLuint, GLenum, GLuint *> FunctionObjects::GetQueryObjectuivARB("glGetQueryObjectuivARB");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetQueryiv("glGetQueryiv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetQueryivARB("glGetQueryivARB");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetRenderbufferParameteriv("glGetRenderbufferParameteriv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetRenderbufferParameterivEXT("glGetRenderbufferParameterivEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetSamplerParameterIiv("glGetSamplerParameterIiv");
-Function<void, GLuint, GLenum, GLuint *> FunctionObjects::GetSamplerParameterIuiv("glGetSamplerParameterIuiv");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetSamplerParameterfv("glGetSamplerParameterfv");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetSamplerParameteriv("glGetSamplerParameteriv");
-Function<void, GLenum, GLenum, GLenum, void *, void *, void *> FunctionObjects::GetSeparableFilter("glGetSeparableFilter");
-Function<void, GLenum, GLenum, GLenum, void *, void *, void *> FunctionObjects::GetSeparableFilterEXT("glGetSeparableFilterEXT");
-Function<void, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetShaderInfoLog("glGetShaderInfoLog");
-Function<void, GLenum, GLenum, GLint *, GLint *> FunctionObjects::GetShaderPrecisionFormat("glGetShaderPrecisionFormat");
-Function<void, GLuint, GLsizei, GLsizei *, GLchar *> FunctionObjects::GetShaderSource("glGetShaderSource");
-Function<void, GLhandleARB, GLsizei, GLsizei *, GLcharARB *> FunctionObjects::GetShaderSourceARB("glGetShaderSourceARB");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetShaderiv("glGetShaderiv");
-Function<void, GLenum, GLfloat *> FunctionObjects::GetSharpenTexFuncSGIS("glGetSharpenTexFuncSGIS");
-Function<const GLubyte *, GLenum> FunctionObjects::GetString("glGetString");
-Function<const GLubyte *, GLenum, GLuint> FunctionObjects::GetStringi("glGetStringi");
-Function<GLuint, GLuint, GLenum, const GLchar *> FunctionObjects::GetSubroutineIndex("glGetSubroutineIndex");
-Function<GLint, GLuint, GLenum, const GLchar *> FunctionObjects::GetSubroutineUniformLocation("glGetSubroutineUniformLocation");
-Function<void, GLsync, GLenum, GLsizei, GLsizei *, GLint *> FunctionObjects::GetSynciv("glGetSynciv");
-Function<void, GLenum, GLfloat *> FunctionObjects::GetTexBumpParameterfvATI("glGetTexBumpParameterfvATI");
-Function<void, GLenum, GLint *> FunctionObjects::GetTexBumpParameterivATI("glGetTexBumpParameterivATI");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetTexEnvfv("glGetTexEnvfv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetTexEnviv("glGetTexEnviv");
-Function<void, GLenum, GLenum, GLfixed *> FunctionObjects::GetTexEnvxvOES("glGetTexEnvxvOES");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetTexFilterFuncSGIS("glGetTexFilterFuncSGIS");
-Function<void, GLenum, GLenum, GLdouble *> FunctionObjects::GetTexGendv("glGetTexGendv");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetTexGenfv("glGetTexGenfv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetTexGeniv("glGetTexGeniv");
-Function<void, GLenum, GLenum, GLfixed *> FunctionObjects::GetTexGenxvOES("glGetTexGenxvOES");
-Function<void, GLenum, GLint, GLenum, GLenum, void *> FunctionObjects::GetTexImage("glGetTexImage");
-Function<void, GLenum, GLint, GLenum, GLfloat *> FunctionObjects::GetTexLevelParameterfv("glGetTexLevelParameterfv");
-Function<void, GLenum, GLint, GLenum, GLint *> FunctionObjects::GetTexLevelParameteriv("glGetTexLevelParameteriv");
-Function<void, GLenum, GLint, GLenum, GLfixed *> FunctionObjects::GetTexLevelParameterxvOES("glGetTexLevelParameterxvOES");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetTexParameterIiv("glGetTexParameterIiv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetTexParameterIivEXT("glGetTexParameterIivEXT");
-Function<void, GLenum, GLenum, GLuint *> FunctionObjects::GetTexParameterIuiv("glGetTexParameterIuiv");
-Function<void, GLenum, GLenum, GLuint *> FunctionObjects::GetTexParameterIuivEXT("glGetTexParameterIuivEXT");
-Function<void, GLenum, GLenum, void **> FunctionObjects::GetTexParameterPointervAPPLE("glGetTexParameterPointervAPPLE");
-Function<void, GLenum, GLenum, GLfloat *> FunctionObjects::GetTexParameterfv("glGetTexParameterfv");
-Function<void, GLenum, GLenum, GLint *> FunctionObjects::GetTexParameteriv("glGetTexParameteriv");
-Function<void, GLenum, GLenum, GLfixed *> FunctionObjects::GetTexParameterxvOES("glGetTexParameterxvOES");
-Function<GLuint64, GLuint> FunctionObjects::GetTextureHandleARB("glGetTextureHandleARB");
-Function<GLuint64, GLuint> FunctionObjects::GetTextureHandleNV("glGetTextureHandleNV");
-Function<void, GLuint, GLenum, GLint, GLenum, GLenum, void *> FunctionObjects::GetTextureImageEXT("glGetTextureImageEXT");
-Function<void, GLuint, GLenum, GLint, GLenum, GLfloat *> FunctionObjects::GetTextureLevelParameterfvEXT("glGetTextureLevelParameterfvEXT");
-Function<void, GLuint, GLenum, GLint, GLenum, GLint *> FunctionObjects::GetTextureLevelParameterivEXT("glGetTextureLevelParameterivEXT");
-Function<void, GLuint, GLenum, GLenum, GLint *> FunctionObjects::GetTextureParameterIivEXT("glGetTextureParameterIivEXT");
-Function<void, GLuint, GLenum, GLenum, GLuint *> FunctionObjects::GetTextureParameterIuivEXT("glGetTextureParameterIuivEXT");
-Function<void, GLuint, GLenum, GLenum, GLfloat *> FunctionObjects::GetTextureParameterfvEXT("glGetTextureParameterfvEXT");
-Function<void, GLuint, GLenum, GLenum, GLint *> FunctionObjects::GetTextureParameterivEXT("glGetTextureParameterivEXT");
-Function<GLuint64, GLuint, GLuint> FunctionObjects::GetTextureSamplerHandleARB("glGetTextureSamplerHandleARB");
-Function<GLuint64, GLuint, GLuint> FunctionObjects::GetTextureSamplerHandleNV("glGetTextureSamplerHandleNV");
-Function<void, GLenum, GLuint, GLenum, GLint *> FunctionObjects::GetTrackMatrixivNV("glGetTrackMatrixivNV");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLsizei *, GLenum *, GLchar *> FunctionObjects::GetTransformFeedbackVarying("glGetTransformFeedbackVarying");
-Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLsizei *, GLenum *, GLchar *> FunctionObjects::GetTransformFeedbackVaryingEXT("glGetTransformFeedbackVaryingEXT");
-Function<void, GLuint, GLuint, GLint *> FunctionObjects::GetTransformFeedbackVaryingNV("glGetTransformFeedbackVaryingNV");
-Function<GLuint, GLuint, const GLchar *> FunctionObjects::GetUniformBlockIndex("glGetUniformBlockIndex");
-Function<GLint, GLuint, GLint> FunctionObjects::GetUniformBufferSizeEXT("glGetUniformBufferSizeEXT");
-Function<void, GLuint, GLsizei, const GLchar *const*, GLuint *> FunctionObjects::GetUniformIndices("glGetUniformIndices");
-Function<GLint, GLuint, const GLchar *> FunctionObjects::GetUniformLocation("glGetUniformLocation");
-Function<GLint, GLhandleARB, const GLcharARB *> FunctionObjects::GetUniformLocationARB("glGetUniformLocationARB");
-Function<GLintptr, GLuint, GLint> FunctionObjects::GetUniformOffsetEXT("glGetUniformOffsetEXT");
-Function<void, GLenum, GLint, GLuint *> FunctionObjects::GetUniformSubroutineuiv("glGetUniformSubroutineuiv");
-Function<void, GLuint, GLint, GLdouble *> FunctionObjects::GetUniformdv("glGetUniformdv");
-Function<void, GLuint, GLint, GLfloat *> FunctionObjects::GetUniformfv("glGetUniformfv");
-Function<void, GLhandleARB, GLint, GLfloat *> FunctionObjects::GetUniformfvARB("glGetUniformfvARB");
-Function<void, GLuint, GLint, GLint64EXT *> FunctionObjects::GetUniformi64vNV("glGetUniformi64vNV");
-Function<void, GLuint, GLint, GLint *> FunctionObjects::GetUniformiv("glGetUniformiv");
-Function<void, GLhandleARB, GLint, GLint *> FunctionObjects::GetUniformivARB("glGetUniformivARB");
-Function<void, GLuint, GLint, GLuint64EXT *> FunctionObjects::GetUniformui64vNV("glGetUniformui64vNV");
-Function<void, GLuint, GLint, GLuint *> FunctionObjects::GetUniformuiv("glGetUniformuiv");
-Function<void, GLuint, GLint, GLuint *> FunctionObjects::GetUniformuivEXT("glGetUniformuivEXT");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetVariantArrayObjectfvATI("glGetVariantArrayObjectfvATI");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVariantArrayObjectivATI("glGetVariantArrayObjectivATI");
-Function<void, GLuint, GLenum, GLboolean *> FunctionObjects::GetVariantBooleanvEXT("glGetVariantBooleanvEXT");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetVariantFloatvEXT("glGetVariantFloatvEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVariantIntegervEXT("glGetVariantIntegervEXT");
-Function<void, GLuint, GLenum, void **> FunctionObjects::GetVariantPointervEXT("glGetVariantPointervEXT");
-Function<GLint, GLuint, const GLchar *> FunctionObjects::GetVaryingLocationNV("glGetVaryingLocationNV");
-Function<void, GLuint, GLuint, GLenum, GLint *> FunctionObjects::GetVertexArrayIntegeri_vEXT("glGetVertexArrayIntegeri_vEXT");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVertexArrayIntegervEXT("glGetVertexArrayIntegervEXT");
-Function<void, GLuint, GLuint, GLenum, void **> FunctionObjects::GetVertexArrayPointeri_vEXT("glGetVertexArrayPointeri_vEXT");
-Function<void, GLuint, GLenum, void **> FunctionObjects::GetVertexArrayPointervEXT("glGetVertexArrayPointervEXT");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetVertexAttribArrayObjectfvATI("glGetVertexAttribArrayObjectfvATI");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVertexAttribArrayObjectivATI("glGetVertexAttribArrayObjectivATI");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVertexAttribIiv("glGetVertexAttribIiv");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVertexAttribIivEXT("glGetVertexAttribIivEXT");
-Function<void, GLuint, GLenum, GLuint *> FunctionObjects::GetVertexAttribIuiv("glGetVertexAttribIuiv");
-Function<void, GLuint, GLenum, GLuint *> FunctionObjects::GetVertexAttribIuivEXT("glGetVertexAttribIuivEXT");
-Function<void, GLuint, GLenum, GLdouble *> FunctionObjects::GetVertexAttribLdv("glGetVertexAttribLdv");
-Function<void, GLuint, GLenum, GLdouble *> FunctionObjects::GetVertexAttribLdvEXT("glGetVertexAttribLdvEXT");
-Function<void, GLuint, GLenum, GLint64EXT *> FunctionObjects::GetVertexAttribLi64vNV("glGetVertexAttribLi64vNV");
-Function<void, GLuint, GLenum, GLuint64EXT *> FunctionObjects::GetVertexAttribLui64vARB("glGetVertexAttribLui64vARB");
-Function<void, GLuint, GLenum, GLuint64EXT *> FunctionObjects::GetVertexAttribLui64vNV("glGetVertexAttribLui64vNV");
-Function<void, GLuint, GLenum, void **> FunctionObjects::GetVertexAttribPointerv("glGetVertexAttribPointerv");
-Function<void, GLuint, GLenum, void **> FunctionObjects::GetVertexAttribPointervARB("glGetVertexAttribPointervARB");
-Function<void, GLuint, GLenum, void **> FunctionObjects::GetVertexAttribPointervNV("glGetVertexAttribPointervNV");
-Function<void, GLuint, GLenum, GLdouble *> FunctionObjects::GetVertexAttribdv("glGetVertexAttribdv");
-Function<void, GLuint, GLenum, GLdouble *> FunctionObjects::GetVertexAttribdvARB("glGetVertexAttribdvARB");
-Function<void, GLuint, GLenum, GLdouble *> FunctionObjects::GetVertexAttribdvNV("glGetVertexAttribdvNV");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetVertexAttribfv("glGetVertexAttribfv");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetVertexAttribfvARB("glGetVertexAttribfvARB");
-Function<void, GLuint, GLenum, GLfloat *> FunctionObjects::GetVertexAttribfvNV("glGetVertexAttribfvNV");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVertexAttribiv("glGetVertexAttribiv");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVertexAttribivARB("glGetVertexAttribivARB");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVertexAttribivNV("glGetVertexAttribivNV");
-Function<void, GLuint, GLuint, GLenum, GLdouble *> FunctionObjects::GetVideoCaptureStreamdvNV("glGetVideoCaptureStreamdvNV");
-Function<void, GLuint, GLuint, GLenum, GLfloat *> FunctionObjects::GetVideoCaptureStreamfvNV("glGetVideoCaptureStreamfvNV");
-Function<void, GLuint, GLuint, GLenum, GLint *> FunctionObjects::GetVideoCaptureStreamivNV("glGetVideoCaptureStreamivNV");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVideoCaptureivNV("glGetVideoCaptureivNV");
-Function<void, GLuint, GLenum, GLint64EXT *> FunctionObjects::GetVideoi64vNV("glGetVideoi64vNV");
-Function<void, GLuint, GLenum, GLint *> FunctionObjects::GetVideoivNV("glGetVideoivNV");
-Function<void, GLuint, GLenum, GLuint64EXT *> FunctionObjects::GetVideoui64vNV("glGetVideoui64vNV");
-Function<void, GLuint, GLenum, GLuint *> FunctionObjects::GetVideouivNV("glGetVideouivNV");
-Function<void, GLenum, GLenum, GLenum, GLsizei, void *> FunctionObjects::GetnColorTableARB("glGetnColorTableARB");
-Function<void, GLenum, GLint, GLsizei, void *> FunctionObjects::GetnCompressedTexImageARB("glGetnCompressedTexImageARB");
-Function<void, GLenum, GLenum, GLenum, GLsizei, void *> FunctionObjects::GetnConvolutionFilterARB("glGetnConvolutionFilterARB");
-Function<void, GLenum, GLboolean, GLenum, GLenum, GLsizei, void *> FunctionObjects::GetnHistogramARB("glGetnHistogramARB");
-Function<void, GLenum, GLenum, GLsizei, GLdouble *> FunctionObjects::GetnMapdvARB("glGetnMapdvARB");
-Function<void, GLenum, GLenum, GLsizei, GLfloat *> FunctionObjects::GetnMapfvARB("glGetnMapfvARB");
-Function<void, GLenum, GLenum, GLsizei, GLint *> FunctionObjects::GetnMapivARB("glGetnMapivARB");
-Function<void, GLenum, GLboolean, GLenum, GLenum, GLsizei, void *> FunctionObjects::GetnMinmaxARB("glGetnMinmaxARB");
-Function<void, GLenum, GLsizei, GLfloat *> FunctionObjects::GetnPixelMapfvARB("glGetnPixelMapfvARB");
-Function<void, GLenum, GLsizei, GLuint *> FunctionObjects::GetnPixelMapuivARB("glGetnPixelMapuivARB");
-Function<void, GLenum, GLsizei, GLushort *> FunctionObjects::GetnPixelMapusvARB("glGetnPixelMapusvARB");
-Function<void, GLsizei, GLubyte *> FunctionObjects::GetnPolygonStippleARB("glGetnPolygonStippleARB");
-Function<void, GLenum, GLenum, GLenum, GLsizei, void *, GLsizei, void *, void *> FunctionObjects::GetnSeparableFilterARB("glGetnSeparableFilterARB");
-Function<void, GLenum, GLint, GLenum, GLenum, GLsizei, void *> FunctionObjects::GetnTexImageARB("glGetnTexImageARB");
-Function<void, GLuint, GLint, GLsizei, GLdouble *> FunctionObjects::GetnUniformdvARB("glGetnUniformdvARB");
-Function<void, GLuint, GLint, GLsizei, GLfloat *> FunctionObjects::GetnUniformfvARB("glGetnUniformfvARB");
-Function<void, GLuint, GLint, GLsizei, GLint *> FunctionObjects::GetnUniformivARB("glGetnUniformivARB");
-Function<void, GLuint, GLint, GLsizei, GLuint *> FunctionObjects::GetnUniformuivARB("glGetnUniformuivARB");
-Function<void, GLbyte> FunctionObjects::GlobalAlphaFactorbSUN("glGlobalAlphaFactorbSUN");
-Function<void, GLdouble> FunctionObjects::GlobalAlphaFactordSUN("glGlobalAlphaFactordSUN");
-Function<void, GLfloat> FunctionObjects::GlobalAlphaFactorfSUN("glGlobalAlphaFactorfSUN");
-Function<void, GLint> FunctionObjects::GlobalAlphaFactoriSUN("glGlobalAlphaFactoriSUN");
-Function<void, GLshort> FunctionObjects::GlobalAlphaFactorsSUN("glGlobalAlphaFactorsSUN");
-Function<void, GLubyte> FunctionObjects::GlobalAlphaFactorubSUN("glGlobalAlphaFactorubSUN");
-Function<void, GLuint> FunctionObjects::GlobalAlphaFactoruiSUN("glGlobalAlphaFactoruiSUN");
-Function<void, GLushort> FunctionObjects::GlobalAlphaFactorusSUN("glGlobalAlphaFactorusSUN");
-Function<void, GLenum, GLenum> FunctionObjects::Hint("glHint");
-Function<void, GLenum, GLint> FunctionObjects::HintPGI("glHintPGI");
-Function<void, GLenum, GLsizei, GLenum, GLboolean> FunctionObjects::Histogram("glHistogram");
-Function<void, GLenum, GLsizei, GLenum, GLboolean> FunctionObjects::HistogramEXT("glHistogramEXT");
-Function<void, GLenum, const void *> FunctionObjects::IglooInterfaceSGIX("glIglooInterfaceSGIX");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::ImageTransformParameterfHP("glImageTransformParameterfHP");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::ImageTransformParameterfvHP("glImageTransformParameterfvHP");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::ImageTransformParameteriHP("glImageTransformParameteriHP");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::ImageTransformParameterivHP("glImageTransformParameterivHP");
-Function<GLsync, GLenum, GLintptr, GLbitfield> FunctionObjects::ImportSyncEXT("glImportSyncEXT");
-Function<void, GLenum, GLsizei> FunctionObjects::IndexFormatNV("glIndexFormatNV");
-Function<void, GLenum, GLclampf> FunctionObjects::IndexFuncEXT("glIndexFuncEXT");
-Function<void, GLuint> FunctionObjects::IndexMask("glIndexMask");
-Function<void, GLenum, GLenum> FunctionObjects::IndexMaterialEXT("glIndexMaterialEXT");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::IndexPointer("glIndexPointer");
-Function<void, GLenum, GLsizei, GLsizei, const void *> FunctionObjects::IndexPointerEXT("glIndexPointerEXT");
-Function<void, GLenum, GLint, const void **, GLint> FunctionObjects::IndexPointerListIBM("glIndexPointerListIBM");
-Function<void, GLdouble> FunctionObjects::Indexd("glIndexd");
-Function<void, const GLdouble *> FunctionObjects::Indexdv("glIndexdv");
-Function<void, GLfloat> FunctionObjects::Indexf("glIndexf");
-Function<void, const GLfloat *> FunctionObjects::Indexfv("glIndexfv");
-Function<void, GLint> FunctionObjects::Indexi("glIndexi");
-Function<void, const GLint *> FunctionObjects::Indexiv("glIndexiv");
-Function<void, GLshort> FunctionObjects::Indexs("glIndexs");
-Function<void, const GLshort *> FunctionObjects::Indexsv("glIndexsv");
-Function<void, GLubyte> FunctionObjects::Indexub("glIndexub");
-Function<void, const GLubyte *> FunctionObjects::Indexubv("glIndexubv");
-Function<void, GLfixed> FunctionObjects::IndexxOES("glIndexxOES");
-Function<void, const GLfixed *> FunctionObjects::IndexxvOES("glIndexxvOES");
-Function<void> FunctionObjects::InitNames("glInitNames");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::InsertComponentEXT("glInsertComponentEXT");
-Function<void, GLsizei, const GLchar *> FunctionObjects::InsertEventMarkerEXT("glInsertEventMarkerEXT");
-Function<void, GLsizei, GLint *> FunctionObjects::InstrumentsBufferSGIX("glInstrumentsBufferSGIX");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::InterleavedArrays("glInterleavedArrays");
-Function<void, GLuint, GLuint, GLuint, GLfloat> FunctionObjects::InterpolatePathsNV("glInterpolatePathsNV");
-Function<void, GLuint> FunctionObjects::InvalidateBufferData("glInvalidateBufferData");
-Function<void, GLuint, GLintptr, GLsizeiptr> FunctionObjects::InvalidateBufferSubData("glInvalidateBufferSubData");
-Function<void, GLenum, GLsizei, const GLenum *> FunctionObjects::InvalidateFramebuffer("glInvalidateFramebuffer");
-Function<void, GLenum, GLsizei, const GLenum *, GLint, GLint, GLsizei, GLsizei> FunctionObjects::InvalidateSubFramebuffer("glInvalidateSubFramebuffer");
-Function<void, GLuint, GLint> FunctionObjects::InvalidateTexImage("glInvalidateTexImage");
-Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> FunctionObjects::InvalidateTexSubImage("glInvalidateTexSubImage");
-Function<GLboolean, GLuint> FunctionObjects::IsAsyncMarkerSGIX("glIsAsyncMarkerSGIX");
-Function<GLboolean, GLuint> FunctionObjects::IsBuffer("glIsBuffer");
-Function<GLboolean, GLuint> FunctionObjects::IsBufferARB("glIsBufferARB");
-Function<GLboolean, GLenum> FunctionObjects::IsBufferResidentNV("glIsBufferResidentNV");
-Function<GLboolean, GLenum> FunctionObjects::IsEnabled("glIsEnabled");
-Function<GLboolean, GLenum, GLuint> FunctionObjects::IsEnabledIndexedEXT("glIsEnabledIndexedEXT");
-Function<GLboolean, GLenum, GLuint> FunctionObjects::IsEnabledi("glIsEnabledi");
-Function<GLboolean, GLuint> FunctionObjects::IsFenceAPPLE("glIsFenceAPPLE");
-Function<GLboolean, GLuint> FunctionObjects::IsFenceNV("glIsFenceNV");
-Function<GLboolean, GLuint> FunctionObjects::IsFramebuffer("glIsFramebuffer");
-Function<GLboolean, GLuint> FunctionObjects::IsFramebufferEXT("glIsFramebufferEXT");
-Function<GLboolean, GLuint64> FunctionObjects::IsImageHandleResidentARB("glIsImageHandleResidentARB");
-Function<GLboolean, GLuint64> FunctionObjects::IsImageHandleResidentNV("glIsImageHandleResidentNV");
-Function<GLboolean, GLuint> FunctionObjects::IsList("glIsList");
-Function<GLboolean, GLenum, GLuint> FunctionObjects::IsNameAMD("glIsNameAMD");
-Function<GLboolean, GLuint> FunctionObjects::IsNamedBufferResidentNV("glIsNamedBufferResidentNV");
-Function<GLboolean, GLint, const GLchar *> FunctionObjects::IsNamedStringARB("glIsNamedStringARB");
-Function<GLboolean, GLuint> FunctionObjects::IsObjectBufferATI("glIsObjectBufferATI");
-Function<GLboolean, GLuint> FunctionObjects::IsOcclusionQueryNV("glIsOcclusionQueryNV");
-Function<GLboolean, GLuint> FunctionObjects::IsPathNV("glIsPathNV");
-Function<GLboolean, GLuint, GLuint, GLfloat, GLfloat> FunctionObjects::IsPointInFillPathNV("glIsPointInFillPathNV");
-Function<GLboolean, GLuint, GLfloat, GLfloat> FunctionObjects::IsPointInStrokePathNV("glIsPointInStrokePathNV");
-Function<GLboolean, GLuint> FunctionObjects::IsProgram("glIsProgram");
-Function<GLboolean, GLuint> FunctionObjects::IsProgramARB("glIsProgramARB");
-Function<GLboolean, GLuint> FunctionObjects::IsProgramNV("glIsProgramNV");
-Function<GLboolean, GLuint> FunctionObjects::IsProgramPipeline("glIsProgramPipeline");
-Function<GLboolean, GLuint> FunctionObjects::IsQuery("glIsQuery");
-Function<GLboolean, GLuint> FunctionObjects::IsQueryARB("glIsQueryARB");
-Function<GLboolean, GLuint> FunctionObjects::IsRenderbuffer("glIsRenderbuffer");
-Function<GLboolean, GLuint> FunctionObjects::IsRenderbufferEXT("glIsRenderbufferEXT");
-Function<GLboolean, GLuint> FunctionObjects::IsSampler("glIsSampler");
-Function<GLboolean, GLuint> FunctionObjects::IsShader("glIsShader");
-Function<GLboolean, GLsync> FunctionObjects::IsSync("glIsSync");
-Function<GLboolean, GLuint> FunctionObjects::IsTexture("glIsTexture");
-Function<GLboolean, GLuint> FunctionObjects::IsTextureEXT("glIsTextureEXT");
-Function<GLboolean, GLuint64> FunctionObjects::IsTextureHandleResidentARB("glIsTextureHandleResidentARB");
-Function<GLboolean, GLuint64> FunctionObjects::IsTextureHandleResidentNV("glIsTextureHandleResidentNV");
-Function<GLboolean, GLuint> FunctionObjects::IsTransformFeedback("glIsTransformFeedback");
-Function<GLboolean, GLuint> FunctionObjects::IsTransformFeedbackNV("glIsTransformFeedbackNV");
-Function<GLboolean, GLuint, GLenum> FunctionObjects::IsVariantEnabledEXT("glIsVariantEnabledEXT");
-Function<GLboolean, GLuint> FunctionObjects::IsVertexArray("glIsVertexArray");
-Function<GLboolean, GLuint> FunctionObjects::IsVertexArrayAPPLE("glIsVertexArrayAPPLE");
-Function<GLboolean, GLuint, GLenum> FunctionObjects::IsVertexAttribEnabledAPPLE("glIsVertexAttribEnabledAPPLE");
-Function<void, GLenum, GLuint, GLsizei, const GLchar *> FunctionObjects::LabelObjectEXT("glLabelObjectEXT");
-Function<void, GLenum, GLint> FunctionObjects::LightEnviSGIX("glLightEnviSGIX");
-Function<void, GLenum, GLfloat> FunctionObjects::LightModelf("glLightModelf");
-Function<void, GLenum, const GLfloat *> FunctionObjects::LightModelfv("glLightModelfv");
-Function<void, GLenum, GLint> FunctionObjects::LightModeli("glLightModeli");
-Function<void, GLenum, const GLint *> FunctionObjects::LightModeliv("glLightModeliv");
-Function<void, GLenum, GLfixed> FunctionObjects::LightModelxOES("glLightModelxOES");
-Function<void, GLenum, const GLfixed *> FunctionObjects::LightModelxvOES("glLightModelxvOES");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::Lightf("glLightf");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::Lightfv("glLightfv");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::Lighti("glLighti");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::Lightiv("glLightiv");
-Function<void, GLenum, GLenum, GLfixed> FunctionObjects::LightxOES("glLightxOES");
-Function<void, GLenum, GLenum, const GLfixed *> FunctionObjects::LightxvOES("glLightxvOES");
-Function<void, GLint, GLushort> FunctionObjects::LineStipple("glLineStipple");
-Function<void, GLfloat> FunctionObjects::LineWidth("glLineWidth");
-Function<void, GLfixed> FunctionObjects::LineWidthxOES("glLineWidthxOES");
-Function<void, GLuint> FunctionObjects::LinkProgram("glLinkProgram");
-Function<void, GLhandleARB> FunctionObjects::LinkProgramARB("glLinkProgramARB");
-Function<void, GLuint> FunctionObjects::ListBase("glListBase");
-Function<void, GLuint, GLenum, GLfloat> FunctionObjects::ListParameterfSGIX("glListParameterfSGIX");
-Function<void, GLuint, GLenum, const GLfloat *> FunctionObjects::ListParameterfvSGIX("glListParameterfvSGIX");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::ListParameteriSGIX("glListParameteriSGIX");
-Function<void, GLuint, GLenum, const GLint *> FunctionObjects::ListParameterivSGIX("glListParameterivSGIX");
-Function<void> FunctionObjects::LoadIdentity("glLoadIdentity");
-Function<void, GLbitfield> FunctionObjects::LoadIdentityDeformationMapSGIX("glLoadIdentityDeformationMapSGIX");
-Function<void, const GLdouble *> FunctionObjects::LoadMatrixd("glLoadMatrixd");
-Function<void, const GLfloat *> FunctionObjects::LoadMatrixf("glLoadMatrixf");
-Function<void, const GLfixed *> FunctionObjects::LoadMatrixxOES("glLoadMatrixxOES");
-Function<void, GLuint> FunctionObjects::LoadName("glLoadName");
-Function<void, GLenum, GLuint, GLsizei, const GLubyte *> FunctionObjects::LoadProgramNV("glLoadProgramNV");
-Function<void, const GLdouble *> FunctionObjects::LoadTransposeMatrixd("glLoadTransposeMatrixd");
-Function<void, const GLdouble *> FunctionObjects::LoadTransposeMatrixdARB("glLoadTransposeMatrixdARB");
-Function<void, const GLfloat *> FunctionObjects::LoadTransposeMatrixf("glLoadTransposeMatrixf");
-Function<void, const GLfloat *> FunctionObjects::LoadTransposeMatrixfARB("glLoadTransposeMatrixfARB");
-Function<void, const GLfixed *> FunctionObjects::LoadTransposeMatrixxOES("glLoadTransposeMatrixxOES");
-Function<void, GLint, GLsizei> FunctionObjects::LockArraysEXT("glLockArraysEXT");
-Function<void, GLenum> FunctionObjects::LogicOp("glLogicOp");
-Function<void, GLenum> FunctionObjects::MakeBufferNonResidentNV("glMakeBufferNonResidentNV");
-Function<void, GLenum, GLenum> FunctionObjects::MakeBufferResidentNV("glMakeBufferResidentNV");
-Function<void, GLuint64> FunctionObjects::MakeImageHandleNonResidentARB("glMakeImageHandleNonResidentARB");
-Function<void, GLuint64> FunctionObjects::MakeImageHandleNonResidentNV("glMakeImageHandleNonResidentNV");
-Function<void, GLuint64, GLenum> FunctionObjects::MakeImageHandleResidentARB("glMakeImageHandleResidentARB");
-Function<void, GLuint64, GLenum> FunctionObjects::MakeImageHandleResidentNV("glMakeImageHandleResidentNV");
-Function<void, GLuint> FunctionObjects::MakeNamedBufferNonResidentNV("glMakeNamedBufferNonResidentNV");
-Function<void, GLuint, GLenum> FunctionObjects::MakeNamedBufferResidentNV("glMakeNamedBufferResidentNV");
-Function<void, GLuint64> FunctionObjects::MakeTextureHandleNonResidentARB("glMakeTextureHandleNonResidentARB");
-Function<void, GLuint64> FunctionObjects::MakeTextureHandleNonResidentNV("glMakeTextureHandleNonResidentNV");
-Function<void, GLuint64> FunctionObjects::MakeTextureHandleResidentARB("glMakeTextureHandleResidentARB");
-Function<void, GLuint64> FunctionObjects::MakeTextureHandleResidentNV("glMakeTextureHandleResidentNV");
-Function<void, GLenum, GLdouble, GLdouble, GLint, GLint, const GLdouble *> FunctionObjects::Map1d("glMap1d");
-Function<void, GLenum, GLfloat, GLfloat, GLint, GLint, const GLfloat *> FunctionObjects::Map1f("glMap1f");
-Function<void, GLenum, GLfixed, GLfixed, GLint, GLint, GLfixed> FunctionObjects::Map1xOES("glMap1xOES");
-Function<void, GLenum, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> FunctionObjects::Map2d("glMap2d");
-Function<void, GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *> FunctionObjects::Map2f("glMap2f");
-Function<void, GLenum, GLfixed, GLfixed, GLint, GLint, GLfixed, GLfixed, GLint, GLint, GLfixed> FunctionObjects::Map2xOES("glMap2xOES");
-Function<void *, GLenum, GLenum> FunctionObjects::MapBuffer("glMapBuffer");
-Function<void *, GLenum, GLenum> FunctionObjects::MapBufferARB("glMapBufferARB");
-Function<void *, GLenum, GLintptr, GLsizeiptr, GLbitfield> FunctionObjects::MapBufferRange("glMapBufferRange");
-Function<void, GLenum, GLuint, GLenum, GLsizei, GLsizei, GLint, GLint, GLboolean, const void *> FunctionObjects::MapControlPointsNV("glMapControlPointsNV");
-Function<void, GLint, GLdouble, GLdouble> FunctionObjects::MapGrid1d("glMapGrid1d");
-Function<void, GLint, GLfloat, GLfloat> FunctionObjects::MapGrid1f("glMapGrid1f");
-Function<void, GLint, GLfixed, GLfixed> FunctionObjects::MapGrid1xOES("glMapGrid1xOES");
-Function<void, GLint, GLdouble, GLdouble, GLint, GLdouble, GLdouble> FunctionObjects::MapGrid2d("glMapGrid2d");
-Function<void, GLint, GLfloat, GLfloat, GLint, GLfloat, GLfloat> FunctionObjects::MapGrid2f("glMapGrid2f");
-Function<void, GLint, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::MapGrid2xOES("glMapGrid2xOES");
-Function<void *, GLuint, GLenum> FunctionObjects::MapNamedBufferEXT("glMapNamedBufferEXT");
-Function<void *, GLuint, GLintptr, GLsizeiptr, GLbitfield> FunctionObjects::MapNamedBufferRangeEXT("glMapNamedBufferRangeEXT");
-Function<void *, GLuint> FunctionObjects::MapObjectBufferATI("glMapObjectBufferATI");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::MapParameterfvNV("glMapParameterfvNV");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::MapParameterivNV("glMapParameterivNV");
-Function<void *, GLuint, GLint, GLbitfield, GLint *, GLenum *> FunctionObjects::MapTexture2DINTEL("glMapTexture2DINTEL");
-Function<void, GLuint, GLuint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> FunctionObjects::MapVertexAttrib1dAPPLE("glMapVertexAttrib1dAPPLE");
-Function<void, GLuint, GLuint, GLfloat, GLfloat, GLint, GLint, const GLfloat *> FunctionObjects::MapVertexAttrib1fAPPLE("glMapVertexAttrib1fAPPLE");
-Function<void, GLuint, GLuint, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> FunctionObjects::MapVertexAttrib2dAPPLE("glMapVertexAttrib2dAPPLE");
-Function<void, GLuint, GLuint, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *> FunctionObjects::MapVertexAttrib2fAPPLE("glMapVertexAttrib2fAPPLE");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::Materialf("glMaterialf");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::Materialfv("glMaterialfv");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::Materiali("glMateriali");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::Materialiv("glMaterialiv");
-Function<void, GLenum, GLenum, GLfixed> FunctionObjects::MaterialxOES("glMaterialxOES");
-Function<void, GLenum, GLenum, const GLfixed *> FunctionObjects::MaterialxvOES("glMaterialxvOES");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::MatrixFrustumEXT("glMatrixFrustumEXT");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::MatrixIndexPointerARB("glMatrixIndexPointerARB");
-Function<void, GLint, const GLubyte *> FunctionObjects::MatrixIndexubvARB("glMatrixIndexubvARB");
-Function<void, GLint, const GLuint *> FunctionObjects::MatrixIndexuivARB("glMatrixIndexuivARB");
-Function<void, GLint, const GLushort *> FunctionObjects::MatrixIndexusvARB("glMatrixIndexusvARB");
-Function<void, GLenum> FunctionObjects::MatrixLoadIdentityEXT("glMatrixLoadIdentityEXT");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MatrixLoadTransposedEXT("glMatrixLoadTransposedEXT");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MatrixLoadTransposefEXT("glMatrixLoadTransposefEXT");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MatrixLoaddEXT("glMatrixLoaddEXT");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MatrixLoadfEXT("glMatrixLoadfEXT");
-Function<void, GLenum> FunctionObjects::MatrixMode("glMatrixMode");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MatrixMultTransposedEXT("glMatrixMultTransposedEXT");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MatrixMultTransposefEXT("glMatrixMultTransposefEXT");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MatrixMultdEXT("glMatrixMultdEXT");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MatrixMultfEXT("glMatrixMultfEXT");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::MatrixOrthoEXT("glMatrixOrthoEXT");
-Function<void, GLenum> FunctionObjects::MatrixPopEXT("glMatrixPopEXT");
-Function<void, GLenum> FunctionObjects::MatrixPushEXT("glMatrixPushEXT");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::MatrixRotatedEXT("glMatrixRotatedEXT");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::MatrixRotatefEXT("glMatrixRotatefEXT");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble> FunctionObjects::MatrixScaledEXT("glMatrixScaledEXT");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat> FunctionObjects::MatrixScalefEXT("glMatrixScalefEXT");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble> FunctionObjects::MatrixTranslatedEXT("glMatrixTranslatedEXT");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat> FunctionObjects::MatrixTranslatefEXT("glMatrixTranslatefEXT");
-Function<void, GLbitfield> FunctionObjects::MemoryBarrier("glMemoryBarrier");
-Function<void, GLbitfield> FunctionObjects::MemoryBarrierEXT("glMemoryBarrierEXT");
-Function<void, GLfloat> FunctionObjects::MinSampleShading("glMinSampleShading");
-Function<void, GLfloat> FunctionObjects::MinSampleShadingARB("glMinSampleShadingARB");
-Function<void, GLenum, GLenum, GLboolean> FunctionObjects::Minmax("glMinmax");
-Function<void, GLenum, GLenum, GLboolean> FunctionObjects::MinmaxEXT("glMinmaxEXT");
-Function<void, const GLdouble *> FunctionObjects::MultMatrixd("glMultMatrixd");
-Function<void, const GLfloat *> FunctionObjects::MultMatrixf("glMultMatrixf");
-Function<void, const GLfixed *> FunctionObjects::MultMatrixxOES("glMultMatrixxOES");
-Function<void, const GLdouble *> FunctionObjects::MultTransposeMatrixd("glMultTransposeMatrixd");
-Function<void, const GLdouble *> FunctionObjects::MultTransposeMatrixdARB("glMultTransposeMatrixdARB");
-Function<void, const GLfloat *> FunctionObjects::MultTransposeMatrixf("glMultTransposeMatrixf");
-Function<void, const GLfloat *> FunctionObjects::MultTransposeMatrixfARB("glMultTransposeMatrixfARB");
-Function<void, const GLfixed *> FunctionObjects::MultTransposeMatrixxOES("glMultTransposeMatrixxOES");
-Function<void, GLenum, const GLint *, const GLsizei *, GLsizei> FunctionObjects::MultiDrawArrays("glMultiDrawArrays");
-Function<void, GLenum, const GLint *, const GLsizei *, GLsizei> FunctionObjects::MultiDrawArraysEXT("glMultiDrawArraysEXT");
-Function<void, GLenum, const void *, GLsizei, GLsizei> FunctionObjects::MultiDrawArraysIndirect("glMultiDrawArraysIndirect");
-Function<void, GLenum, const void *, GLsizei, GLsizei> FunctionObjects::MultiDrawArraysIndirectAMD("glMultiDrawArraysIndirectAMD");
-Function<void, GLenum, const void *, GLsizei, GLsizei, GLint> FunctionObjects::MultiDrawArraysIndirectBindlessNV("glMultiDrawArraysIndirectBindlessNV");
-Function<void, GLenum, GLintptr, GLintptr, GLsizei, GLsizei> FunctionObjects::MultiDrawArraysIndirectCountARB("glMultiDrawArraysIndirectCountARB");
-Function<void, GLenum, const GLint *, const GLsizei *, GLsizei> FunctionObjects::MultiDrawElementArrayAPPLE("glMultiDrawElementArrayAPPLE");
-Function<void, GLenum, const GLsizei *, GLenum, const void *const*, GLsizei> FunctionObjects::MultiDrawElements("glMultiDrawElements");
-Function<void, GLenum, const GLsizei *, GLenum, const void *const*, GLsizei, const GLint *> FunctionObjects::MultiDrawElementsBaseVertex("glMultiDrawElementsBaseVertex");
-Function<void, GLenum, const GLsizei *, GLenum, const void *const*, GLsizei> FunctionObjects::MultiDrawElementsEXT("glMultiDrawElementsEXT");
-Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei> FunctionObjects::MultiDrawElementsIndirect("glMultiDrawElementsIndirect");
-Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei> FunctionObjects::MultiDrawElementsIndirectAMD("glMultiDrawElementsIndirectAMD");
-Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei, GLint> FunctionObjects::MultiDrawElementsIndirectBindlessNV("glMultiDrawElementsIndirectBindlessNV");
-Function<void, GLenum, GLenum, GLintptr, GLintptr, GLsizei, GLsizei> FunctionObjects::MultiDrawElementsIndirectCountARB("glMultiDrawElementsIndirectCountARB");
-Function<void, GLenum, GLuint, GLuint, const GLint *, const GLsizei *, GLsizei> FunctionObjects::MultiDrawRangeElementArrayAPPLE("glMultiDrawRangeElementArrayAPPLE");
-Function<void, const GLenum *, const GLint *, const GLsizei *, GLsizei, GLint> FunctionObjects::MultiModeDrawArraysIBM("glMultiModeDrawArraysIBM");
-Function<void, const GLenum *, const GLsizei *, GLenum, const void *const*, GLsizei, GLint> FunctionObjects::MultiModeDrawElementsIBM("glMultiModeDrawElementsIBM");
-Function<void, GLenum, GLenum, GLenum, GLuint> FunctionObjects::MultiTexBufferEXT("glMultiTexBufferEXT");
-Function<void, GLenum, GLbyte> FunctionObjects::MultiTexCoord1bOES("glMultiTexCoord1bOES");
-Function<void, GLenum, const GLbyte *> FunctionObjects::MultiTexCoord1bvOES("glMultiTexCoord1bvOES");
-Function<void, GLenum, GLdouble> FunctionObjects::MultiTexCoord1d("glMultiTexCoord1d");
-Function<void, GLenum, GLdouble> FunctionObjects::MultiTexCoord1dARB("glMultiTexCoord1dARB");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord1dv("glMultiTexCoord1dv");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord1dvARB("glMultiTexCoord1dvARB");
-Function<void, GLenum, GLfloat> FunctionObjects::MultiTexCoord1f("glMultiTexCoord1f");
-Function<void, GLenum, GLfloat> FunctionObjects::MultiTexCoord1fARB("glMultiTexCoord1fARB");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord1fv("glMultiTexCoord1fv");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord1fvARB("glMultiTexCoord1fvARB");
-Function<void, GLenum, GLhalfNV> FunctionObjects::MultiTexCoord1hNV("glMultiTexCoord1hNV");
-Function<void, GLenum, const GLhalfNV *> FunctionObjects::MultiTexCoord1hvNV("glMultiTexCoord1hvNV");
-Function<void, GLenum, GLint> FunctionObjects::MultiTexCoord1i("glMultiTexCoord1i");
-Function<void, GLenum, GLint> FunctionObjects::MultiTexCoord1iARB("glMultiTexCoord1iARB");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord1iv("glMultiTexCoord1iv");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord1ivARB("glMultiTexCoord1ivARB");
-Function<void, GLenum, GLshort> FunctionObjects::MultiTexCoord1s("glMultiTexCoord1s");
-Function<void, GLenum, GLshort> FunctionObjects::MultiTexCoord1sARB("glMultiTexCoord1sARB");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord1sv("glMultiTexCoord1sv");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord1svARB("glMultiTexCoord1svARB");
-Function<void, GLenum, GLfixed> FunctionObjects::MultiTexCoord1xOES("glMultiTexCoord1xOES");
-Function<void, GLenum, const GLfixed *> FunctionObjects::MultiTexCoord1xvOES("glMultiTexCoord1xvOES");
-Function<void, GLenum, GLbyte, GLbyte> FunctionObjects::MultiTexCoord2bOES("glMultiTexCoord2bOES");
-Function<void, GLenum, const GLbyte *> FunctionObjects::MultiTexCoord2bvOES("glMultiTexCoord2bvOES");
-Function<void, GLenum, GLdouble, GLdouble> FunctionObjects::MultiTexCoord2d("glMultiTexCoord2d");
-Function<void, GLenum, GLdouble, GLdouble> FunctionObjects::MultiTexCoord2dARB("glMultiTexCoord2dARB");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord2dv("glMultiTexCoord2dv");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord2dvARB("glMultiTexCoord2dvARB");
-Function<void, GLenum, GLfloat, GLfloat> FunctionObjects::MultiTexCoord2f("glMultiTexCoord2f");
-Function<void, GLenum, GLfloat, GLfloat> FunctionObjects::MultiTexCoord2fARB("glMultiTexCoord2fARB");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord2fv("glMultiTexCoord2fv");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord2fvARB("glMultiTexCoord2fvARB");
-Function<void, GLenum, GLhalfNV, GLhalfNV> FunctionObjects::MultiTexCoord2hNV("glMultiTexCoord2hNV");
-Function<void, GLenum, const GLhalfNV *> FunctionObjects::MultiTexCoord2hvNV("glMultiTexCoord2hvNV");
-Function<void, GLenum, GLint, GLint> FunctionObjects::MultiTexCoord2i("glMultiTexCoord2i");
-Function<void, GLenum, GLint, GLint> FunctionObjects::MultiTexCoord2iARB("glMultiTexCoord2iARB");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord2iv("glMultiTexCoord2iv");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord2ivARB("glMultiTexCoord2ivARB");
-Function<void, GLenum, GLshort, GLshort> FunctionObjects::MultiTexCoord2s("glMultiTexCoord2s");
-Function<void, GLenum, GLshort, GLshort> FunctionObjects::MultiTexCoord2sARB("glMultiTexCoord2sARB");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord2sv("glMultiTexCoord2sv");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord2svARB("glMultiTexCoord2svARB");
-Function<void, GLenum, GLfixed, GLfixed> FunctionObjects::MultiTexCoord2xOES("glMultiTexCoord2xOES");
-Function<void, GLenum, const GLfixed *> FunctionObjects::MultiTexCoord2xvOES("glMultiTexCoord2xvOES");
-Function<void, GLenum, GLbyte, GLbyte, GLbyte> FunctionObjects::MultiTexCoord3bOES("glMultiTexCoord3bOES");
-Function<void, GLenum, const GLbyte *> FunctionObjects::MultiTexCoord3bvOES("glMultiTexCoord3bvOES");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble> FunctionObjects::MultiTexCoord3d("glMultiTexCoord3d");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble> FunctionObjects::MultiTexCoord3dARB("glMultiTexCoord3dARB");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord3dv("glMultiTexCoord3dv");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord3dvARB("glMultiTexCoord3dvARB");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat> FunctionObjects::MultiTexCoord3f("glMultiTexCoord3f");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat> FunctionObjects::MultiTexCoord3fARB("glMultiTexCoord3fARB");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord3fv("glMultiTexCoord3fv");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord3fvARB("glMultiTexCoord3fvARB");
-Function<void, GLenum, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::MultiTexCoord3hNV("glMultiTexCoord3hNV");
-Function<void, GLenum, const GLhalfNV *> FunctionObjects::MultiTexCoord3hvNV("glMultiTexCoord3hvNV");
-Function<void, GLenum, GLint, GLint, GLint> FunctionObjects::MultiTexCoord3i("glMultiTexCoord3i");
-Function<void, GLenum, GLint, GLint, GLint> FunctionObjects::MultiTexCoord3iARB("glMultiTexCoord3iARB");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord3iv("glMultiTexCoord3iv");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord3ivARB("glMultiTexCoord3ivARB");
-Function<void, GLenum, GLshort, GLshort, GLshort> FunctionObjects::MultiTexCoord3s("glMultiTexCoord3s");
-Function<void, GLenum, GLshort, GLshort, GLshort> FunctionObjects::MultiTexCoord3sARB("glMultiTexCoord3sARB");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord3sv("glMultiTexCoord3sv");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord3svARB("glMultiTexCoord3svARB");
-Function<void, GLenum, GLfixed, GLfixed, GLfixed> FunctionObjects::MultiTexCoord3xOES("glMultiTexCoord3xOES");
-Function<void, GLenum, const GLfixed *> FunctionObjects::MultiTexCoord3xvOES("glMultiTexCoord3xvOES");
-Function<void, GLenum, GLbyte, GLbyte, GLbyte, GLbyte> FunctionObjects::MultiTexCoord4bOES("glMultiTexCoord4bOES");
-Function<void, GLenum, const GLbyte *> FunctionObjects::MultiTexCoord4bvOES("glMultiTexCoord4bvOES");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::MultiTexCoord4d("glMultiTexCoord4d");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::MultiTexCoord4dARB("glMultiTexCoord4dARB");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord4dv("glMultiTexCoord4dv");
-Function<void, GLenum, const GLdouble *> FunctionObjects::MultiTexCoord4dvARB("glMultiTexCoord4dvARB");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::MultiTexCoord4f("glMultiTexCoord4f");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::MultiTexCoord4fARB("glMultiTexCoord4fARB");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord4fv("glMultiTexCoord4fv");
-Function<void, GLenum, const GLfloat *> FunctionObjects::MultiTexCoord4fvARB("glMultiTexCoord4fvARB");
-Function<void, GLenum, GLhalfNV, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::MultiTexCoord4hNV("glMultiTexCoord4hNV");
-Function<void, GLenum, const GLhalfNV *> FunctionObjects::MultiTexCoord4hvNV("glMultiTexCoord4hvNV");
-Function<void, GLenum, GLint, GLint, GLint, GLint> FunctionObjects::MultiTexCoord4i("glMultiTexCoord4i");
-Function<void, GLenum, GLint, GLint, GLint, GLint> FunctionObjects::MultiTexCoord4iARB("glMultiTexCoord4iARB");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord4iv("glMultiTexCoord4iv");
-Function<void, GLenum, const GLint *> FunctionObjects::MultiTexCoord4ivARB("glMultiTexCoord4ivARB");
-Function<void, GLenum, GLshort, GLshort, GLshort, GLshort> FunctionObjects::MultiTexCoord4s("glMultiTexCoord4s");
-Function<void, GLenum, GLshort, GLshort, GLshort, GLshort> FunctionObjects::MultiTexCoord4sARB("glMultiTexCoord4sARB");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord4sv("glMultiTexCoord4sv");
-Function<void, GLenum, const GLshort *> FunctionObjects::MultiTexCoord4svARB("glMultiTexCoord4svARB");
-Function<void, GLenum, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::MultiTexCoord4xOES("glMultiTexCoord4xOES");
-Function<void, GLenum, const GLfixed *> FunctionObjects::MultiTexCoord4xvOES("glMultiTexCoord4xvOES");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::MultiTexCoordP1ui("glMultiTexCoordP1ui");
-Function<void, GLenum, GLenum, const GLuint *> FunctionObjects::MultiTexCoordP1uiv("glMultiTexCoordP1uiv");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::MultiTexCoordP2ui("glMultiTexCoordP2ui");
-Function<void, GLenum, GLenum, const GLuint *> FunctionObjects::MultiTexCoordP2uiv("glMultiTexCoordP2uiv");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::MultiTexCoordP3ui("glMultiTexCoordP3ui");
-Function<void, GLenum, GLenum, const GLuint *> FunctionObjects::MultiTexCoordP3uiv("glMultiTexCoordP3uiv");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::MultiTexCoordP4ui("glMultiTexCoordP4ui");
-Function<void, GLenum, GLenum, const GLuint *> FunctionObjects::MultiTexCoordP4uiv("glMultiTexCoordP4uiv");
-Function<void, GLenum, GLint, GLenum, GLsizei, const void *> FunctionObjects::MultiTexCoordPointerEXT("glMultiTexCoordPointerEXT");
-Function<void, GLenum, GLenum, GLenum, GLfloat> FunctionObjects::MultiTexEnvfEXT("glMultiTexEnvfEXT");
-Function<void, GLenum, GLenum, GLenum, const GLfloat *> FunctionObjects::MultiTexEnvfvEXT("glMultiTexEnvfvEXT");
-Function<void, GLenum, GLenum, GLenum, GLint> FunctionObjects::MultiTexEnviEXT("glMultiTexEnviEXT");
-Function<void, GLenum, GLenum, GLenum, const GLint *> FunctionObjects::MultiTexEnvivEXT("glMultiTexEnvivEXT");
-Function<void, GLenum, GLenum, GLenum, GLdouble> FunctionObjects::MultiTexGendEXT("glMultiTexGendEXT");
-Function<void, GLenum, GLenum, GLenum, const GLdouble *> FunctionObjects::MultiTexGendvEXT("glMultiTexGendvEXT");
-Function<void, GLenum, GLenum, GLenum, GLfloat> FunctionObjects::MultiTexGenfEXT("glMultiTexGenfEXT");
-Function<void, GLenum, GLenum, GLenum, const GLfloat *> FunctionObjects::MultiTexGenfvEXT("glMultiTexGenfvEXT");
-Function<void, GLenum, GLenum, GLenum, GLint> FunctionObjects::MultiTexGeniEXT("glMultiTexGeniEXT");
-Function<void, GLenum, GLenum, GLenum, const GLint *> FunctionObjects::MultiTexGenivEXT("glMultiTexGenivEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::MultiTexImage1DEXT("glMultiTexImage1DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::MultiTexImage2DEXT("glMultiTexImage2DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::MultiTexImage3DEXT("glMultiTexImage3DEXT");
-Function<void, GLenum, GLenum, GLenum, const GLint *> FunctionObjects::MultiTexParameterIivEXT("glMultiTexParameterIivEXT");
-Function<void, GLenum, GLenum, GLenum, const GLuint *> FunctionObjects::MultiTexParameterIuivEXT("glMultiTexParameterIuivEXT");
-Function<void, GLenum, GLenum, GLenum, GLfloat> FunctionObjects::MultiTexParameterfEXT("glMultiTexParameterfEXT");
-Function<void, GLenum, GLenum, GLenum, const GLfloat *> FunctionObjects::MultiTexParameterfvEXT("glMultiTexParameterfvEXT");
-Function<void, GLenum, GLenum, GLenum, GLint> FunctionObjects::MultiTexParameteriEXT("glMultiTexParameteriEXT");
-Function<void, GLenum, GLenum, GLenum, const GLint *> FunctionObjects::MultiTexParameterivEXT("glMultiTexParameterivEXT");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::MultiTexRenderbufferEXT("glMultiTexRenderbufferEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> FunctionObjects::MultiTexSubImage1DEXT("glMultiTexSubImage1DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::MultiTexSubImage2DEXT("glMultiTexSubImage2DEXT");
-Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::MultiTexSubImage3DEXT("glMultiTexSubImage3DEXT");
-Function<void, GLuint, GLsizeiptr, const void *, GLenum> FunctionObjects::NamedBufferDataEXT("glNamedBufferDataEXT");
-Function<void, GLuint, GLsizeiptr, const void *, GLbitfield> FunctionObjects::NamedBufferStorageEXT("glNamedBufferStorageEXT");
-Function<void, GLuint, GLintptr, GLsizeiptr, const void *> FunctionObjects::NamedBufferSubDataEXT("glNamedBufferSubDataEXT");
-Function<void, GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr> FunctionObjects::NamedCopyBufferSubDataEXT("glNamedCopyBufferSubDataEXT");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::NamedFramebufferParameteriEXT("glNamedFramebufferParameteriEXT");
-Function<void, GLuint, GLenum, GLenum, GLuint> FunctionObjects::NamedFramebufferRenderbufferEXT("glNamedFramebufferRenderbufferEXT");
-Function<void, GLuint, GLenum, GLenum, GLuint, GLint> FunctionObjects::NamedFramebufferTexture1DEXT("glNamedFramebufferTexture1DEXT");
-Function<void, GLuint, GLenum, GLenum, GLuint, GLint> FunctionObjects::NamedFramebufferTexture2DEXT("glNamedFramebufferTexture2DEXT");
-Function<void, GLuint, GLenum, GLenum, GLuint, GLint, GLint> FunctionObjects::NamedFramebufferTexture3DEXT("glNamedFramebufferTexture3DEXT");
-Function<void, GLuint, GLenum, GLuint, GLint> FunctionObjects::NamedFramebufferTextureEXT("glNamedFramebufferTextureEXT");
-Function<void, GLuint, GLenum, GLuint, GLint, GLenum> FunctionObjects::NamedFramebufferTextureFaceEXT("glNamedFramebufferTextureFaceEXT");
-Function<void, GLuint, GLenum, GLuint, GLint, GLint> FunctionObjects::NamedFramebufferTextureLayerEXT("glNamedFramebufferTextureLayerEXT");
-Function<void, GLuint, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::NamedProgramLocalParameter4dEXT("glNamedProgramLocalParameter4dEXT");
-Function<void, GLuint, GLenum, GLuint, const GLdouble *> FunctionObjects::NamedProgramLocalParameter4dvEXT("glNamedProgramLocalParameter4dvEXT");
-Function<void, GLuint, GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::NamedProgramLocalParameter4fEXT("glNamedProgramLocalParameter4fEXT");
-Function<void, GLuint, GLenum, GLuint, const GLfloat *> FunctionObjects::NamedProgramLocalParameter4fvEXT("glNamedProgramLocalParameter4fvEXT");
-Function<void, GLuint, GLenum, GLuint, GLint, GLint, GLint, GLint> FunctionObjects::NamedProgramLocalParameterI4iEXT("glNamedProgramLocalParameterI4iEXT");
-Function<void, GLuint, GLenum, GLuint, const GLint *> FunctionObjects::NamedProgramLocalParameterI4ivEXT("glNamedProgramLocalParameterI4ivEXT");
-Function<void, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::NamedProgramLocalParameterI4uiEXT("glNamedProgramLocalParameterI4uiEXT");
-Function<void, GLuint, GLenum, GLuint, const GLuint *> FunctionObjects::NamedProgramLocalParameterI4uivEXT("glNamedProgramLocalParameterI4uivEXT");
-Function<void, GLuint, GLenum, GLuint, GLsizei, const GLfloat *> FunctionObjects::NamedProgramLocalParameters4fvEXT("glNamedProgramLocalParameters4fvEXT");
-Function<void, GLuint, GLenum, GLuint, GLsizei, const GLint *> FunctionObjects::NamedProgramLocalParametersI4ivEXT("glNamedProgramLocalParametersI4ivEXT");
-Function<void, GLuint, GLenum, GLuint, GLsizei, const GLuint *> FunctionObjects::NamedProgramLocalParametersI4uivEXT("glNamedProgramLocalParametersI4uivEXT");
-Function<void, GLuint, GLenum, GLenum, GLsizei, const void *> FunctionObjects::NamedProgramStringEXT("glNamedProgramStringEXT");
-Function<void, GLuint, GLenum, GLsizei, GLsizei> FunctionObjects::NamedRenderbufferStorageEXT("glNamedRenderbufferStorageEXT");
-Function<void, GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei> FunctionObjects::NamedRenderbufferStorageMultisampleCoverageEXT("glNamedRenderbufferStorageMultisampleCoverageEXT");
-Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei> FunctionObjects::NamedRenderbufferStorageMultisampleEXT("glNamedRenderbufferStorageMultisampleEXT");
-Function<void, GLenum, GLint, const GLchar *, GLint, const GLchar *> FunctionObjects::NamedStringARB("glNamedStringARB");
-Function<void, GLuint, GLenum> FunctionObjects::NewList("glNewList");
-Function<GLuint, GLsizei, const void *, GLenum> FunctionObjects::NewObjectBufferATI("glNewObjectBufferATI");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::Normal3b("glNormal3b");
-Function<void, const GLbyte *> FunctionObjects::Normal3bv("glNormal3bv");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::Normal3d("glNormal3d");
-Function<void, const GLdouble *> FunctionObjects::Normal3dv("glNormal3dv");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::Normal3f("glNormal3f");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Normal3fVertex3fSUN("glNormal3fVertex3fSUN");
-Function<void, const GLfloat *, const GLfloat *> FunctionObjects::Normal3fVertex3fvSUN("glNormal3fVertex3fvSUN");
-Function<void, const GLfloat *> FunctionObjects::Normal3fv("glNormal3fv");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::Normal3hNV("glNormal3hNV");
-Function<void, const GLhalfNV *> FunctionObjects::Normal3hvNV("glNormal3hvNV");
-Function<void, GLint, GLint, GLint> FunctionObjects::Normal3i("glNormal3i");
-Function<void, const GLint *> FunctionObjects::Normal3iv("glNormal3iv");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::Normal3s("glNormal3s");
-Function<void, const GLshort *> FunctionObjects::Normal3sv("glNormal3sv");
-Function<void, GLfixed, GLfixed, GLfixed> FunctionObjects::Normal3xOES("glNormal3xOES");
-Function<void, const GLfixed *> FunctionObjects::Normal3xvOES("glNormal3xvOES");
-Function<void, GLenum, GLsizei> FunctionObjects::NormalFormatNV("glNormalFormatNV");
-Function<void, GLenum, GLuint> FunctionObjects::NormalP3ui("glNormalP3ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::NormalP3uiv("glNormalP3uiv");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::NormalPointer("glNormalPointer");
-Function<void, GLenum, GLsizei, GLsizei, const void *> FunctionObjects::NormalPointerEXT("glNormalPointerEXT");
-Function<void, GLenum, GLint, const void **, GLint> FunctionObjects::NormalPointerListIBM("glNormalPointerListIBM");
-Function<void, GLenum, const void **> FunctionObjects::NormalPointervINTEL("glNormalPointervINTEL");
-Function<void, GLenum, GLbyte, GLbyte, GLbyte> FunctionObjects::NormalStream3bATI("glNormalStream3bATI");
-Function<void, GLenum, const GLbyte *> FunctionObjects::NormalStream3bvATI("glNormalStream3bvATI");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble> FunctionObjects::NormalStream3dATI("glNormalStream3dATI");
-Function<void, GLenum, const GLdouble *> FunctionObjects::NormalStream3dvATI("glNormalStream3dvATI");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat> FunctionObjects::NormalStream3fATI("glNormalStream3fATI");
-Function<void, GLenum, const GLfloat *> FunctionObjects::NormalStream3fvATI("glNormalStream3fvATI");
-Function<void, GLenum, GLint, GLint, GLint> FunctionObjects::NormalStream3iATI("glNormalStream3iATI");
-Function<void, GLenum, const GLint *> FunctionObjects::NormalStream3ivATI("glNormalStream3ivATI");
-Function<void, GLenum, GLshort, GLshort, GLshort> FunctionObjects::NormalStream3sATI("glNormalStream3sATI");
-Function<void, GLenum, const GLshort *> FunctionObjects::NormalStream3svATI("glNormalStream3svATI");
-Function<void, GLenum, GLuint, GLsizei, const GLchar *> FunctionObjects::ObjectLabel("glObjectLabel");
-Function<void, const void *, GLsizei, const GLchar *> FunctionObjects::ObjectPtrLabel("glObjectPtrLabel");
-Function<GLenum, GLenum, GLuint, GLenum> FunctionObjects::ObjectPurgeableAPPLE("glObjectPurgeableAPPLE");
-Function<GLenum, GLenum, GLuint, GLenum> FunctionObjects::ObjectUnpurgeableAPPLE("glObjectUnpurgeableAPPLE");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::Ortho("glOrtho");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::OrthofOES("glOrthofOES");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::OrthoxOES("glOrthoxOES");
-Function<void, GLenum, GLfloat> FunctionObjects::PNTrianglesfATI("glPNTrianglesfATI");
-Function<void, GLenum, GLint> FunctionObjects::PNTrianglesiATI("glPNTrianglesiATI");
-Function<void, GLuint, GLuint, GLenum> FunctionObjects::PassTexCoordATI("glPassTexCoordATI");
-Function<void, GLfloat> FunctionObjects::PassThrough("glPassThrough");
-Function<void, GLfixed> FunctionObjects::PassThroughxOES("glPassThroughxOES");
-Function<void, GLenum, const GLfloat *> FunctionObjects::PatchParameterfv("glPatchParameterfv");
-Function<void, GLenum, GLint> FunctionObjects::PatchParameteri("glPatchParameteri");
-Function<void, GLenum, GLenum, GLenum, const GLfloat *> FunctionObjects::PathColorGenNV("glPathColorGenNV");
-Function<void, GLuint, GLsizei, const GLubyte *, GLsizei, GLenum, const void *> FunctionObjects::PathCommandsNV("glPathCommandsNV");
-Function<void, GLuint, GLsizei, GLenum, const void *> FunctionObjects::PathCoordsNV("glPathCoordsNV");
-Function<void, GLenum> FunctionObjects::PathCoverDepthFuncNV("glPathCoverDepthFuncNV");
-Function<void, GLuint, GLsizei, const GLfloat *> FunctionObjects::PathDashArrayNV("glPathDashArrayNV");
-Function<void, GLenum> FunctionObjects::PathFogGenNV("glPathFogGenNV");
-Function<void, GLuint, GLenum, const void *, GLbitfield, GLuint, GLsizei, GLenum, GLuint, GLfloat> FunctionObjects::PathGlyphRangeNV("glPathGlyphRangeNV");
-Function<void, GLuint, GLenum, const void *, GLbitfield, GLsizei, GLenum, const void *, GLenum, GLuint, GLfloat> FunctionObjects::PathGlyphsNV("glPathGlyphsNV");
-Function<void, GLuint, GLenum, GLfloat> FunctionObjects::PathParameterfNV("glPathParameterfNV");
-Function<void, GLuint, GLenum, const GLfloat *> FunctionObjects::PathParameterfvNV("glPathParameterfvNV");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::PathParameteriNV("glPathParameteriNV");
-Function<void, GLuint, GLenum, const GLint *> FunctionObjects::PathParameterivNV("glPathParameterivNV");
-Function<void, GLfloat, GLfloat> FunctionObjects::PathStencilDepthOffsetNV("glPathStencilDepthOffsetNV");
-Function<void, GLenum, GLint, GLuint> FunctionObjects::PathStencilFuncNV("glPathStencilFuncNV");
-Function<void, GLuint, GLenum, GLsizei, const void *> FunctionObjects::PathStringNV("glPathStringNV");
-Function<void, GLuint, GLsizei, GLsizei, GLsizei, const GLubyte *, GLsizei, GLenum, const void *> FunctionObjects::PathSubCommandsNV("glPathSubCommandsNV");
-Function<void, GLuint, GLsizei, GLsizei, GLenum, const void *> FunctionObjects::PathSubCoordsNV("glPathSubCoordsNV");
-Function<void, GLenum, GLenum, GLint, const GLfloat *> FunctionObjects::PathTexGenNV("glPathTexGenNV");
-Function<void> FunctionObjects::PauseTransformFeedback("glPauseTransformFeedback");
-Function<void> FunctionObjects::PauseTransformFeedbackNV("glPauseTransformFeedbackNV");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::PixelDataRangeNV("glPixelDataRangeNV");
-Function<void, GLenum, GLsizei, const GLfloat *> FunctionObjects::PixelMapfv("glPixelMapfv");
-Function<void, GLenum, GLsizei, const GLuint *> FunctionObjects::PixelMapuiv("glPixelMapuiv");
-Function<void, GLenum, GLsizei, const GLushort *> FunctionObjects::PixelMapusv("glPixelMapusv");
-Function<void, GLenum, GLint, const GLfixed *> FunctionObjects::PixelMapx("glPixelMapx");
-Function<void, GLenum, GLfloat> FunctionObjects::PixelStoref("glPixelStoref");
-Function<void, GLenum, GLint> FunctionObjects::PixelStorei("glPixelStorei");
-Function<void, GLenum, GLfixed> FunctionObjects::PixelStorex("glPixelStorex");
-Function<void, GLenum, GLfloat> FunctionObjects::PixelTexGenParameterfSGIS("glPixelTexGenParameterfSGIS");
-Function<void, GLenum, const GLfloat *> FunctionObjects::PixelTexGenParameterfvSGIS("glPixelTexGenParameterfvSGIS");
-Function<void, GLenum, GLint> FunctionObjects::PixelTexGenParameteriSGIS("glPixelTexGenParameteriSGIS");
-Function<void, GLenum, const GLint *> FunctionObjects::PixelTexGenParameterivSGIS("glPixelTexGenParameterivSGIS");
-Function<void, GLenum> FunctionObjects::PixelTexGenSGIX("glPixelTexGenSGIX");
-Function<void, GLenum, GLfloat> FunctionObjects::PixelTransferf("glPixelTransferf");
-Function<void, GLenum, GLint> FunctionObjects::PixelTransferi("glPixelTransferi");
-Function<void, GLenum, GLfixed> FunctionObjects::PixelTransferxOES("glPixelTransferxOES");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::PixelTransformParameterfEXT("glPixelTransformParameterfEXT");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::PixelTransformParameterfvEXT("glPixelTransformParameterfvEXT");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::PixelTransformParameteriEXT("glPixelTransformParameteriEXT");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::PixelTransformParameterivEXT("glPixelTransformParameterivEXT");
-Function<void, GLfloat, GLfloat> FunctionObjects::PixelZoom("glPixelZoom");
-Function<void, GLfixed, GLfixed> FunctionObjects::PixelZoomxOES("glPixelZoomxOES");
-Function<GLboolean, GLuint, GLsizei, GLsizei, GLfloat, GLfloat *, GLfloat *, GLfloat *, GLfloat *> FunctionObjects::PointAlongPathNV("glPointAlongPathNV");
-Function<void, GLenum, GLfloat> FunctionObjects::PointParameterf("glPointParameterf");
-Function<void, GLenum, GLfloat> FunctionObjects::PointParameterfARB("glPointParameterfARB");
-Function<void, GLenum, GLfloat> FunctionObjects::PointParameterfEXT("glPointParameterfEXT");
-Function<void, GLenum, GLfloat> FunctionObjects::PointParameterfSGIS("glPointParameterfSGIS");
-Function<void, GLenum, const GLfloat *> FunctionObjects::PointParameterfv("glPointParameterfv");
-Function<void, GLenum, const GLfloat *> FunctionObjects::PointParameterfvARB("glPointParameterfvARB");
-Function<void, GLenum, const GLfloat *> FunctionObjects::PointParameterfvEXT("glPointParameterfvEXT");
-Function<void, GLenum, const GLfloat *> FunctionObjects::PointParameterfvSGIS("glPointParameterfvSGIS");
-Function<void, GLenum, GLint> FunctionObjects::PointParameteri("glPointParameteri");
-Function<void, GLenum, GLint> FunctionObjects::PointParameteriNV("glPointParameteriNV");
-Function<void, GLenum, const GLint *> FunctionObjects::PointParameteriv("glPointParameteriv");
-Function<void, GLenum, const GLint *> FunctionObjects::PointParameterivNV("glPointParameterivNV");
-Function<void, GLenum, const GLfixed *> FunctionObjects::PointParameterxvOES("glPointParameterxvOES");
-Function<void, GLfloat> FunctionObjects::PointSize("glPointSize");
-Function<void, GLfixed> FunctionObjects::PointSizexOES("glPointSizexOES");
-Function<GLint, GLuint *> FunctionObjects::PollAsyncSGIX("glPollAsyncSGIX");
-Function<GLint, GLint *> FunctionObjects::PollInstrumentsSGIX("glPollInstrumentsSGIX");
-Function<void, GLenum, GLenum> FunctionObjects::PolygonMode("glPolygonMode");
-Function<void, GLfloat, GLfloat> FunctionObjects::PolygonOffset("glPolygonOffset");
-Function<void, GLfloat, GLfloat> FunctionObjects::PolygonOffsetEXT("glPolygonOffsetEXT");
-Function<void, GLfixed, GLfixed> FunctionObjects::PolygonOffsetxOES("glPolygonOffsetxOES");
-Function<void, const GLubyte *> FunctionObjects::PolygonStipple("glPolygonStipple");
-Function<void> FunctionObjects::PopAttrib("glPopAttrib");
-Function<void> FunctionObjects::PopClientAttrib("glPopClientAttrib");
-Function<void> FunctionObjects::PopDebugGroup("glPopDebugGroup");
-Function<void> FunctionObjects::PopGroupMarkerEXT("glPopGroupMarkerEXT");
-Function<void> FunctionObjects::PopMatrix("glPopMatrix");
-Function<void> FunctionObjects::PopName("glPopName");
-Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint> FunctionObjects::PresentFrameDualFillNV("glPresentFrameDualFillNV");
-Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLuint, GLenum, GLuint, GLuint> FunctionObjects::PresentFrameKeyedNV("glPresentFrameKeyedNV");
-Function<void, GLuint> FunctionObjects::PrimitiveRestartIndex("glPrimitiveRestartIndex");
-Function<void, GLuint> FunctionObjects::PrimitiveRestartIndexNV("glPrimitiveRestartIndexNV");
-Function<void> FunctionObjects::PrimitiveRestartNV("glPrimitiveRestartNV");
-Function<void, GLsizei, const GLuint *, const GLfloat *> FunctionObjects::PrioritizeTextures("glPrioritizeTextures");
-Function<void, GLsizei, const GLuint *, const GLclampf *> FunctionObjects::PrioritizeTexturesEXT("glPrioritizeTexturesEXT");
-Function<void, GLsizei, const GLuint *, const GLfixed *> FunctionObjects::PrioritizeTexturesxOES("glPrioritizeTexturesxOES");
-Function<void, GLuint, GLenum, const void *, GLsizei> FunctionObjects::ProgramBinary("glProgramBinary");
-Function<void, GLenum, GLuint, GLuint, GLsizei, const GLint *> FunctionObjects::ProgramBufferParametersIivNV("glProgramBufferParametersIivNV");
-Function<void, GLenum, GLuint, GLuint, GLsizei, const GLuint *> FunctionObjects::ProgramBufferParametersIuivNV("glProgramBufferParametersIuivNV");
-Function<void, GLenum, GLuint, GLuint, GLsizei, const GLfloat *> FunctionObjects::ProgramBufferParametersfvNV("glProgramBufferParametersfvNV");
-Function<void, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramEnvParameter4dARB("glProgramEnvParameter4dARB");
-Function<void, GLenum, GLuint, const GLdouble *> FunctionObjects::ProgramEnvParameter4dvARB("glProgramEnvParameter4dvARB");
-Function<void, GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramEnvParameter4fARB("glProgramEnvParameter4fARB");
-Function<void, GLenum, GLuint, const GLfloat *> FunctionObjects::ProgramEnvParameter4fvARB("glProgramEnvParameter4fvARB");
-Function<void, GLenum, GLuint, GLint, GLint, GLint, GLint> FunctionObjects::ProgramEnvParameterI4iNV("glProgramEnvParameterI4iNV");
-Function<void, GLenum, GLuint, const GLint *> FunctionObjects::ProgramEnvParameterI4ivNV("glProgramEnvParameterI4ivNV");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ProgramEnvParameterI4uiNV("glProgramEnvParameterI4uiNV");
-Function<void, GLenum, GLuint, const GLuint *> FunctionObjects::ProgramEnvParameterI4uivNV("glProgramEnvParameterI4uivNV");
-Function<void, GLenum, GLuint, GLsizei, const GLfloat *> FunctionObjects::ProgramEnvParameters4fvEXT("glProgramEnvParameters4fvEXT");
-Function<void, GLenum, GLuint, GLsizei, const GLint *> FunctionObjects::ProgramEnvParametersI4ivNV("glProgramEnvParametersI4ivNV");
-Function<void, GLenum, GLuint, GLsizei, const GLuint *> FunctionObjects::ProgramEnvParametersI4uivNV("glProgramEnvParametersI4uivNV");
-Function<void, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramLocalParameter4dARB("glProgramLocalParameter4dARB");
-Function<void, GLenum, GLuint, const GLdouble *> FunctionObjects::ProgramLocalParameter4dvARB("glProgramLocalParameter4dvARB");
-Function<void, GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramLocalParameter4fARB("glProgramLocalParameter4fARB");
-Function<void, GLenum, GLuint, const GLfloat *> FunctionObjects::ProgramLocalParameter4fvARB("glProgramLocalParameter4fvARB");
-Function<void, GLenum, GLuint, GLint, GLint, GLint, GLint> FunctionObjects::ProgramLocalParameterI4iNV("glProgramLocalParameterI4iNV");
-Function<void, GLenum, GLuint, const GLint *> FunctionObjects::ProgramLocalParameterI4ivNV("glProgramLocalParameterI4ivNV");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ProgramLocalParameterI4uiNV("glProgramLocalParameterI4uiNV");
-Function<void, GLenum, GLuint, const GLuint *> FunctionObjects::ProgramLocalParameterI4uivNV("glProgramLocalParameterI4uivNV");
-Function<void, GLenum, GLuint, GLsizei, const GLfloat *> FunctionObjects::ProgramLocalParameters4fvEXT("glProgramLocalParameters4fvEXT");
-Function<void, GLenum, GLuint, GLsizei, const GLint *> FunctionObjects::ProgramLocalParametersI4ivNV("glProgramLocalParametersI4ivNV");
-Function<void, GLenum, GLuint, GLsizei, const GLuint *> FunctionObjects::ProgramLocalParametersI4uivNV("glProgramLocalParametersI4uivNV");
-Function<void, GLuint, GLsizei, const GLubyte *, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramNamedParameter4dNV("glProgramNamedParameter4dNV");
-Function<void, GLuint, GLsizei, const GLubyte *, const GLdouble *> FunctionObjects::ProgramNamedParameter4dvNV("glProgramNamedParameter4dvNV");
-Function<void, GLuint, GLsizei, const GLubyte *, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramNamedParameter4fNV("glProgramNamedParameter4fNV");
-Function<void, GLuint, GLsizei, const GLubyte *, const GLfloat *> FunctionObjects::ProgramNamedParameter4fvNV("glProgramNamedParameter4fvNV");
-Function<void, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramParameter4dNV("glProgramParameter4dNV");
-Function<void, GLenum, GLuint, const GLdouble *> FunctionObjects::ProgramParameter4dvNV("glProgramParameter4dvNV");
-Function<void, GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramParameter4fNV("glProgramParameter4fNV");
-Function<void, GLenum, GLuint, const GLfloat *> FunctionObjects::ProgramParameter4fvNV("glProgramParameter4fvNV");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::ProgramParameteri("glProgramParameteri");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::ProgramParameteriARB("glProgramParameteriARB");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::ProgramParameteriEXT("glProgramParameteriEXT");
-Function<void, GLenum, GLuint, GLsizei, const GLdouble *> FunctionObjects::ProgramParameters4dvNV("glProgramParameters4dvNV");
-Function<void, GLenum, GLuint, GLsizei, const GLfloat *> FunctionObjects::ProgramParameters4fvNV("glProgramParameters4fvNV");
-Function<void, GLenum, GLenum, GLsizei, const void *> FunctionObjects::ProgramStringARB("glProgramStringARB");
-Function<void, GLenum, GLsizei, const GLuint *> FunctionObjects::ProgramSubroutineParametersuivNV("glProgramSubroutineParametersuivNV");
-Function<void, GLuint, GLint, GLdouble> FunctionObjects::ProgramUniform1d("glProgramUniform1d");
-Function<void, GLuint, GLint, GLdouble> FunctionObjects::ProgramUniform1dEXT("glProgramUniform1dEXT");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform1dv("glProgramUniform1dv");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform1dvEXT("glProgramUniform1dvEXT");
-Function<void, GLuint, GLint, GLfloat> FunctionObjects::ProgramUniform1f("glProgramUniform1f");
-Function<void, GLuint, GLint, GLfloat> FunctionObjects::ProgramUniform1fEXT("glProgramUniform1fEXT");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform1fv("glProgramUniform1fv");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform1fvEXT("glProgramUniform1fvEXT");
-Function<void, GLuint, GLint, GLint> FunctionObjects::ProgramUniform1i("glProgramUniform1i");
-Function<void, GLuint, GLint, GLint64EXT> FunctionObjects::ProgramUniform1i64NV("glProgramUniform1i64NV");
-Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> FunctionObjects::ProgramUniform1i64vNV("glProgramUniform1i64vNV");
-Function<void, GLuint, GLint, GLint> FunctionObjects::ProgramUniform1iEXT("glProgramUniform1iEXT");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform1iv("glProgramUniform1iv");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform1ivEXT("glProgramUniform1ivEXT");
-Function<void, GLuint, GLint, GLuint> FunctionObjects::ProgramUniform1ui("glProgramUniform1ui");
-Function<void, GLuint, GLint, GLuint64EXT> FunctionObjects::ProgramUniform1ui64NV("glProgramUniform1ui64NV");
-Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::ProgramUniform1ui64vNV("glProgramUniform1ui64vNV");
-Function<void, GLuint, GLint, GLuint> FunctionObjects::ProgramUniform1uiEXT("glProgramUniform1uiEXT");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform1uiv("glProgramUniform1uiv");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform1uivEXT("glProgramUniform1uivEXT");
-Function<void, GLuint, GLint, GLdouble, GLdouble> FunctionObjects::ProgramUniform2d("glProgramUniform2d");
-Function<void, GLuint, GLint, GLdouble, GLdouble> FunctionObjects::ProgramUniform2dEXT("glProgramUniform2dEXT");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform2dv("glProgramUniform2dv");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform2dvEXT("glProgramUniform2dvEXT");
-Function<void, GLuint, GLint, GLfloat, GLfloat> FunctionObjects::ProgramUniform2f("glProgramUniform2f");
-Function<void, GLuint, GLint, GLfloat, GLfloat> FunctionObjects::ProgramUniform2fEXT("glProgramUniform2fEXT");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform2fv("glProgramUniform2fv");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform2fvEXT("glProgramUniform2fvEXT");
-Function<void, GLuint, GLint, GLint, GLint> FunctionObjects::ProgramUniform2i("glProgramUniform2i");
-Function<void, GLuint, GLint, GLint64EXT, GLint64EXT> FunctionObjects::ProgramUniform2i64NV("glProgramUniform2i64NV");
-Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> FunctionObjects::ProgramUniform2i64vNV("glProgramUniform2i64vNV");
-Function<void, GLuint, GLint, GLint, GLint> FunctionObjects::ProgramUniform2iEXT("glProgramUniform2iEXT");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform2iv("glProgramUniform2iv");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform2ivEXT("glProgramUniform2ivEXT");
-Function<void, GLuint, GLint, GLuint, GLuint> FunctionObjects::ProgramUniform2ui("glProgramUniform2ui");
-Function<void, GLuint, GLint, GLuint64EXT, GLuint64EXT> FunctionObjects::ProgramUniform2ui64NV("glProgramUniform2ui64NV");
-Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::ProgramUniform2ui64vNV("glProgramUniform2ui64vNV");
-Function<void, GLuint, GLint, GLuint, GLuint> FunctionObjects::ProgramUniform2uiEXT("glProgramUniform2uiEXT");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform2uiv("glProgramUniform2uiv");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform2uivEXT("glProgramUniform2uivEXT");
-Function<void, GLuint, GLint, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramUniform3d("glProgramUniform3d");
-Function<void, GLuint, GLint, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramUniform3dEXT("glProgramUniform3dEXT");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform3dv("glProgramUniform3dv");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform3dvEXT("glProgramUniform3dvEXT");
-Function<void, GLuint, GLint, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramUniform3f("glProgramUniform3f");
-Function<void, GLuint, GLint, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramUniform3fEXT("glProgramUniform3fEXT");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform3fv("glProgramUniform3fv");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform3fvEXT("glProgramUniform3fvEXT");
-Function<void, GLuint, GLint, GLint, GLint, GLint> FunctionObjects::ProgramUniform3i("glProgramUniform3i");
-Function<void, GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT> FunctionObjects::ProgramUniform3i64NV("glProgramUniform3i64NV");
-Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> FunctionObjects::ProgramUniform3i64vNV("glProgramUniform3i64vNV");
-Function<void, GLuint, GLint, GLint, GLint, GLint> FunctionObjects::ProgramUniform3iEXT("glProgramUniform3iEXT");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform3iv("glProgramUniform3iv");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform3ivEXT("glProgramUniform3ivEXT");
-Function<void, GLuint, GLint, GLuint, GLuint, GLuint> FunctionObjects::ProgramUniform3ui("glProgramUniform3ui");
-Function<void, GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT> FunctionObjects::ProgramUniform3ui64NV("glProgramUniform3ui64NV");
-Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::ProgramUniform3ui64vNV("glProgramUniform3ui64vNV");
-Function<void, GLuint, GLint, GLuint, GLuint, GLuint> FunctionObjects::ProgramUniform3uiEXT("glProgramUniform3uiEXT");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform3uiv("glProgramUniform3uiv");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform3uivEXT("glProgramUniform3uivEXT");
-Function<void, GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramUniform4d("glProgramUniform4d");
-Function<void, GLuint, GLint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::ProgramUniform4dEXT("glProgramUniform4dEXT");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform4dv("glProgramUniform4dv");
-Function<void, GLuint, GLint, GLsizei, const GLdouble *> FunctionObjects::ProgramUniform4dvEXT("glProgramUniform4dvEXT");
-Function<void, GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramUniform4f("glProgramUniform4f");
-Function<void, GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ProgramUniform4fEXT("glProgramUniform4fEXT");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform4fv("glProgramUniform4fv");
-Function<void, GLuint, GLint, GLsizei, const GLfloat *> FunctionObjects::ProgramUniform4fvEXT("glProgramUniform4fvEXT");
-Function<void, GLuint, GLint, GLint, GLint, GLint, GLint> FunctionObjects::ProgramUniform4i("glProgramUniform4i");
-Function<void, GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT> FunctionObjects::ProgramUniform4i64NV("glProgramUniform4i64NV");
-Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> FunctionObjects::ProgramUniform4i64vNV("glProgramUniform4i64vNV");
-Function<void, GLuint, GLint, GLint, GLint, GLint, GLint> FunctionObjects::ProgramUniform4iEXT("glProgramUniform4iEXT");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform4iv("glProgramUniform4iv");
-Function<void, GLuint, GLint, GLsizei, const GLint *> FunctionObjects::ProgramUniform4ivEXT("glProgramUniform4ivEXT");
-Function<void, GLuint, GLint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ProgramUniform4ui("glProgramUniform4ui");
-Function<void, GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT> FunctionObjects::ProgramUniform4ui64NV("glProgramUniform4ui64NV");
-Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::ProgramUniform4ui64vNV("glProgramUniform4ui64vNV");
-Function<void, GLuint, GLint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ProgramUniform4uiEXT("glProgramUniform4uiEXT");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform4uiv("glProgramUniform4uiv");
-Function<void, GLuint, GLint, GLsizei, const GLuint *> FunctionObjects::ProgramUniform4uivEXT("glProgramUniform4uivEXT");
-Function<void, GLuint, GLint, GLuint64> FunctionObjects::ProgramUniformHandleui64ARB("glProgramUniformHandleui64ARB");
-Function<void, GLuint, GLint, GLuint64> FunctionObjects::ProgramUniformHandleui64NV("glProgramUniformHandleui64NV");
-Function<void, GLuint, GLint, GLsizei, const GLuint64 *> FunctionObjects::ProgramUniformHandleui64vARB("glProgramUniformHandleui64vARB");
-Function<void, GLuint, GLint, GLsizei, const GLuint64 *> FunctionObjects::ProgramUniformHandleui64vNV("glProgramUniformHandleui64vNV");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix2dv("glProgramUniformMatrix2dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix2dvEXT("glProgramUniformMatrix2dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix2fv("glProgramUniformMatrix2fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix2fvEXT("glProgramUniformMatrix2fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix2x3dv("glProgramUniformMatrix2x3dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix2x3dvEXT("glProgramUniformMatrix2x3dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix2x3fv("glProgramUniformMatrix2x3fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix2x3fvEXT("glProgramUniformMatrix2x3fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix2x4dv("glProgramUniformMatrix2x4dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix2x4dvEXT("glProgramUniformMatrix2x4dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix2x4fv("glProgramUniformMatrix2x4fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix2x4fvEXT("glProgramUniformMatrix2x4fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix3dv("glProgramUniformMatrix3dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix3dvEXT("glProgramUniformMatrix3dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix3fv("glProgramUniformMatrix3fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix3fvEXT("glProgramUniformMatrix3fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix3x2dv("glProgramUniformMatrix3x2dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix3x2dvEXT("glProgramUniformMatrix3x2dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix3x2fv("glProgramUniformMatrix3x2fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix3x2fvEXT("glProgramUniformMatrix3x2fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix3x4dv("glProgramUniformMatrix3x4dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix3x4dvEXT("glProgramUniformMatrix3x4dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix3x4fv("glProgramUniformMatrix3x4fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix3x4fvEXT("glProgramUniformMatrix3x4fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix4dv("glProgramUniformMatrix4dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix4dvEXT("glProgramUniformMatrix4dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix4fv("glProgramUniformMatrix4fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix4fvEXT("glProgramUniformMatrix4fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix4x2dv("glProgramUniformMatrix4x2dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix4x2dvEXT("glProgramUniformMatrix4x2dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix4x2fv("glProgramUniformMatrix4x2fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix4x2fvEXT("glProgramUniformMatrix4x2fvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix4x3dv("glProgramUniformMatrix4x3dv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::ProgramUniformMatrix4x3dvEXT("glProgramUniformMatrix4x3dvEXT");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix4x3fv("glProgramUniformMatrix4x3fv");
-Function<void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::ProgramUniformMatrix4x3fvEXT("glProgramUniformMatrix4x3fvEXT");
-Function<void, GLuint, GLint, GLuint64EXT> FunctionObjects::ProgramUniformui64NV("glProgramUniformui64NV");
-Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::ProgramUniformui64vNV("glProgramUniformui64vNV");
-Function<void, GLenum, GLint> FunctionObjects::ProgramVertexLimitNV("glProgramVertexLimitNV");
-Function<void, GLenum> FunctionObjects::ProvokingVertex("glProvokingVertex");
-Function<void, GLenum> FunctionObjects::ProvokingVertexEXT("glProvokingVertexEXT");
-Function<void, GLbitfield> FunctionObjects::PushAttrib("glPushAttrib");
-Function<void, GLbitfield> FunctionObjects::PushClientAttrib("glPushClientAttrib");
-Function<void, GLbitfield> FunctionObjects::PushClientAttribDefaultEXT("glPushClientAttribDefaultEXT");
-Function<void, GLenum, GLuint, GLsizei, const GLchar *> FunctionObjects::PushDebugGroup("glPushDebugGroup");
-Function<void, GLsizei, const GLchar *> FunctionObjects::PushGroupMarkerEXT("glPushGroupMarkerEXT");
-Function<void> FunctionObjects::PushMatrix("glPushMatrix");
-Function<void, GLuint> FunctionObjects::PushName("glPushName");
-Function<void, GLuint, GLenum> FunctionObjects::QueryCounter("glQueryCounter");
-Function<GLbitfield, GLfixed *, GLint *> FunctionObjects::QueryMatrixxOES("glQueryMatrixxOES");
-Function<void, GLenum, GLuint, GLenum, GLuint> FunctionObjects::QueryObjectParameteruiAMD("glQueryObjectParameteruiAMD");
-Function<void, GLdouble, GLdouble> FunctionObjects::RasterPos2d("glRasterPos2d");
-Function<void, const GLdouble *> FunctionObjects::RasterPos2dv("glRasterPos2dv");
-Function<void, GLfloat, GLfloat> FunctionObjects::RasterPos2f("glRasterPos2f");
-Function<void, const GLfloat *> FunctionObjects::RasterPos2fv("glRasterPos2fv");
-Function<void, GLint, GLint> FunctionObjects::RasterPos2i("glRasterPos2i");
-Function<void, const GLint *> FunctionObjects::RasterPos2iv("glRasterPos2iv");
-Function<void, GLshort, GLshort> FunctionObjects::RasterPos2s("glRasterPos2s");
-Function<void, const GLshort *> FunctionObjects::RasterPos2sv("glRasterPos2sv");
-Function<void, GLfixed, GLfixed> FunctionObjects::RasterPos2xOES("glRasterPos2xOES");
-Function<void, const GLfixed *> FunctionObjects::RasterPos2xvOES("glRasterPos2xvOES");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::RasterPos3d("glRasterPos3d");
-Function<void, const GLdouble *> FunctionObjects::RasterPos3dv("glRasterPos3dv");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::RasterPos3f("glRasterPos3f");
-Function<void, const GLfloat *> FunctionObjects::RasterPos3fv("glRasterPos3fv");
-Function<void, GLint, GLint, GLint> FunctionObjects::RasterPos3i("glRasterPos3i");
-Function<void, const GLint *> FunctionObjects::RasterPos3iv("glRasterPos3iv");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::RasterPos3s("glRasterPos3s");
-Function<void, const GLshort *> FunctionObjects::RasterPos3sv("glRasterPos3sv");
-Function<void, GLfixed, GLfixed, GLfixed> FunctionObjects::RasterPos3xOES("glRasterPos3xOES");
-Function<void, const GLfixed *> FunctionObjects::RasterPos3xvOES("glRasterPos3xvOES");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::RasterPos4d("glRasterPos4d");
-Function<void, const GLdouble *> FunctionObjects::RasterPos4dv("glRasterPos4dv");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::RasterPos4f("glRasterPos4f");
-Function<void, const GLfloat *> FunctionObjects::RasterPos4fv("glRasterPos4fv");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::RasterPos4i("glRasterPos4i");
-Function<void, const GLint *> FunctionObjects::RasterPos4iv("glRasterPos4iv");
-Function<void, GLshort, GLshort, GLshort, GLshort> FunctionObjects::RasterPos4s("glRasterPos4s");
-Function<void, const GLshort *> FunctionObjects::RasterPos4sv("glRasterPos4sv");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::RasterPos4xOES("glRasterPos4xOES");
-Function<void, const GLfixed *> FunctionObjects::RasterPos4xvOES("glRasterPos4xvOES");
-Function<void, GLenum> FunctionObjects::ReadBuffer("glReadBuffer");
-Function<void, GLint> FunctionObjects::ReadInstrumentsSGIX("glReadInstrumentsSGIX");
-Function<void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, void *> FunctionObjects::ReadPixels("glReadPixels");
-Function<void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, void *> FunctionObjects::ReadnPixelsARB("glReadnPixelsARB");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::Rectd("glRectd");
-Function<void, const GLdouble *, const GLdouble *> FunctionObjects::Rectdv("glRectdv");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Rectf("glRectf");
-Function<void, const GLfloat *, const GLfloat *> FunctionObjects::Rectfv("glRectfv");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::Recti("glRecti");
-Function<void, const GLint *, const GLint *> FunctionObjects::Rectiv("glRectiv");
-Function<void, GLshort, GLshort, GLshort, GLshort> FunctionObjects::Rects("glRects");
-Function<void, const GLshort *, const GLshort *> FunctionObjects::Rectsv("glRectsv");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::RectxOES("glRectxOES");
-Function<void, const GLfixed *, const GLfixed *> FunctionObjects::RectxvOES("glRectxvOES");
-Function<void, const GLdouble *> FunctionObjects::ReferencePlaneSGIX("glReferencePlaneSGIX");
-Function<void> FunctionObjects::ReleaseShaderCompiler("glReleaseShaderCompiler");
-Function<GLint, GLenum> FunctionObjects::RenderMode("glRenderMode");
-Function<void, GLenum, GLenum, GLsizei, GLsizei> FunctionObjects::RenderbufferStorage("glRenderbufferStorage");
-Function<void, GLenum, GLenum, GLsizei, GLsizei> FunctionObjects::RenderbufferStorageEXT("glRenderbufferStorageEXT");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei> FunctionObjects::RenderbufferStorageMultisample("glRenderbufferStorageMultisample");
-Function<void, GLenum, GLsizei, GLsizei, GLenum, GLsizei, GLsizei> FunctionObjects::RenderbufferStorageMultisampleCoverageNV("glRenderbufferStorageMultisampleCoverageNV");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei> FunctionObjects::RenderbufferStorageMultisampleEXT("glRenderbufferStorageMultisampleEXT");
-Function<void, GLenum, GLsizei, const void **> FunctionObjects::ReplacementCodePointerSUN("glReplacementCodePointerSUN");
-Function<void, GLubyte> FunctionObjects::ReplacementCodeubSUN("glReplacementCodeubSUN");
-Function<void, const GLubyte *> FunctionObjects::ReplacementCodeubvSUN("glReplacementCodeubvSUN");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiColor3fVertex3fSUN("glReplacementCodeuiColor3fVertex3fSUN");
-Function<void, const GLuint *, const GLfloat *, const GLfloat *> FunctionObjects::ReplacementCodeuiColor3fVertex3fvSUN("glReplacementCodeuiColor3fVertex3fvSUN");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiColor4fNormal3fVertex3fSUN("glReplacementCodeuiColor4fNormal3fVertex3fSUN");
-Function<void, const GLuint *, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::ReplacementCodeuiColor4fNormal3fVertex3fvSUN("glReplacementCodeuiColor4fNormal3fVertex3fvSUN");
-Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiColor4ubVertex3fSUN("glReplacementCodeuiColor4ubVertex3fSUN");
-Function<void, const GLuint *, const GLubyte *, const GLfloat *> FunctionObjects::ReplacementCodeuiColor4ubVertex3fvSUN("glReplacementCodeuiColor4ubVertex3fvSUN");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiNormal3fVertex3fSUN("glReplacementCodeuiNormal3fVertex3fSUN");
-Function<void, const GLuint *, const GLfloat *, const GLfloat *> FunctionObjects::ReplacementCodeuiNormal3fVertex3fvSUN("glReplacementCodeuiNormal3fVertex3fvSUN");
-Function<void, GLuint> FunctionObjects::ReplacementCodeuiSUN("glReplacementCodeuiSUN");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN");
-Function<void, const GLuint *, const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiTexCoord2fNormal3fVertex3fSUN("glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN");
-Function<void, const GLuint *, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::ReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN("glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiTexCoord2fVertex3fSUN("glReplacementCodeuiTexCoord2fVertex3fSUN");
-Function<void, const GLuint *, const GLfloat *, const GLfloat *> FunctionObjects::ReplacementCodeuiTexCoord2fVertex3fvSUN("glReplacementCodeuiTexCoord2fVertex3fvSUN");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat> FunctionObjects::ReplacementCodeuiVertex3fSUN("glReplacementCodeuiVertex3fSUN");
-Function<void, const GLuint *, const GLfloat *> FunctionObjects::ReplacementCodeuiVertex3fvSUN("glReplacementCodeuiVertex3fvSUN");
-Function<void, const GLuint *> FunctionObjects::ReplacementCodeuivSUN("glReplacementCodeuivSUN");
-Function<void, GLushort> FunctionObjects::ReplacementCodeusSUN("glReplacementCodeusSUN");
-Function<void, const GLushort *> FunctionObjects::ReplacementCodeusvSUN("glReplacementCodeusvSUN");
-Function<void, GLsizei, const GLuint *> FunctionObjects::RequestResidentProgramsNV("glRequestResidentProgramsNV");
-Function<void, GLenum> FunctionObjects::ResetHistogram("glResetHistogram");
-Function<void, GLenum> FunctionObjects::ResetHistogramEXT("glResetHistogramEXT");
-Function<void, GLenum> FunctionObjects::ResetMinmax("glResetMinmax");
-Function<void, GLenum> FunctionObjects::ResetMinmaxEXT("glResetMinmaxEXT");
-Function<void> FunctionObjects::ResizeBuffersMESA("glResizeBuffersMESA");
-Function<void> FunctionObjects::ResumeTransformFeedback("glResumeTransformFeedback");
-Function<void> FunctionObjects::ResumeTransformFeedbackNV("glResumeTransformFeedbackNV");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::Rotated("glRotated");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Rotatef("glRotatef");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::RotatexOES("glRotatexOES");
-Function<void, GLfloat, GLboolean> FunctionObjects::SampleCoverage("glSampleCoverage");
-Function<void, GLfloat, GLboolean> FunctionObjects::SampleCoverageARB("glSampleCoverageARB");
-Function<void, GLfixed, GLboolean> FunctionObjects::SampleCoverageOES("glSampleCoverageOES");
-Function<void, GLuint, GLuint, GLenum> FunctionObjects::SampleMapATI("glSampleMapATI");
-Function<void, GLclampf, GLboolean> FunctionObjects::SampleMaskEXT("glSampleMaskEXT");
-Function<void, GLuint, GLbitfield> FunctionObjects::SampleMaskIndexedNV("glSampleMaskIndexedNV");
-Function<void, GLclampf, GLboolean> FunctionObjects::SampleMaskSGIS("glSampleMaskSGIS");
-Function<void, GLuint, GLbitfield> FunctionObjects::SampleMaski("glSampleMaski");
-Function<void, GLenum> FunctionObjects::SamplePatternEXT("glSamplePatternEXT");
-Function<void, GLenum> FunctionObjects::SamplePatternSGIS("glSamplePatternSGIS");
-Function<void, GLuint, GLenum, const GLint *> FunctionObjects::SamplerParameterIiv("glSamplerParameterIiv");
-Function<void, GLuint, GLenum, const GLuint *> FunctionObjects::SamplerParameterIuiv("glSamplerParameterIuiv");
-Function<void, GLuint, GLenum, GLfloat> FunctionObjects::SamplerParameterf("glSamplerParameterf");
-Function<void, GLuint, GLenum, const GLfloat *> FunctionObjects::SamplerParameterfv("glSamplerParameterfv");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::SamplerParameteri("glSamplerParameteri");
-Function<void, GLuint, GLenum, const GLint *> FunctionObjects::SamplerParameteriv("glSamplerParameteriv");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::Scaled("glScaled");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::Scalef("glScalef");
-Function<void, GLfixed, GLfixed, GLfixed> FunctionObjects::ScalexOES("glScalexOES");
-Function<void, GLint, GLint, GLsizei, GLsizei> FunctionObjects::Scissor("glScissor");
-Function<void, GLuint, GLsizei, const GLint *> FunctionObjects::ScissorArrayv("glScissorArrayv");
-Function<void, GLuint, GLint, GLint, GLsizei, GLsizei> FunctionObjects::ScissorIndexed("glScissorIndexed");
-Function<void, GLuint, const GLint *> FunctionObjects::ScissorIndexedv("glScissorIndexedv");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::SecondaryColor3b("glSecondaryColor3b");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::SecondaryColor3bEXT("glSecondaryColor3bEXT");
-Function<void, const GLbyte *> FunctionObjects::SecondaryColor3bv("glSecondaryColor3bv");
-Function<void, const GLbyte *> FunctionObjects::SecondaryColor3bvEXT("glSecondaryColor3bvEXT");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::SecondaryColor3d("glSecondaryColor3d");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::SecondaryColor3dEXT("glSecondaryColor3dEXT");
-Function<void, const GLdouble *> FunctionObjects::SecondaryColor3dv("glSecondaryColor3dv");
-Function<void, const GLdouble *> FunctionObjects::SecondaryColor3dvEXT("glSecondaryColor3dvEXT");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::SecondaryColor3f("glSecondaryColor3f");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::SecondaryColor3fEXT("glSecondaryColor3fEXT");
-Function<void, const GLfloat *> FunctionObjects::SecondaryColor3fv("glSecondaryColor3fv");
-Function<void, const GLfloat *> FunctionObjects::SecondaryColor3fvEXT("glSecondaryColor3fvEXT");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::SecondaryColor3hNV("glSecondaryColor3hNV");
-Function<void, const GLhalfNV *> FunctionObjects::SecondaryColor3hvNV("glSecondaryColor3hvNV");
-Function<void, GLint, GLint, GLint> FunctionObjects::SecondaryColor3i("glSecondaryColor3i");
-Function<void, GLint, GLint, GLint> FunctionObjects::SecondaryColor3iEXT("glSecondaryColor3iEXT");
-Function<void, const GLint *> FunctionObjects::SecondaryColor3iv("glSecondaryColor3iv");
-Function<void, const GLint *> FunctionObjects::SecondaryColor3ivEXT("glSecondaryColor3ivEXT");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::SecondaryColor3s("glSecondaryColor3s");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::SecondaryColor3sEXT("glSecondaryColor3sEXT");
-Function<void, const GLshort *> FunctionObjects::SecondaryColor3sv("glSecondaryColor3sv");
-Function<void, const GLshort *> FunctionObjects::SecondaryColor3svEXT("glSecondaryColor3svEXT");
-Function<void, GLubyte, GLubyte, GLubyte> FunctionObjects::SecondaryColor3ub("glSecondaryColor3ub");
-Function<void, GLubyte, GLubyte, GLubyte> FunctionObjects::SecondaryColor3ubEXT("glSecondaryColor3ubEXT");
-Function<void, const GLubyte *> FunctionObjects::SecondaryColor3ubv("glSecondaryColor3ubv");
-Function<void, const GLubyte *> FunctionObjects::SecondaryColor3ubvEXT("glSecondaryColor3ubvEXT");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::SecondaryColor3ui("glSecondaryColor3ui");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::SecondaryColor3uiEXT("glSecondaryColor3uiEXT");
-Function<void, const GLuint *> FunctionObjects::SecondaryColor3uiv("glSecondaryColor3uiv");
-Function<void, const GLuint *> FunctionObjects::SecondaryColor3uivEXT("glSecondaryColor3uivEXT");
-Function<void, GLushort, GLushort, GLushort> FunctionObjects::SecondaryColor3us("glSecondaryColor3us");
-Function<void, GLushort, GLushort, GLushort> FunctionObjects::SecondaryColor3usEXT("glSecondaryColor3usEXT");
-Function<void, const GLushort *> FunctionObjects::SecondaryColor3usv("glSecondaryColor3usv");
-Function<void, const GLushort *> FunctionObjects::SecondaryColor3usvEXT("glSecondaryColor3usvEXT");
-Function<void, GLint, GLenum, GLsizei> FunctionObjects::SecondaryColorFormatNV("glSecondaryColorFormatNV");
-Function<void, GLenum, GLuint> FunctionObjects::SecondaryColorP3ui("glSecondaryColorP3ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::SecondaryColorP3uiv("glSecondaryColorP3uiv");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::SecondaryColorPointer("glSecondaryColorPointer");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::SecondaryColorPointerEXT("glSecondaryColorPointerEXT");
-Function<void, GLint, GLenum, GLint, const void **, GLint> FunctionObjects::SecondaryColorPointerListIBM("glSecondaryColorPointerListIBM");
-Function<void, GLsizei, GLuint *> FunctionObjects::SelectBuffer("glSelectBuffer");
-Function<void, GLuint, GLboolean, GLuint, GLint, GLuint *> FunctionObjects::SelectPerfMonitorCountersAMD("glSelectPerfMonitorCountersAMD");
-Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *, const void *> FunctionObjects::SeparableFilter2D("glSeparableFilter2D");
-Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *, const void *> FunctionObjects::SeparableFilter2DEXT("glSeparableFilter2DEXT");
-Function<void, GLuint> FunctionObjects::SetFenceAPPLE("glSetFenceAPPLE");
-Function<void, GLuint, GLenum> FunctionObjects::SetFenceNV("glSetFenceNV");
-Function<void, GLuint, const GLfloat *> FunctionObjects::SetFragmentShaderConstantATI("glSetFragmentShaderConstantATI");
-Function<void, GLuint, GLenum, const void *> FunctionObjects::SetInvariantEXT("glSetInvariantEXT");
-Function<void, GLuint, GLenum, const void *> FunctionObjects::SetLocalConstantEXT("glSetLocalConstantEXT");
-Function<void, GLenum, GLuint, const GLfloat *> FunctionObjects::SetMultisamplefvAMD("glSetMultisamplefvAMD");
-Function<void, GLenum> FunctionObjects::ShadeModel("glShadeModel");
-Function<void, GLsizei, const GLuint *, GLenum, const void *, GLsizei> FunctionObjects::ShaderBinary("glShaderBinary");
-Function<void, GLenum, GLuint, GLuint> FunctionObjects::ShaderOp1EXT("glShaderOp1EXT");
-Function<void, GLenum, GLuint, GLuint, GLuint> FunctionObjects::ShaderOp2EXT("glShaderOp2EXT");
-Function<void, GLenum, GLuint, GLuint, GLuint, GLuint> FunctionObjects::ShaderOp3EXT("glShaderOp3EXT");
-Function<void, GLuint, GLsizei, const GLchar *const*, const GLint *> FunctionObjects::ShaderSource("glShaderSource");
-Function<void, GLhandleARB, GLsizei, const GLcharARB **, const GLint *> FunctionObjects::ShaderSourceARB("glShaderSourceARB");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::ShaderStorageBlockBinding("glShaderStorageBlockBinding");
-Function<void, GLenum, GLsizei, const GLfloat *> FunctionObjects::SharpenTexFuncSGIS("glSharpenTexFuncSGIS");
-Function<void, GLenum, GLfloat> FunctionObjects::SpriteParameterfSGIX("glSpriteParameterfSGIX");
-Function<void, GLenum, const GLfloat *> FunctionObjects::SpriteParameterfvSGIX("glSpriteParameterfvSGIX");
-Function<void, GLenum, GLint> FunctionObjects::SpriteParameteriSGIX("glSpriteParameteriSGIX");
-Function<void, GLenum, const GLint *> FunctionObjects::SpriteParameterivSGIX("glSpriteParameterivSGIX");
-Function<void> FunctionObjects::StartInstrumentsSGIX("glStartInstrumentsSGIX");
-Function<void, GLsizei, GLuint> FunctionObjects::StencilClearTagEXT("glStencilClearTagEXT");
-Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLuint, GLenum, const GLfloat *> FunctionObjects::StencilFillPathInstancedNV("glStencilFillPathInstancedNV");
-Function<void, GLuint, GLenum, GLuint> FunctionObjects::StencilFillPathNV("glStencilFillPathNV");
-Function<void, GLenum, GLint, GLuint> FunctionObjects::StencilFunc("glStencilFunc");
-Function<void, GLenum, GLenum, GLint, GLuint> FunctionObjects::StencilFuncSeparate("glStencilFuncSeparate");
-Function<void, GLenum, GLenum, GLint, GLuint> FunctionObjects::StencilFuncSeparateATI("glStencilFuncSeparateATI");
-Function<void, GLuint> FunctionObjects::StencilMask("glStencilMask");
-Function<void, GLenum, GLuint> FunctionObjects::StencilMaskSeparate("glStencilMaskSeparate");
-Function<void, GLenum, GLenum, GLenum> FunctionObjects::StencilOp("glStencilOp");
-Function<void, GLenum, GLenum, GLenum, GLenum> FunctionObjects::StencilOpSeparate("glStencilOpSeparate");
-Function<void, GLenum, GLenum, GLenum, GLenum> FunctionObjects::StencilOpSeparateATI("glStencilOpSeparateATI");
-Function<void, GLenum, GLuint> FunctionObjects::StencilOpValueAMD("glStencilOpValueAMD");
-Function<void, GLsizei, GLenum, const void *, GLuint, GLint, GLuint, GLenum, const GLfloat *> FunctionObjects::StencilStrokePathInstancedNV("glStencilStrokePathInstancedNV");
-Function<void, GLuint, GLint, GLuint> FunctionObjects::StencilStrokePathNV("glStencilStrokePathNV");
-Function<void, GLint> FunctionObjects::StopInstrumentsSGIX("glStopInstrumentsSGIX");
-Function<void, GLsizei, const void *> FunctionObjects::StringMarkerGREMEDY("glStringMarkerGREMEDY");
-Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> FunctionObjects::SwizzleEXT("glSwizzleEXT");
-Function<void, GLuint> FunctionObjects::SyncTextureINTEL("glSyncTextureINTEL");
-Function<void> FunctionObjects::TagSampleBufferSGIX("glTagSampleBufferSGIX");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::Tangent3bEXT("glTangent3bEXT");
-Function<void, const GLbyte *> FunctionObjects::Tangent3bvEXT("glTangent3bvEXT");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::Tangent3dEXT("glTangent3dEXT");
-Function<void, const GLdouble *> FunctionObjects::Tangent3dvEXT("glTangent3dvEXT");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::Tangent3fEXT("glTangent3fEXT");
-Function<void, const GLfloat *> FunctionObjects::Tangent3fvEXT("glTangent3fvEXT");
-Function<void, GLint, GLint, GLint> FunctionObjects::Tangent3iEXT("glTangent3iEXT");
-Function<void, const GLint *> FunctionObjects::Tangent3ivEXT("glTangent3ivEXT");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::Tangent3sEXT("glTangent3sEXT");
-Function<void, const GLshort *> FunctionObjects::Tangent3svEXT("glTangent3svEXT");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::TangentPointerEXT("glTangentPointerEXT");
-Function<void, GLuint> FunctionObjects::TbufferMask3DFX("glTbufferMask3DFX");
-Function<void, GLfloat> FunctionObjects::TessellationFactorAMD("glTessellationFactorAMD");
-Function<void, GLenum> FunctionObjects::TessellationModeAMD("glTessellationModeAMD");
-Function<GLboolean, GLuint> FunctionObjects::TestFenceAPPLE("glTestFenceAPPLE");
-Function<GLboolean, GLuint> FunctionObjects::TestFenceNV("glTestFenceNV");
-Function<GLboolean, GLenum, GLuint> FunctionObjects::TestObjectAPPLE("glTestObjectAPPLE");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::TexBuffer("glTexBuffer");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::TexBufferARB("glTexBufferARB");
-Function<void, GLenum, GLenum, GLuint> FunctionObjects::TexBufferEXT("glTexBufferEXT");
-Function<void, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr> FunctionObjects::TexBufferRange("glTexBufferRange");
-Function<void, GLenum, const GLfloat *> FunctionObjects::TexBumpParameterfvATI("glTexBumpParameterfvATI");
-Function<void, GLenum, const GLint *> FunctionObjects::TexBumpParameterivATI("glTexBumpParameterivATI");
-Function<void, GLbyte> FunctionObjects::TexCoord1bOES("glTexCoord1bOES");
-Function<void, const GLbyte *> FunctionObjects::TexCoord1bvOES("glTexCoord1bvOES");
-Function<void, GLdouble> FunctionObjects::TexCoord1d("glTexCoord1d");
-Function<void, const GLdouble *> FunctionObjects::TexCoord1dv("glTexCoord1dv");
-Function<void, GLfloat> FunctionObjects::TexCoord1f("glTexCoord1f");
-Function<void, const GLfloat *> FunctionObjects::TexCoord1fv("glTexCoord1fv");
-Function<void, GLhalfNV> FunctionObjects::TexCoord1hNV("glTexCoord1hNV");
-Function<void, const GLhalfNV *> FunctionObjects::TexCoord1hvNV("glTexCoord1hvNV");
-Function<void, GLint> FunctionObjects::TexCoord1i("glTexCoord1i");
-Function<void, const GLint *> FunctionObjects::TexCoord1iv("glTexCoord1iv");
-Function<void, GLshort> FunctionObjects::TexCoord1s("glTexCoord1s");
-Function<void, const GLshort *> FunctionObjects::TexCoord1sv("glTexCoord1sv");
-Function<void, GLfixed> FunctionObjects::TexCoord1xOES("glTexCoord1xOES");
-Function<void, const GLfixed *> FunctionObjects::TexCoord1xvOES("glTexCoord1xvOES");
-Function<void, GLbyte, GLbyte> FunctionObjects::TexCoord2bOES("glTexCoord2bOES");
-Function<void, const GLbyte *> FunctionObjects::TexCoord2bvOES("glTexCoord2bvOES");
-Function<void, GLdouble, GLdouble> FunctionObjects::TexCoord2d("glTexCoord2d");
-Function<void, const GLdouble *> FunctionObjects::TexCoord2dv("glTexCoord2dv");
-Function<void, GLfloat, GLfloat> FunctionObjects::TexCoord2f("glTexCoord2f");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord2fColor3fVertex3fSUN("glTexCoord2fColor3fVertex3fSUN");
-Function<void, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::TexCoord2fColor3fVertex3fvSUN("glTexCoord2fColor3fVertex3fvSUN");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord2fColor4fNormal3fVertex3fSUN("glTexCoord2fColor4fNormal3fVertex3fSUN");
-Function<void, const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::TexCoord2fColor4fNormal3fVertex3fvSUN("glTexCoord2fColor4fNormal3fVertex3fvSUN");
-Function<void, GLfloat, GLfloat, GLubyte, GLubyte, GLubyte, GLubyte, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord2fColor4ubVertex3fSUN("glTexCoord2fColor4ubVertex3fSUN");
-Function<void, const GLfloat *, const GLubyte *, const GLfloat *> FunctionObjects::TexCoord2fColor4ubVertex3fvSUN("glTexCoord2fColor4ubVertex3fvSUN");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord2fNormal3fVertex3fSUN("glTexCoord2fNormal3fVertex3fSUN");
-Function<void, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::TexCoord2fNormal3fVertex3fvSUN("glTexCoord2fNormal3fVertex3fvSUN");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord2fVertex3fSUN("glTexCoord2fVertex3fSUN");
-Function<void, const GLfloat *, const GLfloat *> FunctionObjects::TexCoord2fVertex3fvSUN("glTexCoord2fVertex3fvSUN");
-Function<void, const GLfloat *> FunctionObjects::TexCoord2fv("glTexCoord2fv");
-Function<void, GLhalfNV, GLhalfNV> FunctionObjects::TexCoord2hNV("glTexCoord2hNV");
-Function<void, const GLhalfNV *> FunctionObjects::TexCoord2hvNV("glTexCoord2hvNV");
-Function<void, GLint, GLint> FunctionObjects::TexCoord2i("glTexCoord2i");
-Function<void, const GLint *> FunctionObjects::TexCoord2iv("glTexCoord2iv");
-Function<void, GLshort, GLshort> FunctionObjects::TexCoord2s("glTexCoord2s");
-Function<void, const GLshort *> FunctionObjects::TexCoord2sv("glTexCoord2sv");
-Function<void, GLfixed, GLfixed> FunctionObjects::TexCoord2xOES("glTexCoord2xOES");
-Function<void, const GLfixed *> FunctionObjects::TexCoord2xvOES("glTexCoord2xvOES");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::TexCoord3bOES("glTexCoord3bOES");
-Function<void, const GLbyte *> FunctionObjects::TexCoord3bvOES("glTexCoord3bvOES");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::TexCoord3d("glTexCoord3d");
-Function<void, const GLdouble *> FunctionObjects::TexCoord3dv("glTexCoord3dv");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord3f("glTexCoord3f");
-Function<void, const GLfloat *> FunctionObjects::TexCoord3fv("glTexCoord3fv");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::TexCoord3hNV("glTexCoord3hNV");
-Function<void, const GLhalfNV *> FunctionObjects::TexCoord3hvNV("glTexCoord3hvNV");
-Function<void, GLint, GLint, GLint> FunctionObjects::TexCoord3i("glTexCoord3i");
-Function<void, const GLint *> FunctionObjects::TexCoord3iv("glTexCoord3iv");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::TexCoord3s("glTexCoord3s");
-Function<void, const GLshort *> FunctionObjects::TexCoord3sv("glTexCoord3sv");
-Function<void, GLfixed, GLfixed, GLfixed> FunctionObjects::TexCoord3xOES("glTexCoord3xOES");
-Function<void, const GLfixed *> FunctionObjects::TexCoord3xvOES("glTexCoord3xvOES");
-Function<void, GLbyte, GLbyte, GLbyte, GLbyte> FunctionObjects::TexCoord4bOES("glTexCoord4bOES");
-Function<void, const GLbyte *> FunctionObjects::TexCoord4bvOES("glTexCoord4bvOES");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::TexCoord4d("glTexCoord4d");
-Function<void, const GLdouble *> FunctionObjects::TexCoord4dv("glTexCoord4dv");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord4f("glTexCoord4f");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord4fColor4fNormal3fVertex4fSUN("glTexCoord4fColor4fNormal3fVertex4fSUN");
-Function<void, const GLfloat *, const GLfloat *, const GLfloat *, const GLfloat *> FunctionObjects::TexCoord4fColor4fNormal3fVertex4fvSUN("glTexCoord4fColor4fNormal3fVertex4fvSUN");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::TexCoord4fVertex4fSUN("glTexCoord4fVertex4fSUN");
-Function<void, const GLfloat *, const GLfloat *> FunctionObjects::TexCoord4fVertex4fvSUN("glTexCoord4fVertex4fvSUN");
-Function<void, const GLfloat *> FunctionObjects::TexCoord4fv("glTexCoord4fv");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::TexCoord4hNV("glTexCoord4hNV");
-Function<void, const GLhalfNV *> FunctionObjects::TexCoord4hvNV("glTexCoord4hvNV");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::TexCoord4i("glTexCoord4i");
-Function<void, const GLint *> FunctionObjects::TexCoord4iv("glTexCoord4iv");
-Function<void, GLshort, GLshort, GLshort, GLshort> FunctionObjects::TexCoord4s("glTexCoord4s");
-Function<void, const GLshort *> FunctionObjects::TexCoord4sv("glTexCoord4sv");
-Function<void, GLfixed, GLfixed, GLfixed, GLfixed> FunctionObjects::TexCoord4xOES("glTexCoord4xOES");
-Function<void, const GLfixed *> FunctionObjects::TexCoord4xvOES("glTexCoord4xvOES");
-Function<void, GLint, GLenum, GLsizei> FunctionObjects::TexCoordFormatNV("glTexCoordFormatNV");
-Function<void, GLenum, GLuint> FunctionObjects::TexCoordP1ui("glTexCoordP1ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::TexCoordP1uiv("glTexCoordP1uiv");
-Function<void, GLenum, GLuint> FunctionObjects::TexCoordP2ui("glTexCoordP2ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::TexCoordP2uiv("glTexCoordP2uiv");
-Function<void, GLenum, GLuint> FunctionObjects::TexCoordP3ui("glTexCoordP3ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::TexCoordP3uiv("glTexCoordP3uiv");
-Function<void, GLenum, GLuint> FunctionObjects::TexCoordP4ui("glTexCoordP4ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::TexCoordP4uiv("glTexCoordP4uiv");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::TexCoordPointer("glTexCoordPointer");
-Function<void, GLint, GLenum, GLsizei, GLsizei, const void *> FunctionObjects::TexCoordPointerEXT("glTexCoordPointerEXT");
-Function<void, GLint, GLenum, GLint, const void **, GLint> FunctionObjects::TexCoordPointerListIBM("glTexCoordPointerListIBM");
-Function<void, GLint, GLenum, const void **> FunctionObjects::TexCoordPointervINTEL("glTexCoordPointervINTEL");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::TexEnvf("glTexEnvf");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::TexEnvfv("glTexEnvfv");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::TexEnvi("glTexEnvi");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::TexEnviv("glTexEnviv");
-Function<void, GLenum, GLenum, GLfixed> FunctionObjects::TexEnvxOES("glTexEnvxOES");
-Function<void, GLenum, GLenum, const GLfixed *> FunctionObjects::TexEnvxvOES("glTexEnvxvOES");
-Function<void, GLenum, GLenum, GLsizei, const GLfloat *> FunctionObjects::TexFilterFuncSGIS("glTexFilterFuncSGIS");
-Function<void, GLenum, GLenum, GLdouble> FunctionObjects::TexGend("glTexGend");
-Function<void, GLenum, GLenum, const GLdouble *> FunctionObjects::TexGendv("glTexGendv");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::TexGenf("glTexGenf");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::TexGenfv("glTexGenfv");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::TexGeni("glTexGeni");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::TexGeniv("glTexGeniv");
-Function<void, GLenum, GLenum, GLfixed> FunctionObjects::TexGenxOES("glTexGenxOES");
-Function<void, GLenum, GLenum, const GLfixed *> FunctionObjects::TexGenxvOES("glTexGenxvOES");
-Function<void, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TexImage1D("glTexImage1D");
-Function<void, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TexImage2D("glTexImage2D");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> FunctionObjects::TexImage2DMultisample("glTexImage2DMultisample");
-Function<void, GLenum, GLsizei, GLsizei, GLint, GLsizei, GLsizei, GLboolean> FunctionObjects::TexImage2DMultisampleCoverageNV("glTexImage2DMultisampleCoverageNV");
-Function<void, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TexImage3D("glTexImage3D");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TexImage3DEXT("glTexImage3DEXT");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TexImage3DMultisample("glTexImage3DMultisample");
-Function<void, GLenum, GLsizei, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TexImage3DMultisampleCoverageNV("glTexImage3DMultisampleCoverageNV");
-Function<void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TexImage4DSGIS("glTexImage4DSGIS");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TexPageCommitmentARB("glTexPageCommitmentARB");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::TexParameterIiv("glTexParameterIiv");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::TexParameterIivEXT("glTexParameterIivEXT");
-Function<void, GLenum, GLenum, const GLuint *> FunctionObjects::TexParameterIuiv("glTexParameterIuiv");
-Function<void, GLenum, GLenum, const GLuint *> FunctionObjects::TexParameterIuivEXT("glTexParameterIuivEXT");
-Function<void, GLenum, GLenum, GLfloat> FunctionObjects::TexParameterf("glTexParameterf");
-Function<void, GLenum, GLenum, const GLfloat *> FunctionObjects::TexParameterfv("glTexParameterfv");
-Function<void, GLenum, GLenum, GLint> FunctionObjects::TexParameteri("glTexParameteri");
-Function<void, GLenum, GLenum, const GLint *> FunctionObjects::TexParameteriv("glTexParameteriv");
-Function<void, GLenum, GLenum, GLfixed> FunctionObjects::TexParameterxOES("glTexParameterxOES");
-Function<void, GLenum, GLenum, const GLfixed *> FunctionObjects::TexParameterxvOES("glTexParameterxvOES");
-Function<void, GLenum, GLuint> FunctionObjects::TexRenderbufferNV("glTexRenderbufferNV");
-Function<void, GLenum, GLsizei, GLenum, GLsizei> FunctionObjects::TexStorage1D("glTexStorage1D");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei> FunctionObjects::TexStorage2D("glTexStorage2D");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> FunctionObjects::TexStorage2DMultisample("glTexStorage2DMultisample");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> FunctionObjects::TexStorage3D("glTexStorage3D");
-Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TexStorage3DMultisample("glTexStorage3DMultisample");
-Function<void, GLenum, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, GLbitfield> FunctionObjects::TexStorageSparseAMD("glTexStorageSparseAMD");
-Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TexSubImage1D("glTexSubImage1D");
-Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TexSubImage1DEXT("glTexSubImage1DEXT");
-Function<void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TexSubImage2D("glTexSubImage2D");
-Function<void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TexSubImage2DEXT("glTexSubImage2DEXT");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TexSubImage3D("glTexSubImage3D");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TexSubImage3DEXT("glTexSubImage3DEXT");
-Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TexSubImage4DSGIS("glTexSubImage4DSGIS");
-Function<void> FunctionObjects::TextureBarrierNV("glTextureBarrierNV");
-Function<void, GLuint, GLenum, GLenum, GLuint> FunctionObjects::TextureBufferEXT("glTextureBufferEXT");
-Function<void, GLuint, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr> FunctionObjects::TextureBufferRangeEXT("glTextureBufferRangeEXT");
-Function<void, GLboolean, GLboolean, GLboolean, GLboolean> FunctionObjects::TextureColorMaskSGIS("glTextureColorMaskSGIS");
-Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TextureImage1DEXT("glTextureImage1DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TextureImage2DEXT("glTextureImage2DEXT");
-Function<void, GLuint, GLenum, GLsizei, GLsizei, GLint, GLsizei, GLsizei, GLboolean> FunctionObjects::TextureImage2DMultisampleCoverageNV("glTextureImage2DMultisampleCoverageNV");
-Function<void, GLuint, GLenum, GLsizei, GLint, GLsizei, GLsizei, GLboolean> FunctionObjects::TextureImage2DMultisampleNV("glTextureImage2DMultisampleNV");
-Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> FunctionObjects::TextureImage3DEXT("glTextureImage3DEXT");
-Function<void, GLuint, GLenum, GLsizei, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TextureImage3DMultisampleCoverageNV("glTextureImage3DMultisampleCoverageNV");
-Function<void, GLuint, GLenum, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TextureImage3DMultisampleNV("glTextureImage3DMultisampleNV");
-Function<void, GLenum> FunctionObjects::TextureLightEXT("glTextureLightEXT");
-Function<void, GLenum, GLenum> FunctionObjects::TextureMaterialEXT("glTextureMaterialEXT");
-Function<void, GLenum> FunctionObjects::TextureNormalEXT("glTextureNormalEXT");
-Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TexturePageCommitmentEXT("glTexturePageCommitmentEXT");
-Function<void, GLuint, GLenum, GLenum, const GLint *> FunctionObjects::TextureParameterIivEXT("glTextureParameterIivEXT");
-Function<void, GLuint, GLenum, GLenum, const GLuint *> FunctionObjects::TextureParameterIuivEXT("glTextureParameterIuivEXT");
-Function<void, GLuint, GLenum, GLenum, GLfloat> FunctionObjects::TextureParameterfEXT("glTextureParameterfEXT");
-Function<void, GLuint, GLenum, GLenum, const GLfloat *> FunctionObjects::TextureParameterfvEXT("glTextureParameterfvEXT");
-Function<void, GLuint, GLenum, GLenum, GLint> FunctionObjects::TextureParameteriEXT("glTextureParameteriEXT");
-Function<void, GLuint, GLenum, GLenum, const GLint *> FunctionObjects::TextureParameterivEXT("glTextureParameterivEXT");
-Function<void, GLenum, GLsizei, const void *> FunctionObjects::TextureRangeAPPLE("glTextureRangeAPPLE");
-Function<void, GLuint, GLenum, GLuint> FunctionObjects::TextureRenderbufferEXT("glTextureRenderbufferEXT");
-Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei> FunctionObjects::TextureStorage1DEXT("glTextureStorage1DEXT");
-Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei> FunctionObjects::TextureStorage2DEXT("glTextureStorage2DEXT");
-Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> FunctionObjects::TextureStorage2DMultisampleEXT("glTextureStorage2DMultisampleEXT");
-Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> FunctionObjects::TextureStorage3DEXT("glTextureStorage3DEXT");
-Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> FunctionObjects::TextureStorage3DMultisampleEXT("glTextureStorage3DMultisampleEXT");
-Function<void, GLuint, GLenum, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, GLbitfield> FunctionObjects::TextureStorageSparseAMD("glTextureStorageSparseAMD");
-Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TextureSubImage1DEXT("glTextureSubImage1DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TextureSubImage2DEXT("glTextureSubImage2DEXT");
-Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> FunctionObjects::TextureSubImage3DEXT("glTextureSubImage3DEXT");
-Function<void, GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint> FunctionObjects::TextureView("glTextureView");
-Function<void, GLenum, GLuint, GLenum, GLenum> FunctionObjects::TrackMatrixNV("glTrackMatrixNV");
-Function<void, GLsizei, const GLint *, GLenum> FunctionObjects::TransformFeedbackAttribsNV("glTransformFeedbackAttribsNV");
-Function<void, GLsizei, const GLint *, GLsizei, const GLint *, GLenum> FunctionObjects::TransformFeedbackStreamAttribsNV("glTransformFeedbackStreamAttribsNV");
-Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> FunctionObjects::TransformFeedbackVaryings("glTransformFeedbackVaryings");
-Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> FunctionObjects::TransformFeedbackVaryingsEXT("glTransformFeedbackVaryingsEXT");
-Function<void, GLuint, GLsizei, const GLint *, GLenum> FunctionObjects::TransformFeedbackVaryingsNV("glTransformFeedbackVaryingsNV");
-Function<void, GLuint, GLuint, GLenum, const GLfloat *> FunctionObjects::TransformPathNV("glTransformPathNV");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::Translated("glTranslated");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::Translatef("glTranslatef");
-Function<void, GLfixed, GLfixed, GLfixed> FunctionObjects::TranslatexOES("glTranslatexOES");
-Function<void, GLint, GLdouble> FunctionObjects::Uniform1d("glUniform1d");
-Function<void, GLint, GLsizei, const GLdouble *> FunctionObjects::Uniform1dv("glUniform1dv");
-Function<void, GLint, GLfloat> FunctionObjects::Uniform1f("glUniform1f");
-Function<void, GLint, GLfloat> FunctionObjects::Uniform1fARB("glUniform1fARB");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform1fv("glUniform1fv");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform1fvARB("glUniform1fvARB");
-Function<void, GLint, GLint> FunctionObjects::Uniform1i("glUniform1i");
-Function<void, GLint, GLint64EXT> FunctionObjects::Uniform1i64NV("glUniform1i64NV");
-Function<void, GLint, GLsizei, const GLint64EXT *> FunctionObjects::Uniform1i64vNV("glUniform1i64vNV");
-Function<void, GLint, GLint> FunctionObjects::Uniform1iARB("glUniform1iARB");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform1iv("glUniform1iv");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform1ivARB("glUniform1ivARB");
-Function<void, GLint, GLuint> FunctionObjects::Uniform1ui("glUniform1ui");
-Function<void, GLint, GLuint64EXT> FunctionObjects::Uniform1ui64NV("glUniform1ui64NV");
-Function<void, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::Uniform1ui64vNV("glUniform1ui64vNV");
-Function<void, GLint, GLuint> FunctionObjects::Uniform1uiEXT("glUniform1uiEXT");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform1uiv("glUniform1uiv");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform1uivEXT("glUniform1uivEXT");
-Function<void, GLint, GLdouble, GLdouble> FunctionObjects::Uniform2d("glUniform2d");
-Function<void, GLint, GLsizei, const GLdouble *> FunctionObjects::Uniform2dv("glUniform2dv");
-Function<void, GLint, GLfloat, GLfloat> FunctionObjects::Uniform2f("glUniform2f");
-Function<void, GLint, GLfloat, GLfloat> FunctionObjects::Uniform2fARB("glUniform2fARB");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform2fv("glUniform2fv");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform2fvARB("glUniform2fvARB");
-Function<void, GLint, GLint, GLint> FunctionObjects::Uniform2i("glUniform2i");
-Function<void, GLint, GLint64EXT, GLint64EXT> FunctionObjects::Uniform2i64NV("glUniform2i64NV");
-Function<void, GLint, GLsizei, const GLint64EXT *> FunctionObjects::Uniform2i64vNV("glUniform2i64vNV");
-Function<void, GLint, GLint, GLint> FunctionObjects::Uniform2iARB("glUniform2iARB");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform2iv("glUniform2iv");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform2ivARB("glUniform2ivARB");
-Function<void, GLint, GLuint, GLuint> FunctionObjects::Uniform2ui("glUniform2ui");
-Function<void, GLint, GLuint64EXT, GLuint64EXT> FunctionObjects::Uniform2ui64NV("glUniform2ui64NV");
-Function<void, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::Uniform2ui64vNV("glUniform2ui64vNV");
-Function<void, GLint, GLuint, GLuint> FunctionObjects::Uniform2uiEXT("glUniform2uiEXT");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform2uiv("glUniform2uiv");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform2uivEXT("glUniform2uivEXT");
-Function<void, GLint, GLdouble, GLdouble, GLdouble> FunctionObjects::Uniform3d("glUniform3d");
-Function<void, GLint, GLsizei, const GLdouble *> FunctionObjects::Uniform3dv("glUniform3dv");
-Function<void, GLint, GLfloat, GLfloat, GLfloat> FunctionObjects::Uniform3f("glUniform3f");
-Function<void, GLint, GLfloat, GLfloat, GLfloat> FunctionObjects::Uniform3fARB("glUniform3fARB");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform3fv("glUniform3fv");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform3fvARB("glUniform3fvARB");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::Uniform3i("glUniform3i");
-Function<void, GLint, GLint64EXT, GLint64EXT, GLint64EXT> FunctionObjects::Uniform3i64NV("glUniform3i64NV");
-Function<void, GLint, GLsizei, const GLint64EXT *> FunctionObjects::Uniform3i64vNV("glUniform3i64vNV");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::Uniform3iARB("glUniform3iARB");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform3iv("glUniform3iv");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform3ivARB("glUniform3ivARB");
-Function<void, GLint, GLuint, GLuint, GLuint> FunctionObjects::Uniform3ui("glUniform3ui");
-Function<void, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT> FunctionObjects::Uniform3ui64NV("glUniform3ui64NV");
-Function<void, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::Uniform3ui64vNV("glUniform3ui64vNV");
-Function<void, GLint, GLuint, GLuint, GLuint> FunctionObjects::Uniform3uiEXT("glUniform3uiEXT");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform3uiv("glUniform3uiv");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform3uivEXT("glUniform3uivEXT");
-Function<void, GLint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::Uniform4d("glUniform4d");
-Function<void, GLint, GLsizei, const GLdouble *> FunctionObjects::Uniform4dv("glUniform4dv");
-Function<void, GLint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Uniform4f("glUniform4f");
-Function<void, GLint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Uniform4fARB("glUniform4fARB");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform4fv("glUniform4fv");
-Function<void, GLint, GLsizei, const GLfloat *> FunctionObjects::Uniform4fvARB("glUniform4fvARB");
-Function<void, GLint, GLint, GLint, GLint, GLint> FunctionObjects::Uniform4i("glUniform4i");
-Function<void, GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT> FunctionObjects::Uniform4i64NV("glUniform4i64NV");
-Function<void, GLint, GLsizei, const GLint64EXT *> FunctionObjects::Uniform4i64vNV("glUniform4i64vNV");
-Function<void, GLint, GLint, GLint, GLint, GLint> FunctionObjects::Uniform4iARB("glUniform4iARB");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform4iv("glUniform4iv");
-Function<void, GLint, GLsizei, const GLint *> FunctionObjects::Uniform4ivARB("glUniform4ivARB");
-Function<void, GLint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::Uniform4ui("glUniform4ui");
-Function<void, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT> FunctionObjects::Uniform4ui64NV("glUniform4ui64NV");
-Function<void, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::Uniform4ui64vNV("glUniform4ui64vNV");
-Function<void, GLint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::Uniform4uiEXT("glUniform4uiEXT");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform4uiv("glUniform4uiv");
-Function<void, GLint, GLsizei, const GLuint *> FunctionObjects::Uniform4uivEXT("glUniform4uivEXT");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::UniformBlockBinding("glUniformBlockBinding");
-Function<void, GLuint, GLint, GLuint> FunctionObjects::UniformBufferEXT("glUniformBufferEXT");
-Function<void, GLint, GLuint64> FunctionObjects::UniformHandleui64ARB("glUniformHandleui64ARB");
-Function<void, GLint, GLuint64> FunctionObjects::UniformHandleui64NV("glUniformHandleui64NV");
-Function<void, GLint, GLsizei, const GLuint64 *> FunctionObjects::UniformHandleui64vARB("glUniformHandleui64vARB");
-Function<void, GLint, GLsizei, const GLuint64 *> FunctionObjects::UniformHandleui64vNV("glUniformHandleui64vNV");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix2dv("glUniformMatrix2dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix2fv("glUniformMatrix2fv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix2fvARB("glUniformMatrix2fvARB");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix2x3dv("glUniformMatrix2x3dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix2x3fv("glUniformMatrix2x3fv");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix2x4dv("glUniformMatrix2x4dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix2x4fv("glUniformMatrix2x4fv");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix3dv("glUniformMatrix3dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix3fv("glUniformMatrix3fv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix3fvARB("glUniformMatrix3fvARB");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix3x2dv("glUniformMatrix3x2dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix3x2fv("glUniformMatrix3x2fv");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix3x4dv("glUniformMatrix3x4dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix3x4fv("glUniformMatrix3x4fv");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix4dv("glUniformMatrix4dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix4fv("glUniformMatrix4fv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix4fvARB("glUniformMatrix4fvARB");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix4x2dv("glUniformMatrix4x2dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix4x2fv("glUniformMatrix4x2fv");
-Function<void, GLint, GLsizei, GLboolean, const GLdouble *> FunctionObjects::UniformMatrix4x3dv("glUniformMatrix4x3dv");
-Function<void, GLint, GLsizei, GLboolean, const GLfloat *> FunctionObjects::UniformMatrix4x3fv("glUniformMatrix4x3fv");
-Function<void, GLenum, GLsizei, const GLuint *> FunctionObjects::UniformSubroutinesuiv("glUniformSubroutinesuiv");
-Function<void, GLint, GLuint64EXT> FunctionObjects::Uniformui64NV("glUniformui64NV");
-Function<void, GLint, GLsizei, const GLuint64EXT *> FunctionObjects::Uniformui64vNV("glUniformui64vNV");
-Function<void> FunctionObjects::UnlockArraysEXT("glUnlockArraysEXT");
-Function<GLboolean, GLenum> FunctionObjects::UnmapBuffer("glUnmapBuffer");
-Function<GLboolean, GLenum> FunctionObjects::UnmapBufferARB("glUnmapBufferARB");
-Function<GLboolean, GLuint> FunctionObjects::UnmapNamedBufferEXT("glUnmapNamedBufferEXT");
-Function<void, GLuint> FunctionObjects::UnmapObjectBufferATI("glUnmapObjectBufferATI");
-Function<void, GLuint, GLint> FunctionObjects::UnmapTexture2DINTEL("glUnmapTexture2DINTEL");
-Function<void, GLuint, GLuint, GLsizei, const void *, GLenum> FunctionObjects::UpdateObjectBufferATI("glUpdateObjectBufferATI");
-Function<void, GLuint> FunctionObjects::UseProgram("glUseProgram");
-Function<void, GLhandleARB> FunctionObjects::UseProgramObjectARB("glUseProgramObjectARB");
-Function<void, GLuint, GLbitfield, GLuint> FunctionObjects::UseProgramStages("glUseProgramStages");
-Function<void, GLenum, GLuint> FunctionObjects::UseShaderProgramEXT("glUseShaderProgramEXT");
-Function<void> FunctionObjects::VDPAUFiniNV("glVDPAUFiniNV");
-Function<void, GLvdpauSurfaceNV, GLenum, GLsizei, GLsizei *, GLint *> FunctionObjects::VDPAUGetSurfaceivNV("glVDPAUGetSurfaceivNV");
-Function<void, const void *, const void *> FunctionObjects::VDPAUInitNV("glVDPAUInitNV");
-Function<GLboolean, GLvdpauSurfaceNV> FunctionObjects::VDPAUIsSurfaceNV("glVDPAUIsSurfaceNV");
-Function<void, GLsizei, const GLvdpauSurfaceNV *> FunctionObjects::VDPAUMapSurfacesNV("glVDPAUMapSurfacesNV");
-Function<GLvdpauSurfaceNV, const void *, GLenum, GLsizei, const GLuint *> FunctionObjects::VDPAURegisterOutputSurfaceNV("glVDPAURegisterOutputSurfaceNV");
-Function<GLvdpauSurfaceNV, const void *, GLenum, GLsizei, const GLuint *> FunctionObjects::VDPAURegisterVideoSurfaceNV("glVDPAURegisterVideoSurfaceNV");
-Function<void, GLvdpauSurfaceNV, GLenum> FunctionObjects::VDPAUSurfaceAccessNV("glVDPAUSurfaceAccessNV");
-Function<void, GLsizei, const GLvdpauSurfaceNV *> FunctionObjects::VDPAUUnmapSurfacesNV("glVDPAUUnmapSurfacesNV");
-Function<void, GLvdpauSurfaceNV> FunctionObjects::VDPAUUnregisterSurfaceNV("glVDPAUUnregisterSurfaceNV");
-Function<void, GLuint> FunctionObjects::ValidateProgram("glValidateProgram");
-Function<void, GLhandleARB> FunctionObjects::ValidateProgramARB("glValidateProgramARB");
-Function<void, GLuint> FunctionObjects::ValidateProgramPipeline("glValidateProgramPipeline");
-Function<void, GLuint, GLenum, GLsizei, GLuint, GLuint> FunctionObjects::VariantArrayObjectATI("glVariantArrayObjectATI");
-Function<void, GLuint, GLenum, GLuint, const void *> FunctionObjects::VariantPointerEXT("glVariantPointerEXT");
-Function<void, GLuint, const GLbyte *> FunctionObjects::VariantbvEXT("glVariantbvEXT");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VariantdvEXT("glVariantdvEXT");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VariantfvEXT("glVariantfvEXT");
-Function<void, GLuint, const GLint *> FunctionObjects::VariantivEXT("glVariantivEXT");
-Function<void, GLuint, const GLshort *> FunctionObjects::VariantsvEXT("glVariantsvEXT");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VariantubvEXT("glVariantubvEXT");
-Function<void, GLuint, const GLuint *> FunctionObjects::VariantuivEXT("glVariantuivEXT");
-Function<void, GLuint, const GLushort *> FunctionObjects::VariantusvEXT("glVariantusvEXT");
-Function<void, GLbyte> FunctionObjects::Vertex2bOES("glVertex2bOES");
-Function<void, const GLbyte *> FunctionObjects::Vertex2bvOES("glVertex2bvOES");
-Function<void, GLdouble, GLdouble> FunctionObjects::Vertex2d("glVertex2d");
-Function<void, const GLdouble *> FunctionObjects::Vertex2dv("glVertex2dv");
-Function<void, GLfloat, GLfloat> FunctionObjects::Vertex2f("glVertex2f");
-Function<void, const GLfloat *> FunctionObjects::Vertex2fv("glVertex2fv");
-Function<void, GLhalfNV, GLhalfNV> FunctionObjects::Vertex2hNV("glVertex2hNV");
-Function<void, const GLhalfNV *> FunctionObjects::Vertex2hvNV("glVertex2hvNV");
-Function<void, GLint, GLint> FunctionObjects::Vertex2i("glVertex2i");
-Function<void, const GLint *> FunctionObjects::Vertex2iv("glVertex2iv");
-Function<void, GLshort, GLshort> FunctionObjects::Vertex2s("glVertex2s");
-Function<void, const GLshort *> FunctionObjects::Vertex2sv("glVertex2sv");
-Function<void, GLfixed> FunctionObjects::Vertex2xOES("glVertex2xOES");
-Function<void, const GLfixed *> FunctionObjects::Vertex2xvOES("glVertex2xvOES");
-Function<void, GLbyte, GLbyte> FunctionObjects::Vertex3bOES("glVertex3bOES");
-Function<void, const GLbyte *> FunctionObjects::Vertex3bvOES("glVertex3bvOES");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::Vertex3d("glVertex3d");
-Function<void, const GLdouble *> FunctionObjects::Vertex3dv("glVertex3dv");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::Vertex3f("glVertex3f");
-Function<void, const GLfloat *> FunctionObjects::Vertex3fv("glVertex3fv");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::Vertex3hNV("glVertex3hNV");
-Function<void, const GLhalfNV *> FunctionObjects::Vertex3hvNV("glVertex3hvNV");
-Function<void, GLint, GLint, GLint> FunctionObjects::Vertex3i("glVertex3i");
-Function<void, const GLint *> FunctionObjects::Vertex3iv("glVertex3iv");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::Vertex3s("glVertex3s");
-Function<void, const GLshort *> FunctionObjects::Vertex3sv("glVertex3sv");
-Function<void, GLfixed, GLfixed> FunctionObjects::Vertex3xOES("glVertex3xOES");
-Function<void, const GLfixed *> FunctionObjects::Vertex3xvOES("glVertex3xvOES");
-Function<void, GLbyte, GLbyte, GLbyte> FunctionObjects::Vertex4bOES("glVertex4bOES");
-Function<void, const GLbyte *> FunctionObjects::Vertex4bvOES("glVertex4bvOES");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::Vertex4d("glVertex4d");
-Function<void, const GLdouble *> FunctionObjects::Vertex4dv("glVertex4dv");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::Vertex4f("glVertex4f");
-Function<void, const GLfloat *> FunctionObjects::Vertex4fv("glVertex4fv");
-Function<void, GLhalfNV, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::Vertex4hNV("glVertex4hNV");
-Function<void, const GLhalfNV *> FunctionObjects::Vertex4hvNV("glVertex4hvNV");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::Vertex4i("glVertex4i");
-Function<void, const GLint *> FunctionObjects::Vertex4iv("glVertex4iv");
-Function<void, GLshort, GLshort, GLshort, GLshort> FunctionObjects::Vertex4s("glVertex4s");
-Function<void, const GLshort *> FunctionObjects::Vertex4sv("glVertex4sv");
-Function<void, GLfixed, GLfixed, GLfixed> FunctionObjects::Vertex4xOES("glVertex4xOES");
-Function<void, const GLfixed *> FunctionObjects::Vertex4xvOES("glVertex4xvOES");
-Function<void, GLuint, GLuint, GLuint, GLintptr, GLsizei> FunctionObjects::VertexArrayBindVertexBufferEXT("glVertexArrayBindVertexBufferEXT");
-Function<void, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayColorOffsetEXT("glVertexArrayColorOffsetEXT");
-Function<void, GLuint, GLuint, GLsizei, GLintptr> FunctionObjects::VertexArrayEdgeFlagOffsetEXT("glVertexArrayEdgeFlagOffsetEXT");
-Function<void, GLuint, GLuint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayFogCoordOffsetEXT("glVertexArrayFogCoordOffsetEXT");
-Function<void, GLuint, GLuint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayIndexOffsetEXT("glVertexArrayIndexOffsetEXT");
-Function<void, GLuint, GLuint, GLenum, GLint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayMultiTexCoordOffsetEXT("glVertexArrayMultiTexCoordOffsetEXT");
-Function<void, GLuint, GLuint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayNormalOffsetEXT("glVertexArrayNormalOffsetEXT");
-Function<void, GLenum, GLint> FunctionObjects::VertexArrayParameteriAPPLE("glVertexArrayParameteriAPPLE");
-Function<void, GLsizei, void *> FunctionObjects::VertexArrayRangeAPPLE("glVertexArrayRangeAPPLE");
-Function<void, GLsizei, const void *> FunctionObjects::VertexArrayRangeNV("glVertexArrayRangeNV");
-Function<void, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArraySecondaryColorOffsetEXT("glVertexArraySecondaryColorOffsetEXT");
-Function<void, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayTexCoordOffsetEXT("glVertexArrayTexCoordOffsetEXT");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::VertexArrayVertexAttribBindingEXT("glVertexArrayVertexAttribBindingEXT");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::VertexArrayVertexAttribDivisorEXT("glVertexArrayVertexAttribDivisorEXT");
-Function<void, GLuint, GLuint, GLint, GLenum, GLboolean, GLuint> FunctionObjects::VertexArrayVertexAttribFormatEXT("glVertexArrayVertexAttribFormatEXT");
-Function<void, GLuint, GLuint, GLint, GLenum, GLuint> FunctionObjects::VertexArrayVertexAttribIFormatEXT("glVertexArrayVertexAttribIFormatEXT");
-Function<void, GLuint, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayVertexAttribIOffsetEXT("glVertexArrayVertexAttribIOffsetEXT");
-Function<void, GLuint, GLuint, GLint, GLenum, GLuint> FunctionObjects::VertexArrayVertexAttribLFormatEXT("glVertexArrayVertexAttribLFormatEXT");
-Function<void, GLuint, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayVertexAttribLOffsetEXT("glVertexArrayVertexAttribLOffsetEXT");
-Function<void, GLuint, GLuint, GLuint, GLint, GLenum, GLboolean, GLsizei, GLintptr> FunctionObjects::VertexArrayVertexAttribOffsetEXT("glVertexArrayVertexAttribOffsetEXT");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::VertexArrayVertexBindingDivisorEXT("glVertexArrayVertexBindingDivisorEXT");
-Function<void, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> FunctionObjects::VertexArrayVertexOffsetEXT("glVertexArrayVertexOffsetEXT");
-Function<void, GLuint, GLdouble> FunctionObjects::VertexAttrib1d("glVertexAttrib1d");
-Function<void, GLuint, GLdouble> FunctionObjects::VertexAttrib1dARB("glVertexAttrib1dARB");
-Function<void, GLuint, GLdouble> FunctionObjects::VertexAttrib1dNV("glVertexAttrib1dNV");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib1dv("glVertexAttrib1dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib1dvARB("glVertexAttrib1dvARB");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib1dvNV("glVertexAttrib1dvNV");
-Function<void, GLuint, GLfloat> FunctionObjects::VertexAttrib1f("glVertexAttrib1f");
-Function<void, GLuint, GLfloat> FunctionObjects::VertexAttrib1fARB("glVertexAttrib1fARB");
-Function<void, GLuint, GLfloat> FunctionObjects::VertexAttrib1fNV("glVertexAttrib1fNV");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib1fv("glVertexAttrib1fv");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib1fvARB("glVertexAttrib1fvARB");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib1fvNV("glVertexAttrib1fvNV");
-Function<void, GLuint, GLhalfNV> FunctionObjects::VertexAttrib1hNV("glVertexAttrib1hNV");
-Function<void, GLuint, const GLhalfNV *> FunctionObjects::VertexAttrib1hvNV("glVertexAttrib1hvNV");
-Function<void, GLuint, GLshort> FunctionObjects::VertexAttrib1s("glVertexAttrib1s");
-Function<void, GLuint, GLshort> FunctionObjects::VertexAttrib1sARB("glVertexAttrib1sARB");
-Function<void, GLuint, GLshort> FunctionObjects::VertexAttrib1sNV("glVertexAttrib1sNV");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib1sv("glVertexAttrib1sv");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib1svARB("glVertexAttrib1svARB");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib1svNV("glVertexAttrib1svNV");
-Function<void, GLuint, GLdouble, GLdouble> FunctionObjects::VertexAttrib2d("glVertexAttrib2d");
-Function<void, GLuint, GLdouble, GLdouble> FunctionObjects::VertexAttrib2dARB("glVertexAttrib2dARB");
-Function<void, GLuint, GLdouble, GLdouble> FunctionObjects::VertexAttrib2dNV("glVertexAttrib2dNV");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib2dv("glVertexAttrib2dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib2dvARB("glVertexAttrib2dvARB");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib2dvNV("glVertexAttrib2dvNV");
-Function<void, GLuint, GLfloat, GLfloat> FunctionObjects::VertexAttrib2f("glVertexAttrib2f");
-Function<void, GLuint, GLfloat, GLfloat> FunctionObjects::VertexAttrib2fARB("glVertexAttrib2fARB");
-Function<void, GLuint, GLfloat, GLfloat> FunctionObjects::VertexAttrib2fNV("glVertexAttrib2fNV");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib2fv("glVertexAttrib2fv");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib2fvARB("glVertexAttrib2fvARB");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib2fvNV("glVertexAttrib2fvNV");
-Function<void, GLuint, GLhalfNV, GLhalfNV> FunctionObjects::VertexAttrib2hNV("glVertexAttrib2hNV");
-Function<void, GLuint, const GLhalfNV *> FunctionObjects::VertexAttrib2hvNV("glVertexAttrib2hvNV");
-Function<void, GLuint, GLshort, GLshort> FunctionObjects::VertexAttrib2s("glVertexAttrib2s");
-Function<void, GLuint, GLshort, GLshort> FunctionObjects::VertexAttrib2sARB("glVertexAttrib2sARB");
-Function<void, GLuint, GLshort, GLshort> FunctionObjects::VertexAttrib2sNV("glVertexAttrib2sNV");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib2sv("glVertexAttrib2sv");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib2svARB("glVertexAttrib2svARB");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib2svNV("glVertexAttrib2svNV");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttrib3d("glVertexAttrib3d");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttrib3dARB("glVertexAttrib3dARB");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttrib3dNV("glVertexAttrib3dNV");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib3dv("glVertexAttrib3dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib3dvARB("glVertexAttrib3dvARB");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib3dvNV("glVertexAttrib3dvNV");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexAttrib3f("glVertexAttrib3f");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexAttrib3fARB("glVertexAttrib3fARB");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexAttrib3fNV("glVertexAttrib3fNV");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib3fv("glVertexAttrib3fv");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib3fvARB("glVertexAttrib3fvARB");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib3fvNV("glVertexAttrib3fvNV");
-Function<void, GLuint, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::VertexAttrib3hNV("glVertexAttrib3hNV");
-Function<void, GLuint, const GLhalfNV *> FunctionObjects::VertexAttrib3hvNV("glVertexAttrib3hvNV");
-Function<void, GLuint, GLshort, GLshort, GLshort> FunctionObjects::VertexAttrib3s("glVertexAttrib3s");
-Function<void, GLuint, GLshort, GLshort, GLshort> FunctionObjects::VertexAttrib3sARB("glVertexAttrib3sARB");
-Function<void, GLuint, GLshort, GLshort, GLshort> FunctionObjects::VertexAttrib3sNV("glVertexAttrib3sNV");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib3sv("glVertexAttrib3sv");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib3svARB("glVertexAttrib3svARB");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib3svNV("glVertexAttrib3svNV");
-Function<void, GLuint, const GLbyte *> FunctionObjects::VertexAttrib4Nbv("glVertexAttrib4Nbv");
-Function<void, GLuint, const GLbyte *> FunctionObjects::VertexAttrib4NbvARB("glVertexAttrib4NbvARB");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttrib4Niv("glVertexAttrib4Niv");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttrib4NivARB("glVertexAttrib4NivARB");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib4Nsv("glVertexAttrib4Nsv");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib4NsvARB("glVertexAttrib4NsvARB");
-Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte> FunctionObjects::VertexAttrib4Nub("glVertexAttrib4Nub");
-Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte> FunctionObjects::VertexAttrib4NubARB("glVertexAttrib4NubARB");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VertexAttrib4Nubv("glVertexAttrib4Nubv");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VertexAttrib4NubvARB("glVertexAttrib4NubvARB");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttrib4Nuiv("glVertexAttrib4Nuiv");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttrib4NuivARB("glVertexAttrib4NuivARB");
-Function<void, GLuint, const GLushort *> FunctionObjects::VertexAttrib4Nusv("glVertexAttrib4Nusv");
-Function<void, GLuint, const GLushort *> FunctionObjects::VertexAttrib4NusvARB("glVertexAttrib4NusvARB");
-Function<void, GLuint, const GLbyte *> FunctionObjects::VertexAttrib4bv("glVertexAttrib4bv");
-Function<void, GLuint, const GLbyte *> FunctionObjects::VertexAttrib4bvARB("glVertexAttrib4bvARB");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttrib4d("glVertexAttrib4d");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttrib4dARB("glVertexAttrib4dARB");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttrib4dNV("glVertexAttrib4dNV");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib4dv("glVertexAttrib4dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib4dvARB("glVertexAttrib4dvARB");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttrib4dvNV("glVertexAttrib4dvNV");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexAttrib4f("glVertexAttrib4f");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexAttrib4fARB("glVertexAttrib4fARB");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexAttrib4fNV("glVertexAttrib4fNV");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib4fv("glVertexAttrib4fv");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib4fvARB("glVertexAttrib4fvARB");
-Function<void, GLuint, const GLfloat *> FunctionObjects::VertexAttrib4fvNV("glVertexAttrib4fvNV");
-Function<void, GLuint, GLhalfNV, GLhalfNV, GLhalfNV, GLhalfNV> FunctionObjects::VertexAttrib4hNV("glVertexAttrib4hNV");
-Function<void, GLuint, const GLhalfNV *> FunctionObjects::VertexAttrib4hvNV("glVertexAttrib4hvNV");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttrib4iv("glVertexAttrib4iv");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttrib4ivARB("glVertexAttrib4ivARB");
-Function<void, GLuint, GLshort, GLshort, GLshort, GLshort> FunctionObjects::VertexAttrib4s("glVertexAttrib4s");
-Function<void, GLuint, GLshort, GLshort, GLshort, GLshort> FunctionObjects::VertexAttrib4sARB("glVertexAttrib4sARB");
-Function<void, GLuint, GLshort, GLshort, GLshort, GLshort> FunctionObjects::VertexAttrib4sNV("glVertexAttrib4sNV");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib4sv("glVertexAttrib4sv");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib4svARB("glVertexAttrib4svARB");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttrib4svNV("glVertexAttrib4svNV");
-Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte> FunctionObjects::VertexAttrib4ubNV("glVertexAttrib4ubNV");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VertexAttrib4ubv("glVertexAttrib4ubv");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VertexAttrib4ubvARB("glVertexAttrib4ubvARB");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VertexAttrib4ubvNV("glVertexAttrib4ubvNV");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttrib4uiv("glVertexAttrib4uiv");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttrib4uivARB("glVertexAttrib4uivARB");
-Function<void, GLuint, const GLushort *> FunctionObjects::VertexAttrib4usv("glVertexAttrib4usv");
-Function<void, GLuint, const GLushort *> FunctionObjects::VertexAttrib4usvARB("glVertexAttrib4usvARB");
-Function<void, GLuint, GLint, GLenum, GLboolean, GLsizei, GLuint, GLuint> FunctionObjects::VertexAttribArrayObjectATI("glVertexAttribArrayObjectATI");
-Function<void, GLuint, GLuint> FunctionObjects::VertexAttribBinding("glVertexAttribBinding");
-Function<void, GLuint, GLuint> FunctionObjects::VertexAttribDivisor("glVertexAttribDivisor");
-Function<void, GLuint, GLuint> FunctionObjects::VertexAttribDivisorARB("glVertexAttribDivisorARB");
-Function<void, GLuint, GLint, GLenum, GLboolean, GLuint> FunctionObjects::VertexAttribFormat("glVertexAttribFormat");
-Function<void, GLuint, GLint, GLenum, GLboolean, GLsizei> FunctionObjects::VertexAttribFormatNV("glVertexAttribFormatNV");
-Function<void, GLuint, GLint> FunctionObjects::VertexAttribI1i("glVertexAttribI1i");
-Function<void, GLuint, GLint> FunctionObjects::VertexAttribI1iEXT("glVertexAttribI1iEXT");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI1iv("glVertexAttribI1iv");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI1ivEXT("glVertexAttribI1ivEXT");
-Function<void, GLuint, GLuint> FunctionObjects::VertexAttribI1ui("glVertexAttribI1ui");
-Function<void, GLuint, GLuint> FunctionObjects::VertexAttribI1uiEXT("glVertexAttribI1uiEXT");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI1uiv("glVertexAttribI1uiv");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI1uivEXT("glVertexAttribI1uivEXT");
-Function<void, GLuint, GLint, GLint> FunctionObjects::VertexAttribI2i("glVertexAttribI2i");
-Function<void, GLuint, GLint, GLint> FunctionObjects::VertexAttribI2iEXT("glVertexAttribI2iEXT");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI2iv("glVertexAttribI2iv");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI2ivEXT("glVertexAttribI2ivEXT");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::VertexAttribI2ui("glVertexAttribI2ui");
-Function<void, GLuint, GLuint, GLuint> FunctionObjects::VertexAttribI2uiEXT("glVertexAttribI2uiEXT");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI2uiv("glVertexAttribI2uiv");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI2uivEXT("glVertexAttribI2uivEXT");
-Function<void, GLuint, GLint, GLint, GLint> FunctionObjects::VertexAttribI3i("glVertexAttribI3i");
-Function<void, GLuint, GLint, GLint, GLint> FunctionObjects::VertexAttribI3iEXT("glVertexAttribI3iEXT");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI3iv("glVertexAttribI3iv");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI3ivEXT("glVertexAttribI3ivEXT");
-Function<void, GLuint, GLuint, GLuint, GLuint> FunctionObjects::VertexAttribI3ui("glVertexAttribI3ui");
-Function<void, GLuint, GLuint, GLuint, GLuint> FunctionObjects::VertexAttribI3uiEXT("glVertexAttribI3uiEXT");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI3uiv("glVertexAttribI3uiv");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI3uivEXT("glVertexAttribI3uivEXT");
-Function<void, GLuint, const GLbyte *> FunctionObjects::VertexAttribI4bv("glVertexAttribI4bv");
-Function<void, GLuint, const GLbyte *> FunctionObjects::VertexAttribI4bvEXT("glVertexAttribI4bvEXT");
-Function<void, GLuint, GLint, GLint, GLint, GLint> FunctionObjects::VertexAttribI4i("glVertexAttribI4i");
-Function<void, GLuint, GLint, GLint, GLint, GLint> FunctionObjects::VertexAttribI4iEXT("glVertexAttribI4iEXT");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI4iv("glVertexAttribI4iv");
-Function<void, GLuint, const GLint *> FunctionObjects::VertexAttribI4ivEXT("glVertexAttribI4ivEXT");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttribI4sv("glVertexAttribI4sv");
-Function<void, GLuint, const GLshort *> FunctionObjects::VertexAttribI4svEXT("glVertexAttribI4svEXT");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VertexAttribI4ubv("glVertexAttribI4ubv");
-Function<void, GLuint, const GLubyte *> FunctionObjects::VertexAttribI4ubvEXT("glVertexAttribI4ubvEXT");
-Function<void, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::VertexAttribI4ui("glVertexAttribI4ui");
-Function<void, GLuint, GLuint, GLuint, GLuint, GLuint> FunctionObjects::VertexAttribI4uiEXT("glVertexAttribI4uiEXT");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI4uiv("glVertexAttribI4uiv");
-Function<void, GLuint, const GLuint *> FunctionObjects::VertexAttribI4uivEXT("glVertexAttribI4uivEXT");
-Function<void, GLuint, const GLushort *> FunctionObjects::VertexAttribI4usv("glVertexAttribI4usv");
-Function<void, GLuint, const GLushort *> FunctionObjects::VertexAttribI4usvEXT("glVertexAttribI4usvEXT");
-Function<void, GLuint, GLint, GLenum, GLuint> FunctionObjects::VertexAttribIFormat("glVertexAttribIFormat");
-Function<void, GLuint, GLint, GLenum, GLsizei> FunctionObjects::VertexAttribIFormatNV("glVertexAttribIFormatNV");
-Function<void, GLuint, GLint, GLenum, GLsizei, const void *> FunctionObjects::VertexAttribIPointer("glVertexAttribIPointer");
-Function<void, GLuint, GLint, GLenum, GLsizei, const void *> FunctionObjects::VertexAttribIPointerEXT("glVertexAttribIPointerEXT");
-Function<void, GLuint, GLdouble> FunctionObjects::VertexAttribL1d("glVertexAttribL1d");
-Function<void, GLuint, GLdouble> FunctionObjects::VertexAttribL1dEXT("glVertexAttribL1dEXT");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL1dv("glVertexAttribL1dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL1dvEXT("glVertexAttribL1dvEXT");
-Function<void, GLuint, GLint64EXT> FunctionObjects::VertexAttribL1i64NV("glVertexAttribL1i64NV");
-Function<void, GLuint, const GLint64EXT *> FunctionObjects::VertexAttribL1i64vNV("glVertexAttribL1i64vNV");
-Function<void, GLuint, GLuint64EXT> FunctionObjects::VertexAttribL1ui64ARB("glVertexAttribL1ui64ARB");
-Function<void, GLuint, GLuint64EXT> FunctionObjects::VertexAttribL1ui64NV("glVertexAttribL1ui64NV");
-Function<void, GLuint, const GLuint64EXT *> FunctionObjects::VertexAttribL1ui64vARB("glVertexAttribL1ui64vARB");
-Function<void, GLuint, const GLuint64EXT *> FunctionObjects::VertexAttribL1ui64vNV("glVertexAttribL1ui64vNV");
-Function<void, GLuint, GLdouble, GLdouble> FunctionObjects::VertexAttribL2d("glVertexAttribL2d");
-Function<void, GLuint, GLdouble, GLdouble> FunctionObjects::VertexAttribL2dEXT("glVertexAttribL2dEXT");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL2dv("glVertexAttribL2dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL2dvEXT("glVertexAttribL2dvEXT");
-Function<void, GLuint, GLint64EXT, GLint64EXT> FunctionObjects::VertexAttribL2i64NV("glVertexAttribL2i64NV");
-Function<void, GLuint, const GLint64EXT *> FunctionObjects::VertexAttribL2i64vNV("glVertexAttribL2i64vNV");
-Function<void, GLuint, GLuint64EXT, GLuint64EXT> FunctionObjects::VertexAttribL2ui64NV("glVertexAttribL2ui64NV");
-Function<void, GLuint, const GLuint64EXT *> FunctionObjects::VertexAttribL2ui64vNV("glVertexAttribL2ui64vNV");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttribL3d("glVertexAttribL3d");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttribL3dEXT("glVertexAttribL3dEXT");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL3dv("glVertexAttribL3dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL3dvEXT("glVertexAttribL3dvEXT");
-Function<void, GLuint, GLint64EXT, GLint64EXT, GLint64EXT> FunctionObjects::VertexAttribL3i64NV("glVertexAttribL3i64NV");
-Function<void, GLuint, const GLint64EXT *> FunctionObjects::VertexAttribL3i64vNV("glVertexAttribL3i64vNV");
-Function<void, GLuint, GLuint64EXT, GLuint64EXT, GLuint64EXT> FunctionObjects::VertexAttribL3ui64NV("glVertexAttribL3ui64NV");
-Function<void, GLuint, const GLuint64EXT *> FunctionObjects::VertexAttribL3ui64vNV("glVertexAttribL3ui64vNV");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttribL4d("glVertexAttribL4d");
-Function<void, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexAttribL4dEXT("glVertexAttribL4dEXT");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL4dv("glVertexAttribL4dv");
-Function<void, GLuint, const GLdouble *> FunctionObjects::VertexAttribL4dvEXT("glVertexAttribL4dvEXT");
-Function<void, GLuint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT> FunctionObjects::VertexAttribL4i64NV("glVertexAttribL4i64NV");
-Function<void, GLuint, const GLint64EXT *> FunctionObjects::VertexAttribL4i64vNV("glVertexAttribL4i64vNV");
-Function<void, GLuint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT> FunctionObjects::VertexAttribL4ui64NV("glVertexAttribL4ui64NV");
-Function<void, GLuint, const GLuint64EXT *> FunctionObjects::VertexAttribL4ui64vNV("glVertexAttribL4ui64vNV");
-Function<void, GLuint, GLint, GLenum, GLuint> FunctionObjects::VertexAttribLFormat("glVertexAttribLFormat");
-Function<void, GLuint, GLint, GLenum, GLsizei> FunctionObjects::VertexAttribLFormatNV("glVertexAttribLFormatNV");
-Function<void, GLuint, GLint, GLenum, GLsizei, const void *> FunctionObjects::VertexAttribLPointer("glVertexAttribLPointer");
-Function<void, GLuint, GLint, GLenum, GLsizei, const void *> FunctionObjects::VertexAttribLPointerEXT("glVertexAttribLPointerEXT");
-Function<void, GLuint, GLenum, GLboolean, GLuint> FunctionObjects::VertexAttribP1ui("glVertexAttribP1ui");
-Function<void, GLuint, GLenum, GLboolean, const GLuint *> FunctionObjects::VertexAttribP1uiv("glVertexAttribP1uiv");
-Function<void, GLuint, GLenum, GLboolean, GLuint> FunctionObjects::VertexAttribP2ui("glVertexAttribP2ui");
-Function<void, GLuint, GLenum, GLboolean, const GLuint *> FunctionObjects::VertexAttribP2uiv("glVertexAttribP2uiv");
-Function<void, GLuint, GLenum, GLboolean, GLuint> FunctionObjects::VertexAttribP3ui("glVertexAttribP3ui");
-Function<void, GLuint, GLenum, GLboolean, const GLuint *> FunctionObjects::VertexAttribP3uiv("glVertexAttribP3uiv");
-Function<void, GLuint, GLenum, GLboolean, GLuint> FunctionObjects::VertexAttribP4ui("glVertexAttribP4ui");
-Function<void, GLuint, GLenum, GLboolean, const GLuint *> FunctionObjects::VertexAttribP4uiv("glVertexAttribP4uiv");
-Function<void, GLuint, GLenum, GLint> FunctionObjects::VertexAttribParameteriAMD("glVertexAttribParameteriAMD");
-Function<void, GLuint, GLint, GLenum, GLboolean, GLsizei, const void *> FunctionObjects::VertexAttribPointer("glVertexAttribPointer");
-Function<void, GLuint, GLint, GLenum, GLboolean, GLsizei, const void *> FunctionObjects::VertexAttribPointerARB("glVertexAttribPointerARB");
-Function<void, GLuint, GLint, GLenum, GLsizei, const void *> FunctionObjects::VertexAttribPointerNV("glVertexAttribPointerNV");
-Function<void, GLuint, GLsizei, const GLdouble *> FunctionObjects::VertexAttribs1dvNV("glVertexAttribs1dvNV");
-Function<void, GLuint, GLsizei, const GLfloat *> FunctionObjects::VertexAttribs1fvNV("glVertexAttribs1fvNV");
-Function<void, GLuint, GLsizei, const GLhalfNV *> FunctionObjects::VertexAttribs1hvNV("glVertexAttribs1hvNV");
-Function<void, GLuint, GLsizei, const GLshort *> FunctionObjects::VertexAttribs1svNV("glVertexAttribs1svNV");
-Function<void, GLuint, GLsizei, const GLdouble *> FunctionObjects::VertexAttribs2dvNV("glVertexAttribs2dvNV");
-Function<void, GLuint, GLsizei, const GLfloat *> FunctionObjects::VertexAttribs2fvNV("glVertexAttribs2fvNV");
-Function<void, GLuint, GLsizei, const GLhalfNV *> FunctionObjects::VertexAttribs2hvNV("glVertexAttribs2hvNV");
-Function<void, GLuint, GLsizei, const GLshort *> FunctionObjects::VertexAttribs2svNV("glVertexAttribs2svNV");
-Function<void, GLuint, GLsizei, const GLdouble *> FunctionObjects::VertexAttribs3dvNV("glVertexAttribs3dvNV");
-Function<void, GLuint, GLsizei, const GLfloat *> FunctionObjects::VertexAttribs3fvNV("glVertexAttribs3fvNV");
-Function<void, GLuint, GLsizei, const GLhalfNV *> FunctionObjects::VertexAttribs3hvNV("glVertexAttribs3hvNV");
-Function<void, GLuint, GLsizei, const GLshort *> FunctionObjects::VertexAttribs3svNV("glVertexAttribs3svNV");
-Function<void, GLuint, GLsizei, const GLdouble *> FunctionObjects::VertexAttribs4dvNV("glVertexAttribs4dvNV");
-Function<void, GLuint, GLsizei, const GLfloat *> FunctionObjects::VertexAttribs4fvNV("glVertexAttribs4fvNV");
-Function<void, GLuint, GLsizei, const GLhalfNV *> FunctionObjects::VertexAttribs4hvNV("glVertexAttribs4hvNV");
-Function<void, GLuint, GLsizei, const GLshort *> FunctionObjects::VertexAttribs4svNV("glVertexAttribs4svNV");
-Function<void, GLuint, GLsizei, const GLubyte *> FunctionObjects::VertexAttribs4ubvNV("glVertexAttribs4ubvNV");
-Function<void, GLuint, GLuint> FunctionObjects::VertexBindingDivisor("glVertexBindingDivisor");
-Function<void, GLint> FunctionObjects::VertexBlendARB("glVertexBlendARB");
-Function<void, GLenum, GLfloat> FunctionObjects::VertexBlendEnvfATI("glVertexBlendEnvfATI");
-Function<void, GLenum, GLint> FunctionObjects::VertexBlendEnviATI("glVertexBlendEnviATI");
-Function<void, GLint, GLenum, GLsizei> FunctionObjects::VertexFormatNV("glVertexFormatNV");
-Function<void, GLenum, GLuint> FunctionObjects::VertexP2ui("glVertexP2ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::VertexP2uiv("glVertexP2uiv");
-Function<void, GLenum, GLuint> FunctionObjects::VertexP3ui("glVertexP3ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::VertexP3uiv("glVertexP3uiv");
-Function<void, GLenum, GLuint> FunctionObjects::VertexP4ui("glVertexP4ui");
-Function<void, GLenum, const GLuint *> FunctionObjects::VertexP4uiv("glVertexP4uiv");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::VertexPointer("glVertexPointer");
-Function<void, GLint, GLenum, GLsizei, GLsizei, const void *> FunctionObjects::VertexPointerEXT("glVertexPointerEXT");
-Function<void, GLint, GLenum, GLint, const void **, GLint> FunctionObjects::VertexPointerListIBM("glVertexPointerListIBM");
-Function<void, GLint, GLenum, const void **> FunctionObjects::VertexPointervINTEL("glVertexPointervINTEL");
-Function<void, GLenum, GLdouble> FunctionObjects::VertexStream1dATI("glVertexStream1dATI");
-Function<void, GLenum, const GLdouble *> FunctionObjects::VertexStream1dvATI("glVertexStream1dvATI");
-Function<void, GLenum, GLfloat> FunctionObjects::VertexStream1fATI("glVertexStream1fATI");
-Function<void, GLenum, const GLfloat *> FunctionObjects::VertexStream1fvATI("glVertexStream1fvATI");
-Function<void, GLenum, GLint> FunctionObjects::VertexStream1iATI("glVertexStream1iATI");
-Function<void, GLenum, const GLint *> FunctionObjects::VertexStream1ivATI("glVertexStream1ivATI");
-Function<void, GLenum, GLshort> FunctionObjects::VertexStream1sATI("glVertexStream1sATI");
-Function<void, GLenum, const GLshort *> FunctionObjects::VertexStream1svATI("glVertexStream1svATI");
-Function<void, GLenum, GLdouble, GLdouble> FunctionObjects::VertexStream2dATI("glVertexStream2dATI");
-Function<void, GLenum, const GLdouble *> FunctionObjects::VertexStream2dvATI("glVertexStream2dvATI");
-Function<void, GLenum, GLfloat, GLfloat> FunctionObjects::VertexStream2fATI("glVertexStream2fATI");
-Function<void, GLenum, const GLfloat *> FunctionObjects::VertexStream2fvATI("glVertexStream2fvATI");
-Function<void, GLenum, GLint, GLint> FunctionObjects::VertexStream2iATI("glVertexStream2iATI");
-Function<void, GLenum, const GLint *> FunctionObjects::VertexStream2ivATI("glVertexStream2ivATI");
-Function<void, GLenum, GLshort, GLshort> FunctionObjects::VertexStream2sATI("glVertexStream2sATI");
-Function<void, GLenum, const GLshort *> FunctionObjects::VertexStream2svATI("glVertexStream2svATI");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexStream3dATI("glVertexStream3dATI");
-Function<void, GLenum, const GLdouble *> FunctionObjects::VertexStream3dvATI("glVertexStream3dvATI");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexStream3fATI("glVertexStream3fATI");
-Function<void, GLenum, const GLfloat *> FunctionObjects::VertexStream3fvATI("glVertexStream3fvATI");
-Function<void, GLenum, GLint, GLint, GLint> FunctionObjects::VertexStream3iATI("glVertexStream3iATI");
-Function<void, GLenum, const GLint *> FunctionObjects::VertexStream3ivATI("glVertexStream3ivATI");
-Function<void, GLenum, GLshort, GLshort, GLshort> FunctionObjects::VertexStream3sATI("glVertexStream3sATI");
-Function<void, GLenum, const GLshort *> FunctionObjects::VertexStream3svATI("glVertexStream3svATI");
-Function<void, GLenum, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::VertexStream4dATI("glVertexStream4dATI");
-Function<void, GLenum, const GLdouble *> FunctionObjects::VertexStream4dvATI("glVertexStream4dvATI");
-Function<void, GLenum, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::VertexStream4fATI("glVertexStream4fATI");
-Function<void, GLenum, const GLfloat *> FunctionObjects::VertexStream4fvATI("glVertexStream4fvATI");
-Function<void, GLenum, GLint, GLint, GLint, GLint> FunctionObjects::VertexStream4iATI("glVertexStream4iATI");
-Function<void, GLenum, const GLint *> FunctionObjects::VertexStream4ivATI("glVertexStream4ivATI");
-Function<void, GLenum, GLshort, GLshort, GLshort, GLshort> FunctionObjects::VertexStream4sATI("glVertexStream4sATI");
-Function<void, GLenum, const GLshort *> FunctionObjects::VertexStream4svATI("glVertexStream4svATI");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::VertexWeightPointerEXT("glVertexWeightPointerEXT");
-Function<void, GLfloat> FunctionObjects::VertexWeightfEXT("glVertexWeightfEXT");
-Function<void, const GLfloat *> FunctionObjects::VertexWeightfvEXT("glVertexWeightfvEXT");
-Function<void, GLhalfNV> FunctionObjects::VertexWeighthNV("glVertexWeighthNV");
-Function<void, const GLhalfNV *> FunctionObjects::VertexWeighthvNV("glVertexWeighthvNV");
-Function<GLenum, GLuint, GLuint *, GLuint64EXT *> FunctionObjects::VideoCaptureNV("glVideoCaptureNV");
-Function<void, GLuint, GLuint, GLenum, const GLdouble *> FunctionObjects::VideoCaptureStreamParameterdvNV("glVideoCaptureStreamParameterdvNV");
-Function<void, GLuint, GLuint, GLenum, const GLfloat *> FunctionObjects::VideoCaptureStreamParameterfvNV("glVideoCaptureStreamParameterfvNV");
-Function<void, GLuint, GLuint, GLenum, const GLint *> FunctionObjects::VideoCaptureStreamParameterivNV("glVideoCaptureStreamParameterivNV");
-Function<void, GLint, GLint, GLsizei, GLsizei> FunctionObjects::Viewport("glViewport");
-Function<void, GLuint, GLsizei, const GLfloat *> FunctionObjects::ViewportArrayv("glViewportArrayv");
-Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::ViewportIndexedf("glViewportIndexedf");
-Function<void, GLuint, const GLfloat *> FunctionObjects::ViewportIndexedfv("glViewportIndexedfv");
-Function<void, GLsync, GLbitfield, GLuint64> FunctionObjects::WaitSync("glWaitSync");
-Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> FunctionObjects::WeightPathsNV("glWeightPathsNV");
-Function<void, GLint, GLenum, GLsizei, const void *> FunctionObjects::WeightPointerARB("glWeightPointerARB");
-Function<void, GLint, const GLbyte *> FunctionObjects::WeightbvARB("glWeightbvARB");
-Function<void, GLint, const GLdouble *> FunctionObjects::WeightdvARB("glWeightdvARB");
-Function<void, GLint, const GLfloat *> FunctionObjects::WeightfvARB("glWeightfvARB");
-Function<void, GLint, const GLint *> FunctionObjects::WeightivARB("glWeightivARB");
-Function<void, GLint, const GLshort *> FunctionObjects::WeightsvARB("glWeightsvARB");
-Function<void, GLint, const GLubyte *> FunctionObjects::WeightubvARB("glWeightubvARB");
-Function<void, GLint, const GLuint *> FunctionObjects::WeightuivARB("glWeightuivARB");
-Function<void, GLint, const GLushort *> FunctionObjects::WeightusvARB("glWeightusvARB");
-Function<void, GLdouble, GLdouble> FunctionObjects::WindowPos2d("glWindowPos2d");
-Function<void, GLdouble, GLdouble> FunctionObjects::WindowPos2dARB("glWindowPos2dARB");
-Function<void, GLdouble, GLdouble> FunctionObjects::WindowPos2dMESA("glWindowPos2dMESA");
-Function<void, const GLdouble *> FunctionObjects::WindowPos2dv("glWindowPos2dv");
-Function<void, const GLdouble *> FunctionObjects::WindowPos2dvARB("glWindowPos2dvARB");
-Function<void, const GLdouble *> FunctionObjects::WindowPos2dvMESA("glWindowPos2dvMESA");
-Function<void, GLfloat, GLfloat> FunctionObjects::WindowPos2f("glWindowPos2f");
-Function<void, GLfloat, GLfloat> FunctionObjects::WindowPos2fARB("glWindowPos2fARB");
-Function<void, GLfloat, GLfloat> FunctionObjects::WindowPos2fMESA("glWindowPos2fMESA");
-Function<void, const GLfloat *> FunctionObjects::WindowPos2fv("glWindowPos2fv");
-Function<void, const GLfloat *> FunctionObjects::WindowPos2fvARB("glWindowPos2fvARB");
-Function<void, const GLfloat *> FunctionObjects::WindowPos2fvMESA("glWindowPos2fvMESA");
-Function<void, GLint, GLint> FunctionObjects::WindowPos2i("glWindowPos2i");
-Function<void, GLint, GLint> FunctionObjects::WindowPos2iARB("glWindowPos2iARB");
-Function<void, GLint, GLint> FunctionObjects::WindowPos2iMESA("glWindowPos2iMESA");
-Function<void, const GLint *> FunctionObjects::WindowPos2iv("glWindowPos2iv");
-Function<void, const GLint *> FunctionObjects::WindowPos2ivARB("glWindowPos2ivARB");
-Function<void, const GLint *> FunctionObjects::WindowPos2ivMESA("glWindowPos2ivMESA");
-Function<void, GLshort, GLshort> FunctionObjects::WindowPos2s("glWindowPos2s");
-Function<void, GLshort, GLshort> FunctionObjects::WindowPos2sARB("glWindowPos2sARB");
-Function<void, GLshort, GLshort> FunctionObjects::WindowPos2sMESA("glWindowPos2sMESA");
-Function<void, const GLshort *> FunctionObjects::WindowPos2sv("glWindowPos2sv");
-Function<void, const GLshort *> FunctionObjects::WindowPos2svARB("glWindowPos2svARB");
-Function<void, const GLshort *> FunctionObjects::WindowPos2svMESA("glWindowPos2svMESA");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::WindowPos3d("glWindowPos3d");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::WindowPos3dARB("glWindowPos3dARB");
-Function<void, GLdouble, GLdouble, GLdouble> FunctionObjects::WindowPos3dMESA("glWindowPos3dMESA");
-Function<void, const GLdouble *> FunctionObjects::WindowPos3dv("glWindowPos3dv");
-Function<void, const GLdouble *> FunctionObjects::WindowPos3dvARB("glWindowPos3dvARB");
-Function<void, const GLdouble *> FunctionObjects::WindowPos3dvMESA("glWindowPos3dvMESA");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::WindowPos3f("glWindowPos3f");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::WindowPos3fARB("glWindowPos3fARB");
-Function<void, GLfloat, GLfloat, GLfloat> FunctionObjects::WindowPos3fMESA("glWindowPos3fMESA");
-Function<void, const GLfloat *> FunctionObjects::WindowPos3fv("glWindowPos3fv");
-Function<void, const GLfloat *> FunctionObjects::WindowPos3fvARB("glWindowPos3fvARB");
-Function<void, const GLfloat *> FunctionObjects::WindowPos3fvMESA("glWindowPos3fvMESA");
-Function<void, GLint, GLint, GLint> FunctionObjects::WindowPos3i("glWindowPos3i");
-Function<void, GLint, GLint, GLint> FunctionObjects::WindowPos3iARB("glWindowPos3iARB");
-Function<void, GLint, GLint, GLint> FunctionObjects::WindowPos3iMESA("glWindowPos3iMESA");
-Function<void, const GLint *> FunctionObjects::WindowPos3iv("glWindowPos3iv");
-Function<void, const GLint *> FunctionObjects::WindowPos3ivARB("glWindowPos3ivARB");
-Function<void, const GLint *> FunctionObjects::WindowPos3ivMESA("glWindowPos3ivMESA");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::WindowPos3s("glWindowPos3s");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::WindowPos3sARB("glWindowPos3sARB");
-Function<void, GLshort, GLshort, GLshort> FunctionObjects::WindowPos3sMESA("glWindowPos3sMESA");
-Function<void, const GLshort *> FunctionObjects::WindowPos3sv("glWindowPos3sv");
-Function<void, const GLshort *> FunctionObjects::WindowPos3svARB("glWindowPos3svARB");
-Function<void, const GLshort *> FunctionObjects::WindowPos3svMESA("glWindowPos3svMESA");
-Function<void, GLdouble, GLdouble, GLdouble, GLdouble> FunctionObjects::WindowPos4dMESA("glWindowPos4dMESA");
-Function<void, const GLdouble *> FunctionObjects::WindowPos4dvMESA("glWindowPos4dvMESA");
-Function<void, GLfloat, GLfloat, GLfloat, GLfloat> FunctionObjects::WindowPos4fMESA("glWindowPos4fMESA");
-Function<void, const GLfloat *> FunctionObjects::WindowPos4fvMESA("glWindowPos4fvMESA");
-Function<void, GLint, GLint, GLint, GLint> FunctionObjects::WindowPos4iMESA("glWindowPos4iMESA");
-Function<void, const GLint *> FunctionObjects::WindowPos4ivMESA("glWindowPos4ivMESA");
-Function<void, GLshort, GLshort, GLshort, GLshort> FunctionObjects::WindowPos4sMESA("glWindowPos4sMESA");
-Function<void, const GLshort *> FunctionObjects::WindowPos4svMESA("glWindowPos4svMESA");
-Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> FunctionObjects::WriteMaskEXT("glWriteMaskEXT");
 
 } // namespace glbinding

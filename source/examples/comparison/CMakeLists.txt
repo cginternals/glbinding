@@ -50,7 +50,13 @@ endif()
 #
 
 set(sources
+    commondata.cpp
+    commondata.h
     main.cpp
+    glbinding.cpp
+    glbinding.h
+    glew.cpp
+    glew.h
 )
 
 #

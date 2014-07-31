@@ -32,5 +32,25 @@ extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_Fun
 
 extern const std::unordered_map<gl::GLextension, Version> Meta_ReqVersionsByExtension;
 
+extern const std::unordered_map<gl::AttribMask, std::string> Meta_StringsByAttribMask;
+extern const std::unordered_map<gl::ClearBufferMask, std::string> Meta_StringsByClearBufferMask;
+extern const std::unordered_map<gl::ClientAttribMask, std::string> Meta_StringsByClientAttribMask;
+extern const std::unordered_map<gl::ContextFlagMask, std::string> Meta_StringsByContextFlagMask;
+extern const std::unordered_map<gl::ContextProfileMask, std::string> Meta_StringsByContextProfileMask;
+extern const std::unordered_map<gl::FfdMaskSGIX, std::string> Meta_StringsByFfdMaskSGIX;
+extern const std::unordered_map<gl::FragmentShaderColorModMaskATI, std::string> Meta_StringsByFragmentShaderColorModMaskATI;
+extern const std::unordered_map<gl::FragmentShaderDestMaskATI, std::string> Meta_StringsByFragmentShaderDestMaskATI;
+extern const std::unordered_map<gl::FragmentShaderDestModMaskATI, std::string> Meta_StringsByFragmentShaderDestModMaskATI;
+extern const std::unordered_map<gl::MapBufferUsageMask, std::string> Meta_StringsByMapBufferUsageMask;
+extern const std::unordered_map<gl::MemoryBarrierMask, std::string> Meta_StringsByMemoryBarrierMask;
+extern const std::unordered_map<gl::PathRenderingMaskNV, std::string> Meta_StringsByPathRenderingMaskNV;
+extern const std::unordered_map<gl::PerformanceQueryCapsMaskINTEL, std::string> Meta_StringsByPerformanceQueryCapsMaskINTEL;
+extern const std::unordered_map<gl::SyncObjectMask, std::string> Meta_StringsBySyncObjectMask;
+extern const std::unordered_map<gl::TextureStorageMaskAMD, std::string> Meta_StringsByTextureStorageMaskAMD;
+extern const std::unordered_map<gl::UseProgramStageMask, std::string> Meta_StringsByUseProgramStageMask;
+extern const std::unordered_map<gl::VertexHintsMaskPGI, std::string> Meta_StringsByVertexHintsMaskPGI;
+extern const std::unordered_map<gl::PathFontStyle, std::string> Meta_StringsByPathFontStyle;
+extern const std::unordered_map<gl::UnusedMask, std::string> Meta_StringsByUnusedMask;
+extern const std::unordered_map<gl::BufferAccessMask, std::string> Meta_StringsByBufferAccessMask;
 
-} // namespace gl
+} // namespace glbinding

@@ -6,32 +6,30 @@
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/values.h>
 
+#include "glbinding_private.h"
+
 
 using namespace gl; // ToDo: multiple APIs?
 
-namespace glbinding
+namespace glbinding 
 {
 
-int FunctionObjects::s_context = 0;
-
-
-void FunctionObjects::initialize()
+const std::vector<AbstractFunction *> & FunctionObjects::functions() const
 {
-    initialize(s_context);
+	return m_functions;
 }
 
-void FunctionObjects::initialize(const int context)
+FunctionObjects & FunctionObjects::current()
 {
-    for (AbstractFunction * function : functions())
-        function->initialize(context);
+	return currentFunctionObjects();
 }
 
-void FunctionObjects::setContext(int context)
-{
-    s_context = context;
-}
-
-
+FunctionObjects::FunctionObjects() :
 %s
+{
+	m_functions = {
+		%s
+	};
+}
 
 } // namespace glbinding

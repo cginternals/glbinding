@@ -5,12 +5,12 @@ from classes.Command import *
 
 functionForwardTemplate = """inline %s %s(%s)
 {
-    return glbinding::FunctionObjects::%s(%s);
+    return glbinding::FunctionObjects::current().%s(%s);
 }
 """
 functionForwardTemplateRValueCast = """inline %s %s(%s)
 {
-    return static_cast<gl%s::%s>(glbinding::FunctionObjects::%s(%s));
+    return static_cast<gl%s::%s>(glbinding::FunctionObjects::current().%s(%s));
 }
 """
 
@@ -27,26 +27,25 @@ def namespacify(type, namespace):
 
 
 def bitfieldType(param):
-
-    return "GLbitfield" 
+    return param.groupString if param.groupString else "GLbitfield" 
 
 
 def paramSignature(param):
-
+    if param.type == "GLbitfield":
+        return bitfieldType(param)
     return param.type
 
 
-def functionTemplate(function):
+def functionMember(function):
 
     params = ", ".join([function.returntype] + [ paramSignature(p) for p in function.params ])
-    return 'Function<%s> FunctionObjects::%s("%s");' % (params,
-        functionBID(function)[2:], function.name)
+    return tab+'%s("%s")' % (functionBID(function), function.name)
 
 
 def functionDecl(api, function):
 
     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p), api) for p in function.params ])
-    return tab + "static Function<%s> %s;" % (params, functionBID(function)[2:])
+    return tab + "Function<%s> %s;" % (params, functionBID(function))
 
 
 def functionForward(function, feature, version):
@@ -56,10 +55,10 @@ def functionForward(function, feature, version):
 
     if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
         return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
-            version, function.returntype, functionBID(function)[2:], paramNames)
+            version, function.returntype, functionBID(function), paramNames)
     else:
         return functionForwardTemplate % (function.returntype, functionBID(function), params,
-            functionBID(function)[2:], paramNames)
+            functionBID(function), paramNames)
 
 
 def paramPass(param):
@@ -84,6 +83,9 @@ def paramPass(param):
     # else:
     #    return param.name
 
+def functionList(commands):
+    #return "std::vector<AbstractFunction*>(&%s, %s)" % (commands[0].name, len(commands))
+    return ",\n        ".join([ "&"+ functionBID(f) for f in commands ])
 
 def genFunctionObjects_h(commands, outputdir, outputfile):    
 
@@ -97,20 +99,7 @@ def genFunctionObjects_h(commands, outputdir, outputfile):
             # ToDo: multiple APIs
             [ functionDecl("gl", f) for f in commands ]))
 
-
-def genFunctionObjects_cpp(commands, outputdir, outputfile):    
-
-    of = outputfile
-    t = template(of)
-
-    status(outputdir + of)
-
-    with open(outputdir + of, 'w') as file:
-        file.write(t % "\n".join(
-            [ functionTemplate(f) for f in commands ]))
-
-
-def genFunctionList(commands, outputdir, outputfile):
+def genFunctionObjects_cpp(commands, outputdir, outputfile):
 
     of = outputfile
     t = template(of)
@@ -118,8 +107,10 @@ def genFunctionList(commands, outputdir, outputfile):
     status(outputdir + of)
 
     with open(outputdir + of, 'w') as file:
-        file.write(t % ",\n    ".join(
-            [ "&FunctionObjects::"+ functionBID(f)[2:] for f in commands ]))
+        file.write(t % (
+            ",\n".join([ functionMember(f) for f in commands ]),
+            functionList(commands)
+        ))
 
 
 def genFunctionsAll(api, commands, outputdir, outputfile):
