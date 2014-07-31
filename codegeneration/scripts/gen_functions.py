@@ -3,14 +3,23 @@ from classes.Command import *
 
 
 
-functionForwardTemplate = """inline %s %s(%s)
+functionForwardTemplate = """GLBINDING_API %s %s(%s);"""
+
+functionForwardImplTemplate = """%s %s(%s)
 {
-    return glbinding::FunctionObjects::current().%s(%s);
+    return (*glbinding::currentBinding().%s)(%s);
 }
 """
-functionForwardTemplateRValueCast = """inline %s %s(%s)
+
+functionForwardTemplateInline = """%s %s(%s)
 {
-    return static_cast<gl%s::%s>(glbinding::FunctionObjects::current().%s(%s));
+    return gl::%s(%s);
+}
+"""
+
+functionForwardImplTemplateRValueCast = """%s %s(%s)
+{
+    return static_cast<gl%s::%s>((*glbinding::currentBinding().%s)(%s));
 }
 """
 
@@ -45,26 +54,45 @@ def paramSignature(param, forward):
 def functionMember(function):
 
     params = ", ".join([function.returntype] + [ paramSignature(p, False) for p in function.params ])
-    return tab+'%s.setName("%s");' % (functionBID(function), function.name)
+    return tab+'%s = new Function<%s>("%s");' % (functionBID(function), params, function.name)
 
 
 def functionDecl(api, function):
 
     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
-    return tab + "Function<%s> %s;" % (params, functionBID(function))
+    return tab + "Function<%s> * %s;" % (params, functionBID(function))
 
 
-def functionForward(function, feature, version):
+def functionSignature(api, function, extern = True):
+
+    params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
+    if extern:
+        return "extern template class Function<%s>;" % (params)
+    else:
+        return "template class Function<%s>;" % (params)
+
+
+def functionForward(function, feature, version, impl):
 
     params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
     paramNames = ", ".join([p.name for p in function.params])
 
     if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
-        return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
-            version, function.returntype, functionBID(function), paramNames)
+        if impl:
+            return functionForwardTemplateInline % (function.returntype, functionBID(function), params,
+                    functionBID(function), paramNames)
+        else:
+            return functionForwardTemplate % (function.returntype, functionBID(function), params)
     else:
-        return functionForwardTemplate % (function.returntype, functionBID(function), params,
-            functionBID(function), paramNames)
+        if impl:
+            if feature:
+                return functionForwardTemplateInline % (function.returntype, functionBID(function), params,
+                    functionBID(function), paramNames)
+            else:
+                return functionForwardImplTemplate % (function.returntype, functionBID(function), params,
+                    functionBID(function), paramNames)
+        else:
+            return functionForwardTemplate % (function.returntype, functionBID(function), params)
 
 
 def paramPass(param): 
@@ -100,10 +128,12 @@ def genFunctionObjects_h(commands, outputdir, outputfile):
 
     status(outputdir + of)
 
+    extern_templates = set([ functionSignature("gl", f) for f in commands])
+
     with open(outputdir + of, 'w') as file:
-        file.write(t % "\n".join(
-            # ToDo: multiple APIs
-            [ functionDecl("gl", f) for f in commands ]))
+        file.write(t % (
+            "\n".join(sorted(extern_templates)), 
+            "\n".join([ functionDecl("gl", f) for f in commands ])))
 
 def genFunctionObjects_cpp(commands, outputdir, outputfile):
 
@@ -112,17 +142,29 @@ def genFunctionObjects_cpp(commands, outputdir, outputfile):
 
     status(outputdir + of)
 
+    extern_templates = set([ functionSignature("gl", f, False) for f in commands])
+
     with open(outputdir + of, 'w') as file:
         file.write(t.replace("%b", commands[0].name).replace("%e", commands[-1].name) % (
+            "\n".join(sorted(extern_templates)), 
             len(commands),
             "\n".join([ functionMember(f) for f in commands ])
             #,functionList(commands)
         ))
 
+def genFunctionsAll_h(api, commands, outputdir, outputfile):
 
-def genFunctionsAll(api, commands, outputdir, outputfile):
+    genFeatureFunctions(api, commands, None, outputdir, outputfile, False, None)
 
-    genFeatureFunctions(api, commands, None, outputdir, outputfile, None)
+
+def genFunctionsAll_cpp(api, commands, outputdir, outputfile):
+
+    genFeatureFunctions(api, commands, None, outputdir, outputfile, True, None)
+
+
+def genFunctionsFeatureGrouped_h(api, commands, features, outputdir, outputfile):
+
+    genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile)
 
 
 def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
@@ -130,13 +172,13 @@ def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
     # gen functions feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureFunctions(api, commands, f, outputdir, outputfile)
+            genFeatureFunctions(api, commands, f, outputdir, outputfile, True)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureFunctions(api, commands, f, outputdir, outputfile, True)
-            genFeatureFunctions(api, commands, f, outputdir, outputfile, False, True)
+                genFeatureFunctions(api, commands, f, outputdir, outputfile, True, True)
+            genFeatureFunctions(api, commands, f, outputdir, outputfile, True, False, True)
 
 
-def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = False, ext = False):
+def genFeatureFunctions(api, commands, feature, outputdir, outputfile, impl, core = False, ext = False):
 
     of_all = outputfile.replace("?", "F")
 
@@ -153,7 +195,7 @@ def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = Fa
     with open(outputdir + of, 'w') as file:
         if not feature:
             file.write(t % ("\n".join(
-                [ functionForward(c, feature, version) for c in pureCommands ])))
+                [ functionForward(c, feature, version, impl) for c in pureCommands ])))
         else:
             file.write(t % ("\n".join(
-                [ functionForward(c, feature, version) for c in pureCommands ])))
+                [ functionForward(c, feature, version, impl) for c in pureCommands ])))

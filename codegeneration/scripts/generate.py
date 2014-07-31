@@ -155,56 +155,58 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
-    genRevision                  (     revision,           sourcedir,      "glrevision.h")
+    genRevision                    (     revision,           sourcedir,      "glrevision.h")
 
-    genExtensions                (api, extensions,         includedir_api, "extension.h")
+    genExtensions                  (api, extensions,         includedir_api, "extension.h")
 
-    genBooleans                  (api, enums,              includedir_api, "boolean.h")
-    genBooleansForward           (api, enums,              includedir_api, "boolean.inl")
+    genBooleans                    (api, enums,              includedir_api, "boolean.h")
+    genBooleansForward             (api, enums,              includedir_api, "boolean.inl")
 
-    genValues                    (api, enums,              includedir_api, "values.h")
-    genValuesForwards            (api, enums,              includedir_api, "values.inl")
+    genValues                      (api, enums,              includedir_api, "values.h")
+    genValuesForwards              (api, enums,              includedir_api, "values.inl")
 
-    genTypes_h                   (api, types, bitfGroups,  includedir_api, "types.h") 
-    genTypesForward_h            (api, types, bitfGroups,  includedir_api, "types.inl") 
-    genTypes_cpp                 (api, types, bitfGroups,  sourcedir_api,  "types.cpp")  
+    genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h") 
+    genTypesForward_h              (api, types, bitfGroups,  includedir_api, "types.inl") 
+    genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")  
 
-    genBitfieldsAll              (api, enums,              includedir_api, "bitfield.h")
-    genBitfieldsFeatureGrouped   (api, enums, features,    includedir_api, "bitfield?.h")
+    genBitfieldsAll                (api, enums,              includedir_api, "bitfield.h")
+    genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api, "bitfield?.h")
 
-    genEnumsAll                  (api, enums,              includedir_api, "enum.h")
-    genEnumsFeatureGrouped       (api, enums, features,    includedir_api, "enum?.h")
+    genEnumsAll                    (api, enums,              includedir_api, "enum.h")
+    genEnumsFeatureGrouped         (api, enums, features,    includedir_api, "enum?.h")
 
-    genFunctionsAll              (api, commands,           includedir_api, "functions.h")
-    genFunctionsFeatureGrouped   (api, commands, features, includedir_api, "functions?.h")
+    genFunctionsAll_h              (api, commands,           includedir_api, "functions.h")
+    genFunctionsAll_cpp            (api, commands,           sourcedir_api,  "functions.cpp")
+    genFunctionsFeatureGrouped_h   (api, commands, features, includedir_api, "functions?.h")
+    # genFunctionsFeatureGrouped_cpp (api, commands, features, sourcedir_api,  "functions?.cpp")
 
-    genFeatures                  (api, features,           includedir_api, "gl?.h")
+    genFeatures                    (api, features,           includedir_api, "gl?.h")
 
-    genTest                      (api, features,           sourcedir_api,  "test.cpp")
+    genTest                        (api, features,           sourcedir_api,  "test.cpp")
 
     # Generate GLBINDING namespace classes
 
-    genFunctionObjects_h         (commands,           includedir, "FunctionObjects.h")
-    genFunctionObjects_cpp       (commands,           sourcedir,  "FunctionObjects.cpp")
+    genFunctionObjects_h           (commands,           includedir, "Binding.h")
+    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding.cpp")
 
-    genVersions                  (features,           sourcedir,  "Version_ValidVersions.cpp")
+    genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
-    genMetaMaps		         (enums,              sourcedir,  "Meta_Maps.h", bitfGroups)
-    genMetaStringsByBitfield     (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
-    genMetaBitfieldByString      (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
-    genMetaStringsByEnum         (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
-    genMetaEnumsByString         (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
-    genMetaStringsByEnum         (enums,              sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
-    genMetaEnumsByString         (enums,              sourcedir,  "Meta_EnumsByString.cpp",     "GLenum")
+    genMetaMaps		               (enums,              sourcedir,  "Meta_Maps.h", bitfGroups)
+    genMetaStringsByBitfield       (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
+    genMetaBitfieldByString        (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
+    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
+    genMetaEnumsByString           (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
+    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
+    genMetaEnumsByString           (enums,              sourcedir,  "Meta_EnumsByString.cpp",     "GLenum")
 
-    genMetaStringsByExtension    (extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
-    genMetaExtensionsByString    (extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
+    genMetaStringsByExtension      (extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
+    genMetaExtensionsByString      (extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
 
-    genReqVersionsByExtension    (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+    genReqVersionsByExtension      (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
 
-    genFunctionStringsByExtension(extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
-    genExtensionsByFunctionString(extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
+    genFunctionStringsByExtension  (extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
+    genExtensionsByFunctionString  (extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
 
 
     print ""

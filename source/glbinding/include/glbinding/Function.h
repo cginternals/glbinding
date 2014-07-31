@@ -1,9 +1,13 @@
 #pragma once
 
-#include <glbinding/AbstractFunction.h>
 #include <functional>
 
-namespace {
+
+#include <glbinding/AbstractFunction.h>
+
+namespace 
+{
+
 template <typename ReturnType, typename... Arguments> struct FunctionHelper;
 
 template <typename ReturnType, typename... Arguments>
@@ -45,8 +49,8 @@ public:
 
 protected:
 
-    std::vector<BeforeCallback> m_beforeCallbacks;
-    std::vector<AfterCallback> m_afterCallbacks;
+//    std::vector<BeforeCallback> m_beforeCallbacks;
+//    std::vector<AfterCallback> m_afterCallbacks;
 };
 
 } // namespace glbinding

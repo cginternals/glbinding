@@ -1,4 +1,6 @@
 
+#include <iostream>
+
 #include "cubescape.h"
 
 #include <glbinding/gl/gl.h>

@@ -9,7 +9,7 @@
 
 #include <glbinding/Meta.h>
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/Binding.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
@@ -77,7 +77,7 @@ int main()
     std::map<GLextension, std::set<const AbstractFunction *>> funcsByExt;
     std::set<const AbstractFunction *> nonExtFuncs;
 
-    for (AbstractFunction * func : FunctionObjects::current())
+    for (AbstractFunction * func : Binding::current())
     {
         if (func->isResolved())
             ++resolved;
@@ -126,8 +126,8 @@ int main()
 
     std::cout << std::endl << std::endl << "[SUMMARY]" << std::endl << std::endl;
 
-    std::cout << "# Functions:     " << resolved << " of " << FunctionObjects::current().size() << " resolved"
-        << " (" << (FunctionObjects::current().size() - resolved) << " unresolved)" << std::endl;
+    std::cout << "# Functions:     " << resolved << " of " << Binding::current().size() << " resolved"
+        << " (" << (Binding::current().size() - resolved) << " unresolved)" << std::endl;
 
     std::cout << "                 " << assigned << " assigned to extensions";
 

@@ -73,7 +73,7 @@ set(api_includes
     ${include_path}/AbstractValue.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
-    ${include_path}/FunctionObjects.h
+    ${include_path}/Binding.h
     ${include_path}/PointerIterator.h
     ${include_path}/PointerIterator.hpp
     ${include_path}/Meta.h
@@ -92,16 +92,16 @@ list(APPEND api_includes ${featured_includes})
 
 set(sources
     ${source_path}/glbinding.cpp
-    ${source_path}/glbinding_private.h
     ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
     
     ${source_path}/gl/types.cpp
     ${source_path}/gl/test.cpp
+    ${source_path}/gl/functions.cpp
 
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
-    ${source_path}/FunctionObjects.cpp
+    ${source_path}/Binding.cpp
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextId.cpp
     ${source_path}/ContextInfo.cpp
@@ -124,10 +124,14 @@ set(sources
     ${source_path}/Meta_StringsByExtension.cpp
 )
 
+# file(GLOB featured_sources ${source_path}/gl/*.cpp)
+# list(APPEND sources ${featured_sources})
+
+
 # Group source files
 set(header_group "Header Files (API)")
 set(source_group "Source Files")
-source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$" 
+source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$|\\\\.inl$" 
     ${header_group} ${api_includes})
 source_group_by_path(${source_path} "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
     ${source_group} ${sources})

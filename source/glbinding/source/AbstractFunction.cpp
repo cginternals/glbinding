@@ -6,11 +6,11 @@
 #include <set>
 #include <cassert>
 
-#include <glbinding/FunctionObjects.h>
+#include <glbinding/glbinding.h>
+#include <glbinding/Binding.h>
 #include <glbinding/Meta.h>
 
 #include "callbacks_private.h"
-#include "glbinding_private.h"
 
 namespace glbinding 
 {
@@ -91,13 +91,13 @@ void AbstractFunction::setCallbackMask(CallbackMask mask)
 
 void AbstractFunction::setCallbackMaskForAll(CallbackMask mask)
 {
-    for (AbstractFunction * function : currentFunctionObjects())
+    for (AbstractFunction * function : currentBinding())
         function->setCallbackMask(mask);
 }
 
 void AbstractFunction::setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList)
 {
-    for (AbstractFunction * function : currentFunctionObjects())
+    for (AbstractFunction * function : currentBinding())
         if (blackList.find(function->name()) == blackList.end())
             function->setCallbackMask(mask);
 }
