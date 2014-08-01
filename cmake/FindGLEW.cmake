@@ -14,11 +14,20 @@ find_path(GLEW_INCLUDE_DIR GL/glew.h
     /opt/local/include
     DOC "The directory where GL/glew.h resides")
 
+if (X64)
+    set(GLEW_BUILD_DIR Release/x64)
+else()
+    set(GLEW_BUILD_DIR Release/Win32)
+endif()
+
+
 find_library(GLEW_LIBRARY
     NAMES GLEW glew glew32 glew32s
     PATHS
     $ENV{GLEWDIR}/lib
     $ENV{GLEW_HOME}/lib
+    $ENV{GLEWDIR}/lib/${GLEW_BUILD_DIR}
+    $ENV{GLEW_HOME}/lib/${GLEW_BUILD_DIR}
     /usr/lib64
     /usr/local/lib64
     /sw/lib64
@@ -36,6 +45,8 @@ if(WIN32)
         PATHS
         $ENV{GLEWDIR}/bin
         $ENV{GLEW_HOME}/bin
+        $ENV{GLEWDIR}/bin/${GLEW_BUILD_DIR}
+        $ENV{GLEW_HOME}/bin/${GLEW_BUILD_DIR}
         DOC "The GLEW binary")
 
 endif()
