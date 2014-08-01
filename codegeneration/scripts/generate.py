@@ -185,7 +185,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     # Generate GLBINDING namespace classes
 
     genFunctionObjects_h           (commands,           includedir, "Binding.h")
-    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_private.cpp")
+    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_objects.cpp")
 
     genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
 

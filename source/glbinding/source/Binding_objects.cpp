@@ -5348,5 +5348,4 @@ const Binding::array_t Binding::s_functions =
     &WriteMaskEXT
 };
 
-
 } // namespace glbinding

@@ -100,7 +100,7 @@ set(sources
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
-    ${source_path}/Binding_private.cpp
+    ${source_path}/Binding_objects.cpp
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp
