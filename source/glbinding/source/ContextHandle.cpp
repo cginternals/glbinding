@@ -1,5 +1,5 @@
 
-#include <glbinding/ContextId.h>
+#include <glbinding/ContextHandle.h>
 
 #ifdef WIN32
 #include <windows.h>
@@ -12,20 +12,18 @@
 namespace glbinding
 {
 
-ContextId getCurrentContextId()
+ContextHandle getCurrentContext()
 {
-    ContextId id = 0;
+    ContextHandle id = 0;
 
 #ifdef WIN32
     const HGLRC context = wglGetCurrentContext();
-    id = reinterpret_cast<ContextId>(context);
 #elif __APPLE__
-    CGLContextObj contextObj = CGLGetCurrentContext();
-    id = reinterpret_cast<ContextId>(contextObj);
+    CGLContextObj context = CGLGetCurrentContext();
 #else
     const GLXContext context = glXGetCurrentContext();
-    id = reinterpret_cast<ContextId>(context);
 #endif
+    id = reinterpret_cast<ContextHandle>(context);
 
     return id;
 }

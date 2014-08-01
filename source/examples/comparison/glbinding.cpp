@@ -4,17 +4,19 @@
 #include <iostream>
 
 #include <glbinding/gl/gl.h>
+
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/glbinding.h>
+#include <glbinding/callbacks.h>
+
 
 void glbindingInitialize()
 {
-    glbinding::initialize();
+    glbinding::Binding::initialize();
 }
 
 void glbindingEnableErrorCheck(bool /*on*/)
 {
-    glbinding::AbstractFunction::setCallbackMaskForAllExcept(glbinding::CallbackMask::After, { "glGetError" });
+    glbinding::setCallbackMaskForAllExcept(glbinding::CallbackMask::After, { "glGetError" });
 
     glbinding::setAfterCallback([](const glbinding::FunctionCall &) {
         gl::GLenum error = gl::glGetError();

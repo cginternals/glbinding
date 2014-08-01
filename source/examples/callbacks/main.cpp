@@ -135,7 +135,7 @@ int main()
 
     // print some gl infos (query)
 
-    glbinding::initialize();
+    Binding::initialize();
 
     std::cout << std::endl
         << "OpenGL Version:  " << ContextInfo::version() << std::endl
@@ -143,7 +143,7 @@ int main()
         << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
-    AbstractFunction::setCallbackMaskForAll(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+    setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
     setAfterCallback([](const FunctionCall & call) {
         std::cout << call.function.name() << "(";

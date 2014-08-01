@@ -3,31 +3,100 @@
 
 #include <iostream>
 #include <memory>
+#include <mutex>
 #include <set>
 #include <cassert>
 
-#include <glbinding/glbinding.h>
 #include <glbinding/Binding.h>
 #include <glbinding/Meta.h>
 
 #include "callbacks_private.h"
+#include "thread_local.h"
+
 
 namespace glbinding 
 {
 
-AbstractFunction::AbstractFunction()
-: m_name(nullptr)
-, m_address(nullptr)
-, m_initialized(false)
-, m_callbackMask(CallbackMask::None)
+namespace
+{
+THREAD_LOCAL int g_pos = -1;
+}
+
+int AbstractFunction::s_maxpos = -1;
+
+
+AbstractFunction::State::State()
+: address(nullptr)
+, initialized(false)
+, callbackMask(CallbackMask::None)
 {
 }
 
-AbstractFunction::AbstractFunction(const char * _name)
-: m_name(_name)
-, m_address(nullptr)
-, m_initialized(false)
-, m_callbackMask(CallbackMask::None)
+inline bool AbstractFunction::hasState() const
+{
+    return hasState(g_pos);
+}
+
+inline bool AbstractFunction::hasState(const int pos) const
+{
+    return pos > -1 && s_maxpos <= pos;
+}
+
+inline AbstractFunction::State & AbstractFunction::state() const
+{
+    return state(g_pos);
+}
+
+inline AbstractFunction::State & AbstractFunction::state(const int pos) const
+{
+    assert(s_maxpos <= pos);
+    assert(pos > -1);
+
+    return m_states[pos];
+}
+
+void AbstractFunction::provideState(const int pos)
+{
+    assert(pos > -1);
+
+    // if a state at pos exists, it is assumed to be neglected before
+    if (s_maxpos < pos)
+    {
+        for (AbstractFunction * function : Binding::functions())
+            function->m_states.resize(static_cast<std::size_t>(pos + 1));
+
+        s_maxpos = pos;
+    }
+}
+
+void AbstractFunction::neglectState(const int pos)
+{
+    assert(pos <= s_maxpos);
+    assert(pos > -1);
+
+    if (pos == s_maxpos)
+    {
+        for (AbstractFunction * function : Binding::functions())
+            function->m_states.resize(static_cast<std::size_t>(pos - 1));
+
+        --s_maxpos;
+    }
+    else
+        for (AbstractFunction * function : Binding::functions())
+            function->m_states[pos] = State();
+
+    if (pos == g_pos)
+        g_pos = -1;
+}
+
+void AbstractFunction::setStatePos(const int pos)
+{
+    g_pos = pos;
+}
+
+
+AbstractFunction::AbstractFunction(const char * name)
+: m_name(name)
 {
 }
 
@@ -35,20 +104,13 @@ AbstractFunction::~AbstractFunction()
 {
 }
 
-void AbstractFunction::setName(const char * _name)
-{
-    m_name = _name;
-    m_address = nullptr;
-    m_initialized = false;
-}
-
 void AbstractFunction::resolveAddress()
 {
-    if (!m_initialized)
-    {
-        m_address = getProcAddress(m_name);
-        m_initialized = true;
-    }
+    if (state().initialized)
+        return;
+
+    state().address = getProcAddress(m_name);
+    state().initialized = true;
 }
 
 const std::set<gl::GLextension> & AbstractFunction::extensions() const
@@ -63,44 +125,35 @@ const char * AbstractFunction::name() const
 
 bool AbstractFunction::isResolved() const
 {
-    return m_address != nullptr;
+    return state().address != nullptr;
 }
 
 ProcAddress AbstractFunction::address() const
 {
-    if (!m_initialized)
+    if (!state().initialized)
         const_cast<AbstractFunction*>(this)->resolveAddress();
 
-    return m_address;
+    return state().address;
 }
+
 
 bool AbstractFunction::isEnabled(CallbackMask mask) const
 {
-    return (static_cast<unsigned int>(m_callbackMask) & static_cast<unsigned int>(mask)) == static_cast<unsigned int>(mask);
+    return (static_cast<unsigned int>(state().callbackMask) 
+        & static_cast<unsigned int>(mask)) == static_cast<unsigned int>(mask);
 }
 
 bool AbstractFunction::isAnyEnabled(CallbackMask mask) const
 {
-    return (static_cast<unsigned int>(m_callbackMask) ^ static_cast<unsigned int>(mask)) != 0;
+    return (static_cast<unsigned int>(state().callbackMask) 
+        ^ static_cast<unsigned int>(mask)) != 0;
 }
 
 void AbstractFunction::setCallbackMask(CallbackMask mask)
 {
-    m_callbackMask = mask;
+    state().callbackMask = mask;
 }
 
-void AbstractFunction::setCallbackMaskForAll(CallbackMask mask)
-{
-    for (AbstractFunction * function : currentBinding())
-        function->setCallbackMask(mask);
-}
-
-void AbstractFunction::setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList)
-{
-    for (AbstractFunction * function : currentBinding())
-        if (blackList.find(function->name()) == blackList.end())
-            function->setCallbackMask(mask);
-}
 
 void AbstractFunction::unresolved() const
 {

@@ -6,6 +6,7 @@
 #include <utility>
 #include <functional>
 
+
 namespace 
 {
 
@@ -85,8 +86,8 @@ Function<ReturnType, Arguments...>::Function()
 }
 
 template <typename ReturnType, typename... Arguments>
-Function<ReturnType, Arguments...>::Function(const char * _name)
-: AbstractFunction(_name)
+Function<ReturnType, Arguments...>::Function(const char * name)
+: AbstractFunction(name)
 {
 }
 
@@ -111,16 +112,16 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... argument
     }
 }
 
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::addBeforeCallback(BeforeCallback /*callback*/)
-{
-    //m_beforeCallbacks.push_back(callback);
-}
+//template <typename ReturnType, typename... Arguments>
+//void Function<ReturnType, Arguments...>::addBeforeCallback(BeforeCallback /*callback*/)
+//{
+//    //m_beforeCallbacks.push_back(callback);
+//}
 
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::addAfterCallback(AfterCallback /*callback*/)
-{
-    //m_afterCallbacks.push_back(callback);
-}
+//template <typename ReturnType, typename... Arguments>
+//void Function<ReturnType, Arguments...>::addAfterCallback(AfterCallback /*callback*/)
+//{
+//    //m_afterCallbacks.push_back(callback);
+//}
 
 } // namespace glbinding

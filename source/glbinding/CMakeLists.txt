@@ -52,7 +52,6 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
     ${include_path}/glbinding_api.h
-    ${include_path}/glbinding.h
     ${include_path}/callbacks.h
 
     ${include_path}/gl/gl.h
@@ -74,11 +73,11 @@ set(api_includes
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/Binding.h
-    ${include_path}/PointerIterator.h
-    ${include_path}/PointerIterator.hpp
+    #${include_path}/PointerIterator.h
+    #${include_path}/PointerIterator.hpp
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
-    ${include_path}/ContextId.h
+    ${include_path}/ContextHandle.h
     ${include_path}/ContextInfo.h
     ${include_path}/Value.h
     ${include_path}/Value.hpp
@@ -91,19 +90,19 @@ file(GLOB featured_includes ${include_path}/gl/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
-    ${source_path}/glbinding.cpp
     ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
+    ${source_path}/thread_local.h
     
     ${source_path}/gl/types.cpp
     ${source_path}/gl/test.cpp
-    ${source_path}/gl/functions.cpp
 
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
+    ${source_path}/Binding_private.cpp
     ${source_path}/ProcAddress.cpp
-    ${source_path}/ContextId.cpp
+    ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp
     ${source_path}/Value.cpp
     ${source_path}/Version.cpp

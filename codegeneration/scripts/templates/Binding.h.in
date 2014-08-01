@@ -4,37 +4,50 @@
 
 #include <glbinding/gl/types.h>
 
+#include <glbinding/ContextHandle.h>
 #include <glbinding/Function.h>
-#include <glbinding/PointerIterator.h>
+//#include <glbinding/PointerIterator.h>
 
 
 namespace glbinding
 {
 
-// forwarding declaring all templates
-%s
-
-
 class GLBINDING_API Binding
 {
 public:
-	using iterator = PointerIterator<AbstractFunction, sizeof(void *)>;
-	using const_iterator = PointerIterator<const AbstractFunction, sizeof(void *)>;
+//  using iterator = PointerIterator<AbstractFunction, sizeof(Function<void>)>;
+//  using const_iterator = PointerIterator<const AbstractFunction, sizeof(Function<void>)>;
 
-	Binding();
-	
-	static Binding & current();
-	
-	iterator begin();
-	iterator end();	
-	const_iterator begin() const;
-	const_iterator end() const;
+    Binding() = delete;
 
-	size_t size() const;
+    static void initialize();
+    static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
+
+    static void resolveFunctions();
+
+    static void useCurrentContext();
+    static void useContext(ContextHandle context);
+
+    static void finalizeCurrentContext();
+    static void finalizeContext(ContextHandle context);
+
+//  iterator begin();
+//  iterator end();    
+
+//  const_iterator begin() const;
+//  const_iterator end() const;
+
+    static size_t size();
+
+	using array_t = std::array<AbstractFunction *, %s>;
+
+    static const array_t & functions();
 
 public:
 %s
 
+protected:
+	static const array_t Binding::s_functions;
 };
 
 } // namespace glbinding

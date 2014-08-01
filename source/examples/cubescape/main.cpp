@@ -68,7 +68,7 @@ int main(int, char *[])
             std::cout << "error: " << error << std::endl;
     });
 
-    initialize();
+    Binding::initialize();
 
     // print some gl infos (query)
 

@@ -4,7 +4,8 @@
 
 #include <type_traits>
 
-namespace glbinding {
+namespace glbinding 
+{
 
 template <typename T, ptrdiff_t step>
 PointerIterator<T, step>::PointerIterator(T * _p)

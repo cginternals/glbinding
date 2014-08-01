@@ -5,8 +5,8 @@
 namespace glbinding 
 {
 
-using ContextId = long long;
+using ContextHandle = long long;
 
-GLBINDING_API ContextId getCurrentContextId();
+GLBINDING_API ContextHandle getCurrentContext();
 
 } // namespace glbinding

@@ -12,6 +12,8 @@ public:
     RawFile(const std::string & filePath);
     virtual ~RawFile();
 
+    RawFile & operator=(const RawFile &) = delete;
+
     const char * data() const;
     size_t size() const;
 

@@ -2,7 +2,8 @@
 
 #include <type_traits>
 
-namespace glbinding {
+namespace glbinding 
+{
 
 template <typename... Types>
 class SharedBitfield;

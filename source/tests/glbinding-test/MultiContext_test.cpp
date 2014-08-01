@@ -43,7 +43,7 @@ TEST_F(MultiContext_test, Test)
     EXPECT_NE(nullptr, window1);
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, false);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
@@ -52,31 +52,31 @@ TEST_F(MultiContext_test, Test)
     EXPECT_NE(nullptr, window2);
 
     glfwMakeContextCurrent(window1);
-    glbinding::initialize();
+    Binding::initialize();
 
 #ifdef  _WIN32
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
-    EXPECT_EQ(nullptr, Binding::current().glDispatchCompute.address());
+    EXPECT_EQ(nullptr, Binding::DispatchCompute.address());
 #elif defined(MAC_OS)
     EXPECT_EQ(Version(4, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, Binding::current().glDispatchCompute.address());
+    EXPECT_EQ(nullptr, Binding::DispatchCompute.address());
 #else // Linux
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
-    EXPECT_NE(nullptr, Binding::current().glDispatchCompute.address());
+    EXPECT_NE(nullptr, Binding::DispatchCompute.address());
 #endif
 
     glfwMakeContextCurrent(window2);
-    glbinding::initialize();
+    Binding::initialize();
 
 #ifdef _WIN32
-    EXPECT_EQ(Version(4, 4), ContextInfo::version());
-    EXPECT_NE(nullptr, Binding::current().glDispatchCompute.address());
+    EXPECT_EQ(Version(4, 0), ContextInfo::version());
+    EXPECT_NE(nullptr, Binding::DispatchCompute.address());
 #elif defined(MAC_OS)
     EXPECT_EQ(Version(2, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, Binding::current().glDispatchCompute.address());
+    EXPECT_EQ(nullptr, Binding::DispatchCompute.address());
 #else // Linux
-    EXPECT_EQ(Version(4, 4), ContextInfo::version());
-    EXPECT_NE(nullptr, Binding::current().glDispatchCompute.address());
+    EXPECT_EQ(Version(4, 0), ContextInfo::version());
+    EXPECT_NE(nullptr, Binding::DispatchCompute.address());
 #endif
 
     glfwTerminate();

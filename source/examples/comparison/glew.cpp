@@ -1,3 +1,4 @@
+
 #include "glew.h"
 #include "commondata.h"
 
@@ -5,7 +6,8 @@
 
 #include <iostream>
 
-namespace {
+namespace 
+{
     bool enableErrorCheck = false;
 }
 

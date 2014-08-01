@@ -4,8 +4,6 @@
 
 #include <glbinding/%a/nogl.h>
 
-#include <glbinding/glbinding.h>
-
 #include <glbinding/%a/extension.h>
 
 #include <glbinding/%a/types.h>

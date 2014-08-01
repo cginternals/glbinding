@@ -9,7 +9,6 @@
 
 #include <glbinding/Meta.h>
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/Binding.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
@@ -47,7 +46,7 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    initialize();
+    Binding::initialize();
 
     // gather available extensions
 
@@ -77,7 +76,7 @@ int main()
     std::map<GLextension, std::set<const AbstractFunction *>> funcsByExt;
     std::set<const AbstractFunction *> nonExtFuncs;
 
-    for (AbstractFunction * func : Binding::current())
+    for (AbstractFunction * func : Binding::functions())
     {
         if (func->isResolved())
             ++resolved;
@@ -126,8 +125,8 @@ int main()
 
     std::cout << std::endl << std::endl << "[SUMMARY]" << std::endl << std::endl;
 
-    std::cout << "# Functions:     " << resolved << " of " << Binding::current().size() << " resolved"
-        << " (" << (Binding::current().size() - resolved) << " unresolved)" << std::endl;
+    std::cout << "# Functions:     " << resolved << " of " << Binding::size() << " resolved"
+        << " (" << (Binding::size() - resolved) << " unresolved)" << std::endl;
 
     std::cout << "                 " << assigned << " assigned to extensions";
 
