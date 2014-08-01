@@ -4,8 +4,8 @@
 #include <fstream>
 #include <iostream>
 
-RawFile::RawFile(const std::string & filePath)
-:   m_filePath(filePath)
+RawFile::RawFile(const std::string & _filePath)
+:   m_filePath(_filePath)
 ,   m_valid(false)
 {
     m_valid = readFile();
@@ -51,9 +51,9 @@ void RawFile::readRawData(std::ifstream & ifs)
 {
     ifs.seekg(0, std::ios::end);
 
-    const size_t size = static_cast<size_t>(ifs.tellg());
-    m_data.resize(size);
+    const size_t _size = static_cast<size_t>(ifs.tellg());
+    m_data.resize(_size);
 
     ifs.seekg(0, std::ios::beg);
-    ifs.read(m_data.data(), static_cast<std::streamsize>(size));
+    ifs.read(m_data.data(), static_cast<std::streamsize>(_size));
 }

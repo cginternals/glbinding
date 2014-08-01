@@ -1,5 +1,3 @@
-#pragma once
-
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/bitfield.h>

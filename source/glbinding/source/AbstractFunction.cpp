@@ -95,8 +95,8 @@ void AbstractFunction::setStatePos(const int pos)
 }
 
 
-AbstractFunction::AbstractFunction(const char * name)
-: m_name(name)
+AbstractFunction::AbstractFunction(const char * _name)
+: m_name(_name)
 {
 }
 
