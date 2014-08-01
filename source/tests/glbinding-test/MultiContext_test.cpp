@@ -39,8 +39,7 @@ TEST_F(MultiContext_test, Test)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, false);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow * window1 = glfwCreateWindow(320, 240, "Window 1", nullptr, nullptr);
-    glfwHideWindow(window1);
+    GLFWwindow * window1 = glfwCreateWindow(320, 240, "", nullptr, nullptr);
 
     EXPECT_NE(nullptr, window1);
 
@@ -50,7 +49,7 @@ TEST_F(MultiContext_test, Test)
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, false);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow * window2 = glfwCreateWindow(320, 240, "Window 2", nullptr, nullptr);
+    GLFWwindow * window2 = glfwCreateWindow(320, 240, "", nullptr, nullptr);
 
     EXPECT_NE(nullptr, window2);
 
