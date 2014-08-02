@@ -20,9 +20,11 @@ class MultiContext_test : public testing::Test
 public:
 };
 
-void error(int /*errnum*/, const char * /*errmsg*/)
-{
-    FAIL();
+namespace {
+    void error(int /*errnum*/, const char * /*errmsg*/)
+    {
+        FAIL();
+    }
 }
 
 TEST_F(MultiContext_test, Test)
