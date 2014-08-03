@@ -4,13 +4,13 @@
 #include <glbinding/Meta.h>
 #include <glbinding/Version.h>
 
-#include <glbinding/gl/gl30.h>
+#include <glbinding/gl/gl.h>
 
 
 namespace glbinding
 {
 
-using namespace gl30;
+using namespace gl;
 
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 {

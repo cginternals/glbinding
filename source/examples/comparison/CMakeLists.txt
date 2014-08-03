@@ -50,13 +50,19 @@ endif()
 #
 
 set(sources
-    commondata.cpp
-    commondata.h
     main.cpp
+
+    gltest.inl
+    gltest_data.inl
+    gltest_error.inl
+
     glbinding.cpp
     glbinding.h
     glew.cpp
     glew.h
+
+    timer.cpp
+    timer.h
 )
 
 #

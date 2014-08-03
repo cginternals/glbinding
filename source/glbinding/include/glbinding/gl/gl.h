@@ -2,8 +2,6 @@
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/glbinding.h>
-
 #include <glbinding/gl/extension.h>
 
 #include <glbinding/gl/types.h>

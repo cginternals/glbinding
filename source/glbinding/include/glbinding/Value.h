@@ -16,6 +16,8 @@ class Value : public AbstractValue
 public:
     Value(T value);
 
+    Value & operator=(const Value &) = delete;
+
     virtual void printOn(std::ostream & stream) const override;
 
 protected:

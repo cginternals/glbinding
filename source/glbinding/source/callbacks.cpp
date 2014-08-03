@@ -1,17 +1,20 @@
+
 #include <glbinding/callbacks.h>
+
 #include <glbinding/AbstractValue.h>
+#include <glbinding/Binding.h>
+
 
 namespace glbinding 
 {
 
 namespace 
 {
-
 SimpleFunctionCallback g_unresolvedCallback;
 FunctionCallback g_beforeCallback;
 FunctionCallback g_afterCallback;
-
 }
+
 
 FunctionCall::FunctionCall(const AbstractFunction * _function)
 : function(*_function)
@@ -26,10 +29,25 @@ FunctionCall::~FunctionCall()
         delete value;
 }
 
+
 CallbackMask operator|(CallbackMask a, CallbackMask b)
 {
     return static_cast<CallbackMask>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
+
+void setCallbackMask(CallbackMask mask)
+{
+    for (AbstractFunction * function : Binding::functions())
+        function->setCallbackMask(mask);
+}
+
+void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList)
+{
+    for (AbstractFunction * function : Binding::functions())
+        if (blackList.find(function->name()) == blackList.end())
+            function->setCallbackMask(mask);
+}
+
 
 void setUnresolvedCallback(SimpleFunctionCallback callback)
 {

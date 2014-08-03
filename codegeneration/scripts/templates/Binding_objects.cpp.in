@@ -1,4 +1,3 @@
-
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/bitfield.h>
@@ -6,19 +5,13 @@
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/values.h>
 
-#include <glbinding/glbinding.h>
-
 
 using namespace gl; // ToDo: multiple APIs?
 
 namespace glbinding 
 {
 
-Binding & Binding::current()
-{
-	return currentBinding();
-}
-
+/*
 Binding::iterator Binding::begin()
 {
 	return iterator(&%b);
@@ -36,17 +29,21 @@ Binding::const_iterator Binding::begin() const
 
 Binding::const_iterator Binding::end() const
 {
-	return const_iterator(&%e);
+    return const_iterator(&%e);
 }
+*/
 
-size_t Binding::size() const
+size_t Binding::size()
 {
 	return %s;
 }
 
-Binding::Binding()
-{
 %s
-}
+
+
+const Binding::array_t Binding::s_functions = 
+{
+	%s
+};
 
 } // namespace glbinding

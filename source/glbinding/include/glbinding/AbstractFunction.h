@@ -9,8 +9,11 @@
 #include <glbinding/ProcAddress.h>
 #include <glbinding/callbacks.h>
 
-#include <glbinding/gl/types.h>
 
+namespace gl
+{
+enum class GLextension : int;
+}
 
 namespace glbinding 
 {
@@ -18,8 +21,8 @@ namespace glbinding
 class GLBINDING_API AbstractFunction
 {
     friend class Binding;
+
 public:
-    AbstractFunction();
     AbstractFunction(const char * name);
     virtual ~AbstractFunction();
 
@@ -27,33 +30,54 @@ public:
 
     void resolveAddress();
     bool isResolved() const;
+
     ProcAddress address() const;
 
     const std::set<gl::GLextension> & extensions() const;
 
-    void setCallbackMask(CallbackMask mask);
-
 public:
-    static void setCallbackMaskForAll(CallbackMask mask);
-    static void setCallbackMaskForAllExcept(CallbackMask mask, const std::set<std::string> & blackList);
-
-protected:
-    void setName(const char * name);
+    void setCallbackMask(CallbackMask mask);
 
 protected:
     bool isEnabled(CallbackMask mask) const;
     bool isAnyEnabled(CallbackMask mask) const;
 
-protected:
     void unresolved() const;
+
     void before(const FunctionCall & call) const;
     void after(const FunctionCall & call) const;
 
 protected:
+
+    struct State
+    {
+        State();
+
+        ProcAddress address;
+        bool initialized;
+
+        CallbackMask callbackMask;
+    };
+
+    bool hasState() const;
+    bool hasState(int pos) const;
+
+    State & state() const;
+    State & state(int pos) const;
+
+    static void provideState(int pos);
+    static void neglectState(int pos);
+
+    static void setStatePos(int pos); // sets thread local state pos used to state access within every instance
+
+protected:
     const char * m_name;
-    ProcAddress m_address;
-    bool m_initialized;
-    CallbackMask m_callbackMask;
+
+    mutable std::vector<State> m_states;
+    
+    // to reduce per instance hasState checks and provide/neglect states for all instances, 
+    // max pos is used to provide m_states size, which is identical for all instances.
+    static int s_maxpos;
 };
 
 } // namespace glbinding

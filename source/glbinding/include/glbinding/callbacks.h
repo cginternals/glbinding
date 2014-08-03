@@ -1,6 +1,8 @@
 #pragma once
 
 #include <glbinding/glbinding_api.h>
+
+#include <set>
 #include <vector>
 #include <functional>
 
@@ -15,24 +17,31 @@ struct GLBINDING_API FunctionCall
     FunctionCall(const AbstractFunction * _function);
     ~FunctionCall();
 
+    FunctionCall & operator=(const FunctionCall &) = delete;
+
     const AbstractFunction & function;
+
     std::vector<AbstractValue *> parameters;
     AbstractValue * returnValue;
 };
 
 enum class CallbackMask
 {
-    None        = 0x0,
-    Unresolved  = 0x1,
-    Before      = 0x2,
-    After       = 0x4,
-    Parameters  = 0x8,
+    None        = 0x00,
+    Unresolved  = 0x01,
+    Before      = 0x02,
+    After       = 0x04,
+    Parameters  = 0x08,
     ReturnValue = 0x10,
     ParametersAndReturnValue = Parameters | ReturnValue,
     BeforeAndAfter = Before | After
 };
 
 GLBINDING_API CallbackMask operator|(CallbackMask a, CallbackMask b);
+
+GLBINDING_API void setCallbackMask(CallbackMask mask);
+GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
+
 
 using SimpleFunctionCallback = std::function<void(const AbstractFunction &)>;
 using FunctionCallback = std::function<void(const FunctionCall &)>;

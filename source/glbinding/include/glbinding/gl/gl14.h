@@ -1,9 +1,8 @@
 #pragma once
 
-#include <glbinding/gl/nogl.h>
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/glbinding.h>
+#include <glbinding/gl/nogl.h>
 
 #include <glbinding/gl/extension.h>
 

@@ -1,5 +1,6 @@
 #pragma once
 
-void glbindingInitialize();
-void glbindingEnableErrorCheck(bool on);
-void glbindingTest();
+void glbinding_init();
+void glbinding_test();
+
+void glbinding_error(bool enable);
