@@ -4,6 +4,14 @@ The implementation uses modern C++11 features like enum classes, lambdas and var
 All defined OpenGL symbols are real functions and variables, they don't rely on macros.
 It should serve as an alternative to other OpenGL bindings like [GLEW](http://glew.sourceforge.net/) and [glad](https://github.com/Dav1dde/glad).
 
+### Project health
+<a href="https://scan.coverity.com/projects/2705">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/2705/badge.svg"/>
+</a>
+
+### Usage
+
 The standard glbinding API setup looks like
 ```
 #include <glbinding/gl/gl.h>
@@ -22,6 +30,8 @@ int main()
   glEnd();
 }
 ```
+
+### Features
 
 Current code written with a typical C binding for OpenGL (e.g. GLEW) is fully compatible for the use with glbinding.
 Just replace all includes to the old binding with the include to glbinding and use the ```gl``` namespace.
