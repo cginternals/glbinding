@@ -9,6 +9,8 @@
 # GLBINDING_LIBRARY_DEBUG
 # GLBINDING_INCLUDE_DIR
 
+find_package(OpenGL REQUIRED)
+
 include(FindPackageHandleStandardArgs)
 
 if(CMAKE_CURRENT_LIST_FILE)
@@ -87,6 +89,8 @@ macro (find LIB_NAME HEADER)
     #message("${LIB_NAME_UPPER}_LIBRARY         = ${${LIB_NAME_UPPER}_LIBRARY}")
 
 endmacro()
+
+set(GLBINDING_LIBRARIES "${OPENGL_LIBRARIES}")
 
 find(glbinding glbinding/glbinding_api.h ${LIB_PATHS})
 
