@@ -1,5 +1,6 @@
-
 #include <gmock/gmock.h>
+
+#include <thread>
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
@@ -15,7 +16,7 @@
 using namespace gl;
 using namespace glbinding;
 
-class MultiContext_test : public testing::Test
+class MultiThreading_test : public testing::Test
 {
 public:
 };
@@ -27,7 +28,7 @@ namespace {
     }
 }
 
-TEST_F(MultiContext_test, Test)
+TEST_F(MultiThreading_test, Test)
 {
     int success = glfwInit();
 
@@ -55,33 +56,50 @@ TEST_F(MultiContext_test, Test)
 
     EXPECT_NE(nullptr, window2);
 
-    glfwMakeContextCurrent(window1);
-    Binding::initialize();
+    std::thread t1([window1]() {
+        glfwMakeContextCurrent(window1);
+        Binding::initialize();
 
-#ifdef  _WIN32
-    EXPECT_EQ(Version(3, 2), ContextInfo::version());
-//    EXPECT_EQ(nullptr, Binding::DispatchCompute.address());
-#elif defined(MAC_OS)
-    EXPECT_EQ(Version(4, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, Binding::DispatchCompute.address());
-#else // Linux
-    EXPECT_EQ(Version(3, 2), ContextInfo::version());
-    EXPECT_NE(nullptr, Binding::DispatchCompute.address());
-#endif
+        int major = 0;
+        int minor = 0;
 
-    glfwMakeContextCurrent(window2);
-    Binding::initialize();
+        for (int i=0; i < 10; ++i)
+        {
+            glGetIntegerv(GL_MAJOR_VERSION, &major);
+            glGetIntegerv(GL_MINOR_VERSION, &minor);
 
-#ifdef _WIN32
-    EXPECT_EQ(Version(4, 0), ContextInfo::version());
-//    EXPECT_NE(nullptr, Binding::DispatchCompute.address());
-#elif defined(MAC_OS)
-    EXPECT_EQ(Version(2, 1), ContextInfo::version());
-    EXPECT_EQ(nullptr, Binding::DispatchCompute.address());
-#else // Linux
-    EXPECT_EQ(Version(4, 0), ContextInfo::version());
-    EXPECT_NE(nullptr, Binding::DispatchCompute.address());
-#endif
+            EXPECT_EQ(3, major);
+            EXPECT_EQ(2, minor);
+
+            //std::cout << "Processing Thread 1 (OpenGL " << major << "." << minor << " context)" << std::endl;
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(15));
+        }
+    });
+
+    std::thread t2([window2]() {
+        glfwMakeContextCurrent(window2);
+        Binding::initialize();
+
+        int major = 0;
+        int minor = 0;
+
+        for (int i=0; i < 10; ++i)
+        {
+            glGetIntegerv(GL_MAJOR_VERSION, &major);
+            glGetIntegerv(GL_MINOR_VERSION, &minor);
+
+            EXPECT_EQ(4, major);
+            EXPECT_EQ(0, minor);
+
+            //std::cout << "Processing Thread 2 (OpenGL " << major << "." << minor << " context)" << std::endl;
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        }
+    });
+
+    t1.join();
+    t2.join();
 
     glfwTerminate();
 }

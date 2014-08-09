@@ -78,8 +78,15 @@ void Binding::useContext(const ContextHandle context)
 
     mutex.lock(); // TODO: use read lock
     if (bindings.find(g_context) == bindings.end())
+    {
+        mutex.unlock();
+
         initialize(g_context);
-    mutex.unlock();
+    }
+    else
+    {
+        mutex.unlock();
+    }
 
     mutex.lock(); // TODO: use read lock
     AbstractFunction::setStatePos(bindings[g_context]);

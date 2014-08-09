@@ -25,7 +25,7 @@ inline void glError()
 {
     GLenum error = glGetError();
     if (error != GL_NO_ERROR)
-        std::cout << "Error: 0x" << std::hex << error << std::endl;
+        std::cout << "Error: " << error << std::endl;
 }
 
 void glew_test()
