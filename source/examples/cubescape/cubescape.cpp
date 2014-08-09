@@ -15,11 +15,13 @@ CubeScape::CubeScape()
 : a_vertex(-1)
 , u_transform(-1)
 , u_time(-1)
+, u_numcubes(-1)
 , m_vao(0)
 , m_indices(0)
 , m_vertices(0)
 , m_program(0)
 , m_a(0.f)
+, m_numcubes(16)
 {
     static const char * vertSource = R"(
         #version 150 core
@@ -30,11 +32,14 @@ CubeScape::CubeScape()
         uniform sampler2D terrain;
         uniform float time;
 
+        uniform int numcubes;
+
         void main()
         {
-            vec2 uv = vec2(mod(gl_InstanceID, 32), int(gl_InstanceID / 32)) * 0.0625;
+            float oneovernumcubes = 1.f / float(numcubes);
+            vec2 uv = vec2(mod(gl_InstanceID, numcubes), int(gl_InstanceID * oneovernumcubes)) * 2.0 * oneovernumcubes;
 
-            vec3 v = a_vertex * 0.0625;
+            vec3 v = 2.0 * a_vertex * oneovernumcubes;
             v.xz += uv * 2.0 - vec2(2.0);
 
             v_h = texture2D(terrain, uv * 0.6 + vec2(sin(time * 0.04), time * 0.02)).r;
@@ -211,6 +216,7 @@ CubeScape::CubeScape()
 
     u_transform = glGetUniformLocation(m_program, "modelViewProjection");
     u_time = glGetUniformLocation(m_program, "time");
+    u_numcubes = glGetUniformLocation(m_program, "numcubes");
 
     m_time = clock::now();
 
@@ -265,6 +271,7 @@ void CubeScape::draw()
 
     glUniformMatrix4fv(u_transform, 1, GL_FALSE, &transform[0]);
     glUniform1f(u_time, t);
+    glUniform1i(u_numcubes, m_numcubes);
 
-    glDrawElementsInstanced(GL_TRIANGLES, 18, GL_UNSIGNED_BYTE, 0, 32 * 32);
+    glDrawElementsInstanced(GL_TRIANGLES, 18, GL_UNSIGNED_BYTE, 0, m_numcubes * m_numcubes);
 }
