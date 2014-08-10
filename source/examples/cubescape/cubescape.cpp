@@ -43,8 +43,10 @@ CubeScape::CubeScape()
             vec3 v = a_vertex * oneovernumcubes - (1.0 - oneovernumcubes);
             v.xz  += uv;
 
-            v_h = texture2D(terrain, uv * 0.6 + vec2(sin(time * 0.04), time * 0.02)).r;
-            v.y += v_h;
+            v_h = texture2D(terrain, uv * 0.5 + vec2(sin(time * 0.04), time * 0.02)).r * 2.0 / 3.0;
+
+            if(a_vertex.y > 0.0) 
+                v.y += v_h;
 
             gl_Position = vec4(v, 1.0); 
         })";
@@ -53,6 +55,7 @@ CubeScape::CubeScape()
         #version 150 core
 
         uniform mat4 modelViewProjection;
+        uniform int numcubes;
 
         in  float v_h[3];
         out float g_h;
@@ -68,6 +71,8 @@ CubeScape::CubeScape()
             vec4 u = gl_in[1].gl_Position - gl_in[0].gl_Position;
             vec4 v = gl_in[2].gl_Position - gl_in[0].gl_Position;
 
+            float f = mix(1.0, v.y * float(numcubes) * 0.5, step(1.0 / float(numcubes), v.y));
+
             vec3 n = cross(normalize((modelViewProjection * u).xyz), normalize((modelViewProjection * v).xyz));
 
             gl_Position = modelViewProjection * gl_in[0].gl_Position;
@@ -81,11 +86,11 @@ CubeScape::CubeScape()
             EmitVertex();
 
             gl_Position = modelViewProjection * gl_in[2].gl_Position;
-            g_uv = vec2(0.0, 1.0);
+            g_uv = vec2(0.0, f);
             EmitVertex();
 
             gl_Position = modelViewProjection * vec4((gl_in[0].gl_Position + u + v).xyz, 1.0);
-            g_uv = vec2(1.0, 1.0);
+            g_uv = vec2(1.0, f);
             EmitVertex();
         })";
 
@@ -108,7 +113,7 @@ CubeScape::CubeScape()
 
             float lambert = dot(n, l);
 
-            float t = (1.0 - g_h) * 4.0 - 1.0;
+            float t = (2.0 / 3.0 - g_h) * 1.5 * 4.0 - 1.0;
             vec2 uv = g_uv * vec2(0.25, 1.0);
 
             vec4 c0 = texture2D(patches, uv + max(floor(t), 0.0) * vec2(0.25, 0.0));
@@ -243,7 +248,7 @@ CubeScape::CubeScape()
 
     // view
 
-    m_view = mat4::lookAt(0.f, 1.f,-2.f, 0.f, -1.0f, 0.f, 0.f, 1.f, 0.f);
+    m_view = mat4::lookAt(0.f, 0.8f,-2.0f, 0.f, -1.2f, 0.f, 0.f, 1.f, 0.f);
 }
 
 CubeScape::~CubeScape()

@@ -3,12 +3,31 @@ set(target qt-cubescape)
 message(STATUS "Example ${target}")
 
 #
+# Qt5
+#
+
+# good resource: http://www.kdab.com/using-cmake-with-qt-5/
+
+# http://qt-project.org/forums/viewthread/30006/
+if(MSVC)
+    cmake_policy(SET CMP0020 NEW)
+endif()
+
+set(CMAKE_AUTOMOC ON)
+set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
+
+# Probably works in the next cmake release -> http://www.cmake.org/Bug/view.php?id=13788
+# What we do not want is automocs beside the project -> http://www.cmake.org/Bug/view.php?id=13688
+set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
+
+#
 # External libraries
 #
 
 find_package(Qt5OpenGL  5.1 REQUIRED)
 find_package(Qt5Core    5.1 REQUIRED)
 find_package(Qt5Gui     5.1 REQUIRED)
+find_package(Qt5Widgets 5.1 REQUIRED)
 
 #
 # Includes
@@ -51,24 +70,41 @@ set(cubscape_path ../cubescape)
 set(sources
     main.cpp
 
-    ${cubscape_path}/cubescape.cpp
-    ${cubscape_path}/cubescape.h
+   	Canvas.cpp
+   	Canvas.h
+    Painter.cpp
+    Painter.h
+   	Viewer.cpp
+   	Viewer.h
+
+    ${cubscape_path}/CubeScape.cpp
+    ${cubscape_path}/CubeScape.h
     ${cubscape_path}/glutils.cpp
     ${cubscape_path}/glutils.h
-    ${cubscape_path}/rawfile.cpp
-    ${cubscape_path}/rawfile.h
+    ${cubscape_path}/RawFile.cpp
+    ${cubscape_path}/RawFile.h
 )
+
+set(uis
+    Viewer.ui
+)
+
+#
+# UI Files
+#
+
+qt5_wrap_ui(compiled_ui_files ${uis})
 
 #
 # Build executable
 #
 
-add_executable(${target} ${sources})
+add_executable(${target} ${sources} ${compiled_ui_files})
 
 target_link_libraries(${target} ${libs})
 
 target_link_libraries(${target} ${libs})
-qt5_use_modules(${target} OpenGL Core Gui)
+qt5_use_modules(${target} OpenGL Core Gui Widgets)
 
 
 set_target_properties(${target}
