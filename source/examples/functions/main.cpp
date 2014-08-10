@@ -148,7 +148,7 @@ int main()
         << "OpenGL Version:  " << ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
         << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl;
+        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     glfwTerminate();
     return 0;
