@@ -28,8 +28,8 @@ public:
     static void useCurrentContext();
     static void useContext(ContextHandle context);
 
-    static void finalizeCurrentContext();
-    static void finalizeContext(ContextHandle context);
+    static void releaseCurrentContext();
+    static void releaseContext(ContextHandle context);
 
 //  iterator begin();
 //  iterator end();    

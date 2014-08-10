@@ -35,7 +35,7 @@ void Binding::initialize(
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
-    mutex.lock(); // TO DO: use read lock
+    mutex.lock(); // TODO: use read lock
     if (bindings.find(context) != bindings.end())
     {
         mutex.unlock();
@@ -92,12 +92,12 @@ void Binding::useContext(const ContextHandle context)
     mutex.unlock();
 }
 
-void Binding::finalizeCurrentContext()
+void Binding::releaseCurrentContext()
 {
-    finalizeContext(getCurrentContext());
+    releaseContext(getCurrentContext());
 }
 
-void Binding::finalizeContext(const ContextHandle context)
+void Binding::releaseContext(const ContextHandle context)
 {
     mutex.lock(); // ToDo: use read lock
     AbstractFunction::neglectState(bindings[context]);
