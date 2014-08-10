@@ -1,5 +1,5 @@
 
-#include "cubescape.h"
+#include "CubeScape.h"
 
 #include <iostream>
 #include <math.h>
@@ -7,7 +7,7 @@
 #include <glbinding/gl/gl.h>
 
 #include "glutils.h"
-#include "rawfile.h"
+#include "RawFile.h"
 
 
 using namespace gl;

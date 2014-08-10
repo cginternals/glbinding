@@ -10,7 +10,7 @@
 
 #include <glbinding/gl/gl.h>
 
-#include "cubescape.h"
+#include "CubeScape.h"
 
 
 using namespace gl;

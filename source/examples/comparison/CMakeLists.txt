@@ -61,8 +61,8 @@ set(sources
     glew.cpp
     glew.h
 
-    timer.cpp
-    timer.h
+    Timer.cpp
+    Timer.h
 )
 
 #

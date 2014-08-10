@@ -1,5 +1,5 @@
 
-#include "rawfile.h"
+#include "RawFile.h"
 
 #include <fstream>
 #include <iostream>

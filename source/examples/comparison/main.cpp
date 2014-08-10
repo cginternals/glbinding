@@ -9,7 +9,7 @@
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
-#include "timer.h"
+#include "Timer.h"
 
 #include "glbinding.h"
 #include "glew.h"
