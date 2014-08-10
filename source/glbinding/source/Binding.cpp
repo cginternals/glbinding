@@ -26,9 +26,9 @@ const Binding::array_t & Binding::functions()
 };
 
 
-void Binding::initialize()
+void Binding::initialize(bool resolveFunctions)
 {
-    initialize(getCurrentContext());
+    initialize(getCurrentContext(), true, resolveFunctions);
 }
 
 void Binding::initialize(

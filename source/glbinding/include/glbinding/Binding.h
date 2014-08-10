@@ -20,7 +20,7 @@ public:
 
     Binding() = delete;
 
-    static void initialize();
+    static void initialize(bool resolveFunctions = true);
     static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
 
     static void resolveFunctions();
