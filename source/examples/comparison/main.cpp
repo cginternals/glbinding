@@ -55,7 +55,7 @@ void compare()
     timer.setSteps(24 * ITERATIONS);
     
 
-    std::cout << std::endl << "test: average call times for 24 x " << ITERATIONS << " calls ..." << std::endl;
+    std::cout << std::endl << "test: average call times for " << ITERATIONS << " x 24 calls ..." << std::endl;
 
     timer.start("      glew      ");
     for (int i = 0; i < ITERATIONS; ++i)
