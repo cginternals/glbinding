@@ -17,6 +17,9 @@ public:
     void resize(int width, int height);
     void draw();
 
+    void setNumCubes(int numCubes);
+    int numCubes() const;
+
 protected:
     gl::GLint a_vertex;
     gl::GLint u_transform;

@@ -1,7 +1,8 @@
 
-#include <iostream>
-
 #include "cubescape.h"
+
+#include <iostream>
+#include <math.h>
 
 #include <glbinding/gl/gl.h>
 
@@ -37,10 +38,10 @@ CubeScape::CubeScape()
         void main()
         {
             float oneovernumcubes = 1.f / float(numcubes);
-            vec2 uv = vec2(mod(gl_InstanceID, numcubes), int(gl_InstanceID * oneovernumcubes)) * 2.0 * oneovernumcubes;
+            vec2 uv = vec2(mod(gl_InstanceID, numcubes), floor(gl_InstanceID * oneovernumcubes)) * 2.0 * oneovernumcubes;
 
-            vec3 v = 2.0 * a_vertex * oneovernumcubes;
-            v.xz += uv * 2.0 - vec2(2.0);
+            vec3 v = a_vertex * oneovernumcubes - (1.0 - oneovernumcubes);
+            v.xz  += uv;
 
             v_h = texture2D(terrain, uv * 0.6 + vec2(sin(time * 0.04), time * 0.02)).r;
             v.y += v_h;
@@ -242,7 +243,7 @@ CubeScape::CubeScape()
 
     // view
 
-    m_view = mat4::lookAt(0.f, 4.f,-4.f, 0.f, -0.6f, 0.f, 0.f, 1.f, 0.f);
+    m_view = mat4::lookAt(0.f, 1.f,-2.f, 0.f, -1.0f, 0.f, 0.f, 1.f, 0.f);
 }
 
 CubeScape::~CubeScape()
@@ -253,9 +254,18 @@ CubeScape::~CubeScape()
     glDeleteProgram(m_program);
 }
 
+void CubeScape::setNumCubes(int numCubes)
+{
+    m_numcubes = std::min(4096, std::max(1, numCubes));
+}
+int CubeScape::numCubes() const
+{
+    return m_numcubes;
+}
+
 void CubeScape::resize(int width, int height)
 {
-    m_projection = mat4::perspective(40.f, static_cast<GLfloat>(width) / static_cast<GLfloat>(height), 2.f, 8.f);
+    m_projection = mat4::perspective(40.f, static_cast<GLfloat>(width) / static_cast<GLfloat>(height), 1.f, 4.f);
 
     glViewport(0, 0, width, height);
 }
