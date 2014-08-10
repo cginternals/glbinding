@@ -88,7 +88,7 @@ int main(int, char *[])
             std::cout << "error: " << error << std::endl;
     });
 
-    Binding::initialize();
+    Binding::initialize(false); // only resolve functions that are actually used (lazy)
 
     // print some gl infos (query)
 
