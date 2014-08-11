@@ -4,7 +4,7 @@
 
 The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 
-### Usage
+#### Example-Usage
 
 ```
 #include <glbinding/gl/gl.h>
