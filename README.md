@@ -1,10 +1,9 @@
-*glbinding* is a generated C++ binding for OpenGL solely based on the new xml-based OpenGL API specification (gl.xml). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/) or [glad](https://github.com/Dav1dde/glad). 
+*glbinding* is a generated C++ binding for OpenGL solely based on the new xml-based OpenGL API specification (gl.xml). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/) or [glad](https://github.com/Dav1dde/glad). The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 
-*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-header), [lazy function resolving](#lazy-resolving), [multi-context](#multi-context) and [multi-thread](#multi-thread) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
+*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolving](#lazy-resolving), [multi-context](#multi-context) and [multi-thread](#multi-thread) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
 
-The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
-
-#### Example-Usage
+Current code written with a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
+Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
 
 ```
 #include <glbinding/gl/gl.h>
@@ -24,21 +23,42 @@ int main()
 }
 ```
 
+## Features
+
+#### Type-Safe Parameters (#type-safe-parameters)
+moo
+
+#### Per Feature API Header (#per-feature-header)
+moo
+
+#### Lazy Function Resolving (#lazy-resolving)
+moo
+
+#### Multi-Context Support (#multi-context)
+moo
+
+#### Multi-Thread Support (#multi-thread)
+moo
+
+#### Function Callbacks
+
+* Before and After Callbacks
+* Callback Scopes
+ * Global Function Callbacks (#global-callbacks)
+ * Local Function Callbacks (#local-callbacks) 
+* Parameter and Return Value Callbacks
+
+#### Meta Information (#meta-information) 
+moo
 
 
-All defined OpenGL symbols are real functions and variables, they don't rely on macros.
-It should serve as an alternative to other OpenGL bindings like [GLEW](http://glew.sourceforge.net/) and [glad](https://github.com/Dav1dde/glad).
+## Examples (#examples) 
+foo
 
 
 
-### Project health
-<a href="https://scan.coverity.com/projects/2705">
-  <img alt="Coverity Scan Build Status"
-       src="https://scan.coverity.com/projects/2705/badge.svg"/>
-</a>
 
 
-### Features
 
 Current code written with a typical C binding for OpenGL (e.g. GLEW) is fully compatible for the use with glbinding.
 Just replace all includes to the old binding with the include to glbinding and use the ```gl``` namespace.
@@ -68,6 +88,17 @@ As a user of glbinding you are able to update the gl.xml by yourself and generat
 The necessary python scripts are provided in this repository.
 
 Check out the [wiki](https://github.com/hpicgs/glbinding/wiki) for detailed examples.
+
+
+
+
+### Project health
+<a href="https://scan.coverity.com/projects/2705">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/2705/badge.svg"/>
+</a>
+
+
 
 ### Run-time dependencies
 
