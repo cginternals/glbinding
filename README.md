@@ -8,7 +8,7 @@
 Current gl code, written with a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
 Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
 
-```
+```c++
 #include <glbinding/gl/gl.h>
 #include <glbinding/Binding.h>
 
@@ -31,12 +31,12 @@ int main()
 ##### Type-Safe Parameters
 
 Every parameter of an OpenGL function expects a specific type of value and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
-```
+```c++
 glClear(GL_COLOR_BUFFER_BIT); // valid
 glClear(GL_FRAMEBUFFER);      // compile error: bitfield of group ClearBufferMask expected, got GLenum
 ```
 For bitfields there are extensively specified groups that are additionally used to enforce type-safety (a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compile error.
-```
+```c++
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
 
@@ -61,11 +61,11 @@ Furthermore, *glbinding* provides explicit, non-feature dependent headers for sp
 ##### Lazy Function Pointer Resolution
 
 By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
-```
+```c++
 glbinding::Binding::initialize(); // immediate function pointer resolution
 ```
 Alternatively, the user can decide that functions pointers are resolved only when used for the first time. This is achieved by:
-```
+```c++
 glbinding::Binding::initialize(false); // lazy function pointer resolution
 ```
 
@@ -74,12 +74,12 @@ glbinding::Binding::initialize(false); // lazy function pointer resolution
 *glbinding* has built-in support for multiple contexts. The only requirement is, that the currently active context has to be specified. This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context often result in non-meaningful communication with the OpenGL driver.
 
 To use multiple contexts, use your favorite context creation library (e.g., glut, SDL, egl, glfw, Qt) to request as much contexts as required. The functions to make a context current should be provided by this library and is not part of *glbinding* (except that you can get the current context handle). When using multiple contexts, first, each has to be initialized when active: 
-```
+```c++
 // use context library to make current, e.g., glfwMakeCurrent(...)
 glbinding::Binding::initialize();
 ```
 Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
-```
+```c++
 // use the current active context
 glbinding::Binding::useCurrentContext();               
 
@@ -112,7 +112,7 @@ The unresolved callback provides information about the (unresolved) wrapped Open
 All callbacks are currently global (per thread, per context, and per function) but are intended to become local in the future.
 
 Example for error checking:
-```
+```c++
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
@@ -130,7 +130,7 @@ setAfterCallback([](const FunctionCall &)
 ```
 
 Example for logging:
-```
+```c++
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
