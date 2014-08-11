@@ -59,8 +59,18 @@ Depending on the intended use-case, this allows to (1) limit coding to a specifi
 Furthermore, *glbinding* provides explicit, non-feature dependent headers for special values (```values.h```), booleans (```boolean.h```), and basic types (```types.h```). This allows for refined includes and can reduce compile time.
 
 
-##### Lazy Function Resolving
-moo
+##### Lazy Function Pointer Resolution
+
+With the call of
+```
+glbinding::Binding::initialize(); // immediate function pointer resolution
+```
+*glbinding* tries to bind all known OpenGL function pointers, which can consume some time.
+Alternatively, the user of *glbinding* can decide that all functions pointers are resolved when the function is used for the first time.
+This is achieved by
+```
+glbinding::Binding::initialize(false); // lazy function pointer resolution
+```
 
 ##### Multi-Context Support
 
