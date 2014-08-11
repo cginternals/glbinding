@@ -165,7 +165,6 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 
 Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and compile time information about the gl.xml and your OpenGL driver.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
-Another powerful feature is the rudimentary support for scripted OpenGL.
 
 Example list of all available OpenGL versions/features (compile time):
 ```c++
@@ -213,6 +212,7 @@ if (Meta::stringsByGL())
 }
 ```
 
+
 ##### Performance
 
 *glbinding* causes no signigicant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
@@ -220,14 +220,8 @@ if (Meta::stringsByGL())
 
 ##### Binding Generation
 
-ToDo
-
 As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
-The necessary python scripts are provided in this repository.
-
-Patching gl.xml 
-
-Check out the [wiki](https://github.com/hpicgs/glbinding/wiki) for detailed examples.
+The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
 
 
 ## Project health
