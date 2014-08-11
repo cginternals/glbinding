@@ -247,3 +247,12 @@ Optional dependencies
  * Qt for some examples
  * [GLFW 3](http://www.glfw.org/) for some examples
  * GLEW for some examples
+
+
+## Using glbinding
+
+When working with CMake, just add the glbinding path to the ```CMAKE_PREFIX_PATH``` and use ```find_package(glbinding REQUIRED)``` in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDE_DIR``` and ```GLBINDING_LIBRARIES``` can then be used for include dirs and linking the library.
+
+
+
+ 
