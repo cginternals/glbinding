@@ -23,9 +23,9 @@ int main()
 }
 ```
 
-### Features
+## Features
 
-#### Type-Safe Parameters 
+##### Type-Safe Parameters 
 
 ToDo
 * Type-safe OpenGL parameters (enums, bitfields, bitfield groups)
@@ -33,7 +33,7 @@ ToDo
   * Code completion for all allowed values
 
 
-#### Per Feature API Header
+##### Per Feature API Header
 
 Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  featured-based API subsets, each using a specialized namespace, e.g.:
 * ```functions32.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
@@ -45,22 +45,22 @@ Depending on the intended use-case, this allows to (1) limit coding to a specifi
 Furthermore, *glbinding* provides explicit, non-feature dependent headers for special values (```values.h```), booleans (```boolean.h```), and basic types (```types.h```). This allows for refined includes and can reduce compile time.
 
 
-#### Lazy Function Resolving
+##### Lazy Function Resolving
 moo
 
-#### Multi-Context Support
+##### Multi-Context Support
 
 ToDo
 * Multi-context support (explicit switch required)
 
 
-#### Multi-Thread Support
+##### Multi-Thread Support
 
 ToDo
 * Multi-threading support
 
 
-#### Function Callbacks
+##### Function Callbacks
 
 ToDo
 * Before and After Callbacks
@@ -73,7 +73,7 @@ Never forget glGetError() again
 Logging all OpenGL calls
 
 
-#### Meta Information
+##### Meta Information
 
 ToDo
 * Meta information about the generated OpenGL binding and the OpenGL runtime
@@ -87,7 +87,7 @@ ToDo
 e.g., allows e.g. to be accessed via scripts when turning on OPTION_GL_BY_STRINGS
 
 
-#### Binding Generation
+##### Binding Generation
 
 As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
 The necessary python scripts are provided in this repository.
@@ -96,34 +96,34 @@ Check out the [wiki](https://github.com/hpicgs/glbinding/wiki) for detailed exam
 
 
 
-### Examples 
+## Examples 
 
-#### callbacks 
+##### callbacks 
 
 ToDo - shows extended use of callbacks by logging every function call
 
-#### comparison
+##### comparison
 
 ToDo - glew comparison example, shows that there is no measurable overhead involved in using glbinding
 
-#### functions
+##### functions
 
 ToDo - lists functions sorted by extensions and shows supported gl versions (similar to gl extensions viewer)
 
-#### meta 
+##### meta 
 
 ToDo - shows all available meta information (depends on options)
 
-#### cubescape
+##### cubescape
 
 ToDo - little example showing basic rendering 
 
-#### qt-cubescape 
+##### qt-cubescape 
 
 ToDo - same example, but embeded into a qt-window
 
 
-### Project health
+## Project health
 
 <a href="https://scan.coverity.com/projects/2705">
   <img alt="Coverity Scan Build Status"
@@ -131,12 +131,12 @@ ToDo - same example, but embeded into a qt-window
 </a>
 
 
-### Run-time dependencies
+## Run-time dependencies
 
-The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL dynamically linked library, linked with your application.
+The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL library, dynamically linked with your application.
 
 
-### Compile-time dependencies
+## Compile-time dependencies
 
  * CMake (2.8.12)
  * C++11-Compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3)
@@ -146,17 +146,3 @@ Optional dependencies
  * Qt for some examples
  * [GLFW 3](http://www.glfw.org/) for some examples
  * GLEW for some examples
-
-
-### Development Notes
-
-If you are contributing to this project, please keep the following notes in mind:
-* Add your name and email to the AUTHORS file.
-* Follow coding conventions according to google's [C++ Style Guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml).
-* Commits should provide a meaningful  message, which uses the imperative, present tense: "change", not "changed" nor "changes", AND start with a capital letter.
-* Commits should always refer to an issue: use ```#xxx```, ```fix #xxx```, or ```close #xxx```.
-* Pull Requests are reviewed by at least one other developer on another platform.
-* Use lazy initialization as often as possible for time consuming tasks.
-* Member Variables always start with ```m_```, ```g_```, and ```s_``` (e.g.,```m_member```, ```g_global```, and ```s_static```)..
-* Interface or abstract class names always start with Abstract (e.g., ```AbstractArray```).
-* Enforce strict include sequence: cpp-related header, std, glbinding.
