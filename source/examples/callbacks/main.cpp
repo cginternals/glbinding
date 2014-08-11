@@ -44,6 +44,9 @@ int main()
 
     glfwSetErrorCallback(error);
 
+    glfwDefaultWindowHints();
+    glfwWindowHint(GLFW_VISIBLE, false);
+
     GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     if (!window)
     {
