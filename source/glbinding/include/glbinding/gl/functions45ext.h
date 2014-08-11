@@ -5,19 +5,19 @@
 #include <glbinding/gl/values.h>
 #include <glbinding/gl/boolean.h>
 
-namespace gl43ext
+namespace gl45ext
 {
 
 #include <glbinding/gl/types.inl>
 #include <glbinding/gl/boolean.inl>
 #include <glbinding/gl/values.inl>
 
-} // namespace gl43ext
+} // namespace gl45ext
 
 #include <glbinding/Binding.h>
 
 
-namespace gl43ext
+namespace gl45ext
 {
 
 inline void glAccumxOES(GLenum op, GLfixed value)
@@ -195,16 +195,6 @@ inline void glBindBufferRangeNV(GLenum target, GLuint index, GLuint buffer, GLin
     return glbinding::Binding::BindBufferRangeNV(target, index, buffer, offset, size);
 }
 
-inline void glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint * buffers)
-{
-    return glbinding::Binding::BindBuffersBase(target, first, count, buffers);
-}
-
-inline void glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizeiptr * sizes)
-{
-    return glbinding::Binding::BindBuffersRange(target, first, count, buffers, offsets, sizes);
-}
-
 inline void glBindFragDataLocationEXT(GLuint program, GLuint color, const GLchar * name)
 {
     return glbinding::Binding::BindFragDataLocationEXT(program, color, name);
@@ -223,11 +213,6 @@ inline void glBindFramebufferEXT(GLenum target, GLuint framebuffer)
 inline void glBindImageTextureEXT(GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format)
 {
     return glbinding::Binding::BindImageTextureEXT(index, texture, level, layered, layer, access, format);
-}
-
-inline void glBindImageTextures(GLuint first, GLsizei count, const GLuint * textures)
-{
-    return glbinding::Binding::BindImageTextures(first, count, textures);
 }
 
 inline GLuint glBindLightParameterEXT(GLenum light, GLenum value)
@@ -265,11 +250,6 @@ inline void glBindRenderbufferEXT(GLenum target, GLuint renderbuffer)
     return glbinding::Binding::BindRenderbufferEXT(target, renderbuffer);
 }
 
-inline void glBindSamplers(GLuint first, GLsizei count, const GLuint * samplers)
-{
-    return glbinding::Binding::BindSamplers(first, count, samplers);
-}
-
 inline GLuint glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value)
 {
     return glbinding::Binding::BindTexGenParameterEXT(unit, coord, value);
@@ -280,19 +260,9 @@ inline void glBindTextureEXT(GLenum target, GLuint texture)
     return glbinding::Binding::BindTextureEXT(target, texture);
 }
 
-inline void glBindTextureUnit(GLuint unit, GLuint texture)
-{
-    return glbinding::Binding::BindTextureUnit(unit, texture);
-}
-
 inline GLuint glBindTextureUnitParameterEXT(GLenum unit, GLenum value)
 {
     return glbinding::Binding::BindTextureUnitParameterEXT(unit, value);
-}
-
-inline void glBindTextures(GLuint first, GLsizei count, const GLuint * textures)
-{
-    return glbinding::Binding::BindTextures(first, count, textures);
 }
 
 inline void glBindTransformFeedbackNV(GLenum target, GLuint id)
@@ -303,11 +273,6 @@ inline void glBindTransformFeedbackNV(GLenum target, GLuint id)
 inline void glBindVertexArrayAPPLE(GLuint array)
 {
     return glbinding::Binding::BindVertexArrayAPPLE(array);
-}
-
-inline void glBindVertexBuffers(GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizei * strides)
-{
-    return glbinding::Binding::BindVertexBuffers(first, count, buffers, offsets, strides);
 }
 
 inline void glBindVertexShaderEXT(GLuint id)
@@ -475,11 +440,6 @@ inline void glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint sr
     return glbinding::Binding::BlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
-inline void glBlitNamedFramebuffer(GLuint readFramebuffer, GLuint drawFramebuffer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter)
-{
-    return glbinding::Binding::BlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-}
-
 inline void glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length)
 {
     return glbinding::Binding::BufferAddressRangeNV(pname, index, address, length);
@@ -500,11 +460,6 @@ inline void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param)
     return glbinding::Binding::BufferParameteriAPPLE(target, pname, param);
 }
 
-inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
-{
-    return glbinding::Binding::BufferStorage(target, size, data, flags);
-}
-
 inline void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void * data)
 {
     return glbinding::Binding::BufferSubDataARB(target, offset, size, data);
@@ -512,17 +467,12 @@ inline void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB 
 
 inline GLenum glCheckFramebufferStatusEXT(GLenum target)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::CheckFramebufferStatusEXT(target));
-}
-
-inline GLenum glCheckNamedFramebufferStatus(GLuint framebuffer, GLenum target)
-{
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::CheckNamedFramebufferStatus(framebuffer, target));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::CheckFramebufferStatusEXT(target));
 }
 
 inline GLenum glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::CheckNamedFramebufferStatusEXT(framebuffer, target));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::CheckNamedFramebufferStatusEXT(framebuffer, target));
 }
 
 inline void glClampColorARB(GLenum target, GLenum clamp)
@@ -565,54 +515,14 @@ inline void glClearDepthxOES(GLfixed depth)
     return glbinding::Binding::ClearDepthxOES(depth);
 }
 
-inline void glClearNamedBufferData(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void * data)
-{
-    return glbinding::Binding::ClearNamedBufferData(buffer, internalformat, format, type, data);
-}
-
 inline void glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const void * data)
 {
     return glbinding::Binding::ClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
 }
 
-inline void glClearNamedBufferSubData(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizei size, GLenum format, GLenum type, const void * data)
-{
-    return glbinding::Binding::ClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data);
-}
-
 inline void glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLsizeiptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data)
 {
     return glbinding::Binding::ClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data);
-}
-
-inline void glClearNamedFramebufferfi(GLuint framebuffer, GLenum buffer, const GLfloat depth, GLint stencil)
-{
-    return glbinding::Binding::ClearNamedFramebufferfi(framebuffer, buffer, depth, stencil);
-}
-
-inline void glClearNamedFramebufferfv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLfloat * value)
-{
-    return glbinding::Binding::ClearNamedFramebufferfv(framebuffer, buffer, drawbuffer, value);
-}
-
-inline void glClearNamedFramebufferiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLint * value)
-{
-    return glbinding::Binding::ClearNamedFramebufferiv(framebuffer, buffer, drawbuffer, value);
-}
-
-inline void glClearNamedFramebufferuiv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLuint * value)
-{
-    return glbinding::Binding::ClearNamedFramebufferuiv(framebuffer, buffer, drawbuffer, value);
-}
-
-inline void glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const void * data)
-{
-    return glbinding::Binding::ClearTexImage(texture, level, format, type, data);
-}
-
-inline void glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * data)
-{
-    return glbinding::Binding::ClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
 }
 
 inline void glClientActiveTextureARB(GLenum texture)
@@ -628,11 +538,6 @@ inline void glClientActiveVertexStreamATI(GLenum stream)
 inline void glClientAttribDefaultEXT(ClientAttribMask mask)
 {
     return glbinding::Binding::ClientAttribDefaultEXT(mask);
-}
-
-inline void glClipControl(GLenum origin, GLenum depth)
-{
-    return glbinding::Binding::ClipControl(origin, depth);
 }
 
 inline void glClipPlanefOES(GLenum plane, const GLfloat * equation)
@@ -930,29 +835,14 @@ inline void glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint l
     return glbinding::Binding::CompressedTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, imageSize, bits);
 }
 
-inline void glCompressedTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data)
-{
-    return glbinding::Binding::CompressedTextureSubImage1D(texture, level, xoffset, width, format, imageSize, data);
-}
-
 inline void glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * bits)
 {
     return glbinding::Binding::CompressedTextureSubImage1DEXT(texture, target, level, xoffset, width, format, imageSize, bits);
 }
 
-inline void glCompressedTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data)
-{
-    return glbinding::Binding::CompressedTextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, imageSize, data);
-}
-
 inline void glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * bits)
 {
     return glbinding::Binding::CompressedTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits);
-}
-
-inline void glCompressedTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data)
-{
-    return glbinding::Binding::CompressedTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 }
 
 inline void glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * bits)
@@ -1100,11 +990,6 @@ inline void glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint lev
     return glbinding::Binding::CopyMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
 
-inline void glCopyNamedBufferSubData(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizei size)
-{
-    return glbinding::Binding::CopyNamedBufferSubData(readBuffer, writeBuffer, readOffset, writeOffset, size);
-}
-
 inline void glCopyPathNV(GLuint resultPath, GLuint srcPath)
 {
     return glbinding::Binding::CopyPathNV(resultPath, srcPath);
@@ -1145,29 +1030,14 @@ inline void glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, 
     return glbinding::Binding::CopyTextureImage2DEXT(texture, target, level, internalformat, x, y, width, height, border);
 }
 
-inline void glCopyTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
-{
-    return glbinding::Binding::CopyTextureSubImage1D(texture, level, xoffset, x, y, width);
-}
-
 inline void glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
     return glbinding::Binding::CopyTextureSubImage1DEXT(texture, target, level, xoffset, x, y, width);
 }
 
-inline void glCopyTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
-{
-    return glbinding::Binding::CopyTextureSubImage2D(texture, level, xoffset, yoffset, x, y, width, height);
-}
-
 inline void glCopyTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
     return glbinding::Binding::CopyTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, x, y, width, height);
-}
-
-inline void glCopyTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
-{
-    return glbinding::Binding::CopyTextureSubImage3D(texture, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
 
 inline void glCopyTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
@@ -1195,16 +1065,6 @@ inline void glCoverStrokePathNV(GLuint path, GLenum coverMode)
     return glbinding::Binding::CoverStrokePathNV(path, coverMode);
 }
 
-inline void glCreateBuffers(GLsizei n, GLuint * buffers)
-{
-    return glbinding::Binding::CreateBuffers(n, buffers);
-}
-
-inline void glCreateFramebuffers(GLsizei n, GLuint * framebuffers)
-{
-    return glbinding::Binding::CreateFramebuffers(n, framebuffers);
-}
-
 inline void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle)
 {
     return glbinding::Binding::CreatePerfQueryINTEL(queryId, queryHandle);
@@ -1213,26 +1073,6 @@ inline void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle)
 inline GLhandleARB glCreateProgramObjectARB()
 {
     return glbinding::Binding::CreateProgramObjectARB();
-}
-
-inline void glCreateProgramPipelines(GLsizei n, GLuint * pipelines)
-{
-    return glbinding::Binding::CreateProgramPipelines(n, pipelines);
-}
-
-inline void glCreateQueries(GLenum target, GLsizei n, GLuint * ids)
-{
-    return glbinding::Binding::CreateQueries(target, n, ids);
-}
-
-inline void glCreateRenderbuffers(GLsizei n, GLuint * renderbuffers)
-{
-    return glbinding::Binding::CreateRenderbuffers(n, renderbuffers);
-}
-
-inline void glCreateSamplers(GLsizei n, GLuint * samplers)
-{
-    return glbinding::Binding::CreateSamplers(n, samplers);
 }
 
 inline GLhandleARB glCreateShaderObjectARB(GLenum shaderType)
@@ -1248,21 +1088,6 @@ inline GLuint glCreateShaderProgramEXT(GLenum type, const GLchar * string)
 inline GLsync glCreateSyncFromCLeventARB(_cl_context * context, _cl_event * event, UnusedMask flags)
 {
     return glbinding::Binding::CreateSyncFromCLeventARB(context, event, flags);
-}
-
-inline void glCreateTextures(GLenum target, GLsizei n, GLuint * textures)
-{
-    return glbinding::Binding::CreateTextures(target, n, textures);
-}
-
-inline void glCreateTransformFeedbacks(GLsizei n, GLuint * ids)
-{
-    return glbinding::Binding::CreateTransformFeedbacks(n, ids);
-}
-
-inline void glCreateVertexArrays(GLsizei n, GLuint * arrays)
-{
-    return glbinding::Binding::CreateVertexArrays(n, arrays);
 }
 
 inline void glCullParameterdvEXT(GLenum pname, GLdouble * params)
@@ -1485,11 +1310,6 @@ inline void glDisableVariantClientStateEXT(GLuint id)
     return glbinding::Binding::DisableVariantClientStateEXT(id);
 }
 
-inline void glDisableVertexArrayAttrib(GLuint vaobj, GLuint index)
-{
-    return glbinding::Binding::DisableVertexArrayAttrib(vaobj, index);
-}
-
 inline void glDisableVertexArrayAttribEXT(GLuint vaobj, GLuint index)
 {
     return glbinding::Binding::DisableVertexArrayAttribEXT(vaobj, index);
@@ -1633,11 +1453,6 @@ inline void glEnableIndexedEXT(GLenum target, GLuint index)
 inline void glEnableVariantClientStateEXT(GLuint id)
 {
     return glbinding::Binding::EnableVariantClientStateEXT(id);
-}
-
-inline void glEnableVertexArrayAttrib(GLuint vaobj, GLuint index)
-{
-    return glbinding::Binding::EnableVertexArrayAttrib(vaobj, index);
 }
 
 inline void glEnableVertexArrayAttribEXT(GLuint vaobj, GLuint index)
@@ -1788,11 +1603,6 @@ inline void glFinishTextureSUNX()
 inline void glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsizeiptr size)
 {
     return glbinding::Binding::FlushMappedBufferRangeAPPLE(target, offset, size);
-}
-
-inline void glFlushMappedNamedBufferRange(GLuint buffer, GLintptr offset, GLsizei length)
-{
-    return glbinding::Binding::FlushMappedNamedBufferRange(buffer, offset, length);
 }
 
 inline void glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length)
@@ -2145,11 +1955,6 @@ inline void glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target)
     return glbinding::Binding::GenerateMultiTexMipmapEXT(texunit, target);
 }
 
-inline void glGenerateTextureMipmap(GLuint texture)
-{
-    return glbinding::Binding::GenerateTextureMipmap(texture);
-}
-
 inline void glGenerateTextureMipmapEXT(GLuint texture, GLenum target)
 {
     return glbinding::Binding::GenerateTextureMipmapEXT(texture, target);
@@ -2305,19 +2110,9 @@ inline void glGetCompressedTexImageARB(GLenum target, GLint level, void * img)
     return glbinding::Binding::GetCompressedTexImageARB(target, level, img);
 }
 
-inline void glGetCompressedTextureImage(GLuint texture, GLint level, GLsizei bufSize, void * pixels)
-{
-    return glbinding::Binding::GetCompressedTextureImage(texture, level, bufSize, pixels);
-}
-
 inline void glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, void * img)
 {
     return glbinding::Binding::GetCompressedTextureImageEXT(texture, target, lod, img);
-}
-
-inline void glGetCompressedTextureSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei bufSize, void * pixels)
-{
-    return glbinding::Binding::GetCompressedTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, bufSize, pixels);
 }
 
 inline void glGetConvolutionFilter(GLenum target, GLenum format, GLenum type, void * image)
@@ -2455,14 +2250,9 @@ inline void glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLi
     return glbinding::Binding::GetFramebufferParameterivEXT(framebuffer, pname, params);
 }
 
-inline GLenum glGetGraphicsResetStatus()
-{
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::GetGraphicsResetStatus());
-}
-
 inline GLenum glGetGraphicsResetStatusARB()
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::GetGraphicsResetStatusARB());
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::GetGraphicsResetStatusARB());
 }
 
 inline GLhandleARB glGetHandleARB(GLenum pname)
@@ -2725,16 +2515,6 @@ inline void glGetMultisamplefvNV(GLenum pname, GLuint index, GLfloat * val)
     return glbinding::Binding::GetMultisamplefvNV(pname, index, val);
 }
 
-inline void glGetNamedBufferParameteri64v(GLuint buffer, GLenum pname, GLint64 * params)
-{
-    return glbinding::Binding::GetNamedBufferParameteri64v(buffer, pname, params);
-}
-
-inline void glGetNamedBufferParameteriv(GLuint buffer, GLenum pname, GLint * params)
-{
-    return glbinding::Binding::GetNamedBufferParameteriv(buffer, pname, params);
-}
-
 inline void glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetNamedBufferParameterivEXT(buffer, pname, params);
@@ -2745,19 +2525,9 @@ inline void glGetNamedBufferParameterui64vNV(GLuint buffer, GLenum pname, GLuint
     return glbinding::Binding::GetNamedBufferParameterui64vNV(buffer, pname, params);
 }
 
-inline void glGetNamedBufferPointerv(GLuint buffer, GLenum pname, void ** params)
-{
-    return glbinding::Binding::GetNamedBufferPointerv(buffer, pname, params);
-}
-
 inline void glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, void ** params)
 {
     return glbinding::Binding::GetNamedBufferPointervEXT(buffer, pname, params);
-}
-
-inline void glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizei size, void * data)
-{
-    return glbinding::Binding::GetNamedBufferSubData(buffer, offset, size, data);
 }
 
 inline void glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, void * data)
@@ -2765,19 +2535,9 @@ inline void glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeipt
     return glbinding::Binding::GetNamedBufferSubDataEXT(buffer, offset, size, data);
 }
 
-inline void glGetNamedFramebufferAttachmentParameteriv(GLuint framebuffer, GLenum attachment, GLenum pname, GLint * params)
-{
-    return glbinding::Binding::GetNamedFramebufferAttachmentParameteriv(framebuffer, attachment, pname, params);
-}
-
 inline void glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetNamedFramebufferAttachmentParameterivEXT(framebuffer, attachment, pname, params);
-}
-
-inline void glGetNamedFramebufferParameteriv(GLuint framebuffer, GLenum pname, GLint * param)
-{
-    return glbinding::Binding::GetNamedFramebufferParameteriv(framebuffer, pname, param);
 }
 
 inline void glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint * params)
@@ -2813,11 +2573,6 @@ inline void glGetNamedProgramStringEXT(GLuint program, GLenum target, GLenum pna
 inline void glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetNamedProgramivEXT(program, target, pname, params);
-}
-
-inline void glGetNamedRenderbufferParameteriv(GLuint renderbuffer, GLenum pname, GLint * params)
-{
-    return glbinding::Binding::GetNamedRenderbufferParameteriv(renderbuffer, pname, params);
 }
 
 inline void glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint * params)
@@ -3235,19 +2990,9 @@ inline GLuint64 glGetTextureHandleNV(GLuint texture)
     return glbinding::Binding::GetTextureHandleNV(texture);
 }
 
-inline void glGetTextureImage(GLuint texture, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * pixels)
-{
-    return glbinding::Binding::GetTextureImage(texture, level, format, type, bufSize, pixels);
-}
-
 inline void glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, void * pixels)
 {
     return glbinding::Binding::GetTextureImageEXT(texture, target, level, format, type, pixels);
-}
-
-inline void glGetTextureLevelParameterfv(GLuint texture, GLint level, GLenum pname, GLfloat * params)
-{
-    return glbinding::Binding::GetTextureLevelParameterfv(texture, level, pname, params);
 }
 
 inline void glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat * params)
@@ -3255,19 +3000,9 @@ inline void glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint
     return glbinding::Binding::GetTextureLevelParameterfvEXT(texture, target, level, pname, params);
 }
 
-inline void glGetTextureLevelParameteriv(GLuint texture, GLint level, GLenum pname, GLint * params)
-{
-    return glbinding::Binding::GetTextureLevelParameteriv(texture, level, pname, params);
-}
-
 inline void glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetTextureLevelParameterivEXT(texture, target, level, pname, params);
-}
-
-inline void glGetTextureParameterIiv(GLuint texture, GLenum pname, GLint * params)
-{
-    return glbinding::Binding::GetTextureParameterIiv(texture, pname, params);
 }
 
 inline void glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLint * params)
@@ -3275,29 +3010,14 @@ inline void glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pn
     return glbinding::Binding::GetTextureParameterIivEXT(texture, target, pname, params);
 }
 
-inline void glGetTextureParameterIuiv(GLuint texture, GLenum pname, GLuint * params)
-{
-    return glbinding::Binding::GetTextureParameterIuiv(texture, pname, params);
-}
-
 inline void glGetTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, GLuint * params)
 {
     return glbinding::Binding::GetTextureParameterIuivEXT(texture, target, pname, params);
 }
 
-inline void glGetTextureParameterfv(GLuint texture, GLenum pname, GLfloat * params)
-{
-    return glbinding::Binding::GetTextureParameterfv(texture, pname, params);
-}
-
 inline void glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat * params)
 {
     return glbinding::Binding::GetTextureParameterfvEXT(texture, target, pname, params);
-}
-
-inline void glGetTextureParameteriv(GLuint texture, GLenum pname, GLint * params)
-{
-    return glbinding::Binding::GetTextureParameteriv(texture, pname, params);
 }
 
 inline void glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLint * params)
@@ -3315,11 +3035,6 @@ inline GLuint64 glGetTextureSamplerHandleNV(GLuint texture, GLuint sampler)
     return glbinding::Binding::GetTextureSamplerHandleNV(texture, sampler);
 }
 
-inline void glGetTextureSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLsizei bufSize, void * pixels)
-{
-    return glbinding::Binding::GetTextureSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, bufSize, pixels);
-}
-
 inline void glGetTrackMatrixivNV(GLenum target, GLuint address, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetTrackMatrixivNV(target, address, pname, params);
@@ -3333,21 +3048,6 @@ inline void glGetTransformFeedbackVaryingEXT(GLuint program, GLuint index, GLsiz
 inline void glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint * location)
 {
     return glbinding::Binding::GetTransformFeedbackVaryingNV(program, index, location);
-}
-
-inline void glGetTransformFeedbacki64_v(GLuint xfb, GLenum pname, GLuint index, GLint64 * param)
-{
-    return glbinding::Binding::GetTransformFeedbacki64_v(xfb, pname, index, param);
-}
-
-inline void glGetTransformFeedbacki_v(GLuint xfb, GLenum pname, GLuint index, GLint * param)
-{
-    return glbinding::Binding::GetTransformFeedbacki_v(xfb, pname, index, param);
-}
-
-inline void glGetTransformFeedbackiv(GLuint xfb, GLenum pname, GLint * param)
-{
-    return glbinding::Binding::GetTransformFeedbackiv(xfb, pname, param);
 }
 
 inline GLint glGetUniformBufferSizeEXT(GLuint program, GLint location)
@@ -3425,16 +3125,6 @@ inline GLint glGetVaryingLocationNV(GLuint program, const GLchar * name)
     return glbinding::Binding::GetVaryingLocationNV(program, name);
 }
 
-inline void glGetVertexArrayIndexed64iv(GLuint vaobj, GLuint index, GLenum pname, GLint64 * param)
-{
-    return glbinding::Binding::GetVertexArrayIndexed64iv(vaobj, index, pname, param);
-}
-
-inline void glGetVertexArrayIndexediv(GLuint vaobj, GLuint index, GLenum pname, GLint * param)
-{
-    return glbinding::Binding::GetVertexArrayIndexediv(vaobj, index, pname, param);
-}
-
 inline void glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint * param)
 {
     return glbinding::Binding::GetVertexArrayIntegeri_vEXT(vaobj, index, pname, param);
@@ -3453,11 +3143,6 @@ inline void glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pna
 inline void glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, void ** param)
 {
     return glbinding::Binding::GetVertexArrayPointervEXT(vaobj, pname, param);
-}
-
-inline void glGetVertexArrayiv(GLuint vaobj, GLenum pname, GLint * param)
-{
-    return glbinding::Binding::GetVertexArrayiv(vaobj, pname, param);
 }
 
 inline void glGetVertexAttribArrayObjectfvATI(GLuint index, GLenum pname, GLfloat * params)
@@ -3580,19 +3265,9 @@ inline void glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint * params)
     return glbinding::Binding::GetVideouivNV(video_slot, pname, params);
 }
 
-inline void glGetnColorTable(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table)
-{
-    return glbinding::Binding::GetnColorTable(target, format, type, bufSize, table);
-}
-
 inline void glGetnColorTableARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table)
 {
     return glbinding::Binding::GetnColorTableARB(target, format, type, bufSize, table);
-}
-
-inline void glGetnCompressedTexImage(GLenum target, GLint lod, GLsizei bufSize, void * pixels)
-{
-    return glbinding::Binding::GetnCompressedTexImage(target, lod, bufSize, pixels);
 }
 
 inline void glGetnCompressedTexImageARB(GLenum target, GLint lod, GLsizei bufSize, void * img)
@@ -3600,19 +3275,9 @@ inline void glGetnCompressedTexImageARB(GLenum target, GLint lod, GLsizei bufSiz
     return glbinding::Binding::GetnCompressedTexImageARB(target, lod, bufSize, img);
 }
 
-inline void glGetnConvolutionFilter(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * image)
-{
-    return glbinding::Binding::GetnConvolutionFilter(target, format, type, bufSize, image);
-}
-
 inline void glGetnConvolutionFilterARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * image)
 {
     return glbinding::Binding::GetnConvolutionFilterARB(target, format, type, bufSize, image);
-}
-
-inline void glGetnHistogram(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values)
-{
-    return glbinding::Binding::GetnHistogram(target, reset, format, type, bufSize, values);
 }
 
 inline void glGetnHistogramARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values)
@@ -3620,19 +3285,9 @@ inline void glGetnHistogramARB(GLenum target, GLboolean reset, GLenum format, GL
     return glbinding::Binding::GetnHistogramARB(target, reset, format, type, bufSize, values);
 }
 
-inline void glGetnMapdv(GLenum target, GLenum query, GLsizei bufSize, GLdouble * v)
-{
-    return glbinding::Binding::GetnMapdv(target, query, bufSize, v);
-}
-
 inline void glGetnMapdvARB(GLenum target, GLenum query, GLsizei bufSize, GLdouble * v)
 {
     return glbinding::Binding::GetnMapdvARB(target, query, bufSize, v);
-}
-
-inline void glGetnMapfv(GLenum target, GLenum query, GLsizei bufSize, GLfloat * v)
-{
-    return glbinding::Binding::GetnMapfv(target, query, bufSize, v);
 }
 
 inline void glGetnMapfvARB(GLenum target, GLenum query, GLsizei bufSize, GLfloat * v)
@@ -3640,19 +3295,9 @@ inline void glGetnMapfvARB(GLenum target, GLenum query, GLsizei bufSize, GLfloat
     return glbinding::Binding::GetnMapfvARB(target, query, bufSize, v);
 }
 
-inline void glGetnMapiv(GLenum target, GLenum query, GLsizei bufSize, GLint * v)
-{
-    return glbinding::Binding::GetnMapiv(target, query, bufSize, v);
-}
-
 inline void glGetnMapivARB(GLenum target, GLenum query, GLsizei bufSize, GLint * v)
 {
     return glbinding::Binding::GetnMapivARB(target, query, bufSize, v);
-}
-
-inline void glGetnMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values)
-{
-    return glbinding::Binding::GetnMinmax(target, reset, format, type, bufSize, values);
 }
 
 inline void glGetnMinmaxARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, void * values)
@@ -3660,19 +3305,9 @@ inline void glGetnMinmaxARB(GLenum target, GLboolean reset, GLenum format, GLenu
     return glbinding::Binding::GetnMinmaxARB(target, reset, format, type, bufSize, values);
 }
 
-inline void glGetnPixelMapfv(GLenum map, GLsizei bufSize, GLfloat * values)
-{
-    return glbinding::Binding::GetnPixelMapfv(map, bufSize, values);
-}
-
 inline void glGetnPixelMapfvARB(GLenum map, GLsizei bufSize, GLfloat * values)
 {
     return glbinding::Binding::GetnPixelMapfvARB(map, bufSize, values);
-}
-
-inline void glGetnPixelMapuiv(GLenum map, GLsizei bufSize, GLuint * values)
-{
-    return glbinding::Binding::GetnPixelMapuiv(map, bufSize, values);
 }
 
 inline void glGetnPixelMapuivARB(GLenum map, GLsizei bufSize, GLuint * values)
@@ -3680,19 +3315,9 @@ inline void glGetnPixelMapuivARB(GLenum map, GLsizei bufSize, GLuint * values)
     return glbinding::Binding::GetnPixelMapuivARB(map, bufSize, values);
 }
 
-inline void glGetnPixelMapusv(GLenum map, GLsizei bufSize, GLushort * values)
-{
-    return glbinding::Binding::GetnPixelMapusv(map, bufSize, values);
-}
-
 inline void glGetnPixelMapusvARB(GLenum map, GLsizei bufSize, GLushort * values)
 {
     return glbinding::Binding::GetnPixelMapusvARB(map, bufSize, values);
-}
-
-inline void glGetnPolygonStipple(GLsizei bufSize, GLubyte * pattern)
-{
-    return glbinding::Binding::GetnPolygonStipple(bufSize, pattern);
 }
 
 inline void glGetnPolygonStippleARB(GLsizei bufSize, GLubyte * pattern)
@@ -3700,19 +3325,9 @@ inline void glGetnPolygonStippleARB(GLsizei bufSize, GLubyte * pattern)
     return glbinding::Binding::GetnPolygonStippleARB(bufSize, pattern);
 }
 
-inline void glGetnSeparableFilter(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, void * row, GLsizei columnBufSize, void * column, void * span)
-{
-    return glbinding::Binding::GetnSeparableFilter(target, format, type, rowBufSize, row, columnBufSize, column, span);
-}
-
 inline void glGetnSeparableFilterARB(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, void * row, GLsizei columnBufSize, void * column, void * span)
 {
     return glbinding::Binding::GetnSeparableFilterARB(target, format, type, rowBufSize, row, columnBufSize, column, span);
-}
-
-inline void glGetnTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * pixels)
-{
-    return glbinding::Binding::GetnTexImage(target, level, format, type, bufSize, pixels);
 }
 
 inline void glGetnTexImageARB(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, void * img)
@@ -3720,19 +3335,9 @@ inline void glGetnTexImageARB(GLenum target, GLint level, GLenum format, GLenum 
     return glbinding::Binding::GetnTexImageARB(target, level, format, type, bufSize, img);
 }
 
-inline void glGetnUniformdv(GLuint program, GLint location, GLsizei bufSize, GLdouble * params)
-{
-    return glbinding::Binding::GetnUniformdv(program, location, bufSize, params);
-}
-
 inline void glGetnUniformdvARB(GLuint program, GLint location, GLsizei bufSize, GLdouble * params)
 {
     return glbinding::Binding::GetnUniformdvARB(program, location, bufSize, params);
-}
-
-inline void glGetnUniformfv(GLuint program, GLint location, GLsizei bufSize, GLfloat * params)
-{
-    return glbinding::Binding::GetnUniformfv(program, location, bufSize, params);
 }
 
 inline void glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, GLfloat * params)
@@ -3740,19 +3345,9 @@ inline void glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, 
     return glbinding::Binding::GetnUniformfvARB(program, location, bufSize, params);
 }
 
-inline void glGetnUniformiv(GLuint program, GLint location, GLsizei bufSize, GLint * params)
-{
-    return glbinding::Binding::GetnUniformiv(program, location, bufSize, params);
-}
-
 inline void glGetnUniformivARB(GLuint program, GLint location, GLsizei bufSize, GLint * params)
 {
     return glbinding::Binding::GetnUniformivARB(program, location, bufSize, params);
-}
-
-inline void glGetnUniformuiv(GLuint program, GLint location, GLsizei bufSize, GLuint * params)
-{
-    return glbinding::Binding::GetnUniformuiv(program, location, bufSize, params);
 }
 
 inline void glGetnUniformuivARB(GLuint program, GLint location, GLsizei bufSize, GLuint * params)
@@ -3898,16 +3493,6 @@ inline void glInstrumentsBufferSGIX(GLsizei size, GLint * buffer)
 inline void glInterpolatePathsNV(GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight)
 {
     return glbinding::Binding::InterpolatePathsNV(resultPath, pathA, pathB, weight);
-}
-
-inline void glInvalidateNamedFramebufferData(GLuint framebuffer, GLsizei numAttachments, const GLenum * attachments)
-{
-    return glbinding::Binding::InvalidateNamedFramebufferData(framebuffer, numAttachments, attachments);
-}
-
-inline void glInvalidateNamedFramebufferSubData(GLuint framebuffer, GLsizei numAttachments, const GLenum * attachments, GLint x, GLint y, GLsizei width, GLsizei height)
-{
-    return glbinding::Binding::InvalidateNamedFramebufferSubData(framebuffer, numAttachments, attachments, x, y, width, height);
 }
 
 inline GLboolean glIsAsyncMarkerSGIX(GLuint marker)
@@ -4235,19 +3820,9 @@ inline void glMapGrid2xOES(GLint n, GLfixed u1, GLfixed u2, GLfixed v1, GLfixed 
     return glbinding::Binding::MapGrid2xOES(n, u1, u2, v1, v2);
 }
 
-inline void * glMapNamedBuffer(GLuint buffer, GLenum access)
-{
-    return glbinding::Binding::MapNamedBuffer(buffer, access);
-}
-
 inline void * glMapNamedBufferEXT(GLuint buffer, GLenum access)
 {
     return glbinding::Binding::MapNamedBufferEXT(buffer, access);
-}
-
-inline void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizei length, BufferAccessMask access)
-{
-    return glbinding::Binding::MapNamedBufferRange(buffer, offset, length, access);
 }
 
 inline void * glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
@@ -4448,11 +4023,6 @@ inline void glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble 
 inline void glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
     return glbinding::Binding::MatrixTranslatefEXT(mode, x, y, z);
-}
-
-inline void glMemoryBarrierByRegion(MemoryBarrierMask barriers)
-{
-    return glbinding::Binding::MemoryBarrierByRegion(barriers);
 }
 
 inline void glMemoryBarrierEXT(MemoryBarrierMask barriers)
@@ -4970,11 +4540,6 @@ inline void glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, 
     return glbinding::Binding::MultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
 
-inline void glNamedBufferData(GLuint buffer, GLsizei size, const void * data, GLenum usage)
-{
-    return glbinding::Binding::NamedBufferData(buffer, size, data, usage);
-}
-
 inline void glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage)
 {
     return glbinding::Binding::NamedBufferDataEXT(buffer, size, data, usage);
@@ -4990,19 +4555,9 @@ inline void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsiz
     return glbinding::Binding::NamedBufferPageCommitmentEXT(buffer, offset, size, commit);
 }
 
-inline void glNamedBufferStorage(GLuint buffer, GLsizei size, const void * data, MapBufferUsageMask flags)
-{
-    return glbinding::Binding::NamedBufferStorage(buffer, size, data, flags);
-}
-
 inline void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
 {
     return glbinding::Binding::NamedBufferStorageEXT(buffer, size, data, flags);
-}
-
-inline void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizei size, const void * data)
-{
-    return glbinding::Binding::NamedBufferSubData(buffer, offset, size, data);
 }
 
 inline void glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data)
@@ -5015,44 +4570,14 @@ inline void glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, G
     return glbinding::Binding::NamedCopyBufferSubDataEXT(readBuffer, writeBuffer, readOffset, writeOffset, size);
 }
 
-inline void glNamedFramebufferDrawBuffer(GLuint framebuffer, GLenum buf)
-{
-    return glbinding::Binding::NamedFramebufferDrawBuffer(framebuffer, buf);
-}
-
-inline void glNamedFramebufferDrawBuffers(GLuint framebuffer, GLsizei n, const GLenum * bufs)
-{
-    return glbinding::Binding::NamedFramebufferDrawBuffers(framebuffer, n, bufs);
-}
-
-inline void glNamedFramebufferParameteri(GLuint framebuffer, GLenum pname, GLint param)
-{
-    return glbinding::Binding::NamedFramebufferParameteri(framebuffer, pname, param);
-}
-
 inline void glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param)
 {
     return glbinding::Binding::NamedFramebufferParameteriEXT(framebuffer, pname, param);
 }
 
-inline void glNamedFramebufferReadBuffer(GLuint framebuffer, GLenum src)
-{
-    return glbinding::Binding::NamedFramebufferReadBuffer(framebuffer, src);
-}
-
-inline void glNamedFramebufferRenderbuffer(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
-{
-    return glbinding::Binding::NamedFramebufferRenderbuffer(framebuffer, attachment, renderbuffertarget, renderbuffer);
-}
-
 inline void glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
     return glbinding::Binding::NamedFramebufferRenderbufferEXT(framebuffer, attachment, renderbuffertarget, renderbuffer);
-}
-
-inline void glNamedFramebufferTexture(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
-{
-    return glbinding::Binding::NamedFramebufferTexture(framebuffer, attachment, texture, level);
 }
 
 inline void glNamedFramebufferTexture1DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
@@ -5078,11 +4603,6 @@ inline void glNamedFramebufferTextureEXT(GLuint framebuffer, GLenum attachment, 
 inline void glNamedFramebufferTextureFaceEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
     return glbinding::Binding::NamedFramebufferTextureFaceEXT(framebuffer, attachment, texture, level, face);
-}
-
-inline void glNamedFramebufferTextureLayer(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
-{
-    return glbinding::Binding::NamedFramebufferTextureLayer(framebuffer, attachment, texture, level, layer);
 }
 
 inline void glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
@@ -5150,19 +4670,9 @@ inline void glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format
     return glbinding::Binding::NamedProgramStringEXT(program, target, format, len, string);
 }
 
-inline void glNamedRenderbufferStorage(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
-{
-    return glbinding::Binding::NamedRenderbufferStorage(renderbuffer, internalformat, width, height);
-}
-
 inline void glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
 {
     return glbinding::Binding::NamedRenderbufferStorageEXT(renderbuffer, internalformat, width, height);
-}
-
-inline void glNamedRenderbufferStorageMultisample(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
-{
-    return glbinding::Binding::NamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height);
 }
 
 inline void glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
@@ -5287,12 +4797,12 @@ inline void glNormalStream3svATI(GLenum stream, const GLshort * coords)
 
 inline GLenum glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::ObjectPurgeableAPPLE(objectType, name, option));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::ObjectPurgeableAPPLE(objectType, name, option));
 }
 
 inline GLenum glObjectUnpurgeableAPPLE(GLenum objectType, GLuint name, GLenum option)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::ObjectUnpurgeableAPPLE(objectType, name, option));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::ObjectUnpurgeableAPPLE(objectType, name, option));
 }
 
 inline void glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f)
@@ -5357,12 +4867,12 @@ inline void glPathFogGenNV(GLenum genMode)
 
 inline GLenum glPathGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::PathGlyphIndexArrayNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::PathGlyphIndexArrayNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale));
 }
 
 inline GLenum glPathGlyphIndexRangeNV(GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint pathParameterTemplate, GLfloat emScale, GLuint_array_2 baseAndCount)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::PathGlyphIndexRangeNV(fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::PathGlyphIndexRangeNV(fontTarget, fontName, fontStyle, pathParameterTemplate, emScale, baseAndCount));
 }
 
 inline void glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const void * fontName, PathFontStyle fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
@@ -5377,7 +4887,7 @@ inline void glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const void *
 
 inline GLenum glPathMemoryGlyphIndexArrayNV(GLuint firstPathName, GLenum fontTarget, GLsizeiptr fontSize, const void * fontData, GLsizei faceIndex, GLuint firstGlyphIndex, GLsizei numGlyphs, GLuint pathParameterTemplate, GLfloat emScale)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::PathMemoryGlyphIndexArrayNV(firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::PathMemoryGlyphIndexArrayNV(firstPathName, fontTarget, fontSize, fontData, faceIndex, firstGlyphIndex, numGlyphs, pathParameterTemplate, emScale));
 }
 
 inline void glPathParameterfNV(GLuint path, GLenum pname, GLfloat value)
@@ -6197,7 +5707,7 @@ inline void glPushGroupMarkerEXT(GLsizei length, const GLchar * marker)
 
 inline GLbitfield glQueryMatrixxOES(GLfixed * mantissa, GLint * exponent)
 {
-    return static_cast<gl43ext::GLbitfield>(glbinding::Binding::QueryMatrixxOES(mantissa, exponent));
+    return static_cast<gl45ext::GLbitfield>(glbinding::Binding::QueryMatrixxOES(mantissa, exponent));
 }
 
 inline void glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint param)
@@ -6238,11 +5748,6 @@ inline void glRasterPos4xvOES(const GLfixed * coords)
 inline void glReadInstrumentsSGIX(GLint marker)
 {
     return glbinding::Binding::ReadInstrumentsSGIX(marker);
-}
-
-inline void glReadnPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data)
-{
-    return glbinding::Binding::ReadnPixels(x, y, width, height, format, type, bufSize, data);
 }
 
 inline void glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, void * data)
@@ -7180,29 +6685,14 @@ inline void glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint
     return glbinding::Binding::TexSubImage4DSGIS(target, level, xoffset, yoffset, zoffset, woffset, width, height, depth, size4d, format, type, pixels);
 }
 
-inline void glTextureBarrier()
-{
-    return glbinding::Binding::TextureBarrier();
-}
-
 inline void glTextureBarrierNV()
 {
     return glbinding::Binding::TextureBarrierNV();
 }
 
-inline void glTextureBuffer(GLuint texture, GLenum internalformat, GLuint buffer)
-{
-    return glbinding::Binding::TextureBuffer(texture, internalformat, buffer);
-}
-
 inline void glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer)
 {
     return glbinding::Binding::TextureBufferEXT(texture, target, internalformat, buffer);
-}
-
-inline void glTextureBufferRange(GLuint texture, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizei size)
-{
-    return glbinding::Binding::TextureBufferRange(texture, internalformat, buffer, offset, size);
 }
 
 inline void glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
@@ -7270,19 +6760,9 @@ inline void glTexturePageCommitmentEXT(GLuint texture, GLint level, GLint xoffse
     return glbinding::Binding::TexturePageCommitmentEXT(texture, level, xoffset, yoffset, zoffset, width, height, depth, resident);
 }
 
-inline void glTextureParameterIiv(GLuint texture, GLenum pname, const GLint * params)
-{
-    return glbinding::Binding::TextureParameterIiv(texture, pname, params);
-}
-
 inline void glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint * params)
 {
     return glbinding::Binding::TextureParameterIivEXT(texture, target, pname, params);
-}
-
-inline void glTextureParameterIuiv(GLuint texture, GLenum pname, const GLuint * params)
-{
-    return glbinding::Binding::TextureParameterIuiv(texture, pname, params);
 }
 
 inline void glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, const GLuint * params)
@@ -7290,19 +6770,9 @@ inline void glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pnam
     return glbinding::Binding::TextureParameterIuivEXT(texture, target, pname, params);
 }
 
-inline void glTextureParameterf(GLuint texture, GLenum pname, GLfloat param)
-{
-    return glbinding::Binding::TextureParameterf(texture, pname, param);
-}
-
 inline void glTextureParameterfEXT(GLuint texture, GLenum target, GLenum pname, GLfloat param)
 {
     return glbinding::Binding::TextureParameterfEXT(texture, target, pname, param);
-}
-
-inline void glTextureParameterfv(GLuint texture, GLenum pname, const GLfloat * param)
-{
-    return glbinding::Binding::TextureParameterfv(texture, pname, param);
 }
 
 inline void glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, const GLfloat * params)
@@ -7310,19 +6780,9 @@ inline void glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname,
     return glbinding::Binding::TextureParameterfvEXT(texture, target, pname, params);
 }
 
-inline void glTextureParameteri(GLuint texture, GLenum pname, GLint param)
-{
-    return glbinding::Binding::TextureParameteri(texture, pname, param);
-}
-
 inline void glTextureParameteriEXT(GLuint texture, GLenum target, GLenum pname, GLint param)
 {
     return glbinding::Binding::TextureParameteriEXT(texture, target, pname, param);
-}
-
-inline void glTextureParameteriv(GLuint texture, GLenum pname, const GLint * param)
-{
-    return glbinding::Binding::TextureParameteriv(texture, pname, param);
 }
 
 inline void glTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, const GLint * params)
@@ -7340,19 +6800,9 @@ inline void glTextureRenderbufferEXT(GLuint texture, GLenum target, GLuint rende
     return glbinding::Binding::TextureRenderbufferEXT(texture, target, renderbuffer);
 }
 
-inline void glTextureStorage1D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width)
-{
-    return glbinding::Binding::TextureStorage1D(texture, levels, internalformat, width);
-}
-
 inline void glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
     return glbinding::Binding::TextureStorage1DEXT(texture, target, levels, internalformat, width);
-}
-
-inline void glTextureStorage2D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
-{
-    return glbinding::Binding::TextureStorage2D(texture, levels, internalformat, width, height);
 }
 
 inline void glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
@@ -7360,29 +6810,14 @@ inline void glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels,
     return glbinding::Binding::TextureStorage2DEXT(texture, target, levels, internalformat, width, height);
 }
 
-inline void glTextureStorage2DMultisample(GLuint texture, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
-{
-    return glbinding::Binding::TextureStorage2DMultisample(texture, samples, internalformat, width, height, fixedsamplelocations);
-}
-
 inline void glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
     return glbinding::Binding::TextureStorage2DMultisampleEXT(texture, target, samples, internalformat, width, height, fixedsamplelocations);
 }
 
-inline void glTextureStorage3D(GLuint texture, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
-{
-    return glbinding::Binding::TextureStorage3D(texture, levels, internalformat, width, height, depth);
-}
-
 inline void glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
     return glbinding::Binding::TextureStorage3DEXT(texture, target, levels, internalformat, width, height, depth);
-}
-
-inline void glTextureStorage3DMultisample(GLuint texture, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
-{
-    return glbinding::Binding::TextureStorage3DMultisample(texture, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
 
 inline void glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
@@ -7395,29 +6830,14 @@ inline void glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum inte
     return glbinding::Binding::TextureStorageSparseAMD(texture, target, internalFormat, width, height, depth, layers, flags);
 }
 
-inline void glTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels)
-{
-    return glbinding::Binding::TextureSubImage1D(texture, level, xoffset, width, format, type, pixels);
-}
-
 inline void glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels)
 {
     return glbinding::Binding::TextureSubImage1DEXT(texture, target, level, xoffset, width, format, type, pixels);
 }
 
-inline void glTextureSubImage2D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
-{
-    return glbinding::Binding::TextureSubImage2D(texture, level, xoffset, yoffset, width, height, format, type, pixels);
-}
-
 inline void glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
 {
     return glbinding::Binding::TextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, type, pixels);
-}
-
-inline void glTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels)
-{
-    return glbinding::Binding::TextureSubImage3D(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
 
 inline void glTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels)
@@ -7433,16 +6853,6 @@ inline void glTrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum
 inline void glTransformFeedbackAttribsNV(GLsizei count, const GLint * attribs, GLenum bufferMode)
 {
     return glbinding::Binding::TransformFeedbackAttribsNV(count, attribs, bufferMode);
-}
-
-inline void glTransformFeedbackBufferBase(GLuint xfb, GLuint index, GLuint buffer)
-{
-    return glbinding::Binding::TransformFeedbackBufferBase(xfb, index, buffer);
-}
-
-inline void glTransformFeedbackBufferRange(GLuint xfb, GLuint index, GLuint buffer, GLintptr offset, GLsizei size)
-{
-    return glbinding::Binding::TransformFeedbackBufferRange(xfb, index, buffer, offset, size);
 }
 
 inline void glTransformFeedbackStreamAttribsNV(GLsizei count, const GLint * attribs, GLsizei nbuffers, const GLint * bufstreams, GLenum bufferMode)
@@ -7730,11 +7140,6 @@ inline GLboolean glUnmapBufferARB(GLenum target)
     return glbinding::Binding::UnmapBufferARB(target);
 }
 
-inline GLboolean glUnmapNamedBuffer(GLuint buffer)
-{
-    return glbinding::Binding::UnmapNamedBuffer(buffer);
-}
-
 inline GLboolean glUnmapNamedBufferEXT(GLuint buffer)
 {
     return glbinding::Binding::UnmapNamedBufferEXT(buffer);
@@ -7960,34 +7365,9 @@ inline void glVertex4xvOES(const GLfixed * coords)
     return glbinding::Binding::Vertex4xvOES(coords);
 }
 
-inline void glVertexArrayAttribBinding(GLuint vaobj, GLuint attribindex, GLuint bindingindex)
-{
-    return glbinding::Binding::VertexArrayAttribBinding(vaobj, attribindex, bindingindex);
-}
-
-inline void glVertexArrayAttribFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
-{
-    return glbinding::Binding::VertexArrayAttribFormat(vaobj, attribindex, size, type, normalized, relativeoffset);
-}
-
-inline void glVertexArrayAttribIFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
-{
-    return glbinding::Binding::VertexArrayAttribIFormat(vaobj, attribindex, size, type, relativeoffset);
-}
-
-inline void glVertexArrayAttribLFormat(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
-{
-    return glbinding::Binding::VertexArrayAttribLFormat(vaobj, attribindex, size, type, relativeoffset);
-}
-
 inline void glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
 {
     return glbinding::Binding::VertexArrayBindVertexBufferEXT(vaobj, bindingindex, buffer, offset, stride);
-}
-
-inline void glVertexArrayBindingDivisor(GLuint vaobj, GLuint bindingindex, GLuint divisor)
-{
-    return glbinding::Binding::VertexArrayBindingDivisor(vaobj, bindingindex, divisor);
 }
 
 inline void glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset)
@@ -7998,11 +7378,6 @@ inline void glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size,
 inline void glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, GLintptr offset)
 {
     return glbinding::Binding::VertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
-}
-
-inline void glVertexArrayElementBuffer(GLuint vaobj, GLuint buffer)
-{
-    return glbinding::Binding::VertexArrayElementBuffer(vaobj, buffer);
 }
 
 inline void glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset)
@@ -8093,16 +7468,6 @@ inline void glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLui
 inline void glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor)
 {
     return glbinding::Binding::VertexArrayVertexBindingDivisorEXT(vaobj, bindingindex, divisor);
-}
-
-inline void glVertexArrayVertexBuffer(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
-{
-    return glbinding::Binding::VertexArrayVertexBuffer(vaobj, bindingindex, buffer, offset, stride);
-}
-
-inline void glVertexArrayVertexBuffers(GLuint vaobj, GLuint first, GLsizei count, const GLuint * buffers, const GLintptr * offsets, const GLsizei * strides)
-{
-    return glbinding::Binding::VertexArrayVertexBuffers(vaobj, first, count, buffers, offsets, strides);
 }
 
 inline void glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset)
@@ -9047,7 +8412,7 @@ inline void glVertexWeighthvNV(const GLhalfNV * weight)
 
 inline GLenum glVideoCaptureNV(GLuint video_capture_slot, GLuint * sequence_num, GLuint64EXT * capture_time)
 {
-    return static_cast<gl43ext::GLenum>(glbinding::Binding::VideoCaptureNV(video_capture_slot, sequence_num, capture_time));
+    return static_cast<gl45ext::GLenum>(glbinding::Binding::VideoCaptureNV(video_capture_slot, sequence_num, capture_time));
 }
 
 inline void glVideoCaptureStreamParameterdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble * params)
@@ -9321,4 +8686,4 @@ inline void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLen
 }
 
 
-} // namespace gl43ext
+} // namespace gl45ext

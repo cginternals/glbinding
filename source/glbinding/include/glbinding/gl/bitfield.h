@@ -73,6 +73,7 @@ enum class ContextFlagMask : unsigned int
 {
     GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001,
     GL_CONTEXT_FLAG_DEBUG_BIT              = 0x00000002,
+    GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT      = 0x00000004,
     GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB  = 0x00000004,
 };
 
@@ -131,6 +132,7 @@ enum class MapBufferUsageMask : unsigned int
     GL_MAP_COHERENT_BIT          = 0x0080, // reuse from BufferAccessMask
     GL_DYNAMIC_STORAGE_BIT       = 0x0100,
     GL_CLIENT_STORAGE_BIT        = 0x0200,
+    GL_SPARSE_STORAGE_BIT_ARB    = 0x0400,
 };
 
 
@@ -299,6 +301,7 @@ static const FragmentShaderDestMaskATI GL_GREEN_BIT_ATI = FragmentShaderDestMask
 static const AttribMask GL_POINT_BIT = AttribMask::GL_POINT_BIT;
 static const FragmentShaderDestModMaskATI GL_8X_BIT_ATI = FragmentShaderDestModMaskATI::GL_8X_BIT_ATI;
 static const FragmentShaderDestMaskATI GL_BLUE_BIT_ATI = FragmentShaderDestMaskATI::GL_BLUE_BIT_ATI;
+static const ContextFlagMask GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT = ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT;
 static const ContextFlagMask GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB;
 static const UseProgramStageMask GL_GEOMETRY_SHADER_BIT = UseProgramStageMask::GL_GEOMETRY_SHADER_BIT;
 static const AttribMask GL_LINE_BIT = AttribMask::GL_LINE_BIT;
@@ -390,6 +393,7 @@ static const MapBufferUsageMask GL_CLIENT_STORAGE_BIT = MapBufferUsageMask::GL_C
 static const PathRenderingMaskNV GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV = PathRenderingMaskNV::GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV;
 static const VertexHintsMaskPGI GL_MAT_SHININESS_BIT_PGI = VertexHintsMaskPGI::GL_MAT_SHININESS_BIT_PGI;
 static const PathRenderingMaskNV GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV = PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV;
+static const MapBufferUsageMask GL_SPARSE_STORAGE_BIT_ARB = MapBufferUsageMask::GL_SPARSE_STORAGE_BIT_ARB;
 static const PathRenderingMaskNV GL_FONT_UNDERLINE_POSITION_BIT_NV = PathRenderingMaskNV::GL_FONT_UNDERLINE_POSITION_BIT_NV;
 static const VertexHintsMaskPGI GL_MAT_SPECULAR_BIT_PGI = VertexHintsMaskPGI::GL_MAT_SPECULAR_BIT_PGI;
 static const PathRenderingMaskNV GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV = PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV;

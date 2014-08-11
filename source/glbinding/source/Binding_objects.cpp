@@ -35,7 +35,7 @@ Binding::const_iterator Binding::end() const
 
 size_t Binding::size()
 {
-	return 2651;
+	return 2773;
 }
 
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
@@ -114,6 +114,7 @@ Function<void, GLuint, GLsizei, const GLuint *> Binding::BindSamplers("glBindSam
 Function<GLuint, GLenum, GLenum, GLenum> Binding::BindTexGenParameterEXT("glBindTexGenParameterEXT");
 Function<void, GLenum, GLuint> Binding::BindTexture("glBindTexture");
 Function<void, GLenum, GLuint> Binding::BindTextureEXT("glBindTextureEXT");
+Function<void, GLuint, GLuint> Binding::BindTextureUnit("glBindTextureUnit");
 Function<GLuint, GLenum, GLenum> Binding::BindTextureUnitParameterEXT("glBindTextureUnitParameterEXT");
 Function<void, GLuint, GLsizei, const GLuint *> Binding::BindTextures("glBindTextures");
 Function<void, GLenum, GLuint> Binding::BindTransformFeedback("glBindTransformFeedback");
@@ -138,6 +139,7 @@ Function<void, const GLshort *> Binding::Binormal3svEXT("glBinormal3svEXT");
 Function<void, GLenum, GLsizei, const void *> Binding::BinormalPointerEXT("glBinormalPointerEXT");
 Function<void, GLsizei, GLsizei, GLfloat, GLfloat, GLfloat, GLfloat, const GLubyte *> Binding::Bitmap("glBitmap");
 Function<void, GLsizei, GLsizei, GLfixed, GLfixed, GLfixed, GLfixed, const GLubyte *> Binding::BitmapxOES("glBitmapxOES");
+Function<void> Binding::BlendBarrierKHR("glBlendBarrierKHR");
 Function<void> Binding::BlendBarrierNV("glBlendBarrierNV");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::BlendColor("glBlendColor");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::BlendColorEXT("glBlendColorEXT");
@@ -165,9 +167,11 @@ Function<void, GLuint, GLenum, GLenum> Binding::BlendFunciARB("glBlendFunciARB")
 Function<void, GLenum, GLint> Binding::BlendParameteriNV("glBlendParameteriNV");
 Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebuffer("glBlitFramebuffer");
 Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebufferEXT("glBlitFramebufferEXT");
+Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitNamedFramebuffer("glBlitNamedFramebuffer");
 Function<void, GLenum, GLuint, GLuint64EXT, GLsizeiptr> Binding::BufferAddressRangeNV("glBufferAddressRangeNV");
 Function<void, GLenum, GLsizeiptr, const void *, GLenum> Binding::BufferData("glBufferData");
 Function<void, GLenum, GLsizeiptrARB, const void *, GLenum> Binding::BufferDataARB("glBufferDataARB");
+Function<void, GLenum, GLintptr, GLsizei, GLboolean> Binding::BufferPageCommitmentARB("glBufferPageCommitmentARB");
 Function<void, GLenum, GLenum, GLint> Binding::BufferParameteriAPPLE("glBufferParameteriAPPLE");
 Function<void, GLenum, GLsizeiptr, const void *, MapBufferUsageMask> Binding::BufferStorage("glBufferStorage");
 Function<void, GLenum, GLintptr, GLsizeiptr, const void *> Binding::BufferSubData("glBufferSubData");
@@ -176,6 +180,7 @@ Function<void, GLuint> Binding::CallList("glCallList");
 Function<void, GLsizei, GLenum, const void *> Binding::CallLists("glCallLists");
 Function<GLenum, GLenum> Binding::CheckFramebufferStatus("glCheckFramebufferStatus");
 Function<GLenum, GLenum> Binding::CheckFramebufferStatusEXT("glCheckFramebufferStatusEXT");
+Function<GLenum, GLuint, GLenum> Binding::CheckNamedFramebufferStatus("glCheckNamedFramebufferStatus");
 Function<GLenum, GLuint, GLenum> Binding::CheckNamedFramebufferStatusEXT("glCheckNamedFramebufferStatusEXT");
 Function<void, GLenum, GLenum> Binding::ClampColor("glClampColor");
 Function<void, GLenum, GLenum> Binding::ClampColorARB("glClampColorARB");
@@ -198,8 +203,14 @@ Function<void, GLfloat> Binding::ClearDepthf("glClearDepthf");
 Function<void, GLclampf> Binding::ClearDepthfOES("glClearDepthfOES");
 Function<void, GLfixed> Binding::ClearDepthxOES("glClearDepthxOES");
 Function<void, GLfloat> Binding::ClearIndex("glClearIndex");
+Function<void, GLuint, GLenum, GLenum, GLenum, const void *> Binding::ClearNamedBufferData("glClearNamedBufferData");
 Function<void, GLuint, GLenum, GLenum, GLenum, const void *> Binding::ClearNamedBufferDataEXT("glClearNamedBufferDataEXT");
+Function<void, GLuint, GLenum, GLintptr, GLsizei, GLenum, GLenum, const void *> Binding::ClearNamedBufferSubData("glClearNamedBufferSubData");
 Function<void, GLuint, GLenum, GLsizeiptr, GLsizeiptr, GLenum, GLenum, const void *> Binding::ClearNamedBufferSubDataEXT("glClearNamedBufferSubDataEXT");
+Function<void, GLuint, GLenum, const GLfloat, GLint> Binding::ClearNamedFramebufferfi("glClearNamedFramebufferfi");
+Function<void, GLuint, GLenum, GLint, const GLfloat *> Binding::ClearNamedFramebufferfv("glClearNamedFramebufferfv");
+Function<void, GLuint, GLenum, GLint, const GLint *> Binding::ClearNamedFramebufferiv("glClearNamedFramebufferiv");
+Function<void, GLuint, GLenum, GLint, const GLuint *> Binding::ClearNamedFramebufferuiv("glClearNamedFramebufferuiv");
 Function<void, GLint> Binding::ClearStencil("glClearStencil");
 Function<void, GLuint, GLint, GLenum, GLenum, const void *> Binding::ClearTexImage("glClearTexImage");
 Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::ClearTexSubImage("glClearTexSubImage");
@@ -208,6 +219,7 @@ Function<void, GLenum> Binding::ClientActiveTextureARB("glClientActiveTextureARB
 Function<void, GLenum> Binding::ClientActiveVertexStreamATI("glClientActiveVertexStreamATI");
 Function<void, ClientAttribMask> Binding::ClientAttribDefaultEXT("glClientAttribDefaultEXT");
 Function<GLenum, GLsync, SyncObjectMask, GLuint64> Binding::ClientWaitSync("glClientWaitSync");
+Function<void, GLenum, GLenum> Binding::ClipControl("glClipControl");
 Function<void, GLenum, const GLdouble *> Binding::ClipPlane("glClipPlane");
 Function<void, GLenum, const GLfloat *> Binding::ClipPlanefOES("glClipPlanefOES");
 Function<void, GLenum, const GLfixed *> Binding::ClipPlanexOES("glClipPlanexOES");
@@ -315,8 +327,11 @@ Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GL
 Function<void, GLuint, GLenum, GLint, GLenum, GLsizei, GLint, GLsizei, const void *> Binding::CompressedTextureImage1DEXT("glCompressedTextureImage1DEXT");
 Function<void, GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLint, GLsizei, const void *> Binding::CompressedTextureImage2DEXT("glCompressedTextureImage2DEXT");
 Function<void, GLuint, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLsizei, const void *> Binding::CompressedTextureImage3DEXT("glCompressedTextureImage3DEXT");
+Function<void, GLuint, GLint, GLint, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage1D("glCompressedTextureSubImage1D");
 Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage1DEXT("glCompressedTextureSubImage1DEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage2D("glCompressedTextureSubImage2D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage2DEXT("glCompressedTextureSubImage2DEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage3D("glCompressedTextureSubImage3D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage3DEXT("glCompressedTextureSubImage3DEXT");
 Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> Binding::ConvolutionFilter1D("glConvolutionFilter1D");
 Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> Binding::ConvolutionFilter1DEXT("glConvolutionFilter1DEXT");
@@ -348,6 +363,7 @@ Function<void, GLenum, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GL
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei> Binding::CopyMultiTexSubImage1DEXT("glCopyMultiTexSubImage1DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> Binding::CopyMultiTexSubImage2DEXT("glCopyMultiTexSubImage2DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> Binding::CopyMultiTexSubImage3DEXT("glCopyMultiTexSubImage3DEXT");
+Function<void, GLuint, GLuint, GLintptr, GLintptr, GLsizei> Binding::CopyNamedBufferSubData("glCopyNamedBufferSubData");
 Function<void, GLuint, GLuint> Binding::CopyPathNV("glCopyPathNV");
 Function<void, GLint, GLint, GLsizei, GLsizei, GLenum> Binding::CopyPixels("glCopyPixels");
 Function<void, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint> Binding::CopyTexImage1D("glCopyTexImage1D");
@@ -362,21 +378,33 @@ Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsize
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> Binding::CopyTexSubImage3DEXT("glCopyTexSubImage3DEXT");
 Function<void, GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLint> Binding::CopyTextureImage1DEXT("glCopyTextureImage1DEXT");
 Function<void, GLuint, GLenum, GLint, GLenum, GLint, GLint, GLsizei, GLsizei, GLint> Binding::CopyTextureImage2DEXT("glCopyTextureImage2DEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei> Binding::CopyTextureSubImage1D("glCopyTextureSubImage1D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei> Binding::CopyTextureSubImage1DEXT("glCopyTextureSubImage1DEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> Binding::CopyTextureSubImage2D("glCopyTextureSubImage2D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> Binding::CopyTextureSubImage2DEXT("glCopyTextureSubImage2DEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> Binding::CopyTextureSubImage3D("glCopyTextureSubImage3D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei> Binding::CopyTextureSubImage3DEXT("glCopyTextureSubImage3DEXT");
 Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLenum, const GLfloat *> Binding::CoverFillPathInstancedNV("glCoverFillPathInstancedNV");
 Function<void, GLuint, GLenum> Binding::CoverFillPathNV("glCoverFillPathNV");
 Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLenum, const GLfloat *> Binding::CoverStrokePathInstancedNV("glCoverStrokePathInstancedNV");
 Function<void, GLuint, GLenum> Binding::CoverStrokePathNV("glCoverStrokePathNV");
+Function<void, GLsizei, GLuint *> Binding::CreateBuffers("glCreateBuffers");
+Function<void, GLsizei, GLuint *> Binding::CreateFramebuffers("glCreateFramebuffers");
 Function<void, GLuint, GLuint *> Binding::CreatePerfQueryINTEL("glCreatePerfQueryINTEL");
 Function<GLuint> Binding::CreateProgram("glCreateProgram");
 Function<GLhandleARB> Binding::CreateProgramObjectARB("glCreateProgramObjectARB");
+Function<void, GLsizei, GLuint *> Binding::CreateProgramPipelines("glCreateProgramPipelines");
+Function<void, GLenum, GLsizei, GLuint *> Binding::CreateQueries("glCreateQueries");
+Function<void, GLsizei, GLuint *> Binding::CreateRenderbuffers("glCreateRenderbuffers");
+Function<void, GLsizei, GLuint *> Binding::CreateSamplers("glCreateSamplers");
 Function<GLuint, GLenum> Binding::CreateShader("glCreateShader");
 Function<GLhandleARB, GLenum> Binding::CreateShaderObjectARB("glCreateShaderObjectARB");
 Function<GLuint, GLenum, const GLchar *> Binding::CreateShaderProgramEXT("glCreateShaderProgramEXT");
 Function<GLuint, GLenum, GLsizei, const GLchar *const*> Binding::CreateShaderProgramv("glCreateShaderProgramv");
 Function<GLsync, _cl_context *, _cl_event *, UnusedMask> Binding::CreateSyncFromCLeventARB("glCreateSyncFromCLeventARB");
+Function<void, GLenum, GLsizei, GLuint *> Binding::CreateTextures("glCreateTextures");
+Function<void, GLsizei, GLuint *> Binding::CreateTransformFeedbacks("glCreateTransformFeedbacks");
+Function<void, GLsizei, GLuint *> Binding::CreateVertexArrays("glCreateVertexArrays");
 Function<void, GLenum> Binding::CullFace("glCullFace");
 Function<void, GLenum, GLdouble *> Binding::CullParameterdvEXT("glCullParameterdvEXT");
 Function<void, GLenum, GLfloat *> Binding::CullParameterfvEXT("glCullParameterfvEXT");
@@ -447,6 +475,7 @@ Function<void, GLenum, GLuint> Binding::DisableClientStateIndexedEXT("glDisableC
 Function<void, GLenum, GLuint> Binding::DisableClientStateiEXT("glDisableClientStateiEXT");
 Function<void, GLenum, GLuint> Binding::DisableIndexedEXT("glDisableIndexedEXT");
 Function<void, GLuint> Binding::DisableVariantClientStateEXT("glDisableVariantClientStateEXT");
+Function<void, GLuint, GLuint> Binding::DisableVertexArrayAttrib("glDisableVertexArrayAttrib");
 Function<void, GLuint, GLuint> Binding::DisableVertexArrayAttribEXT("glDisableVertexArrayAttribEXT");
 Function<void, GLuint, GLenum> Binding::DisableVertexArrayEXT("glDisableVertexArrayEXT");
 Function<void, GLuint, GLenum> Binding::DisableVertexAttribAPPLE("glDisableVertexAttribAPPLE");
@@ -505,6 +534,7 @@ Function<void, GLenum, GLuint> Binding::EnableClientStateIndexedEXT("glEnableCli
 Function<void, GLenum, GLuint> Binding::EnableClientStateiEXT("glEnableClientStateiEXT");
 Function<void, GLenum, GLuint> Binding::EnableIndexedEXT("glEnableIndexedEXT");
 Function<void, GLuint> Binding::EnableVariantClientStateEXT("glEnableVariantClientStateEXT");
+Function<void, GLuint, GLuint> Binding::EnableVertexArrayAttrib("glEnableVertexArrayAttrib");
 Function<void, GLuint, GLuint> Binding::EnableVertexArrayAttribEXT("glEnableVertexArrayAttribEXT");
 Function<void, GLuint, GLenum> Binding::EnableVertexArrayEXT("glEnableVertexArrayEXT");
 Function<void, GLuint, GLenum> Binding::EnableVertexAttribAPPLE("glEnableVertexAttribAPPLE");
@@ -560,6 +590,7 @@ Function<void> Binding::FinishTextureSUNX("glFinishTextureSUNX");
 Function<void> Binding::Flush("glFlush");
 Function<void, GLenum, GLintptr, GLsizeiptr> Binding::FlushMappedBufferRange("glFlushMappedBufferRange");
 Function<void, GLenum, GLintptr, GLsizeiptr> Binding::FlushMappedBufferRangeAPPLE("glFlushMappedBufferRangeAPPLE");
+Function<void, GLuint, GLintptr, GLsizei> Binding::FlushMappedNamedBufferRange("glFlushMappedNamedBufferRange");
 Function<void, GLuint, GLintptr, GLsizeiptr> Binding::FlushMappedNamedBufferRangeEXT("glFlushMappedNamedBufferRangeEXT");
 Function<void, GLenum> Binding::FlushPixelDataRangeNV("glFlushPixelDataRangeNV");
 Function<void> Binding::FlushRasterSGIX("glFlushRasterSGIX");
@@ -659,6 +690,7 @@ Function<GLuint, GLuint> Binding::GenVertexShadersEXT("glGenVertexShadersEXT");
 Function<void, GLenum> Binding::GenerateMipmap("glGenerateMipmap");
 Function<void, GLenum> Binding::GenerateMipmapEXT("glGenerateMipmapEXT");
 Function<void, GLenum, GLenum> Binding::GenerateMultiTexMipmapEXT("glGenerateMultiTexMipmapEXT");
+Function<void, GLuint> Binding::GenerateTextureMipmap("glGenerateTextureMipmap");
 Function<void, GLuint, GLenum> Binding::GenerateTextureMipmapEXT("glGenerateTextureMipmapEXT");
 Function<void, GLuint, GLuint, GLenum, GLint *> Binding::GetActiveAtomicCounterBufferiv("glGetActiveAtomicCounterBufferiv");
 Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLint *, GLenum *, GLchar *> Binding::GetActiveAttrib("glGetActiveAttrib");
@@ -710,7 +742,9 @@ Function<void, GLenum, GLenum, GLfloat *> Binding::GetCombinerStageParameterfvNV
 Function<void, GLenum, GLenum, GLint, void *> Binding::GetCompressedMultiTexImageEXT("glGetCompressedMultiTexImageEXT");
 Function<void, GLenum, GLint, void *> Binding::GetCompressedTexImage("glGetCompressedTexImage");
 Function<void, GLenum, GLint, void *> Binding::GetCompressedTexImageARB("glGetCompressedTexImageARB");
+Function<void, GLuint, GLint, GLsizei, void *> Binding::GetCompressedTextureImage("glGetCompressedTextureImage");
 Function<void, GLuint, GLenum, GLint, void *> Binding::GetCompressedTextureImageEXT("glGetCompressedTextureImageEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, void *> Binding::GetCompressedTextureSubImage("glGetCompressedTextureSubImage");
 Function<void, GLenum, GLenum, GLenum, void *> Binding::GetConvolutionFilter("glGetConvolutionFilter");
 Function<void, GLenum, GLenum, GLenum, void *> Binding::GetConvolutionFilterEXT("glGetConvolutionFilterEXT");
 Function<void, GLenum, GLenum, GLfloat *> Binding::GetConvolutionParameterfv("glGetConvolutionParameterfv");
@@ -748,6 +782,7 @@ Function<void, GLenum, GLenum, GLenum, GLint *> Binding::GetFramebufferAttachmen
 Function<void, GLenum, GLenum, GLenum, GLint *> Binding::GetFramebufferAttachmentParameterivEXT("glGetFramebufferAttachmentParameterivEXT");
 Function<void, GLenum, GLenum, GLint *> Binding::GetFramebufferParameteriv("glGetFramebufferParameteriv");
 Function<void, GLuint, GLenum, GLint *> Binding::GetFramebufferParameterivEXT("glGetFramebufferParameterivEXT");
+Function<GLenum> Binding::GetGraphicsResetStatus("glGetGraphicsResetStatus");
 Function<GLenum> Binding::GetGraphicsResetStatusARB("glGetGraphicsResetStatusARB");
 Function<GLhandleARB, GLenum> Binding::GetHandleARB("glGetHandleARB");
 Function<void, GLenum, GLboolean, GLenum, GLenum, void *> Binding::GetHistogram("glGetHistogram");
@@ -815,11 +850,17 @@ Function<void, GLenum, GLenum, GLenum, GLfloat *> Binding::GetMultiTexParameterf
 Function<void, GLenum, GLenum, GLenum, GLint *> Binding::GetMultiTexParameterivEXT("glGetMultiTexParameterivEXT");
 Function<void, GLenum, GLuint, GLfloat *> Binding::GetMultisamplefv("glGetMultisamplefv");
 Function<void, GLenum, GLuint, GLfloat *> Binding::GetMultisamplefvNV("glGetMultisamplefvNV");
+Function<void, GLuint, GLenum, GLint64 *> Binding::GetNamedBufferParameteri64v("glGetNamedBufferParameteri64v");
+Function<void, GLuint, GLenum, GLint *> Binding::GetNamedBufferParameteriv("glGetNamedBufferParameteriv");
 Function<void, GLuint, GLenum, GLint *> Binding::GetNamedBufferParameterivEXT("glGetNamedBufferParameterivEXT");
 Function<void, GLuint, GLenum, GLuint64EXT *> Binding::GetNamedBufferParameterui64vNV("glGetNamedBufferParameterui64vNV");
+Function<void, GLuint, GLenum, void **> Binding::GetNamedBufferPointerv("glGetNamedBufferPointerv");
 Function<void, GLuint, GLenum, void **> Binding::GetNamedBufferPointervEXT("glGetNamedBufferPointervEXT");
+Function<void, GLuint, GLintptr, GLsizei, void *> Binding::GetNamedBufferSubData("glGetNamedBufferSubData");
 Function<void, GLuint, GLintptr, GLsizeiptr, void *> Binding::GetNamedBufferSubDataEXT("glGetNamedBufferSubDataEXT");
+Function<void, GLuint, GLenum, GLenum, GLint *> Binding::GetNamedFramebufferAttachmentParameteriv("glGetNamedFramebufferAttachmentParameteriv");
 Function<void, GLuint, GLenum, GLenum, GLint *> Binding::GetNamedFramebufferAttachmentParameterivEXT("glGetNamedFramebufferAttachmentParameterivEXT");
+Function<void, GLuint, GLenum, GLint *> Binding::GetNamedFramebufferParameteriv("glGetNamedFramebufferParameteriv");
 Function<void, GLuint, GLenum, GLint *> Binding::GetNamedFramebufferParameterivEXT("glGetNamedFramebufferParameterivEXT");
 Function<void, GLuint, GLenum, GLuint, GLint *> Binding::GetNamedProgramLocalParameterIivEXT("glGetNamedProgramLocalParameterIivEXT");
 Function<void, GLuint, GLenum, GLuint, GLuint *> Binding::GetNamedProgramLocalParameterIuivEXT("glGetNamedProgramLocalParameterIuivEXT");
@@ -827,6 +868,7 @@ Function<void, GLuint, GLenum, GLuint, GLdouble *> Binding::GetNamedProgramLocal
 Function<void, GLuint, GLenum, GLuint, GLfloat *> Binding::GetNamedProgramLocalParameterfvEXT("glGetNamedProgramLocalParameterfvEXT");
 Function<void, GLuint, GLenum, GLenum, void *> Binding::GetNamedProgramStringEXT("glGetNamedProgramStringEXT");
 Function<void, GLuint, GLenum, GLenum, GLint *> Binding::GetNamedProgramivEXT("glGetNamedProgramivEXT");
+Function<void, GLuint, GLenum, GLint *> Binding::GetNamedRenderbufferParameteriv("glGetNamedRenderbufferParameteriv");
 Function<void, GLuint, GLenum, GLint *> Binding::GetNamedRenderbufferParameterivEXT("glGetNamedRenderbufferParameterivEXT");
 Function<void, GLint, const GLchar *, GLsizei, GLint *, GLchar *> Binding::GetNamedStringARB("glGetNamedStringARB");
 Function<void, GLint, const GLchar *, GLenum, GLint *> Binding::GetNamedStringivARB("glGetNamedStringivARB");
@@ -961,19 +1003,30 @@ Function<void, GLenum, GLenum, GLint *> Binding::GetTexParameteriv("glGetTexPara
 Function<void, GLenum, GLenum, GLfixed *> Binding::GetTexParameterxvOES("glGetTexParameterxvOES");
 Function<GLuint64, GLuint> Binding::GetTextureHandleARB("glGetTextureHandleARB");
 Function<GLuint64, GLuint> Binding::GetTextureHandleNV("glGetTextureHandleNV");
+Function<void, GLuint, GLint, GLenum, GLenum, GLsizei, void *> Binding::GetTextureImage("glGetTextureImage");
 Function<void, GLuint, GLenum, GLint, GLenum, GLenum, void *> Binding::GetTextureImageEXT("glGetTextureImageEXT");
+Function<void, GLuint, GLint, GLenum, GLfloat *> Binding::GetTextureLevelParameterfv("glGetTextureLevelParameterfv");
 Function<void, GLuint, GLenum, GLint, GLenum, GLfloat *> Binding::GetTextureLevelParameterfvEXT("glGetTextureLevelParameterfvEXT");
+Function<void, GLuint, GLint, GLenum, GLint *> Binding::GetTextureLevelParameteriv("glGetTextureLevelParameteriv");
 Function<void, GLuint, GLenum, GLint, GLenum, GLint *> Binding::GetTextureLevelParameterivEXT("glGetTextureLevelParameterivEXT");
+Function<void, GLuint, GLenum, GLint *> Binding::GetTextureParameterIiv("glGetTextureParameterIiv");
 Function<void, GLuint, GLenum, GLenum, GLint *> Binding::GetTextureParameterIivEXT("glGetTextureParameterIivEXT");
+Function<void, GLuint, GLenum, GLuint *> Binding::GetTextureParameterIuiv("glGetTextureParameterIuiv");
 Function<void, GLuint, GLenum, GLenum, GLuint *> Binding::GetTextureParameterIuivEXT("glGetTextureParameterIuivEXT");
+Function<void, GLuint, GLenum, GLfloat *> Binding::GetTextureParameterfv("glGetTextureParameterfv");
 Function<void, GLuint, GLenum, GLenum, GLfloat *> Binding::GetTextureParameterfvEXT("glGetTextureParameterfvEXT");
+Function<void, GLuint, GLenum, GLint *> Binding::GetTextureParameteriv("glGetTextureParameteriv");
 Function<void, GLuint, GLenum, GLenum, GLint *> Binding::GetTextureParameterivEXT("glGetTextureParameterivEXT");
 Function<GLuint64, GLuint, GLuint> Binding::GetTextureSamplerHandleARB("glGetTextureSamplerHandleARB");
 Function<GLuint64, GLuint, GLuint> Binding::GetTextureSamplerHandleNV("glGetTextureSamplerHandleNV");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, GLsizei, void *> Binding::GetTextureSubImage("glGetTextureSubImage");
 Function<void, GLenum, GLuint, GLenum, GLint *> Binding::GetTrackMatrixivNV("glGetTrackMatrixivNV");
 Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLsizei *, GLenum *, GLchar *> Binding::GetTransformFeedbackVarying("glGetTransformFeedbackVarying");
 Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLsizei *, GLenum *, GLchar *> Binding::GetTransformFeedbackVaryingEXT("glGetTransformFeedbackVaryingEXT");
 Function<void, GLuint, GLuint, GLint *> Binding::GetTransformFeedbackVaryingNV("glGetTransformFeedbackVaryingNV");
+Function<void, GLuint, GLenum, GLuint, GLint64 *> Binding::GetTransformFeedbacki64_v("glGetTransformFeedbacki64_v");
+Function<void, GLuint, GLenum, GLuint, GLint *> Binding::GetTransformFeedbacki_v("glGetTransformFeedbacki_v");
+Function<void, GLuint, GLenum, GLint *> Binding::GetTransformFeedbackiv("glGetTransformFeedbackiv");
 Function<GLuint, GLuint, const GLchar *> Binding::GetUniformBlockIndex("glGetUniformBlockIndex");
 Function<GLint, GLuint, GLint> Binding::GetUniformBufferSizeEXT("glGetUniformBufferSizeEXT");
 Function<void, GLuint, GLsizei, const GLchar *const*, GLuint *> Binding::GetUniformIndices("glGetUniformIndices");
@@ -997,10 +1050,13 @@ Function<void, GLuint, GLenum, GLfloat *> Binding::GetVariantFloatvEXT("glGetVar
 Function<void, GLuint, GLenum, GLint *> Binding::GetVariantIntegervEXT("glGetVariantIntegervEXT");
 Function<void, GLuint, GLenum, void **> Binding::GetVariantPointervEXT("glGetVariantPointervEXT");
 Function<GLint, GLuint, const GLchar *> Binding::GetVaryingLocationNV("glGetVaryingLocationNV");
+Function<void, GLuint, GLuint, GLenum, GLint64 *> Binding::GetVertexArrayIndexed64iv("glGetVertexArrayIndexed64iv");
+Function<void, GLuint, GLuint, GLenum, GLint *> Binding::GetVertexArrayIndexediv("glGetVertexArrayIndexediv");
 Function<void, GLuint, GLuint, GLenum, GLint *> Binding::GetVertexArrayIntegeri_vEXT("glGetVertexArrayIntegeri_vEXT");
 Function<void, GLuint, GLenum, GLint *> Binding::GetVertexArrayIntegervEXT("glGetVertexArrayIntegervEXT");
 Function<void, GLuint, GLuint, GLenum, void **> Binding::GetVertexArrayPointeri_vEXT("glGetVertexArrayPointeri_vEXT");
 Function<void, GLuint, GLenum, void **> Binding::GetVertexArrayPointervEXT("glGetVertexArrayPointervEXT");
+Function<void, GLuint, GLenum, GLint *> Binding::GetVertexArrayiv("glGetVertexArrayiv");
 Function<void, GLuint, GLenum, GLfloat *> Binding::GetVertexAttribArrayObjectfvATI("glGetVertexAttribArrayObjectfvATI");
 Function<void, GLuint, GLenum, GLint *> Binding::GetVertexAttribArrayObjectivATI("glGetVertexAttribArrayObjectivATI");
 Function<void, GLuint, GLenum, GLint *> Binding::GetVertexAttribIiv("glGetVertexAttribIiv");
@@ -1032,23 +1088,41 @@ Function<void, GLuint, GLenum, GLint64EXT *> Binding::GetVideoi64vNV("glGetVideo
 Function<void, GLuint, GLenum, GLint *> Binding::GetVideoivNV("glGetVideoivNV");
 Function<void, GLuint, GLenum, GLuint64EXT *> Binding::GetVideoui64vNV("glGetVideoui64vNV");
 Function<void, GLuint, GLenum, GLuint *> Binding::GetVideouivNV("glGetVideouivNV");
+Function<void, GLenum, GLenum, GLenum, GLsizei, void *> Binding::GetnColorTable("glGetnColorTable");
 Function<void, GLenum, GLenum, GLenum, GLsizei, void *> Binding::GetnColorTableARB("glGetnColorTableARB");
+Function<void, GLenum, GLint, GLsizei, void *> Binding::GetnCompressedTexImage("glGetnCompressedTexImage");
 Function<void, GLenum, GLint, GLsizei, void *> Binding::GetnCompressedTexImageARB("glGetnCompressedTexImageARB");
+Function<void, GLenum, GLenum, GLenum, GLsizei, void *> Binding::GetnConvolutionFilter("glGetnConvolutionFilter");
 Function<void, GLenum, GLenum, GLenum, GLsizei, void *> Binding::GetnConvolutionFilterARB("glGetnConvolutionFilterARB");
+Function<void, GLenum, GLboolean, GLenum, GLenum, GLsizei, void *> Binding::GetnHistogram("glGetnHistogram");
 Function<void, GLenum, GLboolean, GLenum, GLenum, GLsizei, void *> Binding::GetnHistogramARB("glGetnHistogramARB");
+Function<void, GLenum, GLenum, GLsizei, GLdouble *> Binding::GetnMapdv("glGetnMapdv");
 Function<void, GLenum, GLenum, GLsizei, GLdouble *> Binding::GetnMapdvARB("glGetnMapdvARB");
+Function<void, GLenum, GLenum, GLsizei, GLfloat *> Binding::GetnMapfv("glGetnMapfv");
 Function<void, GLenum, GLenum, GLsizei, GLfloat *> Binding::GetnMapfvARB("glGetnMapfvARB");
+Function<void, GLenum, GLenum, GLsizei, GLint *> Binding::GetnMapiv("glGetnMapiv");
 Function<void, GLenum, GLenum, GLsizei, GLint *> Binding::GetnMapivARB("glGetnMapivARB");
+Function<void, GLenum, GLboolean, GLenum, GLenum, GLsizei, void *> Binding::GetnMinmax("glGetnMinmax");
 Function<void, GLenum, GLboolean, GLenum, GLenum, GLsizei, void *> Binding::GetnMinmaxARB("glGetnMinmaxARB");
+Function<void, GLenum, GLsizei, GLfloat *> Binding::GetnPixelMapfv("glGetnPixelMapfv");
 Function<void, GLenum, GLsizei, GLfloat *> Binding::GetnPixelMapfvARB("glGetnPixelMapfvARB");
+Function<void, GLenum, GLsizei, GLuint *> Binding::GetnPixelMapuiv("glGetnPixelMapuiv");
 Function<void, GLenum, GLsizei, GLuint *> Binding::GetnPixelMapuivARB("glGetnPixelMapuivARB");
+Function<void, GLenum, GLsizei, GLushort *> Binding::GetnPixelMapusv("glGetnPixelMapusv");
 Function<void, GLenum, GLsizei, GLushort *> Binding::GetnPixelMapusvARB("glGetnPixelMapusvARB");
+Function<void, GLsizei, GLubyte *> Binding::GetnPolygonStipple("glGetnPolygonStipple");
 Function<void, GLsizei, GLubyte *> Binding::GetnPolygonStippleARB("glGetnPolygonStippleARB");
+Function<void, GLenum, GLenum, GLenum, GLsizei, void *, GLsizei, void *, void *> Binding::GetnSeparableFilter("glGetnSeparableFilter");
 Function<void, GLenum, GLenum, GLenum, GLsizei, void *, GLsizei, void *, void *> Binding::GetnSeparableFilterARB("glGetnSeparableFilterARB");
+Function<void, GLenum, GLint, GLenum, GLenum, GLsizei, void *> Binding::GetnTexImage("glGetnTexImage");
 Function<void, GLenum, GLint, GLenum, GLenum, GLsizei, void *> Binding::GetnTexImageARB("glGetnTexImageARB");
+Function<void, GLuint, GLint, GLsizei, GLdouble *> Binding::GetnUniformdv("glGetnUniformdv");
 Function<void, GLuint, GLint, GLsizei, GLdouble *> Binding::GetnUniformdvARB("glGetnUniformdvARB");
+Function<void, GLuint, GLint, GLsizei, GLfloat *> Binding::GetnUniformfv("glGetnUniformfv");
 Function<void, GLuint, GLint, GLsizei, GLfloat *> Binding::GetnUniformfvARB("glGetnUniformfvARB");
+Function<void, GLuint, GLint, GLsizei, GLint *> Binding::GetnUniformiv("glGetnUniformiv");
 Function<void, GLuint, GLint, GLsizei, GLint *> Binding::GetnUniformivARB("glGetnUniformivARB");
+Function<void, GLuint, GLint, GLsizei, GLuint *> Binding::GetnUniformuiv("glGetnUniformuiv");
 Function<void, GLuint, GLint, GLsizei, GLuint *> Binding::GetnUniformuivARB("glGetnUniformuivARB");
 Function<void, GLbyte> Binding::GlobalAlphaFactorbSUN("glGlobalAlphaFactorbSUN");
 Function<void, GLdouble> Binding::GlobalAlphaFactordSUN("glGlobalAlphaFactordSUN");
@@ -1096,6 +1170,8 @@ Function<void, GLuint, GLuint, GLuint, GLfloat> Binding::InterpolatePathsNV("glI
 Function<void, GLuint> Binding::InvalidateBufferData("glInvalidateBufferData");
 Function<void, GLuint, GLintptr, GLsizeiptr> Binding::InvalidateBufferSubData("glInvalidateBufferSubData");
 Function<void, GLenum, GLsizei, const GLenum *> Binding::InvalidateFramebuffer("glInvalidateFramebuffer");
+Function<void, GLuint, GLsizei, const GLenum *> Binding::InvalidateNamedFramebufferData("glInvalidateNamedFramebufferData");
+Function<void, GLuint, GLsizei, const GLenum *, GLint, GLint, GLsizei, GLsizei> Binding::InvalidateNamedFramebufferSubData("glInvalidateNamedFramebufferSubData");
 Function<void, GLenum, GLsizei, const GLenum *, GLint, GLint, GLsizei, GLsizei> Binding::InvalidateSubFramebuffer("glInvalidateSubFramebuffer");
 Function<void, GLuint, GLint> Binding::InvalidateTexImage("glInvalidateTexImage");
 Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::InvalidateTexSubImage("glInvalidateTexSubImage");
@@ -1208,7 +1284,9 @@ Function<void, GLint, GLfixed, GLfixed> Binding::MapGrid1xOES("glMapGrid1xOES");
 Function<void, GLint, GLdouble, GLdouble, GLint, GLdouble, GLdouble> Binding::MapGrid2d("glMapGrid2d");
 Function<void, GLint, GLfloat, GLfloat, GLint, GLfloat, GLfloat> Binding::MapGrid2f("glMapGrid2f");
 Function<void, GLint, GLfixed, GLfixed, GLfixed, GLfixed> Binding::MapGrid2xOES("glMapGrid2xOES");
+Function<void *, GLuint, GLenum> Binding::MapNamedBuffer("glMapNamedBuffer");
 Function<void *, GLuint, GLenum> Binding::MapNamedBufferEXT("glMapNamedBufferEXT");
+Function<void *, GLuint, GLintptr, GLsizei, BufferAccessMask> Binding::MapNamedBufferRange("glMapNamedBufferRange");
 Function<void *, GLuint, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapNamedBufferRangeEXT("glMapNamedBufferRangeEXT");
 Function<void *, GLuint> Binding::MapObjectBufferATI("glMapObjectBufferATI");
 Function<void, GLenum, GLenum, const GLfloat *> Binding::MapParameterfvNV("glMapParameterfvNV");
@@ -1255,6 +1333,7 @@ Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixScalefEXT("glMa
 Function<void, GLenum, GLdouble, GLdouble, GLdouble> Binding::MatrixTranslatedEXT("glMatrixTranslatedEXT");
 Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixTranslatefEXT("glMatrixTranslatefEXT");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrier("glMemoryBarrier");
+Function<void, MemoryBarrierMask> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierEXT("glMemoryBarrierEXT");
 Function<void, GLfloat> Binding::MinSampleShading("glMinSampleShading");
 Function<void, GLfloat> Binding::MinSampleShadingARB("glMinSampleShadingARB");
@@ -1408,17 +1487,29 @@ Function<void, GLenum, GLenum, GLuint> Binding::MultiTexRenderbufferEXT("glMulti
 Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage1DEXT("glMultiTexSubImage1DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage2DEXT("glMultiTexSubImage2DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage3DEXT("glMultiTexSubImage3DEXT");
+Function<void, GLuint, GLsizei, const void *, GLenum> Binding::NamedBufferData("glNamedBufferData");
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferDataEXT("glNamedBufferDataEXT");
+Function<void, GLuint, GLintptr, GLsizei, GLboolean> Binding::NamedBufferPageCommitmentARB("glNamedBufferPageCommitmentARB");
+Function<void, GLuint, GLintptr, GLsizei, GLboolean> Binding::NamedBufferPageCommitmentEXT("glNamedBufferPageCommitmentEXT");
+Function<void, GLuint, GLsizei, const void *, MapBufferUsageMask> Binding::NamedBufferStorage("glNamedBufferStorage");
 Function<void, GLuint, GLsizeiptr, const void *, MapBufferUsageMask> Binding::NamedBufferStorageEXT("glNamedBufferStorageEXT");
+Function<void, GLuint, GLintptr, GLsizei, const void *> Binding::NamedBufferSubData("glNamedBufferSubData");
 Function<void, GLuint, GLintptr, GLsizeiptr, const void *> Binding::NamedBufferSubDataEXT("glNamedBufferSubDataEXT");
 Function<void, GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr> Binding::NamedCopyBufferSubDataEXT("glNamedCopyBufferSubDataEXT");
+Function<void, GLuint, GLenum> Binding::NamedFramebufferDrawBuffer("glNamedFramebufferDrawBuffer");
+Function<void, GLuint, GLsizei, const GLenum *> Binding::NamedFramebufferDrawBuffers("glNamedFramebufferDrawBuffers");
+Function<void, GLuint, GLenum, GLint> Binding::NamedFramebufferParameteri("glNamedFramebufferParameteri");
 Function<void, GLuint, GLenum, GLint> Binding::NamedFramebufferParameteriEXT("glNamedFramebufferParameteriEXT");
+Function<void, GLuint, GLenum> Binding::NamedFramebufferReadBuffer("glNamedFramebufferReadBuffer");
+Function<void, GLuint, GLenum, GLenum, GLuint> Binding::NamedFramebufferRenderbuffer("glNamedFramebufferRenderbuffer");
 Function<void, GLuint, GLenum, GLenum, GLuint> Binding::NamedFramebufferRenderbufferEXT("glNamedFramebufferRenderbufferEXT");
+Function<void, GLuint, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture("glNamedFramebufferTexture");
 Function<void, GLuint, GLenum, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture1DEXT("glNamedFramebufferTexture1DEXT");
 Function<void, GLuint, GLenum, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture2DEXT("glNamedFramebufferTexture2DEXT");
 Function<void, GLuint, GLenum, GLenum, GLuint, GLint, GLint> Binding::NamedFramebufferTexture3DEXT("glNamedFramebufferTexture3DEXT");
 Function<void, GLuint, GLenum, GLuint, GLint> Binding::NamedFramebufferTextureEXT("glNamedFramebufferTextureEXT");
 Function<void, GLuint, GLenum, GLuint, GLint, GLenum> Binding::NamedFramebufferTextureFaceEXT("glNamedFramebufferTextureFaceEXT");
+Function<void, GLuint, GLenum, GLuint, GLint, GLint> Binding::NamedFramebufferTextureLayer("glNamedFramebufferTextureLayer");
 Function<void, GLuint, GLenum, GLuint, GLint, GLint> Binding::NamedFramebufferTextureLayerEXT("glNamedFramebufferTextureLayerEXT");
 Function<void, GLuint, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> Binding::NamedProgramLocalParameter4dEXT("glNamedProgramLocalParameter4dEXT");
 Function<void, GLuint, GLenum, GLuint, const GLdouble *> Binding::NamedProgramLocalParameter4dvEXT("glNamedProgramLocalParameter4dvEXT");
@@ -1432,7 +1523,9 @@ Function<void, GLuint, GLenum, GLuint, GLsizei, const GLfloat *> Binding::NamedP
 Function<void, GLuint, GLenum, GLuint, GLsizei, const GLint *> Binding::NamedProgramLocalParametersI4ivEXT("glNamedProgramLocalParametersI4ivEXT");
 Function<void, GLuint, GLenum, GLuint, GLsizei, const GLuint *> Binding::NamedProgramLocalParametersI4uivEXT("glNamedProgramLocalParametersI4uivEXT");
 Function<void, GLuint, GLenum, GLenum, GLsizei, const void *> Binding::NamedProgramStringEXT("glNamedProgramStringEXT");
+Function<void, GLuint, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorage("glNamedRenderbufferStorage");
 Function<void, GLuint, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageEXT("glNamedRenderbufferStorageEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageMultisample("glNamedRenderbufferStorageMultisample");
 Function<void, GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageMultisampleCoverageEXT("glNamedRenderbufferStorageMultisampleCoverageEXT");
 Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageMultisampleEXT("glNamedRenderbufferStorageMultisampleEXT");
 Function<void, GLenum, GLint, const GLchar *, GLint, const GLchar *> Binding::NamedStringARB("glNamedStringARB");
@@ -1777,6 +1870,7 @@ Function<void, const GLfixed *> Binding::RasterPos4xvOES("glRasterPos4xvOES");
 Function<void, GLenum> Binding::ReadBuffer("glReadBuffer");
 Function<void, GLint> Binding::ReadInstrumentsSGIX("glReadInstrumentsSGIX");
 Function<void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, void *> Binding::ReadPixels("glReadPixels");
+Function<void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, void *> Binding::ReadnPixels("glReadnPixels");
 Function<void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, void *> Binding::ReadnPixelsARB("glReadnPixelsARB");
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Rectd("glRectd");
 Function<void, const GLdouble *, const GLdouble *> Binding::Rectdv("glRectdv");
@@ -2095,8 +2189,11 @@ Function<void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, co
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage3D("glTexSubImage3D");
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage3DEXT("glTexSubImage3DEXT");
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage4DSGIS("glTexSubImage4DSGIS");
+Function<void> Binding::TextureBarrier("glTextureBarrier");
 Function<void> Binding::TextureBarrierNV("glTextureBarrierNV");
+Function<void, GLuint, GLenum, GLuint> Binding::TextureBuffer("glTextureBuffer");
 Function<void, GLuint, GLenum, GLenum, GLuint> Binding::TextureBufferEXT("glTextureBufferEXT");
+Function<void, GLuint, GLenum, GLuint, GLintptr, GLsizei> Binding::TextureBufferRange("glTextureBufferRange");
 Function<void, GLuint, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr> Binding::TextureBufferRangeEXT("glTextureBufferRangeEXT");
 Function<void, GLboolean, GLboolean, GLboolean, GLboolean> Binding::TextureColorMaskSGIS("glTextureColorMaskSGIS");
 Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLint, GLenum, GLenum, const void *> Binding::TextureImage1DEXT("glTextureImage1DEXT");
@@ -2110,26 +2207,42 @@ Function<void, GLenum> Binding::TextureLightEXT("glTextureLightEXT");
 Function<void, GLenum, GLenum> Binding::TextureMaterialEXT("glTextureMaterialEXT");
 Function<void, GLenum> Binding::TextureNormalEXT("glTextureNormalEXT");
 Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexturePageCommitmentEXT("glTexturePageCommitmentEXT");
+Function<void, GLuint, GLenum, const GLint *> Binding::TextureParameterIiv("glTextureParameterIiv");
 Function<void, GLuint, GLenum, GLenum, const GLint *> Binding::TextureParameterIivEXT("glTextureParameterIivEXT");
+Function<void, GLuint, GLenum, const GLuint *> Binding::TextureParameterIuiv("glTextureParameterIuiv");
 Function<void, GLuint, GLenum, GLenum, const GLuint *> Binding::TextureParameterIuivEXT("glTextureParameterIuivEXT");
+Function<void, GLuint, GLenum, GLfloat> Binding::TextureParameterf("glTextureParameterf");
 Function<void, GLuint, GLenum, GLenum, GLfloat> Binding::TextureParameterfEXT("glTextureParameterfEXT");
+Function<void, GLuint, GLenum, const GLfloat *> Binding::TextureParameterfv("glTextureParameterfv");
 Function<void, GLuint, GLenum, GLenum, const GLfloat *> Binding::TextureParameterfvEXT("glTextureParameterfvEXT");
+Function<void, GLuint, GLenum, GLint> Binding::TextureParameteri("glTextureParameteri");
 Function<void, GLuint, GLenum, GLenum, GLint> Binding::TextureParameteriEXT("glTextureParameteriEXT");
+Function<void, GLuint, GLenum, const GLint *> Binding::TextureParameteriv("glTextureParameteriv");
 Function<void, GLuint, GLenum, GLenum, const GLint *> Binding::TextureParameterivEXT("glTextureParameterivEXT");
 Function<void, GLenum, GLsizei, const void *> Binding::TextureRangeAPPLE("glTextureRangeAPPLE");
 Function<void, GLuint, GLenum, GLuint> Binding::TextureRenderbufferEXT("glTextureRenderbufferEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei> Binding::TextureStorage1D("glTextureStorage1D");
 Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei> Binding::TextureStorage1DEXT("glTextureStorage1DEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei> Binding::TextureStorage2D("glTextureStorage2D");
 Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei> Binding::TextureStorage2DEXT("glTextureStorage2DEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> Binding::TextureStorage2DMultisample("glTextureStorage2DMultisample");
 Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> Binding::TextureStorage2DMultisampleEXT("glTextureStorage2DMultisampleEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TextureStorage3D("glTextureStorage3D");
 Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TextureStorage3DEXT("glTextureStorage3DEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TextureStorage3DMultisample("glTextureStorage3DMultisample");
 Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TextureStorage3DMultisampleEXT("glTextureStorage3DMultisampleEXT");
 Function<void, GLuint, GLenum, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, TextureStorageMaskAMD> Binding::TextureStorageSparseAMD("glTextureStorageSparseAMD");
+Function<void, GLuint, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage1D("glTextureSubImage1D");
 Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage1DEXT("glTextureSubImage1DEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage2D("glTextureSubImage2D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage2DEXT("glTextureSubImage2DEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage3D("glTextureSubImage3D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage3DEXT("glTextureSubImage3DEXT");
 Function<void, GLuint, GLenum, GLuint, GLenum, GLuint, GLuint, GLuint, GLuint> Binding::TextureView("glTextureView");
 Function<void, GLenum, GLuint, GLenum, GLenum> Binding::TrackMatrixNV("glTrackMatrixNV");
 Function<void, GLsizei, const GLint *, GLenum> Binding::TransformFeedbackAttribsNV("glTransformFeedbackAttribsNV");
+Function<void, GLuint, GLuint, GLuint> Binding::TransformFeedbackBufferBase("glTransformFeedbackBufferBase");
+Function<void, GLuint, GLuint, GLuint, GLintptr, GLsizei> Binding::TransformFeedbackBufferRange("glTransformFeedbackBufferRange");
 Function<void, GLsizei, const GLint *, GLsizei, const GLint *, GLenum> Binding::TransformFeedbackStreamAttribsNV("glTransformFeedbackStreamAttribsNV");
 Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> Binding::TransformFeedbackVaryings("glTransformFeedbackVaryings");
 Function<void, GLuint, GLsizei, const GLchar *const*, GLenum> Binding::TransformFeedbackVaryingsEXT("glTransformFeedbackVaryingsEXT");
@@ -2243,6 +2356,7 @@ Function<void, GLint, GLsizei, const GLuint64EXT *> Binding::Uniformui64vNV("glU
 Function<void> Binding::UnlockArraysEXT("glUnlockArraysEXT");
 Function<GLboolean, GLenum> Binding::UnmapBuffer("glUnmapBuffer");
 Function<GLboolean, GLenum> Binding::UnmapBufferARB("glUnmapBufferARB");
+Function<GLboolean, GLuint> Binding::UnmapNamedBuffer("glUnmapNamedBuffer");
 Function<GLboolean, GLuint> Binding::UnmapNamedBufferEXT("glUnmapNamedBufferEXT");
 Function<void, GLuint> Binding::UnmapObjectBufferATI("glUnmapObjectBufferATI");
 Function<void, GLuint, GLint> Binding::UnmapTexture2DINTEL("glUnmapTexture2DINTEL");
@@ -2316,9 +2430,15 @@ Function<void, GLshort, GLshort, GLshort, GLshort> Binding::Vertex4s("glVertex4s
 Function<void, const GLshort *> Binding::Vertex4sv("glVertex4sv");
 Function<void, GLfixed, GLfixed, GLfixed> Binding::Vertex4xOES("glVertex4xOES");
 Function<void, const GLfixed *> Binding::Vertex4xvOES("glVertex4xvOES");
+Function<void, GLuint, GLuint, GLuint> Binding::VertexArrayAttribBinding("glVertexArrayAttribBinding");
+Function<void, GLuint, GLuint, GLint, GLenum, GLboolean, GLuint> Binding::VertexArrayAttribFormat("glVertexArrayAttribFormat");
+Function<void, GLuint, GLuint, GLint, GLenum, GLuint> Binding::VertexArrayAttribIFormat("glVertexArrayAttribIFormat");
+Function<void, GLuint, GLuint, GLint, GLenum, GLuint> Binding::VertexArrayAttribLFormat("glVertexArrayAttribLFormat");
 Function<void, GLuint, GLuint, GLuint, GLintptr, GLsizei> Binding::VertexArrayBindVertexBufferEXT("glVertexArrayBindVertexBufferEXT");
+Function<void, GLuint, GLuint, GLuint> Binding::VertexArrayBindingDivisor("glVertexArrayBindingDivisor");
 Function<void, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> Binding::VertexArrayColorOffsetEXT("glVertexArrayColorOffsetEXT");
 Function<void, GLuint, GLuint, GLsizei, GLintptr> Binding::VertexArrayEdgeFlagOffsetEXT("glVertexArrayEdgeFlagOffsetEXT");
+Function<void, GLuint, GLuint> Binding::VertexArrayElementBuffer("glVertexArrayElementBuffer");
 Function<void, GLuint, GLuint, GLenum, GLsizei, GLintptr> Binding::VertexArrayFogCoordOffsetEXT("glVertexArrayFogCoordOffsetEXT");
 Function<void, GLuint, GLuint, GLenum, GLsizei, GLintptr> Binding::VertexArrayIndexOffsetEXT("glVertexArrayIndexOffsetEXT");
 Function<void, GLuint, GLuint, GLenum, GLint, GLenum, GLsizei, GLintptr> Binding::VertexArrayMultiTexCoordOffsetEXT("glVertexArrayMultiTexCoordOffsetEXT");
@@ -2337,6 +2457,8 @@ Function<void, GLuint, GLuint, GLint, GLenum, GLuint> Binding::VertexArrayVertex
 Function<void, GLuint, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> Binding::VertexArrayVertexAttribLOffsetEXT("glVertexArrayVertexAttribLOffsetEXT");
 Function<void, GLuint, GLuint, GLuint, GLint, GLenum, GLboolean, GLsizei, GLintptr> Binding::VertexArrayVertexAttribOffsetEXT("glVertexArrayVertexAttribOffsetEXT");
 Function<void, GLuint, GLuint, GLuint> Binding::VertexArrayVertexBindingDivisorEXT("glVertexArrayVertexBindingDivisorEXT");
+Function<void, GLuint, GLuint, GLuint, GLintptr, GLsizei> Binding::VertexArrayVertexBuffer("glVertexArrayVertexBuffer");
+Function<void, GLuint, GLuint, GLsizei, const GLuint *, const GLintptr *, const GLsizei *> Binding::VertexArrayVertexBuffers("glVertexArrayVertexBuffers");
 Function<void, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> Binding::VertexArrayVertexOffsetEXT("glVertexArrayVertexOffsetEXT");
 Function<void, GLuint, GLdouble> Binding::VertexAttrib1d("glVertexAttrib1d");
 Function<void, GLuint, GLdouble> Binding::VertexAttrib1dARB("glVertexAttrib1dARB");
@@ -2769,6 +2891,7 @@ const Binding::array_t Binding::s_functions =
     &BindTexGenParameterEXT,
     &BindTexture,
     &BindTextureEXT,
+    &BindTextureUnit,
     &BindTextureUnitParameterEXT,
     &BindTextures,
     &BindTransformFeedback,
@@ -2793,6 +2916,7 @@ const Binding::array_t Binding::s_functions =
     &BinormalPointerEXT,
     &Bitmap,
     &BitmapxOES,
+    &BlendBarrierKHR,
     &BlendBarrierNV,
     &BlendColor,
     &BlendColorEXT,
@@ -2820,9 +2944,11 @@ const Binding::array_t Binding::s_functions =
     &BlendParameteriNV,
     &BlitFramebuffer,
     &BlitFramebufferEXT,
+    &BlitNamedFramebuffer,
     &BufferAddressRangeNV,
     &BufferData,
     &BufferDataARB,
+    &BufferPageCommitmentARB,
     &BufferParameteriAPPLE,
     &BufferStorage,
     &BufferSubData,
@@ -2831,6 +2957,7 @@ const Binding::array_t Binding::s_functions =
     &CallLists,
     &CheckFramebufferStatus,
     &CheckFramebufferStatusEXT,
+    &CheckNamedFramebufferStatus,
     &CheckNamedFramebufferStatusEXT,
     &ClampColor,
     &ClampColorARB,
@@ -2853,8 +2980,14 @@ const Binding::array_t Binding::s_functions =
     &ClearDepthfOES,
     &ClearDepthxOES,
     &ClearIndex,
+    &ClearNamedBufferData,
     &ClearNamedBufferDataEXT,
+    &ClearNamedBufferSubData,
     &ClearNamedBufferSubDataEXT,
+    &ClearNamedFramebufferfi,
+    &ClearNamedFramebufferfv,
+    &ClearNamedFramebufferiv,
+    &ClearNamedFramebufferuiv,
     &ClearStencil,
     &ClearTexImage,
     &ClearTexSubImage,
@@ -2863,6 +2996,7 @@ const Binding::array_t Binding::s_functions =
     &ClientActiveVertexStreamATI,
     &ClientAttribDefaultEXT,
     &ClientWaitSync,
+    &ClipControl,
     &ClipPlane,
     &ClipPlanefOES,
     &ClipPlanexOES,
@@ -2970,8 +3104,11 @@ const Binding::array_t Binding::s_functions =
     &CompressedTextureImage1DEXT,
     &CompressedTextureImage2DEXT,
     &CompressedTextureImage3DEXT,
+    &CompressedTextureSubImage1D,
     &CompressedTextureSubImage1DEXT,
+    &CompressedTextureSubImage2D,
     &CompressedTextureSubImage2DEXT,
+    &CompressedTextureSubImage3D,
     &CompressedTextureSubImage3DEXT,
     &ConvolutionFilter1D,
     &ConvolutionFilter1DEXT,
@@ -3003,6 +3140,7 @@ const Binding::array_t Binding::s_functions =
     &CopyMultiTexSubImage1DEXT,
     &CopyMultiTexSubImage2DEXT,
     &CopyMultiTexSubImage3DEXT,
+    &CopyNamedBufferSubData,
     &CopyPathNV,
     &CopyPixels,
     &CopyTexImage1D,
@@ -3017,21 +3155,33 @@ const Binding::array_t Binding::s_functions =
     &CopyTexSubImage3DEXT,
     &CopyTextureImage1DEXT,
     &CopyTextureImage2DEXT,
+    &CopyTextureSubImage1D,
     &CopyTextureSubImage1DEXT,
+    &CopyTextureSubImage2D,
     &CopyTextureSubImage2DEXT,
+    &CopyTextureSubImage3D,
     &CopyTextureSubImage3DEXT,
     &CoverFillPathInstancedNV,
     &CoverFillPathNV,
     &CoverStrokePathInstancedNV,
     &CoverStrokePathNV,
+    &CreateBuffers,
+    &CreateFramebuffers,
     &CreatePerfQueryINTEL,
     &CreateProgram,
     &CreateProgramObjectARB,
+    &CreateProgramPipelines,
+    &CreateQueries,
+    &CreateRenderbuffers,
+    &CreateSamplers,
     &CreateShader,
     &CreateShaderObjectARB,
     &CreateShaderProgramEXT,
     &CreateShaderProgramv,
     &CreateSyncFromCLeventARB,
+    &CreateTextures,
+    &CreateTransformFeedbacks,
+    &CreateVertexArrays,
     &CullFace,
     &CullParameterdvEXT,
     &CullParameterfvEXT,
@@ -3102,6 +3252,7 @@ const Binding::array_t Binding::s_functions =
     &DisableClientStateiEXT,
     &DisableIndexedEXT,
     &DisableVariantClientStateEXT,
+    &DisableVertexArrayAttrib,
     &DisableVertexArrayAttribEXT,
     &DisableVertexArrayEXT,
     &DisableVertexAttribAPPLE,
@@ -3160,6 +3311,7 @@ const Binding::array_t Binding::s_functions =
     &EnableClientStateiEXT,
     &EnableIndexedEXT,
     &EnableVariantClientStateEXT,
+    &EnableVertexArrayAttrib,
     &EnableVertexArrayAttribEXT,
     &EnableVertexArrayEXT,
     &EnableVertexAttribAPPLE,
@@ -3215,6 +3367,7 @@ const Binding::array_t Binding::s_functions =
     &Flush,
     &FlushMappedBufferRange,
     &FlushMappedBufferRangeAPPLE,
+    &FlushMappedNamedBufferRange,
     &FlushMappedNamedBufferRangeEXT,
     &FlushPixelDataRangeNV,
     &FlushRasterSGIX,
@@ -3314,6 +3467,7 @@ const Binding::array_t Binding::s_functions =
     &GenerateMipmap,
     &GenerateMipmapEXT,
     &GenerateMultiTexMipmapEXT,
+    &GenerateTextureMipmap,
     &GenerateTextureMipmapEXT,
     &GetActiveAtomicCounterBufferiv,
     &GetActiveAttrib,
@@ -3365,7 +3519,9 @@ const Binding::array_t Binding::s_functions =
     &GetCompressedMultiTexImageEXT,
     &GetCompressedTexImage,
     &GetCompressedTexImageARB,
+    &GetCompressedTextureImage,
     &GetCompressedTextureImageEXT,
+    &GetCompressedTextureSubImage,
     &GetConvolutionFilter,
     &GetConvolutionFilterEXT,
     &GetConvolutionParameterfv,
@@ -3403,6 +3559,7 @@ const Binding::array_t Binding::s_functions =
     &GetFramebufferAttachmentParameterivEXT,
     &GetFramebufferParameteriv,
     &GetFramebufferParameterivEXT,
+    &GetGraphicsResetStatus,
     &GetGraphicsResetStatusARB,
     &GetHandleARB,
     &GetHistogram,
@@ -3470,11 +3627,17 @@ const Binding::array_t Binding::s_functions =
     &GetMultiTexParameterivEXT,
     &GetMultisamplefv,
     &GetMultisamplefvNV,
+    &GetNamedBufferParameteri64v,
+    &GetNamedBufferParameteriv,
     &GetNamedBufferParameterivEXT,
     &GetNamedBufferParameterui64vNV,
+    &GetNamedBufferPointerv,
     &GetNamedBufferPointervEXT,
+    &GetNamedBufferSubData,
     &GetNamedBufferSubDataEXT,
+    &GetNamedFramebufferAttachmentParameteriv,
     &GetNamedFramebufferAttachmentParameterivEXT,
+    &GetNamedFramebufferParameteriv,
     &GetNamedFramebufferParameterivEXT,
     &GetNamedProgramLocalParameterIivEXT,
     &GetNamedProgramLocalParameterIuivEXT,
@@ -3482,6 +3645,7 @@ const Binding::array_t Binding::s_functions =
     &GetNamedProgramLocalParameterfvEXT,
     &GetNamedProgramStringEXT,
     &GetNamedProgramivEXT,
+    &GetNamedRenderbufferParameteriv,
     &GetNamedRenderbufferParameterivEXT,
     &GetNamedStringARB,
     &GetNamedStringivARB,
@@ -3616,19 +3780,30 @@ const Binding::array_t Binding::s_functions =
     &GetTexParameterxvOES,
     &GetTextureHandleARB,
     &GetTextureHandleNV,
+    &GetTextureImage,
     &GetTextureImageEXT,
+    &GetTextureLevelParameterfv,
     &GetTextureLevelParameterfvEXT,
+    &GetTextureLevelParameteriv,
     &GetTextureLevelParameterivEXT,
+    &GetTextureParameterIiv,
     &GetTextureParameterIivEXT,
+    &GetTextureParameterIuiv,
     &GetTextureParameterIuivEXT,
+    &GetTextureParameterfv,
     &GetTextureParameterfvEXT,
+    &GetTextureParameteriv,
     &GetTextureParameterivEXT,
     &GetTextureSamplerHandleARB,
     &GetTextureSamplerHandleNV,
+    &GetTextureSubImage,
     &GetTrackMatrixivNV,
     &GetTransformFeedbackVarying,
     &GetTransformFeedbackVaryingEXT,
     &GetTransformFeedbackVaryingNV,
+    &GetTransformFeedbacki64_v,
+    &GetTransformFeedbacki_v,
+    &GetTransformFeedbackiv,
     &GetUniformBlockIndex,
     &GetUniformBufferSizeEXT,
     &GetUniformIndices,
@@ -3652,10 +3827,13 @@ const Binding::array_t Binding::s_functions =
     &GetVariantIntegervEXT,
     &GetVariantPointervEXT,
     &GetVaryingLocationNV,
+    &GetVertexArrayIndexed64iv,
+    &GetVertexArrayIndexediv,
     &GetVertexArrayIntegeri_vEXT,
     &GetVertexArrayIntegervEXT,
     &GetVertexArrayPointeri_vEXT,
     &GetVertexArrayPointervEXT,
+    &GetVertexArrayiv,
     &GetVertexAttribArrayObjectfvATI,
     &GetVertexAttribArrayObjectivATI,
     &GetVertexAttribIiv,
@@ -3687,23 +3865,41 @@ const Binding::array_t Binding::s_functions =
     &GetVideoivNV,
     &GetVideoui64vNV,
     &GetVideouivNV,
+    &GetnColorTable,
     &GetnColorTableARB,
+    &GetnCompressedTexImage,
     &GetnCompressedTexImageARB,
+    &GetnConvolutionFilter,
     &GetnConvolutionFilterARB,
+    &GetnHistogram,
     &GetnHistogramARB,
+    &GetnMapdv,
     &GetnMapdvARB,
+    &GetnMapfv,
     &GetnMapfvARB,
+    &GetnMapiv,
     &GetnMapivARB,
+    &GetnMinmax,
     &GetnMinmaxARB,
+    &GetnPixelMapfv,
     &GetnPixelMapfvARB,
+    &GetnPixelMapuiv,
     &GetnPixelMapuivARB,
+    &GetnPixelMapusv,
     &GetnPixelMapusvARB,
+    &GetnPolygonStipple,
     &GetnPolygonStippleARB,
+    &GetnSeparableFilter,
     &GetnSeparableFilterARB,
+    &GetnTexImage,
     &GetnTexImageARB,
+    &GetnUniformdv,
     &GetnUniformdvARB,
+    &GetnUniformfv,
     &GetnUniformfvARB,
+    &GetnUniformiv,
     &GetnUniformivARB,
+    &GetnUniformuiv,
     &GetnUniformuivARB,
     &GlobalAlphaFactorbSUN,
     &GlobalAlphaFactordSUN,
@@ -3751,6 +3947,8 @@ const Binding::array_t Binding::s_functions =
     &InvalidateBufferData,
     &InvalidateBufferSubData,
     &InvalidateFramebuffer,
+    &InvalidateNamedFramebufferData,
+    &InvalidateNamedFramebufferSubData,
     &InvalidateSubFramebuffer,
     &InvalidateTexImage,
     &InvalidateTexSubImage,
@@ -3863,7 +4061,9 @@ const Binding::array_t Binding::s_functions =
     &MapGrid2d,
     &MapGrid2f,
     &MapGrid2xOES,
+    &MapNamedBuffer,
     &MapNamedBufferEXT,
+    &MapNamedBufferRange,
     &MapNamedBufferRangeEXT,
     &MapObjectBufferATI,
     &MapParameterfvNV,
@@ -3910,6 +4110,7 @@ const Binding::array_t Binding::s_functions =
     &MatrixTranslatedEXT,
     &MatrixTranslatefEXT,
     &MemoryBarrier,
+    &MemoryBarrierByRegion,
     &MemoryBarrierEXT,
     &MinSampleShading,
     &MinSampleShadingARB,
@@ -4063,17 +4264,29 @@ const Binding::array_t Binding::s_functions =
     &MultiTexSubImage1DEXT,
     &MultiTexSubImage2DEXT,
     &MultiTexSubImage3DEXT,
+    &NamedBufferData,
     &NamedBufferDataEXT,
+    &NamedBufferPageCommitmentARB,
+    &NamedBufferPageCommitmentEXT,
+    &NamedBufferStorage,
     &NamedBufferStorageEXT,
+    &NamedBufferSubData,
     &NamedBufferSubDataEXT,
     &NamedCopyBufferSubDataEXT,
+    &NamedFramebufferDrawBuffer,
+    &NamedFramebufferDrawBuffers,
+    &NamedFramebufferParameteri,
     &NamedFramebufferParameteriEXT,
+    &NamedFramebufferReadBuffer,
+    &NamedFramebufferRenderbuffer,
     &NamedFramebufferRenderbufferEXT,
+    &NamedFramebufferTexture,
     &NamedFramebufferTexture1DEXT,
     &NamedFramebufferTexture2DEXT,
     &NamedFramebufferTexture3DEXT,
     &NamedFramebufferTextureEXT,
     &NamedFramebufferTextureFaceEXT,
+    &NamedFramebufferTextureLayer,
     &NamedFramebufferTextureLayerEXT,
     &NamedProgramLocalParameter4dEXT,
     &NamedProgramLocalParameter4dvEXT,
@@ -4087,7 +4300,9 @@ const Binding::array_t Binding::s_functions =
     &NamedProgramLocalParametersI4ivEXT,
     &NamedProgramLocalParametersI4uivEXT,
     &NamedProgramStringEXT,
+    &NamedRenderbufferStorage,
     &NamedRenderbufferStorageEXT,
+    &NamedRenderbufferStorageMultisample,
     &NamedRenderbufferStorageMultisampleCoverageEXT,
     &NamedRenderbufferStorageMultisampleEXT,
     &NamedStringARB,
@@ -4432,6 +4647,7 @@ const Binding::array_t Binding::s_functions =
     &ReadBuffer,
     &ReadInstrumentsSGIX,
     &ReadPixels,
+    &ReadnPixels,
     &ReadnPixelsARB,
     &Rectd,
     &Rectdv,
@@ -4750,8 +4966,11 @@ const Binding::array_t Binding::s_functions =
     &TexSubImage3D,
     &TexSubImage3DEXT,
     &TexSubImage4DSGIS,
+    &TextureBarrier,
     &TextureBarrierNV,
+    &TextureBuffer,
     &TextureBufferEXT,
+    &TextureBufferRange,
     &TextureBufferRangeEXT,
     &TextureColorMaskSGIS,
     &TextureImage1DEXT,
@@ -4765,26 +4984,42 @@ const Binding::array_t Binding::s_functions =
     &TextureMaterialEXT,
     &TextureNormalEXT,
     &TexturePageCommitmentEXT,
+    &TextureParameterIiv,
     &TextureParameterIivEXT,
+    &TextureParameterIuiv,
     &TextureParameterIuivEXT,
+    &TextureParameterf,
     &TextureParameterfEXT,
+    &TextureParameterfv,
     &TextureParameterfvEXT,
+    &TextureParameteri,
     &TextureParameteriEXT,
+    &TextureParameteriv,
     &TextureParameterivEXT,
     &TextureRangeAPPLE,
     &TextureRenderbufferEXT,
+    &TextureStorage1D,
     &TextureStorage1DEXT,
+    &TextureStorage2D,
     &TextureStorage2DEXT,
+    &TextureStorage2DMultisample,
     &TextureStorage2DMultisampleEXT,
+    &TextureStorage3D,
     &TextureStorage3DEXT,
+    &TextureStorage3DMultisample,
     &TextureStorage3DMultisampleEXT,
     &TextureStorageSparseAMD,
+    &TextureSubImage1D,
     &TextureSubImage1DEXT,
+    &TextureSubImage2D,
     &TextureSubImage2DEXT,
+    &TextureSubImage3D,
     &TextureSubImage3DEXT,
     &TextureView,
     &TrackMatrixNV,
     &TransformFeedbackAttribsNV,
+    &TransformFeedbackBufferBase,
+    &TransformFeedbackBufferRange,
     &TransformFeedbackStreamAttribsNV,
     &TransformFeedbackVaryings,
     &TransformFeedbackVaryingsEXT,
@@ -4898,6 +5133,7 @@ const Binding::array_t Binding::s_functions =
     &UnlockArraysEXT,
     &UnmapBuffer,
     &UnmapBufferARB,
+    &UnmapNamedBuffer,
     &UnmapNamedBufferEXT,
     &UnmapObjectBufferATI,
     &UnmapTexture2DINTEL,
@@ -4971,9 +5207,15 @@ const Binding::array_t Binding::s_functions =
     &Vertex4sv,
     &Vertex4xOES,
     &Vertex4xvOES,
+    &VertexArrayAttribBinding,
+    &VertexArrayAttribFormat,
+    &VertexArrayAttribIFormat,
+    &VertexArrayAttribLFormat,
     &VertexArrayBindVertexBufferEXT,
+    &VertexArrayBindingDivisor,
     &VertexArrayColorOffsetEXT,
     &VertexArrayEdgeFlagOffsetEXT,
+    &VertexArrayElementBuffer,
     &VertexArrayFogCoordOffsetEXT,
     &VertexArrayIndexOffsetEXT,
     &VertexArrayMultiTexCoordOffsetEXT,
@@ -4992,6 +5234,8 @@ const Binding::array_t Binding::s_functions =
     &VertexArrayVertexAttribLOffsetEXT,
     &VertexArrayVertexAttribOffsetEXT,
     &VertexArrayVertexBindingDivisorEXT,
+    &VertexArrayVertexBuffer,
+    &VertexArrayVertexBuffers,
     &VertexArrayVertexOffsetEXT,
     &VertexAttrib1d,
     &VertexAttrib1dARB,

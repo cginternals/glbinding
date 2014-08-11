@@ -65,8 +65,20 @@
             <param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
         </command>
         <command>
+            <proto>void <name>glMemoryBarrierByRegion</name></proto>
+            <param group="MemoryBarrierMask"><ptype>GLbitfield</ptype> <name>barriers</name></param>
+        </command>
+        <command>
             <proto>void <name>glNamedBufferStorageEXT</name></proto>
             <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto>void <name>glNamedBufferStorage</name></proto>
+            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto>void *<name>glMapNamedBufferRange</name></proto>
+            <param group="BufferAccessMask"><ptype>GLbitfield</ptype> <name>access</name></param>
         </command>
         <command>
             <proto>void <name>glTexStorageSparseAMD</name></proto>
@@ -91,6 +103,11 @@
         <command>
             <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexArrayNV</name></proto>
             <param group="PathFontStyle"><ptype>GLbitfield</ptype> <name>fontStyle</name></param>
+        </command>
+
+        <command>
+            <proto>void <name>glBlitNamedFramebuffer</name></proto>
+            <param group="ClearBufferMask"><ptype>GLbitfield</ptype> <name>mask</name></param>
         </command>
 
 <!--    <command>
