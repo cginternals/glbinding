@@ -23,7 +23,7 @@ std::unordered_map<ContextHandle, int> bindings;
 const Binding::array_t & Binding::functions() 
 {
     return s_functions;
-};
+}
 
 void Binding::initialize(const bool resolveFunctions)
 {

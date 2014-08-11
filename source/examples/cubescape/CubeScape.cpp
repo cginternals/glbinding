@@ -259,9 +259,9 @@ CubeScape::~CubeScape()
     glDeleteProgram(m_program);
 }
 
-void CubeScape::setNumCubes(int numCubes)
+void CubeScape::setNumCubes(int _numCubes)
 {
-    m_numcubes = std::min(4096, std::max(1, numCubes));
+    m_numcubes = std::min(4096, std::max(1, _numCubes));
 }
 int CubeScape::numCubes() const
 {

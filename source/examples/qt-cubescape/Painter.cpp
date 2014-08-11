@@ -8,8 +8,8 @@
 
 
 Painter::Painter()
-: m_cubescape(nullptr)
-, m_initialized(false)
+    : m_initialized(false)
+    , m_cubescape(nullptr)
 {
 }
 

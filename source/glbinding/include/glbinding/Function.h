@@ -38,7 +38,6 @@ class Function : public AbstractFunction
     using AfterCallback = typename CallbackType<ReturnType, Arguments...>::type;
 
 public:
-    Function();
     Function(const char * name);
 
     ReturnType operator()(Arguments&... arguments) const;
