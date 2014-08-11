@@ -163,17 +163,55 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 
 ##### Meta Information
 
-ToDo
-* Meta information about the generated OpenGL binding and the OpenGL runtime
-  * OpenGL extension support
-    * Since when is an extension in the core profile?
-    * Is an extension supported by the current context?
-    * Collect all supported extensions as list of enums
-  * GL symbol to string conversion
-  * string to GL symbol conversion
+Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and compile time information about the gl.xml and your OpenGL driver.
+Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
+Another powerful feature is the rudimentary support for scripted OpenGL.
 
-e.g., allows e.g. to be accessed via scripts when turning on OPTION_GL_BY_STRINGS
+Example list of all available OpenGL versions/features (compile time):
+```c++
+#include <glbinding/Meta.h>
 
+using glbinding::Meta;
+
+for (Version v : Meta::versions())
+  std::cout << v.toString() << std::endl;
+```
+
+Example output of all enums (compile time):
+```c++
+#include <glbinding/Meta.h>
+
+using glbinding::Meta;
+
+if (Meta::stringsByGL())
+{
+  std::cout << "# Enums: " << Meta::enums().size() << std::endl << std::endl;
+
+  for (GLenum e : Meta::enums()) // c++ 14 ...
+    std::cout << " (" << std::hex << std::showbase << std::internal << std::setfill('0') << std::setw(8) 
+              << static_cast<std::underlying_type<GLenum>::type>(e) << ") " << Meta::getString(e) << std::dec << std::endl;
+
+  std::cout << std::dec;
+}
+```
+
+Example output of all available extensions (run time):
+```c++
+#include <glbinding/Meta.h>
+
+using glbinding::Meta;
+
+if (Meta::stringsByGL())
+{
+  std::cout << " # Extensions: " << Meta::extensions().size() << std::endl << std::endl;
+
+  for (GLextension e : Meta::extensions())
+  {
+    const Version v = Meta::getRequiringVersion(e);
+    std::cout << " " << Meta::getString(e) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
+  }
+}
+```
 
 ##### Performance
 
