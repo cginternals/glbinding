@@ -123,7 +123,7 @@ e.g., allows e.g. to be accessed via scripts when turning on OPTION_GL_BY_STRING
 
 ##### Performance
 
-ToDo . e.g. show output of comaprison example?
+*glbinding* causes no signigicant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with glbinding and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
 
 
 ##### Binding Generation
