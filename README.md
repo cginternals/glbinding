@@ -230,34 +230,6 @@ Patching gl.xml
 Check out the [wiki](https://github.com/hpicgs/glbinding/wiki) for detailed examples.
 
 
-
-## Examples 
-
-##### callbacks 
-
-ToDo - shows extended use of callbacks by logging every function call
-
-##### comparison
-
-ToDo - glew comparison example, shows that there is no measurable overhead involved in using glbinding
-
-##### functions
-
-ToDo - lists functions sorted by extensions and shows supported gl versions (similar to gl extensions viewer)
-
-##### meta 
-
-ToDo - shows all available meta information (depends on options)
-
-##### cubescape
-
-ToDo - little example showing basic rendering 
-
-##### qt-cubescape 
-
-ToDo - same example, but embeded into a qt-window
-
-
 ## Project health
 
 <a href="https://scan.coverity.com/projects/2705">
