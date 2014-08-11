@@ -29,7 +29,19 @@ int main()
 moo
 
 #### Per Feature API Header
-moo
+
+Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally these headers are available as  featured-based API subsets, each using a specialized namespace, e.g.:
+* ```functions32.h``` contains all OpenGL commands available up to Version 3.2 in ```namespace gl32```.
+* ```functions32core.h``` contains all non-deprecated OpenGL commands available up to Version 3.2 in ```namespace gl32```.
+* ```functions32ext.h``` containing all OpenGL commands not yet specified in Version 3.2 in ```namespace gl32```.
+Depending on the use-case this allows to (1) limit coding to a specific OpenGL feature and (2) reduces switching to other features to swapping includes and using directives. In both cases, non-featured commads will not compile.
+
+
+* Per OpenGL Feature API headers (e.g. gl44core.h)
+  * Core, extensions, combined
+  * Per feature functions and constants (enums, bitfields, special values)
+  * Separate namespaces
+
 
 #### Lazy Function Resolving
 moo
@@ -58,15 +70,6 @@ foo
 
 
 
-
-
-Current code written with a typical C binding for OpenGL (e.g. GLEW) is fully compatible for the use with glbinding.
-Just replace all includes to the old binding with the include to glbinding and use the ```gl``` namespace.
-Besides the actual binding, glbinding comes with these additional features:
-* Per OpenGL Feature API headers (e.g. gl44core.h)
-  * Core, extensions, combined
-  * Per feature functions and constants (enums, bitfields, special values)
-  * Separate namespaces
 * Type-safe OpenGL parameters (enums, bitfields, bitfield groups)
   * Never mix bitfields of different groups again
   * Code completion for all allowed values
