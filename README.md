@@ -1,6 +1,6 @@
 *glbinding* is a generated C++ binding for OpenGL solely based on the new xml-based OpenGL API specification (gl.xml). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/) or [glad](https://github.com/Dav1dde/glad). The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 
-*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolving](#lazy-resolving), [multi-context](#multi-context) and [multi-thread](#multi-thread) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
+*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolving](#lazy-function-resolving), [multi-context](#multi-context-support) and [multi-thread](#multi-thread-support) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
 
 Current code written with a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
 Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
@@ -25,19 +25,19 @@ int main()
 
 ## Features
 
-#### Type-Safe Parameters (#type-safe-parameters)
+#### Type-Safe Parameters 
 moo
 
-#### Per Feature API Header (#per-feature-header)
+#### Per Feature API Header
 moo
 
-#### Lazy Function Resolving (#lazy-resolving)
+#### Lazy Function Resolving
 moo
 
-#### Multi-Context Support (#multi-context)
+#### Multi-Context Support
 moo
 
-#### Multi-Thread Support (#multi-thread)
+#### Multi-Thread Support
 moo
 
 #### Function Callbacks
@@ -48,11 +48,11 @@ moo
  * Local Function Callbacks (#local-callbacks) 
 * Parameter and Return Value Callbacks
 
-#### Meta Information (#meta-information) 
+#### Meta Information
 moo
 
 
-## Examples (#examples) 
+## Examples 
 foo
 
 
