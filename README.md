@@ -83,7 +83,7 @@ This feature is mainly required for Windows, as function pointers for different 
 
 ##### Multi-Threading Support
 
-The requirement feature for concurrent use of *glbinding* will mainly be the usage of multiple OpenGL contexts in different threads (multiple threads operating on a single OpenGL context requires locking).
+The feature that requires concurrent use of *glbinding* will mainly be the usage of multiple OpenGL contexts in different threads (multiple threads operating on a single OpenGL context requires locking).
 Therefor, *glbinding* supports multiple active contexts, one per thread.
 This necessitate that *glbinding* gets informed in each thread which context is currently active.
 
