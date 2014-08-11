@@ -188,18 +188,20 @@ def verifyGroups(groups, enums):
     # ToDo
 
     # (3) check that every enum of type GLbitfield 
-    # has only one group (important for namespace import)
+    # has only one group (important for namespace import) 
 
-    overflows = set()
+    # Note: (3) is deprecated since glbinding supports groups 
+
+    #overflows = set()
     
-    for enum in enums:
-        if enum.type == "GLbitfield" and len(enum.groups) > 1:
-            overflows.add(enum)
+    #for enum in enums:
+    #   if enum.type == "GLbitfield" and len(enum.groups) > 1:
+    #       overflows.add(enum)
 
-    if len(overflows) > 0:
-        print " WARNING: " + str(len(overflows)) + " enums are in multiple groups:"
-        for enum in overflows:
-            print ("  %s groups for %s (%s)" % (str(len(enum.groups)), enum.name, ", ".join([g.name for g in enum.groups])))
+    #if len(overflows) > 0:
+    #    print " WARNING: " + str(len(overflows)) + " enums are in multiple groups:"
+    #    for enum in overflows:
+    #        print ("  %s groups for %s (%s)" % (str(len(enum.groups)), enum.name, ", ".join([g.name for g in enum.groups])))
 
 
 def parseEnums(xml, features, extensions, commands, api):

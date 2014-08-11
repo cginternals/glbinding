@@ -19,11 +19,11 @@ glAttachShader(program, fs);
 glLinkProgram(program);
 
 glBindBuffer(GL_ARRAY_BUFFER, quad);
-glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * 4, cornerData, GL_STATIC_DRAW);
+glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * 4, vertices, GL_STATIC_DRAW);
 
 glBindVertexArray(vao);
 
-a_vertex = static_cast<GLuint>(glGetAttribLocation(program, "corner"));
+a_vertex = static_cast<GLuint>(glGetAttribLocation(program, "a_vertex"));
 glEnableVertexAttribArray(static_cast<GLuint>(a_vertex));
 glVertexAttribPointer(static_cast<GLuint>(a_vertex), 2, GL_FLOAT, GL_FALSE, 0, nullptr);
 

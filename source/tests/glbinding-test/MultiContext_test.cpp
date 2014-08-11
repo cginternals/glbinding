@@ -47,7 +47,6 @@ TEST_F(MultiContext_test, Test)
     EXPECT_NE(nullptr, window1);
 
     glfwDefaultWindowHints();
-    glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
 
     GLFWwindow * window2 = glfwCreateWindow(320, 240, "", nullptr, nullptr);
