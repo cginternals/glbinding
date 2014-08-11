@@ -1,8 +1,35 @@
-glbinding is an automatically generated C++ binding for OpenGL (using the gl.xml).
-The current release is [glbinding-v1.0.0](https://github.com/hpicgs/glbinding/releases/tag/v1.0.0).
-The implementation uses modern C++11 features like enum classes, lambdas and variadic templates.
+*glbinding* is a C++ binding for OpenGL that is fully automatically generated using the xml-based OpenGL API specification (gl.xml). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/) or [glad](https://github.com/Dav1dde/glad). 
+
+*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros. It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-header), [lazy function resolving](#lazy-resolving), [multi-context](#multi-context) and [multi-thread](#multi-thread) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
+
+The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
+
+### Usage
+
+```
+#include <glbinding/gl/gl.h>
+#include <glbinding/Binding.h>
+
+using namespace gl;
+
+int main()
+{
+  // create context, e.g. using GLFW, Qt, SDL, GLUT, ...
+
+  glbinding::Binding::initialize();
+
+  glBegin(GL_TRIANGLES);
+  // ...
+  glEnd();
+}
+```
+
+
+
 All defined OpenGL symbols are real functions and variables, they don't rely on macros.
 It should serve as an alternative to other OpenGL bindings like [GLEW](http://glew.sourceforge.net/) and [glad](https://github.com/Dav1dde/glad).
+
+
 
 ### Project health
 <a href="https://scan.coverity.com/projects/2705">
@@ -10,26 +37,6 @@ It should serve as an alternative to other OpenGL bindings like [GLEW](http://gl
        src="https://scan.coverity.com/projects/2705/badge.svg"/>
 </a>
 
-### Usage
-
-The standard glbinding API setup looks like
-```
-#include <glbinding/gl/gl.h>
-#include <glbinding/glbinding.h>
-
-using namespace gl;
-
-int main()
-{
-  // create context, e.g. using GLFW, Qt, SDL, GLUT, ...
-  
-  glbinding::initialize();
-  
-  glBegin(GL_TRIANGLES);
-  // ...
-  glEnd();
-}
-```
 
 ### Features
 
@@ -89,3 +96,8 @@ If you are contributing to this project, please keep the following notes in mind
 * Member Variables always start with ```m_```, ```g_```, and ```s_``` (e.g.,```m_member```, ```g_global```, and ```s_static```)..
 * Interface or abstract class names always start with Abstract (e.g., ```AbstractArray```).
 * Enforce strict include sequence: cpp-related header, std, glbinding.
+
+
+(#type-safe-parameters)### TypeSafe
+
+foobar
