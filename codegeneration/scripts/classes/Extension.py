@@ -237,7 +237,10 @@ def resolveExtensions(extensions, enumsByName, commandsByName, features, api):
 			"GL_ARB_texture_buffer_range",
 			"GL_ARB_texture_storage_multisample",
 			"GL_ARB_texture_view",
-			"GL_ARB_vertex_attrib_binding"
+			"GL_ARB_vertex_attrib_binding",
+			"GL_ARB_texture_query_levels",
+			"GL_ARB_fragment_layer_viewport",
+			"GL_ARB_robust_buffer_access_behavior"
 			],
 		"4.4": [
 			"GL_ARB_buffer_storage",
@@ -248,6 +251,19 @@ def resolveExtensions(extensions, enumsByName, commandsByName, features, api):
 			"GL_ARB_texture_mirror_clamp_to_edge",
 			"GL_ARB_texture_stencil8",
 			"GL_ARB_vertex_type_10f_11f_11f_rev"
+			],
+		"4.5": [
+			"GL_ARB_clip_control",
+			"GL_ARB_cull_distance",
+			"GL_ARB_ES3_1_compatibility",
+			"GL_ARB_conditional_render_inverted",
+			"GL_KHR_context_flush_control",
+			"GL_ARB_derivative_control",
+			"GL_ARB_direct_state_access",
+			"GL_ARB_get_texture_sub_image",
+			"GL_KHR_robustness",
+			"GL_ARB_shader_texture_image_samples",
+			"GL_ARB_texture_barrier"
 			]
 		}
 

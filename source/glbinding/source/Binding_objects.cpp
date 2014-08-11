@@ -167,7 +167,7 @@ Function<void, GLuint, GLenum, GLenum> Binding::BlendFunciARB("glBlendFunciARB")
 Function<void, GLenum, GLint> Binding::BlendParameteriNV("glBlendParameteriNV");
 Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebuffer("glBlitFramebuffer");
 Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebufferEXT("glBlitFramebufferEXT");
-Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum> Binding::BlitNamedFramebuffer("glBlitNamedFramebuffer");
+Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitNamedFramebuffer("glBlitNamedFramebuffer");
 Function<void, GLenum, GLuint, GLuint64EXT, GLsizeiptr> Binding::BufferAddressRangeNV("glBufferAddressRangeNV");
 Function<void, GLenum, GLsizeiptr, const void *, GLenum> Binding::BufferData("glBufferData");
 Function<void, GLenum, GLsizeiptrARB, const void *, GLenum> Binding::BufferDataARB("glBufferDataARB");
@@ -1286,7 +1286,7 @@ Function<void, GLint, GLfloat, GLfloat, GLint, GLfloat, GLfloat> Binding::MapGri
 Function<void, GLint, GLfixed, GLfixed, GLfixed, GLfixed> Binding::MapGrid2xOES("glMapGrid2xOES");
 Function<void *, GLuint, GLenum> Binding::MapNamedBuffer("glMapNamedBuffer");
 Function<void *, GLuint, GLenum> Binding::MapNamedBufferEXT("glMapNamedBufferEXT");
-Function<void *, GLuint, GLintptr, GLsizei, GLbitfield> Binding::MapNamedBufferRange("glMapNamedBufferRange");
+Function<void *, GLuint, GLintptr, GLsizei, BufferAccessMask> Binding::MapNamedBufferRange("glMapNamedBufferRange");
 Function<void *, GLuint, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapNamedBufferRangeEXT("glMapNamedBufferRangeEXT");
 Function<void *, GLuint> Binding::MapObjectBufferATI("glMapObjectBufferATI");
 Function<void, GLenum, GLenum, const GLfloat *> Binding::MapParameterfvNV("glMapParameterfvNV");
@@ -1333,7 +1333,7 @@ Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixScalefEXT("glMa
 Function<void, GLenum, GLdouble, GLdouble, GLdouble> Binding::MatrixTranslatedEXT("glMatrixTranslatedEXT");
 Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixTranslatefEXT("glMatrixTranslatefEXT");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrier("glMemoryBarrier");
-Function<void, GLbitfield> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
+Function<void, MemoryBarrierMask> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierEXT("glMemoryBarrierEXT");
 Function<void, GLfloat> Binding::MinSampleShading("glMinSampleShading");
 Function<void, GLfloat> Binding::MinSampleShadingARB("glMinSampleShadingARB");
@@ -1491,7 +1491,7 @@ Function<void, GLuint, GLsizei, const void *, GLenum> Binding::NamedBufferData("
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferDataEXT("glNamedBufferDataEXT");
 Function<void, GLuint, GLintptr, GLsizei, GLboolean> Binding::NamedBufferPageCommitmentARB("glNamedBufferPageCommitmentARB");
 Function<void, GLuint, GLintptr, GLsizei, GLboolean> Binding::NamedBufferPageCommitmentEXT("glNamedBufferPageCommitmentEXT");
-Function<void, GLuint, GLsizei, const void *, GLbitfield> Binding::NamedBufferStorage("glNamedBufferStorage");
+Function<void, GLuint, GLsizei, const void *, MapBufferUsageMask> Binding::NamedBufferStorage("glNamedBufferStorage");
 Function<void, GLuint, GLsizeiptr, const void *, MapBufferUsageMask> Binding::NamedBufferStorageEXT("glNamedBufferStorageEXT");
 Function<void, GLuint, GLintptr, GLsizei, const void *> Binding::NamedBufferSubData("glNamedBufferSubData");
 Function<void, GLuint, GLintptr, GLsizeiptr, const void *> Binding::NamedBufferSubDataEXT("glNamedBufferSubDataEXT");

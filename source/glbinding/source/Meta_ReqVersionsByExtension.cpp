@@ -97,15 +97,18 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
     { GLextension::GL_ARB_copy_image, { 4, 3 } },
     { GLextension::GL_ARB_debug_output, { 4, 3 } },
     { GLextension::GL_ARB_explicit_uniform_location, { 4, 3 } },
+    { GLextension::GL_ARB_fragment_layer_viewport, { 4, 3 } },
     { GLextension::GL_ARB_framebuffer_no_attachments, { 4, 3 } },
     { GLextension::GL_ARB_internalformat_query2, { 4, 3 } },
     { GLextension::GL_ARB_invalidate_subdata, { 4, 3 } },
     { GLextension::GL_ARB_multi_draw_indirect, { 4, 3 } },
     { GLextension::GL_ARB_program_interface_query, { 4, 3 } },
+    { GLextension::GL_ARB_robust_buffer_access_behavior, { 4, 3 } },
     { GLextension::GL_ARB_shader_image_size, { 4, 3 } },
     { GLextension::GL_ARB_shader_storage_buffer_object, { 4, 3 } },
     { GLextension::GL_ARB_stencil_texturing, { 4, 3 } },
     { GLextension::GL_ARB_texture_buffer_range, { 4, 3 } },
+    { GLextension::GL_ARB_texture_query_levels, { 4, 3 } },
     { GLextension::GL_ARB_texture_storage_multisample, { 4, 3 } },
     { GLextension::GL_ARB_texture_view, { 4, 3 } },
     { GLextension::GL_ARB_vertex_attrib_binding, { 4, 3 } },
@@ -116,7 +119,18 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
     { GLextension::GL_ARB_query_buffer_object, { 4, 4 } },
     { GLextension::GL_ARB_texture_mirror_clamp_to_edge, { 4, 4 } },
     { GLextension::GL_ARB_texture_stencil8, { 4, 4 } },
-    { GLextension::GL_ARB_vertex_type_10f_11f_11f_rev, { 4, 4 } }
+    { GLextension::GL_ARB_vertex_type_10f_11f_11f_rev, { 4, 4 } },
+    { GLextension::GL_ARB_ES3_1_compatibility, { 4, 5 } },
+    { GLextension::GL_ARB_clip_control, { 4, 5 } },
+    { GLextension::GL_ARB_conditional_render_inverted, { 4, 5 } },
+    { GLextension::GL_ARB_cull_distance, { 4, 5 } },
+    { GLextension::GL_ARB_derivative_control, { 4, 5 } },
+    { GLextension::GL_ARB_direct_state_access, { 4, 5 } },
+    { GLextension::GL_ARB_get_texture_sub_image, { 4, 5 } },
+    { GLextension::GL_ARB_shader_texture_image_samples, { 4, 5 } },
+    { GLextension::GL_ARB_texture_barrier, { 4, 5 } },
+    { GLextension::GL_KHR_context_flush_control, { 4, 5 } },
+    { GLextension::GL_KHR_robustness, { 4, 5 } }
 };
 
 } // namespace glbinding

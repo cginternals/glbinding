@@ -595,7 +595,7 @@ inline void glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint sr
     return glbinding::Binding::BlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
-inline void glBlitNamedFramebuffer(GLuint readFramebuffer, GLuint drawFramebuffer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+inline void glBlitNamedFramebuffer(GLuint readFramebuffer, GLuint drawFramebuffer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter)
 {
     return glbinding::Binding::BlitNamedFramebuffer(readFramebuffer, drawFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
@@ -5215,7 +5215,7 @@ inline void * glMapNamedBufferEXT(GLuint buffer, GLenum access)
     return glbinding::Binding::MapNamedBufferEXT(buffer, access);
 }
 
-inline void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizei length, GLbitfield access)
+inline void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizei length, BufferAccessMask access)
 {
     return glbinding::Binding::MapNamedBufferRange(buffer, offset, length, access);
 }
@@ -5425,7 +5425,7 @@ inline void glMemoryBarrier(MemoryBarrierMask barriers)
     return glbinding::Binding::MemoryBarrier(barriers);
 }
 
-inline void glMemoryBarrierByRegion(GLbitfield barriers)
+inline void glMemoryBarrierByRegion(MemoryBarrierMask barriers)
 {
     return glbinding::Binding::MemoryBarrierByRegion(barriers);
 }
@@ -6025,7 +6025,7 @@ inline void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsiz
     return glbinding::Binding::NamedBufferPageCommitmentEXT(buffer, offset, size, commit);
 }
 
-inline void glNamedBufferStorage(GLuint buffer, GLsizei size, const void * data, GLbitfield flags)
+inline void glNamedBufferStorage(GLuint buffer, GLsizei size, const void * data, MapBufferUsageMask flags)
 {
     return glbinding::Binding::NamedBufferStorage(buffer, size, data, flags);
 }

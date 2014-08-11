@@ -173,7 +173,7 @@ public:
     static Function<void, gl::GLenum, gl::GLint> BlendParameteriNV;
     static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebuffer;
     static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferEXT;
-    static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLbitfield, gl::GLenum> BlitNamedFramebuffer;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitNamedFramebuffer;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64EXT, gl::GLsizeiptr> BufferAddressRangeNV;
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLenum> BufferData;
     static Function<void, gl::GLenum, gl::GLsizeiptrARB, const void *, gl::GLenum> BufferDataARB;
@@ -1292,7 +1292,7 @@ public:
     static Function<void, gl::GLint, gl::GLfixed, gl::GLfixed, gl::GLfixed, gl::GLfixed> MapGrid2xOES;
     static Function<void *, gl::GLuint, gl::GLenum> MapNamedBuffer;
     static Function<void *, gl::GLuint, gl::GLenum> MapNamedBufferEXT;
-    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizei, gl::GLbitfield> MapNamedBufferRange;
+    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizei, gl::BufferAccessMask> MapNamedBufferRange;
     static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapNamedBufferRangeEXT;
     static Function<void *, gl::GLuint> MapObjectBufferATI;
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLfloat *> MapParameterfvNV;
@@ -1339,7 +1339,7 @@ public:
     static Function<void, gl::GLenum, gl::GLdouble, gl::GLdouble, gl::GLdouble> MatrixTranslatedEXT;
     static Function<void, gl::GLenum, gl::GLfloat, gl::GLfloat, gl::GLfloat> MatrixTranslatefEXT;
     static Function<void, gl::MemoryBarrierMask> MemoryBarrier;
-    static Function<void, gl::GLbitfield> MemoryBarrierByRegion;
+    static Function<void, gl::MemoryBarrierMask> MemoryBarrierByRegion;
     static Function<void, gl::MemoryBarrierMask> MemoryBarrierEXT;
     static Function<void, gl::GLfloat> MinSampleShading;
     static Function<void, gl::GLfloat> MinSampleShadingARB;
@@ -1497,7 +1497,7 @@ public:
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferDataEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizei, gl::GLboolean> NamedBufferPageCommitmentARB;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizei, gl::GLboolean> NamedBufferPageCommitmentEXT;
-    static Function<void, gl::GLuint, gl::GLsizei, const void *, gl::GLbitfield> NamedBufferStorage;
+    static Function<void, gl::GLuint, gl::GLsizei, const void *, gl::MapBufferUsageMask> NamedBufferStorage;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> NamedBufferStorageEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizei, const void *> NamedBufferSubData;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubDataEXT;
