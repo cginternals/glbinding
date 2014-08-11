@@ -2,7 +2,7 @@
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-header), [lazy function resolving](#lazy-resolving), [multi-context](#multi-context) and [multi-thread](#multi-thread) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
 
-The binding is fully generated using python scripts and templates, that can be easily adapted to fit custom needs.
+The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 
 ### Usage
 
