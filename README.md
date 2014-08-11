@@ -58,13 +58,11 @@ Furthermore, *glbinding* provides explicit, non-feature dependent headers for sp
 
 ##### Lazy Function Pointer Resolution
 
-With the call of
+By default, *glbinding* tries to resolve all known OpenGL function pointers during initialization, which can consume some time:
 ```
 glbinding::Binding::initialize(); // immediate function pointer resolution
 ```
-*glbinding* tries to bind all known OpenGL function pointers, which can consume some time.
-Alternatively, the user of *glbinding* can decide that all functions pointers are resolved when the function is used for the first time.
-This is achieved by
+Alternatively, the user can decide that functions pointers are resolved only when used for the first time. This is achieved by:
 ```
 glbinding::Binding::initialize(false); // lazy function pointer resolution
 ```
