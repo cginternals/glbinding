@@ -64,15 +64,28 @@ moo
 
 ##### Multi-Context Support
 
-ToDo
-* Multi-context support (explicit switch required)
+*glbinding* has built-in support for multiple contexts.
+The only requirement is, that you has to tell *glbinding* which context is currently active.
+This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context will not result in meaningful program behavior.
+To use multiple contexts, use your favorite context creation library (e.g. Qt, egl, glfw, or platform specific solutions) to request as much contexts as you want to use.
+The functions to make a context current should be provided by this library.
+To use multiple contexts, you have to call
+```
+glbinding::Binding::initialize();
+```
+on each context while it is active and then you can switch between them either by using
+```
+glbinding::Binding::useCurrentContext(); // to use the current active context
+glbinding::Binding::useContext(ContextHandle context); // to use another context, identified by the platform-specific identifier
+```
+The actual context switch has to be managed by yourself and you need to tell you context creating library which one you want to use and in addition to that, you have to tell *glbinding* which context is the active one, so function pointers can be correctly dispatched.
+This feature is mainly required for Windows, as function pointers for different requested OpenGL features may vary.
 
+##### Multi-Threading Support
 
-##### Multi-Thread Support
-
-ToDo
-* Multi-threading support
-
+The requirement feature for concurrent use of *glbinding* will mainly be the usage of multiple OpenGL contexts in different threads (multiple threads operating on a single OpenGL context requires locking).
+Therefor, *glbinding* supports multiple active contexts, one per thread.
+This necessitate that *glbinding* gets informed in each thread which context is currently active.
 
 ##### Function Callbacks
 
