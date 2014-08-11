@@ -35,7 +35,6 @@ find_package(Qt5Widgets 5.1 REQUIRED)
 
 include_directories(
     ${OPENGL_INCLUDE_DIR}
-    ${GLFW_INCLUDE_DIR}
 )
 
 include_directories(
