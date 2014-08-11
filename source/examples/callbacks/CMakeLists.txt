@@ -46,8 +46,13 @@ endif()
 # Sources
 #
 
+set(comparison_path ../comparison)
+
 set(sources
     main.cpp
+
+	${comparison_path}/gltest.inl
+	${comparison_path}/gltest_data.inl
 )
 
 #
