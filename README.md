@@ -30,7 +30,7 @@ moo
 
 #### Per Feature API Header
 
-Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally these headers are available as  featured-based API subsets, each using a specialized namespace, e.g.:
+Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  featured-based API subsets, each using a specialized namespace, e.g.:
 * ```functions32.h``` contains all OpenGL commands available up to Version 3.2 in ```namespace gl32```.
 * ```functions32core.h``` contains all non-deprecated OpenGL commands available up to Version 3.2 in ```namespace gl32```.
 * ```functions32ext.h``` containing all OpenGL commands not yet specified in Version 3.2 in ```namespace gl32```.
