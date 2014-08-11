@@ -10,7 +10,7 @@
 
 #include <glbinding/gl/gl.h>
 
-#include "cubescape.h"
+#include "CubeScape.h"
 
 
 using namespace gl;
@@ -38,6 +38,26 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, 1);
+
+    bool numCubesChanged = false;
+
+    if (key == GLFW_KEY_I && (action == GLFW_PRESS || action == GLFW_REPEAT))
+    {
+        cubescape->setNumCubes(cubescape->numCubes() + 1);
+        numCubesChanged = true;        
+    }
+
+    if (key == GLFW_KEY_D && (action == GLFW_PRESS || action == GLFW_REPEAT))
+    {
+        cubescape->setNumCubes(cubescape->numCubes() - 1);
+        numCubesChanged = true;
+    }
+
+    if (numCubesChanged)
+    {
+        const int n = cubescape->numCubes();
+        std::cout << "#cubes = " << n << " * " << n << " = " << n * n << std::endl;
+    }
 }
 
 
@@ -68,14 +88,18 @@ int main(int, char *[])
             std::cout << "error: " << error << std::endl;
     });
 
-    Binding::initialize();
+    Binding::initialize(false); // only resolve functions that are actually used (lazy)
 
     // print some gl infos (query)
 
     std::cout << std::endl
         << "OpenGL Version:  " << ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl << std::endl;
+        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl;
+
+    std::cout << std::endl
+        << "Press i or d to either increase or decrease number of cubes." << std::endl << std::endl;
+
 
     cubescape = new CubeScape();
     cubescape->resize(640, 480);

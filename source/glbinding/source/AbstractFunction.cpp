@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <memory>
-#include <mutex>
 #include <set>
 #include <cassert>
 
@@ -49,7 +48,7 @@ inline AbstractFunction::State & AbstractFunction::state() const
 
 inline AbstractFunction::State & AbstractFunction::state(const int pos) const
 {
-    assert(s_maxpos <= pos);
+    assert(s_maxpos >= pos);
     assert(pos > -1);
 
     return m_states[pos];
@@ -77,7 +76,7 @@ void AbstractFunction::neglectState(const int pos)
     if (pos == s_maxpos)
     {
         for (AbstractFunction * function : Binding::functions())
-            function->m_states.resize(static_cast<std::size_t>(pos - 1));
+            function->m_states.resize(static_cast<std::size_t>(std::max(0, pos - 1)));
 
         --s_maxpos;
     }

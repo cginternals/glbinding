@@ -20,7 +20,7 @@ public:
 
     Binding() = delete;
 
-    static void initialize();
+    static void initialize(bool resolveFunctions = true);
     static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
 
     static void resolveFunctions();
@@ -28,8 +28,8 @@ public:
     static void useCurrentContext();
     static void useContext(ContextHandle context);
 
-    static void finalizeCurrentContext();
-    static void finalizeContext(ContextHandle context);
+    static void releaseCurrentContext();
+    static void releaseContext(ContextHandle context);
 
 //  iterator begin();
 //  iterator end();    

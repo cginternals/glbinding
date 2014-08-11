@@ -5,6 +5,7 @@
 #include <mutex>
 #include <cassert>
 
+
 #include "thread_local.h"
 
 
@@ -15,19 +16,18 @@ namespace
 {
 THREAD_LOCAL ContextHandle g_context = 0;
 
-std::mutex mutex;
+std::recursive_mutex mutex;
 std::unordered_map<ContextHandle, int> bindings;
 }
 
 const Binding::array_t & Binding::functions() 
 {
     return s_functions;
-};
+}
 
-
-void Binding::initialize()
+void Binding::initialize(const bool resolveFunctions)
 {
-    initialize(getCurrentContext());
+    initialize(getCurrentContext(), true, resolveFunctions);
 }
 
 void Binding::initialize(
@@ -92,12 +92,12 @@ void Binding::useContext(const ContextHandle context)
     mutex.unlock();
 }
 
-void Binding::finalizeCurrentContext()
+void Binding::releaseCurrentContext()
 {
-    finalizeContext(getCurrentContext());
+    releaseContext(getCurrentContext());
 }
 
-void Binding::finalizeContext(const ContextHandle context)
+void Binding::releaseContext(const ContextHandle context)
 {
     mutex.lock(); // ToDo: use read lock
     AbstractFunction::neglectState(bindings[context]);

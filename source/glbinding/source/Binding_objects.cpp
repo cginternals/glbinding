@@ -2692,7 +2692,7 @@ Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::WriteMas
 
 
 const Binding::array_t Binding::s_functions = 
-{
+{{
 	&Accum,
     &AccumxOES,
     &ActiveProgramEXT,
@@ -5344,6 +5344,6 @@ const Binding::array_t Binding::s_functions =
     &WindowPos4sMESA,
     &WindowPos4svMESA,
     &WriteMaskEXT
-};
+}};
 
 } // namespace glbinding

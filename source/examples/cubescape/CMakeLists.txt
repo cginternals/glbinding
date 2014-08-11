@@ -48,12 +48,12 @@ endif()
 
 set(sources
     main.cpp
-    cubescape.cpp
-    cubescape.h
+    CubeScape.cpp
+    CubeScape.h
     glutils.cpp
     glutils.h
-    rawfile.cpp
-    rawfile.h
+    RawFile.cpp
+    RawFile.h
 )
 
 #
