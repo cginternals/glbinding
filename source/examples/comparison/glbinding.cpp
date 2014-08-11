@@ -19,7 +19,7 @@ namespace
 
 void glbinding_init()
 {
-    glbinding::Binding::initialize();
+    glbinding::Binding::initialize(false);
 }
 
 

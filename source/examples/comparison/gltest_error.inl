@@ -34,13 +34,13 @@ glError();
 
 glBindBuffer(GL_ARRAY_BUFFER, quad);
 glError();
-glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * 4, cornerData, GL_STATIC_DRAW);
+glBufferData(GL_ARRAY_BUFFER, sizeof(vec2) * 4, vertices, GL_STATIC_DRAW);
 glError();
 
 glBindVertexArray(vao);
 glError();
 
-a_vertex = static_cast<GLuint>(glGetAttribLocation(program, "corner"));
+a_vertex = static_cast<GLuint>(glGetAttribLocation(program, "a_vertex"));
 glError();
 glEnableVertexAttribArray(static_cast<GLuint>(a_vertex));
 glError();
