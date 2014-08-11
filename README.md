@@ -96,16 +96,69 @@ For this, *glbinding* supports multiple active contexts, one per thread. This ne
 
 ##### Function Callbacks
 
-ToDo
-* Before and After Callbacks
-* Callback Scopes
- * Global Function Callbacks (#global-callbacks)
- * Local Function Callbacks (#local-callbacks) 
-* Parameter and Return Value Callbacks
+*glbinding* supports different types of callbacks that can be registered.
+The main types are
+ * Before callbacks, that are called before the OpenGL function is called
+ * After callbacks, that are called after the OpenGL function call
+ * Unresolved callbacks, that are called each time an unresolved OpenGL function should be called (instead of a segmentation fault)
 
-Never forget glGetError() again
-Logging all OpenGL calls
+The before callbacks are useful , e.g., for tracing or application-specific parameter checking.
+The available informations in this callback are the wrapped OpenGL function (including its name and bound function address) and all parameters.
+The after callbacks are useful, .e.g., for tracing, logging, or the obligatory error check.
+Available informations are extended by the return value.
+The unresolved callback provides information about the (unresolved) wrapped OpenGL function object.
 
+All callbacks are currently global (per thread, per context, and per function) but are intended to become local in the future.
+
+Example for error checking:
+```
+#include <glbinding/callbacks.h>
+
+using namespace glbinding;
+
+// ...
+setCallbackMask(CallbackMask::After);
+setAfterCallback([](const FunctionCall &)
+{
+  GLenum error = glGetError();
+  if (error != GL_NO_ERROR)
+    std::cout << "error: " << std::hex << error << std::endl;
+});
+
+// ... OpenGL code
+```
+
+Example for logging:
+```
+#include <glbinding/callbacks.h>
+
+using namespace glbinding;
+
+// ...
+setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
+{
+  std::cout << call.function.name() << "(";
+  
+  for (unsigned i = 0; i < call.parameters.size(); ++i)
+  {
+    std::cout << call.parameters[i]->asString();
+    if (i < call.parameters.size() - 1)
+      std::cout << ", ";
+  }
+  
+  std::cout << ")";
+  
+  if (call.returnValue)
+  {
+    std::cout << " -> " << call.returnValue->asString();
+  }
+  
+  std::cout << std::endl;
+});
+
+// ... OpenGL code
+```
 
 ##### Meta Information
 
