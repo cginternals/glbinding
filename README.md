@@ -89,6 +89,11 @@ ToDo
 e.g., allows e.g. to be accessed via scripts when turning on OPTION_GL_BY_STRINGS
 
 
+##### Performance
+
+ToDo . e.g. show output of comaprison example?
+
+
 ##### Binding Generation
 
 ToDo
