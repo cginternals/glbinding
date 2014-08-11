@@ -117,9 +117,9 @@ def resolveExtensions(extensions, enumsByName, commandsByName, features, api):
 	mapping = {
 		"3.0" : [
 			"GL_ARB_map_buffer_range",
-			"GL_APPLE_flush_buffer_range"
+			# "GL_APPLE_flush_buffer_range"
 			"GL_ARB_vertex_array_object",
-			"GL_APPLE_vertex_array_object",
+			# "GL_APPLE_vertex_array_object",
 			"GL_ARB_color_buffer_float",
 			"GL_ARB_depth_buffer_float",
 			"GL_ARB_framebuffer_object",
@@ -137,10 +137,11 @@ def resolveExtensions(extensions, enumsByName, commandsByName, features, api):
 			"GL_EXT_texture_array",
 			"GL_EXT_texture_integer",
 			"GL_EXT_texture_shared_exponent",
-			"GL_EXT_transform_feedback",
+			# "GL_EXT_transform_feedback",
+			"GL_NV_transform_feedback",
 			"GL_NV_conditional_render",
 			"GL_NV_half_float",
-			"GL_ARB_half_float_vertex" # ?
+			# "GL_ARB_half_float_vertex" # ?
 			],
 		"3.1" : [
 			"GL_ARB_copy_buffer",
@@ -148,7 +149,7 @@ def resolveExtensions(extensions, enumsByName, commandsByName, features, api):
 			"GL_ARB_texture_buffer_object",
 			"GL_ARB_texture_rectangle",
 			"GL_ARB_texture_snorm",
-			"GL_EXT_texture_snorm", # ?
+			# "GL_EXT_texture_snorm", # ?
 			"GL_ARB_uniform_buffer_object",
 			"GL_NV_primitive_restart"
 			],
@@ -219,9 +220,9 @@ def resolveExtensions(extensions, enumsByName, commandsByName, features, api):
 			"GL_ARB_copy_image",
 			"GL_ARB_debug_group",
 			"GL_ARB_debug_label",
-			"GL_EXT_debug_label", # ?
+			#"GL_EXT_debug_label", # ?
 			"GL_ARB_debug_output",
-			"GL_KHR_debug_output", # ?
+			#"GL_KHR_debug_output", # ?
 			"GL_ARB_debug_output2",
 			"GL_ARB_ES3_compatibility",
 			"GL_ARB_explicit_uniform_location",
