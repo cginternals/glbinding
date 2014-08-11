@@ -2,7 +2,7 @@
 
 *glbinding* is a generated C++ binding for OpenGL which is solely based on the new xml-based OpenGL API specification (gl.xml). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/) or [glad](https://github.com/Dav1dde/glad). The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 
-*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolving](#lazy-function-resolving), [multi-context](#multi-context-support) and [multi-thread](#multi-thread-support) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
+*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolution](#lazy-function-resolution), [multi-context](#multi-context-support) and [multi-thread](#multi-thread-support) support, [global](#global-callbacks) and [local](#local-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [examples](#examples) for quick-starting your projects. 
 
 Current code written with a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
 Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
@@ -58,7 +58,7 @@ Furthermore, *glbinding* provides explicit, non-feature dependent headers for sp
 
 ##### Lazy Function Pointer Resolution
 
-By default, *glbinding* tries to resolve all known OpenGL function pointers during initialization, which can consume some time:
+By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
 ```
 glbinding::Binding::initialize(); // immediate function pointer resolution
 ```
@@ -69,22 +69,23 @@ glbinding::Binding::initialize(false); // lazy function pointer resolution
 
 ##### Multi-Context Support
 
-*glbinding* has built-in support for multiple contexts.
-The only requirement is, that you has to tell *glbinding* which context is currently active.
-This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context will not result in meaningful program behavior.
-To use multiple contexts, use your favorite context creation library (e.g. Qt, egl, glfw, or platform specific solutions) to request as much contexts as you want to use.
-The functions to make a context current should be provided by this library.
-To use multiple contexts, you have to call
+*glbinding* has built-in support for multiple contexts. The only requirement is, that the currently active context has to be specified. This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context often result in non-meaningful communication with the OpenGL driver.
+
+To use multiple contexts, use your favorite context creation library (e.g., glut, SDL, egl, glfw, Qt) to request as much contexts as required. The functions to make a context current should be provided by this library and is not part of *glbinding* (except that you can get the current context handle). When using multiple contexts, first, each has to be initialized when active: 
 ```
+// use context library to make current, e.g., glfwMakeCurrent(...)
 glbinding::Binding::initialize();
 ```
-on each context while it is active and then you can switch between them either by using
+Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
 ```
-glbinding::Binding::useCurrentContext(); // to use the current active context
-glbinding::Binding::useContext(ContextHandle context); // to use another context, identified by the platform-specific identifier
+// use the current active context
+glbinding::Binding::useCurrentContext();               
+
+// use another context, identified by platform-specific handle
+glbinding::Binding::useContext(ContextHandle context); 
 ```
-The actual context switch has to be managed by yourself and you need to tell you context creating library which one you want to use and in addition to that, you have to tell *glbinding* which context is the active one, so function pointers can be correctly dispatched.
-This feature is mainly required for Windows, as function pointers for different requested OpenGL features may vary.
+This feature is mainly intended for platforms where function pointers for different requested OpenGL features may vary.
+
 
 ##### Multi-Threading Support
 
