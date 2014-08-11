@@ -29,23 +29,21 @@ int main()
 
 ##### Type-Safe Parameters
 
-Every parameter of an OpenGL function expects a specific type of value and *glbinding* enforces the type in its function interfaces.
-This results in the following behavior:
+Every parameter of an OpenGL function expects a specific type of value and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
 ```
 glClear(GL_COLOR_BUFFER_BIT); // valid
-glClear(GL_FRAMEBUFFER); // compile error: bitfield of group ClearBufferMask expected, got GLenum
+glClear(GL_FRAMEBUFFER);      // compile error: bitfield of group ClearBufferMask expected, got GLenum
 ```
-For bitfields there are extensively specified groups that are additionally used to enforce type-safety (a bitfield value can be used by several groups).
-Combinations of bitfields that share no group results in a compile error.
+For bitfields there are extensively specified groups that are additionally used to enforce type-safety (a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compile error.
 ```
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
-glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT); // compile error: both bitfields share no group
-glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT); // compile error: bitwise or operation is valid (shared group is AttribMask), but the resulting bitfield group does not match with the expected in glClear
+glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
+glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or operation is valid, the                                                                   //     shared group is AttribMask, but the resulting
+                                                    //     group does not match the expected.
 ```
-The groups for enums are not as complety as they are needed - e.g. ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not - to enable per function compile time errors when trying to call functions with values from the wrong enum group.
+The groups for enums are not yet as complete as we would like them to be to enable per function compile time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
 
-Another feature of type-safe parameters is the possible IDE support.
-If your IDE has support for it, the code completion can hint the set of currently valid values.
+Another feature of type-safe parameters is the possible IDE support for code completion, hinting the exclusive set of currently valid values.
 
 ##### Per Feature API Header
 
