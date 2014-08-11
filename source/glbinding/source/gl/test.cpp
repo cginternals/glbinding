@@ -42,3 +42,6 @@
 #include <glbinding/gl/gl44.h>
 #include <glbinding/gl/gl44core.h>
 #include <glbinding/gl/gl44ext.h>
+#include <glbinding/gl/gl45.h>
+#include <glbinding/gl/gl45core.h>
+#include <glbinding/gl/gl45ext.h>
