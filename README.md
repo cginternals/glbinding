@@ -33,7 +33,7 @@ moo
 Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  featured-based API subsets, each using a specialized namespace, e.g.:
 * ```functions32.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
 * ```functions32core.h``` provides all non-deprecated OpenGL commands available up to 3.2 in namespace ```gl32core```.
-* ```functions32ext.h``` provides all OpenGL commands specified in 3.3 and above (or by extension) in namespace ```gl32ext```.
+* ```functions32ext.h``` provides all OpenGL commands specified either in 3.3 and above, or by extension in ```gl32ext```.
 
 Depending on the use-case this allows to (1) limit coding to a specific OpenGL feature and (2) reduces switching to other features to swapping includes and using directives. In both cases, non-featured commads will not compile.
 
