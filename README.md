@@ -226,9 +226,11 @@ As a user of glbinding you are able to update the gl.xml by yourself and generat
 The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
 
 
+<!--
 ## Status
 
-<!--build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)-->
+build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)
+-->
 
 ## Run-time dependencies
 
