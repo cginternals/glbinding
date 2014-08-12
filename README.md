@@ -226,15 +226,13 @@ As a user of glbinding you are able to update the gl.xml by yourself and generat
 The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
 
 
+## Status
+
+build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)
+
 ## Run-time dependencies
 
 The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL library, dynamically linked with your application.
-
-
-## Compile-time dependencies
-
- * CMake (2.8.12)
- * C++11-Compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3)
 
 Optional dependencies
  * Python 2 or 3 to generate the binding
@@ -242,6 +240,10 @@ Optional dependencies
  * [GLFW 3](http://www.glfw.org/) for some examples
  * GLEW for some examples
 
+## Compile-time dependencies
+
+ * CMake (2.8.12)
+ * C++11-Compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3)
 
 ## Using glbinding
 
