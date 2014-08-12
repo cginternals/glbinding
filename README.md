@@ -228,7 +228,7 @@ The necessary python scripts are provided in this repository. Since the ```gl.xm
 
 ## Status
 
-build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)
+<!--build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)-->
 
 ## Run-time dependencies
 
