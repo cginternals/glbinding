@@ -2,6 +2,11 @@
 
 glbinding-1.0.0 was just released: [goto release](https://github.com/hpicgs/glbinding/releases/tag/v1.0.0)
 
+<a href="https://scan.coverity.com/projects/2705">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/2705/badge.svg"/>
+</a>
+
 *glbinding* is a generated, cross-platform C++ binding for OpenGL which is solely based on the new xml-based OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/). The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 *glbinding* can be used as an alternative to GLEW and other projects, e.g., [glad](https://github.com/Dav1dde/glad), [gl3w](https://github.com/skaslev/gl3w), [glLoadGen](https://bitbucket.org/alfonse/glloadgen/overview), [glload](http://glsdk.sourceforge.net/docs/html/group__module__glload.html), and [flextGL](https://github.com/ginkgo/flextGL).
 
@@ -224,14 +229,6 @@ if (Meta::stringsByGL())
 
 As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
 The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
-
-
-## Project health
-
-<a href="https://scan.coverity.com/projects/2705">
-  <img alt="Coverity Scan Build Status"
-       src="https://scan.coverity.com/projects/2705/badge.svg"/>
-</a>
 
 
 ## Run-time dependencies
