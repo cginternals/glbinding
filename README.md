@@ -253,4 +253,4 @@ Optional dependencies
 
 ## Using glbinding
 
-When working with CMake: in order to use *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDE_DIR``` and ```GLBINDING_LIBRARIES``` can then be added toinclude dirs and target libraries.
+When working with CMake: in order to use *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDES``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
