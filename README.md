@@ -232,7 +232,9 @@ The necessary python scripts are provided in this repository. Since the ```gl.xm
 build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)
 -->
 
-## Run-time dependencies
+## Using glbinding
+
+##### Dependencies
 
 The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL library, dynamically linked with your application.
 
@@ -242,11 +244,11 @@ Optional dependencies
  * [GLFW 3](http://www.glfw.org/) for some examples
  * GLEW for some examples
 
-## Compile-time dependencies
+For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3) are required.
 
- * CMake (2.8.12)
- * C++11-Compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3)
+When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES```, ```OPTION_GL_BY_STRINGS```, and ```OPTION_STRINGS_BY_GL``` can be used to enable example builds (qt-cubescape is only enabled when Qt5 is found), allow string-to-symbol and symbol-to-string conversion respectively (in ```Meta```). ```OPTION_GL_BY_STRINGS``` is disabled by default, since it increases build time for the MSVC 2013 compiler.
 
-## Using glbinding
 
-When working with CMake: in order to use *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDES``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
+##### Linking binaries
+
+In order to link *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDES``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
