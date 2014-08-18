@@ -1,14 +1,25 @@
 
 set(target comparison)
-message(STATUS "Example ${target}")
 
 #
 # External libraries
 #
 
 find_package(OpenGL REQUIRED)
-find_package(GLFW REQUIRED)
-find_package(GLEW REQUIRED)
+find_package(GLFW QUIET)
+find_package(GLEW QUIET)
+
+if (NOT GLFW_FOUND)
+	message(STATUS "Example ${target} (disabled because GLFW couldn't be found)")
+	return()
+endif()
+
+if (NOT GLEW_FOUND)
+	message(STATUS "Example ${target} (disabled because GLEW couldn't be found)")
+	return()
+endif()
+
+message(STATUS "Example ${target}")
 
 #
 # Includes
