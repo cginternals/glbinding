@@ -1,6 +1,5 @@
 
 set(target qt-cubescape)
-message(STATUS "Example ${target}")
 
 #
 # Qt5
@@ -28,6 +27,13 @@ find_package(Qt5OpenGL  5.1 REQUIRED)
 find_package(Qt5Core    5.1 REQUIRED)
 find_package(Qt5Gui     5.1 REQUIRED)
 find_package(Qt5Widgets 5.1 REQUIRED)
+
+if (NOT Qt5Core_FOUND)
+	message(STATUS "Example ${target} (disabled because Qt5 couldn't be found)")
+	return()
+endif()
+
+message(STATUS "Example ${target}")
 
 #
 # Includes

@@ -1,13 +1,19 @@
 
 set(target cubescape)
-message(STATUS "Example ${target}")
 
 #
 # External libraries
 #
 
 find_package(OpenGL REQUIRED)
-find_package(GLFW REQUIRED)
+find_package(GLFW QUIET)
+
+if (NOT GLFW_FOUND)
+	message(STATUS "Example ${target} (disabled because GLFW couldn't be found)")
+	return()
+endif()
+
+message(STATUS "Example ${target}")
 
 #
 # Includes

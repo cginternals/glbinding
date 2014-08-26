@@ -14,6 +14,11 @@ using namespace gl;
 
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 {
+    if (version() < Version(3, 0))
+    {
+        return std::set<GLextension>();
+    }
+
     std::set<GLextension> extensions;
 
     int numExtensions = 0;
