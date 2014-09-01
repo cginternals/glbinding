@@ -10,7 +10,6 @@
 #include <glbinding/Meta.h>
 
 #include "callbacks_private.h"
-#include "thread_local.h"
 
 
 namespace glbinding 
