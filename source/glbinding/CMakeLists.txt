@@ -92,7 +92,6 @@ list(APPEND api_includes ${featured_includes})
 set(sources
     ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
-    ${source_path}/thread_local.h
     
     ${source_path}/gl/types.cpp
     ${source_path}/gl/test.cpp

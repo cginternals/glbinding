@@ -13450,7 +13450,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLuint</ptype> <name>program</name></param>
             <param><ptype>GLuint</ptype> <name>uniformBlockIndex</name></param>
             <param><ptype>GLenum</ptype> <name>pname</name></param>
-            <param len="COMPSIZE(program, uniformBlockIndex, pname)"><ptype>GLint</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(program,uniformBlockIndex,pname)"><ptype>GLint</ptype> *<name>params</name></param>
         </command>
         <command>
             <proto>void <name>glGetActiveUniformName</name></proto>
@@ -13466,7 +13466,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>uniformCount</name></param>
             <param len="uniformCount">const <ptype>GLuint</ptype> *<name>uniformIndices</name></param>
             <param><ptype>GLenum</ptype> <name>pname</name></param>
-            <param len="COMPSIZE(uniformCount, pname)"><ptype>GLint</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(uniformCount,pname)"><ptype>GLint</ptype> *<name>params</name></param>
         </command>
         <command>
             <proto>void <name>glGetActiveVaryingNV</name></proto>
@@ -13897,7 +13897,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glGetDoublei_vEXT</name></proto>
             <param group="TypeEnum"><ptype>GLenum</ptype> <name>pname</name></param>
             <param><ptype>GLuint</ptype> <name>index</name></param>
-            <param len="COMPSIZE(target)"><ptype>GLdouble</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(pname)"><ptype>GLdouble</ptype> *<name>params</name></param>
             <alias name="glGetDoublei_v"/>
         </command>
         <command>
@@ -13975,7 +13975,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glGetFloati_vEXT</name></proto>
             <param group="TypeEnum"><ptype>GLenum</ptype> <name>pname</name></param>
             <param><ptype>GLuint</ptype> <name>index</name></param>
-            <param len="COMPSIZE(target)"><ptype>GLfloat</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(pname)"><ptype>GLfloat</ptype> *<name>params</name></param>
             <alias name="glGetFloati_v"/>
         </command>
         <command>
@@ -15957,38 +15957,38 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glGetUniformdv</name></proto>
             <param><ptype>GLuint</ptype> <name>program</name></param>
             <param><ptype>GLint</ptype> <name>location</name></param>
-            <param len="COMPSIZE(program, location)"><ptype>GLdouble</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(program,location)"><ptype>GLdouble</ptype> *<name>params</name></param>
         </command>
         <command>
             <proto>void <name>glGetUniformfv</name></proto>
             <param><ptype>GLuint</ptype> <name>program</name></param>
             <param><ptype>GLint</ptype> <name>location</name></param>
-            <param len="COMPSIZE(program, location)"><ptype>GLfloat</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(program,location)"><ptype>GLfloat</ptype> *<name>params</name></param>
         </command>
         <command>
             <proto>void <name>glGetUniformfvARB</name></proto>
             <param group="handleARB"><ptype>GLhandleARB</ptype> <name>programObj</name></param>
             <param><ptype>GLint</ptype> <name>location</name></param>
-            <param len="COMPSIZE(program, location)"><ptype>GLfloat</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(programObj,location)"><ptype>GLfloat</ptype> *<name>params</name></param>
             <alias name="glGetUniformfv"/>
         </command>
         <command>
             <proto>void <name>glGetUniformi64vNV</name></proto>
             <param><ptype>GLuint</ptype> <name>program</name></param>
             <param><ptype>GLint</ptype> <name>location</name></param>
-            <param len="COMPSIZE(program, location)"><ptype>GLint64EXT</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(program,location)"><ptype>GLint64EXT</ptype> *<name>params</name></param>
         </command>
         <command>
             <proto>void <name>glGetUniformiv</name></proto>
             <param><ptype>GLuint</ptype> <name>program</name></param>
             <param><ptype>GLint</ptype> <name>location</name></param>
-            <param len="COMPSIZE(program, location)"><ptype>GLint</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(program,location)"><ptype>GLint</ptype> *<name>params</name></param>
         </command>
         <command>
             <proto>void <name>glGetUniformivARB</name></proto>
             <param group="handleARB"><ptype>GLhandleARB</ptype> <name>programObj</name></param>
             <param><ptype>GLint</ptype> <name>location</name></param>
-            <param len="COMPSIZE(program, location)"><ptype>GLint</ptype> *<name>params</name></param>
+            <param len="COMPSIZE(programObj,location)"><ptype>GLint</ptype> *<name>params</name></param>
             <alias name="glGetUniformiv"/>
         </command>
         <command>

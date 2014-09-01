@@ -5,20 +5,16 @@
 #include <mutex>
 #include <cassert>
 
+namespace
+{
+    THREAD_LOCAL glbinding::ContextHandle g_context = 0;
 
-#include "thread_local.h"
-
+    std::recursive_mutex mutex;
+    std::unordered_map<glbinding::ContextHandle, int> bindings;
+}
 
 namespace glbinding 
 {
-
-namespace
-{
-THREAD_LOCAL ContextHandle g_context = 0;
-
-std::recursive_mutex mutex;
-std::unordered_map<ContextHandle, int> bindings;
-}
 
 const Binding::array_t & Binding::functions() 
 {
@@ -35,7 +31,7 @@ void Binding::initialize(
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
-    mutex.lock(); // TODO: use read lock
+    mutex.lock();
     if (bindings.find(context) != bindings.end())
     {
         mutex.unlock();
@@ -45,11 +41,11 @@ void Binding::initialize(
 
     const int pos = static_cast<int>(bindings.size());
 
-    mutex.lock(); // TODO: use write lock
+    mutex.lock();
     bindings[context] = pos;
     mutex.unlock();
 
-    mutex.lock(); // TODO: use read lock
+    mutex.lock();
     AbstractFunction::provideState(pos);
     mutex.unlock();
 
@@ -75,7 +71,7 @@ void Binding::useContext(const ContextHandle context)
 {
     g_context = context;
 
-    mutex.lock(); // TODO: use read lock
+    mutex.lock();
     if (bindings.find(g_context) == bindings.end())
     {
         mutex.unlock();
@@ -87,7 +83,7 @@ void Binding::useContext(const ContextHandle context)
         mutex.unlock();
     }
 
-    mutex.lock(); // TODO: use read lock
+    mutex.lock();
     AbstractFunction::setStatePos(bindings[g_context]);
     mutex.unlock();
 }
@@ -99,11 +95,11 @@ void Binding::releaseCurrentContext()
 
 void Binding::releaseContext(const ContextHandle context)
 {
-    mutex.lock(); // ToDo: use read lock
+    mutex.lock();
     AbstractFunction::neglectState(bindings[context]);
     mutex.unlock();
 
-    mutex.lock(); // ToDo: use write lock
+    mutex.lock();
     bindings.erase(context);
     mutex.unlock();
 }
