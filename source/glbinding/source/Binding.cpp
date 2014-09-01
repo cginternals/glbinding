@@ -7,10 +7,10 @@
 
 namespace
 {
-    THREAD_LOCAL glbinding::ContextHandle g_context = 0;
+    THREAD_LOCAL glbinding::ContextHandle t_context = 0;
 
-    std::recursive_mutex mutex;
-    std::unordered_map<glbinding::ContextHandle, int> bindings;
+    std::recursive_mutex g_mutex;
+    std::unordered_map<glbinding::ContextHandle, int> g_bindings;
 }
 
 namespace glbinding 
@@ -31,23 +31,23 @@ void Binding::initialize(
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
-    mutex.lock();
-    if (bindings.find(context) != bindings.end())
+    g_mutex.lock();
+    if (g_bindings.find(context) != g_bindings.end())
     {
-        mutex.unlock();
+        g_mutex.unlock();
         return;
     }
-    mutex.unlock();
+    g_mutex.unlock();
 
-    const int pos = static_cast<int>(bindings.size());
+    const int pos = static_cast<int>(g_bindings.size());
 
-    mutex.lock();
-    bindings[context] = pos;
-    mutex.unlock();
+    g_mutex.lock();
+    g_bindings[context] = pos;
+    g_mutex.unlock();
 
-    mutex.lock();
+    g_mutex.lock();
     AbstractFunction::provideState(pos);
-    mutex.unlock();
+    g_mutex.unlock();
 
     if (_useContext)
         useContext(context);
@@ -69,23 +69,23 @@ void Binding::useCurrentContext()
 
 void Binding::useContext(const ContextHandle context)
 {
-    g_context = context;
+    t_context = context;
 
-    mutex.lock();
-    if (bindings.find(g_context) == bindings.end())
+    g_mutex.lock();
+    if (g_bindings.find(t_context) == g_bindings.end())
     {
-        mutex.unlock();
+        g_mutex.unlock();
 
-        initialize(g_context);
+        initialize(t_context);
     }
     else
     {
-        mutex.unlock();
+        g_mutex.unlock();
     }
 
-    mutex.lock();
-    AbstractFunction::setStatePos(bindings[g_context]);
-    mutex.unlock();
+    g_mutex.lock();
+    AbstractFunction::setStatePos(g_bindings[t_context]);
+    g_mutex.unlock();
 }
 
 void Binding::releaseCurrentContext()
@@ -95,13 +95,13 @@ void Binding::releaseCurrentContext()
 
 void Binding::releaseContext(const ContextHandle context)
 {
-    mutex.lock();
-    AbstractFunction::neglectState(bindings[context]);
-    mutex.unlock();
+    g_mutex.lock();
+    AbstractFunction::neglectState(g_bindings[context]);
+    g_mutex.unlock();
 
-    mutex.lock();
-    bindings.erase(context);
-    mutex.unlock();
+    g_mutex.lock();
+    g_bindings.erase(context);
+    g_mutex.unlock();
 }
 
 } // namespace glbinding

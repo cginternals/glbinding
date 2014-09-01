@@ -17,7 +17,7 @@ namespace glbinding
 
 namespace
 {
-THREAD_LOCAL int g_pos = -1;
+THREAD_LOCAL int t_pos = -1;
 }
 
 int AbstractFunction::s_maxpos = -1;
@@ -32,7 +32,7 @@ AbstractFunction::State::State()
 
 inline bool AbstractFunction::hasState() const
 {
-    return hasState(g_pos);
+    return hasState(t_pos);
 }
 
 inline bool AbstractFunction::hasState(const int pos) const
@@ -42,7 +42,7 @@ inline bool AbstractFunction::hasState(const int pos) const
 
 inline AbstractFunction::State & AbstractFunction::state() const
 {
-    return state(g_pos);
+    return state(t_pos);
 }
 
 inline AbstractFunction::State & AbstractFunction::state(const int pos) const
@@ -83,13 +83,13 @@ void AbstractFunction::neglectState(const int pos)
         for (AbstractFunction * function : Binding::functions())
             function->m_states[pos] = State();
 
-    if (pos == g_pos)
-        g_pos = -1;
+    if (pos == t_pos)
+        t_pos = -1;
 }
 
 void AbstractFunction::setStatePos(const int pos)
 {
-    g_pos = pos;
+    t_pos = pos;
 }
 
 
