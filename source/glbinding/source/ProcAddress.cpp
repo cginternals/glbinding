@@ -3,6 +3,7 @@
 
 #ifdef WIN32
     #include <string>
+    #include <tchar.h>
     #include <windows.h>
 #elif __APPLE__
     #include <cassert>
@@ -24,7 +25,7 @@ ProcAddress getProcAddress(const char * name)
 
     if (procAddress == nullptr)
     {
-        static HMODULE module = LoadLibrary(L"OPENGL32.DLL");
+        static HMODULE module = LoadLibrary(_T("OPENGL32.DLL"));
         procAddress = reinterpret_cast<PROCADDRESS>(::GetProcAddress(module, name));
     }
 
