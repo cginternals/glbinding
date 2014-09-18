@@ -1257,6 +1257,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glPointSizexOES", { GLextension::GL_OES_fixed_point } },
     { "glPollAsyncSGIX", { GLextension::GL_SGIX_async } },
     { "glPollInstrumentsSGIX", { GLextension::GL_SGIX_instruments } },
+    { "glPolygonOffsetClampEXT", { GLextension::GL_EXT_polygon_offset_clamp } },
     { "glPolygonOffsetEXT", { GLextension::GL_EXT_polygon_offset } },
     { "glPolygonOffsetxOES", { GLextension::GL_OES_fixed_point } },
     { "glPopDebugGroup", { GLextension::GL_KHR_debug } },

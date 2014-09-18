@@ -35,7 +35,7 @@ Binding::const_iterator Binding::end() const
 
 size_t Binding::size()
 {
-	return 2773;
+	return 2774;
 }
 
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
@@ -171,7 +171,7 @@ Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, 
 Function<void, GLenum, GLuint, GLuint64EXT, GLsizeiptr> Binding::BufferAddressRangeNV("glBufferAddressRangeNV");
 Function<void, GLenum, GLsizeiptr, const void *, GLenum> Binding::BufferData("glBufferData");
 Function<void, GLenum, GLsizeiptrARB, const void *, GLenum> Binding::BufferDataARB("glBufferDataARB");
-Function<void, GLenum, GLintptr, GLsizei, GLboolean> Binding::BufferPageCommitmentARB("glBufferPageCommitmentARB");
+Function<void, GLenum, GLintptr, GLsizeiptr, GLboolean> Binding::BufferPageCommitmentARB("glBufferPageCommitmentARB");
 Function<void, GLenum, GLenum, GLint> Binding::BufferParameteriAPPLE("glBufferParameteriAPPLE");
 Function<void, GLenum, GLsizeiptr, const void *, MapBufferUsageMask> Binding::BufferStorage("glBufferStorage");
 Function<void, GLenum, GLintptr, GLsizeiptr, const void *> Binding::BufferSubData("glBufferSubData");
@@ -1489,8 +1489,8 @@ Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GL
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage3DEXT("glMultiTexSubImage3DEXT");
 Function<void, GLuint, GLsizei, const void *, GLenum> Binding::NamedBufferData("glNamedBufferData");
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferDataEXT("glNamedBufferDataEXT");
-Function<void, GLuint, GLintptr, GLsizei, GLboolean> Binding::NamedBufferPageCommitmentARB("glNamedBufferPageCommitmentARB");
-Function<void, GLuint, GLintptr, GLsizei, GLboolean> Binding::NamedBufferPageCommitmentEXT("glNamedBufferPageCommitmentEXT");
+Function<void, GLuint, GLintptr, GLsizeiptr, GLboolean> Binding::NamedBufferPageCommitmentARB("glNamedBufferPageCommitmentARB");
+Function<void, GLuint, GLintptr, GLsizeiptr, GLboolean> Binding::NamedBufferPageCommitmentEXT("glNamedBufferPageCommitmentEXT");
 Function<void, GLuint, GLsizei, const void *, MapBufferUsageMask> Binding::NamedBufferStorage("glNamedBufferStorage");
 Function<void, GLuint, GLsizeiptr, const void *, MapBufferUsageMask> Binding::NamedBufferStorageEXT("glNamedBufferStorageEXT");
 Function<void, GLuint, GLintptr, GLsizei, const void *> Binding::NamedBufferSubData("glNamedBufferSubData");
@@ -1643,6 +1643,7 @@ Function<GLint, GLuint *> Binding::PollAsyncSGIX("glPollAsyncSGIX");
 Function<GLint, GLint *> Binding::PollInstrumentsSGIX("glPollInstrumentsSGIX");
 Function<void, GLenum, GLenum> Binding::PolygonMode("glPolygonMode");
 Function<void, GLfloat, GLfloat> Binding::PolygonOffset("glPolygonOffset");
+Function<void, GLfloat, GLfloat, GLfloat> Binding::PolygonOffsetClampEXT("glPolygonOffsetClampEXT");
 Function<void, GLfloat, GLfloat> Binding::PolygonOffsetEXT("glPolygonOffsetEXT");
 Function<void, GLfixed, GLfixed> Binding::PolygonOffsetxOES("glPolygonOffsetxOES");
 Function<void, const GLubyte *> Binding::PolygonStipple("glPolygonStipple");
@@ -4420,6 +4421,7 @@ const Binding::array_t Binding::s_functions =
     &PollInstrumentsSGIX,
     &PolygonMode,
     &PolygonOffset,
+    &PolygonOffsetClampEXT,
     &PolygonOffsetEXT,
     &PolygonOffsetxOES,
     &PolygonStipple,

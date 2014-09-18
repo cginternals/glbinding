@@ -640,7 +640,7 @@ inline void glBufferDataARB(GLenum target, GLsizeiptrARB size, const void * data
     return glbinding::Binding::BufferDataARB(target, size, data, usage);
 }
 
-inline void glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizei size, GLboolean commit)
+inline void glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit)
 {
     return glbinding::Binding::BufferPageCommitmentARB(target, offset, size, commit);
 }
@@ -6155,12 +6155,12 @@ inline void glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const void * da
     return glbinding::Binding::NamedBufferDataEXT(buffer, size, data, usage);
 }
 
-inline void glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset, GLsizei size, GLboolean commit)
+inline void glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit)
 {
     return glbinding::Binding::NamedBufferPageCommitmentARB(buffer, offset, size, commit);
 }
 
-inline void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizei size, GLboolean commit)
+inline void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit)
 {
     return glbinding::Binding::NamedBufferPageCommitmentEXT(buffer, offset, size, commit);
 }
@@ -6798,6 +6798,11 @@ inline GLint glPollAsyncSGIX(GLuint * markerp)
 inline GLint glPollInstrumentsSGIX(GLint * marker_p)
 {
     return glbinding::Binding::PollInstrumentsSGIX(marker_p);
+}
+
+inline void glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp)
+{
+    return glbinding::Binding::PolygonOffsetClampEXT(factor, units, clamp);
 }
 
 inline void glPolygonOffsetEXT(GLfloat factor, GLfloat bias)

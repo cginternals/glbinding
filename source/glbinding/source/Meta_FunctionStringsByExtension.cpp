@@ -161,6 +161,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_pixel_transform, { "glPixelTransformParameteriEXT", "glPixelTransformParameterfEXT", "glPixelTransformParameterivEXT", "glPixelTransformParameterfvEXT", "glGetPixelTransformParameterivEXT", "glGetPixelTransformParameterfvEXT" } },
     { GLextension::GL_EXT_point_parameters, { "glPointParameterfEXT", "glPointParameterfvEXT" } },
     { GLextension::GL_EXT_polygon_offset, { "glPolygonOffsetEXT" } },
+    { GLextension::GL_EXT_polygon_offset_clamp, { "glPolygonOffsetClampEXT" } },
     { GLextension::GL_EXT_provoking_vertex, { "glProvokingVertexEXT" } },
     { GLextension::GL_EXT_secondary_color, { "glSecondaryColor3bEXT", "glSecondaryColor3bvEXT", "glSecondaryColor3dEXT", "glSecondaryColor3dvEXT", "glSecondaryColor3fEXT", "glSecondaryColor3fvEXT", "glSecondaryColor3iEXT", "glSecondaryColor3ivEXT", "glSecondaryColor3sEXT", "glSecondaryColor3svEXT", "glSecondaryColor3ubEXT", "glSecondaryColor3ubvEXT", "glSecondaryColor3uiEXT", "glSecondaryColor3uivEXT", "glSecondaryColor3usEXT", "glSecondaryColor3usvEXT", "glSecondaryColorPointerEXT" } },
     { GLextension::GL_EXT_separate_shader_objects, { "glUseShaderProgramEXT", "glActiveProgramEXT", "glCreateShaderProgramEXT" } },

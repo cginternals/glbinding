@@ -39,7 +39,7 @@ public:
 
     static size_t size();
 
-	using array_t = std::array<AbstractFunction *, 2773>;
+	using array_t = std::array<AbstractFunction *, 2774>;
 
     static const array_t & functions();
 
@@ -177,7 +177,7 @@ public:
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64EXT, gl::GLsizeiptr> BufferAddressRangeNV;
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLenum> BufferData;
     static Function<void, gl::GLenum, gl::GLsizeiptrARB, const void *, gl::GLenum> BufferDataARB;
-    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizei, gl::GLboolean> BufferPageCommitmentARB;
+    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> BufferPageCommitmentARB;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> BufferParameteriAPPLE;
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> BufferStorage;
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData;
@@ -1495,8 +1495,8 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage3DEXT;
     static Function<void, gl::GLuint, gl::GLsizei, const void *, gl::GLenum> NamedBufferData;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferDataEXT;
-    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizei, gl::GLboolean> NamedBufferPageCommitmentARB;
-    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizei, gl::GLboolean> NamedBufferPageCommitmentEXT;
+    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentARB;
+    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentEXT;
     static Function<void, gl::GLuint, gl::GLsizei, const void *, gl::MapBufferUsageMask> NamedBufferStorage;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> NamedBufferStorageEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizei, const void *> NamedBufferSubData;
@@ -1649,6 +1649,7 @@ public:
     static Function<gl::GLint, gl::GLint *> PollInstrumentsSGIX;
     static Function<void, gl::GLenum, gl::GLenum> PolygonMode;
     static Function<void, gl::GLfloat, gl::GLfloat> PolygonOffset;
+    static Function<void, gl::GLfloat, gl::GLfloat, gl::GLfloat> PolygonOffsetClampEXT;
     static Function<void, gl::GLfloat, gl::GLfloat> PolygonOffsetEXT;
     static Function<void, gl::GLfixed, gl::GLfixed> PolygonOffsetxOES;
     static Function<void, const gl::GLubyte *> PolygonStipple;
