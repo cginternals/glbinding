@@ -133,3 +133,9 @@ install(TARGETS ${target}
 #   LIBRARY DESTINATION ${INSTALL_SHARED}
 #   ARCHIVE DESTINATION ${INSTALL_LIB}
 )
+
+# deploy qt binaries (glraw debug target should not be deployed)
+if(WIN32)
+    install_qt(example ${INSTALL_EXAMPLES} Core Gui Widgets OpenGL)
+    install_qt_platforms(example ${INSTALL_EXAMPLES} qwindows)
+endif()
