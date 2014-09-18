@@ -160,15 +160,15 @@ set_target_properties(${target}
 
 # Library
 install(TARGETS ${target}
+    COMPONENT runtime
     RUNTIME DESTINATION ${INSTALL_BIN}
     LIBRARY DESTINATION ${INSTALL_SHARED}
-    COMPONENT runtime
 )
 
 install(TARGETS ${target}
+    COMPONENT linking
     LIBRARY DESTINATION ${INSTALL_SHARED}
     ARCHIVE DESTINATION ${INSTALL_LIB}
-    COMPONENT linking
 )
 
 # Header files

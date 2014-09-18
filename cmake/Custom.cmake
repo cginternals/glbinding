@@ -90,4 +90,3 @@ macro(install_qt_platforms COMP DEST)
     install(FILES ${CMAKE_SOURCE_DIR}/packages/qt.conf DESTINATION ${DEST} COMPONENT ${COMP})
 
 endmacro()
-
