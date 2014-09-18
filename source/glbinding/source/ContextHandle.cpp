@@ -6,7 +6,7 @@
 #elif __APPLE__
 #include <OpenGL/OpenGL.h>
 #else
-#include <GL/glxew.h>
+#include <GL/glx.h>
 #endif
 
 namespace glbinding
