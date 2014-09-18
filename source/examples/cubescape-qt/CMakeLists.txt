@@ -1,5 +1,5 @@
 
-set(target qt-cubescape)
+set(target cubescape-qt)
 
 #
 # Qt5
