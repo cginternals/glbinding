@@ -127,8 +127,7 @@ set_target_properties(${target}
 # Deployment
 #
 
-install(TARGETS ${target}
-    COMPONENT example
+install(TARGETS ${target} COMPONENT examples
     RUNTIME DESTINATION ${INSTALL_EXAMPLES}
 #   LIBRARY DESTINATION ${INSTALL_SHARED}
 #   ARCHIVE DESTINATION ${INSTALL_LIB}
@@ -136,6 +135,6 @@ install(TARGETS ${target}
 
 # deploy qt binaries (glraw debug target should not be deployed)
 if(WIN32)
-    install_qt(example ${INSTALL_EXAMPLES} Core Gui Widgets OpenGL)
-    install_qt_platforms(example ${INSTALL_EXAMPLES} qwindows)
+    install_qt(examples ${INSTALL_EXAMPLES} Core Gui Widgets OpenGL)
+    install_qt_platforms(examples ${INSTALL_EXAMPLES} qwindows)
 endif()

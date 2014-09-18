@@ -155,16 +155,17 @@ endif()
 create_revision_file(${CMAKE_BINARY_DIR}/revision ${INSTALL_ROOT})
 
 # Project meta files
+install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT dev)
 install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
-install(FILES AUTHORS                      DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
-install(FILES LICENSE                      DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
-install(FILES codegeneration/gl.revision   DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
-install(FILES glbinding-config.cmake       DESTINATION ${INSTALL_ROOT} COMPONENT linking)
-
+install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT examples)
+install(FILES AUTHORS                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+install(FILES LICENSE                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+install(FILES codegeneration/gl.revision   DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+install(FILES glbinding-config.cmake       DESTINATION ${INSTALL_ROOT} COMPONENT dev)
 
 # Data files
 if(OPTION_BUILD_EXAMPLES)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA} COMPONENT example)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA} COMPONENT examples)
 endif()
 
 #

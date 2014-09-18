@@ -84,8 +84,7 @@ set_target_properties(${target}
 # Deployment
 #
 
-install(TARGETS ${target}
-    COMPONENT example
+install(TARGETS ${target} COMPONENT examples
     RUNTIME DESTINATION ${INSTALL_EXAMPLES}
 #   LIBRARY DESTINATION ${INSTALL_SHARED}
 #   ARCHIVE DESTINATION ${INSTALL_LIB}

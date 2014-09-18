@@ -4,11 +4,13 @@
 if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
     
     # Options
-    
+
+    set(CPACK_ARCHIVE_COMPONENT_INSTALL ON)
     if(WIN32)
         set(OPTION_PACK_GENERATOR "ZIP;NSIS" CACHE STRING "Package targets")
     else()
         set(OPTION_PACK_GENERATOR "ZIP;TGZ;DEB" CACHE STRING "Package targets")
+        set(CPACK_DEB_COMPONENT_INSTALL ON)
     endif()
 
     
@@ -166,16 +168,16 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
     # this is good: http://www.cmake.org/Wiki/CMake:Component_Install_With_CPack
 
     set(CPACK_ALL_INSTALL_TYPES Full Developer)
-    set(CPACK_COMPONENT_RUNTIME_INSTALL_TYPES Developer Full)
-    set(CPACK_COMPONENT_LINKING_INSTALL_TYPES Developer Full)
-    set(CPACK_COMPONENT_EXAMPLE_INSTALL_TYPES Full)
+    set(CPACK_COMPONENT_RUN-TIME_INSTALL_TYPES Developer Full)
+    set(CPACK_COMPONENT_DEV_INSTALL_TYPES Developer Full)
+    set(CPACK_COMPONENT_EXAMPLES_INSTALL_TYPES Full)
 
-    set(CPACK_COMPONENT_RUNTIME_DISPLAY_NAME "Runtime (Binaries)")
+    set(CPACK_COMPONENT_RUNTIME_DISPLAY_NAME "Run-Time (Binaries)")
     set(CPACK_COMPONENT_RUNTIME_REQUIRED ON)
-    set(CPACK_COMPONENT_LINKING_DISPLAY_NAME "Headers and Libraries")
-    set(CPACK_COMPONENT_LINKING_DEPENDS runtime)
-    set(CPACK_COMPONENT_EXAMPLE_DISPLAY_NAME "Examples")
-    set(CPACK_COMPONENT_EXAMPLE_DEPENDS runtime)
+    set(CPACK_COMPONENT_DEV_DISPLAY_NAME "Headers and Libraries")
+    set(CPACK_COMPONENT_DEV_DEPENDS runtime)
+    set(CPACK_COMPONENT_EXAMPLES_DISPLAY_NAME "Examples")
+    set(CPACK_COMPONENT_EXAMPLES_DEPENDS runtime)
 
     include(CPack)
 
