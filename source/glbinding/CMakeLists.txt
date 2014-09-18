@@ -160,10 +160,15 @@ set_target_properties(${target}
 
 # Library
 install(TARGETS ${target}
+    COMPONENT runtime
     RUNTIME DESTINATION ${INSTALL_BIN}
     LIBRARY DESTINATION ${INSTALL_SHARED}
+)
+
+install(TARGETS ${target}
+    COMPONENT linking
     ARCHIVE DESTINATION ${INSTALL_LIB}
 )
 
 # Header files
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/${target} DESTINATION ${INSTALL_INCLUDE})
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/${target} DESTINATION ${INSTALL_INCLUDE} COMPONENT linking)

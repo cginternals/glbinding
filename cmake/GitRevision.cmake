@@ -17,7 +17,4 @@ macro(create_revision_file filename dest)
     string(SUBSTRING ${GIT_SHA1} 0 12 GIT_REV)
     file(WRITE ${filename} ${GIT_REV})
 
-    # Install
-    install(FILES ${filename} DESTINATION ${dest})
-
 endmacro()

@@ -37,10 +37,10 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
     
     # Package information
     
-    string(TOLOWER ${META_PROJECT_NAME} package_name)                       # Package name
+    string(TOLOWER ${META_PROJECT_NAME} package_name)           # Package name
     set(package_description     "OpenGL C++ Binding")           # Package description
-    set(package_vendor          "hpicgs group")                             # Package vendor
-    set(package_maintainer      "willy.scheibel@student.hpi.uni-potsdam.de")      # Package maintainer
+    set(package_vendor          "hpicgs group")                 # Package vendor
+    set(package_maintainer      "daniel.limberger@hpi.de")      # Package maintainer
 
     
     # Package specific options
@@ -162,9 +162,24 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
         set(CPACK_SET_DESTDIR ON)
     endif()
     set(CPack_CMake_INCLUDED FALSE)
-    include(CPack)
-endif()
 
+    # this is good: http://www.cmake.org/Wiki/CMake:Component_Install_With_CPack
+
+    set(CPACK_ALL_INSTALL_TYPES Full Developer)
+    set(CPACK_COMPONENT_RUNTIME_INSTALL_TYPES Developer Full)
+    set(CPACK_COMPONENT_LINKING_INSTALL_TYPES Developer Full)
+    set(CPACK_COMPONENT_EXAMPLE_INSTALL_TYPES Full)
+
+    set(CPACK_COMPONENT_RUNTIME_DISPLAY_NAME "Runtime (Binaries)")
+    set(CPACK_COMPONENT_RUNTIME_REQUIRED ON)
+    set(CPACK_COMPONENT_LINKING_DISPLAY_NAME "Headers and Libraries")
+    set(CPACK_COMPONENT_LINKING_DEPENDS Runtime)
+    set(CPACK_COMPONENT_EXAMPLE_DISPLAY_NAME "Examples")
+    set(CPACK_COMPONENT_EXAMPLE_DEPENDS Runtime)
+
+    include(CPack)
+
+endif()
 
 # Package target
 
@@ -174,7 +189,6 @@ add_custom_target(
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 set_target_properties(pack-${project_name} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
-
 
 # Dependencies
 
