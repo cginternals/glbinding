@@ -95,7 +95,7 @@ class Group:
         self.enums       = set()
         self.enumStrings = []
 
-        if isinstance(xml, basestring):
+        if isinstance(xml, str):
             self.name = xml
             return
 
@@ -178,9 +178,9 @@ def verifyGroups(groups, enums):
             unreferenced.add(enum)
 
     if len(unreferenced) > 0:
-        print " WARNING: " + str(len(unreferenced)) + " unreferenced groups:"
+        print(" WARNING: " + str(len(unreferenced)) + " unreferenced groups:")
         for enum in unreferenced:
-            print ("  %s (in %s)" % (enum.groupString, enum.name))
+            print("  %s (in %s)" % (enum.groupString, enum.name))
 
     # (2) check that every enum referencing a group, 
     # is actually referenced in that group
@@ -279,14 +279,14 @@ def resolveEnums(enums, enumsByName, groupsByName):
                 groups[enum.groupString] = enum
 
     if len(aliases) > 0:
-        print " WARNING: " + str(len(aliases)) + " unresolved aliases:"
+        print(" WARNING: " + str(len(aliases)) + " unresolved aliases:")
         for alias, enum in aliases.items():
-            print ("  %s (of %s)" % (alias, enum.name))
+            print("  %s (of %s)" % (alias, enum.name))
 
     if len(groups) > 0:
-        print " WARNING: " + str(len(groups)) + " unresolved groups:"
+        print(" WARNING: " + str(len(groups)) + " unresolved groups:")
         for group, enum in groups.items():
-            print ("  %s (in %s)" % (group, enum.name))
+            print("  %s (in %s)" % (group, enum.name))
 
 
 def patchEnums(enums, patches, groups):

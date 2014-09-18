@@ -146,7 +146,8 @@ def genReqVersionsByExtension(extensions, outputdir, outputfile):
 
     status(outputdir + outputfile)
 
-    sortedExts = sorted(extensions, key = lambda e: e.incore)
+    inCoreExts = [ e for e in extensions if e.incore ]
+    sortedExts = sorted(inCoreExts, key = lambda e : e.incore)
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % (",\n" + tab).join(

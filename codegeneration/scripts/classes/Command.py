@@ -16,7 +16,7 @@ class Parameter:
 
         # check for additional params
         if list(xml.itertext())[-1] != self.name:
-            print " WARNING: unexpected parameter format for " + self.name
+            print(" WARNING: unexpected parameter format for " + self.name)
 
         self.type = " ".join([t.strip() for t in xml.itertext()][:-1]).strip()
 
@@ -169,12 +169,12 @@ def verifyCommands(commands, bitfGroups):
                 unresolved[param] = command
 
     if len(missing) > 0:
-        print " WARNING: " + str(len(missing)) + " missing group specification (defaulting to GLbitfield):"
+        print(" WARNING: " + str(len(missing)) + " missing group specification (defaulting to GLbitfield):")
         for param, command in missing.items():
-            print ("  %s (in %s)" % (param.name, command.name))
+            print("  %s (in %s)" % (param.name, command.name))
 
     if len(unresolved) > 0:
-        print " WARNING: " + str(len(unresolved)) + " unresolved groups:"
+        print(" WARNING: " + str(len(unresolved)) + " unresolved groups:")
         for param, command in unresolved.items():
-            print ("  %s (in %s)" % (param.groupString, command.name))
+            print("  %s (in %s)" % (param.groupString, command.name))
 

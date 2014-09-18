@@ -35,7 +35,7 @@ class Status:
 
 def status(file):
 
-    print "generating " + file.replace(Status.targetdir, "")
+    print("generating " + file.replace(Status.targetdir, ""))
 
 
 # enum_binding_name_exceptions = [ "DOMAIN", "MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB", "FALSE", "TRUE", "NO_ERROR", "WAIT_FAILED" ]

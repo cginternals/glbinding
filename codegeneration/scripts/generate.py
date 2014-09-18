@@ -33,77 +33,77 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     # preparing
 
-    print ""
-    print "PREPARING"
+    print("")
+    print("PREPARING")
 
     api     = "gl" # ToDo: other apis are untested yet
 
-    print "checking revision"
+    print("checking revision")
     file = open(revisionfile, "r")
     revision = int(file.readline())
     file.close()    
-    print " revision is " + str(revision)
+    print(" revision is " + str(revision))
 
-    print "loading " + inputfile
+    print("loading " + inputfile)
     tree       = ET.parse(inputfile)
     registry   = tree.getroot()
 
     # parsing
 
-    print ""
-    print "PARSING (" + api + " API)"
+    print("")
+    print("PARSING (" + api + " API)")
 
-    print "parsing features"
+    print("parsing features")
     features   = parseFeatures(registry, api)
-    print " # " + str(len(features)) + " features parsed"
+    print(" # " + str(len(features)) + " features parsed")
 
-    print "parsing types"
+    print("parsing types")
     types      = parseTypes(registry, api)
-    print " # " + str(len(types)) + " types parsed"
+    print(" # " + str(len(types)) + " types parsed")
 
-    print "parsing extensions"
+    print("parsing extensions")
     extensions = parseExtensions(registry, features, api)
-    print " # " + str(len(extensions)) + " extensions parsed"
+    print(" # " + str(len(extensions)) + " extensions parsed")
 
-    print "parsing commands"
+    print("parsing commands")
     commands   = parseCommands(registry, features, extensions, api)
-    print " # " + str(len(commands)) + " commands parsed"
+    print(" # " + str(len(commands)) + " commands parsed")
         
-    print "parsing enums"
+    print("parsing enums")
     enums      = parseEnums(registry, features, extensions, commands, api)
-    print " # " + str(len(enums)) + " enums parsed"
+    print(" # " + str(len(enums)) + " enums parsed")
 
-    print "parsing enum groups"
+    print("parsing enum groups")
     groups     = parseGroups(registry, enums)
-    print " # " + str(len(groups)) + " enum groups parsed"
+    print(" # " + str(len(groups)) + " enum groups parsed")
 
     # patching
 
-    print ""
-    print "PATCHING"
+    print("")
+    print("PATCHING")
 
     if patchfile is not None:
 
-        print "parsing " + patchfile
+        print("parsing " + patchfile)
         patchtree     = ET.parse(patchfile)
         patchregistry = patchtree.getroot()
 
-        print "patching types"
+        print("patching types")
         patch = parseTypes(patchregistry, api)
         patchTypes(types, patch)
 
-        print "patching commands"
+        print("patching commands")
         patch = parseCommands(patchregistry, features, extensions, api)
         patchCommands(commands, patch)
 
-        print "patching features"
-        print " WARNING: todo"
+        print("patching features")
+        print(" WARNING: todo")
 
-        print "patching enums"
+        print("patching enums")
         patch = parseEnums(patchregistry, features, extensions, commands, api)
         patchEnums(enums, patch, groups)
 
-        print "patching groups"
+        print("patching groups")
         patch = parseGroups(patchregistry, enums)
         patchGroups(groups, patch)
 
@@ -113,39 +113,39 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     groupsByName   = dict([(group.name, group) for group in groups])
     commandsByName = dict([(command.name, command) for command in commands])
 
-    print ""
-    print "RESOLVING"
+    print("")
+    print("RESOLVING")
 
-    print "resolving features"
+    print("resolving features")
     resolveFeatures(features, enumsByName, commandsByName)
 
-    print "resolving extensions"
+    print("resolving extensions")
     resolveExtensions(extensions, enumsByName, commandsByName, features, api)
 
-    print "resolving groups"
+    print("resolving groups")
     resolveGroups(groups, enumsByName)
         
-    print "resolving enums"
+    print("resolving enums")
     resolveEnums(enums, enumsByName, groupsByName)
 
     # verifying 
 
-    print ""
-    print "VERIFYING"
+    print("")
+    print("VERIFYING")
 
     bitfGroups = [ g for g in groups 
         if len(g.enums) > 0 and any(enum.type == "GLbitfield" for enum in g.enums) ]
 
-    print "verifying groups"
+    print("verifying groups")
     verifyGroups(groups, enums)
 
-    print "verifying commands"
+    print("verifying commands")
     verifyCommands(commands, bitfGroups)
 
     # generating
 
-    print ""
-    print "GENERATING"
+    print("")
+    print("GENERATING")
 
     includedir = targetdir + "/include/glbinding/"
     sourcedir  = targetdir + "/source/"
@@ -207,7 +207,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genExtensionsByFunctionString  (extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
 
 
-    print ""
+    print("")
 
 
 def main(argv):
