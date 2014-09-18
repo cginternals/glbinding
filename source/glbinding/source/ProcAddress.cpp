@@ -3,6 +3,7 @@
 
 #ifdef WIN32
     #include <string>
+    #include <tchar.h>
     #include <windows.h>
 #elif __APPLE__
     #include <cassert>
