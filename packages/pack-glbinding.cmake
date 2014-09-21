@@ -168,16 +168,20 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
     # this is good: http://www.cmake.org/Wiki/CMake:Component_Install_With_CPack
 
     set(CPACK_ALL_INSTALL_TYPES Full Developer)
-    set(CPACK_COMPONENT_RUN-TIME_INSTALL_TYPES Developer Full)
+    if(NOT OPTION_BUILD_STATIC)
+        set(CPACK_COMPONENT_RUN-TIME_INSTALL_TYPES Developer Full)
+    endif()
     set(CPACK_COMPONENT_DEV_INSTALL_TYPES Developer Full)
     set(CPACK_COMPONENT_EXAMPLES_INSTALL_TYPES Full)
 
-    set(CPACK_COMPONENT_RUNTIME_DISPLAY_NAME "Run-Time (Binaries)")
-    set(CPACK_COMPONENT_RUNTIME_REQUIRED ON)
-    set(CPACK_COMPONENT_DEV_DISPLAY_NAME "Headers and Libraries")
-    set(CPACK_COMPONENT_DEV_DEPENDS runtime)
-    set(CPACK_COMPONENT_EXAMPLES_DISPLAY_NAME "Examples")
-    set(CPACK_COMPONENT_EXAMPLES_DEPENDS runtime)
+    if(NOT OPTION_BUILD_STATIC)
+        set(CPACK_COMPONENT_RUNTIME_DISPLAY_NAME "Run-Time (Binaries)")
+        set(CPACK_COMPONENT_RUNTIME_REQUIRED ON)
+        set(CPACK_COMPONENT_DEV_DISPLAY_NAME "Headers and Libraries")
+        set(CPACK_COMPONENT_DEV_DEPENDS runtime)
+        set(CPACK_COMPONENT_EXAMPLES_DISPLAY_NAME "Examples")
+        set(CPACK_COMPONENT_EXAMPLES_DEPENDS runtime)
+    endif()
 
     include(CPack)
 

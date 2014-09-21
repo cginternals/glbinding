@@ -156,7 +156,9 @@ create_revision_file(${CMAKE_BINARY_DIR}/revision ${INSTALL_ROOT})
 
 # Project meta files
 install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT dev)
-install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+if(NOT OPTION_BUILD_STATIC)
+    install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+endif()
 install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT examples)
 install(FILES AUTHORS                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)
 install(FILES LICENSE                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)

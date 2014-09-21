@@ -159,20 +159,30 @@ set_target_properties(${target}
 #
 
 # Library
-install(TARGETS ${target} COMPONENT runtime
-    RUNTIME DESTINATION ${INSTALL_BIN}
-    LIBRARY DESTINATION ${INSTALL_SHARED})
 
-if(OPTION_BUILD_EXAMPLES)
-    install(TARGETS ${target} COMPONENT examples
+if(NOT OPTION_BUILD_STATIC)
+    install(TARGETS ${target} COMPONENT runtime
         RUNTIME DESTINATION ${INSTALL_BIN}
-        LIBRARY DESTINATION ${INSTALL_BIN})
+        LIBRARY DESTINATION ${INSTALL_SHARED})
+else()
+    install(TARGETS ${target} COMPONENT dev
+        ARCHIVE DESTINATION ${INSTALL_LIB})
 endif()
 
-install(TARGETS ${target} COMPONENT dev
-    RUNTIME DESTINATION ${INSTALL_BIN}
-    LIBRARY DESTINATION ${INSTALL_SHARED}
-    ARCHIVE DESTINATION ${INSTALL_LIB})
+if(WIN32 AND NOT OPTION_BUILD_STATIC) # on windows, provide self contained zip files (examples and dev, both contain the run-time)
+
+    if(OPTION_BUILD_EXAMPLES)
+        install(TARGETS ${target} COMPONENT examples
+            RUNTIME DESTINATION ${INSTALL_BIN}
+            LIBRARY DESTINATION ${INSTALL_BIN})
+    endif()
+
+    install(TARGETS ${target} COMPONENT dev
+        RUNTIME DESTINATION ${INSTALL_BIN}
+        LIBRARY DESTINATION ${INSTALL_SHARED}
+        ARCHIVE DESTINATION ${INSTALL_LIB})
+
+endif()
 
 # Header files
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/${target} DESTINATION ${INSTALL_INCLUDE} COMPONENT dev)
