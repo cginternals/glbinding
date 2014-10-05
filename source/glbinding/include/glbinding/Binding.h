@@ -39,7 +39,7 @@ public:
 
     static size_t size();
 
-	using array_t = std::array<AbstractFunction *, 2774>;
+	using array_t = std::array<AbstractFunction *, 2787>;
 
     static const array_t & functions();
 
@@ -394,6 +394,8 @@ public:
     static Function<void, gl::GLuint, gl::GLenum> CoverFillPathNV;
     static Function<void, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLenum, gl::GLenum, const gl::GLfloat *> CoverStrokePathInstancedNV;
     static Function<void, gl::GLuint, gl::GLenum> CoverStrokePathNV;
+    static Function<void, gl::GLenum> CoverageModulationNV;
+    static Function<void, gl::GLsizei, const gl::GLfloat *> CoverageModulationTableNV;
     static Function<void, gl::GLsizei, gl::GLuint *> CreateBuffers;
     static Function<void, gl::GLsizei, gl::GLuint *> CreateFramebuffers;
     static Function<void, gl::GLuint, gl::GLuint *> CreatePerfQueryINTEL;
@@ -625,6 +627,7 @@ public:
     static Function<void, gl::GLenum, gl::GLfixed> FogxOES;
     static Function<void, gl::GLenum, const gl::GLfixed *> FogxvOES;
     static Function<void, gl::GLenum, gl::GLenum> FragmentColorMaterialSGIX;
+    static Function<void, gl::GLuint> FragmentCoverageColorNV;
     static Function<void, gl::GLenum, gl::GLfloat> FragmentLightModelfSGIX;
     static Function<void, gl::GLenum, const gl::GLfloat *> FragmentLightModelfvSGIX;
     static Function<void, gl::GLenum, gl::GLint> FragmentLightModeliSGIX;
@@ -645,6 +648,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum> FramebufferReadBufferEXT;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint> FramebufferRenderbuffer;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint> FramebufferRenderbufferEXT;
+    static Function<void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLfloat *> FramebufferSampleLocationsfvNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture1D;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture1DEXT;
@@ -758,6 +762,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint *> GetConvolutionParameteriv;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint *> GetConvolutionParameterivEXT;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLfixed *> GetConvolutionParameterxvOES;
+    static Function<void, gl::GLsizei, gl::GLfloat *> GetCoverageModulationTableNV;
     static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLenum *, gl::GLuint *, gl::GLenum *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLog;
     static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLuint *, gl::GLuint *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLogAMD;
     static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLenum *, gl::GLuint *, gl::GLenum *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLogARB;
@@ -955,6 +960,10 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetProgramiv;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint *> GetProgramivARB;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetProgramivNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLintptr> GetQueryBufferObjecti64v;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLintptr> GetQueryBufferObjectiv;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLintptr> GetQueryBufferObjectui64v;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLintptr> GetQueryBufferObjectuiv;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLint *> GetQueryIndexediv;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint64 *> GetQueryObjecti64v;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint64 *> GetQueryObjecti64vEXT;
@@ -1509,6 +1518,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum> NamedFramebufferReadBuffer;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint> NamedFramebufferRenderbuffer;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint> NamedFramebufferRenderbufferEXT;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> NamedFramebufferSampleLocationsfvNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture1DEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture2DEXT;
@@ -1874,6 +1884,7 @@ public:
     static Function<void, const gl::GLshort *> RasterPos4sv;
     static Function<void, gl::GLfixed, gl::GLfixed, gl::GLfixed, gl::GLfixed> RasterPos4xOES;
     static Function<void, const gl::GLfixed *> RasterPos4xvOES;
+    static Function<void, gl::GLuint, gl::GLboolean> RasterSamplesEXT;
     static Function<void, gl::GLenum> ReadBuffer;
     static Function<void, gl::GLint> ReadInstrumentsSGIX;
     static Function<void, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, void *> ReadPixels;
@@ -1926,6 +1937,7 @@ public:
     static Function<void, gl::GLenum> ResetMinmax;
     static Function<void, gl::GLenum> ResetMinmaxEXT;
     static Function<void> ResizeBuffersMESA;
+    static Function<void> ResolveDepthValuesNV;
     static Function<void> ResumeTransformFeedback;
     static Function<void> ResumeTransformFeedbackNV;
     static Function<void, gl::GLdouble, gl::GLdouble, gl::GLdouble, gl::GLdouble> Rotated;
@@ -2038,6 +2050,7 @@ public:
     static Function<void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLenum> StencilThenCoverStrokePathNV;
     static Function<void, gl::GLint> StopInstrumentsSGIX;
     static Function<void, gl::GLsizei, const void *> StringMarkerGREMEDY;
+    static Function<void, gl::GLuint, gl::GLuint> SubpixelPrecisionBiasNV;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> SwizzleEXT;
     static Function<void, gl::GLuint> SyncTextureINTEL;
     static Function<void> TagSampleBufferSGIX;

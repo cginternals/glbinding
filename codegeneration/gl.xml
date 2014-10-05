@@ -2333,7 +2333,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x19" name="GL_RELATIVE_LARGE_CW_ARC_TO_NV"/>
         <enum value="0x1A" name="GL_CONIC_CURVE_TO_NV"/>
         <enum value="0x1B" name="GL_RELATIVE_CONIC_CURVE_TO_NV"/>
-            <unused start="0x1C" end="0xE7" comment="Unused for PathRenderingTokenNV"/>
+            <unused start="0x1C" end="0xBF" comment="Unused for PathRenderingTokenNV"/>
+        <enum value="0xC0" name="GL_SHARED_EDGE_NV"/>
+            <unused start="0xC1" end="0xE7" comment="Unused for PathRenderingTokenNV"/>
         <enum value="0xE8" name="GL_ROUNDED_RECT_NV"/>
         <enum value="0xE9" name="GL_RELATIVE_ROUNDED_RECT_NV"/>
         <enum value="0xEA" name="GL_ROUNDED_RECT2_NV"/>
@@ -2690,6 +2692,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x0D32" name="GL_MAX_CLIP_PLANES"/>
         <enum value="0x0D32" name="GL_MAX_CLIP_PLANES_IMG"/>
         <enum value="0x0D32" name="GL_MAX_CLIP_DISTANCES" alias="GL_MAX_CLIP_PLANES"/>
+        <enum value="0x0D32" name="GL_MAX_CLIP_DISTANCES_APPLE"/>                     
         <enum value="0x0D33" name="GL_MAX_TEXTURE_SIZE"/>
         <enum value="0x0D34" name="GL_MAX_PIXEL_MAP_TABLE"/>
         <enum value="0x0D35" name="GL_MAX_ATTRIB_STACK_DEPTH"/>
@@ -2949,23 +2952,31 @@ typedef unsigned int GLhandleARB;
         <enum value="0x3000" name="GL_CLIP_PLANE0"/>
         <enum value="0x3000" name="GL_CLIP_PLANE0_IMG"/>
         <enum value="0x3000" name="GL_CLIP_DISTANCE0" alias="GL_CLIP_PLANE0"/>
+        <enum value="0x3000" name="GL_CLIP_DISTANCE0_APPLE"/>                         
         <enum value="0x3001" name="GL_CLIP_PLANE1"/>
         <enum value="0x3001" name="GL_CLIP_PLANE1_IMG"/>
         <enum value="0x3001" name="GL_CLIP_DISTANCE1" alias="GL_CLIP_PLANE1"/>
+        <enum value="0x3001" name="GL_CLIP_DISTANCE1_APPLE"/>                         
         <enum value="0x3002" name="GL_CLIP_PLANE2"/>
         <enum value="0x3002" name="GL_CLIP_PLANE2_IMG"/>
         <enum value="0x3002" name="GL_CLIP_DISTANCE2" alias="GL_CLIP_PLANE2"/>
+        <enum value="0x3002" name="GL_CLIP_DISTANCE2_APPLE"/>                         
         <enum value="0x3003" name="GL_CLIP_PLANE3"/>
         <enum value="0x3003" name="GL_CLIP_PLANE3_IMG"/>
         <enum value="0x3003" name="GL_CLIP_DISTANCE3" alias="GL_CLIP_PLANE3"/>
+        <enum value="0x3003" name="GL_CLIP_DISTANCE3_APPLE"/>                         
         <enum value="0x3004" name="GL_CLIP_PLANE4"/>
         <enum value="0x3004" name="GL_CLIP_PLANE4_IMG"/>
         <enum value="0x3004" name="GL_CLIP_DISTANCE4" alias="GL_CLIP_PLANE4"/>
+        <enum value="0x3004" name="GL_CLIP_DISTANCE4_APPLE"/>                         
         <enum value="0x3005" name="GL_CLIP_PLANE5"/>
         <enum value="0x3005" name="GL_CLIP_PLANE5_IMG"/>
         <enum value="0x3005" name="GL_CLIP_DISTANCE5" alias="GL_CLIP_PLANE5"/>
+        <enum value="0x3005" name="GL_CLIP_DISTANCE5_APPLE"/>                         
         <enum value="0x3006" name="GL_CLIP_DISTANCE6"/>
+        <enum value="0x3006" name="GL_CLIP_DISTANCE6_APPLE"/>                         
         <enum value="0x3007" name="GL_CLIP_DISTANCE7"/>
+        <enum value="0x3007" name="GL_CLIP_DISTANCE7_APPLE"/>                         
             <unused start="0x3008" end="0x3FFF" comment="Unused for ClipPlaneName"/>
         <enum value="0x4000" name="GL_LIGHT0"/>
         <enum value="0x4001" name="GL_LIGHT1"/>
@@ -6407,13 +6418,17 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8C37" name="GL_MIN_SAMPLE_SHADING_VALUE_OES"/>
             <unused start="0x8C38" end="0x8C39" vendor="NV"/>
         <enum value="0x8C3A" name="GL_R11F_G11F_B10F"/>
+        <enum value="0x8C3A" name="GL_R11F_G11F_B10F_APPLE"/>                         
         <enum value="0x8C3A" name="GL_R11F_G11F_B10F_EXT"/>
         <enum value="0x8C3B" name="GL_UNSIGNED_INT_10F_11F_11F_REV"/>
+        <enum value="0x8C3B" name="GL_UNSIGNED_INT_10F_11F_11F_REV_APPLE"/>           
         <enum value="0x8C3B" name="GL_UNSIGNED_INT_10F_11F_11F_REV_EXT"/>
         <enum value="0x8C3C" name="GL_RGBA_SIGNED_COMPONENTS_EXT"/>
         <enum value="0x8C3D" name="GL_RGB9_E5"/>
+        <enum value="0x8C3D" name="GL_RGB9_E5_APPLE"/>                                
         <enum value="0x8C3D" name="GL_RGB9_E5_EXT"/>
         <enum value="0x8C3E" name="GL_UNSIGNED_INT_5_9_9_9_REV"/>
+        <enum value="0x8C3E" name="GL_UNSIGNED_INT_5_9_9_9_REV_APPLE"/>               
         <enum value="0x8C3E" name="GL_UNSIGNED_INT_5_9_9_9_REV_EXT"/>
         <enum value="0x8C3F" name="GL_TEXTURE_SHARED_SIZE"/>
         <enum value="0x8C3F" name="GL_TEXTURE_SHARED_SIZE_EXT"/>
@@ -7043,6 +7058,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8E4F" name="GL_PROVOKING_VERTEX_EXT"/>
         <enum value="0x8E50" name="GL_SAMPLE_POSITION"/>
         <enum value="0x8E50" name="GL_SAMPLE_POSITION_NV"/>
+        <enum value="0x8E50" name="GL_SAMPLE_LOCATION_NV" alias="GL_SAMPLE_POSITION_NV"/>
         <enum value="0x8E51" name="GL_SAMPLE_MASK"/>
         <enum value="0x8E51" name="GL_SAMPLE_MASK_NV"/>
         <enum value="0x8E52" name="GL_SAMPLE_MASK_VALUE"/>
@@ -7808,7 +7824,10 @@ typedef unsigned int GLhandleARB;
 
     <enums namespace="GL" start="0x9250" end="0x925F" vendor="DMP" comment="For Eisaku Ohbuchi via email">
         <enum value="0x9250" name="GL_SHADER_BINARY_DMP"/>
-            <unused start="0x9251" end="0x925F" vendor="DMP"/>
+        <enum value="0x9251" name="GL_SMAPHS30_PROGRAM_BINARY_DMP"/> 
+        <enum value="0x9252" name="GL_SMAPHS_PROGRAM_BINARY_DMP"/>                     
+        <enum value="0x9253" name="GL_DMP_PROGRAM_BINARY_DMP"/>                        
+            <unused start="0x9254" end="0x925F" vendor="DMP"/>
     </enums>
 
     <enums namespace="GL" start="0x9260" end="0x926F" vendor="FJ" comment="Khronos bug 7486">
@@ -7946,7 +7965,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x92DA" name="GL_UNIFORM_ATOMIC_COUNTER_BUFFER_INDEX"/>
         <enum value="0x92DB" name="GL_UNSIGNED_INT_ATOMIC_COUNTER"/>
         <enum value="0x92DC" name="GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS"/>
-            <unused start="0x92DC" end="0x92DF" vendor="NV"/>
+        <enum value="0x92DD" name="GL_FRAGMENT_COVERAGE_TO_COLOR_NV"/>
+        <enum value="0x92DE" name="GL_FRAGMENT_COVERAGE_COLOR_NV"/>
+            <unused start="0x92DF" end="0x92DF" vendor="NV"/>
         <enum value="0x92E0" name="GL_DEBUG_OUTPUT"/>
         <enum value="0x92E0" name="GL_DEBUG_OUTPUT_KHR"/>
         <enum value="0x92E1" name="GL_UNIFORM"/>
@@ -8011,14 +8032,38 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9317" name="GL_MAX_FRAMEBUFFER_LAYERS"/>
         <enum value="0x9317" name="GL_MAX_FRAMEBUFFER_LAYERS_EXT"/>
         <enum value="0x9318" name="GL_MAX_FRAMEBUFFER_SAMPLES"/>
-            <unused start="0x9319" end="0x9338" vendor="NV"/>
+            <unused start="0x9319" end="0x9326" vendor="NV"/>
+        <enum value="0x9327" name="GL_RASTER_MULTISAMPLE_EXT"/>
+        <enum value="0x9328" name="GL_RASTER_SAMPLES_EXT"/>
+        <enum value="0x9329" name="GL_MAX_RASTER_SAMPLES_EXT"/>
+        <enum value="0x932A" name="GL_RASTER_FIXED_SAMPLE_LOCATIONS_EXT"/>
+        <enum value="0x932B" name="GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT"/>
+        <enum value="0x932C" name="GL_EFFECTIVE_RASTER_SAMPLES_EXT"/>
+        <enum value="0x932D" name="GL_DEPTH_SAMPLES_NV"/>
+        <enum value="0x932E" name="GL_STENCIL_SAMPLES_NV"/>
+        <enum value="0x932F" name="GL_MIXED_DEPTH_SAMPLES_SUPPORTED_NV"/>
+        <enum value="0x9330" name="GL_MIXED_STENCIL_SAMPLES_SUPPORTED_NV"/>
+        <enum value="0x9331" name="GL_COVERAGE_MODULATION_TABLE_NV"/>
+        <enum value="0x9332" name="GL_COVERAGE_MODULATION_NV"/>
+        <enum value="0x9333" name="GL_COVERAGE_MODULATION_TABLE_SIZE_NV"/>
+            <unused start="0x9334" end="0x9338" vendor="NV"/>
         <enum value="0x9339" name="GL_WARP_SIZE_NV"/>
         <enum value="0x933A" name="GL_WARPS_PER_SM_NV"/>
         <enum value="0x933B" name="GL_SM_COUNT_NV"/>
-            <unused start="0x933C" end="0x9343" vendor="NV"/>
+        <enum value="0x933C" name="GL_FILL_RECTANGLE_NV"/>
+        <enum value="0x933D" name="GL_SAMPLE_LOCATION_SUBPIXEL_BITS_NV"/>
+        <enum value="0x933E" name="GL_SAMPLE_LOCATION_PIXEL_GRID_WIDTH_NV"/>
+        <enum value="0x933F" name="GL_SAMPLE_LOCATION_PIXEL_GRID_HEIGHT_NV"/>
+        <enum value="0x9340" name="GL_PROGRAMMABLE_SAMPLE_LOCATION_TABLE_SIZE_NV"/>
+        <enum value="0x9341" name="GL_PROGRAMMABLE_SAMPLE_LOCATION_NV"/>
+        <enum value="0x9342" name="GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_NV"/>
+        <enum value="0x9343" name="GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_NV"/>
         <enum value="0x9344" name="GL_MAX_COMPUTE_VARIABLE_GROUP_INVOCATIONS_ARB"/>
         <enum value="0x9345" name="GL_MAX_COMPUTE_VARIABLE_GROUP_SIZE_ARB"/>
-            <unused start="0x9346" end="0x9349" vendor="NV"/>
+        <enum value="0x9346" name="GL_CONSERVATIVE_RASTERIZATION_NV"/>
+        <enum value="0x9347" name="GL_SUBPIXEL_PRECISION_BIAS_X_BITS_NV"/>
+        <enum value="0x9348" name="GL_SUBPIXEL_PRECISION_BIAS_Y_BITS_NV"/>
+        <enum value="0x9349" name="GL_MAX_SUBPIXEL_PRECISION_BIAS_BITS_NV"/>
         <enum value="0x934A" name="GL_LOCATION_COMPONENT"/>
         <enum value="0x934B" name="GL_TRANSFORM_FEEDBACK_BUFFER_INDEX"/>
         <enum value="0x934C" name="GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE"/>
@@ -15289,6 +15334,34 @@ typedef unsigned int GLhandleARB;
             <param group="VertexAttribEnumNV"><ptype>GLenum</ptype> <name>pname</name></param>
             <param len="4"><ptype>GLint</ptype> *<name>params</name></param>
             <glx type="vendor" opcode="1298"/>
+        </command>
+        <command>
+            <proto>void <name>glGetQueryBufferObjecti64v</name></proto>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLuint</ptype> <name>buffer</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetQueryBufferObjectiv</name></proto>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLuint</ptype> <name>buffer</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetQueryBufferObjectui64v</name></proto>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLuint</ptype> <name>buffer</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetQueryBufferObjectuiv</name></proto>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLuint</ptype> <name>buffer</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
         </command>
         <command>
             <proto>void <name>glGetQueryIndexediv</name></proto>
@@ -28534,6 +28607,51 @@ typedef unsigned int GLhandleARB;
             <param group="VertexShaderWriteMaskEXT"><ptype>GLenum</ptype> <name>outZ</name></param>
             <param group="VertexShaderWriteMaskEXT"><ptype>GLenum</ptype> <name>outW</name></param>
         </command>
+        <command>
+            <proto>void <name>glCoverageModulationNV</name></proto>
+            <param><ptype>GLenum</ptype> <name>components</name></param>
+        </command>
+        <command>
+            <proto>void <name>glCoverageModulationTableNV</name></proto>
+            <param><ptype>GLsizei</ptype> <name>n</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glFragmentCoverageColorNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>color</name></param>
+        </command>
+        <command>
+            <proto>void <name>glFramebufferSampleLocationsfvNV</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLuint</ptype> <name>start</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetCoverageModulationTableNV</name></proto>
+            <param><ptype>GLsizei</ptype> <name>bufsize</name></param>
+            <param><ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glNamedFramebufferSampleLocationsfvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>framebuffer</name></param>
+            <param><ptype>GLuint</ptype> <name>start</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glRasterSamplesEXT</name></proto>
+            <param><ptype>GLuint</ptype> <name>samples</name></param>
+            <param><ptype>GLboolean</ptype> <name>fixedsamplelocations</name></param>
+        </command>
+        <command>
+            <proto>void <name>glResolveDepthValuesNV</name></proto>
+        </command>
+        <command>
+            <proto>void <name>glSubpixelPrecisionBiasNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>xbits</name></param>
+            <param><ptype>GLuint</ptype> <name>ybits</name></param>
+        </command>
     </commands>
 
     <!-- SECTION: GL API interface definitions. -->
@@ -31719,6 +31837,12 @@ typedef unsigned int GLhandleARB;
         </require>
     </feature>
     <feature api="gl" name="GL_VERSION_4_2" number="4.2">
+        <require comment="New aliases for old tokens">
+            <enum name="GL_COPY_READ_BUFFER_BINDING"/>
+            <enum name="GL_COPY_WRITE_BUFFER_BINDING"/>
+            <enum name="GL_TRANSFORM_FEEDBACK_ACTIVE"/>
+            <enum name="GL_TRANSFORM_FEEDBACK_PAUSED"/>
+        </require>
         <require comment="Reuse tokens from ARB_base_instance (none)">
         </require>
         <require comment="Reuse tokens from ARB_shading_language_420pack (none)">
@@ -32488,8 +32612,13 @@ typedef unsigned int GLhandleARB;
             <command name="glCreateSamplers"/>
             <command name="glCreateProgramPipelines"/>
             <command name="glCreateQueries"/>
+            <command name="glGetQueryBufferObjecti64v"/>
+            <command name="glGetQueryBufferObjectiv"/>
+            <command name="glGetQueryBufferObjectui64v"/>
+            <command name="glGetQueryBufferObjectuiv"/>
         </require>
         <require comment="Reuse GL_ARB_ES3_1_compatibility">
+            <enum name="GL_BACK"/>
             <command name="glMemoryBarrierByRegion"/>
         </require>
         <require comment="Reuse GL_ARB_get_texture_sub_image">
@@ -34589,6 +34718,20 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_UNPACK_CLIENT_STORAGE_APPLE"/>
             </require>
         </extension>
+        <extension name="GL_APPLE_clip_distance" supported="gles2">
+            <require>
+                <enum name="GL_MAX_CLIP_DISTANCES_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE0_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE1_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE2_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE3_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE4_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE5_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE6_APPLE"/>
+                <enum name="GL_CLIP_DISTANCE7_APPLE"/>
+            </require>
+        </extension>
+        <extension name="GL_APPLE_color_buffer_packed_float" supported="gles2"/>
         <extension name="GL_APPLE_copy_texture_levels" supported="gles1|gles2">
             <require>
                 <command name="glCopyTextureLevelsAPPLE"/>
@@ -34734,6 +34877,14 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_TEXTURE_MAX_LEVEL_APPLE"/>
             </require>
         </extension>
+        <extension name="GL_APPLE_texture_packed_float" supported="gles2">
+            <require>
+                <enum name="GL_UNSIGNED_INT_10F_11F_11F_REV_APPLE"/>
+                <enum name="GL_UNSIGNED_INT_5_9_9_9_REV_APPLE"/>
+                <enum name="GL_R11F_G11F_B10F_APPLE"/>
+                <enum name="GL_RGB9_E5_APPLE"/>
+            </require>
+        </extension>
         <extension name="GL_APPLE_texture_range" supported="gl">
             <require>
                 <enum name="GL_TEXTURE_RANGE_LENGTH_APPLE"/>
@@ -34829,6 +34980,7 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_ARB_ES3_1_compatibility" supported="gl|glcore">
             <require>
+                <enum name="GL_BACK"/>
                 <command name="glMemoryBarrierByRegion"/>
             </require>
         </extension>
@@ -35004,9 +35156,7 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_ARB_conservative_depth" supported="gl|glcore"/>
         <extension name="GL_ARB_copy_buffer" supported="gl|glcore">
             <require>
-                <enum name="GL_COPY_READ_BUFFER_BINDING"/>
                 <enum name="GL_COPY_READ_BUFFER"/>
-                <enum name="GL_COPY_WRITE_BUFFER_BINDING"/>
                 <enum name="GL_COPY_WRITE_BUFFER"/>
                 <command name="glCopyBufferSubData"/>
             </require>
@@ -35201,6 +35351,10 @@ typedef unsigned int GLhandleARB;
             </require>
             <require comment="Query object functions">
                 <command name="glCreateQueries"/>
+                <command name="glGetQueryBufferObjecti64v"/>
+                <command name="glGetQueryBufferObjectiv"/>
+                <command name="glGetQueryBufferObjectui64v"/>
+                <command name="glGetQueryBufferObjectuiv"/>
             </require>
         </extension>
         <extension name="GL_ARB_draw_buffers" supported="gl">
@@ -35416,11 +35570,6 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_UNSIGNED_INT_24_8"/>
                 <enum name="GL_DEPTH24_STENCIL8"/>
                 <enum name="GL_TEXTURE_STENCIL_SIZE"/>
-                <enum name="GL_TEXTURE_RED_TYPE"/>
-                <enum name="GL_TEXTURE_GREEN_TYPE"/>
-                <enum name="GL_TEXTURE_BLUE_TYPE"/>
-                <enum name="GL_TEXTURE_ALPHA_TYPE"/>
-                <enum name="GL_TEXTURE_DEPTH_TYPE"/>
                 <enum name="GL_UNSIGNED_NORMALIZED"/>
                 <enum name="GL_FRAMEBUFFER_BINDING"/>
                 <enum name="GL_DRAW_FRAMEBUFFER_BINDING"/>
@@ -35499,8 +35648,6 @@ typedef unsigned int GLhandleARB;
             </require>
             <require api="gl" profile="compatibility">
                 <enum name="GL_INDEX"/>
-                <enum name="GL_TEXTURE_LUMINANCE_TYPE"/>
-                <enum name="GL_TEXTURE_INTENSITY_TYPE"/>
             </require>
         </extension>
         <extension name="GL_ARB_framebuffer_sRGB" supported="gl|glcore">
@@ -36963,9 +37110,7 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_ARB_transform_feedback2" supported="gl|glcore">
             <require>
                 <enum name="GL_TRANSFORM_FEEDBACK"/>
-                <enum name="GL_TRANSFORM_FEEDBACK_PAUSED"/>
                 <enum name="GL_TRANSFORM_FEEDBACK_BUFFER_PAUSED"/>
-                <enum name="GL_TRANSFORM_FEEDBACK_ACTIVE"/>
                 <enum name="GL_TRANSFORM_FEEDBACK_BUFFER_ACTIVE"/>
                 <enum name="GL_TRANSFORM_FEEDBACK_BINDING"/>
                 <command name="glBindTransformFeedback"/>
@@ -37888,6 +38033,13 @@ typedef unsigned int GLhandleARB;
                 <command name="glClientActiveVertexStreamATI"/>
                 <command name="glVertexBlendEnviATI"/>
                 <command name="glVertexBlendEnvfATI"/>
+            </require>
+        </extension>
+        <extension name="GL_DMP_program_binary" supported="gles2">
+            <require>
+                <enum name="GL_SMAPHS30_PROGRAM_BINARY_DMP"/>
+                <enum name="GL_SMAPHS_PROGRAM_BINARY_DMP"/>
+                <enum name="GL_DMP_PROGRAM_BINARY_DMP"/>
             </require>
         </extension>
         <extension name="GL_DMP_shader_binary" supported="gles2">
@@ -39111,6 +39263,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glPolygonOffsetClampEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_post_depth_coverage" supported="gl"/>
         <extension name="GL_EXT_primitive_bounding_box" supported="gles2">
             <require>
                 <enum name="GL_PRIMITIVE_BOUNDING_BOX_EXT"/>
@@ -39134,6 +39287,17 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COMPRESSED_SRGB_ALPHA_PVRTC_4BPPV1_EXT"/>
                 <enum name="GL_COMPRESSED_SRGB_ALPHA_PVRTC_2BPPV2_IMG"/>
                 <enum name="GL_COMPRESSED_SRGB_ALPHA_PVRTC_4BPPV2_IMG"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_raster_multisample" supported="gl">
+            <require>
+                <enum name="GL_RASTER_MULTISAMPLE_EXT"/>
+                <enum name="GL_RASTER_SAMPLES_EXT"/>
+                <enum name="GL_MAX_RASTER_SAMPLES_EXT"/>
+                <enum name="GL_RASTER_FIXED_SAMPLE_LOCATIONS_EXT"/>
+                <enum name="GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT"/>
+                <enum name="GL_EFFECTIVE_RASTER_SAMPLES_EXT"/>
+                <command name="glRasterSamplesEXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_read_format_bgra" supported="gles1|gles2">
@@ -39367,6 +39531,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SHARED_TEXTURE_PALETTE_EXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_sparse_texture2" supported="gl"/>
         <extension name="GL_EXT_stencil_clear_tag" supported="gl">
             <require>
                 <enum name="GL_STENCIL_TAG_BITS_EXT"/>
@@ -39661,6 +39826,17 @@ typedef unsigned int GLhandleARB;
             <require>
                 <enum name="GL_TEXTURE_MAX_ANISOTROPY_EXT"/>
                 <enum name="GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_texture_filter_minmax" supported="gl">
+            <require>
+                <enum name="GL_RASTER_MULTISAMPLE_EXT"/>
+                <enum name="GL_RASTER_SAMPLES_EXT"/>
+                <enum name="GL_MAX_RASTER_SAMPLES_EXT"/>
+                <enum name="GL_RASTER_FIXED_SAMPLE_LOCATIONS_EXT"/>
+                <enum name="GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT"/>
+                <enum name="GL_EFFECTIVE_RASTER_SAMPLES_EXT"/>
+                <command name="glRasterSamplesEXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_texture_format_BGRA8888" supported="gles1|gles2">
@@ -40878,6 +41054,15 @@ typedef unsigned int GLhandleARB;
                 <command name="glEndConditionalRenderNV"/>
             </require>
         </extension>
+        <extension name="GL_NV_conservative_raster" supported="gl">
+            <require>
+                <enum name="GL_CONSERVATIVE_RASTERIZATION_NV"/>
+                <enum name="GL_SUBPIXEL_PRECISION_BIAS_X_BITS_NV"/>
+                <enum name="GL_SUBPIXEL_PRECISION_BIAS_Y_BITS_NV"/>
+                <enum name="GL_MAX_SUBPIXEL_PRECISION_BIAS_BITS_NV"/>
+                <command name="glSubpixelPrecisionBiasNV"/>
+            </require>
+        </extension>
         <extension name="GL_NV_copy_buffer" supported="gles2">
             <require>
                 <enum name="GL_COPY_READ_BUFFER_NV"/>
@@ -41077,6 +41262,11 @@ typedef unsigned int GLhandleARB;
                 <command name="glSetFenceNV"/>
             </require>
         </extension>
+        <extension name="GL_NV_fill_rectangle" supported="gl">
+            <require>
+                <enum name="GL_FILL_RECTANGLE_NV"/>
+            </require>
+        </extension>
         <extension name="GL_NV_float_buffer" supported="gl">
             <require>
                 <enum name="GL_FLOAT_R_NV"/>
@@ -41102,6 +41292,13 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_EYE_RADIAL_NV"/>
                 <enum name="GL_EYE_PLANE_ABSOLUTE_NV"/>
                 <enum name="GL_EYE_PLANE"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_fragment_coverage_to_color" supported="gl">
+            <require>
+                <enum name="GL_FRAGMENT_COVERAGE_TO_COLOR_NV"/>
+                <enum name="GL_FRAGMENT_COVERAGE_COLOR_NV"/>
+                <command name="glFragmentCoverageColorNV"/>
             </require>
         </extension>
         <extension name="GL_NV_fragment_program" supported="gl">
@@ -41133,6 +41330,7 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_NV_fragment_program4" supported="gl"/>
         <extension name="GL_NV_fragment_program_option" supported="gl"/>
+        <extension name="GL_NV_fragment_shader_interlock" supported="gl"/>
         <extension name="GL_NV_framebuffer_blit" supported="gles2">
             <require>
                 <enum name="GL_READ_FRAMEBUFFER_NV"/>
@@ -41140,6 +41338,28 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_DRAW_FRAMEBUFFER_BINDING_NV"/>
                 <enum name="GL_READ_FRAMEBUFFER_BINDING_NV"/>
                 <command name="glBlitFramebufferNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_framebuffer_mixed_samples" supported="gl">
+            <require>
+                <enum name="GL_RASTER_MULTISAMPLE_EXT"/>
+                <enum name="GL_COVERAGE_MODULATION_TABLE_NV"/>
+                <enum name="GL_RASTER_SAMPLES_EXT"/>
+                <enum name="GL_MAX_RASTER_SAMPLES_EXT"/>
+                <enum name="GL_RASTER_FIXED_SAMPLE_LOCATIONS_EXT"/>
+                <enum name="GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT"/>
+                <enum name="GL_EFFECTIVE_RASTER_SAMPLES_EXT"/>
+                <enum name="GL_COLOR_SAMPLES_NV"/>
+                <enum name="GL_DEPTH_SAMPLES_NV"/>
+                <enum name="GL_STENCIL_SAMPLES_NV"/>
+                <enum name="GL_MIXED_DEPTH_SAMPLES_SUPPORTED_NV"/>
+                <enum name="GL_MIXED_STENCIL_SAMPLES_SUPPORTED_NV"/>
+                <enum name="GL_COVERAGE_MODULATION_NV"/>
+                <enum name="GL_COVERAGE_MODULATION_TABLE_SIZE_NV"/>
+                <command name="glRasterSamplesEXT"/>
+                <command name="glCoverageModulationTableNV"/>
+                <command name="glGetCoverageModulationTableNV"/>
+                <command name="glCoverageModulationNV"/>
             </require>
         </extension>
         <extension name="GL_NV_framebuffer_multisample" supported="gles2">
@@ -41185,6 +41405,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_NV_geometry_shader4" supported="gl"/>
+        <extension name="GL_NV_geometry_shader_passthrough" supported="gl"/>
         <extension name="GL_NV_gpu_program4" supported="gl">
             <require>
                 <enum name="GL_MIN_PROGRAM_TEXEL_OFFSET_NV"/>
@@ -41788,6 +42009,11 @@ typedef unsigned int GLhandleARB;
                 <command name="glGetFinalCombinerInputParameterivNV"/>
             </require>
         </extension>
+        <extension name="GL_NV_path_rendering_shared_edge" supported="gl">
+            <require>
+                <enum name="GL_SHARED_EDGE_NV"/>
+            </require>
+        </extension>
         <extension name="GL_NV_register_combiners2" supported="gl">
             <require>
                 <enum name="GL_PER_STAGE_CONSTANTS_NV"/>
@@ -41809,8 +42035,25 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_ETC1_SRGB8_NV"/>
             </require>
         </extension>
+        <extension name="GL_NV_sample_locations" supported="gl">
+            <require>
+                <enum name="GL_SAMPLE_LOCATION_SUBPIXEL_BITS_NV"/>
+                <enum name="GL_SAMPLE_LOCATION_PIXEL_GRID_WIDTH_NV"/>
+                <enum name="GL_SAMPLE_LOCATION_PIXEL_GRID_HEIGHT_NV"/>
+                <enum name="GL_PROGRAMMABLE_SAMPLE_LOCATION_TABLE_SIZE_NV"/>
+                <enum name="GL_SAMPLE_LOCATION_NV"/>
+                <enum name="GL_PROGRAMMABLE_SAMPLE_LOCATION_NV"/>
+                <enum name="GL_FRAMEBUFFER_PROGRAMMABLE_SAMPLE_LOCATIONS_NV"/>
+                <enum name="GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_NV"/>
+                <command name="glFramebufferSampleLocationsfvNV"/>
+                <command name="glNamedFramebufferSampleLocationsfvNV"/>
+                <command name="glResolveDepthValuesNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_sample_mask_override_coverage" supported="gl"/>
         <extension name="GL_NV_shader_atomic_counters" supported="gl"/>
         <extension name="GL_NV_shader_atomic_float" supported="gl"/>
+        <extension name="GL_NV_shader_atomic_fp16_vector" supported="gl"/>
         <extension name="GL_NV_shader_atomic_int64" supported="gl"/>
         <extension name="GL_NV_shader_buffer_load" supported="gl">
             <require>
