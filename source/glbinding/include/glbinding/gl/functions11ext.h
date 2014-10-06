@@ -1485,6 +1485,16 @@ inline void glCoverStrokePathNV(GLuint path, GLenum coverMode)
     return glbinding::Binding::CoverStrokePathNV(path, coverMode);
 }
 
+inline void glCoverageModulationNV(GLenum components)
+{
+    return glbinding::Binding::CoverageModulationNV(components);
+}
+
+inline void glCoverageModulationTableNV(GLsizei n, const GLfloat * v)
+{
+    return glbinding::Binding::CoverageModulationTableNV(n, v);
+}
+
 inline void glCreateBuffers(GLsizei n, GLuint * buffers)
 {
     return glbinding::Binding::CreateBuffers(n, buffers);
@@ -2450,6 +2460,11 @@ inline void glFragmentColorMaterialSGIX(GLenum face, GLenum mode)
     return glbinding::Binding::FragmentColorMaterialSGIX(face, mode);
 }
 
+inline void glFragmentCoverageColorNV(GLuint color)
+{
+    return glbinding::Binding::FragmentCoverageColorNV(color);
+}
+
 inline void glFragmentLightModelfSGIX(GLenum pname, GLfloat param)
 {
     return glbinding::Binding::FragmentLightModelfSGIX(pname, param);
@@ -2548,6 +2563,11 @@ inline void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum r
 inline void glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
     return glbinding::Binding::FramebufferRenderbufferEXT(target, attachment, renderbuffertarget, renderbuffer);
+}
+
+inline void glFramebufferSampleLocationsfvNV(GLenum target, GLuint start, GLsizei count, const GLfloat * v)
+{
+    return glbinding::Binding::FramebufferSampleLocationsfvNV(target, start, count, v);
 }
 
 inline void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
@@ -3083,6 +3103,11 @@ inline void glGetConvolutionParameterivEXT(GLenum target, GLenum pname, GLint * 
 inline void glGetConvolutionParameterxvOES(GLenum target, GLenum pname, GLfixed * params)
 {
     return glbinding::Binding::GetConvolutionParameterxvOES(target, pname, params);
+}
+
+inline void glGetCoverageModulationTableNV(GLsizei bufsize, GLfloat * v)
+{
+    return glbinding::Binding::GetCoverageModulationTableNV(bufsize, v);
 }
 
 inline GLuint glGetDebugMessageLog(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog)
@@ -3988,6 +4013,26 @@ inline void glGetProgramivARB(GLenum target, GLenum pname, GLint * params)
 inline void glGetProgramivNV(GLuint id, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetProgramivNV(id, pname, params);
+}
+
+inline void glGetQueryBufferObjecti64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjecti64v(id, buffer, pname, offset);
+}
+
+inline void glGetQueryBufferObjectiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjectiv(id, buffer, pname, offset);
+}
+
+inline void glGetQueryBufferObjectui64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjectui64v(id, buffer, pname, offset);
+}
+
+inline void glGetQueryBufferObjectuiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjectuiv(id, buffer, pname, offset);
 }
 
 inline void glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLint * params)
@@ -6460,6 +6505,11 @@ inline void glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachm
     return glbinding::Binding::NamedFramebufferRenderbufferEXT(framebuffer, attachment, renderbuffertarget, renderbuffer);
 }
 
+inline void glNamedFramebufferSampleLocationsfvNV(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v)
+{
+    return glbinding::Binding::NamedFramebufferSampleLocationsfvNV(framebuffer, start, count, v);
+}
+
 inline void glNamedFramebufferTexture(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
 {
     return glbinding::Binding::NamedFramebufferTexture(framebuffer, attachment, texture, level);
@@ -7990,6 +8040,11 @@ inline void glRasterPos4xvOES(const GLfixed * coords)
     return glbinding::Binding::RasterPos4xvOES(coords);
 }
 
+inline void glRasterSamplesEXT(GLuint samples, GLboolean fixedsamplelocations)
+{
+    return glbinding::Binding::RasterSamplesEXT(samples, fixedsamplelocations);
+}
+
 inline void glReadInstrumentsSGIX(GLint marker)
 {
     return glbinding::Binding::ReadInstrumentsSGIX(marker);
@@ -8193,6 +8248,11 @@ inline void glResetMinmaxEXT(GLenum target)
 inline void glResizeBuffersMESA()
 {
     return glbinding::Binding::ResizeBuffersMESA();
+}
+
+inline void glResolveDepthValuesNV()
+{
+    return glbinding::Binding::ResolveDepthValuesNV();
 }
 
 inline void glResumeTransformFeedback()
@@ -8703,6 +8763,11 @@ inline void glStopInstrumentsSGIX(GLint marker)
 inline void glStringMarkerGREMEDY(GLsizei len, const void * string)
 {
     return glbinding::Binding::StringMarkerGREMEDY(len, string);
+}
+
+inline void glSubpixelPrecisionBiasNV(GLuint xbits, GLuint ybits)
+{
+    return glbinding::Binding::SubpixelPrecisionBiasNV(xbits, ybits);
 }
 
 inline void glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW)

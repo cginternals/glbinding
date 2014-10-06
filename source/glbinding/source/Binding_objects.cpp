@@ -35,7 +35,7 @@ Binding::const_iterator Binding::end() const
 
 size_t Binding::size()
 {
-	return 2774;
+	return 2787;
 }
 
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
@@ -388,6 +388,8 @@ Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLenum, const GLfl
 Function<void, GLuint, GLenum> Binding::CoverFillPathNV("glCoverFillPathNV");
 Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLenum, const GLfloat *> Binding::CoverStrokePathInstancedNV("glCoverStrokePathInstancedNV");
 Function<void, GLuint, GLenum> Binding::CoverStrokePathNV("glCoverStrokePathNV");
+Function<void, GLenum> Binding::CoverageModulationNV("glCoverageModulationNV");
+Function<void, GLsizei, const GLfloat *> Binding::CoverageModulationTableNV("glCoverageModulationTableNV");
 Function<void, GLsizei, GLuint *> Binding::CreateBuffers("glCreateBuffers");
 Function<void, GLsizei, GLuint *> Binding::CreateFramebuffers("glCreateFramebuffers");
 Function<void, GLuint, GLuint *> Binding::CreatePerfQueryINTEL("glCreatePerfQueryINTEL");
@@ -619,6 +621,7 @@ Function<void, GLenum, const GLint *> Binding::Fogiv("glFogiv");
 Function<void, GLenum, GLfixed> Binding::FogxOES("glFogxOES");
 Function<void, GLenum, const GLfixed *> Binding::FogxvOES("glFogxvOES");
 Function<void, GLenum, GLenum> Binding::FragmentColorMaterialSGIX("glFragmentColorMaterialSGIX");
+Function<void, GLuint> Binding::FragmentCoverageColorNV("glFragmentCoverageColorNV");
 Function<void, GLenum, GLfloat> Binding::FragmentLightModelfSGIX("glFragmentLightModelfSGIX");
 Function<void, GLenum, const GLfloat *> Binding::FragmentLightModelfvSGIX("glFragmentLightModelfvSGIX");
 Function<void, GLenum, GLint> Binding::FragmentLightModeliSGIX("glFragmentLightModeliSGIX");
@@ -639,6 +642,7 @@ Function<void, GLenum, GLenum, GLint> Binding::FramebufferParameteri("glFramebuf
 Function<void, GLuint, GLenum> Binding::FramebufferReadBufferEXT("glFramebufferReadBufferEXT");
 Function<void, GLenum, GLenum, GLenum, GLuint> Binding::FramebufferRenderbuffer("glFramebufferRenderbuffer");
 Function<void, GLenum, GLenum, GLenum, GLuint> Binding::FramebufferRenderbufferEXT("glFramebufferRenderbufferEXT");
+Function<void, GLenum, GLuint, GLsizei, const GLfloat *> Binding::FramebufferSampleLocationsfvNV("glFramebufferSampleLocationsfvNV");
 Function<void, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture("glFramebufferTexture");
 Function<void, GLenum, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture1D("glFramebufferTexture1D");
 Function<void, GLenum, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture1DEXT("glFramebufferTexture1DEXT");
@@ -752,6 +756,7 @@ Function<void, GLenum, GLenum, GLfloat *> Binding::GetConvolutionParameterfvEXT(
 Function<void, GLenum, GLenum, GLint *> Binding::GetConvolutionParameteriv("glGetConvolutionParameteriv");
 Function<void, GLenum, GLenum, GLint *> Binding::GetConvolutionParameterivEXT("glGetConvolutionParameterivEXT");
 Function<void, GLenum, GLenum, GLfixed *> Binding::GetConvolutionParameterxvOES("glGetConvolutionParameterxvOES");
+Function<void, GLsizei, GLfloat *> Binding::GetCoverageModulationTableNV("glGetCoverageModulationTableNV");
 Function<GLuint, GLuint, GLsizei, GLenum *, GLenum *, GLuint *, GLenum *, GLsizei *, GLchar *> Binding::GetDebugMessageLog("glGetDebugMessageLog");
 Function<GLuint, GLuint, GLsizei, GLenum *, GLuint *, GLuint *, GLsizei *, GLchar *> Binding::GetDebugMessageLogAMD("glGetDebugMessageLogAMD");
 Function<GLuint, GLuint, GLsizei, GLenum *, GLenum *, GLuint *, GLenum *, GLsizei *, GLchar *> Binding::GetDebugMessageLogARB("glGetDebugMessageLogARB");
@@ -949,6 +954,10 @@ Function<void, GLenum, GLuint, GLuint *> Binding::GetProgramSubroutineParameteru
 Function<void, GLuint, GLenum, GLint *> Binding::GetProgramiv("glGetProgramiv");
 Function<void, GLenum, GLenum, GLint *> Binding::GetProgramivARB("glGetProgramivARB");
 Function<void, GLuint, GLenum, GLint *> Binding::GetProgramivNV("glGetProgramivNV");
+Function<void, GLuint, GLuint, GLenum, GLintptr> Binding::GetQueryBufferObjecti64v("glGetQueryBufferObjecti64v");
+Function<void, GLuint, GLuint, GLenum, GLintptr> Binding::GetQueryBufferObjectiv("glGetQueryBufferObjectiv");
+Function<void, GLuint, GLuint, GLenum, GLintptr> Binding::GetQueryBufferObjectui64v("glGetQueryBufferObjectui64v");
+Function<void, GLuint, GLuint, GLenum, GLintptr> Binding::GetQueryBufferObjectuiv("glGetQueryBufferObjectuiv");
 Function<void, GLenum, GLuint, GLenum, GLint *> Binding::GetQueryIndexediv("glGetQueryIndexediv");
 Function<void, GLuint, GLenum, GLint64 *> Binding::GetQueryObjecti64v("glGetQueryObjecti64v");
 Function<void, GLuint, GLenum, GLint64 *> Binding::GetQueryObjecti64vEXT("glGetQueryObjecti64vEXT");
@@ -1503,6 +1512,7 @@ Function<void, GLuint, GLenum, GLint> Binding::NamedFramebufferParameteriEXT("gl
 Function<void, GLuint, GLenum> Binding::NamedFramebufferReadBuffer("glNamedFramebufferReadBuffer");
 Function<void, GLuint, GLenum, GLenum, GLuint> Binding::NamedFramebufferRenderbuffer("glNamedFramebufferRenderbuffer");
 Function<void, GLuint, GLenum, GLenum, GLuint> Binding::NamedFramebufferRenderbufferEXT("glNamedFramebufferRenderbufferEXT");
+Function<void, GLuint, GLuint, GLsizei, const GLfloat *> Binding::NamedFramebufferSampleLocationsfvNV("glNamedFramebufferSampleLocationsfvNV");
 Function<void, GLuint, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture("glNamedFramebufferTexture");
 Function<void, GLuint, GLenum, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture1DEXT("glNamedFramebufferTexture1DEXT");
 Function<void, GLuint, GLenum, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture2DEXT("glNamedFramebufferTexture2DEXT");
@@ -1868,6 +1878,7 @@ Function<void, GLshort, GLshort, GLshort, GLshort> Binding::RasterPos4s("glRaste
 Function<void, const GLshort *> Binding::RasterPos4sv("glRasterPos4sv");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::RasterPos4xOES("glRasterPos4xOES");
 Function<void, const GLfixed *> Binding::RasterPos4xvOES("glRasterPos4xvOES");
+Function<void, GLuint, GLboolean> Binding::RasterSamplesEXT("glRasterSamplesEXT");
 Function<void, GLenum> Binding::ReadBuffer("glReadBuffer");
 Function<void, GLint> Binding::ReadInstrumentsSGIX("glReadInstrumentsSGIX");
 Function<void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, void *> Binding::ReadPixels("glReadPixels");
@@ -1920,6 +1931,7 @@ Function<void, GLenum> Binding::ResetHistogramEXT("glResetHistogramEXT");
 Function<void, GLenum> Binding::ResetMinmax("glResetMinmax");
 Function<void, GLenum> Binding::ResetMinmaxEXT("glResetMinmaxEXT");
 Function<void> Binding::ResizeBuffersMESA("glResizeBuffersMESA");
+Function<void> Binding::ResolveDepthValuesNV("glResolveDepthValuesNV");
 Function<void> Binding::ResumeTransformFeedback("glResumeTransformFeedback");
 Function<void> Binding::ResumeTransformFeedbackNV("glResumeTransformFeedbackNV");
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Rotated("glRotated");
@@ -2032,6 +2044,7 @@ Function<void, GLsizei, GLenum, const void *, GLuint, GLint, GLuint, GLenum, GLe
 Function<void, GLuint, GLint, GLuint, GLenum> Binding::StencilThenCoverStrokePathNV("glStencilThenCoverStrokePathNV");
 Function<void, GLint> Binding::StopInstrumentsSGIX("glStopInstrumentsSGIX");
 Function<void, GLsizei, const void *> Binding::StringMarkerGREMEDY("glStringMarkerGREMEDY");
+Function<void, GLuint, GLuint> Binding::SubpixelPrecisionBiasNV("glSubpixelPrecisionBiasNV");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::SwizzleEXT("glSwizzleEXT");
 Function<void, GLuint> Binding::SyncTextureINTEL("glSyncTextureINTEL");
 Function<void> Binding::TagSampleBufferSGIX("glTagSampleBufferSGIX");
@@ -3166,6 +3179,8 @@ const Binding::array_t Binding::s_functions =
     &CoverFillPathNV,
     &CoverStrokePathInstancedNV,
     &CoverStrokePathNV,
+    &CoverageModulationNV,
+    &CoverageModulationTableNV,
     &CreateBuffers,
     &CreateFramebuffers,
     &CreatePerfQueryINTEL,
@@ -3397,6 +3412,7 @@ const Binding::array_t Binding::s_functions =
     &FogxOES,
     &FogxvOES,
     &FragmentColorMaterialSGIX,
+    &FragmentCoverageColorNV,
     &FragmentLightModelfSGIX,
     &FragmentLightModelfvSGIX,
     &FragmentLightModeliSGIX,
@@ -3417,6 +3433,7 @@ const Binding::array_t Binding::s_functions =
     &FramebufferReadBufferEXT,
     &FramebufferRenderbuffer,
     &FramebufferRenderbufferEXT,
+    &FramebufferSampleLocationsfvNV,
     &FramebufferTexture,
     &FramebufferTexture1D,
     &FramebufferTexture1DEXT,
@@ -3530,6 +3547,7 @@ const Binding::array_t Binding::s_functions =
     &GetConvolutionParameteriv,
     &GetConvolutionParameterivEXT,
     &GetConvolutionParameterxvOES,
+    &GetCoverageModulationTableNV,
     &GetDebugMessageLog,
     &GetDebugMessageLogAMD,
     &GetDebugMessageLogARB,
@@ -3727,6 +3745,10 @@ const Binding::array_t Binding::s_functions =
     &GetProgramiv,
     &GetProgramivARB,
     &GetProgramivNV,
+    &GetQueryBufferObjecti64v,
+    &GetQueryBufferObjectiv,
+    &GetQueryBufferObjectui64v,
+    &GetQueryBufferObjectuiv,
     &GetQueryIndexediv,
     &GetQueryObjecti64v,
     &GetQueryObjecti64vEXT,
@@ -4281,6 +4303,7 @@ const Binding::array_t Binding::s_functions =
     &NamedFramebufferReadBuffer,
     &NamedFramebufferRenderbuffer,
     &NamedFramebufferRenderbufferEXT,
+    &NamedFramebufferSampleLocationsfvNV,
     &NamedFramebufferTexture,
     &NamedFramebufferTexture1DEXT,
     &NamedFramebufferTexture2DEXT,
@@ -4646,6 +4669,7 @@ const Binding::array_t Binding::s_functions =
     &RasterPos4sv,
     &RasterPos4xOES,
     &RasterPos4xvOES,
+    &RasterSamplesEXT,
     &ReadBuffer,
     &ReadInstrumentsSGIX,
     &ReadPixels,
@@ -4698,6 +4722,7 @@ const Binding::array_t Binding::s_functions =
     &ResetMinmax,
     &ResetMinmaxEXT,
     &ResizeBuffersMESA,
+    &ResolveDepthValuesNV,
     &ResumeTransformFeedback,
     &ResumeTransformFeedbackNV,
     &Rotated,
@@ -4810,6 +4835,7 @@ const Binding::array_t Binding::s_functions =
     &StencilThenCoverStrokePathNV,
     &StopInstrumentsSGIX,
     &StringMarkerGREMEDY,
+    &SubpixelPrecisionBiasNV,
     &SwizzleEXT,
     &SyncTextureINTEL,
     &TagSampleBufferSGIX,

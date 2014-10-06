@@ -1250,6 +1250,26 @@ inline void glGetProgramiv(GLuint program, GLenum pname, GLint * params)
     return glbinding::Binding::GetProgramiv(program, pname, params);
 }
 
+inline void glGetQueryBufferObjecti64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjecti64v(id, buffer, pname, offset);
+}
+
+inline void glGetQueryBufferObjectiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjectiv(id, buffer, pname, offset);
+}
+
+inline void glGetQueryBufferObjectui64v(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjectui64v(id, buffer, pname, offset);
+}
+
+inline void glGetQueryBufferObjectuiv(GLuint id, GLuint buffer, GLenum pname, GLintptr offset)
+{
+    return glbinding::Binding::GetQueryBufferObjectuiv(id, buffer, pname, offset);
+}
+
 inline void glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetQueryIndexediv(target, index, pname, params);
