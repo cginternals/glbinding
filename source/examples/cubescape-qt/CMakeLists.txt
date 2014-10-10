@@ -1,9 +1,7 @@
 
 set(target cubescape-qt)
 
-#
 # Qt5
-#
 
 # good resource: http://www.kdab.com/using-cmake-with-qt-5/
 
@@ -12,6 +10,20 @@ if(MSVC)
     cmake_policy(SET CMP0020 NEW)
 endif()
 
+# External libraries
+
+find_package(Qt5OpenGL  5.1 QUIET)
+find_package(Qt5Core    5.1 QUIET)
+find_package(Qt5Gui     5.1 QUIET)
+find_package(Qt5Widgets 5.1 QUIET)
+
+if (NOT Qt5Core_FOUND)
+	message(STATUS "Example ${target} (disabled - Qt5 not found)")
+	return()
+endif()
+
+message(STATUS "Example ${target}")
+
 set(CMAKE_AUTOMOC ON)
 set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
 
@@ -19,25 +31,7 @@ set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
 # What we do not want is automocs beside the project -> http://www.cmake.org/Bug/view.php?id=13688
 set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
 
-#
-# External libraries
-#
-
-find_package(Qt5OpenGL  5.1 REQUIRED)
-find_package(Qt5Core    5.1 REQUIRED)
-find_package(Qt5Gui     5.1 REQUIRED)
-find_package(Qt5Widgets 5.1 REQUIRED)
-
-if (NOT Qt5Core_FOUND)
-	message(STATUS "Example ${target} (disabled because Qt5 couldn't be found)")
-	return()
-endif()
-
-message(STATUS "Example ${target}")
-
-#
 # Includes
-#
 
 include_directories(
     ${OPENGL_INCLUDE_DIR}
@@ -50,25 +44,19 @@ include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-#
 # Libraries
-#
 
 set(libs
     glbinding
 )
 
-#
 # Compiler definitions
-#
 
 if (OPTION_BUILD_STATIC)
     add_definitions("-DGLBINDING_STATIC")
 endif()
 
-#
 # Sources
-#
 
 set(cubscape_path ../cubescape)
 
@@ -94,15 +82,11 @@ set(uis
     Viewer.ui
 )
 
-#
 # UI Files
-#
 
 qt5_wrap_ui(compiled_ui_files ${uis})
 
-#
 # Build executable
-#
 
 add_executable(${target} ${sources} ${compiled_ui_files})
 
@@ -123,9 +107,7 @@ set_target_properties(${target}
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
 
-#
 # Deployment
-#
 
 install(TARGETS ${target} COMPONENT examples
     RUNTIME DESTINATION ${INSTALL_EXAMPLES}
