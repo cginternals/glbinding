@@ -39,10 +39,10 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
     
     # Package information
     
-    string(TOLOWER ${META_PROJECT_NAME} package_name)           # Package name
-    set(package_description     "OpenGL C++ Binding")           # Package description
-    set(package_vendor          "hpicgs group")                 # Package vendor
-    set(package_maintainer      "daniel.limberger@hpi.de")      # Package maintainer
+    string(TOLOWER ${META_PROJECT_NAME} package_name)
+    set(package_description ${META_PROJECT_DESCRIPTION})
+    set(package_vendor      ${META_AUTHOR_ORGANIZATION})
+    set(package_maintainer  ${META_AUTHOR_MAINTAINER})
 
     
     # Package specific options
