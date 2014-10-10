@@ -2,32 +2,25 @@
 set(target glbinding)
 message(STATUS "Lib ${target}")
 
-#
 # External libraries
-#
 
 find_package(OpenGL REQUIRED)
 
-#
+
 # Includes
-#
 
 include_directories(
     BEFORE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-#
 # Libraries
-#
 
 set(libs
     ${OPENGL_LIBRARIES}
 )
 
-#
 # Compiler definitions
-#
 
 if (OPTION_BUILD_STATIC)
     add_definitions("-D${META_PROJECT_NAME_UPPER}_STATIC")
@@ -43,9 +36,7 @@ if (OPTION_GL_BY_STRINGS)
 endif()
 
 
-#
 # Sources
-#
 
 set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
@@ -124,7 +115,6 @@ set(sources
 
 # file(GLOB featured_sources ${source_path}/gl/*.cpp)
 # list(APPEND sources ${featured_sources})
-
 
 # Group source files
 set(header_group "Header Files (API)")

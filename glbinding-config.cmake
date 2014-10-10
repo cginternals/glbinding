@@ -9,6 +9,9 @@
 # GLBINDING_LIBRARY_DEBUG
 # GLBINDING_INCLUDE_DIR
 
+# GLBINDING_BINARY (win32 only)
+
+
 include(FindPackageHandleStandardArgs)
 
 if(CMAKE_CURRENT_LIST_FILE)
@@ -41,6 +44,7 @@ set(LIB_PATHS
 )
 
 macro (find LIB_NAME HEADER)
+
     set(HINT_PATHS ${ARGN})
 
     if (${LIB_NAME} STREQUAL "glbinding")
@@ -92,10 +96,18 @@ macro (find LIB_NAME HEADER)
 endmacro()
 
 find(glbinding glbinding/glbinding_api.h ${LIB_PATHS})
-if (GLBINDING_LIBRARY)
-  # add dependencies
-  find_package(OpenGL REQUIRED)
-  list(APPEND GLBINDING_LIBRARIES ${OPENGL_LIBRARIES})
+if (GLBINDING_LIBRARY AND WIN32)
+
+    find_file(GLBINDING_BINARY
+        NAMES glbinding.dll
+        PATHS
+        ${GLBINDING_DIR}/bin
+        ${GLBINDING_DIR}/build/Release
+        ${GLBINDING_DIR}/build/Debug
+        ${GLBINDING_DIR}/build-release
+        ${GLBINDING_DIR}/build-debug
+        DOC "The glbinding binary")
+
 endif()
 
 # DEBUG

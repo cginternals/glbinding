@@ -2,7 +2,9 @@
 # GLEW_FOUND
 # GLEW_INCLUDE_DIR
 # GLEW_LIBRARY
-# GLEW_BINARY
+
+# GLEW_BINARY (win32 only)
+
 
 find_path(GLEW_INCLUDE_DIR GL/glew.h
     $ENV{GLEWDIR}/include
