@@ -244,7 +244,7 @@ Optional dependencies
  * [GLFW 3](http://www.glfw.org/) for some examples
  * GLEW for some examples
 
-For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 Update 3) are required.
+For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 **Update 3**) are required.
 
 When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES```, ```OPTION_GL_BY_STRINGS```, and ```OPTION_STRINGS_BY_GL``` can be used to enable example builds (qt-cubescape is only enabled when Qt5 is found), allow string-to-symbol and symbol-to-string conversion respectively (in ```Meta```). ```OPTION_GL_BY_STRINGS``` is disabled by default, since it increases build time for the MSVC 2013 compiler.
 
