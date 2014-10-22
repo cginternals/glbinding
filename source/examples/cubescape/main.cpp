@@ -68,6 +68,15 @@ int main(int, char *[])
 
     glfwSetErrorCallback(error);
 
+    glfwDefaultWindowHints();
+
+#ifdef MAC_OS
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#endif
+
     GLFWwindow * window = glfwCreateWindow(640, 480, "", nullptr, nullptr);
     if (!window)
     {
@@ -77,7 +86,6 @@ int main(int, char *[])
 
     glfwSetKeyCallback(window, key_callback);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
 
     glfwMakeContextCurrent(window);
 
@@ -102,14 +110,14 @@ int main(int, char *[])
 
 
     cubescape = new CubeScape();
-    cubescape->resize(640, 480);
+
+    int width, height; glfwGetFramebufferSize(window, &width, &height);
+    cubescape->resize(width, height);
 
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
-
         cubescape->draw();
-
         glfwSwapBuffers(window);
     }
 

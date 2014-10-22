@@ -14,6 +14,12 @@ int main(int argc, char * argv[])
     QApplication app(argc, argv);
 
     QSurfaceFormat format;
+
+#ifdef MAC_OS
+    format.setVersion(3, 2);
+    format.setProfile(QSurfaceFormat::CoreProfile);
+#endif
+
     QScopedPointer<Viewer> viewer(new Viewer(format));
 
     result = app.exec();

@@ -43,7 +43,7 @@ CubeScape::CubeScape()
             vec3 v = a_vertex * oneovernumcubes - (1.0 - oneovernumcubes);
             v.xz  += uv;
 
-            v_h = texture2D(terrain, uv * 0.5 + vec2(sin(time * 0.04), time * 0.02)).r * 2.0 / 3.0;
+            v_h = texture(terrain, uv * 0.5 + vec2(sin(time * 0.04), time * 0.02)).r * 2.0 / 3.0;
 
             if(a_vertex.y > 0.0) 
                 v.y += v_h;
@@ -116,8 +116,8 @@ CubeScape::CubeScape()
             float t = (2.0 / 3.0 - g_h) * 1.5 * 4.0 - 1.0;
             vec2 uv = g_uv * vec2(0.25, 1.0);
 
-            vec4 c0 = texture2D(patches, uv + max(floor(t), 0.0) * vec2(0.25, 0.0));
-            vec4 c1 = texture2D(patches, uv + min(floor(t) + 1.0, 3.0) * vec2(0.25, 0.0));
+            vec4 c0 = texture(patches, uv + max(floor(t), 0.0) * vec2(0.25, 0.0));
+            vec4 c1 = texture(patches, uv + min(floor(t) + 1.0, 3.0) * vec2(0.25, 0.0));
 
             fragColor = mix(c0, c1, smoothstep(0.25, 0.75, fract(t))) * lambert;
         })";
@@ -165,7 +165,7 @@ CubeScape::CubeScape()
         if (!terrain.isValid())
             std::cout << "warning: loading texture from " << terrain.filePath() << " failed.";
 
-        glTexImage2D(GL_TEXTURE_2D, 0, static_cast<int>(GL_LUMINANCE8), 64, 64, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, terrain.data());
+        glTexImage2D(GL_TEXTURE_2D, 0, static_cast<int>(GL_R8), 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
     }
 
     glBindTexture(GL_TEXTURE_2D, m_textures[1]);
