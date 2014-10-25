@@ -1,5 +1,4 @@
-![Alt glbinding](https://raw.githubusercontent.com/hpicgs/glbinding/master/glbinding-logo.svg)
-<img src="https://raw.githubusercontent.com/hpicgs/glbinding/master/glbinding-logo.svg">
+![glbinding](https://raw.githubusercontent.com/hpicgs/glbinding/master/glbinding-logo.png?raw=true)
 
 glbinding-1.0.2 was just released: [goto release](https://github.com/hpicgs/glbinding/releases/tag/v1.0.2)
 
