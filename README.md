@@ -1,4 +1,4 @@
-![glbinding](https://raw.githubusercontent.com/hpicgs/glbinding/master/glbinding-logo.png?raw=true)
+![glbinding](glbinding-logo.png)
 
 glbinding-1.0.2 was just released: [goto release](https://github.com/hpicgs/glbinding/releases/tag/v1.0.2)
 
