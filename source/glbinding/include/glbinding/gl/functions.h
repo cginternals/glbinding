@@ -3869,6 +3869,11 @@ inline void glGetIntegerv(GLenum pname, GLint * data)
     return glbinding::Binding::GetIntegerv(pname, data);
 }
 
+inline void glGetInternalformatSampleivNV(GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei bufSize, GLint * params)
+{
+    return glbinding::Binding::GetInternalformatSampleivNV(target, internalformat, samples, pname, bufSize, params);
+}
+
 inline void glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 * params)
 {
     return glbinding::Binding::GetInternalformati64v(target, internalformat, pname, bufSize, params);

@@ -39,7 +39,7 @@ public:
 
     static size_t size();
 
-	using array_t = std::array<AbstractFunction *, 2787>;
+	using array_t = std::array<AbstractFunction *, 2788>;
 
     static const array_t & functions();
 
@@ -816,6 +816,7 @@ public:
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64EXT *> GetIntegerui64i_vNV;
     static Function<void, gl::GLenum, gl::GLuint64EXT *> GetIntegerui64vNV;
     static Function<void, gl::GLenum, gl::GLint *> GetIntegerv;
+    static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLint *> GetInternalformatSampleivNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLint64 *> GetInternalformati64v;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLint *> GetInternalformativ;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLboolean *> GetInvariantBooleanvEXT;

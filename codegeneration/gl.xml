@@ -2692,7 +2692,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x0D32" name="GL_MAX_CLIP_PLANES"/>
         <enum value="0x0D32" name="GL_MAX_CLIP_PLANES_IMG"/>
         <enum value="0x0D32" name="GL_MAX_CLIP_DISTANCES" alias="GL_MAX_CLIP_PLANES"/>
-        <enum value="0x0D32" name="GL_MAX_CLIP_DISTANCES_APPLE"/>                     
+        <enum value="0x0D32" name="GL_MAX_CLIP_DISTANCES_APPLE"/>
         <enum value="0x0D33" name="GL_MAX_TEXTURE_SIZE"/>
         <enum value="0x0D34" name="GL_MAX_PIXEL_MAP_TABLE"/>
         <enum value="0x0D35" name="GL_MAX_ATTRIB_STACK_DEPTH"/>
@@ -2952,31 +2952,31 @@ typedef unsigned int GLhandleARB;
         <enum value="0x3000" name="GL_CLIP_PLANE0"/>
         <enum value="0x3000" name="GL_CLIP_PLANE0_IMG"/>
         <enum value="0x3000" name="GL_CLIP_DISTANCE0" alias="GL_CLIP_PLANE0"/>
-        <enum value="0x3000" name="GL_CLIP_DISTANCE0_APPLE"/>                         
+        <enum value="0x3000" name="GL_CLIP_DISTANCE0_APPLE"/>
         <enum value="0x3001" name="GL_CLIP_PLANE1"/>
         <enum value="0x3001" name="GL_CLIP_PLANE1_IMG"/>
         <enum value="0x3001" name="GL_CLIP_DISTANCE1" alias="GL_CLIP_PLANE1"/>
-        <enum value="0x3001" name="GL_CLIP_DISTANCE1_APPLE"/>                         
+        <enum value="0x3001" name="GL_CLIP_DISTANCE1_APPLE"/>
         <enum value="0x3002" name="GL_CLIP_PLANE2"/>
         <enum value="0x3002" name="GL_CLIP_PLANE2_IMG"/>
         <enum value="0x3002" name="GL_CLIP_DISTANCE2" alias="GL_CLIP_PLANE2"/>
-        <enum value="0x3002" name="GL_CLIP_DISTANCE2_APPLE"/>                         
+        <enum value="0x3002" name="GL_CLIP_DISTANCE2_APPLE"/>
         <enum value="0x3003" name="GL_CLIP_PLANE3"/>
         <enum value="0x3003" name="GL_CLIP_PLANE3_IMG"/>
         <enum value="0x3003" name="GL_CLIP_DISTANCE3" alias="GL_CLIP_PLANE3"/>
-        <enum value="0x3003" name="GL_CLIP_DISTANCE3_APPLE"/>                         
+        <enum value="0x3003" name="GL_CLIP_DISTANCE3_APPLE"/>
         <enum value="0x3004" name="GL_CLIP_PLANE4"/>
         <enum value="0x3004" name="GL_CLIP_PLANE4_IMG"/>
         <enum value="0x3004" name="GL_CLIP_DISTANCE4" alias="GL_CLIP_PLANE4"/>
-        <enum value="0x3004" name="GL_CLIP_DISTANCE4_APPLE"/>                         
+        <enum value="0x3004" name="GL_CLIP_DISTANCE4_APPLE"/>
         <enum value="0x3005" name="GL_CLIP_PLANE5"/>
         <enum value="0x3005" name="GL_CLIP_PLANE5_IMG"/>
         <enum value="0x3005" name="GL_CLIP_DISTANCE5" alias="GL_CLIP_PLANE5"/>
-        <enum value="0x3005" name="GL_CLIP_DISTANCE5_APPLE"/>                         
+        <enum value="0x3005" name="GL_CLIP_DISTANCE5_APPLE"/>
         <enum value="0x3006" name="GL_CLIP_DISTANCE6"/>
-        <enum value="0x3006" name="GL_CLIP_DISTANCE6_APPLE"/>                         
+        <enum value="0x3006" name="GL_CLIP_DISTANCE6_APPLE"/>
         <enum value="0x3007" name="GL_CLIP_DISTANCE7"/>
-        <enum value="0x3007" name="GL_CLIP_DISTANCE7_APPLE"/>                         
+        <enum value="0x3007" name="GL_CLIP_DISTANCE7_APPLE"/>
             <unused start="0x3008" end="0x3FFF" comment="Unused for ClipPlaneName"/>
         <enum value="0x4000" name="GL_LIGHT0"/>
         <enum value="0x4001" name="GL_LIGHT1"/>
@@ -6418,17 +6418,17 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8C37" name="GL_MIN_SAMPLE_SHADING_VALUE_OES"/>
             <unused start="0x8C38" end="0x8C39" vendor="NV"/>
         <enum value="0x8C3A" name="GL_R11F_G11F_B10F"/>
-        <enum value="0x8C3A" name="GL_R11F_G11F_B10F_APPLE"/>                         
+        <enum value="0x8C3A" name="GL_R11F_G11F_B10F_APPLE"/>
         <enum value="0x8C3A" name="GL_R11F_G11F_B10F_EXT"/>
         <enum value="0x8C3B" name="GL_UNSIGNED_INT_10F_11F_11F_REV"/>
-        <enum value="0x8C3B" name="GL_UNSIGNED_INT_10F_11F_11F_REV_APPLE"/>           
+        <enum value="0x8C3B" name="GL_UNSIGNED_INT_10F_11F_11F_REV_APPLE"/>
         <enum value="0x8C3B" name="GL_UNSIGNED_INT_10F_11F_11F_REV_EXT"/>
         <enum value="0x8C3C" name="GL_RGBA_SIGNED_COMPONENTS_EXT"/>
         <enum value="0x8C3D" name="GL_RGB9_E5"/>
-        <enum value="0x8C3D" name="GL_RGB9_E5_APPLE"/>                                
+        <enum value="0x8C3D" name="GL_RGB9_E5_APPLE"/>
         <enum value="0x8C3D" name="GL_RGB9_E5_EXT"/>
         <enum value="0x8C3E" name="GL_UNSIGNED_INT_5_9_9_9_REV"/>
-        <enum value="0x8C3E" name="GL_UNSIGNED_INT_5_9_9_9_REV_APPLE"/>               
+        <enum value="0x8C3E" name="GL_UNSIGNED_INT_5_9_9_9_REV_APPLE"/>
         <enum value="0x8C3E" name="GL_UNSIGNED_INT_5_9_9_9_REV_EXT"/>
         <enum value="0x8C3F" name="GL_TEXTURE_SHARED_SIZE"/>
         <enum value="0x8C3F" name="GL_TEXTURE_SHARED_SIZE_EXT"/>
@@ -7824,9 +7824,9 @@ typedef unsigned int GLhandleARB;
 
     <enums namespace="GL" start="0x9250" end="0x925F" vendor="DMP" comment="For Eisaku Ohbuchi via email">
         <enum value="0x9250" name="GL_SHADER_BINARY_DMP"/>
-        <enum value="0x9251" name="GL_SMAPHS30_PROGRAM_BINARY_DMP"/> 
-        <enum value="0x9252" name="GL_SMAPHS_PROGRAM_BINARY_DMP"/>                     
-        <enum value="0x9253" name="GL_DMP_PROGRAM_BINARY_DMP"/>                        
+        <enum value="0x9251" name="GL_SMAPHS30_PROGRAM_BINARY_DMP"/>
+        <enum value="0x9252" name="GL_SMAPHS_PROGRAM_BINARY_DMP"/>
+        <enum value="0x9253" name="GL_DMP_PROGRAM_BINARY_DMP"/>
             <unused start="0x9254" end="0x925F" vendor="DMP"/>
     </enums>
 
@@ -8084,7 +8084,11 @@ typedef unsigned int GLhandleARB;
         <enum value="0x936E" name="GL_UNIFORM_BUFFER_UNIFIED_NV"/>
         <enum value="0x936F" name="GL_UNIFORM_BUFFER_ADDRESS_NV"/>
         <enum value="0x9370" name="GL_UNIFORM_BUFFER_LENGTH_NV"/>
-            <unused start="0x9371" end="0x937F" vendor="NV"/>
+        <enum value="0x9371" name="GL_MULTISAMPLES_NV"/>
+        <enum value="0x9372" name="GL_SUPERSAMPLE_SCALE_X_NV"/>
+        <enum value="0x9373" name="GL_SUPERSAMPLE_SCALE_Y_NV"/>
+        <enum value="0x9374" name="GL_CONFORMANT_NV"/>
+            <unused start="0x9375" end="0x937F" vendor="NV"/>
     </enums>
 
     <enums namespace="GL" start="0x9380" end="0x939F" vendor="ARB">
@@ -8188,6 +8192,10 @@ typedef unsigned int GLhandleARB;
             <unused start="0x9510" end="0x952F" vendor="Broadcom"/>
     </enums>
 
+    <enums namespace="GL" start="0x9530" end="0x962F" vendor="NV" comment="Khronos bug 12977">
+            <unused start="0x9530" end="0x962F" vendor="NV"/>
+    </enums>
+
 <!-- Enums reservable for future use. To reserve a new range, allocate one
      or more multiples of 16 starting at the lowest available point in this
      block and note it in a new <enums> block immediately above.
@@ -8197,8 +8205,8 @@ typedef unsigned int GLhandleARB;
      file) File requests in the Khronos Bugzilla, OpenGL project, Registry
      component. -->
 
-    <enums namespace="GL" start="0x9530" end="99999" vendor="ARB" comment="RESERVED FOR FUTURE ALLOCATIONS BY KHRONOS">
-        <unused start="0x9530" end="99999" comment="RESERVED"/>
+    <enums namespace="GL" start="0x9630" end="99999" vendor="ARB" comment="RESERVED FOR FUTURE ALLOCATIONS BY KHRONOS">
+        <unused start="0x9630" end="99999" comment="RESERVED"/>
     </enums>
 
 <!-- Historical large block allocations, all unused except (in older days) by IBM -->
@@ -14287,6 +14295,15 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glGetInternalformativ</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLenum</ptype> <name>internalformat</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLsizei</ptype> <name>bufSize</name></param>
+            <param len="bufSize"><ptype>GLint</ptype> *<name>params</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetInternalformatSampleivNV</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLenum</ptype> <name>internalformat</name></param>
+            <param><ptype>GLsizei</ptype> <name>samples</name></param>
             <param><ptype>GLenum</ptype> <name>pname</name></param>
             <param><ptype>GLsizei</ptype> <name>bufSize</name></param>
             <param len="bufSize"><ptype>GLint</ptype> *<name>params</name></param>
@@ -41572,6 +41589,18 @@ typedef unsigned int GLhandleARB;
             <require>
                 <enum name="GL_VERTEX_ATTRIB_ARRAY_DIVISOR_NV"/>
                 <command name="glVertexAttribDivisorNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_internalformat_sample_query" supported="gl|gles2">
+            <require>
+                <enum name="GL_RENDERBUFFER"/>
+                <enum name="GL_TEXTURE_2D_MULTISAMPLE"/>
+                <enum name="GL_TEXTURE_2D_MULTISAMPLE_ARRAY"/>
+                <enum name="GL_MULTISAMPLES_NV"/>
+                <enum name="GL_SUPERSAMPLE_SCALE_X_NV"/>
+                <enum name="GL_SUPERSAMPLE_SCALE_Y_NV"/>
+                <enum name="GL_CONFORMANT_NV"/>
+                <command name="glGetInternalformatSampleivNV"/>
             </require>
         </extension>
         <extension name="GL_NV_light_max_exponent" supported="gl">

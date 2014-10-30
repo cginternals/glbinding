@@ -2365,6 +2365,11 @@ inline void glGetIntegerui64vNV(GLenum value, GLuint64EXT * result)
     return glbinding::Binding::GetIntegerui64vNV(value, result);
 }
 
+inline void glGetInternalformatSampleivNV(GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei bufSize, GLint * params)
+{
+    return glbinding::Binding::GetInternalformatSampleivNV(target, internalformat, samples, pname, bufSize, params);
+}
+
 inline void glGetInvariantBooleanvEXT(GLuint id, GLenum value, GLboolean * data)
 {
     return glbinding::Binding::GetInvariantBooleanvEXT(id, value, data);

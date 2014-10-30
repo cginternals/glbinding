@@ -400,6 +400,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
     { GLextension::GL_NV_gpu_program5_mem_extended, "GL_NV_gpu_program5_mem_extended" },
     { GLextension::GL_NV_gpu_shader5, "GL_NV_gpu_shader5" },
     { GLextension::GL_NV_half_float, "GL_NV_half_float" },
+    { GLextension::GL_NV_internalformat_sample_query, "GL_NV_internalformat_sample_query" },
     { GLextension::GL_NV_light_max_exponent, "GL_NV_light_max_exponent" },
     { GLextension::GL_NV_multisample_coverage, "GL_NV_multisample_coverage" },
     { GLextension::GL_NV_multisample_filter_hint, "GL_NV_multisample_filter_hint" },

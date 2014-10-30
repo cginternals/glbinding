@@ -35,7 +35,7 @@ Binding::const_iterator Binding::end() const
 
 size_t Binding::size()
 {
-	return 2787;
+	return 2788;
 }
 
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
@@ -810,6 +810,7 @@ Function<void, GLenum, GLuint, GLint *> Binding::GetIntegeri_v("glGetIntegeri_v"
 Function<void, GLenum, GLuint, GLuint64EXT *> Binding::GetIntegerui64i_vNV("glGetIntegerui64i_vNV");
 Function<void, GLenum, GLuint64EXT *> Binding::GetIntegerui64vNV("glGetIntegerui64vNV");
 Function<void, GLenum, GLint *> Binding::GetIntegerv("glGetIntegerv");
+Function<void, GLenum, GLenum, GLsizei, GLenum, GLsizei, GLint *> Binding::GetInternalformatSampleivNV("glGetInternalformatSampleivNV");
 Function<void, GLenum, GLenum, GLenum, GLsizei, GLint64 *> Binding::GetInternalformati64v("glGetInternalformati64v");
 Function<void, GLenum, GLenum, GLenum, GLsizei, GLint *> Binding::GetInternalformativ("glGetInternalformativ");
 Function<void, GLuint, GLenum, GLboolean *> Binding::GetInvariantBooleanvEXT("glGetInvariantBooleanvEXT");
@@ -3601,6 +3602,7 @@ const Binding::array_t Binding::s_functions =
     &GetIntegerui64i_vNV,
     &GetIntegerui64vNV,
     &GetIntegerv,
+    &GetInternalformatSampleivNV,
     &GetInternalformati64v,
     &GetInternalformativ,
     &GetInvariantBooleanvEXT,

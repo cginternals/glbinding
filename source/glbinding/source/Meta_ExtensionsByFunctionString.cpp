@@ -607,6 +607,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetIntegerIndexedvEXT", { GLextension::GL_EXT_direct_state_access, GLextension::GL_EXT_draw_buffers2 } },
     { "glGetIntegerui64i_vNV", { GLextension::GL_NV_vertex_buffer_unified_memory } },
     { "glGetIntegerui64vNV", { GLextension::GL_NV_shader_buffer_load } },
+    { "glGetInternalformatSampleivNV", { GLextension::GL_NV_internalformat_sample_query } },
     { "glGetInternalformati64v", { GLextension::GL_ARB_internalformat_query2 } },
     { "glGetInternalformativ", { GLextension::GL_ARB_internalformat_query } },
     { "glGetInvariantBooleanvEXT", { GLextension::GL_EXT_vertex_shader } },

@@ -397,6 +397,7 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_NV_gpu_program5_mem_extended,
     GL_NV_gpu_shader5,
     GL_NV_half_float,
+    GL_NV_internalformat_sample_query,
     GL_NV_light_max_exponent,
     GL_NV_multisample_coverage,
     GL_NV_multisample_filter_hint,
