@@ -18,7 +18,7 @@ find_package(Qt5Gui     5.1 QUIET)
 find_package(Qt5Widgets 5.1 QUIET)
 
 if (NOT Qt5Core_FOUND)
-	message(STATUS "Example ${target} (disabled - Qt5 not found)")
+	message("Example ${target} skipped: Qt5 not found")
 	return()
 endif()
 
