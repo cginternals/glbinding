@@ -20,5 +20,5 @@ if (PYTHON)
     set_target_properties(${target} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 
 else()
-    message(STATUS "Disabled code generation due to missing python.")
+    message("generate target code skipped: python not found")
 endif()

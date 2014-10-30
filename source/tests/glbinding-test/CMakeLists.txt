@@ -9,7 +9,7 @@ find_package(OpenGL REQUIRED)
 find_package(GLFW QUIET)
 
 if (NOT GLFW_FOUND)
-	message(STATUS "Test ${target} (disabled because GLFW couldn't be found)")
+	message("Test ${target} skipped: GLFW not found")
 	return()
 endif()
 

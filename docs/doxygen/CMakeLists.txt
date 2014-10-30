@@ -38,6 +38,6 @@ if(DOXYGEN_FOUND)
 
 else()
 
-    message(STATUS "Disabled generation of doxygen documentation (missing doxygen).")
+    message("generate target documentation skipped: doxygen not found")
 
 endif()

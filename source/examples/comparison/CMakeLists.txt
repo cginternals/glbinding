@@ -8,12 +8,12 @@ find_package(GLFW QUIET)
 find_package(GLEW QUIET)
 
 if (NOT GLFW_FOUND)
-	message("Example ${target} skipped: GLFW couldn't be found")
+	message("Example ${target} skipped: GLFW not found")
 	return()
 endif()
 
 if (NOT GLEW_FOUND)
-	message("Example ${target} skipped: GLEW couldn't be found")
+	message("Example ${target} skipped: GLEW not found")
 	return()
 endif()
 
