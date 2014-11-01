@@ -1,6 +1,7 @@
 
 set(target cubescape-qt)
 
+
 # Qt5
 
 # good resource: http://www.kdab.com/using-cmake-with-qt-5/
@@ -9,6 +10,7 @@ set(target cubescape-qt)
 if(MSVC)
     cmake_policy(SET CMP0020 NEW)
 endif()
+
 
 # External libraries
 
@@ -31,6 +33,7 @@ set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
 # What we do not want is automocs beside the project -> http://www.cmake.org/Bug/view.php?id=13688
 set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
 
+
 # Includes
 
 include_directories(
@@ -44,17 +47,20 @@ include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
 )
 
+
 # Libraries
 
 set(libs
     glbinding
 )
 
+
 # Compiler definitions
 
 if (OPTION_BUILD_STATIC)
     add_definitions("-DGLBINDING_STATIC")
 endif()
+
 
 # Sources
 
@@ -82,9 +88,11 @@ set(uis
     Viewer.ui
 )
 
+
 # UI Files
 
 qt5_wrap_ui(compiled_ui_files ${uis})
+
 
 # Build executable
 
@@ -106,6 +114,7 @@ set_target_properties(${target}
     LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
+
 
 # Deployment
 

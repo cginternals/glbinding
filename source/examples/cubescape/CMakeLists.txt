@@ -1,6 +1,7 @@
 
 set(target cubescape)
 
+
 # External libraries
 
 find_package(OpenGL REQUIRED)
@@ -12,6 +13,7 @@ if (NOT GLFW_FOUND)
 endif()
 
 message(STATUS "Example ${target}")
+
 
 # Includes
 
@@ -26,6 +28,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+
 # Libraries
 
 set(libs
@@ -34,11 +37,13 @@ set(libs
     glbinding
 )
 
+
 # Compiler definitions
 
 if (OPTION_BUILD_STATIC)
     add_definitions("-DGLBINDING_STATIC")
 endif()
+
 
 # Sources
 
@@ -51,6 +56,7 @@ set(sources
     RawFile.cpp
     RawFile.h
 )
+
 
 # Build executable
 
@@ -68,6 +74,7 @@ set_target_properties(${target}
     LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
+
 
 # Deployment
 

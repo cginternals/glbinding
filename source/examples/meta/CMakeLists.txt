@@ -2,9 +2,11 @@
 set(target meta)
 message(STATUS "Example ${target}")
 
+
 # External libraries
 
 find_package(OpenGL REQUIRED)
+
 
 # Includes
 
@@ -18,12 +20,14 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
+
 # Libraries
 
 set(libs
     ${OPENGL_LIBRARIES}
     glbinding
 )
+
 
 # Compiler definitions
 
@@ -38,11 +42,13 @@ if (OPTION_GL_BY_STRINGS)
     add_definitions("-DGL_BY_STRINGS")
 endif()
 
+
 # Sources
 
 set(sources
     main.cpp
 )
+
 
 # Build executable
 
@@ -60,6 +66,7 @@ set_target_properties(${target}
     LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
+
 
 # Deployment
 
