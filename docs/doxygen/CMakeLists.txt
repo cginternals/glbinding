@@ -3,8 +3,8 @@
 set(doxyfile_in doxyfile.in)
 
 # Set project variables
-set(doxyfile     ${CMAKE_CURRENT_BINARY_DIR}/doxyfile)
-set(doxyfile_hhp ${CMAKE_CURRENT_BINARY_DIR}/html/index.hhp)
+set(doxyfile      ${CMAKE_CURRENT_BINARY_DIR}/doxyfile)
+set(doxyfile_hhp  ${CMAKE_CURRENT_BINARY_DIR}/html/index.hhp)
 
 # Check if doxygen is available
 find_package(Doxygen)
@@ -28,7 +28,7 @@ if(DOXYGEN_FOUND)
         WORKING_DIRECTORY   ${path}
         COMMAND             ${CMAKE_COMMAND} -E copy_directory ${path} ${CMAKE_CURRENT_BINARY_DIR}/html # ToDO, configure doxygen to use source as is
         COMMAND             ${DOXYGEN} \"${doxyfile}\"
-        COMMENT             "Creating doxygen documentation."
+        COMMENT             "Creating doxygen documentation for glbinding."
     )
 
     # Declare target

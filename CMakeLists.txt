@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 # Project description and (meta) information
 
 set(META_PROJECT_NAME        "glbinding")
-set(META_PROJECT_DESCRIPTION "OpenGL C++ Binding")
+set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
 set(META_VERSION_MAJOR       "1")
 set(META_VERSION_MINOR       "0")
 set(META_VERSION_PATCH       "3")
