@@ -4,6 +4,13 @@
 
 #include <glbinding/AbstractFunction.h>
 
+#ifndef WINAPI
+#ifdef _WIN32
+#define WINAPI __stdcall
+#else
+#define WINAPI
+#endif
+#endif
 
 namespace 
 {
@@ -32,7 +39,7 @@ class Function : public AbstractFunction
 {
     friend struct FunctionHelper<ReturnType, Arguments...>;
 
-    using Signature = ReturnType(*) (Arguments...);
+    using Signature = ReturnType(WINAPI *) (Arguments...);
 
     using BeforeCallback = std::function<void(Arguments...)>;
     using AfterCallback = typename CallbackType<ReturnType, Arguments...>::type;
