@@ -16,6 +16,7 @@ namespace
 
 void glew_init()
 {
+    glewExperimental = GL_TRUE;
     glewInit();
     glGetError();
 }

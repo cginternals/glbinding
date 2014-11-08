@@ -17,6 +17,7 @@ int main(int argc, char * argv[])
 
 #ifdef MAC_OS
     format.setVersion(3, 2);
+    format.setDepthBufferSize(24);
     format.setProfile(QSurfaceFormat::CoreProfile);
 #endif
 
