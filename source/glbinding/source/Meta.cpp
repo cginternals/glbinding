@@ -1,9 +1,6 @@
 
 #include <glbinding/Meta.h>
 
-#include <sstream>
-#include <unordered_map>
-
 #include <glbinding/gl/bitfield.h>
 #include <glbinding/gl/boolean.h>
 #include <glbinding/gl/enum.h>

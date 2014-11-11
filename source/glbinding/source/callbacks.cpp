@@ -4,17 +4,15 @@
 #include <glbinding/AbstractValue.h>
 #include <glbinding/Binding.h>
 
+namespace
+{
+    glbinding::SimpleFunctionCallback g_unresolvedCallback;
+    glbinding::FunctionCallback g_beforeCallback;
+    glbinding::FunctionCallback g_afterCallback;
+}
 
 namespace glbinding 
 {
-
-namespace 
-{
-SimpleFunctionCallback g_unresolvedCallback;
-FunctionCallback g_beforeCallback;
-FunctionCallback g_afterCallback;
-}
-
 
 FunctionCall::FunctionCall(const AbstractFunction * _function)
 : function(*_function)
@@ -25,23 +23,26 @@ FunctionCall::FunctionCall(const AbstractFunction * _function)
 FunctionCall::~FunctionCall()
 {
     delete returnValue;
+
     for (AbstractValue * value : parameters)
+    {
         delete value;
+    }
 }
 
 
-CallbackMask operator|(CallbackMask a, CallbackMask b)
+CallbackMask operator|(const CallbackMask a, const CallbackMask b)
 {
     return static_cast<CallbackMask>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
 }
 
-void setCallbackMask(CallbackMask mask)
+void setCallbackMask(const CallbackMask mask)
 {
     for (AbstractFunction * function : Binding::functions())
         function->setCallbackMask(mask);
 }
 
-void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList)
+void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : Binding::functions())
         if (blackList.find(function->name()) == blackList.end())
@@ -49,17 +50,17 @@ void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blac
 }
 
 
-void setUnresolvedCallback(SimpleFunctionCallback callback)
+void setUnresolvedCallback(const SimpleFunctionCallback callback)
 {
     g_unresolvedCallback = callback;
 }
 
-void setBeforeCallback(FunctionCallback callback)
+void setBeforeCallback(const FunctionCallback callback)
 {
     g_beforeCallback = callback;
 }
 
-void setAfterCallback(FunctionCallback callback)
+void setAfterCallback(const FunctionCallback callback)
 {
     g_afterCallback = callback;
 }

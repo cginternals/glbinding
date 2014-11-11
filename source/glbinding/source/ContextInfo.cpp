@@ -6,11 +6,10 @@
 
 #include <glbinding/gl/gl.h>
 
+using namespace gl;
 
 namespace glbinding
 {
-
-using namespace gl;
 
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 {
@@ -30,9 +29,13 @@ std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 
         GLextension extension = Meta::getExtension(reinterpret_cast<const char *>(name));
         if (GLextension::UNKNOWN != extension)
+        {
             extensions.insert(extension);
+        }
         else if (unknown)
+        {
             unknown->insert(reinterpret_cast<const char *>(name));
+        }
     }
 
     return extensions;

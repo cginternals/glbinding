@@ -1,7 +1,6 @@
 
 #include <glbinding/AbstractFunction.h>
 
-#include <iostream>
 #include <memory>
 #include <set>
 #include <cassert>
@@ -11,17 +10,15 @@
 
 #include "callbacks_private.h"
 
-
-namespace glbinding 
-{
-
 namespace
 {
 THREAD_LOCAL int t_pos = -1;
 }
 
-int AbstractFunction::s_maxpos = -1;
+namespace glbinding 
+{
 
+int AbstractFunction::s_maxpos = -1;
 
 AbstractFunction::State::State()
 : address(nullptr)
@@ -30,22 +27,22 @@ AbstractFunction::State::State()
 {
 }
 
-inline bool AbstractFunction::hasState() const
+bool AbstractFunction::hasState() const
 {
     return hasState(t_pos);
 }
 
-inline bool AbstractFunction::hasState(const int pos) const
+bool AbstractFunction::hasState(const int pos) const
 {
     return pos > -1 && s_maxpos <= pos;
 }
 
-inline AbstractFunction::State & AbstractFunction::state() const
+AbstractFunction::State & AbstractFunction::state() const
 {
     return state(t_pos);
 }
 
-inline AbstractFunction::State & AbstractFunction::state(const int pos) const
+AbstractFunction::State & AbstractFunction::state(const int pos) const
 {
     assert(s_maxpos >= pos);
     assert(pos > -1);
@@ -75,13 +72,19 @@ void AbstractFunction::neglectState(const int pos)
     if (pos == s_maxpos)
     {
         for (AbstractFunction * function : Binding::functions())
+        {
             function->m_states.resize(static_cast<std::size_t>(std::max(0, pos - 1)));
+        }
 
         --s_maxpos;
     }
     else
+    {
         for (AbstractFunction * function : Binding::functions())
+        {
             function->m_states[pos] = State();
+        }
+    }
 
     if (pos == t_pos)
         t_pos = -1;
@@ -135,19 +138,19 @@ ProcAddress AbstractFunction::address() const
 }
 
 
-bool AbstractFunction::isEnabled(CallbackMask mask) const
+bool AbstractFunction::isEnabled(const CallbackMask mask) const
 {
     return (static_cast<unsigned int>(state().callbackMask) 
         & static_cast<unsigned int>(mask)) == static_cast<unsigned int>(mask);
 }
 
-bool AbstractFunction::isAnyEnabled(CallbackMask mask) const
+bool AbstractFunction::isAnyEnabled(const CallbackMask mask) const
 {
     return (static_cast<unsigned int>(state().callbackMask) 
         ^ static_cast<unsigned int>(mask)) != 0;
 }
 
-void AbstractFunction::setCallbackMask(CallbackMask mask)
+void AbstractFunction::setCallbackMask(const CallbackMask mask)
 {
     state().callbackMask = mask;
 }
