@@ -35,6 +35,9 @@ Canvas::Canvas(
     create();
 
     initializeGL(format);
+
+    qDebug() << "Press i or d to either increase or decrease number of cubes.";
+    qDebug();
 }
 
 Canvas::~Canvas()
@@ -86,11 +89,12 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
     // print some gl infos (query)
 
     qDebug();
-    qDebug() << "OpenGL Version:  " << QString::fromStdString(glbinding::ContextInfo::version().toString());
-    qDebug() << "OpenGL Vendor:   " << QString::fromStdString(glbinding::ContextInfo::vendor());
-    qDebug() << "OpenGL Renderer: " << QString::fromStdString(glbinding::ContextInfo::renderer());
-    qDebug();
-    qDebug() << "Press i or d to either increase or decrease number of cubes.";
+    qDebug() << "OpenGL Version:  " << qPrintable(QString::fromStdString(
+        glbinding::ContextInfo::version().toString()));
+    qDebug() << "OpenGL Vendor:   " << qPrintable(QString::fromStdString(
+        glbinding::ContextInfo::vendor()));
+    qDebug() << "OpenGL Renderer: " << qPrintable(QString::fromStdString(
+        glbinding::ContextInfo::renderer()));
     qDebug();
 
     m_context->doneCurrent();
