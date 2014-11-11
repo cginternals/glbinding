@@ -75,6 +75,7 @@ set(api_includes
     ${include_path}/Value.h
     ${include_path}/Value.hpp
     ${include_path}/Version.h
+    ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.hpp
 )
 
