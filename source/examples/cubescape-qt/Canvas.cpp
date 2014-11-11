@@ -3,7 +3,11 @@
 
 #include <cassert>
 
+#include <glbinding/ContextInfo.h>
+#include <glbinding/Version.h>
+
 #include <QDebug>
+#include <QString>
 #include <QApplication>
 #include <QBasicTimer>
 #include <QResizeEvent>
@@ -78,6 +82,16 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
 
         emit numCubesUpdate(m_painter->numCubes());
     }
+
+    // print some gl infos (query)
+
+    qDebug();
+    qDebug() << "OpenGL Version:  " << QString::fromStdString(glbinding::ContextInfo::version().toString());
+    qDebug() << "OpenGL Vendor:   " << QString::fromStdString(glbinding::ContextInfo::vendor());
+    qDebug() << "OpenGL Renderer: " << QString::fromStdString(glbinding::ContextInfo::renderer());
+    qDebug();
+    qDebug() << "Press i or d to either increase or decrease number of cubes.";
+    qDebug();
 
     m_context->doneCurrent();
 

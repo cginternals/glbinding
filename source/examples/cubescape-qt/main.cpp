@@ -26,5 +26,4 @@ int main(int argc, char * argv[])
     result = app.exec();
 
     return result;
-    // ToDo: QWidget seems to take double ownership of canvas and frees it doubled
 }
