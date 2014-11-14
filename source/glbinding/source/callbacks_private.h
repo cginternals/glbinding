@@ -4,7 +4,7 @@ namespace glbinding
 {
 
 class AbstractFunction;
-class FunctionCall;
+struct FunctionCall;
 
 void unresolved(const AbstractFunction * function);
 void before(const FunctionCall & call);
