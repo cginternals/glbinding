@@ -3797,9 +3797,11 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8229" name="GL_R8"/>
         <enum value="0x8229" name="GL_R8_EXT"/>
         <enum value="0x822A" name="GL_R16"/>
+        <enum value="0x822A" name="GL_R16_EXT"/>
         <enum value="0x822B" name="GL_RG8"/>
         <enum value="0x822B" name="GL_RG8_EXT"/>
         <enum value="0x822C" name="GL_RG16"/>
+        <enum value="0x822C" name="GL_RG16_EXT"/>
         <enum value="0x822D" name="GL_R16F"/>
         <enum value="0x822D" name="GL_R16F_EXT"/>
         <enum value="0x822E" name="GL_R32F"/>
@@ -3902,11 +3904,18 @@ typedef unsigned int GLhandleARB;
         <enum value="0x825A" name="GL_PROGRAM_PIPELINE_BINDING"/>
         <enum value="0x825A" name="GL_PROGRAM_PIPELINE_BINDING_EXT"/>
         <enum value="0x825B" name="GL_MAX_VIEWPORTS"/>
+        <enum value="0x825B" name="GL_MAX_VIEWPORTS_NV"/>
         <enum value="0x825C" name="GL_VIEWPORT_SUBPIXEL_BITS"/>
+        <enum value="0x825C" name="GL_VIEWPORT_SUBPIXEL_BITS_EXT"/>
+        <enum value="0x825C" name="GL_VIEWPORT_SUBPIXEL_BITS_NV"/>
         <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE"/>
+        <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE_EXT"/>
+        <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE_NV"/>
         <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX"/>
         <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX_EXT"/>
         <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX"/>
+        <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_EXT"/>
+        <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_NV"/>
         <enum value="0x8260" name="GL_UNDEFINED_VERTEX"/>
         <enum value="0x8260" name="GL_UNDEFINED_VERTEX_EXT"/>
         <enum value="0x8261" name="GL_NO_RESET_NOTIFICATION"/>
@@ -7287,9 +7296,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8F96" name="GL_RGB8_SNORM"/>
         <enum value="0x8F97" name="GL_RGBA8_SNORM"/>
         <enum value="0x8F98" name="GL_R16_SNORM"/>
+        <enum value="0x8F98" name="GL_R16_SNORM_EXT"/>
         <enum value="0x8F99" name="GL_RG16_SNORM"/>
+        <enum value="0x8F99" name="GL_RG16_SNORM_EXT"/>
         <enum value="0x8F9A" name="GL_RGB16_SNORM"/>
+        <enum value="0x8F9A" name="GL_RGB16_SNORM_EXT"/>
         <enum value="0x8F9B" name="GL_RGBA16_SNORM"/>
+        <enum value="0x8F9B" name="GL_RGBA16_SNORM_EXT"/>
         <enum value="0x8F9C" name="GL_SIGNED_NORMALIZED"/>
         <enum value="0x8F9D" name="GL_PRIMITIVE_RESTART"/>
         <enum value="0x8F9E" name="GL_PRIMITIVE_RESTART_INDEX"/>
@@ -11718,10 +11731,22 @@ typedef unsigned int GLhandleARB;
             <param len="COMPSIZE(count)">const <ptype>GLdouble</ptype> *<name>v</name></param>
         </command>
         <command>
+            <proto>void <name>glDepthRangeArrayfvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>first</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
             <proto>void <name>glDepthRangeIndexed</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param><ptype>GLdouble</ptype> <name>n</name></param>
             <param><ptype>GLdouble</ptype> <name>f</name></param>
+        </command>
+        <command>
+            <proto>void <name>glDepthRangeIndexedfNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param><ptype>GLfloat</ptype> <name>n</name></param>
+            <param><ptype>GLfloat</ptype> <name>f</name></param>
         </command>
         <command>
             <proto>void <name>glDepthRangedNV</name></proto>
@@ -11843,6 +11868,12 @@ typedef unsigned int GLhandleARB;
             <alias name="glDisablei"/>
         </command>
         <command>
+            <proto>void <name>glDisableiNV</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <alias name="glDisablei"/>
+        </command>
+        <command>
             <proto>void <name>glDiscardFramebufferEXT</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLsizei</ptype> <name>numAttachments</name></param>
@@ -11917,6 +11948,15 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>count</name></param>
             <param><ptype>GLsizei</ptype> <name>instancecount</name></param>
             <param><ptype>GLuint</ptype> <name>baseinstance</name></param>
+        </command>
+        <command>
+            <proto>void <name>glDrawArraysInstancedBaseInstanceEXT</name></proto>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLint</ptype> <name>first</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param><ptype>GLsizei</ptype> <name>instancecount</name></param>
+            <param><ptype>GLuint</ptype> <name>baseinstance</name></param>
+            <alias name="glDrawArraysInstancedBaseInstance"/>
         </command>
         <command comment="primcount should be renamed to instanceCount for OpenGL ES">
             <proto>void <name>glDrawArraysInstancedEXT</name></proto>
@@ -12002,6 +12042,15 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>basevertex</name></param>
         </command>
         <command>
+            <proto>void <name>glDrawElementsBaseVertexEXT</name></proto>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
+            <param len="COMPSIZE(count,type)">const void *<name>indices</name></param>
+            <param><ptype>GLint</ptype> <name>basevertex</name></param>
+            <alias name="glDrawElementsBaseVertex"/>
+        </command>
+        <command>
             <proto>void <name>glDrawElementsIndirect</name></proto>
             <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
@@ -12043,6 +12092,16 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLuint</ptype> <name>baseinstance</name></param>
         </command>
         <command>
+            <proto>void <name>glDrawElementsInstancedBaseInstanceEXT</name></proto>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param><ptype>GLenum</ptype> <name>type</name></param>
+            <param len="count">const void *<name>indices</name></param>
+            <param><ptype>GLsizei</ptype> <name>instancecount</name></param>
+            <param><ptype>GLuint</ptype> <name>baseinstance</name></param>
+            <alias name="glDrawElementsInstancedBaseInstance"/>
+        </command>
+        <command>
             <proto>void <name>glDrawElementsInstancedBaseVertex</name></proto>
             <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLsizei</ptype> <name>count</name></param>
@@ -12050,6 +12109,16 @@ typedef unsigned int GLhandleARB;
             <param len="COMPSIZE(count,type)">const void *<name>indices</name></param>
             <param><ptype>GLsizei</ptype> <name>instancecount</name></param>
             <param><ptype>GLint</ptype> <name>basevertex</name></param>
+        </command>
+        <command>
+            <proto>void <name>glDrawElementsInstancedBaseVertexEXT</name></proto>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
+            <param len="COMPSIZE(count,type)">const void *<name>indices</name></param>
+            <param><ptype>GLsizei</ptype> <name>instancecount</name></param>
+            <param><ptype>GLint</ptype> <name>basevertex</name></param>
+            <alias name="glDrawElementsInstancedBaseVertex"/>
         </command>
         <command>
             <proto>void <name>glDrawElementsInstancedBaseVertexBaseInstance</name></proto>
@@ -12060,6 +12129,17 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>instancecount</name></param>
             <param><ptype>GLint</ptype> <name>basevertex</name></param>
             <param><ptype>GLuint</ptype> <name>baseinstance</name></param>
+        </command>
+        <command>
+            <proto>void <name>glDrawElementsInstancedBaseVertexBaseInstanceEXT</name></proto>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param><ptype>GLenum</ptype> <name>type</name></param>
+            <param len="count">const void *<name>indices</name></param>
+            <param><ptype>GLsizei</ptype> <name>instancecount</name></param>
+            <param><ptype>GLint</ptype> <name>basevertex</name></param>
+            <param><ptype>GLuint</ptype> <name>baseinstance</name></param>
+            <alias name="glDrawElementsInstancedBaseVertexBaseInstance"/>
         </command>
         <command comment="primcount should be renamed to instanceCount for OpenGL ES">
             <proto>void <name>glDrawElementsInstancedEXT</name></proto>
@@ -12129,6 +12209,17 @@ typedef unsigned int GLhandleARB;
             <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
             <param len="COMPSIZE(count,type)">const void *<name>indices</name></param>
             <param><ptype>GLint</ptype> <name>basevertex</name></param>
+        </command>
+        <command>
+            <proto>void <name>glDrawRangeElementsBaseVertexEXT</name></proto>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLuint</ptype> <name>start</name></param>
+            <param><ptype>GLuint</ptype> <name>end</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
+            <param len="COMPSIZE(count,type)">const void *<name>indices</name></param>
+            <param><ptype>GLint</ptype> <name>basevertex</name></param>
+            <alias name="glDrawRangeElementsBaseVertex"/>
         </command>
         <command>
             <proto>void <name>glDrawRangeElementsEXT</name></proto>
@@ -12349,6 +12440,12 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glEnablei</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLuint</ptype> <name>index</name></param>
+        </command>
+        <command>
+            <proto>void <name>glEnableiNV</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <alias name="glEnablei"/>
         </command>
         <command>
             <proto>void <name>glEnableiEXT</name></proto>
@@ -14027,6 +14124,13 @@ typedef unsigned int GLhandleARB;
             <param group="TypeEnum"><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param len="COMPSIZE(target)"><ptype>GLfloat</ptype> *<name>data</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetFloati_vNV</name></proto>
+            <param group="TypeEnum"><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param len="COMPSIZE(target)"><ptype>GLfloat</ptype> *<name>data</name></param>
+            <alias name="glGetFloati_v"/>
         </command>
         <command>
             <proto>void <name>glGetFloati_vEXT</name></proto>
@@ -17031,6 +17135,12 @@ typedef unsigned int GLhandleARB;
             <alias name="glIsEnabledi"/>
         </command>
         <command>
+            <proto group="Boolean"><ptype>GLboolean</ptype> <name>glIsEnablediNV</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <alias name="glIsEnabledi"/>
+        </command>
+        <command>
             <proto group="Boolean"><ptype>GLboolean</ptype> <name>glIsFenceAPPLE</name></proto>
             <param group="FenceNV"><ptype>GLuint</ptype> <name>fence</name></param>
         </command>
@@ -18132,6 +18242,14 @@ typedef unsigned int GLhandleARB;
             <alias name="glMultiDrawArraysIndirect"/>
         </command>
         <command>
+            <proto>void <name>glMultiDrawArraysIndirectEXT</name></proto>
+            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param len="COMPSIZE(drawcount,stride)">const void *<name>indirect</name></param>
+            <param><ptype>GLsizei</ptype> <name>drawcount</name></param>
+            <param><ptype>GLsizei</ptype> <name>stride</name></param>
+            <alias name="glMultiDrawArraysIndirect"/>
+        </command>
+        <command>
             <proto>void <name>glMultiDrawArraysIndirectBindlessCountNV</name></proto>
             <param><ptype>GLenum</ptype> <name>mode</name></param>
             <param>const void *<name>indirect</name></param>
@@ -18181,6 +18299,16 @@ typedef unsigned int GLhandleARB;
             <param len="COMPSIZE(drawcount)">const <ptype>GLint</ptype> *<name>basevertex</name></param>
         </command>
         <command>
+            <proto>void <name>glMultiDrawElementsBaseVertexEXT</name></proto>
+            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param len="COMPSIZE(drawcount)">const <ptype>GLsizei</ptype> *<name>count</name></param>
+            <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
+            <param len="COMPSIZE(drawcount)">const void *const*<name>indices</name></param>
+            <param><ptype>GLsizei</ptype> <name>primcount</name></param>
+            <param len="COMPSIZE(drawcount)">const <ptype>GLint</ptype> *<name>basevertex</name></param>
+            <alias name="glMultiDrawElementsBaseVertex"/>
+        </command>
+        <command>
             <proto>void <name>glMultiDrawElementsEXT</name></proto>
             <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param len="COMPSIZE(primcount)">const <ptype>GLsizei</ptype> *<name>count</name></param>
@@ -18196,6 +18324,15 @@ typedef unsigned int GLhandleARB;
             <param len="COMPSIZE(drawcount,stride)">const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawcount</name></param>
             <param><ptype>GLsizei</ptype> <name>stride</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMultiDrawElementsIndirectEXT</name></proto>
+            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLenum</ptype> <name>type</name></param>
+            <param len="COMPSIZE(drawcount,stride)">const void *<name>indirect</name></param>
+            <param><ptype>GLsizei</ptype> <name>drawcount</name></param>
+            <param><ptype>GLsizei</ptype> <name>stride</name></param>
+            <alias name="glMultiDrawElementsIndirect"/>
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsIndirectAMD</name></proto>
@@ -22555,6 +22692,13 @@ typedef unsigned int GLhandleARB;
             <param len="COMPSIZE(count)">const <ptype>GLint</ptype> *<name>v</name></param>
         </command>
         <command>
+            <proto>void <name>glScissorArrayvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>first</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param len="COMPSIZE(count)">const <ptype>GLint</ptype> *<name>v</name></param>
+            <alias name="glScissorArrayv"/>
+        </command>
+        <command>
             <proto>void <name>glScissorIndexed</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param><ptype>GLint</ptype> <name>left</name></param>
@@ -22563,9 +22707,24 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>height</name></param>
         </command>
         <command>
+            <proto>void <name>glScissorIndexedNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param><ptype>GLint</ptype> <name>left</name></param>
+            <param><ptype>GLint</ptype> <name>bottom</name></param>
+            <param><ptype>GLsizei</ptype> <name>width</name></param>
+            <param><ptype>GLsizei</ptype> <name>height</name></param>
+            <alias name="glScissorIndexed"/>
+        </command>
+        <command>
             <proto>void <name>glScissorIndexedv</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param len="4">const <ptype>GLint</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glScissorIndexedvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param len="4">const <ptype>GLint</ptype> *<name>v</name></param>
+            <alias name="glScissorIndexedv"/>
         </command>
         <command>
             <proto>void <name>glSecondaryColor3b</name></proto>
@@ -28173,6 +28332,13 @@ typedef unsigned int GLhandleARB;
             <param len="COMPSIZE(count)">const <ptype>GLfloat</ptype> *<name>v</name></param>
         </command>
         <command>
+            <proto>void <name>glViewportArrayvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>first</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param len="COMPSIZE(count)">const <ptype>GLfloat</ptype> *<name>v</name></param>
+            <alias name="glViewportArrayv"/>
+        </command>
+        <command>
             <proto>void <name>glViewportIndexedf</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param><ptype>GLfloat</ptype> <name>x</name></param>
@@ -28181,9 +28347,24 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLfloat</ptype> <name>h</name></param>
         </command>
         <command>
+            <proto>void <name>glViewportIndexedfNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param><ptype>GLfloat</ptype> <name>x</name></param>
+            <param><ptype>GLfloat</ptype> <name>y</name></param>
+            <param><ptype>GLfloat</ptype> <name>w</name></param>
+            <param><ptype>GLfloat</ptype> <name>h</name></param>
+            <alias name="glViewportIndexedf"/>
+        </command>
+        <command>
             <proto>void <name>glViewportIndexedfv</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param len="4">const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glViewportIndexedfvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param len="4">const <ptype>GLfloat</ptype> *<name>v</name></param>
+            <alias name="glViewportIndexedfv"/>
         </command>
         <command>
             <proto>void <name>glWaitSync</name></proto>
@@ -38077,6 +38258,13 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_ABGR_EXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_base_instance" supported="gles2">
+            <require>
+                <command name="glDrawArraysInstancedBaseInstanceEXT"/>
+                <command name="glDrawElementsInstancedBaseInstanceEXT"/>
+                <command name="glDrawElementsInstancedBaseVertexBaseInstanceEXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_bgra" supported="gl">
             <require>
                 <enum name="GL_BGR_EXT"/>
@@ -38780,6 +38968,14 @@ typedef unsigned int GLhandleARB;
                 <command name="glIsEnablediEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_draw_elements_base_vertex" supported="gles2">
+            <require>
+                <command name="glDrawElementsBaseVertexEXT"/>
+                <command name="glDrawRangeElementsBaseVertexEXT" comment="Supported only if OpenGL ES 3.0 is supported"/>
+                <command name="glDrawElementsInstancedBaseVertexEXT" comment="Supported only if OpenGL ES 3.0 is supported"/>
+                <command name="glMultiDrawElementsBaseVertexEXT" comment="Supported only if GL_EXT_multi_draw_arrays is supported"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_draw_instanced" supported="gl|gles2">
             <require>
                 <command name="glDrawArraysInstancedEXT"/>
@@ -39128,6 +39324,12 @@ typedef unsigned int GLhandleARB;
                 <command name="glMultiDrawElementsEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_multi_draw_indirect" supported="gles2">
+            <require>
+                <command name="glMultiDrawArraysIndirectEXT"/>
+                <command name="glMultiDrawElementsIndirectEXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_multisample" supported="gl">
             <require>
                 <enum name="GL_MULTISAMPLE_EXT"/>
@@ -39322,6 +39524,18 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_BGRA_EXT"/>
                 <enum name="GL_UNSIGNED_SHORT_4_4_4_4_REV_EXT"/>
                 <enum name="GL_UNSIGNED_SHORT_1_5_5_5_REV_EXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_render_snorm" supported="gles2">
+            <require>
+                <enum name="GL_BYTE"/>
+                <enum name="GL_SHORT"/>
+                <enum name="GL_R8_SNORM"/>
+                <enum name="GL_RG8_SNORM"/>
+                <enum name="GL_RGBA8_SNORM"/>
+                <enum name="GL_R16_SNORM_EXT"/>
+                <enum name="GL_RG16_SNORM_EXT"/>
+                <enum name="GL_RGBA16_SNORM_EXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_rescale_normal" supported="gl">
@@ -39930,6 +40144,18 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_MIRROR_CLAMP_EXT"/>
                 <enum name="GL_MIRROR_CLAMP_TO_EDGE_EXT"/>
                 <enum name="GL_MIRROR_CLAMP_TO_BORDER_EXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_texture_norm16" supported="gles2">
+            <require>
+                <enum name="GL_R16_EXT"/>
+                <enum name="GL_RG16_EXT"/>
+                <enum name="GL_RGBA16_EXT"/>
+                <enum name="GL_RGB16_EXT"/>
+                <enum name="GL_R16_SNORM_EXT"/>
+                <enum name="GL_RG16_SNORM_EXT"/>
+                <enum name="GL_RGB16_SNORM_EXT"/>
+                <enum name="GL_RGBA16_SNORM_EXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_texture_object" supported="gl">
@@ -40975,7 +41201,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glMultiDrawElementsIndirectBindlessCountNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_bindless_texture" supported="gl">
+        <extension name="GL_NV_bindless_texture" supported="gl|gles2">
             <require>
                 <command name="glGetTextureHandleNV"/>
                 <command name="glGetTextureSamplerHandleNV"/>
@@ -41061,7 +41287,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_conditional_render" supported="gl">
+        <extension name="GL_NV_conditional_render" supported="gl|gles2">
             <require>
                 <enum name="GL_QUERY_WAIT_NV"/>
                 <enum name="GL_QUERY_NO_WAIT_NV"/>
@@ -41585,6 +41811,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glVertexAttribs4hvNV"/>
             </require>
         </extension>
+        <extension name="GL_NV_image_formats" supported="gles2"/>
         <extension name="GL_NV_instanced_arrays" supported="gles2">
             <require>
                 <enum name="GL_VERTEX_ATTRIB_ARRAY_DIVISOR_NV"/>
@@ -41670,7 +41897,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_NV_parameter_buffer_object2" supported="gl"/>
-        <extension name="GL_NV_path_rendering" supported="gl">
+        <extension name="GL_NV_path_rendering" supported="gl|gles2">
             <require>
                 <enum name="GL_PATH_FORMAT_SVG_NV"/>
                 <enum name="GL_PATH_FORMAT_PS_NV"/>
@@ -41724,13 +41951,11 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SKIP_MISSING_GLYPH_NV"/>
                 <enum name="GL_USE_MISSING_GLYPH_NV"/>
                 <enum name="GL_PATH_ERROR_POSITION_NV"/>
-                <enum name="GL_PATH_FOG_GEN_MODE_NV"/>
                 <enum name="GL_ACCUM_ADJACENT_PAIRS_NV"/>
                 <enum name="GL_ADJACENT_PAIRS_NV"/>
                 <enum name="GL_FIRST_TO_REST_NV"/>
                 <enum name="GL_PATH_GEN_MODE_NV"/>
                 <enum name="GL_PATH_GEN_COEFF_NV"/>
-                <enum name="GL_PATH_GEN_COLOR_FORMAT_NV"/>
                 <enum name="GL_PATH_GEN_COMPONENTS_NV"/>
                 <enum name="GL_PATH_STENCIL_FUNC_NV"/>
                 <enum name="GL_PATH_STENCIL_REF_NV"/>
@@ -41799,9 +42024,6 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FONT_UNDERLINE_POSITION_BIT_NV"/>
                 <enum name="GL_FONT_UNDERLINE_THICKNESS_BIT_NV"/>
                 <enum name="GL_FONT_HAS_KERNING_BIT_NV"/>
-                <enum name="GL_PRIMARY_COLOR"/>
-                <enum name="GL_PRIMARY_COLOR_NV"/>
-                <enum name="GL_SECONDARY_COLOR_NV"/>
                 <command name="glGenPathsNV"/>
                 <command name="glDeletePathsNV"/>
                 <command name="glIsPathNV"/>
@@ -41828,9 +42050,6 @@ typedef unsigned int GLhandleARB;
                 <command name="glStencilFillPathInstancedNV"/>
                 <command name="glStencilStrokePathInstancedNV"/>
                 <command name="glPathCoverDepthFuncNV"/>
-                <command name="glPathColorGenNV"/>
-                <command name="glPathTexGenNV"/>
-                <command name="glPathFogGenNV"/>
                 <command name="glCoverFillPathNV"/>
                 <command name="glCoverStrokePathNV"/>
                 <command name="glCoverFillPathInstancedNV"/>
@@ -41843,10 +42062,6 @@ typedef unsigned int GLhandleARB;
                 <command name="glGetPathMetricsNV"/>
                 <command name="glGetPathMetricRangeNV"/>
                 <command name="glGetPathSpacingNV"/>
-                <command name="glGetPathColorGenivNV"/>
-                <command name="glGetPathColorGenfvNV"/>
-                <command name="glGetPathTexGenivNV"/>
-                <command name="glGetPathTexGenfvNV"/>
                 <command name="glIsPointInFillPathNV"/>
                 <command name="glIsPointInStrokePathNV"/>
                 <command name="glGetPathLengthNV"/>
@@ -41895,6 +42110,18 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_EYE_LINEAR_NV"/>
                 <enum name="GL_OBJECT_LINEAR_NV"/>
                 <enum name="GL_CONSTANT_NV"/>
+                <enum name="GL_PATH_FOG_GEN_MODE_NV"/>
+                <enum name="GL_PRIMARY_COLOR"/>
+                <enum name="GL_PRIMARY_COLOR_NV"/>
+                <enum name="GL_SECONDARY_COLOR_NV"/>
+                <enum name="GL_PATH_GEN_COLOR_FORMAT_NV"/>
+                <command name="glPathColorGenNV"/>
+                <command name="glPathTexGenNV"/>
+                <command name="glPathFogGenNV"/>
+                <command name="glGetPathColorGenivNV"/>
+                <command name="glGetPathColorGenfvNV"/>
+                <command name="glGetPathTexGenivNV"/>
+                <command name="glGetPathTexGenfvNV"/>
             </require>
             <require comment="Other API additions of unknown history">
                 <enum name="GL_PATH_PROJECTION_NV"/>
@@ -42112,6 +42339,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_WRITE_ONLY"/>
             </require>
         </extension>
+        <extension name="GL_NV_shader_noperspective_interpolation" supported="gles2"/>
         <extension name="GL_NV_shader_storage_buffer_object" supported="gl"/>
         <extension name="GL_NV_shader_thread_group" supported="gl">
             <require>
@@ -42712,6 +42940,30 @@ typedef unsigned int GLhandleARB;
                 <command name="glVideoCaptureStreamParameterivNV"/>
                 <command name="glVideoCaptureStreamParameterfvNV"/>
                 <command name="glVideoCaptureStreamParameterdvNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_viewport_array" supported="gles2">
+            <require>
+                <enum name="GL_MAX_VIEWPORTS_NV"/>
+                <enum name="GL_VIEWPORT_SUBPIXEL_BITS_NV"/>
+                <enum name="GL_VIEWPORT_BOUNDS_RANGE_NV"/>
+                <enum name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_NV"/>
+                <enum name="GL_SCISSOR_BOX"/>
+                <enum name="GL_VIEWPORT"/>
+                <enum name="GL_DEPTH_RANGE"/>
+                <enum name="GL_SCISSOR_TEST"/>
+                <command name="glViewportArrayvNV"/>
+                <command name="glViewportIndexedfNV"/>
+                <command name="glViewportIndexedfvNV"/>
+                <command name="glScissorArrayvNV"/>
+                <command name="glScissorIndexedNV"/>
+                <command name="glScissorIndexedvNV"/>
+                <command name="glDepthRangeArrayfvNV"/>
+                <command name="glDepthRangeIndexedfNV"/>
+                <command name="glGetFloati_vNV"/>
+                <command name="glEnableiNV"/>
+                <command name="glDisableiNV"/>
+                <command name="glIsEnablediNV"/>
             </require>
         </extension>
         <extension name="GL_OES_EGL_image" supported="gles1|gles2">
