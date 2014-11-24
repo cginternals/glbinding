@@ -11,3 +11,4 @@ codegeneration/*.cpp
 
 # config
 .localconfig
+*.bat
