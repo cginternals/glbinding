@@ -9,8 +9,9 @@
 # GLBINDING_LIBRARY_DEBUG
 # GLBINDING_INCLUDE_DIR
 
-# GLBINDING_BINARY (win32 only)
-
+# GLBINDING_BINARIES (win32 only)
+# GLBINDING_BINARY_RELEASE (win32 only)
+# GLBINDING_BINARY_DEBUG (win32 only)
 
 include(FindPackageHandleStandardArgs)
 
@@ -97,16 +98,34 @@ endmacro()
 
 find(glbinding glbinding/glbinding_api.h ${LIB_PATHS})
 if (GLBINDING_LIBRARY AND WIN32)
+    set(GLBINDING_BINARIES "")
 
-    find_file(GLBINDING_BINARY
+    find_file(GLBINDING_BINARY_RELEASE
         NAMES glbinding.dll
         PATHS
         ${GLBINDING_DIR}/bin
         ${GLBINDING_DIR}/build/Release
-        ${GLBINDING_DIR}/build/Debug
         ${GLBINDING_DIR}/build-release
-        ${GLBINDING_DIR}/build-debug
         DOC "The glbinding binary")
+
+    find_file(GLBINDING_BINARY_DEBUG
+        NAMES glbindingd.dll
+        PATHS
+        ${GLBINDING_DIR}/bin
+        ${GLBINDING_DIR}/build/Debug
+        ${GLBINDING_DIR}/build-debug
+        DOC "The glbinding debug binary")
+
+    if(NOT GLBINDING_BINARY_RELEASE STREQUAL "GLBINDING_BINARY_RELEASE-NOTFOUND")
+        list(APPEND GLBINDING_BINARIES ${GLBINDING_BINARY_RELEASE})
+    endif()
+
+    if(NOT GLBINDING_BINARY_DEBUG STREQUAL "GLBINDING_BINARY_DEBUG-NOTFOUND")
+        list(APPEND GLBINDING_BINARIES ${GLBINDING_BINARY_DEBUG})
+    endif()
+
+    # DEBUG
+    # message("${LIB_NAME_UPPER}_BINARIES         = ${${LIB_NAME_UPPER}_BINARIES}")
 
 endif()
 
