@@ -9,40 +9,9 @@
 # GLBINDING_LIBRARY_DEBUG
 # GLBINDING_INCLUDE_DIR
 
-# GLBINDING_BINARIES (win32 only)
-# GLBINDING_BINARY_RELEASE (win32 only)
-# GLBINDING_BINARY_DEBUG (win32 only)
-
-include(FindPackageHandleStandardArgs)
-
-if(CMAKE_CURRENT_LIST_FILE)
-    get_filename_component(GLBINDING_DIR ${CMAKE_CURRENT_LIST_FILE} PATH)
-endif()
-
-file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" ENVPROGRAMFILES)
-file(TO_CMAKE_PATH "$ENV{GLBINDING_DIR}" ENVGLBINDING_DIR)
-
-set(GLBINDING_INCLUDES "")
-set(GLBINDING_LIBRARIES "")
-
-set(LIB_PATHS   
-    ${GLBINDING_DIR}/build
-    ${GLBINDING_DIR}/build/Release
-    ${GLBINDING_DIR}/build/Debug
-    ${GLBINDING_DIR}/build-release
-    ${GLBINDING_DIR}/build-debug
-    ${ENVGLBINDING_DIR}/lib
-    ${GLBINDING_DIR}/lib
-    ${ENVPROGRAMFILES}/glbinding/lib
-    /usr/lib
-    /usr/local/lib
-    /sw/lib
-    /opt/local/lib
-    /usr/lib64
-    /usr/local/lib64
-    /sw/lib64
-    /opt/local/lib64
-)
+# GLBINDING_BINARIES        (win32 only)
+# GLBINDING_BINARY_RELEASE  (win32 only)
+# GLBINDING_BINARY_DEBUG    (win32 only)
 
 macro (find LIB_NAME HEADER)
 
@@ -96,7 +65,39 @@ macro (find LIB_NAME HEADER)
 
 endmacro()
 
+
+if(CMAKE_CURRENT_LIST_FILE)
+    get_filename_component(GLBINDING_DIR ${CMAKE_CURRENT_LIST_FILE} PATH)
+endif()
+
+file(TO_CMAKE_PATH "$ENV{PROGRAMFILES}" ENVPROGRAMFILES)
+file(TO_CMAKE_PATH "$ENV{GLBINDING_DIR}" ENVGLBINDING_DIR)
+
+set(GLBINDING_INCLUDES "")
+set(GLBINDING_LIBRARIES "")
+
+set(LIB_PATHS   
+    ${GLBINDING_DIR}/build
+    ${GLBINDING_DIR}/build/Release
+    ${GLBINDING_DIR}/build/Debug
+    ${GLBINDING_DIR}/build-release
+    ${GLBINDING_DIR}/build-debug
+    ${ENVGLBINDING_DIR}/lib
+    ${GLBINDING_DIR}/lib
+    ${ENVPROGRAMFILES}/glbinding/lib
+    /usr/lib
+    /usr/local/lib
+    /sw/lib
+    /opt/local/lib
+    /usr/lib64
+    /usr/local/lib64
+    /sw/lib64
+    /opt/local/lib64
+)
+
+
 find(glbinding glbinding/glbinding_api.h ${LIB_PATHS})
+
 if (GLBINDING_LIBRARY AND WIN32)
     set(GLBINDING_BINARIES "")
 
@@ -133,5 +134,6 @@ endif()
 # message("GLBINDING_INCLUDES  = ${GLBINDING_INCLUDES}")
 # message("GLBINDING_LIBRARIES = ${GLBINDING_LIBRARIES}")
 
+include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(GLBINDING DEFAULT_MSG GLBINDING_LIBRARIES GLBINDING_INCLUDES)
 mark_as_advanced(GLBINDING_FOUND)

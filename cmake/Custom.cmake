@@ -3,61 +3,42 @@
 # Example: source_group_by_path("${CMAKE_CURRENT_SOURCE_DIR}/src" 
 #   "\\\\.h$|\\\\.hpp$|\\\\.cpp$|\\\\.c$|\\\\.ui$|\\\\.qrc$" "Source Files" ${sources})
 
-macro(source_group_by_path PARENT_PATH REGEX GROUP)
+function(source_group_by_path PARENT_PATH REGEX GROUP)
 
-    set(args ${ARGV})
-
-    list(REMOVE_AT args 0)
-    list(REMOVE_AT args 0)
-    list(REMOVE_AT args 0)
-
-    foreach(FILENAME ${args})
-
+    foreach (FILENAME ${ARGN})
+        
         get_filename_component(FILEPATH "${FILENAME}" REALPATH)
         file(RELATIVE_PATH FILEPATH ${PARENT_PATH} ${FILEPATH})
-        get_filename_component(FILEPATH "${FILEPATH}" PATH)
+        get_filename_component(FILEPATH "${FILEPATH}" DIRECTORY)
 
         string(REPLACE "/" "\\" FILEPATH "${FILEPATH}")
 
-        if(${FILENAME} MATCHES "${REGEX}")
-            source_group("${GROUP}\\${FILEPATH}" FILES ${FILENAME})  
-        endif()
+    source_group("${GROUP}\\${FILEPATH}" REGULAR_EXPRESSION "${REGEX}" FILES ${FILENAME})
 
     endforeach()
 
-endmacro()
+endfunction()
 
 
 # Extract entries matching a given regex from a list
 
-macro(list_extract OUTPUT REGEX)
+function(list_extract OUTPUT REGEX)
 
-    set(args ${ARGV})
-
-    list(REMOVE_AT args 0)
-    list(REMOVE_AT args 0)
-
-    foreach(FILENAME ${args})
-
+    foreach(FILENAME ${ARGN})
         if(${FILENAME} MATCHES "${REGEX}")
             list(APPEND ${OUTPUT} ${FILENAME})
         endif()
-
     endforeach()
 
-endmacro()
+endfunction()
 
 
 
-macro(install_qt COMP DEST)
+function(install_qt COMP DEST)
 
     if(WIN32)
 
-    set(args ${ARGV})
-    list(REMOVE_AT args 0)
-    list(REMOVE_AT args 0)
-
-    foreach(target ${args})
+    foreach(target ${ARGN})
         get_target_property(qtrelease Qt5::${target} LOCATION_RELEASE)
         install(FILES ${qtrelease} DESTINATION ${DEST} CONFIGURATIONS Release COMPONENT ${COMP})
         get_target_property(qtdebug Qt5::${target} LOCATION_DEBUG)
@@ -76,17 +57,13 @@ macro(install_qt COMP DEST)
 
     endif()
 
-endmacro()
+endfunction()
 
 
 
-macro(install_qt_platforms COMP DEST)
+function(install_qt_platforms COMP DEST)
 
     if(WIN32)
-
-    set(args ${ARGV})
-    list(REMOVE_AT args 0)
-    list(REMOVE_AT args 0)
 
     get_target_property(qtrelease Qt5::Core LOCATION_RELEASE)
     get_filename_component(qtrelease_dir ${qtrelease} DIRECTORY)
@@ -95,7 +72,7 @@ macro(install_qt_platforms COMP DEST)
     get_target_property(qtdebug Qt5::Core LOCATION_DEBUG)
     get_filename_component(qtdebug_dir ${qtdebug} DIRECTORY)
 
-    foreach(target ${args})
+    foreach(target ${ARGN})
         install(FILES "${qtrelease_dir}/../plugins/platforms/${target}.dll" DESTINATION ${DEST}/plugins/platforms 
             CONFIGURATIONS Release COMPONENT ${COMP})
         install(FILES "${qtdebug_dir}/../plugins/platforms/${target}d.dll" DESTINATION ${DEST}/plugins/platforms 
@@ -106,4 +83,4 @@ macro(install_qt_platforms COMP DEST)
 
     endif()
 
-endmacro()
+endfunction()
