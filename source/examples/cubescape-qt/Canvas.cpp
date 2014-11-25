@@ -3,6 +3,10 @@
 
 #include <cassert>
 
+#ifdef __APPLE__
+#include <OpenGL/OpenGL.h>
+#endif
+
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 
@@ -173,7 +177,13 @@ void Canvas::setSwapInterval(SwapInterval swapInterval)
 
 #elif __APPLE__
 
-    qWarning("ToDo: Setting swap interval is currently not implemented for __APPLE__");
+    CGLContextObj contextObj;
+    GLint swapIntervalParam = swapInterval;
+    
+    contextObj = CGLGetCurrentContext();
+
+    CGLError error = CGLSetParameter(contextObj, kCGLCPSwapInterval, &swapIntervalParam);
+    result = (error == kCGLNoError);
 
 #else
     // ToDo: C++11 - type aliases
