@@ -1,6 +1,9 @@
 
 #include <glbinding/ContextInfo.h>
 
+#include <sstream>
+#include <iostream>
+
 #include <glbinding/Meta.h>
 #include <glbinding/Version.h>
 
@@ -8,33 +11,65 @@
 
 using namespace gl;
 
+namespace
+{
+
+void insertExtension(const std::string extensionName, std::set<GLextension> * extensions, std::set<std::string> * unknownExtensionNames)
+{
+    GLextension extension = glbinding::Meta::getExtension(extensionName);
+    if (GLextension::UNKNOWN != extension)
+    {
+        extensions->insert(extension);
+    }
+    else if (unknownExtensionNames)
+    {
+        unknownExtensionNames->insert(extensionName);
+    }
+}
+
+}
+
 namespace glbinding
 {
 
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 {
-    if (version() < Version(3, 0))
+    const auto v = version();
+
+    if (v <= Version(1, 0)) // OpenGL 1.0 doesn't support extensions
     {
-        return std::set<GLextension>();
+        return {};
     }
 
     std::set<GLextension> extensions;
 
-    int numExtensions = 0;
-    glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
-
-    for (GLuint i = 0; i < static_cast<GLuint>(numExtensions); ++i)
+    if (v < Version(3, 0))
     {
-        const GLubyte * name = glGetStringi(GL_EXTENSIONS, i);
+        const GLubyte * extensionString = glGetString(GL_EXTENSIONS);
 
-        GLextension extension = Meta::getExtension(reinterpret_cast<const char *>(name));
-        if (GLextension::UNKNOWN != extension)
+        if (extensionString)
         {
-            extensions.insert(extension);
+            std::istringstream stream(reinterpret_cast<const char *>(extensionString));
+            std::string extensionName;
+            while (std::getline(stream, extensionName, ' '))
+            {
+                insertExtension(extensionName, &extensions, unknown);
+            }
         }
-        else if (unknown)
+    }
+    else
+    {
+        int numExtensions = 0;
+        glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
+
+        for (GLuint i = 0; i < static_cast<GLuint>(numExtensions); ++i)
         {
-            unknown->insert(reinterpret_cast<const char *>(name));
+            const GLubyte * name = glGetStringi(GL_EXTENSIONS, i);
+
+            if (name)
+            {
+                insertExtension(reinterpret_cast<const char*>(name), &extensions, unknown);
+            }
         }
     }
 
