@@ -33,7 +33,7 @@ FunctionCall::~FunctionCall()
 
 CallbackMask operator|(const CallbackMask a, const CallbackMask b)
 {
-    return static_cast<CallbackMask>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
+    return static_cast<CallbackMask>(static_cast<callback_mask_t>(a) | static_cast<callback_mask_t>(b));
 }
 
 void setCallbackMask(const CallbackMask mask)

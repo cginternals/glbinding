@@ -140,14 +140,14 @@ ProcAddress AbstractFunction::address() const
 
 bool AbstractFunction::isEnabled(const CallbackMask mask) const
 {
-    return (static_cast<unsigned int>(state().callbackMask) 
-        & static_cast<unsigned int>(mask)) == static_cast<unsigned int>(mask);
+    return (static_cast<callback_mask_t>(state().callbackMask) 
+        & static_cast<callback_mask_t>(mask)) == static_cast<callback_mask_t>(mask);
 }
 
 bool AbstractFunction::isAnyEnabled(const CallbackMask mask) const
 {
-    return (static_cast<unsigned int>(state().callbackMask) 
-        ^ static_cast<unsigned int>(mask)) != 0;
+    return (static_cast<callback_mask_t>(state().callbackMask) 
+        ^ static_cast<callback_mask_t>(mask)) != 0;
 }
 
 void AbstractFunction::setCallbackMask(const CallbackMask mask)

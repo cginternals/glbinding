@@ -5,6 +5,7 @@
 #include <set>
 #include <vector>
 #include <functional>
+#include <type_traits>
 
 namespace glbinding 
 {
@@ -25,7 +26,7 @@ struct GLBINDING_API FunctionCall
     AbstractValue * returnValue;
 };
 
-enum class CallbackMask
+enum class CallbackMask : unsigned char
 {
     None        = 0x00,
     Unresolved  = 0x01,
@@ -36,6 +37,8 @@ enum class CallbackMask
     ParametersAndReturnValue = Parameters | ReturnValue,
     BeforeAndAfter = Before | After
 };
+
+using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
 GLBINDING_API CallbackMask operator|(CallbackMask a, CallbackMask b);
 
