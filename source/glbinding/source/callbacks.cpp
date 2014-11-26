@@ -1,6 +1,8 @@
 
 #include <glbinding/callbacks.h>
 
+#include <type_traits>
+
 #include <glbinding/AbstractValue.h>
 #include <glbinding/Binding.h>
 
@@ -33,7 +35,8 @@ FunctionCall::~FunctionCall()
 
 CallbackMask operator|(const CallbackMask a, const CallbackMask b)
 {
-    return static_cast<CallbackMask>(static_cast<unsigned>(a) | static_cast<unsigned>(b));
+    using callback_mask_t = std::underlying_type<CallbackMask>::type;
+    return static_cast<CallbackMask>(static_cast<callback_mask_t>(a) | static_cast<callback_mask_t>(b));
 }
 
 void setCallbackMask(const CallbackMask mask)
@@ -50,17 +53,17 @@ void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> 
 }
 
 
-void setUnresolvedCallback(const SimpleFunctionCallback callback)
+void setUnresolvedCallback(const SimpleFunctionCallback & callback)
 {
     g_unresolvedCallback = callback;
 }
 
-void setBeforeCallback(const FunctionCallback callback)
+void setBeforeCallback(const FunctionCallback & callback)
 {
     g_beforeCallback = callback;
 }
 
-void setAfterCallback(const FunctionCallback callback)
+void setAfterCallback(const FunctionCallback & callback)
 {
     g_afterCallback = callback;
 }

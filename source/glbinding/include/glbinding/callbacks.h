@@ -25,7 +25,7 @@ struct GLBINDING_API FunctionCall
     AbstractValue * returnValue;
 };
 
-enum class CallbackMask
+enum class CallbackMask : unsigned char
 {
     None        = 0x00,
     Unresolved  = 0x01,
@@ -46,9 +46,9 @@ GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::
 using SimpleFunctionCallback = std::function<void(const AbstractFunction &)>;
 using FunctionCallback = std::function<void(const FunctionCall &)>;
 
-GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
+GLBINDING_API void setUnresolvedCallback(const SimpleFunctionCallback & callback);
 
-GLBINDING_API void setBeforeCallback(FunctionCallback callback);
-GLBINDING_API void setAfterCallback(FunctionCallback callback);
+GLBINDING_API void setBeforeCallback(const FunctionCallback & callback);
+GLBINDING_API void setAfterCallback(const FunctionCallback & callback);
 
 } // namespace glbinding
