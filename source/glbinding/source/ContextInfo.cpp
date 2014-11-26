@@ -38,7 +38,7 @@ std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 
     if (v <= Version(1, 0)) // OpenGL 1.0 doesn't support extensions
     {
-        return {};
+        return std::set<GLextension> {};
     }
 
     std::set<GLextension> extensions;
