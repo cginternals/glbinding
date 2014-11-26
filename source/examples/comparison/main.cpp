@@ -106,7 +106,7 @@ int main(int /*argc*/, char* /*argv*/[])
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
 
-#ifdef MAC_OS
+#ifdef __APPLE__
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);

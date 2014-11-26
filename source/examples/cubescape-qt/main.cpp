@@ -14,10 +14,10 @@ int main(int argc, char * argv[])
     QApplication app(argc, argv);
 
     QSurfaceFormat format;
+    format.setDepthBufferSize(16);
 
-#ifdef MAC_OS
+#ifdef __APPLE__
     format.setVersion(3, 2);
-    format.setDepthBufferSize(24);
     format.setProfile(QSurfaceFormat::CoreProfile);
 #endif
 
