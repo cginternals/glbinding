@@ -24,7 +24,7 @@ class GLBINDING_API AbstractFunction
 
 public:
     AbstractFunction(const char * name);
-    ~AbstractFunction();
+    virtual ~AbstractFunction();
 
     const char * name() const;
 
