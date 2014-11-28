@@ -89,13 +89,13 @@ std::string ContextInfo::vendor()
 Version ContextInfo::version()
 {
     Version version;
-    glGetIntegerv(GL_MAJOR_VERSION, &version.m_major);
-    glGetIntegerv(GL_MINOR_VERSION, &version.m_minor);
+    Binding::GetIntegerv.directCall(GL_MAJOR_VERSION, &version.m_major);
+    Binding::GetIntegerv.directCall(GL_MINOR_VERSION, &version.m_minor);
 
     // probably version below 3.0
-    if (GL_INVALID_ENUM == glGetError()) // TODO: what if error was already handled in a callback
+    if (GL_INVALID_ENUM == Binding::GetError.directCall())
     {
-        const GLubyte * versionString = glGetString(GL_VERSION);
+        const GLubyte * versionString = Binding::GetString.directCall(GL_VERSION);
         version.m_major = versionString[0] - '0';
         version.m_minor = versionString[2] - '0';
     }

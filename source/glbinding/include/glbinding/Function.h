@@ -48,13 +48,14 @@ public:
     Function(const char * name);
 
     ReturnType operator()(Arguments&... arguments) const;
+    ReturnType directCall(Arguments... arguments) const;
 
-    //void addBeforeCallback(BeforeCallback callback);
-    //void addAfterCallback(AfterCallback callback);
+    void addBeforeCallback(BeforeCallback callback);
+    void addAfterCallback(AfterCallback callback);
 
 protected:
-//    std::vector<BeforeCallback> m_beforeCallbacks;
-//    std::vector<AfterCallback> m_afterCallbacks;
+    std::vector<BeforeCallback> m_beforeCallbacks;
+    std::vector<AfterCallback> m_afterCallbacks;
 };
 
 } // namespace glbinding

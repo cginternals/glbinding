@@ -95,14 +95,22 @@ int main()
         std::cout << std::endl;
     });
 
+    Binding::CreateProgram.addAfterCallback([](GLuint id) {
+        std::cout << "Created Program: " << id << std::endl;
+    });
+    Binding::CreateShader.addAfterCallback([](GLenum /*type*/, GLuint id) {
+        std::cout << "Created Shader: " << id << std::endl;
+    });
+    Binding::DeleteProgram.addAfterCallback([](GLuint id) {
+        std::cout << "Deleted Program: " << id << std::endl;
+    });
+    Binding::DeleteShader.addAfterCallback([](GLuint id) {
+        std::cout << "Deleted Shader: " << id << std::endl;
+    });
+
     doGLStuff(window);
 
     std::cout << std::endl;
-
-    /*for (auto f : Binding::current())
-    {
-        std::cout << f->name() << std::endl;
-    }*/
 
     glfwTerminate();
     return 0;
