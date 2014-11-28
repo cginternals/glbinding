@@ -29,6 +29,8 @@ public:
 
     static void initialize(bool resolveFunctions = true);
     static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
+    
+    static void registerAdditionalFunction(AbstractFunction * function);
 
     static void resolveFunctions();
 
@@ -49,6 +51,7 @@ public:
     static size_t size();
 
     static const array_t & functions();
+    static const std::vector<AbstractFunction *> & additionalFunctions();
 
 public:
     static Function<void, gl::GLenum, gl::GLfloat> Accum;
@@ -2842,6 +2845,7 @@ public:
 
 protected:
 	static const array_t s_functions;
+	static std::vector<AbstractFunction *> s_additionalFunctions;
 	static std::vector<ContextSwitchCallback> s_callbacks;
 };
 

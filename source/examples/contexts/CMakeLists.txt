@@ -1,20 +1,14 @@
 
-set(target comparison)
+set(target contexts)
 
 
 # External libraries
 
 find_package(OpenGL REQUIRED)
 find_package(GLFW QUIET)
-find_package(GLEW QUIET)
 
 if (NOT GLFW_FOUND)
 	message("Example ${target} skipped: GLFW not found")
-	return()
-endif()
-
-if (NOT GLEW_FOUND)
-	message("Example ${target} skipped: GLEW not found")
 	return()
 endif()
 
@@ -25,7 +19,6 @@ message(STATUS "Example ${target}")
 
 include_directories(
     ${OPENGL_INCLUDE_DIR}
-    ${GLEW_INCLUDE_DIR}
     ${GLFW_INCLUDE_DIR}
 )
 
@@ -41,7 +34,6 @@ include_directories(
 set(libs
     ${OPENGL_LIBRARIES}
     ${GLFW_LIBRARY}
-    ${GLEW_LIBRARY}
     glbinding
 )
 
@@ -57,18 +49,6 @@ endif()
 
 set(sources
     main.cpp
-
-    gltest.inl
-    gltest_data.inl
-    gltest_error.inl
-
-    glbinding.cpp
-    glbinding.h
-    glew.cpp
-    glew.h
-
-    Timer.cpp
-    Timer.h
 )
 
 
@@ -98,5 +78,3 @@ install(TARGETS ${target} COMPONENT examples
 #   LIBRARY DESTINATION ${INSTALL_SHARED}
 #   ARCHIVE DESTINATION ${INSTALL_LIB}
 )
-
-install(FILES ${GLEW_BINARY} DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples)

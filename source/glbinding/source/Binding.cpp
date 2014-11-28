@@ -16,11 +16,22 @@ namespace
 namespace glbinding 
 {
 
+std::vector<AbstractFunction *> Binding::s_additionalFunctions;
 std::vector<Binding::ContextSwitchCallback> Binding::s_callbacks;
 
 const Binding::array_t & Binding::functions() 
 {
     return s_functions;
+}
+
+const std::vector<AbstractFunction *> & Binding::additionalFunctions()
+{
+    return s_additionalFunctions;
+}
+
+size_t Binding::size()
+{
+    return s_functions.size() + s_additionalFunctions.size();
 }
 
 void Binding::initialize(const bool resolveFunctions)
@@ -58,9 +69,17 @@ void Binding::initialize(
         resolveFunctions();
 }
 
+void Binding::registerAdditionalFunction(AbstractFunction * function)
+{
+    s_additionalFunctions.push_back(function);
+}
+
 void Binding::resolveFunctions()
 {
     for (AbstractFunction * function : Binding::functions())
+        function->resolveAddress();
+
+    for (AbstractFunction * function : Binding::additionalFunctions())
         function->resolveAddress();
 }
 

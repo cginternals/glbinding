@@ -134,7 +134,7 @@ def genFunctionObjects_cpp(commands, outputdir, outputfile):
     with open(outputdir + of, 'w') as file:
         file.write(t.replace("%b", functionBID(commands[0])[2:]).replace("%e", functionBID(commands[-1])[2:]) % (
             #"\n".join(sorted(extern_templates)), 
-            len(commands),
+            #len(commands),
             "\n".join([ functionMember(f) for f in commands ]),
             functionList(commands)
         ))
