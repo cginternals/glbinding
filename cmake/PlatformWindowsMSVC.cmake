@@ -82,9 +82,6 @@ set(DEFAULT_COMPILE_FLAGS
     >
 )
 
-set(DEFAULT_COMPILE_FLAGS ${WIN32_COMPILE_FLAGS})
-
-
 set(WIN32_LINKER_FLAGS
     "/NOLOGO /INCREMENTAL:NO /NXCOMPAT /DYNAMICBASE:NO"
     # NOLOGO                                            -> suppress logo
