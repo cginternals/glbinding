@@ -50,12 +50,16 @@ public:
     ReturnType operator()(Arguments&... arguments) const;
     ReturnType directCall(Arguments... arguments) const;
 
-    void addBeforeCallback(BeforeCallback callback);
-    void addAfterCallback(AfterCallback callback);
+    void setBeforeCallback(BeforeCallback callback);
+    void clearBeforeCallback();
+    void setAfterCallback(AfterCallback callback);
+    void clearAfterCallback();
 
 protected:
-    std::vector<BeforeCallback> m_beforeCallbacks;
-    std::vector<AfterCallback> m_afterCallbacks;
+    bool m_hasBeforeCallback;
+    BeforeCallback m_beforeCallback;
+    bool m_hasAfterCallback;
+    AfterCallback m_afterCallback;
 };
 
 } // namespace glbinding

@@ -95,16 +95,16 @@ int main()
         std::cout << std::endl;
     });
 
-    Binding::CreateProgram.addAfterCallback([](GLuint id) {
+    Binding::CreateProgram.setAfterCallback([](GLuint id) {
         std::cout << "Created Program: " << id << std::endl;
     });
-    Binding::CreateShader.addAfterCallback([](GLuint id, GLenum /*type*/) {
+    Binding::CreateShader.setAfterCallback([](GLuint id, GLenum /*type*/) {
         std::cout << "Created Shader: " << id << std::endl;
     });
-    Binding::DeleteProgram.addAfterCallback([](GLuint id) {
+    Binding::DeleteProgram.setAfterCallback([](GLuint id) {
         std::cout << "Deleted Program: " << id << std::endl;
     });
-    Binding::DeleteShader.addAfterCallback([](GLuint id) {
+    Binding::DeleteShader.setAfterCallback([](GLuint id) {
         std::cout << "Deleted Shader: " << id << std::endl;
     });
 
