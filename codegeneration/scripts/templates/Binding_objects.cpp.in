@@ -33,11 +33,6 @@ Binding::const_iterator Binding::end() const
 }
 */
 
-size_t Binding::size()
-{
-	return %s;
-}
-
 %s
 
 

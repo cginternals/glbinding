@@ -33,11 +33,6 @@ Binding::const_iterator Binding::end() const
 }
 */
 
-size_t Binding::size()
-{
-	return 2788;
-}
-
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
 Function<void, GLenum, GLfixed> Binding::AccumxOES("glAccumxOES");
 Function<void, GLuint> Binding::ActiveProgramEXT("glActiveProgramEXT");
