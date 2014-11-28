@@ -1,5 +1,9 @@
 #pragma once
 
+#include <array>
+#include <vector>
+#include <functional>
+
 #include <glbinding/glbinding_api.h>
 
 #include <glbinding/gl/types.h>
@@ -15,6 +19,9 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
+    using array_t = std::array<AbstractFunction *, 2788>;
+    using ContextSwitchCallback = std::function<void(ContextHandle)>;
+    
 //  using iterator = PointerIterator<AbstractFunction, sizeof(Function<void>)>;
 //  using const_iterator = PointerIterator<const AbstractFunction, sizeof(Function<void>)>;
 
@@ -30,6 +37,8 @@ public:
 
     static void releaseCurrentContext();
     static void releaseContext(ContextHandle context);
+    
+    static void addContextSwitchCallback(const ContextSwitchCallback &callback);
 
 //  iterator begin();
 //  iterator end();    
@@ -38,8 +47,6 @@ public:
 //  const_iterator end() const;
 
     static size_t size();
-
-	using array_t = std::array<AbstractFunction *, 2788>;
 
     static const array_t & functions();
 
@@ -2835,6 +2842,7 @@ public:
 
 protected:
 	static const array_t s_functions;
+	static std::vector<ContextSwitchCallback> s_callbacks;
 };
 
 } // namespace glbinding
