@@ -24,7 +24,21 @@ int main(int argc, const char * argv[])
 {
     if (argc == 1)
     {
-        std::cout << "Usage: query <GL constant>" << std::endl;
+        std::cout << "Usage: " << argv[0] << " <GL constant>" << std::endl;
+
+        std::cout << std::endl;
+        std::cout << "Example queries:" << std::endl;
+        std::cout << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MAX_VIEWPORT_DIMS" << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MAX_VIEWPORTS" << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MAX_DRAW_BUFFERS" << std::endl;
+        std::cout << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MAX_COMPUTE_WORK_GROUP_COUNT 0" << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MAX_COMPUTE_WORK_GROUP_COUNT 1" << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MAX_COMPUTE_WORK_GROUP_COUNT 2" << std::endl;
+        std::cout << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MAJOR_VERSION" << std::endl;
+        std::cout << "\t" << argv[0] << " GL_MINOR_VERSION" << std::endl;
 
         return 1;
     }
