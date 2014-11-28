@@ -1,5 +1,8 @@
 #pragma once
 
+#include <array>
+#include <vector>
+
 #include <glbinding/glbinding_api.h>
 
 #include <glbinding/gl/types.h>
@@ -22,6 +25,8 @@ public:
 
     static void initialize(bool resolveFunctions = true);
     static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
+    
+    static void registerAdditionalFunction(AbstractFunction * function);
 
     static void resolveFunctions();
 
@@ -42,6 +47,7 @@ public:
 	using array_t = std::array<AbstractFunction *, 2788>;
 
     static const array_t & functions();
+    static const std::vector<AbstractFunction *> & additionalFunctions();
 
 public:
     static Function<void, gl::GLenum, gl::GLfloat> Accum;
@@ -2835,6 +2841,7 @@ public:
 
 protected:
 	static const array_t s_functions;
+	static std::vector<AbstractFunction *> s_additionalFunctions;
 };
 
 } // namespace glbinding
