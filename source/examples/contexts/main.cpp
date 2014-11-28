@@ -34,7 +34,7 @@ void print(
 {
     std::cout << "  "
         << version.toString() << "  " << (forward ? "f" : "-") << " " << (core ? "c" : "-") << "  "
-        << result.toString()  << std::endl;
+        << result.toString()  << std::endl; 
 }
 
 void printVersionOfContextRequest(
