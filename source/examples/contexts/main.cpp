@@ -26,10 +26,21 @@ using namespace glbinding;
 //}
 //
 
+void print(
+  const Version & version
+, const bool forward
+, const bool core
+, const Version & result)
+{
+    std::cout << "  "
+        << version.toString() << "  " << (forward ? "f" : "-") << " " << (core ? "c" : "-") << "  "
+        << result.toString()  << std::endl;
+}
+
 void printVersionOfContextRequest(
-    const Version & version
-,   const bool forward
-,   const bool core)
+  const Version & version
+, const bool forward
+, const bool core)
 {
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
@@ -43,10 +54,7 @@ void printVersionOfContextRequest(
     GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     if (!window)
     {
-        std::cout << "  "
-            << "(" << version.m_major << "," << version.m_minor << "," << (forward ? 1 : 0) << "," << (core ? 1 : 0) << ") "
-            << "(-,-,-,-)" << std::endl;
-
+        print(version, forward, core, Version());
         return;
     }
     glfwMakeContextCurrent(window);
@@ -55,9 +63,7 @@ void printVersionOfContextRequest(
     auto result = ContextInfo::version();
     glfwMakeContextCurrent(window);
 
-    std::cout << "  "
-        << "(" << version.m_major << "," << version.m_minor << "," << (forward ? 1 : 0) << "," << (core ? 1 : 0) << ") "
-        << "(" << result.m_major << "," << result.m_minor << "," << (forward ? 1 : 0) << "," << (core ? 1 : 0) << ")" << std::endl;
+    print(version, forward, core, result);
 
     glfwMakeContextCurrent(nullptr);
     glfwDestroyWindow(window);
@@ -73,8 +79,7 @@ int main()
     //glfwSetErrorCallback(error);
 
     std::cout << std::endl << "test: requesting all context configurations ..." << std::endl
-        << std::endl << "  tuple scheme: (major, minor, forward { 0, 1}, core { 0, 1 })" << std::endl
-        << std::endl << "  versions: requested  created" << std::endl << std::endl;
+        << std::endl << "  scheme: <requested_version>  <forward> <core>  <created_version>" << std::endl << std::endl;
 
     for (const auto & version : Version::versions())
     {
@@ -109,7 +114,7 @@ int main()
 
     // print some gl infos (query)
 
-    std::cout << std::endl
+    std::cout
         << "OpenGL Version:  " << ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
         << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
