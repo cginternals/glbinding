@@ -41,7 +41,7 @@ class Function : public AbstractFunction
 
     using Signature = ReturnType(WINAPI *) (Arguments...);
 
-    using BeforeCallback = std::function<void(Arguments...)>;
+    using BeforeCallback = typename CallbackType<void, Arguments...>::type;
     using AfterCallback = typename CallbackType<ReturnType, Arguments...>::type;
 
 public:

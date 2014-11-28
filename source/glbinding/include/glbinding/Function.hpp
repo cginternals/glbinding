@@ -133,13 +133,13 @@ ReturnType Function<ReturnType, Arguments...>::directCall(Arguments... arguments
 template <typename ReturnType, typename... Arguments>
 void Function<ReturnType, Arguments...>::addBeforeCallback(BeforeCallback callback)
 {
-    m_beforeCallbacks.push_back(callback);
+    m_beforeCallbacks.push_back(std::move(callback));
 }
 
 template <typename ReturnType, typename... Arguments>
 void Function<ReturnType, Arguments...>::addAfterCallback(AfterCallback callback)
 {
-    m_afterCallbacks.push_back(callback);
+    m_afterCallbacks.push_back(std::move(callback));
 }
 
 } // namespace glbinding
