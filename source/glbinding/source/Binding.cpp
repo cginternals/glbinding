@@ -115,10 +115,10 @@ void Binding::releaseContext(const ContextHandle context)
     g_mutex.unlock();
 }
 
-void Binding::addContextSwitchCallback(const ContextSwitchCallback & callback)
+void Binding::addContextSwitchCallback(ContextSwitchCallback callback)
 {
     g_mutex.lock();
-    s_callbacks.push_back(callback);
+    s_callbacks.push_back(std::move(callback));
     g_mutex.unlock();
 }
 

@@ -38,7 +38,7 @@ public:
     static void releaseCurrentContext();
     static void releaseContext(ContextHandle context);
     
-    static void addContextSwitchCallback(const ContextSwitchCallback &callback);
+    static void addContextSwitchCallback(ContextSwitchCallback callback);
 
 //  iterator begin();
 //  iterator end();    
