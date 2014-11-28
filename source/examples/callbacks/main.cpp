@@ -98,7 +98,7 @@ int main()
     Binding::CreateProgram.addAfterCallback([](GLuint id) {
         std::cout << "Created Program: " << id << std::endl;
     });
-    Binding::CreateShader.addAfterCallback([](GLenum /*type*/, GLuint id) {
+    Binding::CreateShader.addAfterCallback([](GLuint id, GLenum /*type*/) {
         std::cout << "Created Shader: " << id << std::endl;
     });
     Binding::DeleteProgram.addAfterCallback([](GLuint id) {

@@ -34,7 +34,7 @@ struct FunctionHelper
         if (!function->m_afterCallbacks.empty())
         {
             for (auto callback : function->m_afterCallbacks)
-                callback(std::forward<Arguments>(arguments)..., value);
+                callback(value, std::forward<Arguments>(arguments)...);
         }
 
         if (function->isEnabled(glbinding::CallbackMask::After))

@@ -20,7 +20,7 @@ template <typename ReturnType, typename... Arguments> struct FunctionHelper;
 template <typename ReturnType, typename... Arguments>
 struct CallbackType
 {
-    using type = std::function<void(Arguments..., ReturnType)>;
+    using type = std::function<void(ReturnType, Arguments...)>;
 };
 
 template <typename... Arguments>
