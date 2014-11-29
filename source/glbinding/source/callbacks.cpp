@@ -53,19 +53,19 @@ void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> 
 }
 
 
-void setUnresolvedCallback(const SimpleFunctionCallback & callback)
+void setUnresolvedCallback(SimpleFunctionCallback callback)
 {
-    g_unresolvedCallback = callback;
+    g_unresolvedCallback = std::move(callback);
 }
 
-void setBeforeCallback(const FunctionCallback & callback)
+void setBeforeCallback(FunctionCallback callback)
 {
-    g_beforeCallback = callback;
+    g_beforeCallback = std::move(callback);
 }
 
-void setAfterCallback(const FunctionCallback & callback)
+void setAfterCallback(FunctionCallback callback)
 {
-    g_afterCallback = callback;
+    g_afterCallback = std::move(callback);
 }
 
 void unresolved(const AbstractFunction * function)
