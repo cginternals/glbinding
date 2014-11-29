@@ -1,9 +1,9 @@
 
 #include <iostream>
 #include <map>
+#include <array>
 #include <set>
-#include <tuple>
-#include <vector>
+#include <cstring>
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
@@ -33,11 +33,10 @@ void print(
 , const Version & result)
 {
     std::cout << "  "
-        << version.toString() << "  " << (forward ? "f" : "-") << " " << (core ? "c" : "-") << "  "
-        << result.toString()  << std::endl;
+        << version << "  " << (forward ? "f" : "-") << " " << (core ? "c" : "-") << "  " << result << std::endl;
 }
 
-void printVersionOfContextRequest(
+Version printVersionOfContextRequest(
   const Version & version
 , const bool forward
 , const bool core)
@@ -55,7 +54,7 @@ void printVersionOfContextRequest(
     if (!window)
     {
         print(version, forward, core, Version());
-        return;
+        return Version();
     }
     glfwMakeContextCurrent(window);
     Binding::initialize();
@@ -67,11 +66,13 @@ void printVersionOfContextRequest(
 
     glfwMakeContextCurrent(nullptr);
     glfwDestroyWindow(window);
+
+    return result;
 }
 
 
 
-int main()
+int main(int argc, char * argv[])
 {
     if (!glfwInit())
         return 1;
@@ -81,13 +82,38 @@ int main()
     std::cout << std::endl << "test: requesting all context configurations ..." << std::endl
         << std::endl << "  scheme: <requested_version>  <forward> <core>  <created_version>" << std::endl << std::endl;
 
+    std::map<Version, std::array<Version, 4>> markdown;
+
+    Version result;
     for (const auto & version : Version::versions())
     {
-        printVersionOfContextRequest(version, false, false);
-        printVersionOfContextRequest(version, false, true);
-        printVersionOfContextRequest(version, true , false);
-        printVersionOfContextRequest(version, true,  true);
+        markdown[version][0] = printVersionOfContextRequest(version, false, false);
+        markdown[version][1] = printVersionOfContextRequest(version, false, true);
+        markdown[version][2] = printVersionOfContextRequest(version, true, false);
+        markdown[version][3] = printVersionOfContextRequest(version, true, true);
         std::cout << std::endl;
+    }
+
+    auto printMarkdown = false;
+    for (int i = 0; i < argc; ++i)
+        printMarkdown |= (strcmp(argv[i], "--markdown") == 0);
+
+    if (printMarkdown)
+    {
+        std::cout << "printing markdown formated results ..." << std::endl;
+
+        std::cout << std::endl << "|";
+
+        for (const auto & version : Version::versions())
+            std::cout << version << (version != Version::latest() ? "<br>" : "");
+
+        for (int i = 0; i < 4; ++i)
+        {
+            std::cout << "|";
+            for (const auto & version : Version::versions())
+                std::cout << markdown[version][i] << (version != Version::latest() ? "<br>" : "");
+        }
+        std::cout << "|" << std::endl << std::endl;
     }
 
     glfwDefaultWindowHints();
