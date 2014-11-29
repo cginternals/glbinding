@@ -1,9 +1,8 @@
 
 #include <iostream>
 #include <map>
+#include <array>
 #include <set>
-#include <tuple>
-#include <vector>
 
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
@@ -82,7 +81,7 @@ int main(int argc, char * argv[])
     std::cout << std::endl << "test: requesting all context configurations ..." << std::endl
         << std::endl << "  scheme: <requested_version>  <forward> <core>  <created_version>" << std::endl << std::endl;
 
-    std::map<Version, Version[4]> markdown;
+    std::map<Version, std::array<Version, 4>> markdown;
 
     Version result;
     for (const auto & version : Version::versions())
