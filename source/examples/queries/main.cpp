@@ -133,46 +133,45 @@ int main(int argc, const char * argv[])
     requestAndPrint<int, 1, false>(results, GL_BLUE_BITS);
     requestAndPrint<float, 1, false>(results, GL_BLUE_SCALE);
 
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_CLIENT_ACTIVE_TEXTURE);
+    requestAndPrint<int, 1, false>(results, GL_CLIENT_ATTRIB_STACK_DEPTH);
+    requestAndPrint<bool, 1, false>(results, GL_CLIP_PLANE0);// 1 to GL_MAX_CLIP_PLANES
+    requestAndPrint<bool, 1, false>(results, GL_COLOR_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_COLOR_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_COLOR_ARRAY_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_COLOR_ARRAY_STRIDE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_COLOR_ARRAY_TYPE);
+    requestAndPrint<float, 4, false>(results, GL_COLOR_CLEAR_VALUE);
+    requestAndPrint<bool, 1, false>(results, GL_COLOR_LOGIC_OP);
+    requestAndPrint<bool, 1, false>(results, GL_COLOR_MATERIAL);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_COLOR_MATERIAL_FACE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_COLOR_MATERIAL_PARAMETER);
+    requestAndPrint<float, 16, false>(results, GL_COLOR_MATRIX);
+    requestAndPrint<int, 1, false>(results, GL_COLOR_MATRIX_STACK_DEPTH);
+    requestAndPrint<bool, 1, false>(results, GL_COLOR_SUM);
+    requestAndPrint<bool, 1, false>(results, GL_COLOR_TABLE);
+    requestAndPrint<bool, 4, false>(results, GL_COLOR_WRITEMASK);
+    requestAndPrint<gl::GLenum, 24, false>(results, GL_COMPRESSED_TEXTURE_FORMATS); // 1 to GL_NUM_COMPRESSED_TEXTURE_FORMATS
+    requestAndPrint<bool, 1, false>(results, GL_CONVOLUTION_1D);
+    requestAndPrint<bool, 1, false>(results, GL_CONVOLUTION_2D);
+    requestAndPrint<bool, 1, false>(results, GL_CULL_FACE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_CULL_FACE_MODE);
+    requestAndPrint<float, 4, false>(results, GL_CURRENT_COLOR);
+    requestAndPrint<int, 1, false>(results, GL_CURRENT_FOG_COORD);
+    requestAndPrint<int, 1, false>(results, GL_CURRENT_INDEX);
+    requestAndPrint<float, 3, false>(results, GL_CURRENT_NORMAL);
+    requestAndPrint<int, 1, false>(results, GL_CURRENT_PROGRAM);
+    requestAndPrint<float, 4, false>(results, GL_CURRENT_RASTER_COLOR);
+    requestAndPrint<float, 1, false>(results, GL_CURRENT_RASTER_DISTANCE);
+    requestAndPrint<int, 1, false>(results, GL_CURRENT_RASTER_INDEX);
+    requestAndPrint<float, 4, false>(results, GL_CURRENT_RASTER_POSITION);
+    requestAndPrint<bool, 1, false>(results, GL_CURRENT_RASTER_POSITION_VALID);
+    requestAndPrint<float, 4, false>(results, GL_CURRENT_RASTER_SECONDARY_COLOR);
+    requestAndPrint<float, 4, false>(results, GL_CURRENT_RASTER_TEXTURE_COORDS);
+    requestAndPrint<float, 4, false>(results, GL_CURRENT_SECONDARY_COLOR);
+    requestAndPrint<float, 4, false>(results, GL_CURRENT_TEXTURE_COORDS);
+
     /*
-    requestAndPrintb(GL_COLOR_ARRAY);
-    requestAndPrinti(GL_COLOR_ARRAY_SIZE);
-    requestAndPrinti(GL_COLOR_ARRAY_STRIDE);
-    requestAndPrinte(GL_COLOR_ARRAY_TYPE);
-    requestAndPrintb(GL_COLOR_LOGIC_OP);
-    requestAndPrintb(GL_COLOR_MATERIAL);
-    requestAndPrinte(GL_COLOR_MATERIAL_FACE);
-    requestAndPrinte(GL_COLOR_MATERIAL_PARAMETER);
-    requestAndPrinti(GL_COLOR_MATRIX_STACK_DEPTH);
-    requestAndPrintb(GL_COLOR_SUM);
-    requestAndPrintb(GL_COLOR_TABLE);
-    requestAndPrintb(GL_CONVOLUTION_1D);
-    requestAndPrintb(GL_CONVOLUTION_2D);
-    requestAndPrintb(GL_CULL_FACE);
-    requestAndPrinte(GL_CULL_FACE_MODE);
-    requestAndPrinti(GL_CURRENT_FOG_COORD);
-    requestAndPrinti(GL_CURRENT_INDEX);
-    requestAndPrinti(GL_CURRENT_RASTER_DISTANCE);
-    requestAndPrinti(GL_CURRENT_RASTER_INDEX);
-    requestAndPrintb(GL_CURRENT_RASTER_POSITION_VALID);
-
-    // GL_CLIENT_ACTIVE_TEXTURE
-    // GL_CLIENT_ATTRIB_STACK_DEPTH
-    // GL_CLIP_PLANE
-    // GL_COLOR_ARRAY_BUFFER_BINDING
-    // GL_COLOR_CLEAR_VALUE
-    // GL_COLOR_MATRIX
-    // GL_COLOR_WRITEMASK
-    // GL_COMPRESSED_TEXTURE_FORMATS GL_NUM_COMPRESSED_TEXTURE_FORMATS
-    // GL_CURRENT_COLOR
-    // GL_CURRENT_NORMAL
-    // GL_CURRENT_PROGRAM
-    // GL_CURRENT_RASTER_COLOR
-    // GL_CURRENT_RASTER_POSITION
-    // GL_CURRENT_RASTER_SECONDARY_COLOR
-    // GL_CURRENT_RASTER_TEXTURE_COORDS
-    // GL_CURRENT_SECONDARY_COLOR
-    // GL_CURRENT_TEXTURE_COORDS
-
     requestAndPrinti(GL_DEPTH_BIAS);
     requestAndPrinti(GL_DEPTH_BITS);
     requestAndPrintf(GL_DEPTH_CLEAR_VALUE);
