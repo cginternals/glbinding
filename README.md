@@ -101,8 +101,10 @@ For this, *glbinding* supports multiple active contexts, one per thread. This ne
 
 *glbinding* supports different types of callbacks that can be registered.
 The main types are
- * Before callbacks, that are called before the OpenGL function is called
- * After callbacks, that are called after the OpenGL function call
+ * Global before callbacks, that are called before the OpenGL function call
+ * Per function before callbacks
+ * Global after callbacks, that are called after the OpenGL function call
+ * Per function after callbacks
  * Unresolved callbacks, that are called each time an unresolved OpenGL function should be called (instead of a segmentation fault)
 
 The before callbacks are useful , e.g., for tracing or application-specific parameter checking.
@@ -110,8 +112,6 @@ The available informations in this callback are the wrapped OpenGL function (inc
 The after callbacks are useful, .e.g., for tracing, logging, or the obligatory error check.
 Available informations are extended by the return value.
 The unresolved callback provides information about the (unresolved) wrapped OpenGL function object.
-
-All callbacks are currently global (per thread, per context, and per function) but are intended to become local in the future.
 
 Example for error checking:
 ```c++
@@ -161,6 +161,34 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 });
 
 // ... OpenGL code
+```
+
+Example for per function callbacks:
+```c++
+#include <glbinding/Binding.h>
+
+using namespace glbinding;
+
+// ...
+Binding::ClearColor.addBeforeCallback([](GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
+    std::cout << "Switching clear color to ("
+        << red << ", " << green << ", " << blue << ", " << alpha << ")" << std::endl;
+});
+
+// ...
+glClearColor(0.5, 0.5, 0.5, 1.0);
+// Output: Switching clear color to (0.5, 0.5, 0.5, 1.0)
+```
+
+It is also possible to call OpenGL function without triggering registered callbacks (except unresolved callbacks), using the ```directCall()``` member function.
+
+```c++
+#include <glbinding/Binding.h>
+
+using namespace glbinding;
+
+// ...
+GLenum errorCode = Binding::GetError.directCall();
 ```
 
 ##### Meta Information
