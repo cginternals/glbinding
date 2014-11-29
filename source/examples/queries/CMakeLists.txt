@@ -1,5 +1,5 @@
 
-set(target query)
+set(target queries)
 
 
 # External libraries
@@ -49,6 +49,8 @@ endif()
 
 set(sources
     main.cpp
+    printfunctions.cpp
+    printfunctions.h
 )
 
 
