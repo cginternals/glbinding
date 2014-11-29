@@ -91,7 +91,7 @@ bool Version::isValid() const
     return s_validVersions.find(*this) != s_validVersions.end();
 }
 
-Version Version::nearest() const
+const Version & Version::nearest() const
 {
     std::set<Version>::iterator iterator = s_validVersions.lower_bound(*this);
 
@@ -99,6 +99,11 @@ Version Version::nearest() const
         return *(--iterator);
 
     return *iterator;
+}
+
+const Version & Version::latest()
+{
+    return s_latest;
 }
 
 const std::set<Version> & Version::versions()

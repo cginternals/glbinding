@@ -33,9 +33,10 @@ public:
     bool isValid() const;
     bool isNull() const;
 
-    Version nearest() const;
+    const Version & nearest() const;
 
     static const std::set<Version> & versions();
+    static const Version & latest();
 
 public:
     int m_major;
@@ -43,6 +44,7 @@ public:
 
 protected:
     static const std::set<Version> s_validVersions;
+    static const Version s_latest;
 };
 
 } // namespace glbinding
