@@ -120,20 +120,20 @@ int main(int argc, const char * argv[])
     requestAndPrint<bool, 1, false>(results, GL_AUTO_NORMAL);
     requestAndPrint<int, 1, false>(results, GL_AUX_BUFFERS);
 
+
+    requestAndPrint<bool, 1, false>(results, GL_BLEND);
+    requestAndPrint<float, 4, false>(results, GL_BLEND_COLOR);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_BLEND_DST_ALPHA);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_BLEND_DST_RGB);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_BLEND_EQUATION_ALPHA);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_BLEND_EQUATION_RGB);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_BLEND_SRC_ALPHA);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_BLEND_SRC_RGB);
+    requestAndPrint<float, 1, false>(results, GL_BLUE_BIAS);
+    requestAndPrint<int, 1, false>(results, GL_BLUE_BITS);
+    requestAndPrint<float, 1, false>(results, GL_BLUE_SCALE);
+
     /*
-    requestAndPrintb(GL_BLEND);
-    requestAndPrinte(GL_BLEND_DST_ALPHA);
-    requestAndPrinte(GL_BLEND_DST_RGB);
-    requestAndPrinte(GL_BLEND_EQUATION_RGB);
-    requestAndPrinte(GL_BLEND_EQUATION_ALPHA);
-    requestAndPrinte(GL_BLEND_SRC_ALPHA);
-    requestAndPrinte(GL_BLEND_SRC_RGB);
-    requestAndPrinti(GL_BLUE_BIAS);
-    requestAndPrinti(GL_BLUE_BITS);
-    requestAndPrinti(GL_BLUE_SCALE);
-
-    // GL_BLEND_COLOR
-
     requestAndPrintb(GL_COLOR_ARRAY);
     requestAndPrinti(GL_COLOR_ARRAY_SIZE);
     requestAndPrinti(GL_COLOR_ARRAY_STRIDE);
@@ -482,9 +482,17 @@ int main(int argc, const char * argv[])
     // GL_VIEWPORT_BOUNDS_RANGE
     */
 
+    unsigned char firstChar = 0;
     for (const auto & result : results)
     {
+        if (result.name[3] != firstChar && firstChar > 0)
+        {
+            std::cout << std::endl;
+        }
+
         std::cout << result.result << std::endl;
+
+        firstChar = result.name[3];
     }
 
     glfwTerminate();
