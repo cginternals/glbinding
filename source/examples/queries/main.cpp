@@ -99,26 +99,26 @@ int main(int argc, const char * argv[])
         << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
-    requestAndPrinti(GL_ACCUM_ALPHA_BITS);
-    requestAndPrinti(GL_ACCUM_BLUE_BITS);
-    requestAndPrinti(GL_ACCUM_GREEN_BITS);
-    requestAndPrinti(GL_ACCUM_RED_BITS);
-    requestAndPrinti(GL_ALPHA_BIAS);
-    requestAndPrinti(GL_ALPHA_BITS);
-    requestAndPrinti(GL_ALPHA_SCALE);
-    requestAndPrintb(GL_ALPHA_TEST);
-    requestAndPrinte(GL_ALPHA_TEST_FUNC);
-    requestAndPrintf(GL_ALPHA_TEST_REF);
-    requestAndPrintb(GL_AUTO_NORMAL);
-    requestAndPrinti(GL_AUX_BUFFERS);
+    requestAndPrint<int, 1, false>(GL_ACCUM_ALPHA_BITS);
+    requestAndPrint<int, 1, false>(GL_ACCUM_BLUE_BITS);
+    requestAndPrint<float, 4, false>(GL_ACCUM_CLEAR_VALUE);
+    requestAndPrint<int, 1, false>(GL_ACCUM_GREEN_BITS);
+    requestAndPrint<int, 1, false>(GL_ACCUM_RED_BITS);
+    requestAndPrint<int, 1, false>(GL_ACTIVE_TEXTURE);
+    requestAndPrint<float, 2, false>(GL_ALIASED_POINT_SIZE_RANGE);
+    requestAndPrint<float, 2, false>(GL_ALIASED_LINE_WIDTH_RANGE);
+    requestAndPrint<float, 1, false>(GL_ALPHA_BIAS);
+    requestAndPrint<int, 1, false>(GL_ALPHA_BITS);
+    requestAndPrint<float, 1, false>(GL_ALPHA_SCALE);
+    requestAndPrint<bool, 1, false>(GL_ALPHA_TEST);
+    requestAndPrint<gl::GLenum, 1, false>(GL_ALPHA_TEST_FUNC);
+    requestAndPrint<float, 1, false>(GL_ALPHA_TEST_REF);
+    requestAndPrint<int, 1, false>(GL_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(GL_ATTRIB_STACK_DEPTH);
+    requestAndPrint<bool, 1, false>(GL_AUTO_NORMAL);
+    requestAndPrint<int, 1, false>(GL_AUX_BUFFERS);
 
-    // GL_ACCUM_CLEAR_VALUE
-    // GL_ACTIVE_TEXTURE
-    // GL_ALIASED_POINT_SIZE_RANGE
-    // GL_ALIASED_LINE_WIDTH_RANGE
-    // GL_ARRAY_BUFFER_BINDING
-    // GL_ATTRIB_STACK_DEPTH
-
+    /*
     requestAndPrintb(GL_BLEND);
     requestAndPrinte(GL_BLEND_DST_ALPHA);
     requestAndPrinte(GL_BLEND_DST_RGB);
@@ -478,6 +478,7 @@ int main(int argc, const char * argv[])
 
     // GL_VIEWPORT
     // GL_VIEWPORT_BOUNDS_RANGE
+    */
 
     glfwTerminate();
     return 0;

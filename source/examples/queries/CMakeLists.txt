@@ -49,7 +49,6 @@ endif()
 
 set(sources
     main.cpp
-    printfunctions.cpp
     printfunctions.h
 )
 
