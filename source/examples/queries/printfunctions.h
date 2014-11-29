@@ -87,6 +87,15 @@ void multipleRequestAndPrint(std::vector<QueryResult> & results, gl::GLenum valu
     }
 }
 
+template <typename T, int Count>
+void multipleRequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+{
+    for (int i=0; i < Count; ++i)
+    {
+        RequestAndPrint<T, false>(results, static_cast<gl::GLenum>(static_cast<int>(value) + i), 1);
+    }
+}
+
 template <typename T>
 void dynamicRequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, gl::GLenum countValue)
 {

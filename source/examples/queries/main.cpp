@@ -171,21 +171,20 @@ int main(int argc, const char * argv[])
     requestAndPrint<float, 4, false>(results, GL_CURRENT_SECONDARY_COLOR);
     requestAndPrint<float, 4, false>(results, GL_CURRENT_TEXTURE_COORDS);
 
+    requestAndPrint<float, 1, false>(results, GL_DEPTH_BIAS);
+    requestAndPrint<int, 1, false>(results, GL_DEPTH_BITS);
+    requestAndPrint<float, 1, false>(results, GL_DEPTH_CLEAR_VALUE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_DEPTH_FUNC);
+    requestAndPrint<float, 2, false>(results, GL_DEPTH_RANGE);
+    requestAndPrint<float, 1, false>(results, GL_DEPTH_SCALE);
+    requestAndPrint<bool, 1, false>(results, GL_DEPTH_TEST);
+    requestAndPrint<bool, 1, false>(results, GL_DEPTH_WRITEMASK);
+    requestAndPrint<bool, 1, false>(results, GL_DITHER);
+    requestAndPrint<bool, 1, false>(results, GL_DOUBLEBUFFER);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_DRAW_BUFFER);
+    dynamicRequestAndPrint<gl::GLenum>(results, GL_DRAW_BUFFER, GL_MAX_DRAW_BUFFERS);
+
     /*
-    requestAndPrinti(GL_DEPTH_BIAS);
-    requestAndPrinti(GL_DEPTH_BITS);
-    requestAndPrintf(GL_DEPTH_CLEAR_VALUE);
-    requestAndPrinte(GL_DEPTH_FUNC);
-    requestAndPrinti(GL_DEPTH_SCALE);
-    requestAndPrintb(GL_DEPTH_TEST);
-    requestAndPrintb(GL_DEPTH_WRITEMASK);
-    requestAndPrintb(GL_DITHER);
-    requestAndPrintb(GL_DOUBLEBUFFER);
-    requestAndPrinte(GL_DRAW_BUFFER);
-
-    // GL_DEPTH_RANGE
-    // GL_DRAW_BUFFER_i
-
     requestAndPrintb(GL_EDGE_FLAG);
     requestAndPrintb(GL_EDGE_FLAG_ARRAY);
     requestAndPrinti(GL_EDGE_FLAG_ARRAY_BUFFER_BINDING);
