@@ -135,7 +135,7 @@ int main(int argc, const char * argv[])
 
     requestAndPrint<gl::GLenum, 1, false>(results, GL_CLIENT_ACTIVE_TEXTURE);
     requestAndPrint<int, 1, false>(results, GL_CLIENT_ATTRIB_STACK_DEPTH);
-    requestAndPrint<bool, 1, false>(results, GL_CLIP_PLANE0);// 1 to GL_MAX_CLIP_PLANES
+    multipleRequestAndPrint<bool>(results, GL_CLIP_PLANE0, GL_MAX_CLIP_PLANES);
     requestAndPrint<bool, 1, false>(results, GL_COLOR_ARRAY);
     requestAndPrint<int, 1, false>(results, GL_COLOR_ARRAY_BUFFER_BINDING);
     requestAndPrint<int, 1, false>(results, GL_COLOR_ARRAY_SIZE);
@@ -151,7 +151,7 @@ int main(int argc, const char * argv[])
     requestAndPrint<bool, 1, false>(results, GL_COLOR_SUM);
     requestAndPrint<bool, 1, false>(results, GL_COLOR_TABLE);
     requestAndPrint<bool, 4, false>(results, GL_COLOR_WRITEMASK);
-    requestAndPrint<gl::GLenum, 24, false>(results, GL_COMPRESSED_TEXTURE_FORMATS); // 1 to GL_NUM_COMPRESSED_TEXTURE_FORMATS
+    dynamicRequestAndPrint<gl::GLenum>(results, GL_COMPRESSED_TEXTURE_FORMATS, GL_NUM_COMPRESSED_TEXTURE_FORMATS);
     requestAndPrint<bool, 1, false>(results, GL_CONVOLUTION_1D);
     requestAndPrint<bool, 1, false>(results, GL_CONVOLUTION_2D);
     requestAndPrint<bool, 1, false>(results, GL_CULL_FACE);

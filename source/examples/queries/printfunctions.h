@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sstream>
-#include <array>
+#include <vector>
 
 #include <glbinding/Meta.h>
 #include <glbinding/gl/types.h>
@@ -27,19 +27,19 @@ struct QueryResult
     std::string result;
 };
 
-template <typename T, int Count>
-std::string printResult(gl::GLenum value, const std::array<T, Count> & result)
+template <typename T>
+std::string printResult(gl::GLenum value, const std::vector<T> & result)
 {
     std::stringstream stream;
 
     if (gl::glGetError() == gl::GL_NO_ERROR)
     {
         stream << "\t" << glbinding::Meta::getString(value) << " = ";
-        for (int i=0; i < Count; ++i)
+        for (int i=0; i < result.size(); ++i)
         {
             stream << result[i];
 
-            if (i + 1 < Count)
+            if (i + 1 < result.size())
             {
                 stream << ", ";
             }
@@ -53,192 +53,213 @@ std::string printResult(gl::GLenum value, const std::array<T, Count> & result)
     return stream.str();
 }
 
-template <typename T, int Count>
-void storeResult(std::vector<QueryResult> & results, gl::GLenum value, const std::array<T, Count> & result)
+template <typename T>
+void storeResult(std::vector<QueryResult> & results, gl::GLenum value, const std::vector<T> & result)
 {
     results.emplace_back(
         value,
         glbinding::Meta::getString(value),
-        printResult<T, Count>(value, result)
+        printResult<T>(value, result)
     );
 }
 
-template <typename T, int Count, bool Indexed>
+template <typename T, bool Indexed>
 struct RequestAndPrint
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value);
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count);
 };
 
 template <typename T, int Count, bool Indexed>
 void requestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
 {
-    RequestAndPrint<T, Count, Indexed> temp(results, value);
+    RequestAndPrint<T, Indexed> temp(results, value, Count);
 }
 
-template <int Count>
-struct RequestAndPrint<bool, Count, false>
+template <typename T>
+void multipleRequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, gl::GLenum countValue)
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    int count = 0;
+    gl::glGetIntegerv(countValue, &count);
+
+    for (int i=0; i < count; ++i)
     {
-        std::array<gl::GLboolean, Count> result;
+        RequestAndPrint<T, false>(results, static_cast<gl::GLenum>(static_cast<int>(value) + i), 1);
+    }
+}
+
+template <typename T>
+void dynamicRequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, gl::GLenum countValue)
+{
+    int count = 0;
+    gl::glGetIntegerv(countValue, &count);
+
+    RequestAndPrint<T, false>(results, value, count);
+}
+
+template <>
+struct RequestAndPrint<bool, false>
+{
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
+    {
+        std::vector<gl::GLboolean> result(count);
         gl::glGetBooleanv(value, result.data());
 
-        storeResult<gl::GLboolean, Count>(results, value, result);
+        storeResult<gl::GLboolean>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<bool, Count, true>
+template <>
+struct RequestAndPrint<bool, true>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<gl::GLboolean, Count> result;
+        std::vector<gl::GLboolean> result(count);
 
-        for (int i=0; i < Count; ++i)
+        for (int i=0; i < count; ++i)
         {
             gl::glGetBooleani_v(value, i, &result[i]);
         }
 
-        storeResult<gl::GLboolean, Count>(results, value, result);
+        storeResult<gl::GLboolean>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<int, Count, false>
+template <>
+struct RequestAndPrint<int, false>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<int, Count> result;
+        std::vector<int> result(count);
         gl::glGetIntegerv(value, result.data());
 
-        storeResult<int, Count>(results, value, result);
+        storeResult<int>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<int, Count, true>
+template <>
+struct RequestAndPrint<int, true>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<int, Count> result;
+        std::vector<int> result(count);
 
-        for (int i=0; i < Count; ++i)
+        for (int i=0; i < count; ++i)
         {
             gl::glGetIntegeri_v(value, i, &result[i]);
         }
 
-        storeResult<int, Count>(results, value, result);
+        storeResult<int>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<long long, Count, false>
+template <>
+struct RequestAndPrint<long, false>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<long long, Count> result;
+        std::vector<long> result(count);
         gl::glGetInteger64v(value, result.data());
 
-        storeResult<long long, Count>(results, value, result);
+        storeResult<long>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<long long, Count, true>
+template <>
+struct RequestAndPrint<long, true>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<long long, Count> result;
+        std::vector<long> result(count);
 
-        for (int i=0; i < Count; ++i)
+        for (int i=0; i < count; ++i)
         {
             gl::glGetInteger64i_v(value, i, &result[i]);
         }
 
-        storeResult<long long, Count>(results, value, result);
+        storeResult<long>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<float, Count, false>
+template <>
+struct RequestAndPrint<float, false>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<float, Count> result;
+        std::vector<float> result(count);
         gl::glGetFloatv(value, result.data());
 
-        storeResult<float, Count>(results, value, result);
+        storeResult<float>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<float, Count, true>
+template <>
+struct RequestAndPrint<float, true>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<float, Count> result;
+        std::vector<float> result(count);
 
-        for (int i=0; i < Count; ++i)
+        for (int i=0; i < count; ++i)
         {
             gl::glGetFloati_v(value, i, &result[i]);
         }
 
-        storeResult<float, Count>(results, value, result);
+        storeResult<float>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<double, Count, false>
+template <>
+struct RequestAndPrint<double, false>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<double, Count> result;
+        std::vector<double> result(count);
         gl::glGetDoublev(value, result.data());
 
-        storeResult<double, Count>(results, value, result);
+        storeResult<double>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<double, Count, true>
+template <>
+struct RequestAndPrint<double, true>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<double, Count> result;
+        std::vector<double> result(count);
 
-        for (int i=0; i < Count; ++i)
+        for (int i=0; i < count; ++i)
         {
             gl::glGetDoublei_v(value, i, &result[i]);
         }
 
-        storeResult<double, Count>(results, value, result);
+        storeResult<double>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<gl::GLenum, Count, false>
+template <>
+struct RequestAndPrint<gl::GLenum, false>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<gl::GLenum, Count> result;
+        std::vector<gl::GLenum> result(count);
         gl::glGetIntegerv(value, reinterpret_cast<int*>(result.data()));
 
-        storeResult<gl::GLenum, Count>(results, value, result);
+        storeResult<gl::GLenum>(results, value, result);
     }
 };
 
-template <int Count>
-struct RequestAndPrint<gl::GLenum, Count, true>
+template <>
+struct RequestAndPrint<gl::GLenum, true>
 {
-    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value)
+    RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::array<gl::GLenum, Count> result;
+        std::vector<gl::GLenum> result(count);
 
-        for (int i=0; i < Count; ++i)
+        for (int i=0; i < count; ++i)
         {
             gl::glGetIntegeri_v(value, i, reinterpret_cast<int*>(&result[i]));
         }
 
-        storeResult<gl::GLenum, Count>(results, value, result);
+        storeResult<gl::GLenum>(results, value, result);
     }
 };
