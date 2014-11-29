@@ -23,14 +23,14 @@ struct FunctionHelper
         if (function->isEnabled(glbinding::CallbackMask::Before))
             function->before(functionCall);
 
-        if (function->m_hasBeforeCallback)
+        if (function->m_beforeCallback)
         {
             function->m_beforeCallback(std::forward<Arguments>(arguments)...);
         }
 
         ReturnType value = basicCall(function, std::forward<Arguments>(arguments)...);
 
-        if (function->m_hasAfterCallback)
+        if (function->m_afterCallback)
         {
             function->m_afterCallback(value, std::forward<Arguments>(arguments)...);
         }
@@ -65,14 +65,14 @@ struct FunctionHelper<void, Arguments...>
         if (function->isEnabled(glbinding::CallbackMask::Before))
             function->before(functionCall);
 
-        if (function->m_hasBeforeCallback)
+        if (function->m_beforeCallback)
         {
             function->m_beforeCallback(std::forward<Arguments>(arguments)...);
         }
 
         basicCall(function, std::forward<Arguments>(arguments)...);
 
-        if (function->m_hasAfterCallback)
+        if (function->m_afterCallback)
         {
             function->m_afterCallback(std::forward<Arguments>(arguments)...);
         }
@@ -96,8 +96,8 @@ namespace glbinding
 template <typename ReturnType, typename... Arguments>
 Function<ReturnType, Arguments...>::Function(const char * _name)
 : AbstractFunction(_name)
-, m_hasBeforeCallback(false)
-, m_hasAfterCallback(false)
+, m_beforeCallback(nullptr)
+, m_afterCallback(nullptr)
 {
 }
 
@@ -132,13 +132,12 @@ template <typename ReturnType, typename... Arguments>
 void Function<ReturnType, Arguments...>::setBeforeCallback(BeforeCallback callback)
 {
     m_beforeCallback = std::move(callback);
-    m_hasBeforeCallback = true;
 }
 
 template <typename ReturnType, typename... Arguments>
 void Function<ReturnType, Arguments...>::clearBeforeCallback()
 {
-    m_hasBeforeCallback = false;
+    m_beforeCallback = nullptr;
 }
 
 template <typename ReturnType, typename... Arguments>
@@ -150,7 +149,7 @@ void Function<ReturnType, Arguments...>::setAfterCallback(AfterCallback callback
 template <typename ReturnType, typename... Arguments>
 void Function<ReturnType, Arguments...>::clearAfterCallback()
 {
-    m_hasAfterCallback = false;
+    m_afterCallback = nullptr;
 }
 
 } // namespace glbinding

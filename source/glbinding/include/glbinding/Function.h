@@ -56,9 +56,7 @@ public:
     void clearAfterCallback();
 
 protected:
-    bool m_hasBeforeCallback;
     BeforeCallback m_beforeCallback;
-    bool m_hasAfterCallback;
     AfterCallback m_afterCallback;
 };
 
