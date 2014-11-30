@@ -184,52 +184,50 @@ int main(int argc, const char * argv[])
     requestAndPrint<gl::GLenum, 1, false>(results, GL_DRAW_BUFFER);
     dynamicRequestAndPrint<gl::GLenum>(results, GL_DRAW_BUFFER, GL_MAX_DRAW_BUFFERS);
 
+    requestAndPrint<bool, 1, false>(results, GL_EDGE_FLAG);
+    requestAndPrint<bool, 1, false>(results, GL_EDGE_FLAG_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_EDGE_FLAG_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_EDGE_FLAG_ARRAY_STRIDE);
+    requestAndPrint<int, 1, false>(results, GL_ELEMENT_ARRAY_BUFFER_BINDING);
+
+    requestAndPrint<int, 1, false>(results, GL_FEEDBACK_BUFFER_SIZE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_FEEDBACK_BUFFER_TYPE);
+    requestAndPrint<bool, 1, false>(results, GL_FOG);
+    requestAndPrint<bool, 1, false>(results, GL_FOG_COORD_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_FOG_COORD_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_FOG_COORD_ARRAY_STRIDE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_FOG_COORD_ARRAY_TYPE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_FOG_COORD_SRC);
+    requestAndPrint<float, 4, false>(results, GL_FOG_COLOR);
+    requestAndPrint<float, 1, false>(results, GL_FOG_DENSITY);
+    requestAndPrint<float, 1, false>(results, GL_FOG_END);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_FOG_HINT);
+    requestAndPrint<int, 1, false>(results, GL_FOG_INDEX);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_FOG_MODE);
+    requestAndPrint<float, 1, false>(results, GL_FOG_START);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_FRAGMENT_SHADER_DERIVATIVE_HINT);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_FRONT_FACE);
+
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_GENERATE_MIPMAP_HINT);
+    requestAndPrint<float, 1, false>(results, GL_GREEN_BIAS);
+    requestAndPrint<int, 1, false>(results, GL_GREEN_BITS);
+    requestAndPrint<float, 1, false>(results, GL_GREEN_SCALE);
+
+    requestAndPrint<bool, 1, false>(results, GL_HISTOGRAM);
+
+    requestAndPrint<bool, 1, false>(results, GL_INDEX_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_INDEX_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_INDEX_ARRAY_STRIDE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_INDEX_ARRAY_TYPE);
+    requestAndPrint<int, 1, false>(results, GL_INDEX_BITS);
+    requestAndPrint<int, 1, false>(results, GL_INDEX_CLEAR_VALUE);
+    requestAndPrint<bool, 1, false>(results, GL_INDEX_LOGIC_OP);
+    requestAndPrint<bool, 1, false>(results, GL_INDEX_MODE);
+    requestAndPrint<int, 1, false>(results, GL_INDEX_OFFSET);
+    requestAndPrint<int, 1, false>(results, GL_INDEX_SHIFT);
+    requestAndPrint<int, 1, false>(results, GL_INDEX_WRITEMASK); // TODO: interpret as mask
+
     /*
-    requestAndPrintb(GL_EDGE_FLAG);
-    requestAndPrintb(GL_EDGE_FLAG_ARRAY);
-    requestAndPrinti(GL_EDGE_FLAG_ARRAY_BUFFER_BINDING);
-    requestAndPrinti(GL_EDGE_FLAG_ARRAY_STRIDE);
-    requestAndPrinti(GL_ELEMENT_ARRAY_BUFFER_BINDING);
-
-    requestAndPrinti(GL_FEEDBACK_BUFFER_SIZE);
-    requestAndPrinte(GL_FEEDBACK_BUFFER_TYPE);
-    requestAndPrintb(GL_FOG);
-    requestAndPrintb(GL_FOG_COORD_ARRAY);
-    requestAndPrinti(GL_FOG_COORD_ARRAY_BUFFER_BINDING);
-    requestAndPrinti(GL_FOG_COORD_ARRAY_STRIDE);
-    requestAndPrinte(GL_FOG_COORD_ARRAY_TYPE);
-    requestAndPrintf(GL_FOG_DENSITY);
-    requestAndPrintf(GL_FOG_END);
-    requestAndPrinte(GL_FOG_HINT);
-    requestAndPrinti(GL_FOG_INDEX);
-    requestAndPrinte(GL_FOG_MODE);
-    requestAndPrintf(GL_FOG_START);
-    requestAndPrinte(GL_FRAGMENT_SHADER_DERIVATIVE_HINT);
-    requestAndPrinte(GL_FRONT_FACE);
-
-    // GL_FOG_COORD_SRC
-    // GL_FOG_COLOR
-
-    requestAndPrinte(GL_GENERATE_MIPMAP_HINT);
-    requestAndPrinti(GL_GREEN_BIAS);
-    requestAndPrinti(GL_GREEN_BITS);
-    requestAndPrinti(GL_GREEN_SCALE);
-
-    requestAndPrintb(GL_HISTOGRAM);
-
-    requestAndPrintb(GL_INDEX_ARRAY);
-    requestAndPrinti(GL_INDEX_ARRAY_BUFFER_BINDING);
-    requestAndPrinti(GL_INDEX_ARRAY_STRIDE);
-    requestAndPrinte(GL_INDEX_ARRAY_TYPE);
-    requestAndPrinti(GL_INDEX_BITS);
-    requestAndPrinti(GL_INDEX_CLEAR_VALUE);
-    requestAndPrintb(GL_INDEX_LOGIC_OP);
-    requestAndPrintb(GL_INDEX_MODE);
-    requestAndPrinti(GL_INDEX_OFFSET);
-    requestAndPrinti(GL_INDEX_SHIFT);
-
-    // GL_INDEX_WRITEMASK
-
     requestAndPrintb(GL_LIGHTING);
     requestAndPrinte(GL_LIGHT_MODEL_COLOR_CONTROL);
     requestAndPrintb(GL_LIGHT_MODEL_LOCAL_VIEWER);
