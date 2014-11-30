@@ -77,7 +77,7 @@ int main(int argc, const char * argv[])
     {
         int forwardComaptability = atoi(argv[3]);
 
-        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, static_cast<bool>(forwardComaptability));
+        glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, forwardComaptability ? true : false);
     }
 #endif
 
@@ -92,12 +92,6 @@ int main(int argc, const char * argv[])
     glfwMakeContextCurrent(window);
 
     Binding::initialize();
-
-    std::cout << std::endl
-        << "OpenGL Version:  " << ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     std::vector<QueryResult> results;
 
@@ -490,6 +484,12 @@ int main(int argc, const char * argv[])
 
         firstChar = result.name[3];
     }
+
+    std::cout << std::endl
+        << "OpenGL Version:  " << ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
+        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

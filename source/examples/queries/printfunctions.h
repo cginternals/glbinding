@@ -152,10 +152,8 @@ struct RequestAndPrint<int, true>
     {
         std::vector<int> result(count);
 
-        for (int i=0; i < count; ++i)
-        {
+        for (int i = 0; i < count; ++i)
             gl::glGetIntegeri_v(value, i, &result[i]);
-        }
 
         storeResult<int>(results, value, result);
     }
@@ -166,10 +164,14 @@ struct RequestAndPrint<long, false>
 {
     RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::vector<long> result(count);
+        std::vector<gl::GLint64> result(count);
         gl::glGetInteger64v(value, result.data());
 
-        storeResult<long>(results, value, result);
+        std::vector<long> longs(count);
+        for (const auto & r : result)
+            longs.push_back(static_cast<long>(r));
+
+        storeResult<long>(results, value, longs);
     }
 };
 
@@ -178,14 +180,16 @@ struct RequestAndPrint<long, true>
 {
     RequestAndPrint(std::vector<QueryResult> & results, gl::GLenum value, int count)
     {
-        std::vector<long> result(count);
+        std::vector<gl::GLint64> result(count);
 
         for (int i=0; i < count; ++i)
-        {
             gl::glGetInteger64i_v(value, i, &result[i]);
-        }
 
-        storeResult<long>(results, value, result);
+        std::vector<long> longs(count);
+        for (const auto & r : result)
+            longs.push_back(static_cast<long>(r));
+
+        storeResult<long>(results, value, longs);
     }
 };
 
