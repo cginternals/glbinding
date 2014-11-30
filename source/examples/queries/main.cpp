@@ -221,256 +221,247 @@ int main(int argc, const char * argv[])
     requestAndPrint<int, 1, false>(results, GL_INDEX_SHIFT);
     requestAndPrint<int, 1, false>(results, GL_INDEX_WRITEMASK); // TODO: interpret as mask
 
-    /*
-    requestAndPrintb(GL_LIGHTING);
-    requestAndPrinte(GL_LIGHT_MODEL_COLOR_CONTROL);
-    requestAndPrintb(GL_LIGHT_MODEL_LOCAL_VIEWER);
-    requestAndPrintb(GL_LIGHT_MODEL_TWO_SIDE);
-    requestAndPrintb(GL_LINE_SMOOTH);
-    requestAndPrinte(GL_LINE_SMOOTH_HINT);
-    requestAndPrintb(GL_LINE_STIPPLE);
-    requestAndPrinti(GL_LINE_STIPPLE_REPEAT);
-    requestAndPrintf(GL_LINE_WIDTH);
-    requestAndPrintf(GL_LINE_WIDTH_GRANULARITY);
-    requestAndPrinti(GL_LIST_BASE);
-    requestAndPrinti(GL_LIST_INDEX);
-    requestAndPrinte(GL_LIST_MODE);
-    requestAndPrinte(GL_LOGIC_OP_MODE);
+    multipleDynamicRequestAndPrint<bool>(results, GL_LIGHT0, GL_MAX_LIGHTS);
+    requestAndPrint<bool, 1, false>(results, GL_LIGHTING);
+    requestAndPrint<float, 4, false>(results, GL_LIGHT_MODEL_AMBIENT);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_LIGHT_MODEL_COLOR_CONTROL);
+    requestAndPrint<bool, 1, false>(results, GL_LIGHT_MODEL_LOCAL_VIEWER);
+    requestAndPrint<bool, 1, false>(results, GL_LIGHT_MODEL_TWO_SIDE);
+    requestAndPrint<bool, 1, false>(results, GL_LINE_SMOOTH);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_LINE_SMOOTH_HINT);
+    requestAndPrint<bool, 1, false>(results, GL_LINE_STIPPLE);
+    requestAndPrint<int, 1, false>(results, GL_LINE_STIPPLE_PATTERN); // TODO: interpret as mask
+    requestAndPrint<int, 1, false>(results, GL_LINE_STIPPLE_REPEAT);
+    requestAndPrint<float, 1, false>(results, GL_LINE_WIDTH);
+    requestAndPrint<float, 1, false>(results, GL_LINE_WIDTH_GRANULARITY);
+    requestAndPrint<float, 2, false>(results, GL_LINE_WIDTH_RANGE);
+    requestAndPrint<int, 1, false>(results, GL_LIST_BASE);
+    requestAndPrint<int, 1, false>(results, GL_LIST_INDEX);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_LIST_MODE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_LOGIC_OP_MODE);
 
-    // GL_LIGHT_i
-    // GL_LIGHT_MODEL_AMBIENT
-    // GL_LINE_STIPPLE_PATTERN
-    // GL_LINE_WIDTH_RANGE
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_COLOR_4);
+    requestAndPrint<float, 2, false>(results, GL_MAP1_GRID_DOMAIN);
+    requestAndPrint<int, 1, false>(results, GL_MAP1_GRID_SEGMENTS);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_INDEX);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_NORMAL);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_TEXTURE_COORD_1);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_TEXTURE_COORD_2);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_TEXTURE_COORD_3);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_TEXTURE_COORD_4);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_VERTEX_3);
+    requestAndPrint<bool, 1, false>(results, GL_MAP1_VERTEX_4);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_COLOR_4);
+    requestAndPrint<float, 2 ,false>(results, GL_MAP2_GRID_DOMAIN);
+    requestAndPrint<int, 2, false>(results, GL_MAP2_GRID_SEGMENTS);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_INDEX);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_NORMAL);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_TEXTURE_COORD_1);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_TEXTURE_COORD_2);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_TEXTURE_COORD_3);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_TEXTURE_COORD_4);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_VERTEX_3);
+    requestAndPrint<bool, 1, false>(results, GL_MAP2_VERTEX_4);
+    requestAndPrint<bool, 1, false>(results, GL_MAP_COLOR);
+    requestAndPrint<bool, 1, false>(results, GL_MAP_STENCIL);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_MATRIX_MODE);
+    requestAndPrint<int, 1, false>(results, GL_MAX_3D_TEXTURE_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_MAX_CLIENT_ATTRIB_STACK_DEPTH);
+    requestAndPrint<int, 1 ,false>(results, GL_MAX_ATTRIB_STACK_DEPTH);
+    requestAndPrint<int, 1, false>(results, GL_MAX_CLIP_PLANES);
+    requestAndPrint<int, 1, false>(results, GL_MAX_COLOR_MATRIX_STACK_DEPTH);
+    requestAndPrint<int, 1, false>(results, GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_CUBE_MAP_TEXTURE_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_MAX_DRAW_BUFFERS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_ELEMENT_INDEX);
+    requestAndPrint<int, 1, false>(results, GL_MAX_ELEMENTS_INDICES);
+    requestAndPrint<int, 1, false>(results, GL_MAX_ELEMENTS_VERTICES);
+    requestAndPrint<int, 1, false>(results, GL_MAX_EVAL_ORDER);
+    requestAndPrint<int, 1, false>(results, GL_MAX_FRAGMENT_UNIFORM_COMPONENTS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_LIGHTS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_LIST_NESTING);
+    requestAndPrint<int, 1, false>(results, GL_MAX_MODELVIEW_STACK_DEPTH);
+    requestAndPrint<int, 1, false>(results, GL_MAX_NAME_STACK_DEPTH);
+    requestAndPrint<int, 1, false>(results, GL_MAX_PIXEL_MAP_TABLE);
+    requestAndPrint<int, 1, false>(results, GL_MAX_PROJECTION_STACK_DEPTH);
+    requestAndPrint<int, 1, false>(results, GL_MAX_TEXTURE_IMAGE_UNITS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_TEXTURE_LOD_BIAS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_TEXTURE_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_MAX_TEXTURE_STACK_DEPTH);
+    requestAndPrint<int, 1, false>(results, GL_MAX_TEXTURE_UNITS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_VARYING_FLOATS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_VERTEX_ATTRIB_BINDINGS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_VERTEX_ATTRIBS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS);
+    requestAndPrint<int, 1, false>(results, GL_MAX_VERTEX_UNIFORM_COMPONENTS);
+    requestAndPrint<int, 2, false>(results, GL_MAX_VIEWPORT_DIMS);
+    requestAndPrint<bool, 1, false>(results, GL_MINMAX);
+    requestAndPrint<float, 16, false>(results, GL_MODELVIEW_MATRIX);
+    requestAndPrint<int, 1, false>(results, GL_MODELVIEW_STACK_DEPTH);
 
-    requestAndPrintb(GL_MAP1_COLOR_4);
-    requestAndPrinti(GL_MAP1_GRID_SEGMENTS);
-    requestAndPrintb(GL_MAP1_INDEX);
-    requestAndPrintb(GL_MAP1_NORMAL);
-    requestAndPrintb(GL_MAP1_TEXTURE_COORD_1);
-    requestAndPrintb(GL_MAP1_TEXTURE_COORD_2);
-    requestAndPrintb(GL_MAP1_TEXTURE_COORD_3);
-    requestAndPrintb(GL_MAP1_TEXTURE_COORD_4);
-    requestAndPrintb(GL_MAP1_VERTEX_3);
-    requestAndPrintb(GL_MAP1_VERTEX_4);
-    requestAndPrintb(GL_MAP2_COLOR_4);
-    requestAndPrintb(GL_MAP2_INDEX);
-    requestAndPrintb(GL_MAP2_NORMAL);
-    requestAndPrintb(GL_MAP2_TEXTURE_COORD_1);
-    requestAndPrintb(GL_MAP2_TEXTURE_COORD_2);
-    requestAndPrintb(GL_MAP2_TEXTURE_COORD_3);
-    requestAndPrintb(GL_MAP2_TEXTURE_COORD_4);
-    requestAndPrintb(GL_MAP2_VERTEX_3);
-    requestAndPrintb(GL_MAP2_VERTEX_4);
-    requestAndPrintb(GL_MAP_COLOR);
-    requestAndPrintb(GL_MAP_STENCIL);
-    requestAndPrinte(GL_MATRIX_MODE);
-    requestAndPrinti(GL_MAX_3D_TEXTURE_SIZE);
-    requestAndPrinti(GL_MAX_CLIP_PLANES);
-    requestAndPrinti(GL_MAX_COLOR_MATRIX_STACK_DEPTH);
-    requestAndPrinti(GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS);
-    requestAndPrinti(GL_MAX_CUBE_MAP_TEXTURE_SIZE);
-    requestAndPrinti(GL_MAX_DRAW_BUFFERS);
-    requestAndPrinti(GL_MAX_ELEMENT_INDEX);
-    requestAndPrinti(GL_MAX_ELEMENTS_INDICES);
-    requestAndPrinti(GL_MAX_ELEMENTS_VERTICES);
-    requestAndPrinti(GL_MAX_EVAL_ORDER);
-    requestAndPrinti(GL_MAX_FRAGMENT_UNIFORM_COMPONENTS);
-    requestAndPrinti(GL_MAX_LIGHTS);
-    requestAndPrinti(GL_MAX_LIST_NESTING);
-    requestAndPrinti(GL_MAX_MODELVIEW_STACK_DEPTH);
-    requestAndPrinti(GL_MAX_NAME_STACK_DEPTH);
-    requestAndPrinti(GL_MAX_PIXEL_MAP_TABLE);
-    requestAndPrinti(GL_MAX_PROJECTION_STACK_DEPTH);
-    requestAndPrinti(GL_MAX_TEXTURE_COORDS);
-    requestAndPrinti(GL_MAX_TEXTURE_IMAGE_UNITS);
-    requestAndPrinti(GL_MAX_TEXTURE_LOD_BIAS);
-    requestAndPrinti(GL_MAX_TEXTURE_SIZE);
-    requestAndPrinti(GL_MAX_TEXTURE_STACK_DEPTH);
-    requestAndPrinti(GL_MAX_TEXTURE_UNITS);
-    requestAndPrinti(GL_MAX_VARYING_FLOATS);
-    requestAndPrinti(GL_MAX_VERTEX_ATTRIB_BINDINGS);
-    requestAndPrinti(GL_MAX_VERTEX_ATTRIBS);
-    requestAndPrinti(GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS);
-    requestAndPrinti(GL_MAX_VERTEX_UNIFORM_COMPONENTS);
-    requestAndPrintb(GL_MINMAX);
-    requestAndPrinti(GL_MODELVIEW_STACK_DEPTH);
+    requestAndPrint<int, 1, false>(results, GL_NAME_STACK_DEPTH);
+    requestAndPrint<bool, 1, false>(results, GL_NORMAL_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_NORMAL_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_NORMAL_ARRAY_STRIDE);
+    requestAndPrint<bool, 1, false>(results, GL_NORMAL_ARRAY_TYPE);
+    requestAndPrint<bool, 1, false>(results, GL_NORMALIZE);
+    requestAndPrint<int, 1, false>(results, GL_NUM_COMPRESSED_TEXTURE_FORMATS);
 
-    // GL_MAP1_GRID_DOMAIN
-    // GL_MAP2_GRID_DOMAIN
-    // GL_MAP2_GRID_SEGMENTS
-    // GL_MAX_CLIENT_ATTRIB_STACK_DEPTH
-    // GL_MAX_ATTRIB_STACK_DEPTH
-    // GL_MAX_VIEWPORT_DIMS
-    // GL_MODELVIEW_MATRIX
+    requestAndPrint<int, 1, false>(results, GL_PACK_ALIGNMENT);
+    requestAndPrint<int, 1, false>(results, GL_PACK_IMAGE_HEIGHT);
+    requestAndPrint<bool, 1, false>(results, GL_PACK_LSB_FIRST);
+    requestAndPrint<int, 1, false>(results, GL_PACK_ROW_LENGTH);
+    requestAndPrint<int, 1, false>(results, GL_PACK_SKIP_IMAGES);
+    requestAndPrint<int, 1, false>(results, GL_PACK_SKIP_PIXELS);
+    requestAndPrint<int, 1, false>(results, GL_PACK_SKIP_ROWS);
+    requestAndPrint<bool, 1, false>(results, GL_PACK_SWAP_BYTES);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_PERSPECTIVE_CORRECTION_HINT);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_A_TO_A_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_B_TO_B_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_G_TO_G_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_I_TO_A_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_I_TO_B_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_I_TO_G_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_I_TO_I_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_I_TO_R_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_R_TO_R_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_MAP_S_TO_S_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_PACK_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_PIXEL_UNPACK_BUFFER_BINDING);
+    requestAndPrint<float, 3, false>(results, GL_POINT_DISTANCE_ATTENUATION);
+    requestAndPrint<float, 1, false>(results, GL_POINT_FADE_THRESHOLD_SIZE);
+    requestAndPrint<float, 1, false>(results, GL_POINT_SIZE);
+    requestAndPrint<float, 1, false>(results, GL_POINT_SIZE_GRANULARITY);
+    requestAndPrint<float, 1, false>(results, GL_POINT_SIZE_MIN);
+    requestAndPrint<float, 1, false>(results, GL_POINT_SIZE_MAX);
+    requestAndPrint<float, 2, false>(results, GL_POINT_SIZE_RANGE);
+    requestAndPrint<bool, 1, false>(results, GL_POINT_SMOOTH);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_POINT_SMOOTH_HINT);
+    requestAndPrint<bool, 1, false>(results, GL_POINT_SPRITE);
+    requestAndPrint<gl::GLenum, 2, false>(results, GL_POLYGON_MODE);
+    requestAndPrint<float, 1, false>(results, GL_POLYGON_OFFSET_FACTOR);
+    requestAndPrint<float, 1, false>(results, GL_POLYGON_OFFSET_UNITS);
+    requestAndPrint<bool, 1, false>(results, GL_POLYGON_OFFSET_FILL);
+    requestAndPrint<bool, 1, false>(results, GL_POLYGON_OFFSET_LINE);
+    requestAndPrint<bool, 1, false>(results, GL_POLYGON_OFFSET_POINT);
+    requestAndPrint<bool, 1, false>(results, GL_POLYGON_SMOOTH);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_POLYGON_SMOOTH_HINT);
+    requestAndPrint<bool, 1, false>(results, GL_POLYGON_STIPPLE);
+    requestAndPrint<bool, 1, false>(results, GL_POST_COLOR_MATRIX_COLOR_TABLE);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_RED_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_GREEN_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_BLUE_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_ALPHA_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_RED_SCALE);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_GREEN_SCALE);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_BLUE_SCALE);
+    requestAndPrint<float, 1, false>(results, GL_POST_COLOR_MATRIX_ALPHA_SCALE);
+    requestAndPrint<bool, 1, false>(results, GL_POST_CONVOLUTION_COLOR_TABLE);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_RED_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_GREEN_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_BLUE_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_ALPHA_BIAS);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_RED_SCALE);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_GREEN_SCALE);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_BLUE_SCALE);
+    requestAndPrint<float, 1, false>(results, GL_POST_CONVOLUTION_ALPHA_SCALE);
+    requestAndPrint<float, 16, false>(results, GL_PROJECTION_MATRIX);
+    requestAndPrint<int, 1, false>(results, GL_PROJECTION_STACK_DEPTH);
 
-    requestAndPrinti(GL_NAME_STACK_DEPTH);
-    requestAndPrintb(GL_NORMAL_ARRAY);
-    requestAndPrinti(GL_NORMAL_ARRAY_BUFFER_BINDING);
-    requestAndPrinti(GL_NORMAL_ARRAY_STRIDE);
-    requestAndPrinte(GL_NORMAL_ARRAY_TYPE);
-    requestAndPrintb(GL_NORMALIZE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_READ_BUFFER);
+    requestAndPrint<float, 1, false>(results, GL_RED_BIAS);
+    requestAndPrint<int, 1, false>(results, GL_RED_BITS);
+    requestAndPrint<float, 1, false>(results, GL_RED_SCALE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_RENDER_MODE);
+    requestAndPrint<bool, 1, false>(results, GL_RESCALE_NORMAL);
+    requestAndPrint<bool, 1, false>(results, GL_RGBA_MODE);
 
-    // GL_NUM_COMPRESSED_TEXTURE_FORMATS
+    requestAndPrint<int, 1, false>(results, GL_SAMPLE_BUFFERS);
+    requestAndPrint<float, 1, false>(results, GL_SAMPLE_COVERAGE_VALUE);
+    requestAndPrint<bool, 1, false>(results, GL_SAMPLE_COVERAGE_INVERT);
+    requestAndPrint<int, 1, false>(results, GL_SAMPLES);
+    requestAndPrint<float, 4, false>(results, GL_SCISSOR_BOX);
+    requestAndPrint<bool, 1, false>(results, GL_SCISSOR_TEST);
+    requestAndPrint<bool, 1, false>(results, GL_SECONDARY_COLOR_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_SECONDARY_COLOR_ARRAY_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_SECONDARY_COLOR_ARRAY_STRIDE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_SECONDARY_COLOR_ARRAY_TYPE);
+    requestAndPrint<int, 1, false>(results, GL_SELECTION_BUFFER_SIZE);
+    requestAndPrint<bool, 1, false>(results, GL_SEPARABLE_2D);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_SHADE_MODEL);
+    requestAndPrint<float, 2, false>(results, GL_SMOOTH_LINE_WIDTH_RANGE);
+    requestAndPrint<float, 1, false>(results, GL_SMOOTH_LINE_WIDTH_GRANULARITY);
+    requestAndPrint<float, 2, false>(results, GL_SMOOTH_POINT_SIZE_RANGE);
+    requestAndPrint<float, 1, false>(results, GL_SMOOTH_POINT_SIZE_GRANULARITY);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_BACK_FAIL);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_BACK_FUNC);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_BACK_PASS_DEPTH_FAIL);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_BACK_PASS_DEPTH_PASS);
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_BACK_REF);
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_BACK_VALUE_MASK); // TODO: interpret as mask
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_BACK_WRITEMASK); // TODO: interpret as mask
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_BITS);
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_CLEAR_VALUE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_FAIL);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_FUNC);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_PASS_DEPTH_FAIL);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_STENCIL_PASS_DEPTH_PASS);
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_REF);
+    requestAndPrint<bool, 1, false>(results, GL_STENCIL_TEST);
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_VALUE_MASK); // TODO: interpret as mask
+    requestAndPrint<int, 1, false>(results, GL_STENCIL_WRITEMASK); // TODO: interpret as mask
+    requestAndPrint<bool, 1, false>(results, GL_STEREO);
+    requestAndPrint<int, 1, false>(results, GL_SUBPIXEL_BITS);
 
-    requestAndPrinti(GL_PACK_ALIGNMENT);
-    requestAndPrinti(GL_PACK_IMAGE_HEIGHT);
-    requestAndPrintb(GL_PACK_LSB_FIRST);
-    requestAndPrinti(GL_PACK_ROW_LENGTH);
-    requestAndPrinti(GL_PACK_SKIP_IMAGES);
-    requestAndPrinti(GL_PACK_SKIP_PIXELS);
-    requestAndPrinti(GL_PACK_SKIP_ROWS);
-    requestAndPrintb(GL_PACK_SWAP_BYTES);
-    requestAndPrinte(GL_PERSPECTIVE_CORRECTION_HINT);
-    requestAndPrinti(GL_PIXEL_MAP_A_TO_A_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_B_TO_B_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_G_TO_G_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_I_TO_A_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_I_TO_B_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_I_TO_G_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_I_TO_I_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_I_TO_R_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_R_TO_R_SIZE);
-    requestAndPrinti(GL_PIXEL_MAP_S_TO_S_SIZE);
-    requestAndPrinti(GL_PIXEL_PACK_BUFFER_BINDING);
-    requestAndPrinti(GL_PIXEL_UNPACK_BUFFER_BINDING);
-    requestAndPrintf(GL_POINT_FADE_THRESHOLD_SIZE);
-    requestAndPrintf(GL_POINT_SIZE);
-    requestAndPrintf(GL_POINT_SIZE_GRANULARITY);
-    requestAndPrintf(GL_POINT_SIZE_MAX);
-    requestAndPrintf(GL_POINT_SIZE_MIN);
-    requestAndPrintb(GL_POINT_SMOOTH);
-    requestAndPrinte(GL_POINT_SMOOTH_HINT);
-    requestAndPrintb(GL_POINT_SPRITE);
-    requestAndPrintf(GL_POLYGON_OFFSET_FACTOR);
-    requestAndPrintf(GL_POLYGON_OFFSET_UNITS);
-    requestAndPrintb(GL_POLYGON_OFFSET_FILL);
-    requestAndPrintb(GL_POLYGON_OFFSET_LINE);
-    requestAndPrintb(GL_POLYGON_OFFSET_POINT);
-    requestAndPrintb(GL_POLYGON_SMOOTH);
-    requestAndPrinte(GL_POLYGON_SMOOTH_HINT);
-    requestAndPrintb(GL_POLYGON_STIPPLE);
-    requestAndPrintb(GL_POST_COLOR_MATRIX_COLOR_TABLE);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_RED_BIAS);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_GREEN_BIAS);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_BLUE_BIAS);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_ALPHA_BIAS);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_RED_SCALE);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_GREEN_SCALE);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_BLUE_SCALE);
-    requestAndPrintf(GL_POST_COLOR_MATRIX_ALPHA_SCALE);
-    requestAndPrintb(GL_POST_CONVOLUTION_COLOR_TABLE);
-    requestAndPrintf(GL_POST_CONVOLUTION_RED_BIAS);
-    requestAndPrintf(GL_POST_CONVOLUTION_GREEN_BIAS);
-    requestAndPrintf(GL_POST_CONVOLUTION_BLUE_BIAS);
-    requestAndPrintf(GL_POST_CONVOLUTION_ALPHA_BIAS);
-    requestAndPrintf(GL_POST_CONVOLUTION_RED_SCALE);
-    requestAndPrintf(GL_POST_CONVOLUTION_GREEN_SCALE);
-    requestAndPrintf(GL_POST_CONVOLUTION_BLUE_SCALE);
-    requestAndPrintf(GL_POST_CONVOLUTION_ALPHA_SCALE);
-    requestAndPrinti(GL_PROJECTION_STACK_DEPTH);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_1D);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_BINDING_1D);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_2D);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_BINDING_2D);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_3D);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_BINDING_3D);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_BINDING_CUBE_MAP);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_TEXTURE_COMPRESSION_HINT);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_COORD_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_COORD_ARRAY_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_COORD_ARRAY_STRIDE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_TEXTURE_COORD_ARRAY_TYPE);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_CUBE_MAP);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_GEN_Q);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_GEN_R);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_GEN_S);
+    requestAndPrint<bool, 1, false>(results, GL_TEXTURE_GEN_T);
+    requestAndPrint<float, 16, false>(results, GL_TEXTURE_MATRIX);
+    requestAndPrint<int, 1, false>(results, GL_TEXTURE_STACK_DEPTH);
+    requestAndPrint<float, 16, false>(results, GL_TRANSPOSE_COLOR_MATRIX);
+    requestAndPrint<float, 16, false>(results, GL_TRANSPOSE_MODELVIEW_MATRIX);
+    requestAndPrint<float, 16, false>(results, GL_TRANSPOSE_PROJECTION_MATRIX);
+    requestAndPrint<float, 16, false>(results, GL_TRANSPOSE_TEXTURE_MATRIX);
 
-    // GL_POINT_DISTANCE_ATTENUATION
-    // GL_POINT_SIZE_RANGE
-    // GL_POLYGON_MODE
-    // GL_PROJECTION_MATRIX
+    requestAndPrint<int, 1, false>(results, GL_UNPACK_ALIGNMENT);
+    requestAndPrint<int, 1, false>(results, GL_UNPACK_IMAGE_HEIGHT);
+    requestAndPrint<bool, 1, false>(results, GL_UNPACK_LSB_FIRST);
+    requestAndPrint<int, 1, false>(results, GL_UNPACK_ROW_LENGTH);
+    requestAndPrint<int, 1, false>(results, GL_UNPACK_SKIP_IMAGES);
+    requestAndPrint<int, 1, false>(results, GL_UNPACK_SKIP_PIXELS);
+    requestAndPrint<int, 1, false>(results, GL_UNPACK_SKIP_ROWS);
+    requestAndPrint<bool, 1, false>(results, GL_UNPACK_SWAP_BYTES);
 
-    requestAndPrinte(GL_READ_BUFFER);
-    requestAndPrintf(GL_RED_BIAS);
-    requestAndPrinti(GL_RED_BITS);
-    requestAndPrintf(GL_RED_SCALE);
-    requestAndPrinte(GL_RENDER_MODE);
-    requestAndPrintb(GL_RESCALE_NORMAL);
-    requestAndPrintb(GL_RGBA_MODE);
+    requestAndPrint<bool, 1, false>(results, GL_VERTEX_ARRAY);
+    requestAndPrint<int, 1, false>(results, GL_VERTEX_ARRAY_BUFFER_BINDING);
+    requestAndPrint<int, 1, false>(results, GL_VERTEX_ARRAY_SIZE);
+    requestAndPrint<int, 1, false>(results, GL_VERTEX_ARRAY_STRIDE);
+    requestAndPrint<gl::GLenum, 1, false>(results, GL_VERTEX_ARRAY_TYPE);
+    requestAndPrint<bool, 1, false>(results, GL_VERTEX_PROGRAM_POINT_SIZE);
+    requestAndPrint<bool, 1, false>(results, GL_VERTEX_PROGRAM_TWO_SIDE);
+    requestAndPrint<int, 1, false>(results, GL_VIEWPORT_INDEX_PROVOKING_VERTEX);
+    requestAndPrint<int, 1, false>(results, GL_VIEWPORT_SUBPIXEL_BITS);
+    requestAndPrint<int, 4, false>(results, GL_VIEWPORT);
+    requestAndPrint<int, 2, false>(results, GL_VIEWPORT_BOUNDS_RANGE);
 
-    requestAndPrinti(GL_SAMPLE_BUFFERS);
-    requestAndPrintf(GL_SAMPLE_COVERAGE_VALUE);
-    requestAndPrintb(GL_SAMPLE_COVERAGE_INVERT);
-    requestAndPrinti(GL_SAMPLES);
-    requestAndPrintb(GL_SCISSOR_TEST);
-    requestAndPrintb(GL_SECONDARY_COLOR_ARRAY);
-    requestAndPrinti(GL_SECONDARY_COLOR_ARRAY_BUFFER_BINDING);
-    requestAndPrinti(GL_SECONDARY_COLOR_ARRAY_SIZE);
-    requestAndPrinti(GL_SECONDARY_COLOR_ARRAY_STRIDE);
-    requestAndPrinte(GL_SECONDARY_COLOR_ARRAY_TYPE);
-    requestAndPrinti(GL_SELECTION_BUFFER_SIZE);
-    requestAndPrintb(GL_SEPARABLE_2D);
-    requestAndPrinte(GL_SHADE_MODEL);
-    requestAndPrintf(GL_SMOOTH_LINE_WIDTH_GRANULARITY);
-    requestAndPrintf(GL_SMOOTH_POINT_SIZE_GRANULARITY);
-    requestAndPrinte(GL_STENCIL_BACK_FAIL);
-    requestAndPrinte(GL_STENCIL_BACK_FUNC);
-    requestAndPrinte(GL_STENCIL_BACK_PASS_DEPTH_FAIL);
-    requestAndPrinte(GL_STENCIL_BACK_PASS_DEPTH_PASS);
-    requestAndPrinti(GL_STENCIL_BACK_REF);
-    requestAndPrinti(GL_STENCIL_BITS);
-    requestAndPrinti(GL_STENCIL_CLEAR_VALUE);
-    requestAndPrinte(GL_STENCIL_FAIL);
-    requestAndPrinte(GL_STENCIL_FUNC);
-    requestAndPrinte(GL_STENCIL_PASS_DEPTH_FAIL);
-    requestAndPrinte(GL_STENCIL_PASS_DEPTH_PASS);
-    requestAndPrinti(GL_STENCIL_REF);
-    requestAndPrintb(GL_STENCIL_TEST);
-    requestAndPrintb(GL_STEREO);
-    requestAndPrinti(GL_SUBPIXEL_BITS);
-
-    // GL_SCISSOR_BOX
-    // GL_SMOOTH_LINE_WIDTH_RANGE
-    // GL_SMOOTH_POINT_SIZE_RANGE
-    // GL_STENCIL_BACK_VALUE_MASK
-    // GL_STENCIL_BACK_WRITEMASK
-    // GL_STENCIL_VALUE_MASK
-    // GL_STENCIL_WRITEMASK
-
-    requestAndPrintb(GL_TEXTURE_1D);
-    requestAndPrinti(GL_TEXTURE_BINDING_1D);
-    requestAndPrintb(GL_TEXTURE_2D);
-    requestAndPrinti(GL_TEXTURE_BINDING_2D);
-    requestAndPrintb(GL_TEXTURE_3D);
-    requestAndPrinti(GL_TEXTURE_BINDING_3D);
-    requestAndPrinti(GL_TEXTURE_BINDING_CUBE_MAP);
-    requestAndPrinte(GL_TEXTURE_COMPRESSION_HINT);
-    requestAndPrintb(GL_TEXTURE_COORD_ARRAY);
-    requestAndPrinti(GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING);
-    requestAndPrinti(GL_TEXTURE_COORD_ARRAY_SIZE);
-    requestAndPrinti(GL_TEXTURE_COORD_ARRAY_STRIDE);
-    requestAndPrinte(GL_TEXTURE_COORD_ARRAY_TYPE);
-    requestAndPrintb(GL_TEXTURE_CUBE_MAP);
-    requestAndPrintb(GL_TEXTURE_GEN_Q);
-    requestAndPrintb(GL_TEXTURE_GEN_R);
-    requestAndPrintb(GL_TEXTURE_GEN_S);
-    requestAndPrintb(GL_TEXTURE_GEN_T);
-    requestAndPrinti(GL_TEXTURE_STACK_DEPTH);
-
-    // GL_TEXTURE_MATRIX
-    // GL_TRANSPOSE_COLOR_MATRIX
-    // GL_TRANSPOSE_MODELVIEW_MATRIX
-    // GL_TRANSPOSE_PROJECTION_MATRIX
-    // GL_TRANSPOSE_TEXTURE_MATRIX
-
-    requestAndPrinti(GL_UNPACK_ALIGNMENT);
-    requestAndPrinti(GL_UNPACK_IMAGE_HEIGHT);
-    requestAndPrintb(GL_UNPACK_LSB_FIRST);
-    requestAndPrinti(GL_UNPACK_ROW_LENGTH);
-    requestAndPrinti(GL_UNPACK_SKIP_IMAGES);
-    requestAndPrinti(GL_UNPACK_SKIP_PIXELS);
-    requestAndPrinti(GL_UNPACK_SKIP_ROWS);
-    requestAndPrintb(GL_UNPACK_SWAP_BYTES);
-
-    requestAndPrintb(GL_VERTEX_ARRAY);
-    requestAndPrinti(GL_VERTEX_ARRAY_BUFFER_BINDING);
-    requestAndPrinti(GL_VERTEX_ARRAY_SIZE);
-    requestAndPrinti(GL_VERTEX_ARRAY_STRIDE);
-    requestAndPrinte(GL_VERTEX_ARRAY_TYPE);
-    requestAndPrintb(GL_VERTEX_PROGRAM_POINT_SIZE);
-    requestAndPrintb(GL_VERTEX_PROGRAM_TWO_SIDE);
-    requestAndPrinti(GL_VIEWPORT_INDEX_PROVOKING_VERTEX);
-    requestAndPrinti(GL_VIEWPORT_SUBPIXEL_BITS);
-    requestAndPrintf(GL_ZOOM_X);
-    requestAndPrintf(GL_ZOOM_Y);
-
-    // GL_VIEWPORT
-    // GL_VIEWPORT_BOUNDS_RANGE
-    */
+    requestAndPrint<float, 1, false>(results, GL_ZOOM_X);
+    requestAndPrint<float, 1, false>(results, GL_ZOOM_Y);
 
     unsigned char firstChar = 0;
     for (const auto & result : results)
