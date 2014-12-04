@@ -98,24 +98,6 @@ namespace std
 {
 
 template<>
-struct hash<gl::GLextension>
-{
-    hash<std::underlying_type<gl::GLextension>::type>::result_type operator()(const gl::GLextension & t) const
-    {
-        return hash<std::underlying_type<gl::GLextension>::type>()(static_cast<std::underlying_type<gl::GLextension>::type>(t));
-    }
-};
-
-}
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);
-
-
-namespace std
-{
-
-template<>
 struct hash<gl::GLenum>
 {
     hash<std::underlying_type<gl::GLenum>::type>::result_type operator()(const gl::GLenum & t) const
@@ -165,6 +147,24 @@ struct hash<gl::GLboolean>
 
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLextension>
+{
+    hash<std::underlying_type<gl::GLextension>::type>::result_type operator()(const gl::GLextension & t) const
+    {
+        return hash<std::underlying_type<gl::GLextension>::type>()(static_cast<std::underlying_type<gl::GLextension>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);
 
 
 namespace std
