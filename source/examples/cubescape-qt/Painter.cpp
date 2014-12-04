@@ -28,13 +28,6 @@ void Painter::initialize()
     m_cubescape = new CubeScape();
 
     m_initialized = true;
-
-    // print some gl infos (query)
-
-    //std::cout << std::endl
-    //    << "OpenGL Version:  " << glbinding::ContextInfo::version() << std::endl
-    //    << "OpenGL Vendor:   " << glbinding::ContextInfo::vendor() << std::endl
-    //    << "OpenGL Renderer: " << glbinding::ContextInfo::renderer() << std::endl << std::endl;
 }
 
 void Painter::resize(int width, int height)
