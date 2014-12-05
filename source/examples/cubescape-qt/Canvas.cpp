@@ -93,7 +93,9 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
     // print some gl infos (query)
 
     qDebug();
+#if (QT_VERSION >= 0x050300)
     qDebug() << "OpenGL API:     " << (m_context->isOpenGLES() ? "GLES" : "GL");
+#endif
     qDebug() << "OpenGL Version: " << qPrintable(QString::fromStdString(
         glbinding::ContextInfo::version().toString()));
     qDebug() << "OpenGL Vendor:  " << qPrintable(QString::fromStdString(
