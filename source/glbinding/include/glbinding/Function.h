@@ -20,7 +20,7 @@ template <typename ReturnType, typename... Arguments> struct FunctionHelper;
 template <typename ReturnType, typename... Arguments>
 struct CallbackType
 {
-    using type = std::function<void(Arguments..., ReturnType)>;
+    using type = std::function<void(ReturnType, Arguments...)>;
 };
 
 template <typename... Arguments>
@@ -41,20 +41,23 @@ class Function : public AbstractFunction
 
     using Signature = ReturnType(WINAPI *) (Arguments...);
 
-    using BeforeCallback = std::function<void(Arguments...)>;
+    using BeforeCallback = typename CallbackType<void, Arguments...>::type;
     using AfterCallback = typename CallbackType<ReturnType, Arguments...>::type;
 
 public:
     Function(const char * name);
 
     ReturnType operator()(Arguments&... arguments) const;
+    ReturnType directCall(Arguments... arguments) const;
 
-    //void addBeforeCallback(BeforeCallback callback);
-    //void addAfterCallback(AfterCallback callback);
+    void setBeforeCallback(BeforeCallback callback);
+    void clearBeforeCallback();
+    void setAfterCallback(AfterCallback callback);
+    void clearAfterCallback();
 
 protected:
-//    std::vector<BeforeCallback> m_beforeCallbacks;
-//    std::vector<AfterCallback> m_afterCallbacks;
+    BeforeCallback m_beforeCallback;
+    AfterCallback m_afterCallback;
 };
 
 } // namespace glbinding
