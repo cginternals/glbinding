@@ -17,6 +17,7 @@ namespace glbinding
 {
 
 std::vector<AbstractFunction *> Binding::s_additionalFunctions;
+std::vector<Binding::ContextSwitchCallback> Binding::s_callbacks;
 
 const Binding::array_t & Binding::functions() 
 {
@@ -97,6 +98,8 @@ void Binding::useContext(const ContextHandle context)
         g_mutex.unlock();
 
         initialize(t_context);
+
+        return;
     }
     else
     {
@@ -105,6 +108,13 @@ void Binding::useContext(const ContextHandle context)
 
     g_mutex.lock();
     AbstractFunction::setStatePos(g_bindings[t_context]);
+    g_mutex.unlock();
+
+    g_mutex.lock();
+    for (const auto & callback : s_callbacks)
+    {
+        callback(t_context);
+    }
     g_mutex.unlock();
 }
 
@@ -121,6 +131,13 @@ void Binding::releaseContext(const ContextHandle context)
 
     g_mutex.lock();
     g_bindings.erase(context);
+    g_mutex.unlock();
+}
+
+void Binding::addContextSwitchCallback(ContextSwitchCallback callback)
+{
+    g_mutex.lock();
+    s_callbacks.push_back(std::move(callback));
     g_mutex.unlock();
 }
 

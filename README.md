@@ -163,6 +163,25 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 // ... OpenGL code
 ```
 
+
+##### Context-Switch Callbacks
+
+When switching between active contexts, not only *glbinding* may be interested in the current context, but your application as well (e.g., per context cached OpenGL state).
+You may also not now when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
+Therefor, you can register one callback that is called when the current active context in *glbinding* is changed.
+
+```c++
+#include <glbinding/Binding.h>
+
+using namespace glbinding;
+
+// ...
+Binding::addContextSwitchCallback([](ContextHandle handle) {
+    std::cout << "Switching to context " << handle << std::endl;
+})
+```
+
+
 ##### Meta Information
 
 Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and compile time information about the gl.xml and your OpenGL driver.
