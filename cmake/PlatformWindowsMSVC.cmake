@@ -45,6 +45,9 @@ set(WIN32_COMPILE_FLAGS
 
     # /MD           # -> runtime library: multithreaded dll
     # /MDd          # -> Runtime Library: Multithreaded Debug DLL
+
+      /bigobj       # -> an object file can hold up to 65,536 (2^16) addressable sections,
+                    #    /bigobj increases that address capacity to 4,294,967,296 (2^32).
 )
 
 # http://support.microsoft.com/kb/154419
