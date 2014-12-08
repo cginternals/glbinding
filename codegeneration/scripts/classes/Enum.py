@@ -295,10 +295,12 @@ def patchEnums(enums, patches, groups):
     groupsByName = dict([(group.name, group) for group in groups])
 
     for patch in patches:
-
         if patch.name not in enumsByName:
             createGroup_ifImplicit(groups, groupsByName, patch)
             enums.append(patch)
+        elif len(patch.aliasString) > 0:
+            enumsByName[patch.name].aliasString = patch.aliasString
+            enumsByName[patch.name].alias = enumsByName[patch.aliasString]
 
         # ToDo: probably more fixes might be appropriate
 

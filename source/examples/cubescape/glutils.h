@@ -4,6 +4,7 @@
 #include <glbinding/gl/gl32core.h>
 
 void compile_info(const gl32core::GLuint shader);
+void link_info(const gl32core::GLuint program);
 
 struct mat4
 {

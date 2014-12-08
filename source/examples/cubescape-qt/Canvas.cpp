@@ -34,7 +34,7 @@ Canvas::Canvas(
 , m_continuousRepaint(false)
 , m_painter(nullptr)
 {
-    setSurfaceType(OpenGLSurface); 
+    setSurfaceType(OpenGLSurface);
 
     create();
 
@@ -93,11 +93,14 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
     // print some gl infos (query)
 
     qDebug();
-    qDebug() << "OpenGL Version:  " << qPrintable(QString::fromStdString(
+#if (QT_VERSION >= 0x050300)
+    qDebug() << "OpenGL API:     " << (m_context->isOpenGLES() ? "GLES" : "GL");
+#endif
+    qDebug() << "OpenGL Version: " << qPrintable(QString::fromStdString(
         glbinding::ContextInfo::version().toString()));
-    qDebug() << "OpenGL Vendor:   " << qPrintable(QString::fromStdString(
+    qDebug() << "OpenGL Vendor:  " << qPrintable(QString::fromStdString(
         glbinding::ContextInfo::vendor()));
-    qDebug() << "OpenGL Renderer: " << qPrintable(QString::fromStdString(
+    qDebug() << "OpenGL Renderer:" << qPrintable(QString::fromStdString(
         glbinding::ContextInfo::renderer()));
     qDebug();
 

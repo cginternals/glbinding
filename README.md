@@ -191,6 +191,23 @@ using namespace glbinding;
 GLenum errorCode = Binding::GetError.directCall();
 ```
 
+##### Context-Switch Callbacks
+
+When switching between active contexts, not only *glbinding* may be interested in the current context, but your application as well (e.g., per context cached OpenGL state).
+You may also not now when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
+Therefor, you can register one callback that is called when the current active context in *glbinding* is changed.
+
+```c++
+#include <glbinding/Binding.h>
+
+using namespace glbinding;
+
+// ...
+Binding::addContextSwitchCallback([](ContextHandle handle) {
+    std::cout << "Switching to context " << handle << std::endl;
+})
+```
+
 ##### Meta Information
 
 Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and compile time information about the gl.xml and your OpenGL driver.
@@ -242,7 +259,6 @@ if (Meta::stringsByGL())
 }
 ```
 
-
 ##### Performance
 
 *glbinding* causes no signigicant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
@@ -259,6 +275,11 @@ The necessary python scripts are provided in this repository. Since the ```gl.xm
 
 build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)
 -->
+
+## Context Creation Cheat Sheet
+
+When requesting an OpenGL context of a specific version, the created context does not always match that version, but instead returns a context with "appropriate" capabilities. The mapping of requested and created version depends on various aspects, e.g., forward compatibility and core flags, context creation library, driver, graphics card, and operating system. To get some understanding of that mapping a [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet) is provided, gathering the ouput of glbindings contexts example.
+
 
 ## Using glbinding
 

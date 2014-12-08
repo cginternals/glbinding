@@ -76,12 +76,13 @@ CubeScape::CubeScape()
     compile_info(fs);
 
     m_program = glCreateProgram();
-
+    
     glAttachShader(m_program, vs);
     glAttachShader(m_program, gs);
     glAttachShader(m_program, fs);
 
     glLinkProgram(m_program);
+    link_info(m_program);
 
     // create textures
 
@@ -167,7 +168,6 @@ CubeScape::CubeScape()
     // since only single program and single data is used, bind only once 
 
     glEnable(GL_DEPTH_TEST);
-    glEnable(GL_TEXTURE_2D);
     
     glClearColor(0.f, 0.f, 0.f, 1.0f);
 

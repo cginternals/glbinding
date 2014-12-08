@@ -61,6 +61,10 @@ int main()
         return -1;
     }
 
+    Binding::addContextSwitchCallback([](ContextHandle handle){
+        std::cout << "Activating context " << handle << std::endl;
+    });
+
     glfwMakeContextCurrent(window);
 
     // print some gl infos (query)

@@ -31,6 +31,26 @@ void compile_info(const GLuint shader)
     }
 }
 
+void link_info(const GLuint program)
+{
+    GLint status(0);
+    glGetProgramiv(program, GL_LINK_STATUS, &status);
+
+    if (1 != status)
+    {
+        GLint maxLength(0);
+        GLint logLength(0);
+
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &maxLength);
+
+        GLchar * log = new GLchar[maxLength];
+        glGetProgramInfoLog(program, maxLength, &logLength, log);
+
+        std::cout << "Linking program failed." << std::endl
+            << log << std::endl;
+    }
+}
+
 
 mat4::mat4()
 {

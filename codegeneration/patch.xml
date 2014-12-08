@@ -13,6 +13,10 @@
     <enums namespace="GL" group="PathFontStyle" type="bitmask">
         <enum value="0x00" name="GL_NONE_BIT"/>
     </enums>
+    
+    <enums namespace="GL" start="0x8B48" end="0x8B4F" vendor="ARB">
+        <enum value="0x8B4B" name="GL_MAX_VARYING_COMPONENTS" alias="GL_MAX_VARYING_FLOATS"/>
+    </enums>
 
     <groups>
 

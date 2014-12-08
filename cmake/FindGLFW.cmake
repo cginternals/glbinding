@@ -33,6 +33,9 @@ find_library(GLFW_LIBRARY
     $ENV{PROGRAMFILES}/GLFW/lib
     $ENV{PROGRAMFILES}/GLFW/lib/x64
     $ENV{PROGRAMFILES}/GLFW/lib-msvc120
+    $ENV{GLFW_HOME}/build/src
+    $ENV{GLFW_HOME}/build-debug/src
+    $ENV{GLFW_HOME}/build-release/src
     /usr/lib64
     /usr/local/lib64
     /sw/lib64
