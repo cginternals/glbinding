@@ -5,6 +5,7 @@
 #include <set>
 #include <vector>
 #include <functional>
+#include <string>
 
 namespace glbinding 
 {
