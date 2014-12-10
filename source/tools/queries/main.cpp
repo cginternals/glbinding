@@ -235,7 +235,7 @@ int main(int argc, const char * argv[])
 
     std::cout << std::endl << "[QUERYING STATE VALUES]" << std::endl;
 
-    std::cout << std::endl << "Matrix  Stack States" << std::endl;
+    std::cout << std::endl << "Matrix Stack States" << std::endl;
     requestState<GLenum   , 1>(GL_MATRIX_MODE, { { GL_MODELVIEW } });
     requestState<GLfloat  , 16>(GL_COLOR_MATRIX, identity4);
     requestState<GLfloat  , 16>(GL_MODELVIEW_MATRIX, identity4);
@@ -256,75 +256,74 @@ int main(int argc, const char * argv[])
     std::cout << std::endl << "Pixel Sotre States" << std::endl;
     requestState<GLboolean, 1>(GL_PACK_SWAP_BYTES, { { GL_FALSE } });
     requestState<GLboolean, 1>(GL_PACK_LSB_FIRST, { { GL_FALSE } });
-    requestState<GLint, 1>(GL_PACK_ROW_LENGTH, { { 0 } });
-    requestState<GLint, 1>(GL_PACK_IMAGE_HEIGHT, { { 0 } });
-    requestState<GLint, 1>(GL_PACK_SKIP_ROWS, { { 0 } });
-    requestState<GLint, 1>(GL_PACK_SKIP_PIXELS, { { 0 } });
-    requestState<GLint, 1>(GL_PACK_SKIP_IMAGES, { { 0 } });
-    requestState<GLint, 1>(GL_PACK_ALIGNMENT, { { 4 } });
+    requestState<GLint    , 1>(GL_PACK_ROW_LENGTH, { { 0 } });
+    requestState<GLint    , 1>(GL_PACK_IMAGE_HEIGHT, { { 0 } });
+    requestState<GLint    , 1>(GL_PACK_SKIP_ROWS, { { 0 } });
+    requestState<GLint    , 1>(GL_PACK_SKIP_PIXELS, { { 0 } });
+    requestState<GLint    , 1>(GL_PACK_SKIP_IMAGES, { { 0 } });
+    requestState<GLint    , 1>(GL_PACK_ALIGNMENT, { { 4 } });
     requestState<GLboolean, 1>(GL_UNPACK_SWAP_BYTES, { { GL_FALSE } });
     requestState<GLboolean, 1>(GL_UNPACK_LSB_FIRST, { { GL_FALSE } });
-    requestState<GLint, 1>(GL_UNPACK_ROW_LENGTH, { { 0 } });
-    requestState<GLint, 1>(GL_UNPACK_IMAGE_HEIGHT, { { 0 } });
-    requestState<GLint, 1>(GL_UNPACK_SKIP_ROWS, { { 0 } });
-    requestState<GLint, 1>(GL_UNPACK_SKIP_PIXELS, { { 0 } });
-    requestState<GLint, 1>(GL_UNPACK_SKIP_IMAGES, { { 0 } });
-    requestState<GLint, 1>(GL_UNPACK_ALIGNMENT, { { 4 } });
+    requestState<GLint    , 1>(GL_UNPACK_ROW_LENGTH, { { 0 } });
+    requestState<GLint    , 1>(GL_UNPACK_IMAGE_HEIGHT, { { 0 } });
+    requestState<GLint    , 1>(GL_UNPACK_SKIP_ROWS, { { 0 } });
+    requestState<GLint    , 1>(GL_UNPACK_SKIP_PIXELS, { { 0 } });
+    requestState<GLint    , 1>(GL_UNPACK_SKIP_IMAGES, { { 0 } });
+    requestState<GLint    , 1>(GL_UNPACK_ALIGNMENT, { { 4 } });
 
     std::cout << std::endl << "Pixel Transfer States" << std::endl;
     requestState<GLboolean, 1>(GL_MAP_COLOR, { { GL_FALSE } });
     requestState<GLboolean, 1>(GL_MAP_STENCIL, { { GL_FALSE } });
-    requestState<GLint, 1>(GL_INDEX_SHIFT, { { 0 } });
-    requestState<GLint, 1>(GL_INDEX_OFFSET, { { 0 } });
-    requestState<GLint, 1>(GL_RED_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_GREEN_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_BLUE_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_ALPHA_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_DEPTH_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_RED_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_GREEN_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_BLUE_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_ALPHA_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_DEPTH_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_RED_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_GREEN_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_BLUE_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_ALPHA_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_RED_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_GREEN_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_BLUE_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_COLOR_MATRIX_ALPHA_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_RED_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_GREEN_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_BLUE_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_ALPHA_SCALE, { { 1 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_RED_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_GREEN_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_BLUE_BIAS, { { 0 } });
-    requestState<GLint, 1>(GL_POST_CONVOLUTION_ALPHA_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_INDEX_SHIFT, { { 0 } });
+    requestState<GLint    , 1>(GL_INDEX_OFFSET, { { 0 } });
+    requestState<GLint    , 1>(GL_RED_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_GREEN_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_BLUE_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_ALPHA_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_DEPTH_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_RED_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_GREEN_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_BLUE_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_ALPHA_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_DEPTH_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_RED_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_GREEN_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_BLUE_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_ALPHA_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_RED_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_GREEN_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_BLUE_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_COLOR_MATRIX_ALPHA_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_RED_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_GREEN_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_BLUE_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_ALPHA_SCALE, { { 1 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_RED_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_GREEN_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_BLUE_BIAS, { { 0 } });
+    requestState<GLint    , 1>(GL_POST_CONVOLUTION_ALPHA_BIAS, { { 0 } });
 
     std::cout << std::endl << "Pixel Zoom States" << std::endl;
-    requestState<GLfloat, 1>(GL_ZOOM_X, { { 1 } });
-    requestState<GLfloat, 1>(GL_ZOOM_Y, { { 1 } });
+    requestState<GLfloat  , 1>(GL_ZOOM_X, { { 1 } });
+    requestState<GLfloat  , 1>(GL_ZOOM_Y, { { 1 } });
 
     std::cout << std::endl << "Pixel Map States" << std::endl;
-    requestState<GLint, 1>(GL_PIXEL_MAP_I_TO_I_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_S_TO_S_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_I_TO_R_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_I_TO_G_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_I_TO_B_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_I_TO_A_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_R_TO_R_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_G_TO_G_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_B_TO_B_SIZE, { { 1 } });
-    requestState<GLint, 1>(GL_PIXEL_MAP_A_TO_A_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_I_TO_I_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_S_TO_S_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_I_TO_R_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_I_TO_G_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_I_TO_B_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_I_TO_A_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_R_TO_R_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_G_TO_G_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_B_TO_B_SIZE, { { 1 } });
+    requestState<GLint    , 1>(GL_PIXEL_MAP_A_TO_A_SIZE, { { 1 } });
 
     std::cout << std::endl << "Read Buffer States" << std::endl;
-    requestState<GLenum, 1>(GL_READ_BUFFER);
+    requestState<GLenum   , 1>(GL_READ_BUFFER);
 
 
     std::cout << std::endl << std::endl << "[QUERYING STATE VALUES - UNGROUPED/TODO]" << std::endl;
-
 
 
     std::cout << std::endl
