@@ -1,5 +1,5 @@
 
-set(target queries)
+set(target contexts)
 
 
 # External libraries
@@ -8,11 +8,11 @@ find_package(OpenGL REQUIRED)
 find_package(GLFW QUIET)
 
 if (NOT GLFW_FOUND)
-	message("Example ${target} skipped: GLFW not found")
+	message("Tool ${target} skipped: GLFW not found")
 	return()
 endif()
 
-message(STATUS "Example ${target}")
+message(STATUS "Tool ${target}")
 
 
 # Includes

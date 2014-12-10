@@ -14,10 +14,14 @@ include_directories(
 set(IDE_FOLDER "")
 add_subdirectory(glbinding)
 
-# Applications
-set(IDE_FOLDER "Examples")
-add_subdirectory(examples)
-
 # Tests
 set(IDE_FOLDER "Tests")
 add_subdirectory(tests)
+
+# Tests
+set(IDE_FOLDER "Tools")
+add_subdirectory(tools)
+
+# Applications
+set(IDE_FOLDER "Examples")
+add_subdirectory(examples)

@@ -1,25 +1,17 @@
 
-set(target functions)
+set(target meta)
+message(STATUS "Tool ${target}")
 
 
 # External libraries
 
 find_package(OpenGL REQUIRED)
-find_package(GLFW QUIET)
-
-if (NOT GLFW_FOUND)
-	message("Example ${target} skipped: GLFW not found")
-	return()
-endif()
-
-message(STATUS "Example ${target}")
 
 
 # Includes
 
 include_directories(
     ${OPENGL_INCLUDE_DIR}
-    ${GLFW_INCLUDE_DIR}
 )
 
 include_directories(
@@ -33,7 +25,6 @@ include_directories(
 
 set(libs
     ${OPENGL_LIBRARIES}
-    ${GLFW_LIBRARY}
     glbinding
 )
 
@@ -42,6 +33,13 @@ set(libs
 
 if (OPTION_BUILD_STATIC)
     add_definitions("-DGLBINDING_STATIC")
+endif()
+
+if (OPTION_STRINGS_BY_GL)
+    add_definitions("-DSTRINGS_BY_GL")
+endif()
+if (OPTION_GL_BY_STRINGS)
+    add_definitions("-DGL_BY_STRINGS")
 endif()
 
 
