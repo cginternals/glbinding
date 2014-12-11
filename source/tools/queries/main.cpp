@@ -130,8 +130,8 @@ namespace
     {
         glrequest<T>(pname, data.data());
 
-        static const size_t MAX_PSTRING_LENGTH{ 37 };    // actually, it's 44 / average is 23,
-                                                         // but 37 works for 452 of 462 glGet enums (98%)
+        static const size_t MAX_PSTRING_LENGTH { 37 };    // actually, it's 44 / average is 23,
+                                                          // but 37 works for 452 of 462 glGet enums (98%)
 
         const std::string pstring{ glbinding::Meta::getString(pname) };
         const std::string spaces{ std::string(MAX_PSTRING_LENGTH - pstring.length(), ' ') };
