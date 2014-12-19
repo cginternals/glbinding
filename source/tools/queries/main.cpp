@@ -131,6 +131,29 @@ namespace
         return stream.str();
     }
 
+	template <typename T>
+	std::string string(const std::vector<T> & data, int count)
+	{
+		std::stringstream stream;
+
+			if (data.size() > 1)
+				stream << "(";
+
+			for (int i = 0; i < count; ++i)
+			{
+				stream << data[i];
+				if (i + 1 < count)
+					stream << ", ";
+			}
+
+			if (data.size() > 1)
+				stream << ")";
+			else
+				stream << "NONE";
+
+		return stream.str();
+	}
+
     template <typename T, int count>
     void request(const GLenum pname, std::array<T, count> & data)
     {
@@ -149,6 +172,25 @@ namespace
         }
         std::cout << "\t" << glbinding::Meta::getString(pname) << spaces << " = " << string<T, count>(data);
     }
+
+	template <typename T>
+	void request(const GLenum pname, std::vector<T> & data, int count)
+	{
+		glrequest<T>(pname, data.data());
+
+		static const size_t MAX_PSTRING_LENGTH{ 37 };    // actually, it's 44 / average is 23,
+		// but 37 works for 452 of 462 glGet enums (98%)
+
+		const std::string pstring{ glbinding::Meta::getString(pname) };
+		const std::string spaces{ std::string(MAX_PSTRING_LENGTH - pstring.length(), ' ') };
+
+		if (glGetError() != gl::GL_NO_ERROR)
+		{
+			std::cout << "\t" << pstring << spaces << " = NOT AVAILABLE" << std::endl;
+			return;
+		}
+		std::cout << "\t" << glbinding::Meta::getString(pname) << spaces << " = " << string<T>(data, count);
+	}
 
     template <typename T, int count>
     void requestState(const GLenum pname)
@@ -170,6 +212,18 @@ namespace
 
         std::cout << std::endl;
     }
+
+	template <typename T, GLenum count>
+	void requestState(const GLenum pname)
+	{
+		int counti = 0;
+		glGetIntegerv(count, &counti);
+
+		std::vector<T> data(counti);
+		request<T>(pname, data, counti);
+
+		std::cout << std::endl;
+	}
 }
 
 int main(int argc, const char * argv[])
