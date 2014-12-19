@@ -29,6 +29,7 @@ project(${META_PROJECT_NAME} C CXX)
 option(OPTION_PORTABLE_INSTALL "Install into a self-contained directory" OFF)
 option(OPTION_BUILD_STATIC     "Build static libraries" OFF)
 option(OPTION_BUILD_TESTS      "Build tests (if gmock and gtest are found)" ON)
+option(OPTION_BUILD_TOOLS      "Build tools" OFF)
 option(OPTION_BUILD_EXAMPLES   "Build examples" OFF)
 
 option(OPTION_GL_BY_STRINGS    "Support String to OpenGL enum, extension, and function conversion (Meta)" OFF)

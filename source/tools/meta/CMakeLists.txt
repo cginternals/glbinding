@@ -1,6 +1,6 @@
 
 set(target meta)
-message(STATUS "Example ${target}")
+message(STATUS "Tool ${target}")
 
 
 # External libraries
