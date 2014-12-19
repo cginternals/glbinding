@@ -140,7 +140,7 @@ namespace
                                                           // but 37 works for 452 of 462 glGet enums (98%)
 
         const std::string pstring{ glbinding::Meta::getString(pname) };
-        const std::string spaces{ std::string(MAX_PSTRING_LENGTH - pstring.length(), ' ') };
+		const std::string spaces{ std::string((glbinding::Meta::getString(pname).length() > 37) ? 1 : (MAX_PSTRING_LENGTH - pstring.length()), ' ') };
 
         if (glGetError() != gl::GL_NO_ERROR)
         {
