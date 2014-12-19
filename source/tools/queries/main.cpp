@@ -60,6 +60,12 @@ namespace
         glGetFloatv(pname, data);
     }
 
+	template <>
+	void glrequest<GLdouble>(const GLenum pname, GLdouble * data)
+	{
+		glGetDoublev(pname, data);
+	}
+
     template <typename T, int count>
     struct identity
     {
