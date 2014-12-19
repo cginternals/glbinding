@@ -224,6 +224,24 @@ namespace
 
 		std::cout << std::endl;
 	}
+	
+	template <typename T, int count, GLenum maxCount>
+		void requestState(const GLenum pname, const std::array<T, count> & expected)
+	{
+		int maxCounti = 0;
+		glGetIntegerv(maxCount, &maxCounti);
+
+		std::array<T, count> data;
+		for (int i = 0; i < maxCounti; ++i)
+		{
+			request<T, count>(static_cast<gl::GLenum>(static_cast<int>(pname)+i), data);
+
+			if (!expected.empty() && expected != data)
+				std::cout << ", expected " << string<T, count>(expected);
+
+			std::cout << std::endl;
+		}
+	}
 }
 
 int main(int argc, const char * argv[])
