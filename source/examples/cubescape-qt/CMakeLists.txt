@@ -52,6 +52,10 @@ include_directories(
 
 set(libs
     glbinding
+    Qt5::OpenGL
+    Qt5::Core
+    Qt5::Gui
+    Qt5::Widgets
 )
 
 
@@ -94,14 +98,16 @@ set(uis
 qt5_wrap_ui(compiled_ui_files ${uis})
 
 
+if(MSVC)
+    # -> msvc14 : declaration hides class member (problem in qt)
+    set(DEFAULT_COMPILE_FLAGS ${DEFAULT_COMPILE_FLAGS} /wd4458)
+endif()
+
 # Build executable
 
 add_executable(${target} ${sources} ${compiled_ui_files})
 
 target_link_libraries(${target} ${libs})
-
-target_link_libraries(${target} ${libs})
-qt5_use_modules(${target} OpenGL Core Gui Widgets)
 
 target_compile_options(${target} PRIVATE ${DEFAULT_COMPILE_FLAGS})
 
