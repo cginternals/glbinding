@@ -13,7 +13,7 @@ std::string wrapString(const char * value)
 {
     std::stringstream ss;
     ss << "\"";
-    ss << value;
+    ss << (value == nullptr ? "nullptr" : value);
     ss << "\"";
     return ss.str();
 }
