@@ -98,16 +98,17 @@ set(uis
 qt5_wrap_ui(compiled_ui_files ${uis})
 
 
-if(MSVC)
-    # -> msvc14 : declaration hides class member (problem in qt)
-    set(DEFAULT_COMPILE_FLAGS ${DEFAULT_COMPILE_FLAGS} /wd4458)
-endif()
-
 # Build executable
 
 add_executable(${target} ${sources} ${compiled_ui_files})
 
 target_link_libraries(${target} ${libs})
+
+
+if(MSVC)
+    # -> msvc14 : declaration hides class member (problem in qt)
+    set(DEFAULT_COMPILE_FLAGS ${DEFAULT_COMPILE_FLAGS} /wd4458)
+endif()
 
 target_compile_options(${target} PRIVATE ${DEFAULT_COMPILE_FLAGS})
 
