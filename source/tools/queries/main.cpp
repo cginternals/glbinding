@@ -793,6 +793,8 @@ int main(int argc, const char * argv[])
     requestState<GLint    , 1>(GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS, { { 16 } }, ExpectedType::Minimum);
     requestState<GLint    , 1>(GL_MAX_GEOMETRY_UNIFORM_BLOCKS, { { 12 } }, ExpectedType::Minimum);
     requestState<GLint    , 1>(GL_MAX_GEOMETRY_UNIFORM_COMPONENTS, { { 1024 } }, ExpectedType::Minimum);
+    requestState<GLint    , 1>(GL_MAX_GEOMETRY_OUTPUT_VERTICES, { { 256 } }, ExpectedType::Minimum);
+    requestState<GLint    , 1>(GL_MAX_GEOMETRY_SHADER_INVOCATIONS, { { 32 } }, ExpectedType::Minimum);
 
     std::cout << std::endl << "Texel Offset States" << std::endl;
     requestState<GLint    , 1>(GL_MAX_PROGRAM_TEXEL_OFFSET, { { 7 } }, ExpectedType::Minimum);
