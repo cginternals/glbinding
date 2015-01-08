@@ -451,6 +451,7 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_NV_vertex_program3,
     GL_NV_vertex_program4,
     GL_NV_video_capture,
+    GL_NV_viewport_array2,
     GL_OES_byte_coordinates,
     GL_OES_compressed_paletted_texture,
     GL_OES_fixed_point,

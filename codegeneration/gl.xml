@@ -42966,6 +42966,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glIsEnablediNV"/>
             </require>
         </extension>
+        <extension name="GL_NV_viewport_array2" supported="gl"/>
         <extension name="GL_OES_EGL_image" supported="gles1|gles2">
             <require>
                 <type name="GLeglImageOES"/>
