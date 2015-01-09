@@ -126,4 +126,6 @@ int main(int, char *[])
 
     glfwTerminate();
     return 0;
+
+    foo;
 }
