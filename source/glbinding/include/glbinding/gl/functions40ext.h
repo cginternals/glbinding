@@ -610,7 +610,7 @@ inline void glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLen
     return glbinding::Binding::ClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
 }
 
-inline void glClearNamedBufferSubData(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizei size, GLenum format, GLenum type, const void * data)
+inline void glClearNamedBufferSubData(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const void * data)
 {
     return glbinding::Binding::ClearNamedBufferSubData(buffer, internalformat, offset, size, format, type, data);
 }
@@ -1140,7 +1140,7 @@ inline void glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint lev
     return glbinding::Binding::CopyMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
 
-inline void glCopyNamedBufferSubData(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizei size)
+inline void glCopyNamedBufferSubData(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
 {
     return glbinding::Binding::CopyNamedBufferSubData(readBuffer, writeBuffer, readOffset, writeOffset, size);
 }
@@ -1915,7 +1915,7 @@ inline void glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsize
     return glbinding::Binding::FlushMappedBufferRangeAPPLE(target, offset, size);
 }
 
-inline void glFlushMappedNamedBufferRange(GLuint buffer, GLintptr offset, GLsizei length)
+inline void glFlushMappedNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length)
 {
     return glbinding::Binding::FlushMappedNamedBufferRange(buffer, offset, length);
 }
@@ -2945,7 +2945,7 @@ inline void glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, void ** par
     return glbinding::Binding::GetNamedBufferPointervEXT(buffer, pname, params);
 }
 
-inline void glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizei size, void * data)
+inline void glGetNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, void * data)
 {
     return glbinding::Binding::GetNamedBufferSubData(buffer, offset, size, data);
 }
@@ -4555,7 +4555,7 @@ inline void * glMapNamedBufferEXT(GLuint buffer, GLenum access)
     return glbinding::Binding::MapNamedBufferEXT(buffer, access);
 }
 
-inline void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizei length, BufferAccessMask access)
+inline void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
 {
     return glbinding::Binding::MapNamedBufferRange(buffer, offset, length, access);
 }
@@ -5295,7 +5295,7 @@ inline void glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, 
     return glbinding::Binding::MultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
 
-inline void glNamedBufferData(GLuint buffer, GLsizei size, const void * data, GLenum usage)
+inline void glNamedBufferData(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage)
 {
     return glbinding::Binding::NamedBufferData(buffer, size, data, usage);
 }
@@ -5315,7 +5315,7 @@ inline void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsiz
     return glbinding::Binding::NamedBufferPageCommitmentEXT(buffer, offset, size, commit);
 }
 
-inline void glNamedBufferStorage(GLuint buffer, GLsizei size, const void * data, MapBufferUsageMask flags)
+inline void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
 {
     return glbinding::Binding::NamedBufferStorage(buffer, size, data, flags);
 }
@@ -5325,7 +5325,7 @@ inline void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void *
     return glbinding::Binding::NamedBufferStorageEXT(buffer, size, data, flags);
 }
 
-inline void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizei size, const void * data)
+inline void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data)
 {
     return glbinding::Binding::NamedBufferSubData(buffer, offset, size, data);
 }
@@ -7890,7 +7890,7 @@ inline void glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalfor
     return glbinding::Binding::TextureBufferEXT(texture, target, internalformat, buffer);
 }
 
-inline void glTextureBufferRange(GLuint texture, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizei size)
+inline void glTextureBufferRange(GLuint texture, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
     return glbinding::Binding::TextureBufferRange(texture, internalformat, buffer, offset, size);
 }
@@ -8135,7 +8135,7 @@ inline void glTransformFeedbackBufferBase(GLuint xfb, GLuint index, GLuint buffe
     return glbinding::Binding::TransformFeedbackBufferBase(xfb, index, buffer);
 }
 
-inline void glTransformFeedbackBufferRange(GLuint xfb, GLuint index, GLuint buffer, GLintptr offset, GLsizei size)
+inline void glTransformFeedbackBufferRange(GLuint xfb, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
     return glbinding::Binding::TransformFeedbackBufferRange(xfb, index, buffer, offset, size);
 }
