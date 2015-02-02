@@ -193,9 +193,9 @@ endif()
 
 # Package target
 
-add_custom_target( # CPACK_BUILD_CONFIG is empty since cmake 3.1?
+add_custom_target( # CPACK_BUILD_CONFIG is empty since cmake 3.1
     pack-${project_name}
-    COMMAND ${CPACK_COMMAND} -C $<CONFIGURATION> --verbose --debug --config ${CMAKE_BINARY_DIR}/CPackConfig-${project_name}.cmake
+    COMMAND ${CPACK_COMMAND} -C $<CONFIGURATION> --config ${CMAKE_BINARY_DIR}/CPackConfig-${project_name}.cmake
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 set_target_properties(pack-${project_name} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
