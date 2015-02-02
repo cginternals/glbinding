@@ -552,9 +552,9 @@ static const gl::GLenum GL_UNPACK_RESAMPLE_OML = gl::GLenum::GL_UNPACK_RESAMPLE_
 
 // PixelStoreResampleMode
 
+static const gl::GLenum GL_RESAMPLE_DECIMATE_SGIX = gl::GLenum::GL_RESAMPLE_DECIMATE_SGIX;
 static const gl::GLenum GL_RESAMPLE_REPLICATE_SGIX = gl::GLenum::GL_RESAMPLE_REPLICATE_SGIX;
 static const gl::GLenum GL_RESAMPLE_ZERO_FILL_SGIX = gl::GLenum::GL_RESAMPLE_ZERO_FILL_SGIX;
-static const gl::GLenum GL_RESAMPLE_DECIMATE_SGIX = gl::GLenum::GL_RESAMPLE_DECIMATE_SGIX;
 
 // PixelStoreSubsampleRate
 

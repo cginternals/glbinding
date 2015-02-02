@@ -4337,13 +4337,14 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8411" name="GL_FRAGMENT_LIGHT5_SGIX"/>
         <enum value="0x8412" name="GL_FRAGMENT_LIGHT6_SGIX"/>
         <enum value="0x8413" name="GL_FRAGMENT_LIGHT7_SGIX"/>
-            <unused start="0x8414" end="0x842B" vendor="SGI"/>
-        <enum value="0x842C" name="GL_PACK_RESAMPLE_SGIX"/>
-        <enum value="0x842D" name="GL_UNPACK_RESAMPLE_SGIX"/>
-        <enum value="0x842E" name="GL_RESAMPLE_REPLICATE_SGIX"/>
-        <enum value="0x842F" name="GL_RESAMPLE_ZERO_FILL_SGIX"/>
-        <enum value="0x8430" name="GL_RESAMPLE_DECIMATE_SGIX"/>
-            <unused start="0x8431" end="0x8435" vendor="SGI"/>
+            <unused start="0x8414" end="0x842D" vendor="SGI"/>
+        <enum value="0x842E" name="GL_PACK_RESAMPLE_SGIX" comment="Formerly 0x842C in SGI specfile"/>
+        <enum value="0x842F" name="GL_UNPACK_RESAMPLE_SGIX" comment="Formerly 0x842D in SGI specfile"/>
+        <enum value="0x8430" name="GL_RESAMPLE_DECIMATE_SGIX" comment="Formerly 0x8430 in SGI specfile"/>
+            <unused start="0x8431" end="0x8432" vendor="SGI"/>
+        <enum value="0x8433" name="GL_RESAMPLE_REPLICATE_SGIX" comment="Formerly 0x842E in SGI specfile"/>
+        <enum value="0x8434" name="GL_RESAMPLE_ZERO_FILL_SGIX" comment="Formerly 0x842F in SGI specfile"/>
+            <unused start="0x8435" vendor="SGI"/>
             <!-- Incomplete extension SGIX_fragment_lighting -->
             <!-- <enum value="0x8436"      name="GL_EYE_SPACE_SGIX"/> -->
             <!-- <enum value="0x8437"      name="GL_TANGENT_SPACE_SGIX"/> -->
@@ -43317,6 +43318,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SAMPLER_EXTERNAL_OES"/>
             </require>
         </extension>
+        <extension name="GL_OES_EGL_image_external_essl3" supported="gles2"/>
         <extension name="GL_OES_blend_equation_separate" supported="gles1">
             <require>
                 <enum name="GL_BLEND_EQUATION_RGB_OES"/>

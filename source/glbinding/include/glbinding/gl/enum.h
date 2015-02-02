@@ -808,8 +808,8 @@ enum class GLenum : unsigned int
 //  GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX              = 0x840A, // reuse FragmentLightModelParameterSGIX
 //  GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX = 0x840B, // reuse FragmentLightModelParameterSGIX
 //  GL_FRAGMENT_LIGHT0_SGIX                           = 0x840C, // reuse EnableCap
-    GL_PACK_RESAMPLE_SGIX                             = 0x842C,
-    GL_UNPACK_RESAMPLE_SGIX                           = 0x842D,
+    GL_PACK_RESAMPLE_SGIX                             = 0x842E,
+    GL_UNPACK_RESAMPLE_SGIX                           = 0x842F,
     GL_ALIASED_POINT_SIZE_RANGE                       = 0x846D,
     GL_ALIASED_LINE_WIDTH_RANGE                       = 0x846E,
     GL_PACK_SUBSAMPLE_RATE_SGIX                       = 0x85A0,
@@ -1304,8 +1304,8 @@ enum class GLenum : unsigned int
 //  GL_PIXEL_TILE_GRID_HEIGHT_SGIX = 0x8143, // reuse GetPName
 //  GL_PIXEL_TILE_GRID_DEPTH_SGIX  = 0x8144, // reuse GetPName
 //  GL_PIXEL_TILE_CACHE_SIZE_SGIX  = 0x8145, // reuse GetPName
-//  GL_PACK_RESAMPLE_SGIX          = 0x842C, // reuse GetPName
-//  GL_UNPACK_RESAMPLE_SGIX        = 0x842D, // reuse GetPName
+//  GL_PACK_RESAMPLE_SGIX          = 0x842E, // reuse GetPName
+//  GL_UNPACK_RESAMPLE_SGIX        = 0x842F, // reuse GetPName
 //  GL_PACK_SUBSAMPLE_RATE_SGIX    = 0x85A0, // reuse GetPName
 //  GL_UNPACK_SUBSAMPLE_RATE_SGIX  = 0x85A1, // reuse GetPName
     GL_PACK_RESAMPLE_OML           = 0x8984,
@@ -1313,9 +1313,9 @@ enum class GLenum : unsigned int
 
     // PixelStoreResampleMode
 
-    GL_RESAMPLE_REPLICATE_SGIX = 0x842E,
-    GL_RESAMPLE_ZERO_FILL_SGIX = 0x842F,
     GL_RESAMPLE_DECIMATE_SGIX  = 0x8430,
+    GL_RESAMPLE_REPLICATE_SGIX = 0x8433,
+    GL_RESAMPLE_ZERO_FILL_SGIX = 0x8434,
 
     // PixelStoreSubsampleRate
 
@@ -6541,9 +6541,9 @@ static const GLenum GL_UNPACK_RESAMPLE_OML = GLenum::GL_UNPACK_RESAMPLE_OML;
 
 // PixelStoreResampleMode
 
+static const GLenum GL_RESAMPLE_DECIMATE_SGIX = GLenum::GL_RESAMPLE_DECIMATE_SGIX;
 static const GLenum GL_RESAMPLE_REPLICATE_SGIX = GLenum::GL_RESAMPLE_REPLICATE_SGIX;
 static const GLenum GL_RESAMPLE_ZERO_FILL_SGIX = GLenum::GL_RESAMPLE_ZERO_FILL_SGIX;
-static const GLenum GL_RESAMPLE_DECIMATE_SGIX = GLenum::GL_RESAMPLE_DECIMATE_SGIX;
 
 // PixelStoreSubsampleRate
 
