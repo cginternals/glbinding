@@ -174,6 +174,7 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
     endif()
     set(CPACK_COMPONENT_DEV_INSTALL_TYPES Developer Full)
     set(CPACK_COMPONENT_EXAMPLES_INSTALL_TYPES Full)
+    set(CPACK_COMPONENT_TOOLS_INSTALL_TYPES Full)
 
     if(NOT OPTION_BUILD_STATIC)
         set(CPACK_COMPONENT_RUNTIME_DISPLAY_NAME "Run-Time (Binaries)")
@@ -182,6 +183,8 @@ if(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
         set(CPACK_COMPONENT_DEV_DEPENDS runtime)
         set(CPACK_COMPONENT_EXAMPLES_DISPLAY_NAME "Examples")
         set(CPACK_COMPONENT_EXAMPLES_DEPENDS runtime)
+        set(CPACK_COMPONENT_TOOLS_DISPLAY_NAME "Tools")
+        set(CPACK_COMPONENT_TOOLS_DEPENDS runtime)
     endif()
 
     include(CPack)
@@ -190,9 +193,9 @@ endif()
 
 # Package target
 
-add_custom_target(
+add_custom_target( # CPACK_BUILD_CONFIG is empty since cmake 3.1?
     pack-${project_name}
-    COMMAND ${CPACK_COMMAND} --config ${CMAKE_BINARY_DIR}/CPackConfig-${project_name}.cmake
+    COMMAND ${CPACK_COMMAND} -C $<CONFIGURATION> --verbose --debug --config ${CMAKE_BINARY_DIR}/CPackConfig-${project_name}.cmake
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 set_target_properties(pack-${project_name} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)

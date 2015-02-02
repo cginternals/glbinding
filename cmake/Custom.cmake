@@ -48,10 +48,14 @@ function(install_qt COMP DEST)
     get_target_property(qtrelease Qt5::Core LOCATION_RELEASE)
     get_filename_component(qtdir ${qtrelease} DIRECTORY)
 
+    if(NOT INSTALL_ICU_VERSION)
+        set(INSTALL_ICU_VERSION "" CACHE FILEPATH "ICU version, e.g., icudt52.dll is version '52'." FORCE)
+    endif()
+
     install(FILES 
-        ${qtdir}/icudt52.dll
-        ${qtdir}/icuin52.dll
-        ${qtdir}/icuuc52.dll
+        ${qtdir}/icudt${INSTALL_ICU_VERSION}.dll
+        ${qtdir}/icuin${INSTALL_ICU_VERSION}.dll
+        ${qtdir}/icuuc${INSTALL_ICU_VERSION}.dll
         DESTINATION ${DEST}
         COMPONENT ${COMP})
 

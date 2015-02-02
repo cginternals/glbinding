@@ -170,6 +170,12 @@ if(WIN32 AND NOT OPTION_BUILD_STATIC) # on windows, provide self contained zip f
             LIBRARY DESTINATION ${INSTALL_BIN})
     endif()
 
+    if(OPTION_BUILD_TOOLS)
+        install(TARGETS ${target} COMPONENT tools
+            RUNTIME DESTINATION ${INSTALL_BIN}
+            LIBRARY DESTINATION ${INSTALL_BIN})
+    endif()
+
     install(TARGETS ${target} COMPONENT dev
         RUNTIME DESTINATION ${INSTALL_BIN}
         LIBRARY DESTINATION ${INSTALL_SHARED}
