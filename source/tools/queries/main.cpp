@@ -54,6 +54,12 @@ namespace
         glGetIntegerv(pname, data);
     }
 
+	template <>
+	void glrequest<GLint64>(const GLenum pname, GLint64 * data)
+	{
+		glGetInteger64v(pname, data);
+	}
+
     template <>
     void glrequest<GLfloat>(const GLenum pname, GLfloat * data)
     {
@@ -525,7 +531,7 @@ int main(int argc, const char * argv[])
     requestState<GLint    , 1>(GL_MAX_CUBE_MAP_TEXTURE_SIZE, { { 1024 } }, ExpectedType::Minimum);
     requestState<GLint    , 1>(GL_MAX_DEBUG_GROUP_STACK_DEPTH);
     requestState<GLint    , 1>(GL_MAX_DEPTH_TEXTURE_SAMPLES);
-    requestState<GLint    , 1>(GL_MAX_ELEMENT_INDEX);
+    requestState<GLint64  , 1>(GL_MAX_ELEMENT_INDEX);
     requestState<GLint    , 1>(GL_MAX_EVAL_ORDER, { { 8 } }, ExpectedType::Minimum);
     requestState<GLint    , 1>(GL_MAX_INTEGER_SAMPLES);
     requestState<GLint    , 1>(GL_MAX_LABEL_LENGTH);
