@@ -6,6 +6,7 @@
 #include <vector>
 #include <functional>
 #include <string>
+#include <chrono>
 
 namespace glbinding 
 {
@@ -15,12 +16,16 @@ class AbstractValue;
 
 struct GLBINDING_API FunctionCall
 {
-    FunctionCall(const AbstractFunction * _function);
+    FunctionCall(const AbstractFunction * _function = nullptr);
     ~FunctionCall();
 
-    FunctionCall & operator=(const FunctionCall &) = delete;
+    // FunctionCall & operator=(const FunctionCall &) = delete;
+    // FunctionCall(const FunctionCall &) = delete;
 
-    const AbstractFunction & function;
+    std::string toString() const;
+
+    const AbstractFunction * function;
+    std::chrono::high_resolution_clock::time_point timestamp;
 
     std::vector<AbstractValue *> parameters;
     AbstractValue * returnValue;
@@ -28,21 +33,27 @@ struct GLBINDING_API FunctionCall
 
 enum class CallbackMask : unsigned char
 {
-    None        = 0x00,
-    Unresolved  = 0x01,
-    Before      = 0x02,
-    After       = 0x04,
-    Parameters  = 0x08,
-    ReturnValue = 0x10,
+    None        = 0,
+    Unresolved  = 1 << 0,
+    Before      = 1 << 1,
+    After       = 1 << 2,
+    Parameters  = 1 << 3,
+    ReturnValue = 1 << 4,
+    Logging     = 1 << 5,
     ParametersAndReturnValue = Parameters | ReturnValue,
-    BeforeAndAfter = Before | After
+    BeforeAndAfter = Before | After,
 };
 
 GLBINDING_API CallbackMask operator|(CallbackMask a, CallbackMask b);
+GLBINDING_API CallbackMask operator~(CallbackMask a);
+GLBINDING_API CallbackMask operator&(CallbackMask a, CallbackMask b);
+GLBINDING_API CallbackMask& operator|=(CallbackMask& a, CallbackMask b);
+GLBINDING_API CallbackMask& operator&=(CallbackMask& a, CallbackMask b);
 
 GLBINDING_API void setCallbackMask(CallbackMask mask);
 GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
-
+GLBINDING_API void addCallbackMask(CallbackMask mask);
+GLBINDING_API void removeCallbackMask(CallbackMask mask);
 
 using SimpleFunctionCallback = std::function<void(const AbstractFunction &)>;
 using FunctionCallback = std::function<void(const FunctionCall &)>;
