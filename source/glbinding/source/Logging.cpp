@@ -31,7 +31,7 @@ void Logging::start()
 
     std::ostringstream os;
     os << "logs/";
-    os << std::put_time(std::localtime(&now_c), "%F_%H-%M-%S") << ":" << ms_os.str();
+    os << std::put_time(std::localtime(&now_c), "%F_%H-%M-%S") << "-" << ms_os.str();
     os << ".log";
     
     std::string logname = os.str();
