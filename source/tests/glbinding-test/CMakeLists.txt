@@ -27,6 +27,7 @@ include_directories(
 include_directories(
     BEFORE
     ${CMAKE_SOURCE_DIR}/source/glbinding/include
+    ${CMAKE_SOURCE_DIR}/source/glbinding/source
 )
 
 #
@@ -44,11 +45,15 @@ set(libs
 #
 # Sources
 #
+set(glbinding_source_path ${CMAKE_SOURCE_DIR}/source/glbinding/source)
 
 set(sources
     main.cpp
     MultiContext_test.cpp
     MultiThreading_test.cpp
+    RingBuffer_test.cpp
+    ${glbinding_source_path}/RingBuffer.h
+    ${glbinding_source_path}/RingBuffer.hpp
 )
 
 #
