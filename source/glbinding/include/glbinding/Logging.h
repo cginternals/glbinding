@@ -23,6 +23,7 @@ public:
     static void stop();
     static void pause();
     static void resume();
+    static void log(bool enable);
 
     using BufferType = FunctionCall*;
     static void log(BufferType  call);

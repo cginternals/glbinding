@@ -94,6 +94,18 @@ void Logging::resume()
     addCallbackMask(CallbackMask::Logging);
 };
 
+void Logging::log(bool enable)
+{
+    if (enable)
+    {
+        glbinding::Logging::start();
+    }
+    else
+    {
+        glbinding::Logging::stop();
+    }
+}
+
 void Logging::log(FunctionCall * call)
 {
     delete s_buffer.hat();
