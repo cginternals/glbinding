@@ -2,7 +2,6 @@
 #include "glbinding.h"
 
 #include <iostream>
-#include <sstream>
 
 #include <glbinding/gl/gl.h>
 
