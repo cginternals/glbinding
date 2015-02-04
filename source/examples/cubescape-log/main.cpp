@@ -11,9 +11,9 @@
 
 #include <glbinding/gl/gl.h>
 
-#include "CubeScape.h"
+#include "../cubescape/CubeScape.h"
 
-#include "glutils.h"
+#include "../cubescape/glutils.h"
 
 #include <thread>
 #include <fstream>
@@ -96,9 +96,8 @@ int main(int, char *[])
 
     Binding::initialize(false); // only resolve functions that are actually used (lazy)
 
-    // Logging stuff
+    // Logging start
     Logging::start();
-    // Logging stuff end
 
     // print some gl infos (query)
     std::cout << std::endl
@@ -124,6 +123,8 @@ int main(int, char *[])
 
     delete cubescape;
     cubescape = nullptr;
+
+    // Logging end
     Logging::stop();
 
     glfwTerminate();

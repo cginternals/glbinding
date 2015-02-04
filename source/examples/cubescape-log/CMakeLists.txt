@@ -47,14 +47,17 @@ endif()
 
 # Sources
 
+set(cubscape_path ../cubescape)
+
 set(sources
     main.cpp
-    CubeScape.cpp
-    CubeScape.h
-    glutils.cpp
-    glutils.h
-    RawFile.cpp
-    RawFile.h
+
+    ${cubscape_path}/CubeScape.cpp
+    ${cubscape_path}/CubeScape.h
+    ${cubscape_path}/glutils.cpp
+    ${cubscape_path}/glutils.h
+    ${cubscape_path}/RawFile.cpp
+    ${cubscape_path}/RawFile.h
 )
 
 
