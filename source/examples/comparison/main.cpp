@@ -7,6 +7,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/ContextInfo.h>
+#include <glbinding/Logging.h>
 #include <glbinding/Version.h>
 
 #include "Timer.h"
@@ -88,14 +89,14 @@ void compare()
     glbinding_error(false);
 
     std::cout << std::endl << "test: again, now with logging ..." << std::endl;
-    glbinding_log(true);
+    glbinding::Logging::log(true);
     timer.start("      glbinding ");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glbinding_test();
     
     long double glbinding_avg_log = timer.stop();
-    glbinding_log(false);
+    glbinding::Logging::log(false);
 
 
     std::cout << std::endl << "glbinding/glew decrease:                 " << (glbinding_avg / glew_avg - 1.0) * 100.0 << "%" << std::endl;
