@@ -51,4 +51,4 @@ protected:
 
 } // namespace glbinding
 
-#include "Ringbuffer.hpp"
+#include "RingBuffer.hpp"

@@ -2,6 +2,8 @@
 
 #include <thread>
 #include <fstream>
+#include <mutex>
+#include <condition_variable>
 
 #include <glbinding/AbstractValue.h> 
 #include <glbinding/callbacks.h>
