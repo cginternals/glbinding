@@ -1,7 +1,7 @@
 build*
 *_build
 /install
-/logs
+/logs/*
 CMakeLists.txt.*
 
 # generated code
