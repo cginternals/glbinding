@@ -46,7 +46,7 @@ set(MINGW_COMPILE_FLAGS
       -Wall         # -> 
       -Wextra       # -> 
       -Werror       # ->
-      -fPIC         # -> use position independent code
+    # -fPIC         # -> use position independent code
       -Wreturn-type 
       -Wfloat-equal
       -Wcast-align 
