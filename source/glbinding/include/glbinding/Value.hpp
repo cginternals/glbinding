@@ -1,6 +1,7 @@
 #pragma once
 
-namespace 
+
+namespace glbinding 
 {
 
 template <typename... Arguments>
@@ -30,10 +31,6 @@ void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments&&...
     ValueAdder<Arguments...>::add(values, std::forward<Arguments>(arguments)...);
 }
 
-}
-
-namespace glbinding 
-{
 
 template <typename T>
 Value<T>::Value(T _value)

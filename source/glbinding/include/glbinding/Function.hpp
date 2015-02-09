@@ -7,7 +7,7 @@
 #include <functional>
 
 
-namespace 
+namespace glbinding 
 {
 
 template <typename ReturnType, typename... Arguments>
@@ -87,11 +87,6 @@ struct FunctionHelper<void, Arguments...>
     }
 };
 
-}
-
-
-namespace glbinding 
-{
 
 template <typename ReturnType, typename... Arguments>
 Function<ReturnType, Arguments...>::Function(const char * _name)
