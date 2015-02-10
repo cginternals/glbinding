@@ -51,6 +51,12 @@ set(WIN32_COMPILE_FLAGS
                     #    /bigobj increases that address capacity to 4,294,967,296 (2^32).
 )
 
+option(OPTION_MSVC_STATIC_RUNTIME "Use statically linked C/C++ runtime library" OFF)
+if (OPTION_MSVC_STATIC_RUNTIME)
+  set(WIN32_COMPILE_FLAGS ${WIN32_COMPILE_FLAGS} $<$<CONFIG:Release>:/MT> $<$<CONFIG:Debug>:/MTd>)
+endif()
+
+
 # http://support.microsoft.com/kb/154419
 # "Programs that use the Standard C++ library must be compiled 
 #  with C++ exception handling enabled."
