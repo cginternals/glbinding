@@ -4,6 +4,7 @@
 #include <cassert>
 #include <condition_variable>
 #include <fstream>
+#include <mutex>
 #include <sstream>
 #include <thread>
 
