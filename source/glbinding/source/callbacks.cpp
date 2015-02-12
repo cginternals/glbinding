@@ -67,29 +67,28 @@ CallbackMask& operator&=(CallbackMask& a, CallbackMask b)
 }
 
 std::string FunctionCall::toString() const
-{
-    using hr_clock = std::chrono::system_clock;
-    using seconds = std::chrono::seconds;
-    using milliseconds = std::chrono::milliseconds;
+{   
     using nanoseconds = std::chrono::nanoseconds;
-
     nanoseconds now_ns = std::chrono::duration_cast<nanoseconds>(timestamp.time_since_epoch());
-    milliseconds now_ms = std::chrono::duration_cast<milliseconds>(now_ns);
-    seconds now_s = std::chrono::duration_cast<seconds>(now_ms);
-
-    std::time_t t = now_s.count();
-    std::size_t ms = now_ms.count() % 1000;
     std::size_t ns = now_ns.count() % 1000;
-
-    std::ostringstream ms_os;
-    ms_os << std::setfill('0') << std::setw(3) << ms;
-
     std::ostringstream ns_os;
     ns_os << std::setfill('0') << std::setw(3) << ns;
 
+    using milliseconds = std::chrono::milliseconds;
+    milliseconds now_ms = std::chrono::duration_cast<milliseconds>(now_ns);
+    std::size_t ms = now_ms.count() % 1000;
+    std::ostringstream ms_os;
+    ms_os << std::setfill('0') << std::setw(3) << ms;
+
+    using seconds = std::chrono::seconds;
+    seconds now_s = std::chrono::duration_cast<seconds>(now_ms);
+    std::time_t t = now_s.count();
+    char time_string[20];
+    std::strftime(time_string, sizeof(time_string), "%F_%H-%M-%S", std::localtime(&t));  
+
     std::ostringstream os;
 
-    os << std::put_time(std::localtime(&t), "%F_%T") << ":" << ms_os.str() << ":" << ns_os.str() << " ";
+    os << time_string << ":" << ms_os.str() << ":" << ns_os.str() << " ";
     os << function->name() << "(";
 
     for (unsigned i = 0; i < parameters.size(); ++i)

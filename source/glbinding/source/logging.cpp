@@ -1,6 +1,8 @@
 #include <glbinding/Logging.h>
 
+#include <atomic>
 #include <cassert>
+#include <condition_variable>
 #include <fstream>
 #include <sstream>
 #include <thread>
@@ -11,8 +13,8 @@ namespace
 {
     const unsigned int LOG_BUFFER_SIZE = 1000000;
 
-    bool g_stop = false;
-    bool g_persisted = false;
+    std::atomic<bool> g_stop (false);
+    std::atomic<bool> g_persisted (false);
     std::mutex g_lockfinish;
     std::condition_variable g_finishcheck;
 
@@ -28,20 +30,22 @@ namespace logging
 void start()
 {
     using system_clock = std::chrono::system_clock;
-    using milliseconds = std::chrono::milliseconds;
-
     system_clock::time_point now = system_clock::now();
-    time_t now_c = system_clock::to_time_t(now);
 
+    using milliseconds = std::chrono::milliseconds;
     milliseconds now_ms = std::chrono::duration_cast<milliseconds>(now.time_since_epoch());
     std::size_t ms = now_ms.count() % 1000;
+
+    time_t now_c = system_clock::to_time_t(now);
+    char time_string[20];
+    std::strftime(time_string, sizeof(time_string), "%F_%H-%M-%S", std::localtime(&now_c));
 
     std::ostringstream ms_os;
     ms_os << std::setfill('0') << std::setw(3) << ms;
 
     std::ostringstream os;
     os << "logs/";
-    os << std::put_time(std::localtime(&now_c), "%F_%H-%M-%S") << "-" << ms_os.str();
+    os << time_string << "-" << ms_os.str();
     os << ".log";
     
     std::string logname = os.str();

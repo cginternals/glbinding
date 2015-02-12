@@ -21,7 +21,6 @@ public:
     bool push(T &);
 
     using TailIdentifier = unsigned int;
-
     TailIdentifier addTail();
     void removeTail(TailIdentifier);
     const typename std::vector<T>::const_iterator cbegin(TailIdentifier key);

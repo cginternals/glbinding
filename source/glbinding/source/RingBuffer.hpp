@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <iomanip>
 #include <thread>
 #include <iterator>
