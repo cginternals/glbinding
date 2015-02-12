@@ -7,17 +7,25 @@
 
 #include "RingBuffer.h"
 
+namespace
+{
+    const unsigned int LOG_BUFFER_SIZE = 1000000;
+
+    bool g_stop = false;
+    bool g_persisted = false;
+    std::mutex g_lockfinish;
+    std::condition_variable g_finishcheck;
+
+    using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::BufferType>;
+    FunctionCallBuffer g_buffer(LOG_BUFFER_SIZE);
+}
+
 namespace glbinding
 {
-static const unsigned int LOG_BUFFER_SIZE = 1000000;
+namespace logging
+{
 
-bool Logging::s_stop = false;
-bool Logging::s_persisted = false;
-std::mutex Logging::s_lockfinish;
-std::condition_variable Logging::s_finishcheck;
-Logging::FunctionCallBuffer Logging::s_buffer(LOG_BUFFER_SIZE);
-
-void Logging::start()
+void start()
 {
     using system_clock = std::chrono::system_clock;
     using milliseconds = std::chrono::milliseconds;
@@ -40,25 +48,25 @@ void Logging::start()
     start(logname);
 };
 
-void Logging::start(const std::string & filepath)
+void start(const std::string & filepath)
 {
     addCallbackMask(CallbackMask::Logging);
-    s_stop = false;
-    s_persisted = false;
+    g_stop = false;
+    g_persisted = false;
 
     std::thread writer([filepath]()
     {
-        unsigned int key = s_buffer.addTail();
+        unsigned int key = g_buffer.addTail();
         std::ofstream logfile;
         logfile.open (filepath, std::ios::out);
 
-        while(!s_stop || (s_buffer.size(key) != 0))
+        while(!g_stop || (g_buffer.size(key) != 0))
         {
-            auto i = s_buffer.cbegin(key);
-            while(s_buffer.valid(key, i))
+            auto i = g_buffer.cbegin(key);
+            while(g_buffer.valid(key, i))
             {
                 logfile << (*i)->toString();
-                i = s_buffer.next(key, i);
+                i = g_buffer.next(key, i);
             }
             logfile.flush();
             std::chrono::milliseconds dura( 10 );
@@ -66,87 +74,88 @@ void Logging::start(const std::string & filepath)
         }
 
         logfile.close();
-        s_buffer.removeTail(key);
-        s_persisted = true;
-        s_finishcheck.notify_all();
+        g_buffer.removeTail(key);
+        g_persisted = true;
+        g_finishcheck.notify_all();
     });
     writer.detach();
 };
 
-void Logging::stop()
+void stop()
 {
-    s_stop = true;
-    std::unique_lock<std::mutex> locker(s_lockfinish);
+    g_stop = true;
+    std::unique_lock<std::mutex> locker(g_lockfinish);
 
     // Spurious wake-ups: http://www.codeproject.com/Articles/598695/Cplusplus-threads-locks-and-condition-variables
-    while(!s_persisted)
+    while(!g_persisted)
     {
-        s_finishcheck.wait(locker);
+        g_finishcheck.wait(locker);
     }
     removeCallbackMask(CallbackMask::Logging);
 };
 
-void Logging::pause()
+void pause()
 {
     removeCallbackMask(CallbackMask::Logging);
 };
 
-void Logging::resume()
+void resume()
 {
     addCallbackMask(CallbackMask::Logging);
 };
 
-void Logging::log(bool enable)
+void log(bool enable)
 {
     if (enable)
     {
-        glbinding::Logging::start();
+        start();
     }
     else
     {
-        glbinding::Logging::stop();
+        stop();
     }
 }
 
-void Logging::log(FunctionCall * call)
+void log(FunctionCall * call)
 {
-    delete s_buffer.hat();
-    while(!s_buffer.push(call));
+    delete g_buffer.hat();
+    while(!g_buffer.push(call));
 }
 
-Logging::TailIdentifier Logging::addTail()
+TailIdentifier addTail()
 {
-    return s_buffer.addTail();
+    return g_buffer.addTail();
 }
 
-void Logging::removeTail(TailIdentifier key)
+void removeTail(TailIdentifier key)
 {
-    s_buffer.removeTail(key);
+    g_buffer.removeTail(key);
 }
 
-const std::vector<Logging::BufferType>::const_iterator Logging::cbegin(TailIdentifier key)
+const std::vector<BufferType>::const_iterator cbegin(TailIdentifier key)
 {
-    return s_buffer.cbegin(key);
+    return g_buffer.cbegin(key);
 }
 
-bool Logging::valid(TailIdentifier key, const std::vector<Logging::BufferType>::const_iterator & it)
+bool valid(TailIdentifier key, const std::vector<BufferType>::const_iterator & it)
 {
-    return s_buffer.valid(key, it);
+    return g_buffer.valid(key, it);
 }
 
-const std::vector<Logging::BufferType>::const_iterator Logging::next(TailIdentifier key, const std::vector<Logging::BufferType>::const_iterator & it)
+const std::vector<BufferType>::const_iterator next(TailIdentifier key, const std::vector<BufferType>::const_iterator & it)
 {
-    return s_buffer.next(key, it);
+    return g_buffer.next(key, it);
 }
 
-void Logging::release(TailIdentifier key, const std::vector<Logging::BufferType>::const_iterator & it)
+void release(TailIdentifier key, const std::vector<BufferType>::const_iterator & it)
 {
     release(key, it);
 }
 
-unsigned int Logging::size(TailIdentifier key)
+unsigned int size(TailIdentifier key)
 {
-    return s_buffer.size(key);
+    return g_buffer.size(key);
 }
 
+} // namespace logging
 } // namespace glbinding

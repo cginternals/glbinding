@@ -16,45 +16,27 @@ template <typename T>
 class RingBuffer;
 
 
-class GLBINDING_API Logging
+namespace logging
 {
-
-public:
-    static void start();
-    static void start(const std::string & filepath);
-    static void stop();
-    static void pause();
-    static void resume();
-    static void log(bool enable);
+    GLBINDING_API void start();
+    GLBINDING_API void start(const std::string & filepath);
+    GLBINDING_API void stop();
+    GLBINDING_API void pause();
+    GLBINDING_API void resume();
+    GLBINDING_API void log(bool enable);
 
     using BufferType = FunctionCall*;
-    static void log(BufferType  call);
+    GLBINDING_API void log(BufferType  call);
 
 
     using TailIdentifier = unsigned int;
-    static TailIdentifier addTail();
-    static void removeTail(TailIdentifier);
-    static const std::vector<BufferType>::const_iterator cbegin(TailIdentifier key);
-    static bool valid(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
-    static const std::vector<BufferType>::const_iterator next(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
-    static void release(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
-    static unsigned int size(TailIdentifier key);
-
-private:
-    Logging() = delete;
-    ~Logging() = delete;
-
-private:
-    static bool s_stop;
-    static bool s_persisted;
-    static std::mutex s_lockfinish;
-    static std::condition_variable s_finishcheck;
-
-
-    using FunctionCallBuffer = glbinding::RingBuffer<BufferType>;
-    static FunctionCallBuffer s_buffer;
-
-
+    GLBINDING_API TailIdentifier addTail();
+    GLBINDING_API void removeTail(TailIdentifier);
+    GLBINDING_API const std::vector<BufferType>::const_iterator cbegin(TailIdentifier key);
+    GLBINDING_API bool valid(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
+    GLBINDING_API const std::vector<BufferType>::const_iterator next(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
+    GLBINDING_API void release(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
+    GLBINDING_API unsigned int size(TailIdentifier key);
 };
 
 

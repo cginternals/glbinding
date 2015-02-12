@@ -89,14 +89,14 @@ void compare()
     glbinding_error(false);
 
     std::cout << std::endl << "test: again, now with logging ..." << std::endl;
-    glbinding::Logging::log(true);
+    glbinding::logging::log(true);
     timer.start("      glbinding ");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glbinding_test();
     
     long double glbinding_avg_log = timer.stop();
-    glbinding::Logging::log(false);
+    glbinding::logging::log(false);
 
 
     std::cout << std::endl << "glbinding/glew decrease:                 " << (glbinding_avg / glew_avg - 1.0) * 100.0 << "%" << std::endl;

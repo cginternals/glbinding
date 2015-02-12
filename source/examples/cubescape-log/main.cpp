@@ -97,7 +97,7 @@ int main(int, char *[])
     Binding::initialize(false); // only resolve functions that are actually used (lazy)
 
     // Logging start
-    Logging::start();
+    logging::start();
 
     // print some gl infos (query)
     std::cout << std::endl
@@ -125,7 +125,7 @@ int main(int, char *[])
     cubescape = nullptr;
 
     // Logging end
-    Logging::stop();
+    logging::stop();
 
     glfwTerminate();
     return 0;
