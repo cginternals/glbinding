@@ -1,7 +1,9 @@
 #include <glbinding/Logging.h>
 
 #include <cassert>
+#include <fstream>
 #include <sstream>
+#include <thread>
 
 #include "RingBuffer.h"
 
