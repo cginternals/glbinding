@@ -1,4 +1,4 @@
-#include <glbinding/Logging.h>
+#include <glbinding/logging.h>
 
 #include <atomic>
 #include <cassert>

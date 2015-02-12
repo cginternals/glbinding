@@ -6,6 +6,7 @@
 
 #include <utility>
 #include <functional>
+#include <memory>
 
 
 namespace 
