@@ -1,7 +1,7 @@
 #pragma once
 
 #include <glbinding/Function.h>
-#include <glbinding/Logging.h>
+#include <glbinding/logging.h>
 #include <glbinding/Value.h>
 
 #include <utility>

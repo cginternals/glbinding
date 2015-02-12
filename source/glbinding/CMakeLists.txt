@@ -78,7 +78,7 @@ set(api_includes
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.hpp
 
-    ${include_path}/Logging.h
+    ${include_path}/logging.h
 )
 
 # add featured headers
@@ -119,7 +119,7 @@ set(sources
 
     ${source_path}/RingBuffer.h
     ${source_path}/RingBuffer.hpp
-    ${source_path}/Logging.cpp
+    ${source_path}/logging.cpp
 )
 
 # file(GLOB featured_sources ${source_path}/gl/*.cpp)

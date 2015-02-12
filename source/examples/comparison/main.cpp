@@ -7,7 +7,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/ContextInfo.h>
-#include <glbinding/Logging.h>
+#include <glbinding/logging.h>
 #include <glbinding/Version.h>
 
 #include "Timer.h"
