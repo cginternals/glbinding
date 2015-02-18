@@ -621,34 +621,6 @@ gl::VertexHintsMaskPGI operator^(const gl::VertexHintsMaskPGI & a, const gl::Ver
 
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value)
-{
-    stream << bitfieldString<gl::PathFontStyle>(value, glbinding::Meta_StringsByPathFontStyle);
-    return stream;
-}
-
-namespace glbinding
-{
-
-gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
-{
-    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) | static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
-}
-
-gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
-{
-    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) & static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
-}
-
-gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
-{
-    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
-}
-
-}
-
-
-
 std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value)
 {
     stream << bitfieldString<gl::UnusedMask>(value, glbinding::Meta_StringsByUnusedMask);
@@ -699,6 +671,34 @@ gl::BufferAccessMask operator&(const gl::BufferAccessMask & a, const gl::BufferA
 gl::BufferAccessMask operator^(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
 {
     return static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+}
+
+}
+
+
+
+std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value)
+{
+    stream << bitfieldString<gl::PathFontStyle>(value, glbinding::Meta_StringsByPathFontStyle);
+    return stream;
+}
+
+namespace glbinding
+{
+
+gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
+{
+    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) | static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+}
+
+gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
+{
+    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) & static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+}
+
+gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
+{
+    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
 }
 
 }

@@ -84,9 +84,9 @@ enum class SyncObjectMask : unsigned int;
 enum class TextureStorageMaskAMD : unsigned int;
 enum class UseProgramStageMask : unsigned int;
 enum class VertexHintsMaskPGI : unsigned int;
-enum class PathFontStyle : unsigned int;
 enum class UnusedMask : unsigned int;
 enum class BufferAccessMask : unsigned int;
+enum class PathFontStyle : unsigned int;
 
 } // namespace gl
 
@@ -630,33 +630,6 @@ namespace std
 {
 
 template<>
-struct hash<gl::PathFontStyle>
-{
-    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
-    {
-        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
-    }
-};
-
-}
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value);
-
-namespace glbinding
-{
-
-GLBINDING_API gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
-GLBINDING_API gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
-GLBINDING_API gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
-
-}
-
-
-namespace std
-{
-
-template<>
 struct hash<gl::UnusedMask>
 {
     hash<std::underlying_type<gl::UnusedMask>::type>::result_type operator()(const gl::UnusedMask & t) const
@@ -703,5 +676,32 @@ namespace glbinding
 GLBINDING_API gl::BufferAccessMask operator|(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
 GLBINDING_API gl::BufferAccessMask operator&(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
 GLBINDING_API gl::BufferAccessMask operator^(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+
+}
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::PathFontStyle>
+{
+    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
+    {
+        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value);
+
+namespace glbinding
+{
+
+GLBINDING_API gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
+GLBINDING_API gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
+GLBINDING_API gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
 
 }

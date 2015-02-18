@@ -115,7 +115,6 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
     { "GL_QUERY_BUFFER_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_QUERY_BUFFER_BARRIER_BIT) },
     { "GL_ALL_BARRIER_BITS", static_cast<GLbitfield>(MemoryBarrierMask::GL_ALL_BARRIER_BITS) },
     { "GL_ALL_BARRIER_BITS_EXT", static_cast<GLbitfield>(MemoryBarrierMask::GL_ALL_BARRIER_BITS_EXT) },
-    { "GL_NONE_BIT", static_cast<GLbitfield>(PathFontStyle::GL_NONE_BIT) },
     { "GL_BOLD_BIT_NV", static_cast<GLbitfield>(PathFontStyle::GL_BOLD_BIT_NV) },
     { "GL_ITALIC_BIT_NV", static_cast<GLbitfield>(PathFontStyle::GL_ITALIC_BIT_NV) },
     { "GL_FONT_X_MIN_BOUNDS_BIT_NV", static_cast<GLbitfield>(PathRenderingMaskNV::GL_FONT_X_MIN_BOUNDS_BIT_NV) },

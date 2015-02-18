@@ -9,10 +9,6 @@
     <enums namespace="GL" group="UnusedMask" type="bitmask">
         <enum value="0x00000000" name="GL_UNUSED_BIT"/>
     </enums>
-        <enum value="0x00000000" name="GL_NONE_BIT"/>
-    <enums namespace="GL" group="PathFontStyle" type="bitmask">
-        <enum value="0x00" name="GL_NONE_BIT"/>
-    </enums>
     
     <enums namespace="GL" start="0x8B48" end="0x8B4F" vendor="ARB">
         <enum value="0x8B4B" name="GL_MAX_VARYING_COMPONENTS" alias="GL_MAX_VARYING_FLOATS"/>
@@ -32,7 +28,6 @@
         </group>
 
         <group name="PathFontStyle">
-            <enum name="GL_NONE_BIT"/>
             <enum name="GL_BOLD_BIT_NV"/>
             <enum name="GL_ITALIC_BIT_NV"/>
         </group>

@@ -11,7 +11,6 @@ namespace gl41ext
 {
 
 // import bitfields to namespace
-static const gl::PathFontStyle GL_NONE_BIT = gl::PathFontStyle::GL_NONE_BIT;
 static const gl::PerformanceQueryCapsMaskINTEL GL_PERFQUERY_SINGLE_CONTEXT_INTEL = gl::PerformanceQueryCapsMaskINTEL::GL_PERFQUERY_SINGLE_CONTEXT_INTEL;
 static const gl::UnusedMask GL_UNUSED_BIT = gl::UnusedMask::GL_UNUSED_BIT;
 static const gl::FragmentShaderDestModMaskATI GL_2X_BIT_ATI = gl::FragmentShaderDestModMaskATI::GL_2X_BIT_ATI;

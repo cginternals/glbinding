@@ -49,8 +49,8 @@ extern const std::unordered_map<gl::SyncObjectMask, std::string> Meta_StringsByS
 extern const std::unordered_map<gl::TextureStorageMaskAMD, std::string> Meta_StringsByTextureStorageMaskAMD;
 extern const std::unordered_map<gl::UseProgramStageMask, std::string> Meta_StringsByUseProgramStageMask;
 extern const std::unordered_map<gl::VertexHintsMaskPGI, std::string> Meta_StringsByVertexHintsMaskPGI;
-extern const std::unordered_map<gl::PathFontStyle, std::string> Meta_StringsByPathFontStyle;
 extern const std::unordered_map<gl::UnusedMask, std::string> Meta_StringsByUnusedMask;
 extern const std::unordered_map<gl::BufferAccessMask, std::string> Meta_StringsByBufferAccessMask;
+extern const std::unordered_map<gl::PathFontStyle, std::string> Meta_StringsByPathFontStyle;
 
 } // namespace glbinding

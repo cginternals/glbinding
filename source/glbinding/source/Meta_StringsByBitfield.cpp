@@ -187,8 +187,7 @@ const std::unordered_map<MemoryBarrierMask, std::string> Meta_StringsByMemoryBar
 const std::unordered_map<PathFontStyle, std::string> Meta_StringsByPathFontStyle 
 {
 #ifdef STRINGS_BY_GL
-    { PathFontStyle::GL_NONE_BIT, "GL_NONE_BIT" },
-	{ PathFontStyle::GL_BOLD_BIT_NV, "GL_BOLD_BIT_NV" },
+    { PathFontStyle::GL_BOLD_BIT_NV, "GL_BOLD_BIT_NV" },
 	{ PathFontStyle::GL_ITALIC_BIT_NV, "GL_ITALIC_BIT_NV" }
 #endif
 };

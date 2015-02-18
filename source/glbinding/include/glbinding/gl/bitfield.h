@@ -173,7 +173,6 @@ enum class MemoryBarrierMask : unsigned int
 
 enum class PathFontStyle : unsigned int
 {
-    GL_NONE_BIT      = 0x00,
     GL_BOLD_BIT_NV   = 0x01,
     GL_ITALIC_BIT_NV = 0x02,
 };
@@ -272,7 +271,6 @@ enum class VertexHintsMaskPGI : unsigned int
 
 // import bitfields to namespace
 
-static const PathFontStyle GL_NONE_BIT = PathFontStyle::GL_NONE_BIT;
 static const PerformanceQueryCapsMaskINTEL GL_PERFQUERY_SINGLE_CONTEXT_INTEL = PerformanceQueryCapsMaskINTEL::GL_PERFQUERY_SINGLE_CONTEXT_INTEL;
 static const UnusedMask GL_UNUSED_BIT = UnusedMask::GL_UNUSED_BIT;
 static const FragmentShaderDestModMaskATI GL_2X_BIT_ATI = FragmentShaderDestModMaskATI::GL_2X_BIT_ATI;

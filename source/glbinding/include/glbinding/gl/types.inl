@@ -58,6 +58,6 @@ using SyncObjectMask = gl::SyncObjectMask;
 using TextureStorageMaskAMD = gl::TextureStorageMaskAMD;
 using UseProgramStageMask = gl::UseProgramStageMask;
 using VertexHintsMaskPGI = gl::VertexHintsMaskPGI;
-using PathFontStyle = gl::PathFontStyle;
 using UnusedMask = gl::UnusedMask;
 using BufferAccessMask = gl::BufferAccessMask;
+using PathFontStyle = gl::PathFontStyle;
