@@ -245,7 +245,7 @@ inline void glBufferData(GLenum target, GLsizeiptr size, const void * data, GLen
     return glbinding::Binding::BufferData(target, size, data, usage);
 }
 
-inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
+inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::BufferStorage(target, size, data, flags);
 }

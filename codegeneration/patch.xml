@@ -27,6 +27,16 @@
             <enum name="GL_MAP_COHERENT_BIT"/>
         </group>
 
+        <!-- this is a new group that does not (yet) exist in gl.xml -->
+        <group name="BufferStorageMask">
+            <enum name="GL_DYNAMIC_STORAGE_BIT"/>
+            <enum name="GL_MAP_READ_BIT"/>
+            <enum name="GL_MAP_WRITE_BIT"/>
+            <enum name="GL_MAP_PERSISTENT_BIT"/>
+            <enum name="GL_MAP_COHERENT_BIT"/>
+            <enum name="GL_CLIENT_STORAGE_BIT"/>
+        </group>
+
         <group name="PathFontStyle">
             <enum name="GL_BOLD_BIT_NV"/>
             <enum name="GL_ITALIC_BIT_NV"/>
@@ -45,7 +55,7 @@
         <!-- patch missing groups for parameter of type GLbitfield -->
         <command>
             <proto>void <name>glBufferStorage</name></proto>
-            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="BufferStorageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto><ptype>GLenum</ptype> <name>glClientWaitSync</name></proto>
@@ -69,11 +79,11 @@
         </command>
         <command>
             <proto>void <name>glNamedBufferStorageEXT</name></proto>
-            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="BufferStorageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto>void <name>glNamedBufferStorage</name></proto>
-            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="BufferStorageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto>void *<name>glMapNamedBufferRange</name></proto>

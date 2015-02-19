@@ -189,7 +189,7 @@ public:
     static Function<void, gl::GLenum, gl::GLsizeiptrARB, const void *, gl::GLenum> BufferDataARB;
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> BufferPageCommitmentARB;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> BufferParameteriAPPLE;
-    static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> BufferStorage;
+    static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::BufferStorageMask> BufferStorage;
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData;
     static Function<void, gl::GLenum, gl::GLintptrARB, gl::GLsizeiptrARB, const void *> BufferSubDataARB;
     static Function<void, gl::GLuint> CallList;
@@ -1517,8 +1517,8 @@ public:
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferDataEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentARB;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentEXT;
-    static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> NamedBufferStorage;
-    static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::MapBufferUsageMask> NamedBufferStorageEXT;
+    static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorage;
+    static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorageEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubData;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubDataEXT;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLintptr, gl::GLintptr, gl::GLsizeiptr> NamedCopyBufferSubDataEXT;

@@ -60,4 +60,5 @@ using UseProgramStageMask = gl::UseProgramStageMask;
 using VertexHintsMaskPGI = gl::VertexHintsMaskPGI;
 using UnusedMask = gl::UnusedMask;
 using BufferAccessMask = gl::BufferAccessMask;
+using BufferStorageMask = gl::BufferStorageMask;
 using PathFontStyle = gl::PathFontStyle;

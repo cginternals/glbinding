@@ -35,8 +35,8 @@ static const glbinding::SharedBitfield<gl::AttribMask, gl::ClearBufferMask> GL_S
 static const gl::MemoryBarrierMask GL_TRANSFORM_FEEDBACK_BARRIER_BIT = gl::MemoryBarrierMask::GL_TRANSFORM_FEEDBACK_BARRIER_BIT;
 static const gl::MemoryBarrierMask GL_ATOMIC_COUNTER_BARRIER_BIT = gl::MemoryBarrierMask::GL_ATOMIC_COUNTER_BARRIER_BIT;
 static const glbinding::SharedBitfield<gl::AttribMask, gl::ClearBufferMask> GL_COLOR_BUFFER_BIT = gl::AttribMask::GL_COLOR_BUFFER_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_READ_BIT = gl::BufferAccessMask::GL_MAP_READ_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_WRITE_BIT = gl::BufferAccessMask::GL_MAP_WRITE_BIT;
+static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::BufferStorageMask, gl::MapBufferUsageMask> GL_MAP_READ_BIT = gl::BufferAccessMask::GL_MAP_READ_BIT;
+static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::BufferStorageMask, gl::MapBufferUsageMask> GL_MAP_WRITE_BIT = gl::BufferAccessMask::GL_MAP_WRITE_BIT;
 static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_INVALIDATE_RANGE_BIT = gl::BufferAccessMask::GL_MAP_INVALIDATE_RANGE_BIT;
 static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_INVALIDATE_BUFFER_BIT = gl::BufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT;
 static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_FLUSH_EXPLICIT_BIT = gl::BufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT;

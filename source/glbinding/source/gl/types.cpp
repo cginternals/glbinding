@@ -49,6 +49,14 @@ std::string bitfieldString(T value, const std::unordered_map<T, std::string> & m
 
 
 
+std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
+{
+    stream << glbinding::Meta::getString(value);
+    return stream;
+}
+
+
+
 std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value)
 {
     stream << glbinding::Meta::getString(value);
@@ -125,14 +133,6 @@ bool operator>(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
     return a >= static_cast<std::underlying_type<gl::GLenum>::type>(b);
-}
-
-
-
-std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
-{
-    stream << glbinding::Meta::getString(value);
-    return stream;
 }
 
 
@@ -671,6 +671,34 @@ gl::BufferAccessMask operator&(const gl::BufferAccessMask & a, const gl::BufferA
 gl::BufferAccessMask operator^(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
 {
     return static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+}
+
+}
+
+
+
+std::ostream & operator<<(std::ostream & stream, const gl::BufferStorageMask & value)
+{
+    stream << bitfieldString<gl::BufferStorageMask>(value, glbinding::Meta_StringsByBufferStorageMask);
+    return stream;
+}
+
+namespace glbinding
+{
+
+gl::BufferStorageMask operator|(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+{
+    return static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) | static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+}
+
+gl::BufferStorageMask operator&(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+{
+    return static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) & static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+}
+
+gl::BufferStorageMask operator^(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+{
+    return static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
 }
 
 }

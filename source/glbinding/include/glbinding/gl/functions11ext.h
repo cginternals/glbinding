@@ -655,7 +655,7 @@ inline void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param)
     return glbinding::Binding::BufferParameteriAPPLE(target, pname, param);
 }
 
-inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
+inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::BufferStorage(target, size, data, flags);
 }
@@ -6450,12 +6450,12 @@ inline void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsiz
     return glbinding::Binding::NamedBufferPageCommitmentEXT(buffer, offset, size, commit);
 }
 
-inline void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
+inline void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::NamedBufferStorage(buffer, size, data, flags);
 }
 
-inline void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
+inline void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::NamedBufferStorageEXT(buffer, size, data, flags);
 }

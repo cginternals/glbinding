@@ -255,7 +255,7 @@ inline void glBufferData(GLenum target, GLsizeiptr size, const void * data, GLen
     return glbinding::Binding::BufferData(target, size, data, usage);
 }
 
-inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
+inline void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::BufferStorage(target, size, data, flags);
 }
@@ -2770,7 +2770,7 @@ inline void glNamedBufferData(GLuint buffer, GLsizeiptr size, const void * data,
     return glbinding::Binding::NamedBufferData(buffer, size, data, usage);
 }
 
-inline void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
+inline void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::NamedBufferStorage(buffer, size, data, flags);
 }

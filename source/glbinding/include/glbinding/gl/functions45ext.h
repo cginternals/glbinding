@@ -4585,7 +4585,7 @@ inline void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsiz
     return glbinding::Binding::NamedBufferPageCommitmentEXT(buffer, offset, size, commit);
 }
 
-inline void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, MapBufferUsageMask flags)
+inline void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::NamedBufferStorageEXT(buffer, size, data, flags);
 }

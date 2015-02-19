@@ -54,6 +54,18 @@ const std::unordered_map<BufferAccessMask, std::string> Meta_StringsByBufferAcce
 #endif
 };
     
+const std::unordered_map<BufferStorageMask, std::string> Meta_StringsByBufferStorageMask 
+{
+#ifdef STRINGS_BY_GL
+    { BufferStorageMask::GL_MAP_READ_BIT, "GL_MAP_READ_BIT" },
+	{ BufferStorageMask::GL_MAP_WRITE_BIT, "GL_MAP_WRITE_BIT" },
+	{ BufferStorageMask::GL_MAP_PERSISTENT_BIT, "GL_MAP_PERSISTENT_BIT" },
+	{ BufferStorageMask::GL_MAP_COHERENT_BIT, "GL_MAP_COHERENT_BIT" },
+	{ BufferStorageMask::GL_DYNAMIC_STORAGE_BIT, "GL_DYNAMIC_STORAGE_BIT" },
+	{ BufferStorageMask::GL_CLIENT_STORAGE_BIT, "GL_CLIENT_STORAGE_BIT" }
+#endif
+};
+    
 const std::unordered_map<ClearBufferMask, std::string> Meta_StringsByClearBufferMask 
 {
 #ifdef STRINGS_BY_GL
