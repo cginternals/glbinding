@@ -28,11 +28,11 @@ int main()
 }
 ```
 
-## Status
+## CI Status
 
-| CI service | status |
-|----------- |------- |
-| [drone.io](https://drone.io/github.com/hpicgs/glbinding) | [![Build Status](https://drone.io/github.com/hpicgs/glbinding/status.png)](https://drone.io/github.com/hpicgs/glbinding/latest) |
+| CI service | system | status |
+|------------|--------|--------|
+| [drone.io](https://drone.io/github.com/hpicgs/glbinding) | Ubuntu  | [![Build Status](https://drone.io/github.com/hpicgs/glbinding/status.png)](https://drone.io/github.com/hpicgs/glbinding/latest) |
 
 
 ## Features
