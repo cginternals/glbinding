@@ -3,8 +3,6 @@
 #include <glbinding/%a/nogl.h>
 #include <glbinding/%a/types.h>
 
-#include <glbinding/Binding.h>
-
 
 namespace %a
 {

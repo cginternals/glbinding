@@ -3,13 +3,15 @@ from classes.Command import *
 
 
 
-functionForwardTemplate = """inline %s %s(%s)
+functionForwardTemplate = """%s %s(%s);"""
+
+functionForwardImplementationTemplate = """%s %s(%s)
 {
     return glbinding::Binding::%s(%s);
 }
 """
 
-functionForwardTemplateRValueCast = """inline %s %s(%s)
+functionForwardImplementationTemplateRValueCast = """%s %s(%s)
 {
     return static_cast<gl%s::%s>(glbinding::Binding::%s(%s));
 }
@@ -67,13 +69,21 @@ def functionDecl(api, function):
 def functionForward(function, feature, version):
 
     params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    # paramNames = ", ".join([p.name for p in function.params])
+
+    return functionForwardTemplate % (function.returntype, functionBID(function), params)
+
+
+def functionForwardImplementation(function, feature, version):
+
+    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
     paramNames = ", ".join([p.name for p in function.params])
 
     if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
-        return functionForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
+        return functionForwardImplementationTemplateRValueCast % (function.returntype, functionBID(function), params,
             version, function.returntype, functionBID(function)[2:], paramNames)
     else:
-        return functionForwardTemplate % (function.returntype, functionBID(function), params,
+        return functionForwardImplementationTemplate % (function.returntype, functionBID(function), params,
             functionBID(function)[2:], paramNames)
 
 
@@ -145,6 +155,11 @@ def genFunctionsAll(api, commands, outputdir, outputfile):
     genFeatureFunctions(api, commands, None, outputdir, outputfile, None)
 
 
+def genFunctionImplementationsAll(api, commands, outputdir, outputfile):
+
+    genFeatureFunctionImplementations(api, commands, None, outputdir, outputfile, None)
+
+
 def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
 
     # gen functions feature grouped
@@ -154,6 +169,17 @@ def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureFunctions(api, commands, f, outputdir, outputfile, True)
             genFeatureFunctions(api, commands, f, outputdir, outputfile, False, True)
+
+
+def genFunctionImplementationsFeatureGrouped(api, commands, features, outputdir, outputfile):
+
+    # gen functions feature grouped
+    for f in features:
+        if f.api == "gl": # ToDo: probably seperate for all apis
+            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile)
+            if f.major > 3 or (f.major == 3 and f.minor >= 2):
+                genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, True)
+            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, False, True)
 
 
 def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = False, ext = False):
@@ -177,3 +203,25 @@ def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = Fa
         else:
             file.write(t % ("\n".join(
                 [ functionForward(c, feature, version) for c in pureCommands ])))
+
+def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputfile, core = False, ext = False):
+
+    of_all = outputfile.replace("?", "F")
+
+    version = versionBID(feature, core, ext)
+
+    t = template(of_all).replace("%f", version).replace("%a", api)
+    of = outputfile.replace("?", version)
+
+    status(outputdir + of)
+
+    pureCommands = [ c for c in commands if
+        (not ext and c.supported(feature, core)) or (ext and not c.supported(feature, False)) ]
+
+    with open(outputdir + of, 'w') as file:
+        if not feature:
+            file.write(t % ("\n".join(
+                [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))
+        else:
+            file.write(t % ("\n".join(
+                [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))

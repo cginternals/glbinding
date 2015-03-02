@@ -8,6 +8,8 @@
 #include <glbinding/AbstractFunction.h> 
 #include <glbinding/callbacks.h>
 
+#include <glbinding/Binding.h>
+
 
 using namespace gl;
 
