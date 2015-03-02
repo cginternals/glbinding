@@ -28,6 +28,13 @@ int main()
 }
 ```
 
+## Status
+
+| CI service | status |
+|----------- |------- |
+| [drone.io](https://drone.io/github.com/hpicgs/glbinding) | [![Build Status](https://drone.io/github.com/hpicgs/glbinding/status.png)](https://drone.io/github.com/hpicgs/glbinding/latest) |
+
+
 ## Features
 
 ##### Type-Safe Parameters
@@ -269,12 +276,6 @@ if (Meta::stringsByGL())
 As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
 The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
 
-
-<!--
-## Status
-
-build status (@hourly for master): ![status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding)
--->
 
 ## Context Creation Cheat Sheet
 
