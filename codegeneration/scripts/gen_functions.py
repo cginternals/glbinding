@@ -3,7 +3,7 @@ from classes.Command import *
 
 
 
-functionForwardTemplate = """%s %s(%s);"""
+functionForwardTemplate = """GLBINDING_API %s %s(%s);"""
 
 functionForwardImplementationTemplate = """%s %s(%s)
 {
