@@ -3,7 +3,7 @@
 #include <glbinding/glbinding_api.h>
 
 #include <string>
-#include <iostream>
+#include <iosfwd>
 
 namespace glbinding 
 {
