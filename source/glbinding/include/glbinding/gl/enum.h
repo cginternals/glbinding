@@ -2216,7 +2216,6 @@ enum class GLenum : unsigned int
     GL_MAX_LABEL_LENGTH                                           = 0x82E8,
     GL_NUM_SHADING_LANGUAGE_VERSIONS                              = 0x82E9,
     GL_QUERY_TARGET                                               = 0x82EA,
-    GL_TEXTURE_BINDING                                            = 0x82EB,
     GL_TRANSFORM_FEEDBACK_OVERFLOW_ARB                            = 0x82EC,
     GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW_ARB                     = 0x82ED,
     GL_VERTICES_SUBMITTED_ARB                                     = 0x82EE,
@@ -7444,7 +7443,6 @@ static const GLenum GL_DISPLAY_LIST = GLenum::GL_DISPLAY_LIST;
 static const GLenum GL_MAX_LABEL_LENGTH = GLenum::GL_MAX_LABEL_LENGTH;
 static const GLenum GL_NUM_SHADING_LANGUAGE_VERSIONS = GLenum::GL_NUM_SHADING_LANGUAGE_VERSIONS;
 static const GLenum GL_QUERY_TARGET = GLenum::GL_QUERY_TARGET;
-static const GLenum GL_TEXTURE_BINDING = GLenum::GL_TEXTURE_BINDING;
 static const GLenum GL_TRANSFORM_FEEDBACK_OVERFLOW_ARB = GLenum::GL_TRANSFORM_FEEDBACK_OVERFLOW_ARB;
 static const GLenum GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW_ARB = GLenum::GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW_ARB;
 static const GLenum GL_VERTICES_SUBMITTED_ARB = GLenum::GL_VERTICES_SUBMITTED_ARB;

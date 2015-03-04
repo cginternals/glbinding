@@ -4096,7 +4096,10 @@ typedef unsigned int GLhandleARB;
         <enum value="0x82E8" name="GL_MAX_LABEL_LENGTH_KHR"/>
         <enum value="0x82E9" name="GL_NUM_SHADING_LANGUAGE_VERSIONS"/>
         <enum value="0x82EA" name="GL_QUERY_TARGET"/>
-        <enum value="0x82EB" name="GL_TEXTURE_BINDING"/>
+        <!-- 0x82EB = GL_TEXTURE_BINDING was removed in GL 4.5 and
+             ARB_direct_state_access in February 2015 after determining it
+             was not well defined or implementable. -->
+            <unused start="0x82EB" vendor="ARB" comment="Reserved. Formerly used for GL_TEXTURE_BINDING."/>
         <enum value="0x82EC" name="GL_TRANSFORM_FEEDBACK_OVERFLOW_ARB"/>
         <enum value="0x82ED" name="GL_TRANSFORM_FEEDBACK_STREAM_OVERFLOW_ARB"/>
         <enum value="0x82EE" name="GL_VERTICES_SUBMITTED_ARB"/>
@@ -33051,7 +33054,6 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_TEXTURE_BINDING_CUBE_MAP"/>
             <enum name="GL_TEXTURE_BINDING_CUBE_MAP_ARRAY"/>
             <enum name="GL_TEXTURE_BINDING_RECTANGLE"/>
-            <enum name="GL_TEXTURE_BINDING"/>
             <command name="glCreateTransformFeedbacks"/>
             <command name="glTransformFeedbackBufferBase"/>
             <command name="glTransformFeedbackBufferRange"/>
@@ -35772,7 +35774,6 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_TEXTURE_BINDING_CUBE_MAP"/>
                 <enum name="GL_TEXTURE_BINDING_CUBE_MAP_ARRAY"/>
                 <enum name="GL_TEXTURE_BINDING_RECTANGLE"/>
-                <enum name="GL_TEXTURE_BINDING"/>
             </require>
             <require comment="Transform Feedback object functions">
                 <command name="glCreateTransformFeedbacks"/>

@@ -2,6 +2,7 @@
 #include <glbinding/AbstractValue.h>
 
 #include <sstream>
+#include <iostream>
 
 
 namespace glbinding

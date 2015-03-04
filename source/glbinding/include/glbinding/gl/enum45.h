@@ -1308,7 +1308,6 @@ static const gl::GLenum GL_DISPLAY_LIST = gl::GLenum::GL_DISPLAY_LIST;
 static const gl::GLenum GL_MAX_LABEL_LENGTH = gl::GLenum::GL_MAX_LABEL_LENGTH;
 static const gl::GLenum GL_NUM_SHADING_LANGUAGE_VERSIONS = gl::GLenum::GL_NUM_SHADING_LANGUAGE_VERSIONS;
 static const gl::GLenum GL_QUERY_TARGET = gl::GLenum::GL_QUERY_TARGET;
-static const gl::GLenum GL_TEXTURE_BINDING = gl::GLenum::GL_TEXTURE_BINDING;
 static const gl::GLenum GL_MAX_CULL_DISTANCES = gl::GLenum::GL_MAX_CULL_DISTANCES;
 static const gl::GLenum GL_MAX_COMBINED_CLIP_AND_CULL_DISTANCES = gl::GLenum::GL_MAX_COMBINED_CLIP_AND_CULL_DISTANCES;
 static const gl::GLenum GL_CONTEXT_RELEASE_BEHAVIOR = gl::GLenum::GL_CONTEXT_RELEASE_BEHAVIOR;

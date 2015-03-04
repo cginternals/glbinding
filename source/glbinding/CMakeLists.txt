@@ -122,8 +122,9 @@ set(sources
     ${source_path}/logging.cpp
 )
 
-# file(GLOB featured_sources ${source_path}/gl/*.cpp)
-# list(APPEND sources ${featured_sources})
+# add featured sources
+file(GLOB featured_sources ${source_path}/gl/*.cpp)
+list(APPEND sources ${featured_sources})
 
 # Group source files
 set(header_group "Header Files (API)")

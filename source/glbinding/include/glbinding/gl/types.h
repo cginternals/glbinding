@@ -84,14 +84,51 @@ enum class SyncObjectMask : unsigned int;
 enum class TextureStorageMaskAMD : unsigned int;
 enum class UseProgramStageMask : unsigned int;
 enum class VertexHintsMaskPGI : unsigned int;
-enum class PathFontStyle : unsigned int;
 enum class UnusedMask : unsigned int;
 enum class BufferAccessMask : unsigned int;
+enum class BufferStorageMask : unsigned int;
+enum class PathFontStyle : unsigned int;
 
 } // namespace gl
 
 
 // Type Integrations
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLextension>
+{
+    hash<std::underlying_type<gl::GLextension>::type>::result_type operator()(const gl::GLextension & t) const
+    {
+        return hash<std::underlying_type<gl::GLextension>::type>()(static_cast<std::underlying_type<gl::GLextension>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::GLboolean>
+{
+    hash<std::underlying_type<gl::GLboolean>::type>::result_type operator()(const gl::GLboolean & t) const
+    {
+        return hash<std::underlying_type<gl::GLboolean>::type>()(static_cast<std::underlying_type<gl::GLboolean>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
 
 
 namespace std
@@ -129,42 +166,6 @@ GLBINDING_API bool operator< (std::underlying_type<gl::GLenum>::type a, const gl
 GLBINDING_API bool operator<=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
 GLBINDING_API bool operator> (std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
 GLBINDING_API bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
-
-
-namespace std
-{
-
-template<>
-struct hash<gl::GLboolean>
-{
-    hash<std::underlying_type<gl::GLboolean>::type>::result_type operator()(const gl::GLboolean & t) const
-    {
-        return hash<std::underlying_type<gl::GLboolean>::type>()(static_cast<std::underlying_type<gl::GLboolean>::type>(t));
-    }
-};
-
-}
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
-
-
-namespace std
-{
-
-template<>
-struct hash<gl::GLextension>
-{
-    hash<std::underlying_type<gl::GLextension>::type>::result_type operator()(const gl::GLextension & t) const
-    {
-        return hash<std::underlying_type<gl::GLextension>::type>()(static_cast<std::underlying_type<gl::GLextension>::type>(t));
-    }
-};
-
-}
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);
 
 
 namespace std
@@ -630,33 +631,6 @@ namespace std
 {
 
 template<>
-struct hash<gl::PathFontStyle>
-{
-    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
-    {
-        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
-    }
-};
-
-}
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value);
-
-namespace glbinding
-{
-
-GLBINDING_API gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
-GLBINDING_API gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
-GLBINDING_API gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
-
-}
-
-
-namespace std
-{
-
-template<>
 struct hash<gl::UnusedMask>
 {
     hash<std::underlying_type<gl::UnusedMask>::type>::result_type operator()(const gl::UnusedMask & t) const
@@ -703,5 +677,59 @@ namespace glbinding
 GLBINDING_API gl::BufferAccessMask operator|(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
 GLBINDING_API gl::BufferAccessMask operator&(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
 GLBINDING_API gl::BufferAccessMask operator^(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+
+}
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::BufferStorageMask>
+{
+    hash<std::underlying_type<gl::BufferStorageMask>::type>::result_type operator()(const gl::BufferStorageMask & t) const
+    {
+        return hash<std::underlying_type<gl::BufferStorageMask>::type>()(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::BufferStorageMask & value);
+
+namespace glbinding
+{
+
+GLBINDING_API gl::BufferStorageMask operator|(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+GLBINDING_API gl::BufferStorageMask operator&(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+GLBINDING_API gl::BufferStorageMask operator^(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+
+}
+
+
+namespace std
+{
+
+template<>
+struct hash<gl::PathFontStyle>
+{
+    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
+    {
+        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
+    }
+};
+
+}
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value);
+
+namespace glbinding
+{
+
+GLBINDING_API gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
+GLBINDING_API gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
+GLBINDING_API gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
 
 }

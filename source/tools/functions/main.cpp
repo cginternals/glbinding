@@ -11,6 +11,7 @@
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
+#include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl.h>
 

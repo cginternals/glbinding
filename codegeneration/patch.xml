@@ -9,10 +9,6 @@
     <enums namespace="GL" group="UnusedMask" type="bitmask">
         <enum value="0x00000000" name="GL_UNUSED_BIT"/>
     </enums>
-        <enum value="0x00000000" name="GL_NONE_BIT"/>
-    <enums namespace="GL" group="PathFontStyle" type="bitmask">
-        <enum value="0x00" name="GL_NONE_BIT"/>
-    </enums>
     
     <enums namespace="GL" start="0x8B48" end="0x8B4F" vendor="ARB">
         <enum value="0x8B4B" name="GL_MAX_VARYING_COMPONENTS" alias="GL_MAX_VARYING_FLOATS"/>
@@ -31,8 +27,17 @@
             <enum name="GL_MAP_COHERENT_BIT"/>
         </group>
 
+        <!-- this is a new group that does not (yet) exist in gl.xml -->
+        <group name="BufferStorageMask">
+            <enum name="GL_DYNAMIC_STORAGE_BIT"/>
+            <enum name="GL_MAP_READ_BIT"/>
+            <enum name="GL_MAP_WRITE_BIT"/>
+            <enum name="GL_MAP_PERSISTENT_BIT"/>
+            <enum name="GL_MAP_COHERENT_BIT"/>
+            <enum name="GL_CLIENT_STORAGE_BIT"/>
+        </group>
+
         <group name="PathFontStyle">
-            <enum name="GL_NONE_BIT"/>
             <enum name="GL_BOLD_BIT_NV"/>
             <enum name="GL_ITALIC_BIT_NV"/>
         </group>
@@ -50,7 +55,7 @@
         <!-- patch missing groups for parameter of type GLbitfield -->
         <command>
             <proto>void <name>glBufferStorage</name></proto>
-            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="BufferStorageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto><ptype>GLenum</ptype> <name>glClientWaitSync</name></proto>
@@ -74,11 +79,11 @@
         </command>
         <command>
             <proto>void <name>glNamedBufferStorageEXT</name></proto>
-            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="BufferStorageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto>void <name>glNamedBufferStorage</name></proto>
-            <param group="MapBufferUsageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
+            <param group="BufferStorageMask"><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto>void *<name>glMapNamedBufferRange</name></proto>

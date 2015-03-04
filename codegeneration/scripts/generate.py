@@ -177,6 +177,9 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genFunctionsAll                (api, commands,           includedir_api, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
+    
+    genFunctionImplementationsAll                (api, commands,           sourcedir_api, "functions.cpp")
+    genFunctionImplementationsFeatureGrouped     (api, commands, features, sourcedir_api, "functions?.cpp")
 
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 

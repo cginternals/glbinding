@@ -16,6 +16,10 @@
 
 #include <glbinding/gl/gl32.h>
 
+// Hack
+gl::GLboolean GL_TRUE = gl::GL_TRUE;
+gl::GLboolean GL_FALSE = gl::GL_FALSE;
+
 
 using namespace gl32;
 using namespace glbinding;

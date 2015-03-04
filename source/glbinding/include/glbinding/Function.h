@@ -12,7 +12,7 @@
 #endif
 #endif
 
-namespace 
+namespace glbinding 
 {
 
 template <typename ReturnType, typename... Arguments> struct FunctionHelper;
@@ -29,10 +29,6 @@ struct CallbackType<void, Arguments...>
     using type = std::function<void(Arguments...)>;
 };
 
-}
-
-namespace glbinding 
-{
 
 template <typename ReturnType, typename... Arguments>
 class Function : public AbstractFunction
