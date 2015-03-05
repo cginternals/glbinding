@@ -8,8 +8,7 @@
 
 #include <glbinding/gl/types.h>
 
-#include <glbinding/gl/boolean.h>
-
+#include <glbinding/gl/boolean43core.h>
 #include <glbinding/gl/bitfield43core.h>
 #include <glbinding/gl/enum43core.h>
 #include <glbinding/gl/functions43core.h>
