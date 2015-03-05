@@ -32,7 +32,7 @@ namespace logging
     GLBINDING_API const std::vector<BufferType>::const_iterator next(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
     GLBINDING_API void release(TailIdentifier key, const std::vector<BufferType>::const_iterator & it);
     GLBINDING_API unsigned int size(TailIdentifier key);
-};
+}
 
 
 } // namespace glbinding
