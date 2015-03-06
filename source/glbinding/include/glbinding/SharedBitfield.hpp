@@ -7,7 +7,7 @@ namespace glbinding
 
 template <typename T>
 SharedBitfieldBase<T>::SharedBitfieldBase(T value)
-: m_value(value)
+: m_value{value}
 {
 }
 

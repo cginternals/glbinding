@@ -51,7 +51,7 @@ find_library(GTEST_LIBRARY_DEBUG
     $ENV{GTEST_HOME}
     $ENV{GMOCKDIR}/gtest
     $ENV{GMOCK_HOME}/gtest
-	$ENV{GTESTDIR}/Debug
+    $ENV{GTESTDIR}/Debug
     $ENV{GTEST_HOME}/Debug
     $ENV{GMOCKDIR}/gtest/Debug
     $ENV{GMOCK_HOME}/gtest/Debug

@@ -15,7 +15,7 @@ struct FunctionHelper
 {
     ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) const
     {
-        glbinding::FunctionCall functionCall(function);
+        auto functionCall = glbinding::FunctionCall{function};
 
         if (function->isEnabled(glbinding::CallbackMask::Parameters))
             functionCall.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
@@ -28,7 +28,7 @@ struct FunctionHelper
             function->m_beforeCallback(std::forward<Arguments>(arguments)...);
         }
 
-        ReturnType value = basicCall(function, std::forward<Arguments>(arguments)...);
+        auto value = basicCall(function, std::forward<Arguments>(arguments)...);
 
         if (function->m_afterCallback)
         {
@@ -57,7 +57,7 @@ struct FunctionHelper<void, Arguments...>
 {
     void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments) const
     {
-        glbinding::FunctionCall functionCall(function);
+        auto functionCall = glbinding::FunctionCall{function};
 
         if (function->isEnabled(glbinding::CallbackMask::Parameters))
             functionCall.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
@@ -90,16 +90,16 @@ struct FunctionHelper<void, Arguments...>
 
 template <typename ReturnType, typename... Arguments>
 Function<ReturnType, Arguments...>::Function(const char * _name)
-: AbstractFunction(_name)
-, m_beforeCallback(nullptr)
-, m_afterCallback(nullptr)
+: AbstractFunction{_name}
+, m_beforeCallback{nullptr}
+, m_afterCallback{nullptr}
 {
 }
 
 template <typename ReturnType, typename... Arguments>
 ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
 {
-    ProcAddress myAddress = address();
+    auto myAddress = address();
 
     if (myAddress != nullptr)
     {

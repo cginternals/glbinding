@@ -2844,9 +2844,9 @@ public:
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> WriteMaskEXT;
 
 protected:
-	static const array_t s_functions;
-	static std::vector<AbstractFunction *> s_additionalFunctions;
-	static std::vector<ContextSwitchCallback> s_callbacks;
+    static const array_t s_functions;
+    static std::vector<AbstractFunction *> s_additionalFunctions;
+    static std::vector<ContextSwitchCallback> s_callbacks;
 };
 
 } // namespace glbinding

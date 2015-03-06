@@ -10,14 +10,14 @@ namespace glbinding
 {
 
 Version::Version()
-: m_major(0)
-, m_minor(0)
+: m_major{0}
+, m_minor{0}
 {
 }
 
 Version::Version(const int majorVersion, const int minorVersion)
-: m_major(majorVersion)
-, m_minor(minorVersion)
+: m_major{majorVersion}
+, m_minor{minorVersion}
 {
 }
 
@@ -72,11 +72,15 @@ Version::operator std::pair<unsigned int, unsigned int>() const
 
 std::string Version::toString() const
 {
-	std::stringstream stream;
+    std::stringstream stream;
     if (0 == m_major && 0 == m_minor)
+    {
         stream << "-.-";
+    }
     else
-    	stream << static_cast<int>(m_major) << "." << static_cast<int>(m_minor);
+    {
+        stream << static_cast<int>(m_major) << "." << static_cast<int>(m_minor);
+    }
 
     return stream.str();
 }
@@ -93,10 +97,12 @@ bool Version::isValid() const
 
 const Version & Version::nearest() const
 {
-    std::set<Version>::iterator iterator = s_validVersions.lower_bound(*this);
+    auto iterator = s_validVersions.lower_bound(*this);
 
     if (iterator == s_validVersions.end())
+    {
         return *(--iterator);
+    }
 
     return *iterator;
 }

@@ -54,11 +54,11 @@ namespace
         glGetIntegerv(pname, data);
     }
 
-	template <>
-	void glrequest<GLint64>(const GLenum pname, GLint64 * data)
-	{
-		glGetInteger64v(pname, data);
-	}
+    template <>
+    void glrequest<GLint64>(const GLenum pname, GLint64 * data)
+    {
+        glGetInteger64v(pname, data);
+    }
 
     template <>
     void glrequest<GLfloat>(const GLenum pname, GLfloat * data)

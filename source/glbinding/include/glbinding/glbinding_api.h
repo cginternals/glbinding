@@ -4,8 +4,8 @@
 #   define GLBINDING_API_EXPORT_DECLARATION __declspec(dllexport)
 #   define GLBINDING_API_IMPORT_DECLARATION __declspec(dllimport)
 #elif __GNUC__
-#	define GLBINDING_API_EXPORT_DECLARATION __attribute__ ((visibility ("default")))
-#	define GLBINDING_API_IMPORT_DECLARATION __attribute__ ((visibility ("default")))
+#    define GLBINDING_API_EXPORT_DECLARATION __attribute__ ((visibility ("default")))
+#    define GLBINDING_API_IMPORT_DECLARATION __attribute__ ((visibility ("default")))
 #else
 #   define GLBINDING_API_EXPORT_DECLARATION
 #   define GLBINDING_API_IMPORT_DECLARATION

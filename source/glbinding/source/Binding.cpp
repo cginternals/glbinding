@@ -63,10 +63,14 @@ void Binding::initialize(
     g_mutex.unlock();
 
     if (_useContext)
+    {
         useContext(context);
+    }
 
     if (_resolveFunctions)
+    {
         resolveFunctions();
+    }
 }
 
 void Binding::registerAdditionalFunction(AbstractFunction * function)
@@ -77,10 +81,14 @@ void Binding::registerAdditionalFunction(AbstractFunction * function)
 void Binding::resolveFunctions()
 {
     for (AbstractFunction * function : Binding::functions())
+    {
         function->resolveAddress();
+    }
 
     for (AbstractFunction * function : Binding::additionalFunctions())
+    {
         function->resolveAddress();
+    }
 }
 
 void Binding::useCurrentContext()

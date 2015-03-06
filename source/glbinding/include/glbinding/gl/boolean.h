@@ -9,7 +9,7 @@ namespace gl
 
 enum class GLboolean : unsigned char
 {
-	GL_FALSE = 0,
+    GL_FALSE = 0,
     GL_TRUE = 1
 };
 

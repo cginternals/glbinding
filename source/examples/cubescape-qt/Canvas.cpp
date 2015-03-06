@@ -64,7 +64,7 @@ void Canvas::setContinuousRepaint(
     if (m_continuousRepaint)
         m_repaintTimer->stop();
 
-	m_continuousRepaint = enable;
+    m_continuousRepaint = enable;
 
     if (m_continuousRepaint)
         m_repaintTimer->start(msec, this);
@@ -72,7 +72,7 @@ void Canvas::setContinuousRepaint(
 
 bool Canvas::continuousRepaint() const
 {
-	return m_continuousRepaint;
+    return m_continuousRepaint;
 }
 
 void Canvas::initializeGL(const QSurfaceFormat & format)

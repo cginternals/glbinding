@@ -48,7 +48,7 @@ protected:
     void updateAfterFullScreenToggle();
 
 protected:
-	const QScopedPointer<Ui_Viewer> m_ui;
+    const QScopedPointer<Ui_Viewer> m_ui;
 
     Canvas * m_canvas;
 

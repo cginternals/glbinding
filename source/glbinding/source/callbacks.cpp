@@ -18,7 +18,14 @@ namespace glbinding
 
 FunctionCall::FunctionCall(const AbstractFunction * _function)
 : function(*_function)
-, returnValue(nullptr)
+, returnValue{nullptr}
+{
+}
+
+FunctionCall::FunctionCall(FunctionCall && other)
+    : function(other.function)
+    , parameters{std::move(other.parameters)}
+    , returnValue{std::move(other.returnValue)}
 {
 }
 
@@ -42,14 +49,20 @@ CallbackMask operator|(const CallbackMask a, const CallbackMask b)
 void setCallbackMask(const CallbackMask mask)
 {
     for (AbstractFunction * function : Binding::functions())
+    {
         function->setCallbackMask(mask);
+    }
 }
 
 void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : Binding::functions())
+    {
         if (blackList.find(function->name()) == blackList.end())
+        {
             function->setCallbackMask(mask);
+        }
+    }
 }
 
 

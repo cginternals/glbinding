@@ -1,5 +1,6 @@
 #pragma once
 
+#include <glbinding/Value.h>
 
 namespace glbinding 
 {
@@ -33,7 +34,7 @@ void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments&&...
 
 
 template <typename T>
-Value<T>::Value(T _value)
+Value<T>::Value(const T & _value)
 : value(_value)
 {
 }
@@ -53,7 +54,7 @@ AbstractValue * createValue(Argument argument)
 template <typename... Arguments>
 std::vector<AbstractValue*> createValues(Arguments&&... arguments)
 {
-    std::vector<AbstractValue*> values;
+    auto values = std::vector<AbstractValue*>{};
     addValuesTo(values, std::forward<Arguments>(arguments)...);
     return values;
 }
