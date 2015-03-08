@@ -14,17 +14,17 @@ namespace glbinding
 /*
 Binding::iterator Binding::begin()
 {
-	return iterator(&Accum);
+    return iterator(&Accum);
 }
 
 Binding::iterator Binding::end()
 {
-	return iterator(&WriteMaskEXT);
+    return iterator(&WriteMaskEXT);
 }
 
 Binding::const_iterator Binding::begin() const
 {
-	return const_iterator(&Accum);
+    return const_iterator(&Accum);
 }
 
 Binding::const_iterator Binding::end() const
@@ -2825,7 +2825,7 @@ Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::WriteMas
 
 const Binding::array_t Binding::s_functions = 
 {{
-	&Accum,
+    &Accum,
     &AccumxOES,
     &ActiveProgramEXT,
     &ActiveShaderProgram,

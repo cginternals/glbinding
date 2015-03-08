@@ -152,7 +152,7 @@ set_target_properties(${target}
     LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}"
-    INCLUDE_PATH	            ${include_path})
+    INCLUDE_PATH                ${include_path})
 
 
 # Deployment

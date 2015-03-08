@@ -19,9 +19,16 @@ namespace glbinding
 {
 
 FunctionCall::FunctionCall(const AbstractFunction * _function)
-: function(_function)
-, timestamp(std::chrono::high_resolution_clock::now())
-, returnValue(nullptr)
+: function{_function}
+, timestamp{std::chrono::high_resolution_clock::now()}
+, returnValue{nullptr}
+{
+}
+
+FunctionCall::FunctionCall(FunctionCall && other)
+    : function{std::move(other.function)}
+    , parameters{std::move(other.parameters)}
+    , returnValue{std::move(other.returnValue)}
 {
 }
 
@@ -113,26 +120,36 @@ std::string FunctionCall::toString() const
 void setCallbackMask(const CallbackMask mask)
 {
     for (AbstractFunction * function : Binding::functions())
+    {
         function->setCallbackMask(mask);
+    }
 }
 
 void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : Binding::functions())
+    {
         if (blackList.find(function->name()) == blackList.end())
+        {
             function->setCallbackMask(mask);
+        }
+    }
 }
 
 void addCallbackMask(const CallbackMask mask)
 {
     for (AbstractFunction * function : Binding::functions())
+    {
         function->addCallbackMask(mask);
+    }
 }
 
 void removeCallbackMask(const CallbackMask mask)
 {
     for (AbstractFunction * function : Binding::functions())
+    {
         function->removeCallbackMask(mask);
+    }
 }
 
 void setUnresolvedCallback(SimpleFunctionCallback callback)

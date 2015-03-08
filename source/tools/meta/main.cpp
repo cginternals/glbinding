@@ -64,5 +64,5 @@ int main(int, char * [])
     std::cout << std::endl
         << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
-	return 0;
+    return 0;
 }

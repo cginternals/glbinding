@@ -1,6 +1,6 @@
 #include <glbinding/gl/functions40core.h>
 
-#include <glbinding/Binding.h>
+#include <glbinding/gl/gl.h>
 
 
 namespace gl40core
@@ -8,2102 +8,2102 @@ namespace gl40core
 
 void glActiveTexture(GLenum texture)
 {
-    return glbinding::Binding::ActiveTexture(texture);
+    return gl::glActiveTexture(texture);
 }
 
 void glAttachShader(GLuint program, GLuint shader)
 {
-    return glbinding::Binding::AttachShader(program, shader);
+    return gl::glAttachShader(program, shader);
 }
 
 void glBeginConditionalRender(GLuint id, GLenum mode)
 {
-    return glbinding::Binding::BeginConditionalRender(id, mode);
+    return gl::glBeginConditionalRender(id, mode);
 }
 
 void glBeginQuery(GLenum target, GLuint id)
 {
-    return glbinding::Binding::BeginQuery(target, id);
+    return gl::glBeginQuery(target, id);
 }
 
 void glBeginQueryIndexed(GLenum target, GLuint index, GLuint id)
 {
-    return glbinding::Binding::BeginQueryIndexed(target, index, id);
+    return gl::glBeginQueryIndexed(target, index, id);
 }
 
 void glBeginTransformFeedback(GLenum primitiveMode)
 {
-    return glbinding::Binding::BeginTransformFeedback(primitiveMode);
+    return gl::glBeginTransformFeedback(primitiveMode);
 }
 
 void glBindAttribLocation(GLuint program, GLuint index, const GLchar * name)
 {
-    return glbinding::Binding::BindAttribLocation(program, index, name);
+    return gl::glBindAttribLocation(program, index, name);
 }
 
 void glBindBuffer(GLenum target, GLuint buffer)
 {
-    return glbinding::Binding::BindBuffer(target, buffer);
+    return gl::glBindBuffer(target, buffer);
 }
 
 void glBindBufferBase(GLenum target, GLuint index, GLuint buffer)
 {
-    return glbinding::Binding::BindBufferBase(target, index, buffer);
+    return gl::glBindBufferBase(target, index, buffer);
 }
 
 void glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size)
 {
-    return glbinding::Binding::BindBufferRange(target, index, buffer, offset, size);
+    return gl::glBindBufferRange(target, index, buffer, offset, size);
 }
 
 void glBindFragDataLocation(GLuint program, GLuint color, const GLchar * name)
 {
-    return glbinding::Binding::BindFragDataLocation(program, color, name);
+    return gl::glBindFragDataLocation(program, color, name);
 }
 
 void glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar * name)
 {
-    return glbinding::Binding::BindFragDataLocationIndexed(program, colorNumber, index, name);
+    return gl::glBindFragDataLocationIndexed(program, colorNumber, index, name);
 }
 
 void glBindFramebuffer(GLenum target, GLuint framebuffer)
 {
-    return glbinding::Binding::BindFramebuffer(target, framebuffer);
+    return gl::glBindFramebuffer(target, framebuffer);
 }
 
 void glBindRenderbuffer(GLenum target, GLuint renderbuffer)
 {
-    return glbinding::Binding::BindRenderbuffer(target, renderbuffer);
+    return gl::glBindRenderbuffer(target, renderbuffer);
 }
 
 void glBindSampler(GLuint unit, GLuint sampler)
 {
-    return glbinding::Binding::BindSampler(unit, sampler);
+    return gl::glBindSampler(unit, sampler);
 }
 
 void glBindTexture(GLenum target, GLuint texture)
 {
-    return glbinding::Binding::BindTexture(target, texture);
+    return gl::glBindTexture(target, texture);
 }
 
 void glBindTransformFeedback(GLenum target, GLuint id)
 {
-    return glbinding::Binding::BindTransformFeedback(target, id);
+    return gl::glBindTransformFeedback(target, id);
 }
 
 void glBindVertexArray(GLuint array)
 {
-    return glbinding::Binding::BindVertexArray(array);
+    return gl::glBindVertexArray(array);
 }
 
 void glBlendColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-    return glbinding::Binding::BlendColor(red, green, blue, alpha);
+    return gl::glBlendColor(red, green, blue, alpha);
 }
 
 void glBlendEquation(GLenum mode)
 {
-    return glbinding::Binding::BlendEquation(mode);
+    return gl::glBlendEquation(mode);
 }
 
 void glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha)
 {
-    return glbinding::Binding::BlendEquationSeparate(modeRGB, modeAlpha);
+    return gl::glBlendEquationSeparate(modeRGB, modeAlpha);
 }
 
 void glBlendEquationSeparatei(GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 {
-    return glbinding::Binding::BlendEquationSeparatei(buf, modeRGB, modeAlpha);
+    return gl::glBlendEquationSeparatei(buf, modeRGB, modeAlpha);
 }
 
 void glBlendEquationi(GLuint buf, GLenum mode)
 {
-    return glbinding::Binding::BlendEquationi(buf, mode);
+    return gl::glBlendEquationi(buf, mode);
 }
 
 void glBlendFunc(GLenum sfactor, GLenum dfactor)
 {
-    return glbinding::Binding::BlendFunc(sfactor, dfactor);
+    return gl::glBlendFunc(sfactor, dfactor);
 }
 
 void glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 {
-    return glbinding::Binding::BlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+    return gl::glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 }
 
 void glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 {
-    return glbinding::Binding::BlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+    return gl::glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
 
 void glBlendFunci(GLuint buf, GLenum src, GLenum dst)
 {
-    return glbinding::Binding::BlendFunci(buf, src, dst);
+    return gl::glBlendFunci(buf, src, dst);
 }
 
 void glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter)
 {
-    return glbinding::Binding::BlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    return gl::glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
 void glBufferData(GLenum target, GLsizeiptr size, const void * data, GLenum usage)
 {
-    return glbinding::Binding::BufferData(target, size, data, usage);
+    return gl::glBufferData(target, size, data, usage);
 }
 
 void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data)
 {
-    return glbinding::Binding::BufferSubData(target, offset, size, data);
+    return gl::glBufferSubData(target, offset, size, data);
 }
 
 GLenum glCheckFramebufferStatus(GLenum target)
 {
-    return static_cast<gl40core::GLenum>(glbinding::Binding::CheckFramebufferStatus(target));
+    return static_cast<gl40core::GLenum>(gl::glCheckFramebufferStatus(target));
 }
 
 void glClampColor(GLenum target, GLenum clamp)
 {
-    return glbinding::Binding::ClampColor(target, clamp);
+    return gl::glClampColor(target, clamp);
 }
 
 void glClear(ClearBufferMask mask)
 {
-    return glbinding::Binding::Clear(mask);
+    return gl::glClear(mask);
 }
 
 void glClearBufferfi(GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil)
 {
-    return glbinding::Binding::ClearBufferfi(buffer, drawbuffer, depth, stencil);
+    return gl::glClearBufferfi(buffer, drawbuffer, depth, stencil);
 }
 
 void glClearBufferfv(GLenum buffer, GLint drawbuffer, const GLfloat * value)
 {
-    return glbinding::Binding::ClearBufferfv(buffer, drawbuffer, value);
+    return gl::glClearBufferfv(buffer, drawbuffer, value);
 }
 
 void glClearBufferiv(GLenum buffer, GLint drawbuffer, const GLint * value)
 {
-    return glbinding::Binding::ClearBufferiv(buffer, drawbuffer, value);
+    return gl::glClearBufferiv(buffer, drawbuffer, value);
 }
 
 void glClearBufferuiv(GLenum buffer, GLint drawbuffer, const GLuint * value)
 {
-    return glbinding::Binding::ClearBufferuiv(buffer, drawbuffer, value);
+    return gl::glClearBufferuiv(buffer, drawbuffer, value);
 }
 
 void glClearColor(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-    return glbinding::Binding::ClearColor(red, green, blue, alpha);
+    return gl::glClearColor(red, green, blue, alpha);
 }
 
 void glClearDepth(GLdouble depth)
 {
-    return glbinding::Binding::ClearDepth(depth);
+    return gl::glClearDepth(depth);
 }
 
 void glClearStencil(GLint s)
 {
-    return glbinding::Binding::ClearStencil(s);
+    return gl::glClearStencil(s);
 }
 
 GLenum glClientWaitSync(GLsync sync, SyncObjectMask flags, GLuint64 timeout)
 {
-    return static_cast<gl40core::GLenum>(glbinding::Binding::ClientWaitSync(sync, flags, timeout));
+    return static_cast<gl40core::GLenum>(gl::glClientWaitSync(sync, flags, timeout));
 }
 
 void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
-    return glbinding::Binding::ColorMask(red, green, blue, alpha);
+    return gl::glColorMask(red, green, blue, alpha);
 }
 
 void glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
-    return glbinding::Binding::ColorMaski(index, r, g, b, a);
+    return gl::glColorMaski(index, r, g, b, a);
 }
 
 void glColorP3ui(GLenum type, GLuint color)
 {
-    return glbinding::Binding::ColorP3ui(type, color);
+    return gl::glColorP3ui(type, color);
 }
 
 void glColorP3uiv(GLenum type, const GLuint * color)
 {
-    return glbinding::Binding::ColorP3uiv(type, color);
+    return gl::glColorP3uiv(type, color);
 }
 
 void glColorP4ui(GLenum type, GLuint color)
 {
-    return glbinding::Binding::ColorP4ui(type, color);
+    return gl::glColorP4ui(type, color);
 }
 
 void glColorP4uiv(GLenum type, const GLuint * color)
 {
-    return glbinding::Binding::ColorP4uiv(type, color);
+    return gl::glColorP4uiv(type, color);
 }
 
 void glCompileShader(GLuint shader)
 {
-    return glbinding::Binding::CompileShader(shader);
+    return gl::glCompileShader(shader);
 }
 
 void glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const void * data)
 {
-    return glbinding::Binding::CompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
+    return gl::glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
 }
 
 void glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const void * data)
 {
-    return glbinding::Binding::CompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
+    return gl::glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
 }
 
 void glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const void * data)
 {
-    return glbinding::Binding::CompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
+    return gl::glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
 }
 
 void glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const void * data)
 {
-    return glbinding::Binding::CompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
+    return gl::glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
 }
 
 void glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const void * data)
 {
-    return glbinding::Binding::CompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+    return gl::glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
 }
 
 void glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data)
 {
-    return glbinding::Binding::CompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+    return gl::glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 }
 
 void glCopyBufferSubData(GLenum readTarget, GLenum writeTarget, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
 {
-    return glbinding::Binding::CopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
+    return gl::glCopyBufferSubData(readTarget, writeTarget, readOffset, writeOffset, size);
 }
 
 void glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-    return glbinding::Binding::CopyTexImage1D(target, level, internalformat, x, y, width, border);
+    return gl::glCopyTexImage1D(target, level, internalformat, x, y, width, border);
 }
 
 void glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-    return glbinding::Binding::CopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+    return gl::glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
 }
 
 void glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-    return glbinding::Binding::CopyTexSubImage1D(target, level, xoffset, x, y, width);
+    return gl::glCopyTexSubImage1D(target, level, xoffset, x, y, width);
 }
 
 void glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    return glbinding::Binding::CopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
+    return gl::glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 }
 
 void glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    return glbinding::Binding::CopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
+    return gl::glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
 
 GLuint glCreateProgram()
 {
-    return glbinding::Binding::CreateProgram();
+    return gl::glCreateProgram();
 }
 
 GLuint glCreateShader(GLenum type)
 {
-    return glbinding::Binding::CreateShader(type);
+    return gl::glCreateShader(type);
 }
 
 void glCullFace(GLenum mode)
 {
-    return glbinding::Binding::CullFace(mode);
+    return gl::glCullFace(mode);
 }
 
 void glDeleteBuffers(GLsizei n, const GLuint * buffers)
 {
-    return glbinding::Binding::DeleteBuffers(n, buffers);
+    return gl::glDeleteBuffers(n, buffers);
 }
 
 void glDeleteFramebuffers(GLsizei n, const GLuint * framebuffers)
 {
-    return glbinding::Binding::DeleteFramebuffers(n, framebuffers);
+    return gl::glDeleteFramebuffers(n, framebuffers);
 }
 
 void glDeleteProgram(GLuint program)
 {
-    return glbinding::Binding::DeleteProgram(program);
+    return gl::glDeleteProgram(program);
 }
 
 void glDeleteQueries(GLsizei n, const GLuint * ids)
 {
-    return glbinding::Binding::DeleteQueries(n, ids);
+    return gl::glDeleteQueries(n, ids);
 }
 
 void glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers)
 {
-    return glbinding::Binding::DeleteRenderbuffers(n, renderbuffers);
+    return gl::glDeleteRenderbuffers(n, renderbuffers);
 }
 
 void glDeleteSamplers(GLsizei count, const GLuint * samplers)
 {
-    return glbinding::Binding::DeleteSamplers(count, samplers);
+    return gl::glDeleteSamplers(count, samplers);
 }
 
 void glDeleteShader(GLuint shader)
 {
-    return glbinding::Binding::DeleteShader(shader);
+    return gl::glDeleteShader(shader);
 }
 
 void glDeleteSync(GLsync sync)
 {
-    return glbinding::Binding::DeleteSync(sync);
+    return gl::glDeleteSync(sync);
 }
 
 void glDeleteTextures(GLsizei n, const GLuint * textures)
 {
-    return glbinding::Binding::DeleteTextures(n, textures);
+    return gl::glDeleteTextures(n, textures);
 }
 
 void glDeleteTransformFeedbacks(GLsizei n, const GLuint * ids)
 {
-    return glbinding::Binding::DeleteTransformFeedbacks(n, ids);
+    return gl::glDeleteTransformFeedbacks(n, ids);
 }
 
 void glDeleteVertexArrays(GLsizei n, const GLuint * arrays)
 {
-    return glbinding::Binding::DeleteVertexArrays(n, arrays);
+    return gl::glDeleteVertexArrays(n, arrays);
 }
 
 void glDepthFunc(GLenum func)
 {
-    return glbinding::Binding::DepthFunc(func);
+    return gl::glDepthFunc(func);
 }
 
 void glDepthMask(GLboolean flag)
 {
-    return glbinding::Binding::DepthMask(flag);
+    return gl::glDepthMask(flag);
 }
 
 void glDepthRange(GLdouble near_, GLdouble far_)
 {
-    return glbinding::Binding::DepthRange(near_, far_);
+    return gl::glDepthRange(near_, far_);
 }
 
 void glDetachShader(GLuint program, GLuint shader)
 {
-    return glbinding::Binding::DetachShader(program, shader);
+    return gl::glDetachShader(program, shader);
 }
 
 void glDisable(GLenum cap)
 {
-    return glbinding::Binding::Disable(cap);
+    return gl::glDisable(cap);
 }
 
 void glDisableVertexAttribArray(GLuint index)
 {
-    return glbinding::Binding::DisableVertexAttribArray(index);
+    return gl::glDisableVertexAttribArray(index);
 }
 
 void glDisablei(GLenum target, GLuint index)
 {
-    return glbinding::Binding::Disablei(target, index);
+    return gl::glDisablei(target, index);
 }
 
 void glDrawArrays(GLenum mode, GLint first, GLsizei count)
 {
-    return glbinding::Binding::DrawArrays(mode, first, count);
+    return gl::glDrawArrays(mode, first, count);
 }
 
 void glDrawArraysIndirect(GLenum mode, const void * indirect)
 {
-    return glbinding::Binding::DrawArraysIndirect(mode, indirect);
+    return gl::glDrawArraysIndirect(mode, indirect);
 }
 
 void glDrawArraysInstanced(GLenum mode, GLint first, GLsizei count, GLsizei instancecount)
 {
-    return glbinding::Binding::DrawArraysInstanced(mode, first, count, instancecount);
+    return gl::glDrawArraysInstanced(mode, first, count, instancecount);
 }
 
 void glDrawBuffer(GLenum buf)
 {
-    return glbinding::Binding::DrawBuffer(buf);
+    return gl::glDrawBuffer(buf);
 }
 
 void glDrawBuffers(GLsizei n, const GLenum * bufs)
 {
-    return glbinding::Binding::DrawBuffers(n, bufs);
+    return gl::glDrawBuffers(n, bufs);
 }
 
 void glDrawElements(GLenum mode, GLsizei count, GLenum type, const void * indices)
 {
-    return glbinding::Binding::DrawElements(mode, count, type, indices);
+    return gl::glDrawElements(mode, count, type, indices);
 }
 
 void glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLint basevertex)
 {
-    return glbinding::Binding::DrawElementsBaseVertex(mode, count, type, indices, basevertex);
+    return gl::glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
 }
 
 void glDrawElementsIndirect(GLenum mode, GLenum type, const void * indirect)
 {
-    return glbinding::Binding::DrawElementsIndirect(mode, type, indirect);
+    return gl::glDrawElementsIndirect(mode, type, indirect);
 }
 
 void glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount)
 {
-    return glbinding::Binding::DrawElementsInstanced(mode, count, type, indices, instancecount);
+    return gl::glDrawElementsInstanced(mode, count, type, indices, instancecount);
 }
 
 void glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex)
 {
-    return glbinding::Binding::DrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
+    return gl::glDrawElementsInstancedBaseVertex(mode, count, type, indices, instancecount, basevertex);
 }
 
 void glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices)
 {
-    return glbinding::Binding::DrawRangeElements(mode, start, end, count, type, indices);
+    return gl::glDrawRangeElements(mode, start, end, count, type, indices);
 }
 
 void glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const void * indices, GLint basevertex)
 {
-    return glbinding::Binding::DrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+    return gl::glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
 }
 
 void glDrawTransformFeedback(GLenum mode, GLuint id)
 {
-    return glbinding::Binding::DrawTransformFeedback(mode, id);
+    return gl::glDrawTransformFeedback(mode, id);
 }
 
 void glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream)
 {
-    return glbinding::Binding::DrawTransformFeedbackStream(mode, id, stream);
+    return gl::glDrawTransformFeedbackStream(mode, id, stream);
 }
 
 void glEnable(GLenum cap)
 {
-    return glbinding::Binding::Enable(cap);
+    return gl::glEnable(cap);
 }
 
 void glEnableVertexAttribArray(GLuint index)
 {
-    return glbinding::Binding::EnableVertexAttribArray(index);
+    return gl::glEnableVertexAttribArray(index);
 }
 
 void glEnablei(GLenum target, GLuint index)
 {
-    return glbinding::Binding::Enablei(target, index);
+    return gl::glEnablei(target, index);
 }
 
 void glEndConditionalRender()
 {
-    return glbinding::Binding::EndConditionalRender();
+    return gl::glEndConditionalRender();
 }
 
 void glEndQuery(GLenum target)
 {
-    return glbinding::Binding::EndQuery(target);
+    return gl::glEndQuery(target);
 }
 
 void glEndQueryIndexed(GLenum target, GLuint index)
 {
-    return glbinding::Binding::EndQueryIndexed(target, index);
+    return gl::glEndQueryIndexed(target, index);
 }
 
 void glEndTransformFeedback()
 {
-    return glbinding::Binding::EndTransformFeedback();
+    return gl::glEndTransformFeedback();
 }
 
 GLsync glFenceSync(GLenum condition, UnusedMask flags)
 {
-    return glbinding::Binding::FenceSync(condition, flags);
+    return gl::glFenceSync(condition, flags);
 }
 
 void glFinish()
 {
-    return glbinding::Binding::Finish();
+    return gl::glFinish();
 }
 
 void glFlush()
 {
-    return glbinding::Binding::Flush();
+    return gl::glFlush();
 }
 
 void glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length)
 {
-    return glbinding::Binding::FlushMappedBufferRange(target, offset, length);
+    return gl::glFlushMappedBufferRange(target, offset, length);
 }
 
 void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-    return glbinding::Binding::FramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
+    return gl::glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
 }
 
 void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-    return glbinding::Binding::FramebufferTexture(target, attachment, texture, level);
+    return gl::glFramebufferTexture(target, attachment, texture, level);
 }
 
 void glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-    return glbinding::Binding::FramebufferTexture1D(target, attachment, textarget, texture, level);
+    return gl::glFramebufferTexture1D(target, attachment, textarget, texture, level);
 }
 
 void glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-    return glbinding::Binding::FramebufferTexture2D(target, attachment, textarget, texture, level);
+    return gl::glFramebufferTexture2D(target, attachment, textarget, texture, level);
 }
 
 void glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-    return glbinding::Binding::FramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
+    return gl::glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
 }
 
 void glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-    return glbinding::Binding::FramebufferTextureLayer(target, attachment, texture, level, layer);
+    return gl::glFramebufferTextureLayer(target, attachment, texture, level, layer);
 }
 
 void glFrontFace(GLenum mode)
 {
-    return glbinding::Binding::FrontFace(mode);
+    return gl::glFrontFace(mode);
 }
 
 void glGenBuffers(GLsizei n, GLuint * buffers)
 {
-    return glbinding::Binding::GenBuffers(n, buffers);
+    return gl::glGenBuffers(n, buffers);
 }
 
 void glGenFramebuffers(GLsizei n, GLuint * framebuffers)
 {
-    return glbinding::Binding::GenFramebuffers(n, framebuffers);
+    return gl::glGenFramebuffers(n, framebuffers);
 }
 
 void glGenQueries(GLsizei n, GLuint * ids)
 {
-    return glbinding::Binding::GenQueries(n, ids);
+    return gl::glGenQueries(n, ids);
 }
 
 void glGenRenderbuffers(GLsizei n, GLuint * renderbuffers)
 {
-    return glbinding::Binding::GenRenderbuffers(n, renderbuffers);
+    return gl::glGenRenderbuffers(n, renderbuffers);
 }
 
 void glGenSamplers(GLsizei count, GLuint * samplers)
 {
-    return glbinding::Binding::GenSamplers(count, samplers);
+    return gl::glGenSamplers(count, samplers);
 }
 
 void glGenTextures(GLsizei n, GLuint * textures)
 {
-    return glbinding::Binding::GenTextures(n, textures);
+    return gl::glGenTextures(n, textures);
 }
 
 void glGenTransformFeedbacks(GLsizei n, GLuint * ids)
 {
-    return glbinding::Binding::GenTransformFeedbacks(n, ids);
+    return gl::glGenTransformFeedbacks(n, ids);
 }
 
 void glGenVertexArrays(GLsizei n, GLuint * arrays)
 {
-    return glbinding::Binding::GenVertexArrays(n, arrays);
+    return gl::glGenVertexArrays(n, arrays);
 }
 
 void glGenerateMipmap(GLenum target)
 {
-    return glbinding::Binding::GenerateMipmap(target);
+    return gl::glGenerateMipmap(target);
 }
 
 void glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name)
 {
-    return glbinding::Binding::GetActiveAttrib(program, index, bufSize, length, size, type, name);
+    return gl::glGetActiveAttrib(program, index, bufSize, length, size, type, name);
 }
 
 void glGetActiveSubroutineName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name)
 {
-    return glbinding::Binding::GetActiveSubroutineName(program, shadertype, index, bufsize, length, name);
+    return gl::glGetActiveSubroutineName(program, shadertype, index, bufsize, length, name);
 }
 
 void glGetActiveSubroutineUniformName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name)
 {
-    return glbinding::Binding::GetActiveSubroutineUniformName(program, shadertype, index, bufsize, length, name);
+    return gl::glGetActiveSubroutineUniformName(program, shadertype, index, bufsize, length, name);
 }
 
 void glGetActiveSubroutineUniformiv(GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint * values)
 {
-    return glbinding::Binding::GetActiveSubroutineUniformiv(program, shadertype, index, pname, values);
+    return gl::glGetActiveSubroutineUniformiv(program, shadertype, index, pname, values);
 }
 
 void glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name)
 {
-    return glbinding::Binding::GetActiveUniform(program, index, bufSize, length, size, type, name);
+    return gl::glGetActiveUniform(program, index, bufSize, length, size, type, name);
 }
 
 void glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformBlockName)
 {
-    return glbinding::Binding::GetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
+    return gl::glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
 }
 
 void glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetActiveUniformBlockiv(program, uniformBlockIndex, pname, params);
+    return gl::glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, params);
 }
 
 void glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei * length, GLchar * uniformName)
 {
-    return glbinding::Binding::GetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
+    return gl::glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
 }
 
 void glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint * uniformIndices, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetActiveUniformsiv(program, uniformCount, uniformIndices, pname, params);
+    return gl::glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, params);
 }
 
 void glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei * count, GLuint * shaders)
 {
-    return glbinding::Binding::GetAttachedShaders(program, maxCount, count, shaders);
+    return gl::glGetAttachedShaders(program, maxCount, count, shaders);
 }
 
 GLint glGetAttribLocation(GLuint program, const GLchar * name)
 {
-    return glbinding::Binding::GetAttribLocation(program, name);
+    return gl::glGetAttribLocation(program, name);
 }
 
 void glGetBooleani_v(GLenum target, GLuint index, GLboolean * data)
 {
-    return glbinding::Binding::GetBooleani_v(target, index, data);
+    return gl::glGetBooleani_v(target, index, data);
 }
 
 void glGetBooleanv(GLenum pname, GLboolean * data)
 {
-    return glbinding::Binding::GetBooleanv(pname, data);
+    return gl::glGetBooleanv(pname, data);
 }
 
 void glGetBufferParameteri64v(GLenum target, GLenum pname, GLint64 * params)
 {
-    return glbinding::Binding::GetBufferParameteri64v(target, pname, params);
+    return gl::glGetBufferParameteri64v(target, pname, params);
 }
 
 void glGetBufferParameteriv(GLenum target, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetBufferParameteriv(target, pname, params);
+    return gl::glGetBufferParameteriv(target, pname, params);
 }
 
 void glGetBufferPointerv(GLenum target, GLenum pname, void ** params)
 {
-    return glbinding::Binding::GetBufferPointerv(target, pname, params);
+    return gl::glGetBufferPointerv(target, pname, params);
 }
 
 void glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, void * data)
 {
-    return glbinding::Binding::GetBufferSubData(target, offset, size, data);
+    return gl::glGetBufferSubData(target, offset, size, data);
 }
 
 void glGetCompressedTexImage(GLenum target, GLint level, void * img)
 {
-    return glbinding::Binding::GetCompressedTexImage(target, level, img);
+    return gl::glGetCompressedTexImage(target, level, img);
 }
 
 void glGetDoublev(GLenum pname, GLdouble * data)
 {
-    return glbinding::Binding::GetDoublev(pname, data);
+    return gl::glGetDoublev(pname, data);
 }
 
 GLenum glGetError()
 {
-    return static_cast<gl40core::GLenum>(glbinding::Binding::GetError());
+    return static_cast<gl40core::GLenum>(gl::glGetError());
 }
 
 void glGetFloatv(GLenum pname, GLfloat * data)
 {
-    return glbinding::Binding::GetFloatv(pname, data);
+    return gl::glGetFloatv(pname, data);
 }
 
 GLint glGetFragDataIndex(GLuint program, const GLchar * name)
 {
-    return glbinding::Binding::GetFragDataIndex(program, name);
+    return gl::glGetFragDataIndex(program, name);
 }
 
 GLint glGetFragDataLocation(GLuint program, const GLchar * name)
 {
-    return glbinding::Binding::GetFragDataLocation(program, name);
+    return gl::glGetFragDataLocation(program, name);
 }
 
 void glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetFramebufferAttachmentParameteriv(target, attachment, pname, params);
+    return gl::glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
 }
 
 void glGetInteger64i_v(GLenum target, GLuint index, GLint64 * data)
 {
-    return glbinding::Binding::GetInteger64i_v(target, index, data);
+    return gl::glGetInteger64i_v(target, index, data);
 }
 
 void glGetInteger64v(GLenum pname, GLint64 * data)
 {
-    return glbinding::Binding::GetInteger64v(pname, data);
+    return gl::glGetInteger64v(pname, data);
 }
 
 void glGetIntegeri_v(GLenum target, GLuint index, GLint * data)
 {
-    return glbinding::Binding::GetIntegeri_v(target, index, data);
+    return gl::glGetIntegeri_v(target, index, data);
 }
 
 void glGetIntegerv(GLenum pname, GLint * data)
 {
-    return glbinding::Binding::GetIntegerv(pname, data);
+    return gl::glGetIntegerv(pname, data);
 }
 
 void glGetMultisamplefv(GLenum pname, GLuint index, GLfloat * val)
 {
-    return glbinding::Binding::GetMultisamplefv(pname, index, val);
+    return gl::glGetMultisamplefv(pname, index, val);
 }
 
 void glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei * length, GLchar * infoLog)
 {
-    return glbinding::Binding::GetProgramInfoLog(program, bufSize, length, infoLog);
+    return gl::glGetProgramInfoLog(program, bufSize, length, infoLog);
 }
 
 void glGetProgramStageiv(GLuint program, GLenum shadertype, GLenum pname, GLint * values)
 {
-    return glbinding::Binding::GetProgramStageiv(program, shadertype, pname, values);
+    return gl::glGetProgramStageiv(program, shadertype, pname, values);
 }
 
 void glGetProgramiv(GLuint program, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetProgramiv(program, pname, params);
+    return gl::glGetProgramiv(program, pname, params);
 }
 
 void glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetQueryIndexediv(target, index, pname, params);
+    return gl::glGetQueryIndexediv(target, index, pname, params);
 }
 
 void glGetQueryObjecti64v(GLuint id, GLenum pname, GLint64 * params)
 {
-    return glbinding::Binding::GetQueryObjecti64v(id, pname, params);
+    return gl::glGetQueryObjecti64v(id, pname, params);
 }
 
 void glGetQueryObjectiv(GLuint id, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetQueryObjectiv(id, pname, params);
+    return gl::glGetQueryObjectiv(id, pname, params);
 }
 
 void glGetQueryObjectui64v(GLuint id, GLenum pname, GLuint64 * params)
 {
-    return glbinding::Binding::GetQueryObjectui64v(id, pname, params);
+    return gl::glGetQueryObjectui64v(id, pname, params);
 }
 
 void glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint * params)
 {
-    return glbinding::Binding::GetQueryObjectuiv(id, pname, params);
+    return gl::glGetQueryObjectuiv(id, pname, params);
 }
 
 void glGetQueryiv(GLenum target, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetQueryiv(target, pname, params);
+    return gl::glGetQueryiv(target, pname, params);
 }
 
 void glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetRenderbufferParameteriv(target, pname, params);
+    return gl::glGetRenderbufferParameteriv(target, pname, params);
 }
 
 void glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetSamplerParameterIiv(sampler, pname, params);
+    return gl::glGetSamplerParameterIiv(sampler, pname, params);
 }
 
 void glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint * params)
 {
-    return glbinding::Binding::GetSamplerParameterIuiv(sampler, pname, params);
+    return gl::glGetSamplerParameterIuiv(sampler, pname, params);
 }
 
 void glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat * params)
 {
-    return glbinding::Binding::GetSamplerParameterfv(sampler, pname, params);
+    return gl::glGetSamplerParameterfv(sampler, pname, params);
 }
 
 void glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetSamplerParameteriv(sampler, pname, params);
+    return gl::glGetSamplerParameteriv(sampler, pname, params);
 }
 
 void glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * infoLog)
 {
-    return glbinding::Binding::GetShaderInfoLog(shader, bufSize, length, infoLog);
+    return gl::glGetShaderInfoLog(shader, bufSize, length, infoLog);
 }
 
 void glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * source)
 {
-    return glbinding::Binding::GetShaderSource(shader, bufSize, length, source);
+    return gl::glGetShaderSource(shader, bufSize, length, source);
 }
 
 void glGetShaderiv(GLuint shader, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetShaderiv(shader, pname, params);
+    return gl::glGetShaderiv(shader, pname, params);
 }
 
 const GLubyte * glGetString(GLenum name)
 {
-    return glbinding::Binding::GetString(name);
+    return gl::glGetString(name);
 }
 
 const GLubyte * glGetStringi(GLenum name, GLuint index)
 {
-    return glbinding::Binding::GetStringi(name, index);
+    return gl::glGetStringi(name, index);
 }
 
 GLuint glGetSubroutineIndex(GLuint program, GLenum shadertype, const GLchar * name)
 {
-    return glbinding::Binding::GetSubroutineIndex(program, shadertype, name);
+    return gl::glGetSubroutineIndex(program, shadertype, name);
 }
 
 GLint glGetSubroutineUniformLocation(GLuint program, GLenum shadertype, const GLchar * name)
 {
-    return glbinding::Binding::GetSubroutineUniformLocation(program, shadertype, name);
+    return gl::glGetSubroutineUniformLocation(program, shadertype, name);
 }
 
 void glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values)
 {
-    return glbinding::Binding::GetSynciv(sync, pname, bufSize, length, values);
+    return gl::glGetSynciv(sync, pname, bufSize, length, values);
 }
 
 void glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, void * pixels)
 {
-    return glbinding::Binding::GetTexImage(target, level, format, type, pixels);
+    return gl::glGetTexImage(target, level, format, type, pixels);
 }
 
 void glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat * params)
 {
-    return glbinding::Binding::GetTexLevelParameterfv(target, level, pname, params);
+    return gl::glGetTexLevelParameterfv(target, level, pname, params);
 }
 
 void glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetTexLevelParameteriv(target, level, pname, params);
+    return gl::glGetTexLevelParameteriv(target, level, pname, params);
 }
 
 void glGetTexParameterIiv(GLenum target, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetTexParameterIiv(target, pname, params);
+    return gl::glGetTexParameterIiv(target, pname, params);
 }
 
 void glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint * params)
 {
-    return glbinding::Binding::GetTexParameterIuiv(target, pname, params);
+    return gl::glGetTexParameterIuiv(target, pname, params);
 }
 
 void glGetTexParameterfv(GLenum target, GLenum pname, GLfloat * params)
 {
-    return glbinding::Binding::GetTexParameterfv(target, pname, params);
+    return gl::glGetTexParameterfv(target, pname, params);
 }
 
 void glGetTexParameteriv(GLenum target, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetTexParameteriv(target, pname, params);
+    return gl::glGetTexParameteriv(target, pname, params);
 }
 
 void glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLsizei * size, GLenum * type, GLchar * name)
 {
-    return glbinding::Binding::GetTransformFeedbackVarying(program, index, bufSize, length, size, type, name);
+    return gl::glGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name);
 }
 
 GLuint glGetUniformBlockIndex(GLuint program, const GLchar * uniformBlockName)
 {
-    return glbinding::Binding::GetUniformBlockIndex(program, uniformBlockName);
+    return gl::glGetUniformBlockIndex(program, uniformBlockName);
 }
 
 void glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar *const* uniformNames, GLuint * uniformIndices)
 {
-    return glbinding::Binding::GetUniformIndices(program, uniformCount, uniformNames, uniformIndices);
+    return gl::glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices);
 }
 
 GLint glGetUniformLocation(GLuint program, const GLchar * name)
 {
-    return glbinding::Binding::GetUniformLocation(program, name);
+    return gl::glGetUniformLocation(program, name);
 }
 
 void glGetUniformSubroutineuiv(GLenum shadertype, GLint location, GLuint * params)
 {
-    return glbinding::Binding::GetUniformSubroutineuiv(shadertype, location, params);
+    return gl::glGetUniformSubroutineuiv(shadertype, location, params);
 }
 
 void glGetUniformdv(GLuint program, GLint location, GLdouble * params)
 {
-    return glbinding::Binding::GetUniformdv(program, location, params);
+    return gl::glGetUniformdv(program, location, params);
 }
 
 void glGetUniformfv(GLuint program, GLint location, GLfloat * params)
 {
-    return glbinding::Binding::GetUniformfv(program, location, params);
+    return gl::glGetUniformfv(program, location, params);
 }
 
 void glGetUniformiv(GLuint program, GLint location, GLint * params)
 {
-    return glbinding::Binding::GetUniformiv(program, location, params);
+    return gl::glGetUniformiv(program, location, params);
 }
 
 void glGetUniformuiv(GLuint program, GLint location, GLuint * params)
 {
-    return glbinding::Binding::GetUniformuiv(program, location, params);
+    return gl::glGetUniformuiv(program, location, params);
 }
 
 void glGetVertexAttribIiv(GLuint index, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetVertexAttribIiv(index, pname, params);
+    return gl::glGetVertexAttribIiv(index, pname, params);
 }
 
 void glGetVertexAttribIuiv(GLuint index, GLenum pname, GLuint * params)
 {
-    return glbinding::Binding::GetVertexAttribIuiv(index, pname, params);
+    return gl::glGetVertexAttribIuiv(index, pname, params);
 }
 
 void glGetVertexAttribPointerv(GLuint index, GLenum pname, void ** pointer)
 {
-    return glbinding::Binding::GetVertexAttribPointerv(index, pname, pointer);
+    return gl::glGetVertexAttribPointerv(index, pname, pointer);
 }
 
 void glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble * params)
 {
-    return glbinding::Binding::GetVertexAttribdv(index, pname, params);
+    return gl::glGetVertexAttribdv(index, pname, params);
 }
 
 void glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat * params)
 {
-    return glbinding::Binding::GetVertexAttribfv(index, pname, params);
+    return gl::glGetVertexAttribfv(index, pname, params);
 }
 
 void glGetVertexAttribiv(GLuint index, GLenum pname, GLint * params)
 {
-    return glbinding::Binding::GetVertexAttribiv(index, pname, params);
+    return gl::glGetVertexAttribiv(index, pname, params);
 }
 
 void glHint(GLenum target, GLenum mode)
 {
-    return glbinding::Binding::Hint(target, mode);
+    return gl::glHint(target, mode);
 }
 
 GLboolean glIsBuffer(GLuint buffer)
 {
-    return glbinding::Binding::IsBuffer(buffer);
+    return gl::glIsBuffer(buffer);
 }
 
 GLboolean glIsEnabled(GLenum cap)
 {
-    return glbinding::Binding::IsEnabled(cap);
+    return gl::glIsEnabled(cap);
 }
 
 GLboolean glIsEnabledi(GLenum target, GLuint index)
 {
-    return glbinding::Binding::IsEnabledi(target, index);
+    return gl::glIsEnabledi(target, index);
 }
 
 GLboolean glIsFramebuffer(GLuint framebuffer)
 {
-    return glbinding::Binding::IsFramebuffer(framebuffer);
+    return gl::glIsFramebuffer(framebuffer);
 }
 
 GLboolean glIsProgram(GLuint program)
 {
-    return glbinding::Binding::IsProgram(program);
+    return gl::glIsProgram(program);
 }
 
 GLboolean glIsQuery(GLuint id)
 {
-    return glbinding::Binding::IsQuery(id);
+    return gl::glIsQuery(id);
 }
 
 GLboolean glIsRenderbuffer(GLuint renderbuffer)
 {
-    return glbinding::Binding::IsRenderbuffer(renderbuffer);
+    return gl::glIsRenderbuffer(renderbuffer);
 }
 
 GLboolean glIsSampler(GLuint sampler)
 {
-    return glbinding::Binding::IsSampler(sampler);
+    return gl::glIsSampler(sampler);
 }
 
 GLboolean glIsShader(GLuint shader)
 {
-    return glbinding::Binding::IsShader(shader);
+    return gl::glIsShader(shader);
 }
 
 GLboolean glIsSync(GLsync sync)
 {
-    return glbinding::Binding::IsSync(sync);
+    return gl::glIsSync(sync);
 }
 
 GLboolean glIsTexture(GLuint texture)
 {
-    return glbinding::Binding::IsTexture(texture);
+    return gl::glIsTexture(texture);
 }
 
 GLboolean glIsTransformFeedback(GLuint id)
 {
-    return glbinding::Binding::IsTransformFeedback(id);
+    return gl::glIsTransformFeedback(id);
 }
 
 GLboolean glIsVertexArray(GLuint array)
 {
-    return glbinding::Binding::IsVertexArray(array);
+    return gl::glIsVertexArray(array);
 }
 
 void glLineWidth(GLfloat width)
 {
-    return glbinding::Binding::LineWidth(width);
+    return gl::glLineWidth(width);
 }
 
 void glLinkProgram(GLuint program)
 {
-    return glbinding::Binding::LinkProgram(program);
+    return gl::glLinkProgram(program);
 }
 
 void glLogicOp(GLenum opcode)
 {
-    return glbinding::Binding::LogicOp(opcode);
+    return gl::glLogicOp(opcode);
 }
 
 void * glMapBuffer(GLenum target, GLenum access)
 {
-    return glbinding::Binding::MapBuffer(target, access);
+    return gl::glMapBuffer(target, access);
 }
 
 void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
 {
-    return glbinding::Binding::MapBufferRange(target, offset, length, access);
+    return gl::glMapBufferRange(target, offset, length, access);
 }
 
 void glMinSampleShading(GLfloat value)
 {
-    return glbinding::Binding::MinSampleShading(value);
+    return gl::glMinSampleShading(value);
 }
 
 void glMultiDrawArrays(GLenum mode, const GLint * first, const GLsizei * count, GLsizei drawcount)
 {
-    return glbinding::Binding::MultiDrawArrays(mode, first, count, drawcount);
+    return gl::glMultiDrawArrays(mode, first, count, drawcount);
 }
 
 void glMultiDrawElements(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount)
 {
-    return glbinding::Binding::MultiDrawElements(mode, count, type, indices, drawcount);
+    return gl::glMultiDrawElements(mode, count, type, indices, drawcount);
 }
 
 void glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex)
 {
-    return glbinding::Binding::MultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
+    return gl::glMultiDrawElementsBaseVertex(mode, count, type, indices, drawcount, basevertex);
 }
 
 void glMultiTexCoordP1ui(GLenum texture, GLenum type, GLuint coords)
 {
-    return glbinding::Binding::MultiTexCoordP1ui(texture, type, coords);
+    return gl::glMultiTexCoordP1ui(texture, type, coords);
 }
 
 void glMultiTexCoordP1uiv(GLenum texture, GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::MultiTexCoordP1uiv(texture, type, coords);
+    return gl::glMultiTexCoordP1uiv(texture, type, coords);
 }
 
 void glMultiTexCoordP2ui(GLenum texture, GLenum type, GLuint coords)
 {
-    return glbinding::Binding::MultiTexCoordP2ui(texture, type, coords);
+    return gl::glMultiTexCoordP2ui(texture, type, coords);
 }
 
 void glMultiTexCoordP2uiv(GLenum texture, GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::MultiTexCoordP2uiv(texture, type, coords);
+    return gl::glMultiTexCoordP2uiv(texture, type, coords);
 }
 
 void glMultiTexCoordP3ui(GLenum texture, GLenum type, GLuint coords)
 {
-    return glbinding::Binding::MultiTexCoordP3ui(texture, type, coords);
+    return gl::glMultiTexCoordP3ui(texture, type, coords);
 }
 
 void glMultiTexCoordP3uiv(GLenum texture, GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::MultiTexCoordP3uiv(texture, type, coords);
+    return gl::glMultiTexCoordP3uiv(texture, type, coords);
 }
 
 void glMultiTexCoordP4ui(GLenum texture, GLenum type, GLuint coords)
 {
-    return glbinding::Binding::MultiTexCoordP4ui(texture, type, coords);
+    return gl::glMultiTexCoordP4ui(texture, type, coords);
 }
 
 void glMultiTexCoordP4uiv(GLenum texture, GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::MultiTexCoordP4uiv(texture, type, coords);
+    return gl::glMultiTexCoordP4uiv(texture, type, coords);
 }
 
 void glNormalP3ui(GLenum type, GLuint coords)
 {
-    return glbinding::Binding::NormalP3ui(type, coords);
+    return gl::glNormalP3ui(type, coords);
 }
 
 void glNormalP3uiv(GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::NormalP3uiv(type, coords);
+    return gl::glNormalP3uiv(type, coords);
 }
 
 void glPatchParameterfv(GLenum pname, const GLfloat * values)
 {
-    return glbinding::Binding::PatchParameterfv(pname, values);
+    return gl::glPatchParameterfv(pname, values);
 }
 
 void glPatchParameteri(GLenum pname, GLint value)
 {
-    return glbinding::Binding::PatchParameteri(pname, value);
+    return gl::glPatchParameteri(pname, value);
 }
 
 void glPauseTransformFeedback()
 {
-    return glbinding::Binding::PauseTransformFeedback();
+    return gl::glPauseTransformFeedback();
 }
 
 void glPixelStoref(GLenum pname, GLfloat param)
 {
-    return glbinding::Binding::PixelStoref(pname, param);
+    return gl::glPixelStoref(pname, param);
 }
 
 void glPixelStorei(GLenum pname, GLint param)
 {
-    return glbinding::Binding::PixelStorei(pname, param);
+    return gl::glPixelStorei(pname, param);
 }
 
 void glPointParameterf(GLenum pname, GLfloat param)
 {
-    return glbinding::Binding::PointParameterf(pname, param);
+    return gl::glPointParameterf(pname, param);
 }
 
 void glPointParameterfv(GLenum pname, const GLfloat * params)
 {
-    return glbinding::Binding::PointParameterfv(pname, params);
+    return gl::glPointParameterfv(pname, params);
 }
 
 void glPointParameteri(GLenum pname, GLint param)
 {
-    return glbinding::Binding::PointParameteri(pname, param);
+    return gl::glPointParameteri(pname, param);
 }
 
 void glPointParameteriv(GLenum pname, const GLint * params)
 {
-    return glbinding::Binding::PointParameteriv(pname, params);
+    return gl::glPointParameteriv(pname, params);
 }
 
 void glPointSize(GLfloat size)
 {
-    return glbinding::Binding::PointSize(size);
+    return gl::glPointSize(size);
 }
 
 void glPolygonMode(GLenum face, GLenum mode)
 {
-    return glbinding::Binding::PolygonMode(face, mode);
+    return gl::glPolygonMode(face, mode);
 }
 
 void glPolygonOffset(GLfloat factor, GLfloat units)
 {
-    return glbinding::Binding::PolygonOffset(factor, units);
+    return gl::glPolygonOffset(factor, units);
 }
 
 void glPrimitiveRestartIndex(GLuint index)
 {
-    return glbinding::Binding::PrimitiveRestartIndex(index);
+    return gl::glPrimitiveRestartIndex(index);
 }
 
 void glProvokingVertex(GLenum mode)
 {
-    return glbinding::Binding::ProvokingVertex(mode);
+    return gl::glProvokingVertex(mode);
 }
 
 void glQueryCounter(GLuint id, GLenum target)
 {
-    return glbinding::Binding::QueryCounter(id, target);
+    return gl::glQueryCounter(id, target);
 }
 
 void glReadBuffer(GLenum src)
 {
-    return glbinding::Binding::ReadBuffer(src);
+    return gl::glReadBuffer(src);
 }
 
 void glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, void * pixels)
 {
-    return glbinding::Binding::ReadPixels(x, y, width, height, format, type, pixels);
+    return gl::glReadPixels(x, y, width, height, format, type, pixels);
 }
 
 void glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-    return glbinding::Binding::RenderbufferStorage(target, internalformat, width, height);
+    return gl::glRenderbufferStorage(target, internalformat, width, height);
 }
 
 void glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-    return glbinding::Binding::RenderbufferStorageMultisample(target, samples, internalformat, width, height);
+    return gl::glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
 }
 
 void glResumeTransformFeedback()
 {
-    return glbinding::Binding::ResumeTransformFeedback();
+    return gl::glResumeTransformFeedback();
 }
 
 void glSampleCoverage(GLfloat value, GLboolean invert)
 {
-    return glbinding::Binding::SampleCoverage(value, invert);
+    return gl::glSampleCoverage(value, invert);
 }
 
 void glSampleMaski(GLuint maskNumber, GLbitfield mask)
 {
-    return glbinding::Binding::SampleMaski(maskNumber, mask);
+    return gl::glSampleMaski(maskNumber, mask);
 }
 
 void glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint * param)
 {
-    return glbinding::Binding::SamplerParameterIiv(sampler, pname, param);
+    return gl::glSamplerParameterIiv(sampler, pname, param);
 }
 
 void glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint * param)
 {
-    return glbinding::Binding::SamplerParameterIuiv(sampler, pname, param);
+    return gl::glSamplerParameterIuiv(sampler, pname, param);
 }
 
 void glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param)
 {
-    return glbinding::Binding::SamplerParameterf(sampler, pname, param);
+    return gl::glSamplerParameterf(sampler, pname, param);
 }
 
 void glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat * param)
 {
-    return glbinding::Binding::SamplerParameterfv(sampler, pname, param);
+    return gl::glSamplerParameterfv(sampler, pname, param);
 }
 
 void glSamplerParameteri(GLuint sampler, GLenum pname, GLint param)
 {
-    return glbinding::Binding::SamplerParameteri(sampler, pname, param);
+    return gl::glSamplerParameteri(sampler, pname, param);
 }
 
 void glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint * param)
 {
-    return glbinding::Binding::SamplerParameteriv(sampler, pname, param);
+    return gl::glSamplerParameteriv(sampler, pname, param);
 }
 
 void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    return glbinding::Binding::Scissor(x, y, width, height);
+    return gl::glScissor(x, y, width, height);
 }
 
 void glSecondaryColorP3ui(GLenum type, GLuint color)
 {
-    return glbinding::Binding::SecondaryColorP3ui(type, color);
+    return gl::glSecondaryColorP3ui(type, color);
 }
 
 void glSecondaryColorP3uiv(GLenum type, const GLuint * color)
 {
-    return glbinding::Binding::SecondaryColorP3uiv(type, color);
+    return gl::glSecondaryColorP3uiv(type, color);
 }
 
 void glShaderSource(GLuint shader, GLsizei count, const GLchar *const* string, const GLint * length)
 {
-    return glbinding::Binding::ShaderSource(shader, count, string, length);
+    return gl::glShaderSource(shader, count, string, length);
 }
 
 void glStencilFunc(GLenum func, GLint ref, GLuint mask)
 {
-    return glbinding::Binding::StencilFunc(func, ref, mask);
+    return gl::glStencilFunc(func, ref, mask);
 }
 
 void glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask)
 {
-    return glbinding::Binding::StencilFuncSeparate(face, func, ref, mask);
+    return gl::glStencilFuncSeparate(face, func, ref, mask);
 }
 
 void glStencilMask(GLuint mask)
 {
-    return glbinding::Binding::StencilMask(mask);
+    return gl::glStencilMask(mask);
 }
 
 void glStencilMaskSeparate(GLenum face, GLuint mask)
 {
-    return glbinding::Binding::StencilMaskSeparate(face, mask);
+    return gl::glStencilMaskSeparate(face, mask);
 }
 
 void glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 {
-    return glbinding::Binding::StencilOp(fail, zfail, zpass);
+    return gl::glStencilOp(fail, zfail, zpass);
 }
 
 void glStencilOpSeparate(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass)
 {
-    return glbinding::Binding::StencilOpSeparate(face, sfail, dpfail, dppass);
+    return gl::glStencilOpSeparate(face, sfail, dpfail, dppass);
 }
 
 void glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
 {
-    return glbinding::Binding::TexBuffer(target, internalformat, buffer);
+    return gl::glTexBuffer(target, internalformat, buffer);
 }
 
 void glTexCoordP1ui(GLenum type, GLuint coords)
 {
-    return glbinding::Binding::TexCoordP1ui(type, coords);
+    return gl::glTexCoordP1ui(type, coords);
 }
 
 void glTexCoordP1uiv(GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::TexCoordP1uiv(type, coords);
+    return gl::glTexCoordP1uiv(type, coords);
 }
 
 void glTexCoordP2ui(GLenum type, GLuint coords)
 {
-    return glbinding::Binding::TexCoordP2ui(type, coords);
+    return gl::glTexCoordP2ui(type, coords);
 }
 
 void glTexCoordP2uiv(GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::TexCoordP2uiv(type, coords);
+    return gl::glTexCoordP2uiv(type, coords);
 }
 
 void glTexCoordP3ui(GLenum type, GLuint coords)
 {
-    return glbinding::Binding::TexCoordP3ui(type, coords);
+    return gl::glTexCoordP3ui(type, coords);
 }
 
 void glTexCoordP3uiv(GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::TexCoordP3uiv(type, coords);
+    return gl::glTexCoordP3uiv(type, coords);
 }
 
 void glTexCoordP4ui(GLenum type, GLuint coords)
 {
-    return glbinding::Binding::TexCoordP4ui(type, coords);
+    return gl::glTexCoordP4ui(type, coords);
 }
 
 void glTexCoordP4uiv(GLenum type, const GLuint * coords)
 {
-    return glbinding::Binding::TexCoordP4uiv(type, coords);
+    return gl::glTexCoordP4uiv(type, coords);
 }
 
 void glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::Binding::TexImage1D(target, level, internalformat, width, border, format, type, pixels);
+    return gl::glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
 }
 
 void glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::Binding::TexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+    return gl::glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 }
 
 void glTexImage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
-    return glbinding::Binding::TexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+    return gl::glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
 }
 
 void glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::Binding::TexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+    return gl::glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
 }
 
 void glTexImage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
-    return glbinding::Binding::TexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+    return gl::glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
 
 void glTexParameterIiv(GLenum target, GLenum pname, const GLint * params)
 {
-    return glbinding::Binding::TexParameterIiv(target, pname, params);
+    return gl::glTexParameterIiv(target, pname, params);
 }
 
 void glTexParameterIuiv(GLenum target, GLenum pname, const GLuint * params)
 {
-    return glbinding::Binding::TexParameterIuiv(target, pname, params);
+    return gl::glTexParameterIuiv(target, pname, params);
 }
 
 void glTexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
-    return glbinding::Binding::TexParameterf(target, pname, param);
+    return gl::glTexParameterf(target, pname, param);
 }
 
 void glTexParameterfv(GLenum target, GLenum pname, const GLfloat * params)
 {
-    return glbinding::Binding::TexParameterfv(target, pname, params);
+    return gl::glTexParameterfv(target, pname, params);
 }
 
 void glTexParameteri(GLenum target, GLenum pname, GLint param)
 {
-    return glbinding::Binding::TexParameteri(target, pname, param);
+    return gl::glTexParameteri(target, pname, param);
 }
 
 void glTexParameteriv(GLenum target, GLenum pname, const GLint * params)
 {
-    return glbinding::Binding::TexParameteriv(target, pname, params);
+    return gl::glTexParameteriv(target, pname, params);
 }
 
 void glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::Binding::TexSubImage1D(target, level, xoffset, width, format, type, pixels);
+    return gl::glTexSubImage1D(target, level, xoffset, width, format, type, pixels);
 }
 
 void glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::Binding::TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
+    return gl::glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
 
 void glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels)
 {
-    return glbinding::Binding::TexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+    return gl::glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
 
 void glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar *const* varyings, GLenum bufferMode)
 {
-    return glbinding::Binding::TransformFeedbackVaryings(program, count, varyings, bufferMode);
+    return gl::glTransformFeedbackVaryings(program, count, varyings, bufferMode);
 }
 
 void glUniform1d(GLint location, GLdouble x)
 {
-    return glbinding::Binding::Uniform1d(location, x);
+    return gl::glUniform1d(location, x);
 }
 
 void glUniform1dv(GLint location, GLsizei count, const GLdouble * value)
 {
-    return glbinding::Binding::Uniform1dv(location, count, value);
+    return gl::glUniform1dv(location, count, value);
 }
 
 void glUniform1f(GLint location, GLfloat v0)
 {
-    return glbinding::Binding::Uniform1f(location, v0);
+    return gl::glUniform1f(location, v0);
 }
 
 void glUniform1fv(GLint location, GLsizei count, const GLfloat * value)
 {
-    return glbinding::Binding::Uniform1fv(location, count, value);
+    return gl::glUniform1fv(location, count, value);
 }
 
 void glUniform1i(GLint location, GLint v0)
 {
-    return glbinding::Binding::Uniform1i(location, v0);
+    return gl::glUniform1i(location, v0);
 }
 
 void glUniform1iv(GLint location, GLsizei count, const GLint * value)
 {
-    return glbinding::Binding::Uniform1iv(location, count, value);
+    return gl::glUniform1iv(location, count, value);
 }
 
 void glUniform1ui(GLint location, GLuint v0)
 {
-    return glbinding::Binding::Uniform1ui(location, v0);
+    return gl::glUniform1ui(location, v0);
 }
 
 void glUniform1uiv(GLint location, GLsizei count, const GLuint * value)
 {
-    return glbinding::Binding::Uniform1uiv(location, count, value);
+    return gl::glUniform1uiv(location, count, value);
 }
 
 void glUniform2d(GLint location, GLdouble x, GLdouble y)
 {
-    return glbinding::Binding::Uniform2d(location, x, y);
+    return gl::glUniform2d(location, x, y);
 }
 
 void glUniform2dv(GLint location, GLsizei count, const GLdouble * value)
 {
-    return glbinding::Binding::Uniform2dv(location, count, value);
+    return gl::glUniform2dv(location, count, value);
 }
 
 void glUniform2f(GLint location, GLfloat v0, GLfloat v1)
 {
-    return glbinding::Binding::Uniform2f(location, v0, v1);
+    return gl::glUniform2f(location, v0, v1);
 }
 
 void glUniform2fv(GLint location, GLsizei count, const GLfloat * value)
 {
-    return glbinding::Binding::Uniform2fv(location, count, value);
+    return gl::glUniform2fv(location, count, value);
 }
 
 void glUniform2i(GLint location, GLint v0, GLint v1)
 {
-    return glbinding::Binding::Uniform2i(location, v0, v1);
+    return gl::glUniform2i(location, v0, v1);
 }
 
 void glUniform2iv(GLint location, GLsizei count, const GLint * value)
 {
-    return glbinding::Binding::Uniform2iv(location, count, value);
+    return gl::glUniform2iv(location, count, value);
 }
 
 void glUniform2ui(GLint location, GLuint v0, GLuint v1)
 {
-    return glbinding::Binding::Uniform2ui(location, v0, v1);
+    return gl::glUniform2ui(location, v0, v1);
 }
 
 void glUniform2uiv(GLint location, GLsizei count, const GLuint * value)
 {
-    return glbinding::Binding::Uniform2uiv(location, count, value);
+    return gl::glUniform2uiv(location, count, value);
 }
 
 void glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-    return glbinding::Binding::Uniform3d(location, x, y, z);
+    return gl::glUniform3d(location, x, y, z);
 }
 
 void glUniform3dv(GLint location, GLsizei count, const GLdouble * value)
 {
-    return glbinding::Binding::Uniform3dv(location, count, value);
+    return gl::glUniform3dv(location, count, value);
 }
 
 void glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-    return glbinding::Binding::Uniform3f(location, v0, v1, v2);
+    return gl::glUniform3f(location, v0, v1, v2);
 }
 
 void glUniform3fv(GLint location, GLsizei count, const GLfloat * value)
 {
-    return glbinding::Binding::Uniform3fv(location, count, value);
+    return gl::glUniform3fv(location, count, value);
 }
 
 void glUniform3i(GLint location, GLint v0, GLint v1, GLint v2)
 {
-    return glbinding::Binding::Uniform3i(location, v0, v1, v2);
+    return gl::glUniform3i(location, v0, v1, v2);
 }
 
 void glUniform3iv(GLint location, GLsizei count, const GLint * value)
 {
-    return glbinding::Binding::Uniform3iv(location, count, value);
+    return gl::glUniform3iv(location, count, value);
 }
 
 void glUniform3ui(GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-    return glbinding::Binding::Uniform3ui(location, v0, v1, v2);
+    return gl::glUniform3ui(location, v0, v1, v2);
 }
 
 void glUniform3uiv(GLint location, GLsizei count, const GLuint * value)
 {
-    return glbinding::Binding::Uniform3uiv(location, count, value);
+    return gl::glUniform3uiv(location, count, value);
 }
 
 void glUniform4d(GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-    return glbinding::Binding::Uniform4d(location, x, y, z, w);
+    return gl::glUniform4d(location, x, y, z, w);
 }
 
 void glUniform4dv(GLint location, GLsizei count, const GLdouble * value)
 {
-    return glbinding::Binding::Uniform4dv(location, count, value);
+    return gl::glUniform4dv(location, count, value);
 }
 
 void glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-    return glbinding::Binding::Uniform4f(location, v0, v1, v2, v3);
+    return gl::glUniform4f(location, v0, v1, v2, v3);
 }
 
 void glUniform4fv(GLint location, GLsizei count, const GLfloat * value)
 {
-    return glbinding::Binding::Uniform4fv(location, count, value);
+    return gl::glUniform4fv(location, count, value);
 }
 
 void glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-    return glbinding::Binding::Uniform4i(location, v0, v1, v2, v3);
+    return gl::glUniform4i(location, v0, v1, v2, v3);
 }
 
 void glUniform4iv(GLint location, GLsizei count, const GLint * value)
 {
-    return glbinding::Binding::Uniform4iv(location, count, value);
+    return gl::glUniform4iv(location, count, value);
 }
 
 void glUniform4ui(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-    return glbinding::Binding::Uniform4ui(location, v0, v1, v2, v3);
+    return gl::glUniform4ui(location, v0, v1, v2, v3);
 }
 
 void glUniform4uiv(GLint location, GLsizei count, const GLuint * value)
 {
-    return glbinding::Binding::Uniform4uiv(location, count, value);
+    return gl::glUniform4uiv(location, count, value);
 }
 
 void glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding)
 {
-    return glbinding::Binding::UniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
+    return gl::glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
 }
 
 void glUniformMatrix2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix2dv(location, count, transpose, value);
+    return gl::glUniformMatrix2dv(location, count, transpose, value);
 }
 
 void glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix2fv(location, count, transpose, value);
+    return gl::glUniformMatrix2fv(location, count, transpose, value);
 }
 
 void glUniformMatrix2x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix2x3dv(location, count, transpose, value);
+    return gl::glUniformMatrix2x3dv(location, count, transpose, value);
 }
 
 void glUniformMatrix2x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix2x3fv(location, count, transpose, value);
+    return gl::glUniformMatrix2x3fv(location, count, transpose, value);
 }
 
 void glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix2x4dv(location, count, transpose, value);
+    return gl::glUniformMatrix2x4dv(location, count, transpose, value);
 }
 
 void glUniformMatrix2x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix2x4fv(location, count, transpose, value);
+    return gl::glUniformMatrix2x4fv(location, count, transpose, value);
 }
 
 void glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix3dv(location, count, transpose, value);
+    return gl::glUniformMatrix3dv(location, count, transpose, value);
 }
 
 void glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix3fv(location, count, transpose, value);
+    return gl::glUniformMatrix3fv(location, count, transpose, value);
 }
 
 void glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix3x2dv(location, count, transpose, value);
+    return gl::glUniformMatrix3x2dv(location, count, transpose, value);
 }
 
 void glUniformMatrix3x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix3x2fv(location, count, transpose, value);
+    return gl::glUniformMatrix3x2fv(location, count, transpose, value);
 }
 
 void glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix3x4dv(location, count, transpose, value);
+    return gl::glUniformMatrix3x4dv(location, count, transpose, value);
 }
 
 void glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix3x4fv(location, count, transpose, value);
+    return gl::glUniformMatrix3x4fv(location, count, transpose, value);
 }
 
 void glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix4dv(location, count, transpose, value);
+    return gl::glUniformMatrix4dv(location, count, transpose, value);
 }
 
 void glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix4fv(location, count, transpose, value);
+    return gl::glUniformMatrix4fv(location, count, transpose, value);
 }
 
 void glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix4x2dv(location, count, transpose, value);
+    return gl::glUniformMatrix4x2dv(location, count, transpose, value);
 }
 
 void glUniformMatrix4x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix4x2fv(location, count, transpose, value);
+    return gl::glUniformMatrix4x2fv(location, count, transpose, value);
 }
 
 void glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble * value)
 {
-    return glbinding::Binding::UniformMatrix4x3dv(location, count, transpose, value);
+    return gl::glUniformMatrix4x3dv(location, count, transpose, value);
 }
 
 void glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat * value)
 {
-    return glbinding::Binding::UniformMatrix4x3fv(location, count, transpose, value);
+    return gl::glUniformMatrix4x3fv(location, count, transpose, value);
 }
 
 void glUniformSubroutinesuiv(GLenum shadertype, GLsizei count, const GLuint * indices)
 {
-    return glbinding::Binding::UniformSubroutinesuiv(shadertype, count, indices);
+    return gl::glUniformSubroutinesuiv(shadertype, count, indices);
 }
 
 GLboolean glUnmapBuffer(GLenum target)
 {
-    return glbinding::Binding::UnmapBuffer(target);
+    return gl::glUnmapBuffer(target);
 }
 
 void glUseProgram(GLuint program)
 {
-    return glbinding::Binding::UseProgram(program);
+    return gl::glUseProgram(program);
 }
 
 void glValidateProgram(GLuint program)
 {
-    return glbinding::Binding::ValidateProgram(program);
+    return gl::glValidateProgram(program);
 }
 
 void glVertexAttrib1d(GLuint index, GLdouble x)
 {
-    return glbinding::Binding::VertexAttrib1d(index, x);
+    return gl::glVertexAttrib1d(index, x);
 }
 
 void glVertexAttrib1dv(GLuint index, const GLdouble * v)
 {
-    return glbinding::Binding::VertexAttrib1dv(index, v);
+    return gl::glVertexAttrib1dv(index, v);
 }
 
 void glVertexAttrib1f(GLuint index, GLfloat x)
 {
-    return glbinding::Binding::VertexAttrib1f(index, x);
+    return gl::glVertexAttrib1f(index, x);
 }
 
 void glVertexAttrib1fv(GLuint index, const GLfloat * v)
 {
-    return glbinding::Binding::VertexAttrib1fv(index, v);
+    return gl::glVertexAttrib1fv(index, v);
 }
 
 void glVertexAttrib1s(GLuint index, GLshort x)
 {
-    return glbinding::Binding::VertexAttrib1s(index, x);
+    return gl::glVertexAttrib1s(index, x);
 }
 
 void glVertexAttrib1sv(GLuint index, const GLshort * v)
 {
-    return glbinding::Binding::VertexAttrib1sv(index, v);
+    return gl::glVertexAttrib1sv(index, v);
 }
 
 void glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y)
 {
-    return glbinding::Binding::VertexAttrib2d(index, x, y);
+    return gl::glVertexAttrib2d(index, x, y);
 }
 
 void glVertexAttrib2dv(GLuint index, const GLdouble * v)
 {
-    return glbinding::Binding::VertexAttrib2dv(index, v);
+    return gl::glVertexAttrib2dv(index, v);
 }
 
 void glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
 {
-    return glbinding::Binding::VertexAttrib2f(index, x, y);
+    return gl::glVertexAttrib2f(index, x, y);
 }
 
 void glVertexAttrib2fv(GLuint index, const GLfloat * v)
 {
-    return glbinding::Binding::VertexAttrib2fv(index, v);
+    return gl::glVertexAttrib2fv(index, v);
 }
 
 void glVertexAttrib2s(GLuint index, GLshort x, GLshort y)
 {
-    return glbinding::Binding::VertexAttrib2s(index, x, y);
+    return gl::glVertexAttrib2s(index, x, y);
 }
 
 void glVertexAttrib2sv(GLuint index, const GLshort * v)
 {
-    return glbinding::Binding::VertexAttrib2sv(index, v);
+    return gl::glVertexAttrib2sv(index, v);
 }
 
 void glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
-    return glbinding::Binding::VertexAttrib3d(index, x, y, z);
+    return gl::glVertexAttrib3d(index, x, y, z);
 }
 
 void glVertexAttrib3dv(GLuint index, const GLdouble * v)
 {
-    return glbinding::Binding::VertexAttrib3dv(index, v);
+    return gl::glVertexAttrib3dv(index, v);
 }
 
 void glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
-    return glbinding::Binding::VertexAttrib3f(index, x, y, z);
+    return gl::glVertexAttrib3f(index, x, y, z);
 }
 
 void glVertexAttrib3fv(GLuint index, const GLfloat * v)
 {
-    return glbinding::Binding::VertexAttrib3fv(index, v);
+    return gl::glVertexAttrib3fv(index, v);
 }
 
 void glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z)
 {
-    return glbinding::Binding::VertexAttrib3s(index, x, y, z);
+    return gl::glVertexAttrib3s(index, x, y, z);
 }
 
 void glVertexAttrib3sv(GLuint index, const GLshort * v)
 {
-    return glbinding::Binding::VertexAttrib3sv(index, v);
+    return gl::glVertexAttrib3sv(index, v);
 }
 
 void glVertexAttrib4Nbv(GLuint index, const GLbyte * v)
 {
-    return glbinding::Binding::VertexAttrib4Nbv(index, v);
+    return gl::glVertexAttrib4Nbv(index, v);
 }
 
 void glVertexAttrib4Niv(GLuint index, const GLint * v)
 {
-    return glbinding::Binding::VertexAttrib4Niv(index, v);
+    return gl::glVertexAttrib4Niv(index, v);
 }
 
 void glVertexAttrib4Nsv(GLuint index, const GLshort * v)
 {
-    return glbinding::Binding::VertexAttrib4Nsv(index, v);
+    return gl::glVertexAttrib4Nsv(index, v);
 }
 
 void glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 {
-    return glbinding::Binding::VertexAttrib4Nub(index, x, y, z, w);
+    return gl::glVertexAttrib4Nub(index, x, y, z, w);
 }
 
 void glVertexAttrib4Nubv(GLuint index, const GLubyte * v)
 {
-    return glbinding::Binding::VertexAttrib4Nubv(index, v);
+    return gl::glVertexAttrib4Nubv(index, v);
 }
 
 void glVertexAttrib4Nuiv(GLuint index, const GLuint * v)
 {
-    return glbinding::Binding::VertexAttrib4Nuiv(index, v);
+    return gl::glVertexAttrib4Nuiv(index, v);
 }
 
 void glVertexAttrib4Nusv(GLuint index, const GLushort * v)
 {
-    return glbinding::Binding::VertexAttrib4Nusv(index, v);
+    return gl::glVertexAttrib4Nusv(index, v);
 }
 
 void glVertexAttrib4bv(GLuint index, const GLbyte * v)
 {
-    return glbinding::Binding::VertexAttrib4bv(index, v);
+    return gl::glVertexAttrib4bv(index, v);
 }
 
 void glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-    return glbinding::Binding::VertexAttrib4d(index, x, y, z, w);
+    return gl::glVertexAttrib4d(index, x, y, z, w);
 }
 
 void glVertexAttrib4dv(GLuint index, const GLdouble * v)
 {
-    return glbinding::Binding::VertexAttrib4dv(index, v);
+    return gl::glVertexAttrib4dv(index, v);
 }
 
 void glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-    return glbinding::Binding::VertexAttrib4f(index, x, y, z, w);
+    return gl::glVertexAttrib4f(index, x, y, z, w);
 }
 
 void glVertexAttrib4fv(GLuint index, const GLfloat * v)
 {
-    return glbinding::Binding::VertexAttrib4fv(index, v);
+    return gl::glVertexAttrib4fv(index, v);
 }
 
 void glVertexAttrib4iv(GLuint index, const GLint * v)
 {
-    return glbinding::Binding::VertexAttrib4iv(index, v);
+    return gl::glVertexAttrib4iv(index, v);
 }
 
 void glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 {
-    return glbinding::Binding::VertexAttrib4s(index, x, y, z, w);
+    return gl::glVertexAttrib4s(index, x, y, z, w);
 }
 
 void glVertexAttrib4sv(GLuint index, const GLshort * v)
 {
-    return glbinding::Binding::VertexAttrib4sv(index, v);
+    return gl::glVertexAttrib4sv(index, v);
 }
 
 void glVertexAttrib4ubv(GLuint index, const GLubyte * v)
 {
-    return glbinding::Binding::VertexAttrib4ubv(index, v);
+    return gl::glVertexAttrib4ubv(index, v);
 }
 
 void glVertexAttrib4uiv(GLuint index, const GLuint * v)
 {
-    return glbinding::Binding::VertexAttrib4uiv(index, v);
+    return gl::glVertexAttrib4uiv(index, v);
 }
 
 void glVertexAttrib4usv(GLuint index, const GLushort * v)
 {
-    return glbinding::Binding::VertexAttrib4usv(index, v);
+    return gl::glVertexAttrib4usv(index, v);
 }
 
 void glVertexAttribDivisor(GLuint index, GLuint divisor)
 {
-    return glbinding::Binding::VertexAttribDivisor(index, divisor);
+    return gl::glVertexAttribDivisor(index, divisor);
 }
 
 void glVertexAttribI1i(GLuint index, GLint x)
 {
-    return glbinding::Binding::VertexAttribI1i(index, x);
+    return gl::glVertexAttribI1i(index, x);
 }
 
 void glVertexAttribI1iv(GLuint index, const GLint * v)
 {
-    return glbinding::Binding::VertexAttribI1iv(index, v);
+    return gl::glVertexAttribI1iv(index, v);
 }
 
 void glVertexAttribI1ui(GLuint index, GLuint x)
 {
-    return glbinding::Binding::VertexAttribI1ui(index, x);
+    return gl::glVertexAttribI1ui(index, x);
 }
 
 void glVertexAttribI1uiv(GLuint index, const GLuint * v)
 {
-    return glbinding::Binding::VertexAttribI1uiv(index, v);
+    return gl::glVertexAttribI1uiv(index, v);
 }
 
 void glVertexAttribI2i(GLuint index, GLint x, GLint y)
 {
-    return glbinding::Binding::VertexAttribI2i(index, x, y);
+    return gl::glVertexAttribI2i(index, x, y);
 }
 
 void glVertexAttribI2iv(GLuint index, const GLint * v)
 {
-    return glbinding::Binding::VertexAttribI2iv(index, v);
+    return gl::glVertexAttribI2iv(index, v);
 }
 
 void glVertexAttribI2ui(GLuint index, GLuint x, GLuint y)
 {
-    return glbinding::Binding::VertexAttribI2ui(index, x, y);
+    return gl::glVertexAttribI2ui(index, x, y);
 }
 
 void glVertexAttribI2uiv(GLuint index, const GLuint * v)
 {
-    return glbinding::Binding::VertexAttribI2uiv(index, v);
+    return gl::glVertexAttribI2uiv(index, v);
 }
 
 void glVertexAttribI3i(GLuint index, GLint x, GLint y, GLint z)
 {
-    return glbinding::Binding::VertexAttribI3i(index, x, y, z);
+    return gl::glVertexAttribI3i(index, x, y, z);
 }
 
 void glVertexAttribI3iv(GLuint index, const GLint * v)
 {
-    return glbinding::Binding::VertexAttribI3iv(index, v);
+    return gl::glVertexAttribI3iv(index, v);
 }
 
 void glVertexAttribI3ui(GLuint index, GLuint x, GLuint y, GLuint z)
 {
-    return glbinding::Binding::VertexAttribI3ui(index, x, y, z);
+    return gl::glVertexAttribI3ui(index, x, y, z);
 }
 
 void glVertexAttribI3uiv(GLuint index, const GLuint * v)
 {
-    return glbinding::Binding::VertexAttribI3uiv(index, v);
+    return gl::glVertexAttribI3uiv(index, v);
 }
 
 void glVertexAttribI4bv(GLuint index, const GLbyte * v)
 {
-    return glbinding::Binding::VertexAttribI4bv(index, v);
+    return gl::glVertexAttribI4bv(index, v);
 }
 
 void glVertexAttribI4i(GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-    return glbinding::Binding::VertexAttribI4i(index, x, y, z, w);
+    return gl::glVertexAttribI4i(index, x, y, z, w);
 }
 
 void glVertexAttribI4iv(GLuint index, const GLint * v)
 {
-    return glbinding::Binding::VertexAttribI4iv(index, v);
+    return gl::glVertexAttribI4iv(index, v);
 }
 
 void glVertexAttribI4sv(GLuint index, const GLshort * v)
 {
-    return glbinding::Binding::VertexAttribI4sv(index, v);
+    return gl::glVertexAttribI4sv(index, v);
 }
 
 void glVertexAttribI4ubv(GLuint index, const GLubyte * v)
 {
-    return glbinding::Binding::VertexAttribI4ubv(index, v);
+    return gl::glVertexAttribI4ubv(index, v);
 }
 
 void glVertexAttribI4ui(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-    return glbinding::Binding::VertexAttribI4ui(index, x, y, z, w);
+    return gl::glVertexAttribI4ui(index, x, y, z, w);
 }
 
 void glVertexAttribI4uiv(GLuint index, const GLuint * v)
 {
-    return glbinding::Binding::VertexAttribI4uiv(index, v);
+    return gl::glVertexAttribI4uiv(index, v);
 }
 
 void glVertexAttribI4usv(GLuint index, const GLushort * v)
 {
-    return glbinding::Binding::VertexAttribI4usv(index, v);
+    return gl::glVertexAttribI4usv(index, v);
 }
 
 void glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const void * pointer)
 {
-    return glbinding::Binding::VertexAttribIPointer(index, size, type, stride, pointer);
+    return gl::glVertexAttribIPointer(index, size, type, stride, pointer);
 }
 
 void glVertexAttribP1ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-    return glbinding::Binding::VertexAttribP1ui(index, type, normalized, value);
+    return gl::glVertexAttribP1ui(index, type, normalized, value);
 }
 
 void glVertexAttribP1uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value)
 {
-    return glbinding::Binding::VertexAttribP1uiv(index, type, normalized, value);
+    return gl::glVertexAttribP1uiv(index, type, normalized, value);
 }
 
 void glVertexAttribP2ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-    return glbinding::Binding::VertexAttribP2ui(index, type, normalized, value);
+    return gl::glVertexAttribP2ui(index, type, normalized, value);
 }
 
 void glVertexAttribP2uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value)
 {
-    return glbinding::Binding::VertexAttribP2uiv(index, type, normalized, value);
+    return gl::glVertexAttribP2uiv(index, type, normalized, value);
 }
 
 void glVertexAttribP3ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-    return glbinding::Binding::VertexAttribP3ui(index, type, normalized, value);
+    return gl::glVertexAttribP3ui(index, type, normalized, value);
 }
 
 void glVertexAttribP3uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value)
 {
-    return glbinding::Binding::VertexAttribP3uiv(index, type, normalized, value);
+    return gl::glVertexAttribP3uiv(index, type, normalized, value);
 }
 
 void glVertexAttribP4ui(GLuint index, GLenum type, GLboolean normalized, GLuint value)
 {
-    return glbinding::Binding::VertexAttribP4ui(index, type, normalized, value);
+    return gl::glVertexAttribP4ui(index, type, normalized, value);
 }
 
 void glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint * value)
 {
-    return glbinding::Binding::VertexAttribP4uiv(index, type, normalized, value);
+    return gl::glVertexAttribP4uiv(index, type, normalized, value);
 }
 
 void glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const void * pointer)
 {
-    return glbinding::Binding::VertexAttribPointer(index, size, type, normalized, stride, pointer);
+    return gl::glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 }
 
 void glVertexP2ui(GLenum type, GLuint value)
 {
-    return glbinding::Binding::VertexP2ui(type, value);
+    return gl::glVertexP2ui(type, value);
 }
 
 void glVertexP2uiv(GLenum type, const GLuint * value)
 {
-    return glbinding::Binding::VertexP2uiv(type, value);
+    return gl::glVertexP2uiv(type, value);
 }
 
 void glVertexP3ui(GLenum type, GLuint value)
 {
-    return glbinding::Binding::VertexP3ui(type, value);
+    return gl::glVertexP3ui(type, value);
 }
 
 void glVertexP3uiv(GLenum type, const GLuint * value)
 {
-    return glbinding::Binding::VertexP3uiv(type, value);
+    return gl::glVertexP3uiv(type, value);
 }
 
 void glVertexP4ui(GLenum type, GLuint value)
 {
-    return glbinding::Binding::VertexP4ui(type, value);
+    return gl::glVertexP4ui(type, value);
 }
 
 void glVertexP4uiv(GLenum type, const GLuint * value)
 {
-    return glbinding::Binding::VertexP4uiv(type, value);
+    return gl::glVertexP4uiv(type, value);
 }
 
 void glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
 {
-    return glbinding::Binding::Viewport(x, y, width, height);
+    return gl::glViewport(x, y, width, height);
 }
 
 void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout)
 {
-    return glbinding::Binding::WaitSync(sync, flags, timeout);
+    return gl::glWaitSync(sync, flags, timeout);
 }
 
 

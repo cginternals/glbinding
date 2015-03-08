@@ -8,8 +8,8 @@ find_package(OpenGL REQUIRED)
 find_package(GLFW QUIET)
 
 if (NOT GLFW_FOUND)
-	message("Tool ${target} skipped: GLFW not found")
-	return()
+    message("Tool ${target} skipped: GLFW not found")
+    return()
 endif()
 
 message(STATUS "Tool ${target}")

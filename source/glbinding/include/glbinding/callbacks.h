@@ -19,8 +19,9 @@ struct GLBINDING_API FunctionCall
     FunctionCall(const AbstractFunction * _function = nullptr);
     ~FunctionCall();
 
-    // FunctionCall & operator=(const FunctionCall &) = delete;
-    // FunctionCall(const FunctionCall &) = delete;
+    FunctionCall(FunctionCall && other);
+
+    FunctionCall & operator=(const FunctionCall &) = delete;
 
     std::string toString() const;
 
@@ -41,7 +42,7 @@ enum class CallbackMask : unsigned char
     ReturnValue = 1 << 4,
     Logging     = 1 << 5,
     ParametersAndReturnValue = Parameters | ReturnValue,
-    BeforeAndAfter = Before | After,
+    BeforeAndAfter = Before | After
 };
 
 GLBINDING_API CallbackMask operator|(CallbackMask a, CallbackMask b);

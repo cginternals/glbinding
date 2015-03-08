@@ -28,7 +28,7 @@ public:
     operator std::pair<unsigned short, unsigned short>() const;
     operator std::pair<unsigned int,   unsigned int>  () const;
 
-	std::string toString() const;
+    std::string toString() const;
 
     bool isValid() const;
     bool isNull() const;

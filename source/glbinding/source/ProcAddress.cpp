@@ -20,30 +20,30 @@ ProcAddress getProcAddress(const char * name)
 {
 #ifdef WIN32
 
-    typedef void (__stdcall * PROCADDRESS)();
-    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(wglGetProcAddress(name));
+    using PROCADDRESS = void (__stdcall *)();
+    auto procAddress = reinterpret_cast<PROCADDRESS>(wglGetProcAddress(name));
 
     if (procAddress == nullptr)
     {
-        static HMODULE module = LoadLibrary(_T("OPENGL32.DLL"));
+        static auto module = LoadLibrary(_T("OPENGL32.DLL"));
         procAddress = reinterpret_cast<PROCADDRESS>(::GetProcAddress(module, name));
     }
 
 #elif __APPLE__
 
-    typedef void * PROCADDRESS;
+    using PROCADDRESS = void *;
 
-    void * library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
+    auto library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
     assert(library != nullptr);
 
-    void * symbol = dlsym(library, name);
+    auto symbol = dlsym(library, name);
 
-    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(symbol);
+    auto procAddress = reinterpret_cast<PROCADDRESS>(symbol);
 
 #else
 
-    typedef void (* PROCADDRESS)();
-    PROCADDRESS procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
+    using PROCADDRESS = void (*)();
+    auto procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
 
 #endif
 

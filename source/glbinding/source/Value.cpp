@@ -26,7 +26,7 @@ namespace glbinding
 template <>
 void Value<gl::GLenum>::printOn(std::ostream & stream) const
 {
-    std::string name = Meta::getString(value);
+    auto name = Meta::getString(value);
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
 }
 
@@ -41,21 +41,21 @@ void Value<gl::GLbitfield>::printOn(std::ostream & stream) const
 template <>
 void Value<gl::GLboolean>::printOn(std::ostream & stream) const
 {
-    std::string name = Meta::getString(value);
+    auto name = Meta::getString(value);
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
 }
 
 template <>
 void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const
 {
-    std::string s = wrapString(reinterpret_cast<const char*>(value));
+    auto s = wrapString(reinterpret_cast<const char*>(value));
     stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
 }
 
 template <>
 void Value<const gl::GLchar *>::printOn(std::ostream & stream) const
 {
-    std::string s = wrapString(reinterpret_cast<const char*>(value));
+    auto s = wrapString(reinterpret_cast<const char*>(value));
     stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
 }
 

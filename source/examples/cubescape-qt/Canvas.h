@@ -39,7 +39,7 @@ public:
     virtual QSurfaceFormat format() const;
 
     void setContinuousRepaint(bool enable, int msec = 1000 / 60);
-	bool continuousRepaint() const;
+    bool continuousRepaint() const;
 
     void setSwapInterval(SwapInterval swapInterval);
     static const QString swapIntervalToString(SwapInterval swapInterval);
@@ -50,12 +50,12 @@ public slots:
 
 protected:
     virtual void initializeGL(const QSurfaceFormat & format);
-	virtual void paintGL();
+    virtual void paintGL();
 
-	virtual void resizeEvent(QResizeEvent * event);
+    virtual void resizeEvent(QResizeEvent * event);
     virtual void keyPressEvent(QKeyEvent * event);
 
-	void timerEvent(QTimerEvent * event);
+    void timerEvent(QTimerEvent * event);
 
 signals:
     void fpsUpdate(float fps);

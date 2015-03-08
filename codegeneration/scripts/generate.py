@@ -161,6 +161,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genBooleans                    (api, enums,              includedir_api, "boolean.h")
     genBooleansForward             (api, enums,              includedir_api, "boolean.inl")
+    genBooleansFeatureGrouped      (api, enums, features,    includedir_api, "boolean?.h")
 
     genValues                      (api, enums,              includedir_api, "values.h")
     genValuesForwards              (api, enums,              includedir_api, "values.inl")

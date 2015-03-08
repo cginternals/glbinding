@@ -54,16 +54,16 @@ function(get_git_head_revision _refspecvar _hashvar)
     endwhile()
     
     if (IS_DIRECTORY "${GIT_PARENT_DIR}/.git")
-	# common case
-	set(GIT_DIR "${GIT_PARENT_DIR}/.git")
+    # common case
+    set(GIT_DIR "${GIT_PARENT_DIR}/.git")
     else()
-	# submodule case
-	file(STRINGS "${GIT_PARENT_DIR}/.git" contents LIMIT_COUNT 1)
-	message(STATUS "${contents}")
-	string(SUBSTRING "${contents}" 8 -1 SUBMODULE_GIT_DIR)
-	message(STATUS "${SUBMODULE_GIT_DIR}")
-	set(GIT_DIR "${GIT_PARENT_DIR}/${SUBMODULE_GIT_DIR}")
-	message(STATUS "${GIT_DIR}")
+    # submodule case
+    file(STRINGS "${GIT_PARENT_DIR}/.git" contents LIMIT_COUNT 1)
+    message(STATUS "${contents}")
+    string(SUBSTRING "${contents}" 8 -1 SUBMODULE_GIT_DIR)
+    message(STATUS "${SUBMODULE_GIT_DIR}")
+    set(GIT_DIR "${GIT_PARENT_DIR}/${SUBMODULE_GIT_DIR}")
+    message(STATUS "${GIT_DIR}")
     endif()
     
     set(GIT_DATA "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/git-data")

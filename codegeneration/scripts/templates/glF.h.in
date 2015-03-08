@@ -8,8 +8,7 @@
 
 #include <glbinding/%a/types.h>
 
-#include <glbinding/%a/boolean.h>
-
+#include <glbinding/%a/boolean%f.h>%s
 #include <glbinding/%a/bitfield%f.h>%s
 #include <glbinding/%a/enum%f.h>%s
 #include <glbinding/%a/functions%f.h>%s

@@ -22,9 +22,9 @@ namespace glbinding
 int AbstractFunction::s_maxpos = -1;
 
 AbstractFunction::State::State()
-: address(nullptr)
-, initialized(false)
-, callbackMask(CallbackMask::None)
+: address{nullptr}
+, initialized{false}
+, callbackMask{CallbackMask::None}
 {
 }
 
@@ -48,7 +48,7 @@ AbstractFunction::State & AbstractFunction::state(const int pos) const
     assert(s_maxpos >= pos);
     assert(pos > -1);
 
-    return m_states[pos];
+    return m_states.at(pos);
 }
 
 void AbstractFunction::provideState(const int pos)
@@ -59,7 +59,9 @@ void AbstractFunction::provideState(const int pos)
     if (s_maxpos < pos)
     {
         for (AbstractFunction * function : Binding::functions())
+        {
             function->m_states.resize(static_cast<std::size_t>(pos + 1));
+        }
 
         s_maxpos = pos;
     }
@@ -88,14 +90,15 @@ void AbstractFunction::neglectState(const int pos)
     }
 
     if (pos == t_pos)
+    {
         t_pos = -1;
+    }
 }
 
 void AbstractFunction::setStatePos(const int pos)
 {
     t_pos = pos;
 }
-
 
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)

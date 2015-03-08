@@ -14,7 +14,7 @@ template <typename T>
 class Value : public AbstractValue
 {
 public:
-    Value(T value);
+    Value(const T & value);
 
     Value & operator=(const Value &) = delete;
 

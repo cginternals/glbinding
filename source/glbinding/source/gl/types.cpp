@@ -10,58 +10,42 @@
 template <typename T>
 std::string bitfieldString(T value, const std::unordered_map<T, std::string> & map)
 {
-	using U = typename std::underlying_type<T>::type;
-	
-	std::bitset<sizeof(U)*8> bits(static_cast<U>(value));
-	
-	std::stringstream ss;
-	bool first = true;
-	
-	for (size_t i = 0; i<sizeof(U)*8; ++i)
-	{
-		if (bits.test(i))
-		{
-			if (first)
-			{
-				first = false;
-			}
-			else
-			{
-				ss << " | ";
-			}
-			
-			U bit = 1 << i;
-			auto it = map.find(static_cast<T>(bit));
-			if (it == map.end())
-			{
-				ss << "1 << " << i;
-			}
-			else
-			{
-				ss << it->second;
-			}
-		}
-	}
-	
-	return ss.str();
+    using U = typename std::underlying_type<T>::type;
+    
+    std::bitset<sizeof(U)*8> bits(static_cast<U>(value));
+    
+    std::stringstream ss;
+    bool first = true;
+    
+    for (size_t i = 0; i<sizeof(U)*8; ++i)
+    {
+        if (bits.test(i))
+        {
+            if (first)
+            {
+                first = false;
+            }
+            else
+            {
+                ss << " | ";
+            }
+            
+            U bit = 1 << i;
+            auto it = map.find(static_cast<T>(bit));
+            if (it == map.end())
+            {
+                ss << "1 << " << i;
+            }
+            else
+            {
+                ss << it->second;
+            }
+        }
+    }
+    
+    return ss.str();
 };
 
-
-
-
-std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
-{
-    stream << glbinding::Meta::getString(value);
-    return stream;
-}
-
-
-
-std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
-{
-    stream << glbinding::Meta::getString(value);
-    return stream;
-}
 
 
 
@@ -141,6 +125,22 @@ bool operator>(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 {
     return a >= static_cast<std::underlying_type<gl::GLenum>::type>(b);
+}
+
+
+
+std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
+{
+    stream << glbinding::Meta::getString(value);
+    return stream;
+}
+
+
+
+std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
+{
+    stream << glbinding::Meta::getString(value);
+    return stream;
 }
 
 

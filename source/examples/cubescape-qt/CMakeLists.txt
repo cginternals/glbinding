@@ -20,8 +20,8 @@ find_package(Qt5Gui     5.1 QUIET)
 find_package(Qt5Widgets 5.1 QUIET)
 
 if (NOT Qt5Core_FOUND)
-	message("Example ${target} skipped: Qt5 not found")
-	return()
+    message("Example ${target} skipped: Qt5 not found")
+    return()
 endif()
 
 message(STATUS "Example ${target}")
@@ -73,12 +73,12 @@ set(cubscape_path ../cubescape)
 set(sources
     main.cpp
 
-   	Canvas.cpp
-   	Canvas.h
+       Canvas.cpp
+       Canvas.h
     Painter.cpp
     Painter.h
-   	Viewer.cpp
-   	Viewer.h
+       Viewer.cpp
+       Viewer.h
 
     ${cubscape_path}/CubeScape.cpp
     ${cubscape_path}/CubeScape.h

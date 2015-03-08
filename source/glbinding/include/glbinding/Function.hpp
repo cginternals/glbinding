@@ -30,7 +30,7 @@ struct FunctionHelper
             function->m_beforeCallback(std::forward<Arguments>(arguments)...);
         }
 
-        ReturnType value = basicCall(function, std::forward<Arguments>(arguments)...);
+        auto value = basicCall(function, std::forward<Arguments>(arguments)...);
 
         if (function->m_afterCallback)
         {
@@ -105,7 +105,7 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 template <typename ReturnType, typename... Arguments>
 ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
 {
-    ProcAddress myAddress = address();
+    auto myAddress = address();
 
     if (myAddress != nullptr)
     {

@@ -14,14 +14,14 @@ namespace glbinding
 
 ContextHandle getCurrentContext()
 {
-    ContextHandle id = 0;
+    auto id = ContextHandle{0};
 
 #ifdef WIN32
-    const HGLRC context = wglGetCurrentContext();
+    const auto context = wglGetCurrentContext();
 #elif __APPLE__
-    CGLContextObj context = CGLGetCurrentContext();
+    const auto context = CGLGetCurrentContext();
 #else
-    const GLXContext context = glXGetCurrentContext();
+    const auto context = glXGetCurrentContext();
 #endif
     id = reinterpret_cast<ContextHandle>(context);
 
