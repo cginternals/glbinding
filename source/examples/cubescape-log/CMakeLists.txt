@@ -1,23 +1,21 @@
 
-set(target glbinding-test)
+set(target cubescape-log)
 
-#
+
 # External libraries
-#
 
 find_package(OpenGL REQUIRED)
 find_package(GLFW QUIET)
 
 if (NOT GLFW_FOUND)
-	message("Test ${target} skipped: GLFW not found")
+	message("Example ${target} skipped: GLFW not found")
 	return()
 endif()
 
-message(STATUS "Test ${target}")
+message(STATUS "Example ${target}")
 
-#
+
 # Includes
-#
 
 include_directories(
     ${OPENGL_INCLUDE_DIR}
@@ -27,38 +25,43 @@ include_directories(
 include_directories(
     BEFORE
     ${CMAKE_SOURCE_DIR}/source/glbinding/include
-    ${CMAKE_SOURCE_DIR}/source/glbinding/source
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-#
+
 # Libraries
-#
 
 set(libs
     ${OPENGL_LIBRARIES}
     ${GLFW_LIBRARY}
-    ${GMOCK_LIBRARIES}
-    ${GTEST_LIBRARIES}
     glbinding
 )
 
-#
+
+# Compiler definitions
+
+if (OPTION_BUILD_STATIC)
+    add_definitions("-DGLBINDING_STATIC")
+endif()
+
+
 # Sources
-#
-set(glbinding_source_path ${CMAKE_SOURCE_DIR}/source/glbinding/source)
+
+set(cubscape_path ../cubescape)
 
 set(sources
     main.cpp
-    MultiContext_test.cpp
-    MultiThreading_test.cpp
-    RingBuffer_test.cpp
-    ${glbinding_source_path}/RingBuffer.h
-    ${glbinding_source_path}/RingBuffer.hpp
+
+    ${cubscape_path}/CubeScape.cpp
+    ${cubscape_path}/CubeScape.h
+    ${cubscape_path}/glutils.cpp
+    ${cubscape_path}/glutils.h
+    ${cubscape_path}/RawFile.cpp
+    ${cubscape_path}/RawFile.h
 )
 
-#
+
 # Build executable
-#
 
 add_executable(${target} ${sources})
 
@@ -74,5 +77,13 @@ set_target_properties(${target}
     COMPILE_DEFINITIONS_RELEASE "${DEFAULT_COMPILE_DEFS_RELEASE}"
     LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
-    LINK_FLAGS                  "${DEFAULT_LINKER_FLAGS}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
+
+
+# Deployment
+
+install(TARGETS ${target} COMPONENT examples
+    RUNTIME DESTINATION ${INSTALL_EXAMPLES}
+#   LIBRARY DESTINATION ${INSTALL_SHARED}
+#   ARCHIVE DESTINATION ${INSTALL_LIB}
+)

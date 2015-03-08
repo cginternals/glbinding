@@ -36,7 +36,10 @@ public:
     const std::set<gl::GLextension> & extensions() const;
 
 public:
+    CallbackMask callbackMask() const;
     void setCallbackMask(CallbackMask mask);
+    void addCallbackMask(CallbackMask mask);
+    void removeCallbackMask(CallbackMask mask);
 
 protected:
     bool isEnabled(CallbackMask mask) const;

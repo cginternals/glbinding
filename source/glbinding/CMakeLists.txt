@@ -77,6 +77,8 @@ set(api_includes
     ${include_path}/Version.h
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.hpp
+
+    ${include_path}/logging.h
 )
 
 # add featured headers
@@ -114,6 +116,10 @@ set(sources
     ${source_path}/Meta_StringsByBoolean.cpp
     ${source_path}/Meta_StringsByEnum.cpp
     ${source_path}/Meta_StringsByExtension.cpp
+
+    ${source_path}/RingBuffer.h
+    ${source_path}/RingBuffer.hpp
+    ${source_path}/logging.cpp
 )
 
 # add featured sources

@@ -80,7 +80,7 @@ int main()
     setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
     setAfterCallback([](const FunctionCall & call) {
-        std::cout << call.function.name() << "(";
+        std::cout << call.function->name() << "(";
 
         for (unsigned i = 0; i < call.parameters.size(); ++i)
         {
