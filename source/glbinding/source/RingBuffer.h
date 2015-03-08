@@ -1,4 +1,5 @@
 #pragma once
+
 #include <atomic>
 #include <iterator>
 #include <map>
@@ -13,8 +14,8 @@ class RingBuffer
 
 public:
     // Buffer is limited to (maxValue(sizeType)/2 - 1) entries
-    using sizeType = unsigned int;
-    RingBuffer(sizeType maxSize);
+    using SizeType = unsigned int;
+    RingBuffer(SizeType maxSize);
 
     T hat();
     bool push(T &&);
@@ -27,17 +28,17 @@ public:
     bool valid(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
     const typename std::vector<T>::const_iterator next(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
     void release(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
-    sizeType size(TailIdentifier);
+    SizeType size(TailIdentifier);
 
-    sizeType maxSize();
-    sizeType size();
+    SizeType maxSize();
+    SizeType size();
     bool isFull();
     bool isEmpty();
 
 protected:
-    sizeType next(sizeType current);
+    SizeType next(SizeType current);
     void updateTail();
-    sizeType size(sizeType, sizeType);
+    SizeType size(SizeType, SizeType);
 
 protected:
     std::vector<T> m_buffer;
