@@ -200,7 +200,7 @@ bool RingBuffer<T>::isEmpty()
 //protected
 
 template <typename T>
-typename RingBuffer<T>::SizeType RingBuffer<T>::next(RingBuffer::SizeType current)
+typename RingBuffer<T>::SizeType RingBuffer<T>::next(SizeType current)
 {
     return (current + 1) % m_size;
 }
