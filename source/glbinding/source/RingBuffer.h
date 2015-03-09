@@ -3,6 +3,7 @@
 #include <atomic>
 #include <iterator>
 #include <map>
+#include <mutex>
 #include <vector>
 
 namespace glbinding
@@ -42,10 +43,10 @@ protected:
 
 protected:
     std::vector<T> m_buffer;
-    const uint64_t m_size;
-    std::atomic<uint64_t> m_head;
-    std::atomic<uint64_t> m_tail;
-    std::map<TailIdentifier, std::atomic<uint64_t>> m_tails;
+    const SizeType m_size;
+    std::atomic<SizeType> m_head;
+    std::atomic<SizeType> m_tail;
+    std::map<TailIdentifier, std::atomic<SizeType>> m_tails;
     std::mutex m_tail_mutex;
 };
 
