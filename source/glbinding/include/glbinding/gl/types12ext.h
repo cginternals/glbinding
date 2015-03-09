@@ -4,7 +4,7 @@
 #include <glbinding/gl/types.h>
 
 
-namespace gl
+namespace gl12ext
 {
 
 using gl::GLextension;
@@ -71,4 +71,4 @@ using gl::BufferAccessMask;
 using gl::BufferStorageMask;
 using gl::PathFontStyle;
 
-} // namespace gl
+} // namespace gl12ext

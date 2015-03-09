@@ -4,11 +4,11 @@
 #include <glbinding/%a/types.h>
 
 
-namespace %a
+namespace %a%f
 {
 
 using gl::GLextension;
 %s
 %s
 
-} // namespace %a
+} // namespace %a%f
