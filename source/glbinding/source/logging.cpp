@@ -160,11 +160,6 @@ const std::vector<BufferType>::const_iterator next(TailIdentifier key, const std
     return g_buffer.next(key, it);
 }
 
-void release(TailIdentifier key, const std::vector<BufferType>::const_iterator & it)
-{
-    release(key, it);
-}
-
 unsigned int size(TailIdentifier key)
 {
     return g_buffer.size(key);

@@ -90,13 +90,8 @@ typename RingBuffer<T>::TailIdentifier RingBuffer<T>::addTail()
 {
     auto i = TailIdentifier{0};
 
-    while(true)
+    while(m_tails.find(i) != m_tails.end())
     {
-        if ( m_tails.find(i) == m_tails.end() )
-        {
-            break;
-        }
-
         ++i;
     }
 
@@ -127,7 +122,7 @@ const typename std::vector<T>::const_iterator RingBuffer<T>::cbegin(TailIdentifi
 template <typename T>
 bool RingBuffer<T>::valid(TailIdentifier /*key*/, const typename std::vector<T>::const_iterator & it)
 {
-    auto pos = std::distance(m_buffer.cbegin(), it);
+    auto pos = std::abs(std::distance(m_buffer.cbegin(), it));
     auto head = m_head.load(std::memory_order_acquire);
 
     return (pos != head);
@@ -205,7 +200,7 @@ bool RingBuffer<T>::isEmpty()
 //protected
 
 template <typename T>
-typename RingBuffer<T>::SizeType RingBuffer<T>::next(RingBuffer::SizeType current)
+typename RingBuffer<T>::SizeType RingBuffer<T>::next(SizeType current)
 {
     return (current + 1) % m_size;
 }
