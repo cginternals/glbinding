@@ -27,7 +27,7 @@ FunctionCall::FunctionCall(const AbstractFunction * _function)
 
 FunctionCall::FunctionCall(FunctionCall && other)
     : function{std::move(other.function)}
-    , parameters{std::move(other.parameters)}
+    , parameters(std::move(other.parameters))
     , returnValue{std::move(other.returnValue)}
 {
 }
