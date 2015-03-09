@@ -52,9 +52,47 @@ def forwardType(api, type):
     return "using " + type.name + " = " + api + "::" + type.name + ";"
 
 
+def typeImport(api, type):
+
+    return "using " + api + "::" + type.name + ";"
+
+
 def genTypesForward_h(api, types, bitfGroups, outputdir, outputfile):
 
     genTypes_h(api, types, bitfGroups, outputdir, outputfile, True)
+
+
+def genTypesFeatureGrouped(api, types, bitfGroups, features, outputdir, outputfile):
+
+    # gen enums feature grouped
+    for f in features:
+        if f.api == "gl": # ToDo: probably seperate for all apis
+            genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile)
+            if f.major > 3 or (f.major == 3 and f.minor >= 2):
+                genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile, True)
+            genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile, False, True)
+
+
+def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core = False, ext = False):
+
+    of_all = outputfile.replace("?", "F")
+
+    version = versionBID(feature, core, ext)
+
+    t = template(of_all).replace("%f", version).replace("%a", api)
+    of = outputfile.replace("?", version)
+
+    status(outputdir + of)
+
+    qualifier = api + "::"
+
+    with open(outputdir + of, 'w') as file:
+
+        file.write(t %
+            ("\n".join([ typeImport(api, t) for t in types ]),
+            "\n".join([ "using %s%s;" % (qualifier, g.name) for g in bitfGroups ]),)
+        )
+
 
 
 def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
