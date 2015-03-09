@@ -1,9 +1,8 @@
 #pragma once
 
 #include <glbinding/gl/nogl.h>
-#include <glbinding/gl/types.h>
 
-#include <glbinding/SharedBitfield.hpp>
+#include <glbinding/SharedBitfield.h>
 
 namespace gl
 {

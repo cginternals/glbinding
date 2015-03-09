@@ -160,7 +160,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genExtensions                  (api, extensions,         includedir_api, "extension.h")
 
     genBooleans                    (api, enums,              includedir_api, "boolean.h")
-    genBooleansForward             (api, enums,              includedir_api, "boolean.inl")
+    #genBooleansForward             (api, enums,              includedir_api, "boolean.inl")
     genBooleansFeatureGrouped      (api, enums, features,    includedir_api, "boolean?.h")
 
     genValues                      (api, enums,              includedir_api, "values.h")
@@ -180,7 +180,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
     
     genFunctionImplementationsAll                (api, commands,           sourcedir_api, "functions.cpp")
-    genFunctionImplementationsFeatureGrouped     (api, commands, features, sourcedir_api, "functions?.cpp")
+    #genFunctionImplementationsFeatureGrouped     (api, commands, features, sourcedir_api, "functions?.cpp")
 
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 

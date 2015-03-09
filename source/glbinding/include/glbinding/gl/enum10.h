@@ -1,8 +1,6 @@
 #pragma once
 
 #include <glbinding/gl/nogl.h>
-#include <glbinding/gl/types.h>
-
 #include <glbinding/gl/enum.h>
 
 
