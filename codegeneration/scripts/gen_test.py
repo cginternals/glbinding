@@ -10,8 +10,8 @@ def genTest(api, features, outputdir, outputfile):
 
     status(od + of)
     
-    dirWildcard = ""
-    fileWildcard = "?"
+    dirWildcard = "?"
+    fileWildcard = ""
 
     featured_include = "#include <glbinding/" + api + dirWildcard +"/" + api + fileWildcard + ".h>"
     featured_includes = list()

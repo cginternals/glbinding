@@ -23,11 +23,11 @@ def genFeature(api, feature, outputdir, outputfile, core = False, ext = False):
 
     version = versionBID(feature, core, ext)
     
-    t = template(of_all).replace("%d", "").replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", version)
-    od = outputdir.replace("?", "")
-    versionExtFile = versionBID(feature, core, True)
-    versionExtDir = ""
+    t = template(of_all).replace("%d", version).replace("%f", "").replace("%a", api)
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
+    versionExtFile = ""
+    versionExtDir = versionBID(feature, core, True)
 
     status(od + of)
     
