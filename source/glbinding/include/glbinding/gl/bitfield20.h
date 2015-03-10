@@ -8,6 +8,7 @@ namespace gl20
 {
 
 // import bitfields to namespace
+using gl::GL_NONE_BIT;
 using gl::GL_CLIENT_PIXEL_STORE_BIT;
 using gl::GL_CURRENT_BIT;
 using gl::GL_CLIENT_VERTEX_ARRAY_BIT;

@@ -8,6 +8,7 @@ namespace gl40
 {
 
 // import bitfields to namespace
+using gl::GL_NONE_BIT;
 using gl::GL_CLIENT_PIXEL_STORE_BIT;
 using gl::GL_CONTEXT_CORE_PROFILE_BIT;
 using gl::GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT;

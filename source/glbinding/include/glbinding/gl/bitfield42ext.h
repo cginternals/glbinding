@@ -8,6 +8,7 @@ namespace gl42ext
 {
 
 // import bitfields to namespace
+using gl::GL_NONE_BIT;
 using gl::GL_PERFQUERY_SINGLE_CONTEXT_INTEL;
 using gl::GL_UNUSED_BIT;
 using gl::GL_2X_BIT_ATI;
