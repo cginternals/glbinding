@@ -10,7 +10,6 @@
 
 #include <glbinding/ContextHandle.h>
 #include <glbinding/Function.h>
-//#include <glbinding/PointerIterator.h>
 
 
 namespace glbinding
@@ -21,9 +20,6 @@ class GLBINDING_API Binding
 public:
     using array_t = std::array<AbstractFunction *, 2788>;
     using ContextSwitchCallback = std::function<void(ContextHandle)>;
-    
-//  using iterator = PointerIterator<AbstractFunction, sizeof(Function<void>)>;
-//  using const_iterator = PointerIterator<const AbstractFunction, sizeof(Function<void>)>;
 
     Binding() = delete;
 
@@ -41,12 +37,6 @@ public:
     static void releaseContext(ContextHandle context);
     
     static void addContextSwitchCallback(ContextSwitchCallback callback);
-
-//  iterator begin();
-//  iterator end();    
-
-//  const_iterator begin() const;
-//  const_iterator end() const;
 
     static size_t size();
 

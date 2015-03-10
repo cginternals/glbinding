@@ -246,13 +246,17 @@ def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = Fa
 
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     pureCommands = [ c for c in commands if
         (not ext and c.supported(feature, core)) or (ext and not c.supported(feature, False)) ]
 
-    with open(outputdir + of, 'w') as file:
+    if not os.path.exists(od):
+        os.makedirs(od)
+
+    with open(od + of, 'w') as file:
         if not feature:
             file.write(t % ("\n".join(
                 [ functionForward(api, c, feature, version) for c in pureCommands ])))
@@ -269,13 +273,17 @@ def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputf
 
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     pureCommands = [ c for c in commands if
         (not ext and c.supported(feature, core)) or (ext and not c.supported(feature, False)) ]
 
-    with open(outputdir + of, 'w') as file:
+    if not os.path.exists(od):
+        os.makedirs(od)
+
+    with open(od + of, 'w') as file:
         if not feature:
             file.write(t % ("\n".join(
                 [ functionImplementation(c, feature, version) for c in pureCommands ])))

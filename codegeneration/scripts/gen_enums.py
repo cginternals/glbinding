@@ -87,8 +87,9 @@ def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ex
 
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     tgrouped     = groupEnumsByType(enums)
 
@@ -108,8 +109,11 @@ def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ex
             for group, enums in sorted(groupedEnums.items()) ]
 
     usedEnumsByName.clear()
+    
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
         if not feature:
 
             definitions = [ enumGroup(group, enums, usedEnumsByName) 

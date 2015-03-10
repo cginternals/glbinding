@@ -5,10 +5,14 @@ from classes.Extension import *
 def genExtensions(api, extensions, outputdir, outputfile):
 
     of = outputfile
+    od = outputdir.replace("?", "")
     t = template(of).replace("%a", api)
 
-    status(outputdir + of)
+    status(od + of)
+    
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
         file.write(t % (",\n" + tab).join(
             [ extensionBID(e) for e in extensions ]))

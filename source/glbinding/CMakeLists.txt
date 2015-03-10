@@ -47,8 +47,7 @@ set(api_includes
     ${include_path}/glbinding_api.h
     ${include_path}/callbacks.h
 
-    ${include_path}/gl/gl.h
-    ${include_path}/gl/nogl.h
+    ${include_path}/nogl.h
 
     ${include_path}/gl/bitfield.h
     ${include_path}/gl/boolean.h
@@ -79,16 +78,13 @@ set(api_includes
 )
 
 # add featured headers
-file(GLOB featured_includes ${include_path}/gl/*.h)
+file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
     ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
     
-    ${source_path}/gl/types.cpp
-    ${source_path}/gl/test.cpp
-
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp

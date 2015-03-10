@@ -70,17 +70,15 @@ def genBitfieldsFeatureGrouped(api, enums, features, outputdir, outputfile):
 
 def genFeatureBitfields(api, enums, feature, outputdir, outputfile, core = False, ext = False):
 
-    if core and ext:
-        return 
-
     of_all = outputfile.replace("?", "F")
-
+    
     version = versionBID(feature, core, ext)
-
+    
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     tgrouped  = groupEnumsByType(enums)
 
@@ -99,8 +97,11 @@ def genFeatureBitfields(api, enums, feature, outputdir, outputfile, core = False
         importToNamespace = [ forwardBitfield(api, e) for e in sorted(pureBitfields) ]
 
     usedBitfsByName.clear()
+    
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
 
         if not feature:
 

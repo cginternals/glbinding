@@ -81,12 +81,16 @@ def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core
 
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     qualifier = api + "::"
 
-    with open(outputdir + of, 'w') as file:
+    if not os.path.exists(od):
+        os.makedirs(od)
+
+    with open(od + of, 'w') as file:
 
         file.write(t %
             ("\n".join([ typeImport(api, t) for t in types ]),
@@ -101,10 +105,14 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
 
     t = template(of_all).replace("%a", api)
     of = outputfile.replace("?", "")
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
-    with open(outputdir + of, 'w') as file:
+    if not os.path.exists(od):
+        os.makedirs(od)
+
+    with open(od + of, 'w') as file:
 
         if forward:
 
@@ -133,10 +141,11 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
 
 def genTypes_cpp(api, types, bitfGroups, outputdir, outputfile):
 
-    of = outputfile
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", "")
     t = template(of).replace("%a", api)
 
-    status(outputdir + of)
+    status(od + of)
 
     type_integrations = []
     for typename, integrations in type_integration_map.items():
@@ -147,6 +156,8 @@ def genTypes_cpp(api, types, bitfGroups, outputdir, outputfile):
         for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
             type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", group.name))
 
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
         file.write(t % ("\n".join([ type for type in type_integrations ])))

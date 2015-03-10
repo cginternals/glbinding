@@ -2,7 +2,7 @@
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/gl/nogl.h>
+#include <glbinding/nogl.h>
 #include <glbinding/gl/types.h>
 
 

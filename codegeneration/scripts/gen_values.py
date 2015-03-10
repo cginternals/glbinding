@@ -30,8 +30,9 @@ def genFeatureValues(api, values, feature, outputdir, outputfile, core = False, 
 
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     qualifier = api + "::"
     
@@ -44,9 +45,10 @@ def genFeatureValues(api, values, feature, outputdir, outputfile, core = False, 
     for type in sorted(tgrouped.keys()):
         groups.append("\n".join([ ("using %s%s;" % (qualifier, (enumBID(c)))) for c in tgrouped[type] if (not ext and c.supported(feature, core)) or (ext and not c.supported(feature, False)) ]))
 
-    print outputString
+    if not os.path.exists(od):
+        os.makedirs(od)
     
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
 
         file.write(t % ("\n".join(groups)))
 
@@ -56,8 +58,9 @@ def genValues(api, enums, outputdir, outputfile, forward = False):
 
     t = template(of_all).replace("%a", api)
     of = outputfile.replace("?", "")
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
 
     tgrouped = groupEnumsByType(enums)
@@ -68,6 +71,9 @@ def genValues(api, enums, outputdir, outputfile, forward = False):
     groups = []    
     for type in sorted(tgrouped.keys()):
         groups.append("\n".join([ valueDefinition(c) for c in tgrouped[type] ]))
+    
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
         file.write(t % ("\n\n".join(groups)))

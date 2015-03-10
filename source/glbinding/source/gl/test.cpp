@@ -1,6 +1,5 @@
 
 #include <glbinding/gl/gl.h>
-
 #include <glbinding/gl/gl10.h>
 #include <glbinding/gl/gl10ext.h>
 #include <glbinding/gl/gl11.h>

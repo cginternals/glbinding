@@ -1,8 +1,8 @@
 #pragma once
 
-#include <glbinding/gl/nogl.h>
-#include <glbinding/gl/extension.h>
+#include <glbinding/nogl.h>
 
+#include <glbinding/gl/extension.h>
 #include <glbinding/gl/types32.h>
 #include <glbinding/gl/types32ext.h>
 #include <glbinding/gl/boolean32.h>

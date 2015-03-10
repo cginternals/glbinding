@@ -1,6 +1,7 @@
 #pragma once
 
-#include <glbinding/gl/nogl.h>
+#include <glbinding/nogl.h>
+
 #include <glbinding/gl/bitfield.h>
 
 namespace gl13

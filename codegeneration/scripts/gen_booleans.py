@@ -24,13 +24,17 @@ def genBooleans(api, enums, outputdir, outputfile, forward = False):
 
     t = template(of_all).replace("%a", api)
     of = outputfile.replace("?", "")
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     tgrouped = groupEnumsByType(enums)
     pureBooleans = tgrouped["GLboolean"]
+    
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
 
         if forward:
 
@@ -50,13 +54,17 @@ def genFeatureBooleans(api, enums, feature, outputdir, outputfile, core = False,
 
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     tgrouped = groupEnumsByType(enums)
     pureBooleans = tgrouped["GLboolean"]
+    
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
 
         if not feature:
 
