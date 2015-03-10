@@ -28,11 +28,12 @@ def genFeature(api, feature, outputdir, outputfile, core = False, ext = False):
 
     with open(outputdir + of, 'w') as file:
         if core or ext:
-            file.write(t.replace("%f", version) % ("", "", "", "", ""))
+            file.write(t.replace("%f", version) % ("", "", "", "", "", ""))
         else:
             file.write(t.replace("%f", version) % (
                 "\n#include <glbinding/" + api + "/types"     + version + "ext.h>",
                 "\n#include <glbinding/" + api + "/boolean"   + version + "ext.h>",
+                "\n#include <glbinding/" + api + "/values"    + version + "ext.h>",
                 "\n#include <glbinding/" + api + "/bitfield"  + version + "ext.h>",
                 "\n#include <glbinding/" + api + "/enum"      + version + "ext.h>",
                 "\n#include <glbinding/" + api + "/functions" + version + "ext.h>"))

@@ -57,9 +57,6 @@ set(api_includes
     ${include_path}/gl/functions.h
     ${include_path}/gl/types.h
     ${include_path}/gl/values.h
-    ${include_path}/gl/types.inl
-    ${include_path}/gl/values.inl
-    ${include_path}/gl/boolean.inl
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
@@ -129,7 +126,7 @@ list(APPEND sources ${featured_sources})
 # Group source files
 set(header_group "Header Files (API)")
 set(source_group "Source Files")
-source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$|\\\\.inl$" 
+source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$$" 
     ${header_group} ${api_includes})
 source_group_by_path(${source_path} "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
     ${source_group} ${sources})

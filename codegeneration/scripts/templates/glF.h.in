@@ -5,6 +5,7 @@
 
 #include <glbinding/%a/types%f.h>%s
 #include <glbinding/%a/boolean%f.h>%s
+#include <glbinding/%a/values%f.h>%s
 #include <glbinding/%a/bitfield%f.h>%s
 #include <glbinding/%a/enum%f.h>%s
 #include <glbinding/%a/functions%f.h>%s

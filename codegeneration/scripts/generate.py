@@ -160,16 +160,14 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genExtensions                  (api, extensions,         includedir_api, "extension.h")
 
     genBooleans                    (api, enums,              includedir_api, "boolean.h")
-    #genBooleansForward             (api, enums,              includedir_api, "boolean.inl")
     genBooleansFeatureGrouped      (api, enums, features,    includedir_api, "boolean?.h")
 
     genValues                      (api, enums,              includedir_api, "values.h")
-    genValuesForwards              (api, enums,              includedir_api, "values.inl")
+    genValuesFeatureGrouped        (api, enums, features,    includedir_api, "values?.h")
 
     genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h") 
-    #genTypesForward_h              (api, types, bitfGroups,  includedir_api, "types.inl") 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")  
-    genTypesFeatureGrouped         (api, types, bitfGroups, features,  includedir_api, "types?.h")
+    genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api, "types?.h")
 
     genBitfieldsAll                (api, enums,              includedir_api, "bitfield.h")
     genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api, "bitfield?.h")
@@ -180,8 +178,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFunctionsAll                (api, commands,           includedir_api, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
     
-    genFunctionImplementationsAll                (api, commands,           sourcedir_api, "functions.cpp")
-    #genFunctionImplementationsFeatureGrouped     (api, commands, features, sourcedir_api, "functions?.cpp")
+    genFunctionImplementationsAll  (api, commands,           sourcedir_api, "functions.cpp")
 
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 
