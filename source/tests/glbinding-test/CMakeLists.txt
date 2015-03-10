@@ -54,6 +54,8 @@ set(sources
     RingBuffer_test.cpp
     ${glbinding_source_path}/RingBuffer.h
     ${glbinding_source_path}/RingBuffer.hpp
+    # regession test
+    Regression_test_82.cpp
 )
 
 #
