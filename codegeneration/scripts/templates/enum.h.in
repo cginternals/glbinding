@@ -1,7 +1,6 @@
 #pragma once
 
-#include <glbinding/%a/nogl.h>
-#include <glbinding/%a/types.h>
+#include <glbinding/no%a.h>
 
 
 namespace %a

@@ -1,56 +1,53 @@
 #pragma once
 
-#include <glbinding/gl/nogl.h>
-#include <glbinding/gl/types.h>
+#include <glbinding/nogl.h>
 
 #include <glbinding/gl/bitfield.h>
-
-#include <glbinding/SharedBitfield.hpp>
 
 namespace gl44core
 {
 
 // import bitfields to namespace
-static const gl::ContextProfileMask GL_CONTEXT_CORE_PROFILE_BIT = gl::ContextProfileMask::GL_CONTEXT_CORE_PROFILE_BIT;
-static const gl::ContextFlagMask GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = gl::ContextFlagMask::GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT;
-static const gl::SyncObjectMask GL_SYNC_FLUSH_COMMANDS_BIT = gl::SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT;
-static const gl::MemoryBarrierMask GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT = gl::MemoryBarrierMask::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT;
-static const gl::UseProgramStageMask GL_VERTEX_SHADER_BIT = gl::UseProgramStageMask::GL_VERTEX_SHADER_BIT;
-static const gl::ContextProfileMask GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = gl::ContextProfileMask::GL_CONTEXT_COMPATIBILITY_PROFILE_BIT;
-static const gl::ContextFlagMask GL_CONTEXT_FLAG_DEBUG_BIT = gl::ContextFlagMask::GL_CONTEXT_FLAG_DEBUG_BIT;
-static const gl::MemoryBarrierMask GL_ELEMENT_ARRAY_BARRIER_BIT = gl::MemoryBarrierMask::GL_ELEMENT_ARRAY_BARRIER_BIT;
-static const gl::UseProgramStageMask GL_FRAGMENT_SHADER_BIT = gl::UseProgramStageMask::GL_FRAGMENT_SHADER_BIT;
-static const gl::UseProgramStageMask GL_GEOMETRY_SHADER_BIT = gl::UseProgramStageMask::GL_GEOMETRY_SHADER_BIT;
-static const gl::MemoryBarrierMask GL_UNIFORM_BARRIER_BIT = gl::MemoryBarrierMask::GL_UNIFORM_BARRIER_BIT;
-static const gl::UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT = gl::UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT;
-static const gl::MemoryBarrierMask GL_TEXTURE_FETCH_BARRIER_BIT = gl::MemoryBarrierMask::GL_TEXTURE_FETCH_BARRIER_BIT;
-static const gl::UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT = gl::UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT;
-static const gl::UseProgramStageMask GL_COMPUTE_SHADER_BIT = gl::UseProgramStageMask::GL_COMPUTE_SHADER_BIT;
-static const gl::MemoryBarrierMask GL_SHADER_IMAGE_ACCESS_BARRIER_BIT = gl::MemoryBarrierMask::GL_SHADER_IMAGE_ACCESS_BARRIER_BIT;
-static const gl::MemoryBarrierMask GL_COMMAND_BARRIER_BIT = gl::MemoryBarrierMask::GL_COMMAND_BARRIER_BIT;
-static const gl::MemoryBarrierMask GL_PIXEL_BUFFER_BARRIER_BIT = gl::MemoryBarrierMask::GL_PIXEL_BUFFER_BARRIER_BIT;
-static const glbinding::SharedBitfield<gl::AttribMask, gl::ClearBufferMask> GL_DEPTH_BUFFER_BIT = gl::AttribMask::GL_DEPTH_BUFFER_BIT;
-static const gl::MemoryBarrierMask GL_TEXTURE_UPDATE_BARRIER_BIT = gl::MemoryBarrierMask::GL_TEXTURE_UPDATE_BARRIER_BIT;
-static const gl::MemoryBarrierMask GL_BUFFER_UPDATE_BARRIER_BIT = gl::MemoryBarrierMask::GL_BUFFER_UPDATE_BARRIER_BIT;
-static const gl::MemoryBarrierMask GL_FRAMEBUFFER_BARRIER_BIT = gl::MemoryBarrierMask::GL_FRAMEBUFFER_BARRIER_BIT;
-static const glbinding::SharedBitfield<gl::AttribMask, gl::ClearBufferMask> GL_STENCIL_BUFFER_BIT = gl::AttribMask::GL_STENCIL_BUFFER_BIT;
-static const gl::MemoryBarrierMask GL_TRANSFORM_FEEDBACK_BARRIER_BIT = gl::MemoryBarrierMask::GL_TRANSFORM_FEEDBACK_BARRIER_BIT;
-static const gl::MemoryBarrierMask GL_ATOMIC_COUNTER_BARRIER_BIT = gl::MemoryBarrierMask::GL_ATOMIC_COUNTER_BARRIER_BIT;
-static const gl::MemoryBarrierMask GL_SHADER_STORAGE_BARRIER_BIT = gl::MemoryBarrierMask::GL_SHADER_STORAGE_BARRIER_BIT;
-static const gl::MemoryBarrierMask GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT = gl::MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT;
-static const glbinding::SharedBitfield<gl::AttribMask, gl::ClearBufferMask> GL_COLOR_BUFFER_BIT = gl::AttribMask::GL_COLOR_BUFFER_BIT;
-static const gl::MemoryBarrierMask GL_QUERY_BUFFER_BARRIER_BIT = gl::MemoryBarrierMask::GL_QUERY_BUFFER_BARRIER_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::BufferStorageMask, gl::MapBufferUsageMask> GL_MAP_READ_BIT = gl::BufferAccessMask::GL_MAP_READ_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::BufferStorageMask, gl::MapBufferUsageMask> GL_MAP_WRITE_BIT = gl::BufferAccessMask::GL_MAP_WRITE_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_INVALIDATE_RANGE_BIT = gl::BufferAccessMask::GL_MAP_INVALIDATE_RANGE_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_INVALIDATE_BUFFER_BIT = gl::BufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_FLUSH_EXPLICIT_BIT = gl::BufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::MapBufferUsageMask> GL_MAP_UNSYNCHRONIZED_BIT = gl::BufferAccessMask::GL_MAP_UNSYNCHRONIZED_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::BufferStorageMask, gl::MapBufferUsageMask> GL_MAP_PERSISTENT_BIT = gl::BufferAccessMask::GL_MAP_PERSISTENT_BIT;
-static const glbinding::SharedBitfield<gl::BufferAccessMask, gl::BufferStorageMask, gl::MapBufferUsageMask> GL_MAP_COHERENT_BIT = gl::BufferAccessMask::GL_MAP_COHERENT_BIT;
-static const glbinding::SharedBitfield<gl::BufferStorageMask, gl::MapBufferUsageMask> GL_DYNAMIC_STORAGE_BIT = gl::BufferStorageMask::GL_DYNAMIC_STORAGE_BIT;
-static const glbinding::SharedBitfield<gl::BufferStorageMask, gl::MapBufferUsageMask> GL_CLIENT_STORAGE_BIT = gl::BufferStorageMask::GL_CLIENT_STORAGE_BIT;
-static const gl::MemoryBarrierMask GL_ALL_BARRIER_BITS = gl::MemoryBarrierMask::GL_ALL_BARRIER_BITS;
-static const gl::UseProgramStageMask GL_ALL_SHADER_BITS = gl::UseProgramStageMask::GL_ALL_SHADER_BITS;
+using gl::GL_CONTEXT_CORE_PROFILE_BIT;
+using gl::GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT;
+using gl::GL_SYNC_FLUSH_COMMANDS_BIT;
+using gl::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT;
+using gl::GL_VERTEX_SHADER_BIT;
+using gl::GL_CONTEXT_COMPATIBILITY_PROFILE_BIT;
+using gl::GL_CONTEXT_FLAG_DEBUG_BIT;
+using gl::GL_ELEMENT_ARRAY_BARRIER_BIT;
+using gl::GL_FRAGMENT_SHADER_BIT;
+using gl::GL_GEOMETRY_SHADER_BIT;
+using gl::GL_UNIFORM_BARRIER_BIT;
+using gl::GL_TESS_CONTROL_SHADER_BIT;
+using gl::GL_TEXTURE_FETCH_BARRIER_BIT;
+using gl::GL_TESS_EVALUATION_SHADER_BIT;
+using gl::GL_COMPUTE_SHADER_BIT;
+using gl::GL_SHADER_IMAGE_ACCESS_BARRIER_BIT;
+using gl::GL_COMMAND_BARRIER_BIT;
+using gl::GL_PIXEL_BUFFER_BARRIER_BIT;
+using gl::GL_DEPTH_BUFFER_BIT;
+using gl::GL_TEXTURE_UPDATE_BARRIER_BIT;
+using gl::GL_BUFFER_UPDATE_BARRIER_BIT;
+using gl::GL_FRAMEBUFFER_BARRIER_BIT;
+using gl::GL_STENCIL_BUFFER_BIT;
+using gl::GL_TRANSFORM_FEEDBACK_BARRIER_BIT;
+using gl::GL_ATOMIC_COUNTER_BARRIER_BIT;
+using gl::GL_SHADER_STORAGE_BARRIER_BIT;
+using gl::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT;
+using gl::GL_COLOR_BUFFER_BIT;
+using gl::GL_QUERY_BUFFER_BARRIER_BIT;
+using gl::GL_MAP_READ_BIT;
+using gl::GL_MAP_WRITE_BIT;
+using gl::GL_MAP_INVALIDATE_RANGE_BIT;
+using gl::GL_MAP_INVALIDATE_BUFFER_BIT;
+using gl::GL_MAP_FLUSH_EXPLICIT_BIT;
+using gl::GL_MAP_UNSYNCHRONIZED_BIT;
+using gl::GL_MAP_PERSISTENT_BIT;
+using gl::GL_MAP_COHERENT_BIT;
+using gl::GL_DYNAMIC_STORAGE_BIT;
+using gl::GL_CLIENT_STORAGE_BIT;
+using gl::GL_ALL_BARRIER_BITS;
+using gl::GL_ALL_SHADER_BITS;
 
 } // namespace gl44core

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glbinding/%a/nogl.h>
+#include <glbinding/no%a.h>
 #include <glbinding/glbinding_api.h>
 
 #include <cstddef>

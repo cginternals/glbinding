@@ -150,8 +150,8 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     includedir = targetdir + "/include/glbinding/"
     sourcedir  = targetdir + "/source/"
 
-    includedir_api = includedir + api + "/"
-    sourcedir_api  = sourcedir  + api + "/"
+    includedir_api = includedir + api + "?/"
+    sourcedir_api  = sourcedir  + api + "?/"
 
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
@@ -160,15 +160,13 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genExtensions                  (api, extensions,         includedir_api, "extension.h")
 
     genBooleans                    (api, enums,              includedir_api, "boolean.h")
-    genBooleansForward             (api, enums,              includedir_api, "boolean.inl")
     genBooleansFeatureGrouped      (api, enums, features,    includedir_api, "boolean?.h")
 
     genValues                      (api, enums,              includedir_api, "values.h")
-    genValuesForwards              (api, enums,              includedir_api, "values.inl")
+    genValuesFeatureGrouped        (api, enums, features,    includedir_api, "values?.h")
 
     genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h") 
-    genTypesForward_h              (api, types, bitfGroups,  includedir_api, "types.inl") 
-    genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")  
+    genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api, "types?.h")
 
     genBitfieldsAll                (api, enums,              includedir_api, "bitfield.h")
     genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api, "bitfield?.h")
@@ -179,11 +177,11 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFunctionsAll                (api, commands,           includedir_api, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
     
-    genFunctionImplementationsAll                (api, commands,           sourcedir_api, "functions.cpp")
-    genFunctionImplementationsFeatureGrouped     (api, commands, features, sourcedir_api, "functions?.cpp")
-
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 
+    genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
+    genFunctionImplementationsAll  (api, commands,           sourcedir_api,  "functions.cpp")
+    
     genTest                        (api, features,           sourcedir_api,  "test.cpp")
 
     # Generate GLBINDING namespace classes
@@ -194,7 +192,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
-    genMetaMaps		               (enums,              sourcedir,  "Meta_Maps.h", bitfGroups)
+    genMetaMaps		           (enums,              sourcedir,  "Meta_Maps.h",                bitfGroups)
     genMetaStringsByBitfield       (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
     genMetaBitfieldByString        (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
     genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")

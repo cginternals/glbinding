@@ -1,11 +1,8 @@
 #pragma once
 
-#include <glbinding/%a/nogl.h>
-#include <glbinding/%a/types.h>
+#include <glbinding/no%a.h>
 
 #include <glbinding/%a/bitfield.h>
-
-#include <glbinding/SharedBitfield.hpp>
 
 namespace %a%f
 {

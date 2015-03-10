@@ -47,8 +47,7 @@ set(api_includes
     ${include_path}/glbinding_api.h
     ${include_path}/callbacks.h
 
-    ${include_path}/gl/gl.h
-    ${include_path}/gl/nogl.h
+    ${include_path}/nogl.h
 
     ${include_path}/gl/bitfield.h
     ${include_path}/gl/boolean.h
@@ -57,9 +56,6 @@ set(api_includes
     ${include_path}/gl/functions.h
     ${include_path}/gl/types.h
     ${include_path}/gl/values.h
-    ${include_path}/gl/types.inl
-    ${include_path}/gl/values.inl
-    ${include_path}/gl/boolean.inl
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
@@ -82,16 +78,13 @@ set(api_includes
 )
 
 # add featured headers
-file(GLOB featured_includes ${include_path}/gl/*.h)
+file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
     ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
     
-    ${source_path}/gl/types.cpp
-    ${source_path}/gl/test.cpp
-
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
@@ -129,7 +122,7 @@ list(APPEND sources ${featured_sources})
 # Group source files
 set(header_group "Header Files (API)")
 set(source_group "Source Files")
-source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$|\\\\.inl$" 
+source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$$" 
     ${header_group} ${api_includes})
 source_group_by_path(${source_path} "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
     ${source_group} ${sources})

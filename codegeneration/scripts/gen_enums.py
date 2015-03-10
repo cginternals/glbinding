@@ -26,10 +26,21 @@ def enumDefinition(group, enum, maxlen, usedEnumsByName):
         reuse = usedEnumsByName[enum.name]
         return "//  %s %s= %s, // reuse %s" % (enumBID(enum), spaces, castEnumValue(enum.value), reuse)
 
+def enumImportDefinition(api, enum, group, usedEnumsByName):
 
-def enumImportDefinition(api, enum, group, usedEnumsByName, feature):
+    qualifier = api + "::"
 
-    qualifier = "GLenum" if feature is None else api + "::GLenum"
+    if enum.name not in usedEnumsByName:
+        usedEnumsByName[enum.name] = group
+        return "using %s%s;" % (qualifier, enumBID(enum))
+    else:
+        reuse = usedEnumsByName[enum.name]
+        return "// using %s%s; // reuse %s" % (qualifier, enumBID(enum), reuse)
+
+
+def forwardEnum(api, enum, group, usedEnumsByName):
+
+    qualifier = "GLenum"
 
     if enum.name not in usedEnumsByName:
         usedEnumsByName[enum.name] = group
@@ -76,8 +87,9 @@ def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ex
 
     t = template(of_all).replace("%f", version).replace("%a", api)
     of = outputfile.replace("?", version)
+    od = outputdir.replace("?", "")
 
-    status(outputdir + of)
+    status(od + of)
 
     tgrouped     = groupEnumsByType(enums)
 
@@ -87,13 +99,21 @@ def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ex
 
     usedEnumsByName = dict()
     
-    importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-      [ enumImportDefinition(api, e, group, usedEnumsByName, feature) for e in enums ]))  
-        for group, enums in sorted(groupedEnums.items()) ]
+    if feature:
+        importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
+        [ enumImportDefinition(api, e, group, usedEnumsByName) for e in enums ]))  
+            for group, enums in sorted(groupedEnums.items()) ]
+    else:        
+        importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
+        [ forwardEnum(api, e, group, usedEnumsByName) for e in enums ]))  
+            for group, enums in sorted(groupedEnums.items()) ]
 
     usedEnumsByName.clear()
+    
+    if not os.path.exists(od):
+        os.makedirs(od)
 
-    with open(outputdir + of, 'w') as file:
+    with open(od + of, 'w') as file:
         if not feature:
 
             definitions = [ enumGroup(group, enums, usedEnumsByName) 

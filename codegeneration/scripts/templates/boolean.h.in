@@ -1,7 +1,6 @@
 #pragma once
 
-#include <glbinding/%a/nogl.h>
-#include <glbinding/%a/types.h>
+#include <glbinding/no%a.h>
 
 
 namespace %a
@@ -9,7 +8,7 @@ namespace %a
 
 enum class GLboolean : unsigned char
 {
-	%s
+    %s
 };
 
 // import booleans to namespace
