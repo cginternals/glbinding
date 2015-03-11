@@ -26,7 +26,7 @@ enum class C
     C_c
 };
 
-TEST(SharedBitfield, Instantiation)
+TEST(SharedBitfield, Usage)
 {
     SharedBitfield<A, B, C> bitsA_a = A::A_a;
     SharedBitfield<A, B, C> bitsA_b = A::A_b;
@@ -61,6 +61,4 @@ TEST(SharedBitfield, Instantiation)
 
     bitsC_c = bitsC_a;
     bitsC_b = B::B_b;
-
-    SUCCEED();  // compiling this file results in successful test
 }
