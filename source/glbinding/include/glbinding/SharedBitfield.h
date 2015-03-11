@@ -50,6 +50,8 @@ template <typename T>
 class SharedBitfieldBase
 {
 public:
+    using UnderlyingType = T;
+
     SharedBitfieldBase(T value);
 
     explicit operator T() const;
@@ -65,7 +67,10 @@ template <typename Type>
 class SharedBitfield<Type> : public SharedBitfieldBase<typename std::underlying_type<Type>::type>
 {
 public:
-    SharedBitfield(Type value);
+    using UnderlyingType = typename SharedBitfieldBase<typename std::underlying_type<Type>::type>::UnderlyingType;
+
+    template <typename ConstructionType>
+    SharedBitfield(ConstructionType value);
     SharedBitfield(typename std::underlying_type<Type>::type value);
 
     operator Type() const;
@@ -78,13 +83,22 @@ public:
 
     template <typename... T>
     auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+
+    template <typename... T>
+    auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
+
+    template <typename T>
+    auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type>::value, bool>::type;
 };
 
 template <typename Type, typename... Types>
 class SharedBitfield<Type, Types...> : public SharedBitfield<Types...>
 {
 public:
-    SharedBitfield(Type value);
+    using UnderlyingType = typename SharedBitfield<Types...>::UnderlyingType;
+
+    template <typename ConstructionType>
+    SharedBitfield(ConstructionType value);
     SharedBitfield(typename std::underlying_type<Type>::type value);
 
     operator Type() const;
@@ -97,6 +111,12 @@ public:
 
     template <typename... T>
     auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+
+    template <typename... T>
+    auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
+
+    template <typename T>
+    auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type, Types...>::value, bool>::type;
 };
 
 // operators
