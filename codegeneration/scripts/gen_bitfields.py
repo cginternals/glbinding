@@ -48,8 +48,12 @@ def bitfieldGroup(group, enums, usedBitfsByName):
 
     maxlen = max([len(enum.name) for enum in enums]) if len(enums) > 0 else 0
 
-    return bitfieldGroupTemplate % (group, "\n".join(
-        [ bitfieldDefinition(e, group, maxlen, usedBitfsByName) for e in enums ]))
+    enumGroupString = [ bitfieldDefinition(e, group, maxlen, usedBitfsByName) for e in enums ]
+    
+    spaces = " " * (maxlen - len("GL_NONE_BIT"))
+    enumGroupString.insert(0, "    GL_NONE_BIT " + spaces + "= 0x0, // Generic GL_NONE_BIT")
+    
+    return bitfieldGroupTemplate % (group, "\n".join(enumGroupString))
 
 
 def genBitfieldsAll(api, enums, outputdir, outputfile):
@@ -87,14 +91,18 @@ def genFeatureBitfields(api, enums, feature, outputdir, outputfile, core = False
     groupedBitfields = groupEnumsByGroup(pureBitfields)
 
     usedBitfsByName = dict()
-
-    #~ importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-      #~ [ bitfieldImportDefinition(api, e, group, usedBitfsByName, feature) for e in values ])) 
-        #~ for group, values in sorted(groupedBitfields.items()) ]
+    
+    qualifier = api + "::"
+    
     if feature:
         importToNamespace = [ bitfieldImportDefinition(api, e) for e in sorted(pureBitfields) ]
+        if len(importToNamespace):
+            importToNamespace.insert(0, "using gl::GL_NONE_BIT;")
     else:
+        groups = ", ".join([ qualifier+g for g in sorted(groupedBitfields.keys()) ])
         importToNamespace = [ forwardBitfield(api, e) for e in sorted(pureBitfields) ]
+        if len(importToNamespace):
+            importToNamespace.insert(0, "static const glbinding::SharedBitfield<%s> GL_NONE_BIT = %s::%s::GL_NONE_BIT;" % (groups, api, sorted(groupedBitfields.keys())[0]))
 
     usedBitfsByName.clear()
     
