@@ -96,11 +96,13 @@ def genFeatureBitfields(api, enums, feature, outputdir, outputfile, core = False
     
     if feature:
         importToNamespace = [ bitfieldImportDefinition(api, e) for e in sorted(pureBitfields) ]
-        importToNamespace.insert(0, "using gl::GL_NONE_BIT;")
+        if len(importToNamespace):
+            importToNamespace.insert(0, "using gl::GL_NONE_BIT;")
     else:
         groups = ", ".join([ qualifier+g for g in sorted(groupedBitfields.keys()) ])
         importToNamespace = [ forwardBitfield(api, e) for e in sorted(pureBitfields) ]
-        importToNamespace.insert(0, "static const glbinding::SharedBitfield<%s> GL_NONE_BIT = %s::%s::GL_NONE_BIT;" % (groups, api, groupedBitfields.keys()[0]))
+        if len(importToNamespace):
+            importToNamespace.insert(0, "static const glbinding::SharedBitfield<%s> GL_NONE_BIT = %s::%s::GL_NONE_BIT;" % (groups, api, sorted(groupedBitfields.keys())[0]))
 
     usedBitfsByName.clear()
     
