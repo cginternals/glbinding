@@ -18,26 +18,26 @@ public:
 TEST_F(RingBuffer_test, SimpleTest)
 {
     RingBuffer<int> buffer(10);
-    EXPECT_EQ(10, buffer.maxSize());
+    EXPECT_EQ(10u, buffer.maxSize());
     EXPECT_EQ(true, buffer.isEmpty());
 
     RingBuffer<int>::TailIdentifier tail = buffer.addTail();
     auto it = buffer.cbegin(tail);
-    EXPECT_EQ(false, buffer.valid(tail, it));
-    EXPECT_EQ(0, buffer.size(tail));
-    EXPECT_EQ(0, buffer.size());
+    EXPECT_FALSE(buffer.valid(tail, it));
+    EXPECT_EQ(0u, buffer.size(tail));
+    EXPECT_EQ(0u, buffer.size());
 
     for (int i = 0; i < 10; i++)
     {
         EXPECT_EQ(true, buffer.push(i));
     }
 
-    EXPECT_EQ(10, buffer.size());
-    EXPECT_EQ(10, buffer.size(tail));
-    EXPECT_EQ(false, buffer.push(11));
-    EXPECT_EQ(true, buffer.isFull());
+    EXPECT_EQ(10u, buffer.size());
+    EXPECT_EQ(10u, buffer.size(tail));
+    EXPECT_FALSE(buffer.push(11));
+    EXPECT_TRUE(buffer.isFull());
 
-    EXPECT_EQ(true, buffer.valid(tail, it));
+    EXPECT_TRUE(buffer.valid(tail, it));
 
     for (int i = 0; i < 5; i++)
     {
@@ -48,14 +48,14 @@ TEST_F(RingBuffer_test, SimpleTest)
         EXPECT_EQ(buffer.size(tail), buffer.size());
     }
 
-    EXPECT_EQ(5, buffer.size());
+    EXPECT_EQ(5u, buffer.size());
 
     for (int i = 10; i < 15; i++)
     {
         EXPECT_EQ(true, buffer.push(i));
     }
 
-    EXPECT_EQ(10, buffer.size());
+    EXPECT_EQ(10u, buffer.size());
 
     for (int i = 5; i < 15; i++)
     {
@@ -78,17 +78,17 @@ TEST_F(RingBuffer_test, SimpleTest)
         EXPECT_EQ(buffer.size(tail), buffer.size());
     }
 
-    EXPECT_EQ(2, buffer.size());
+    EXPECT_EQ(2u, buffer.size());
 
     buffer.removeTail(tail);
-    EXPECT_EQ(0, buffer.size());
+    EXPECT_EQ(0u, buffer.size());
 }
 
 TEST_F(RingBuffer_test, StringTest)
 {
     RingBuffer<std::string> buffer(10);
-    EXPECT_EQ(10, buffer.maxSize());
-    EXPECT_EQ(true, buffer.isEmpty());
+    EXPECT_EQ(10u, buffer.maxSize());
+    EXPECT_TRUE(buffer.isEmpty());
 
     RingBuffer<int>::TailIdentifier tail = buffer.addTail();
 
@@ -112,8 +112,8 @@ TEST_F(RingBuffer_test, StringTest)
         EXPECT_EQ(buffer.size(tail), buffer.size());
     }
 
-    EXPECT_EQ(0, buffer.size());
-    EXPECT_EQ(false, buffer.valid(tail, it));
+    EXPECT_EQ(0u, buffer.size());
+    EXPECT_FALSE(buffer.valid(tail, it));
 }
 
 // Test behavior with objects
@@ -125,8 +125,8 @@ struct MockObject {
 TEST_F(RingBuffer_test, ObjectTest)
 {
     RingBuffer<MockObject> buffer(10);
-    EXPECT_EQ(10, buffer.maxSize());
-    EXPECT_EQ(true, buffer.isEmpty());
+    EXPECT_EQ(10u, buffer.maxSize());
+    EXPECT_TRUE(buffer.isEmpty());
 
     int i0 = 0;
     MockObject obj0 = {0, &i0};
@@ -159,15 +159,15 @@ TEST_F(RingBuffer_test, ObjectTest)
         EXPECT_EQ(buffer.size(tail), buffer.size());
     }
 
-    EXPECT_EQ(0, buffer.size());
-    EXPECT_EQ(false, buffer.valid(tail, it));    
+    EXPECT_EQ(0u, buffer.size());
+    EXPECT_FALSE(buffer.valid(tail, it));
 }
 
 TEST_F(RingBuffer_test, ObjectPointerTest)
 {
     RingBuffer<MockObject*> buffer(10);
-    EXPECT_EQ(10, buffer.maxSize());
-    EXPECT_EQ(true, buffer.isEmpty());
+    EXPECT_EQ(10u, buffer.maxSize());
+    EXPECT_TRUE(buffer.isEmpty());
 
     int i0 = 0;
     MockObject obj0 = {0, &i0};
@@ -200,8 +200,8 @@ TEST_F(RingBuffer_test, ObjectPointerTest)
         EXPECT_EQ(buffer.size(tail), buffer.size());
     }
 
-    EXPECT_EQ(0, buffer.size());
-    EXPECT_EQ(false, buffer.valid(tail, it));    
+    EXPECT_EQ(0u, buffer.size());
+    EXPECT_FALSE(buffer.valid(tail, it));
 }
 
 TEST_F(RingBuffer_test, SimpleMultiThreadedTest)
@@ -232,12 +232,12 @@ TEST_F(RingBuffer_test, SimpleMultiThreadedTest)
 
         }
 
-        EXPECT_EQ(0, buffer.size(tail));
+        EXPECT_EQ(0u, buffer.size(tail));
     });
 
     t1.join();
     t2.join();
-    EXPECT_EQ(0, buffer.size());
+    EXPECT_EQ(0u, buffer.size());
 }
 
 TEST_F(RingBuffer_test, MultiThreadedTest2)
@@ -269,7 +269,7 @@ TEST_F(RingBuffer_test, MultiThreadedTest2)
 
         }
 
-        EXPECT_EQ(0, buffer.size(tail1));
+        EXPECT_EQ(0u, buffer.size(tail1));
     });
 
     std::thread t3([&]()
@@ -287,13 +287,13 @@ TEST_F(RingBuffer_test, MultiThreadedTest2)
 
         }
 
-        EXPECT_EQ(0, buffer.size(tail2));
+        EXPECT_EQ(0u, buffer.size(tail2));
     });
 
     t1.join();
     t2.join();
     t3.join();
-    EXPECT_EQ(0, buffer.size());
+    EXPECT_EQ(0u, buffer.size());
 }
 
 

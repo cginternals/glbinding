@@ -9,6 +9,7 @@ namespace gl
 
 enum class AttribMask : unsigned int
 {
+    GL_NONE_BIT             = 0x0, // Generic GL_NONE_BIT
     GL_CURRENT_BIT          = 0x00000001,
     GL_POINT_BIT            = 0x00000002,
     GL_LINE_BIT             = 0x00000004,
@@ -39,6 +40,7 @@ enum class AttribMask : unsigned int
 
 enum class BufferAccessMask : unsigned int
 {
+    GL_NONE_BIT                  = 0x0, // Generic GL_NONE_BIT
     GL_MAP_READ_BIT              = 0x0001,
     GL_MAP_WRITE_BIT             = 0x0002,
     GL_MAP_INVALIDATE_RANGE_BIT  = 0x0004,
@@ -52,6 +54,7 @@ enum class BufferAccessMask : unsigned int
 
 enum class BufferStorageMask : unsigned int
 {
+    GL_NONE_BIT            = 0x0, // Generic GL_NONE_BIT
     GL_MAP_READ_BIT        = 0x0001, // reuse from BufferAccessMask
     GL_MAP_WRITE_BIT       = 0x0002, // reuse from BufferAccessMask
     GL_MAP_PERSISTENT_BIT  = 0x0040, // reuse from BufferAccessMask
@@ -63,6 +66,7 @@ enum class BufferStorageMask : unsigned int
 
 enum class ClearBufferMask : unsigned int
 {
+    GL_NONE_BIT               = 0x0, // Generic GL_NONE_BIT
     GL_DEPTH_BUFFER_BIT       = 0x00000100, // reuse from AttribMask
     GL_ACCUM_BUFFER_BIT       = 0x00000200, // reuse from AttribMask
     GL_STENCIL_BUFFER_BIT     = 0x00000400, // reuse from AttribMask
@@ -73,6 +77,7 @@ enum class ClearBufferMask : unsigned int
 
 enum class ClientAttribMask : unsigned int
 {
+    GL_NONE_BIT                = 0x0, // Generic GL_NONE_BIT
     GL_CLIENT_PIXEL_STORE_BIT  = 0x00000001,
     GL_CLIENT_VERTEX_ARRAY_BIT = 0x00000002,
     GL_CLIENT_ALL_ATTRIB_BITS  = 0xFFFFFFFF,
@@ -81,6 +86,7 @@ enum class ClientAttribMask : unsigned int
 
 enum class ContextFlagMask : unsigned int
 {
+    GL_NONE_BIT                            = 0x0, // Generic GL_NONE_BIT
     GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = 0x00000001,
     GL_CONTEXT_FLAG_DEBUG_BIT              = 0x00000002,
     GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT      = 0x00000004,
@@ -90,6 +96,7 @@ enum class ContextFlagMask : unsigned int
 
 enum class ContextProfileMask : unsigned int
 {
+    GL_NONE_BIT                          = 0x0, // Generic GL_NONE_BIT
     GL_CONTEXT_CORE_PROFILE_BIT          = 0x00000001,
     GL_CONTEXT_COMPATIBILITY_PROFILE_BIT = 0x00000002,
 };
@@ -97,6 +104,7 @@ enum class ContextProfileMask : unsigned int
 
 enum class FfdMaskSGIX : unsigned int
 {
+    GL_NONE_BIT                      = 0x0, // Generic GL_NONE_BIT
     GL_TEXTURE_DEFORMATION_BIT_SGIX  = 0x00000001,
     GL_GEOMETRY_DEFORMATION_BIT_SGIX = 0x00000002,
 };
@@ -104,6 +112,7 @@ enum class FfdMaskSGIX : unsigned int
 
 enum class FragmentShaderColorModMaskATI : unsigned int
 {
+    GL_NONE_BIT       = 0x0, // Generic GL_NONE_BIT
     GL_COMP_BIT_ATI   = 0x00000002,
     GL_NEGATE_BIT_ATI = 0x00000004,
     GL_BIAS_BIT_ATI   = 0x00000008,
@@ -112,6 +121,7 @@ enum class FragmentShaderColorModMaskATI : unsigned int
 
 enum class FragmentShaderDestMaskATI : unsigned int
 {
+    GL_NONE_BIT      = 0x0, // Generic GL_NONE_BIT
     GL_RED_BIT_ATI   = 0x00000001,
     GL_GREEN_BIT_ATI = 0x00000002,
     GL_BLUE_BIT_ATI  = 0x00000004,
@@ -120,6 +130,7 @@ enum class FragmentShaderDestMaskATI : unsigned int
 
 enum class FragmentShaderDestModMaskATI : unsigned int
 {
+    GL_NONE_BIT         = 0x0, // Generic GL_NONE_BIT
     GL_2X_BIT_ATI       = 0x00000001,
     GL_4X_BIT_ATI       = 0x00000002,
     GL_8X_BIT_ATI       = 0x00000004,
@@ -132,6 +143,7 @@ enum class FragmentShaderDestModMaskATI : unsigned int
 
 enum class MapBufferUsageMask : unsigned int
 {
+    GL_NONE_BIT                  = 0x0, // Generic GL_NONE_BIT
     GL_MAP_READ_BIT              = 0x0001, // reuse from BufferAccessMask
     GL_MAP_WRITE_BIT             = 0x0002, // reuse from BufferAccessMask
     GL_MAP_INVALIDATE_RANGE_BIT  = 0x0004, // reuse from BufferAccessMask
@@ -148,6 +160,7 @@ enum class MapBufferUsageMask : unsigned int
 
 enum class MemoryBarrierMask : unsigned int
 {
+    GL_NONE_BIT                            = 0x0, // Generic GL_NONE_BIT
     GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT     = 0x00000001,
     GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT = 0x00000001,
     GL_ELEMENT_ARRAY_BARRIER_BIT           = 0x00000002,
@@ -183,6 +196,7 @@ enum class MemoryBarrierMask : unsigned int
 
 enum class PathFontStyle : unsigned int
 {
+    GL_NONE_BIT      = 0x0, // Generic GL_NONE_BIT
     GL_BOLD_BIT_NV   = 0x01,
     GL_ITALIC_BIT_NV = 0x02,
 };
@@ -190,6 +204,7 @@ enum class PathFontStyle : unsigned int
 
 enum class PathRenderingMaskNV : unsigned int
 {
+    GL_NONE_BIT                                = 0x0, // Generic GL_NONE_BIT
     GL_FONT_X_MIN_BOUNDS_BIT_NV                = 0x00010000,
     GL_FONT_Y_MIN_BOUNDS_BIT_NV                = 0x00020000,
     GL_FONT_X_MAX_BOUNDS_BIT_NV                = 0x00040000,
@@ -220,6 +235,7 @@ enum class PathRenderingMaskNV : unsigned int
 
 enum class PerformanceQueryCapsMaskINTEL : unsigned int
 {
+    GL_NONE_BIT                       = 0x0, // Generic GL_NONE_BIT
     GL_PERFQUERY_SINGLE_CONTEXT_INTEL = 0x00000000,
     GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = 0x00000001,
 };
@@ -227,24 +243,28 @@ enum class PerformanceQueryCapsMaskINTEL : unsigned int
 
 enum class SyncObjectMask : unsigned int
 {
+    GL_NONE_BIT                = 0x0, // Generic GL_NONE_BIT
     GL_SYNC_FLUSH_COMMANDS_BIT = 0x00000001,
 };
 
 
 enum class TextureStorageMaskAMD : unsigned int
 {
+    GL_NONE_BIT                       = 0x0, // Generic GL_NONE_BIT
     GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = 0x00000001,
 };
 
 
 enum class UnusedMask : unsigned int
 {
+    GL_NONE_BIT   = 0x0, // Generic GL_NONE_BIT
     GL_UNUSED_BIT = 0x00000000,
 };
 
 
 enum class UseProgramStageMask : unsigned int
 {
+    GL_NONE_BIT                   = 0x0, // Generic GL_NONE_BIT
     GL_VERTEX_SHADER_BIT          = 0x00000001,
     GL_FRAGMENT_SHADER_BIT        = 0x00000002,
     GL_GEOMETRY_SHADER_BIT        = 0x00000004,
@@ -257,6 +277,7 @@ enum class UseProgramStageMask : unsigned int
 
 enum class VertexHintsMaskPGI : unsigned int
 {
+    GL_NONE_BIT                        = 0x0, // Generic GL_NONE_BIT
     GL_VERTEX23_BIT_PGI                = 0x00000004,
     GL_VERTEX4_BIT_PGI                 = 0x00000008,
     GL_COLOR3_BIT_PGI                  = 0x00010000,
@@ -281,6 +302,7 @@ enum class VertexHintsMaskPGI : unsigned int
 
 // import bitfields to namespace
 
+static const glbinding::SharedBitfield<gl::AttribMask, gl::BufferAccessMask, gl::BufferStorageMask, gl::ClearBufferMask, gl::ClientAttribMask, gl::ContextFlagMask, gl::ContextProfileMask, gl::FfdMaskSGIX, gl::FragmentShaderColorModMaskATI, gl::FragmentShaderDestMaskATI, gl::FragmentShaderDestModMaskATI, gl::MapBufferUsageMask, gl::MemoryBarrierMask, gl::PathFontStyle, gl::PathRenderingMaskNV, gl::PerformanceQueryCapsMaskINTEL, gl::SyncObjectMask, gl::TextureStorageMaskAMD, gl::UnusedMask, gl::UseProgramStageMask, gl::VertexHintsMaskPGI> GL_NONE_BIT = gl::AttribMask::GL_NONE_BIT;
 static const PerformanceQueryCapsMaskINTEL GL_PERFQUERY_SINGLE_CONTEXT_INTEL = PerformanceQueryCapsMaskINTEL::GL_PERFQUERY_SINGLE_CONTEXT_INTEL;
 static const UnusedMask GL_UNUSED_BIT = UnusedMask::GL_UNUSED_BIT;
 static const FragmentShaderDestModMaskATI GL_2X_BIT_ATI = FragmentShaderDestModMaskATI::GL_2X_BIT_ATI;

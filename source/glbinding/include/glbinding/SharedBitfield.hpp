@@ -19,9 +19,11 @@ SharedBitfieldBase<T>::operator T() const
 
 
 template <typename Type>
-SharedBitfield<Type>::SharedBitfield(Type value)
+template <typename ConstructionType>
+SharedBitfield<Type>::SharedBitfield(ConstructionType value)
 : SharedBitfieldBase<typename std::underlying_type<Type>::type>(static_cast<typename std::underlying_type<Type>::type>(value))
 {
+    static_assert(is_member_of_SharedBitfield<ConstructionType, Type>::value, "Not a member of SharedBitfield");
 }
 
 template <typename Type>
@@ -57,11 +59,27 @@ auto SharedBitfield<Type>::operator^(SharedBitfield<T...> other) const -> typena
     return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
 }
 
+template <typename Type>
+template <typename... T>
+auto SharedBitfield<Type>::operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type
+{
+    return static_cast<UnderlyingType>(*this) == static_cast<UnderlyingType>(other);
+}
+
+template <typename Type>
+template <typename T>
+auto SharedBitfield<Type>::operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type>::value, bool>::type
+{
+    return static_cast<UnderlyingType>(*this) == static_cast<UnderlyingType>(other);
+}
+
 
 template <typename Type, typename... Types>
-SharedBitfield<Type, Types...>::SharedBitfield(Type value)
+template <typename ConstructionType>
+SharedBitfield<Type, Types...>::SharedBitfield(ConstructionType value)
 : SharedBitfield<Types...>(static_cast<typename std::underlying_type<Type>::type>(value))
 {
+    static_assert(is_member_of_SharedBitfield<ConstructionType, Type, Types...>::value, "Not a member of SharedBitfield");
 }
 
 template <typename Type, typename... Types>
@@ -95,6 +113,20 @@ template <typename... T>
 auto SharedBitfield<Type, Types...>::operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
 {
     return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
+}
+
+template <typename Type, typename... Types>
+template <typename... T>
+auto SharedBitfield<Type, Types...>::operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type
+{
+    return static_cast<UnderlyingType>(*this) == static_cast<UnderlyingType>(other);
+}
+
+template <typename Type, typename... Types>
+template <typename T>
+auto SharedBitfield<Type, Types...>::operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type, Types...>::value, bool>::type
+{
+    return static_cast<UnderlyingType>(*this) == static_cast<UnderlyingType>(other);
 }
 
 
