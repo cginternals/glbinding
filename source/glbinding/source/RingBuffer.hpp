@@ -14,9 +14,22 @@ template <typename T>
 RingBuffer<T>::RingBuffer(const unsigned int maxSize)
 :   m_size{maxSize+1}
 ,   m_head{0}
-,   m_tail{0}
 {
     m_buffer.resize(m_size);
+}
+
+template <typename T>
+T RingBuffer<T>::nextHead()
+{
+    auto head = m_head.load(std::memory_order_relaxed);
+    auto nextHead = next(head);
+
+    if (isFull(nextHead))
+    {
+        return nullptr;
+    }
+
+    return m_buffer[nextHead];
 }
 
 template <typename T>
@@ -25,12 +38,13 @@ bool RingBuffer<T>::push(T && object)
     auto head = m_head.load(std::memory_order_relaxed);
     auto nextHead = next(head);
 
-    if (nextHead == m_tail.load(std::memory_order_acquire))
+    if (isFull(nextHead))
     {
         return false;
     }
 
     assert(head < m_size);
+
     if (m_buffer.size() <= head)
     {
         // This should never happen because m_buffer is reserving m_size
@@ -50,7 +64,7 @@ bool RingBuffer<T>::push(T & object)
     auto head = m_head.load(std::memory_order_relaxed);
     auto nextHead = next(head);
 
-    if (nextHead == m_tail.load(std::memory_order_acquire))
+    if (isFull(nextHead))
     {
         return false;
     }
@@ -72,20 +86,6 @@ bool RingBuffer<T>::push(T & object)
 }
 
 template <typename T>
-T RingBuffer<T>::hat()
-{
-    auto head = m_head.load(std::memory_order_relaxed);
-    auto nextHead = next(head);
-
-    if (nextHead == m_tail.load(std::memory_order_acquire))
-    {
-        return nullptr;
-    }
-
-    return m_buffer[nextHead];
-}
-
-template <typename T>
 typename RingBuffer<T>::TailIdentifier RingBuffer<T>::addTail()
 {
     auto i = TailIdentifier{0};
@@ -95,7 +95,7 @@ typename RingBuffer<T>::TailIdentifier RingBuffer<T>::addTail()
         ++i;
     }
 
-    m_tails[i] = m_tail.load(std::memory_order_acquire);
+    m_tails[i] = m_head.load(std::memory_order_acquire);
 
     return i;
 }
@@ -104,8 +104,6 @@ template <typename T>
 void RingBuffer<T>::removeTail(TailIdentifier key)
 {
     m_tails.erase(key);
-
-    updateTail();
 }
 
 template <typename T>
@@ -141,18 +139,8 @@ const typename std::vector<T>::const_iterator RingBuffer<T>::next(TailIdentifier
     auto nextTail = next(tail);
 
     m_tails[key].store(nextTail, std::memory_order_release);
-    updateTail();
 
     return cbegin(key);
-}
-
-template <typename T>
-void RingBuffer<T>::release(TailIdentifier key, const typename std::vector<T>::const_iterator & it)
-{
-    auto newTail = std::distance(m_buffer.begin(), it);
-
-    m_tails[key].store(newTail, std::memory_order_release);
-    updateTail();    
 }
 
 template <typename T>
@@ -174,7 +162,7 @@ template <typename T>
 typename RingBuffer<T>::SizeType RingBuffer<T>::size()
 {
     auto head = m_head.load(std::memory_order_acquire);
-    auto tail = m_tail.load(std::memory_order_acquire);
+    auto tail = lastTail();
 
     return size(head, tail);
 }
@@ -185,13 +173,13 @@ bool RingBuffer<T>::isFull()
     auto head = m_head.load(std::memory_order_relaxed);
     auto nextHead = next(head);
 
-    return nextHead == m_tail.load(std::memory_order_acquire);
+    return isFull(nextHead);
 }
 
 template <typename T>
 bool RingBuffer<T>::isEmpty()
 {
-    auto tail = m_tail.load(std::memory_order_relaxed);
+    auto tail = lastTail();
 
     return tail == m_head.load(std::memory_order_acquire);
 }
@@ -206,48 +194,36 @@ typename RingBuffer<T>::SizeType RingBuffer<T>::next(SizeType current)
 }
 
 template <typename T>
-void RingBuffer<T>::updateTail()
+bool RingBuffer<T>::isFull(SizeType nextHead)
 {
-    m_tail_mutex.lock();
-
-    auto tail = m_tail.load(std::memory_order_acquire);
-    auto currentMin = 2 * m_size;
-
     for (auto it = m_tails.cbegin(); it != m_tails.cend(); ++it)
     {
         auto tailPos = it->second.load(std::memory_order_acquire);
 
-        if (tailPos == tail)
-        {
-            m_tail_mutex.unlock();
+        if (nextHead == tailPos)
+            return true;
+    }
 
-            return;
-        }
+    return false;
+}
 
-        if (tailPos < tail)
-        {
+template <typename T>
+typename RingBuffer<T>::SizeType RingBuffer<T>::lastTail()
+{
+    auto head = m_head.load(std::memory_order_relaxed);
+    auto last = head + m_size;
+
+    for (auto it = m_tails.cbegin(); it != m_tails.cend(); ++it)
+    {
+        auto tailPos = it->second.load(std::memory_order_acquire);
+        if (tailPos <= head)
             tailPos += m_size;
-        }
 
-        if (tailPos < currentMin)
-        {
-            currentMin = tailPos;
-        }
+        if (tailPos < last)
+            last = tailPos;
     }
 
-    if (currentMin == 2 * m_size)
-    {
-        m_tail_mutex.unlock();
-        return;
-    }
-
-    if (currentMin >= m_size)
-    {
-        currentMin = currentMin % m_size;
-    }
-
-    m_tail.store(currentMin, std::memory_order_release);
-    m_tail_mutex.unlock();
+    return last % m_size;
 }
 
 template <typename T>

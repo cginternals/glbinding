@@ -128,7 +128,7 @@ void log(bool enable)
 
 void log(FunctionCall * call)
 {
-    delete g_buffer.hat();
+    delete g_buffer.nextHead();
 
     while(!g_buffer.push(call))
     {
