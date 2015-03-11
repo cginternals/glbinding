@@ -3,7 +3,6 @@
 #include <atomic>
 #include <iterator>
 #include <map>
-#include <mutex>
 #include <vector>
 
 namespace glbinding
@@ -28,7 +27,6 @@ public:
     const typename std::vector<T>::const_iterator cbegin(TailIdentifier key);
     bool valid(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
     const typename std::vector<T>::const_iterator next(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
-    void release(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
     SizeType size(TailIdentifier);
 
     SizeType maxSize();
@@ -38,7 +36,7 @@ public:
 
 protected:
     SizeType next(SizeType current);
-    bool isFull(SizeType);
+    bool isFull(SizeType nextHead);
     SizeType lastTail();
     SizeType size(SizeType, SizeType);
 
