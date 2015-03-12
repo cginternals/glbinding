@@ -49,6 +49,7 @@ set(glbinding_source_path ${CMAKE_SOURCE_DIR}/source/glbinding/source)
 
 set(sources
     main.cpp
+    AllVersions_test.cpp
     MultiContext_test.cpp
     MultiThreading_test.cpp
     RingBuffer_test.cpp
