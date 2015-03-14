@@ -5,7 +5,7 @@
 #include <math.h>
 
 
-#include <glbinding/gl/gl32core.h>
+#include <glbinding/gl32core/gl.h>
 
 
 using namespace gl32core;

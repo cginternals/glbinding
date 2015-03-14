@@ -245,8 +245,8 @@ def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = Fa
     version = versionBID(feature, core, ext)
 
     t = template(of_all).replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", version)
-    od = outputdir.replace("?", "")
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
 
     status(od + of)
 
@@ -272,8 +272,8 @@ def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputf
     version = versionBID(feature, core, ext)
 
     t = template(of_all).replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", version)
-    od = outputdir.replace("?", "")
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
 
     status(od + of)
 

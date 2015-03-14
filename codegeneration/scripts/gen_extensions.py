@@ -4,7 +4,7 @@ from classes.Extension import *
 
 def genExtensions(api, extensions, outputdir, outputfile):
 
-    of = outputfile
+    of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
     t = template(of).replace("%a", api)
 

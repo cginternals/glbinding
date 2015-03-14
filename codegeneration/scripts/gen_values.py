@@ -29,8 +29,8 @@ def genFeatureValues(api, values, feature, outputdir, outputfile, core = False, 
     version = versionBID(feature, core, ext)
 
     t = template(of_all).replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", version)
-    od = outputdir.replace("?", "")
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
 
     status(od + of)
 
