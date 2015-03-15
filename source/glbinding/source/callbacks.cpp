@@ -20,7 +20,7 @@ namespace glbinding
 
 FunctionCall::FunctionCall(const AbstractFunction * _function)
 : function{_function}
-, timestamp{std::chrono::high_resolution_clock::now()}
+, timestamp{std::chrono::system_clock::now()}
 , returnValue{nullptr}
 {
 }
@@ -87,9 +87,7 @@ std::string FunctionCall::toString() const
     std::ostringstream ms_os;
     ms_os << std::setfill('0') << std::setw(3) << ms;
 
-    using seconds = std::chrono::seconds;
-    seconds now_s = std::chrono::duration_cast<seconds>(now_ms);
-    std::time_t t = now_s.count();
+    auto t = std::chrono::system_clock::to_time_t(timestamp);
     char time_string[20];
     std::strftime(time_string, sizeof(time_string), "%F_%H-%M-%S", std::localtime(&t));  
 
