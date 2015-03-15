@@ -4088,6 +4088,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x82E3" name="GL_QUERY"/>
         <enum value="0x82E3" name="GL_QUERY_KHR"/>
         <enum value="0x82E4" name="GL_PROGRAM_PIPELINE"/>
+        <enum value="0x82E4" name="GL_PROGRAM_PIPELINE_KHR"/>
         <enum value="0x82E5" name="GL_MAX_VERTEX_ATTRIB_STRIDE"/>
         <enum value="0x82E6" name="GL_SAMPLER"/>
         <enum value="0x82E6" name="GL_SAMPLER_KHR"/>
@@ -6375,7 +6376,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8BDA" name="GL_TEXTURE_TARGET_QCOM"/>
         <enum value="0x8BDB" name="GL_TEXTURE_OBJECT_VALID_QCOM"/>
         <enum value="0x8BDC" name="GL_STATE_RESTORE"/>
-            <unused start="0x8BDD" end="0x8BFF" vendor="AMD"/>
+            <unused start="0x8BDD" end="0x8BE6" vendor="AMD"/>
+        <enum value="0x8BE7" name="GL_SAMPLER_EXTERNAL_2D_Y2Y_EXT"/>
+            <unused start="0x8BE8" end="0x8BFF" vendor="AMD"/>
     </enums>
 
     <enums namespace="GL" start="0x8C00" end="0x8C0F" vendor="IMG">
@@ -7392,7 +7395,10 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8FB3" name="GL_RENDER_DIRECT_TO_FRAMEBUFFER_QCOM"/>
             <unused start="0x8FB4" end="0x8FBA" vendor="QCOM"/>
         <enum value="0x8FBB" name="GL_GPU_DISJOINT_EXT"/>
-            <unused start="0x8FBC" end="0x8FBF" vendor="QCOM"/>
+            <unused start="0x8FBC" vendor="QCOM"/>
+        <enum value="0x8FBD" name="GL_SR8_EXT"/>
+        <enum value="0x8FBE" name="GL_SRG8_EXT"/>
+            <unused start="0x8FBF" vendor="QCOM"/>
     </enums>
 
     <enums namespace="GL" start="0x8FC0" end="0x8FDF" vendor="VIV" comment="For Frido Garritsen, bug 4526">
@@ -40549,6 +40555,16 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SKIP_DECODE_EXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_texture_sRGB_R8" supported="gles2">
+            <require>
+                <enum name="GL_SR8_EXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_texture_sRGB_RG8" supported="gles2">
+            <require>
+                <enum name="GL_SRG8_EXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_texture_shared_exponent" supported="gl">
             <require>
                 <enum name="GL_RGB9_E5_EXT"/>
@@ -40937,6 +40953,14 @@ typedef unsigned int GLhandleARB;
                 <command name="glVertexWeightPointerEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_YUV_target" supported="gles2">
+            <require>
+                <enum name="GL_SAMPLER_EXTERNAL_2D_Y2Y_EXT"/>
+                <enum name="GL_TEXTURE_EXTERNAL_OES"/>
+                <enum name="GL_TEXTURE_BINDING_EXTERNAL_OES"/>
+                <enum name="GL_REQUIRED_TEXTURE_IMAGE_UNITS_OES"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_x11_sync_object" supported="gl">
             <require>
                 <enum name="GL_SYNC_X11_FENCE_EXT"/>
@@ -41271,6 +41295,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_PROGRAM"/>
                 <enum name="GL_VERTEX_ARRAY"/>
                 <enum name="GL_QUERY"/>
+                <enum name="GL_PROGRAM_PIPELINE"/>
                 <enum name="GL_SAMPLER"/>
                 <enum name="GL_MAX_LABEL_LENGTH"/>
                 <enum name="GL_MAX_DEBUG_MESSAGE_LENGTH"/>
@@ -41323,6 +41348,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_PROGRAM_KHR"/>
                 <enum name="GL_VERTEX_ARRAY_KHR"/>
                 <enum name="GL_QUERY_KHR"/>
+                <enum name="GL_PROGRAM_PIPELINE_KHR"/>
                 <enum name="GL_SAMPLER_KHR"/>
                 <enum name="GL_MAX_LABEL_LENGTH_KHR"/>
                 <enum name="GL_MAX_DEBUG_MESSAGE_LENGTH_KHR"/>
@@ -41346,9 +41372,6 @@ typedef unsigned int GLhandleARB;
                 <command name="glObjectPtrLabelKHR"/>
                 <command name="glGetObjectPtrLabelKHR"/>
                 <command name="glGetPointervKHR"/>
-            </require>
-            <require api="gl" comment="Could benefit from api/profile attributes at enum tag level">
-                <enum name="GL_PROGRAM_PIPELINE"/>
             </require>
             <require api="gl" profile="compatibility">
                 <enum name="GL_DISPLAY_LIST"/>

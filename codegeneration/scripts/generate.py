@@ -149,6 +149,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     includedir = targetdir + "/include/glbinding/"
     sourcedir  = targetdir + "/source/"
+    testdir    = targetdir + "/source/tests/glbinding-test/"
 
     includedir_api = includedir + api + "?/"
     sourcedir_api  = sourcedir  + api + "?/"
@@ -182,7 +183,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
     genFunctionImplementationsAll  (api, commands,           sourcedir_api,  "functions.cpp")
     
-    genTest                        (api, features,           sourcedir_api,  "test.cpp")
+    genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 
     # Generate GLBINDING namespace classes
 
