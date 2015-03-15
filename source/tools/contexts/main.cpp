@@ -21,21 +21,30 @@
 using namespace gl;
 using namespace glbinding;
 
-//
-//void error(int errnum, const char * errmsg)
-//{
-//    //std::cerr << errnum << ": " << errmsg << std::endl;
-//}
-//
-
 void print(
   const Version & version
 , const bool forward
 , const bool core
-, const Version & result)
+, const Version & result
+, const bool isForward
+, const bool isCore)
 {
     std::cout << "  "
-        << version << "  " << (forward ? "f" : "-") << " " << (core ? "c" : "-") << "  " << result << std::endl;
+        << version << "  " << (forward ? "f" : "-") << " " << (core ? "c" : "-") << "  " << result << (isForward ? "f" : "") << (isCore ? "c" : "") << std::endl;
+}
+
+bool isCore(const Version & version)
+{
+    if (version<glbinding::Version(3,2))
+    {
+        return false;
+    }
+
+    GLint value = 0;
+
+    glGetIntegerv(GL_CONTEXT_PROFILE_MASK, &value);
+
+    return (value & static_cast<unsigned>(GL_CONTEXT_CORE_PROFILE_BIT)) > 0;
 }
 
 Version printVersionOfContextRequest(
@@ -55,16 +64,17 @@ Version printVersionOfContextRequest(
     GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     if (!window)
     {
-        print(version, forward, core, Version());
+        print(version, forward, core, Version(), false, false);
         return Version();
     }
+
     glfwMakeContextCurrent(window);
     Binding::initialize();
 
     auto result = ContextInfo::version();
     glfwMakeContextCurrent(window);
 
-    print(version, forward, core, result);
+    print(version, forward, core, result, forward, isCore(result));
 
     glfwMakeContextCurrent(nullptr);
     glfwDestroyWindow(window);
@@ -86,7 +96,6 @@ int main(int argc, char * argv[])
 
     std::map<Version, std::array<Version, 4>> markdown;
 
-    Version result;
     for (const auto & version : Version::versions())
     {
         markdown[version][0] = printVersionOfContextRequest(version, false, false);
