@@ -89,7 +89,7 @@ std::string FunctionCall::toString() const
 
     auto t = std::chrono::system_clock::to_time_t(timestamp);
     char time_string[20];
-    std::strftime(time_string, sizeof(time_string), "%F_%H-%M-%S", std::localtime(&t));  
+    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&t));  
 
     std::ostringstream os;
 
