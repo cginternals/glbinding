@@ -81,7 +81,7 @@ TEST_F(RingBuffer_test, SimpleTest)
     EXPECT_EQ(2u, buffer.size());
 
     buffer.removeTail(tail);
-    EXPECT_EQ(2u, buffer.size());
+    EXPECT_EQ(0u, buffer.size());
 }
 
 TEST_F(RingBuffer_test, StringTest)

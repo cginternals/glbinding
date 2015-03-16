@@ -26,7 +26,7 @@ struct GLBINDING_API FunctionCall
     std::string toString() const;
 
     const AbstractFunction * function;
-    std::chrono::high_resolution_clock::time_point timestamp;
+    std::chrono::system_clock::time_point timestamp;
 
     std::vector<AbstractValue *> parameters;
     AbstractValue * returnValue;

@@ -101,7 +101,7 @@ void compare()
 
     std::cout << std::endl << "glbinding/glew decrease:                 " << (glbinding_avg / glew_avg - 1.0) * 100.0 << "%" << std::endl;
     std::cout << std::endl << "glbinding/glew decrease (error checks):  " << (glbinding_avg_err / glew_avg_err - 1.0) * 100.0 << "%" << std::endl;
-    std::cout << std::endl << "glbinding decrease with logging:         " << (glbinding_avg / glbinding_avg_log - 1.0) * 100.0 << "%" << std::endl;
+    std::cout << std::endl << "glbinding decrease with logging:         " << (glbinding_avg_log / glbinding_avg  - 1.0) * 100.0 << "%" << std::endl;
 
     std::cout << std::endl << "finalizing ..." << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(3));

@@ -38,7 +38,7 @@ void start()
 
     auto now_c = std::chrono::system_clock::to_time_t(now);
     char time_string[20];
-    std::strftime(time_string, sizeof(time_string), "%F_%H-%M-%S", std::localtime(&now_c));
+    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&now_c));
 
     std::ostringstream ms_os;
     ms_os << std::setfill('0') << std::setw(3) << ms;
@@ -128,7 +128,7 @@ void log(bool enable)
 
 void log(FunctionCall * call)
 {
-    delete g_buffer.hat();
+    delete g_buffer.nextHead();
 
     while(!g_buffer.push(call))
     {
