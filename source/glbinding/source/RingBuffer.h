@@ -3,7 +3,6 @@
 #include <atomic>
 #include <iterator>
 #include <map>
-#include <mutex>
 #include <vector>
 
 namespace glbinding
@@ -18,7 +17,7 @@ public:
     using SizeType = unsigned int;
     RingBuffer(SizeType maxSize);
 
-    T hat();
+    T nextHead();
     bool push(T &&);
     bool push(T &);
 
@@ -28,7 +27,6 @@ public:
     const typename std::vector<T>::const_iterator cbegin(TailIdentifier key);
     bool valid(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
     const typename std::vector<T>::const_iterator next(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
-    void release(TailIdentifier key, const typename std::vector<T>::const_iterator & it);
     SizeType size(TailIdentifier);
 
     SizeType maxSize();
@@ -38,16 +36,15 @@ public:
 
 protected:
     SizeType next(SizeType current);
-    void updateTail();
+    bool isFull(SizeType nextHead);
+    SizeType lastTail();
     SizeType size(SizeType, SizeType);
 
 protected:
     std::vector<T> m_buffer;
     const SizeType m_size;
     std::atomic<SizeType> m_head;
-    std::atomic<SizeType> m_tail;
     std::map<TailIdentifier, std::atomic<SizeType>> m_tails;
-    std::mutex m_tail_mutex;
 };
 
 } // namespace glbinding
