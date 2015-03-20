@@ -1,6 +1,3 @@
-namespace glbinding
-{
-
 gl::%t operator|(const gl::%t & a, const gl::%t & b)
 {
     return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) | static_cast<std::underlying_type<gl::%t>::type>(b));
@@ -14,6 +11,4 @@ gl::%t operator&(const gl::%t & a, const gl::%t & b)
 gl::%t operator^(const gl::%t & a, const gl::%t & b)
 {
     return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) ^ static_cast<std::underlying_type<gl::%t>::type>(b));
-}
-
 }
