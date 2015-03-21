@@ -57,7 +57,7 @@ The groups for enums are not yet as complete as we would like them to be to enab
 
 ##### Per Feature API Header
 
-Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  featured-based API subsets, each using a specialized namespace, e.g.:
+Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  feature-based API subsets, each using a specialized namespace, e.g.:
 * ```functions32.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
 * ```functions32core.h``` provides all non-deprecated OpenGL commands available up to 3.2 in namespace ```gl32core```.
 * ```functions32ext.h``` provides all OpenGL commands specified either in 3.3 and above, or by extension in ```gl32ext```.
@@ -90,7 +90,7 @@ glbinding::Binding::initialize();
 Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
 ```c++
 // use the current active context
-glbinding::Binding::useCurrentContext();               
+glbinding::Binding::useCurrentContext();
 
 // use another context, identified by platform-specific handle
 glbinding::Binding::useContext(ContextHandle context); 
@@ -127,7 +127,7 @@ Example for error checking:
 using namespace glbinding;
 
 // ...
-setCallbackMask(CallbackMask::After);
+setCallbackMaskExcept(CallbackMask::After, { "glGetError" });
 setAfterCallback([](const FunctionCall &)
 {
   GLenum error = glGetError();
@@ -148,7 +148,7 @@ using namespace glbinding;
 setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 {
-  std::cout << call.function.name() << "(";
+  std::cout << call.function->name() << "(";
   
   for (unsigned i = 0; i < call.parameters.size(); ++i)
   {
@@ -187,7 +187,7 @@ glClearColor(0.5, 0.5, 0.5, 1.0);
 // Output: Switching clear color to (0.5, 0.5, 0.5, 1.0)
 ```
 
-It is also possible to call OpenGL function without triggering registered callbacks (except unresolved callbacks), using the ```directCall()``` member function.
+It is also possible to call an OpenGL function without triggering registered callbacks (except unresolved callbacks), using the ```directCall()``` member function.
 
 ```c++
 #include <glbinding/Binding.h>
@@ -201,7 +201,7 @@ GLenum errorCode = Binding::GetError.directCall();
 ##### Context-Switch Callbacks
 
 When switching between active contexts, not only *glbinding* may be interested in the current context, but your application as well (e.g., per context cached OpenGL state).
-You may also not now when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
+You may also not know when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
 Therefor, you can register one callback that is called when the current active context in *glbinding* is changed.
 
 ```c++
@@ -268,7 +268,7 @@ if (Meta::stringsByGL())
 
 ##### Performance
 
-*glbinding* causes no signigicant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
+*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
 
 
 ##### Binding Generation
