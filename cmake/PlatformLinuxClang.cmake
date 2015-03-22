@@ -1,4 +1,4 @@
-message(STATUS "Configuring for platform Linux/GCC.")
+message(STATUS "Configuring for platform Linux/Clang.")
 
 
 # Enable C++11 support
