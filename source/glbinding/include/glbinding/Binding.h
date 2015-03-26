@@ -18,7 +18,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, 2788>;
+    using array_t = std::array<AbstractFunction *, 2805>;
     using ContextSwitchCallback = std::function<void(ContextHandle)>;
 
     Binding() = delete;
@@ -182,6 +182,7 @@ public:
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::BufferStorageMask> BufferStorage;
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData;
     static Function<void, gl::GLenum, gl::GLintptrARB, gl::GLsizeiptrARB, const void *> BufferSubDataARB;
+    static Function<void, gl::GLuint> CallCommandListNV;
     static Function<void, gl::GLuint> CallList;
     static Function<void, gl::GLsizei, gl::GLenum, const void *> CallLists;
     static Function<gl::GLenum, gl::GLenum> CheckFramebufferStatus;
@@ -309,6 +310,8 @@ public:
     static Function<void, gl::GLenum, gl::GLint> CombinerParameteriNV;
     static Function<void, gl::GLenum, const gl::GLint *> CombinerParameterivNV;
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLfloat *> CombinerStageParameterfvNV;
+    static Function<void, gl::GLuint, gl::GLuint> CommandListSegmentsNV;
+    static Function<void, gl::GLuint> CompileCommandListNV;
     static Function<void, gl::GLuint> CompileShader;
     static Function<void, gl::GLhandleARB> CompileShaderARB;
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLchar *const*, const gl::GLint *> CompileShaderIncludeARB;
@@ -397,6 +400,7 @@ public:
     static Function<void, gl::GLenum> CoverageModulationNV;
     static Function<void, gl::GLsizei, const gl::GLfloat *> CoverageModulationTableNV;
     static Function<void, gl::GLsizei, gl::GLuint *> CreateBuffers;
+    static Function<void, gl::GLsizei, gl::GLuint *> CreateCommandListsNV;
     static Function<void, gl::GLsizei, gl::GLuint *> CreateFramebuffers;
     static Function<void, gl::GLuint, gl::GLuint *> CreatePerfQueryINTEL;
     static Function<gl::GLuint> CreateProgram;
@@ -409,6 +413,7 @@ public:
     static Function<gl::GLhandleARB, gl::GLenum> CreateShaderObjectARB;
     static Function<gl::GLuint, gl::GLenum, const gl::GLchar *> CreateShaderProgramEXT;
     static Function<gl::GLuint, gl::GLenum, gl::GLsizei, const gl::GLchar *const*> CreateShaderProgramv;
+    static Function<void, gl::GLsizei, gl::GLuint *> CreateStatesNV;
     static Function<gl::GLsync, gl::_cl_context *, gl::_cl_event *, gl::UnusedMask> CreateSyncFromCLeventARB;
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLuint *> CreateTextures;
     static Function<void, gl::GLsizei, gl::GLuint *> CreateTransformFeedbacks;
@@ -432,6 +437,7 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei> DeleteAsyncMarkersSGIX;
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteBuffers;
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteBuffersARB;
+    static Function<void, gl::GLsizei, const gl::GLuint *> DeleteCommandListsNV;
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteFencesAPPLE;
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteFencesNV;
     static Function<void, gl::GLuint> DeleteFragmentShaderATI;
@@ -455,6 +461,7 @@ public:
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteRenderbuffersEXT;
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteSamplers;
     static Function<void, gl::GLuint> DeleteShader;
+    static Function<void, gl::GLsizei, const gl::GLuint *> DeleteStatesNV;
     static Function<void, gl::GLsync> DeleteSync;
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteTextures;
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteTexturesEXT;
@@ -504,6 +511,10 @@ public:
     static Function<void, gl::GLsizei, const gl::GLenum *> DrawBuffers;
     static Function<void, gl::GLsizei, const gl::GLenum *> DrawBuffersARB;
     static Function<void, gl::GLsizei, const gl::GLenum *> DrawBuffersATI;
+    static Function<void, gl::GLenum, const gl::GLuint64 *, const gl::GLsizei *, gl::GLuint> DrawCommandsAddressNV;
+    static Function<void, gl::GLenum, gl::GLuint, const gl::GLintptr *, const gl::GLsizei *, gl::GLuint> DrawCommandsNV;
+    static Function<void, const gl::GLuint64 *, const gl::GLsizei *, const gl::GLuint *, const gl::GLuint *, gl::GLuint> DrawCommandsStatesAddressNV;
+    static Function<void, gl::GLuint, const gl::GLintptr *, const gl::GLsizei *, const gl::GLuint *, const gl::GLuint *, gl::GLuint> DrawCommandsStatesNV;
     static Function<void, gl::GLenum, gl::GLint, gl::GLsizei> DrawElementArrayAPPLE;
     static Function<void, gl::GLenum, gl::GLsizei> DrawElementArrayATI;
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, const void *> DrawElements;
@@ -749,6 +760,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLfloat *> GetCombinerOutputParameterfvNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLint *> GetCombinerOutputParameterivNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLfloat *> GetCombinerStageParameterfvNV;
+    static Function<gl::GLuint, gl::GLenum, gl::GLuint> GetCommandHeaderNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, void *> GetCompressedMultiTexImageEXT;
     static Function<void, gl::GLenum, gl::GLint, void *> GetCompressedTexImage;
     static Function<void, gl::GLenum, gl::GLint, void *> GetCompressedTexImageARB;
@@ -990,6 +1002,7 @@ public:
     static Function<void, gl::GLhandleARB, gl::GLsizei, gl::GLsizei *, gl::GLcharARB *> GetShaderSourceARB;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetShaderiv;
     static Function<void, gl::GLenum, gl::GLfloat *> GetSharpenTexFuncSGIS;
+    static Function<gl::GLushort, gl::GLenum> GetStageIndexNV;
     static Function<const gl::GLubyte *, gl::GLenum> GetString;
     static Function<const gl::GLubyte *, gl::GLenum, gl::GLuint> GetStringi;
     static Function<gl::GLuint, gl::GLuint, gl::GLenum, const gl::GLchar *> GetSubroutineIndex;
@@ -1195,6 +1208,7 @@ public:
     static Function<gl::GLboolean, gl::GLuint> IsBuffer;
     static Function<gl::GLboolean, gl::GLuint> IsBufferARB;
     static Function<gl::GLboolean, gl::GLenum> IsBufferResidentNV;
+    static Function<gl::GLboolean, gl::GLuint> IsCommandListNV;
     static Function<gl::GLboolean, gl::GLenum> IsEnabled;
     static Function<gl::GLboolean, gl::GLenum, gl::GLuint> IsEnabledIndexedEXT;
     static Function<gl::GLboolean, gl::GLenum, gl::GLuint> IsEnabledi;
@@ -1223,6 +1237,7 @@ public:
     static Function<gl::GLboolean, gl::GLuint> IsRenderbufferEXT;
     static Function<gl::GLboolean, gl::GLuint> IsSampler;
     static Function<gl::GLboolean, gl::GLuint> IsShader;
+    static Function<gl::GLboolean, gl::GLuint> IsStateNV;
     static Function<gl::GLboolean, gl::GLsync> IsSync;
     static Function<gl::GLboolean, gl::GLuint> IsTexture;
     static Function<gl::GLboolean, gl::GLuint> IsTextureEXT;
@@ -1254,6 +1269,7 @@ public:
     static Function<void, gl::GLuint> LinkProgram;
     static Function<void, gl::GLhandleARB> LinkProgramARB;
     static Function<void, gl::GLuint> ListBase;
+    static Function<void, gl::GLuint, gl::GLuint, const void **, const gl::GLsizei *, const gl::GLuint *, const gl::GLuint *, gl::GLuint> ListDrawCommandsStatesClientNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLfloat> ListParameterfSGIX;
     static Function<void, gl::GLuint, gl::GLenum, const gl::GLfloat *> ListParameterfvSGIX;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint> ListParameteriSGIX;
@@ -2031,6 +2047,7 @@ public:
     static Function<void, gl::GLenum, gl::GLint> SpriteParameteriSGIX;
     static Function<void, gl::GLenum, const gl::GLint *> SpriteParameterivSGIX;
     static Function<void> StartInstrumentsSGIX;
+    static Function<void, gl::GLuint, gl::GLenum> StateCaptureNV;
     static Function<void, gl::GLsizei, gl::GLuint> StencilClearTagEXT;
     static Function<void, gl::GLsizei, gl::GLenum, const void *, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLenum, const gl::GLfloat *> StencilFillPathInstancedNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint> StencilFillPathNV;

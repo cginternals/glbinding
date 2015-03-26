@@ -369,6 +369,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString
     { "GL_NV_blend_equation_advanced", GLextension::GL_NV_blend_equation_advanced },
     { "GL_NV_blend_equation_advanced_coherent", GLextension::GL_NV_blend_equation_advanced_coherent },
     { "GL_NV_blend_square", GLextension::GL_NV_blend_square },
+    { "GL_NV_command_list", GLextension::GL_NV_command_list },
     { "GL_NV_compute_program5", GLextension::GL_NV_compute_program5 },
     { "GL_NV_conditional_render", GLextension::GL_NV_conditional_render },
     { "GL_NV_conservative_raster", GLextension::GL_NV_conservative_raster },

@@ -157,6 +157,17 @@
             <proto>void <name>glGetPathMetricsNV</name></proto>
             <param group="PathRenderingMaskNV"><ptype>GLbitfield</ptype> <name>metricQueryMask</name></param>
         </command>
+	
+	<command>
+            <proto>void <name>glListDrawCommandsStatesClientNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>list</name></param>
+            <param><ptype>GLuint</ptype> <name>segment</name></param>
+            <param>const void **<name>indirects</name></param>
+            <param>const GLsizei *<name>sizes</name></param>
+            <param>const <ptype>GLuint</ptype> *<name>states</name></param>
+            <param>const <ptype>GLuint</ptype> *<name>fbos</name></param>
+            <param><ptype>GLuint</ptype> <name>count</name></param>
+        </command>
 
     </commands>
 
