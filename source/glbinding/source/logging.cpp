@@ -92,6 +92,8 @@ void start(const std::string & filepath)
 
 void stop()
 {
+    removeCallbackMask(CallbackMask::Logging);
+
     g_stop = true;
     std::unique_lock<std::mutex> locker(g_lockfinish);
 
@@ -100,8 +102,6 @@ void stop()
     {
         g_finishcheck.wait(locker);
     }
-
-    removeCallbackMask(CallbackMask::Logging);
 }
 
 void pause()
