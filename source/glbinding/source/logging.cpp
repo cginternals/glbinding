@@ -12,7 +12,7 @@
 
 namespace
 {
-    const unsigned int LOG_BUFFER_SIZE = 1000000;
+    const unsigned int LOG_BUFFER_SIZE = 5000;
 
     std::atomic<bool> g_stop{false};
     std::atomic<bool> g_persisted{false};
@@ -83,7 +83,7 @@ void start(const std::string & filepath)
 
             logfile.flush();
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
 
         logfile.close();
@@ -126,7 +126,7 @@ void log(FunctionCall * call)
 
     while (!available)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
         next = g_buffer.nextHead(available);
     }
 
