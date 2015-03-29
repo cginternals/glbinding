@@ -7,6 +7,7 @@
 #include <sstream>
 #include <thread>
 
+#include "logging_private.h"
 #include "RingBuffer.h"
 
 namespace
@@ -31,7 +32,6 @@ namespace logging
 void start()
 {
     auto now = std::chrono::system_clock::now();
-
 
     auto now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
     auto ms = now_ms.count() % 1000;
@@ -112,18 +112,6 @@ void pause()
 void resume()
 {
     addCallbackMask(CallbackMask::Logging);
-}
-
-void log(bool enable)
-{
-    if (enable)
-    {
-        start();
-    }
-    else
-    {
-        stop();
-    }
 }
 
 void log(FunctionCall * call)
