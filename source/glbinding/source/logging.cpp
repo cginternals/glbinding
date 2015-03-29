@@ -29,6 +29,11 @@ namespace glbinding
 namespace logging
 {
 
+void resize(const unsigned int newSize)
+{
+    g_buffer.resize(newSize);
+}
+
 void start()
 {
     auto now = std::chrono::system_clock::now();
