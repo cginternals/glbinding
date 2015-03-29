@@ -19,21 +19,23 @@ RingBuffer<T>::RingBuffer(const unsigned int maxSize)
 }
 
 template <typename T>
-T RingBuffer<T>::nextHead()
+T RingBuffer<T>::nextHead(bool & available)
 {
     auto head = m_head.load(std::memory_order_relaxed);
     auto nextHead = next(head);
 
     if (isFull(nextHead))
     {
+        available = false;
         return nullptr;
     }
 
+    available = true;
     return m_buffer[nextHead];
 }
 
 template <typename T>
-bool RingBuffer<T>::push(T && object)
+bool RingBuffer<T>::push(T && entry)
 {
     auto head = m_head.load(std::memory_order_relaxed);
     auto nextHead = next(head);
@@ -48,10 +50,10 @@ bool RingBuffer<T>::push(T && object)
     if (m_buffer.size() <= head)
     {
         // This should never happen because m_buffer is reserving m_size
-        m_buffer.push_back(object);
+        m_buffer.push_back(entry);
     }
     else
-        m_buffer[head] = object;
+        m_buffer[head] = entry;
 
     m_head.store(nextHead, std::memory_order_release);
 
@@ -59,7 +61,7 @@ bool RingBuffer<T>::push(T && object)
 }
 
 template <typename T>
-bool RingBuffer<T>::push(T & object)
+bool RingBuffer<T>::push(T & entry)
 {
     auto head = m_head.load(std::memory_order_relaxed);
     auto nextHead = next(head);
@@ -73,11 +75,11 @@ bool RingBuffer<T>::push(T & object)
 
     if (m_buffer.size() <= head)
     {
-        m_buffer.push_back(object);
+        m_buffer.push_back(entry);
     }
     else
     {
-        m_buffer[head] = object;
+        m_buffer[head] = entry;
     }
 
     m_head.store(nextHead, std::memory_order_release);

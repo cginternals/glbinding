@@ -128,11 +128,19 @@ void log(bool enable)
 
 void log(FunctionCall * call)
 {
-    delete g_buffer.nextHead();
+    bool available = false;
+    auto next = g_buffer.nextHead(available);
 
-    while(!g_buffer.push(call))
+    while (!available)
     {
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        next = g_buffer.nextHead(available);
     }
+
+    assert(!g_buffer.isFull());
+
+    delete next;
+    g_buffer.push(call);
 }
 
 TailIdentifier addTail()

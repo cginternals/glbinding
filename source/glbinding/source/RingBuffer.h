@@ -17,9 +17,9 @@ public:
     using SizeType = unsigned int;
     RingBuffer(SizeType maxSize);
 
-    T nextHead();
-    bool push(T &&);
-    bool push(T &);
+    T nextHead(bool & available);
+    bool push(T && entry);
+    bool push(T & entry);
 
     using TailIdentifier = unsigned int;
     TailIdentifier addTail();
