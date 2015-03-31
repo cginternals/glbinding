@@ -111,16 +111,35 @@ namespace
         }
     };
 
+    template <typename T>
+    std::string string(const std::array<T, 1> & data)
+    {
+        std::stringstream stream;
+
+        if (identity<T, 1>::valid(data))
+        {
+            stream << identity<T, 1>::str();
+        }
+        else
+        {
+            stream << data[0];
+        }
+
+        return stream.str();
+    }
+
     template <typename T, int count>
     std::string string(const std::array<T, count> & data)
     {
         std::stringstream stream;
 
         if (identity<T, count>::valid(data))
+        {
             stream << identity<T, count>::str();
+        }
         else
         {
-            if (data.size() > 1)
+            if (count > 1)
                 stream << "(";
 
             for (int i = 0; i < count; ++i)
@@ -130,7 +149,7 @@ namespace
                     stream << ", ";
             }
 
-            if (data.size() > 1)
+            if (count > 1)
                 stream << ")";
         }
 
