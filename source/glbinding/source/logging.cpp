@@ -36,63 +36,26 @@ void resize(const unsigned int newSize)
 
 void start()
 {
-    auto now = std::chrono::system_clock::now();
-
-    auto now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
-    auto ms = now_ms.count() % 1000;
-
-    auto now_c = std::chrono::system_clock::to_time_t(now);
-    char time_string[20];
-    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&now_c));
-
-    std::ostringstream ms_os;
-    ms_os << std::setfill('0') << std::setw(3) << ms;
-
-    std::ostringstream os;
-    os << "logs/";
-    os << time_string << "-" << ms_os.str();
-    os << ".log";
-    
-    auto logname = os.str();
-
-    start(logname);
+    auto filepath = getStandardFilepath();
+    start(filepath);
 }
 
 void start(const std::string & filepath)
 {
     addCallbackMask(CallbackMask::Logging);
+    startWriter(filepath);
+}
 
-    g_stop = false;
-    g_persisted = false;
+void startExcept(const std::set<std::string> & blackList)
+{
+    auto filepath = getStandardFilepath();
+    start(filepath);
+}
 
-    std::thread writer([filepath]()
-    {
-        auto key = g_buffer.addTail();
-        std::ofstream logfile;
-        logfile.open (filepath, std::ios::out);
-
-        while (!g_stop || (g_buffer.size(key) != 0))
-        {
-            auto i = g_buffer.cbegin(key);
-
-            while (g_buffer.valid(key, i))
-            {
-                logfile << (*i)->toString();
-                i = g_buffer.next(key, i);
-            }
-
-            logfile.flush();
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
-        }
-
-        logfile.close();
-        g_buffer.removeTail(key);
-        g_persisted = true;
-        g_finishcheck.notify_all();
-    });
-
-    writer.detach();
+void start(const std::string & filepath, const std::set<std::string> & blackList)
+{
+    addCallbackMaskExcept(CallbackMask::Logging, blackList);
+    startWriter(filepath);
 }
 
 void stop()
@@ -134,6 +97,64 @@ void log(FunctionCall * call)
 
     delete next;
     g_buffer.push(call);
+}
+
+void startWriter(const std::string & filepath)
+{
+    g_stop = false;
+    g_persisted = false;
+
+    std::thread writer([filepath]()
+    {
+        auto key = g_buffer.addTail();
+        std::ofstream logfile;
+        logfile.open (filepath, std::ios::out);
+
+        while (!g_stop || (g_buffer.size(key) != 0))
+        {
+            auto i = g_buffer.cbegin(key);
+
+            while (g_buffer.valid(key, i))
+            {
+                logfile << (*i)->toString();
+                i = g_buffer.next(key, i);
+            }
+
+            logfile.flush();
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        }
+
+        logfile.close();
+        g_buffer.removeTail(key);
+        g_persisted = true;
+        g_finishcheck.notify_all();
+    });
+
+    writer.detach();
+}
+
+const std::string getStandardFilepath()
+{
+    auto now = std::chrono::system_clock::now();
+
+    auto now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
+    auto ms = now_ms.count() % 1000;
+
+    auto now_c = std::chrono::system_clock::to_time_t(now);
+    char time_string[20];
+    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&now_c));
+
+    std::ostringstream ms_os;
+    ms_os << std::setfill('0') << std::setw(3) << ms;
+
+    std::ostringstream os;
+    os << "logs/";
+    os << time_string << "-" << ms_os.str();
+    os << ".log";
+    
+    auto logname = os.str();
+    return logname;
 }
 
 TailIdentifier addTail()

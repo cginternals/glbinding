@@ -142,6 +142,17 @@ void addCallbackMask(const CallbackMask mask)
     }
 }
 
+void addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+{
+    for (AbstractFunction * function : Binding::functions())
+    {
+        if (blackList.find(function->name()) == blackList.end())
+        {
+            function->addCallbackMask(mask);
+        }
+    }
+}
+
 void removeCallbackMask(const CallbackMask mask)
 {
     for (AbstractFunction * function : Binding::functions())

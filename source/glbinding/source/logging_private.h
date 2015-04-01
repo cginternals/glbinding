@@ -8,8 +8,10 @@ namespace glbinding
 
 namespace logging
 {
-    using BufferType = FunctionCall*;
+    void startWriter(const std::string & filepath);
+    const std::string getStandardFilepath();
 
+    using BufferType = FunctionCall*;
     using TailIdentifier = unsigned int;
     TailIdentifier addTail();
     void removeTail(TailIdentifier);

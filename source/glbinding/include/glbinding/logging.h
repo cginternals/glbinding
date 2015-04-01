@@ -12,6 +12,8 @@ namespace logging
 
     GLBINDING_API void start();
     GLBINDING_API void start(const std::string & filepath);
+    GLBINDING_API void startExcept(const std::set<std::string> & blackList);
+    GLBINDING_API void startExcept(const std::string & filepath, const std::set<std::string> & blackList);
     GLBINDING_API void stop();
     GLBINDING_API void pause();
     GLBINDING_API void resume();
