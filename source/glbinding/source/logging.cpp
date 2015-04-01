@@ -49,10 +49,10 @@ void start(const std::string & filepath)
 void startExcept(const std::set<std::string> & blackList)
 {
     auto filepath = getStandardFilepath();
-    start(filepath);
+    startExcept(filepath, blackList);
 }
 
-void start(const std::string & filepath, const std::set<std::string> & blackList)
+void startExcept(const std::string & filepath, const std::set<std::string> & blackList)
 {
     addCallbackMaskExcept(CallbackMask::Logging, blackList);
     startWriter(filepath);
