@@ -7,11 +7,12 @@
 #include <sstream>
 #include <thread>
 
+#include "logging_private.h"
 #include "RingBuffer.h"
 
 namespace
 {
-    const unsigned int LOG_BUFFER_SIZE = 1000000;
+    const unsigned int LOG_BUFFER_SIZE = 5000;
 
     std::atomic<bool> g_stop{false};
     std::atomic<bool> g_persisted{false};
@@ -28,35 +29,78 @@ namespace glbinding
 namespace logging
 {
 
+void resize(const unsigned int newSize)
+{
+    g_buffer.resize(newSize);
+}
+
 void start()
 {
-    auto now = std::chrono::system_clock::now();
-
-
-    auto now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
-    auto ms = now_ms.count() % 1000;
-
-    auto now_c = std::chrono::system_clock::to_time_t(now);
-    char time_string[20];
-    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&now_c));
-
-    std::ostringstream ms_os;
-    ms_os << std::setfill('0') << std::setw(3) << ms;
-
-    std::ostringstream os;
-    os << "logs/";
-    os << time_string << "-" << ms_os.str();
-    os << ".log";
-    
-    auto logname = os.str();
-
-    start(logname);
+    auto filepath = getStandardFilepath();
+    start(filepath);
 }
 
 void start(const std::string & filepath)
 {
     addCallbackMask(CallbackMask::Logging);
+    startWriter(filepath);
+}
 
+void startExcept(const std::set<std::string> & blackList)
+{
+    auto filepath = getStandardFilepath();
+    startExcept(filepath, blackList);
+}
+
+void startExcept(const std::string & filepath, const std::set<std::string> & blackList)
+{
+    addCallbackMaskExcept(CallbackMask::Logging, blackList);
+    startWriter(filepath);
+}
+
+void stop()
+{
+    removeCallbackMask(CallbackMask::Logging);
+
+    g_stop = true;
+    std::unique_lock<std::mutex> locker(g_lockfinish);
+
+    // Spurious wake-ups: http://www.codeproject.com/Articles/598695/Cplusplus-threads-locks-and-condition-variables
+    while(!g_persisted)
+    {
+        g_finishcheck.wait(locker);
+    }
+}
+
+void pause()
+{
+    removeCallbackMask(CallbackMask::Logging);
+}
+
+void resume()
+{
+    addCallbackMask(CallbackMask::Logging);
+}
+
+void log(FunctionCall * call)
+{
+    bool available = false;
+    auto next = g_buffer.nextHead(available);
+
+    while (!available)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        next = g_buffer.nextHead(available);
+    }
+
+    assert(!g_buffer.isFull());
+
+    delete next;
+    g_buffer.push(call);
+}
+
+void startWriter(const std::string & filepath)
+{
     g_stop = false;
     g_persisted = false;
 
@@ -78,7 +122,7 @@ void start(const std::string & filepath)
 
             logfile.flush();
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
 
         logfile.close();
@@ -90,49 +134,27 @@ void start(const std::string & filepath)
     writer.detach();
 }
 
-void stop()
+const std::string getStandardFilepath()
 {
-    g_stop = true;
-    std::unique_lock<std::mutex> locker(g_lockfinish);
+    auto now = std::chrono::system_clock::now();
 
-    // Spurious wake-ups: http://www.codeproject.com/Articles/598695/Cplusplus-threads-locks-and-condition-variables
-    while(!g_persisted)
-    {
-        g_finishcheck.wait(locker);
-    }
+    auto now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
+    auto ms = now_ms.count() % 1000;
 
-    removeCallbackMask(CallbackMask::Logging);
-}
+    auto now_c = std::chrono::system_clock::to_time_t(now);
+    char time_string[20];
+    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&now_c));
 
-void pause()
-{
-    removeCallbackMask(CallbackMask::Logging);
-}
+    std::ostringstream ms_os;
+    ms_os << std::setfill('0') << std::setw(3) << ms;
 
-void resume()
-{
-    addCallbackMask(CallbackMask::Logging);
-}
-
-void log(bool enable)
-{
-    if (enable)
-    {
-        start();
-    }
-    else
-    {
-        stop();
-    }
-}
-
-void log(FunctionCall * call)
-{
-    delete g_buffer.nextHead();
-
-    while(!g_buffer.push(call))
-    {
-    }
+    std::ostringstream os;
+    os << "logs/";
+    os << time_string << "-" << ms_os.str();
+    os << ".log";
+    
+    auto logname = os.str();
+    return logname;
 }
 
 TailIdentifier addTail()

@@ -296,5 +296,18 @@ TEST_F(RingBuffer_test, MultiThreadedTest2)
     EXPECT_EQ(0u, buffer.size());
 }
 
+TEST_F(RingBuffer_test, ResizeTest)
+{
+
+    RingBuffer<int> buffer(10);
+
+    EXPECT_EQ(0u, buffer.size());
+    EXPECT_EQ(10u, buffer.maxSize());
+
+    buffer.resize(20u);
+
+    EXPECT_EQ(0u, buffer.size());
+    EXPECT_EQ(20u, buffer.maxSize());
+}
 
 

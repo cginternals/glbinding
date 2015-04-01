@@ -54,6 +54,7 @@ GLBINDING_API CallbackMask& operator&=(CallbackMask& a, CallbackMask b);
 GLBINDING_API void setCallbackMask(CallbackMask mask);
 GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
 GLBINDING_API void addCallbackMask(CallbackMask mask);
+GLBINDING_API void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
 GLBINDING_API void removeCallbackMask(CallbackMask mask);
 
 using SimpleFunctionCallback = std::function<void(const AbstractFunction &)>;
