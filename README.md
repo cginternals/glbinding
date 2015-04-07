@@ -35,6 +35,7 @@ int main()
 | [drone.io](https://drone.io/github.com/hpicgs/glbinding) | Ubuntu  | [![Build Status](https://drone.io/github.com/hpicgs/glbinding/status.png)](https://drone.io/github.com/hpicgs/glbinding/latest) |
 | Jenkins | Ubuntu GCC 4.8 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
 | Jenkins | Ubuntu Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
+| Jenkins | OS X Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
 | Jenkins | Windows MSVC 2013 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
 | Jenkins | Windows MSVC 2013<br>(all options) | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013 (all options)&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013 (all options)) |
 | [Coverity](https://scan.coverity.com/projects/2705?tab=overview) | Ubuntu GCC 4.8 | [![Coverity Status](https://scan.coverity.com/projects/2705/badge.svg)](https://scan.coverity.com/projects/2705) |
