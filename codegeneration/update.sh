@@ -21,4 +21,6 @@ then
   echo "$rnew" > gl.revision
   echo "local revision of gl.xml is $rnew"
   echo ""
+  git diff gl.xml
+  echo ""
 fi
