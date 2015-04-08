@@ -7,8 +7,8 @@
 #    define GLBINDING_API_EXPORT_DECLARATION __attribute__ ((visibility ("default")))
 #    define GLBINDING_API_IMPORT_DECLARATION __attribute__ ((visibility ("default")))
 #else
-#   define GLBINDING_API_EXPORT_DECLARATION
-#   define GLBINDING_API_IMPORT_DECLARATION
+#   define GLBINDING_API_EXPORT_DECLARATION __attribute__ ((visibility ("default")))
+#   define GLBINDING_API_IMPORT_DECLARATION __attribute__ ((visibility ("default")))
 #endif
 
 #ifndef GLBINDING_STATIC

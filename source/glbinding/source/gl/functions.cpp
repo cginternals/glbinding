@@ -696,6 +696,11 @@ void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, c
     return glbinding::Binding::BufferSubDataARB(target, offset, size, data);
 }
 
+void glCallCommandListNV(GLuint list)
+{
+    return glbinding::Binding::CallCommandListNV(list);
+}
+
 void glCallList(GLuint list)
 {
     return glbinding::Binding::CallList(list);
@@ -1331,6 +1336,16 @@ void glCombinerStageParameterfvNV(GLenum stage, GLenum pname, const GLfloat * pa
     return glbinding::Binding::CombinerStageParameterfvNV(stage, pname, params);
 }
 
+void glCommandListSegmentsNV(GLuint list, GLuint segments)
+{
+    return glbinding::Binding::CommandListSegmentsNV(list, segments);
+}
+
+void glCompileCommandListNV(GLuint list)
+{
+    return glbinding::Binding::CompileCommandListNV(list);
+}
+
 void glCompileShader(GLuint shader)
 {
     return glbinding::Binding::CompileShader(shader);
@@ -1771,6 +1786,11 @@ void glCreateBuffers(GLsizei n, GLuint * buffers)
     return glbinding::Binding::CreateBuffers(n, buffers);
 }
 
+void glCreateCommandListsNV(GLsizei n, GLuint * lists)
+{
+    return glbinding::Binding::CreateCommandListsNV(n, lists);
+}
+
 void glCreateFramebuffers(GLsizei n, GLuint * framebuffers)
 {
     return glbinding::Binding::CreateFramebuffers(n, framebuffers);
@@ -1829,6 +1849,11 @@ GLuint glCreateShaderProgramEXT(GLenum type, const GLchar * string)
 GLuint glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar *const* strings)
 {
     return glbinding::Binding::CreateShaderProgramv(type, count, strings);
+}
+
+void glCreateStatesNV(GLsizei n, GLuint * states)
+{
+    return glbinding::Binding::CreateStatesNV(n, states);
 }
 
 GLsync glCreateSyncFromCLeventARB(_cl_context * context, _cl_event * event, UnusedMask flags)
@@ -1946,6 +1971,11 @@ void glDeleteBuffersARB(GLsizei n, const GLuint * buffers)
     return glbinding::Binding::DeleteBuffersARB(n, buffers);
 }
 
+void glDeleteCommandListsNV(GLsizei n, const GLuint * lists)
+{
+    return glbinding::Binding::DeleteCommandListsNV(n, lists);
+}
+
 void glDeleteFencesAPPLE(GLsizei n, const GLuint * fences)
 {
     return glbinding::Binding::DeleteFencesAPPLE(n, fences);
@@ -2059,6 +2089,11 @@ void glDeleteSamplers(GLsizei count, const GLuint * samplers)
 void glDeleteShader(GLuint shader)
 {
     return glbinding::Binding::DeleteShader(shader);
+}
+
+void glDeleteStatesNV(GLsizei n, const GLuint * states)
+{
+    return glbinding::Binding::DeleteStatesNV(n, states);
 }
 
 void glDeleteSync(GLsync sync)
@@ -2304,6 +2339,26 @@ void glDrawBuffersARB(GLsizei n, const GLenum * bufs)
 void glDrawBuffersATI(GLsizei n, const GLenum * bufs)
 {
     return glbinding::Binding::DrawBuffersATI(n, bufs);
+}
+
+void glDrawCommandsAddressNV(GLenum primitiveMode, const GLuint64 * indirects, const GLsizei * sizes, GLuint count)
+{
+    return glbinding::Binding::DrawCommandsAddressNV(primitiveMode, indirects, sizes, count);
+}
+
+void glDrawCommandsNV(GLenum primitiveMode, GLuint buffer, const GLintptr * indirects, const GLsizei * sizes, GLuint count)
+{
+    return glbinding::Binding::DrawCommandsNV(primitiveMode, buffer, indirects, sizes, count);
+}
+
+void glDrawCommandsStatesAddressNV(const GLuint64 * indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count)
+{
+    return glbinding::Binding::DrawCommandsStatesAddressNV(indirects, sizes, states, fbos, count);
+}
+
+void glDrawCommandsStatesNV(GLuint buffer, const GLintptr * indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count)
+{
+    return glbinding::Binding::DrawCommandsStatesNV(buffer, indirects, sizes, states, fbos, count);
 }
 
 void glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count)
@@ -3531,6 +3586,11 @@ void glGetCombinerStageParameterfvNV(GLenum stage, GLenum pname, GLfloat * param
     return glbinding::Binding::GetCombinerStageParameterfvNV(stage, pname, params);
 }
 
+GLuint glGetCommandHeaderNV(GLenum tokenID, GLuint size)
+{
+    return glbinding::Binding::GetCommandHeaderNV(tokenID, size);
+}
+
 void glGetCompressedMultiTexImageEXT(GLenum texunit, GLenum target, GLint lod, void * img)
 {
     return glbinding::Binding::GetCompressedMultiTexImageEXT(texunit, target, lod, img);
@@ -4736,6 +4796,11 @@ void glGetSharpenTexFuncSGIS(GLenum target, GLfloat * points)
     return glbinding::Binding::GetSharpenTexFuncSGIS(target, points);
 }
 
+GLushort glGetStageIndexNV(GLenum shadertype)
+{
+    return glbinding::Binding::GetStageIndexNV(shadertype);
+}
+
 const GLubyte * glGetString(GLenum name)
 {
     return glbinding::Binding::GetString(name);
@@ -5761,6 +5826,11 @@ GLboolean glIsBufferResidentNV(GLenum target)
     return glbinding::Binding::IsBufferResidentNV(target);
 }
 
+GLboolean glIsCommandListNV(GLuint list)
+{
+    return glbinding::Binding::IsCommandListNV(list);
+}
+
 GLboolean glIsEnabled(GLenum cap)
 {
     return glbinding::Binding::IsEnabled(cap);
@@ -5899,6 +5969,11 @@ GLboolean glIsSampler(GLuint sampler)
 GLboolean glIsShader(GLuint shader)
 {
     return glbinding::Binding::IsShader(shader);
+}
+
+GLboolean glIsStateNV(GLuint state)
+{
+    return glbinding::Binding::IsStateNV(state);
 }
 
 GLboolean glIsSync(GLsync sync)
@@ -6054,6 +6129,11 @@ void glLinkProgramARB(GLhandleARB programObj)
 void glListBase(GLuint base)
 {
     return glbinding::Binding::ListBase(base);
+}
+
+void glListDrawCommandsStatesClientNV(GLuint list, GLuint segment, const void ** indirects, const GLsizei * sizes, const GLuint * states, const GLuint * fbos, GLuint count)
+{
+    return glbinding::Binding::ListDrawCommandsStatesClientNV(list, segment, indirects, sizes, states, fbos, count);
 }
 
 void glListParameterfSGIX(GLuint list, GLenum pname, GLfloat param)
@@ -9939,6 +10019,11 @@ void glSpriteParameterivSGIX(GLenum pname, const GLint * params)
 void glStartInstrumentsSGIX()
 {
     return glbinding::Binding::StartInstrumentsSGIX();
+}
+
+void glStateCaptureNV(GLuint state, GLenum mode)
+{
+    return glbinding::Binding::StateCaptureNV(state, mode);
 }
 
 void glStencilClearTagEXT(GLsizei stencilTagBits, GLuint stencilClearTag)

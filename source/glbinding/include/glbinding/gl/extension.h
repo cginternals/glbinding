@@ -366,6 +366,7 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_NV_blend_equation_advanced,
     GL_NV_blend_equation_advanced_coherent,
     GL_NV_blend_square,
+    GL_NV_command_list,
     GL_NV_compute_program5,
     GL_NV_conditional_render,
     GL_NV_conservative_raster,

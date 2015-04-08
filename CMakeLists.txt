@@ -7,8 +7,8 @@ cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
 set(META_PROJECT_NAME        "glbinding")
 set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
 set(META_VERSION_MAJOR       "1")
-set(META_VERSION_MINOR       "0")
-set(META_VERSION_PATCH       "5")
+set(META_VERSION_MINOR       "1")
+set(META_VERSION_PATCH       "0")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_AUTHOR_ORGANIZATION "hpicgs group")
 set(META_AUTHOR_DOMAIN       "https://github.com/hpicgs/glbinding")
@@ -87,6 +87,8 @@ elseif(WIN32 AND CMAKE_COMPILER_IS_GNUCXX)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformWindowsGCC.cmake)
 elseif(APPLE)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformMacOS.cmake)
+elseif(UNIX AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformLinuxClang.cmake)
 elseif(UNIX)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformLinuxGCC.cmake)
 else()
@@ -143,14 +145,24 @@ else()
 
         # We have to change the RPATH of binaries to achieve a usable local install.
         # [TODO] For binaries, "$ORIGIN/lib" is right, so that libraries are found in ./lib.
-        #        However, I have not yet tested what happens when libraries use other libraries.
-        #        In that case, they might need the rpath $ORIGIN instead ...
-        set(CMAKE_SKIP_BUILD_RPATH            FALSE)         # Use automatic rpath for build
-        set(CMAKE_BUILD_WITH_INSTALL_RPATH    FALSE)         # Use specific rpath for INSTALL
-        set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)         # NO automatic rpath for INSTALL
-        set(CMAKE_INSTALL_RPATH               "$ORIGIN/lib") # Libraries are relative to binary
-    endif()
+        # However, I have not yet tested what happens when libraries use other libraries.
+        # In that case, they might need the rpath $ORIGIN instead ...
+        set(CMAKE_SKIP_BUILD_RPATH FALSE)            # Use automatic rpath for build
+        set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)    # Use specific rpath for INSTALL
+        set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE) # NO automatic rpath for INSTALL
 
+        # Libraries are relative to binary
+        if (APPLE)
+            set(CMAKE_INSTALL_RPATH "@executable_path/${INSTALL_LIB}")
+        else()
+            set(CMAKE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")       
+        endif()
+    else()
+        if (APPLE)
+            set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${INSTALL_LIB}") # Add rpath of project libraries
+            set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)                       # Add rpaths of depending libraries
+        endif()
+    endif()
 endif()
 
 
@@ -161,11 +173,15 @@ create_revision_file(${CMAKE_BINARY_DIR}/revision ${INSTALL_ROOT})
 
 # Project meta files
 install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT dev)
-if(NOT OPTION_BUILD_STATIC)
-    install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+
+if(NOT WIN32) # this leads to deployment of multiple revision files for unix package managers
+    if(NOT OPTION_BUILD_STATIC)
+        install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+    endif()
+    install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT examples)
+    install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT tools)
 endif()
-install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT examples)
-install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT tools)
+
 install(FILES AUTHORS                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)
 install(FILES LICENSE                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)
 install(FILES codegeneration/gl.revision   DESTINATION ${INSTALL_ROOT} COMPONENT dev)
@@ -173,7 +189,7 @@ install(FILES glbinding-config.cmake       DESTINATION ${INSTALL_ROOT} COMPONENT
 
 # Data files
 if(OPTION_BUILD_EXAMPLES)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA} COMPONENT examples)
+    install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA} COMPONENT examples)
 endif()
 
 # Include projects

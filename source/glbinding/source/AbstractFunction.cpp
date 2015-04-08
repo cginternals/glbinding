@@ -155,7 +155,7 @@ bool AbstractFunction::isAnyEnabled(const CallbackMask mask) const
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
     
     return (static_cast<callback_mask_t>(state().callbackMask) 
-        ^ static_cast<callback_mask_t>(mask)) != 0;
+        & static_cast<callback_mask_t>(mask)) != 0;
 }
 
 CallbackMask AbstractFunction::callbackMask() const

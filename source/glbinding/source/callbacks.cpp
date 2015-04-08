@@ -75,17 +75,17 @@ CallbackMask& operator&=(CallbackMask& a, CallbackMask b)
 
 std::string FunctionCall::toString() const
 {   
-    using nanoseconds = std::chrono::nanoseconds;
-    nanoseconds now_ns = std::chrono::duration_cast<nanoseconds>(timestamp.time_since_epoch());
-    std::size_t ns = now_ns.count() % 1000;
-    std::ostringstream ns_os;
-    ns_os << std::setfill('0') << std::setw(3) << ns;
+    using microseconds = std::chrono::microseconds;
+    microseconds now_micros = std::chrono::duration_cast<microseconds>(timestamp.time_since_epoch());
+    std::size_t micros = now_micros.count() % 1000;
+    std::ostringstream micros_os;
+    micros_os << std::setfill('0') << std::setw(3) << micros;
 
     using milliseconds = std::chrono::milliseconds;
-    milliseconds now_ms = std::chrono::duration_cast<milliseconds>(now_ns);
-    std::size_t ms = now_ms.count() % 1000;
-    std::ostringstream ms_os;
-    ms_os << std::setfill('0') << std::setw(3) << ms;
+    milliseconds now_millis = std::chrono::duration_cast<milliseconds>(now_micros);
+    std::size_t millis = now_millis.count() % 1000;
+    std::ostringstream millis_os;
+    millis_os << std::setfill('0') << std::setw(3) << millis;
 
     auto t = std::chrono::system_clock::to_time_t(timestamp);
     char time_string[20];
@@ -93,7 +93,7 @@ std::string FunctionCall::toString() const
 
     std::ostringstream os;
 
-    os << time_string << ":" << ms_os.str() << ":" << ns_os.str() << " ";
+    os << time_string << ":" << millis_os.str() << ":" << micros_os.str() << " ";
     os << function->name() << "(";
 
     for (unsigned i = 0; i < parameters.size(); ++i)
@@ -139,6 +139,17 @@ void addCallbackMask(const CallbackMask mask)
     for (AbstractFunction * function : Binding::functions())
     {
         function->addCallbackMask(mask);
+    }
+}
+
+void addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+{
+    for (AbstractFunction * function : Binding::functions())
+    {
+        if (blackList.find(function->name()) == blackList.end())
+        {
+            function->addCallbackMask(mask);
+        }
     }
 }
 

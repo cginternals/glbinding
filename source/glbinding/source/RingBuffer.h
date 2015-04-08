@@ -17,9 +17,11 @@ public:
     using SizeType = unsigned int;
     RingBuffer(SizeType maxSize);
 
-    T nextHead();
-    bool push(T &&);
-    bool push(T &);
+    void resize(SizeType newSize);
+
+    T nextHead(bool & available);
+    bool push(T && entry);
+    bool push(T & entry);
 
     using TailIdentifier = unsigned int;
     TailIdentifier addTail();
@@ -42,7 +44,7 @@ protected:
 
 protected:
     std::vector<T> m_buffer;
-    const SizeType m_size;
+    SizeType m_size;
     std::atomic<SizeType> m_head;
     std::map<TailIdentifier, std::atomic<SizeType>> m_tails;
 };

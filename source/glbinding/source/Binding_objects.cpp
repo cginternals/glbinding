@@ -171,6 +171,7 @@ Function<void, GLenum, GLenum, GLint> Binding::BufferParameteriAPPLE("glBufferPa
 Function<void, GLenum, GLsizeiptr, const void *, BufferStorageMask> Binding::BufferStorage("glBufferStorage");
 Function<void, GLenum, GLintptr, GLsizeiptr, const void *> Binding::BufferSubData("glBufferSubData");
 Function<void, GLenum, GLintptrARB, GLsizeiptrARB, const void *> Binding::BufferSubDataARB("glBufferSubDataARB");
+Function<void, GLuint> Binding::CallCommandListNV("glCallCommandListNV");
 Function<void, GLuint> Binding::CallList("glCallList");
 Function<void, GLsizei, GLenum, const void *> Binding::CallLists("glCallLists");
 Function<GLenum, GLenum> Binding::CheckFramebufferStatus("glCheckFramebufferStatus");
@@ -298,6 +299,8 @@ Function<void, GLenum, const GLfloat *> Binding::CombinerParameterfvNV("glCombin
 Function<void, GLenum, GLint> Binding::CombinerParameteriNV("glCombinerParameteriNV");
 Function<void, GLenum, const GLint *> Binding::CombinerParameterivNV("glCombinerParameterivNV");
 Function<void, GLenum, GLenum, const GLfloat *> Binding::CombinerStageParameterfvNV("glCombinerStageParameterfvNV");
+Function<void, GLuint, GLuint> Binding::CommandListSegmentsNV("glCommandListSegmentsNV");
+Function<void, GLuint> Binding::CompileCommandListNV("glCompileCommandListNV");
 Function<void, GLuint> Binding::CompileShader("glCompileShader");
 Function<void, GLhandleARB> Binding::CompileShaderARB("glCompileShaderARB");
 Function<void, GLuint, GLsizei, const GLchar *const*, const GLint *> Binding::CompileShaderIncludeARB("glCompileShaderIncludeARB");
@@ -386,6 +389,7 @@ Function<void, GLuint, GLenum> Binding::CoverStrokePathNV("glCoverStrokePathNV")
 Function<void, GLenum> Binding::CoverageModulationNV("glCoverageModulationNV");
 Function<void, GLsizei, const GLfloat *> Binding::CoverageModulationTableNV("glCoverageModulationTableNV");
 Function<void, GLsizei, GLuint *> Binding::CreateBuffers("glCreateBuffers");
+Function<void, GLsizei, GLuint *> Binding::CreateCommandListsNV("glCreateCommandListsNV");
 Function<void, GLsizei, GLuint *> Binding::CreateFramebuffers("glCreateFramebuffers");
 Function<void, GLuint, GLuint *> Binding::CreatePerfQueryINTEL("glCreatePerfQueryINTEL");
 Function<GLuint> Binding::CreateProgram("glCreateProgram");
@@ -398,6 +402,7 @@ Function<GLuint, GLenum> Binding::CreateShader("glCreateShader");
 Function<GLhandleARB, GLenum> Binding::CreateShaderObjectARB("glCreateShaderObjectARB");
 Function<GLuint, GLenum, const GLchar *> Binding::CreateShaderProgramEXT("glCreateShaderProgramEXT");
 Function<GLuint, GLenum, GLsizei, const GLchar *const*> Binding::CreateShaderProgramv("glCreateShaderProgramv");
+Function<void, GLsizei, GLuint *> Binding::CreateStatesNV("glCreateStatesNV");
 Function<GLsync, _cl_context *, _cl_event *, UnusedMask> Binding::CreateSyncFromCLeventARB("glCreateSyncFromCLeventARB");
 Function<void, GLenum, GLsizei, GLuint *> Binding::CreateTextures("glCreateTextures");
 Function<void, GLsizei, GLuint *> Binding::CreateTransformFeedbacks("glCreateTransformFeedbacks");
@@ -421,6 +426,7 @@ Function<void, GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, 
 Function<void, GLuint, GLsizei> Binding::DeleteAsyncMarkersSGIX("glDeleteAsyncMarkersSGIX");
 Function<void, GLsizei, const GLuint *> Binding::DeleteBuffers("glDeleteBuffers");
 Function<void, GLsizei, const GLuint *> Binding::DeleteBuffersARB("glDeleteBuffersARB");
+Function<void, GLsizei, const GLuint *> Binding::DeleteCommandListsNV("glDeleteCommandListsNV");
 Function<void, GLsizei, const GLuint *> Binding::DeleteFencesAPPLE("glDeleteFencesAPPLE");
 Function<void, GLsizei, const GLuint *> Binding::DeleteFencesNV("glDeleteFencesNV");
 Function<void, GLuint> Binding::DeleteFragmentShaderATI("glDeleteFragmentShaderATI");
@@ -444,6 +450,7 @@ Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffers("glDeleteRe
 Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffersEXT("glDeleteRenderbuffersEXT");
 Function<void, GLsizei, const GLuint *> Binding::DeleteSamplers("glDeleteSamplers");
 Function<void, GLuint> Binding::DeleteShader("glDeleteShader");
+Function<void, GLsizei, const GLuint *> Binding::DeleteStatesNV("glDeleteStatesNV");
 Function<void, GLsync> Binding::DeleteSync("glDeleteSync");
 Function<void, GLsizei, const GLuint *> Binding::DeleteTextures("glDeleteTextures");
 Function<void, GLsizei, const GLuint *> Binding::DeleteTexturesEXT("glDeleteTexturesEXT");
@@ -493,6 +500,10 @@ Function<void, GLenum> Binding::DrawBuffer("glDrawBuffer");
 Function<void, GLsizei, const GLenum *> Binding::DrawBuffers("glDrawBuffers");
 Function<void, GLsizei, const GLenum *> Binding::DrawBuffersARB("glDrawBuffersARB");
 Function<void, GLsizei, const GLenum *> Binding::DrawBuffersATI("glDrawBuffersATI");
+Function<void, GLenum, const GLuint64 *, const GLsizei *, GLuint> Binding::DrawCommandsAddressNV("glDrawCommandsAddressNV");
+Function<void, GLenum, GLuint, const GLintptr *, const GLsizei *, GLuint> Binding::DrawCommandsNV("glDrawCommandsNV");
+Function<void, const GLuint64 *, const GLsizei *, const GLuint *, const GLuint *, GLuint> Binding::DrawCommandsStatesAddressNV("glDrawCommandsStatesAddressNV");
+Function<void, GLuint, const GLintptr *, const GLsizei *, const GLuint *, const GLuint *, GLuint> Binding::DrawCommandsStatesNV("glDrawCommandsStatesNV");
 Function<void, GLenum, GLint, GLsizei> Binding::DrawElementArrayAPPLE("glDrawElementArrayAPPLE");
 Function<void, GLenum, GLsizei> Binding::DrawElementArrayATI("glDrawElementArrayATI");
 Function<void, GLenum, GLsizei, GLenum, const void *> Binding::DrawElements("glDrawElements");
@@ -738,6 +749,7 @@ Function<void, GLenum, GLenum, GLenum, GLenum, GLint *> Binding::GetCombinerInpu
 Function<void, GLenum, GLenum, GLenum, GLfloat *> Binding::GetCombinerOutputParameterfvNV("glGetCombinerOutputParameterfvNV");
 Function<void, GLenum, GLenum, GLenum, GLint *> Binding::GetCombinerOutputParameterivNV("glGetCombinerOutputParameterivNV");
 Function<void, GLenum, GLenum, GLfloat *> Binding::GetCombinerStageParameterfvNV("glGetCombinerStageParameterfvNV");
+Function<GLuint, GLenum, GLuint> Binding::GetCommandHeaderNV("glGetCommandHeaderNV");
 Function<void, GLenum, GLenum, GLint, void *> Binding::GetCompressedMultiTexImageEXT("glGetCompressedMultiTexImageEXT");
 Function<void, GLenum, GLint, void *> Binding::GetCompressedTexImage("glGetCompressedTexImage");
 Function<void, GLenum, GLint, void *> Binding::GetCompressedTexImageARB("glGetCompressedTexImageARB");
@@ -979,6 +991,7 @@ Function<void, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetShaderSource("g
 Function<void, GLhandleARB, GLsizei, GLsizei *, GLcharARB *> Binding::GetShaderSourceARB("glGetShaderSourceARB");
 Function<void, GLuint, GLenum, GLint *> Binding::GetShaderiv("glGetShaderiv");
 Function<void, GLenum, GLfloat *> Binding::GetSharpenTexFuncSGIS("glGetSharpenTexFuncSGIS");
+Function<GLushort, GLenum> Binding::GetStageIndexNV("glGetStageIndexNV");
 Function<const GLubyte *, GLenum> Binding::GetString("glGetString");
 Function<const GLubyte *, GLenum, GLuint> Binding::GetStringi("glGetStringi");
 Function<GLuint, GLuint, GLenum, const GLchar *> Binding::GetSubroutineIndex("glGetSubroutineIndex");
@@ -1184,6 +1197,7 @@ Function<GLboolean, GLuint> Binding::IsAsyncMarkerSGIX("glIsAsyncMarkerSGIX");
 Function<GLboolean, GLuint> Binding::IsBuffer("glIsBuffer");
 Function<GLboolean, GLuint> Binding::IsBufferARB("glIsBufferARB");
 Function<GLboolean, GLenum> Binding::IsBufferResidentNV("glIsBufferResidentNV");
+Function<GLboolean, GLuint> Binding::IsCommandListNV("glIsCommandListNV");
 Function<GLboolean, GLenum> Binding::IsEnabled("glIsEnabled");
 Function<GLboolean, GLenum, GLuint> Binding::IsEnabledIndexedEXT("glIsEnabledIndexedEXT");
 Function<GLboolean, GLenum, GLuint> Binding::IsEnabledi("glIsEnabledi");
@@ -1212,6 +1226,7 @@ Function<GLboolean, GLuint> Binding::IsRenderbuffer("glIsRenderbuffer");
 Function<GLboolean, GLuint> Binding::IsRenderbufferEXT("glIsRenderbufferEXT");
 Function<GLboolean, GLuint> Binding::IsSampler("glIsSampler");
 Function<GLboolean, GLuint> Binding::IsShader("glIsShader");
+Function<GLboolean, GLuint> Binding::IsStateNV("glIsStateNV");
 Function<GLboolean, GLsync> Binding::IsSync("glIsSync");
 Function<GLboolean, GLuint> Binding::IsTexture("glIsTexture");
 Function<GLboolean, GLuint> Binding::IsTextureEXT("glIsTextureEXT");
@@ -1243,6 +1258,7 @@ Function<void, GLfixed> Binding::LineWidthxOES("glLineWidthxOES");
 Function<void, GLuint> Binding::LinkProgram("glLinkProgram");
 Function<void, GLhandleARB> Binding::LinkProgramARB("glLinkProgramARB");
 Function<void, GLuint> Binding::ListBase("glListBase");
+Function<void, GLuint, GLuint, const void **, const GLsizei *, const GLuint *, const GLuint *, GLuint> Binding::ListDrawCommandsStatesClientNV("glListDrawCommandsStatesClientNV");
 Function<void, GLuint, GLenum, GLfloat> Binding::ListParameterfSGIX("glListParameterfSGIX");
 Function<void, GLuint, GLenum, const GLfloat *> Binding::ListParameterfvSGIX("glListParameterfvSGIX");
 Function<void, GLuint, GLenum, GLint> Binding::ListParameteriSGIX("glListParameteriSGIX");
@@ -2020,6 +2036,7 @@ Function<void, GLenum, const GLfloat *> Binding::SpriteParameterfvSGIX("glSprite
 Function<void, GLenum, GLint> Binding::SpriteParameteriSGIX("glSpriteParameteriSGIX");
 Function<void, GLenum, const GLint *> Binding::SpriteParameterivSGIX("glSpriteParameterivSGIX");
 Function<void> Binding::StartInstrumentsSGIX("glStartInstrumentsSGIX");
+Function<void, GLuint, GLenum> Binding::StateCaptureNV("glStateCaptureNV");
 Function<void, GLsizei, GLuint> Binding::StencilClearTagEXT("glStencilClearTagEXT");
 Function<void, GLsizei, GLenum, const void *, GLuint, GLenum, GLuint, GLenum, const GLfloat *> Binding::StencilFillPathInstancedNV("glStencilFillPathInstancedNV");
 Function<void, GLuint, GLenum, GLuint> Binding::StencilFillPathNV("glStencilFillPathNV");
@@ -2963,6 +2980,7 @@ const Binding::array_t Binding::s_functions =
     &BufferStorage,
     &BufferSubData,
     &BufferSubDataARB,
+    &CallCommandListNV,
     &CallList,
     &CallLists,
     &CheckFramebufferStatus,
@@ -3090,6 +3108,8 @@ const Binding::array_t Binding::s_functions =
     &CombinerParameteriNV,
     &CombinerParameterivNV,
     &CombinerStageParameterfvNV,
+    &CommandListSegmentsNV,
+    &CompileCommandListNV,
     &CompileShader,
     &CompileShaderARB,
     &CompileShaderIncludeARB,
@@ -3178,6 +3198,7 @@ const Binding::array_t Binding::s_functions =
     &CoverageModulationNV,
     &CoverageModulationTableNV,
     &CreateBuffers,
+    &CreateCommandListsNV,
     &CreateFramebuffers,
     &CreatePerfQueryINTEL,
     &CreateProgram,
@@ -3190,6 +3211,7 @@ const Binding::array_t Binding::s_functions =
     &CreateShaderObjectARB,
     &CreateShaderProgramEXT,
     &CreateShaderProgramv,
+    &CreateStatesNV,
     &CreateSyncFromCLeventARB,
     &CreateTextures,
     &CreateTransformFeedbacks,
@@ -3213,6 +3235,7 @@ const Binding::array_t Binding::s_functions =
     &DeleteAsyncMarkersSGIX,
     &DeleteBuffers,
     &DeleteBuffersARB,
+    &DeleteCommandListsNV,
     &DeleteFencesAPPLE,
     &DeleteFencesNV,
     &DeleteFragmentShaderATI,
@@ -3236,6 +3259,7 @@ const Binding::array_t Binding::s_functions =
     &DeleteRenderbuffersEXT,
     &DeleteSamplers,
     &DeleteShader,
+    &DeleteStatesNV,
     &DeleteSync,
     &DeleteTextures,
     &DeleteTexturesEXT,
@@ -3285,6 +3309,10 @@ const Binding::array_t Binding::s_functions =
     &DrawBuffers,
     &DrawBuffersARB,
     &DrawBuffersATI,
+    &DrawCommandsAddressNV,
+    &DrawCommandsNV,
+    &DrawCommandsStatesAddressNV,
+    &DrawCommandsStatesNV,
     &DrawElementArrayAPPLE,
     &DrawElementArrayATI,
     &DrawElements,
@@ -3530,6 +3558,7 @@ const Binding::array_t Binding::s_functions =
     &GetCombinerOutputParameterfvNV,
     &GetCombinerOutputParameterivNV,
     &GetCombinerStageParameterfvNV,
+    &GetCommandHeaderNV,
     &GetCompressedMultiTexImageEXT,
     &GetCompressedTexImage,
     &GetCompressedTexImageARB,
@@ -3771,6 +3800,7 @@ const Binding::array_t Binding::s_functions =
     &GetShaderSourceARB,
     &GetShaderiv,
     &GetSharpenTexFuncSGIS,
+    &GetStageIndexNV,
     &GetString,
     &GetStringi,
     &GetSubroutineIndex,
@@ -3976,6 +4006,7 @@ const Binding::array_t Binding::s_functions =
     &IsBuffer,
     &IsBufferARB,
     &IsBufferResidentNV,
+    &IsCommandListNV,
     &IsEnabled,
     &IsEnabledIndexedEXT,
     &IsEnabledi,
@@ -4004,6 +4035,7 @@ const Binding::array_t Binding::s_functions =
     &IsRenderbufferEXT,
     &IsSampler,
     &IsShader,
+    &IsStateNV,
     &IsSync,
     &IsTexture,
     &IsTextureEXT,
@@ -4035,6 +4067,7 @@ const Binding::array_t Binding::s_functions =
     &LinkProgram,
     &LinkProgramARB,
     &ListBase,
+    &ListDrawCommandsStatesClientNV,
     &ListParameterfSGIX,
     &ListParameterfvSGIX,
     &ListParameteriSGIX,
@@ -4812,6 +4845,7 @@ const Binding::array_t Binding::s_functions =
     &SpriteParameteriSGIX,
     &SpriteParameterivSGIX,
     &StartInstrumentsSGIX,
+    &StateCaptureNV,
     &StencilClearTagEXT,
     &StencilFillPathInstancedNV,
     &StencilFillPathNV,

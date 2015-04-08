@@ -204,6 +204,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_NV_bindless_multi_draw_indirect_count, { "glMultiDrawArraysIndirectBindlessCountNV", "glMultiDrawElementsIndirectBindlessCountNV" } },
     { GLextension::GL_NV_bindless_texture, { "glGetTextureHandleNV", "glGetTextureSamplerHandleNV", "glMakeTextureHandleResidentNV", "glMakeTextureHandleNonResidentNV", "glGetImageHandleNV", "glMakeImageHandleResidentNV", "glMakeImageHandleNonResidentNV", "glUniformHandleui64NV", "glUniformHandleui64vNV", "glProgramUniformHandleui64NV", "glProgramUniformHandleui64vNV", "glIsTextureHandleResidentNV", "glIsImageHandleResidentNV" } },
     { GLextension::GL_NV_blend_equation_advanced, { "glBlendParameteriNV", "glBlendBarrierNV" } },
+    { GLextension::GL_NV_command_list, { "glCreateStatesNV", "glDeleteStatesNV", "glIsStateNV", "glStateCaptureNV", "glGetCommandHeaderNV", "glGetStageIndexNV", "glDrawCommandsNV", "glDrawCommandsAddressNV", "glDrawCommandsStatesNV", "glDrawCommandsStatesAddressNV", "glCreateCommandListsNV", "glDeleteCommandListsNV", "glIsCommandListNV", "glListDrawCommandsStatesClientNV", "glCommandListSegmentsNV", "glCompileCommandListNV", "glCallCommandListNV" } },
     { GLextension::GL_NV_conditional_render, { "glBeginConditionalRenderNV", "glEndConditionalRenderNV" } },
     { GLextension::GL_NV_conservative_raster, { "glSubpixelPrecisionBiasNV" } },
     { GLextension::GL_NV_copy_image, { "glCopyImageSubDataNV" } },

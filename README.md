@@ -3,7 +3,7 @@
 *glbinding* is a generated, cross-platform C++ binding for OpenGL which is solely based on the new xml-based OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/). The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
 *glbinding* can be used as an alternative to GLEW and other projects, e.g., [glad](https://github.com/Dav1dde/glad), [gl3w](https://github.com/skaslev/gl3w), [glLoadGen](https://bitbucket.org/alfonse/glloadgen/overview), [glload](http://glsdk.sourceforge.net/docs/html/group__module__glload.html), and [flextGL](https://github.com/ginkgo/flextGL). *glbinding* is licenced under the [MIT license](http://opensource.org/licenses/MIT)
 
-The current release is [glbinding-1.0.5](https://github.com/hpicgs/glbinding/releases/tag/v1.0.5).
+The current release is [glbinding-1.1.0](https://github.com/hpicgs/glbinding/releases/tag/v1.1.0).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolution](#lazy-function-pointer-resolution), [multi-context](#multi-context-support) and [multi-thread](#multi-threading-support) support, [global](#function-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [tools](https://github.com/hpicgs/glbinding/wiki/tools) and [examples](https://github.com/hpicgs/glbinding/wiki/examples) for quick-starting your projects. 
 
@@ -28,12 +28,18 @@ int main()
 }
 ```
 
-## CI Status
+## Project Health
 
-| CI service | system | status |
-|------------|--------|--------|
-| [drone.io](https://drone.io/github.com/hpicgs/glbinding) | Ubuntu  | [![Build Status](https://drone.io/github.com/hpicgs/glbinding/status.png)](https://drone.io/github.com/hpicgs/glbinding/latest) |
-
+| Service | System | Compiler | Options | Status |
+| ------- | ------ | -------- | ------- | ------ |
+| [Drone](https://drone.io/github.com/hpicgs/glbinding) | Ubuntu 12.04 | GCC 4.8 | no tests | [![Build Status](https://drone.io/github.com/hpicgs/glbinding/status.png)](https://drone.io/github.com/hpicgs/glbinding/latest) |
+| Jenkins | Ubuntu 14.04 | GCC 4.8 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
+| Jenkins | Ubuntu 14.04 | GCC 4.9 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
+| Jenkins | Ubuntu 14.04 | Clang 3.5 | not gl_by_strings | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
+| Jenkins | OS X 10.10 | Clang 3.5 | not gl_by_strings | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
+| Jenkins | Windows 8.1 | MSVC 2013 Update 3 | default | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
+| Jenkins | Windows 8.1 | MSVC 2013 Update 3 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013 (all options)&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013 (all options)) |
+| [Coverity](https://scan.coverity.com/projects/2705?tab=overview) | Ubuntu | GCC 4.8 | all| [![Coverity Status](https://scan.coverity.com/projects/2705/badge.svg)](https://scan.coverity.com/projects/2705) |
 
 ## Features
 
@@ -57,7 +63,7 @@ The groups for enums are not yet as complete as we would like them to be to enab
 
 ##### Per Feature API Header
 
-Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  featured-based API subsets, each using a specialized namespace, e.g.:
+Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  feature-based API subsets, each using a specialized namespace, e.g.:
 * ```functions32.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
 * ```functions32core.h``` provides all non-deprecated OpenGL commands available up to 3.2 in namespace ```gl32core```.
 * ```functions32ext.h``` provides all OpenGL commands specified either in 3.3 and above, or by extension in ```gl32ext```.
@@ -90,7 +96,7 @@ glbinding::Binding::initialize();
 Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
 ```c++
 // use the current active context
-glbinding::Binding::useCurrentContext();               
+glbinding::Binding::useCurrentContext();
 
 // use another context, identified by platform-specific handle
 glbinding::Binding::useContext(ContextHandle context); 
@@ -127,7 +133,7 @@ Example for error checking:
 using namespace glbinding;
 
 // ...
-setCallbackMask(CallbackMask::After);
+setCallbackMaskExcept(CallbackMask::After, { "glGetError" });
 setAfterCallback([](const FunctionCall &)
 {
   GLenum error = glGetError();
@@ -148,7 +154,7 @@ using namespace glbinding;
 setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 {
-  std::cout << call.function.name() << "(";
+  std::cout << call.function->name() << "(";
   
   for (unsigned i = 0; i < call.parameters.size(); ++i)
   {
@@ -187,7 +193,7 @@ glClearColor(0.5, 0.5, 0.5, 1.0);
 // Output: Switching clear color to (0.5, 0.5, 0.5, 1.0)
 ```
 
-It is also possible to call OpenGL function without triggering registered callbacks (except unresolved callbacks), using the ```directCall()``` member function.
+It is also possible to call an OpenGL function without triggering registered callbacks (except unresolved callbacks), using the ```directCall()``` member function.
 
 ```c++
 #include <glbinding/Binding.h>
@@ -201,7 +207,7 @@ GLenum errorCode = Binding::GetError.directCall();
 ##### Context-Switch Callbacks
 
 When switching between active contexts, not only *glbinding* may be interested in the current context, but your application as well (e.g., per context cached OpenGL state).
-You may also not now when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
+You may also not know when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
 Therefor, you can register one callback that is called when the current active context in *glbinding* is changed.
 
 ```c++
@@ -268,7 +274,7 @@ if (Meta::stringsByGL())
 
 ##### Performance
 
-*glbinding* causes no signigicant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
+*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
 
 
 ##### Binding Generation
