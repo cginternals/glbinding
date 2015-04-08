@@ -145,14 +145,24 @@ else()
 
         # We have to change the RPATH of binaries to achieve a usable local install.
         # [TODO] For binaries, "$ORIGIN/lib" is right, so that libraries are found in ./lib.
-        #        However, I have not yet tested what happens when libraries use other libraries.
-        #        In that case, they might need the rpath $ORIGIN instead ...
-        set(CMAKE_SKIP_BUILD_RPATH            FALSE)         # Use automatic rpath for build
-        set(CMAKE_BUILD_WITH_INSTALL_RPATH    FALSE)         # Use specific rpath for INSTALL
-        set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE)         # NO automatic rpath for INSTALL
-        set(CMAKE_INSTALL_RPATH               "$ORIGIN/lib") # Libraries are relative to binary
-    endif()
+        # However, I have not yet tested what happens when libraries use other libraries.
+        # In that case, they might need the rpath $ORIGIN instead ...
+        set(CMAKE_SKIP_BUILD_RPATH FALSE)            # Use automatic rpath for build
+        set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)    # Use specific rpath for INSTALL
+        set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE) # NO automatic rpath for INSTALL
 
+        # Libraries are relative to binary
+        if (APPLE)
+            set(CMAKE_INSTALL_RPATH "@executable_path/${INSTALL_LIB}")
+        else()
+            set(CMAKE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")       
+        endif()
+    else()
+        if (APPLE)
+            set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${INSTALL_LIB}") # Add rpath of project libraries
+            set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)                       # Add rpaths of depending libraries
+        endif()
+    endif()
 endif()
 
 
