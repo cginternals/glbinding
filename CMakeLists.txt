@@ -190,11 +190,6 @@ install(FILES glbinding-config.cmake       DESTINATION ${INSTALL_ROOT} COMPONENT
 # Data files
 if(OPTION_BUILD_EXAMPLES)
     install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA} COMPONENT examples)
-    install(FILES ${GLFW_BINARY} DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples)
-endif()
-
-if(OPTION_BUILD_TOOLS)
-    install(FILES ${GLFW_BINARY} DESTINATION ${INSTALL_TOOLS} COMPONENT tools)
 endif()
 
 # Include projects
