@@ -47,6 +47,19 @@ find_library(GLFW_LIBRARY
     DOC "The GLFW library"
 )
     
+if(WIN32)
+
+    find_file(GLFW_BINARY
+        NAMES glfw3.dll
+        PATHS
+        $ENV{GLFWDIR}/bin
+        $ENV{GLFW_HOME}/bin
+        $ENV{GLFWDIR}/bin/${GLFW_BUILD_DIR}
+        $ENV{GLFW_HOME}/bin/${GLFW_BUILD_DIR}
+        DOC "The GLFW binary")
+
+endif()
+
 if(APPLE)
     set(GLFW_cocoa_LIBRARY "-framework Cocoa" CACHE STRING "Cocoa framework for OSX")
     set(GLFW_iokit_LIBRARY "-framework IOKit" CACHE STRING "IOKit framework for OSX")
