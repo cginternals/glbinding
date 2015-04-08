@@ -132,7 +132,7 @@ bool RingBuffer<T>::valid(TailIdentifier /*key*/, const typename std::vector<T>:
     auto pos = std::abs(std::distance(m_buffer.cbegin(), it));
     auto head = m_head.load(std::memory_order_acquire);
 
-    return (pos != head);
+    return (static_cast<SizeType>(pos) != head);
 }
 
 template <typename T>
