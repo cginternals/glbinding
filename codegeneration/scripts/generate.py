@@ -149,7 +149,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     includedir = targetdir + "/include/glbinding/"
     sourcedir  = targetdir + "/source/"
-    testdir    = targetdir + "/source/tests/glbinding-test/"
+    testdir    = targetdir + "/../tests/glbinding-test/"
 
     includedir_api = includedir + api + "?/"
     sourcedir_api  = sourcedir  + api + "?/"
