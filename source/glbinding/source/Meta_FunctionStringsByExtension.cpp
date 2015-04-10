@@ -105,7 +105,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_ARB_transform_feedback3, { "glDrawTransformFeedbackStream", "glBeginQueryIndexed", "glEndQueryIndexed", "glGetQueryIndexediv" } },
     { GLextension::GL_ARB_transform_feedback_instanced, { "glDrawTransformFeedbackInstanced", "glDrawTransformFeedbackStreamInstanced" } },
     { GLextension::GL_ARB_transpose_matrix, { "glLoadTransposeMatrixfARB", "glLoadTransposeMatrixdARB", "glMultTransposeMatrixfARB", "glMultTransposeMatrixdARB" } },
-    { GLextension::GL_ARB_uniform_buffer_object, { "glGetUniformIndices", "glGetActiveUniformsiv", "glGetActiveUniformName", "glGetUniformBlockIndex", "glGetActiveUniformBlockiv", "glGetActiveUniformBlockName", "glUniformBlockBinding" } },
+    { GLextension::GL_ARB_uniform_buffer_object, { "glGetUniformIndices", "glGetActiveUniformsiv", "glGetActiveUniformName", "glGetUniformBlockIndex", "glGetActiveUniformBlockiv", "glGetActiveUniformBlockName", "glUniformBlockBinding", "glBindBufferRange", "glBindBufferBase", "glGetIntegeri_v" } },
     { GLextension::GL_ARB_vertex_array_object, { "glBindVertexArray", "glDeleteVertexArrays", "glGenVertexArrays", "glIsVertexArray" } },
     { GLextension::GL_ARB_vertex_attrib_64bit, { "glVertexAttribL1d", "glVertexAttribL2d", "glVertexAttribL3d", "glVertexAttribL4d", "glVertexAttribL1dv", "glVertexAttribL2dv", "glVertexAttribL3dv", "glVertexAttribL4dv", "glVertexAttribLPointer", "glGetVertexAttribLdv" } },
     { GLextension::GL_ARB_vertex_attrib_binding, { "glBindVertexBuffer", "glVertexAttribFormat", "glVertexAttribIFormat", "glVertexAttribLFormat", "glVertexAttribBinding", "glVertexBindingDivisor" } },

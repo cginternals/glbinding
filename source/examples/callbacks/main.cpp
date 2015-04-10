@@ -14,7 +14,7 @@
 
 #include <glbinding/Binding.h>
 
-#include <glbinding/gl/gl32.h>
+#include <glbinding/gl32/gl.h>
 
 
 using namespace gl32;

@@ -4,9 +4,9 @@
 
 #include <glbinding/gl/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.hpp)
 
-#include <glbinding/gl/types45core.h>
-#include <glbinding/gl/functions45core.h>
-#include <glbinding/gl/enum45core.h>
+#include <glbinding/gl45core/types.h>
+#include <glbinding/gl45core/functions.h>
+#include <glbinding/gl45core/enum.h>
 
 
 using namespace gl45core;
