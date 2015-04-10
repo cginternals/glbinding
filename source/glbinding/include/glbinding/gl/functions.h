@@ -2167,7 +2167,7 @@ GLBINDING_API void glTexImage3DEXT(GLenum target, GLint level, GLenum internalfo
 GLBINDING_API void glTexImage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 GLBINDING_API void glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
 GLBINDING_API void glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const void * pixels);
-GLBINDING_API void glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean resident);
+GLBINDING_API void glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
 GLBINDING_API void glTexParameterIiv(GLenum target, GLenum pname, const GLint * params);
 GLBINDING_API void glTexParameterIivEXT(GLenum target, GLenum pname, const GLint * params);
 GLBINDING_API void glTexParameterIuiv(GLenum target, GLenum pname, const GLuint * params);
@@ -2209,7 +2209,7 @@ GLBINDING_API void glTextureImage3DMultisampleNV(GLuint texture, GLenum target, 
 GLBINDING_API void glTextureLightEXT(GLenum pname);
 GLBINDING_API void glTextureMaterialEXT(GLenum face, GLenum mode);
 GLBINDING_API void glTextureNormalEXT(GLenum mode);
-GLBINDING_API void glTexturePageCommitmentEXT(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean resident);
+GLBINDING_API void glTexturePageCommitmentEXT(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
 GLBINDING_API void glTextureParameterIiv(GLuint texture, GLenum pname, const GLint * params);
 GLBINDING_API void glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint * params);
 GLBINDING_API void glTextureParameterIuiv(GLuint texture, GLenum pname, const GLuint * params);
