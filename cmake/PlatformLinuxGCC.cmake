@@ -44,12 +44,15 @@ set(LINUX_COMPILE_FLAGS
       -Wall         # -> 
       -Wextra       # -> 
       -Werror       # ->
-      -fPIC         # -> use position independent code
       -Wreturn-type 
     # -Werror=return-type -> missing returns in functions and methods are handled as errors which stops the compilation
       -Wcast-align  # ->
     # -Wshadow      # -> e.g. when a parameter is named like a member, too many warnings, disabled for now
 )
+
+if(NOT CYGWIN)
+  set(LINUX_COMPILE_FLAGS ${LINUX_COMPILE_FLAGS} -fPIC) # -> use position independent code
+endif()
 
 set(DEFAULT_COMPILE_FLAGS
     ${LINUX_COMPILE_FLAGS}
