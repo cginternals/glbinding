@@ -77,13 +77,13 @@ std::string FunctionCall::toString() const
 {   
     using microseconds = std::chrono::microseconds;
     microseconds now_micros = std::chrono::duration_cast<microseconds>(timestamp.time_since_epoch());
-    std::size_t micros = now_micros.count() % 1000;
+    std::size_t micros = static_cast<std::size_t>(now_micros.count() % 1000);
     std::ostringstream micros_os;
     micros_os << std::setfill('0') << std::setw(3) << micros;
 
     using milliseconds = std::chrono::milliseconds;
     milliseconds now_millis = std::chrono::duration_cast<milliseconds>(now_micros);
-    std::size_t millis = now_millis.count() % 1000;
+    std::size_t millis = static_cast<std::size_t>(now_millis.count() % 1000);
     std::ostringstream millis_os;
     millis_os << std::setfill('0') << std::setw(3) << millis;
 
