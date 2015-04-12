@@ -4,7 +4,7 @@
 #include <thread>
 #include <iterator>
 #include <cassert>
-#include <complex>
+#include <cmath>
 
 #include "RingBuffer.h"
 
