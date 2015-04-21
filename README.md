@@ -223,7 +223,7 @@ Binding::addContextSwitchCallback([](ContextHandle handle) {
 
 ##### Meta Information
 
-Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and compile time information about the gl.xml and your OpenGL driver.
+Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and run time information about the gl.xml and your OpenGL driver.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
 Example list of all available OpenGL versions/features (compile time):
