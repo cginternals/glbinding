@@ -462,6 +462,8 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_OML_interlace,
     GL_OML_resample,
     GL_OML_subsample,
+    GL_OVR_multiview,
+    GL_OVR_multiview2,
     GL_PGI_misc_hints,
     GL_PGI_vertex_hints,
     GL_REND_screen_coordinates,

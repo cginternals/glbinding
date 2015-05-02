@@ -2145,13 +2145,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x00000002" name="GL_FRAGMENT_SHADER_BIT_EXT"/>
         <enum value="0x00000004" name="GL_GEOMETRY_SHADER_BIT"/>
         <enum value="0x00000004" name="GL_GEOMETRY_SHADER_BIT_EXT"/>
-        <enum value="0x00000004" name="GL_GEOMETRY_SHADER_BIT_OES"/>                              
+        <enum value="0x00000004" name="GL_GEOMETRY_SHADER_BIT_OES"/>
         <enum value="0x00000008" name="GL_TESS_CONTROL_SHADER_BIT"/>
         <enum value="0x00000008" name="GL_TESS_CONTROL_SHADER_BIT_EXT"/>
-        <enum value="0x00000008" name="GL_TESS_CONTROL_SHADER_BIT_OES"/>                          
+        <enum value="0x00000008" name="GL_TESS_CONTROL_SHADER_BIT_OES"/>
         <enum value="0x00000010" name="GL_TESS_EVALUATION_SHADER_BIT"/>
         <enum value="0x00000010" name="GL_TESS_EVALUATION_SHADER_BIT_EXT"/>
-        <enum value="0x00000010" name="GL_TESS_EVALUATION_SHADER_BIT_OES"/>                       
+        <enum value="0x00000010" name="GL_TESS_EVALUATION_SHADER_BIT_OES"/>
         <enum value="0x00000020" name="GL_COMPUTE_SHADER_BIT"/>
         <enum value="0xFFFFFFFF" name="GL_ALL_SHADER_BITS"/>
         <enum value="0xFFFFFFFF" name="GL_ALL_SHADER_BITS_EXT"/>
@@ -2420,28 +2420,28 @@ typedef unsigned int GLhandleARB;
         <enum value="0x0006" name="GL_TRIANGLE_FAN"/>
         <enum value="0x0007" name="GL_QUADS"/>
         <enum value="0x0007" name="GL_QUADS_EXT"/>
-        <enum value="0x0007" name="GL_QUADS_OES"/>                                            
+        <enum value="0x0007" name="GL_QUADS_OES"/>
         <enum value="0x0008" name="GL_QUAD_STRIP"/>
         <enum value="0x0009" name="GL_POLYGON"/>
         <enum value="0x000A" name="GL_LINES_ADJACENCY"/>
         <enum value="0x000A" name="GL_LINES_ADJACENCY_ARB"/>
         <enum value="0x000A" name="GL_LINES_ADJACENCY_EXT"/>
-        <enum value="0x000A" name="GL_LINES_ADJACENCY_OES"/>                                  
+        <enum value="0x000A" name="GL_LINES_ADJACENCY_OES"/>
         <enum value="0x000B" name="GL_LINE_STRIP_ADJACENCY"/>
         <enum value="0x000B" name="GL_LINE_STRIP_ADJACENCY_ARB"/>
         <enum value="0x000B" name="GL_LINE_STRIP_ADJACENCY_EXT"/>
-        <enum value="0x000B" name="GL_LINE_STRIP_ADJACENCY_OES"/>                             
+        <enum value="0x000B" name="GL_LINE_STRIP_ADJACENCY_OES"/>
         <enum value="0x000C" name="GL_TRIANGLES_ADJACENCY"/>
         <enum value="0x000C" name="GL_TRIANGLES_ADJACENCY_ARB"/>
         <enum value="0x000C" name="GL_TRIANGLES_ADJACENCY_EXT"/>
-        <enum value="0x000C" name="GL_TRIANGLES_ADJACENCY_OES"/>                              
+        <enum value="0x000C" name="GL_TRIANGLES_ADJACENCY_OES"/>
         <enum value="0x000D" name="GL_TRIANGLE_STRIP_ADJACENCY"/>
         <enum value="0x000D" name="GL_TRIANGLE_STRIP_ADJACENCY_ARB"/>
         <enum value="0x000D" name="GL_TRIANGLE_STRIP_ADJACENCY_EXT"/>
-        <enum value="0x000D" name="GL_TRIANGLE_STRIP_ADJACENCY_OES"/>                         
+        <enum value="0x000D" name="GL_TRIANGLE_STRIP_ADJACENCY_OES"/>
         <enum value="0x000E" name="GL_PATCHES"/>
         <enum value="0x000E" name="GL_PATCHES_EXT"/>
-        <enum value="0x000E" name="GL_PATCHES_OES"/>                                          
+        <enum value="0x000E" name="GL_PATCHES_OES"/>
             <unused start="0x000F" end="0x00FF" comment="Unused for PrimitiveType"/>
         <enum value="0x0100" name="GL_ACCUM"/>
         <enum value="0x0101" name="GL_LOAD"/>
@@ -2800,7 +2800,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x1004" name="GL_TEXTURE_BORDER_COLOR"/>
         <enum value="0x1004" name="GL_TEXTURE_BORDER_COLOR_EXT"/>
         <enum value="0x1004" name="GL_TEXTURE_BORDER_COLOR_NV"/>
-        <enum value="0x1004" name="GL_TEXTURE_BORDER_COLOR_OES"/>                             
+        <enum value="0x1004" name="GL_TEXTURE_BORDER_COLOR_OES"/>
         <enum value="0x1005" name="GL_TEXTURE_BORDER"/>
         <enum value="0x1006" name="GL_TEXTURE_TARGET"/>
             <unused start="0x1007" end="0x10FF" comment="Unused for GetTextureParameter"/>
@@ -3556,7 +3556,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x812D" name="GL_CLAMP_TO_BORDER_EXT"/>
         <enum value="0x812D" name="GL_CLAMP_TO_BORDER_NV"/>
         <enum value="0x812D" name="GL_CLAMP_TO_BORDER_SGIS"/>
-        <enum value="0x812D" name="GL_CLAMP_TO_BORDER_OES"/>                                  
+        <enum value="0x812D" name="GL_CLAMP_TO_BORDER_OES"/>
         <enum value="0x812E" name="GL_TEXTURE_MULTI_BUFFER_HINT_SGIX"/>
         <enum value="0x812F" name="GL_CLAMP_TO_EDGE"/>
         <enum value="0x812F" name="GL_CLAMP_TO_EDGE_SGIS"/>
@@ -3832,7 +3832,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8220" name="GL_BUFFER_STORAGE_FLAGS"/>
         <enum value="0x8220" name="GL_BUFFER_STORAGE_FLAGS_EXT"/>
         <enum value="0x8221" name="GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED"/>
-        <enum value="0x8221" name="GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED_OES"/>          
+        <enum value="0x8221" name="GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED_OES"/>
         <enum value="0x8222" name="GL_INDEX"/>
             <unused start="0x8223" vendor="ARB" comment="GL_DEPTH_BUFFER = 0x8223 not actually used in the API"/>
             <unused start="0x8224" vendor="ARB" comment="GL_STENCIL_BUFFER = 0x8224 not actually used in the API"/>
@@ -3960,13 +3960,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE_NV"/>
         <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX"/>
         <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX_EXT"/>
-        <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX_OES"/>                           
+        <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX_OES"/>
         <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX"/>
         <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_EXT"/>
         <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_NV"/>
         <enum value="0x8260" name="GL_UNDEFINED_VERTEX"/>
         <enum value="0x8260" name="GL_UNDEFINED_VERTEX_EXT"/>
-        <enum value="0x8260" name="GL_UNDEFINED_VERTEX_OES"/>                                 
+        <enum value="0x8260" name="GL_UNDEFINED_VERTEX_OES"/>
         <enum value="0x8261" name="GL_NO_RESET_NOTIFICATION"/>
         <enum value="0x8261" name="GL_NO_RESET_NOTIFICATION_ARB"/>
         <enum value="0x8261" name="GL_NO_RESET_NOTIFICATION_EXT"/>
@@ -4103,16 +4103,16 @@ typedef unsigned int GLhandleARB;
         <enum value="0x82DA" name="GL_MAX_VERTEX_ATTRIB_BINDINGS"/>
         <enum value="0x82DB" name="GL_TEXTURE_VIEW_MIN_LEVEL"/>
         <enum value="0x82DB" name="GL_TEXTURE_VIEW_MIN_LEVEL_EXT"/>
-        <enum value="0x82DB" name="GL_TEXTURE_VIEW_MIN_LEVEL_OES"/>                           
+        <enum value="0x82DB" name="GL_TEXTURE_VIEW_MIN_LEVEL_OES"/>
         <enum value="0x82DC" name="GL_TEXTURE_VIEW_NUM_LEVELS"/>
         <enum value="0x82DC" name="GL_TEXTURE_VIEW_NUM_LEVELS_EXT"/>
-        <enum value="0x82DC" name="GL_TEXTURE_VIEW_NUM_LEVELS_OES"/>                          
+        <enum value="0x82DC" name="GL_TEXTURE_VIEW_NUM_LEVELS_OES"/>
         <enum value="0x82DD" name="GL_TEXTURE_VIEW_MIN_LAYER"/>
         <enum value="0x82DD" name="GL_TEXTURE_VIEW_MIN_LAYER_EXT"/>
-        <enum value="0x82DD" name="GL_TEXTURE_VIEW_MIN_LAYER_OES"/>                           
+        <enum value="0x82DD" name="GL_TEXTURE_VIEW_MIN_LAYER_OES"/>
         <enum value="0x82DE" name="GL_TEXTURE_VIEW_NUM_LAYERS"/>
         <enum value="0x82DE" name="GL_TEXTURE_VIEW_NUM_LAYERS_EXT"/>
-        <enum value="0x82DE" name="GL_TEXTURE_VIEW_NUM_LAYERS_OES"/>                          
+        <enum value="0x82DE" name="GL_TEXTURE_VIEW_NUM_LAYERS_OES"/>
         <enum value="0x82DF" name="GL_TEXTURE_IMMUTABLE_LEVELS"/>
         <enum value="0x82E0" name="GL_BUFFER"/>
         <enum value="0x82E0" name="GL_BUFFER_KHR"/>
@@ -5762,10 +5762,10 @@ typedef unsigned int GLhandleARB;
             <unused start="0x886B" vendor="NV"/>
         <enum value="0x886C" name="GL_MAX_TESS_CONTROL_INPUT_COMPONENTS"/>
         <enum value="0x886C" name="GL_MAX_TESS_CONTROL_INPUT_COMPONENTS_EXT"/>
-        <enum value="0x886C" name="GL_MAX_TESS_CONTROL_INPUT_COMPONENTS_OES"/>                
+        <enum value="0x886C" name="GL_MAX_TESS_CONTROL_INPUT_COMPONENTS_OES"/>
         <enum value="0x886D" name="GL_MAX_TESS_EVALUATION_INPUT_COMPONENTS"/>
         <enum value="0x886D" name="GL_MAX_TESS_EVALUATION_INPUT_COMPONENTS_EXT"/>
-        <enum value="0x886D" name="GL_MAX_TESS_EVALUATION_INPUT_COMPONENTS_OES"/>             
+        <enum value="0x886D" name="GL_MAX_TESS_EVALUATION_INPUT_COMPONENTS_OES"/>
         <enum value="0x886E" name="GL_DEPTH_STENCIL_TO_RGBA_NV"/>
         <enum value="0x886F" name="GL_DEPTH_STENCIL_TO_BGRA_NV"/>
         <enum value="0x8870" name="GL_FRAGMENT_PROGRAM_NV"/>
@@ -5790,7 +5790,7 @@ typedef unsigned int GLhandleARB;
             <unused start="0x887E" vendor="NV"/>
         <enum value="0x887F" name="GL_GEOMETRY_SHADER_INVOCATIONS"/>
         <enum value="0x887F" name="GL_GEOMETRY_SHADER_INVOCATIONS_EXT"/>
-        <enum value="0x887F" name="GL_GEOMETRY_SHADER_INVOCATIONS_OES"/>                      
+        <enum value="0x887F" name="GL_GEOMETRY_SHADER_INVOCATIONS_OES"/>
         <enum value="0x8880" name="GL_FLOAT_R_NV"/>
         <enum value="0x8881" name="GL_FLOAT_RG_NV"/>
         <enum value="0x8882" name="GL_FLOAT_RGB_NV"/>
@@ -5992,13 +5992,13 @@ typedef unsigned int GLhandleARB;
             <unused start="0x8915" vendor="NV"/>
         <enum value="0x8916" name="GL_GEOMETRY_VERTICES_OUT"/>
         <enum value="0x8916" name="GL_GEOMETRY_LINKED_VERTICES_OUT_EXT"/>
-        <enum value="0x8916" name="GL_GEOMETRY_LINKED_VERTICES_OUT_OES"/>                     
+        <enum value="0x8916" name="GL_GEOMETRY_LINKED_VERTICES_OUT_OES"/>
         <enum value="0x8917" name="GL_GEOMETRY_INPUT_TYPE"/>
         <enum value="0x8917" name="GL_GEOMETRY_LINKED_INPUT_TYPE_EXT"/>
-        <enum value="0x8917" name="GL_GEOMETRY_LINKED_INPUT_TYPE_OES"/>                       
+        <enum value="0x8917" name="GL_GEOMETRY_LINKED_INPUT_TYPE_OES"/>
         <enum value="0x8918" name="GL_GEOMETRY_OUTPUT_TYPE"/>
         <enum value="0x8918" name="GL_GEOMETRY_LINKED_OUTPUT_TYPE_EXT"/>
-        <enum value="0x8918" name="GL_GEOMETRY_LINKED_OUTPUT_TYPE_OES"/>                      
+        <enum value="0x8918" name="GL_GEOMETRY_LINKED_OUTPUT_TYPE_OES"/>
         <enum value="0x8919" name="GL_SAMPLER_BINDING"/>
         <enum value="0x891A" name="GL_CLAMP_VERTEX_COLOR"/>
         <enum value="0x891A" name="GL_CLAMP_VERTEX_COLOR_ARB"/>
@@ -6174,7 +6174,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8A2B" name="GL_MAX_VERTEX_UNIFORM_BLOCKS"/>
         <enum value="0x8A2C" name="GL_MAX_GEOMETRY_UNIFORM_BLOCKS"/>
         <enum value="0x8A2C" name="GL_MAX_GEOMETRY_UNIFORM_BLOCKS_EXT"/>
-        <enum value="0x8A2C" name="GL_MAX_GEOMETRY_UNIFORM_BLOCKS_OES"/>                      
+        <enum value="0x8A2C" name="GL_MAX_GEOMETRY_UNIFORM_BLOCKS_OES"/>
         <enum value="0x8A2D" name="GL_MAX_FRAGMENT_UNIFORM_BLOCKS"/>
         <enum value="0x8A2E" name="GL_MAX_COMBINED_UNIFORM_BLOCKS"/>
         <enum value="0x8A2F" name="GL_MAX_UNIFORM_BUFFER_BINDINGS"/>
@@ -6182,7 +6182,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8A31" name="GL_MAX_COMBINED_VERTEX_UNIFORM_COMPONENTS"/>
         <enum value="0x8A32" name="GL_MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS"/>
         <enum value="0x8A32" name="GL_MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS_EXT"/>
-        <enum value="0x8A32" name="GL_MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS_OES"/>         
+        <enum value="0x8A32" name="GL_MAX_COMBINED_GEOMETRY_UNIFORM_COMPONENTS_OES"/>
         <enum value="0x8A33" name="GL_MAX_COMBINED_FRAGMENT_UNIFORM_COMPONENTS"/>
         <enum value="0x8A34" name="GL_UNIFORM_BUFFER_OFFSET_ALIGNMENT"/>
         <enum value="0x8A35" name="GL_ACTIVE_UNIFORM_BLOCK_MAX_NAME_LENGTH"/>
@@ -6468,26 +6468,26 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8C29" name="GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS"/>
         <enum value="0x8C29" name="GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_ARB"/>
         <enum value="0x8C29" name="GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_EXT"/>
-        <enum value="0x8C29" name="GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_OES"/>                 
+        <enum value="0x8C29" name="GL_MAX_GEOMETRY_TEXTURE_IMAGE_UNITS_OES"/>
         <enum value="0x8C2A" name="GL_TEXTURE_BUFFER"/>
         <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_ARB"/>
         <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_EXT"/>
-        <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_OES"/>                                   
+        <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_OES"/>
         <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_BINDING" comment="Equivalent to GL_TEXTURE_BUFFER_ARB query, but named more consistently"/>
         <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_BINDING_EXT"/>
-        <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_BINDING_OES"/>                           
+        <enum value="0x8C2A" name="GL_TEXTURE_BUFFER_BINDING_OES"/>
         <enum value="0x8C2B" name="GL_MAX_TEXTURE_BUFFER_SIZE"/>
         <enum value="0x8C2B" name="GL_MAX_TEXTURE_BUFFER_SIZE_ARB"/>
         <enum value="0x8C2B" name="GL_MAX_TEXTURE_BUFFER_SIZE_EXT"/>
-        <enum value="0x8C2B" name="GL_MAX_TEXTURE_BUFFER_SIZE_OES"/>                          
+        <enum value="0x8C2B" name="GL_MAX_TEXTURE_BUFFER_SIZE_OES"/>
         <enum value="0x8C2C" name="GL_TEXTURE_BINDING_BUFFER"/>
         <enum value="0x8C2C" name="GL_TEXTURE_BINDING_BUFFER_ARB"/>
         <enum value="0x8C2C" name="GL_TEXTURE_BINDING_BUFFER_EXT"/>
-        <enum value="0x8C2C" name="GL_TEXTURE_BINDING_BUFFER_OES"/>                           
+        <enum value="0x8C2C" name="GL_TEXTURE_BINDING_BUFFER_OES"/>
         <enum value="0x8C2D" name="GL_TEXTURE_BUFFER_DATA_STORE_BINDING"/>
         <enum value="0x8C2D" name="GL_TEXTURE_BUFFER_DATA_STORE_BINDING_ARB"/>
         <enum value="0x8C2D" name="GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT"/>
-        <enum value="0x8C2D" name="GL_TEXTURE_BUFFER_DATA_STORE_BINDING_OES"/>                
+        <enum value="0x8C2D" name="GL_TEXTURE_BUFFER_DATA_STORE_BINDING_OES"/>
         <enum value="0x8C2E" name="GL_TEXTURE_BUFFER_FORMAT_ARB"/>
         <enum value="0x8C2E" name="GL_TEXTURE_BUFFER_FORMAT_EXT"/>
         <enum value="0x8C2F" name="GL_ANY_SAMPLES_PASSED"/>
@@ -6590,7 +6590,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8C87" name="GL_PRIMITIVES_GENERATED"/>
         <enum value="0x8C87" name="GL_PRIMITIVES_GENERATED_EXT"/>
         <enum value="0x8C87" name="GL_PRIMITIVES_GENERATED_NV"/>
-        <enum value="0x8C87" name="GL_PRIMITIVES_GENERATED_OES"/>                             
+        <enum value="0x8C87" name="GL_PRIMITIVES_GENERATED_OES"/>
         <enum value="0x8C88" name="GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN"/>
         <enum value="0x8C88" name="GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN_EXT"/>
         <enum value="0x8C88" name="GL_TRANSFORM_FEEDBACK_PRIMITIVES_WRITTEN_NV"/>
@@ -6936,11 +6936,11 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8DA7" name="GL_FRAMEBUFFER_ATTACHMENT_LAYERED"/>
         <enum value="0x8DA7" name="GL_FRAMEBUFFER_ATTACHMENT_LAYERED_ARB"/>
         <enum value="0x8DA7" name="GL_FRAMEBUFFER_ATTACHMENT_LAYERED_EXT"/>
-        <enum value="0x8DA7" name="GL_FRAMEBUFFER_ATTACHMENT_LAYERED_OES"/>                   
+        <enum value="0x8DA7" name="GL_FRAMEBUFFER_ATTACHMENT_LAYERED_OES"/>
         <enum value="0x8DA8" name="GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS"/>
         <enum value="0x8DA8" name="GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_ARB"/>
         <enum value="0x8DA8" name="GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_EXT"/>
-        <enum value="0x8DA8" name="GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_OES"/>             
+        <enum value="0x8DA8" name="GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_OES"/>
         <enum value="0x8DA9" name="GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_ARB"/>
         <enum value="0x8DA9" name="GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_EXT"/>
             <!-- Also see the odd namespace "NVTransformFeedbackToken" above -->
@@ -6969,7 +6969,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8DC1" name="GL_SAMPLER_2D_ARRAY_EXT"/>
         <enum value="0x8DC2" name="GL_SAMPLER_BUFFER"/>
         <enum value="0x8DC2" name="GL_SAMPLER_BUFFER_EXT"/>
-        <enum value="0x8DC2" name="GL_SAMPLER_BUFFER_OES"/>                                   
+        <enum value="0x8DC2" name="GL_SAMPLER_BUFFER_OES"/>
         <enum value="0x8DC3" name="GL_SAMPLER_1D_ARRAY_SHADOW"/>
         <enum value="0x8DC3" name="GL_SAMPLER_1D_ARRAY_SHADOW_EXT"/>
         <enum value="0x8DC4" name="GL_SAMPLER_2D_ARRAY_SHADOW"/>
@@ -7000,7 +7000,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8DCF" name="GL_INT_SAMPLER_2D_ARRAY_EXT"/>
         <enum value="0x8DD0" name="GL_INT_SAMPLER_BUFFER"/>
         <enum value="0x8DD0" name="GL_INT_SAMPLER_BUFFER_EXT"/>
-        <enum value="0x8DD0" name="GL_INT_SAMPLER_BUFFER_OES"/>                               
+        <enum value="0x8DD0" name="GL_INT_SAMPLER_BUFFER_OES"/>
         <enum value="0x8DD1" name="GL_UNSIGNED_INT_SAMPLER_1D"/>
         <enum value="0x8DD1" name="GL_UNSIGNED_INT_SAMPLER_1D_EXT"/>
         <enum value="0x8DD2" name="GL_UNSIGNED_INT_SAMPLER_2D"/>
@@ -7017,11 +7017,11 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8DD7" name="GL_UNSIGNED_INT_SAMPLER_2D_ARRAY_EXT"/>
         <enum value="0x8DD8" name="GL_UNSIGNED_INT_SAMPLER_BUFFER"/>
         <enum value="0x8DD8" name="GL_UNSIGNED_INT_SAMPLER_BUFFER_EXT"/>
-        <enum value="0x8DD8" name="GL_UNSIGNED_INT_SAMPLER_BUFFER_OES"/>                      
+        <enum value="0x8DD8" name="GL_UNSIGNED_INT_SAMPLER_BUFFER_OES"/>
         <enum value="0x8DD9" name="GL_GEOMETRY_SHADER"/>
         <enum value="0x8DD9" name="GL_GEOMETRY_SHADER_ARB"/>
         <enum value="0x8DD9" name="GL_GEOMETRY_SHADER_EXT"/>
-        <enum value="0x8DD9" name="GL_GEOMETRY_SHADER_OES"/>                                  
+        <enum value="0x8DD9" name="GL_GEOMETRY_SHADER_OES"/>
         <enum value="0x8DDA" name="GL_GEOMETRY_VERTICES_OUT_ARB"/>
         <enum value="0x8DDA" name="GL_GEOMETRY_VERTICES_OUT_EXT"/>
         <enum value="0x8DDB" name="GL_GEOMETRY_INPUT_TYPE_ARB"/>
@@ -7035,15 +7035,15 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8DDF" name="GL_MAX_GEOMETRY_UNIFORM_COMPONENTS"/>
         <enum value="0x8DDF" name="GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_ARB"/>
         <enum value="0x8DDF" name="GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_EXT"/>
-        <enum value="0x8DDF" name="GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_OES"/>                  
+        <enum value="0x8DDF" name="GL_MAX_GEOMETRY_UNIFORM_COMPONENTS_OES"/>
         <enum value="0x8DE0" name="GL_MAX_GEOMETRY_OUTPUT_VERTICES"/>
         <enum value="0x8DE0" name="GL_MAX_GEOMETRY_OUTPUT_VERTICES_ARB"/>
         <enum value="0x8DE0" name="GL_MAX_GEOMETRY_OUTPUT_VERTICES_EXT"/>
-        <enum value="0x8DE0" name="GL_MAX_GEOMETRY_OUTPUT_VERTICES_OES"/>                     
+        <enum value="0x8DE0" name="GL_MAX_GEOMETRY_OUTPUT_VERTICES_OES"/>
         <enum value="0x8DE1" name="GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS"/>
         <enum value="0x8DE1" name="GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_ARB"/>
         <enum value="0x8DE1" name="GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_EXT"/>
-        <enum value="0x8DE1" name="GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_OES"/>             
+        <enum value="0x8DE1" name="GL_MAX_GEOMETRY_TOTAL_OUTPUT_COMPONENTS_OES"/>
         <enum value="0x8DE2" name="GL_MAX_VERTEX_BINDABLE_UNIFORMS_EXT"/>
         <enum value="0x8DE3" name="GL_MAX_FRAGMENT_BINDABLE_UNIFORMS_EXT"/>
         <enum value="0x8DE4" name="GL_MAX_GEOMETRY_BINDABLE_UNIFORMS_EXT"/>
@@ -7097,10 +7097,10 @@ typedef unsigned int GLhandleARB;
             <unused start="0x8E1C" end="0x8E1D" vendor="NV"/>
         <enum value="0x8E1E" name="GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS"/>
         <enum value="0x8E1E" name="GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS_EXT"/>
-        <enum value="0x8E1E" name="GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS_OES"/>     
+        <enum value="0x8E1E" name="GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS_OES"/>
         <enum value="0x8E1F" name="GL_MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS"/>
         <enum value="0x8E1F" name="GL_MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS_EXT"/>
-        <enum value="0x8E1F" name="GL_MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS_OES"/>  
+        <enum value="0x8E1F" name="GL_MAX_COMBINED_TESS_EVALUATION_UNIFORM_COMPONENTS_OES"/>
         <enum value="0x8E20" name="GL_COLOR_SAMPLES_NV"/>
             <unused start="0x8E21" vendor="NV"/>
         <enum value="0x8E22" name="GL_TRANSFORM_FEEDBACK"/>
@@ -7145,10 +7145,10 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8E4C" name="GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION_EXT"/>
         <enum value="0x8E4D" name="GL_FIRST_VERTEX_CONVENTION"/>
         <enum value="0x8E4D" name="GL_FIRST_VERTEX_CONVENTION_EXT"/>
-        <enum value="0x8E4D" name="GL_FIRST_VERTEX_CONVENTION_OES"/>                          
+        <enum value="0x8E4D" name="GL_FIRST_VERTEX_CONVENTION_OES"/>
         <enum value="0x8E4E" name="GL_LAST_VERTEX_CONVENTION"/>
         <enum value="0x8E4E" name="GL_LAST_VERTEX_CONVENTION_EXT"/>
-        <enum value="0x8E4E" name="GL_LAST_VERTEX_CONVENTION_OES"/>                           
+        <enum value="0x8E4E" name="GL_LAST_VERTEX_CONVENTION_OES"/>
         <enum value="0x8E4F" name="GL_PROVOKING_VERTEX"/>
         <enum value="0x8E4F" name="GL_PROVOKING_VERTEX_EXT"/>
         <enum value="0x8E50" name="GL_SAMPLE_POSITION"/>
@@ -7169,7 +7169,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8E5A" name="GL_MAX_GEOMETRY_PROGRAM_INVOCATIONS_NV"/>
         <enum value="0x8E5A" name="GL_MAX_GEOMETRY_SHADER_INVOCATIONS"/>
         <enum value="0x8E5A" name="GL_MAX_GEOMETRY_SHADER_INVOCATIONS_EXT"/>
-        <enum value="0x8E5A" name="GL_MAX_GEOMETRY_SHADER_INVOCATIONS_OES"/>                  
+        <enum value="0x8E5A" name="GL_MAX_GEOMETRY_SHADER_INVOCATIONS_OES"/>
         <enum value="0x8E5B" name="GL_MIN_FRAGMENT_INTERPOLATION_OFFSET"/>
         <enum value="0x8E5B" name="GL_MIN_FRAGMENT_INTERPOLATION_OFFSET_OES"/>
         <enum value="0x8E5B" name="GL_MIN_FRAGMENT_INTERPOLATION_OFFSET_NV"/>
@@ -7190,77 +7190,77 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8E71" name="GL_MAX_VERTEX_STREAMS"/>
         <enum value="0x8E72" name="GL_PATCH_VERTICES"/>
         <enum value="0x8E72" name="GL_PATCH_VERTICES_EXT"/>
-        <enum value="0x8E72" name="GL_PATCH_VERTICES_OES"/>                                   
+        <enum value="0x8E72" name="GL_PATCH_VERTICES_OES"/>
         <enum value="0x8E73" name="GL_PATCH_DEFAULT_INNER_LEVEL"/>
         <enum value="0x8E73" name="GL_PATCH_DEFAULT_INNER_LEVEL_EXT"/>
         <enum value="0x8E74" name="GL_PATCH_DEFAULT_OUTER_LEVEL"/>
         <enum value="0x8E74" name="GL_PATCH_DEFAULT_OUTER_LEVEL_EXT"/>
         <enum value="0x8E75" name="GL_TESS_CONTROL_OUTPUT_VERTICES"/>
         <enum value="0x8E75" name="GL_TESS_CONTROL_OUTPUT_VERTICES_EXT"/>
-        <enum value="0x8E75" name="GL_TESS_CONTROL_OUTPUT_VERTICES_OES"/>                     
+        <enum value="0x8E75" name="GL_TESS_CONTROL_OUTPUT_VERTICES_OES"/>
         <enum value="0x8E76" name="GL_TESS_GEN_MODE"/>
         <enum value="0x8E76" name="GL_TESS_GEN_MODE_EXT"/>
-        <enum value="0x8E76" name="GL_TESS_GEN_MODE_OES"/>                                    
+        <enum value="0x8E76" name="GL_TESS_GEN_MODE_OES"/>
         <enum value="0x8E77" name="GL_TESS_GEN_SPACING"/>
         <enum value="0x8E77" name="GL_TESS_GEN_SPACING_EXT"/>
-        <enum value="0x8E77" name="GL_TESS_GEN_SPACING_OES"/>                                 
+        <enum value="0x8E77" name="GL_TESS_GEN_SPACING_OES"/>
         <enum value="0x8E78" name="GL_TESS_GEN_VERTEX_ORDER"/>
         <enum value="0x8E78" name="GL_TESS_GEN_VERTEX_ORDER_EXT"/>
-        <enum value="0x8E78" name="GL_TESS_GEN_VERTEX_ORDER_OES"/>                            
+        <enum value="0x8E78" name="GL_TESS_GEN_VERTEX_ORDER_OES"/>
         <enum value="0x8E79" name="GL_TESS_GEN_POINT_MODE"/>
         <enum value="0x8E79" name="GL_TESS_GEN_POINT_MODE_EXT"/>
-        <enum value="0x8E79" name="GL_TESS_GEN_POINT_MODE_OES"/>                              
+        <enum value="0x8E79" name="GL_TESS_GEN_POINT_MODE_OES"/>
         <enum value="0x8E7A" name="GL_ISOLINES"/>
         <enum value="0x8E7A" name="GL_ISOLINES_EXT"/>
-        <enum value="0x8E7A" name="GL_ISOLINES_OES"/>                                         
+        <enum value="0x8E7A" name="GL_ISOLINES_OES"/>
         <enum value="0x8E7B" name="GL_FRACTIONAL_ODD"/>
         <enum value="0x8E7B" name="GL_FRACTIONAL_ODD_EXT"/>
-        <enum value="0x8E7B" name="GL_FRACTIONAL_ODD_OES"/>                                   
+        <enum value="0x8E7B" name="GL_FRACTIONAL_ODD_OES"/>
         <enum value="0x8E7C" name="GL_FRACTIONAL_EVEN"/>
         <enum value="0x8E7C" name="GL_FRACTIONAL_EVEN_EXT"/>
-        <enum value="0x8E7C" name="GL_FRACTIONAL_EVEN_OES"/>                                  
+        <enum value="0x8E7C" name="GL_FRACTIONAL_EVEN_OES"/>
         <enum value="0x8E7D" name="GL_MAX_PATCH_VERTICES"/>
         <enum value="0x8E7D" name="GL_MAX_PATCH_VERTICES_EXT"/>
-        <enum value="0x8E7D" name="GL_MAX_PATCH_VERTICES_OES"/>                               
+        <enum value="0x8E7D" name="GL_MAX_PATCH_VERTICES_OES"/>
         <enum value="0x8E7E" name="GL_MAX_TESS_GEN_LEVEL"/>
         <enum value="0x8E7E" name="GL_MAX_TESS_GEN_LEVEL_EXT"/>
-        <enum value="0x8E7E" name="GL_MAX_TESS_GEN_LEVEL_OES"/>                               
+        <enum value="0x8E7E" name="GL_MAX_TESS_GEN_LEVEL_OES"/>
         <enum value="0x8E7F" name="GL_MAX_TESS_CONTROL_UNIFORM_COMPONENTS"/>
         <enum value="0x8E7F" name="GL_MAX_TESS_CONTROL_UNIFORM_COMPONENTS_EXT"/>
-        <enum value="0x8E7F" name="GL_MAX_TESS_CONTROL_UNIFORM_COMPONENTS_OES"/>              
+        <enum value="0x8E7F" name="GL_MAX_TESS_CONTROL_UNIFORM_COMPONENTS_OES"/>
         <enum value="0x8E80" name="GL_MAX_TESS_EVALUATION_UNIFORM_COMPONENTS"/>
         <enum value="0x8E80" name="GL_MAX_TESS_EVALUATION_UNIFORM_COMPONENTS_EXT"/>
-        <enum value="0x8E80" name="GL_MAX_TESS_EVALUATION_UNIFORM_COMPONENTS_OES"/>           
+        <enum value="0x8E80" name="GL_MAX_TESS_EVALUATION_UNIFORM_COMPONENTS_OES"/>
         <enum value="0x8E81" name="GL_MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS"/>
         <enum value="0x8E81" name="GL_MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS_EXT"/>
-        <enum value="0x8E81" name="GL_MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS_OES"/>             
+        <enum value="0x8E81" name="GL_MAX_TESS_CONTROL_TEXTURE_IMAGE_UNITS_OES"/>
         <enum value="0x8E82" name="GL_MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS"/>
         <enum value="0x8E82" name="GL_MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS_EXT"/>
-        <enum value="0x8E82" name="GL_MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS_OES"/>          
+        <enum value="0x8E82" name="GL_MAX_TESS_EVALUATION_TEXTURE_IMAGE_UNITS_OES"/>
         <enum value="0x8E83" name="GL_MAX_TESS_CONTROL_OUTPUT_COMPONENTS"/>
         <enum value="0x8E83" name="GL_MAX_TESS_CONTROL_OUTPUT_COMPONENTS_EXT"/>
-        <enum value="0x8E83" name="GL_MAX_TESS_CONTROL_OUTPUT_COMPONENTS_OES"/>               
+        <enum value="0x8E83" name="GL_MAX_TESS_CONTROL_OUTPUT_COMPONENTS_OES"/>
         <enum value="0x8E84" name="GL_MAX_TESS_PATCH_COMPONENTS"/>
         <enum value="0x8E84" name="GL_MAX_TESS_PATCH_COMPONENTS_EXT"/>
-        <enum value="0x8E84" name="GL_MAX_TESS_PATCH_COMPONENTS_OES"/>                        
+        <enum value="0x8E84" name="GL_MAX_TESS_PATCH_COMPONENTS_OES"/>
         <enum value="0x8E85" name="GL_MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS"/>
         <enum value="0x8E85" name="GL_MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS_EXT"/>
-        <enum value="0x8E85" name="GL_MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS_OES"/>         
+        <enum value="0x8E85" name="GL_MAX_TESS_CONTROL_TOTAL_OUTPUT_COMPONENTS_OES"/>
         <enum value="0x8E86" name="GL_MAX_TESS_EVALUATION_OUTPUT_COMPONENTS"/>
         <enum value="0x8E86" name="GL_MAX_TESS_EVALUATION_OUTPUT_COMPONENTS_EXT"/>
-        <enum value="0x8E86" name="GL_MAX_TESS_EVALUATION_OUTPUT_COMPONENTS_OES"/>            
+        <enum value="0x8E86" name="GL_MAX_TESS_EVALUATION_OUTPUT_COMPONENTS_OES"/>
         <enum value="0x8E87" name="GL_TESS_EVALUATION_SHADER"/>
         <enum value="0x8E87" name="GL_TESS_EVALUATION_SHADER_EXT"/>
-        <enum value="0x8E87" name="GL_TESS_EVALUATION_SHADER_OES"/>                           
+        <enum value="0x8E87" name="GL_TESS_EVALUATION_SHADER_OES"/>
         <enum value="0x8E88" name="GL_TESS_CONTROL_SHADER"/>
         <enum value="0x8E88" name="GL_TESS_CONTROL_SHADER_EXT"/>
-        <enum value="0x8E88" name="GL_TESS_CONTROL_SHADER_OES"/>                              
+        <enum value="0x8E88" name="GL_TESS_CONTROL_SHADER_OES"/>
         <enum value="0x8E89" name="GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS"/>
         <enum value="0x8E89" name="GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS_EXT"/>
-        <enum value="0x8E89" name="GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS_OES"/>                  
+        <enum value="0x8E89" name="GL_MAX_TESS_CONTROL_UNIFORM_BLOCKS_OES"/>
         <enum value="0x8E8A" name="GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS"/>
         <enum value="0x8E8A" name="GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS_EXT"/>
-        <enum value="0x8E8A" name="GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS_OES"/>               
+        <enum value="0x8E8A" name="GL_MAX_TESS_EVALUATION_UNIFORM_BLOCKS_OES"/>
             <unused start="0x8E8B" vendor="NV"/>
         <enum value="0x8E8C" name="GL_COMPRESSED_RGBA_BPTC_UNORM"/>
         <enum value="0x8E8C" name="GL_COMPRESSED_RGBA_BPTC_UNORM_ARB"/>
@@ -7486,29 +7486,29 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9009" name="GL_TEXTURE_CUBE_MAP_ARRAY"/>
         <enum value="0x9009" name="GL_TEXTURE_CUBE_MAP_ARRAY_ARB"/>
         <enum value="0x9009" name="GL_TEXTURE_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x9009" name="GL_TEXTURE_CUBE_MAP_ARRAY_OES"/>                           
+        <enum value="0x9009" name="GL_TEXTURE_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x900A" name="GL_TEXTURE_BINDING_CUBE_MAP_ARRAY"/>
         <enum value="0x900A" name="GL_TEXTURE_BINDING_CUBE_MAP_ARRAY_ARB"/>
         <enum value="0x900A" name="GL_TEXTURE_BINDING_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x900A" name="GL_TEXTURE_BINDING_CUBE_MAP_ARRAY_OES"/>                   
+        <enum value="0x900A" name="GL_TEXTURE_BINDING_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x900B" name="GL_PROXY_TEXTURE_CUBE_MAP_ARRAY"/>
         <enum value="0x900B" name="GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB"/>
         <enum value="0x900C" name="GL_SAMPLER_CUBE_MAP_ARRAY"/>
         <enum value="0x900C" name="GL_SAMPLER_CUBE_MAP_ARRAY_ARB"/>
         <enum value="0x900C" name="GL_SAMPLER_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x900C" name="GL_SAMPLER_CUBE_MAP_ARRAY_OES"/>                           
+        <enum value="0x900C" name="GL_SAMPLER_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x900D" name="GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW"/>
         <enum value="0x900D" name="GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW_ARB"/>
         <enum value="0x900D" name="GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW_EXT"/>
-        <enum value="0x900D" name="GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW_OES"/>                    
+        <enum value="0x900D" name="GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW_OES"/>
         <enum value="0x900E" name="GL_INT_SAMPLER_CUBE_MAP_ARRAY"/>
         <enum value="0x900E" name="GL_INT_SAMPLER_CUBE_MAP_ARRAY_ARB"/>
         <enum value="0x900E" name="GL_INT_SAMPLER_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x900E" name="GL_INT_SAMPLER_CUBE_MAP_ARRAY_OES"/>                       
+        <enum value="0x900E" name="GL_INT_SAMPLER_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x900F" name="GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY"/>
         <enum value="0x900F" name="GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY_ARB"/>
         <enum value="0x900F" name="GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x900F" name="GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY_OES"/>              
+        <enum value="0x900F" name="GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x9010" name="GL_ALPHA_SNORM"/>
         <enum value="0x9011" name="GL_LUMINANCE_SNORM"/>
         <enum value="0x9012" name="GL_LUMINANCE_ALPHA_SNORM"/>
@@ -7577,14 +7577,14 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9050" name="GL_IMAGE_CUBE_EXT"/>
         <enum value="0x9051" name="GL_IMAGE_BUFFER"/>
         <enum value="0x9051" name="GL_IMAGE_BUFFER_EXT"/>
-        <enum value="0x9051" name="GL_IMAGE_BUFFER_OES"/>                                     
+        <enum value="0x9051" name="GL_IMAGE_BUFFER_OES"/>
         <enum value="0x9052" name="GL_IMAGE_1D_ARRAY"/>
         <enum value="0x9052" name="GL_IMAGE_1D_ARRAY_EXT"/>
         <enum value="0x9053" name="GL_IMAGE_2D_ARRAY"/>
         <enum value="0x9053" name="GL_IMAGE_2D_ARRAY_EXT"/>
         <enum value="0x9054" name="GL_IMAGE_CUBE_MAP_ARRAY"/>
         <enum value="0x9054" name="GL_IMAGE_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x9054" name="GL_IMAGE_CUBE_MAP_ARRAY_OES"/>                             
+        <enum value="0x9054" name="GL_IMAGE_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x9055" name="GL_IMAGE_2D_MULTISAMPLE"/>
         <enum value="0x9055" name="GL_IMAGE_2D_MULTISAMPLE_EXT"/>
         <enum value="0x9056" name="GL_IMAGE_2D_MULTISAMPLE_ARRAY"/>
@@ -7601,14 +7601,14 @@ typedef unsigned int GLhandleARB;
         <enum value="0x905B" name="GL_INT_IMAGE_CUBE_EXT"/>
         <enum value="0x905C" name="GL_INT_IMAGE_BUFFER"/>
         <enum value="0x905C" name="GL_INT_IMAGE_BUFFER_EXT"/>
-        <enum value="0x905C" name="GL_INT_IMAGE_BUFFER_OES"/>                                 
+        <enum value="0x905C" name="GL_INT_IMAGE_BUFFER_OES"/>
         <enum value="0x905D" name="GL_INT_IMAGE_1D_ARRAY"/>
         <enum value="0x905D" name="GL_INT_IMAGE_1D_ARRAY_EXT"/>
         <enum value="0x905E" name="GL_INT_IMAGE_2D_ARRAY"/>
         <enum value="0x905E" name="GL_INT_IMAGE_2D_ARRAY_EXT"/>
         <enum value="0x905F" name="GL_INT_IMAGE_CUBE_MAP_ARRAY"/>
         <enum value="0x905F" name="GL_INT_IMAGE_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x905F" name="GL_INT_IMAGE_CUBE_MAP_ARRAY_OES"/>                         
+        <enum value="0x905F" name="GL_INT_IMAGE_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x9060" name="GL_INT_IMAGE_2D_MULTISAMPLE"/>
         <enum value="0x9060" name="GL_INT_IMAGE_2D_MULTISAMPLE_EXT"/>
         <enum value="0x9061" name="GL_INT_IMAGE_2D_MULTISAMPLE_ARRAY"/>
@@ -7625,14 +7625,14 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9066" name="GL_UNSIGNED_INT_IMAGE_CUBE_EXT"/>
         <enum value="0x9067" name="GL_UNSIGNED_INT_IMAGE_BUFFER"/>
         <enum value="0x9067" name="GL_UNSIGNED_INT_IMAGE_BUFFER_EXT"/>
-        <enum value="0x9067" name="GL_UNSIGNED_INT_IMAGE_BUFFER_OES"/>                        
+        <enum value="0x9067" name="GL_UNSIGNED_INT_IMAGE_BUFFER_OES"/>
         <enum value="0x9068" name="GL_UNSIGNED_INT_IMAGE_1D_ARRAY"/>
         <enum value="0x9068" name="GL_UNSIGNED_INT_IMAGE_1D_ARRAY_EXT"/>
         <enum value="0x9069" name="GL_UNSIGNED_INT_IMAGE_2D_ARRAY"/>
         <enum value="0x9069" name="GL_UNSIGNED_INT_IMAGE_2D_ARRAY_EXT"/>
         <enum value="0x906A" name="GL_UNSIGNED_INT_IMAGE_CUBE_MAP_ARRAY"/>
         <enum value="0x906A" name="GL_UNSIGNED_INT_IMAGE_CUBE_MAP_ARRAY_EXT"/>
-        <enum value="0x906A" name="GL_UNSIGNED_INT_IMAGE_CUBE_MAP_ARRAY_OES"/>                
+        <enum value="0x906A" name="GL_UNSIGNED_INT_IMAGE_CUBE_MAP_ARRAY_OES"/>
         <enum value="0x906B" name="GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE"/>
         <enum value="0x906B" name="GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE_EXT"/>
         <enum value="0x906C" name="GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE_ARRAY"/>
@@ -7729,13 +7729,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x90CA" name="GL_MAX_VERTEX_IMAGE_UNIFORMS"/>
         <enum value="0x90CB" name="GL_MAX_TESS_CONTROL_IMAGE_UNIFORMS"/>
         <enum value="0x90CB" name="GL_MAX_TESS_CONTROL_IMAGE_UNIFORMS_EXT"/>
-        <enum value="0x90CB" name="GL_MAX_TESS_CONTROL_IMAGE_UNIFORMS_OES"/>                  
+        <enum value="0x90CB" name="GL_MAX_TESS_CONTROL_IMAGE_UNIFORMS_OES"/>
         <enum value="0x90CC" name="GL_MAX_TESS_EVALUATION_IMAGE_UNIFORMS"/>
         <enum value="0x90CC" name="GL_MAX_TESS_EVALUATION_IMAGE_UNIFORMS_EXT"/>
-        <enum value="0x90CC" name="GL_MAX_TESS_EVALUATION_IMAGE_UNIFORMS_OES"/>               
+        <enum value="0x90CC" name="GL_MAX_TESS_EVALUATION_IMAGE_UNIFORMS_OES"/>
         <enum value="0x90CD" name="GL_MAX_GEOMETRY_IMAGE_UNIFORMS"/>
         <enum value="0x90CD" name="GL_MAX_GEOMETRY_IMAGE_UNIFORMS_EXT"/>
-        <enum value="0x90CD" name="GL_MAX_GEOMETRY_IMAGE_UNIFORMS_OES"/>                      
+        <enum value="0x90CD" name="GL_MAX_GEOMETRY_IMAGE_UNIFORMS_OES"/>
         <enum value="0x90CE" name="GL_MAX_FRAGMENT_IMAGE_UNIFORMS"/>
         <enum value="0x90CF" name="GL_MAX_COMBINED_IMAGE_UNIFORMS"/>
         <enum value="0x90D0" name="GL_MAX_DEEP_3D_TEXTURE_WIDTH_HEIGHT_NV"/>
@@ -7747,13 +7747,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x90D6" name="GL_MAX_VERTEX_SHADER_STORAGE_BLOCKS"/>
         <enum value="0x90D7" name="GL_MAX_GEOMETRY_SHADER_STORAGE_BLOCKS"/>
         <enum value="0x90D7" name="GL_MAX_GEOMETRY_SHADER_STORAGE_BLOCKS_EXT"/>
-        <enum value="0x90D7" name="GL_MAX_GEOMETRY_SHADER_STORAGE_BLOCKS_OES"/>               
+        <enum value="0x90D7" name="GL_MAX_GEOMETRY_SHADER_STORAGE_BLOCKS_OES"/>
         <enum value="0x90D8" name="GL_MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS"/>
         <enum value="0x90D8" name="GL_MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS_EXT"/>
-        <enum value="0x90D8" name="GL_MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS_OES"/>           
+        <enum value="0x90D8" name="GL_MAX_TESS_CONTROL_SHADER_STORAGE_BLOCKS_OES"/>
         <enum value="0x90D9" name="GL_MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS"/>
         <enum value="0x90D9" name="GL_MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS_EXT"/>
-        <enum value="0x90D9" name="GL_MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS_OES"/>        
+        <enum value="0x90D9" name="GL_MAX_TESS_EVALUATION_SHADER_STORAGE_BLOCKS_OES"/>
         <enum value="0x90DA" name="GL_MAX_FRAGMENT_SHADER_STORAGE_BLOCKS"/>
         <enum value="0x90DB" name="GL_MAX_COMPUTE_SHADER_STORAGE_BLOCKS"/>
         <enum value="0x90DC" name="GL_MAX_COMBINED_SHADER_STORAGE_BLOCKS"/>
@@ -7837,10 +7837,10 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9122" name="GL_MAX_VERTEX_OUTPUT_COMPONENTS"/>
         <enum value="0x9123" name="GL_MAX_GEOMETRY_INPUT_COMPONENTS"/>
         <enum value="0x9123" name="GL_MAX_GEOMETRY_INPUT_COMPONENTS_EXT"/>
-        <enum value="0x9123" name="GL_MAX_GEOMETRY_INPUT_COMPONENTS_OES"/>                    
+        <enum value="0x9123" name="GL_MAX_GEOMETRY_INPUT_COMPONENTS_OES"/>
         <enum value="0x9124" name="GL_MAX_GEOMETRY_OUTPUT_COMPONENTS"/>
         <enum value="0x9124" name="GL_MAX_GEOMETRY_OUTPUT_COMPONENTS_EXT"/>
-        <enum value="0x9124" name="GL_MAX_GEOMETRY_OUTPUT_COMPONENTS_OES"/>                   
+        <enum value="0x9124" name="GL_MAX_GEOMETRY_OUTPUT_COMPONENTS_OES"/>
         <enum value="0x9125" name="GL_MAX_FRAGMENT_INPUT_COMPONENTS"/>
         <enum value="0x9126" name="GL_CONTEXT_PROFILE_MASK"/>
         <enum value="0x9127" name="GL_UNPACK_COMPRESSED_BLOCK_WIDTH"/>
@@ -7940,13 +7940,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x919C" name="GL_MIN_LOD_WARNING_AMD"/>
         <enum value="0x919D" name="GL_TEXTURE_BUFFER_OFFSET"/>
         <enum value="0x919D" name="GL_TEXTURE_BUFFER_OFFSET_EXT"/>
-        <enum value="0x919D" name="GL_TEXTURE_BUFFER_OFFSET_OES"/>                            
+        <enum value="0x919D" name="GL_TEXTURE_BUFFER_OFFSET_OES"/>
         <enum value="0x919E" name="GL_TEXTURE_BUFFER_SIZE"/>
         <enum value="0x919E" name="GL_TEXTURE_BUFFER_SIZE_EXT"/>
-        <enum value="0x919E" name="GL_TEXTURE_BUFFER_SIZE_OES"/>                              
+        <enum value="0x919E" name="GL_TEXTURE_BUFFER_SIZE_OES"/>
         <enum value="0x919F" name="GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT"/>
         <enum value="0x919F" name="GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT_EXT"/>
-        <enum value="0x919F" name="GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT_OES"/>                  
+        <enum value="0x919F" name="GL_TEXTURE_BUFFER_OFFSET_ALIGNMENT_OES"/>
         <enum value="0x91A0" name="GL_STREAM_RASTERIZATION_AMD"/>
             <unused start="0x91A1" end="0x91A3" vendor="AMD"/>
         <enum value="0x91A4" name="GL_VERTEX_ELEMENT_SWIZZLE_AMD"/>
@@ -8089,7 +8089,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x92B4" name="GL_INVERT_OVG_NV"/>
             <unused start="0x92B5" end="0x92BD" vendor="NV"/>
         <enum value="0x92BE" name="GL_PRIMITIVE_BOUNDING_BOX_EXT"/>
-        <enum value="0x92BE" name="GL_PRIMITIVE_BOUNDING_BOX_OES"/>                           
+        <enum value="0x92BE" name="GL_PRIMITIVE_BOUNDING_BOX_OES"/>
             <unused start="0x92BF" vendor="NV"/>
         <enum value="0x92C0" name="GL_ATOMIC_COUNTER_BUFFER"/>
         <enum value="0x92C1" name="GL_ATOMIC_COUNTER_BUFFER_BINDING"/>
@@ -8106,25 +8106,25 @@ typedef unsigned int GLhandleARB;
         <enum value="0x92CC" name="GL_MAX_VERTEX_ATOMIC_COUNTER_BUFFERS"/>
         <enum value="0x92CD" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS"/>
         <enum value="0x92CD" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS_EXT"/>
-        <enum value="0x92CD" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS_OES"/>          
+        <enum value="0x92CD" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTER_BUFFERS_OES"/>
         <enum value="0x92CE" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS"/>
         <enum value="0x92CE" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS_EXT"/>
-        <enum value="0x92CE" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS_OES"/>       
+        <enum value="0x92CE" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTER_BUFFERS_OES"/>
         <enum value="0x92CF" name="GL_MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS"/>
         <enum value="0x92CF" name="GL_MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS_EXT"/>
-        <enum value="0x92CF" name="GL_MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS_OES"/>              
+        <enum value="0x92CF" name="GL_MAX_GEOMETRY_ATOMIC_COUNTER_BUFFERS_OES"/>
         <enum value="0x92D0" name="GL_MAX_FRAGMENT_ATOMIC_COUNTER_BUFFERS"/>
         <enum value="0x92D1" name="GL_MAX_COMBINED_ATOMIC_COUNTER_BUFFERS"/>
         <enum value="0x92D2" name="GL_MAX_VERTEX_ATOMIC_COUNTERS"/>
         <enum value="0x92D3" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTERS"/>
         <enum value="0x92D3" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTERS_EXT"/>
-        <enum value="0x92D3" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTERS_OES"/>                 
+        <enum value="0x92D3" name="GL_MAX_TESS_CONTROL_ATOMIC_COUNTERS_OES"/>
         <enum value="0x92D4" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTERS"/>
         <enum value="0x92D4" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTERS_EXT"/>
-        <enum value="0x92D4" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTERS_OES"/>              
+        <enum value="0x92D4" name="GL_MAX_TESS_EVALUATION_ATOMIC_COUNTERS_OES"/>
         <enum value="0x92D5" name="GL_MAX_GEOMETRY_ATOMIC_COUNTERS"/>
         <enum value="0x92D5" name="GL_MAX_GEOMETRY_ATOMIC_COUNTERS_EXT"/>
-        <enum value="0x92D5" name="GL_MAX_GEOMETRY_ATOMIC_COUNTERS_OES"/>                     
+        <enum value="0x92D5" name="GL_MAX_GEOMETRY_ATOMIC_COUNTERS_OES"/>
         <enum value="0x92D6" name="GL_MAX_FRAGMENT_ATOMIC_COUNTERS"/>
         <enum value="0x92D7" name="GL_MAX_COMBINED_ATOMIC_COUNTERS"/>
         <enum value="0x92D8" name="GL_MAX_ATOMIC_COUNTER_BUFFER_SIZE"/>
@@ -8145,7 +8145,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x92E6" name="GL_SHADER_STORAGE_BLOCK"/>
         <enum value="0x92E7" name="GL_IS_PER_PATCH"/>
         <enum value="0x92E7" name="GL_IS_PER_PATCH_EXT"/>
-        <enum value="0x92E7" name="GL_IS_PER_PATCH_OES"/>                                     
+        <enum value="0x92E7" name="GL_IS_PER_PATCH_OES"/>
         <enum value="0x92E8" name="GL_VERTEX_SUBROUTINE"/>
         <enum value="0x92E9" name="GL_TESS_CONTROL_SUBROUTINE"/>
         <enum value="0x92EA" name="GL_TESS_EVALUATION_SUBROUTINE"/>
@@ -8179,13 +8179,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9306" name="GL_REFERENCED_BY_VERTEX_SHADER"/>
         <enum value="0x9307" name="GL_REFERENCED_BY_TESS_CONTROL_SHADER"/>
         <enum value="0x9307" name="GL_REFERENCED_BY_TESS_CONTROL_SHADER_EXT"/>
-        <enum value="0x9307" name="GL_REFERENCED_BY_TESS_CONTROL_SHADER_OES"/>                
+        <enum value="0x9307" name="GL_REFERENCED_BY_TESS_CONTROL_SHADER_OES"/>
         <enum value="0x9308" name="GL_REFERENCED_BY_TESS_EVALUATION_SHADER"/>
         <enum value="0x9308" name="GL_REFERENCED_BY_TESS_EVALUATION_SHADER_EXT"/>
-        <enum value="0x9308" name="GL_REFERENCED_BY_TESS_EVALUATION_SHADER_OES"/>             
+        <enum value="0x9308" name="GL_REFERENCED_BY_TESS_EVALUATION_SHADER_OES"/>
         <enum value="0x9309" name="GL_REFERENCED_BY_GEOMETRY_SHADER"/>
         <enum value="0x9309" name="GL_REFERENCED_BY_GEOMETRY_SHADER_EXT"/>
-        <enum value="0x9309" name="GL_REFERENCED_BY_GEOMETRY_SHADER_OES"/>                    
+        <enum value="0x9309" name="GL_REFERENCED_BY_GEOMETRY_SHADER_OES"/>
         <enum value="0x930A" name="GL_REFERENCED_BY_FRAGMENT_SHADER"/>
         <enum value="0x930B" name="GL_REFERENCED_BY_COMPUTE_SHADER"/>
         <enum value="0x930C" name="GL_TOP_LEVEL_ARRAY_SIZE"/>
@@ -8196,14 +8196,14 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9311" name="GL_FRAMEBUFFER_DEFAULT_HEIGHT"/>
         <enum value="0x9312" name="GL_FRAMEBUFFER_DEFAULT_LAYERS"/>
         <enum value="0x9312" name="GL_FRAMEBUFFER_DEFAULT_LAYERS_EXT"/>
-        <enum value="0x9312" name="GL_FRAMEBUFFER_DEFAULT_LAYERS_OES"/>                       
+        <enum value="0x9312" name="GL_FRAMEBUFFER_DEFAULT_LAYERS_OES"/>
         <enum value="0x9313" name="GL_FRAMEBUFFER_DEFAULT_SAMPLES"/>
         <enum value="0x9314" name="GL_FRAMEBUFFER_DEFAULT_FIXED_SAMPLE_LOCATIONS"/>
         <enum value="0x9315" name="GL_MAX_FRAMEBUFFER_WIDTH"/>
         <enum value="0x9316" name="GL_MAX_FRAMEBUFFER_HEIGHT"/>
         <enum value="0x9317" name="GL_MAX_FRAMEBUFFER_LAYERS"/>
         <enum value="0x9317" name="GL_MAX_FRAMEBUFFER_LAYERS_EXT"/>
-        <enum value="0x9317" name="GL_MAX_FRAMEBUFFER_LAYERS_OES"/>                           
+        <enum value="0x9317" name="GL_MAX_FRAMEBUFFER_LAYERS_OES"/>
         <enum value="0x9318" name="GL_MAX_FRAMEBUFFER_SAMPLES"/>
             <unused start="0x9319" end="0x9326" vendor="NV"/>
         <enum value="0x9327" name="GL_RASTER_MULTISAMPLE_EXT"/>
@@ -8370,7 +8370,10 @@ typedef unsigned int GLhandleARB;
     </enums>
 
     <enums namespace="GL" start="0x9630" end="0x963F" vendor="Oculus" comment="Email from Cass Everitt">
-            <unused start="0x9630" end="0x963F" vendor="Oculus"/>
+        <enum value="0x9630" name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR"/>
+        <enum value="0x9631" name="GL_MAX_VIEWS_OVR"/>
+        <enum value="0x9632" name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR"/>
+            <unused start="0x9633" end="0x963F" vendor="Oculus"/>
     </enums>
 
 <!-- Enums reservable for future use. To reserve a new range, allocate one
@@ -13588,6 +13591,15 @@ typedef unsigned int GLhandleARB;
             <alias name="glFramebufferTextureLayer"/>
         </command>
         <command>
+            <proto>void <name>glFramebufferTextureMultiviewOVR</name></proto>
+            <param group="FramebufferTarget"><ptype>GLenum</ptype> <name>target</name></param>
+            <param group="FramebufferAttachment"><ptype>GLenum</ptype> <name>attachment</name></param>
+            <param group="Texture"><ptype>GLuint</ptype> <name>texture</name></param>
+            <param group="CheckedInt32"><ptype>GLint</ptype> <name>level</name></param>
+            <param><ptype>GLint</ptype> <name>baseViewIndex</name></param>
+            <param><ptype>GLsizei</ptype> <name>numViews</name></param>
+        </command>
+        <command>
             <proto>void <name>glFreeObjectBufferATI</name></proto>
             <param><ptype>GLuint</ptype> <name>buffer</name></param>
         </command>
@@ -17880,7 +17892,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLuint</ptype> <name>list</name></param>
             <param><ptype>GLuint</ptype> <name>segment</name></param>
             <param>const void **<name>indirects</name></param>
-            <param>const size_t *<name>sizes</name></param>
+            <param>const <ptype>GLsizei</ptype> *<name>sizes</name></param>
             <param>const <ptype>GLuint</ptype> *<name>states</name></param>
             <param>const <ptype>GLuint</ptype> *<name>fbos</name></param>
             <param><ptype>GLuint</ptype> <name>count</name></param>
@@ -22987,11 +22999,6 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLfloat</ptype> <name>value</name></param>
             <param group="Boolean"><ptype>GLboolean</ptype> <name>invert</name></param>
             <alias name="glSampleCoverage"/>
-        </command>
-        <command>
-            <proto>void <name>glSampleCoverageOES</name></proto>
-            <param group="ClampedFixed"><ptype>GLfixed</ptype> <name>value</name></param>
-            <param group="Boolean"><ptype>GLboolean</ptype> <name>invert</name></param>
         </command>
         <command>
             <proto>void <name>glSampleCoveragex</name></proto>
@@ -43805,7 +43812,6 @@ typedef unsigned int GLhandleARB;
                 <command name="glPointSizexOES"/>
                 <command name="glPolygonOffsetxOES"/>
                 <command name="glRotatexOES"/>
-                <command name="glSampleCoverageOES"/>
                 <command name="glScalexOES"/>
                 <command name="glTexEnvxOES"/>
                 <command name="glTexEnvxvOES"/>
@@ -44441,6 +44447,15 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FORMAT_SUBSAMPLE_244_244_OML"/>
             </require>
         </extension>
+        <extension name="GL_OVR_multiview" supported="gl|gles2">
+            <require>
+                <enum name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR"/>
+                <enum name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR"/>
+                <enum name="GL_MAX_VIEWS_OVR"/>
+                <command name="glFramebufferTextureMultiviewOVR"/>
+            </require>
+        </extension>
+        <extension name="GL_OVR_multiview2" supported="gl|gles2"/>
         <extension name="GL_PGI_misc_hints" supported="gl">
             <require>
                 <enum name="GL_PREFER_DOUBLEBUFFER_HINT_PGI"/>

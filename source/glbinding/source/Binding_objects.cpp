@@ -663,6 +663,7 @@ Function<void, GLenum, GLenum, GLuint, GLint, GLenum> Binding::FramebufferTextur
 Function<void, GLenum, GLenum, GLuint, GLint, GLint> Binding::FramebufferTextureLayer("glFramebufferTextureLayer");
 Function<void, GLenum, GLenum, GLuint, GLint, GLint> Binding::FramebufferTextureLayerARB("glFramebufferTextureLayerARB");
 Function<void, GLenum, GLenum, GLuint, GLint, GLint> Binding::FramebufferTextureLayerEXT("glFramebufferTextureLayerEXT");
+Function<void, GLenum, GLenum, GLuint, GLint, GLint, GLsizei> Binding::FramebufferTextureMultiviewOVR("glFramebufferTextureMultiviewOVR");
 Function<void, GLuint> Binding::FreeObjectBufferATI("glFreeObjectBufferATI");
 Function<void, GLenum> Binding::FrontFace("glFrontFace");
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Frustum("glFrustum");
@@ -1951,7 +1952,6 @@ Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::Rotatef("glRotatef")
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::RotatexOES("glRotatexOES");
 Function<void, GLfloat, GLboolean> Binding::SampleCoverage("glSampleCoverage");
 Function<void, GLfloat, GLboolean> Binding::SampleCoverageARB("glSampleCoverageARB");
-Function<void, GLfixed, GLboolean> Binding::SampleCoverageOES("glSampleCoverageOES");
 Function<void, GLuint, GLuint, GLenum> Binding::SampleMapATI("glSampleMapATI");
 Function<void, GLclampf, GLboolean> Binding::SampleMaskEXT("glSampleMaskEXT");
 Function<void, GLuint, GLbitfield> Binding::SampleMaskIndexedNV("glSampleMaskIndexedNV");
@@ -3472,6 +3472,7 @@ const Binding::array_t Binding::s_functions =
     &FramebufferTextureLayer,
     &FramebufferTextureLayerARB,
     &FramebufferTextureLayerEXT,
+    &FramebufferTextureMultiviewOVR,
     &FreeObjectBufferATI,
     &FrontFace,
     &Frustum,
@@ -4760,7 +4761,6 @@ const Binding::array_t Binding::s_functions =
     &RotatexOES,
     &SampleCoverage,
     &SampleCoverageARB,
-    &SampleCoverageOES,
     &SampleMapATI,
     &SampleMaskEXT,
     &SampleMaskIndexedNV,

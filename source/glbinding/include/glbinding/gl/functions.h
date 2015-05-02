@@ -639,6 +639,7 @@ GLBINDING_API void glFramebufferTextureFaceEXT(GLenum target, GLenum attachment,
 GLBINDING_API void glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
 GLBINDING_API void glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
 GLBINDING_API void glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+GLBINDING_API void glFramebufferTextureMultiviewOVR(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews);
 GLBINDING_API void glFreeObjectBufferATI(GLuint buffer);
 GLBINDING_API void glFrontFace(GLenum mode);
 GLBINDING_API void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
@@ -1927,7 +1928,6 @@ GLBINDING_API void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
 GLBINDING_API void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
 GLBINDING_API void glSampleCoverage(GLfloat value, GLboolean invert);
 GLBINDING_API void glSampleCoverageARB(GLfloat value, GLboolean invert);
-GLBINDING_API void glSampleCoverageOES(GLfixed value, GLboolean invert);
 GLBINDING_API void glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle);
 GLBINDING_API void glSampleMaskEXT(GLclampf value, GLboolean invert);
 GLBINDING_API void glSampleMaskIndexedNV(GLuint index, GLbitfield mask);

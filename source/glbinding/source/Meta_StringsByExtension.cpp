@@ -465,6 +465,8 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
     { GLextension::GL_OML_interlace, "GL_OML_interlace" },
     { GLextension::GL_OML_resample, "GL_OML_resample" },
     { GLextension::GL_OML_subsample, "GL_OML_subsample" },
+    { GLextension::GL_OVR_multiview, "GL_OVR_multiview" },
+    { GLextension::GL_OVR_multiview2, "GL_OVR_multiview2" },
     { GLextension::GL_PGI_misc_hints, "GL_PGI_misc_hints" },
     { GLextension::GL_PGI_vertex_hints, "GL_PGI_vertex_hints" },
     { GLextension::GL_REND_screen_coordinates, "GL_REND_screen_coordinates" },

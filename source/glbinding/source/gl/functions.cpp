@@ -3156,6 +3156,11 @@ void glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint textu
     return glbinding::Binding::FramebufferTextureLayerEXT(target, attachment, texture, level, layer);
 }
 
+void glFramebufferTextureMultiviewOVR(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews)
+{
+    return glbinding::Binding::FramebufferTextureMultiviewOVR(target, attachment, texture, level, baseViewIndex, numViews);
+}
+
 void glFreeObjectBufferATI(GLuint buffer)
 {
     return glbinding::Binding::FreeObjectBufferATI(buffer);
@@ -9594,11 +9599,6 @@ void glSampleCoverage(GLfloat value, GLboolean invert)
 void glSampleCoverageARB(GLfloat value, GLboolean invert)
 {
     return glbinding::Binding::SampleCoverageARB(value, invert);
-}
-
-void glSampleCoverageOES(GLfixed value, GLboolean invert)
-{
-    return glbinding::Binding::SampleCoverageOES(value, invert);
 }
 
 void glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle)

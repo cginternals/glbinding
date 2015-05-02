@@ -674,6 +674,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint> FramebufferTextureLayer;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint> FramebufferTextureLayerARB;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint> FramebufferTextureLayerEXT;
+    static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint, gl::GLsizei> FramebufferTextureMultiviewOVR;
     static Function<void, gl::GLuint> FreeObjectBufferATI;
     static Function<void, gl::GLenum> FrontFace;
     static Function<void, gl::GLdouble, gl::GLdouble, gl::GLdouble, gl::GLdouble, gl::GLdouble, gl::GLdouble> Frustum;
@@ -1962,7 +1963,6 @@ public:
     static Function<void, gl::GLfixed, gl::GLfixed, gl::GLfixed, gl::GLfixed> RotatexOES;
     static Function<void, gl::GLfloat, gl::GLboolean> SampleCoverage;
     static Function<void, gl::GLfloat, gl::GLboolean> SampleCoverageARB;
-    static Function<void, gl::GLfixed, gl::GLboolean> SampleCoverageOES;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum> SampleMapATI;
     static Function<void, gl::GLclampf, gl::GLboolean> SampleMaskEXT;
     static Function<void, gl::GLuint, gl::GLbitfield> SampleMaskIndexedNV;
