@@ -91,6 +91,7 @@ enum class ContextFlagMask : unsigned int
     GL_CONTEXT_FLAG_DEBUG_BIT              = 0x00000002,
     GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT      = 0x00000004,
     GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB  = 0x00000004,
+    GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR       = 0x00000008,
 };
 
 
@@ -340,6 +341,7 @@ static const MemoryBarrierMask GL_UNIFORM_BARRIER_BIT = MemoryBarrierMask::GL_UN
 static const MemoryBarrierMask GL_UNIFORM_BARRIER_BIT_EXT = MemoryBarrierMask::GL_UNIFORM_BARRIER_BIT_EXT;
 static const VertexHintsMaskPGI GL_VERTEX23_BIT_PGI = VertexHintsMaskPGI::GL_VERTEX23_BIT_PGI;
 static const FragmentShaderColorModMaskATI GL_BIAS_BIT_ATI = FragmentShaderColorModMaskATI::GL_BIAS_BIT_ATI;
+static const ContextFlagMask GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR = ContextFlagMask::GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR;
 static const FragmentShaderDestModMaskATI GL_HALF_BIT_ATI = FragmentShaderDestModMaskATI::GL_HALF_BIT_ATI;
 static const AttribMask GL_POLYGON_BIT = AttribMask::GL_POLYGON_BIT;
 static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT;

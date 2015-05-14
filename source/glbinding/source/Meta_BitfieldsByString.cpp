@@ -63,6 +63,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
     { "GL_CONTEXT_FLAG_DEBUG_BIT", static_cast<GLbitfield>(ContextFlagMask::GL_CONTEXT_FLAG_DEBUG_BIT) },
     { "GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT", static_cast<GLbitfield>(ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT) },
     { "GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB", static_cast<GLbitfield>(ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB) },
+    { "GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR", static_cast<GLbitfield>(ContextFlagMask::GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR) },
     { "GL_CONTEXT_CORE_PROFILE_BIT", static_cast<GLbitfield>(ContextProfileMask::GL_CONTEXT_CORE_PROFILE_BIT) },
     { "GL_CONTEXT_COMPATIBILITY_PROFILE_BIT", static_cast<GLbitfield>(ContextProfileMask::GL_CONTEXT_COMPATIBILITY_PROFILE_BIT) },
     { "GL_TEXTURE_DEFORMATION_BIT_SGIX", static_cast<GLbitfield>(FfdMaskSGIX::GL_TEXTURE_DEFORMATION_BIT_SGIX) },

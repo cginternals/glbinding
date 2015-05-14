@@ -352,6 +352,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
     { GLextension::GL_KHR_blend_equation_advanced_coherent, "GL_KHR_blend_equation_advanced_coherent" },
     { GLextension::GL_KHR_context_flush_control, "GL_KHR_context_flush_control" },
     { GLextension::GL_KHR_debug, "GL_KHR_debug" },
+    { GLextension::GL_KHR_no_error, "GL_KHR_no_error" },
     { GLextension::GL_KHR_robust_buffer_access_behavior, "GL_KHR_robust_buffer_access_behavior" },
     { GLextension::GL_KHR_robustness, "GL_KHR_robustness" },
     { GLextension::GL_KHR_texture_compression_astc_hdr, "GL_KHR_texture_compression_astc_hdr" },

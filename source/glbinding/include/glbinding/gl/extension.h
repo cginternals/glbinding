@@ -349,6 +349,7 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_KHR_blend_equation_advanced_coherent,
     GL_KHR_context_flush_control,
     GL_KHR_debug,
+    GL_KHR_no_error,
     GL_KHR_robust_buffer_access_behavior,
     GL_KHR_robustness,
     GL_KHR_texture_compression_astc_hdr,

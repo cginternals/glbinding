@@ -2060,6 +2060,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x00000002" name="GL_CONTEXT_FLAG_DEBUG_BIT_KHR"/>
         <enum value="0x00000004" name="GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB"/>
         <enum value="0x00000004" name="GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT"/>
+        <enum value="0x00000008" name="GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR"/>
     </enums>
 
     <enums namespace="GL" group="ContextProfileMask" type="bitmask">
@@ -4059,6 +4060,7 @@ typedef unsigned int GLhandleARB;
 
     <enums namespace="GL" start="0x82B0" end="0x830F" vendor="ARB" comment="Range reclaimed from ADD on 2012/05/10">
             <unused start="0x82B0" vendor="ARB"/>
+            <!-- future: <enum value="0x82B0" name="GL_MULTISAMPLE_LINE_WIDTH_RANGE"/> -->
         <enum value="0x82B1" name="GL_TEXTURE_COMPRESSED_BLOCK_WIDTH"/>
         <enum value="0x82B2" name="GL_TEXTURE_COMPRESSED_BLOCK_HEIGHT"/>
         <enum value="0x82B3" name="GL_TEXTURE_COMPRESSED_BLOCK_SIZE"/>
@@ -6770,7 +6772,22 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8CEF" name="GL_COLOR_ATTACHMENT15"/>
         <enum value="0x8CEF" name="GL_COLOR_ATTACHMENT15_EXT"/>
         <enum value="0x8CEF" name="GL_COLOR_ATTACHMENT15_NV"/>
-            <unused start="0x8CF0" end="0x8CFF" vendor="ARB" comment="For color attachments 16-31"/>
+        <enum value="0x8CF0" name="GL_COLOR_ATTACHMENT16"/>
+        <enum value="0x8CF1" name="GL_COLOR_ATTACHMENT17"/>
+        <enum value="0x8CF2" name="GL_COLOR_ATTACHMENT18"/>
+        <enum value="0x8CF3" name="GL_COLOR_ATTACHMENT19"/>
+        <enum value="0x8CF4" name="GL_COLOR_ATTACHMENT20"/>
+        <enum value="0x8CF5" name="GL_COLOR_ATTACHMENT21"/>
+        <enum value="0x8CF6" name="GL_COLOR_ATTACHMENT22"/>
+        <enum value="0x8CF7" name="GL_COLOR_ATTACHMENT23"/>
+        <enum value="0x8CF8" name="GL_COLOR_ATTACHMENT24"/>
+        <enum value="0x8CF9" name="GL_COLOR_ATTACHMENT25"/>
+        <enum value="0x8CFA" name="GL_COLOR_ATTACHMENT26"/>
+        <enum value="0x8CFB" name="GL_COLOR_ATTACHMENT27"/>
+        <enum value="0x8CFC" name="GL_COLOR_ATTACHMENT28"/>
+        <enum value="0x8CFD" name="GL_COLOR_ATTACHMENT29"/>
+        <enum value="0x8CFE" name="GL_COLOR_ATTACHMENT30"/>
+        <enum value="0x8CFF" name="GL_COLOR_ATTACHMENT31"/>
         <enum value="0x8D00" name="GL_DEPTH_ATTACHMENT"/>
         <enum value="0x8D00" name="GL_DEPTH_ATTACHMENT_EXT"/>
         <enum value="0x8D00" name="GL_DEPTH_ATTACHMENT_OES"/>
@@ -31058,6 +31075,22 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_COLOR_ATTACHMENT13"/>
             <enum name="GL_COLOR_ATTACHMENT14"/>
             <enum name="GL_COLOR_ATTACHMENT15"/>
+            <enum name="GL_COLOR_ATTACHMENT16"/>
+            <enum name="GL_COLOR_ATTACHMENT17"/>
+            <enum name="GL_COLOR_ATTACHMENT18"/>
+            <enum name="GL_COLOR_ATTACHMENT19"/>
+            <enum name="GL_COLOR_ATTACHMENT20"/>
+            <enum name="GL_COLOR_ATTACHMENT21"/>
+            <enum name="GL_COLOR_ATTACHMENT22"/>
+            <enum name="GL_COLOR_ATTACHMENT23"/>
+            <enum name="GL_COLOR_ATTACHMENT24"/>
+            <enum name="GL_COLOR_ATTACHMENT25"/>
+            <enum name="GL_COLOR_ATTACHMENT26"/>
+            <enum name="GL_COLOR_ATTACHMENT27"/>
+            <enum name="GL_COLOR_ATTACHMENT28"/>
+            <enum name="GL_COLOR_ATTACHMENT29"/>
+            <enum name="GL_COLOR_ATTACHMENT30"/>
+            <enum name="GL_COLOR_ATTACHMENT31"/>
             <enum name="GL_DEPTH_ATTACHMENT"/>
             <enum name="GL_STENCIL_ATTACHMENT"/>
             <enum name="GL_FRAMEBUFFER"/>
@@ -34526,6 +34559,22 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_COLOR_ATTACHMENT13"/>
             <enum name="GL_COLOR_ATTACHMENT14"/>
             <enum name="GL_COLOR_ATTACHMENT15"/>
+            <enum name="GL_COLOR_ATTACHMENT16"/>
+            <enum name="GL_COLOR_ATTACHMENT17"/>
+            <enum name="GL_COLOR_ATTACHMENT18"/>
+            <enum name="GL_COLOR_ATTACHMENT19"/>
+            <enum name="GL_COLOR_ATTACHMENT20"/>
+            <enum name="GL_COLOR_ATTACHMENT21"/>
+            <enum name="GL_COLOR_ATTACHMENT22"/>
+            <enum name="GL_COLOR_ATTACHMENT23"/>
+            <enum name="GL_COLOR_ATTACHMENT24"/>
+            <enum name="GL_COLOR_ATTACHMENT25"/>
+            <enum name="GL_COLOR_ATTACHMENT26"/>
+            <enum name="GL_COLOR_ATTACHMENT27"/>
+            <enum name="GL_COLOR_ATTACHMENT28"/>
+            <enum name="GL_COLOR_ATTACHMENT29"/>
+            <enum name="GL_COLOR_ATTACHMENT30"/>
+            <enum name="GL_COLOR_ATTACHMENT31"/>
             <enum name="GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE"/>
             <enum name="GL_MAX_SAMPLES"/>
             <enum name="GL_HALF_FLOAT"/>
@@ -41596,6 +41645,11 @@ typedef unsigned int GLhandleARB;
             </require>
             <require api="gl" profile="compatibility">
                 <enum name="GL_DISPLAY_LIST"/>
+            </require>
+        </extension>
+        <extension name="GL_KHR_no_error" supported="gl|glcore|gles2">
+            <require>
+                <enum name="GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR"/>
             </require>
         </extension>
         <extension name="GL_KHR_robust_buffer_access_behavior" supported="gl|glcore|gles2"/>
