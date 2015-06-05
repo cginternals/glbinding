@@ -5,21 +5,34 @@ import os, sys, getopt, io, subprocess
 def update(outputfile, revisionfile):
     url = "https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml"
     
-    revisionfilehandle = open(revisionfile, "rt")
     revision = 0
+
+    if os.path.isfile(revisionfile):
+
+        revisionfilehandle = open(revisionfile, "rt")
     
-    if not revisionfilehandle.closed:
-        revision = int(revisionfilehandle.readline())
+        if not revisionfilehandle.closed:
+            revision = int(revisionfilehandle.readline())
     
-    revisionfilehandle.close()
+        revisionfilehandle.close()
+
+        print("Local revision of " + outputfile + " is " + str(revision))
     
-    print("Local revision of " + outputfile + " is " + str(revision))
-    
+    else:
+        print("Local revision file not found")
+
+        
+
+    print("Retrieving latest revision of gl.xml")
+
     svninfo = subprocess.Popen(["svn", "info", url], stdout=subprocess.PIPE)
     newrevisioninfo = svninfo.communicate()[0]
     
-    stream = io.StringIO(unicode(newrevisioninfo))
-    
+    if sys.version_info < (3,):
+        stream = io.StringIO(unicode(newrevisioninfo))
+    else:
+        stream = io.StringIO(str(newrevisioninfo, 'utf-8'))  
+
     newrevision = 0
     
     line = str(stream.readline())
@@ -28,7 +41,7 @@ def update(outputfile, revisionfile):
             newrevision = int(''.join(ch for ch in line if ch.isdigit()))
             break
         line = str(stream.readline())
-    
+
     if newrevision <= revision:
         print (outputfile + " is up to date, skipping update")
         sys.exit(0)
