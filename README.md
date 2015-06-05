@@ -307,4 +307,4 @@ When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES```, ```OPTION
 
 ##### Linking binaries
 
-In order to link *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDES``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
+In order to link *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDE_DIRS``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
