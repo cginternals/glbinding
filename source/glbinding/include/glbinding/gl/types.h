@@ -184,10 +184,17 @@ struct hash<gl::AttribMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::AttribMask & value);
 
-GLBINDING_API gl::AttribMask operator|(const gl::AttribMask & a, const gl::AttribMask & b);
-GLBINDING_API gl::AttribMask operator&(const gl::AttribMask & a, const gl::AttribMask & b);
-GLBINDING_API gl::AttribMask operator^(const gl::AttribMask & a, const gl::AttribMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::AttribMask operator|(const gl::AttribMask & a, const gl::AttribMask & b);
+GLBINDING_API gl::AttribMask & operator|=(gl::AttribMask & a, const gl::AttribMask & b);
+GLBINDING_API gl::AttribMask operator&(const gl::AttribMask & a, const gl::AttribMask & b);
+GLBINDING_API gl::AttribMask & operator&=(gl::AttribMask & a, const gl::AttribMask & b);
+GLBINDING_API gl::AttribMask operator^(const gl::AttribMask & a, const gl::AttribMask & b);
+GLBINDING_API gl::AttribMask & operator^=(gl::AttribMask & a, const gl::AttribMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -205,10 +212,17 @@ struct hash<gl::ClearBufferMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ClearBufferMask & value);
 
-GLBINDING_API gl::ClearBufferMask operator|(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
-GLBINDING_API gl::ClearBufferMask operator&(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
-GLBINDING_API gl::ClearBufferMask operator^(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::ClearBufferMask operator|(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
+GLBINDING_API gl::ClearBufferMask & operator|=(gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
+GLBINDING_API gl::ClearBufferMask operator&(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
+GLBINDING_API gl::ClearBufferMask & operator&=(gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
+GLBINDING_API gl::ClearBufferMask operator^(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
+GLBINDING_API gl::ClearBufferMask & operator^=(gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -226,10 +240,17 @@ struct hash<gl::ClientAttribMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ClientAttribMask & value);
 
-GLBINDING_API gl::ClientAttribMask operator|(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
-GLBINDING_API gl::ClientAttribMask operator&(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
-GLBINDING_API gl::ClientAttribMask operator^(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::ClientAttribMask operator|(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+GLBINDING_API gl::ClientAttribMask & operator|=(gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+GLBINDING_API gl::ClientAttribMask operator&(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+GLBINDING_API gl::ClientAttribMask & operator&=(gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+GLBINDING_API gl::ClientAttribMask operator^(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+GLBINDING_API gl::ClientAttribMask & operator^=(gl::ClientAttribMask & a, const gl::ClientAttribMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -247,10 +268,17 @@ struct hash<gl::ContextFlagMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ContextFlagMask & value);
 
-GLBINDING_API gl::ContextFlagMask operator|(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
-GLBINDING_API gl::ContextFlagMask operator&(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
-GLBINDING_API gl::ContextFlagMask operator^(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::ContextFlagMask operator|(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
+GLBINDING_API gl::ContextFlagMask & operator|=(gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
+GLBINDING_API gl::ContextFlagMask operator&(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
+GLBINDING_API gl::ContextFlagMask & operator&=(gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
+GLBINDING_API gl::ContextFlagMask operator^(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
+GLBINDING_API gl::ContextFlagMask & operator^=(gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -268,10 +296,17 @@ struct hash<gl::ContextProfileMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ContextProfileMask & value);
 
-GLBINDING_API gl::ContextProfileMask operator|(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
-GLBINDING_API gl::ContextProfileMask operator&(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
-GLBINDING_API gl::ContextProfileMask operator^(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::ContextProfileMask operator|(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+GLBINDING_API gl::ContextProfileMask & operator|=(gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+GLBINDING_API gl::ContextProfileMask operator&(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+GLBINDING_API gl::ContextProfileMask & operator&=(gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+GLBINDING_API gl::ContextProfileMask operator^(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+GLBINDING_API gl::ContextProfileMask & operator^=(gl::ContextProfileMask & a, const gl::ContextProfileMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -289,10 +324,17 @@ struct hash<gl::FfdMaskSGIX>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FfdMaskSGIX & value);
 
-GLBINDING_API gl::FfdMaskSGIX operator|(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
-GLBINDING_API gl::FfdMaskSGIX operator&(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
-GLBINDING_API gl::FfdMaskSGIX operator^(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
+namespace gl
+{
 
+GLBINDING_API gl::FfdMaskSGIX operator|(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
+GLBINDING_API gl::FfdMaskSGIX & operator|=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
+GLBINDING_API gl::FfdMaskSGIX operator&(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
+GLBINDING_API gl::FfdMaskSGIX & operator&=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
+GLBINDING_API gl::FfdMaskSGIX operator^(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
+GLBINDING_API gl::FfdMaskSGIX & operator^=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -310,10 +352,17 @@ struct hash<gl::FragmentShaderColorModMaskATI>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderColorModMaskATI & value);
 
-GLBINDING_API gl::FragmentShaderColorModMaskATI operator|(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
-GLBINDING_API gl::FragmentShaderColorModMaskATI operator&(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
-GLBINDING_API gl::FragmentShaderColorModMaskATI operator^(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+namespace gl
+{
 
+GLBINDING_API gl::FragmentShaderColorModMaskATI operator|(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+GLBINDING_API gl::FragmentShaderColorModMaskATI & operator|=(gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+GLBINDING_API gl::FragmentShaderColorModMaskATI operator&(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+GLBINDING_API gl::FragmentShaderColorModMaskATI & operator&=(gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+GLBINDING_API gl::FragmentShaderColorModMaskATI operator^(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+GLBINDING_API gl::FragmentShaderColorModMaskATI & operator^=(gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -331,10 +380,17 @@ struct hash<gl::FragmentShaderDestMaskATI>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMaskATI & value);
 
-GLBINDING_API gl::FragmentShaderDestMaskATI operator|(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
-GLBINDING_API gl::FragmentShaderDestMaskATI operator&(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
-GLBINDING_API gl::FragmentShaderDestMaskATI operator^(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
+namespace gl
+{
 
+GLBINDING_API gl::FragmentShaderDestMaskATI operator|(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestMaskATI & operator|=(gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestMaskATI operator&(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestMaskATI & operator&=(gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestMaskATI operator^(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestMaskATI & operator^=(gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -352,10 +408,17 @@ struct hash<gl::FragmentShaderDestModMaskATI>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestModMaskATI & value);
 
-GLBINDING_API gl::FragmentShaderDestModMaskATI operator|(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
-GLBINDING_API gl::FragmentShaderDestModMaskATI operator&(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
-GLBINDING_API gl::FragmentShaderDestModMaskATI operator^(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+namespace gl
+{
 
+GLBINDING_API gl::FragmentShaderDestModMaskATI operator|(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestModMaskATI & operator|=(gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestModMaskATI operator&(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestModMaskATI & operator&=(gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestModMaskATI operator^(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+GLBINDING_API gl::FragmentShaderDestModMaskATI & operator^=(gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -373,10 +436,17 @@ struct hash<gl::MapBufferUsageMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::MapBufferUsageMask & value);
 
-GLBINDING_API gl::MapBufferUsageMask operator|(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
-GLBINDING_API gl::MapBufferUsageMask operator&(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
-GLBINDING_API gl::MapBufferUsageMask operator^(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::MapBufferUsageMask operator|(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
+GLBINDING_API gl::MapBufferUsageMask & operator|=(gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
+GLBINDING_API gl::MapBufferUsageMask operator&(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
+GLBINDING_API gl::MapBufferUsageMask & operator&=(gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
+GLBINDING_API gl::MapBufferUsageMask operator^(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
+GLBINDING_API gl::MapBufferUsageMask & operator^=(gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -394,10 +464,17 @@ struct hash<gl::MemoryBarrierMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::MemoryBarrierMask & value);
 
-GLBINDING_API gl::MemoryBarrierMask operator|(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
-GLBINDING_API gl::MemoryBarrierMask operator&(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
-GLBINDING_API gl::MemoryBarrierMask operator^(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::MemoryBarrierMask operator|(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+GLBINDING_API gl::MemoryBarrierMask & operator|=(gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+GLBINDING_API gl::MemoryBarrierMask operator&(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+GLBINDING_API gl::MemoryBarrierMask & operator&=(gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+GLBINDING_API gl::MemoryBarrierMask operator^(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+GLBINDING_API gl::MemoryBarrierMask & operator^=(gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -415,10 +492,17 @@ struct hash<gl::PathRenderingMaskNV>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathRenderingMaskNV & value);
 
-GLBINDING_API gl::PathRenderingMaskNV operator|(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
-GLBINDING_API gl::PathRenderingMaskNV operator&(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
-GLBINDING_API gl::PathRenderingMaskNV operator^(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
+namespace gl
+{
 
+GLBINDING_API gl::PathRenderingMaskNV operator|(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
+GLBINDING_API gl::PathRenderingMaskNV & operator|=(gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
+GLBINDING_API gl::PathRenderingMaskNV operator&(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
+GLBINDING_API gl::PathRenderingMaskNV & operator&=(gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
+GLBINDING_API gl::PathRenderingMaskNV operator^(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
+GLBINDING_API gl::PathRenderingMaskNV & operator^=(gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -436,10 +520,17 @@ struct hash<gl::PerformanceQueryCapsMaskINTEL>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PerformanceQueryCapsMaskINTEL & value);
 
-GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator|(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
-GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator&(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
-GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator^(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+namespace gl
+{
 
+GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator|(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+GLBINDING_API gl::PerformanceQueryCapsMaskINTEL & operator|=(gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator&(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+GLBINDING_API gl::PerformanceQueryCapsMaskINTEL & operator&=(gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+GLBINDING_API gl::PerformanceQueryCapsMaskINTEL operator^(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+GLBINDING_API gl::PerformanceQueryCapsMaskINTEL & operator^=(gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -457,10 +548,17 @@ struct hash<gl::SyncObjectMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::SyncObjectMask & value);
 
-GLBINDING_API gl::SyncObjectMask operator|(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
-GLBINDING_API gl::SyncObjectMask operator&(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
-GLBINDING_API gl::SyncObjectMask operator^(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::SyncObjectMask operator|(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
+GLBINDING_API gl::SyncObjectMask & operator|=(gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
+GLBINDING_API gl::SyncObjectMask operator&(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
+GLBINDING_API gl::SyncObjectMask & operator&=(gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
+GLBINDING_API gl::SyncObjectMask operator^(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
+GLBINDING_API gl::SyncObjectMask & operator^=(gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -478,10 +576,17 @@ struct hash<gl::TextureStorageMaskAMD>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::TextureStorageMaskAMD & value);
 
-GLBINDING_API gl::TextureStorageMaskAMD operator|(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
-GLBINDING_API gl::TextureStorageMaskAMD operator&(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
-GLBINDING_API gl::TextureStorageMaskAMD operator^(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+namespace gl
+{
 
+GLBINDING_API gl::TextureStorageMaskAMD operator|(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+GLBINDING_API gl::TextureStorageMaskAMD & operator|=(gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+GLBINDING_API gl::TextureStorageMaskAMD operator&(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+GLBINDING_API gl::TextureStorageMaskAMD & operator&=(gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+GLBINDING_API gl::TextureStorageMaskAMD operator^(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+GLBINDING_API gl::TextureStorageMaskAMD & operator^=(gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -499,10 +604,17 @@ struct hash<gl::UseProgramStageMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::UseProgramStageMask & value);
 
-GLBINDING_API gl::UseProgramStageMask operator|(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
-GLBINDING_API gl::UseProgramStageMask operator&(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
-GLBINDING_API gl::UseProgramStageMask operator^(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::UseProgramStageMask operator|(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
+GLBINDING_API gl::UseProgramStageMask & operator|=(gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
+GLBINDING_API gl::UseProgramStageMask operator&(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
+GLBINDING_API gl::UseProgramStageMask & operator&=(gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
+GLBINDING_API gl::UseProgramStageMask operator^(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
+GLBINDING_API gl::UseProgramStageMask & operator^=(gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -520,10 +632,17 @@ struct hash<gl::VertexHintsMaskPGI>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::VertexHintsMaskPGI & value);
 
-GLBINDING_API gl::VertexHintsMaskPGI operator|(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
-GLBINDING_API gl::VertexHintsMaskPGI operator&(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
-GLBINDING_API gl::VertexHintsMaskPGI operator^(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+namespace gl
+{
 
+GLBINDING_API gl::VertexHintsMaskPGI operator|(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+GLBINDING_API gl::VertexHintsMaskPGI & operator|=(gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+GLBINDING_API gl::VertexHintsMaskPGI operator&(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+GLBINDING_API gl::VertexHintsMaskPGI & operator&=(gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+GLBINDING_API gl::VertexHintsMaskPGI operator^(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+GLBINDING_API gl::VertexHintsMaskPGI & operator^=(gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -541,10 +660,17 @@ struct hash<gl::UnusedMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value);
 
-GLBINDING_API gl::UnusedMask operator|(const gl::UnusedMask & a, const gl::UnusedMask & b);
-GLBINDING_API gl::UnusedMask operator&(const gl::UnusedMask & a, const gl::UnusedMask & b);
-GLBINDING_API gl::UnusedMask operator^(const gl::UnusedMask & a, const gl::UnusedMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::UnusedMask operator|(const gl::UnusedMask & a, const gl::UnusedMask & b);
+GLBINDING_API gl::UnusedMask & operator|=(gl::UnusedMask & a, const gl::UnusedMask & b);
+GLBINDING_API gl::UnusedMask operator&(const gl::UnusedMask & a, const gl::UnusedMask & b);
+GLBINDING_API gl::UnusedMask & operator&=(gl::UnusedMask & a, const gl::UnusedMask & b);
+GLBINDING_API gl::UnusedMask operator^(const gl::UnusedMask & a, const gl::UnusedMask & b);
+GLBINDING_API gl::UnusedMask & operator^=(gl::UnusedMask & a, const gl::UnusedMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -562,10 +688,17 @@ struct hash<gl::BufferAccessMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::BufferAccessMask & value);
 
-GLBINDING_API gl::BufferAccessMask operator|(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
-GLBINDING_API gl::BufferAccessMask operator&(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
-GLBINDING_API gl::BufferAccessMask operator^(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::BufferAccessMask operator|(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+GLBINDING_API gl::BufferAccessMask & operator|=(gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+GLBINDING_API gl::BufferAccessMask operator&(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+GLBINDING_API gl::BufferAccessMask & operator&=(gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+GLBINDING_API gl::BufferAccessMask operator^(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+GLBINDING_API gl::BufferAccessMask & operator^=(gl::BufferAccessMask & a, const gl::BufferAccessMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -583,10 +716,17 @@ struct hash<gl::BufferStorageMask>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::BufferStorageMask & value);
 
-GLBINDING_API gl::BufferStorageMask operator|(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
-GLBINDING_API gl::BufferStorageMask operator&(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
-GLBINDING_API gl::BufferStorageMask operator^(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+namespace gl
+{
 
+GLBINDING_API gl::BufferStorageMask operator|(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+GLBINDING_API gl::BufferStorageMask & operator|=(gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+GLBINDING_API gl::BufferStorageMask operator&(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+GLBINDING_API gl::BufferStorageMask & operator&=(gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+GLBINDING_API gl::BufferStorageMask operator^(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+GLBINDING_API gl::BufferStorageMask & operator^=(gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
+
+} // namespace gl
 
 namespace std
 {
@@ -604,6 +744,14 @@ struct hash<gl::PathFontStyle>
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value);
 
+namespace gl
+{
+
 GLBINDING_API gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
+GLBINDING_API gl::PathFontStyle & operator|=(gl::PathFontStyle & a, const gl::PathFontStyle & b);
 GLBINDING_API gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
+GLBINDING_API gl::PathFontStyle & operator&=(gl::PathFontStyle & a, const gl::PathFontStyle & b);
 GLBINDING_API gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b);
+GLBINDING_API gl::PathFontStyle & operator^=(gl::PathFontStyle & a, const gl::PathFontStyle & b);
+
+} // namespace gl

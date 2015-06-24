@@ -1,6 +1,8 @@
 
 #include <gmock/gmock.h>
 
+#include <glbinding/gl/gl.h>
+
 #include <glbinding/SharedBitfield.h>
 
 using namespace glbinding;
@@ -11,6 +13,18 @@ enum class A
     A_b,
     A_c
 };
+
+A operator|(const A & a, const A & b)
+{
+    return static_cast<A>(static_cast<std::underlying_type<A>::type>(a) & static_cast<std::underlying_type<A>::type>(b));
+}
+
+A & operator|=(A & a, const A & b)
+{
+    a = static_cast<A>(static_cast<std::underlying_type<A>::type>(a) & static_cast<std::underlying_type<A>::type>(b));
+
+    return a;
+}
 
 enum class B
 {
@@ -26,7 +40,41 @@ enum class C
     C_c
 };
 
-TEST(SharedBitfield, Usage)
+TEST(SharedBitfield, Usage1a)
+{
+    A bitsA_a = A::A_a;
+    A bitsA_b = A::A_b;
+
+    A bitsA_c = bitsA_a | bitsA_b;
+
+    bitsA_c |= bitsA_b;
+
+    SharedBitfield<A, B, C> shared1 = bitsA_a;
+    SharedBitfield<A, B, C> shared2 = bitsA_b;
+
+    shared1 |= shared2;
+
+    bitsA_c |= shared1;
+}
+
+TEST(SharedBitfield, Usage1b)
+{
+    gl::ClearBufferMask bitsA_a = gl::ClearBufferMask::GL_ACCUM_BUFFER_BIT;
+    gl::ClearBufferMask bitsA_b = gl::ClearBufferMask::GL_DEPTH_BUFFER_BIT;
+
+    gl::ClearBufferMask bitsA_c = bitsA_a | bitsA_b;
+
+    bitsA_c |= bitsA_b;
+
+    SharedBitfield<gl::ClearBufferMask, gl::AttribMask> shared1 = bitsA_a;
+    SharedBitfield<gl::ClearBufferMask, gl::AttribMask> shared2 = bitsA_b;
+
+    shared1 |= shared2;
+
+    bitsA_c |= shared1;
+}
+
+TEST(SharedBitfield, Usage2)
 {
     SharedBitfield<A, B, C> bitsA_a = A::A_a;
     SharedBitfield<A, B, C> bitsA_b = A::A_b;
