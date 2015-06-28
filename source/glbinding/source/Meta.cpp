@@ -10,7 +10,7 @@
 
 #include <glbinding/Version.h>
 
-#include "glrevision.h"
+#include "revision.h"
 #include "Meta_Maps.h"
 
 

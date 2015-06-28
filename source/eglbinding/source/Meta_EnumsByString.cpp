@@ -4,12 +4,12 @@
 #include <eglbinding/egl/enum.h>
 
 
-using namespace egl; // ToDo: multiple APIs?
+using namespace egl;
 
 namespace eglbinding
 {
 
-const std::unordered_map<std::string, eglenum> Meta_EnumsByString
+const std::unordered_map<std::string, EGLenum> Meta_EnumsByString
 {
 #ifdef SYMBOLS_BY_STRINGS
     { "EGL_NO_CONTEXT", EGLenum::EGL_NO_CONTEXT },

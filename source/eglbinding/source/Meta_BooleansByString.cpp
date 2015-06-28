@@ -4,7 +4,7 @@
 #include <eglbinding/egl/boolean.h>
 
 
-using namespace egl; // ToDo: multiple APIs?
+using namespace egl;
 
 namespace eglbinding
 {

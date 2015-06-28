@@ -4,12 +4,12 @@
 #include <%abinding/%a/enum.h>
 
 
-using namespace %a; // ToDo: multiple APIs?
+using namespace %a;
 
 namespace %abinding
 {
 
-const std::unordered_map<std::string, %aenum> Meta_EnumsByString
+const std::unordered_map<std::string, %Aenum> Meta_EnumsByString
 {
 #ifdef SYMBOLS_BY_STRINGS
     %s

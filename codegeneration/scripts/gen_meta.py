@@ -9,7 +9,7 @@ def metaExtensionToString(api, extension):
 
 def metaStringToExtension(api, extension):
 
-    return '{ "%s", %sextension::%s }' % (api.upper(), extension.name, extensionBID(extension))
+    return '{ "%s", %sextension::%s }' % (extension.name, api.upper(), extensionBID(extension))
 
 
 def genMetaStringsByExtension(api, extensions, outputdir, outputfile):
@@ -52,7 +52,7 @@ def metaBitfieldGroupToStringMap(api, group):
 def metaStringsByBitfieldGroup(group):
     return """const std::unordered_map<%s, std::string> Meta_StringsBy%s 
 {
-#ifdef STRINGS_BY_SYMBOL
+#ifdef STRINGS_BY_SYMBOLS
     %s
 #endif
 };

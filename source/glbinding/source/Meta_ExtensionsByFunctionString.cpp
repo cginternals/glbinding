@@ -9,7 +9,7 @@ using namespace gl;
 namespace glbinding
 {
 
-const std::unordered_map<std::string, std::set<glextension>> Meta_ExtensionsByFunctionString
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString
 {
 #ifdef SYMBOLS_BY_STRINGS
     { "glAccumxOES", { GLextension::GL_OES_fixed_point } },

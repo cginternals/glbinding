@@ -4,12 +4,12 @@
 #include <glbinding/gl/enum.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
 
-const std::unordered_map<std::string, glenum> Meta_EnumsByString
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString
 {
 #ifdef SYMBOLS_BY_STRINGS
     { "GL_NEXT_BUFFER_NV", GLenum::GL_NEXT_BUFFER_NV },

@@ -5,6 +5,9 @@
 
 #include <bitset>
 #include <sstream>
+#include <unordered_map>
+
+#include "../Meta_Maps.h"
 
 template <typename T>
 std::string bitfieldString(T value, const std::unordered_map<T, std::string> & map)

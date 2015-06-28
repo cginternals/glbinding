@@ -9,7 +9,7 @@ using namespace egl;
 namespace eglbinding
 {
 
-const std::unordered_map<std::string, std::set<eglextension>> Meta_ExtensionsByFunctionString
+const std::unordered_map<std::string, std::set<EGLextension>> Meta_ExtensionsByFunctionString
 {
 #ifdef SYMBOLS_BY_STRINGS
     { "eglClientWaitSyncKHR", { EGLextension::EGL_KHR_fence_sync, EGLextension::EGL_KHR_reusable_sync } },

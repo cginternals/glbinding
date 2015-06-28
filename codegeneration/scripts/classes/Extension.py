@@ -165,30 +165,37 @@ extension_mappings = {
 
 class Extension:
 
-	suffixes = [   \
-		"AMD",     \
-		"APPLE",   \
-		"ARB",     \
-		"ATI",     \
-		"EXT",     \
-		"GREMEDY", \
-		"IBM",     \
-		"IMG",     \
-		"INGR",    \
-		"INTEL",   \
-		"KHR",     \
-		"NV",      \
-		"OES",     \
-		"OML",     \
-		"PGI",     \
-		"QCOM",    \
-		"SGIS",    \
-		"SGIX",    \
-		"VIV",     \
-		"WEBGL",   \
-		"WIN"]
+        suffixes = [   \
+            "ANDROID", \
+            "ANGLE",   \
+            "AMD",     \
+            "APPLE",   \
+            "ARB",     \
+            "ARM",     \
+            "ATI",     \
+            "EXT",     \
+            "GREMEDY", \
+            "HI",      \
+            "IBM",     \
+            "IMG",     \
+            "INGR",    \
+            "INTEL",   \
+            "KHR",     \
+            "MESA",    \
+            "NOK",     \
+            "NV",      \
+            "OES",     \
+            "OML",     \
+            "PGI",     \
+            "QCOM",    \
+            "SGIS",    \
+            "SGIX",    \
+            "TIZEN",   \
+            "VIV",     \
+            "WEBGL",   \
+            "WIN"]
 
-	def __init__(self, xml, api):
+        def __init__(self, xml, api):
 
 		self.name      = xml.attrib["name"] 	 # e.g., GL_ARB_compute_variable_group_size
 		self.supported = xml.attrib["supported"] # e.g., gl, gles2, gl|glcore

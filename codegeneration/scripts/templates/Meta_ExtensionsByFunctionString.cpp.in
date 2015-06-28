@@ -9,7 +9,7 @@ using namespace %a;
 namespace %abinding
 {
 
-const std::unordered_map<std::string, std::set<%aextension>> Meta_ExtensionsByFunctionString
+const std::unordered_map<std::string, std::set<%Aextension>> Meta_ExtensionsByFunctionString
 {
 #ifdef SYMBOLS_BY_STRINGS
     %s

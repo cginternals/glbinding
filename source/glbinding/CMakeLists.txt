@@ -82,6 +82,8 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
+    ${source_path}/revision.h
+    
     ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
     

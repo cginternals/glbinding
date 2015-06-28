@@ -4,7 +4,7 @@
 #include <%abinding/%a/boolean.h>
 
 
-using namespace %a; // ToDo: multiple APIs?
+using namespace %a;
 
 namespace %abinding
 {
