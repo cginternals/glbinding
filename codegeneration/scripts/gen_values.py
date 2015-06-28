@@ -16,7 +16,7 @@ def genValuesFeatureGrouped(api, values, features, outputdir, outputfile):
 
     # gen values feature grouped
     for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
+        if f.api == api: # ToDo: probably seperate for all apis
             genFeatureValues(api, values, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureValues(api, values, f, outputdir, outputfile, True)
@@ -37,9 +37,9 @@ def genFeatureValues(api, values, feature, outputdir, outputfile, core = False, 
     qualifier = api + "::"
     
     tgrouped = groupEnumsByType(values)
-    del tgrouped["GLboolean"]
-    del tgrouped["GLenum"]
-    del tgrouped["GLbitfield"]
+    del tgrouped[api.upper() + "boolean"]
+    del tgrouped[api.upper() + "enum"]
+    del tgrouped[api.upper() + "bitfield"]
     
     groups = []
     for type in sorted(tgrouped.keys()):
@@ -62,11 +62,12 @@ def genValues(api, enums, outputdir, outputfile, forward = False):
 
     status(od + of)
 
+    return # hack
 
     tgrouped = groupEnumsByType(enums)
-    del tgrouped["GLboolean"]
-    del tgrouped["GLenum"]
-    del tgrouped["GLbitfield"]
+    del tgrouped[api.upper() + "boolean"]
+    del tgrouped[api.upper() + "enum"]
+    del tgrouped[api.upper() + "bitfield"]
 
     groups = []    
     for type in sorted(tgrouped.keys()):

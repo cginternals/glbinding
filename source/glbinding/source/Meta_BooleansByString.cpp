@@ -11,7 +11,7 @@ namespace glbinding
 
 const std::unordered_map<std::string, GLboolean> Meta_BooleansByString
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     { "GL_FALSE", GLboolean::GL_FALSE },
     { "GL_TRUE", GLboolean::GL_TRUE }
 #endif

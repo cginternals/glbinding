@@ -1,14 +1,20 @@
-gl::%t operator|(const gl::%t & a, const gl::%t & b)
+
+namespace %a
 {
-    return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) | static_cast<std::underlying_type<gl::%t>::type>(b));
+
+%t operator|(const %t & a, const %t & b)
+{
+    return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) | static_cast<std::underlying_type<%t>::type>(b));
 }
 
-gl::%t operator&(const gl::%t & a, const gl::%t & b)
+%t operator&(const %t & a, const %t & b)
 {
-    return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) & static_cast<std::underlying_type<gl::%t>::type>(b));
+    return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) & static_cast<std::underlying_type<%t>::type>(b));
 }
 
-gl::%t operator^(const gl::%t & a, const gl::%t & b)
+%t operator^(const %t & a, const %t & b)
 {
-    return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) ^ static_cast<std::underlying_type<gl::%t>::type>(b));
+    return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) ^ static_cast<std::underlying_type<%t>::type>(b));
 }
+
+} // namespace %a

@@ -1,10 +1,15 @@
 
-gl::%t operator+(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+namespace %a
 {
-    return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) + b);
+
+%t operator+(const %t & a, std::underlying_type<%t>::type b)
+{
+    return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) + b);
 }
 
-gl::%t operator-(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+%t operator-(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) - b);
+    return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) - b);
 }
+
+} // namespace %a

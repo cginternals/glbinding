@@ -29,20 +29,18 @@ from gen_versions import *
 from gen_meta import *
 from gen_test import *
 
-def generate(inputfile, patchfile, targetdir, revisionfile):
+def generate(api, inputfile, patchfile, library, revisionfile):
 
     # preparing
 
     print("")
     print("PREPARING")
 
-    api     = "gl" # ToDo: other apis are untested yet
-
     print("checking revision")
     file = open(revisionfile, "r")
     revision = int(file.readline())
     file.close()    
-    print(" revision is " + str(revision))
+    print("revision is " + str(revision))
 
     print("loading " + inputfile)
     tree       = ET.parse(inputfile)
@@ -134,29 +132,27 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print("VERIFYING")
 
     bitfGroups = [ g for g in groups 
-        if len(g.enums) > 0 and any(enum.type == "GLbitfield" for enum in g.enums) ]
+        if len(g.enums) > 0 and any(enum.type.endswith("bitfield") for enum in g.enums) ]
 
     print("verifying groups")
     verifyGroups(groups, enums)
 
     print("verifying commands")
-    verifyCommands(commands, bitfGroups)
+    verifyCommands(api, commands, bitfGroups)
 
     # generating
 
     print("")
     print("GENERATING")
 
-    includedir = targetdir + "/include/glbinding/"
-    sourcedir  = targetdir + "/source/"
-    testdir    = targetdir + "/../tests/glbinding-test/"
+    includedir = "../source/"+library+"/include/"+library+"/"
+    sourcedir  = "../source/"+library+"/source/"
+    testdir    = "../source/tests/"+library+"-test/"
 
     includedir_api = includedir + api + "?/"
     sourcedir_api  = sourcedir  + api + "?/"
 
-    # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
-
-    genRevision                    (     revision,           sourcedir,      "glrevision.h")
+    genRevision                    (api, revision,           sourcedir,      "revision.h")
 
     genExtensions                  (api, extensions,         includedir_api, "extension.h")
 
@@ -166,7 +162,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genValues                      (api, enums,              includedir_api, "values.h")
     genValuesFeatureGrouped        (api, enums, features,    includedir_api, "values?.h")
 
-    genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h") 
+    genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h")
     genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api, "types?.h")
 
     genBitfieldsAll                (api, enums,              includedir_api, "bitfield.h")
@@ -178,36 +174,36 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFunctionsAll                (api, commands,           includedir_api, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
     
-    genFeatures                    (api, features,           includedir_api, "gl?.h")
+    genFeatures                    (api, features,           includedir_api, "?.h")
 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
     genFunctionImplementationsAll  (api, commands,           sourcedir_api,  "functions.cpp")
     
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 
-    # Generate GLBINDING namespace classes
+    # Generate binding classes
 
-    genFunctionObjects_h           (commands,           includedir, "Binding.h")
-    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_objects.cpp")
+    genFunctionObjects_h           (api, commands,           includedir, "Binding.h")
+    genFunctionObjects_cpp         (api, commands,           sourcedir,  "Binding_objects.cpp")
 
-    genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
+    genVersions                    (api, features,           sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
-    genMetaMaps		           (enums,              sourcedir,  "Meta_Maps.h",                bitfGroups)
-    genMetaStringsByBitfield       (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
-    genMetaBitfieldByString        (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
-    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
-    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_EnumsByString.cpp",     "GLenum")
+    genMetaMaps		           (api, enums,              sourcedir,  "Meta_Maps.h",                bitfGroups)
+    genMetaStringsByBitfield       (api, bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
+    genMetaBitfieldByString        (api, bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
+    genMetaStringsByEnum           (api, enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  api.upper() + "boolean")
+    genMetaEnumsByString           (api, enums,              sourcedir,  "Meta_BooleansByString.cpp",  api.upper() + "boolean")
+    genMetaStringsByEnum           (api, enums,              sourcedir,  "Meta_StringsByEnum.cpp",     api.upper() + "enum")
+    genMetaEnumsByString           (api, enums,              sourcedir,  "Meta_EnumsByString.cpp",     api.upper() + "enum")
 
-    genMetaStringsByExtension      (extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
-    genMetaExtensionsByString      (extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
+    genMetaStringsByExtension      (api, extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
+    genMetaExtensionsByString      (api, extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
 
-    genReqVersionsByExtension      (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+    genReqVersionsByExtension      (api, extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
 
-    genFunctionStringsByExtension  (extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
-    genExtensionsByFunctionString  (extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
+    genFunctionStringsByExtension  (api, extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
+    genExtensionsByFunctionString  (api, extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
 
 
     print("")
@@ -215,35 +211,47 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv[1:], "s:p:d:r:", ["spec=", "patch=", "directory=" , "revision="])
+        opts, args = getopt.getopt(argv[1:], "a:s:p:l:r:", ["api=", "spec=", "library=", "patch=", "revision="])
     except getopt.GetoptError:
-        print("usage: %s -s <GL spec> [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
+        print("usage: %s -a <api> -s <spec file> -l <library name> [-p <patch spec file>] [-r <revision file>]" % argv[0])
         sys.exit(1)
         
-    targetdir = "."
+    api = None
     inputfile = None
     patchfile = None
+    library = None
+    revision = None
     
     for opt, arg in opts:
+        if opt in ("-a", "--api"):
+            api = arg
+
         if opt in ("-s", "--spec"):
             inputfile = arg
 
         if opt in ("-p", "--patch"):
             patchfile = arg
 
-        if opt in ("-d", "--directory"):
-            targetdir = arg
+        if opt in ("-l", "--library"):
+            library = arg
 
         if opt in ("-r", "--revision"):
             revision  = arg
             
+    if api == None:
+        print("no api given")
+        sys.exit(1)
+    
     if inputfile == None:
-        print("no GL spec file given")
+        print("no api spec file given")
+        sys.exit(1)
+    
+    if library == None:
+        print("no library name given")
         sys.exit(1)
 
-    Status.targetdir = targetdir
+    generate(api, inputfile, patchfile, library, revision)
 
-    generate(inputfile, patchfile, targetdir, revision)
 
 if __name__ == "__main__":
     main(sys.argv)

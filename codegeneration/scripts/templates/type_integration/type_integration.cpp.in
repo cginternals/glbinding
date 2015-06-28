@@ -1,78 +1,83 @@
 
 // %t Type Integration
 
-bool operator==(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+namespace %a
 {
-    return static_cast<std::underlying_type<gl::%t>::type>(a) == b;
+
+bool operator==(const %t & a, std::underlying_type<%t>::type b)
+{
+    return static_cast<std::underlying_type<%t>::type>(a) == b;
 }
 
-bool operator!=(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+bool operator!=(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<std::underlying_type<gl::%t>::type>(a) != b;
+    return static_cast<std::underlying_type<%t>::type>(a) != b;
 }
 
-bool operator<(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+bool operator<(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<std::underlying_type<gl::%t>::type>(a) < b;
+    return static_cast<std::underlying_type<%t>::type>(a) < b;
 }
 
-bool operator<=(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+bool operator<=(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<std::underlying_type<gl::%t>::type>(a) <= b;
+    return static_cast<std::underlying_type<%t>::type>(a) <= b;
 }
 
-bool operator>(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+bool operator>(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<std::underlying_type<gl::%t>::type>(a) > b;
+    return static_cast<std::underlying_type<%t>::type>(a) > b;
 }
 
-bool operator>=(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+bool operator>=(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<std::underlying_type<gl::%t>::type>(a) >= b;
+    return static_cast<std::underlying_type<%t>::type>(a) >= b;
 }
 
-bool operator==(std::underlying_type<gl::%t>::type a, const gl::%t & b)
+bool operator==(std::underlying_type<%t>::type a, const %t & b)
 {
-    return a == static_cast<std::underlying_type<gl::%t>::type>(b);
+    return a == static_cast<std::underlying_type<%t>::type>(b);
 }
 
-bool operator!=(std::underlying_type<gl::%t>::type a, const gl::%t & b)
+bool operator!=(std::underlying_type<%t>::type a, const %t & b)
 {
-    return a != static_cast<std::underlying_type<gl::%t>::type>(b);
+    return a != static_cast<std::underlying_type<%t>::type>(b);
 }
 
-bool operator<(std::underlying_type<gl::%t>::type a, const gl::%t & b)
+bool operator<(std::underlying_type<%t>::type a, const %t & b)
 {
-    return a < static_cast<std::underlying_type<gl::%t>::type>(b);
+    return a < static_cast<std::underlying_type<%t>::type>(b);
 }
 
-bool operator<=(std::underlying_type<gl::%t>::type a, const gl::%t & b)
+bool operator<=(std::underlying_type<%t>::type a, const %t & b)
 {
-    return a <= static_cast<std::underlying_type<gl::%t>::type>(b);
+    return a <= static_cast<std::underlying_type<%t>::type>(b);
 }
 
-bool operator>(std::underlying_type<gl::%t>::type a, const gl::%t & b)
+bool operator>(std::underlying_type<%t>::type a, const %t & b)
 {
-    return a > static_cast<std::underlying_type<gl::%t>::type>(b);
+    return a > static_cast<std::underlying_type<%t>::type>(b);
 }
 
-bool operator>=(std::underlying_type<gl::%t>::type a, const gl::%t & b)
+bool operator>=(std::underlying_type<%t>::type a, const %t & b)
 {
-    return a >= static_cast<std::underlying_type<gl::%t>::type>(b);
+    return a >= static_cast<std::underlying_type<%t>::type>(b);
 }
 
-gl::%t operator+(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+%t operator+(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) + b);
+    return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) + b);
 }
 
-gl::%t operator-(const gl::%t & a, std::underlying_type<gl::%t>::type b)
+%t operator-(const %t & a, std::underlying_type<%t>::type b)
 {
-    return static_cast<gl::%t>(static_cast<std::underlying_type<gl::%t>::type>(a) - b);
+    return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) - b);
 }
 
-std::ostream & operator<<(std::ostream & stream, const gl::%t & value)
+std::ostream & operator<<(std::ostream & stream, const %t & value)
 {
-    stream << gl::Meta::getString(value);
+    stream << %abinding::Meta::getString(value);
     return stream;
 }
+
+} // namespace %a

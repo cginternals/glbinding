@@ -2,12 +2,12 @@ from classes.Feature import *
 from classes.Extension import *
 
 
-def translateType(t, name):
+def translateType(api, t, name):
 
-    if name in [ "GL_TRUE", "GL_FALSE" ]:
-        return "GLboolean"
+    if name == api.upper() + "_TRUE" or name == api.upper() + "_FALSE":
+        return api.upper() + "boolean"
 
-    return { "u" : "GLuint", "ull" : "GLuint64"    }.get(t, "GLenum")
+    return { "u" : "unsigned int", "ull" : "unsigned long long int"    }.get(t, api.upper() + "enum")
 
 
 class Enum:
@@ -15,10 +15,10 @@ class Enum:
     def __init__(self, xml, features, extensions, groupString, groupType, api):
 
         self.api   = api
-
+        
         self.name  = xml.attrib["name"]
         self.value = xml.attrib["value"]
-        self.type  = "GLenum"
+        self.type  = api.upper() + "enum"
 
         self.aliasString = ""
         self.alias = None
@@ -26,14 +26,14 @@ class Enum:
         # an enum group is, if defined, defined specifically for an enum
         # but the enum itself might be reused by other groups as well.
         self.groups = set()
-        self.groupString = None # ToDo: only supported for GLbitfield for now
+        self.groupString = None # ToDo: only supported for bitfield for now
 
         self.aliasString = xml.attrib.get("alias", None)
 
-        if groupString == "SpecialNumbers":
-            self.type = translateType(xml.attrib.get("type", ""), self.name)
+        if groupString == "SpecialNumbers" or groupString == "Boolean":
+            self.type = translateType(api, xml.attrib.get("type", ""), self.name)
         elif groupType == "bitmask":
-            self.type = "GLbitfield"
+            self.type = api.upper() + "bitfield"
             self.groupString = groupString
 
         self.reqFeatures   = []
@@ -187,7 +187,7 @@ def verifyGroups(groups, enums):
 
     # ToDo
 
-    # (3) check that every enum of type GLbitfield 
+    # (3) check that every enum of type bitfield 
     # has only one group (important for namespace import) 
 
     # Note: (3) is deprecated since glbinding supports groups 
@@ -195,7 +195,7 @@ def verifyGroups(groups, enums):
     #overflows = set()
     
     #for enum in enums:
-    #   if enum.type == "GLbitfield" and len(enum.groups) > 1:
+    #   if enum.type == "bitfield" and len(enum.groups) > 1:
     #       overflows.add(enum)
 
     #if len(overflows) > 0:
@@ -227,6 +227,8 @@ def parseEnums(xml, features, extensions, commands, api):
     for E in xml.iter("enums"):
 
         groupString = E.attrib.get("group", None)
+        if groupString == None:
+            groupString = E.attrib.get("namespace", None)
         groupType   = E.attrib.get("type", None)
 
         # only parse enum if 

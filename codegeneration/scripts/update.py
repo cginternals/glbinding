@@ -2,8 +2,8 @@
 
 import os, sys, getopt, io, subprocess
 
-def update(outputfile, revisionfile):
-    url = "https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml"
+def update(api, outputfile, revisionfile):
+    url = "https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/"+api+".xml"
     
     revision = 0
 
@@ -23,7 +23,7 @@ def update(outputfile, revisionfile):
 
         
 
-    print("Retrieving latest revision of gl.xml")
+    print("Retrieving latest revision of "+api+".xml")
 
     svninfo = subprocess.Popen(["svn", "info", url], stdout=subprocess.PIPE)
     newrevisioninfo = svninfo.communicate()[0]
@@ -51,7 +51,7 @@ def update(outputfile, revisionfile):
     revisionfilehandle = open(revisionfile, "wt")
     revisionfilehandle.write(str(newrevision))
     
-    print ("Local revision of " + outputfile + " is now " + str(newrevision))
+    print ("Local revision of "+api+".xml is now " + str(newrevision))
     
     os.system("svn export --force --quiet " + url + " " + outputfile)
     os.system("git diff " + outputfile)
@@ -59,30 +59,38 @@ def update(outputfile, revisionfile):
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv[1:], "f:r:", ["file=", "revision="])
+        opts, args = getopt.getopt(argv[1:], "a:f:r:", ["api=", "file=", "revision="])
     except getopt.GetoptError:
-        print("usage: %s -f <GL XML> -r <revision file>" % argv[0])
+        print("usage: %s -a <API> -f <Output XML> -r <revision file>" % argv[0])
         sys.exit(1)
     
+    api = None
     outputfile = None
     revisionfile = None
     
     for opt, arg in opts:
+        if opt in ("-a", "--api"):
+            api = arg
+        
         if opt in ("-f", "--file"):
             outputfile = arg
 
         if opt in ("-r", "--revision"):
             revisionfile = arg
 
+    if api == None:
+        print("no API specified")
+        sys.exit(1)
+    
     if outputfile == None:
-        print("no GL XML file given")
+        print("no Output XML file given")
         sys.exit(1)
 
     if revisionfile == None:
         print("no revision file given")
         sys.exit(1)
 
-    update(outputfile, revisionfile)
+    update(api, outputfile, revisionfile)
 
 
 if __name__ == "__main__":

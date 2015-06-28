@@ -9,9 +9,9 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString
+const std::unordered_map<std::string, glenum> Meta_EnumsByString
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     { "GL_NEXT_BUFFER_NV", GLenum::GL_NEXT_BUFFER_NV },
     { "GL_SKIP_COMPONENTS4_NV", GLenum::GL_SKIP_COMPONENTS4_NV },
     { "GL_SKIP_COMPONENTS3_NV", GLenum::GL_SKIP_COMPONENTS3_NV },

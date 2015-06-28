@@ -2,101 +2,114 @@ from binding import *
 from classes.Extension import *
 
 
-def metaExtensionToString(extension):
+def metaExtensionToString(api, extension):
 
-    return '{ GLextension::%s, "%s" }' % (extensionBID(extension), extension.name)
-
-
-def metaStringToExtension(extension):
-
-    return '{ "%s", GLextension::%s }' % (extension.name, extensionBID(extension))
+    return '{ %sextension::%s, "%s" }' % (api.upper(), extensionBID(extension), extension.name)
 
 
-def genMetaStringsByExtension(extensions, outputdir, outputfile):
+def metaStringToExtension(api, extension):
 
-    status(outputdir + outputfile)
-
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % (",\n" + tab).join(
-            [ metaExtensionToString(e) for e in extensions ]))
+    return '{ "%s", %sextension::%s }' % (api.upper(), extension.name, extensionBID(extension))
 
 
-def genMetaExtensionsByString(extensions, outputdir, outputfile):    
+def genMetaStringsByExtension(api, extensions, outputdir, outputfile):
 
     status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % (",\n" + tab).join(
-            [ metaStringToExtension(e) for e in extensions ]))
+        file.write(t % (",\n" + tab).join(
+            [ metaExtensionToString(api, e) for e in extensions ]))
+
+
+def genMetaExtensionsByString(api, extensions, outputdir, outputfile):    
+
+    status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
+
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(t % (",\n" + tab).join(
+            [ metaStringToExtension(api, e) for e in extensions ]))
 
 
 def metaEnumToString(enum, type):
 
-    # t = (enum.groupString if type == "GLbitfield" else type)
     return ('{ ' + type + '::%s, "%s" }') % (enumBID(enum), enum.name)
 
 
 def metaStringToEnum(enum, type):
 
-    # t = (enum.groupString if type == "GLbitfield" else type)
     return ('{ "%s", ' + type + '::%s }') % (enum.name, enumBID(enum))
 
-def metaStringToBitfieldGroupMap(group):
-    return "extern const std::unordered_map<std::string, gl::%s> Meta_%sByString;" % (group.name, group.name)
+def metaStringToBitfieldGroupMap(api, group):
+    return "extern const std::unordered_map<std::string, %s::%s> Meta_%sByString;" % (api, group.name, group.name)
 
-def metaBitfieldGroupToStringMap(group):
-    return "extern const std::unordered_map<gl::%s, std::string> Meta_StringsBy%s;" % (group.name, group.name)
+def metaBitfieldGroupToStringMap(api, group):
+    return "extern const std::unordered_map<%s::%s, std::string> Meta_StringsBy%s;" % (api, group.name, group.name)
 
 def metaStringsByBitfieldGroup(group):
     return """const std::unordered_map<%s, std::string> Meta_StringsBy%s 
 {
-#ifdef STRINGS_BY_GL
+#ifdef STRINGS_BY_SYMBOL
     %s
 #endif
 };
     """ % (group.name, group.name, ",\n\t".join([ metaEnumToString(e, group.name) for e in sorted(group.enums) ]))
 
-def genMetaMaps(enums, outputdir, outputfile, bitfGroups):
+def genMetaMaps(api, enums, outputdir, outputfile, bitfGroups):
     status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
+    
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % ("\n".join([ metaBitfieldGroupToStringMap(g) for g in bitfGroups ])))
+        file.write(t % ("\n".join([ metaBitfieldGroupToStringMap(api, g) for g in bitfGroups ])))
 
-def genMetaStringsByEnum(enums, outputdir, outputfile, type):
+def genMetaStringsByEnum(api, enums, outputdir, outputfile, type):
     status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
     pureEnums = [ e for e in enums if e.type == type ]
     d = sorted([ es[0] for v, es in groupEnumsByValue(pureEnums).items() ])
     
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % ((",\n" + tab).join(
+        file.write(t % ((",\n" + tab).join(
             [ metaEnumToString(e, type) for e in d ])))    
 
-def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
+def genMetaStringsByBitfield(api, bitfGroups, outputdir, outputfile):
     status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
     d = sorted([ metaStringsByBitfieldGroup(g) for g in bitfGroups ])
     
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % "\n".join(d))
+        file.write(t % "\n".join(d))
 
-def genMetaBitfieldByString(bitfGroups, outputdir, outputfile):
+def genMetaBitfieldByString(api, bitfGroups, outputdir, outputfile):
     
     status(outputdir + outputfile)
 
-    map = [ (",\n"+tab).join([ '{ "%s", static_cast<GLbitfield>(%s::%s) }' % (e.name, g.name, e.name) 
+    map = [ (",\n"+tab).join([ '{ "%s", static_cast<%sbitfield>(%s::%s) }' % (e.name, api.upper(), g.name, e.name) 
         for e in sorted(g.enums) ]) for g in sorted(bitfGroups) ]
 
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % ((",\n" + tab).join(map)))
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
-def genMetaEnumsByString(enums, outputdir, outputfile, type):
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(t % ((",\n" + tab).join(map)))
+
+def genMetaEnumsByString(api, enums, outputdir, outputfile, type):
 
     status(outputdir + outputfile)
+    
+    t = t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
     pureEnums = [ e for e in enums if e.type == type ]
 
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % ((",\n" + tab).join(
+        file.write(t % ((",\n" + tab).join(
             [ metaStringToEnum(e, type) for e in pureEnums ])))
 
 
@@ -105,7 +118,7 @@ def groupEnumsByValue(enums):
     d = dict()
 
     for e in enums:
-        v = int(e.value, 0)
+        v = e.value
         if not v in d:
             d[v] = []
         d[v].append(e)
@@ -136,48 +149,54 @@ def enumSuffixPriority(name):
 
 
 
-def extensionVersionPair(extension):
+def extensionVersionPair(api, extension):
 
-    return "{ GLextension::%s, { %s, %s } }" % (
-        extensionBID(extension), extension.incore.major, extension.incore.minor)
+    return "{ %sextension::%s, { %s, %s } }" % (
+        api.upper(), extensionBID(extension), extension.incore.major, extension.incore.minor)
 
 
-def genReqVersionsByExtension(extensions, outputdir, outputfile):
+def genReqVersionsByExtension(api, extensions, outputdir, outputfile):
 
     status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
     inCoreExts = [ e for e in extensions if e.incore ]
     sortedExts = sorted(inCoreExts, key = lambda e : e.incore)
 
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % (",\n" + tab).join(
-            [ extensionVersionPair(e) for e in sortedExts if e.incore ]))
+        file.write(t % (",\n" + tab).join(
+            [ extensionVersionPair(api, e) for e in sortedExts if e.incore ]))
 
 
-def extensionRequiredFunctions(extension):
+def extensionRequiredFunctions(api, extension):
 
-    return "{ GLextension::%s, { %s } }" % (extensionBID(extension), ", ".join(
+    return "{ %sextension::%s, { %s } }" % (api.upper(), extensionBID(extension), ", ".join(
         [ '"%s"' % f.name for f in extension.reqCommands ]))
 
 
-def functionRequiredByExtensions(function, extensions):
+def functionRequiredByExtensions(api, function, extensions):
 
     return '{ "%s", { %s } }' % (function.name, ", ".join(
-        [ "GLextension::" + extensionBID(e) for e in extensions ]))
+        [ api.upper() + "extension::" + extensionBID(e) for e in extensions ]))
 
 
-def genFunctionStringsByExtension(extensions, outputdir, outputfile):                
+def genFunctionStringsByExtension(api, extensions, outputdir, outputfile):                
 
     status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
     with open(outputdir + outputfile, 'w') as file:        
-        file.write(template(outputfile) % ((",\n" + tab).join(
-            [ extensionRequiredFunctions(e) for e in extensions if len(e.reqCommands) > 0 ])))
+        file.write(t % ((",\n" + tab).join(
+            [ extensionRequiredFunctions(api, e) for e in extensions if len(e.reqCommands) > 0 ])))
 
 
-def genExtensionsByFunctionString(extensions, outputdir, outputfile):    
+def genExtensionsByFunctionString(api, extensions, outputdir, outputfile):    
 
     status(outputdir + outputfile)
+    
+    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
 
     extensionsByCommands = dict()
     for e in extensions:
@@ -187,5 +206,5 @@ def genExtensionsByFunctionString(extensions, outputdir, outputfile):
             extensionsByCommands[c].add(e)
 
     with open(outputdir + outputfile, 'w') as file:        
-        file.write(template(outputfile) % ((",\n" + tab).join(
-            [ functionRequiredByExtensions(c, sorted(extensionsByCommands[c])) for c in sorted(extensionsByCommands.keys()) ])))
+        file.write(t % ((",\n" + tab).join(
+            [ functionRequiredByExtensions(api, c, sorted(extensionsByCommands[c])) for c in sorted(extensionsByCommands.keys()) ])))

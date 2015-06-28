@@ -1,19 +1,19 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/enum.h>
+#include <%abinding/%a/enum.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace %a; // ToDo: multiple APIs?
 
-namespace glbinding
+namespace %abinding
 {
 
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString
+const std::unordered_map<std::string, %aenum> Meta_EnumsByString
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     %s
 #endif
 };
 
-} // namespace glbinding
+} // namespace %abinding

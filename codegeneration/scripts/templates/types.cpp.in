@@ -1,8 +1,7 @@
 
-#include <glbinding/%a/types.h>
+#include <%abinding/%a/types.h>
 
-#include <glbinding/Meta.h>
-#include "../Meta_Maps.h"
+#include <%abinding/Meta.h>
 
 #include <bitset>
 #include <sstream>

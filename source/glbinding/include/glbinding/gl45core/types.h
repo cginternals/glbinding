@@ -8,6 +8,9 @@ namespace gl45core
 {
 
 using gl::GLextension;
+using gl::stddef;
+using gl::khrplatform;
+using gl::inttypes;
 using gl::GLenum;
 using gl::GLboolean;
 using gl::GLbitfield;

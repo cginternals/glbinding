@@ -6,32 +6,32 @@
 #include <vector>
 #include <set>
 
-#include <glbinding/gl/types.h>
-#include <glbinding/gl/extension.h>
+#include <%abinding/%a/types.h>
+#include <%abinding/%a/extension.h>
 
 
-namespace glbinding
+namespace %abinding
 {
 
 class Version;
 
-extern const std::unordered_map<std::string, gl::GLbitfield> Meta_BitfieldsByString;
-extern const std::unordered_map<gl::GLbitfield, std::string> Meta_StringsByBitfield;
+extern const std::unordered_map<std::string, %a::%Abitfield> Meta_BitfieldsByString;
+extern const std::unordered_map<%a::%Abitfield, std::string> Meta_StringsByBitfield;
 
-extern const std::unordered_map<std::string, gl::GLboolean> Meta_BooleansByString;
-extern const std::unordered_map<gl::GLboolean, std::string> Meta_StringsByBoolean;
+extern const std::unordered_map<std::string, %a::%Aboolean> Meta_BooleansByString;
+extern const std::unordered_map<%a::%Aboolean, std::string> Meta_StringsByBoolean;
 
-extern const std::unordered_map<std::string, gl::GLenum> Meta_EnumsByString;
-extern const std::unordered_map<gl::GLenum, std::string> Meta_StringsByEnum;
+extern const std::unordered_map<std::string, %a::%Aenum> Meta_EnumsByString;
+extern const std::unordered_map<%a::%Aenum, std::string> Meta_StringsByEnum;
 
-extern const std::unordered_map<std::string, gl::GLextension> Meta_ExtensionsByString;
-extern const std::unordered_map<gl::GLextension, std::string> Meta_StringsByExtension;
+extern const std::unordered_map<std::string, %a::%Aextension> Meta_ExtensionsByString;
+extern const std::unordered_map<%a::%Aextension, std::string> Meta_StringsByExtension;
 
-extern const std::unordered_map<std::string, std::set<gl::GLextension>> Meta_ExtensionsByFunctionString;
-extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
+extern const std::unordered_map<std::string, std::set<%a::%Aextension>> Meta_ExtensionsByFunctionString;
+extern const std::unordered_map<%a::%Aextension, std::set<std::string>> Meta_FunctionStringsByExtension;
 
-extern const std::unordered_map<gl::GLextension, Version> Meta_ReqVersionsByExtension;
+extern const std::unordered_map<%a::%Aextension, Version> Meta_ReqVersionsByExtension;
 
 %s
 
-} // namespace glbinding
+} // namespace %abinding

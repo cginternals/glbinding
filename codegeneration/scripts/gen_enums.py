@@ -40,7 +40,7 @@ def enumImportDefinition(api, enum, group, usedEnumsByName):
 
 def forwardEnum(api, enum, group, usedEnumsByName):
 
-    qualifier = "GLenum"
+    qualifier = api.upper() + "enum"
 
     if enum.name not in usedEnumsByName:
         usedEnumsByName[enum.name] = group
@@ -72,7 +72,7 @@ def genEnumsFeatureGrouped(api, enums, features, outputdir, outputfile):
 
     # gen enums feature grouped
     for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
+        if f.api == api: # ToDo: probably seperate for all apis
             genFeatureEnums(api, enums, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureEnums(api, enums, f, outputdir, outputfile, True)
@@ -85,7 +85,7 @@ def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ex
 
     version = versionBID(feature, core, ext)
 
-    t = template(of_all).replace("%f", version).replace("%a", api)
+    t = template(of_all).replace("%f", version).replace("%a", api).replace("%A", api.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", version)
 
@@ -93,7 +93,7 @@ def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ex
 
     tgrouped     = groupEnumsByType(enums)
 
-    pureEnums    = [ e for e in tgrouped["GLenum"] if 
+    pureEnums    = [ e for e in tgrouped[api.upper() + "enum"] if 
         (not ext and e.supported(feature, core)) or (ext and not e.supported(feature, False)) ]
     groupedEnums = groupEnumsByGroup(pureEnums)
 

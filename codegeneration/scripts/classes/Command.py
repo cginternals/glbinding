@@ -147,7 +147,7 @@ def patchCommands(commands, patches):
                 param.type = patchedParam.type
 
 
-def verifyCommands(commands, bitfGroups):
+def verifyCommands(api, commands, bitfGroups):
 
     bitfGroupsByName = dict([(group.name, group) for group in bitfGroups])
 
@@ -159,8 +159,8 @@ def verifyCommands(commands, bitfGroups):
     for command in commands:
         for param in (param for param in command.params):
 
-            # check for bitfield groups (other enum groups not yet used in gl.xml)
-            if param.type != "GLbitfield":
+            # check for bitfield groups (other enum groups not yet used in api xml)
+            if param.type != api.upper() + "bitfield":
                 continue
 
             if   param.groupString is None:
@@ -169,7 +169,7 @@ def verifyCommands(commands, bitfGroups):
                 unresolved[param] = command
 
     if len(missing) > 0:
-        print(" WARNING: " + str(len(missing)) + " missing group specification (defaulting to GLbitfield):")
+        print(" WARNING: " + str(len(missing)) + " missing group specification (defaulting to " + api.upper() + "bitfield):")
         for param, command in missing.items():
             print("  %s (in %s)" % (param.name, command.name))
 

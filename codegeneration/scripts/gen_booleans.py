@@ -13,23 +13,24 @@ def booleanImportDefinition(api, enum):
     return "using %s%s;" % (qualifier, enumBID(enum))
 
 
-def forwardBoolean(enum):
+def forwardBoolean(api, enum):
 
-    return "static const GLboolean %s = GLboolean::%s;" % (enumBID(enum), enumBID(enum))
+    return "static const %sboolean %s = %sboolean::%s;" % (api.upper(), enumBID(enum), api.upper(), enumBID(enum))
 
 
 def genBooleans(api, enums, outputdir, outputfile, forward = False):
 
     of_all = outputfile.replace("?", "F")
 
-    t = template(of_all).replace("%a", api)
+    t = template(of_all).replace("%a", api).replace("%A", api.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
 
     status(od + of)
-
+    
     tgrouped = groupEnumsByType(enums)
-    pureBooleans = tgrouped["GLboolean"]
+    
+    pureBooleans = tgrouped[api.upper() + "boolean"]
     
     if not os.path.exists(od):
         os.makedirs(od)
@@ -38,13 +39,13 @@ def genBooleans(api, enums, outputdir, outputfile, forward = False):
 
         if forward:
 
-            file.write(t % (("\n").join([ forwardBoolean(e) for e in pureBooleans ])))
+            file.write(t % (("\n").join([ forwardBoolean(api, e) for e in pureBooleans ])))
 
         else:
 
             file.write(t % (
                 (",\n" + tab).join([ booleanDefinition(e) for e in pureBooleans ]),
-                ("\n") .join([ forwardBoolean(e) for e in pureBooleans ])))
+                ("\n") .join([ forwardBoolean(api, e) for e in pureBooleans ])))
 
 def genFeatureBooleans(api, enums, feature, outputdir, outputfile, core = False, ext = False):
 
@@ -59,7 +60,7 @@ def genFeatureBooleans(api, enums, feature, outputdir, outputfile, core = False,
     status(od + of)
 
     tgrouped = groupEnumsByType(enums)
-    pureBooleans = tgrouped["GLboolean"]
+    pureBooleans = tgrouped[api.upper() + "boolean"]
     
     if not os.path.exists(od):
         os.makedirs(od)
@@ -70,7 +71,7 @@ def genFeatureBooleans(api, enums, feature, outputdir, outputfile, core = False,
 
             file.write(t % (
                 (",\n" + tab).join([ booleanDefinition(e) for e in pureBooleans ]),
-                ("\n") .join([ forwardBoolean(e) for e in pureBooleans ])))
+                ("\n") .join([ forwardBoolean(api, e) for e in pureBooleans ])))
 
         else:
 
@@ -80,7 +81,7 @@ def genBooleansFeatureGrouped(api, enums, features, outputdir, outputfile):
 
     # gen functions feature grouped
     for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
+        if f.api == api: # ToDo: probably seperate for all apis
             genFeatureBooleans(api, enums, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureBooleans(api, enums, f, outputdir, outputfile, True)

@@ -1,1 +1,6 @@
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::%t & value);
+namespace %a
+{
+
+%ABINDING_API std::ostream & operator<<(std::ostream & stream, const %t & value);
+
+} // namespace %a

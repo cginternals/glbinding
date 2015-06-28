@@ -1,8 +1,8 @@
 
-#include <glbinding/Version.h>
+#include <%abinding/Version.h>
 
 
-namespace glbinding
+namespace %abinding
 {
 
 const std::set<Version> Version::s_validVersions = 
@@ -12,4 +12,4 @@ const std::set<Version> Version::s_validVersions =
 
 const Version Version::s_latest %s;
 
-} // namespace glbinding
+} // namespace %abinding

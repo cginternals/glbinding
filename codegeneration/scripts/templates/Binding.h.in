@@ -4,18 +4,18 @@
 #include <vector>
 #include <functional>
 
-#include <glbinding/glbinding_api.h>
+#include <%abinding/%abinding_api.h>
 
-#include <glbinding/gl/types.h>
+#include <%abinding/%a/types.h>
 
-#include <glbinding/ContextHandle.h>
-#include <glbinding/Function.h>
+#include <%abinding/ContextHandle.h>
+#include <%abinding/Function.h>
 
 
-namespace glbinding
+namespace %abinding
 {
 
-class GLBINDING_API Binding
+class %ABINDING_API Binding
 {
 public:
     using array_t = std::array<AbstractFunction *, %s>;
@@ -52,4 +52,4 @@ protected:
 	static std::vector<ContextSwitchCallback> s_callbacks;
 };
 
-} // namespace glbinding
+} // namespace %abinding

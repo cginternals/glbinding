@@ -1,14 +1,14 @@
-#include <glbinding/Binding.h>
+#include <%abinding/Binding.h>
 
-#include <glbinding/gl/bitfield.h>
-#include <glbinding/gl/boolean.h>
-#include <glbinding/gl/enum.h>
-#include <glbinding/gl/values.h>
+#include <%abinding/%a/bitfield.h>
+#include <%abinding/%a/boolean.h>
+#include <%abinding/%a/enum.h>
+#include <%abinding/%a/values.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace %a;
 
-namespace glbinding 
+namespace %abinding 
 {
 
 /*
@@ -41,4 +41,4 @@ const Binding::array_t Binding::s_functions =
 	%s
 }};
 
-} // namespace glbinding
+} // namespace %abinding

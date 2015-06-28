@@ -3,43 +3,43 @@ from classes.Command import *
 
 
 
-functionForwardTemplate = """GLBINDING_API %s %s(%s);"""
+functionForwardTemplate = """%sBINDING_API %s %s(%s);"""
 
 importFunctionTemplate = """using %s%s;"""
 
-functionInlineForwardTemplate = """inline GLBINDING_API %s %s(%s)
+functionInlineForwardTemplate = """inline %sBINDING_API %s %s(%s)
 {
-    return gl::%s(%s);
+    return %s::%s(%s);
 }
 """
 
-functionInlineForwardTemplateRValueCast = """inline GLBINDING_API %s %s(%s)
+functionInlineForwardTemplateRValueCast = """inline %sBINDING_API %s %s(%s)
 {
-    return static_cast<gl%s::%s>(gl::%s(%s));
+    return static_cast<%s%s::%s>(%s::%s(%s));
 }
 """
 
 functionForwardImplementationTemplate = """%s %s(%s)
 {
-    return gl::%s(%s);
+    return %s::%s(%s);
 }
 """
 
 functionForwardImplementationTemplateRValueCast = """%s %s(%s)
 {
-    return static_cast<gl%s::%s>(gl::%s(%s));
+    return static_cast<%s%s::%s>(%s::%s(%s));
 }
 """
 
 functionImplementationTemplate = """%s %s(%s)
 {
-    return glbinding::Binding::%s(%s);
+    return %sbinding::Binding::%s(%s);
 }
 """
 
 functionImplementationTemplateRValueCast = """%s %s(%s)
 {
-    return static_cast<gl%s::%s>(glbinding::Binding::%s(%s));
+    return static_cast<%s%s::%s>(%sbinding::Binding::%s(%s));
 }
 """
 
@@ -55,15 +55,15 @@ def namespacify(type, namespace):
     return namespace + "::" + type
 
 
-def bitfieldType(param):
+def bitfieldType(api, param):
 
-    return param.groupString if param.groupString else "GLbitfield" 
+    return param.groupString if param.groupString else api.upper() + "bitfield" 
 
 
-def paramSignature(param, forward):
+def paramSignature(api, param, forward):
 
-    if param.type == "GLbitfield":
-        return bitfieldType(param)
+    if param.type == api.upper() + "bitfield":
+        return bitfieldType(api, param)
 
 #    if forward and param.array is not "":
 #        return param.type + " " + param.array
@@ -71,21 +71,21 @@ def paramSignature(param, forward):
     return param.type
 
 
-def functionMember(function):
+def functionMember(api, function):
 
-    params = ", ".join([function.returntype] + [ paramSignature(p, False) for p in function.params ])
-    return 'Function<%s> Binding::%s("%s");' % (params, functionBID(function)[2:], function.name)
+    params = ", ".join([function.returntype] + [ paramSignature(api, p, False) for p in function.params ])
+    return 'Function<%s> Binding::%s("%s");' % (params, functionBID(function)[len(api.upper()):], function.name)
 
 
 def functionDecl(api, function):
 
-    params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
-    return tab + "static Function<%s> %s;" % (params, functionBID(function)[2:])
+    params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(api, p, True), api) for p in function.params ])
+    return tab + "static Function<%s> %s;" % (params, functionBID(function)[len(api.upper()):])
 
 
 # def functionSignature(api, function, extern = True):
 
-#     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(p, True), api) for p in function.params ])
+#     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(api, p, True), api) for p in function.params ])
 #     if extern:
 #         return "extern template class Function<%s>;" % (params)
 #     else:
@@ -94,22 +94,22 @@ def functionDecl(api, function):
 
 def functionForward(api, function, feature, version):
 
-    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    params = ", ".join([paramSignature(api, p, False) + " " + paramPass(p) for p in function.params])
     # paramNames = ", ".join([p.name for p in function.params])
 
     if feature:
         qualifier = api + "::" 
         return importFunctionTemplate % (qualifier, functionBID(function))
     else:
-        return functionForwardTemplate % (function.returntype, functionBID(function), params)
+        return functionForwardTemplate % (api.upper(), function.returntype, functionBID(function), params)
 
 
-def functionInlineForwardImplementation(function, feature, version):
+def functionInlineForwardImplementation(api, function, feature, version):
 
-    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    params = ", ".join([paramSignature(api, p, False) + " " + paramPass(p) for p in function.params])
     paramNames = ", ".join([p.name for p in function.params])
 
-    if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
+    if feature and function.returntype in [ api.upper() + "enum", api.upper() + "bitfield" ]:
         return functionInlineForwardTemplateRValueCast % (function.returntype, functionBID(function), params,
             version, function.returntype, functionBID(function), paramNames)
     else:
@@ -117,12 +117,12 @@ def functionInlineForwardImplementation(function, feature, version):
             functionBID(function), paramNames)
 
 
-def functionForwardImplementation(function, feature, version):
+def functionForwardImplementation(api, function, feature, version):
 
-    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    params = ", ".join([paramSignature(api, p, False) + " " + paramPass(p) for p in function.params])
     paramNames = ", ".join([p.name for p in function.params])
 
-    if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
+    if feature and function.returntype in [ api.upper() + "enum", api.upper() + "bitfield" ]:
         return functionForwardImplementationTemplateRValueCast % (function.returntype, functionBID(function), params,
             version, function.returntype, functionBID(function), paramNames)
     else:
@@ -130,79 +130,57 @@ def functionForwardImplementation(function, feature, version):
             functionBID(function), paramNames)
 
 
-def functionImplementation(function, feature, version):
+def functionImplementation(api, function, feature, version):
 
-    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    params = ", ".join([paramSignature(api, p, False) + " " + paramPass(p) for p in function.params])
     paramNames = ", ".join([p.name for p in function.params])
 
-    if feature and function.returntype in [ "GLenum", "GLbitfield" ]:
+    if feature and function.returntype in [ api.upper() + "enum", api.upper() + "bitfield" ]:
         return functionImplementationTemplateRValueCast % (function.returntype, functionBID(function), params,
-            version, function.returntype, functionBID(function)[2:], paramNames)
+            version, function.returntype, functionBID(function)[len(api.upper()):], paramNames)
     else:
         return functionImplementationTemplate % (function.returntype, functionBID(function), params,
-            functionBID(function)[2:], paramNames)
+            api, functionBID(function)[len(api.upper()):], paramNames)
 
 
 def paramPass(param): 
 
-    return param.name # + param.array
-
-    # this returns a string used for passing the param by its name to a function object.
-    # if this is inside a featured function, the param will be cast from featured GLenum 
-    # and GLbitfield to gl::GLenum and gl::GLbitfield, required for function object.
-    # t = param.type
-    #
-    # if not feature:
-    #    return param.name
-    # elif t == "GLenum":
-    #    return "static_cast<gl::GLenum>(" + param.name + ")"
-    # elif "GLenum" in t and "*" in t:
-    #    return ("reinterpret_cast<" + t + ">").replace("GLenum", "gl::GLenum") + "(" + param.name + ")"
-    # elif t == "GLbitfield":
-    #    return "static_cast<gl::GLbitfield>(" + param.name + ")"
-    # elif "GLbitfield" in t and "*" in t:
-    #    return ("reinterpret_cast<" + t + ">").replace("GLbitfield", "gl::GLbitfield") + "(" + param.name + ")"
-    # else:
-    #    return param.name
+    return param.name
 
 
-def functionList(commands):
+def functionList(api, commands):
 
     #return "std::vector<AbstractFunction*>(&%s, %s)" % (commands[0].name, len(commands))
-    return (",\n" + tab).join([ "&"+ functionBID(f)[2:] for f in commands ])
+    return (",\n" + tab).join([ "&"+ functionBID(f)[len(api.upper()):] for f in commands ])
 
 
-def genFunctionObjects_h(commands, outputdir, outputfile):    
+def genFunctionObjects_h(api, commands, outputdir, outputfile):    
 
     of = outputfile
-    t = template(of)
+    t = template(of).replace("%a", api).replace("%A", api.upper())
 
     status(outputdir + of)
-
-    # extern_templates = set([ functionSignature("gl", f) for f in commands])
 
     with open(outputdir + of, 'w') as file:
         file.write(t % (
             #"\n".join(sorted(extern_templates)), 
             len(commands),
-            "\n".join([ functionDecl("gl", f) for f in commands ])))
+            "\n".join([ functionDecl(api, f) for f in commands ])))
 
 
-def genFunctionObjects_cpp(commands, outputdir, outputfile):
+def genFunctionObjects_cpp(api, commands, outputdir, outputfile):
 
     of = outputfile
-    t = template(of)
+    t = template(of).replace("%a", api).replace("%A", api.upper())
 
     status(outputdir + of)
 
-    #extern_templates = set([ functionSignature("gl", f, False) for f in commands])
-
     with open(outputdir + of, 'w') as file:
-        file.write(t.replace("%b", functionBID(commands[0])[2:]).replace("%e", functionBID(commands[-1])[2:]) % (
+        file.write(t.replace("%b", functionBID(commands[0])[len(api.upper()):]).replace("%e", functionBID(commands[-1])[len(api.upper()):]) % (
             #"\n".join(sorted(extern_templates)), 
             #len(commands),
-            "\n".join([ functionMember(f) for f in commands ]),
-            functionList(commands)
+            "\n".join([ functionMember(api, f) for f in commands ]),
+            functionList(api, commands)
         ))
 
 
@@ -220,7 +198,7 @@ def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
 
     # gen functions feature grouped
     for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
+        if f.api == api: # ToDo: probably seperate for all apis
             genFeatureFunctions(api, commands, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureFunctions(api, commands, f, outputdir, outputfile, True)
@@ -231,7 +209,7 @@ def genFunctionImplementationsFeatureGrouped(api, commands, features, outputdir,
 
     # gen functions feature grouped
     for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
+        if f.api == api: # ToDo: probably seperate for all apis
             genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, True)
@@ -286,7 +264,7 @@ def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputf
     with open(od + of, 'w') as file:
         if not feature:
             file.write(t % ("\n".join(
-                [ functionImplementation(c, feature, version) for c in pureCommands ])))
+                [ functionImplementation(api, c, feature, version) for c in pureCommands ])))
         else:
             file.write(t % ("\n".join(
                 [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))

@@ -50,8 +50,7 @@ def parseTypes(xml, api):
             # enorce constraint (2)
             if not inner(type).startswith("typedef ") and \
                not inner(type).startswith("struct ") \
-             and ("name" not in type.attrib or type.attrib["name"] \
-               not in ["GLhandleARB"]):
+             and ("name" not in type.attrib):
                 continue
 
             types.append(Type(type))

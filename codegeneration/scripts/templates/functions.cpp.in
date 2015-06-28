@@ -1,6 +1,6 @@
-#include <glbinding/gl/functions.h>
+#include <%abinding/%a/functions.h>
 
-#include <glbinding/Binding.h>
+#include <%abinding/Binding.h>
 
 
 namespace %a

@@ -1,13 +1,13 @@
 #pragma once
 
-#include <glbinding/no%a.h>
-#include <glbinding/%a/types.h>
+#include <%abinding/no%a.h>
+#include <%abinding/%a/types.h>
 
 
 namespace %a%f
 {
 
-using gl::GLextension;
+using %a::%Aextension;
 %s
 %s
 
