@@ -6,7 +6,7 @@
 namespace egl
 {
 
-enum class EGLboolean : unsigned char
+enum class EGLboolean : unsigned int
 {
     EGL_FALSE = 0,
     EGL_TRUE = 1

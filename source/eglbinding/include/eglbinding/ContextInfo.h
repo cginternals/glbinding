@@ -5,9 +5,9 @@
 #include <set>
 #include <string>
 
-namespace gl
+namespace egl
 {
-    enum class GLextension;
+    enum class EGLextension;
 }
 
 
@@ -17,14 +17,13 @@ namespace eglbinding
 class Version;
 
 
-class GLBINDING_API ContextInfo
+class EGLBINDING_API ContextInfo
 {
 public:
     ContextInfo() = delete;
 
-    static std::set<gl::GLextension> extensions(std::set<std::string> * unknown = nullptr);
+    static std::set<egl::EGLextension> extensions(std::set<std::string> * unknown = nullptr);
 
-    static std::string renderer();
     static std::string vendor();
 
     static Version version();

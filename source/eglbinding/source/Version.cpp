@@ -121,7 +121,7 @@ const std::set<Version> & Version::versions()
 } // namespace eglbinding
 
 
-std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version)
+std::ostream & operator<<(std::ostream & stream, const eglbinding::Version & version)
 {
     stream << version.toString();
     return stream;

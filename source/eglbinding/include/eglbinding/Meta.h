@@ -7,7 +7,7 @@
 #include <vector>
 #include <set>
 
-#include <eglbinding/gl/types.h>
+#include <eglbinding/egl/types.h>
 
 
 namespace eglbinding
@@ -16,7 +16,7 @@ namespace eglbinding
 class Version;
 
 
-class GLBINDING_API Meta
+class EGLBINDING_API Meta
 {
 public:
     Meta() = delete;
@@ -24,24 +24,24 @@ public:
     static bool stringsByGL();
     static bool glByStrings();
 
-    static int glRevision();
+    static int eglRevision();
 
-    static const std::string & getString(gl::GLenum glenum);
-    static gl::GLenum getEnum(const std::string & glenum);
-    static std::vector<gl::GLenum> enums();
+    static const std::string & getString(egl::EGLenum glenum);
+    static egl::EGLenum getEnum(const std::string & glenum);
+    static std::vector<egl::EGLenum> enums();
 
-    static const std::string & getString(gl::GLboolean boolean);
-    static gl::GLboolean getBoolean(const std::string & boolean);
+    static const std::string & getString(egl::EGLboolean boolean);
+    static egl::EGLboolean getBoolean(const std::string & boolean);
 
-    static const std::string & getString(gl::GLextension extension);
-    static gl::GLextension getExtension(const std::string & extension);
-    static std::set<gl::GLextension> extensions();
+    static const std::string & getString(egl::EGLextension extension);
+    static egl::EGLextension getExtension(const std::string & extension);
+    static std::set<egl::EGLextension> extensions();
 
-    static const std::set<std::string> & getRequiredFunctions(gl::GLextension extension);
-    static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & function);
+    static const std::set<std::string> & getRequiredFunctions(egl::EGLextension extension);
+    static const std::set<egl::EGLextension> & getExtensionsRequiring(const std::string & function);
 
-    static const Version & getRequiringVersion(gl::GLextension extension);
+    static const Version & getRequiringVersion(egl::EGLextension extension);
     static const std::set<Version> & versions();
 };
 
-} // namespace gl
+} // namespace egl

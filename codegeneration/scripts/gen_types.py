@@ -34,7 +34,7 @@ def convertTypedef(api, type):
     t = parseType(type)
 
     if type.name[len(api):] in enum_classes:
-        return "enum class " + type.name[0:len(api)] + type.name[len(api):].lower() + " : " + t + ";" # EGLBoolean <-> GLboolean
+        return "enum class " + type.name[0:len(api)] + type.name[len(api):].lower() + " : unsigned int;" # EGLBoolean <-> GLboolean
 
     if type.ignoreName:
         return type.value

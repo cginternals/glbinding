@@ -7,6 +7,6 @@ namespace eglbinding
 
 using ProcAddress = void(*)();
 
-GLBINDING_API ProcAddress getProcAddress(const char * name);
+EGLBINDING_API ProcAddress getProcAddress(const char * name);
 
 } // namespace eglbinding

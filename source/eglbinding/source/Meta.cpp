@@ -1,10 +1,10 @@
 
 #include <eglbinding/Meta.h>
 
-#include <eglbinding/gl/bitfield.h>
-#include <eglbinding/gl/boolean.h>
-#include <eglbinding/gl/enum.h>
-#include <eglbinding/gl/extension.h>
+#include <eglbinding/egl/bitfield.h>
+#include <eglbinding/egl/boolean.h>
+#include <eglbinding/egl/enum.h>
+#include <eglbinding/egl/extension.h>
 
 // ToDo: multiple APIs
 
@@ -14,14 +14,14 @@
 #include "Meta_Maps.h"
 
 
-using namespace gl;
+using namespace egl;
 
 namespace {
 
     static const auto none = std::string{};
-    static const auto noneVersion = glbinding::Version{};
+    static const auto noneVersion = eglbinding::Version{};
     static const auto noneStringSet = std::set<std::string>{};
-    static const auto noneExtensions = std::set<gl::GLextension>{};
+    static const auto noneExtensions = std::set<egl::EGLextension>{};
 
 }
 
@@ -46,12 +46,12 @@ bool Meta::glByStrings()
 #endif
 }
 
-int Meta::glRevision()
+int Meta::eglRevision()
 {
-    return GL_REVISION;
+    return EGL_REVISION;
 }
 
-const std::string & Meta::getString(const GLboolean boolean)
+const std::string & Meta::getString(const EGLboolean boolean)
 {
     auto i = Meta_StringsByBoolean.find(boolean);
 
@@ -63,7 +63,7 @@ const std::string & Meta::getString(const GLboolean boolean)
     return i->second;
 }
 
-const std::string & Meta::getString(const GLenum glenum)
+const std::string & Meta::getString(const EGLenum glenum)
 {
     auto i = Meta_StringsByEnum.find(glenum);
 
@@ -75,21 +75,21 @@ const std::string & Meta::getString(const GLenum glenum)
     return i->second;
 }
 
-GLenum Meta::getEnum(const std::string & glenum)
+EGLenum Meta::getEnum(const std::string & glenum)
 {
     auto i = Meta_EnumsByString.find(glenum);
 
     if (i == Meta_EnumsByString.end())
     {
-        return static_cast<GLenum>(static_cast<unsigned int>(-1));
+        return static_cast<EGLenum>(static_cast<unsigned int>(-1));
     }
 
     return i->second;
 }
 
-std::vector<GLenum> Meta::enums()
+std::vector<EGLenum> Meta::enums()
 {
-    auto enums = std::vector<GLenum>{};
+    auto enums = std::vector<EGLenum>{};
 
     for (auto p : Meta_StringsByEnum)
     {
@@ -99,7 +99,7 @@ std::vector<GLenum> Meta::enums()
     return enums;
 }
 
-const std::string & Meta::getString(const GLextension extension)
+const std::string & Meta::getString(const EGLextension extension)
 {
     auto i = Meta_StringsByExtension.find(extension);
 
@@ -109,23 +109,23 @@ const std::string & Meta::getString(const GLextension extension)
     }
 
     return i->second;
-}   
+}
 
-GLextension Meta::getExtension(const std::string & extension)
+EGLextension Meta::getExtension(const std::string & extension)
 {
     auto i = Meta_ExtensionsByString.find(extension);
 
     if (i == Meta_ExtensionsByString.end())
     {
-        return GLextension::UNKNOWN;
+        return EGLextension::UNKNOWN;
     }
 
     return i->second;
 }
 
-std::set<GLextension> Meta::extensions()
+std::set<EGLextension> Meta::extensions()
 {
-    auto extensions = std::set<GLextension>{};
+    auto extensions = std::set<EGLextension>{};
 
     for (auto p : Meta_StringsByExtension)
     {
@@ -135,7 +135,7 @@ std::set<GLextension> Meta::extensions()
     return extensions;
 }
 
-const Version & Meta::getRequiringVersion(const GLextension extension)
+const Version & Meta::getRequiringVersion(const EGLextension extension)
 {
     auto i = Meta_ReqVersionsByExtension.find(extension);
 
@@ -147,7 +147,7 @@ const Version & Meta::getRequiringVersion(const GLextension extension)
     return i->second;
 }
 
-const std::set<std::string> & Meta::getRequiredFunctions(const GLextension extension)
+const std::set<std::string> & Meta::getRequiredFunctions(const EGLextension extension)
 {
     auto i = Meta_FunctionStringsByExtension.find(extension);
 
@@ -159,7 +159,7 @@ const std::set<std::string> & Meta::getRequiredFunctions(const GLextension exten
     return i->second;
 }
 
-const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & function)
+const std::set<EGLextension> & Meta::getExtensionsRequiring(const std::string & function)
 {
     auto i = Meta_ExtensionsByFunctionString.find(function);
 

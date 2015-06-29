@@ -64,6 +64,7 @@ using EGLNativeWindowType = khronos_uintptr_t;
 using NativeDisplayType = EGLNativeDisplayType;
 using NativePixmapType = EGLNativePixmapType;
 using NativeWindowType = EGLNativeWindowType;
+using EGLbitfield = unsigned int;
 enum class EGLContextFlagMask : unsigned int;
 enum class EGLContextProfileMask : unsigned int;
 enum class EGLDRMBufferUseMESAMask : unsigned int;

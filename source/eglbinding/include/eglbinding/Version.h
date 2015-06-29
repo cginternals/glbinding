@@ -11,7 +11,7 @@
 namespace eglbinding
 {
 
-class GLBINDING_API Version
+class EGLBINDING_API Version
 {
 public:
     Version();
@@ -49,4 +49,4 @@ protected:
 
 } // namespace eglbinding
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version);
+EGLBINDING_API std::ostream & operator<<(std::ostream & stream, const eglbinding::Version & version);

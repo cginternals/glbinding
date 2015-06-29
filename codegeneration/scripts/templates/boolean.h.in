@@ -6,7 +6,7 @@
 namespace %a
 {
 
-enum class %Aboolean : unsigned char
+enum class %Aboolean : unsigned int
 {
     %s
 };

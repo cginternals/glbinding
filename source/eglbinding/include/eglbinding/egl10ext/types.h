@@ -44,6 +44,7 @@ using egl::EGLNativeWindowType;
 using egl::NativeDisplayType;
 using egl::NativePixmapType;
 using egl::NativeWindowType;
+using egl::EGLbitfield;
 using egl::EGLContextFlagMask;
 using egl::EGLContextProfileMask;
 using egl::EGLDRMBufferUseMESAMask;

@@ -17,7 +17,7 @@ class Enum:
         self.api   = api
         
         self.name  = xml.attrib["name"]
-        self.value = xml.attrib["value"]
+        self.value = int(''.join([ c for c in xml.attrib["value"] if c in "[^-1234567890]" ]))
         self.type  = api.upper() + "enum"
 
         self.aliasString = ""

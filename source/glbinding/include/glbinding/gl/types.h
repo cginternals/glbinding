@@ -61,7 +61,7 @@ typedef unsigned __int64 uint64_t;
 #endif
 #endif
 enum class GLenum : unsigned int;
-enum class GLboolean : unsigned char;
+enum class GLboolean : unsigned int;
 using GLbitfield = unsigned int;
 using GLvoid = void;
 using GLbyte = signed char;

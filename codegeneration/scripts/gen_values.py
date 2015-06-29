@@ -62,8 +62,6 @@ def genValues(api, enums, outputdir, outputfile, forward = False):
 
     status(od + of)
 
-    return # hack
-
     tgrouped = groupEnumsByType(enums)
     del tgrouped[api.upper() + "boolean"]
     del tgrouped[api.upper() + "enum"]

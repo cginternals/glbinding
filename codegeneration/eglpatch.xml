@@ -9,6 +9,7 @@
         <type>typedef EGLNativePixmapType <name>NativePixmapType</name>;</type>
         <type>typedef EGLNativeWindowType <name>NativeWindowType</name>;</type>
         
+        <type>typedef unsigned int <name>EGLbitfield</name>;</type>
         <type>typedef khronos_int32_t <name>EGLint</name>;</type>
     </types>
 </registry>

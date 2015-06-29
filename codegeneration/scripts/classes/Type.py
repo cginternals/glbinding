@@ -42,6 +42,10 @@ class Type:
             if self.name.startswith("struct "):
                 self.name = self.name[7:]
                 self.value = "struct"
+            
+            if self.name == "EGLboolean":
+                print ("Found")
+                print (self.value)
 
         # ToDo: required and removed ... for now glbinding discards this
 

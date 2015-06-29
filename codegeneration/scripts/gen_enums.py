@@ -10,7 +10,7 @@ enumGroupTemplate = """    // %s
 
 def castEnumValue(value):
 
-    if not value.startswith("-"):
+    if value >= 0:
         return value
     else:
         return "static_cast<unsigned int>(%s)" % value    

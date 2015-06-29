@@ -6,7 +6,7 @@
 namespace gl
 {
 
-enum class GLboolean : unsigned char
+enum class GLboolean : unsigned int
 {
     GL_FALSE = 0,
     GL_TRUE = 1

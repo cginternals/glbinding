@@ -9,8 +9,7 @@ def booleanDefinition(enum):
 
 def booleanImportDefinition(api, enum):
 
-    qualifier = api + "::"
-    return "using %s%s;" % (qualifier, enumBID(enum))
+    return "using %s::%s;" % (api, enumBID(enum))
 
 
 def forwardBoolean(api, enum):
