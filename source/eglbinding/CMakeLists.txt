@@ -1,5 +1,5 @@
 
-set(target glbinding)
+set(target eglbinding)
 message(STATUS "Lib ${target}")
 
 
@@ -27,7 +27,7 @@ set(libs
 if (OPTION_BUILD_STATIC)
     add_definitions("-D${META_PROJECT_NAME_UPPER}_STATIC")
 else()
-    add_definitions("-DGLBINDING_EXPORTS")
+    add_definitions("-DEGLBINDING_EXPORTS")
 endif()
 
 if (OPTION_STRINGS_BY_GL)
@@ -44,20 +44,18 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
-    ${include_path}/glbinding_api.h
+    ${include_path}/eglbinding_api.h
 
-    ${include_path}/nogl.h
+    ${include_path}/noegl.h
 
     ${include_path}/Binding.h
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
-    ${include_path}/ContextHandle.h
-    ${include_path}/ContextInfo.h
     ${include_path}/Version.h
 )
 
 # add featured headers
-file(GLOB featured_includes ${include_path}/gl*/*.h)
+file(GLOB featured_includes ${include_path}/egl*/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
@@ -66,8 +64,6 @@ set(sources
     ${source_path}/Binding.cpp
     ${source_path}/Binding_objects.cpp
     ${source_path}/ProcAddress.cpp
-    ${source_path}/ContextHandle.cpp
-    ${source_path}/ContextInfo.cpp
     ${source_path}/Version.cpp
     ${source_path}/Version_ValidVersions.cpp
 
@@ -87,7 +83,7 @@ set(sources
 )
 
 # add featured sources
-file(GLOB featured_sources ${source_path}/gl*/*.cpp)
+file(GLOB featured_sources ${source_path}/egl*/*.cpp)
 list(APPEND sources ${featured_sources})
 
 # Group source files

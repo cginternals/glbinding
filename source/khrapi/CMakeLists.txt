@@ -1,5 +1,5 @@
 
-set(target glbinding)
+set(target khrapi)
 message(STATUS "Lib ${target}")
 
 
@@ -27,14 +27,7 @@ set(libs
 if (OPTION_BUILD_STATIC)
     add_definitions("-D${META_PROJECT_NAME_UPPER}_STATIC")
 else()
-    add_definitions("-DGLBINDING_EXPORTS")
-endif()
-
-if (OPTION_STRINGS_BY_GL)
-    add_definitions("-DSTRINGS_BY_GL")
-endif()
-if (OPTION_GL_BY_STRINGS)
-    add_definitions("-DGL_BY_STRINGS")
+    add_definitions("-DKHRAPI_EXPORTS")
 endif()
 
 
@@ -44,50 +37,35 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
-    ${include_path}/glbinding_api.h
+    ${include_path}/khrapi_api.h
+    
+    ${include_path}/AbstractFunction.h
+    ${include_path}/AbstractValue.h
+    ${include_path}/Function.h
+    ${include_path}/Function.hpp
+    ${include_path}/Value.h
+    ${include_path}/Value.hpp
+    ${include_path}/SharedBitfield.h
+    ${include_path}/SharedBitfield.hpp
 
-    ${include_path}/nogl.h
-
-    ${include_path}/Binding.h
-    ${include_path}/Meta.h
-    ${include_path}/ProcAddress.h
-    ${include_path}/ContextHandle.h
-    ${include_path}/ContextInfo.h
-    ${include_path}/Version.h
+    ${include_path}/callbacks.h
+    ${include_path}/logging.h
 )
 
-# add featured headers
-file(GLOB featured_includes ${include_path}/gl*/*.h)
-list(APPEND api_includes ${featured_includes})
-
 set(sources
-    ${source_path}/revision.h
-    
-    ${source_path}/Binding.cpp
-    ${source_path}/Binding_objects.cpp
-    ${source_path}/ProcAddress.cpp
-    ${source_path}/ContextHandle.cpp
-    ${source_path}/ContextInfo.cpp
-    ${source_path}/Version.cpp
-    ${source_path}/Version_ValidVersions.cpp
+    ${source_path}/AbstractFunction.cpp
+    ${source_path}/AbstractValue.cpp
+    ${source_path}/Value.cpp
 
-    ${source_path}/Meta.cpp
-    ${source_path}/Meta_Maps.h
-    ${source_path}/Meta_BitfieldsByString.cpp
-    ${source_path}/Meta_BooleansByString.cpp
-    ${source_path}/Meta_EnumsByString.cpp
-    ${source_path}/Meta_ExtensionsByFunctionString.cpp
-    ${source_path}/Meta_ExtensionsByString.cpp
-    ${source_path}/Meta_FunctionStringsByExtension.cpp
-    ${source_path}/Meta_ReqVersionsByExtension.cpp
-    ${source_path}/Meta_StringsByBitfield.cpp
-    ${source_path}/Meta_StringsByBoolean.cpp
-    ${source_path}/Meta_StringsByEnum.cpp
-    ${source_path}/Meta_StringsByExtension.cpp
+    ${source_path}/RingBuffer.h
+    ${source_path}/RingBuffer.hpp
+    ${source_path}/callbacks.cpp
+    ${source_path}/callbacks_private.h
+    ${source_path}/logging.cpp
 )
 
 # add featured sources
-file(GLOB featured_sources ${source_path}/gl*/*.cpp)
+file(GLOB featured_sources ${source_path}/gl/*.cpp)
 list(APPEND sources ${featured_sources})
 
 # Group source files
