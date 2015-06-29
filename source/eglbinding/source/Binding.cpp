@@ -1,5 +1,5 @@
 
-#include <glbinding/Binding.h>
+#include <eglbinding/Binding.h>
 
 #include <unordered_map>
 #include <mutex>
@@ -13,7 +13,7 @@ namespace
     std::unordered_map<glbinding::ContextHandle, int> g_bindings;
 }
 
-namespace glbinding 
+namespace eglbinding
 {
 
 std::vector<AbstractFunction *> Binding::s_additionalFunctions;
@@ -200,4 +200,4 @@ void Binding::addContextSwitchCallback(ContextSwitchCallback callback)
     g_mutex.unlock();
 }
 
-} // namespace glbinding
+} // namespace eglbinding

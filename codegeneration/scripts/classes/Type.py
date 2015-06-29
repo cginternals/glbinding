@@ -4,20 +4,44 @@ def inner(xml):
 
 class Type:
 
-    def __init__(self, xml, isGroup):
+    def __init__(self, xml):
 
-        self.isGroup = isGroup
+        self.isGroup = "name" in xml.attrib and sum(1 for l in inner(xml).splitlines()) > 1
         
-        if isGroup:
+        if self.isGroup: # groups
             self.name = xml.attrib["name"]
             self.value = inner(xml)
-        else:
+            self.ignoreName = False
+            self.isInclude = False
+        elif "name" in xml.attrib and not inner(xml): # foreign declarations; ignore
+            self.name = ""
+            self.value = ""
+            self.ignoreName = False
+            self.isInclude = False
+        elif "name" in xml.attrib and inner(xml): # includes; ignore all except khr includes
+            if inner(xml).startswith("#include <KHR/"):
+                self.name = ""
+                self.value = inner(xml)
+                self.ignoreName = True
+                self.isInclude = True
+            else:
+                self.name = ""
+                self.value = ""
+                self.ignoreName = False
+                self.isInclude = False
+        else: # normal declarations
             self.name = xml.find("name").text
-            self.value = "".join([ t for t in xml.itertext() if t != self.name ])
-
-        if self.name.startswith("struct "):
-            self.name = self.name[7:]
-            self.value = "struct"
+            self.isInclude = False
+            if inner(xml).startswith("struct") and not self.name.startswith("struct"):
+                self.value = "".join([ t for t in xml.itertext() ])
+                self.ignoreName = True
+            else:
+                self.value = "".join([ t for t in xml.itertext() if t != self.name ])
+                self.ignoreName = False
+            
+            if self.name.startswith("struct "):
+                self.name = self.name[7:]
+                self.value = "struct"
 
         # ToDo: required and removed ... for now glbinding discards this
 
@@ -43,17 +67,17 @@ def parseTypes(xml, api):
 
         for type in T.findall("type"):
 
-            # enorce constraint (1)
+            # enforce constraint (1)
             if "api" in type.attrib and type.attrib["api"] != api:
                 continue
 
-            # enorce constraint (2)
+            # enforce constraint (2)
             if not inner(type).startswith("typedef ") and \
                not inner(type).startswith("struct ") \
                and ("name" not in type.attrib):
                 continue
 
-            types.append(Type(type, "name" in type.attrib))
+            types.append(Type(type))
 
     return types
 

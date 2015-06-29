@@ -17,25 +17,13 @@
 #define EGL_APIENTRY
 #endif
 
+#include <KHR/khrplatform.h>
 
 namespace egl
 {
 
 enum class EGLextension : int;
-#include <KHR/khrplatform.h>
-#include <EGL/eglplatform.h>
-
-
-
-
-
-
-
-
-
-
-
-using EGLBoolean = unsigned int;
+enum class EGLboolean : unsigned int;
 enum class EGLenum : unsigned int;
 using EGLAttribKHR = intptr_t;
 using EGLAttrib = intptr_t;
@@ -63,12 +51,19 @@ using EGLNativeFileDescriptorKHR = int;
 using EGLsizeiANDROID = khronos_ssize_t;
 using EGLSetBlobFuncANDROID = void (EGL_APIENTRY *) (const void *key, EGLsizeiANDROID keySize, const void *value, EGLsizeiANDROID valueSize);
 using EGLGetBlobFuncANDROID = EGLsizeiANDROID (EGL_APIENTRY *) (const void *key, EGLsizeiANDROID keySize, void *value, EGLsizeiANDROID valueSize);
-struct  {
+struct EGLClientPixmapHI {
     void  *pData;
     EGLint iWidth;
     EGLint iHeight;
     EGLint iStride;
-}; EGLClientPixmapHI;
+};
+using EGLNativeDisplayType = void *;
+using EGLNativePixmapType = khronos_uintptr_t;
+using EGLNativeWindowType = khronos_uintptr_t;
+using NativeDisplayType = EGLNativeDisplayType;
+using NativePixmapType = EGLNativePixmapType;
+using NativeWindowType = EGLNativeWindowType;
+using EGLint = khronos_int32_t;
 enum class EGLContextFlagMask : unsigned int;
 enum class EGLContextProfileMask : unsigned int;
 enum class EGLDRMBufferUseMESAMask : unsigned int;

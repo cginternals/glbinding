@@ -1,12 +1,12 @@
 
-#include <glbinding/Version.h>
+#include <eglbinding/Version.h>
 
 #include <sstream>
 #include <string>
 #include <set>
 
 
-namespace glbinding
+namespace eglbinding
 {
 
 Version::Version()
@@ -118,7 +118,7 @@ const std::set<Version> & Version::versions()
 }
 
 
-} // namespace glbinding
+} // namespace eglbinding
 
 
 std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version)

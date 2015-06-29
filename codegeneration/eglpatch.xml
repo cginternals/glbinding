@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <registry>
-
+    <types>
+        <type>typedef void * <name>EGLNativeDisplayType</name>;</type>
+        <type>typedef khronos_uintptr_t <name>EGLNativePixmapType</name>;</type>
+        <type>typedef khronos_uintptr_t <name>EGLNativeWindowType</name>;</type>
+        
+        <type>typedef EGLNativeDisplayType <name>NativeDisplayType</name>;</type>
+        <type>typedef EGLNativePixmapType <name>NativePixmapType</name>;</type>
+        <type>typedef EGLNativeWindowType <name>NativeWindowType</name>;</type>
+        
+        <type>typedef khronos_int32_t <name>EGLint</name>;</type>
+    </types>
 </registry>

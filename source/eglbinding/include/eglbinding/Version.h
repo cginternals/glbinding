@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
+#include <eglbinding/eglbinding_api.h>
 
 #include <ostream>
 #include <string>
@@ -8,7 +8,7 @@
 #include <utility>
 
 
-namespace glbinding
+namespace eglbinding
 {
 
 class GLBINDING_API Version
@@ -47,6 +47,6 @@ protected:
     static const Version s_latest;
 };
 
-} // namespace glbinding
+} // namespace eglbinding
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version);

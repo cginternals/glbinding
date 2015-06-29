@@ -17,6 +17,7 @@
 #define %A_APIENTRY
 #endif
 
+%s
 
 namespace %a
 {

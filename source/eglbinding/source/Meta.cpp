@@ -1,14 +1,14 @@
 
-#include <glbinding/Meta.h>
+#include <eglbinding/Meta.h>
 
-#include <glbinding/gl/bitfield.h>
-#include <glbinding/gl/boolean.h>
-#include <glbinding/gl/enum.h>
-#include <glbinding/gl/extension.h>
+#include <eglbinding/gl/bitfield.h>
+#include <eglbinding/gl/boolean.h>
+#include <eglbinding/gl/enum.h>
+#include <eglbinding/gl/extension.h>
 
 // ToDo: multiple APIs
 
-#include <glbinding/Version.h>
+#include <eglbinding/Version.h>
 
 #include "revision.h"
 #include "Meta_Maps.h"
@@ -25,7 +25,7 @@ namespace {
 
 }
 
-namespace glbinding
+namespace eglbinding
 {
 
 bool Meta::stringsByGL()
@@ -176,4 +176,4 @@ const std::set<Version> & Meta::versions()
     return Version::versions();
 }
 
-} // namespace glbinding
+} // namespace eglbinding

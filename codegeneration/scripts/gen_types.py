@@ -17,7 +17,7 @@ def multilineConvertTypedef(type):
     return "\n".join([ convertTypedefLine(line, type.name) for line in type.value.split('\n') ])
 
 
-enum_classes = [ "boolean", "enum" ]
+enum_classes = [ "boolean", "Boolean", "enum" ]
 
 type_integration_map = {
     "extension" : [ "hashable", "streamable" ], 
@@ -34,9 +34,11 @@ def convertTypedef(api, type):
     t = parseType(type)
 
     if type.name[len(api):] in enum_classes:
-        return "enum class " + type.name + " : " + t + ";"
+        return "enum class " + type.name[0:len(api)] + type.name[len(api):].lower() + " : " + t + ";" # EGLBoolean <-> GLboolean
 
-    if type.value.startswith("struct"):
+    if type.ignoreName:
+        return type.value
+    elif type.value.startswith("struct"):
         return type.value + " " + type.name + ";"
     elif type.value.startswith("typedef"):
         return "using " + type.name + " = " + t + ";"
@@ -95,7 +97,7 @@ def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core
     with open(od + of, 'w') as file:
 
         file.write(t %
-            ("\n".join([ typeImport(api, t) for t in types if not t.isGroup ]),
+            ("\n".join([ typeImport(api, t) for t in types if not t.isGroup and not t.isInclude and t.name ]),
             "\n".join([ "using %s%s;" % (qualifier, g.name) for g in bitfGroups ]),)
         )
 
@@ -135,8 +137,9 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
                     type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", api).replace("%A", api.upper()).replace("%t", group.name))
 
             file.write(t % (
-                ("\n".join([ convertType(api, t) for t in types ])),
-                 "\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ]),
+                ("\n".join([ string for string in [ convertType(api, t) for t in types if t.isInclude ] if string ])),
+                ("\n".join([ string for string in [ convertType(api, t) for t in types if not t.isInclude ] if string ])),
+                ("\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ])),
                 ("\n".join([ t for t in type_integrations ]))
             ))
 

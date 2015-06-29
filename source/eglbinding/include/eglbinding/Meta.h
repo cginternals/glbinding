@@ -1,16 +1,16 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
+#include <eglbinding/eglbinding_api.h>
 
 #include <string>
 #include <utility>
 #include <vector>
 #include <set>
 
-#include <glbinding/gl/types.h>
+#include <eglbinding/gl/types.h>
 
 
-namespace glbinding
+namespace eglbinding
 {
 
 class Version;

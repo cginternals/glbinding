@@ -1,5 +1,5 @@
 
-#include <glbinding/ProcAddress.h>
+#include <eglbinding/ProcAddress.h>
 
 #ifdef WIN32
     #include <string>
@@ -13,7 +13,7 @@
     #include <GL/glx.h>
 #endif
 
-namespace glbinding 
+namespace eglbinding 
 {
 
 ProcAddress getProcAddress(const char * name)
@@ -50,4 +50,4 @@ ProcAddress getProcAddress(const char * name)
     return reinterpret_cast<ProcAddress>(procAddress);
 }
 
-} // namespace glbinding
+} // namespace eglbinding
