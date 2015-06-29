@@ -8,17 +8,17 @@
 namespace egl
 {
 
-EGLBoolean eglBindAPI(EGLenum api)
+EGLboolean eglBindAPI(EGLenum api)
 {
     return eglbinding::Binding::BindAPI(api);
 }
 
-EGLBoolean eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
+EGLboolean eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
     return eglbinding::Binding::BindTexImage(dpy, surface, buffer);
 }
 
-EGLBoolean eglChooseConfig(EGLDisplay dpy, const EGLint * attrib_list, EGLConfig * configs, EGLint config_size, EGLint * num_config)
+EGLboolean eglChooseConfig(EGLDisplay dpy, const EGLint * attrib_list, EGLConfig * configs, EGLint config_size, EGLint * num_config)
 {
     return eglbinding::Binding::ChooseConfig(dpy, attrib_list, configs, config_size, num_config);
 }
@@ -38,7 +38,7 @@ EGLint eglClientWaitSyncNV(EGLSyncNV sync, EGLint flags, EGLTimeNV timeout)
     return eglbinding::Binding::ClientWaitSyncNV(sync, flags, timeout);
 }
 
-EGLBoolean eglCopyBuffers(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target)
+EGLboolean eglCopyBuffers(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target)
 {
     return eglbinding::Binding::CopyBuffers(dpy, surface, target);
 }
@@ -148,42 +148,42 @@ EGLSurface eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWin
     return eglbinding::Binding::CreateWindowSurface(dpy, config, win, attrib_list);
 }
 
-EGLBoolean eglDestroyContext(EGLDisplay dpy, EGLContext ctx)
+EGLboolean eglDestroyContext(EGLDisplay dpy, EGLContext ctx)
 {
     return eglbinding::Binding::DestroyContext(dpy, ctx);
 }
 
-EGLBoolean eglDestroyImage(EGLDisplay dpy, EGLImage image)
+EGLboolean eglDestroyImage(EGLDisplay dpy, EGLImage image)
 {
     return eglbinding::Binding::DestroyImage(dpy, image);
 }
 
-EGLBoolean eglDestroyImageKHR(EGLDisplay dpy, EGLImageKHR image)
+EGLboolean eglDestroyImageKHR(EGLDisplay dpy, EGLImageKHR image)
 {
     return eglbinding::Binding::DestroyImageKHR(dpy, image);
 }
 
-EGLBoolean eglDestroyStreamKHR(EGLDisplay dpy, EGLStreamKHR stream)
+EGLboolean eglDestroyStreamKHR(EGLDisplay dpy, EGLStreamKHR stream)
 {
     return eglbinding::Binding::DestroyStreamKHR(dpy, stream);
 }
 
-EGLBoolean eglDestroySurface(EGLDisplay dpy, EGLSurface surface)
+EGLboolean eglDestroySurface(EGLDisplay dpy, EGLSurface surface)
 {
     return eglbinding::Binding::DestroySurface(dpy, surface);
 }
 
-EGLBoolean eglDestroySync(EGLDisplay dpy, EGLSync sync)
+EGLboolean eglDestroySync(EGLDisplay dpy, EGLSync sync)
 {
     return eglbinding::Binding::DestroySync(dpy, sync);
 }
 
-EGLBoolean eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR sync)
+EGLboolean eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR sync)
 {
     return eglbinding::Binding::DestroySyncKHR(dpy, sync);
 }
 
-EGLBoolean eglDestroySyncNV(EGLSyncNV sync)
+EGLboolean eglDestroySyncNV(EGLSyncNV sync)
 {
     return eglbinding::Binding::DestroySyncNV(sync);
 }
@@ -193,32 +193,32 @@ EGLint eglDupNativeFenceFDANDROID(EGLDisplay dpy, EGLSyncKHR sync)
     return eglbinding::Binding::DupNativeFenceFDANDROID(dpy, sync);
 }
 
-EGLBoolean eglExportDMABUFImageMESA(EGLDisplay dpy, EGLImageKHR image, int * fds, EGLint * strides, EGLint * offsets)
+EGLboolean eglExportDMABUFImageMESA(EGLDisplay dpy, EGLImageKHR image, int * fds, EGLint * strides, EGLint * offsets)
 {
     return eglbinding::Binding::ExportDMABUFImageMESA(dpy, image, fds, strides, offsets);
 }
 
-EGLBoolean eglExportDMABUFImageQueryMESA(EGLDisplay dpy, EGLImageKHR image, int * fourcc, int * num_planes, EGLuint64KHR * modifiers)
+EGLboolean eglExportDMABUFImageQueryMESA(EGLDisplay dpy, EGLImageKHR image, int * fourcc, int * num_planes, EGLuint64KHR * modifiers)
 {
     return eglbinding::Binding::ExportDMABUFImageQueryMESA(dpy, image, fourcc, num_planes, modifiers);
 }
 
-EGLBoolean eglExportDRMImageMESA(EGLDisplay dpy, EGLImageKHR image, EGLint * name, EGLint * handle, EGLint * stride)
+EGLboolean eglExportDRMImageMESA(EGLDisplay dpy, EGLImageKHR image, EGLint * name, EGLint * handle, EGLint * stride)
 {
     return eglbinding::Binding::ExportDRMImageMESA(dpy, image, name, handle, stride);
 }
 
-EGLBoolean eglFenceNV(EGLSyncNV sync)
+EGLboolean eglFenceNV(EGLSyncNV sync)
 {
     return eglbinding::Binding::FenceNV(sync);
 }
 
-EGLBoolean eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint * value)
+EGLboolean eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint * value)
 {
     return eglbinding::Binding::GetConfigAttrib(dpy, config, attribute, value);
 }
 
-EGLBoolean eglGetConfigs(EGLDisplay dpy, EGLConfig * configs, EGLint config_size, EGLint * num_config)
+EGLboolean eglGetConfigs(EGLDisplay dpy, EGLConfig * configs, EGLint config_size, EGLint * num_config)
 {
     return eglbinding::Binding::GetConfigs(dpy, configs, config_size, num_config);
 }
@@ -248,12 +248,12 @@ EGLint eglGetError()
     return eglbinding::Binding::GetError();
 }
 
-EGLBoolean eglGetOutputLayersEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint max_layers, EGLint * num_layers)
+EGLboolean eglGetOutputLayersEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint max_layers, EGLint * num_layers)
 {
     return eglbinding::Binding::GetOutputLayersEXT(dpy, attrib_list, layers, max_layers, num_layers);
 }
 
-EGLBoolean eglGetOutputPortsEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint max_ports, EGLint * num_ports)
+EGLboolean eglGetOutputPortsEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint max_ports, EGLint * num_ports)
 {
     return eglbinding::Binding::GetOutputPortsEXT(dpy, attrib_list, ports, max_ports, num_ports);
 }
@@ -278,17 +278,17 @@ EGLNativeFileDescriptorKHR eglGetStreamFileDescriptorKHR(EGLDisplay dpy, EGLStre
     return eglbinding::Binding::GetStreamFileDescriptorKHR(dpy, stream);
 }
 
-EGLBoolean eglGetSyncAttrib(EGLDisplay dpy, EGLSync sync, EGLint attribute, EGLAttrib * value)
+EGLboolean eglGetSyncAttrib(EGLDisplay dpy, EGLSync sync, EGLint attribute, EGLAttrib * value)
 {
     return eglbinding::Binding::GetSyncAttrib(dpy, sync, attribute, value);
 }
 
-EGLBoolean eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint * value)
+EGLboolean eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLint attribute, EGLint * value)
 {
     return eglbinding::Binding::GetSyncAttribKHR(dpy, sync, attribute, value);
 }
 
-EGLBoolean eglGetSyncAttribNV(EGLSyncNV sync, EGLint attribute, EGLint * value)
+EGLboolean eglGetSyncAttribNV(EGLSyncNV sync, EGLint attribute, EGLint * value)
 {
     return eglbinding::Binding::GetSyncAttribNV(sync, attribute, value);
 }
@@ -303,32 +303,32 @@ EGLuint64NV eglGetSystemTimeNV()
     return eglbinding::Binding::GetSystemTimeNV();
 }
 
-EGLBoolean eglInitialize(EGLDisplay dpy, EGLint * major, EGLint * minor)
+EGLboolean eglInitialize(EGLDisplay dpy, EGLint * major, EGLint * minor)
 {
     return eglbinding::Binding::Initialize(dpy, major, minor);
 }
 
-EGLBoolean eglLockSurfaceKHR(EGLDisplay dpy, EGLSurface surface, const EGLint * attrib_list)
+EGLboolean eglLockSurfaceKHR(EGLDisplay dpy, EGLSurface surface, const EGLint * attrib_list)
 {
     return eglbinding::Binding::LockSurfaceKHR(dpy, surface, attrib_list);
 }
 
-EGLBoolean eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx)
+EGLboolean eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx)
 {
     return eglbinding::Binding::MakeCurrent(dpy, draw, read, ctx);
 }
 
-EGLBoolean eglOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib value)
+EGLboolean eglOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib value)
 {
     return eglbinding::Binding::OutputLayerAttribEXT(dpy, layer, attribute, value);
 }
 
-EGLBoolean eglOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib value)
+EGLboolean eglOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib value)
 {
     return eglbinding::Binding::OutputPortAttribEXT(dpy, port, attribute, value);
 }
 
-EGLBoolean eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height)
+EGLboolean eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height)
 {
     return eglbinding::Binding::PostSubBufferNV(dpy, surface, x, y, width, height);
 }
@@ -338,12 +338,12 @@ EGLenum eglQueryAPI()
     return eglbinding::Binding::QueryAPI();
 }
 
-EGLBoolean eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint * value)
+EGLboolean eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint * value)
 {
     return eglbinding::Binding::QueryContext(dpy, ctx, attribute, value);
 }
 
-EGLBoolean eglQueryDeviceAttribEXT(EGLDeviceEXT device, EGLint attribute, EGLAttrib * value)
+EGLboolean eglQueryDeviceAttribEXT(EGLDeviceEXT device, EGLint attribute, EGLAttrib * value)
 {
     return eglbinding::Binding::QueryDeviceAttribEXT(device, attribute, value);
 }
@@ -353,32 +353,32 @@ const char * eglQueryDeviceStringEXT(EGLDeviceEXT device, EGLint name)
     return eglbinding::Binding::QueryDeviceStringEXT(device, name);
 }
 
-EGLBoolean eglQueryDevicesEXT(EGLint max_devices, EGLDeviceEXT * devices, EGLint * num_devices)
+EGLboolean eglQueryDevicesEXT(EGLint max_devices, EGLDeviceEXT * devices, EGLint * num_devices)
 {
     return eglbinding::Binding::QueryDevicesEXT(max_devices, devices, num_devices);
 }
 
-EGLBoolean eglQueryDisplayAttribEXT(EGLDisplay dpy, EGLint attribute, EGLAttrib * value)
+EGLboolean eglQueryDisplayAttribEXT(EGLDisplay dpy, EGLint attribute, EGLAttrib * value)
 {
     return eglbinding::Binding::QueryDisplayAttribEXT(dpy, attribute, value);
 }
 
-EGLBoolean eglQueryNativeDisplayNV(EGLDisplay dpy, EGLNativeDisplayType * display_id)
+EGLboolean eglQueryNativeDisplayNV(EGLDisplay dpy, EGLNativeDisplayType * display_id)
 {
     return eglbinding::Binding::QueryNativeDisplayNV(dpy, display_id);
 }
 
-EGLBoolean eglQueryNativePixmapNV(EGLDisplay dpy, EGLSurface surf, EGLNativePixmapType * pixmap)
+EGLboolean eglQueryNativePixmapNV(EGLDisplay dpy, EGLSurface surf, EGLNativePixmapType * pixmap)
 {
     return eglbinding::Binding::QueryNativePixmapNV(dpy, surf, pixmap);
 }
 
-EGLBoolean eglQueryNativeWindowNV(EGLDisplay dpy, EGLSurface surf, EGLNativeWindowType * window)
+EGLboolean eglQueryNativeWindowNV(EGLDisplay dpy, EGLSurface surf, EGLNativeWindowType * window)
 {
     return eglbinding::Binding::QueryNativeWindowNV(dpy, surf, window);
 }
 
-EGLBoolean eglQueryOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib * value)
+EGLboolean eglQueryOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib * value)
 {
     return eglbinding::Binding::QueryOutputLayerAttribEXT(dpy, layer, attribute, value);
 }
@@ -388,7 +388,7 @@ const char * eglQueryOutputLayerStringEXT(EGLDisplay dpy, EGLOutputLayerEXT laye
     return eglbinding::Binding::QueryOutputLayerStringEXT(dpy, layer, name);
 }
 
-EGLBoolean eglQueryOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib * value)
+EGLboolean eglQueryOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib * value)
 {
     return eglbinding::Binding::QueryOutputPortAttribEXT(dpy, port, attribute, value);
 }
@@ -398,17 +398,17 @@ const char * eglQueryOutputPortStringEXT(EGLDisplay dpy, EGLOutputPortEXT port, 
     return eglbinding::Binding::QueryOutputPortStringEXT(dpy, port, name);
 }
 
-EGLBoolean eglQueryStreamKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint * value)
+EGLboolean eglQueryStreamKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint * value)
 {
     return eglbinding::Binding::QueryStreamKHR(dpy, stream, attribute, value);
 }
 
-EGLBoolean eglQueryStreamTimeKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLTimeKHR * value)
+EGLboolean eglQueryStreamTimeKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLTimeKHR * value)
 {
     return eglbinding::Binding::QueryStreamTimeKHR(dpy, stream, attribute, value);
 }
 
-EGLBoolean eglQueryStreamu64KHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLuint64KHR * value)
+EGLboolean eglQueryStreamu64KHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLuint64KHR * value)
 {
     return eglbinding::Binding::QueryStreamu64KHR(dpy, stream, attribute, value);
 }
@@ -418,27 +418,27 @@ const char * eglQueryString(EGLDisplay dpy, EGLint name)
     return eglbinding::Binding::QueryString(dpy, name);
 }
 
-EGLBoolean eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint * value)
+EGLboolean eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint * value)
 {
     return eglbinding::Binding::QuerySurface(dpy, surface, attribute, value);
 }
 
-EGLBoolean eglQuerySurface64KHR(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLAttribKHR * value)
+EGLboolean eglQuerySurface64KHR(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLAttribKHR * value)
 {
     return eglbinding::Binding::QuerySurface64KHR(dpy, surface, attribute, value);
 }
 
-EGLBoolean eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGLSurface surface, EGLint attribute, void ** value)
+EGLboolean eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGLSurface surface, EGLint attribute, void ** value)
 {
     return eglbinding::Binding::QuerySurfacePointerANGLE(dpy, surface, attribute, value);
 }
 
-EGLBoolean eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
+EGLboolean eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
     return eglbinding::Binding::ReleaseTexImage(dpy, surface, buffer);
 }
 
-EGLBoolean eglReleaseThread()
+EGLboolean eglReleaseThread()
 {
     return eglbinding::Binding::ReleaseThread();
 }
@@ -448,107 +448,107 @@ void eglSetBlobCacheFuncsANDROID(EGLDisplay dpy, EGLSetBlobFuncANDROID set, EGLG
     return eglbinding::Binding::SetBlobCacheFuncsANDROID(dpy, set, get);
 }
 
-EGLBoolean eglSetDamageRegionKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects)
+EGLboolean eglSetDamageRegionKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects)
 {
     return eglbinding::Binding::SetDamageRegionKHR(dpy, surface, rects, n_rects);
 }
 
-EGLBoolean eglSignalSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLenum mode)
+EGLboolean eglSignalSyncKHR(EGLDisplay dpy, EGLSyncKHR sync, EGLenum mode)
 {
     return eglbinding::Binding::SignalSyncKHR(dpy, sync, mode);
 }
 
-EGLBoolean eglSignalSyncNV(EGLSyncNV sync, EGLenum mode)
+EGLboolean eglSignalSyncNV(EGLSyncNV sync, EGLenum mode)
 {
     return eglbinding::Binding::SignalSyncNV(sync, mode);
 }
 
-EGLBoolean eglStreamAttribKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint value)
+EGLboolean eglStreamAttribKHR(EGLDisplay dpy, EGLStreamKHR stream, EGLenum attribute, EGLint value)
 {
     return eglbinding::Binding::StreamAttribKHR(dpy, stream, attribute, value);
 }
 
-EGLBoolean eglStreamConsumerAcquireKHR(EGLDisplay dpy, EGLStreamKHR stream)
+EGLboolean eglStreamConsumerAcquireKHR(EGLDisplay dpy, EGLStreamKHR stream)
 {
     return eglbinding::Binding::StreamConsumerAcquireKHR(dpy, stream);
 }
 
-EGLBoolean eglStreamConsumerGLTextureExternalKHR(EGLDisplay dpy, EGLStreamKHR stream)
+EGLboolean eglStreamConsumerGLTextureExternalKHR(EGLDisplay dpy, EGLStreamKHR stream)
 {
     return eglbinding::Binding::StreamConsumerGLTextureExternalKHR(dpy, stream);
 }
 
-EGLBoolean eglStreamConsumerOutputEXT(EGLDisplay dpy, EGLStreamKHR stream, EGLOutputLayerEXT layer)
+EGLboolean eglStreamConsumerOutputEXT(EGLDisplay dpy, EGLStreamKHR stream, EGLOutputLayerEXT layer)
 {
     return eglbinding::Binding::StreamConsumerOutputEXT(dpy, stream, layer);
 }
 
-EGLBoolean eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGLStreamKHR stream)
+EGLboolean eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGLStreamKHR stream)
 {
     return eglbinding::Binding::StreamConsumerReleaseKHR(dpy, stream);
 }
 
-EGLBoolean eglSurfaceAttrib(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value)
+EGLboolean eglSurfaceAttrib(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value)
 {
     return eglbinding::Binding::SurfaceAttrib(dpy, surface, attribute, value);
 }
 
-EGLBoolean eglSwapBuffers(EGLDisplay dpy, EGLSurface surface)
+EGLboolean eglSwapBuffers(EGLDisplay dpy, EGLSurface surface)
 {
     return eglbinding::Binding::SwapBuffers(dpy, surface);
 }
 
-EGLBoolean eglSwapBuffersRegion2NOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects)
+EGLboolean eglSwapBuffersRegion2NOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects)
 {
     return eglbinding::Binding::SwapBuffersRegion2NOK(dpy, surface, numRects, rects);
 }
 
-EGLBoolean eglSwapBuffersRegionNOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects)
+EGLboolean eglSwapBuffersRegionNOK(EGLDisplay dpy, EGLSurface surface, EGLint numRects, const EGLint * rects)
 {
     return eglbinding::Binding::SwapBuffersRegionNOK(dpy, surface, numRects, rects);
 }
 
-EGLBoolean eglSwapBuffersWithDamageEXT(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects)
+EGLboolean eglSwapBuffersWithDamageEXT(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects)
 {
     return eglbinding::Binding::SwapBuffersWithDamageEXT(dpy, surface, rects, n_rects);
 }
 
-EGLBoolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects)
+EGLboolean eglSwapBuffersWithDamageKHR(EGLDisplay dpy, EGLSurface surface, EGLint * rects, EGLint n_rects)
 {
     return eglbinding::Binding::SwapBuffersWithDamageKHR(dpy, surface, rects, n_rects);
 }
 
-EGLBoolean eglSwapInterval(EGLDisplay dpy, EGLint interval)
+EGLboolean eglSwapInterval(EGLDisplay dpy, EGLint interval)
 {
     return eglbinding::Binding::SwapInterval(dpy, interval);
 }
 
-EGLBoolean eglTerminate(EGLDisplay dpy)
+EGLboolean eglTerminate(EGLDisplay dpy)
 {
     return eglbinding::Binding::Terminate(dpy);
 }
 
-EGLBoolean eglUnlockSurfaceKHR(EGLDisplay dpy, EGLSurface surface)
+EGLboolean eglUnlockSurfaceKHR(EGLDisplay dpy, EGLSurface surface)
 {
     return eglbinding::Binding::UnlockSurfaceKHR(dpy, surface);
 }
 
-EGLBoolean eglWaitClient()
+EGLboolean eglWaitClient()
 {
     return eglbinding::Binding::WaitClient();
 }
 
-EGLBoolean eglWaitGL()
+EGLboolean eglWaitGL()
 {
     return eglbinding::Binding::WaitGL();
 }
 
-EGLBoolean eglWaitNative(EGLint engine)
+EGLboolean eglWaitNative(EGLint engine)
 {
     return eglbinding::Binding::WaitNative(engine);
 }
 
-EGLBoolean eglWaitSync(EGLDisplay dpy, EGLSync sync, EGLint flags)
+EGLboolean eglWaitSync(EGLDisplay dpy, EGLSync sync, EGLint flags)
 {
     return eglbinding::Binding::WaitSync(dpy, sync, flags);
 }

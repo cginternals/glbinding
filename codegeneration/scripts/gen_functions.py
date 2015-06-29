@@ -49,9 +49,12 @@ def namespacify(type, namespace):
     if " void" in type or type.startswith("void"):
         return type
 
+    if type.startswith("int") or type.startswith("const int") or type.startswith("char") or type.startswith("const char"):
+        return type
+    
     if type.startswith("const "):
         return "const " + namespace + "::" + type[6:]
-
+    
     return namespace + "::" + type
 
 
@@ -64,10 +67,7 @@ def paramSignature(api, param, forward):
 
     if param.type == api.upper() + "bitfield":
         return bitfieldType(api, param)
-
-#    if forward and param.array is not "":
-#        return param.type + " " + param.array
-#    else:
+    
     return param.type
 
 

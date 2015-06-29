@@ -8,6 +8,7 @@ namespace egl13ext
 {
 
 using egl::EGLextension;
+using egl::EGLint;
 using egl::EGLBoolean;
 using egl::EGLenum;
 using egl::EGLAttribKHR;
@@ -43,7 +44,6 @@ using egl::EGLNativeWindowType;
 using egl::NativeDisplayType;
 using egl::NativePixmapType;
 using egl::NativeWindowType;
-using egl::EGLint;
 using egl::EGLContextFlagMask;
 using egl::EGLContextProfileMask;
 using egl::EGLDRMBufferUseMESAMask;

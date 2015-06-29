@@ -13,6 +13,10 @@ class Parameter:
     def __init__(self, xml):
 
         self.name = xml.find("name").text
+        
+        # EGL hack
+        if self.name == "EGLBoolean":
+            self.name = "EGLboolean"
 
         # check for additional params
         if list(xml.itertext())[-1] != self.name:
@@ -44,6 +48,10 @@ class Command:
 
         self.name       = proto.find("name").text
         self.returntype = " ".join([t.strip() for t in proto.itertext()][:-1]).strip()
+        
+        # EGL hack
+        if self.returntype == "EGLBoolean":
+            self.returntype = "EGLboolean"
 
         self.params = []
 

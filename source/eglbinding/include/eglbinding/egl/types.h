@@ -23,6 +23,7 @@ namespace egl
 {
 
 enum class EGLextension : int;
+using EGLint = khronos_int32_t;
 enum class EGLboolean : unsigned int;
 enum class EGLenum : unsigned int;
 using EGLAttribKHR = intptr_t;
@@ -63,7 +64,6 @@ using EGLNativeWindowType = khronos_uintptr_t;
 using NativeDisplayType = EGLNativeDisplayType;
 using NativePixmapType = EGLNativePixmapType;
 using NativeWindowType = EGLNativeWindowType;
-using EGLint = khronos_int32_t;
 enum class EGLContextFlagMask : unsigned int;
 enum class EGLContextProfileMask : unsigned int;
 enum class EGLDRMBufferUseMESAMask : unsigned int;
