@@ -12,12 +12,14 @@ find_package(OpenGL REQUIRED)
 
 include_directories(
     BEFORE
+    ${CMAKE_SOURCE_DIR}/source/khrapi/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # Libraries
 
 set(libs
+    khrapi
     ${OPENGL_LIBRARIES}
 )
 
@@ -53,6 +55,7 @@ set(api_includes
     ${include_path}/ProcAddress.h
     ${include_path}/ContextHandle.h
     ${include_path}/ContextInfo.h
+    ${include_path}/Value.h
     ${include_path}/Version.h
 )
 
@@ -68,6 +71,7 @@ set(sources
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp
+    ${source_path}/Value.cpp
     ${source_path}/Version.cpp
     ${source_path}/Version_ValidVersions.cpp
 

@@ -1,8 +1,8 @@
 #pragma once
 
-#include <glbinding/SharedBitfield.h>
+#include <khrapi/SharedBitfield.h>
 
-namespace glbinding 
+namespace khrapi 
 {
 
 template <typename T>
@@ -172,4 +172,4 @@ operator^(ConvertibleEnum a, Enum b)
     return static_cast<Enum>(a) ^ b;
 }
 
-} // namespace glbinding
+} // namespace khrapi

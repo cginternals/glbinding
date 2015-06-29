@@ -40,6 +40,7 @@ set(api_includes
     ${include_path}/khrapi_api.h
     
     ${include_path}/AbstractFunction.h
+    ${include_path}/AbstractState.h
     ${include_path}/AbstractValue.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
@@ -47,6 +48,9 @@ set(api_includes
     ${include_path}/Value.hpp
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.hpp
+    ${include_path}/State.h
+    ${include_path}/State.hpp
+    ${include_path}/ProcAddress.h
 
     ${include_path}/callbacks.h
     ${include_path}/logging.h
@@ -54,6 +58,7 @@ set(api_includes
 
 set(sources
     ${source_path}/AbstractFunction.cpp
+    ${source_path}/AbstractState.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Value.cpp
 

@@ -1,4 +1,4 @@
-#include <glbinding/logging.h>
+#include <khrapi/logging.h>
 
 #include <atomic>
 #include <condition_variable>
@@ -19,11 +19,11 @@ namespace
     std::mutex g_lockfinish;
     std::condition_variable g_finishcheck;
 
-    using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::BufferType>;
+    using FunctionCallBuffer = khrapi::RingBuffer<khrapi::logging::BufferType>;
     FunctionCallBuffer g_buffer{LOG_BUFFER_SIZE};
 }
 
-namespace glbinding
+namespace khrapi
 {
 
 namespace logging
@@ -42,26 +42,11 @@ void start()
 
 void start(const std::string & filepath)
 {
-    addCallbackMask(CallbackMask::Logging);
-    startWriter(filepath);
-}
-
-void startExcept(const std::set<std::string> & blackList)
-{
-    auto filepath = getStandardFilepath();
-    startExcept(filepath, blackList);
-}
-
-void startExcept(const std::string & filepath, const std::set<std::string> & blackList)
-{
-    addCallbackMaskExcept(CallbackMask::Logging, blackList);
     startWriter(filepath);
 }
 
 void stop()
 {
-    removeCallbackMask(CallbackMask::Logging);
-
     g_stop = true;
     std::unique_lock<std::mutex> locker(g_lockfinish);
 
@@ -70,16 +55,6 @@ void stop()
     {
         g_finishcheck.wait(locker);
     }
-}
-
-void pause()
-{
-    removeCallbackMask(CallbackMask::Logging);
-}
-
-void resume()
-{
-    addCallbackMask(CallbackMask::Logging);
 }
 
 void log(FunctionCall * call)
@@ -188,4 +163,4 @@ unsigned int size(TailIdentifier key)
 }
 
 } // namespace logging
-} // namespace glbinding
+} // namespace khrapi

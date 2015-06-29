@@ -1,13 +1,13 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
+#include <khrapi/khrapi_api.h>
 
 #include <vector>
 
-#include <glbinding/AbstractValue.h>
-#include <glbinding/gl/types.h>
+#include <khrapi/AbstractValue.h>
+//#include <glbinding/gl/types.h>
 
-namespace glbinding 
+namespace khrapi 
 {
 
 template <typename T>
@@ -24,19 +24,12 @@ protected:
     T value;
 };
 
-template <> GLBINDING_API void Value<gl::GLenum>::printOn(std::ostream & stream) const;
-//template <> GLBINDING_API void Value<gl::GLbitfield>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<gl::GLboolean>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<const gl::GLchar *>::printOn(std::ostream & stream) const;
-template <> GLBINDING_API void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) const;
-
 template <typename Argument>
 AbstractValue * createValue(Argument argument);
 
 template <typename... Arguments>
 std::vector<AbstractValue*> createValues(Arguments&&... arguments);
 
-} // namespace glbinding
+} // namespace khrapi
 
-#include <glbinding/Value.hpp>
+#include <khrapi/Value.hpp>

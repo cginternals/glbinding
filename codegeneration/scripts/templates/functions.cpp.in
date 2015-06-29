@@ -2,6 +2,8 @@
 
 #include <%abinding/Binding.h>
 
+#include <%abinding/Value.h>
+
 
 namespace %a
 {

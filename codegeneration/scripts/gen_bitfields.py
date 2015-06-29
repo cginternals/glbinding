@@ -34,7 +34,7 @@ def forwardBitfield(api, enum):
         return "static const %s %s = %s::%s;" % (qualifier+group, enumBID(enum), qualifier+group, enumBID(enum))
     else:
         groups = ", ".join([ qualifier+g.name for g in sorted(enum.groups) ])
-        return "static const %sbinding::SharedBitfield<%s> %s = %s::%s;" % (api, groups, enumBID(enum), qualifier+group, enumBID(enum))
+        return "static const khrapi::SharedBitfield<%s> %s = %s::%s;" % (groups, enumBID(enum), qualifier+group, enumBID(enum))
 
 
 
@@ -99,7 +99,7 @@ def genFeatureBitfields(api, enums, feature, outputdir, outputfile, core = False
         groups = ", ".join([ qualifier+g for g in sorted(groupedBitfields.keys()) ])
         importToNamespace = [ forwardBitfield(api, e) for e in sorted(pureBitfields) ]
         if len(importToNamespace):
-            importToNamespace.insert(0, "static const %sbinding::SharedBitfield<%s> %s_NONE_BIT = %s::%s::%s_NONE_BIT;" % (api, groups, api.upper(), api, sorted(groupedBitfields.keys())[0], api.upper()))
+            importToNamespace.insert(0, "static const khrapi::SharedBitfield<%s> %s_NONE_BIT = %s::%s::%s_NONE_BIT;" % (groups, api.upper(), api, sorted(groupedBitfields.keys())[0], api.upper()))
 
     usedBitfsByName.clear()
     

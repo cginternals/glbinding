@@ -5,8 +5,8 @@
 
 #include <glbinding/gl/gl.h>
 
-#include <glbinding/AbstractFunction.h> 
-#include <glbinding/callbacks.h>
+#include <khrapi/AbstractFunction.h> 
+#include <khrapi/callbacks.h>
 
 #include <glbinding/Binding.h>
 
@@ -35,9 +35,9 @@ void glbinding_error(bool enable)
 {
     if (enable)
     {
-        glbinding::setCallbackMaskExcept(glbinding::CallbackMask::After, { "glGetError" });
+        glbinding::Binding::setCallbackMaskExcept(khrapi::CallbackMask::After, { "glGetError" });
 
-        glbinding::setAfterCallback([](const glbinding::FunctionCall &)
+        khrapi::setAfterCallback([](const khrapi::FunctionCall &)
         {
             gl::GLenum error = gl::glGetError();
             if (error != gl::GL_NO_ERROR)
@@ -45,5 +45,5 @@ void glbinding_error(bool enable)
         });
     }
     else
-        glbinding::setCallbackMask(glbinding::CallbackMask::None);
+        glbinding::Binding::setCallbackMask(khrapi::CallbackMask::None);
 }

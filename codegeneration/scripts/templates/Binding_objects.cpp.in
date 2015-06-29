@@ -11,30 +11,7 @@ using namespace %a;
 namespace %abinding 
 {
 
-/*
-Binding::iterator Binding::begin()
-{
-	return iterator(&%b);
-}
-
-Binding::iterator Binding::end()
-{
-	return iterator(&%e);
-}
-
-Binding::const_iterator Binding::begin() const
-{
-	return const_iterator(&%b);
-}
-
-Binding::const_iterator Binding::end() const
-{
-    return const_iterator(&%e);
-}
-*/
-
 %s
-
 
 const Binding::array_t Binding::s_functions = 
 {{

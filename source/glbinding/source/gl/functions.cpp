@@ -2,6 +2,8 @@
 
 #include <glbinding/Binding.h>
 
+#include <glbinding/Value.h>
+
 
 namespace gl
 {

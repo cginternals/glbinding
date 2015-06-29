@@ -39,6 +39,57 @@ void Binding::initialize(const bool resolveFunctions)
     initialize(getCurrentContext(), true, resolveFunctions);
 }
 
+
+void AbstractFunction::provideState(const int pos)
+{
+    assert(pos > -1);
+
+    // if a state at pos exists, it is assumed to be neglected before
+    if (s_maxpos < pos)
+    {
+        for (AbstractFunction * function : Binding::functions())
+        {
+            function->m_states.resize(static_cast<std::size_t>(pos + 1));
+        }
+
+        s_maxpos = pos;
+    }
+}
+
+void AbstractFunction::neglectState(const int pos)
+{
+    assert(pos <= s_maxpos);
+    assert(pos > -1);
+
+    if (pos == s_maxpos)
+    {
+        for (AbstractFunction * function : Binding::functions())
+        {
+            function->m_states.resize(static_cast<std::size_t>(std::max(0, pos - 1)));
+        }
+
+        --s_maxpos;
+    }
+    else
+    {
+        for (AbstractFunction * function : Binding::functions())
+        {
+            function->m_states[pos] = State();
+        }
+    }
+
+    if (pos == t_pos)
+    {
+        t_pos = -1;
+    }
+}
+
+void AbstractFunction::setStatePos(const int pos)
+{
+    t_pos = pos;
+}
+
+
 void Binding::initialize(
     const ContextHandle context
 ,   const bool _useContext

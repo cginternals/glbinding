@@ -1,32 +1,33 @@
 #pragma once
 
-#include <glbinding/Function.h>
-#include <glbinding/logging.h>
-#include <glbinding/Value.h>
+#include <khrapi/Function.h>
+#include <khrapi/logging.h>
+#include <khrapi/Value.h>
+#include <khrapi/callbacks.h>
 
+#include <cassert>
 #include <utility>
 #include <functional>
 #include <memory>
 
-
-namespace glbinding 
+namespace khrapi
 {
 
-template <typename ReturnType, typename... Arguments>
+template <typename Binding, typename ReturnType, typename... Arguments>
 struct FunctionHelper
 {
-    ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) const
+    ReturnType call(const Function<Binding, ReturnType, Arguments...> * function, Arguments&&... arguments) const
     {
-        std::unique_ptr<glbinding::FunctionCall> functionCall{new glbinding::FunctionCall(function)};
+        std::unique_ptr<FunctionCall> functionCall{new FunctionCall(function)};
 
-        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters | glbinding::CallbackMask::Logging))
+        if (function->isAnyEnabled(CallbackMask::Parameters | CallbackMask::Logging))
         {
-            functionCall->parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
+            functionCall->parameters = createValues(std::forward<Arguments>(arguments)...);
         }
 
-        if (function->isEnabled(glbinding::CallbackMask::Before))
+        if (function->isEnabled(CallbackMask::Before))
         {
-            function->before(*functionCall);
+            before(*functionCall);
         }
 
         if (function->m_beforeCallback)
@@ -41,45 +42,45 @@ struct FunctionHelper
             function->m_afterCallback(value, std::forward<Arguments>(arguments)...);
         }
 
-        if (function->isAnyEnabled(glbinding::CallbackMask::ReturnValue | glbinding::CallbackMask::Logging))
+        if (function->isAnyEnabled(CallbackMask::ReturnValue | CallbackMask::Logging))
         {
-            functionCall->returnValue = glbinding::createValue(value);
+            functionCall->returnValue = createValue(value);
         }
 
-        if (function->isEnabled(glbinding::CallbackMask::After))
+        if (function->isEnabled(CallbackMask::After))
         {
-            function->after(*functionCall);
+            after(*functionCall);
         }
 
-        if(function->isEnabled(glbinding::CallbackMask::Logging))
+        if(function->isEnabled(CallbackMask::Logging))
         {
-            glbinding::logging::log(functionCall.release());
+            logging::log(functionCall.release());
         }
 
         return value;
     }
 
-    ReturnType basicCall(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) const
+    ReturnType basicCall(const Function<Binding, ReturnType, Arguments...> * function, Arguments&&... arguments) const
     {
-        return reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+        return reinterpret_cast<typename Function<Binding, ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
 
-template <typename... Arguments>
-struct FunctionHelper<void, Arguments...>
+template <typename Binding, typename... Arguments>
+struct FunctionHelper<Binding, void, Arguments...>
 {
-    void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments) const
+    void call(const Function<Binding, void, Arguments...> * function, Arguments&&... arguments) const
     {
-        std::unique_ptr<glbinding::FunctionCall> functionCall(new glbinding::FunctionCall(function));
+        std::unique_ptr<FunctionCall> functionCall(new FunctionCall(function));
 
-        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters | glbinding::CallbackMask::Logging))
+        if (function->isAnyEnabled(CallbackMask::Parameters | CallbackMask::Logging))
         {
-            functionCall->parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
+            functionCall->parameters = createValues(std::forward<Arguments>(arguments)...);
         }
 
-        if (function->isEnabled(glbinding::CallbackMask::Before))
+        if (function->isEnabled(CallbackMask::Before))
         {
-            function->before(*functionCall);
+            before(*functionCall);
         }
 
         if (function->m_beforeCallback)
@@ -94,34 +95,34 @@ struct FunctionHelper<void, Arguments...>
             function->m_afterCallback(std::forward<Arguments>(arguments)...);
         }
 
-        if (function->isEnabled(glbinding::CallbackMask::After))
+        if (function->isEnabled(CallbackMask::After))
         {
-            function->after(*functionCall);
+            after(*functionCall);
         }
 
-        if(function->isEnabled(glbinding::CallbackMask::Logging))
+        if(function->isEnabled(CallbackMask::Logging))
         {
-            glbinding::logging::log(functionCall.release());
+            logging::log(functionCall.release());
         }
     }
 
-    void basicCall(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments) const
+    void basicCall(const Function<Binding, void, Arguments...> * function, Arguments&&... arguments) const
     {
-        reinterpret_cast<typename glbinding::Function<void, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+        reinterpret_cast<typename Function<Binding, void, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
 
 
-template <typename ReturnType, typename... Arguments>
-Function<ReturnType, Arguments...>::Function(const char * _name)
-    : AbstractFunction{_name}
+template <typename Binding, typename ReturnType, typename... Arguments>
+Function<Binding, ReturnType, Arguments...>::Function(const char * _name)
+: AbstractFunction{_name}
 , m_beforeCallback{nullptr}
 , m_afterCallback{nullptr}
 {
 }
 
-template <typename ReturnType, typename... Arguments>
-ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
+template <typename Binding, typename ReturnType, typename... Arguments>
+ReturnType Function<Binding, ReturnType, Arguments...>::operator()(Arguments&... arguments) const
 {
     auto myAddress = address();
 
@@ -129,52 +130,85 @@ ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... argument
     {
         if (isAnyEnabled(CallbackMask::Before | CallbackMask::After | CallbackMask::Logging))
         {
-            return FunctionHelper<ReturnType, Arguments...>().call(this, std::forward<Arguments>(arguments)...);
+            return FunctionHelper<Binding, ReturnType, Arguments...>().call(this, std::forward<Arguments>(arguments)...);
         }
         else
         {
-            return FunctionHelper<ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
+            return FunctionHelper<Binding, ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
         }
     }
     else
     {
          if (isEnabled(CallbackMask::Unresolved))
          {
-            unresolved();
+            khrapi::unresolved(this);
          }
 
          return ReturnType();
     }
 }
 
-template <typename ReturnType, typename... Arguments>
-ReturnType Function<ReturnType, Arguments...>::directCall(Arguments... arguments) const
+template <typename Binding, typename ReturnType, typename... Arguments>
+ReturnType Function<Binding, ReturnType, Arguments...>::directCall(Arguments... arguments) const
 {
-    return FunctionHelper<ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
+    return FunctionHelper<Binding, ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
 }
 
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::setBeforeCallback(BeforeCallback callback)
+template <typename Binding, typename ReturnType, typename... Arguments>
+void Function<Binding, ReturnType, Arguments...>::setBeforeCallback(BeforeCallback callback)
 {
     m_beforeCallback = std::move(callback);
 }
 
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::clearBeforeCallback()
+template <typename Binding, typename ReturnType, typename... Arguments>
+void Function<Binding, ReturnType, Arguments...>::clearBeforeCallback()
 {
     m_beforeCallback = nullptr;
 }
 
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::setAfterCallback(AfterCallback callback)
+template <typename Binding, typename ReturnType, typename... Arguments>
+void Function<Binding, ReturnType, Arguments...>::setAfterCallback(AfterCallback callback)
 {
     m_afterCallback = std::move(callback);
 }
 
-template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::clearAfterCallback()
+template <typename Binding, typename ReturnType, typename... Arguments>
+void Function<Binding, ReturnType, Arguments...>::clearAfterCallback()
 {
     m_afterCallback = nullptr;
 }
 
-} // namespace glbinding
+template <typename Binding, typename ReturnType, typename... Arguments>
+bool Function<Binding, ReturnType, Arguments...>::hasState() const
+{
+    return hasState(Binding::currentPos());
+}
+
+template <typename Binding, typename ReturnType, typename... Arguments>
+bool Function<Binding, ReturnType, Arguments...>::hasState(const int pos) const
+{
+    return pos > -1 && Binding::s_maxpos <= pos;
+}
+
+template <typename Binding, typename ReturnType, typename... Arguments>
+AbstractState & Function<Binding, ReturnType, Arguments...>::state() const
+{
+    return state(Binding::currentPos());
+}
+
+template <typename Binding, typename ReturnType, typename... Arguments>
+AbstractState & Function<Binding, ReturnType, Arguments...>::state(const int pos) const
+{
+    assert(Binding::s_maxpos >= pos);
+    assert(pos > -1);
+
+    return m_states.at(pos);
+}
+
+template <typename Binding, typename ReturnType, typename... Arguments>
+void Function<Binding, ReturnType, Arguments...>::resizeStates(int count)
+{
+    m_states.resize(static_cast<std::size_t>(count));
+}
+
+} // namespace khrapi

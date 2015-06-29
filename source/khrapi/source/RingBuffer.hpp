@@ -8,7 +8,7 @@
 
 #include "RingBuffer.h"
 
-namespace glbinding
+namespace khrapi
 {
 
 template <typename T>
@@ -249,4 +249,4 @@ typename RingBuffer<T>::SizeType RingBuffer<T>::size(SizeType head, SizeType tai
     }
 }
 
-} // namespace glbinding
+} // namespace khrapi

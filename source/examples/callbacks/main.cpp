@@ -6,8 +6,8 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/callbacks.h>
+#include <khrapi/AbstractFunction.h>
+#include <khrapi/callbacks.h>
 #include <glbinding/Meta.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
@@ -77,9 +77,9 @@ int main()
         << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
-    setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+    Binding::setCallbackMask(khrapi::CallbackMask::After | khrapi::CallbackMask::ParametersAndReturnValue);
 
-    setAfterCallback([](const FunctionCall & call) {
+    khrapi::setAfterCallback([](const khrapi::FunctionCall & call) {
         std::cout << call.function->name() << "(";
 
         for (unsigned i = 0; i < call.parameters.size(); ++i)

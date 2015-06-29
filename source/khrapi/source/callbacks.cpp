@@ -1,21 +1,21 @@
 
-#include <glbinding/callbacks.h>
+#include <khrapi/callbacks.h>
 
 #include <sstream>
 #include <iomanip>
 #include <type_traits>
 
-#include <glbinding/AbstractValue.h>
-#include <glbinding/Binding.h>
+#include <khrapi/AbstractValue.h>
+#include <khrapi/AbstractFunction.h>
 
 namespace
 {
-    glbinding::SimpleFunctionCallback g_unresolvedCallback;
-    glbinding::FunctionCallback g_beforeCallback;
-    glbinding::FunctionCallback g_afterCallback;
+    khrapi::SimpleFunctionCallback g_unresolvedCallback;
+    khrapi::FunctionCallback g_beforeCallback;
+    khrapi::FunctionCallback g_afterCallback;
 }
 
-namespace glbinding 
+namespace khrapi 
 {
 
 FunctionCall::FunctionCall(const AbstractFunction * _function)
@@ -115,52 +115,6 @@ std::string FunctionCall::toString() const
     return input;
 }
 
-void setCallbackMask(const CallbackMask mask)
-{
-    for (AbstractFunction * function : Binding::functions())
-    {
-        function->setCallbackMask(mask);
-    }
-}
-
-void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
-{
-    for (AbstractFunction * function : Binding::functions())
-    {
-        if (blackList.find(function->name()) == blackList.end())
-        {
-            function->setCallbackMask(mask);
-        }
-    }
-}
-
-void addCallbackMask(const CallbackMask mask)
-{
-    for (AbstractFunction * function : Binding::functions())
-    {
-        function->addCallbackMask(mask);
-    }
-}
-
-void addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
-{
-    for (AbstractFunction * function : Binding::functions())
-    {
-        if (blackList.find(function->name()) == blackList.end())
-        {
-            function->addCallbackMask(mask);
-        }
-    }
-}
-
-void removeCallbackMask(const CallbackMask mask)
-{
-    for (AbstractFunction * function : Binding::functions())
-    {
-        function->removeCallbackMask(mask);
-    }
-}
-
 void setUnresolvedCallback(SimpleFunctionCallback callback)
 {
     g_unresolvedCallback = std::move(callback);
@@ -191,4 +145,4 @@ void after(const FunctionCall & call)
     g_afterCallback(call);
 }
 
-} // namespace glbinding
+} // namespace khrapi

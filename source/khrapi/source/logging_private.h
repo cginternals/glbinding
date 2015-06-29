@@ -1,9 +1,9 @@
 #pragma once
 
-#include <glbinding/callbacks.h>
+#include <khrapi/callbacks.h>
 
 
-namespace glbinding 
+namespace khrapi
 {
 
 namespace logging
@@ -22,4 +22,4 @@ namespace logging
 }
 
 
-} // namespace glbinding
+} // namespace khrapi

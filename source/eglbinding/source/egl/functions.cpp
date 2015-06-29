@@ -2,6 +2,8 @@
 
 #include <eglbinding/Binding.h>
 
+#include <eglbinding/Value.h>
+
 
 namespace egl
 {

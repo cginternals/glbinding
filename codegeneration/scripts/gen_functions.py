@@ -74,13 +74,13 @@ def paramSignature(api, param, forward):
 def functionMember(api, function):
 
     params = ", ".join([function.returntype] + [ paramSignature(api, p, False) for p in function.params ])
-    return 'Function<%s> Binding::%s("%s");' % (params, functionBID(function)[len(api.upper()):], function.name)
+    return 'khrapi::Function<Binding, %s> Binding::%s("%s");' % (params, functionBID(function)[len(api.upper()):], function.name)
 
 
 def functionDecl(api, function):
 
     params = ", ".join([namespacify(function.returntype, api)] + [ namespacify(paramSignature(api, p, True), api) for p in function.params ])
-    return tab + "static Function<%s> %s;" % (params, functionBID(function)[len(api.upper()):])
+    return tab + "static khrapi::Function<Binding, %s> %s;" % (params, functionBID(function)[len(api.upper()):])
 
 
 # def functionSignature(api, function, extern = True):

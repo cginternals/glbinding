@@ -1,11 +1,11 @@
 
-#include <glbinding/AbstractValue.h>
+#include <khrapi/AbstractValue.h>
 
 #include <sstream>
 #include <iostream>
 
 
-namespace glbinding
+namespace khrapi
 {
 
 AbstractValue::AbstractValue()
@@ -23,4 +23,4 @@ std::string AbstractValue::asString() const
     return ss.str();
 }
 
-} // namespace glbinding
+} // namespace khrapi

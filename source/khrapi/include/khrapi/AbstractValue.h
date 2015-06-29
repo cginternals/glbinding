@@ -1,14 +1,14 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
+#include <khrapi/khrapi_api.h>
 
 #include <string>
 #include <iosfwd>
 
-namespace glbinding 
+namespace khrapi 
 {
 
-class GLBINDING_API AbstractValue
+class KHRAPI_API AbstractValue
 {
 public:
     AbstractValue();
@@ -19,4 +19,4 @@ public:
     std::string asString() const;
 };
 
-} // namespace glbinding
+} // namespace khrapi

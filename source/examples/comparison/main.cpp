@@ -7,8 +7,9 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/ContextInfo.h>
-#include <glbinding/logging.h>
+#include <khrapi/logging.h>
 #include <glbinding/Version.h>
+#include <glbinding/Binding.h>
 
 #include "Timer.h"
 #include <thread>
@@ -88,15 +89,17 @@ void compare()
     long double glbinding_avg_err = timer.stop();
     glbinding_error(false);
 
+    glbinding::Binding::addCallbackMask(khrapi::CallbackMask::Logging);
+
     std::cout << std::endl << "test: again, now with logging ..." << std::endl;
-    glbinding::logging::start("logs/comparison");
+    khrapi::logging::start("logs/comparison");
     timer.start("      glbinding ");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glbinding_test();
     
     long double glbinding_avg_log = timer.stop();
-    glbinding::logging::stop();
+    khrapi::logging::stop();
 
 
     std::cout << std::endl << "glbinding/glew decrease:                 " << (glbinding_avg / glew_avg - 1.0) * 100.0 << "%" << std::endl;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glbinding/glbinding_api.h>
+#include <khrapi/khrapi_api.h>
 
 #include <set>
 #include <vector>
@@ -8,13 +8,13 @@
 #include <string>
 #include <chrono>
 
-namespace glbinding 
+namespace khrapi
 {
 
 class AbstractFunction;
 class AbstractValue;
 
-struct GLBINDING_API FunctionCall
+struct KHRAPI_API FunctionCall
 {
     FunctionCall(const AbstractFunction * _function = nullptr);
     ~FunctionCall();
@@ -45,24 +45,22 @@ enum class CallbackMask : unsigned char
     BeforeAndAfter = Before | After
 };
 
-GLBINDING_API CallbackMask operator|(CallbackMask a, CallbackMask b);
-GLBINDING_API CallbackMask operator~(CallbackMask a);
-GLBINDING_API CallbackMask operator&(CallbackMask a, CallbackMask b);
-GLBINDING_API CallbackMask& operator|=(CallbackMask& a, CallbackMask b);
-GLBINDING_API CallbackMask& operator&=(CallbackMask& a, CallbackMask b);
-
-GLBINDING_API void setCallbackMask(CallbackMask mask);
-GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
-GLBINDING_API void addCallbackMask(CallbackMask mask);
-GLBINDING_API void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
-GLBINDING_API void removeCallbackMask(CallbackMask mask);
+KHRAPI_API CallbackMask operator|(CallbackMask a, CallbackMask b);
+KHRAPI_API CallbackMask operator~(CallbackMask a);
+KHRAPI_API CallbackMask operator&(CallbackMask a, CallbackMask b);
+KHRAPI_API CallbackMask& operator|=(CallbackMask& a, CallbackMask b);
+KHRAPI_API CallbackMask& operator&=(CallbackMask& a, CallbackMask b);
 
 using SimpleFunctionCallback = std::function<void(const AbstractFunction &)>;
 using FunctionCallback = std::function<void(const FunctionCall &)>;
 
-GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
+KHRAPI_API void setUnresolvedCallback(SimpleFunctionCallback callback);
 
-GLBINDING_API void setBeforeCallback(FunctionCallback callback);
-GLBINDING_API void setAfterCallback(FunctionCallback callback);
+KHRAPI_API void setBeforeCallback(FunctionCallback callback);
+KHRAPI_API void setAfterCallback(FunctionCallback callback);
 
-} // namespace glbinding
+KHRAPI_API void unresolved(const AbstractFunction * function);
+KHRAPI_API void before(const FunctionCall & call);
+KHRAPI_API void after(const FunctionCall & call);
+
+} // namespace khrapi

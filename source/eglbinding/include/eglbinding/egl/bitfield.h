@@ -2,7 +2,7 @@
 
 #include <eglbinding/noegl.h>
 
-#include <eglbinding/SharedBitfield.h>
+#include <khrapi/SharedBitfield.h>
 
 namespace egl
 {
@@ -84,7 +84,7 @@ enum class EGLSyncFlagsKHR : unsigned int
 
 // import bitfields to namespace
 
-static const eglbinding::SharedBitfield<egl::EGLContextFlagMask, egl::EGLContextProfileMask, egl::EGLDRMBufferUseMESAMask, egl::EGLLockUsageHintKHRMask, egl::EGLRenderableTypeMask, egl::EGLSurfaceTypeMask, egl::EGLSyncFlagsKHR> EGL_NONE_BIT = egl::EGLContextFlagMask::EGL_NONE_BIT;
+static const khrapi::SharedBitfield<egl::EGLContextFlagMask, egl::EGLContextProfileMask, egl::EGLDRMBufferUseMESAMask, egl::EGLLockUsageHintKHRMask, egl::EGLRenderableTypeMask, egl::EGLSurfaceTypeMask, egl::EGLSyncFlagsKHR> EGL_NONE_BIT = egl::EGLContextFlagMask::EGL_NONE_BIT;
 static const EGLContextProfileMask EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT = EGLContextProfileMask::EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT;
 static const EGLContextProfileMask EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR = EGLContextProfileMask::EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR;
 static const EGLContextFlagMask EGL_CONTEXT_OPENGL_DEBUG_BIT_KHR = EGLContextFlagMask::EGL_CONTEXT_OPENGL_DEBUG_BIT_KHR;

@@ -2,7 +2,7 @@
 
 #include <%abinding/no%a.h>
 
-#include <%abinding/SharedBitfield.h>
+#include <khrapi/SharedBitfield.h>
 
 namespace %a
 {

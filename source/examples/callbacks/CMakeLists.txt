@@ -24,6 +24,7 @@ include_directories(
 
 include_directories(
     BEFORE
+    ${CMAKE_SOURCE_DIR}/source/khrapi/include
     ${CMAKE_SOURCE_DIR}/source/glbinding/include
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -34,6 +35,7 @@ include_directories(
 set(libs
     ${OPENGL_LIBRARIES}
     ${GLFW_LIBRARY}
+    khrapi
     glbinding
 )
 

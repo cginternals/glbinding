@@ -5,7 +5,7 @@
 #include <map>
 #include <vector>
 
-namespace glbinding
+namespace khrapi
 {
 
 template <typename T>
@@ -49,6 +49,6 @@ protected:
     std::map<TailIdentifier, std::atomic<SizeType>> m_tails;
 };
 
-} // namespace glbinding
+} // namespace khrapi
 
 #include "RingBuffer.hpp"
