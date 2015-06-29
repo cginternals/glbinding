@@ -63,12 +63,12 @@ using EGLNativeFileDescriptorKHR = int;
 using EGLsizeiANDROID = khronos_ssize_t;
 using EGLSetBlobFuncANDROID = void (EGL_APIENTRY *) (const void *key, EGLsizeiANDROID keySize, const void *value, EGLsizeiANDROID valueSize);
 using EGLGetBlobFuncANDROID = EGLsizeiANDROID (EGL_APIENTRY *) (const void *key, EGLsizeiANDROID keySize, void *value, EGLsizeiANDROID valueSize);
-struct EGLClientPixmapHI {
+struct  {
     void  *pData;
     EGLint iWidth;
     EGLint iHeight;
     EGLint iStride;
-};
+}; EGLClientPixmapHI;
 enum class EGLContextFlagMask : unsigned int;
 enum class EGLContextProfileMask : unsigned int;
 enum class EGLDRMBufferUseMESAMask : unsigned int;

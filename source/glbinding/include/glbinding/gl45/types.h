@@ -8,9 +8,6 @@ namespace gl45
 {
 
 using gl::GLextension;
-using gl::stddef;
-using gl::khrplatform;
-using gl::inttypes;
 using gl::GLenum;
 using gl::GLboolean;
 using gl::GLbitfield;
@@ -30,7 +27,6 @@ using gl::GLclampd;
 using gl::GLeglImageOES;
 using gl::GLchar;
 using gl::GLcharARB;
-using gl::GLhandleARB;
 using gl::GLhalfARB;
 using gl::GLhalf;
 using gl::GLfixed;

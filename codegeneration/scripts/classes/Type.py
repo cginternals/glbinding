@@ -4,20 +4,20 @@ def inner(xml):
 
 class Type:
 
-    def __init__(self, xml):
+    def __init__(self, xml, isGroup):
 
-        self.value = inner(xml)
-
-        if "name" in xml.attrib:
+        self.isGroup = isGroup
+        
+        if isGroup:
             self.name = xml.attrib["name"]
+            self.value = inner(xml)
         else:
             self.name = xml.find("name").text
-
-        self.typevalue = "".join([ t for t in xml.itertext() if t != self.name ])
+            self.value = "".join([ t for t in xml.itertext() if t != self.name ])
 
         if self.name.startswith("struct "):
             self.name = self.name[7:]
-            self.typevalue = "struct"
+            self.value = "struct"
 
         # ToDo: required and removed ... for now glbinding discards this
 
@@ -50,10 +50,10 @@ def parseTypes(xml, api):
             # enorce constraint (2)
             if not inner(type).startswith("typedef ") and \
                not inner(type).startswith("struct ") \
-             and ("name" not in type.attrib):
+               and ("name" not in type.attrib):
                 continue
 
-            types.append(Type(type))
+            types.append(Type(type, "name" in type.attrib))
 
     return types
 
@@ -71,6 +71,6 @@ def patchTypes(types, patches):
 def parseType(type):
 
     if type.value.startswith("typedef"):
-        return type.typevalue[8:-1]
+        return type.value[8:-1]
     else: 
         return type.value

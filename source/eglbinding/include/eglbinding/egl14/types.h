@@ -8,19 +8,6 @@ namespace egl14
 {
 
 using egl::EGLextension;
-using egl::khrplatform;
-using egl::eglplatform;
-using egl::khronos_utime_nanoseconds_t;
-using egl::khronos_uint64_t;
-using egl::khronos_ssize_t;
-using egl::EGLNativeDisplayType;
-using egl::EGLNativePixmapType;
-using egl::EGLNativeWindowType;
-using egl::EGLint;
-using egl::NativeDisplayType;
-using egl::NativePixmapType;
-using egl::NativeWindowType;
-using egl::Bool;
 using egl::EGLBoolean;
 using egl::EGLenum;
 using egl::EGLAttribKHR;

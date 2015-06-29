@@ -28,18 +28,20 @@ type_integration_map = {
 
 def convertTypedef(api, type):
 
-    if '\n' in type.value:
-        return multilineConvertTypedef(type)
+    if type.isGroup:
+        return type.value
 
     t = parseType(type)
 
     if type.name[len(api):] in enum_classes:
         return "enum class " + type.name + " : " + t + ";"
 
-    if not type.value.startswith("typedef"):
-        return t
-    else:
+    if type.value.startswith("struct"):
+        return type.value + " " + type.name + ";"
+    elif type.value.startswith("typedef"):
         return "using " + type.name + " = " + t + ";"
+    else:
+        return t
 
 
 def convertType(api, type):
@@ -93,7 +95,7 @@ def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core
     with open(od + of, 'w') as file:
 
         file.write(t %
-            ("\n".join([ typeImport(api, t) for t in types ]),
+            ("\n".join([ typeImport(api, t) for t in types if not t.isGroup ]),
             "\n".join([ "using %s%s;" % (qualifier, g.name) for g in bitfGroups ]),)
         )
 
@@ -115,7 +117,7 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
     with open(od + of, 'w') as file:
 
         if forward:
-
+            
             file.write(t %
                 ("\n".join([ forwardType(api, t) for t in types ]),
                 "\n".join([ "using %s = %s::%s;" % (g.name, api, g.name) for g in bitfGroups ]),)
