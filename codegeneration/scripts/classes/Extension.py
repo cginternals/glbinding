@@ -153,6 +153,11 @@ extension_mappings = {
             "GL_ARB_texture_barrier"
         ]
     },
+    "gles2": {
+        "2.0": [],
+        "3.0": [],
+        "3.1": []
+    },
     "egl": {
         "1.0" : [],
         "1.1" : [],
