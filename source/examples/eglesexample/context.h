@@ -5,4 +5,5 @@ typedef struct _XDisplay Display;
 
 using Window = unsigned long;
 
-int run(Display * display, Window window);
+int runGL(Display * display, Window window);
+int runGLES(Display * display, Window window);

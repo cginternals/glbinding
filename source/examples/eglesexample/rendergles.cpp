@@ -1,48 +1,40 @@
-#include "render.h"
+#include "rendergles.h"
 
 #include <unistd.h>
 
-//#include <glbinding/gl/gl.h>
-//#include <glbinding/Binding.h>
-
-//using namespace gl;
-
 #include <GLES3/gl3.h>
 
-void initialize()
+void initializeGLES()
 {
-    //glbinding::Binding::initialize();
 }
 
-void render1()
+void uninitializeGLES()
+{
+}
+
+void render1GLES()
 {
     glClearColor(1.0, 1.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();
 }
 
-void render2()
+void render2GLES()
 {
-    sleep(1);
-
     glClearColor(1.0, 1.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();
 }
 
-void render3()
+void render3GLES()
 {
-    sleep(1);
-
     glClearColor(1.0, 0.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();
 }
 
-void render4()
+void render4GLES()
 {
-    sleep(1);
-
     glClearColor(0.0, 1.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();

@@ -53,8 +53,10 @@ set(sources
     main.cpp
     context.cpp
     context.h
-    render.cpp
-    render.h
+    rendergl.cpp
+    rendergl.h
+    rendergles.cpp
+    rendergles.h
 )
 
 
