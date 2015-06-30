@@ -12,8 +12,7 @@ namespace glbinding
 const std::unordered_map<AttribMask, std::string> Meta_StringsByAttribMask 
 {
 #ifdef STRINGS_BY_SYMBOLS
-    { AttribMask::GL_ALL_ATTRIB_BITS, "GL_ALL_ATTRIB_BITS" },
-	{ AttribMask::GL_CURRENT_BIT, "GL_CURRENT_BIT" },
+    { AttribMask::GL_CURRENT_BIT, "GL_CURRENT_BIT" },
 	{ AttribMask::GL_POINT_BIT, "GL_POINT_BIT" },
 	{ AttribMask::GL_LINE_BIT, "GL_LINE_BIT" },
 	{ AttribMask::GL_POLYGON_BIT, "GL_POLYGON_BIT" },
@@ -36,7 +35,8 @@ const std::unordered_map<AttribMask, std::string> Meta_StringsByAttribMask
 	{ AttribMask::GL_MULTISAMPLE_BIT, "GL_MULTISAMPLE_BIT" },
 	{ AttribMask::GL_MULTISAMPLE_BIT_3DFX, "GL_MULTISAMPLE_BIT_3DFX" },
 	{ AttribMask::GL_MULTISAMPLE_BIT_ARB, "GL_MULTISAMPLE_BIT_ARB" },
-	{ AttribMask::GL_MULTISAMPLE_BIT_EXT, "GL_MULTISAMPLE_BIT_EXT" }
+	{ AttribMask::GL_MULTISAMPLE_BIT_EXT, "GL_MULTISAMPLE_BIT_EXT" },
+	{ AttribMask::GL_ALL_ATTRIB_BITS, "GL_ALL_ATTRIB_BITS" }
 #endif
 };
     
@@ -80,9 +80,9 @@ const std::unordered_map<ClearBufferMask, std::string> Meta_StringsByClearBuffer
 const std::unordered_map<ClientAttribMask, std::string> Meta_StringsByClientAttribMask 
 {
 #ifdef STRINGS_BY_SYMBOLS
-    { ClientAttribMask::GL_CLIENT_ALL_ATTRIB_BITS, "GL_CLIENT_ALL_ATTRIB_BITS" },
-	{ ClientAttribMask::GL_CLIENT_PIXEL_STORE_BIT, "GL_CLIENT_PIXEL_STORE_BIT" },
-	{ ClientAttribMask::GL_CLIENT_VERTEX_ARRAY_BIT, "GL_CLIENT_VERTEX_ARRAY_BIT" }
+    { ClientAttribMask::GL_CLIENT_PIXEL_STORE_BIT, "GL_CLIENT_PIXEL_STORE_BIT" },
+	{ ClientAttribMask::GL_CLIENT_VERTEX_ARRAY_BIT, "GL_CLIENT_VERTEX_ARRAY_BIT" },
+	{ ClientAttribMask::GL_CLIENT_ALL_ATTRIB_BITS, "GL_CLIENT_ALL_ATTRIB_BITS" }
 #endif
 };
     
@@ -164,9 +164,7 @@ const std::unordered_map<MapBufferUsageMask, std::string> Meta_StringsByMapBuffe
 const std::unordered_map<MemoryBarrierMask, std::string> Meta_StringsByMemoryBarrierMask 
 {
 #ifdef STRINGS_BY_SYMBOLS
-    { MemoryBarrierMask::GL_ALL_BARRIER_BITS, "GL_ALL_BARRIER_BITS" },
-	{ MemoryBarrierMask::GL_ALL_BARRIER_BITS_EXT, "GL_ALL_BARRIER_BITS_EXT" },
-	{ MemoryBarrierMask::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT, "GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT" },
+    { MemoryBarrierMask::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT, "GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT" },
 	{ MemoryBarrierMask::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT, "GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT" },
 	{ MemoryBarrierMask::GL_ELEMENT_ARRAY_BARRIER_BIT, "GL_ELEMENT_ARRAY_BARRIER_BIT" },
 	{ MemoryBarrierMask::GL_ELEMENT_ARRAY_BARRIER_BIT_EXT, "GL_ELEMENT_ARRAY_BARRIER_BIT_EXT" },
@@ -193,7 +191,9 @@ const std::unordered_map<MemoryBarrierMask, std::string> Meta_StringsByMemoryBar
 	{ MemoryBarrierMask::GL_ATOMIC_COUNTER_BARRIER_BIT_EXT, "GL_ATOMIC_COUNTER_BARRIER_BIT_EXT" },
 	{ MemoryBarrierMask::GL_SHADER_STORAGE_BARRIER_BIT, "GL_SHADER_STORAGE_BARRIER_BIT" },
 	{ MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT, "GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT" },
-	{ MemoryBarrierMask::GL_QUERY_BUFFER_BARRIER_BIT, "GL_QUERY_BUFFER_BARRIER_BIT" }
+	{ MemoryBarrierMask::GL_QUERY_BUFFER_BARRIER_BIT, "GL_QUERY_BUFFER_BARRIER_BIT" },
+	{ MemoryBarrierMask::GL_ALL_BARRIER_BITS, "GL_ALL_BARRIER_BITS" },
+	{ MemoryBarrierMask::GL_ALL_BARRIER_BITS_EXT, "GL_ALL_BARRIER_BITS_EXT" }
 #endif
 };
     
@@ -208,18 +208,7 @@ const std::unordered_map<PathFontStyle, std::string> Meta_StringsByPathFontStyle
 const std::unordered_map<PathRenderingMaskNV, std::string> Meta_StringsByPathRenderingMaskNV 
 {
 #ifdef STRINGS_BY_SYMBOLS
-    { PathRenderingMaskNV::GL_BOLD_BIT_NV, "GL_BOLD_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_WIDTH_BIT_NV, "GL_GLYPH_WIDTH_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_HEIGHT_BIT_NV, "GL_GLYPH_HEIGHT_BIT_NV" },
-	{ PathRenderingMaskNV::GL_ITALIC_BIT_NV, "GL_ITALIC_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_X_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_X_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV" },
-	{ PathRenderingMaskNV::GL_GLYPH_HAS_KERNING_BIT_NV, "GL_GLYPH_HAS_KERNING_BIT_NV" },
-	{ PathRenderingMaskNV::GL_FONT_X_MIN_BOUNDS_BIT_NV, "GL_FONT_X_MIN_BOUNDS_BIT_NV" },
+    { PathRenderingMaskNV::GL_FONT_X_MIN_BOUNDS_BIT_NV, "GL_FONT_X_MIN_BOUNDS_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_Y_MIN_BOUNDS_BIT_NV, "GL_FONT_Y_MIN_BOUNDS_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_X_MAX_BOUNDS_BIT_NV, "GL_FONT_X_MAX_BOUNDS_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_Y_MAX_BOUNDS_BIT_NV, "GL_FONT_Y_MAX_BOUNDS_BIT_NV" },
@@ -227,12 +216,23 @@ const std::unordered_map<PathRenderingMaskNV, std::string> Meta_StringsByPathRen
 	{ PathRenderingMaskNV::GL_FONT_ASCENDER_BIT_NV, "GL_FONT_ASCENDER_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_DESCENDER_BIT_NV, "GL_FONT_DESCENDER_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_HEIGHT_BIT_NV, "GL_FONT_HEIGHT_BIT_NV" },
+	{ PathRenderingMaskNV::GL_BOLD_BIT_NV, "GL_BOLD_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_WIDTH_BIT_NV, "GL_GLYPH_WIDTH_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV, "GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_HEIGHT_BIT_NV, "GL_GLYPH_HEIGHT_BIT_NV" },
+	{ PathRenderingMaskNV::GL_ITALIC_BIT_NV, "GL_ITALIC_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV, "GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_UNDERLINE_POSITION_BIT_NV, "GL_FONT_UNDERLINE_POSITION_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_UNDERLINE_THICKNESS_BIT_NV, "GL_FONT_UNDERLINE_THICKNESS_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_HAS_KERNING_BIT_NV, "GL_GLYPH_HAS_KERNING_BIT_NV" },
 	{ PathRenderingMaskNV::GL_FONT_HAS_KERNING_BIT_NV, "GL_FONT_HAS_KERNING_BIT_NV" },
-	{ PathRenderingMaskNV::GL_FONT_NUM_GLYPH_INDICES_BIT_NV, "GL_FONT_NUM_GLYPH_INDICES_BIT_NV" }
+	{ PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_X_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_X_BIT_NV" },
+	{ PathRenderingMaskNV::GL_FONT_NUM_GLYPH_INDICES_BIT_NV, "GL_FONT_NUM_GLYPH_INDICES_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV" },
+	{ PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV" }
 #endif
 };
     
@@ -268,13 +268,13 @@ const std::unordered_map<UnusedMask, std::string> Meta_StringsByUnusedMask
 const std::unordered_map<UseProgramStageMask, std::string> Meta_StringsByUseProgramStageMask 
 {
 #ifdef STRINGS_BY_SYMBOLS
-    { UseProgramStageMask::GL_ALL_SHADER_BITS, "GL_ALL_SHADER_BITS" },
-	{ UseProgramStageMask::GL_VERTEX_SHADER_BIT, "GL_VERTEX_SHADER_BIT" },
+    { UseProgramStageMask::GL_VERTEX_SHADER_BIT, "GL_VERTEX_SHADER_BIT" },
 	{ UseProgramStageMask::GL_FRAGMENT_SHADER_BIT, "GL_FRAGMENT_SHADER_BIT" },
 	{ UseProgramStageMask::GL_GEOMETRY_SHADER_BIT, "GL_GEOMETRY_SHADER_BIT" },
 	{ UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT, "GL_TESS_CONTROL_SHADER_BIT" },
 	{ UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT, "GL_TESS_EVALUATION_SHADER_BIT" },
-	{ UseProgramStageMask::GL_COMPUTE_SHADER_BIT, "GL_COMPUTE_SHADER_BIT" }
+	{ UseProgramStageMask::GL_COMPUTE_SHADER_BIT, "GL_COMPUTE_SHADER_BIT" },
+	{ UseProgramStageMask::GL_ALL_SHADER_BITS, "GL_ALL_SHADER_BITS" }
 #endif
 };
     

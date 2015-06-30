@@ -47,12 +47,12 @@ const std::unordered_map<EGLLockUsageHintKHRMask, std::string> Meta_StringsByEGL
 const std::unordered_map<EGLRenderableTypeMask, std::string> Meta_StringsByEGLRenderableTypeMask 
 {
 #ifdef STRINGS_BY_SYMBOLS
-    { EGLRenderableTypeMask::EGL_OPENGL_ES_BIT, "EGL_OPENGL_ES_BIT" },
+    { EGLRenderableTypeMask::EGL_OPENGL_ES3_BIT, "EGL_OPENGL_ES3_BIT" },
+	{ EGLRenderableTypeMask::EGL_OPENGL_ES3_BIT_KHR, "EGL_OPENGL_ES3_BIT_KHR" },
+	{ EGLRenderableTypeMask::EGL_OPENGL_ES_BIT, "EGL_OPENGL_ES_BIT" },
 	{ EGLRenderableTypeMask::EGL_OPENVG_BIT, "EGL_OPENVG_BIT" },
 	{ EGLRenderableTypeMask::EGL_OPENGL_ES2_BIT, "EGL_OPENGL_ES2_BIT" },
-	{ EGLRenderableTypeMask::EGL_OPENGL_BIT, "EGL_OPENGL_BIT" },
-	{ EGLRenderableTypeMask::EGL_OPENGL_ES3_BIT, "EGL_OPENGL_ES3_BIT" },
-	{ EGLRenderableTypeMask::EGL_OPENGL_ES3_BIT_KHR, "EGL_OPENGL_ES3_BIT_KHR" }
+	{ EGLRenderableTypeMask::EGL_OPENGL_BIT, "EGL_OPENGL_BIT" }
 #endif
 };
     

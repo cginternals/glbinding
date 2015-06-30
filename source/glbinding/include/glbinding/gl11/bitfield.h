@@ -9,8 +9,6 @@ namespace gl11
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
-using gl::GL_ALL_ATTRIB_BITS;
-using gl::GL_CLIENT_ALL_ATTRIB_BITS;
 using gl::GL_CLIENT_PIXEL_STORE_BIT;
 using gl::GL_CURRENT_BIT;
 using gl::GL_CLIENT_VERTEX_ARRAY_BIT;
@@ -33,5 +31,7 @@ using gl::GL_EVAL_BIT;
 using gl::GL_LIST_BIT;
 using gl::GL_TEXTURE_BIT;
 using gl::GL_SCISSOR_BIT;
+using gl::GL_ALL_ATTRIB_BITS;
+using gl::GL_CLIENT_ALL_ATTRIB_BITS;
 
 } // namespace gl11
