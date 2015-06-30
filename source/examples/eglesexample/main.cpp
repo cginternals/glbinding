@@ -12,7 +12,7 @@ using namespace std;
 #include  <X11/Xatom.h>
 #include  <X11/Xutil.h>
 
-#include "render.h"
+#include "context.h"
 
 int  main()
 {
@@ -98,7 +98,7 @@ int  main()
    //  with the windowing interface and functionality of the native operation system (X11
    //  in our case.
 
-   render(x_display, win);
+   run(x_display, win);
 
    XDestroyWindow    ( x_display, win );
    XCloseDisplay     ( x_display );

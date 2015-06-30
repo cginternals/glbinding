@@ -51,6 +51,8 @@ endif()
 
 set(sources
     main.cpp
+    context.cpp
+    context.h
     render.cpp
     render.h
 )

@@ -1,8 +1,7 @@
 #pragma once
 
-struct _XDisplay;
-typedef struct _XDisplay Display;
-
-using Window = unsigned long;
-
-int render(Display * display, Window window);
+void initialize();
+void render1();
+void render2();
+void render3();
+void render4();
