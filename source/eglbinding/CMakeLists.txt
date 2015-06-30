@@ -6,9 +6,14 @@ message(STATUS "Lib ${target}")
 # External libraries
 
 find_package(OpenGL REQUIRED)
+find_package(EGL REQUIRED)
 
 
 # Includes
+
+include_directories(
+    ${EGL_INCLUDE_DIR}
+)
 
 include_directories(
     BEFORE
@@ -19,8 +24,9 @@ include_directories(
 # Libraries
 
 set(libs
-    khrapi
     ${OPENGL_LIBRARIES}
+    ${EGL_LIBRARY}
+    khrapi
 )
 
 

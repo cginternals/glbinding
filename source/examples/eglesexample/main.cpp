@@ -2,7 +2,7 @@
 #include  <iostream>
 #include  <cstdlib>
 #include  <cstring>
-#include <unistd.h>
+
 using namespace std;
 
 #include  <cmath>
@@ -12,16 +12,12 @@ using namespace std;
 #include  <X11/Xatom.h>
 #include  <X11/Xutil.h>
 
-#include  <GLES2/gl2.h>
-#include  <EGL/egl.h>
+#include "render.h"
 
 int  main()
 {
     Display    *x_display;
     Window      win;
-    EGLDisplay  egl_display;
-    EGLContext  egl_context;
-    EGLSurface  egl_surface;
    ///////  the X11 part  //////////////////////////////////////////////////////////////////
    // in the first part the program opens a connection to the X11 window manager
    //
@@ -102,68 +98,8 @@ int  main()
    //  with the windowing interface and functionality of the native operation system (X11
    //  in our case.
 
-   egl_display  =  eglGetDisplay( (EGLNativeDisplayType) x_display );
-   if ( egl_display == EGL_NO_DISPLAY ) {
-      cerr << "Got no EGL display." << endl;
-      return 1;
-   }
+   render(x_display, win);
 
-   if ( !eglInitialize( egl_display, NULL, NULL ) ) {
-      cerr << "Unable to initialize EGL" << endl;
-      return 1;
-   }
-
-   EGLint attr[] = {       // some attributes to set up our egl-interface
-      EGL_BUFFER_SIZE, 16,
-      EGL_RENDERABLE_TYPE, EGL_OPENGL_ES2_BIT,
-      EGL_NONE
-   };
-
-   EGLConfig  ecfg;
-   EGLint     num_config;
-   if ( !eglChooseConfig( egl_display, attr, &ecfg, 1, &num_config ) ) {
-      cerr << "Failed to choose config (eglError: " << eglGetError() << ")" << endl;
-      return 1;
-   }
-
-   if ( num_config != 1 ) {
-      cerr << "Didn't get exactly one config, but " << num_config << endl;
-      return 1;
-   }
-
-   egl_surface = eglCreateWindowSurface ( egl_display, ecfg, win, NULL );
-   if ( egl_surface == EGL_NO_SURFACE ) {
-      cerr << "Unable to create EGL surface (eglError: " << eglGetError() << ")" << endl;
-      return 1;
-   }
-
-   //// egl-contexts collect all state descriptions needed required for operation
-   EGLint ctxattr[] = {
-      EGL_CONTEXT_CLIENT_VERSION, 2,
-      EGL_NONE
-   };
-   egl_context = eglCreateContext ( egl_display, ecfg, EGL_NO_CONTEXT, ctxattr );
-   if ( egl_context == EGL_NO_CONTEXT ) {
-      cerr << "Unable to create EGL context (eglError: " << eglGetError() << ")" << endl;
-      return 1;
-   }
-
-   //// associate the egl-context with the egl-surface
-   eglMakeCurrent( egl_display, egl_surface, egl_surface, egl_context );
-
-
-   ///////  the openGL part  ///////////////////////////////////////////////////////////////
-
-    glClearColor(1.0, 1.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-   ////  cleaning up...
-   eglDestroyContext ( egl_display, egl_context );
-   eglDestroySurface ( egl_display, egl_surface );
-   eglTerminate      ( egl_display );
    XDestroyWindow    ( x_display, win );
    XCloseDisplay     ( x_display );
 

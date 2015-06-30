@@ -19,10 +19,13 @@ include_directories(
     ${EGL_INCLUDE_DIR}
 )
 
-#include_directories(
-#    BEFORE
-#    ${CMAKE_CURRENT_SOURCE_DIR}
-#)
+include_directories(
+    BEFORE
+    ${CMAKE_SOURCE_DIR}/source/khrapi/include
+    ${CMAKE_SOURCE_DIR}/source/eglbinding/include
+    ${CMAKE_SOURCE_DIR}/source/glbinding/include
+    ${CMAKE_CURRENT_SOURCE_DIR}
+)
 
 
 # Libraries
@@ -31,6 +34,9 @@ set(libs
     ${OPENGL_LIBRARIES}
     ${EGL_LIBRARY}
     ${OPENGLES_LIBRARY}
+    khrapi
+    eglbinding
+    glbinding
 )
 
 
@@ -45,6 +51,8 @@ endif()
 
 set(sources
     main.cpp
+    render.cpp
+    render.h
 )
 
 

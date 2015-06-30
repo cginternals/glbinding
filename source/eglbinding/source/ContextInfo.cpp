@@ -34,11 +34,11 @@ void insertExtension(const std::string & extensionName, std::set<EGLextension> *
 namespace eglbinding
 {
 
-std::set<EGLextension> ContextInfo::extensions(std::set<std::string> * unknown)
+std::set<EGLextension> ContextInfo::extensions(EGLDisplay display, std::set<std::string> * unknown)
 {
     auto extensions = std::set<EGLextension>{};
 
-    const auto extensionString = eglQueryString(nullptr, static_cast<EGLint>(EGL_EXTENSIONS));
+    const auto extensionString = eglQueryString(display, static_cast<EGLint>(EGL_EXTENSIONS));
 
     if (extensionString)
     {
@@ -53,16 +53,22 @@ std::set<EGLextension> ContextInfo::extensions(std::set<std::string> * unknown)
     return extensions;
 }
 
-std::string ContextInfo::vendor()
+std::string ContextInfo::vendor(EGLDisplay display)
 {
-    return std::string{reinterpret_cast<const char *>(eglQueryString(nullptr, static_cast<EGLint>(EGL_VENDOR)))};
+    return std::string{reinterpret_cast<const char *>(eglQueryString(display, static_cast<EGLint>(EGL_VENDOR)))};
 }
 
-Version ContextInfo::version()
+Version ContextInfo::version(EGLDisplay display)
 {
     auto version = Version{};
 
-    const auto versionString = eglQueryString(nullptr, static_cast<EGLint>(EGL_VERSION));
+    const auto versionString = eglQueryString(display, static_cast<EGLint>(EGL_VERSION));
+
+    if (versionString == nullptr)
+    {
+        return Version(0, 0);
+    }
+
     version.m_major = versionString[0] - '0';
     version.m_minor = versionString[2] - '0';
 

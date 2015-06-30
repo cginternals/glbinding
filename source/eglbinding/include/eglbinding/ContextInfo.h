@@ -5,6 +5,8 @@
 #include <set>
 #include <string>
 
+#include <eglbinding/egl/types.h>
+
 namespace egl
 {
     enum class EGLextension;
@@ -22,11 +24,11 @@ class EGLBINDING_API ContextInfo
 public:
     ContextInfo() = delete;
 
-    static std::set<egl::EGLextension> extensions(std::set<std::string> * unknown = nullptr);
+    static std::set<egl::EGLextension> extensions(egl::EGLDisplay display, std::set<std::string> * unknown = nullptr);
 
-    static std::string vendor();
+    static std::string vendor(egl::EGLDisplay display);
 
-    static Version version();
+    static Version version(egl::EGLDisplay display);
 };
 
 } // namespace eglbinding

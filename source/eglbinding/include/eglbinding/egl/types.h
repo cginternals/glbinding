@@ -160,6 +160,14 @@ EGLBINDING_API std::ostream & operator<<(std::ostream & stream, const EGLboolean
 } // namespace egl
 
 
+namespace egl
+{
+
+EGLBINDING_API bool operator!(const EGLboolean & a);
+
+} // namespace egl
+
+
 namespace std
 {
 

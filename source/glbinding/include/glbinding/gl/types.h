@@ -214,6 +214,14 @@ GLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLboolean &
 } // namespace gl
 
 
+namespace gl
+{
+
+GLBINDING_API bool operator!(const GLboolean & a);
+
+} // namespace gl
+
+
 namespace std
 {
 

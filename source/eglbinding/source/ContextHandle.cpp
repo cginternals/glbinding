@@ -14,18 +14,7 @@ namespace eglbinding
 
 ContextHandle getCurrentContext()
 {
-    auto id = ContextHandle{0};
-
-#ifdef WIN32
-    const auto context = wglGetCurrentContext();
-#elif __APPLE__
-    const auto context = CGLGetCurrentContext();
-#else
-    const auto context = glXGetCurrentContext();
-#endif
-    id = reinterpret_cast<ContextHandle>(context);
-
-    return id;
+    return 0;
 }
 
 } // namespace eglbinding

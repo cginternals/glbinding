@@ -157,6 +157,17 @@ std::ostream & operator<<(std::ostream & stream, const EGLboolean & value)
 } // namespace egl
 
 
+namespace egl
+{
+
+bool operator!(const EGLboolean & a)
+{
+    return !static_cast<bool>(static_cast<std::underlying_type<EGLboolean>::type>(a));
+}
+
+} // namespace egl
+
+
 
 namespace egl
 {

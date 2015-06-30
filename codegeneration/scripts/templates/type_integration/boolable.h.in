@@ -1,0 +1,7 @@
+
+namespace %a
+{
+
+%ABINDING_API bool operator!(const %t & a);
+
+} // namespace %a

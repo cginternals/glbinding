@@ -157,6 +157,17 @@ std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
 } // namespace gl
 
 
+namespace gl
+{
+
+bool operator!(const GLboolean & a)
+{
+    return !static_cast<bool>(static_cast<std::underlying_type<GLboolean>::type>(a));
+}
+
+} // namespace gl
+
+
 
 namespace gl
 {

@@ -21,7 +21,7 @@ enum_classes = [ "boolean", "Boolean", "enum" ]
 
 type_integration_map = {
     "extension" : [ "hashable", "streamable" ], 
-    "boolean"   : [ "hashable", "streamable" ],
+    "boolean"   : [ "hashable", "streamable", "boolable" ],
     "enum"      : [ "hashable", "streamable", "addable", "comparable" ]
 }
 
