@@ -153,12 +153,12 @@ extension_mappings = {
             "GL_ARB_texture_barrier"
         ]
     },
-    "gles2": {
+    "gles2": { # TODO: fill
         "2.0": [],
         "3.0": [],
         "3.1": []
     },
-    "egl": {
+    "egl": { # TODO: fill
         "1.0" : [],
         "1.1" : [],
         "1.2" : [],
@@ -179,6 +179,7 @@ class Extension:
             "ARM",     \
             "ATI",     \
             "EXT",     \
+            "DMP",     \
             "GREMEDY", \
             "HI",      \
             "IBM",     \
@@ -250,7 +251,7 @@ def suffixFreeEnumName(enum):
 	return enum.name
 
 
-def parseExtensions(xml, features, api):
+def parseExtensions(xml, features, api, prefix):
 
 	extensions = []
 	for E in xml.iter("extensions"):

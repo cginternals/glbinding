@@ -42,10 +42,6 @@ class Type:
             if self.name.startswith("struct "):
                 self.name = self.name[7:]
                 self.value = "struct"
-            
-            if self.name == "EGLboolean":
-                print ("Found")
-                print (self.value)
 
         # ToDo: required and removed ... for now glbinding discards this
 
@@ -60,7 +56,7 @@ class Type:
         return self.name < other.name
 
 
-def parseTypes(xml, api):
+def parseTypes(xml, api, prefix):
 
     types = []
     for T in xml.iter("types"):
@@ -91,7 +87,7 @@ def patchTypes(types, patches):
     # currently only adding types is supported
 
     for patch in patches:
-        if (patch.name.endswith("int")):
+        if (patch.name.endswith("int")): #TODO: seems like a hack, needed for EGL
             types.insert(0, patch)
         else:
             types.append(patch)

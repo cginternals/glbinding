@@ -51,9 +51,9 @@ def convertType(api, type):
     return convertTypedef(api, type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(" + api.upper() + "_APIENTRY *)")
 
 
-def forwardType(api, type):
+def forwardType(api, prefix, libraryNamespace, type):
 
-    return "using " + type.name + " = " + api + "::" + type.name + ";"
+    return "using " + type.name + " = " + libraryNamespace + "::" + type.name + ";"
 
 
 def typeImport(api, type):
@@ -97,17 +97,17 @@ def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core
     with open(od + of, 'w') as file:
 
         file.write(t %
-            ("\n".join([ typeImport(api, t) for t in types if not t.isGroup and not t.isInclude and t.name ]),
+            ("\n".join([ typeImport(api, prefix, libraryNamespace, t) for t in types if not t.isGroup and not t.isInclude and t.name ]),
             "\n".join([ "using %s%s;" % (qualifier, g.name) for g in bitfGroups ]),)
         )
 
 
 
-def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
+def genTypes_h(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outputfile, forward = False):
 
     of_all = outputfile.replace("?", "F")
 
-    t = template(of_all).replace("%a", api).replace("%A", api.upper())
+    t = template(of_all).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
 
@@ -121,8 +121,8 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
         if forward:
             
             file.write(t %
-                ("\n".join([ forwardType(api, t) for t in types ]),
-                "\n".join([ "using %s = %s::%s;" % (g.name, api, g.name) for g in bitfGroups ]),)
+                ("\n".join([ forwardType(api, prefix, libraryNamespace, t) for t in types ]),
+                "\n".join([ "using %s = %s::%s;" % (g.name, libraryNamespace, g.name) for g in bitfGroups ]),)
             )
 
         else:            
@@ -130,11 +130,11 @@ def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
 
             for typename, integrations in type_integration_map.items():
                 for integration in integrations:
-                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", api).replace("%A", api.upper()).replace("%t", api.upper() + typename))
+                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", prefix.upper() + typename))
 
             for group in bitfGroups:
                 for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
-                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", api).replace("%A", api.upper()).replace("%t", group.name))
+                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", group.name))
 
             file.write(t % (
                 ("\n".join([ string for string in [ convertType(api, t) for t in types if t.isInclude ] if string ])),

@@ -1,12 +1,12 @@
 #pragma once
 
-#include <gles2binding/nogles2.h>
+#include <glesbinding/nogles.h>
 
 
-namespace gles2
+namespace gles
 {
 
-enum class GLES2extension : int // GLES2extension is not a type introduced by any Khronos API so far
+enum class GLESextension : int // GLESextension is not a type introduced by any Khronos API so far
 {
     UNKNOWN = -1,
     GL_AMD_compressed_3DC_texture,
@@ -227,4 +227,4 @@ enum class GLES2extension : int // GLES2extension is not a type introduced by an
     GL_VIV_shader_binary
 };
 
-} // namespace gles2
+} // namespace gles

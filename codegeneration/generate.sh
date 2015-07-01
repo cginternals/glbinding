@@ -1,7 +1,7 @@
 #!/bin/bash
 
-python scripts/generate.py -a egl -s egl.xml -l eglbinding -r egl.revision -p eglpatch.xml
-python scripts/generate.py -a gl -s gl.xml -l glbinding -r gl.revision -p glpatch.xml
-python scripts/generate.py -a gles2 -s gl.xml -l glesbinding -r gl.revision -p glpatch.xml
-# python scripts/generate.py -a wgl -s wgl.xml -l wglbinding -r wgl.revision -p wglpatch.xml
-# python scripts/generate.py -a glx -s glx.xml -l glxbinding -r glx.revision -p glxpatch.xml
+python scripts/generate.py -a egl -p egl -l egl -s egl.xml -r egl.revision -x eglpatch.xml
+python scripts/generate.py -a gl -p gl -l gl -s gl.xml -r gl.revision -x glpatch.xml
+python scripts/generate.py -a gles2 -p gl -l gles -s gl.xml -r gl.revision -x glpatch.xml
+# python scripts/generate.py -a wgl -p wgl -l wgl -s wgl.xml -r wgl.revision -x wglpatch.xml
+# python scripts/generate.py -a glx -p glx -l glx -s glx.xml -r glx.revision -x glxpatch.xml

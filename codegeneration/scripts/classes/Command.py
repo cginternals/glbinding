@@ -5,7 +5,8 @@ import xml.etree.ElementTree as ET
 from classes.Feature import *
 from classes.Extension import *
 
-# near and far are defined by windows.h ... :( 
+# near and far are defined by windows.h ... :(
+# TODO: check if exceptions are really required anymore
 exceptions = ["GetProcAddress", "near", "far"]
 
 class Parameter:
@@ -104,7 +105,7 @@ class Command:
             return min(self.reqFeatures) <= feature
 
         
-def parseCommands(xml, features, extensions, api):
+def parseCommands(xml, features, extensions, api, prefix):
 
     commands = []
 
