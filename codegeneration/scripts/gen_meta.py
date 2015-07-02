@@ -43,8 +43,8 @@ def metaStringToEnum(enum, type):
 
     return ('{ "%s", ' + type + '::%s }') % (enum.name, enumBID(enum))
 
-def metaStringToBitfieldGroupMap(api, group):
-    return "extern const std::unordered_map<std::string, %s::%s> Meta_%sByString;" % (api, group.name, group.name)
+def metaStringToBitfieldGroupMap(api, prefix, libraryNamespace, group):
+    return "extern const std::unordered_map<std::string, %s::%s> Meta_%sByString;" % (libraryNamespace, group.name, group.name)
 
 def metaBitfieldGroupToStringMap(api, prefix, libraryNamespace, group):
     return "extern const std::unordered_map<%s::%s, std::string> Meta_StringsBy%s;" % (libraryNamespace, group.name, group.name)
@@ -149,10 +149,10 @@ def enumSuffixPriority(name):
 
 
 
-def extensionVersionPair(api, extension):
+def extensionVersionPair(api, prefix, libraryNamespace, extension):
 
     return "{ %sextension::%s, { %s, %s } }" % (
-        api.upper(), extensionBID(extension), extension.incore.major, extension.incore.minor)
+        prefix.upper(), extensionBID(extension), extension.incore.major, extension.incore.minor)
 
 
 def genReqVersionsByExtension(api, prefix, libraryNamespace, extensions, outputdir, outputfile):
@@ -166,12 +166,12 @@ def genReqVersionsByExtension(api, prefix, libraryNamespace, extensions, outputd
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(t % (",\n" + tab).join(
-            [ extensionVersionPair(api, e) for e in sortedExts if e.incore ]))
+            [ extensionVersionPair(api, prefix, libraryNamespace, e) for e in sortedExts if e.incore ]))
 
 
-def extensionRequiredFunctions(api, extension):
+def extensionRequiredFunctions(api, prefix, libraryNamespace, extension):
 
-    return "{ %sextension::%s, { %s } }" % (api.upper(), extensionBID(extension), ", ".join(
+    return "{ %sextension::%s, { %s } }" % (prefix.upper(), extensionBID(extension), ", ".join(
         [ '"%s"' % f.name for f in extension.reqCommands ]))
 
 
@@ -189,7 +189,7 @@ def genFunctionStringsByExtension(api, prefix, libraryNamespace, extensions, out
 
     with open(outputdir + outputfile, 'w') as file:        
         file.write(t % ((",\n" + tab).join(
-            [ extensionRequiredFunctions(api, e) for e in extensions if len(e.reqCommands) > 0 ])))
+            [ extensionRequiredFunctions(api, prefix, libraryNamespace, e) for e in extensions if len(e.reqCommands) > 0 ])))
 
 
 def genExtensionsByFunctionString(api, prefix, libraryNamespace, extensions, outputdir, outputfile):    

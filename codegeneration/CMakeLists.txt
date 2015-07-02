@@ -35,15 +35,30 @@ if (PYTHON)
 
     add_custom_target(update)
     add_custom_target(generate)
+
+    if (OPTION_BUILD_EGL)
+        add_xml_update("egl")
+    endif ()
     
-    add_xml_update("egl")
-    add_xml_update("gl")
+    if (OPTION_BUILD_GL OR OPTION_BUILD_GLES)
+        add_xml_update("gl")
+    endif ()
+    
     #add_xml_update("wgl")
     #add_xml_update("glx")
     
-    add_library_generation("egl" "egl" "egl" "egl")
-    add_library_generation("gl" "gl" "gl" "gl")
-    add_library_generation("gles2" "gl" "gles" "gl")
+    if (OPTION_BUILD_EGL)
+        add_library_generation("egl" "egl" "egl" "egl")
+    endif ()
+    
+    if (OPTION_BUILD_GL)
+        add_library_generation("gl" "gl" "gl" "gl")
+    endif() 
+    
+    if (OPTION_BUILD_GLES)
+        add_library_generation("gles2" "gl" "gles" "gl")
+    endif ()
+    
     #add_library_generation("wgl" "wgl" "wgl" "wgl" "wgl")
     #add_library_generation("glx" "glx" "glx" "glx" "glx")
 

@@ -41,6 +41,16 @@ if(OPTION_BUILD_TESTS AND GMOCK_FOUND AND GTEST_FOUND)
     set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 
     # Tests
-    add_test_without_ctest(glbinding-test)
+    if (OPTION_BUILD_EGL)
+        add_test_without_ctest(eglbinding-test)
+    endif ()
+    
+    if (OPTION_BUILD_GL)
+        add_test_without_ctest(glbinding-test)
+    endif ()
+    
+    if (OPTION_BUILD_GLES)
+        add_test_without_ctest(glesbinding-test)
+    endif ()
 
 endif()

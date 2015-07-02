@@ -13,9 +13,18 @@ include_directories(
 # Libraries
 set(IDE_FOLDER "")
 add_subdirectory(khrapi)
-add_subdirectory(eglbinding)
-add_subdirectory(glbinding)
-add_subdirectory(glesbinding)
+
+if (OPTION_BUILD_EGL)
+    add_subdirectory(eglbinding)
+endif ()
+
+if (OPTION_BUILD_GL)
+    add_subdirectory(glbinding)
+endif ()
+
+if (OPTION_BUILD_GLES)
+    add_subdirectory(glesbinding)
+endif ()
 
 # Tests
 set(IDE_FOLDER "Tests")

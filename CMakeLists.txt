@@ -26,14 +26,18 @@ project(${META_PROJECT_NAME} C CXX)
 
 # Configuration options
 
-option(OPTION_PORTABLE_INSTALL "Install into a self-contained directory" OFF)
-option(OPTION_BUILD_STATIC     "Build static libraries" OFF)
-option(OPTION_BUILD_TESTS      "Build tests (if gmock and gtest are found)" ON)
-option(OPTION_BUILD_TOOLS      "Build tools" OFF)
-option(OPTION_BUILD_EXAMPLES   "Build examples" OFF)
+option(OPTION_PORTABLE_INSTALL   "Install into a self-contained directory" OFF)
+option(OPTION_BUILD_STATIC       "Build static libraries"                  OFF)
 
-option(OPTION_SYMBOLS_BY_STRINGS    "Support String to OpenGL enum, extension, and function conversion (Meta)" OFF)
-option(OPTION_STRINGS_BY_GL    "Support OpenGL enum, extension, and function to String conversion (Meta)" ON)
+option(OPTION_BUILD_GL           "Generate OpenGL Binding"                    ON)
+option(OPTION_BUILD_EGL          "Generate EGL Binding"                       OFF)
+option(OPTION_BUILD_GLES         "Generate OpenGL ES Binding"                 OFF)
+option(OPTION_BUILD_TESTS        "Build tests (if gmock and gtest are found)" ON)
+option(OPTION_BUILD_TOOLS        "Build tools"                                OFF)
+option(OPTION_BUILD_EXAMPLES     "Build examples"                             OFF)
+
+option(OPTION_SYMBOLS_BY_STRINGS "Support String to OpenGL enum, extension, and function conversion (Meta)" OFF)
+option(OPTION_STRINGS_BY_SYMBOLS "Support OpenGL enum, extension, and function to String conversion (Meta)" ON)
 
 
 if(OPTION_BUILD_STATIC)

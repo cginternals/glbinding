@@ -8,7 +8,7 @@
 
 using namespace gles;
 
-namespace glesbinding
+namespace glesbinding 
 {
 
 khrapi::Function<Binding, void, GLuint, GLuint> Binding::ActiveShaderProgram("glActiveShaderProgram");
