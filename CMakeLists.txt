@@ -10,9 +10,9 @@ set(META_VERSION_MAJOR       "1")
 set(META_VERSION_MINOR       "1")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
-set(META_AUTHOR_ORGANIZATION "hpicgs group")
-set(META_AUTHOR_DOMAIN       "https://github.com/hpicgs/glbinding")
-set(META_AUTHOR_MAINTAINER   "daniel.limberger@hpi.de")
+set(META_AUTHOR_ORGANIZATION "cginternals")
+set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding")
+set(META_AUTHOR_MAINTAINER   "info@cginternals.com")
 
 string(TOUPPER ${META_PROJECT_NAME} META_PROJECT_NAME_UPPER)
 
