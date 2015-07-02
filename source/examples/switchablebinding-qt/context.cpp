@@ -17,19 +17,24 @@
 using namespace std;
 using namespace egl;
 
-int runGL(Display * display, Window window)
+namespace
 {
-    EGLDisplay  egl_display;
-    EGLContext  egl_context;
-    EGLSurface  egl_surface;
 
+EGLDisplay egl_display;
+EGLContext egl_context;
+EGLSurface egl_surface;
+
+}
+
+unsigned long long createGLContext(EGLWindow window)
+{
     eglbinding::Binding::initialize();
 
-    egl_display  =  eglGetDisplay( (EGLNativeDisplayType) display );
+    egl_display  =  eglGetDisplay( (EGLNativeDisplayType) EGL_DEFAULT_DISPLAY );
     if (egl_display == nullptr)
     {
        cerr << "Got no EGL display." << endl;
-       return 1;
+       return 0;
     }
 
     EGLint maj;
@@ -37,7 +42,7 @@ int runGL(Display * display, Window window)
     if (!eglInitialize( egl_display, &maj, &min ))
     {
        cerr << "Unable to initialize EGL" << endl;
-       return 1;
+       return 0;
     }
 
     std::cout << "Initialized EGL " << maj << "." << min << std::endl;
@@ -52,18 +57,18 @@ int runGL(Display * display, Window window)
    EGLint     num_config;
    if ( !eglChooseConfig( egl_display, attr, &ecfg, 1, &num_config ) ) {
       cerr << "Failed to choose config (eglError: " << eglGetError() << ")" << endl;
-      return 1;
+      return 0;
    }
 
    if ( num_config != 1 ) {
       cerr << "Didn't get exactly one config, but " << num_config << endl;
-      return 1;
+      return 0;
    }
 
    egl_surface = eglCreateWindowSurface ( egl_display, ecfg, window, nullptr );
    if ( egl_surface == nullptr) { // EGL_NO_SURFACE
       cerr << "Unable to create EGL surface (eglError: " << eglGetError() << ")" << endl;
-      return 1;
+      return 0;
    }
 
    //// egl-contexts collect all state descriptions needed required for operation
@@ -79,63 +84,23 @@ int runGL(Display * display, Window window)
    egl_context = eglCreateContext ( egl_display, ecfg, nullptr, ctxattr ); // EGL_NO_CONTEXT
    if ( egl_context == nullptr ) { // EGL_NO_CONTEXT
       cerr << "Unable to create EGL context (eglError: " << eglGetError() << ")" << endl;
-      return 1;
+      return 0;
    }
 
-    //// associate the egl-context with the egl-surface
-    eglMakeCurrent( egl_display, egl_surface, egl_surface, egl_context );
-
-    initializeGL();
-
-    render1GL();
-
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-    render2GL();
-
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-    render3GL();
-
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-    render4GL();
-
-    eglSwapBuffers(egl_display, egl_surface);
-
-    sleep(1);
-
-    uninitializeGL();
-
-    // cleanup
-
-    eglDestroyContext ( egl_display, egl_context );
-    eglDestroySurface ( egl_display, egl_surface );
-    eglTerminate      ( egl_display );
-
-    eglbinding::Binding::releaseCurrentContext();
-
-    return 0;
+    return (unsigned long long)egl_context;
 }
 
-int runGLES(Display * display, Window window)
+unsigned long long createGLESContext(EGLWindow window)
 {
     std::cout << "Render using OpenGL ES" << std::endl;
 
-    EGLDisplay  egl_display;
-    EGLContext  egl_context;
-    EGLSurface  egl_surface;
-
     eglbinding::Binding::initialize();
 
-    egl_display  =  eglGetDisplay( (EGLNativeDisplayType) display );
+    egl_display  =  eglGetDisplay( (EGLNativeDisplayType) EGL_DEFAULT_DISPLAY );
     if (egl_display == nullptr)
     {
        cerr << "Got no EGL display." << endl;
-       return 1;
+       return 0;
     }
 
     EGLint maj;
@@ -143,7 +108,7 @@ int runGLES(Display * display, Window window)
     if (!eglInitialize( egl_display, &maj, &min ))
     {
        cerr << "Unable to initialize EGL" << endl;
-       return 1;
+       return 0;
     }
 
     std::cout << "Initialized EGL " << maj << "." << min << std::endl;
@@ -158,18 +123,18 @@ int runGLES(Display * display, Window window)
    EGLint     num_config;
    if ( !eglChooseConfig( egl_display, attr, &ecfg, 1, &num_config ) ) {
       cerr << "Failed to choose config (eglError: " << eglGetError() << ")" << endl;
-      return 1;
+      return 0;
    }
 
    if ( num_config != 1 ) {
       cerr << "Didn't get exactly one config, but " << num_config << endl;
-      return 1;
+      return 0;
    }
 
    egl_surface = eglCreateWindowSurface ( egl_display, ecfg, window, nullptr );
    if ( egl_surface == nullptr) { // EGL_NO_SURFACE
       cerr << "Unable to create EGL surface (eglError: " << eglGetError() << ")" << endl;
-      return 1;
+      return 0;
    }
 
     EGLint ctxattr[] = {
@@ -181,43 +146,17 @@ int runGLES(Display * display, Window window)
     egl_context = eglCreateContext ( egl_display, ecfg, nullptr, ctxattr ); // EGL_NO_CONTEXT
     if ( egl_context == nullptr ) { // EGL_NO_CONTEXT
        cerr << "Unable to create EGL context (eglError: " << eglGetError() << ")" << endl;
-       return 1;
+       return 0;
     }
 
-    //// associate the egl-context with the egl-surface
-    eglMakeCurrent( egl_display, egl_surface, egl_surface, egl_context );
+    return (unsigned long long)egl_context;
+}
 
-    initializeGLES();
-
-    render1GLES();
-
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-    render2GLES();
-
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-    render3GLES();
-
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-    render4GLES();
-
-    eglSwapBuffers(egl_display, egl_surface);
-    sleep(1);
-
-    uninitializeGLES();
-
-    // clean up
-
+void releaseContext()
+{
     eglDestroyContext ( egl_display, egl_context );
     eglDestroySurface ( egl_display, egl_surface );
     eglTerminate      ( egl_display );
 
     eglbinding::Binding::releaseCurrentContext();
-
-    return 0;
 }
