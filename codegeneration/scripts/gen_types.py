@@ -56,9 +56,9 @@ def forwardType(api, prefix, libraryNamespace, type):
     return "using " + type.name + " = " + libraryNamespace + "::" + type.name + ";"
 
 
-def typeImport(api, type):
+def typeImport(api, prefix, libraryNamespace, type):
 
-    return "using " + api + "::" + type.name + ";"
+    return "using " + libraryNamespace + "::" + type.name + ";"
 
 
 def genTypesForward_h(api, types, bitfGroups, outputdir, outputfile):
@@ -66,30 +66,30 @@ def genTypesForward_h(api, types, bitfGroups, outputdir, outputfile):
     genTypes_h(api, types, bitfGroups, outputdir, outputfile, True)
 
 
-def genTypesFeatureGrouped(api, types, bitfGroups, features, outputdir, outputfile):
+def genTypesFeatureGrouped(api, prefix, libraryNamespace, types, bitfGroups, features, outputdir, outputfile):
 
     # gen enums feature grouped
     for f in features:
         if f.api == api: # ToDo: probably seperate for all apis
-            genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile)
-            if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile, True)
-            genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile, False, True)
+            genFeatureTypes(api, prefix, libraryNamespace, types, bitfGroups, f, outputdir, outputfile)
+            
+            if api == "gl":
+                if f.major > 3 or (f.major == 3 and f.minor >= 2):
+                    genFeatureTypes(api, prefix, libraryNamespace, types, bitfGroups, f, outputdir, outputfile, True)
+                genFeatureTypes(api, prefix, libraryNamespace, types, bitfGroups, f, outputdir, outputfile, False, True)
 
 
-def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core = False, ext = False):
+def genFeatureTypes(api, prefix, libraryNamespace, types, bitfGroups, feature, outputdir, outputfile, core = False, ext = False):
 
     of_all = outputfile.replace("?", "F")
 
     version = versionBID(feature, core, ext)
 
-    t = template(of_all).replace("%f", version).replace("%a", api).replace("%A", api.upper())
+    t = template(of_all).replace("%f", version).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", version)
 
     status(od + of)
-
-    qualifier = api + "::"
 
     if not os.path.exists(od):
         os.makedirs(od)
@@ -98,7 +98,7 @@ def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core
 
         file.write(t %
             ("\n".join([ typeImport(api, prefix, libraryNamespace, t) for t in types if not t.isGroup and not t.isInclude and t.name ]),
-            "\n".join([ "using %s%s;" % (qualifier, g.name) for g in bitfGroups ]),)
+            "\n".join([ "using %s::%s;" % (libraryNamespace, g.name) for g in bitfGroups ]),)
         )
 
 
@@ -144,22 +144,22 @@ def genTypes_h(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outp
             ))
 
 
-def genTypes_cpp(api, types, bitfGroups, outputdir, outputfile):
+def genTypes_cpp(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outputfile):
 
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
-    t = template(of).replace("%a", api).replace("%A", api.upper())
+    t = template(of).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
 
     status(od + of)
 
     type_integrations = []
     for typename, integrations in type_integration_map.items():
         for integration in integrations:
-            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", api).replace("%A", api.upper()).replace("%t", api.upper() + typename)) 
+            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", prefix.upper() + typename)) 
 
     for group in bitfGroups:
         for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
-            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", api).replace("%A", api.upper()).replace("%t", group.name))
+            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", group.name))
 
     if not os.path.exists(od):
         os.makedirs(od)

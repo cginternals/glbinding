@@ -2,30 +2,30 @@ from binding import *
 from classes.Feature import *
 
 
-def genFeatures(api, features, outputdir, outputfile):
+def genFeatures(api, prefix, libraryNamespace, features, outputdir, outputfile):
 
-    genFeature(api, None, outputdir, outputfile)
+    genFeature(api, prefix, libraryNamespace, None, outputdir, outputfile)
     
     # gen bitfields feature grouped
     for f in features:
         if f.api == api:
-            genFeature(api, f, outputdir, outputfile)
+            genFeature(api, prefix, libraryNamespace, f, outputdir, outputfile)
             
             if api == "gl":
                 if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                    genFeature(api, f, outputdir, outputfile, True)
+                    genFeature(api, prefix, libraryNamespace, f, outputdir, outputfile, True)
                 # non core gl includes ext to support forward
-                genFeature(api, f, outputdir, outputfile, False, True)
+                genFeature(api, prefix, libraryNamespace, f, outputdir, outputfile, False, True)
 
 
-def genFeature(api, feature, outputdir, outputfile, core = False, ext = False):
+def genFeature(api, prefix, libraryNamespace, feature, outputdir, outputfile, core = False, ext = False):
 
     of_all = outputfile.replace("?", "F")
 
     version = versionBID(feature, core, ext)
     
-    t = template(of_all).replace("%d", version).replace("%f", "").replace("%a", api)
-    of = outputfile.replace("?", api)
+    t = template(of_all).replace("%d", version).replace("%f", "").replace("%a", libraryNamespace)
+    of = outputfile.replace("?", libraryNamespace)
     od = outputdir.replace("?", version)
     versionExtFile = ""
     versionExtDir = versionBID(feature, core, True)

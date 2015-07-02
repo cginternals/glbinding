@@ -6,10 +6,10 @@ def version(feature):
 	return '{ %s, %s }' % (feature.major, feature.minor)
 
 
-def genVersions(api, features, outputdir, outputfile):
+def genVersions(api, prefix, libraryNamespace, features, outputdir, outputfile):
     status(outputdir + outputfile)
 
-    t = template(outputfile).replace("%a", api).replace("%A", api.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(t % (

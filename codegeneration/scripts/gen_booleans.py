@@ -85,5 +85,5 @@ def genBooleansFeatureGrouped(api, prefix, libraryNamespace, enums, features, ou
             
             if api == "gl":
                 if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                    genFeatureBooleans(api, enums, f, outputdir, outputfile, True)
-                genFeatureBooleans(api, enums, f, outputdir, outputfile, False, True)
+                    genFeatureBooleans(api, prefix, libraryNamespace, enums, f, outputdir, outputfile, True)
+                genFeatureBooleans(api, prefix, libraryNamespace, enums, f, outputdir, outputfile, False, True)

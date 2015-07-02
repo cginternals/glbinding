@@ -63,29 +63,31 @@ def enumGroup(group, enums, usedEnumsByName):
         [ enumDefinition(group, e, maxlen, usedEnumsByName) for e in sorted(enums, key = lambda e: e.value) ]))
 
 
-def genEnumsAll(api, enums, outputdir, outputfile):
+def genEnumsAll(api, prefix, libraryNamespace, enums, outputdir, outputfile):
 
-    genFeatureEnums(api, enums, None, outputdir, outputfile, None)
+    genFeatureEnums(api, prefix, libraryNamespace, enums, None, outputdir, outputfile, None)
 
 
-def genEnumsFeatureGrouped(api, enums, features, outputdir, outputfile):
+def genEnumsFeatureGrouped(api, prefix, libraryNamespace, enums, features, outputdir, outputfile):
 
     # gen enums feature grouped
     for f in features:
         if f.api == api: # ToDo: probably seperate for all apis
-            genFeatureEnums(api, enums, f, outputdir, outputfile)
-            if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureEnums(api, enums, f, outputdir, outputfile, True)
-            genFeatureEnums(api, enums, f, outputdir, outputfile, False, True)
+            genFeatureEnums(api, prefix, libraryNamespace, enums, f, outputdir, outputfile)
+            
+            if api == "gl":
+                if f.major > 3 or (f.major == 3 and f.minor >= 2):
+                    genFeatureEnums(api, prefix, libraryNamespace, enums, f, outputdir, outputfile, True)
+                genFeatureEnums(api, prefix, libraryNamespace, enums, f, outputdir, outputfile, False, True)
 
 
-def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ext = False):
+def genFeatureEnums(api, prefix, libraryNamespace, enums, feature, outputdir, outputfile, core = False, ext = False):
 
     of_all = outputfile.replace("?", "F")
 
     version = versionBID(feature, core, ext)
 
-    t = template(of_all).replace("%f", version).replace("%a", api).replace("%A", api.upper())
+    t = template(of_all).replace("%f", version).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", version)
 
@@ -93,7 +95,7 @@ def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ex
 
     tgrouped     = groupEnumsByType(enums)
 
-    pureEnums    = [ e for e in tgrouped[api.upper() + "enum"] if 
+    pureEnums    = [ e for e in tgrouped[prefix.upper() + "enum"] if 
         (not ext and e.supported(feature, core)) or (ext and not e.supported(feature, False)) ]
     groupedEnums = groupEnumsByGroup(pureEnums)
 
