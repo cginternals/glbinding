@@ -1,5 +1,5 @@
 
-set(target switchablebinding-qt)
+set(target switchablebinding)
 
 
 # External libraries
@@ -8,13 +8,10 @@ find_package(OpenGL REQUIRED)
 find_package(OpenGLES REQUIRED)
 find_package(EGL REQUIRED)
 
-find_package(Qt5OpenGL  5.4 QUIET)
-find_package(Qt5Core    5.4 QUIET)
-find_package(Qt5Gui     5.4 QUIET)
-find_package(Qt5Widgets 5.4 QUIET)
+find_package(GLFW QUIET)
 
-if (NOT Qt5Core_FOUND)
-    message("Example ${target} skipped: Qt5.4 not found")
+if (NOT GLFW_FOUND)
+    message("Example ${target} skipped: GLFW not found")
     return()
 endif()
 
@@ -27,6 +24,7 @@ include_directories(
     ${OPENGL_INCLUDE_DIRS}
     ${OPENGLES_INCLUDE_DIR}
     ${EGL_INCLUDE_DIR}
+    ${GLFW_INCLUDE_DIR}
 )
 
 include_directories(
@@ -45,10 +43,7 @@ set(libs
     ${OPENGL_LIBRARIES}
     ${OPENGLES_LIBRARY}
     ${EGL_LIBRARY}
-    Qt5::OpenGL
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Widgets
+    ${GLFW_LIBRARY}
     khrapi
     eglbinding
     glbinding
@@ -73,9 +68,6 @@ set(sources
     rendergl.h
     rendergles.cpp
     rendergles.h
-    
-    QtOpenGLWindow.cpp
-    QtOpenGLWindow.h
 )
 
 

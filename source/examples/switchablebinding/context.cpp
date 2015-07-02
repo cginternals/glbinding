@@ -26,7 +26,7 @@ EGLSurface egl_surface;
 
 }
 
-void createGLContext(EGLWindow window, void * & context, void * & display)
+void createGLContext(EGLWindow window)
 {
     eglbinding::Binding::initialize();
 
@@ -87,11 +87,10 @@ void createGLContext(EGLWindow window, void * & context, void * & display)
       return;
    }
 
-    context = egl_context;
-    display = egl_display;
+   eglMakeCurrent(egl_display, egl_surface, egl_surface, egl_context);
 }
 
-void createGLESContext(EGLWindow window, void *&context, void *&display)
+void createGLESContext(EGLWindow window)
 {
     std::cout << "Render using OpenGL ES" << std::endl;
 
@@ -150,8 +149,7 @@ void createGLESContext(EGLWindow window, void *&context, void *&display)
        return;
     }
 
-    context = egl_context;
-    display = egl_display;
+    eglMakeCurrent(egl_display, egl_surface, egl_surface, egl_context);
 }
 
 void releaseContext()
