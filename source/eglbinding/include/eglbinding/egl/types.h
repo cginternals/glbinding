@@ -222,8 +222,11 @@ namespace egl
 {
 
 EGLBINDING_API EGLContextFlagMask operator|(const EGLContextFlagMask & a, const EGLContextFlagMask & b);
+EGLBINDING_API EGLContextFlagMask & operator|=(EGLContextFlagMask & a, const EGLContextFlagMask & b);
 EGLBINDING_API EGLContextFlagMask operator&(const EGLContextFlagMask & a, const EGLContextFlagMask & b);
+EGLBINDING_API EGLContextFlagMask & operator&=(EGLContextFlagMask & a, const EGLContextFlagMask & b);
 EGLBINDING_API EGLContextFlagMask operator^(const EGLContextFlagMask & a, const EGLContextFlagMask & b);
+EGLBINDING_API EGLContextFlagMask & operator^=(EGLContextFlagMask & a, const EGLContextFlagMask & b);
 
 } // namespace egl
 
@@ -256,8 +259,11 @@ namespace egl
 {
 
 EGLBINDING_API EGLContextProfileMask operator|(const EGLContextProfileMask & a, const EGLContextProfileMask & b);
+EGLBINDING_API EGLContextProfileMask & operator|=(EGLContextProfileMask & a, const EGLContextProfileMask & b);
 EGLBINDING_API EGLContextProfileMask operator&(const EGLContextProfileMask & a, const EGLContextProfileMask & b);
+EGLBINDING_API EGLContextProfileMask & operator&=(EGLContextProfileMask & a, const EGLContextProfileMask & b);
 EGLBINDING_API EGLContextProfileMask operator^(const EGLContextProfileMask & a, const EGLContextProfileMask & b);
+EGLBINDING_API EGLContextProfileMask & operator^=(EGLContextProfileMask & a, const EGLContextProfileMask & b);
 
 } // namespace egl
 
@@ -290,8 +296,11 @@ namespace egl
 {
 
 EGLBINDING_API EGLDRMBufferUseMESAMask operator|(const EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b);
+EGLBINDING_API EGLDRMBufferUseMESAMask & operator|=(EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b);
 EGLBINDING_API EGLDRMBufferUseMESAMask operator&(const EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b);
+EGLBINDING_API EGLDRMBufferUseMESAMask & operator&=(EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b);
 EGLBINDING_API EGLDRMBufferUseMESAMask operator^(const EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b);
+EGLBINDING_API EGLDRMBufferUseMESAMask & operator^=(EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b);
 
 } // namespace egl
 
@@ -324,8 +333,11 @@ namespace egl
 {
 
 EGLBINDING_API EGLLockUsageHintKHRMask operator|(const EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b);
+EGLBINDING_API EGLLockUsageHintKHRMask & operator|=(EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b);
 EGLBINDING_API EGLLockUsageHintKHRMask operator&(const EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b);
+EGLBINDING_API EGLLockUsageHintKHRMask & operator&=(EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b);
 EGLBINDING_API EGLLockUsageHintKHRMask operator^(const EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b);
+EGLBINDING_API EGLLockUsageHintKHRMask & operator^=(EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b);
 
 } // namespace egl
 
@@ -358,8 +370,11 @@ namespace egl
 {
 
 EGLBINDING_API EGLRenderableTypeMask operator|(const EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b);
+EGLBINDING_API EGLRenderableTypeMask & operator|=(EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b);
 EGLBINDING_API EGLRenderableTypeMask operator&(const EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b);
+EGLBINDING_API EGLRenderableTypeMask & operator&=(EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b);
 EGLBINDING_API EGLRenderableTypeMask operator^(const EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b);
+EGLBINDING_API EGLRenderableTypeMask & operator^=(EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b);
 
 } // namespace egl
 
@@ -392,8 +407,11 @@ namespace egl
 {
 
 EGLBINDING_API EGLSurfaceTypeMask operator|(const EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b);
+EGLBINDING_API EGLSurfaceTypeMask & operator|=(EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b);
 EGLBINDING_API EGLSurfaceTypeMask operator&(const EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b);
+EGLBINDING_API EGLSurfaceTypeMask & operator&=(EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b);
 EGLBINDING_API EGLSurfaceTypeMask operator^(const EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b);
+EGLBINDING_API EGLSurfaceTypeMask & operator^=(EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b);
 
 } // namespace egl
 
@@ -426,8 +444,11 @@ namespace egl
 {
 
 EGLBINDING_API EGLSyncFlagsKHR operator|(const EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b);
+EGLBINDING_API EGLSyncFlagsKHR & operator|=(EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b);
 EGLBINDING_API EGLSyncFlagsKHR operator&(const EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b);
+EGLBINDING_API EGLSyncFlagsKHR & operator&=(EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b);
 EGLBINDING_API EGLSyncFlagsKHR operator^(const EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b);
+EGLBINDING_API EGLSyncFlagsKHR & operator^=(EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b);
 
 } // namespace egl
 

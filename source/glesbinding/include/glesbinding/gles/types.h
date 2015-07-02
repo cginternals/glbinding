@@ -280,8 +280,11 @@ namespace gles
 {
 
 GLESBINDING_API AttribMask operator|(const AttribMask & a, const AttribMask & b);
+GLESBINDING_API AttribMask & operator|=(AttribMask & a, const AttribMask & b);
 GLESBINDING_API AttribMask operator&(const AttribMask & a, const AttribMask & b);
+GLESBINDING_API AttribMask & operator&=(AttribMask & a, const AttribMask & b);
 GLESBINDING_API AttribMask operator^(const AttribMask & a, const AttribMask & b);
+GLESBINDING_API AttribMask & operator^=(AttribMask & a, const AttribMask & b);
 
 } // namespace gles
 
@@ -314,8 +317,11 @@ namespace gles
 {
 
 GLESBINDING_API BufferBitQCOM operator|(const BufferBitQCOM & a, const BufferBitQCOM & b);
+GLESBINDING_API BufferBitQCOM & operator|=(BufferBitQCOM & a, const BufferBitQCOM & b);
 GLESBINDING_API BufferBitQCOM operator&(const BufferBitQCOM & a, const BufferBitQCOM & b);
+GLESBINDING_API BufferBitQCOM & operator&=(BufferBitQCOM & a, const BufferBitQCOM & b);
 GLESBINDING_API BufferBitQCOM operator^(const BufferBitQCOM & a, const BufferBitQCOM & b);
+GLESBINDING_API BufferBitQCOM & operator^=(BufferBitQCOM & a, const BufferBitQCOM & b);
 
 } // namespace gles
 
@@ -348,8 +354,11 @@ namespace gles
 {
 
 GLESBINDING_API ClearBufferMask operator|(const ClearBufferMask & a, const ClearBufferMask & b);
+GLESBINDING_API ClearBufferMask & operator|=(ClearBufferMask & a, const ClearBufferMask & b);
 GLESBINDING_API ClearBufferMask operator&(const ClearBufferMask & a, const ClearBufferMask & b);
+GLESBINDING_API ClearBufferMask & operator&=(ClearBufferMask & a, const ClearBufferMask & b);
 GLESBINDING_API ClearBufferMask operator^(const ClearBufferMask & a, const ClearBufferMask & b);
+GLESBINDING_API ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask & b);
 
 } // namespace gles
 
@@ -382,8 +391,11 @@ namespace gles
 {
 
 GLESBINDING_API ContextFlagMask operator|(const ContextFlagMask & a, const ContextFlagMask & b);
+GLESBINDING_API ContextFlagMask & operator|=(ContextFlagMask & a, const ContextFlagMask & b);
 GLESBINDING_API ContextFlagMask operator&(const ContextFlagMask & a, const ContextFlagMask & b);
+GLESBINDING_API ContextFlagMask & operator&=(ContextFlagMask & a, const ContextFlagMask & b);
 GLESBINDING_API ContextFlagMask operator^(const ContextFlagMask & a, const ContextFlagMask & b);
+GLESBINDING_API ContextFlagMask & operator^=(ContextFlagMask & a, const ContextFlagMask & b);
 
 } // namespace gles
 
@@ -416,8 +428,11 @@ namespace gles
 {
 
 GLESBINDING_API MapBufferUsageMask operator|(const MapBufferUsageMask & a, const MapBufferUsageMask & b);
+GLESBINDING_API MapBufferUsageMask & operator|=(MapBufferUsageMask & a, const MapBufferUsageMask & b);
 GLESBINDING_API MapBufferUsageMask operator&(const MapBufferUsageMask & a, const MapBufferUsageMask & b);
+GLESBINDING_API MapBufferUsageMask & operator&=(MapBufferUsageMask & a, const MapBufferUsageMask & b);
 GLESBINDING_API MapBufferUsageMask operator^(const MapBufferUsageMask & a, const MapBufferUsageMask & b);
+GLESBINDING_API MapBufferUsageMask & operator^=(MapBufferUsageMask & a, const MapBufferUsageMask & b);
 
 } // namespace gles
 
@@ -450,8 +465,11 @@ namespace gles
 {
 
 GLESBINDING_API MemoryBarrierMask operator|(const MemoryBarrierMask & a, const MemoryBarrierMask & b);
+GLESBINDING_API MemoryBarrierMask & operator|=(MemoryBarrierMask & a, const MemoryBarrierMask & b);
 GLESBINDING_API MemoryBarrierMask operator&(const MemoryBarrierMask & a, const MemoryBarrierMask & b);
+GLESBINDING_API MemoryBarrierMask & operator&=(MemoryBarrierMask & a, const MemoryBarrierMask & b);
 GLESBINDING_API MemoryBarrierMask operator^(const MemoryBarrierMask & a, const MemoryBarrierMask & b);
+GLESBINDING_API MemoryBarrierMask & operator^=(MemoryBarrierMask & a, const MemoryBarrierMask & b);
 
 } // namespace gles
 
@@ -484,8 +502,11 @@ namespace gles
 {
 
 GLESBINDING_API PathRenderingMaskNV operator|(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b);
+GLESBINDING_API PathRenderingMaskNV & operator|=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b);
 GLESBINDING_API PathRenderingMaskNV operator&(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b);
+GLESBINDING_API PathRenderingMaskNV & operator&=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b);
 GLESBINDING_API PathRenderingMaskNV operator^(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b);
+GLESBINDING_API PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b);
 
 } // namespace gles
 
@@ -518,8 +539,11 @@ namespace gles
 {
 
 GLESBINDING_API PerformanceQueryCapsMaskINTEL operator|(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b);
+GLESBINDING_API PerformanceQueryCapsMaskINTEL & operator|=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b);
 GLESBINDING_API PerformanceQueryCapsMaskINTEL operator&(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b);
+GLESBINDING_API PerformanceQueryCapsMaskINTEL & operator&=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b);
 GLESBINDING_API PerformanceQueryCapsMaskINTEL operator^(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b);
+GLESBINDING_API PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b);
 
 } // namespace gles
 
@@ -552,8 +576,11 @@ namespace gles
 {
 
 GLESBINDING_API SyncObjectMask operator|(const SyncObjectMask & a, const SyncObjectMask & b);
+GLESBINDING_API SyncObjectMask & operator|=(SyncObjectMask & a, const SyncObjectMask & b);
 GLESBINDING_API SyncObjectMask operator&(const SyncObjectMask & a, const SyncObjectMask & b);
+GLESBINDING_API SyncObjectMask & operator&=(SyncObjectMask & a, const SyncObjectMask & b);
 GLESBINDING_API SyncObjectMask operator^(const SyncObjectMask & a, const SyncObjectMask & b);
+GLESBINDING_API SyncObjectMask & operator^=(SyncObjectMask & a, const SyncObjectMask & b);
 
 } // namespace gles
 
@@ -586,8 +613,11 @@ namespace gles
 {
 
 GLESBINDING_API UseProgramStageMask operator|(const UseProgramStageMask & a, const UseProgramStageMask & b);
+GLESBINDING_API UseProgramStageMask & operator|=(UseProgramStageMask & a, const UseProgramStageMask & b);
 GLESBINDING_API UseProgramStageMask operator&(const UseProgramStageMask & a, const UseProgramStageMask & b);
+GLESBINDING_API UseProgramStageMask & operator&=(UseProgramStageMask & a, const UseProgramStageMask & b);
 GLESBINDING_API UseProgramStageMask operator^(const UseProgramStageMask & a, const UseProgramStageMask & b);
+GLESBINDING_API UseProgramStageMask & operator^=(UseProgramStageMask & a, const UseProgramStageMask & b);
 
 } // namespace gles
 
@@ -620,8 +650,11 @@ namespace gles
 {
 
 GLESBINDING_API UnusedMask operator|(const UnusedMask & a, const UnusedMask & b);
+GLESBINDING_API UnusedMask & operator|=(UnusedMask & a, const UnusedMask & b);
 GLESBINDING_API UnusedMask operator&(const UnusedMask & a, const UnusedMask & b);
+GLESBINDING_API UnusedMask & operator&=(UnusedMask & a, const UnusedMask & b);
 GLESBINDING_API UnusedMask operator^(const UnusedMask & a, const UnusedMask & b);
+GLESBINDING_API UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b);
 
 } // namespace gles
 
@@ -654,8 +687,11 @@ namespace gles
 {
 
 GLESBINDING_API BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b);
+GLESBINDING_API BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b);
 GLESBINDING_API BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b);
+GLESBINDING_API BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b);
 GLESBINDING_API BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b);
+GLESBINDING_API BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b);
 
 } // namespace gles
 
@@ -688,8 +724,11 @@ namespace gles
 {
 
 GLESBINDING_API BufferStorageMask operator|(const BufferStorageMask & a, const BufferStorageMask & b);
+GLESBINDING_API BufferStorageMask & operator|=(BufferStorageMask & a, const BufferStorageMask & b);
 GLESBINDING_API BufferStorageMask operator&(const BufferStorageMask & a, const BufferStorageMask & b);
+GLESBINDING_API BufferStorageMask & operator&=(BufferStorageMask & a, const BufferStorageMask & b);
 GLESBINDING_API BufferStorageMask operator^(const BufferStorageMask & a, const BufferStorageMask & b);
+GLESBINDING_API BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorageMask & b);
 
 } // namespace gles
 
@@ -722,8 +761,11 @@ namespace gles
 {
 
 GLESBINDING_API PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b);
+GLESBINDING_API PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b);
 GLESBINDING_API PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b);
+GLESBINDING_API PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b);
 GLESBINDING_API PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b);
+GLESBINDING_API PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b);
 
 } // namespace gles
 

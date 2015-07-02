@@ -193,7 +193,6 @@ std::ostream & operator<<(std::ostream & stream, const EGLContextFlagMask & valu
 
 } // namespace egl
 
-
 namespace egl
 {
 
@@ -202,9 +201,23 @@ EGLContextFlagMask operator|(const EGLContextFlagMask & a, const EGLContextFlagM
     return static_cast<EGLContextFlagMask>(static_cast<std::underlying_type<EGLContextFlagMask>::type>(a) | static_cast<std::underlying_type<EGLContextFlagMask>::type>(b));
 }
 
+EGLContextFlagMask & operator|=(EGLContextFlagMask & a, const EGLContextFlagMask & b)
+{
+    a = static_cast<EGLContextFlagMask>(static_cast<std::underlying_type<EGLContextFlagMask>::type>(a) | static_cast<std::underlying_type<EGLContextFlagMask>::type>(b));
+    
+    return a;
+}
+
 EGLContextFlagMask operator&(const EGLContextFlagMask & a, const EGLContextFlagMask & b)
 {
     return static_cast<EGLContextFlagMask>(static_cast<std::underlying_type<EGLContextFlagMask>::type>(a) & static_cast<std::underlying_type<EGLContextFlagMask>::type>(b));
+}
+
+EGLContextFlagMask & operator&=(EGLContextFlagMask & a, const EGLContextFlagMask & b)
+{
+    a = static_cast<EGLContextFlagMask>(static_cast<std::underlying_type<EGLContextFlagMask>::type>(a) & static_cast<std::underlying_type<EGLContextFlagMask>::type>(b));
+    
+    return a;
 }
 
 EGLContextFlagMask operator^(const EGLContextFlagMask & a, const EGLContextFlagMask & b)
@@ -212,8 +225,14 @@ EGLContextFlagMask operator^(const EGLContextFlagMask & a, const EGLContextFlagM
     return static_cast<EGLContextFlagMask>(static_cast<std::underlying_type<EGLContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<EGLContextFlagMask>::type>(b));
 }
 
-} // namespace egl
+EGLContextFlagMask & operator^=(EGLContextFlagMask & a, const EGLContextFlagMask & b)
+{
+    a = static_cast<EGLContextFlagMask>(static_cast<std::underlying_type<EGLContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<EGLContextFlagMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace egl
 
 
 namespace egl
@@ -227,7 +246,6 @@ std::ostream & operator<<(std::ostream & stream, const EGLContextProfileMask & v
 
 } // namespace egl
 
-
 namespace egl
 {
 
@@ -236,9 +254,23 @@ EGLContextProfileMask operator|(const EGLContextProfileMask & a, const EGLContex
     return static_cast<EGLContextProfileMask>(static_cast<std::underlying_type<EGLContextProfileMask>::type>(a) | static_cast<std::underlying_type<EGLContextProfileMask>::type>(b));
 }
 
+EGLContextProfileMask & operator|=(EGLContextProfileMask & a, const EGLContextProfileMask & b)
+{
+    a = static_cast<EGLContextProfileMask>(static_cast<std::underlying_type<EGLContextProfileMask>::type>(a) | static_cast<std::underlying_type<EGLContextProfileMask>::type>(b));
+    
+    return a;
+}
+
 EGLContextProfileMask operator&(const EGLContextProfileMask & a, const EGLContextProfileMask & b)
 {
     return static_cast<EGLContextProfileMask>(static_cast<std::underlying_type<EGLContextProfileMask>::type>(a) & static_cast<std::underlying_type<EGLContextProfileMask>::type>(b));
+}
+
+EGLContextProfileMask & operator&=(EGLContextProfileMask & a, const EGLContextProfileMask & b)
+{
+    a = static_cast<EGLContextProfileMask>(static_cast<std::underlying_type<EGLContextProfileMask>::type>(a) & static_cast<std::underlying_type<EGLContextProfileMask>::type>(b));
+    
+    return a;
 }
 
 EGLContextProfileMask operator^(const EGLContextProfileMask & a, const EGLContextProfileMask & b)
@@ -246,8 +278,14 @@ EGLContextProfileMask operator^(const EGLContextProfileMask & a, const EGLContex
     return static_cast<EGLContextProfileMask>(static_cast<std::underlying_type<EGLContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<EGLContextProfileMask>::type>(b));
 }
 
-} // namespace egl
+EGLContextProfileMask & operator^=(EGLContextProfileMask & a, const EGLContextProfileMask & b)
+{
+    a = static_cast<EGLContextProfileMask>(static_cast<std::underlying_type<EGLContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<EGLContextProfileMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace egl
 
 
 namespace egl
@@ -261,7 +299,6 @@ std::ostream & operator<<(std::ostream & stream, const EGLDRMBufferUseMESAMask &
 
 } // namespace egl
 
-
 namespace egl
 {
 
@@ -270,9 +307,23 @@ EGLDRMBufferUseMESAMask operator|(const EGLDRMBufferUseMESAMask & a, const EGLDR
     return static_cast<EGLDRMBufferUseMESAMask>(static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(a) | static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(b));
 }
 
+EGLDRMBufferUseMESAMask & operator|=(EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b)
+{
+    a = static_cast<EGLDRMBufferUseMESAMask>(static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(a) | static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(b));
+    
+    return a;
+}
+
 EGLDRMBufferUseMESAMask operator&(const EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b)
 {
     return static_cast<EGLDRMBufferUseMESAMask>(static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(a) & static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(b));
+}
+
+EGLDRMBufferUseMESAMask & operator&=(EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b)
+{
+    a = static_cast<EGLDRMBufferUseMESAMask>(static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(a) & static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(b));
+    
+    return a;
 }
 
 EGLDRMBufferUseMESAMask operator^(const EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b)
@@ -280,8 +331,14 @@ EGLDRMBufferUseMESAMask operator^(const EGLDRMBufferUseMESAMask & a, const EGLDR
     return static_cast<EGLDRMBufferUseMESAMask>(static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(a) ^ static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(b));
 }
 
-} // namespace egl
+EGLDRMBufferUseMESAMask & operator^=(EGLDRMBufferUseMESAMask & a, const EGLDRMBufferUseMESAMask & b)
+{
+    a = static_cast<EGLDRMBufferUseMESAMask>(static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(a) ^ static_cast<std::underlying_type<EGLDRMBufferUseMESAMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace egl
 
 
 namespace egl
@@ -295,7 +352,6 @@ std::ostream & operator<<(std::ostream & stream, const EGLLockUsageHintKHRMask &
 
 } // namespace egl
 
-
 namespace egl
 {
 
@@ -304,9 +360,23 @@ EGLLockUsageHintKHRMask operator|(const EGLLockUsageHintKHRMask & a, const EGLLo
     return static_cast<EGLLockUsageHintKHRMask>(static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(a) | static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(b));
 }
 
+EGLLockUsageHintKHRMask & operator|=(EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b)
+{
+    a = static_cast<EGLLockUsageHintKHRMask>(static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(a) | static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(b));
+    
+    return a;
+}
+
 EGLLockUsageHintKHRMask operator&(const EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b)
 {
     return static_cast<EGLLockUsageHintKHRMask>(static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(a) & static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(b));
+}
+
+EGLLockUsageHintKHRMask & operator&=(EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b)
+{
+    a = static_cast<EGLLockUsageHintKHRMask>(static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(a) & static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(b));
+    
+    return a;
 }
 
 EGLLockUsageHintKHRMask operator^(const EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b)
@@ -314,8 +384,14 @@ EGLLockUsageHintKHRMask operator^(const EGLLockUsageHintKHRMask & a, const EGLLo
     return static_cast<EGLLockUsageHintKHRMask>(static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(a) ^ static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(b));
 }
 
-} // namespace egl
+EGLLockUsageHintKHRMask & operator^=(EGLLockUsageHintKHRMask & a, const EGLLockUsageHintKHRMask & b)
+{
+    a = static_cast<EGLLockUsageHintKHRMask>(static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(a) ^ static_cast<std::underlying_type<EGLLockUsageHintKHRMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace egl
 
 
 namespace egl
@@ -329,7 +405,6 @@ std::ostream & operator<<(std::ostream & stream, const EGLRenderableTypeMask & v
 
 } // namespace egl
 
-
 namespace egl
 {
 
@@ -338,9 +413,23 @@ EGLRenderableTypeMask operator|(const EGLRenderableTypeMask & a, const EGLRender
     return static_cast<EGLRenderableTypeMask>(static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(a) | static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(b));
 }
 
+EGLRenderableTypeMask & operator|=(EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b)
+{
+    a = static_cast<EGLRenderableTypeMask>(static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(a) | static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(b));
+    
+    return a;
+}
+
 EGLRenderableTypeMask operator&(const EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b)
 {
     return static_cast<EGLRenderableTypeMask>(static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(a) & static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(b));
+}
+
+EGLRenderableTypeMask & operator&=(EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b)
+{
+    a = static_cast<EGLRenderableTypeMask>(static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(a) & static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(b));
+    
+    return a;
 }
 
 EGLRenderableTypeMask operator^(const EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b)
@@ -348,8 +437,14 @@ EGLRenderableTypeMask operator^(const EGLRenderableTypeMask & a, const EGLRender
     return static_cast<EGLRenderableTypeMask>(static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(a) ^ static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(b));
 }
 
-} // namespace egl
+EGLRenderableTypeMask & operator^=(EGLRenderableTypeMask & a, const EGLRenderableTypeMask & b)
+{
+    a = static_cast<EGLRenderableTypeMask>(static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(a) ^ static_cast<std::underlying_type<EGLRenderableTypeMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace egl
 
 
 namespace egl
@@ -363,7 +458,6 @@ std::ostream & operator<<(std::ostream & stream, const EGLSurfaceTypeMask & valu
 
 } // namespace egl
 
-
 namespace egl
 {
 
@@ -372,9 +466,23 @@ EGLSurfaceTypeMask operator|(const EGLSurfaceTypeMask & a, const EGLSurfaceTypeM
     return static_cast<EGLSurfaceTypeMask>(static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(a) | static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(b));
 }
 
+EGLSurfaceTypeMask & operator|=(EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b)
+{
+    a = static_cast<EGLSurfaceTypeMask>(static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(a) | static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(b));
+    
+    return a;
+}
+
 EGLSurfaceTypeMask operator&(const EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b)
 {
     return static_cast<EGLSurfaceTypeMask>(static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(a) & static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(b));
+}
+
+EGLSurfaceTypeMask & operator&=(EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b)
+{
+    a = static_cast<EGLSurfaceTypeMask>(static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(a) & static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(b));
+    
+    return a;
 }
 
 EGLSurfaceTypeMask operator^(const EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b)
@@ -382,8 +490,14 @@ EGLSurfaceTypeMask operator^(const EGLSurfaceTypeMask & a, const EGLSurfaceTypeM
     return static_cast<EGLSurfaceTypeMask>(static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(a) ^ static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(b));
 }
 
-} // namespace egl
+EGLSurfaceTypeMask & operator^=(EGLSurfaceTypeMask & a, const EGLSurfaceTypeMask & b)
+{
+    a = static_cast<EGLSurfaceTypeMask>(static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(a) ^ static_cast<std::underlying_type<EGLSurfaceTypeMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace egl
 
 
 namespace egl
@@ -397,7 +511,6 @@ std::ostream & operator<<(std::ostream & stream, const EGLSyncFlagsKHR & value)
 
 } // namespace egl
 
-
 namespace egl
 {
 
@@ -406,9 +519,23 @@ EGLSyncFlagsKHR operator|(const EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b)
     return static_cast<EGLSyncFlagsKHR>(static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(a) | static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(b));
 }
 
+EGLSyncFlagsKHR & operator|=(EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b)
+{
+    a = static_cast<EGLSyncFlagsKHR>(static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(a) | static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(b));
+    
+    return a;
+}
+
 EGLSyncFlagsKHR operator&(const EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b)
 {
     return static_cast<EGLSyncFlagsKHR>(static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(a) & static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(b));
+}
+
+EGLSyncFlagsKHR & operator&=(EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b)
+{
+    a = static_cast<EGLSyncFlagsKHR>(static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(a) & static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(b));
+    
+    return a;
 }
 
 EGLSyncFlagsKHR operator^(const EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b)
@@ -416,5 +543,11 @@ EGLSyncFlagsKHR operator^(const EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b)
     return static_cast<EGLSyncFlagsKHR>(static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(a) ^ static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(b));
 }
 
-} // namespace egl
+EGLSyncFlagsKHR & operator^=(EGLSyncFlagsKHR & a, const EGLSyncFlagsKHR & b)
+{
+    a = static_cast<EGLSyncFlagsKHR>(static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(a) ^ static_cast<std::underlying_type<EGLSyncFlagsKHR>::type>(b));
+    
+    return a;
+}
 
+} // namespace egl

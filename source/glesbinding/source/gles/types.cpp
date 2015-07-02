@@ -193,7 +193,6 @@ std::ostream & operator<<(std::ostream & stream, const AttribMask & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -202,9 +201,23 @@ AttribMask operator|(const AttribMask & a, const AttribMask & b)
     return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) | static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
+AttribMask & operator|=(AttribMask & a, const AttribMask & b)
+{
+    a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) | static_cast<std::underlying_type<AttribMask>::type>(b));
+    
+    return a;
+}
+
 AttribMask operator&(const AttribMask & a, const AttribMask & b)
 {
     return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) & static_cast<std::underlying_type<AttribMask>::type>(b));
+}
+
+AttribMask & operator&=(AttribMask & a, const AttribMask & b)
+{
+    a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) & static_cast<std::underlying_type<AttribMask>::type>(b));
+    
+    return a;
 }
 
 AttribMask operator^(const AttribMask & a, const AttribMask & b)
@@ -212,8 +225,14 @@ AttribMask operator^(const AttribMask & a, const AttribMask & b)
     return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
-} // namespace gles
+AttribMask & operator^=(AttribMask & a, const AttribMask & b)
+{
+    a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -227,7 +246,6 @@ std::ostream & operator<<(std::ostream & stream, const BufferBitQCOM & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -236,9 +254,23 @@ BufferBitQCOM operator|(const BufferBitQCOM & a, const BufferBitQCOM & b)
     return static_cast<BufferBitQCOM>(static_cast<std::underlying_type<BufferBitQCOM>::type>(a) | static_cast<std::underlying_type<BufferBitQCOM>::type>(b));
 }
 
+BufferBitQCOM & operator|=(BufferBitQCOM & a, const BufferBitQCOM & b)
+{
+    a = static_cast<BufferBitQCOM>(static_cast<std::underlying_type<BufferBitQCOM>::type>(a) | static_cast<std::underlying_type<BufferBitQCOM>::type>(b));
+    
+    return a;
+}
+
 BufferBitQCOM operator&(const BufferBitQCOM & a, const BufferBitQCOM & b)
 {
     return static_cast<BufferBitQCOM>(static_cast<std::underlying_type<BufferBitQCOM>::type>(a) & static_cast<std::underlying_type<BufferBitQCOM>::type>(b));
+}
+
+BufferBitQCOM & operator&=(BufferBitQCOM & a, const BufferBitQCOM & b)
+{
+    a = static_cast<BufferBitQCOM>(static_cast<std::underlying_type<BufferBitQCOM>::type>(a) & static_cast<std::underlying_type<BufferBitQCOM>::type>(b));
+    
+    return a;
 }
 
 BufferBitQCOM operator^(const BufferBitQCOM & a, const BufferBitQCOM & b)
@@ -246,8 +278,14 @@ BufferBitQCOM operator^(const BufferBitQCOM & a, const BufferBitQCOM & b)
     return static_cast<BufferBitQCOM>(static_cast<std::underlying_type<BufferBitQCOM>::type>(a) ^ static_cast<std::underlying_type<BufferBitQCOM>::type>(b));
 }
 
-} // namespace gles
+BufferBitQCOM & operator^=(BufferBitQCOM & a, const BufferBitQCOM & b)
+{
+    a = static_cast<BufferBitQCOM>(static_cast<std::underlying_type<BufferBitQCOM>::type>(a) ^ static_cast<std::underlying_type<BufferBitQCOM>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -261,7 +299,6 @@ std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -270,9 +307,23 @@ ClearBufferMask operator|(const ClearBufferMask & a, const ClearBufferMask & b)
     return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) | static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
+ClearBufferMask & operator|=(ClearBufferMask & a, const ClearBufferMask & b)
+{
+    a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) | static_cast<std::underlying_type<ClearBufferMask>::type>(b));
+    
+    return a;
+}
+
 ClearBufferMask operator&(const ClearBufferMask & a, const ClearBufferMask & b)
 {
     return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) & static_cast<std::underlying_type<ClearBufferMask>::type>(b));
+}
+
+ClearBufferMask & operator&=(ClearBufferMask & a, const ClearBufferMask & b)
+{
+    a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) & static_cast<std::underlying_type<ClearBufferMask>::type>(b));
+    
+    return a;
 }
 
 ClearBufferMask operator^(const ClearBufferMask & a, const ClearBufferMask & b)
@@ -280,8 +331,14 @@ ClearBufferMask operator^(const ClearBufferMask & a, const ClearBufferMask & b)
     return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
-} // namespace gles
+ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask & b)
+{
+    a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<ClearBufferMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -295,7 +352,6 @@ std::ostream & operator<<(std::ostream & stream, const ContextFlagMask & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -304,9 +360,23 @@ ContextFlagMask operator|(const ContextFlagMask & a, const ContextFlagMask & b)
     return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) | static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
+ContextFlagMask & operator|=(ContextFlagMask & a, const ContextFlagMask & b)
+{
+    a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) | static_cast<std::underlying_type<ContextFlagMask>::type>(b));
+    
+    return a;
+}
+
 ContextFlagMask operator&(const ContextFlagMask & a, const ContextFlagMask & b)
 {
     return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) & static_cast<std::underlying_type<ContextFlagMask>::type>(b));
+}
+
+ContextFlagMask & operator&=(ContextFlagMask & a, const ContextFlagMask & b)
+{
+    a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) & static_cast<std::underlying_type<ContextFlagMask>::type>(b));
+    
+    return a;
 }
 
 ContextFlagMask operator^(const ContextFlagMask & a, const ContextFlagMask & b)
@@ -314,8 +384,14 @@ ContextFlagMask operator^(const ContextFlagMask & a, const ContextFlagMask & b)
     return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
-} // namespace gles
+ContextFlagMask & operator^=(ContextFlagMask & a, const ContextFlagMask & b)
+{
+    a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<ContextFlagMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -329,7 +405,6 @@ std::ostream & operator<<(std::ostream & stream, const MapBufferUsageMask & valu
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -338,9 +413,23 @@ MapBufferUsageMask operator|(const MapBufferUsageMask & a, const MapBufferUsageM
     return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
+MapBufferUsageMask & operator|=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
+{
+    a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
+    
+    return a;
+}
+
 MapBufferUsageMask operator&(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
     return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
+}
+
+MapBufferUsageMask & operator&=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
+{
+    a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
+    
+    return a;
 }
 
 MapBufferUsageMask operator^(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
@@ -348,8 +437,14 @@ MapBufferUsageMask operator^(const MapBufferUsageMask & a, const MapBufferUsageM
     return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
-} // namespace gles
+MapBufferUsageMask & operator^=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
+{
+    a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -363,7 +458,6 @@ std::ostream & operator<<(std::ostream & stream, const MemoryBarrierMask & value
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -372,9 +466,23 @@ MemoryBarrierMask operator|(const MemoryBarrierMask & a, const MemoryBarrierMask
     return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
+MemoryBarrierMask & operator|=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
+{
+    a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
+    
+    return a;
+}
+
 MemoryBarrierMask operator&(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
     return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
+}
+
+MemoryBarrierMask & operator&=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
+{
+    a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
+    
+    return a;
 }
 
 MemoryBarrierMask operator^(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
@@ -382,8 +490,14 @@ MemoryBarrierMask operator^(const MemoryBarrierMask & a, const MemoryBarrierMask
     return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
-} // namespace gles
+MemoryBarrierMask & operator^=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
+{
+    a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -397,7 +511,6 @@ std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & val
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -406,9 +519,23 @@ PathRenderingMaskNV operator|(const PathRenderingMaskNV & a, const PathRendering
     return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
+PathRenderingMaskNV & operator|=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+{
+    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
+    
+    return a;
+}
+
 PathRenderingMaskNV operator&(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
     return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
+}
+
+PathRenderingMaskNV & operator&=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+{
+    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
+    
+    return a;
 }
 
 PathRenderingMaskNV operator^(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
@@ -416,8 +543,14 @@ PathRenderingMaskNV operator^(const PathRenderingMaskNV & a, const PathRendering
     return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
-} // namespace gles
+PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+{
+    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -431,7 +564,6 @@ std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskI
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -440,9 +572,23 @@ PerformanceQueryCapsMaskINTEL operator|(const PerformanceQueryCapsMaskINTEL & a,
     return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
+PerformanceQueryCapsMaskINTEL & operator|=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+{
+    a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
+    
+    return a;
+}
+
 PerformanceQueryCapsMaskINTEL operator&(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
+}
+
+PerformanceQueryCapsMaskINTEL & operator&=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+{
+    a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
+    
+    return a;
 }
 
 PerformanceQueryCapsMaskINTEL operator^(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
@@ -450,8 +596,14 @@ PerformanceQueryCapsMaskINTEL operator^(const PerformanceQueryCapsMaskINTEL & a,
     return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
-} // namespace gles
+PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+{
+    a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -465,7 +617,6 @@ std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -474,9 +625,23 @@ SyncObjectMask operator|(const SyncObjectMask & a, const SyncObjectMask & b)
     return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) | static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
+SyncObjectMask & operator|=(SyncObjectMask & a, const SyncObjectMask & b)
+{
+    a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) | static_cast<std::underlying_type<SyncObjectMask>::type>(b));
+    
+    return a;
+}
+
 SyncObjectMask operator&(const SyncObjectMask & a, const SyncObjectMask & b)
 {
     return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) & static_cast<std::underlying_type<SyncObjectMask>::type>(b));
+}
+
+SyncObjectMask & operator&=(SyncObjectMask & a, const SyncObjectMask & b)
+{
+    a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) & static_cast<std::underlying_type<SyncObjectMask>::type>(b));
+    
+    return a;
 }
 
 SyncObjectMask operator^(const SyncObjectMask & a, const SyncObjectMask & b)
@@ -484,8 +649,14 @@ SyncObjectMask operator^(const SyncObjectMask & a, const SyncObjectMask & b)
     return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
-} // namespace gles
+SyncObjectMask & operator^=(SyncObjectMask & a, const SyncObjectMask & b)
+{
+    a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<SyncObjectMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -499,7 +670,6 @@ std::ostream & operator<<(std::ostream & stream, const UseProgramStageMask & val
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -508,9 +678,23 @@ UseProgramStageMask operator|(const UseProgramStageMask & a, const UseProgramSta
     return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
+UseProgramStageMask & operator|=(UseProgramStageMask & a, const UseProgramStageMask & b)
+{
+    a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
+    
+    return a;
+}
+
 UseProgramStageMask operator&(const UseProgramStageMask & a, const UseProgramStageMask & b)
 {
     return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
+}
+
+UseProgramStageMask & operator&=(UseProgramStageMask & a, const UseProgramStageMask & b)
+{
+    a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
+    
+    return a;
 }
 
 UseProgramStageMask operator^(const UseProgramStageMask & a, const UseProgramStageMask & b)
@@ -518,8 +702,14 @@ UseProgramStageMask operator^(const UseProgramStageMask & a, const UseProgramSta
     return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
-} // namespace gles
+UseProgramStageMask & operator^=(UseProgramStageMask & a, const UseProgramStageMask & b)
+{
+    a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -533,7 +723,6 @@ std::ostream & operator<<(std::ostream & stream, const UnusedMask & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -542,9 +731,23 @@ UnusedMask operator|(const UnusedMask & a, const UnusedMask & b)
     return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) | static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
+UnusedMask & operator|=(UnusedMask & a, const UnusedMask & b)
+{
+    a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) | static_cast<std::underlying_type<UnusedMask>::type>(b));
+    
+    return a;
+}
+
 UnusedMask operator&(const UnusedMask & a, const UnusedMask & b)
 {
     return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) & static_cast<std::underlying_type<UnusedMask>::type>(b));
+}
+
+UnusedMask & operator&=(UnusedMask & a, const UnusedMask & b)
+{
+    a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) & static_cast<std::underlying_type<UnusedMask>::type>(b));
+    
+    return a;
 }
 
 UnusedMask operator^(const UnusedMask & a, const UnusedMask & b)
@@ -552,8 +755,14 @@ UnusedMask operator^(const UnusedMask & a, const UnusedMask & b)
     return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) ^ static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
-} // namespace gles
+UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b)
+{
+    a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) ^ static_cast<std::underlying_type<UnusedMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -567,7 +776,6 @@ std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -576,9 +784,23 @@ BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & 
     return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
+BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+    
+    return a;
+}
+
 BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
 {
     return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+}
+
+BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+    
+    return a;
 }
 
 BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
@@ -586,8 +808,14 @@ BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & 
     return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
-} // namespace gles
+BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -601,7 +829,6 @@ std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -610,9 +837,23 @@ BufferStorageMask operator|(const BufferStorageMask & a, const BufferStorageMask
     return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) | static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
+BufferStorageMask & operator|=(BufferStorageMask & a, const BufferStorageMask & b)
+{
+    a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) | static_cast<std::underlying_type<BufferStorageMask>::type>(b));
+    
+    return a;
+}
+
 BufferStorageMask operator&(const BufferStorageMask & a, const BufferStorageMask & b)
 {
     return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) & static_cast<std::underlying_type<BufferStorageMask>::type>(b));
+}
+
+BufferStorageMask & operator&=(BufferStorageMask & a, const BufferStorageMask & b)
+{
+    a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) & static_cast<std::underlying_type<BufferStorageMask>::type>(b));
+    
+    return a;
 }
 
 BufferStorageMask operator^(const BufferStorageMask & a, const BufferStorageMask & b)
@@ -620,8 +861,14 @@ BufferStorageMask operator^(const BufferStorageMask & a, const BufferStorageMask
     return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
-} // namespace gles
+BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorageMask & b)
+{
+    a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles
 
 
 namespace gles
@@ -635,7 +882,6 @@ std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value)
 
 } // namespace gles
 
-
 namespace gles
 {
 
@@ -644,9 +890,23 @@ PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
     return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
+PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
+    
+    return a;
+}
+
 PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
 {
     return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
+}
+
+PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
+    
+    return a;
 }
 
 PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
@@ -654,5 +914,11 @@ PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
     return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
-} // namespace gles
+PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
+    
+    return a;
+}
 
+} // namespace gles

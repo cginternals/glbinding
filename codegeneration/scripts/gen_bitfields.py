@@ -23,7 +23,7 @@ def bitfieldDefinition(enum, group, maxlen, usedBitfsByName):
 
 
 def bitfieldImportDefinition(api, prefix, libraryNamespace, enum):
-    return "using %s::%s;" % (api, enumBID(enum))
+    return "using %s::%s;" % (libraryNamespace, enumBID(enum))
 
 
 def forwardBitfield(api, prefix, libraryNamespace, enum):

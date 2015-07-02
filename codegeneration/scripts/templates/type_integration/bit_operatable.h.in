@@ -2,7 +2,10 @@ namespace %a
 {
 
 %ABINDING_API %t operator|(const %t & a, const %t & b);
+%ABINDING_API %t & operator|=(%t & a, const %t & b);
 %ABINDING_API %t operator&(const %t & a, const %t & b);
+%ABINDING_API %t & operator&=(%t & a, const %t & b);
 %ABINDING_API %t operator^(const %t & a, const %t & b);
+%ABINDING_API %t & operator^=(%t & a, const %t & b);
 
 } // namespace %a
