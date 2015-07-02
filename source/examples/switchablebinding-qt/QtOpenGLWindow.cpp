@@ -4,6 +4,8 @@
 #include <QResizeEvent>
 #include <QOpenGLContext>
 #include <QDebug>
+#include <QtPlatformHeaders/QEGLNativeContext>
+#include <QtPlatformHeaders/QGLXNativeContext>
 
 #include "context.h"
 
@@ -12,10 +14,17 @@ QtOpenGLWindow::QtOpenGLWindow()
 , m_initialized(false)
 , m_updatePending(false)
 {
-    auto contextId = createGLContext(static_cast<EGLWindow>(winId()));
+    void * context = nullptr;
+    void * display = nullptr;
 
-    m_context->setNativeHandle(contextId);
-    m_context->create();
+    createGLContext(static_cast<EGLWindow>(winId()), context, display);
+
+    if (context && display)
+    {
+        m_context->setNativeHandle(QVariant::fromValue(QEGLNativeContext(context, display)));
+        //m_context->setNativeHandle(QVariant::fromValue(QGLXNativeContext((GLXContext)context, (Display*)display)));
+        m_context->create();
+    }
 }
 
 /**

@@ -2,7 +2,7 @@
 
 using EGLWindow = unsigned long;
 
-unsigned long long createGLContext(EGLWindow window);
-unsigned long long createGLESContext(EGLWindow window);
+void createGLContext(EGLWindow window, void *&context, void *&display);
+void createGLESContext(EGLWindow window, void *&context, void *&display);
 
 void releaseContext();

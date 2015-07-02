@@ -8,13 +8,13 @@ find_package(OpenGL REQUIRED)
 find_package(OpenGLES REQUIRED)
 find_package(EGL REQUIRED)
 
-find_package(Qt5OpenGL  5.1 QUIET)
-find_package(Qt5Core    5.1 QUIET)
-find_package(Qt5Gui     5.1 QUIET)
-find_package(Qt5Widgets 5.1 QUIET)
+find_package(Qt5OpenGL  5.4 QUIET)
+find_package(Qt5Core    5.4 QUIET)
+find_package(Qt5Gui     5.4 QUIET)
+find_package(Qt5Widgets 5.4 QUIET)
 
 if (NOT Qt5Core_FOUND)
-    message("Example ${target} skipped: Qt5 not found")
+    message("Example ${target} skipped: Qt5.4 not found")
     return()
 endif()
 
