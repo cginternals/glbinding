@@ -32,6 +32,8 @@ int main(int /*argc*/, char* /*argv*/[])
         return -1;
     }
 
+    glfwMakeContextCurrent(glfwWindow);
+
     #ifdef WIN32
     EGLWindow window = (EGLWindow)glfwGetWin32Window(glfwWindow);
 #elif __APPLE__
@@ -40,10 +42,9 @@ int main(int /*argc*/, char* /*argv*/[])
     EGLWindow window = (EGLWindow)glfwGetX11Window(glfwWindow);
 #endif
 
-    createGLContext(window);
-    //createGLESContext(window);
-
     // OpenGL
+
+    createGLContext(window);
 
     initializeGL();
 
@@ -66,7 +67,10 @@ int main(int /*argc*/, char* /*argv*/[])
     uninitializeGL();
 
     // OpenGL ES
+
     /*
+    createGLESContext(window);
+
     initializeGLES();
 
     render1GLES();
