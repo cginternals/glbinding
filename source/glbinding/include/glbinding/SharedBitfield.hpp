@@ -2,6 +2,8 @@
 
 #include <glbinding/SharedBitfield.h>
 
+#include <glbinding/gl/types.h>
+
 namespace glbinding 
 {
 
@@ -47,6 +49,15 @@ auto SharedBitfield<Type>::operator|(SharedBitfield<T...> other) const -> typena
 
 template <typename Type>
 template <typename... T>
+auto SharedBitfield<Type>::operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+{
+    this->m_value |= static_cast<decltype(this->m_value)>(other);
+
+    return *this;
+}
+
+template <typename Type>
+template <typename... T>
 auto SharedBitfield<Type>::operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
 {
     return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value & static_cast<decltype(this->m_value)>(other));
@@ -54,9 +65,27 @@ auto SharedBitfield<Type>::operator&(SharedBitfield<T...> other) const -> typena
 
 template <typename Type>
 template <typename... T>
+auto SharedBitfield<Type>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+{
+    this->m_value &= static_cast<decltype(this->m_value)>(other);
+
+    return *this;
+}
+
+template <typename Type>
+template <typename... T>
 auto SharedBitfield<Type>::operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
 {
     return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
+}
+
+template <typename Type>
+template <typename... T>
+auto SharedBitfield<Type>::operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+{
+    this->m_value ^= static_cast<decltype(this->m_value)>(other);
+
+    return *this;
 }
 
 template <typename Type>
@@ -103,6 +132,15 @@ auto SharedBitfield<Type, Types...>::operator|(SharedBitfield<T...> other) const
 
 template <typename Type, typename... Types>
 template <typename... T>
+auto SharedBitfield<Type, Types...>::operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+{
+    this->m_value |= static_cast<decltype(this->m_value)>(other);
+
+    return *this;
+}
+
+template <typename Type, typename... Types>
+template <typename... T>
 auto SharedBitfield<Type, Types...>::operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
 {
     return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value & static_cast<decltype(this->m_value)>(other));
@@ -110,9 +148,27 @@ auto SharedBitfield<Type, Types...>::operator&(SharedBitfield<T...> other) const
 
 template <typename Type, typename... Types>
 template <typename... T>
+auto SharedBitfield<Type, Types...>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+{
+    this->m_value &= static_cast<decltype(this->m_value)>(other);
+
+    return *this;
+}
+
+template <typename Type, typename... Types>
+template <typename... T>
 auto SharedBitfield<Type, Types...>::operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
 {
     return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
+}
+
+template <typename Type, typename... Types>
+template <typename... T>
+auto SharedBitfield<Type, Types...>::operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+{
+    this->m_value ^= static_cast<decltype(this->m_value)>(other);
+
+    return *this;
 }
 
 template <typename Type, typename... Types>
@@ -146,6 +202,13 @@ operator|(ConvertibleEnum a, Enum b)
 
 template <typename Enum, typename ConvertibleEnum>
 typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+operator|=(Enum & a, ConvertibleEnum b)
+{
+    return a |= static_cast<Enum>(b);
+}
+
+template <typename Enum, typename ConvertibleEnum>
+typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator&(Enum a, ConvertibleEnum b)
 {
     return a & static_cast<Enum>(b);
@@ -160,6 +223,13 @@ operator&(ConvertibleEnum a, Enum b)
 
 template <typename Enum, typename ConvertibleEnum>
 typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+operator&=(Enum & a, ConvertibleEnum b)
+{
+    return a &= static_cast<Enum>(b);
+}
+
+template <typename Enum, typename ConvertibleEnum>
+typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator^(Enum a, ConvertibleEnum b)
 {
     return a ^ static_cast<Enum>(b);
@@ -170,6 +240,13 @@ typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underly
 operator^(ConvertibleEnum a, Enum b)
 {
     return static_cast<Enum>(a) ^ b;
+}
+
+template <typename Enum, typename ConvertibleEnum>
+typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+operator^=(Enum & a, ConvertibleEnum b)
+{
+    return a ^= static_cast<Enum>(b);
 }
 
 } // namespace glbinding
