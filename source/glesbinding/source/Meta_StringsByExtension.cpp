@@ -9,7 +9,7 @@ using namespace gles;
 namespace glesbinding
 {
 
-const std::unordered_map<GLESextension, std::string> Meta_StringsByExtension
+const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
 {
 #ifdef STRINGS_BY_SYMBOLS
     { GLextension::GL_AMD_compressed_3DC_texture, "GL_AMD_compressed_3DC_texture" },

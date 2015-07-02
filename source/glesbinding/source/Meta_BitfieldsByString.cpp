@@ -9,7 +9,7 @@ using namespace gles;
 namespace glesbinding
 {
 
-const std::unordered_map<std::string, GLESbitfield> Meta_BitfieldsByString
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
 {
 #ifdef SYMBOLS_BY_STRINGS
     { "GL_DEPTH_BUFFER_BIT", static_cast<GLbitfield>(AttribMask::GL_DEPTH_BUFFER_BIT) },

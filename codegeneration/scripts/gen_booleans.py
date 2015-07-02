@@ -21,7 +21,7 @@ def genBooleans(api, prefix, libraryNamespace, enums, outputdir, outputfile, for
 
     of_all = outputfile.replace("?", "F")
 
-    t = template(of_all).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(of_all).replace("%a", libraryNamespace).replace("%A", prefix.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
 

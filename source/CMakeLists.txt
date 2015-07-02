@@ -15,6 +15,7 @@ set(IDE_FOLDER "")
 add_subdirectory(khrapi)
 add_subdirectory(eglbinding)
 add_subdirectory(glbinding)
+add_subdirectory(glesbinding)
 
 # Tests
 set(IDE_FOLDER "Tests")

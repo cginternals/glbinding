@@ -58,15 +58,15 @@ def namespacify(type, namespace):
     return namespace + "::" + type
 
 
-def bitfieldType(api, param):
+def bitfieldType(api, prefix, libraryNamespace, param):
 
-    return param.groupString if param.groupString else api.upper() + "bitfield" 
+    return param.groupString if param.groupString else prefix.upper() + "bitfield" 
 
 
 def paramSignature(api, prefix, libraryNamespace, param, forward):
 
     if param.type == prefix.upper() + "bitfield":
-        return bitfieldType(api, param)
+        return bitfieldType(api, prefix, libraryNamespace, param)
     
     return param.type
 
@@ -80,7 +80,7 @@ def functionMember(api, prefix, libraryNamespace, function):
 def functionDecl(api, prefix, libraryNamespace, function):
 
     params = ", ".join([namespacify(function.returntype, libraryNamespace)] + [ namespacify(paramSignature(api, prefix, libraryNamespace, p, True), libraryNamespace) for p in function.params ])
-    return tab + "static khrapi::Function<Binding, %s> %s;" % (params, functionBID(function)[len(api.upper()):])
+    return tab + "static khrapi::Function<Binding, %s> %s;" % (params, functionBID(function)[len(prefix):])
 
 
 def functionForward(api, prefix, libraryNamespace, function, feature, version):
@@ -90,7 +90,7 @@ def functionForward(api, prefix, libraryNamespace, function, feature, version):
     if feature:
         return importFunctionTemplate % (libraryNamespace+"::", functionBID(function))
     else:
-        return functionForwardTemplate % (prefix.upper(), function.returntype, functionBID(function), params)
+        return functionForwardTemplate % (libraryNamespace.upper(), function.returntype, functionBID(function), params)
 
 
 def functionInlineForwardImplementation(api, prefix, libraryNamespace, function, feature, version):
@@ -126,10 +126,10 @@ def functionImplementation(api, prefix, libraryNamespace, function, feature, ver
 
     if feature and function.returntype in [ prefix.upper() + "enum", prefix.upper() + "bitfield" ]:
         return functionImplementationTemplateRValueCast % (function.returntype, functionBID(function), params,
-            version, function.returntype, functionBID(function)[len(api):], paramNames)
+            version, function.returntype, functionBID(function)[len(prefix):], paramNames)
     else:
         return functionImplementationTemplate % (function.returntype, functionBID(function), params,
-            api, functionBID(function)[len(api):], paramNames)
+            libraryNamespace, functionBID(function)[len(prefix):], paramNames)
 
 
 def paramPass(param): 
@@ -139,7 +139,7 @@ def paramPass(param):
 
 def functionList(api, prefix, libraryNamespace, commands):
 
-    return (",\n" + tab).join([ "&"+ functionBID(f)[len(api):] for f in commands ])
+    return (",\n" + tab).join([ "&"+ functionBID(f)[len(prefix):] for f in commands ])
 
 
 def genFunctionObjects_h(api, prefix, libraryNamespace, commands, outputdir, outputfile):    
@@ -163,7 +163,7 @@ def genFunctionObjects_cpp(api, prefix, libraryNamespace, commands, outputdir, o
     status(outputdir + of)
 
     with open(outputdir + of, 'w') as file:
-        file.write(t.replace("%b", functionBID(commands[0])[len(prefix):]).replace("%e", functionBID(commands[-1])[len(api):]) % (
+        file.write(t.replace("%b", functionBID(commands[0])[len(prefix):]).replace("%e", functionBID(commands[-1])[len(prefix):]) % (
             "\n".join([ functionMember(api, prefix, libraryNamespace, f) for f in commands ]),
             functionList(api, prefix, libraryNamespace, commands)
         ))

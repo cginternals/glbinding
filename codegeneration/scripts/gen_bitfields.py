@@ -76,7 +76,7 @@ def genFeatureBitfields(api, prefix, libraryNamespace, enums, feature, outputdir
     
     version = versionBID(feature, core, ext)
     
-    t = template(of_all).replace("%f", version).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(of_all).replace("%f", version).replace("%a", libraryNamespace).replace("%A", prefix.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", version)
 

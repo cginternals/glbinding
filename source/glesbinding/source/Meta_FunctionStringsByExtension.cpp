@@ -9,7 +9,7 @@ using namespace gles;
 namespace glesbinding
 {
 
-const std::unordered_map<GLESextension, std::set<std::string>> Meta_FunctionStringsByExtension
+const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension
 {
 #ifdef STRINGS_BY_SYMBOLS
     { GLES2extension::GL_AMD_performance_monitor, { "glGetPerfMonitorGroupsAMD", "glGetPerfMonitorCountersAMD", "glGetPerfMonitorGroupStringAMD", "glGetPerfMonitorCounterStringAMD", "glGetPerfMonitorCounterInfoAMD", "glGenPerfMonitorsAMD", "glDeletePerfMonitorsAMD", "glSelectPerfMonitorCountersAMD", "glBeginPerfMonitorAMD", "glEndPerfMonitorAMD", "glGetPerfMonitorCounterDataAMD" } },

@@ -24,6 +24,7 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/source/khrapi/include
     ${CMAKE_SOURCE_DIR}/source/eglbinding/include
     ${CMAKE_SOURCE_DIR}/source/glbinding/include
+    ${CMAKE_SOURCE_DIR}/source/glesbinding/include
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
@@ -37,6 +38,7 @@ set(libs
     khrapi
     eglbinding
     glbinding
+    glesbinding
 )
 
 

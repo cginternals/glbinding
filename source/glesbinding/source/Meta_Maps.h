@@ -15,22 +15,22 @@ namespace glesbinding
 
 class Version;
 
-extern const std::unordered_map<std::string, gles::GLESbitfield> Meta_BitfieldsByString;
-extern const std::unordered_map<gles::GLESbitfield, std::string> Meta_StringsByBitfield;
+extern const std::unordered_map<std::string, gles::GLbitfield> Meta_BitfieldsByString;
+extern const std::unordered_map<gles::GLbitfield, std::string> Meta_StringsByBitfield;
 
-extern const std::unordered_map<std::string, gles::GLESboolean> Meta_BooleansByString;
-extern const std::unordered_map<gles::GLESboolean, std::string> Meta_StringsByBoolean;
+extern const std::unordered_map<std::string, gles::GLboolean> Meta_BooleansByString;
+extern const std::unordered_map<gles::GLboolean, std::string> Meta_StringsByBoolean;
 
-extern const std::unordered_map<std::string, gles::GLESenum> Meta_EnumsByString;
-extern const std::unordered_map<gles::GLESenum, std::string> Meta_StringsByEnum;
+extern const std::unordered_map<std::string, gles::GLenum> Meta_EnumsByString;
+extern const std::unordered_map<gles::GLenum, std::string> Meta_StringsByEnum;
 
-extern const std::unordered_map<std::string, gles::GLESextension> Meta_ExtensionsByString;
-extern const std::unordered_map<gles::GLESextension, std::string> Meta_StringsByExtension;
+extern const std::unordered_map<std::string, gles::GLextension> Meta_ExtensionsByString;
+extern const std::unordered_map<gles::GLextension, std::string> Meta_StringsByExtension;
 
-extern const std::unordered_map<std::string, std::set<gles::GLESextension>> Meta_ExtensionsByFunctionString;
-extern const std::unordered_map<gles::GLESextension, std::set<std::string>> Meta_FunctionStringsByExtension;
+extern const std::unordered_map<std::string, std::set<gles::GLextension>> Meta_ExtensionsByFunctionString;
+extern const std::unordered_map<gles::GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
 
-extern const std::unordered_map<gles::GLESextension, Version> Meta_ReqVersionsByExtension;
+extern const std::unordered_map<gles::GLextension, Version> Meta_ReqVersionsByExtension;
 
 extern const std::unordered_map<gles::AttribMask, std::string> Meta_StringsByAttribMask;
 extern const std::unordered_map<gles::BufferBitQCOM, std::string> Meta_StringsByBufferBitQCOM;

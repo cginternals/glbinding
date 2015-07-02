@@ -1,5 +1,5 @@
 
-set(target glbinding)
+set(target glesbinding)
 message(STATUS "Lib ${target}")
 
 
@@ -29,7 +29,7 @@ set(libs
 if (OPTION_BUILD_STATIC)
     add_definitions("-D${META_PROJECT_NAME_UPPER}_STATIC")
 else()
-    add_definitions("-DGLBINDING_EXPORTS")
+    add_definitions("-DGLESBINDING_EXPORTS")
 endif()
 
 if (OPTION_STRINGS_BY_SYMBOLS)
@@ -46,9 +46,9 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
-    ${include_path}/glbinding_api.h
+    ${include_path}/glesbinding_api.h
 
-    ${include_path}/nogl.h
+    ${include_path}/nogles.h
 
     ${include_path}/Binding.h
     ${include_path}/Meta.h

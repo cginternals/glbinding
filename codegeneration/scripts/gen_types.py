@@ -26,15 +26,15 @@ type_integration_map = {
 }
 
 
-def convertTypedef(api, type):
+def convertTypedef(api, prefix, libraryNamespace, type):
 
     if type.isGroup:
         return type.value
 
     t = parseType(type)
 
-    if type.name[len(api):] in enum_classes:
-        return "enum class " + type.name[0:len(api)] + type.name[len(api):].lower() + " : unsigned int;" # EGLBoolean <-> GLboolean
+    if type.name[len(prefix):] in enum_classes:
+        return "enum class " + type.name[0:len(prefix)] + type.name[len(prefix):].lower() + " : unsigned int;" # EGLBoolean <-> GLboolean
 
     if type.ignoreName:
         return type.value
@@ -46,9 +46,9 @@ def convertTypedef(api, type):
         return t
 
 
-def convertType(api, type):
+def convertType(api, prefix, libraryNamespace, type):
 
-    return convertTypedef(api, type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(" + api.upper() + "_APIENTRY *)")
+    return convertTypedef(api, prefix, libraryNamespace, type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(" + prefix.upper() + "_APIENTRY *)")
 
 
 def forwardType(api, prefix, libraryNamespace, type):
@@ -85,7 +85,7 @@ def genFeatureTypes(api, prefix, libraryNamespace, types, bitfGroups, feature, o
 
     version = versionBID(feature, core, ext)
 
-    t = template(of_all).replace("%f", version).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(of_all).replace("%f", version).replace("%a", libraryNamespace).replace("%A", prefix.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", version)
 
@@ -107,7 +107,7 @@ def genTypes_h(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outp
 
     of_all = outputfile.replace("?", "F")
 
-    t = template(of_all).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(of_all).replace("%a", libraryNamespace).replace("%A", prefix.upper())
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
 
@@ -137,8 +137,8 @@ def genTypes_h(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outp
                     type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", group.name))
 
             file.write(t % (
-                ("\n".join([ string for string in [ convertType(api, t) for t in types if t.isInclude ] if string ])),
-                ("\n".join([ string for string in [ convertType(api, t) for t in types if not t.isInclude ] if string ])),
+                ("\n".join([ string for string in [ convertType(api, prefix, libraryNamespace, t) for t in types if t.isInclude ] if string ])),
+                ("\n".join([ string for string in [ convertType(api, prefix, libraryNamespace, t) for t in types if not t.isInclude ] if string ])),
                 ("\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ])),
                 ("\n".join([ t for t in type_integrations ]))
             ))
@@ -148,18 +148,18 @@ def genTypes_cpp(api, prefix, libraryNamespace, types, bitfGroups, outputdir, ou
 
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
-    t = template(of).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(of).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     status(od + of)
 
     type_integrations = []
     for typename, integrations in type_integration_map.items():
         for integration in integrations:
-            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", prefix.upper() + typename)) 
+            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", libraryNamespace).replace("%A", prefix.upper()).replace("%t", prefix.upper() + typename)) 
 
     for group in bitfGroups:
         for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
-            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", group.name))
+            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%a", libraryNamespace).replace("%A", prefix.upper()).replace("%t", group.name))
 
     if not os.path.exists(od):
         os.makedirs(od)

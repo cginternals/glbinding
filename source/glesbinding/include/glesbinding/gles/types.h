@@ -12,9 +12,9 @@
 #include <string>
 
 #ifdef _MSC_VER
-#define GLES_APIENTRY __stdcall
+#define GL_APIENTRY __stdcall
 #else
-#define GLES_APIENTRY
+#define GL_APIENTRY
 #endif
 
 #include <KHR/khrplatform.h>
@@ -22,7 +22,7 @@
 namespace gles
 {
 
-enum class GLESextension : int;
+enum class GLextension : int;
 #ifndef GLEXT_64_TYPES_DEFINED
 /* This code block is duplicated in glxext.h, so must be protected */
 #define GLEXT_64_TYPES_DEFINED
@@ -60,8 +60,8 @@ typedef unsigned __int64 uint64_t;
 #include <inttypes.h>
 #endif
 #endif
-using GLenum = unsigned int;
-using GLboolean = unsigned char;
+enum class GLenum : unsigned int;
+enum class GLboolean : unsigned int;
 using GLbitfield = unsigned int;
 using GLvoid = void;
 using GLbyte = signed char;
@@ -98,9 +98,9 @@ using GLuint64EXT = uint64_t;
 using GLsync = struct __GLsync *;
 struct _cl_context;
 struct _cl_event;
-using GLDEBUGPROC = void (GLES2_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
-using GLDEBUGPROCARB = void (GLES2_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
-using GLDEBUGPROCKHR = void (GLES2_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROC = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROCARB = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROCKHR = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
 using GLbyte = khronos_int8_t;
 using GLubyte = khronos_uint8_t;
 using GLfloat = khronos_float_t;
@@ -112,7 +112,7 @@ using GLint64EXT = khronos_int64_t;
 using GLuint64EXT = khronos_uint64_t;
 using GLintptr = khronos_intptr_t;
 using GLsizeiptr = khronos_ssize_t;
-using GLDEBUGPROCAMD = void (GLES2_APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
+using GLDEBUGPROCAMD = void (GL_APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
 using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
 using GLuint_array_2 = std::array<GLuint, 2>;

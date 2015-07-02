@@ -9,7 +9,7 @@ using namespace gles;
 namespace glesbinding
 {
 
-const std::unordered_map<GLESboolean, std::string> Meta_StringsByBoolean
+const std::unordered_map<GLboolean, std::string> Meta_StringsByBoolean
 {
 #ifdef STRINGS_BY_SYMBOLS
     

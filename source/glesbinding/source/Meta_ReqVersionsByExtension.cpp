@@ -10,7 +10,7 @@ using namespace gles;
 namespace glesbinding
 {
 
-const std::unordered_map<GLESextension, Version> Meta_ReqVersionsByExtension
+const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
 {
     
 };

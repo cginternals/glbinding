@@ -1,15 +1,20 @@
 #include "rendergles.h"
 
-#include <unistd.h>
+//#include <GLES3/gl3.h>
 
-#include <GLES3/gl3.h>
+#include <glesbinding/gles/gles.h>
+#include <glesbinding/Binding.h>
+
+using namespace gles;
 
 void initializeGLES()
 {
+    glesbinding::Binding::initialize();
 }
 
 void uninitializeGLES()
 {
+    glesbinding::Binding::releaseCurrentContext();
 }
 
 void render1GLES()

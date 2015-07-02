@@ -6,7 +6,7 @@ def genExtensions(api, prefix, libraryNamespace, extensions, outputdir, outputfi
 
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
-    t = template(of).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(of).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     status(od + of)
     

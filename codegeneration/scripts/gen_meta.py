@@ -16,7 +16,7 @@ def genMetaStringsByExtension(api, prefix, libraryNamespace, extensions, outputd
 
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(t % (",\n" + tab).join(
@@ -27,7 +27,7 @@ def genMetaExtensionsByString(api, prefix, libraryNamespace, extensions, outputd
 
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(t % (",\n" + tab).join(
@@ -61,7 +61,7 @@ def metaStringsByBitfieldGroup(group):
 def genMetaMaps(api, prefix, libraryNamespace, enums, outputdir, outputfile, bitfGroups):
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
     
     with open(outputdir + outputfile, 'w') as file:
         file.write(t % ("\n".join([ metaBitfieldGroupToStringMap(api, prefix, libraryNamespace, g) for g in bitfGroups ])))
@@ -69,7 +69,7 @@ def genMetaMaps(api, prefix, libraryNamespace, enums, outputdir, outputfile, bit
 def genMetaStringsByEnum(api, prefix, libraryNamespace, enums, outputdir, outputfile, type):
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     pureEnums = [ e for e in enums if e.type == type ]
     d = sorted([ es[0] for v, es in groupEnumsByValue(pureEnums).items() ])
@@ -81,7 +81,7 @@ def genMetaStringsByEnum(api, prefix, libraryNamespace, enums, outputdir, output
 def genMetaStringsByBitfield(api, prefix, libraryNamespace, bitfGroups, outputdir, outputfile):
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     d = sorted([ metaStringsByBitfieldGroup(g) for g in bitfGroups ])
     
@@ -95,7 +95,7 @@ def genMetaBitfieldByString(api, prefix, libraryNamespace, bitfGroups, outputdir
     map = [ (",\n"+tab).join([ '{ "%s", static_cast<%sbitfield>(%s::%s) }' % (e.name, prefix.upper(), g.name, e.name) 
         for e in sorted(g.enums) ]) for g in sorted(bitfGroups) ]
 
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(t % ((",\n" + tab).join(map)))
@@ -104,7 +104,7 @@ def genMetaEnumsByString(api, prefix, libraryNamespace, enums, outputdir, output
 
     status(outputdir + outputfile)
     
-    t = t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     pureEnums = [ e for e in enums if e.type == type ]
 
@@ -159,7 +159,7 @@ def genReqVersionsByExtension(api, prefix, libraryNamespace, extensions, outputd
 
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     inCoreExts = [ e for e in extensions if e.incore ]
     sortedExts = sorted(inCoreExts, key = lambda e : e.incore)
@@ -185,7 +185,7 @@ def genFunctionStringsByExtension(api, prefix, libraryNamespace, extensions, out
 
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     with open(outputdir + outputfile, 'w') as file:        
         file.write(t % ((",\n" + tab).join(
@@ -196,7 +196,7 @@ def genExtensionsByFunctionString(api, prefix, libraryNamespace, extensions, out
 
     status(outputdir + outputfile)
     
-    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     extensionsByCommands = dict()
     for e in extensions:

@@ -6,7 +6,7 @@
 namespace gles
 {
 
-enum class GLESextension : int // GLESextension is not a type introduced by any Khronos API so far
+enum class GLextension : int // GLextension is not a type introduced by any Khronos API so far
 {
     UNKNOWN = -1,
     GL_AMD_compressed_3DC_texture,

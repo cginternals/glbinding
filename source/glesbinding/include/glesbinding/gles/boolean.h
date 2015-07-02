@@ -6,7 +6,7 @@
 namespace gles
 {
 
-enum class GLESboolean : unsigned int
+enum class GLboolean : unsigned int
 {
     GL_FALSE = 0,
     GL_TRUE = 1

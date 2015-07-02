@@ -57,7 +57,7 @@ def genValues(api, prefix, libraryNamespace, enums, outputdir, outputfile, forwa
 
     of_all = outputfile.replace("?", "F")
 
-    t = template(of_all).replace("%a", api)
+    t = template(of_all).replace("%a", libraryNamespace)
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
 

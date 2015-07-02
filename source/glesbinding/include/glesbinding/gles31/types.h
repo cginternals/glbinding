@@ -7,7 +7,7 @@
 namespace gles31
 {
 
-using gles::GLESextension;
+using gles::GLextension;
 using gles::GLenum;
 using gles::GLboolean;
 using gles::GLbitfield;

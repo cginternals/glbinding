@@ -9,7 +9,7 @@ using namespace gles;
 namespace glesbinding
 {
 
-const std::unordered_map<std::string, std::set<GLESextension>> Meta_ExtensionsByFunctionString
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString
 {
 #ifdef SYMBOLS_BY_STRINGS
     { "glActiveShaderProgramEXT", { GLextension::GL_EXT_separate_shader_objects } },

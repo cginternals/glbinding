@@ -9,7 +9,7 @@ using namespace gles;
 namespace glesbinding
 {
 
-const std::unordered_map<GLESenum, std::string> Meta_StringsByEnum
+const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
 {
 #ifdef STRINGS_BY_SYMBOLS
     

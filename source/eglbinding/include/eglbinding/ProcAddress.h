@@ -2,11 +2,11 @@
 
 #include <eglbinding/eglbinding_api.h>
 
+#include <khrapi/ProcAddress.h>
+
 namespace eglbinding 
 {
 
-using ProcAddress = void(*)();
-
-EGLBINDING_API ProcAddress getProcAddress(const char * name);
+EGLBINDING_API khrapi::ProcAddress getProcAddress(const char * name);
 
 } // namespace eglbinding
