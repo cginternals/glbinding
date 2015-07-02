@@ -5,7 +5,7 @@ if(OPTION_BUILD_EXAMPLES)
     add_subdirectory("cubescape")
     add_subdirectory("cubescape-log")
     add_subdirectory("cubescape-qt")
-    add_subdirectory("switchablebinding-qt")
+    add_subdirectory("switchablebinding")
 
     install(FILES ${GLFW_BINARY} DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples)
 endif()
