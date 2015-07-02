@@ -30,7 +30,7 @@ namespace glesbinding
 
 bool Meta::stringsByGL()
 {
-#ifdef STRINGS_BY_SYMBOL
+#ifdef STRINGS_BY_SYMBOLS
     return true;
 #else
     return false;

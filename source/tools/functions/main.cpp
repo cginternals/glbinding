@@ -142,7 +142,7 @@ int main()
     std::cout << "                 " << assigned << " assigned to extensions";
 
     if (!Meta::glByStrings())
-        std::cout << " (none assigned, since the glbinding used was compiled without GL_BY_STRINGS support)." << std::endl;
+        std::cout << " (none assigned, since the glbinding used was compiled without SYMBOLS_BY_STRINGS support)." << std::endl;
     else
         std::cout << "." << std::endl;
 

@@ -40,8 +40,8 @@ endif()
 if (OPTION_STRINGS_BY_GL)
     add_definitions("-DSTRINGS_BY_GL")
 endif()
-if (OPTION_GL_BY_STRINGS)
-    add_definitions("-DGL_BY_STRINGS")
+if (OPTION_SYMBOLS_BY_STRINGS)
+    add_definitions("-DSYMBOLS_BY_STRINGS")
 endif()
 
 

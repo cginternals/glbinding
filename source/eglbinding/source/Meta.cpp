@@ -39,7 +39,7 @@ bool Meta::stringsByGL()
 
 bool Meta::glByStrings()
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     return true;
 #else
     return false;
