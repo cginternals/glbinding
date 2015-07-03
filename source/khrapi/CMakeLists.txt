@@ -46,6 +46,8 @@ set(api_includes
     ${include_path}/Function.hpp
     ${include_path}/Value.h
     ${include_path}/Value.hpp
+    ${include_path}/Version.h
+    ${include_path}/Version.hpp
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.hpp
     ${include_path}/State.h
@@ -61,6 +63,7 @@ set(sources
     ${source_path}/AbstractState.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Value.cpp
+    ${source_path}/Version.cpp
 
     ${source_path}/RingBuffer.h
     ${source_path}/RingBuffer.hpp
