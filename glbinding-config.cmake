@@ -17,13 +17,8 @@ macro (find LIB_NAME HEADER)
 
     set(HINT_PATHS ${ARGN})
 
-    if (${LIB_NAME} STREQUAL "glbinding")
-        set(LIB_NAME_UPPER GLBINDING)
-        set(LIBNAME glbinding)
-    else()
-        string(TOUPPER GLBINDING_${LIB_NAME} LIB_NAME_UPPER)
-        set(LIBNAME glbinding${LIB_NAME})
-    endif()
+    set(LIB_NAME_UPPER "${LIB_NAME}")
+    set(LIBNAME "${LIB_NAME}")
 
     find_path(${LIB_NAME_UPPER}_INCLUDE_DIR ${HEADER}
         ${ENVGLBINDING_DIR}/include
@@ -96,7 +91,10 @@ set(LIB_PATHS
 )
 
 
+find(khrapi khrapi/khrapi_api.h ${LIB_PATHS})
 find(glbinding glbinding/glbinding_api.h ${LIB_PATHS})
+find(eglbinding eglbinding/eglbinding_api.h ${LIB_PATHS})
+find(glesbinding glesbinding/glesbinding_api.h ${LIB_PATHS})
 
 if (GLBINDING_LIBRARY AND WIN32)
     set(GLBINDING_BINARIES "")
