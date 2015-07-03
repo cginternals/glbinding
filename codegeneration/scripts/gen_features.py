@@ -36,7 +36,7 @@ def genFeature(api, prefix, libraryNamespace, feature, outputdir, outputfile, co
         os.makedirs(od)
 
     with open(od + of, 'w') as file:
-        if core or ext or (not feature):
+        if core or ext or (not feature) or (api != "gl"):
             file.write(t.replace("%f", version) % ("", "", "", "", "", ""))
         else:
             file.write(t.replace("%f", version) % (

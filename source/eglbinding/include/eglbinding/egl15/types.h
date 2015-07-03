@@ -9,7 +9,7 @@ namespace egl15
 
 using egl::EGLextension;
 using egl::EGLint;
-using egl::EGLBoolean;
+using egl::EGLboolean;
 using egl::EGLenum;
 using egl::EGLAttribKHR;
 using egl::EGLAttrib;

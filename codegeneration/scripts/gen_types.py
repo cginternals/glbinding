@@ -58,6 +58,9 @@ def forwardType(api, prefix, libraryNamespace, type):
 
 def typeImport(api, prefix, libraryNamespace, type):
 
+    if type.name[len(prefix):] in enum_classes:
+        return "using " + libraryNamespace + "::" + type.name[0:len(prefix)] + type.name[len(prefix):].lower() + ";" # EGLBoolean <-> GLboolean
+    
     return "using " + libraryNamespace + "::" + type.name + ";"
 
 

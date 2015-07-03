@@ -43,7 +43,7 @@ def genFeatureValues(api, prefix, libraryNamespace, values, feature, outputdir, 
     
     groups = []
     for type in sorted(tgrouped.keys()):
-        groups.append("\n".join([ ("using %s::%s;" % (prefix, (enumBID(c)))) for c in tgrouped[type] if
+        groups.append("\n".join([ ("using %s::%s;" % (libraryNamespace, (enumBID(c)))) for c in tgrouped[type] if
             (not ext and c.supported(feature, core)) or (ext and not c.supported(feature, False)) ]))
     
     if not os.path.exists(od):
