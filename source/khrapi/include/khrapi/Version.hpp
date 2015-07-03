@@ -46,41 +46,41 @@ Version<Api> & Version<Api>::operator=(Version && version)
 }
 
 template <typename Api>
-bool Version<Api>::operator<(const Version & version) const
+inline bool Version<Api>::operator<(const Version & version) const
 {
     return m_major < version.m_major
         || (m_major == version.m_major && m_minor < version.m_minor);
 }
 
 template <typename Api>
-bool Version<Api>::operator>(const Version & version) const
+inline bool Version<Api>::operator>(const Version & version) const
 {
     return m_major > version.m_major
         || (m_major == version.m_major && m_minor > version.m_minor);
 }
 
 template <typename Api>
-bool Version<Api>::operator==(const Version & version) const
+inline bool Version<Api>::operator==(const Version & version) const
 {
     return m_major == version.m_major
         && m_minor == version.m_minor;
 }
 
 template <typename Api>
-bool Version<Api>::operator!=(const Version & version) const
+inline bool Version<Api>::operator!=(const Version & version) const
 {
     return m_major != version.m_major
         || m_minor != version.m_minor;
 }
 
 template <typename Api>
-bool Version<Api>::operator>=(const Version & version) const
+inline bool Version<Api>::operator>=(const Version & version) const
 {
     return *this > version || *this == version;
 }
 
 template <typename Api>
-bool Version<Api>::operator<=(const Version & version) const
+inline bool Version<Api>::operator<=(const Version & version) const
 {
     return *this < version || *this == version;
 }
