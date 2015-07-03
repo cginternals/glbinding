@@ -1,0 +1,6 @@
+#pragma once
+
+#include <%abinding/no%a.h>
+#include <%abinding/%a/types.h>
+
+%s

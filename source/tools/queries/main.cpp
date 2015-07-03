@@ -14,6 +14,7 @@
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/types.h>
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/functions.h>
 #include <glbinding/gl/boolean.h>

@@ -1,12 +1,11 @@
 
 #include <glbinding/Meta.h>
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/bitfield.h>
 #include <glbinding/gl/boolean.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/extension.h>
-
-// ToDo: multiple APIs
 
 #include <glbinding/Version.h>
 

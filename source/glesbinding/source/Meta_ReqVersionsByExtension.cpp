@@ -1,6 +1,7 @@
 
 #include "Meta_Maps.h"
 
+#include <glesbinding/gles/typeintegrations.h>
 #include <glesbinding/gles/extension.h>
 #include <glesbinding/Version.h>
 

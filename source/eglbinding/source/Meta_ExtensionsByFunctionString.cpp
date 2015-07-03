@@ -1,6 +1,7 @@
 
 #include "Meta_Maps.h"
 
+#include <eglbinding/egl/typeintegrations.h>
 #include <eglbinding/egl/extension.h>
 
 

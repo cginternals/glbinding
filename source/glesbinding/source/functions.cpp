@@ -1,6 +1,7 @@
 #include <glesbinding/gles/functions.h>
 
 #include <glesbinding/Binding.h>
+#include <glesbinding/gles/typeintegrations.h>
 
 #include <glesbinding/Value.h>
 

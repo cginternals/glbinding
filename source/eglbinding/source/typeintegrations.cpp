@@ -1,5 +1,5 @@
 
-#include <eglbinding/egl/types.h>
+#include <eglbinding/egl/typeintegrations.h>
 
 #include <eglbinding/Meta.h>
 
@@ -7,7 +7,7 @@
 #include <sstream>
 #include <unordered_map>
 
-#include "../Meta_Maps.h"
+#include "Meta_Maps.h"
 
 template <typename T>
 std::string bitfieldString(T value, const std::unordered_map<T, std::string> & map)

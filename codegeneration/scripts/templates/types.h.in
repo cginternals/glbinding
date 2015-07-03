@@ -27,8 +27,3 @@ enum class %Aextension : int;
 %s
 
 } // namespace %a
-
-
-// Type Integrations
-
-%s

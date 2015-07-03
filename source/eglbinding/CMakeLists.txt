@@ -94,11 +94,10 @@ set(sources
     ${source_path}/Meta_StringsByBoolean.cpp
     ${source_path}/Meta_StringsByEnum.cpp
     ${source_path}/Meta_StringsByExtension.cpp
+    
+    ${source_path}/functions.cpp
+    ${source_path}/typeintegrations.cpp
 )
-
-# add featured sources
-file(GLOB featured_sources ${source_path}/egl*/*.cpp)
-list(APPEND sources ${featured_sources})
 
 # Group source files
 set(header_group "Header Files (API)")

@@ -2,7 +2,6 @@
 
 #include <eglbinding/noegl.h>
 
-#include <eglbinding/egl/extension.h>
 #include <eglbinding/egl15/types.h>
 #include <eglbinding/egl15ext/types.h>
 #include <eglbinding/egl15/boolean.h>
@@ -15,3 +14,5 @@
 #include <eglbinding/egl15ext/enum.h>
 #include <eglbinding/egl15/functions.h>
 #include <eglbinding/egl15ext/functions.h>
+#include <eglbinding/egl/typeintegrations.h>
+#include <eglbinding/egl/extension.h>

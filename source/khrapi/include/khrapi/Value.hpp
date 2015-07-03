@@ -2,6 +2,8 @@
 
 #include <khrapi/Value.h>
 
+#include <iostream>
+
 namespace khrapi 
 {
 

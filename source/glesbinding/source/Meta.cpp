@@ -1,12 +1,11 @@
 
 #include <glesbinding/Meta.h>
 
+#include <glesbinding/gles/typeintegrations.h>
 #include <glesbinding/gles/bitfield.h>
 #include <glesbinding/gles/boolean.h>
 #include <glesbinding/gles/enum.h>
 #include <glesbinding/gles/extension.h>
-
-// ToDo: multiple APIs
 
 #include <glesbinding/Version.h>
 

@@ -2,7 +2,6 @@
 
 #include <glesbinding/nogles.h>
 
-#include <glesbinding/gles/extension.h>
 #include <glesbinding/gles31/types.h>
 #include <glesbinding/gles31ext/types.h>
 #include <glesbinding/gles31/boolean.h>
@@ -15,3 +14,5 @@
 #include <glesbinding/gles31ext/enum.h>
 #include <glesbinding/gles31/functions.h>
 #include <glesbinding/gles31ext/functions.h>
+#include <glesbinding/gles/typeintegrations.h>
+#include <glesbinding/gles/extension.h>

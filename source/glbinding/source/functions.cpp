@@ -1,6 +1,7 @@
 #include <glbinding/gl/functions.h>
 
 #include <glbinding/Binding.h>
+#include <glbinding/gl/typeintegrations.h>
 
 #include <glbinding/Value.h>
 

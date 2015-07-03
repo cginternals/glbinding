@@ -1,6 +1,7 @@
 
 #include "Meta_Maps.h"
 
+#include <%abinding/%a/typeintegrations.h>
 #include <%abinding/%a/enum.h>
 
 

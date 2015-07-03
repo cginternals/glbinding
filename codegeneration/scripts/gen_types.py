@@ -125,26 +125,43 @@ def genTypes_h(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outp
                 "\n".join([ "using %s = %s::%s;" % (g.name, libraryNamespace, g.name) for g in bitfGroups ]),)
             )
 
-        else:            
-            type_integrations = []
-
-            for typename, integrations in type_integration_map.items():
-                for integration in integrations:
-                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", prefix.upper() + typename))
-
-            for group in bitfGroups:
-                for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
-                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", group.name))
-
+        else:
             file.write(t % (
                 ("\n".join([ string for string in [ convertType(api, prefix, libraryNamespace, t) for t in types if t.isInclude ] if string ])),
                 ("\n".join([ string for string in [ convertType(api, prefix, libraryNamespace, t) for t in types if not t.isInclude ] if string ])),
-                ("\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ])),
-                ("\n".join([ t for t in type_integrations ]))
+                ("\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ]))
             ))
 
 
-def genTypes_cpp(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outputfile):
+def genTypeIntegrations_h(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outputfile):
+
+    of_all = outputfile.replace("?", "F")
+
+    t = template(of_all).replace("%a", libraryNamespace).replace("%A", prefix.upper())
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", "")
+
+    status(od + of)
+
+    if not os.path.exists(od):
+        os.makedirs(od)
+
+    with open(od + of, 'w') as file:
+         
+        type_integrations = []
+
+        for typename, integrations in type_integration_map.items():
+            for integration in integrations:
+                type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", prefix.upper() + typename))
+
+        for group in bitfGroups:
+            for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
+                type_integrations.append(template("type_integration/%s.h" % integration).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper()).replace("%t", group.name))
+
+        file.write(t % ("\n".join([ t for t in type_integrations ])))
+
+
+def genTypeIntegrations_cpp(api, prefix, libraryNamespace, types, bitfGroups, outputdir, outputfile):
 
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")

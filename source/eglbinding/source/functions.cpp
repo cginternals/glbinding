@@ -1,6 +1,7 @@
 #include <eglbinding/egl/functions.h>
 
 #include <eglbinding/Binding.h>
+#include <eglbinding/egl/typeintegrations.h>
 
 #include <eglbinding/Value.h>
 

@@ -40,9 +40,9 @@ def genFeature(api, prefix, libraryNamespace, feature, outputdir, outputfile, co
             file.write(t.replace("%f", version) % ("", "", "", "", "", ""))
         else:
             file.write(t.replace("%f", version) % (
-                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/types"     + versionExtFile + ".h>",
-                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/boolean"   + versionExtFile + ".h>",
-                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/values"    + versionExtFile + ".h>",
-                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/bitfield"  + versionExtFile + ".h>",
-                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/enum"      + versionExtFile + ".h>",
-                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/functions" + versionExtFile + ".h>"))
+                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/types"            + versionExtFile + ".h>",
+                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/boolean"          + versionExtFile + ".h>",
+                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/values"           + versionExtFile + ".h>",
+                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/bitfield"         + versionExtFile + ".h>",
+                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/enum"             + versionExtFile + ".h>",
+                "\n#include <"+libraryNamespace+"binding/" + libraryNamespace + versionExtDir + "/functions"        + versionExtFile + ".h>"))

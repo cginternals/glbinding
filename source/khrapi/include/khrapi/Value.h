@@ -3,9 +3,9 @@
 #include <khrapi/khrapi_api.h>
 
 #include <vector>
+#include <iosfwd>
 
 #include <khrapi/AbstractValue.h>
-//#include <glbinding/gl/types.h>
 
 namespace khrapi 
 {

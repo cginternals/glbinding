@@ -2,7 +2,6 @@
 
 #include <glbinding/nogl.h>
 
-#include <glbinding/gl/extension.h>
 #include <glbinding/gl11/types.h>
 #include <glbinding/gl11ext/types.h>
 #include <glbinding/gl11/boolean.h>
@@ -15,3 +14,5 @@
 #include <glbinding/gl11ext/enum.h>
 #include <glbinding/gl11/functions.h>
 #include <glbinding/gl11ext/functions.h>
+#include <glbinding/gl/typeintegrations.h>
+#include <glbinding/gl/extension.h>

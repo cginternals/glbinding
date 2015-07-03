@@ -1,12 +1,11 @@
 
 #include <eglbinding/Meta.h>
 
+#include <eglbinding/egl/typeintegrations.h>
 #include <eglbinding/egl/bitfield.h>
 #include <eglbinding/egl/boolean.h>
 #include <eglbinding/egl/enum.h>
 #include <eglbinding/egl/extension.h>
-
-// ToDo: multiple APIs
 
 #include <eglbinding/Version.h>
 
