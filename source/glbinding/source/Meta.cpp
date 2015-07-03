@@ -6,8 +6,6 @@
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/extension.h>
 
-// ToDo: multiple APIs
-
 #include <glbinding/Version.h>
 
 #include "revision.h"

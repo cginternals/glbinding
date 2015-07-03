@@ -18,6 +18,8 @@
 #include "rendergl.h"
 #include "rendergles.h"
 
+#define USE_OPENGL 1
+
 int main(int /*argc*/, char* /*argv*/[])
 {
     if (!glfwInit())
@@ -44,6 +46,7 @@ int main(int /*argc*/, char* /*argv*/[])
 
     // OpenGL
 
+#ifdef USE_OPENGL
     createGLContext(window);
 
     initializeGL();
@@ -65,10 +68,7 @@ int main(int /*argc*/, char* /*argv*/[])
     sleep(1);
 
     uninitializeGL();
-
-    // OpenGL ES
-
-    /*
+#else
     createGLESContext(window);
 
     initializeGLES();
@@ -90,7 +90,7 @@ int main(int /*argc*/, char* /*argv*/[])
     sleep(1);
 
     uninitializeGLES();
-    */
+#endif
 
     releaseContext();
 

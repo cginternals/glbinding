@@ -6,8 +6,6 @@
 #include <glesbinding/gles/enum.h>
 #include <glesbinding/gles/extension.h>
 
-// ToDo: multiple APIs
-
 #include <glesbinding/Version.h>
 
 #include "revision.h"

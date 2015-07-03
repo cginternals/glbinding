@@ -6,8 +6,6 @@
 #include <eglbinding/egl/enum.h>
 #include <eglbinding/egl/extension.h>
 
-// ToDo: multiple APIs
-
 #include <eglbinding/Version.h>
 
 #include "revision.h"
