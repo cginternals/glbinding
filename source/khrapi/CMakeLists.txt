@@ -62,7 +62,6 @@ set(sources
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractState.cpp
     ${source_path}/AbstractValue.cpp
-    ${source_path}/Value.cpp
     ${source_path}/Version.cpp
 
     ${source_path}/RingBuffer.h

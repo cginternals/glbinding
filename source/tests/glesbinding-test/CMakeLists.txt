@@ -1,58 +1,52 @@
 
-set(target meta)
-message(STATUS "Tool ${target}")
+set(target glesbinding-test)
+message(STATUS "Test ${target}")
 
-
+#
 # External libraries
+#
 
-find_package(OpenGL REQUIRED)
+find_package(EGL REQUIRED)
 
-
+#
 # Includes
+#
 
 include_directories(
-    ${OPENGL_INCLUDE_DIR}
+    ${EGL_INCLUDE_DIR}
 )
 
 include_directories(
     BEFORE
     ${CMAKE_SOURCE_DIR}/source/khrapi/include
-    ${CMAKE_SOURCE_DIR}/source/glbinding/include
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/source/glesbinding/include
+    ${CMAKE_SOURCE_DIR}/source/glesbinding/source
 )
 
-
+#
 # Libraries
+#
 
 set(libs
-    ${OPENGL_LIBRARIES}
+    ${EGL_LIBRARY}
+    ${GMOCK_LIBRARIES}
+    ${GTEST_LIBRARIES}
     khrapi
-    glbinding
+    glesbinding
 )
 
-
-# Compiler definitions
-
-if (OPTION_BUILD_STATIC)
-    add_definitions("-DGLBINDING_STATIC")
-endif()
-
-if (OPTION_STRINGS_BY_SYMBOLS)
-    add_definitions("-DSTRINGS_BY_SYMBOLS")
-endif()
-if (OPTION_SYMBOLS_BY_STRINGS)
-    add_definitions("-DSYMBOLS_BY_STRINGS")
-endif()
-
-
+#
 # Sources
+#	
 
 set(sources
     main.cpp
+    AllVersions_test.cpp
 )
 
-
+#
 # Build executable
+#
 
 add_executable(${target} ${sources})
 
@@ -68,13 +62,5 @@ set_target_properties(${target}
     COMPILE_DEFINITIONS_RELEASE "${DEFAULT_COMPILE_DEFS_RELEASE}"
     LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
+    LINK_FLAGS                  "${DEFAULT_LINKER_FLAGS}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
-
-
-# Deployment
-
-install(TARGETS ${target} COMPONENT tools
-    RUNTIME DESTINATION ${INSTALL_TOOLS}
-#   LIBRARY DESTINATION ${INSTALL_SHARED}
-#   ARCHIVE DESTINATION ${INSTALL_LIB}
-)

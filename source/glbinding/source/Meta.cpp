@@ -29,7 +29,7 @@ namespace glbinding
 
 bool Meta::stringsByGL()
 {
-#ifdef STRINGS_BY_GL
+#ifdef STRINGS_BY_SYMBOLS
     return true;
 #else
     return false;

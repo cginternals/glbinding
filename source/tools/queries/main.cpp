@@ -279,7 +279,7 @@ int main(int argc, const char * argv[])
 {
     if (!Meta::stringsByGL())
     {
-        std::cout << "Strings by GL not supported (enable through OPTION_STRINGS_BY_GL)" << std::endl;
+        std::cout << "Strings by GL not supported (enable through OPTION_STRINGS_BY_SYMBOLS)" << std::endl;
 
         return 1;
     }
