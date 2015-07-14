@@ -152,6 +152,11 @@ void createGLESContext(EGLWindow window)
     eglMakeCurrent(egl_display, egl_surface, egl_surface, egl_context);
 }
 
+void swapBuffers()
+{
+    eglSwapBuffers(egl_display, egl_surface);
+}
+
 void releaseContext()
 {
     eglDestroyContext ( egl_display, egl_context );

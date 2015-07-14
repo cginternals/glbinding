@@ -8,14 +8,23 @@ find_package(OpenGL REQUIRED)
 find_package(OpenGLES REQUIRED)
 find_package(EGL REQUIRED)
 
-find_package(GLFW QUIET)
+find_package(Qt5Core    5.1 QUIET)
+find_package(Qt5Widgets 5.1 QUIET)
+find_package(Qt5Gui     5.1 QUIET)
 
-if (NOT GLFW_FOUND)
-    message("Example ${target} skipped: GLFW not found")
+if (NOT Qt5Core_FOUND)
+    message("Example ${target} skipped: Qt5 not found")
     return()
 endif()
 
 message(STATUS "Example ${target}")
+
+set(CMAKE_AUTOMOC ON)
+set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
+
+# Probably works in the next cmake release -> http://www.cmake.org/Bug/view.php?id=13788
+# What we do not want is automocs beside the project -> http://www.cmake.org/Bug/view.php?id=13688
+set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
 
 
 # Includes
@@ -24,7 +33,6 @@ include_directories(
     ${OPENGL_INCLUDE_DIRS}
     ${OPENGLES_INCLUDE_DIR}
     ${EGL_INCLUDE_DIR}
-    ${GLFW_INCLUDE_DIR}
 )
 
 include_directories(
@@ -43,7 +51,9 @@ set(libs
     ${OPENGL_LIBRARIES}
     ${OPENGLES_LIBRARY}
     ${EGL_LIBRARY}
-    ${GLFW_LIBRARY}
+    Qt5::Core
+    Qt5::Gui
+    Qt5::Widgets
     khrapi
     eglbinding
     glbinding
@@ -62,6 +72,8 @@ endif()
 
 set(sources
     main.cpp
+    mainwindow.cpp
+    mainwindow.h
     context.cpp
     context.h
     rendergl.cpp
