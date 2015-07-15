@@ -8,23 +8,26 @@
 
 #define USE_OPENGL 0
 
-MainWindow::MainWindow()
+MainWindow::MainWindow(bool useGL)
 {
-#if USE_OPENGL
-    QTimer::singleShot(0, this, SLOT(initializeGL()));
-    QTimer::singleShot(0, this, SLOT(render1GL()));
-    QTimer::singleShot(1000, this, SLOT(render2GL()));
-    QTimer::singleShot(2000, this, SLOT(render3GL()));
-    QTimer::singleShot(3000, this, SLOT(render4GL()));
-    QTimer::singleShot(4000, this, SLOT(uninitializeGL()));
-#else
-    QTimer::singleShot(0, this, SLOT(initializeGLES()));
-    QTimer::singleShot(0, this, SLOT(render1GLES()));
-    QTimer::singleShot(1000, this, SLOT(render2GLES()));
-    QTimer::singleShot(2000, this, SLOT(render3GLES()));
-    QTimer::singleShot(3000, this, SLOT(render4GLES()));
-    QTimer::singleShot(4000, this, SLOT(uninitializeGLES()));
-#endif
+    if (useGL)
+    {
+        QTimer::singleShot(0, this, SLOT(initializeGL()));
+        QTimer::singleShot(0, this, SLOT(render1GL()));
+        QTimer::singleShot(1000, this, SLOT(render2GL()));
+        QTimer::singleShot(2000, this, SLOT(render3GL()));
+        QTimer::singleShot(3000, this, SLOT(render4GL()));
+        QTimer::singleShot(4000, this, SLOT(uninitializeGL()));
+    }
+    else
+    {
+        QTimer::singleShot(0, this, SLOT(initializeGLES()));
+        QTimer::singleShot(0, this, SLOT(render1GLES()));
+        QTimer::singleShot(1000, this, SLOT(render2GLES()));
+        QTimer::singleShot(2000, this, SLOT(render3GLES()));
+        QTimer::singleShot(3000, this, SLOT(render4GLES()));
+        QTimer::singleShot(4000, this, SLOT(uninitializeGLES()));
+    }
 
     QTimer::singleShot(4000, this, SLOT(close()));
 }

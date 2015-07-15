@@ -6,7 +6,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
-    MainWindow();
+    MainWindow(bool useGL);
 public slots:
     void initializeGL();
     void uninitializeGL();
