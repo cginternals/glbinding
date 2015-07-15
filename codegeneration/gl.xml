@@ -8393,6 +8393,12 @@ typedef unsigned int GLhandleARB;
             <unused start="0x9633" end="0x963F" vendor="Oculus"/>
     </enums>
 
+    <enums namespace="GL" start="0x9640" end="0x964F" vendor="Mediatek" comment="Khronos bug 14294">
+        <enum value="0x9640" name="GL_GS_SHADER_BINARY_MTK"/>
+        <enum value="0x9641" name="GL_GS_PROGRAM_BINARY_MTK"/>
+            <unused start="0x9642" end="0x964F" vendor="Mediatek"/>
+    </enums>
+
 <!-- Enums reservable for future use. To reserve a new range, allocate one
      or more multiples of 16 starting at the lowest available point in this
      block and note it in a new <enums> block immediately above.
@@ -38906,13 +38912,13 @@ typedef unsigned int GLhandleARB;
             <require>
                 <enum name="GL_MAP_READ_BIT"/>
                 <enum name="GL_MAP_WRITE_BIT"/>
-                <enum name="GL_MAP_PERSISTENT_BIT"/>
-                <enum name="GL_MAP_COHERENT_BIT"/>
-                <enum name="GL_DYNAMIC_STORAGE_BIT"/>
-                <enum name="GL_CLIENT_STORAGE_BIT"/>
-                <enum name="GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT"/>
-                <enum name="GL_BUFFER_IMMUTABLE_STORAGE"/>
-                <enum name="GL_BUFFER_STORAGE_FLAGS"/>
+                <enum name="GL_MAP_PERSISTENT_BIT_EXT"/>
+                <enum name="GL_MAP_COHERENT_BIT_EXT"/>
+                <enum name="GL_DYNAMIC_STORAGE_BIT_EXT"/>
+                <enum name="GL_CLIENT_STORAGE_BIT_EXT"/>
+                <enum name="GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT"/>
+                <enum name="GL_BUFFER_IMMUTABLE_STORAGE_EXT"/>
+                <enum name="GL_BUFFER_STORAGE_FLAGS_EXT"/>
                 <command name="glBufferStorageEXT"/>
                 <!-- <command name="glNamedBufferStorageEXT"/> -->
             </require>
