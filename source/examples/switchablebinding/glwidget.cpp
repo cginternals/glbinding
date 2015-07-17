@@ -7,10 +7,10 @@
 #include "rendergl.h"
 #include "rendergles.h"
 
-GLWidget::GLWidget(bool useGL)
+GLWidget::GLWidget()
 : m_displayInitialized(false)
 , m_initialized(false)
-, m_useGL(useGL)
+, m_useGL(true)
 {
     setAttribute(Qt::WA_PaintOnScreen);
     setFocusPolicy(Qt::StrongFocus);
@@ -77,20 +77,20 @@ void GLWidget::initialize()
 {
     if (!m_displayInitialized)
     {
-        ::initializeDisplay();
+        ::initializeDisplay(winId());
         m_displayInitialized = true;
     }
 
     if (m_useGL)
     {
-        ::createGLContext(winId());
+        ::createGLContext();
         ::makeCurrent();
         ::initializeGL();
         ::doneCurrent();
     }
     else
     {
-        ::createGLESContext(winId());
+        ::createGLESContext();
         ::makeCurrent();
         ::initializeGLES();
         ::doneCurrent();
@@ -122,11 +122,18 @@ QPaintEngine * GLWidget::paintEngine() const
     return nullptr;
 }
 
-void GLWidget::keyPressEvent(QKeyEvent *)
+void GLWidget::keyPressEvent(QKeyEvent * event)
 {
-    uninitialize();
-    m_useGL = !m_useGL;
+    if (event->key() != Qt::Key_Escape)
+    {
+        uninitialize();
+        m_useGL = !m_useGL;
 
-    QResizeEvent event(size(), QSize());
-    resizeEvent(&event);
+        QResizeEvent re(size(), QSize());
+        resizeEvent(&re);
+    }
+    else
+    {
+        QWidget::keyPressEvent(event);
+    }
 }

@@ -2,11 +2,11 @@
 
 using EGLWindow = unsigned long;
 
-void initializeDisplay();
+void initializeDisplay(EGLWindow window);
 void uninitializeDisplay();
 
-void createGLContext(EGLWindow window);
-void createGLESContext(EGLWindow window);
+void createGLContext();
+void createGLESContext();
 
 void makeCurrent();
 void doneCurrent();

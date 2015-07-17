@@ -6,7 +6,7 @@ class GLWidget : public QWidget
 {
     Q_OBJECT
 public:
-    GLWidget(bool useGL);
+    GLWidget();
     ~GLWidget();
 
     virtual QPaintEngine * paintEngine() const override;
