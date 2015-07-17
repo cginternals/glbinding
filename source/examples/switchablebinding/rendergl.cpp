@@ -1,7 +1,5 @@
 #include "rendergl.h"
 
-//#include <GL/gl.h>
-
 #include <glbinding/gl/gl.h>
 #include <glbinding/Binding.h>
 
@@ -17,30 +15,14 @@ void uninitializeGL()
     glbinding::Binding::releaseCurrentContext();
 }
 
-void render1GL()
+void resizeGL(int width, int height)
 {
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
+    glViewport(0, 0, width, height);
 }
 
-void render2GL()
+void renderGL()
 {
-    glClearColor(1.0, 1.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
-}
-
-void render3GL()
-{
-    glClearColor(1.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
-}
-
-void render4GL()
-{
-    glClearColor(0.0, 1.0, 0.0, 1.0);
+    glClearColor(0.0, 0.0, 1.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();
 }

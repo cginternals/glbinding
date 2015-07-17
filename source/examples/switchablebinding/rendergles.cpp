@@ -1,7 +1,5 @@
 #include "rendergles.h"
 
-//#include <GLES3/gl3.h>
-
 #include <glesbinding/gles/gles.h>
 #include <glesbinding/Binding.h>
 
@@ -17,30 +15,14 @@ void uninitializeGLES()
     glesbinding::Binding::releaseCurrentContext();
 }
 
-void render1GLES()
+void resizeGLES(int width, int height)
 {
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
+    glViewport(0, 0, width, height);
 }
 
-void render2GLES()
-{
-    glClearColor(1.0, 1.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
-}
-
-void render3GLES()
+void renderGLES()
 {
     glClearColor(1.0, 0.0, 0.0, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    glFlush();
-}
-
-void render4GLES()
-{
-    glClearColor(0.0, 1.0, 0.0, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     glFlush();
 }

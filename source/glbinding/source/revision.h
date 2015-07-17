@@ -2,5 +2,5 @@
 
 namespace 
 {
-	const unsigned int GL_REVISION = 31583;
+	const unsigned int GL_REVISION = 31705;
 }

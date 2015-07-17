@@ -25,8 +25,6 @@ enum class BufferAccessMask : unsigned int
     GL_MAP_INVALIDATE_BUFFER_BIT = 0x0008,
     GL_MAP_FLUSH_EXPLICIT_BIT    = 0x0010,
     GL_MAP_UNSYNCHRONIZED_BIT    = 0x0020,
-    GL_MAP_PERSISTENT_BIT        = 0x0040,
-    GL_MAP_COHERENT_BIT          = 0x0080,
 };
 
 
@@ -70,13 +68,9 @@ enum class BufferBitQCOM : unsigned int
 
 enum class BufferStorageMask : unsigned int
 {
-    GL_NONE_BIT            = 0x0, // Generic GL_NONE_BIT
-    GL_MAP_READ_BIT        = 0x0001, // reuse from BufferAccessMask
-    GL_MAP_WRITE_BIT       = 0x0002, // reuse from BufferAccessMask
-    GL_MAP_PERSISTENT_BIT  = 0x0040, // reuse from BufferAccessMask
-    GL_MAP_COHERENT_BIT    = 0x0080, // reuse from BufferAccessMask
-    GL_DYNAMIC_STORAGE_BIT = 0x0100,
-    GL_CLIENT_STORAGE_BIT  = 0x0200,
+    GL_NONE_BIT      = 0x0, // Generic GL_NONE_BIT
+    GL_MAP_READ_BIT  = 0x0001, // reuse from BufferAccessMask
+    GL_MAP_WRITE_BIT = 0x0002, // reuse from BufferAccessMask
 };
 
 
@@ -113,31 +107,31 @@ enum class MapBufferUsageMask : unsigned int
     GL_MAP_FLUSH_EXPLICIT_BIT_EXT    = 0x0010,
     GL_MAP_UNSYNCHRONIZED_BIT        = 0x0020, // reuse from BufferAccessMask
     GL_MAP_UNSYNCHRONIZED_BIT_EXT    = 0x0020,
-    GL_MAP_PERSISTENT_BIT            = 0x0040, // reuse from BufferAccessMask
-    GL_MAP_COHERENT_BIT              = 0x0080, // reuse from BufferAccessMask
-    GL_DYNAMIC_STORAGE_BIT           = 0x0100, // reuse from BufferStorageMask
-    GL_CLIENT_STORAGE_BIT            = 0x0200, // reuse from BufferStorageMask
+    GL_MAP_PERSISTENT_BIT_EXT        = 0x0040,
+    GL_MAP_COHERENT_BIT_EXT          = 0x0080,
+    GL_DYNAMIC_STORAGE_BIT_EXT       = 0x0100,
+    GL_CLIENT_STORAGE_BIT_EXT        = 0x0200,
 };
 
 
 enum class MemoryBarrierMask : unsigned int
 {
-    GL_NONE_BIT                         = 0x0, // Generic GL_NONE_BIT
-    GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT  = 0x00000001,
-    GL_ELEMENT_ARRAY_BARRIER_BIT        = 0x00000002,
-    GL_UNIFORM_BARRIER_BIT              = 0x00000004,
-    GL_TEXTURE_FETCH_BARRIER_BIT        = 0x00000008,
-    GL_SHADER_IMAGE_ACCESS_BARRIER_BIT  = 0x00000020,
-    GL_COMMAND_BARRIER_BIT              = 0x00000040,
-    GL_PIXEL_BUFFER_BARRIER_BIT         = 0x00000080,
-    GL_TEXTURE_UPDATE_BARRIER_BIT       = 0x00000100,
-    GL_BUFFER_UPDATE_BARRIER_BIT        = 0x00000200,
-    GL_FRAMEBUFFER_BARRIER_BIT          = 0x00000400,
-    GL_TRANSFORM_FEEDBACK_BARRIER_BIT   = 0x00000800,
-    GL_ATOMIC_COUNTER_BARRIER_BIT       = 0x00001000,
-    GL_SHADER_STORAGE_BARRIER_BIT       = 0x00002000,
-    GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT = 0x00004000,
-    GL_ALL_BARRIER_BITS                 = 0xFFFFFFFF,
+    GL_NONE_BIT                             = 0x0, // Generic GL_NONE_BIT
+    GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT      = 0x00000001,
+    GL_ELEMENT_ARRAY_BARRIER_BIT            = 0x00000002,
+    GL_UNIFORM_BARRIER_BIT                  = 0x00000004,
+    GL_TEXTURE_FETCH_BARRIER_BIT            = 0x00000008,
+    GL_SHADER_IMAGE_ACCESS_BARRIER_BIT      = 0x00000020,
+    GL_COMMAND_BARRIER_BIT                  = 0x00000040,
+    GL_PIXEL_BUFFER_BARRIER_BIT             = 0x00000080,
+    GL_TEXTURE_UPDATE_BARRIER_BIT           = 0x00000100,
+    GL_BUFFER_UPDATE_BARRIER_BIT            = 0x00000200,
+    GL_FRAMEBUFFER_BARRIER_BIT              = 0x00000400,
+    GL_TRANSFORM_FEEDBACK_BARRIER_BIT       = 0x00000800,
+    GL_ATOMIC_COUNTER_BARRIER_BIT           = 0x00001000,
+    GL_SHADER_STORAGE_BARRIER_BIT           = 0x00002000,
+    GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT = 0x00004000,
+    GL_ALL_BARRIER_BITS                     = 0xFFFFFFFF,
 };
 
 
@@ -273,7 +267,7 @@ static const MemoryBarrierMask GL_ATOMIC_COUNTER_BARRIER_BIT = MemoryBarrierMask
 static const BufferBitQCOM GL_DEPTH_BUFFER_BIT4_QCOM = BufferBitQCOM::GL_DEPTH_BUFFER_BIT4_QCOM;
 static const BufferBitQCOM GL_DEPTH_BUFFER_BIT5_QCOM = BufferBitQCOM::GL_DEPTH_BUFFER_BIT5_QCOM;
 static const MemoryBarrierMask GL_SHADER_STORAGE_BARRIER_BIT = MemoryBarrierMask::GL_SHADER_STORAGE_BARRIER_BIT;
-static const MemoryBarrierMask GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT = MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT;
+static const MemoryBarrierMask GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT = MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT;
 static const khrapi::SharedBitfield<AttribMask, ClearBufferMask> GL_COLOR_BUFFER_BIT = AttribMask::GL_COLOR_BUFFER_BIT;
 static const BufferBitQCOM GL_DEPTH_BUFFER_BIT6_QCOM = BufferBitQCOM::GL_DEPTH_BUFFER_BIT6_QCOM;
 static const ClearBufferMask GL_COVERAGE_BUFFER_BIT_NV = ClearBufferMask::GL_COVERAGE_BUFFER_BIT_NV;
@@ -302,20 +296,20 @@ static const khrapi::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP
 static const MapBufferUsageMask GL_MAP_UNSYNCHRONIZED_BIT_EXT = MapBufferUsageMask::GL_MAP_UNSYNCHRONIZED_BIT_EXT;
 static const PathRenderingMaskNV GL_FONT_ASCENDER_BIT_NV = PathRenderingMaskNV::GL_FONT_ASCENDER_BIT_NV;
 static const BufferBitQCOM GL_STENCIL_BUFFER_BIT5_QCOM = BufferBitQCOM::GL_STENCIL_BUFFER_BIT5_QCOM;
-static const khrapi::SharedBitfield<BufferAccessMask, BufferStorageMask, MapBufferUsageMask> GL_MAP_PERSISTENT_BIT = BufferAccessMask::GL_MAP_PERSISTENT_BIT;
+static const MapBufferUsageMask GL_MAP_PERSISTENT_BIT_EXT = MapBufferUsageMask::GL_MAP_PERSISTENT_BIT_EXT;
 static const PathRenderingMaskNV GL_FONT_DESCENDER_BIT_NV = PathRenderingMaskNV::GL_FONT_DESCENDER_BIT_NV;
 static const BufferBitQCOM GL_STENCIL_BUFFER_BIT6_QCOM = BufferBitQCOM::GL_STENCIL_BUFFER_BIT6_QCOM;
-static const khrapi::SharedBitfield<BufferAccessMask, BufferStorageMask, MapBufferUsageMask> GL_MAP_COHERENT_BIT = BufferAccessMask::GL_MAP_COHERENT_BIT;
+static const MapBufferUsageMask GL_MAP_COHERENT_BIT_EXT = MapBufferUsageMask::GL_MAP_COHERENT_BIT_EXT;
 static const PathRenderingMaskNV GL_FONT_HEIGHT_BIT_NV = PathRenderingMaskNV::GL_FONT_HEIGHT_BIT_NV;
 static const BufferBitQCOM GL_STENCIL_BUFFER_BIT7_QCOM = BufferBitQCOM::GL_STENCIL_BUFFER_BIT7_QCOM;
 static const khrapi::SharedBitfield<PathFontStyle, PathRenderingMaskNV> GL_BOLD_BIT_NV = PathFontStyle::GL_BOLD_BIT_NV;
 static const PathRenderingMaskNV GL_GLYPH_WIDTH_BIT_NV = PathRenderingMaskNV::GL_GLYPH_WIDTH_BIT_NV;
-static const khrapi::SharedBitfield<BufferStorageMask, MapBufferUsageMask> GL_DYNAMIC_STORAGE_BIT = BufferStorageMask::GL_DYNAMIC_STORAGE_BIT;
+static const MapBufferUsageMask GL_DYNAMIC_STORAGE_BIT_EXT = MapBufferUsageMask::GL_DYNAMIC_STORAGE_BIT_EXT;
 static const PathRenderingMaskNV GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV = PathRenderingMaskNV::GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV;
 static const BufferBitQCOM GL_MULTISAMPLE_BUFFER_BIT0_QCOM = BufferBitQCOM::GL_MULTISAMPLE_BUFFER_BIT0_QCOM;
 static const PathRenderingMaskNV GL_GLYPH_HEIGHT_BIT_NV = PathRenderingMaskNV::GL_GLYPH_HEIGHT_BIT_NV;
 static const khrapi::SharedBitfield<PathFontStyle, PathRenderingMaskNV> GL_ITALIC_BIT_NV = PathFontStyle::GL_ITALIC_BIT_NV;
-static const khrapi::SharedBitfield<BufferStorageMask, MapBufferUsageMask> GL_CLIENT_STORAGE_BIT = BufferStorageMask::GL_CLIENT_STORAGE_BIT;
+static const MapBufferUsageMask GL_CLIENT_STORAGE_BIT_EXT = MapBufferUsageMask::GL_CLIENT_STORAGE_BIT_EXT;
 static const PathRenderingMaskNV GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV = PathRenderingMaskNV::GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV;
 static const BufferBitQCOM GL_MULTISAMPLE_BUFFER_BIT1_QCOM = BufferBitQCOM::GL_MULTISAMPLE_BUFFER_BIT1_QCOM;
 static const PathRenderingMaskNV GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV = PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV;

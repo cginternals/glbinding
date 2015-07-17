@@ -72,10 +72,10 @@ endif()
 
 set(sources
     main.cpp
-    mainwindow.cpp
-    mainwindow.h
     context.cpp
     context.h
+    glwidget.cpp
+    glwidget.h
     rendergl.cpp
     rendergl.h
     rendergles.cpp
