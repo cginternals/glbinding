@@ -48,6 +48,7 @@ void GLWidget::paintEvent(QPaintEvent * /*pe*/)
     {
         ::renderGLES();
     }
+    ::waitClient();
     ::swapBuffers();
     ::doneCurrent();
 }

@@ -123,6 +123,11 @@ void doneCurrent()
     eglMakeCurrent(egl_display, nullptr, nullptr, nullptr);
 }
 
+void waitClient()
+{
+    eglWaitClient();
+}
+
 void swapBuffers()
 {
     eglSwapBuffers(egl_display, egl_surface);

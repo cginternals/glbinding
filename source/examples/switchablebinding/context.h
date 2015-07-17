@@ -11,6 +11,7 @@ void createGLESContext();
 void makeCurrent();
 void doneCurrent();
 
+void waitClient();
 void swapBuffers();
 
 void releaseContext();
