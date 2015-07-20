@@ -189,6 +189,7 @@ using gl::glCompressedTextureSubImage2D;
 using gl::glCompressedTextureSubImage2DEXT;
 using gl::glCompressedTextureSubImage3D;
 using gl::glCompressedTextureSubImage3DEXT;
+using gl::glConservativeRasterParameterfNV;
 using gl::glConvolutionFilter1D;
 using gl::glConvolutionFilter1DEXT;
 using gl::glConvolutionFilter2D;

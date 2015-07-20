@@ -375,6 +375,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
     { GLextension::GL_NV_compute_program5, "GL_NV_compute_program5" },
     { GLextension::GL_NV_conditional_render, "GL_NV_conditional_render" },
     { GLextension::GL_NV_conservative_raster, "GL_NV_conservative_raster" },
+    { GLextension::GL_NV_conservative_raster_dilate, "GL_NV_conservative_raster_dilate" },
     { GLextension::GL_NV_copy_depth_to_color, "GL_NV_copy_depth_to_color" },
     { GLextension::GL_NV_copy_image, "GL_NV_copy_image" },
     { GLextension::GL_NV_deep_texture3D, "GL_NV_deep_texture3D" },

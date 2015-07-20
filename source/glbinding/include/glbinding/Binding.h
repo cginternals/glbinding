@@ -19,7 +19,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<khrapi::AbstractFunction *, 2805>;
+    using array_t = std::array<khrapi::AbstractFunction *, 2806>;
     using ContextSwitchCallback = std::function<void(ContextHandle)>;
 
     Binding() = delete;
@@ -363,6 +363,7 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, const void *> CompressedTextureSubImage2DEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, const void *> CompressedTextureSubImage3D;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, const void *> CompressedTextureSubImage3DEXT;
+    static khrapi::Function<Binding, void, gl::GLenum, gl::GLfloat> ConservativeRasterParameterfNV;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> ConvolutionFilter1D;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> ConvolutionFilter1DEXT;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> ConvolutionFilter2D;

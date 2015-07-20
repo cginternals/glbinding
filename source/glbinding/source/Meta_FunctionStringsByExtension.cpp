@@ -208,6 +208,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_NV_command_list, { "glCreateStatesNV", "glDeleteStatesNV", "glIsStateNV", "glStateCaptureNV", "glGetCommandHeaderNV", "glGetStageIndexNV", "glDrawCommandsNV", "glDrawCommandsAddressNV", "glDrawCommandsStatesNV", "glDrawCommandsStatesAddressNV", "glCreateCommandListsNV", "glDeleteCommandListsNV", "glIsCommandListNV", "glListDrawCommandsStatesClientNV", "glCommandListSegmentsNV", "glCompileCommandListNV", "glCallCommandListNV" } },
     { GLextension::GL_NV_conditional_render, { "glBeginConditionalRenderNV", "glEndConditionalRenderNV" } },
     { GLextension::GL_NV_conservative_raster, { "glSubpixelPrecisionBiasNV" } },
+    { GLextension::GL_NV_conservative_raster_dilate, { "glConservativeRasterParameterfNV" } },
     { GLextension::GL_NV_copy_image, { "glCopyImageSubDataNV" } },
     { GLextension::GL_NV_depth_buffer_float, { "glDepthRangedNV", "glClearDepthdNV", "glDepthBoundsdNV" } },
     { GLextension::GL_NV_draw_texture, { "glDrawTextureNV" } },
