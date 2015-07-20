@@ -1496,6 +1496,11 @@ void glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level
     return glbinding::Binding::CompressedTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits);
 }
 
+void glConservativeRasterParameterfNV(GLenum pname, GLfloat value)
+{
+    return glbinding::Binding::ConservativeRasterParameterfNV(pname, value);
+}
+
 void glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image)
 {
     return glbinding::Binding::ConvolutionFilter1D(target, internalformat, width, format, type, image);

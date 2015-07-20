@@ -228,6 +228,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glCompressedTextureSubImage2DEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glCompressedTextureSubImage3D", { GLextension::GL_ARB_direct_state_access } },
     { "glCompressedTextureSubImage3DEXT", { GLextension::GL_EXT_direct_state_access } },
+    { "glConservativeRasterParameterfNV", { GLextension::GL_NV_conservative_raster_dilate } },
     { "glConvolutionFilter1D", { GLextension::GL_ARB_imaging } },
     { "glConvolutionFilter1DEXT", { GLextension::GL_EXT_convolution } },
     { "glConvolutionFilter2D", { GLextension::GL_ARB_imaging } },
