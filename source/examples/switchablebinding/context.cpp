@@ -9,9 +9,6 @@
 #include <eglbinding/ContextInfo.h>
 #include <eglbinding/Version.h>
 
-#include "rendergl.h"
-#include "rendergles.h"
-
 using namespace std;
 using namespace egl;
 
