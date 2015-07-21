@@ -42,6 +42,8 @@ set(api_includes
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractState.h
     ${include_path}/AbstractValue.h
+    ${include_path}/Binding.h
+    ${include_path}/Binding.hpp
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/Value.h
