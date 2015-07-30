@@ -132,3 +132,5 @@ enum class BufferStorageMask : unsigned int;
 enum class PathFontStyle : unsigned int;
 
 } // namespace gles
+
+#include <glesbinding/gles/typeintegrations.h>

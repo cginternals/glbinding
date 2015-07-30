@@ -74,3 +74,5 @@ enum class EGLSurfaceTypeMask : unsigned int;
 enum class EGLSyncFlagsKHR : unsigned int;
 
 } // namespace egl
+
+#include <eglbinding/egl/typeintegrations.h>

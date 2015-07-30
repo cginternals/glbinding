@@ -128,3 +128,5 @@ enum class BufferStorageMask : unsigned int;
 enum class PathFontStyle : unsigned int;
 
 } // namespace gl
+
+#include <glbinding/gl/typeintegrations.h>

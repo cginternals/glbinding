@@ -27,3 +27,5 @@ enum class %Aextension : int;
 %s
 
 } // namespace %a
+
+#include <%abinding/%a/typeintegrations.h>
