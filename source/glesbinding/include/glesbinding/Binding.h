@@ -1,70 +1,21 @@
 #pragma once
 
-#include <array>
-#include <vector>
-#include <functional>
-
-#include <khrapi/Function.h>
+#include <khrapi/Binding.h>
 
 #include <glesbinding/glesbinding_api.h>
 
 #include <glesbinding/gles/types.h>
 
 #include <glesbinding/ContextHandle.h>
+#include <glesbinding/ProcAddress.h>
 
 
 namespace glesbinding
 {
 
-class GLESBINDING_API Binding
+class GLESBINDING_API Binding : public khrapi::Binding<ContextHandle, 674, getProcAddress, getCurrentContext>
 {
 public:
-    using array_t = std::array<khrapi::AbstractFunction *, 674>;
-    using ContextSwitchCallback = std::function<void(ContextHandle)>;
-
-    Binding() = delete;
-    
-    static khrapi::ProcAddress getProcAddress(const char * name);
-
-    static void initialize(bool resolveFunctions = true);
-    static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
-    
-    static void registerAdditionalFunction(khrapi::AbstractFunction * function);
-
-    static void resolveFunctions();
-
-    static void useCurrentContext();
-    static void useContext(ContextHandle context);
-
-    static void releaseCurrentContext();
-    static void releaseContext(ContextHandle context);
-    
-    static void addContextSwitchCallback(ContextSwitchCallback callback);
-
-    static size_t size();
-
-    static const array_t & functions();
-    static const std::vector<khrapi::AbstractFunction *> & additionalFunctions();
-
-    static int currentPos();
-
-    static void setCallbackMask(khrapi::CallbackMask mask);
-    static void setCallbackMaskExcept(khrapi::CallbackMask mask, const std::set<std::string> & blackList);
-    static void addCallbackMask(khrapi::CallbackMask mask);
-    static void addCallbackMaskExcept(khrapi::CallbackMask mask, const std::set<std::string> & blackList);
-    static void removeCallbackMask(khrapi::CallbackMask mask);
-
-protected:
-    static void provideState(int pos);
-    static void neglectState(int pos);
-    static void setStatePos(int pos);
-
-public:
-    
-    // to reduce per instance hasState checks and provide/neglect states for all instances,
-    // max pos is used to provide m_states size, which is identical for all instances.
-    static int s_maxpos;
-
     static khrapi::Function<Binding, void, gles::GLuint, gles::GLuint> ActiveShaderProgram;
     static khrapi::Function<Binding, void, gles::GLuint, gles::GLuint> ActiveShaderProgramEXT;
     static khrapi::Function<Binding, void, gles::GLenum> ActiveTexture;
@@ -739,11 +690,6 @@ public:
     static khrapi::Function<Binding, void, gles::GLsync, gles::UnusedMask, gles::GLuint64> WaitSync;
     static khrapi::Function<Binding, void, gles::GLsync, gles::GLbitfield, gles::GLuint64> WaitSyncAPPLE;
     static khrapi::Function<Binding, void, gles::GLuint, gles::GLsizei, const gles::GLuint *, const gles::GLfloat *> WeightPathsNV;
-
-protected:
-	static const array_t s_functions;
-	static std::vector<khrapi::AbstractFunction *> s_additionalFunctions;
-	static std::vector<ContextSwitchCallback> s_callbacks;
 };
 
 } // namespace glesbinding

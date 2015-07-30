@@ -1,16 +1,19 @@
 #pragma once
 
 #include <array>
+#include <vector>
 #include <functional>
+#include <unordered_map>
 
 #include <khrapi/Function.h>
 
 namespace khrapi
 {
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *)>
+template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
 class Binding
 {
+public:
     using array_t = std::array<khrapi::AbstractFunction *, FunctionCount>;
     using ContextSwitchCallback = std::function<void(ContextHandle)>;
 
@@ -46,14 +49,14 @@ class Binding
     static void addCallbackMaskExcept(khrapi::CallbackMask mask, const std::set<std::string> & blackList);
     static void removeCallbackMask(khrapi::CallbackMask mask);
 
+    // to reduce per instance hasState checks and provide/neglect states for all instances,
+    // max pos is used to provide m_states size, which is identical for all instances.
+    static int s_maxpos;
+
 protected:
     static void provideState(int pos);
     static void neglectState(int pos);
     static void setStatePos(int pos);
-
-    // to reduce per instance hasState checks and provide/neglect states for all instances,
-    // max pos is used to provide m_states size, which is identical for all instances.
-    static int s_maxpos;
 
     static const array_t s_functions;
     static std::vector<khrapi::AbstractFunction *> s_additionalFunctions;

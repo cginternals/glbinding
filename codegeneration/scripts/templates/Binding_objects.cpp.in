@@ -15,7 +15,7 @@ namespace %abinding
 
 const Binding::array_t Binding::s_functions = 
 {{
-	%s
+    %s
 }};
 
 } // namespace %abinding
