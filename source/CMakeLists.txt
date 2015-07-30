@@ -26,6 +26,10 @@ if (OPTION_BUILD_GLES)
     add_subdirectory(glesbinding)
 endif ()
 
+if (OPTION_BUILD_GL_GLES_COMPATABILITY)
+    add_subdirectory(glpbinding)
+endif ()
+
 # Tests
 set(IDE_FOLDER "Tests")
 add_subdirectory(tests)

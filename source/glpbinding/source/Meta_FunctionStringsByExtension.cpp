@@ -1,0 +1,105 @@
+
+#include "Meta_Maps.h"
+
+#include <glpbinding/glp/typeintegrations.h>
+#include <glpbinding/glp/extension.h>
+
+
+using namespace glp;
+
+namespace glpbinding
+{
+
+const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension
+{
+#ifdef STRINGS_BY_SYMBOLS
+    { GLextension::GL_AMD_performance_monitor, { "glGetPerfMonitorGroupsAMD", "glGetPerfMonitorCountersAMD", "glGetPerfMonitorGroupStringAMD", "glGetPerfMonitorCounterStringAMD", "glGetPerfMonitorCounterInfoAMD", "glGenPerfMonitorsAMD", "glDeletePerfMonitorsAMD", "glSelectPerfMonitorCountersAMD", "glBeginPerfMonitorAMD", "glEndPerfMonitorAMD", "glGetPerfMonitorCounterDataAMD" } },
+    { GLextension::GL_ANGLE_framebuffer_blit, { "glBlitFramebufferANGLE" } },
+    { GLextension::GL_ANGLE_framebuffer_multisample, { "glRenderbufferStorageMultisampleANGLE" } },
+    { GLextension::GL_ANGLE_instanced_arrays, { "glDrawArraysInstancedANGLE", "glDrawElementsInstancedANGLE", "glVertexAttribDivisorANGLE" } },
+    { GLextension::GL_ANGLE_translated_shader_source, { "glGetTranslatedShaderSourceANGLE" } },
+    { GLextension::GL_APPLE_copy_texture_levels, { "glCopyTextureLevelsAPPLE" } },
+    { GLextension::GL_APPLE_framebuffer_multisample, { "glRenderbufferStorageMultisampleAPPLE", "glResolveMultisampleFramebufferAPPLE" } },
+    { GLextension::GL_APPLE_sync, { "glFenceSyncAPPLE", "glIsSyncAPPLE", "glDeleteSyncAPPLE", "glClientWaitSyncAPPLE", "glWaitSyncAPPLE", "glGetInteger64vAPPLE", "glGetSyncivAPPLE" } },
+    { GLextension::GL_EXT_base_instance, { "glDrawArraysInstancedBaseInstanceEXT", "glDrawElementsInstancedBaseInstanceEXT", "glDrawElementsInstancedBaseVertexBaseInstanceEXT" } },
+    { GLextension::GL_EXT_buffer_storage, { "glBufferStorageEXT" } },
+    { GLextension::GL_EXT_copy_image, { "glCopyImageSubDataEXT" } },
+    { GLextension::GL_EXT_debug_label, { "glLabelObjectEXT", "glGetObjectLabelEXT" } },
+    { GLextension::GL_EXT_debug_marker, { "glInsertEventMarkerEXT", "glPushGroupMarkerEXT", "glPopGroupMarkerEXT" } },
+    { GLextension::GL_EXT_discard_framebuffer, { "glDiscardFramebufferEXT" } },
+    { GLextension::GL_EXT_disjoint_timer_query, { "glGenQueriesEXT", "glDeleteQueriesEXT", "glIsQueryEXT", "glBeginQueryEXT", "glEndQueryEXT", "glQueryCounterEXT", "glGetQueryivEXT", "glGetQueryObjectivEXT", "glGetQueryObjectuivEXT", "glGetQueryObjecti64vEXT", "glGetQueryObjectui64vEXT" } },
+    { GLextension::GL_EXT_draw_buffers, { "glDrawBuffersEXT" } },
+    { GLextension::GL_EXT_draw_buffers_indexed, { "glEnableiEXT", "glDisableiEXT", "glBlendEquationiEXT", "glBlendEquationSeparateiEXT", "glBlendFunciEXT", "glBlendFuncSeparateiEXT", "glColorMaskiEXT", "glIsEnablediEXT" } },
+    { GLextension::GL_EXT_draw_elements_base_vertex, { "glDrawElementsBaseVertexEXT", "glDrawRangeElementsBaseVertexEXT", "glDrawElementsInstancedBaseVertexEXT", "glMultiDrawElementsBaseVertexEXT" } },
+    { GLextension::GL_EXT_draw_instanced, { "glDrawArraysInstancedEXT", "glDrawElementsInstancedEXT" } },
+    { GLextension::GL_EXT_geometry_shader, { "glFramebufferTextureEXT" } },
+    { GLextension::GL_EXT_instanced_arrays, { "glDrawArraysInstancedEXT", "glDrawElementsInstancedEXT", "glVertexAttribDivisorEXT" } },
+    { GLextension::GL_EXT_map_buffer_range, { "glMapBufferRangeEXT", "glFlushMappedBufferRangeEXT" } },
+    { GLextension::GL_EXT_multi_draw_arrays, { "glMultiDrawArraysEXT", "glMultiDrawElementsEXT" } },
+    { GLextension::GL_EXT_multi_draw_indirect, { "glMultiDrawArraysIndirectEXT", "glMultiDrawElementsIndirectEXT" } },
+    { GLextension::GL_EXT_multisampled_render_to_texture, { "glRenderbufferStorageMultisampleEXT", "glFramebufferTexture2DMultisampleEXT" } },
+    { GLextension::GL_EXT_multiview_draw_buffers, { "glReadBufferIndexedEXT", "glDrawBuffersIndexedEXT", "glGetIntegeri_vEXT" } },
+    { GLextension::GL_EXT_occlusion_query_boolean, { "glGenQueriesEXT", "glDeleteQueriesEXT", "glIsQueryEXT", "glBeginQueryEXT", "glEndQueryEXT", "glGetQueryivEXT", "glGetQueryObjectuivEXT" } },
+    { GLextension::GL_EXT_primitive_bounding_box, { "glPrimitiveBoundingBoxEXT" } },
+    { GLextension::GL_EXT_raster_multisample, { "glRasterSamplesEXT" } },
+    { GLextension::GL_EXT_robustness, { "glGetGraphicsResetStatusEXT", "glReadnPixelsEXT", "glGetnUniformfvEXT", "glGetnUniformivEXT" } },
+    { GLextension::GL_EXT_separate_shader_objects, { "glActiveShaderProgramEXT", "glBindProgramPipelineEXT", "glCreateShaderProgramvEXT", "glDeleteProgramPipelinesEXT", "glGenProgramPipelinesEXT", "glGetProgramPipelineInfoLogEXT", "glGetProgramPipelineivEXT", "glIsProgramPipelineEXT", "glProgramParameteriEXT", "glProgramUniform1fEXT", "glProgramUniform1fvEXT", "glProgramUniform1iEXT", "glProgramUniform1ivEXT", "glProgramUniform2fEXT", "glProgramUniform2fvEXT", "glProgramUniform2iEXT", "glProgramUniform2ivEXT", "glProgramUniform3fEXT", "glProgramUniform3fvEXT", "glProgramUniform3iEXT", "glProgramUniform3ivEXT", "glProgramUniform4fEXT", "glProgramUniform4fvEXT", "glProgramUniform4iEXT", "glProgramUniform4ivEXT", "glProgramUniformMatrix2fvEXT", "glProgramUniformMatrix3fvEXT", "glProgramUniformMatrix4fvEXT", "glUseProgramStagesEXT", "glValidateProgramPipelineEXT", "glProgramUniform1uiEXT", "glProgramUniform2uiEXT", "glProgramUniform3uiEXT", "glProgramUniform4uiEXT", "glProgramUniform1uivEXT", "glProgramUniform2uivEXT", "glProgramUniform3uivEXT", "glProgramUniform4uivEXT", "glProgramUniformMatrix4fvEXT", "glProgramUniformMatrix2x3fvEXT", "glProgramUniformMatrix3x2fvEXT", "glProgramUniformMatrix2x4fvEXT", "glProgramUniformMatrix4x2fvEXT", "glProgramUniformMatrix3x4fvEXT", "glProgramUniformMatrix4x3fvEXT" } },
+    { GLextension::GL_EXT_sparse_texture, { "glTexPageCommitmentARB" } },
+    { GLextension::GL_EXT_tessellation_shader, { "glPatchParameteriEXT" } },
+    { GLextension::GL_EXT_texture_border_clamp, { "glTexParameterIivEXT", "glTexParameterIuivEXT", "glGetTexParameterIivEXT", "glGetTexParameterIuivEXT", "glSamplerParameterIivEXT", "glSamplerParameterIuivEXT", "glGetSamplerParameterIivEXT", "glGetSamplerParameterIuivEXT" } },
+    { GLextension::GL_EXT_texture_buffer, { "glTexBufferEXT", "glTexBufferRangeEXT" } },
+    { GLextension::GL_EXT_texture_filter_minmax, { "glRasterSamplesEXT" } },
+    { GLextension::GL_EXT_texture_storage, { "glTexStorage1DEXT", "glTexStorage2DEXT", "glTexStorage3DEXT", "glTextureStorage1DEXT", "glTextureStorage2DEXT", "glTextureStorage3DEXT" } },
+    { GLextension::GL_EXT_texture_view, { "glTextureViewEXT" } },
+    { GLextension::GL_IMG_multisampled_render_to_texture, { "glRenderbufferStorageMultisampleIMG", "glFramebufferTexture2DMultisampleIMG" } },
+    { GLextension::GL_INTEL_performance_query, { "glBeginPerfQueryINTEL", "glCreatePerfQueryINTEL", "glDeletePerfQueryINTEL", "glEndPerfQueryINTEL", "glGetFirstPerfQueryIdINTEL", "glGetNextPerfQueryIdINTEL", "glGetPerfCounterInfoINTEL", "glGetPerfQueryDataINTEL", "glGetPerfQueryIdByNameINTEL", "glGetPerfQueryInfoINTEL" } },
+    { GLextension::GL_KHR_blend_equation_advanced, { "glBlendBarrierKHR" } },
+    { GLextension::GL_KHR_debug, { "glDebugMessageControlKHR", "glDebugMessageInsertKHR", "glDebugMessageCallbackKHR", "glGetDebugMessageLogKHR", "glPushDebugGroupKHR", "glPopDebugGroupKHR", "glObjectLabelKHR", "glGetObjectLabelKHR", "glObjectPtrLabelKHR", "glGetObjectPtrLabelKHR", "glGetPointervKHR" } },
+    { GLextension::GL_KHR_robustness, { "glGetGraphicsResetStatusKHR", "glReadnPixelsKHR", "glGetnUniformfvKHR", "glGetnUniformivKHR", "glGetnUniformuivKHR" } },
+    { GLextension::GL_NV_bindless_texture, { "glGetTextureHandleNV", "glGetTextureSamplerHandleNV", "glMakeTextureHandleResidentNV", "glMakeTextureHandleNonResidentNV", "glGetImageHandleNV", "glMakeImageHandleResidentNV", "glMakeImageHandleNonResidentNV", "glUniformHandleui64NV", "glUniformHandleui64vNV", "glProgramUniformHandleui64NV", "glProgramUniformHandleui64vNV", "glIsTextureHandleResidentNV", "glIsImageHandleResidentNV" } },
+    { GLextension::GL_NV_blend_equation_advanced, { "glBlendParameteriNV", "glBlendBarrierNV" } },
+    { GLextension::GL_NV_conditional_render, { "glBeginConditionalRenderNV", "glEndConditionalRenderNV" } },
+    { GLextension::GL_NV_conservative_raster, { "glSubpixelPrecisionBiasNV" } },
+    { GLextension::GL_NV_copy_buffer, { "glCopyBufferSubDataNV" } },
+    { GLextension::GL_NV_coverage_sample, { "glCoverageMaskNV", "glCoverageOperationNV" } },
+    { GLextension::GL_NV_draw_buffers, { "glDrawBuffersNV" } },
+    { GLextension::GL_NV_draw_instanced, { "glDrawArraysInstancedNV", "glDrawElementsInstancedNV" } },
+    { GLextension::GL_NV_fence, { "glDeleteFencesNV", "glGenFencesNV", "glIsFenceNV", "glTestFenceNV", "glGetFenceivNV", "glFinishFenceNV", "glSetFenceNV" } },
+    { GLextension::GL_NV_fragment_coverage_to_color, { "glFragmentCoverageColorNV" } },
+    { GLextension::GL_NV_framebuffer_blit, { "glBlitFramebufferNV" } },
+    { GLextension::GL_NV_framebuffer_mixed_samples, { "glRasterSamplesEXT", "glCoverageModulationTableNV", "glGetCoverageModulationTableNV", "glCoverageModulationNV" } },
+    { GLextension::GL_NV_framebuffer_multisample, { "glRenderbufferStorageMultisampleNV" } },
+    { GLextension::GL_NV_instanced_arrays, { "glVertexAttribDivisorNV" } },
+    { GLextension::GL_NV_internalformat_sample_query, { "glGetInternalformatSampleivNV" } },
+    { GLextension::GL_NV_non_square_matrices, { "glUniformMatrix2x3fvNV", "glUniformMatrix3x2fvNV", "glUniformMatrix2x4fvNV", "glUniformMatrix4x2fvNV", "glUniformMatrix3x4fvNV", "glUniformMatrix4x3fvNV" } },
+    { GLextension::GL_NV_path_rendering, { "glGenPathsNV", "glDeletePathsNV", "glIsPathNV", "glPathCommandsNV", "glPathCoordsNV", "glPathSubCommandsNV", "glPathSubCoordsNV", "glPathStringNV", "glPathGlyphsNV", "glPathGlyphRangeNV", "glWeightPathsNV", "glCopyPathNV", "glInterpolatePathsNV", "glTransformPathNV", "glPathParameterivNV", "glPathParameteriNV", "glPathParameterfvNV", "glPathParameterfNV", "glPathDashArrayNV", "glPathStencilFuncNV", "glPathStencilDepthOffsetNV", "glStencilFillPathNV", "glStencilStrokePathNV", "glStencilFillPathInstancedNV", "glStencilStrokePathInstancedNV", "glPathCoverDepthFuncNV", "glCoverFillPathNV", "glCoverStrokePathNV", "glCoverFillPathInstancedNV", "glCoverStrokePathInstancedNV", "glGetPathParameterivNV", "glGetPathParameterfvNV", "glGetPathCommandsNV", "glGetPathCoordsNV", "glGetPathDashArrayNV", "glGetPathMetricsNV", "glGetPathMetricRangeNV", "glGetPathSpacingNV", "glIsPointInFillPathNV", "glIsPointInStrokePathNV", "glGetPathLengthNV", "glPointAlongPathNV", "glMatrixLoad3x2fNV", "glMatrixLoad3x3fNV", "glMatrixLoadTranspose3x3fNV", "glMatrixMult3x2fNV", "glMatrixMult3x3fNV", "glMatrixMultTranspose3x3fNV", "glStencilThenCoverFillPathNV", "glStencilThenCoverStrokePathNV", "glStencilThenCoverFillPathInstancedNV", "glStencilThenCoverStrokePathInstancedNV", "glPathGlyphIndexRangeNV", "glPathGlyphIndexArrayNV", "glPathMemoryGlyphIndexArrayNV", "glProgramPathFragmentInputGenNV", "glGetProgramResourcefvNV" } },
+    { GLextension::GL_NV_polygon_mode, { "glPolygonModeNV" } },
+    { GLextension::GL_NV_read_buffer, { "glReadBufferNV" } },
+    { GLextension::GL_NV_sample_locations, { "glFramebufferSampleLocationsfvNV", "glNamedFramebufferSampleLocationsfvNV", "glResolveDepthValuesNV" } },
+    { GLextension::GL_NV_viewport_array, { "glViewportArrayvNV", "glViewportIndexedfNV", "glViewportIndexedfvNV", "glScissorArrayvNV", "glScissorIndexedNV", "glScissorIndexedvNV", "glDepthRangeArrayfvNV", "glDepthRangeIndexedfNV", "glGetFloati_vNV", "glEnableiNV", "glDisableiNV", "glIsEnablediNV" } },
+    { GLextension::GL_OES_EGL_image, { "glEGLImageTargetTexture2DOES", "glEGLImageTargetRenderbufferStorageOES" } },
+    { GLextension::GL_OES_copy_image, { "glCopyImageSubDataOES" } },
+    { GLextension::GL_OES_draw_buffers_indexed, { "glEnableiOES", "glDisableiOES", "glBlendEquationiOES", "glBlendEquationSeparateiOES", "glBlendFunciOES", "glBlendFuncSeparateiOES", "glColorMaskiOES", "glIsEnablediOES" } },
+    { GLextension::GL_OES_draw_elements_base_vertex, { "glDrawElementsBaseVertexOES", "glDrawRangeElementsBaseVertexOES", "glDrawElementsInstancedBaseVertexOES", "glMultiDrawElementsBaseVertexOES" } },
+    { GLextension::GL_OES_geometry_shader, { "glFramebufferTextureOES" } },
+    { GLextension::GL_OES_get_program_binary, { "glGetProgramBinaryOES", "glProgramBinaryOES" } },
+    { GLextension::GL_OES_mapbuffer, { "glMapBufferOES", "glUnmapBufferOES", "glGetBufferPointervOES" } },
+    { GLextension::GL_OES_primitive_bounding_box, { "glPrimitiveBoundingBoxOES" } },
+    { GLextension::GL_OES_sample_shading, { "glMinSampleShadingOES" } },
+    { GLextension::GL_OES_tessellation_shader, { "glPatchParameteriOES" } },
+    { GLextension::GL_OES_texture_3D, { "glTexImage3DOES", "glTexSubImage3DOES", "glCopyTexSubImage3DOES", "glCompressedTexImage3DOES", "glCompressedTexSubImage3DOES", "glFramebufferTexture3DOES" } },
+    { GLextension::GL_OES_texture_border_clamp, { "glTexParameterIivOES", "glTexParameterIuivOES", "glGetTexParameterIivOES", "glGetTexParameterIuivOES", "glSamplerParameterIivOES", "glSamplerParameterIuivOES", "glGetSamplerParameterIivOES", "glGetSamplerParameterIuivOES" } },
+    { GLextension::GL_OES_texture_buffer, { "glTexBufferOES", "glTexBufferRangeOES" } },
+    { GLextension::GL_OES_texture_storage_multisample_2d_array, { "glTexStorage3DMultisampleOES" } },
+    { GLextension::GL_OES_texture_view, { "glTextureViewOES" } },
+    { GLextension::GL_OES_vertex_array_object, { "glBindVertexArrayOES", "glDeleteVertexArraysOES", "glGenVertexArraysOES", "glIsVertexArrayOES" } },
+    { GLextension::GL_OVR_multiview, { "glFramebufferTextureMultiviewOVR" } },
+    { GLextension::GL_QCOM_alpha_test, { "glAlphaFuncQCOM" } },
+    { GLextension::GL_QCOM_driver_control, { "glGetDriverControlsQCOM", "glGetDriverControlStringQCOM", "glEnableDriverControlQCOM", "glDisableDriverControlQCOM" } },
+    { GLextension::GL_QCOM_extended_get, { "glExtGetTexturesQCOM", "glExtGetBuffersQCOM", "glExtGetRenderbuffersQCOM", "glExtGetFramebuffersQCOM", "glExtGetTexLevelParameterivQCOM", "glExtTexObjectStateOverrideiQCOM", "glExtGetTexSubImageQCOM", "glExtGetBufferPointervQCOM" } },
+    { GLextension::GL_QCOM_extended_get2, { "glExtGetShadersQCOM", "glExtGetProgramsQCOM", "glExtIsProgramBinaryQCOM", "glExtGetProgramBinarySourceQCOM" } },
+    { GLextension::GL_QCOM_tiled_rendering, { "glStartTilingQCOM", "glEndTilingQCOM" } }
+#endif
+};
+
+} // namespace glpbinding

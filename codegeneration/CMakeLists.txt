@@ -40,7 +40,7 @@ if (PYTHON)
         add_xml_update("egl")
     endif ()
     
-    if (OPTION_BUILD_GL OR OPTION_BUILD_GLES)
+    if (OPTION_BUILD_GL OR OPTION_BUILD_GLES OR OPTION_BUILD_GL_GLES_COMPATABILITY)
         add_xml_update("gl")
     endif ()
     
@@ -57,6 +57,10 @@ if (PYTHON)
     
     if (OPTION_BUILD_GLES)
         add_library_generation("gles2" "gl" "gles" "gl")
+    endif ()
+    
+    if (OPTION_BUILD_GL_GLES_COMPATABILITY)
+        add_library_generation("gles2" "gl" "glp" "gl")
     endif ()
     
     #add_library_generation("wgl" "wgl" "wgl" "wgl" "wgl")
