@@ -1,15 +1,43 @@
 #include <glbinding/Binding.h>
 
-#include <glbinding/gl/bitfield.h>
-#include <glbinding/gl/boolean.h>
-#include <glbinding/gl/enum.h>
-#include <glbinding/gl/values.h>
-
 
 using namespace gl;
 
 namespace glbinding 
 {
+
+const Binding::array_t & Binding::functions()
+{
+    return s_functions;
+}
+
+ContextHandle & Binding::context()
+{
+    static THREAD_LOCAL ContextHandle t_context = 0;
+
+    return t_context;
+}
+
+int & Binding::pos()
+{
+    static THREAD_LOCAL int t_pos = -1;
+
+    return t_pos;
+}
+
+std::recursive_mutex & Binding::mutex()
+{
+    static std::recursive_mutex g_mutex;
+
+    return g_mutex;
+}
+
+std::unordered_map<ContextHandle, int> & Binding::bindings()
+{
+    static std::unordered_map<ContextHandle, int> g_bindings;
+
+    return g_bindings;
+}
 
 khrapi::Function<Binding, void, GLenum, GLfloat> Binding::Accum("glAccum");
 khrapi::Function<Binding, void, GLenum, GLfixed> Binding::AccumxOES("glAccumxOES");
@@ -2820,7 +2848,7 @@ khrapi::Function<Binding, void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> 
 
 const Binding::array_t Binding::s_functions = 
 {{
-	&Accum,
+    &Accum,
     &AccumxOES,
     &ActiveProgramEXT,
     &ActiveShaderProgram,

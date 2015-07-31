@@ -1,5 +1,9 @@
 #pragma once
 
+#include <array>
+#include <mutex>
+#include <unordered_map>
+
 #include <khrapi/Binding.h>
 
 #include <eglbinding/eglbinding_api.h>
@@ -13,9 +17,20 @@
 namespace eglbinding
 {
 
-class EGLBINDING_API Binding : public khrapi::Binding<ContextHandle, 110, getProcAddress, getCurrentContext>
+class EGLBINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
+    using array_t = std::array<khrapi::AbstractFunction *, 110>;
+    
+    static const array_t s_functions;
+    
+    static const array_t & functions();
+    
+    static ContextHandle & context();
+    static int & pos();
+    static std::recursive_mutex & mutex();
+    static std::unordered_map<ContextHandle, int> & bindings();
+
     static khrapi::Function<Binding, egl::EGLboolean, egl::EGLenum> BindAPI;
     static khrapi::Function<Binding, egl::EGLboolean, egl::EGLDisplay, egl::EGLSurface, egl::EGLint> BindTexImage;
     static khrapi::Function<Binding, egl::EGLboolean, egl::EGLDisplay, const egl::EGLint *, egl::EGLConfig *, egl::EGLint, egl::EGLint *> ChooseConfig;
@@ -126,6 +141,7 @@ public:
     static khrapi::Function<Binding, egl::EGLboolean, egl::EGLint> WaitNative;
     static khrapi::Function<Binding, egl::EGLboolean, egl::EGLDisplay, egl::EGLSync, egl::EGLint> WaitSync;
     static khrapi::Function<Binding, egl::EGLint, egl::EGLDisplay, egl::EGLSyncKHR, egl::EGLint> WaitSyncKHR;
+
 };
 
 } // namespace eglbinding

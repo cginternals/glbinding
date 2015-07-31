@@ -72,7 +72,7 @@ list(APPEND api_includes ${featured_includes})
 set(sources
     ${source_path}/revision.h
     
-    ${source_path}/Binding_objects.cpp
+    ${source_path}/Binding.cpp
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp

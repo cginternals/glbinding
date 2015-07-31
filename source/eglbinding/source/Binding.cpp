@@ -1,15 +1,43 @@
 #include <eglbinding/Binding.h>
 
-#include <eglbinding/egl/bitfield.h>
-#include <eglbinding/egl/boolean.h>
-#include <eglbinding/egl/enum.h>
-#include <eglbinding/egl/values.h>
-
 
 using namespace egl;
 
 namespace eglbinding 
 {
+
+const Binding::array_t & Binding::functions()
+{
+    return s_functions;
+}
+
+ContextHandle & Binding::context()
+{
+    static THREAD_LOCAL ContextHandle t_context = 0;
+
+    return t_context;
+}
+
+int & Binding::pos()
+{
+    static THREAD_LOCAL int t_pos = -1;
+
+    return t_pos;
+}
+
+std::recursive_mutex & Binding::mutex()
+{
+    static std::recursive_mutex g_mutex;
+
+    return g_mutex;
+}
+
+std::unordered_map<ContextHandle, int> & Binding::bindings()
+{
+    static std::unordered_map<ContextHandle, int> g_bindings;
+
+    return g_bindings;
+}
 
 khrapi::Function<Binding, EGLboolean, EGLenum> Binding::BindAPI("eglBindAPI");
 khrapi::Function<Binding, EGLboolean, EGLDisplay, EGLSurface, EGLint> Binding::BindTexImage("eglBindTexImage");
@@ -124,7 +152,7 @@ khrapi::Function<Binding, EGLint, EGLDisplay, EGLSyncKHR, EGLint> Binding::WaitS
 
 const Binding::array_t Binding::s_functions = 
 {{
-	&BindAPI,
+    &BindAPI,
     &BindTexImage,
     &ChooseConfig,
     &ClientWaitSync,

@@ -1,5 +1,9 @@
 #pragma once
 
+#include <array>
+#include <mutex>
+#include <unordered_map>
+
 #include <khrapi/Binding.h>
 
 #include <glpbinding/glpbinding_api.h>
@@ -13,9 +17,20 @@
 namespace glpbinding
 {
 
-class GLPBINDING_API Binding : public khrapi::Binding<ContextHandle, 674, getProcAddress, getCurrentContext>
+class GLPBINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
+    using array_t = std::array<khrapi::AbstractFunction *, 674>;
+    
+    static const array_t s_functions;
+    
+    static const array_t & functions();
+    
+    static ContextHandle & context();
+    static int & pos();
+    static std::recursive_mutex & mutex();
+    static std::unordered_map<ContextHandle, int> & bindings();
+
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint> ActiveShaderProgram;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint> ActiveShaderProgramEXT;
     static khrapi::Function<Binding, void, glp::GLenum> ActiveTexture;
@@ -690,6 +705,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLsync, glp::UnusedMask, glp::GLuint64> WaitSync;
     static khrapi::Function<Binding, void, glp::GLsync, glp::GLbitfield, glp::GLuint64> WaitSyncAPPLE;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLsizei, const glp::GLuint *, const glp::GLfloat *> WeightPathsNV;
+
 };
 
 } // namespace glpbinding

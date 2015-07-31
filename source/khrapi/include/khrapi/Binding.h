@@ -1,6 +1,5 @@
 #pragma once
 
-#include <array>
 #include <vector>
 #include <functional>
 #include <unordered_map>
@@ -10,11 +9,10 @@
 namespace khrapi
 {
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
 class Binding
 {
 public:
-    using array_t = std::array<khrapi::AbstractFunction *, FunctionCount>;
     using ContextSwitchCallback = std::function<void(ContextHandle)>;
 
     Binding() = delete;
@@ -26,6 +24,8 @@ public:
 
     static void registerAdditionalFunction(khrapi::AbstractFunction * function);
 
+    static size_t size();
+
     static void resolveFunctions();
 
     static void useCurrentContext();
@@ -36,9 +36,6 @@ public:
 
     static void addContextSwitchCallback(ContextSwitchCallback callback);
 
-    static size_t size();
-
-    static const array_t & functions();
     static const std::vector<khrapi::AbstractFunction *> & additionalFunctions();
 
     static int currentPos();
@@ -58,7 +55,6 @@ protected:
     static void neglectState(int pos);
     static void setStatePos(int pos);
 
-    static const array_t s_functions;
     static std::vector<khrapi::AbstractFunction *> s_additionalFunctions;
     static std::vector<ContextSwitchCallback> s_callbacks;
 };

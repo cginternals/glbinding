@@ -1,15 +1,43 @@
 #include <glpbinding/Binding.h>
 
-#include <glpbinding/glp/bitfield.h>
-#include <glpbinding/glp/boolean.h>
-#include <glpbinding/glp/enum.h>
-#include <glpbinding/glp/values.h>
-
 
 using namespace glp;
 
 namespace glpbinding 
 {
+
+const Binding::array_t & Binding::functions()
+{
+    return s_functions;
+}
+
+ContextHandle & Binding::context()
+{
+    static THREAD_LOCAL ContextHandle t_context = 0;
+
+    return t_context;
+}
+
+int & Binding::pos()
+{
+    static THREAD_LOCAL int t_pos = -1;
+
+    return t_pos;
+}
+
+std::recursive_mutex & Binding::mutex()
+{
+    static std::recursive_mutex g_mutex;
+
+    return g_mutex;
+}
+
+std::unordered_map<ContextHandle, int> & Binding::bindings()
+{
+    static std::unordered_map<ContextHandle, int> g_bindings;
+
+    return g_bindings;
+}
 
 khrapi::Function<Binding, void, GLuint, GLuint> Binding::ActiveShaderProgram("glActiveShaderProgram");
 khrapi::Function<Binding, void, GLuint, GLuint> Binding::ActiveShaderProgramEXT("glActiveShaderProgramEXT");
@@ -688,7 +716,7 @@ khrapi::Function<Binding, void, GLuint, GLsizei, const GLuint *, const GLfloat *
 
 const Binding::array_t Binding::s_functions = 
 {{
-	&ActiveShaderProgram,
+    &ActiveShaderProgram,
     &ActiveShaderProgramEXT,
     &ActiveTexture,
     &AlphaFuncQCOM,

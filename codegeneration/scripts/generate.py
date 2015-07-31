@@ -187,7 +187,7 @@ def generate(api, prefix, libraryNamespace, inputfile, revisionfile, patchfile):
     # Generate binding classes
 
     genFunctionObjects_h          (api, prefix, libraryNamespace, commands,           includedir,     "Binding.h")
-    genFunctionObjects_cpp        (api, prefix, libraryNamespace, commands,           sourcedir,      "Binding_objects.cpp")
+    genFunctionObjects_cpp        (api, prefix, libraryNamespace, commands,           sourcedir,      "Binding.cpp")
 
     genVersions                   (api, prefix, libraryNamespace, features,           sourcedir,      "Version_ValidVersions.cpp")
 

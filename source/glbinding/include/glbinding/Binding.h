@@ -1,5 +1,9 @@
 #pragma once
 
+#include <array>
+#include <mutex>
+#include <unordered_map>
+
 #include <khrapi/Binding.h>
 
 #include <glbinding/glbinding_api.h>
@@ -13,9 +17,20 @@
 namespace glbinding
 {
 
-class GLBINDING_API Binding : public khrapi::Binding<ContextHandle, 2806, getProcAddress, getCurrentContext>
+class GLBINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
+    using array_t = std::array<khrapi::AbstractFunction *, 2806>;
+    
+    static const array_t s_functions;
+    
+    static const array_t & functions();
+    
+    static ContextHandle & context();
+    static int & pos();
+    static std::recursive_mutex & mutex();
+    static std::unordered_map<ContextHandle, int> & bindings();
+
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLfloat> Accum;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLfixed> AccumxOES;
     static khrapi::Function<Binding, void, gl::GLuint> ActiveProgramEXT;
@@ -2822,6 +2837,7 @@ public:
     static khrapi::Function<Binding, void, gl::GLshort, gl::GLshort, gl::GLshort, gl::GLshort> WindowPos4sMESA;
     static khrapi::Function<Binding, void, const gl::GLshort *> WindowPos4svMESA;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> WriteMaskEXT;
+
 };
 
 } // namespace glbinding

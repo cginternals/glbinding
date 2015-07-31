@@ -1,5 +1,9 @@
 #pragma once
 
+#include <array>
+#include <mutex>
+#include <unordered_map>
+
 #include <khrapi/Binding.h>
 
 #include <glesbinding/glesbinding_api.h>
@@ -13,9 +17,20 @@
 namespace glesbinding
 {
 
-class GLESBINDING_API Binding : public khrapi::Binding<ContextHandle, 674, getProcAddress, getCurrentContext>
+class GLESBINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
+    using array_t = std::array<khrapi::AbstractFunction *, 674>;
+    
+    static const array_t s_functions;
+    
+    static const array_t & functions();
+    
+    static ContextHandle & context();
+    static int & pos();
+    static std::recursive_mutex & mutex();
+    static std::unordered_map<ContextHandle, int> & bindings();
+
     static khrapi::Function<Binding, void, gles::GLuint, gles::GLuint> ActiveShaderProgram;
     static khrapi::Function<Binding, void, gles::GLuint, gles::GLuint> ActiveShaderProgramEXT;
     static khrapi::Function<Binding, void, gles::GLenum> ActiveTexture;
@@ -690,6 +705,7 @@ public:
     static khrapi::Function<Binding, void, gles::GLsync, gles::UnusedMask, gles::GLuint64> WaitSync;
     static khrapi::Function<Binding, void, gles::GLsync, gles::GLbitfield, gles::GLuint64> WaitSyncAPPLE;
     static khrapi::Function<Binding, void, gles::GLuint, gles::GLsizei, const gles::GLuint *, const gles::GLfloat *> WeightPathsNV;
+
 };
 
 } // namespace glesbinding

@@ -2,114 +2,71 @@
 
 #include <khrapi/Binding.h>
 
-#include <mutex>
-
-namespace
-{
-    template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-    ContextHandle & context()
-    {
-        static THREAD_LOCAL ContextHandle t_context = 0;
-
-        return t_context;
-    }
-
-    template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-    int & pos()
-    {
-        static THREAD_LOCAL int t_pos = -1;
-
-        return t_pos;
-    }
-
-    template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-    std::recursive_mutex & mutex()
-    {
-        static std::recursive_mutex g_mutex;
-
-        return g_mutex;
-    }
-
-    template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-    std::unordered_map<ContextHandle, int> & bindings()
-    {
-        static std::unordered_map<ContextHandle, int> g_bindings;
-
-        return g_bindings;
-    }
-}
-
 namespace khrapi
 {
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-int Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::s_maxpos = -1;
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+int Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::s_maxpos = -1;
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-std::vector<khrapi::AbstractFunction *> Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::s_additionalFunctions;
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+std::vector<khrapi::AbstractFunction *> Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::s_additionalFunctions;
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-std::vector<typename Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::ContextSwitchCallback> Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::s_callbacks;
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+std::vector<typename Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::ContextSwitchCallback> Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::s_callbacks;
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-khrapi::ProcAddress Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::getProcAddress(const char * name)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+khrapi::ProcAddress Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::getProcAddress(const char * name)
 {
     return ProcAddress(name);
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-const typename Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::array_t & Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::functions()
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+int Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::currentPos()
 {
-    return s_functions;
+    return ConcreteBinding::pos();
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-int Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::currentPos()
-{
-    return pos<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>();
-}
-
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-const std::vector<khrapi::AbstractFunction *> & Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::additionalFunctions()
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+const std::vector<khrapi::AbstractFunction *> & Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::additionalFunctions()
 {
     return s_additionalFunctions;
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-size_t Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::size()
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+size_t Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::size()
 {
-    return s_functions.size() + s_additionalFunctions.size();
+    return ConcreteBinding::s_functions.size();// + s_additionalFunctions.size();
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::initialize(const bool resolveFunctions)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::initialize(const bool resolveFunctions)
 {
     initialize(GetCurrentContext(), true, resolveFunctions);
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::initialize(
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::initialize(
     const ContextHandle context
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
-    if (bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().find(context) != bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().end())
+    ConcreteBinding::mutex().lock();
+    if (ConcreteBinding::bindings().find(context) != ConcreteBinding::bindings().end())
     {
-        mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+        ConcreteBinding::mutex().unlock();
         return;
     }
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().unlock();
 
-    const int pos = static_cast<int>(bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().size());
+    const int pos = static_cast<int>(ConcreteBinding::bindings().size());
 
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
-    bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>()[context] = pos;
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().lock();
+    ConcreteBinding::bindings()[context] = pos;
+    ConcreteBinding::mutex().unlock();
 
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
+    ConcreteBinding::mutex().lock();
     provideState(pos);
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().unlock();
 
     if (_useContext)
     {
@@ -122,16 +79,16 @@ void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::init
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::registerAdditionalFunction(khrapi::AbstractFunction * function)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::registerAdditionalFunction(khrapi::AbstractFunction * function)
 {
     s_additionalFunctions.push_back(function);
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::resolveFunctions()
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::resolveFunctions()
 {
-    for (khrapi::AbstractFunction * function : functions())
+    for (auto function : ConcreteBinding::functions())
     {
         function->resolveAddress();
     }
@@ -142,78 +99,78 @@ void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::reso
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::useCurrentContext()
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::useCurrentContext()
 {
     useContext(GetCurrentContext());
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::useContext(const ContextHandle c)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::useContext(const ContextHandle c)
 {
-    context<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>() = c;
+    ConcreteBinding::context() = c;
 
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
-    if (bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().find(context<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>()) == bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().end())
+    ConcreteBinding::mutex().lock();
+    if (ConcreteBinding::bindings().find(ConcreteBinding::context()) == ConcreteBinding::bindings().end())
     {
-        mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+        ConcreteBinding::mutex().unlock();
 
-        initialize(context<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>());
+        initialize(ConcreteBinding::context());
 
         return;
     }
     else
     {
-        mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+        ConcreteBinding::mutex().unlock();
     }
 
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
-    setStatePos(bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>()[context<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>()]);
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().lock();
+    setStatePos(ConcreteBinding::bindings()[ConcreteBinding::context()]);
+    ConcreteBinding::mutex().unlock();
 
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
+    ConcreteBinding::mutex().lock();
     for (const auto & callback : s_callbacks)
     {
-        callback(context<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>());
+        callback(ConcreteBinding::context());
     }
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().unlock();
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::releaseCurrentContext()
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::releaseCurrentContext()
 {
     releaseContext(GetCurrentContext());
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::releaseContext(const ContextHandle context)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::releaseContext(const ContextHandle context)
 {
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
-    neglectState(bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>()[context]);
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().lock();
+    neglectState(ConcreteBinding::bindings()[context]);
+    ConcreteBinding::mutex().unlock();
 
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
-    bindings<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().erase(context);
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().lock();
+    ConcreteBinding::bindings().erase(context);
+    ConcreteBinding::mutex().unlock();
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::addContextSwitchCallback(ContextSwitchCallback callback)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::addContextSwitchCallback(ContextSwitchCallback callback)
 {
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().lock();
+    ConcreteBinding::mutex().lock();
     s_callbacks.push_back(std::move(callback));
-    mutex<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>().unlock();
+    ConcreteBinding::mutex().unlock();
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::provideState(const int pos)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::provideState(const int pos)
 {
     assert(pos > -1);
 
     // if a state at pos exists, it is assumed to be neglected before
     if (s_maxpos < pos)
     {
-        for (khrapi::AbstractFunction * function : functions())
+        for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
         {
             function->resizeStates(pos + 1);
         }
@@ -222,15 +179,15 @@ void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::prov
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::neglectState(const int p)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::neglectState(const int p)
 {
     assert(p <= s_maxpos);
     assert(p > -1);
 
     if (p == s_maxpos)
     {
-        for (khrapi::AbstractFunction * function : Binding::functions())
+        for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
         {
             function->resizeStates(std::max(0, p - 1));
         }
@@ -239,37 +196,37 @@ void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::negl
     }
     else
     {
-        for (khrapi::AbstractFunction * function : Binding::functions())
+        for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
         {
             function->state(p) = khrapi::State<Binding>();
         }
     }
 
-    if (p == pos<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>())
+    if (p == ConcreteBinding::pos())
     {
-        pos<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>() = -1;
+        ConcreteBinding::pos() = -1;
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::setStatePos(const int p)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::setStatePos(const int p)
 {
-    pos<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>() = p;
+    ConcreteBinding::pos() = p;
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::setCallbackMask(const khrapi::CallbackMask mask)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::setCallbackMask(const khrapi::CallbackMask mask)
 {
-    for (khrapi::AbstractFunction * function : functions())
+    for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
     {
         function->setCallbackMask(mask);
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::setCallbackMaskExcept(const khrapi::CallbackMask mask, const std::set<std::string> & blackList)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::setCallbackMaskExcept(const khrapi::CallbackMask mask, const std::set<std::string> & blackList)
 {
-    for (khrapi::AbstractFunction * function : functions())
+    for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
     {
         if (blackList.find(function->name()) == blackList.end())
         {
@@ -278,19 +235,19 @@ void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::setC
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::addCallbackMask(const khrapi::CallbackMask mask)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::addCallbackMask(const khrapi::CallbackMask mask)
 {
-    for (khrapi::AbstractFunction * function : functions())
+    for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
     {
         function->addCallbackMask(mask);
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::addCallbackMaskExcept(const khrapi::CallbackMask mask, const std::set<std::string> & blackList)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::addCallbackMaskExcept(const khrapi::CallbackMask mask, const std::set<std::string> & blackList)
 {
-    for (khrapi::AbstractFunction * function : functions())
+    for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
     {
         if (blackList.find(function->name()) == blackList.end())
         {
@@ -299,10 +256,10 @@ void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::addC
     }
 }
 
-template <typename ContextHandle, size_t FunctionCount, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
-void Binding<ContextHandle, FunctionCount, ProcAddress, GetCurrentContext>::removeCallbackMask(const khrapi::CallbackMask mask)
+template <typename ConcreteBinding, typename ContextHandle, khrapi::ProcAddress (* ProcAddress)(const char *), long long (* GetCurrentContext)()>
+void Binding<ConcreteBinding, ContextHandle, ProcAddress, GetCurrentContext>::removeCallbackMask(const khrapi::CallbackMask mask)
 {
-    for (khrapi::AbstractFunction * function : functions())
+    for (khrapi::AbstractFunction * function : ConcreteBinding::functions())
     {
         function->removeCallbackMask(mask);
     }

@@ -1,5 +1,9 @@
 #pragma once
 
+#include <array>
+#include <mutex>
+#include <unordered_map>
+
 #include <khrapi/Binding.h>
 
 #include <%abinding/%abinding_api.h>
@@ -13,10 +17,22 @@
 namespace %abinding
 {
 
-class %ABINDING_API Binding : public khrapi::Binding<ContextHandle, %s, getProcAddress, getCurrentContext>
+class %ABINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
+    using array_t = std::array<khrapi::AbstractFunction *, %s>;
+    
+    static const array_t s_functions;
+    
+    static const array_t & functions();
+    
+    static ContextHandle & context();
+    static int & pos();
+    static std::recursive_mutex & mutex();
+    static std::unordered_map<ContextHandle, int> & bindings();
+
 %s
+
 };
 
 } // namespace %abinding
