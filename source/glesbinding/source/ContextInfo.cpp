@@ -36,42 +36,17 @@ namespace glesbinding
 
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 {
-    const auto v = version();
-
-    if (v <= Version(1, 0)) // OpenGL 1.0 doesn't support extensions
-    {
-        return std::set<GLextension>{};
-    }
-
     auto extensions = std::set<GLextension>{};
 
-    if (v < Version(3, 0))
+    const auto extensionString = glGetString(GL_EXTENSIONS);
+
+    if (extensionString)
     {
-        const auto extensionString = glGetString(GL_EXTENSIONS);
-
-        if (extensionString)
+        std::istringstream stream{reinterpret_cast<const char *>(extensionString)};
+        auto extensionName = std::string{};
+        while (std::getline(stream, extensionName, ' '))
         {
-            std::istringstream stream{reinterpret_cast<const char *>(extensionString)};
-            auto extensionName = std::string{};
-            while (std::getline(stream, extensionName, ' '))
-            {
-                insertExtension(extensionName, &extensions, unknown);
-            }
-        }
-    }
-    else
-    {
-        auto numExtensions = 0;
-        glGetIntegerv(GL_NUM_EXTENSIONS, &numExtensions);
-
-        for (GLuint i = 0; i < static_cast<GLuint>(numExtensions); ++i)
-        {
-            const auto name = glGetStringi(GL_EXTENSIONS, i);
-
-            if (name)
-            {
-                insertExtension(reinterpret_cast<const char*>(name), &extensions, unknown);
-            }
+            insertExtension(extensionName, &extensions, unknown);
         }
     }
 
@@ -92,16 +67,9 @@ Version ContextInfo::version()
 {
     auto version = Version{};
 
-    Binding::GetIntegerv.directCall(GL_MAJOR_VERSION, &version.m_major);
-    Binding::GetIntegerv.directCall(GL_MINOR_VERSION, &version.m_minor);
-
-    // probably version below 3.0
-    if (GL_INVALID_ENUM == Binding::GetError.directCall())
-    {
-        const auto versionString = Binding::GetString.directCall(GL_VERSION);
-        version.m_major = versionString[0] - '0';
-        version.m_minor = versionString[2] - '0';
-    }
+    const auto versionString = Binding::GetString.directCall(GL_VERSION);
+    version.m_major = versionString[0] - '0';
+    version.m_minor = versionString[2] - '0';
 
     return version;
 }
