@@ -20,7 +20,7 @@ namespace glpbinding
 class GLPBINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
-    using array_t = std::array<khrapi::AbstractFunction *, 674>;
+    using array_t = std::array<khrapi::AbstractFunction *, 719>;
     
     static const array_t s_functions;
     
@@ -35,6 +35,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint> ActiveShaderProgramEXT;
     static khrapi::Function<Binding, void, glp::GLenum> ActiveTexture;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLclampf> AlphaFuncQCOM;
+    static khrapi::Function<Binding, void> ApplyFramebufferAttachmentCMAAINTEL;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint> AttachShader;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum> BeginConditionalRenderNV;
     static khrapi::Function<Binding, void, glp::GLuint> BeginPerfMonitorAMD;
@@ -57,19 +58,24 @@ public:
     static khrapi::Function<Binding, void, glp::GLuint> BindVertexArray;
     static khrapi::Function<Binding, void, glp::GLuint> BindVertexArrayOES;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint, glp::GLintptr, glp::GLsizei> BindVertexBuffer;
+    static khrapi::Function<Binding, void> BlendBarrier;
     static khrapi::Function<Binding, void> BlendBarrierKHR;
     static khrapi::Function<Binding, void> BlendBarrierNV;
     static khrapi::Function<Binding, void, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat> BlendColor;
     static khrapi::Function<Binding, void, glp::GLenum> BlendEquation;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum> BlendEquationSeparate;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum> BlendEquationSeparatei;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum> BlendEquationSeparateiEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum> BlendEquationSeparateiOES;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum> BlendEquationi;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum> BlendEquationiEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum> BlendEquationiOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum> BlendFunc;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLenum> BlendFuncSeparate;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLenum> BlendFuncSeparatei;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLenum> BlendFuncSeparateiEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLenum> BlendFuncSeparateiOES;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum> BlendFunci;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum> BlendFunciEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLenum> BlendFunciOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint> BlendParameteriNV;
@@ -91,6 +97,7 @@ public:
     static khrapi::Function<Binding, glp::GLenum, glp::GLsync, glp::SyncObjectMask, glp::GLuint64> ClientWaitSync;
     static khrapi::Function<Binding, glp::GLenum, glp::GLsync, glp::GLbitfield, glp::GLuint64> ClientWaitSyncAPPLE;
     static khrapi::Function<Binding, void, glp::GLboolean, glp::GLboolean, glp::GLboolean, glp::GLboolean> ColorMask;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLboolean, glp::GLboolean, glp::GLboolean, glp::GLboolean> ColorMaski;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLboolean, glp::GLboolean, glp::GLboolean, glp::GLboolean> ColorMaskiEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLboolean, glp::GLboolean, glp::GLboolean, glp::GLboolean> ColorMaskiOES;
     static khrapi::Function<Binding, void, glp::GLuint> CompileShader;
@@ -102,6 +109,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLsizei, glp::GLenum, glp::GLsizei, const void *> CompressedTexSubImage3DOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLintptr, glp::GLintptr, glp::GLsizeiptr> CopyBufferSubData;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLintptr, glp::GLintptr, glp::GLsizeiptr> CopyBufferSubDataNV;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLuint, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLsizei> CopyImageSubData;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLuint, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLsizei> CopyImageSubDataEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLuint, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLsizei> CopyImageSubDataOES;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint> CopyPathNV;
@@ -124,8 +132,11 @@ public:
     static khrapi::Function<Binding, glp::GLuint, glp::GLenum, glp::GLsizei, const glp::GLchar *const*> CreateShaderProgramv;
     static khrapi::Function<Binding, glp::GLuint, glp::GLenum, glp::GLsizei, const glp::GLchar **> CreateShaderProgramvEXT;
     static khrapi::Function<Binding, void, glp::GLenum> CullFace;
+    static khrapi::Function<Binding, void, glp::GLDEBUGPROC, const void *> DebugMessageCallback;
     static khrapi::Function<Binding, void, glp::GLDEBUGPROCKHR, const void *> DebugMessageCallbackKHR;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLsizei, const glp::GLuint *, glp::GLboolean> DebugMessageControl;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLsizei, const glp::GLuint *, glp::GLboolean> DebugMessageControlKHR;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLenum, glp::GLsizei, const glp::GLchar *> DebugMessageInsert;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLenum, glp::GLsizei, const glp::GLchar *> DebugMessageInsertKHR;
     static khrapi::Function<Binding, void, glp::GLsizei, const glp::GLuint *> DeleteBuffers;
     static khrapi::Function<Binding, void, glp::GLsizei, const glp::GLuint *> DeleteFencesNV;
@@ -156,6 +167,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum> Disable;
     static khrapi::Function<Binding, void, glp::GLuint> DisableDriverControlQCOM;
     static khrapi::Function<Binding, void, glp::GLuint> DisableVertexAttribArray;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> Disablei;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> DisableiEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> DisableiNV;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> DisableiOES;
@@ -174,18 +186,21 @@ public:
     static khrapi::Function<Binding, void, glp::GLint, const glp::GLenum *, const glp::GLint *> DrawBuffersIndexedEXT;
     static khrapi::Function<Binding, void, glp::GLsizei, const glp::GLenum *> DrawBuffersNV;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *> DrawElements;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLint> DrawElementsBaseVertex;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLint> DrawElementsBaseVertexEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLint> DrawElementsBaseVertexOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const void *> DrawElementsIndirect;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei> DrawElementsInstanced;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei> DrawElementsInstancedANGLE;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei, glp::GLuint> DrawElementsInstancedBaseInstanceEXT;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei, glp::GLint> DrawElementsInstancedBaseVertex;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei, glp::GLint, glp::GLuint> DrawElementsInstancedBaseVertexBaseInstanceEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei, glp::GLint> DrawElementsInstancedBaseVertexEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei, glp::GLint> DrawElementsInstancedBaseVertexOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei> DrawElementsInstancedEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, const void *, glp::GLsizei> DrawElementsInstancedNV;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLuint, glp::GLsizei, glp::GLenum, const void *> DrawRangeElements;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLuint, glp::GLsizei, glp::GLenum, const void *, glp::GLint> DrawRangeElementsBaseVertex;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLuint, glp::GLsizei, glp::GLenum, const void *, glp::GLint> DrawRangeElementsBaseVertexEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLuint, glp::GLsizei, glp::GLenum, const void *, glp::GLint> DrawRangeElementsBaseVertexOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLeglImageOES> EGLImageTargetRenderbufferStorageOES;
@@ -193,6 +208,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum> Enable;
     static khrapi::Function<Binding, void, glp::GLuint> EnableDriverControlQCOM;
     static khrapi::Function<Binding, void, glp::GLuint> EnableVertexAttribArray;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> Enablei;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> EnableiEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> EnableiNV;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint> EnableiOES;
@@ -226,6 +242,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint> FramebufferParameteri;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLuint> FramebufferRenderbuffer;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, const glp::GLfloat *> FramebufferSampleLocationsfvNV;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLint> FramebufferTexture;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLint> FramebufferTexture2D;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLint, glp::GLsizei> FramebufferTexture2DMultisampleEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLint, glp::GLsizei> FramebufferTexture2DMultisampleIMG;
@@ -265,6 +282,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, void **> GetBufferPointerv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, void **> GetBufferPointervOES;
     static khrapi::Function<Binding, void, glp::GLsizei, glp::GLfloat *> GetCoverageModulationTableNV;
+    static khrapi::Function<Binding, glp::GLuint, glp::GLuint, glp::GLsizei, glp::GLenum *, glp::GLenum *, glp::GLuint *, glp::GLenum *, glp::GLsizei *, glp::GLchar *> GetDebugMessageLog;
     static khrapi::Function<Binding, glp::GLuint, glp::GLuint, glp::GLsizei, glp::GLenum *, glp::GLenum *, glp::GLuint *, glp::GLenum *, glp::GLsizei *, glp::GLchar *> GetDebugMessageLogKHR;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLsizei, glp::GLsizei *, glp::GLchar *> GetDriverControlStringQCOM;
     static khrapi::Function<Binding, void, glp::GLint *, glp::GLsizei, glp::GLuint *> GetDriverControlsQCOM;
@@ -276,6 +294,7 @@ public:
     static khrapi::Function<Binding, glp::GLint, glp::GLuint, const glp::GLchar *> GetFragDataLocation;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLint *> GetFramebufferAttachmentParameteriv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint *> GetFramebufferParameteriv;
+    static khrapi::Function<Binding, glp::GLenum> GetGraphicsResetStatus;
     static khrapi::Function<Binding, glp::GLenum> GetGraphicsResetStatusEXT;
     static khrapi::Function<Binding, glp::GLenum> GetGraphicsResetStatusKHR;
     static khrapi::Function<Binding, glp::GLuint64, glp::GLuint, glp::GLint, glp::GLboolean, glp::GLint, glp::GLenum> GetImageHandleNV;
@@ -289,8 +308,10 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLenum, glp::GLsizei, glp::GLint *> GetInternalformativ;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLfloat *> GetMultisamplefv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint *> GetNextPerfQueryIdINTEL;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, glp::GLsizei *, glp::GLchar *> GetObjectLabel;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, glp::GLsizei *, glp::GLchar *> GetObjectLabelEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, glp::GLsizei *, glp::GLchar *> GetObjectLabelKHR;
+    static khrapi::Function<Binding, void, const void *, glp::GLsizei, glp::GLsizei *, glp::GLchar *> GetObjectPtrLabel;
     static khrapi::Function<Binding, void, const void *, glp::GLsizei, glp::GLsizei *, glp::GLchar *> GetObjectPtrLabelKHR;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLubyte *> GetPathCommandsNV;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLfloat *> GetPathCoordsNV;
@@ -311,6 +332,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint, glp::GLsizei, glp::GLvoid *, glp::GLuint *> GetPerfQueryDataINTEL;
     static khrapi::Function<Binding, void, glp::GLchar *, glp::GLuint *> GetPerfQueryIdByNameINTEL;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint, glp::GLchar *, glp::GLuint *, glp::GLuint *, glp::GLuint *, glp::GLuint *> GetPerfQueryInfoINTEL;
+    static khrapi::Function<Binding, void, glp::GLenum, void **> GetPointerv;
     static khrapi::Function<Binding, void, glp::GLenum, void **> GetPointervKHR;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLsizei, glp::GLsizei *, glp::GLenum *, void *> GetProgramBinary;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLsizei, glp::GLsizei *, glp::GLenum *, void *> GetProgramBinaryOES;
@@ -334,8 +356,10 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint *> GetQueryiv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint *> GetQueryivEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint *> GetRenderbufferParameteriv;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLint *> GetSamplerParameterIiv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLint *> GetSamplerParameterIivEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLint *> GetSamplerParameterIivOES;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLuint *> GetSamplerParameterIuiv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLuint *> GetSamplerParameterIuivEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLuint *> GetSamplerParameterIuivOES;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLfloat *> GetSamplerParameterfv;
@@ -350,8 +374,10 @@ public:
     static khrapi::Function<Binding, void, glp::GLsync, glp::GLenum, glp::GLsizei, glp::GLsizei *, glp::GLint *> GetSyncivAPPLE;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLenum, glp::GLfloat *> GetTexLevelParameterfv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLenum, glp::GLint *> GetTexLevelParameteriv;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint *> GetTexParameterIiv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint *> GetTexParameterIivEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLint *> GetTexParameterIivOES;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint *> GetTexParameterIuiv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint *> GetTexParameterIuivEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint *> GetTexParameterIuivOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLfloat *> GetTexParameterfv;
@@ -371,10 +397,13 @@ public:
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, void **> GetVertexAttribPointerv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLfloat *> GetVertexAttribfv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLint *> GetVertexAttribiv;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLfloat *> GetnUniformfv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLfloat *> GetnUniformfvEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLfloat *> GetnUniformfvKHR;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLint *> GetnUniformiv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLint *> GetnUniformivEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLint *> GetnUniformivKHR;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLuint *> GetnUniformuiv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLuint *> GetnUniformuivKHR;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum> Hint;
     static khrapi::Function<Binding, void, glp::GLsizei, const glp::GLchar *> InsertEventMarkerEXT;
@@ -383,6 +412,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, const glp::GLenum *, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei> InvalidateSubFramebuffer;
     static khrapi::Function<Binding, glp::GLboolean, glp::GLuint> IsBuffer;
     static khrapi::Function<Binding, glp::GLboolean, glp::GLenum> IsEnabled;
+    static khrapi::Function<Binding, glp::GLboolean, glp::GLenum, glp::GLuint> IsEnabledi;
     static khrapi::Function<Binding, glp::GLboolean, glp::GLenum, glp::GLuint> IsEnablediEXT;
     static khrapi::Function<Binding, glp::GLboolean, glp::GLenum, glp::GLuint> IsEnablediNV;
     static khrapi::Function<Binding, glp::GLboolean, glp::GLenum, glp::GLuint> IsEnablediOES;
@@ -425,6 +455,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, const glp::GLfloat *> MatrixMultTranspose3x3fNV;
     static khrapi::Function<Binding, void, glp::MemoryBarrierMask> MemoryBarrier;
     static khrapi::Function<Binding, void, glp::MemoryBarrierMask> MemoryBarrierByRegion;
+    static khrapi::Function<Binding, void, glp::GLfloat> MinSampleShading;
     static khrapi::Function<Binding, void, glp::GLfloat> MinSampleShadingOES;
     static khrapi::Function<Binding, void, glp::GLenum, const glp::GLint *, const glp::GLsizei *, glp::GLsizei> MultiDrawArraysEXT;
     static khrapi::Function<Binding, void, glp::GLenum, const void *, glp::GLsizei, glp::GLsizei> MultiDrawArraysIndirectEXT;
@@ -433,8 +464,11 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, const glp::GLsizei *, glp::GLenum, const void *const*, glp::GLsizei> MultiDrawElementsEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const void *, glp::GLsizei, glp::GLsizei> MultiDrawElementsIndirectEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint, glp::GLsizei, const glp::GLfloat *> NamedFramebufferSampleLocationsfvNV;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, const glp::GLchar *> ObjectLabel;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, const glp::GLchar *> ObjectLabelKHR;
+    static khrapi::Function<Binding, void, const void *, glp::GLsizei, const glp::GLchar *> ObjectPtrLabel;
     static khrapi::Function<Binding, void, const void *, glp::GLsizei, const glp::GLchar *> ObjectPtrLabelKHR;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLint> PatchParameteri;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint> PatchParameteriEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint> PatchParameteriOES;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLsizei, const glp::GLubyte *, glp::GLsizei, glp::GLenum, const void *> PathCommandsNV;
@@ -460,8 +494,10 @@ public:
     static khrapi::Function<Binding, glp::GLboolean, glp::GLuint, glp::GLsizei, glp::GLsizei, glp::GLfloat, glp::GLfloat *, glp::GLfloat *, glp::GLfloat *, glp::GLfloat *> PointAlongPathNV;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum> PolygonModeNV;
     static khrapi::Function<Binding, void, glp::GLfloat, glp::GLfloat> PolygonOffset;
+    static khrapi::Function<Binding, void> PopDebugGroup;
     static khrapi::Function<Binding, void> PopDebugGroupKHR;
     static khrapi::Function<Binding, void> PopGroupMarkerEXT;
+    static khrapi::Function<Binding, void, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat> PrimitiveBoundingBox;
     static khrapi::Function<Binding, void, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat> PrimitiveBoundingBoxEXT;
     static khrapi::Function<Binding, void, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat, glp::GLfloat> PrimitiveBoundingBoxOES;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, const void *, glp::GLsizei> ProgramBinary;
@@ -537,6 +573,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLboolean, const glp::GLfloat *> ProgramUniformMatrix4x2fvEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLboolean, const glp::GLfloat *> ProgramUniformMatrix4x3fv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLsizei, glp::GLboolean, const glp::GLfloat *> ProgramUniformMatrix4x3fvEXT;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, const glp::GLchar *> PushDebugGroup;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLuint, glp::GLsizei, const glp::GLchar *> PushDebugGroupKHR;
     static khrapi::Function<Binding, void, glp::GLsizei, const glp::GLchar *> PushGroupMarkerEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum> QueryCounterEXT;
@@ -545,6 +582,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint> ReadBufferIndexedEXT;
     static khrapi::Function<Binding, void, glp::GLenum> ReadBufferNV;
     static khrapi::Function<Binding, void, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLenum, glp::GLenum, void *> ReadPixels;
+    static khrapi::Function<Binding, void, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLenum, glp::GLenum, glp::GLsizei, void *> ReadnPixels;
     static khrapi::Function<Binding, void, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLenum, glp::GLenum, glp::GLsizei, void *> ReadnPixelsEXT;
     static khrapi::Function<Binding, void, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLenum, glp::GLenum, glp::GLsizei, void *> ReadnPixelsKHR;
     static khrapi::Function<Binding, void> ReleaseShaderCompiler;
@@ -560,8 +598,10 @@ public:
     static khrapi::Function<Binding, void> ResumeTransformFeedback;
     static khrapi::Function<Binding, void, glp::GLfloat, glp::GLboolean> SampleCoverage;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLbitfield> SampleMaski;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, const glp::GLint *> SamplerParameterIiv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, const glp::GLint *> SamplerParameterIivEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, const glp::GLint *> SamplerParameterIivOES;
+    static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, const glp::GLuint *> SamplerParameterIuiv;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, const glp::GLuint *> SamplerParameterIuivEXT;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, const glp::GLuint *> SamplerParameterIuivOES;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLenum, glp::GLfloat> SamplerParameterf;
@@ -593,16 +633,20 @@ public:
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLint, glp::GLuint, glp::GLenum> StencilThenCoverStrokePathNV;
     static khrapi::Function<Binding, void, glp::GLuint, glp::GLuint> SubpixelPrecisionBiasNV;
     static khrapi::Function<Binding, glp::GLboolean, glp::GLuint> TestFenceNV;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint> TexBuffer;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint> TexBufferEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint> TexBufferOES;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLintptr, glp::GLsizeiptr> TexBufferRange;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLintptr, glp::GLsizeiptr> TexBufferRangeEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLuint, glp::GLintptr, glp::GLsizeiptr> TexBufferRangeOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLint, glp::GLenum, glp::GLenum, const void *> TexImage2D;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLsizei, glp::GLint, glp::GLenum, glp::GLenum, const void *> TexImage3D;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLenum, glp::GLsizei, glp::GLsizei, glp::GLsizei, glp::GLint, glp::GLenum, glp::GLenum, const void *> TexImage3DOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLsizei, glp::GLboolean> TexPageCommitmentARB;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const glp::GLint *> TexParameterIiv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const glp::GLint *> TexParameterIivEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const glp::GLint *> TexParameterIivOES;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const glp::GLuint *> TexParameterIuiv;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const glp::GLuint *> TexParameterIuivEXT;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, const glp::GLuint *> TexParameterIuivOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLenum, glp::GLfloat> TexParameterf;
@@ -615,6 +659,7 @@ public:
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, glp::GLsizei, glp::GLsizei, glp::GLboolean> TexStorage2DMultisample;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, glp::GLsizei, glp::GLsizei, glp::GLsizei> TexStorage3D;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, glp::GLsizei, glp::GLsizei, glp::GLsizei> TexStorage3DEXT;
+    static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, glp::GLsizei, glp::GLsizei, glp::GLsizei, glp::GLboolean> TexStorage3DMultisample;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLsizei, glp::GLenum, glp::GLsizei, glp::GLsizei, glp::GLsizei, glp::GLboolean> TexStorage3DMultisampleOES;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLenum, glp::GLenum, const void *> TexSubImage2D;
     static khrapi::Function<Binding, void, glp::GLenum, glp::GLint, glp::GLint, glp::GLint, glp::GLint, glp::GLsizei, glp::GLsizei, glp::GLsizei, glp::GLenum, glp::GLenum, const void *> TexSubImage3D;

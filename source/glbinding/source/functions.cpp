@@ -74,6 +74,11 @@ void glAlphaFuncxOES(GLenum func, GLfixed ref)
     return glbinding::Binding::AlphaFuncxOES(func, ref);
 }
 
+void glApplyFramebufferAttachmentCMAAINTEL()
+{
+    return glbinding::Binding::ApplyFramebufferAttachmentCMAAINTEL();
+}
+
 void glApplyTextureEXT(GLenum mode)
 {
     return glbinding::Binding::ApplyTextureEXT(mode);
@@ -2764,6 +2769,11 @@ void glEvalPoint2(GLint i, GLint j)
     return glbinding::Binding::EvalPoint2(i, j);
 }
 
+void glEvaluateDepthValuesARB()
+{
+    return glbinding::Binding::EvaluateDepthValuesARB();
+}
+
 void glExecuteProgramNV(GLenum target, GLuint id, const GLfloat * params)
 {
     return glbinding::Binding::ExecuteProgramNV(target, id, params);
@@ -3087,6 +3097,11 @@ void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbu
 void glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
     return glbinding::Binding::FramebufferRenderbufferEXT(target, attachment, renderbuffertarget, renderbuffer);
+}
+
+void glFramebufferSampleLocationsfvARB(GLenum target, GLuint start, GLsizei count, const GLfloat * v)
+{
+    return glbinding::Binding::FramebufferSampleLocationsfvARB(target, start, count, v);
 }
 
 void glFramebufferSampleLocationsfvNV(GLenum target, GLuint start, GLsizei count, const GLfloat * v)
@@ -5129,6 +5144,11 @@ void glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat * params)
     return glbinding::Binding::GetUniformfvARB(programObj, location, params);
 }
 
+void glGetUniformi64vARB(GLuint program, GLint location, GLint64 * params)
+{
+    return glbinding::Binding::GetUniformi64vARB(program, location, params);
+}
+
 void glGetUniformi64vNV(GLuint program, GLint location, GLint64EXT * params)
 {
     return glbinding::Binding::GetUniformi64vNV(program, location, params);
@@ -5142,6 +5162,11 @@ void glGetUniformiv(GLuint program, GLint location, GLint * params)
 void glGetUniformivARB(GLhandleARB programObj, GLint location, GLint * params)
 {
     return glbinding::Binding::GetUniformivARB(programObj, location, params);
+}
+
+void glGetUniformui64vARB(GLuint program, GLint location, GLuint64 * params)
+{
+    return glbinding::Binding::GetUniformui64vARB(program, location, params);
 }
 
 void glGetUniformui64vNV(GLuint program, GLint location, GLuint64EXT * params)
@@ -5544,6 +5569,11 @@ void glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, GLfloat
     return glbinding::Binding::GetnUniformfvARB(program, location, bufSize, params);
 }
 
+void glGetnUniformi64vARB(GLuint program, GLint location, GLsizei bufSize, GLint64 * params)
+{
+    return glbinding::Binding::GetnUniformi64vARB(program, location, bufSize, params);
+}
+
 void glGetnUniformiv(GLuint program, GLint location, GLsizei bufSize, GLint * params)
 {
     return glbinding::Binding::GetnUniformiv(program, location, bufSize, params);
@@ -5552,6 +5582,11 @@ void glGetnUniformiv(GLuint program, GLint location, GLsizei bufSize, GLint * pa
 void glGetnUniformivARB(GLuint program, GLint location, GLsizei bufSize, GLint * params)
 {
     return glbinding::Binding::GetnUniformivARB(program, location, bufSize, params);
+}
+
+void glGetnUniformui64vARB(GLuint program, GLint location, GLsizei bufSize, GLuint64 * params)
+{
+    return glbinding::Binding::GetnUniformui64vARB(program, location, bufSize, params);
 }
 
 void glGetnUniformuiv(GLuint program, GLint location, GLsizei bufSize, GLuint * params)
@@ -6619,6 +6654,11 @@ void glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z)
     return glbinding::Binding::MatrixTranslatefEXT(mode, x, y, z);
 }
 
+void glMaxShaderCompilerThreadsARB(GLuint count)
+{
+    return glbinding::Binding::MaxShaderCompilerThreadsARB(count);
+}
+
 void glMemoryBarrier(MemoryBarrierMask barriers)
 {
     return glbinding::Binding::MemoryBarrier(barriers);
@@ -7474,6 +7514,11 @@ void glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GL
     return glbinding::Binding::NamedFramebufferRenderbufferEXT(framebuffer, attachment, renderbuffertarget, renderbuffer);
 }
 
+void glNamedFramebufferSampleLocationsfvARB(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v)
+{
+    return glbinding::Binding::NamedFramebufferSampleLocationsfvARB(framebuffer, start, count, v);
+}
+
 void glNamedFramebufferSampleLocationsfvNV(GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v)
 {
     return glbinding::Binding::NamedFramebufferSampleLocationsfvNV(framebuffer, start, count, v);
@@ -8239,6 +8284,11 @@ void glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint
     return glbinding::Binding::PresentFrameKeyedNV(video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, key0, target1, fill1, key1);
 }
 
+void glPrimitiveBoundingBoxARB(GLfloat minX, GLfloat minY, GLfloat minZ, GLfloat minW, GLfloat maxX, GLfloat maxY, GLfloat maxZ, GLfloat maxW)
+{
+    return glbinding::Binding::PrimitiveBoundingBoxARB(minX, minY, minZ, minW, maxX, maxY, maxZ, maxW);
+}
+
 void glPrimitiveRestartIndex(GLuint index)
 {
     return glbinding::Binding::PrimitiveRestartIndex(index);
@@ -8524,9 +8574,19 @@ void glProgramUniform1i(GLuint program, GLint location, GLint v0)
     return glbinding::Binding::ProgramUniform1i(program, location, v0);
 }
 
+void glProgramUniform1i64ARB(GLuint program, GLint location, GLint64 x)
+{
+    return glbinding::Binding::ProgramUniform1i64ARB(program, location, x);
+}
+
 void glProgramUniform1i64NV(GLuint program, GLint location, GLint64EXT x)
 {
     return glbinding::Binding::ProgramUniform1i64NV(program, location, x);
+}
+
+void glProgramUniform1i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::ProgramUniform1i64vARB(program, location, count, value);
 }
 
 void glProgramUniform1i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value)
@@ -8554,9 +8614,19 @@ void glProgramUniform1ui(GLuint program, GLint location, GLuint v0)
     return glbinding::Binding::ProgramUniform1ui(program, location, v0);
 }
 
+void glProgramUniform1ui64ARB(GLuint program, GLint location, GLuint64 x)
+{
+    return glbinding::Binding::ProgramUniform1ui64ARB(program, location, x);
+}
+
 void glProgramUniform1ui64NV(GLuint program, GLint location, GLuint64EXT x)
 {
     return glbinding::Binding::ProgramUniform1ui64NV(program, location, x);
+}
+
+void glProgramUniform1ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::ProgramUniform1ui64vARB(program, location, count, value);
 }
 
 void glProgramUniform1ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value)
@@ -8624,9 +8694,19 @@ void glProgramUniform2i(GLuint program, GLint location, GLint v0, GLint v1)
     return glbinding::Binding::ProgramUniform2i(program, location, v0, v1);
 }
 
+void glProgramUniform2i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y)
+{
+    return glbinding::Binding::ProgramUniform2i64ARB(program, location, x, y);
+}
+
 void glProgramUniform2i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y)
 {
     return glbinding::Binding::ProgramUniform2i64NV(program, location, x, y);
+}
+
+void glProgramUniform2i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::ProgramUniform2i64vARB(program, location, count, value);
 }
 
 void glProgramUniform2i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value)
@@ -8654,9 +8734,19 @@ void glProgramUniform2ui(GLuint program, GLint location, GLuint v0, GLuint v1)
     return glbinding::Binding::ProgramUniform2ui(program, location, v0, v1);
 }
 
+void glProgramUniform2ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y)
+{
+    return glbinding::Binding::ProgramUniform2ui64ARB(program, location, x, y);
+}
+
 void glProgramUniform2ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y)
 {
     return glbinding::Binding::ProgramUniform2ui64NV(program, location, x, y);
+}
+
+void glProgramUniform2ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::ProgramUniform2ui64vARB(program, location, count, value);
 }
 
 void glProgramUniform2ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value)
@@ -8724,9 +8814,19 @@ void glProgramUniform3i(GLuint program, GLint location, GLint v0, GLint v1, GLin
     return glbinding::Binding::ProgramUniform3i(program, location, v0, v1, v2);
 }
 
+void glProgramUniform3i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z)
+{
+    return glbinding::Binding::ProgramUniform3i64ARB(program, location, x, y, z);
+}
+
 void glProgramUniform3i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z)
 {
     return glbinding::Binding::ProgramUniform3i64NV(program, location, x, y, z);
+}
+
+void glProgramUniform3i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::ProgramUniform3i64vARB(program, location, count, value);
 }
 
 void glProgramUniform3i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value)
@@ -8754,9 +8854,19 @@ void glProgramUniform3ui(GLuint program, GLint location, GLuint v0, GLuint v1, G
     return glbinding::Binding::ProgramUniform3ui(program, location, v0, v1, v2);
 }
 
+void glProgramUniform3ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z)
+{
+    return glbinding::Binding::ProgramUniform3ui64ARB(program, location, x, y, z);
+}
+
 void glProgramUniform3ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z)
 {
     return glbinding::Binding::ProgramUniform3ui64NV(program, location, x, y, z);
+}
+
+void glProgramUniform3ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::ProgramUniform3ui64vARB(program, location, count, value);
 }
 
 void glProgramUniform3ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value)
@@ -8824,9 +8934,19 @@ void glProgramUniform4i(GLuint program, GLint location, GLint v0, GLint v1, GLin
     return glbinding::Binding::ProgramUniform4i(program, location, v0, v1, v2, v3);
 }
 
+void glProgramUniform4i64ARB(GLuint program, GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w)
+{
+    return glbinding::Binding::ProgramUniform4i64ARB(program, location, x, y, z, w);
+}
+
 void glProgramUniform4i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w)
 {
     return glbinding::Binding::ProgramUniform4i64NV(program, location, x, y, z, w);
+}
+
+void glProgramUniform4i64vARB(GLuint program, GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::ProgramUniform4i64vARB(program, location, count, value);
 }
 
 void glProgramUniform4i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT * value)
@@ -8854,9 +8974,19 @@ void glProgramUniform4ui(GLuint program, GLint location, GLuint v0, GLuint v1, G
     return glbinding::Binding::ProgramUniform4ui(program, location, v0, v1, v2, v3);
 }
 
+void glProgramUniform4ui64ARB(GLuint program, GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w)
+{
+    return glbinding::Binding::ProgramUniform4ui64ARB(program, location, x, y, z, w);
+}
+
 void glProgramUniform4ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w)
 {
     return glbinding::Binding::ProgramUniform4ui64NV(program, location, x, y, z, w);
+}
+
+void glProgramUniform4ui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::ProgramUniform4ui64vARB(program, location, count, value);
 }
 
 void glProgramUniform4ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT * value)
@@ -11274,9 +11404,19 @@ void glUniform1i(GLint location, GLint v0)
     return glbinding::Binding::Uniform1i(location, v0);
 }
 
+void glUniform1i64ARB(GLint location, GLint64 x)
+{
+    return glbinding::Binding::Uniform1i64ARB(location, x);
+}
+
 void glUniform1i64NV(GLint location, GLint64EXT x)
 {
     return glbinding::Binding::Uniform1i64NV(location, x);
+}
+
+void glUniform1i64vARB(GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::Uniform1i64vARB(location, count, value);
 }
 
 void glUniform1i64vNV(GLint location, GLsizei count, const GLint64EXT * value)
@@ -11304,9 +11444,19 @@ void glUniform1ui(GLint location, GLuint v0)
     return glbinding::Binding::Uniform1ui(location, v0);
 }
 
+void glUniform1ui64ARB(GLint location, GLuint64 x)
+{
+    return glbinding::Binding::Uniform1ui64ARB(location, x);
+}
+
 void glUniform1ui64NV(GLint location, GLuint64EXT x)
 {
     return glbinding::Binding::Uniform1ui64NV(location, x);
+}
+
+void glUniform1ui64vARB(GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::Uniform1ui64vARB(location, count, value);
 }
 
 void glUniform1ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value)
@@ -11364,9 +11514,19 @@ void glUniform2i(GLint location, GLint v0, GLint v1)
     return glbinding::Binding::Uniform2i(location, v0, v1);
 }
 
+void glUniform2i64ARB(GLint location, GLint64 x, GLint64 y)
+{
+    return glbinding::Binding::Uniform2i64ARB(location, x, y);
+}
+
 void glUniform2i64NV(GLint location, GLint64EXT x, GLint64EXT y)
 {
     return glbinding::Binding::Uniform2i64NV(location, x, y);
+}
+
+void glUniform2i64vARB(GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::Uniform2i64vARB(location, count, value);
 }
 
 void glUniform2i64vNV(GLint location, GLsizei count, const GLint64EXT * value)
@@ -11394,9 +11554,19 @@ void glUniform2ui(GLint location, GLuint v0, GLuint v1)
     return glbinding::Binding::Uniform2ui(location, v0, v1);
 }
 
+void glUniform2ui64ARB(GLint location, GLuint64 x, GLuint64 y)
+{
+    return glbinding::Binding::Uniform2ui64ARB(location, x, y);
+}
+
 void glUniform2ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y)
 {
     return glbinding::Binding::Uniform2ui64NV(location, x, y);
+}
+
+void glUniform2ui64vARB(GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::Uniform2ui64vARB(location, count, value);
 }
 
 void glUniform2ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value)
@@ -11454,9 +11624,19 @@ void glUniform3i(GLint location, GLint v0, GLint v1, GLint v2)
     return glbinding::Binding::Uniform3i(location, v0, v1, v2);
 }
 
+void glUniform3i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z)
+{
+    return glbinding::Binding::Uniform3i64ARB(location, x, y, z);
+}
+
 void glUniform3i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z)
 {
     return glbinding::Binding::Uniform3i64NV(location, x, y, z);
+}
+
+void glUniform3i64vARB(GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::Uniform3i64vARB(location, count, value);
 }
 
 void glUniform3i64vNV(GLint location, GLsizei count, const GLint64EXT * value)
@@ -11484,9 +11664,19 @@ void glUniform3ui(GLint location, GLuint v0, GLuint v1, GLuint v2)
     return glbinding::Binding::Uniform3ui(location, v0, v1, v2);
 }
 
+void glUniform3ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z)
+{
+    return glbinding::Binding::Uniform3ui64ARB(location, x, y, z);
+}
+
 void glUniform3ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z)
 {
     return glbinding::Binding::Uniform3ui64NV(location, x, y, z);
+}
+
+void glUniform3ui64vARB(GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::Uniform3ui64vARB(location, count, value);
 }
 
 void glUniform3ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value)
@@ -11544,9 +11734,19 @@ void glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
     return glbinding::Binding::Uniform4i(location, v0, v1, v2, v3);
 }
 
+void glUniform4i64ARB(GLint location, GLint64 x, GLint64 y, GLint64 z, GLint64 w)
+{
+    return glbinding::Binding::Uniform4i64ARB(location, x, y, z, w);
+}
+
 void glUniform4i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w)
 {
     return glbinding::Binding::Uniform4i64NV(location, x, y, z, w);
+}
+
+void glUniform4i64vARB(GLint location, GLsizei count, const GLint64 * value)
+{
+    return glbinding::Binding::Uniform4i64vARB(location, count, value);
 }
 
 void glUniform4i64vNV(GLint location, GLsizei count, const GLint64EXT * value)
@@ -11574,9 +11774,19 @@ void glUniform4ui(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
     return glbinding::Binding::Uniform4ui(location, v0, v1, v2, v3);
 }
 
+void glUniform4ui64ARB(GLint location, GLuint64 x, GLuint64 y, GLuint64 z, GLuint64 w)
+{
+    return glbinding::Binding::Uniform4ui64ARB(location, x, y, z, w);
+}
+
 void glUniform4ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w)
 {
     return glbinding::Binding::Uniform4ui64NV(location, x, y, z, w);
+}
+
+void glUniform4ui64vARB(GLint location, GLsizei count, const GLuint64 * value)
+{
+    return glbinding::Binding::Uniform4ui64vARB(location, count, value);
 }
 
 void glUniform4ui64vNV(GLint location, GLsizei count, const GLuint64EXT * value)

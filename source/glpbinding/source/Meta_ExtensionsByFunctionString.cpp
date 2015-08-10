@@ -15,6 +15,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
 #ifdef SYMBOLS_BY_STRINGS
     { "glActiveShaderProgramEXT", { GLextension::GL_EXT_separate_shader_objects } },
     { "glAlphaFuncQCOM", { GLextension::GL_QCOM_alpha_test } },
+    { "glApplyFramebufferAttachmentCMAAINTEL", { GLextension::GL_INTEL_framebuffer_CMAA } },
     { "glBeginConditionalRenderNV", { GLextension::GL_NV_conditional_render } },
     { "glBeginPerfMonitorAMD", { GLextension::GL_AMD_performance_monitor } },
     { "glBeginPerfQueryINTEL", { GLextension::GL_INTEL_performance_query } },

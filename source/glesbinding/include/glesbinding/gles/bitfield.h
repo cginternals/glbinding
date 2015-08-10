@@ -86,9 +86,11 @@ enum class ClearBufferMask : unsigned int
 
 enum class ContextFlagMask : unsigned int
 {
-    GL_NONE_BIT                      = 0x0, // Generic GL_NONE_BIT
-    GL_CONTEXT_FLAG_DEBUG_BIT_KHR    = 0x00000002,
-    GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR = 0x00000008,
+    GL_NONE_BIT                       = 0x0, // Generic GL_NONE_BIT
+    GL_CONTEXT_FLAG_DEBUG_BIT         = 0x00000002,
+    GL_CONTEXT_FLAG_DEBUG_BIT_KHR     = 0x00000002,
+    GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT = 0x00000004,
+    GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR  = 0x00000008,
 };
 
 
@@ -204,10 +206,13 @@ enum class UseProgramStageMask : unsigned int
     GL_VERTEX_SHADER_BIT_EXT          = 0x00000001,
     GL_FRAGMENT_SHADER_BIT            = 0x00000002,
     GL_FRAGMENT_SHADER_BIT_EXT        = 0x00000002,
+    GL_GEOMETRY_SHADER_BIT            = 0x00000004,
     GL_GEOMETRY_SHADER_BIT_EXT        = 0x00000004,
     GL_GEOMETRY_SHADER_BIT_OES        = 0x00000004,
+    GL_TESS_CONTROL_SHADER_BIT        = 0x00000008,
     GL_TESS_CONTROL_SHADER_BIT_EXT    = 0x00000008,
     GL_TESS_CONTROL_SHADER_BIT_OES    = 0x00000008,
+    GL_TESS_EVALUATION_SHADER_BIT     = 0x00000010,
     GL_TESS_EVALUATION_SHADER_BIT_EXT = 0x00000010,
     GL_TESS_EVALUATION_SHADER_BIT_OES = 0x00000010,
     GL_COMPUTE_SHADER_BIT             = 0x00000020,
@@ -230,20 +235,25 @@ static const MemoryBarrierMask GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT = MemoryBarrie
 static const UseProgramStageMask GL_VERTEX_SHADER_BIT = UseProgramStageMask::GL_VERTEX_SHADER_BIT;
 static const UseProgramStageMask GL_VERTEX_SHADER_BIT_EXT = UseProgramStageMask::GL_VERTEX_SHADER_BIT_EXT;
 static const BufferBitQCOM GL_COLOR_BUFFER_BIT1_QCOM = BufferBitQCOM::GL_COLOR_BUFFER_BIT1_QCOM;
+static const ContextFlagMask GL_CONTEXT_FLAG_DEBUG_BIT = ContextFlagMask::GL_CONTEXT_FLAG_DEBUG_BIT;
 static const ContextFlagMask GL_CONTEXT_FLAG_DEBUG_BIT_KHR = ContextFlagMask::GL_CONTEXT_FLAG_DEBUG_BIT_KHR;
 static const MemoryBarrierMask GL_ELEMENT_ARRAY_BARRIER_BIT = MemoryBarrierMask::GL_ELEMENT_ARRAY_BARRIER_BIT;
 static const UseProgramStageMask GL_FRAGMENT_SHADER_BIT = UseProgramStageMask::GL_FRAGMENT_SHADER_BIT;
 static const UseProgramStageMask GL_FRAGMENT_SHADER_BIT_EXT = UseProgramStageMask::GL_FRAGMENT_SHADER_BIT_EXT;
 static const BufferBitQCOM GL_COLOR_BUFFER_BIT2_QCOM = BufferBitQCOM::GL_COLOR_BUFFER_BIT2_QCOM;
+static const ContextFlagMask GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT = ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT;
+static const UseProgramStageMask GL_GEOMETRY_SHADER_BIT = UseProgramStageMask::GL_GEOMETRY_SHADER_BIT;
 static const UseProgramStageMask GL_GEOMETRY_SHADER_BIT_EXT = UseProgramStageMask::GL_GEOMETRY_SHADER_BIT_EXT;
 static const UseProgramStageMask GL_GEOMETRY_SHADER_BIT_OES = UseProgramStageMask::GL_GEOMETRY_SHADER_BIT_OES;
 static const MemoryBarrierMask GL_UNIFORM_BARRIER_BIT = MemoryBarrierMask::GL_UNIFORM_BARRIER_BIT;
 static const BufferBitQCOM GL_COLOR_BUFFER_BIT3_QCOM = BufferBitQCOM::GL_COLOR_BUFFER_BIT3_QCOM;
 static const ContextFlagMask GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR = ContextFlagMask::GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR;
+static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT;
 static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT_EXT = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT_EXT;
 static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT_OES = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT_OES;
 static const MemoryBarrierMask GL_TEXTURE_FETCH_BARRIER_BIT = MemoryBarrierMask::GL_TEXTURE_FETCH_BARRIER_BIT;
 static const BufferBitQCOM GL_COLOR_BUFFER_BIT4_QCOM = BufferBitQCOM::GL_COLOR_BUFFER_BIT4_QCOM;
+static const UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT = UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT;
 static const UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT_EXT = UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_EXT;
 static const UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT_OES = UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_OES;
 static const BufferBitQCOM GL_COLOR_BUFFER_BIT5_QCOM = BufferBitQCOM::GL_COLOR_BUFFER_BIT5_QCOM;

@@ -4,6 +4,7 @@
 #include <glpbinding/glp20/glp.h>
 #include <glpbinding/glp30/glp.h>
 #include <glpbinding/glp31/glp.h>
+#include <glpbinding/glp32/glp.h>
 
 TEST(AllVersions, Compilation)
 {

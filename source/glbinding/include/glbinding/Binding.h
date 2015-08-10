@@ -20,7 +20,7 @@ namespace glbinding
 class GLBINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
-    using array_t = std::array<khrapi::AbstractFunction *, 2806>;
+    using array_t = std::array<khrapi::AbstractFunction *, 2848>;
     
     static const array_t s_functions;
     
@@ -44,6 +44,7 @@ public:
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> AlphaFragmentOp3ATI;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLfloat> AlphaFunc;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLfixed> AlphaFuncxOES;
+    static khrapi::Function<Binding, void> ApplyFramebufferAttachmentCMAAINTEL;
     static khrapi::Function<Binding, void, gl::GLenum> ApplyTextureEXT;
     static khrapi::Function<Binding, gl::GLboolean, gl::GLsizei, const gl::GLuint *, gl::GLboolean *> AreProgramsResidentNV;
     static khrapi::Function<Binding, gl::GLboolean, gl::GLsizei, const gl::GLuint *, gl::GLboolean *> AreTexturesResident;
@@ -582,6 +583,7 @@ public:
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint> EvalMesh2;
     static khrapi::Function<Binding, void, gl::GLint> EvalPoint1;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint> EvalPoint2;
+    static khrapi::Function<Binding, void> EvaluateDepthValuesARB;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLuint, const gl::GLfloat *> ExecuteProgramNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLuint, gl::GLuint> ExtractComponentEXT;
     static khrapi::Function<Binding, void, gl::GLsizei, gl::GLenum, gl::GLfloat *> FeedbackBuffer;
@@ -647,6 +649,7 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum> FramebufferReadBufferEXT;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint> FramebufferRenderbuffer;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint> FramebufferRenderbufferEXT;
+    static khrapi::Function<Binding, void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLfloat *> FramebufferSampleLocationsfvARB;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLfloat *> FramebufferSampleLocationsfvNV;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture1D;
@@ -1055,9 +1058,11 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLdouble *> GetUniformdv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLfloat *> GetUniformfv;
     static khrapi::Function<Binding, void, gl::GLhandleARB, gl::GLint, gl::GLfloat *> GetUniformfvARB;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64 *> GetUniformi64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64EXT *> GetUniformi64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint *> GetUniformiv;
     static khrapi::Function<Binding, void, gl::GLhandleARB, gl::GLint, gl::GLint *> GetUniformivARB;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64 *> GetUniformui64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64EXT *> GetUniformui64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint *> GetUniformuiv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint *> GetUniformuivEXT;
@@ -1138,8 +1143,10 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLdouble *> GetnUniformdvARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLfloat *> GetnUniformfv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLfloat *> GetnUniformfvARB;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLint64 *> GetnUniformi64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLint *> GetnUniformiv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLint *> GetnUniformivARB;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLuint64 *> GetnUniformui64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLuint *> GetnUniformuiv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, gl::GLuint *> GetnUniformuivARB;
     static khrapi::Function<Binding, void, gl::GLbyte> GlobalAlphaFactorbSUN;
@@ -1353,6 +1360,7 @@ public:
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLfloat, gl::GLfloat, gl::GLfloat> MatrixScalefEXT;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLdouble, gl::GLdouble, gl::GLdouble> MatrixTranslatedEXT;
     static khrapi::Function<Binding, void, gl::GLenum, gl::GLfloat, gl::GLfloat, gl::GLfloat> MatrixTranslatefEXT;
+    static khrapi::Function<Binding, void, gl::GLuint> MaxShaderCompilerThreadsARB;
     static khrapi::Function<Binding, void, gl::MemoryBarrierMask> MemoryBarrier;
     static khrapi::Function<Binding, void, gl::MemoryBarrierMask> MemoryBarrierByRegion;
     static khrapi::Function<Binding, void, gl::MemoryBarrierMask> MemoryBarrierEXT;
@@ -1524,6 +1532,7 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum> NamedFramebufferReadBuffer;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint> NamedFramebufferRenderbuffer;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint> NamedFramebufferRenderbufferEXT;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> NamedFramebufferSampleLocationsfvARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> NamedFramebufferSampleLocationsfvNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture1DEXT;
@@ -1677,6 +1686,7 @@ public:
     static khrapi::Function<Binding, void> PopName;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLuint64EXT, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLuint> PresentFrameDualFillNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLuint64EXT, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLuint> PresentFrameKeyedNV;
+    static khrapi::Function<Binding, void, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> PrimitiveBoundingBoxARB;
     static khrapi::Function<Binding, void, gl::GLuint> PrimitiveRestartIndex;
     static khrapi::Function<Binding, void, gl::GLuint> PrimitiveRestartIndexNV;
     static khrapi::Function<Binding, void> PrimitiveRestartNV;
@@ -1734,13 +1744,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform1fv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform1fvEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint> ProgramUniform1i;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64> ProgramUniform1i64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64EXT> ProgramUniform1i64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64 *> ProgramUniform1i64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> ProgramUniform1i64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint> ProgramUniform1iEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform1iv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform1ivEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint> ProgramUniform1ui;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64> ProgramUniform1ui64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64EXT> ProgramUniform1ui64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64 *> ProgramUniform1ui64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> ProgramUniform1ui64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint> ProgramUniform1uiEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint *> ProgramUniform1uiv;
@@ -1754,13 +1768,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform2fv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform2fvEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint> ProgramUniform2i;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64, gl::GLint64> ProgramUniform2i64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64EXT, gl::GLint64EXT> ProgramUniform2i64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64 *> ProgramUniform2i64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> ProgramUniform2i64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint> ProgramUniform2iEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform2iv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform2ivEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLuint> ProgramUniform2ui;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64, gl::GLuint64> ProgramUniform2ui64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64EXT, gl::GLuint64EXT> ProgramUniform2ui64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64 *> ProgramUniform2ui64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> ProgramUniform2ui64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLuint> ProgramUniform2uiEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint *> ProgramUniform2uiv;
@@ -1774,13 +1792,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform3fv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform3fvEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint> ProgramUniform3i;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64, gl::GLint64, gl::GLint64> ProgramUniform3i64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64EXT, gl::GLint64EXT, gl::GLint64EXT> ProgramUniform3i64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64 *> ProgramUniform3i64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> ProgramUniform3i64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint> ProgramUniform3iEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform3iv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform3ivEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint> ProgramUniform3ui;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64, gl::GLuint64, gl::GLuint64> ProgramUniform3ui64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64EXT, gl::GLuint64EXT, gl::GLuint64EXT> ProgramUniform3ui64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64 *> ProgramUniform3ui64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> ProgramUniform3ui64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint> ProgramUniform3uiEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint *> ProgramUniform3uiv;
@@ -1794,13 +1816,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform4fv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLfloat *> ProgramUniform4fvEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint> ProgramUniform4i;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64, gl::GLint64, gl::GLint64, gl::GLint64> ProgramUniform4i64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint64EXT, gl::GLint64EXT, gl::GLint64EXT, gl::GLint64EXT> ProgramUniform4i64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64 *> ProgramUniform4i64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> ProgramUniform4i64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint> ProgramUniform4iEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform4iv;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLint *> ProgramUniform4ivEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> ProgramUniform4ui;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64, gl::GLuint64, gl::GLuint64, gl::GLuint64> ProgramUniform4ui64ARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint64EXT, gl::GLuint64EXT, gl::GLuint64EXT, gl::GLuint64EXT> ProgramUniform4ui64NV;
+    static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64 *> ProgramUniform4ui64vARB;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> ProgramUniform4ui64vNV;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> ProgramUniform4uiEXT;
     static khrapi::Function<Binding, void, gl::GLuint, gl::GLint, gl::GLsizei, const gl::GLuint *> ProgramUniform4uiv;
@@ -2284,13 +2310,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform1fv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform1fvARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint> Uniform1i;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLint64> Uniform1i64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint64EXT> Uniform1i64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64 *> Uniform1i64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> Uniform1i64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint> Uniform1iARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform1iv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform1ivARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint> Uniform1ui;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64> Uniform1ui64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64EXT> Uniform1ui64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64 *> Uniform1ui64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> Uniform1ui64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint> Uniform1uiEXT;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint *> Uniform1uiv;
@@ -2302,13 +2332,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform2fv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform2fvARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint, gl::GLint> Uniform2i;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLint64, gl::GLint64> Uniform2i64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint64EXT, gl::GLint64EXT> Uniform2i64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64 *> Uniform2i64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> Uniform2i64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint, gl::GLint> Uniform2iARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform2iv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform2ivARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint, gl::GLuint> Uniform2ui;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64, gl::GLuint64> Uniform2ui64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64EXT, gl::GLuint64EXT> Uniform2ui64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64 *> Uniform2ui64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> Uniform2ui64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint, gl::GLuint> Uniform2uiEXT;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint *> Uniform2uiv;
@@ -2320,13 +2354,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform3fv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform3fvARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint, gl::GLint, gl::GLint> Uniform3i;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLint64, gl::GLint64, gl::GLint64> Uniform3i64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint64EXT, gl::GLint64EXT, gl::GLint64EXT> Uniform3i64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64 *> Uniform3i64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> Uniform3i64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint, gl::GLint, gl::GLint> Uniform3iARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform3iv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform3ivARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint> Uniform3ui;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64, gl::GLuint64, gl::GLuint64> Uniform3ui64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64EXT, gl::GLuint64EXT, gl::GLuint64EXT> Uniform3ui64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64 *> Uniform3ui64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> Uniform3ui64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint> Uniform3uiEXT;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint *> Uniform3uiv;
@@ -2338,13 +2376,17 @@ public:
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform4fv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLfloat *> Uniform4fvARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint> Uniform4i;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLint64, gl::GLint64, gl::GLint64, gl::GLint64> Uniform4i64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint64EXT, gl::GLint64EXT, gl::GLint64EXT, gl::GLint64EXT> Uniform4i64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64 *> Uniform4i64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint64EXT *> Uniform4i64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint> Uniform4iARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform4iv;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLint *> Uniform4ivARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> Uniform4ui;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64, gl::GLuint64, gl::GLuint64, gl::GLuint64> Uniform4ui64ARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint64EXT, gl::GLuint64EXT, gl::GLuint64EXT, gl::GLuint64EXT> Uniform4ui64NV;
+    static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64 *> Uniform4ui64vARB;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint64EXT *> Uniform4ui64vNV;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> Uniform4uiEXT;
     static khrapi::Function<Binding, void, gl::GLint, gl::GLsizei, const gl::GLuint *> Uniform4uiv;

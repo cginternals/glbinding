@@ -52,6 +52,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_texture_storage, { "glTexStorage1DEXT", "glTexStorage2DEXT", "glTexStorage3DEXT", "glTextureStorage1DEXT", "glTextureStorage2DEXT", "glTextureStorage3DEXT" } },
     { GLextension::GL_EXT_texture_view, { "glTextureViewEXT" } },
     { GLextension::GL_IMG_multisampled_render_to_texture, { "glRenderbufferStorageMultisampleIMG", "glFramebufferTexture2DMultisampleIMG" } },
+    { GLextension::GL_INTEL_framebuffer_CMAA, { "glApplyFramebufferAttachmentCMAAINTEL" } },
     { GLextension::GL_INTEL_performance_query, { "glBeginPerfQueryINTEL", "glCreatePerfQueryINTEL", "glDeletePerfQueryINTEL", "glEndPerfQueryINTEL", "glGetFirstPerfQueryIdINTEL", "glGetNextPerfQueryIdINTEL", "glGetPerfCounterInfoINTEL", "glGetPerfQueryDataINTEL", "glGetPerfQueryIdByNameINTEL", "glGetPerfQueryInfoINTEL" } },
     { GLextension::GL_KHR_blend_equation_advanced, { "glBlendBarrierKHR" } },
     { GLextension::GL_KHR_debug, { "glDebugMessageControlKHR", "glDebugMessageInsertKHR", "glDebugMessageCallbackKHR", "glGetDebugMessageLogKHR", "glPushDebugGroupKHR", "glPopDebugGroupKHR", "glObjectLabelKHR", "glGetObjectLabelKHR", "glObjectPtrLabelKHR", "glGetObjectPtrLabelKHR", "glGetPointervKHR" } },

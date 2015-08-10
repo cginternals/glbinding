@@ -43,6 +43,7 @@ khrapi::Function<Binding, void, GLuint, GLuint> Binding::ActiveShaderProgram("gl
 khrapi::Function<Binding, void, GLuint, GLuint> Binding::ActiveShaderProgramEXT("glActiveShaderProgramEXT");
 khrapi::Function<Binding, void, GLenum> Binding::ActiveTexture("glActiveTexture");
 khrapi::Function<Binding, void, GLenum, GLclampf> Binding::AlphaFuncQCOM("glAlphaFuncQCOM");
+khrapi::Function<Binding, void> Binding::ApplyFramebufferAttachmentCMAAINTEL("glApplyFramebufferAttachmentCMAAINTEL");
 khrapi::Function<Binding, void, GLuint, GLuint> Binding::AttachShader("glAttachShader");
 khrapi::Function<Binding, void, GLuint, GLenum> Binding::BeginConditionalRenderNV("glBeginConditionalRenderNV");
 khrapi::Function<Binding, void, GLuint> Binding::BeginPerfMonitorAMD("glBeginPerfMonitorAMD");
@@ -65,19 +66,24 @@ khrapi::Function<Binding, void, GLenum, GLuint> Binding::BindTransformFeedback("
 khrapi::Function<Binding, void, GLuint> Binding::BindVertexArray("glBindVertexArray");
 khrapi::Function<Binding, void, GLuint> Binding::BindVertexArrayOES("glBindVertexArrayOES");
 khrapi::Function<Binding, void, GLuint, GLuint, GLintptr, GLsizei> Binding::BindVertexBuffer("glBindVertexBuffer");
+khrapi::Function<Binding, void> Binding::BlendBarrier("glBlendBarrier");
 khrapi::Function<Binding, void> Binding::BlendBarrierKHR("glBlendBarrierKHR");
 khrapi::Function<Binding, void> Binding::BlendBarrierNV("glBlendBarrierNV");
 khrapi::Function<Binding, void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::BlendColor("glBlendColor");
 khrapi::Function<Binding, void, GLenum> Binding::BlendEquation("glBlendEquation");
 khrapi::Function<Binding, void, GLenum, GLenum> Binding::BlendEquationSeparate("glBlendEquationSeparate");
+khrapi::Function<Binding, void, GLuint, GLenum, GLenum> Binding::BlendEquationSeparatei("glBlendEquationSeparatei");
 khrapi::Function<Binding, void, GLuint, GLenum, GLenum> Binding::BlendEquationSeparateiEXT("glBlendEquationSeparateiEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, GLenum> Binding::BlendEquationSeparateiOES("glBlendEquationSeparateiOES");
+khrapi::Function<Binding, void, GLuint, GLenum> Binding::BlendEquationi("glBlendEquationi");
 khrapi::Function<Binding, void, GLuint, GLenum> Binding::BlendEquationiEXT("glBlendEquationiEXT");
 khrapi::Function<Binding, void, GLuint, GLenum> Binding::BlendEquationiOES("glBlendEquationiOES");
 khrapi::Function<Binding, void, GLenum, GLenum> Binding::BlendFunc("glBlendFunc");
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLenum> Binding::BlendFuncSeparate("glBlendFuncSeparate");
+khrapi::Function<Binding, void, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::BlendFuncSeparatei("glBlendFuncSeparatei");
 khrapi::Function<Binding, void, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::BlendFuncSeparateiEXT("glBlendFuncSeparateiEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::BlendFuncSeparateiOES("glBlendFuncSeparateiOES");
+khrapi::Function<Binding, void, GLuint, GLenum, GLenum> Binding::BlendFunci("glBlendFunci");
 khrapi::Function<Binding, void, GLuint, GLenum, GLenum> Binding::BlendFunciEXT("glBlendFunciEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, GLenum> Binding::BlendFunciOES("glBlendFunciOES");
 khrapi::Function<Binding, void, GLenum, GLint> Binding::BlendParameteriNV("glBlendParameteriNV");
@@ -99,6 +105,7 @@ khrapi::Function<Binding, void, GLint> Binding::ClearStencil("glClearStencil");
 khrapi::Function<Binding, GLenum, GLsync, SyncObjectMask, GLuint64> Binding::ClientWaitSync("glClientWaitSync");
 khrapi::Function<Binding, GLenum, GLsync, GLbitfield, GLuint64> Binding::ClientWaitSyncAPPLE("glClientWaitSyncAPPLE");
 khrapi::Function<Binding, void, GLboolean, GLboolean, GLboolean, GLboolean> Binding::ColorMask("glColorMask");
+khrapi::Function<Binding, void, GLuint, GLboolean, GLboolean, GLboolean, GLboolean> Binding::ColorMaski("glColorMaski");
 khrapi::Function<Binding, void, GLuint, GLboolean, GLboolean, GLboolean, GLboolean> Binding::ColorMaskiEXT("glColorMaskiEXT");
 khrapi::Function<Binding, void, GLuint, GLboolean, GLboolean, GLboolean, GLboolean> Binding::ColorMaskiOES("glColorMaskiOES");
 khrapi::Function<Binding, void, GLuint> Binding::CompileShader("glCompileShader");
@@ -110,6 +117,7 @@ khrapi::Function<Binding, void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLs
 khrapi::Function<Binding, void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTexSubImage3DOES("glCompressedTexSubImage3DOES");
 khrapi::Function<Binding, void, GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr> Binding::CopyBufferSubData("glCopyBufferSubData");
 khrapi::Function<Binding, void, GLenum, GLenum, GLintptr, GLintptr, GLsizeiptr> Binding::CopyBufferSubDataNV("glCopyBufferSubDataNV");
+khrapi::Function<Binding, void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::CopyImageSubData("glCopyImageSubData");
 khrapi::Function<Binding, void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::CopyImageSubDataEXT("glCopyImageSubDataEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::CopyImageSubDataOES("glCopyImageSubDataOES");
 khrapi::Function<Binding, void, GLuint, GLuint> Binding::CopyPathNV("glCopyPathNV");
@@ -132,8 +140,11 @@ khrapi::Function<Binding, GLuint, GLenum> Binding::CreateShader("glCreateShader"
 khrapi::Function<Binding, GLuint, GLenum, GLsizei, const GLchar *const*> Binding::CreateShaderProgramv("glCreateShaderProgramv");
 khrapi::Function<Binding, GLuint, GLenum, GLsizei, const GLchar **> Binding::CreateShaderProgramvEXT("glCreateShaderProgramvEXT");
 khrapi::Function<Binding, void, GLenum> Binding::CullFace("glCullFace");
+khrapi::Function<Binding, void, GLDEBUGPROC, const void *> Binding::DebugMessageCallback("glDebugMessageCallback");
 khrapi::Function<Binding, void, GLDEBUGPROCKHR, const void *> Binding::DebugMessageCallbackKHR("glDebugMessageCallbackKHR");
+khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> Binding::DebugMessageControl("glDebugMessageControl");
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> Binding::DebugMessageControlKHR("glDebugMessageControlKHR");
+khrapi::Function<Binding, void, GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar *> Binding::DebugMessageInsert("glDebugMessageInsert");
 khrapi::Function<Binding, void, GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar *> Binding::DebugMessageInsertKHR("glDebugMessageInsertKHR");
 khrapi::Function<Binding, void, GLsizei, const GLuint *> Binding::DeleteBuffers("glDeleteBuffers");
 khrapi::Function<Binding, void, GLsizei, const GLuint *> Binding::DeleteFencesNV("glDeleteFencesNV");
@@ -164,6 +175,7 @@ khrapi::Function<Binding, void, GLuint, GLuint> Binding::DetachShader("glDetachS
 khrapi::Function<Binding, void, GLenum> Binding::Disable("glDisable");
 khrapi::Function<Binding, void, GLuint> Binding::DisableDriverControlQCOM("glDisableDriverControlQCOM");
 khrapi::Function<Binding, void, GLuint> Binding::DisableVertexAttribArray("glDisableVertexAttribArray");
+khrapi::Function<Binding, void, GLenum, GLuint> Binding::Disablei("glDisablei");
 khrapi::Function<Binding, void, GLenum, GLuint> Binding::DisableiEXT("glDisableiEXT");
 khrapi::Function<Binding, void, GLenum, GLuint> Binding::DisableiNV("glDisableiNV");
 khrapi::Function<Binding, void, GLenum, GLuint> Binding::DisableiOES("glDisableiOES");
@@ -182,18 +194,21 @@ khrapi::Function<Binding, void, GLsizei, const GLenum *> Binding::DrawBuffersEXT
 khrapi::Function<Binding, void, GLint, const GLenum *, const GLint *> Binding::DrawBuffersIndexedEXT("glDrawBuffersIndexedEXT");
 khrapi::Function<Binding, void, GLsizei, const GLenum *> Binding::DrawBuffersNV("glDrawBuffersNV");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *> Binding::DrawElements("glDrawElements");
+khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLint> Binding::DrawElementsBaseVertex("glDrawElementsBaseVertex");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLint> Binding::DrawElementsBaseVertexEXT("glDrawElementsBaseVertexEXT");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLint> Binding::DrawElementsBaseVertexOES("glDrawElementsBaseVertexOES");
 khrapi::Function<Binding, void, GLenum, GLenum, const void *> Binding::DrawElementsIndirect("glDrawElementsIndirect");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei> Binding::DrawElementsInstanced("glDrawElementsInstanced");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei> Binding::DrawElementsInstancedANGLE("glDrawElementsInstancedANGLE");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLuint> Binding::DrawElementsInstancedBaseInstanceEXT("glDrawElementsInstancedBaseInstanceEXT");
+khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint> Binding::DrawElementsInstancedBaseVertex("glDrawElementsInstancedBaseVertex");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint, GLuint> Binding::DrawElementsInstancedBaseVertexBaseInstanceEXT("glDrawElementsInstancedBaseVertexBaseInstanceEXT");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint> Binding::DrawElementsInstancedBaseVertexEXT("glDrawElementsInstancedBaseVertexEXT");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint> Binding::DrawElementsInstancedBaseVertexOES("glDrawElementsInstancedBaseVertexOES");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei> Binding::DrawElementsInstancedEXT("glDrawElementsInstancedEXT");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, const void *, GLsizei> Binding::DrawElementsInstancedNV("glDrawElementsInstancedNV");
 khrapi::Function<Binding, void, GLenum, GLuint, GLuint, GLsizei, GLenum, const void *> Binding::DrawRangeElements("glDrawRangeElements");
+khrapi::Function<Binding, void, GLenum, GLuint, GLuint, GLsizei, GLenum, const void *, GLint> Binding::DrawRangeElementsBaseVertex("glDrawRangeElementsBaseVertex");
 khrapi::Function<Binding, void, GLenum, GLuint, GLuint, GLsizei, GLenum, const void *, GLint> Binding::DrawRangeElementsBaseVertexEXT("glDrawRangeElementsBaseVertexEXT");
 khrapi::Function<Binding, void, GLenum, GLuint, GLuint, GLsizei, GLenum, const void *, GLint> Binding::DrawRangeElementsBaseVertexOES("glDrawRangeElementsBaseVertexOES");
 khrapi::Function<Binding, void, GLenum, GLeglImageOES> Binding::EGLImageTargetRenderbufferStorageOES("glEGLImageTargetRenderbufferStorageOES");
@@ -201,6 +216,7 @@ khrapi::Function<Binding, void, GLenum, GLeglImageOES> Binding::EGLImageTargetTe
 khrapi::Function<Binding, void, GLenum> Binding::Enable("glEnable");
 khrapi::Function<Binding, void, GLuint> Binding::EnableDriverControlQCOM("glEnableDriverControlQCOM");
 khrapi::Function<Binding, void, GLuint> Binding::EnableVertexAttribArray("glEnableVertexAttribArray");
+khrapi::Function<Binding, void, GLenum, GLuint> Binding::Enablei("glEnablei");
 khrapi::Function<Binding, void, GLenum, GLuint> Binding::EnableiEXT("glEnableiEXT");
 khrapi::Function<Binding, void, GLenum, GLuint> Binding::EnableiNV("glEnableiNV");
 khrapi::Function<Binding, void, GLenum, GLuint> Binding::EnableiOES("glEnableiOES");
@@ -234,6 +250,7 @@ khrapi::Function<Binding, void, GLuint> Binding::FragmentCoverageColorNV("glFrag
 khrapi::Function<Binding, void, GLenum, GLenum, GLint> Binding::FramebufferParameteri("glFramebufferParameteri");
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLuint> Binding::FramebufferRenderbuffer("glFramebufferRenderbuffer");
 khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, const GLfloat *> Binding::FramebufferSampleLocationsfvNV("glFramebufferSampleLocationsfvNV");
+khrapi::Function<Binding, void, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture("glFramebufferTexture");
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture2D("glFramebufferTexture2D");
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLuint, GLint, GLsizei> Binding::FramebufferTexture2DMultisampleEXT("glFramebufferTexture2DMultisampleEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLuint, GLint, GLsizei> Binding::FramebufferTexture2DMultisampleIMG("glFramebufferTexture2DMultisampleIMG");
@@ -273,6 +290,7 @@ khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetBufferParam
 khrapi::Function<Binding, void, GLenum, GLenum, void **> Binding::GetBufferPointerv("glGetBufferPointerv");
 khrapi::Function<Binding, void, GLenum, GLenum, void **> Binding::GetBufferPointervOES("glGetBufferPointervOES");
 khrapi::Function<Binding, void, GLsizei, GLfloat *> Binding::GetCoverageModulationTableNV("glGetCoverageModulationTableNV");
+khrapi::Function<Binding, GLuint, GLuint, GLsizei, GLenum *, GLenum *, GLuint *, GLenum *, GLsizei *, GLchar *> Binding::GetDebugMessageLog("glGetDebugMessageLog");
 khrapi::Function<Binding, GLuint, GLuint, GLsizei, GLenum *, GLenum *, GLuint *, GLenum *, GLsizei *, GLchar *> Binding::GetDebugMessageLogKHR("glGetDebugMessageLogKHR");
 khrapi::Function<Binding, void, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetDriverControlStringQCOM("glGetDriverControlStringQCOM");
 khrapi::Function<Binding, void, GLint *, GLsizei, GLuint *> Binding::GetDriverControlsQCOM("glGetDriverControlsQCOM");
@@ -284,6 +302,7 @@ khrapi::Function<Binding, void, GLenum, GLfloat *> Binding::GetFloatv("glGetFloa
 khrapi::Function<Binding, GLint, GLuint, const GLchar *> Binding::GetFragDataLocation("glGetFragDataLocation");
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLint *> Binding::GetFramebufferAttachmentParameteriv("glGetFramebufferAttachmentParameteriv");
 khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetFramebufferParameteriv("glGetFramebufferParameteriv");
+khrapi::Function<Binding, GLenum> Binding::GetGraphicsResetStatus("glGetGraphicsResetStatus");
 khrapi::Function<Binding, GLenum> Binding::GetGraphicsResetStatusEXT("glGetGraphicsResetStatusEXT");
 khrapi::Function<Binding, GLenum> Binding::GetGraphicsResetStatusKHR("glGetGraphicsResetStatusKHR");
 khrapi::Function<Binding, GLuint64, GLuint, GLint, GLboolean, GLint, GLenum> Binding::GetImageHandleNV("glGetImageHandleNV");
@@ -297,8 +316,10 @@ khrapi::Function<Binding, void, GLenum, GLenum, GLsizei, GLenum, GLsizei, GLint 
 khrapi::Function<Binding, void, GLenum, GLenum, GLenum, GLsizei, GLint *> Binding::GetInternalformativ("glGetInternalformativ");
 khrapi::Function<Binding, void, GLenum, GLuint, GLfloat *> Binding::GetMultisamplefv("glGetMultisamplefv");
 khrapi::Function<Binding, void, GLuint, GLuint *> Binding::GetNextPerfQueryIdINTEL("glGetNextPerfQueryIdINTEL");
+khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetObjectLabel("glGetObjectLabel");
 khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetObjectLabelEXT("glGetObjectLabelEXT");
 khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetObjectLabelKHR("glGetObjectLabelKHR");
+khrapi::Function<Binding, void, const void *, GLsizei, GLsizei *, GLchar *> Binding::GetObjectPtrLabel("glGetObjectPtrLabel");
 khrapi::Function<Binding, void, const void *, GLsizei, GLsizei *, GLchar *> Binding::GetObjectPtrLabelKHR("glGetObjectPtrLabelKHR");
 khrapi::Function<Binding, void, GLuint, GLubyte *> Binding::GetPathCommandsNV("glGetPathCommandsNV");
 khrapi::Function<Binding, void, GLuint, GLfloat *> Binding::GetPathCoordsNV("glGetPathCoordsNV");
@@ -319,6 +340,7 @@ khrapi::Function<Binding, void, GLint *, GLsizei, GLuint *> Binding::GetPerfMoni
 khrapi::Function<Binding, void, GLuint, GLuint, GLsizei, GLvoid *, GLuint *> Binding::GetPerfQueryDataINTEL("glGetPerfQueryDataINTEL");
 khrapi::Function<Binding, void, GLchar *, GLuint *> Binding::GetPerfQueryIdByNameINTEL("glGetPerfQueryIdByNameINTEL");
 khrapi::Function<Binding, void, GLuint, GLuint, GLchar *, GLuint *, GLuint *, GLuint *, GLuint *> Binding::GetPerfQueryInfoINTEL("glGetPerfQueryInfoINTEL");
+khrapi::Function<Binding, void, GLenum, void **> Binding::GetPointerv("glGetPointerv");
 khrapi::Function<Binding, void, GLenum, void **> Binding::GetPointervKHR("glGetPointervKHR");
 khrapi::Function<Binding, void, GLuint, GLsizei, GLsizei *, GLenum *, void *> Binding::GetProgramBinary("glGetProgramBinary");
 khrapi::Function<Binding, void, GLuint, GLsizei, GLsizei *, GLenum *, void *> Binding::GetProgramBinaryOES("glGetProgramBinaryOES");
@@ -342,8 +364,10 @@ khrapi::Function<Binding, void, GLuint, GLenum, GLuint *> Binding::GetQueryObjec
 khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetQueryiv("glGetQueryiv");
 khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetQueryivEXT("glGetQueryivEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetRenderbufferParameteriv("glGetRenderbufferParameteriv");
+khrapi::Function<Binding, void, GLuint, GLenum, GLint *> Binding::GetSamplerParameterIiv("glGetSamplerParameterIiv");
 khrapi::Function<Binding, void, GLuint, GLenum, GLint *> Binding::GetSamplerParameterIivEXT("glGetSamplerParameterIivEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, GLint *> Binding::GetSamplerParameterIivOES("glGetSamplerParameterIivOES");
+khrapi::Function<Binding, void, GLuint, GLenum, GLuint *> Binding::GetSamplerParameterIuiv("glGetSamplerParameterIuiv");
 khrapi::Function<Binding, void, GLuint, GLenum, GLuint *> Binding::GetSamplerParameterIuivEXT("glGetSamplerParameterIuivEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, GLuint *> Binding::GetSamplerParameterIuivOES("glGetSamplerParameterIuivOES");
 khrapi::Function<Binding, void, GLuint, GLenum, GLfloat *> Binding::GetSamplerParameterfv("glGetSamplerParameterfv");
@@ -358,8 +382,10 @@ khrapi::Function<Binding, void, GLsync, GLenum, GLsizei, GLsizei *, GLint *> Bin
 khrapi::Function<Binding, void, GLsync, GLenum, GLsizei, GLsizei *, GLint *> Binding::GetSyncivAPPLE("glGetSyncivAPPLE");
 khrapi::Function<Binding, void, GLenum, GLint, GLenum, GLfloat *> Binding::GetTexLevelParameterfv("glGetTexLevelParameterfv");
 khrapi::Function<Binding, void, GLenum, GLint, GLenum, GLint *> Binding::GetTexLevelParameteriv("glGetTexLevelParameteriv");
+khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetTexParameterIiv("glGetTexParameterIiv");
 khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetTexParameterIivEXT("glGetTexParameterIivEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, GLint *> Binding::GetTexParameterIivOES("glGetTexParameterIivOES");
+khrapi::Function<Binding, void, GLenum, GLenum, GLuint *> Binding::GetTexParameterIuiv("glGetTexParameterIuiv");
 khrapi::Function<Binding, void, GLenum, GLenum, GLuint *> Binding::GetTexParameterIuivEXT("glGetTexParameterIuivEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, GLuint *> Binding::GetTexParameterIuivOES("glGetTexParameterIuivOES");
 khrapi::Function<Binding, void, GLenum, GLenum, GLfloat *> Binding::GetTexParameterfv("glGetTexParameterfv");
@@ -379,10 +405,13 @@ khrapi::Function<Binding, void, GLuint, GLenum, GLuint *> Binding::GetVertexAttr
 khrapi::Function<Binding, void, GLuint, GLenum, void **> Binding::GetVertexAttribPointerv("glGetVertexAttribPointerv");
 khrapi::Function<Binding, void, GLuint, GLenum, GLfloat *> Binding::GetVertexAttribfv("glGetVertexAttribfv");
 khrapi::Function<Binding, void, GLuint, GLenum, GLint *> Binding::GetVertexAttribiv("glGetVertexAttribiv");
+khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLfloat *> Binding::GetnUniformfv("glGetnUniformfv");
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLfloat *> Binding::GetnUniformfvEXT("glGetnUniformfvEXT");
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLfloat *> Binding::GetnUniformfvKHR("glGetnUniformfvKHR");
+khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLint *> Binding::GetnUniformiv("glGetnUniformiv");
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLint *> Binding::GetnUniformivEXT("glGetnUniformivEXT");
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLint *> Binding::GetnUniformivKHR("glGetnUniformivKHR");
+khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLuint *> Binding::GetnUniformuiv("glGetnUniformuiv");
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLuint *> Binding::GetnUniformuivKHR("glGetnUniformuivKHR");
 khrapi::Function<Binding, void, GLenum, GLenum> Binding::Hint("glHint");
 khrapi::Function<Binding, void, GLsizei, const GLchar *> Binding::InsertEventMarkerEXT("glInsertEventMarkerEXT");
@@ -391,6 +420,7 @@ khrapi::Function<Binding, void, GLenum, GLsizei, const GLenum *> Binding::Invali
 khrapi::Function<Binding, void, GLenum, GLsizei, const GLenum *, GLint, GLint, GLsizei, GLsizei> Binding::InvalidateSubFramebuffer("glInvalidateSubFramebuffer");
 khrapi::Function<Binding, GLboolean, GLuint> Binding::IsBuffer("glIsBuffer");
 khrapi::Function<Binding, GLboolean, GLenum> Binding::IsEnabled("glIsEnabled");
+khrapi::Function<Binding, GLboolean, GLenum, GLuint> Binding::IsEnabledi("glIsEnabledi");
 khrapi::Function<Binding, GLboolean, GLenum, GLuint> Binding::IsEnablediEXT("glIsEnablediEXT");
 khrapi::Function<Binding, GLboolean, GLenum, GLuint> Binding::IsEnablediNV("glIsEnablediNV");
 khrapi::Function<Binding, GLboolean, GLenum, GLuint> Binding::IsEnablediOES("glIsEnablediOES");
@@ -433,6 +463,7 @@ khrapi::Function<Binding, void, GLenum, const GLfloat *> Binding::MatrixMult3x3f
 khrapi::Function<Binding, void, GLenum, const GLfloat *> Binding::MatrixMultTranspose3x3fNV("glMatrixMultTranspose3x3fNV");
 khrapi::Function<Binding, void, MemoryBarrierMask> Binding::MemoryBarrier("glMemoryBarrier");
 khrapi::Function<Binding, void, MemoryBarrierMask> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
+khrapi::Function<Binding, void, GLfloat> Binding::MinSampleShading("glMinSampleShading");
 khrapi::Function<Binding, void, GLfloat> Binding::MinSampleShadingOES("glMinSampleShadingOES");
 khrapi::Function<Binding, void, GLenum, const GLint *, const GLsizei *, GLsizei> Binding::MultiDrawArraysEXT("glMultiDrawArraysEXT");
 khrapi::Function<Binding, void, GLenum, const void *, GLsizei, GLsizei> Binding::MultiDrawArraysIndirectEXT("glMultiDrawArraysIndirectEXT");
@@ -441,8 +472,11 @@ khrapi::Function<Binding, void, GLenum, const GLsizei *, GLenum, const void *con
 khrapi::Function<Binding, void, GLenum, const GLsizei *, GLenum, const void *const*, GLsizei> Binding::MultiDrawElementsEXT("glMultiDrawElementsEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, const void *, GLsizei, GLsizei> Binding::MultiDrawElementsIndirectEXT("glMultiDrawElementsIndirectEXT");
 khrapi::Function<Binding, void, GLuint, GLuint, GLsizei, const GLfloat *> Binding::NamedFramebufferSampleLocationsfvNV("glNamedFramebufferSampleLocationsfvNV");
+khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, const GLchar *> Binding::ObjectLabel("glObjectLabel");
 khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, const GLchar *> Binding::ObjectLabelKHR("glObjectLabelKHR");
+khrapi::Function<Binding, void, const void *, GLsizei, const GLchar *> Binding::ObjectPtrLabel("glObjectPtrLabel");
 khrapi::Function<Binding, void, const void *, GLsizei, const GLchar *> Binding::ObjectPtrLabelKHR("glObjectPtrLabelKHR");
+khrapi::Function<Binding, void, GLenum, GLint> Binding::PatchParameteri("glPatchParameteri");
 khrapi::Function<Binding, void, GLenum, GLint> Binding::PatchParameteriEXT("glPatchParameteriEXT");
 khrapi::Function<Binding, void, GLenum, GLint> Binding::PatchParameteriOES("glPatchParameteriOES");
 khrapi::Function<Binding, void, GLuint, GLsizei, const GLubyte *, GLsizei, GLenum, const void *> Binding::PathCommandsNV("glPathCommandsNV");
@@ -468,8 +502,10 @@ khrapi::Function<Binding, void, GLenum, GLint> Binding::PixelStorei("glPixelStor
 khrapi::Function<Binding, GLboolean, GLuint, GLsizei, GLsizei, GLfloat, GLfloat *, GLfloat *, GLfloat *, GLfloat *> Binding::PointAlongPathNV("glPointAlongPathNV");
 khrapi::Function<Binding, void, GLenum, GLenum> Binding::PolygonModeNV("glPolygonModeNV");
 khrapi::Function<Binding, void, GLfloat, GLfloat> Binding::PolygonOffset("glPolygonOffset");
+khrapi::Function<Binding, void> Binding::PopDebugGroup("glPopDebugGroup");
 khrapi::Function<Binding, void> Binding::PopDebugGroupKHR("glPopDebugGroupKHR");
 khrapi::Function<Binding, void> Binding::PopGroupMarkerEXT("glPopGroupMarkerEXT");
+khrapi::Function<Binding, void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::PrimitiveBoundingBox("glPrimitiveBoundingBox");
 khrapi::Function<Binding, void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::PrimitiveBoundingBoxEXT("glPrimitiveBoundingBoxEXT");
 khrapi::Function<Binding, void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::PrimitiveBoundingBoxOES("glPrimitiveBoundingBoxOES");
 khrapi::Function<Binding, void, GLuint, GLenum, const void *, GLsizei> Binding::ProgramBinary("glProgramBinary");
@@ -545,6 +581,7 @@ khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLboolean, const GLfloat
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> Binding::ProgramUniformMatrix4x2fvEXT("glProgramUniformMatrix4x2fvEXT");
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> Binding::ProgramUniformMatrix4x3fv("glProgramUniformMatrix4x3fv");
 khrapi::Function<Binding, void, GLuint, GLint, GLsizei, GLboolean, const GLfloat *> Binding::ProgramUniformMatrix4x3fvEXT("glProgramUniformMatrix4x3fvEXT");
+khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, const GLchar *> Binding::PushDebugGroup("glPushDebugGroup");
 khrapi::Function<Binding, void, GLenum, GLuint, GLsizei, const GLchar *> Binding::PushDebugGroupKHR("glPushDebugGroupKHR");
 khrapi::Function<Binding, void, GLsizei, const GLchar *> Binding::PushGroupMarkerEXT("glPushGroupMarkerEXT");
 khrapi::Function<Binding, void, GLuint, GLenum> Binding::QueryCounterEXT("glQueryCounterEXT");
@@ -553,6 +590,7 @@ khrapi::Function<Binding, void, GLenum> Binding::ReadBuffer("glReadBuffer");
 khrapi::Function<Binding, void, GLenum, GLint> Binding::ReadBufferIndexedEXT("glReadBufferIndexedEXT");
 khrapi::Function<Binding, void, GLenum> Binding::ReadBufferNV("glReadBufferNV");
 khrapi::Function<Binding, void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, void *> Binding::ReadPixels("glReadPixels");
+khrapi::Function<Binding, void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, void *> Binding::ReadnPixels("glReadnPixels");
 khrapi::Function<Binding, void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, void *> Binding::ReadnPixelsEXT("glReadnPixelsEXT");
 khrapi::Function<Binding, void, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, GLsizei, void *> Binding::ReadnPixelsKHR("glReadnPixelsKHR");
 khrapi::Function<Binding, void> Binding::ReleaseShaderCompiler("glReleaseShaderCompiler");
@@ -568,8 +606,10 @@ khrapi::Function<Binding, void> Binding::ResolveMultisampleFramebufferAPPLE("glR
 khrapi::Function<Binding, void> Binding::ResumeTransformFeedback("glResumeTransformFeedback");
 khrapi::Function<Binding, void, GLfloat, GLboolean> Binding::SampleCoverage("glSampleCoverage");
 khrapi::Function<Binding, void, GLuint, GLbitfield> Binding::SampleMaski("glSampleMaski");
+khrapi::Function<Binding, void, GLuint, GLenum, const GLint *> Binding::SamplerParameterIiv("glSamplerParameterIiv");
 khrapi::Function<Binding, void, GLuint, GLenum, const GLint *> Binding::SamplerParameterIivEXT("glSamplerParameterIivEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, const GLint *> Binding::SamplerParameterIivOES("glSamplerParameterIivOES");
+khrapi::Function<Binding, void, GLuint, GLenum, const GLuint *> Binding::SamplerParameterIuiv("glSamplerParameterIuiv");
 khrapi::Function<Binding, void, GLuint, GLenum, const GLuint *> Binding::SamplerParameterIuivEXT("glSamplerParameterIuivEXT");
 khrapi::Function<Binding, void, GLuint, GLenum, const GLuint *> Binding::SamplerParameterIuivOES("glSamplerParameterIuivOES");
 khrapi::Function<Binding, void, GLuint, GLenum, GLfloat> Binding::SamplerParameterf("glSamplerParameterf");
@@ -601,16 +641,20 @@ khrapi::Function<Binding, void, GLsizei, GLenum, const void *, GLuint, GLint, GL
 khrapi::Function<Binding, void, GLuint, GLint, GLuint, GLenum> Binding::StencilThenCoverStrokePathNV("glStencilThenCoverStrokePathNV");
 khrapi::Function<Binding, void, GLuint, GLuint> Binding::SubpixelPrecisionBiasNV("glSubpixelPrecisionBiasNV");
 khrapi::Function<Binding, GLboolean, GLuint> Binding::TestFenceNV("glTestFenceNV");
+khrapi::Function<Binding, void, GLenum, GLenum, GLuint> Binding::TexBuffer("glTexBuffer");
 khrapi::Function<Binding, void, GLenum, GLenum, GLuint> Binding::TexBufferEXT("glTexBufferEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, GLuint> Binding::TexBufferOES("glTexBufferOES");
+khrapi::Function<Binding, void, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr> Binding::TexBufferRange("glTexBufferRange");
 khrapi::Function<Binding, void, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr> Binding::TexBufferRangeEXT("glTexBufferRangeEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, GLuint, GLintptr, GLsizeiptr> Binding::TexBufferRangeOES("glTexBufferRangeOES");
 khrapi::Function<Binding, void, GLenum, GLint, GLint, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> Binding::TexImage2D("glTexImage2D");
 khrapi::Function<Binding, void, GLenum, GLint, GLint, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> Binding::TexImage3D("glTexImage3D");
 khrapi::Function<Binding, void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> Binding::TexImage3DOES("glTexImage3DOES");
 khrapi::Function<Binding, void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexPageCommitmentARB("glTexPageCommitmentARB");
+khrapi::Function<Binding, void, GLenum, GLenum, const GLint *> Binding::TexParameterIiv("glTexParameterIiv");
 khrapi::Function<Binding, void, GLenum, GLenum, const GLint *> Binding::TexParameterIivEXT("glTexParameterIivEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, const GLint *> Binding::TexParameterIivOES("glTexParameterIivOES");
+khrapi::Function<Binding, void, GLenum, GLenum, const GLuint *> Binding::TexParameterIuiv("glTexParameterIuiv");
 khrapi::Function<Binding, void, GLenum, GLenum, const GLuint *> Binding::TexParameterIuivEXT("glTexParameterIuivEXT");
 khrapi::Function<Binding, void, GLenum, GLenum, const GLuint *> Binding::TexParameterIuivOES("glTexParameterIuivOES");
 khrapi::Function<Binding, void, GLenum, GLenum, GLfloat> Binding::TexParameterf("glTexParameterf");
@@ -623,6 +667,7 @@ khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, GLsizei, GLsizei> Bindi
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> Binding::TexStorage2DMultisample("glTexStorage2DMultisample");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TexStorage3D("glTexStorage3D");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TexStorage3DEXT("glTexStorage3DEXT");
+khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexStorage3DMultisample("glTexStorage3DMultisample");
 khrapi::Function<Binding, void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexStorage3DMultisampleOES("glTexStorage3DMultisampleOES");
 khrapi::Function<Binding, void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage2D("glTexSubImage2D");
 khrapi::Function<Binding, void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage3D("glTexSubImage3D");
@@ -720,6 +765,7 @@ const Binding::array_t Binding::s_functions =
     &ActiveShaderProgramEXT,
     &ActiveTexture,
     &AlphaFuncQCOM,
+    &ApplyFramebufferAttachmentCMAAINTEL,
     &AttachShader,
     &BeginConditionalRenderNV,
     &BeginPerfMonitorAMD,
@@ -742,19 +788,24 @@ const Binding::array_t Binding::s_functions =
     &BindVertexArray,
     &BindVertexArrayOES,
     &BindVertexBuffer,
+    &BlendBarrier,
     &BlendBarrierKHR,
     &BlendBarrierNV,
     &BlendColor,
     &BlendEquation,
     &BlendEquationSeparate,
+    &BlendEquationSeparatei,
     &BlendEquationSeparateiEXT,
     &BlendEquationSeparateiOES,
+    &BlendEquationi,
     &BlendEquationiEXT,
     &BlendEquationiOES,
     &BlendFunc,
     &BlendFuncSeparate,
+    &BlendFuncSeparatei,
     &BlendFuncSeparateiEXT,
     &BlendFuncSeparateiOES,
+    &BlendFunci,
     &BlendFunciEXT,
     &BlendFunciOES,
     &BlendParameteriNV,
@@ -776,6 +827,7 @@ const Binding::array_t Binding::s_functions =
     &ClientWaitSync,
     &ClientWaitSyncAPPLE,
     &ColorMask,
+    &ColorMaski,
     &ColorMaskiEXT,
     &ColorMaskiOES,
     &CompileShader,
@@ -787,6 +839,7 @@ const Binding::array_t Binding::s_functions =
     &CompressedTexSubImage3DOES,
     &CopyBufferSubData,
     &CopyBufferSubDataNV,
+    &CopyImageSubData,
     &CopyImageSubDataEXT,
     &CopyImageSubDataOES,
     &CopyPathNV,
@@ -809,8 +862,11 @@ const Binding::array_t Binding::s_functions =
     &CreateShaderProgramv,
     &CreateShaderProgramvEXT,
     &CullFace,
+    &DebugMessageCallback,
     &DebugMessageCallbackKHR,
+    &DebugMessageControl,
     &DebugMessageControlKHR,
+    &DebugMessageInsert,
     &DebugMessageInsertKHR,
     &DeleteBuffers,
     &DeleteFencesNV,
@@ -841,6 +897,7 @@ const Binding::array_t Binding::s_functions =
     &Disable,
     &DisableDriverControlQCOM,
     &DisableVertexAttribArray,
+    &Disablei,
     &DisableiEXT,
     &DisableiNV,
     &DisableiOES,
@@ -859,18 +916,21 @@ const Binding::array_t Binding::s_functions =
     &DrawBuffersIndexedEXT,
     &DrawBuffersNV,
     &DrawElements,
+    &DrawElementsBaseVertex,
     &DrawElementsBaseVertexEXT,
     &DrawElementsBaseVertexOES,
     &DrawElementsIndirect,
     &DrawElementsInstanced,
     &DrawElementsInstancedANGLE,
     &DrawElementsInstancedBaseInstanceEXT,
+    &DrawElementsInstancedBaseVertex,
     &DrawElementsInstancedBaseVertexBaseInstanceEXT,
     &DrawElementsInstancedBaseVertexEXT,
     &DrawElementsInstancedBaseVertexOES,
     &DrawElementsInstancedEXT,
     &DrawElementsInstancedNV,
     &DrawRangeElements,
+    &DrawRangeElementsBaseVertex,
     &DrawRangeElementsBaseVertexEXT,
     &DrawRangeElementsBaseVertexOES,
     &EGLImageTargetRenderbufferStorageOES,
@@ -878,6 +938,7 @@ const Binding::array_t Binding::s_functions =
     &Enable,
     &EnableDriverControlQCOM,
     &EnableVertexAttribArray,
+    &Enablei,
     &EnableiEXT,
     &EnableiNV,
     &EnableiOES,
@@ -911,6 +972,7 @@ const Binding::array_t Binding::s_functions =
     &FramebufferParameteri,
     &FramebufferRenderbuffer,
     &FramebufferSampleLocationsfvNV,
+    &FramebufferTexture,
     &FramebufferTexture2D,
     &FramebufferTexture2DMultisampleEXT,
     &FramebufferTexture2DMultisampleIMG,
@@ -950,6 +1012,7 @@ const Binding::array_t Binding::s_functions =
     &GetBufferPointerv,
     &GetBufferPointervOES,
     &GetCoverageModulationTableNV,
+    &GetDebugMessageLog,
     &GetDebugMessageLogKHR,
     &GetDriverControlStringQCOM,
     &GetDriverControlsQCOM,
@@ -961,6 +1024,7 @@ const Binding::array_t Binding::s_functions =
     &GetFragDataLocation,
     &GetFramebufferAttachmentParameteriv,
     &GetFramebufferParameteriv,
+    &GetGraphicsResetStatus,
     &GetGraphicsResetStatusEXT,
     &GetGraphicsResetStatusKHR,
     &GetImageHandleNV,
@@ -974,8 +1038,10 @@ const Binding::array_t Binding::s_functions =
     &GetInternalformativ,
     &GetMultisamplefv,
     &GetNextPerfQueryIdINTEL,
+    &GetObjectLabel,
     &GetObjectLabelEXT,
     &GetObjectLabelKHR,
+    &GetObjectPtrLabel,
     &GetObjectPtrLabelKHR,
     &GetPathCommandsNV,
     &GetPathCoordsNV,
@@ -996,6 +1062,7 @@ const Binding::array_t Binding::s_functions =
     &GetPerfQueryDataINTEL,
     &GetPerfQueryIdByNameINTEL,
     &GetPerfQueryInfoINTEL,
+    &GetPointerv,
     &GetPointervKHR,
     &GetProgramBinary,
     &GetProgramBinaryOES,
@@ -1019,8 +1086,10 @@ const Binding::array_t Binding::s_functions =
     &GetQueryiv,
     &GetQueryivEXT,
     &GetRenderbufferParameteriv,
+    &GetSamplerParameterIiv,
     &GetSamplerParameterIivEXT,
     &GetSamplerParameterIivOES,
+    &GetSamplerParameterIuiv,
     &GetSamplerParameterIuivEXT,
     &GetSamplerParameterIuivOES,
     &GetSamplerParameterfv,
@@ -1035,8 +1104,10 @@ const Binding::array_t Binding::s_functions =
     &GetSyncivAPPLE,
     &GetTexLevelParameterfv,
     &GetTexLevelParameteriv,
+    &GetTexParameterIiv,
     &GetTexParameterIivEXT,
     &GetTexParameterIivOES,
+    &GetTexParameterIuiv,
     &GetTexParameterIuivEXT,
     &GetTexParameterIuivOES,
     &GetTexParameterfv,
@@ -1056,10 +1127,13 @@ const Binding::array_t Binding::s_functions =
     &GetVertexAttribPointerv,
     &GetVertexAttribfv,
     &GetVertexAttribiv,
+    &GetnUniformfv,
     &GetnUniformfvEXT,
     &GetnUniformfvKHR,
+    &GetnUniformiv,
     &GetnUniformivEXT,
     &GetnUniformivKHR,
+    &GetnUniformuiv,
     &GetnUniformuivKHR,
     &Hint,
     &InsertEventMarkerEXT,
@@ -1068,6 +1142,7 @@ const Binding::array_t Binding::s_functions =
     &InvalidateSubFramebuffer,
     &IsBuffer,
     &IsEnabled,
+    &IsEnabledi,
     &IsEnablediEXT,
     &IsEnablediNV,
     &IsEnablediOES,
@@ -1110,6 +1185,7 @@ const Binding::array_t Binding::s_functions =
     &MatrixMultTranspose3x3fNV,
     &MemoryBarrier,
     &MemoryBarrierByRegion,
+    &MinSampleShading,
     &MinSampleShadingOES,
     &MultiDrawArraysEXT,
     &MultiDrawArraysIndirectEXT,
@@ -1118,8 +1194,11 @@ const Binding::array_t Binding::s_functions =
     &MultiDrawElementsEXT,
     &MultiDrawElementsIndirectEXT,
     &NamedFramebufferSampleLocationsfvNV,
+    &ObjectLabel,
     &ObjectLabelKHR,
+    &ObjectPtrLabel,
     &ObjectPtrLabelKHR,
+    &PatchParameteri,
     &PatchParameteriEXT,
     &PatchParameteriOES,
     &PathCommandsNV,
@@ -1145,8 +1224,10 @@ const Binding::array_t Binding::s_functions =
     &PointAlongPathNV,
     &PolygonModeNV,
     &PolygonOffset,
+    &PopDebugGroup,
     &PopDebugGroupKHR,
     &PopGroupMarkerEXT,
+    &PrimitiveBoundingBox,
     &PrimitiveBoundingBoxEXT,
     &PrimitiveBoundingBoxOES,
     &ProgramBinary,
@@ -1222,6 +1303,7 @@ const Binding::array_t Binding::s_functions =
     &ProgramUniformMatrix4x2fvEXT,
     &ProgramUniformMatrix4x3fv,
     &ProgramUniformMatrix4x3fvEXT,
+    &PushDebugGroup,
     &PushDebugGroupKHR,
     &PushGroupMarkerEXT,
     &QueryCounterEXT,
@@ -1230,6 +1312,7 @@ const Binding::array_t Binding::s_functions =
     &ReadBufferIndexedEXT,
     &ReadBufferNV,
     &ReadPixels,
+    &ReadnPixels,
     &ReadnPixelsEXT,
     &ReadnPixelsKHR,
     &ReleaseShaderCompiler,
@@ -1245,8 +1328,10 @@ const Binding::array_t Binding::s_functions =
     &ResumeTransformFeedback,
     &SampleCoverage,
     &SampleMaski,
+    &SamplerParameterIiv,
     &SamplerParameterIivEXT,
     &SamplerParameterIivOES,
+    &SamplerParameterIuiv,
     &SamplerParameterIuivEXT,
     &SamplerParameterIuivOES,
     &SamplerParameterf,
@@ -1278,16 +1363,20 @@ const Binding::array_t Binding::s_functions =
     &StencilThenCoverStrokePathNV,
     &SubpixelPrecisionBiasNV,
     &TestFenceNV,
+    &TexBuffer,
     &TexBufferEXT,
     &TexBufferOES,
+    &TexBufferRange,
     &TexBufferRangeEXT,
     &TexBufferRangeOES,
     &TexImage2D,
     &TexImage3D,
     &TexImage3DOES,
     &TexPageCommitmentARB,
+    &TexParameterIiv,
     &TexParameterIivEXT,
     &TexParameterIivOES,
+    &TexParameterIuiv,
     &TexParameterIuivEXT,
     &TexParameterIuivOES,
     &TexParameterf,
@@ -1300,6 +1389,7 @@ const Binding::array_t Binding::s_functions =
     &TexStorage2DMultisample,
     &TexStorage3D,
     &TexStorage3DEXT,
+    &TexStorage3DMultisample,
     &TexStorage3DMultisampleOES,
     &TexSubImage2D,
     &TexSubImage3D,

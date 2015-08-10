@@ -4,6 +4,7 @@
 #include <glesbinding/gles20/gles.h>
 #include <glesbinding/gles30/gles.h>
 #include <glesbinding/gles31/gles.h>
+#include <glesbinding/gles32/gles.h>
 
 TEST(AllVersions, Compilation)
 {
