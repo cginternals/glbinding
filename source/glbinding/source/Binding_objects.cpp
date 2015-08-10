@@ -46,6 +46,7 @@ Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, G
 Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> Binding::AlphaFragmentOp3ATI("glAlphaFragmentOp3ATI");
 Function<void, GLenum, GLfloat> Binding::AlphaFunc("glAlphaFunc");
 Function<void, GLenum, GLfixed> Binding::AlphaFuncxOES("glAlphaFuncxOES");
+Function<void> Binding::ApplyFramebufferAttachmentCMAAINTEL("glApplyFramebufferAttachmentCMAAINTEL");
 Function<void, GLenum> Binding::ApplyTextureEXT("glApplyTextureEXT");
 Function<GLboolean, GLsizei, const GLuint *, GLboolean *> Binding::AreProgramsResidentNV("glAreProgramsResidentNV");
 Function<GLboolean, GLsizei, const GLuint *, GLboolean *> Binding::AreTexturesResident("glAreTexturesResident");
@@ -584,6 +585,7 @@ Function<void, GLenum, GLint, GLint> Binding::EvalMesh1("glEvalMesh1");
 Function<void, GLenum, GLint, GLint, GLint, GLint> Binding::EvalMesh2("glEvalMesh2");
 Function<void, GLint> Binding::EvalPoint1("glEvalPoint1");
 Function<void, GLint, GLint> Binding::EvalPoint2("glEvalPoint2");
+Function<void> Binding::EvaluateDepthValuesARB("glEvaluateDepthValuesARB");
 Function<void, GLenum, GLuint, const GLfloat *> Binding::ExecuteProgramNV("glExecuteProgramNV");
 Function<void, GLuint, GLuint, GLuint> Binding::ExtractComponentEXT("glExtractComponentEXT");
 Function<void, GLsizei, GLenum, GLfloat *> Binding::FeedbackBuffer("glFeedbackBuffer");
@@ -649,6 +651,7 @@ Function<void, GLenum, GLenum, GLint> Binding::FramebufferParameteri("glFramebuf
 Function<void, GLuint, GLenum> Binding::FramebufferReadBufferEXT("glFramebufferReadBufferEXT");
 Function<void, GLenum, GLenum, GLenum, GLuint> Binding::FramebufferRenderbuffer("glFramebufferRenderbuffer");
 Function<void, GLenum, GLenum, GLenum, GLuint> Binding::FramebufferRenderbufferEXT("glFramebufferRenderbufferEXT");
+Function<void, GLenum, GLuint, GLsizei, const GLfloat *> Binding::FramebufferSampleLocationsfvARB("glFramebufferSampleLocationsfvARB");
 Function<void, GLenum, GLuint, GLsizei, const GLfloat *> Binding::FramebufferSampleLocationsfvNV("glFramebufferSampleLocationsfvNV");
 Function<void, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture("glFramebufferTexture");
 Function<void, GLenum, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture1D("glFramebufferTexture1D");
@@ -1057,9 +1060,11 @@ Function<void, GLenum, GLint, GLuint *> Binding::GetUniformSubroutineuiv("glGetU
 Function<void, GLuint, GLint, GLdouble *> Binding::GetUniformdv("glGetUniformdv");
 Function<void, GLuint, GLint, GLfloat *> Binding::GetUniformfv("glGetUniformfv");
 Function<void, GLhandleARB, GLint, GLfloat *> Binding::GetUniformfvARB("glGetUniformfvARB");
+Function<void, GLuint, GLint, GLint64 *> Binding::GetUniformi64vARB("glGetUniformi64vARB");
 Function<void, GLuint, GLint, GLint64EXT *> Binding::GetUniformi64vNV("glGetUniformi64vNV");
 Function<void, GLuint, GLint, GLint *> Binding::GetUniformiv("glGetUniformiv");
 Function<void, GLhandleARB, GLint, GLint *> Binding::GetUniformivARB("glGetUniformivARB");
+Function<void, GLuint, GLint, GLuint64 *> Binding::GetUniformui64vARB("glGetUniformui64vARB");
 Function<void, GLuint, GLint, GLuint64EXT *> Binding::GetUniformui64vNV("glGetUniformui64vNV");
 Function<void, GLuint, GLint, GLuint *> Binding::GetUniformuiv("glGetUniformuiv");
 Function<void, GLuint, GLint, GLuint *> Binding::GetUniformuivEXT("glGetUniformuivEXT");
@@ -1140,8 +1145,10 @@ Function<void, GLuint, GLint, GLsizei, GLdouble *> Binding::GetnUniformdv("glGet
 Function<void, GLuint, GLint, GLsizei, GLdouble *> Binding::GetnUniformdvARB("glGetnUniformdvARB");
 Function<void, GLuint, GLint, GLsizei, GLfloat *> Binding::GetnUniformfv("glGetnUniformfv");
 Function<void, GLuint, GLint, GLsizei, GLfloat *> Binding::GetnUniformfvARB("glGetnUniformfvARB");
+Function<void, GLuint, GLint, GLsizei, GLint64 *> Binding::GetnUniformi64vARB("glGetnUniformi64vARB");
 Function<void, GLuint, GLint, GLsizei, GLint *> Binding::GetnUniformiv("glGetnUniformiv");
 Function<void, GLuint, GLint, GLsizei, GLint *> Binding::GetnUniformivARB("glGetnUniformivARB");
+Function<void, GLuint, GLint, GLsizei, GLuint64 *> Binding::GetnUniformui64vARB("glGetnUniformui64vARB");
 Function<void, GLuint, GLint, GLsizei, GLuint *> Binding::GetnUniformuiv("glGetnUniformuiv");
 Function<void, GLuint, GLint, GLsizei, GLuint *> Binding::GetnUniformuivARB("glGetnUniformuivARB");
 Function<void, GLbyte> Binding::GlobalAlphaFactorbSUN("glGlobalAlphaFactorbSUN");
@@ -1355,6 +1362,7 @@ Function<void, GLenum, GLdouble, GLdouble, GLdouble> Binding::MatrixScaledEXT("g
 Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixScalefEXT("glMatrixScalefEXT");
 Function<void, GLenum, GLdouble, GLdouble, GLdouble> Binding::MatrixTranslatedEXT("glMatrixTranslatedEXT");
 Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixTranslatefEXT("glMatrixTranslatefEXT");
+Function<void, GLuint> Binding::MaxShaderCompilerThreadsARB("glMaxShaderCompilerThreadsARB");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrier("glMemoryBarrier");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierEXT("glMemoryBarrierEXT");
@@ -1526,6 +1534,7 @@ Function<void, GLuint, GLenum, GLint> Binding::NamedFramebufferParameteriEXT("gl
 Function<void, GLuint, GLenum> Binding::NamedFramebufferReadBuffer("glNamedFramebufferReadBuffer");
 Function<void, GLuint, GLenum, GLenum, GLuint> Binding::NamedFramebufferRenderbuffer("glNamedFramebufferRenderbuffer");
 Function<void, GLuint, GLenum, GLenum, GLuint> Binding::NamedFramebufferRenderbufferEXT("glNamedFramebufferRenderbufferEXT");
+Function<void, GLuint, GLuint, GLsizei, const GLfloat *> Binding::NamedFramebufferSampleLocationsfvARB("glNamedFramebufferSampleLocationsfvARB");
 Function<void, GLuint, GLuint, GLsizei, const GLfloat *> Binding::NamedFramebufferSampleLocationsfvNV("glNamedFramebufferSampleLocationsfvNV");
 Function<void, GLuint, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture("glNamedFramebufferTexture");
 Function<void, GLuint, GLenum, GLenum, GLuint, GLint> Binding::NamedFramebufferTexture1DEXT("glNamedFramebufferTexture1DEXT");
@@ -1679,6 +1688,7 @@ Function<void> Binding::PopMatrix("glPopMatrix");
 Function<void> Binding::PopName("glPopName");
 Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint, GLenum, GLuint> Binding::PresentFrameDualFillNV("glPresentFrameDualFillNV");
 Function<void, GLuint, GLuint64EXT, GLuint, GLuint, GLenum, GLenum, GLuint, GLuint, GLenum, GLuint, GLuint> Binding::PresentFrameKeyedNV("glPresentFrameKeyedNV");
+Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::PrimitiveBoundingBoxARB("glPrimitiveBoundingBoxARB");
 Function<void, GLuint> Binding::PrimitiveRestartIndex("glPrimitiveRestartIndex");
 Function<void, GLuint> Binding::PrimitiveRestartIndexNV("glPrimitiveRestartIndexNV");
 Function<void> Binding::PrimitiveRestartNV("glPrimitiveRestartNV");
@@ -1736,13 +1746,17 @@ Function<void, GLuint, GLint, GLfloat> Binding::ProgramUniform1fEXT("glProgramUn
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform1fv("glProgramUniform1fv");
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform1fvEXT("glProgramUniform1fvEXT");
 Function<void, GLuint, GLint, GLint> Binding::ProgramUniform1i("glProgramUniform1i");
+Function<void, GLuint, GLint, GLint64> Binding::ProgramUniform1i64ARB("glProgramUniform1i64ARB");
 Function<void, GLuint, GLint, GLint64EXT> Binding::ProgramUniform1i64NV("glProgramUniform1i64NV");
+Function<void, GLuint, GLint, GLsizei, const GLint64 *> Binding::ProgramUniform1i64vARB("glProgramUniform1i64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> Binding::ProgramUniform1i64vNV("glProgramUniform1i64vNV");
 Function<void, GLuint, GLint, GLint> Binding::ProgramUniform1iEXT("glProgramUniform1iEXT");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform1iv("glProgramUniform1iv");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform1ivEXT("glProgramUniform1ivEXT");
 Function<void, GLuint, GLint, GLuint> Binding::ProgramUniform1ui("glProgramUniform1ui");
+Function<void, GLuint, GLint, GLuint64> Binding::ProgramUniform1ui64ARB("glProgramUniform1ui64ARB");
 Function<void, GLuint, GLint, GLuint64EXT> Binding::ProgramUniform1ui64NV("glProgramUniform1ui64NV");
+Function<void, GLuint, GLint, GLsizei, const GLuint64 *> Binding::ProgramUniform1ui64vARB("glProgramUniform1ui64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> Binding::ProgramUniform1ui64vNV("glProgramUniform1ui64vNV");
 Function<void, GLuint, GLint, GLuint> Binding::ProgramUniform1uiEXT("glProgramUniform1uiEXT");
 Function<void, GLuint, GLint, GLsizei, const GLuint *> Binding::ProgramUniform1uiv("glProgramUniform1uiv");
@@ -1756,13 +1770,17 @@ Function<void, GLuint, GLint, GLfloat, GLfloat> Binding::ProgramUniform2fEXT("gl
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform2fv("glProgramUniform2fv");
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform2fvEXT("glProgramUniform2fvEXT");
 Function<void, GLuint, GLint, GLint, GLint> Binding::ProgramUniform2i("glProgramUniform2i");
+Function<void, GLuint, GLint, GLint64, GLint64> Binding::ProgramUniform2i64ARB("glProgramUniform2i64ARB");
 Function<void, GLuint, GLint, GLint64EXT, GLint64EXT> Binding::ProgramUniform2i64NV("glProgramUniform2i64NV");
+Function<void, GLuint, GLint, GLsizei, const GLint64 *> Binding::ProgramUniform2i64vARB("glProgramUniform2i64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> Binding::ProgramUniform2i64vNV("glProgramUniform2i64vNV");
 Function<void, GLuint, GLint, GLint, GLint> Binding::ProgramUniform2iEXT("glProgramUniform2iEXT");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform2iv("glProgramUniform2iv");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform2ivEXT("glProgramUniform2ivEXT");
 Function<void, GLuint, GLint, GLuint, GLuint> Binding::ProgramUniform2ui("glProgramUniform2ui");
+Function<void, GLuint, GLint, GLuint64, GLuint64> Binding::ProgramUniform2ui64ARB("glProgramUniform2ui64ARB");
 Function<void, GLuint, GLint, GLuint64EXT, GLuint64EXT> Binding::ProgramUniform2ui64NV("glProgramUniform2ui64NV");
+Function<void, GLuint, GLint, GLsizei, const GLuint64 *> Binding::ProgramUniform2ui64vARB("glProgramUniform2ui64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> Binding::ProgramUniform2ui64vNV("glProgramUniform2ui64vNV");
 Function<void, GLuint, GLint, GLuint, GLuint> Binding::ProgramUniform2uiEXT("glProgramUniform2uiEXT");
 Function<void, GLuint, GLint, GLsizei, const GLuint *> Binding::ProgramUniform2uiv("glProgramUniform2uiv");
@@ -1776,13 +1794,17 @@ Function<void, GLuint, GLint, GLfloat, GLfloat, GLfloat> Binding::ProgramUniform
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform3fv("glProgramUniform3fv");
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform3fvEXT("glProgramUniform3fvEXT");
 Function<void, GLuint, GLint, GLint, GLint, GLint> Binding::ProgramUniform3i("glProgramUniform3i");
+Function<void, GLuint, GLint, GLint64, GLint64, GLint64> Binding::ProgramUniform3i64ARB("glProgramUniform3i64ARB");
 Function<void, GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT> Binding::ProgramUniform3i64NV("glProgramUniform3i64NV");
+Function<void, GLuint, GLint, GLsizei, const GLint64 *> Binding::ProgramUniform3i64vARB("glProgramUniform3i64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> Binding::ProgramUniform3i64vNV("glProgramUniform3i64vNV");
 Function<void, GLuint, GLint, GLint, GLint, GLint> Binding::ProgramUniform3iEXT("glProgramUniform3iEXT");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform3iv("glProgramUniform3iv");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform3ivEXT("glProgramUniform3ivEXT");
 Function<void, GLuint, GLint, GLuint, GLuint, GLuint> Binding::ProgramUniform3ui("glProgramUniform3ui");
+Function<void, GLuint, GLint, GLuint64, GLuint64, GLuint64> Binding::ProgramUniform3ui64ARB("glProgramUniform3ui64ARB");
 Function<void, GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT> Binding::ProgramUniform3ui64NV("glProgramUniform3ui64NV");
+Function<void, GLuint, GLint, GLsizei, const GLuint64 *> Binding::ProgramUniform3ui64vARB("glProgramUniform3ui64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> Binding::ProgramUniform3ui64vNV("glProgramUniform3ui64vNV");
 Function<void, GLuint, GLint, GLuint, GLuint, GLuint> Binding::ProgramUniform3uiEXT("glProgramUniform3uiEXT");
 Function<void, GLuint, GLint, GLsizei, const GLuint *> Binding::ProgramUniform3uiv("glProgramUniform3uiv");
@@ -1796,13 +1818,17 @@ Function<void, GLuint, GLint, GLfloat, GLfloat, GLfloat, GLfloat> Binding::Progr
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform4fv("glProgramUniform4fv");
 Function<void, GLuint, GLint, GLsizei, const GLfloat *> Binding::ProgramUniform4fvEXT("glProgramUniform4fvEXT");
 Function<void, GLuint, GLint, GLint, GLint, GLint, GLint> Binding::ProgramUniform4i("glProgramUniform4i");
+Function<void, GLuint, GLint, GLint64, GLint64, GLint64, GLint64> Binding::ProgramUniform4i64ARB("glProgramUniform4i64ARB");
 Function<void, GLuint, GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT> Binding::ProgramUniform4i64NV("glProgramUniform4i64NV");
+Function<void, GLuint, GLint, GLsizei, const GLint64 *> Binding::ProgramUniform4i64vARB("glProgramUniform4i64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLint64EXT *> Binding::ProgramUniform4i64vNV("glProgramUniform4i64vNV");
 Function<void, GLuint, GLint, GLint, GLint, GLint, GLint> Binding::ProgramUniform4iEXT("glProgramUniform4iEXT");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform4iv("glProgramUniform4iv");
 Function<void, GLuint, GLint, GLsizei, const GLint *> Binding::ProgramUniform4ivEXT("glProgramUniform4ivEXT");
 Function<void, GLuint, GLint, GLuint, GLuint, GLuint, GLuint> Binding::ProgramUniform4ui("glProgramUniform4ui");
+Function<void, GLuint, GLint, GLuint64, GLuint64, GLuint64, GLuint64> Binding::ProgramUniform4ui64ARB("glProgramUniform4ui64ARB");
 Function<void, GLuint, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT> Binding::ProgramUniform4ui64NV("glProgramUniform4ui64NV");
+Function<void, GLuint, GLint, GLsizei, const GLuint64 *> Binding::ProgramUniform4ui64vARB("glProgramUniform4ui64vARB");
 Function<void, GLuint, GLint, GLsizei, const GLuint64EXT *> Binding::ProgramUniform4ui64vNV("glProgramUniform4ui64vNV");
 Function<void, GLuint, GLint, GLuint, GLuint, GLuint, GLuint> Binding::ProgramUniform4uiEXT("glProgramUniform4uiEXT");
 Function<void, GLuint, GLint, GLsizei, const GLuint *> Binding::ProgramUniform4uiv("glProgramUniform4uiv");
@@ -2286,13 +2312,17 @@ Function<void, GLint, GLfloat> Binding::Uniform1fARB("glUniform1fARB");
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform1fv("glUniform1fv");
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform1fvARB("glUniform1fvARB");
 Function<void, GLint, GLint> Binding::Uniform1i("glUniform1i");
+Function<void, GLint, GLint64> Binding::Uniform1i64ARB("glUniform1i64ARB");
 Function<void, GLint, GLint64EXT> Binding::Uniform1i64NV("glUniform1i64NV");
+Function<void, GLint, GLsizei, const GLint64 *> Binding::Uniform1i64vARB("glUniform1i64vARB");
 Function<void, GLint, GLsizei, const GLint64EXT *> Binding::Uniform1i64vNV("glUniform1i64vNV");
 Function<void, GLint, GLint> Binding::Uniform1iARB("glUniform1iARB");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform1iv("glUniform1iv");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform1ivARB("glUniform1ivARB");
 Function<void, GLint, GLuint> Binding::Uniform1ui("glUniform1ui");
+Function<void, GLint, GLuint64> Binding::Uniform1ui64ARB("glUniform1ui64ARB");
 Function<void, GLint, GLuint64EXT> Binding::Uniform1ui64NV("glUniform1ui64NV");
+Function<void, GLint, GLsizei, const GLuint64 *> Binding::Uniform1ui64vARB("glUniform1ui64vARB");
 Function<void, GLint, GLsizei, const GLuint64EXT *> Binding::Uniform1ui64vNV("glUniform1ui64vNV");
 Function<void, GLint, GLuint> Binding::Uniform1uiEXT("glUniform1uiEXT");
 Function<void, GLint, GLsizei, const GLuint *> Binding::Uniform1uiv("glUniform1uiv");
@@ -2304,13 +2334,17 @@ Function<void, GLint, GLfloat, GLfloat> Binding::Uniform2fARB("glUniform2fARB");
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform2fv("glUniform2fv");
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform2fvARB("glUniform2fvARB");
 Function<void, GLint, GLint, GLint> Binding::Uniform2i("glUniform2i");
+Function<void, GLint, GLint64, GLint64> Binding::Uniform2i64ARB("glUniform2i64ARB");
 Function<void, GLint, GLint64EXT, GLint64EXT> Binding::Uniform2i64NV("glUniform2i64NV");
+Function<void, GLint, GLsizei, const GLint64 *> Binding::Uniform2i64vARB("glUniform2i64vARB");
 Function<void, GLint, GLsizei, const GLint64EXT *> Binding::Uniform2i64vNV("glUniform2i64vNV");
 Function<void, GLint, GLint, GLint> Binding::Uniform2iARB("glUniform2iARB");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform2iv("glUniform2iv");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform2ivARB("glUniform2ivARB");
 Function<void, GLint, GLuint, GLuint> Binding::Uniform2ui("glUniform2ui");
+Function<void, GLint, GLuint64, GLuint64> Binding::Uniform2ui64ARB("glUniform2ui64ARB");
 Function<void, GLint, GLuint64EXT, GLuint64EXT> Binding::Uniform2ui64NV("glUniform2ui64NV");
+Function<void, GLint, GLsizei, const GLuint64 *> Binding::Uniform2ui64vARB("glUniform2ui64vARB");
 Function<void, GLint, GLsizei, const GLuint64EXT *> Binding::Uniform2ui64vNV("glUniform2ui64vNV");
 Function<void, GLint, GLuint, GLuint> Binding::Uniform2uiEXT("glUniform2uiEXT");
 Function<void, GLint, GLsizei, const GLuint *> Binding::Uniform2uiv("glUniform2uiv");
@@ -2322,13 +2356,17 @@ Function<void, GLint, GLfloat, GLfloat, GLfloat> Binding::Uniform3fARB("glUnifor
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform3fv("glUniform3fv");
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform3fvARB("glUniform3fvARB");
 Function<void, GLint, GLint, GLint, GLint> Binding::Uniform3i("glUniform3i");
+Function<void, GLint, GLint64, GLint64, GLint64> Binding::Uniform3i64ARB("glUniform3i64ARB");
 Function<void, GLint, GLint64EXT, GLint64EXT, GLint64EXT> Binding::Uniform3i64NV("glUniform3i64NV");
+Function<void, GLint, GLsizei, const GLint64 *> Binding::Uniform3i64vARB("glUniform3i64vARB");
 Function<void, GLint, GLsizei, const GLint64EXT *> Binding::Uniform3i64vNV("glUniform3i64vNV");
 Function<void, GLint, GLint, GLint, GLint> Binding::Uniform3iARB("glUniform3iARB");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform3iv("glUniform3iv");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform3ivARB("glUniform3ivARB");
 Function<void, GLint, GLuint, GLuint, GLuint> Binding::Uniform3ui("glUniform3ui");
+Function<void, GLint, GLuint64, GLuint64, GLuint64> Binding::Uniform3ui64ARB("glUniform3ui64ARB");
 Function<void, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT> Binding::Uniform3ui64NV("glUniform3ui64NV");
+Function<void, GLint, GLsizei, const GLuint64 *> Binding::Uniform3ui64vARB("glUniform3ui64vARB");
 Function<void, GLint, GLsizei, const GLuint64EXT *> Binding::Uniform3ui64vNV("glUniform3ui64vNV");
 Function<void, GLint, GLuint, GLuint, GLuint> Binding::Uniform3uiEXT("glUniform3uiEXT");
 Function<void, GLint, GLsizei, const GLuint *> Binding::Uniform3uiv("glUniform3uiv");
@@ -2340,13 +2378,17 @@ Function<void, GLint, GLfloat, GLfloat, GLfloat, GLfloat> Binding::Uniform4fARB(
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform4fv("glUniform4fv");
 Function<void, GLint, GLsizei, const GLfloat *> Binding::Uniform4fvARB("glUniform4fvARB");
 Function<void, GLint, GLint, GLint, GLint, GLint> Binding::Uniform4i("glUniform4i");
+Function<void, GLint, GLint64, GLint64, GLint64, GLint64> Binding::Uniform4i64ARB("glUniform4i64ARB");
 Function<void, GLint, GLint64EXT, GLint64EXT, GLint64EXT, GLint64EXT> Binding::Uniform4i64NV("glUniform4i64NV");
+Function<void, GLint, GLsizei, const GLint64 *> Binding::Uniform4i64vARB("glUniform4i64vARB");
 Function<void, GLint, GLsizei, const GLint64EXT *> Binding::Uniform4i64vNV("glUniform4i64vNV");
 Function<void, GLint, GLint, GLint, GLint, GLint> Binding::Uniform4iARB("glUniform4iARB");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform4iv("glUniform4iv");
 Function<void, GLint, GLsizei, const GLint *> Binding::Uniform4ivARB("glUniform4ivARB");
 Function<void, GLint, GLuint, GLuint, GLuint, GLuint> Binding::Uniform4ui("glUniform4ui");
+Function<void, GLint, GLuint64, GLuint64, GLuint64, GLuint64> Binding::Uniform4ui64ARB("glUniform4ui64ARB");
 Function<void, GLint, GLuint64EXT, GLuint64EXT, GLuint64EXT, GLuint64EXT> Binding::Uniform4ui64NV("glUniform4ui64NV");
+Function<void, GLint, GLsizei, const GLuint64 *> Binding::Uniform4ui64vARB("glUniform4ui64vARB");
 Function<void, GLint, GLsizei, const GLuint64EXT *> Binding::Uniform4ui64vNV("glUniform4ui64vNV");
 Function<void, GLint, GLuint, GLuint, GLuint, GLuint> Binding::Uniform4uiEXT("glUniform4uiEXT");
 Function<void, GLint, GLsizei, const GLuint *> Binding::Uniform4uiv("glUniform4uiv");
@@ -2856,6 +2898,7 @@ const Binding::array_t Binding::s_functions =
     &AlphaFragmentOp3ATI,
     &AlphaFunc,
     &AlphaFuncxOES,
+    &ApplyFramebufferAttachmentCMAAINTEL,
     &ApplyTextureEXT,
     &AreProgramsResidentNV,
     &AreTexturesResident,
@@ -3394,6 +3437,7 @@ const Binding::array_t Binding::s_functions =
     &EvalMesh2,
     &EvalPoint1,
     &EvalPoint2,
+    &EvaluateDepthValuesARB,
     &ExecuteProgramNV,
     &ExtractComponentEXT,
     &FeedbackBuffer,
@@ -3459,6 +3503,7 @@ const Binding::array_t Binding::s_functions =
     &FramebufferReadBufferEXT,
     &FramebufferRenderbuffer,
     &FramebufferRenderbufferEXT,
+    &FramebufferSampleLocationsfvARB,
     &FramebufferSampleLocationsfvNV,
     &FramebufferTexture,
     &FramebufferTexture1D,
@@ -3867,9 +3912,11 @@ const Binding::array_t Binding::s_functions =
     &GetUniformdv,
     &GetUniformfv,
     &GetUniformfvARB,
+    &GetUniformi64vARB,
     &GetUniformi64vNV,
     &GetUniformiv,
     &GetUniformivARB,
+    &GetUniformui64vARB,
     &GetUniformui64vNV,
     &GetUniformuiv,
     &GetUniformuivEXT,
@@ -3950,8 +3997,10 @@ const Binding::array_t Binding::s_functions =
     &GetnUniformdvARB,
     &GetnUniformfv,
     &GetnUniformfvARB,
+    &GetnUniformi64vARB,
     &GetnUniformiv,
     &GetnUniformivARB,
+    &GetnUniformui64vARB,
     &GetnUniformuiv,
     &GetnUniformuivARB,
     &GlobalAlphaFactorbSUN,
@@ -4165,6 +4214,7 @@ const Binding::array_t Binding::s_functions =
     &MatrixScalefEXT,
     &MatrixTranslatedEXT,
     &MatrixTranslatefEXT,
+    &MaxShaderCompilerThreadsARB,
     &MemoryBarrier,
     &MemoryBarrierByRegion,
     &MemoryBarrierEXT,
@@ -4336,6 +4386,7 @@ const Binding::array_t Binding::s_functions =
     &NamedFramebufferReadBuffer,
     &NamedFramebufferRenderbuffer,
     &NamedFramebufferRenderbufferEXT,
+    &NamedFramebufferSampleLocationsfvARB,
     &NamedFramebufferSampleLocationsfvNV,
     &NamedFramebufferTexture,
     &NamedFramebufferTexture1DEXT,
@@ -4489,6 +4540,7 @@ const Binding::array_t Binding::s_functions =
     &PopName,
     &PresentFrameDualFillNV,
     &PresentFrameKeyedNV,
+    &PrimitiveBoundingBoxARB,
     &PrimitiveRestartIndex,
     &PrimitiveRestartIndexNV,
     &PrimitiveRestartNV,
@@ -4546,13 +4598,17 @@ const Binding::array_t Binding::s_functions =
     &ProgramUniform1fv,
     &ProgramUniform1fvEXT,
     &ProgramUniform1i,
+    &ProgramUniform1i64ARB,
     &ProgramUniform1i64NV,
+    &ProgramUniform1i64vARB,
     &ProgramUniform1i64vNV,
     &ProgramUniform1iEXT,
     &ProgramUniform1iv,
     &ProgramUniform1ivEXT,
     &ProgramUniform1ui,
+    &ProgramUniform1ui64ARB,
     &ProgramUniform1ui64NV,
+    &ProgramUniform1ui64vARB,
     &ProgramUniform1ui64vNV,
     &ProgramUniform1uiEXT,
     &ProgramUniform1uiv,
@@ -4566,13 +4622,17 @@ const Binding::array_t Binding::s_functions =
     &ProgramUniform2fv,
     &ProgramUniform2fvEXT,
     &ProgramUniform2i,
+    &ProgramUniform2i64ARB,
     &ProgramUniform2i64NV,
+    &ProgramUniform2i64vARB,
     &ProgramUniform2i64vNV,
     &ProgramUniform2iEXT,
     &ProgramUniform2iv,
     &ProgramUniform2ivEXT,
     &ProgramUniform2ui,
+    &ProgramUniform2ui64ARB,
     &ProgramUniform2ui64NV,
+    &ProgramUniform2ui64vARB,
     &ProgramUniform2ui64vNV,
     &ProgramUniform2uiEXT,
     &ProgramUniform2uiv,
@@ -4586,13 +4646,17 @@ const Binding::array_t Binding::s_functions =
     &ProgramUniform3fv,
     &ProgramUniform3fvEXT,
     &ProgramUniform3i,
+    &ProgramUniform3i64ARB,
     &ProgramUniform3i64NV,
+    &ProgramUniform3i64vARB,
     &ProgramUniform3i64vNV,
     &ProgramUniform3iEXT,
     &ProgramUniform3iv,
     &ProgramUniform3ivEXT,
     &ProgramUniform3ui,
+    &ProgramUniform3ui64ARB,
     &ProgramUniform3ui64NV,
+    &ProgramUniform3ui64vARB,
     &ProgramUniform3ui64vNV,
     &ProgramUniform3uiEXT,
     &ProgramUniform3uiv,
@@ -4606,13 +4670,17 @@ const Binding::array_t Binding::s_functions =
     &ProgramUniform4fv,
     &ProgramUniform4fvEXT,
     &ProgramUniform4i,
+    &ProgramUniform4i64ARB,
     &ProgramUniform4i64NV,
+    &ProgramUniform4i64vARB,
     &ProgramUniform4i64vNV,
     &ProgramUniform4iEXT,
     &ProgramUniform4iv,
     &ProgramUniform4ivEXT,
     &ProgramUniform4ui,
+    &ProgramUniform4ui64ARB,
     &ProgramUniform4ui64NV,
+    &ProgramUniform4ui64vARB,
     &ProgramUniform4ui64vNV,
     &ProgramUniform4uiEXT,
     &ProgramUniform4uiv,
@@ -5096,13 +5164,17 @@ const Binding::array_t Binding::s_functions =
     &Uniform1fv,
     &Uniform1fvARB,
     &Uniform1i,
+    &Uniform1i64ARB,
     &Uniform1i64NV,
+    &Uniform1i64vARB,
     &Uniform1i64vNV,
     &Uniform1iARB,
     &Uniform1iv,
     &Uniform1ivARB,
     &Uniform1ui,
+    &Uniform1ui64ARB,
     &Uniform1ui64NV,
+    &Uniform1ui64vARB,
     &Uniform1ui64vNV,
     &Uniform1uiEXT,
     &Uniform1uiv,
@@ -5114,13 +5186,17 @@ const Binding::array_t Binding::s_functions =
     &Uniform2fv,
     &Uniform2fvARB,
     &Uniform2i,
+    &Uniform2i64ARB,
     &Uniform2i64NV,
+    &Uniform2i64vARB,
     &Uniform2i64vNV,
     &Uniform2iARB,
     &Uniform2iv,
     &Uniform2ivARB,
     &Uniform2ui,
+    &Uniform2ui64ARB,
     &Uniform2ui64NV,
+    &Uniform2ui64vARB,
     &Uniform2ui64vNV,
     &Uniform2uiEXT,
     &Uniform2uiv,
@@ -5132,13 +5208,17 @@ const Binding::array_t Binding::s_functions =
     &Uniform3fv,
     &Uniform3fvARB,
     &Uniform3i,
+    &Uniform3i64ARB,
     &Uniform3i64NV,
+    &Uniform3i64vARB,
     &Uniform3i64vNV,
     &Uniform3iARB,
     &Uniform3iv,
     &Uniform3ivARB,
     &Uniform3ui,
+    &Uniform3ui64ARB,
     &Uniform3ui64NV,
+    &Uniform3ui64vARB,
     &Uniform3ui64vNV,
     &Uniform3uiEXT,
     &Uniform3uiv,
@@ -5150,13 +5230,17 @@ const Binding::array_t Binding::s_functions =
     &Uniform4fv,
     &Uniform4fvARB,
     &Uniform4i,
+    &Uniform4i64ARB,
     &Uniform4i64NV,
+    &Uniform4i64vARB,
     &Uniform4i64vNV,
     &Uniform4iARB,
     &Uniform4iv,
     &Uniform4ivARB,
     &Uniform4ui,
+    &Uniform4ui64ARB,
     &Uniform4ui64NV,
+    &Uniform4ui64vARB,
     &Uniform4ui64vNV,
     &Uniform4uiEXT,
     &Uniform4uiv,
