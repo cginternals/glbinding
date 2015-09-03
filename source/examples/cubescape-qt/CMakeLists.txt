@@ -106,8 +106,9 @@ target_link_libraries(${target} ${libs})
 
 
 if(MSVC)
-    # -> msvc14 : declaration hides class member (problem in qt)
-    set(DEFAULT_COMPILE_FLAGS ${DEFAULT_COMPILE_FLAGS} /wd4458)
+    # -> msvc14 : C4458 - declaration hides class member (problem in qt)
+    # -> msvc14 : C4127 - conditional expression is constant (problem in qt)
+    set(DEFAULT_COMPILE_FLAGS ${DEFAULT_COMPILE_FLAGS} /wd4458 /wd4127)
 endif()
 
 target_compile_options(${target} PRIVATE ${DEFAULT_COMPILE_FLAGS})
