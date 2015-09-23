@@ -38,7 +38,6 @@ int main()
 | Jenkins | Ubuntu 14.04 | Clang 3.5 | not gl_by_strings | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
 | Jenkins | OS X 10.10 | Clang 3.5 | not gl_by_strings | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
 | Jenkins | Windows 8.1 | MSVC 2013 Update 3 | default | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
-| Jenkins | Windows 8.1 | MSVC 2013 Update 3 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013 (all options)&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013 (all options)) |
 | Jenkins | Windows 8.1 | MSVC 2015 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015 (all options)&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015 (all options)) |
 | [Coverity](https://scan.coverity.com/projects/2705?tab=overview) | Ubuntu | GCC 4.8 | all| [![Coverity Status](https://scan.coverity.com/projects/2705/badge.svg)](https://scan.coverity.com/projects/2705) |
 
