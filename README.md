@@ -32,7 +32,7 @@ int main()
 
 | Service | System | Compiler | Options | Status |
 | ------- | ------ | -------- | ------- | ------ |
-| [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | no tests | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png)](https://drone.io/github.com/cginternals/glbinding/latest) | 
+| [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | no tests | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png)](https://drone.io/github.com/cginternals/glbinding/latest) |
 | Jenkins | Ubuntu 14.04 | GCC 4.8 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
 | Jenkins | Ubuntu 14.04 | GCC 4.9 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
 | Jenkins | Ubuntu 14.04 | Clang 3.5 | not gl_by_strings | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5&style=plastic)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
