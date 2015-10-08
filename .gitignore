@@ -8,9 +8,14 @@ CMakeLists.txt.*
 codegeneration/*.h
 codegeneration/*.cpp
 
-#backup files
+# backup files
 *~
 
 # config
 .localconfig
 *.bat
+
+# IDE project files
+*.sublime-project
+*.sublime-workspace
+
