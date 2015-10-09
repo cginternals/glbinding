@@ -1,23 +1,30 @@
 
 #include "Meta_Maps.h"
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/enum.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
 
 const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
 {
-#ifdef STRINGS_BY_GL
+#ifdef STRINGS_BY_SYMBOLS
     { GLenum::GL_NEXT_BUFFER_NV, "GL_NEXT_BUFFER_NV" },
     { GLenum::GL_SKIP_COMPONENTS4_NV, "GL_SKIP_COMPONENTS4_NV" },
     { GLenum::GL_SKIP_COMPONENTS3_NV, "GL_SKIP_COMPONENTS3_NV" },
     { GLenum::GL_SKIP_COMPONENTS2_NV, "GL_SKIP_COMPONENTS2_NV" },
     { GLenum::GL_SKIP_COMPONENTS1_NV, "GL_SKIP_COMPONENTS1_NV" },
     { GLenum::GL_NONE, "GL_NONE" },
+    { GLenum::GL_CLOSE_PATH_NV, "GL_CLOSE_PATH_NV" },
+    { GLenum::GL_POINTS, "GL_POINTS" },
+    { GLenum::GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD, "GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD" },
+    { GLenum::GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD, "GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD" },
+    { GLenum::GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD, "GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD" },
+    { GLenum::GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD, "GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD" },
     { GLenum::GL_LINES, "GL_LINES" },
     { GLenum::GL_LINE_LOOP, "GL_LINE_LOOP" },
     { GLenum::GL_LINE_STRIP, "GL_LINE_STRIP" },
@@ -41,6 +48,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_RETURN, "GL_RETURN" },
     { GLenum::GL_MULT, "GL_MULT" },
     { GLenum::GL_ADD, "GL_ADD" },
+    { GLenum::GL_MOVE_TO_NV, "GL_MOVE_TO_NV" },
     { GLenum::GL_NEVER, "GL_NEVER" },
     { GLenum::GL_LESS, "GL_LESS" },
     { GLenum::GL_EQUAL, "GL_EQUAL" },
@@ -49,6 +57,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_NOTEQUAL, "GL_NOTEQUAL" },
     { GLenum::GL_GEQUAL, "GL_GEQUAL" },
     { GLenum::GL_ALWAYS, "GL_ALWAYS" },
+    { GLenum::GL_RELATIVE_MOVE_TO_NV, "GL_RELATIVE_MOVE_TO_NV" },
     { GLenum::GL_SRC_COLOR, "GL_SRC_COLOR" },
     { GLenum::GL_ONE_MINUS_SRC_COLOR, "GL_ONE_MINUS_SRC_COLOR" },
     { GLenum::GL_SRC_ALPHA, "GL_SRC_ALPHA" },
@@ -58,6 +67,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_DST_COLOR, "GL_DST_COLOR" },
     { GLenum::GL_ONE_MINUS_DST_COLOR, "GL_ONE_MINUS_DST_COLOR" },
     { GLenum::GL_SRC_ALPHA_SATURATE, "GL_SRC_ALPHA_SATURATE" },
+    { GLenum::GL_LINE_TO_NV, "GL_LINE_TO_NV" },
     { GLenum::GL_FRONT_LEFT, "GL_FRONT_LEFT" },
     { GLenum::GL_FRONT_RIGHT, "GL_FRONT_RIGHT" },
     { GLenum::GL_BACK_LEFT, "GL_BACK_LEFT" },
@@ -71,6 +81,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_AUX1, "GL_AUX1" },
     { GLenum::GL_AUX2, "GL_AUX2" },
     { GLenum::GL_AUX3, "GL_AUX3" },
+    { GLenum::GL_RELATIVE_LINE_TO_NV, "GL_RELATIVE_LINE_TO_NV" },
     { GLenum::GL_INVALID_ENUM, "GL_INVALID_ENUM" },
     { GLenum::GL_INVALID_VALUE, "GL_INVALID_VALUE" },
     { GLenum::GL_INVALID_OPERATION, "GL_INVALID_OPERATION" },
@@ -79,11 +90,13 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_OUT_OF_MEMORY, "GL_OUT_OF_MEMORY" },
     { GLenum::GL_INVALID_FRAMEBUFFER_OPERATION, "GL_INVALID_FRAMEBUFFER_OPERATION" },
     { GLenum::GL_CONTEXT_LOST, "GL_CONTEXT_LOST" },
+    { GLenum::GL_HORIZONTAL_LINE_TO_NV, "GL_HORIZONTAL_LINE_TO_NV" },
     { GLenum::GL_2D, "GL_2D" },
     { GLenum::GL_3D, "GL_3D" },
     { GLenum::GL_3D_COLOR, "GL_3D_COLOR" },
     { GLenum::GL_3D_COLOR_TEXTURE, "GL_3D_COLOR_TEXTURE" },
     { GLenum::GL_4D_COLOR_TEXTURE, "GL_4D_COLOR_TEXTURE" },
+    { GLenum::GL_RELATIVE_HORIZONTAL_LINE_TO_NV, "GL_RELATIVE_HORIZONTAL_LINE_TO_NV" },
     { GLenum::GL_PASS_THROUGH_TOKEN, "GL_PASS_THROUGH_TOKEN" },
     { GLenum::GL_POINT_TOKEN, "GL_POINT_TOKEN" },
     { GLenum::GL_LINE_TOKEN, "GL_LINE_TOKEN" },
@@ -92,13 +105,17 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_DRAW_PIXEL_TOKEN, "GL_DRAW_PIXEL_TOKEN" },
     { GLenum::GL_COPY_PIXEL_TOKEN, "GL_COPY_PIXEL_TOKEN" },
     { GLenum::GL_LINE_RESET_TOKEN, "GL_LINE_RESET_TOKEN" },
+    { GLenum::GL_VERTICAL_LINE_TO_NV, "GL_VERTICAL_LINE_TO_NV" },
     { GLenum::GL_EXP, "GL_EXP" },
     { GLenum::GL_EXP2, "GL_EXP2" },
+    { GLenum::GL_RELATIVE_VERTICAL_LINE_TO_NV, "GL_RELATIVE_VERTICAL_LINE_TO_NV" },
     { GLenum::GL_CW, "GL_CW" },
     { GLenum::GL_CCW, "GL_CCW" },
+    { GLenum::GL_QUADRATIC_CURVE_TO_NV, "GL_QUADRATIC_CURVE_TO_NV" },
     { GLenum::GL_COEFF, "GL_COEFF" },
     { GLenum::GL_ORDER, "GL_ORDER" },
     { GLenum::GL_DOMAIN, "GL_DOMAIN" },
+    { GLenum::GL_RELATIVE_QUADRATIC_CURVE_TO_NV, "GL_RELATIVE_QUADRATIC_CURVE_TO_NV" },
     { GLenum::GL_CURRENT_COLOR, "GL_CURRENT_COLOR" },
     { GLenum::GL_CURRENT_INDEX, "GL_CURRENT_INDEX" },
     { GLenum::GL_CURRENT_NORMAL, "GL_CURRENT_NORMAL" },
@@ -182,6 +199,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_LOGIC_OP_MODE, "GL_LOGIC_OP_MODE" },
     { GLenum::GL_INDEX_LOGIC_OP, "GL_INDEX_LOGIC_OP" },
     { GLenum::GL_COLOR_LOGIC_OP, "GL_COLOR_LOGIC_OP" },
+    { GLenum::GL_CUBIC_CURVE_TO_NV, "GL_CUBIC_CURVE_TO_NV" },
     { GLenum::GL_AUX_BUFFERS, "GL_AUX_BUFFERS" },
     { GLenum::GL_DRAW_BUFFER, "GL_DRAW_BUFFER" },
     { GLenum::GL_READ_BUFFER, "GL_READ_BUFFER" },
@@ -231,6 +249,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_UNPACK_SKIP_ROWS, "GL_UNPACK_SKIP_ROWS" },
     { GLenum::GL_UNPACK_SKIP_PIXELS, "GL_UNPACK_SKIP_PIXELS" },
     { GLenum::GL_UNPACK_ALIGNMENT, "GL_UNPACK_ALIGNMENT" },
+    { GLenum::GL_RELATIVE_CUBIC_CURVE_TO_NV, "GL_RELATIVE_CUBIC_CURVE_TO_NV" },
     { GLenum::GL_PACK_SWAP_BYTES, "GL_PACK_SWAP_BYTES" },
     { GLenum::GL_PACK_LSB_FIRST, "GL_PACK_LSB_FIRST" },
     { GLenum::GL_PACK_ROW_LENGTH, "GL_PACK_ROW_LENGTH" },
@@ -308,15 +327,20 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_FEEDBACK_BUFFER_TYPE, "GL_FEEDBACK_BUFFER_TYPE" },
     { GLenum::GL_SELECTION_BUFFER_POINTER, "GL_SELECTION_BUFFER_POINTER" },
     { GLenum::GL_SELECTION_BUFFER_SIZE, "GL_SELECTION_BUFFER_SIZE" },
+    { GLenum::GL_SMOOTH_QUADRATIC_CURVE_TO_NV, "GL_SMOOTH_QUADRATIC_CURVE_TO_NV" },
+    { GLenum::GL_RELATIVE_SMOOTH_QUADRATIC_CURVE_TO_NV, "GL_RELATIVE_SMOOTH_QUADRATIC_CURVE_TO_NV" },
+    { GLenum::GL_SMOOTH_CUBIC_CURVE_TO_NV, "GL_SMOOTH_CUBIC_CURVE_TO_NV" },
     { GLenum::GL_TEXTURE_WIDTH, "GL_TEXTURE_WIDTH" },
     { GLenum::GL_TEXTURE_HEIGHT, "GL_TEXTURE_HEIGHT" },
     { GLenum::GL_TEXTURE_COMPONENTS, "GL_TEXTURE_COMPONENTS" },
     { GLenum::GL_TEXTURE_BORDER_COLOR, "GL_TEXTURE_BORDER_COLOR" },
     { GLenum::GL_TEXTURE_BORDER, "GL_TEXTURE_BORDER" },
     { GLenum::GL_TEXTURE_TARGET, "GL_TEXTURE_TARGET" },
+    { GLenum::GL_RELATIVE_SMOOTH_CUBIC_CURVE_TO_NV, "GL_RELATIVE_SMOOTH_CUBIC_CURVE_TO_NV" },
     { GLenum::GL_DONT_CARE, "GL_DONT_CARE" },
     { GLenum::GL_FASTEST, "GL_FASTEST" },
     { GLenum::GL_NICEST, "GL_NICEST" },
+    { GLenum::GL_SMALL_CCW_ARC_TO_NV, "GL_SMALL_CCW_ARC_TO_NV" },
     { GLenum::GL_AMBIENT, "GL_AMBIENT" },
     { GLenum::GL_DIFFUSE, "GL_DIFFUSE" },
     { GLenum::GL_SPECULAR, "GL_SPECULAR" },
@@ -1466,8 +1490,8 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_TEXTURE_RANGE_LENGTH_APPLE, "GL_TEXTURE_RANGE_LENGTH_APPLE" },
     { GLenum::GL_TEXTURE_RANGE_POINTER_APPLE, "GL_TEXTURE_RANGE_POINTER_APPLE" },
     { GLenum::GL_YCBCR_422_APPLE, "GL_YCBCR_422_APPLE" },
-    { GLenum::GL_UNSIGNED_SHORT_8_8_MESA, "GL_UNSIGNED_SHORT_8_8_MESA" },
-    { GLenum::GL_UNSIGNED_SHORT_8_8_REV_MESA, "GL_UNSIGNED_SHORT_8_8_REV_MESA" },
+    { GLenum::GL_UNSIGNED_SHORT_8_8_APPLE, "GL_UNSIGNED_SHORT_8_8_APPLE" },
+    { GLenum::GL_UNSIGNED_SHORT_8_8_REV_APPLE, "GL_UNSIGNED_SHORT_8_8_REV_APPLE" },
     { GLenum::GL_TEXTURE_STORAGE_HINT_APPLE, "GL_TEXTURE_STORAGE_HINT_APPLE" },
     { GLenum::GL_STORAGE_PRIVATE_APPLE, "GL_STORAGE_PRIVATE_APPLE" },
     { GLenum::GL_STORAGE_CACHED_APPLE, "GL_STORAGE_CACHED_APPLE" },
@@ -3440,6 +3464,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_ARC_TO_NV, "GL_ARC_TO_NV" },
     { GLenum::GL_RELATIVE_ARC_TO_NV, "GL_RELATIVE_ARC_TO_NV" },
     { GLenum::GL_QUERY_ALL_EVENT_BITS_AMD, "GL_QUERY_ALL_EVENT_BITS_AMD" },
+    { GLenum::GL_ONE, "GL_ONE" },
     { GLenum::GL_CULL_VERTEX_IBM, "GL_CULL_VERTEX_IBM" },
     { GLenum::GL_ALL_STATIC_DATA_IBM, "GL_ALL_STATIC_DATA_IBM" },
     { GLenum::GL_STATIC_VERTEX_ARRAY_IBM, "GL_STATIC_VERTEX_ARRAY_IBM" },
@@ -3458,7 +3483,8 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_TEXTURE_COORD_ARRAY_LIST_STRIDE_IBM, "GL_TEXTURE_COORD_ARRAY_LIST_STRIDE_IBM" },
     { GLenum::GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM, "GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM" },
     { GLenum::GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM, "GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM" },
-    { GLenum::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM, "GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM" }
+    { GLenum::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM, "GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM" },
+    { GLenum::GL_LAYOUT_LINEAR_CPU_CACHED_INTEL, "GL_LAYOUT_LINEAR_CPU_CACHED_INTEL" }
 #endif
 };
 

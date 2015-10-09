@@ -1,17 +1,18 @@
 
 #include "Meta_Maps.h"
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/extension.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
 
 const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
 {
-#ifdef STRINGS_BY_GL
+#ifdef STRINGS_BY_SYMBOLS
     { GLextension::GL_3DFX_multisample, "GL_3DFX_multisample" },
     { GLextension::GL_3DFX_tbuffer, "GL_3DFX_tbuffer" },
     { GLextension::GL_3DFX_texture_compression_FXT1, "GL_3DFX_texture_compression_FXT1" },

@@ -6,7 +6,7 @@
 
 #include <glbinding/Meta.h>
 
-namespace 
+namespace
 {
 
 std::string wrapString(const char * value)
@@ -20,13 +20,13 @@ std::string wrapString(const char * value)
 
 }
 
-namespace glbinding 
+namespace khrapi
 {
 
 template <>
 void Value<gl::GLenum>::printOn(std::ostream & stream) const
 {
-    auto name = Meta::getString(value);
+    auto name = glbinding::Meta::getString(value);
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
 }
 
@@ -41,7 +41,7 @@ void Value<gl::GLbitfield>::printOn(std::ostream & stream) const
 template <>
 void Value<gl::GLboolean>::printOn(std::ostream & stream) const
 {
-    auto name = Meta::getString(value);
+    auto name = glbinding::Meta::getString(value);
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
 }
 
@@ -67,4 +67,4 @@ void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) const
     stream << ss.str();
 }
 
-} // namespace glbinding
+} // namespace khrapi

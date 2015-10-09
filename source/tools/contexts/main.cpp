@@ -9,7 +9,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/Meta.h>
-#include <glbinding/AbstractFunction.h>
+#include <khrapi/AbstractFunction.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 

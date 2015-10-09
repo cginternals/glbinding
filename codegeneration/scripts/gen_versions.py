@@ -6,10 +6,13 @@ def version(feature):
 	return '{ %s, %s }' % (feature.major, feature.minor)
 
 
-def genVersions(features, outputdir, outputfile):
-	status(outputdir + outputfile)
+def genVersions(api, prefix, libraryNamespace, features, outputdir, outputfile):
+    status(outputdir + outputfile)
 
-	with open(outputdir + outputfile, 'w') as file:
-		file.write(template(outputfile) % ((",\n" + tab).join(
-			[ version(f) for f in features if f.api == "gl"]) ,
-			  version([ f for f in features if f.api == "gl"][-1])))
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", prefix.upper())
+
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(t % (
+            (",\n" + tab).join([ version(f) for f in features if f.api == api]),
+            version([ f for f in features if f.api == api][-1])
+        ))

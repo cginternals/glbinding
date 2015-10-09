@@ -2,23 +2,23 @@ from classes.Feature import *
 from classes.Extension import *
 
 
-def translateType(t, name):
+def translateType(prefix, t, name):
 
-    if name in [ "GL_TRUE", "GL_FALSE" ]:
-        return "GLboolean"
+    if name == prefix.upper() + "_TRUE" or name == prefix.upper() + "_FALSE":
+        return prefix.upper() + "boolean"
 
-    return { "u" : "GLuint", "ull" : "GLuint64"    }.get(t, "GLenum")
+    return { "u" : "unsigned int", "ull" : "unsigned long long int"    }.get(t, prefix.upper() + "enum")
 
 
 class Enum:
 
-    def __init__(self, xml, features, extensions, groupString, groupType, api):
+    def __init__(self, xml, features, extensions, groupString, groupType, api, prefix):
 
         self.api   = api
-
+        
         self.name  = xml.attrib["name"]
-        self.value = xml.attrib["value"]
-        self.type  = "GLenum"
+        self.value = ''.join(xml.attrib["value"] if xml.attrib["value"].startswith("0x") else [ c for c in xml.attrib["value"] if c in "[^-1234567890]" ])
+        self.type  = prefix.upper() + "enum"
 
         self.aliasString = ""
         self.alias = None
@@ -26,14 +26,14 @@ class Enum:
         # an enum group is, if defined, defined specifically for an enum
         # but the enum itself might be reused by other groups as well.
         self.groups = set()
-        self.groupString = None # ToDo: only supported for GLbitfield for now
+        self.groupString = None # ToDo: only supported for bitfield for now
 
         self.aliasString = xml.attrib.get("alias", None)
 
-        if groupString == "SpecialNumbers":
-            self.type = translateType(xml.attrib.get("type", ""), self.name)
+        if groupString == "SpecialNumbers" or groupString == "Boolean":
+            self.type = translateType(prefix, xml.attrib.get("type", ""), self.name)
         elif groupType == "bitmask":
-            self.type = "GLbitfield"
+            self.type = prefix.upper() + "bitfield"
             self.groupString = groupString
 
         self.reqFeatures   = []
@@ -69,7 +69,7 @@ class Enum:
         if feature is None:
             return True
 
-        # ToDo: this might create a cyclic recursion if glm is errorneuos
+        # ToDo: this might create a cyclic recursion if gl is errorneuos
         aliasSupported = self.alias.supported(feature, core) if self.alias else False
 
         # Note: design decission:
@@ -187,7 +187,7 @@ def verifyGroups(groups, enums):
 
     # ToDo
 
-    # (3) check that every enum of type GLbitfield 
+    # (3) check that every enum of type bitfield 
     # has only one group (important for namespace import) 
 
     # Note: (3) is deprecated since glbinding supports groups 
@@ -195,7 +195,7 @@ def verifyGroups(groups, enums):
     #overflows = set()
     
     #for enum in enums:
-    #   if enum.type == "GLbitfield" and len(enum.groups) > 1:
+    #   if enum.type == "bitfield" and len(enum.groups) > 1:
     #       overflows.add(enum)
 
     #if len(overflows) > 0:
@@ -204,7 +204,7 @@ def verifyGroups(groups, enums):
     #        print ("  %s groups for %s (%s)" % (str(len(enum.groups)), enum.name, ", ".join([g.name for g in enum.groups])))
 
 
-def parseEnums(xml, features, extensions, commands, api):
+def parseEnums(xml, features, extensions, commands, api, prefix):
 
     # create utility string sets to simplify application of constraints
 
@@ -227,6 +227,8 @@ def parseEnums(xml, features, extensions, commands, api):
     for E in xml.iter("enums"):
 
         groupString = E.attrib.get("group", None)
+        if groupString == None:
+            groupString = E.attrib.get("namespace", None)
         groupType   = E.attrib.get("type", None)
 
         # only parse enum if 
@@ -249,7 +251,7 @@ def parseEnums(xml, features, extensions, commands, api):
             if "api" in enum.attrib and enum.attrib["api"] != api:
                 continue
 
-            enums.add(Enum(enum, features, extensions, groupString, groupType, api))
+            enums.add(Enum(enum, features, extensions, groupString, groupType, api, prefix))
 
     return sorted(enums)
 
@@ -298,7 +300,7 @@ def patchEnums(enums, patches, groups):
         if patch.name not in enumsByName:
             createGroup_ifImplicit(groups, groupsByName, patch)
             enums.append(patch)
-        elif len(patch.aliasString) > 0:
+        elif len(patch.aliasString) > 0 and patch.aliasString in enumsByName:
             enumsByName[patch.name].aliasString = patch.aliasString
             enumsByName[patch.name].alias = enumsByName[patch.aliasString]
 

@@ -1,12 +1,12 @@
 #pragma once
 
-#include <glbinding/no%a.h>
+#include <%abinding/no%a.h>
 
 
 namespace %a
 {
 
-enum class GLenum : unsigned int
+enum class %Aenum : unsigned int
 {
 %s
 };

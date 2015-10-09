@@ -1,6 +1,11 @@
 
-std::ostream & operator<<(std::ostream & stream, const gl::%t & value)
+namespace %a
 {
-    stream << bitfieldString<gl::%t>(value, glbinding::Meta_StringsBy%t);
+
+std::ostream & operator<<(std::ostream & stream, const %t & value)
+{
+    stream << bitfieldString<%t>(value, %abinding::Meta_StringsBy%t);
     return stream;
 }
+
+} // namespace %a

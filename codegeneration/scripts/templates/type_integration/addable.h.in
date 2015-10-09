@@ -1,3 +1,8 @@
 
-GLBINDING_API gl::%t operator+(const gl::%t & a, std::underlying_type<gl::%t>::type b);
-GLBINDING_API gl::%t operator-(const gl::%t & a, std::underlying_type<gl::%t>::type b);
+namespace %a
+{
+
+%ABINDING_API %t operator+(const %t & a, std::underlying_type<%t>::type b);
+%ABINDING_API %t operator-(const %t & a, std::underlying_type<%t>::type b);
+
+} // namespace %a

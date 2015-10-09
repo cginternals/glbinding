@@ -5,7 +5,8 @@ import xml.etree.ElementTree as ET
 from classes.Feature import *
 from classes.Extension import *
 
-# near and far are defined by windows.h ... :( 
+# near and far are defined by windows.h ... :(
+# TODO: check if exceptions are really required anymore
 exceptions = ["GetProcAddress", "near", "far"]
 
 class Parameter:
@@ -13,6 +14,10 @@ class Parameter:
     def __init__(self, xml):
 
         self.name = xml.find("name").text
+        
+        # EGL hack
+        if self.name == "EGLBoolean":
+            self.name = "EGLboolean"
 
         # check for additional params
         if list(xml.itertext())[-1] != self.name:
@@ -44,6 +49,10 @@ class Command:
 
         self.name       = proto.find("name").text
         self.returntype = " ".join([t.strip() for t in proto.itertext()][:-1]).strip()
+        
+        # EGL hack
+        if self.returntype == "EGLBoolean":
+            self.returntype = "EGLboolean"
 
         self.params = []
 
@@ -96,7 +105,7 @@ class Command:
             return min(self.reqFeatures) <= feature
 
         
-def parseCommands(xml, features, extensions, api):
+def parseCommands(xml, features, extensions, api, prefix):
 
     commands = []
 
@@ -147,7 +156,7 @@ def patchCommands(commands, patches):
                 param.type = patchedParam.type
 
 
-def verifyCommands(commands, bitfGroups):
+def verifyCommands(api, commands, bitfGroups):
 
     bitfGroupsByName = dict([(group.name, group) for group in bitfGroups])
 
@@ -159,8 +168,8 @@ def verifyCommands(commands, bitfGroups):
     for command in commands:
         for param in (param for param in command.params):
 
-            # check for bitfield groups (other enum groups not yet used in gl.xml)
-            if param.type != "GLbitfield":
+            # check for bitfield groups (other enum groups not yet used in api xml)
+            if param.type != api.upper() + "bitfield":
                 continue
 
             if   param.groupString is None:
@@ -169,7 +178,7 @@ def verifyCommands(commands, bitfGroups):
                 unresolved[param] = command
 
     if len(missing) > 0:
-        print(" WARNING: " + str(len(missing)) + " missing group specification (defaulting to GLbitfield):")
+        print(" WARNING: " + str(len(missing)) + " missing group specification (defaulting to " + api.upper() + "bitfield):")
         for param, command in missing.items():
             print("  %s (in %s)" % (param.name, command.name))
 

@@ -1,17 +1,18 @@
 
 #include "Meta_Maps.h"
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/extension.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
 
 const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension
 {
-#ifdef STRINGS_BY_GL
+#ifdef STRINGS_BY_SYMBOLS
     { GLextension::GL_3DFX_tbuffer, { "glTbufferMask3DFX" } },
     { GLextension::GL_AMD_debug_output, { "glDebugMessageEnableAMD", "glDebugMessageInsertAMD", "glDebugMessageCallbackAMD", "glGetDebugMessageLogAMD" } },
     { GLextension::GL_AMD_draw_buffers_blend, { "glBlendFuncIndexedAMD", "glBlendFuncSeparateIndexedAMD", "glBlendEquationIndexedAMD", "glBlendEquationSeparateIndexedAMD" } },

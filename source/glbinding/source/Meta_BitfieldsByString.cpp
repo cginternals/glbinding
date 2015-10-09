@@ -1,17 +1,18 @@
 
 #include "Meta_Maps.h"
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/bitfield.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
 
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     { "GL_CURRENT_BIT", static_cast<GLbitfield>(AttribMask::GL_CURRENT_BIT) },
     { "GL_POINT_BIT", static_cast<GLbitfield>(AttribMask::GL_POINT_BIT) },
     { "GL_LINE_BIT", static_cast<GLbitfield>(AttribMask::GL_LINE_BIT) },
@@ -182,4 +183,4 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
 #endif
 };
 
-} // namespace glbinding
+} // namespace &abinding

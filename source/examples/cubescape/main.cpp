@@ -6,7 +6,7 @@
 
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
-#include <glbinding/callbacks.h>
+#include <khrapi/callbacks.h>
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl.h>
@@ -90,7 +90,7 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    setAfterCallback([](const FunctionCall &) 
+    khrapi::setAfterCallback([](const khrapi::FunctionCall &)
     {
         gl::GLenum error = glGetError();
         if (error != GL_NO_ERROR)

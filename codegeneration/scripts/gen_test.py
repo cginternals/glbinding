@@ -2,7 +2,7 @@ from binding import *
 from classes.Feature import *
 
 
-def genTest(api, features, outputdir, outputfile):
+def genTest(api, prefix, libraryNamespace, features, outputdir, outputfile):
 
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
@@ -13,16 +13,18 @@ def genTest(api, features, outputdir, outputfile):
     dirWildcard = "?"
     fileWildcard = ""
 
-    featured_include = "#include <glbinding/" + api + dirWildcard +"/" + api + fileWildcard + ".h>"
+    featured_include = "#include <"+ libraryNamespace +"binding/" + libraryNamespace + dirWildcard +"/" + libraryNamespace + fileWildcard + ".h>"
     featured_includes = list()
 
     featured_includes.append(featured_include.replace("?", versionBID(None)))
     for f in features:
-        if f.api == "gl": # ToDo: probably separate for all apis
+        if f.api == api: # ToDo: probably separate for all apis
             featured_includes.append(featured_include.replace("?", versionBID(f)))
-            if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                featured_includes.append(featured_include.replace("?", versionBID(f, True)))
-            featured_includes.append(featured_include.replace("?", versionBID(f, False, True)))
+            
+            if api == "gl":
+                if f.major > 3 or (f.major == 3 and f.minor >= 2):
+                    featured_includes.append(featured_include.replace("?", versionBID(f, True)))
+                featured_includes.append(featured_include.replace("?", versionBID(f, False, True)))
     
     if not os.path.exists(od):
         os.makedirs(od)

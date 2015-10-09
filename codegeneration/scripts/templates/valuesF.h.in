@@ -1,7 +1,7 @@
 #pragma once
 
-#include <glbinding/no%a.h>
-#include <glbinding/%a/values.h>
+#include <%abinding/no%a.h>
+#include <%abinding/%a/values.h>
 
 
 namespace %a%f

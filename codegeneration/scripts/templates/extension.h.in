@@ -1,16 +1,15 @@
 #pragma once
 
-#include <glbinding/no%a.h>
+#include <%abinding/no%a.h>
 
 
 namespace %a
 {
 
-enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
+enum class %Aextension : int // %Aextension is not a type introduced by any Khronos API so far
 {
     UNKNOWN = -1,
     %s
 };
 
 } // namespace %a
-

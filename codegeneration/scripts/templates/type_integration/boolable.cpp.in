@@ -1,0 +1,10 @@
+
+namespace %a
+{
+
+bool operator!(const %t & a)
+{
+    return !static_cast<bool>(static_cast<std::underlying_type<%t>::type>(a));
+}
+
+} // namespace %a

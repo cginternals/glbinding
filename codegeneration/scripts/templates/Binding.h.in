@@ -1,55 +1,38 @@
 #pragma once
 
 #include <array>
-#include <vector>
-#include <functional>
+#include <mutex>
+#include <unordered_map>
 
-#include <glbinding/glbinding_api.h>
+#include <khrapi/Binding.h>
 
-#include <glbinding/gl/types.h>
+#include <%abinding/%abinding_api.h>
 
-#include <glbinding/ContextHandle.h>
-#include <glbinding/Function.h>
+#include <%abinding/%a/types.h>
+
+#include <%abinding/ContextHandle.h>
+#include <%abinding/ProcAddress.h>
 
 
-namespace glbinding
+namespace %abinding
 {
 
-class GLBINDING_API Binding
+class %ABINDING_API Binding : public khrapi::Binding<Binding, ContextHandle, getProcAddress, getCurrentContext>
 {
 public:
-    using array_t = std::array<AbstractFunction *, %s>;
-    using ContextSwitchCallback = std::function<void(ContextHandle)>;
-
-    Binding() = delete;
-
-    static void initialize(bool resolveFunctions = true);
-    static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
+    using array_t = std::array<khrapi::AbstractFunction *, %s>;
     
-    static void registerAdditionalFunction(AbstractFunction * function);
-
-    static void resolveFunctions();
-
-    static void useCurrentContext();
-    static void useContext(ContextHandle context);
-
-    static void releaseCurrentContext();
-    static void releaseContext(ContextHandle context);
+    static const array_t s_functions;
     
-    static void addContextSwitchCallback(ContextSwitchCallback callback);
-
-    static size_t size();
-
     static const array_t & functions();
-    static const std::vector<AbstractFunction *> & additionalFunctions();
+    
+    static ContextHandle & context();
+    static int & pos();
+    static std::recursive_mutex & mutex();
+    static std::unordered_map<ContextHandle, int> & bindings();
 
-public:
 %s
 
-protected:
-	static const array_t s_functions;
-	static std::vector<AbstractFunction *> s_additionalFunctions;
-	static std::vector<ContextSwitchCallback> s_callbacks;
 };
 
-} // namespace glbinding
+} // namespace %abinding

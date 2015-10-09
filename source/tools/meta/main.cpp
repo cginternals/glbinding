@@ -40,7 +40,7 @@ int main(int, char * [])
         std::cout << std::dec;
     }
     else
-        std::cout << std::endl << "warning: Enums cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
+        std::cout << std::endl << "warning: Enums cannot be enlisted since the glbinding used was compiled without SYMBOLS_BY_STRINGS support." << std::endl;
 
     // enlist all extensions
 
@@ -57,7 +57,7 @@ int main(int, char * [])
         }
     }
     else
-        std::cout << std::endl << "warning: EXTENSIONS cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
+        std::cout << std::endl << "warning: EXTENSIONS cannot be enlisted since the glbinding used was compiled without SYMBOLS_BY_STRINGS support." << std::endl;
 
     // print some gl infos (query)
 

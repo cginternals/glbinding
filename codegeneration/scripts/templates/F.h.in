@@ -1,0 +1,12 @@
+#pragma once
+
+#include <%abinding/no%a.h>
+
+#include <%abinding/%a%d/types%f.h>%s
+#include <%abinding/%a%d/boolean%f.h>%s
+#include <%abinding/%a%d/values%f.h>%s
+#include <%abinding/%a%d/bitfield%f.h>%s
+#include <%abinding/%a%d/enum%f.h>%s
+#include <%abinding/%a%d/functions%f.h>%s
+#include <%abinding/%a/typeintegrations.h>
+#include <%abinding/%a/extension.h>

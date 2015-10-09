@@ -1,6 +1,9 @@
-#include <glbinding/gl/functions.h>
+#include <%abinding/%a/functions.h>
 
-#include <glbinding/Binding.h>
+#include <%abinding/Binding.h>
+#include <%abinding/%a/typeintegrations.h>
+
+#include <%abinding/Value.h>
 
 
 namespace %a

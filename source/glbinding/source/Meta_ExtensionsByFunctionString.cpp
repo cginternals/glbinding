@@ -1,17 +1,18 @@
 
 #include "Meta_Maps.h"
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/extension.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     { "glAccumxOES", { GLextension::GL_OES_fixed_point } },
     { "glActiveProgramEXT", { GLextension::GL_EXT_separate_shader_objects } },
     { "glActiveShaderProgram", { GLextension::GL_ARB_separate_shader_objects } },

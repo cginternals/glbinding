@@ -12,12 +12,14 @@ find_package(OpenGL REQUIRED)
 
 include_directories(
     BEFORE
+    ${CMAKE_SOURCE_DIR}/source/khrapi/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 # Libraries
 
 set(libs
+    khrapi
     ${OPENGL_LIBRARIES}
 )
 
@@ -30,11 +32,11 @@ else()
     add_definitions("-DGLBINDING_EXPORTS")
 endif()
 
-if (OPTION_STRINGS_BY_GL)
-    add_definitions("-DSTRINGS_BY_GL")
+if (OPTION_STRINGS_BY_SYMBOLS)
+    add_definitions("-DSTRINGS_BY_SYMBOLS")
 endif()
-if (OPTION_GL_BY_STRINGS)
-    add_definitions("-DGL_BY_STRINGS")
+if (OPTION_SYMBOLS_BY_STRINGS)
+    add_definitions("-DSYMBOLS_BY_STRINGS")
 endif()
 
 
@@ -45,36 +47,16 @@ set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(api_includes
     ${include_path}/glbinding_api.h
-    ${include_path}/callbacks.h
 
     ${include_path}/nogl.h
 
-    ${include_path}/gl/bitfield.h
-    ${include_path}/gl/boolean.h
-    ${include_path}/gl/enum.h
-    ${include_path}/gl/extension.h
-    ${include_path}/gl/functions.h
-    ${include_path}/gl/types.h
-    ${include_path}/gl/values.h
-
-    ${include_path}/AbstractFunction.h
-    ${include_path}/AbstractValue.h
-    ${include_path}/Function.h
-    ${include_path}/Function.hpp
     ${include_path}/Binding.h
-    #${include_path}/PointerIterator.h
-    #${include_path}/PointerIterator.hpp
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
     ${include_path}/ContextHandle.h
     ${include_path}/ContextInfo.h
     ${include_path}/Value.h
-    ${include_path}/Value.hpp
     ${include_path}/Version.h
-    ${include_path}/SharedBitfield.h
-    ${include_path}/SharedBitfield.hpp
-
-    ${include_path}/logging.h
 )
 
 # add featured headers
@@ -82,13 +64,9 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND api_includes ${featured_includes})
 
 set(sources
-    ${source_path}/callbacks.cpp
-    ${source_path}/callbacks_private.h
+    ${source_path}/revision.h
     
-    ${source_path}/AbstractFunction.cpp
-    ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
-    ${source_path}/Binding_objects.cpp
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp
@@ -109,15 +87,10 @@ set(sources
     ${source_path}/Meta_StringsByBoolean.cpp
     ${source_path}/Meta_StringsByEnum.cpp
     ${source_path}/Meta_StringsByExtension.cpp
-
-    ${source_path}/RingBuffer.h
-    ${source_path}/RingBuffer.hpp
-    ${source_path}/logging.cpp
+    
+    ${source_path}/functions.cpp
+    ${source_path}/typeintegrations.cpp
 )
-
-# add featured sources
-file(GLOB featured_sources ${source_path}/gl/*.cpp)
-list(APPEND sources ${featured_sources})
 
 # Group source files
 set(header_group "Header Files (API)")

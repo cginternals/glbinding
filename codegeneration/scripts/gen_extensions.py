@@ -2,11 +2,11 @@ from binding import *
 from classes.Extension import *
 
 
-def genExtensions(api, extensions, outputdir, outputfile):
+def genExtensions(api, prefix, libraryNamespace, extensions, outputdir, outputfile):
 
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
-    t = template(of).replace("%a", api)
+    t = template(of).replace("%a", libraryNamespace).replace("%A", prefix.upper())
 
     status(od + of)
     

@@ -14,6 +14,7 @@
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/types.h>
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/functions.h>
 #include <glbinding/gl/boolean.h>
@@ -278,7 +279,7 @@ int main(int argc, const char * argv[])
 {
     if (!Meta::stringsByGL())
     {
-        std::cout << "Strings by GL not supported (enable through OPTION_STRINGS_BY_GL)" << std::endl;
+        std::cout << "Strings by GL not supported (enable through OPTION_STRINGS_BY_SYMBOLS)" << std::endl;
 
         return 1;
     }

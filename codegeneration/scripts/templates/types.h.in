@@ -1,7 +1,7 @@
 #pragma once
 
-#include <glbinding/no%a.h>
-#include <glbinding/glbinding_api.h>
+#include <%abinding/no%a.h>
+#include <%abinding/%abinding_api.h>
 
 #include <cstddef>
 #include <cstdint>
@@ -12,22 +12,20 @@
 #include <string>
 
 #ifdef _MSC_VER
-#define GL_APIENTRY __stdcall
+#define %A_APIENTRY __stdcall
 #else
-#define GL_APIENTRY
+#define %A_APIENTRY
 #endif
 
+%s
 
 namespace %a
 {
 
-enum class GLextension : int;
+enum class %Aextension : int;
 %s
 %s
 
 } // namespace %a
 
-
-// Type Integrations
-
-%s
+#include <%abinding/%a/typeintegrations.h>

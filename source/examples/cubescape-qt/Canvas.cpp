@@ -169,8 +169,7 @@ void Canvas::setSwapInterval(SwapInterval swapInterval)
 
 #ifdef WIN32
 
-    // ToDo: C++11 - type aliases
-    typedef bool(WINAPI * SWAPINTERVALEXTPROC) (int);
+    using SWAPINTERVALEXTPROC = bool(WINAPI*)(int);
     static SWAPINTERVALEXTPROC wglSwapIntervalEXT = nullptr;
 
     if (!wglSwapIntervalEXT)
@@ -189,8 +188,7 @@ void Canvas::setSwapInterval(SwapInterval swapInterval)
     result = (error == kCGLNoError);
 
 #else
-    // ToDo: C++11 - type aliases
-    typedef int(APIENTRY * SWAPINTERVALEXTPROC) (int);
+    using SWAPINTERVALEXTPROC = int(APIENTRY*) (int);
     static SWAPINTERVALEXTPROC glXSwapIntervalSGI = nullptr;
 
     if (!glXSwapIntervalSGI)

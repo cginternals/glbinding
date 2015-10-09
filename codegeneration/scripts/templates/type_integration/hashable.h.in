@@ -3,12 +3,15 @@ namespace std
 {
 
 template<>
-struct hash<gl::%t>
+struct hash<%a::%t>
 {
-    hash<std::underlying_type<gl::%t>::type>::result_type operator()(const gl::%t & t) const
+    using type = %a::%t;
+    using underlying_type = std::underlying_type<type>::type;
+    
+    hash<underlying_type>::result_type operator()(const type & t) const
     {
-        return hash<std::underlying_type<gl::%t>::type>()(static_cast<std::underlying_type<gl::%t>::type>(t));
+        return hash<underlying_type>()(static_cast<underlying_type>(t));
     }
 };
 
-}
+} // namespace std

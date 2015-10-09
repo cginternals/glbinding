@@ -1,8 +1,10 @@
 from binding import *
 
 
-def genRevision(revision, outputdir, outputfile):	
-	status(outputdir + outputfile)
+def genRevision(api, prefix, libraryNamespace, revision, outputdir, outputfile):	
+    status(outputdir + outputfile)
 
-	with open(outputdir + outputfile, 'w') as file:		
-		file.write(template(outputfile) % (str(revision)))
+    t = template(outputfile).replace("%a", libraryNamespace).replace("%A", libraryNamespace.upper())
+
+    with open(outputdir + outputfile, 'w') as file:		
+        file.write(t % (str(revision)))

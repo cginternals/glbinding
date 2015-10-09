@@ -1,8 +1,8 @@
 #pragma once
 
-#include <glbinding/no%a.h>
+#include <%abinding/no%a.h>
 
-#include <glbinding/SharedBitfield.h>
+#include <khrapi/SharedBitfield.h>
 
 namespace %a
 {

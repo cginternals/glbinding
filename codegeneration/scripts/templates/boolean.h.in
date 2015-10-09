@@ -1,12 +1,12 @@
 #pragma once
 
-#include <glbinding/no%a.h>
+#include <%abinding/no%a.h>
 
 
 namespace %a
 {
 
-enum class GLboolean : unsigned char
+enum class %Aboolean : unsigned int
 {
     %s
 };

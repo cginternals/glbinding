@@ -6,8 +6,8 @@
 
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
-#include <glbinding/callbacks.h>
-#include <glbinding/logging.h>
+#include <khrapi/callbacks.h>
+#include <khrapi/logging.h>
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl.h>
@@ -97,8 +97,10 @@ int main(int, char *[])
 
     Binding::initialize(false); // only resolve functions that are actually used (lazy)
 
+    Binding::addCallbackMask(khrapi::CallbackMask::Logging);
+
     // Logging start
-    logging::start();
+    khrapi::logging::start();
 
     // print some gl infos (query)
     std::cout << std::endl
@@ -126,7 +128,7 @@ int main(int, char *[])
     cubescape = nullptr;
 
     // Logging end
-    logging::stop();
+    khrapi::logging::stop();
 
     glfwTerminate();
     return 0;

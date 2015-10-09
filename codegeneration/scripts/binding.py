@@ -46,7 +46,6 @@ def enumBID(enum):
 
 # extension_binding_name_exceptions = [ ]
 
-# ToDo: discuss - just use name for glbinding?
 def extensionBID(extension):
 
     return extension.name    

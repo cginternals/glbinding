@@ -1,16 +1,15 @@
 
 #include <glbinding/Meta.h>
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/bitfield.h>
 #include <glbinding/gl/boolean.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/extension.h>
 
-// ToDo: multiple APIs
-
 #include <glbinding/Version.h>
 
-#include "glrevision.h"
+#include "revision.h"
 #include "Meta_Maps.h"
 
 
@@ -30,7 +29,7 @@ namespace glbinding
 
 bool Meta::stringsByGL()
 {
-#ifdef STRINGS_BY_GL
+#ifdef STRINGS_BY_SYMBOLS
     return true;
 #else
     return false;
@@ -39,7 +38,7 @@ bool Meta::stringsByGL()
 
 bool Meta::glByStrings()
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     return true;
 #else
     return false;

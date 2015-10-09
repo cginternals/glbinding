@@ -26,6 +26,7 @@ include_directories(
 
 include_directories(
     BEFORE
+    ${CMAKE_SOURCE_DIR}/source/khrapi/include
     ${CMAKE_SOURCE_DIR}/source/glbinding/include
     ${CMAKE_SOURCE_DIR}/source/glbinding/source
 )
@@ -39,6 +40,7 @@ set(libs
     ${GLFW_LIBRARY}
     ${GMOCK_LIBRARIES}
     ${GTEST_LIBRARIES}
+    khrapi
     glbinding
 )
 
@@ -52,9 +54,9 @@ set(sources
     AllVersions_test.cpp
     # MultiContext_test.cpp
     # MultiThreading_test.cpp
-    RingBuffer_test.cpp
-    ${glbinding_source_path}/RingBuffer.h
-    ${glbinding_source_path}/RingBuffer.hpp
+    # RingBuffer_test.cpp
+    # ${glbinding_source_path}/RingBuffer.h
+    # ${glbinding_source_path}/RingBuffer.hpp
     SharedBitfield_test.cpp
     # regession test
     Regression_test_82.cpp

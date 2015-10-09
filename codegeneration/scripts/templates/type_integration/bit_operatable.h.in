@@ -1,11 +1,11 @@
-namespace gl
+namespace %a
 {
 
-GLBINDING_API gl::%t operator|(const gl::%t & a, const gl::%t & b);
-GLBINDING_API gl::%t & operator|=(gl::%t & a, const gl::%t & b);
-GLBINDING_API gl::%t operator&(const gl::%t & a, const gl::%t & b);
-GLBINDING_API gl::%t & operator&=(gl::%t & a, const gl::%t & b);
-GLBINDING_API gl::%t operator^(const gl::%t & a, const gl::%t & b);
-GLBINDING_API gl::%t & operator^=(gl::%t & a, const gl::%t & b);
+%ABINDING_API %t operator|(const %t & a, const %t & b);
+%ABINDING_API %t & operator|=(%t & a, const %t & b);
+%ABINDING_API %t operator&(const %t & a, const %t & b);
+%ABINDING_API %t & operator&=(%t & a, const %t & b);
+%ABINDING_API %t operator^(const %t & a, const %t & b);
+%ABINDING_API %t & operator^=(%t & a, const %t & b);
 
-} // namespace gl
+} // namespace %a

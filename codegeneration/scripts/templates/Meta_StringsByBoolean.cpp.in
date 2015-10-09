@@ -1,19 +1,20 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/boolean.h>
+#include <%abinding/%a/typeintegrations.h>
+#include <%abinding/%a/boolean.h>
 
 
-using namespace gl;
+using namespace %a;
 
-namespace glbinding
+namespace %abinding
 {
 
-const std::unordered_map<GLboolean, std::string> Meta_StringsByBoolean
+const std::unordered_map<%Aboolean, std::string> Meta_StringsByBoolean
 {
-#ifdef STRINGS_BY_GL
+#ifdef STRINGS_BY_SYMBOLS
     %s
 #endif
 };
 
-} // namespace glbinding
+} // namespace %abinding

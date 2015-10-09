@@ -1,8 +1,8 @@
 #pragma once
 
-#include <glbinding/no%a.h>
+#include <%abinding/no%a.h>
 
-#include <glbinding/%a/enum.h>
+#include <%abinding/%a/enum.h>
 
 
 namespace %a%f

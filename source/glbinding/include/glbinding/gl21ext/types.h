@@ -27,7 +27,6 @@ using gl::GLclampd;
 using gl::GLeglImageOES;
 using gl::GLchar;
 using gl::GLcharARB;
-using gl::GLhandleARB;
 using gl::GLhalfARB;
 using gl::GLhalf;
 using gl::GLfixed;

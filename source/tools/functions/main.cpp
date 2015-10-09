@@ -8,7 +8,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/Meta.h>
-#include <glbinding/AbstractFunction.h>
+#include <khrapi/AbstractFunction.h>
 #include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 #include <glbinding/Binding.h>
@@ -25,7 +25,7 @@ void error(int errnum, const char * errmsg)
     std::cerr << errnum << ": " << errmsg << std::endl;
 }
 
-inline void coutFunc(const AbstractFunction * func)
+inline void coutFunc(const khrapi::AbstractFunction * func)
 {
     std::cout << "\t(0x" << reinterpret_cast<void *>(func->address()) << ") " << func->name() << std::endl;
 }
@@ -84,22 +84,22 @@ int main()
 
     // go through all extensions by version and show functions
 
-    std::map<GLextension, std::set<const AbstractFunction *>> funcsByExt;
-    std::set<const AbstractFunction *> nonExtFuncs;
+    std::map<GLextension, std::set<const khrapi::AbstractFunction *>> funcsByExt;
+    std::set<const khrapi::AbstractFunction *> nonExtFuncs;
 
-    for (AbstractFunction * func : Binding::functions())
+    for (khrapi::AbstractFunction * func : Binding::functions())
     {
         if (func->isResolved())
             ++resolved;
 
-        if (func->extensions().empty())
-            nonExtFuncs.insert(func);
-        else
-        {
-            for (GLextension ext : func->extensions())
-                funcsByExt[ext].insert(func);
-            ++assigned;
-        }
+        //if (func->extensions().empty())
+        //    nonExtFuncs.insert(func);
+        //else
+        //{
+        //    for (GLextension ext : func->extensions())
+        //        funcsByExt[ext].insert(func);
+        //    ++assigned;
+        //}
     }
 
     // print all extensions with support info and functions 
@@ -129,7 +129,7 @@ int main()
     // show non ext functions
 
     std::cout << std::endl << std::endl << "[NON-EXTENSION OR NOT-COVERED-EXTENSION FUNCTIONS]" << std::endl << std::endl;
-    for (const AbstractFunction * func : nonExtFuncs)
+    for (const khrapi::AbstractFunction * func : nonExtFuncs)
         coutFunc(func);
 
     // print summary
@@ -142,7 +142,7 @@ int main()
     std::cout << "                 " << assigned << " assigned to extensions";
 
     if (!Meta::glByStrings())
-        std::cout << " (none assigned, since the glbinding used was compiled without GL_BY_STRINGS support)." << std::endl;
+        std::cout << " (none assigned, since the glbinding used was compiled without SYMBOLS_BY_STRINGS support)." << std::endl;
     else
         std::cout << "." << std::endl;
 

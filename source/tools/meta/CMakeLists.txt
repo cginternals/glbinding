@@ -16,6 +16,7 @@ include_directories(
 
 include_directories(
     BEFORE
+    ${CMAKE_SOURCE_DIR}/source/khrapi/include
     ${CMAKE_SOURCE_DIR}/source/glbinding/include
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -25,6 +26,7 @@ include_directories(
 
 set(libs
     ${OPENGL_LIBRARIES}
+    khrapi
     glbinding
 )
 
@@ -35,11 +37,11 @@ if (OPTION_BUILD_STATIC)
     add_definitions("-DGLBINDING_STATIC")
 endif()
 
-if (OPTION_STRINGS_BY_GL)
-    add_definitions("-DSTRINGS_BY_GL")
+if (OPTION_STRINGS_BY_SYMBOLS)
+    add_definitions("-DSTRINGS_BY_SYMBOLS")
 endif()
-if (OPTION_GL_BY_STRINGS)
-    add_definitions("-DGL_BY_STRINGS")
+if (OPTION_SYMBOLS_BY_STRINGS)
+    add_definitions("-DSYMBOLS_BY_STRINGS")
 endif()
 
 

@@ -1,17 +1,18 @@
 
 #include "Meta_Maps.h"
 
+#include <glbinding/gl/typeintegrations.h>
 #include <glbinding/gl/enum.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
 
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString
 {
-#ifdef GL_BY_STRINGS
+#ifdef SYMBOLS_BY_STRINGS
     { "GL_NEXT_BUFFER_NV", GLenum::GL_NEXT_BUFFER_NV },
     { "GL_SKIP_COMPONENTS4_NV", GLenum::GL_SKIP_COMPONENTS4_NV },
     { "GL_SKIP_COMPONENTS3_NV", GLenum::GL_SKIP_COMPONENTS3_NV },

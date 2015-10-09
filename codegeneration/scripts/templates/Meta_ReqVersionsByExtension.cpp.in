@@ -1,18 +1,19 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/extension.h>
-#include <glbinding/Version.h>
+#include <%abinding/%a/typeintegrations.h>
+#include <%abinding/%a/extension.h>
+#include <%abinding/Version.h>
 
 
-using namespace gl;
+using namespace %a;
 
-namespace glbinding
+namespace %abinding
 {
 
-const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension
+const std::unordered_map<%Aextension, Version> Meta_ReqVersionsByExtension
 {
     %s
 };
 
-} // namespace glbinding
+} // namespace %abinding
