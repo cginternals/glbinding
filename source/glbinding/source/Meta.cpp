@@ -16,13 +16,12 @@
 
 using namespace gl;
 
-namespace {
-
+namespace 
+{
     static const auto none = std::string{};
     static const auto noneVersion = glbinding::Version{};
     static const auto noneStringSet = std::set<std::string>{};
     static const auto noneExtensions = std::set<gl::GLextension>{};
-
 }
 
 namespace glbinding
@@ -51,16 +50,16 @@ int Meta::glRevision()
     return GL_REVISION;
 }
 
-const int Meta::alphabeticalGroupIndex(const std::string & identifier)
+const int Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength)
 {
-    auto index = identifier[3]; // ignore the 'GL_' prefix
+    auto index = identifier[prefixLength]; // ignore prefix ('GL_' or 'gl')
 
     // bold uppercase conversion -> non letters are discarded in next step
     if (index > 96)
         index -= 32;
 
     // every non upper case letter is assigned to index 0
-    if (index < 65 && index > 90)
+    if (index < 65 || index > 90)
         index = 64;
 
     index -= 64;
@@ -68,27 +67,11 @@ const int Meta::alphabeticalGroupIndex(const std::string & identifier)
     return index;
 }
 
-const std::string & Meta::getString(const GLbitfield glbitfield)
-{
-#ifdef STRINGS_BY_GL
-
-    auto i = Meta_StringsByBitfield.find(glbitfield);
-
-    if (i != Meta_StringsByBitfield.end())
-    {
-        return i->second;
-    }
-
-#endif // STRINGS_BY_GL
-
-    return none;
-}
-
 GLbitfield Meta::getBitfield(const std::string & glbitfield)
 {
 #ifdef GL_BY_STRINGS
 
-    const auto index = alphabeticalGroupIndex(glbitfield);
+    const auto index = alphabeticalGroupIndex(glbitfield, 3);
     const auto & map = Meta_BitfieldsByStringMaps[index];
     const auto i = map.find(glbitfield);
 
@@ -106,13 +89,18 @@ std::vector<GLbitfield> Meta::bitfields()
 {
     auto bitfields = std::vector<GLbitfield>{};
 
+// this does not just work with STRINGS_BY_GL since bitfields are grouped
+#ifdef GL_BY_STRINGS 
+
     for(auto map : Meta_BitfieldsByStringMaps)
         for (auto p : map)
         {
             bitfields.push_back(p.second);
         }
 
-    return bitfields;
+#endif // GL_BY_STRINGS
+
+    return bitfields;    
 }
 
 const std::string & Meta::getString(const GLboolean glboolean)
@@ -151,7 +139,7 @@ GLenum Meta::getEnum(const std::string & glenum)
 {
 #ifdef GL_BY_STRINGS
 
-    const auto index = alphabeticalGroupIndex(glenum);
+    const auto index = alphabeticalGroupIndex(glenum, 3);
     const auto & map = Meta_EnumsByStringMaps[index];
     const auto i = map.find(glenum);
 
@@ -169,36 +157,48 @@ std::vector<GLenum> Meta::enums()
 {
     auto enums = std::vector<GLenum>{};
 
+#ifdef STRINGS_BY_GL
+
     for (auto p : Meta_StringsByEnum)
     {
         enums.push_back(p.first);
     }
 
+#endif // STRINGS_BY_GL
+
     return enums;
 }
 
-const std::string & Meta::getString(const GLextension extension)
+const std::string & Meta::getString(const GLextension glextension)
 {
-    auto i = Meta_StringsByExtension.find(extension);
+#ifdef STRINGS_BY_GL
 
-    if (i == Meta_StringsByExtension.end())
+    auto i = Meta_StringsByExtension.find(glextension);
+
+    if (i != Meta_StringsByExtension.end())
     {
-        return none;
+        return i->second;
     }
 
-    return i->second;
+#endif // STRINGS_BY_GL
+
+    return none;
 }   
 
-GLextension Meta::getExtension(const std::string & extension)
+GLextension Meta::getExtension(const std::string & glextension)
 {
-    auto i = Meta_ExtensionsByString.find(extension);
+    // NOTE: this is intended to work irrespective of a GL_BY_STRINGS definition.
 
-    if (i == Meta_ExtensionsByString.end())
+    const auto index = alphabeticalGroupIndex(glextension, 3);
+    const auto & map = Meta_ExtensionsByStringMaps[index];
+    const auto i = map.find(glextension);
+
+    if (i != map.end())
     {
-        return GLextension::UNKNOWN;
+        return i->second;
     }
 
-    return i->second;
+    return GLextension::UNKNOWN;
 }
 
 std::set<GLextension> Meta::extensions()
@@ -227,26 +227,36 @@ const Version & Meta::getRequiringVersion(const GLextension extension)
 
 const std::set<std::string> & Meta::getRequiredFunctions(const GLextension extension)
 {
+#ifdef STRINGS_BY_GL
+
     auto i = Meta_FunctionStringsByExtension.find(extension);
 
-    if (i == Meta_FunctionStringsByExtension.end())
+    if (i != Meta_FunctionStringsByExtension.end())
     {
-        return noneStringSet;
+        return i->second;
     }
 
-    return i->second;
+#endif // STRINGS_BY_GL
+
+    return noneStringSet;
 }
 
-const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & function)
+const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & glfunction)
 {
-    auto i = Meta_ExtensionsByFunctionString.find(function);
+#ifdef GL_BY_STRINGS
 
-    if (i == Meta_ExtensionsByFunctionString.end())
+    const auto index = alphabeticalGroupIndex(glfunction, 2);
+    const auto & map = Meta_ExtensionsByFunctionStringMaps[index];
+    const auto i = map.find(glfunction);
+
+    if (i != map.end())
     {
-        return noneExtensions;
+        return i->second;
     }
 
-    return i->second;
+#endif // GL_BY_STRINGS
+
+    return noneExtensions;
 }
 
 const std::set<Version> & Meta::versions()

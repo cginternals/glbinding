@@ -2,64 +2,16 @@ from binding import *
 from classes.Extension import *
 
 
-def metaExtensionToString(extension):
-
-    return '{ GLextension::%s, "%s" }' % (extensionBID(extension), extension.name)
-
-
-def metaStringToExtension(extension):
-
-    return '{ "%s", GLextension::%s }' % (extension.name, extensionBID(extension))
-
-
-def genMetaStringsByExtension(extensions, outputdir, outputfile):
-
-    status(outputdir + outputfile)
-
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % (",\n" + tab).join(
-            [ metaExtensionToString(e) for e in extensions ]))
-
-
-def genMetaExtensionsByString(extensions, outputdir, outputfile):    
-
-    status(outputdir + outputfile)
-
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % (",\n" + tab).join(
-            [ metaStringToExtension(e) for e in extensions ]))
-
-
-def metaEnumToString(enum, type):
-
-    # t = (enum.groupString if type == "GLbitfield" else type)
-    return ('{ ' + type + '::%s, "%s" }') % (enumBID(enum), enum.name)
-
-
 def metaStringToBitfieldGroupMap(group):
     return "extern const std::unordered_map<std::string, gl::%s> Meta_%sByString;" % (group.name, group.name)
 
 def metaBitfieldGroupToStringMap(group):
     return "extern const std::unordered_map<gl::%s, std::string> Meta_StringsBy%s;" % (group.name, group.name)
 
-
-
 def genMetaMaps(enums, outputdir, outputfile, bitfGroups):
     status(outputdir + outputfile)
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % ("\n".join([ metaBitfieldGroupToStringMap(g) for g in bitfGroups ])))
-
-def genMetaStringsByEnum(enums, outputdir, outputfile, type):
-    status(outputdir + outputfile)
-
-    pureEnums = [ e for e in enums if e.type == type ]
-    d = sorted([ es[0] for v, es in groupEnumsByValue(pureEnums).items() ])
-    
-    with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % ((",\n" + tab).join(
-            [ metaEnumToString(e, type) for e in d ])))    
-
-
 
 
 def groupEnumsByValue(enums):
@@ -97,21 +49,13 @@ def enumSuffixPriority(name):
     return Extension.suffixes.index(ext)
 
 
-
-
-
-
-
-
-
-
 def extensionVersionPair(extension):
 
     return "{ GLextension::%s, { %s, %s } }" % (
         extensionBID(extension), extension.incore.major, extension.incore.minor)
 
 
-def genReqVersionsByExtension(extensions, outputdir, outputfile):
+def genMetaReqVersionsByExtension(extensions, outputdir, outputfile):
 
     status(outputdir + outputfile)
 
@@ -121,46 +65,6 @@ def genReqVersionsByExtension(extensions, outputdir, outputfile):
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % (",\n" + tab).join(
             [ extensionVersionPair(e) for e in sortedExts if e.incore ]))
-
-
-def extensionRequiredFunctions(extension):
-
-    return "{ GLextension::%s, { %s } }" % (extensionBID(extension), ", ".join(
-        [ '"%s"' % f.name for f in extension.reqCommands ]))
-
-
-def functionRequiredByExtensions(function, extensions):
-
-    return '{ "%s", { %s } }' % (function.name, ", ".join(
-        [ "GLextension::" + extensionBID(e) for e in extensions ]))
-
-
-def genFunctionStringsByExtension(extensions, outputdir, outputfile):                
-
-    status(outputdir + outputfile)
-
-    with open(outputdir + outputfile, 'w') as file:        
-        file.write(template(outputfile) % ((",\n" + tab).join(
-            [ extensionRequiredFunctions(e) for e in extensions if len(e.reqCommands) > 0 ])))
-
-
-def genExtensionsByFunctionString(extensions, outputdir, outputfile):    
-
-    status(outputdir + outputfile)
-
-    extensionsByCommands = dict()
-    for e in extensions:
-        for c in e.reqCommands:
-            if not c in extensionsByCommands:
-                extensionsByCommands[c] = set()
-            extensionsByCommands[c].add(e)
-
-    with open(outputdir + outputfile, 'w') as file:        
-        file.write(template(outputfile) % ((",\n" + tab).join(
-            [ functionRequiredByExtensions(c, sorted(extensionsByCommands[c])) for c in sorted(extensionsByCommands.keys()) ])))
-
-
-
 
 
 def alphabeticallyGroupedLists():
@@ -176,15 +80,15 @@ def alphabeticallyGroupedLists():
     return lists
 
 
-def alphabeticalGroupKey(identifier):
+def alphabeticalGroupKey(identifier, prefix):
 
     # derives an key from an identifier with "GL_" prefix 
 
-    index = identifier.find('_')
+    index = identifier.find(prefix)
     if index < 0:
         return -1
 
-    index += 1
+    index += len(prefix)
 
     key = ((identifier[index:])[:1]).upper()
     if ord(key) not in range(65, 91):
@@ -196,6 +100,7 @@ def alphabeticalGroupKey(identifier):
 # STRINGS BY BITFIELDS
 
 def metaStringsByBitfieldGroup(group):
+
     return """const std::unordered_map<%s, std::string> Meta_StringsBy%s 
 {
     %s
@@ -216,10 +121,7 @@ def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
 
 def metaBitfieldsByStringGroup(tuples, key):
 
-    if not key:
-        postfix = ''
-    else:
-        postfix = '_' + key
+    postfix = '_' + key
 
     return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s 
 {
@@ -239,7 +141,10 @@ def genMetaBitfieldByString(bitfGroups, outputdir, outputfile):
     lists = alphabeticallyGroupedLists()
     for g in bitfGroups:
         for e in g.enums:
-            lists[alphabeticalGroupKey(e.name)].append((e.name, g.name)) # append tupel as required for metaBitfieldsByStringGroup
+            lists[alphabeticalGroupKey(e.name, 'GL_')].append((e.name, g.name)) # append tupel as required for metaBitfieldsByStringGroup
+
+    for key in lists.keys():
+        lists[key].sort()
 
     lines = [ metaBitfieldsByStringGroup(lists[key], key) for key in sorted(lists.keys()) ]
 
@@ -247,17 +152,37 @@ def genMetaBitfieldByString(bitfGroups, outputdir, outputfile):
         file.write(template(outputfile) % "\n".join(lines))
 
 
+# STRINGS BY ENUM
+
+def metaEnumToString(enum, type):
+
+    # t = (enum.groupString if type == "GLbitfield" else type)
+    return ('{ ' + type + '::%s, "%s" }') % (enumBID(enum), enum.name)
+
+
+def genMetaStringsByEnum(enums, outputdir, outputfile, type):
+
+    status(outputdir + outputfile)
+
+    pureEnums = [ e for e in enums if e.type == type ]
+    d = sorted([ es[0] for v, es in groupEnumsByValue(pureEnums).items() ])
+    
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % ((",\n" + tab).join(
+            [ metaEnumToString(e, type) for e in d ])))    
+
+
 # ENUMS BY STRING
 
 
 def metaEnumsByStringGroup(type, identifier, enums, key):
 
-    if not key:
-        postfix = ''
-    else:
+    postfix = ''
+
+    if key:
         postfix = '_' + key
 
-    return """const std::unordered_map<std::string, %s> Meta_%sByString%s 
+    return """const std::unordered_map<std::string, %s> Meta_%ssByString%s 
 {
 %s%s
 };
@@ -278,16 +203,125 @@ def genMetaEnumsByString(enums, outputdir, outputfile, type, identifier):
 
     if type == "GLboolean":
 
-        lines = [ metaEnumsByStringGroup(type, identifier, [e.name for e in typeFilteredEnums], '') ]
+        lines = [ metaEnumsByStringGroup(type, identifier, [e.name for e in sorted(typeFilteredEnums)], '') ]
 
     else:
 
         lists = alphabeticallyGroupedLists()
         for e in typeFilteredEnums:
-            lists[alphabeticalGroupKey(e.name)].append(e.name) # append enum as required for metaEnumsByStringGroup
+            lists[alphabeticalGroupKey(e.name, 'GL_')].append(e.name) # append enum as required for metaEnumsByStringGroup
+
+        for key in lists.keys():
+            lists[key].sort()
 
         lines = [ metaEnumsByStringGroup(type, identifier, lists[key], key) for key in sorted(lists.keys()) ]
 
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % "\n".join(lines))
+
+
+# EXTENSIONS BY FUNCTION STRING
+
+
+def metaExtensionsByFunctionStringGroup(tuples, key):
+
+    postfix = '_' + key
+
+    return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s 
+{
+%s%s
+};
+    """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", { %s } }' % (t[0],
+        ", ".join([ "GLextension::" + e for e in t[1] ])) for t in tuples ]))
+
+
+
+def genMetaExtensionsByFunctionString(extensions, outputdir, outputfile):    
+
+    status(outputdir + outputfile)
+
+    extensionsByCommands = dict()
+    for e in extensions: # basically, the reqCommands association is inverted
+        for c in e.reqCommands:
+            command = c.name
+            if not command in extensionsByCommands:
+                extensionsByCommands[command] = set()
+            extensionsByCommands[command].add(e.name)
+
+    # now create alphabetically grouped lists, each containing commands starting 
+    # with their groups letter and having a set of extensions associated ...
+
+    lists = alphabeticallyGroupedLists()
+    for c in sorted(extensionsByCommands.keys()):
+        lists[alphabeticalGroupKey(c, 'gl')].append((c, extensionsByCommands[c])) # append tuple of command and set of extensions as required for metaExtensionsByFunctionStringGroup
+
+    lines = [ metaExtensionsByFunctionStringGroup(lists[key], key) for key in sorted(lists.keys()) ]
+
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % "\n".join(lines))
+
+
+# EXTENSIONS BY STRING
+
+def metaExtensionsByStringGroup(extensions, key):
+
+    postfix = '_' + key
+
+    return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s 
+{
+%s%s
+};
+    """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", GLextension::%s }' % (e, e) for e in extensions ]))  
+
+
+def genMetaExtensionsByString(extensions, outputdir, outputfile):    
+
+    status(outputdir + outputfile)
+
+    lists = alphabeticallyGroupedLists()
+    for e in extensions:
+        lists[alphabeticalGroupKey(e.name, 'GL_')].append(e.name) # append extension as required for metaExtensionsByStringGroup
+
+    for key in lists.keys():
+        lists[key].sort()
+
+    lines = [ metaExtensionsByStringGroup(lists[key], key) for key in sorted(lists.keys()) ]
+
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % "\n".join(lines))
+
+
+# STRINGS BY EXTENSION
+
+def metaStringByExtension(extension):
+
+    return '{ GLextension::%s, "%s" }' % (extension, extension)
+
+
+def genMetaStringsByExtension(extensions, outputdir, outputfile):
+
+    status(outputdir + outputfile)
+
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % (",\n" + tab).join(
+            [ metaStringByExtension(e.name) for e in sorted(extensions) ]))
+
+
+# FUNCTION STRINGS BY EXTENSION
+
+def metaExtensionRequiredFunctions(extension):
+
+    return "{ GLextension::%s, { %s } }" % (extensionBID(extension), ", ".join(
+        [ '"%s"' % f.name for f in extension.reqCommands ]))
+
+
+def genMetaFunctionStringsByExtension(extensions, outputdir, outputfile):                
+
+    status(outputdir + outputfile)
+
+    lines = [ metaExtensionRequiredFunctions(e) for e in extensions if len(e.reqCommands) > 0 ]
+
+    with open(outputdir + outputfile, 'w') as file:        
+        file.write(template(outputfile) % (",\n" + tab).join(lines))
+
 

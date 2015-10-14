@@ -1,5 +1,10 @@
+#ifdef STRINGS_BY_GL
 
 #include "Meta_Maps.h"
+
+#include <string>
+#include <unordered_map>
+#include <set>
 
 #include <glbinding/gl/extension.h>
 
@@ -11,9 +16,9 @@ namespace glbinding
 
 const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionStringsByExtension
 {
-#ifdef STRINGS_BY_GL
     %s
-#endif
 };
 
 } // namespace glbinding
+
+#endif // STRINGS_BY_GL

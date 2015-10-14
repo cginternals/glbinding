@@ -1,6 +1,8 @@
 
 // NOTE: this is intended to work irrespective of a GL_BY_STRINGS definition.
 
+#include "Meta_Maps.h"
+
 #include <string>
 #include <unordered_map>
 #include <array>

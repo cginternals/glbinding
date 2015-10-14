@@ -204,10 +204,10 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genMetaStringsByExtension      (extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
     genMetaExtensionsByString      (extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
 
-    genReqVersionsByExtension      (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+    genMetaReqVersionsByExtension  (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
 
-    genFunctionStringsByExtension  (extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
-    genExtensionsByFunctionString  (extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
+    genMetaFunctionStringsByExtension(extensions,       sourcedir,  "Meta_FunctionStringsByExtension.cpp")
+    genMetaExtensionsByFunctionString(extensions,       sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
 
 
     print("")

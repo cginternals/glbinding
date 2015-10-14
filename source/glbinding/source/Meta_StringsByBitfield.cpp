@@ -1,5 +1,7 @@
 #ifdef STRINGS_BY_GL
 
+#include "Meta_Maps.h"
+
 #include <string>
 #include <unordered_map>
 

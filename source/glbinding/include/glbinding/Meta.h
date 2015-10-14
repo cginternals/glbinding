@@ -26,7 +26,8 @@ public:
 
     static int glRevision();
 
-    static const std::string & Meta::getString(const gl::GLbitfield glbitfield);
+    // bitfields are grouped, hence no mapping from generic bitfield to string is possible
+    // static const std::string & Meta::getString(const gl::GLbitfield glbitfield);
     static gl::GLbitfield Meta::getBitfield(const std::string & glbitfield);
     static std::vector<gl::GLbitfield> bitfields();
 
@@ -48,7 +49,7 @@ public:
     static const std::set<Version> & versions();
 
 private:
-    static const int alphabeticalGroupIndex(const std::string & identifier);
+    static const int alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
 };
 
 } // namespace gl
