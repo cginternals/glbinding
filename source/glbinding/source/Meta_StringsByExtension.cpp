@@ -1,5 +1,7 @@
+#ifdef GL_BY_STRINGS
 
-#include "Meta_Maps.h"
+#include <string>
+#include <unordered_map>
 
 #include <glbinding/gl/extension.h>
 
@@ -11,7 +13,6 @@ namespace glbinding
 
 const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
 {
-#ifdef STRINGS_BY_GL
     { GLextension::GL_3DFX_multisample, "GL_3DFX_multisample" },
     { GLextension::GL_3DFX_tbuffer, "GL_3DFX_tbuffer" },
     { GLextension::GL_3DFX_texture_compression_FXT1, "GL_3DFX_texture_compression_FXT1" },
@@ -552,7 +553,8 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
     { GLextension::GL_SUN_vertex, "GL_SUN_vertex" },
     { GLextension::GL_WIN_phong_shading, "GL_WIN_phong_shading" },
     { GLextension::GL_WIN_specular_fog, "GL_WIN_specular_fog" }
-#endif
 };
 
 } // namespace glbinding
+
+#endif // GL_BY_STRINGS

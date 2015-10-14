@@ -1,5 +1,8 @@
+#ifdef GL_BY_STRINGS
 
-#include "Meta_Maps.h"
+#include <string>
+#include <unordered_map>
+#include <array>
 
 #include <glbinding/gl/bitfield.h>
 
@@ -9,11 +12,38 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString
+%s
+const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps
 {
-#ifdef GL_BY_STRINGS
-    %s
-#endif
+    Meta_BitfieldsByString_0,
+    Meta_BitfieldsByString_A,
+    Meta_BitfieldsByString_B,
+    Meta_BitfieldsByString_C,
+    Meta_BitfieldsByString_D,
+    Meta_BitfieldsByString_E,
+    Meta_BitfieldsByString_F,
+    Meta_BitfieldsByString_G,
+    Meta_BitfieldsByString_H,
+    Meta_BitfieldsByString_I,
+    Meta_BitfieldsByString_J,
+    Meta_BitfieldsByString_K,
+    Meta_BitfieldsByString_L,
+    Meta_BitfieldsByString_M,
+    Meta_BitfieldsByString_N,
+    Meta_BitfieldsByString_O,
+    Meta_BitfieldsByString_P,
+    Meta_BitfieldsByString_Q,
+    Meta_BitfieldsByString_R,
+    Meta_BitfieldsByString_S,
+    Meta_BitfieldsByString_T,
+    Meta_BitfieldsByString_U,
+    Meta_BitfieldsByString_V,
+    Meta_BitfieldsByString_W,
+    Meta_BitfieldsByString_X,
+    Meta_BitfieldsByString_Y,
+    Meta_BitfieldsByString_Z
 };
 
 } // namespace glbinding
+
+#endif // GL_BY_STRINGS

@@ -15,8 +15,8 @@ namespace glbinding
 
 class Version;
 
-extern const std::unordered_map<std::string, gl::GLbitfield> Meta_BitfieldsByString;
 extern const std::unordered_map<gl::GLbitfield, std::string> Meta_StringsByBitfield;
+extern const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps;
 
 extern const std::unordered_map<std::string, gl::GLboolean> Meta_BooleansByString;
 extern const std::unordered_map<gl::GLboolean, std::string> Meta_StringsByBoolean;

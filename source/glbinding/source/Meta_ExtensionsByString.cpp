@@ -1,5 +1,9 @@
 
-#include "Meta_Maps.h"
+// NOTE: this is intended to work irrespective of a GL_BY_STRINGS definition.
+
+#include <string>
+#include <unordered_map>
+#include <array>
 
 #include <glbinding/gl/extension.h>
 
@@ -9,10 +13,7 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString
-{
-// NOTE: this is intended to work irrespective of a GL_BY_STRINGS definition.
-    { "GL_3DFX_multisample", GLextension::GL_3DFX_multisample },
+{ "GL_3DFX_multisample", GLextension::GL_3DFX_multisample },
     { "GL_3DFX_tbuffer", GLextension::GL_3DFX_tbuffer },
     { "GL_3DFX_texture_compression_FXT1", GLextension::GL_3DFX_texture_compression_FXT1 },
     { "GL_AMD_blend_minmax_factor", GLextension::GL_AMD_blend_minmax_factor },
@@ -552,6 +553,35 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString
     { "GL_SUN_vertex", GLextension::GL_SUN_vertex },
     { "GL_WIN_phong_shading", GLextension::GL_WIN_phong_shading },
     { "GL_WIN_specular_fog", GLextension::GL_WIN_specular_fog }
+const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_ExtensionsByStringMaps
+{
+    Meta_ExtensionsByString_0,
+    Meta_ExtensionsByString_A,
+    Meta_ExtensionsByString_B,
+    Meta_ExtensionsByString_C,
+    Meta_ExtensionsByString_D,
+    Meta_ExtensionsByString_E,
+    Meta_ExtensionsByString_F,
+    Meta_ExtensionsByString_G,
+    Meta_ExtensionsByString_H,
+    Meta_ExtensionsByString_I,
+    Meta_ExtensionsByString_J,
+    Meta_ExtensionsByString_K,
+    Meta_ExtensionsByString_L,
+    Meta_ExtensionsByString_M,
+    Meta_ExtensionsByString_N,
+    Meta_ExtensionsByString_O,
+    Meta_ExtensionsByString_P,
+    Meta_ExtensionsByString_Q,
+    Meta_ExtensionsByString_R,
+    Meta_ExtensionsByString_S,
+    Meta_ExtensionsByString_T,
+    Meta_ExtensionsByString_U,
+    Meta_ExtensionsByString_V,
+    Meta_ExtensionsByString_W,
+    Meta_ExtensionsByString_X,
+    Meta_ExtensionsByString_Y,
+    Meta_ExtensionsByString_Z
 };
 
 } // namespace glbinding

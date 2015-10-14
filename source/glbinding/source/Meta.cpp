@@ -51,40 +51,118 @@ int Meta::glRevision()
     return GL_REVISION;
 }
 
-const std::string & Meta::getString(const GLboolean boolean)
+const int Meta::alphabeticalGroupIndex(const std::string & identifier)
 {
-    auto i = Meta_StringsByBoolean.find(boolean);
+    auto index = identifier[3]; // ignore the 'GL_' prefix
+
+    // bold uppercase conversion -> non letters are discarded in next step
+    if (index > 96)
+        index -= 32;
+
+    // every non upper case letter is assigned to index 0
+    if (index < 65 && index > 90)
+        index = 64;
+
+    index -= 64;
+
+    return index;
+}
+
+const std::string & Meta::getString(const GLbitfield glbitfield)
+{
+#ifdef STRINGS_BY_GL
+
+    auto i = Meta_StringsByBitfield.find(glbitfield);
+
+    if (i != Meta_StringsByBitfield.end())
+    {
+        return i->second;
+    }
+
+#endif // STRINGS_BY_GL
+
+    return none;
+}
+
+GLbitfield Meta::getBitfield(const std::string & glbitfield)
+{
+#ifdef GL_BY_STRINGS
+
+    const auto index = alphabeticalGroupIndex(glbitfield);
+    const auto & map = Meta_BitfieldsByStringMaps[index];
+    const auto i = map.find(glbitfield);
+
+    if (i != map.end())
+    {
+        return i->second;
+    }
+
+#endif // GL_BY_STRINGS
+
+    return static_cast<GLbitfield>(-1);
+}
+
+std::vector<GLbitfield> Meta::bitfields()
+{
+    auto bitfields = std::vector<GLbitfield>{};
+
+    for(auto map : Meta_BitfieldsByStringMaps)
+        for (auto p : map)
+        {
+            bitfields.push_back(p.second);
+        }
+
+    return bitfields;
+}
+
+const std::string & Meta::getString(const GLboolean glboolean)
+{
+#ifdef STRINGS_BY_GL
+
+    auto i = Meta_StringsByBoolean.find(glboolean);
 
     if (i == Meta_StringsByBoolean.end())
     {
-        return none;
+        return i->second;
     }
 
-    return i->second;
+#endif // STRINGS_BY_GL
+
+    return none;
 }
 
 const std::string & Meta::getString(const GLenum glenum)
 {
+#ifdef STRINGS_BY_GL
+
     auto i = Meta_StringsByEnum.find(glenum);
 
-    if (i == Meta_StringsByEnum.end())
+    if (i != Meta_StringsByEnum.end())
     {
-        return none;
+        return i->second;
     }
 
-    return i->second;
+#endif // STRINGS_BY_GL
+
+    return none;
 }
 
 GLenum Meta::getEnum(const std::string & glenum)
 {
-    auto i = Meta_EnumsByString.find(glenum);
+#ifdef GL_BY_STRINGS
 
-    if (i == Meta_EnumsByString.end())
+    const auto index = alphabeticalGroupIndex(glenum);
+    const auto & map = Meta_EnumsByStringMaps[index];
+    const auto i = map.find(glenum);
+
+    if (i != map.end())
     {
-        return static_cast<GLenum>(static_cast<unsigned int>(-1));
+        return i->second;
     }
 
-    return i->second;
+#endif // GL_BY_STRINGS
+
+    return static_cast<GLenum>(static_cast<unsigned int>(-1));    
 }
 
 std::vector<GLenum> Meta::enums()

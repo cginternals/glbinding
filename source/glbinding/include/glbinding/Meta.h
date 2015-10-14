@@ -26,6 +26,10 @@ public:
 
     static int glRevision();
 
+    static const std::string & Meta::getString(const gl::GLbitfield glbitfield);
+    static gl::GLbitfield Meta::getBitfield(const std::string & glbitfield);
+    static std::vector<gl::GLbitfield> bitfields();
+
     static const std::string & getString(gl::GLenum glenum);
     static gl::GLenum getEnum(const std::string & glenum);
     static std::vector<gl::GLenum> enums();
@@ -42,6 +46,9 @@ public:
 
     static const Version & getRequiringVersion(gl::GLextension extension);
     static const std::set<Version> & versions();
+
+private:
+    static const int alphabeticalGroupIndex(const std::string & identifier);
 };
 
 } // namespace gl

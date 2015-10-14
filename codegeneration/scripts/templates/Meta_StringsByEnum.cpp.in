@@ -1,5 +1,7 @@
+#ifdef GL_BY_STRINGS
 
-#include "Meta_Maps.h"
+#include <string>
+#include <unordered_map>
 
 #include <glbinding/gl/enum.h>
 
@@ -11,9 +13,9 @@ namespace glbinding
 
 const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
 {
-#ifdef STRINGS_BY_GL
     %s
-#endif
 };
 
 } // namespace glbinding
+
+#endif // GL_BY_STRINGS
