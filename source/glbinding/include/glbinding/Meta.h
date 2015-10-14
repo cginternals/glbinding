@@ -6,6 +6,7 @@
 #include <utility>
 #include <vector>
 #include <set>
+#include <cstdint>
 
 #include <glbinding/gl/types.h>
 
