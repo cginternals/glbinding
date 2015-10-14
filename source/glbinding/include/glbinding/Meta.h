@@ -28,7 +28,7 @@ public:
 
     // bitfields are grouped, hence no mapping from generic bitfield to string is possible
     // static const std::string & Meta::getString(const gl::GLbitfield glbitfield);
-    static gl::GLbitfield Meta::getBitfield(const std::string & glbitfield);
+    static gl::GLbitfield getBitfield(const std::string & glbitfield);
     static std::vector<gl::GLbitfield> bitfields();
 
     static const std::string & getString(gl::GLenum glenum);
