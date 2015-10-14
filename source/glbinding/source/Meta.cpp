@@ -50,7 +50,7 @@ int Meta::glRevision()
     return GL_REVISION;
 }
 
-const int Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength)
+int Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength)
 {
     auto index = identifier[prefixLength]; // ignore prefix ('GL_' or 'gl')
 

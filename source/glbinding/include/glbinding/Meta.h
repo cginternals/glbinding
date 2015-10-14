@@ -50,7 +50,7 @@ public:
     static const std::set<Version> & versions();
 
 private:
-    static const int alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
+    static int alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
 };
 
 } // namespace gl
