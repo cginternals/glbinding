@@ -372,6 +372,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
     { GLextension::GL_KHR_robustness, "GL_KHR_robustness" },
     { GLextension::GL_KHR_texture_compression_astc_hdr, "GL_KHR_texture_compression_astc_hdr" },
     { GLextension::GL_KHR_texture_compression_astc_ldr, "GL_KHR_texture_compression_astc_ldr" },
+    { GLextension::GL_KHR_texture_compression_astc_sliced_3d, "GL_KHR_texture_compression_astc_sliced_3d" },
     { GLextension::GL_MESAX_texture_stack, "GL_MESAX_texture_stack" },
     { GLextension::GL_MESA_pack_invert, "GL_MESA_pack_invert" },
     { GLextension::GL_MESA_resize_buffers, "GL_MESA_resize_buffers" },

@@ -2468,6 +2468,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x0306" name="GL_DST_COLOR"/>
         <enum value="0x0307" name="GL_ONE_MINUS_DST_COLOR"/>
         <enum value="0x0308" name="GL_SRC_ALPHA_SATURATE"/>
+        <enum value="0x0308" name="GL_SRC_ALPHA_SATURATE_EXT"/>
             <unused start="0x0309" end="0x03FF" comment="Unused for BlendingFactor"/>
         <enum value="0x0400" name="GL_FRONT_LEFT"/>
         <enum value="0x0401" name="GL_FRONT_RIGHT"/>
@@ -4847,6 +4848,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8589" name="GL_SOURCE1_ALPHA_ARB"/>
         <enum value="0x8589" name="GL_SOURCE1_ALPHA_EXT"/>
         <enum value="0x8589" name="GL_SRC1_ALPHA" alias="GL_SOURCE1_ALPHA"/>
+        <enum value="0x8589" name="GL_SRC1_ALPHA_EXT"/>
         <enum value="0x858A" name="GL_SOURCE2_ALPHA"/>
         <enum value="0x858A" name="GL_SOURCE2_ALPHA_ARB"/>
         <enum value="0x858A" name="GL_SOURCE2_ALPHA_EXT"/>
@@ -5962,9 +5964,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x88F7" name="GL_MAX_PROGRAM_LOOP_DEPTH_NV"/>
         <enum value="0x88F8" name="GL_MAX_PROGRAM_LOOP_COUNT_NV"/>
         <enum value="0x88F9" name="GL_SRC1_COLOR"/>
+        <enum value="0x88F9" name="GL_SRC1_COLOR_EXT"/>
         <enum value="0x88FA" name="GL_ONE_MINUS_SRC1_COLOR"/>
+        <enum value="0x88FA" name="GL_ONE_MINUS_SRC1_COLOR_EXT"/>
         <enum value="0x88FB" name="GL_ONE_MINUS_SRC1_ALPHA"/>
+        <enum value="0x88FB" name="GL_ONE_MINUS_SRC1_ALPHA_EXT"/>
         <enum value="0x88FC" name="GL_MAX_DUAL_SOURCE_DRAW_BUFFERS"/>
+        <enum value="0x88FC" name="GL_MAX_DUAL_SOURCE_DRAW_BUFFERS_EXT"/>
         <enum value="0x88FD" name="GL_VERTEX_ATTRIB_ARRAY_INTEGER"/>
         <enum value="0x88FD" name="GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT"/>
         <enum value="0x88FD" name="GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV"/>
@@ -8236,6 +8242,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x930D" name="GL_TOP_LEVEL_ARRAY_STRIDE"/>
         <enum value="0x930E" name="GL_LOCATION"/>
         <enum value="0x930F" name="GL_LOCATION_INDEX"/>
+        <enum value="0x930F" name="GL_LOCATION_INDEX_EXT"/>
         <enum value="0x9310" name="GL_FRAMEBUFFER_DEFAULT_WIDTH"/>
         <enum value="0x9311" name="GL_FRAMEBUFFER_DEFAULT_HEIGHT"/>
         <enum value="0x9312" name="GL_FRAMEBUFFER_DEFAULT_LAYERS"/>
@@ -8910,6 +8917,14 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLuint</ptype> <name>colorNumber</name></param>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param>const <ptype>GLchar</ptype> *<name>name</name></param>
+        </command>
+        <command>
+            <proto>void <name>glBindFragDataLocationIndexedEXT</name></proto>
+            <param><ptype>GLuint</ptype> <name>program</name></param>
+            <param><ptype>GLuint</ptype> <name>colorNumber</name></param>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param>const <ptype>GLchar</ptype> *<name>name</name></param>
+            <alias name="glBindFragDataLocationIndexed"/>
         </command>
         <command>
             <proto>void <name>glBindFragmentShaderATI</name></proto>
@@ -13720,6 +13735,16 @@ typedef unsigned int GLhandleARB;
             <alias name="glFramebufferTextureLayer"/>
         </command>
         <command>
+            <proto>void <name>glFramebufferTextureMultisampleMultiviewOVR</name></proto>
+            <param group="FramebufferTarget"><ptype>GLenum</ptype> <name>target</name></param>
+            <param group="FramebufferAttachment"><ptype>GLenum</ptype> <name>attachment</name></param>
+            <param group="Texture"><ptype>GLuint</ptype> <name>texture</name></param>
+            <param group="CheckedInt32"><ptype>GLint</ptype> <name>level</name></param>
+            <param><ptype>GLsizei</ptype> <name>samples</name></param>
+            <param><ptype>GLint</ptype> <name>baseViewIndex</name></param>
+            <param><ptype>GLsizei</ptype> <name>numViews</name></param>
+        </command>
+        <command>
             <proto>void <name>glFramebufferTextureMultiviewOVR</name></proto>
             <param group="FramebufferTarget"><ptype>GLenum</ptype> <name>target</name></param>
             <param group="FramebufferAttachment"><ptype>GLenum</ptype> <name>attachment</name></param>
@@ -14656,6 +14681,12 @@ typedef unsigned int GLhandleARB;
             <proto><ptype>GLint</ptype> <name>glGetFragDataIndex</name></proto>
             <param><ptype>GLuint</ptype> <name>program</name></param>
             <param>const <ptype>GLchar</ptype> *<name>name</name></param>
+        </command>
+        <command>
+            <proto><ptype>GLint</ptype> <name>glGetFragDataIndexEXT</name></proto>
+            <param><ptype>GLuint</ptype> <name>program</name></param>
+            <param>const <ptype>GLchar</ptype> *<name>name</name></param>
+            <alias name="glGetFragDataIndex"/>
         </command>
         <command>
             <proto><ptype>GLint</ptype> <name>glGetFragDataLocation</name></proto>
@@ -15878,6 +15909,12 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto><ptype>GLint</ptype> <name>glGetProgramResourceLocationIndex</name></proto>
+            <param><ptype>GLuint</ptype> <name>program</name></param>
+            <param><ptype>GLenum</ptype> <name>programInterface</name></param>
+            <param len="COMPSIZE(name)">const <ptype>GLchar</ptype> *<name>name</name></param>
+        </command>
+        <command>
+            <proto><ptype>GLint</ptype> <name>glGetProgramResourceLocationIndexEXT</name></proto>
             <param><ptype>GLuint</ptype> <name>program</name></param>
             <param><ptype>GLenum</ptype> <name>programInterface</name></param>
             <param len="COMPSIZE(name)">const <ptype>GLchar</ptype> *<name>name</name></param>
@@ -39680,6 +39717,21 @@ typedef unsigned int GLhandleARB;
                 <command name="glBlendEquationSeparateEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_blend_func_extended" supported="gles2">
+            <require>
+                <enum name="GL_SRC1_COLOR_EXT"/>
+                <enum name="GL_SRC1_ALPHA_EXT"/>
+                <enum name="GL_ONE_MINUS_SRC1_COLOR_EXT"/>
+                <enum name="GL_ONE_MINUS_SRC1_ALPHA_EXT"/>
+                <enum name="GL_SRC_ALPHA_SATURATE_EXT"/>
+                <enum name="GL_LOCATION_INDEX_EXT"/>
+                <enum name="GL_MAX_DUAL_SOURCE_DRAW_BUFFERS_EXT"/>
+                <command name="glBindFragDataLocationIndexedEXT"/>
+                <command name="glBindFragDataLocationEXT"/>
+                <command name="glGetProgramResourceLocationIndexEXT"/>
+                <command name="glGetFragDataIndexEXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_blend_func_separate" supported="gl">
             <require>
                 <enum name="GL_BLEND_DST_RGB_EXT"/>
@@ -40747,6 +40799,12 @@ typedef unsigned int GLhandleARB;
                 <command name="glSamplePatternEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_multisampled_compatibility" supported="gles2">
+            <require>
+                <enum name="GL_MULTISAMPLE_EXT"/>
+                <enum name="GL_SAMPLE_ALPHA_TO_ONE_EXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_multisampled_render_to_texture" supported="gles1|gles2">
             <require>
                 <enum name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_SAMPLES_EXT"/>
@@ -41174,7 +41232,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_MAX_SPARSE_3D_TEXTURE_SIZE_EXT"/>
                 <enum name="GL_MAX_SPARSE_ARRAY_TEXTURE_LAYERS_EXT"/>
                 <enum name="GL_SPARSE_TEXTURE_FULL_ARRAY_CUBE_MIPMAPS_EXT"/>
-                <command name="glTexPageCommitmentARB"/>
+                <command name="glTexPageCommitmentEXT"/>
                 <!-- <command name="glTexturePageCommitmentEXT"/> -->
             </require>
         </extension>
@@ -42554,6 +42612,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COMPRESSED_SRGB8_ALPHA8_ASTC_12x12_KHR"/>
             </require>
         </extension>
+        <extension name="GL_KHR_texture_compression_astc_sliced_3d" supported="gl|glcore|gles2"/>
         <extension name="GL_MESAX_texture_stack" supported="gl">
             <require>
                 <enum name="GL_TEXTURE_1D_STACK_MESAX"/>
@@ -45321,6 +45380,11 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_OVR_multiview2" supported="gl|gles2"/>
+        <extension name="GL_OVR_multiview_multisampled_render_to_texture" supported="gles2">
+            <require>
+                <command name="glFramebufferTextureMultisampleMultiviewOVR"/>
+            </require>
+        </extension>
         <extension name="GL_PGI_misc_hints" supported="gl">
             <require>
                 <enum name="GL_PREFER_DOUBLEBUFFER_HINT_PGI"/>
