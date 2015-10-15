@@ -302,7 +302,7 @@ Optional dependencies
 
 For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 **Update 3**) are required.
 
-When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES``` and ```OPTION_BUILD_TOOLS``` (disabled by default) can be used to enable example and tool builds (qt-cubescape is only enabled when Qt5 is found). Furthermore, ```OPTION_EXTENSIVE_META``` (enabled by default) allow string-to-symbol and symbol-to-string conversion (in ```Meta```). Disable ```OPTION_EXTENSIVE_META``` to decreasebuild time and binary size (especially for MSVC and clang compilers).
+When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES``` and ```OPTION_BUILD_TOOLS``` (disabled by default) can be used to enable example and tool builds (qt-cubescape is only enabled when Qt5 is found). Furthermore, ```OPTION_EXTENSIVE_META``` (enabled by default) allow string-to-symbol and symbol-to-string conversion (in ```Meta```). Disable ```OPTION_EXTENSIVE_META``` to decrease build time and binary size (especially for MSVC and clang compilers).
 
 
 ##### Linking binaries
