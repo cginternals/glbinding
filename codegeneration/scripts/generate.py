@@ -182,7 +182,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
     genFunctionImplementations     (api, commands,           sourcedir_api,  "functions_?.cpp")
-    
+
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 
     # Generate GLBINDING namespace classes

@@ -289,6 +289,18 @@ def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputf
 
 # FUNCTION TEMPLATE INSTANTIATION
 
+def functionImplementation2(function):
+
+    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    paramNames = ", ".join([p.name for p in function.params])
+
+    return """%s %s(%s)
+{
+    return Binding::%s(%s);
+}
+    """ % (function.returntype, functionBID(function), params, functionBID(function)[2:], paramNames)
+
+
 def genFunctionImplementations(api, commands, outputdir, outputfile):
 
     version = versionBID(None)
@@ -298,8 +310,6 @@ def genFunctionImplementations(api, commands, outputdir, outputfile):
 
     t = template(of).replace("%a", api)
 
-    status(od + of)
-
     if not os.path.exists(od):
         os.makedirs(od)
 
@@ -307,15 +317,16 @@ def genFunctionImplementations(api, commands, outputdir, outputfile):
     for c in commands:
         lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append extension as required for metaExtensionsByStringGroup
 
-    for key in lists.keys():
+    for key in sorted(lists.keys()):
+
+        if key == '0':
+            continue
+
         lists[key].sort()
 
-    print (lists)
+        of = outputfile.replace("?", key.lower());
+        status(od + of)
 
-    #with open(od + of, 'w') as file:
-     #   if not feature:
-      #      file.write(t % ("\n".join(
-       #         [ functionImplementation(c, feature, version) for c in pureCommands ])))
-        #else:
-         #   file.write(t % ("\n".join(
-          #      [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))
+        with open(od + of, 'w') as file:
+            file.write(t % "\n".join(
+                [ functionImplementation2(c) for c in lists[key] ]))

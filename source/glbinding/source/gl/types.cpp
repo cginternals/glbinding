@@ -46,7 +46,7 @@ std::string bitfieldString(T value)
 
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
+std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
@@ -54,7 +54,7 @@ std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
 
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
+std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
