@@ -29,7 +29,7 @@ int main(int, char * [])
 
     std::cout << std::endl << std::endl << "[ENUMS]" << std::endl << std::endl;
 
-    if (Meta::stringsByGL())
+    if (Meta::extensive())
     {
         std::cout << "# Enums: " << Meta::enums().size() << std::endl << std::endl;
 
@@ -40,13 +40,13 @@ int main(int, char * [])
         std::cout << std::dec;
     }
     else
-        std::cout << std::endl << "warning: Enums cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
+        std::cout << std::endl << "warning: Enums cannot be enlisted since the glbinding used was compiled without EXTENSIVE_META support." << std::endl;
 
     // enlist all extensions
 
     std::cout << std::endl << std::endl << "[EXTENSIONS]" << std::endl << std::endl;
 
-    if (Meta::stringsByGL())
+    if (Meta::extensive())
     {
         std::cout << " # Extensions: " << Meta::extensions().size() << std::endl << std::endl;
 
@@ -57,7 +57,7 @@ int main(int, char * [])
         }
     }
     else
-        std::cout << std::endl << "warning: EXTENSIONS cannot be enlisted since the glbinding used was compiled without GL_BY_STRINGS support." << std::endl;
+        std::cout << std::endl << "warning: EXTENSIONS cannot be enlisted since the glbinding used was compiled without EXTENSIVE_META support." << std::endl;
 
     // print some gl infos (query)
 

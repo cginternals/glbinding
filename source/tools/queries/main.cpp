@@ -276,10 +276,9 @@ namespace
 
 int main(int argc, const char * argv[])
 {
-    if (!Meta::stringsByGL())
+    if (!Meta::extensive())
     {
-        std::cout << "Strings by GL not supported (enable through OPTION_STRINGS_BY_GL)" << std::endl;
-
+        std::cout << "Strings by GL not supported (enable through EXTENSIVE_META)" << std::endl;
         return 1;
     }
 #ifndef __APPLE__
