@@ -2,9 +2,6 @@ from binding import *
 from classes.Extension import *
 
 
-#def metaStringToBitfieldGroupMap(group):
-#    return "extern const std::unordered_map<std::string, gl::%s> Meta_%sByString;" % (group.name, group.name)
-
 def metaGetStringByBitfieldGroup(group):
 
     return "static const std::string & getString(gl::%s glbitfield);" % group.name
@@ -18,17 +15,17 @@ def genMeta_h(bitfGroups, outputdir, outputfile):
         file.write(template(outputfile) % ("\n" + tab).join([ metaGetStringByBitfieldGroup(g) for g in bitfGroups ]))    
 
 
-def metaStringsByBitfieldGroup(group):
+def metaStringsByBitfieldGroupExtern(group):
 
     return "extern const std::unordered_map<gl::%s, std::string> Meta_StringsBy%s;" % (group.name, group.name)
 
 
 def genMetaMaps(bitfGroups, outputdir, outputfile):
-    
+
     status(outputdir + outputfile)
     
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % "\n".join([ metaStringsByBitfieldGroup(g) for g in bitfGroups ]))
+        file.write(template(outputfile) % "\n".join([ metaStringsByBitfieldGroupExtern(g) for g in bitfGroups ]))
 
 
 def groupEnumsByValue(enums):
@@ -138,7 +135,7 @@ def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
 
 def metaGetStringsByBitfield(group):
 
-    return """#ifdef STRINGS_BY_GL
+    return """#ifdef EXTENSIVE_META
 
 const std::string & Meta::getString(const %s glbitfield)
 {
@@ -157,7 +154,7 @@ const std::string & Meta::getString(const %s)
     return none;
 }
 
-#endif // STRINGS_BY_GL
+#endif // EXTENSIVE_META
 """ % (group.name, group.name, group.name, group.name)
 
 

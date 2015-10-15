@@ -27,18 +27,9 @@ namespace
 namespace glbinding
 {
 
-bool Meta::stringsByGL()
+bool Meta::extensive()
 {
-#ifdef STRINGS_BY_GL
-    return true;
-#else
-    return false;
-#endif
-}
-
-bool Meta::glByStrings()
-{
-#ifdef GL_BY_STRINGS
+#ifdef EXTENSIVE_META
     return true;
 #else
     return false;
@@ -71,8 +62,8 @@ std::vector<GLbitfield> Meta::bitfields()
 {
     auto bitfields = std::vector<GLbitfield>{};
 
-// this does not just work with STRINGS_BY_GL since bitfields are grouped
-#ifdef GL_BY_STRINGS 
+// this does not just work with EXTENSIVE_META since bitfields are grouped
+#ifdef EXTENSIVE_META 
 
     for(auto map : Meta_BitfieldsByStringMaps)
         for (auto p : map)
@@ -80,7 +71,7 @@ std::vector<GLbitfield> Meta::bitfields()
             bitfields.push_back(p.second);
         }
 
-#endif // GL_BY_STRINGS
+#endif // EXTENSIVE_META
 
     return bitfields;    
 }
@@ -90,14 +81,14 @@ std::vector<GLenum> Meta::enums()
 {
     auto enums = std::vector<GLenum>{};
 
-#ifdef STRINGS_BY_GL
+#ifdef EXTENSIVE_META
 
     for (auto p : Meta_StringsByEnum)
     {
         enums.push_back(p.first);
     }
 
-#endif // STRINGS_BY_GL
+#endif // EXTENSIVE_META
 
     return enums;
 }
@@ -105,7 +96,7 @@ std::vector<GLenum> Meta::enums()
 
 GLextension Meta::getExtension(const std::string & glextension)
 {
-    // NOTE: this is intended to work irrespective of a GL_BY_STRINGS definition.
+    // NOTE: this is intended to work irrespective of a EXTENSIVE_META definition.
 
     const auto index = alphabeticalGroupIndex(glextension, 3);
     const auto & map = Meta_ExtensionsByStringMaps[index];
@@ -133,7 +124,7 @@ std::set<GLextension> Meta::extensions()
 }
 
 
-#ifdef STRINGS_BY_GL
+#ifdef EXTENSIVE_META
 
 const std::string & Meta::getString(const GLboolean glboolean)
 {
@@ -197,10 +188,10 @@ const std::set<std::string> & Meta::getRequiredFunctions(const GLextension)
     return noneStringSet;
 }
 
-#endif // STRINGS_BY_GL
+#endif // EXTENSIVE_META
 
 
-#ifdef GL_BY_STRINGS
+#ifdef EXTENSIVE_META
 
 GLbitfield Meta::getBitfield(const std::string & glbitfield)
 {
@@ -259,7 +250,7 @@ const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string &)
     return noneExtensions;
 }
 
-#endif // GL_BY_STRINGS
+#endif // EXTENSIVE_META
 
 
 const Version & Meta::getRequiringVersion(const GLextension extension)

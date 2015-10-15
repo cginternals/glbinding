@@ -1,9 +1,6 @@
-#ifdef GL_BY_STRINGS
+#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
-
-#include <string>
-#include <unordered_map>
 
 #include <glbinding/gl/boolean.h>
 
@@ -16,4 +13,4 @@ namespace glbinding
 %s
 } // namespace glbinding
 
-#endif // GL_BY_STRINGS
+#endif // EXTENSIVE_META

@@ -1,9 +1,6 @@
-#ifdef STRINGS_BY_GL
+#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
-
-#include <string>
-#include <unordered_map>
 
 #include <glbinding/gl/extension.h>
 
@@ -20,4 +17,4 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
 
 } // namespace glbinding
 
-#endif // STRINGS_BY_GL
+#endif // EXTENSIVE_META

@@ -1,14 +1,11 @@
-#ifdef STRINGS_BY_GL
+#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
-
-#include <string>
-#include <unordered_map>
 
 #include <glbinding/gl/boolean.h>
 
 
-using namespace gl;
+using namespace gl; // ToDo: multiple APIs?
 
 namespace glbinding
 {
@@ -20,4 +17,4 @@ const std::unordered_map<GLboolean, std::string> Meta_StringsByBoolean
 
 } // namespace glbinding
 
-#endif // STRINGS_BY_GL
+#endif // EXTENSIVE_META

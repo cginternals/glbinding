@@ -1,11 +1,7 @@
 
-// NOTE: this is intended to work irrespective of a GL_BY_STRINGS definition.
+// NOTE: this is intended to work regardless of a EXTENSIVE_META definition.
 
 #include "Meta_Maps.h"
-
-#include <string>
-#include <unordered_map>
-#include <array>
 
 #include <glbinding/gl/extension.h>
 

@@ -22,8 +22,7 @@ class GLBINDING_API Meta
 public:
     Meta() = delete;
 
-    static bool stringsByGL();
-    static bool glByStrings();
+    static bool extensive();
 
     static int glRevision();
 
@@ -34,17 +33,17 @@ public:
     static gl::GLenum getEnum(const std::string & glenum);
     static std::vector<gl::GLenum> enums();
 
-    static const std::string & getString(gl::GLboolean boolean);
-    static gl::GLboolean getBoolean(const std::string & boolean);
+    static const std::string & getString(gl::GLboolean glboolean);
+    static gl::GLboolean getBoolean(const std::string & glboolean);
 
-    static const std::string & getString(gl::GLextension extension);
-    static gl::GLextension getExtension(const std::string & extension);
+    static const std::string & getString(gl::GLextension glextension);
+    static gl::GLextension getExtension(const std::string & glextension);
     static std::set<gl::GLextension> extensions();
 
-    static const std::set<std::string> & getRequiredFunctions(gl::GLextension extension);
-    static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & function);
+    static const std::set<std::string> & getRequiredFunctions(gl::GLextension glextension);
+    static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & glfunction);
 
-    static const Version & getRequiringVersion(gl::GLextension extension);
+    static const Version & getRequiringVersion(gl::GLextension glextension);
     static const std::set<Version> & versions();
 
     %s

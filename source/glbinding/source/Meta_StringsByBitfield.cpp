@@ -1,9 +1,6 @@
-#ifdef STRINGS_BY_GL
+#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
-
-#include <string>
-#include <unordered_map>
 
 #include <glbinding/gl/bitfield.h>
 
@@ -266,4 +263,4 @@ const std::unordered_map<VertexHintsMaskPGI, std::string> Meta_StringsByVertexHi
     
 } // namespace glbinding
 
-#endif // STRINGS_BY_GL
+#endif // EXTENSIVE_META

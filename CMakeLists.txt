@@ -32,9 +32,7 @@ option(OPTION_BUILD_TESTS      "Build tests (if gmock and gtest are found)" ON)
 option(OPTION_BUILD_TOOLS      "Build tools" OFF)
 option(OPTION_BUILD_EXAMPLES   "Build examples" OFF)
 
-option(OPTION_GL_BY_STRINGS    "Support String to OpenGL enum, extension, and function conversion (Meta)" OFF)
-option(OPTION_STRINGS_BY_GL    "Support OpenGL enum, extension, and function to String conversion (Meta)" ON)
-
+option(OPTION_EXTENSIVE_META   "Provide extensive meta information for bidirectional conversion between String and OpenGL types" ON)
 
 if(OPTION_BUILD_STATIC)
    set(BUILD_SHARED_LIBS OFF)

@@ -1,8 +1,6 @@
 
 #include "Meta_Maps.h"
 
-#include <unordered_map>
-
 #include <glbinding/gl/extension.h>
 #include <glbinding/Version.h>
 
