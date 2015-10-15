@@ -30,13 +30,9 @@ else()
     add_definitions("-DGLBINDING_EXPORTS")
 endif()
 
-if (OPTION_STRINGS_BY_GL)
-    add_definitions("-DSTRINGS_BY_GL")
+if (OPTION_EXTENSIVE_META)
+    add_definitions("-DEXTENSIVE_META")
 endif()
-if (OPTION_GL_BY_STRINGS)
-    add_definitions("-DGL_BY_STRINGS")
-endif()
-
 
 # Sources
 
@@ -98,6 +94,7 @@ set(sources
 
     ${source_path}/Meta.cpp
     ${source_path}/Meta_Maps.h
+    ${source_path}/Meta_getStringByBitfield.cpp
     ${source_path}/Meta_BitfieldsByString.cpp
     ${source_path}/Meta_BooleansByString.cpp
     ${source_path}/Meta_EnumsByString.cpp

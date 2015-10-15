@@ -193,21 +193,23 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
 
     # ToDo: the generation of enum to/from string will probably be unified...
-    genMetaMaps		           (enums,              sourcedir,  "Meta_Maps.h",                bitfGroups)
+    genMeta_h                      (bitfGroups,         includedir, "Meta.h")
+    genMetaMaps		               (bitfGroups,         sourcedir,  "Meta_Maps.h")
+    genMetaGetStringByBitfield     (bitfGroups,         sourcedir,  "Meta_getStringByBitfield.cpp")
     genMetaStringsByBitfield       (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
     genMetaBitfieldByString        (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
     genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean")
+    genMetaEnumsByString           (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean", "Boolean")
     genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_EnumsByString.cpp",     "GLenum")
+    genMetaEnumsByString           (enums,              sourcedir,  "Meta_EnumsByString.cpp",     "GLenum", "Enum")
 
     genMetaStringsByExtension      (extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
     genMetaExtensionsByString      (extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
 
-    genReqVersionsByExtension      (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+    genMetaReqVersionsByExtension  (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
 
-    genFunctionStringsByExtension  (extensions,         sourcedir,  "Meta_FunctionStringsByExtension.cpp")
-    genExtensionsByFunctionString  (extensions,         sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
+    genMetaFunctionStringsByExtension(extensions,       sourcedir,  "Meta_FunctionStringsByExtension.cpp")
+    genMetaExtensionsByFunctionString(extensions,       sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
 
 
     print("")

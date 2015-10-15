@@ -1,3 +1,4 @@
+#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
@@ -9,11 +10,38 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString
+%s
+const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsByStringMaps
 {
-#ifdef GL_BY_STRINGS
-    %s
-#endif
+    Meta_EnumsByString_0,
+    Meta_EnumsByString_A,
+    Meta_EnumsByString_B,
+    Meta_EnumsByString_C,
+    Meta_EnumsByString_D,
+    Meta_EnumsByString_E,
+    Meta_EnumsByString_F,
+    Meta_EnumsByString_G,
+    Meta_EnumsByString_H,
+    Meta_EnumsByString_I,
+    Meta_EnumsByString_J,
+    Meta_EnumsByString_K,
+    Meta_EnumsByString_L,
+    Meta_EnumsByString_M,
+    Meta_EnumsByString_N,
+    Meta_EnumsByString_O,
+    Meta_EnumsByString_P,
+    Meta_EnumsByString_Q,
+    Meta_EnumsByString_R,
+    Meta_EnumsByString_S,
+    Meta_EnumsByString_T,
+    Meta_EnumsByString_U,
+    Meta_EnumsByString_V,
+    Meta_EnumsByString_W,
+    Meta_EnumsByString_X,
+    Meta_EnumsByString_Y,
+    Meta_EnumsByString_Z
 };
 
 } // namespace glbinding
+
+#endif // EXTENSIVE_META

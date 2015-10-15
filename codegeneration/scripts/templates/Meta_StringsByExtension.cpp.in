@@ -1,3 +1,4 @@
+#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
@@ -11,9 +12,9 @@ namespace glbinding
 
 const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
 {
-#ifdef STRINGS_BY_GL
     %s
-#endif
 };
 
 } // namespace glbinding
+
+#endif // EXTENSIVE_META

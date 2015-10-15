@@ -1,0 +1,55 @@
+#pragma once
+
+#include <glbinding/glbinding_api.h>
+
+#include <string>
+#include <utility>
+#include <vector>
+#include <set>
+#include <cstdint>
+
+#include <glbinding/gl/types.h>
+
+
+namespace glbinding
+{
+
+class Version;
+
+
+class GLBINDING_API Meta
+{
+public:
+    Meta() = delete;
+
+    static bool extensive();
+
+    static int glRevision();
+
+    static gl::GLbitfield getBitfield(const std::string & glbitfield);
+    static std::vector<gl::GLbitfield> bitfields();
+
+    static const std::string & getString(gl::GLenum glenum);
+    static gl::GLenum getEnum(const std::string & glenum);
+    static std::vector<gl::GLenum> enums();
+
+    static const std::string & getString(gl::GLboolean glboolean);
+    static gl::GLboolean getBoolean(const std::string & glboolean);
+
+    static const std::string & getString(gl::GLextension glextension);
+    static gl::GLextension getExtension(const std::string & glextension);
+    static std::set<gl::GLextension> extensions();
+
+    static const std::set<std::string> & getRequiredFunctions(gl::GLextension glextension);
+    static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & glfunction);
+
+    static const Version & getRequiringVersion(gl::GLextension glextension);
+    static const std::set<Version> & versions();
+
+    %s
+
+private:
+    static int alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
+};
+
+} // namespace gl

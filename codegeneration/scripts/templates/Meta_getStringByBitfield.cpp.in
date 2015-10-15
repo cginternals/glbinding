@@ -1,16 +1,20 @@
-#ifdef EXTENSIVE_META
 
-#include "Meta_Maps.h"
+#include <glbinding/Meta.h>
 
 #include <glbinding/gl/bitfield.h>
 
+#include "Meta_Maps.h"
+
 
 using namespace gl; // ToDo: multiple APIs?
+
+namespace
+{
+    static const auto none = std::string{};
+}
 
 namespace glbinding
 {
 
 %s
 } // namespace glbinding
-
-#endif // EXTENSIVE_META

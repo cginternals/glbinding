@@ -35,10 +35,10 @@ int main()
 | [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | default, no tests | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png#0)](https://drone.io/github.com/cginternals/glbinding/latest) |
 | Jenkins | Ubuntu 14.04 | GCC 4.8 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
 | Jenkins | Ubuntu 14.04 | GCC 4.9 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
-| Jenkins | Ubuntu 14.04 | Clang 3.5 | not gl_by_strings | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
-| Jenkins | OS X 10.10 | Clang 3.5 | not gl_by_strings | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
-| Jenkins | Windows 8.1 | MSVC 2013 Update 5 | default | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
-| Jenkins | Windows 8.1 | MSVC 2015 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015 (all options))](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015 (all options)) |
+| Jenkins | Ubuntu 14.04 | Clang 3.5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
+| Jenkins | OS X 10.10 | Clang 3.5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
+| Jenkins | Windows 8.1 | MSVC 2013 Update 5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
+| Jenkins | Windows 8.1 | MSVC 2015 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) |
 | [Coverity](https://scan.coverity.com/projects/2705?tab=overview) | Ubuntu | GCC 4.8 | all| [![Coverity Status](https://scan.coverity.com/projects/2705/badge.svg)](https://scan.coverity.com/projects/2705) |
 
 ## Features
@@ -302,7 +302,7 @@ Optional dependencies
 
 For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 **Update 3**) are required.
 
-When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES```, ```OPTION_GL_BY_STRINGS```, and ```OPTION_STRINGS_BY_GL``` can be used to enable example builds (qt-cubescape is only enabled when Qt5 is found), allow string-to-symbol and symbol-to-string conversion respectively (in ```Meta```). ```OPTION_GL_BY_STRINGS``` is disabled by default, since it increases build time for the MSVC 2013 compiler.
+When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES``` and ```OPTION_BUILD_TOOLS``` (disabled by default) can be used to enable example and tool builds (qt-cubescape is only enabled when Qt5 is found). Furthermore, ```OPTION_EXTENSIVE_META``` (enabled by default) allow string-to-symbol and symbol-to-string conversion (in ```Meta```). Disable ```OPTION_EXTENSIVE_META``` to decrease build time and binary size (especially for MSVC and clang compilers).
 
 
 ##### Linking binaries
