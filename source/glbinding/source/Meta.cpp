@@ -67,24 +67,6 @@ int Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint
     return index;
 }
 
-GLbitfield Meta::getBitfield(const std::string & glbitfield)
-{
-#ifdef GL_BY_STRINGS
-
-    const auto index = alphabeticalGroupIndex(glbitfield, 3);
-    const auto & map = Meta_BitfieldsByStringMaps[index];
-    const auto i = map.find(glbitfield);
-
-    if (i != map.end())
-    {
-        return i->second;
-    }
-
-#endif // GL_BY_STRINGS
-
-    return static_cast<GLbitfield>(-1);
-}
-
 std::vector<GLbitfield> Meta::bitfields()
 {
     auto bitfields = std::vector<GLbitfield>{};
@@ -103,55 +85,6 @@ std::vector<GLbitfield> Meta::bitfields()
     return bitfields;    
 }
 
-const std::string & Meta::getString(const GLboolean glboolean)
-{
-#ifdef STRINGS_BY_GL
-
-    auto i = Meta_StringsByBoolean.find(glboolean);
-
-    if (i == Meta_StringsByBoolean.end())
-    {
-        return i->second;
-    }
-
-#endif // STRINGS_BY_GL
-
-    return none;
-}
-
-const std::string & Meta::getString(const GLenum glenum)
-{
-#ifdef STRINGS_BY_GL
-
-    auto i = Meta_StringsByEnum.find(glenum);
-
-    if (i != Meta_StringsByEnum.end())
-    {
-        return i->second;
-    }
-
-#endif // STRINGS_BY_GL
-
-    return none;
-}
-
-GLenum Meta::getEnum(const std::string & glenum)
-{
-#ifdef GL_BY_STRINGS
-
-    const auto index = alphabeticalGroupIndex(glenum, 3);
-    const auto & map = Meta_EnumsByStringMaps[index];
-    const auto i = map.find(glenum);
-
-    if (i != map.end())
-    {
-        return i->second;
-    }
-
-#endif // GL_BY_STRINGS
-
-    return static_cast<GLenum>(static_cast<unsigned int>(-1));    
-}
 
 std::vector<GLenum> Meta::enums()
 {
@@ -169,21 +102,6 @@ std::vector<GLenum> Meta::enums()
     return enums;
 }
 
-const std::string & Meta::getString(const GLextension glextension)
-{
-#ifdef STRINGS_BY_GL
-
-    auto i = Meta_StringsByExtension.find(glextension);
-
-    if (i != Meta_StringsByExtension.end())
-    {
-        return i->second;
-    }
-
-#endif // STRINGS_BY_GL
-
-    return none;
-}   
 
 GLextension Meta::getExtension(const std::string & glextension)
 {
@@ -205,46 +123,113 @@ std::set<GLextension> Meta::extensions()
 {
     auto extensions = std::set<GLextension>{};
 
-    for (auto p : Meta_StringsByExtension)
-    {
-        extensions.insert(p.first);
-    }
+    for (auto m : Meta_ExtensionsByStringMaps)
+        for (auto p : m)
+        {
+            extensions.insert(p.second);
+        }
 
     return extensions;
 }
 
-const Version & Meta::getRequiringVersion(const GLextension extension)
+
+#ifdef STRINGS_BY_GL
+
+const std::string & Meta::getString(const GLboolean glboolean)
 {
-    auto i = Meta_ReqVersionsByExtension.find(extension);
-
-    if (i == Meta_ReqVersionsByExtension.end())
+    const auto i = Meta_StringsByBoolean.find(glboolean);
+    if (i == Meta_StringsByBoolean.end())
     {
-        return noneVersion;
+        return i->second;
     }
+    return none;
+}
 
-    return i->second;
+const std::string & Meta::getString(const GLenum glenum)
+{
+    const auto i = Meta_StringsByEnum.find(glenum);
+    if (i != Meta_StringsByEnum.end())
+    {
+        return i->second;
+    }
+    return none;
+}
+
+const std::string & Meta::getString(const GLextension glextension)
+{
+    const auto i = Meta_StringsByExtension.find(glextension);
+    if (i != Meta_StringsByExtension.end())
+    {
+        return i->second;
+    }
+    return none;
 }
 
 const std::set<std::string> & Meta::getRequiredFunctions(const GLextension extension)
 {
-#ifdef STRINGS_BY_GL
-
-    auto i = Meta_FunctionStringsByExtension.find(extension);
-
+    const auto i = Meta_FunctionStringsByExtension.find(extension);
     if (i != Meta_FunctionStringsByExtension.end())
     {
         return i->second;
     }
+    return noneStringSet;
+}
+
+#else
+
+const std::string & Meta::getString(const GLboolean)
+{
+    return none;
+}
+
+const std::string & Meta::getString(const GLenum)
+{
+    return none;
+}
+
+const std::string & Meta::getString(const GLextension)
+{
+    return none;
+}
+
+const std::set<std::string> & Meta::getRequiredFunctions(const GLextension)
+{
+    return noneStringSet;
+}
 
 #endif // STRINGS_BY_GL
 
-    return noneStringSet;
+
+#ifdef GL_BY_STRINGS
+
+GLbitfield Meta::getBitfield(const std::string & glbitfield)
+{
+    const auto index = alphabeticalGroupIndex(glbitfield, 3);
+    const auto & map = Meta_BitfieldsByStringMaps[index];
+    const auto i = map.find(glbitfield);
+
+    if (i != map.end())
+    {
+        return i->second;
+    }
+    return static_cast<GLbitfield>(-1);
+}
+
+GLenum Meta::getEnum(const std::string & glenum)
+{
+    const auto index = alphabeticalGroupIndex(glenum, 3);
+    const auto & map = Meta_EnumsByStringMaps[index];
+    const auto i = map.find(glenum);
+
+    if (i != map.end())
+    {
+        return i->second;
+    }
+    return static_cast<GLenum>(static_cast<unsigned int>(-1));
 }
 
 const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & glfunction)
 {
-#ifdef GL_BY_STRINGS
-
     const auto index = alphabeticalGroupIndex(glfunction, 2);
     const auto & map = Meta_ExtensionsByFunctionStringMaps[index];
     const auto i = map.find(glfunction);
@@ -254,9 +239,38 @@ const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & g
         return i->second;
     }
 
+    return noneExtensions;
+}
+
+#else
+
+GLbitfield Meta::getBitfield(const std::string &)
+{
+    return static_cast<GLbitfield>(-1);
+}
+
+GLenum Meta::getEnum(const std::string &)
+{
+    return static_cast<GLenum>(static_cast<unsigned int>(-1));
+}
+
+const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string &)
+{
+    return noneExtensions;
+}
+
 #endif // GL_BY_STRINGS
 
-    return noneExtensions;
+
+const Version & Meta::getRequiringVersion(const GLextension extension)
+{
+    const auto i = Meta_ReqVersionsByExtension.find(extension);
+    if (i == Meta_ReqVersionsByExtension.end())
+    {
+        return noneVersion;
+    }
+
+    return i->second;
 }
 
 const std::set<Version> & Meta::versions()

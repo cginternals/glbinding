@@ -1,0 +1,19 @@
+
+#include <glbinding/Meta.h>
+#include "Meta_Maps.h"
+
+#include <glbinding/gl/bitfield.h>
+
+
+using namespace gl; // ToDo: multiple APIs?
+
+namespace
+{
+    static const auto none = std::string{};
+}
+
+namespace glbinding
+{
+
+%s
+} // namespace glbinding

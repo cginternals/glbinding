@@ -2,16 +2,33 @@ from binding import *
 from classes.Extension import *
 
 
-def metaStringToBitfieldGroupMap(group):
-    return "extern const std::unordered_map<std::string, gl::%s> Meta_%sByString;" % (group.name, group.name)
+#def metaStringToBitfieldGroupMap(group):
+#    return "extern const std::unordered_map<std::string, gl::%s> Meta_%sByString;" % (group.name, group.name)
 
-def metaBitfieldGroupToStringMap(group):
+def metaGetStringByBitfieldGroup(group):
+
+    return "static const std::string & getString(gl::%s glbitfield);" % group.name
+
+
+def genMeta_h(bitfGroups, outputdir, outputfile):
+
+    status(outputdir + outputfile)
+
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % ("\n" + tab).join([ metaGetStringByBitfieldGroup(g) for g in bitfGroups ]))    
+
+
+def metaStringsByBitfieldGroup(group):
+
     return "extern const std::unordered_map<gl::%s, std::string> Meta_StringsBy%s;" % (group.name, group.name)
 
-def genMetaMaps(enums, outputdir, outputfile, bitfGroups):
+
+def genMetaMaps(bitfGroups, outputdir, outputfile):
+    
     status(outputdir + outputfile)
+    
     with open(outputdir + outputfile, 'w') as file:
-        file.write(template(outputfile) % ("\n".join([ metaBitfieldGroupToStringMap(g) for g in bitfGroups ])))
+        file.write(template(outputfile) % "\n".join([ metaStringsByBitfieldGroup(g) for g in bitfGroups ]))
 
 
 def groupEnumsByValue(enums):
@@ -101,6 +118,8 @@ def alphabeticalGroupKey(identifier, prefix):
 
 def metaStringsByBitfieldGroup(group):
 
+    # this creates the meta map as well as the overloaded getString function
+
     return """const std::unordered_map<%s, std::string> Meta_StringsBy%s 
 {
     %s
@@ -113,6 +132,40 @@ def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
 
     d = sorted([ metaStringsByBitfieldGroup(g) for g in bitfGroups ])
     
+    with open(outputdir + outputfile, 'w') as file:
+        file.write(template(outputfile) % "\n".join(d))
+
+
+def metaGetStringsByBitfield(group):
+
+    return """#ifdef STRINGS_BY_GL
+
+const std::string & Meta::getString(const %s glbitfield)
+{
+    const auto i = Meta_StringsBy%s.find(glbitfield);
+    if (i != Meta_StringsBy%s.end())
+    {
+        return i->second;
+    }
+    return none;
+}
+
+#else 
+
+const std::string & Meta::getString(const %s)
+{
+    return none;
+}
+
+#endif // STRINGS_BY_GL
+""" % (group.name, group.name, group.name, group.name)
+
+
+def genMetaGetStringByBitfield(bitfGroups, outputdir, outputfile):
+    status(outputdir + outputfile)
+
+    d = sorted([ metaGetStringsByBitfield(g) for g in bitfGroups ])
+
     with open(outputdir + outputfile, 'w') as file:
         file.write(template(outputfile) % "\n".join(d))
 

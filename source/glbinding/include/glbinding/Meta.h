@@ -27,8 +27,6 @@ public:
 
     static int glRevision();
 
-    // bitfields are grouped, hence no mapping from generic bitfield to string is possible
-    // static const std::string & Meta::getString(const gl::GLbitfield glbitfield);
     static gl::GLbitfield getBitfield(const std::string & glbitfield);
     static std::vector<gl::GLbitfield> bitfields();
 
@@ -48,6 +46,28 @@ public:
 
     static const Version & getRequiringVersion(gl::GLextension extension);
     static const std::set<Version> & versions();
+
+    static const std::string & getString(gl::AttribMask glbitfield);
+    static const std::string & getString(gl::ClearBufferMask glbitfield);
+    static const std::string & getString(gl::ClientAttribMask glbitfield);
+    static const std::string & getString(gl::ContextFlagMask glbitfield);
+    static const std::string & getString(gl::ContextProfileMask glbitfield);
+    static const std::string & getString(gl::FfdMaskSGIX glbitfield);
+    static const std::string & getString(gl::FragmentShaderColorModMaskATI glbitfield);
+    static const std::string & getString(gl::FragmentShaderDestMaskATI glbitfield);
+    static const std::string & getString(gl::FragmentShaderDestModMaskATI glbitfield);
+    static const std::string & getString(gl::MapBufferUsageMask glbitfield);
+    static const std::string & getString(gl::MemoryBarrierMask glbitfield);
+    static const std::string & getString(gl::PathRenderingMaskNV glbitfield);
+    static const std::string & getString(gl::PerformanceQueryCapsMaskINTEL glbitfield);
+    static const std::string & getString(gl::SyncObjectMask glbitfield);
+    static const std::string & getString(gl::TextureStorageMaskAMD glbitfield);
+    static const std::string & getString(gl::UseProgramStageMask glbitfield);
+    static const std::string & getString(gl::VertexHintsMaskPGI glbitfield);
+    static const std::string & getString(gl::UnusedMask glbitfield);
+    static const std::string & getString(gl::BufferAccessMask glbitfield);
+    static const std::string & getString(gl::BufferStorageMask glbitfield);
+    static const std::string & getString(gl::PathFontStyle glbitfield);
 
 private:
     static int alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
