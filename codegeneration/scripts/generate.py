@@ -181,7 +181,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
-    genFunctionImplementationsAll  (api, commands,           sourcedir_api,  "functions.cpp")
+    genFunctionImplementations     (api, commands,           sourcedir_api,  "functions_?.cpp")
     
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 

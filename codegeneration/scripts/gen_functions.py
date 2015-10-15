@@ -211,11 +211,6 @@ def genFunctionsAll(api, commands, outputdir, outputfile):
     genFeatureFunctions(api, commands, None, outputdir, outputfile, None)
 
 
-def genFunctionImplementationsAll(api, commands, outputdir, outputfile):
-
-    genFeatureFunctionImplementations(api, commands, None, outputdir, outputfile, None)
-
-
 def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
 
     # gen functions feature grouped
@@ -227,15 +222,15 @@ def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
             genFeatureFunctions(api, commands, f, outputdir, outputfile, False, True)
 
 
-def genFunctionImplementationsFeatureGrouped(api, commands, features, outputdir, outputfile):
+#def genFunctionImplementationsFeatureGrouped(api, commands, features, outputdir, outputfile):
 
-    # gen functions feature grouped
-    for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile)
-            if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, True)
-            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, False, True)
+#    # gen functions feature grouped
+#    for f in features:
+#        if f.api == "gl": # ToDo: probably seperate for all apis
+#            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile)
+#            if f.major > 3 or (f.major == 3 and f.minor >= 2):
+#                genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, True)
+#            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, False, True)
 
 
 def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = False, ext = False):
@@ -290,3 +285,37 @@ def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputf
         else:
             file.write(t % ("\n".join(
                 [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))
+
+
+# FUNCTION TEMPLATE INSTANTIATION
+
+def genFunctionImplementations(api, commands, outputdir, outputfile):
+
+    version = versionBID(None)
+
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
+
+    t = template(of).replace("%a", api)
+
+    status(od + of)
+
+    if not os.path.exists(od):
+        os.makedirs(od)
+
+    lists = alphabeticallyGroupedLists()
+    for c in commands:
+        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append extension as required for metaExtensionsByStringGroup
+
+    for key in lists.keys():
+        lists[key].sort()
+
+    print (lists)
+
+    #with open(od + of, 'w') as file:
+     #   if not feature:
+      #      file.write(t % ("\n".join(
+       #         [ functionImplementation(c, feature, version) for c in pureCommands ])))
+        #else:
+         #   file.write(t % ("\n".join(
+          #      [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))
