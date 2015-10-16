@@ -9,6 +9,9 @@
 namespace gl
 {
 
+// No functions for GROUP_0
+#if !defined(GROUPED) || defined(GROUP_A)
+
 GLBINDING_API void glAccum(GLenum op, GLfloat value);
 GLBINDING_API void glAccumxOES(GLenum op, GLfixed value);
 GLBINDING_API void glActiveProgramEXT(GLuint program);
@@ -33,6 +36,11 @@ GLBINDING_API void glArrayObjectATI(GLenum array, GLint size, GLenum type, GLsiz
 GLBINDING_API void glAsyncMarkerSGIX(GLuint marker);
 GLBINDING_API void glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
 GLBINDING_API void glAttachShader(GLuint program, GLuint shader);
+
+#endif // GROUPED && GROUP_A
+    
+#if !defined(GROUPED) || defined(GROUP_B)
+
 GLBINDING_API void glBegin(GLenum mode);
 GLBINDING_API void glBeginConditionalRender(GLuint id, GLenum mode);
 GLBINDING_API void glBeginConditionalRenderNV(GLuint id, GLenum mode);
@@ -148,6 +156,11 @@ GLBINDING_API void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint pa
 GLBINDING_API void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferStorageMask flags);
 GLBINDING_API void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void * data);
+
+#endif // GROUPED && GROUP_B
+    
+#if !defined(GROUPED) || defined(GROUP_C)
+
 GLBINDING_API void glCallCommandListNV(GLuint list);
 GLBINDING_API void glCallList(GLuint list);
 GLBINDING_API void glCallLists(GLsizei n, GLenum type, const void * lists);
@@ -389,6 +402,11 @@ GLBINDING_API void glCullFace(GLenum mode);
 GLBINDING_API void glCullParameterdvEXT(GLenum pname, GLdouble * params);
 GLBINDING_API void glCullParameterfvEXT(GLenum pname, GLfloat * params);
 GLBINDING_API void glCurrentPaletteMatrixARB(GLint index);
+
+#endif // GROUPED && GROUP_C
+    
+#if !defined(GROUPED) || defined(GROUP_D)
+
 GLBINDING_API void glDebugMessageCallback(GLDEBUGPROC callback, const void * userParam);
 GLBINDING_API void glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, void * userParam);
 GLBINDING_API void glDebugMessageCallbackARB(GLDEBUGPROCARB callback, const void * userParam);
@@ -506,6 +524,11 @@ GLBINDING_API void glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsi
 GLBINDING_API void glDrawTransformFeedbackNV(GLenum mode, GLuint id);
 GLBINDING_API void glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream);
 GLBINDING_API void glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
+
+#endif // GROUPED && GROUP_D
+    
+#if !defined(GROUPED) || defined(GROUP_E)
+
 GLBINDING_API void glEdgeFlag(GLboolean flag);
 GLBINDING_API void glEdgeFlagFormatNV(GLsizei stride);
 GLBINDING_API void glEdgeFlagPointer(GLsizei stride, const void * pointer);
@@ -564,6 +587,11 @@ GLBINDING_API void glEvalPoint2(GLint i, GLint j);
 GLBINDING_API void glEvaluateDepthValuesARB();
 GLBINDING_API void glExecuteProgramNV(GLenum target, GLuint id, const GLfloat * params);
 GLBINDING_API void glExtractComponentEXT(GLuint res, GLuint src, GLuint num);
+
+#endif // GROUPED && GROUP_E
+    
+#if !defined(GROUPED) || defined(GROUP_F)
+
 GLBINDING_API void glFeedbackBuffer(GLsizei size, GLenum type, GLfloat * buffer);
 GLBINDING_API void glFeedbackBufferxOES(GLsizei n, GLenum type, const GLfixed * buffer);
 GLBINDING_API GLsync glFenceSync(GLenum condition, UnusedMask flags);
@@ -649,6 +677,11 @@ GLBINDING_API void glFrontFace(GLenum mode);
 GLBINDING_API void glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
 GLBINDING_API void glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 GLBINDING_API void glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
+
+#endif // GROUPED && GROUP_F
+    
+#if !defined(GROUPED) || defined(GROUP_G)
+
 GLBINDING_API GLuint glGenAsyncMarkersSGIX(GLsizei range);
 GLBINDING_API void glGenBuffers(GLsizei n, GLuint * buffers);
 GLBINDING_API void glGenBuffersARB(GLsizei n, GLuint * buffers);
@@ -1135,10 +1168,20 @@ GLBINDING_API void glGlobalAlphaFactorsSUN(GLshort factor);
 GLBINDING_API void glGlobalAlphaFactorubSUN(GLubyte factor);
 GLBINDING_API void glGlobalAlphaFactoruiSUN(GLuint factor);
 GLBINDING_API void glGlobalAlphaFactorusSUN(GLushort factor);
+
+#endif // GROUPED && GROUP_G
+    
+#if !defined(GROUPED) || defined(GROUP_H)
+
 GLBINDING_API void glHint(GLenum target, GLenum mode);
 GLBINDING_API void glHintPGI(GLenum target, GLint mode);
 GLBINDING_API void glHistogram(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
 GLBINDING_API void glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
+
+#endif // GROUPED && GROUP_H
+    
+#if !defined(GROUPED) || defined(GROUP_I)
+
 GLBINDING_API void glIglooInterfaceSGIX(GLenum pname, const void * params);
 GLBINDING_API void glImageTransformParameterfHP(GLenum target, GLenum pname, GLfloat param);
 GLBINDING_API void glImageTransformParameterfvHP(GLenum target, GLenum pname, const GLfloat * params);
@@ -1223,6 +1266,13 @@ GLBINDING_API GLboolean glIsVariantEnabledEXT(GLuint id, GLenum cap);
 GLBINDING_API GLboolean glIsVertexArray(GLuint array);
 GLBINDING_API GLboolean glIsVertexArrayAPPLE(GLuint array);
 GLBINDING_API GLboolean glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname);
+
+#endif // GROUPED && GROUP_I
+    
+// No functions for GROUP_J
+// No functions for GROUP_K
+#if !defined(GROUPED) || defined(GROUP_L)
+
 GLBINDING_API void glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar * label);
 GLBINDING_API void glLightEnviSGIX(GLenum pname, GLint param);
 GLBINDING_API void glLightModelf(GLenum pname, GLfloat param);
@@ -1262,6 +1312,11 @@ GLBINDING_API void glLoadTransposeMatrixfARB(const GLfloat * m);
 GLBINDING_API void glLoadTransposeMatrixxOES(const GLfixed * m);
 GLBINDING_API void glLockArraysEXT(GLint first, GLsizei count);
 GLBINDING_API void glLogicOp(GLenum opcode);
+
+#endif // GROUPED && GROUP_L
+    
+#if !defined(GROUPED) || defined(GROUP_M)
+
 GLBINDING_API void glMakeBufferNonResidentNV(GLenum target);
 GLBINDING_API void glMakeBufferResidentNV(GLenum target, GLenum access);
 GLBINDING_API void glMakeImageHandleNonResidentARB(GLuint64 handle);
@@ -1494,6 +1549,11 @@ GLBINDING_API void glMultiTexRenderbufferEXT(GLenum texunit, GLenum target, GLui
 GLBINDING_API void glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 GLBINDING_API void glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 GLBINDING_API void glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
+
+#endif // GROUPED && GROUP_M
+    
+#if !defined(GROUPED) || defined(GROUP_N)
+
 GLBINDING_API void glNamedBufferData(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage);
 GLBINDING_API void glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage);
 GLBINDING_API void glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
@@ -1573,6 +1633,11 @@ GLBINDING_API void glNormalStream3iATI(GLenum stream, GLint nx, GLint ny, GLint 
 GLBINDING_API void glNormalStream3ivATI(GLenum stream, const GLint * coords);
 GLBINDING_API void glNormalStream3sATI(GLenum stream, GLshort nx, GLshort ny, GLshort nz);
 GLBINDING_API void glNormalStream3svATI(GLenum stream, const GLshort * coords);
+
+#endif // GROUPED && GROUP_N
+    
+#if !defined(GROUPED) || defined(GROUP_O)
+
 GLBINDING_API void glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar * label);
 GLBINDING_API void glObjectPtrLabel(const void * ptr, GLsizei length, const GLchar * label);
 GLBINDING_API GLenum glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
@@ -1580,6 +1645,11 @@ GLBINDING_API GLenum glObjectUnpurgeableAPPLE(GLenum objectType, GLuint name, GL
 GLBINDING_API void glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
 GLBINDING_API void glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 GLBINDING_API void glOrthoxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed f);
+
+#endif // GROUPED && GROUP_O
+    
+#if !defined(GROUPED) || defined(GROUP_P)
+
 GLBINDING_API void glPNTrianglesfATI(GLenum pname, GLfloat param);
 GLBINDING_API void glPNTrianglesiATI(GLenum pname, GLint param);
 GLBINDING_API void glPassTexCoordATI(GLuint dst, GLuint coord, GLenum swizzle);
@@ -1861,9 +1931,19 @@ GLBINDING_API void glPushDebugGroup(GLenum source, GLuint id, GLsizei length, co
 GLBINDING_API void glPushGroupMarkerEXT(GLsizei length, const GLchar * marker);
 GLBINDING_API void glPushMatrix();
 GLBINDING_API void glPushName(GLuint name);
+
+#endif // GROUPED && GROUP_P
+    
+#if !defined(GROUPED) || defined(GROUP_Q)
+
 GLBINDING_API void glQueryCounter(GLuint id, GLenum target);
 GLBINDING_API GLbitfield glQueryMatrixxOES(GLfixed * mantissa, GLint * exponent);
 GLBINDING_API void glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint param);
+
+#endif // GROUPED && GROUP_Q
+    
+#if !defined(GROUPED) || defined(GROUP_R)
+
 GLBINDING_API void glRasterPos2d(GLdouble x, GLdouble y);
 GLBINDING_API void glRasterPos2dv(const GLdouble * v);
 GLBINDING_API void glRasterPos2f(GLfloat x, GLfloat y);
@@ -1953,6 +2033,11 @@ GLBINDING_API void glResumeTransformFeedbackNV();
 GLBINDING_API void glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
 GLBINDING_API void glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
 GLBINDING_API void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+
+#endif // GROUPED && GROUP_R
+    
+#if !defined(GROUPED) || defined(GROUP_S)
+
 GLBINDING_API void glSampleCoverage(GLfloat value, GLboolean invert);
 GLBINDING_API void glSampleCoverageARB(GLfloat value, GLboolean invert);
 GLBINDING_API void glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle);
@@ -2063,6 +2148,11 @@ GLBINDING_API void glStringMarkerGREMEDY(GLsizei len, const void * string);
 GLBINDING_API void glSubpixelPrecisionBiasNV(GLuint xbits, GLuint ybits);
 GLBINDING_API void glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
 GLBINDING_API void glSyncTextureINTEL(GLuint texture);
+
+#endif // GROUPED && GROUP_S
+    
+#if !defined(GROUPED) || defined(GROUP_T)
+
 GLBINDING_API void glTagSampleBufferSGIX();
 GLBINDING_API void glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz);
 GLBINDING_API void glTangent3bvEXT(const GLbyte * v);
@@ -2281,6 +2371,11 @@ GLBINDING_API void glTransformPathNV(GLuint resultPath, GLuint srcPath, GLenum t
 GLBINDING_API void glTranslated(GLdouble x, GLdouble y, GLdouble z);
 GLBINDING_API void glTranslatef(GLfloat x, GLfloat y, GLfloat z);
 GLBINDING_API void glTranslatexOES(GLfixed x, GLfixed y, GLfixed z);
+
+#endif // GROUPED && GROUP_T
+    
+#if !defined(GROUPED) || defined(GROUP_U)
+
 GLBINDING_API void glUniform1d(GLint location, GLdouble x);
 GLBINDING_API void glUniform1dv(GLint location, GLsizei count, const GLdouble * value);
 GLBINDING_API void glUniform1f(GLint location, GLfloat v0);
@@ -2411,6 +2506,11 @@ GLBINDING_API void glUseProgram(GLuint program);
 GLBINDING_API void glUseProgramObjectARB(GLhandleARB programObj);
 GLBINDING_API void glUseProgramStages(GLuint pipeline, UseProgramStageMask stages, GLuint program);
 GLBINDING_API void glUseShaderProgramEXT(GLenum type, GLuint program);
+
+#endif // GROUPED && GROUP_U
+    
+#if !defined(GROUPED) || defined(GROUP_V)
+
 GLBINDING_API void glVDPAUFiniNV();
 GLBINDING_API void glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values);
 GLBINDING_API void glVDPAUInitNV(const void * vdpDevice, const void * getProcAddress);
@@ -2789,6 +2889,11 @@ GLBINDING_API void glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
 GLBINDING_API void glViewportArrayv(GLuint first, GLsizei count, const GLfloat * v);
 GLBINDING_API void glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
 GLBINDING_API void glViewportIndexedfv(GLuint index, const GLfloat * v);
+
+#endif // GROUPED && GROUP_V
+    
+#if !defined(GROUPED) || defined(GROUP_W)
+
 GLBINDING_API void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout);
 GLBINDING_API void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights);
 GLBINDING_API void glWeightPointerARB(GLint size, GLenum type, GLsizei stride, const void * pointer);
@@ -2857,5 +2962,11 @@ GLBINDING_API void glWindowPos4ivMESA(const GLint * v);
 GLBINDING_API void glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w);
 GLBINDING_API void glWindowPos4svMESA(const GLshort * v);
 GLBINDING_API void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+
+#endif // GROUPED && GROUP_W
+    
+// No functions for GROUP_X
+// No functions for GROUP_Y
+// No functions for GROUP_Z
 
 } // namespace gl

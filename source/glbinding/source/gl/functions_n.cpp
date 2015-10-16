@@ -1,4 +1,7 @@
 
+#define GROUPED 
+#define GROUP_N
+
 #include <glbinding/gl/functions.h>
 
 #include <glbinding/Binding.h>

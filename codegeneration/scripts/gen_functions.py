@@ -287,7 +287,7 @@ def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputf
                 [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))
 
 
-# FUNCTION TEMPLATE INSTANTIATION
+# ALL FUNCTION TEMPLATE INSTANTIATION
 
 def functionImplementation2(function):
 
@@ -301,7 +301,7 @@ def functionImplementation2(function):
     """ % (function.returntype, functionBID(function), params, functionBID(function)[2:], paramNames)
 
 
-def genFunctionImplementations(api, commands, outputdir, outputfile):
+def genFunctions(api, commands, outputdir, outputfile):
 
     version = versionBID(None)
 
@@ -315,7 +315,7 @@ def genFunctionImplementations(api, commands, outputdir, outputfile):
 
     lists = alphabeticallyGroupedLists()
     for c in commands:
-        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append extension as required for metaExtensionsByStringGroup
+        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
 
     for key in sorted(lists.keys()):
 
@@ -328,5 +328,53 @@ def genFunctionImplementations(api, commands, outputdir, outputfile):
         status(od + of)
 
         with open(od + of, 'w') as file:
-            file.write(t % "\n".join(
+            file.write(t.replace("%g", key.upper()) % "\n".join(
                 [ functionImplementation2(c) for c in lists[key] ]))
+
+
+# ALL FUNCTION INSTANTIATION FORWARD DECLARATIONS
+
+#functionForward(api, c, feature, version) for c in pureCommands ])
+
+def functionForward2(function):
+
+    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+
+    return """GLBINDING_API %s %s(%s);""" % (function.returntype, functionBID(function), params)
+
+
+def functionForwardGroup(functions, key):
+
+    if not functions:
+        return "// No functions for GROUP_%s" % (key)
+
+    return """#if !defined(GROUPED) || defined(GROUP_%s)
+
+%s
+
+#endif // GROUPED && GROUP_%s
+    """ % (key, "\n".join([ functionForward2(c) for c in functions ]), key)  
+
+
+def genForwardFunctions(api, commands, outputdir, outputfile):
+
+    version = versionBID(None)
+
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
+
+    t = template(of).replace("%a", api)
+
+    status(od + of)
+
+    lists = alphabeticallyGroupedLists()
+    for c in commands:
+        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+
+    for key in lists.keys():
+        lists[key].sort()
+
+    lines = [ functionForwardGroup(lists[key], key) for key in sorted(lists.keys()) ]
+
+    with open(od + of, 'w') as file:
+        file.write(t % "\n".join(lines))

@@ -175,13 +175,13 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genEnumsAll                    (api, enums,              includedir_api, "enum.h")
     genEnumsFeatureGrouped         (api, enums, features,    includedir_api, "enum?.h")
 
-    genFunctionsAll                (api, commands,           includedir_api, "functions.h")
+    genForwardFunctions            (api, commands,           includedir_api, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
     
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
-    genFunctionImplementations     (api, commands,           sourcedir_api,  "functions_?.cpp")
+    genFunctions                    (api, commands,           sourcedir_api,  "functions_?.cpp")
 
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 
