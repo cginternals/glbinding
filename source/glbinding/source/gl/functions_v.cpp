@@ -1,12 +1,12 @@
 
-#include "functions_pch.h"
+#include "Binding_pch.h"
 
-//#define GROUPED 
-//#define GROUP_V
+#define GROUPED 
+#define GROUP_V
 
-//#include <glbinding/gl/functions.h>
+#include <glbinding/gl/functions.h>
 
-//#include <glbinding/Binding.h>
+// #include <glbinding/Binding.h>
 
 
 using namespace glbinding;
