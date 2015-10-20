@@ -111,6 +111,8 @@ set(sources
     ${source_path}/Binding_objects_x.cpp
     ${source_path}/Binding_objects_y.cpp
     ${source_path}/Binding_objects_z.cpp
+    ${source_path}/Binding_pch.h
+    ${source_path}/Binding_pch.cpp
 
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
@@ -170,6 +172,23 @@ set_target_properties(${target}
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}"
     INCLUDE_PATH                ${include_path})
+
+if(MSVC)
+
+    # speed up compile time using pre-compiled headers (pch) for alphabetically splitted sources
+
+    set_source_files_properties(${source_path}/Binding_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"Binding_pch.h")
+    set_source_files_properties(${source_path}/gl/functions_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"functions_pch.h")
+
+    file(GLOB binding_pch_sources ${source_path}/Binding_objects*.cpp)
+    list(APPEND binding_pch_sources ${source_path}/Binding_list.cpp)
+
+    file(GLOB functions_pch_sources ${source_path}/gl/functions_*.cpp)
+
+    set_source_files_properties(${binding_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"Binding_pch.h")
+    set_source_files_properties(${functions_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"functions_pch.h")
+
+endif()
 
 
 # Deployment

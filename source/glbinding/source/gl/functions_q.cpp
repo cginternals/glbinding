@@ -1,10 +1,12 @@
 
-#define GROUPED 
-#define GROUP_Q
+#include "functions_pch.h"
 
-#include <glbinding/gl/functions.h>
+//#define GROUPED 
+//#define GROUP_Q
 
-#include <glbinding/Binding.h>
+//#include <glbinding/gl/functions.h>
+
+//#include <glbinding/Binding.h>
 
 
 using namespace glbinding;

@@ -1,10 +1,12 @@
 
-#define GROUPED 
-#define GROUP_U
+#include "functions_pch.h"
 
-#include <glbinding/gl/functions.h>
+//#define GROUPED 
+//#define GROUP_U
 
-#include <glbinding/Binding.h>
+//#include <glbinding/gl/functions.h>
+
+//#include <glbinding/Binding.h>
 
 
 using namespace glbinding;
