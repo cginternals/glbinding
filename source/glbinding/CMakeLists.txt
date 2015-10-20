@@ -84,7 +84,34 @@ set(sources
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
-    ${source_path}/Binding_objects.cpp
+    ${source_path}/Binding_list.cpp
+    ${source_path}/Binding_objects_a.cpp
+    ${source_path}/Binding_objects_b.cpp
+    ${source_path}/Binding_objects_c.cpp
+    ${source_path}/Binding_objects_d.cpp
+    ${source_path}/Binding_objects_e.cpp
+    ${source_path}/Binding_objects_f.cpp
+    ${source_path}/Binding_objects_g.cpp
+    ${source_path}/Binding_objects_h.cpp
+    ${source_path}/Binding_objects_i.cpp
+    ${source_path}/Binding_objects_j.cpp
+    ${source_path}/Binding_objects_k.cpp
+    ${source_path}/Binding_objects_l.cpp
+    ${source_path}/Binding_objects_m.cpp
+    ${source_path}/Binding_objects_n.cpp
+    ${source_path}/Binding_objects_o.cpp
+    ${source_path}/Binding_objects_p.cpp
+    ${source_path}/Binding_objects_q.cpp
+    ${source_path}/Binding_objects_r.cpp
+    ${source_path}/Binding_objects_s.cpp
+    ${source_path}/Binding_objects_t.cpp
+    ${source_path}/Binding_objects_u.cpp
+    ${source_path}/Binding_objects_v.cpp
+    ${source_path}/Binding_objects_w.cpp
+    ${source_path}/Binding_objects_x.cpp
+    ${source_path}/Binding_objects_y.cpp
+    ${source_path}/Binding_objects_z.cpp
+
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp

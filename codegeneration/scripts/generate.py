@@ -181,14 +181,15 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
-    genFunctions                    (api, commands,           sourcedir_api,  "functions_?.cpp")
+    genFunctions                   (api, commands,           sourcedir_api,  "functions_?.cpp")
 
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 
     # Generate GLBINDING namespace classes
 
     genFunctionObjects_h           (commands,           includedir, "Binding.h")
-    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_objects.cpp")
+    genFunctionList_cpp            (commands,           sourcedir,  "Binding_list.cpp")
+    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_objects_?.cpp")
 
     genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
 

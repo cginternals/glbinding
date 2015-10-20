@@ -188,7 +188,7 @@ def genFunctionObjects_h(commands, outputdir, outputfile):
             "\n".join([ functionDecl("gl", f) for f in commands ])))
 
 
-def genFunctionObjects_cpp(commands, outputdir, outputfile):
+def genFunctionList_cpp(commands, outputdir, outputfile):
 
     of = outputfile
     t = template(of)
@@ -198,12 +198,33 @@ def genFunctionObjects_cpp(commands, outputdir, outputfile):
     #extern_templates = set([ functionSignature("gl", f, False) for f in commands])
 
     with open(outputdir + of, 'w') as file:
-        file.write(t.replace("%b", functionBID(commands[0])[2:]).replace("%e", functionBID(commands[-1])[2:]) % (
-            #"\n".join(sorted(extern_templates)), 
-            #len(commands),
-            "\n".join([ functionMember(f) for f in commands ]),
-            functionList(commands)
-        ))
+        file.write(t % functionList(commands))
+
+
+
+def genFunctionObjects_cpp(commands, outputdir, outputfile):
+
+    of = outputfile.replace("?", "")
+    t = template(of)
+
+    lists = alphabeticallyGroupedLists()
+    for c in commands:
+        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+
+    for key in sorted(lists.keys()):
+
+        if key == '0':
+            continue
+
+        lists[key].sort()
+
+        of = outputfile.replace("?", key.lower());
+        status(outputdir + of)
+
+
+        with open(outputdir + of, 'w') as file:
+            file.write(t % "\n".join([ functionMember(c) for c in lists[key] ]))
+
 
 
 def genFunctionsAll(api, commands, outputdir, outputfile):
