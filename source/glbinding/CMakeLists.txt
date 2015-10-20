@@ -188,7 +188,7 @@ if(MSVC)
     file(GLOB functions_pch_sources ${source_path}/gl/functions_*.cpp)
 
     set_source_files_properties(${binding_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"Binding_pch.h")
-    set_source_files_properties(${functions_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"Binding_pch.h")
+    set_source_files_properties(${functions_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"../Binding_pch.h")
 
 endif()
 
