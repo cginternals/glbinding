@@ -74,6 +74,7 @@ set(api_includes
 )
 
 # add featured headers
+
 file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND api_includes ${featured_includes})
 
@@ -84,7 +85,8 @@ set(sources
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
-    ${source_path}/Binding_objects.cpp
+    ${source_path}/Binding_list.cpp
+
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp
@@ -110,11 +112,42 @@ set(sources
     ${source_path}/RingBuffer.h
     ${source_path}/RingBuffer.hpp
     ${source_path}/logging.cpp
+
+    ${source_path}/gl/types.cpp
+
+    ${source_path}/Binding_pch.h
 )
 
-# add featured sources
-file(GLOB featured_sources ${source_path}/gl/*.cpp)
-list(APPEND sources ${featured_sources})
+if(MSVC OR (WIN32 AND CMAKE_COMPILER_IS_GNUCXX))
+
+    # use splitted function and binding sources on windows compilers (e.g., mingw, msvc)
+
+    file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
+    file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
+
+    list(APPEND sources 
+        ${splitted_binding_sources}
+        ${splitted_functions_sources})
+
+else()
+
+    list(APPEND sources 
+        "${source_path}/gl/functions.cpp"
+        "${source_path}/Binding_objects.cpp")
+
+endif()
+
+if(MSVC)
+
+    # on msvc use private (non-api) per file precompiled headers on those grouped sources
+
+    list(APPEND sources
+        ${source_path}/Binding_pch.cpp)
+
+endif()
+
+# add splitted sources
+
 
 # Group source files
 set(header_group "Header Files (API)")
@@ -143,6 +176,24 @@ set_target_properties(${target}
     LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}"
     INCLUDE_PATH                ${include_path})
+
+
+if(MSVC)
+
+    # on msvc use private (non-api) per file precompiled headers on those grouped sources
+
+    set_source_files_properties(${source_path}/Binding_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"Binding_pch.h")
+    # set_source_files_properties(${source_path}/gl/functions_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"functions_pch.h")
+
+    file(GLOB binding_pch_sources ${source_path}/Binding_objects_*.cpp)
+    list(APPEND binding_pch_sources ${source_path}/Binding_list.cpp)
+
+    file(GLOB functions_pch_sources ${source_path}/gl/functions_*.cpp)
+
+    set_source_files_properties(${binding_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"Binding_pch.h")
+    set_source_files_properties(${functions_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"../Binding_pch.h")
+
+endif()
 
 
 # Deployment

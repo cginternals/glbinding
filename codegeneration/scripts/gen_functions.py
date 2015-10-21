@@ -188,7 +188,7 @@ def genFunctionObjects_h(commands, outputdir, outputfile):
             "\n".join([ functionDecl("gl", f) for f in commands ])))
 
 
-def genFunctionObjects_cpp(commands, outputdir, outputfile):
+def genFunctionList_cpp(commands, outputdir, outputfile):
 
     of = outputfile
     t = template(of)
@@ -198,22 +198,38 @@ def genFunctionObjects_cpp(commands, outputdir, outputfile):
     #extern_templates = set([ functionSignature("gl", f, False) for f in commands])
 
     with open(outputdir + of, 'w') as file:
-        file.write(t.replace("%b", functionBID(commands[0])[2:]).replace("%e", functionBID(commands[-1])[2:]) % (
-            #"\n".join(sorted(extern_templates)), 
-            #len(commands),
-            "\n".join([ functionMember(f) for f in commands ]),
-            functionList(commands)
-        ))
+        file.write(t % functionList(commands))
+
+
+
+def genFunctionObjects_cpp(commands, outputdir, outputfile):
+
+    of = outputfile.replace("?", "")
+    t = template(of)
+
+    lists = alphabeticallyGroupedLists()
+    for c in commands:
+        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+
+    for key in sorted(lists.keys()):
+
+        if key == '0':
+            continue
+
+        lists[key].sort()
+
+        of = outputfile.replace("?", key.lower());
+        status(outputdir + of)
+
+
+        with open(outputdir + of, 'w') as file:
+            file.write(t % "\n".join([ functionMember(c) for c in lists[key] ]))
+
 
 
 def genFunctionsAll(api, commands, outputdir, outputfile):
 
     genFeatureFunctions(api, commands, None, outputdir, outputfile, None)
-
-
-def genFunctionImplementationsAll(api, commands, outputdir, outputfile):
-
-    genFeatureFunctionImplementations(api, commands, None, outputdir, outputfile, None)
 
 
 def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
@@ -227,15 +243,15 @@ def genFunctionsFeatureGrouped(api, commands, features, outputdir, outputfile):
             genFeatureFunctions(api, commands, f, outputdir, outputfile, False, True)
 
 
-def genFunctionImplementationsFeatureGrouped(api, commands, features, outputdir, outputfile):
+#def genFunctionImplementationsFeatureGrouped(api, commands, features, outputdir, outputfile):
 
-    # gen functions feature grouped
-    for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile)
-            if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, True)
-            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, False, True)
+#    # gen functions feature grouped
+#    for f in features:
+#        if f.api == "gl": # ToDo: probably seperate for all apis
+#            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile)
+#            if f.major > 3 or (f.major == 3 and f.minor >= 2):
+#                genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, True)
+#            genFeatureFunctionImplementations(api, commands, f, outputdir, outputfile, False, True)
 
 
 def genFeatureFunctions(api, commands, feature, outputdir, outputfile, core = False, ext = False):
@@ -290,3 +306,96 @@ def genFeatureFunctionImplementations(api, commands, feature, outputdir, outputf
         else:
             file.write(t % ("\n".join(
                 [ functionForwardImplementation(c, feature, version) for c in pureCommands ])))
+
+
+# ALL FUNCTION TEMPLATE INSTANTIATION
+
+def functionImplementation2(function):
+
+    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+    paramNames = ", ".join([p.name for p in function.params])
+
+    return """%s %s(%s)
+{
+    return Binding::%s(%s);
+}
+    """ % (function.returntype, functionBID(function), params, functionBID(function)[2:], paramNames)
+
+
+def genFunctions(api, commands, outputdir, outputfile):
+
+    version = versionBID(None)
+
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
+
+    t = template(of).replace("%a", api)
+
+    if not os.path.exists(od):
+        os.makedirs(od)
+
+    lists = alphabeticallyGroupedLists()
+    for c in commands:
+        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+
+    for key in sorted(lists.keys()):
+
+        if key == '0':
+            continue
+
+        lists[key].sort()
+
+        of = outputfile.replace("?", key.lower());
+        status(od + of)
+
+        with open(od + of, 'w') as file:
+            file.write(t.replace("%g", key.upper()) % "\n".join(
+                [ functionImplementation2(c) for c in lists[key] ]))
+
+
+# ALL FUNCTION INSTANTIATION FORWARD DECLARATIONS
+
+#functionForward(api, c, feature, version) for c in pureCommands ])
+
+def functionForward2(function):
+
+    params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
+
+    return """GLBINDING_API %s %s(%s);""" % (function.returntype, functionBID(function), params)
+
+
+def functionForwardGroup(functions, key):
+
+    if not functions:
+        return "// No functions for GROUP_%s" % (key)
+
+    return """#if !defined(GROUPED) || defined(GROUP_%s)
+
+%s
+
+#endif // GROUPED && GROUP_%s
+    """ % (key, "\n".join([ functionForward2(c) for c in functions ]), key)  
+
+
+def genForwardFunctions(api, commands, outputdir, outputfile):
+
+    version = versionBID(None)
+
+    of = outputfile.replace("?", "")
+    od = outputdir.replace("?", version)
+
+    t = template(of).replace("%a", api)
+
+    status(od + of)
+
+    lists = alphabeticallyGroupedLists()
+    for c in commands:
+        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+
+    for key in lists.keys():
+        lists[key].sort()
+
+    lines = [ functionForwardGroup(lists[key], key) for key in sorted(lists.keys()) ]
+
+    with open(od + of, 'w') as file:
+        file.write(t % "\n".join(lines))

@@ -55,3 +55,35 @@ def extensionBID(extension):
 def functionBID(function):
 
     return function.name
+
+
+
+
+def alphabeticallyGroupedLists():
+
+    # create a dictionary of lists by upper case letters
+    # and a single "everythingelse" list
+
+    keys = '0ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    lists = dict()
+    for key in keys:
+        lists[key] = list()
+
+    return lists
+
+
+def alphabeticalGroupKey(identifier, prefix):
+
+    # derives an key from an identifier with "GL_" prefix 
+
+    index = identifier.find(prefix)
+    if index < 0:
+        return -1
+
+    index += len(prefix)
+
+    key = ((identifier[index:])[:1]).upper()
+    if ord(key) not in range(65, 91):
+        key = '0'
+
+    return key

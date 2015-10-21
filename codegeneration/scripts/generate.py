@@ -175,20 +175,21 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genEnumsAll                    (api, enums,              includedir_api, "enum.h")
     genEnumsFeatureGrouped         (api, enums, features,    includedir_api, "enum?.h")
 
-    genFunctionsAll                (api, commands,           includedir_api, "functions.h")
+    genForwardFunctions            (api, commands,           includedir_api, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
     
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
-    genFunctionImplementationsAll  (api, commands,           sourcedir_api,  "functions.cpp")
-    
+    genFunctions                   (api, commands,           sourcedir_api,  "functions_?.cpp")
+
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 
     # Generate GLBINDING namespace classes
 
     genFunctionObjects_h           (commands,           includedir, "Binding.h")
-    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_objects.cpp")
+    genFunctionList_cpp            (commands,           sourcedir,  "Binding_list.cpp")
+    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_objects_?.cpp")
 
     genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
 
