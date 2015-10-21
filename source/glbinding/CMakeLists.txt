@@ -74,6 +74,7 @@ set(api_includes
 )
 
 # add featured headers
+
 file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND api_includes ${featured_includes})
 
@@ -85,34 +86,6 @@ set(sources
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
-    ${source_path}/Binding_objects_a.cpp
-    ${source_path}/Binding_objects_b.cpp
-    ${source_path}/Binding_objects_c.cpp
-    ${source_path}/Binding_objects_d.cpp
-    ${source_path}/Binding_objects_e.cpp
-    ${source_path}/Binding_objects_f.cpp
-    ${source_path}/Binding_objects_g.cpp
-    ${source_path}/Binding_objects_h.cpp
-    ${source_path}/Binding_objects_i.cpp
-    ${source_path}/Binding_objects_j.cpp
-    ${source_path}/Binding_objects_k.cpp
-    ${source_path}/Binding_objects_l.cpp
-    ${source_path}/Binding_objects_m.cpp
-    ${source_path}/Binding_objects_n.cpp
-    ${source_path}/Binding_objects_o.cpp
-    ${source_path}/Binding_objects_p.cpp
-    ${source_path}/Binding_objects_q.cpp
-    ${source_path}/Binding_objects_r.cpp
-    ${source_path}/Binding_objects_s.cpp
-    ${source_path}/Binding_objects_t.cpp
-    ${source_path}/Binding_objects_u.cpp
-    ${source_path}/Binding_objects_v.cpp
-    ${source_path}/Binding_objects_w.cpp
-    ${source_path}/Binding_objects_x.cpp
-    ${source_path}/Binding_objects_y.cpp
-    ${source_path}/Binding_objects_z.cpp
-    ${source_path}/Binding_pch.h
-    ${source_path}/Binding_pch.cpp
 
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
@@ -139,13 +112,35 @@ set(sources
     ${source_path}/RingBuffer.h
     ${source_path}/RingBuffer.hpp
     ${source_path}/logging.cpp
+
+    ${source_path}/gl/types.cpp
+
+    ${source_path}/Binding_pch.h
 )
 
-# add featured sources
-file(GLOB featured_sources 
-    ${source_path}/gl/*.cpp
-    ${source_path}/gl/*.h)
-list(APPEND sources ${featured_sources})
+if(MSVC)
+
+    # add splitted function sources
+
+    file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
+    file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
+
+    list(APPEND sources 
+        ${splitted_binding_sources}
+        ${splitted_functions_sources}
+
+        ${source_path}/Binding_pch.cpp)
+
+else()
+
+    list(APPEND sources 
+        "${source_path}/gl/functions.cpp"
+        "${source_path}/Binding_objects.cpp")
+
+endif()
+
+# add splitted sources
+
 
 # Group source files
 set(header_group "Header Files (API)")
@@ -182,7 +177,7 @@ if(MSVC)
     set_source_files_properties(${source_path}/Binding_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"Binding_pch.h")
     # set_source_files_properties(${source_path}/gl/functions_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"functions_pch.h")
 
-    file(GLOB binding_pch_sources ${source_path}/Binding_objects*.cpp)
+    file(GLOB binding_pch_sources ${source_path}/Binding_objects_*.cpp)
     list(APPEND binding_pch_sources ${source_path}/Binding_list.cpp)
 
     file(GLOB functions_pch_sources ${source_path}/gl/functions_*.cpp)
