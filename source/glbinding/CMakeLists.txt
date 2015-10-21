@@ -118,24 +118,31 @@ set(sources
     ${source_path}/Binding_pch.h
 )
 
-if(MSVC)
+if(MSVC OR (WIN32 AND CMAKE_COMPILER_IS_GNUCXX))
 
-    # add splitted function sources
+    # use splitted function and binding sources on windows compilers (e.g., mingw, msvc)
 
     file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
     file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
 
     list(APPEND sources 
         ${splitted_binding_sources}
-        ${splitted_functions_sources}
-
-        ${source_path}/Binding_pch.cpp)
+        ${splitted_functions_sources})
 
 else()
 
     list(APPEND sources 
         "${source_path}/gl/functions.cpp"
         "${source_path}/Binding_objects.cpp")
+
+endif()
+
+if(MSVC)
+
+    # on msvc use private (non-api) per file precompiled headers on those grouped sources
+
+    list(APPEND sources
+        ${source_path}/Binding_pch.cpp)
 
 endif()
 
@@ -170,9 +177,10 @@ set_target_properties(${target}
     DEBUG_POSTFIX               "d${DEBUG_POSTFIX}"
     INCLUDE_PATH                ${include_path})
 
+
 if(MSVC)
 
-    # speed up compile time using pre-compiled headers (pch) for alphabetically splitted sources
+    # on msvc use private (non-api) per file precompiled headers on those grouped sources
 
     set_source_files_properties(${source_path}/Binding_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"Binding_pch.h")
     # set_source_files_properties(${source_path}/gl/functions_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"functions_pch.h")
