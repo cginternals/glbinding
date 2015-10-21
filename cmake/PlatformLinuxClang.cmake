@@ -42,6 +42,7 @@ set(LINUX_COMPILE_FLAGS
     # -Werror=return-type -> missing returns in functions and methods are handled as errors which stops the compilation
       -Wcast-align  # ->
     # -Wshadow      # -> e.g. when a parameter is named like a member, too many warnings, disabled for now
+      -fvisibility=hidden
 )
 
 set(DEFAULT_COMPILE_FLAGS
