@@ -12,7 +12,7 @@ namespace glbinding
 
 %s
 const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsByStringMaps =
-{
+{ {
     Meta_EnumsByString_0,
     Meta_EnumsByString_A,
     Meta_EnumsByString_B,
@@ -40,7 +40,7 @@ const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsBySt
     Meta_EnumsByString_X,
     Meta_EnumsByString_Y,
     Meta_EnumsByString_Z
-};
+} };
 
 } // namespace glbinding
 

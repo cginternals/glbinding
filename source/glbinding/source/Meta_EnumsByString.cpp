@@ -42,7 +42,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_0 =
     { "GL_4_BYTES", GLenum::GL_4_BYTES },
     { "GL_4_BYTES_NV", GLenum::GL_4_BYTES_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_A =
 {
     { "GL_ABGR_EXT", GLenum::GL_ABGR_EXT },
@@ -188,7 +188,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_A =
     { "GL_AVERAGE_EXT", GLenum::GL_AVERAGE_EXT },
     { "GL_AVERAGE_HP", GLenum::GL_AVERAGE_HP }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_B =
 {
     { "GL_BACK", GLenum::GL_BACK },
@@ -289,7 +289,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_B =
     { "GL_BUMP_TEX_UNITS_ATI", GLenum::GL_BUMP_TEX_UNITS_ATI },
     { "GL_BYTE", GLenum::GL_BYTE }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_C =
 {
     { "GL_C3F_V3F", GLenum::GL_C3F_V3F },
@@ -757,7 +757,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_C =
     { "GL_CURRENT_WEIGHT_ARB", GLenum::GL_CURRENT_WEIGHT_ARB },
     { "GL_CW", GLenum::GL_CW }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_D =
 {
     { "GL_DARKEN_KHR", GLenum::GL_DARKEN_KHR },
@@ -1057,7 +1057,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_D =
     { "GL_DYNAMIC_READ", GLenum::GL_DYNAMIC_READ },
     { "GL_DYNAMIC_READ_ARB", GLenum::GL_DYNAMIC_READ_ARB }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_E =
 {
     { "GL_EDGE_FLAG", GLenum::GL_EDGE_FLAG },
@@ -1133,7 +1133,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_E =
     { "GL_EYE_RADIAL_NV", GLenum::GL_EYE_RADIAL_NV },
     { "GL_E_TIMES_F_NV", GLenum::GL_E_TIMES_F_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_F =
 {
     { "GL_FACTOR_MAX_AMD", GLenum::GL_FACTOR_MAX_AMD },
@@ -1374,7 +1374,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_F =
     { "GL_FUNC_SUBTRACT", GLenum::GL_FUNC_SUBTRACT },
     { "GL_FUNC_SUBTRACT_EXT", GLenum::GL_FUNC_SUBTRACT_EXT }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_G =
 {
     { "GL_GENERATE_MIPMAP", GLenum::GL_GENERATE_MIPMAP },
@@ -1426,7 +1426,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_G =
     { "GL_GUILTY_CONTEXT_RESET", GLenum::GL_GUILTY_CONTEXT_RESET },
     { "GL_GUILTY_CONTEXT_RESET_ARB", GLenum::GL_GUILTY_CONTEXT_RESET_ARB }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_H =
 {
     { "GL_HALF_APPLE", GLenum::GL_HALF_APPLE },
@@ -1473,7 +1473,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_H =
     { "GL_HSL_SATURATION_KHR", GLenum::GL_HSL_SATURATION_KHR },
     { "GL_HSL_SATURATION_NV", GLenum::GL_HSL_SATURATION_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_I =
 {
     { "GL_IDENTITY_NV", GLenum::GL_IDENTITY_NV },
@@ -1723,17 +1723,14 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_I =
     { "GL_IUI_V2F_EXT", GLenum::GL_IUI_V2F_EXT },
     { "GL_IUI_V3F_EXT", GLenum::GL_IUI_V3F_EXT }
 };
-    
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString_J =
-{
-    
-};
-    
+
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString_J;
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_K =
 {
     { "GL_KEEP", GLenum::GL_KEEP }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_L =
 {
     { "GL_LARGE_CCW_ARC_TO_NV", GLenum::GL_LARGE_CCW_ARC_TO_NV },
@@ -1882,7 +1879,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_L =
     { "GL_LUMINANCE_INTEGER_EXT", GLenum::GL_LUMINANCE_INTEGER_EXT },
     { "GL_LUMINANCE_SNORM", GLenum::GL_LUMINANCE_SNORM }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_M =
 {
     { "GL_MAD_ATI", GLenum::GL_MAD_ATI },
@@ -2433,7 +2430,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_M =
     { "GL_MUL_ATI", GLenum::GL_MUL_ATI },
     { "GL_MVP_MATRIX_EXT", GLenum::GL_MVP_MATRIX_EXT }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_N =
 {
     { "GL_N3F_V3F", GLenum::GL_N3F_V3F },
@@ -2512,7 +2509,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_N =
     { "GL_NUM_VIDEO_CAPTURE_STREAMS_NV", GLenum::GL_NUM_VIDEO_CAPTURE_STREAMS_NV },
     { "GL_NUM_VIRTUAL_PAGE_SIZES_ARB", GLenum::GL_NUM_VIRTUAL_PAGE_SIZES_ARB }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_O =
 {
     { "GL_OBJECT_ACTIVE_ATTRIBUTES_ARB", GLenum::GL_OBJECT_ACTIVE_ATTRIBUTES_ARB },
@@ -2659,7 +2656,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_O =
     { "GL_OVERLAY_KHR", GLenum::GL_OVERLAY_KHR },
     { "GL_OVERLAY_NV", GLenum::GL_OVERLAY_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_P =
 {
     { "GL_PACK_ALIGNMENT", GLenum::GL_PACK_ALIGNMENT },
@@ -3054,7 +3051,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_P =
     { "GL_PROXY_TEXTURE_RECTANGLE_NV", GLenum::GL_PROXY_TEXTURE_RECTANGLE_NV },
     { "GL_PURGEABLE_APPLE", GLenum::GL_PURGEABLE_APPLE }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Q =
 {
     { "GL_Q", GLenum::GL_Q },
@@ -3106,7 +3103,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Q =
     { "GL_QUERY_WAIT_INVERTED", GLenum::GL_QUERY_WAIT_INVERTED },
     { "GL_QUERY_WAIT_NV", GLenum::GL_QUERY_WAIT_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_R =
 {
     { "GL_R", GLenum::GL_R },
@@ -3414,7 +3411,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_R =
     { "GL_ROUNDED_RECT_NV", GLenum::GL_ROUNDED_RECT_NV },
     { "GL_ROUND_NV", GLenum::GL_ROUND_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_S =
 {
     { "GL_S", GLenum::GL_S },
@@ -3795,7 +3792,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_S =
     { "GL_SYNC_X11_FENCE_EXT", GLenum::GL_SYNC_X11_FENCE_EXT },
     { "GL_SYSTEM_FONT_NAME_NV", GLenum::GL_SYSTEM_FONT_NAME_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_T =
 {
     { "GL_T", GLenum::GL_T },
@@ -4250,7 +4247,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_T =
     { "GL_TRIANGULAR_NV", GLenum::GL_TRIANGULAR_NV },
     { "GL_TYPE", GLenum::GL_TYPE }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_U =
 {
     { "GL_UNCORRELATED_NV", GLenum::GL_UNCORRELATED_NV },
@@ -4425,7 +4422,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_U =
     { "GL_UTF16_NV", GLenum::GL_UTF16_NV },
     { "GL_UTF8_NV", GLenum::GL_UTF8_NV }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_V =
 {
     { "GL_V2F", GLenum::GL_V2F },
@@ -4633,7 +4630,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_V =
     { "GL_VIVIDLIGHT_NV", GLenum::GL_VIVIDLIGHT_NV },
     { "GL_VOLATILE_APPLE", GLenum::GL_VOLATILE_APPLE }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_W =
 {
     { "GL_WAIT_FAILED", GLenum::GL_WAIT_FAILED },
@@ -4658,14 +4655,14 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_W =
     { "GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV", GLenum::GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV },
     { "GL_W_EXT", GLenum::GL_W_EXT }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_X =
 {
     { "GL_XOR", GLenum::GL_XOR },
     { "GL_XOR_NV", GLenum::GL_XOR_NV },
     { "GL_X_EXT", GLenum::GL_X_EXT }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Y =
 {
     { "GL_YCBAYCR8A_4224_NV", GLenum::GL_YCBAYCR8A_4224_NV },
@@ -4678,7 +4675,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Y =
     { "GL_YCRCB_SGIX", GLenum::GL_YCRCB_SGIX },
     { "GL_Y_EXT", GLenum::GL_Y_EXT }
 };
-    
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Z =
 {
     { "GL_Z4Y12Z4CB12Z4A12Z4Y12Z4CR12Z4A12_4224_NV", GLenum::GL_Z4Y12Z4CB12Z4A12Z4Y12Z4CR12Z4A12_4224_NV },
@@ -4693,9 +4690,9 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Z =
     { "GL_ZOOM_Y", GLenum::GL_ZOOM_Y },
     { "GL_Z_EXT", GLenum::GL_Z_EXT }
 };
-    
+
 const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsByStringMaps =
-{
+{ {
     Meta_EnumsByString_0,
     Meta_EnumsByString_A,
     Meta_EnumsByString_B,
@@ -4723,7 +4720,7 @@ const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsBySt
     Meta_EnumsByString_X,
     Meta_EnumsByString_Y,
     Meta_EnumsByString_Z
-};
+} };
 
 } // namespace glbinding
 

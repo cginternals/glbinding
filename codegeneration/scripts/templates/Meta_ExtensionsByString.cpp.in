@@ -13,7 +13,7 @@ namespace glbinding
 
 %s
 const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_ExtensionsByStringMaps =
-{
+{ {
     Meta_ExtensionsByString_0,
     Meta_ExtensionsByString_A,
     Meta_ExtensionsByString_B,
@@ -41,6 +41,6 @@ const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_Exte
     Meta_ExtensionsByString_X,
     Meta_ExtensionsByString_Y,
     Meta_ExtensionsByString_Z
-};
+} };
 
 } // namespace glbinding

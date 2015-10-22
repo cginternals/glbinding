@@ -91,7 +91,7 @@ def metaStringsByBitfieldGroup(group):
 {
     %s
 };
-    """ % (group.name, group.name, ",\n\t".join([ metaEnumToString(e, group.name) for e in sorted(group.enums) ]))
+""" % (group.name, group.name, ",\n\t".join([ metaEnumToString(e, group.name) for e in sorted(group.enums) ]))
 
 
 def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
@@ -143,11 +143,15 @@ def metaBitfieldsByStringGroup(tuples, key):
 
     postfix = '_' + key
 
-    return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s =
+    if not tuples:
+        return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s;
+""" % (postfix)
+    else:
+        return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s =
 {
 %s%s
 };
-    """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", static_cast<GLbitfield>(%s::%s) }' % (t[0], t[1], t[0]) for t in tuples ]))
+""" % (postfix, tab, (",\n" + tab).join([ '{ "%s", static_cast<GLbitfield>(%s::%s) }' % (t[0], t[1], t[0]) for t in tuples ]))
 
 
 def genMetaBitfieldByString(bitfGroups, outputdir, outputfile):
@@ -202,11 +206,15 @@ def metaEnumsByStringGroup(type, identifier, enums, key):
     if key:
         postfix = '_' + key
 
-    return """const std::unordered_map<std::string, %s> Meta_%ssByString%s =
+    if not enums:
+        return """const std::unordered_map<std::string, %s> Meta_%ssByString%s;
+""" % (type, identifier, postfix)
+    else:
+        return """const std::unordered_map<std::string, %s> Meta_%ssByString%s =
 {
 %s%s
 };
-    """ % (type, identifier, postfix, tab, (",\n" + tab).join([ '{ "%s", %s::%s }' % (e, type, e) for e in enums ]))
+""" % (type, identifier, postfix, tab, (",\n" + tab).join([ '{ "%s", %s::%s }' % (e, type, e) for e in enums ]))
 
 
 def genMetaEnumsByString(enums, outputdir, outputfile, type, identifier):
@@ -247,11 +255,15 @@ def metaExtensionsByFunctionStringGroup(tuples, key):
 
     postfix = '_' + key
 
-    return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s =
+    if not tuples:
+        return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s;
+""" % (postfix)
+    else:
+        return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s =
 {
 %s%s
 };
-    """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", { %s } }' % (t[0],
+""" % (postfix, tab, (",\n" + tab).join([ '{ "%s", { %s } }' % (t[0],
         ", ".join([ "GLextension::" + e for e in t[1] ])) for t in tuples ]))
 
 
@@ -287,11 +299,15 @@ def metaExtensionsByStringGroup(extensions, key):
 
     postfix = '_' + key
 
-    return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s =
+    if not extensions:
+        return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s;
+""" % (postfix)
+    else:
+        return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s =
 {
 %s%s
 };
-    """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", GLextension::%s }' % (e, e) for e in extensions ]))  
+""" % (postfix, tab, (",\n" + tab).join([ '{ "%s", GLextension::%s }' % (e, e) for e in extensions ]))  
 
 
 def genMetaExtensionsByString(extensions, outputdir, outputfile):    

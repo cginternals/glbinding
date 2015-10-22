@@ -16,7 +16,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_0 =
     { "GL_4X_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestModMaskATI::GL_4X_BIT_ATI) },
     { "GL_8X_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestModMaskATI::GL_8X_BIT_ATI) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_A =
 {
     { "GL_ACCUM_BUFFER_BIT", static_cast<GLbitfield>(AttribMask::GL_ACCUM_BUFFER_BIT) },
@@ -28,7 +28,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_A =
     { "GL_ATOMIC_COUNTER_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_ATOMIC_COUNTER_BARRIER_BIT) },
     { "GL_ATOMIC_COUNTER_BARRIER_BIT_EXT", static_cast<GLbitfield>(MemoryBarrierMask::GL_ATOMIC_COUNTER_BARRIER_BIT_EXT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_B =
 {
     { "GL_BIAS_BIT_ATI", static_cast<GLbitfield>(FragmentShaderColorModMaskATI::GL_BIAS_BIT_ATI) },
@@ -38,7 +38,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_B =
     { "GL_BUFFER_UPDATE_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_BUFFER_UPDATE_BARRIER_BIT) },
     { "GL_BUFFER_UPDATE_BARRIER_BIT_EXT", static_cast<GLbitfield>(MemoryBarrierMask::GL_BUFFER_UPDATE_BARRIER_BIT_EXT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_C =
 {
     { "GL_CLIENT_ALL_ATTRIB_BITS", static_cast<GLbitfield>(ClientAttribMask::GL_CLIENT_ALL_ATTRIB_BITS) },
@@ -65,7 +65,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_C =
     { "GL_COVERAGE_BUFFER_BIT_NV", static_cast<GLbitfield>(ClearBufferMask::GL_COVERAGE_BUFFER_BIT_NV) },
     { "GL_CURRENT_BIT", static_cast<GLbitfield>(AttribMask::GL_CURRENT_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_D =
 {
     { "GL_DEPTH_BUFFER_BIT", static_cast<GLbitfield>(AttribMask::GL_DEPTH_BUFFER_BIT) },
@@ -73,7 +73,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_D =
     { "GL_DYNAMIC_STORAGE_BIT", static_cast<GLbitfield>(BufferStorageMask::GL_DYNAMIC_STORAGE_BIT) },
     { "GL_DYNAMIC_STORAGE_BIT", static_cast<GLbitfield>(MapBufferUsageMask::GL_DYNAMIC_STORAGE_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_E =
 {
     { "GL_EDGEFLAG_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_EDGEFLAG_BIT_PGI) },
@@ -83,7 +83,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_E =
     { "GL_ENABLE_BIT", static_cast<GLbitfield>(AttribMask::GL_ENABLE_BIT) },
     { "GL_EVAL_BIT", static_cast<GLbitfield>(AttribMask::GL_EVAL_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_F =
 {
     { "GL_FOG_BIT", static_cast<GLbitfield>(AttribMask::GL_FOG_BIT) },
@@ -105,7 +105,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_F =
     { "GL_FRAMEBUFFER_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_FRAMEBUFFER_BARRIER_BIT) },
     { "GL_FRAMEBUFFER_BARRIER_BIT_EXT", static_cast<GLbitfield>(MemoryBarrierMask::GL_FRAMEBUFFER_BARRIER_BIT_EXT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_G =
 {
     { "GL_GEOMETRY_DEFORMATION_BIT_SGIX", static_cast<GLbitfield>(FfdMaskSGIX::GL_GEOMETRY_DEFORMATION_BIT_SGIX) },
@@ -121,37 +121,31 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_G =
     { "GL_GLYPH_WIDTH_BIT_NV", static_cast<GLbitfield>(PathRenderingMaskNV::GL_GLYPH_WIDTH_BIT_NV) },
     { "GL_GREEN_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestMaskATI::GL_GREEN_BIT_ATI) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_H =
 {
     { "GL_HALF_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestModMaskATI::GL_HALF_BIT_ATI) },
     { "GL_HINT_BIT", static_cast<GLbitfield>(AttribMask::GL_HINT_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_I =
 {
     { "GL_INDEX_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_INDEX_BIT_PGI) },
     { "GL_ITALIC_BIT_NV", static_cast<GLbitfield>(PathFontStyle::GL_ITALIC_BIT_NV) },
     { "GL_ITALIC_BIT_NV", static_cast<GLbitfield>(PathRenderingMaskNV::GL_ITALIC_BIT_NV) }
 };
-    
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_J =
-{
-    
-};
-    
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_K =
-{
-    
-};
-    
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_J;
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_K;
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_L =
 {
     { "GL_LIGHTING_BIT", static_cast<GLbitfield>(AttribMask::GL_LIGHTING_BIT) },
     { "GL_LINE_BIT", static_cast<GLbitfield>(AttribMask::GL_LINE_BIT) },
     { "GL_LIST_BIT", static_cast<GLbitfield>(AttribMask::GL_LIST_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_M =
 {
     { "GL_MAP_COHERENT_BIT", static_cast<GLbitfield>(BufferAccessMask::GL_MAP_COHERENT_BIT) },
@@ -186,18 +180,15 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_M =
     { "GL_MULTISAMPLE_BIT_ARB", static_cast<GLbitfield>(AttribMask::GL_MULTISAMPLE_BIT_ARB) },
     { "GL_MULTISAMPLE_BIT_EXT", static_cast<GLbitfield>(AttribMask::GL_MULTISAMPLE_BIT_EXT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_N =
 {
     { "GL_NEGATE_BIT_ATI", static_cast<GLbitfield>(FragmentShaderColorModMaskATI::GL_NEGATE_BIT_ATI) },
     { "GL_NORMAL_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_NORMAL_BIT_PGI) }
 };
-    
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_O =
-{
-    
-};
-    
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_O;
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_P =
 {
     { "GL_PERFQUERY_GLOBAL_CONTEXT_INTEL", static_cast<GLbitfield>(PerformanceQueryCapsMaskINTEL::GL_PERFQUERY_GLOBAL_CONTEXT_INTEL) },
@@ -209,18 +200,18 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_P =
     { "GL_POLYGON_BIT", static_cast<GLbitfield>(AttribMask::GL_POLYGON_BIT) },
     { "GL_POLYGON_STIPPLE_BIT", static_cast<GLbitfield>(AttribMask::GL_POLYGON_STIPPLE_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Q =
 {
     { "GL_QUARTER_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestModMaskATI::GL_QUARTER_BIT_ATI) },
     { "GL_QUERY_BUFFER_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_QUERY_BUFFER_BARRIER_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_R =
 {
     { "GL_RED_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestMaskATI::GL_RED_BIT_ATI) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_S =
 {
     { "GL_SATURATE_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestModMaskATI::GL_SATURATE_BIT_ATI) },
@@ -234,7 +225,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_S =
     { "GL_STENCIL_BUFFER_BIT", static_cast<GLbitfield>(ClearBufferMask::GL_STENCIL_BUFFER_BIT) },
     { "GL_SYNC_FLUSH_COMMANDS_BIT", static_cast<GLbitfield>(SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_T =
 {
     { "GL_TESS_CONTROL_SHADER_BIT", static_cast<GLbitfield>(UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT) },
@@ -254,14 +245,14 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_T =
     { "GL_TRANSFORM_FEEDBACK_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_TRANSFORM_FEEDBACK_BARRIER_BIT) },
     { "GL_TRANSFORM_FEEDBACK_BARRIER_BIT_EXT", static_cast<GLbitfield>(MemoryBarrierMask::GL_TRANSFORM_FEEDBACK_BARRIER_BIT_EXT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_U =
 {
     { "GL_UNIFORM_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_UNIFORM_BARRIER_BIT) },
     { "GL_UNIFORM_BARRIER_BIT_EXT", static_cast<GLbitfield>(MemoryBarrierMask::GL_UNIFORM_BARRIER_BIT_EXT) },
     { "GL_UNUSED_BIT", static_cast<GLbitfield>(UnusedMask::GL_UNUSED_BIT) }
 };
-    
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_V =
 {
     { "GL_VERTEX23_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_VERTEX23_BIT_PGI) },
@@ -271,29 +262,17 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_V =
     { "GL_VERTEX_SHADER_BIT", static_cast<GLbitfield>(UseProgramStageMask::GL_VERTEX_SHADER_BIT) },
     { "GL_VIEWPORT_BIT", static_cast<GLbitfield>(AttribMask::GL_VIEWPORT_BIT) }
 };
-    
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_W =
-{
-    
-};
-    
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_X =
-{
-    
-};
-    
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Y =
-{
-    
-};
-    
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Z =
-{
-    
-};
-    
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_W;
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_X;
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Y;
+
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Z;
+
 const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps =
-{
+{ {
     Meta_BitfieldsByString_0,
     Meta_BitfieldsByString_A,
     Meta_BitfieldsByString_B,
@@ -321,7 +300,7 @@ const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_Bitfi
     Meta_BitfieldsByString_X,
     Meta_BitfieldsByString_Y,
     Meta_BitfieldsByString_Z
-};
+} };
 
 } // namespace glbinding
 
