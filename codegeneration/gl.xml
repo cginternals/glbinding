@@ -7894,7 +7894,10 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9136" name="GL_TEXTURE_SAMPLES_IMG"/>
         <enum value="0x9137" name="GL_COMPRESSED_RGBA_PVRTC_2BPPV2_IMG"/>
         <enum value="0x9138" name="GL_COMPRESSED_RGBA_PVRTC_4BPPV2_IMG"/>
-            <unused start="0x9139" end="0x913F" vendor="IMG"/>
+        <enum value="0x9139" name="GL_CUBIC_IMG"/>
+        <enum value="0x913A" name="GL_CUBIC_MIPMAP_NEAREST_IMG"/>
+        <enum value="0x913B" name="GL_CUBIC_MIPMAP_LINEAR_IMG"/>
+            <unused start="0x913C" end="0x913F" vendor="IMG"/>
     </enums>
 
     <enums namespace="GL" start="0x9140" end="0x923F" vendor="AMD" comment="Khronos bugs 5899, 6004">
@@ -42259,6 +42262,13 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FRAGMENT_ALPHA_MODULATE_IMG"/>
                 <enum name="GL_ADD_BLEND_IMG"/>
                 <enum name="GL_DOT3_RGBA_IMG"/>
+            </require>
+        </extension>
+        <extension name="GL_IMG_texture_filter_cubic" supported="gles2">
+            <require>
+                <enum name="GL_CUBIC_IMG"/>
+                <enum name="GL_CUBIC_MIPMAP_NEAREST_IMG"/>
+                <enum name="GL_CUBIC_MIPMAP_LINEAR_IMG"/>
             </require>
         </extension>
         <extension name="GL_IMG_user_clip_plane" supported="gles1">

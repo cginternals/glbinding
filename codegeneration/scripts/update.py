@@ -4,6 +4,8 @@ import os, sys, getopt, io, subprocess
 
 def update(outputfile, revisionfile):
     url = "https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml"
+    user = "anonymous"
+    password = "anonymous"
     
     revision = 0
 
@@ -25,7 +27,7 @@ def update(outputfile, revisionfile):
 
     print("Retrieving latest revision of gl.xml")
 
-    svninfo = subprocess.Popen(["svn", "info", url], stdout=subprocess.PIPE)
+    svninfo = subprocess.Popen(["svn", "info", "--username", user, "--password", password, url], stdout=subprocess.PIPE)
     newrevisioninfo = svninfo.communicate()[0]
     
     if sys.version_info < (3,):
@@ -53,7 +55,7 @@ def update(outputfile, revisionfile):
     
     print ("Local revision of " + outputfile + " is now " + str(newrevision))
     
-    os.system("svn export --force --quiet " + url + " " + outputfile)
+    os.system("svn export --username " + user + " --password " + password + " --force --quiet " + url + " " + outputfile)
     os.system("git diff " + outputfile)
 
 
