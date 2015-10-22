@@ -87,10 +87,10 @@ def metaStringsByBitfieldGroup(group):
 
     # this creates the meta map as well as the overloaded getString function
 
-    return """const std::unordered_map<%s, std::string> Meta_StringsBy%s 
-{ {
+    return """const std::unordered_map<%s, std::string> Meta_StringsBy%s =
+{
     %s
-} };
+};
     """ % (group.name, group.name, ",\n\t".join([ metaEnumToString(e, group.name) for e in sorted(group.enums) ]))
 
 
@@ -143,10 +143,10 @@ def metaBitfieldsByStringGroup(tuples, key):
 
     postfix = '_' + key
 
-    return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s 
-{ {
+    return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s =
+{
 %s%s
-} };
+};
     """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", static_cast<GLbitfield>(%s::%s) }' % (t[0], t[1], t[0]) for t in tuples ]))
 
 
@@ -202,10 +202,10 @@ def metaEnumsByStringGroup(type, identifier, enums, key):
     if key:
         postfix = '_' + key
 
-    return """const std::unordered_map<std::string, %s> Meta_%ssByString%s 
-{ {
+    return """const std::unordered_map<std::string, %s> Meta_%ssByString%s =
+{
 %s%s
-} };
+};
     """ % (type, identifier, postfix, tab, (",\n" + tab).join([ '{ "%s", %s::%s }' % (e, type, e) for e in enums ]))
 
 
@@ -247,10 +247,10 @@ def metaExtensionsByFunctionStringGroup(tuples, key):
 
     postfix = '_' + key
 
-    return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s 
-{ {
+    return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s =
+{
 %s%s
-} };
+};
     """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", { %s } }' % (t[0],
         ", ".join([ "GLextension::" + e for e in t[1] ])) for t in tuples ]))
 
@@ -287,10 +287,10 @@ def metaExtensionsByStringGroup(extensions, key):
 
     postfix = '_' + key
 
-    return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s 
-{ {
+    return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s =
+{
 %s%s
-} };
+};
     """ % (postfix, tab, (",\n" + tab).join([ '{ "%s", GLextension::%s }' % (e, e) for e in extensions ]))  
 
 

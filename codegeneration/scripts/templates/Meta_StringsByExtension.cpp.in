@@ -10,10 +10,10 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const std::unordered_map<GLextension, std::string> Meta_StringsByExtension
-{ {
+const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
+{
     %s
-} };
+};
 
 } // namespace glbinding
 

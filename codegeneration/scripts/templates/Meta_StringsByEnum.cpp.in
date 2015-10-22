@@ -10,10 +10,10 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
-{ {
+const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
+{
     %s
-} };
+};
 
 } // namespace glbinding
 

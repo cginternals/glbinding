@@ -11,8 +11,8 @@ namespace glbinding
 {
 
 %s
-const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps
-{ {
+const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps =
+{
     Meta_BitfieldsByString_0,
     Meta_BitfieldsByString_A,
     Meta_BitfieldsByString_B,
@@ -40,7 +40,7 @@ const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_Bitfi
     Meta_BitfieldsByString_X,
     Meta_BitfieldsByString_Y,
     Meta_BitfieldsByString_Z
-} };
+};
 
 } // namespace glbinding
 

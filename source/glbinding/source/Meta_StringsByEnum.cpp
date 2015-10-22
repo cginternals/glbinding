@@ -10,8 +10,8 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
-{ {
+const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
+{
     { GLenum::GL_NEXT_BUFFER_NV, "GL_NEXT_BUFFER_NV" },
     { GLenum::GL_SKIP_COMPONENTS4_NV, "GL_SKIP_COMPONENTS4_NV" },
     { GLenum::GL_SKIP_COMPONENTS3_NV, "GL_SKIP_COMPONENTS3_NV" },
@@ -3459,7 +3459,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum
     { GLenum::GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM, "GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM" },
     { GLenum::GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM, "GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM" },
     { GLenum::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM, "GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM" }
-} };
+};
 
 } // namespace glbinding
 
