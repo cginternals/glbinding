@@ -2,6 +2,8 @@
 // on gcc, this file is used since compilation of single file is fast
 // for msvc, in contrast, this file is not added to the project, since /bigobj would be required
 
+#include "Binding_pch.h"
+
 #include "Binding_objects_a.cpp"
 #include "Binding_objects_b.cpp"
 #include "Binding_objects_c.cpp"

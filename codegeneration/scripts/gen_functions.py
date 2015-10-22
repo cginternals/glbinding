@@ -355,8 +355,6 @@ def genFunctions(api, commands, outputdir, outputfile):
 
 # ALL FUNCTION INSTANTIATION FORWARD DECLARATIONS
 
-#functionForward(api, c, feature, version) for c in pureCommands ])
-
 def functionForward2(function):
 
     params = ", ".join([paramSignature(p, False) + " " + paramPass(p) for p in function.params])
@@ -367,14 +365,10 @@ def functionForward2(function):
 def functionForwardGroup(functions, key):
 
     if not functions:
-        return "// No functions for GROUP_%s" % (key)
+        return ""
 
-    return """#if !defined(GROUPED) || defined(GROUP_%s)
-
-%s
-
-#endif // GROUPED && GROUP_%s
-    """ % (key, "\n".join([ functionForward2(c) for c in functions ]), key)  
+    return """%s
+    """ % ("\n".join([ functionForward2(c) for c in functions ])) 
 
 
 def genForwardFunctions(api, commands, outputdir, outputfile):
