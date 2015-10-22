@@ -12,14 +12,14 @@ namespace glbinding
 {
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_0 
-{
+{ {
     { "GL_3DFX_multisample", GLextension::GL_3DFX_multisample },
     { "GL_3DFX_tbuffer", GLextension::GL_3DFX_tbuffer },
     { "GL_3DFX_texture_compression_FXT1", GLextension::GL_3DFX_texture_compression_FXT1 }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A 
-{
+{ {
     { "GL_AMD_blend_minmax_factor", GLextension::GL_AMD_blend_minmax_factor },
     { "GL_AMD_conservative_depth", GLextension::GL_AMD_conservative_depth },
     { "GL_AMD_debug_output", GLextension::GL_AMD_debug_output },
@@ -246,25 +246,25 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A
     { "GL_ATI_vertex_array_object", GLextension::GL_ATI_vertex_array_object },
     { "GL_ATI_vertex_attrib_array_object", GLextension::GL_ATI_vertex_attrib_array_object },
     { "GL_ATI_vertex_streams", GLextension::GL_ATI_vertex_streams }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_B 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_C 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_D 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E 
-{
+{ {
     { "GL_EXT_422_pixels", GLextension::GL_EXT_422_pixels },
     { "GL_EXT_abgr", GLextension::GL_EXT_abgr },
     { "GL_EXT_bgra", GLextension::GL_EXT_bgra },
@@ -366,29 +366,29 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E
     { "GL_EXT_vertex_shader", GLextension::GL_EXT_vertex_shader },
     { "GL_EXT_vertex_weighting", GLextension::GL_EXT_vertex_weighting },
     { "GL_EXT_x11_sync_object", GLextension::GL_EXT_x11_sync_object }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_F 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_G 
-{
+{ {
     { "GL_GREMEDY_frame_terminator", GLextension::GL_GREMEDY_frame_terminator },
     { "GL_GREMEDY_string_marker", GLextension::GL_GREMEDY_string_marker }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_H 
-{
+{ {
     { "GL_HP_convolution_border_modes", GLextension::GL_HP_convolution_border_modes },
     { "GL_HP_image_transform", GLextension::GL_HP_image_transform },
     { "GL_HP_occlusion_test", GLextension::GL_HP_occlusion_test },
     { "GL_HP_texture_lighting", GLextension::GL_HP_texture_lighting }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_I 
-{
+{ {
     { "GL_IBM_cull_vertex", GLextension::GL_IBM_cull_vertex },
     { "GL_IBM_multimode_draw_arrays", GLextension::GL_IBM_multimode_draw_arrays },
     { "GL_IBM_rasterpos_clip", GLextension::GL_IBM_rasterpos_clip },
@@ -403,15 +403,15 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_I
     { "GL_INTEL_map_texture", GLextension::GL_INTEL_map_texture },
     { "GL_INTEL_parallel_arrays", GLextension::GL_INTEL_parallel_arrays },
     { "GL_INTEL_performance_query", GLextension::GL_INTEL_performance_query }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_J 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_K 
-{
+{ {
     { "GL_KHR_blend_equation_advanced", GLextension::GL_KHR_blend_equation_advanced },
     { "GL_KHR_blend_equation_advanced_coherent", GLextension::GL_KHR_blend_equation_advanced_coherent },
     { "GL_KHR_context_flush_control", GLextension::GL_KHR_context_flush_control },
@@ -422,24 +422,24 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_K
     { "GL_KHR_texture_compression_astc_hdr", GLextension::GL_KHR_texture_compression_astc_hdr },
     { "GL_KHR_texture_compression_astc_ldr", GLextension::GL_KHR_texture_compression_astc_ldr },
     { "GL_KHR_texture_compression_astc_sliced_3d", GLextension::GL_KHR_texture_compression_astc_sliced_3d }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_L 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_M 
-{
+{ {
     { "GL_MESAX_texture_stack", GLextension::GL_MESAX_texture_stack },
     { "GL_MESA_pack_invert", GLextension::GL_MESA_pack_invert },
     { "GL_MESA_resize_buffers", GLextension::GL_MESA_resize_buffers },
     { "GL_MESA_window_pos", GLextension::GL_MESA_window_pos },
     { "GL_MESA_ycbcr_texture", GLextension::GL_MESA_ycbcr_texture }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N 
-{
+{ {
     { "GL_NVX_conditional_render", GLextension::GL_NVX_conditional_render },
     { "GL_NVX_gpu_memory_info", GLextension::GL_NVX_gpu_memory_info },
     { "GL_NV_bindless_multi_draw_indirect", GLextension::GL_NV_bindless_multi_draw_indirect },
@@ -536,10 +536,10 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N
     { "GL_NV_vertex_program4", GLextension::GL_NV_vertex_program4 },
     { "GL_NV_video_capture", GLextension::GL_NV_video_capture },
     { "GL_NV_viewport_array2", GLextension::GL_NV_viewport_array2 }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_O 
-{
+{ {
     { "GL_OES_byte_coordinates", GLextension::GL_OES_byte_coordinates },
     { "GL_OES_compressed_paletted_texture", GLextension::GL_OES_compressed_paletted_texture },
     { "GL_OES_fixed_point", GLextension::GL_OES_fixed_point },
@@ -551,26 +551,26 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_O
     { "GL_OML_subsample", GLextension::GL_OML_subsample },
     { "GL_OVR_multiview", GLextension::GL_OVR_multiview },
     { "GL_OVR_multiview2", GLextension::GL_OVR_multiview2 }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_P 
-{
+{ {
     { "GL_PGI_misc_hints", GLextension::GL_PGI_misc_hints },
     { "GL_PGI_vertex_hints", GLextension::GL_PGI_vertex_hints }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Q 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_R 
-{
+{ {
     { "GL_REND_screen_coordinates", GLextension::GL_REND_screen_coordinates }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_S 
-{
+{ {
     { "GL_S3_s3tc", GLextension::GL_S3_s3tc },
     { "GL_SGIS_detail_texture", GLextension::GL_SGIS_detail_texture },
     { "GL_SGIS_fog_function", GLextension::GL_SGIS_fog_function },
@@ -635,46 +635,46 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_S
     { "GL_SUN_slice_accum", GLextension::GL_SUN_slice_accum },
     { "GL_SUN_triangle_list", GLextension::GL_SUN_triangle_list },
     { "GL_SUN_vertex", GLextension::GL_SUN_vertex }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_T 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_U 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_V 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_W 
-{
+{ {
     { "GL_WIN_phong_shading", GLextension::GL_WIN_phong_shading },
     { "GL_WIN_specular_fog", GLextension::GL_WIN_specular_fog }
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_X 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Y 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Z 
-{
+{ {
     
-};
+} };
     
 const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_ExtensionsByStringMaps
-{
+{ {
     Meta_ExtensionsByString_0,
     Meta_ExtensionsByString_A,
     Meta_ExtensionsByString_B,
@@ -702,6 +702,6 @@ const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_Exte
     Meta_ExtensionsByString_X,
     Meta_ExtensionsByString_Y,
     Meta_ExtensionsByString_Z
-};
+} };
 
 } // namespace glbinding

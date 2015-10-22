@@ -11,7 +11,7 @@ namespace glbinding
 {
 
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_0 
-{
+{ {
     { "GL_1PASS_EXT", GLenum::GL_1PASS_EXT },
     { "GL_1PASS_SGIS", GLenum::GL_1PASS_SGIS },
     { "GL_2D", GLenum::GL_2D },
@@ -41,10 +41,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_0
     { "GL_4PASS_3_SGIS", GLenum::GL_4PASS_3_SGIS },
     { "GL_4_BYTES", GLenum::GL_4_BYTES },
     { "GL_4_BYTES_NV", GLenum::GL_4_BYTES_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_A 
-{
+{ {
     { "GL_ABGR_EXT", GLenum::GL_ABGR_EXT },
     { "GL_ACCUM", GLenum::GL_ACCUM },
     { "GL_ACCUM_ADJACENT_PAIRS_NV", GLenum::GL_ACCUM_ADJACENT_PAIRS_NV },
@@ -187,10 +187,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_A
     { "GL_AUX_DEPTH_STENCIL_APPLE", GLenum::GL_AUX_DEPTH_STENCIL_APPLE },
     { "GL_AVERAGE_EXT", GLenum::GL_AVERAGE_EXT },
     { "GL_AVERAGE_HP", GLenum::GL_AVERAGE_HP }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_B 
-{
+{ {
     { "GL_BACK", GLenum::GL_BACK },
     { "GL_BACK_LEFT", GLenum::GL_BACK_LEFT },
     { "GL_BACK_NORMALS_HINT_PGI", GLenum::GL_BACK_NORMALS_HINT_PGI },
@@ -288,10 +288,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_B
     { "GL_BUMP_TARGET_ATI", GLenum::GL_BUMP_TARGET_ATI },
     { "GL_BUMP_TEX_UNITS_ATI", GLenum::GL_BUMP_TEX_UNITS_ATI },
     { "GL_BYTE", GLenum::GL_BYTE }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_C 
-{
+{ {
     { "GL_C3F_V3F", GLenum::GL_C3F_V3F },
     { "GL_C4F_N3F_V3F", GLenum::GL_C4F_N3F_V3F },
     { "GL_C4UB_V2F", GLenum::GL_C4UB_V2F },
@@ -756,10 +756,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_C
     { "GL_CURRENT_VERTEX_WEIGHT_EXT", GLenum::GL_CURRENT_VERTEX_WEIGHT_EXT },
     { "GL_CURRENT_WEIGHT_ARB", GLenum::GL_CURRENT_WEIGHT_ARB },
     { "GL_CW", GLenum::GL_CW }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_D 
-{
+{ {
     { "GL_DARKEN_KHR", GLenum::GL_DARKEN_KHR },
     { "GL_DARKEN_NV", GLenum::GL_DARKEN_NV },
     { "GL_DATA_BUFFER_AMD", GLenum::GL_DATA_BUFFER_AMD },
@@ -1056,10 +1056,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_D
     { "GL_DYNAMIC_DRAW_ARB", GLenum::GL_DYNAMIC_DRAW_ARB },
     { "GL_DYNAMIC_READ", GLenum::GL_DYNAMIC_READ },
     { "GL_DYNAMIC_READ_ARB", GLenum::GL_DYNAMIC_READ_ARB }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_E 
-{
+{ {
     { "GL_EDGE_FLAG", GLenum::GL_EDGE_FLAG },
     { "GL_EDGE_FLAG_ARRAY", GLenum::GL_EDGE_FLAG_ARRAY },
     { "GL_EDGE_FLAG_ARRAY_ADDRESS_NV", GLenum::GL_EDGE_FLAG_ARRAY_ADDRESS_NV },
@@ -1132,10 +1132,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_E
     { "GL_EYE_POINT_SGIS", GLenum::GL_EYE_POINT_SGIS },
     { "GL_EYE_RADIAL_NV", GLenum::GL_EYE_RADIAL_NV },
     { "GL_E_TIMES_F_NV", GLenum::GL_E_TIMES_F_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_F 
-{
+{ {
     { "GL_FACTOR_MAX_AMD", GLenum::GL_FACTOR_MAX_AMD },
     { "GL_FACTOR_MIN_AMD", GLenum::GL_FACTOR_MIN_AMD },
     { "GL_FAILURE_NV", GLenum::GL_FAILURE_NV },
@@ -1373,10 +1373,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_F
     { "GL_FUNC_REVERSE_SUBTRACT_EXT", GLenum::GL_FUNC_REVERSE_SUBTRACT_EXT },
     { "GL_FUNC_SUBTRACT", GLenum::GL_FUNC_SUBTRACT },
     { "GL_FUNC_SUBTRACT_EXT", GLenum::GL_FUNC_SUBTRACT_EXT }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_G 
-{
+{ {
     { "GL_GENERATE_MIPMAP", GLenum::GL_GENERATE_MIPMAP },
     { "GL_GENERATE_MIPMAP_HINT", GLenum::GL_GENERATE_MIPMAP_HINT },
     { "GL_GENERATE_MIPMAP_HINT_SGIS", GLenum::GL_GENERATE_MIPMAP_HINT_SGIS },
@@ -1425,10 +1425,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_G
     { "GL_GREEN_SCALE", GLenum::GL_GREEN_SCALE },
     { "GL_GUILTY_CONTEXT_RESET", GLenum::GL_GUILTY_CONTEXT_RESET },
     { "GL_GUILTY_CONTEXT_RESET_ARB", GLenum::GL_GUILTY_CONTEXT_RESET_ARB }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_H 
-{
+{ {
     { "GL_HALF_APPLE", GLenum::GL_HALF_APPLE },
     { "GL_HALF_BIAS_NEGATE_NV", GLenum::GL_HALF_BIAS_NEGATE_NV },
     { "GL_HALF_BIAS_NORMAL_NV", GLenum::GL_HALF_BIAS_NORMAL_NV },
@@ -1472,10 +1472,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_H
     { "GL_HSL_LUMINOSITY_NV", GLenum::GL_HSL_LUMINOSITY_NV },
     { "GL_HSL_SATURATION_KHR", GLenum::GL_HSL_SATURATION_KHR },
     { "GL_HSL_SATURATION_NV", GLenum::GL_HSL_SATURATION_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_I 
-{
+{ {
     { "GL_IDENTITY_NV", GLenum::GL_IDENTITY_NV },
     { "GL_IGNORE_BORDER_HP", GLenum::GL_IGNORE_BORDER_HP },
     { "GL_IMAGE_1D", GLenum::GL_IMAGE_1D },
@@ -1722,20 +1722,20 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_I
     { "GL_IUI_N3F_V3F_EXT", GLenum::GL_IUI_N3F_V3F_EXT },
     { "GL_IUI_V2F_EXT", GLenum::GL_IUI_V2F_EXT },
     { "GL_IUI_V3F_EXT", GLenum::GL_IUI_V3F_EXT }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_J 
-{
+{ {
     
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_K 
-{
+{ {
     { "GL_KEEP", GLenum::GL_KEEP }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_L 
-{
+{ {
     { "GL_LARGE_CCW_ARC_TO_NV", GLenum::GL_LARGE_CCW_ARC_TO_NV },
     { "GL_LARGE_CW_ARC_TO_NV", GLenum::GL_LARGE_CW_ARC_TO_NV },
     { "GL_LAST_VERTEX_CONVENTION", GLenum::GL_LAST_VERTEX_CONVENTION },
@@ -1881,10 +1881,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_L
     { "GL_LUMINANCE_FLOAT32_ATI", GLenum::GL_LUMINANCE_FLOAT32_ATI },
     { "GL_LUMINANCE_INTEGER_EXT", GLenum::GL_LUMINANCE_INTEGER_EXT },
     { "GL_LUMINANCE_SNORM", GLenum::GL_LUMINANCE_SNORM }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_M 
-{
+{ {
     { "GL_MAD_ATI", GLenum::GL_MAD_ATI },
     { "GL_MAGNITUDE_BIAS_NV", GLenum::GL_MAGNITUDE_BIAS_NV },
     { "GL_MAGNITUDE_SCALE_NV", GLenum::GL_MAGNITUDE_SCALE_NV },
@@ -2432,10 +2432,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_M
     { "GL_MULTISAMPLE_SGIS", GLenum::GL_MULTISAMPLE_SGIS },
     { "GL_MUL_ATI", GLenum::GL_MUL_ATI },
     { "GL_MVP_MATRIX_EXT", GLenum::GL_MVP_MATRIX_EXT }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_N 
-{
+{ {
     { "GL_N3F_V3F", GLenum::GL_N3F_V3F },
     { "GL_NAMED_STRING_LENGTH_ARB", GLenum::GL_NAMED_STRING_LENGTH_ARB },
     { "GL_NAMED_STRING_TYPE_ARB", GLenum::GL_NAMED_STRING_TYPE_ARB },
@@ -2511,10 +2511,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_N
     { "GL_NUM_SPARSE_LEVELS_ARB", GLenum::GL_NUM_SPARSE_LEVELS_ARB },
     { "GL_NUM_VIDEO_CAPTURE_STREAMS_NV", GLenum::GL_NUM_VIDEO_CAPTURE_STREAMS_NV },
     { "GL_NUM_VIRTUAL_PAGE_SIZES_ARB", GLenum::GL_NUM_VIRTUAL_PAGE_SIZES_ARB }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_O 
-{
+{ {
     { "GL_OBJECT_ACTIVE_ATTRIBUTES_ARB", GLenum::GL_OBJECT_ACTIVE_ATTRIBUTES_ARB },
     { "GL_OBJECT_ACTIVE_ATTRIBUTE_MAX_LENGTH_ARB", GLenum::GL_OBJECT_ACTIVE_ATTRIBUTE_MAX_LENGTH_ARB },
     { "GL_OBJECT_ACTIVE_UNIFORMS_ARB", GLenum::GL_OBJECT_ACTIVE_UNIFORMS_ARB },
@@ -2658,10 +2658,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_O
     { "GL_OUT_OF_MEMORY", GLenum::GL_OUT_OF_MEMORY },
     { "GL_OVERLAY_KHR", GLenum::GL_OVERLAY_KHR },
     { "GL_OVERLAY_NV", GLenum::GL_OVERLAY_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_P 
-{
+{ {
     { "GL_PACK_ALIGNMENT", GLenum::GL_PACK_ALIGNMENT },
     { "GL_PACK_CMYK_HINT_EXT", GLenum::GL_PACK_CMYK_HINT_EXT },
     { "GL_PACK_COMPRESSED_BLOCK_DEPTH", GLenum::GL_PACK_COMPRESSED_BLOCK_DEPTH },
@@ -3053,10 +3053,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_P
     { "GL_PROXY_TEXTURE_RECTANGLE_ARB", GLenum::GL_PROXY_TEXTURE_RECTANGLE_ARB },
     { "GL_PROXY_TEXTURE_RECTANGLE_NV", GLenum::GL_PROXY_TEXTURE_RECTANGLE_NV },
     { "GL_PURGEABLE_APPLE", GLenum::GL_PURGEABLE_APPLE }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Q 
-{
+{ {
     { "GL_Q", GLenum::GL_Q },
     { "GL_QUADRATIC_ATTENUATION", GLenum::GL_QUADRATIC_ATTENUATION },
     { "GL_QUADRATIC_CURVE_TO_NV", GLenum::GL_QUADRATIC_CURVE_TO_NV },
@@ -3105,10 +3105,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Q
     { "GL_QUERY_WAIT", GLenum::GL_QUERY_WAIT },
     { "GL_QUERY_WAIT_INVERTED", GLenum::GL_QUERY_WAIT_INVERTED },
     { "GL_QUERY_WAIT_NV", GLenum::GL_QUERY_WAIT_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_R 
-{
+{ {
     { "GL_R", GLenum::GL_R },
     { "GL_R11F_G11F_B10F", GLenum::GL_R11F_G11F_B10F },
     { "GL_R11F_G11F_B10F_EXT", GLenum::GL_R11F_G11F_B10F_EXT },
@@ -3413,10 +3413,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_R
     { "GL_ROUNDED_RECT8_NV", GLenum::GL_ROUNDED_RECT8_NV },
     { "GL_ROUNDED_RECT_NV", GLenum::GL_ROUNDED_RECT_NV },
     { "GL_ROUND_NV", GLenum::GL_ROUND_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_S 
-{
+{ {
     { "GL_S", GLenum::GL_S },
     { "GL_SAMPLER", GLenum::GL_SAMPLER },
     { "GL_SAMPLER_1D", GLenum::GL_SAMPLER_1D },
@@ -3794,10 +3794,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_S
     { "GL_SYNC_STATUS", GLenum::GL_SYNC_STATUS },
     { "GL_SYNC_X11_FENCE_EXT", GLenum::GL_SYNC_X11_FENCE_EXT },
     { "GL_SYSTEM_FONT_NAME_NV", GLenum::GL_SYSTEM_FONT_NAME_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_T 
-{
+{ {
     { "GL_T", GLenum::GL_T },
     { "GL_T2F_C3F_V3F", GLenum::GL_T2F_C3F_V3F },
     { "GL_T2F_C4F_N3F_V3F", GLenum::GL_T2F_C4F_N3F_V3F },
@@ -4249,10 +4249,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_T
     { "GL_TRIANGLE_STRIP_ADJACENCY_EXT", GLenum::GL_TRIANGLE_STRIP_ADJACENCY_EXT },
     { "GL_TRIANGULAR_NV", GLenum::GL_TRIANGULAR_NV },
     { "GL_TYPE", GLenum::GL_TYPE }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_U 
-{
+{ {
     { "GL_UNCORRELATED_NV", GLenum::GL_UNCORRELATED_NV },
     { "GL_UNDEFINED_APPLE", GLenum::GL_UNDEFINED_APPLE },
     { "GL_UNDEFINED_VERTEX", GLenum::GL_UNDEFINED_VERTEX },
@@ -4424,10 +4424,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_U
     { "GL_USE_MISSING_GLYPH_NV", GLenum::GL_USE_MISSING_GLYPH_NV },
     { "GL_UTF16_NV", GLenum::GL_UTF16_NV },
     { "GL_UTF8_NV", GLenum::GL_UTF8_NV }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_V 
-{
+{ {
     { "GL_V2F", GLenum::GL_V2F },
     { "GL_V3F", GLenum::GL_V3F },
     { "GL_VALIDATE_STATUS", GLenum::GL_VALIDATE_STATUS },
@@ -4632,10 +4632,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_V
     { "GL_VIRTUAL_PAGE_SIZE_Z_ARB", GLenum::GL_VIRTUAL_PAGE_SIZE_Z_ARB },
     { "GL_VIVIDLIGHT_NV", GLenum::GL_VIVIDLIGHT_NV },
     { "GL_VOLATILE_APPLE", GLenum::GL_VOLATILE_APPLE }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_W 
-{
+{ {
     { "GL_WAIT_FAILED", GLenum::GL_WAIT_FAILED },
     { "GL_WARPS_PER_SM_NV", GLenum::GL_WARPS_PER_SM_NV },
     { "GL_WARP_SIZE_NV", GLenum::GL_WARP_SIZE_NV },
@@ -4657,17 +4657,17 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_W
     { "GL_WRITE_PIXEL_DATA_RANGE_NV", GLenum::GL_WRITE_PIXEL_DATA_RANGE_NV },
     { "GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV", GLenum::GL_WRITE_PIXEL_DATA_RANGE_POINTER_NV },
     { "GL_W_EXT", GLenum::GL_W_EXT }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_X 
-{
+{ {
     { "GL_XOR", GLenum::GL_XOR },
     { "GL_XOR_NV", GLenum::GL_XOR_NV },
     { "GL_X_EXT", GLenum::GL_X_EXT }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Y 
-{
+{ {
     { "GL_YCBAYCR8A_4224_NV", GLenum::GL_YCBAYCR8A_4224_NV },
     { "GL_YCBCR_422_APPLE", GLenum::GL_YCBCR_422_APPLE },
     { "GL_YCBCR_MESA", GLenum::GL_YCBCR_MESA },
@@ -4677,10 +4677,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Y
     { "GL_YCRCB_444_SGIX", GLenum::GL_YCRCB_444_SGIX },
     { "GL_YCRCB_SGIX", GLenum::GL_YCRCB_SGIX },
     { "GL_Y_EXT", GLenum::GL_Y_EXT }
-};
+} };
     
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Z 
-{
+{ {
     { "GL_Z4Y12Z4CB12Z4A12Z4Y12Z4CR12Z4A12_4224_NV", GLenum::GL_Z4Y12Z4CB12Z4A12Z4Y12Z4CR12Z4A12_4224_NV },
     { "GL_Z4Y12Z4CB12Z4CR12_444_NV", GLenum::GL_Z4Y12Z4CB12Z4CR12_444_NV },
     { "GL_Z4Y12Z4CB12Z4Y12Z4CR12_422_NV", GLenum::GL_Z4Y12Z4CB12Z4Y12Z4CR12_422_NV },
@@ -4692,10 +4692,10 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Z
     { "GL_ZOOM_X", GLenum::GL_ZOOM_X },
     { "GL_ZOOM_Y", GLenum::GL_ZOOM_Y },
     { "GL_Z_EXT", GLenum::GL_Z_EXT }
-};
+} };
     
 const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsByStringMaps
-{
+{ {
     Meta_EnumsByString_0,
     Meta_EnumsByString_A,
     Meta_EnumsByString_B,
@@ -4723,7 +4723,7 @@ const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsBySt
     Meta_EnumsByString_X,
     Meta_EnumsByString_Y,
     Meta_EnumsByString_Z
-};
+} };
 
 } // namespace glbinding
 
