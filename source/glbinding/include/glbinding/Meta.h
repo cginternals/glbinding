@@ -69,7 +69,7 @@ public:
     static const std::string & getString(gl::PathFontStyle glbitfield);
 
 private:
-    static int alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
+    static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
 };
 
 } // namespace gl

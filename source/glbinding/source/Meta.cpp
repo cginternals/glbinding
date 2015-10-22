@@ -41,9 +41,9 @@ int Meta::glRevision()
     return GL_REVISION;
 }
 
-int Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength)
+size_t Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength)
 {
-    auto index = identifier[prefixLength]; // ignore prefix ('GL_' or 'gl')
+    auto index = static_cast<size_t>(identifier[prefixLength]); // ignore prefix ('GL_' or 'gl')
 
     // bold uppercase conversion -> non letters are discarded in next step
     if (index > 96)
