@@ -49,7 +49,7 @@ public:
     %s
 
 private:
-    static int alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
+    static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
 };
 
 } // namespace gl
