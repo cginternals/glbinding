@@ -45,12 +45,12 @@ int main()
 
 ##### Type-Safe Parameters
 
-Every parameter of an OpenGL function expects a specific type of value and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
+Every parameter of an OpenGL function expects a specific data type and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
 ```c++
 glClear(GL_COLOR_BUFFER_BIT); // valid
-glClear(GL_FRAMEBUFFER);      // compile error: bitfield of group ClearBufferMask expected, got GLenum
+glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
 ```
-For bitfields there are extensively specified groups that are additionally used to enforce type-safety (a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compile error.
+For bitfields there are extensively specified groups that are additionally used to enforce type-safety (note: a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compilation error.
 ```c++
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
@@ -59,7 +59,7 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
                                                     //  the shared group is AttribMask, but the
                                                     //  resulting group does not match the expected.
 ```
-The groups for enums are not yet as complete as we would like them to be to enable per function compile time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
+The groups for enums are not yet as complete as we would like them to be to enable per function compile-time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
 
 ##### Per Feature API Header
 
@@ -208,7 +208,7 @@ GLenum errorCode = Binding::GetError.directCall();
 
 When switching between active contexts, not only *glbinding* may be interested in the current context, but your application as well (e.g., per context cached OpenGL state).
 You may also not know when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
-Therefor, you can register one callback that is called when the current active context in *glbinding* is changed.
+Therefore, you can register one callback that is called when the current active context in *glbinding* is changed.
 
 ```c++
 #include <glbinding/Binding.h>
@@ -281,6 +281,7 @@ if (Meta::stringsByGL())
 
 As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
 The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
+For ease-of-use, the update and generation can be triggered using the generated targets from cmake named *update* and *generate*.
 
 
 ## Context Creation Cheat Sheet
