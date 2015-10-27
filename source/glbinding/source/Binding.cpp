@@ -65,11 +65,21 @@ void Binding::initialize(
     if (_useContext)
     {
         useContext(context);
-    }
 
-    if (_resolveFunctions)
+        if (_resolveFunctions)
+        {
+            resolveFunctions();
+        }
+    }
+    else if (_resolveFunctions)
     {
+        auto currentContext = getCurrentContext();
+
+        useContext(context);
+
         resolveFunctions();
+
+        useContext(currentContext);
     }
 }
 
