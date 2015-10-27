@@ -133,7 +133,8 @@ else()
 
     list(APPEND sources 
         "${source_path}/gl/functions.cpp"
-        "${source_path}/Binding_objects.cpp")
+        "${source_path}/Binding_objects.cpp"
+    )
 
 endif()
 

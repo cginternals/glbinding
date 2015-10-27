@@ -7,10 +7,12 @@
 
 namespace
 {
-    THREAD_LOCAL glbinding::ContextHandle t_context = 0;
 
-    std::recursive_mutex g_mutex;
-    std::unordered_map<glbinding::ContextHandle, int> g_bindings;
+THREAD_LOCAL glbinding::ContextHandle t_context = 0;
+
+std::recursive_mutex g_mutex;
+std::unordered_map<glbinding::ContextHandle, int> g_bindings;
+
 }
 
 namespace glbinding 
@@ -52,7 +54,7 @@ void Binding::initialize(
     }
     g_mutex.unlock();
 
-    const int pos = static_cast<int>(g_bindings.size());
+    const auto pos = static_cast<int>(g_bindings.size());
 
     g_mutex.lock();
     g_bindings[context] = pos;
