@@ -8480,6 +8480,10 @@ typedef unsigned int GLhandleARB;
             <unused start="0x9642" end="0x964F" vendor="Mediatek"/>
     </enums>
 
+    <enums namespace="GL" start="0x9650" end="0x968F" vendor="IMG" comment="Khronos bug 14977">
+            <unused start="0x9650" end="0x968F" vendor="IMG"/>
+    </enums>
+
 <!-- Enums reservable for future use. To reserve a new range, allocate one
      or more multiples of 16 starting at the lowest available point in this
      block and note it in a new <enums> block immediately above.
@@ -8489,8 +8493,8 @@ typedef unsigned int GLhandleARB;
      file) File requests in the Khronos Bugzilla, OpenGL project, Registry
      component. -->
 
-    <enums namespace="GL" start="0x9650" end="99999" vendor="ARB" comment="RESERVED FOR FUTURE ALLOCATIONS BY KHRONOS">
-        <unused start="0x9650" end="99999" comment="RESERVED"/>
+    <enums namespace="GL" start="0x9690" end="99999" vendor="ARB" comment="RESERVED FOR FUTURE ALLOCATIONS BY KHRONOS">
+        <unused start="0x9690" end="99999" comment="RESERVED"/>
     </enums>
 
 <!-- Historical large block allocations, all unused except (in older days) by IBM -->
@@ -9838,7 +9842,8 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glClearNamedFramebufferfi</name></proto>
             <param><ptype>GLuint</ptype> <name>framebuffer</name></param>
             <param><ptype>GLenum</ptype> <name>buffer</name></param>
-            <param>const <ptype>GLfloat</ptype> <name>depth</name></param>
+            <param><ptype>GLint</ptype> <name>drawbuffer</name></param>
+            <param><ptype>GLfloat</ptype> <name>depth</name></param>
             <param><ptype>GLint</ptype> <name>stencil</name></param>
         </command>
         <command>

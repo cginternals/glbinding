@@ -215,7 +215,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, const void *> ClearNamedBufferDataEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLenum, gl::GLenum, const void *> ClearNamedBufferSubData;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLsizeiptr, gl::GLsizeiptr, gl::GLenum, gl::GLenum, const void *> ClearNamedBufferSubDataEXT;
-    static Function<void, gl::GLuint, gl::GLenum, const gl::GLfloat, gl::GLint> ClearNamedFramebufferfi;
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLfloat, gl::GLint> ClearNamedFramebufferfi;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint, const gl::GLfloat *> ClearNamedFramebufferfv;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint, const gl::GLint *> ClearNamedFramebufferiv;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint, const gl::GLuint *> ClearNamedFramebufferuiv;
