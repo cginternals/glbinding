@@ -114,25 +114,30 @@ namespace
     template <typename T, int count>
     std::string string(const std::array<T, count> & data)
     {
+        if (identity<T, count>::valid(data))
+        {
+            return identity<T, count>::str();
+        }
+
         std::stringstream stream;
 
-        if (identity<T, count>::valid(data))
-            stream << identity<T, count>::str();
-        else
+        if (count == 1)
         {
-            if (data.size() > 1)
-                stream << "(";
+            stream << data[0];
 
-            for (int i = 0; i < count; ++i)
-            {
-                stream << data[i];
-                if (i + 1 < count)
-                    stream << ", ";
-            }
-
-            if (data.size() > 1)
-                stream << ")";
+            return stream.str();
         }
+
+        stream << "(";
+
+        for (int i = 0; i < count; ++i)
+        {
+            stream << data[i];
+            if (i + 1 < count)
+                stream << ", ";
+        }
+
+        stream << ")";
 
         return stream.str();
     }
