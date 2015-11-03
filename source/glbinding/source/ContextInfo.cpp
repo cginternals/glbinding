@@ -16,7 +16,7 @@ using namespace gl;
 namespace
 {
 
-void insertExtension(const std::string extensionName, std::set<GLextension> * extensions, std::set<std::string> * unknownExtensionNames)
+void insertExtension(const std::string & extensionName, std::set<GLextension> * extensions, std::set<std::string> * unknownExtensionNames)
 {
     const auto extension = glbinding::Meta::getExtension(extensionName);
     if (GLextension::UNKNOWN != extension)

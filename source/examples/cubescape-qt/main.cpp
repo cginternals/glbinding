@@ -9,8 +9,6 @@
 
 int main(int argc, char * argv[])
 {
-    int result = -1;
-
     QApplication app(argc, argv);
 
     QSurfaceFormat format;
@@ -23,7 +21,5 @@ int main(int argc, char * argv[])
 
     QScopedPointer<Viewer> viewer(new Viewer(format));
 
-    result = app.exec();
-
-    return result;
+    return app.exec();
 }

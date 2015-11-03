@@ -206,7 +206,7 @@ vec3::vec3(GLfloat x, GLfloat y, GLfloat z)
     v[2] = z;
 }
 
-vec3 & vec3::operator+(const vec3 rhs)
+vec3 & vec3::operator+(const vec3 & rhs)
 {
     v[0] += rhs[0];
     v[1] += rhs[1];
@@ -215,7 +215,7 @@ vec3 & vec3::operator+(const vec3 rhs)
     return *this;
 }
 
-vec3 & vec3::operator-(const vec3 rhs)
+vec3 & vec3::operator-(const vec3 & rhs)
 {
     v[0] -= rhs[0];
     v[1] -= rhs[1];
@@ -224,7 +224,7 @@ vec3 & vec3::operator-(const vec3 rhs)
     return *this;
 }
 
-vec3 & vec3::operator*(const vec3 rhs)
+vec3 & vec3::operator*(const vec3 & rhs)
 {
     v[0] *= rhs[0];
     v[1] *= rhs[1];
@@ -233,7 +233,7 @@ vec3 & vec3::operator*(const vec3 rhs)
     return *this;
 }
 
-vec3 & vec3::operator/(const vec3 rhs)
+vec3 & vec3::operator/(const vec3 & rhs)
 {
     v[0] /= rhs[0];
     v[1] /= rhs[1];
