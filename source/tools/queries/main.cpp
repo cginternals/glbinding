@@ -121,7 +121,7 @@ namespace
 
         std::stringstream stream;
 
-        if (count == 1)
+        if (data.size() == 1)
         {
             stream << data[0];
 
@@ -130,7 +130,7 @@ namespace
 
         stream << "(";
 
-        for (int i = 0; i < count; ++i)
+        for (int i = 0; i < data.size(); ++i)
         {
             stream << data[i];
             if (i + 1 < count)
