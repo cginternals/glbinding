@@ -72,7 +72,7 @@ namespace
     //    glGetDoublev(pname, data);
     //}
 
-    template <typename T, int count>
+    template <typename T, size_t count>
     struct identity
     {
         static bool valid(const std::array<T, count> &)
@@ -111,7 +111,7 @@ namespace
         }
     };
 
-    template <typename T, int count>
+    template <typename T, size_t count>
     std::string string(const std::array<T, count> & data)
     {
         if (identity<T, count>::valid(data))
@@ -130,7 +130,7 @@ namespace
 
         stream << "(";
 
-        for (int i = 0; i < data.size(); ++i)
+        for (size_t i = 0; i < data.size(); ++i)
         {
             stream << data[i];
             if (i + 1 < count)
@@ -143,11 +143,11 @@ namespace
     }
 
     template <typename T>
-    std::string string(const std::vector<T> & data, int count)
+    std::string string(const std::vector<T> & data, size_t count)
     {
         std::stringstream stream;
 
-            for (int i = 0; i < count; ++i)
+            for (size_t i = 0; i < count; ++i)
             {
                 stream << data[i];
                 if (i + 1 < count)
@@ -160,7 +160,7 @@ namespace
         return stream.str();
     }
 
-    template <typename T, int count>
+    template <typename T, size_t count>
     bool request(const GLenum pname, std::array<T, count> & data)
     {
         glrequest<T>(pname, data.data());
@@ -181,7 +181,7 @@ namespace
     }
 
     template <typename T>
-    bool request(const GLenum pname, std::vector<T> & data, int count)
+    bool request(const GLenum pname, std::vector<T> & data, size_t count)
     {
         glrequest<T>(pname, data.data());
 
@@ -200,7 +200,7 @@ namespace
         return true;
     }
 
-    template <typename T, int count>
+    template <typename T, size_t count>
     void requestState(const GLenum pname)
     {
         std::array<T, count> data;
@@ -216,7 +216,7 @@ namespace
     ,   Maximum
     };
 
-    template <typename T, int count>
+    template <typename T, size_t count>
     void requestState(const GLenum pname, const std::array<T, count> & expected, ExpectedType expectedType = ExpectedType::Default)
     {
         std::array<T, count> data;
@@ -260,7 +260,7 @@ namespace
         std::cout << std::endl;
     }
     
-    template <typename T, int count, GLenum maxCount>
+    template <typename T, size_t count, GLenum maxCount>
     void requestState(const GLenum pname, const std::array<T, count> & expected)
     {
         int maxCounti = 0;
