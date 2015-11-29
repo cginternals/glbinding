@@ -46,11 +46,14 @@ int main()
 ##### Type-Safe Parameters
 
 Every parameter of an OpenGL function expects a specific data type and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
+
 ```c++
 glClear(GL_COLOR_BUFFER_BIT); // valid
 glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
 ```
+
 For bitfields there are extensively specified groups that are additionally used to enforce type-safety (note: a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compilation error.
+
 ```c++
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
@@ -59,11 +62,13 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
                                                     //  the shared group is AttribMask, but the
                                                     //  resulting group does not match the expected.
 ```
+
 The groups for enums are not yet as complete as we would like them to be to enable per function compile-time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
 
 ##### Per Feature API Header
 
 Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  feature-based API subsets, each using a specialized namespace, e.g.:
+
 * ```functions32.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
 * ```functions32core.h``` provides all non-deprecated OpenGL commands available up to 3.2 in namespace ```gl32core```.
 * ```functions32ext.h``` provides all OpenGL commands specified either in 3.3 and above, or by extension in ```gl32ext```.
@@ -76,10 +81,13 @@ Furthermore, *glbinding* provides explicit, non-feature dependent headers for sp
 ##### Lazy Function Pointer Resolution
 
 By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
+
 ```c++
 glbinding::Binding::initialize(); // immediate function pointer resolution
 ```
+
 Alternatively, the user can decide that functions pointers are resolved only when used for the first time. This is achieved by:
+
 ```c++
 glbinding::Binding::initialize(false); // lazy function pointer resolution
 ```
@@ -89,11 +97,14 @@ glbinding::Binding::initialize(false); // lazy function pointer resolution
 *glbinding* has built-in support for multiple contexts. The only requirement is, that the currently active context has to be specified. This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context often result in non-meaningful communication with the OpenGL driver.
 
 To use multiple contexts, use your favorite context creation library (e.g., glut, SDL, egl, glfw, Qt) to request as much contexts as required. The functions to make a context current should be provided by this library and is not part of *glbinding* (except that you can get the current context handle). When using multiple contexts, first, each has to be initialized when active: 
+
 ```c++
 // use context library to make current, e.g., glfwMakeCurrent(...)
 glbinding::Binding::initialize();
 ```
+
 Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
+
 ```c++
 // use the current active context
 glbinding::Binding::useCurrentContext();
@@ -101,6 +112,7 @@ glbinding::Binding::useCurrentContext();
 // use another context, identified by platform-specific handle
 glbinding::Binding::useContext(ContextHandle context); 
 ```
+
 This feature is mainly intended for platforms where function pointers for different requested OpenGL features may vary.
 
 
@@ -114,6 +126,7 @@ For this, *glbinding* supports multiple active contexts, one per thread. This ne
 
 *glbinding* supports different types of callbacks that can be registered.
 The main types are
+
  * Global before callbacks, that are called before the OpenGL function call
  * Per function before callbacks
  * Global after callbacks, that are called after the OpenGL function call
@@ -127,6 +140,7 @@ Available informations are extended by the return value.
 The unresolved callback provides information about the (unresolved) wrapped OpenGL function object.
 
 Example for error checking:
+
 ```c++
 #include <glbinding/callbacks.h>
 
@@ -145,6 +159,7 @@ setAfterCallback([](const FunctionCall &)
 ```
 
 Example for logging:
+
 ```c++
 #include <glbinding/callbacks.h>
 
@@ -177,6 +192,7 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 ```
 
 Example for per function callbacks:
+
 ```c++
 #include <glbinding/Binding.h>
 
@@ -227,6 +243,7 @@ Besides an actual OpenGL binding, *glbinding* also supports queries for both com
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
 Example list of all available OpenGL versions/features (compile time):
+
 ```c++
 #include <glbinding/Meta.h>
 
@@ -237,6 +254,7 @@ for (Version v : Meta::versions())
 ```
 
 Example output of all enums (compile time):
+
 ```c++
 #include <glbinding/Meta.h>
 
@@ -255,6 +273,7 @@ if (Meta::stringsByGL())
 ```
 
 Example output of all available extensions (run time):
+
 ```c++
 #include <glbinding/Meta.h>
 
