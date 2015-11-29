@@ -316,10 +316,10 @@ The only run-time dependencies of glbinding are the STL of the used compiler and
 
 Optional dependencies
 
- * Python 2 or 3 to generate the binding
- * Qt for some examples
- * [GLFW 3](http://www.glfw.org/) for some examples
- * GLEW for some examples
+* Python 2 or 3 to generate the binding
+* Qt for some examples
+* [GLFW 3](http://www.glfw.org/) for some examples
+* GLEW for some examples
 
 For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 **Update 3**) are required.
 
