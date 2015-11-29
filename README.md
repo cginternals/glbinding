@@ -315,6 +315,7 @@ When requesting an OpenGL context of a specific version, the created context doe
 The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL library, dynamically linked with your application.
 
 Optional dependencies
+
  * Python 2 or 3 to generate the binding
  * Qt for some examples
  * [GLFW 3](http://www.glfw.org/) for some examples
