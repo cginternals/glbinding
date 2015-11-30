@@ -10,7 +10,7 @@ The latest release is [glbinding-1.1.0](https://github.com/hpicgs/glbinding/rele
 Current gl code, written with a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
 Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
 
-```c++
+```cpp
 #include <glbinding/gl/gl.h>
 #include <glbinding/Binding.h>
 
@@ -47,14 +47,14 @@ int main()
 
 Every parameter of an OpenGL function expects a specific data type and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
 
-```c++
+```cpp
 glClear(GL_COLOR_BUFFER_BIT); // valid
 glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
 ```
 
 For bitfields there are extensively specified groups that are additionally used to enforce type-safety (note: a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compilation error.
 
-```c++
+```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
 
@@ -82,13 +82,13 @@ Furthermore, *glbinding* provides explicit, non-feature dependent headers for sp
 
 By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
 
-```c++
+```cpp
 glbinding::Binding::initialize(); // immediate function pointer resolution
 ```
 
 Alternatively, the user can decide that functions pointers are resolved only when used for the first time. This is achieved by:
 
-```c++
+```cpp
 glbinding::Binding::initialize(false); // lazy function pointer resolution
 ```
 
@@ -98,14 +98,14 @@ glbinding::Binding::initialize(false); // lazy function pointer resolution
 
 To use multiple contexts, use your favorite context creation library (e.g., glut, SDL, egl, glfw, Qt) to request as much contexts as required. The functions to make a context current should be provided by this library and is not part of *glbinding* (except that you can get the current context handle). When using multiple contexts, first, each has to be initialized when active: 
 
-```c++
+```cpp
 // use context library to make current, e.g., glfwMakeCurrent(...)
 glbinding::Binding::initialize();
 ```
 
 Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
 
-```c++
+```cpp
 // use the current active context
 glbinding::Binding::useCurrentContext();
 
@@ -141,7 +141,7 @@ The unresolved callback provides information about the (unresolved) wrapped Open
 
 Example for error checking:
 
-```c++
+```cpp
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
@@ -160,7 +160,7 @@ setAfterCallback([](const FunctionCall &)
 
 Example for logging:
 
-```c++
+```cpp
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
@@ -193,7 +193,7 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 
 Example for per function callbacks:
 
-```c++
+```cpp
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
@@ -211,7 +211,7 @@ glClearColor(0.5, 0.5, 0.5, 1.0);
 
 It is also possible to call an OpenGL function without triggering registered callbacks (except unresolved callbacks), using the ```directCall()``` member function.
 
-```c++
+```cpp
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
@@ -226,7 +226,7 @@ When switching between active contexts, not only *glbinding* may be interested i
 You may also not know when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
 Therefore, you can register one callback that is called when the current active context in *glbinding* is changed.
 
-```c++
+```cpp
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
@@ -244,7 +244,7 @@ Typical use cases are querying the available OpenGL extensions or the associated
 
 Example list of all available OpenGL versions/features (compile time):
 
-```c++
+```cpp
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
@@ -255,7 +255,7 @@ for (Version v : Meta::versions())
 
 Example output of all enums (compile time):
 
-```c++
+```cpp
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
@@ -274,7 +274,7 @@ if (Meta::stringsByGL())
 
 Example output of all available extensions (run time):
 
-```c++
+```cpp
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
