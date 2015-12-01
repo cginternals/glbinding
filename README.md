@@ -10,7 +10,7 @@ The latest release is [glbinding-1.1.0](https://github.com/hpicgs/glbinding/rele
 Current gl code, written with a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
 Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
 
-```c++
+```cpp
 #include <glbinding/gl/gl.h>
 #include <glbinding/Binding.h>
 
@@ -28,30 +28,20 @@ int main()
 }
 ```
 
-## Project Health (master)
-
-| Service | System | Compiler | Options | Status |
-| ------- | ------ | -------- | ------- | ------ |
-| [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | default, no tests | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png#0)](https://drone.io/github.com/cginternals/glbinding/latest) |
-| Jenkins | Ubuntu 14.04 | GCC 4.8 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
-| Jenkins | Ubuntu 14.04 | GCC 4.9 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
-| Jenkins | Ubuntu 14.04 | Clang 3.5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
-| Jenkins | OS X 10.10 | Clang 3.5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
-| Jenkins | Windows 8.1 | MSVC 2013 Update 5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
-| Jenkins | Windows 8.1 | MSVC 2015 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) |
-| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu | GCC 4.8 | all| [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
-
 ## Features
 
 ##### Type-Safe Parameters
 
 Every parameter of an OpenGL function expects a specific data type and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
-```c++
+
+```cpp
 glClear(GL_COLOR_BUFFER_BIT); // valid
 glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
 ```
+
 For bitfields there are extensively specified groups that are additionally used to enforce type-safety (note: a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compilation error.
-```c++
+
+```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
 
@@ -59,11 +49,13 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
                                                     //  the shared group is AttribMask, but the
                                                     //  resulting group does not match the expected.
 ```
+
 The groups for enums are not yet as complete as we would like them to be to enable per function compile-time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
 
 ##### Per Feature API Header
 
 Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  feature-based API subsets, each using a specialized namespace, e.g.:
+
 * ```functions32.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
 * ```functions32core.h``` provides all non-deprecated OpenGL commands available up to 3.2 in namespace ```gl32core```.
 * ```functions32ext.h``` provides all OpenGL commands specified either in 3.3 and above, or by extension in ```gl32ext```.
@@ -76,11 +68,14 @@ Furthermore, *glbinding* provides explicit, non-feature dependent headers for sp
 ##### Lazy Function Pointer Resolution
 
 By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
-```c++
+
+```cpp
 glbinding::Binding::initialize(); // immediate function pointer resolution
 ```
+
 Alternatively, the user can decide that functions pointers are resolved only when used for the first time. This is achieved by:
-```c++
+
+```cpp
 glbinding::Binding::initialize(false); // lazy function pointer resolution
 ```
 
@@ -89,18 +84,22 @@ glbinding::Binding::initialize(false); // lazy function pointer resolution
 *glbinding* has built-in support for multiple contexts. The only requirement is, that the currently active context has to be specified. This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context often result in non-meaningful communication with the OpenGL driver.
 
 To use multiple contexts, use your favorite context creation library (e.g., glut, SDL, egl, glfw, Qt) to request as much contexts as required. The functions to make a context current should be provided by this library and is not part of *glbinding* (except that you can get the current context handle). When using multiple contexts, first, each has to be initialized when active: 
-```c++
+
+```cpp
 // use context library to make current, e.g., glfwMakeCurrent(...)
 glbinding::Binding::initialize();
 ```
+
 Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
-```c++
+
+```cpp
 // use the current active context
 glbinding::Binding::useCurrentContext();
 
 // use another context, identified by platform-specific handle
 glbinding::Binding::useContext(ContextHandle context); 
 ```
+
 This feature is mainly intended for platforms where function pointers for different requested OpenGL features may vary.
 
 
@@ -114,6 +113,7 @@ For this, *glbinding* supports multiple active contexts, one per thread. This ne
 
 *glbinding* supports different types of callbacks that can be registered.
 The main types are
+
  * Global before callbacks, that are called before the OpenGL function call
  * Per function before callbacks
  * Global after callbacks, that are called after the OpenGL function call
@@ -127,7 +127,8 @@ Available informations are extended by the return value.
 The unresolved callback provides information about the (unresolved) wrapped OpenGL function object.
 
 Example for error checking:
-```c++
+
+```cpp
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
@@ -145,7 +146,8 @@ setAfterCallback([](const FunctionCall &)
 ```
 
 Example for logging:
-```c++
+
+```cpp
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
@@ -177,7 +179,8 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 ```
 
 Example for per function callbacks:
-```c++
+
+```cpp
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
@@ -195,7 +198,7 @@ glClearColor(0.5, 0.5, 0.5, 1.0);
 
 It is also possible to call an OpenGL function without triggering registered callbacks (except unresolved callbacks), using the ```directCall()``` member function.
 
-```c++
+```cpp
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
@@ -210,7 +213,7 @@ When switching between active contexts, not only *glbinding* may be interested i
 You may also not know when contexts will get changed (especially if you write a library) and propagating the current context may be troublesome.
 Therefore, you can register one callback that is called when the current active context in *glbinding* is changed.
 
-```c++
+```cpp
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
@@ -227,7 +230,8 @@ Besides an actual OpenGL binding, *glbinding* also supports queries for both com
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
 Example list of all available OpenGL versions/features (compile time):
-```c++
+
+```cpp
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
@@ -237,7 +241,8 @@ for (Version v : Meta::versions())
 ```
 
 Example output of all enums (compile time):
-```c++
+
+```cpp
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
@@ -255,7 +260,8 @@ if (Meta::stringsByGL())
 ```
 
 Example output of all available extensions (run time):
-```c++
+
+```cpp
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
@@ -291,15 +297,31 @@ When requesting an OpenGL context of a specific version, the created context doe
 
 ## Using glbinding
 
+
+##### Project Health (master)
+
+| Service | System | Compiler | Options | Status |
+| ------- | ------ | -------- | ------- | ------ |
+| [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | default, no tests | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png#0)](https://drone.io/github.com/cginternals/glbinding/latest) |
+| Jenkins | Ubuntu 14.04 | GCC 4.8 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
+| Jenkins | Ubuntu 14.04 | GCC 4.9 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
+| Jenkins | Ubuntu 14.04 | Clang 3.5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
+| Jenkins | OS X 10.10 | Clang 3.5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
+| Jenkins | Windows 8.1 | MSVC 2013 Update 5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
+| Jenkins | Windows 8.1 | MSVC 2015 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) |
+| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu | GCC 4.8 | all| [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
+
+
 ##### Dependencies
 
 The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL library, dynamically linked with your application.
 
 Optional dependencies
- * Python 2 or 3 to generate the binding
- * Qt for some examples
- * [GLFW 3](http://www.glfw.org/) for some examples
- * GLEW for some examples
+
+* Python 2 or 3 to generate the binding
+* Qt for some examples
+* [GLFW 3](http://www.glfw.org/) for some examples
+* GLEW for some examples
 
 For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 **Update 3**) are required.
 
