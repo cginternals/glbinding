@@ -2090,6 +2090,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x0200" name="GL_CLIENT_STORAGE_BIT"/>
         <enum value="0x0200" name="GL_CLIENT_STORAGE_BIT_EXT"/>
         <enum value="0x0400" name="GL_SPARSE_STORAGE_BIT_ARB"/>
+            <!-- Bits 0x1000 and 0x0800 reserved for Joshua Schnarr, jschnarr@nvidia.com -->
     </enums>
 
     <enums namespace="GL" group="MemoryBarrierMask" type="bitmask">

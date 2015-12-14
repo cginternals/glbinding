@@ -46,101 +46,129 @@ std::string bitfieldString(T value)
 
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value)
+namespace gl
+{
+
+std::ostream & operator<<(std::ostream & stream, const GLenum & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
 }
 
+} // namespace gl
 
-gl::GLenum operator+(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+
+namespace gl
 {
-    return static_cast<gl::GLenum>(static_cast<std::underlying_type<gl::GLenum>::type>(a) + b);
+
+GLenum operator+(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) + b);
 }
 
-gl::GLenum operator-(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+GLenum operator-(const GLenum & a, std::underlying_type<GLenum>::type b)
 {
-    return static_cast<gl::GLenum>(static_cast<std::underlying_type<gl::GLenum>::type>(a) - b);
+    return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) - b);
 }
 
+} // namespace gl
 
-bool operator==(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+
+namespace gl
 {
-    return static_cast<std::underlying_type<gl::GLenum>::type>(a) == b;
+
+bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) == b;
 }
 
-bool operator!=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b)
 {
-    return static_cast<std::underlying_type<gl::GLenum>::type>(a) != b;
+    return static_cast<std::underlying_type<GLenum>::type>(a) != b;
 }
 
-bool operator<(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+bool operator<(const GLenum & a, std::underlying_type<GLenum>::type b)
 {
-    return static_cast<std::underlying_type<gl::GLenum>::type>(a) < b;
+    return static_cast<std::underlying_type<GLenum>::type>(a) < b;
 }
 
-bool operator<=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b)
 {
-    return static_cast<std::underlying_type<gl::GLenum>::type>(a) <= b;
+    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;
 }
 
-bool operator>(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+bool operator>(const GLenum & a, std::underlying_type<GLenum>::type b)
 {
-    return static_cast<std::underlying_type<gl::GLenum>::type>(a) > b;
+    return static_cast<std::underlying_type<GLenum>::type>(a) > b;
 }
 
-bool operator>=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b)
 {
-    return static_cast<std::underlying_type<gl::GLenum>::type>(a) >= b;
+    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;
 }
 
-bool operator==(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
+bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b)
 {
-    return a == static_cast<std::underlying_type<gl::GLenum>::type>(b);
+    return a == static_cast<std::underlying_type<GLenum>::type>(b);
 }
 
-bool operator!=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
+bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b)
 {
-    return a != static_cast<std::underlying_type<gl::GLenum>::type>(b);
+    return a != static_cast<std::underlying_type<GLenum>::type>(b);
 }
 
-bool operator<(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
+bool operator<(std::underlying_type<GLenum>::type a, const GLenum & b)
 {
-    return a < static_cast<std::underlying_type<gl::GLenum>::type>(b);
+    return a < static_cast<std::underlying_type<GLenum>::type>(b);
 }
 
-bool operator<=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
+bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b)
 {
-    return a <= static_cast<std::underlying_type<gl::GLenum>::type>(b);
+    return a <= static_cast<std::underlying_type<GLenum>::type>(b);
 }
 
-bool operator>(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
+bool operator>(std::underlying_type<GLenum>::type a, const GLenum & b)
 {
-    return a > static_cast<std::underlying_type<gl::GLenum>::type>(b);
+    return a > static_cast<std::underlying_type<GLenum>::type>(b);
 }
 
-bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
+bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b)
 {
-    return a >= static_cast<std::underlying_type<gl::GLenum>::type>(b);
+    return a >= static_cast<std::underlying_type<GLenum>::type>(b);
 }
 
+} // namespace gl
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
+
+namespace gl
+{
+
+std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
 }
 
+} // namespace gl
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
+
+namespace gl
+{
+
+std::ostream & operator<<(std::ostream & stream, const GLextension & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
 }
 
+} // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::AttribMask & value)
 {
@@ -148,47 +176,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::AttribMask & value)
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::AttribMask operator|(const gl::AttribMask & a, const gl::AttribMask & b)
+AttribMask operator|(const AttribMask & a, const AttribMask & b)
 {
-    return static_cast<gl::AttribMask>(static_cast<std::underlying_type<gl::AttribMask>::type>(a) | static_cast<std::underlying_type<gl::AttribMask>::type>(b));
+    return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) | static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
-gl::AttribMask & operator|=(gl::AttribMask & a, const gl::AttribMask & b)
+AttribMask & operator|=(AttribMask & a, const AttribMask & b)
 {
-    a = static_cast<gl::AttribMask>(static_cast<std::underlying_type<gl::AttribMask>::type>(a) | static_cast<std::underlying_type<gl::AttribMask>::type>(b));
+    a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) | static_cast<std::underlying_type<AttribMask>::type>(b));
     
     return a;
 }
 
-gl::AttribMask operator&(const gl::AttribMask & a, const gl::AttribMask & b)
+AttribMask operator&(const AttribMask & a, const AttribMask & b)
 {
-    return static_cast<gl::AttribMask>(static_cast<std::underlying_type<gl::AttribMask>::type>(a) & static_cast<std::underlying_type<gl::AttribMask>::type>(b));
+    return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) & static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
-gl::AttribMask & operator&=(gl::AttribMask & a, const gl::AttribMask & b)
+AttribMask & operator&=(AttribMask & a, const AttribMask & b)
 {
-    a = static_cast<gl::AttribMask>(static_cast<std::underlying_type<gl::AttribMask>::type>(a) & static_cast<std::underlying_type<gl::AttribMask>::type>(b));
+    a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) & static_cast<std::underlying_type<AttribMask>::type>(b));
     
     return a;
 }
 
-gl::AttribMask operator^(const gl::AttribMask & a, const gl::AttribMask & b)
+AttribMask operator^(const AttribMask & a, const AttribMask & b)
 {
-    return static_cast<gl::AttribMask>(static_cast<std::underlying_type<gl::AttribMask>::type>(a) ^ static_cast<std::underlying_type<gl::AttribMask>::type>(b));
+    return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
-gl::AttribMask & operator^=(gl::AttribMask & a, const gl::AttribMask & b)
+AttribMask & operator^=(AttribMask & a, const AttribMask & b)
 {
-    a = static_cast<gl::AttribMask>(static_cast<std::underlying_type<gl::AttribMask>::type>(a) ^ static_cast<std::underlying_type<gl::AttribMask>::type>(b));
+    a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::ClearBufferMask & value)
 {
@@ -196,47 +231,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::ClearBufferMask & val
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::ClearBufferMask operator|(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b)
+ClearBufferMask operator|(const ClearBufferMask & a, const ClearBufferMask & b)
 {
-    return static_cast<gl::ClearBufferMask>(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(a) | static_cast<std::underlying_type<gl::ClearBufferMask>::type>(b));
+    return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) | static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
-gl::ClearBufferMask & operator|=(gl::ClearBufferMask & a, const gl::ClearBufferMask & b)
+ClearBufferMask & operator|=(ClearBufferMask & a, const ClearBufferMask & b)
 {
-    a = static_cast<gl::ClearBufferMask>(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(a) | static_cast<std::underlying_type<gl::ClearBufferMask>::type>(b));
+    a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) | static_cast<std::underlying_type<ClearBufferMask>::type>(b));
     
     return a;
 }
 
-gl::ClearBufferMask operator&(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b)
+ClearBufferMask operator&(const ClearBufferMask & a, const ClearBufferMask & b)
 {
-    return static_cast<gl::ClearBufferMask>(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(a) & static_cast<std::underlying_type<gl::ClearBufferMask>::type>(b));
+    return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) & static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
-gl::ClearBufferMask & operator&=(gl::ClearBufferMask & a, const gl::ClearBufferMask & b)
+ClearBufferMask & operator&=(ClearBufferMask & a, const ClearBufferMask & b)
 {
-    a = static_cast<gl::ClearBufferMask>(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(a) & static_cast<std::underlying_type<gl::ClearBufferMask>::type>(b));
+    a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) & static_cast<std::underlying_type<ClearBufferMask>::type>(b));
     
     return a;
 }
 
-gl::ClearBufferMask operator^(const gl::ClearBufferMask & a, const gl::ClearBufferMask & b)
+ClearBufferMask operator^(const ClearBufferMask & a, const ClearBufferMask & b)
 {
-    return static_cast<gl::ClearBufferMask>(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<gl::ClearBufferMask>::type>(b));
+    return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
-gl::ClearBufferMask & operator^=(gl::ClearBufferMask & a, const gl::ClearBufferMask & b)
+ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask & b)
 {
-    a = static_cast<gl::ClearBufferMask>(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<gl::ClearBufferMask>::type>(b));
+    a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<ClearBufferMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::ClientAttribMask & value)
 {
@@ -244,47 +286,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::ClientAttribMask & va
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::ClientAttribMask operator|(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b)
+ClientAttribMask operator|(const ClientAttribMask & a, const ClientAttribMask & b)
 {
-    return static_cast<gl::ClientAttribMask>(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(a) | static_cast<std::underlying_type<gl::ClientAttribMask>::type>(b));
+    return static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) | static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 }
 
-gl::ClientAttribMask & operator|=(gl::ClientAttribMask & a, const gl::ClientAttribMask & b)
+ClientAttribMask & operator|=(ClientAttribMask & a, const ClientAttribMask & b)
 {
-    a = static_cast<gl::ClientAttribMask>(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(a) | static_cast<std::underlying_type<gl::ClientAttribMask>::type>(b));
+    a = static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) | static_cast<std::underlying_type<ClientAttribMask>::type>(b));
     
     return a;
 }
 
-gl::ClientAttribMask operator&(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b)
+ClientAttribMask operator&(const ClientAttribMask & a, const ClientAttribMask & b)
 {
-    return static_cast<gl::ClientAttribMask>(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(a) & static_cast<std::underlying_type<gl::ClientAttribMask>::type>(b));
+    return static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) & static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 }
 
-gl::ClientAttribMask & operator&=(gl::ClientAttribMask & a, const gl::ClientAttribMask & b)
+ClientAttribMask & operator&=(ClientAttribMask & a, const ClientAttribMask & b)
 {
-    a = static_cast<gl::ClientAttribMask>(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(a) & static_cast<std::underlying_type<gl::ClientAttribMask>::type>(b));
+    a = static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) & static_cast<std::underlying_type<ClientAttribMask>::type>(b));
     
     return a;
 }
 
-gl::ClientAttribMask operator^(const gl::ClientAttribMask & a, const gl::ClientAttribMask & b)
+ClientAttribMask operator^(const ClientAttribMask & a, const ClientAttribMask & b)
 {
-    return static_cast<gl::ClientAttribMask>(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(a) ^ static_cast<std::underlying_type<gl::ClientAttribMask>::type>(b));
+    return static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) ^ static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 }
 
-gl::ClientAttribMask & operator^=(gl::ClientAttribMask & a, const gl::ClientAttribMask & b)
+ClientAttribMask & operator^=(ClientAttribMask & a, const ClientAttribMask & b)
 {
-    a = static_cast<gl::ClientAttribMask>(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(a) ^ static_cast<std::underlying_type<gl::ClientAttribMask>::type>(b));
+    a = static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) ^ static_cast<std::underlying_type<ClientAttribMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::ContextFlagMask & value)
 {
@@ -292,47 +341,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::ContextFlagMask & val
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::ContextFlagMask operator|(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b)
+ContextFlagMask operator|(const ContextFlagMask & a, const ContextFlagMask & b)
 {
-    return static_cast<gl::ContextFlagMask>(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(a) | static_cast<std::underlying_type<gl::ContextFlagMask>::type>(b));
+    return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) | static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
-gl::ContextFlagMask & operator|=(gl::ContextFlagMask & a, const gl::ContextFlagMask & b)
+ContextFlagMask & operator|=(ContextFlagMask & a, const ContextFlagMask & b)
 {
-    a = static_cast<gl::ContextFlagMask>(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(a) | static_cast<std::underlying_type<gl::ContextFlagMask>::type>(b));
+    a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) | static_cast<std::underlying_type<ContextFlagMask>::type>(b));
     
     return a;
 }
 
-gl::ContextFlagMask operator&(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b)
+ContextFlagMask operator&(const ContextFlagMask & a, const ContextFlagMask & b)
 {
-    return static_cast<gl::ContextFlagMask>(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(a) & static_cast<std::underlying_type<gl::ContextFlagMask>::type>(b));
+    return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) & static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
-gl::ContextFlagMask & operator&=(gl::ContextFlagMask & a, const gl::ContextFlagMask & b)
+ContextFlagMask & operator&=(ContextFlagMask & a, const ContextFlagMask & b)
 {
-    a = static_cast<gl::ContextFlagMask>(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(a) & static_cast<std::underlying_type<gl::ContextFlagMask>::type>(b));
+    a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) & static_cast<std::underlying_type<ContextFlagMask>::type>(b));
     
     return a;
 }
 
-gl::ContextFlagMask operator^(const gl::ContextFlagMask & a, const gl::ContextFlagMask & b)
+ContextFlagMask operator^(const ContextFlagMask & a, const ContextFlagMask & b)
 {
-    return static_cast<gl::ContextFlagMask>(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<gl::ContextFlagMask>::type>(b));
+    return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
-gl::ContextFlagMask & operator^=(gl::ContextFlagMask & a, const gl::ContextFlagMask & b)
+ContextFlagMask & operator^=(ContextFlagMask & a, const ContextFlagMask & b)
 {
-    a = static_cast<gl::ContextFlagMask>(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<gl::ContextFlagMask>::type>(b));
+    a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<ContextFlagMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::ContextProfileMask & value)
 {
@@ -340,47 +396,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::ContextProfileMask & 
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::ContextProfileMask operator|(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b)
+ContextProfileMask operator|(const ContextProfileMask & a, const ContextProfileMask & b)
 {
-    return static_cast<gl::ContextProfileMask>(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(a) | static_cast<std::underlying_type<gl::ContextProfileMask>::type>(b));
+    return static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) | static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 }
 
-gl::ContextProfileMask & operator|=(gl::ContextProfileMask & a, const gl::ContextProfileMask & b)
+ContextProfileMask & operator|=(ContextProfileMask & a, const ContextProfileMask & b)
 {
-    a = static_cast<gl::ContextProfileMask>(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(a) | static_cast<std::underlying_type<gl::ContextProfileMask>::type>(b));
+    a = static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) | static_cast<std::underlying_type<ContextProfileMask>::type>(b));
     
     return a;
 }
 
-gl::ContextProfileMask operator&(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b)
+ContextProfileMask operator&(const ContextProfileMask & a, const ContextProfileMask & b)
 {
-    return static_cast<gl::ContextProfileMask>(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(a) & static_cast<std::underlying_type<gl::ContextProfileMask>::type>(b));
+    return static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) & static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 }
 
-gl::ContextProfileMask & operator&=(gl::ContextProfileMask & a, const gl::ContextProfileMask & b)
+ContextProfileMask & operator&=(ContextProfileMask & a, const ContextProfileMask & b)
 {
-    a = static_cast<gl::ContextProfileMask>(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(a) & static_cast<std::underlying_type<gl::ContextProfileMask>::type>(b));
+    a = static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) & static_cast<std::underlying_type<ContextProfileMask>::type>(b));
     
     return a;
 }
 
-gl::ContextProfileMask operator^(const gl::ContextProfileMask & a, const gl::ContextProfileMask & b)
+ContextProfileMask operator^(const ContextProfileMask & a, const ContextProfileMask & b)
 {
-    return static_cast<gl::ContextProfileMask>(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<gl::ContextProfileMask>::type>(b));
+    return static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 }
 
-gl::ContextProfileMask & operator^=(gl::ContextProfileMask & a, const gl::ContextProfileMask & b)
+ContextProfileMask & operator^=(ContextProfileMask & a, const ContextProfileMask & b)
 {
-    a = static_cast<gl::ContextProfileMask>(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<gl::ContextProfileMask>::type>(b));
+    a = static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<ContextProfileMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::FfdMaskSGIX & value)
 {
@@ -388,47 +451,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::FfdMaskSGIX & value)
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::FfdMaskSGIX operator|(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
+FfdMaskSGIX operator|(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
-    return static_cast<gl::FfdMaskSGIX>(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(a) | static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(b));
+    return static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) | static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 }
 
-gl::FfdMaskSGIX & operator|=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
+FfdMaskSGIX & operator|=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
-    a = static_cast<gl::FfdMaskSGIX>(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(a) | static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(b));
+    a = static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) | static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
     
     return a;
 }
 
-gl::FfdMaskSGIX operator&(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
+FfdMaskSGIX operator&(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
-    return static_cast<gl::FfdMaskSGIX>(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(a) & static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(b));
+    return static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) & static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 }
 
-gl::FfdMaskSGIX & operator&=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
+FfdMaskSGIX & operator&=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
-    a = static_cast<gl::FfdMaskSGIX>(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(a) & static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(b));
+    a = static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) & static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
     
     return a;
 }
 
-gl::FfdMaskSGIX operator^(const gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
+FfdMaskSGIX operator^(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
-    return static_cast<gl::FfdMaskSGIX>(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(a) ^ static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(b));
+    return static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) ^ static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 }
 
-gl::FfdMaskSGIX & operator^=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
+FfdMaskSGIX & operator^=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
-    a = static_cast<gl::FfdMaskSGIX>(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(a) ^ static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(b));
+    a = static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) ^ static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderColorModMaskATI & value)
 {
@@ -436,47 +506,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderColorMo
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::FragmentShaderColorModMaskATI operator|(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b)
+FragmentShaderColorModMaskATI operator|(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(a) | static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(b));
+    return static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 }
 
-gl::FragmentShaderColorModMaskATI & operator|=(gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b)
+FragmentShaderColorModMaskATI & operator|=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(a) | static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(b));
+    a = static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
     
     return a;
 }
 
-gl::FragmentShaderColorModMaskATI operator&(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b)
+FragmentShaderColorModMaskATI operator&(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(a) & static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(b));
+    return static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 }
 
-gl::FragmentShaderColorModMaskATI & operator&=(gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b)
+FragmentShaderColorModMaskATI & operator&=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(a) & static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(b));
+    a = static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
     
     return a;
 }
 
-gl::FragmentShaderColorModMaskATI operator^(const gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b)
+FragmentShaderColorModMaskATI operator^(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(a) ^ static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(b));
+    return static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 }
 
-gl::FragmentShaderColorModMaskATI & operator^=(gl::FragmentShaderColorModMaskATI & a, const gl::FragmentShaderColorModMaskATI & b)
+FragmentShaderColorModMaskATI & operator^=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(a) ^ static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(b));
+    a = static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMaskATI & value)
 {
@@ -484,47 +561,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMas
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::FragmentShaderDestMaskATI operator|(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b)
+FragmentShaderDestMaskATI operator|(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderDestMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(a) | static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(b));
+    return static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 }
 
-gl::FragmentShaderDestMaskATI & operator|=(gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b)
+FragmentShaderDestMaskATI & operator|=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderDestMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(a) | static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(b));
+    a = static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
     
     return a;
 }
 
-gl::FragmentShaderDestMaskATI operator&(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b)
+FragmentShaderDestMaskATI operator&(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderDestMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(a) & static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(b));
+    return static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 }
 
-gl::FragmentShaderDestMaskATI & operator&=(gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b)
+FragmentShaderDestMaskATI & operator&=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderDestMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(a) & static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(b));
+    a = static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
     
     return a;
 }
 
-gl::FragmentShaderDestMaskATI operator^(const gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b)
+FragmentShaderDestMaskATI operator^(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderDestMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(a) ^ static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(b));
+    return static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 }
 
-gl::FragmentShaderDestMaskATI & operator^=(gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b)
+FragmentShaderDestMaskATI & operator^=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderDestMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(a) ^ static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(b));
+    a = static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestModMaskATI & value)
 {
@@ -532,47 +616,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMod
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::FragmentShaderDestModMaskATI operator|(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b)
+FragmentShaderDestModMaskATI operator|(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(a) | static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(b));
+    return static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 }
 
-gl::FragmentShaderDestModMaskATI & operator|=(gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b)
+FragmentShaderDestModMaskATI & operator|=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(a) | static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(b));
+    a = static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
     
     return a;
 }
 
-gl::FragmentShaderDestModMaskATI operator&(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b)
+FragmentShaderDestModMaskATI operator&(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(a) & static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(b));
+    return static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 }
 
-gl::FragmentShaderDestModMaskATI & operator&=(gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b)
+FragmentShaderDestModMaskATI & operator&=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(a) & static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(b));
+    a = static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
     
     return a;
 }
 
-gl::FragmentShaderDestModMaskATI operator^(const gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b)
+FragmentShaderDestModMaskATI operator^(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
-    return static_cast<gl::FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(a) ^ static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(b));
+    return static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 }
 
-gl::FragmentShaderDestModMaskATI & operator^=(gl::FragmentShaderDestModMaskATI & a, const gl::FragmentShaderDestModMaskATI & b)
+FragmentShaderDestModMaskATI & operator^=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
-    a = static_cast<gl::FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(a) ^ static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(b));
+    a = static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::MapBufferUsageMask & value)
 {
@@ -580,47 +671,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::MapBufferUsageMask & 
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::MapBufferUsageMask operator|(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b)
+MapBufferUsageMask operator|(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
-    return static_cast<gl::MapBufferUsageMask>(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(b));
+    return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
-gl::MapBufferUsageMask & operator|=(gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b)
+MapBufferUsageMask & operator|=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
-    a = static_cast<gl::MapBufferUsageMask>(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(b));
+    a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
     
     return a;
 }
 
-gl::MapBufferUsageMask operator&(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b)
+MapBufferUsageMask operator&(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
-    return static_cast<gl::MapBufferUsageMask>(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(b));
+    return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
-gl::MapBufferUsageMask & operator&=(gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b)
+MapBufferUsageMask & operator&=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
-    a = static_cast<gl::MapBufferUsageMask>(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(b));
+    a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
     
     return a;
 }
 
-gl::MapBufferUsageMask operator^(const gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b)
+MapBufferUsageMask operator^(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
-    return static_cast<gl::MapBufferUsageMask>(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(b));
+    return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
-gl::MapBufferUsageMask & operator^=(gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b)
+MapBufferUsageMask & operator^=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
-    a = static_cast<gl::MapBufferUsageMask>(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(b));
+    a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::MemoryBarrierMask & value)
 {
@@ -628,47 +726,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::MemoryBarrierMask & v
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::MemoryBarrierMask operator|(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b)
+MemoryBarrierMask operator|(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
-    return static_cast<gl::MemoryBarrierMask>(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(b));
+    return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
-gl::MemoryBarrierMask & operator|=(gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b)
+MemoryBarrierMask & operator|=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
-    a = static_cast<gl::MemoryBarrierMask>(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(b));
+    a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
     
     return a;
 }
 
-gl::MemoryBarrierMask operator&(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b)
+MemoryBarrierMask operator&(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
-    return static_cast<gl::MemoryBarrierMask>(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(b));
+    return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
-gl::MemoryBarrierMask & operator&=(gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b)
+MemoryBarrierMask & operator&=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
-    a = static_cast<gl::MemoryBarrierMask>(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(b));
+    a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
     
     return a;
 }
 
-gl::MemoryBarrierMask operator^(const gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b)
+MemoryBarrierMask operator^(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
-    return static_cast<gl::MemoryBarrierMask>(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(b));
+    return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
-gl::MemoryBarrierMask & operator^=(gl::MemoryBarrierMask & a, const gl::MemoryBarrierMask & b)
+MemoryBarrierMask & operator^=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
-    a = static_cast<gl::MemoryBarrierMask>(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(b));
+    a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::PathRenderingMaskNV & value)
 {
@@ -676,47 +781,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::PathRenderingMaskNV &
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::PathRenderingMaskNV operator|(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b)
+PathRenderingMaskNV operator|(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
-    return static_cast<gl::PathRenderingMaskNV>(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(b));
+    return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
-gl::PathRenderingMaskNV & operator|=(gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b)
+PathRenderingMaskNV & operator|=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
-    a = static_cast<gl::PathRenderingMaskNV>(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(b));
+    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
     
     return a;
 }
 
-gl::PathRenderingMaskNV operator&(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b)
+PathRenderingMaskNV operator&(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
-    return static_cast<gl::PathRenderingMaskNV>(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(b));
+    return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
-gl::PathRenderingMaskNV & operator&=(gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b)
+PathRenderingMaskNV & operator&=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
-    a = static_cast<gl::PathRenderingMaskNV>(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(b));
+    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
     
     return a;
 }
 
-gl::PathRenderingMaskNV operator^(const gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b)
+PathRenderingMaskNV operator^(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
-    return static_cast<gl::PathRenderingMaskNV>(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(b));
+    return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
-gl::PathRenderingMaskNV & operator^=(gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b)
+PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
-    a = static_cast<gl::PathRenderingMaskNV>(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(b));
+    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::PerformanceQueryCapsMaskINTEL & value)
 {
@@ -724,47 +836,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::PerformanceQueryCapsM
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::PerformanceQueryCapsMaskINTEL operator|(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b)
+PerformanceQueryCapsMaskINTEL operator|(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
-    return static_cast<gl::PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(b));
+    return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
-gl::PerformanceQueryCapsMaskINTEL & operator|=(gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b)
+PerformanceQueryCapsMaskINTEL & operator|=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
-    a = static_cast<gl::PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(b));
+    a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
     
     return a;
 }
 
-gl::PerformanceQueryCapsMaskINTEL operator&(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b)
+PerformanceQueryCapsMaskINTEL operator&(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
-    return static_cast<gl::PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(b));
+    return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
-gl::PerformanceQueryCapsMaskINTEL & operator&=(gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b)
+PerformanceQueryCapsMaskINTEL & operator&=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
-    a = static_cast<gl::PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(b));
+    a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
     
     return a;
 }
 
-gl::PerformanceQueryCapsMaskINTEL operator^(const gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b)
+PerformanceQueryCapsMaskINTEL operator^(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
-    return static_cast<gl::PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(b));
+    return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
-gl::PerformanceQueryCapsMaskINTEL & operator^=(gl::PerformanceQueryCapsMaskINTEL & a, const gl::PerformanceQueryCapsMaskINTEL & b)
+PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
-    a = static_cast<gl::PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(b));
+    a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::SyncObjectMask & value)
 {
@@ -772,47 +891,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::SyncObjectMask & valu
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::SyncObjectMask operator|(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b)
+SyncObjectMask operator|(const SyncObjectMask & a, const SyncObjectMask & b)
 {
-    return static_cast<gl::SyncObjectMask>(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(a) | static_cast<std::underlying_type<gl::SyncObjectMask>::type>(b));
+    return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) | static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
-gl::SyncObjectMask & operator|=(gl::SyncObjectMask & a, const gl::SyncObjectMask & b)
+SyncObjectMask & operator|=(SyncObjectMask & a, const SyncObjectMask & b)
 {
-    a = static_cast<gl::SyncObjectMask>(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(a) | static_cast<std::underlying_type<gl::SyncObjectMask>::type>(b));
+    a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) | static_cast<std::underlying_type<SyncObjectMask>::type>(b));
     
     return a;
 }
 
-gl::SyncObjectMask operator&(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b)
+SyncObjectMask operator&(const SyncObjectMask & a, const SyncObjectMask & b)
 {
-    return static_cast<gl::SyncObjectMask>(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(a) & static_cast<std::underlying_type<gl::SyncObjectMask>::type>(b));
+    return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) & static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
-gl::SyncObjectMask & operator&=(gl::SyncObjectMask & a, const gl::SyncObjectMask & b)
+SyncObjectMask & operator&=(SyncObjectMask & a, const SyncObjectMask & b)
 {
-    a = static_cast<gl::SyncObjectMask>(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(a) & static_cast<std::underlying_type<gl::SyncObjectMask>::type>(b));
+    a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) & static_cast<std::underlying_type<SyncObjectMask>::type>(b));
     
     return a;
 }
 
-gl::SyncObjectMask operator^(const gl::SyncObjectMask & a, const gl::SyncObjectMask & b)
+SyncObjectMask operator^(const SyncObjectMask & a, const SyncObjectMask & b)
 {
-    return static_cast<gl::SyncObjectMask>(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<gl::SyncObjectMask>::type>(b));
+    return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
-gl::SyncObjectMask & operator^=(gl::SyncObjectMask & a, const gl::SyncObjectMask & b)
+SyncObjectMask & operator^=(SyncObjectMask & a, const SyncObjectMask & b)
 {
-    a = static_cast<gl::SyncObjectMask>(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<gl::SyncObjectMask>::type>(b));
+    a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<SyncObjectMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::TextureStorageMaskAMD & value)
 {
@@ -820,47 +946,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::TextureStorageMaskAMD
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::TextureStorageMaskAMD operator|(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b)
+TextureStorageMaskAMD operator|(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
-    return static_cast<gl::TextureStorageMaskAMD>(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(a) | static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(b));
+    return static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) | static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 }
 
-gl::TextureStorageMaskAMD & operator|=(gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b)
+TextureStorageMaskAMD & operator|=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
-    a = static_cast<gl::TextureStorageMaskAMD>(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(a) | static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(b));
+    a = static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) | static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
     
     return a;
 }
 
-gl::TextureStorageMaskAMD operator&(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b)
+TextureStorageMaskAMD operator&(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
-    return static_cast<gl::TextureStorageMaskAMD>(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(a) & static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(b));
+    return static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) & static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 }
 
-gl::TextureStorageMaskAMD & operator&=(gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b)
+TextureStorageMaskAMD & operator&=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
-    a = static_cast<gl::TextureStorageMaskAMD>(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(a) & static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(b));
+    a = static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) & static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
     
     return a;
 }
 
-gl::TextureStorageMaskAMD operator^(const gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b)
+TextureStorageMaskAMD operator^(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
-    return static_cast<gl::TextureStorageMaskAMD>(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(a) ^ static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(b));
+    return static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) ^ static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 }
 
-gl::TextureStorageMaskAMD & operator^=(gl::TextureStorageMaskAMD & a, const gl::TextureStorageMaskAMD & b)
+TextureStorageMaskAMD & operator^=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
-    a = static_cast<gl::TextureStorageMaskAMD>(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(a) ^ static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(b));
+    a = static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) ^ static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::UseProgramStageMask & value)
 {
@@ -868,47 +1001,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::UseProgramStageMask &
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::UseProgramStageMask operator|(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b)
+UseProgramStageMask operator|(const UseProgramStageMask & a, const UseProgramStageMask & b)
 {
-    return static_cast<gl::UseProgramStageMask>(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(b));
+    return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
-gl::UseProgramStageMask & operator|=(gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b)
+UseProgramStageMask & operator|=(UseProgramStageMask & a, const UseProgramStageMask & b)
 {
-    a = static_cast<gl::UseProgramStageMask>(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(b));
+    a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
     
     return a;
 }
 
-gl::UseProgramStageMask operator&(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b)
+UseProgramStageMask operator&(const UseProgramStageMask & a, const UseProgramStageMask & b)
 {
-    return static_cast<gl::UseProgramStageMask>(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(b));
+    return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
-gl::UseProgramStageMask & operator&=(gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b)
+UseProgramStageMask & operator&=(UseProgramStageMask & a, const UseProgramStageMask & b)
 {
-    a = static_cast<gl::UseProgramStageMask>(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(b));
+    a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
     
     return a;
 }
 
-gl::UseProgramStageMask operator^(const gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b)
+UseProgramStageMask operator^(const UseProgramStageMask & a, const UseProgramStageMask & b)
 {
-    return static_cast<gl::UseProgramStageMask>(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(b));
+    return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
-gl::UseProgramStageMask & operator^=(gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b)
+UseProgramStageMask & operator^=(UseProgramStageMask & a, const UseProgramStageMask & b)
 {
-    a = static_cast<gl::UseProgramStageMask>(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(b));
+    a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::VertexHintsMaskPGI & value)
 {
@@ -916,47 +1056,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::VertexHintsMaskPGI & 
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::VertexHintsMaskPGI operator|(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b)
+VertexHintsMaskPGI operator|(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
-    return static_cast<gl::VertexHintsMaskPGI>(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(a) | static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(b));
+    return static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) | static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 }
 
-gl::VertexHintsMaskPGI & operator|=(gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b)
+VertexHintsMaskPGI & operator|=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
-    a = static_cast<gl::VertexHintsMaskPGI>(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(a) | static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(b));
+    a = static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) | static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
     
     return a;
 }
 
-gl::VertexHintsMaskPGI operator&(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b)
+VertexHintsMaskPGI operator&(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
-    return static_cast<gl::VertexHintsMaskPGI>(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(a) & static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(b));
+    return static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) & static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 }
 
-gl::VertexHintsMaskPGI & operator&=(gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b)
+VertexHintsMaskPGI & operator&=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
-    a = static_cast<gl::VertexHintsMaskPGI>(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(a) & static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(b));
+    a = static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) & static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
     
     return a;
 }
 
-gl::VertexHintsMaskPGI operator^(const gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b)
+VertexHintsMaskPGI operator^(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
-    return static_cast<gl::VertexHintsMaskPGI>(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(a) ^ static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(b));
+    return static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) ^ static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 }
 
-gl::VertexHintsMaskPGI & operator^=(gl::VertexHintsMaskPGI & a, const gl::VertexHintsMaskPGI & b)
+VertexHintsMaskPGI & operator^=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
-    a = static_cast<gl::VertexHintsMaskPGI>(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(a) ^ static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(b));
+    a = static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) ^ static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value)
 {
@@ -964,47 +1111,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value)
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::UnusedMask operator|(const gl::UnusedMask & a, const gl::UnusedMask & b)
+UnusedMask operator|(const UnusedMask & a, const UnusedMask & b)
 {
-    return static_cast<gl::UnusedMask>(static_cast<std::underlying_type<gl::UnusedMask>::type>(a) | static_cast<std::underlying_type<gl::UnusedMask>::type>(b));
+    return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) | static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
-gl::UnusedMask & operator|=(gl::UnusedMask & a, const gl::UnusedMask & b)
+UnusedMask & operator|=(UnusedMask & a, const UnusedMask & b)
 {
-    a = static_cast<gl::UnusedMask>(static_cast<std::underlying_type<gl::UnusedMask>::type>(a) | static_cast<std::underlying_type<gl::UnusedMask>::type>(b));
+    a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) | static_cast<std::underlying_type<UnusedMask>::type>(b));
     
     return a;
 }
 
-gl::UnusedMask operator&(const gl::UnusedMask & a, const gl::UnusedMask & b)
+UnusedMask operator&(const UnusedMask & a, const UnusedMask & b)
 {
-    return static_cast<gl::UnusedMask>(static_cast<std::underlying_type<gl::UnusedMask>::type>(a) & static_cast<std::underlying_type<gl::UnusedMask>::type>(b));
+    return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) & static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
-gl::UnusedMask & operator&=(gl::UnusedMask & a, const gl::UnusedMask & b)
+UnusedMask & operator&=(UnusedMask & a, const UnusedMask & b)
 {
-    a = static_cast<gl::UnusedMask>(static_cast<std::underlying_type<gl::UnusedMask>::type>(a) & static_cast<std::underlying_type<gl::UnusedMask>::type>(b));
+    a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) & static_cast<std::underlying_type<UnusedMask>::type>(b));
     
     return a;
 }
 
-gl::UnusedMask operator^(const gl::UnusedMask & a, const gl::UnusedMask & b)
+UnusedMask operator^(const UnusedMask & a, const UnusedMask & b)
 {
-    return static_cast<gl::UnusedMask>(static_cast<std::underlying_type<gl::UnusedMask>::type>(a) ^ static_cast<std::underlying_type<gl::UnusedMask>::type>(b));
+    return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) ^ static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
-gl::UnusedMask & operator^=(gl::UnusedMask & a, const gl::UnusedMask & b)
+UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b)
 {
-    a = static_cast<gl::UnusedMask>(static_cast<std::underlying_type<gl::UnusedMask>::type>(a) ^ static_cast<std::underlying_type<gl::UnusedMask>::type>(b));
+    a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) ^ static_cast<std::underlying_type<UnusedMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::BufferAccessMask & value)
 {
@@ -1012,47 +1166,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::BufferAccessMask & va
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::BufferAccessMask operator|(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
+BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b)
 {
-    return static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) | static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
-gl::BufferAccessMask & operator|=(gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
+BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
 {
-    a = static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) | static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
     
     return a;
 }
 
-gl::BufferAccessMask operator&(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
+BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
 {
-    return static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) & static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
-gl::BufferAccessMask & operator&=(gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
+BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
 {
-    a = static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) & static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
     
     return a;
 }
 
-gl::BufferAccessMask operator^(const gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
+BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
 {
-    return static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
-gl::BufferAccessMask & operator^=(gl::BufferAccessMask & a, const gl::BufferAccessMask & b)
+BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
 {
-    a = static_cast<gl::BufferAccessMask>(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<gl::BufferAccessMask>::type>(b));
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::BufferStorageMask & value)
 {
@@ -1060,47 +1221,54 @@ std::ostream & operator<<(std::ostream & stream, const gl::BufferStorageMask & v
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::BufferStorageMask operator|(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+BufferStorageMask operator|(const BufferStorageMask & a, const BufferStorageMask & b)
 {
-    return static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) | static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+    return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) | static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
-gl::BufferStorageMask & operator|=(gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+BufferStorageMask & operator|=(BufferStorageMask & a, const BufferStorageMask & b)
 {
-    a = static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) | static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+    a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) | static_cast<std::underlying_type<BufferStorageMask>::type>(b));
     
     return a;
 }
 
-gl::BufferStorageMask operator&(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+BufferStorageMask operator&(const BufferStorageMask & a, const BufferStorageMask & b)
 {
-    return static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) & static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+    return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) & static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
-gl::BufferStorageMask & operator&=(gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+BufferStorageMask & operator&=(BufferStorageMask & a, const BufferStorageMask & b)
 {
-    a = static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) & static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+    a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) & static_cast<std::underlying_type<BufferStorageMask>::type>(b));
     
     return a;
 }
 
-gl::BufferStorageMask operator^(const gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+BufferStorageMask operator^(const BufferStorageMask & a, const BufferStorageMask & b)
 {
-    return static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+    return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
-gl::BufferStorageMask & operator^=(gl::BufferStorageMask & a, const gl::BufferStorageMask & b)
+BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorageMask & b)
 {
-    a = static_cast<gl::BufferStorageMask>(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<gl::BufferStorageMask>::type>(b));
+    a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
     
     return a;
 }
 
 } // namespace gl
 
+
+
+namespace gl
+{
 
 std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value)
 {
@@ -1108,43 +1276,47 @@ std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value
     return stream;
 }
 
+} // namespace gl
+
+
 namespace gl
 {
 
-gl::PathFontStyle operator|(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
+PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
 {
-    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) | static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
-gl::PathFontStyle & operator|=(gl::PathFontStyle & a, const gl::PathFontStyle & b)
+PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
 {
-    a = static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) | static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
     
     return a;
 }
 
-gl::PathFontStyle operator&(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
+PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
 {
-    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) & static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
-gl::PathFontStyle & operator&=(gl::PathFontStyle & a, const gl::PathFontStyle & b)
+PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
 {
-    a = static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) & static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
     
     return a;
 }
 
-gl::PathFontStyle operator^(const gl::PathFontStyle & a, const gl::PathFontStyle & b)
+PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
 {
-    return static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
-gl::PathFontStyle & operator^=(gl::PathFontStyle & a, const gl::PathFontStyle & b)
+PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
 {
-    a = static_cast<gl::PathFontStyle>(static_cast<std::underlying_type<gl::PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<gl::PathFontStyle>::type>(b));
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
     
     return a;
 }
 
 } // namespace gl
+
