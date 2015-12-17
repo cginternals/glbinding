@@ -38,6 +38,8 @@ set(WIN32_COMPILE_FLAGS
     # /wd4127       # -> conditional expression is constant
       /wd4251       # -> 'identifier' : class 'type' needs to have dll-interface to be used by clients of class 'type2'
       /wd4267       # -> 'var' : conversion from 'size_t' to 'type', possible loss of data
+      /wd4592       # -> 'identifier': symbol will be dynamically initialized (implementation limitation)
+
       
 
     # /W3           # -> warning level 3
