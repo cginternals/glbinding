@@ -4,7 +4,7 @@ if(NOT OPTION_BUILD_EXAMPLES)
     return()
 endif()
 
-# Tools
+# Examples
 add_subdirectory("callbacks")
 add_subdirectory("comparison")
 add_subdirectory("cubescape")
