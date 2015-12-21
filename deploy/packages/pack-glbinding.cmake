@@ -56,10 +56,6 @@ set(CPACK_COMPONENT_DEV_DISPLAY_NAME "C/C++ development files")
 set(CPACK_COMPONENT_DEV_DESCRIPTION "Development files for the glbinding libraries")
 set(CPACK_COMPONENT_DEV_DEPENDS runtime)
 
-set(CPACK_COMPONENT_TOOLS_DISPLAY_NAME "Tools")
-set(CPACK_COMPONENT_TOOLS_DESCRIPTION "Tools for the glbinding libraries")
-set(CPACK_COMPONENT_TOOLS_DEPENDS runtime)
-
 set(CPACK_COMPONENT_EXAMPLES_DISPLAY_NAME "Example applications")
 set(CPACK_COMPONENT_EXAMPLES_DESCRIPTION "Example applications for the glbinding libraries")
 set(CPACK_COMPONENT_EXAMPLES_DEPENDS runtime)
