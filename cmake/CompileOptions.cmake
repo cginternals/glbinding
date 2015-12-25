@@ -61,7 +61,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
         /MP           # -> build with multiple processes
         /W4           # -> warning level 4
-        
+        /Zm114        # -> Memory size for precompiled headers
+
         $<$<CONFIG:Debug>:
         /RTCc         # -> value is assigned to a smaller data type and results in a data loss
         >
