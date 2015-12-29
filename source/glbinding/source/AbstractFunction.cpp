@@ -9,12 +9,14 @@
 #include <glbinding/Binding.h>
 #include <glbinding/Meta.h>
 
+#include "glbinding/glbinding_features.h"
+
 #include "callbacks_private.h"
 
 namespace
 {
 
-THREAD_LOCAL int t_pos = -1;
+GLBINDING_THREAD_LOCAL int t_pos = -1;
 
 }
 

@@ -5,10 +5,12 @@
 #include <mutex>
 #include <cassert>
 
+#include "glbinding/glbinding_features.h"
+
 namespace
 {
 
-THREAD_LOCAL glbinding::ContextHandle t_context = 0;
+GLBINDING_THREAD_LOCAL glbinding::ContextHandle t_context = 0;
 
 std::recursive_mutex g_mutex;
 std::unordered_map<glbinding::ContextHandle, int> g_bindings;
