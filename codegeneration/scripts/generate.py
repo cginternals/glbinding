@@ -4,6 +4,8 @@ import sys, getopt
 
 import xml.etree.ElementTree as ET
 
+import pystache
+
 from classes.Feature import *
 from classes.Enum import *
 from classes.Command import *
@@ -41,7 +43,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print("checking revision")
     file = open(revisionfile, "r")
     revision = int(file.readline())
-    file.close()    
+    file.close()
     print(" revision is " + str(revision))
 
     print("loading " + inputfile)
@@ -68,7 +70,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print("parsing commands")
     commands   = parseCommands(registry, features, extensions, api)
     print(" # " + str(len(commands)) + " commands parsed")
-        
+
     print("parsing enums")
     enums      = parseEnums(registry, features, extensions, commands, api)
     print(" # " + str(len(enums)) + " enums parsed")
@@ -124,16 +126,16 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     print("resolving groups")
     resolveGroups(groups, enumsByName)
-        
+
     print("resolving enums")
     resolveEnums(enums, enumsByName, groupsByName)
 
-    # verifying 
+    # verifying
 
     print("")
     print("VERIFYING")
 
-    bitfGroups = [ g for g in groups 
+    bitfGroups = [ g for g in groups
         if len(g.enums) > 0 and any(enum.type == "GLbitfield" for enum in g.enums) ]
 
     print("verifying groups")
@@ -156,7 +158,9 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
-    genRevision                    (     revision,           sourcedir,      "glrevision.h")
+    renderer = pystache.Renderer(search_dirs=os.path.join(execdir, "../template/"), file_extension="tpl")
+
+    genRevision                    (renderer,     revision,           sourcedir,      "glrevision.h")
 
     genExtensions                  (api, extensions,         includedir_api, "extension.h")
 
@@ -166,7 +170,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genValues                      (api, enums,              includedir_api, "values.h")
     genValuesFeatureGrouped        (api, enums, features,    includedir_api, "values?.h")
 
-    genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h") 
+    genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h")
     genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api, "types?.h")
 
     genBitfieldsAll                (api, enums,              includedir_api, "bitfield.h")
@@ -177,7 +181,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genForwardFunctions            (api, commands,           includedir_api, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
-    
+
     genFeatures                    (api, features,           includedir_api, "gl?.h")
 
     genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
@@ -222,11 +226,11 @@ def main(argv):
     except getopt.GetoptError:
         print("usage: %s -s <GL spec> [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
         sys.exit(1)
-        
+
     targetdir = "."
     inputfile = None
     patchfile = None
-    
+
     for opt, arg in opts:
         if opt in ("-s", "--spec"):
             inputfile = arg
@@ -239,7 +243,7 @@ def main(argv):
 
         if opt in ("-r", "--revision"):
             revision  = arg
-            
+
     if inputfile == None:
         print("no GL spec file given")
         sys.exit(1)
