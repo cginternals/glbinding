@@ -1,10 +1,12 @@
 
 import os, sys
+import pystache
 
-templatedir = "templates/"
+execDir     = os.path.dirname(os.path.abspath(sys.argv[0])) + "/"
+templateDir = "templates/"
+templateExtension = "tpl"
 tab         = "    "
 tab2        = tab + tab
-execdir     = os.path.dirname(os.path.abspath(sys.argv[0])) + "/"
 
 
 def versionBID(feature, core = False, ext = False):
@@ -24,9 +26,33 @@ def versionBID(feature, core = False, ext = False):
 
 def template(outputfile):
 
-    with open (execdir + templatedir + outputfile + ".in", "r") as file:
+    with open (execDir + templateDir + outputfile + ".in", "r") as file:
         return file.read()
 
+class Generator:
+
+    renderer = None
+
+    @classmethod
+    def generate(_class, context, outputPath, templateName=None):
+        if _class.renderer is None:
+            _class.renderer = pystache.Renderer(search_dirs=os.path.join(execDir, templateDir),
+                                                file_extension=templateExtension)
+
+        outputPath = outputPath.format(context)
+
+        outputDir = os.path.dirname(outputPath)
+        if not os.path.exists(outputDir):
+            os.makedirs(outputDir)
+
+        outputFile = os.path.basename(outputPath)
+        if templateName is None:
+            templateName = outputFile
+
+        print("generating {} in {}".format(outputFile, outputDir)) #TODO-LW move logging to appropriate place
+
+        with open(outputPath, 'w') as file:
+            file.write(_class.renderer.render_name(templateName, context))
 
 class Status:
 
@@ -49,7 +75,7 @@ def enumBID(enum):
 # ToDo: discuss - just use name for glbinding?
 def extensionBID(extension):
 
-    return extension.name    
+    return extension.name
 
 
 def functionBID(function):
@@ -74,7 +100,7 @@ def alphabeticallyGroupedLists():
 
 def alphabeticalGroupKey(identifier, prefix):
 
-    # derives an key from an identifier with "GL_" prefix 
+    # derives an key from an identifier with "GL_" prefix
 
     index = identifier.find(prefix)
     if index < 0:

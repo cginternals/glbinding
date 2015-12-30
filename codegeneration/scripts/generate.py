@@ -2,9 +2,9 @@
 
 import sys, getopt
 
-import xml.etree.ElementTree as ET
+from os.path import join as pjoin
 
-import pystache
+import xml.etree.ElementTree as ET
 
 from classes.Feature import *
 from classes.Enum import *
@@ -158,11 +158,11 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
-    renderer = pystache.Renderer(search_dirs=os.path.join(execdir, "../template/"), file_extension="tpl")
+    #renderer = pystache.Renderer(search_dirs=os.path.join(execdir, "../template/"), file_extension="tpl")
 
-    genRevision                    (renderer,     revision,           sourcedir,      "glrevision.h")
+    genRevision                    (revision,                pjoin(sourcedir, "glrevision.h"))
 
-    genExtensions                  (api, extensions,         includedir_api, "extension.h")
+    genExtensions                  (api, extensions,         pjoin(includedir_api, "extension.h"))
 
     genBooleans                    (api, enums,              includedir_api, "boolean.h")
     genBooleansFeatureGrouped      (api, enums, features,    includedir_api, "boolean?.h")

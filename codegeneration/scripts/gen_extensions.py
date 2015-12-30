@@ -2,17 +2,14 @@ from binding import *
 from classes.Extension import *
 
 
-def genExtensions(api, extensions, outputdir, outputfile):
+def genExtensions(api, extensions, path):
 
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", "")
-    t = template(of).replace("%a", api)
+    path = path.replace("?", "")
 
-    status(od + of)
-    
-    if not os.path.exists(od):
-        os.makedirs(od)
+    context = { "api": api,
+                "extensions":
+                    [ { "name": extensionBID(e),
+                        "last": (extensions.index(e) == len(extensions) - 1)}
+                        for e in extensions ]}
 
-    with open(od + of, 'w') as file:
-        file.write(t % (",\n" + tab).join(
-            [ extensionBID(e) for e in extensions ]))
+    Generator.generate(context, path)
