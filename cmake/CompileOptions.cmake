@@ -48,6 +48,14 @@ set(DEFAULT_COMPILE_DEFINITIONS
     SYSTEM_${SYSTEM_NAME_UPPER}
 )
 
+# MSVC compiler options
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+    set(DEFAULT_COMPILE_DEFINITIONS ${DEFAULT_COMPILE_DEFINITIONS}
+        _SCL_SECURE_NO_WARNINGS  # Calling any one of the potentially unsafe methods in the Standard C++ Library
+        _CRT_SECURE_NO_WARNINGS  # Calling any one of the potentially unsafe methods in the CRT Library
+    )
+endif ()
+
 
 # 
 # Compile options
@@ -57,11 +65,16 @@ set(DEFAULT_COMPILE_OPTIONS)
 
 # MSVC compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
-
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
         /MP           # -> build with multiple processes
         /W4           # -> warning level 4
+        # /WX         # -> treat warnings as errors
         /Zm114        # -> Memory size for precompiled headers
+
+        /wd4251       # -> disable warning: 'identifier': class 'type' needs to have dll-interface to be used by clients of class 'type2'
+        /wd4592       # -> disable warning: 'identifier': symbol will be dynamically initialized (implementation limitation)
+        # /wd4201     # -> disable warning: nonstandard extension used: nameless struct/union (caused by GLM)
+        # /wd4127     # -> disable warning: conditional expression is constant (caused by Qt)
 
         $<$<CONFIG:Debug>:
         /RTCc         # -> value is assigned to a smaller data type and results in a data loss
