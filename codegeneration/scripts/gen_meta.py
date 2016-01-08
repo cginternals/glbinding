@@ -144,7 +144,7 @@ def metaBitfieldsByStringGroup(tuples, key):
     postfix = '_' + key
 
     if not tuples:
-        return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s;
+        return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s = {};
 """ % (postfix)
     else:
         return """const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString%s =
@@ -207,7 +207,7 @@ def metaEnumsByStringGroup(type, identifier, enums, key):
         postfix = '_' + key
 
     if not enums:
-        return """const std::unordered_map<std::string, %s> Meta_%ssByString%s;
+        return """const std::unordered_map<std::string, %s> Meta_%ssByString%s = {};
 """ % (type, identifier, postfix)
     else:
         return """const std::unordered_map<std::string, %s> Meta_%ssByString%s =
@@ -256,7 +256,7 @@ def metaExtensionsByFunctionStringGroup(tuples, key):
     postfix = '_' + key
 
     if not tuples:
-        return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s;
+        return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s = {};
 """ % (postfix)
     else:
         return """const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString%s =
@@ -300,7 +300,7 @@ def metaExtensionsByStringGroup(extensions, key):
     postfix = '_' + key
 
     if not extensions:
-        return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s;
+        return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s = {};
 """ % (postfix)
     else:
         return """const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString%s =
