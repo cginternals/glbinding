@@ -7898,7 +7898,10 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9139" name="GL_CUBIC_IMG"/>
         <enum value="0x913A" name="GL_CUBIC_MIPMAP_NEAREST_IMG"/>
         <enum value="0x913B" name="GL_CUBIC_MIPMAP_LINEAR_IMG"/>
-            <unused start="0x913C" end="0x913F" vendor="IMG"/>
+        <enum value="0x913C" name="GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE_AND_DOWNSAMPLE_IMG"/>
+        <enum value="0x913D" name="GL_NUM_DOWNSAMPLE_SCALES_IMG"/>
+        <enum value="0x913E" name="GL_DOWNSAMPLE_SCALES_IMG"/>
+        <enum value="0x913F" name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_SCALE_IMG"/>
     </enums>
 
     <enums namespace="GL" start="0x9140" end="0x923F" vendor="AMD" comment="Khronos bugs 5899, 6004">
@@ -8482,7 +8485,10 @@ typedef unsigned int GLhandleARB;
     </enums>
 
     <enums namespace="GL" start="0x9650" end="0x968F" vendor="IMG" comment="Khronos bug 14977">
-            <unused start="0x9650" end="0x968F" vendor="IMG"/>
+        <enum value="0x9650" name="GL_MAX_SHADER_COMBINED_LOCAL_STORAGE_FAST_SIZE_EXT"/>
+        <enum value="0x9651" name="GL_MAX_SHADER_COMBINED_LOCAL_STORAGE_SIZE_EXT"/>
+        <enum value="0x9652" name="GL_FRAMEBUFFER_INCOMPLETE_INSUFFICIENT_SHADER_COMBINED_LOCAL_STORAGE_EXT"/>
+            <unused start="0x9653" end="0x968F" vendor="IMG"/>
     </enums>
 
 <!-- Enums reservable for future use. To reserve a new range, allocate one
@@ -9867,6 +9873,12 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>buffer</name></param>
             <param><ptype>GLint</ptype> <name>drawbuffer</name></param>
             <param>const <ptype>GLuint</ptype> *<name>value</name></param>
+        </command>
+        <command>
+            <proto>void <name>glClearPixelLocalStorageuiEXT</name></proto>
+            <param><ptype>GLsizei</ptype> <name>offset</name></param>
+            <param><ptype>GLsizei</ptype> <name>n</name></param>
+            <param>const <ptype>GLuint</ptype> *<name>values</name></param>
         </command>
         <command>
             <proto>void <name>glClearStencil</name></proto>
@@ -13539,6 +13551,11 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>param</name></param>
         </command>
         <command>
+            <proto>void <name>glFramebufferPixelLocalStorageSizeEXT</name></proto>
+            <param><ptype>GLuint</ptype> <name>target</name></param>
+            <param><ptype>GLsizei</ptype> <name>size</name></param>
+        </command>
+        <command>
             <proto>void <name>glFramebufferReadBufferEXT</name></proto>
             <param group="Framebuffer"><ptype>GLuint</ptype> <name>framebuffer</name></param>
             <param group="ReadBufferMode"><ptype>GLenum</ptype> <name>mode</name></param>
@@ -13625,6 +13642,16 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>level</name></param>
             <alias name="glFramebufferTexture2D"/>
             <glx type="render" opcode="4322"/>
+        </command>
+        <command>
+            <proto>void <name>glFramebufferTexture2DDownsampleIMG</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLenum</ptype> <name>attachment</name></param>
+            <param><ptype>GLenum</ptype> <name>textarget</name></param>
+            <param><ptype>GLuint</ptype> <name>texture</name></param>
+            <param><ptype>GLint</ptype> <name>level</name></param>
+            <param><ptype>GLint</ptype> <name>xscale</name></param>
+            <param><ptype>GLint</ptype> <name>yscale</name></param>
         </command>
         <command>
             <proto>void <name>glFramebufferTexture2DMultisampleEXT</name></proto>
@@ -13742,6 +13769,16 @@ typedef unsigned int GLhandleARB;
             <param group="CheckedInt32"><ptype>GLint</ptype> <name>level</name></param>
             <param group="CheckedInt32"><ptype>GLint</ptype> <name>layer</name></param>
             <alias name="glFramebufferTextureLayer"/>
+        </command>
+        <command>
+            <proto>void <name>glFramebufferTextureLayerDownsampleIMG</name></proto>
+            <param group="FramebufferTarget"><ptype>GLenum</ptype> <name>target</name></param>
+            <param group="FramebufferAttachment"><ptype>GLenum</ptype> <name>attachment</name></param>
+            <param group="Texture"><ptype>GLuint</ptype> <name>texture</name></param>
+            <param group="CheckedInt32"><ptype>GLint</ptype> <name>level</name></param>
+            <param group="CheckedInt32"><ptype>GLint</ptype> <name>layer</name></param>
+            <param><ptype>GLint</ptype> <name>xscale</name></param>
+            <param><ptype>GLint</ptype> <name>yscale</name></param>
         </command>
         <command>
             <proto>void <name>glFramebufferTextureMultisampleMultiviewOVR</name></proto>
@@ -14767,6 +14804,10 @@ typedef unsigned int GLhandleARB;
             <param group="Framebuffer"><ptype>GLuint</ptype> <name>framebuffer</name></param>
             <param group="GetFramebufferParameter"><ptype>GLenum</ptype> <name>pname</name></param>
             <param len="COMPSIZE(pname)"><ptype>GLint</ptype> *<name>params</name></param>
+        </command>
+        <command>
+            <proto><ptype>GLsizei</ptype> <name>glGetFramebufferPixelLocalStorageSizeEXT</name></proto>
+            <param><ptype>GLuint</ptype> <name>target</name></param>
         </command>
         <command>
             <proto><ptype>GLenum</ptype> <name>glGetGraphicsResetStatus</name></proto>
@@ -40937,7 +40978,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glPolygonOffsetEXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_polygon_offset_clamp" supported="gl">
+        <extension name="GL_EXT_polygon_offset_clamp" supported="gl|gles2">
             <require>
                 <enum name="GL_POLYGON_OFFSET_CLAMP_EXT"/>
                 <command name="glPolygonOffsetClampEXT"/>
@@ -41136,6 +41177,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_shader_group_vote" supported="gles2"/>
         <extension name="GL_EXT_shader_image_load_formatted" supported="gl"/>
         <extension name="GL_EXT_shader_image_load_store" supported="gl">
             <require>
@@ -41206,6 +41248,16 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_MAX_SHADER_PIXEL_LOCAL_STORAGE_FAST_SIZE_EXT"/>
                 <enum name="GL_MAX_SHADER_PIXEL_LOCAL_STORAGE_SIZE_EXT"/>
                 <enum name="GL_SHADER_PIXEL_LOCAL_STORAGE_EXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_shader_pixel_local_storage2" supported="gles2">
+            <require>
+                <enum name="GL_MAX_SHADER_COMBINED_LOCAL_STORAGE_FAST_SIZE_EXT"/>
+                <enum name="GL_MAX_SHADER_COMBINED_LOCAL_STORAGE_SIZE_EXT"/>
+                <enum name="GL_FRAMEBUFFER_INCOMPLETE_INSUFFICIENT_SHADER_COMBINED_LOCAL_STORAGE_EXT"/>
+                <command name="glFramebufferPixelLocalStorageSizeEXT"/>
+                <command name="glGetFramebufferPixelLocalStorageSizeEXT"/>
+                <command name="glClearPixelLocalStorageuiEXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_shader_texture_lod" supported="gles2"/>
@@ -42217,6 +42269,16 @@ typedef unsigned int GLhandleARB;
                 <command name="glNormalPointerListIBM"/>
                 <command name="glTexCoordPointerListIBM"/>
                 <command name="glVertexPointerListIBM"/>
+            </require>
+        </extension>
+        <extension name="GL_IMG_framebuffer_downsample" supported="gles2">
+            <require>
+                <enum name="GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE_AND_DOWNSAMPLE_IMG"/>
+                <enum name="GL_NUM_DOWNSAMPLE_SCALES_IMG"/>
+                <enum name="GL_DOWNSAMPLE_SCALES_IMG"/>
+                <enum name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_SCALE_IMG"/>
+                <command name="glFramebufferTexture2DDownsampleIMG"/>
+                <command name="glFramebufferTextureLayerDownsampleIMG"/>
             </require>
         </extension>
         <extension name="GL_IMG_multisampled_render_to_texture" supported="gles1|gles2">
