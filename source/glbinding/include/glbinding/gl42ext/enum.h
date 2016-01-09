@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -7,6 +8,7 @@
 
 namespace gl42ext
 {
+
 
 // import enums to namespace
 
@@ -3475,5 +3477,6 @@ using gl::GL_TEXTURE_COORD_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM;
+
 
 } // namespace gl42ext

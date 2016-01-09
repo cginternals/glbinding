@@ -2,7 +2,9 @@
 namespace gl
 {
 
+
 GLBINDING_API %t operator+(const %t & a, std::underlying_type<%t>::type b);
 GLBINDING_API %t operator-(const %t & a, std::underlying_type<%t>::type b);
+
 
 } // namespace gl

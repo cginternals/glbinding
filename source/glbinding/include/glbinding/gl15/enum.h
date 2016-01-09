@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -7,6 +8,7 @@
 
 namespace gl15
 {
+
 
 // import enums to namespace
 
@@ -1253,5 +1255,6 @@ using gl::GL_DYNAMIC_DRAW;
 using gl::GL_DYNAMIC_READ;
 using gl::GL_DYNAMIC_COPY;
 using gl::GL_SAMPLES_PASSED;
+
 
 } // namespace gl15

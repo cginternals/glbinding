@@ -1,14 +1,16 @@
+
 #ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/bitfield.h>
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 const std::unordered_map<AttribMask, std::string> Meta_StringsByAttribMask =
 {
@@ -261,6 +263,9 @@ const std::unordered_map<VertexHintsMaskPGI, std::string> Meta_StringsByVertexHi
 	{ VertexHintsMaskPGI::GL_TEXCOORD4_BIT_PGI, "GL_TEXCOORD4_BIT_PGI" }
 };
 
+
+
 } // namespace glbinding
+
 
 #endif // EXTENSIVE_META

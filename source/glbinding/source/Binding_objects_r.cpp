@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding 
 {
+
 
 Function<void, GLdouble, GLdouble> Binding::RasterPos2d("glRasterPos2d");
 Function<void, const GLdouble *> Binding::RasterPos2dv("glRasterPos2dv");
@@ -96,5 +97,6 @@ Function<void> Binding::ResumeTransformFeedbackNV("glResumeTransformFeedbackNV")
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Rotated("glRotated");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::Rotatef("glRotatef");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::RotatexOES("glRotatexOES");
+
 
 } // namespace glbinding

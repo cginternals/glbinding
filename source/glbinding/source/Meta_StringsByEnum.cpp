@@ -1,14 +1,16 @@
+
 #ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/enum.h>
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
 {
@@ -3461,6 +3463,8 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
     { GLenum::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM, "GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM" }
 };
 
+
 } // namespace glbinding
+
 
 #endif // EXTENSIVE_META

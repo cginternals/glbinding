@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/glbinding_api.h>
@@ -12,11 +13,13 @@
 
 namespace gl
 {
-enum class GLextension : int;
+    enum class GLextension : int;
 }
+
 
 namespace glbinding 
 {
+
 
 class GLBINDING_API AbstractFunction
 {
@@ -82,5 +85,6 @@ protected:
     // max pos is used to provide m_states size, which is identical for all instances.
     static int s_maxpos;
 };
+
 
 } // namespace glbinding

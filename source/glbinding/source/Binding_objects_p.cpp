@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding 
 {
+
 
 Function<void, GLenum, GLfloat> Binding::PNTrianglesfATI("glPNTrianglesfATI");
 Function<void, GLenum, GLint> Binding::PNTrianglesiATI("glPNTrianglesiATI");
@@ -288,5 +289,6 @@ Function<void, GLenum, GLuint, GLsizei, const GLchar *> Binding::PushDebugGroup(
 Function<void, GLsizei, const GLchar *> Binding::PushGroupMarkerEXT("glPushGroupMarkerEXT");
 Function<void> Binding::PushMatrix("glPushMatrix");
 Function<void, GLuint> Binding::PushName("glPushName");
+
 
 } // namespace glbinding

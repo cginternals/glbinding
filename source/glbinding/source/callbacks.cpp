@@ -8,6 +8,7 @@
 #include <glbinding/AbstractValue.h>
 #include <glbinding/Binding.h>
 
+
 namespace
 {
 
@@ -15,10 +16,12 @@ glbinding::SimpleFunctionCallback g_unresolvedCallback;
 glbinding::FunctionCallback g_beforeCallback;
 glbinding::FunctionCallback g_afterCallback;
 
-}
+} // namespace
+
 
 namespace glbinding 
 {
+
 
 FunctionCall::FunctionCall(const AbstractFunction * _function)
 : function(_function)
@@ -198,5 +201,6 @@ void after(const FunctionCall & call)
 {
     g_afterCallback(call);
 }
+
 
 } // namespace glbinding

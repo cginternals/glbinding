@@ -1,11 +1,12 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
 #include <glbinding/gl/functions.h>
 
-
 namespace gl32core
 {
+
 
 using gl::glActiveTexture;
 using gl::glAttachShader;
@@ -323,5 +324,6 @@ using gl::glVertexAttribIPointer;
 using gl::glVertexAttribPointer;
 using gl::glViewport;
 using gl::glWaitSync;
+
 
 } // namespace gl32core

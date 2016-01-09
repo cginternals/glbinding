@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/glbinding_api.h>
@@ -14,8 +15,8 @@
 namespace glbinding
 {
 
-class Version;
 
+class Version;
 
 class GLBINDING_API Meta
 {
@@ -71,5 +72,6 @@ public:
 private:
     static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
 };
+
 
 } // namespace gl

@@ -13,19 +13,25 @@
 #include "glrevision.h"
 #include "Meta_Maps.h"
 
-
 using namespace gl;
+
 
 namespace 
 {
-    static const auto none = std::string{};
-    static const auto noneVersion = glbinding::Version{};
-    static const auto noneStringSet = std::set<std::string>{};
-    static const auto noneExtensions = std::set<gl::GLextension>{};
-}
+
+
+static const auto none = std::string{};
+static const auto noneVersion = glbinding::Version{};
+static const auto noneStringSet = std::set<std::string>{};
+static const auto noneExtensions = std::set<gl::GLextension>{};
+
+
+} // namespace
+
 
 namespace glbinding
 {
+
 
 bool Meta::extensive()
 {
@@ -252,7 +258,6 @@ const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string &)
 
 #endif // EXTENSIVE_META
 
-
 const Version & Meta::getRequiringVersion(const GLextension extension)
 {
     const auto i = Meta_ReqVersionsByExtension.find(extension);
@@ -268,5 +273,6 @@ const std::set<Version> & Meta::versions()
 {
     return Version::versions();
 }
+
 
 } // namespace glbinding

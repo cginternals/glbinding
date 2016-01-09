@@ -1,11 +1,12 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
 #include <glbinding/gl/functions.h>
 
-
 namespace gl12
 {
+
 
 using gl::glAccum;
 using gl::glAlphaFunc;
@@ -347,5 +348,6 @@ using gl::glVertex4s;
 using gl::glVertex4sv;
 using gl::glVertexPointer;
 using gl::glViewport;
+
 
 } // namespace gl12

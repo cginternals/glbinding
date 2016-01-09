@@ -2,6 +2,8 @@
 namespace gl
 {
 
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const %t & value);
+
 
 } // namespace gl

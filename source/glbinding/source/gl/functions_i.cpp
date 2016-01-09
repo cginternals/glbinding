@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glIglooInterfaceSGIX(GLenum pname, const void * params)
 {
@@ -430,5 +430,6 @@ GLboolean glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname)
     return Binding::IsVertexAttribEnabledAPPLE(index, pname);
 }
     
+
 
 } // namespace gl

@@ -13,8 +13,10 @@
 
 using namespace gl;
 
+
 namespace
 {
+
 
 void insertExtension(const std::string & extensionName, std::set<GLextension> * extensions, std::set<std::string> * unknownExtensionNames)
 {
@@ -29,10 +31,13 @@ void insertExtension(const std::string & extensionName, std::set<GLextension> * 
     }
 }
 
-}
+
+} // namespace
+
 
 namespace glbinding
 {
+
 
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
 {
@@ -105,5 +110,6 @@ Version ContextInfo::version()
 
     return version;
 }
+
 
 } // namespace glbinding

@@ -1,3 +1,4 @@
+
 #include <glbinding/logging.h>
 
 #include <atomic>
@@ -12,22 +13,29 @@
 
 namespace
 {
-    const unsigned int LOG_BUFFER_SIZE = 5000;
 
-    std::atomic<bool> g_stop{false};
-    std::atomic<bool> g_persisted{false};
-    std::mutex g_lockfinish;
-    std::condition_variable g_finishcheck;
 
-    using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::BufferType>;
-    FunctionCallBuffer g_buffer{LOG_BUFFER_SIZE};
-}
+const unsigned int LOG_BUFFER_SIZE = 5000;
+
+std::atomic<bool> g_stop{false};
+std::atomic<bool> g_persisted{false};
+std::mutex g_lockfinish;
+std::condition_variable g_finishcheck;
+
+using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::BufferType>;
+FunctionCallBuffer g_buffer{LOG_BUFFER_SIZE};
+
+
+} // namespace
+
 
 namespace glbinding
 {
 
+
 namespace logging
 {
+
 
 void resize(const unsigned int newSize)
 {
@@ -187,5 +195,8 @@ unsigned int size(TailIdentifier key)
     return g_buffer.size(key);
 }
 
+
 } // namespace logging
+
+
 } // namespace glbinding

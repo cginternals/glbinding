@@ -1,6 +1,7 @@
+
 #pragma once
 
 namespace 
 {
-	const unsigned int GL_REVISION = 32348;
+    const unsigned int GL_REVISION = 32348;
 }

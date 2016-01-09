@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding 
 {
+
 
 Function<void, GLenum> Binding::MakeBufferNonResidentNV("glMakeBufferNonResidentNV");
 Function<void, GLenum, GLenum> Binding::MakeBufferResidentNV("glMakeBufferResidentNV");
@@ -239,5 +240,6 @@ Function<void, GLenum, GLenum, GLuint> Binding::MultiTexRenderbufferEXT("glMulti
 Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage1DEXT("glMultiTexSubImage1DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage2DEXT("glMultiTexSubImage2DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage3DEXT("glMultiTexSubImage3DEXT");
+
 
 } // namespace glbinding

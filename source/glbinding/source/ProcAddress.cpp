@@ -13,8 +13,10 @@
     #include <GL/glx.h>
 #endif
 
+
 namespace glbinding 
 {
+
 
 ProcAddress getProcAddress(const char * name)
 {
@@ -49,5 +51,6 @@ ProcAddress getProcAddress(const char * name)
 
     return reinterpret_cast<ProcAddress>(procAddress);
 }
+
 
 } // namespace glbinding

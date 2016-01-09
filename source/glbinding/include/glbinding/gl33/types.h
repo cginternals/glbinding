@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -6,6 +7,7 @@
 
 namespace gl33
 {
+
 
 using gl::GLextension;
 using gl::GLenum;
@@ -70,5 +72,6 @@ using gl::UnusedMask;
 using gl::BufferAccessMask;
 using gl::BufferStorageMask;
 using gl::PathFontStyle;
+
 
 } // namespace gl33

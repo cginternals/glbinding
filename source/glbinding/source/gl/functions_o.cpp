@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar * label)
 {
@@ -45,5 +45,6 @@ void glOrthoxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed 
     return Binding::OrthoxOES(l, r, b, t, n, f);
 }
     
+
 
 } // namespace gl

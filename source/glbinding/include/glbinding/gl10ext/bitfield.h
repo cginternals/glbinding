@@ -1,11 +1,14 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
 
 #include <glbinding/gl/bitfield.h>
 
+
 namespace gl10ext
 {
+
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -156,5 +159,6 @@ using gl::GL_ALL_BARRIER_BITS;
 using gl::GL_ALL_BARRIER_BITS_EXT;
 using gl::GL_ALL_SHADER_BITS;
 using gl::GL_CLIENT_ALL_ATTRIB_BITS;
+
 
 } // namespace gl10ext

@@ -4,6 +4,7 @@
 namespace gl
 {
 
+
 bool operator==(const %t & a, std::underlying_type<%t>::type b)
 {
     return static_cast<std::underlying_type<%t>::type>(a) == b;
@@ -79,5 +80,6 @@ std::ostream & operator<<(std::ostream & stream, const %t & value)
     stream << glbinding::Meta::getString(value);
     return stream;
 }
+
 
 } // namespace gl

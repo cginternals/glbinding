@@ -1,11 +1,12 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
 #include <glbinding/gl/functions.h>
 
-
 namespace gl41
 {
+
 
 using gl::glAccum;
 using gl::glActiveShaderProgram;
@@ -865,5 +866,6 @@ using gl::glWindowPos3i;
 using gl::glWindowPos3iv;
 using gl::glWindowPos3s;
 using gl::glWindowPos3sv;
+
 
 } // namespace gl41

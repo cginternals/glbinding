@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <string>
@@ -12,6 +13,7 @@
 
 namespace glbinding
 {
+
 
 class Version;
 
@@ -53,5 +55,6 @@ extern const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_En
 extern const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27> Meta_ExtensionsByFunctionStringMaps;
 
 #endif // EXTENSIVE_META
+
 
 } // namespace glbinding
