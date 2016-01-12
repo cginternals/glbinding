@@ -10,7 +10,6 @@
 
 #include <functional>
 #include <iosfwd>
-#include <string>
 
 #ifdef _MSC_VER
 #define GL_APIENTRY __stdcall
