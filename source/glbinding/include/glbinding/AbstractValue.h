@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/glbinding_api.h>
@@ -5,8 +6,9 @@
 #include <string>
 #include <iosfwd>
 
-namespace glbinding 
+namespace glbinding
 {
+
 
 class GLBINDING_API AbstractValue
 {
@@ -18,5 +20,6 @@ public:
 
     std::string asString() const;
 };
+
 
 } // namespace glbinding

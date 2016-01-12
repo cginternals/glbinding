@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout)
 {
@@ -350,5 +350,6 @@ void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ
     return Binding::WriteMaskEXT(res, in, outX, outY, outZ, outW);
 }
     
+
 
 } // namespace gl

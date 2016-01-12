@@ -7,6 +7,7 @@
 
 #include "glbinding/glbinding_features.h"
 
+
 namespace
 {
 
@@ -15,10 +16,12 @@ GLBINDING_THREAD_LOCAL glbinding::ContextHandle t_context = 0;
 std::recursive_mutex g_mutex;
 std::unordered_map<glbinding::ContextHandle, int> g_bindings;
 
-}
+} // namespace
+
 
 namespace glbinding 
 {
+
 
 std::vector<AbstractFunction *> Binding::s_additionalFunctions;
 std::vector<Binding::ContextSwitchCallback> Binding::s_callbacks;
@@ -162,5 +165,6 @@ void Binding::addContextSwitchCallback(ContextSwitchCallback callback)
     s_callbacks.push_back(std::move(callback));
     g_mutex.unlock();
 }
+
 
 } // namespace glbinding

@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/no%a.h>
@@ -7,6 +8,8 @@
 namespace %a
 {
 
+
 %s
+
 
 } // namespace %a

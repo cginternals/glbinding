@@ -2,6 +2,7 @@
 namespace gl
 {
 
+
 GLBINDING_API bool operator==(const %t & a, std::underlying_type<%t>::type b);
 GLBINDING_API bool operator!=(const %t & a, std::underlying_type<%t>::type b);
 GLBINDING_API bool operator< (const %t & a, std::underlying_type<%t>::type b);
@@ -15,5 +16,6 @@ GLBINDING_API bool operator< (std::underlying_type<%t>::type a, const %t & b);
 GLBINDING_API bool operator<=(std::underlying_type<%t>::type a, const %t & b);
 GLBINDING_API bool operator> (std::underlying_type<%t>::type a, const %t & b);
 GLBINDING_API bool operator>=(std::underlying_type<%t>::type a, const %t & b);
+
 
 } // namespace gl

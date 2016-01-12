@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <functional>
@@ -12,8 +13,10 @@
 #endif
 #endif
 
+
 namespace glbinding 
 {
+
 
 template <typename ReturnType, typename... Arguments> struct FunctionHelper;
 
@@ -56,6 +59,8 @@ protected:
     AfterCallback m_afterCallback;
 };
 
+
 } // namespace glbinding
+
 
 #include <glbinding/Function.hpp>

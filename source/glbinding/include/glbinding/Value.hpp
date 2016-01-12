@@ -1,9 +1,14 @@
+
 #pragma once
 
 #include <glbinding/Value.h>
 
+#include <ostream>
+
+
 namespace glbinding 
 {
+
 
 template <typename... Arguments>
 struct ValueAdder;
@@ -58,5 +63,6 @@ std::vector<AbstractValue*> createValues(Arguments&&... arguments)
     addValuesTo(values, std::forward<Arguments>(arguments)...);
     return values;
 }
+
 
 } // namespace glbinding

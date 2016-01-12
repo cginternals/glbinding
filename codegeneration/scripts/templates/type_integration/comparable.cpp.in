@@ -2,6 +2,7 @@
 namespace gl
 {
 
+
 bool operator==(const %t & a, std::underlying_type<%t>::type b)
 {
     return static_cast<std::underlying_type<%t>::type>(a) == b;
@@ -61,5 +62,6 @@ bool operator>=(std::underlying_type<%t>::type a, const %t & b)
 {
     return a >= static_cast<std::underlying_type<%t>::type>(b);
 }
+
 
 } // namespace gl

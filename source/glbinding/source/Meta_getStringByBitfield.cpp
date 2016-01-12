@@ -8,13 +8,16 @@
 
 using namespace gl; // ToDo: multiple APIs?
 
+
 namespace
 {
     static const auto none = std::string{};
 }
 
+
 namespace glbinding
 {
+
 
 #ifdef EXTENSIVE_META
 
@@ -456,5 +459,7 @@ const std::string & Meta::getString(const VertexHintsMaskPGI)
 }
 
 #endif // EXTENSIVE_META
+
+
 
 } // namespace glbinding

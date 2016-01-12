@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glFeedbackBuffer(GLsizei size, GLenum type, GLfloat * buffer)
 {
@@ -435,5 +435,6 @@ void glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixe
     return Binding::FrustumxOES(l, r, b, t, n, f);
 }
     
+
 
 } // namespace gl

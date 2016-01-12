@@ -1,11 +1,12 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
 #include <glbinding/gl/functions.h>
 
-
 namespace gl42core
 {
+
 
 using gl::glActiveShaderProgram;
 using gl::glActiveTexture;
@@ -527,5 +528,6 @@ using gl::glViewportArrayv;
 using gl::glViewportIndexedf;
 using gl::glViewportIndexedfv;
 using gl::glWaitSync;
+
 
 } // namespace gl42core

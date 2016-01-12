@@ -4,11 +4,12 @@
 #include <glbinding/gl/extension.h>
 #include <glbinding/Version.h>
 
-
 using namespace gl;
+
 
 namespace glbinding
 {
+
 
 const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension =
 {
@@ -132,5 +133,6 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension =
     { GLextension::GL_KHR_context_flush_control, { 4, 5 } },
     { GLextension::GL_KHR_robustness, { 4, 5 } }
 };
+
 
 } // namespace glbinding

@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -7,6 +8,7 @@
 
 namespace gl43core
 {
+
 
 // import enums to namespace
 
@@ -1556,5 +1558,6 @@ using gl::GL_MAX_FRAMEBUFFER_HEIGHT;
 using gl::GL_MAX_FRAMEBUFFER_LAYERS;
 using gl::GL_MAX_FRAMEBUFFER_SAMPLES;
 using gl::GL_NUM_SAMPLE_COUNTS;
+
 
 } // namespace gl43core

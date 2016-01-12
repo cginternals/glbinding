@@ -5,8 +5,10 @@
 #include <map>
 #include <vector>
 
+
 namespace glbinding
 {
+
 
 template <typename T>
 class RingBuffer 
@@ -49,6 +51,8 @@ protected:
     std::map<TailIdentifier, std::atomic<SizeType>> m_tails;
 };
 
+
 } // namespace glbinding
+
 
 #include "RingBuffer.hpp"

@@ -1,9 +1,12 @@
+
 #pragma once
 
 #include <type_traits>
 
+
 namespace glbinding 
 {
+
 
 template <typename... Types>
 class SharedBitfield;
@@ -175,6 +178,8 @@ template <typename Enum, typename ConvertibleEnum>
 typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator^=(Enum & a, ConvertibleEnum b);
 
+
 } // namespace glbinding
+
 
 #include <glbinding/SharedBitfield.hpp>

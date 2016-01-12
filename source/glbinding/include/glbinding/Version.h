@@ -1,15 +1,17 @@
+
 #pragma once
 
-#include <glbinding/glbinding_api.h>
-
-#include <ostream>
+#include <iosfwd>
 #include <string>
 #include <set>
 #include <utility>
 
+#include <glbinding/glbinding_api.h>
+
 
 namespace glbinding
 {
+
 
 class GLBINDING_API Version
 {
@@ -47,6 +49,8 @@ protected:
     static const Version s_latest;
 };
 
+
 } // namespace glbinding
+
 
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version);

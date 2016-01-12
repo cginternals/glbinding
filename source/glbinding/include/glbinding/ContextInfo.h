@@ -1,9 +1,11 @@
+
 #pragma once
 
 #include <glbinding/glbinding_api.h>
 
 #include <set>
 #include <string>
+
 
 namespace gl
 {
@@ -14,8 +16,8 @@ namespace gl
 namespace glbinding
 {
 
-class Version;
 
+class Version;
 
 class GLBINDING_API ContextInfo
 {
@@ -29,5 +31,6 @@ public:
 
     static Version version();
 };
+
 
 } // namespace glbinding

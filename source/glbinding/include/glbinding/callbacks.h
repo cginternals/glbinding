@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/glbinding_api.h>
@@ -8,8 +9,10 @@
 #include <string>
 #include <chrono>
 
+
 namespace glbinding 
 {
+
 
 class AbstractFunction;
 class AbstractValue;
@@ -64,5 +67,6 @@ GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
 
 GLBINDING_API void setBeforeCallback(FunctionCallback callback);
 GLBINDING_API void setAfterCallback(FunctionCallback callback);
+
 
 } // namespace glbinding

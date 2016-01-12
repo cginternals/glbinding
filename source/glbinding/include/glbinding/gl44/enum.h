@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -7,6 +8,7 @@
 
 namespace gl44
 {
+
 
 // import enums to namespace
 
@@ -2196,5 +2198,6 @@ using gl::GL_TRANSFORM_FEEDBACK_BUFFER_INDEX;
 using gl::GL_TRANSFORM_FEEDBACK_BUFFER_STRIDE;
 using gl::GL_CLEAR_TEXTURE;
 using gl::GL_NUM_SAMPLE_COUNTS;
+
 
 } // namespace gl44

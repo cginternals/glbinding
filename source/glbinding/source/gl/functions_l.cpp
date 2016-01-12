@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar * label)
 {
@@ -205,5 +205,6 @@ void glLogicOp(GLenum opcode)
     return Binding::LogicOp(opcode);
 }
     
+
 
 } // namespace gl

@@ -1,11 +1,14 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
 
 #include <glbinding/gl/bitfield.h>
 
+
 namespace gl41
 {
+
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -50,5 +53,6 @@ using gl::GL_MULTISAMPLE_BIT;
 using gl::GL_ALL_ATTRIB_BITS;
 using gl::GL_ALL_SHADER_BITS;
 using gl::GL_CLIENT_ALL_ATTRIB_BITS;
+
 
 } // namespace gl41

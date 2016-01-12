@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <iomanip>
@@ -8,8 +9,10 @@
 
 #include "RingBuffer.h"
 
+
 namespace glbinding
 {
+
 
 template <typename T>
 RingBuffer<T>::RingBuffer(const unsigned int maxSize)
@@ -248,5 +251,6 @@ typename RingBuffer<T>::SizeType RingBuffer<T>::size(SizeType head, SizeType tai
         return head - tail;
     }
 }
+
 
 } // namespace glbinding

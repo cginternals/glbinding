@@ -8,6 +8,7 @@
 namespace glbinding
 {
 
+
 AbstractValue::AbstractValue()
 {
 }
@@ -24,5 +25,6 @@ std::string AbstractValue::asString() const
 
     return ss.str();
 }
+
 
 } // namespace glbinding

@@ -1,15 +1,14 @@
 
-// NOTE: this is intended to work regardless of a EXTENSIVE_META definition.
-
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/extension.h>
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_0 =
 {
@@ -664,5 +663,6 @@ const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_Exte
     Meta_ExtensionsByString_Y,
     Meta_ExtensionsByString_Z
 } };
+
 
 } // namespace glbinding

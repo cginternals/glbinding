@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -8,9 +9,11 @@
 namespace gl21ext
 {
 
+
 // import booleans to namespace
 
 using gl::GL_FALSE;
 using gl::GL_TRUE;
+
 
 } // namespace gl21ext

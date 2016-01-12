@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -7,6 +8,7 @@
 
 namespace gl21
 {
+
 
 // import enums to namespace
 
@@ -1363,5 +1365,6 @@ using gl::GL_UPPER_LEFT;
 using gl::GL_STENCIL_BACK_REF;
 using gl::GL_STENCIL_BACK_VALUE_MASK;
 using gl::GL_STENCIL_BACK_WRITEMASK;
+
 
 } // namespace gl21

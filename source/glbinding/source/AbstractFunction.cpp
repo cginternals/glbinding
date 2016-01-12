@@ -13,6 +13,7 @@
 
 #include "callbacks_private.h"
 
+
 namespace
 {
 
@@ -20,8 +21,10 @@ GLBINDING_THREAD_LOCAL int t_pos = -1;
 
 }
 
+
 namespace glbinding 
 {
+
 
 int AbstractFunction::s_maxpos = -1;
 
@@ -118,7 +121,9 @@ void AbstractFunction::resolveAddress()
     auto & currentState = state();
 
     if (currentState.initialized)
+    {
         return;
+    }
 
     currentState.address = getProcAddress(m_name);
     currentState.initialized = true;
@@ -199,5 +204,6 @@ void AbstractFunction::after(const FunctionCall & call) const
 {
     glbinding::after(call);
 }
+
 
 } // namespace glbinding

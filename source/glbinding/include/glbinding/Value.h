@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/glbinding_api.h>
@@ -7,8 +8,10 @@
 #include <glbinding/AbstractValue.h>
 #include <glbinding/gl/types.h>
 
+
 namespace glbinding 
 {
+
 
 template <typename T>
 class Value : public AbstractValue
@@ -38,5 +41,6 @@ template <typename... Arguments>
 std::vector<AbstractValue*> createValues(Arguments&&... arguments);
 
 } // namespace glbinding
+
 
 #include <glbinding/Value.hpp>

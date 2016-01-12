@@ -2,6 +2,7 @@
 namespace gl
 {
 
+
 %t operator|(const %t & a, const %t & b)
 {
     return static_cast<%t>(static_cast<std::underlying_type<%t>::type>(a) | static_cast<std::underlying_type<%t>::type>(b));
@@ -37,5 +38,6 @@ namespace gl
     
     return a;
 }
+
 
 } // namespace gl

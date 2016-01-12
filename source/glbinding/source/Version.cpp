@@ -9,6 +9,7 @@
 namespace glbinding
 {
 
+
 Version::Version()
 : m_major{0}
 , m_minor{0}

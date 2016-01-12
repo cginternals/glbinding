@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glSampleCoverage(GLfloat value, GLboolean invert)
 {
@@ -560,5 +560,6 @@ void glSyncTextureINTEL(GLuint texture)
     return Binding::SyncTextureINTEL(texture);
 }
     
+
 
 } // namespace gl

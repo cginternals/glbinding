@@ -9,8 +9,10 @@
 #include <GL/glx.h>
 #endif
 
+
 namespace glbinding
 {
+
 
 ContextHandle getCurrentContext()
 {
@@ -27,5 +29,6 @@ ContextHandle getCurrentContext()
 
     return id;
 }
+
 
 } // namespace glbinding

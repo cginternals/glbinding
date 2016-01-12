@@ -2,6 +2,7 @@
 namespace std
 {
 
+
 template<>
 struct hash<gl::%t>
 {
@@ -12,5 +13,6 @@ struct hash<gl::%t>
         return hasher(static_cast<std::underlying_type<gl::%t>::type>(t));
     }
 };
+
 
 } // namespace std

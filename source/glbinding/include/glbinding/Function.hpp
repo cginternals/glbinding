@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/Function.h>
@@ -11,6 +12,7 @@
 
 namespace glbinding 
 {
+
 
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
@@ -123,27 +125,25 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 template <typename ReturnType, typename... Arguments>
 ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
 {
-    auto myAddress = address();
+    const auto myAddress = address();
 
-    if (myAddress != nullptr)
+    if (myAddress == nullptr)
     {
-        if (isAnyEnabled(CallbackMask::Before | CallbackMask::After | CallbackMask::Logging))
+        if (isEnabled(CallbackMask::Unresolved))
         {
-            return FunctionHelper<ReturnType, Arguments...>().call(this, std::forward<Arguments>(arguments)...);
+           unresolved();
         }
-        else
-        {
-            return FunctionHelper<ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
-        }
+
+        return ReturnType();
+    }
+
+    if (isAnyEnabled(CallbackMask::Before | CallbackMask::After | CallbackMask::Logging))
+    {
+        return FunctionHelper<ReturnType, Arguments...>().call(this, std::forward<Arguments>(arguments)...);
     }
     else
     {
-         if (isEnabled(CallbackMask::Unresolved))
-         {
-            unresolved();
-         }
-
-         return ReturnType();
+        return FunctionHelper<ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
     }
 }
 
@@ -176,5 +176,6 @@ void Function<ReturnType, Arguments...>::clearAfterCallback()
 {
     m_afterCallback = nullptr;
 }
+
 
 } // namespace glbinding

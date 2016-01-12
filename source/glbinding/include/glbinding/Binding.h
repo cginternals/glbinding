@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <array>
@@ -14,6 +15,7 @@
 
 namespace glbinding
 {
+
 
 class GLBINDING_API Binding
 {
@@ -2898,5 +2900,6 @@ protected:
 	static std::vector<AbstractFunction *> s_additionalFunctions;
 	static std::vector<ContextSwitchCallback> s_callbacks;
 };
+
 
 } // namespace glbinding

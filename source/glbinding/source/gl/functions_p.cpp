@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glPNTrianglesfATI(GLenum pname, GLfloat param)
 {
@@ -1415,5 +1415,6 @@ void glPushName(GLuint name)
     return Binding::PushName(name);
 }
     
+
 
 } // namespace gl

@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding 
 {
+
 
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferData("glNamedBufferData");
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferDataEXT("glNamedBufferDataEXT");
@@ -86,5 +87,6 @@ Function<void, GLenum, GLint, GLint, GLint> Binding::NormalStream3iATI("glNormal
 Function<void, GLenum, const GLint *> Binding::NormalStream3ivATI("glNormalStream3ivATI");
 Function<void, GLenum, GLshort, GLshort, GLshort> Binding::NormalStream3sATI("glNormalStream3sATI");
 Function<void, GLenum, const GLshort *> Binding::NormalStream3svATI("glNormalStream3svATI");
+
 
 } // namespace glbinding

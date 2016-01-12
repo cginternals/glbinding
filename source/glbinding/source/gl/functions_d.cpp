@@ -1,14 +1,14 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
-
 
 using namespace glbinding;
 
+
 namespace gl
 {
+
 
 void glDebugMessageCallback(GLDEBUGPROC callback, const void * userParam)
 {
@@ -595,5 +595,6 @@ void glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint strea
     return Binding::DrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
 }
     
+
 
 } // namespace gl
