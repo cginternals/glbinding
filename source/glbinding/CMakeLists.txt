@@ -105,7 +105,7 @@ set(sources
     ${source_path}/Binding_pch.h
 )
 
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
+if(("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") AND (${SYSTEM_NAME_UPPER} MATCHES "LINUX"))
     list(APPEND sources 
         "${source_path}/gl/functions.cpp"
         "${source_path}/Binding_objects.cpp"
