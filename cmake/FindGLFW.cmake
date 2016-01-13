@@ -33,17 +33,17 @@ find_library(GLFW_LIBRARY NAMES glfw3 glfw glfw3dll glfwdll
     /usr/local
     /sw
     /opt/local
-    /opt/local-release
-    /opt/local-debug
 
     # authors prefered choice for development
-    /build 
-    /build-release
-    /build-debug
+    $ENV{GLFW_DIR}
+    $ENV{GLFW_DIR}/build
+    $ENV{GLFW_DIR}/build-release
+    $ENV{GLFW_DIR}/build-debug
 
     PATH_SUFFIXES
     /lib
     /lib64
+    /src # for from-source builds
 
     DOC "The GLFW library")
     
