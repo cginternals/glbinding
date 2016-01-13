@@ -105,22 +105,17 @@ set(sources
     ${source_path}/Binding_pch.h
 )
 
-if(("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") AND (${SYSTEM_NAME_UPPER} MATCHES "LINUX"))
-    list(APPEND sources 
-        "${source_path}/gl/functions.cpp"
-        "${source_path}/Binding_objects.cpp"
-    )
-else()
-    # use splitted function and binding sources on windows compilers (e.g., mingw, msvc) and clang
 
-    file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
-    file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
+# use splitted function and binding sources on windows compilers (e.g., mingw, msvc) and clang
+# also use them for GCC for reduced project setup complexity
 
-    list(APPEND sources 
-        ${splitted_binding_sources}
-        ${splitted_functions_sources}
-    )
-endif()
+file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
+file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
+
+list(APPEND sources 
+    ${splitted_binding_sources}
+    ${splitted_functions_sources}
+)
 
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     # on msvc use private (non-api) per file precompiled headers on those grouped sources
