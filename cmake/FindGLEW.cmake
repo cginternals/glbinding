@@ -34,13 +34,14 @@ find_library(GLEW_LIBRARY NAMES GLEW glew glew32 glew32s
     /usr/local
     /sw
     /opt/local
-    /opt/local-release
-    /opt/local-debug
 
     # authors prefered choice for development
-    /build 
+    /build
     /build-release
     /build-debug
+    $ENV{GLEW_DIR}/build
+    $ENV{GLEW_DIR}/build-release
+    $ENV{GLEW_DIR}/build-debug
 
     PATH_SUFFIXES
     /lib

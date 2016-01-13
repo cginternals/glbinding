@@ -35,7 +35,9 @@ find_library(GLFW_LIBRARY NAMES glfw3 glfw glfw3dll glfwdll
     /opt/local
 
     # authors prefered choice for development
-    $ENV{GLFW_DIR}
+    /build
+    /build-release
+    /build-debug
     $ENV{GLFW_DIR}/build
     $ENV{GLFW_DIR}/build-release
     $ENV{GLFW_DIR}/build-debug
