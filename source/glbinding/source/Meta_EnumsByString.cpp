@@ -1726,7 +1726,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_I =
     { "GL_IUI_V3F_EXT", GLenum::GL_IUI_V3F_EXT }
 };
 
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString_J = {};
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString_J{};
 
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_K =
 {
