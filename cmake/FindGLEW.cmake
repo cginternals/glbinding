@@ -26,9 +26,6 @@ else()
     set(GLEW_BUILD_DIR Release/Win32)
 endif()
 
-MESSAGE(STATUS $ENV{CMAKE_PREFIX_PATH})
-MESSAGE(STATUS "MOEP: /lib/${GLEW_BUILD_DIR}")
-
 find_library(GLEW_LIBRARY NAMES GLEW glew glew32 glew32s
 
     PATHS
