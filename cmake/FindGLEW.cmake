@@ -9,6 +9,7 @@
 find_path(GLEW_INCLUDE_DIR GL/glew.h
 
     PATHS
+    $ENV{GLEW_DIR}
     /usr
     /usr/local
     /sw
@@ -31,6 +32,7 @@ MESSAGE(STATUS "MOEP: /lib/${GLEW_BUILD_DIR}")
 find_library(GLEW_LIBRARY NAMES GLEW glew glew32 glew32s
 
     PATHS
+    $ENV{GLEW_DIR}
     /usr
     /usr/local
     /sw
@@ -39,7 +41,7 @@ find_library(GLEW_LIBRARY NAMES GLEW glew glew32 glew32s
     PATH_SUFFIXES
     /lib
     /lib64
-    /${GLEW_BUILD_DIR}
+    /lib/${GLEW_BUILD_DIR}
 
     DOC "The GLEW library")
 
@@ -51,10 +53,11 @@ if(WIN32)
         ${GLEW_INCLUDE_DIR}/..
 
         PATHS
+        $ENV{GLEW_DIR}
 
         PATH_SUFFIXES
-        /lib
         /bin
+        /bin/${GLEW_BUILD_DIR}
 
         DOC "The GLEW binary")
 

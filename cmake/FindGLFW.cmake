@@ -9,7 +9,7 @@
 find_path(GLFW_INCLUDE_DIR GLFW/glfw3.h
 
     PATHS
-    ${OPENGL_INCLUDE_DIR}
+    $ENV{GLFW_DIR}
     /usr
     /usr/local
     /usr/include/GL
@@ -26,7 +26,7 @@ find_path(GLFW_INCLUDE_DIR GLFW/glfw3.h
 find_library(GLFW_LIBRARY NAMES glfw3 glfw glfw3dll glfwdll
 
     PATHS
-    ${GLFW_LIBRARY_DIR}  # provided by glfw config
+    $ENV{GLFW_DIR}
     /lib/x64
     /lib/cocoa
     /usr
@@ -48,6 +48,7 @@ if(WIN32)
         ${GLFW_INCLUDE_DIR}/..
 
         PATHS
+        $ENV{GLFW_DIR}
         /lib/x64
         /lib/cocoa
 
