@@ -33,6 +33,13 @@ find_library(GLFW_LIBRARY NAMES glfw3 glfw glfw3dll glfwdll
     /usr/local
     /sw
     /opt/local
+    /opt/local-release
+    /opt/local-debug
+
+    # authors prefered choice for development
+    /build 
+    /build-release
+    /build-debug
 
     PATH_SUFFIXES
     /lib
