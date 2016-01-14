@@ -1,87 +1,28 @@
 from binding import *
 from classes.Enum import *
 
+def genBooleanH(api, enums, path, feature, core = False, ext = False):
+    booleanEnums = groupEnumsByType(enums).get("GLboolean")
+    booleans = [   {"identifier": enumBID(enum),
+                    "value": enum.value,
+                    "sourceNamespace": api,
+                    "last": (booleanEnums.index(enum) == len(booleanEnums) - 1)}
+                    for enum in booleanEnums]
+    context = { "api": api,
+                "feature": versionBID(feature, core, ext),
+                "defineBooleans": {"booleans": booleans} if feature is None else None,
+                "importBooleans": None if feature is None else {"booleans": booleans, "includeFolder": api} }
 
-def booleanDefinition(enum):
+    Generator.generate(context, path)
 
-    return "%s = %s" % (enumBID(enum), enum.value)
+def genBooleans(api, enums, features, path):
 
-
-def booleanImportDefinition(api, enum):
-
-    qualifier = api + "::"
-    return "using %s%s;" % (qualifier, enumBID(enum))
-
-
-def forwardBoolean(enum):
-
-    return "static const GLboolean %s = GLboolean::%s;" % (enumBID(enum), enumBID(enum))
-
-
-def genBooleans(api, enums, outputdir, outputfile, forward = False):
-
-    of_all = outputfile.replace("?", "F")
-
-    t = template(of_all).replace("%a", api)
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", "")
-
-    status(od + of)
-
-    tgrouped = groupEnumsByType(enums)
-    pureBooleans = tgrouped["GLboolean"]
-    
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-
-        if forward:
-
-            file.write(t % (("\n").join([ forwardBoolean(e) for e in pureBooleans ])))
-
-        else:
-
-            file.write(t % (
-                (",\n" + tab).join([ booleanDefinition(e) for e in pureBooleans ]),
-                ("\n") .join([ forwardBoolean(e) for e in pureBooleans ])))
-
-def genFeatureBooleans(api, enums, feature, outputdir, outputfile, core = False, ext = False):
-
-    of_all = outputfile.replace("?", "F")
-    
-    version = versionBID(feature, core, ext)
-
-    t = template(of_all).replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", version)
-
-    status(od + of)
-
-    tgrouped = groupEnumsByType(enums)
-    pureBooleans = tgrouped["GLboolean"]
-    
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-
-        if not feature:
-
-            file.write(t % (
-                (",\n" + tab).join([ booleanDefinition(e) for e in pureBooleans ]),
-                ("\n") .join([ forwardBoolean(e) for e in pureBooleans ])))
-
-        else:
-
-            file.write(t % (("\n").join([ booleanImportDefinition(api, e) for e in pureBooleans ])))
-
-def genBooleansFeatureGrouped(api, enums, features, outputdir, outputfile):
+    genBooleanH(api, enums, path, None)
 
     # gen functions feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureBooleans(api, enums, f, outputdir, outputfile)
+            genBooleanH(api, enums, path, f)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureBooleans(api, enums, f, outputdir, outputfile, True)
-            genFeatureBooleans(api, enums, f, outputdir, outputfile, False, True)
+                genBooleanH(api, enums, path, f, True)
+            genBooleanH(api, enums, path, f, False, True)

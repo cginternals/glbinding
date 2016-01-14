@@ -149,12 +149,15 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print("")
     print("GENERATING")
 
-    includedir = targetdir + "/include/glbinding/"
-    sourcedir  = targetdir + "/source/"
-    testdir    = targetdir + "/../tests/glbinding-test/"
+    includedir = pjoin(targetdir, "include/glbinding/")
+    sourcedir  = pjoin(targetdir, "source/")
+    testdir    = pjoin(targetdir, "../tests/glbinding-test/")
 
-    includedir_api = includedir + api + "?/"
-    sourcedir_api  = sourcedir  + api + "?/"
+    includedir_api = pjoin(includedir, "{api}{feature}/")
+    sourcedir_api  = pjoin(sourcedir, "{api}{feature}/")
+
+    includedir_api_old = pjoin(includedir, api + "?/")
+    sourcedir_api_old = pjoin(sourcedir, api + "?/")
 
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
@@ -164,28 +167,27 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genExtensions                  (api, extensions,         pjoin(includedir_api, "extension.h"))
 
-    genBooleans                    (api, enums,              includedir_api, "boolean.h")
-    genBooleansFeatureGrouped      (api, enums, features,    includedir_api, "boolean?.h")
+    genBooleans                    (api, enums, features,    pjoin(includedir_api, "boolean.h"))
 
-    genValues                      (api, enums,              includedir_api, "values.h")
-    genValuesFeatureGrouped        (api, enums, features,    includedir_api, "values?.h")
+    genValues                      (api, enums,              includedir_api_old, "values.h")
+    genValuesFeatureGrouped        (api, enums, features,    includedir_api_old, "values?.h")
 
-    genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h")
-    genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api, "types?.h")
+    genTypes_h                     (api, types, bitfGroups,  includedir_api_old, "types.h")
+    genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api_old, "types?.h")
 
-    genBitfieldsAll                (api, enums,              includedir_api, "bitfield.h")
-    genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api, "bitfield?.h")
+    genBitfieldsAll                (api, enums,              includedir_api_old, "bitfield.h")
+    genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api_old, "bitfield?.h")
 
-    genEnumsAll                    (api, enums,              includedir_api, "enum.h")
-    genEnumsFeatureGrouped         (api, enums, features,    includedir_api, "enum?.h")
+    genEnumsAll                    (api, enums,              includedir_api_old, "enum.h")
+    genEnumsFeatureGrouped         (api, enums, features,    includedir_api_old, "enum?.h")
 
-    genForwardFunctions            (api, commands,           includedir_api, "functions.h")
-    genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
+    genForwardFunctions            (api, commands,           includedir_api_old, "functions.h")
+    genFunctionsFeatureGrouped     (api, commands, features, includedir_api_old, "functions?.h")
 
-    genFeatures                    (api, features,           includedir_api, "gl?.h")
+    genFeatures                    (api, features,           includedir_api_old, "gl?.h")
 
-    genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
-    genFunctions                   (api, commands,           sourcedir_api,  "functions_?.cpp")
+    genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api_old,  "types.cpp")
+    genFunctions                   (api, commands,           sourcedir_api_old,  "functions_?.cpp")
 
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 

@@ -39,7 +39,7 @@ class Generator:
             _class.renderer = pystache.Renderer(search_dirs=os.path.join(execDir, templateDir),
                                                 file_extension=templateExtension)
 
-        outputPath = outputPath.format(context)
+        outputPath = outputPath.format(**context)
 
         outputDir = os.path.dirname(outputPath)
         if not os.path.exists(outputDir):
