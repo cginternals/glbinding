@@ -304,7 +304,7 @@ When requesting an OpenGL context of a specific version, the created context doe
 
 | Service | System | Compiler | Options | Status |
 | ------- | ------ | -------- | ------- | ------ |
-| [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | default, no tests | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png#0)](https://drone.io/github.com/cginternals/glbinding/latest) |
+|  [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | default, no tests | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png#0)](https://drone.io/github.com/cginternals/glbinding/latest) |
 | Jenkins | Ubuntu 14.04 | GCC 4.8 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
 | Jenkins | Ubuntu 14.04 | GCC 4.9 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
 | Jenkins | Ubuntu 14.04 | Clang 3.5 | all | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
