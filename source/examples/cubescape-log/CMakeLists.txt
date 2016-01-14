@@ -85,7 +85,7 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    ${GLFW_LIBRARY}
+    ${GLFW_LIBRARIES}
     ${META_PROJECT_NAME}::glbinding
 )
 

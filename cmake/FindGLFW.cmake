@@ -23,7 +23,7 @@ find_path(GLFW_INCLUDE_DIR GLFW/glfw3.h
 
     DOC "The directory where GLFW/glfw.h resides")
 
-find_library(GLFW_LIBRARY NAMES glfw3 glfw glfw3dll glfwdll
+find_library(GLFW_LIBRARY_RELEASE NAMES glfw3 glfw glfw3dll glfwdll
 
     PATHS
     $ENV{GLFW_DIR}
@@ -37,9 +37,31 @@ find_library(GLFW_LIBRARY NAMES glfw3 glfw glfw3dll glfwdll
     # authors prefered choice for development
     /build
     /build-release
-    /build-debug
     $ENV{GLFW_DIR}/build
     $ENV{GLFW_DIR}/build-release
+
+    PATH_SUFFIXES
+    /lib
+    /lib64
+    /src # for from-source builds
+
+    DOC "The GLFW library")
+
+find_library(GLFW_LIBRARY_DEBUG NAMES glfw3d glfwd glfw3ddll glfwddll
+
+    PATHS
+    $ENV{GLFW_DIR}
+    /lib/x64
+    /lib/cocoa
+    /usr
+    /usr/local
+    /sw
+    /opt/local
+
+    # authors prefered choice for development
+    /build
+    /build-debug
+    $ENV{GLFW_DIR}/build
     $ENV{GLFW_DIR}/build-debug
 
     PATH_SUFFIXES
@@ -49,6 +71,10 @@ find_library(GLFW_LIBRARY NAMES glfw3 glfw glfw3dll glfwdll
 
     DOC "The GLFW library")
     
+set(GLFW_LIBRARIES 
+    optimized   ${GLFW_LIBRARY_RELEASE}
+    debug       ${GLFW_LIBRARY_DEBUG})
+
 if(WIN32)
 
     find_file(GLFW_BINARY glfw3.dll
@@ -76,5 +102,5 @@ endif()
 
 # GLFW is required to link statically for now (no deploy specified)
 
-find_package_handle_standard_args(GLFW DEFAULT_MSG GLFW_LIBRARY GLFW_INCLUDE_DIR)
-mark_as_advanced(GLFW_FOUND GLFW_INCLUDE_DIR GLFW_LIBRARY)
+find_package_handle_standard_args(GLFW DEFAULT_MSG GLFW_LIBRARIES GLFW_INCLUDE_DIR)
+mark_as_advanced(GLFW_FOUND GLFW_INCLUDE_DIR GLFW_LIBRARIES)
