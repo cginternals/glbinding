@@ -70,10 +70,17 @@ find_library(GLFW_LIBRARY_DEBUG NAMES glfw3d glfwd glfw3ddll glfwddll
     /src # for from-source builds
 
     DOC "The GLFW library")
-    
-set(GLFW_LIBRARIES 
-    optimized   ${GLFW_LIBRARY_RELEASE}
-    debug       ${GLFW_LIBRARY_DEBUG})
+
+set(GLFW_LIBRARIES "")
+if(GLFW_LIBRARY_RELEASE AND GLFW_LIBRARY_DEBUG)
+    set(GLFW_LIBRARIES 
+        optimized   ${GLFW_LIBRARY_RELEASE}
+        debug       ${GLFW_LIBRARY_DEBUG})
+elseif(GLFW_LIBRARY_RELEASE)
+    set(GLFW_LIBRARIES ${GLFW_LIBRARY_RELEASE})
+elseif(GLFW_LIBRARY_DEBUG)
+    set(GLFW_LIBRARIES ${GLFW_LIBRARY_DEBUG})
+endif()
 
 if(WIN32)
 
