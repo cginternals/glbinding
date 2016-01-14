@@ -1,79 +1,38 @@
 from binding import *
 from classes.Enum import *
 
+def genValues(api, values, features, path):
 
-def valueDefinition(enum):
-
-    return "static const %s %s = %s;" % (enum.type, enumBID(enum), enum.value)
-
-
-def genValuesForwards(api, enums, outputdir, outputfile):
-
-    genValues(api, enums, outputdir, outputfile, True)
-
-
-def genValuesFeatureGrouped(api, values, features, outputdir, outputfile):
+    genValueH(api, values, path, None)
 
     # gen values feature grouped
     for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureValues(api, values, f, outputdir, outputfile)
+        if f.api == "gl": # ToDo: probably separate for all apis
+            genValueH(api, values, path, f)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureValues(api, values, f, outputdir, outputfile, True)
-            genFeatureValues(api, values, f, outputdir, outputfile, False, True)
+                genValueH(api, values, path, f, True)
+            genValueH(api, values, path, f, False, True)
 
-def genFeatureValues(api, values, feature, outputdir, outputfile, core = False, ext = False):
+def genValueH(api, values, path, feature, core = False, ext = False):
+    typeBlacklist = ["GLboolean", "GLenum", "GLbitfield"]
+    valuesByType = { t: e for (t, e) in groupEnumsByType(values).items() if t not in typeBlacklist}
 
-    of_all = outputfile.replace("?", "F")
-
-    version = versionBID(feature, core, ext)
-
-    t = template(of_all).replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", version)
-
-    status(od + of)
-
-    qualifier = api + "::"
-    
-    tgrouped = groupEnumsByType(values)
-    del tgrouped["GLboolean"]
-    del tgrouped["GLenum"]
-    del tgrouped["GLbitfield"]
-    
     groups = []
-    for type in sorted(tgrouped.keys()):
-        groups.append("\n".join([ ("using %s%s;" % (qualifier, (enumBID(c)))) for c in tgrouped[type] if (not ext and c.supported(feature, core)) or (ext and not c.supported(feature, False)) ]))
+    types = sorted(valuesByType.keys())
+    for type in types:
+        valueList = valuesByType[type]
+        values = [  {"type": value.type,
+                    "identifier": enumBID(value),
+                    "value": value.value,
+                    "importNamespace": api,
+                    "last": (valueList.index(value) == len(valueList) - 1)}
+                    for value in valueList
+                    if (feature is None) or (not ext and value.supported(feature, core)) or (ext and not value.supported(feature, False))]
+        groups.append({"values": values, "type": type, "last": (types.index(type) == len(types) - 1)})
 
-    if not os.path.exists(od):
-        os.makedirs(od)
-    
-    with open(od + of, 'w') as file:
+    context = { "api": api,
+                "feature": versionBID(feature, core, ext),
+                "defineValues": {"valueGroups": groups} if feature is None else None,
+                "importValues": None if feature is None else {"valueGroups": groups}}
 
-        file.write(t % ("\n".join(groups)))
-
-def genValues(api, enums, outputdir, outputfile, forward = False):
-
-    of_all = outputfile.replace("?", "F")
-
-    t = template(of_all).replace("%a", api)
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", "")
-
-    status(od + of)
-
-
-    tgrouped = groupEnumsByType(enums)
-    del tgrouped["GLboolean"]
-    del tgrouped["GLenum"]
-    del tgrouped["GLbitfield"]
-
-    groups = []    
-    for type in sorted(tgrouped.keys()):
-        groups.append("\n".join([ valueDefinition(c) for c in tgrouped[type] ]))
-    
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-        file.write(t % ("\n\n".join(groups)))
+    Generator.generate(context, path)

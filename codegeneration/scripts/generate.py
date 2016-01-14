@@ -169,8 +169,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genBooleans                    (api, enums, features,    pjoin(includedir_api, "boolean.h"))
 
-    genValues                      (api, enums,              includedir_api_old, "values.h")
-    genValuesFeatureGrouped        (api, enums, features,    includedir_api_old, "values?.h")
+    genValues                      (api, enums, features,    pjoin(includedir_api, "values.h"))
 
     genTypes_h                     (api, types, bitfGroups,  includedir_api_old, "types.h")
     genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api_old, "types?.h")

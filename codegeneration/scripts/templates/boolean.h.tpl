@@ -3,7 +3,7 @@
 #include <glbinding/no{{api}}.h>
 {{#importBooleans}}
 
-#include <glbinding/{{includeFolder}}/boolean.h>
+#include <glbinding/{{api}}/boolean.h>
 {{/importBooleans}}
 
 
@@ -28,7 +28,7 @@ static const GLboolean {{identifier}} = GLboolean::{{identifier}};
 // import booleans to namespace
 
 {{#booleans}}
-using {{sourceNamespace}}::{{identifier}};
+using {{importNamespace}}::{{identifier}};
 {{/booleans}}
 {{/importBooleans}}
 

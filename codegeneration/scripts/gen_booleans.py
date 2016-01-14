@@ -5,13 +5,13 @@ def genBooleanH(api, enums, path, feature, core = False, ext = False):
     booleanEnums = groupEnumsByType(enums).get("GLboolean")
     booleans = [   {"identifier": enumBID(enum),
                     "value": enum.value,
-                    "sourceNamespace": api,
+                    "importNamespace": api,
                     "last": (booleanEnums.index(enum) == len(booleanEnums) - 1)}
                     for enum in booleanEnums]
     context = { "api": api,
                 "feature": versionBID(feature, core, ext),
                 "defineBooleans": {"booleans": booleans} if feature is None else None,
-                "importBooleans": None if feature is None else {"booleans": booleans, "includeFolder": api} }
+                "importBooleans": None if feature is None else {"booleans": booleans, "api": api} }
 
     Generator.generate(context, path)
 

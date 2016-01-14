@@ -8,6 +8,7 @@ namespace gl32
 {
 
 using gl::GL_INVALID_INDEX;
+
 using gl::GL_TIMEOUT_IGNORED;
 
 } // namespace gl32
