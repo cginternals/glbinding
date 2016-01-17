@@ -302,7 +302,7 @@ When requesting an OpenGL context of a specific version, the created context doe
 
 ##### Project Health (master)
 
-| Service | System | Compiler | Options | Status |
+| Service | System | Compiler | Targets | Status |
 | ------- | ------ | -------- | ------- | ------ |
 |  [Drone](https://drone.io/github.com/cginternals/glbinding) | Ubuntu 12.04 | GCC 4.8 | all (no qt), test | [![Build Status](https://drone.io/github.com/cginternals/glbinding/status.png)](https://drone.io/github.com/cginternals/glbinding/latest) |
 | Jenkins | Ubuntu 14.04 | GCC 4.8 | all, test | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
