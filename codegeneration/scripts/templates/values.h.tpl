@@ -25,7 +25,7 @@ static const {{type}} {{identifier}} = {{value}};
 {{#importValues}}
 {{#valueGroups}}
 {{#values}}
-using {{importNamespace}}::{{identifier}};
+using {{api}}::{{identifier}};
 {{/values}}
 {{^last}}
 

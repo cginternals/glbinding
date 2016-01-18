@@ -21,10 +21,9 @@ def genValueH(api, values, path, feature, core = False, ext = False):
     types = sorted(valuesByType.keys())
     for type in types:
         valueList = valuesByType[type]
-        values = [  {"type": value.type,
+        values = [ {"type": value.type,
                     "identifier": enumBID(value),
                     "value": value.value,
-                    "importNamespace": api,
                     "last": (valueList.index(value) == len(valueList) - 1)}
                     for value in valueList
                     if (feature is None) or (not ext and value.supported(feature, core)) or (ext and not value.supported(feature, False))]
@@ -32,7 +31,8 @@ def genValueH(api, values, path, feature, core = False, ext = False):
 
     context = { "api": api,
                 "feature": versionBID(feature, core, ext),
-                "defineValues": {"valueGroups": groups} if feature is None else None,
-                "importValues": None if feature is None else {"valueGroups": groups}}
+                "valueGroups": groups,
+                "defineValues": (feature is None),
+                "importValues": (feature is not None)}
 
     Generator.generate(context, path)

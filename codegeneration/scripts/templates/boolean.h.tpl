@@ -28,7 +28,7 @@ static const GLboolean {{identifier}} = GLboolean::{{identifier}};
 // import booleans to namespace
 
 {{#booleans}}
-using {{importNamespace}}::{{identifier}};
+using {{api}}::{{identifier}};
 {{/booleans}}
 {{/importBooleans}}
 

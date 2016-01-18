@@ -2,9 +2,11 @@ from binding import *
 from classes.Type import *
 from classes.Enum import *
 
+import ipdb
+
 # ToDo: move this to Type class? (as well as convert an multiline convert)
 
-def convertTypedefLine(line, name):        
+def convertTypedefLine(line, name):
 
     if not line.startswith("typedef"):
         return line
@@ -20,11 +22,12 @@ def multilineConvertTypedef(type):
 enum_classes = [ "GLboolean", "GLenum" ]
 
 type_integration_map = {
-    "GLextension" : [ "hashable", "streamable" ], 
+    "GLextension" : [ "hashable", "streamable" ],
     "GLboolean"   : [ "hashable", "streamable" ],
     "GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
 }
-
+bitf_group_integrations = [ "hashable", "bitfieldStreamable", "bitOperatable"]
+all_integrations = [ "addable", "bitOperatable", "bitfieldStreamable", "comparable", "hashable", "streamable"]
 
 def convertTypedef(type):
 
@@ -47,99 +50,47 @@ def convertType(type):
     return convertTypedef(type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(GL_APIENTRY *)")
 
 
-def forwardType(api, type):
+def genTypeHeaders(api, types, bitfGroups, features, path):
 
-    return "using " + type.name + " = " + api + "::" + type.name + ";"
-
-
-def typeImport(api, type):
-
-    return "using " + api + "::" + type.name + ";"
-
-
-def genTypesForward_h(api, types, bitfGroups, outputdir, outputfile):
-
-    genTypes_h(api, types, bitfGroups, outputdir, outputfile, True)
-
-
-def genTypesFeatureGrouped(api, types, bitfGroups, features, outputdir, outputfile):
+    genTypesH(api, types, bitfGroups, path, None)
 
     # gen enums feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile)
+            genTypesH(api, types, bitfGroups, path, f)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile, True)
-            genFeatureTypes(api, types, bitfGroups, f, outputdir, outputfile, False, True)
+                genTypesH(api, types, bitfGroups, path, f, True)
+            genTypesH(api, types, bitfGroups, path, f, False, True)
+
+def typeIntegrationMap(type):
+    return integrationMap(type_integration_map[type.name] if type.name in type_integration_map else [])
+
+def integrationMap(integrationList):
+    return { integration: integration in integrationList for integration in all_integrations}
+
+def genTypesH(api, types, bitfGroups, path, feature, core = False, ext = False):
+
+    typeContexts = [       {"identifier": "GLextension",
+                            "definition": "enum class GLextension : int;",
+                            "integrations": integrationMap([ "hashable", "streamable" ])}]
+    typeContexts.extend([  {"identifier": type.name,
+                            "definition": convertType(type),
+                            "integrations": typeIntegrationMap(type)}
+                            for type in types])
+    typeContexts.extend([  {"identifier": group.name,
+                            "definition": "enum class {} : unsigned int;".format(group.name),
+                            "integrations": integrationMap(bitf_group_integrations)}
+                            for group in bitfGroups])
+    context = { "api": api,
+                "feature": versionBID(feature, core, ext),
+                "types": typeContexts,
+                "defineTypes": (feature is None),
+                "importTypes": (feature is not None)}
+
+    Generator.generate(context, path)
 
 
-def genFeatureTypes(api, types, bitfGroups, feature, outputdir, outputfile, core = False, ext = False):
-
-    of_all = outputfile.replace("?", "F")
-
-    version = versionBID(feature, core, ext)
-
-    t = template(of_all).replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", version)
-
-    status(od + of)
-
-    qualifier = api + "::"
-
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-
-        file.write(t %
-            ("\n".join([ typeImport(api, t) for t in types ]),
-            "\n".join([ "using %s%s;" % (qualifier, g.name) for g in bitfGroups ]),)
-        )
-
-
-
-def genTypes_h(api, types, bitfGroups, outputdir, outputfile, forward = False):
-
-    of_all = outputfile.replace("?", "F")
-
-    t = template(of_all).replace("%a", api)
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", "")
-
-    status(od + of)
-
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-
-        if forward:
-
-            file.write(t %
-                ("\n".join([ forwardType(api, t) for t in types ]),
-                "\n".join([ "using %s = gl::%s;" % (g.name, g.name) for g in bitfGroups ]),)
-            )
-
-        else:            
-            type_integrations = []
-
-            for typename, integrations in type_integration_map.items():
-                for integration in integrations:
-                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", typename))
-
-            for group in bitfGroups:
-                for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
-                    type_integrations.append(template("type_integration/%s.h" % integration).replace("%t", group.name))
-
-            file.write(t % (
-                ("\n".join([ convertType(t) for t in types ])), # if t.name != "GLbitfield" 
-                 "\n".join([ "enum class %s : unsigned int;" % g.name for g in bitfGroups ]),
-                ("\n".join([ t for t in type_integrations ]))
-            ))
-
-
-def genTypes_cpp(api, types, bitfGroups, outputdir, outputfile):
+def genTypeSources(api, types, bitfGroups, outputdir, outputfile):
 
     of = outputfile.replace("?", "")
     od = outputdir.replace("?", "")
@@ -150,7 +101,7 @@ def genTypes_cpp(api, types, bitfGroups, outputdir, outputfile):
     type_integrations = []
     for typename, integrations in type_integration_map.items():
         for integration in integrations:
-            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", typename)) 
+            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", typename))
 
     for group in bitfGroups:
         for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:

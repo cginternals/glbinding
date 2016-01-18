@@ -161,8 +161,6 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
-    #renderer = pystache.Renderer(search_dirs=os.path.join(execdir, "../template/"), file_extension="tpl")
-
     genRevision                    (revision,                pjoin(sourcedir, "glrevision.h"))
 
     genExtensions                  (api, extensions,         pjoin(includedir_api, "extension.h"))
@@ -171,8 +169,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genValues                      (api, enums, features,    pjoin(includedir_api, "values.h"))
 
-    genTypes_h                     (api, types, bitfGroups,  includedir_api_old, "types.h")
-    genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api_old, "types?.h")
+    genTypeHeaders                 (api, types, bitfGroups,  features, pjoin(includedir_api, "types.h"))
 
     genBitfieldsAll                (api, enums,              includedir_api_old, "bitfield.h")
     genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api_old, "bitfield?.h")
@@ -185,7 +182,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genFeatures                    (api, features,           includedir_api_old, "gl?.h")
 
-    genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api_old,  "types.cpp")
+    #genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api_old,  "types.cpp")
     genFunctions                   (api, commands,           sourcedir_api_old,  "functions_?.cpp")
 
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
