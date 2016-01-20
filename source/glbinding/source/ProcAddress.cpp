@@ -1,11 +1,11 @@
 
 #include <glbinding/ProcAddress.h>
 
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
     #include <string>
     #include <tchar.h>
     #include <windows.h>
-#elif __APPLE__
+#elif SYSTEM_DARWIN
     #include <cassert>
     #include <string>
     #include <dlfcn.h>
@@ -20,7 +20,7 @@ namespace glbinding
 
 ProcAddress getProcAddress(const char * name)
 {
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
 
     using PROCADDRESS = void (__stdcall *)();
     auto procAddress = reinterpret_cast<PROCADDRESS>(wglGetProcAddress(name));
@@ -31,7 +31,7 @@ ProcAddress getProcAddress(const char * name)
         procAddress = reinterpret_cast<PROCADDRESS>(::GetProcAddress(module, name));
     }
 
-#elif __APPLE__
+#elif SYSTEM_DARWIN
 
     using PROCADDRESS = void *;
 

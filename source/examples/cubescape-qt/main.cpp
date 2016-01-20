@@ -14,7 +14,7 @@ int main(int argc, char * argv[])
     QSurfaceFormat format;
     format.setDepthBufferSize(16);
 
-#ifdef __APPLE__
+#ifdef SYSTEM_DARWIN
     format.setVersion(3, 2);
     format.setProfile(QSurfaceFormat::CoreProfile);
 #endif

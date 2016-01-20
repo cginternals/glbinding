@@ -117,7 +117,7 @@ list(APPEND sources
     ${splitted_functions_sources}
 )
 
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+if(MSVC_IDE)
     # on msvc use private (non-api) per file precompiled headers on those grouped sources
 
     list(APPEND sources
@@ -259,7 +259,7 @@ target_link_libraries(${target}
 # Precompiled Header Configuration
 #
 
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+if (MSVC_IDE)
     # on msvc use private (non-api) per file precompiled headers on those grouped sources
 
     set_source_files_properties(${source_path}/Binding_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"Binding_pch.h")
