@@ -3,7 +3,7 @@
 
 #include <cassert>
 
-#ifdef __APPLE__
+#ifdef SYSTEM_DARWIN
 #include <OpenGL/OpenGL.h>
 #endif
 
@@ -167,7 +167,7 @@ void Canvas::setSwapInterval(SwapInterval swapInterval)
     bool result(false);
     m_swapInterval = swapInterval;
 
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
 
     // ToDo: C++11 - type aliases
     typedef bool(WINAPI * SWAPINTERVALEXTPROC) (int);
@@ -178,7 +178,7 @@ void Canvas::setSwapInterval(SwapInterval swapInterval)
     if (wglSwapIntervalEXT)
         result = wglSwapIntervalEXT(swapInterval);
 
-#elif __APPLE__
+#elif SYSTEM_DARWIN
 
     CGLContextObj contextObj;
     GLint swapIntervalParam = swapInterval;

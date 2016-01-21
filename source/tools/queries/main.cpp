@@ -286,7 +286,7 @@ int main(int argc, const char * argv[])
         std::cout << "Strings by GL not supported (enable through EXTENSIVE_META)" << std::endl;
         return 1;
     }
-#ifndef __APPLE__
+#ifndef SYSTEM_DARWIN
     if (argc == 2 && (std::string(argv[1]).compare("--help") || std::string(argv[1]).compare("-h")))
     {
         std::cout << "Usage: " << argv[0] << " [MAJOR_VERSION MINOR_VERSION [CORE [FORWARD_COMPATIBLE]]]" << std::endl;
@@ -303,7 +303,7 @@ int main(int argc, const char * argv[])
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
 
-#ifdef __APPLE__
+#ifdef SYSTEM_DARWIN
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);

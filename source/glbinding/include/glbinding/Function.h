@@ -6,7 +6,7 @@
 #include <glbinding/AbstractFunction.h>
 
 #ifndef WINAPI
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
 #define WINAPI __stdcall
 #else
 #define WINAPI
