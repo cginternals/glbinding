@@ -229,11 +229,6 @@ namespace
 
         switch (expectedType)
         {
-        case ExpectedType::Default:
-            if (!expected.empty() && expected != data)
-                std::cout << ", expected " << string<T, count>(expected);
-            break;
-
         case ExpectedType::Minimum:
             if (!expected.empty() && expected > data)
                 std::cout << ", expected mimimum of " << string<T, count>(expected);
@@ -243,6 +238,12 @@ namespace
             if (!expected.empty() && expected < data)
                 std::cout << ", expected maximum of " << string<T, count>(expected);
             break;
+        case ExpectedType::Default:
+        default:
+            if (!expected.empty() && expected != data)
+                std::cout << ", expected " << string<T, count>(expected);
+            break;
+
         }
 
         std::cout << std::endl;
