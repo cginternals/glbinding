@@ -214,14 +214,15 @@ void Canvas::toggleSwapInterval()
 {
     switch (m_swapInterval)
     {
-    case NoVerticalSyncronization:
-        setSwapInterval(VerticalSyncronization);
-        break;
     case VerticalSyncronization:
         setSwapInterval(AdaptiveVerticalSyncronization);
         break;
     case AdaptiveVerticalSyncronization:
         setSwapInterval(NoVerticalSyncronization);
+        break;
+    case NoVerticalSyncronization:
+    default:
+        setSwapInterval(VerticalSyncronization);
         break;
     }
 }
