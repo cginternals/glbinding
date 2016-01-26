@@ -1,6 +1,6 @@
 
 # Tools
-add_subdirectory("contexts")
-add_subdirectory("functions")
-add_subdirectory("meta")
-add_subdirectory("queries")
+add_subdirectory("glcontexts")
+add_subdirectory("glfunctions")
+add_subdirectory("glmeta")
+add_subdirectory("glqueries")

@@ -11,7 +11,7 @@ find_package(GLFW)
 # 
 
 # Target name
-set(target queries)
+set(target glqueries)
 
 # Exit here if required dependencies are not met
 if (NOT GLFW_FOUND)
