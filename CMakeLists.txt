@@ -53,7 +53,6 @@ option(OPTION_SELF_CONTAINED "Create a self-contained install with all dependenc
 option(OPTION_BUILD_TESTS    "Build tests."                                           ON)
 option(OPTION_BUILD_DOCS     "Build documentation."                                   OFF)
 option(OPTION_BUILD_EXAMPLES "Build examples."                                        OFF)
-option(OPTION_BUILD_TOOLS    "Build tools."                                           ON)
 option(OPTION_EXTENSIVE_META "Provide extensive meta information for bidirectional conversion between String and OpenGL types" ON)
 
 
