@@ -6,6 +6,7 @@
 find_package(Qt5Core    5.1)
 find_package(Qt5Gui     5.1)
 find_package(Qt5Widgets 5.1)
+find_package(cpplocate  REQUIRED)
 
 # Enable automoc
 set(CMAKE_AUTOMOC ON)
@@ -108,6 +109,7 @@ target_link_libraries(${target}
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
+    cpplocate::cpplocate
 )
 
 

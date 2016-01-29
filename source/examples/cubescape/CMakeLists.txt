@@ -4,6 +4,7 @@
 # 
 
 find_package(GLFW)
+find_package(cpplocate REQUIRED)
 
 
 # 
@@ -84,6 +85,7 @@ target_link_libraries(${target}
     ${DEFAULT_LIBRARIES}
     ${GLFW_LIBRARIES}
     ${META_PROJECT_NAME}::glbinding
+    cpplocate::cpplocate
 )
 
 
