@@ -303,7 +303,7 @@ enum class VertexHintsMaskPGI : unsigned int
 
 // import bitfields to namespace
 
-static const glbinding::SharedBitfield<gl::AttribMask, gl::BufferAccessMask, gl::BufferStorageMask, gl::ClearBufferMask, gl::ClientAttribMask, gl::ContextFlagMask, gl::ContextProfileMask, gl::FfdMaskSGIX, gl::FragmentShaderColorModMaskATI, gl::FragmentShaderDestMaskATI, gl::FragmentShaderDestModMaskATI, gl::MapBufferUsageMask, gl::MemoryBarrierMask, gl::PathFontStyle, gl::PathRenderingMaskNV, gl::PerformanceQueryCapsMaskINTEL, gl::SyncObjectMask, gl::TextureStorageMaskAMD, gl::UnusedMask, gl::UseProgramStageMask, gl::VertexHintsMaskPGI> GL_NONE_BIT = gl::AttribMask::GL_NONE_BIT;
+static const glbinding::SharedBitfield<AttribMask, BufferAccessMask, BufferStorageMask, ClearBufferMask, ClientAttribMask, ContextFlagMask, ContextProfileMask, FfdMaskSGIX, FragmentShaderColorModMaskATI, FragmentShaderDestMaskATI, FragmentShaderDestModMaskATI, MapBufferUsageMask, MemoryBarrierMask, PathFontStyle, PathRenderingMaskNV, PerformanceQueryCapsMaskINTEL, SyncObjectMask, TextureStorageMaskAMD, UnusedMask, UseProgramStageMask, VertexHintsMaskPGI> GL_NONE_BIT = AttribMask::GL_NONE_BIT;
 static const PerformanceQueryCapsMaskINTEL GL_PERFQUERY_SINGLE_CONTEXT_INTEL = PerformanceQueryCapsMaskINTEL::GL_PERFQUERY_SINGLE_CONTEXT_INTEL;
 static const UnusedMask GL_UNUSED_BIT = UnusedMask::GL_UNUSED_BIT;
 static const FragmentShaderDestModMaskATI GL_2X_BIT_ATI = FragmentShaderDestModMaskATI::GL_2X_BIT_ATI;

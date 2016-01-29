@@ -171,8 +171,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genTypeHeaders                 (api, types, bitfGroups,  features, pjoin(includedir_api, "types.h"))
 
-    genBitfieldsAll                (api, enums,              includedir_api_old, "bitfield.h")
-    genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api_old, "bitfield?.h")
+    genBitfields                   (api, enums, features,    pjoin(includedir_api, "bitfield.h"))
 
     genEnumsAll                    (api, enums,              includedir_api_old, "enum.h")
     genEnumsFeatureGrouped         (api, enums, features,    includedir_api_old, "enum?.h")
