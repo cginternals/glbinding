@@ -5,11 +5,11 @@
 
 [//]: # (Comment)
 
-The latest release is [glbinding-1.1.0](https://github.com/hpicgs/glbinding/releases/tag/v1.1.0).
+The latest release is [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolution](#lazy-function-pointer-resolution), [multi-context](#multi-context-support) and [multi-thread](#multi-threading-support) support, [global](#function-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [tools](https://github.com/hpicgs/glbinding/wiki/tools) and [examples](https://github.com/hpicgs/glbinding/wiki/examples) for quick-starting your projects. 
 
-Current gl code, written with a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
+Current gl code, written using a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
 Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
 
 ```cpp
@@ -58,11 +58,11 @@ The groups for enums are not yet as complete as we would like them to be to enab
 
 Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  feature-based API subsets, each using a specialized namespace, e.g.:
 
-* ```functions32.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
-* ```functions32core.h``` provides all non-deprecated OpenGL commands available up to 3.2 in namespace ```gl32core```.
-* ```functions32ext.h``` provides all OpenGL commands specified either in 3.3 and above, or by extension in ```gl32ext```.
+* ```gl32/functions.h``` provides all OpenGL commands available up to 3.2 in namespace ```gl32```.
+* ```gl32core/functions.h``` provides all non-deprecated OpenGL commands available up to 3.2 in namespace ```gl32core```.
+* ```gl32ext/functions.h``` provides all OpenGL commands specified either in 3.3 and above, or by extension in ```gl32ext```.
 
-Depending on the intended use-case, this allows to (1) limit coding to a specific OpenGL feature and (2) reduces switching to other features to a replacement of includes and using directives. In both cases, non-featured symbols do not compile.
+Depending on the intended use-case, this allows to limit coding to a specific OpenGL feature and reduces switching to other features to a replacement of includes and using directives. In both cases, non-featured symbols do not compile.
 
 Furthermore, *glbinding* provides explicit, non-feature dependent headers for special values (```values.h```), booleans (```boolean.h```), and basic types (```types.h```). This allows for refined includes and can reduce compile time.
 
@@ -131,6 +131,8 @@ The unresolved callback provides information about the (unresolved) wrapped Open
 Example for error checking:
 
 ```cpp
+#include <iostream>
+
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
@@ -150,6 +152,8 @@ setAfterCallback([](const FunctionCall &)
 Example for logging:
 
 ```cpp
+#include <iostream>
+
 #include <glbinding/callbacks.h>
 
 using namespace glbinding;
@@ -183,12 +187,14 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 Example for per function callbacks:
 
 ```cpp
+#include <iostream>
+
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
 
 // ...
-Binding::ClearColor.addBeforeCallback([](GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
+Binding::ClearColor.setBeforeCallback([](GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha) {
     std::cout << "Switching clear color to ("
         << red << ", " << green << ", " << blue << ", " << alpha << ")" << std::endl;
 });
@@ -216,6 +222,8 @@ You may also not know when contexts will get changed (especially if you write a 
 Therefore, you can register one callback that is called when the current active context in *glbinding* is changed.
 
 ```cpp
+#include <iostream>
+
 #include <glbinding/Binding.h>
 
 using namespace glbinding;
@@ -223,7 +231,7 @@ using namespace glbinding;
 // ...
 Binding::addContextSwitchCallback([](ContextHandle handle) {
     std::cout << "Switching to context " << handle << std::endl;
-})
+});
 ```
 
 ##### Meta Information
@@ -234,22 +242,28 @@ Typical use cases are querying the available OpenGL extensions or the associated
 Example list of all available OpenGL versions/features (compile time):
 
 ```cpp
+#include <iostream>
+
 #include <glbinding/Meta.h>
+#include <glbinding/Version.h>
 
 using glbinding::Meta;
 
-for (Version v : Meta::versions())
+for (const Version & v : Meta::versions())
   std::cout << v.toString() << std::endl;
 ```
 
 Example output of all enums (compile time):
 
 ```cpp
+#include <iostream>
+#include <iomanip>
+
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
 
-if (Meta::stringsByGL())
+if (Meta::extensive())
 {
   std::cout << "# Enums: " << Meta::enums().size() << std::endl << std::endl;
 
@@ -264,6 +278,8 @@ if (Meta::stringsByGL())
 Example output of all available extensions (run time):
 
 ```cpp
+#include <iostream>
+
 #include <glbinding/Meta.h>
 
 using glbinding::Meta;
@@ -323,14 +339,10 @@ Optional dependencies
 
 * Python 2 or 3 to generate the binding
 * Qt for some examples
-* [GLFW 3](http://www.glfw.org/) for some examples
+* GLFW 3 for some examples
 * GLEW for some examples
 
-For building *glbinding* CMake 2.8.12 or newer and a C++11 compliant compiler (e.g. GCC 4.7, Clang 3.3, MSVC 2013 **Update 3**) are required.
+For building *glbinding* CMake 3.2 or newer and a C++11 compliant compiler (e.g. GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**) are required.
 
-When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES``` and ```OPTION_BUILD_TOOLS``` (disabled by default) can be used to enable example and tool builds (qt-cubescape is only enabled when Qt5 is found). Furthermore, ```OPTION_EXTENSIVE_META``` (enabled by default) allow string-to-symbol and symbol-to-string conversion (in ```Meta```). Disable ```OPTION_EXTENSIVE_META``` to decrease build time and binary size (especially for MSVC and clang compilers).
-
-
-##### Linking binaries
-
-In order to link *glbinding* the *glbinding* path can be added to the ```CMAKE_PREFIX_PATH``` and ```find_package(glbinding REQUIRED)``` can be used in the appropriate ```CMakeLists.txt```. ```GLBINDING_INCLUDE_DIRS``` and ```GLBINDING_LIBRARIES``` can then be added to include dirs and target libraries.
+When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES``` (disabled by default) can be used to enable examples.
+The tools of glbinding are build automatically if GLFW is found. Furthermore, ```OPTION_EXTENSIVE_META``` (enabled by default) allow string-to-symbol and symbol-to-string conversion (in ```glbinding::Meta```). Disable ```OPTION_EXTENSIVE_META``` to decrease build time and binary size.
