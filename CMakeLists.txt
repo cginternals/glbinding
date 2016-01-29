@@ -35,7 +35,7 @@ set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using 
 set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
 set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
 set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
-set(META_VERSION_MAJOR       "1")
+set(META_VERSION_MAJOR       "2")
 set(META_VERSION_MINOR       "0")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION_REVISION    "${GIT_REV}")
