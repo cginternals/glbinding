@@ -1,6 +1,7 @@
 from binding import *
 from classes.Enum import *
 
+
 def genValues(api, values, features, path):
 
     genValueH(api, values, path, None)
@@ -12,6 +13,7 @@ def genValues(api, values, features, path):
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 genValueH(api, values, path, f, True)
             genValueH(api, values, path, f, False, True)
+
 
 def genValueH(api, values, path, feature, core = False, ext = False):
     typeBlacklist = ["GLboolean", "GLenum", "GLbitfield"]
@@ -31,8 +33,8 @@ def genValueH(api, values, path, feature, core = False, ext = False):
 
     context = { "api": api,
                 "feature": versionBID(feature, core, ext),
-                "valueGroups": groups,
-                "defineValues": (feature is None),
-                "importValues": (feature is not None)}
+                "groups": groups,
+                "define": (feature is None),
+                "import": (feature is not None)}
 
     Generator.generate(context, path)

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <glbinding/no{{api}}.h>
-{{#defineTypes}}
+{{#define}}
 #include <glbinding/glbinding_api.h>
 
 #include <cstddef>
@@ -17,28 +17,28 @@
 #else
 #define GL_APIENTRY
 #endif
-{{/defineTypes}}
-{{#importTypes}}
+{{/define}}
+{{#import}}
 #include <glbinding/{{api}}/types.h>
-{{/importTypes}}
+{{/import}}
 
 
 namespace {{api}}{{feature}}
 {
 
-{{#defineTypes}}
+{{#define}}
 {{#types}}
 {{definition}}
 {{/types}}
-{{/defineTypes}}
-{{#importTypes}}
+{{/define}}
+{{#import}}
 {{#types}}
 using {{api}}::{{identifier}};
 {{/types}}
-{{/importTypes}}
+{{/import}}
 
 } // namespace {{api}}{{feature}}
-{{#defineTypes}}
+{{#define}}
 
 
 // Type Integrations
@@ -69,4 +69,4 @@ using {{api}}::{{identifier}};
 
 {{/integrations.comparable}}
 {{/types}}
-{{/defineTypes}}
+{{/define}}

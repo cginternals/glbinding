@@ -1,36 +1,36 @@
 #pragma once
 
 #include <glbinding/no{{api}}.h>
-{{#defineValues}}
+{{#define}}
 #include <glbinding/{{api}}/types.h>
-{{/defineValues}}
-{{#importValues}}
+{{/define}}
+{{#import}}
 #include <glbinding/{{api}}/values.h>
-{{/importValues}}
+{{/import}}
 
 
 namespace {{api}}{{feature}}
 {
 
-{{#defineValues}}
-{{#valueGroups}}
+{{#define}}
+{{#groups}}
 {{#values}}
 static const {{type}} {{identifier}} = {{value}};
 {{/values}}
 {{^last}}
 
 {{/last}}
-{{/valueGroups}}
-{{/defineValues}}
-{{#importValues}}
-{{#valueGroups}}
+{{/groups}}
+{{/define}}
+{{#import}}
+{{#groups}}
 {{#values}}
 using {{api}}::{{identifier}};
 {{/values}}
 {{^last}}
 
 {{/last}}
-{{/valueGroups}}
-{{/importValues}}
+{{/groups}}
+{{/import}}
 
 } // namespace {{api}}{{feature}}

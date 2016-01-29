@@ -2,7 +2,6 @@ from binding import *
 from classes.Type import *
 from classes.Enum import *
 
-import ipdb
 
 # ToDo: move this to Type class? (as well as convert an multiline convert)
 
@@ -28,6 +27,7 @@ type_integration_map = {
 }
 bitf_group_integrations = [ "hashable", "bitfieldStreamable", "bitOperatable"]
 all_integrations = [ "addable", "bitOperatable", "bitfieldStreamable", "comparable", "hashable", "streamable"]
+
 
 def convertTypedef(type):
 
@@ -62,6 +62,7 @@ def genTypeHeaders(api, types, bitfGroups, features, path):
                 genTypesH(api, types, bitfGroups, path, f, True)
             genTypesH(api, types, bitfGroups, path, f, False, True)
 
+
 def typeIntegrationMap(type):
     return integrationMap(type_integration_map[type.name] if type.name in type_integration_map else [])
 
@@ -84,8 +85,8 @@ def genTypesH(api, types, bitfGroups, path, feature, core = False, ext = False):
     context = { "api": api,
                 "feature": versionBID(feature, core, ext),
                 "types": typeContexts,
-                "defineTypes": (feature is None),
-                "importTypes": (feature is not None)}
+                "define": (feature is None),
+                "import": (feature is not None)}
 
     Generator.generate(context, path)
 
