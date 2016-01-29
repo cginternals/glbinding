@@ -11,5 +11,4 @@ namespace gl10
 // import enums to namespace
 
 
-
 } // namespace gl10

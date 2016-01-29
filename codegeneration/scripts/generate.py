@@ -173,8 +173,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genBitfields                   (api, enums, features,    pjoin(includedir_api, "bitfield.h"))
 
-    genEnumsAll                    (api, enums,              includedir_api_old, "enum.h")
-    genEnumsFeatureGrouped         (api, enums, features,    includedir_api_old, "enum?.h")
+    genEnums                       (api, enums, features,    pjoin(includedir_api, "enum.h"))
 
     genForwardFunctions            (api, commands,           includedir_api_old, "functions.h")
     genFunctionsFeatureGrouped     (api, commands, features, includedir_api_old, "functions?.h")

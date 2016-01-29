@@ -13,7 +13,7 @@ def castEnumValue(value):
     if not value.startswith("-"):
         return value
     else:
-        return "static_cast<unsigned int>(%s)" % value    
+        return "static_cast<unsigned int>(%s)" % value
 
 
 def enumDefinition(group, enum, maxlen, usedEnumsByName):
@@ -62,65 +62,73 @@ def enumGroup(group, enums, usedEnumsByName):
     return enumGroupTemplate % (group, "\n".join(
         [ enumDefinition(group, e, maxlen, usedEnumsByName) for e in sorted(enums, key = lambda e: e.value) ]))
 
+def genEnums(api, enums, features, path):
 
-def genEnumsAll(api, enums, outputdir, outputfile):
-
-    genFeatureEnums(api, enums, None, outputdir, outputfile, None)
-
-
-def genEnumsFeatureGrouped(api, enums, features, outputdir, outputfile):
+    genEnumH(api, enums, path, None)
 
     # gen enums feature grouped
     for f in features:
         if f.api == "gl": # ToDo: probably seperate for all apis
-            genFeatureEnums(api, enums, f, outputdir, outputfile)
+            genEnumH(api, enums, path, f)
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genFeatureEnums(api, enums, f, outputdir, outputfile, True)
-            genFeatureEnums(api, enums, f, outputdir, outputfile, False, True)
+                genEnumH(api, enums, path, f, True)
+            genEnumH(api, enums, path, f, False, True)
 
 
-def genFeatureEnums(api, enums, feature, outputdir, outputfile, core = False, ext = False):
+def genEnumH(api, enums, path, feature, core = False, ext = False):
 
-    of_all = outputfile.replace("?", "F")
+    supportedEnums = [e for e in enums
+                      if e.type == "GLenum"
+                      and (not ext and e.supported(feature, core)
+                            or ext and not e.supported(feature, False))]
 
-    version = versionBID(feature, core, ext)
+    enumsByGroup = groupEnumsByGroup(supportedEnums)
+    maxLengthByGroup = {group: max([len(enumBID(e)) for e in groupEnums])
+                        for group, groupEnums in enumsByGroup.items()}
+    groups = sorted(enumsByGroup.keys())
 
-    t = template(of_all).replace("%f", version).replace("%a", api)
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", version)
+    groupedEnumContexts = []
+    reuseFromGroup = {}
+    for group in groups:
+        enumContexts = []
+        for enum in enumsByGroup[group]:
+            enumContexts.append({"identifier": enumBID(enum),
+                                 "value": enum.value,
+                                 "cast": enum.value.startswith("-"),
+                                 "spaces": " " * (maxLengthByGroup[group] - len(enumBID(enum))),
+                                 "reuse": {"from": reuseFromGroup[enum]} if enum in reuseFromGroup else None,
+                                 })
+            if enum not in reuseFromGroup:
+                reuseFromGroup[enum] = group
+        groupedEnumContexts.append({"group": group,
+                                    "enums": enumContexts})
+    # if feature:
+    #     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
+    #     [ enumImportDefinition(api, e, group, usedEnumsByName) for e in enums ]))
+    #         for group, enums in sorted(groupedEnums.items()) ]
+    # else:
+    #     importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
+    #     [ forwardEnum(api, e, group, usedEnumsByName) for e in enums ]))
+    #         for group, enums in sorted(groupedEnums.items()) ]
+    #
+    # usedEnumsByName.clear()
+    #
+    # with open(od + of, 'w') as file:
+    #     if not feature:
+    #
+    #         definitions = [ enumGroup(group, enums, usedEnumsByName)
+    #             for group, enums in sorted(groupedEnums.items(), key = lambda x: x[0]) ]
+    #
+    #         file.write(t % ("\n".join(definitions), ("\n") .join(importToNamespace)))
+    #
+    #     else:
+    #         # the "original", non-featured enums are imported to the featured namespace
+    #         file.write(t % (("\n") .join(importToNamespace)))
 
-    status(od + of)
+    context = { "api": api,
+                "feature": versionBID(feature, core, ext),
+                "groups": groupedEnumContexts,
+                "define": (feature is None),
+                "import": (feature is not None) }
 
-    tgrouped     = groupEnumsByType(enums)
-
-    pureEnums    = [ e for e in tgrouped["GLenum"] if 
-        (not ext and e.supported(feature, core)) or (ext and not e.supported(feature, False)) ]
-    groupedEnums = groupEnumsByGroup(pureEnums)
-
-    usedEnumsByName = dict()
-    
-    if feature:
-        importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-        [ enumImportDefinition(api, e, group, usedEnumsByName) for e in enums ]))  
-            for group, enums in sorted(groupedEnums.items()) ]
-    else:        
-        importToNamespace = [ ("\n// %s\n\n" + "%s") % (group, "\n".join(
-        [ forwardEnum(api, e, group, usedEnumsByName) for e in enums ]))  
-            for group, enums in sorted(groupedEnums.items()) ]
-
-    usedEnumsByName.clear()
-    
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-        if not feature:
-
-            definitions = [ enumGroup(group, enums, usedEnumsByName) 
-                for group, enums in sorted(groupedEnums.items(), key = lambda x: x[0]) ]
-
-            file.write(t % ("\n".join(definitions), ("\n") .join(importToNamespace)))
-
-        else:
-            # the "original", non-featured enums are imported to the featured namespace
-            file.write(t % (("\n") .join(importToNamespace)))
+    Generator.generate(context, path)
