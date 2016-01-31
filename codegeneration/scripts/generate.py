@@ -170,7 +170,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genEnums                       (api, enums, features,    pjoin(includedir_api, "enum.h"))
     genFunctionHeaders             (api, commands, features, pjoin(includedir_api, "functions.h"))
 
-    genFeatures                    (api, features,           includedir_api_old, "gl?.h")
+    genFeatures                    (api, features,           pjoin(includedir_api, "gl.h"))
 
     #genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api_old,  "types.cpp")
     genFunctions                   (api, commands,           sourcedir_api_old,  "functions_?.cpp")
