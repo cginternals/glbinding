@@ -57,7 +57,7 @@ def namespacify(type, namespace):
 
 def bitfieldType(param):
 
-    return param.groupString if param.groupString else "GLbitfield" 
+    return param.groupString if param.groupString else "GLbitfield"
 
 
 def paramSignature(param, forward):
@@ -98,7 +98,7 @@ def functionForward(api, function, feature, version):
     # paramNames = ", ".join([p.name for p in function.params])
 
     if feature:
-        qualifier = api + "::" 
+        qualifier = api + "::"
         return importFunctionTemplate % (qualifier, functionBID(function))
     else:
         return functionForwardTemplate % (function.returntype, functionBID(function), params)
@@ -143,12 +143,12 @@ def functionImplementation(function, feature, version):
             functionBID(function)[2:], paramNames)
 
 
-def paramPass(param): 
+def paramPass(param):
 
     return param.name # + param.array
 
     # this returns a string used for passing the param by its name to a function object.
-    # if this is inside a featured function, the param will be cast from featured GLenum 
+    # if this is inside a featured function, the param will be cast from featured GLenum
     # and GLbitfield to gl::GLenum and gl::GLbitfield, required for function object.
     # t = param.type
     #
@@ -172,7 +172,7 @@ def functionList(commands):
     return (",\n" + tab).join([ "&"+ functionBID(f)[2:] for f in commands ])
 
 
-def genFunctionObjects_h(commands, outputdir, outputfile):    
+def genFunctionObjects_h(commands, outputdir, outputfile):
 
     of = outputfile
     t = template(of)
@@ -183,7 +183,7 @@ def genFunctionObjects_h(commands, outputdir, outputfile):
 
     with open(outputdir + of, 'w') as file:
         file.write(t % (
-            #"\n".join(sorted(extern_templates)), 
+            #"\n".join(sorted(extern_templates)),
             len(commands),
             "\n".join([ functionDecl("gl", f) for f in commands ])))
 
@@ -368,28 +368,65 @@ def functionForwardGroup(functions, key):
         return ""
 
     return """%s
-    """ % ("\n".join([ functionForward2(c) for c in functions ])) 
+    """ % ("\n".join([ functionForward2(c) for c in functions ]))
+
+def typeContext(typeString, namespace=None):
+    #TODO-LW reliably split typeString into its logical components
+    noNamespace = " void" in typeString or typeString.startswith("void")
+    hasModifier = typeString.startswith("const ")
+    return {"modifiers": typeString[0:5] if hasModifier else None,
+            "ns": None if noNamespace else namespace,
+            "type": typeString[6:] if hasModifier else typeString}
+
+def commandContext(command):
+    paramContexts = []
+    for param in command.params:
+        paramContexts.append(
+           {"name": param.name,
+            "type": typeContext(param.groupString
+                                if param.type == "GLbitfield" and param.groupString
+                                else param.type, command.api),
+            "last": command.params.index(param) == len(command.params) - 1})
+    return {"identifier": functionBID(command),
+            "type": typeContext(command.returntype, command.api),
+            "params": paramContexts}
 
 
-def genForwardFunctions(api, commands, outputdir, outputfile):
+def genFunctionHeaders(api, commands, features, path):
 
-    version = versionBID(None)
+    genFunctionsH(api, commands, path, None)
 
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", version)
+    # gen functions feature grouped
+    for f in features:
+        if f.api == "gl": # ToDo: probably seperate for all apis
+            genFunctionsH(api, commands, path, f)
+            if f.major > 3 or (f.major == 3 and f.minor >= 2):
+                genFunctionsH(api, commands, path, f, True)
+            genFunctionsH(api, commands, path, f, False, True)
 
-    t = template(of).replace("%a", api)
+def genFunctionsH(api, commands, path, feature, core = False, ext = False):
 
-    status(od + of)
+    functionContexts = {command: commandContext(command)
+                        for command in commands
+                        if feature is None
+                        or (not ext and command.supported(feature, core))
+                        or (ext and not command.supported(feature, False))}
 
-    lists = alphabeticallyGroupedLists()
-    for c in commands:
-        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+    functionsByLetter = alphabeticallyGroupedLists()
+    for c in functionContexts.keys():
+        functionsByLetter[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+    for key in functionsByLetter.keys():
+        functionsByLetter[key].sort()
 
-    for key in lists.keys():
-        lists[key].sort()
+    contextsByLetter = [{"key": key,
+                         "functions": [functionContexts[command]
+                                      for command in functionsByLetter[key]]}
+                        for key in sorted(functionsByLetter.keys())]
 
-    lines = [ functionForwardGroup(lists[key], key) for key in sorted(lists.keys()) ]
+    context = {"api": api,
+                "feature": versionBID(feature, core, ext),
+                "groups": contextsByLetter,
+                "forward": (feature is None),
+                "import": (feature is not None)}
 
-    with open(od + of, 'w') as file:
-        file.write(t % "\n".join(lines))
+    Generator.generate(context, path)

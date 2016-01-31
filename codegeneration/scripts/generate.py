@@ -162,21 +162,13 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
     genRevision                    (revision,                pjoin(sourcedir, "glrevision.h"))
-
     genExtensions                  (api, extensions,         pjoin(includedir_api, "extension.h"))
-
     genBooleans                    (api, enums, features,    pjoin(includedir_api, "boolean.h"))
-
     genValues                      (api, enums, features,    pjoin(includedir_api, "values.h"))
-
     genTypeHeaders                 (api, types, bitfGroups,  features, pjoin(includedir_api, "types.h"))
-
     genBitfields                   (api, enums, features,    pjoin(includedir_api, "bitfield.h"))
-
     genEnums                       (api, enums, features,    pjoin(includedir_api, "enum.h"))
-
-    genForwardFunctions            (api, commands,           includedir_api_old, "functions.h")
-    genFunctionsFeatureGrouped     (api, commands, features, includedir_api_old, "functions?.h")
+    genFunctionHeaders             (api, commands, features, pjoin(includedir_api, "functions.h"))
 
     genFeatures                    (api, features,           includedir_api_old, "gl?.h")
 
