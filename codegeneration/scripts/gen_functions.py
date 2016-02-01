@@ -172,58 +172,11 @@ def functionList(commands):
     return (",\n" + tab).join([ "&"+ functionBID(f)[2:] for f in commands ])
 
 
-def genFunctionObjects_h(commands, outputdir, outputfile):
-
-    of = outputfile
-    t = template(of)
-
-    status(outputdir + of)
-
-    # extern_templates = set([ functionSignature("gl", f) for f in commands])
-
-    with open(outputdir + of, 'w') as file:
-        file.write(t % (
-            #"\n".join(sorted(extern_templates)),
-            len(commands),
-            "\n".join([ functionDecl("gl", f) for f in commands ])))
-
-
-def genFunctionList_cpp(commands, outputdir, outputfile):
-
-    of = outputfile
-    t = template(of)
-
-    status(outputdir + of)
-
-    #extern_templates = set([ functionSignature("gl", f, False) for f in commands])
-
-    with open(outputdir + of, 'w') as file:
-        file.write(t % functionList(commands))
 
 
 
-def genFunctionObjects_cpp(commands, outputdir, outputfile):
-
-    of = outputfile.replace("?", "")
-    t = template(of)
-
-    lists = alphabeticallyGroupedLists()
-    for c in commands:
-        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
-
-    for key in sorted(lists.keys()):
-
-        if key == '0':
-            continue
-
-        lists[key].sort()
-
-        of = outputfile.replace("?", key.lower());
-        status(outputdir + of)
 
 
-        with open(outputdir + of, 'w') as file:
-            file.write(t % "\n".join([ functionMember(c) for c in lists[key] ]))
 
 
 
@@ -348,7 +301,7 @@ def typeContext(typeString, namespace=None):
             "ns": None if noNamespace else namespace,
             "type": typeString[6:] if hasModifier else typeString}
 
-def commandContext(command):
+def commandContext(command, last=None):
     paramContexts = []
     for param in command.params:
         paramContexts.append(
@@ -361,7 +314,9 @@ def commandContext(command):
     return {"identifier": identifier,
             "identifierNoGl": identifier[2:] if identifier.startswith("gl") else identifier,
             "type": typeContext(command.returntype, command.api),
-            "params": paramContexts}
+            "params": paramContexts,
+            "hasParams": len(paramContexts) > 0,
+            "last": last}
 
 
 def genFunctionHeaders(api, commands, features, path):
@@ -377,7 +332,6 @@ def genFunctionHeaders(api, commands, features, path):
             genFunctionsH(api, commands, path, f, False, True)
 
 def genFunctionsH(api, commands, path, feature, core = False, ext = False):
-
     functionContexts = {command: commandContext(command)
                         for command in commands
                         if feature is None
@@ -404,7 +358,6 @@ def genFunctionsH(api, commands, path, feature, core = False, ext = False):
     Generator.generate(context, path)
 
 def genFunctionSources(api, commands, path):
-
     functionContexts = {command: commandContext(command) for command in commands}
 
     functionsByLetter = alphabeticallyGroupedLists()
@@ -421,3 +374,32 @@ def genFunctionSources(api, commands, path):
                                   for command in functionsByLetter[key]]}
 
         Generator.generate(context, path, "functions_.cpp")
+
+def genFunctionObjectHeaders(commands, path):
+    context = {"functionCount": len(commands),
+               "functions": [commandContext(command) for command in commands]}
+
+    Generator.generate(context, path)
+
+def genFunctionList(commands, path):
+    context = {"functionCount": len(commands),
+               "functions": [commandContext(command, commands.index(command) == len(commands) - 1) for command in commands]}
+
+    Generator.generate(context, path)
+
+def genFunctionObjectSources(commands, path):
+
+    functionContexts = {command: commandContext(command) for command in commands}
+
+    functionsByLetter = alphabeticallyGroupedLists()
+    for c in functionContexts.keys():
+        functionsByLetter[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+    for key in functionsByLetter.keys():
+        functionsByLetter[key].sort()
+
+    for key in sorted(functionsByLetter.keys()):
+        context = {"key": key.lower(),
+                   "functions": [functionContexts[command]
+                                 for command in functionsByLetter[key]]}
+
+        Generator.generate(context, path, "Binding_objects_.cpp")

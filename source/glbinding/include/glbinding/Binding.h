@@ -25,7 +25,7 @@ public:
 
     static void initialize(bool resolveFunctions = true);
     static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
-    
+
     static void registerAdditionalFunction(AbstractFunction * function);
 
     static void resolveFunctions();
@@ -35,7 +35,7 @@ public:
 
     static void releaseCurrentContext();
     static void releaseContext(ContextHandle context);
-    
+
     static void addContextSwitchCallback(ContextSwitchCallback callback);
 
     static size_t size();

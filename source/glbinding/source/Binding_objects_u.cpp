@@ -4,7 +4,7 @@
 
 using namespace gl; // ToDo: multiple APIs?
 
-namespace glbinding 
+namespace glbinding
 {
 
 Function<void, GLint, GLdouble> Binding::Uniform1d("glUniform1d");

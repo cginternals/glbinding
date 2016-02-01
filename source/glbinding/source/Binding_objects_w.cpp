@@ -4,7 +4,7 @@
 
 using namespace gl; // ToDo: multiple APIs?
 
-namespace glbinding 
+namespace glbinding
 {
 
 Function<void, GLsync, UnusedMask, GLuint64> Binding::WaitSync("glWaitSync");

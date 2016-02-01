@@ -8,8 +8,10 @@ namespace glbinding
 {
 
 const Binding::array_t Binding::s_functions =
-{{
-	%s
-}};
+{{=| |=}}{{|={{ }}=|
+{{#functions}}
+    &{{identifierNoGl}}{{^last}},{{/last}}
+{{/functions}}
+{{=| |=}}}}|={{ }}=|;
 
 } // namespace glbinding

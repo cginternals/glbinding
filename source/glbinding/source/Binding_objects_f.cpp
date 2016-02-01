@@ -4,7 +4,7 @@
 
 using namespace gl; // ToDo: multiple APIs?
 
-namespace glbinding 
+namespace glbinding
 {
 
 Function<void, GLsizei, GLenum, GLfloat *> Binding::FeedbackBuffer("glFeedbackBuffer");

@@ -4,12 +4,12 @@
 
 using namespace gl; // ToDo: multiple APIs?
 
-namespace glbinding 
+namespace glbinding
 {
 
-const Binding::array_t Binding::s_functions = 
+const Binding::array_t Binding::s_functions =
 {{
-	&Accum,
+    &Accum,
     &AccumxOES,
     &ActiveProgramEXT,
     &ActiveShaderProgram,
