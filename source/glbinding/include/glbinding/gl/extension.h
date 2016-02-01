@@ -553,4 +553,3 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
 };
 
 } // namespace gl
-
