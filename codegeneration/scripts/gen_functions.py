@@ -322,36 +322,6 @@ def functionImplementation2(function):
     """ % (function.returntype, functionBID(function), params, functionBID(function)[2:], paramNames)
 
 
-def genFunctions(api, commands, outputdir, outputfile):
-
-    version = versionBID(None)
-
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", version)
-
-    t = template(of).replace("%a", api)
-
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    lists = alphabeticallyGroupedLists()
-    for c in commands:
-        lists[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
-
-    for key in sorted(lists.keys()):
-
-        if key == '0':
-            continue
-
-        lists[key].sort()
-
-        of = outputfile.replace("?", key.lower());
-        status(od + of)
-
-        with open(od + of, 'w') as file:
-            file.write(t.replace("%g", key.upper()) % "\n".join(
-                [ functionImplementation2(c) for c in lists[key] ]))
-
 
 # ALL FUNCTION INSTANTIATION FORWARD DECLARATIONS
 
@@ -387,7 +357,9 @@ def commandContext(command):
                                 if param.type == "GLbitfield" and param.groupString
                                 else param.type, command.api),
             "last": command.params.index(param) == len(command.params) - 1})
-    return {"identifier": functionBID(command),
+    identifier = functionBID(command)
+    return {"identifier": identifier,
+            "identifierNoGl": identifier[2:] if identifier.startswith("gl") else identifier,
             "type": typeContext(command.returntype, command.api),
             "params": paramContexts}
 
@@ -430,3 +402,22 @@ def genFunctionsH(api, commands, path, feature, core = False, ext = False):
                 "import": (feature is not None)}
 
     Generator.generate(context, path)
+
+def genFunctionSources(api, commands, path):
+
+    functionContexts = {command: commandContext(command) for command in commands}
+
+    functionsByLetter = alphabeticallyGroupedLists()
+    for c in functionContexts.keys():
+        functionsByLetter[alphabeticalGroupKey(c.name, 'gl')].append(c) # append commands
+    for key in functionsByLetter.keys():
+        functionsByLetter[key].sort()
+
+    for key in sorted(functionsByLetter.keys()):
+        context = {"api": api,
+                    "feature": versionBID(None),
+                    "key": key.lower(),
+                    "functions": [functionContexts[command]
+                                  for command in functionsByLetter[key]]}
+
+        Generator.generate(context, path, "functions_.cpp")
