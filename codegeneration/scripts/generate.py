@@ -171,10 +171,10 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFunctionHeaders             (api, commands, features, pjoin(includedir_api, "functions.h"))
     genFeatures                    (api, features,           pjoin(includedir_api, "gl.h"))
 
-    genTypeSources                   (api, types, bitfGroups,  pjoin(sourcedir_api, "types.cpp"))
-    genFunctionSources               (api, commands,           pjoin(sourcedir_api, "functions_{key}.cpp"))
+    genTypeSources                 (api, types, bitfGroups,  pjoin(sourcedir_api, "types.cpp"))
+    genFunctionSources             (api, commands,           pjoin(sourcedir_api, "functions_{key}.cpp"))
 
-    genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
+    genTest                        (api, features,           pjoin(testdir, "AllVersions_test.cpp"))
 
     # Generate GLBINDING namespace classes
 
