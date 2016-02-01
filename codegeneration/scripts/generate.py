@@ -161,18 +161,18 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
 
-    # genRevision                    (revision,                pjoin(sourcedir, "glrevision.h"))
-    # genExtensions                  (api, extensions,         pjoin(includedir_api, "extension.h"))
-    # genBooleans                    (api, enums, features,    pjoin(includedir_api, "boolean.h"))
-    # genValues                      (api, enums, features,    pjoin(includedir_api, "values.h"))
-    # genTypeHeaders                 (api, types, bitfGroups,  features, pjoin(includedir_api, "types.h"))
-    # genBitfields                   (api, enums, features,    pjoin(includedir_api, "bitfield.h"))
-    # genEnums                       (api, enums, features,    pjoin(includedir_api, "enum.h"))
-    # genFunctionHeaders             (api, commands, features, pjoin(includedir_api, "functions.h"))
-    # genFeatures                    (api, features,           pjoin(includedir_api, "gl.h"))
+    genRevision                    (revision,                pjoin(sourcedir, "glrevision.h"))
+    genExtensions                  (api, extensions,         pjoin(includedir_api, "extension.h"))
+    genBooleans                    (api, enums, features,    pjoin(includedir_api, "boolean.h"))
+    genValues                      (api, enums, features,    pjoin(includedir_api, "values.h"))
+    genTypeHeaders                 (api, types, bitfGroups,  features, pjoin(includedir_api, "types.h"))
+    genBitfields                   (api, enums, features,    pjoin(includedir_api, "bitfield.h"))
+    genEnums                       (api, enums, features,    pjoin(includedir_api, "enum.h"))
+    genFunctionHeaders             (api, commands, features, pjoin(includedir_api, "functions.h"))
+    genFeatures                    (api, features,           pjoin(includedir_api, "gl.h"))
 
-    #genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api_old,  "types.cpp")
-    genFunctionSources             (api, commands,           pjoin(sourcedir_api, "functions_{key}.cpp"))
+    genTypeSources                   (api, types, bitfGroups,  pjoin(sourcedir_api, "types.cpp"))
+    genFunctionSources               (api, commands,           pjoin(sourcedir_api, "functions_{key}.cpp"))
 
     genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
 

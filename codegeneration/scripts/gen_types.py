@@ -91,25 +91,21 @@ def genTypesH(api, types, bitfGroups, path, feature, core = False, ext = False):
     Generator.generate(context, path)
 
 
-def genTypeSources(api, types, bitfGroups, outputdir, outputfile):
+def genTypeSources(api, types, bitfGroups, path):
 
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", "")
-    t = template(of).replace("%a", api)
+    typeContexts = [       {"identifier": "GLextension",
+                            "definition": "enum class GLextension : int;",
+                            "integrations": integrationMap([ "hashable", "streamable" ])}]
+    typeContexts.extend([  {"identifier": type.name,
+                            "definition": convertType(type),
+                            "integrations": typeIntegrationMap(type)}
+                            for type in types])
+    typeContexts.extend([  {"identifier": group.name,
+                            "definition": "enum class {} : unsigned int;".format(group.name),
+                            "integrations": integrationMap(bitf_group_integrations)}
+                            for group in bitfGroups])
+    context = { "api": api,
+                "feature": versionBID(None),
+                "types": typeContexts}
 
-    status(od + of)
-
-    type_integrations = []
-    for typename, integrations in type_integration_map.items():
-        for integration in integrations:
-            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", typename))
-
-    for group in bitfGroups:
-        for integration in [ "hashable", "bitfield_streamable", "bit_operatable"]:
-            type_integrations.append(template("type_integration/%s.cpp" % integration).replace("%t", group.name))
-
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-        file.write(t % ("\n".join([ type for type in type_integrations ])))
+    Generator.generate(context, path)
