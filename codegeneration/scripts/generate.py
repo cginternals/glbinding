@@ -182,9 +182,9 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     genFunctionList                (commands,           pjoin(sourcedir, "Binding_list.cpp"))
     genFunctionObjectSources       (commands,           pjoin(sourcedir, "Binding_objects_{key}.cpp"))
 
-    genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
+    genVersions                    (features,           pjoin(sourcedir, "Version_ValidVersions.cpp"))
 
-    # ToDo: the generation of enum to/from string will probably be unified...
+    ToDo: the generation of enum to/from string will probably be unified...
     genMeta_h                      (bitfGroups,         includedir, "Meta.h")
     genMetaMaps		               (bitfGroups,         sourcedir,  "Meta_Maps.h")
     genMetaGetStringByBitfield     (bitfGroups,         sourcedir,  "Meta_getStringByBitfield.cpp")
