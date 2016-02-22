@@ -40,19 +40,18 @@ class Generator:
                                                 file_extension=templateExtension,
                                                 escape=lambda u: u)
 
-        outputPath = outputPath.format(**context)
-
-        outputDir = os.path.dirname(outputPath)
+        outputDir = os.path.dirname(outputPath).format(**context)
         if not os.path.exists(outputDir):
             os.makedirs(outputDir)
 
         outputFile = os.path.basename(outputPath)
         if templateName is None:
             templateName = outputFile
+        outputFile = outputFile.format(**context)
 
         print("generating {} in {}".format(outputFile, outputDir)) #TODO-LW move logging to appropriate place
 
-        with open(outputPath, 'w') as file:
+        with open(os.path.join(outputDir, outputFile), 'w') as file:
             file.write(_class.renderer.render_name(templateName, context))
 
 class Status:

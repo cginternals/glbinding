@@ -28,7 +28,7 @@ const std::string & Meta::getString(const AttribMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const AttribMask)
 {
@@ -49,7 +49,7 @@ const std::string & Meta::getString(const BufferAccessMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const BufferAccessMask)
 {
@@ -70,7 +70,7 @@ const std::string & Meta::getString(const BufferStorageMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const BufferStorageMask)
 {
@@ -91,7 +91,7 @@ const std::string & Meta::getString(const ClearBufferMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const ClearBufferMask)
 {
@@ -112,7 +112,7 @@ const std::string & Meta::getString(const ClientAttribMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const ClientAttribMask)
 {
@@ -133,7 +133,7 @@ const std::string & Meta::getString(const ContextFlagMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const ContextFlagMask)
 {
@@ -154,7 +154,7 @@ const std::string & Meta::getString(const ContextProfileMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const ContextProfileMask)
 {
@@ -175,7 +175,7 @@ const std::string & Meta::getString(const FfdMaskSGIX glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const FfdMaskSGIX)
 {
@@ -196,7 +196,7 @@ const std::string & Meta::getString(const FragmentShaderColorModMaskATI glbitfie
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const FragmentShaderColorModMaskATI)
 {
@@ -217,7 +217,7 @@ const std::string & Meta::getString(const FragmentShaderDestMaskATI glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const FragmentShaderDestMaskATI)
 {
@@ -238,7 +238,7 @@ const std::string & Meta::getString(const FragmentShaderDestModMaskATI glbitfiel
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const FragmentShaderDestModMaskATI)
 {
@@ -259,7 +259,7 @@ const std::string & Meta::getString(const MapBufferUsageMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const MapBufferUsageMask)
 {
@@ -280,7 +280,7 @@ const std::string & Meta::getString(const MemoryBarrierMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const MemoryBarrierMask)
 {
@@ -301,7 +301,7 @@ const std::string & Meta::getString(const PathFontStyle glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const PathFontStyle)
 {
@@ -322,7 +322,7 @@ const std::string & Meta::getString(const PathRenderingMaskNV glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const PathRenderingMaskNV)
 {
@@ -343,7 +343,7 @@ const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL glbitfie
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL)
 {
@@ -364,7 +364,7 @@ const std::string & Meta::getString(const SyncObjectMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const SyncObjectMask)
 {
@@ -385,7 +385,7 @@ const std::string & Meta::getString(const TextureStorageMaskAMD glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const TextureStorageMaskAMD)
 {
@@ -406,7 +406,7 @@ const std::string & Meta::getString(const UnusedMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const UnusedMask)
 {
@@ -427,7 +427,7 @@ const std::string & Meta::getString(const UseProgramStageMask glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const UseProgramStageMask)
 {
@@ -448,7 +448,7 @@ const std::string & Meta::getString(const VertexHintsMaskPGI glbitfield)
     return none;
 }
 
-#else 
+#else
 
 const std::string & Meta::getString(const VertexHintsMaskPGI)
 {

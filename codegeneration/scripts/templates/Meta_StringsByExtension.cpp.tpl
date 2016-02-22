@@ -12,7 +12,9 @@ namespace glbinding
 
 const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
 {
-    %s
+{{#extensions}}
+    { GLextension::{{identifier}}, "{{name}}" }{{^last}},{{/last}}
+{{/extensions}}
 };
 
 } // namespace glbinding

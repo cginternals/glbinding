@@ -1,8 +1,0 @@
-#include <gmock/gmock.h>
-
-%s
-
-TEST(AllVersions, Compilation)
-{
-    SUCCEED();  // compiling this file without errors and warnings results in successful test
-}

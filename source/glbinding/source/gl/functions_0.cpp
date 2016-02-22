@@ -7,9 +7,8 @@
 
 using namespace glbinding;
 
-namespace %a
+namespace gl
 {
 
-%s
 
-} // namespace %a
+} // namespace gl

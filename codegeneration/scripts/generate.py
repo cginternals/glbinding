@@ -184,24 +184,24 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     genVersions                    (features,           pjoin(sourcedir, "Version_ValidVersions.cpp"))
 
-    ToDo: the generation of enum to/from string will probably be unified...
-    genMeta_h                      (bitfGroups,         includedir, "Meta.h")
-    genMetaMaps		               (bitfGroups,         sourcedir,  "Meta_Maps.h")
-    genMetaGetStringByBitfield     (bitfGroups,         sourcedir,  "Meta_getStringByBitfield.cpp")
-    genMetaStringsByBitfield       (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
-    genMetaBitfieldByString        (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
-    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean", "Boolean")
-    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_EnumsByString.cpp",     "GLenum", "Enum")
+    # ToDo: the generation of enum to/from string will probably be unified...
+    genMeta_h                      (bitfGroups,         pjoin(includedir, "Meta.h"))
+    genMetaMaps		               (bitfGroups,         pjoin(sourcedir,  "Meta_Maps.h"))
+    genMetaGetStringByBitfield     (bitfGroups,         pjoin(sourcedir,  "Meta_getStringByBitfield.cpp"))
+    genMetaStringsByBitfield       (bitfGroups,         pjoin(sourcedir,  "Meta_StringsByBitfield.cpp"))
+    genMetaBitfieldByString        (bitfGroups,         pjoin(sourcedir,  "Meta_BitfieldsByString.cpp"))
+    genMetaStringsByEnum           (enums, "GLboolean", pjoin(sourcedir,  "Meta_StringsByBoolean.cpp"))
+    genMetaEnumsByString           (enums, "GLboolean", pjoin(sourcedir,  "Meta_BooleansByString.cpp"))
+    genMetaStringsByEnum           (enums, "GLenum",    pjoin(sourcedir,  "Meta_StringsByEnum.cpp"))
+    genMetaEnumsByString           (enums, "GLenum",    pjoin(sourcedir,  "Meta_EnumsByString.cpp"))
 
-    genMetaStringsByExtension      (extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
-    genMetaExtensionsByString      (extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
+    genMetaStringsByExtension      (extensions,         pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
+    genMetaExtensionsByString      (extensions,         pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
 
-    genMetaReqVersionsByExtension  (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
+    genMetaReqVersionsByExtension  (extensions,         pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
 
-    genMetaFunctionStringsByExtension(extensions,       sourcedir,  "Meta_FunctionStringsByExtension.cpp")
-    genMetaExtensionsByFunctionString(extensions,       sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
+    genMetaFunctionStringsByExtension(extensions,       pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
+    genMetaExtensionsByFunctionString(extensions,       pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
 
 
     print("")

@@ -46,7 +46,9 @@ public:
     static const Version & getRequiringVersion(gl::GLextension glextension);
     static const std::set<Version> & versions();
 
-    %s
+{{#bitfGroups}}
+    static const std::string & getString(gl::{{identifier}} glbitfield);
+{{/bitfGroups}}
 
 private:
     static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);

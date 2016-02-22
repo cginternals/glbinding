@@ -10,7 +10,13 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-%s
+const std::unordered_map<GLboolean, std::string> Meta_StringsByBoolean =
+{
+{{#enums}}
+    { GLboolean::{{identifier}}, "{{name}}" }{{^last}},{{/last}}
+{{/enums}}
+};
+
 } // namespace glbinding
 
 #endif // EXTENSIVE_META

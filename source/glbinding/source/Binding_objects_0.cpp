@@ -7,9 +7,5 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-const Binding::array_t Binding::s_functions =
-{{
-	%s
-}};
 
 } // namespace glbinding

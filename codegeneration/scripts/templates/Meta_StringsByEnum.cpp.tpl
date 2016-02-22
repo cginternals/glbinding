@@ -12,7 +12,9 @@ namespace glbinding
 
 const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
 {
-    %s
+{{#enums}}
+    { GLenum::{{identifier}}, "{{name}}" }{{^last}},{{/last}}
+{{/enums}}
 };
 
 } // namespace glbinding
