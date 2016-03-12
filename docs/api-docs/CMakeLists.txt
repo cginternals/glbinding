@@ -57,3 +57,14 @@ add_custom_command(
 # Declare target
 add_custom_target(${target} ALL DEPENDS ${doxyfile_html})
 add_dependencies(docs ${target})
+
+
+# 
+# Deployment
+# 
+
+install(
+    DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html
+    DESTINATION ${INSTALL_DOC}
+    COMPONENT docs
+)
