@@ -11,14 +11,14 @@ namespace glbinding
 
 
 Version::Version()
-: m_major{0}
-, m_minor{0}
+: m_major(0)
+, m_minor(0)
 {
 }
 
-Version::Version(const int majorVersion, const int minorVersion)
-: m_major{majorVersion}
-, m_minor{minorVersion}
+Version::Version(unsigned char majorVersion, unsigned char minorVersion)
+: m_major(majorVersion)
+, m_minor(minorVersion)
 {
 }
 
@@ -58,17 +58,17 @@ bool Version::operator<=(const Version & version) const
 
 Version::operator std::pair<unsigned char, unsigned char>() const
 {
-    return std::make_pair(m_major, m_minor);
+    return std::pair<unsigned char, unsigned char>(m_major, m_minor);
 }
 
 Version::operator std::pair<unsigned short, unsigned short>() const
 {
-    return std::make_pair(m_major, m_minor);
+    return std::pair<unsigned short, unsigned short>(m_major, m_minor);
 }
 
 Version::operator std::pair<unsigned int, unsigned int>() const
 {
-    return std::make_pair(m_major, m_minor);
+    return std::pair<unsigned int, unsigned int>(m_major, m_minor);
 }
 
 std::string Version::toString() const
@@ -88,7 +88,7 @@ std::string Version::toString() const
 
 bool Version::isNull() const
 {
-    return m_major == 0 && m_minor == 0;
+    return m_major == 0;
 }
 
 bool Version::isValid() const

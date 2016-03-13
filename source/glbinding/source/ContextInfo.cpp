@@ -95,10 +95,13 @@ std::string ContextInfo::vendor()
 
 Version ContextInfo::version()
 {
-    auto version = Version{};
+    int majorVersion = 0;
+    int minorVersion = 0;
 
-    Binding::GetIntegerv.directCall(GL_MAJOR_VERSION, &version.m_major);
-    Binding::GetIntegerv.directCall(GL_MINOR_VERSION, &version.m_minor);
+    Binding::GetIntegerv.directCall(GL_MAJOR_VERSION, &majorVersion);
+    Binding::GetIntegerv.directCall(GL_MINOR_VERSION, &minorVersion);
+
+    auto version = Version(static_cast<unsigned char>(majorVersion & 255), static_cast<unsigned char>(minorVersion & 255));
 
     // probably version below 3.0
     if (GL_INVALID_ENUM == Binding::GetError.directCall())
