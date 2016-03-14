@@ -124,7 +124,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
             -pthread
         >
         
-        $<$<VERSION_LESS:${CMAKE_VERSION},3.2>:
+        $<$<VERSION_LESS:${CMAKE_VERSION},3.1>:
             -std=c++11
         >
     )
