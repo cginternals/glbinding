@@ -149,6 +149,6 @@ target_link_libraries(${target}
 
 # Executable
 install(TARGETS ${target}
-    RUNTIME DESTINATION ${INSTALL_BIN} COMPONENT examples
-    BUNDLE  DESTINATION ${INSTALL_BIN} COMPONENT examples
+    RUNTIME DESTINATION ${INSTALL_BIN} COMPONENT examples-qt
+    BUNDLE  DESTINATION ${INSTALL_BIN} COMPONENT examples-qt
 )
