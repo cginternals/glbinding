@@ -5,7 +5,7 @@
 
 [//]: # (Comment)
 
-The latest release is [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0).
+The latest release is [glbinding-1.1.0](https://github.com/hpicgs/glbinding/releases/tag/v1.1.0).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolution](#lazy-function-pointer-resolution), [multi-context](#multi-context-support) and [multi-thread](#multi-threading-support) support, [global](#function-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [tools](https://github.com/hpicgs/glbinding/wiki/tools) and [examples](https://github.com/hpicgs/glbinding/wiki/examples) for quick-starting your projects. 
 
