@@ -34,14 +34,6 @@ from gen_meta import *
 from gen_test import *
 
 
-# def doForAllAPIMemberSets(features, callback): #callback(feature, core, ext)
-#     for f in features:
-#         if f.api == "gl": # ToDo: probably seperate for all apis
-#             callback(f, False, False)
-#             if f.major > 3 or (f.major == 3 and f.minor >= 2):
-#                 callback(f, True, False)
-#             callback(f, False, True)
-
 def listApiMemberSets(features):
     apiMemberSetList = []
     for f in features:
@@ -181,10 +173,9 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     includedir_api_old = pjoin(includedir, api + "?/")
     sourcedir_api_old = pjoin(sourcedir, api + "?/")
 
-    # prepare contexts:
-
+    # Prepare common context:
+    # TODO-LW: this might go into a separate function
     apiMemberSetList = listApiMemberSets(features)
-
     extensionContexts = genExtensionContexts(extensions)
     booleanContexts = genBooleanContexts(enums)
     valueContexts = genValueContexts(enums)
@@ -197,10 +188,8 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     context = {"api": api,
                "memberSet": "",
                "revision": revision}
-
     context["apiMemberSets"] = listContext( [{"memberSet": versionBID(feature, core, ext)}
                                              for feature, core, ext in ( [(None, False, False)] + apiMemberSetList )] )
-
     context["extensions"] = listContext(extensionContexts, sortKey = lambda e: e["identifier"])
     context["booleans"] = listContext(booleanContexts, sortKey = lambda e: e["identifier"])
     context["valuesByType"] = groupedContext(valueContexts, groupKey = lambda e: [ e["type"] ])
@@ -234,19 +223,10 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
                                                    groupKeyList = alphabeticalGroupKeys(),
                                                    groupSortKey = lambda k: k,
                                                    itemSortKey = lambda f: f["identifier"])
-
     context["features"] = listContext(featureContexts)
     context["latestFeature"] = context["features"]["items"][-1]["item"]
 
-
-    # import json
-    # print(json.dumps(context["bitfieldsByGroup"], sort_keys=True, indent=4, separators=(',', ': '), default= lambda o: "ERR"))
-    # import ipdb
-    # ipdb.set_trace()
-
-
-
-    # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
+    # Generate files with common context
     Generator.generate(context, pjoin(sourcedir, "glrevision.h"))
     Generator.generate(context, pjoin(includedir_api, "extension.h"))
     Generator.generate(context, pjoin(includedir_api, "boolean.h"))
@@ -273,6 +253,15 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     Generator.generate(context, pjoin(sourcedir,  "Meta_StringsByEnum.cpp"))
     Generator.generate(context, pjoin(sourcedir,  "Meta_EnumsByString.cpp"))
 
+    # TODO-LW: finish rewriting the following templates to use the common context:
+    # genMetaStringsByExtension      (extensions,         pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
+    # genMetaExtensionsByString      (extensions,         pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
+    # genMetaReqVersionsByExtension  (extensions,         pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
+    # genMetaFunctionStringsByExtension(extensions,       pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
+    # genMetaExtensionsByFunctionString(extensions,       pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
+    # TODO-LW once files are correctly generated, remove redundant methods in gen_xxx.py
+
+    # Generate function-related files with specific contexts for each initial letter of the function name
     for functionGroup in context["functionsByInitial"]["groups"]:
         specificContext = context.copy()
         specificContext["currentFunctionGroup"] = functionGroup
@@ -281,49 +270,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
         Generator.generate(specificContext, pjoin(sourcedir_api, "functions_{currentFunctionInitial}.cpp"), "functions.cpp")
         Generator.generate(specificContext, pjoin(sourcedir, "Binding_objects_{currentFunctionInitial}.cpp"), "Binding_objects.cpp")
 
-
-    # genRevision                    (revision,                pjoin(sourcedir, "glrevision.h"))
-    # genExtensions                  (api, extensions,         pjoin(includedir_api, "extension.h"))
-    # genBooleans                    (api, enums, features,    pjoin(includedir_api, "boolean.h"))
-    # genValues                      (api, enums, features,    pjoin(includedir_api, "values.h"))
-    # genTypeHeaders                 (api, types, bitfGroups,  features, pjoin(includedir_api, "types.h"))
-    # genBitfields                   (api, enums, features,    pjoin(includedir_api, "bitfield.h"))
-    # genEnums                       (api, enums, features,    pjoin(includedir_api, "enum.h"))
-    # genFunctionHeaders             (api, commands, features, pjoin(includedir_api, "functions.h"))
-    # genFeatures                    (api, features,           pjoin(includedir_api, "gl.h"))
-
-    # genTypeSources                 (api, types, bitfGroups,  pjoin(sourcedir_api, "types.cpp"))
-    # genFunctionSources             (api, commands,           pjoin(sourcedir_api, "functions_{key}.cpp"))
-
-    # genTest                        (api, features,           pjoin(testdir, "AllVersions_test.cpp"))
-
-    # Generate GLBINDING namespace classes
-
-    # genFunctionObjectHeaders       (commands,           pjoin(includedir, "Binding.h"))
-    # genFunctionObjectSources       (commands,           pjoin(sourcedir, "Binding_objects_{key}.cpp"))
-    # genFunctionList                (commands,           pjoin(sourcedir, "Binding_list.cpp"))
-
-    # genVersions                    (features,           pjoin(sourcedir, "Version_ValidVersions.cpp"))
-
-    # ToDo: the generation of enum to/from string will probably be unified...
-    # genMeta_h                      (bitfGroups,         pjoin(includedir, "Meta.h"))
-    # genMetaMaps		               (bitfGroups,         pjoin(sourcedir,  "Meta_Maps.h"))
-    # genMetaGetStringByBitfield     (bitfGroups,         pjoin(sourcedir,  "Meta_getStringByBitfield.cpp"))
-    # genMetaStringsByBitfield       (bitfGroups,         pjoin(sourcedir,  "Meta_StringsByBitfield.cpp"))
-    # genMetaBitfieldByString        (bitfGroups,         pjoin(sourcedir,  "Meta_BitfieldsByString.cpp"))
-    # genMetaStringsByEnum           (enums, "GLboolean", pjoin(sourcedir,  "Meta_StringsByBoolean.cpp"))
-    # genMetaEnumsByString           (enums, "GLboolean", pjoin(sourcedir,  "Meta_BooleansByString.cpp"))
-    # genMetaStringsByEnum           (enums, "GLenum",    pjoin(sourcedir,  "Meta_StringsByEnum.cpp"))
-    # genMetaEnumsByString           (enums, "GLenum",    pjoin(sourcedir,  "Meta_EnumsByString.cpp"))
-
-    genMetaStringsByExtension      (extensions,         pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
-    genMetaExtensionsByString      (extensions,         pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
-
-    genMetaReqVersionsByExtension  (extensions,         pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
-
-    genMetaFunctionStringsByExtension(extensions,       pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
-    genMetaExtensionsByFunctionString(extensions,       pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
-
+    # Generate files with ApiMemberSet-specific contexts
     for feature, core, ext in apiMemberSetList:
         specificContext = {"api": api,
                            "memberSet": versionBID(feature, core, ext),
@@ -357,7 +304,6 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
         Generator.generate(specificContext, pjoin(includedir_api, "enum.h"), "enumF.h")
         Generator.generate(specificContext, pjoin(includedir_api, "functions.h"), "functionsF.h")
         Generator.generate(specificContext, pjoin(includedir_api, "gl.h"), "glF.h")
-
 
     generateEnd = time.time()
     print("generation took {:.3f} seconds".format(generateEnd - generateBegin))

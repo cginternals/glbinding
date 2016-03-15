@@ -33,6 +33,7 @@ def supportedLambda(obj):
     return lambda feature, core, ext: ( not ext and obj.supported(feature, core)
                                          or ext and not obj.supported(feature, False) )
 
+# TODO-LW document arguments
 # structure:
 # { "items": [ { "item": {...},
 #                "last": <bool>} ],
@@ -54,6 +55,7 @@ def listContext(contextList, sortKey = None, filter = lambda i: True):
     context["multipleItems"] = len(context["items"]) > 1
     return context
 
+# TODO-LW document arguments
 # structure:
 # { "groups": [ { "name": <string>,
 #                 "items": [ { "item": {...},
