@@ -10,15 +10,15 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-{{#bfGroups}}
-const std::unordered_map<{{gIdentifier}}, std::string> Meta_StringsBy{{gIdentifier}} =
+{{#bitfieldsByGroup.groups}}
+const std::unordered_map<{{name}}, std::string> Meta_StringsBy{{name}} =
 {
-{{#bitfields}}
-    { {{gIdentifier}}::{{bfIdentifier}}, "{{bfName}}" }{{^last}},{{/last}}
-{{/bitfields}}
+{{#items}}{{^item.generic}}
+    { {{name}}::{{item.identifier}}, "{{item.name}}" }{{^last}},{{/last}}
+{{/item.generic}}{{/items}}
 };
 
-{{/bfGroups}}
+{{/bitfieldsByGroup.groups}}
 } // namespace glbinding
 
 #endif // EXTENSIVE_META

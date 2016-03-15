@@ -1,35 +1,22 @@
 #pragma once
 
 #include <glbinding/no{{api}}.h>
-{{#import}}
-
-#include <glbinding/{{api}}/boolean.h>
-{{/import}}
 
 
-namespace {{api}}{{feature}}
+namespace {{api}}
 {
 
-{{#define}}
 enum class GLboolean : unsigned char
 {
-{{#booleans}}
-    {{identifier}} = {{value}}{{^last}},{{/last}}
-{{/booleans}}
+{{#booleans.items}}
+    {{item.identifier}} = {{item.value}}{{^last}},{{/last}}
+{{/booleans.items}}
 };
 
 // import booleans to namespace
 
-{{#booleans}}
-static const GLboolean {{identifier}} = GLboolean::{{identifier}};
-{{/booleans}}
-{{/define}}
-{{#import}}
-// import booleans to namespace
+{{#booleans.items}}
+static const GLboolean {{item.identifier}} = GLboolean::{{item.identifier}};
+{{/booleans.items}}
 
-{{#booleans}}
-using {{api}}::{{identifier}};
-{{/booleans}}
-{{/import}}
-
-} // namespace {{api}}{{feature}}
+} // namespace {{api}}

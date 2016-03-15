@@ -10,25 +10,25 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-{{#keys}}
+{{#bitfieldsByInitial.groups}}
 {{#empty}}
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{key}};
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{name}};
 {{/empty}}
 {{^empty}}
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{key}} =
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{name}} =
 {
-{{#enums}}
-    { "{{bfName}}", static_cast<GLbitfield>({{gIdentifier}}::{{bfIdentifier}}) }{{^last}},{{/last}}
-{{/enums}}
+{{#items}}
+    { "{{item.name}}", static_cast<GLbitfield>({{item.primaryGroup}}::{{item.identifier}}) }{{^last}},{{/last}}
+{{/items}}
 };
 {{/empty}}
 
-{{/keys}}
-const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps =
+{{/bitfieldsByInitial.groups}}
+const std::array<std::unordered_map<std::string, gl::GLbitfield>, {{bitfieldsByInitial.count}}> Meta_BitfieldsByStringMaps =
 { {
-{{#keys}}
-    Meta_BitfieldsByString_{{key}}{{^last}},{{/last}}
-{{/keys}}
+{{#bitfieldsByInitial.groups}}
+    Meta_BitfieldsByString_{{name}}{{^last}},{{/last}}
+{{/bitfieldsByInitial.groups}}
 } };
 
 } // namespace glbinding

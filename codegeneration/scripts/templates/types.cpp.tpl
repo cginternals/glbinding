@@ -44,7 +44,8 @@ std::string bitfieldString(T value)
 	return ss.str();
 };
 
-{{#types}}
+{{#types.items}}
+{{#item}}
 {{#integrations.hashable}}
 {{>partials/types_hashable.cpp}}
 
@@ -69,4 +70,5 @@ std::string bitfieldString(T value)
 {{>partials/types_comparable.cpp}}
 
 {{/integrations.comparable}}
-{{/types}}
+{{/item}}
+{{/types.items}}

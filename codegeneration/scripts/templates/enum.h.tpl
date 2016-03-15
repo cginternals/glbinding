@@ -1,65 +1,42 @@
 #pragma once
 
 #include <glbinding/no{{api}}.h>
-{{#import}}
-
-#include <glbinding/{{api}}/enum.h>
-{{/import}}
 
 
-namespace {{api}}{{feature}}
+namespace {{api}}
 {
 
-{{#define}}
 enum class GLenum : unsigned int
 {
-{{#groups}}
-    // {{group}}
+{{#enumsByGroup.groups}}
+    // {{name}}
 
-{{#enums}}
-{{^reuse}}
-    {{identifier}}{{spaces}} = {{#cast}}static_cast<unsigned int>({{/cast}}{{value}}{{#cast}}){{/cast}},
-{{/reuse}}
-{{#reuse}}
-//  {{identifier}}{{spaces}} = {{value}}, // reuse {{from}}
-{{/reuse}}
-{{/enums}}
+{{#items}}
+{{#isPrimary}}
+    {{item.identifier}}{{item.spaces}} = {{#item.cast}}static_cast<unsigned int>({{/item.cast}}{{item.value}}{{#item.cast}}){{/item.cast}},
+{{/isPrimary}}
+{{#isSecondary}}
+//  {{item.identifier}}{{item.spaces}} = {{#item.cast}}static_cast<unsigned int>({{/item.cast}}{{item.value}}{{#item.cast}}){{/item.cast}}, // reuse {{item.primaryGroup}}
+{{/isSecondary}}
+{{/items}}
 
-{{/groups}}
+{{/enumsByGroup.groups}}
 };
 
-{{/define}}
 // import enums to namespace
 
 
-{{#define}}
-{{#groups}}
-// {{group}}
+{{#enumsByGroup.groups}}
+// {{name}}
 
-{{#enums}}
-{{^reuse}}
-static const GLenum {{identifier}} = GLenum::{{identifier}};
-{{/reuse}}
-{{#reuse}}
-// static const GLenum {{identifier}} = GLenum::{{identifier}}; // reuse {{from}}
-{{/reuse}}
-{{/enums}}
+{{#items}}
+{{#isPrimary}}
+static const GLenum {{item.identifier}} = GLenum::{{item.identifier}};
+{{/isPrimary}}
+{{#isSecondary}}
+// static const GLenum {{item.identifier}} = GLenum::{{item.identifier}}; // reuse {{item.primaryGroup}}
+{{/isSecondary}}
+{{/items}}
 
-{{/groups}}
-{{/define}}
-{{#import}}
-{{#groups}}
-// {{group}}
-
-{{#enums}}
-{{^reuse}}
-using {{api}}::{{identifier}};
-{{/reuse}}
-{{#reuse}}
-// using {{api}}::{{identifier}}; // reuse {{from}}
-{{/reuse}}
-{{/enums}}
-
-{{/groups}}
-{{/import}}
-} // namespace {{api}}{{feature}}
+{{/enumsByGroup.groups}}
+} // namespace {{api}}

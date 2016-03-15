@@ -1,7 +1,6 @@
 #pragma once
 
 #include <glbinding/no{{api}}.h>
-{{#define}}
 #include <glbinding/glbinding_api.h>
 
 #include <cstddef>
@@ -17,56 +16,37 @@
 #else
 #define GL_APIENTRY
 #endif
-{{/define}}
-{{#import}}
-#include <glbinding/{{api}}/types.h>
-{{/import}}
 
 
-namespace {{api}}{{feature}}
+namespace {{api}}
 {
 
-{{#define}}
-{{#types}}
-{{definition}}
-{{/types}}
-{{/define}}
-{{#import}}
-{{#types}}
-using {{api}}::{{identifier}};
-{{/types}}
-{{/import}}
+{{#types.items}}
+{{item.definition}}
+{{/types.items}}
 
-} // namespace {{api}}{{feature}}
-{{#define}}
+} // namespace {{api}}
 
 
 // Type Integrations
 
-{{#types}}
-{{#integrations.hashable}}
-{{>partials/types_hashable.h}}
-
-{{/integrations.hashable}}
-{{#integrations.streamable}}
-{{>partials/types_streamable.h}}
-
-{{/integrations.streamable}}
-{{#integrations.addable}}
-{{>partials/types_addable.h}}
-
-{{/integrations.addable}}
-{{#integrations.bitfieldStreamable}}
-{{>partials/types_bitfieldStreamable.h}}
-
-{{/integrations.bitfieldStreamable}}
-{{#integrations.bitOperatable}}
-{{>partials/types_bitOperatable.h}}
-
-{{/integrations.bitOperatable}}
-{{#integrations.comparable}}
-{{>partials/types_comparable.h}}
-
-{{/integrations.comparable}}
-{{/types}}
-{{/define}}
+{{#types.items}}
+{{#item.integrations.hashable}}
+{{#item}}{{>partials/types_hashable.h}}{{/item}}
+{{/item.integrations.hashable}}
+{{#item.integrations.streamable}}
+{{#item}}{{>partials/types_streamable.h}}{{/item}}
+{{/item.integrations.streamable}}
+{{#item.integrations.addable}}
+{{#item}}{{>partials/types_addable.h}}{{/item}}
+{{/item.integrations.addable}}
+{{#item.integrations.bitfieldStreamable}}
+{{#item}}{{>partials/types_bitfieldStreamable.h}}{{/item}}
+{{/item.integrations.bitfieldStreamable}}
+{{#item.integrations.bitOperatable}}
+{{#item}}{{>partials/types_bitOperatable.h}}{{/item}}
+{{/item.integrations.bitOperatable}}
+{{#item.integrations.comparable}}
+{{#item}}{{>partials/types_comparable.h}}{{/item}}
+{{/item.integrations.comparable}}
+{{/types.items}}

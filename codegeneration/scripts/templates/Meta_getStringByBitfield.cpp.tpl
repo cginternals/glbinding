@@ -16,13 +16,13 @@ namespace
 namespace glbinding
 {
 
-{{#bitfGroups}}
+{{#bitfieldGroups.items}}
 #ifdef EXTENSIVE_META
 
-const std::string & Meta::getString(const {{identifier}} glbitfield)
+const std::string & Meta::getString(const {{item}} glbitfield)
 {
-    const auto i = Meta_StringsBy{{identifier}}.find(glbitfield);
-    if (i != Meta_StringsBy{{identifier}}.end())
+    const auto i = Meta_StringsBy{{item}}.find(glbitfield);
+    if (i != Meta_StringsBy{{item}}.end())
     {
         return i->second;
     }
@@ -31,12 +31,12 @@ const std::string & Meta::getString(const {{identifier}} glbitfield)
 
 #else
 
-const std::string & Meta::getString(const {{identifier}})
+const std::string & Meta::getString(const {{item}})
 {
     return none;
 }
 
 #endif // EXTENSIVE_META
 
-{{/bitfGroups}}
+{{/bitfieldGroups.items}}
 } // namespace glbinding

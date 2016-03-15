@@ -12,9 +12,9 @@ namespace glbinding
 
 const std::unordered_map<GLboolean, std::string> Meta_StringsByBoolean =
 {
-{{#enums}}
-    { GLboolean::{{identifier}}, "{{name}}" }{{^last}},{{/last}}
-{{/enums}}
+{{#booleans.items}}
+    { GLboolean::{{item.identifier}}, "{{item.name}}" }{{^last}},{{/last}}
+{{/booleans.items}}
 };
 
 } // namespace glbinding

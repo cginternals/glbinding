@@ -1,1 +1,1 @@
-{{#params}}{{>partials/general_type}} {{name}}{{^last}}, {{/last}}{{/params}}
+{{#params.items}}{{#item}}{{>partials/general_type}}{{/item}} {{item.name}}{{^last}}, {{/last}}{{/params.items}}

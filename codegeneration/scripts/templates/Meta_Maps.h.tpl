@@ -25,9 +25,9 @@ extern const std::unordered_map<gl::GLenum, std::string> Meta_StringsByEnum;
 extern const std::unordered_map<gl::GLextension, std::string> Meta_StringsByExtension;
 extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
 
-{{#bitfGroups}}
-extern const std::unordered_map<gl::{{identifier}}, std::string> Meta_StringsBy{{identifier}};
-{{/bitfGroups}}
+{{#bitfieldGroups.items}}
+extern const std::unordered_map<gl::{{item}}, std::string> Meta_StringsBy{{item}};
+{{/bitfieldGroups.items}}
 
 extern const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps;
 extern const std::unordered_map<std::string, gl::GLboolean> Meta_BooleansByString;

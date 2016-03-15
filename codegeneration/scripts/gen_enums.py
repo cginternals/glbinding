@@ -3,6 +3,24 @@ from classes.Enum import *
 from classes.Feature import *
 
 
+def genEnumContexts(allEnums):
+    ungroupedName = "__UNGROUPED__"
+    enums = [enum for enum in allEnums if enum.type == "GLenum"]
+    maxLength = max([len(enumBID(enum)) for enum in enums])
+    enumContexts = []
+    for enum in enums:
+        groups = listContext([g.name for g in enum.groups] if enum.groups else [ungroupedName], sortKey = lambda g: g)
+        enumContexts.append({"identifier": enumBID(enum),
+                             "name": enum.name,
+                             "value": enum.value,
+                             "cast": enum.value.startswith("-"),
+                             "spaces": " " * (maxLength - len(enumBID(enum))),
+                             "groups": groups,
+                             "primaryGroup": groups["items"][0]["item"] if not groups["empty"] else None,
+                             "supported": supportedLambda(enum) })
+    return enumContexts
+
+
 def genEnums(api, enums, features, path):
 
     genEnumH(api, enums, path, None)

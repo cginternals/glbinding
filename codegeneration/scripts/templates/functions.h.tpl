@@ -1,34 +1,19 @@
 #pragma once
 
-{{#forward}}
 #include <glbinding/glbinding_api.h>
 
 #include <glbinding/no{{api}}.h>
 #include <glbinding/{{api}}/types.h>
-{{/forward}}
-{{#import}}
-#include <glbinding/no{{api}}.h>
-#include <glbinding/{{api}}/functions.h>
-{{/import}}
 
 
-namespace {{api}}{{feature}}
+namespace {{api}}
 {
 
-{{#forward}}
-{{#groups}}
-{{#functions}}
-GLBINDING_API {{>partials/general_type}} {{identifier}}({{>partials/general_params}});
-{{/functions}}
+{{#functionsByInitial.groups}}
+{{#items}}
+GLBINDING_API {{#item}}{{>partials/general_type}} {{identifier}}({{>partials/general_params}}){{/item}};
+{{/items}}
 
-{{/groups}}
-{{/forward}}
-{{#import}}
-{{#groups}}
-{{#functions}}
-using {{api}}::{{identifier}};
-{{/functions}}
-{{/groups}}
-{{/import}}
+{{/functionsByInitial.groups}}
 
-} // namespace {{api}}{{feature}}
+} // namespace {{api}}

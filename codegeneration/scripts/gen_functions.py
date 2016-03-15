@@ -302,22 +302,25 @@ def typeContext(typeString, namespace=None):
             "type": typeString[6:] if hasModifier else typeString}
 
 def commandContext(command, last=None):
+
     paramContexts = []
     for param in command.params:
         paramContexts.append(
            {"name": param.name,
             "type": typeContext(param.groupString
                                 if param.type == "GLbitfield" and param.groupString
-                                else param.type, command.api),
-            "last": command.params.index(param) == len(command.params) - 1})
+                                else param.type, command.api) })
+
     identifier = functionBID(command)
     return {"identifier": identifier,
             "identifierNoGl": identifier[2:] if identifier.startswith("gl") else identifier,
             "type": typeContext(command.returntype, command.api),
-            "params": paramContexts,
-            "hasParams": len(paramContexts) > 0,
-            "last": last}
+            "params": listContext(paramContexts),
+            "last": last,
+            "supported": supportedLambda(command) }
 
+def genFunctionContexts(commands):
+    return [commandContext(command) for command in commands]
 
 def genFunctionHeaders(api, commands, features, path):
 

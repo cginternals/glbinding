@@ -69,6 +69,20 @@ def typeIntegrationMap(type):
 def integrationMap(integrationList):
     return { integration: integration in integrationList for integration in all_integrations}
 
+def genTypeContexts(types, bitfGroups):
+    typeContexts = [{"identifier": "GLextension",
+                     "definition": "enum class GLextension : int;",
+                     "integrations": integrationMap([ "hashable", "streamable" ])}]
+    for type in types: #TODO-LW: explicitly sort types and bitfGroups
+        typeContexts.append({"identifier": type.name,
+                             "definition": convertType(type),
+                             "integrations": typeIntegrationMap(type)})
+    for bitf in bitfGroups:
+        typeContexts.append({"identifier": bitf.name,
+                             "definition": "enum class {} : unsigned int;".format(bitf.name),
+                             "integrations": integrationMap(bitf_group_integrations)})
+    return typeContexts
+
 def genTypesH(api, types, bitfGroups, path, feature, core = False, ext = False):
 
     typeContexts = [       {"identifier": "GLextension",

@@ -29,6 +29,93 @@ def template(outputfile):
     with open (execDir + templateDir + outputfile + ".in", "r") as file:
         return file.read()
 
+def supportedLambda(obj):
+    return lambda feature, core, ext: ( not ext and obj.supported(feature, core)
+                                         or ext and not obj.supported(feature, False) )
+
+# structure:
+# { "items": [ { "item": {...},
+#                "last": <bool>} ],
+#   "count": <uint>,
+#   "empty": <bool>,
+#   "singleItem": <bool>,
+#   "multipleItems": <bool> }
+def listContext(contextList, sortKey = None, filter = lambda i: True):
+    context = {}
+    if sortKey is not None:
+        contextList = sorted(contextList, key = sortKey)
+    context["items"] = [{"item": item,
+                         "last": item == contextList[-1]}
+                        for item in contextList
+                        if filter(item)]
+    context["count"] = len(context["items"])
+    context["empty"] = len(context["items"]) == 0
+    context["singleItem"] = len(context["items"]) == 1
+    context["multipleItems"] = len(context["items"]) > 1
+    return context
+
+# structure:
+# { "groups": [ { "name": <string>,
+#                 "items": [ { "item": {...},
+#                              "last": <bool>},
+#                              "hasPrimary": <bool>,
+#                              "isPrimary": <bool>,
+#                              "isSecondary": <bool> } ],
+#                 "count": <uint>,
+#                 "empty": <bool>,
+#                 "singleItem": <bool>,
+#                 "multipleItems": <bool>,
+#                 "last": <bool> } ],
+#   "count": <uint>,
+#   "empty": <bool>,
+#   "singleGroup": <bool>,
+#   "multipleGroups": <bool> }
+def groupedContext(contextList, groupKey, primaryGroupKey = None,
+                   groupKeyList = [],
+                   groupSortKey = None, itemSortKey = None,
+                   groupName = lambda gk: str(gk), filter = lambda i: True):
+    context = {}
+
+    groupMap = {key: [] for key in groupKeyList}
+    for item in contextList:
+        if filter(item):
+            for gKey in groupKey(item):
+                if gKey not in groupMap:
+                    groupMap[gKey] = []
+                groupMap[gKey].append(item)
+
+    groupKeys = list(groupMap.keys())
+    if groupSortKey is not None:
+        groupKeys.sort(key = groupSortKey)
+
+    context["groups"] = []
+    for key in groupKeys:
+        if itemSortKey is not None:
+            groupMap[key].sort(key = itemSortKey)
+
+        items = []
+        for item in groupMap[key]:
+            hasPrimary = primaryGroupKey is not None and primaryGroupKey(item) in groupKeys
+            isPrimary = primaryGroupKey is not None and primaryGroupKey(item) == key
+            items.append({"item": item,
+                      "last": item == groupMap[key][-1],
+                      "hasPrimary": hasPrimary,
+                      "isPrimary": isPrimary,
+                      "isSecondary": hasPrimary and not isPrimary})
+
+        context["groups"].append({"name": groupName(key),
+                                  "items": items,
+                                  "count": len(items),
+                                  "empty": len(items) == 0,
+                                  "singleItem": len(items) == 1,
+                                  "multipleItems": len(items) > 1,
+                                  "last": key == groupKeys[-1]})
+    context["count"] = len(context["groups"])
+    context["empty"] = len(context["groups"]) == 0
+    context["singleGroup"] = len(context["groups"]) == 1
+    context["multipleGroups"] = len(context["groups"]) > 1
+    return context
+
 class Generator:
 
     renderer = None
@@ -97,6 +184,8 @@ def alphabeticallyGroupedLists():
 
     return lists
 
+def alphabeticalGroupKeys():
+    return [str(c) for c in "0ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 
 def alphabeticalGroupKey(identifier, prefix):
 

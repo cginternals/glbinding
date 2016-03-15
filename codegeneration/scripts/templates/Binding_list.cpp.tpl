@@ -9,9 +9,9 @@ namespace glbinding
 
 const Binding::array_t Binding::s_functions =
 {{=| |=}}{{|={{ }}=|
-{{#functions}}
-    &{{identifierNoGl}}{{^last}},{{/last}}
-{{/functions}}
+{{#functions.items}}
+    &{{item.identifierNoGl}}{{^last}},{{/last}}
+{{/functions.items}}
 {{=| |=}}}}|={{ }}=|;
 
 } // namespace glbinding

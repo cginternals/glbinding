@@ -1,8 +1,8 @@
 #include <gmock/gmock.h>
 
-{{#features}}
-#include <glbinding/{{api}}{{feature}}/gl.h>
-{{/features}}
+{{#apiMemberSets.items}}
+#include <glbinding/{{api}}{{item.memberSet}}/gl.h>
+{{/apiMemberSets.items}}
 
 TEST(AllVersions, Compilation)
 {

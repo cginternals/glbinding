@@ -1,19 +1,19 @@
 #pragma once
 
 #include <glbinding/no{{api}}.h>
-#include <glbinding/{{api}}/types.h>
+#include <glbinding/{{api}}/values.h>
 
 
-namespace {{api}}
+namespace {{api}}{{memberSet}}
 {
 
 {{#valuesByType.groups}}
 {{#items}}
-static const {{item.type}} {{item.identifier}} = {{item.value}};
+using {{api}}::{{item.identifier}};
 {{/items}}
 {{^last}}
 
 {{/last}}
 {{/valuesByType.groups}}
 
-} // namespace {{api}}
+} // namespace {{api}}{{memberSet}}

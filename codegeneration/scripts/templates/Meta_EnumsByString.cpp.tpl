@@ -10,25 +10,25 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-{{#keys}}
+{{#enumsByInitial.groups}}
 {{^empty}}
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{key}} =
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}} =
 {
-{{#enums}}
-    { "{{name}}", GLenum::{{identifier}} }{{^last}},{{/last}}
-{{/enums}}
+{{#items}}
+    { "{{item.name}}", GLenum::{{item.identifier}} }{{^last}},{{/last}}
+{{/items}}
 };
 {{/empty}}
 {{#empty}}
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{key}};
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}};
 {{/empty}}
 
-{{/keys}}
-const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsByStringMaps =
+{{/enumsByInitial.groups}}
+const std::array<std::unordered_map<std::string, gl::GLenum>, {{enumsByInitial.count}}> Meta_EnumsByStringMaps =
 { {
-{{#keys}}
-    Meta_EnumsByString_{{key}}{{^last}},{{/last}}
-{{/keys}}
+{{#enumsByInitial.groups}}
+    Meta_EnumsByString_{{name}}{{^last}},{{/last}}
+{{/enumsByInitial.groups}}
 } };
 
 } // namespace glbinding

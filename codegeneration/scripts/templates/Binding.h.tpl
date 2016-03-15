@@ -18,7 +18,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, {{functionCount}}>;
+    using array_t = std::array<AbstractFunction *, {{functions.count}}>;
     using ContextSwitchCallback = std::function<void(ContextHandle)>;
 
     Binding() = delete;
@@ -44,9 +44,9 @@ public:
     static const std::vector<AbstractFunction *> & additionalFunctions();
 
 public:
-{{#functions}}
-    static Function<{{>partials/general_typeNs}}{{#hasParams}}, {{/hasParams}}{{>partials/general_paramSignatureNs}}> {{identifierNoGl}};
-{{/functions}}
+{{#functions.items}}
+    {{#item}}static Function<{{>partials/general_typeNs}}{{^params.empty}}, {{>partials/general_paramSignatureNs}}{{/params.empty}}> {{identifierNoGl}};{{/item}}
+{{/functions.items}}
 
 protected:
 	static const array_t s_functions;
