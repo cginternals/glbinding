@@ -63,7 +63,7 @@ set(headers
 # add featured headers
 
 file(GLOB featured_includes ${include_path}/gl*/*.h)
-list(APPEND api_includes ${featured_includes})
+list(APPEND headers ${featured_includes})
 
 set(sources
     ${source_path}/callbacks.cpp
