@@ -1,6 +1,7 @@
 
 #include <glbinding/logging.h>
 
+#include <array>
 #include <atomic>
 #include <condition_variable>
 #include <fstream>
@@ -44,7 +45,8 @@ void resize(const unsigned int newSize)
 
 void start()
 {
-    auto filepath = getStandardFilepath();
+    const auto filepath = getStandardFilepath();
+
     start(filepath);
 }
 
@@ -56,7 +58,8 @@ void start(const std::string & filepath)
 
 void startExcept(const std::set<std::string> & blackList)
 {
-    auto filepath = getStandardFilepath();
+    const auto filepath = getStandardFilepath();
+
     startExcept(filepath, blackList);
 }
 
@@ -92,7 +95,7 @@ void resume()
 
 void log(FunctionCall * call)
 {
-    bool available = false;
+    auto available = false;
     auto next = g_buffer.nextHead(available);
 
     while (!available)
@@ -114,7 +117,7 @@ void startWriter(const std::string & filepath)
 
     std::thread writer([filepath]()
     {
-        auto key = g_buffer.addTail();
+        const auto key = g_buffer.addTail();
         std::ofstream logfile;
         logfile.open (filepath, std::ios::out);
 
@@ -144,25 +147,25 @@ void startWriter(const std::string & filepath)
 
 const std::string getStandardFilepath()
 {
-    auto now = std::chrono::system_clock::now();
+    const auto now = std::chrono::system_clock::now();
 
-    auto now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
-    auto ms = now_ms.count() % 1000;
+    const auto now_ms = std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
+    const auto ms = now_ms.count() % 1000;
 
-    auto now_c = std::chrono::system_clock::to_time_t(now);
-    char time_string[20];
-    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&now_c));
+    const auto now_c = std::chrono::system_clock::to_time_t(now);
+
+    std::array<char, 20> time_string;
+    std::strftime(time_string.data(), time_string.size(), "%Y-%m-%d_%H-%M-%S", std::localtime(&now_c));
 
     std::ostringstream ms_os;
     ms_os << std::setfill('0') << std::setw(3) << ms;
 
     std::ostringstream os;
     os << "logs/";
-    os << time_string << "-" << ms_os.str();
+    os << time_string.data() << "-" << ms_os.str();
     os << ".log";
-    
-    auto logname = os.str();
-    return logname;
+
+    return os.str();
 }
 
 TailIdentifier addTail()

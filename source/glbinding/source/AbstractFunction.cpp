@@ -18,7 +18,7 @@ namespace
 {
 
 
-GLBINDING_THREAD_LOCAL int t_pos = -1;
+GLBINDING_THREAD_LOCAL auto t_pos = -1;
 
 
 } // namespace
@@ -67,7 +67,12 @@ void AbstractFunction::provideState(const int pos)
     // if a state at pos exists, it is assumed to be neglected before
     if (s_maxpos < pos)
     {
-        for (AbstractFunction * function : Binding::functions())
+        for (auto function : Binding::functions())
+        {
+            function->m_states.resize(static_cast<std::size_t>(pos + 1));
+        }
+
+        for (auto function : Binding::additionalFunctions())
         {
             function->m_states.resize(static_cast<std::size_t>(pos + 1));
         }
@@ -83,7 +88,12 @@ void AbstractFunction::neglectState(const int pos)
 
     if (pos == s_maxpos)
     {
-        for (AbstractFunction * function : Binding::functions())
+        for (auto function : Binding::functions())
+        {
+            function->m_states.resize(static_cast<std::size_t>(std::max(0, pos - 1)));
+        }
+
+        for (auto function : Binding::additionalFunctions())
         {
             function->m_states.resize(static_cast<std::size_t>(std::max(0, pos - 1)));
         }
@@ -92,7 +102,12 @@ void AbstractFunction::neglectState(const int pos)
     }
     else
     {
-        for (AbstractFunction * function : Binding::functions())
+        for (auto function : Binding::functions())
+        {
+            function->m_states[pos] = State();
+        }
+
+        for (auto function : Binding::additionalFunctions())
         {
             function->m_states[pos] = State();
         }

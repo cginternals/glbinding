@@ -1,6 +1,7 @@
 
 #include <glbinding/FunctionCall.h>
 
+#include <array>
 #include <chrono>
 #include <sstream>
 #include <iomanip>
@@ -31,7 +32,7 @@ FunctionCall::~FunctionCall()
 {
     delete returnValue;
 
-    for (AbstractValue * value : parameters)
+    for (auto value : parameters)
     {
         delete value;
     }
@@ -53,12 +54,12 @@ std::string FunctionCall::toString() const
     millis_os << std::setfill('0') << std::setw(3) << millis;
 
     const auto t = std::chrono::system_clock::to_time_t(timestamp);
-    char time_string[20];
-    std::strftime(time_string, sizeof(time_string), "%Y-%m-%d_%H-%M-%S", std::localtime(&t));
+    std::array<char, 20> time_string;
+    std::strftime(time_string.data(), time_string.size(), "%Y-%m-%d_%H-%M-%S", std::localtime(&t));
 
     std::ostringstream os;
 
-    os << time_string << ":" << millis_os.str() << ":" << micros_os.str() << " ";
+    os << time_string.data() << ":" << millis_os.str() << ":" << micros_os.str() << " ";
     os << function->name() << "(";
 
     for (size_t i = 0; i < parameters.size(); ++i)

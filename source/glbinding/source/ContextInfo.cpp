@@ -21,6 +21,7 @@ namespace
 void insertExtension(const std::string & extensionName, std::set<GLextension> * extensions, std::set<std::string> * unknownExtensionNames)
 {
     const auto extension = glbinding::Meta::getExtension(extensionName);
+
     if (GLextension::UNKNOWN != extension)
     {
         extensions->insert(extension);
@@ -39,7 +40,7 @@ namespace glbinding
 {
 
 
-std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
+std::set<GLextension> ContextInfo::extensions(std::set<std::string> * const unknown)
 {
     const auto v = version();
 
@@ -58,6 +59,7 @@ std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
         {
             std::istringstream stream{reinterpret_cast<const char *>(extensionString)};
             auto extensionName = std::string{};
+
             while (std::getline(stream, extensionName, ' '))
             {
                 insertExtension(extensionName, &extensions, unknown);
