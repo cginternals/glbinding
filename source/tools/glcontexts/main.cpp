@@ -55,8 +55,8 @@ Version printVersionOfContextRequest(
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, version.m_major);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version.m_minor);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, version.majorVersion());
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version.minorVersion());
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, forward);
     if (core)
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
