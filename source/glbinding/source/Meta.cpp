@@ -33,15 +33,6 @@ namespace glbinding
 {
 
 
-bool Meta::extensive()
-{
-#ifdef EXTENSIVE_META
-    return true;
-#else
-    return false;
-#endif
-}
-
 int Meta::glRevision()
 {
     return GL_REVISION;
@@ -68,16 +59,13 @@ std::vector<GLbitfield> Meta::bitfields()
 {
     auto bitfields = std::vector<GLbitfield>{};
 
-// this does not just work with EXTENSIVE_META since bitfields are grouped
-#ifdef EXTENSIVE_META 
-
     for(auto map : Meta_BitfieldsByStringMaps)
+    {
         for (auto p : map)
         {
             bitfields.push_back(p.second);
         }
-
-#endif // EXTENSIVE_META
+    }
 
     return bitfields;    
 }
@@ -87,14 +75,10 @@ std::vector<GLenum> Meta::enums()
 {
     auto enums = std::vector<GLenum>{};
 
-#ifdef EXTENSIVE_META
-
     for (auto p : Meta_StringsByEnum)
     {
         enums.push_back(p.first);
     }
-
-#endif // EXTENSIVE_META
 
     return enums;
 }
@@ -102,8 +86,6 @@ std::vector<GLenum> Meta::enums()
 
 GLextension Meta::getExtension(const std::string & glextension)
 {
-    // NOTE: this is intended to work irrespective of a EXTENSIVE_META definition.
-
     const auto index = alphabeticalGroupIndex(glextension, 3);
     const auto & map = Meta_ExtensionsByStringMaps[index];
     const auto i = map.find(glextension);
@@ -129,8 +111,6 @@ std::set<GLextension> Meta::extensions()
     return extensions;
 }
 
-
-#ifdef EXTENSIVE_META
 
 const std::string & Meta::getString(const GLboolean glboolean)
 {
@@ -172,33 +152,6 @@ const std::set<std::string> & Meta::getRequiredFunctions(const GLextension exten
     return noneStringSet;
 }
 
-#else
-
-const std::string & Meta::getString(const GLboolean)
-{
-    return none;
-}
-
-const std::string & Meta::getString(const GLenum)
-{
-    return none;
-}
-
-const std::string & Meta::getString(const GLextension)
-{
-    return none;
-}
-
-const std::set<std::string> & Meta::getRequiredFunctions(const GLextension)
-{
-    return noneStringSet;
-}
-
-#endif // EXTENSIVE_META
-
-
-#ifdef EXTENSIVE_META
-
 GLbitfield Meta::getBitfield(const std::string & glbitfield)
 {
     const auto index = alphabeticalGroupIndex(glbitfield, 3);
@@ -238,25 +191,6 @@ const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & g
 
     return noneExtensions;
 }
-
-#else
-
-GLbitfield Meta::getBitfield(const std::string &)
-{
-    return static_cast<GLbitfield>(-1);
-}
-
-GLenum Meta::getEnum(const std::string &)
-{
-    return static_cast<GLenum>(static_cast<unsigned int>(-1));
-}
-
-const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string &)
-{
-    return noneExtensions;
-}
-
-#endif // EXTENSIVE_META
 
 const Version & Meta::getRequiringVersion(const GLextension extension)
 {

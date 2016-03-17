@@ -29,36 +29,26 @@ int main(int, char * [])
 
     std::cout << std::endl << std::endl << "[ENUMS]" << std::endl << std::endl;
 
-    if (Meta::extensive())
-    {
-        std::cout << "# Enums: " << Meta::enums().size() << std::endl << std::endl;
+    std::cout << "# Enums: " << Meta::enums().size() << std::endl << std::endl;
 
-        for (GLenum e : Meta::enums()) // c++ 14 ...
-            std::cout << " (" << std::hex << std::showbase << std::internal << std::setfill('0') << std::setw(8) 
-                << static_cast<std::underlying_type<GLenum>::type>(e) << ") " << Meta::getString(e) << std::dec << std::endl;
+    for (GLenum e : Meta::enums()) // c++ 14 ...
+        std::cout << " (" << std::hex << std::showbase << std::internal << std::setfill('0') << std::setw(8) 
+            << static_cast<std::underlying_type<GLenum>::type>(e) << ") " << Meta::getString(e) << std::dec << std::endl;
 
-        std::cout << std::dec;
-    }
-    else
-        std::cout << std::endl << "warning: Enums cannot be enlisted since the glbinding used was compiled without EXTENSIVE_META support." << std::endl;
-
+    std::cout << std::dec;
+    
     // enlist all extensions
 
     std::cout << std::endl << std::endl << "[EXTENSIONS]" << std::endl << std::endl;
 
-    if (Meta::extensive())
+    std::cout << " # Extensions: " << Meta::extensions().size() << std::endl << std::endl;
+
+    for (GLextension e : Meta::extensions())
     {
-        std::cout << " # Extensions: " << Meta::extensions().size() << std::endl << std::endl;
-
-        for (GLextension e : Meta::extensions())
-        {
-            const Version v = Meta::getRequiringVersion(e);
-            std::cout << " " << Meta::getString(e) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
-        }
+        const Version v = Meta::getRequiringVersion(e);
+        std::cout << " " << Meta::getString(e) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
     }
-    else
-        std::cout << std::endl << "warning: EXTENSIONS cannot be enlisted since the glbinding used was compiled without EXTENSIVE_META support." << std::endl;
-
+    
     // print some gl infos (query)
 
     std::cout << std::endl

@@ -1,6 +1,4 @@
 
-#ifdef EXTENSIVE_META
-
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/boolean.h>
@@ -20,6 +18,3 @@ const std::unordered_map<GLboolean, std::string> Meta_StringsByBoolean =
 
 
 } // namespace glbinding
-
-
-#endif // EXTENSIVE_META

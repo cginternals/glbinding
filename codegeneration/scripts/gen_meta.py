@@ -105,9 +105,7 @@ def genMetaStringsByBitfield(bitfGroups, outputdir, outputfile):
 
 def metaGetStringsByBitfield(group):
 
-    return """#ifdef EXTENSIVE_META
-
-const std::string & Meta::getString(const %s glbitfield)
+    return """const std::string & Meta::getString(const %s glbitfield)
 {
     const auto i = Meta_StringsBy%s.find(glbitfield);
     if (i != Meta_StringsBy%s.end())
@@ -116,16 +114,7 @@ const std::string & Meta::getString(const %s glbitfield)
     }
     return none;
 }
-
-#else 
-
-const std::string & Meta::getString(const %s)
-{
-    return none;
-}
-
-#endif // EXTENSIVE_META
-""" % (group.name, group.name, group.name, group.name)
+""" % (group.name, group.name, group.name)
 
 
 def genMetaGetStringByBitfield(bitfGroups, outputdir, outputfile):

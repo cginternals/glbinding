@@ -23,8 +23,6 @@ class GLBINDING_API Meta
 public:
     Meta() = delete;
 
-    static bool extensive();
-
     static int glRevision();
 
     static gl::GLbitfield getBitfield(const std::string & glbitfield);

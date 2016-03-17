@@ -1,6 +1,4 @@
 
-#ifdef EXTENSIVE_META
-
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/extension.h>
@@ -2358,6 +2356,3 @@ const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27>
 
 
 } // namespace glbinding
-
-
-#endif // EXTENSIVE_META
