@@ -51,7 +51,7 @@ void Value<T>::printOn(std::ostream & stream) const
 }
 
 template <typename Argument>
-AbstractValue * createValue(Argument argument)
+AbstractValue * createValue(const Argument & argument)
 {
     return new Value<Argument>(argument);
 }
