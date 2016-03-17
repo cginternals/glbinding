@@ -30,6 +30,8 @@ int main()
 }
 ```
 
+*glbinding* uses [Doxygen](http://www.stack.nl/~dimitri/doxygen/) for [documentation](http://cginternals.github.io/glbinding/documentation/).
+
 ## Features
 
 ##### Type-Safe Parameters
