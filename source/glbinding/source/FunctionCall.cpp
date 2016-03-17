@@ -80,5 +80,15 @@ std::string FunctionCall::toString() const
     return os.str();
 }
 
+FunctionCall & FunctionCall::operator=(FunctionCall && other)
+{
+    function = std::move(other.function);
+    timestamp = std::move(other.timestamp);
+    parameters = std::move(other.parameters);
+    returnValue = std::move(other.returnValue);
+
+    return *this;
+}
+
 
 } // namespace glbinding

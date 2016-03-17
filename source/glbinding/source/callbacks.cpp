@@ -92,17 +92,26 @@ void setAfterCallback(FunctionCallback callback)
 
 void unresolved(const AbstractFunction * function)
 {
-    g_unresolvedCallback(*function);
+    if (g_unresolvedCallback)
+    {
+        g_unresolvedCallback(*function);
+    }
 }
 
 void before(const FunctionCall & call)
 {
-    g_beforeCallback(call);
+    if (g_beforeCallback)
+    {
+        g_beforeCallback(call);
+    }
 }
 
 void after(const FunctionCall & call)
 {
-    g_afterCallback(call);
+    if (g_afterCallback)
+    {
+        g_afterCallback(call);
+    }
 }
 
 

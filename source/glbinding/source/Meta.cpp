@@ -261,12 +261,12 @@ const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string &)
 const Version & Meta::getRequiringVersion(const GLextension extension)
 {
     const auto i = Meta_ReqVersionsByExtension.find(extension);
-    if (i == Meta_ReqVersionsByExtension.end())
+    if (i != Meta_ReqVersionsByExtension.end())
     {
-        return noneVersion;
+        return i->second;
     }
 
-    return i->second;
+    return noneVersion;
 }
 
 const std::set<Version> & Meta::versions()

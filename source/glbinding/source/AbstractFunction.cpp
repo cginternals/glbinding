@@ -17,9 +17,11 @@
 namespace
 {
 
+
 GLBINDING_THREAD_LOCAL int t_pos = -1;
 
-}
+
+} // namespace
 
 
 namespace glbinding 
@@ -148,7 +150,6 @@ ProcAddress AbstractFunction::address() const
 
     return state().address;
 }
-
 
 bool AbstractFunction::isEnabled(const CallbackMask mask) const
 {

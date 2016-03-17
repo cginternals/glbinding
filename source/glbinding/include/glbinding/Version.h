@@ -244,6 +244,7 @@ protected:
 
 } // namespace glbinding
 
+
 /**
  * @brief
  *   The operator to allow Versions to be printed onto a std::ostream.

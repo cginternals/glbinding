@@ -22,7 +22,7 @@ std::atomic<bool> g_persisted{false};
 std::mutex g_lockfinish;
 std::condition_variable g_finishcheck;
 
-using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::BufferType>;
+using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::LogEntry>;
 FunctionCallBuffer g_buffer{LOG_BUFFER_SIZE};
 
 
@@ -175,17 +175,17 @@ void removeTail(TailIdentifier key)
     g_buffer.removeTail(key);
 }
 
-const std::vector<BufferType>::const_iterator cbegin(TailIdentifier key)
+const std::vector<LogEntry>::const_iterator cbegin(TailIdentifier key)
 {
     return g_buffer.cbegin(key);
 }
 
-bool valid(TailIdentifier key, const std::vector<BufferType>::const_iterator & it)
+bool valid(TailIdentifier key, const std::vector<LogEntry>::const_iterator & it)
 {
     return g_buffer.valid(key, it);
 }
 
-const std::vector<BufferType>::const_iterator next(TailIdentifier key, const std::vector<BufferType>::const_iterator & it)
+const std::vector<LogEntry>::const_iterator next(TailIdentifier key, const std::vector<LogEntry>::const_iterator & it)
 {
     return g_buffer.next(key, it);
 }
