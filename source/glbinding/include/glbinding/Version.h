@@ -215,7 +215,7 @@ public:
     bool isNull() const;
 
     /**
-     * @breturn
+     * @return
      *   the nearest valid Version that is either equal or lower than this Version.
      */
     const Version & nearest() const;
