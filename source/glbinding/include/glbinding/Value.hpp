@@ -6,7 +6,7 @@
 #include <ostream>
 
 
-namespace glbinding 
+namespace
 {
 
 
@@ -36,6 +36,13 @@ void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments&&...
 {
     ValueAdder<Arguments...>::add(values, std::forward<Arguments>(arguments)...);
 }
+
+
+} // namespace
+
+
+namespace glbinding 
+{
 
 
 template <typename T>

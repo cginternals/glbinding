@@ -44,8 +44,10 @@ set(headers
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
+    ${include_path}/CallbackMask.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
+    ${include_path}/FunctionCall.h
     ${include_path}/Binding.h
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
@@ -66,13 +68,15 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND headers ${featured_includes})
 
 set(sources
-    ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
+    ${source_path}/callbacks.cpp
     
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
+    ${source_path}/CallbackMask.cpp
+    ${source_path}/FunctionCall.cpp
 
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp

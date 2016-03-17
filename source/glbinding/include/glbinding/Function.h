@@ -18,8 +18,6 @@ namespace glbinding
 {
 
 
-template <typename ReturnType, typename... Arguments> struct FunctionHelper;
-
 /**
  * @brief
  *   A callback signature with return type and multiple arguments.
@@ -63,8 +61,7 @@ struct CallbackType<void, Arguments...>
 template <typename ReturnType, typename... Arguments>
 class Function : public AbstractFunction
 {
-    friend struct FunctionHelper<ReturnType, Arguments...>; ///< used to dispatch the type of function call.
-
+public:
     using Signature = ReturnType(WINAPI *) (Arguments...); ///< The c pointer type for a function call.
 
     using BeforeCallback = typename CallbackType<void, Arguments...>::type; ///< The callback type for the before callback.
@@ -155,6 +152,24 @@ public:
      *   Clears any previously registered after callback.
      */
     void clearAfterCallback();
+
+    /**
+     * @brief
+     *   The accessor for the beforeCallback.
+     *
+     * @return
+     *   The beforeCallback.
+     */
+    BeforeCallback beforeCallback() const;
+
+    /**
+     * @brief
+     *   The accessor for the afterCallback.
+     *
+     * @return
+     *   The afterCallback.
+     */
+    AfterCallback afterCallback() const;
 
 protected:
     BeforeCallback m_beforeCallback; ///< The currently registered before callback.

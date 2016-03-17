@@ -138,8 +138,6 @@ public:
      */
     bool isAnyEnabled(CallbackMask mask) const;
 
-protected:
-
     /**
      * @brief
      *   Triggers a call of the unresolved callback.

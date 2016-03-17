@@ -7,7 +7,13 @@
 namespace glbinding 
 {
 
-
+/**
+ * @brief
+ *   A representation of a bitfield value that could be member of multiple bitfield types as allowed in OpenGL.
+ *
+ * @param Types
+ *   The valid bitfield types for the given value.
+ */
 template <typename... Types>
 class SharedBitfield;
 
