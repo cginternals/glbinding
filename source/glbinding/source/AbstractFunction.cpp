@@ -129,11 +129,6 @@ void AbstractFunction::resolveAddress()
     currentState.initialized = true;
 }
 
-const std::set<gl::GLextension> & AbstractFunction::extensions() const
-{
-    return Meta::getExtensionsRequiring(m_name);
-}
-
 const char * AbstractFunction::name() const
 {
     return m_name;

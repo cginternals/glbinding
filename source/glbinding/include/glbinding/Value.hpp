@@ -6,7 +6,7 @@
 #include <ostream>
 
 
-namespace glbinding 
+namespace
 {
 
 
@@ -38,6 +38,13 @@ void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments&&...
 }
 
 
+} // namespace
+
+
+namespace glbinding 
+{
+
+
 template <typename T>
 Value<T>::Value(const T & _value)
 : value(_value)
@@ -51,7 +58,7 @@ void Value<T>::printOn(std::ostream & stream) const
 }
 
 template <typename Argument>
-AbstractValue * createValue(Argument argument)
+AbstractValue * createValue(const Argument & argument)
 {
     return new Value<Argument>(argument);
 }

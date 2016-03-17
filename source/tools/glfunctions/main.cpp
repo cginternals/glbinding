@@ -92,11 +92,11 @@ int main()
         if (func->isResolved())
             ++resolved;
 
-        if (func->extensions().empty())
+        if (Meta::getExtensionsRequiring(func->name()).empty())
             nonExtFuncs.insert(func);
         else
         {
-            for (GLextension ext : func->extensions())
+            for (GLextension ext : Meta::getExtensionsRequiring(func->name()))
                 funcsByExt[ext].insert(func);
             ++assigned;
         }

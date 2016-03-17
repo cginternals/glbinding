@@ -22,6 +22,34 @@ Version::Version(unsigned char majorVersion, unsigned char minorVersion)
 {
 }
 
+Version::Version(const Version & version)
+: m_major(version.m_major)
+, m_minor(version.m_minor)
+{
+}
+
+Version::Version(Version && version)
+: m_major(std::move(version.m_major))
+, m_minor(std::move(version.m_minor))
+{
+}
+
+Version & Version::operator=(const Version & version)
+{
+    m_major = version.m_major;
+    m_minor = version.m_minor;
+
+    return *this;
+}
+
+Version & Version::operator=(Version && version)
+{
+    m_major = std::move(version.m_major);
+    m_minor = std::move(version.m_minor);
+
+    return *this;
+}
+
 bool Version::operator<(const Version & version) const
 {
     return m_major < version.m_major
@@ -54,6 +82,16 @@ bool Version::operator>=(const Version & version) const
 bool Version::operator<=(const Version & version) const
 {
     return *this < version || *this == version;
+}
+
+unsigned char Version::majorVersion() const
+{
+    return m_major;
+}
+
+unsigned char Version::minorVersion() const
+{
+    return m_minor;
 }
 
 Version::operator std::pair<unsigned char, unsigned char>() const
