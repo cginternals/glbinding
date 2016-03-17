@@ -125,6 +125,12 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 template <typename ReturnType, typename... Arguments>
 ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
 {
+    return call(arguments...);
+}
+
+template <typename ReturnType, typename... Arguments>
+ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) const
+{
     const auto myAddress = address();
 
     if (myAddress == nullptr)
