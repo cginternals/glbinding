@@ -75,14 +75,29 @@ void removeCallbackMaskExcept(const CallbackMask mask, const std::set<std::strin
     }
 }
 
+SimpleFunctionCallback unresolvedCallback()
+{
+    return g_unresolvedCallback;
+}
+
 void setUnresolvedCallback(SimpleFunctionCallback callback)
 {
     g_unresolvedCallback = std::move(callback);
 }
 
+FunctionCallback beforeCallback()
+{
+    return g_beforeCallback;
+}
+
 void setBeforeCallback(FunctionCallback callback)
 {
     g_beforeCallback = std::move(callback);
+}
+
+FunctionCallback afterCallback()
+{
+    return g_afterCallback;
 }
 
 void setAfterCallback(FunctionCallback callback)
