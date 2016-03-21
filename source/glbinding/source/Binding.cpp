@@ -97,12 +97,12 @@ void Binding::registerAdditionalFunction(AbstractFunction * function)
 
 void Binding::resolveFunctions()
 {
-    for (AbstractFunction * function : Binding::functions())
+    for (auto function : Binding::functions())
     {
         function->resolveAddress();
     }
 
-    for (AbstractFunction * function : Binding::additionalFunctions())
+    for (auto function : Binding::additionalFunctions())
     {
         function->resolveAddress();
     }
@@ -159,7 +159,7 @@ void Binding::releaseContext(const ContextHandle context)
     g_mutex.unlock();
 }
 
-void Binding::addContextSwitchCallback(ContextSwitchCallback callback)
+void Binding::addContextSwitchCallback(const ContextSwitchCallback callback)
 {
     g_mutex.lock();
     s_callbacks.push_back(std::move(callback));

@@ -141,10 +141,7 @@ int main()
 
     std::cout << "                 " << assigned << " assigned to extensions";
 
-    if (!Meta::extensive())
-        std::cout << " (none assigned, since the glbinding used was compiled without EXTENSIVE_META support)." << std::endl;
-    else
-        std::cout << "." << std::endl;
+    std::cout << "." << std::endl;
 
     std::cout << std::endl;
     std::cout << "# Extensions:    " << (supportedExts.size() + unknownExts.size()) << " of " << allExts.size() + unknownExts.size() << " supported"

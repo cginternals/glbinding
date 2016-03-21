@@ -96,6 +96,8 @@ template <> GLBINDING_API void Value<gl::GLuint_array_2>::printOn(std::ostream &
  * @brief
  *   A wrapper around the type deduction and memory allocation of a specific argument.
  *
+ * @tparam Argument
+ *   The type of the argument, usually an OpenGL data type.
  * @param[in] argument
  *   The argument to wrap into a Value of type Argument.
  */
@@ -106,6 +108,8 @@ AbstractValue * createValue(const Argument & argument);
  * @brief
  *   A wrapper around the creation of a vector of arguments.
  *
+ * @tparam Arguments
+ *   The types of the arguments, usually OpenGL data types.
  * @param[in] arguments
  *   The variadic parameter list of all arguments to convert.
  *

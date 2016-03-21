@@ -20,7 +20,7 @@ namespace glbinding
 
 void setCallbackMask(const CallbackMask mask)
 {
-    for (AbstractFunction * function : Binding::functions())
+    for (auto function : Binding::functions())
     {
         function->setCallbackMask(mask);
     }
@@ -28,7 +28,7 @@ void setCallbackMask(const CallbackMask mask)
 
 void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
-    for (AbstractFunction * function : Binding::functions())
+    for (auto function : Binding::functions())
     {
         if (blackList.find(function->name()) == blackList.end())
         {
@@ -39,7 +39,7 @@ void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> 
 
 void addCallbackMask(const CallbackMask mask)
 {
-    for (AbstractFunction * function : Binding::functions())
+    for (auto function : Binding::functions())
     {
         function->addCallbackMask(mask);
     }
@@ -47,7 +47,7 @@ void addCallbackMask(const CallbackMask mask)
 
 void addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
-    for (AbstractFunction * function : Binding::functions())
+    for (auto function : Binding::functions())
     {
         if (blackList.find(function->name()) == blackList.end())
         {
@@ -58,7 +58,7 @@ void addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> 
 
 void removeCallbackMask(const CallbackMask mask)
 {
-    for (AbstractFunction * function : Binding::functions())
+    for (auto function : Binding::functions())
     {
         function->removeCallbackMask(mask);
     }
@@ -66,7 +66,7 @@ void removeCallbackMask(const CallbackMask mask)
 
 void removeCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
-    for (AbstractFunction * function : Binding::functions())
+    for (auto function : Binding::functions())
     {
         if (blackList.find(function->name()) == blackList.end())
         {
@@ -75,14 +75,29 @@ void removeCallbackMaskExcept(const CallbackMask mask, const std::set<std::strin
     }
 }
 
+SimpleFunctionCallback unresolvedCallback()
+{
+    return g_unresolvedCallback;
+}
+
 void setUnresolvedCallback(SimpleFunctionCallback callback)
 {
     g_unresolvedCallback = std::move(callback);
 }
 
+FunctionCallback beforeCallback()
+{
+    return g_beforeCallback;
+}
+
 void setBeforeCallback(FunctionCallback callback)
 {
     g_beforeCallback = std::move(callback);
+}
+
+FunctionCallback afterCallback()
+{
+    return g_afterCallback;
 }
 
 void setAfterCallback(FunctionCallback callback)
@@ -92,17 +107,26 @@ void setAfterCallback(FunctionCallback callback)
 
 void unresolved(const AbstractFunction * function)
 {
-    g_unresolvedCallback(*function);
+    if (g_unresolvedCallback)
+    {
+        g_unresolvedCallback(*function);
+    }
 }
 
 void before(const FunctionCall & call)
 {
-    g_beforeCallback(call);
+    if (g_beforeCallback)
+    {
+        g_beforeCallback(call);
+    }
 }
 
 void after(const FunctionCall & call)
 {
-    g_afterCallback(call);
+    if (g_afterCallback)
+    {
+        g_afterCallback(call);
+    }
 }
 
 

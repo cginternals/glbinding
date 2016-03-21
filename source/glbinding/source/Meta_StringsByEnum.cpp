@@ -1,6 +1,4 @@
 
-#ifdef EXTENSIVE_META
-
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/enum.h>
@@ -3465,6 +3463,3 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
 
 
 } // namespace glbinding
-
-
-#endif // EXTENSIVE_META

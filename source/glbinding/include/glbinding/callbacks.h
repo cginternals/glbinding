@@ -88,6 +88,17 @@ using FunctionCallback = std::function<void(const FunctionCall &)>;
 
 /**
  * @brief
+ *   Unresolved callback accessor.
+ *
+ * @return
+ *   The callback to use instead of unresolved function calls.
+ *
+ * Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback.
+ */
+GLBINDING_API SimpleFunctionCallback unresolvedCallback();
+
+/**
+ * @brief
  *   Updates the unresolved callback that is called upon invocation of an OpenGL function which have no counterpart in the OpenGL driver.
  *
  * @param[in] callback
@@ -100,6 +111,17 @@ GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
 
 /**
  * @brief
+ *   Before callback accessor.
+ *
+ * @return
+ *   The callback to use before an OpenGL function call.
+ *
+ * Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback.
+ */
+GLBINDING_API FunctionCallback beforeCallback();
+
+/**
+ * @brief
  *   Updates the before callback that is called before the actual OpenGL function invocation.
  *
  * @param[in] callback
@@ -109,6 +131,17 @@ GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
  * Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Before flag to enable the callback.
  */
 GLBINDING_API void setBeforeCallback(FunctionCallback callback);
+
+/**
+ * @brief
+ *   After callback accessor.
+ *
+ * @return
+ *   The callback to use after an OpenGL function call.
+ *
+ * Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback.
+ */
+GLBINDING_API FunctionCallback afterCallback();
 
 /**
  * @brief

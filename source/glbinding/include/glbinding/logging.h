@@ -16,7 +16,7 @@ namespace logging
  * @brief
  *   The type of an entry in the log buffer is a FunctionCall *.
  */
-using BufferType = FunctionCall*;
+using LogEntry = FunctionCall*;
 
 /**
  * @brief
@@ -92,7 +92,7 @@ GLBINDING_API void resume();
  *
  * This function is intended to get used by glbinding and not by a user of glbinding.
  */
-GLBINDING_API void log(BufferType call);
+GLBINDING_API void log(LogEntry call);
 
 
 } // namespace logging

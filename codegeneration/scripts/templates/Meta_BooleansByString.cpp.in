@@ -1,6 +1,4 @@
 
-#ifdef EXTENSIVE_META
-
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/boolean.h>
@@ -16,6 +14,3 @@ namespace glbinding
 
 
 } // namespace glbinding
-
-
-#endif // EXTENSIVE_META

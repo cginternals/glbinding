@@ -162,12 +162,18 @@ public:
     bool operator<=(const Version & version) const;
 
     /**
+     * @brief
+     *   Accessor for the major version.
+     *
      * @return
      *   the major version
      */
     unsigned char majorVersion() const;
 
     /**
+     * @brief
+     *   Accessor for the minor version.
+     *
      * @return
      *   the minor version
      */
@@ -201,12 +207,18 @@ public:
     std::string toString() const;
 
     /**
+     * @brief
+     *   Check for validity of this Version, based on the list of all valid OpenGL feautures.
+     *
      * @return
      *   true iff the version is valid (i.e., if this version is present in the set of valid versions).
      */
     bool isValid() const;
 
     /**
+     * @brief
+     *   Check if the Version was constructed using the default constructor.
+     *
      * @return
      *   true iff the major version is 0.
      *
@@ -215,18 +227,27 @@ public:
     bool isNull() const;
 
     /**
+     * @brief
+     *   Returns the nearest valid Version to this Version.
+     *
      * @return
      *   the nearest valid Version that is either equal or lower than this Version.
      */
     const Version & nearest() const;
 
     /**
+     * @brief
+     *   Accessor for the list of all valid Versions (OpenGL features).
+     *
      * @return
      *   the set of all valid Versions (= released OpenGL Features).
      */
     static const std::set<Version> & versions();
 
     /**
+     * @brief
+     *   Return the most current valid Version.
+     *
      * @return
      *   the most current Version from the set of all valid versions.
      */
@@ -243,6 +264,7 @@ protected:
 
 
 } // namespace glbinding
+
 
 /**
  * @brief

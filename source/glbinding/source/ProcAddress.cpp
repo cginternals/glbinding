@@ -35,17 +35,18 @@ ProcAddress getProcAddress(const char * name)
 
     using PROCADDRESS = void *;
 
-    auto library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
+    // TODO: Use a static declaration for library?
+    const auto library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
     assert(library != nullptr);
 
-    auto symbol = dlsym(library, name);
+    const auto symbol = dlsym(library, name);
 
     auto procAddress = reinterpret_cast<PROCADDRESS>(symbol);
 
 #else
 
     using PROCADDRESS = void (*)();
-    auto procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
+    const auto procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
 
 #endif
 

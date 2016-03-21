@@ -54,6 +54,19 @@ public:
      */
     FunctionCall & operator=(const FunctionCall &) = delete;
 
+
+    /**
+     * @brief
+     *   Move assignment
+     *
+     * @param[in] other
+     *   The other FunctionCall to move memory from.
+     *
+     * @return
+     *   This FunctionCall.
+     */
+    FunctionCall & operator=(FunctionCall && other);
+
     /**
      * @brief
      *   Converts this FunctionCall to a string usable to put into a log.

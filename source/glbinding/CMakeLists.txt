@@ -234,7 +234,6 @@ target_compile_definitions(${target}
     PUBLIC
     $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_upper}_STATIC_DEFINE>
     ${DEFAULT_COMPILE_DEFINITIONS}
-    $<$<BOOL:${OPTION_EXTENSIVE_META}>:EXTENSIVE_META>
 
     INTERFACE
 )

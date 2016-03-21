@@ -112,7 +112,8 @@ Version::operator std::pair<unsigned int, unsigned int>() const
 std::string Version::toString() const
 {
     std::stringstream stream;
-    if (0 == m_major && 0 == m_minor)
+
+    if (!isValid())
     {
         stream << "-.-";
     }
@@ -163,5 +164,6 @@ const std::set<Version> & Version::versions()
 std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version)
 {
     stream << version.toString();
+
     return stream;
 }

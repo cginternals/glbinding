@@ -282,11 +282,6 @@ namespace
 
 int main(int argc, const char * argv[])
 {
-    if (!Meta::extensive())
-    {
-        std::cout << "Strings by GL not supported (enable through EXTENSIVE_META)" << std::endl;
-        return 1;
-    }
 #ifndef SYSTEM_DARWIN
     if (argc == 2 && (std::string(argv[1]).compare("--help") || std::string(argv[1]).compare("-h")))
     {
