@@ -10,25 +10,25 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-{{#keys}}
+{{#extensionsByCommandsByInitial.groups}}
 {{#empty}}
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_{{key}};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_{{name}};
 {{/empty}}
 {{^empty}}
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_{{key}} =
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_{{name}} =
 {
-{{#commands}}
-    { "{{name}}", { {{#extensions}}GLextension::{{identifier}}{{^last}}, {{/last}}{{/extensions}} } }{{^last}},{{/last}}
-{{/commands}}
+{{#items}}
+    { "{{item.command}}", { {{#item.extensions.items}}GLextension::{{item.identifier}}{{^last}}, {{/last}}{{/item.extensions.items}} } }{{^last}},{{/last}}
+{{/items}}
 };
 {{/empty}}
 
-{{/keys}}
-const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, {{keyCount}}> Meta_ExtensionsByFunctionStringMaps =
+{{/extensionsByCommandsByInitial.groups}}
+const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, {{extensionsByCommandsByInitial.count}}> Meta_ExtensionsByFunctionStringMaps =
 { {
-{{#keys}}
-    Meta_ExtensionsByFunctionString_{{key}}{{^last}},{{/last}}
-{{/keys}}
+{{#extensionsByCommandsByInitial.groups}}
+    Meta_ExtensionsByFunctionString_{{name}}{{^last}},{{/last}}
+{{/extensionsByCommandsByInitial.groups}}
 } };
 
 } // namespace glbinding

@@ -8,8 +8,6 @@ namespace {{api}}{{memberSet}}
 {
 
 // import bitfields to namespace
-{{#bitfields.multipleItems}}{{! TODO-LW find out why GL_NONE_BIT may not occur alone}}{{#bitfields.items}}
-using {{api}}::{{item.identifier}};
-{{/bitfields.items}}{{/bitfields.multipleItems}}
-
+{{#bitfields.multipleItems}}{{#bitfields.items}}using {{api}}::{{item.identifier}};
+{{/bitfields.items}}{{/bitfields.multipleItems}}{{! test for multiple items to avoid using GL_NONE_BIT alone}}
 } // namespace {{api}}{{memberSet}}

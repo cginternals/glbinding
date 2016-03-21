@@ -5,16 +5,14 @@ from classes.Extension import *
 def genExtensionContexts(extensions):
     extensionContexts = []
     for extension in extensions:
-        commands = sorted(extension.reqCommands)
+        commandContexts = listContext([{"identifier": functionBID(c), "name": c.name} for c in extension.reqCommands],
+                                      sortKey = lambda c: c["identifier"])
         extensionContexts.append({"identifier": extensionBID(extension),
                                   "name": extension.name,
-                                  "incore": True if extension.incore else False,
+                                  "incore": extension.incore,
                                   "incoreMajor": extension.incore.major if extension.incore else None,
                                   "incoreMinor": extension.incore.minor if extension.incore else None,
-                                  "reqCommands": [{"identifier": functionBID(c),
-                                                   "name": c.name,
-                                                   "last": c == commands[-1]}
-                                                  for c in commands]})
+                                  "reqCommands": commandContexts})
     return extensionContexts
 
 def genExtensions(api, extensions, path):

@@ -13,9 +13,9 @@ namespace glbinding
 {{#bitfieldsByGroup.groups}}
 const std::unordered_map<{{name}}, std::string> Meta_StringsBy{{name}} =
 {
-{{#items}}{{^item.generic}}
+{{#items}}
     { {{name}}::{{item.identifier}}, "{{item.name}}" }{{^last}},{{/last}}
-{{/item.generic}}{{/items}}
+{{/items}}
 };
 
 {{/bitfieldsByGroup.groups}}

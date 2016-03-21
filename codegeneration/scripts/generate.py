@@ -191,6 +191,22 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     context["apiMemberSets"] = listContext( [{"memberSet": versionBID(feature, core, ext)}
                                              for feature, core, ext in ( [(None, False, False)] + apiMemberSetList )] )
     context["extensions"] = listContext(extensionContexts, sortKey = lambda e: e["identifier"])
+    extensionsByCommands = groupItems(extensionContexts, groupKey = lambda e: [ i["item"]["identifier"] for i in e["reqCommands"]["items"] ])
+    extensionsByCommandsContexts = [{"command": c, "extensions": listContext(extensionsByCommands[c], sortKey = lambda e: e["identifier"])} for c in extensionsByCommands.keys()]
+    context["extensionsByCommandsByInitial"] = groupedContext(extensionsByCommandsContexts,
+                                                   groupKey = lambda e: [ alphabeticalGroupKey(e["command"], "gl") ],
+                                                   groupKeyList = alphabeticalGroupKeys(),
+                                                   groupSortKey = lambda i: str(i),
+                                                   itemSortKey = lambda e: e["command"])
+    # TODO-LW: use extensions instead of extensionsIncore for Meta_ReqVersionsByExtension.cpp
+    context["extensionsIncore"] = listContext(extensionContexts,
+                                              filter = lambda e: e["incore"],
+                                              sortKey = lambda e: (e["incoreMajor"] if e["incoreMajor"] else 0, e["incoreMinor"] if e["incoreMinor"] else 0))
+    context["extensionsByInitial"] = groupedContext(extensionContexts,
+                                                   groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "GL_") ],
+                                                   groupKeyList = alphabeticalGroupKeys(),
+                                                   groupSortKey = lambda k: k,
+                                                   itemSortKey = lambda e: e["identifier"])
     context["booleans"] = listContext(booleanContexts, sortKey = lambda e: e["identifier"])
     context["valuesByType"] = groupedContext(valueContexts, groupKey = lambda e: [ e["type"] ])
     context["types"] = listContext(typeContexts)
@@ -211,7 +227,11 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
                                              groupKey = lambda e: [ i["item"] for i in e["groups"]["items"] ],
                                              primaryGroupKey = lambda e: e["primaryGroup"],
                                              groupSortKey = lambda g: g,
-                                             itemSortKey = lambda b: b["value"])
+                                             itemSortKey = lambda e: e["value"])
+    context["enumsByValue"] = groupedContext(enumContexts,
+                                             groupKey = lambda e: [ int(e["value"], 0) ],
+                                             groupSortKey = lambda g: g,
+                                             itemSortKey = lambda e: (enumSuffixPriority(e["identifier"]), e["identifier"]))
     context["enumsByInitial"] = groupedContext(enumContexts,
                                                groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "GL_") ],
                                                groupKeyList = alphabeticalGroupKeys(),
@@ -252,13 +272,12 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     Generator.generate(context, pjoin(sourcedir,  "Meta_BooleansByString.cpp"))
     Generator.generate(context, pjoin(sourcedir,  "Meta_StringsByEnum.cpp"))
     Generator.generate(context, pjoin(sourcedir,  "Meta_EnumsByString.cpp"))
+    Generator.generate(context, pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
+    Generator.generate(context, pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
+    Generator.generate(context, pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
+    Generator.generate(context, pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
+    Generator.generate(context, pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
 
-    # TODO-LW: finish rewriting the following templates to use the common context:
-    # genMetaStringsByExtension      (extensions,         pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
-    # genMetaExtensionsByString      (extensions,         pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
-    # genMetaReqVersionsByExtension  (extensions,         pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
-    # genMetaFunctionStringsByExtension(extensions,       pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
-    # genMetaExtensionsByFunctionString(extensions,       pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
     # TODO-LW once files are correctly generated, remove redundant methods in gen_xxx.py
 
     # Generate function-related files with specific contexts for each initial letter of the function name
@@ -275,10 +294,6 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
         specificContext = {"api": api,
                            "memberSet": versionBID(feature, core, ext),
                            "revision": revision}
-
-        specificContext["includeMemberSets"] = [ {"memberSet": versionBID(feature, core, ext)} ]
-        if not core and not ext:
-            specificContext["includeMemberSets"].append( {"memberSet": versionBID(feature, False, True)} )
 
         specificContext["booleans"] = listContext(booleanContexts, sortKey = lambda e: e["identifier"])
         specificContext["valuesByType"] = groupedContext(valueContexts, groupKey = lambda v: [ v["type"] ],

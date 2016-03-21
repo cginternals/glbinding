@@ -11,25 +11,25 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
-{{#keys}}
+{{#extensionsByInitial.groups}}
 {{#empty}}
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{key}};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{name}};
 {{/empty}}
 {{^empty}}
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{key}} =
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{name}} =
 {
-{{#extensions}}
-    { "{{name}}", GLextension::{{identifier}} }{{^last}},{{/last}}
-{{/extensions}}
+{{#items}}
+    { "{{item.name}}", GLextension::{{item.identifier}} }{{^last}},{{/last}}
+{{/items}}
 };
 {{/empty}}
 
-{{/keys}}
-const std::array<std::unordered_map<std::string, gl::GLextension>, {{keyCount}}> Meta_ExtensionsByStringMaps =
+{{/extensionsByInitial.groups}}
+const std::array<std::unordered_map<std::string, gl::GLextension>, {{extensionsByInitial.count}}> Meta_ExtensionsByStringMaps =
 { {
-{{#keys}}
-    Meta_ExtensionsByString_{{key}}{{^last}},{{/last}}
-{{/keys}}
+{{#extensionsByInitial.groups}}
+    Meta_ExtensionsByString_{{name}}{{^last}},{{/last}}
+{{/extensionsByInitial.groups}}
 } };
 
 } // namespace glbinding

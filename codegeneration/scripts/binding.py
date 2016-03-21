@@ -2,6 +2,8 @@
 import os, sys
 import pystache
 
+from classes.Extension import Extension
+
 execDir     = os.path.dirname(os.path.abspath(sys.argv[0])) + "/"
 templateDir = "templates/"
 templateExtension = "tpl"
@@ -33,10 +35,24 @@ def supportedLambda(obj):
     return lambda feature, core, ext: ( not ext and obj.supported(feature, core)
                                          or ext and not obj.supported(feature, False) )
 
+def enumSuffixPriority(name):
+
+    index = name.rfind("_")
+    if index < 0:
+        return -1
+
+    ext = name[index + 1:]
+
+    if ext not in Extension.suffixes:
+        return -1
+
+    return Extension.suffixes.index(ext)
+
 # TODO-LW document arguments
 # structure:
 # { "items": [ { "item": {...},
 #                "last": <bool>} ],
+#   "firstItem": {...},
 #   "count": <uint>,
 #   "empty": <bool>,
 #   "singleItem": <bool>,
@@ -49,11 +65,23 @@ def listContext(contextList, sortKey = None, filter = lambda i: True):
                          "last": item == contextList[-1]}
                         for item in contextList
                         if filter(item)]
+    context["firstItem"] = context["items"][0]["item"] if context["items"] else None
     context["count"] = len(context["items"])
     context["empty"] = len(context["items"]) == 0
     context["singleItem"] = len(context["items"]) == 1
     context["multipleItems"] = len(context["items"]) > 1
     return context
+
+def groupItems(items, groupKey, groupKeyList = [], filter = lambda i: True):
+    groupMap = {key: [] for key in groupKeyList}
+    for item in items:
+        if filter(item):
+            for gKey in groupKey(item):
+                if gKey not in groupMap:
+                    groupMap[gKey] = []
+                groupMap[gKey].append(item)
+
+    return groupMap
 
 # TODO-LW document arguments
 # structure:
@@ -63,6 +91,7 @@ def listContext(contextList, sortKey = None, filter = lambda i: True):
 #                              "hasPrimary": <bool>,
 #                              "isPrimary": <bool>,
 #                              "isSecondary": <bool> } ],
+#                 "firstItem": {...},
 #                 "count": <uint>,
 #                 "empty": <bool>,
 #                 "singleItem": <bool>,
@@ -77,14 +106,7 @@ def groupedContext(contextList, groupKey, primaryGroupKey = None,
                    groupSortKey = None, itemSortKey = None,
                    groupName = lambda gk: str(gk), filter = lambda i: True):
     context = {}
-
-    groupMap = {key: [] for key in groupKeyList}
-    for item in contextList:
-        if filter(item):
-            for gKey in groupKey(item):
-                if gKey not in groupMap:
-                    groupMap[gKey] = []
-                groupMap[gKey].append(item)
+    groupMap = groupItems(contextList, groupKey, groupKeyList, filter)
 
     groupKeys = list(groupMap.keys())
     if groupSortKey is not None:
@@ -107,6 +129,7 @@ def groupedContext(contextList, groupKey, primaryGroupKey = None,
 
         context["groups"].append({"name": groupName(key),
                                   "items": items,
+                                  "firstItem": items[0]["item"] if items else None,
                                   "count": len(items),
                                   "empty": len(items) == 0,
                                   "singleItem": len(items) == 1,

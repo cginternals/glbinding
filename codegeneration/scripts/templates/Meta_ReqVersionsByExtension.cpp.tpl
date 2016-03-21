@@ -12,9 +12,7 @@ namespace glbinding
 
 const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension =
 {
-{{#extensions}}
-    { GLextension::{{identifier}}, { {{incoreMajor}}, {{incoreMinor}} } }{{^last}},{{/last}}
-{{/extensions}}
-};
+{{#extensionsIncore.items}}{{#item.incore}}    { GLextension::{{item.identifier}}, { {{item.incoreMajor}}, {{item.incoreMinor}} } }{{^last}},{{/last}}
+{{/item.incore}}{{/extensionsIncore.items}}};
 
 } // namespace glbinding

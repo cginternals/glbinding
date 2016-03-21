@@ -11,9 +11,10 @@ namespace {{api}}{{memberSet}}
 {{#items}}
 using {{api}}::{{item.identifier}};
 {{/items}}
-{{^last}}
 
-{{/last}}
 {{/valuesByType.groups}}
+{{#valuesByType.empty}}
 
+
+{{/valuesByType.empty}}
 } // namespace {{api}}{{memberSet}}
