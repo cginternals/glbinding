@@ -7,10 +7,10 @@
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/gl/types.h>
-
 #include <glbinding/ContextHandle.h>
 #include <glbinding/Function.h>
+
+#include <glbinding/gl/types.h>
 
 
 namespace glbinding

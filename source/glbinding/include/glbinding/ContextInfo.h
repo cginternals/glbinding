@@ -1,15 +1,15 @@
 
 #pragma once
 
-#include <glbinding/glbinding_api.h>
-
 #include <set>
 #include <string>
+
+#include <glbinding/glbinding_api.h>
 
 
 namespace gl
 {
-    enum class GLextension;
+    enum class GLextension : int;
 }
 
 

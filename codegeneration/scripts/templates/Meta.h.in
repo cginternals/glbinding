@@ -1,13 +1,13 @@
 
 #pragma once
 
-#include <glbinding/glbinding_api.h>
-
 #include <string>
 #include <utility>
 #include <vector>
 #include <set>
 #include <cstdint>
+
+#include <glbinding/glbinding_api.h>
 
 #include <glbinding/gl/types.h>
 
