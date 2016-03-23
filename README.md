@@ -189,6 +189,8 @@ To use these alternative function signatures, confer to the following example:
 #include <glbinding/gl/gl.h>
 #include <glbinding/gl/functions-patches.h>
 
+using namespace gl;
+
 // ...
 glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -196,6 +198,7 @@ glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
 ```
+Beware of the namespace these additional functions are defined in. These function signatures are *only* defined in the ```gl``` namespace. If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to the other one or manually import the used alternative signatures into the other namespace (using ```using``` declarations).
 
 # MORE FROM WIKI BEGIN
 
