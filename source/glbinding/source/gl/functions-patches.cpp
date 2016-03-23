@@ -1,4 +1,8 @@
 
+#include <glbinding/gl/functions-patches.h>
+
+#include <vector>
+
 #include <glbinding/gl/functions.h>
 
 
@@ -638,12 +642,28 @@ void glProgramUniform1bEXT(GLuint program, GLint location, GLboolean v0)
 
 void glProgramUniform1bv(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 1 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform1iv(program, location, count, data.data());
 }
 
 void glProgramUniform1bvEXT(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 1 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform1ivEXT(program, location, count, data.data());
 }
 
 void glProgramUniform2b(GLuint program, GLint location, GLboolean v0, GLboolean v1)
@@ -658,12 +678,28 @@ void glProgramUniform2bEXT(GLuint program, GLint location, GLboolean v0, GLboole
 
 void glProgramUniform2bv(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 2 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform2iv(program, location, count, data.data());
 }
 
 void glProgramUniform2bvEXT(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 2 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform2ivEXT(program, location, count, data.data());
 }
 
 void glProgramUniform3b(GLuint program, GLint location, GLboolean v0, GLboolean v1, GLboolean v2)
@@ -678,12 +714,28 @@ void glProgramUniform3bEXT(GLuint program, GLint location, GLboolean v0, GLboole
 
 void glProgramUniform3bv(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 3 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform3iv(program, location, count, data.data());
 }
 
 void glProgramUniform3bvEXT(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 3 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform3ivEXT(program, location, count, data.data());
 }
 
 void glProgramUniform4b(GLuint program, GLint location, GLboolean v0, GLboolean v1, GLboolean v2, GLboolean v3)
@@ -698,12 +750,28 @@ void glProgramUniform4bEXT(GLuint program, GLint location, GLboolean v0, GLboole
 
 void glProgramUniform4bv(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 4 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform4iv(program, location, count, data.data());
 }
 
 void glProgramUniform4bvEXT(GLuint program, GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 4 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glProgramUniform4ivEXT(program, location, count, data.data());
 }
 
 void glProgramUniform1e(GLuint program, GLint location, GLenum v0)
@@ -989,12 +1057,28 @@ void glUniform1bARB(GLint location, GLboolean v0)
 
 void glUniform1bv(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 1 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform1iv(location, count, data.data());
 }
 
 void glUniform1bvARB(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 1 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform1ivARB(location, count, data.data());
 }
 
 void glUniform2b(GLint location, GLboolean v0, GLboolean v1)
@@ -1009,12 +1093,28 @@ void glUniform2bARB(GLint location, GLboolean v0, GLboolean v1)
 
 void glUniform2bv(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 2 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform2iv(location, count, data.data());
 }
 
 void glUniform2bvARB(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 2 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform2ivARB(location, count, data.data());
 }
 
 void glUniform3b(GLint location, GLboolean v0, GLboolean v1, GLboolean v2)
@@ -1029,12 +1129,28 @@ void glUniform3bARB(GLint location, GLboolean v0, GLboolean v1, GLboolean v2)
 
 void glUniform3bv(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 3 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform3iv(location, count, data.data());
 }
 
 void glUniform3bvARB(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 3 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform3ivARB(location, count, data.data());
 }
 
 void glUniform4b(GLint location, GLboolean v0, GLboolean v1, GLboolean v2, GLboolean v3)
@@ -1049,12 +1165,28 @@ void glUniform4bARB(GLint location, GLboolean v0, GLboolean v1, GLboolean v2, GL
 
 void glUniform4bv(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 4 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform4iv(location, count, data.data());
 }
 
 void glUniform4bvARB(GLint location, GLsizei count, const GLboolean * value)
 {
+    const auto size = 4 * count;
+    std::vector<GLint> data(size);
 
+    for (auto i = 0; i < size; ++i)
+    {
+        data[i] = static_cast<GLint>(value[i]);
+    }
+
+    glUniform4ivARB(location, count, data.data());
 }
 
 void glUniform1e(GLint location, GLenum v0)

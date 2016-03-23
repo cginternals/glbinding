@@ -44,7 +44,7 @@ bool isCore(const Version & version)
 
     glGetIntegerv(GL_CONTEXT_PROFILE_MASK, &value);
 
-    return (value & static_cast<unsigned>(GL_CONTEXT_CORE_PROFILE_BIT)) > 0;
+    return (value & static_cast<unsigned int>(GL_CONTEXT_CORE_PROFILE_BIT)) > 0;
 }
 
 Version printVersionOfContextRequest(
