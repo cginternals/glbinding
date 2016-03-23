@@ -3,8 +3,6 @@
 
 #include <glbinding/SharedBitfield.h>
 
-#include <glbinding/gl/types.h>
-
 
 namespace glbinding 
 {

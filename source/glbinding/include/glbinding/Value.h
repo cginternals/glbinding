@@ -6,6 +6,7 @@
 #include <glbinding/glbinding_api.h>
 
 #include <glbinding/AbstractValue.h>
+
 #include <glbinding/gl/types.h>
 
 

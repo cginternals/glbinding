@@ -2,12 +2,13 @@
 #pragma once
 
 #include <glbinding/Function.h>
-#include <glbinding/logging.h>
-#include <glbinding/Value.h>
 
 #include <utility>
 #include <functional>
 #include <memory>
+
+#include <glbinding/logging.h>
+#include <glbinding/Value.h>
 
 
 namespace
