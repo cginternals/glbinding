@@ -113,7 +113,7 @@ Please download the source code and commence [building from source](#build-instr
 
 ## Build from Source
 
-###### Prerequisites and Dependencies
+##### Prerequisites and Dependencies
 
 * [CMake](https://cmake.org/) 3.0 or higher for building glbinding from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
@@ -125,7 +125,7 @@ Please download the source code and commence [building from source](#build-instr
 * [Doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8 or higher for generating the documentation on your system
   * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
 
-###### Compile Instructions
+##### Compile Instructions
 
 First, download the source code [as archive](https://github.com/cginternals/glbinding/releases) or via git:
 ```
