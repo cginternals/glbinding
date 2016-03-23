@@ -5,7 +5,7 @@
 The state-of-the-art way for low-level OpenGL programming;
 *glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the OpenGL API, professionally maintained by [CG Internals](http://www.cginternals.com).
 
-See what's new in [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0).
+See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
 all OpenGL symbols are real functions and variables. 
@@ -37,10 +37,10 @@ int main()
 ## Resources
 
 * [Professional Support and Services](https://www.cginternals.com) by CG Internals
-* [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
-* [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
+* [Tools](https://github.com/cginternals/glbinding/wiki/tools)
+* [Examples](https://github.com/cginternals/glbinding/wiki/examples)
 * [Project Health](#project-health)
-* [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
+* [Context Creation Cheat Sheet](https://github.com/cginternals/glbinding/wiki/Context-Creation-Cheat-Sheet)
 
 ###### Installation and Development
 * [Install Instructions](#install-instructions)
@@ -580,7 +580,7 @@ if (Meta::stringsByGL())
 
 ##### Performance
 
-*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/hpicgs/glbinding/wiki/examples) wiki.
+*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/cginternals/glbinding/wiki/examples) wiki.
 
 
 ##### Binding Generation
