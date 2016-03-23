@@ -127,7 +127,8 @@ The only mandatory run-time dependencies of glbinding are the STL of the used co
 
 * [CMake](https://cmake.org/) 3.0 or higher for building glbinding from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
-* [Python](https://www.python.org/) 2.7, 3.0 or higher and [SVN](https://subversion.apache.org/) for updating the ```gl.xml``` or re-generating the binding
+* [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
+  * [SVN](https://subversion.apache.org/) for updating the ```gl.xml```
 * [GLFW](http://www.glfw.org/) 3.0 or higher for examples and tools
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples
