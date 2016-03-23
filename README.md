@@ -45,7 +45,7 @@ int main()
 
 ###### Installation and Development
 * [Install Instructions](#install-instructions)
-* [Build form Source](#build-instructions)
+* [Build form Source](#build-from-source)
   * [Prerequisites and Dependencies](#prerequisites-and-dependencies)
   * [Compile Instructions](#compile-instructions)
 * [Tips for Linking glbinding](#tips-for-linking)
@@ -57,7 +57,7 @@ int main()
 * [Multi-context Support](#multi-context-support)
 * [Multi-thread Support](#multi-threading-support)
 * [Global and Local Function Callbacks](#function-callbacks) 
-* [Meta Information System](#meta-information) (runtime)
+* [Meta Information System](#meta-information)
 * [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
 
 
@@ -78,7 +78,7 @@ Please note that our OS X build node (physical) is currently broken. However, *g
 
 
 
-#### Install Instructions
+## Install Instructions
 
 *glbinding* is available for different platforms using different distribution channels. 
 You can either download the source and manually [compile](#build-instructions) it or use one of the [pre-compiled releases](https://github.com/cginternals/glbinding/releases) of this repository.
@@ -94,23 +94,54 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ###### Ubuntu
 
-There is currently no precompiled package maintained. 
-Please download the source code and commence [building from source](#build-instructions).
+ToDo: apt-get
+Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Arch Linux
 
-There is currently no precompiled package maintained. 
-Please download the source code and commence [building from source](#build-instructions).
+ToDo: apt-get
+Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### OS X
 
-There is currently no precompiled package maintained. 
-Please download the source code and commence [building from source](#build-instructions).
+ToDo: homebrew
+Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Debian-based Systems
 
 There is currently no precompiled package maintained. 
 Please download the source code and commence [building from source](#build-instructions).
+
+
+## Build from Source
+
+###### Prerequisites and Dependencies
+
+For building glbinding:
+* [CMake]((https://cmake.org/) 3.0 or higher for building glbinding from source 
+* [git](https://git-scm.com/) for version control and script supporting tasks
+* [Python](https://www.python.org/) 2.7, 3.0, or higher   for updating the ```gl.xml``` or re-generating the binding
+* [GLFW](http://www.glfw.org/) 3.0 or higher for examples and tools
+* [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
+* [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example
+* [Doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8 or higher for generating the documentation on your system
+  * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
+
+###### Compile Instructions
+
+First, download the source code [as archive](https://github.com/cginternals/glbinding/releases) or via git:
+```
+git clone https://github.com/cginternals/glbinding.git
+cd glbinding
+```
+Then, depending on the version of glbinding you want to build, choose the appropriate tag or branch, e.g., for the 2.0.0 release:
+```
+git fetch --tags
+git checkout v2.0.0
+```
+
+... ToDo.
+
 
 
 #### Type-Safe Parameters
