@@ -37,9 +37,14 @@ int main()
 
 #### Find out More
 
- * Documentation and Code Snippets
-  * [Build Instructions](#build-instructions)
-  * [Dependencies](#dependencies)
+* Documentation and Code Snippets
+  * [Install Instructions](#install-instructions)
+  * [Build form Source](#build-instructions)
+    * [Prerequisites and Dependencies](#prerequisites-and-dependencies)
+    * [Compile Instructions](#compile-instructions)
+  * [Tips for Linking glbinding](#tips-for-linking)
+
+* Feature Documentation and Code Snippets
   * [Type-safe Parameters](#type-safe-parameters)
   * [Per Feature API Header](#per-feature-api-header)
   * [Lazy Function Resolution](#lazy-function-pointer-resolution)
@@ -55,25 +60,46 @@ int main()
   * [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
   * [Project Health](#project-health)
 
-* [Professional Support and Services](http://www.cginternals.com)
+* [Professional Support and Services](https://www.cginternals.com) by CG Internals
 
 
-## Project Health:
 
-| Service | System | Compiler | Status |
-| ------- | ------ | -------- | -----: |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=glbinding-2.0-release)](https://travis-ci.org/cginternals/glbinding) |
-| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu | GCC 4.8 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
-| Jenkins <br><br><br><br> | Ubuntu 14.04 <br><br><br><br> | GCC 4.8 <br> GCC 4.9 <br> GCC 5.3 <br> Clang 3.5 <br> | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5.3)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc5.3) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) <br> |
-| Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
-| Jenkins | OS X 10.10 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
+#### Install Instructions
 
-Please note that our OS X build node (physical) is currently broken. However, *glbinding* is maintained for OS X as well and there are many people using it in OS X on a regular basis.
+*glbinding* is available for different platforms using different distribution channels. 
+You can either download the source and manually [compile](#build-instructions) it or use one of the [pre-compiled releases](https://github.com/cginternals/glbinding/releases) of this repository.
+For systems providing package managers, we generally strive for precompiled packages.
+
+###### Windows
+
+The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-runtime.zip),
+[examples](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-examples.zip),
+[dev](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-dev.zip), and
+[tools](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-tools.zip).
+Alternatively, download the source code and commence [building from source](#build-instructions).
+
+###### Ubuntu
+
+There is currently no precompiled package maintained. 
+Please download the source code and commence [building from source](#build-instructions).
+
+###### Arch Linux
+
+There is currently no precompiled package maintained. 
+Please download the source code and commence [building from source](#build-instructions).
+
+###### OS X
+
+There is currently no precompiled package maintained. 
+Please download the source code and commence [building from source](#build-instructions).
+
+###### Debian-based Systems
+
+There is currently no precompiled package maintained. 
+Please download the source code and commence [building from source](#build-instructions).
 
 
-## Features
-
-##### Type-Safe Parameters
+#### Type-Safe Parameters
 
 Every parameter of an OpenGL function expects a specific data type and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
 
@@ -95,7 +121,8 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
 
 The groups for enums are not yet as complete as we would like them to be to enable per function compile-time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
 
-##### Per Feature API Header
+
+#### Per Feature API Header
 
 Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  feature-based API subsets, each using a specialized namespace, e.g.:
 
@@ -106,6 +133,27 @@ Enums, bitfields, and functions can be included as usual in a combined ```gl.h``
 Depending on the intended use-case, this allows to limit coding to a specific OpenGL feature and reduces switching to other features to a replacement of includes and using directives. In both cases, non-featured symbols do not compile.
 
 Furthermore, *glbinding* provides explicit, non-feature dependent headers for special values (```values.h```), booleans (```boolean.h```), and basic types (```types.h```). This allows for refined includes and can reduce compile time.
+
+
+
+
+
+
+
+## Project Health
+
+| Service | System | Compiler | Status |
+| ------- | ------ | -------- | -----: |
+|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=glbinding-2.0-release)](https://travis-ci.org/cginternals/glbinding) |
+| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu | GCC 4.8 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
+| Jenkins <br><br><br><br> | Ubuntu 14.04 <br><br><br><br> | GCC 4.8 <br> GCC 4.9 <br> GCC 5.3 <br> Clang 3.5 <br> | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5.3)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc5.3) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) <br> |
+| Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
+| Jenkins | OS X 10.10 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
+
+Please note that our OS X build node (physical) is currently broken. However, *glbinding* is maintained for OS X as well and there are many people using it in OS X on a regular basis.
+
+
+
 
 
 ##### Lazy Function Pointer Resolution
