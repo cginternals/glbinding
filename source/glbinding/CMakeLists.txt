@@ -105,6 +105,7 @@ set(sources
     ${source_path}/logging.cpp
 
     ${source_path}/gl/types.cpp
+    ${source_path}/gl/functions-patches.cpp
 
     ${source_path}/Binding_pch.h
 )
