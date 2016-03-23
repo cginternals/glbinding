@@ -35,7 +35,7 @@ int main()
 }
 ```
 
-#### Find out More
+## Resources
 
 * Documentation and Code Snippets
   * [Install Instructions](#install-instructions)
@@ -54,14 +54,11 @@ int main()
   * [Meta Information System](#meta-information) (runtime)
   * [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
 
-* Support and Resources
-  * [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
-  * [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
-  * [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
-  * [Project Health](#project-health)
-
+* [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
+* [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
+* [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
+* [Project Health](#project-health)
 * [Professional Support and Services](https://www.cginternals.com) by CG Internals
-
 
 
 #### Install Instructions
