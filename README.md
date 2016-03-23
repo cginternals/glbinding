@@ -3,19 +3,18 @@
 ![glbinding](glbinding-logo.png)
 
 The state-of-the-art way for low-level OpenGL programming;
-*glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the OpenGL API professionally maintained by [CG Internals](http://www.cginternals.com).
+*glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the OpenGL API, professionally maintained by [CG Internals](http://www.cginternals.com).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
-All OpenGL symbols are real functions and variables. 
+all OpenGL symbols are real functions and variables. 
 It provides type-safe parameters, per feature API header, lazy function resolution, multi-context and multi-thread support, 
-global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects. 
+global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
 *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
 
 See what's new in [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0).
 
-Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding*.
-Just replace all includes to the old binding and use the appropriate API namespace, e.g., ```gl```: 
+Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding*: just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl```.
 
 ```cpp
 #include <glbinding/gl/gl.h>
