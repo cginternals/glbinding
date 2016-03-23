@@ -8,7 +8,7 @@ compiler:
   - clang
 
 before_install:
-  - sudo apt-add-repository ppa:cginternals/backports-ppa
+  - sudo apt-add-repository ppa:cginternals/backports-ppa -qq -y
   - sudo apt-get update -qq
   - sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev
 
