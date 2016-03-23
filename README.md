@@ -181,6 +181,21 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
 
 The groups for enums are not yet as complete as we would like them to be to enable per function compile-time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
 
+#### Alternative Signatures
+
+The OpenGL API is designed without function overloading using only simple parameter types. This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum``` and ```GLbitfield``` types. Using the type-save function from glbinding, some typically compiling code constructs are now broken. For most of those cases we provide alternative *overloaded* function signatures. Additionally, we also fix signatures that are semantically broken in the ```gl.xml``` without noticing when using the type similarity of the integer types.
+To use these alternative function signatures, confer to the following example:
+```cpp
+#include <glbinding/gl/gl.h>
+#include <glbinding/gl/functions-patches.h>
+
+// ...
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
+```
 
 # MORE FROM WIKI BEGIN
 
