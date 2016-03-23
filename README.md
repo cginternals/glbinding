@@ -37,22 +37,22 @@ int main()
 
 ## Resources
 
-* Documentation and Code Snippets
-  * [Install Instructions](#install-instructions)
-  * [Build form Source](#build-instructions)
-    * [Prerequisites and Dependencies](#prerequisites-and-dependencies)
-    * [Compile Instructions](#compile-instructions)
-  * [Tips for Linking glbinding](#tips-for-linking)
+Installation and Development:
+* [Install Instructions](#install-instructions)
+* [Build form Source](#build-instructions)
+  * [Prerequisites and Dependencies](#prerequisites-and-dependencies)
+  * [Compile Instructions](#compile-instructions)
+* [Tips for Linking glbinding](#tips-for-linking)
 
-* Feature Documentation and Code Snippets
-  * [Type-safe Parameters](#type-safe-parameters)
-  * [Per Feature API Header](#per-feature-api-header)
-  * [Lazy Function Resolution](#lazy-function-pointer-resolution)
-  * [Multi-context Support](#multi-context-support)
-  * [Multi-thread Support](#multi-threading-support)
-  * [Global and Local Function Callbacks](#function-callbacks) 
-  * [Meta Information System](#meta-information) (runtime)
-  * [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
+Feature Documentation and Code Snippets:
+* [Type-safe Parameters](#type-safe-parameters)
+* [Per Feature API Header](#per-feature-api-header)
+* [Lazy Function Resolution](#lazy-function-pointer-resolution)
+* [Multi-context Support](#multi-context-support)
+* [Multi-thread Support](#multi-threading-support)
+* [Global and Local Function Callbacks](#function-callbacks) 
+* [Meta Information System](#meta-information) (runtime)
+* [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
 
 * [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
 * [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
