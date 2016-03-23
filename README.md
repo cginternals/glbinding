@@ -347,4 +347,4 @@ Optional dependencies
 For building *glbinding* CMake 3.2 or newer and a C++11 compliant compiler (e.g. GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**) are required.
 
 When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES``` (disabled by default) can be used to enable examples.
-The tools of glbinding are build automatically if GLFW is found. Furthermore, ```OPTION_EXTENSIVE_META``` (enabled by default) allow string-to-symbol and symbol-to-string conversion (in ```glbinding::Meta```). Disable ```OPTION_EXTENSIVE_META``` to decrease build time and binary size.
+The tools of glbinding are build automatically if GLFW is found.
