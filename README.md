@@ -37,23 +37,25 @@ int main()
 
 #### Find out More
 
-* [Type-safe Parameters](#type-safe-parameters)
-* [Per Feature API Header](#per-feature-api-header)
-* [Lazy Function Resolution](#lazy-function-pointer-resolution)
-* [Multi-context Support](#multi-context-support)
-* [Multi-thread Support](#multi-threading-support)
-* [Global and Local Function Callbacks](#function-callbacks) 
-* [Meta Information System](#meta-information) (runtime)
+ * Documentation and Code Snippets
+  * [Build Instructions](#build-instructions)
+  * [Dependencies](#dependencies)
+  * [Type-safe Parameters](#type-safe-parameters)
+  * [Per Feature API Header](#per-feature-api-header)
+  * [Lazy Function Resolution](#lazy-function-pointer-resolution)
+  * [Multi-context Support](#multi-context-support)
+  * [Multi-thread Support](#multi-threading-support)
+  * [Global and Local Function Callbacks](#function-callbacks) 
+  * [Meta Information System](#meta-information) (runtime)
+  * [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
 
-* [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
-* [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
+* Support and Resources
+  * [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
+  * [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
+  * [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
+  * [Project Health](#project-health)
+
 * [Professional Support and Services](http://www.cginternals.com)
-
-* [Build Instructions](#build-instructions)
-* [Dependencies](#dependencies)
-* [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
-* [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
-* [Project Health](#project-health)
 
 
 ## Project Health:
