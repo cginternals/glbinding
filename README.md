@@ -234,6 +234,77 @@ Binding::addContextSwitchCallback([](ContextHandle handle) {
 });
 ```
 
+**MORE FROM WIKI**
+
+To support orthogonal features of an API, glbinding allows to attach a number of callbacks to each function of the OpenGL API. Such orthogonal features include runtime error checking (e.g., glGetError after each function call), logging, caching of driver information, general function call interception (e.g., wait until the next call is requested).
+
+To support each of the above tasks (and even more), glbinding supports the following types of callbacks: context switch callbacks, unresolved functions callbacks, before function call callbacks, after function call callbacks. The latter two are again separated into global and local callbacks (i.e., one callback for each function or per-function callbacks).
+
+### Context Switch Callback (Global)
+
+To use the global context switch callback, you just have to register one using the code below.
+```cpp
+#include <glbinding/callbacks.h>
+#include <glbinding/Binding.h>
+#include <glbinding/ContextHandle.h>
+using namespace glbinding;
+
+// register global callbacks
+Binding::addContextSwitchCallback([](ContextHandle handle){
+    std::cout << "Activating context " << handle << std::endl;
+});
+```
+
+### Unresolved Function Callback (Global)
+
+To detect unresolved functions, you can register a callback that is called each time an unresolved OpenGL function is about to get called. With such a callback you can quickly detect unsupported features of your OpenGL driver without introducing much error checking code.
+```cpp
+#include <glbinding/callbacks.h>
+#include <glbinding/AbstractFunction.h>
+
+using namespace glbinding;
+
+// setup error checking after each OpenGL API call callback mask
+setUnresolvedCallback([](const AbstractFunction & function) {
+    std::cout << "Function " << function.name() << " couldn't get resolved" << std::endl;
+});
+```
+
+### Before Function Call Callback (Global)
+
+The global before function callback can be used to indicate the upcoming OpenGL function call. In case some drivers don't handle all wrong usages of the OpenGL API correctly and sometimes fail and crash, this callback can give you a direct hint about the OpenGL call that causes the crash. With correct configuration you have even access to all parameters of the call (see below):
+```cpp
+
+```
+
+### After Function Call Callback (Global)
+
+### Before Function Call Callback (Local)
+
+### After Function Call Callback (Local)
+
+### Activate Function-Call Related Callbacks
+
+For fine control about activated and de-activated callbacks, each OpenGL API function in glbinding saves the status for before and after callbacks for itself. This allows for invidivual callback registration and evaluation.
+
+```cpp
+#include <glbinding/callbacks.h>
+#include <glbinding/Binding.h>
+using namespace glbinding;
+
+// setup error checking after each OpenGL API call callback mask
+setCallbackMaskExcept(CallbackMask::After, { "glGetError" });
+
+// setup logging callback mask
+setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+```
+
+
+
+
+
+
+
 ##### Meta Information
 
 Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and run time information about the gl.xml and your OpenGL driver.
