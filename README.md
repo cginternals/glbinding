@@ -589,11 +589,11 @@ if (Meta::stringsByGL())
 
 ##### Performance
 
-*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with glew. Various results are provided in the [Examples](https://github.com/cginternals/glbinding/wiki/examples) wiki.
+*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with GLEW. Various results are provided in the [Examples](https://github.com/cginternals/glbinding/wiki/examples) wiki. Even when there are differences keep in mind that this example measures the pure CPU time of a function call which, most of the time, is the time required to insert the OpenGL command into the queue. The actual execution time of OpenGL commands is usually driver and GPU bound.
 
 
 ##### Binding Generation
 
 As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
 The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
-For ease-of-use, the update and generation can be triggered using the generated targets from cmake named *update* and *generate*.
+For ease-of-use, the update and generation can be triggered using the generated targets from cmake named ```update``` and ```generate```.
