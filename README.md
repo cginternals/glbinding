@@ -54,7 +54,7 @@ int main()
 | Jenkins | Windows 10 | MSVC 2015 Update 1 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) |
 | Jenkins | OS X 10.10 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
 
-Please note that the OS X build node is currently broken. However, *glbinding* is maintained for OS X as well and there are many people using it on a regular basis in OS X.
+Please note that our OS X build node (physical) is currently broken. However, *glbinding* is maintained for OS X as well and there are many people using it on a regular basis in OS X.
 
 
 ## Features
