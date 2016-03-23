@@ -1,20 +1,15 @@
 
 #pragma once
 
-#include <glbinding/glbinding_api.h>
-
 #include <string>
 #include <set>
 #include <vector>
 
+#include <glbinding/glbinding_api.h>
+
 #include <glbinding/ProcAddress.h>
-#include <glbinding/callbacks.h>
-
-
-namespace gl
-{
-    enum class GLextension : int;
-}
+#include <glbinding/FunctionCall.h>
+#include <glbinding/CallbackMask.h>
 
 
 namespace glbinding 

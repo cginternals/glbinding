@@ -1,11 +1,11 @@
 
 #pragma once
 
-#include <glbinding/glbinding_api.h>
-
 #include <vector>
 #include <string>
 #include <chrono>
+
+#include <glbinding/glbinding_api.h>
 
 
 namespace glbinding
