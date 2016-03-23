@@ -7,10 +7,15 @@
 namespace gl
 {
 
-
-enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
+/**
+ * @brief
+ *   An extension enum to enumerate all extensions known to the gl.xml.
+ *
+ * GLextension is not a type introduced by OpenGL API so far.
+ */
+enum class GLextension : int
 {
-    UNKNOWN = -1,
+    UNKNOWN = -1, ///< The value for an unknown extension.
     GL_3DFX_multisample,
     GL_3DFX_tbuffer,
     GL_3DFX_texture_compression_FXT1,
