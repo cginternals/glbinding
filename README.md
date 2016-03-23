@@ -115,6 +115,8 @@ Please download the source code and commence [building from source](#build-instr
 
 ##### Prerequisites and Dependencies
 
+The only mandatory run-time dependencies of glbinding are the STL of the used compiler and an OpenGL library, dynamically linked with your application.
+
 * [CMake](https://cmake.org/) 3.0 or higher for building glbinding from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [Python](https://www.python.org/) 2.7, 3.0, or higher   for updating the ```gl.xml``` or re-generating the binding
@@ -126,6 +128,8 @@ Please download the source code and commence [building from source](#build-instr
   * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
 
 ##### Compile Instructions
+
+For compilation a C++11 compliant compiler, e.g., GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**, is required.
 
 First, download the source code [as archive](https://github.com/cginternals/glbinding/releases) or via git:
 ```
@@ -591,24 +595,3 @@ For ease-of-use, the update and generation can be triggered using the generated 
 
 When requesting an OpenGL context of a specific version, the created context does not always match that version, but instead returns a context with "appropriate" capabilities. The mapping of requested and created version depends on various aspects, e.g., forward compatibility and core flags, context creation library, driver, graphics card, and operating system. To get some understanding of that mapping a [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet) is provided, gathering the ouput of glbindings contexts example.
 
-
-## Using glbinding
-
-
-
-
-##### Dependencies
-
-The only run-time dependencies of glbinding are the STL of the used compiler and an OpenGL library, dynamically linked with your application.
-
-Optional dependencies
-
-* Python 2 or 3 to generate the binding
-* Qt for some examples
-* GLFW 3 for some examples
-* GLEW for some examples
-
-For building *glbinding* CMake 3.2 or newer and a C++11 compliant compiler (e.g. GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**) are required.
-
-When configuring *glbinding*, the options ```OPTION_BUILD_EXAMPLES``` (disabled by default) can be used to enable examples.
-The tools of glbinding are build automatically if GLFW is found.
