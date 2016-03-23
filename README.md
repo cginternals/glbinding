@@ -69,14 +69,14 @@ int main()
 | Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
 | Jenkins | OS X 10.10 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
 
-Please note that our OS X build node (physical) is currently broken. However, *glbinding* is maintained for OS X as well and there are many people using it in OS X on a regular basis.
+Please note that our OS X build node is currently broken (physically). However, *glbinding* is maintained for OS X as well and there are many people using it on OS X on a regular basis.
 
 
 ## Install Instructions
 
 *glbinding* is available for different platforms using different distribution channels. 
 You can either download the source and manually [compile](#build-instructions) it or use one of the [pre-compiled releases](https://github.com/cginternals/glbinding/releases) of this repository.
-For systems providing package managers, we generally strive for precompiled packages.
+For systems providing package managers, we generally strive for packages in these package managers.
 
 ###### Windows
 
@@ -89,23 +89,25 @@ Alternatively, download the source code and commence [building from source](#bui
 ###### Ubuntu
 
 *glbinding* is provided on Ubuntu using PPAs.
-For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa). For Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
-Using the current PPA as example, the following lines should install *glbinding* including the GLFW examples:
-```bash
+For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa)f for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
+Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
+```shell
 > sudo apt-add repository ppa:cginternals/ppa
+> sudo apt-get update
 > sudo apt-get install libglbinding-examples-glfw
 > # start example
 > /usr/share/glbinding/cubescape
 ```
 To use glbinding as dependency, install the development package:
-```bash
+```shell
 > sudo apt-get install libglbinding-dev libglbinding-dbg
 ```
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Arch Linux
 
-ToDo: apt-get
+On Arch, *glbinding* is currently provided using AUR in the package [glbinding-git](https://aur.archlinux.org/packages/glbinding-git/) that is currently not maintained by us. For build instructions, follow the [ARCH wiki](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages).
+
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### OS X
