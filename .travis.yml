@@ -1,10 +1,7 @@
 language: cpp
 
-matrix:
-  include:
-  # Explicit routing to GCE Trusty
-  - sudo: required
-    dist: trusty
+sudo: required
+dist: trusty
 
 compiler:
   - gcc
