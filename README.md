@@ -54,6 +54,35 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
 
 The groups for enums are not yet as complete as we would like them to be to enable per function compile-time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
 
+# MORE FROM WIKI BEGIN
+
+The original OpenGL API provides several concepts in their interface, namely functions, boolean values, bitfield values, named values and special values and basic types values but mostly don't differentiate in them.
+
+So comes one must actually know each function of the OpenGL API to know what parameters and their ranges can be passed. There is no way for a basic code assistance. As glbinding differs between all types of values, IDEs can hint the programmer most wrong usages of the OpenGL API with a compilation error.
+
+One example is the passing of a named constant in places where bit combination is expected:
+```cpp
+glClear(GL_COLOR_BUFFER_BIT); // valid
+glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
+```
+In the case of bitfield values, the OpenGL API offers groups and each parameter states the group valid values must come from. This means that glbinding can actually assist with valid and invalid bit combinations:
+```cpp
+glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
+glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
+
+glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or operation is valid, 
+                                                    //  the shared group is AttribMask, but the
+                                                    //  resulting group does not match the expected.
+```
+Unfortunately, such groups are incomplete and unmaintained for the named values. Thus, glbinding couldn't provide any assistance for the following case:
+```cpp
+GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER); // All good
+GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error but a runtime error!
+```
+
+# MORE FROM WIKI END
+
+
 ##### Per Feature API Header
 
 Enums, bitfields, and functions can be included as usual in a combined ```gl.h``` header or individually via ```bitfield.h```, ```enum.h```, and ```functions.h``` respectively. Additionally, these headers are available for  feature-based API subsets, each using a specialized namespace, e.g.:
