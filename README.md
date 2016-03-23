@@ -92,14 +92,14 @@ Alternatively, download the source code and commence [building from source](#bui
 For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa). For Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
 Using the current PPA as example, the following lines should install *glbinding* including the GLFW examples:
 ```bash
-sudo apt-add repository ppa:cginternals/ppa
-sudo apt-get install libglbinding-examples-glfw
-# start example
-/usr/share/glbinding/cubescape
+> sudo apt-add repository ppa:cginternals/ppa
+> sudo apt-get install libglbinding-examples-glfw
+> # start example
+> /usr/share/glbinding/cubescape
 ```
 To use glbinding as dependency, install the development package:
 ```bash
-sudo apt-get install libglbinding-dev libglbinding-dbg
+> sudo apt-get install libglbinding-dev libglbinding-dbg
 ```
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
