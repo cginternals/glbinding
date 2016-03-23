@@ -112,13 +112,17 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ###### OS X
 
-ToDo: homebrew
+The package manager on OS X we depend on is homebrew. The package there is called [glbinding](http://brewformulas.org/Glbinding).
+To install *glbinding* using homebrew, execute the following line:
+```shell
+> brew install glbinding
+```
+
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Debian-based Systems
 
-There is currently no precompiled package maintained. 
-Please download the source code and commence [building from source](#build-instructions).
+There is currently no precompiled package maintained. Please download the source code and commence [building from source](#build-instructions).
 
 
 ## Build from Source
