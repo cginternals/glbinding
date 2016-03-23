@@ -17,10 +17,10 @@ It provides
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
 *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
 
-See what's new in [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0).
+See what's new in [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0) ([documentation](http://cginternals.github.io/glbinding/documentation/)).
 
 Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding*.
-Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
+Just replace all includes to the old binding and use the appropriate API namespace, e.g., ```gl```: 
 
 ```cpp
 #include <glbinding/gl/gl.h>
@@ -40,7 +40,22 @@ int main()
 }
 ```
 
-*glbinding* uses [Doxygen](http://www.stack.nl/~dimitri/doxygen/) for [documentation](http://cginternals.github.io/glbinding/documentation/).
+##### Project Health (master)
+
+| Service | System | Compiler | Status |
+| ------- | ------ | -------- | -----: |
+|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=glbinding-2.0-release)](https://travis-ci.org/cginternals/glbinding) |
+| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu | GCC 4.8 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
+| Jenkins | Ubuntu 14.04 | GCC 4.8 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
+| Jenkins | Ubuntu 14.04 | GCC 4.9 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
+| Jenkins | Ubuntu 14.04 | GCC 5.3 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5.3)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc5.3)|
+| Jenkins | Ubuntu 14.04 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
+| Jenkins | Windows 10 | MSVC 2013 Update 5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
+| Jenkins | Windows 10 | MSVC 2015 Update 1 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) |
+| Jenkins | OS X 10.10 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
+
+Please note that the OS X build node is currently broken. However, *glbinding* is maintained for OS X as well and there are many people using it on a regular basis in OS X.
+
 
 ## Features
 
@@ -328,19 +343,6 @@ When requesting an OpenGL context of a specific version, the created context doe
 ## Using glbinding
 
 
-##### Project Health (master)
-
-| Service | System | Compiler | Targets | Status |
-| ------- | ------ | -------- | ------- | ------ |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | all, test | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=glbinding-2.0-release)](https://travis-ci.org/cginternals/glbinding) |
-| Jenkins | Ubuntu 14.04 | GCC 4.8 | all, test | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8)|
-| Jenkins | Ubuntu 14.04 | GCC 4.9 | all, test | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9)|
-| Jenkins | Ubuntu 14.04 | GCC 5.3 | all, test | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5.3)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc5.3)|
-| Jenkins | Ubuntu 14.04 | Clang 3.5 | all, test | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) |
-| Jenkins | OS X 10.10 | Clang 3.5 | - | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
-| Jenkins | Windows 10 | MSVC 2013 Update 5 | all, test, install | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) |
-| Jenkins | Windows 10 | MSVC 2015 Update 1 | all, test, install | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) |
-| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu | GCC 4.8 | all| [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
 
 
 ##### Dependencies
