@@ -46,8 +46,6 @@ int main()
 ###### Installation and Development
 * [Install Instructions](#install-instructions)
 * [Build form Source](#build-from-source)
-  * [Prerequisites and Dependencies](#prerequisites-and-dependencies)
-  * [Compile Instructions](#compile-instructions)
 * [Tips for Linking glbinding](#tips-for-linking)
 
 ###### Feature Documentation and Code Snippets
