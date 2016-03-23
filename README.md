@@ -44,7 +44,7 @@ int main()
 
 ###### Installation and Development
 * [Install Instructions](#install-instructions)
-* [Build form Source](#build-from-source)
+* [Build form Source](#build-instructions)
 * [Tips for Linking](#tips-for-linking)
 
 ###### Feature Documentation and Code Snippets
@@ -56,7 +56,7 @@ int main()
 * [Multi-thread Support](#multi-threading-support)
 * [Global and Local Function Callbacks](#function-callbacks) 
 * [Meta Information System](#meta-information)
-* [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
+* [Doxygen Documentation](https://cginternals.github.io/glbinding/documentation)
 
 
 ## Project Health
