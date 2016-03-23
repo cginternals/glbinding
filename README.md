@@ -7,13 +7,8 @@ The state-of-the-art way for low-level OpenGL programming;
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
 All OpenGL symbols are real functions and variables. 
-It provides 
-[type-safe parameters](#type-safe-parameters), 
-[per feature API header](#per-feature-api-header), 
-[lazy function resolution](#lazy-function-pointer-resolution), 
-[multi-context](#multi-context-support) and [multi-thread](#multi-threading-support) support, 
-[global and local](#function-callbacks) function callbacks, 
-[meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [tools](https://github.com/hpicgs/glbinding/wiki/tools) and [examples](https://github.com/hpicgs/glbinding/wiki/examples) for quick-starting your projects. 
+It provides type-safe parameters, per feature API header, lazy function resolution, multi-context and multi-thread support, 
+global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects. 
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
 *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
 
@@ -40,7 +35,28 @@ int main()
 }
 ```
 
-##### Project Health (master)
+#### Find out More
+
+* [Type-safe Parameters](#type-safe-parameters)
+* [Per Feature API Header](#per-feature-api-header)
+* [Lazy Function Resolution](#lazy-function-pointer-resolution)
+* [Multi-context Support](#multi-context-support)
+* [Multi-thread Support](#multi-threading-support)
+* [Global and Local Function Callbacks](#function-callbacks) 
+* [Meta Information System](#meta-information) (runtime)
+
+* [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
+* [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
+* [Professional Support and Services](http://www.cginternals.com)
+
+* [Build Instructions](#build-instructions)
+* [Dependencies](#dependencies)
+* [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
+* [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
+* [Project Health](#project-health)
+
+
+## Project Health:
 
 | Service | System | Compiler | Status |
 | ------- | ------ | -------- | -----: |
