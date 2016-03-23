@@ -138,22 +138,21 @@ The only mandatory run-time dependencies of glbinding are the STL of the used co
 
 ##### Compile Instructions
 
-For compilation a C++11 compliant compiler, e.g., GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**, is required.
+For compilation, a C++11 compliant compiler, e.g., GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**, is required.
 
 First, download the source code [as archive](https://github.com/cginternals/glbinding/releases) or via git:
-```
-git clone https://github.com/cginternals/glbinding.git
-cd glbinding
+```shell
+> git clone https://github.com/cginternals/glbinding.git
+> cd glbinding
 ```
 Then, depending on the version of glbinding you want to build, choose the appropriate tag or branch, e.g., for the 2.0.0 release:
+```shell
+> git fetch --tags
+> git checkout v2.0.0
 ```
-git fetch --tags
-git checkout v2.0.0
-```
+The actual compilation can be done using CMake and your favourite compiler and IDE.
 
-... ToDo.
-
-
+## Additional Features
 
 #### Type-Safe Parameters
 
