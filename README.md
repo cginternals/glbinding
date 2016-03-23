@@ -1,15 +1,25 @@
-![glbinding](glbinding-logo.png)
-
-*glbinding* is a generated, cross-platform C++ binding for OpenGL which is solely based on the new xml-based OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)). It is a fully fledged OpenGL API binding compatible with current code based on other C bindings, e.g., [GLEW](http://glew.sourceforge.net/). The binding is generated using python scripts and templates, that can be easily adapted to fit custom needs.
-*glbinding* can be used as an alternative to GLEW and other projects, e.g., [glad](https://github.com/Dav1dde/glad), [gl3w](https://github.com/skaslev/gl3w), [glLoadGen](https://bitbucket.org/alfonse/glloadgen/overview), [glload](http://glsdk.sourceforge.net/docs/html/group__module__glload.html), and [flextGL](https://github.com/ginkgo/flextGL). *glbinding* is licenced under the [MIT license](http://opensource.org/licenses/MIT)
-
 [//]: # (Comment)
 
-The latest release is [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0).
+![glbinding](glbinding-logo.png)
 
-*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros (all OpenGL symbols are real functions and variables). It provides [type-safe parameters](#type-safe-parameters), [per feature API header](#per-feature-api-header), [lazy function resolution](#lazy-function-pointer-resolution), [multi-context](#multi-context-support) and [multi-thread](#multi-threading-support) support, [global](#function-callbacks) function callbacks, [meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [tools](https://github.com/hpicgs/glbinding/wiki/tools) and [examples](https://github.com/hpicgs/glbinding/wiki/examples) for quick-starting your projects. 
+The state-of-the-art way for low-level OpenGL programming;
+*glbinding* is a full-fledged, cross-platform C++ binding for the OpenGL API licenced under the [MIT license](http://opensource.org/licenses/MIT) and professionally maintained by [CG Internals](http://www.cginternals.com).
 
-Current gl code, written using a typical C binding for OpenGL is fully compatible for the use with *glbinding*.
+*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
+All OpenGL symbols are real functions and variables. 
+It provides 
+[type-safe parameters](#type-safe-parameters), 
+[per feature API header](#per-feature-api-header), 
+[lazy function resolution](#lazy-function-pointer-resolution), 
+[multi-context](#multi-context-support) and [multi-thread](#multi-threading-support) support, 
+[global and local](#function-callbacks) function callbacks, 
+[meta information](#meta-information) about the generated OpenGL binding and the OpenGL runtime, as well as multiple [tools](https://github.com/hpicgs/glbinding/wiki/tools) and [examples](https://github.com/hpicgs/glbinding/wiki/examples) for quick-starting your projects. 
+Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
+*glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
+
+See what's new in [glbinding-2.0.0](https://github.com/hpicgs/glbinding/releases/tag/v2.0.0).
+
+Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding*.
 Just replace all includes to the old binding and use the appropriate api namespace, e.g., ```gl```: 
 
 ```cpp
