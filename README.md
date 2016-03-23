@@ -89,7 +89,7 @@ Alternatively, download the source code and commence [building from source](#bui
 ###### Ubuntu
 
 *glbinding* is provided on Ubuntu using PPAs.
-For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa)f for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
+For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
 Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
 ```shell
 > sudo apt-add repository ppa:cginternals/ppa
@@ -125,12 +125,11 @@ Alternatively, download the source code and commence [building from source](#bui
 There is currently no precompiled package maintained. Please download the source code and commence [building from source](#build-instructions).
 
 
-## Build from Source
+## Build Instructions
 
 ##### Prerequisites and Dependencies
 
-The only mandatory run-time dependencies of glbinding are the STL of the used compiler and an OpenGL driver library, dynamically linked with your application.
-
+The only mandatory run-time dependencies of glbinding are the STL of the used compiler and an OpenGL driver library, dynamically linked with your application. However, compiling *glbinding* requires the following required and optional dependencies:
 * [CMake](https://cmake.org/) 3.0 or higher for building glbinding from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
