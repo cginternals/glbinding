@@ -128,6 +128,6 @@ target_link_libraries(${target}
 
 # Executable
 install(TARGETS ${target}
-    RUNTIME DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples-glfw
-    BUNDLE  DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples-glfw
+    RUNTIME DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw
+    BUNDLE  DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw
 )
