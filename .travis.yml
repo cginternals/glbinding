@@ -4,8 +4,8 @@ compiler:
   - gcc
 
 before_install:
-	- sudo apt-get update -qq
-	- sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew1.10-dev qt5-default
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew1.10-dev qt5-default
 
 before_script:
   - mkdir build
