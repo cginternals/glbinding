@@ -37,14 +37,20 @@ int main()
 
 ## Resources
 
-Installation and Development:
+* [Professional Support and Services](https://www.cginternals.com) by CG Internals
+* [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
+* [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
+* [Project Health](#project-health)
+* [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
+
+###### Installation and Development
 * [Install Instructions](#install-instructions)
 * [Build form Source](#build-instructions)
   * [Prerequisites and Dependencies](#prerequisites-and-dependencies)
   * [Compile Instructions](#compile-instructions)
 * [Tips for Linking glbinding](#tips-for-linking)
 
-Feature Documentation and Code Snippets:
+###### Feature Documentation and Code Snippets
 * [Type-safe Parameters](#type-safe-parameters)
 * [Per Feature API Header](#per-feature-api-header)
 * [Lazy Function Resolution](#lazy-function-pointer-resolution)
@@ -53,12 +59,6 @@ Feature Documentation and Code Snippets:
 * [Global and Local Function Callbacks](#function-callbacks) 
 * [Meta Information System](#meta-information) (runtime)
 * [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
-
-* [Context Creation Cheat Sheet](https://github.com/hpicgs/glbinding/wiki/Context-Creation-Cheat-Sheet)
-* [Tools](https://github.com/hpicgs/glbinding/wiki/tools)
-* [Examples](https://github.com/hpicgs/glbinding/wiki/examples)
-* [Project Health](#project-health)
-* [Professional Support and Services](https://www.cginternals.com) by CG Internals
 
 
 #### Install Instructions
