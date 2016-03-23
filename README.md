@@ -46,7 +46,7 @@ int main()
 ###### Installation and Development
 * [Install Instructions](#install-instructions)
 * [Build form Source](#build-from-source)
-* [Tips for Linking glbinding](#tips-for-linking)
+* [Tips for Linking](#tips-for-linking)
 
 ###### Feature Documentation and Code Snippets
 * [Type-safe Parameters](#type-safe-parameters)
