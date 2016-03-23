@@ -43,7 +43,7 @@ export_module_info(${META_PROJECT_NAME}
 
 install_module_info(${META_PROJECT_NAME}
     DESTINATION ${INSTALL_ROOT}
-    COMPONENT examples-data
+    COMPONENT examples_data
 )
 
 
