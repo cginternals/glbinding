@@ -50,14 +50,13 @@ int main()
 ###### Feature Documentation and Code Snippets
 * [Type-safe Parameters](#type-safe-parameters)
 * [Per Feature API Header](#per-feature-api-header)
+* [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
 * [Lazy Function Resolution](#lazy-function-pointer-resolution)
 * [Multi-context Support](#multi-context-support)
 * [Multi-thread Support](#multi-threading-support)
 * [Global and Local Function Callbacks](#function-callbacks) 
 * [Meta Information System](#meta-information)
 * [Doxygen Documentation](cginternals.github.io/glbinding/documentation)
-
-
 
 
 ## Project Health
@@ -71,8 +70,6 @@ int main()
 | Jenkins | OS X 10.10 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
 
 Please note that our OS X build node (physical) is currently broken. However, *glbinding* is maintained for OS X as well and there are many people using it in OS X on a regular basis.
-
-
 
 
 ## Install Instructions
@@ -91,7 +88,19 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ###### Ubuntu
 
-ToDo: apt-get
+*glbinding* is provided on Ubuntu using PPAs.
+For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa). For Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
+Using the current PPA as example, the following lines should install *glbinding* including the GLFW examples:
+```bash
+sudo apt-add repository ppa:cginternals/ppa
+sudo apt-get install libglbinding-examples-glfw
+# start example
+/usr/share/glbinding/cubescape
+```
+To use glbinding as dependency, install the development package:
+```bash
+sudo apt-get install libglbinding-dev libglbinding-dbg
+```
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Arch Linux
