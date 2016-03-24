@@ -9,7 +9,6 @@
 namespace gl
 {
 
-
 GLBINDING_API void glAccum(GLenum op, GLfloat value);
 GLBINDING_API void glAccumxOES(GLenum op, GLfixed value);
 GLBINDING_API void glActiveProgramEXT(GLuint program);

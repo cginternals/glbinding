@@ -47,6 +47,8 @@ public:
     static const std::set<Version> & versions();
 
     static const std::string & getString(gl::AttribMask glbitfield);
+    static const std::string & getString(gl::BufferAccessMask glbitfield);
+    static const std::string & getString(gl::BufferStorageMask glbitfield);
     static const std::string & getString(gl::ClearBufferMask glbitfield);
     static const std::string & getString(gl::ClientAttribMask glbitfield);
     static const std::string & getString(gl::ContextFlagMask glbitfield);
@@ -57,16 +59,14 @@ public:
     static const std::string & getString(gl::FragmentShaderDestModMaskATI glbitfield);
     static const std::string & getString(gl::MapBufferUsageMask glbitfield);
     static const std::string & getString(gl::MemoryBarrierMask glbitfield);
+    static const std::string & getString(gl::PathFontStyle glbitfield);
     static const std::string & getString(gl::PathRenderingMaskNV glbitfield);
     static const std::string & getString(gl::PerformanceQueryCapsMaskINTEL glbitfield);
     static const std::string & getString(gl::SyncObjectMask glbitfield);
     static const std::string & getString(gl::TextureStorageMaskAMD glbitfield);
+    static const std::string & getString(gl::UnusedMask glbitfield);
     static const std::string & getString(gl::UseProgramStageMask glbitfield);
     static const std::string & getString(gl::VertexHintsMaskPGI glbitfield);
-    static const std::string & getString(gl::UnusedMask glbitfield);
-    static const std::string & getString(gl::BufferAccessMask glbitfield);
-    static const std::string & getString(gl::BufferStorageMask glbitfield);
-    static const std::string & getString(gl::PathFontStyle glbitfield);
 
 private:
     static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);

@@ -7,7 +7,6 @@
 namespace gl31ext
 {
 
-
 using gl::GL_TIMEOUT_IGNORED;
 
 } // namespace gl31ext

@@ -149,14 +149,10 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     generateBegin = time.time()
 
     includedir = pjoin(targetdir, "include/glbinding/")
-    sourcedir  = pjoin(targetdir, "source/")
-    testdir    = pjoin(targetdir, "../tests/glbinding-test/")
-
     includedir_api = pjoin(includedir, "{api}{memberSet}/")
+    sourcedir  = pjoin(targetdir, "source/")
     sourcedir_api  = pjoin(sourcedir, "{api}/")
-
-    includedir_api_old = pjoin(includedir, api + "?/")
-    sourcedir_api_old = pjoin(sourcedir, api + "?/")
+    testdir    = pjoin(targetdir, "../tests/glbinding-test/")
 
     context = Context(api, revision, features, extensions, enums, bitfGroups, types, commands)
     generalContext = context.general()

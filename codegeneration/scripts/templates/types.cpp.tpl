@@ -45,30 +45,27 @@ std::string bitfieldString(T value)
 };
 
 {{#types.items}}
-{{#item}}
-{{#integrations.hashable}}
-{{>partials/types_hashable.cpp}}
+{{#item.integrations.streamable}}
+{{#item}}{{>partials/types_streamable.cpp}}{{/item}}
 
-{{/integrations.hashable}}
-{{#integrations.streamable}}
-{{>partials/types_streamable.cpp}}
+{{/item.integrations.streamable}}
+{{#item.integrations.addable}}
+{{#item}}{{>partials/types_addable.cpp}}{{/item}}
 
-{{/integrations.streamable}}
-{{#integrations.addable}}
-{{>partials/types_addable.cpp}}
+{{/item.integrations.addable}}
+{{#item.integrations.bitfieldStreamable}}
+{{#item}}{{>partials/types_bitfieldStreamable.cpp}}{{/item}}
 
-{{/integrations.addable}}
-{{#integrations.bitfieldStreamable}}
-{{>partials/types_bitfieldStreamable.cpp}}
+{{/item.integrations.bitfieldStreamable}}
+{{#item.integrations.bitOperatable}}
+{{#item}}{{>partials/types_bitOperatable.cpp}}{{/item}}
 
-{{/integrations.bitfieldStreamable}}
-{{#integrations.bitOperatable}}
-{{>partials/types_bitOperatable.cpp}}
+{{/item.integrations.bitOperatable}}
+{{#item.integrations.comparable}}
+{{#item}}{{>partials/types_comparable.cpp}}{{/item}}
 
-{{/integrations.bitOperatable}}
-{{#integrations.comparable}}
-{{>partials/types_comparable.cpp}}
+{{/item.integrations.comparable}}
+{{#item.hasIntegrations}}
 
-{{/integrations.comparable}}
-{{/item}}
+{{/item.hasIntegrations}}
 {{/types.items}}

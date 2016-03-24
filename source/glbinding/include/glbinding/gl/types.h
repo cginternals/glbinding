@@ -94,7 +94,6 @@ enum class PathFontStyle : unsigned int;
 
 // Type Integrations
 
-
 namespace std
 {
 
@@ -109,9 +108,7 @@ struct hash<gl::GLextension>
 
 }
 
-
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);
-
 
 namespace std
 {
@@ -127,13 +124,10 @@ struct hash<gl::GLenum>
 
 }
 
-
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value);
-
 
 GLBINDING_API gl::GLenum operator+(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
 GLBINDING_API gl::GLenum operator-(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
-
 
 GLBINDING_API bool operator==(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
 GLBINDING_API bool operator!=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
@@ -149,7 +143,6 @@ GLBINDING_API bool operator<=(std::underlying_type<gl::GLenum>::type a, const gl
 GLBINDING_API bool operator> (std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
 GLBINDING_API bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
 
-
 namespace std
 {
 
@@ -164,9 +157,7 @@ struct hash<gl::GLboolean>
 
 }
 
-
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
-
 
 namespace std
 {
@@ -196,7 +187,6 @@ GLBINDING_API gl::AttribMask & operator^=(gl::AttribMask & a, const gl::AttribMa
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -224,7 +214,6 @@ GLBINDING_API gl::ClearBufferMask operator^(const gl::ClearBufferMask & a, const
 GLBINDING_API gl::ClearBufferMask & operator^=(gl::ClearBufferMask & a, const gl::ClearBufferMask & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -254,7 +243,6 @@ GLBINDING_API gl::ClientAttribMask & operator^=(gl::ClientAttribMask & a, const 
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -282,7 +270,6 @@ GLBINDING_API gl::ContextFlagMask operator^(const gl::ContextFlagMask & a, const
 GLBINDING_API gl::ContextFlagMask & operator^=(gl::ContextFlagMask & a, const gl::ContextFlagMask & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -312,7 +299,6 @@ GLBINDING_API gl::ContextProfileMask & operator^=(gl::ContextProfileMask & a, co
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -340,7 +326,6 @@ GLBINDING_API gl::FfdMaskSGIX operator^(const gl::FfdMaskSGIX & a, const gl::Ffd
 GLBINDING_API gl::FfdMaskSGIX & operator^=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -370,7 +355,6 @@ GLBINDING_API gl::FragmentShaderColorModMaskATI & operator^=(gl::FragmentShaderC
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -398,7 +382,6 @@ GLBINDING_API gl::FragmentShaderDestMaskATI operator^(const gl::FragmentShaderDe
 GLBINDING_API gl::FragmentShaderDestMaskATI & operator^=(gl::FragmentShaderDestMaskATI & a, const gl::FragmentShaderDestMaskATI & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -428,7 +411,6 @@ GLBINDING_API gl::FragmentShaderDestModMaskATI & operator^=(gl::FragmentShaderDe
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -456,7 +438,6 @@ GLBINDING_API gl::MapBufferUsageMask operator^(const gl::MapBufferUsageMask & a,
 GLBINDING_API gl::MapBufferUsageMask & operator^=(gl::MapBufferUsageMask & a, const gl::MapBufferUsageMask & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -486,7 +467,6 @@ GLBINDING_API gl::MemoryBarrierMask & operator^=(gl::MemoryBarrierMask & a, cons
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -514,7 +494,6 @@ GLBINDING_API gl::PathRenderingMaskNV operator^(const gl::PathRenderingMaskNV & 
 GLBINDING_API gl::PathRenderingMaskNV & operator^=(gl::PathRenderingMaskNV & a, const gl::PathRenderingMaskNV & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -544,7 +523,6 @@ GLBINDING_API gl::PerformanceQueryCapsMaskINTEL & operator^=(gl::PerformanceQuer
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -572,7 +550,6 @@ GLBINDING_API gl::SyncObjectMask operator^(const gl::SyncObjectMask & a, const g
 GLBINDING_API gl::SyncObjectMask & operator^=(gl::SyncObjectMask & a, const gl::SyncObjectMask & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -602,7 +579,6 @@ GLBINDING_API gl::TextureStorageMaskAMD & operator^=(gl::TextureStorageMaskAMD &
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -630,7 +606,6 @@ GLBINDING_API gl::UseProgramStageMask operator^(const gl::UseProgramStageMask & 
 GLBINDING_API gl::UseProgramStageMask & operator^=(gl::UseProgramStageMask & a, const gl::UseProgramStageMask & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -660,7 +635,6 @@ GLBINDING_API gl::VertexHintsMaskPGI & operator^=(gl::VertexHintsMaskPGI & a, co
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -688,7 +662,6 @@ GLBINDING_API gl::UnusedMask operator^(const gl::UnusedMask & a, const gl::Unuse
 GLBINDING_API gl::UnusedMask & operator^=(gl::UnusedMask & a, const gl::UnusedMask & b);
 
 } // namespace gl
-
 
 namespace std
 {
@@ -718,7 +691,6 @@ GLBINDING_API gl::BufferAccessMask & operator^=(gl::BufferAccessMask & a, const 
 
 } // namespace gl
 
-
 namespace std
 {
 
@@ -746,7 +718,6 @@ GLBINDING_API gl::BufferStorageMask operator^(const gl::BufferStorageMask & a, c
 GLBINDING_API gl::BufferStorageMask & operator^=(gl::BufferStorageMask & a, const gl::BufferStorageMask & b);
 
 } // namespace gl
-
 
 namespace std
 {
