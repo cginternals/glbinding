@@ -14,7 +14,7 @@ global and local function callbacks, meta information about the generated OpenGL
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
 *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
 
-Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding*: just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl```.
+Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding* and causes no significant impact on runtime performance (see [compare example](https://github.com/cginternals/glbinding/wiki/examples#compare)): just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl```.
 
 ```cpp
 #include <glbinding/gl/gl.h>
@@ -33,6 +33,7 @@ int main()
   glEnd();
 }
 ```
+
 
 ## Resources
 
@@ -176,6 +177,14 @@ In order to compile the project, either use you favorite Editor/IDE with the cre
 ```
 cmake --build .
 ```
+
+##### Generating/Updating the Binding Manually
+
+For updating the ```gl.xml``` and the resulting glbinding interfaces python scripts are provided in ```codegeneration``` directory.
+An additional ```patch.xml``` is used to resolve possible conflicts or missing specifications (with the ongoing development of the xml-based OpenGL API specification this could become obsolete in the future).
+For ease-of-use, the update and generation can be triggered using the generated build targets ```update``` and ```generate```.
+
+
 
 
 ## Features
@@ -614,14 +623,3 @@ if (Meta::stringsByGL())
   }
 }
 ```
-
-##### Performance
-
-*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with GLEW. Various results are provided in the [Examples](https://github.com/cginternals/glbinding/wiki/examples) wiki. Even when there are differences keep in mind that this example measures the pure CPU time of a function call which, most of the time, is the time required to insert the OpenGL command into the queue. The actual execution time of OpenGL commands is usually driver and GPU bound.
-
-
-##### Binding Generation
-
-As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
-The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
-For ease-of-use, the update and generation can be triggered using the generated targets from cmake named ```update``` and ```generate```.
