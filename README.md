@@ -177,50 +177,9 @@ cmake --build .
 ```
 
 
-## Additional Features
+## Features
 
 #### Type-Safe Parameters
-
-Every parameter of an OpenGL function expects a specific data type and *glbinding* enforces, if possible, this type in its interface. This results in the following behavior:
-
-```cpp
-glClear(GL_COLOR_BUFFER_BIT); // valid
-glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
-```
-
-For bitfields there are extensively specified groups that are additionally used to enforce type-safety (note: a bitfield value can be used by several groups). Combinations of bitfields that share no group results in a compilation error.
-
-```cpp
-glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
-glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
-
-glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or operation is valid, 
-                                                    //  the shared group is AttribMask, but the
-                                                    //  resulting group does not match the expected.
-```
-
-The groups for enums are not yet as complete as we would like them to be to enable per function compile-time errors when trying to call functions with values from the wrong enum group. For example, ```GL_VERTEX_SHADER``` is in the group ```ShaderType``` and ```GL_COMPUTE_SHADER``` is not.
-
-#### Alternative Signatures
-
-The OpenGL API is designed without function overloading using only simple parameter types. This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum``` and ```GLbitfield``` types. Using the type-save function from glbinding, some typically compiling code constructs are now broken. For most of those cases we provide alternative *overloaded* function signatures. Additionally, we also fix signatures that are semantically broken in the ```gl.xml``` without noticing when using the type similarity of the integer types.
-To use these alternative function signatures, confer to the following example:
-```cpp
-#include <glbinding/gl/gl.h>
-#include <glbinding/gl/functions-patches.h>
-
-using namespace gl;
-
-// ...
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
-```
-Beware of the namespace these additional functions are defined in. These function signatures are *only* defined in the ```gl``` namespace. If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to the other one or manually import the used alternative signatures into the other namespace (using ```using``` declarations).
-
-# MORE FROM WIKI BEGIN
 
 The original OpenGL API provides several concepts in their interface, namely functions, boolean values, bitfield values, named values and special values and basic types values but mostly don't differentiate in them.
 
@@ -246,8 +205,25 @@ GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER); // All good
 GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error but a runtime error!
 ```
 
-# MORE FROM WIKI END
 
+#### Alternative Signatures
+
+The OpenGL API is designed without function overloading using only simple parameter types. This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum``` and ```GLbitfield``` types. Using the type-save function from glbinding, some typically compiling code constructs are now broken. For most of those cases we provide alternative *overloaded* function signatures. Additionally, we also fix signatures that are semantically broken in the ```gl.xml``` without noticing when using the type similarity of the integer types.
+To use these alternative function signatures, confer to the following example:
+```cpp
+#include <glbinding/gl/gl.h>
+#include <glbinding/gl/functions-patches.h>
+
+using namespace gl;
+
+// ...
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
+```
+Beware of the namespace these additional functions are defined in. These function signatures are *only* defined in the ```gl``` namespace. If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to the other one or manually import the used alternative signatures into the other namespace (using ```using``` declarations).
 
 #### Per Feature API Header
 
