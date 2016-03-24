@@ -374,14 +374,16 @@ Example for error checking:
 #include <iostream>
 
 #include <glbinding/callbacks.h>
+#include <glbinding/gl/gl.h>
 
 using namespace glbinding;
+using namespace gl;
 
 // ...
 setCallbackMaskExcept(CallbackMask::After, { "glGetError" });
 setAfterCallback([](const FunctionCall &)
 {
-  GLenum error = glGetError();
+  const auto error = glGetError();
   if (error != GL_NO_ERROR)
     std::cout << "error: " << std::hex << error << std::endl;
 });
@@ -403,20 +405,16 @@ setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 {
   std::cout << call.function->name() << "(";
-  
   for (unsigned i = 0; i < call.parameters.size(); ++i)
   {
     std::cout << call.parameters[i]->asString();
     if (i < call.parameters.size() - 1)
       std::cout << ", ";
   }
-  
   std::cout << ")";
   
   if (call.returnValue)
-  {
     std::cout << " -> " << call.returnValue->asString();
-  }
   
   std::cout << std::endl;
 });
