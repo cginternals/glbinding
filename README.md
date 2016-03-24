@@ -345,14 +345,12 @@ glbinding::Binding::initialize(false); // lazy function pointer resolution
 
 *glbinding* has built-in support for multiple contexts. The only requirement is, that the currently active context has to be specified. This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context often result in non-meaningful communication with the OpenGL driver.
 
-To use multiple contexts, use your favorite context creation library (e.g., glut, SDL, egl, glfw, Qt) to request as much contexts as required. The functions to make a context current should be provided by this library and is not part of *glbinding* (except that you can get the current context handle). When using multiple contexts, first, each has to be initialized when active: 
+In order to use multiple contexts, use your favorite context creation library (e.g., glut, SDL, egl, glfw, Qt) to request the required contexts.
+The functions to make a context current should be provided by these libraries and is not part of *glbinding* (except that you can get the current context handle). 
+When using multiple contexts, *glbinding* has to be initialized for each context (when current). 
 
-```cpp
-// use context library to make current, e.g., glfwMakeCurrent(...)
-glbinding::Binding::initialize();
-```
-
-Second, contexts switches are required to be communicated to *glinding* explicitly in order to have correctly dispatched function pointers:
+Since each context can correspond to a different feature set of OpenGL and the drivers are free to assign their function pointers, *glbinding* cannot assume any equalities of requested function pointers. 
+Thus, contexts switches have to be communicated to *glbinding* explicitly in order to have correctly dispatched function pointers:
 
 ```cpp
 // use the current active context
@@ -362,34 +360,22 @@ glbinding::Binding::useCurrentContext();
 glbinding::Binding::useContext(ContextHandle context); 
 ```
 
-This feature is mainly intended for platforms where function pointers for different requested OpenGL features may vary.
-
-**VS..**
-
-##### Multiple OpenGL Contexts usage TODO
-
-OpenGL allows for multiple contexts per program/process to be created and used. The one limitation is that only one context can be *current* at a given time. As each context can correspond to a different feature set of OpenGL and the drivers are free to assign their function pointers, glbinding **cannot** assume any equalities of requested function pointers. This means a user *must* tell glbinding of all contexts he wants to use and when the switches of *current* contexts occured.
-Concluding, a user have to call the initialize method once per OpenGL context (when it is current) and has to update the current context if it has changed.
 
 
 
 ### Multi-Threading Support
 
 Concurrent use of *glbinding* is mainly intended to the usage of multiple contexts in different threads (multiple threads operating on a single OpenGL context requires locking, which *glbinding* will not provide).
-For this, *glbinding* supports multiple active contexts, one per thread. This necessitates that *glbinding* gets informed in each thread which context is currently active (see [multi-context](#multi-context-support)).
+For it, *glbinding* supports multiple active contexts, one per thread.
+This necessitates that *glbinding* gets informed in each thread which context is currently active (see [multi-context](#multi-context-support)).
+Note: multi-threaded communication with OpenGL will most likely result in a meaningless sequence of OpenGL calls. 
+To avoid this, semantic groups of OpenGL calls should be treated as critical sections.
 
-**VS TODO** 
+##### Multiple OpenGL Contexts in Multiple Threads
 
-##### Multi-threaded OpenGL Context usage ToDO Remove?
-
-If you want to use one OpenGL context in multiple threads, you have to call the initialize method once per thread. This is required because the *current* status of an OpenGL context is dependend on the current thread, i.e., you can have different contexts *current* in different threads. In order to allow for this, glbinding has to differentiate between registered OpenGL contexts per thread.
-
-Beware of using one OpenGL context in multiple threads concurrently! Most likely, it won't result in a meaningful sequence of OpenGL calls. If you really want to use one OpenGL context in multiple threads, be sure to treat semantic groups of OpenGL calls as critical sections.
-
-
-##### Multiple OpenGL Contexts in multiple Threads todo Remove?
-
-The combination of multiple OpenGL contexts and multiple threads for OpenGL usage is supported by glbinding. You must tell glbinding which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::Binding::initialize()```) and if you want to switch the *current* context for one thread, you have to update the current context, too (```glbinding::Binding::useCurrentContext()```). We strongly discourage the use of one context in multiple threads and we don't see real added value in using multiple contexts in one thread, so the main use case would be to use one OpenGL context per thread. This means you mainly have to register the context you want to use per thread once and leave it as is.
+The combination of multiple OpenGL contexts and multiple threads for OpenGL usage is supported by *glbinding* in general. 
+You must tell *glbinding* which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::Binding::initialize()```) and if you want to switch the current context for one thread, you have to update the current context, too (```glbinding::Binding::useCurrentContext()```). 
+However, we strongly discourage the use of one context in multiple threads.
 
 
 
@@ -414,15 +400,6 @@ The unresolved callback provides information about the (unresolved) wrapped Open
 Example for error checking:
 
 ```cpp
-#include <iostream>
-
-#include <glbinding/callbacks.h>
-#include <glbinding/gl/gl.h>
-
-using namespace glbinding;
-using namespace gl;
-
-// ...
 setCallbackMaskExcept(CallbackMask::After, { "glGetError" });
 setAfterCallback([](const FunctionCall &)
 {
@@ -431,19 +408,12 @@ setAfterCallback([](const FunctionCall &)
     std::cout << "error: " << std::hex << error << std::endl;
 });
 
-// ... OpenGL code
+// OpenGL Code ...
 ```
 
 Example for logging:
 
 ```cpp
-#include <iostream>
-
-#include <glbinding/callbacks.h>
-
-using namespace glbinding;
-
-// ...
 setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 {
@@ -462,8 +432,10 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
   std::cout << std::endl;
 });
 
-// ... OpenGL code
+// OpenGL Code ...
 ```
+
+
 
 
 ### Alternative Signatures
@@ -490,7 +462,7 @@ glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
 ```
-Note that these function signatures are *only* defined in the ```gl``` namespace. 
+Note that these function signatures are only defined in the ```gl``` namespace. 
 If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to other ones or manually import the used alternative signatures into the other namespace using ```using``` declarations.
 
 
