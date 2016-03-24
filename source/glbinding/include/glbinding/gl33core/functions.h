@@ -7,6 +7,7 @@
 namespace gl33core
 {
 
+
 using gl::glActiveTexture;
 using gl::glAttachShader;
 using gl::glBeginConditionalRender;
@@ -381,5 +382,6 @@ using gl::glVertexP4ui;
 using gl::glVertexP4uiv;
 using gl::glViewport;
 using gl::glWaitSync;
+
 
 } // namespace gl33core

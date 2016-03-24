@@ -7,8 +7,10 @@
 namespace {{api}}{{memberSet}}
 {
 
+
 {{#types.items}}
 using {{api}}::{{item.identifier}};
 {{/types.items}}
+
 
 } // namespace {{api}}{{memberSet}}

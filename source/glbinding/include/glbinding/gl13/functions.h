@@ -7,6 +7,7 @@
 namespace gl13
 {
 
+
 using gl::glAccum;
 using gl::glActiveTexture;
 using gl::glAlphaFunc;
@@ -393,5 +394,6 @@ using gl::glVertex4s;
 using gl::glVertex4sv;
 using gl::glVertexPointer;
 using gl::glViewport;
+
 
 } // namespace gl13

@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 Function<void> Binding::TagSampleBufferSGIX("glTagSampleBufferSGIX");
 Function<void, GLbyte, GLbyte, GLbyte> Binding::Tangent3bEXT("glTangent3bEXT");
@@ -225,5 +226,6 @@ Function<void, GLuint, GLuint, GLenum, const GLfloat *> Binding::TransformPathNV
 Function<void, GLdouble, GLdouble, GLdouble> Binding::Translated("glTranslated");
 Function<void, GLfloat, GLfloat, GLfloat> Binding::Translatef("glTranslatef");
 Function<void, GLfixed, GLfixed, GLfixed> Binding::TranslatexOES("glTranslatexOES");
+
 
 } // namespace glbinding

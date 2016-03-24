@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 GLuint glGenAsyncMarkersSGIX(GLsizei range)
 {
@@ -2439,6 +2440,7 @@ void glGlobalAlphaFactorusSUN(GLushort factor)
 {
     return Binding::GlobalAlphaFactorusSUN(factor);
 }
+
 
 
 } // namespace gl

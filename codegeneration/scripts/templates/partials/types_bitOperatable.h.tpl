@@ -1,11 +1,14 @@
+
 namespace {{api}}
 {
 
-GLBINDING_API {{api}}::{{identifier}} operator|(const {{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b);
-GLBINDING_API {{api}}::{{identifier}} & operator|=({{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b);
-GLBINDING_API {{api}}::{{identifier}} operator&(const {{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b);
-GLBINDING_API {{api}}::{{identifier}} & operator&=({{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b);
-GLBINDING_API {{api}}::{{identifier}} operator^(const {{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b);
-GLBINDING_API {{api}}::{{identifier}} & operator^=({{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b);
+
+GLBINDING_API {{identifier}} operator|(const {{identifier}} & a, const {{identifier}} & b);
+GLBINDING_API {{identifier}} & operator|=({{identifier}} & a, const {{identifier}} & b);
+GLBINDING_API {{identifier}} operator&(const {{identifier}} & a, const {{identifier}} & b);
+GLBINDING_API {{identifier}} & operator&=({{identifier}} & a, const {{identifier}} & b);
+GLBINDING_API {{identifier}} operator^(const {{identifier}} & a, const {{identifier}} & b);
+GLBINDING_API {{identifier}} & operator^=({{identifier}} & a, const {{identifier}} & b);
+
 
 } // namespace {{api}}

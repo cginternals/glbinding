@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glVDPAUFiniNV()
 {
@@ -1899,6 +1900,7 @@ void glViewportIndexedfv(GLuint index, const GLfloat * v)
 {
     return Binding::ViewportIndexedfv(index, v);
 }
+
 
 
 } // namespace gl

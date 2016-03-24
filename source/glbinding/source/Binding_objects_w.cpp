@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 Function<void, GLsync, UnusedMask, GLuint64> Binding::WaitSync("glWaitSync");
 Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> Binding::WeightPathsNV("glWeightPathsNV");
@@ -75,5 +76,6 @@ Function<void, const GLint *> Binding::WindowPos4ivMESA("glWindowPos4ivMESA");
 Function<void, GLshort, GLshort, GLshort, GLshort> Binding::WindowPos4sMESA("glWindowPos4sMESA");
 Function<void, const GLshort *> Binding::WindowPos4svMESA("glWindowPos4svMESA");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::WriteMaskEXT("glWriteMaskEXT");
+
 
 } // namespace glbinding

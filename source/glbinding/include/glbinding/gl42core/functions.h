@@ -7,6 +7,7 @@
 namespace gl42core
 {
 
+
 using gl::glActiveShaderProgram;
 using gl::glActiveTexture;
 using gl::glAttachShader;
@@ -527,5 +528,6 @@ using gl::glViewportArrayv;
 using gl::glViewportIndexedf;
 using gl::glViewportIndexedfv;
 using gl::glWaitSync;
+
 
 } // namespace gl42core

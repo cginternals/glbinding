@@ -4,8 +4,10 @@
 
 #include <glbinding/gl/bitfield.h>
 
+
 namespace gl30
 {
+
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -41,5 +43,6 @@ using gl::GL_MAP_UNSYNCHRONIZED_BIT;
 using gl::GL_MULTISAMPLE_BIT;
 using gl::GL_ALL_ATTRIB_BITS;
 using gl::GL_CLIENT_ALL_ATTRIB_BITS;
+
 
 } // namespace gl30

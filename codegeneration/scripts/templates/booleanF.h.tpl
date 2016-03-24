@@ -8,10 +8,12 @@
 namespace {{api}}{{memberSet}}
 {
 
+
 // import booleans to namespace
 
 {{#booleans.items}}
 using {{api}}::{{item.identifier}};
 {{/booleans.items}}
+
 
 } // namespace {{api}}{{memberSet}}

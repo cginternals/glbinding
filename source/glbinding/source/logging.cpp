@@ -161,7 +161,7 @@ const std::string getStandardFilepath()
     ms_os << std::setfill('0') << std::setw(3) << ms;
 
     std::ostringstream os;
-    os << "logs/";
+    os << "";
     os << time_string.data() << "-" << ms_os.str();
     os << ".log";
 

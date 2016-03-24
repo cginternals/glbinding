@@ -16,6 +16,7 @@
 namespace glbinding
 {
 
+
 /**
  * @brief
  *   The main interface to handle additional features to OpenGL functions besides regular function calls.

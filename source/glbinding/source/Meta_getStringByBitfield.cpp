@@ -13,8 +13,10 @@ namespace
     static const auto none = std::string{};
 }
 
+
 namespace glbinding
 {
+
 
 
 const std::string & Meta::getString(const AttribMask glbitfield)
@@ -246,5 +248,6 @@ const std::string & Meta::getString(const VertexHintsMaskPGI glbitfield)
     }
     return none;
 }
+
 
 } // namespace glbinding

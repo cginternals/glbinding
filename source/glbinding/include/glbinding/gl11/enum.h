@@ -8,6 +8,7 @@
 namespace gl11
 {
 
+
 // import enums to namespace
 
 
@@ -1012,5 +1013,6 @@ using gl::GL_REPEAT;
 // using gl::GL_INT; // reuse ColorPointerType
 // using gl::GL_FLOAT; // reuse ColorPointerType
 // using gl::GL_DOUBLE; // reuse ColorPointerType
+
 
 } // namespace gl11

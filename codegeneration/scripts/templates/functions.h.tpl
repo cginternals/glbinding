@@ -8,11 +8,13 @@
 
 namespace {{api}}
 {
+
 {{#functionsByInitial.groups}}
 {{#items}}
 GLBINDING_API {{#item}}{{>partials/general_type}} {{identifier}}({{>partials/general_params}}){{/item}};
 {{/items}}
 
 {{/functionsByInitial.groups}}
+
 
 } // namespace {{api}}

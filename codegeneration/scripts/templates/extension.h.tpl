@@ -6,6 +6,7 @@
 namespace {{api}}
 {
 
+
 enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
 {
     UNKNOWN = -1,
@@ -14,5 +15,5 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
 {{/extensions.items}}
 };
 
-} // namespace {{api}}
 
+} // namespace {{api}}

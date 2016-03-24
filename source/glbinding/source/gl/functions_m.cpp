@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glMakeBufferNonResidentNV(GLenum target)
 {
@@ -1169,6 +1170,7 @@ void glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint x
 {
     return Binding::MultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
+
 
 
 } // namespace gl

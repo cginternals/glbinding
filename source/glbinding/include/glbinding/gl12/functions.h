@@ -7,6 +7,7 @@
 namespace gl12
 {
 
+
 using gl::glAccum;
 using gl::glAlphaFunc;
 using gl::glAreTexturesResident;
@@ -347,5 +348,6 @@ using gl::glVertex4s;
 using gl::glVertex4sv;
 using gl::glVertexPointer;
 using gl::glViewport;
+
 
 } // namespace gl12

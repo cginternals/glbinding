@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glRasterPos2d(GLdouble x, GLdouble y)
 {
@@ -454,6 +455,7 @@ void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
 {
     return Binding::RotatexOES(angle, x, y, z);
 }
+
 
 
 } // namespace gl

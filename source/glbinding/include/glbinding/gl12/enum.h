@@ -8,6 +8,7 @@
 namespace gl12
 {
 
+
 // import enums to namespace
 
 
@@ -1056,5 +1057,6 @@ using gl::GL_UNSIGNED_SHORT_4_4_4_4_REV;
 using gl::GL_UNSIGNED_SHORT_1_5_5_5_REV;
 using gl::GL_UNSIGNED_INT_8_8_8_8_REV;
 using gl::GL_UNSIGNED_INT_2_10_10_10_REV;
+
 
 } // namespace gl12

@@ -9,9 +9,10 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
+
 {{#extensionsByCommandsByInitial.groups}}
 {{#empty}}
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_{{name}};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_{{name}}{};
 {{/empty}}
 {{^empty}}
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_{{name}} =
@@ -29,5 +30,6 @@ const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, {{e
     Meta_ExtensionsByFunctionString_{{name}}{{^last}},{{/last}}
 {{/extensionsByCommandsByInitial.groups}}
 } };
+
 
 } // namespace glbinding

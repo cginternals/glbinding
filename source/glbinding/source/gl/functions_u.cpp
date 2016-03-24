@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glUniform1d(GLint location, GLdouble x)
 {
@@ -659,6 +660,7 @@ void glUseShaderProgramEXT(GLenum type, GLuint program)
 {
     return Binding::UseShaderProgramEXT(type, program);
 }
+
 
 
 } // namespace gl

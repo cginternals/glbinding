@@ -6,6 +6,7 @@
 namespace gl
 {
 
+
 enum class GLenum : unsigned int
 {
     // AccumOp
@@ -10582,5 +10583,6 @@ static const GLenum GL_TEXTURE_COORD_ARRAY_LIST_STRIDE_IBM = GLenum::GL_TEXTURE_
 static const GLenum GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM = GLenum::GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM;
 static const GLenum GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM = GLenum::GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM;
 static const GLenum GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM = GLenum::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM;
+
 
 } // namespace gl

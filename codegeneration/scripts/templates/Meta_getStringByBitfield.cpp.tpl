@@ -13,8 +13,10 @@ namespace
     static const auto none = std::string{};
 }
 
+
 namespace glbinding
 {
+
 
 {{#bitfieldGroups.items}}
 
@@ -29,4 +31,5 @@ const std::string & Meta::getString(const {{item}} glbitfield)
 }
 
 {{/bitfieldGroups.items}}
+
 } // namespace glbinding

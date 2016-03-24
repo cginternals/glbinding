@@ -1,0 +1,22 @@
+language: cpp
+
+sudo: required
+dist: trusty
+
+compiler:
+  - gcc
+  - clang
+
+before_install:
+  - sudo apt-add-repository ppa:cginternals/backports-ppa -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev
+
+before_script:
+  - mkdir build
+  - cd build
+  - cmake -DOPTION_BUILD_EXAMPLES=On ..
+
+script:
+  - make -j8
+  - make test

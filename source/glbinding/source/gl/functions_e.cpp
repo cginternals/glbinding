@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glEdgeFlag(GLboolean flag)
 {
@@ -299,6 +300,7 @@ void glExtractComponentEXT(GLuint res, GLuint src, GLuint num)
 {
     return Binding::ExtractComponentEXT(res, src, num);
 }
+
 
 
 } // namespace gl
