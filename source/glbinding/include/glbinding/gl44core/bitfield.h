@@ -1,14 +1,11 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
 
 #include <glbinding/gl/bitfield.h>
 
-
 namespace gl44core
 {
-
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -53,6 +50,5 @@ using gl::GL_DYNAMIC_STORAGE_BIT;
 using gl::GL_CLIENT_STORAGE_BIT;
 using gl::GL_ALL_BARRIER_BITS;
 using gl::GL_ALL_SHADER_BITS;
-
 
 } // namespace gl44core

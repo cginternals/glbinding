@@ -3,14 +3,13 @@
 
 #include <glbinding/gl/extension.h>
 
-using namespace gl; // ToDo: multiple APIs?
 
+using namespace gl; // ToDo: multiple APIs?
 
 namespace glbinding
 {
 
-
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_0{};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_0;
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_A =
 {
@@ -72,7 +71,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glBindMaterialParameterEXT", { GLextension::GL_EXT_vertex_shader } },
     { "glBindMultiTextureEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glBindParameterEXT", { GLextension::GL_EXT_vertex_shader } },
-    { "glBindProgramARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glBindProgramARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glBindProgramNV", { GLextension::GL_NV_vertex_program } },
     { "glBindProgramPipeline", { GLextension::GL_ARB_separate_shader_objects } },
     { "glBindRenderbuffer", { GLextension::GL_ARB_framebuffer_object } },
@@ -343,7 +342,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glDeletePerfMonitorsAMD", { GLextension::GL_AMD_performance_monitor } },
     { "glDeletePerfQueryINTEL", { GLextension::GL_INTEL_performance_query } },
     { "glDeleteProgramPipelines", { GLextension::GL_ARB_separate_shader_objects } },
-    { "glDeleteProgramsARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glDeleteProgramsARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glDeleteProgramsNV", { GLextension::GL_NV_vertex_program } },
     { "glDeleteQueriesARB", { GLextension::GL_ARB_occlusion_query } },
     { "glDeleteRenderbuffers", { GLextension::GL_ARB_framebuffer_object } },
@@ -369,7 +368,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glDetailTexFuncSGIS", { GLextension::GL_SGIS_detail_texture } },
     { "glDisableClientStateIndexedEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glDisableClientStateiEXT", { GLextension::GL_EXT_direct_state_access } },
-    { "glDisableIndexedEXT", { GLextension::GL_EXT_draw_buffers2, GLextension::GL_EXT_direct_state_access } },
+    { "glDisableIndexedEXT", { GLextension::GL_EXT_direct_state_access, GLextension::GL_EXT_draw_buffers2 } },
     { "glDisableVariantClientStateEXT", { GLextension::GL_EXT_vertex_shader } },
     { "glDisableVertexArrayAttrib", { GLextension::GL_ARB_direct_state_access } },
     { "glDisableVertexArrayAttribEXT", { GLextension::GL_EXT_direct_state_access } },
@@ -421,7 +420,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glElementPointerATI", { GLextension::GL_ATI_element_array } },
     { "glEnableClientStateIndexedEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glEnableClientStateiEXT", { GLextension::GL_EXT_direct_state_access } },
-    { "glEnableIndexedEXT", { GLextension::GL_EXT_draw_buffers2, GLextension::GL_EXT_direct_state_access } },
+    { "glEnableIndexedEXT", { GLextension::GL_EXT_direct_state_access, GLextension::GL_EXT_draw_buffers2 } },
     { "glEnableVariantClientStateEXT", { GLextension::GL_EXT_vertex_shader } },
     { "glEnableVertexArrayAttrib", { GLextension::GL_ARB_direct_state_access } },
     { "glEnableVertexArrayAttribEXT", { GLextension::GL_EXT_direct_state_access } },
@@ -517,7 +516,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glFramebufferTextureFaceEXT", { GLextension::GL_NV_geometry_program4 } },
     { "glFramebufferTextureLayer", { GLextension::GL_ARB_framebuffer_object } },
     { "glFramebufferTextureLayerARB", { GLextension::GL_ARB_geometry_shader4 } },
-    { "glFramebufferTextureLayerEXT", { GLextension::GL_NV_geometry_program4, GLextension::GL_EXT_texture_array } },
+    { "glFramebufferTextureLayerEXT", { GLextension::GL_EXT_texture_array, GLextension::GL_NV_geometry_program4 } },
     { "glFramebufferTextureMultiviewOVR", { GLextension::GL_OVR_multiview } },
     { "glFreeObjectBufferATI", { GLextension::GL_ATI_vertex_array_object } },
     { "glFrustumfOES", { GLextension::GL_OES_single_precision } },
@@ -538,7 +537,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGenPathsNV", { GLextension::GL_NV_path_rendering } },
     { "glGenPerfMonitorsAMD", { GLextension::GL_AMD_performance_monitor } },
     { "glGenProgramPipelines", { GLextension::GL_ARB_separate_shader_objects } },
-    { "glGenProgramsARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glGenProgramsARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glGenProgramsNV", { GLextension::GL_NV_vertex_program } },
     { "glGenQueriesARB", { GLextension::GL_ARB_occlusion_query } },
     { "glGenRenderbuffers", { GLextension::GL_ARB_framebuffer_object } },
@@ -571,7 +570,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetArrayObjectivATI", { GLextension::GL_ATI_vertex_array_object } },
     { "glGetAttachedObjectsARB", { GLextension::GL_ARB_shader_objects } },
     { "glGetAttribLocationARB", { GLextension::GL_ARB_vertex_shader } },
-    { "glGetBooleanIndexedvEXT", { GLextension::GL_EXT_draw_buffers2, GLextension::GL_EXT_direct_state_access } },
+    { "glGetBooleanIndexedvEXT", { GLextension::GL_EXT_direct_state_access, GLextension::GL_EXT_draw_buffers2 } },
     { "glGetBufferParameterivARB", { GLextension::GL_ARB_vertex_buffer_object } },
     { "glGetBufferParameterui64vNV", { GLextension::GL_NV_shader_buffer_load } },
     { "glGetBufferPointervARB", { GLextension::GL_ARB_vertex_buffer_object } },
@@ -649,7 +648,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetInfoLogARB", { GLextension::GL_ARB_shader_objects } },
     { "glGetInstrumentsSGIX", { GLextension::GL_SGIX_instruments } },
     { "glGetInteger64v", { GLextension::GL_ARB_sync } },
-    { "glGetIntegerIndexedvEXT", { GLextension::GL_EXT_draw_buffers2, GLextension::GL_EXT_direct_state_access } },
+    { "glGetIntegerIndexedvEXT", { GLextension::GL_EXT_direct_state_access, GLextension::GL_EXT_draw_buffers2 } },
     { "glGetIntegeri_v", { GLextension::GL_ARB_uniform_buffer_object } },
     { "glGetIntegerui64i_vNV", { GLextension::GL_NV_vertex_buffer_unified_memory } },
     { "glGetIntegerui64vNV", { GLextension::GL_NV_shader_buffer_load } },
@@ -760,13 +759,13 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetProgramBinary", { GLextension::GL_ARB_get_program_binary } },
     { "glGetProgramEnvParameterIivNV", { GLextension::GL_NV_gpu_program4 } },
     { "glGetProgramEnvParameterIuivNV", { GLextension::GL_NV_gpu_program4 } },
-    { "glGetProgramEnvParameterdvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glGetProgramEnvParameterfvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glGetProgramEnvParameterdvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glGetProgramEnvParameterfvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glGetProgramInterfaceiv", { GLextension::GL_ARB_program_interface_query } },
     { "glGetProgramLocalParameterIivNV", { GLextension::GL_NV_gpu_program4 } },
     { "glGetProgramLocalParameterIuivNV", { GLextension::GL_NV_gpu_program4 } },
-    { "glGetProgramLocalParameterdvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glGetProgramLocalParameterfvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glGetProgramLocalParameterdvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glGetProgramLocalParameterfvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glGetProgramNamedParameterdvNV", { GLextension::GL_NV_fragment_program } },
     { "glGetProgramNamedParameterfvNV", { GLextension::GL_NV_fragment_program } },
     { "glGetProgramParameterdvNV", { GLextension::GL_NV_vertex_program } },
@@ -780,10 +779,10 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetProgramResourcefvNV", { GLextension::GL_NV_path_rendering } },
     { "glGetProgramResourceiv", { GLextension::GL_ARB_program_interface_query } },
     { "glGetProgramStageiv", { GLextension::GL_ARB_shader_subroutine } },
-    { "glGetProgramStringARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glGetProgramStringARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glGetProgramStringNV", { GLextension::GL_NV_vertex_program } },
     { "glGetProgramSubroutineParameteruivNV", { GLextension::GL_NV_gpu_program5 } },
-    { "glGetProgramivARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glGetProgramivARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glGetProgramivNV", { GLextension::GL_NV_vertex_program } },
     { "glGetQueryBufferObjecti64v", { GLextension::GL_ARB_direct_state_access } },
     { "glGetQueryBufferObjectiv", { GLextension::GL_ARB_direct_state_access } },
@@ -971,7 +970,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glIsBufferARB", { GLextension::GL_ARB_vertex_buffer_object } },
     { "glIsBufferResidentNV", { GLextension::GL_NV_shader_buffer_load } },
     { "glIsCommandListNV", { GLextension::GL_NV_command_list } },
-    { "glIsEnabledIndexedEXT", { GLextension::GL_EXT_draw_buffers2, GLextension::GL_EXT_direct_state_access } },
+    { "glIsEnabledIndexedEXT", { GLextension::GL_EXT_direct_state_access, GLextension::GL_EXT_draw_buffers2 } },
     { "glIsFenceAPPLE", { GLextension::GL_APPLE_fence } },
     { "glIsFenceNV", { GLextension::GL_NV_fence } },
     { "glIsFramebuffer", { GLextension::GL_ARB_framebuffer_object } },
@@ -986,7 +985,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glIsPathNV", { GLextension::GL_NV_path_rendering } },
     { "glIsPointInFillPathNV", { GLextension::GL_NV_path_rendering } },
     { "glIsPointInStrokePathNV", { GLextension::GL_NV_path_rendering } },
-    { "glIsProgramARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glIsProgramARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glIsProgramNV", { GLextension::GL_NV_vertex_program } },
     { "glIsProgramPipeline", { GLextension::GL_ARB_separate_shader_objects } },
     { "glIsQueryARB", { GLextension::GL_ARB_occlusion_query } },
@@ -1006,9 +1005,9 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glIsVertexAttribEnabledAPPLE", { GLextension::GL_APPLE_vertex_program_evaluators } }
 };
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_J{};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_J;
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_K{};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_K;
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_L =
 {
@@ -1372,10 +1371,10 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glProgramBufferParametersIivNV", { GLextension::GL_NV_parameter_buffer_object } },
     { "glProgramBufferParametersIuivNV", { GLextension::GL_NV_parameter_buffer_object } },
     { "glProgramBufferParametersfvNV", { GLextension::GL_NV_parameter_buffer_object } },
-    { "glProgramEnvParameter4dARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glProgramEnvParameter4dvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glProgramEnvParameter4fARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glProgramEnvParameter4fvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glProgramEnvParameter4dARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glProgramEnvParameter4dvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glProgramEnvParameter4fARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glProgramEnvParameter4fvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glProgramEnvParameterI4iNV", { GLextension::GL_NV_gpu_program4 } },
     { "glProgramEnvParameterI4ivNV", { GLextension::GL_NV_gpu_program4 } },
     { "glProgramEnvParameterI4uiNV", { GLextension::GL_NV_gpu_program4 } },
@@ -1383,10 +1382,10 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glProgramEnvParameters4fvEXT", { GLextension::GL_EXT_gpu_program_parameters } },
     { "glProgramEnvParametersI4ivNV", { GLextension::GL_NV_gpu_program4 } },
     { "glProgramEnvParametersI4uivNV", { GLextension::GL_NV_gpu_program4 } },
-    { "glProgramLocalParameter4dARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glProgramLocalParameter4dvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glProgramLocalParameter4fARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
-    { "glProgramLocalParameter4fvARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glProgramLocalParameter4dARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glProgramLocalParameter4dvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glProgramLocalParameter4fARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
+    { "glProgramLocalParameter4fvARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glProgramLocalParameterI4iNV", { GLextension::GL_NV_gpu_program4 } },
     { "glProgramLocalParameterI4ivNV", { GLextension::GL_NV_gpu_program4 } },
     { "glProgramLocalParameterI4uiNV", { GLextension::GL_NV_gpu_program4 } },
@@ -1408,7 +1407,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glProgramParameters4dvNV", { GLextension::GL_NV_vertex_program } },
     { "glProgramParameters4fvNV", { GLextension::GL_NV_vertex_program } },
     { "glProgramPathFragmentInputGenNV", { GLextension::GL_NV_path_rendering } },
-    { "glProgramStringARB", { GLextension::GL_ARB_vertex_program, GLextension::GL_ARB_fragment_program } },
+    { "glProgramStringARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glProgramSubroutineParametersuivNV", { GLextension::GL_NV_gpu_program5 } },
     { "glProgramUniform1d", { GLextension::GL_ARB_separate_shader_objects } },
     { "glProgramUniform1dEXT", { GLextension::GL_EXT_direct_state_access } },
@@ -1571,7 +1570,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glRasterPos3xvOES", { GLextension::GL_OES_fixed_point } },
     { "glRasterPos4xOES", { GLextension::GL_OES_fixed_point } },
     { "glRasterPos4xvOES", { GLextension::GL_OES_fixed_point } },
-    { "glRasterSamplesEXT", { GLextension::GL_NV_framebuffer_mixed_samples, GLextension::GL_EXT_raster_multisample, GLextension::GL_EXT_texture_filter_minmax } },
+    { "glRasterSamplesEXT", { GLextension::GL_EXT_raster_multisample, GLextension::GL_EXT_texture_filter_minmax, GLextension::GL_NV_framebuffer_mixed_samples } },
     { "glReadInstrumentsSGIX", { GLextension::GL_SGIX_instruments } },
     { "glReadnPixels", { GLextension::GL_KHR_robustness } },
     { "glReadnPixelsARB", { GLextension::GL_ARB_robustness } },
@@ -2317,13 +2316,13 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glWriteMaskEXT", { GLextension::GL_EXT_vertex_shader } }
 };
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_X{};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_X;
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Y{};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Y;
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Z{};
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Z;
 
-const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27> Meta_ExtensionsByFunctionStringMaps = 
+const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27> Meta_ExtensionsByFunctionStringMaps =
 { {
     Meta_ExtensionsByFunctionString_0,
     Meta_ExtensionsByFunctionString_A,
@@ -2353,6 +2352,5 @@ const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27>
     Meta_ExtensionsByFunctionString_Y,
     Meta_ExtensionsByFunctionString_Z
 } };
-
 
 } // namespace glbinding

@@ -1,18 +1,16 @@
 from binding import *
-from classes.Extension import *
 
+from context import Context
 
-def genExtensions(api, extensions, outputdir, outputfile):
-
-    of = outputfile.replace("?", "")
-    od = outputdir.replace("?", "")
-    t = template(of).replace("%a", api)
-
-    status(od + of)
-    
-    if not os.path.exists(od):
-        os.makedirs(od)
-
-    with open(od + of, 'w') as file:
-        file.write(t % (",\n" + tab).join(
-            [ extensionBID(e) for e in extensions ]))
+def genExtensionContexts(extensions):
+    extensionContexts = []
+    for extension in extensions:
+        commandContexts = Context.listContext([{"identifier": functionBID(c), "name": c.name} for c in extension.reqCommands],
+                                              sortKey = lambda c: c["identifier"])
+        extensionContexts.append({"identifier": extensionBID(extension),
+                                  "name": extension.name,
+                                  "incore": extension.incore,
+                                  "incoreMajor": extension.incore.major if extension.incore else None,
+                                  "incoreMinor": extension.incore.minor if extension.incore else None,
+                                  "reqCommands": commandContexts})
+    return extensionContexts

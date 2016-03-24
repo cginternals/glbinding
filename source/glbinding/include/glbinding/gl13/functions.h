@@ -1,12 +1,11 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
 #include <glbinding/gl/functions.h>
 
+
 namespace gl13
 {
-
 
 using gl::glAccum;
 using gl::glActiveTexture;
@@ -394,6 +393,5 @@ using gl::glVertex4s;
 using gl::glVertex4sv;
 using gl::glVertexPointer;
 using gl::glViewport;
-
 
 } // namespace gl13

@@ -2,6 +2,10 @@
 
 import sys, getopt
 
+import time
+
+from os.path import join as pjoin
+
 import xml.etree.ElementTree as ET
 
 from classes.Feature import *
@@ -12,22 +16,18 @@ from classes.Type import *
 
 from binding import *
 
-from gen_revision import *
+from context import Context
 
-from gen_features import *
-from gen_bitfields import *
-from gen_booleans import *
-from gen_enums import *
-from gen_values import *
-from gen_types import *
 
-from gen_extensions import *
-from gen_functions import *
-
-from gen_versions import *
-
-from gen_meta import *
-from gen_test import *
+def listApiMemberSets(features):
+    apiMemberSetList = []
+    for f in features:
+        if f.api == "gl": # ToDo: probably seperate for all apis
+            apiMemberSetList.append( (f, False, False) )
+            if f.major > 3 or (f.major == 3 and f.minor >= 2):
+                apiMemberSetList.append( (f, True, False) )
+            apiMemberSetList.append( (f, False, True) )
+    return apiMemberSetList
 
 def generate(inputfile, patchfile, targetdir, revisionfile):
 
@@ -41,7 +41,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print("checking revision")
     file = open(revisionfile, "r")
     revision = int(file.readline())
-    file.close()    
+    file.close()
     print(" revision is " + str(revision))
 
     print("loading " + inputfile)
@@ -68,7 +68,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print("parsing commands")
     commands   = parseCommands(registry, features, extensions, api)
     print(" # " + str(len(commands)) + " commands parsed")
-        
+
     print("parsing enums")
     enums      = parseEnums(registry, features, extensions, commands, api)
     print(" # " + str(len(enums)) + " enums parsed")
@@ -124,16 +124,16 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     print("resolving groups")
     resolveGroups(groups, enumsByName)
-        
+
     print("resolving enums")
     resolveEnums(enums, enumsByName, groupsByName)
 
-    # verifying 
+    # verifying
 
     print("")
     print("VERIFYING")
 
-    bitfGroups = [ g for g in groups 
+    bitfGroups = [ g for g in groups
         if len(g.enums) > 0 and any(enum.type == "GLbitfield" for enum in g.enums) ]
 
     print("verifying groups")
@@ -146,74 +146,72 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
     print("")
     print("GENERATING")
+    generateBegin = time.time()
 
-    includedir = targetdir + "/include/glbinding/"
-    sourcedir  = targetdir + "/source/"
-    testdir    = targetdir + "/../tests/glbinding-test/"
+    includedir = pjoin(targetdir, "include/glbinding/")
+    includedir_api = pjoin(includedir, "{api}{memberSet}/")
+    sourcedir  = pjoin(targetdir, "source/")
+    sourcedir_api  = pjoin(sourcedir, "{api}/")
+    testdir    = pjoin(targetdir, "../tests/glbinding-test/")
 
-    includedir_api = includedir + api + "?/"
-    sourcedir_api  = sourcedir  + api + "?/"
+    context = Context(api, revision, features, extensions, enums, bitfGroups, types, commands)
+    generalContext = context.general()
 
-    # Generate API namespace classes (gl, gles1, gles2, ...) - ToDo: for now only gl
+    # Generate files with common context
+    Generator.generate(generalContext, pjoin(sourcedir, "glrevision.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "extension.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "boolean.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "values.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "types.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "bitfield.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "enum.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "functions.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "gl.h"))
 
-    genRevision                    (     revision,           sourcedir,      "glrevision.h")
+    Generator.generate(generalContext, pjoin(sourcedir_api, "types.cpp"))
+    Generator.generate(generalContext, pjoin(testdir, "AllVersions_test.cpp"))
+    Generator.generate(generalContext, pjoin(includedir, "Binding.h"))
+    Generator.generate(generalContext, pjoin(sourcedir, "Binding_list.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir, "Version_ValidVersions.cpp"))
 
-    genExtensions                  (api, extensions,         includedir_api, "extension.h")
+    Generator.generate(generalContext, pjoin(includedir, "Meta.h"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_Maps.h"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_getStringByBitfield.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByBitfield.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_BitfieldsByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByBoolean.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_BooleansByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByEnum.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_EnumsByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
 
-    genBooleans                    (api, enums,              includedir_api, "boolean.h")
-    genBooleansFeatureGrouped      (api, enums, features,    includedir_api, "boolean?.h")
+    # Generate function-related files with specific contexts for each initial letter of the function name
+    for functionGroup in generalContext["functionsByInitial"]["groups"]:
+        specificContext = generalContext.copy()
+        specificContext["currentFunctionGroup"] = functionGroup
+        specificContext["currentFunctionInitial"] = functionGroup["name"].lower()
 
-    genValues                      (api, enums,              includedir_api, "values.h")
-    genValuesFeatureGrouped        (api, enums, features,    includedir_api, "values?.h")
+        Generator.generate(specificContext, pjoin(sourcedir_api, "functions_{currentFunctionInitial}.cpp"), "functions.cpp")
+        Generator.generate(specificContext, pjoin(sourcedir, "Binding_objects_{currentFunctionInitial}.cpp"), "Binding_objects.cpp")
 
-    genTypes_h                     (api, types, bitfGroups,  includedir_api, "types.h") 
-    genTypesFeatureGrouped         (api, types, bitfGroups,  features,  includedir_api, "types?.h")
+    # Generate files with ApiMemberSet-specific contexts
+    for feature, core, ext in context.apiMemberSets():
+        specificContext = context.apiMemberSetSpecific(feature, core, ext)
 
-    genBitfieldsAll                (api, enums,              includedir_api, "bitfield.h")
-    genBitfieldsFeatureGrouped     (api, enums, features,    includedir_api, "bitfield?.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "boolean.h"), "booleanF.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "values.h"), "valuesF.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "types.h"), "typesF.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "bitfield.h"), "bitfieldF.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "enum.h"), "enumF.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "functions.h"), "functionsF.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "gl.h"), "glF.h")
 
-    genEnumsAll                    (api, enums,              includedir_api, "enum.h")
-    genEnumsFeatureGrouped         (api, enums, features,    includedir_api, "enum?.h")
-
-    genForwardFunctions            (api, commands,           includedir_api, "functions.h")
-    genFunctionsFeatureGrouped     (api, commands, features, includedir_api, "functions?.h")
-    
-    genFeatures                    (api, features,           includedir_api, "gl?.h")
-
-    genTypes_cpp                   (api, types, bitfGroups,  sourcedir_api,  "types.cpp")
-    genFunctions                   (api, commands,           sourcedir_api,  "functions_?.cpp")
-
-    genTest                        (api, features,           testdir,  "AllVersions_test.cpp")
-
-    # Generate GLBINDING namespace classes
-
-    genFunctionObjects_h           (commands,           includedir, "Binding.h")
-    genFunctionList_cpp            (commands,           sourcedir,  "Binding_list.cpp")
-    genFunctionObjects_cpp         (commands,           sourcedir,  "Binding_objects_?.cpp")
-
-    genVersions                    (features,           sourcedir,  "Version_ValidVersions.cpp")
-
-    # ToDo: the generation of enum to/from string will probably be unified...
-    genMeta_h                      (bitfGroups,         includedir, "Meta.h")
-    genMetaMaps		               (bitfGroups,         sourcedir,  "Meta_Maps.h")
-    genMetaGetStringByBitfield     (bitfGroups,         sourcedir,  "Meta_getStringByBitfield.cpp")
-    genMetaStringsByBitfield       (bitfGroups,         sourcedir,  "Meta_StringsByBitfield.cpp")
-    genMetaBitfieldByString        (bitfGroups,         sourcedir,  "Meta_BitfieldsByString.cpp")
-    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByBoolean.cpp",  "GLboolean")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_BooleansByString.cpp",  "GLboolean", "Boolean")
-    genMetaStringsByEnum           (enums,              sourcedir,  "Meta_StringsByEnum.cpp",     "GLenum")
-    genMetaEnumsByString           (enums,              sourcedir,  "Meta_EnumsByString.cpp",     "GLenum", "Enum")
-
-    genMetaStringsByExtension      (extensions,         sourcedir,  "Meta_StringsByExtension.cpp")
-    genMetaExtensionsByString      (extensions,         sourcedir,  "Meta_ExtensionsByString.cpp")
-
-    genMetaReqVersionsByExtension  (extensions,         sourcedir,  "Meta_ReqVersionsByExtension.cpp")
-
-    genMetaFunctionStringsByExtension(extensions,       sourcedir,  "Meta_FunctionStringsByExtension.cpp")
-    genMetaExtensionsByFunctionString(extensions,       sourcedir,  "Meta_ExtensionsByFunctionString.cpp")
-
-
-    print("")
+    generateEnd = time.time()
+    print("generation took {:.3f} seconds".format(generateEnd - generateBegin))
 
 
 def main(argv):
@@ -222,11 +220,11 @@ def main(argv):
     except getopt.GetoptError:
         print("usage: %s -s <GL spec> [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
         sys.exit(1)
-        
+
     targetdir = "."
     inputfile = None
     patchfile = None
-    
+
     for opt, arg in opts:
         if opt in ("-s", "--spec"):
             inputfile = arg
@@ -239,7 +237,7 @@ def main(argv):
 
         if opt in ("-r", "--revision"):
             revision  = arg
-            
+
     if inputfile == None:
         print("no GL spec file given")
         sys.exit(1)

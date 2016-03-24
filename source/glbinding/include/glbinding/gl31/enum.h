@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -8,7 +7,6 @@
 
 namespace gl31
 {
-
 
 // import enums to namespace
 
@@ -1648,6 +1646,5 @@ using gl::GL_PRIMITIVE_RESTART_INDEX;
 using gl::GL_BUFFER_ACCESS_FLAGS;
 using gl::GL_BUFFER_MAP_LENGTH;
 using gl::GL_BUFFER_MAP_OFFSET;
-
 
 } // namespace gl31

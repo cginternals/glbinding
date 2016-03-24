@@ -1,14 +1,11 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
 
 #include <glbinding/gl/bitfield.h>
 
-
 namespace gl41core
 {
-
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -31,6 +28,5 @@ using gl::GL_MAP_INVALIDATE_BUFFER_BIT;
 using gl::GL_MAP_FLUSH_EXPLICIT_BIT;
 using gl::GL_MAP_UNSYNCHRONIZED_BIT;
 using gl::GL_ALL_SHADER_BITS;
-
 
 } // namespace gl41core

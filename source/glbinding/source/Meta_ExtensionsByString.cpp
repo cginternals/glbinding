@@ -3,12 +3,11 @@
 
 #include <glbinding/gl/extension.h>
 
-using namespace gl; // ToDo: multiple APIs?
 
+using namespace gl; // ToDo: multiple APIs?
 
 namespace glbinding
 {
-
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_0 =
 {
@@ -247,11 +246,11 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A =
     { "GL_ATI_vertex_streams", GLextension::GL_ATI_vertex_streams }
 };
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_B{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_B;
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_C{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_C;
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_D{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_D;
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E =
 {
@@ -358,7 +357,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E =
     { "GL_EXT_x11_sync_object", GLextension::GL_EXT_x11_sync_object }
 };
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_F{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_F;
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_G =
 {
@@ -392,7 +391,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_I =
     { "GL_INTEL_performance_query", GLextension::GL_INTEL_performance_query }
 };
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_J{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_J;
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_K =
 {
@@ -408,7 +407,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_K =
     { "GL_KHR_texture_compression_astc_sliced_3d", GLextension::GL_KHR_texture_compression_astc_sliced_3d }
 };
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_L{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_L;
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_M =
 {
@@ -540,7 +539,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_P =
     { "GL_PGI_vertex_hints", GLextension::GL_PGI_vertex_hints }
 };
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Q{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Q;
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_R =
 {
@@ -615,11 +614,11 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_S =
     { "GL_SUN_vertex", GLextension::GL_SUN_vertex }
 };
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_T{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_T;
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_U{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_U;
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_V{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_V;
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_W =
 {
@@ -627,11 +626,11 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_W =
     { "GL_WIN_specular_fog", GLextension::GL_WIN_specular_fog }
 };
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_X{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_X;
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Y{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Y;
 
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Z{};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_Z;
 
 const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_ExtensionsByStringMaps =
 { {
@@ -663,6 +662,5 @@ const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_Exte
     Meta_ExtensionsByString_Y,
     Meta_ExtensionsByString_Z
 } };
-
 
 } // namespace glbinding

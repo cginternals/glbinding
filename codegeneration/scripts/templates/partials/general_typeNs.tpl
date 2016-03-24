@@ -1,0 +1,1 @@
+{{#type.modifiers}}{{type.modifiers}} {{/type.modifiers}}{{#type.ns}}{{type.ns}}::{{/type.ns}}{{type.type}}

@@ -1,12 +1,11 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl; // ToDo: multiple APIs?
 
-
-namespace glbinding 
+namespace glbinding
 {
-
 
 Function<void, GLfloat, GLboolean> Binding::SampleCoverage("glSampleCoverage");
 Function<void, GLfloat, GLboolean> Binding::SampleCoverageARB("glSampleCoverageARB");
@@ -118,6 +117,5 @@ Function<void, GLsizei, const void *> Binding::StringMarkerGREMEDY("glStringMark
 Function<void, GLuint, GLuint> Binding::SubpixelPrecisionBiasNV("glSubpixelPrecisionBiasNV");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::SwizzleEXT("glSwizzleEXT");
 Function<void, GLuint> Binding::SyncTextureINTEL("glSyncTextureINTEL");
-
 
 } // namespace glbinding

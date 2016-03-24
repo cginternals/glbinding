@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>

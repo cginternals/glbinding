@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -8,7 +7,6 @@
 
 namespace gl42core
 {
-
 
 // import enums to namespace
 
@@ -1301,6 +1299,5 @@ using gl::GL_UNIFORM_ATOMIC_COUNTER_BUFFER_INDEX;
 using gl::GL_UNSIGNED_INT_ATOMIC_COUNTER;
 using gl::GL_MAX_ATOMIC_COUNTER_BUFFER_BINDINGS;
 using gl::GL_NUM_SAMPLE_COUNTS;
-
 
 } // namespace gl42core

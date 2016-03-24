@@ -1,12 +1,11 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl; // ToDo: multiple APIs?
 
-
-namespace glbinding 
+namespace glbinding
 {
-
 
 Function<void, GLenum, const void *> Binding::IglooInterfaceSGIX("glIglooInterfaceSGIX");
 Function<void, GLenum, GLenum, GLfloat> Binding::ImageTransformParameterfHP("glImageTransformParameterfHP");
@@ -92,6 +91,5 @@ Function<GLboolean, GLuint, GLenum> Binding::IsVariantEnabledEXT("glIsVariantEna
 Function<GLboolean, GLuint> Binding::IsVertexArray("glIsVertexArray");
 Function<GLboolean, GLuint> Binding::IsVertexArrayAPPLE("glIsVertexArrayAPPLE");
 Function<GLboolean, GLuint, GLenum> Binding::IsVertexAttribEnabledAPPLE("glIsVertexAttribEnabledAPPLE");
-
 
 } // namespace glbinding

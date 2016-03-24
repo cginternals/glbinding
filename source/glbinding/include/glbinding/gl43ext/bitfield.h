@@ -1,14 +1,11 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
 
 #include <glbinding/gl/bitfield.h>
 
-
 namespace gl43ext
 {
-
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -102,6 +99,5 @@ using gl::GL_TEXCOORD3_BIT_PGI;
 using gl::GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV;
 using gl::GL_TEXCOORD4_BIT_PGI;
 using gl::GL_ALL_BARRIER_BITS_EXT;
-
 
 } // namespace gl43ext

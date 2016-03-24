@@ -1,12 +1,11 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl; // ToDo: multiple APIs?
 
-
-namespace glbinding 
+namespace glbinding
 {
-
 
 Function<void, GLint, GLdouble> Binding::Uniform1d("glUniform1d");
 Function<void, GLint, GLsizei, const GLdouble *> Binding::Uniform1dv("glUniform1dv");
@@ -138,6 +137,5 @@ Function<void, GLuint> Binding::UseProgram("glUseProgram");
 Function<void, GLhandleARB> Binding::UseProgramObjectARB("glUseProgramObjectARB");
 Function<void, GLuint, UseProgramStageMask, GLuint> Binding::UseProgramStages("glUseProgramStages");
 Function<void, GLenum, GLuint> Binding::UseShaderProgramEXT("glUseShaderProgramEXT");
-
 
 } // namespace glbinding

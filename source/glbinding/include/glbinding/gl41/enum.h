@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -8,7 +7,6 @@
 
 namespace gl41
 {
-
 
 // import enums to namespace
 
@@ -1832,6 +1830,5 @@ using gl::GL_MAX_GEOMETRY_INPUT_COMPONENTS;
 using gl::GL_MAX_GEOMETRY_OUTPUT_COMPONENTS;
 using gl::GL_MAX_FRAGMENT_INPUT_COMPONENTS;
 using gl::GL_CONTEXT_PROFILE_MASK;
-
 
 } // namespace gl41

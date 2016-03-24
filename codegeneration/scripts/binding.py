@@ -1,10 +1,14 @@
 
 import os, sys
+import pystache
 
-templatedir = "templates/"
+from classes.Extension import Extension
+
+execDir     = os.path.dirname(os.path.abspath(sys.argv[0])) + "/"
+templateDir = "templates/"
+templateExtension = "tpl"
 tab         = "    "
 tab2        = tab + tab
-execdir     = os.path.dirname(os.path.abspath(sys.argv[0])) + "/"
 
 
 def versionBID(feature, core = False, ext = False):
@@ -24,9 +28,50 @@ def versionBID(feature, core = False, ext = False):
 
 def template(outputfile):
 
-    with open (execdir + templatedir + outputfile + ".in", "r") as file:
+    with open (execDir + templateDir + outputfile + ".in", "r") as file:
         return file.read()
 
+def supportedLambda(obj):
+    return lambda feature, core, ext: ( not ext and obj.supported(feature, core)
+                                         or ext and not obj.supported(feature, False) )
+
+def enumSuffixPriority(name):
+
+    index = name.rfind("_")
+    if index < 0:
+        return -1
+
+    ext = name[index + 1:]
+
+    if ext not in Extension.suffixes:
+        return -1
+
+    return Extension.suffixes.index(ext)
+
+class Generator:
+
+    renderer = None
+
+    @classmethod
+    def generate(_class, context, outputPath, templateName=None):
+        if _class.renderer is None:
+            _class.renderer = pystache.Renderer(search_dirs=os.path.join(execDir, templateDir),
+                                                file_extension=templateExtension,
+                                                escape=lambda u: u)
+
+        outputDir = os.path.dirname(outputPath).format(**context)
+        if not os.path.exists(outputDir):
+            os.makedirs(outputDir)
+
+        outputFile = os.path.basename(outputPath)
+        if templateName is None:
+            templateName = outputFile
+        outputFile = outputFile.format(**context)
+
+        print("generating {} in {}".format(outputFile, outputDir)) #TODO-LW move logging to appropriate place
+
+        with open(os.path.join(outputDir, outputFile), 'w') as file:
+            file.write(_class.renderer.render_name(templateName, context))
 
 class Status:
 
@@ -49,7 +94,7 @@ def enumBID(enum):
 # ToDo: discuss - just use name for glbinding?
 def extensionBID(extension):
 
-    return extension.name    
+    return extension.name
 
 
 def functionBID(function):
@@ -71,10 +116,12 @@ def alphabeticallyGroupedLists():
 
     return lists
 
+def alphabeticalGroupKeys():
+    return [str(c) for c in "0ABCDEFGHIJKLMNOPQRSTUVWXYZ"]
 
 def alphabeticalGroupKey(identifier, prefix):
 
-    # derives an key from an identifier with "GL_" prefix 
+    # derives an key from an identifier with "GL_" prefix
 
     index = identifier.find(prefix)
     if index < 0:

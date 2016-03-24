@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -8,7 +7,6 @@
 
 namespace gl45
 {
-
 
 // import enums to namespace
 
@@ -2219,6 +2217,5 @@ using gl::GL_NEGATIVE_ONE_TO_ONE;
 using gl::GL_ZERO_TO_ONE;
 using gl::GL_CLEAR_TEXTURE;
 using gl::GL_NUM_SAMPLE_COUNTS;
-
 
 } // namespace gl45

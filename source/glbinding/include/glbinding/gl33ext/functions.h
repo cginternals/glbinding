@@ -1,12 +1,11 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
 #include <glbinding/gl/functions.h>
 
+
 namespace gl33ext
 {
-
 
 using gl::glAccumxOES;
 using gl::glActiveProgramEXT;
@@ -2132,6 +2131,5 @@ using gl::glWindowPos4ivMESA;
 using gl::glWindowPos4sMESA;
 using gl::glWindowPos4svMESA;
 using gl::glWriteMaskEXT;
-
 
 } // namespace gl33ext

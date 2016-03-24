@@ -1,12 +1,11 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl; // ToDo: multiple APIs?
 
-
-namespace glbinding 
+namespace glbinding
 {
-
 
 Function<void, GLenum> Binding::Begin("glBegin");
 Function<void, GLuint, GLenum> Binding::BeginConditionalRender("glBeginConditionalRender");
@@ -123,6 +122,5 @@ Function<void, GLenum, GLenum, GLint> Binding::BufferParameteriAPPLE("glBufferPa
 Function<void, GLenum, GLsizeiptr, const void *, BufferStorageMask> Binding::BufferStorage("glBufferStorage");
 Function<void, GLenum, GLintptr, GLsizeiptr, const void *> Binding::BufferSubData("glBufferSubData");
 Function<void, GLenum, GLintptrARB, GLsizeiptrARB, const void *> Binding::BufferSubDataARB("glBufferSubDataARB");
-
 
 } // namespace glbinding

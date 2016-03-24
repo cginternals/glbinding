@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -7,7 +6,6 @@
 
 namespace gl45core
 {
-
 
 using gl::GLextension;
 using gl::GLenum;
@@ -72,6 +70,5 @@ using gl::UnusedMask;
 using gl::BufferAccessMask;
 using gl::BufferStorageMask;
 using gl::PathFontStyle;
-
 
 } // namespace gl45core

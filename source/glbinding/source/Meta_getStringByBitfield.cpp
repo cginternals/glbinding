@@ -8,12 +8,10 @@
 
 using namespace gl; // ToDo: multiple APIs?
 
-
 namespace
 {
     static const auto none = std::string{};
 }
-
 
 namespace glbinding
 {
@@ -29,6 +27,7 @@ const std::string & Meta::getString(const AttribMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const BufferAccessMask glbitfield)
 {
     const auto i = Meta_StringsByBufferAccessMask.find(glbitfield);
@@ -38,6 +37,7 @@ const std::string & Meta::getString(const BufferAccessMask glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const BufferStorageMask glbitfield)
 {
@@ -49,6 +49,7 @@ const std::string & Meta::getString(const BufferStorageMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const ClearBufferMask glbitfield)
 {
     const auto i = Meta_StringsByClearBufferMask.find(glbitfield);
@@ -58,6 +59,7 @@ const std::string & Meta::getString(const ClearBufferMask glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const ClientAttribMask glbitfield)
 {
@@ -69,6 +71,7 @@ const std::string & Meta::getString(const ClientAttribMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const ContextFlagMask glbitfield)
 {
     const auto i = Meta_StringsByContextFlagMask.find(glbitfield);
@@ -78,6 +81,7 @@ const std::string & Meta::getString(const ContextFlagMask glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const ContextProfileMask glbitfield)
 {
@@ -89,6 +93,7 @@ const std::string & Meta::getString(const ContextProfileMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const FfdMaskSGIX glbitfield)
 {
     const auto i = Meta_StringsByFfdMaskSGIX.find(glbitfield);
@@ -98,6 +103,7 @@ const std::string & Meta::getString(const FfdMaskSGIX glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const FragmentShaderColorModMaskATI glbitfield)
 {
@@ -109,6 +115,7 @@ const std::string & Meta::getString(const FragmentShaderColorModMaskATI glbitfie
     return none;
 }
 
+
 const std::string & Meta::getString(const FragmentShaderDestMaskATI glbitfield)
 {
     const auto i = Meta_StringsByFragmentShaderDestMaskATI.find(glbitfield);
@@ -118,6 +125,7 @@ const std::string & Meta::getString(const FragmentShaderDestMaskATI glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const FragmentShaderDestModMaskATI glbitfield)
 {
@@ -129,6 +137,7 @@ const std::string & Meta::getString(const FragmentShaderDestModMaskATI glbitfiel
     return none;
 }
 
+
 const std::string & Meta::getString(const MapBufferUsageMask glbitfield)
 {
     const auto i = Meta_StringsByMapBufferUsageMask.find(glbitfield);
@@ -138,6 +147,7 @@ const std::string & Meta::getString(const MapBufferUsageMask glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const MemoryBarrierMask glbitfield)
 {
@@ -149,6 +159,7 @@ const std::string & Meta::getString(const MemoryBarrierMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const PathFontStyle glbitfield)
 {
     const auto i = Meta_StringsByPathFontStyle.find(glbitfield);
@@ -158,6 +169,7 @@ const std::string & Meta::getString(const PathFontStyle glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const PathRenderingMaskNV glbitfield)
 {
@@ -169,6 +181,7 @@ const std::string & Meta::getString(const PathRenderingMaskNV glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL glbitfield)
 {
     const auto i = Meta_StringsByPerformanceQueryCapsMaskINTEL.find(glbitfield);
@@ -178,6 +191,7 @@ const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL glbitfie
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const SyncObjectMask glbitfield)
 {
@@ -189,6 +203,7 @@ const std::string & Meta::getString(const SyncObjectMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const TextureStorageMaskAMD glbitfield)
 {
     const auto i = Meta_StringsByTextureStorageMaskAMD.find(glbitfield);
@@ -198,6 +213,7 @@ const std::string & Meta::getString(const TextureStorageMaskAMD glbitfield)
     }
     return none;
 }
+
 
 const std::string & Meta::getString(const UnusedMask glbitfield)
 {
@@ -209,6 +225,7 @@ const std::string & Meta::getString(const UnusedMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const UseProgramStageMask glbitfield)
 {
     const auto i = Meta_StringsByUseProgramStageMask.find(glbitfield);
@@ -219,6 +236,7 @@ const std::string & Meta::getString(const UseProgramStageMask glbitfield)
     return none;
 }
 
+
 const std::string & Meta::getString(const VertexHintsMaskPGI glbitfield)
 {
     const auto i = Meta_StringsByVertexHintsMaskPGI.find(glbitfield);
@@ -228,7 +246,5 @@ const std::string & Meta::getString(const VertexHintsMaskPGI glbitfield)
     }
     return none;
 }
-
-
 
 } // namespace glbinding

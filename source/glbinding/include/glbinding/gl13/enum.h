@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -8,7 +7,6 @@
 
 namespace gl13
 {
-
 
 // import enums to namespace
 
@@ -1159,6 +1157,5 @@ using gl::GL_NUM_COMPRESSED_TEXTURE_FORMATS;
 using gl::GL_COMPRESSED_TEXTURE_FORMATS;
 using gl::GL_DOT3_RGB;
 using gl::GL_DOT3_RGBA;
-
 
 } // namespace gl13

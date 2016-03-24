@@ -1,4 +1,3 @@
-
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -7,15 +6,9 @@
 namespace gl
 {
 
-/**
- * @brief
- *   An extension enum to enumerate all extensions known to the gl.xml.
- *
- * GLextension is not a type introduced by OpenGL API so far.
- */
-enum class GLextension : int
+enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
 {
-    UNKNOWN = -1, ///< The value for an unknown extension.
+    UNKNOWN = -1,
     GL_3DFX_multisample,
     GL_3DFX_tbuffer,
     GL_3DFX_texture_compression_FXT1,
@@ -559,5 +552,5 @@ enum class GLextension : int
     GL_WIN_specular_fog
 };
 
-
 } // namespace gl
+
