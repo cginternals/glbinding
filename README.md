@@ -49,6 +49,7 @@ int main()
 * [Tips for Linking](#tips-for-linking)
 
 ###### Feature Documentation and Code Snippets
+* [Initialization](#initialization)
 * [Type-safe Parameters](#type-safe-parameters)
 * [Compilation-Centered Header Design](#compilation-centered-header-design)
 * [Feature-Centered Header Design](#feature-centered-header-design)
@@ -206,6 +207,46 @@ target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
 
 ## Features
 
+
+### Initialization
+
+To use glbinding, it has to be initialized on the target OpenGL context first. The target OpenGL context is the context you want to use glbinding with. This function has to be called once while the target OpenGL context is currently active (using OpenGL language: is *current*). This is required to prepare the internals for the connection to the OpenGL library.
+
+##### Basic Usage
+
+In the most simple case, you call ```glbinding::Binding::initialize``` once. This example is valid for applications that uses one context in one thread.
+```cpp
+#include <glbinding/gl/gl.h>
+#include <glbinding/Binding.h>
+
+using namespace gl;
+
+int main()
+{
+  // create context, e.g. using GLFW, Qt, SDL, GLUT, ...
+
+  glbinding::Binding::initialize();
+
+  glBegin(GL_TRIANGLES);
+  // ...
+  glEnd();
+}
+```
+
+##### Multi-threaded OpenGL Context usage
+
+If you want to use one OpenGL context in multiple threads, you have to call the initialize method once per thread. This is required because the *current* status of an OpenGL context is dependend on the current thread, i.e., you can have different contexts *current* in different threads. In order to allow for this, glbinding has to differentiate between registered OpenGL contexts per thread.
+
+Beware of using one OpenGL context in multiple threads concurrently! Most likely, it won't result in a meaningful sequence of OpenGL calls. If you really want to use one OpenGL context in multiple threads, be sure to treat semantic groups of OpenGL calls as critical sections.
+
+##### Multiple OpenGL Contexts usage
+
+OpenGL allows for multiple contexts per program/process to be created and used. The one limitation is that only one context can be *current* at a given time. As each context can correspond to a different feature set of OpenGL and the drivers are free to assign their function pointers, glbinding **cannot** assume any equalities of requested function pointers. This means a user *must* tell glbinding of all contexts he wants to use and when the switches of *current* contexts occured.
+Concluding, a user have to call the initialize method once per OpenGL context (when it is current) and has to update the current context if it has changed.
+
+##### Multiple OpenGL Contexts in multiple Threads
+
+The combination of multiple OpenGL contexts and multiple threads for OpenGL usage is supported by glbinding. You must tell glbinding which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::Binding::initialize()```) and if you want to switch the *current* context for one thread, you have to update the current context, too (```glbinding::Binding::useCurrentContext()```). We strongly discourage the use of one context in multiple threads and we don't see real added value in using multiple contexts in one thread, so the main use case would be to use one OpenGL context per thread. This means you mainly have to register the context you want to use per thread once and leave it as is.
 
 ### Type-Safe Parameters
 
