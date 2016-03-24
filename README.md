@@ -56,8 +56,8 @@ int main()
 * [Multi-context Support](#multi-context-support)
 * [Multi-thread Support](#multi-threading-support)
 * [Global and Local Function Callbacks](#function-callbacks) 
-* [Meta Information System](#meta-information)
 * [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
+* [Meta Information System](#meta-information)
 * [Doxygen Documentation](https://cginternals.github.io/glbinding/documentation)
 
 
@@ -187,6 +187,23 @@ For ease-of-use, the update and generation can be triggered using the generated 
 
 
 
+## Tips for Linking
+
+We suggest using the build system of glbinding for a smooth integration: [CMake](https://cmake.org/)
+For it, *glbinding* provides a find configuration script that should be installed into your system or at least accessible by CMake. 
+In the projects CMakeLists.txt, add one of the following lines:
+```
+find_package(glbinding QUIET) # if you want to check for existance
+find_package(glbinding REQUIRED) # if it is really required in your project
+```
+Finally, just link glbinding to your own library or executable:
+```
+target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
+```
+
+
+
+
 ## Features
 
 
@@ -286,42 +303,6 @@ gl32core::glDrawElementsInstanced(gl32core::GL_TRIANGLES, 18, gl32core::GL_UNSIG
 ```
 If the code compiles than you can be sure it is OpenGL 3.2 Core compliant.
 Using functions that are not yet available or relying on deprecated functionality is prevented.
-
-
-
-
-#### Alternative Signatures
-
-The OpenGL API is designed without function overloading using only simple parameter types. 
-This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). 
-Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. 
-This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum```, and ```GLbitfield``` types. 
-Using type-save functions of glbinding, some typically compiling code constructs are now deliberately broken. 
-For most of those cases we provide alternative *overloaded* function signatures. 
-Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
-
-To use alternative function signatures, confer to the following example:
-```cpp
-#include <glbinding/gl/gl.h>
-#include <glbinding/gl/functions-patches.h>
-
-using namespace gl;
-
-// ...
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
-```
-Note that these function signatures are *only* defined in the ```gl``` namespace. 
-If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to other ones or manually import the used alternative signatures into the other namespace using ```using``` declarations.
-
-
-
-
-
-
 
 
 
@@ -559,6 +540,37 @@ setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 ```
 
 # MORE FROM WIKI END
+
+
+
+
+#### Alternative Signatures
+
+The OpenGL API is designed without function overloading using only simple parameter types. 
+This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). 
+Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. 
+This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum```, and ```GLbitfield``` types. 
+Using type-save functions of glbinding, some typically compiling code constructs are now deliberately broken. 
+For most of those cases we provide alternative *overloaded* function signatures. 
+Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
+
+To use alternative function signatures, confer to the following example:
+```cpp
+#include <glbinding/gl/gl.h>
+#include <glbinding/gl/functions-patches.h>
+
+using namespace gl;
+
+// ...
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
+```
+Note that these function signatures are *only* defined in the ```gl``` namespace. 
+If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to other ones or manually import the used alternative signatures into the other namespace using ```using``` declarations.
+
 
 
 
