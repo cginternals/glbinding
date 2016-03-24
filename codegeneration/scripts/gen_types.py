@@ -1,9 +1,27 @@
 from binding import *
+
 from classes.Type import *
-from classes.Enum import *
+
+
+REGULAR_TYPE_INTEGRATIONS = {
+    "GLextension" : [ "hashable", "streamable" ],
+    "GLboolean"   : [ "hashable", "streamable" ],
+    "GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
+}
+BITFIELD_TYPE_INTEGRATIONS = [ "hashable", "bitfieldStreamable", "bitOperatable"]
+TYPE_INTEGRATIONS = [ "addable", "bitOperatable", "bitfieldStreamable", "comparable", "hashable", "streamable"]
+
+
+def integrationMap(integrationList):
+    return { integration: (integration in integrationList) for integration in TYPE_INTEGRATIONS}
+
+
+def typeIntegrationMap(type):
+    return integrationMap(REGULAR_TYPE_INTEGRATIONS[type.name] if type.name in REGULAR_TYPE_INTEGRATIONS else [])
 
 
 # ToDo: move this to Type class? (as well as convert an multiline convert)
+enum_classes = [ "GLboolean", "GLenum" ]
 
 def convertTypedefLine(line, name):
 
@@ -16,17 +34,6 @@ def convertTypedefLine(line, name):
 def multilineConvertTypedef(type):
 
     return "\n".join([ convertTypedefLine(line, type.name) for line in type.value.split('\n') ])
-
-
-enum_classes = [ "GLboolean", "GLenum" ]
-
-type_integration_map = {
-    "GLextension" : [ "hashable", "streamable" ],
-    "GLboolean"   : [ "hashable", "streamable" ],
-    "GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
-}
-bitf_group_integrations = [ "hashable", "bitfieldStreamable", "bitOperatable"]
-all_integrations = [ "addable", "bitOperatable", "bitfieldStreamable", "comparable", "hashable", "streamable"]
 
 
 def convertTypedef(type):
@@ -50,76 +57,21 @@ def convertType(type):
     return convertTypedef(type).replace(" ;", ";").replace("( *)", "(*)").replace("(*)", "(GL_APIENTRY *)")
 
 
-def genTypeHeaders(api, types, bitfGroups, features, path):
-
-    genTypesH(api, types, bitfGroups, path, None)
-
-    # gen enums feature grouped
-    for f in features:
-        if f.api == "gl": # ToDo: probably seperate for all apis
-            genTypesH(api, types, bitfGroups, path, f)
-            if f.major > 3 or (f.major == 3 and f.minor >= 2):
-                genTypesH(api, types, bitfGroups, path, f, True)
-            genTypesH(api, types, bitfGroups, path, f, False, True)
-
-
-def typeIntegrationMap(type):
-    return integrationMap(type_integration_map[type.name] if type.name in type_integration_map else [])
-
-def integrationMap(integrationList):
-    return { integration: integration in integrationList for integration in all_integrations}
-
 def genTypeContexts(types, bitfGroups):
     typeContexts = [{"identifier": "GLextension",
                      "definition": "enum class GLextension : int;",
-                     "integrations": integrationMap([ "hashable", "streamable" ])}]
+                     "integrations": integrationMap([ "hashable", "streamable" ]),
+                     "hasIntegrations": True}]
     for type in types: #TODO-LW: explicitly sort types and bitfGroups
+        integrations = typeIntegrationMap(type)
         typeContexts.append({"identifier": type.name,
                              "definition": convertType(type),
-                             "integrations": typeIntegrationMap(type)})
+                             "integrations": integrations,
+                             "hasIntegrations": any(integrations.values()) })
     for bitf in bitfGroups:
+        integrations = integrationMap(BITFIELD_TYPE_INTEGRATIONS)
         typeContexts.append({"identifier": bitf.name,
                              "definition": "enum class {} : unsigned int;".format(bitf.name),
-                             "integrations": integrationMap(bitf_group_integrations)})
+                             "integrations": integrations,
+                             "hasIntegrations": any(integrations.values()) })
     return typeContexts
-
-def genTypesH(api, types, bitfGroups, path, feature, core = False, ext = False):
-
-    typeContexts = [       {"identifier": "GLextension",
-                            "definition": "enum class GLextension : int;",
-                            "integrations": integrationMap([ "hashable", "streamable" ])}]
-    typeContexts.extend([  {"identifier": type.name,
-                            "definition": convertType(type),
-                            "integrations": typeIntegrationMap(type)}
-                            for type in types])
-    typeContexts.extend([  {"identifier": group.name,
-                            "definition": "enum class {} : unsigned int;".format(group.name),
-                            "integrations": integrationMap(bitf_group_integrations)}
-                            for group in bitfGroups])
-    context = { "api": api,
-                "feature": versionBID(feature, core, ext),
-                "types": typeContexts,
-                "define": (feature is None),
-                "import": (feature is not None)}
-
-    Generator.generate(context, path)
-
-
-def genTypeSources(api, types, bitfGroups, path):
-
-    typeContexts = [       {"identifier": "GLextension",
-                            "definition": "enum class GLextension : int;",
-                            "integrations": integrationMap([ "hashable", "streamable" ])}]
-    typeContexts.extend([  {"identifier": type.name,
-                            "definition": convertType(type),
-                            "integrations": typeIntegrationMap(type)}
-                            for type in types])
-    typeContexts.extend([  {"identifier": group.name,
-                            "definition": "enum class {} : unsigned int;".format(group.name),
-                            "integrations": integrationMap(bitf_group_integrations)}
-                            for group in bitfGroups])
-    context = { "api": api,
-                "feature": versionBID(None),
-                "types": typeContexts}
-
-    Generator.generate(context, path)

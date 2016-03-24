@@ -16,22 +16,7 @@ from classes.Type import *
 
 from binding import *
 
-from gen_revision import *
-
-from gen_features import *
-from gen_bitfields import *
-from gen_booleans import *
-from gen_enums import *
-from gen_values import *
-from gen_types import *
-
-from gen_extensions import *
-from gen_functions import *
-
-from gen_versions import *
-
-from gen_meta import *
-from gen_test import *
+from context import Context
 
 
 def listApiMemberSets(features):
@@ -173,116 +158,44 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     includedir_api_old = pjoin(includedir, api + "?/")
     sourcedir_api_old = pjoin(sourcedir, api + "?/")
 
-    # Prepare common context:
-    # TODO-LW: this might go into a separate function
-    apiMemberSetList = listApiMemberSets(features)
-    extensionContexts = genExtensionContexts(extensions)
-    booleanContexts = genBooleanContexts(enums)
-    valueContexts = genValueContexts(enums)
-    typeContexts = genTypeContexts(types, bitfGroups)
-    bitfieldContexts = genBitfieldContexts(enums, bitfGroups)
-    enumContexts = genEnumContexts(enums)
-    functionContexts = genFunctionContexts(commands)
-    featureContexts = genFeatureContexts(features)
-
-    context = {"api": api,
-               "memberSet": "",
-               "revision": revision}
-    context["apiMemberSets"] = listContext( [{"memberSet": versionBID(feature, core, ext)}
-                                             for feature, core, ext in ( [(None, False, False)] + apiMemberSetList )] )
-    context["extensions"] = listContext(extensionContexts, sortKey = lambda e: e["identifier"])
-    extensionsByCommands = groupItems(extensionContexts, groupKey = lambda e: [ i["item"]["identifier"] for i in e["reqCommands"]["items"] ])
-    extensionsByCommandsContexts = [{"command": c, "extensions": listContext(extensionsByCommands[c], sortKey = lambda e: e["identifier"])} for c in extensionsByCommands.keys()]
-    context["extensionsByCommandsByInitial"] = groupedContext(extensionsByCommandsContexts,
-                                                   groupKey = lambda e: [ alphabeticalGroupKey(e["command"], "gl") ],
-                                                   groupKeyList = alphabeticalGroupKeys(),
-                                                   groupSortKey = lambda i: str(i),
-                                                   itemSortKey = lambda e: e["command"])
-    # TODO-LW: use extensions instead of extensionsIncore for Meta_ReqVersionsByExtension.cpp
-    context["extensionsIncore"] = listContext(extensionContexts,
-                                              filter = lambda e: e["incore"],
-                                              sortKey = lambda e: (e["incoreMajor"] if e["incoreMajor"] else 0, e["incoreMinor"] if e["incoreMinor"] else 0))
-    context["extensionsByInitial"] = groupedContext(extensionContexts,
-                                                   groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "GL_") ],
-                                                   groupKeyList = alphabeticalGroupKeys(),
-                                                   groupSortKey = lambda k: k,
-                                                   itemSortKey = lambda e: e["identifier"])
-    context["booleans"] = listContext(booleanContexts, sortKey = lambda e: e["identifier"])
-    context["valuesByType"] = groupedContext(valueContexts, groupKey = lambda e: [ e["type"] ])
-    context["types"] = listContext(typeContexts)
-    context["bitfields"] = listContext(bitfieldContexts, sortKey = lambda b: b["value"])
-    context["bitfieldsByGroup"] = groupedContext(bitfieldContexts,
-                                                 groupKey = lambda b: [ i["item"] for i in b["groups"]["items"] ],
-                                                 primaryGroupKey = lambda b: b["primaryGroup"],
-                                                 groupSortKey = lambda g: g,
-                                                 itemSortKey = lambda b: b["value"])
-    context["bitfieldsByInitial"] = groupedContext(bitfieldContexts,
-                                                   groupKey = lambda b: [ alphabeticalGroupKey(b["identifier"], "GL_") ],
-                                                   groupKeyList = alphabeticalGroupKeys(),
-                                                   groupSortKey = lambda k: k,
-                                                   itemSortKey = lambda b: b["identifier"])
-    context["bitfieldGroups"] = listContext([g.name for g in bitfGroups], sortKey = lambda g: g)
-    context["enums"] = listContext(enumContexts, sortKey = lambda e: e["value"])
-    context["enumsByGroup"] = groupedContext(enumContexts,
-                                             groupKey = lambda e: [ i["item"] for i in e["groups"]["items"] ],
-                                             primaryGroupKey = lambda e: e["primaryGroup"],
-                                             groupSortKey = lambda g: g,
-                                             itemSortKey = lambda e: e["value"])
-    context["enumsByValue"] = groupedContext(enumContexts,
-                                             groupKey = lambda e: [ int(e["value"], 0) ],
-                                             groupSortKey = lambda g: g,
-                                             itemSortKey = lambda e: (enumSuffixPriority(e["identifier"]), e["identifier"]))
-    context["enumsByInitial"] = groupedContext(enumContexts,
-                                               groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "GL_") ],
-                                               groupKeyList = alphabeticalGroupKeys(),
-                                               groupSortKey = lambda k: k,
-                                               itemSortKey = lambda e: e["identifier"])
-    context["functions"] = listContext(functionContexts, sortKey = lambda f: f["identifier"])
-    context["functionsByInitial"] = groupedContext(functionContexts,
-                                                   groupKey = lambda f: [ alphabeticalGroupKey(f["identifier"], "gl") ],
-                                                   groupKeyList = alphabeticalGroupKeys(),
-                                                   groupSortKey = lambda k: k,
-                                                   itemSortKey = lambda f: f["identifier"])
-    context["features"] = listContext(featureContexts)
-    context["latestFeature"] = context["features"]["items"][-1]["item"]
+    context = Context(api, revision, features, extensions, enums, bitfGroups, types, commands)
+    generalContext = context.general()
 
     # Generate files with common context
-    Generator.generate(context, pjoin(sourcedir, "glrevision.h"))
-    Generator.generate(context, pjoin(includedir_api, "extension.h"))
-    Generator.generate(context, pjoin(includedir_api, "boolean.h"))
-    Generator.generate(context, pjoin(includedir_api, "values.h"))
-    Generator.generate(context, pjoin(includedir_api, "types.h"))
-    Generator.generate(context, pjoin(includedir_api, "bitfield.h"))
-    Generator.generate(context, pjoin(includedir_api, "enum.h"))
-    Generator.generate(context, pjoin(includedir_api, "functions.h"))
-    Generator.generate(context, pjoin(includedir_api, "gl.h"))
+    Generator.generate(generalContext, pjoin(sourcedir, "glrevision.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "extension.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "boolean.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "values.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "types.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "bitfield.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "enum.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "functions.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "gl.h"))
 
-    Generator.generate(context, pjoin(sourcedir_api, "types.cpp"))
-    Generator.generate(context, pjoin(testdir, "AllVersions_test.cpp"))
-    Generator.generate(context, pjoin(includedir, "Binding.h"))
-    Generator.generate(context, pjoin(sourcedir, "Binding_list.cpp"))
-    Generator.generate(context, pjoin(sourcedir, "Version_ValidVersions.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir_api, "types.cpp"))
+    Generator.generate(generalContext, pjoin(testdir, "AllVersions_test.cpp"))
+    Generator.generate(generalContext, pjoin(includedir, "Binding.h"))
+    Generator.generate(generalContext, pjoin(sourcedir, "Binding_list.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir, "Version_ValidVersions.cpp"))
 
-    Generator.generate(context, pjoin(includedir, "Meta.h"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_Maps.h"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_getStringByBitfield.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_StringsByBitfield.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_BitfieldsByString.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_StringsByBoolean.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_BooleansByString.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_StringsByEnum.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_EnumsByString.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
-    Generator.generate(context, pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
-
-    # TODO-LW once files are correctly generated, remove redundant methods in gen_xxx.py
+    Generator.generate(generalContext, pjoin(includedir, "Meta.h"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_Maps.h"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_getStringByBitfield.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByBitfield.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_BitfieldsByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByBoolean.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_BooleansByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByEnum.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_EnumsByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_StringsByExtension.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
 
     # Generate function-related files with specific contexts for each initial letter of the function name
-    for functionGroup in context["functionsByInitial"]["groups"]:
-        specificContext = context.copy()
+    for functionGroup in generalContext["functionsByInitial"]["groups"]:
+        specificContext = generalContext.copy()
         specificContext["currentFunctionGroup"] = functionGroup
         specificContext["currentFunctionInitial"] = functionGroup["name"].lower()
 
@@ -290,27 +203,8 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
         Generator.generate(specificContext, pjoin(sourcedir, "Binding_objects_{currentFunctionInitial}.cpp"), "Binding_objects.cpp")
 
     # Generate files with ApiMemberSet-specific contexts
-    for feature, core, ext in apiMemberSetList:
-        specificContext = {"api": api,
-                           "memberSet": versionBID(feature, core, ext),
-                           "revision": revision}
-
-        specificContext["booleans"] = listContext(booleanContexts, sortKey = lambda e: e["identifier"])
-        specificContext["valuesByType"] = groupedContext(valueContexts, groupKey = lambda v: [ v["type"] ],
-                                                        groupSortKey = lambda t: t,
-                                                        itemSortKey = lambda v: v["value"],
-                                                        filter = lambda v: v["supported"](feature, core, ext))
-        specificContext["types"] = context["types"]
-        specificContext["bitfields"] = listContext(bitfieldContexts, sortKey = lambda b: b["value"],
-                                                  filter = lambda b: b["supported"](feature, core, ext))
-        specificContext["enumsByGroup"] = groupedContext(enumContexts,
-                                                        groupKey = lambda e: [ i["item"] for i in e["groups"]["items"] ],
-                                                        primaryGroupKey = lambda e: e["primaryGroup"],
-                                                        groupSortKey = lambda g: g,
-                                                        itemSortKey = lambda b: b["value"],
-                                                        filter = lambda e: e["supported"](feature, core, ext))
-        specificContext["functions"] = listContext(functionContexts, sortKey = lambda f: f["identifier"],
-                                                  filter = lambda f: f["supported"](feature, core, ext))
+    for feature, core, ext in context.apiMemberSets():
+        specificContext = context.apiMemberSetSpecific(feature, core, ext)
 
         Generator.generate(specificContext, pjoin(includedir_api, "boolean.h"), "booleanF.h")
         Generator.generate(specificContext, pjoin(includedir_api, "values.h"), "valuesF.h")
