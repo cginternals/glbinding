@@ -196,8 +196,8 @@ glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
 
 glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or operation is valid, 
-                                                    //  the shared group is AttribMask, but the
-                                                    //  resulting group does not match the expected.
+                                                    // the shared group is AttribMask, but the
+                                                    // resulting group does not match the expected.
 ```
 Unfortunately, such groups are incomplete and unmaintained for enums (named values). 
 Thus, glbinding could not provide any assistance for cases such as:
@@ -209,8 +209,15 @@ GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error 
 
 #### Alternative Signatures
 
-The OpenGL API is designed without function overloading using only simple parameter types. This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum``` and ```GLbitfield``` types. Using the type-save function from glbinding, some typically compiling code constructs are now broken. For most of those cases we provide alternative *overloaded* function signatures. Additionally, we also fix signatures that are semantically broken in the ```gl.xml``` without noticing when using the type similarity of the integer types.
-To use these alternative function signatures, confer to the following example:
+The OpenGL API is designed without function overloading using only simple parameter types. 
+This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). 
+Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. 
+This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum```, and ```GLbitfield``` types. 
+Using type-save functions of glbinding, some typically compiling code constructs are now deliberately broken. 
+For most of those cases we provide alternative *overloaded* function signatures. 
+Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
+
+To use alternative function signatures, confer to the following example:
 ```cpp
 #include <glbinding/gl/gl.h>
 #include <glbinding/gl/functions-patches.h>
@@ -224,7 +231,10 @@ glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
 ```
-Beware of the namespace these additional functions are defined in. These function signatures are *only* defined in the ```gl``` namespace. If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to the other one or manually import the used alternative signatures into the other namespace (using ```using``` declarations).
+Note that these function signatures are *only* defined in the ```gl``` namespace. 
+If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to other ones or manually import the used alternative signatures into the other namespace using ```using``` declarations.
+
+
 
 #### Per Feature API Header
 
