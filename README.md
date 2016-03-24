@@ -237,7 +237,7 @@ There is one additional header that provides all extensions and provide them as 
 
 
 
-## Feature-Centered Header Design
+#### Feature-Centered Header Design
 
 The OpenGL API comes with different versions, internally named *features*. The current features of OpenGL are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, 4.4, and 4.5. Besides the features, there is a distinction between compatability and core contexts as well as forward and non-forward contexts. This results in many possible specific manifestations of the OpenGL API you can use in your program.
 
