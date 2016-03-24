@@ -56,9 +56,9 @@ TEST_F(MultiContext_test, Test)
     glfwMakeContextCurrent(window1);
     Binding::initialize(false);
 
-#ifdef  WIN32
+#ifdef  SYSTEM_WINDOWS
     EXPECT_EQ(Version(3, 2), ContextInfo::version());
-#elif defined(__APPLE__)
+#elif defined(SYSTEM_DARWIN)
     EXPECT_EQ(Version(4, 1), ContextInfo::version());
     EXPECT_EQ(nullptr, Binding::DispatchCompute.address());
 #else // Linux
@@ -68,11 +68,6 @@ TEST_F(MultiContext_test, Test)
 
     glfwMakeContextCurrent(window2);
     Binding::initialize(false);
-
-#ifdef WIN32
-#elif defined(__APPLE__)
-#else // Linux
-#endif
 
     Binding::releaseCurrentContext();
     glfwMakeContextCurrent(window1);

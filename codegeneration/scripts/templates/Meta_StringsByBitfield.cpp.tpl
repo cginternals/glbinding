@@ -1,4 +1,3 @@
-#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
@@ -20,5 +19,3 @@ const std::unordered_map<{{name}}, std::string> Meta_StringsBy{{name}} =
 
 {{/bitfieldsByGroup.groups}}
 } // namespace glbinding
-
-#endif // EXTENSIVE_META

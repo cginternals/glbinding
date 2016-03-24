@@ -2,8 +2,12 @@
 #include "CubeScape.h"
 
 #include <iostream>
+#include <algorithm>
 #include <fstream>
-#include <math.h>
+#include <cmath>
+
+#include <cpplocate/cpplocate.h>
+#include <cpplocate/ModuleInfo.h>
 
 #include <glbinding/gl/gl.h>
 
@@ -14,6 +18,19 @@ using namespace gl;
 
 namespace
 {
+
+// taken from iozeug::FilePath::toPath
+std::string normalizePath(const std::string & filepath)
+{
+    auto copy = filepath;
+    std::replace( copy.begin(), copy.end(), '\\', '/');
+    auto i = copy.find_last_of('/');
+    if (i == copy.size()-1)
+    {
+        copy = copy.substr(0, copy.size()-1);
+    }
+    return copy;
+}
 
 bool readFile(const std::string & filePath, std::string & content)
 {
@@ -51,13 +68,21 @@ CubeScape::CubeScape()
 , m_a(0.f)
 , m_numcubes(16)
 {
+    cpplocate::ModuleInfo moduleInfo = cpplocate::findModule("glbinding");
+
+    // Get data path
+    std::string dataPath = moduleInfo.value("dataPath");
+    dataPath = normalizePath(dataPath);
+    if (dataPath.size() > 0) dataPath = dataPath + "/";
+    else                     dataPath = "data/";
+
     GLuint vs = glCreateShader(GL_VERTEX_SHADER);
     GLuint gs = glCreateShader(GL_GEOMETRY_SHADER);
     GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
 
-    std::string vertexSource   = readFile("data/cubescape/cubescape.vert");
-    std::string geometrySource = readFile("data/cubescape/cubescape.geom");
-    std::string fragmentSource = readFile("data/cubescape/cubescape.frag");
+    std::string vertexSource   = readFile(dataPath + "cubescape/cubescape.vert");
+    std::string geometrySource = readFile(dataPath + "cubescape/cubescape.geom");
+    std::string fragmentSource = readFile(dataPath + "cubescape/cubescape.frag");
 
     const char * vertSource = vertexSource.c_str();
     const char * geomSource = geometrySource.c_str();
@@ -97,7 +122,7 @@ CubeScape::CubeScape()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, static_cast<int>(GL_LINEAR));
 
     {
-        RawFile terrain("data/cubescape/terrain.64.64.r.ub.raw");
+        RawFile terrain(dataPath + "cubescape/terrain.64.64.r.ub.raw");
         if (!terrain.isValid())
             std::cout << "warning: loading texture from " << terrain.filePath() << " failed.";
 
@@ -113,7 +138,7 @@ CubeScape::CubeScape()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, static_cast<int>(GL_NEAREST));
 
     {
-        RawFile patches("data/cubescape/patches.64.16.rgb.ub.raw");
+        RawFile patches(dataPath + "cubescape/patches.64.16.rgb.ub.raw");
         if (!patches.isValid())
             std::cout << "warning: loading texture from " << patches.filePath() << " failed.";
 

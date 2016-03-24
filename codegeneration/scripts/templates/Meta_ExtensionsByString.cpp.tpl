@@ -1,6 +1,4 @@
 
-// NOTE: this is intended to work regardless of a EXTENSIVE_META definition.
-
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/extension.h>

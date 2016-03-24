@@ -1,11 +1,12 @@
+
 #pragma once
 
 #include <glbinding/SharedBitfield.h>
 
-#include <glbinding/gl/types.h>
 
 namespace glbinding 
 {
+
 
 template <typename T>
 SharedBitfieldBase<T>::SharedBitfieldBase(T value)
@@ -248,5 +249,6 @@ operator^=(Enum & a, ConvertibleEnum b)
 {
     return a ^= static_cast<Enum>(b);
 }
+
 
 } // namespace glbinding

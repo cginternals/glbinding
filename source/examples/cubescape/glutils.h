@@ -35,10 +35,10 @@ struct vec3
     inline gl::GLfloat & operator[](const int i) { return v[i]; }
     inline const gl::GLfloat & operator[](const int i) const { return v[i]; }
 
-    vec3 & operator+(const vec3 rhs);
-    vec3 & operator-(const vec3 rhs);
-    vec3 & operator*(const vec3 rhs);
-    vec3 & operator/(const vec3 rhs);
+    vec3 & operator+(const vec3 & rhs);
+    vec3 & operator-(const vec3 & rhs);
+    vec3 & operator*(const vec3 & rhs);
+    vec3 & operator/(const vec3 & rhs);
 
     gl::GLfloat length();
     void normalize();

@@ -1,82 +1,117 @@
 
+# 
+# External dependencies
+# 
+
+find_package(GLFW)
+
+
+# 
+# Executable name and options
+# 
+
+# Target name
 set(target glbinding-test)
 
-#
-# External libraries
-#
-
-find_package(OpenGL REQUIRED)
-find_package(GLFW QUIET)
-
 if (NOT GLFW_FOUND)
-	message("Test ${target} skipped: GLFW not found")
-	return()
+    message("Test ${target} skipped: GLFW not found")
+    return()
+else()
+    message(STATUS "Test ${target}")
 endif()
 
-message(STATUS "Test ${target}")
 
-#
-# Includes
-#
-
-include_directories(
-    ${OPENGL_INCLUDE_DIR}
-    ${GLFW_INCLUDE_DIR}
-)
-
-include_directories(
-    BEFORE
-    ${CMAKE_SOURCE_DIR}/source/glbinding/include
-    ${CMAKE_SOURCE_DIR}/source/glbinding/source
-)
-
-#
-# Libraries
-#
-
-set(libs
-    ${OPENGL_LIBRARIES}
-    ${GLFW_LIBRARY}
-    ${GMOCK_LIBRARIES}
-    ${GTEST_LIBRARIES}
-    glbinding
-)
-
-#
+# 
 # Sources
-#	
-set(glbinding_source_path ${CMAKE_SOURCE_DIR}/source/glbinding/source)
+# 
 
 set(sources
     main.cpp
     AllVersions_test.cpp
-    # MultiContext_test.cpp
-    # MultiThreading_test.cpp
     RingBuffer_test.cpp
-    ${glbinding_source_path}/RingBuffer.h
-    ${glbinding_source_path}/RingBuffer.hpp
     SharedBitfield_test.cpp
-    # regession test
+    
+    # regession tests
     Regression_test_82.cpp
 )
 
-#
+
+# 
+# Create executable
+# 
+
 # Build executable
-#
+add_executable(${target}
+    ${sources}
+)
 
-add_executable(${target} ${sources})
+# Create namespaced alias
+add_executable(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
-target_link_libraries(${target} ${libs})
 
-target_compile_options(${target} PRIVATE ${DEFAULT_COMPILE_FLAGS})
+# 
+# Project options
+# 
 
 set_target_properties(${target}
     PROPERTIES
-    LINKER_LANGUAGE              CXX
-    FOLDER                      "${IDE_FOLDER}"
-    COMPILE_DEFINITIONS_DEBUG   "${DEFAULT_COMPILE_DEFS_DEBUG}"
-    COMPILE_DEFINITIONS_RELEASE "${DEFAULT_COMPILE_DEFS_RELEASE}"
-    LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
-    LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
-    LINK_FLAGS                  "${DEFAULT_LINKER_FLAGS}"
-    DEBUG_POSTFIX               "d${DEBUG_POSTFIX}")
+    ${DEFAULT_PROJECT_OPTIONS}
+    FOLDER "${IDE_FOLDER}"
+)
+
+
+# 
+# Include directories
+# 
+
+target_include_directories(${target}
+    PRIVATE
+    ${DEFAULT_INCLUDE_DIRECTORIES}
+    ${PROJECT_BINARY_DIR}/source/include
+    ${PROJECT_SOURCE_DIR}/source/glbinding/source/
+    SYSTEM
+    ${GLFW_INCLUDE_DIR}
+)
+
+
+# 
+# Libraries
+# 
+
+target_link_libraries(${target}
+    PRIVATE
+    ${DEFAULT_LIBRARIES}
+    ${GLFW_LIBRARIES}
+    ${META_PROJECT_NAME}::glbinding
+    gmock-dev
+)
+
+
+# 
+# Compile definitions
+# 
+
+target_compile_definitions(${target}
+    PRIVATE
+    ${DEFAULT_COMPILE_DEFINITIONS}
+)
+
+
+# 
+# Compile options
+# 
+
+target_compile_options(${target}
+    PRIVATE
+    ${DEFAULT_COMPILE_OPTIONS}
+)
+
+
+# 
+# Linker options
+# 
+
+target_link_libraries(${target}
+    PRIVATE
+    ${DEFAULT_LINKER_OPTIONS}
+)

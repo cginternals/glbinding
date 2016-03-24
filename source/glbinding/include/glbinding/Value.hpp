@@ -1,9 +1,14 @@
+
 #pragma once
 
 #include <glbinding/Value.h>
 
-namespace glbinding 
+#include <ostream>
+
+
+namespace
 {
+
 
 template <typename... Arguments>
 struct ValueAdder;
@@ -33,6 +38,13 @@ void addValuesTo(std::vector<glbinding::AbstractValue*> & values, Arguments&&...
 }
 
 
+} // namespace
+
+
+namespace glbinding 
+{
+
+
 template <typename T>
 Value<T>::Value(const T & _value)
 : value(_value)
@@ -46,7 +58,7 @@ void Value<T>::printOn(std::ostream & stream) const
 }
 
 template <typename Argument>
-AbstractValue * createValue(Argument argument)
+AbstractValue * createValue(const Argument & argument)
 {
     return new Value<Argument>(argument);
 }
@@ -58,5 +70,6 @@ std::vector<AbstractValue*> createValues(Arguments&&... arguments)
     addValuesTo(values, std::forward<Arguments>(arguments)...);
     return values;
 }
+
 
 } // namespace glbinding

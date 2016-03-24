@@ -1,4 +1,3 @@
-#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
@@ -284,5 +283,3 @@ const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_Bitfi
 } };
 
 } // namespace glbinding
-
-#endif // EXTENSIVE_META

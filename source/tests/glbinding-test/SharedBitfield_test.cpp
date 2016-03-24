@@ -55,6 +55,8 @@ TEST(SharedBitfield, Usage1a)
     shared1 |= shared2;
 
     bitsA_c |= shared1;
+
+    EXPECT_EQ(bitsA_a | bitsA_b, bitsA_c);
 }
 
 TEST(SharedBitfield, Usage1b)
@@ -72,6 +74,8 @@ TEST(SharedBitfield, Usage1b)
     shared1 |= shared2;
 
     bitsA_c |= shared1;
+
+    EXPECT_EQ(bitsA_a | bitsA_b, bitsA_c);
 }
 
 TEST(SharedBitfield, Usage2)

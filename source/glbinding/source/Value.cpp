@@ -6,8 +6,10 @@
 
 #include <glbinding/Meta.h>
 
+
 namespace 
 {
+
 
 std::string wrapString(const char * value)
 {
@@ -18,10 +20,13 @@ std::string wrapString(const char * value)
     return ss.str();
 }
 
-}
+
+} // namespace
+
 
 namespace glbinding 
 {
+
 
 template <>
 void Value<gl::GLenum>::printOn(std::ostream & stream) const
@@ -66,5 +71,6 @@ void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) const
     ss << "{ " << value[0] << ", " << value[1] << " }";
     stream << ss.str();
 }
+
 
 } // namespace glbinding

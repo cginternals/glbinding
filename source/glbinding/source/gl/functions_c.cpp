@@ -170,9 +170,9 @@ void glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLsizeip
     return Binding::ClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data);
 }
 
-void glClearNamedFramebufferfi(GLuint framebuffer, GLenum buffer, const GLfloat depth, GLint stencil)
+void glClearNamedFramebufferfi(GLuint framebuffer, GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil)
 {
-    return Binding::ClearNamedFramebufferfi(framebuffer, buffer, depth, stencil);
+    return Binding::ClearNamedFramebufferfi(framebuffer, buffer, drawbuffer, depth, stencil);
 }
 
 void glClearNamedFramebufferfv(GLuint framebuffer, GLenum buffer, GLint drawbuffer, const GLfloat * value)

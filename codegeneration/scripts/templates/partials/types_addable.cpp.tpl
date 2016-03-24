@@ -1,9 +1,16 @@
-{{api}}::{{identifier}} operator+(const {{api}}::{{identifier}} & a, std::underlying_type<{{api}}::{{identifier}}>::type b)
+namespace {{api}}
 {
-    return static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) + b);
+
+
+{{identifier}} operator+(const {{identifier}} & a, std::underlying_type<{{identifier}}>::type b)
+{
+    return static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) + b);
 }
 
-{{api}}::{{identifier}} operator-(const {{api}}::{{identifier}} & a, std::underlying_type<{{api}}::{{identifier}}>::type b)
+{{identifier}} operator-(const {{identifier}} & a, std::underlying_type<{{identifier}}>::type b)
 {
-    return static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) - b);
+    return static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) - b);
 }
+
+
+} // namespace {{api}}

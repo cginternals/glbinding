@@ -43,7 +43,7 @@ Viewer::Viewer(
     restore();
 
     updateAfterFullScreenToggle();
-};
+}
 
 
 Viewer::~Viewer()

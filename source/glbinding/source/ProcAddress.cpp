@@ -1,11 +1,11 @@
 
 #include <glbinding/ProcAddress.h>
 
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
     #include <string>
     #include <tchar.h>
     #include <windows.h>
-#elif __APPLE__
+#elif SYSTEM_DARWIN
     #include <cassert>
     #include <string>
     #include <dlfcn.h>
@@ -13,12 +13,14 @@
     #include <GL/glx.h>
 #endif
 
+
 namespace glbinding 
 {
 
+
 ProcAddress getProcAddress(const char * name)
 {
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
 
     using PROCADDRESS = void (__stdcall *)();
     auto procAddress = reinterpret_cast<PROCADDRESS>(wglGetProcAddress(name));
@@ -29,25 +31,27 @@ ProcAddress getProcAddress(const char * name)
         procAddress = reinterpret_cast<PROCADDRESS>(::GetProcAddress(module, name));
     }
 
-#elif __APPLE__
+#elif SYSTEM_DARWIN
 
     using PROCADDRESS = void *;
 
-    auto library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
+    // TODO: Use a static declaration for library?
+    const auto library = dlopen("/System/Library/Frameworks/OpenGL.framework/Versions/Current/OpenGL", RTLD_LAZY);
     assert(library != nullptr);
 
-    auto symbol = dlsym(library, name);
+    const auto symbol = dlsym(library, name);
 
     auto procAddress = reinterpret_cast<PROCADDRESS>(symbol);
 
 #else
 
     using PROCADDRESS = void (*)();
-    auto procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
+    const auto procAddress = reinterpret_cast<PROCADDRESS>(glXGetProcAddress(reinterpret_cast<const unsigned char*>(name)));
 
 #endif
 
     return reinterpret_cast<ProcAddress>(procAddress);
 }
+
 
 } // namespace glbinding

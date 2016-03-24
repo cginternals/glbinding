@@ -1,27 +1,37 @@
 
-# Generate meta-header
-configure_file(glbinding-version.h.in ${CMAKE_CURRENT_BINARY_DIR}/glbinding-version.h)
+# 
+# Configuration for all sub-projects
+# 
 
-# We do NOT want to deploy this header (at least not for binary packages)
-#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glbinding/glbinding-version.h DESTINATION ${INSTALL_INCLUDE}/glbinding)
+# Generate version-header
+string(TOUPPER ${META_PROJECT_NAME} META_PROJECT_NAME_UPPER)
+configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_NAME}/${META_PROJECT_NAME}-version.h)
 
-# Include directories
-include_directories(
-    ${CMAKE_CURRENT_BINARY_DIR}
-)
+
+# 
+# Sub-projects
+# 
 
 # Libraries
 set(IDE_FOLDER "")
 add_subdirectory(glbinding)
 
+# Examples
+set(IDE_FOLDER "Examples")
+add_subdirectory(examples)
+
+# Examples
+set(IDE_FOLDER "Tools")
+add_subdirectory(tools)
+
 # Tests
 set(IDE_FOLDER "Tests")
 add_subdirectory(tests)
 
-# Tests
-set(IDE_FOLDER "Tools")
-add_subdirectory(tools)
 
-# Applications
-set(IDE_FOLDER "Examples")
-add_subdirectory(examples)
+# 
+# Deployment
+# 
+
+# Deploy generated headers
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_NAME} DESTINATION include COMPONENT dev)

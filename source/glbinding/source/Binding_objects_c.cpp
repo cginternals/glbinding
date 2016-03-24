@@ -39,7 +39,7 @@ Function<void, GLuint, GLenum, GLenum, GLenum, const void *> Binding::ClearNamed
 Function<void, GLuint, GLenum, GLenum, GLenum, const void *> Binding::ClearNamedBufferDataEXT("glClearNamedBufferDataEXT");
 Function<void, GLuint, GLenum, GLintptr, GLsizeiptr, GLenum, GLenum, const void *> Binding::ClearNamedBufferSubData("glClearNamedBufferSubData");
 Function<void, GLuint, GLenum, GLsizeiptr, GLsizeiptr, GLenum, GLenum, const void *> Binding::ClearNamedBufferSubDataEXT("glClearNamedBufferSubDataEXT");
-Function<void, GLuint, GLenum, const GLfloat, GLint> Binding::ClearNamedFramebufferfi("glClearNamedFramebufferfi");
+Function<void, GLuint, GLenum, GLint, GLfloat, GLint> Binding::ClearNamedFramebufferfi("glClearNamedFramebufferfi");
 Function<void, GLuint, GLenum, GLint, const GLfloat *> Binding::ClearNamedFramebufferfv("glClearNamedFramebufferfv");
 Function<void, GLuint, GLenum, GLint, const GLint *> Binding::ClearNamedFramebufferiv("glClearNamedFramebufferiv");
 Function<void, GLuint, GLenum, GLint, const GLuint *> Binding::ClearNamedFramebufferuiv("glClearNamedFramebufferuiv");

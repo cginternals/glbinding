@@ -42,30 +42,55 @@ std::string bitfieldString(T value)
         }
 	}
 	return ss.str();
-};
+}
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value)
+namespace gl
+{
+
+
+std::ostream & operator<<(std::ostream & stream, const GLextension & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
 }
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value)
+} // namespace gl
+
+
+namespace gl
+{
+
+
+std::ostream & operator<<(std::ostream & stream, const GLenum & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
 }
 
-gl::GLenum operator+(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+
+} // namespace gl
+
+namespace gl
 {
-    return static_cast<gl::GLenum>(static_cast<std::underlying_type<gl::GLenum>::type>(a) + b);
+
+
+GLenum operator+(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) + b);
 }
 
-gl::GLenum operator-(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
+GLenum operator-(const GLenum & a, std::underlying_type<GLenum>::type b)
 {
-    return static_cast<gl::GLenum>(static_cast<std::underlying_type<gl::GLenum>::type>(a) - b);
+    return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) - b);
 }
+
+
+} // namespace gl
+
+namespace gl
+{
+
 
 bool operator==(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b)
 {
@@ -128,18 +153,33 @@ bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b)
 }
 
 
-std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value)
+} // namespace gl
+
+
+namespace gl
+{
+
+
+std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
 {
     stream << glbinding::Meta::getString(value);
     return stream;
 }
 
 
+} // namespace gl
+
+
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::AttribMask & value)
 {
     stream << bitfieldString<gl::AttribMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -183,11 +223,16 @@ gl::AttribMask & operator^=(gl::AttribMask & a, const gl::AttribMask & b)
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::ClearBufferMask & value)
 {
     stream << bitfieldString<gl::ClearBufferMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -231,11 +276,16 @@ gl::ClearBufferMask & operator^=(gl::ClearBufferMask & a, const gl::ClearBufferM
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::ClientAttribMask & value)
 {
     stream << bitfieldString<gl::ClientAttribMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -279,11 +329,16 @@ gl::ClientAttribMask & operator^=(gl::ClientAttribMask & a, const gl::ClientAttr
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::ContextFlagMask & value)
 {
     stream << bitfieldString<gl::ContextFlagMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -327,11 +382,16 @@ gl::ContextFlagMask & operator^=(gl::ContextFlagMask & a, const gl::ContextFlagM
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::ContextProfileMask & value)
 {
     stream << bitfieldString<gl::ContextProfileMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -375,11 +435,16 @@ gl::ContextProfileMask & operator^=(gl::ContextProfileMask & a, const gl::Contex
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::FfdMaskSGIX & value)
 {
     stream << bitfieldString<gl::FfdMaskSGIX>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -423,11 +488,16 @@ gl::FfdMaskSGIX & operator^=(gl::FfdMaskSGIX & a, const gl::FfdMaskSGIX & b)
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderColorModMaskATI & value)
 {
     stream << bitfieldString<gl::FragmentShaderColorModMaskATI>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -471,11 +541,16 @@ gl::FragmentShaderColorModMaskATI & operator^=(gl::FragmentShaderColorModMaskATI
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMaskATI & value)
 {
     stream << bitfieldString<gl::FragmentShaderDestMaskATI>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -519,11 +594,16 @@ gl::FragmentShaderDestMaskATI & operator^=(gl::FragmentShaderDestMaskATI & a, co
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestModMaskATI & value)
 {
     stream << bitfieldString<gl::FragmentShaderDestModMaskATI>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -567,11 +647,16 @@ gl::FragmentShaderDestModMaskATI & operator^=(gl::FragmentShaderDestModMaskATI &
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::MapBufferUsageMask & value)
 {
     stream << bitfieldString<gl::MapBufferUsageMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -615,11 +700,16 @@ gl::MapBufferUsageMask & operator^=(gl::MapBufferUsageMask & a, const gl::MapBuf
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::MemoryBarrierMask & value)
 {
     stream << bitfieldString<gl::MemoryBarrierMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -663,11 +753,16 @@ gl::MemoryBarrierMask & operator^=(gl::MemoryBarrierMask & a, const gl::MemoryBa
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::PathRenderingMaskNV & value)
 {
     stream << bitfieldString<gl::PathRenderingMaskNV>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -711,11 +806,16 @@ gl::PathRenderingMaskNV & operator^=(gl::PathRenderingMaskNV & a, const gl::Path
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::PerformanceQueryCapsMaskINTEL & value)
 {
     stream << bitfieldString<gl::PerformanceQueryCapsMaskINTEL>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -759,11 +859,16 @@ gl::PerformanceQueryCapsMaskINTEL & operator^=(gl::PerformanceQueryCapsMaskINTEL
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::SyncObjectMask & value)
 {
     stream << bitfieldString<gl::SyncObjectMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -807,11 +912,16 @@ gl::SyncObjectMask & operator^=(gl::SyncObjectMask & a, const gl::SyncObjectMask
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::TextureStorageMaskAMD & value)
 {
     stream << bitfieldString<gl::TextureStorageMaskAMD>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -855,11 +965,16 @@ gl::TextureStorageMaskAMD & operator^=(gl::TextureStorageMaskAMD & a, const gl::
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::UseProgramStageMask & value)
 {
     stream << bitfieldString<gl::UseProgramStageMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -903,11 +1018,16 @@ gl::UseProgramStageMask & operator^=(gl::UseProgramStageMask & a, const gl::UseP
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::VertexHintsMaskPGI & value)
 {
     stream << bitfieldString<gl::VertexHintsMaskPGI>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -951,11 +1071,16 @@ gl::VertexHintsMaskPGI & operator^=(gl::VertexHintsMaskPGI & a, const gl::Vertex
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value)
 {
     stream << bitfieldString<gl::UnusedMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -999,11 +1124,16 @@ gl::UnusedMask & operator^=(gl::UnusedMask & a, const gl::UnusedMask & b)
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::BufferAccessMask & value)
 {
     stream << bitfieldString<gl::BufferAccessMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -1047,11 +1177,16 @@ gl::BufferAccessMask & operator^=(gl::BufferAccessMask & a, const gl::BufferAcce
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::BufferStorageMask & value)
 {
     stream << bitfieldString<gl::BufferStorageMask>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {
@@ -1095,11 +1230,16 @@ gl::BufferStorageMask & operator^=(gl::BufferStorageMask & a, const gl::BufferSt
 } // namespace gl
 
 
+namespace gl
+{
+
 std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value)
 {
     stream << bitfieldString<gl::PathFontStyle>(value);
     return stream;
 }
+
+} // namespace gl
 
 namespace gl
 {

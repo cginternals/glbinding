@@ -1,198 +1,173 @@
 
-cmake_minimum_required(VERSION 2.8.12 FATAL_ERROR)
+# 
+# CMake options
+# 
+
+# CMake version
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+
+# Include cmake modules
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+set(WriterCompilerDetectionHeaderFound NOTFOUND)
+
+include(GenerateExportHeader)
+include(ExternalProject)
+include(WriteCompilerDetectionHeader OPTIONAL RESULT_VARIABLE WriterCompilerDetectionHeaderFound)
+include(cmake/GetGitRevisionDescription.cmake)
+include(cmake/Custom.cmake)
+
+# Set policies
+set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
+set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
+set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
+set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
 
 
+# 
 # Project description and (meta) information
+# 
 
+# Get git revision
+get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
+
+# Meta information about the project
 set(META_PROJECT_NAME        "glbinding")
 set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
-set(META_VERSION_MAJOR       "1")
-set(META_VERSION_MINOR       "1")
+set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
+set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
+set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
+set(META_VERSION_MAJOR       "2")
+set(META_VERSION_MINOR       "0")
 set(META_VERSION_PATCH       "0")
+set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
-set(META_AUTHOR_ORGANIZATION "cginternals")
-set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding")
-set(META_AUTHOR_MAINTAINER   "info@cginternals.com")
-
-string(TOUPPER ${META_PROJECT_NAME} META_PROJECT_NAME_UPPER)
+set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
 
 
-# Limit supported configuration types
-set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Limited Configs" FORCE)
+# 
+# Project configuration options
+# 
 
-# Set project name and type (C/C++)
-project(${META_PROJECT_NAME} C CXX)
-
-
-# Configuration options
-
-option(OPTION_PORTABLE_INSTALL "Install into a self-contained directory" OFF)
-option(OPTION_BUILD_STATIC     "Build static libraries" OFF)
-option(OPTION_BUILD_TESTS      "Build tests (if gmock and gtest are found)" ON)
-option(OPTION_BUILD_TOOLS      "Build tools" OFF)
-option(OPTION_BUILD_EXAMPLES   "Build examples" OFF)
-
-option(OPTION_EXTENSIVE_META   "Provide extensive meta information for bidirectional conversion between String and OpenGL types" ON)
-
-if(OPTION_BUILD_STATIC)
-   set(BUILD_SHARED_LIBS OFF)
-   message("Note: ${META_PROJECT_NAME_UPPER}_STATIC needs to be defined for static linking.")
-else()
-    set(BUILD_SHARED_LIBS ON)
-endif()
+# Project options
+option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              ON)
+option(OPTION_SELF_CONTAINED "Create a self-contained install with all dependencies." OFF)
+option(OPTION_BUILD_TESTS    "Build tests."                                           ON)
+option(OPTION_BUILD_DOCS     "Build documentation."                                   OFF)
+option(OPTION_BUILD_EXAMPLES "Build examples."                                        OFF)
 
 
-# CMake configuration
-
-# Include cmake modules from ./cmake
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
-
-# Set output directories
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-
+# 
+# Declare project
+# 
 
 # Generate folders for IDE targets (e.g., VisualStudio solutions)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-set(IDE_FOLDER "")  # Put projects in root folder by default
+set(IDE_FOLDER "")  
 
-# Include custom cmake functions
-include(cmake/Custom.cmake)
-include(cmake/GitRevision.cmake)
+# Declare project
+project(${META_PROJECT_NAME} C CXX)
+
+# Set output directories
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
+
+# Create version file
+file(WRITE "${PROJECT_BINARY_DIR}/VERSION" "${META_NAME_VERSION}")
 
 
-# Platform and architecture
+# 
+# Compiler settings and options
+# 
 
-# Architecture (32/64 bit)
-set(X64 OFF)
-if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-    set(X64 ON)
-endif()
+include(cmake/CompileOptions.cmake)
 
-# Setup platform specifics (compile flags, etc., ...)
 
-# This policy was introduced in 3.0.0 and does not allow for COMPILER_DEFINITIONS_<Config>,
-# anymore, but instead requires generator expressions like $<CONFIG:Debug> ... 
-# For now the current compile-flag, -definitions, and linker-flags setup shall remain as is.
-if(POLICY CMP0043)
-    cmake_policy(SET CMP0043 OLD)
-endif()
+# 
+# Deployment/installation setup
+# 
 
-if(MSVC)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformWindowsMSVC.cmake)
-elseif(WIN32 AND CMAKE_COMPILER_IS_GNUCXX)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformWindowsGCC.cmake)
-elseif(APPLE)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformMacOS.cmake)
-elseif(UNIX AND "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformLinuxClang.cmake)
-elseif(UNIX)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/PlatformLinuxGCC.cmake)
-else()
-    message(WARNING "Unsupported platform/compiler combination")
+# Get project name
+set(project ${META_PROJECT_NAME})
+
+# Check for system dir install
+set(SYSTEM_DIR_INSTALL FALSE)
+if("${CMAKE_INSTALL_PREFIX}" STREQUAL "/usr" OR "${CMAKE_INSTALL_PREFIX}" STREQUAL "/usr/local")
+    set(SYSTEM_DIR_INSTALL TRUE)
 endif()
 
 # Installation paths
-set(project ${META_PROJECT_NAME})
-if(WIN32)
+if(UNIX AND SYSTEM_DIR_INSTALL)
+    # Install into the system (/usr/bin or /usr/local/bin)
+    set(INSTALL_ROOT      "share/${project}")       # /usr/[local]/share/<project>
+    set(INSTALL_CMAKE     "share/${project}/cmake") # /usr/[local]/share/<project>/cmake
+    set(INSTALL_EXAMPLES  "share/${project}")       # /usr/[local]/share/<project>
+    set(INSTALL_DATA      "share/${project}")       # /usr/[local]/share/<project>
+    set(INSTALL_BIN       "bin")                    # /usr/[local]/bin
+    set(INSTALL_SHARED    "lib")                    # /usr/[local]/lib
+    set(INSTALL_LIB       "lib")                    # /usr/[local]/lib
+    set(INSTALL_INCLUDE   "include")                # /usr/[local]/include
+    set(INSTALL_DOC       "share/doc/${project}")   # /usr/[local]/share/doc/<project>
+    set(INSTALL_SHORTCUTS "share/applications")     # /usr/[local]/share/applications
+    set(INSTALL_ICONS     "share/pixmaps")          # /usr/[local]/share/pixmaps
+    set(INSTALL_INIT      "/etc/init")              # /etc/init (upstart init scripts)
+else()
+    # Install into local directory
+    set(INSTALL_ROOT      ".")                      # ./
+    set(INSTALL_CMAKE     "cmake")                  # ./cmake
+    set(INSTALL_EXAMPLES  ".")                      # ./
+    set(INSTALL_DATA      ".")                      # ./
+    set(INSTALL_BIN       ".")                      # ./
+    set(INSTALL_SHARED    "lib")                    # ./lib
+    set(INSTALL_LIB       "lib")                    # ./lib
+    set(INSTALL_INCLUDE   "include")                # ./include
+    set(INSTALL_DOC       "doc")                    # ./doc
+    set(INSTALL_SHORTCUTS "misc")                   # ./misc
+    set(INSTALL_ICONS     "misc")                   # ./misc
+    set(INSTALL_INIT      "misc")                   # ./misc
+endif()
 
-    # "%PROGRAMFILES%/<project>/"
-    
-    set(INSTALL_ROOT      ".")
-    set(INSTALL_TOOLS     "bin")
-    set(INSTALL_EXAMPLES  "bin")
-    set(INSTALL_DATA      "bin")
-    set(INSTALL_BIN       "bin")
-    set(INSTALL_SHARED    ".")
-    set(INSTALL_LIB       "lib")
-    set(INSTALL_INCLUDE   "include")
-    set(INSTALL_DOC       "doc")
-    set(INSTALL_SHORTCUTS ".") # not available in windows
-    set(INSTALL_ICONS     ".") # not available in windows
-    set(INSTALL_INIT      ".") # not available in windows
+# Set runtime path
+set(CMAKE_SKIP_BUILD_RPATH            FALSE) # Add absolute path to all dependencies for BUILD
+set(CMAKE_BUILD_WITH_INSTALL_RPATH    FALSE) # Use CMAKE_INSTALL_RPATH for INSTALL
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE) # Do NOT add path to dependencies for INSTALL
 
-else() 
-
-    # "/user/[local]/"
-    
-    set(INSTALL_ROOT      "share/${project}")
-    set(INSTALL_TOOLS     "share/${project}/tools")
-    set(INSTALL_EXAMPLES  "share/${project}/examples")
-    set(INSTALL_DATA      "share/${project}/examples")
-    set(INSTALL_BIN       "bin")
-    set(INSTALL_SHARED    "lib")
-    set(INSTALL_LIB       "lib")
-    set(INSTALL_INCLUDE   "include")
-    set(INSTALL_DOC       "share/doc/${project}")
-    set(INSTALL_SHORTCUTS "share/applications")
-    set(INSTALL_ICONS     "share/pixmaps")
-    set(INSTALL_INIT      "/etc/init") # /etc/init (upstart init scripts)
-
-    # Adjust target paths for portable installs
-
-    # "<INSTALL_PREFIX>/"
-
-    if(OPTION_PORTABLE_INSTALL)
-        # Put binaries in root directory and keep data directory name
-        set(INSTALL_ROOT     ".")
-        set(INSTALL_EXAMPLES ".")
-        set(INSTALL_TOOLS    ".")
-        set(INSTALL_DATA     ".")
-        set(INSTALL_BIN      ".")
-
-        # We have to change the RPATH of binaries to achieve a usable local install.
-        # [TODO] For binaries, "$ORIGIN/lib" is right, so that libraries are found in ./lib.
-        # However, I have not yet tested what happens when libraries use other libraries.
-        # In that case, they might need the rpath $ORIGIN instead ...
-        set(CMAKE_SKIP_BUILD_RPATH FALSE)            # Use automatic rpath for build
-        set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)    # Use specific rpath for INSTALL
-        set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE) # NO automatic rpath for INSTALL
-
-        # Libraries are relative to binary
-        if (APPLE)
-            set(CMAKE_INSTALL_RPATH "@executable_path/${INSTALL_LIB}")
-        else()
-            set(CMAKE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")       
-        endif()
+if(NOT SYSTEM_DIR_INSTALL)
+    # Find libraries relative to binary
+    if(APPLE)
+        set(CMAKE_INSTALL_RPATH "@loader_path/../../../${INSTALL_LIB}")
     else()
-        if (APPLE)
-            set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/${INSTALL_LIB}") # Add rpath of project libraries
-            set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)                       # Add rpaths of depending libraries
-        endif()
+        set(CMAKE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")       
     endif()
 endif()
 
 
-# Global deployment
-
-# Add a revision file containing the git-head tag for cpack and install
-create_revision_file(${CMAKE_BINARY_DIR}/revision ${INSTALL_ROOT})
-
-# Project meta files
-install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT dev)
-
-if(NOT WIN32) # this leads to deployment of multiple revision files for unix package managers
-    if(NOT OPTION_BUILD_STATIC)
-        install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
-    endif()
-    install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT examples)
-    install(FILES ${CMAKE_BINARY_DIR}/revision DESTINATION ${INSTALL_ROOT} COMPONENT tools)
-endif()
-
-install(FILES AUTHORS                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)
-install(FILES LICENSE                      DESTINATION ${INSTALL_ROOT} COMPONENT dev)
-install(FILES codegeneration/gl.revision   DESTINATION ${INSTALL_ROOT} COMPONENT dev)
-install(FILES glbinding-config.cmake       DESTINATION ${INSTALL_ROOT} COMPONENT dev)
-
-# Data files
-if(OPTION_BUILD_EXAMPLES)
-    install(DIRECTORY ${CMAKE_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA} COMPONENT examples)
-endif()
-
-# Include projects
+# 
+# Project modules
+# 
 
 add_subdirectory(source)
-add_subdirectory(docs)
-add_subdirectory(packages)
 add_subdirectory(codegeneration)
+add_subdirectory(docs)
+add_subdirectory(deploy)
+
+
+# 
+# Deployment (global project files)
+# 
+
+# Install version file
+install(FILES "${PROJECT_BINARY_DIR}/VERSION" DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+
+# Install cmake find script for the project
+install(FILES ${META_PROJECT_NAME}-config.cmake DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+
+# Install the project meta files
+install(FILES AUTHORS   DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+install(FILES LICENSE   DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+install(FILES README.md DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
+
+# Install runtime data
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/data DESTINATION ${INSTALL_DATA} COMPONENT examples-data)

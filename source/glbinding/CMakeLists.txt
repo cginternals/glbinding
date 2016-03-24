@@ -1,46 +1,35 @@
 
-set(target glbinding)
-message(STATUS "Lib ${target}")
-
-
-# External libraries
+# 
+# External dependencies
+# 
 
 find_package(OpenGL REQUIRED)
 
+# 
+# Library name and options
+# 
 
-# Includes
+# Target name
+set(target glbinding)
 
-include_directories(
-    BEFORE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+# Exit here if required dependencies are not met
+message(STATUS "Lib ${target}")
 
-# Libraries
-
-set(libs
-    ${OPENGL_LIBRARIES}
-)
+# Set API export file and macro
+string(TOUPPER ${target} target_upper)
+set(feature_file "include/${target}/${target}_features.h")
+set(export_file  "include/${target}/${target}_api.h")
+set(export_macro "${target_upper}_API")
 
 
-# Compiler definitions
-
-if (OPTION_BUILD_STATIC)
-    add_definitions("-D${META_PROJECT_NAME_UPPER}_STATIC")
-else()
-    add_definitions("-DGLBINDING_EXPORTS")
-endif()
-
-if (OPTION_EXTENSIVE_META)
-    add_definitions("-DEXTENSIVE_META")
-endif()
-
+# 
 # Sources
+# 
 
 set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
-set(source_path "${CMAKE_CURRENT_SOURCE_DIR}/source")
+set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
-set(api_includes
-    ${include_path}/glbinding_api.h
+set(headers
     ${include_path}/callbacks.h
 
     ${include_path}/nogl.h
@@ -55,11 +44,11 @@ set(api_includes
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
+    ${include_path}/CallbackMask.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
+    ${include_path}/FunctionCall.h
     ${include_path}/Binding.h
-    #${include_path}/PointerIterator.h
-    #${include_path}/PointerIterator.hpp
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
     ${include_path}/ContextHandle.h
@@ -76,16 +65,18 @@ set(api_includes
 # add featured headers
 
 file(GLOB featured_includes ${include_path}/gl*/*.h)
-list(APPEND api_includes ${featured_includes})
+list(APPEND headers ${featured_includes})
 
 set(sources
-    ${source_path}/callbacks.cpp
     ${source_path}/callbacks_private.h
+    ${source_path}/callbacks.cpp
     
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
+    ${source_path}/CallbackMask.cpp
+    ${source_path}/FunctionCall.cpp
 
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
@@ -118,68 +109,169 @@ set(sources
     ${source_path}/Binding_pch.h
 )
 
-if(MSVC OR (WIN32 AND CMAKE_COMPILER_IS_GNUCXX))
 
-    # use splitted function and binding sources on windows compilers (e.g., mingw, msvc)
+# use splitted function and binding sources on windows compilers (e.g., mingw, msvc) and clang
+# also use them for GCC for reduced project setup complexity
 
-    file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
-    file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
+file(GLOB splitted_binding_sources ${source_path}/Binding_objects_*.cpp)
+file(GLOB splitted_functions_sources ${source_path}/gl/functions_*.cpp)
 
-    list(APPEND sources 
-        ${splitted_binding_sources}
-        ${splitted_functions_sources})
+list(APPEND sources 
+    ${splitted_binding_sources}
+    ${splitted_functions_sources}
+)
 
-else()
-
-    list(APPEND sources 
-        "${source_path}/gl/functions.cpp"
-        "${source_path}/Binding_objects.cpp")
-
-endif()
-
-if(MSVC)
-
+if(MSVC_IDE)
     # on msvc use private (non-api) per file precompiled headers on those grouped sources
 
     list(APPEND sources
         ${source_path}/Binding_pch.cpp)
-
 endif()
-
-# add splitted sources
 
 
 # Group source files
 set(header_group "Header Files (API)")
 set(source_group "Source Files")
-source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$$" 
-    ${header_group} ${api_includes})
-source_group_by_path(${source_path} "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
+source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$" 
+    ${header_group} ${headers})
+source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
     ${source_group} ${sources})
 
 
+# 
+# Create library
+# 
+
 # Build library
+add_library(${target}
+    ${sources}
+    ${headers}
+)
 
-add_library(${target} ${api_includes} ${sources})
+# Create namespaced alias
+add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
-target_link_libraries(${target} ${libs} ${EXTRA_LIBS})
+# Export library for downstream projects
+export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_DIR}/cmake/${target}/${target}-export.cmake)
 
-target_compile_options(${target} PRIVATE ${DEFAULT_COMPILE_FLAGS})
+# Create API export header
+generate_export_header(${target}
+    EXPORT_FILE_NAME  ${export_file}
+    EXPORT_MACRO_NAME ${export_macro}
+)
+
+# Create feature detection header
+if (WriterCompilerDetectionHeaderFound)
+    write_compiler_detection_header(
+        FILE ${feature_file}
+        PREFIX ${target_upper}
+        COMPILERS AppleClang Clang GNU MSVC
+        FEATURES cxx_thread_local
+        VERSION 3.2
+    )
+else()
+    file(
+        COPY ${PROJECT_SOURCE_DIR}/codegeneration/${target}_features.h
+        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/${target}
+        USE_SOURCE_PERMISSIONS
+    )
+endif()
+
+
+# 
+# Project options
+# 
 
 set_target_properties(${target}
     PROPERTIES
-    LINKER_LANGUAGE              CXX
-    FOLDER                      "${IDE_FOLDER}"
-    COMPILE_DEFINITIONS_DEBUG   "${DEFAULT_COMPILE_DEFS_DEBUG}"
-    COMPILE_DEFINITIONS_RELEASE "${DEFAULT_COMPILE_DEFS_RELEASE}"
-    LINK_FLAGS_DEBUG            "${DEFAULT_LINKER_FLAGS_DEBUG}"
-    LINK_FLAGS_RELEASE          "${DEFAULT_LINKER_FLAGS_RELEASE}"
-    DEBUG_POSTFIX               "d${DEBUG_POSTFIX}"
-    INCLUDE_PATH                ${include_path})
+    ${DEFAULT_PROJECT_OPTIONS}
+    FOLDER "${IDE_FOLDER}"
+)
 
 
-if(MSVC)
+# 
+# Include directories
+# 
 
+target_include_directories(${target}
+    PRIVATE
+    ${PROJECT_BINARY_DIR}/source/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_BINARY_DIR}/include
+
+    PUBLIC
+    ${DEFAULT_INCLUDE_DIRECTORIES}
+
+    INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+)
+
+
+# 
+# Libraries
+# 
+
+target_link_libraries(${target}
+    PRIVATE
+
+    PUBLIC
+    ${DEFAULT_LIBRARIES}
+    ${OPENGL_LIBRARIES}
+
+    INTERFACE
+)
+
+
+# 
+# Compile definitions
+# 
+
+target_compile_definitions(${target}
+    PRIVATE
+
+    PUBLIC
+    $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_upper}_STATIC_DEFINE>
+    ${DEFAULT_COMPILE_DEFINITIONS}
+
+    INTERFACE
+)
+
+
+# 
+# Compile options
+# 
+
+target_compile_options(${target}
+    PRIVATE
+
+    PUBLIC
+    ${DEFAULT_COMPILE_OPTIONS}
+
+    INTERFACE
+)
+
+
+# 
+# Linker options
+# 
+
+target_link_libraries(${target}
+    PRIVATE
+
+    PUBLIC
+    ${DEFAULT_LINKER_OPTIONS}
+
+    INTERFACE
+)
+
+
+#
+# Precompiled Header Configuration
+#
+
+if (MSVC_IDE)
     # on msvc use private (non-api) per file precompiled headers on those grouped sources
 
     set_source_files_properties(${source_path}/Binding_pch.cpp PROPERTIES COMPILE_FLAGS /Yc"Binding_pch.h")
@@ -192,44 +284,36 @@ if(MSVC)
 
     set_source_files_properties(${binding_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"Binding_pch.h")
     set_source_files_properties(${functions_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"../Binding_pch.h")
-
 endif()
 
 
+# 
 # Deployment
-
+# 
 
 # Library
-
-if(NOT OPTION_BUILD_STATIC)
-    install(TARGETS ${target} COMPONENT runtime
-        RUNTIME DESTINATION ${INSTALL_BIN}
-        LIBRARY DESTINATION ${INSTALL_SHARED})
-else()
-    install(TARGETS ${target} COMPONENT dev
-        ARCHIVE DESTINATION ${INSTALL_LIB})
-endif()
-
-if(WIN32 AND NOT OPTION_BUILD_STATIC) # on windows, provide self contained zip files (examples and dev, both contain the run-time)
-
-    if(OPTION_BUILD_EXAMPLES)
-        install(TARGETS ${target} COMPONENT examples
-            RUNTIME DESTINATION ${INSTALL_BIN}
-            LIBRARY DESTINATION ${INSTALL_BIN})
-    endif()
-
-    if(OPTION_BUILD_TOOLS)
-        install(TARGETS ${target} COMPONENT tools
-            RUNTIME DESTINATION ${INSTALL_BIN}
-            LIBRARY DESTINATION ${INSTALL_BIN})
-    endif()
-
-    install(TARGETS ${target} COMPONENT dev
-        RUNTIME DESTINATION ${INSTALL_BIN}
-        LIBRARY DESTINATION ${INSTALL_SHARED}
-        ARCHIVE DESTINATION ${INSTALL_LIB})
-
-endif()
+install(TARGETS ${target}
+    EXPORT  "${target}-export"            COMPONENT dev
+    RUNTIME DESTINATION ${INSTALL_BIN}    COMPONENT runtime
+    LIBRARY DESTINATION ${INSTALL_SHARED} COMPONENT runtime
+    ARCHIVE DESTINATION ${INSTALL_LIB}    COMPONENT dev
+)
 
 # Header files
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/${target} DESTINATION ${INSTALL_INCLUDE} COMPONENT dev)
+install(DIRECTORY
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/${target} DESTINATION ${INSTALL_INCLUDE}
+    COMPONENT dev
+)
+
+# Generated header files
+install(DIRECTORY
+    ${CMAKE_CURRENT_BINARY_DIR}/include/${target} DESTINATION ${INSTALL_INCLUDE}
+    COMPONENT dev
+)
+
+# CMake config
+install(EXPORT ${target}-export
+    NAMESPACE   ${META_PROJECT_NAME}::
+    DESTINATION ${INSTALL_CMAKE}/${target}
+    COMPONENT   dev
+)

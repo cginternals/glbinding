@@ -1,14 +1,14 @@
-#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/enum.h>
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
 {
@@ -3461,6 +3461,5 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
     { GLenum::GL_QUERY_ALL_EVENT_BITS_AMD, "GL_QUERY_ALL_EVENT_BITS_AMD" }
 };
 
-} // namespace glbinding
 
-#endif // EXTENSIVE_META
+} // namespace glbinding

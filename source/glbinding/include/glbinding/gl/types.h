@@ -108,7 +108,16 @@ struct hash<gl::GLextension>
 
 }
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLextension & value);
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
+
+
+} // namespace gl
+
 
 namespace std
 {
@@ -124,24 +133,49 @@ struct hash<gl::GLenum>
 
 }
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLenum & value);
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLenum & value);
+
+
+} // namespace gl
+
+
+namespace gl
+{
+
 
 GLBINDING_API gl::GLenum operator+(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
 GLBINDING_API gl::GLenum operator-(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
 
-GLBINDING_API bool operator==(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
-GLBINDING_API bool operator!=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
-GLBINDING_API bool operator< (const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
-GLBINDING_API bool operator<=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
-GLBINDING_API bool operator> (const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
-GLBINDING_API bool operator>=(const gl::GLenum & a, std::underlying_type<gl::GLenum>::type b);
 
-GLBINDING_API bool operator==(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
-GLBINDING_API bool operator!=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
-GLBINDING_API bool operator< (std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
-GLBINDING_API bool operator<=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
-GLBINDING_API bool operator> (std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
-GLBINDING_API bool operator>=(std::underlying_type<gl::GLenum>::type a, const gl::GLenum & b);
+} // namespace gl
+
+
+namespace gl
+{
+
+
+GLBINDING_API bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b);
+GLBINDING_API bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b);
+GLBINDING_API bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b);
+GLBINDING_API bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b);
+GLBINDING_API bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b);
+GLBINDING_API bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b);
+
+GLBINDING_API bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b);
+GLBINDING_API bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b);
+GLBINDING_API bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b);
+GLBINDING_API bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b);
+GLBINDING_API bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b);
+GLBINDING_API bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b);
+
+
+} // namespace gl
+
 
 namespace std
 {
@@ -157,7 +191,16 @@ struct hash<gl::GLboolean>
 
 }
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::GLboolean & value);
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLboolean & value);
+
+
+} // namespace gl
+
 
 namespace std
 {
@@ -173,7 +216,16 @@ struct hash<gl::AttribMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::AttribMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -201,7 +253,16 @@ struct hash<gl::ClearBufferMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ClearBufferMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -229,7 +290,16 @@ struct hash<gl::ClientAttribMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ClientAttribMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -257,7 +327,16 @@ struct hash<gl::ContextFlagMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ContextFlagMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -285,7 +364,16 @@ struct hash<gl::ContextProfileMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::ContextProfileMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -313,7 +401,16 @@ struct hash<gl::FfdMaskSGIX>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FfdMaskSGIX & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -341,7 +438,16 @@ struct hash<gl::FragmentShaderColorModMaskATI>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderColorModMaskATI & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -369,7 +475,16 @@ struct hash<gl::FragmentShaderDestMaskATI>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestMaskATI & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -397,7 +512,16 @@ struct hash<gl::FragmentShaderDestModMaskATI>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::FragmentShaderDestModMaskATI & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -425,7 +549,16 @@ struct hash<gl::MapBufferUsageMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::MapBufferUsageMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -453,7 +586,16 @@ struct hash<gl::MemoryBarrierMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::MemoryBarrierMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -481,7 +623,16 @@ struct hash<gl::PathRenderingMaskNV>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathRenderingMaskNV & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -509,7 +660,16 @@ struct hash<gl::PerformanceQueryCapsMaskINTEL>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PerformanceQueryCapsMaskINTEL & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -537,7 +697,16 @@ struct hash<gl::SyncObjectMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::SyncObjectMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -565,7 +734,16 @@ struct hash<gl::TextureStorageMaskAMD>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::TextureStorageMaskAMD & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -593,7 +771,16 @@ struct hash<gl::UseProgramStageMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::UseProgramStageMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -621,7 +808,16 @@ struct hash<gl::VertexHintsMaskPGI>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::VertexHintsMaskPGI & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -649,7 +845,16 @@ struct hash<gl::UnusedMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::UnusedMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -677,7 +882,16 @@ struct hash<gl::BufferAccessMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::BufferAccessMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -705,7 +919,16 @@ struct hash<gl::BufferStorageMask>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::BufferStorageMask & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {
@@ -733,7 +956,16 @@ struct hash<gl::PathFontStyle>
 
 }
 
+
+namespace gl
+{
+
+
 GLBINDING_API std::ostream & operator<<(std::ostream & stream, const gl::PathFontStyle & value);
+
+
+} // namespace gl
+
 
 namespace gl
 {

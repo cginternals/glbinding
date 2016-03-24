@@ -1,4 +1,3 @@
-#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
@@ -283,5 +282,3 @@ const std::unordered_map<VertexHintsMaskPGI, std::string> Meta_StringsByVertexHi
 };
 
 } // namespace glbinding
-
-#endif // EXTENSIVE_META

@@ -42,7 +42,7 @@ std::string bitfieldString(T value)
         }
 	}
 	return ss.str();
-};
+}
 
 {{#types.items}}
 {{#item.integrations.streamable}}

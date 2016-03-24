@@ -1,24 +1,26 @@
 
 #include <glbinding/ContextHandle.h>
 
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
 #include <windows.h>
-#elif __APPLE__
+#elif SYSTEM_DARWIN
 #include <OpenGL/OpenGL.h>
 #else
 #include <GL/glx.h>
 #endif
 
+
 namespace glbinding
 {
+
 
 ContextHandle getCurrentContext()
 {
     auto id = ContextHandle{0};
 
-#ifdef WIN32
+#ifdef SYSTEM_WINDOWS
     const auto context = wglGetCurrentContext();
-#elif __APPLE__
+#elif SYSTEM_DARWIN
     const auto context = CGLGetCurrentContext();
 #else
     const auto context = glXGetCurrentContext();
@@ -27,5 +29,6 @@ ContextHandle getCurrentContext()
 
     return id;
 }
+
 
 } // namespace glbinding

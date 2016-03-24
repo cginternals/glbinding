@@ -1,14 +1,14 @@
-#ifdef EXTENSIVE_META
 
 #include "Meta_Maps.h"
 
 #include <glbinding/gl/extension.h>
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
 {
@@ -555,6 +555,5 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_WIN_specular_fog, "GL_WIN_specular_fog" }
 };
 
-} // namespace glbinding
 
-#endif // EXTENSIVE_META
+} // namespace glbinding

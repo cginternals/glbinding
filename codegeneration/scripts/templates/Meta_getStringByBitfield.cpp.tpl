@@ -17,7 +17,6 @@ namespace glbinding
 {
 
 {{#bitfieldGroups.items}}
-#ifdef EXTENSIVE_META
 
 const std::string & Meta::getString(const {{item}} glbitfield)
 {
@@ -28,15 +27,6 @@ const std::string & Meta::getString(const {{item}} glbitfield)
     }
     return none;
 }
-
-#else
-
-const std::string & Meta::getString(const {{item}})
-{
-    return none;
-}
-
-#endif // EXTENSIVE_META
 
 {{/bitfieldGroups.items}}
 } // namespace glbinding
