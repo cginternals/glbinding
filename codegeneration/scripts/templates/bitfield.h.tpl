@@ -4,8 +4,10 @@
 
 #include <glbinding/SharedBitfield.h>
 
+
 namespace {{api}}
 {
+
 
 {{#bitfieldsByGroup.groups}}
 enum class {{name}} : unsigned int
@@ -28,5 +30,6 @@ static const glbinding::SharedBitfield<{{#item.groups.items}}{{item}}{{^last}}, 
 static const {{item.primaryGroup}} {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
 {{/item.groups.multipleItems}}
 {{/bitfields.items}}
+
 
 } // namespace {{api}}

@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glNamedBufferData(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage)
 {
@@ -404,6 +405,7 @@ void glNormalStream3svATI(GLenum stream, const GLshort * coords)
 {
     return Binding::NormalStream3svATI(stream, coords);
 }
+
 
 
 } // namespace gl

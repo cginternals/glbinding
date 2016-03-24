@@ -9,6 +9,7 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
+
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_0 =
 {
     { "GL_1PASS_EXT", GLenum::GL_1PASS_EXT },
@@ -4720,5 +4721,6 @@ const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsBySt
     Meta_EnumsByString_Y,
     Meta_EnumsByString_Z
 } };
+
 
 } // namespace glbinding

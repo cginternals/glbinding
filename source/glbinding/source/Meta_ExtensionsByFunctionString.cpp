@@ -9,6 +9,7 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
+
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_0;
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_A =
@@ -2352,5 +2353,6 @@ const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27>
     Meta_ExtensionsByFunctionString_Y,
     Meta_ExtensionsByFunctionString_Z
 } };
+
 
 } // namespace glbinding

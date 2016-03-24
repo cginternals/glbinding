@@ -21,6 +21,7 @@
 namespace {{api}}
 {
 
+
 {{#types.items}}
 {{item.definition}}
 {{/types.items}}

@@ -4,11 +4,12 @@
 
 #include <glbinding/{{api}}/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace {{api}}
 {
+
 
 {{#currentFunctionGroup.items}}{{#item}}{{>partials/general_type}} {{identifier}}({{>partials/general_params}})
 {
@@ -16,4 +17,5 @@ namespace {{api}}
 }
 
 {{/item}}{{/currentFunctionGroup.items}}
+
 } // namespace {{api}}

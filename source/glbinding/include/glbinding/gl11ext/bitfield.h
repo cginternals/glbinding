@@ -4,8 +4,10 @@
 
 #include <glbinding/gl/bitfield.h>
 
+
 namespace gl11ext
 {
+
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -132,5 +134,6 @@ using gl::GL_TEXCOORD4_BIT_PGI;
 using gl::GL_ALL_BARRIER_BITS;
 using gl::GL_ALL_BARRIER_BITS_EXT;
 using gl::GL_ALL_SHADER_BITS;
+
 
 } // namespace gl11ext

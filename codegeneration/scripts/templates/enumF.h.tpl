@@ -8,6 +8,7 @@
 namespace {{api}}{{memberSet}}
 {
 
+
 // import enums to namespace
 
 
@@ -24,4 +25,5 @@ using {{api}}::{{item.identifier}};
 {{/items}}
 
 {{/enumsByGroup.groups}}
+
 } // namespace {{api}}{{memberSet}}

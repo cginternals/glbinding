@@ -4,8 +4,10 @@
 
 #include <glbinding/gl/bitfield.h>
 
+
 namespace gl42core
 {
+
 
 // import bitfields to namespace
 using gl::GL_NONE_BIT;
@@ -41,5 +43,6 @@ using gl::GL_MAP_FLUSH_EXPLICIT_BIT;
 using gl::GL_MAP_UNSYNCHRONIZED_BIT;
 using gl::GL_ALL_BARRIER_BITS;
 using gl::GL_ALL_SHADER_BITS;
+
 
 } // namespace gl42core

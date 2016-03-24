@@ -8,9 +8,11 @@
 namespace gl41ext
 {
 
+
 // import booleans to namespace
 
 using gl::GL_FALSE;
 using gl::GL_TRUE;
+
 
 } // namespace gl41ext

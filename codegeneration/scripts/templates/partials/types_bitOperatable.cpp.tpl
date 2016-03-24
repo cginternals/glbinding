@@ -1,40 +1,42 @@
 namespace {{api}}
 {
 
-{{api}}::{{identifier}} operator|(const {{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b)
+
+{{identifier}} operator|(const {{identifier}} & a, const {{identifier}} & b)
 {
-    return static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) | static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(b));
+    return static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) | static_cast<std::underlying_type<{{identifier}}>::type>(b));
 }
 
-{{api}}::{{identifier}} & operator|=({{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b)
+{{identifier}} & operator|=({{identifier}} & a, const {{identifier}} & b)
 {
-    a = static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) | static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(b));
+    a = static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) | static_cast<std::underlying_type<{{identifier}}>::type>(b));
 
     return a;
 }
 
-{{api}}::{{identifier}} operator&(const {{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b)
+{{identifier}} operator&(const {{identifier}} & a, const {{identifier}} & b)
 {
-    return static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) & static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(b));
+    return static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) & static_cast<std::underlying_type<{{identifier}}>::type>(b));
 }
 
-{{api}}::{{identifier}} & operator&=({{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b)
+{{identifier}} & operator&=({{identifier}} & a, const {{identifier}} & b)
 {
-    a = static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) & static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(b));
+    a = static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) & static_cast<std::underlying_type<{{identifier}}>::type>(b));
 
     return a;
 }
 
-{{api}}::{{identifier}} operator^(const {{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b)
+{{identifier}} operator^(const {{identifier}} & a, const {{identifier}} & b)
 {
-    return static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) ^ static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(b));
+    return static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) ^ static_cast<std::underlying_type<{{identifier}}>::type>(b));
 }
 
-{{api}}::{{identifier}} & operator^=({{api}}::{{identifier}} & a, const {{api}}::{{identifier}} & b)
+{{identifier}} & operator^=({{identifier}} & a, const {{identifier}} & b)
 {
-    a = static_cast<{{api}}::{{identifier}}>(static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(a) ^ static_cast<std::underlying_type<{{api}}::{{identifier}}>::type>(b));
+    a = static_cast<{{identifier}}>(static_cast<std::underlying_type<{{identifier}}>::type>(a) ^ static_cast<std::underlying_type<{{identifier}}>::type>(b));
 
     return a;
 }
+
 
 } // namespace {{api}}

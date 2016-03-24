@@ -9,6 +9,7 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
+
 {{#bitfieldsByInitial.groups}}
 {{#empty}}
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{name}};
@@ -29,5 +30,6 @@ const std::array<std::unordered_map<std::string, gl::GLbitfield>, {{bitfieldsByI
     Meta_BitfieldsByString_{{name}}{{^last}},{{/last}}
 {{/bitfieldsByInitial.groups}}
 } };
+
 
 } // namespace glbinding

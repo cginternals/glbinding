@@ -6,6 +6,7 @@
 namespace {{api}}
 {
 
+
 enum class GLenum : unsigned int
 {
 {{#enumsByGroup.groups}}
@@ -39,4 +40,5 @@ static const GLenum {{item.identifier}} = GLenum::{{item.identifier}};
 {{/items}}
 
 {{/enumsByGroup.groups}}
+
 } // namespace {{api}}

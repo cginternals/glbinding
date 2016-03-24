@@ -7,6 +7,7 @@
 namespace gl21
 {
 
+
 using gl::GLextension;
 using gl::GLenum;
 using gl::GLboolean;
@@ -70,5 +71,6 @@ using gl::UnusedMask;
 using gl::BufferAccessMask;
 using gl::BufferStorageMask;
 using gl::PathFontStyle;
+
 
 } // namespace gl21

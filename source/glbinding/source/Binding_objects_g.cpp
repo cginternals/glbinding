@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 Function<GLuint, GLsizei> Binding::GenAsyncMarkersSGIX("glGenAsyncMarkersSGIX");
 Function<void, GLsizei, GLuint *> Binding::GenBuffers("glGenBuffers");
@@ -493,5 +494,6 @@ Function<void, GLshort> Binding::GlobalAlphaFactorsSUN("glGlobalAlphaFactorsSUN"
 Function<void, GLubyte> Binding::GlobalAlphaFactorubSUN("glGlobalAlphaFactorubSUN");
 Function<void, GLuint> Binding::GlobalAlphaFactoruiSUN("glGlobalAlphaFactoruiSUN");
 Function<void, GLushort> Binding::GlobalAlphaFactorusSUN("glGlobalAlphaFactorusSUN");
+
 
 } // namespace glbinding

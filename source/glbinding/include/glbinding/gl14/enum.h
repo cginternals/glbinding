@@ -8,6 +8,7 @@
 namespace gl14
 {
 
+
 // import enums to namespace
 
 
@@ -1216,5 +1217,6 @@ using gl::GL_TEXTURE_COMPARE_MODE;
 using gl::GL_TEXTURE_COMPARE_FUNC;
 using gl::GL_COMPARE_REF_TO_TEXTURE;
 using gl::GL_COMPARE_R_TO_TEXTURE;
+
 
 } // namespace gl14

@@ -5,6 +5,7 @@
 namespace glbinding
 {
 
+
 const std::set<Version> Version::s_validVersions =
 {
 {{#features.items}}
@@ -13,5 +14,6 @@ const std::set<Version> Version::s_validVersions =
 };
 
 const Version Version::s_latest { {{latestFeature.major}}, {{latestFeature.minor}} };
+
 
 } // namespace glbinding

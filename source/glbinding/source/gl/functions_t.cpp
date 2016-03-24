@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glTagSampleBufferSGIX()
 {
@@ -1099,6 +1100,7 @@ void glTranslatexOES(GLfixed x, GLfixed y, GLfixed z)
 {
     return Binding::TranslatexOES(x, y, z);
 }
+
 
 
 } // namespace gl

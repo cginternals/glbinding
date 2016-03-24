@@ -4,8 +4,10 @@
 
 #include <glbinding/SharedBitfield.h>
 
+
 namespace gl
 {
+
 
 enum class AttribMask : unsigned int
 {
@@ -451,5 +453,6 @@ static const MemoryBarrierMask GL_ALL_BARRIER_BITS = MemoryBarrierMask::GL_ALL_B
 static const MemoryBarrierMask GL_ALL_BARRIER_BITS_EXT = MemoryBarrierMask::GL_ALL_BARRIER_BITS_EXT;
 static const UseProgramStageMask GL_ALL_SHADER_BITS = UseProgramStageMask::GL_ALL_SHADER_BITS;
 static const ClientAttribMask GL_CLIENT_ALL_ATTRIB_BITS = ClientAttribMask::GL_CLIENT_ALL_ATTRIB_BITS;
+
 
 } // namespace gl

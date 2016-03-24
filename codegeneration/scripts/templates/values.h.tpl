@@ -7,6 +7,7 @@
 namespace {{api}}
 {
 
+
 {{#valuesByType.groups}}
 {{#items}}
 static const {{item.type}} {{item.identifier}} = {{item.value}};
@@ -15,5 +16,6 @@ static const {{item.type}} {{item.identifier}} = {{item.value}};
 
 {{/last}}
 {{/valuesByType.groups}}
+
 
 } // namespace {{api}}

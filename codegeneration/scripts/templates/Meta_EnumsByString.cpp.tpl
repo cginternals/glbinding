@@ -9,6 +9,7 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
+
 {{#enumsByInitial.groups}}
 {{^empty}}
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}} =
@@ -29,5 +30,6 @@ const std::array<std::unordered_map<std::string, gl::GLenum>, {{enumsByInitial.c
     Meta_EnumsByString_{{name}}{{^last}},{{/last}}
 {{/enumsByInitial.groups}}
 } };
+
 
 } // namespace glbinding

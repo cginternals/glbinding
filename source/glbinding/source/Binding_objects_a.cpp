@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
 Function<void, GLenum, GLfixed> Binding::AccumxOES("glAccumxOES");
@@ -31,5 +32,6 @@ Function<void, GLenum, GLint, GLenum, GLsizei, GLuint, GLuint> Binding::ArrayObj
 Function<void, GLuint> Binding::AsyncMarkerSGIX("glAsyncMarkerSGIX");
 Function<void, GLhandleARB, GLhandleARB> Binding::AttachObjectARB("glAttachObjectARB");
 Function<void, GLuint, GLuint> Binding::AttachShader("glAttachShader");
+
 
 } // namespace glbinding

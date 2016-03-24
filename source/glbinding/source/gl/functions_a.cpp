@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glAccum(GLenum op, GLfloat value)
 {
@@ -129,6 +130,7 @@ void glAttachShader(GLuint program, GLuint shader)
 {
     return Binding::AttachShader(program, shader);
 }
+
 
 
 } // namespace gl

@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glHint(GLenum target, GLenum mode)
 {
@@ -29,6 +30,7 @@ void glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboole
 {
     return Binding::HistogramEXT(target, width, internalformat, sink);
 }
+
 
 
 } // namespace gl

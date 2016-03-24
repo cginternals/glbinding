@@ -8,6 +8,7 @@
 namespace gl33core
 {
 
+
 // import enums to namespace
 
 
@@ -1095,5 +1096,6 @@ using gl::GL_MAX_GEOMETRY_INPUT_COMPONENTS;
 using gl::GL_MAX_GEOMETRY_OUTPUT_COMPONENTS;
 using gl::GL_MAX_FRAGMENT_INPUT_COMPONENTS;
 using gl::GL_CONTEXT_PROFILE_MASK;
+
 
 } // namespace gl33core

@@ -7,6 +7,7 @@
 namespace {{api}}{{memberSet}}
 {
 
+
 {{#valuesByType.groups}}
 {{#items}}
 using {{api}}::{{item.identifier}};
@@ -17,4 +18,5 @@ using {{api}}::{{item.identifier}};
 
 
 {{/valuesByType.empty}}
+
 } // namespace {{api}}{{memberSet}}

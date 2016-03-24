@@ -7,6 +7,7 @@
 namespace gl10
 {
 
+
 using gl::glAccum;
 using gl::glAlphaFunc;
 using gl::glBegin;
@@ -313,5 +314,6 @@ using gl::glVertex4iv;
 using gl::glVertex4s;
 using gl::glVertex4sv;
 using gl::glViewport;
+
 
 } // namespace gl10

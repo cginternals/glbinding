@@ -6,6 +6,7 @@
 namespace {{api}}
 {
 
+
 enum class GLboolean : unsigned char
 {
 {{#booleans.items}}
@@ -18,5 +19,6 @@ enum class GLboolean : unsigned char
 {{#booleans.items}}
 static const GLboolean {{item.identifier}} = GLboolean::{{item.identifier}};
 {{/booleans.items}}
+
 
 } // namespace {{api}}

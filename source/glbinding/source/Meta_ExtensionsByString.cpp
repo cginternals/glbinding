@@ -9,6 +9,7 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
+
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_0 =
 {
     { "GL_3DFX_multisample", GLextension::GL_3DFX_multisample },
@@ -662,5 +663,6 @@ const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_Exte
     Meta_ExtensionsByString_Y,
     Meta_ExtensionsByString_Z
 } };
+
 
 } // namespace glbinding

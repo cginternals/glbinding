@@ -4,11 +4,12 @@
 
 #include <glbinding/gl/functions.h>
 
-
 using namespace glbinding;
+
 
 namespace gl
 {
+
 
 void glBegin(GLenum mode)
 {
@@ -584,6 +585,7 @@ void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, c
 {
     return Binding::BufferSubDataARB(target, offset, size, data);
 }
+
 
 
 } // namespace gl

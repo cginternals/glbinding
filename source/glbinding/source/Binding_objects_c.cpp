@@ -1,11 +1,12 @@
 
 #include "Binding_pch.h"
 
-
 using namespace gl; // ToDo: multiple APIs?
+
 
 namespace glbinding
 {
+
 
 Function<void, GLuint> Binding::CallCommandListNV("glCallCommandListNV");
 Function<void, GLuint> Binding::CallList("glCallList");
@@ -248,5 +249,6 @@ Function<void, GLenum> Binding::CullFace("glCullFace");
 Function<void, GLenum, GLdouble *> Binding::CullParameterdvEXT("glCullParameterdvEXT");
 Function<void, GLenum, GLfloat *> Binding::CullParameterfvEXT("glCullParameterfvEXT");
 Function<void, GLint> Binding::CurrentPaletteMatrixARB("glCurrentPaletteMatrixARB");
+
 
 } // namespace glbinding

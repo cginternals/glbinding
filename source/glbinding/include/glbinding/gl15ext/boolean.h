@@ -8,9 +8,11 @@
 namespace gl15ext
 {
 
+
 // import booleans to namespace
 
 using gl::GL_FALSE;
 using gl::GL_TRUE;
+
 
 } // namespace gl15ext

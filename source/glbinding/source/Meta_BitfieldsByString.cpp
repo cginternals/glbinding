@@ -9,6 +9,7 @@ using namespace gl; // ToDo: multiple APIs?
 namespace glbinding
 {
 
+
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_0 =
 {
     { "GL_2X_BIT_ATI", static_cast<GLbitfield>(FragmentShaderDestModMaskATI::GL_2X_BIT_ATI) },
@@ -281,5 +282,6 @@ const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_Bitfi
     Meta_BitfieldsByString_Y,
     Meta_BitfieldsByString_Z
 } };
+
 
 } // namespace glbinding

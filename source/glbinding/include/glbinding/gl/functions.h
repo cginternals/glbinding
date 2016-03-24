@@ -9,6 +9,7 @@
 namespace gl
 {
 
+
 GLBINDING_API void glAccum(GLenum op, GLfloat value);
 GLBINDING_API void glAccumxOES(GLenum op, GLfixed value);
 GLBINDING_API void glActiveProgramEXT(GLuint program);
@@ -2879,6 +2880,7 @@ GLBINDING_API void glWindowPos4ivMESA(const GLint * v);
 GLBINDING_API void glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w);
 GLBINDING_API void glWindowPos4svMESA(const GLshort * v);
 GLBINDING_API void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+
 
 
 
