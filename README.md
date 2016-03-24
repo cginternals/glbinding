@@ -155,7 +155,26 @@ Then, depending on the version of glbinding you want to build, choose the approp
 > git fetch --tags
 > git checkout v2.0.0
 ```
-The actual compilation can be done using CMake and your favourite compiler and IDE.
+The actual compilation can be done using CMake and your favorite compiler and IDE.
+
+For building *glbinding* CMake via command line can be used (should work on all systems):
+
+First create a build directory (we do not recommend in-source builds):
+```
+mkdir build
+cd build
+```
+
+Configure *glbinding* with your prefered or default generator, e.g., for Visual Studio 2015 in x64 use:
+```
+cmake .. -G "Visual Studio 14 2015 Win64"
+```
+Note: some IDEs have integrated support for CMake projects, e.g., Qt Creator, and allow you to skip the manual project configuration.
+
+In order to compile the project, either use you favorite Editor/IDE with the created project or use CMake as follows:
+```
+cmake --build .
+```
 
 ## Additional Features
 
