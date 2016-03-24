@@ -165,16 +165,17 @@ mkdir build
 cd build
 ```
 
-Configure *glbinding* with your prefered or default generator, e.g., for Visual Studio 2015 in x64 use:
+Configure *glbinding* with your prefered or default generator, e.g., for Visual Studio 2015 in x64 use
+(note: some IDEs have integrated support for CMake projects, e.g., Qt Creator, and allow you to skip the manual project configuration):
 ```
 cmake .. -G "Visual Studio 14 2015 Win64"
 ```
-Note: some IDEs have integrated support for CMake projects, e.g., Qt Creator, and allow you to skip the manual project configuration.
 
 In order to compile the project, either use you favorite Editor/IDE with the created project or use CMake as follows:
 ```
 cmake --build .
 ```
+
 
 ## Additional Features
 
