@@ -18,20 +18,11 @@ Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sour
 
 ```cpp
 #include <glbinding/gl/gl.h>
-#include <glbinding/Binding.h>
-
 using namespace gl;
-
-int main()
-{
-  // create context, e.g. using GLFW, Qt, SDL, GLUT, ...
-
-  glbinding::Binding::initialize();
-
-  glBegin(GL_TRIANGLES);
+  
   // ...
-  glEnd();
-}
+  auto shader = glCreateShader(GL_COMPUTE_SHADER);
+  // ...
 ```
 
 
@@ -47,9 +38,9 @@ int main()
 * [Install Instructions](#install-instructions)
 * [Build form Source](#build-instructions)
 * [Tips for Linking](#tips-for-linking)
+* [Basic Example](#basic-example)
 
 ###### Feature Documentation and Code Snippets
-* [Initialization](#initialization)
 * [Type-safe Parameters](#type-safe-parameters)
 * [Compilation-Centered Header Design](#compilation-centered-header-design)
 * [Feature-Centered Header Design](#feature-centered-header-design)
@@ -205,16 +196,12 @@ target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
 
 
 
-## Features
 
+## Basic Example
 
-### Initialization
+*glbinding* has to be initialized once on the active OpenGL context you want to use glbinding with. 
+In the most basic case, you call ```glbinding::Binding::initialize``` once:
 
-To use glbinding, it has to be initialized on the target OpenGL context first. The target OpenGL context is the context you want to use glbinding with. This function has to be called once while the target OpenGL context is currently active (using OpenGL language: is *current*). This is required to prepare the internals for the connection to the OpenGL library.
-
-##### Basic Usage
-
-In the most simple case, you call ```glbinding::Binding::initialize``` once. This example is valid for applications that uses one context in one thread.
 ```cpp
 #include <glbinding/gl/gl.h>
 #include <glbinding/Binding.h>
@@ -233,20 +220,12 @@ int main()
 }
 ```
 
-##### Multi-threaded OpenGL Context usage
+This example is valid for applications that uses one context in one thread. For multiple context or multi-threaded usage refer to [Multi-Context](..)
 
-If you want to use one OpenGL context in multiple threads, you have to call the initialize method once per thread. This is required because the *current* status of an OpenGL context is dependend on the current thread, i.e., you can have different contexts *current* in different threads. In order to allow for this, glbinding has to differentiate between registered OpenGL contexts per thread.
 
-Beware of using one OpenGL context in multiple threads concurrently! Most likely, it won't result in a meaningful sequence of OpenGL calls. If you really want to use one OpenGL context in multiple threads, be sure to treat semantic groups of OpenGL calls as critical sections.
 
-##### Multiple OpenGL Contexts usage
 
-OpenGL allows for multiple contexts per program/process to be created and used. The one limitation is that only one context can be *current* at a given time. As each context can correspond to a different feature set of OpenGL and the drivers are free to assign their function pointers, glbinding **cannot** assume any equalities of requested function pointers. This means a user *must* tell glbinding of all contexts he wants to use and when the switches of *current* contexts occured.
-Concluding, a user have to call the initialize method once per OpenGL context (when it is current) and has to update the current context if it has changed.
-
-##### Multiple OpenGL Contexts in multiple Threads
-
-The combination of multiple OpenGL contexts and multiple threads for OpenGL usage is supported by glbinding. You must tell glbinding which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::Binding::initialize()```) and if you want to switch the *current* context for one thread, you have to update the current context, too (```glbinding::Binding::useCurrentContext()```). We strongly discourage the use of one context in multiple threads and we don't see real added value in using multiple contexts in one thread, so the main use case would be to use one OpenGL context per thread. This means you mainly have to register the context you want to use per thread once and leave it as is.
+## Features
 
 ### Type-Safe Parameters
 
@@ -385,11 +364,34 @@ glbinding::Binding::useContext(ContextHandle context);
 
 This feature is mainly intended for platforms where function pointers for different requested OpenGL features may vary.
 
+**VS..**
+
+##### Multiple OpenGL Contexts usage TODO
+
+OpenGL allows for multiple contexts per program/process to be created and used. The one limitation is that only one context can be *current* at a given time. As each context can correspond to a different feature set of OpenGL and the drivers are free to assign their function pointers, glbinding **cannot** assume any equalities of requested function pointers. This means a user *must* tell glbinding of all contexts he wants to use and when the switches of *current* contexts occured.
+Concluding, a user have to call the initialize method once per OpenGL context (when it is current) and has to update the current context if it has changed.
+
+
 
 ### Multi-Threading Support
 
 Concurrent use of *glbinding* is mainly intended to the usage of multiple contexts in different threads (multiple threads operating on a single OpenGL context requires locking, which *glbinding* will not provide).
 For this, *glbinding* supports multiple active contexts, one per thread. This necessitates that *glbinding* gets informed in each thread which context is currently active (see [multi-context](#multi-context-support)).
+
+**VS TODO** 
+
+##### Multi-threaded OpenGL Context usage ToDO Remove?
+
+If you want to use one OpenGL context in multiple threads, you have to call the initialize method once per thread. This is required because the *current* status of an OpenGL context is dependend on the current thread, i.e., you can have different contexts *current* in different threads. In order to allow for this, glbinding has to differentiate between registered OpenGL contexts per thread.
+
+Beware of using one OpenGL context in multiple threads concurrently! Most likely, it won't result in a meaningful sequence of OpenGL calls. If you really want to use one OpenGL context in multiple threads, be sure to treat semantic groups of OpenGL calls as critical sections.
+
+
+##### Multiple OpenGL Contexts in multiple Threads todo Remove?
+
+The combination of multiple OpenGL contexts and multiple threads for OpenGL usage is supported by glbinding. You must tell glbinding which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::Binding::initialize()```) and if you want to switch the *current* context for one thread, you have to update the current context, too (```glbinding::Binding::useCurrentContext()```). We strongly discourage the use of one context in multiple threads and we don't see real added value in using multiple contexts in one thread, so the main use case would be to use one OpenGL context per thread. This means you mainly have to register the context you want to use per thread once and leave it as is.
+
+
 
 
 ### Function Callbacks
@@ -499,7 +501,7 @@ If you want to use per-feature API header and the patched signatures together in
 Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and run time information about the gl.xml and your OpenGL driver.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
-Example list of all available OpenGL versions/features (compile time):
+The following example prints out a list of all available OpenGL versions/features:
 
 ```cpp
 #include <iostream>
@@ -513,45 +515,3 @@ for (const Version & v : Meta::versions())
   std::cout << v.toString() << std::endl;
 ```
 
-Example output of all enums (compile time):
-
-```cpp
-#include <iostream>
-#include <iomanip>
-
-#include <glbinding/Meta.h>
-
-using glbinding::Meta;
-
-if (Meta::extensive())
-{
-  std::cout << "# Enums: " << Meta::enums().size() << std::endl << std::endl;
-
-  for (GLenum e : Meta::enums()) // c++ 14 ...
-    std::cout << " (" << std::hex << std::showbase << std::internal << std::setfill('0') << std::setw(8) 
-              << static_cast<std::underlying_type<GLenum>::type>(e) << ") " << Meta::getString(e) << std::dec << std::endl;
-
-  std::cout << std::dec;
-}
-```
-
-Example output of all available extensions (run time):
-
-```cpp
-#include <iostream>
-
-#include <glbinding/Meta.h>
-
-using glbinding::Meta;
-
-if (Meta::stringsByGL())
-{
-  std::cout << " # Extensions: " << Meta::extensions().size() << std::endl << std::endl;
-
-  for (GLextension e : Meta::extensions())
-  {
-    const Version v = Meta::getRequiringVersion(e);
-    std::cout << " " << Meta::getString(e) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
-  }
-}
-```
