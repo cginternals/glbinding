@@ -14,7 +14,7 @@ global and local function callbacks, meta information about the generated OpenGL
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
 *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
 
-Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding*: just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl```.
+Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding* and causes no significant impact on runtime performance (see [compare example](https://github.com/cginternals/glbinding/wiki/examples#compare)): just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl```.
 
 ```cpp
 #include <glbinding/gl/gl.h>
@@ -33,6 +33,7 @@ int main()
   glEnd();
 }
 ```
+
 
 ## Resources
 
@@ -55,8 +56,8 @@ int main()
 * [Multi-context Support](#multi-context-support)
 * [Multi-thread Support](#multi-threading-support)
 * [Global and Local Function Callbacks](#function-callbacks) 
-* [Meta Information System](#meta-information)
 * [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
+* [Meta Information System](#meta-information)
 * [Doxygen Documentation](https://cginternals.github.io/glbinding/documentation)
 
 
@@ -177,11 +178,36 @@ In order to compile the project, either use you favorite Editor/IDE with the cre
 cmake --build .
 ```
 
+##### Generating/Updating the Binding Manually
+
+For updating the ```gl.xml``` and the resulting glbinding interfaces python scripts are provided in ```codegeneration``` directory.
+An additional ```patch.xml``` is used to resolve possible conflicts or missing specifications (with the ongoing development of the xml-based OpenGL API specification this could become obsolete in the future).
+For ease-of-use, the update and generation can be triggered using the generated build targets ```update``` and ```generate```.
+
+
+
+
+## Tips for Linking
+
+We suggest using the build system of glbinding for a smooth integration: [CMake](https://cmake.org/)
+For it, *glbinding* provides a find configuration script that should be installed into your system or at least accessible by CMake. 
+In the projects CMakeLists.txt, add one of the following lines:
+```
+find_package(glbinding QUIET) # if you want to check for existance
+find_package(glbinding REQUIRED) # if it is really required in your project
+```
+Finally, just link glbinding to your own library or executable:
+```
+target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
+```
+
+
+
 
 ## Features
 
 
-#### Type-Safe Parameters
+### Type-Safe Parameters
 
 The original OpenGL API provides several concepts in their interface, namely functions, booleans, bitfields, enums, as well as special values and basic types but mostly does not differentiate between these types.
 Hence, actuall knowledge about each function, its parameters and their ranges is required; there is no way for a basic code assistance. 
@@ -211,41 +237,48 @@ GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error 
 
 
 
-#### Compilation-Centered Header Design
+### Compilation-Centered Header Design
 
-As C++ is a language that strictly separates interface from implementation and don't come with sophisticated modularization concepts, there is often much potential to improve the compilation time. This is mainly done with forward declarations of types and omitting includes of unnecessary symbols.
+C++ strictly separates interface from implementation. 
+For improving the compilation time of a program or system written in C++ usually forward declarations of types are used and includes of unnecessary symbols are ommited.
 
-For an interface of a library, class or module providing OpenGL related functionality, it is likely that only the type information of OpenGL are needed, not actual functions or constants. Those are mainly required in the implementation.
-If you want to apply such optimizations, glbinding provides specialized headers, but if you want the traditional approach to include the complete OpenGL API using one header, this is also supported.
+For an interface of a library, class, or module providing OpenGL related functionality, it is likely that only the type information of OpenGL is needed, not actual functions or constants usually required for implementation.
+In addition to the customary all-in-one header ```gl.h``` *glbinding* also provides specialized headers:
 
-So comes that glbinding provides 7 headers, one for the whole API and 6 specialized ones.
 ```cpp
-#include <glbinding/gl/gl.h> // Include all of the headers below, meaning the complete OpenGL API
+#include <glbinding/gl/gl.h>        // all of the headers below, meaning the complete OpenGL API
 
-#include <glbinding/gl/bitfield.h> // Include the bitfield constants (e.g., GL_COLOR_BUFFER_BIT)
-#include <glbinding/gl/boolean.h> // Include the boolean constants (GL_TRUE and GL_FALSE)
-#include <glbinding/gl/enum.h> // Include the symbol constants (e.g., GL_VERTEX_SHADER)
-#include <glbinding/gl/functions.h> // Include all functions
-#include <glbinding/gl/types.h> // Include all type declarations of the OpenGL API (including bitfields, boolean, enum, and extensions)
-#include <glbinding/gl/values.h> // Include all special values (e.g., GL_INVALID_INDEX)
+#include <glbinding/gl/bitfield.h>  // bitfield constants (e.g., GL_COLOR_BUFFER_BIT)
+#include <glbinding/gl/boolean.h>   // boolean constants (GL_TRUE and GL_FALSE)
+#include <glbinding/gl/enum.h>      // symbol constants (e.g., GL_VERTEX_SHADER)
+#include <glbinding/gl/functions.h> // functions
+#include <glbinding/gl/types.h>     // type declarations of the OpenGL API (including bitfields, boolean, enum, and extensions)
+#include <glbinding/gl/values.h>    // special values (e.g., GL_INVALID_INDEX)
 ```
+
 There is one additional header that provides all extensions and provide them as an enumeration in terms of C++ enums.
 ```cpp
-#include <glbinding/gl/extension.h> // Include the extensions the OpenGL API offers
+#include <glbinding/gl/extension.h> 
 ```
 
 
 
 
-#### Feature-Centered Header Design
+### Feature-Centered Header Design
 
-The OpenGL API comes with different versions, internally named *features*. The current features of OpenGL are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, 4.4, and 4.5. Besides the features, there is a distinction between compatability and core contexts as well as forward and non-forward contexts. This results in many possible specific manifestations of the OpenGL API you can use in your program.
+The OpenGL API is iteratively develeoped and released in versions, internally (for the API specification) named *features*.
+The latest feature/version of OpenGL is 4.5.
+The previous version are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, and 4.4. 
+OpenGL uses a deprecation model for removing outdated parts of its API which results in compatability (with deprecated API) and core (without deprecated API) usage that is manifested in the targeted OpenGL context.
+On top of that, new API concepts are suggested as extensions (often vendor specific) that might be integrated in future versions.
+All this results in many possible specific manifestations of the OpenGL API you can use in your program.
 
-One tough task is to adhere to one agreed set of functions in your own OpenGL program (e.g., OpenGL 3.2 Core if you want to develop for every Windows, OS X and Linux since the last 4 years). glbinding helps with this task in providing per-feature headers so you can specify which functions and constants you want to use.
+One tough task is to adhere to one agreed set of functions in your own OpenGL program (e.g., OpenGL 3.2 Core if you want to develop for every Windows, OS X, and Linux released in the last 4 years). 
+*glbinding* facilitates this by providing per-feature headers by means of well-defined/generated subsets of the OpenGL API.
 
 ##### All-Features OpenGL Headers
 
-If you don't use per-feature headers the OpenGL program can look like this:
+If you do not use per-feature headers the OpenGL program can look like this:
 ```cpp
 #include <glbinding/gl/gl.h>
 
@@ -255,10 +288,11 @@ gl::glUniform1i(u_numcubes, m_numcubes);
 gl::glDrawElementsInstanced(gl::GL_TRIANGLES, 18, gl::GL_UNSIGNED_BYTE, 0, m_numcubes * m_numcubes);
 ```
 
-##### Per-Feature OpenGL Headers
+##### Single-Feature OpenGL Headers
 
-When developing your code on Windows with latest drivers installed, this code will likely work. But if you want to port it to systems with less driver support (OS X, Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
-Then you can switch to per-feature headers of glbinding and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms).
+When developing your code on Windows with latest drivers installed, the code above is likely to compile and run. 
+But if you want to port it to systems with less mature driver support (e.g., OS X or Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
+In this case, just switch to per-feature headers of glbinding and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms):
 ```cpp
 #include <glbinding/gl32core/gl.h>
 
@@ -268,50 +302,12 @@ gl32core::glUniform1i(u_numcubes, m_numcubes);
 gl32core::glDrawElementsInstanced(gl32core::GL_TRIANGLES, 18, gl32core::GL_UNSIGNED_BYTE, 0, m_numcubes * m_numcubes);
 ```
 If the code compiles than you can be sure it is OpenGL 3.2 Core compliant.
-
-This checking works in both ways: You can check that you don't use any function that isn't available yet but you also can be sure to omit any deprecated functionality.
-As the list of available extensions is the same for every feature of OpenGL, this header is only provided in the general header namespace (```glbinding/gl/extension.h```).
+Using functions that are not yet available or relying on deprecated functionality is prevented.
 
 
 
 
-#### Alternative Signatures
-
-The OpenGL API is designed without function overloading using only simple parameter types. 
-This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). 
-Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. 
-This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum```, and ```GLbitfield``` types. 
-Using type-save functions of glbinding, some typically compiling code constructs are now deliberately broken. 
-For most of those cases we provide alternative *overloaded* function signatures. 
-Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
-
-To use alternative function signatures, confer to the following example:
-```cpp
-#include <glbinding/gl/gl.h>
-#include <glbinding/gl/functions-patches.h>
-
-using namespace gl;
-
-// ...
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
-```
-Note that these function signatures are *only* defined in the ```gl``` namespace. 
-If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to other ones or manually import the used alternative signatures into the other namespace using ```using``` declarations.
-
-
-
-
-
-
-
-
-
-
-##### Lazy Function Pointer Resolution
+### Lazy Function Pointer Resolution
 
 By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
 
@@ -325,7 +321,7 @@ Alternatively, the user can decide that functions pointers are resolved only whe
 glbinding::Binding::initialize(false); // lazy function pointer resolution
 ```
 
-##### Multi-Context Support
+### Multi-Context Support
 
 *glbinding* has built-in support for multiple contexts. The only requirement is, that the currently active context has to be specified. This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context often result in non-meaningful communication with the OpenGL driver.
 
@@ -349,13 +345,13 @@ glbinding::Binding::useContext(ContextHandle context);
 This feature is mainly intended for platforms where function pointers for different requested OpenGL features may vary.
 
 
-##### Multi-Threading Support
+### Multi-Threading Support
 
 Concurrent use of *glbinding* is mainly intended to the usage of multiple contexts in different threads (multiple threads operating on a single OpenGL context requires locking, which *glbinding* will not provide).
 For this, *glbinding* supports multiple active contexts, one per thread. This necessitates that *glbinding* gets informed in each thread which context is currently active (see [multi-context](#multi-context-support)).
 
 
-##### Function Callbacks
+### Function Callbacks
 
 *glbinding* supports different types of callbacks that can be registered.
 The main types are
@@ -428,7 +424,8 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 // ... OpenGL code
 ```
 
-Example for per function callbacks:
+##### Per Function Callbacks
+
 
 ```cpp
 #include <iostream>
@@ -484,7 +481,7 @@ To support orthogonal features of an API, glbinding allows to attach a number of
 
 To support each of the above tasks (and even more), glbinding supports the following types of callbacks: context switch callbacks, unresolved functions callbacks, before function call callbacks, after function call callbacks. The latter two are again separated into global and local callbacks (i.e., one callback for each function or per-function callbacks).
 
-### Context Switch Callback (Global)
+##### Context Switch Callback (Global)
 
 To use the global context switch callback, you just have to register one using the code below.
 ```cpp
@@ -499,7 +496,7 @@ Binding::addContextSwitchCallback([](ContextHandle handle){
 });
 ```
 
-### Unresolved Function Callback (Global)
+##### Unresolved Function Callback (Global)
 
 To detect unresolved functions, you can register a callback that is called each time an unresolved OpenGL function is about to get called. With such a callback you can quickly detect unsupported features of your OpenGL driver without introducing much error checking code.
 ```cpp
@@ -514,20 +511,20 @@ setUnresolvedCallback([](const AbstractFunction & function) {
 });
 ```
 
-### Before Function Call Callback (Global)
+##### Before Function Call Callback (Global)
 
 The global before function callback can be used to indicate the upcoming OpenGL function call. In case some drivers don't handle all wrong usages of the OpenGL API correctly and sometimes fail and crash, this callback can give you a direct hint about the OpenGL call that causes the crash. With correct configuration you have even access to all parameters of the call (see below):
 ```cpp
 
 ```
 
-### After Function Call Callback (Global)
+##### After Function Call Callback (Global)
 
-### Before Function Call Callback (Local)
+##### Before Function Call Callback (Local)
 
-### After Function Call Callback (Local)
+##### After Function Call Callback (Local)
 
-### Activate Function-Call Related Callbacks
+##### Activate Function-Call Related Callbacks
 
 For fine control about activated and de-activated callbacks, each OpenGL API function in glbinding saves the status for before and after callbacks for itself. This allows for invidivual callback registration and evaluation.
 
@@ -547,7 +544,38 @@ setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
 
 
-##### Meta Information
+
+### Alternative Signatures
+
+The OpenGL API is designed without function overloading using only simple parameter types. 
+This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). 
+Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. 
+This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum```, and ```GLbitfield``` types. 
+Using type-save functions of glbinding, some typically compiling code constructs are now deliberately broken. 
+For most of those cases we provide alternative *overloaded* function signatures. 
+Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
+
+To use alternative function signatures, confer to the following example:
+```cpp
+#include <glbinding/gl/gl.h>
+#include <glbinding/gl/functions-patches.h>
+
+using namespace gl;
+
+// ...
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
+```
+Note that these function signatures are *only* defined in the ```gl``` namespace. 
+If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to other ones or manually import the used alternative signatures into the other namespace using ```using``` declarations.
+
+
+
+
+### Meta Information
 
 Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and run time information about the gl.xml and your OpenGL driver.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
@@ -608,14 +636,3 @@ if (Meta::stringsByGL())
   }
 }
 ```
-
-##### Performance
-
-*glbinding* causes no significant impact on runtime performance. The provided comparison example supports this statement. It compares the execution times of identical rendering code, dispatched once with *glbinding* and once with GLEW. Various results are provided in the [Examples](https://github.com/cginternals/glbinding/wiki/examples) wiki. Even when there are differences keep in mind that this example measures the pure CPU time of a function call which, most of the time, is the time required to insert the OpenGL command into the queue. The actual execution time of OpenGL commands is usually driver and GPU bound.
-
-
-##### Binding Generation
-
-As a user of glbinding you are able to update the gl.xml by yourself and generate the glbinding code.
-The necessary python scripts are provided in this repository. Since the ```gl.xml``` is not complete, a ```patch.xml``` is used to resolve possible conflicts or missing specifications. With ongoing development of the xml-based OpenGL API specification this could become obsolete in the future.
-For ease-of-use, the update and generation can be triggered using the generated targets from cmake named ```update``` and ```generate```.
