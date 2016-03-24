@@ -213,25 +213,26 @@ GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error 
 
 #### Compilation-Centered Header Design
 
-As C++ is a language that strictly separates interface from implementation and don't come with sophisticated modularization concepts, there is often much potential to improve the compilation time. This is mainly done with forward declarations of types and omitting includes of unnecessary symbols.
+C++ strictly separates interface from implementation. 
+For improving the compilation time of a program or system written in C++ usually forward declarations of types are used and includes of unnecessary symbols are ommited.
 
-For an interface of a library, class or module providing OpenGL related functionality, it is likely that only the type information of OpenGL are needed, not actual functions or constants. Those are mainly required in the implementation.
-If you want to apply such optimizations, glbinding provides specialized headers, but if you want the traditional approach to include the complete OpenGL API using one header, this is also supported.
+For an interface of a library, class, or module providing OpenGL related functionality, it is likely that only the type information of OpenGL is needed, not actual functions or constants usually required for implementation.
+In addition to the customary all-in-one header ```gl.h``` *glbinding* also provides specialized headers:
 
-So comes that glbinding provides 7 headers, one for the whole API and 6 specialized ones.
 ```cpp
-#include <glbinding/gl/gl.h> // Include all of the headers below, meaning the complete OpenGL API
+#include <glbinding/gl/gl.h>        // all of the headers below, meaning the complete OpenGL API
 
-#include <glbinding/gl/bitfield.h> // Include the bitfield constants (e.g., GL_COLOR_BUFFER_BIT)
-#include <glbinding/gl/boolean.h> // Include the boolean constants (GL_TRUE and GL_FALSE)
-#include <glbinding/gl/enum.h> // Include the symbol constants (e.g., GL_VERTEX_SHADER)
-#include <glbinding/gl/functions.h> // Include all functions
-#include <glbinding/gl/types.h> // Include all type declarations of the OpenGL API (including bitfields, boolean, enum, and extensions)
-#include <glbinding/gl/values.h> // Include all special values (e.g., GL_INVALID_INDEX)
+#include <glbinding/gl/bitfield.h>  // bitfield constants (e.g., GL_COLOR_BUFFER_BIT)
+#include <glbinding/gl/boolean.h>   // boolean constants (GL_TRUE and GL_FALSE)
+#include <glbinding/gl/enum.h>      // symbol constants (e.g., GL_VERTEX_SHADER)
+#include <glbinding/gl/functions.h> // functions
+#include <glbinding/gl/types.h>     // type declarations of the OpenGL API (including bitfields, boolean, enum, and extensions)
+#include <glbinding/gl/values.h>    // special values (e.g., GL_INVALID_INDEX)
 ```
+
 There is one additional header that provides all extensions and provide them as an enumeration in terms of C++ enums.
 ```cpp
-#include <glbinding/gl/extension.h> // Include the extensions the OpenGL API offers
+#include <glbinding/gl/extension.h> 
 ```
 
 
@@ -239,13 +240,19 @@ There is one additional header that provides all extensions and provide them as 
 
 #### Feature-Centered Header Design
 
-The OpenGL API comes with different versions, internally named *features*. The current features of OpenGL are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, 4.4, and 4.5. Besides the features, there is a distinction between compatability and core contexts as well as forward and non-forward contexts. This results in many possible specific manifestations of the OpenGL API you can use in your program.
+The OpenGL API is iteratively develeoped and released in versions, internally (for the API specification) named *features*.
+The latest feature/version of OpenGL is 4.5.
+The previous version are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, and 4.4. 
+OpenGL uses a deprecation model for removing outdated parts of its API which results in compatability (with deprecated API) and core (without deprecated API) usage that is manifested in the targeted OpenGL context.
+On top of that, new API concepts are suggested as extensions (often vendor specific) that might be integrated in future versions.
+All this results in many possible specific manifestations of the OpenGL API you can use in your program.
 
-One tough task is to adhere to one agreed set of functions in your own OpenGL program (e.g., OpenGL 3.2 Core if you want to develop for every Windows, OS X and Linux since the last 4 years). glbinding helps with this task in providing per-feature headers so you can specify which functions and constants you want to use.
+One tough task is to adhere to one agreed set of functions in your own OpenGL program (e.g., OpenGL 3.2 Core if you want to develop for every Windows, OS X, and Linux released in the last 4 years). 
+*glbinding* facilitates this by providing per-feature headers by means of well-defined/generated subsets of the OpenGL API.
 
 ##### All-Features OpenGL Headers
 
-If you don't use per-feature headers the OpenGL program can look like this:
+If you do not use per-feature headers the OpenGL program can look like this:
 ```cpp
 #include <glbinding/gl/gl.h>
 
@@ -255,10 +262,11 @@ gl::glUniform1i(u_numcubes, m_numcubes);
 gl::glDrawElementsInstanced(gl::GL_TRIANGLES, 18, gl::GL_UNSIGNED_BYTE, 0, m_numcubes * m_numcubes);
 ```
 
-##### Per-Feature OpenGL Headers
+##### Single-Feature OpenGL Headers
 
-When developing your code on Windows with latest drivers installed, this code will likely work. But if you want to port it to systems with less driver support (OS X, Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
-Then you can switch to per-feature headers of glbinding and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms).
+When developing your code on Windows with latest drivers installed, the code above is likely to compile and run. 
+But if you want to port it to systems with less mature driver support (e.g., OS X or Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
+In this case, just switch to per-feature headers of glbinding and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms):
 ```cpp
 #include <glbinding/gl32core/gl.h>
 
@@ -268,9 +276,7 @@ gl32core::glUniform1i(u_numcubes, m_numcubes);
 gl32core::glDrawElementsInstanced(gl32core::GL_TRIANGLES, 18, gl32core::GL_UNSIGNED_BYTE, 0, m_numcubes * m_numcubes);
 ```
 If the code compiles than you can be sure it is OpenGL 3.2 Core compliant.
-
-This checking works in both ways: You can check that you don't use any function that isn't available yet but you also can be sure to omit any deprecated functionality.
-As the list of available extensions is the same for every feature of OpenGL, this header is only provided in the general header namespace (```glbinding/gl/extension.h```).
+Using functions that are not yet available or relying on deprecated functionality is prevented.
 
 
 
