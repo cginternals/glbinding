@@ -12,7 +12,7 @@ namespace glbinding
 
 {{#extensionsByInitial.groups}}
 {{#empty}}
-const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{name}};
+const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{name}}{};
 {{/empty}}
 {{^empty}}
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{name}} =

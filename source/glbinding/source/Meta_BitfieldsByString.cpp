@@ -128,9 +128,9 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_I =
     { "GL_ITALIC_BIT_NV", static_cast<GLbitfield>(PathFontStyle::GL_ITALIC_BIT_NV) }
 };
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_J;
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_J{};
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_K;
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_K{};
 
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_L =
 {
@@ -169,7 +169,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_N =
     { "GL_NORMAL_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_NORMAL_BIT_PGI) }
 };
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_O;
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_O{};
 
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_P =
 {
@@ -244,13 +244,13 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_V =
     { "GL_VIEWPORT_BIT", static_cast<GLbitfield>(AttribMask::GL_VIEWPORT_BIT) }
 };
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_W;
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_W{};
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_X;
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_X{};
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Y;
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Y{};
 
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Z;
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Z{};
 
 const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps =
 { {

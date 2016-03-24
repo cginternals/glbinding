@@ -20,7 +20,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}} =
 };
 {{/empty}}
 {{#empty}}
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}};
+const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}}{};
 {{/empty}}
 
 {{/enumsByInitial.groups}}

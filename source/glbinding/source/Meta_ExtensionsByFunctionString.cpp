@@ -10,7 +10,7 @@ namespace glbinding
 {
 
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_0;
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_0{};
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_A =
 {
@@ -1006,9 +1006,9 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glIsVertexAttribEnabledAPPLE", { GLextension::GL_APPLE_vertex_program_evaluators } }
 };
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_J;
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_J{};
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_K;
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_K{};
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_L =
 {
@@ -2317,11 +2317,11 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glWriteMaskEXT", { GLextension::GL_EXT_vertex_shader } }
 };
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_X;
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_X{};
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Y;
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Y{};
 
-const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Z;
+const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_Z{};
 
 const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27> Meta_ExtensionsByFunctionStringMaps =
 { {

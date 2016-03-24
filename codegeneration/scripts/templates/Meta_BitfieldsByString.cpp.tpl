@@ -12,7 +12,7 @@ namespace glbinding
 
 {{#bitfieldsByInitial.groups}}
 {{#empty}}
-const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{name}};
+const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{name}}{};
 {{/empty}}
 {{^empty}}
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{name}} =
