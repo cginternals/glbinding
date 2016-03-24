@@ -181,16 +181,16 @@ cmake --build .
 
 #### Type-Safe Parameters
 
-The original OpenGL API provides several concepts in their interface, namely functions, boolean values, bitfield values, named values and special values and basic types values but mostly don't differentiate in them.
+The original OpenGL API provides several concepts in their interface, namely functions, booleans, bitfields, enums, as well as special values and basic types but mostly does not differentiate between these types.
+Hence, actuall knowledge about each function, its parameters and their ranges is required; there is no way for a basic code assistance. 
+As glbinding differentiates between all these types, IDEs and compilers can detect wrong usages of the OpenGL API.
 
-So comes one must actually know each function of the OpenGL API to know what parameters and their ranges can be passed. There is no way for a basic code assistance. As glbinding differs between all types of values, IDEs can hint the programmer most wrong usages of the OpenGL API with a compilation error.
-
-One example is the passing of a named constant in places where bit combination is expected:
+One example is the passing of a named constant in places where a bit combination is expected:
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT); // valid
 glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
 ```
-In the case of bitfield values, the OpenGL API offers groups and each parameter states the group valid values must come from. This means that glbinding can actually assist with valid and invalid bit combinations:
+In the case of bitfields, the OpenGL API offers groups and each parameter states the group valid values must come from. *glbinding* uses this information to prevent invalid bit combinations:
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
@@ -199,7 +199,8 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
                                                     //  the shared group is AttribMask, but the
                                                     //  resulting group does not match the expected.
 ```
-Unfortunately, such groups are incomplete and unmaintained for the named values. Thus, glbinding couldn't provide any assistance for the following case:
+Unfortunately, such groups are incomplete and unmaintained for enums (named values). 
+Thus, glbinding could not provide any assistance for cases such as:
 ```cpp
 GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER); // All good
 GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error but a runtime error!
