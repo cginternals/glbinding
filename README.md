@@ -207,7 +207,7 @@ target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
 ## Features
 
 
-#### Type-Safe Parameters
+### Type-Safe Parameters
 
 The original OpenGL API provides several concepts in their interface, namely functions, booleans, bitfields, enums, as well as special values and basic types but mostly does not differentiate between these types.
 Hence, actuall knowledge about each function, its parameters and their ranges is required; there is no way for a basic code assistance. 
@@ -237,7 +237,7 @@ GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error 
 
 
 
-#### Compilation-Centered Header Design
+### Compilation-Centered Header Design
 
 C++ strictly separates interface from implementation. 
 For improving the compilation time of a program or system written in C++ usually forward declarations of types are used and includes of unnecessary symbols are ommited.
@@ -264,7 +264,7 @@ There is one additional header that provides all extensions and provide them as 
 
 
 
-#### Feature-Centered Header Design
+### Feature-Centered Header Design
 
 The OpenGL API is iteratively develeoped and released in versions, internally (for the API specification) named *features*.
 The latest feature/version of OpenGL is 4.5.
@@ -307,7 +307,7 @@ Using functions that are not yet available or relying on deprecated functionalit
 
 
 
-##### Lazy Function Pointer Resolution
+### Lazy Function Pointer Resolution
 
 By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
 
@@ -321,7 +321,7 @@ Alternatively, the user can decide that functions pointers are resolved only whe
 glbinding::Binding::initialize(false); // lazy function pointer resolution
 ```
 
-##### Multi-Context Support
+### Multi-Context Support
 
 *glbinding* has built-in support for multiple contexts. The only requirement is, that the currently active context has to be specified. This feature mixes well with multi-threaded applications, but keep in mind that concurrent use of one context often result in non-meaningful communication with the OpenGL driver.
 
@@ -345,13 +345,13 @@ glbinding::Binding::useContext(ContextHandle context);
 This feature is mainly intended for platforms where function pointers for different requested OpenGL features may vary.
 
 
-##### Multi-Threading Support
+### Multi-Threading Support
 
 Concurrent use of *glbinding* is mainly intended to the usage of multiple contexts in different threads (multiple threads operating on a single OpenGL context requires locking, which *glbinding* will not provide).
 For this, *glbinding* supports multiple active contexts, one per thread. This necessitates that *glbinding* gets informed in each thread which context is currently active (see [multi-context](#multi-context-support)).
 
 
-##### Function Callbacks
+### Function Callbacks
 
 *glbinding* supports different types of callbacks that can be registered.
 The main types are
@@ -424,7 +424,8 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 // ... OpenGL code
 ```
 
-Example for per function callbacks:
+##### Per Function Callbacks
+
 
 ```cpp
 #include <iostream>
@@ -480,7 +481,7 @@ To support orthogonal features of an API, glbinding allows to attach a number of
 
 To support each of the above tasks (and even more), glbinding supports the following types of callbacks: context switch callbacks, unresolved functions callbacks, before function call callbacks, after function call callbacks. The latter two are again separated into global and local callbacks (i.e., one callback for each function or per-function callbacks).
 
-### Context Switch Callback (Global)
+##### Context Switch Callback (Global)
 
 To use the global context switch callback, you just have to register one using the code below.
 ```cpp
@@ -495,7 +496,7 @@ Binding::addContextSwitchCallback([](ContextHandle handle){
 });
 ```
 
-### Unresolved Function Callback (Global)
+##### Unresolved Function Callback (Global)
 
 To detect unresolved functions, you can register a callback that is called each time an unresolved OpenGL function is about to get called. With such a callback you can quickly detect unsupported features of your OpenGL driver without introducing much error checking code.
 ```cpp
@@ -510,20 +511,20 @@ setUnresolvedCallback([](const AbstractFunction & function) {
 });
 ```
 
-### Before Function Call Callback (Global)
+##### Before Function Call Callback (Global)
 
 The global before function callback can be used to indicate the upcoming OpenGL function call. In case some drivers don't handle all wrong usages of the OpenGL API correctly and sometimes fail and crash, this callback can give you a direct hint about the OpenGL call that causes the crash. With correct configuration you have even access to all parameters of the call (see below):
 ```cpp
 
 ```
 
-### After Function Call Callback (Global)
+##### After Function Call Callback (Global)
 
-### Before Function Call Callback (Local)
+##### Before Function Call Callback (Local)
 
-### After Function Call Callback (Local)
+##### After Function Call Callback (Local)
 
-### Activate Function-Call Related Callbacks
+##### Activate Function-Call Related Callbacks
 
 For fine control about activated and de-activated callbacks, each OpenGL API function in glbinding saves the status for before and after callbacks for itself. This allows for invidivual callback registration and evaluation.
 
@@ -544,7 +545,7 @@ setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
 
 
-#### Alternative Signatures
+### Alternative Signatures
 
 The OpenGL API is designed without function overloading using only simple parameter types. 
 This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). 
@@ -574,7 +575,7 @@ If you want to use per-feature API header and the patched signatures together in
 
 
 
-##### Meta Information
+### Meta Information
 
 Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and run time information about the gl.xml and your OpenGL driver.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
