@@ -27,10 +27,15 @@ using namespace gl;
   // ...
 ```
 
+###### glbinding for Enterprise
+
+Want to integrate glbinding in your software? Our team of glbinding experts will work closely with your team to help you integrate, customize, and support your glbinding setup.
+
+Visit [Enterprise Support and Services](https://www.cginternals.com) for more details.
+
 
 ## Resources
 
-* [Professional Support and Services](https://www.cginternals.com) by CG Internals
 * [Tools](https://github.com/cginternals/glbinding/wiki/tools)
 * [Examples](https://github.com/cginternals/glbinding/wiki/examples)
 * [Project Health](#project-health)
