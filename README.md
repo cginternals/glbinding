@@ -3,7 +3,7 @@
 ![glbinding](glbinding-logo.png)
 
 The state-of-the-art way for low-level OpenGL programming;
-*glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the OpenGL API, professionally maintained by [CG Internals](http://www.cginternals.com).
+*glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the [OpenGL API](http://www.opengl.org), professionally maintained by [CG Internals](http://www.cginternals.com).
 
 See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0).
 
