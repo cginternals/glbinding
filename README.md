@@ -80,7 +80,7 @@ For systems providing package managers, we generally strive for packages in thes
 
 ###### Windows
 
-The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-runtime.zip),
+The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-runtime.zip),
 [examples](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-examples.zip),
 [dev](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-dev.zip), and
 [tools](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-tools.zip).
