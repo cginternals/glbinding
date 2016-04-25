@@ -2811,6 +2811,7 @@ GLBINDING_API void glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
 GLBINDING_API void glViewportArrayv(GLuint first, GLsizei count, const GLfloat * v);
 GLBINDING_API void glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
 GLBINDING_API void glViewportIndexedfv(GLuint index, const GLfloat * v);
+GLBINDING_API void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew);
 
 GLBINDING_API void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout);
 GLBINDING_API void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights);

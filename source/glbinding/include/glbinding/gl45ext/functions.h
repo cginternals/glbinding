@@ -1761,6 +1761,7 @@ using gl::glVideoCaptureNV;
 using gl::glVideoCaptureStreamParameterdvNV;
 using gl::glVideoCaptureStreamParameterfvNV;
 using gl::glVideoCaptureStreamParameterivNV;
+using gl::glViewportSwizzleNV;
 using gl::glWeightPathsNV;
 using gl::glWeightPointerARB;
 using gl::glWeightbvARB;

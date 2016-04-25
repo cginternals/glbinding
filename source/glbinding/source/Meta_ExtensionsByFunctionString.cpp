@@ -2258,7 +2258,8 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glVideoCaptureStreamParameterivNV", { GLextension::GL_NV_video_capture } },
     { "glViewportArrayv", { GLextension::GL_ARB_viewport_array } },
     { "glViewportIndexedf", { GLextension::GL_ARB_viewport_array } },
-    { "glViewportIndexedfv", { GLextension::GL_ARB_viewport_array } }
+    { "glViewportIndexedfv", { GLextension::GL_ARB_viewport_array } },
+    { "glViewportSwizzleNV", { GLextension::GL_NV_viewport_swizzle } }
 };
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_W =

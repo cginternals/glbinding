@@ -516,7 +516,8 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
     { "GL_NV_vertex_program3", GLextension::GL_NV_vertex_program3 },
     { "GL_NV_vertex_program4", GLextension::GL_NV_vertex_program4 },
     { "GL_NV_video_capture", GLextension::GL_NV_video_capture },
-    { "GL_NV_viewport_array2", GLextension::GL_NV_viewport_array2 }
+    { "GL_NV_viewport_array2", GLextension::GL_NV_viewport_array2 },
+    { "GL_NV_viewport_swizzle", GLextension::GL_NV_viewport_swizzle }
 };
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_O =

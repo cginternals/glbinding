@@ -27,7 +27,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, 2848>; ///< The type of the build-in functions collection.
+    using array_t = std::array<AbstractFunction *, 2849>; ///< The type of the build-in functions collection.
     using ContextSwitchCallback = std::function<void(ContextHandle)>; ///< The signature of the context switch callback.
 
     /**
@@ -2925,6 +2925,7 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLfloat *> ViewportArrayv;
     static Function<void, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> ViewportIndexedf;
     static Function<void, gl::GLuint, const gl::GLfloat *> ViewportIndexedfv;
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> ViewportSwizzleNV;
     static Function<void, gl::GLsync, gl::UnusedMask, gl::GLuint64> WaitSync;
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLfloat *> WeightPathsNV;
     static Function<void, gl::GLint, gl::GLenum, gl::GLsizei, const void *> WeightPointerARB;

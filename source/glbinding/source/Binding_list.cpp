@@ -2790,6 +2790,7 @@ const Binding::array_t Binding::s_functions =
     &ViewportArrayv,
     &ViewportIndexedf,
     &ViewportIndexedfv,
+    &ViewportSwizzleNV,
     &WaitSync,
     &WeightPathsNV,
     &WeightPointerARB,
