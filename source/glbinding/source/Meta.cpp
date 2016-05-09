@@ -44,12 +44,15 @@ size_t Meta::alphabeticalGroupIndex(const std::string & identifier, const std::u
 
     // bold uppercase conversion -> non letters are discarded in next step
     if (index > 96)
+    {
         index -= 32;
+    }
 
     // every non upper case letter is assigned to index 0
     if (index < 65 || index > 90)
+    {
         index = 64;
-
+    }
     index -= 64;
 
     return index;

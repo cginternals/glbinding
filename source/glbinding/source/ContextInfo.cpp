@@ -18,7 +18,10 @@ namespace
 {
 
 
-void insertExtension(const std::string & extensionName, std::set<GLextension> * extensions, std::set<std::string> * unknownExtensionNames)
+void insertExtension(
+    const std::string & extensionName
+,   std::set<GLextension> * extensions
+,   std::set<std::string> * unknownExtensionNames)
 {
     const auto extension = glbinding::Meta::getExtension(extensionName);
 
@@ -74,7 +77,6 @@ std::set<GLextension> ContextInfo::extensions(std::set<std::string> * const unkn
         for (GLuint i = 0; i < static_cast<GLuint>(numExtensions); ++i)
         {
             const auto name = glGetStringi(GL_EXTENSIONS, i);
-
             if (name)
             {
                 insertExtension(reinterpret_cast<const char*>(name), &extensions, unknown);
@@ -97,19 +99,19 @@ std::string ContextInfo::vendor()
 
 Version ContextInfo::version()
 {
-    int majorVersion = 0;
-    int minorVersion = 0;
+    auto majorVersion = 0;
+    auto minorVersion = 0;
 
     Binding::GetIntegerv.directCall(GL_MAJOR_VERSION, &majorVersion);
     Binding::GetIntegerv.directCall(GL_MINOR_VERSION, &minorVersion);
 
-    const auto version = Version(static_cast<unsigned char>(majorVersion & 255), static_cast<unsigned char>(minorVersion & 255));
+    const auto version = Version(static_cast<unsigned char>(majorVersion & 255)
+        , static_cast<unsigned char>(minorVersion & 255));
 
     // probably version below 3.0
     if (GL_INVALID_ENUM == Binding::GetError.directCall())
     {
         const auto versionString = Binding::GetString.directCall(GL_VERSION);
-
         return Version(versionString[0] - '0', versionString[2] - '0');
     }
 

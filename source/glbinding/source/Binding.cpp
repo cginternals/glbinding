@@ -69,25 +69,18 @@ void Binding::initialize(
     AbstractFunction::provideState(pos);
     g_mutex.unlock();
 
-    if (_useContext)
-    {
+    const auto resolveWOUse = !_useContext & _resolveFunctions;
+    const auto currentContext = resolveWOUse ? getCurrentContext() : static_cast<ContextHandle>(0);
+
+    if(_useContext)
         useContext(context);
 
-        if (_resolveFunctions)
-        {
-            resolveFunctions();
-        }
-    }
-    else if (_resolveFunctions)
-    {
-        auto currentContext = getCurrentContext();
-
-        useContext(context);
-
+    if (_resolveFunctions)
         resolveFunctions();
 
+    // restore previous context
+    if(resolveWOUse)
         useContext(currentContext);
-    }
 }
 
 void Binding::registerAdditionalFunction(AbstractFunction * function)
