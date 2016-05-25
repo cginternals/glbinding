@@ -5054,6 +5054,7 @@ enum class GLenum : unsigned int
     GL_PLUS_CLAMPED_ALPHA_NV                                      = 0x92B2,
     GL_MINUS_CLAMPED_NV                                           = 0x92B3,
     GL_INVERT_OVG_NV                                              = 0x92B4,
+    GL_PURGED_CONTEXT_RESET_NV                                    = 0x92BB,
     GL_PRIMITIVE_BOUNDING_BOX_ARB                                 = 0x92BE,
     GL_ATOMIC_COUNTER_BUFFER                                      = 0x92C0,
     GL_ATOMIC_COUNTER_BUFFER_BINDING                              = 0x92C1,
@@ -10356,6 +10357,7 @@ static const GLenum GL_PLUS_CLAMPED_NV = GLenum::GL_PLUS_CLAMPED_NV;
 static const GLenum GL_PLUS_CLAMPED_ALPHA_NV = GLenum::GL_PLUS_CLAMPED_ALPHA_NV;
 static const GLenum GL_MINUS_CLAMPED_NV = GLenum::GL_MINUS_CLAMPED_NV;
 static const GLenum GL_INVERT_OVG_NV = GLenum::GL_INVERT_OVG_NV;
+static const GLenum GL_PURGED_CONTEXT_RESET_NV = GLenum::GL_PURGED_CONTEXT_RESET_NV;
 static const GLenum GL_PRIMITIVE_BOUNDING_BOX_ARB = GLenum::GL_PRIMITIVE_BOUNDING_BOX_ARB;
 static const GLenum GL_ATOMIC_COUNTER_BUFFER = GLenum::GL_ATOMIC_COUNTER_BUFFER;
 static const GLenum GL_ATOMIC_COUNTER_BUFFER_BINDING = GLenum::GL_ATOMIC_COUNTER_BUFFER_BINDING;

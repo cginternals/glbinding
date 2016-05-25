@@ -8162,7 +8162,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x92B2" name="GL_PLUS_CLAMPED_ALPHA_NV"/>
         <enum value="0x92B3" name="GL_MINUS_CLAMPED_NV"/>
         <enum value="0x92B4" name="GL_INVERT_OVG_NV"/>
-            <unused start="0x92B5" end="0x92BD" vendor="NV"/>
+            <unused start="0x92B5" end="0x92BA" vendor="NV"/>
+        <enum value="0x92BB" name="GL_PURGED_CONTEXT_RESET_NV"/>
+            <unused start="0x92BC" end="0x92BD" vendor="NV"/>
         <enum value="0x92BE" name="GL_PRIMITIVE_BOUNDING_BOX_ARB"/>
         <enum value="0x92BE" name="GL_PRIMITIVE_BOUNDING_BOX"/>
         <enum value="0x92BE" name="GL_PRIMITIVE_BOUNDING_BOX_EXT"/>
@@ -36571,6 +36573,7 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_AMD_shader_atomic_counter_ops" supported="gl"/>
         <extension name="GL_AMD_shader_stencil_export" supported="gl"/>
         <extension name="GL_AMD_shader_trinary_minmax" supported="gl"/>
+        <extension name="GL_AMD_shader_explicit_vertex_parameter" supported="gl"/>
         <extension name="GL_AMD_sparse_texture" supported="gl">
             <require>
                 <enum name="GL_VIRTUAL_PAGE_SIZE_X_AMD"/>
@@ -44369,6 +44372,11 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_PER_STAGE_CONSTANTS_NV"/>
                 <command name="glCombinerStageParameterfvNV"/>
                 <command name="glGetCombinerStageParameterfvNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_robustness_video_memory_purge" supported="gl">
+            <require>
+                <enum name="GL_PURGED_CONTEXT_RESET_NV"/>
             </require>
         </extension>
         <extension name="GL_NV_sRGB_formats" supported="gles2">

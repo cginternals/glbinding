@@ -3049,7 +3049,8 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_P =
     { "GL_PROXY_TEXTURE_RECTANGLE", GLenum::GL_PROXY_TEXTURE_RECTANGLE },
     { "GL_PROXY_TEXTURE_RECTANGLE_ARB", GLenum::GL_PROXY_TEXTURE_RECTANGLE_ARB },
     { "GL_PROXY_TEXTURE_RECTANGLE_NV", GLenum::GL_PROXY_TEXTURE_RECTANGLE_NV },
-    { "GL_PURGEABLE_APPLE", GLenum::GL_PURGEABLE_APPLE }
+    { "GL_PURGEABLE_APPLE", GLenum::GL_PURGEABLE_APPLE },
+    { "GL_PURGED_CONTEXT_RESET_NV", GLenum::GL_PURGED_CONTEXT_RESET_NV }
 };
 
 const std::unordered_map<std::string, GLenum> Meta_EnumsByString_Q =
