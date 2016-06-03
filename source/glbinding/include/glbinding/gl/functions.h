@@ -312,6 +312,7 @@ GLBINDING_API void glCompressedTextureSubImage2DEXT(GLuint texture, GLenum targe
 GLBINDING_API void glCompressedTextureSubImage3D(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * data);
 GLBINDING_API void glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const void * bits);
 GLBINDING_API void glConservativeRasterParameterfNV(GLenum pname, GLfloat value);
+GLBINDING_API void glConservativeRasterParameteriNV(GLenum pname, GLint param);
 GLBINDING_API void glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image);
 GLBINDING_API void glConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image);
 GLBINDING_API void glConvolutionFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * image);
@@ -2811,6 +2812,7 @@ GLBINDING_API void glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
 GLBINDING_API void glViewportArrayv(GLuint first, GLsizei count, const GLfloat * v);
 GLBINDING_API void glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
 GLBINDING_API void glViewportIndexedfv(GLuint index, const GLfloat * v);
+GLBINDING_API void glViewportPositionWScaleNV(GLuint index, GLfloat xcoeff, GLfloat ycoeff);
 GLBINDING_API void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew);
 
 GLBINDING_API void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout);

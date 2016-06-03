@@ -169,6 +169,7 @@ Function<void, GLuint, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GL
 Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage3D("glCompressedTextureSubImage3D");
 Function<void, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLsizei, const void *> Binding::CompressedTextureSubImage3DEXT("glCompressedTextureSubImage3DEXT");
 Function<void, GLenum, GLfloat> Binding::ConservativeRasterParameterfNV("glConservativeRasterParameterfNV");
+Function<void, GLenum, GLint> Binding::ConservativeRasterParameteriNV("glConservativeRasterParameteriNV");
 Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> Binding::ConvolutionFilter1D("glConvolutionFilter1D");
 Function<void, GLenum, GLenum, GLsizei, GLenum, GLenum, const void *> Binding::ConvolutionFilter1DEXT("glConvolutionFilter1DEXT");
 Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::ConvolutionFilter2D("glConvolutionFilter2D");

@@ -240,6 +240,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glCompressedTextureSubImage3D", { GLextension::GL_ARB_direct_state_access } },
     { "glCompressedTextureSubImage3DEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glConservativeRasterParameterfNV", { GLextension::GL_NV_conservative_raster_dilate } },
+    { "glConservativeRasterParameteriNV", { GLextension::GL_NV_conservative_raster_pre_snap_triangles } },
     { "glConvolutionFilter1D", { GLextension::GL_ARB_imaging } },
     { "glConvolutionFilter1DEXT", { GLextension::GL_EXT_convolution } },
     { "glConvolutionFilter2D", { GLextension::GL_ARB_imaging } },
@@ -2259,6 +2260,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glViewportArrayv", { GLextension::GL_ARB_viewport_array } },
     { "glViewportIndexedf", { GLextension::GL_ARB_viewport_array } },
     { "glViewportIndexedfv", { GLextension::GL_ARB_viewport_array } },
+    { "glViewportPositionWScaleNV", { GLextension::GL_NV_clip_space_w_scaling } },
     { "glViewportSwizzleNV", { GLextension::GL_NV_viewport_swizzle } }
 };
 
