@@ -34,16 +34,25 @@ public:
     ContextInfo() = delete;
 
     /**
+    * @brief
+    *   Gathers information about the available extensions in the current context.
+    *
+    * @return
+    *   The list of available extensions known by glbinding.
+    */
+    static std::set<gl::GLextension> extensions();
+
+    /**
      * @brief
      *   Gathers information about the available extensions in the current context.
      *
-     * @param[out] unknown (optional)
+     * @param[out] unknown
      *   The list of extension names for available extensions not known by glbinding.
      *
      * @return
      *   The list of available extensions known by glbinding.
      */
-    static std::set<gl::GLextension> extensions(std::set<std::string> * unknown = nullptr);
+    static std::set<gl::GLextension> extensions(std::set<std::string> & unknown);
 
     /**
      * @brief
@@ -71,6 +80,50 @@ public:
      *   The version encoding the OpenGL feature.
      */
     static Version version();
+
+    /**
+    * @brief
+    *   Queries if all given extensions are supported.
+    *
+    * @return
+    *   True if all given extensions are supported by the current context.
+    */
+    static bool supported(const std::set<gl::GLextension> & extensions);
+
+    /**
+    * @brief
+    *   Queries if all given extensions are supported.
+    *
+    * @param[out] unknown
+    *   The subset of extensions (based on the given extensions) not supported by the current context.
+    *
+    * @return
+    *   True if all given extensions are supported by the current context.
+    */
+    static bool supported(
+        const std::set<gl::GLextension> & extensions
+    ,   std::set<gl::GLextension> & unsupported);
+
+    /**
+    * @brief
+    *   Queries all missing extensions for the given OpenGL feature.
+    *
+    * @return
+    *   True if all extensions required for the given feature are supported.
+    */
+    static bool supported(const Version & version);
+
+    /**
+    * @brief
+    *   Queries all missing extensions for the given OpenGL feature.
+    *
+    * @param[out] unknown
+    *   The set of extensions missing by the current context for full feature support.
+    *
+    * @return
+    *   True if all extensions required for the given feature are supported.
+    */
+    static bool supported(const Version & version, std::set<gl::GLextension> & unsupported);
 };
 
 

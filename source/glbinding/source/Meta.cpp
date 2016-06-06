@@ -192,6 +192,19 @@ GLenum Meta::getEnum(const std::string & glenum)
     return static_cast<GLenum>(static_cast<unsigned int>(-1));
 }
 
+const std::set<GLextension> Meta::getRequiredExtensions(const Version & version)
+{
+    auto required = std::set<GLextension>{};
+
+    for (const auto & p : Meta_ReqVersionsByExtension)
+    {
+        if (p.second == version)
+            required.insert(p.first);
+    }
+
+    return required;
+}
+
 const std::set<GLextension> & Meta::getExtensionsRequiring(const std::string & glfunction)
 {
     const auto index = alphabeticalGroupIndex(glfunction, 2);

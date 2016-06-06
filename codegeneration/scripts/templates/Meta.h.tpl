@@ -148,34 +148,46 @@ public:
     
     /**
      * @brief
-     *   Returns the list of all extensions known by the gl.xml.
+     *   Returns the set of all extensions known by the gl.xml.
      *
      * @return
-     *   The list of all extensions known by the gl.xml.
+     *   The set of all extensions known by the gl.xml.
      */
     static std::set<gl::GLextension> extensions();
 
     /**
      * @brief
-     *   Returns the list of function names that are required for the extension.
+     *   Returns the set of function names that are required for the extension.
      *
      * @param[in] glextension
      *   The extension to return the required functions from.
      *
      * @return
-     *   The list of function names that are required for the extension.
+     *   The set of function names that are required for the extension.
      */
     static const std::set<std::string> & getRequiredFunctions(gl::GLextension glextension);
     
     /**
+    * @brief
+    *   Returns the set of extensions that are required for by the given version.
+    *
+    * @param[in] version
+    *   The version/feature to return the required extensions for.
+    *
+    * @return
+    *   The set of extensions that should be supported for the given version.
+    */
+    static const std::set<gl::GLextension> getRequiredExtensions(const Version & version);
+
+    /**
      * @brief
-     *   Returns the list of extensions that are requiring an OpenGL function.
+     *   Returns the set of extensions that are requiring an OpenGL function.
      *
      * @param[in] glfunction
      *   The name of the function, including the 'gl' prefix.
      *
      * @return
-     *   The list of extensions that are requiring an OpenGL function.
+     *   The set of extensions that are requiring an OpenGL function.
      */
     static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & glfunction);
     
