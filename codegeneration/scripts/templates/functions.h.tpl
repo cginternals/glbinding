@@ -18,3 +18,7 @@ GLBINDING_API {{#item}}{{>partials/general_type}} {{identifier}}({{>partials/gen
 
 
 } // namespace {{api}}
+
+
+// Include function patches due to dinstinguished types GLint, GLuint, GLenum, and GLboolean
+#include <glbinding/{{api}}/functions-patches.h>
