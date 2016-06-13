@@ -145,7 +145,7 @@ public:
      *   The symbol identified through the extension string, 'UNKNOWN' if failed.
      */
     static gl::GLextension getExtension(const std::string & glextension);
-    
+
     /**
      * @brief
      *   Returns the set of all extensions known by the gl.xml.
@@ -154,18 +154,6 @@ public:
      *   The set of all extensions known by the gl.xml.
      */
     static std::set<gl::GLextension> extensions();
-
-    /**
-     * @brief
-     *   Returns the set of function names that are required for the extension.
-     *
-     * @param[in] glextension
-     *   The extension to return the required functions from.
-     *
-     * @return
-     *   The set of function names that are required for the extension.
-     */
-    static const std::set<std::string> & getRequiredFunctions(gl::GLextension glextension);
     
     /**
     * @brief
@@ -173,15 +161,18 @@ public:
     *
     * @param[in] version
     *   The version/feature to return the required extensions for.
+    *   If an null version is given, all extensions that have no
+    *   version/feature associated are returned instead.
     *
     * @return
     *   The set of extensions that should be supported for the given version.
+    *   All non versioned extensions can be queried by providing the null version.
     */
-    static const std::set<gl::GLextension> getRequiredExtensions(const Version & version);
+    static const std::set<gl::GLextension> extensions(const Version & version);
 
     /**
      * @brief
-     *   Returns the set of extensions that are requiring an OpenGL function.
+     *   Returns the list of extensions that are requiring an OpenGL function.
      *
      * @param[in] glfunction
      *   The name of the function, including the 'gl' prefix.
@@ -189,8 +180,33 @@ public:
      * @return
      *   The set of extensions that are requiring an OpenGL function.
      */
-    static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & glfunction);
+    static const std::set<gl::GLextension> extensions(const std::string & glfunction);
     
+    /**
+    * @brief
+    *   Returns the set of function names that are required for the version.
+    *
+    * @param[in] version
+    *   The version to return the required functions for.
+    *
+    * @return
+    *   The set of function names that are required for the version.
+    *   Note: this is exclusive (preceeding versions are ignored).
+    */
+    static const std::set<std::string> functions(const Version & version);
+
+    /**
+    * @brief
+    *   Returns the set of function names that are required for the extension.
+    *
+    * @param[in] glextension
+    *   The extension to return the required functions for.
+    *
+    * @return
+    *   The set of function names that are required for the extension.
+    */
+    static const std::set<std::string> functions(gl::GLextension glextension);
+
     /**
      * @brief
      *   Returns the first OpenGL Version (Feature) that required the extension.
@@ -201,7 +217,7 @@ public:
      * @return
      *   The first OpenGL Version (Feature) that required the extension.
      */
-    static const Version & getRequiringVersion(gl::GLextension glextension);
+    static const Version & version(gl::GLextension glextension);
     
     /**
      * @brief

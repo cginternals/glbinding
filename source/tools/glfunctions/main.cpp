@@ -74,29 +74,37 @@ int main()
     auto extsByVer = std::map<Version, std::set<GLextension>>();
     auto suppByVer = std::map<Version, int>(); // num supported exts by version
 
-    for (auto & ext : allExts)
+    auto versions = Meta::versions();
+    versions.insert(Version{}); // provide NONE Version for extensions without associated version 
+
+    for (auto & version : versions)
     {
-        const auto v = Meta::getRequiringVersion(ext);
-        extsByVer[v].insert(ext);
-        suppByVer[v] = 0;
+        const auto extensions = Meta::extensions(version);
+        if (extensions.empty())
+            continue;
+
+        extsByVer[version] = extensions;
+        suppByVer[version] = 0;
     }
 
-    // go through all extensions by version and show functions
+    // iterate over all extensions by version and show functions
 
     auto funcsByExt = std::map<GLextension, std::set<const AbstractFunction *>>();
     auto nonExtFuncs = std::set<const AbstractFunction *>();
 
-    for (auto * func : Binding::functions())
+    for (auto * function : Binding::functions())
     {
-        if (func->isResolved())
+        if (function->isResolved())
             ++resolved;
 
-        if (Meta::getExtensionsRequiring(func->name()).empty())
-            nonExtFuncs.insert(func);
+        if (Meta::extensions(function->name()).empty())
+        {
+            nonExtFuncs.insert(function);
+        }
         else
         {
-            for (const auto & ext : Meta::getExtensionsRequiring(func->name()))
-                funcsByExt[ext].insert(func);
+            for (const auto & extension : Meta::extensions(function->name()))
+                funcsByExt[extension].insert(function);
             ++assigned;
         }
     }
@@ -153,7 +161,7 @@ int main()
     }
 
     std::cout << std::endl;
-    std::cout << "  Summary of Missing Feature Extensions: " << std::endl;
+    std::cout << "# Missing Feature Extensions: " << std::endl;
 
     auto unsupported = std::set<GLextension>{};
     for (auto p : extsByVer)

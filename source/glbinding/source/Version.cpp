@@ -157,6 +157,30 @@ const std::set<Version> & Version::versions()
     return s_validVersions;
 }
 
+const std::set<Version> Version::preceeding(const Version & version)
+{
+    auto preceedingVersions = std::set<Version>{};
+    for (auto & v : s_validVersions)
+    {
+        if (v < version)
+            preceedingVersions.insert(v);
+    }
+
+    return preceedingVersions;
+}
+
+const std::set<Version> Version::succeeding(const Version & version)
+{
+    auto succeedingVersions = std::set<Version>{};
+    for (auto & v : s_validVersions)
+    {
+        if (v > version)
+            succeedingVersions.insert(v);
+    }
+
+    return succeedingVersions;
+}
+
 
 } // namespace glbinding
 

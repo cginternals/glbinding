@@ -245,6 +245,24 @@ public:
     static const std::set<Version> & versions();
 
     /**
+    * @brief
+    *   Returns the list of all valid, previous Versions (Features) known by the gl.xml.
+    *
+    * @return
+    *   The list of all valid Versions (Features) with a version number below the provided one.
+    */
+    static const std::set<Version> preceeding(const Version & version);
+
+    /**
+    * @brief
+    *   Returns the list of all valid, subsequent Versions (Features) known by the gl.xml.
+    *
+    * @return
+    *   The list of all valid Versions (Features) with a version number above the provided one.
+    */
+    static const std::set<Version> succeeding(const Version & version);
+
+    /**
      * @brief
      *   Return the most current valid Version.
      *

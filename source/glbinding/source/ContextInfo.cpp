@@ -105,7 +105,7 @@ bool supported(const std::set<gl::GLextension> & extensions, std::set<gl::GLexte
 
 bool supported(const glbinding::Version & version, std::set<gl::GLextension> * unsupported)
 {
-    const auto required = glbinding::Meta::getRequiredExtensions(version);
+    const auto required = glbinding::Meta::extensions(version);
 
     return supported(required, unsupported);
 }
