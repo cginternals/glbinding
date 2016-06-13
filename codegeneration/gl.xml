@@ -7342,7 +7342,14 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8ED5" name="GL_COVERAGE_ALL_FRAGMENTS_NV"/>
         <enum value="0x8ED6" name="GL_COVERAGE_EDGE_FRAGMENTS_NV"/>
         <enum value="0x8ED7" name="GL_COVERAGE_AUTOMATIC_NV"/>
-            <unused start="0x8ED8" end="0x8F1C" vendor="NV"/>
+            <unused start="0x8ED8" end="0x8F0F" vendor="NV"/>
+        <enum value="0x8F10" name="GL_INCLUSIVE_EXT"/>
+        <enum value="0x8F11" name="GL_EXCLUSIVE_EXT"/>
+        <enum value="0x8F12" name="GL_WINDOW_RECTANGLE_EXT"/>
+        <enum value="0x8F13" name="GL_WINDOW_RECTANGLE_MODE_EXT"/>
+        <enum value="0x8F14" name="GL_MAX_WINDOW_RECTANGLES_EXT"/>
+        <enum value="0x8F15" name="GL_NUM_WINDOW_RECTANGLES_EXT"/>
+            <unused start="0x8F16" end="0x8F1C" vendor="NV"/>
         <enum value="0x8F1D" name="GL_BUFFER_GPU_ADDRESS_NV"/>
         <enum value="0x8F1E" name="GL_VERTEX_ATTRIB_ARRAY_UNIFIED_NV"/>
         <enum value="0x8F1F" name="GL_ELEMENT_ARRAY_UNIFIED_NV"/>
@@ -8366,8 +8373,8 @@ typedef unsigned int GLhandleARB;
         <enum value="0x937A" name="GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV"/>
         <enum value="0x937B" name="GL_CONSERVATIVE_RASTER_DILATE_GRANULARITY_NV"/>
         <enum value="0x937C" name="GL_VIEWPORT_POSITION_W_SCALE_NV"/>
-        <enum value="0x937D" name="GL_VIEWPORT_POSITION_W_SCALE_X_COEFF"/>
-        <enum value="0x937E" name="GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF"/>
+        <enum value="0x937D" name="GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV"/>
+        <enum value="0x937E" name="GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV"/>
             <unused start="0x937F" vendor="NV"/>
     </enums>
 
@@ -29913,6 +29920,12 @@ typedef unsigned int GLhandleARB;
             <param group="CoordS" len="4">const <ptype>GLshort</ptype> *<name>v</name></param>
         </command>
         <command>
+            <proto>void <name>glWindowRectanglesEXT</name></proto>
+            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param len="COMPSIZE(count)">const <ptype>GLint</ptype> *<name>box</name></param>
+        </command>
+        <command>
             <proto>void <name>glWriteMaskEXT</name></proto>
             <param><ptype>GLuint</ptype> <name>res</name></param>
             <param><ptype>GLuint</ptype> <name>in</name></param>
@@ -42632,6 +42645,17 @@ typedef unsigned int GLhandleARB;
                 <command name="glVertexWeightPointerEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_window_rectangles" supported="gl|gles2">
+            <require>
+                <enum name="GL_INCLUSIVE_EXT"/>
+                <enum name="GL_EXCLUSIVE_EXT"/>
+                <enum name="GL_WINDOW_RECTANGLE_EXT"/>
+                <enum name="GL_WINDOW_RECTANGLE_MODE_EXT"/>
+                <enum name="GL_MAX_WINDOW_RECTANGLES_EXT"/>
+                <enum name="GL_NUM_WINDOW_RECTANGLES_EXT"/>
+                <command name="glWindowRectanglesEXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_x11_sync_object" supported="gl">
             <require>
                 <enum name="GL_SYNC_X11_FENCE_EXT"/>
@@ -43340,8 +43364,8 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_NV_clip_space_w_scaling" supported="gl">
             <require>
                 <enum name="GL_VIEWPORT_POSITION_W_SCALE_NV"/>
-                <enum name="GL_VIEWPORT_POSITION_W_SCALE_X_COEFF"/>
-                <enum name="GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF"/>
+                <enum name="GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV"/>
+                <enum name="GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV"/>
                 <command name="glViewportPositionWScaleNV"/>
             </require>
         </extension>

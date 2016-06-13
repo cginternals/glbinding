@@ -2317,6 +2317,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glWindowPos4ivMESA", { GLextension::GL_MESA_window_pos } },
     { "glWindowPos4sMESA", { GLextension::GL_MESA_window_pos } },
     { "glWindowPos4svMESA", { GLextension::GL_MESA_window_pos } },
+    { "glWindowRectanglesEXT", { GLextension::GL_EXT_window_rectangles } },
     { "glWriteMaskEXT", { GLextension::GL_EXT_vertex_shader } }
 };
 

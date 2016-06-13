@@ -75,6 +75,7 @@ Function<void, GLint, GLint, GLint, GLint> Binding::WindowPos4iMESA("glWindowPos
 Function<void, const GLint *> Binding::WindowPos4ivMESA("glWindowPos4ivMESA");
 Function<void, GLshort, GLshort, GLshort, GLshort> Binding::WindowPos4sMESA("glWindowPos4sMESA");
 Function<void, const GLshort *> Binding::WindowPos4svMESA("glWindowPos4svMESA");
+Function<void, GLenum, GLsizei, const GLint *> Binding::WindowRectanglesEXT("glWindowRectanglesEXT");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::WriteMaskEXT("glWriteMaskEXT");
 
 

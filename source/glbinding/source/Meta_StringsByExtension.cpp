@@ -342,6 +342,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_EXT_vertex_attrib_64bit, "GL_EXT_vertex_attrib_64bit" },
     { GLextension::GL_EXT_vertex_shader, "GL_EXT_vertex_shader" },
     { GLextension::GL_EXT_vertex_weighting, "GL_EXT_vertex_weighting" },
+    { GLextension::GL_EXT_window_rectangles, "GL_EXT_window_rectangles" },
     { GLextension::GL_EXT_x11_sync_object, "GL_EXT_x11_sync_object" },
     { GLextension::GL_GREMEDY_frame_terminator, "GL_GREMEDY_frame_terminator" },
     { GLextension::GL_GREMEDY_string_marker, "GL_GREMEDY_string_marker" },

@@ -27,7 +27,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, 2851>; ///< The type of the build-in functions collection.
+    using array_t = std::array<AbstractFunction *, 2852>; ///< The type of the build-in functions collection.
     using ContextSwitchCallback = std::function<void(ContextHandle)>; ///< The signature of the context switch callback.
 
     /**
@@ -2995,6 +2995,7 @@ public:
     static Function<void, const gl::GLint *> WindowPos4ivMESA;
     static Function<void, gl::GLshort, gl::GLshort, gl::GLshort, gl::GLshort> WindowPos4sMESA;
     static Function<void, const gl::GLshort *> WindowPos4svMESA;
+    static Function<void, gl::GLenum, gl::GLsizei, const gl::GLint *> WindowRectanglesEXT;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> WriteMaskEXT;
 
 protected:

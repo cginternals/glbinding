@@ -356,6 +356,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E =
     { "GL_EXT_vertex_attrib_64bit", GLextension::GL_EXT_vertex_attrib_64bit },
     { "GL_EXT_vertex_shader", GLextension::GL_EXT_vertex_shader },
     { "GL_EXT_vertex_weighting", GLextension::GL_EXT_vertex_weighting },
+    { "GL_EXT_window_rectangles", GLextension::GL_EXT_window_rectangles },
     { "GL_EXT_x11_sync_object", GLextension::GL_EXT_x11_sync_object }
 };
 

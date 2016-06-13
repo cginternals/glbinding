@@ -340,6 +340,7 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_EXT_vertex_attrib_64bit,
     GL_EXT_vertex_shader,
     GL_EXT_vertex_weighting,
+    GL_EXT_window_rectangles,
     GL_EXT_x11_sync_object,
     GL_GREMEDY_frame_terminator,
     GL_GREMEDY_string_marker,

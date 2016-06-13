@@ -2860,6 +2860,7 @@ const Binding::array_t Binding::s_functions =
     &WindowPos4ivMESA,
     &WindowPos4sMESA,
     &WindowPos4svMESA,
+    &WindowRectanglesEXT,
     &WriteMaskEXT
 }};
 
