@@ -2,6 +2,7 @@
 
 #include <glbinding/no{{api}}.h>
 #include <glbinding/glbinding_api.h>
+#include <glbinding/gl/boolean.h>
 
 #include <cstddef>
 #include <cstdint>

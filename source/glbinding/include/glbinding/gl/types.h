@@ -2,6 +2,7 @@
 
 #include <glbinding/nogl.h>
 #include <glbinding/glbinding_api.h>
+#include <glbinding/gl/boolean.h>
 
 #include <cstddef>
 #include <cstdint>
@@ -24,7 +25,7 @@ namespace gl
 
 enum class GLextension : int;
 enum class GLenum : unsigned int;
-enum class GLboolean : unsigned char;
+// Import of GLboolean is an include
 using GLbitfield = unsigned int;
 using GLvoid = void;
 using GLbyte = signed char;
@@ -183,23 +184,6 @@ GLBINDING_API bool operator>=(std::underlying_type<GLenum>::type a, const GLenum
 
 } // namespace gl
 
-
-
-namespace std
-{
-
-
-template<>
-struct hash<gl::GLboolean>
-{
-    hash<std::underlying_type<gl::GLboolean>::type>::result_type operator()(const gl::GLboolean & t) const
-    {
-        return hash<std::underlying_type<gl::GLboolean>::type>()(static_cast<std::underlying_type<gl::GLboolean>::type>(t));
-    }
-};
-
-
-}
 
 
 namespace gl

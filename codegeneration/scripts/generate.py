@@ -160,7 +160,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     # Generate files with common context
     Generator.generate(generalContext, pjoin(sourcedir, "glrevision.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "extension.h"))
-    Generator.generate(generalContext, pjoin(includedir_api, "boolean.h"))
+    # Generator.generate(generalContext, pjoin(includedir_api, "boolean.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "values.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "types.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "bitfield.h"))
