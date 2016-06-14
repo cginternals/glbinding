@@ -103,7 +103,8 @@ int main()
         }
         else
         {
-            for (const auto & extension : Meta::extensions(function->name()))
+            const auto extensions = Meta::extensions(function->name());
+            for (const auto & extension : extensions)
                 funcsByExt[extension].insert(function);
             ++assigned;
         }
@@ -161,26 +162,31 @@ int main()
     }
 
     std::cout << std::endl;
-    std::cout << "# Missing Feature Extensions: " << std::endl;
+    std::cout << "# Missing Feature Extensions and Functions: " << std::endl;
 
-    auto unsupported = std::set<GLextension>{};
+    auto unsupportedExtensions = std::set<GLextension>{};
+    auto unsupportedFunctions = std::set<AbstractFunction *>{};
     for (auto p : extsByVer)
     {
         if (p.first.isNull())
             continue;
 
-        unsupported.clear();
-        const auto supported = ContextInfo::supported(p.first, unsupported);
+        unsupportedExtensions.clear();
+        unsupportedFunctions.clear();
+        const auto supported = ContextInfo::supported(p.first, unsupportedExtensions, unsupportedFunctions);
 
         if (supported)
             continue;
 
-        std::cout << "  # " << p.first << " assoc.:  ";
-        auto i = 0u;
-        for (const auto ext : unsupported)
+        std::cout << "  # " << p.first << " assoc. Extensions:" << std::endl;
+        for (const auto extension : unsupportedExtensions)
         {
-            std::cout << (i ? "                 " : "") << Meta::getString(ext) << std::endl;
-            ++i;
+            std::cout << "                 " << Meta::getString(extension) << std::endl;
+        }
+        std::cout << "  # " << p.first << " assoc. Functions:" << std::endl;
+        for (const auto function : unsupportedFunctions)
+        {
+            std::cout << "                 " << function->name() << std::endl;
         }
     }
 

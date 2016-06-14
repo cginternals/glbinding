@@ -91,23 +91,52 @@ bool supported(const std::set<gl::GLextension> & extensions, std::set<gl::GLexte
     const auto supportedExtensions = ::extensions(nullptr);
     auto support = true;
 
-    for (const auto ext : extensions)
+    for (const auto extension : extensions)
     {
-        if (supportedExtensions.find(ext) != supportedExtensions.end())
+        if (supportedExtensions.find(extension) != supportedExtensions.cend())
             continue;
 
         support &= false;
         if (unsupported)
-            unsupported->insert(ext);
+            unsupported->insert(extension);
     }
     return support;
 }
 
-bool supported(const glbinding::Version & version, std::set<gl::GLextension> * unsupported)
+bool supported(
+    const std::set<glbinding::AbstractFunction *> & functions
+,   std::set<glbinding::AbstractFunction *> * unsupported
+,   const bool resolve)
 {
-    const auto required = glbinding::Meta::extensions(version);
+    auto support = true;
 
-    return supported(required, unsupported);
+    for (const auto function : functions)
+    {
+        if(resolve)
+            function->resolveAddress();
+
+        if (function->isResolved())
+            continue;
+
+        support &= false;
+        if (unsupported)
+            unsupported->insert(function);
+    }
+    return support;
+}
+
+bool supported(const glbinding::Version & version
+    , const bool resolve
+    , std::set<gl::GLextension> * unsupportedExtensions
+    , std::set<glbinding::AbstractFunction *> * unsupportedFunctions)
+{
+    const auto requiredExtensions = glbinding::Meta::extensions(version);
+    const auto requiredFunctions = glbinding::Meta::functions(version);
+
+    auto support = true;
+    support &= supported(requiredExtensions, unsupportedExtensions);
+    support &= supported(requiredFunctions, unsupportedFunctions, resolve);
+    return support;
 }
 
 } // namespace
@@ -167,14 +196,17 @@ bool ContextInfo::supported(const std::set<gl::GLextension> & extensions, std::s
     return ::supported(extensions, &unsupported);
 }
 
-bool ContextInfo::supported(const Version & version)
+bool ContextInfo::supported(const Version & version, const bool resolve)
 {
-    return ::supported(version, nullptr);
+    return ::supported(version, resolve, nullptr, nullptr);
 }
 
-bool ContextInfo::supported(const Version & version, std::set<gl::GLextension> & unsupported)
+bool ContextInfo::supported(const Version & version
+    , std::set<gl::GLextension> & unsupportedExtensions
+    , std::set<AbstractFunction *> & unsupportedFunctions
+    , const bool resolve)
 {
-    return ::supported(version, &unsupported);
+    return ::supported(version, resolve, &unsupportedExtensions, &unsupportedFunctions);
 }
 
 

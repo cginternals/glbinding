@@ -187,6 +187,7 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ExtensionsByString.cpp"))
     Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ReqVersionsByExtension.cpp"))
     Generator.generate(generalContext, pjoin(sourcedir,  "Meta_FunctionStringsByExtension.cpp"))
+    Generator.generate(generalContext, pjoin(sourcedir,  "Meta_FunctionStringsByVersion.cpp"))
     Generator.generate(generalContext, pjoin(sourcedir,  "Meta_ExtensionsByFunctionString.cpp"))
 
     # Generate function-related files with specific contexts for each initial letter of the function name

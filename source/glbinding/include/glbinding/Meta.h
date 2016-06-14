@@ -15,7 +15,7 @@
 namespace glbinding
 {
 
-
+class AbstractFunction;
 class Version;
 
 /**
@@ -184,28 +184,29 @@ public:
     
     /**
     * @brief
-    *   Returns the set of function names that are required for the version.
+    *   Returns the set of functions that are required for the version.
     *
     * @param[in] version
     *   The version to return the required functions for.
     *
     * @return
-    *   The set of function names that are required for the version.
-    *   Note: this is exclusive (preceeding versions are ignored).
+    *   The set of functions that are required for the version including all 
+    *   functions required indirectly via required extensions.
+    *   Note: the version association is exclusive (preceeding versions are ignored).
     */
-    static const std::set<std::string> functions(const Version & version);
+    static const std::set<AbstractFunction *> functions(const Version & version);
 
     /**
     * @brief
-    *   Returns the set of function names that are required for the extension.
+    *   Returns the set of functions that are required for the extension.
     *
     * @param[in] glextension
     *   The extension to return the required functions for.
     *
     * @return
-    *   The set of function names that are required for the extension.
+    *   The set of functions that are required for the extension.
     */
-    static const std::set<std::string> functions(gl::GLextension glextension);
+    static const std::set<AbstractFunction *> functions(gl::GLextension glextension);
 
     /**
      * @brief

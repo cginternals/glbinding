@@ -16,7 +16,7 @@ namespace gl
 namespace glbinding
 {
 
-
+class AbstractFunction;
 class Version;
 
 /**
@@ -85,6 +85,9 @@ public:
     * @brief
     *   Queries if all given extensions are supported.
     *
+    * @param[in] extensions
+    *   A set of extensions that are tested for availability in the current context.
+    *
     * @return
     *   True if all given extensions are supported by the current context.
     */
@@ -93,6 +96,9 @@ public:
     /**
     * @brief
     *   Queries if all given extensions are supported.
+    *
+    * @param[in] extensions
+    *   A set of extensions that are tested for availability in the current context.
     *
     * @param[out] unknown
     *   The subset of extensions (based on the given extensions) not supported by the current context.
@@ -106,24 +112,39 @@ public:
 
     /**
     * @brief
-    *   Queries all missing extensions for the given OpenGL feature.
+    *   Queries all missing extensions and unresolved functions for the given OpenGL feature.
+    *
+    * @param[in] version
+    *   The version for which all functions and extensions are checked.
+    * @param[in] resolve
+    *   Specifies whether or not functions shall be explicitly resolved before querrying their status.
     *
     * @return
     *   True if all extensions required for the given feature are supported.
     */
-    static bool supported(const Version & version);
+    static bool supported(const Version & version, bool resolve = false);
 
     /**
     * @brief
     *   Queries all missing extensions for the given OpenGL feature.
     *
-    * @param[out] unknown
+    * @param[in] version
+    *   The version for which all functions and extensions are checked.
+    * @param[out] unsupportedExtensions
     *   The set of extensions missing by the current context for full feature support.
+    * @param[out] unsupportedFunctions
+    *   The set of functions that could not be resolved in the current context.
+    * @param[in] resolve
+    *   Specifies whether or not functions shall be explicitly resolved before querrying their status.
     *
     * @return
     *   True if all extensions required for the given feature are supported.
     */
-    static bool supported(const Version & version, std::set<gl::GLextension> & unsupported);
+    static bool supported(const Version & version
+        , std::set<gl::GLextension> & unsupportedExtensions
+        , std::set<AbstractFunction *> & unsupportedFunctions
+        , bool resolve = false);
+
 };
 
 

@@ -162,27 +162,7 @@ GLBINDING_API GLenum operator-(const GLenum & a, std::underlying_type<GLenum>::t
 } // namespace gl
 
 
-namespace gl
-{
-
-
-GLBINDING_API bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b);
-GLBINDING_API bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b);
-GLBINDING_API bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b);
-GLBINDING_API bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b);
-GLBINDING_API bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b);
-GLBINDING_API bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b);
-
-GLBINDING_API bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b);
-GLBINDING_API bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b);
-GLBINDING_API bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b);
-GLBINDING_API bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b);
-GLBINDING_API bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b);
-GLBINDING_API bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b);
-
-
-} // namespace gl
-
+namespace gl{GLBINDING_API bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b);GLBINDING_API bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b);GLBINDING_API bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b);GLBINDING_API bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b);GLBINDING_API bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b);GLBINDING_API bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b);GLBINDING_API bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b);GLBINDING_API bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b);GLBINDING_API bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b);GLBINDING_API bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b);GLBINDING_API bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b);GLBINDING_API bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b);} // namespace gl
 
 
 namespace std

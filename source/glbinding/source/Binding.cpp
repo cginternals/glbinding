@@ -52,7 +52,7 @@ void Binding::initialize(
 ,   const bool _resolveFunctions)
 {
     g_mutex.lock();
-    if (g_bindings.find(context) != g_bindings.end())
+    if (g_bindings.find(context) != g_bindings.cend())
     {
         g_mutex.unlock();
         return;
@@ -111,7 +111,7 @@ void Binding::useContext(const ContextHandle context)
     t_context = context;
 
     g_mutex.lock();
-    if (g_bindings.find(t_context) == g_bindings.end())
+    if (g_bindings.find(t_context) == g_bindings.cend())
     {
         g_mutex.unlock();
 
