@@ -8,6 +8,7 @@
 #include <glbinding/AbstractValue.h>
 
 #include <glbinding/gl/types.h>
+#include <glbinding/gl/boolean.h>
 
 
 namespace glbinding 
