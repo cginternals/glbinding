@@ -178,15 +178,17 @@ int main()
         if (supported)
             continue;
 
-        std::cout << "  # " << p.first << " assoc. Extensions:" << std::endl;
-        for (const auto extension : unsupportedExtensions)
+        if (!unsupportedExtensions.empty())
         {
-            std::cout << "                 " << Meta::getString(extension) << std::endl;
+            std::cout << "  # " << p.first << " assoc. Extensions:" << std::endl;
+            for (const auto extension : unsupportedExtensions)
+                std::cout << "                 " << Meta::getString(extension) << std::endl;
         }
-        std::cout << "  # " << p.first << " assoc. Functions:" << std::endl;
-        for (const auto function : unsupportedFunctions)
+        if(!unsupportedFunctions.empty())
         {
-            std::cout << "                 " << function->name() << std::endl;
+            std::cout << "  # " << p.first << " assoc. Functions:" << std::endl;
+            for (const auto function : unsupportedFunctions)
+                std::cout << "                 " << function->name() << std::endl;
         }
     }
 
