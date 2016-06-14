@@ -190,9 +190,8 @@ public:
     *   The version to return the required functions for.
     *
     * @return
-    *   The set of functions that are required for the version including all 
-    *   functions required indirectly via required extensions.
-    *   Note: the version association is exclusive (preceeding versions are ignored).
+    *   The set of functions that are required for the version.
+    *   Note: this is exclusive (preceeding versions are ignored).
     */
     static const std::set<AbstractFunction *> functions(const Version & version);
 
