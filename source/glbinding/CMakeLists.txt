@@ -46,7 +46,7 @@ set(headers
     ${include_path}/AbstractValue.h
     ${include_path}/CallbackMask.h
     ${include_path}/Function.h
-    ${include_path}/Function.hpp
+    ${include_path}/Function.inl
     ${include_path}/FunctionCall.h
     ${include_path}/Binding.h
     ${include_path}/Meta.h
@@ -54,10 +54,10 @@ set(headers
     ${include_path}/ContextHandle.h
     ${include_path}/ContextInfo.h
     ${include_path}/Value.h
-    ${include_path}/Value.hpp
+    ${include_path}/Value.inl
     ${include_path}/Version.h
     ${include_path}/SharedBitfield.h
-    ${include_path}/SharedBitfield.hpp
+    ${include_path}/SharedBitfield.inl
 
     ${include_path}/logging.h
 )
@@ -102,7 +102,7 @@ set(sources
     ${source_path}/Meta_StringsByExtension.cpp
 
     ${source_path}/RingBuffer.h
-    ${source_path}/RingBuffer.hpp
+    ${source_path}/RingBuffer.inl
     ${source_path}/logging.cpp
 
     ${source_path}/gl/types.cpp
@@ -134,9 +134,9 @@ endif()
 # Group source files
 set(header_group "Header Files (API)")
 set(source_group "Source Files")
-source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$" 
+source_group_by_path(${include_path} "\\\\.h$|\\\\.inl$" 
     ${header_group} ${headers})
-source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
+source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.inl$" 
     ${source_group} ${sources})
 
 

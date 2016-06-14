@@ -123,4 +123,4 @@ std::vector<AbstractValue*> createValues(Arguments&&... arguments);
 } // namespace glbinding
 
 
-#include <glbinding/Value.hpp>
+#include <glbinding/Value.inl>
