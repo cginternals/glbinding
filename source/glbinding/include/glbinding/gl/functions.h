@@ -2891,3 +2891,7 @@ GLBINDING_API void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum out
 
 
 } // namespace gl
+
+
+// Include function patches due to dinstinguished types GLint, GLuint, GLenum, and GLboolean
+#include <glbinding/gl/functions-patches.h>
