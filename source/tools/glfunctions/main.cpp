@@ -47,7 +47,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 
-    GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
+    auto window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -61,43 +61,51 @@ int main()
 
     // gather available extensions
 
-    unsigned int resolved(0);
-    unsigned int assigned(0);
+    auto resolved = 0u;
+    auto assigned = 0u;
 
     std::set<std::string> unknownExts;
 
-    const std::set<GLextension> & supportedExts = ContextInfo::extensions(&unknownExts);
-    const std::set<GLextension> & allExts = Meta::extensions();
+    const auto supportedExts = ContextInfo::extensions(unknownExts);
+    const auto allExts = Meta::extensions();
 
     // sort extensions by version
 
-    std::map<Version, std::set<GLextension>> extsByVer;
-    std::map<Version, int> suppByVer; // num supported exts by version
+    auto extsByVer = std::map<Version, std::set<GLextension>>();
+    auto suppByVer = std::map<Version, int>(); // num supported exts by version
 
-    for (GLextension ext : allExts)
+    auto versions = Meta::versions();
+    versions.insert(Version{}); // provide NONE Version for extensions without associated version 
+
+    for (auto & version : versions)
     {
+        const auto extensions = Meta::extensions(version);
+        if (extensions.empty())
+            continue;
 
-        const Version v = Meta::getRequiringVersion(ext);
-        extsByVer[v].insert(ext);
-        suppByVer[v] = 0;
+        extsByVer[version] = extensions;
+        suppByVer[version] = 0;
     }
 
-    // go through all extensions by version and show functions
+    // iterate over all extensions by version and show functions
 
-    std::map<GLextension, std::set<const AbstractFunction *>> funcsByExt;
-    std::set<const AbstractFunction *> nonExtFuncs;
+    auto funcsByExt = std::map<GLextension, std::set<const AbstractFunction *>>();
+    auto nonExtFuncs = std::set<const AbstractFunction *>();
 
-    for (AbstractFunction * func : Binding::functions())
+    for (auto * function : Binding::functions())
     {
-        if (func->isResolved())
+        if (function->isResolved())
             ++resolved;
 
-        if (Meta::getExtensionsRequiring(func->name()).empty())
-            nonExtFuncs.insert(func);
+        if (Meta::extensions(function->name()).empty())
+        {
+            nonExtFuncs.insert(function);
+        }
         else
         {
-            for (GLextension ext : Meta::getExtensionsRequiring(func->name()))
-                funcsByExt[ext].insert(func);
+            const auto extensions = Meta::extensions(function->name());
+            for (const auto & extension : extensions)
+                funcsByExt[extension].insert(function);
             ++assigned;
         }
     }
@@ -107,9 +115,9 @@ int main()
     for (auto i : extsByVer)
     {   
         std::cout << std::endl << std::endl << "[" << i.first << " EXTENSIONS]" << std::endl;
-        for (GLextension ext : i.second)
+        for (auto & ext : i.second)
         {
-            const bool supported = supportedExts.find(ext) != supportedExts.cend();
+            const auto supported = supportedExts.find(ext) != supportedExts.cend();
             if (supported)
                 ++suppByVer[i.first];
 
@@ -123,7 +131,7 @@ int main()
     // show unknown extensions
 
     std::cout << std::endl << std::endl << "[EXTENSIONS NOT COVERED BY GLBINDING]" << std::endl << std::endl;
-    for (const std::string & ext : unknownExts)
+    for (const auto & ext : unknownExts)
         std::cout << ext << std::endl;
 
     // show non ext functions
@@ -148,7 +156,41 @@ int main()
         << " (" << unknownExts.size() << " of which are unknown to glbinding)" << std::endl;
 
     for (auto p : extsByVer)
-        std::cout << "  # " << p.first << " assoc.:  " << suppByVer[p.first] << " / " << p.second.size() << std::endl;
+    {
+        const auto & numSupported = suppByVer[p.first];
+        std::cout << "  # " << p.first << " assoc.:  " << numSupported << " / " << p.second.size() << std::endl;
+    }
+
+    std::cout << std::endl;
+    std::cout << "# Missing Feature Extensions and Functions: " << std::endl;
+
+    auto unsupportedExtensions = std::set<GLextension>{};
+    auto unsupportedFunctions = std::set<AbstractFunction *>{};
+    for (auto p : extsByVer)
+    {
+        if (p.first.isNull())
+            continue;
+
+        unsupportedExtensions.clear();
+        unsupportedFunctions.clear();
+        const auto supported = ContextInfo::supported(p.first, unsupportedExtensions, unsupportedFunctions);
+
+        if (supported)
+            continue;
+
+        if (!unsupportedExtensions.empty())
+        {
+            std::cout << "  # " << p.first << " assoc. Extensions:" << std::endl;
+            for (const auto extension : unsupportedExtensions)
+                std::cout << "                 " << Meta::getString(extension) << std::endl;
+        }
+        if(!unsupportedFunctions.empty())
+        {
+            std::cout << "  # " << p.first << " assoc. Functions:" << std::endl;
+            for (const auto function : unsupportedFunctions)
+                std::cout << "                 " << function->name() << std::endl;
+        }
+    }
 
     // print some gl infos (query)
 

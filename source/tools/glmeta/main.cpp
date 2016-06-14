@@ -43,10 +43,10 @@ int main(int, char * [])
 
     std::cout << " # Extensions: " << Meta::extensions().size() << std::endl << std::endl;
 
-    for (GLextension e : Meta::extensions())
+    for (GLextension extension : Meta::extensions())
     {
-        const Version v = Meta::getRequiringVersion(e);
-        std::cout << " " << Meta::getString(e) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
+        const Version v = Meta::version(extension);
+        std::cout << " " << Meta::getString(extension) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
     }
     
     // print some gl infos (query)

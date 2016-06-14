@@ -15,7 +15,7 @@
 namespace glbinding
 {
 
-
+class AbstractFunction;
 class Version;
 
 /**
@@ -145,28 +145,31 @@ public:
      *   The symbol identified through the extension string, 'UNKNOWN' if failed.
      */
     static gl::GLextension getExtension(const std::string & glextension);
-    
-    /**
-     * @brief
-     *   Returns the list of all extensions known by the gl.xml.
-     *
-     * @return
-     *   The list of all extensions known by the gl.xml.
-     */
-    static std::set<gl::GLextension> extensions();
 
     /**
      * @brief
-     *   Returns the list of function names that are required for the extension.
-     *
-     * @param[in] glextension
-     *   The extension to return the required functions from.
+     *   Returns the set of all extensions known by the gl.xml.
      *
      * @return
-     *   The list of function names that are required for the extension.
+     *   The set of all extensions known by the gl.xml.
      */
-    static const std::set<std::string> & getRequiredFunctions(gl::GLextension glextension);
+    static std::set<gl::GLextension> extensions();
     
+    /**
+    * @brief
+    *   Returns the set of extensions that are required for by the given version.
+    *
+    * @param[in] version
+    *   The version/feature to return the required extensions for.
+    *   If an null version is given, all extensions that have no
+    *   version/feature associated are returned instead.
+    *
+    * @return
+    *   The set of extensions that should be supported for the given version.
+    *   All non versioned extensions can be queried by providing the null version.
+    */
+    static const std::set<gl::GLextension> extensions(const Version & version);
+
     /**
      * @brief
      *   Returns the list of extensions that are requiring an OpenGL function.
@@ -175,10 +178,36 @@ public:
      *   The name of the function, including the 'gl' prefix.
      *
      * @return
-     *   The list of extensions that are requiring an OpenGL function.
+     *   The set of extensions that are requiring an OpenGL function.
      */
-    static const std::set<gl::GLextension> & getExtensionsRequiring(const std::string & glfunction);
+    static const std::set<gl::GLextension> extensions(const std::string & glfunction);
     
+    /**
+    * @brief
+    *   Returns the set of functions that are required for the version.
+    *
+    * @param[in] version
+    *   The version to return the required functions for.
+    *
+    * @return
+    *   The set of functions that are required for the version including all 
+    *   functions required indirectly via required extensions.
+    *   Note: the version association is exclusive (preceeding versions are ignored).
+    */
+    static const std::set<AbstractFunction *> functions(const Version & version);
+
+    /**
+    * @brief
+    *   Returns the set of functions that are required for the extension.
+    *
+    * @param[in] glextension
+    *   The extension to return the required functions for.
+    *
+    * @return
+    *   The set of functions that are required for the extension.
+    */
+    static const std::set<AbstractFunction *> functions(gl::GLextension glextension);
+
     /**
      * @brief
      *   Returns the first OpenGL Version (Feature) that required the extension.
@@ -189,7 +218,7 @@ public:
      * @return
      *   The first OpenGL Version (Feature) that required the extension.
      */
-    static const Version & getRequiringVersion(gl::GLextension glextension);
+    static const Version & version(gl::GLextension glextension);
     
     /**
      * @brief

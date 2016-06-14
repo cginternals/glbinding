@@ -2,6 +2,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 #include <unordered_map>
 #include <vector>
 #include <set>
@@ -24,6 +25,7 @@ extern const std::unordered_map<gl::GLboolean, std::string> Meta_StringsByBoolea
 extern const std::unordered_map<gl::GLenum, std::string> Meta_StringsByEnum;
 extern const std::unordered_map<gl::GLextension, std::string> Meta_StringsByExtension;
 extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
+extern const std::map<Version, std::set<std::string>> Meta_FunctionStringsByVersion;
 
 extern const std::unordered_map<gl::AttribMask, std::string> Meta_StringsByAttribMask;
 extern const std::unordered_map<gl::BufferAccessMask, std::string> Meta_StringsByBufferAccessMask;
