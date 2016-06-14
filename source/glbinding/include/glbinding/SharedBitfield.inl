@@ -1,8 +1,6 @@
 
 #pragma once
 
-#include <glbinding/SharedBitfield.h>
-
 
 namespace glbinding 
 {

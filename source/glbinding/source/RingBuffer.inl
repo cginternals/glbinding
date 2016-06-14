@@ -7,8 +7,6 @@
 #include <cassert>
 #include <cmath>
 
-#include "RingBuffer.h"
-
 
 namespace glbinding
 {

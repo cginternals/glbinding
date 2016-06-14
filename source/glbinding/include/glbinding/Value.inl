@@ -1,7 +1,6 @@
 
 #pragma once
 
-#include <glbinding/Value.h>
 
 #include <ostream>
 

@@ -675,4 +675,4 @@ operator^=(Enum & a, ConvertibleEnum b);
 } // namespace glbinding
 
 
-#include <glbinding/SharedBitfield.hpp>
+#include <glbinding/SharedBitfield.inl>
