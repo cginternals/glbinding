@@ -1,7 +1,7 @@
 
 #include "Binding_pch.h"
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 
 namespace glbinding

@@ -20,11 +20,11 @@ public:
     GLboolean();
     GLboolean(bool on);
 
-    operator bool() const;
-    operator char() const;
-    operator unsigned char() const;
-    operator int() const;
-    operator unsigned int() const;
+    explicit operator bool() const;
+    explicit operator char() const;
+    explicit operator unsigned char() const;
+    explicit operator int() const;
+    explicit operator unsigned int() const;
 
     GLboolean & operator=(const GLboolean & other);
     bool operator<(const GLboolean & other) const;
@@ -34,6 +34,7 @@ public:
 
     bool operator==(const GLboolean & other) const;
     bool operator!=(const GLboolean & other) const;
+
 protected:
     bool m_value;
 };

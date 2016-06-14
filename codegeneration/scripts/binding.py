@@ -28,7 +28,7 @@ def versionBID(feature, core = False, ext = False):
 
 def template(outputfile):
 
-    with open (execDir + templateDir + outputfile + ".in", "r") as file:
+    with open (execDir + templateDir + outputfile + ".in", "rU") as file:
         return file.read()
 
 def supportedLambda(obj):

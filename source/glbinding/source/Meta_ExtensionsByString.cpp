@@ -4,7 +4,7 @@
 #include <glbinding/gl/extension.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {

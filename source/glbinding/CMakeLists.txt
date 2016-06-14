@@ -94,6 +94,7 @@ set(sources
     ${source_path}/Meta_ExtensionsByFunctionString.cpp
     ${source_path}/Meta_ExtensionsByString.cpp
     ${source_path}/Meta_FunctionStringsByExtension.cpp
+    ${source_path}/Meta_FunctionStringsByVersion.cpp
     ${source_path}/Meta_ReqVersionsByExtension.cpp
     ${source_path}/Meta_StringsByBitfield.cpp
     ${source_path}/Meta_StringsByBoolean.cpp
