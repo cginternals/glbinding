@@ -94,12 +94,17 @@ bool supported(const std::set<gl::GLextension> & extensions, std::set<gl::GLexte
     for (const auto extension : extensions)
     {
         if (supportedExtensions.find(extension) != supportedExtensions.cend())
+        {
             continue;
+        }
 
         support &= false;
         if (unsupported)
+        {
             unsupported->insert(extension);
+        }
     }
+
     return support;
 }
 
@@ -113,15 +118,22 @@ bool supported(
     for (const auto function : functions)
     {
         if(resolve)
+        {
             function->resolveAddress();
+        }
 
         if (function->isResolved())
+        {
             continue;
+        }
 
         support &= false;
         if (unsupported)
+        {
             unsupported->insert(function);
+        }
     }
+
     return support;
 }
 
@@ -134,8 +146,10 @@ bool supported(const glbinding::Version & version
     const auto requiredFunctions = glbinding::Meta::functions(version);
 
     auto support = true;
+
     support &= supported(requiredExtensions, unsupportedExtensions);
     support &= supported(requiredFunctions, unsupportedFunctions, resolve);
+
     return support;
 }
 
