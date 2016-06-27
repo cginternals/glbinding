@@ -94,7 +94,6 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
     PRIVATE
         -fno-exceptions
-        -fno-rtti
 
         -Wall
         -Wextra
