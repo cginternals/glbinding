@@ -86,6 +86,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         /GF           # -> enable string pooling
         >
     )
+
 endif ()
 
 # GCC and Clang compiler options
