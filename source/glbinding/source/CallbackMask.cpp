@@ -39,21 +39,18 @@ CallbackMask operator^(const CallbackMask a, const CallbackMask b)
 CallbackMask& operator|=(CallbackMask& a, const CallbackMask b)
 {
     a = a | b;
-
     return a;
 }
 
 CallbackMask& operator&=(CallbackMask& a, const CallbackMask b)
 {
     a = a & b;
-
     return a;
 }
 
 CallbackMask& operator^=(CallbackMask& a, const CallbackMask b)
 {
     a = a ^ b;
-
     return a;
 }
 

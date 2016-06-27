@@ -5,6 +5,8 @@
 
 # GLFW_BINARY (win32 only)
 
+include(FindPackageHandleStandardArgs)
+
 
 find_path(GLFW_INCLUDE_DIR GLFW/glfw3.h
 

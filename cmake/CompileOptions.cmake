@@ -66,6 +66,7 @@ set(DEFAULT_COMPILE_OPTIONS)
 # MSVC compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
+    PRIVATE
         /MP           # -> build with multiple processes
         /W4           # -> warning level 4
         # /WX         # -> treat warnings as errors
@@ -85,12 +86,19 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         /GL           # -> whole program optimization: enable link-time code generation (disables Zi)
         /GF           # -> enable string pooling
         >
+
+    PUBLIC
+
     )
+
 endif ()
 
 # GCC and Clang compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
+    PRIVATE
+        #-fno-exceptions # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
+
         -Wall
         -Wextra
         -Wunused
@@ -113,17 +121,17 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
                 -Wreturn-local-addr
             >
         >
-        
+
         $<$<CXX_COMPILER_ID:Clang>:
             -Wpedantic
             
             -Wreturn-stack-address
         >
-        
+    PUBLIC
         $<$<PLATFORM_ID:Darwin>:
             -pthread
         >
-        
+
         $<$<VERSION_LESS:${CMAKE_VERSION},3.1>:
             -std=c++11
         >
@@ -140,6 +148,7 @@ set(DEFAULT_LINKER_OPTIONS)
 # Use pthreads on mingw and linux
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
     set(DEFAULT_LINKER_OPTIONS
+    PUBLIC
         -pthread
     )
 endif()

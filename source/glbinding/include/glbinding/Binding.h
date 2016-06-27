@@ -27,7 +27,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, 2848>; ///< The type of the build-in functions collection.
+    using array_t = std::array<AbstractFunction *, 2852>; ///< The type of the build-in functions collection.
     using ContextSwitchCallback = std::function<void(ContextHandle)>; ///< The signature of the context switch callback.
 
     /**
@@ -445,6 +445,7 @@ public:
     static Function<void, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, const void *> CompressedTextureSubImage3D;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, const void *> CompressedTextureSubImage3DEXT;
     static Function<void, gl::GLenum, gl::GLfloat> ConservativeRasterParameterfNV;
+    static Function<void, gl::GLenum, gl::GLint> ConservativeRasterParameteriNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> ConvolutionFilter1D;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> ConvolutionFilter1DEXT;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> ConvolutionFilter2D;
@@ -2925,6 +2926,8 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLfloat *> ViewportArrayv;
     static Function<void, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> ViewportIndexedf;
     static Function<void, gl::GLuint, const gl::GLfloat *> ViewportIndexedfv;
+    static Function<void, gl::GLuint, gl::GLfloat, gl::GLfloat> ViewportPositionWScaleNV;
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> ViewportSwizzleNV;
     static Function<void, gl::GLsync, gl::UnusedMask, gl::GLuint64> WaitSync;
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLfloat *> WeightPathsNV;
     static Function<void, gl::GLint, gl::GLenum, gl::GLsizei, const void *> WeightPointerARB;
@@ -2992,6 +2995,7 @@ public:
     static Function<void, const gl::GLint *> WindowPos4ivMESA;
     static Function<void, gl::GLshort, gl::GLshort, gl::GLshort, gl::GLshort> WindowPos4sMESA;
     static Function<void, const gl::GLshort *> WindowPos4svMESA;
+    static Function<void, gl::GLenum, gl::GLsizei, const gl::GLint *> WindowRectanglesEXT;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> WriteMaskEXT;
 
 protected:

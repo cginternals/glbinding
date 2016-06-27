@@ -2,10 +2,9 @@
 
 ![glbinding](glbinding-logo.png)
 
-The state-of-the-art way for low-level OpenGL programming;
-*glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the OpenGL API, professionally maintained by [CG Internals](http://www.cginternals.com).
+*glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
-See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0).
+See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0) and [glbinding-2.1.0](https://github.com/cginternals/glbinding/releases/tag/v2.1.0).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
 all OpenGL symbols are real functions and variables. 
@@ -13,6 +12,8 @@ It provides type-safe parameters, per feature API header, lazy function resoluti
 global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
 *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
+
+![what-is-glbinding](https://raw.githubusercontent.com/cginternals/glbinding/master/docs/what-is-glbinding.png)
 
 Code written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding* and causes no significant impact on runtime performance (see [compare example](https://github.com/cginternals/glbinding/wiki/examples#compare)): just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl```.
 
@@ -25,10 +26,15 @@ using namespace gl;
   // ...
 ```
 
+###### glbinding for Enterprise
+
+Want to integrate glbinding in your software? Our team of glbinding experts will work closely with your team to help you integrate, customize, and support your glbinding setup.
+
+Visit [Enterprise Support and Services](https://www.cginternals.com) for more details.
+
 
 ## Resources
 
-* [Professional Support and Services](https://www.cginternals.com) by CG Internals
 * [Tools](https://github.com/cginternals/glbinding/wiki/tools)
 * [Examples](https://github.com/cginternals/glbinding/wiki/examples)
 * [Project Health](#project-health)
@@ -57,11 +63,11 @@ using namespace gl;
 
 | Service | System | Compiler | Status |
 | ------- | ------ | -------- | -----: |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=glbinding-2.0-release)](https://travis-ci.org/cginternals/glbinding) |
+|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
 | [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu 14.04 | GCC 5.3 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
 | Jenkins <br><br><br><br> | Ubuntu 14.04 <br><br><br><br> | GCC 4.8 <br> GCC 4.9 <br> GCC 5.3 <br> Clang 3.5 <br> | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5.3)](http://jenkins.hpi3d.de/job/glbinding-linux-gcc5.3) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-linux-clang3.5) <br> |
 | Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](http://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
-| Jenkins | OS X 10.10 | Clang 3.5 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
+| Jenkins | OS X 10.10 | AppleClang 6.0 | [![Build Status](http://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-osx-clang3.5)](http://jenkins.hpi3d.de/job/glbinding-osx-clang3.5) |
 
 Please note that our OS X build node is currently broken (physically). However, *glbinding* is maintained for OS X as well and there are many people using it on OS X on a regular basis.
 
@@ -74,10 +80,10 @@ For systems providing package managers, we generally strive for packages in thes
 
 ###### Windows
 
-The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-runtime.zip),
-[examples](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-examples.zip),
-[dev](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-dev.zip), and
-[tools](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc14-x64-tools.zip).
+The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-runtime.zip),
+[examples](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-examples.zip),
+[dev](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-dev.zip), and
+[tools](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-tools.zip).
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Ubuntu
@@ -128,6 +134,7 @@ The only mandatory run-time dependencies of glbinding are the STL of the used co
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
   * [SVN](https://subversion.apache.org/) for updating the ```gl.xml```
+  * [pystache](https://github.com/defunkt/pystache) for the template-based code generation 
 * [GLFW](http://www.glfw.org/) 3.0 or higher for examples and tools
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples
@@ -144,10 +151,10 @@ First, download the source code [as archive](https://github.com/cginternals/glbi
 > git clone https://github.com/cginternals/glbinding.git
 > cd glbinding
 ```
-Then, depending on the version of glbinding you want to build, choose the appropriate tag or branch, e.g., for the 2.0.0 release:
+Then, depending on the version of glbinding you want to build, choose the appropriate tag or branch, e.g., for the 2.1.0 release:
 ```shell
 > git fetch --tags
-> git checkout v2.0.0
+> git checkout v2.1.0
 ```
 The actual compilation can be done using CMake and your favorite compiler and IDE.
 
@@ -448,23 +455,19 @@ Using type-save functions of glbinding, some typically compiling code constructs
 For most of those cases we provide alternative *overloaded* function signatures. 
 Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
 
-To use alternative function signatures, confer to the following example:
+Alternative function signatures are enabled by default, so the following example works out-of-the-box:
 ```cpp
 #include <glbinding/gl/gl.h>
-#include <glbinding/gl/functions-patches.h>
 
 using namespace gl;
 
 // ...
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-glTexParametere(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
 ```
-Note that these function signatures are only defined in the ```gl``` namespace. 
-If you want to use per-feature API header and the patched signatures together in your project, you have to use either the ```gl``` namespace in addition to other ones or manually import the used alternative signatures into the other namespace using ```using``` declarations.
-
 
 
 

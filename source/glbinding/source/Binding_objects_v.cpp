@@ -1,7 +1,7 @@
 
 #include "Binding_pch.h"
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 
 namespace glbinding
@@ -386,6 +386,8 @@ Function<void, GLint, GLint, GLsizei, GLsizei> Binding::Viewport("glViewport");
 Function<void, GLuint, GLsizei, const GLfloat *> Binding::ViewportArrayv("glViewportArrayv");
 Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> Binding::ViewportIndexedf("glViewportIndexedf");
 Function<void, GLuint, const GLfloat *> Binding::ViewportIndexedfv("glViewportIndexedfv");
+Function<void, GLuint, GLfloat, GLfloat> Binding::ViewportPositionWScaleNV("glViewportPositionWScaleNV");
+Function<void, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::ViewportSwizzleNV("glViewportSwizzleNV");
 
 
 } // namespace glbinding

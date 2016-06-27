@@ -13,18 +13,22 @@ class Context:
     #   "multipleItems": <bool> }
     @staticmethod
     def listContext(contextList, sortKey = None, filter = lambda i: True):
+
         context = {}
         if sortKey is not None:
             contextList = sorted(contextList, key = sortKey)
-        context["items"] = [{"item": item,
-                             "last": item == contextList[-1]}
-                            for item in contextList
-                            if filter(item)]
+
+        context["items"] = [{"item": item, "last": item == contextList[-1]}
+          for item in contextList if filter(item)]
+
         context["firstItem"] = context["items"][0]["item"] if context["items"] else None
+
         context["count"] = len(context["items"])
         context["empty"] = len(context["items"]) == 0
+
         context["singleItem"] = len(context["items"]) == 1
         context["multipleItems"] = len(context["items"]) > 1
+
         return context
 
     @staticmethod
@@ -142,9 +146,11 @@ class Context:
         return self.apiMemberSetList
 
     def general(self):
+
         context = {"api": self.api,
                    "memberSet": "",
                    "revision": self.revision}
+
         context["apiMemberSets"] = self.listContext( [{"memberSet": versionBID(feature, core, ext)}
                                                  for feature, core, ext in ( [(None, False, False)] + self.apiMemberSetList )] )
         context["extensions"] = self.listContext(self.extensionContexts, sortKey = lambda e: e["identifier"])

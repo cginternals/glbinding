@@ -180,4 +180,4 @@ protected:
 } // namespace glbinding
 
 
-#include <glbinding/Function.hpp>
+#include <glbinding/Function.inl>

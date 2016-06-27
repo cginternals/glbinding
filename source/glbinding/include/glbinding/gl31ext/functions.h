@@ -221,6 +221,7 @@ using gl::glCompressedTextureSubImage2DEXT;
 using gl::glCompressedTextureSubImage3D;
 using gl::glCompressedTextureSubImage3DEXT;
 using gl::glConservativeRasterParameterfNV;
+using gl::glConservativeRasterParameteriNV;
 using gl::glConvolutionFilter1D;
 using gl::glConvolutionFilter1DEXT;
 using gl::glConvolutionFilter2D;
@@ -2157,6 +2158,8 @@ using gl::glVideoCaptureStreamParameterivNV;
 using gl::glViewportArrayv;
 using gl::glViewportIndexedf;
 using gl::glViewportIndexedfv;
+using gl::glViewportPositionWScaleNV;
+using gl::glViewportSwizzleNV;
 using gl::glWaitSync;
 using gl::glWeightPathsNV;
 using gl::glWeightPointerARB;
@@ -2208,6 +2211,7 @@ using gl::glWindowPos4iMESA;
 using gl::glWindowPos4ivMESA;
 using gl::glWindowPos4sMESA;
 using gl::glWindowPos4svMESA;
+using gl::glWindowRectanglesEXT;
 using gl::glWriteMaskEXT;
 
 

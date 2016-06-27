@@ -6,7 +6,7 @@
 #include "Meta_Maps.h"
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace
 {

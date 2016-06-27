@@ -1,7 +1,7 @@
 
 #include "Binding_pch.h"
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 
 namespace glbinding
@@ -310,6 +310,7 @@ const Binding::array_t Binding::s_functions =
     &CompressedTextureSubImage3D,
     &CompressedTextureSubImage3DEXT,
     &ConservativeRasterParameterfNV,
+    &ConservativeRasterParameteriNV,
     &ConvolutionFilter1D,
     &ConvolutionFilter1DEXT,
     &ConvolutionFilter2D,
@@ -2790,6 +2791,8 @@ const Binding::array_t Binding::s_functions =
     &ViewportArrayv,
     &ViewportIndexedf,
     &ViewportIndexedfv,
+    &ViewportPositionWScaleNV,
+    &ViewportSwizzleNV,
     &WaitSync,
     &WeightPathsNV,
     &WeightPointerARB,
@@ -2857,6 +2860,7 @@ const Binding::array_t Binding::s_functions =
     &WindowPos4ivMESA,
     &WindowPos4sMESA,
     &WindowPos4svMESA,
+    &WindowRectanglesEXT,
     &WriteMaskEXT
 }};
 

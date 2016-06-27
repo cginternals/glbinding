@@ -816,6 +816,11 @@ void glConservativeRasterParameterfNV(GLenum pname, GLfloat value)
     return Binding::ConservativeRasterParameterfNV(pname, value);
 }
 
+void glConservativeRasterParameteriNV(GLenum pname, GLint param)
+{
+    return Binding::ConservativeRasterParameteriNV(pname, param);
+}
+
 void glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const void * image)
 {
     return Binding::ConvolutionFilter1D(target, internalformat, width, format, type, image);

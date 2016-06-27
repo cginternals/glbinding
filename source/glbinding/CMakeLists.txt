@@ -46,7 +46,7 @@ set(headers
     ${include_path}/AbstractValue.h
     ${include_path}/CallbackMask.h
     ${include_path}/Function.h
-    ${include_path}/Function.hpp
+    ${include_path}/Function.inl
     ${include_path}/FunctionCall.h
     ${include_path}/Binding.h
     ${include_path}/Meta.h
@@ -54,10 +54,10 @@ set(headers
     ${include_path}/ContextHandle.h
     ${include_path}/ContextInfo.h
     ${include_path}/Value.h
-    ${include_path}/Value.hpp
+    ${include_path}/Value.inl
     ${include_path}/Version.h
     ${include_path}/SharedBitfield.h
-    ${include_path}/SharedBitfield.hpp
+    ${include_path}/SharedBitfield.inl
 
     ${include_path}/logging.h
 )
@@ -94,6 +94,7 @@ set(sources
     ${source_path}/Meta_ExtensionsByFunctionString.cpp
     ${source_path}/Meta_ExtensionsByString.cpp
     ${source_path}/Meta_FunctionStringsByExtension.cpp
+    ${source_path}/Meta_FunctionStringsByVersion.cpp
     ${source_path}/Meta_ReqVersionsByExtension.cpp
     ${source_path}/Meta_StringsByBitfield.cpp
     ${source_path}/Meta_StringsByBoolean.cpp
@@ -101,10 +102,11 @@ set(sources
     ${source_path}/Meta_StringsByExtension.cpp
 
     ${source_path}/RingBuffer.h
-    ${source_path}/RingBuffer.hpp
+    ${source_path}/RingBuffer.inl
     ${source_path}/logging.cpp
 
     ${source_path}/gl/types.cpp
+    ${source_path}/gl/boolean.cpp
     ${source_path}/gl/functions-patches.cpp
 
     ${source_path}/Binding_pch.h
@@ -133,15 +135,22 @@ endif()
 # Group source files
 set(header_group "Header Files (API)")
 set(source_group "Source Files")
-source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$" 
+source_group_by_path(${include_path} "\\\\.h$|\\\\.inl$" 
     ${header_group} ${headers})
-source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
+source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.inl$" 
     ${source_group} ${sources})
 
 
 # 
 # Create library
 # 
+
+# since we use stl and stl is intended to use exceptions, exceptions should not be disabled
+#if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+    # workaround for removing default flags 
+    # string(REPLACE "/EHsc" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}) 
+#endif ()
+
 
 # Build library
 add_library(${target}
@@ -231,6 +240,9 @@ target_link_libraries(${target}
 
 target_compile_definitions(${target}
     PRIVATE
+    # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
+    # furthermore, this flag is not officially supported
+    #$<$<CXX_COMPILER_ID:MSVC>:_HAS_EXCEPTIONS=0> 
 
     PUBLIC
     $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_upper}_STATIC_DEFINE>

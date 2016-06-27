@@ -4,7 +4,7 @@
 #include <glbinding/gl/extension.h>
 
 
-using namespace gl; // ToDo: multiple APIs?
+using namespace gl;
 
 namespace glbinding
 {
@@ -240,6 +240,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glCompressedTextureSubImage3D", { GLextension::GL_ARB_direct_state_access } },
     { "glCompressedTextureSubImage3DEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glConservativeRasterParameterfNV", { GLextension::GL_NV_conservative_raster_dilate } },
+    { "glConservativeRasterParameteriNV", { GLextension::GL_NV_conservative_raster_pre_snap_triangles } },
     { "glConvolutionFilter1D", { GLextension::GL_ARB_imaging } },
     { "glConvolutionFilter1DEXT", { GLextension::GL_EXT_convolution } },
     { "glConvolutionFilter2D", { GLextension::GL_ARB_imaging } },
@@ -2258,7 +2259,9 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glVideoCaptureStreamParameterivNV", { GLextension::GL_NV_video_capture } },
     { "glViewportArrayv", { GLextension::GL_ARB_viewport_array } },
     { "glViewportIndexedf", { GLextension::GL_ARB_viewport_array } },
-    { "glViewportIndexedfv", { GLextension::GL_ARB_viewport_array } }
+    { "glViewportIndexedfv", { GLextension::GL_ARB_viewport_array } },
+    { "glViewportPositionWScaleNV", { GLextension::GL_NV_clip_space_w_scaling } },
+    { "glViewportSwizzleNV", { GLextension::GL_NV_viewport_swizzle } }
 };
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_W =
@@ -2314,6 +2317,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glWindowPos4ivMESA", { GLextension::GL_MESA_window_pos } },
     { "glWindowPos4sMESA", { GLextension::GL_MESA_window_pos } },
     { "glWindowPos4svMESA", { GLextension::GL_MESA_window_pos } },
+    { "glWindowRectanglesEXT", { GLextension::GL_EXT_window_rectangles } },
     { "glWriteMaskEXT", { GLextension::GL_EXT_vertex_shader } }
 };
 

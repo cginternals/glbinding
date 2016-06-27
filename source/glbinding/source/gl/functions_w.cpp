@@ -346,6 +346,11 @@ void glWindowPos4svMESA(const GLshort * v)
     return Binding::WindowPos4svMESA(v);
 }
 
+void glWindowRectanglesEXT(GLenum mode, GLsizei count, const GLint * box)
+{
+    return Binding::WindowRectanglesEXT(mode, count, box);
+}
+
 void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW)
 {
     return Binding::WriteMaskEXT(res, in, outX, outY, outZ, outW);

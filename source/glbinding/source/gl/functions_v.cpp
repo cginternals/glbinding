@@ -1901,6 +1901,16 @@ void glViewportIndexedfv(GLuint index, const GLfloat * v)
     return Binding::ViewportIndexedfv(index, v);
 }
 
+void glViewportPositionWScaleNV(GLuint index, GLfloat xcoeff, GLfloat ycoeff)
+{
+    return Binding::ViewportPositionWScaleNV(index, xcoeff, ycoeff);
+}
+
+void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew)
+{
+    return Binding::ViewportSwizzleNV(index, swizzlex, swizzley, swizzlez, swizzlew);
+}
+
 
 
 } // namespace gl

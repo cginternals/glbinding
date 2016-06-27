@@ -1,8 +1,6 @@
 
 #pragma once
 
-#include <glbinding/Function.h>
-
 #include <utility>
 #include <functional>
 #include <memory>

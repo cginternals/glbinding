@@ -52,7 +52,7 @@ void Binding::initialize(
 ,   const bool _resolveFunctions)
 {
     g_mutex.lock();
-    if (g_bindings.find(context) != g_bindings.end())
+    if (g_bindings.find(context) != g_bindings.cend())
     {
         g_mutex.unlock();
         return;
@@ -69,25 +69,22 @@ void Binding::initialize(
     AbstractFunction::provideState(pos);
     g_mutex.unlock();
 
-    if (_useContext)
-    {
+    const auto resolveWOUse = !_useContext & _resolveFunctions;
+    const auto currentContext = resolveWOUse ? getCurrentContext() : static_cast<ContextHandle>(0);
+
+    if(_useContext)
         useContext(context);
 
-        if (_resolveFunctions)
-        {
-            resolveFunctions();
-        }
-    }
-    else if (_resolveFunctions)
+    if (_resolveFunctions)
     {
-        auto currentContext = getCurrentContext();
-
-        useContext(context);
-
+        g_mutex.lock();
         resolveFunctions();
-
-        useContext(currentContext);
+        g_mutex.unlock();
     }
+
+    // restore previous context
+    if(resolveWOUse)
+        useContext(currentContext);
 }
 
 void Binding::registerAdditionalFunction(AbstractFunction * function)
@@ -118,7 +115,7 @@ void Binding::useContext(const ContextHandle context)
     t_context = context;
 
     g_mutex.lock();
-    if (g_bindings.find(t_context) == g_bindings.end())
+    if (g_bindings.find(t_context) == g_bindings.cend())
     {
         g_mutex.unlock();
 

@@ -8,6 +8,7 @@
 #include <glbinding/AbstractValue.h>
 
 #include <glbinding/gl/types.h>
+#include <glbinding/gl/boolean.h>
 
 
 namespace glbinding 
@@ -123,4 +124,4 @@ std::vector<AbstractValue*> createValues(Arguments&&... arguments);
 } // namespace glbinding
 
 
-#include <glbinding/Value.hpp>
+#include <glbinding/Value.inl>
