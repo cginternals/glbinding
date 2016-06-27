@@ -91,6 +91,9 @@ endif ()
 # GCC and Clang compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
+        -fno-exceptions
+        -fno-rtti
+
         -Wall
         -Wextra
         -Wunused
