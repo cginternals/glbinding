@@ -80,10 +80,10 @@ For systems providing package managers, we generally strive for packages in thes
 
 ###### Windows
 
-The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc2015-x64-runtime.zip),
-[examples](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc2015-x64-examples.zip),
-[dev](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc2015-x64-dev.zip), and
-[tools](https://github.com/cginternals/glbinding/releases/download/v2.0.0/glbinding-2.0.0-msvc2015-x64-tools.zip).
+The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-runtime.zip),
+[examples](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-examples.zip),
+[dev](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-dev.zip), and
+[tools](https://github.com/cginternals/glbinding/releases/download/v2.1.0/glbinding-2.1.0-msvc2015-x64-tools.zip).
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Ubuntu
@@ -151,10 +151,10 @@ First, download the source code [as archive](https://github.com/cginternals/glbi
 > git clone https://github.com/cginternals/glbinding.git
 > cd glbinding
 ```
-Then, depending on the version of glbinding you want to build, choose the appropriate tag or branch, e.g., for the 2.0.0 release:
+Then, depending on the version of glbinding you want to build, choose the appropriate tag or branch, e.g., for the 2.1.0 release:
 ```shell
 > git fetch --tags
-> git checkout v2.0.0
+> git checkout v2.1.0
 ```
 The actual compilation can be done using CMake and your favorite compiler and IDE.
 
