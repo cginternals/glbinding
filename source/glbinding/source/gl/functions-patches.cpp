@@ -36,7 +36,7 @@ void glGetBufferParameterbv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetBufferParameteriv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetBufferParameterbvARB(GLenum target, GLenum pname, GLboolean * params)
@@ -45,7 +45,7 @@ void glGetBufferParameterbvARB(GLenum target, GLenum pname, GLboolean * params)
 
     glGetBufferParameterivARB(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetBufferParameterev(GLenum target, GLenum pname, GLenum * params)
@@ -94,7 +94,7 @@ void glGetFramebufferParameterbv(GLenum target, GLenum pname, GLboolean * params
 
     glGetFramebufferParameteriv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetFramebufferParameterbvEXT(GLuint framebuffer, GLenum pname, GLboolean * params)
@@ -103,7 +103,7 @@ void glGetFramebufferParameterbvEXT(GLuint framebuffer, GLenum pname, GLboolean 
 
     glGetFramebufferParameterivEXT(framebuffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetMinmaxParameterev(GLenum target, GLenum pname, GLenum * params)
@@ -122,7 +122,7 @@ void glGetNamedBufferParameterbv(GLuint buffer, GLenum pname, GLboolean * params
 
     glGetNamedBufferParameteriv(buffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedBufferParameterbvEXT(GLuint buffer, GLenum pname, GLboolean * params)
@@ -131,7 +131,7 @@ void glGetNamedBufferParameterbvEXT(GLuint buffer, GLenum pname, GLboolean * par
 
     glGetNamedBufferParameterivEXT(buffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedBufferParameterev(GLuint buffer, GLenum pname, GLenum * params)
@@ -160,7 +160,7 @@ void glGetNamedFramebufferParameterbv(GLuint framebuffer, GLenum pname, GLboolea
 
     glGetNamedFramebufferParameteriv(framebuffer, pname, &params_);
 
-    param[0] = static_cast<GLboolean>(params_);
+    param[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedFramebufferParameterbvEXT(GLuint framebuffer, GLenum pname, GLboolean * params)
@@ -169,7 +169,7 @@ void glGetNamedFramebufferParameterbvEXT(GLuint framebuffer, GLenum pname, GLboo
 
     glGetNamedFramebufferParameterivEXT(framebuffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedProgrambvEXT(GLuint program, GLenum target, GLenum pname, GLboolean * params)
@@ -178,7 +178,7 @@ void glGetNamedProgrambvEXT(GLuint program, GLenum target, GLenum pname, GLboole
 
     glGetNamedProgramivEXT(program, target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedProgramevEXT(GLuint program, GLenum target, GLenum pname, GLenum * params)
@@ -207,7 +207,7 @@ void glGetObjectParameterbvARB(GLhandleARB obj, GLenum pname, GLboolean * params
 
     glGetObjectParameterivARB(obj, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetObjectParameterevARB(GLhandleARB obj, GLenum pname, GLenum * params)
@@ -221,7 +221,7 @@ void glGetProgrambv(GLuint program, GLenum pname, GLboolean * params)
 
     glGetProgramiv(program, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetProgrambvARB(GLenum target, GLenum pname, GLboolean * params)
@@ -230,7 +230,7 @@ void glGetProgrambvARB(GLenum target, GLenum pname, GLboolean * params)
 
     glGetProgramivARB(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetProgramev(GLuint program, GLenum pname, GLenum * params)
@@ -249,7 +249,7 @@ void glGetQueryIndexedbv(GLenum target, GLuint index, GLenum pname, GLboolean * 
 
     glGetQueryIndexediv(target, index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQueryObjectbv(GLuint id, GLenum pname, GLboolean * params)
@@ -258,7 +258,7 @@ void glGetQueryObjectbv(GLuint id, GLenum pname, GLboolean * params)
 
     glGetQueryObjectiv(id, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQueryObjectbvARB(GLuint id, GLenum pname, GLboolean * params)
@@ -267,7 +267,7 @@ void glGetQueryObjectbvARB(GLuint id, GLenum pname, GLboolean * params)
 
     glGetQueryObjectivARB(id, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQuerybv(GLenum target, GLenum pname, GLboolean * params)
@@ -276,7 +276,7 @@ void glGetQuerybv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetQueryiv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQuerybvARB(GLenum target, GLenum pname, GLboolean * params)
@@ -285,7 +285,7 @@ void glGetQuerybvARB(GLenum target, GLenum pname, GLboolean * params)
 
     glGetQueryivARB(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetRenderbufferParameterev(GLenum target, GLenum pname, GLenum * params)
@@ -314,7 +314,7 @@ void glGetShaderbv(GLuint shader, GLenum pname, GLboolean * params)
 
     glGetShaderiv(shader, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetShaderev(GLuint shader, GLenum pname, GLenum * params)
@@ -328,7 +328,7 @@ void glGetTexEnvbv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexEnviv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexEnvev(GLenum target, GLenum pname, GLenum * params)
@@ -347,7 +347,7 @@ void glGetTexLevelParameterbv(GLenum target, GLint level, GLenum pname, GLboolea
 
     glGetTexLevelParameteriv(target, level, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexLevelParameterev(GLenum target, GLint level, GLenum pname, GLenum * params)
@@ -361,7 +361,7 @@ void glGetTexParameterIbv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexParameterIiv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexParameterIbvEXT(GLenum target, GLenum pname, GLboolean * params)
@@ -370,7 +370,7 @@ void glGetTexParameterIbvEXT(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexParameterIivEXT(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexParameterbv(GLenum target, GLenum pname, GLboolean * params)
@@ -379,7 +379,7 @@ void glGetTexParameterbv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexParameteriv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexParameterIev(GLenum target, GLenum pname, GLenum * params)
@@ -403,7 +403,7 @@ void glGetTextureLevelParameterbv(GLuint texture, GLint level, GLenum pname, GLb
 
     glGetTextureLevelParameteriv(texture, level, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureLevelParameterbvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLboolean * params)
@@ -412,7 +412,7 @@ void glGetTextureLevelParameterbvEXT(GLuint texture, GLenum target, GLint level,
 
     glGetTextureLevelParameterivEXT(texture, target, level, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureLevelParameterev(GLuint texture, GLint level, GLenum pname, GLenum * params)
@@ -431,7 +431,7 @@ void glGetTextureParameterIbv(GLuint texture, GLenum pname, GLboolean * params)
 
     glGetTextureParameterIiv(texture, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameterIbvEXT(GLuint texture, GLenum target, GLenum pname, GLboolean * params)
@@ -440,7 +440,7 @@ void glGetTextureParameterIbvEXT(GLuint texture, GLenum target, GLenum pname, GL
 
     glGetTextureParameterIivEXT(texture, target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameterbv(GLuint texture, GLenum pname, GLboolean * params)
@@ -449,7 +449,7 @@ void glGetTextureParameterbv(GLuint texture, GLenum pname, GLboolean * params)
 
     glGetTextureParameteriv(texture, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameterbvEXT(GLuint texture, GLenum target, GLenum pname, GLboolean * params)
@@ -458,7 +458,7 @@ void glGetTextureParameterbvEXT(GLuint texture, GLenum target, GLenum pname, GLb
 
     glGetTextureParameterivEXT(texture, target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameterIev(GLuint texture, GLenum pname, GLenum * params)
@@ -487,7 +487,7 @@ void glGetTransformFeedbackbv(GLuint xfb, GLenum pname, GLboolean * param)
 
     glGetTransformFeedbackiv(xfb, pname, &params_);
 
-    param[0] = static_cast<GLboolean>(params_);
+    param[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexArrayIndexedbv(GLuint vaobj, GLuint index, GLenum pname, GLboolean * param)
@@ -496,7 +496,7 @@ void glGetVertexArrayIndexedbv(GLuint vaobj, GLuint index, GLenum pname, GLboole
 
     glGetVertexArrayIndexediv(vaobj, index, pname, &params_);
 
-    param[0] = static_cast<GLboolean>(params_);
+    param[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexArrayIndexedev(GLuint vaobj, GLuint index, GLenum pname, GLenum * param)
@@ -510,7 +510,7 @@ void glGetVertexAttribIbv(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribIiv(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribIbvEXT(GLuint index, GLenum pname, GLboolean * params)
@@ -519,7 +519,7 @@ void glGetVertexAttribIbvEXT(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribIivEXT(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribbv(GLuint index, GLenum pname, GLboolean * params)
@@ -528,7 +528,7 @@ void glGetVertexAttribbv(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribiv(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribbvARB(GLuint index, GLenum pname, GLboolean * params)
@@ -537,7 +537,7 @@ void glGetVertexAttribbvARB(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribivARB(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribIev(GLuint index, GLenum pname, GLenum * params)
@@ -1249,7 +1249,7 @@ void glGetBufferParameteriv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetBufferParameteriv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetBufferParameterivARB(GLenum target, GLenum pname, GLboolean * params)
@@ -1258,7 +1258,7 @@ void glGetBufferParameterivARB(GLenum target, GLenum pname, GLboolean * params)
 
     glGetBufferParameterivARB(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetBufferParameteriv(GLenum target, GLenum pname, GLenum * params)
@@ -1307,7 +1307,7 @@ void glGetFramebufferParameteriv(GLenum target, GLenum pname, GLboolean * params
 
     glGetFramebufferParameteriv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLboolean * params)
@@ -1316,7 +1316,7 @@ void glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLboolean 
 
     glGetFramebufferParameterivEXT(framebuffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetMinmaxParameteriv(GLenum target, GLenum pname, GLenum * params)
@@ -1335,7 +1335,7 @@ void glGetNamedBufferParameteriv(GLuint buffer, GLenum pname, GLboolean * params
 
     glGetNamedBufferParameteriv(buffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLboolean * params)
@@ -1344,7 +1344,7 @@ void glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLboolean * par
 
     glGetNamedBufferParameterivEXT(buffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedBufferParameteriv(GLuint buffer, GLenum pname, GLenum * params)
@@ -1373,7 +1373,7 @@ void glGetNamedFramebufferParameteriv(GLuint framebuffer, GLenum pname, GLboolea
 
     glGetNamedFramebufferParameteriv(framebuffer, pname, &params_);
 
-    param[0] = static_cast<GLboolean>(params_);
+    param[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLboolean * params)
@@ -1382,7 +1382,7 @@ void glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLboo
 
     glGetNamedFramebufferParameterivEXT(framebuffer, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLboolean * params)
@@ -1391,7 +1391,7 @@ void glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLboole
 
     glGetNamedProgramivEXT(program, target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLenum * params)
@@ -1420,7 +1420,7 @@ void glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLboolean * params
 
     glGetObjectParameterivARB(obj, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLenum * params)
@@ -1434,7 +1434,7 @@ void glGetProgramiv(GLuint program, GLenum pname, GLboolean * params)
 
     glGetProgramiv(program, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetProgramivARB(GLenum target, GLenum pname, GLboolean * params)
@@ -1443,7 +1443,7 @@ void glGetProgramivARB(GLenum target, GLenum pname, GLboolean * params)
 
     glGetProgramivARB(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetProgramiv(GLuint program, GLenum pname, GLenum * params)
@@ -1462,7 +1462,7 @@ void glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLboolean * 
 
     glGetQueryIndexediv(target, index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQueryObjectiv(GLuint id, GLenum pname, GLboolean * params)
@@ -1471,7 +1471,7 @@ void glGetQueryObjectiv(GLuint id, GLenum pname, GLboolean * params)
 
     glGetQueryObjectiv(id, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQueryObjectivARB(GLuint id, GLenum pname, GLboolean * params)
@@ -1480,7 +1480,7 @@ void glGetQueryObjectivARB(GLuint id, GLenum pname, GLboolean * params)
 
     glGetQueryObjectivARB(id, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQueryiv(GLenum target, GLenum pname, GLboolean * params)
@@ -1489,7 +1489,7 @@ void glGetQueryiv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetQueryiv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetQueryivARB(GLenum target, GLenum pname, GLboolean * params)
@@ -1498,7 +1498,7 @@ void glGetQueryivARB(GLenum target, GLenum pname, GLboolean * params)
 
     glGetQueryivARB(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLenum * params)
@@ -1527,7 +1527,7 @@ void glGetShaderiv(GLuint shader, GLenum pname, GLboolean * params)
 
     glGetShaderiv(shader, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetShaderiv(GLuint shader, GLenum pname, GLenum * params)
@@ -1541,7 +1541,7 @@ void glGetTexEnviv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexEnviv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexEnviv(GLenum target, GLenum pname, GLenum * params)
@@ -1560,7 +1560,7 @@ void glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLboolea
 
     glGetTexLevelParameteriv(target, level, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLenum * params)
@@ -1574,7 +1574,7 @@ void glGetTexParameterIiv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexParameterIiv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexParameterIivEXT(GLenum target, GLenum pname, GLboolean * params)
@@ -1583,7 +1583,7 @@ void glGetTexParameterIivEXT(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexParameterIivEXT(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexParameteriv(GLenum target, GLenum pname, GLboolean * params)
@@ -1592,7 +1592,7 @@ void glGetTexParameteriv(GLenum target, GLenum pname, GLboolean * params)
 
     glGetTexParameteriv(target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTexParameterIiv(GLenum target, GLenum pname, GLenum * params)
@@ -1616,7 +1616,7 @@ void glGetTextureLevelParameteriv(GLuint texture, GLint level, GLenum pname, GLb
 
     glGetTextureLevelParameteriv(texture, level, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLboolean * params)
@@ -1625,7 +1625,7 @@ void glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level,
 
     glGetTextureLevelParameterivEXT(texture, target, level, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureLevelParameteriv(GLuint texture, GLint level, GLenum pname, GLenum * params)
@@ -1644,7 +1644,7 @@ void glGetTextureParameterIiv(GLuint texture, GLenum pname, GLboolean * params)
 
     glGetTextureParameterIiv(texture, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLboolean * params)
@@ -1653,7 +1653,7 @@ void glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GL
 
     glGetTextureParameterIivEXT(texture, target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameteriv(GLuint texture, GLenum pname, GLboolean * params)
@@ -1662,7 +1662,7 @@ void glGetTextureParameteriv(GLuint texture, GLenum pname, GLboolean * params)
 
     glGetTextureParameteriv(texture, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLboolean * params)
@@ -1671,7 +1671,7 @@ void glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLb
 
     glGetTextureParameterivEXT(texture, target, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetTextureParameterIiv(GLuint texture, GLenum pname, GLenum * params)
@@ -1700,7 +1700,7 @@ void glGetTransformFeedbackiv(GLuint xfb, GLenum pname, GLboolean * param)
 
     glGetTransformFeedbackiv(xfb, pname, &params_);
 
-    param[0] = static_cast<GLboolean>(params_);
+    param[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexArrayIndexediv(GLuint vaobj, GLuint index, GLenum pname, GLboolean * param)
@@ -1709,7 +1709,7 @@ void glGetVertexArrayIndexediv(GLuint vaobj, GLuint index, GLenum pname, GLboole
 
     glGetVertexArrayIndexediv(vaobj, index, pname, &params_);
 
-    param[0] = static_cast<GLboolean>(params_);
+    param[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexArrayIndexediv(GLuint vaobj, GLuint index, GLenum pname, GLenum * param)
@@ -1723,7 +1723,7 @@ void glGetVertexAttribIiv(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribIiv(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLboolean * params)
@@ -1732,7 +1732,7 @@ void glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribIivEXT(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribiv(GLuint index, GLenum pname, GLboolean * params)
@@ -1741,7 +1741,7 @@ void glGetVertexAttribiv(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribiv(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribivARB(GLuint index, GLenum pname, GLboolean * params)
@@ -1750,7 +1750,7 @@ void glGetVertexAttribivARB(GLuint index, GLenum pname, GLboolean * params)
 
     glGetVertexAttribivARB(index, pname, &params_);
 
-    params[0] = static_cast<GLboolean>(params_);
+    params[0] = static_cast<GLboolean>(params_ != 0);
 }
 
 void glGetVertexAttribIiv(GLuint index, GLenum pname, GLenum * params)

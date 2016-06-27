@@ -66,6 +66,7 @@ set(DEFAULT_COMPILE_OPTIONS)
 # MSVC compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
+    PRIVATE
         /MP           # -> build with multiple processes
         /W4           # -> warning level 4
         # /WX         # -> treat warnings as errors
@@ -85,6 +86,9 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         /GL           # -> whole program optimization: enable link-time code generation (disables Zi)
         /GF           # -> enable string pooling
         >
+
+    PUBLIC
+
     )
 
 endif ()
