@@ -76,7 +76,11 @@ void Binding::initialize(
         useContext(context);
 
     if (_resolveFunctions)
+    {
+        g_mutex.lock();
         resolveFunctions();
+        g_mutex.unlock();
+    }
 
     // restore previous context
     if(resolveWOUse)
