@@ -91,6 +91,7 @@ endif ()
 # GCC and Clang compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
+    PRIVATE
         -fno-exceptions
         -fno-rtti
 
@@ -116,17 +117,17 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
                 -Wreturn-local-addr
             >
         >
-        
+
         $<$<CXX_COMPILER_ID:Clang>:
             -Wpedantic
             
             -Wreturn-stack-address
         >
-        
+    PUBLIC
         $<$<PLATFORM_ID:Darwin>:
             -pthread
         >
-        
+
         $<$<VERSION_LESS:${CMAKE_VERSION},3.1>:
             -std=c++11
         >
@@ -143,6 +144,7 @@ set(DEFAULT_LINKER_OPTIONS)
 # Use pthreads on mingw and linux
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
     set(DEFAULT_LINKER_OPTIONS
+    PUBLIC
         -pthread
     )
 endif()
