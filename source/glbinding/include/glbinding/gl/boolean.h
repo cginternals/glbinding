@@ -19,6 +19,8 @@ public:
 public:
     GLboolean();
     GLboolean(bool on);
+    GLboolean(const GLboolean & other);
+    GLboolean(GLboolean && other);
 
     explicit operator bool() const;
     explicit operator char() const;
@@ -27,6 +29,7 @@ public:
     explicit operator unsigned int() const;
 
     GLboolean & operator=(const GLboolean & other);
+    GLboolean & operator=(GLboolean && other);
     bool operator<(const GLboolean & other) const;
     bool operator>(const GLboolean & other) const;
     bool operator<=(const GLboolean & other) const;

@@ -19,6 +19,16 @@ GLboolean::GLboolean(bool on)
 {
 }
 
+GLboolean::GLboolean(const GLboolean & other)
+: m_value(other.m_value)
+{
+}
+
+GLboolean::GLboolean(GLboolean && other)
+: m_value(std::move(other.m_value))
+{
+}
+
 GLboolean::operator bool() const
 {
     return m_value;
@@ -47,6 +57,13 @@ GLboolean::operator unsigned int() const
 GLboolean & GLboolean::operator=(const GLboolean & other)
 {
     m_value = other.m_value;
+
+    return *this;
+}
+
+GLboolean & GLboolean::operator=(GLboolean && other)
+{
+    m_value = std::move(other.m_value);
 
     return *this;
 }
