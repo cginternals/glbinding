@@ -145,12 +145,11 @@ source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.inl$"
 # Create library
 # 
 
-if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
-
+# since we use stl and stl is intended to use exceptions, exceptions should not be disabled
+#if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     # workaround for removing default flags 
-    string(REPLACE "/EHsc" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
-
-endif ()
+    # string(REPLACE "/EHsc" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}) 
+#endif ()
 
 
 # Build library
@@ -241,7 +240,9 @@ target_link_libraries(${target}
 
 target_compile_definitions(${target}
     PRIVATE
-    $<$<CXX_COMPILER_ID:MSVC>:_HAS_EXCEPTIONS=0>
+    # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
+    # furthermore, this flag is not officially supported
+    #$<$<CXX_COMPILER_ID:MSVC>:_HAS_EXCEPTIONS=0> 
 
     PUBLIC
     $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_upper}_STATIC_DEFINE>

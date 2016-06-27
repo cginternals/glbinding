@@ -97,7 +97,7 @@ endif ()
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
     PRIVATE
-        -fno-exceptions
+        #-fno-exceptions # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
 
         -Wall
         -Wextra
