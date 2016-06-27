@@ -64,9 +64,9 @@ std::vector<GLbitfield> Meta::bitfields()
 {
     auto bitfields = std::vector<GLbitfield>{};
 
-    for(const auto map : Meta_BitfieldsByStringMaps)
+    for(const auto & map : Meta_BitfieldsByStringMaps)
     {
-        for (const auto p : map)
+        for (const auto & p : map)
         {
             bitfields.push_back(p.second);
         }
@@ -79,7 +79,7 @@ std::vector<GLenum> Meta::enums()
 {
     auto enums = std::vector<GLenum>{};
 
-    for (const auto p : Meta_StringsByEnum)
+    for (const auto & p : Meta_StringsByEnum)
     {
         enums.push_back(p.first);
     }
@@ -106,9 +106,9 @@ std::set<GLextension> Meta::extensions()
 {
     auto extensions = std::set<GLextension>{};
 
-    for (const auto m : Meta_ExtensionsByStringMaps)
+    for (const auto & m : Meta_ExtensionsByStringMaps)
     {
-        for (const auto p : m)
+        for (const auto & p : m)
         {
             extensions.insert(p.second);
         }
@@ -190,13 +190,19 @@ const std::set<GLextension> Meta::extensions(const Version & version)
     {
         required = Meta::extensions();
         for (const auto & p : Meta_ReqVersionsByExtension)
+        {
             required.erase(p.first);
+        }
     }
     else
     {
         for (const auto & p : Meta_ReqVersionsByExtension)
+        {
             if (p.second == version)
+            {
                 required.insert(p.first);
+            }
+        }
     }
     return required;
 }
@@ -220,7 +226,9 @@ const std::set<AbstractFunction *> Meta::functions(const Version & version)
     const auto i = Meta_FunctionStringsByVersion.find(version);
 
     if (i == Meta_FunctionStringsByVersion.cend())
+    {
         return std::set<AbstractFunction *>{};
+    }
 
     const auto & functionNames = i->second;
     const auto & allFunctions = Binding::functions();
@@ -248,7 +256,9 @@ const std::set<AbstractFunction *> Meta::functions(const GLextension extension)
     const auto i = Meta_FunctionStringsByExtension.find(extension);
 
     if (i == Meta_FunctionStringsByExtension.cend())
+    {
         return std::set<AbstractFunction *>{};
+    }
 
     const auto & functionNames = i->second;
     const auto & allFunctions = Binding::functions();

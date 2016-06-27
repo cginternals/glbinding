@@ -5,7 +5,7 @@ from classes.Type import *
 
 REGULAR_TYPE_INTEGRATIONS = {
     "GLextension" : [ "hashable", "streamable" ],
-    "GLboolean"   : [ "hashable", "streamable" ],
+    "GLboolean"   : [ "streamable" ],
     "GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
 }
 BITFIELD_TYPE_INTEGRATIONS = [ "hashable", "bitfieldStreamable", "bitOperatable"]
@@ -21,7 +21,7 @@ def typeIntegrationMap(type):
 
 
 # ToDo: move this to Type class? (as well as convert an multiline convert)
-enum_classes = [ "GLboolean", "GLenum" ]
+enum_classes = [ "GLenum" ]
 
 def convertTypedefLine(line, name):
 
@@ -48,6 +48,8 @@ def convertTypedef(type):
 
     if not type.value.startswith("typedef"):
         return t
+    elif type.name == "GLboolean":
+        return "// Import of GLboolean is an include"
     else:
         return "using " + type.name + " = " + t + ";"
 
