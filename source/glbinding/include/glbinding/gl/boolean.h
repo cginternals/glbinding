@@ -13,12 +13,18 @@ namespace gl
 class GLBINDING_API GLboolean
 {
 public:
+    using underlying_type = char;
+
     static const GLboolean GL_FALSE;
     static const GLboolean GL_TRUE;
 
 public:
     GLboolean();
     GLboolean(bool on);
+    GLboolean(char on);
+    GLboolean(unsigned char on);
+    GLboolean(int on);
+    GLboolean(unsigned int on);
 
     explicit operator bool() const;
     explicit operator char() const;
@@ -36,7 +42,7 @@ public:
     bool operator!=(const GLboolean & other) const;
 
 protected:
-    bool m_value;
+    underlying_type m_value;
 };
 
 
@@ -58,7 +64,7 @@ struct hash<gl::GLboolean>
 {
     hash<char>::result_type operator()(const gl::GLboolean & boolean) const
     {
-        return hash<char>()(static_cast<char>(boolean));
+        return hash<gl::GLboolean::underlying_type>()(static_cast<gl::GLboolean::underlying_type>(boolean));
     }
 };
 
