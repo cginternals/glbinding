@@ -218,6 +218,21 @@ public:
      *   The first OpenGL Version (Feature) that required the extension.
      */
     static const Version & version(gl::GLextension glextension);
+
+    /**
+     * @brief
+     *   Returns the first OpenGL Version (Feature) that required the extension.
+     *
+     * @param[in] glextension
+     *   The extension.
+     *
+     * @return
+     *   The first OpenGL Version (Feature) that required the extension.
+     *
+     * @deprecated
+     *   This method will be removed in future major releases.
+     */
+    static const Version & getRequiringVersion(gl::GLextension glextension);
     
     /**
      * @brief

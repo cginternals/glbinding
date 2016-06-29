@@ -285,6 +285,11 @@ const Version & Meta::version(const GLextension extension)
     return noneVersion;
 }
 
+const Version & Meta::getRequiringVersion(const GLextension extension)
+{
+    return version(extension);
+}
+
 const std::set<Version> & Meta::versions()
 {
     return Version::versions();
