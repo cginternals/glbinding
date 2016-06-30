@@ -12,6 +12,28 @@
 namespace
 {
 
+template <typename ReturnType, typename... Arguments>
+struct BasicCallHelper
+{
+
+    static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) 
+    {
+        return reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+    }
+};
+
+
+// Special case for GLboolean because of MSVC differing behavior
+
+template <typename... Arguments>
+struct BasicCallHelper<gl::GLboolean, Arguments...>
+{
+    static gl::GLboolean call(const glbinding::Function<gl::GLboolean, Arguments...> * function, Arguments&&... arguments)
+    {
+        return reinterpret_cast<typename glbinding::Function<gl::GLboolean::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+    }
+};
+
 
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
@@ -35,7 +57,7 @@ struct FunctionHelper
             }
         }
 
-        auto value = basicCall(function, std::forward<Arguments>(arguments)...);
+        auto value = BasicCallHelper<ReturnType, Arguments ...>::call(function, std::forward<Arguments>(arguments)...);
 
         if (function->isAnyEnabled(glbinding::CallbackMask::ReturnValue | glbinding::CallbackMask::Logging))
         {
@@ -59,66 +81,8 @@ struct FunctionHelper
 
         return value;
     }
-
-    ReturnType basicCall(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) const
-    {
-        return reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
-    }
 };
 
-// Special case for GLboolean because of MSVC differing behavior
-template <typename... Arguments>
-struct FunctionHelper<gl::GLboolean, Arguments...>
-{
-    gl::GLboolean call(const glbinding::Function<gl::GLboolean, Arguments...> * function, Arguments&&... arguments) const
-    {
-        std::unique_ptr<glbinding::FunctionCall> functionCall(new glbinding::FunctionCall(function));
-
-        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters | glbinding::CallbackMask::Logging))
-        {
-            functionCall->parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
-        }
-
-        if (function->isEnabled(glbinding::CallbackMask::Before))
-        {
-            function->before(*functionCall);
-
-            if (function->beforeCallback())
-            {
-                function->beforeCallback()(std::forward<Arguments>(arguments)...);
-            }
-        }
-
-        auto value = basicCall(function, std::forward<Arguments>(arguments)...);
-
-        if (function->isAnyEnabled(glbinding::CallbackMask::ReturnValue | glbinding::CallbackMask::Logging))
-        {
-            functionCall->returnValue = glbinding::createValue(value);
-        }
-
-        if (function->isEnabled(glbinding::CallbackMask::After))
-        {
-            function->after(*functionCall);
-
-            if (function->afterCallback())
-            {
-                function->afterCallback()(value, std::forward<Arguments>(arguments)...);
-            }
-        }
-
-        if(function->isEnabled(glbinding::CallbackMask::Logging))
-        {
-            glbinding::logging::log(functionCall.release());
-        }
-
-        return value;
-    }
-
-    gl::GLboolean basicCall(const glbinding::Function<gl::GLboolean, Arguments...> * function, Arguments&&... arguments) const
-    {
-        return reinterpret_cast<typename glbinding::Function<gl::GLboolean::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
-    }
-};
 
 template <typename... Arguments>
 struct FunctionHelper<void, Arguments...>
@@ -142,7 +106,7 @@ struct FunctionHelper<void, Arguments...>
             }
         }
 
-        basicCall(function, std::forward<Arguments>(arguments)...);
+        BasicCallHelper<void, Arguments ...>::call(function, std::forward<Arguments>(arguments)...);
 
         if (function->isEnabled(glbinding::CallbackMask::After))
         {
@@ -160,10 +124,6 @@ struct FunctionHelper<void, Arguments...>
         }
     }
 
-    void basicCall(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments) const
-    {
-        reinterpret_cast<typename glbinding::Function<void, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
-    }
 };
 
 
@@ -209,14 +169,14 @@ ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) con
     }
     else
     {
-        return FunctionHelper<ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
+        return BasicCallHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
     }
 }
 
 template <typename ReturnType, typename... Arguments>
 ReturnType Function<ReturnType, Arguments...>::directCall(Arguments... arguments) const
 {
-    return FunctionHelper<ReturnType, Arguments...>().basicCall(this, std::forward<Arguments>(arguments)...);
+    return BasicCallHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
 }
 
 template <typename ReturnType, typename... Arguments>

@@ -33,6 +33,7 @@ set(sources
     
     # regession tests
     Regression_test_82.cpp
+    Regression_test_185.cpp
 )
 
 

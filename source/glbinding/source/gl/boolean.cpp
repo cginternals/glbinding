@@ -14,34 +14,34 @@ GLboolean::GLboolean()
 {
 }
 
-GLboolean::GLboolean(bool on)
-: m_value(on)
+GLboolean::GLboolean(bool value)
+: m_value(static_cast<underlying_type>(value))
 {
 }
 
-GLboolean::GLboolean(char on)
-: m_value(on)
+GLboolean::GLboolean(char value)
+: m_value(value)
 {
 }
 
-GLboolean::GLboolean(unsigned char on)
-: m_value(on)
+GLboolean::GLboolean(unsigned char value)
+: m_value(static_cast<underlying_type>(value))
 {
 }
 
-GLboolean::GLboolean(int on)
-: m_value(on)
+GLboolean::GLboolean(int value)
+: m_value(static_cast<underlying_type>(value))
 {
 }
 
-GLboolean::GLboolean(unsigned int on)
-: m_value(on)
+GLboolean::GLboolean(unsigned int value)
+: m_value(static_cast<underlying_type>(value))
 {
 }
 
 GLboolean::operator bool() const
 {
-    return m_value;
+    return m_value != 0;
 }
 
 GLboolean::operator char() const
