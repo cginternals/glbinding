@@ -66,6 +66,60 @@ struct FunctionHelper
     }
 };
 
+// Special case for GLboolean because of MSVC differing behavior
+template <typename... Arguments>
+struct FunctionHelper<gl::GLboolean, Arguments...>
+{
+    gl::GLboolean call(const glbinding::Function<gl::GLboolean, Arguments...> * function, Arguments&&... arguments) const
+    {
+        std::unique_ptr<glbinding::FunctionCall> functionCall(new glbinding::FunctionCall(function));
+
+        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters | glbinding::CallbackMask::Logging))
+        {
+            functionCall->parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
+        }
+
+        if (function->isEnabled(glbinding::CallbackMask::Before))
+        {
+            function->before(*functionCall);
+
+            if (function->beforeCallback())
+            {
+                function->beforeCallback()(std::forward<Arguments>(arguments)...);
+            }
+        }
+
+        auto value = basicCall(function, std::forward<Arguments>(arguments)...);
+
+        if (function->isAnyEnabled(glbinding::CallbackMask::ReturnValue | glbinding::CallbackMask::Logging))
+        {
+            functionCall->returnValue = glbinding::createValue(value);
+        }
+
+        if (function->isEnabled(glbinding::CallbackMask::After))
+        {
+            function->after(*functionCall);
+
+            if (function->afterCallback())
+            {
+                function->afterCallback()(value, std::forward<Arguments>(arguments)...);
+            }
+        }
+
+        if(function->isEnabled(glbinding::CallbackMask::Logging))
+        {
+            glbinding::logging::log(functionCall.release());
+        }
+
+        return value;
+    }
+
+    gl::GLboolean basicCall(const glbinding::Function<gl::GLboolean, Arguments...> * function, Arguments&&... arguments) const
+    {
+        return reinterpret_cast<typename glbinding::Function<gl::GLboolean::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+    }
+};
+
 template <typename... Arguments>
 struct FunctionHelper<void, Arguments...>
 {

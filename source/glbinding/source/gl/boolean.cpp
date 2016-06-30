@@ -6,8 +6,8 @@ namespace gl
 {
 
 
-const GLboolean GLboolean::GL_FALSE = GLboolean(false);
-const GLboolean GLboolean::GL_TRUE = GLboolean(true);
+const GLboolean GLboolean::GL_FALSE = GLboolean(0);
+const GLboolean GLboolean::GL_TRUE = GLboolean(1);
 
 GLboolean::GLboolean()
 : GLboolean(false)
@@ -15,6 +15,26 @@ GLboolean::GLboolean()
 }
 
 GLboolean::GLboolean(bool on)
+: m_value(on)
+{
+}
+
+GLboolean::GLboolean(char on)
+: m_value(on)
+{
+}
+
+GLboolean::GLboolean(unsigned char on)
+: m_value(on)
+{
+}
+
+GLboolean::GLboolean(int on)
+: m_value(on)
+{
+}
+
+GLboolean::GLboolean(unsigned int on)
 : m_value(on)
 {
 }
