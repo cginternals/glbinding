@@ -5,6 +5,8 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/Binding.h>
+#include <glbinding/Meta.h>
+
 
 #include <glbinding/gl/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.cpp)
 
@@ -48,11 +50,18 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
     // note: this might work on some OpenGL drivers without expected failure (try NVIDIA for expected failure on windows x64)
     ASSERT_NO_THROW(gl::glIsProgram(0));    
 
-
     ASSERT_EQ(gl::GL_NO_ERROR, gl::glGetError());
 
     glfwMakeContextCurrent(nullptr);
     glfwTerminate();
+
+    SUCCEED();
+}
+
+TEST(Regression_185, GetString)  // Static initializiation issue ...
+{
+    ASSERT_EQ(glbinding::Meta::getString(gl::GL_TRUE), "GL_TRUE");
+    ASSERT_EQ(glbinding::Meta::getString(gl::GL_FALSE), "GL_FALSE");
 
     SUCCEED();
 }
