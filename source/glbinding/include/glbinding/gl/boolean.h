@@ -13,10 +13,7 @@ namespace gl
 class GLBINDING_API GLboolean
 {
 public:
-    using underlying_type = char;
-
-    static const GLboolean GL_FALSE;
-    static const GLboolean GL_TRUE;
+    using underlying_type = unsigned char;
 
 public:
     GLboolean();
@@ -41,15 +38,15 @@ public:
     bool operator==(const GLboolean & other) const;
     bool operator!=(const GLboolean & other) const;
 
-protected:
+public:
     underlying_type m_value;
 };
 
 
 // import booleans to namespace
 
-static const GLboolean GL_FALSE = GLboolean::GL_FALSE;
-static const GLboolean GL_TRUE = GLboolean::GL_TRUE;
+static const GLboolean GL_FALSE = GLboolean(0);
+static const GLboolean GL_TRUE = GLboolean(1);
 
 
 } // namespace gl

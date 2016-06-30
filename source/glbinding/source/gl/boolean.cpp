@@ -6,9 +6,6 @@ namespace gl
 {
 
 
-const GLboolean GLboolean::GL_FALSE = GLboolean(0);
-const GLboolean GLboolean::GL_TRUE = GLboolean(1);
-
 GLboolean::GLboolean()
 : GLboolean(false)
 {
