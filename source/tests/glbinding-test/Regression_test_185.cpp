@@ -24,16 +24,12 @@ public:
 
 TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function returns GLboolean
 {
-    try
-    {
-        glfwInit();
-    }
-    catch (...)
+    if (!glfwInit())
     {
         SUCCEED();
         return;
     }
-    
+
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
 
@@ -44,17 +40,7 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 
-    GLFWwindow * window = nullptr;
-    try
-    {
-        window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
-    }
-    catch (...)
-    {
-        SUCCEED();
-        return;
-    }
-
+    GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     ASSERT_NE(nullptr, window);
 
     glfwMakeContextCurrent(window);
