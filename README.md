@@ -4,7 +4,7 @@
 
 *glbinding* is a full-fledged, [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
-See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0), [glbinding-2.1.0](https://github.com/cginternals/glbinding/releases/tag/v2.1.0), and [glbinding-2.1.1](https://github.com/cginternals/glbinding/releases/tag/v2.1.1).
+See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0) and [glbinding-2.1.1](https://github.com/cginternals/glbinding/releases/tag/v2.1.1).
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
 all OpenGL symbols are real functions and variables. 
