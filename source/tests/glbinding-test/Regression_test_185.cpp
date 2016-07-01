@@ -21,6 +21,7 @@ class Regression_185 : public testing::Test
 public:
 };
 
+#ifdef BUILD_GPU_TESTS
 
 TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function returns GLboolean
 {
@@ -60,6 +61,8 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
 
     SUCCEED();
 }
+
+#endif
 
 TEST(Regression_185, GetString)  // Static initializiation issue ...
 {

@@ -22,7 +22,6 @@ option(gtest_build_tests "Build all of gtest's own tests." OFF)
 option(gtest_build_samples "Build gtest's sample programs." OFF)
 
 option(gtest_disable_pthreads "Disable uses of pthreads in gtest." OFF)
-set(gtest_disable_pthreads ON)
 
 option(
   gtest_hide_internal_symbols

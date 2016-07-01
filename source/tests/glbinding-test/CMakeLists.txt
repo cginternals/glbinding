@@ -95,6 +95,7 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
+ 	$<$<BOOL:${OPTION_BUILD_GPU_TESTS}>:BUILD_GPU_TESTS>   
 )
 
 

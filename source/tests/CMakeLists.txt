@@ -8,6 +8,11 @@ if(NOT OPTION_BUILD_TESTS)
     return()
 endif()
 
+if(NOT OPTION_BUILD_GPU_TESTS)
+    return()
+endif()
+
+
 # DISABLE CMP0037: Target names should not be reserved and should match a validity pattern.
 cmake_policy(SET CMP0037 OLD)
 

@@ -33,17 +33,17 @@ get_git_head_revision(GIT_REFSPEC GIT_SHA1)
 string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
 
 # Meta information about the project
-set(META_PROJECT_NAME        "glbinding")
-set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
-set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
-set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
-set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
-set(META_VERSION_MAJOR       "2")
-set(META_VERSION_MINOR       "1")
-set(META_VERSION_PATCH       "1")
-set(META_VERSION_REVISION    "${GIT_REV}")
-set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
-set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
+set(META_PROJECT_NAME         "glbinding")
+set(META_PROJECT_DESCRIPTION  "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
+set(META_AUTHOR_ORGANIZATION  "CG Internals GmbH")
+set(META_AUTHOR_DOMAIN        "https://github.com/cginternals/glbinding/")
+set(META_AUTHOR_MAINTAINER    "opensource@cginternals.com")
+set(META_VERSION_MAJOR        "2")
+set(META_VERSION_MINOR        "1")
+set(META_VERSION_PATCH        "1")
+set(META_VERSION_REVISION     "${GIT_REV}")
+set(META_VERSION              "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
+set(META_NAME_VERSION         "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
 
 
 # 
@@ -51,11 +51,12 @@ set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERS
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS     "Build shared instead of static libraries."              ON)
-option(OPTION_SELF_CONTAINED "Create a self-contained install with all dependencies." OFF)
-option(OPTION_BUILD_TESTS    "Build tests."                                           ON)
-option(OPTION_BUILD_DOCS     "Build documentation."                                   OFF)
-option(OPTION_BUILD_EXAMPLES "Build examples."                                        OFF)
+option(BUILD_SHARED_LIBS      "Build shared instead of static libraries."              ON)
+option(OPTION_SELF_CONTAINED  "Create a self-contained install with all dependencies." OFF)
+option(OPTION_BUILD_TESTS     "Build tests."                                           ON)
+option(OPTION_BUILD_GPU_TESTS "Build tests that require an OpenGL context."            ON)
+option(OPTION_BUILD_DOCS      "Build documentation."                                   OFF)
+option(OPTION_BUILD_EXAMPLES  "Build examples."                                        OFF)
 
 
 # 
