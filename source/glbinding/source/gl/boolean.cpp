@@ -6,32 +6,39 @@ namespace gl
 {
 
 
-const GLboolean GLboolean::GL_FALSE = GLboolean(false);
-const GLboolean GLboolean::GL_TRUE = GLboolean(true);
-
 GLboolean::GLboolean()
 : GLboolean(false)
 {
 }
 
-GLboolean::GLboolean(bool on)
-: m_value(on)
+GLboolean::GLboolean(bool value)
+: m_value(static_cast<underlying_type>(value))
 {
 }
 
-GLboolean::GLboolean(const GLboolean & other)
-: m_value(other.m_value)
+GLboolean::GLboolean(char value)
+: m_value(value)
 {
 }
 
-GLboolean::GLboolean(GLboolean && other)
-: m_value(std::move(other.m_value))
+GLboolean::GLboolean(unsigned char value)
+: m_value(static_cast<underlying_type>(value))
+{
+}
+
+GLboolean::GLboolean(int value)
+: m_value(static_cast<underlying_type>(value))
+{
+}
+
+GLboolean::GLboolean(unsigned int value)
+: m_value(static_cast<underlying_type>(value))
 {
 }
 
 GLboolean::operator bool() const
 {
-    return m_value;
+    return m_value != 0;
 }
 
 GLboolean::operator char() const
@@ -57,13 +64,6 @@ GLboolean::operator unsigned int() const
 GLboolean & GLboolean::operator=(const GLboolean & other)
 {
     m_value = other.m_value;
-
-    return *this;
-}
-
-GLboolean & GLboolean::operator=(GLboolean && other)
-{
-    m_value = std::move(other.m_value);
 
     return *this;
 }

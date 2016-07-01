@@ -118,11 +118,11 @@ std::set<GLextension> Meta::extensions()
 }
 
 
-const std::string & Meta::getString(const GLboolean glboolean)
+const std::string & Meta::getString(const GLboolean & glboolean)
 {
     const auto i = Meta_StringsByBoolean.find(glboolean);
 
-    if (i == Meta_StringsByBoolean.cend())
+    if (i != Meta_StringsByBoolean.cend())
     {
         return i->second;
     }
@@ -283,6 +283,11 @@ const Version & Meta::version(const GLextension extension)
     }
 
     return noneVersion;
+}
+
+const Version & Meta::getRequiringVersion(const GLextension extension)
+{
+    return version(extension);
 }
 
 const std::set<Version> & Meta::versions()

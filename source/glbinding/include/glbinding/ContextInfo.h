@@ -46,6 +46,21 @@ public:
      * @brief
      *   Gathers information about the available extensions in the current context.
      *
+     * @param[out] unknown (optional)
+     *   The list of extension names for available extensions not known by glbinding.
+     *
+     * @return
+     *   The list of available extensions known by glbinding.
+     *
+     * @deprecated
+     *   This method will be removed in future major releases.
+     */
+    static std::set<gl::GLextension> extensions(std::set<std::string> * unknown);
+
+    /**
+     * @brief
+     *   Gathers information about the available extensions in the current context.
+     *
      * @param[out] unknown
      *   The list of extension names for available extensions not known by glbinding.
      *

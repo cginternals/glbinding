@@ -13,14 +13,15 @@ namespace gl
 class GLBINDING_API GLboolean
 {
 public:
-    static const GLboolean GL_FALSE;
-    static const GLboolean GL_TRUE;
+    using underlying_type = unsigned char;
 
 public:
     GLboolean();
     GLboolean(bool on);
-    GLboolean(const GLboolean & other);
-    GLboolean(GLboolean && other);
+    GLboolean(char on);
+    GLboolean(unsigned char on);
+    GLboolean(int on);
+    GLboolean(unsigned int on);
 
     explicit operator bool() const;
     explicit operator char() const;
@@ -29,7 +30,6 @@ public:
     explicit operator unsigned int() const;
 
     GLboolean & operator=(const GLboolean & other);
-    GLboolean & operator=(GLboolean && other);
     bool operator<(const GLboolean & other) const;
     bool operator>(const GLboolean & other) const;
     bool operator<=(const GLboolean & other) const;
@@ -38,15 +38,15 @@ public:
     bool operator==(const GLboolean & other) const;
     bool operator!=(const GLboolean & other) const;
 
-protected:
-    bool m_value;
+public:
+    underlying_type m_value;
 };
 
 
 // import booleans to namespace
 
-static const GLboolean GL_FALSE = GLboolean::GL_FALSE;
-static const GLboolean GL_TRUE = GLboolean::GL_TRUE;
+static const GLboolean GL_FALSE = GLboolean(0);
+static const GLboolean GL_TRUE = GLboolean(1);
 
 
 } // namespace gl
@@ -61,7 +61,7 @@ struct hash<gl::GLboolean>
 {
     hash<char>::result_type operator()(const gl::GLboolean & boolean) const
     {
-        return hash<char>()(static_cast<char>(boolean));
+        return hash<gl::GLboolean::underlying_type>()(static_cast<gl::GLboolean::underlying_type>(boolean));
     }
 };
 

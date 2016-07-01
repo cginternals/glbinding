@@ -195,6 +195,11 @@ std::set<GLextension> ContextInfo::extensions()
     return ::extensions(nullptr);
 }
 
+std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
+{
+    return ::extensions(unknown);
+}
+
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> & unknown)
 {
     return ::extensions(&unknown);
