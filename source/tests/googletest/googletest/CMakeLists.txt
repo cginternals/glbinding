@@ -8,7 +8,7 @@
 # BUILD_SHARED_LIBS is a standard CMake variable, but we declare it here to
 # make it prominent in the GUI.
 option(BUILD_SHARED_LIBS "Build shared libraries (DLLs)." OFF)
-set(BUILD_SHARED_LIBS ON)
+set(BUILD_SHARED_LIBS OFF)
 
 # When other libraries are using a shared version of runtime libraries,
 # Google Test also has to use one.
@@ -22,6 +22,7 @@ option(gtest_build_tests "Build all of gtest's own tests." OFF)
 option(gtest_build_samples "Build gtest's sample programs." OFF)
 
 option(gtest_disable_pthreads "Disable uses of pthreads in gtest." OFF)
+set(gtest_disable_pthreads ON)
 
 option(
   gtest_hide_internal_symbols
