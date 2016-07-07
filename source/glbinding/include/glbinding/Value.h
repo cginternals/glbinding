@@ -104,7 +104,7 @@ template <> GLBINDING_API void Value<gl::GLuint_array_2>::printOn(std::ostream &
  *   The argument to wrap into a Value of type Argument.
  */
 template <typename Argument>
-AbstractValue * createValue(const Argument & argument);
+inline AbstractValue * createValue(const Argument & argument);
 
 /**
  * @brief
@@ -118,7 +118,7 @@ AbstractValue * createValue(const Argument & argument);
  * Internally uses the createValue function.
  */
 template <typename... Arguments>
-std::vector<AbstractValue*> createValues(Arguments&&... arguments);
+inline std::vector<AbstractValue*> createValues(Arguments&&... arguments);
 
 
 } // namespace glbinding

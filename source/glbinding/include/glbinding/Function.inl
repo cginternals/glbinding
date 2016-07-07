@@ -12,11 +12,11 @@
 namespace
 {
 
+
 template <typename ReturnType, typename... Arguments>
 struct BasicCallHelper
 {
-
-    static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) 
+    inline static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments)
     {
         return reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
@@ -28,7 +28,7 @@ struct BasicCallHelper
 template <typename... Arguments>
 struct BasicCallHelper<gl::GLboolean, Arguments...>
 {
-    static gl::GLboolean call(const glbinding::Function<gl::GLboolean, Arguments...> * function, Arguments&&... arguments)
+    inline static gl::GLboolean call(const glbinding::Function<gl::GLboolean, Arguments...> * function, Arguments&&... arguments)
     {
         return reinterpret_cast<typename glbinding::Function<gl::GLboolean::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
@@ -38,7 +38,7 @@ struct BasicCallHelper<gl::GLboolean, Arguments...>
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
 {
-    ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) const
+    inline static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments)
     {
         std::unique_ptr<glbinding::FunctionCall> functionCall{new glbinding::FunctionCall(function)};
 
@@ -87,7 +87,7 @@ struct FunctionHelper
 template <typename... Arguments>
 struct FunctionHelper<void, Arguments...>
 {
-    void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments) const
+    inline static void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments)
     {
         std::unique_ptr<glbinding::FunctionCall> functionCall(new glbinding::FunctionCall(function));
 
@@ -123,7 +123,6 @@ struct FunctionHelper<void, Arguments...>
             glbinding::logging::log(functionCall.release());
         }
     }
-
 };
 
 
@@ -165,7 +164,7 @@ ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) con
 
     if (isAnyEnabled(CallbackMask::Before | CallbackMask::After | CallbackMask::Logging))
     {
-        return FunctionHelper<ReturnType, Arguments...>().call(this, std::forward<Arguments>(arguments)...);
+        return FunctionHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
     }
     else
     {
