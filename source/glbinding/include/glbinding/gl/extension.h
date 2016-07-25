@@ -357,6 +357,7 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_INGR_blend_func_separate,
     GL_INGR_color_clamp,
     GL_INGR_interlace_read,
+    GL_INTEL_conservative_rasterization,
     GL_INTEL_fragment_shader_ordering,
     GL_INTEL_framebuffer_CMAA,
     GL_INTEL_map_texture,

@@ -4373,7 +4373,8 @@ typedef unsigned int GLhandleARB;
         <enum value="0x83F9" name="GL_PERFQUERY_DONOT_FLUSH_INTEL"/>
         <enum value="0x83FA" name="GL_PERFQUERY_FLUSH_INTEL"/>
         <enum value="0x83FB" name="GL_PERFQUERY_WAIT_INTEL"/>
-            <unused start="0x83FC" end="0x83FE" vendor="INTEL"/>
+            <unused start="0x83FC" end="0x83FD" vendor="INTEL"/>
+        <enum value="0x83FE" name="GL_CONSERVATIVE_RASTERIZATION_INTEL"/>
         <enum value="0x83FF" name="GL_TEXTURE_MEMORY_LAYOUT_INTEL"/>
     </enums>
 
@@ -41740,6 +41741,7 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_EXT_shader_implicit_conversions" supported="gles2"/>
         <extension name="GL_EXT_shader_integer_mix" supported="gl|gles2"/>
         <extension name="GL_EXT_shader_io_blocks" supported="gles2"/>
+        <extension name="GL_EXT_shader_non_constant_global_initializers" supported="gles2"/>
         <extension name="GL_EXT_shader_pixel_local_storage" supported="gles2">
             <require>
                 <enum name="GL_MAX_SHADER_PIXEL_LOCAL_STORAGE_FAST_SIZE_EXT"/>
@@ -42880,6 +42882,11 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_INGR_interlace_read" supported="gl">
             <require>
                 <enum name="GL_INTERLACE_READ_INGR"/>
+            </require>
+        </extension>
+        <extension name="GL_INTEL_conservative_rasterization" supported="gl|gles2">
+            <require>
+                <enum name="GL_CONSERVATIVE_RASTERIZATION_INTEL"/>
             </require>
         </extension>
         <extension name="GL_INTEL_fragment_shader_ordering" supported="gl"/>

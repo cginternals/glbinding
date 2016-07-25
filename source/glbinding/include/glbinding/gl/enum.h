@@ -2302,6 +2302,7 @@ enum class GLenum : unsigned int
     GL_PERFQUERY_DONOT_FLUSH_INTEL                                = 0x83F9,
     GL_PERFQUERY_FLUSH_INTEL                                      = 0x83FA,
     GL_PERFQUERY_WAIT_INTEL                                       = 0x83FB,
+    GL_CONSERVATIVE_RASTERIZATION_INTEL                           = 0x83FE,
     GL_TEXTURE_MEMORY_LAYOUT_INTEL                                = 0x83FF,
     GL_CURRENT_RASTER_NORMAL_SGIX                                 = 0x8406,
     GL_TANGENT_ARRAY_EXT                                          = 0x8439,
@@ -7617,6 +7618,7 @@ static const GLenum GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL = GLenum::GL_
 static const GLenum GL_PERFQUERY_DONOT_FLUSH_INTEL = GLenum::GL_PERFQUERY_DONOT_FLUSH_INTEL;
 static const GLenum GL_PERFQUERY_FLUSH_INTEL = GLenum::GL_PERFQUERY_FLUSH_INTEL;
 static const GLenum GL_PERFQUERY_WAIT_INTEL = GLenum::GL_PERFQUERY_WAIT_INTEL;
+static const GLenum GL_CONSERVATIVE_RASTERIZATION_INTEL = GLenum::GL_CONSERVATIVE_RASTERIZATION_INTEL;
 static const GLenum GL_TEXTURE_MEMORY_LAYOUT_INTEL = GLenum::GL_TEXTURE_MEMORY_LAYOUT_INTEL;
 static const GLenum GL_CURRENT_RASTER_NORMAL_SGIX = GLenum::GL_CURRENT_RASTER_NORMAL_SGIX;
 static const GLenum GL_TANGENT_ARRAY_EXT = GLenum::GL_TANGENT_ARRAY_EXT;

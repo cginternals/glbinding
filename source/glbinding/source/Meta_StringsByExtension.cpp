@@ -359,6 +359,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_INGR_blend_func_separate, "GL_INGR_blend_func_separate" },
     { GLextension::GL_INGR_color_clamp, "GL_INGR_color_clamp" },
     { GLextension::GL_INGR_interlace_read, "GL_INGR_interlace_read" },
+    { GLextension::GL_INTEL_conservative_rasterization, "GL_INTEL_conservative_rasterization" },
     { GLextension::GL_INTEL_fragment_shader_ordering, "GL_INTEL_fragment_shader_ordering" },
     { GLextension::GL_INTEL_framebuffer_CMAA, "GL_INTEL_framebuffer_CMAA" },
     { GLextension::GL_INTEL_map_texture, "GL_INTEL_map_texture" },
