@@ -108,7 +108,7 @@ public:
      *
      * Can either be 'GL_TRUE' or 'GL_FALSE'.
      */
-    static const std::string & getString(gl::GLboolean glboolean);
+    static const std::string & getString(const gl::GLboolean & glboolean);
     
     /**
      * @brief
