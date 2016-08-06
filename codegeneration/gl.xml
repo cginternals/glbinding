@@ -3972,18 +3972,22 @@ typedef unsigned int GLhandleARB;
         <enum value="0x825A" name="GL_PROGRAM_PIPELINE_BINDING_EXT"/>
         <enum value="0x825B" name="GL_MAX_VIEWPORTS"/>
         <enum value="0x825B" name="GL_MAX_VIEWPORTS_NV"/>
+        <enum value="0x825B" name="GL_MAX_VIEWPORTS_OES"/>
         <enum value="0x825C" name="GL_VIEWPORT_SUBPIXEL_BITS"/>
         <enum value="0x825C" name="GL_VIEWPORT_SUBPIXEL_BITS_EXT"/>
         <enum value="0x825C" name="GL_VIEWPORT_SUBPIXEL_BITS_NV"/>
+        <enum value="0x825C" name="GL_VIEWPORT_SUBPIXEL_BITS_OES"/>
         <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE"/>
         <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE_EXT"/>
         <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE_NV"/>
+        <enum value="0x825D" name="GL_VIEWPORT_BOUNDS_RANGE_OES"/>
         <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX"/>
         <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX_EXT"/>
         <enum value="0x825E" name="GL_LAYER_PROVOKING_VERTEX_OES"/>
         <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX"/>
         <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_EXT"/>
         <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_NV"/>
+        <enum value="0x825F" name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_OES"/>
         <enum value="0x8260" name="GL_UNDEFINED_VERTEX"/>
         <enum value="0x8260" name="GL_UNDEFINED_VERTEX_EXT"/>
         <enum value="0x8260" name="GL_UNDEFINED_VERTEX_OES"/>
@@ -12210,6 +12214,12 @@ typedef unsigned int GLhandleARB;
             <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
         </command>
         <command>
+            <proto>void <name>glDepthRangeArrayfvOES</name></proto>
+            <param><ptype>GLuint</ptype> <name>first</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
             <proto>void <name>glDepthRangeArrayv</name></proto>
             <param><ptype>GLuint</ptype> <name>first</name></param>
             <param><ptype>GLsizei</ptype> <name>count</name></param>
@@ -12223,6 +12233,12 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glDepthRangeIndexedfNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param><ptype>GLfloat</ptype> <name>n</name></param>
+            <param><ptype>GLfloat</ptype> <name>f</name></param>
+        </command>
+        <command>
+            <proto>void <name>glDepthRangeIndexedfOES</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param><ptype>GLfloat</ptype> <name>n</name></param>
             <param><ptype>GLfloat</ptype> <name>f</name></param>
@@ -14770,6 +14786,13 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glGetFloati_vNV</name></proto>
+            <param group="TypeEnum"><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param len="COMPSIZE(target)"><ptype>GLfloat</ptype> *<name>data</name></param>
+            <alias name="glGetFloati_v"/>
+        </command>
+        <command>
+            <proto>void <name>glGetFloati_vOES</name></proto>
             <param group="TypeEnum"><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param len="COMPSIZE(target)"><ptype>GLfloat</ptype> *<name>data</name></param>
@@ -23644,6 +23667,13 @@ typedef unsigned int GLhandleARB;
             <alias name="glScissorArrayv"/>
         </command>
         <command>
+            <proto>void <name>glScissorArrayvOES</name></proto>
+            <param><ptype>GLuint</ptype> <name>first</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param len="COMPSIZE(count)">const <ptype>GLint</ptype> *<name>v</name></param>
+            <alias name="glScissorArrayv"/>
+        </command>
+        <command>
             <proto>void <name>glScissorIndexed</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param><ptype>GLint</ptype> <name>left</name></param>
@@ -23661,12 +23691,27 @@ typedef unsigned int GLhandleARB;
             <alias name="glScissorIndexed"/>
         </command>
         <command>
+            <proto>void <name>glScissorIndexedOES</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param><ptype>GLint</ptype> <name>left</name></param>
+            <param><ptype>GLint</ptype> <name>bottom</name></param>
+            <param><ptype>GLsizei</ptype> <name>width</name></param>
+            <param><ptype>GLsizei</ptype> <name>height</name></param>
+            <alias name="glScissorIndexed"/>
+        </command>
+        <command>
             <proto>void <name>glScissorIndexedv</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param len="4">const <ptype>GLint</ptype> *<name>v</name></param>
         </command>
         <command>
             <proto>void <name>glScissorIndexedvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param len="4">const <ptype>GLint</ptype> *<name>v</name></param>
+            <alias name="glScissorIndexedv"/>
+        </command>
+        <command>
+            <proto>void <name>glScissorIndexedvOES</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param len="4">const <ptype>GLint</ptype> *<name>v</name></param>
             <alias name="glScissorIndexedv"/>
@@ -29449,12 +29494,28 @@ typedef unsigned int GLhandleARB;
             <alias name="glViewportArrayv"/>
         </command>
         <command>
+            <proto>void <name>glViewportArrayvOES</name></proto>
+            <param><ptype>GLuint</ptype> <name>first</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param len="COMPSIZE(count)">const <ptype>GLfloat</ptype> *<name>v</name></param>
+            <alias name="glViewportArrayv"/>
+        </command>
+        <command>
             <proto>void <name>glViewportIndexedf</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param><ptype>GLfloat</ptype> <name>x</name></param>
             <param><ptype>GLfloat</ptype> <name>y</name></param>
             <param><ptype>GLfloat</ptype> <name>w</name></param>
             <param><ptype>GLfloat</ptype> <name>h</name></param>
+        </command>
+        <command>
+            <proto>void <name>glViewportIndexedfOES</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param><ptype>GLfloat</ptype> <name>x</name></param>
+            <param><ptype>GLfloat</ptype> <name>y</name></param>
+            <param><ptype>GLfloat</ptype> <name>w</name></param>
+            <param><ptype>GLfloat</ptype> <name>h</name></param>
+            <alias name="glViewportIndexedf"/>
         </command>
         <command>
             <proto>void <name>glViewportIndexedfNV</name></proto>
@@ -29469,6 +29530,12 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glViewportIndexedfv</name></proto>
             <param><ptype>GLuint</ptype> <name>index</name></param>
             <param len="4">const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glViewportIndexedfvOES</name></proto>
+            <param><ptype>GLuint</ptype> <name>index</name></param>
+            <param len="4">const <ptype>GLfloat</ptype> *<name>v</name></param>
+            <alias name="glViewportIndexedfv"/>
         </command>
         <command>
             <proto>void <name>glViewportIndexedfvNV</name></proto>
@@ -45981,6 +46048,30 @@ typedef unsigned int GLhandleARB;
             <require>
                 <enum name="GL_UNSIGNED_INT_10_10_10_2_OES"/>
                 <enum name="GL_INT_10_10_10_2_OES"/>
+            </require>
+        </extension>
+        <extension name="GL_OES_viewport_array" supported="gles2">
+            <require>
+                <enum name="GL_SCISSOR_BOX"/>
+                <enum name="GL_VIEWPORT"/>
+                <enum name="GL_DEPTH_RANGE"/>
+                <enum name="GL_SCISSOR_TEST"/>
+                <enum name="GL_MAX_VIEWPORTS_OES"/>
+                <enum name="GL_VIEWPORT_SUBPIXEL_BITS_OES"/>
+                <enum name="GL_VIEWPORT_BOUNDS_RANGE_OES"/>
+                <enum name="GL_VIEWPORT_INDEX_PROVOKING_VERTEX_OES"/>
+                <command name="glViewportArrayvOES"/>
+                <command name="glViewportIndexedfOES"/>
+                <command name="glViewportIndexedfvOES"/>
+                <command name="glScissorArrayvOES"/>
+                <command name="glScissorIndexedOES"/>
+                <command name="glScissorIndexedvOES"/>
+                <command name="glDepthRangeArrayfvOES"/>
+                <command name="glDepthRangeIndexedfOES"/>
+                <command name="glGetFloati_vOES"/>
+                <command name="glEnableiOES"/>
+                <command name="glDisableiOES"/>
+                <command name="glIsEnablediOES"/>
             </require>
         </extension>
         <extension name="GL_OML_interlace" supported="gl">
