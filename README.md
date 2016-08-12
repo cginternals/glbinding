@@ -2,7 +2,7 @@
 
 ![glbinding](glbinding-logo.png)
 
-*glbinding* is a [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
+*glbinding* is an [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
 See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0) and [glbinding-2.1.1](https://github.com/cginternals/glbinding/releases/tag/v2.1.1).
 
