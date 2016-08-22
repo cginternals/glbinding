@@ -92,7 +92,7 @@ Alternatively, download the source code and commence [building from source](#bui
 For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
 Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
 ```shell
-> sudo apt-add repository ppa:cginternals/ppa
+> sudo apt-add-repository ppa:cginternals/ppa
 > sudo apt-get update
 > sudo apt-get install libglbinding-examples-glfw
 > # start example
