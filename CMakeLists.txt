@@ -104,7 +104,7 @@ if(UNIX AND SYSTEM_DIR_INSTALL)
     include(GNUInstallDirs)
     # Install into the system (/usr/bin or /usr/local/bin)
     set(INSTALL_ROOT      "share/${project}")       # /usr/[local]/share/<project>
-    set(INSTALL_CMAKE     "${CMAKE_INSTALL_LIBDIR}/cmake") # /usr/[local]/lib/<arch>/cmake/<project>
+    set(INSTALL_CMAKE     "${CMAKE_INSTALL_LIBDIR}/cmake/${project}") # /usr/[local]/lib/<arch>/cmake/<project>
     set(INSTALL_EXAMPLES  "share/${project}")       # /usr/[local]/share/<project>
     set(INSTALL_DATA      "share/${project}")       # /usr/[local]/share/<project>
     set(INSTALL_BIN       "bin")                    # /usr/[local]/bin
@@ -164,7 +164,7 @@ add_subdirectory(deploy)
 install(FILES "${PROJECT_BINARY_DIR}/VERSION" DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
 
 # Install cmake find script for the project
-install(FILES ${META_PROJECT_NAME}-config.cmake DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+install(FILES ${META_PROJECT_NAME}-config.cmake DESTINATION ${INSTALL_CMAKE} COMPONENT dev)
 
 # Install the project meta files
 install(FILES AUTHORS   DESTINATION ${INSTALL_ROOT} COMPONENT runtime)

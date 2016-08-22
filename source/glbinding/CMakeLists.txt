@@ -327,6 +327,6 @@ install(DIRECTORY
 # CMake config
 install(EXPORT ${target}-export
     NAMESPACE   ${META_PROJECT_NAME}::
-    DESTINATION ${INSTALL_CMAKE}/${target}
+    DESTINATION ${INSTALL_CMAKE}
     COMPONENT   dev
 )
