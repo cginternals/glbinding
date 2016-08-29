@@ -111,7 +111,7 @@ int main(int argc, char * argv[])
 
     if (printMarkdown)
     {
-        std::cout << "printing markdown formated results ..." << std::endl;
+        std::cout << "printing markdown formatted results ..." << std::endl;
 
         std::cout << std::endl << "|";
 
