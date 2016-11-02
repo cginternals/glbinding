@@ -26,11 +26,14 @@ using namespace gl;
   // ...
 ```
 
-###### glbinding for Enterprise
+## Professional Support
 
-Want to integrate glbinding in your software? Our team of glbinding experts will work closely with your team to help you integrate, customize, and support your glbinding setup.
+CG Internals offers R&D as well as reliable technology and innovative concepts to support your computer graphics visions. 
+We provide trainings and can help you integrate and customize glbinding in your next project.
 
-Visit [Enterprise Support and Services](https://www.cginternals.com) for more details.
+Visit [Professional Support and Services](https://www.cginternals.com) for more details.
+
+
 
 
 ## Resources
