@@ -67,12 +67,12 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 | Service | System | Compiler | Status |
 | ------- | ------ | -------- | -----: |
 |  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | OS X | Clang ? | upcoming |
+|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | macOS | Clang ? | upcoming |
 | [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu 14.04 | GCC 5.3 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
 | Jenkins <br><br><br><br> | Ubuntu 14.04 <br><br><br><br> | GCC 4.8 <br> GCC 4.9 <br> GCC 5.4 <br> Clang 3.9 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc5.4) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.9)](https://jenkins.hpi3d.de/job/glbinding-linux-clang3.9) <br> |
 | Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
 
-Please note that our OS X build node is currently broken (physically). However, *glbinding* is maintained for OS X as well and there are many people using it on OS X on a regular basis.
+Please note that our macOS build node is currently broken (physically). However, *glbinding* is maintained for macOS as well and there are many people using it on macOS on a regular basis.
 
 
 ## Install Instructions
@@ -113,9 +113,9 @@ On Arch, *glbinding* is currently provided using AUR in the package [glbinding-g
 
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
-###### OS X
+###### macOS
 
-The package manager on OS X we depend on is homebrew. The package there is called [glbinding](http://brewformulas.org/Glbinding).
+The package manager on macOS we depend on is homebrew. The package there is called [glbinding](http://brewformulas.org/Glbinding).
 To install *glbinding* using homebrew, execute the following line:
 ```shell
 > brew install glbinding
@@ -303,7 +303,7 @@ OpenGL uses a deprecation model for removing outdated parts of its API which res
 On top of that, new API concepts are suggested as extensions (often vendor specific) that might be integrated in future versions.
 All this results in many possible specific manifestations of the OpenGL API you can use in your program.
 
-One tough task is to adhere to one agreed set of functions in your own OpenGL program (e.g., OpenGL 3.2 Core if you want to develop for every Windows, OS X, and Linux released in the last 4 years). 
+One tough task is to adhere to one agreed set of functions in your own OpenGL program (e.g., OpenGL 3.2 Core if you want to develop for every Windows, macOS, and Linux released in the last 4 years). 
 *glbinding* facilitates this by providing per-feature headers by means of well-defined/generated subsets of the OpenGL API.
 
 ##### All-Features OpenGL Headers
@@ -321,7 +321,7 @@ gl::glDrawElementsInstanced(gl::GL_TRIANGLES, 18, gl::GL_UNSIGNED_BYTE, 0, m_num
 ##### Single-Feature OpenGL Headers
 
 When developing your code on Windows with latest drivers installed, the code above is likely to compile and run. 
-But if you want to port it to systems with less mature driver support (e.g., OS X or Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
+But if you want to port it to systems with less mature driver support (e.g., macOS or Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
 In this case, just switch to per-feature headers of glbinding and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms):
 ```cpp
 #include <glbinding/gl32core/gl.h>
