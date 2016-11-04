@@ -8,10 +8,8 @@ See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/rel
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
 all OpenGL symbols are real functions and variables. 
-It provides type-safe parameters, per feature API header, lazy function resolution, multi-context and multi-thread support, 
-global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
-Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) 
-*glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
+It provides type-safe parameters, per feature API header, lazy function resolution, multi-context and multi-thread support, global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
+Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
 
 ![what-is-glbinding](https://raw.githubusercontent.com/cginternals/glbinding/master/docs/what-is-glbinding-v2.png)
 
@@ -29,7 +27,7 @@ using namespace gl;
 ## Professional Support
 
 CG Internals offers computer graphics R&D as well as reliable technology and innovative concepts to support your computer graphics visions. 
-We provide trainings and can help you integrate and customize glbinding in your next project.
+We provide trainings and can help you integrate and customize *glbinding* in your next project.
 
 Visit [Professional Support and Services](https://www.cginternals.com) for more details.
 
@@ -72,7 +70,8 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 | Jenkins <br><br><br><br> | Ubuntu 14.04 <br><br><br><br> | GCC 4.8 <br> GCC 4.9 <br> GCC 5.4 <br> Clang 3.9 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc5.4) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.9)](https://jenkins.hpi3d.de/job/glbinding-linux-clang3.9) <br> |
 | Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
 
-Please note that our macOS build node is currently broken (physically). However, *glbinding* is maintained for macOS as well and there are many people using it on macOS on a regular basis.
+Please note that our macOS build node is currently broken (physically). 
+However, *glbinding* is maintained for macOS as well and there are many people using it on macOS on a regular basis.
 
 
 ## Install Instructions
@@ -83,7 +82,7 @@ For systems providing package managers, we generally strive for packages in thes
 
 ###### Windows
 
-The various glbinding packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-runtime.zip),
+The various *glbinding* packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-runtime.zip),
 [examples](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-examples.zip),
 [dev](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-dev.zip), and
 [tools](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-tools.zip).
@@ -101,7 +100,7 @@ Using the current PPA as example, the following lines install *glbinding* includ
 > # start example
 > /usr/share/glbinding/cubescape
 ```
-To use glbinding as dependency, install the development package:
+To use *glbinding* as dependency, install the development package:
 ```shell
 > sudo apt-get install libglbinding-dev libglbinding-dbg
 ```
@@ -125,15 +124,17 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ###### Debian-based Systems
 
-There is currently no precompiled package maintained. Please download the source code and commence [building from source](#build-instructions).
+There is currently no precompiled package maintained. 
+Please download the source code and commence [building from source](#build-instructions).
 
 
 ## Build Instructions
 
 ##### Prerequisites and Dependencies
 
-The only mandatory run-time dependencies of glbinding are the STL of the used compiler and an OpenGL driver library, dynamically linked with your application. However, compiling *glbinding* requires the following required and optional dependencies:
-* [CMake](https://cmake.org/) 3.0 or higher for building glbinding from source (mandatory for any build from source)
+The only mandatory run-time dependencies of *glbinding* are the STL of the used compiler and an OpenGL driver library, dynamically linked with your application. 
+Building *glbinding* from source has several mandatory and optional dependencies:
+* [CMake](https://cmake.org/) 3.0 or higher for building *glbinding* from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
   * [SVN](https://subversion.apache.org/) for updating the ```gl.xml```
@@ -154,7 +155,7 @@ First, download the source code [as archive](https://github.com/cginternals/glbi
 > git clone https://github.com/cginternals/glbinding.git
 > cd glbinding
 ```
-Then, depending on the version of glbinding you want to build, choose the appropriate tag or branch, e.g., for the 2.1.1 release:
+Then, depending on the version of *glbinding* you want to build, choose the appropriate tag or branch, e.g., for the 2.1.1 release:
 ```shell
 > git fetch --tags
 > git checkout v2.1.1
@@ -182,7 +183,7 @@ In order to compile the project, either use you favorite Editor/IDE with the cre
 
 ##### Generating/Updating the Binding Manually
 
-For updating the ```gl.xml``` and the resulting glbinding interfaces python scripts are provided in ```codegeneration``` directory.
+For updating the ```gl.xml``` and the resulting *glbinding* interfaces python scripts are provided in ```codegeneration``` directory.
 An additional ```patch.xml``` is used to resolve possible conflicts or missing specifications (with the ongoing development of the xml-based OpenGL API specification this could become obsolete in the future).
 For ease-of-use, the update and generation can be triggered using the generated build targets ```update``` and ```generate```.
 
@@ -191,7 +192,7 @@ For ease-of-use, the update and generation can be triggered using the generated 
 
 ## Tips for Linking
 
-We suggest using the build system of glbinding for a smooth integration: [CMake](https://cmake.org/)
+We suggest using the build system of *glbinding* for a smooth integration: [CMake](https://cmake.org/)
 For it, *glbinding* provides a find configuration script that should be installed into your system or at least accessible by CMake. 
 In the projects CMakeLists.txt, add one of the following lines:
 ```
@@ -209,7 +210,7 @@ target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
 
 ## Basic Example
 
-*glbinding* has to be initialized once on the active OpenGL context you want to use glbinding with. 
+*glbinding* has to be initialized once on the active OpenGL context you want to use *glbinding* with. 
 In the most basic case, you call ```glbinding::Binding::initialize``` once:
 
 ```cpp
@@ -230,7 +231,8 @@ int main()
 }
 ```
 
-This example is valid for applications that uses one context in one thread. For multiple context or multi-threaded usage refer to [Multi-Context](..)
+This example is valid for applications that uses one context in one thread. 
+For multiple context or multi-threaded usage refer to [Multi-Context](..)
 
 
 
@@ -241,14 +243,15 @@ This example is valid for applications that uses one context in one thread. For 
 
 The original OpenGL API provides several concepts in their interface, namely functions, booleans, bitfields, enums, as well as special values and basic types but mostly does not differentiate between these types.
 Hence, actuall knowledge about each function, its parameters and their ranges is required; there is no way for a basic code assistance. 
-As glbinding differentiates between all these types, IDEs and compilers can detect wrong usages of the OpenGL API.
+As *glbinding* differentiates between all these types, IDEs and compilers can detect wrong usages of the OpenGL API.
 
 One example is the passing of a named constant in places where a bit combination is expected:
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT); // valid
 glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
 ```
-In the case of bitfields, the OpenGL API offers groups and each parameter states the group valid values must come from. *glbinding* uses this information to prevent invalid bit combinations:
+In the case of bitfields, the OpenGL API offers groups and each parameter states the group valid values must come from. 
+*glbinding* uses this information to prevent invalid bit combinations:
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
@@ -258,7 +261,7 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
                                                     // resulting group does not match the expected.
 ```
 Unfortunately, such groups are incomplete and unmaintained for enums (named values). 
-Thus, glbinding could not provide any assistance for cases such as:
+Thus, *glbinding* could not provide any assistance for cases such as:
 ```cpp
 GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER); // All good
 GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error but a runtime error!
@@ -322,7 +325,7 @@ gl::glDrawElementsInstanced(gl::GL_TRIANGLES, 18, gl::GL_UNSIGNED_BYTE, 0, m_num
 
 When developing your code on Windows with latest drivers installed, the code above is likely to compile and run. 
 But if you want to port it to systems with less mature driver support (e.g., macOS or Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
-In this case, just switch to per-feature headers of glbinding and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms):
+In this case, just switch to per-feature headers of *glbinding* and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms):
 ```cpp
 #include <glbinding/gl32core/gl.h>
 
@@ -392,14 +395,15 @@ However, we strongly discourage the use of one context in multiple threads.
 
 ### Function Callbacks
 
-To support orthogonal features of the OpenGL API, glbinding allows to attach a number of callbacks to several concepts of the OpenGL API (e.g. a function). Such orthogonal features include runtime error checking (i.e., ```glGetError``` after each function call), logging, and caching of driver information.
+To support orthogonal features of the OpenGL API, glbinding allows to attach a number of callbacks to several concepts of the OpenGL API (e.g. a function). 
+Such orthogonal features include runtime error checking (i.e., ```glGetError``` after each function call), logging, and caching of driver information.
 
 *glbinding* supports different types of callbacks that can be registered.
 The main types are
  * global and local (per-function) before callbacks, that are called before the OpenGL function call,
  * global and local (per-function) after callbacks, that are called after the OpenGL function call,
  * unresolved callbacks, that are called each time an unresolved OpenGL function should be called (instead of a segmentation fault),
- * context switch callbacks, that are called if the internal current OpenGL context of glbinding is changed.
+ * context switch callbacks, that are called if the internal current OpenGL context of *glbinding* is changed.
 
 The before callbacks are useful , e.g., for tracing or application-specific parameter checking.
 The available informations in this callback are the wrapped OpenGL function (including its name and bound function address) and all parameters.
@@ -454,7 +458,7 @@ The OpenGL API is designed without function overloading using only simple parame
 This results in explicit parameter encoding in function names for conceptually overloaded functions (e.g., glTexParameteri and glTexParameterf). 
 Another design decision for the OpenGL API is the high similarity of the integer, boolean, enum, and bitfield data types. 
 This means, that for *overloaded* functions, there is no separate function for ```GLboolean```, ```GLenum```, and ```GLbitfield``` types. 
-Using type-save functions of glbinding, some typically compiling code constructs are now deliberately broken. 
+Using type-save functions of *glbinding*, some typically compiling code constructs are now deliberately broken. 
 For most of those cases we provide alternative *overloaded* function signatures. 
 Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
 
