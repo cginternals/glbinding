@@ -101,14 +101,15 @@ endif()
 
 # Installation paths
 if(UNIX AND SYSTEM_DIR_INSTALL)
+    include(GNUInstallDirs)
     # Install into the system (/usr/bin or /usr/local/bin)
     set(INSTALL_ROOT      "share/${project}")       # /usr/[local]/share/<project>
-    set(INSTALL_CMAKE     "share/${project}/cmake") # /usr/[local]/share/<project>/cmake
+    set(INSTALL_CMAKE     "${CMAKE_INSTALL_LIBDIR}/cmake/${project}") # /usr/[local]/lib/<arch>/cmake/<project>
     set(INSTALL_EXAMPLES  "share/${project}")       # /usr/[local]/share/<project>
     set(INSTALL_DATA      "share/${project}")       # /usr/[local]/share/<project>
     set(INSTALL_BIN       "bin")                    # /usr/[local]/bin
-    set(INSTALL_SHARED    "lib")                    # /usr/[local]/lib
-    set(INSTALL_LIB       "lib")                    # /usr/[local]/lib
+    set(INSTALL_SHARED    "${CMAKE_INSTALL_LIBDIR}") # /usr/[local]/lib/<arch>
+    set(INSTALL_LIB       "${CMAKE_INSTALL_LIBDIR}") # /usr/[local]/lib/<arch>
     set(INSTALL_INCLUDE   "include")                # /usr/[local]/include
     set(INSTALL_DOC       "share/doc/${project}")   # /usr/[local]/share/doc/<project>
     set(INSTALL_SHORTCUTS "share/applications")     # /usr/[local]/share/applications
@@ -163,7 +164,7 @@ add_subdirectory(deploy)
 install(FILES "${PROJECT_BINARY_DIR}/VERSION" DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
 
 # Install cmake find script for the project
-install(FILES ${META_PROJECT_NAME}-config.cmake DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+install(FILES ${META_PROJECT_NAME}-config.cmake DESTINATION ${INSTALL_CMAKE} COMPONENT dev)
 
 # Install the project meta files
 install(FILES AUTHORS   DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
