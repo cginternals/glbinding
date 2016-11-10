@@ -19,7 +19,7 @@ endif()
 
 set(DEFAULT_PROJECT_OPTIONS
     DEBUG_POSTFIX             "d"
-    CXX_STANDARD              11
+    CXX_STANDARD              11 # Not available before CMake 3.1; see below for manual command line argument addition
     LINKER_LANGUAGE           "CXX"
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET     "hidden"
@@ -74,8 +74,9 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
 
         /wd4251       # -> disable warning: 'identifier': class 'type' needs to have dll-interface to be used by clients of class 'type2'
         /wd4592       # -> disable warning: 'identifier': symbol will be dynamically initialized (implementation limitation)
+        # /wd4201     # -> disable warning: nonstandard extension used: nameless struct/union (caused by GLM)
         /wd4127       # -> disable warning: conditional expression is constant (caused by Qt)
-
+        
         #$<$<CONFIG:Debug>:
         #/RTCc         # -> value is assigned to a smaller data type and results in a data loss
         #>
@@ -86,11 +87,11 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         /GL           # -> whole program optimization: enable link-time code generation (disables Zi)
         /GF           # -> enable string pooling
         >
+        
+        # No manual c++11 enable for MSVC as all supported MSVC versions for cmake-init have C++11 implicitly enabled (MSVC >=2013)
 
-    PUBLIC
-
+        PUBLIC
     )
-
 endif ()
 
 # GCC and Clang compiler options
@@ -121,7 +122,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
                 -Wreturn-local-addr
             >
         >
-
+        
         $<$<CXX_COMPILER_ID:Clang>:
             -Wpedantic
             
@@ -131,7 +132,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
         $<$<PLATFORM_ID:Darwin>:
             -pthread
         >
-
+        
+        # Required for CMake < 3.1; should be removed if minimum required CMake version is raised.
         $<$<VERSION_LESS:${CMAKE_VERSION},3.1>:
             -std=c++11
         >
