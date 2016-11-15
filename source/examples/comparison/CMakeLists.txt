@@ -106,6 +106,7 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
+    GLFW_INCLUDE_NONE
 )
 
 

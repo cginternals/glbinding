@@ -3,8 +3,6 @@
 # External dependencies
 # 
 
-find_package(GLFW)
-
 
 # 
 # Executable name and options
@@ -12,12 +10,6 @@ find_package(GLFW)
 
 # Target name
 set(target glmeta)
-
-# Exit here if required dependencies are not met
-if (NOT GLFW_FOUND)
-    message("Tool ${target} skipped: GLFW not found")
-    return()
-endif()
 
 message(STATUS "Tool ${target}")
 
@@ -64,7 +56,6 @@ target_include_directories(${target}
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
     SYSTEM
-    ${GLFW_INCLUDE_DIR}
 )
 
 
@@ -75,7 +66,6 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    ${GLFW_LIBRARIES}
     ${META_PROJECT_NAME}::glbinding
 )
 
