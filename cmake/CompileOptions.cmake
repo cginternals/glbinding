@@ -115,6 +115,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
         
         $<$<CXX_COMPILER_ID:GNU>:
             -Wmaybe-uninitialized
+        
+            -Wno-unknown-pragmas
             
             $<$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,4.8>:
                 -Wpedantic
