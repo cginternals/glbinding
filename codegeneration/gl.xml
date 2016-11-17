@@ -2412,6 +2412,7 @@ typedef unsigned int GLhandleARB;
         <enum value="1" name="GL_TRUE"/>
         <enum value="1" name="GL_ONE"/>
         <enum value="0xFFFFFFFF" name="GL_INVALID_INDEX" type="u" comment="Tagged as uint"/>
+        <enum value="0xFFFFFFFF" name="GL_ALL_PIXELS_AMD"/>
         <enum value="0xFFFFFFFFFFFFFFFF" name="GL_TIMEOUT_IGNORED" type="ull" comment="Tagged as uint64"/>
         <enum value="0xFFFFFFFFFFFFFFFF" name="GL_TIMEOUT_IGNORED_APPLE" type="ull" comment="Tagged as uint64"/>
         <enum value="1" name="GL_VERSION_ES_CL_1_0" comment="Not an API enum. API definition macro for ES 1.0/1.1 headers"/>
@@ -8030,7 +8031,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x91A9" name="GL_SPARSE_TEXTURE_FULL_ARRAY_CUBE_MIPMAPS_EXT"/>
         <enum value="0x91AA" name="GL_NUM_SPARSE_LEVELS_ARB"/>
         <enum value="0x91AA" name="GL_NUM_SPARSE_LEVELS_EXT"/>
-            <unused start="0x91AB" end="0x91AF" vendor="AMD"/>
+            <unused start="0x91AB" end="0x91AD" vendor="AMD"/>
+        <enum value="0x91AE" name="GL_PIXELS_PER_SAMPLE_PATTERN_X_AMD"/>
+        <enum value="0x91AF" name="GL_PIXELS_PER_SAMPLE_PATTERN_Y_AMD"/>
         <enum value="0x91B0" name="GL_MAX_SHADER_COMPILER_THREADS_ARB"/>
         <enum value="0x91B1" name="GL_COMPLETION_STATUS_ARB"/>
             <unused start="0x91B2" end="0x91B8" vendor="AMD"/>
@@ -13725,6 +13728,13 @@ typedef unsigned int GLhandleARB;
             <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
         </command>
         <command>
+            <proto>void <name>glFramebufferSamplePositionsfvAMD</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLuint</ptype> <name>numsamples</name></param>
+            <param><ptype>GLuint</ptype> <name>pixelindex</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>values</name></param>
+        </command>
+        <command>
             <proto>void <name>glFramebufferTexture</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLenum</ptype> <name>attachment</name></param>
@@ -14927,6 +14937,15 @@ typedef unsigned int GLhandleARB;
             <param len="COMPSIZE(pname)"><ptype>GLint</ptype> *<name>params</name></param>
         </command>
         <command>
+            <proto>void <name>glGetFramebufferParameterfvAMD</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLuint</ptype> <name>numsamples</name></param>
+            <param><ptype>GLuint</ptype> <name>pixelindex</name></param>
+            <param><ptype>GLsizei</ptype> <name>size</name></param>
+            <param><ptype>GLfloat</ptype> *<name>values</name></param>
+        </command>
+        <command>
             <proto>void <name>glGetFramebufferParameteriv</name></proto>
             <param><ptype>GLenum</ptype> <name>target</name></param>
             <param><ptype>GLenum</ptype> <name>pname</name></param>
@@ -15501,6 +15520,15 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLintptr</ptype> <name>offset</name></param>
             <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
             <param len="COMPSIZE(size)">void *<name>data</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGetNamedFramebufferParameterfvAMD</name></proto>
+            <param><ptype>GLenum</ptype> <name>framebuffer</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLuint</ptype> <name>numsamples</name></param>
+            <param><ptype>GLuint</ptype> <name>pixelindex</name></param>
+            <param><ptype>GLsizei</ptype> <name>size</name></param>
+            <param><ptype>GLfloat</ptype> *<name>values</name></param>
         </command>
         <command>
             <proto>void <name>glGetNamedFramebufferAttachmentParameteriv</name></proto>
@@ -20239,6 +20267,13 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>attachment</name></param>
             <param><ptype>GLuint</ptype> <name>texture</name></param>
             <param><ptype>GLint</ptype> <name>level</name></param>
+        </command>
+        <command>
+            <proto>void <name>glNamedFramebufferSamplePositionsfvAMD</name></proto>
+            <param><ptype>GLuint</ptype> <name>framebuffer</name></param>
+            <param><ptype>GLuint</ptype> <name>numsamples</name></param>
+            <param><ptype>GLuint</ptype> <name>pixelindex</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>values</name></param>
         </command>
         <command>
             <proto>void <name>glNamedFramebufferTexture1DEXT</name></proto>
@@ -36592,6 +36627,18 @@ typedef unsigned int GLhandleARB;
                 <command name="glBlendFuncSeparateIndexedAMD"/>
                 <command name="glBlendEquationIndexedAMD"/>
                 <command name="glBlendEquationSeparateIndexedAMD"/>
+            </require>
+        </extension>
+        <extension name="GL_AMD_framebuffer_sample_positions" supported="disabled">
+            <require>
+                <enum name="GL_SUBSAMPLE_DISTANCE_AMD"/>
+                <enum name="GL_PIXELS_PER_SAMPLE_PATTERN_X_AMD"/>
+                <enum name="GL_PIXELS_PER_SAMPLE_PATTERN_Y_AMD"/>
+                <enum name="GL_ALL_PIXELS_AMD"/>
+                <command name="glFramebufferSamplePositionsfvAMD"/>
+                <command name="glNamedFramebufferSamplePositionsfvAMD"/>
+                <command name="glGetFramebufferParameterfvAMD"/>
+                <command name="glGetNamedFramebufferParameterfvAMD"/>
             </require>
         </extension>
         <extension name="GL_AMD_gcn_shader" supported="gl"/>
