@@ -36770,7 +36770,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glQueryObjectParameteruiAMD"/>
             </require>
         </extension>
-        <extension name="GL_AMD_performance_monitor" supported="gl|gles2">
+        <extension name="GL_AMD_performance_monitor" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_COUNTER_TYPE_AMD"/>
                 <enum name="GL_COUNTER_RANGE_AMD"/>
@@ -37073,7 +37073,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glGetObjectParameterivAPPLE"/>
             </require>
         </extension>
-        <extension name="GL_APPLE_rgb_422" supported="gl|gles2">
+        <extension name="GL_APPLE_rgb_422" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_RGB_422_APPLE"/>
                 <enum name="GL_UNSIGNED_SHORT_8_8_APPLE"/>
@@ -39080,7 +39080,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glTexPageCommitmentARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_sparse_texture2" supported="gl|gles2"/>
+        <extension name="GL_ARB_sparse_texture2" supported="gl|glcore|gles2"/>
         <extension name="GL_ARB_sparse_texture_clamp" supported="gl"/>
         <extension name="GL_ARB_stencil_texturing" supported="gl|glcore">
             <require>
@@ -40680,7 +40680,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glCullParameterfvEXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_debug_label" supported="gl|gles2">
+        <extension name="GL_EXT_debug_label" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_PROGRAM_PIPELINE_OBJECT_EXT"/>
                 <enum name="GL_PROGRAM_OBJECT_EXT"/>
@@ -40696,7 +40696,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_TRANSFORM_FEEDBACK"/>
             </require>
         </extension>
-        <extension name="GL_EXT_debug_marker" supported="gl|gles2">
+        <extension name="GL_EXT_debug_marker" supported="gl|glcore|gles2">
             <require>
                 <command name="glInsertEventMarkerEXT"/>
                 <command name="glPushGroupMarkerEXT"/>
@@ -41191,7 +41191,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glMultiDrawElementsBaseVertexEXT" comment="Supported only if GL_EXT_multi_draw_arrays is supported"/>
             </require>
         </extension>
-        <extension name="GL_EXT_draw_instanced" supported="gl|gles2">
+        <extension name="GL_EXT_draw_instanced" supported="gl|glcore|gles2">
             <require>
                 <command name="glDrawArraysInstancedEXT"/>
                 <command name="glDrawElementsInstancedEXT"/>
@@ -41702,13 +41702,13 @@ typedef unsigned int GLhandleARB;
                 <command name="glPolygonOffsetEXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_polygon_offset_clamp" supported="gl|gles2">
+        <extension name="GL_EXT_polygon_offset_clamp" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_POLYGON_OFFSET_CLAMP_EXT"/>
                 <command name="glPolygonOffsetClampEXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_post_depth_coverage" supported="gl|gles2"/>
+        <extension name="GL_EXT_post_depth_coverage" supported="gl|glcore|gles2"/>
         <extension name="GL_EXT_primitive_bounding_box" supported="gles2">
             <require>
                 <enum name="GL_PRIMITIVE_BOUNDING_BOX_EXT"/>
@@ -41740,7 +41740,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COMPRESSED_SRGB_ALPHA_PVRTC_4BPPV2_IMG"/>
             </require>
         </extension>
-        <extension name="GL_EXT_raster_multisample" supported="gl|gles2">
+        <extension name="GL_EXT_raster_multisample" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_RASTER_MULTISAMPLE_EXT"/>
                 <enum name="GL_RASTER_SAMPLES_EXT"/>
@@ -41832,7 +41832,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glSecondaryColorPointerEXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_separate_shader_objects" supported="gl|gles2">
+        <extension name="GL_EXT_separate_shader_objects" supported="gl|glcore|gles2">
             <require api="gl" comment="The OpenGL version of this extension is completely unrelated to the OpenGL ES version">
                 <enum name="GL_ACTIVE_PROGRAM_EXT"/>
                 <command name="glUseShaderProgramEXT"/>
@@ -41971,7 +41971,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_EXT_shader_implicit_conversions" supported="gles2"/>
-        <extension name="GL_EXT_shader_integer_mix" supported="gl|gles2"/>
+        <extension name="GL_EXT_shader_integer_mix" supported="gl|glcore|gles2"/>
         <extension name="GL_EXT_shader_io_blocks" supported="gles2"/>
         <extension name="GL_EXT_shader_non_constant_global_initializers" supported="gles2"/>
         <extension name="GL_EXT_shader_pixel_local_storage" supported="gles2">
@@ -42250,7 +42250,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_texture_compression_s3tc" supported="gl|gles2|glsc2">
+        <extension name="GL_EXT_texture_compression_s3tc" supported="gl|glcore|gles2|glsc2">
             <require>
                 <enum name="GL_COMPRESSED_RGB_S3TC_DXT1_EXT"/>
                 <enum name="GL_COMPRESSED_RGBA_S3TC_DXT1_EXT"/>
@@ -42325,7 +42325,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_texture_filter_minmax" supported="gl|gles2">
+        <extension name="GL_EXT_texture_filter_minmax" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_RASTER_MULTISAMPLE_EXT"/>
                 <enum name="GL_RASTER_SAMPLES_EXT"/>
@@ -42484,7 +42484,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SRG8_EXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_texture_sRGB_decode" supported="gl|gles2">
+        <extension name="GL_EXT_texture_sRGB_decode" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_TEXTURE_SRGB_DECODE_EXT"/>
                 <enum name="GL_DECODE_EXT"/>
@@ -42879,7 +42879,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glVertexWeightPointerEXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_window_rectangles" supported="gl|gles2">
+        <extension name="GL_EXT_window_rectangles" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_INCLUSIVE_EXT"/>
                 <enum name="GL_EXCLUSIVE_EXT"/>
@@ -43126,13 +43126,13 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_INTERLACE_READ_INGR"/>
             </require>
         </extension>
-        <extension name="GL_INTEL_conservative_rasterization" supported="gl|gles2">
+        <extension name="GL_INTEL_conservative_rasterization" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_CONSERVATIVE_RASTERIZATION_INTEL"/>
             </require>
         </extension>
         <extension name="GL_INTEL_fragment_shader_ordering" supported="gl"/>
-        <extension name="GL_INTEL_framebuffer_CMAA" supported="gl|gles2">
+        <extension name="GL_INTEL_framebuffer_CMAA" supported="gl|glcore|gles2">
             <require>
                 <command name="glApplyFramebufferAttachmentCMAAINTEL"/>
             </require>
@@ -43161,7 +43161,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glTexCoordPointervINTEL"/>
             </require>
         </extension>
-        <extension name="GL_INTEL_performance_query" supported="gl|gles2">
+        <extension name="GL_INTEL_performance_query" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_PERFQUERY_SINGLE_CONTEXT_INTEL"/>
                 <enum name="GL_PERFQUERY_GLOBAL_CONTEXT_INTEL"/>
@@ -43195,7 +43195,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glGetPerfQueryInfoINTEL"/>
             </require>
         </extension>
-        <extension name="GL_KHR_blend_equation_advanced" supported="gl|gles2">
+        <extension name="GL_KHR_blend_equation_advanced" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_MULTIPLY_KHR"/>
                 <enum name="GL_SCREEN_KHR"/>
@@ -43215,7 +43215,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glBlendBarrierKHR"/>
             </require>
         </extension>
-        <extension name="GL_KHR_blend_equation_advanced_coherent" supported="gl|gles2">
+        <extension name="GL_KHR_blend_equation_advanced_coherent" supported="gl|glcore|gles2">
             <require comment="Otherwise identical to GL_KHR_blend_equation_advanced, just different semantic behavior">
                 <enum name="GL_BLEND_ADVANCED_COHERENT_KHR"/>
             </require>
@@ -43530,7 +43530,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glMultiDrawElementsIndirectBindlessCountNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_bindless_texture" supported="gl|gles2">
+        <extension name="GL_NV_bindless_texture" supported="gl|glcore|gles2">
             <require>
                 <command name="glGetTextureHandleNV"/>
                 <command name="glGetTextureSamplerHandleNV"/>
@@ -43547,7 +43547,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glIsImageHandleResidentNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_blend_equation_advanced" supported="gl|gles2">
+        <extension name="GL_NV_blend_equation_advanced" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_BLEND_OVERLAP_NV"/>
                 <enum name="GL_BLEND_PREMULTIPLIED_SRC_NV"/>
@@ -43604,7 +43604,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glBlendBarrierNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_blend_equation_advanced_coherent" supported="gl|gles2">
+        <extension name="GL_NV_blend_equation_advanced_coherent" supported="gl|glcore|gles2">
             <require comment="Otherwise identical to GL_NV_blend_equation_advanced, just different semantic behavior">
                 <enum name="GL_BLEND_ADVANCED_COHERENT_NV"/>
             </require>
@@ -43664,7 +43664,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COMPUTE_PROGRAM_PARAMETER_BUFFER_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_conditional_render" supported="gl|gles2">
+        <extension name="GL_NV_conditional_render" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_QUERY_WAIT_NV"/>
                 <enum name="GL_QUERY_NO_WAIT_NV"/>
@@ -43674,7 +43674,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glEndConditionalRenderNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_conservative_raster" supported="gl|gles2">
+        <extension name="GL_NV_conservative_raster" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_CONSERVATIVE_RASTERIZATION_NV"/>
                 <enum name="GL_SUBPIXEL_PRECISION_BIAS_X_BITS_NV"/>
@@ -43691,7 +43691,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glConservativeRasterParameterfNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_conservative_raster_pre_snap_triangles" supported="gl|gles2">
+        <extension name="GL_NV_conservative_raster_pre_snap_triangles" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_CONSERVATIVE_RASTER_MODE_NV"/>
                 <enum name="GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV"/>
@@ -43899,7 +43899,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glSetFenceNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_fill_rectangle" supported="gl|gles2">
+        <extension name="GL_NV_fill_rectangle" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_FILL_RECTANGLE_NV"/>
             </require>
@@ -43931,7 +43931,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_EYE_PLANE"/>
             </require>
         </extension>
-        <extension name="GL_NV_fragment_coverage_to_color" supported="gl|gles2">
+        <extension name="GL_NV_fragment_coverage_to_color" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_FRAGMENT_COVERAGE_TO_COLOR_NV"/>
                 <enum name="GL_FRAGMENT_COVERAGE_COLOR_NV"/>
@@ -43967,7 +43967,7 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_NV_fragment_program4" supported="gl"/>
         <extension name="GL_NV_fragment_program_option" supported="gl"/>
-        <extension name="GL_NV_fragment_shader_interlock" supported="gl|gles2"/>
+        <extension name="GL_NV_fragment_shader_interlock" supported="gl|glcore|gles2"/>
         <extension name="GL_NV_framebuffer_blit" supported="gles2">
             <require>
                 <enum name="GL_READ_FRAMEBUFFER_NV"/>
@@ -43977,7 +43977,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glBlitFramebufferNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_framebuffer_mixed_samples" supported="gl|gles2">
+        <extension name="GL_NV_framebuffer_mixed_samples" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_RASTER_MULTISAMPLE_EXT"/>
                 <enum name="GL_COVERAGE_MODULATION_TABLE_NV"/>
@@ -44042,7 +44042,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_NV_geometry_shader4" supported="gl"/>
-        <extension name="GL_NV_geometry_shader_passthrough" supported="gl|gles2"/>
+        <extension name="GL_NV_geometry_shader_passthrough" supported="gl|glcore|gles2"/>
         <extension name="GL_NV_gpu_program4" supported="gl">
             <require>
                 <enum name="GL_MIN_PROGRAM_TEXEL_OFFSET_NV"/>
@@ -44086,7 +44086,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_NV_gpu_program5_mem_extended" supported="gl"/>
-        <extension name="GL_NV_gpu_shader5" supported="gl|gles2">
+        <extension name="GL_NV_gpu_shader5" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_INT64_NV"/>
                 <enum name="GL_UNSIGNED_INT64_NV"/>
@@ -44212,7 +44212,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glVertexAttribDivisorNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_internalformat_sample_query" supported="gl|gles2">
+        <extension name="GL_NV_internalformat_sample_query" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_RENDERBUFFER"/>
                 <enum name="GL_TEXTURE_2D_MULTISAMPLE"/>
@@ -44291,7 +44291,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_NV_parameter_buffer_object2" supported="gl"/>
-        <extension name="GL_NV_path_rendering" supported="gl|gles2">
+        <extension name="GL_NV_path_rendering" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_PATH_FORMAT_SVG_NV"/>
                 <enum name="GL_PATH_FORMAT_PS_NV"/>
@@ -44531,7 +44531,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FRAGMENT_INPUT_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_path_rendering_shared_edge" supported="gl|gles2">
+        <extension name="GL_NV_path_rendering_shared_edge" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_SHARED_EDGE_NV"/>
             </require>
@@ -44701,7 +44701,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_ETC1_SRGB8_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_sample_locations" supported="gl|gles2">
+        <extension name="GL_NV_sample_locations" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_SAMPLE_LOCATION_SUBPIXEL_BITS_NV"/>
                 <enum name="GL_SAMPLE_LOCATION_PIXEL_GRID_WIDTH_NV"/>
@@ -44716,11 +44716,11 @@ typedef unsigned int GLhandleARB;
                 <command name="glResolveDepthValuesNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_sample_mask_override_coverage" supported="gl|gles2"/>
+        <extension name="GL_NV_sample_mask_override_coverage" supported="gl|glcore|gles2"/>
         <extension name="GL_NV_shader_atomic_counters" supported="gl"/>
         <extension name="GL_NV_shader_atomic_float" supported="gl"/>
         <extension name="GL_NV_shader_atomic_float64" supported="gl"/>
-        <extension name="GL_NV_shader_atomic_fp16_vector" supported="gl|gles2"/>
+        <extension name="GL_NV_shader_atomic_fp16_vector" supported="gl|glcore|gles2"/>
         <extension name="GL_NV_shader_atomic_int64" supported="gl"/>
         <extension name="GL_NV_shader_buffer_load" supported="gl">
             <require>
@@ -45378,8 +45378,8 @@ typedef unsigned int GLhandleARB;
                 <command name="glIsEnablediNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_viewport_array2" supported="gl|gles2"/>
-        <extension name="GL_NV_viewport_swizzle" supported="gl|gles2">
+        <extension name="GL_NV_viewport_array2" supported="gl|glcore|gles2"/>
+        <extension name="GL_NV_viewport_swizzle" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_VIEWPORT_SWIZZLE_POSITIVE_X_NV"/>
                 <enum name="GL_VIEWPORT_SWIZZLE_NEGATIVE_X_NV"/>
@@ -46271,7 +46271,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FORMAT_SUBSAMPLE_244_244_OML"/>
             </require>
         </extension>
-        <extension name="GL_OVR_multiview" supported="gl|gles2">
+        <extension name="GL_OVR_multiview" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR"/>
                 <enum name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR"/>
@@ -46280,7 +46280,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glFramebufferTextureMultiviewOVR"/>
             </require>
         </extension>
-        <extension name="GL_OVR_multiview2" supported="gl|gles2"/>
+        <extension name="GL_OVR_multiview2" supported="gl|glcore|gles2"/>
         <extension name="GL_OVR_multiview_multisampled_render_to_texture" supported="gles2">
             <require>
                 <command name="glFramebufferTextureMultisampleMultiviewOVR"/>
