@@ -198,7 +198,7 @@ set_target_properties(${target}
     ${DEFAULT_PROJECT_OPTIONS}
     FOLDER "${IDE_FOLDER}"
     VERSION ${META_VERSION}
-    SOVERSION 0
+    SOVERSION ${META_VERSION_MAJOR}
 )
 
 
