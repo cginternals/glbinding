@@ -161,12 +161,26 @@ namespace glbinding
 
 std::string ContextInfo::renderer()
 {
-    return std::string{reinterpret_cast<const char *>(glGetString(GL_RENDERER))};
+    auto s = reinterpret_cast<const char *>(glGetString(GL_RENDERER));
+
+    if (!s)
+    {
+        return "";
+    }
+
+    return std::string{ s };
 }
 
 std::string ContextInfo::vendor()
 {
-    return std::string{reinterpret_cast<const char *>(glGetString(GL_VENDOR))};
+    auto s = reinterpret_cast<const char *>(glGetString(GL_VENDOR));
+
+    if (!s)
+    {
+        return "";
+    }
+
+    return std::string{ s };
 }
 
 Version ContextInfo::version()
