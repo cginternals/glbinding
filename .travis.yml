@@ -26,7 +26,7 @@ matrix:
 before_install:
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev; fi
   - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install qt5; fi
 
 before_script:
