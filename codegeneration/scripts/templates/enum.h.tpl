@@ -14,10 +14,10 @@ enum class GLenum : unsigned int
 
 {{#items}}
 {{#isPrimary}}
-    {{item.identifier}}{{item.spaces}} = {{#item.cast}}static_cast<unsigned int>({{/item.cast}}{{item.value}}{{#item.cast}}){{/item.cast}},
+    {{item.identifier}}{{item.spaces}} = {{#item.cast}}static_cast<unsigned int>({{/item.cast}}{{item.value}}{{#item.cast}}){{/item.cast}},{{#item.decimalValue}} // decimal value: {{item.decimalValue}}{{/item.decimalValue}}
 {{/isPrimary}}
 {{#isSecondary}}
-//  {{item.identifier}}{{item.spaces}} = {{#item.cast}}static_cast<unsigned int>({{/item.cast}}{{item.value}}{{#item.cast}}){{/item.cast}}, // reuse {{item.primaryGroup}}
+//  {{item.identifier}}{{item.spaces}} = {{#item.cast}}static_cast<unsigned int>({{/item.cast}}{{item.value}}{{#item.cast}}){{/item.cast}}, // reuse {{item.primaryGroup}}{{#item.decimalValue}}, decimal value: {{item.decimalValue}}{{/item.decimalValue}}
 {{/isSecondary}}
 {{/items}}
 

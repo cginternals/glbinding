@@ -13,6 +13,7 @@ def genEnumContexts(allEnums):
         enumContexts.append({"identifier": enumBID(enum),
                              "name": enum.name,
                              "value": enum.value,
+                             "decimalValue": int(enum.value, 0) if enum.value.startswith("0x") else "",
                              "cast": enum.value.startswith("-"),
                              "spaces": " " * (maxLength - len(enumBID(enum))),
                              "groups": groups,
