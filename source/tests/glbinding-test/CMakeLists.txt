@@ -4,6 +4,7 @@
 # 
 
 find_package(GLFW)
+find_package(${META_PROJECT_NAME} REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/../../../")
 
 
 # 
@@ -69,8 +70,12 @@ target_include_directories(${target}
     PRIVATE
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
-    ${PROJECT_SOURCE_DIR}/source/glbinding/source/
+    ${PROJECT_SOURCE_DIR}/../glbinding/source/
+)
+
+target_include_directories(${target}
     SYSTEM
+    PRIVATE
     ${GLFW_INCLUDE_DIR}
 )
 

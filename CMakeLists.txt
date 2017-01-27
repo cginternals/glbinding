@@ -36,19 +36,23 @@ set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all ta
 # Get git revision
 get_git_head_revision(GIT_REFSPEC GIT_SHA1)
 string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
+if(NOT GIT_SHA1)
+    set(GIT_REV "0")
+endif()
 
 # Meta information about the project
-set(META_PROJECT_NAME         "glbinding")
-set(META_PROJECT_DESCRIPTION  "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
-set(META_AUTHOR_ORGANIZATION  "CG Internals GmbH")
-set(META_AUTHOR_DOMAIN        "https://github.com/cginternals/glbinding/")
-set(META_AUTHOR_MAINTAINER    "opensource@cginternals.com")
-set(META_VERSION_MAJOR        "2")
-set(META_VERSION_MINOR        "1")
-set(META_VERSION_PATCH        "1")
-set(META_VERSION_REVISION     "${GIT_REV}")
-set(META_VERSION              "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
-set(META_NAME_VERSION         "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
+set(META_PROJECT_NAME        "glbinding")
+set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
+set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
+set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
+set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
+set(META_VERSION_MAJOR       "2")
+set(META_VERSION_MINOR       "1")
+set(META_VERSION_PATCH       "1")
+set(META_VERSION_REVISION    "${GIT_REV}")
+set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
+set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
+set(META_CMAKE_INIT_SHA      "70a376bc91291a73a976f96871a657d54a158dd5")
 
 string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
 string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
@@ -158,7 +162,6 @@ endif()
 # 
 
 add_subdirectory(source)
-add_subdirectory(codegeneration)
 add_subdirectory(docs)
 add_subdirectory(deploy)
 

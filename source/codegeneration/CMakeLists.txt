@@ -24,7 +24,7 @@ if(PYTHON)
         TARGET              ${generate_target}
         PRE_BUILD
         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
-        COMMAND             ${PYTHON} scripts/generate.py -s gl.xml -p patch.xml -d ../source/glbinding -r gl.revision
+        COMMAND             ${PYTHON} scripts/generate.py -s gl.xml -p patch.xml -d ../glbinding -r gl.revision
         COMMENT             "Generating OpenGL binding code."
     )
 

@@ -3,20 +3,37 @@ language: cpp
 sudo: required
 dist: trusty
 
+os:
+  - linux
+  - osx
+
 compiler:
   - gcc
   - clang
 
+env:
+  global:
+    - CMAKE_OPTIONS="-DOPTION_BUILD_EXAMPLES=On"
+  matrix:
+    - CMAKE_CONFIGURATION=release BUILD_DIR=build
+    - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+matrix:
+  exclude:
+  - os: osx
+    compiler: gcc
+
 before_install:
-  - sudo apt-add-repository ppa:cginternals/backports-ppa -y
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install qt5; fi
 
 before_script:
-  - mkdir build
-  - cd build
-  - cmake -DOPTION_BUILD_EXAMPLES=On ..
+  - ./configure
+  - if [ $CMAKE_CONFIGURATION == release ]; then ./configure; fi
+  - if [ $CMAKE_CONFIGURATION == debug ]; then ./configure debug; fi
 
 script:
-  - make -j8
-  - make test
+  - cmake --build $BUILD_DIR
+  - cmake --build $BUILD_DIR --target test
