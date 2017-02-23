@@ -24,6 +24,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A =
     { "GL_AMD_debug_output", GLextension::GL_AMD_debug_output },
     { "GL_AMD_depth_clamp_separate", GLextension::GL_AMD_depth_clamp_separate },
     { "GL_AMD_draw_buffers_blend", GLextension::GL_AMD_draw_buffers_blend },
+    { "GL_AMD_framebuffer_sample_positions", GLextension::GL_AMD_framebuffer_sample_positions },
     { "GL_AMD_gcn_shader", GLextension::GL_AMD_gcn_shader },
     { "GL_AMD_gpu_shader_half_float", GLextension::GL_AMD_gpu_shader_half_float },
     { "GL_AMD_gpu_shader_int64", GLextension::GL_AMD_gpu_shader_int64 },
@@ -428,6 +429,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
 {
     { "GL_NVX_conditional_render", GLextension::GL_NVX_conditional_render },
     { "GL_NVX_gpu_memory_info", GLextension::GL_NVX_gpu_memory_info },
+    { "GL_NV_alpha_to_coverage_dither_control", GLextension::GL_NV_alpha_to_coverage_dither_control },
     { "GL_NV_bindless_multi_draw_indirect", GLextension::GL_NV_bindless_multi_draw_indirect },
     { "GL_NV_bindless_multi_draw_indirect_count", GLextension::GL_NV_bindless_multi_draw_indirect_count },
     { "GL_NV_bindless_texture", GLextension::GL_NV_bindless_texture },
@@ -447,6 +449,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
     { "GL_NV_depth_buffer_float", GLextension::GL_NV_depth_buffer_float },
     { "GL_NV_depth_clamp", GLextension::GL_NV_depth_clamp },
     { "GL_NV_draw_texture", GLextension::GL_NV_draw_texture },
+    { "GL_NV_draw_vulkan_image", GLextension::GL_NV_draw_vulkan_image },
     { "GL_NV_evaluators", GLextension::GL_NV_evaluators },
     { "GL_NV_explicit_multisample", GLextension::GL_NV_explicit_multisample },
     { "GL_NV_fence", GLextension::GL_NV_fence },

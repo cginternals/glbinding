@@ -336,6 +336,11 @@ void glFramebufferSampleLocationsfvNV(GLenum target, GLuint start, GLsizei count
     return Binding::FramebufferSampleLocationsfvNV(target, start, count, v);
 }
 
+void glFramebufferSamplePositionsfvAMD(GLenum target, GLuint numsamples, GLuint pixelindex, const GLfloat * values)
+{
+    return Binding::FramebufferSamplePositionsfvAMD(target, numsamples, pixelindex, values);
+}
+
 void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
     return Binding::FramebufferTexture(target, attachment, texture, level);

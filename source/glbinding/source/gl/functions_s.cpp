@@ -416,6 +416,16 @@ void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points)
     return Binding::SharpenTexFuncSGIS(target, n, points);
 }
 
+void glSignalVkFenceNV(GLuint64 vkFence)
+{
+    return Binding::SignalVkFenceNV(vkFence);
+}
+
+void glSignalVkSemaphoreNV(GLuint64 vkSemaphore)
+{
+    return Binding::SignalVkSemaphoreNV(vkSemaphore);
+}
+
 void glSpriteParameterfSGIX(GLenum pname, GLfloat param)
 {
     return Binding::SpriteParameterfSGIX(pname, param);

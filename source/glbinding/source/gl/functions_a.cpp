@@ -76,6 +76,11 @@ void glAlphaFuncxOES(GLenum func, GLfixed ref)
     return Binding::AlphaFuncxOES(func, ref);
 }
 
+void glAlphaToCoverageDitherControlNV(GLenum mode)
+{
+    return Binding::AlphaToCoverageDitherControlNV(mode);
+}
+
 void glApplyFramebufferAttachmentCMAAINTEL()
 {
     return Binding::ApplyFramebufferAttachmentCMAAINTEL();

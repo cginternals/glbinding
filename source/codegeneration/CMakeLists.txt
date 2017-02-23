@@ -16,7 +16,7 @@ if(PYTHON)
         TARGET              ${update_target}
         PRE_BUILD
         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
-        COMMAND             ${PYTHON} scripts/update.py -f gl.xml -r gl.revision
+        COMMAND             ${PYTHON} scripts/update.py -f gl.xml
         COMMENT             "Updating gl.xml from public SVN."
     )
     

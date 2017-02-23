@@ -16,6 +16,11 @@ void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout)
     return Binding::WaitSync(sync, flags, timeout);
 }
 
+void glWaitVkSemaphoreNV(GLuint64 vkSemaphore)
+{
+    return Binding::WaitVkSemaphoreNV(vkSemaphore);
+}
+
 void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights)
 {
     return Binding::WeightPathsNV(resultPath, numPaths, paths, weights);

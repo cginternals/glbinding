@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python scripts/update.py -f gl.xml -r gl.revision
+python scripts/update.py -f gl.xml

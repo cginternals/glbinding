@@ -101,6 +101,11 @@ void glNamedFramebufferSampleLocationsfvNV(GLuint framebuffer, GLuint start, GLs
     return Binding::NamedFramebufferSampleLocationsfvNV(framebuffer, start, count, v);
 }
 
+void glNamedFramebufferSamplePositionsfvAMD(GLuint framebuffer, GLuint numsamples, GLuint pixelindex, const GLfloat * values)
+{
+    return Binding::NamedFramebufferSamplePositionsfvAMD(framebuffer, numsamples, pixelindex, values);
+}
+
 void glNamedFramebufferTexture(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
 {
     return Binding::NamedFramebufferTexture(framebuffer, attachment, texture, level);

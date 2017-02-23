@@ -27,7 +27,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, 2852>; ///< The type of the build-in functions collection.
+    using array_t = std::array<AbstractFunction *, 2862>; ///< The type of the build-in functions collection.
     using ContextSwitchCallback = std::function<void(ContextHandle)>; ///< The signature of the context switch callback.
 
     /**
@@ -158,6 +158,7 @@ public:
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> AlphaFragmentOp3ATI;
     static Function<void, gl::GLenum, gl::GLfloat> AlphaFunc;
     static Function<void, gl::GLenum, gl::GLfixed> AlphaFuncxOES;
+    static Function<void, gl::GLenum> AlphaToCoverageDitherControlNV;
     static Function<void> ApplyFramebufferAttachmentCMAAINTEL;
     static Function<void, gl::GLenum> ApplyTextureEXT;
     static Function<gl::GLboolean, gl::GLsizei, const gl::GLuint *, gl::GLboolean *> AreProgramsResidentNV;
@@ -643,6 +644,7 @@ public:
     static Function<void, gl::GLenum, gl::GLuint> DrawTransformFeedbackNV;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint> DrawTransformFeedbackStream;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLsizei> DrawTransformFeedbackStreamInstanced;
+    static Function<void, gl::GLuint64, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> DrawVkImageNV;
     static Function<void, gl::GLboolean> EdgeFlag;
     static Function<void, gl::GLsizei> EdgeFlagFormatNV;
     static Function<void, gl::GLsizei, const void *> EdgeFlagPointer;
@@ -766,6 +768,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint> FramebufferRenderbufferEXT;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLfloat *> FramebufferSampleLocationsfvARB;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLfloat *> FramebufferSampleLocationsfvNV;
+    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, const gl::GLfloat *> FramebufferSamplePositionsfvAMD;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture1D;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> FramebufferTexture1DEXT;
@@ -910,6 +913,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint *> GetFragmentMaterialivSGIX;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLint *> GetFramebufferAttachmentParameteriv;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLint *> GetFramebufferAttachmentParameterivEXT;
+    static Function<void, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLfloat *> GetFramebufferParameterfvAMD;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint *> GetFramebufferParameteriv;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetFramebufferParameterivEXT;
     static Function<gl::GLenum> GetGraphicsResetStatus;
@@ -991,6 +995,7 @@ public:
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, void *> GetNamedBufferSubDataEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLint *> GetNamedFramebufferAttachmentParameteriv;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLint *> GetNamedFramebufferAttachmentParameterivEXT;
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLfloat *> GetNamedFramebufferParameterfvAMD;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetNamedFramebufferParameteriv;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetNamedFramebufferParameterivEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint *> GetNamedProgramLocalParameterIivEXT;
@@ -1226,6 +1231,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetVideoivNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint64EXT *> GetVideoui64vNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint *> GetVideouivNV;
+    static Function<gl::VULKANPROCNV, const gl::GLchar *> GetVkProcAddrNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLsizei, void *> GetnColorTable;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLsizei, void *> GetnColorTableARB;
     static Function<void, gl::GLenum, gl::GLint, gl::GLsizei, void *> GetnCompressedTexImage;
@@ -1649,6 +1655,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint> NamedFramebufferRenderbufferEXT;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> NamedFramebufferSampleLocationsfvARB;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> NamedFramebufferSampleLocationsfvNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLuint, const gl::GLfloat *> NamedFramebufferSamplePositionsfvAMD;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture1DEXT;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLuint, gl::GLint> NamedFramebufferTexture2DEXT;
@@ -2171,6 +2178,8 @@ public:
     static Function<void, gl::GLhandleARB, gl::GLsizei, const gl::GLcharARB **, const gl::GLint *> ShaderSourceARB;
     static Function<void, gl::GLuint, gl::GLuint, gl::GLuint> ShaderStorageBlockBinding;
     static Function<void, gl::GLenum, gl::GLsizei, const gl::GLfloat *> SharpenTexFuncSGIS;
+    static Function<void, gl::GLuint64> SignalVkFenceNV;
+    static Function<void, gl::GLuint64> SignalVkSemaphoreNV;
     static Function<void, gl::GLenum, gl::GLfloat> SpriteParameterfSGIX;
     static Function<void, gl::GLenum, const gl::GLfloat *> SpriteParameterfvSGIX;
     static Function<void, gl::GLenum, gl::GLint> SpriteParameteriSGIX;
@@ -2929,6 +2938,7 @@ public:
     static Function<void, gl::GLuint, gl::GLfloat, gl::GLfloat> ViewportPositionWScaleNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> ViewportSwizzleNV;
     static Function<void, gl::GLsync, gl::UnusedMask, gl::GLuint64> WaitSync;
+    static Function<void, gl::GLuint64> WaitVkSemaphoreNV;
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLfloat *> WeightPathsNV;
     static Function<void, gl::GLint, gl::GLenum, gl::GLsizei, const void *> WeightPointerARB;
     static Function<void, gl::GLint, const gl::GLbyte *> WeightbvARB;

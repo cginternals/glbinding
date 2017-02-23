@@ -24,6 +24,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glAlphaFragmentOp2ATI", { GLextension::GL_ATI_fragment_shader } },
     { "glAlphaFragmentOp3ATI", { GLextension::GL_ATI_fragment_shader } },
     { "glAlphaFuncxOES", { GLextension::GL_OES_fixed_point } },
+    { "glAlphaToCoverageDitherControlNV", { GLextension::GL_NV_alpha_to_coverage_dither_control } },
     { "glApplyFramebufferAttachmentCMAAINTEL", { GLextension::GL_INTEL_framebuffer_CMAA } },
     { "glApplyTextureEXT", { GLextension::GL_EXT_light_texture } },
     { "glAreProgramsResidentNV", { GLextension::GL_NV_vertex_program } },
@@ -410,7 +411,8 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glDrawTransformFeedbackInstanced", { GLextension::GL_ARB_transform_feedback_instanced } },
     { "glDrawTransformFeedbackNV", { GLextension::GL_NV_transform_feedback2 } },
     { "glDrawTransformFeedbackStream", { GLextension::GL_ARB_transform_feedback3 } },
-    { "glDrawTransformFeedbackStreamInstanced", { GLextension::GL_ARB_transform_feedback_instanced } }
+    { "glDrawTransformFeedbackStreamInstanced", { GLextension::GL_ARB_transform_feedback_instanced } },
+    { "glDrawVkImageNV", { GLextension::GL_NV_draw_vulkan_image } }
 };
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_E =
@@ -506,6 +508,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glFramebufferRenderbufferEXT", { GLextension::GL_EXT_framebuffer_object } },
     { "glFramebufferSampleLocationsfvARB", { GLextension::GL_ARB_sample_locations } },
     { "glFramebufferSampleLocationsfvNV", { GLextension::GL_NV_sample_locations } },
+    { "glFramebufferSamplePositionsfvAMD", { GLextension::GL_AMD_framebuffer_sample_positions } },
     { "glFramebufferTexture1D", { GLextension::GL_ARB_framebuffer_object } },
     { "glFramebufferTexture1DEXT", { GLextension::GL_EXT_framebuffer_object } },
     { "glFramebufferTexture2D", { GLextension::GL_ARB_framebuffer_object } },
@@ -631,6 +634,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetFragmentMaterialivSGIX", { GLextension::GL_SGIX_fragment_lighting } },
     { "glGetFramebufferAttachmentParameteriv", { GLextension::GL_ARB_framebuffer_object } },
     { "glGetFramebufferAttachmentParameterivEXT", { GLextension::GL_EXT_framebuffer_object } },
+    { "glGetFramebufferParameterfvAMD", { GLextension::GL_AMD_framebuffer_sample_positions } },
     { "glGetFramebufferParameteriv", { GLextension::GL_ARB_framebuffer_no_attachments } },
     { "glGetFramebufferParameterivEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glGetGraphicsResetStatus", { GLextension::GL_KHR_robustness } },
@@ -703,6 +707,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetNamedBufferSubDataEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glGetNamedFramebufferAttachmentParameteriv", { GLextension::GL_ARB_direct_state_access } },
     { "glGetNamedFramebufferAttachmentParameterivEXT", { GLextension::GL_EXT_direct_state_access } },
+    { "glGetNamedFramebufferParameterfvAMD", { GLextension::GL_AMD_framebuffer_sample_positions } },
     { "glGetNamedFramebufferParameteriv", { GLextension::GL_ARB_direct_state_access } },
     { "glGetNamedFramebufferParameterivEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glGetNamedProgramLocalParameterIivEXT", { GLextension::GL_EXT_direct_state_access } },
@@ -901,6 +906,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGetVideoivNV", { GLextension::GL_NV_present_video } },
     { "glGetVideoui64vNV", { GLextension::GL_NV_present_video } },
     { "glGetVideouivNV", { GLextension::GL_NV_present_video } },
+    { "glGetVkProcAddrNV", { GLextension::GL_NV_draw_vulkan_image } },
     { "glGetnColorTableARB", { GLextension::GL_ARB_robustness } },
     { "glGetnCompressedTexImageARB", { GLextension::GL_ARB_robustness } },
     { "glGetnConvolutionFilterARB", { GLextension::GL_ARB_robustness } },
@@ -1238,6 +1244,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glNamedFramebufferRenderbufferEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glNamedFramebufferSampleLocationsfvARB", { GLextension::GL_ARB_sample_locations } },
     { "glNamedFramebufferSampleLocationsfvNV", { GLextension::GL_NV_sample_locations } },
+    { "glNamedFramebufferSamplePositionsfvAMD", { GLextension::GL_AMD_framebuffer_sample_positions } },
     { "glNamedFramebufferTexture", { GLextension::GL_ARB_direct_state_access } },
     { "glNamedFramebufferTexture1DEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glNamedFramebufferTexture2DEXT", { GLextension::GL_EXT_direct_state_access } },
@@ -1403,7 +1410,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glProgramParameter4dvNV", { GLextension::GL_NV_vertex_program } },
     { "glProgramParameter4fNV", { GLextension::GL_NV_vertex_program } },
     { "glProgramParameter4fvNV", { GLextension::GL_NV_vertex_program } },
-    { "glProgramParameteri", { GLextension::GL_ARB_get_program_binary } },
+    { "glProgramParameteri", { GLextension::GL_ARB_get_program_binary, GLextension::GL_ARB_separate_shader_objects } },
     { "glProgramParameteriARB", { GLextension::GL_ARB_geometry_shader4 } },
     { "glProgramParameteriEXT", { GLextension::GL_EXT_geometry_shader4 } },
     { "glProgramParameters4dvNV", { GLextension::GL_NV_vertex_program } },
@@ -1679,6 +1686,8 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glShaderSourceARB", { GLextension::GL_ARB_shader_objects } },
     { "glShaderStorageBlockBinding", { GLextension::GL_ARB_shader_storage_buffer_object } },
     { "glSharpenTexFuncSGIS", { GLextension::GL_SGIS_sharpen_texture } },
+    { "glSignalVkFenceNV", { GLextension::GL_NV_draw_vulkan_image } },
+    { "glSignalVkSemaphoreNV", { GLextension::GL_NV_draw_vulkan_image } },
     { "glSpriteParameterfSGIX", { GLextension::GL_SGIX_sprite } },
     { "glSpriteParameterfvSGIX", { GLextension::GL_SGIX_sprite } },
     { "glSpriteParameteriSGIX", { GLextension::GL_SGIX_sprite } },
@@ -2267,6 +2276,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_W =
 {
     { "glWaitSync", { GLextension::GL_ARB_sync } },
+    { "glWaitVkSemaphoreNV", { GLextension::GL_NV_draw_vulkan_image } },
     { "glWeightPathsNV", { GLextension::GL_NV_path_rendering } },
     { "glWeightPointerARB", { GLextension::GL_ARB_vertex_blend } },
     { "glWeightbvARB", { GLextension::GL_ARB_vertex_blend } },

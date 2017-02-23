@@ -9,6 +9,7 @@ namespace glbinding
 
 
 Function<void, GLsync, UnusedMask, GLuint64> Binding::WaitSync("glWaitSync");
+Function<void, GLuint64> Binding::WaitVkSemaphoreNV("glWaitVkSemaphoreNV");
 Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> Binding::WeightPathsNV("glWeightPathsNV");
 Function<void, GLint, GLenum, GLsizei, const void *> Binding::WeightPointerARB("glWeightPointerARB");
 Function<void, GLint, const GLbyte *> Binding::WeightbvARB("glWeightbvARB");

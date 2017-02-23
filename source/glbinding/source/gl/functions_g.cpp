@@ -631,6 +631,11 @@ void glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, 
     return Binding::GetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
 }
 
+void glGetFramebufferParameterfvAMD(GLenum target, GLenum pname, GLuint numsamples, GLuint pixelindex, GLsizei size, GLfloat * values)
+{
+    return Binding::GetFramebufferParameterfvAMD(target, pname, numsamples, pixelindex, size, values);
+}
+
 void glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint * params)
 {
     return Binding::GetFramebufferParameteriv(target, pname, params);
@@ -1034,6 +1039,11 @@ void glGetNamedFramebufferAttachmentParameteriv(GLuint framebuffer, GLenum attac
 void glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint * params)
 {
     return Binding::GetNamedFramebufferAttachmentParameterivEXT(framebuffer, attachment, pname, params);
+}
+
+void glGetNamedFramebufferParameterfvAMD(GLuint framebuffer, GLenum pname, GLuint numsamples, GLuint pixelindex, GLsizei size, GLfloat * values)
+{
+    return Binding::GetNamedFramebufferParameterfvAMD(framebuffer, pname, numsamples, pixelindex, size, values);
 }
 
 void glGetNamedFramebufferParameteriv(GLuint framebuffer, GLenum pname, GLint * param)
@@ -2209,6 +2219,11 @@ void glGetVideoui64vNV(GLuint video_slot, GLenum pname, GLuint64EXT * params)
 void glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint * params)
 {
     return Binding::GetVideouivNV(video_slot, pname, params);
+}
+
+VULKANPROCNV glGetVkProcAddrNV(const GLchar * name)
+{
+    return Binding::GetVkProcAddrNV(name);
 }
 
 void glGetnColorTable(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table)
