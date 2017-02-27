@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(GLFW)
+find_package(glfw3)
 find_package(${META_PROJECT_NAME} REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/../../../")
 
 
@@ -14,8 +14,8 @@ find_package(${META_PROJECT_NAME} REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/..
 # Target name
 set(target glbinding-test)
 
-if (NOT GLFW_FOUND)
-    message("Test ${target} skipped: GLFW not found")
+if (NOT glfw3_FOUND)
+    message("Test ${target} skipped: glfw3 not found")
     return()
 else()
     message(STATUS "Test ${target}")
@@ -73,13 +73,6 @@ target_include_directories(${target}
     ${PROJECT_SOURCE_DIR}/../glbinding/source/
 )
 
-target_include_directories(${target}
-    SYSTEM
-    PRIVATE
-    ${GLFW_INCLUDE_DIR}
-)
-
-
 # 
 # Libraries
 # 
@@ -87,7 +80,7 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    ${GLFW_LIBRARIES}
+    glfw
     ${META_PROJECT_NAME}::glbinding
     gmock-dev
 )
