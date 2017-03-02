@@ -450,7 +450,7 @@ Function<void, GLuint, GLenum, GLint64EXT *> Binding::GetVideoi64vNV("glGetVideo
 Function<void, GLuint, GLenum, GLint *> Binding::GetVideoivNV("glGetVideoivNV");
 Function<void, GLuint, GLenum, GLuint64EXT *> Binding::GetVideoui64vNV("glGetVideoui64vNV");
 Function<void, GLuint, GLenum, GLuint *> Binding::GetVideouivNV("glGetVideouivNV");
-Function<VULKANPROCNV, const GLchar *> Binding::GetVkProcAddrNV("glGetVkProcAddrNV");
+Function<GLVULKANPROCNV, const GLchar *> Binding::GetVkProcAddrNV("glGetVkProcAddrNV");
 Function<void, GLenum, GLenum, GLenum, GLsizei, void *> Binding::GetnColorTable("glGetnColorTable");
 Function<void, GLenum, GLenum, GLenum, GLsizei, void *> Binding::GetnColorTableARB("glGetnColorTableARB");
 Function<void, GLenum, GLint, GLsizei, void *> Binding::GetnCompressedTexImage("glGetnCompressedTexImage");

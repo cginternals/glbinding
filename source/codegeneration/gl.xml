@@ -142,7 +142,7 @@ typedef unsigned int GLhandleARB;
         <type>typedef void (<apientry/> *<name>GLDEBUGPROCAMD</name>)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);</type>
         <type>typedef unsigned short <name>GLhalfNV</name>;</type>
         <type requires="GLintptr">typedef GLintptr <name>GLvdpauSurfaceNV</name>;</type>
-        <type>typedef void (<apientry/> *<name>VULKANPROCNV</name>)(void);</type>
+        <type>typedef void (<apientry/> *<name>GLVULKANPROCNV</name>)(void);</type>
     </types>
 
     <!-- SECTION: GL parameter class type definitions. -->
@@ -7441,7 +7441,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8F65" name="GL_FETCH_PER_SAMPLE_ARM"/>
         <enum value="0x8F66" name="GL_FRAGMENT_SHADER_FRAMEBUFFER_FETCH_MRT_ARM"/>
         <enum value="0x8F67" name="GL_MAX_SHADER_PIXEL_LOCAL_STORAGE_SIZE_EXT"/>
-            <unused start="0x8F68" end="0x8F6F" vendor="ARM"/>
+            <unused start="0x8F68" vendor="ARM"/>
+        <enum value="0x8F69" name="GL_TEXTURE_ASTC_DECODE_PRECISION_EXT"/>
+            <unused start="0x8F6A" end="0x8F6F" vendor="ARM"/>
     </enums>
 
     <enums namespace="GL" start="0x8F70" end="0x8F7F" vendor="HI" comment="For Mark Callow, Khronos bug 4055. Shared with EGL.">
@@ -30161,7 +30163,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLfloat</ptype> <name>t1</name></param>
         </command>
         <command>
-            <proto>VULKANPROCNV <name>glGetVkProcAddrNV</name></proto>
+            <proto><ptype>GLVULKANPROCNV</ptype> <name>glGetVkProcAddrNV</name></proto>
             <param len="COMPSIZE(name)">const <ptype>GLchar</ptype> *<name>name</name></param>
         </command>
         <command>
@@ -42279,6 +42281,11 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_TEXTURE_BUFFER_DATA_STORE_BINDING_EXT"/>
                 <enum name="GL_TEXTURE_BUFFER_FORMAT_EXT"/>
                 <command name="glTexBufferEXT"/>
+            </require>
+        </extension>
+       <extension name="GL_EXT_texture_compression_astc_decode_mode" supported="gles2">
+            <require>
+                <enum name="GL_TEXTURE_ASTC_DECODE_PRECISION_EXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_texture_compression_dxt1" supported="gles1|gles2">

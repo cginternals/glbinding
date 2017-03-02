@@ -1231,7 +1231,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetVideoivNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint64EXT *> GetVideoui64vNV;
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint *> GetVideouivNV;
-    static Function<gl::VULKANPROCNV, const gl::GLchar *> GetVkProcAddrNV;
+    static Function<gl::GLVULKANPROCNV, const gl::GLchar *> GetVkProcAddrNV;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLsizei, void *> GetnColorTable;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLsizei, void *> GetnColorTableARB;
     static Function<void, gl::GLenum, gl::GLint, gl::GLsizei, void *> GetnCompressedTexImage;

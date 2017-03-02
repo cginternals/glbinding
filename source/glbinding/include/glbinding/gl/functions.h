@@ -1102,7 +1102,7 @@ GLBINDING_API void glGetVideoi64vNV(GLuint video_slot, GLenum pname, GLint64EXT 
 GLBINDING_API void glGetVideoivNV(GLuint video_slot, GLenum pname, GLint * params);
 GLBINDING_API void glGetVideoui64vNV(GLuint video_slot, GLenum pname, GLuint64EXT * params);
 GLBINDING_API void glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint * params);
-GLBINDING_API VULKANPROCNV glGetVkProcAddrNV(const GLchar * name);
+GLBINDING_API GLVULKANPROCNV glGetVkProcAddrNV(const GLchar * name);
 GLBINDING_API void glGetnColorTable(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table);
 GLBINDING_API void glGetnColorTableARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, void * table);
 GLBINDING_API void glGetnCompressedTexImage(GLenum target, GLint lod, GLsizei bufSize, void * pixels);

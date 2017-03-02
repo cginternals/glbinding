@@ -2221,7 +2221,7 @@ void glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint * params)
     return Binding::GetVideouivNV(video_slot, pname, params);
 }
 
-VULKANPROCNV glGetVkProcAddrNV(const GLchar * name)
+GLVULKANPROCNV glGetVkProcAddrNV(const GLchar * name)
 {
     return Binding::GetVkProcAddrNV(name);
 }

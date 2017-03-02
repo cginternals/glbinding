@@ -68,7 +68,7 @@ using GLDEBUGPROCKHR = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,
 using GLDEBUGPROCAMD = void (GL_APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
 using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
-using VULKANPROCNV = void (GL_APIENTRY *)(void);
+using GLVULKANPROCNV = void (GL_APIENTRY *)(void);
 using GLuint_array_2 = std::array<GLuint, 2>;
 enum class AttribMask : unsigned int;
 enum class ClearBufferMask : unsigned int;
