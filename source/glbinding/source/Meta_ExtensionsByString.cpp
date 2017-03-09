@@ -115,6 +115,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A =
     { "GL_ARB_geometry_shader4", GLextension::GL_ARB_geometry_shader4 },
     { "GL_ARB_get_program_binary", GLextension::GL_ARB_get_program_binary },
     { "GL_ARB_get_texture_sub_image", GLextension::GL_ARB_get_texture_sub_image },
+    { "GL_ARB_gl_spirv", GLextension::GL_ARB_gl_spirv },
     { "GL_ARB_gpu_shader5", GLextension::GL_ARB_gpu_shader5 },
     { "GL_ARB_gpu_shader_fp64", GLextension::GL_ARB_gpu_shader_fp64 },
     { "GL_ARB_gpu_shader_int64", GLextension::GL_ARB_gpu_shader_int64 },
@@ -421,14 +422,17 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_M =
     { "GL_MESAX_texture_stack", GLextension::GL_MESAX_texture_stack },
     { "GL_MESA_pack_invert", GLextension::GL_MESA_pack_invert },
     { "GL_MESA_resize_buffers", GLextension::GL_MESA_resize_buffers },
+    { "GL_MESA_shader_integer_functions", GLextension::GL_MESA_shader_integer_functions },
     { "GL_MESA_window_pos", GLextension::GL_MESA_window_pos },
     { "GL_MESA_ycbcr_texture", GLextension::GL_MESA_ycbcr_texture }
 };
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
 {
+    { "GL_NVX_blend_equation_advanced_multi_draw_buffers", GLextension::GL_NVX_blend_equation_advanced_multi_draw_buffers },
     { "GL_NVX_conditional_render", GLextension::GL_NVX_conditional_render },
     { "GL_NVX_gpu_memory_info", GLextension::GL_NVX_gpu_memory_info },
+    { "GL_NVX_linked_gpu_multicast", GLextension::GL_NVX_linked_gpu_multicast },
     { "GL_NV_alpha_to_coverage_dither_control", GLextension::GL_NV_alpha_to_coverage_dither_control },
     { "GL_NV_bindless_multi_draw_indirect", GLextension::GL_NV_bindless_multi_draw_indirect },
     { "GL_NV_bindless_multi_draw_indirect_count", GLextension::GL_NV_bindless_multi_draw_indirect_count },
@@ -467,6 +471,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
     { "GL_NV_geometry_program4", GLextension::GL_NV_geometry_program4 },
     { "GL_NV_geometry_shader4", GLextension::GL_NV_geometry_shader4 },
     { "GL_NV_geometry_shader_passthrough", GLextension::GL_NV_geometry_shader_passthrough },
+    { "GL_NV_gpu_multicast", GLextension::GL_NV_gpu_multicast },
     { "GL_NV_gpu_program4", GLextension::GL_NV_gpu_program4 },
     { "GL_NV_gpu_program5", GLextension::GL_NV_gpu_program5 },
     { "GL_NV_gpu_program5_mem_extended", GLextension::GL_NV_gpu_program5_mem_extended },

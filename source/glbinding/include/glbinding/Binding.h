@@ -27,7 +27,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, 2862>; ///< The type of the build-in functions collection.
+    using array_t = std::array<AbstractFunction *, 2878>; ///< The type of the build-in functions collection.
     using ContextSwitchCallback = std::function<void(ContextHandle)>; ///< The signature of the context switch callback.
 
     /**
@@ -1366,6 +1366,9 @@ public:
     static Function<gl::GLboolean, gl::GLuint> IsVertexArray;
     static Function<gl::GLboolean, gl::GLuint> IsVertexArrayAPPLE;
     static Function<gl::GLboolean, gl::GLuint, gl::GLenum> IsVertexAttribEnabledAPPLE;
+    static Function<void, gl::GLuint, gl::GLbitfield, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei> LGPUCopyImageSubDataNVX;
+    static Function<void> LGPUInterlockNVX;
+    static Function<void, gl::GLbitfield, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> LGPUNamedBufferSubDataNVX;
     static Function<void, gl::GLenum, gl::GLuint, gl::GLsizei, const gl::GLchar *> LabelObjectEXT;
     static Function<void, gl::GLenum, gl::GLint> LightEnviSGIX;
     static Function<void, gl::GLenum, gl::GLfloat> LightModelf;
@@ -1637,6 +1640,17 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage1DEXT;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage2DEXT;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage3DEXT;
+    static Function<void> MulticastBarrierNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLbitfield, gl::GLenum> MulticastBlitFramebufferNV;
+    static Function<void, gl::GLbitfield, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const gl::GLvoid *> MulticastBufferSubDataNV;
+    static Function<void, gl::GLuint, gl::GLbitfield, gl::GLuint, gl::GLuint, gl::GLintptr, gl::GLintptr, gl::GLsizeiptr> MulticastCopyBufferSubDataNV;
+    static Function<void, gl::GLuint, gl::GLbitfield, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei> MulticastCopyImageSubDataNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> MulticastFramebufferSampleLocationsfvNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLint64 *> MulticastGetQueryObjecti64vNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLint *> MulticastGetQueryObjectivNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLuint64 *> MulticastGetQueryObjectui64vNV;
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLuint *> MulticastGetQueryObjectuivNV;
+    static Function<void, gl::GLuint, gl::GLbitfield> MulticastWaitSyncNV;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferData;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferDataEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentARB;
@@ -2056,6 +2070,7 @@ public:
     static Function<void, const gl::GLfixed *, const gl::GLfixed *> RectxvOES;
     static Function<void, const gl::GLdouble *> ReferencePlaneSGIX;
     static Function<void> ReleaseShaderCompiler;
+    static Function<void, gl::GLbitfield> RenderGpuMaskNV;
     static Function<gl::GLint, gl::GLenum> RenderMode;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorage;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorageEXT;
@@ -2180,6 +2195,7 @@ public:
     static Function<void, gl::GLenum, gl::GLsizei, const gl::GLfloat *> SharpenTexFuncSGIS;
     static Function<void, gl::GLuint64> SignalVkFenceNV;
     static Function<void, gl::GLuint64> SignalVkSemaphoreNV;
+    static Function<void, gl::GLuint, const gl::GLchar *, gl::GLuint, const gl::GLuint *, const gl::GLuint *> SpecializeShaderARB;
     static Function<void, gl::GLenum, gl::GLfloat> SpriteParameterfSGIX;
     static Function<void, gl::GLenum, const gl::GLfloat *> SpriteParameterfvSGIX;
     static Function<void, gl::GLenum, gl::GLint> SpriteParameteriSGIX;

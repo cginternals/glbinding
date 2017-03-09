@@ -251,6 +251,11 @@ void glReleaseShaderCompiler()
     return Binding::ReleaseShaderCompiler();
 }
 
+void glRenderGpuMaskNV(GLbitfield mask)
+{
+    return Binding::RenderGpuMaskNV(mask);
+}
+
 GLint glRenderMode(GLenum mode)
 {
     return Binding::RenderMode(mode);

@@ -426,6 +426,11 @@ void glSignalVkSemaphoreNV(GLuint64 vkSemaphore)
     return Binding::SignalVkSemaphoreNV(vkSemaphore);
 }
 
+void glSpecializeShaderARB(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue)
+{
+    return Binding::SpecializeShaderARB(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
+}
+
 void glSpriteParameterfSGIX(GLenum pname, GLfloat param)
 {
     return Binding::SpriteParameterfSGIX(pname, param);

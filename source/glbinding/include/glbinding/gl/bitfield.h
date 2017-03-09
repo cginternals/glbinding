@@ -158,6 +158,8 @@ enum class MapBufferUsageMask : unsigned int
     GL_DYNAMIC_STORAGE_BIT                     = 0x0100, // reuse from BufferStorageMask
     GL_CLIENT_STORAGE_BIT                      = 0x0200, // reuse from BufferStorageMask
     GL_SPARSE_STORAGE_BIT_ARB                  = 0x0400,
+    GL_LGPU_SEPARATE_STORAGE_BIT_NVX           = 0x0800,
+    GL_PER_GPU_STORAGE_BIT_NV                  = 0x0800,
 };
 
 
@@ -431,6 +433,8 @@ static const MapBufferUsageMask GL_SPARSE_STORAGE_BIT_ARB = MapBufferUsageMask::
 static const PathRenderingMaskNV GL_FONT_UNDERLINE_POSITION_BIT_NV = PathRenderingMaskNV::GL_FONT_UNDERLINE_POSITION_BIT_NV;
 static const VertexHintsMaskPGI GL_MAT_SPECULAR_BIT_PGI = VertexHintsMaskPGI::GL_MAT_SPECULAR_BIT_PGI;
 static const PathRenderingMaskNV GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV = PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV;
+static const MapBufferUsageMask GL_LGPU_SEPARATE_STORAGE_BIT_NVX = MapBufferUsageMask::GL_LGPU_SEPARATE_STORAGE_BIT_NVX;
+static const MapBufferUsageMask GL_PER_GPU_STORAGE_BIT_NV = MapBufferUsageMask::GL_PER_GPU_STORAGE_BIT_NV;
 static const PathRenderingMaskNV GL_FONT_UNDERLINE_THICKNESS_BIT_NV = PathRenderingMaskNV::GL_FONT_UNDERLINE_THICKNESS_BIT_NV;
 static const VertexHintsMaskPGI GL_NORMAL_BIT_PGI = VertexHintsMaskPGI::GL_NORMAL_BIT_PGI;
 static const PathRenderingMaskNV GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV = PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV;

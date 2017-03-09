@@ -2089,7 +2089,8 @@ typedef unsigned int GLhandleARB;
         <enum value="0x0200" name="GL_CLIENT_STORAGE_BIT"/>
         <enum value="0x0200" name="GL_CLIENT_STORAGE_BIT_EXT"/>
         <enum value="0x0400" name="GL_SPARSE_STORAGE_BIT_ARB"/>
-            <!-- Bits 0x1000 and 0x0800 reserved for Joshua Schnarr, jschnarr@nvidia.com -->
+        <enum value="0x0800" name="GL_LGPU_SEPARATE_STORAGE_BIT_NVX"/>
+        <enum value="0x0800" name="GL_PER_GPU_STORAGE_BIT_NV"/>
     </enums>
 
     <enums namespace="GL" group="MemoryBarrierMask" type="bitmask">
@@ -8187,7 +8188,9 @@ typedef unsigned int GLhandleARB;
         <enum value="0x92B2" name="GL_PLUS_CLAMPED_ALPHA_NV"/>
         <enum value="0x92B3" name="GL_MINUS_CLAMPED_NV"/>
         <enum value="0x92B4" name="GL_INVERT_OVG_NV"/>
-            <unused start="0x92B5" end="0x92BA" vendor="NV"/>
+            <unused start="0x92B5" end="0x92B9" vendor="NV"/>
+        <enum value="0x92BA" name="GL_MAX_LGPU_GPUS_NVX"/>
+        <enum value="0x92BA" name="GL_MULTICAST_GPUS_NV"/>
         <enum value="0x92BB" name="GL_PURGED_CONTEXT_RESET_NV"/>
             <unused start="0x92BC" end="0x92BD" vendor="NV"/>
         <enum value="0x92BE" name="GL_PRIMITIVE_BOUNDING_BOX_ARB"/>
@@ -8532,11 +8535,19 @@ typedef unsigned int GLhandleARB;
     </enums>
 
     <enums namespace="GL" start="0x9530" end="0x962F" vendor="NV" comment="Khronos bug 12977">
-            <unused start="0x9530" end="0x954C" vendor="NV"/>
+            <unused start="0x9530" end="0x9547" vendor="NV"/>
+        <enum value="0x9548" name="GL_PER_GPU_STORAGE_NV"/>
+        <enum value="0x9549" name="GL_MULTICAST_PROGRAMMABLE_SAMPLE_LOCATION_NV"/>
+            <unused start="0x954A" end="0x954C" vendor="NV"/>
         <enum value="0x954D" name="GL_CONSERVATIVE_RASTER_MODE_NV"/>
         <enum value="0x954E" name="GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV"/>
         <enum value="0x954F" name="GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV"/>
-            <unused start="0x9550" end="0x962F" vendor="NV"/>
+            <unused start="0x9550" vendor="NV"/>
+        <enum value="0x9551" name="GL_SHADER_BINARY_FORMAT_SPIR_V_ARB"/>
+        <enum value="0x9552" name="GL_SPIR_V_BINARY_ARB"/>
+            <unused start="0x9553" end="0x9557" vendor="NV"/>
+        <enum value="0x9558" name="GL_RENDER_GPU_MASK_NV"/>
+            <unused start="0x9559" end="0x962F" vendor="NV"/>
     </enums>
 
     <enums namespace="GL" start="0x9630" end="0x963F" vendor="Oculus" comment="Email from Cass Everitt">
@@ -8544,7 +8555,7 @@ typedef unsigned int GLhandleARB;
         <enum value="0x9631" name="GL_MAX_VIEWS_OVR"/>
         <enum value="0x9632" name="GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR"/>
         <enum value="0x9633" name="GL_FRAMEBUFFER_INCOMPLETE_VIEW_TARGETS_OVR"/>
-            <unused start="0x9633" end="0x963F" vendor="Oculus"/>
+            <unused start="0x9634" end="0x963F" vendor="Oculus"/>
     </enums>
 
     <enums namespace="GL" start="0x9640" end="0x964F" vendor="Mediatek" comment="Khronos bug 14294">
@@ -13691,6 +13702,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glFramebufferFoveationParametersQCOM</name></proto>
             <param group="Framebuffer"><ptype>GLuint</ptype> <name>framebuffer</name></param>
             <param><ptype>GLuint</ptype> <name>layer</name></param>
+            <param><ptype>GLuint</ptype> <name>focalPoint</name></param>
             <param group="CheckedFloat32"><ptype>GLfloat</ptype> <name>focalX</name></param>
             <param group="CheckedFloat32"><ptype>GLfloat</ptype> <name>focalY</name></param>
             <param group="CheckedFloat32"><ptype>GLfloat</ptype> <name>gainX</name></param>
@@ -18198,6 +18210,37 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLenum</ptype> <name>pname</name></param>
         </command>
         <command>
+            <proto>void <name>glLGPUCopyImageSubDataNVX</name></proto>
+            <param><ptype>GLuint</ptype> <name>sourceGpu</name></param>
+            <param><ptype>GLbitfield</ptype> <name>destinationGpuMask</name></param>
+            <param><ptype>GLuint</ptype> <name>srcName</name></param>
+            <param><ptype>GLenum</ptype> <name>srcTarget</name></param>
+            <param><ptype>GLint</ptype> <name>srcLevel</name></param>
+            <param><ptype>GLint</ptype> <name>srcX</name></param>
+            <param><ptype>GLint</ptype> <name>srxY</name></param>
+            <param><ptype>GLint</ptype> <name>srcZ</name></param>
+            <param><ptype>GLuint</ptype> <name>dstName</name></param>
+            <param><ptype>GLenum</ptype> <name>dstTarget</name></param>
+            <param><ptype>GLint</ptype> <name>dstLevel</name></param>
+            <param><ptype>GLint</ptype> <name>dstX</name></param>
+            <param><ptype>GLint</ptype> <name>dstY</name></param>
+            <param><ptype>GLint</ptype> <name>dstZ</name></param>
+            <param><ptype>GLsizei</ptype> <name>width</name></param>
+            <param><ptype>GLsizei</ptype> <name>height</name></param>
+            <param><ptype>GLsizei</ptype> <name>depth</name></param>
+        </command>
+        <command>
+            <proto>void <name>glLGPUInterlockNVX</name></proto>
+        </command>
+        <command>
+            <proto>void <name>glLGPUNamedBufferSubDataNVX</name></proto>
+            <param><ptype>GLbitfield</ptype> <name>gpuMask</name></param>
+            <param><ptype>GLuint</ptype> <name>buffer</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
+            <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
+            <param>const void *<name>data</name></param>
+        </command>
+        <command>
             <proto>void <name>glLabelObjectEXT</name></proto>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param><ptype>GLuint</ptype> <name>object</name></param>
@@ -20162,6 +20205,103 @@ typedef unsigned int GLhandleARB;
             <param group="PixelFormat"><ptype>GLenum</ptype> <name>format</name></param>
             <param group="PixelType"><ptype>GLenum</ptype> <name>type</name></param>
             <param len="COMPSIZE(format,type,width,height,depth)">const void *<name>pixels</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastBarrierNV</name></proto>
+        </command>
+        <command>
+            <proto>void <name>glMulticastBlitFramebufferNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>srcGpu</name></param>
+            <param><ptype>GLuint</ptype> <name>dstGpu</name></param>
+            <param><ptype>GLint</ptype> <name>srcX0</name></param>
+            <param><ptype>GLint</ptype> <name>srcY0</name></param>
+            <param><ptype>GLint</ptype> <name>srcX1</name></param>
+            <param><ptype>GLint</ptype> <name>srcY1</name></param>
+            <param><ptype>GLint</ptype> <name>dstX0</name></param>
+            <param><ptype>GLint</ptype> <name>dstY0</name></param>
+            <param><ptype>GLint</ptype> <name>dstX1</name></param>
+            <param><ptype>GLint</ptype> <name>dstY1</name></param>
+            <param><ptype>GLbitfield</ptype> <name>mask</name></param>
+            <param><ptype>GLenum</ptype> <name>filter</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastBufferSubDataNV</name></proto>
+            <param><ptype>GLbitfield</ptype> <name>gpuMask</name></param>
+            <param><ptype>GLuint</ptype> <name>buffer</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
+            <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
+            <param>const <ptype>GLvoid</ptype> *<name>data</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastCopyBufferSubDataNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>readGpu</name></param>
+            <param><ptype>GLbitfield</ptype> <name>writeGpuMask</name></param>
+            <param><ptype>GLuint</ptype> <name>readBuffer</name></param>
+            <param><ptype>GLuint</ptype> <name>writeBuffer</name></param>
+            <param><ptype>GLintptr</ptype> <name>readOffset</name></param>
+            <param><ptype>GLintptr</ptype> <name>writeOffset</name></param>
+            <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastCopyImageSubDataNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>srcGpu</name></param>
+            <param><ptype>GLbitfield</ptype> <name>dstGpuMask</name></param>
+            <param><ptype>GLuint</ptype> <name>srcName</name></param>
+            <param><ptype>GLenum</ptype> <name>srcTarget</name></param>
+            <param><ptype>GLint</ptype> <name>srcLevel</name></param>
+            <param><ptype>GLint</ptype> <name>srcX</name></param>
+            <param><ptype>GLint</ptype> <name>srcY</name></param>
+            <param><ptype>GLint</ptype> <name>srcZ</name></param>
+            <param><ptype>GLuint</ptype> <name>dstName</name></param>
+            <param><ptype>GLenum</ptype> <name>dstTarget</name></param>
+            <param><ptype>GLint</ptype> <name>dstLevel</name></param>
+            <param><ptype>GLint</ptype> <name>dstX</name></param>
+            <param><ptype>GLint</ptype> <name>dstY</name></param>
+            <param><ptype>GLint</ptype> <name>dstZ</name></param>
+            <param><ptype>GLsizei</ptype> <name>srcWidth</name></param>
+            <param><ptype>GLsizei</ptype> <name>srcHeight</name></param>
+            <param><ptype>GLsizei</ptype> <name>srcDepth</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastFramebufferSampleLocationsfvNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>gpu</name></param>
+            <param><ptype>GLuint</ptype> <name>framebuffer</name></param>
+            <param><ptype>GLuint</ptype> <name>start</name></param>
+            <param><ptype>GLsizei</ptype> <name>count</name></param>
+            <param>const <ptype>GLfloat</ptype> *<name>v</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastGetQueryObjecti64vNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>gpu</name></param>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLint64</ptype> *<name>params</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastGetQueryObjectivNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>gpu</name></param>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLint</ptype> *<name>params</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastGetQueryObjectui64vNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>gpu</name></param>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLuint64</ptype> *<name>params</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastGetQueryObjectuivNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>gpu</name></param>
+            <param><ptype>GLuint</ptype> <name>id</name></param>
+            <param><ptype>GLenum</ptype> <name>pname</name></param>
+            <param><ptype>GLuint</ptype> *<name>params</name></param>
+        </command>
+        <command>
+            <proto>void <name>glMulticastWaitSyncNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>signalGpu</name></param>
+            <param><ptype>GLbitfield</ptype> <name>waitGpuMask</name></param>
         </command>
         <command>
             <proto>void <name>glNamedBufferData</name></proto>
@@ -23295,6 +23435,10 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glReleaseShaderCompiler</name></proto>
         </command>
         <command>
+            <proto>void <name>glRenderGpuMaskNV</name></proto>
+            <param><ptype>GLbitfield</ptype> <name>mask</name></param>
+        </command>
+        <command>
             <proto><ptype>GLint</ptype> <name>glRenderMode</name></proto>
             <param group="RenderingMode"><ptype>GLenum</ptype> <name>mode</name></param>
             <glx type="single" opcode="107"/>
@@ -24241,6 +24385,14 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLsizei</ptype> <name>n</name></param>
             <param len="n*2">const <ptype>GLfloat</ptype> *<name>points</name></param>
             <glx type="render" opcode="2052"/>
+        </command>
+        <command>
+            <proto>void <name>glSpecializeShaderARB</name></proto>
+            <param><ptype>GLuint</ptype> <name>shader</name></param>
+            <param>const <ptype>GLchar</ptype> *<name>pEntryPoint</name></param>
+            <param><ptype>GLuint</ptype> <name>numSpecializationConstants</name></param>
+            <param>const <ptype>GLuint</ptype> *<name>pConstantIndex</name></param>
+            <param>const <ptype>GLuint</ptype> *<name>pConstantValue</name></param>
         </command>
         <command>
             <proto>void <name>glSpriteParameterfSGIX</name></proto>
@@ -39137,6 +39289,13 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_ARB_sparse_texture2" supported="gl|glcore|gles2"/>
         <extension name="GL_ARB_sparse_texture_clamp" supported="gl"/>
+        <extension name="GL_ARB_gl_spirv" supported="gl">
+            <require>
+                <enum name="GL_SHADER_BINARY_FORMAT_SPIR_V_ARB"/>
+                <enum name="GL_SPIR_V_BINARY_ARB"/>
+                <command name="glSpecializeShaderARB"/>
+            </require>
+        </extension>
         <extension name="GL_ARB_stencil_texturing" supported="gl|glcore">
             <require>
                 <enum name="GL_DEPTH_STENCIL_TEXTURE_MODE"/>
@@ -42283,7 +42442,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glTexBufferEXT"/>
             </require>
         </extension>
-       <extension name="GL_EXT_texture_compression_astc_decode_mode" supported="gles2">
+        <extension name="GL_EXT_texture_compression_astc_decode_mode" supported="gles2">
             <require>
                 <enum name="GL_TEXTURE_ASTC_DECODE_PRECISION_EXT"/>
             </require>
@@ -43528,6 +43687,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glResizeBuffersMESA"/>
             </require>
         </extension>
+        <extension name="GL_MESA_shader_integer_functions" supported="gl" comment="May be supported on gles2; see OpenGL-Registry #4"/>
         <extension name="GL_MESA_window_pos" supported="gl">
             <require>
                 <command name="glWindowPos2dMESA"/>
@@ -43563,6 +43723,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_YCBCR_MESA"/>
             </require>
         </extension>
+        <extension name="GL_NVX_blend_equation_advanced_multi_draw_buffers" supported="gl|gles2"/>
         <extension name="GL_NVX_conditional_render" supported="gl">
             <require>
                 <command name="glBeginConditionalRenderNVX"/>
@@ -43576,6 +43737,24 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_GPU_MEMORY_INFO_CURRENT_AVAILABLE_VIDMEM_NVX"/>
                 <enum name="GL_GPU_MEMORY_INFO_EVICTION_COUNT_NVX"/>
                 <enum name="GL_GPU_MEMORY_INFO_EVICTED_MEMORY_NVX"/>
+            </require>
+        </extension>
+        <extension name="GL_NVX_linked_gpu_multicast" supported="gl">
+            <require>
+                <enum name="GL_LGPU_SEPARATE_STORAGE_BIT_NVX"/>
+                <enum name="GL_MAX_LGPU_GPUS_NVX"/>
+                <command name="glLGPUNamedBufferSubDataNVX"/>
+                <command name="glLGPUCopyImageSubDataNVX"/>
+                <command name="glLGPUInterlockNVX"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_alpha_to_coverage_dither_control" supported="gl">
+            <require>
+                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_DEFAULT_NV"/>
+                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_ENABLE_NV"/>
+                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_DISABLE_NV"/>
+                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_MODE_NV"/>
+                <command name="glAlphaToCoverageDitherControlNV"/>
             </require>
         </extension>
         <extension name="GL_NV_bindless_multi_draw_indirect" supported="gl">
@@ -43867,6 +44046,15 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_NV_draw_texture" supported="gl">
             <require>
                 <command name="glDrawTextureNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_draw_vulkan_image" supported="gl|glcore|gles2">
+            <require>
+                <command name="glDrawVkImageNV"/>
+                <command name="glGetVkProcAddrNV"/>
+                <command name="glWaitVkSemaphoreNV"/>
+                <command name="glSignalVkSemaphoreNV"/>
+                <command name="glSignalVkFenceNV"/>
             </require>
         </extension>
         <extension name="GL_NV_evaluators" supported="gl">
@@ -44288,6 +44476,27 @@ typedef unsigned int GLhandleARB;
             <require>
                 <enum name="GL_MAX_SHININESS_NV"/>
                 <enum name="GL_MAX_SPOT_EXPONENT_NV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_gpu_multicast" supported="gl">
+            <require>
+                <enum name="GL_PER_GPU_STORAGE_BIT_NV"/>
+                <enum name="GL_MULTICAST_GPUS_NV"/>
+                <enum name="GL_RENDER_GPU_MASK_NV"/>
+                <enum name="GL_PER_GPU_STORAGE_NV"/>
+                <enum name="GL_MULTICAST_PROGRAMMABLE_SAMPLE_LOCATION_NV"/>
+                <command name="glRenderGpuMaskNV"/>
+                <command name="glMulticastBufferSubDataNV"/>
+                <command name="glMulticastCopyBufferSubDataNV"/>
+                <command name="glMulticastCopyImageSubDataNV"/>
+                <command name="glMulticastBlitFramebufferNV"/>
+                <command name="glMulticastFramebufferSampleLocationsfvNV"/>
+                <command name="glMulticastBarrierNV"/>
+                <command name="glMulticastWaitSyncNV"/>
+                <command name="glMulticastGetQueryObjectivNV"/>
+                <command name="glMulticastGetQueryObjectuivNV"/>
+                <command name="glMulticastGetQueryObjecti64vNV"/>
+                <command name="glMulticastGetQueryObjectui64vNV"/>
             </require>
         </extension>
         <extension name="GL_NV_multisample_coverage" supported="gl">
@@ -46452,6 +46661,14 @@ typedef unsigned int GLhandleARB;
                 <command name="glExtGetProgramBinarySourceQCOM"/>
             </require>
         </extension>
+        <extension name="GL_QCOM_framebuffer_foveated" supported="gles2">
+            <require>
+                <enum name="GL_FOVEATION_ENABLE_BIT_QCOM"/>
+                <enum name="GL_FOVEATION_SCALED_BIN_METHOD_BIT_QCOM"/>
+                <command name="glFramebufferFoveationConfigQCOM"/>
+                <command name="glFramebufferFoveationParametersQCOM"/>
+            </require>
+        </extension>
         <extension name="GL_QCOM_perfmon_global_mode" supported="gles1|gles2">
             <require>
                 <enum name="GL_PERFMON_GLOBAL_MODE_QCOM"/>
@@ -47172,32 +47389,6 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_WIN_specular_fog" supported="gl">
             <require>
                 <enum name="GL_FOG_SPECULAR_TEXTURE_WIN"/>
-            </require>
-        </extension>
-        <extension name="GL_NV_alpha_to_coverage_dither_control" supported="gl">
-            <require>
-                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_DEFAULT_NV"/>
-                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_ENABLE_NV"/>
-                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_DISABLE_NV"/>
-                <enum name="GL_ALPHA_TO_COVERAGE_DITHER_MODE_NV"/>
-                <command name="glAlphaToCoverageDitherControlNV"/>
-            </require>
-        </extension>
-        <extension name="GL_QCOM_framebuffer_foveated" supported="gles2">
-            <require>
-                <enum name="GL_FOVEATION_ENABLE_BIT_QCOM"/>
-                <enum name="GL_FOVEATION_SCALED_BIN_METHOD_BIT_QCOM"/>
-                <command name="glFramebufferFoveationConfigQCOM"/>
-                <command name="glFramebufferFoveationParametersQCOM"/>
-            </require>
-        </extension>
-        <extension name="GL_NV_draw_vulkan_image" supported="gl|glcore|gles2">
-            <require>
-                <command name="glDrawVkImageNV"/>
-                <command name="glGetVkProcAddrNV"/>
-                <command name="glWaitVkSemaphoreNV"/>
-                <command name="glSignalVkSemaphoreNV"/>
-                <command name="glSignalVkFenceNV"/>
             </require>
         </extension>
     </extensions>
