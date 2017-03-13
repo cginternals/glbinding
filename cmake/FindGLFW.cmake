@@ -20,7 +20,7 @@ find_path(GLFW_INCLUDE_DIR GLFW/glfw3.h
     /opt/local
     /opt/graphics/OpenGL
     /opt/graphics/OpenGL/contrib/libglfw
-
+    
     PATH_SUFFIXES
     /include
 
@@ -121,3 +121,21 @@ endif()
 
 find_package_handle_standard_args(GLFW DEFAULT_MSG GLFW_LIBRARIES GLFW_INCLUDE_DIR)
 mark_as_advanced(GLFW_FOUND GLFW_INCLUDE_DIR GLFW_LIBRARIES)
+
+
+# Are we building glfw, e.g. in a parallel git submodule directory that was included prior? 
+if(TARGET    glfw)
+    set( GLFW_LIBRARIES  glfw )
+    set( GLFW_FOUND      TRUE)    
+    if( DEFINED GLFW_SOURCE_DIR)
+        if( EXISTS ${GLFW_SOURCE_DIR} )
+            set(GLFW_INCLUDE_DIR ${GLFW_SOURCE_DIR}/include)
+        endif()
+    endif()
+   
+    message(STATUS  "GLFW_LIBRARIES  =${GLFW_LIBRARIES}, \n"
+                    "GLFW_FOUND      =${GLFW_FOUND}, \n"
+                    "GLFW_INCLUDE_DIR=${GLFW_INCLUDE_DIR}\n")
+endif()
+
+

@@ -46,6 +46,11 @@ bool isCore(const Version & version)
     return (value & static_cast<unsigned int>(GL_CONTEXT_CORE_PROFILE_BIT)) > 0;
 }
 
+namespace
+{
+    bool bVisibleWindow = false;
+}
+
 Version printVersionOfContextRequest(
   const Version & version
 , const bool forward
@@ -106,7 +111,10 @@ int main(int argc, char * argv[])
 
     auto printMarkdown = false;
     for (int i = 0; i < argc; ++i)
+    {
         printMarkdown |= (strcmp(argv[i], "--markdown") == 0);
+        bVisibleWindow |= (strcmp(argv[i], "--visible") == 0);
+    }
 
     if (printMarkdown)
     {
@@ -127,7 +135,7 @@ int main(int argc, char * argv[])
     }
 
     glfwDefaultWindowHints();
-    glfwWindowHint(GLFW_VISIBLE, false);
+    glfwWindowHint(GLFW_VISIBLE, bVisibleWindow);
 
 #ifdef SYSTEM_DARWIN
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -136,13 +144,15 @@ int main(int argc, char * argv[])
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 
-    GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
+    GLFWwindow * window = glfwCreateWindow(640, 480, argv[0], nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
         return -1;
     }
-    glfwHideWindow(window);
+    
+    if(!bVisibleWindow)
+        glfwHideWindow(window);
 
     glfwMakeContextCurrent(window);
 
@@ -155,6 +165,27 @@ int main(int argc, char * argv[])
         << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
         << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+
+    
+    if (bVisibleWindow)
+    {
+        auto t0 = std::chrono::high_resolution_clock::now();
+        while(1)
+        {            
+            glfwMakeContextCurrent(window);
+            glfwPollEvents();
+            
+            auto t1 = std::chrono::high_resolution_clock::now();
+            auto cnt = std::chrono::duration_cast<std::chrono::seconds>(t1 - t0).count();
+            int esc_state = glfwGetKey(window, GLFW_KEY_ESCAPE);            
+            std::cout << cnt << " " << (char)(rand() % 92 + 32) << "\r";
+            if (esc_state == GLFW_PRESS)
+                break;
+            
+            if (cnt > 20)
+                break;
+        }
+    }
 
     glfwTerminate();
     return 0;
