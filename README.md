@@ -71,9 +71,6 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 | Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
 | [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu 14.04 | GCC 5.4 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
 
-Please note that our macOS build node is currently broken (physically). 
-However, *glbinding* is maintained for macOS as well and there are many people using it on macOS on a regular basis.
-
 
 ## Install Instructions
 
