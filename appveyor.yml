@@ -17,6 +17,7 @@ environment:
   - GENERATOR: 'Visual Studio 14 Win64'
   - GENERATOR: 'Visual Studio 12 Win64'
 matrix:
+  fast_finish: true
   allow_failures:
   - image: Visual Studio 2017
     GENERATOR: 'Visual Studio 12 Win64' 
@@ -47,8 +48,6 @@ build:
   project: c:\projects\glbinding\build\glbinding.sln
   verbosity: minimal
   parallel: true 
-matrix:
-  fast_finish: true
 only_commits:
   files:
     - CMakeLists.txt
