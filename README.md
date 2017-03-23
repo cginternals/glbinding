@@ -65,10 +65,11 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 | Service | System | Compiler | Status |
 | ------- | ------ | -------- | -----: |
 |  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | macOS | Clang ? | upcoming |
-| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu 14.04 | GCC 5.4 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
+|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | macOS | AppleClang 7.3 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
+| [AppVeyor]() | Windows | MSVC 2013<br>MSVC 2015 | [![Build status](https://ci.appveyor.com/api/projects/status/17tvc4tvdndv6xhh/branch/master?svg=true)](https://ci.appveyor.com/project/scheibel/glbinding/branch/master) |
 | Jenkins <br><br><br><br> | Ubuntu 14.04 <br><br><br><br> | GCC 4.8 <br> GCC 4.9 <br> GCC 5.4 <br> Clang 3.8 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc5.4) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.8)](https://jenkins.hpi3d.de/job/glbinding-linux-clang3.8) <br> |
 | Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
+| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu 14.04 | GCC 5.4 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
 
 Please note that our macOS build node is currently broken (physically). 
 However, *glbinding* is maintained for macOS as well and there are many people using it on macOS on a regular basis.
