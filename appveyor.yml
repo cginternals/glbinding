@@ -46,3 +46,4 @@ only_commits:
     - CMakeLists.txt
     - appveyor.yml
     - sources/
+    - cmake/
