@@ -14,12 +14,13 @@ platform:
 - x86
 clone_folder: c:\projects\glbinding
 environment:
-- toolset: cmake
-  generator: 'Visual Studio 15'
-- toolset: cmake
-  generator: 'Visual Studio 14'
-- toolset: cmake
-  generator: 'Visual Studio 12'
+  matrix:
+  - toolset: cmake
+    generator: 'Visual Studio 15'
+  - toolset: cmake
+    generator: 'Visual Studio 14'
+  - toolset: cmake
+    generator: 'Visual Studio 12'
 before_build:
 - cmd: >-
     mkdir build
