@@ -23,7 +23,7 @@ init:
 - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" ( set generator=Visual Studio 14 )
 - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2013" ( set generator=Visual Studio 12 )
 - echo %PLATFORM%
-- if "%PLATFORM%"=="x64" ( set generator=%generator% Win64 )
+- if "%PLATFORM%"=="x64" ( set generator=%generator%Win64 )
 - echo %generator%
 
 before_build:
