@@ -31,6 +31,6 @@ before_build:
 build:
   project: c:\projects\glbinding\build\glbinding.sln
   verbosity: minimal
-
+  parallel: true 
 matrix:
   fast_finish: true
