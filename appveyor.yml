@@ -1,0 +1,17 @@
+version: 1.0.{build}
+image:
+- Visual Studio 2017
+- Visual Studio 2015
+- Visual Studio 2013
+configuration:
+- Release
+- Debug
+platform: x64
+init:
+- cmd: >-
+    mkdir build
+    cd build
+    cmake ..
+build:
+  project: build/glbinding.sln
+  verbosity: minimal
