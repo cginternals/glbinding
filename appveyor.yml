@@ -17,7 +17,7 @@ matrix:
 
 # skip unsupported combinations
 init:
-- set generator=%image% Win64
+- set generator=%APPVEYOR_BUILD_WORKER_IMAGE% Win64
 - echo "%generator%"
 
 before_build:
