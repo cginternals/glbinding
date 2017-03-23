@@ -22,7 +22,7 @@ before_build:
     
     cmake --version
 
-    cmake .. -G "%GENERATOR%
+    cmake .. -G "%GENERATOR%"
     
 build:
   project: c:\projects\glbinding\build\glbinding.sln
