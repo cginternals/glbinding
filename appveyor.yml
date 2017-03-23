@@ -12,10 +12,8 @@ platform:
 clone_folder: c:\projects\glbinding
 environment:
   matrix:
-  - toolset: cmake
-    generator: 'Visual Studio 15 Win64'
-  - toolset: cmake
-    generator: 'Visual Studio 14 Win64'
+  - GENERATOR: 'Visual Studio 15 Win64'
+  - GENERATOR: 'Visual Studio 14 Win64'
 before_build:
 - cmd: >-
     mkdir build
@@ -23,8 +21,8 @@ before_build:
     cd build
     
     cmake --version
-    
-    cmake ..
+
+    cmake .. -G "%GENERATOR%
     
 build:
   project: c:\projects\glbinding\build\glbinding.sln
