@@ -19,9 +19,9 @@ matrix:
 # skip unsupported combinations
 init:
 - echo %APPVEYOR_BUILD_WORKER_IMAGE% 
-- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator=Visual Studio 15 2017)
-- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" ( set generator=Visual Studio 14 2015)
-- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2013" ( set generator=Visual Studio 12 2013)
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator=Visual Studio 15 2017 )
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" ( set generator=Visual Studio 14 2015 )
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2013" ( set generator=Visual Studio 12 2013 )
 - echo %PLATFORM%
 - if "%PLATFORM%"=="x64" ( set generator=%generator%Win64 )
 - echo %generator%
