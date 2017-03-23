@@ -1,17 +1,28 @@
 version: 1.0.{build}
+
+branches:
+  except:
+  - gh-pages
+
 image:
 - Visual Studio 2017
 - Visual Studio 2015
 - Visual Studio 2013
+
+clone_folder: c:\projects\myproject
+
 configuration:
 - Release
 - Debug
+
 platform: x64
-init:
-- cmd: >-
-    mkdir build
-    cd build
-    cmake ..
+
+before_build:
+- cmd:
+  - mkdir build
+  - cd build
+  - cmake ..
+
 build:
   project: build/glbinding.sln
   verbosity: minimal
