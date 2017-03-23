@@ -17,8 +17,9 @@ matrix:
 
 # skip unsupported combinations
 init:
-- set generator=%APPVEYOR_BUILD_WORKER_IMAGE% Win64
-- echo "%generator%"
+- if %APPVEYOR_BUILD_WORKER_IMAGE% equ 'Visual Studio 2017' ( set generator='Visual Studio 15 Win64' )
+- if %APPVEYOR_BUILD_WORKER_IMAGE% equ 'Visual Studio 2015' ( set generator='Visual Studio 14 Win64' )
+- if %APPVEYOR_BUILD_WORKER_IMAGE% equ 'Visual Studio 2013' ( set generator='Visual Studio 12 Win64' )
 
 before_build:
 - cmd: >-
@@ -28,7 +29,7 @@ before_build:
     
     cmake --version
 
-    cmake .. -G "%generator%"
+    cmake .. -G %generator%
     
 build:
   project: c:\projects\glbinding\build\glbinding.sln
