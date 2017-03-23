@@ -6,7 +6,6 @@ image:
 configuration:
 - Release
 - Debug
-platform: x64
 clone_folder: c:\projects\glbinding
 before_build:
 - cmd: >-
@@ -18,4 +17,3 @@ before_build:
 build:
   project: c:\projects\glbinding\build\glbinding.sln
   verbosity: minimal
-  
