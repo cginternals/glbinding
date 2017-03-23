@@ -17,9 +17,9 @@ matrix:
 
 # skip unsupported combinations
 init:
-- if %APPVEYOR_BUILD_WORKER_IMAGE% equ 'Visual Studio 2017' ( set generator='Visual Studio 15 Win64' )
-- if %APPVEYOR_BUILD_WORKER_IMAGE% equ 'Visual Studio 2015' ( set generator='Visual Studio 14 Win64' )
-- if %APPVEYOR_BUILD_WORKER_IMAGE% equ 'Visual Studio 2013' ( set generator='Visual Studio 12 Win64' )
+- if '%APPVEYOR_BUILD_WORKER_IMAGE%'=='Visual Studio 2017' ( set generator='Visual Studio 15 Win64' )
+- if '%APPVEYOR_BUILD_WORKER_IMAGE%'=='Visual Studio 2015' ( set generator='Visual Studio 14 Win64' )
+- if '%APPVEYOR_BUILD_WORKER_IMAGE%'=='Visual Studio 2013' ( set generator='Visual Studio 12 Win64' )
 
 before_build:
 - cmd: >-
