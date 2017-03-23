@@ -12,14 +12,16 @@ configuration:
 - Debug
 platform:
 - x64
+- x86
 matrix:
   fast_finish: true
 
 # skip unsupported combinations
 init:
-- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator="Visual Studio 15 Win64" )
-- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" ( set generator="Visual Studio 14 Win64" )
-- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2013" ( set generator="Visual Studio 12 Win64" )
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator=Visual Studio 15 )
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2015" ( set generator=Visual Studio 14 )
+- if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2013" ( set generator=Visual Studio 12 )
+- if "%PLATFORM%"=="x64" ( set generator=%generator% Win64 )
 
 before_build:
 - cmd: >-
@@ -29,7 +31,7 @@ before_build:
     
     cmake --version
 
-    cmake .. -G %generator%
+    cmake .. -G '%generator%'
     
 build:
   project: c:\projects\glbinding\build\glbinding.sln
