@@ -9,13 +9,22 @@ image:
 configuration:
 - Release
 - Debug
+platform:
+- x64
+- x86
 clone_folder: c:\projects\glbinding
+environment:
+- toolset: cmake
+  generator: 'Visual Studio 15'
+- toolset: cmake
+  generator: 'Visual Studio 14'
+- toolset: cmake
+  generator: 'Visual Studio 12'
 before_build:
 - cmd: >-
     mkdir build
-
     cd build
-
+    cmake --version
     cmake ..
 build:
   project: c:\projects\glbinding\build\glbinding.sln
