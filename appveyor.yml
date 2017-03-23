@@ -5,34 +5,20 @@ branches:
 clone_folder: c:\projects\glbinding
 image:
 - Visual Studio 2017
+- Visual Studio 2015
 - Visual Studio 2013
 configuration:
 - Release
 - Debug
 platform:
 - x64
-environment:
-  matrix:
-  - GENERATOR: 'Visual Studio 15 Win64'
-  - GENERATOR: 'Visual Studio 14 Win64'
-  - GENERATOR: 'Visual Studio 12 Win64'
 matrix:
   fast_finish: true
-  allow_failures:
-  - image: Visual Studio 2017
-    GENERATOR: 'Visual Studio 12 Win64' 
-  - image: Visual Studio 2013
-    GENERATOR: 'Visual Studio 15 Win64'
-  - image: Visual Studio 2013
-    GENERATOR: 'Visual Studio 14 Win64'
 
 # skip unsupported combinations
 init:
-- set _skip=0
-- if "%image%" EQU "Visual Studio 2017" ( if "%GENERATOR%" EQU "Visual Studio 12 Win64" ( Set _skip=1 ) )
-- if "%image%" EQU "Visual Studio 2013" ( if "%GENERATOR%" EQU "Visual Studio 15 Win64" ( Set _skip=1 ) )
-- if "%image%" EQU "Visual Studio 2013" ( if "%GENERATOR%" EQU "Visual Studio 14 Win64" ( Set _skip=1 ) )
-- if %_skip% EQU 1 (echo "skipping invalid configuration" && exit /b 1 ) 
+- set generator=%image% Win64
+- echo "%generator%"
 
 before_build:
 - cmd: >-
@@ -42,7 +28,7 @@ before_build:
     
     cmake --version
 
-    cmake .. -G "%GENERATOR%"
+    cmake .. -G "%generator%"
     
 build:
   project: c:\projects\glbinding\build\glbinding.sln
