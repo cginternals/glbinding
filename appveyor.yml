@@ -16,12 +16,12 @@ environment:
   - GENERATOR: 'Visual Studio 15 Win64'
   - GENERATOR: 'Visual Studio 14 Win64'
   - GENERATOR: 'Visual Studio 12 Win64'
- allow_failures:
-  - image: Visual Studio 2017
-    GENERATOR: 'Visual Studio 12 Win64' 
-  - image: Visual Studio 2013
-    GENERATOR: 'Visual Studio 15 Win64'
-    GENERATOR: 'Visual Studio 14 Win64'
+   allow_failures:
+    - image: Visual Studio 2017
+      GENERATOR: 'Visual Studio 12 Win64' 
+    - image: Visual Studio 2013
+      GENERATOR: 'Visual Studio 15 Win64'
+      GENERATOR: 'Visual Studio 14 Win64'
 
 # skip unsupported combinations
 init:
