@@ -22,7 +22,7 @@ matrix:
 # skip unsupported combinations
 init:
 - set arch=
-- rem if "%PLATFORM%"=="x64" ( set arch= Win64)
+- if "%arch%"=="Win64" ( set arch= Win64)
 - echo %arch%
 - echo %APPVEYOR_BUILD_WORKER_IMAGE%
 - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator="Visual Studio 15 2017%arch%" )
