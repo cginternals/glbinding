@@ -9,16 +9,13 @@ configuration:
 - Debug
 platform:
 - x64
-- x86
 clone_folder: c:\projects\glbinding
 environment:
   matrix:
   - toolset: cmake
-    generator: 'Visual Studio 15'
+    generator: 'Visual Studio 15 Win64'
   - toolset: cmake
-    generator: 'Visual Studio 14'
-  - toolset: cmake
-    generator: 'Visual Studio 12'
+    generator: 'Visual Studio 14 Win64'
 before_build:
 - cmd: >-
     mkdir build
@@ -32,3 +29,6 @@ before_build:
 build:
   project: c:\projects\glbinding\build\glbinding.sln
   verbosity: minimal
+
+matrix:
+  fast_finish: true
