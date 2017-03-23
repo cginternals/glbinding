@@ -13,7 +13,11 @@ clone_folder: c:\projects\glbinding
 environment:
   matrix:
   - GENERATOR: 'Visual Studio 15 Win64'
+  - GENERATOR: 'Visual Studio 15'
   - GENERATOR: 'Visual Studio 14 Win64'
+  - GENERATOR: 'Visual Studio 14'
+  - GENERATOR: 'Visual Studio 12 Win64'
+  - GENERATOR: 'Visual Studio 12'
 before_build:
 - cmd: >-
     mkdir build
