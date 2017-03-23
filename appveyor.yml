@@ -1,6 +1,8 @@
 version: '{build}'
+branches:
+  only:
+  - master
 image:
-- Visual Studio 2017
 - Visual Studio 2015
 - Visual Studio 2013
 configuration:
