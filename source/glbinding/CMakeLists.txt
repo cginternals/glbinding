@@ -303,6 +303,17 @@ if (MSVC_IDE)
 endif()
 
 
+#
+# Target Health
+#
+
+perform_health_checks(
+    ${target}
+    ${sources}
+    ${headers}
+)
+
+
 # 
 # Deployment
 # 

@@ -1,0 +1,58 @@
+Source: libglbinding
+Section: misc
+Priority: optional
+Maintainer: Willy Scheibel <willy.scheibel@cginternals.com>
+Build-Depends: build-essential, cmake, libgl1-mesa-dev, libglfw3-dev, libcpplocate-dev, libcpplocate-dbg, qtbase5-dev, doxygen, graphviz
+Standards-Version: 3.8.0
+
+Package: libglbinding
+Architecture: any
+Depends: libgl1-mesa-glx
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-dev
+Architecture: any
+Depends: libglbinding
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-examples-data
+Architecture: any
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-examples-glfw
+Architecture: any
+Depends: libglbinding, libglbinding-examples-data, libglfw3
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-examples-qt
+Architecture: any
+Depends: libglbinding, libglbinding-examples-data, libqt5core5a
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-tools
+Architecture: any
+Depends: libglbinding, libglfw3
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-docs
+Architecture: any
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-dbg
+Architecture: any
+Depends: libglbinding, libglbinding-dev
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
+
+Package: libglbinding-all
+Architecture: any
+Depends: libglbinding, libglbinding-dev, libglbinding-docs, libglbinding-tools, libglbinding-examples-glfw, libglbinding-examples-qt
+Homepage: https://glbinding.org
+Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.

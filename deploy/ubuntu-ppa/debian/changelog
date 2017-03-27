@@ -1,0 +1,23 @@
+libglbinding (2.1.1-0) UNRELEASED; urgency=medium
+
+  * Minor release 2.1.1
+
+ -- Willy Scheibel <willy.scheibel@cginternals.com>  Mon, 01 Jul 2016 09:27:00 +0200
+
+libglbinding (2.1.0-0) UNRELEASED; urgency=medium
+
+  * Minor release 2.1
+
+ -- Willy Scheibel <willy.scheibel@cginternals.com>  Mon, 27 Jun 2016 17:33:00 +0200
+
+libglbinding (2.0.0-0) UNRELEASED; urgency=medium
+
+  * Major release 2.0
+
+ -- Willy Scheibel <willy.scheibel@cginternals.com>  Wed, 23 Mar 2016 21:27:51 +0100
+
+libglbinding (1.1.0-0) UNRELEASED; urgency=low
+
+  * Initial release.
+
+ -- Willy Scheibel <willy.scheibel@cginternals.com>  Tue, 26 Jan 2016 12:50:03 +0100
