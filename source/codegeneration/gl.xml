@@ -37448,7 +37448,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glMemoryBarrierByRegion"/>
             </require>
         </extension>
-        <extension name="GL_ARB_ES3_2_compatibility" supported="gl">
+        <extension name="GL_ARB_ES3_2_compatibility" supported="gl|glcore">
             <require>
                 <enum name="GL_PRIMITIVE_BOUNDING_BOX_ARB"/>
                 <enum name="GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB"/>
@@ -37874,7 +37874,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glDrawElementsIndirect"/>
             </require>
         </extension>
-        <extension name="GL_ARB_draw_instanced" supported="gl">
+        <extension name="GL_ARB_draw_instanced" supported="gl|glcore">
             <require>
                 <command name="glDrawArraysInstancedARB"/>
                 <command name="glDrawElementsInstancedARB"/>
@@ -38007,7 +38007,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_fragment_shader_interlock" supported="gl"/>
+        <extension name="GL_ARB_fragment_shader_interlock" supported="gl|glcore"/>
         <extension name="GL_ARB_framebuffer_no_attachments" supported="gl|glcore">
             <require>
                 <enum name="GL_FRAMEBUFFER_DEFAULT_WIDTH"/>
@@ -38127,7 +38127,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_FRAMEBUFFER_SRGB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_geometry_shader4" supported="gl">
+        <extension name="GL_ARB_geometry_shader4" supported="gl|glcore">
             <require>
                 <enum name="GL_LINES_ADJACENCY_ARB"/>
                 <enum name="GL_LINE_STRIP_ADJACENCY_ARB"/>
@@ -38217,7 +38217,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glGetUniformdv"/>
             </require>
         </extension>
-        <extension name="GL_ARB_gpu_shader_int64" supported="gl">
+        <extension name="GL_ARB_gpu_shader_int64" supported="gl|glcore">
             <require>
                 <enum name="GL_INT64_ARB"/>
                 <enum name="GL_UNSIGNED_INT64_ARB"/>
@@ -38400,7 +38400,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glMultiDrawElementsIndirectCountARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_instanced_arrays" supported="gl">
+        <extension name="GL_ARB_instanced_arrays" supported="gl|glcore">
             <require>
                 <enum name="GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB"/>
                 <command name="glVertexAttribDivisorARB"/>
@@ -38703,7 +38703,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_ANY_SAMPLES_PASSED"/>
             </require>
         </extension>
-        <extension name="GL_ARB_parallel_shader_compile" supported="gl">
+        <extension name="GL_ARB_parallel_shader_compile" supported="gl|glcore">
             <require>
                 <enum name="GL_MAX_SHADER_COMPILER_THREADS_ARB"/>
                 <enum name="GL_COMPLETION_STATUS_ARB"/>
@@ -38725,7 +38725,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_CLIPPING_OUTPUT_PRIMITIVES_ARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_pixel_buffer_object" supported="gl">
+        <extension name="GL_ARB_pixel_buffer_object" supported="gl|glcore">
             <require>
                 <enum name="GL_PIXEL_PACK_BUFFER_ARB"/>
                 <enum name="GL_PIXEL_UNPACK_BUFFER_ARB"/>
@@ -38749,7 +38749,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COORD_REPLACE_ARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_post_depth_coverage" supported="gl"/>
+        <extension name="GL_ARB_post_depth_coverage" supported="gl|glcore"/>
         <extension name="GL_ARB_program_interface_query" supported="gl|glcore">
             <require>
                 <enum name="GL_UNIFORM"/>
@@ -38863,7 +38863,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_ARB_robustness_isolation" supported="gl|glcore"/>
-        <extension name="GL_ARB_sample_locations" supported="gl">
+        <extension name="GL_ARB_sample_locations" supported="gl|glcore">
             <require>
                 <enum name="GL_SAMPLE_LOCATION_SUBPIXEL_BITS_ARB"/>
                 <enum name="GL_SAMPLE_LOCATION_PIXEL_GRID_WIDTH_ARB"/>
@@ -38988,7 +38988,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glGetProgramPipelineInfoLog"/>
             </require>
         </extension>
-        <extension name="GL_ARB_shader_atomic_counter_ops" supported="gl"/>
+        <extension name="GL_ARB_shader_atomic_counter_ops" supported="gl|glcore"/>
         <extension name="GL_ARB_shader_atomic_counters" supported="gl|glcore">
             <require>
                 <enum name="GL_ATOMIC_COUNTER_BUFFER"/>
@@ -39023,9 +39023,9 @@ typedef unsigned int GLhandleARB;
                 <command name="glGetActiveAtomicCounterBufferiv"/>
             </require>
         </extension>
-        <extension name="GL_ARB_shader_ballot" supported="gl"/>
+        <extension name="GL_ARB_shader_ballot" supported="gl|glcore"/>
         <extension name="GL_ARB_shader_bit_encoding" supported="gl|glcore"/>
-        <extension name="GL_ARB_shader_clock" supported="gl"/>
+        <extension name="GL_ARB_shader_clock" supported="gl|glcore"/>
         <extension name="GL_ARB_shader_draw_parameters" supported="gl|glcore"/>
         <extension name="GL_ARB_shader_group_vote" supported="gl|glcore"/>
         <extension name="GL_ARB_shader_image_load_store" supported="gl|glcore">
@@ -39225,7 +39225,7 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_ARB_shader_texture_image_samples" supported="gl|glcore"/>
         <extension name="GL_ARB_shader_texture_lod" supported="gl"/>
-        <extension name="GL_ARB_shader_viewport_layer_array" supported="gl"/>
+        <extension name="GL_ARB_shader_viewport_layer_array" supported="gl|glcore"/>
         <extension name="GL_ARB_shading_language_100" supported="gl">
             <require>
                 <enum name="GL_SHADING_LANGUAGE_VERSION_ARB"/>
@@ -39287,9 +39287,9 @@ typedef unsigned int GLhandleARB;
                 <command name="glTexPageCommitmentARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_sparse_texture2" supported="gl|glcore|gles2"/>
-        <extension name="GL_ARB_sparse_texture_clamp" supported="gl"/>
-        <extension name="GL_ARB_gl_spirv" supported="gl">
+        <extension name="GL_ARB_sparse_texture2" supported="gl|glcore"/>
+        <extension name="GL_ARB_sparse_texture_clamp" supported="gl|glcore"/>
+        <extension name="GL_ARB_gl_spirv" supported="gl|glcore">
             <require>
                 <enum name="GL_SHADER_BINARY_FORMAT_SPIR_V_ARB"/>
                 <enum name="GL_SPIR_V_BINARY_ARB"/>
@@ -39375,12 +39375,12 @@ typedef unsigned int GLhandleARB;
                 <command name="glTextureBarrier"/>
             </require>
         </extension>
-        <extension name="GL_ARB_texture_border_clamp" supported="gl">
+        <extension name="GL_ARB_texture_border_clamp" supported="gl|glcore">
             <require>
                 <enum name="GL_CLAMP_TO_BORDER_ARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_texture_buffer_object" supported="gl">
+        <extension name="GL_ARB_texture_buffer_object" supported="gl|glcore">
             <require>
                 <enum name="GL_TEXTURE_BUFFER_ARB"/>
                 <enum name="GL_MAX_TEXTURE_BUFFER_SIZE_ARB"/>
@@ -39504,7 +39504,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_DOT3_RGBA_ARB"/>
             </require>
         </extension>
-        <extension name="GL_ARB_texture_filter_minmax" supported="gl">
+        <extension name="GL_ARB_texture_filter_minmax" supported="gl|glcore">
             <require>
                 <enum name="GL_TEXTURE_REDUCTION_MODE_ARB"/>
                 <enum name="GL_WEIGHTED_AVERAGE_ARB"/>
@@ -39546,7 +39546,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_MIRROR_CLAMP_TO_EDGE"/>
             </require>
         </extension>
-        <extension name="GL_ARB_texture_mirrored_repeat" supported="gl">
+        <extension name="GL_ARB_texture_mirrored_repeat" supported="gl|glcore">
             <require>
                 <enum name="GL_MIRRORED_REPEAT_ARB"/>
             </require>
@@ -39580,7 +39580,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glSampleMaski"/>
             </require>
         </extension>
-        <extension name="GL_ARB_texture_non_power_of_two" supported="gl"/>
+        <extension name="GL_ARB_texture_non_power_of_two" supported="gl|glcore"/>
         <extension name="GL_ARB_texture_query_levels" supported="gl|glcore"/>
         <extension name="GL_ARB_texture_query_lod" supported="gl|glcore"/>
         <extension name="GL_ARB_texture_rectangle" supported="gl">
@@ -42242,7 +42242,7 @@ typedef unsigned int GLhandleARB;
                 <!-- <command name="glTexturePageCommitmentEXT"/> -->
             </require>
         </extension>
-        <extension name="GL_EXT_sparse_texture2" supported="gl"/>
+        <extension name="GL_EXT_sparse_texture2" supported="gl|gles2"/>
         <extension name="GL_EXT_stencil_clear_tag" supported="gl">
             <require>
                 <enum name="GL_STENCIL_TAG_BITS_EXT"/>
@@ -43757,13 +43757,13 @@ typedef unsigned int GLhandleARB;
                 <command name="glAlphaToCoverageDitherControlNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_bindless_multi_draw_indirect" supported="gl">
+        <extension name="GL_NV_bindless_multi_draw_indirect" supported="gl|glcore">
             <require>
                 <command name="glMultiDrawArraysIndirectBindlessNV"/>
                 <command name="glMultiDrawElementsIndirectBindlessNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_bindless_multi_draw_indirect_count" supported="gl">
+        <extension name="GL_NV_bindless_multi_draw_indirect_count" supported="gl|glcore">
             <require>
                 <command name="glMultiDrawArraysIndirectBindlessCountNV"/>
                 <command name="glMultiDrawElementsIndirectBindlessCountNV"/>
@@ -43849,7 +43849,7 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_NV_blend_square" supported="gl"/>
-        <extension name="GL_NV_clip_space_w_scaling" supported="gl">
+        <extension name="GL_NV_clip_space_w_scaling" supported="gl|glcore">
             <require>
                 <enum name="GL_VIEWPORT_POSITION_W_SCALE_NV"/>
                 <enum name="GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV"/>
@@ -43857,7 +43857,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glViewportPositionWScaleNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_command_list" supported="gl">
+        <extension name="GL_NV_command_list" supported="gl|glcore">
             <require>
                 <enum name="GL_TERMINATE_SEQUENCE_COMMAND_NV"/>
                 <enum name="GL_NOP_COMMAND_NV"/>
@@ -43922,7 +43922,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glSubpixelPrecisionBiasNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_conservative_raster_dilate" supported="gl">
+        <extension name="GL_NV_conservative_raster_dilate" supported="gl|glcore">
             <require>
                 <enum name="GL_CONSERVATIVE_RASTER_DILATE_NV"/>
                 <enum name="GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV"/>
@@ -44255,7 +44255,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glRenderbufferStorageMultisampleNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_framebuffer_multisample_coverage" supported="gl">
+        <extension name="GL_NV_framebuffer_multisample_coverage" supported="gl|glcore">
             <require>
                 <enum name="GL_RENDERBUFFER_COVERAGE_SAMPLES_NV"/>
                 <enum name="GL_RENDERBUFFER_COLOR_SAMPLES_NV"/>
@@ -44986,12 +44986,12 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_NV_sample_mask_override_coverage" supported="gl|glcore|gles2"/>
-        <extension name="GL_NV_shader_atomic_counters" supported="gl"/>
-        <extension name="GL_NV_shader_atomic_float" supported="gl"/>
-        <extension name="GL_NV_shader_atomic_float64" supported="gl"/>
+        <extension name="GL_NV_shader_atomic_counters" supported="gl|glcore"/>
+        <extension name="GL_NV_shader_atomic_float" supported="gl|glcore"/>
+        <extension name="GL_NV_shader_atomic_float64" supported="gl|glcore"/>
         <extension name="GL_NV_shader_atomic_fp16_vector" supported="gl|glcore|gles2"/>
-        <extension name="GL_NV_shader_atomic_int64" supported="gl"/>
-        <extension name="GL_NV_shader_buffer_load" supported="gl">
+        <extension name="GL_NV_shader_atomic_int64" supported="gl|glcore"/>
+        <extension name="GL_NV_shader_buffer_load" supported="gl|glcore">
             <require>
                 <enum name="GL_BUFFER_GPU_ADDRESS_NV"/>
                 <enum name="GL_GPU_ADDRESS_NV"/>
@@ -45012,7 +45012,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glProgramUniformui64vNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_shader_buffer_store" supported="gl">
+        <extension name="GL_NV_shader_buffer_store" supported="gl|glcore">
             <require>
                 <enum name="GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV"/>
                 <enum name="GL_READ_WRITE"/>
@@ -45021,14 +45021,14 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_NV_shader_noperspective_interpolation" supported="gles2"/>
         <extension name="GL_NV_shader_storage_buffer_object" supported="gl"/>
-        <extension name="GL_NV_shader_thread_group" supported="gl">
+        <extension name="GL_NV_shader_thread_group" supported="gl|glcore">
             <require>
                 <enum name="GL_WARP_SIZE_NV"/>
                 <enum name="GL_WARPS_PER_SM_NV"/>
                 <enum name="GL_SM_COUNT_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_shader_thread_shuffle" supported="gl"/>
+        <extension name="GL_NV_shader_thread_shuffle" supported="gl|glcore"/>
         <extension name="GL_NV_shadow_samplers_array" supported="gles2">
             <require>
                 <enum name="GL_SAMPLER_2D_ARRAY_SHADOW_NV"/>
@@ -45039,7 +45039,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SAMPLER_CUBE_SHADOW_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_stereo_view_rendering" supported="gl"/>
+        <extension name="GL_NV_stereo_view_rendering" supported="gl|glcore"/>
         <extension name="GL_NV_tessellation_program5" supported="gl">
             <require>
                 <enum name="GL_MAX_PROGRAM_PATCH_ATTRIBS_NV"/>
@@ -45062,7 +45062,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_REFLECTION_MAP_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_texture_barrier" supported="gl">
+        <extension name="GL_NV_texture_barrier" supported="gl|glcore">
             <require>
                 <command name="glTextureBarrierNV"/>
             </require>
@@ -45279,7 +45279,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glDrawTransformFeedbackNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_uniform_buffer_unified_memory" supported="gl">
+        <extension name="GL_NV_uniform_buffer_unified_memory" supported="gl|glcore">
             <require>
                 <enum name="GL_UNIFORM_BUFFER_UNIFIED_NV"/>
                 <enum name="GL_UNIFORM_BUFFER_ADDRESS_NV"/>
@@ -45320,7 +45320,7 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_VERTEX_ARRAY_RANGE_WITHOUT_FLUSH_NV"/>
             </require>
         </extension>
-        <extension name="GL_NV_vertex_attrib_integer_64bit" supported="gl">
+        <extension name="GL_NV_vertex_attrib_integer_64bit" supported="gl|glcore">
             <require>
                 <enum name="GL_INT64_NV"/>
                 <enum name="GL_UNSIGNED_INT64_NV"/>
@@ -45345,7 +45345,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glVertexAttribLFormatNV"/>
             </require>
         </extension>
-        <extension name="GL_NV_vertex_buffer_unified_memory" supported="gl">
+        <extension name="GL_NV_vertex_buffer_unified_memory" supported="gl|glcore">
             <require>
                 <enum name="GL_VERTEX_ATTRIB_ARRAY_UNIFIED_NV"/>
                 <enum name="GL_ELEMENT_ARRAY_UNIFIED_NV"/>
