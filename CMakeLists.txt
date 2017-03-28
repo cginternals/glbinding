@@ -21,6 +21,7 @@ endif()
 
 include(cmake/GetGitRevisionDescription.cmake)
 include(cmake/Custom.cmake)
+include(cmake/HealthCheck.cmake)
 
 # Set policies
 set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
@@ -52,7 +53,7 @@ set(META_VERSION_PATCH       "1")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
-set(META_CMAKE_INIT_SHA      "70a376bc91291a73a976f96871a657d54a158dd5")
+set(META_CMAKE_INIT_SHA      "754eda5fe2956294e1c7af6b30c10cb766ce2099")
 
 string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
 string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
@@ -96,6 +97,14 @@ file(WRITE "${PROJECT_BINARY_DIR}/VERSION" "${META_NAME_VERSION}")
 # 
 
 include(cmake/CompileOptions.cmake)
+
+
+#
+# Project Health Check Setup
+#
+
+enable_cppcheck(On)
+enable_clang_tidy(On)
 
 
 # 

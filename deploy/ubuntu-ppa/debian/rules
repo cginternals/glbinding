@@ -1,0 +1,97 @@
+#!/usr/bin/make -f
+
+BUILDDIR = build
+BUILDDEBUGDIR = build-debug
+
+# firstly called by launchpad
+clean:
+	rm -rf $(BUILDDIR)
+	rm -rf $(BUILDDEBUGDIR)
+
+# secondly called by launchpad
+build: build-arch
+
+build-arch:
+	mkdir $(BUILDDIR)
+	cd $(BUILDDIR);cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DOPTION_BUILD_TESTS=Off -DOPTION_BUILD_EXAMPLES=On -DOPTION_BUILD_DOCS=On ..
+	make -C $(BUILDDIR)
+	mkdir $(BUILDDEBUGDIR)
+	cd $(BUILDDEBUGDIR);cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr -DOPTION_BUILD_TESTS=Off -DOPTION_BUILD_EXAMPLES=Off -DOPTION_BUILD_DOCS=Off ..
+	make -C $(BUILDDEBUGDIR)
+
+# thirdly called by launchpad
+binary: binary-arch
+
+binary-arch: libglbinding libglbinding-dev libglbinding-docs libglbinding-dbg libglbinding-examples-data libglbinding-examples-glfw libglbinding-examples-qt libglbinding-tools libglbinding-all
+
+libglbinding:
+	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=runtime make component_install
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-dev:
+	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=dev make component_install
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-dev
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-docs:
+	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=docs make component_install
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-docs
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-dbg:
+	cd $(BUILDDEBUGDIR); DESTDIR=../debian/tmp COMPONENT=runtime make component_install
+	cd $(BUILDDEBUGDIR); DESTDIR=../debian/tmp COMPONENT=dev make component_install
+	rm -rf debian/tmp/usr/include
+	rm debian/tmp/usr/share/*/*-config.cmake
+	rm debian/tmp/usr/share/*/AUTHORS
+	rm debian/tmp/usr/share/*/LICENSE
+	rm debian/tmp/usr/share/*/README.md
+	rm debian/tmp/usr/share/*/VERSION
+	rm debian/tmp/usr/share/*/cmake/*/*-export.cmake
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-dbg
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-examples-data:
+	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=examples_data make component_install
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-examples-data
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-examples-glfw:
+	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=examples_glfw make component_install
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-examples-glfw
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-examples-qt:
+	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=examples_qt make component_install
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-examples-qt
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-tools:
+	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=tools make component_install
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-tools
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+libglbinding-all:
+	mkdir -p debian/tmp/DEBIAN
+	dpkg-gencontrol -plibglbinding-all
+	dpkg --build debian/tmp ..
+	rm -rf debian/tmp
+
+.PHONY: build build-arch binary binary-arch clean libglbinding libglbinding-dev libglbinding-docs libglbinding-dbg libglbinding-examples-data libglbinding-examples-glfw libglbinding-examples-qt libglbinding-tools libglbinding-all

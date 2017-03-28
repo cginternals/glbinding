@@ -26,8 +26,8 @@ matrix:
 before_install:
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install qt5; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev cppcheck clang-tidy-3.8; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install qt5 cppcheck; fi
 
 before_script:
   - ./configure
@@ -37,3 +37,4 @@ before_script:
 script:
   - cmake --build $BUILD_DIR
   - cmake --build $BUILD_DIR --target test
+  - cmake --build $BUILD_DIR --target check-all

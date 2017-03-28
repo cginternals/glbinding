@@ -111,6 +111,16 @@ target_link_libraries(${target}
 )
 
 
+#
+# Target Health
+#
+
+perform_health_checks(
+    ${target}
+    ${sources}
+)
+
+
 # 
 # Deployment
 # 
