@@ -15,8 +15,8 @@ Function<GLenum, GLenum> Binding::CheckFramebufferStatus("glCheckFramebufferStat
 Function<GLenum, GLenum> Binding::CheckFramebufferStatusEXT("glCheckFramebufferStatusEXT");
 Function<GLenum, GLuint, GLenum> Binding::CheckNamedFramebufferStatus("glCheckNamedFramebufferStatus");
 Function<GLenum, GLuint, GLenum> Binding::CheckNamedFramebufferStatusEXT("glCheckNamedFramebufferStatusEXT");
-Function<void, GLenum, GLenum> Binding::ClampColor("glClampColor");
-Function<void, GLenum, GLenum> Binding::ClampColorARB("glClampColorARB");
+Function<void, GLenum, GLboolean> Binding::ClampColor("glClampColor");
+Function<void, GLenum, GLboolean> Binding::ClampColorARB("glClampColorARB");
 Function<void, ClearBufferMask> Binding::Clear("glClear");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::ClearAccum("glClearAccum");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::ClearAccumxOES("glClearAccumxOES");

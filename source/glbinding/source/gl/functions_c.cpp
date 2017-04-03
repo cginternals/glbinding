@@ -46,12 +46,12 @@ GLenum glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target)
     return Binding::CheckNamedFramebufferStatusEXT(framebuffer, target);
 }
 
-void glClampColor(GLenum target, GLenum clamp)
+void glClampColor(GLenum target, GLboolean clamp)
 {
     return Binding::ClampColor(target, clamp);
 }
 
-void glClampColorARB(GLenum target, GLenum clamp)
+void glClampColorARB(GLenum target, GLboolean clamp)
 {
     return Binding::ClampColorARB(target, clamp);
 }

@@ -292,8 +292,8 @@ public:
     static Function<gl::GLenum, gl::GLenum> CheckFramebufferStatusEXT;
     static Function<gl::GLenum, gl::GLuint, gl::GLenum> CheckNamedFramebufferStatus;
     static Function<gl::GLenum, gl::GLuint, gl::GLenum> CheckNamedFramebufferStatusEXT;
-    static Function<void, gl::GLenum, gl::GLenum> ClampColor;
-    static Function<void, gl::GLenum, gl::GLenum> ClampColorARB;
+    static Function<void, gl::GLenum, gl::GLboolean> ClampColor;
+    static Function<void, gl::GLenum, gl::GLboolean> ClampColorARB;
     static Function<void, gl::ClearBufferMask> Clear;
     static Function<void, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> ClearAccum;
     static Function<void, gl::GLfixed, gl::GLfixed, gl::GLfixed, gl::GLfixed> ClearAccumxOES;
