@@ -1,5 +1,6 @@
 from classes.Feature import *
 from classes.Extension import *
+import bisect
 
 
 def translateType(t, name):
@@ -8,6 +9,14 @@ def translateType(t, name):
         return "GLboolean"
 
     return { "u" : "GLuint", "ull" : "GLuint64"    }.get(t, "GLenum")
+
+# https://docs.python.org/2/library/bisect.html
+def find_le(a, x):
+    'Find rightmost value less than or equal to x'
+    i = bisect.bisect_right(a, x)
+    if i:
+        return a[i-1]
+    return None
 
 
 class Enum:
@@ -69,7 +78,7 @@ class Enum:
         if feature is None:
             return True
 
-        # ToDo: this might create a cyclic recursion if glm is errorneuos
+        # ToDo: this might create a cyclic recursion if OpenGL is errorneuos
         aliasSupported = self.alias.supported(feature, core) if self.alias else False
 
         # Note: design decission:
@@ -82,8 +91,12 @@ class Enum:
             return aliasSupported
 
         if core:
-            sSelf = min(self.reqFeatures) <= feature and (not self.remFeatures or min(self.remFeatures) > feature) 
-            return sSelf or aliasSupported
+            req = find_le(self.reqFeatures, feature)
+            rem = find_le(self.remFeatures, feature)
+            
+            if req is not None and rem is not None:
+                return req > rem or aliasSupported
+            return req <= feature or aliasSupported
         else:
             sSelf = min(self.reqFeatures) <= feature
             return sSelf or aliasSupported

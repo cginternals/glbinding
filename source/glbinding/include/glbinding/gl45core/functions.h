@@ -242,6 +242,7 @@ using gl::glGetNamedFramebufferParameteriv;
 using gl::glGetNamedRenderbufferParameteriv;
 using gl::glGetObjectLabel;
 using gl::glGetObjectPtrLabel;
+using gl::glGetPointerv;
 using gl::glGetProgramBinary;
 using gl::glGetProgramInfoLog;
 using gl::glGetProgramInterfaceiv;

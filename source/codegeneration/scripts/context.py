@@ -232,4 +232,5 @@ class Context:
                                                         filter = lambda e: e["supported"](feature, core, ext))
         context["functions"] = self.listContext(self.functionContexts, sortKey = lambda f: f["identifier"],
                                                   filter = lambda f: f["supported"](feature, core, ext))
+        
         return context

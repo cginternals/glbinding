@@ -4,9 +4,18 @@ import xml.etree.ElementTree as ET
 
 from classes.Feature import *
 from classes.Extension import *
+import bisect
 
 # near and far are defined by windows.h ... :( 
 exceptions = ["GetProcAddress", "near", "far"]
+
+# https://docs.python.org/2/library/bisect.html
+def find_le(a, x):
+    'Find rightmost value less than or equal to x'
+    i = bisect.bisect_right(a, x)
+    if i:
+        return a[i-1]
+    return None
 
 class Parameter:
 
@@ -91,7 +100,12 @@ class Command:
             return False
 
         if core:
-            return min(self.reqFeatures) <= feature and (not self.remFeatures or min(self.remFeatures) > feature) 
+            req = find_le(self.reqFeatures, feature)
+            rem = find_le(self.remFeatures, feature)
+            
+            if req is not None and rem is not None:
+                return req > rem
+            return req <= feature
         else:
             return min(self.reqFeatures) <= feature
 

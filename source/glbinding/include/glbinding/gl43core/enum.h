@@ -120,6 +120,7 @@ using gl::GL_TEXTURE_2D;
 using gl::GL_POLYGON_OFFSET_POINT;
 using gl::GL_POLYGON_OFFSET_LINE;
 using gl::GL_POLYGON_OFFSET_FILL;
+using gl::GL_VERTEX_ARRAY;
 
 // ErrorCode
 
@@ -127,6 +128,8 @@ using gl::GL_NO_ERROR;
 using gl::GL_INVALID_ENUM;
 using gl::GL_INVALID_VALUE;
 using gl::GL_INVALID_OPERATION;
+using gl::GL_STACK_OVERFLOW;
+using gl::GL_STACK_UNDERFLOW;
 using gl::GL_OUT_OF_MEMORY;
 using gl::GL_INVALID_FRAMEBUFFER_OPERATION;
 
@@ -229,6 +232,7 @@ using gl::GL_POLYGON_OFFSET_FACTOR;
 using gl::GL_TEXTURE_BINDING_1D;
 using gl::GL_TEXTURE_BINDING_2D;
 using gl::GL_TEXTURE_BINDING_3D;
+// using gl::GL_VERTEX_ARRAY; // reuse EnableCap
 using gl::GL_ALIASED_LINE_WIDTH_RANGE;
 
 // GetTextureParameter
@@ -424,6 +428,7 @@ using gl::GL_LINE_STRIP;
 using gl::GL_TRIANGLES;
 using gl::GL_TRIANGLE_STRIP;
 using gl::GL_TRIANGLE_FAN;
+using gl::GL_QUADS;
 using gl::GL_LINES_ADJACENCY;
 using gl::GL_LINE_STRIP_ADJACENCY;
 using gl::GL_TRIANGLES_ADJACENCY;

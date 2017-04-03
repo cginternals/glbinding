@@ -423,6 +423,7 @@ using gl::GL_LINE_STRIP;
 using gl::GL_TRIANGLES;
 using gl::GL_TRIANGLE_STRIP;
 using gl::GL_TRIANGLE_FAN;
+using gl::GL_QUADS;
 using gl::GL_LINES_ADJACENCY;
 using gl::GL_LINE_STRIP_ADJACENCY;
 using gl::GL_TRIANGLES_ADJACENCY;
