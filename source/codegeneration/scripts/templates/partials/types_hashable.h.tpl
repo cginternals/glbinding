@@ -13,4 +13,4 @@ struct hash<{{api}}::{{identifier}}>
 };
 
 
-}
+} // namespace std

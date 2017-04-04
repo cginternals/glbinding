@@ -2,6 +2,8 @@
 
 #include <glbinding/no{{api}}.h>
 
+#include <glbinding/glbinding_features.h>
+
 
 namespace {{api}}
 {
@@ -17,7 +19,7 @@ enum class GLboolean : unsigned char
 // import booleans to namespace
 
 {{#booleans.items}}
-static const GLboolean {{item.identifier}} = GLboolean::{{item.identifier}};
+GLBINDING_CONSTEXPR static const GLboolean {{item.identifier}} = GLboolean::{{item.identifier}};
 {{/booleans.items}}
 
 

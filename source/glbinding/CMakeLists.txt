@@ -37,6 +37,7 @@ set(headers
 
     ${include_path}/gl/bitfield.h
     ${include_path}/gl/boolean.h
+    ${include_path}/gl/boolean.inl
     ${include_path}/gl/enum.h
     ${include_path}/gl/extension.h
     ${include_path}/gl/functions.h
@@ -46,6 +47,7 @@ set(headers
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
     ${include_path}/CallbackMask.h
+    ${include_path}/CallbackMask.inl
     ${include_path}/Function.h
     ${include_path}/Function.inl
     ${include_path}/FunctionCall.h
@@ -57,6 +59,7 @@ set(headers
     ${include_path}/Value.h
     ${include_path}/Value.inl
     ${include_path}/Version.h
+    ${include_path}/Version.inl
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
 
@@ -76,7 +79,6 @@ set(sources
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
-    ${source_path}/CallbackMask.cpp
     ${source_path}/FunctionCall.cpp
 
     ${source_path}/ProcAddress.cpp
@@ -107,7 +109,6 @@ set(sources
     ${source_path}/logging.cpp
 
     ${source_path}/gl/types.cpp
-    ${source_path}/gl/boolean.cpp
     ${source_path}/gl/functions-patches.cpp
 
     ${source_path}/Binding_pch.h
@@ -177,7 +178,29 @@ if (WriterCompilerDetectionHeaderFound)
         FILE ${feature_file}
         PREFIX ${target_id}
         COMPILERS AppleClang Clang GNU MSVC
-        FEATURES cxx_thread_local cxx_constexpr
+        FEATURES
+            cxx_thread_local
+            cxx_constexpr
+            cxx_attribute_deprecated
+            cxx_nullptr
+            cxx_override
+            cxx_noexcept
+            cxx_final
+            cxx_deleted_functions
+            cxx_variadic_templates
+            cxx_alias_templates
+            cxx_auto_type
+            cxx_delegating_constructors
+            cxx_inheriting_constructors
+            cxx_range_for
+            cxx_raw_string_literals
+            cxx_reference_qualified_functions
+            cxx_rvalue_references
+            cxx_strong_enums
+            cxx_trailing_return_types
+            cxx_uniform_initialization
+            cxx_variable_templates
+            cxx_template_template_parameters
         VERSION 3.2
     )
 else()

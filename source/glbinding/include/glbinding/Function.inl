@@ -118,7 +118,7 @@ struct FunctionHelper<void, Arguments...>
             }
         }
 
-        if(function->isEnabled(glbinding::CallbackMask::Logging))
+        if (function->isEnabled(glbinding::CallbackMask::Logging))
         {
             glbinding::logging::log(functionCall.release());
         }
@@ -135,7 +135,7 @@ namespace glbinding
 
 template <typename ReturnType, typename... Arguments>
 Function<ReturnType, Arguments...>::Function(const char * _name)
-    : AbstractFunction{_name}
+: AbstractFunction{_name}
 , m_beforeCallback{nullptr}
 , m_afterCallback{nullptr}
 {

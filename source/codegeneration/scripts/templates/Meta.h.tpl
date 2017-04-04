@@ -8,6 +8,7 @@
 #include <cstdint>
 
 #include <glbinding/glbinding_api.h>
+#include <glbinding/glbinding_features.h>
 
 #include <glbinding/gl/types.h>
 
@@ -29,7 +30,7 @@ public:
      * @brief
      *   Deleted Constructor as all functions are static.
      */
-    Meta() = delete;
+    Meta() GLBINDING_DELETED_FUNCTION;
 
     /**
      * @brief

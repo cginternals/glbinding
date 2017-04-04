@@ -45,7 +45,7 @@ namespace glbinding
 
 
 template <typename T>
-Value<T>::Value(const T & _value)
+GLBINDING_CONSTEXPR Value<T>::Value(const T & _value)
 : value(_value)
 {
 }

@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <glbinding/glbinding_api.h>
+#include <glbinding/glbinding_features.h>
 
 #include <glbinding/AbstractValue.h>
 
@@ -35,7 +36,7 @@ public:
      * @param[in] value
      *   The value that should be printed later.
      */
-    Value(const T & value);
+    GLBINDING_CONSTEXPR Value(const T & value);
 
     /**
      * @brief
@@ -62,7 +63,8 @@ protected:
  * @brief
  *   A specialized printOn method for the gl::GLenum Value template.
  */
-template <> GLBINDING_API void Value<gl::GLenum>::printOn(std::ostream & stream) const;
+template <>
+GLBINDING_API void Value<gl::GLenum>::printOn(std::ostream & stream) const;
 
 ///**
 // * @brief
@@ -74,25 +76,29 @@ template <> GLBINDING_API void Value<gl::GLenum>::printOn(std::ostream & stream)
  * @brief
  *   A specialized printOn method for the gl::GLenum Value template.
  */
-template <> GLBINDING_API void Value<gl::GLboolean>::printOn(std::ostream & stream) const;
+template <>
+GLBINDING_API void Value<gl::GLboolean>::printOn(std::ostream & stream) const;
 
 /**
  * @brief
  *   A specialized printOn method for the gl::GLubyte * Value template.
  */
-template <> GLBINDING_API void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const;
+template <>
+GLBINDING_API void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const;
 
 /**
  * @brief
  *   A specialized printOn method for the gl::GLchar * Value template.
  */
-template <> GLBINDING_API void Value<const gl::GLchar *>::printOn(std::ostream & stream) const;
+template <>
+GLBINDING_API void Value<const gl::GLchar *>::printOn(std::ostream & stream) const;
 
 /**
  * @brief
  *   A specialized printOn method for the gl::GLuint_array_2 Value template.
  */
-template <> GLBINDING_API void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) const;
+template <>
+GLBINDING_API void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) const;
 
 /**
  * @brief

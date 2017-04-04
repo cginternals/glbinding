@@ -2,6 +2,8 @@
 
 #include <glbinding/nogl.h>
 
+#include <glbinding/glbinding_features.h>
+
 
 namespace gl
 {
@@ -5396,19 +5398,19 @@ static const GLenum GL_ONE = GLenum::GL_ONE;
 
 // BlendingFactorSrc
 
-// static const GLenum GL_ZERO = GLenum::GL_ZERO; // reuse BlendingFactorDest
-// static const GLenum GL_SRC_ALPHA = GLenum::GL_SRC_ALPHA; // reuse BlendingFactorDest
-// static const GLenum GL_ONE_MINUS_SRC_ALPHA = GLenum::GL_ONE_MINUS_SRC_ALPHA; // reuse BlendingFactorDest
-// static const GLenum GL_DST_ALPHA = GLenum::GL_DST_ALPHA; // reuse BlendingFactorDest
-// static const GLenum GL_ONE_MINUS_DST_ALPHA = GLenum::GL_ONE_MINUS_DST_ALPHA; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_ZERO = GLenum::GL_ZERO; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_SRC_ALPHA = GLenum::GL_SRC_ALPHA; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_SRC_ALPHA = GLenum::GL_ONE_MINUS_SRC_ALPHA; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_DST_ALPHA = GLenum::GL_DST_ALPHA; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_DST_ALPHA = GLenum::GL_ONE_MINUS_DST_ALPHA; // reuse BlendingFactorDest
 static const GLenum GL_DST_COLOR = GLenum::GL_DST_COLOR;
 static const GLenum GL_ONE_MINUS_DST_COLOR = GLenum::GL_ONE_MINUS_DST_COLOR;
 static const GLenum GL_SRC_ALPHA_SATURATE = GLenum::GL_SRC_ALPHA_SATURATE;
-// static const GLenum GL_CONSTANT_COLOR_EXT = GLenum::GL_CONSTANT_COLOR_EXT; // reuse BlendingFactorDest
-// static const GLenum GL_ONE_MINUS_CONSTANT_COLOR_EXT = GLenum::GL_ONE_MINUS_CONSTANT_COLOR_EXT; // reuse BlendingFactorDest
-// static const GLenum GL_CONSTANT_ALPHA_EXT = GLenum::GL_CONSTANT_ALPHA_EXT; // reuse BlendingFactorDest
-// static const GLenum GL_ONE_MINUS_CONSTANT_ALPHA_EXT = GLenum::GL_ONE_MINUS_CONSTANT_ALPHA_EXT; // reuse BlendingFactorDest
-// static const GLenum GL_ONE = GLenum::GL_ONE; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_CONSTANT_COLOR_EXT = GLenum::GL_CONSTANT_COLOR_EXT; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_CONSTANT_COLOR_EXT = GLenum::GL_ONE_MINUS_CONSTANT_COLOR_EXT; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_CONSTANT_ALPHA_EXT = GLenum::GL_CONSTANT_ALPHA_EXT; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_CONSTANT_ALPHA_EXT = GLenum::GL_ONE_MINUS_CONSTANT_ALPHA_EXT; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_ONE = GLenum::GL_ONE; // reuse BlendingFactorDest
 
 // ClipPlaneName
 
@@ -5499,20 +5501,20 @@ static const GLenum GL_CONVOLUTION_2D_EXT = GLenum::GL_CONVOLUTION_2D_EXT;
 
 // CullFaceMode
 
-// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
-// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
-// static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
 
 // DepthFunction
 
-// static const GLenum GL_NEVER = GLenum::GL_NEVER; // reuse AlphaFunction
-// static const GLenum GL_LESS = GLenum::GL_LESS; // reuse AlphaFunction
-// static const GLenum GL_EQUAL = GLenum::GL_EQUAL; // reuse AlphaFunction
-// static const GLenum GL_LEQUAL = GLenum::GL_LEQUAL; // reuse AlphaFunction
-// static const GLenum GL_GREATER = GLenum::GL_GREATER; // reuse AlphaFunction
-// static const GLenum GL_NOTEQUAL = GLenum::GL_NOTEQUAL; // reuse AlphaFunction
-// static const GLenum GL_GEQUAL = GLenum::GL_GEQUAL; // reuse AlphaFunction
-// static const GLenum GL_ALWAYS = GLenum::GL_ALWAYS; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_NEVER = GLenum::GL_NEVER; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_LESS = GLenum::GL_LESS; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_EQUAL = GLenum::GL_EQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_LEQUAL = GLenum::GL_LEQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_GREATER = GLenum::GL_GREATER; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_NOTEQUAL = GLenum::GL_NOTEQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_GEQUAL = GLenum::GL_GEQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_ALWAYS = GLenum::GL_ALWAYS; // reuse AlphaFunction
 
 // DrawBufferMode
 
@@ -5521,11 +5523,11 @@ static const GLenum GL_FRONT_LEFT = GLenum::GL_FRONT_LEFT;
 static const GLenum GL_FRONT_RIGHT = GLenum::GL_FRONT_RIGHT;
 static const GLenum GL_BACK_LEFT = GLenum::GL_BACK_LEFT;
 static const GLenum GL_BACK_RIGHT = GLenum::GL_BACK_RIGHT;
-// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
-// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
 static const GLenum GL_LEFT = GLenum::GL_LEFT;
 static const GLenum GL_RIGHT = GLenum::GL_RIGHT;
-// static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
 static const GLenum GL_AUX0 = GLenum::GL_AUX0;
 static const GLenum GL_AUX1 = GLenum::GL_AUX1;
 static const GLenum GL_AUX2 = GLenum::GL_AUX2;
@@ -5578,12 +5580,12 @@ static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D;
 static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D;
 static const GLenum GL_POLYGON_OFFSET_POINT = GLenum::GL_POLYGON_OFFSET_POINT;
 static const GLenum GL_POLYGON_OFFSET_LINE = GLenum::GL_POLYGON_OFFSET_LINE;
-// static const GLenum GL_CLIP_PLANE0 = GLenum::GL_CLIP_PLANE0; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE1 = GLenum::GL_CLIP_PLANE1; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE2 = GLenum::GL_CLIP_PLANE2; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE3 = GLenum::GL_CLIP_PLANE3; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE4 = GLenum::GL_CLIP_PLANE4; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE5 = GLenum::GL_CLIP_PLANE5; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE0 = GLenum::GL_CLIP_PLANE0; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE1 = GLenum::GL_CLIP_PLANE1; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE2 = GLenum::GL_CLIP_PLANE2; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE3 = GLenum::GL_CLIP_PLANE3; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE4 = GLenum::GL_CLIP_PLANE4; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE5 = GLenum::GL_CLIP_PLANE5; // reuse ClipPlaneName
 static const GLenum GL_LIGHT0 = GLenum::GL_LIGHT0;
 static const GLenum GL_LIGHT1 = GLenum::GL_LIGHT1;
 static const GLenum GL_LIGHT2 = GLenum::GL_LIGHT2;
@@ -5592,8 +5594,8 @@ static const GLenum GL_LIGHT4 = GLenum::GL_LIGHT4;
 static const GLenum GL_LIGHT5 = GLenum::GL_LIGHT5;
 static const GLenum GL_LIGHT6 = GLenum::GL_LIGHT6;
 static const GLenum GL_LIGHT7 = GLenum::GL_LIGHT7;
-// static const GLenum GL_CONVOLUTION_1D_EXT = GLenum::GL_CONVOLUTION_1D_EXT; // reuse ConvolutionTargetEXT
-// static const GLenum GL_CONVOLUTION_2D_EXT = GLenum::GL_CONVOLUTION_2D_EXT; // reuse ConvolutionTargetEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_1D_EXT = GLenum::GL_CONVOLUTION_1D_EXT; // reuse ConvolutionTargetEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_2D_EXT = GLenum::GL_CONVOLUTION_2D_EXT; // reuse ConvolutionTargetEXT
 static const GLenum GL_SEPARABLE_2D_EXT = GLenum::GL_SEPARABLE_2D_EXT;
 static const GLenum GL_HISTOGRAM_EXT = GLenum::GL_HISTOGRAM_EXT;
 static const GLenum GL_MINMAX_EXT = GLenum::GL_MINMAX_EXT;
@@ -5611,10 +5613,10 @@ static const GLenum GL_MULTISAMPLE_SGIS = GLenum::GL_MULTISAMPLE_SGIS;
 static const GLenum GL_SAMPLE_ALPHA_TO_MASK_SGIS = GLenum::GL_SAMPLE_ALPHA_TO_MASK_SGIS;
 static const GLenum GL_SAMPLE_ALPHA_TO_ONE_SGIS = GLenum::GL_SAMPLE_ALPHA_TO_ONE_SGIS;
 static const GLenum GL_SAMPLE_MASK_SGIS = GLenum::GL_SAMPLE_MASK_SGIS;
-// static const GLenum GL_TEXTURE_COLOR_TABLE_SGI = GLenum::GL_TEXTURE_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
-// static const GLenum GL_COLOR_TABLE_SGI = GLenum::GL_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
-// static const GLenum GL_POST_CONVOLUTION_COLOR_TABLE_SGI = GLenum::GL_POST_CONVOLUTION_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
-// static const GLenum GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI = GLenum::GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_COLOR_TABLE_SGI = GLenum::GL_TEXTURE_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_TABLE_SGI = GLenum::GL_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_COLOR_TABLE_SGI = GLenum::GL_POST_CONVOLUTION_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI = GLenum::GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
 static const GLenum GL_TEXTURE_4D_SGIS = GLenum::GL_TEXTURE_4D_SGIS;
 static const GLenum GL_PIXEL_TEX_GEN_SGIX = GLenum::GL_PIXEL_TEX_GEN_SGIX;
 static const GLenum GL_SPRITE_SGIX = GLenum::GL_SPRITE_SGIX;
@@ -5681,8 +5683,8 @@ static const GLenum GL_TEXTURE_DEFORMATION_SGIX = GLenum::GL_TEXTURE_DEFORMATION
 
 // FogCoordinatePointerType
 
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
-// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
 
 // FogMode
 
@@ -5703,13 +5705,13 @@ static const GLenum GL_FOG_OFFSET_VALUE_SGIX = GLenum::GL_FOG_OFFSET_VALUE_SGIX;
 
 // FogPointerTypeEXT
 
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
-// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
 
 // FogPointerTypeIBM
 
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
-// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
 
 // FragmentLightModelParameterSGIX
 
@@ -5725,8 +5727,8 @@ static const GLenum GL_CCW = GLenum::GL_CCW;
 
 // GetColorTableParameterPNameSGI
 
-// static const GLenum GL_COLOR_TABLE_SCALE_SGI = GLenum::GL_COLOR_TABLE_SCALE_SGI; // reuse ColorTableParameterPNameSGI
-// static const GLenum GL_COLOR_TABLE_BIAS_SGI = GLenum::GL_COLOR_TABLE_BIAS_SGI; // reuse ColorTableParameterPNameSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_TABLE_SCALE_SGI = GLenum::GL_COLOR_TABLE_SCALE_SGI; // reuse ColorTableParameterPNameSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_TABLE_BIAS_SGI = GLenum::GL_COLOR_TABLE_BIAS_SGI; // reuse ColorTableParameterPNameSGI
 static const GLenum GL_COLOR_TABLE_FORMAT_SGI = GLenum::GL_COLOR_TABLE_FORMAT_SGI;
 static const GLenum GL_COLOR_TABLE_WIDTH_SGI = GLenum::GL_COLOR_TABLE_WIDTH_SGI;
 static const GLenum GL_COLOR_TABLE_RED_SIZE_SGI = GLenum::GL_COLOR_TABLE_RED_SIZE_SGI;
@@ -5738,9 +5740,9 @@ static const GLenum GL_COLOR_TABLE_INTENSITY_SIZE_SGI = GLenum::GL_COLOR_TABLE_I
 
 // GetConvolutionParameter
 
-// static const GLenum GL_CONVOLUTION_BORDER_MODE_EXT = GLenum::GL_CONVOLUTION_BORDER_MODE_EXT; // reuse ConvolutionParameterEXT
-// static const GLenum GL_CONVOLUTION_FILTER_SCALE_EXT = GLenum::GL_CONVOLUTION_FILTER_SCALE_EXT; // reuse ConvolutionParameterEXT
-// static const GLenum GL_CONVOLUTION_FILTER_BIAS_EXT = GLenum::GL_CONVOLUTION_FILTER_BIAS_EXT; // reuse ConvolutionParameterEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_BORDER_MODE_EXT = GLenum::GL_CONVOLUTION_BORDER_MODE_EXT; // reuse ConvolutionParameterEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_FILTER_SCALE_EXT = GLenum::GL_CONVOLUTION_FILTER_SCALE_EXT; // reuse ConvolutionParameterEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_FILTER_BIAS_EXT = GLenum::GL_CONVOLUTION_FILTER_BIAS_EXT; // reuse ConvolutionParameterEXT
 static const GLenum GL_CONVOLUTION_FORMAT_EXT = GLenum::GL_CONVOLUTION_FORMAT_EXT;
 static const GLenum GL_CONVOLUTION_WIDTH_EXT = GLenum::GL_CONVOLUTION_WIDTH_EXT;
 static const GLenum GL_CONVOLUTION_HEIGHT_EXT = GLenum::GL_CONVOLUTION_HEIGHT_EXT;
@@ -5783,19 +5785,19 @@ static const GLenum GL_CURRENT_RASTER_TEXTURE_COORDS = GLenum::GL_CURRENT_RASTER
 static const GLenum GL_CURRENT_RASTER_POSITION = GLenum::GL_CURRENT_RASTER_POSITION;
 static const GLenum GL_CURRENT_RASTER_POSITION_VALID = GLenum::GL_CURRENT_RASTER_POSITION_VALID;
 static const GLenum GL_CURRENT_RASTER_DISTANCE = GLenum::GL_CURRENT_RASTER_DISTANCE;
-// static const GLenum GL_POINT_SMOOTH = GLenum::GL_POINT_SMOOTH; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_SMOOTH = GLenum::GL_POINT_SMOOTH; // reuse EnableCap
 static const GLenum GL_POINT_SIZE = GLenum::GL_POINT_SIZE;
 static const GLenum GL_POINT_SIZE_RANGE = GLenum::GL_POINT_SIZE_RANGE;
 static const GLenum GL_SMOOTH_POINT_SIZE_RANGE = GLenum::GL_SMOOTH_POINT_SIZE_RANGE;
 static const GLenum GL_POINT_SIZE_GRANULARITY = GLenum::GL_POINT_SIZE_GRANULARITY;
 static const GLenum GL_SMOOTH_POINT_SIZE_GRANULARITY = GLenum::GL_SMOOTH_POINT_SIZE_GRANULARITY;
-// static const GLenum GL_LINE_SMOOTH = GLenum::GL_LINE_SMOOTH; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LINE_SMOOTH = GLenum::GL_LINE_SMOOTH; // reuse EnableCap
 static const GLenum GL_LINE_WIDTH = GLenum::GL_LINE_WIDTH;
 static const GLenum GL_LINE_WIDTH_RANGE = GLenum::GL_LINE_WIDTH_RANGE;
 static const GLenum GL_SMOOTH_LINE_WIDTH_RANGE = GLenum::GL_SMOOTH_LINE_WIDTH_RANGE;
 static const GLenum GL_LINE_WIDTH_GRANULARITY = GLenum::GL_LINE_WIDTH_GRANULARITY;
 static const GLenum GL_SMOOTH_LINE_WIDTH_GRANULARITY = GLenum::GL_SMOOTH_LINE_WIDTH_GRANULARITY;
-// static const GLenum GL_LINE_STIPPLE = GLenum::GL_LINE_STIPPLE; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LINE_STIPPLE = GLenum::GL_LINE_STIPPLE; // reuse EnableCap
 static const GLenum GL_LINE_STIPPLE_PATTERN = GLenum::GL_LINE_STIPPLE_PATTERN;
 static const GLenum GL_LINE_STIPPLE_REPEAT = GLenum::GL_LINE_STIPPLE_REPEAT;
 static const GLenum GL_LIST_MODE = GLenum::GL_LIST_MODE;
@@ -5803,34 +5805,34 @@ static const GLenum GL_MAX_LIST_NESTING = GLenum::GL_MAX_LIST_NESTING;
 static const GLenum GL_LIST_BASE = GLenum::GL_LIST_BASE;
 static const GLenum GL_LIST_INDEX = GLenum::GL_LIST_INDEX;
 static const GLenum GL_POLYGON_MODE = GLenum::GL_POLYGON_MODE;
-// static const GLenum GL_POLYGON_SMOOTH = GLenum::GL_POLYGON_SMOOTH; // reuse EnableCap
-// static const GLenum GL_POLYGON_STIPPLE = GLenum::GL_POLYGON_STIPPLE; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_SMOOTH = GLenum::GL_POLYGON_SMOOTH; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_STIPPLE = GLenum::GL_POLYGON_STIPPLE; // reuse EnableCap
 static const GLenum GL_EDGE_FLAG = GLenum::GL_EDGE_FLAG;
-// static const GLenum GL_CULL_FACE = GLenum::GL_CULL_FACE; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_CULL_FACE = GLenum::GL_CULL_FACE; // reuse EnableCap
 static const GLenum GL_CULL_FACE_MODE = GLenum::GL_CULL_FACE_MODE;
 static const GLenum GL_FRONT_FACE = GLenum::GL_FRONT_FACE;
-// static const GLenum GL_LIGHTING = GLenum::GL_LIGHTING; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHTING = GLenum::GL_LIGHTING; // reuse EnableCap
 static const GLenum GL_LIGHT_MODEL_LOCAL_VIEWER = GLenum::GL_LIGHT_MODEL_LOCAL_VIEWER;
 static const GLenum GL_LIGHT_MODEL_TWO_SIDE = GLenum::GL_LIGHT_MODEL_TWO_SIDE;
 static const GLenum GL_LIGHT_MODEL_AMBIENT = GLenum::GL_LIGHT_MODEL_AMBIENT;
 static const GLenum GL_SHADE_MODEL = GLenum::GL_SHADE_MODEL;
 static const GLenum GL_COLOR_MATERIAL_FACE = GLenum::GL_COLOR_MATERIAL_FACE;
 static const GLenum GL_COLOR_MATERIAL_PARAMETER = GLenum::GL_COLOR_MATERIAL_PARAMETER;
-// static const GLenum GL_COLOR_MATERIAL = GLenum::GL_COLOR_MATERIAL; // reuse EnableCap
-// static const GLenum GL_FOG = GLenum::GL_FOG; // reuse EnableCap
-// static const GLenum GL_FOG_INDEX = GLenum::GL_FOG_INDEX; // reuse FogParameter
-// static const GLenum GL_FOG_DENSITY = GLenum::GL_FOG_DENSITY; // reuse FogParameter
-// static const GLenum GL_FOG_START = GLenum::GL_FOG_START; // reuse FogParameter
-// static const GLenum GL_FOG_END = GLenum::GL_FOG_END; // reuse FogParameter
-// static const GLenum GL_FOG_MODE = GLenum::GL_FOG_MODE; // reuse FogParameter
-// static const GLenum GL_FOG_COLOR = GLenum::GL_FOG_COLOR; // reuse FogParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_MATERIAL = GLenum::GL_COLOR_MATERIAL; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG = GLenum::GL_FOG; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_INDEX = GLenum::GL_FOG_INDEX; // reuse FogParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_DENSITY = GLenum::GL_FOG_DENSITY; // reuse FogParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_START = GLenum::GL_FOG_START; // reuse FogParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_END = GLenum::GL_FOG_END; // reuse FogParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_MODE = GLenum::GL_FOG_MODE; // reuse FogParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_COLOR = GLenum::GL_FOG_COLOR; // reuse FogParameter
 static const GLenum GL_DEPTH_RANGE = GLenum::GL_DEPTH_RANGE;
-// static const GLenum GL_DEPTH_TEST = GLenum::GL_DEPTH_TEST; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_DEPTH_TEST = GLenum::GL_DEPTH_TEST; // reuse EnableCap
 static const GLenum GL_DEPTH_WRITEMASK = GLenum::GL_DEPTH_WRITEMASK;
 static const GLenum GL_DEPTH_CLEAR_VALUE = GLenum::GL_DEPTH_CLEAR_VALUE;
 static const GLenum GL_DEPTH_FUNC = GLenum::GL_DEPTH_FUNC;
 static const GLenum GL_ACCUM_CLEAR_VALUE = GLenum::GL_ACCUM_CLEAR_VALUE;
-// static const GLenum GL_STENCIL_TEST = GLenum::GL_STENCIL_TEST; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_STENCIL_TEST = GLenum::GL_STENCIL_TEST; // reuse EnableCap
 static const GLenum GL_STENCIL_CLEAR_VALUE = GLenum::GL_STENCIL_CLEAR_VALUE;
 static const GLenum GL_STENCIL_FUNC = GLenum::GL_STENCIL_FUNC;
 static const GLenum GL_STENCIL_VALUE_MASK = GLenum::GL_STENCIL_VALUE_MASK;
@@ -5840,7 +5842,7 @@ static const GLenum GL_STENCIL_PASS_DEPTH_PASS = GLenum::GL_STENCIL_PASS_DEPTH_P
 static const GLenum GL_STENCIL_REF = GLenum::GL_STENCIL_REF;
 static const GLenum GL_STENCIL_WRITEMASK = GLenum::GL_STENCIL_WRITEMASK;
 static const GLenum GL_MATRIX_MODE = GLenum::GL_MATRIX_MODE;
-// static const GLenum GL_NORMALIZE = GLenum::GL_NORMALIZE; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_NORMALIZE = GLenum::GL_NORMALIZE; // reuse EnableCap
 static const GLenum GL_VIEWPORT = GLenum::GL_VIEWPORT;
 static const GLenum GL_MODELVIEW0_STACK_DEPTH_EXT = GLenum::GL_MODELVIEW0_STACK_DEPTH_EXT;
 static const GLenum GL_MODELVIEW_STACK_DEPTH = GLenum::GL_MODELVIEW_STACK_DEPTH;
@@ -5852,22 +5854,22 @@ static const GLenum GL_PROJECTION_MATRIX = GLenum::GL_PROJECTION_MATRIX;
 static const GLenum GL_TEXTURE_MATRIX = GLenum::GL_TEXTURE_MATRIX;
 static const GLenum GL_ATTRIB_STACK_DEPTH = GLenum::GL_ATTRIB_STACK_DEPTH;
 static const GLenum GL_CLIENT_ATTRIB_STACK_DEPTH = GLenum::GL_CLIENT_ATTRIB_STACK_DEPTH;
-// static const GLenum GL_ALPHA_TEST = GLenum::GL_ALPHA_TEST; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_ALPHA_TEST = GLenum::GL_ALPHA_TEST; // reuse EnableCap
 static const GLenum GL_ALPHA_TEST_FUNC = GLenum::GL_ALPHA_TEST_FUNC;
 static const GLenum GL_ALPHA_TEST_REF = GLenum::GL_ALPHA_TEST_REF;
-// static const GLenum GL_DITHER = GLenum::GL_DITHER; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_DITHER = GLenum::GL_DITHER; // reuse EnableCap
 static const GLenum GL_BLEND_DST = GLenum::GL_BLEND_DST;
 static const GLenum GL_BLEND_SRC = GLenum::GL_BLEND_SRC;
-// static const GLenum GL_BLEND = GLenum::GL_BLEND; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_BLEND = GLenum::GL_BLEND; // reuse EnableCap
 static const GLenum GL_LOGIC_OP_MODE = GLenum::GL_LOGIC_OP_MODE;
-// static const GLenum GL_INDEX_LOGIC_OP = GLenum::GL_INDEX_LOGIC_OP; // reuse EnableCap
-// static const GLenum GL_LOGIC_OP = GLenum::GL_LOGIC_OP; // reuse BlendEquationModeEXT
-// static const GLenum GL_COLOR_LOGIC_OP = GLenum::GL_COLOR_LOGIC_OP; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_INDEX_LOGIC_OP = GLenum::GL_INDEX_LOGIC_OP; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LOGIC_OP = GLenum::GL_LOGIC_OP; // reuse BlendEquationModeEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_LOGIC_OP = GLenum::GL_COLOR_LOGIC_OP; // reuse EnableCap
 static const GLenum GL_AUX_BUFFERS = GLenum::GL_AUX_BUFFERS;
 static const GLenum GL_DRAW_BUFFER = GLenum::GL_DRAW_BUFFER;
 static const GLenum GL_READ_BUFFER = GLenum::GL_READ_BUFFER;
 static const GLenum GL_SCISSOR_BOX = GLenum::GL_SCISSOR_BOX;
-// static const GLenum GL_SCISSOR_TEST = GLenum::GL_SCISSOR_TEST; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_SCISSOR_TEST = GLenum::GL_SCISSOR_TEST; // reuse EnableCap
 static const GLenum GL_INDEX_CLEAR_VALUE = GLenum::GL_INDEX_CLEAR_VALUE;
 static const GLenum GL_INDEX_WRITEMASK = GLenum::GL_INDEX_WRITEMASK;
 static const GLenum GL_COLOR_CLEAR_VALUE = GLenum::GL_COLOR_CLEAR_VALUE;
@@ -5882,10 +5884,10 @@ static const GLenum GL_POINT_SMOOTH_HINT = GLenum::GL_POINT_SMOOTH_HINT;
 static const GLenum GL_LINE_SMOOTH_HINT = GLenum::GL_LINE_SMOOTH_HINT;
 static const GLenum GL_POLYGON_SMOOTH_HINT = GLenum::GL_POLYGON_SMOOTH_HINT;
 static const GLenum GL_FOG_HINT = GLenum::GL_FOG_HINT;
-// static const GLenum GL_TEXTURE_GEN_S = GLenum::GL_TEXTURE_GEN_S; // reuse EnableCap
-// static const GLenum GL_TEXTURE_GEN_T = GLenum::GL_TEXTURE_GEN_T; // reuse EnableCap
-// static const GLenum GL_TEXTURE_GEN_R = GLenum::GL_TEXTURE_GEN_R; // reuse EnableCap
-// static const GLenum GL_TEXTURE_GEN_Q = GLenum::GL_TEXTURE_GEN_Q; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_GEN_S = GLenum::GL_TEXTURE_GEN_S; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_GEN_T = GLenum::GL_TEXTURE_GEN_T; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_GEN_R = GLenum::GL_TEXTURE_GEN_R; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_GEN_Q = GLenum::GL_TEXTURE_GEN_Q; // reuse EnableCap
 static const GLenum GL_PIXEL_MAP_I_TO_I_SIZE = GLenum::GL_PIXEL_MAP_I_TO_I_SIZE;
 static const GLenum GL_PIXEL_MAP_S_TO_S_SIZE = GLenum::GL_PIXEL_MAP_S_TO_S_SIZE;
 static const GLenum GL_PIXEL_MAP_I_TO_R_SIZE = GLenum::GL_PIXEL_MAP_I_TO_R_SIZE;
@@ -5950,58 +5952,58 @@ static const GLenum GL_ACCUM_GREEN_BITS = GLenum::GL_ACCUM_GREEN_BITS;
 static const GLenum GL_ACCUM_BLUE_BITS = GLenum::GL_ACCUM_BLUE_BITS;
 static const GLenum GL_ACCUM_ALPHA_BITS = GLenum::GL_ACCUM_ALPHA_BITS;
 static const GLenum GL_NAME_STACK_DEPTH = GLenum::GL_NAME_STACK_DEPTH;
-// static const GLenum GL_AUTO_NORMAL = GLenum::GL_AUTO_NORMAL; // reuse EnableCap
-// static const GLenum GL_MAP1_COLOR_4 = GLenum::GL_MAP1_COLOR_4; // reuse EnableCap
-// static const GLenum GL_MAP1_INDEX = GLenum::GL_MAP1_INDEX; // reuse EnableCap
-// static const GLenum GL_MAP1_NORMAL = GLenum::GL_MAP1_NORMAL; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_1 = GLenum::GL_MAP1_TEXTURE_COORD_1; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_2 = GLenum::GL_MAP1_TEXTURE_COORD_2; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_3 = GLenum::GL_MAP1_TEXTURE_COORD_3; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_4 = GLenum::GL_MAP1_TEXTURE_COORD_4; // reuse EnableCap
-// static const GLenum GL_MAP1_VERTEX_3 = GLenum::GL_MAP1_VERTEX_3; // reuse EnableCap
-// static const GLenum GL_MAP1_VERTEX_4 = GLenum::GL_MAP1_VERTEX_4; // reuse EnableCap
-// static const GLenum GL_MAP2_COLOR_4 = GLenum::GL_MAP2_COLOR_4; // reuse EnableCap
-// static const GLenum GL_MAP2_INDEX = GLenum::GL_MAP2_INDEX; // reuse EnableCap
-// static const GLenum GL_MAP2_NORMAL = GLenum::GL_MAP2_NORMAL; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_1 = GLenum::GL_MAP2_TEXTURE_COORD_1; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_2 = GLenum::GL_MAP2_TEXTURE_COORD_2; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_3 = GLenum::GL_MAP2_TEXTURE_COORD_3; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_4 = GLenum::GL_MAP2_TEXTURE_COORD_4; // reuse EnableCap
-// static const GLenum GL_MAP2_VERTEX_3 = GLenum::GL_MAP2_VERTEX_3; // reuse EnableCap
-// static const GLenum GL_MAP2_VERTEX_4 = GLenum::GL_MAP2_VERTEX_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_AUTO_NORMAL = GLenum::GL_AUTO_NORMAL; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_COLOR_4 = GLenum::GL_MAP1_COLOR_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_INDEX = GLenum::GL_MAP1_INDEX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_NORMAL = GLenum::GL_MAP1_NORMAL; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_1 = GLenum::GL_MAP1_TEXTURE_COORD_1; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_2 = GLenum::GL_MAP1_TEXTURE_COORD_2; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_3 = GLenum::GL_MAP1_TEXTURE_COORD_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_4 = GLenum::GL_MAP1_TEXTURE_COORD_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_VERTEX_3 = GLenum::GL_MAP1_VERTEX_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_VERTEX_4 = GLenum::GL_MAP1_VERTEX_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_COLOR_4 = GLenum::GL_MAP2_COLOR_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_INDEX = GLenum::GL_MAP2_INDEX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_NORMAL = GLenum::GL_MAP2_NORMAL; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_1 = GLenum::GL_MAP2_TEXTURE_COORD_1; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_2 = GLenum::GL_MAP2_TEXTURE_COORD_2; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_3 = GLenum::GL_MAP2_TEXTURE_COORD_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_4 = GLenum::GL_MAP2_TEXTURE_COORD_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_VERTEX_3 = GLenum::GL_MAP2_VERTEX_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_VERTEX_4 = GLenum::GL_MAP2_VERTEX_4; // reuse EnableCap
 static const GLenum GL_MAP1_GRID_DOMAIN = GLenum::GL_MAP1_GRID_DOMAIN;
 static const GLenum GL_MAP1_GRID_SEGMENTS = GLenum::GL_MAP1_GRID_SEGMENTS;
 static const GLenum GL_MAP2_GRID_DOMAIN = GLenum::GL_MAP2_GRID_DOMAIN;
 static const GLenum GL_MAP2_GRID_SEGMENTS = GLenum::GL_MAP2_GRID_SEGMENTS;
-// static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
-// static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
 static const GLenum GL_FEEDBACK_BUFFER_SIZE = GLenum::GL_FEEDBACK_BUFFER_SIZE;
 static const GLenum GL_FEEDBACK_BUFFER_TYPE = GLenum::GL_FEEDBACK_BUFFER_TYPE;
 static const GLenum GL_SELECTION_BUFFER_SIZE = GLenum::GL_SELECTION_BUFFER_SIZE;
 static const GLenum GL_POLYGON_OFFSET_UNITS = GLenum::GL_POLYGON_OFFSET_UNITS;
-// static const GLenum GL_POLYGON_OFFSET_POINT = GLenum::GL_POLYGON_OFFSET_POINT; // reuse EnableCap
-// static const GLenum GL_POLYGON_OFFSET_LINE = GLenum::GL_POLYGON_OFFSET_LINE; // reuse EnableCap
-// static const GLenum GL_CLIP_PLANE0 = GLenum::GL_CLIP_PLANE0; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE1 = GLenum::GL_CLIP_PLANE1; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE2 = GLenum::GL_CLIP_PLANE2; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE3 = GLenum::GL_CLIP_PLANE3; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE4 = GLenum::GL_CLIP_PLANE4; // reuse ClipPlaneName
-// static const GLenum GL_CLIP_PLANE5 = GLenum::GL_CLIP_PLANE5; // reuse ClipPlaneName
-// static const GLenum GL_LIGHT0 = GLenum::GL_LIGHT0; // reuse EnableCap
-// static const GLenum GL_LIGHT1 = GLenum::GL_LIGHT1; // reuse EnableCap
-// static const GLenum GL_LIGHT2 = GLenum::GL_LIGHT2; // reuse EnableCap
-// static const GLenum GL_LIGHT3 = GLenum::GL_LIGHT3; // reuse EnableCap
-// static const GLenum GL_LIGHT4 = GLenum::GL_LIGHT4; // reuse EnableCap
-// static const GLenum GL_LIGHT5 = GLenum::GL_LIGHT5; // reuse EnableCap
-// static const GLenum GL_LIGHT6 = GLenum::GL_LIGHT6; // reuse EnableCap
-// static const GLenum GL_LIGHT7 = GLenum::GL_LIGHT7; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_OFFSET_POINT = GLenum::GL_POLYGON_OFFSET_POINT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_OFFSET_LINE = GLenum::GL_POLYGON_OFFSET_LINE; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE0 = GLenum::GL_CLIP_PLANE0; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE1 = GLenum::GL_CLIP_PLANE1; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE2 = GLenum::GL_CLIP_PLANE2; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE3 = GLenum::GL_CLIP_PLANE3; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE4 = GLenum::GL_CLIP_PLANE4; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_CLIP_PLANE5 = GLenum::GL_CLIP_PLANE5; // reuse ClipPlaneName
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT0 = GLenum::GL_LIGHT0; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT1 = GLenum::GL_LIGHT1; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT2 = GLenum::GL_LIGHT2; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT3 = GLenum::GL_LIGHT3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT4 = GLenum::GL_LIGHT4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT5 = GLenum::GL_LIGHT5; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT6 = GLenum::GL_LIGHT6; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT7 = GLenum::GL_LIGHT7; // reuse EnableCap
 static const GLenum GL_BLEND_COLOR_EXT = GLenum::GL_BLEND_COLOR_EXT;
 static const GLenum GL_BLEND_EQUATION_EXT = GLenum::GL_BLEND_EQUATION_EXT;
 static const GLenum GL_PACK_CMYK_HINT_EXT = GLenum::GL_PACK_CMYK_HINT_EXT;
 static const GLenum GL_UNPACK_CMYK_HINT_EXT = GLenum::GL_UNPACK_CMYK_HINT_EXT;
-// static const GLenum GL_CONVOLUTION_1D_EXT = GLenum::GL_CONVOLUTION_1D_EXT; // reuse ConvolutionTargetEXT
-// static const GLenum GL_CONVOLUTION_2D_EXT = GLenum::GL_CONVOLUTION_2D_EXT; // reuse ConvolutionTargetEXT
-// static const GLenum GL_SEPARABLE_2D_EXT = GLenum::GL_SEPARABLE_2D_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_1D_EXT = GLenum::GL_CONVOLUTION_1D_EXT; // reuse ConvolutionTargetEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_2D_EXT = GLenum::GL_CONVOLUTION_2D_EXT; // reuse ConvolutionTargetEXT
+// GLBINDING_CONSTEXPR static const GLenum GL_SEPARABLE_2D_EXT = GLenum::GL_SEPARABLE_2D_EXT; // reuse EnableCap
 static const GLenum GL_POST_CONVOLUTION_RED_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_RED_SCALE_EXT;
 static const GLenum GL_POST_CONVOLUTION_GREEN_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_GREEN_SCALE_EXT;
 static const GLenum GL_POST_CONVOLUTION_BLUE_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_BLUE_SCALE_EXT;
@@ -6010,12 +6012,12 @@ static const GLenum GL_POST_CONVOLUTION_RED_BIAS_EXT = GLenum::GL_POST_CONVOLUTI
 static const GLenum GL_POST_CONVOLUTION_GREEN_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_GREEN_BIAS_EXT;
 static const GLenum GL_POST_CONVOLUTION_BLUE_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_BLUE_BIAS_EXT;
 static const GLenum GL_POST_CONVOLUTION_ALPHA_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_ALPHA_BIAS_EXT;
-// static const GLenum GL_HISTOGRAM_EXT = GLenum::GL_HISTOGRAM_EXT; // reuse EnableCap
-// static const GLenum GL_MINMAX_EXT = GLenum::GL_MINMAX_EXT; // reuse EnableCap
-// static const GLenum GL_POLYGON_OFFSET_FILL = GLenum::GL_POLYGON_OFFSET_FILL; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_HISTOGRAM_EXT = GLenum::GL_HISTOGRAM_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MINMAX_EXT = GLenum::GL_MINMAX_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_OFFSET_FILL = GLenum::GL_POLYGON_OFFSET_FILL; // reuse EnableCap
 static const GLenum GL_POLYGON_OFFSET_FACTOR = GLenum::GL_POLYGON_OFFSET_FACTOR;
 static const GLenum GL_POLYGON_OFFSET_BIAS_EXT = GLenum::GL_POLYGON_OFFSET_BIAS_EXT;
-// static const GLenum GL_RESCALE_NORMAL_EXT = GLenum::GL_RESCALE_NORMAL_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_RESCALE_NORMAL_EXT = GLenum::GL_RESCALE_NORMAL_EXT; // reuse EnableCap
 static const GLenum GL_TEXTURE_BINDING_1D = GLenum::GL_TEXTURE_BINDING_1D;
 static const GLenum GL_TEXTURE_BINDING_2D = GLenum::GL_TEXTURE_BINDING_2D;
 static const GLenum GL_TEXTURE_3D_BINDING_EXT = GLenum::GL_TEXTURE_3D_BINDING_EXT;
@@ -6024,14 +6026,14 @@ static const GLenum GL_PACK_SKIP_IMAGES_EXT = GLenum::GL_PACK_SKIP_IMAGES_EXT;
 static const GLenum GL_PACK_IMAGE_HEIGHT_EXT = GLenum::GL_PACK_IMAGE_HEIGHT_EXT;
 static const GLenum GL_UNPACK_SKIP_IMAGES_EXT = GLenum::GL_UNPACK_SKIP_IMAGES_EXT;
 static const GLenum GL_UNPACK_IMAGE_HEIGHT_EXT = GLenum::GL_UNPACK_IMAGE_HEIGHT_EXT;
-// static const GLenum GL_TEXTURE_3D_EXT = GLenum::GL_TEXTURE_3D_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_3D_EXT = GLenum::GL_TEXTURE_3D_EXT; // reuse EnableCap
 static const GLenum GL_MAX_3D_TEXTURE_SIZE_EXT = GLenum::GL_MAX_3D_TEXTURE_SIZE_EXT;
-// static const GLenum GL_VERTEX_ARRAY = GLenum::GL_VERTEX_ARRAY; // reuse EnableCap
-// static const GLenum GL_NORMAL_ARRAY = GLenum::GL_NORMAL_ARRAY; // reuse EnableCap
-// static const GLenum GL_COLOR_ARRAY = GLenum::GL_COLOR_ARRAY; // reuse EnableCap
-// static const GLenum GL_INDEX_ARRAY = GLenum::GL_INDEX_ARRAY; // reuse EnableCap
-// static const GLenum GL_TEXTURE_COORD_ARRAY = GLenum::GL_TEXTURE_COORD_ARRAY; // reuse EnableCap
-// static const GLenum GL_EDGE_FLAG_ARRAY = GLenum::GL_EDGE_FLAG_ARRAY; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_ARRAY = GLenum::GL_VERTEX_ARRAY; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_NORMAL_ARRAY = GLenum::GL_NORMAL_ARRAY; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ARRAY = GLenum::GL_COLOR_ARRAY; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_INDEX_ARRAY = GLenum::GL_INDEX_ARRAY; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_COORD_ARRAY = GLenum::GL_TEXTURE_COORD_ARRAY; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_EDGE_FLAG_ARRAY = GLenum::GL_EDGE_FLAG_ARRAY; // reuse EnableCap
 static const GLenum GL_VERTEX_ARRAY_SIZE = GLenum::GL_VERTEX_ARRAY_SIZE;
 static const GLenum GL_VERTEX_ARRAY_TYPE = GLenum::GL_VERTEX_ARRAY_TYPE;
 static const GLenum GL_VERTEX_ARRAY_STRIDE = GLenum::GL_VERTEX_ARRAY_STRIDE;
@@ -6052,12 +6054,12 @@ static const GLenum GL_TEXTURE_COORD_ARRAY_STRIDE = GLenum::GL_TEXTURE_COORD_ARR
 static const GLenum GL_TEXTURE_COORD_ARRAY_COUNT_EXT = GLenum::GL_TEXTURE_COORD_ARRAY_COUNT_EXT;
 static const GLenum GL_EDGE_FLAG_ARRAY_STRIDE = GLenum::GL_EDGE_FLAG_ARRAY_STRIDE;
 static const GLenum GL_EDGE_FLAG_ARRAY_COUNT_EXT = GLenum::GL_EDGE_FLAG_ARRAY_COUNT_EXT;
-// static const GLenum GL_INTERLACE_SGIX = GLenum::GL_INTERLACE_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_INTERLACE_SGIX = GLenum::GL_INTERLACE_SGIX; // reuse EnableCap
 static const GLenum GL_DETAIL_TEXTURE_2D_BINDING_SGIS = GLenum::GL_DETAIL_TEXTURE_2D_BINDING_SGIS;
-// static const GLenum GL_MULTISAMPLE_SGIS = GLenum::GL_MULTISAMPLE_SGIS; // reuse EnableCap
-// static const GLenum GL_SAMPLE_ALPHA_TO_MASK_SGIS = GLenum::GL_SAMPLE_ALPHA_TO_MASK_SGIS; // reuse EnableCap
-// static const GLenum GL_SAMPLE_ALPHA_TO_ONE_SGIS = GLenum::GL_SAMPLE_ALPHA_TO_ONE_SGIS; // reuse EnableCap
-// static const GLenum GL_SAMPLE_MASK_SGIS = GLenum::GL_SAMPLE_MASK_SGIS; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MULTISAMPLE_SGIS = GLenum::GL_MULTISAMPLE_SGIS; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_SAMPLE_ALPHA_TO_MASK_SGIS = GLenum::GL_SAMPLE_ALPHA_TO_MASK_SGIS; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_SAMPLE_ALPHA_TO_ONE_SGIS = GLenum::GL_SAMPLE_ALPHA_TO_ONE_SGIS; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_SAMPLE_MASK_SGIS = GLenum::GL_SAMPLE_MASK_SGIS; // reuse EnableCap
 static const GLenum GL_SAMPLE_BUFFERS_SGIS = GLenum::GL_SAMPLE_BUFFERS_SGIS;
 static const GLenum GL_SAMPLES_SGIS = GLenum::GL_SAMPLES_SGIS;
 static const GLenum GL_SAMPLE_MASK_VALUE_SGIS = GLenum::GL_SAMPLE_MASK_VALUE_SGIS;
@@ -6074,10 +6076,10 @@ static const GLenum GL_POST_COLOR_MATRIX_RED_BIAS_SGI = GLenum::GL_POST_COLOR_MA
 static const GLenum GL_POST_COLOR_MATRIX_GREEN_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_GREEN_BIAS_SGI;
 static const GLenum GL_POST_COLOR_MATRIX_BLUE_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_BLUE_BIAS_SGI;
 static const GLenum GL_POST_COLOR_MATRIX_ALPHA_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_ALPHA_BIAS_SGI;
-// static const GLenum GL_TEXTURE_COLOR_TABLE_SGI = GLenum::GL_TEXTURE_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
-// static const GLenum GL_COLOR_TABLE_SGI = GLenum::GL_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
-// static const GLenum GL_POST_CONVOLUTION_COLOR_TABLE_SGI = GLenum::GL_POST_CONVOLUTION_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
-// static const GLenum GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI = GLenum::GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_COLOR_TABLE_SGI = GLenum::GL_TEXTURE_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_TABLE_SGI = GLenum::GL_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_COLOR_TABLE_SGI = GLenum::GL_POST_CONVOLUTION_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI = GLenum::GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI; // reuse ColorTableTargetSGI
 static const GLenum GL_POINT_SIZE_MIN_SGIS = GLenum::GL_POINT_SIZE_MIN_SGIS;
 static const GLenum GL_POINT_SIZE_MAX_SGIS = GLenum::GL_POINT_SIZE_MAX_SGIS;
 static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_SGIS = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_SGIS;
@@ -6088,9 +6090,9 @@ static const GLenum GL_PACK_SKIP_VOLUMES_SGIS = GLenum::GL_PACK_SKIP_VOLUMES_SGI
 static const GLenum GL_PACK_IMAGE_DEPTH_SGIS = GLenum::GL_PACK_IMAGE_DEPTH_SGIS;
 static const GLenum GL_UNPACK_SKIP_VOLUMES_SGIS = GLenum::GL_UNPACK_SKIP_VOLUMES_SGIS;
 static const GLenum GL_UNPACK_IMAGE_DEPTH_SGIS = GLenum::GL_UNPACK_IMAGE_DEPTH_SGIS;
-// static const GLenum GL_TEXTURE_4D_SGIS = GLenum::GL_TEXTURE_4D_SGIS; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_4D_SGIS = GLenum::GL_TEXTURE_4D_SGIS; // reuse EnableCap
 static const GLenum GL_MAX_4D_TEXTURE_SIZE_SGIS = GLenum::GL_MAX_4D_TEXTURE_SIZE_SGIS;
-// static const GLenum GL_PIXEL_TEX_GEN_SGIX = GLenum::GL_PIXEL_TEX_GEN_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TEX_GEN_SGIX = GLenum::GL_PIXEL_TEX_GEN_SGIX; // reuse EnableCap
 static const GLenum GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX = GLenum::GL_PIXEL_TILE_BEST_ALIGNMENT_SGIX;
 static const GLenum GL_PIXEL_TILE_CACHE_INCREMENT_SGIX = GLenum::GL_PIXEL_TILE_CACHE_INCREMENT_SGIX;
 static const GLenum GL_PIXEL_TILE_WIDTH_SGIX = GLenum::GL_PIXEL_TILE_WIDTH_SGIX;
@@ -6099,7 +6101,7 @@ static const GLenum GL_PIXEL_TILE_GRID_WIDTH_SGIX = GLenum::GL_PIXEL_TILE_GRID_W
 static const GLenum GL_PIXEL_TILE_GRID_HEIGHT_SGIX = GLenum::GL_PIXEL_TILE_GRID_HEIGHT_SGIX;
 static const GLenum GL_PIXEL_TILE_GRID_DEPTH_SGIX = GLenum::GL_PIXEL_TILE_GRID_DEPTH_SGIX;
 static const GLenum GL_PIXEL_TILE_CACHE_SIZE_SGIX = GLenum::GL_PIXEL_TILE_CACHE_SIZE_SGIX;
-// static const GLenum GL_SPRITE_SGIX = GLenum::GL_SPRITE_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_SPRITE_SGIX = GLenum::GL_SPRITE_SGIX; // reuse EnableCap
 static const GLenum GL_SPRITE_MODE_SGIX = GLenum::GL_SPRITE_MODE_SGIX;
 static const GLenum GL_SPRITE_AXIS_SGIX = GLenum::GL_SPRITE_AXIS_SGIX;
 static const GLenum GL_SPRITE_TRANSLATION_SGIX = GLenum::GL_SPRITE_TRANSLATION_SGIX;
@@ -6108,46 +6110,46 @@ static const GLenum GL_MAX_CLIPMAP_DEPTH_SGIX = GLenum::GL_MAX_CLIPMAP_DEPTH_SGI
 static const GLenum GL_MAX_CLIPMAP_VIRTUAL_DEPTH_SGIX = GLenum::GL_MAX_CLIPMAP_VIRTUAL_DEPTH_SGIX;
 static const GLenum GL_POST_TEXTURE_FILTER_BIAS_RANGE_SGIX = GLenum::GL_POST_TEXTURE_FILTER_BIAS_RANGE_SGIX;
 static const GLenum GL_POST_TEXTURE_FILTER_SCALE_RANGE_SGIX = GLenum::GL_POST_TEXTURE_FILTER_SCALE_RANGE_SGIX;
-// static const GLenum GL_REFERENCE_PLANE_SGIX = GLenum::GL_REFERENCE_PLANE_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_REFERENCE_PLANE_SGIX = GLenum::GL_REFERENCE_PLANE_SGIX; // reuse EnableCap
 static const GLenum GL_REFERENCE_PLANE_EQUATION_SGIX = GLenum::GL_REFERENCE_PLANE_EQUATION_SGIX;
-// static const GLenum GL_IR_INSTRUMENT1_SGIX = GLenum::GL_IR_INSTRUMENT1_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_IR_INSTRUMENT1_SGIX = GLenum::GL_IR_INSTRUMENT1_SGIX; // reuse EnableCap
 static const GLenum GL_INSTRUMENT_MEASUREMENTS_SGIX = GLenum::GL_INSTRUMENT_MEASUREMENTS_SGIX;
-// static const GLenum GL_CALLIGRAPHIC_FRAGMENT_SGIX = GLenum::GL_CALLIGRAPHIC_FRAGMENT_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAMEZOOM_SGIX = GLenum::GL_FRAMEZOOM_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_CALLIGRAPHIC_FRAGMENT_SGIX = GLenum::GL_CALLIGRAPHIC_FRAGMENT_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAMEZOOM_SGIX = GLenum::GL_FRAMEZOOM_SGIX; // reuse EnableCap
 static const GLenum GL_FRAMEZOOM_FACTOR_SGIX = GLenum::GL_FRAMEZOOM_FACTOR_SGIX;
 static const GLenum GL_MAX_FRAMEZOOM_FACTOR_SGIX = GLenum::GL_MAX_FRAMEZOOM_FACTOR_SGIX;
 static const GLenum GL_GENERATE_MIPMAP_HINT_SGIS = GLenum::GL_GENERATE_MIPMAP_HINT_SGIS;
 static const GLenum GL_DEFORMATIONS_MASK_SGIX = GLenum::GL_DEFORMATIONS_MASK_SGIX;
-// static const GLenum GL_FOG_OFFSET_SGIX = GLenum::GL_FOG_OFFSET_SGIX; // reuse EnableCap
-// static const GLenum GL_FOG_OFFSET_VALUE_SGIX = GLenum::GL_FOG_OFFSET_VALUE_SGIX; // reuse FogParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_OFFSET_SGIX = GLenum::GL_FOG_OFFSET_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_OFFSET_VALUE_SGIX = GLenum::GL_FOG_OFFSET_VALUE_SGIX; // reuse FogParameter
 static const GLenum GL_LIGHT_MODEL_COLOR_CONTROL = GLenum::GL_LIGHT_MODEL_COLOR_CONTROL;
-// static const GLenum GL_SHARED_TEXTURE_PALETTE_EXT = GLenum::GL_SHARED_TEXTURE_PALETTE_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_SHARED_TEXTURE_PALETTE_EXT = GLenum::GL_SHARED_TEXTURE_PALETTE_EXT; // reuse EnableCap
 static const GLenum GL_CONVOLUTION_HINT_SGIX = GLenum::GL_CONVOLUTION_HINT_SGIX;
 static const GLenum GL_ASYNC_MARKER_SGIX = GLenum::GL_ASYNC_MARKER_SGIX;
 static const GLenum GL_PIXEL_TEX_GEN_MODE_SGIX = GLenum::GL_PIXEL_TEX_GEN_MODE_SGIX;
-// static const GLenum GL_ASYNC_HISTOGRAM_SGIX = GLenum::GL_ASYNC_HISTOGRAM_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_ASYNC_HISTOGRAM_SGIX = GLenum::GL_ASYNC_HISTOGRAM_SGIX; // reuse EnableCap
 static const GLenum GL_MAX_ASYNC_HISTOGRAM_SGIX = GLenum::GL_MAX_ASYNC_HISTOGRAM_SGIX;
-// static const GLenum GL_PIXEL_TEXTURE_SGIS = GLenum::GL_PIXEL_TEXTURE_SGIS; // reuse EnableCap
-// static const GLenum GL_ASYNC_TEX_IMAGE_SGIX = GLenum::GL_ASYNC_TEX_IMAGE_SGIX; // reuse EnableCap
-// static const GLenum GL_ASYNC_DRAW_PIXELS_SGIX = GLenum::GL_ASYNC_DRAW_PIXELS_SGIX; // reuse EnableCap
-// static const GLenum GL_ASYNC_READ_PIXELS_SGIX = GLenum::GL_ASYNC_READ_PIXELS_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TEXTURE_SGIS = GLenum::GL_PIXEL_TEXTURE_SGIS; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_ASYNC_TEX_IMAGE_SGIX = GLenum::GL_ASYNC_TEX_IMAGE_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_ASYNC_DRAW_PIXELS_SGIX = GLenum::GL_ASYNC_DRAW_PIXELS_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_ASYNC_READ_PIXELS_SGIX = GLenum::GL_ASYNC_READ_PIXELS_SGIX; // reuse EnableCap
 static const GLenum GL_MAX_ASYNC_TEX_IMAGE_SGIX = GLenum::GL_MAX_ASYNC_TEX_IMAGE_SGIX;
 static const GLenum GL_MAX_ASYNC_DRAW_PIXELS_SGIX = GLenum::GL_MAX_ASYNC_DRAW_PIXELS_SGIX;
 static const GLenum GL_MAX_ASYNC_READ_PIXELS_SGIX = GLenum::GL_MAX_ASYNC_READ_PIXELS_SGIX;
 static const GLenum GL_VERTEX_PRECLIP_SGIX = GLenum::GL_VERTEX_PRECLIP_SGIX;
 static const GLenum GL_VERTEX_PRECLIP_HINT_SGIX = GLenum::GL_VERTEX_PRECLIP_HINT_SGIX;
-// static const GLenum GL_FRAGMENT_LIGHTING_SGIX = GLenum::GL_FRAGMENT_LIGHTING_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_COLOR_MATERIAL_SGIX = GLenum::GL_FRAGMENT_COLOR_MATERIAL_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHTING_SGIX = GLenum::GL_FRAGMENT_LIGHTING_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_COLOR_MATERIAL_SGIX = GLenum::GL_FRAGMENT_COLOR_MATERIAL_SGIX; // reuse EnableCap
 static const GLenum GL_FRAGMENT_COLOR_MATERIAL_FACE_SGIX = GLenum::GL_FRAGMENT_COLOR_MATERIAL_FACE_SGIX;
 static const GLenum GL_FRAGMENT_COLOR_MATERIAL_PARAMETER_SGIX = GLenum::GL_FRAGMENT_COLOR_MATERIAL_PARAMETER_SGIX;
 static const GLenum GL_MAX_FRAGMENT_LIGHTS_SGIX = GLenum::GL_MAX_FRAGMENT_LIGHTS_SGIX;
 static const GLenum GL_MAX_ACTIVE_LIGHTS_SGIX = GLenum::GL_MAX_ACTIVE_LIGHTS_SGIX;
 static const GLenum GL_LIGHT_ENV_MODE_SGIX = GLenum::GL_LIGHT_ENV_MODE_SGIX;
-// static const GLenum GL_FRAGMENT_LIGHT_MODEL_LOCAL_VIEWER_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_LOCAL_VIEWER_SGIX; // reuse FragmentLightModelParameterSGIX
-// static const GLenum GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX; // reuse FragmentLightModelParameterSGIX
-// static const GLenum GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX; // reuse FragmentLightModelParameterSGIX
-// static const GLenum GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX; // reuse FragmentLightModelParameterSGIX
-// static const GLenum GL_FRAGMENT_LIGHT0_SGIX = GLenum::GL_FRAGMENT_LIGHT0_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT_MODEL_LOCAL_VIEWER_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_LOCAL_VIEWER_SGIX; // reuse FragmentLightModelParameterSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX; // reuse FragmentLightModelParameterSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX; // reuse FragmentLightModelParameterSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX = GLenum::GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX; // reuse FragmentLightModelParameterSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT0_SGIX = GLenum::GL_FRAGMENT_LIGHT0_SGIX; // reuse EnableCap
 static const GLenum GL_PACK_RESAMPLE_SGIX = GLenum::GL_PACK_RESAMPLE_SGIX;
 static const GLenum GL_UNPACK_RESAMPLE_SGIX = GLenum::GL_UNPACK_RESAMPLE_SGIX;
 static const GLenum GL_ALIASED_POINT_SIZE_RANGE = GLenum::GL_ALIASED_POINT_SIZE_RANGE;
@@ -6250,11 +6252,11 @@ static const GLenum GL_NICEST = GLenum::GL_NICEST;
 
 // HintTarget
 
-// static const GLenum GL_PERSPECTIVE_CORRECTION_HINT = GLenum::GL_PERSPECTIVE_CORRECTION_HINT; // reuse GetPName
-// static const GLenum GL_POINT_SMOOTH_HINT = GLenum::GL_POINT_SMOOTH_HINT; // reuse GetPName
-// static const GLenum GL_LINE_SMOOTH_HINT = GLenum::GL_LINE_SMOOTH_HINT; // reuse GetPName
-// static const GLenum GL_POLYGON_SMOOTH_HINT = GLenum::GL_POLYGON_SMOOTH_HINT; // reuse GetPName
-// static const GLenum GL_FOG_HINT = GLenum::GL_FOG_HINT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PERSPECTIVE_CORRECTION_HINT = GLenum::GL_PERSPECTIVE_CORRECTION_HINT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_SMOOTH_HINT = GLenum::GL_POINT_SMOOTH_HINT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_LINE_SMOOTH_HINT = GLenum::GL_LINE_SMOOTH_HINT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_SMOOTH_HINT = GLenum::GL_POLYGON_SMOOTH_HINT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_FOG_HINT = GLenum::GL_FOG_HINT; // reuse GetPName
 static const GLenum GL_PREFER_DOUBLEBUFFER_HINT_PGI = GLenum::GL_PREFER_DOUBLEBUFFER_HINT_PGI;
 static const GLenum GL_CONSERVE_MEMORY_HINT_PGI = GLenum::GL_CONSERVE_MEMORY_HINT_PGI;
 static const GLenum GL_RECLAIM_MEMORY_HINT_PGI = GLenum::GL_RECLAIM_MEMORY_HINT_PGI;
@@ -6278,18 +6280,18 @@ static const GLenum GL_VERTEX_DATA_HINT_PGI = GLenum::GL_VERTEX_DATA_HINT_PGI;
 static const GLenum GL_VERTEX_CONSISTENT_HINT_PGI = GLenum::GL_VERTEX_CONSISTENT_HINT_PGI;
 static const GLenum GL_MATERIAL_SIDE_HINT_PGI = GLenum::GL_MATERIAL_SIDE_HINT_PGI;
 static const GLenum GL_MAX_VERTEX_HINT_PGI = GLenum::GL_MAX_VERTEX_HINT_PGI;
-// static const GLenum GL_PACK_CMYK_HINT_EXT = GLenum::GL_PACK_CMYK_HINT_EXT; // reuse GetPName
-// static const GLenum GL_UNPACK_CMYK_HINT_EXT = GLenum::GL_UNPACK_CMYK_HINT_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_CMYK_HINT_EXT = GLenum::GL_PACK_CMYK_HINT_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_CMYK_HINT_EXT = GLenum::GL_UNPACK_CMYK_HINT_EXT; // reuse GetPName
 static const GLenum GL_PHONG_HINT_WIN = GLenum::GL_PHONG_HINT_WIN;
 static const GLenum GL_CLIP_VOLUME_CLIPPING_HINT_EXT = GLenum::GL_CLIP_VOLUME_CLIPPING_HINT_EXT;
 static const GLenum GL_TEXTURE_MULTI_BUFFER_HINT_SGIX = GLenum::GL_TEXTURE_MULTI_BUFFER_HINT_SGIX;
 static const GLenum GL_GENERATE_MIPMAP_HINT = GLenum::GL_GENERATE_MIPMAP_HINT;
-// static const GLenum GL_GENERATE_MIPMAP_HINT_SGIS = GLenum::GL_GENERATE_MIPMAP_HINT_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_GENERATE_MIPMAP_HINT_SGIS = GLenum::GL_GENERATE_MIPMAP_HINT_SGIS; // reuse GetPName
 static const GLenum GL_PROGRAM_BINARY_RETRIEVABLE_HINT = GLenum::GL_PROGRAM_BINARY_RETRIEVABLE_HINT;
-// static const GLenum GL_CONVOLUTION_HINT_SGIX = GLenum::GL_CONVOLUTION_HINT_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_HINT_SGIX = GLenum::GL_CONVOLUTION_HINT_SGIX; // reuse GetPName
 static const GLenum GL_SCALEBIAS_HINT_SGIX = GLenum::GL_SCALEBIAS_HINT_SGIX;
-// static const GLenum GL_VERTEX_PRECLIP_SGIX = GLenum::GL_VERTEX_PRECLIP_SGIX; // reuse GetPName
-// static const GLenum GL_VERTEX_PRECLIP_HINT_SGIX = GLenum::GL_VERTEX_PRECLIP_HINT_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_PRECLIP_SGIX = GLenum::GL_VERTEX_PRECLIP_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_PRECLIP_HINT_SGIX = GLenum::GL_VERTEX_PRECLIP_HINT_SGIX; // reuse GetPName
 static const GLenum GL_TEXTURE_COMPRESSION_HINT = GLenum::GL_TEXTURE_COMPRESSION_HINT;
 static const GLenum GL_TEXTURE_COMPRESSION_HINT_ARB = GLenum::GL_TEXTURE_COMPRESSION_HINT_ARB;
 static const GLenum GL_VERTEX_ARRAY_STORAGE_HINT_APPLE = GLenum::GL_VERTEX_ARRAY_STORAGE_HINT_APPLE;
@@ -6302,16 +6304,16 @@ static const GLenum GL_FRAGMENT_SHADER_DERIVATIVE_HINT_ARB = GLenum::GL_FRAGMENT
 // HistogramTargetEXT
 
 static const GLenum GL_HISTOGRAM = GLenum::GL_HISTOGRAM;
-// static const GLenum GL_HISTOGRAM_EXT = GLenum::GL_HISTOGRAM_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_HISTOGRAM_EXT = GLenum::GL_HISTOGRAM_EXT; // reuse EnableCap
 static const GLenum GL_PROXY_HISTOGRAM = GLenum::GL_PROXY_HISTOGRAM;
 static const GLenum GL_PROXY_HISTOGRAM_EXT = GLenum::GL_PROXY_HISTOGRAM_EXT;
 
 // IndexPointerType
 
-// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
-// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
-// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
 
 // InterleavedArrayFormat
 
@@ -6392,13 +6394,13 @@ static const GLenum GL_DEPTH_COMPONENT32_SGIX = GLenum::GL_DEPTH_COMPONENT32_SGI
 
 // LightEnvModeSGIX
 
-// static const GLenum GL_ADD = GLenum::GL_ADD; // reuse AccumOp
+// GLBINDING_CONSTEXPR static const GLenum GL_ADD = GLenum::GL_ADD; // reuse AccumOp
 static const GLenum GL_REPLACE = GLenum::GL_REPLACE;
 static const GLenum GL_MODULATE = GLenum::GL_MODULATE;
 
 // LightEnvParameterSGIX
 
-// static const GLenum GL_LIGHT_ENV_MODE_SGIX = GLenum::GL_LIGHT_ENV_MODE_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT_ENV_MODE_SGIX = GLenum::GL_LIGHT_ENV_MODE_SGIX; // reuse GetPName
 
 // LightModelColorControl
 
@@ -6409,36 +6411,36 @@ static const GLenum GL_SEPARATE_SPECULAR_COLOR_EXT = GLenum::GL_SEPARATE_SPECULA
 
 // LightModelParameter
 
-// static const GLenum GL_LIGHT_MODEL_LOCAL_VIEWER = GLenum::GL_LIGHT_MODEL_LOCAL_VIEWER; // reuse GetPName
-// static const GLenum GL_LIGHT_MODEL_TWO_SIDE = GLenum::GL_LIGHT_MODEL_TWO_SIDE; // reuse GetPName
-// static const GLenum GL_LIGHT_MODEL_AMBIENT = GLenum::GL_LIGHT_MODEL_AMBIENT; // reuse GetPName
-// static const GLenum GL_LIGHT_MODEL_COLOR_CONTROL = GLenum::GL_LIGHT_MODEL_COLOR_CONTROL; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT_MODEL_LOCAL_VIEWER = GLenum::GL_LIGHT_MODEL_LOCAL_VIEWER; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT_MODEL_TWO_SIDE = GLenum::GL_LIGHT_MODEL_TWO_SIDE; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT_MODEL_AMBIENT = GLenum::GL_LIGHT_MODEL_AMBIENT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT_MODEL_COLOR_CONTROL = GLenum::GL_LIGHT_MODEL_COLOR_CONTROL; // reuse GetPName
 static const GLenum GL_LIGHT_MODEL_COLOR_CONTROL_EXT = GLenum::GL_LIGHT_MODEL_COLOR_CONTROL_EXT;
 
 // LightName
 
-// static const GLenum GL_LIGHT0 = GLenum::GL_LIGHT0; // reuse EnableCap
-// static const GLenum GL_LIGHT1 = GLenum::GL_LIGHT1; // reuse EnableCap
-// static const GLenum GL_LIGHT2 = GLenum::GL_LIGHT2; // reuse EnableCap
-// static const GLenum GL_LIGHT3 = GLenum::GL_LIGHT3; // reuse EnableCap
-// static const GLenum GL_LIGHT4 = GLenum::GL_LIGHT4; // reuse EnableCap
-// static const GLenum GL_LIGHT5 = GLenum::GL_LIGHT5; // reuse EnableCap
-// static const GLenum GL_LIGHT6 = GLenum::GL_LIGHT6; // reuse EnableCap
-// static const GLenum GL_LIGHT7 = GLenum::GL_LIGHT7; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT0_SGIX = GLenum::GL_FRAGMENT_LIGHT0_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT1_SGIX = GLenum::GL_FRAGMENT_LIGHT1_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT2_SGIX = GLenum::GL_FRAGMENT_LIGHT2_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT3_SGIX = GLenum::GL_FRAGMENT_LIGHT3_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT4_SGIX = GLenum::GL_FRAGMENT_LIGHT4_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT5_SGIX = GLenum::GL_FRAGMENT_LIGHT5_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT6_SGIX = GLenum::GL_FRAGMENT_LIGHT6_SGIX; // reuse EnableCap
-// static const GLenum GL_FRAGMENT_LIGHT7_SGIX = GLenum::GL_FRAGMENT_LIGHT7_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT0 = GLenum::GL_LIGHT0; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT1 = GLenum::GL_LIGHT1; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT2 = GLenum::GL_LIGHT2; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT3 = GLenum::GL_LIGHT3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT4 = GLenum::GL_LIGHT4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT5 = GLenum::GL_LIGHT5; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT6 = GLenum::GL_LIGHT6; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_LIGHT7 = GLenum::GL_LIGHT7; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT0_SGIX = GLenum::GL_FRAGMENT_LIGHT0_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT1_SGIX = GLenum::GL_FRAGMENT_LIGHT1_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT2_SGIX = GLenum::GL_FRAGMENT_LIGHT2_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT3_SGIX = GLenum::GL_FRAGMENT_LIGHT3_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT4_SGIX = GLenum::GL_FRAGMENT_LIGHT4_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT5_SGIX = GLenum::GL_FRAGMENT_LIGHT5_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT6_SGIX = GLenum::GL_FRAGMENT_LIGHT6_SGIX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_LIGHT7_SGIX = GLenum::GL_FRAGMENT_LIGHT7_SGIX; // reuse EnableCap
 
 // LightParameter
 
-// static const GLenum GL_AMBIENT = GLenum::GL_AMBIENT; // reuse ColorMaterialParameter
-// static const GLenum GL_DIFFUSE = GLenum::GL_DIFFUSE; // reuse ColorMaterialParameter
-// static const GLenum GL_SPECULAR = GLenum::GL_SPECULAR; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_AMBIENT = GLenum::GL_AMBIENT; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_DIFFUSE = GLenum::GL_DIFFUSE; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_SPECULAR = GLenum::GL_SPECULAR; // reuse ColorMaterialParameter
 static const GLenum GL_POSITION = GLenum::GL_POSITION;
 static const GLenum GL_SPOT_DIRECTION = GLenum::GL_SPOT_DIRECTION;
 static const GLenum GL_SPOT_EXPONENT = GLenum::GL_SPOT_EXPONENT;
@@ -6454,13 +6456,13 @@ static const GLenum GL_COMPILE_AND_EXECUTE = GLenum::GL_COMPILE_AND_EXECUTE;
 
 // ListNameType
 
-// static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
-// static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE; // reuse ColorPointerType
-// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
-// static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
-// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
-// static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
 static const GLenum GL_2_BYTES = GLenum::GL_2_BYTES;
 static const GLenum GL_3_BYTES = GLenum::GL_3_BYTES;
 static const GLenum GL_4_BYTES = GLenum::GL_4_BYTES;
@@ -6490,26 +6492,26 @@ static const GLenum GL_SET = GLenum::GL_SET;
 
 // MapTarget
 
-// static const GLenum GL_MAP1_COLOR_4 = GLenum::GL_MAP1_COLOR_4; // reuse EnableCap
-// static const GLenum GL_MAP1_INDEX = GLenum::GL_MAP1_INDEX; // reuse EnableCap
-// static const GLenum GL_MAP1_NORMAL = GLenum::GL_MAP1_NORMAL; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_1 = GLenum::GL_MAP1_TEXTURE_COORD_1; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_2 = GLenum::GL_MAP1_TEXTURE_COORD_2; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_3 = GLenum::GL_MAP1_TEXTURE_COORD_3; // reuse EnableCap
-// static const GLenum GL_MAP1_TEXTURE_COORD_4 = GLenum::GL_MAP1_TEXTURE_COORD_4; // reuse EnableCap
-// static const GLenum GL_MAP1_VERTEX_3 = GLenum::GL_MAP1_VERTEX_3; // reuse EnableCap
-// static const GLenum GL_MAP1_VERTEX_4 = GLenum::GL_MAP1_VERTEX_4; // reuse EnableCap
-// static const GLenum GL_MAP2_COLOR_4 = GLenum::GL_MAP2_COLOR_4; // reuse EnableCap
-// static const GLenum GL_MAP2_INDEX = GLenum::GL_MAP2_INDEX; // reuse EnableCap
-// static const GLenum GL_MAP2_NORMAL = GLenum::GL_MAP2_NORMAL; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_1 = GLenum::GL_MAP2_TEXTURE_COORD_1; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_2 = GLenum::GL_MAP2_TEXTURE_COORD_2; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_3 = GLenum::GL_MAP2_TEXTURE_COORD_3; // reuse EnableCap
-// static const GLenum GL_MAP2_TEXTURE_COORD_4 = GLenum::GL_MAP2_TEXTURE_COORD_4; // reuse EnableCap
-// static const GLenum GL_MAP2_VERTEX_3 = GLenum::GL_MAP2_VERTEX_3; // reuse EnableCap
-// static const GLenum GL_MAP2_VERTEX_4 = GLenum::GL_MAP2_VERTEX_4; // reuse EnableCap
-// static const GLenum GL_GEOMETRY_DEFORMATION_SGIX = GLenum::GL_GEOMETRY_DEFORMATION_SGIX; // reuse FfdTargetSGIX
-// static const GLenum GL_TEXTURE_DEFORMATION_SGIX = GLenum::GL_TEXTURE_DEFORMATION_SGIX; // reuse FfdTargetSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_COLOR_4 = GLenum::GL_MAP1_COLOR_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_INDEX = GLenum::GL_MAP1_INDEX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_NORMAL = GLenum::GL_MAP1_NORMAL; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_1 = GLenum::GL_MAP1_TEXTURE_COORD_1; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_2 = GLenum::GL_MAP1_TEXTURE_COORD_2; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_3 = GLenum::GL_MAP1_TEXTURE_COORD_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_TEXTURE_COORD_4 = GLenum::GL_MAP1_TEXTURE_COORD_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_VERTEX_3 = GLenum::GL_MAP1_VERTEX_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP1_VERTEX_4 = GLenum::GL_MAP1_VERTEX_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_COLOR_4 = GLenum::GL_MAP2_COLOR_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_INDEX = GLenum::GL_MAP2_INDEX; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_NORMAL = GLenum::GL_MAP2_NORMAL; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_1 = GLenum::GL_MAP2_TEXTURE_COORD_1; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_2 = GLenum::GL_MAP2_TEXTURE_COORD_2; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_3 = GLenum::GL_MAP2_TEXTURE_COORD_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_4 = GLenum::GL_MAP2_TEXTURE_COORD_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_VERTEX_3 = GLenum::GL_MAP2_VERTEX_3; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP2_VERTEX_4 = GLenum::GL_MAP2_VERTEX_4; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_GEOMETRY_DEFORMATION_SGIX = GLenum::GL_GEOMETRY_DEFORMATION_SGIX; // reuse FfdTargetSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_DEFORMATION_SGIX = GLenum::GL_TEXTURE_DEFORMATION_SGIX; // reuse FfdTargetSGIX
 
 // MapTextureFormatINTEL
 
@@ -6519,18 +6521,18 @@ static const GLenum GL_LAYOUT_LINEAR_CPU_CACHED_INTEL = GLenum::GL_LAYOUT_LINEAR
 
 // MaterialFace
 
-// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
-// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
-// static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT_AND_BACK = GLenum::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
 
 // MaterialParameter
 
-// static const GLenum GL_AMBIENT = GLenum::GL_AMBIENT; // reuse ColorMaterialParameter
-// static const GLenum GL_DIFFUSE = GLenum::GL_DIFFUSE; // reuse ColorMaterialParameter
-// static const GLenum GL_SPECULAR = GLenum::GL_SPECULAR; // reuse ColorMaterialParameter
-// static const GLenum GL_EMISSION = GLenum::GL_EMISSION; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_AMBIENT = GLenum::GL_AMBIENT; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_DIFFUSE = GLenum::GL_DIFFUSE; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_SPECULAR = GLenum::GL_SPECULAR; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_EMISSION = GLenum::GL_EMISSION; // reuse ColorMaterialParameter
 static const GLenum GL_SHININESS = GLenum::GL_SHININESS;
-// static const GLenum GL_AMBIENT_AND_DIFFUSE = GLenum::GL_AMBIENT_AND_DIFFUSE; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_AMBIENT_AND_DIFFUSE = GLenum::GL_AMBIENT_AND_DIFFUSE; // reuse ColorMaterialParameter
 static const GLenum GL_COLOR_INDEXES = GLenum::GL_COLOR_INDEXES;
 
 // MatrixMode
@@ -6547,22 +6549,22 @@ static const GLenum GL_LINE = GLenum::GL_LINE;
 
 // MeshMode2
 
-// static const GLenum GL_POINT = GLenum::GL_POINT; // reuse MeshMode1
-// static const GLenum GL_LINE = GLenum::GL_LINE; // reuse MeshMode1
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT = GLenum::GL_POINT; // reuse MeshMode1
+// GLBINDING_CONSTEXPR static const GLenum GL_LINE = GLenum::GL_LINE; // reuse MeshMode1
 static const GLenum GL_FILL = GLenum::GL_FILL;
 
 // MinmaxTargetEXT
 
 static const GLenum GL_MINMAX = GLenum::GL_MINMAX;
-// static const GLenum GL_MINMAX_EXT = GLenum::GL_MINMAX_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MINMAX_EXT = GLenum::GL_MINMAX_EXT; // reuse EnableCap
 
 // NormalPointerType
 
-// static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
-// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
-// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
-// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
 
 // OcclusionQueryEventMaskAMD
 
@@ -6580,8 +6582,8 @@ static const GLenum GL_STENCIL = GLenum::GL_STENCIL;
 
 // PixelFormat
 
-// static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
-// static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
 static const GLenum GL_COLOR_INDEX = GLenum::GL_COLOR_INDEX;
 static const GLenum GL_STENCIL_INDEX = GLenum::GL_STENCIL_INDEX;
 static const GLenum GL_DEPTH_COMPONENT = GLenum::GL_DEPTH_COMPONENT;
@@ -6601,53 +6603,53 @@ static const GLenum GL_YCRCB_444_SGIX = GLenum::GL_YCRCB_444_SGIX;
 
 // PixelMap
 
-// static const GLenum GL_PIXEL_MAP_I_TO_I = GLenum::GL_PIXEL_MAP_I_TO_I; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_S_TO_S = GLenum::GL_PIXEL_MAP_S_TO_S; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_I_TO_R = GLenum::GL_PIXEL_MAP_I_TO_R; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_I_TO_G = GLenum::GL_PIXEL_MAP_I_TO_G; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_I_TO_B = GLenum::GL_PIXEL_MAP_I_TO_B; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_I_TO_A = GLenum::GL_PIXEL_MAP_I_TO_A; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_R_TO_R = GLenum::GL_PIXEL_MAP_R_TO_R; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_G_TO_G = GLenum::GL_PIXEL_MAP_G_TO_G; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_B_TO_B = GLenum::GL_PIXEL_MAP_B_TO_B; // reuse GetPixelMap
-// static const GLenum GL_PIXEL_MAP_A_TO_A = GLenum::GL_PIXEL_MAP_A_TO_A; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_I_TO_I = GLenum::GL_PIXEL_MAP_I_TO_I; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_S_TO_S = GLenum::GL_PIXEL_MAP_S_TO_S; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_I_TO_R = GLenum::GL_PIXEL_MAP_I_TO_R; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_I_TO_G = GLenum::GL_PIXEL_MAP_I_TO_G; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_I_TO_B = GLenum::GL_PIXEL_MAP_I_TO_B; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_I_TO_A = GLenum::GL_PIXEL_MAP_I_TO_A; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_R_TO_R = GLenum::GL_PIXEL_MAP_R_TO_R; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_G_TO_G = GLenum::GL_PIXEL_MAP_G_TO_G; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_B_TO_B = GLenum::GL_PIXEL_MAP_B_TO_B; // reuse GetPixelMap
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_MAP_A_TO_A = GLenum::GL_PIXEL_MAP_A_TO_A; // reuse GetPixelMap
 
 // PixelStoreParameter
 
-// static const GLenum GL_UNPACK_SWAP_BYTES = GLenum::GL_UNPACK_SWAP_BYTES; // reuse GetPName
-// static const GLenum GL_UNPACK_LSB_FIRST = GLenum::GL_UNPACK_LSB_FIRST; // reuse GetPName
-// static const GLenum GL_UNPACK_ROW_LENGTH = GLenum::GL_UNPACK_ROW_LENGTH; // reuse GetPName
-// static const GLenum GL_UNPACK_SKIP_ROWS = GLenum::GL_UNPACK_SKIP_ROWS; // reuse GetPName
-// static const GLenum GL_UNPACK_SKIP_PIXELS = GLenum::GL_UNPACK_SKIP_PIXELS; // reuse GetPName
-// static const GLenum GL_UNPACK_ALIGNMENT = GLenum::GL_UNPACK_ALIGNMENT; // reuse GetPName
-// static const GLenum GL_PACK_SWAP_BYTES = GLenum::GL_PACK_SWAP_BYTES; // reuse GetPName
-// static const GLenum GL_PACK_LSB_FIRST = GLenum::GL_PACK_LSB_FIRST; // reuse GetPName
-// static const GLenum GL_PACK_ROW_LENGTH = GLenum::GL_PACK_ROW_LENGTH; // reuse GetPName
-// static const GLenum GL_PACK_SKIP_ROWS = GLenum::GL_PACK_SKIP_ROWS; // reuse GetPName
-// static const GLenum GL_PACK_SKIP_PIXELS = GLenum::GL_PACK_SKIP_PIXELS; // reuse GetPName
-// static const GLenum GL_PACK_ALIGNMENT = GLenum::GL_PACK_ALIGNMENT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_SWAP_BYTES = GLenum::GL_UNPACK_SWAP_BYTES; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_LSB_FIRST = GLenum::GL_UNPACK_LSB_FIRST; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_ROW_LENGTH = GLenum::GL_UNPACK_ROW_LENGTH; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_SKIP_ROWS = GLenum::GL_UNPACK_SKIP_ROWS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_SKIP_PIXELS = GLenum::GL_UNPACK_SKIP_PIXELS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_ALIGNMENT = GLenum::GL_UNPACK_ALIGNMENT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_SWAP_BYTES = GLenum::GL_PACK_SWAP_BYTES; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_LSB_FIRST = GLenum::GL_PACK_LSB_FIRST; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_ROW_LENGTH = GLenum::GL_PACK_ROW_LENGTH; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_SKIP_ROWS = GLenum::GL_PACK_SKIP_ROWS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_SKIP_PIXELS = GLenum::GL_PACK_SKIP_PIXELS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_ALIGNMENT = GLenum::GL_PACK_ALIGNMENT; // reuse GetPName
 static const GLenum GL_PACK_SKIP_IMAGES = GLenum::GL_PACK_SKIP_IMAGES;
-// static const GLenum GL_PACK_SKIP_IMAGES_EXT = GLenum::GL_PACK_SKIP_IMAGES_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_SKIP_IMAGES_EXT = GLenum::GL_PACK_SKIP_IMAGES_EXT; // reuse GetPName
 static const GLenum GL_PACK_IMAGE_HEIGHT = GLenum::GL_PACK_IMAGE_HEIGHT;
-// static const GLenum GL_PACK_IMAGE_HEIGHT_EXT = GLenum::GL_PACK_IMAGE_HEIGHT_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_IMAGE_HEIGHT_EXT = GLenum::GL_PACK_IMAGE_HEIGHT_EXT; // reuse GetPName
 static const GLenum GL_UNPACK_SKIP_IMAGES = GLenum::GL_UNPACK_SKIP_IMAGES;
-// static const GLenum GL_UNPACK_SKIP_IMAGES_EXT = GLenum::GL_UNPACK_SKIP_IMAGES_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_SKIP_IMAGES_EXT = GLenum::GL_UNPACK_SKIP_IMAGES_EXT; // reuse GetPName
 static const GLenum GL_UNPACK_IMAGE_HEIGHT = GLenum::GL_UNPACK_IMAGE_HEIGHT;
-// static const GLenum GL_UNPACK_IMAGE_HEIGHT_EXT = GLenum::GL_UNPACK_IMAGE_HEIGHT_EXT; // reuse GetPName
-// static const GLenum GL_PACK_SKIP_VOLUMES_SGIS = GLenum::GL_PACK_SKIP_VOLUMES_SGIS; // reuse GetPName
-// static const GLenum GL_PACK_IMAGE_DEPTH_SGIS = GLenum::GL_PACK_IMAGE_DEPTH_SGIS; // reuse GetPName
-// static const GLenum GL_UNPACK_SKIP_VOLUMES_SGIS = GLenum::GL_UNPACK_SKIP_VOLUMES_SGIS; // reuse GetPName
-// static const GLenum GL_UNPACK_IMAGE_DEPTH_SGIS = GLenum::GL_UNPACK_IMAGE_DEPTH_SGIS; // reuse GetPName
-// static const GLenum GL_PIXEL_TILE_WIDTH_SGIX = GLenum::GL_PIXEL_TILE_WIDTH_SGIX; // reuse GetPName
-// static const GLenum GL_PIXEL_TILE_HEIGHT_SGIX = GLenum::GL_PIXEL_TILE_HEIGHT_SGIX; // reuse GetPName
-// static const GLenum GL_PIXEL_TILE_GRID_WIDTH_SGIX = GLenum::GL_PIXEL_TILE_GRID_WIDTH_SGIX; // reuse GetPName
-// static const GLenum GL_PIXEL_TILE_GRID_HEIGHT_SGIX = GLenum::GL_PIXEL_TILE_GRID_HEIGHT_SGIX; // reuse GetPName
-// static const GLenum GL_PIXEL_TILE_GRID_DEPTH_SGIX = GLenum::GL_PIXEL_TILE_GRID_DEPTH_SGIX; // reuse GetPName
-// static const GLenum GL_PIXEL_TILE_CACHE_SIZE_SGIX = GLenum::GL_PIXEL_TILE_CACHE_SIZE_SGIX; // reuse GetPName
-// static const GLenum GL_PACK_RESAMPLE_SGIX = GLenum::GL_PACK_RESAMPLE_SGIX; // reuse GetPName
-// static const GLenum GL_UNPACK_RESAMPLE_SGIX = GLenum::GL_UNPACK_RESAMPLE_SGIX; // reuse GetPName
-// static const GLenum GL_PACK_SUBSAMPLE_RATE_SGIX = GLenum::GL_PACK_SUBSAMPLE_RATE_SGIX; // reuse GetPName
-// static const GLenum GL_UNPACK_SUBSAMPLE_RATE_SGIX = GLenum::GL_UNPACK_SUBSAMPLE_RATE_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_IMAGE_HEIGHT_EXT = GLenum::GL_UNPACK_IMAGE_HEIGHT_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_SKIP_VOLUMES_SGIS = GLenum::GL_PACK_SKIP_VOLUMES_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_IMAGE_DEPTH_SGIS = GLenum::GL_PACK_IMAGE_DEPTH_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_SKIP_VOLUMES_SGIS = GLenum::GL_UNPACK_SKIP_VOLUMES_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_IMAGE_DEPTH_SGIS = GLenum::GL_UNPACK_IMAGE_DEPTH_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TILE_WIDTH_SGIX = GLenum::GL_PIXEL_TILE_WIDTH_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TILE_HEIGHT_SGIX = GLenum::GL_PIXEL_TILE_HEIGHT_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TILE_GRID_WIDTH_SGIX = GLenum::GL_PIXEL_TILE_GRID_WIDTH_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TILE_GRID_HEIGHT_SGIX = GLenum::GL_PIXEL_TILE_GRID_HEIGHT_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TILE_GRID_DEPTH_SGIX = GLenum::GL_PIXEL_TILE_GRID_DEPTH_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_TILE_CACHE_SIZE_SGIX = GLenum::GL_PIXEL_TILE_CACHE_SIZE_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_RESAMPLE_SGIX = GLenum::GL_PACK_RESAMPLE_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_RESAMPLE_SGIX = GLenum::GL_UNPACK_RESAMPLE_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_PACK_SUBSAMPLE_RATE_SGIX = GLenum::GL_PACK_SUBSAMPLE_RATE_SGIX; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_SUBSAMPLE_RATE_SGIX = GLenum::GL_UNPACK_SUBSAMPLE_RATE_SGIX; // reuse GetPName
 static const GLenum GL_PACK_RESAMPLE_OML = GLenum::GL_PACK_RESAMPLE_OML;
 static const GLenum GL_UNPACK_RESAMPLE_OML = GLenum::GL_UNPACK_RESAMPLE_OML;
 
@@ -6665,11 +6667,11 @@ static const GLenum GL_PIXEL_SUBSAMPLE_4242_SGIX = GLenum::GL_PIXEL_SUBSAMPLE_42
 
 // PixelTexGenMode
 
-// static const GLenum GL_NONE = GLenum::GL_NONE; // reuse DrawBufferMode
-// static const GLenum GL_RGB = GLenum::GL_RGB; // reuse PixelFormat
-// static const GLenum GL_RGBA = GLenum::GL_RGBA; // reuse PixelFormat
-// static const GLenum GL_LUMINANCE = GLenum::GL_LUMINANCE; // reuse PixelFormat
-// static const GLenum GL_LUMINANCE_ALPHA = GLenum::GL_LUMINANCE_ALPHA; // reuse PixelFormat
+// GLBINDING_CONSTEXPR static const GLenum GL_NONE = GLenum::GL_NONE; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_RGB = GLenum::GL_RGB; // reuse PixelFormat
+// GLBINDING_CONSTEXPR static const GLenum GL_RGBA = GLenum::GL_RGBA; // reuse PixelFormat
+// GLBINDING_CONSTEXPR static const GLenum GL_LUMINANCE = GLenum::GL_LUMINANCE; // reuse PixelFormat
+// GLBINDING_CONSTEXPR static const GLenum GL_LUMINANCE_ALPHA = GLenum::GL_LUMINANCE_ALPHA; // reuse PixelFormat
 
 // PixelTexGenParameterNameSGIS
 
@@ -6678,62 +6680,62 @@ static const GLenum GL_PIXEL_FRAGMENT_ALPHA_SOURCE_SGIS = GLenum::GL_PIXEL_FRAGM
 
 // PixelTransferParameter
 
-// static const GLenum GL_MAP_COLOR = GLenum::GL_MAP_COLOR; // reuse GetPName
-// static const GLenum GL_MAP_STENCIL = GLenum::GL_MAP_STENCIL; // reuse GetPName
-// static const GLenum GL_INDEX_SHIFT = GLenum::GL_INDEX_SHIFT; // reuse GetPName
-// static const GLenum GL_INDEX_OFFSET = GLenum::GL_INDEX_OFFSET; // reuse GetPName
-// static const GLenum GL_RED_SCALE = GLenum::GL_RED_SCALE; // reuse GetPName
-// static const GLenum GL_RED_BIAS = GLenum::GL_RED_BIAS; // reuse GetPName
-// static const GLenum GL_GREEN_SCALE = GLenum::GL_GREEN_SCALE; // reuse GetPName
-// static const GLenum GL_GREEN_BIAS = GLenum::GL_GREEN_BIAS; // reuse GetPName
-// static const GLenum GL_BLUE_SCALE = GLenum::GL_BLUE_SCALE; // reuse GetPName
-// static const GLenum GL_BLUE_BIAS = GLenum::GL_BLUE_BIAS; // reuse GetPName
-// static const GLenum GL_ALPHA_SCALE = GLenum::GL_ALPHA_SCALE; // reuse GetPName
-// static const GLenum GL_ALPHA_BIAS = GLenum::GL_ALPHA_BIAS; // reuse GetPName
-// static const GLenum GL_DEPTH_SCALE = GLenum::GL_DEPTH_SCALE; // reuse GetPName
-// static const GLenum GL_DEPTH_BIAS = GLenum::GL_DEPTH_BIAS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP_COLOR = GLenum::GL_MAP_COLOR; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_MAP_STENCIL = GLenum::GL_MAP_STENCIL; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_INDEX_SHIFT = GLenum::GL_INDEX_SHIFT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_INDEX_OFFSET = GLenum::GL_INDEX_OFFSET; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_RED_SCALE = GLenum::GL_RED_SCALE; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_RED_BIAS = GLenum::GL_RED_BIAS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_GREEN_SCALE = GLenum::GL_GREEN_SCALE; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_GREEN_BIAS = GLenum::GL_GREEN_BIAS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_BLUE_SCALE = GLenum::GL_BLUE_SCALE; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_BLUE_BIAS = GLenum::GL_BLUE_BIAS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_ALPHA_SCALE = GLenum::GL_ALPHA_SCALE; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_ALPHA_BIAS = GLenum::GL_ALPHA_BIAS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_DEPTH_SCALE = GLenum::GL_DEPTH_SCALE; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_DEPTH_BIAS = GLenum::GL_DEPTH_BIAS; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_RED_SCALE = GLenum::GL_POST_CONVOLUTION_RED_SCALE;
-// static const GLenum GL_POST_CONVOLUTION_RED_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_RED_SCALE_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_RED_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_RED_SCALE_EXT; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_GREEN_SCALE = GLenum::GL_POST_CONVOLUTION_GREEN_SCALE;
-// static const GLenum GL_POST_CONVOLUTION_GREEN_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_GREEN_SCALE_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_GREEN_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_GREEN_SCALE_EXT; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_BLUE_SCALE = GLenum::GL_POST_CONVOLUTION_BLUE_SCALE;
-// static const GLenum GL_POST_CONVOLUTION_BLUE_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_BLUE_SCALE_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_BLUE_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_BLUE_SCALE_EXT; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_ALPHA_SCALE = GLenum::GL_POST_CONVOLUTION_ALPHA_SCALE;
-// static const GLenum GL_POST_CONVOLUTION_ALPHA_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_ALPHA_SCALE_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_ALPHA_SCALE_EXT = GLenum::GL_POST_CONVOLUTION_ALPHA_SCALE_EXT; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_RED_BIAS = GLenum::GL_POST_CONVOLUTION_RED_BIAS;
-// static const GLenum GL_POST_CONVOLUTION_RED_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_RED_BIAS_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_RED_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_RED_BIAS_EXT; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_GREEN_BIAS = GLenum::GL_POST_CONVOLUTION_GREEN_BIAS;
-// static const GLenum GL_POST_CONVOLUTION_GREEN_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_GREEN_BIAS_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_GREEN_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_GREEN_BIAS_EXT; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_BLUE_BIAS = GLenum::GL_POST_CONVOLUTION_BLUE_BIAS;
-// static const GLenum GL_POST_CONVOLUTION_BLUE_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_BLUE_BIAS_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_BLUE_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_BLUE_BIAS_EXT; // reuse GetPName
 static const GLenum GL_POST_CONVOLUTION_ALPHA_BIAS = GLenum::GL_POST_CONVOLUTION_ALPHA_BIAS;
-// static const GLenum GL_POST_CONVOLUTION_ALPHA_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_ALPHA_BIAS_EXT; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_CONVOLUTION_ALPHA_BIAS_EXT = GLenum::GL_POST_CONVOLUTION_ALPHA_BIAS_EXT; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_RED_SCALE = GLenum::GL_POST_COLOR_MATRIX_RED_SCALE;
-// static const GLenum GL_POST_COLOR_MATRIX_RED_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_RED_SCALE_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_RED_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_RED_SCALE_SGI; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_GREEN_SCALE = GLenum::GL_POST_COLOR_MATRIX_GREEN_SCALE;
-// static const GLenum GL_POST_COLOR_MATRIX_GREEN_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_GREEN_SCALE_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_GREEN_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_GREEN_SCALE_SGI; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_BLUE_SCALE = GLenum::GL_POST_COLOR_MATRIX_BLUE_SCALE;
-// static const GLenum GL_POST_COLOR_MATRIX_BLUE_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_BLUE_SCALE_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_BLUE_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_BLUE_SCALE_SGI; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_ALPHA_SCALE = GLenum::GL_POST_COLOR_MATRIX_ALPHA_SCALE;
-// static const GLenum GL_POST_COLOR_MATRIX_ALPHA_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_ALPHA_SCALE_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_ALPHA_SCALE_SGI = GLenum::GL_POST_COLOR_MATRIX_ALPHA_SCALE_SGI; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_RED_BIAS = GLenum::GL_POST_COLOR_MATRIX_RED_BIAS;
-// static const GLenum GL_POST_COLOR_MATRIX_RED_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_RED_BIAS_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_RED_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_RED_BIAS_SGI; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_GREEN_BIAS = GLenum::GL_POST_COLOR_MATRIX_GREEN_BIAS;
-// static const GLenum GL_POST_COLOR_MATRIX_GREEN_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_GREEN_BIAS_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_GREEN_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_GREEN_BIAS_SGI; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_BLUE_BIAS = GLenum::GL_POST_COLOR_MATRIX_BLUE_BIAS;
-// static const GLenum GL_POST_COLOR_MATRIX_BLUE_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_BLUE_BIAS_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_BLUE_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_BLUE_BIAS_SGI; // reuse GetPName
 static const GLenum GL_POST_COLOR_MATRIX_ALPHA_BIAS = GLenum::GL_POST_COLOR_MATRIX_ALPHA_BIAS;
-// static const GLenum GL_POST_COLOR_MATRIX_ALPHA_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_ALPHA_BIAS_SGI; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_COLOR_MATRIX_ALPHA_BIAS_SGI = GLenum::GL_POST_COLOR_MATRIX_ALPHA_BIAS_SGI; // reuse GetPName
 
 // PixelType
 
-// static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
-// static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE; // reuse ColorPointerType
-// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
-// static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
-// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
-// static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
 static const GLenum GL_BITMAP = GLenum::GL_BITMAP;
 static const GLenum GL_UNSIGNED_BYTE_3_3_2 = GLenum::GL_UNSIGNED_BYTE_3_3_2;
 static const GLenum GL_UNSIGNED_BYTE_3_3_2_EXT = GLenum::GL_UNSIGNED_BYTE_3_3_2_EXT;
@@ -6751,25 +6753,25 @@ static const GLenum GL_UNSIGNED_INT_10_10_10_2_EXT = GLenum::GL_UNSIGNED_INT_10_
 static const GLenum GL_POINT_SIZE_MIN = GLenum::GL_POINT_SIZE_MIN;
 static const GLenum GL_POINT_SIZE_MIN_ARB = GLenum::GL_POINT_SIZE_MIN_ARB;
 static const GLenum GL_POINT_SIZE_MIN_EXT = GLenum::GL_POINT_SIZE_MIN_EXT;
-// static const GLenum GL_POINT_SIZE_MIN_SGIS = GLenum::GL_POINT_SIZE_MIN_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MIN_SGIS = GLenum::GL_POINT_SIZE_MIN_SGIS; // reuse GetPName
 static const GLenum GL_POINT_SIZE_MAX = GLenum::GL_POINT_SIZE_MAX;
 static const GLenum GL_POINT_SIZE_MAX_ARB = GLenum::GL_POINT_SIZE_MAX_ARB;
 static const GLenum GL_POINT_SIZE_MAX_EXT = GLenum::GL_POINT_SIZE_MAX_EXT;
-// static const GLenum GL_POINT_SIZE_MAX_SGIS = GLenum::GL_POINT_SIZE_MAX_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MAX_SGIS = GLenum::GL_POINT_SIZE_MAX_SGIS; // reuse GetPName
 static const GLenum GL_POINT_FADE_THRESHOLD_SIZE = GLenum::GL_POINT_FADE_THRESHOLD_SIZE;
 static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_ARB = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_ARB;
 static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_EXT = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_EXT;
-// static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_SGIS = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_SGIS = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_SGIS; // reuse GetPName
 static const GLenum GL_DISTANCE_ATTENUATION_EXT = GLenum::GL_DISTANCE_ATTENUATION_EXT;
-// static const GLenum GL_DISTANCE_ATTENUATION_SGIS = GLenum::GL_DISTANCE_ATTENUATION_SGIS; // reuse GetPName
+// GLBINDING_CONSTEXPR static const GLenum GL_DISTANCE_ATTENUATION_SGIS = GLenum::GL_DISTANCE_ATTENUATION_SGIS; // reuse GetPName
 static const GLenum GL_POINT_DISTANCE_ATTENUATION = GLenum::GL_POINT_DISTANCE_ATTENUATION;
 static const GLenum GL_POINT_DISTANCE_ATTENUATION_ARB = GLenum::GL_POINT_DISTANCE_ATTENUATION_ARB;
 
 // PolygonMode
 
-// static const GLenum GL_POINT = GLenum::GL_POINT; // reuse MeshMode1
-// static const GLenum GL_LINE = GLenum::GL_LINE; // reuse MeshMode1
-// static const GLenum GL_FILL = GLenum::GL_FILL; // reuse MeshMode2
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT = GLenum::GL_POINT; // reuse MeshMode1
+// GLBINDING_CONSTEXPR static const GLenum GL_LINE = GLenum::GL_LINE; // reuse MeshMode1
+// GLBINDING_CONSTEXPR static const GLenum GL_FILL = GLenum::GL_FILL; // reuse MeshMode2
 
 // PrimitiveType
 
@@ -6799,18 +6801,18 @@ static const GLenum GL_PATCHES = GLenum::GL_PATCHES;
 
 // ReadBufferMode
 
-// static const GLenum GL_FRONT_LEFT = GLenum::GL_FRONT_LEFT; // reuse DrawBufferMode
-// static const GLenum GL_FRONT_RIGHT = GLenum::GL_FRONT_RIGHT; // reuse DrawBufferMode
-// static const GLenum GL_BACK_LEFT = GLenum::GL_BACK_LEFT; // reuse DrawBufferMode
-// static const GLenum GL_BACK_RIGHT = GLenum::GL_BACK_RIGHT; // reuse DrawBufferMode
-// static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
-// static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
-// static const GLenum GL_LEFT = GLenum::GL_LEFT; // reuse DrawBufferMode
-// static const GLenum GL_RIGHT = GLenum::GL_RIGHT; // reuse DrawBufferMode
-// static const GLenum GL_AUX0 = GLenum::GL_AUX0; // reuse DrawBufferMode
-// static const GLenum GL_AUX1 = GLenum::GL_AUX1; // reuse DrawBufferMode
-// static const GLenum GL_AUX2 = GLenum::GL_AUX2; // reuse DrawBufferMode
-// static const GLenum GL_AUX3 = GLenum::GL_AUX3; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT_LEFT = GLenum::GL_FRONT_LEFT; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT_RIGHT = GLenum::GL_FRONT_RIGHT; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_BACK_LEFT = GLenum::GL_BACK_LEFT; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_BACK_RIGHT = GLenum::GL_BACK_RIGHT; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_BACK = GLenum::GL_BACK; // reuse ColorMaterialFace
+// GLBINDING_CONSTEXPR static const GLenum GL_LEFT = GLenum::GL_LEFT; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_RIGHT = GLenum::GL_RIGHT; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_AUX0 = GLenum::GL_AUX0; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_AUX1 = GLenum::GL_AUX1; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_AUX2 = GLenum::GL_AUX2; // reuse DrawBufferMode
+// GLBINDING_CONSTEXPR static const GLenum GL_AUX3 = GLenum::GL_AUX3; // reuse DrawBufferMode
 
 // RenderingMode
 
@@ -6838,7 +6840,7 @@ static const GLenum GL_4PASS_3_SGIS = GLenum::GL_4PASS_3_SGIS;
 // SeparableTargetEXT
 
 static const GLenum GL_SEPARABLE_2D = GLenum::GL_SEPARABLE_2D;
-// static const GLenum GL_SEPARABLE_2D_EXT = GLenum::GL_SEPARABLE_2D_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_SEPARABLE_2D_EXT = GLenum::GL_SEPARABLE_2D_EXT; // reuse EnableCap
 
 // ShadingModel
 
@@ -6847,21 +6849,21 @@ static const GLenum GL_SMOOTH = GLenum::GL_SMOOTH;
 
 // StencilFunction
 
-// static const GLenum GL_NEVER = GLenum::GL_NEVER; // reuse AlphaFunction
-// static const GLenum GL_LESS = GLenum::GL_LESS; // reuse AlphaFunction
-// static const GLenum GL_EQUAL = GLenum::GL_EQUAL; // reuse AlphaFunction
-// static const GLenum GL_LEQUAL = GLenum::GL_LEQUAL; // reuse AlphaFunction
-// static const GLenum GL_GREATER = GLenum::GL_GREATER; // reuse AlphaFunction
-// static const GLenum GL_NOTEQUAL = GLenum::GL_NOTEQUAL; // reuse AlphaFunction
-// static const GLenum GL_GEQUAL = GLenum::GL_GEQUAL; // reuse AlphaFunction
-// static const GLenum GL_ALWAYS = GLenum::GL_ALWAYS; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_NEVER = GLenum::GL_NEVER; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_LESS = GLenum::GL_LESS; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_EQUAL = GLenum::GL_EQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_LEQUAL = GLenum::GL_LEQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_GREATER = GLenum::GL_GREATER; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_NOTEQUAL = GLenum::GL_NOTEQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_GEQUAL = GLenum::GL_GEQUAL; // reuse AlphaFunction
+// GLBINDING_CONSTEXPR static const GLenum GL_ALWAYS = GLenum::GL_ALWAYS; // reuse AlphaFunction
 
 // StencilOp
 
-// static const GLenum GL_ZERO = GLenum::GL_ZERO; // reuse BlendingFactorDest
-// static const GLenum GL_INVERT = GLenum::GL_INVERT; // reuse LogicOp
+// GLBINDING_CONSTEXPR static const GLenum GL_ZERO = GLenum::GL_ZERO; // reuse BlendingFactorDest
+// GLBINDING_CONSTEXPR static const GLenum GL_INVERT = GLenum::GL_INVERT; // reuse LogicOp
 static const GLenum GL_KEEP = GLenum::GL_KEEP;
-// static const GLenum GL_REPLACE = GLenum::GL_REPLACE; // reuse LightEnvModeSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_REPLACE = GLenum::GL_REPLACE; // reuse LightEnvModeSGIX
 static const GLenum GL_INCR = GLenum::GL_INCR;
 static const GLenum GL_DECR = GLenum::GL_DECR;
 
@@ -6874,10 +6876,10 @@ static const GLenum GL_EXTENSIONS = GLenum::GL_EXTENSIONS;
 
 // TexCoordPointerType
 
-// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
-// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
-// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
 
 // TextureCoordName
 
@@ -6888,9 +6890,9 @@ static const GLenum GL_Q = GLenum::GL_Q;
 
 // TextureEnvMode
 
-// static const GLenum GL_ADD = GLenum::GL_ADD; // reuse AccumOp
-// static const GLenum GL_BLEND = GLenum::GL_BLEND; // reuse EnableCap
-// static const GLenum GL_MODULATE = GLenum::GL_MODULATE; // reuse LightEnvModeSGIX
+// GLBINDING_CONSTEXPR static const GLenum GL_ADD = GLenum::GL_ADD; // reuse AccumOp
+// GLBINDING_CONSTEXPR static const GLenum GL_BLEND = GLenum::GL_BLEND; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_MODULATE = GLenum::GL_MODULATE; // reuse LightEnvModeSGIX
 static const GLenum GL_DECAL = GLenum::GL_DECAL;
 static const GLenum GL_REPLACE_EXT = GLenum::GL_REPLACE_EXT;
 static const GLenum GL_TEXTURE_ENV_BIAS_SGIX = GLenum::GL_TEXTURE_ENV_BIAS_SGIX;
@@ -6931,24 +6933,24 @@ static const GLenum GL_OBJECT_LINE_SGIS = GLenum::GL_OBJECT_LINE_SGIS;
 // TextureMagFilter
 
 static const GLenum GL_NEAREST = GLenum::GL_NEAREST;
-// static const GLenum GL_LINEAR = GLenum::GL_LINEAR; // reuse FogMode
+// GLBINDING_CONSTEXPR static const GLenum GL_LINEAR = GLenum::GL_LINEAR; // reuse FogMode
 static const GLenum GL_LINEAR_DETAIL_SGIS = GLenum::GL_LINEAR_DETAIL_SGIS;
 static const GLenum GL_LINEAR_DETAIL_ALPHA_SGIS = GLenum::GL_LINEAR_DETAIL_ALPHA_SGIS;
 static const GLenum GL_LINEAR_DETAIL_COLOR_SGIS = GLenum::GL_LINEAR_DETAIL_COLOR_SGIS;
 static const GLenum GL_LINEAR_SHARPEN_SGIS = GLenum::GL_LINEAR_SHARPEN_SGIS;
 static const GLenum GL_LINEAR_SHARPEN_ALPHA_SGIS = GLenum::GL_LINEAR_SHARPEN_ALPHA_SGIS;
 static const GLenum GL_LINEAR_SHARPEN_COLOR_SGIS = GLenum::GL_LINEAR_SHARPEN_COLOR_SGIS;
-// static const GLenum GL_FILTER4_SGIS = GLenum::GL_FILTER4_SGIS; // reuse TextureFilterFuncSGIS
+// GLBINDING_CONSTEXPR static const GLenum GL_FILTER4_SGIS = GLenum::GL_FILTER4_SGIS; // reuse TextureFilterFuncSGIS
 
 // TextureMinFilter
 
-// static const GLenum GL_NEAREST = GLenum::GL_NEAREST; // reuse TextureMagFilter
-// static const GLenum GL_LINEAR = GLenum::GL_LINEAR; // reuse FogMode
+// GLBINDING_CONSTEXPR static const GLenum GL_NEAREST = GLenum::GL_NEAREST; // reuse TextureMagFilter
+// GLBINDING_CONSTEXPR static const GLenum GL_LINEAR = GLenum::GL_LINEAR; // reuse FogMode
 static const GLenum GL_NEAREST_MIPMAP_NEAREST = GLenum::GL_NEAREST_MIPMAP_NEAREST;
 static const GLenum GL_LINEAR_MIPMAP_NEAREST = GLenum::GL_LINEAR_MIPMAP_NEAREST;
 static const GLenum GL_NEAREST_MIPMAP_LINEAR = GLenum::GL_NEAREST_MIPMAP_LINEAR;
 static const GLenum GL_LINEAR_MIPMAP_LINEAR = GLenum::GL_LINEAR_MIPMAP_LINEAR;
-// static const GLenum GL_FILTER4_SGIS = GLenum::GL_FILTER4_SGIS; // reuse TextureFilterFuncSGIS
+// GLBINDING_CONSTEXPR static const GLenum GL_FILTER4_SGIS = GLenum::GL_FILTER4_SGIS; // reuse TextureFilterFuncSGIS
 static const GLenum GL_LINEAR_CLIPMAP_LINEAR_SGIX = GLenum::GL_LINEAR_CLIPMAP_LINEAR_SGIX;
 static const GLenum GL_NEAREST_CLIPMAP_NEAREST_SGIX = GLenum::GL_NEAREST_CLIPMAP_NEAREST_SGIX;
 static const GLenum GL_NEAREST_CLIPMAP_LINEAR_SGIX = GLenum::GL_NEAREST_CLIPMAP_LINEAR_SGIX;
@@ -6956,62 +6958,62 @@ static const GLenum GL_LINEAR_CLIPMAP_NEAREST_SGIX = GLenum::GL_LINEAR_CLIPMAP_N
 
 // TextureParameterName
 
-// static const GLenum GL_TEXTURE_BORDER_COLOR = GLenum::GL_TEXTURE_BORDER_COLOR; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_MAG_FILTER = GLenum::GL_TEXTURE_MAG_FILTER; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_MIN_FILTER = GLenum::GL_TEXTURE_MIN_FILTER; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_WRAP_S = GLenum::GL_TEXTURE_WRAP_S; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_WRAP_T = GLenum::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_PRIORITY = GLenum::GL_TEXTURE_PRIORITY; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_BORDER_COLOR = GLenum::GL_TEXTURE_BORDER_COLOR; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MAG_FILTER = GLenum::GL_TEXTURE_MAG_FILTER; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MIN_FILTER = GLenum::GL_TEXTURE_MIN_FILTER; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_WRAP_S = GLenum::GL_TEXTURE_WRAP_S; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_WRAP_T = GLenum::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_PRIORITY = GLenum::GL_TEXTURE_PRIORITY; // reuse GetTextureParameter
 static const GLenum GL_TEXTURE_PRIORITY_EXT = GLenum::GL_TEXTURE_PRIORITY_EXT;
 static const GLenum GL_TEXTURE_WRAP_R = GLenum::GL_TEXTURE_WRAP_R;
-// static const GLenum GL_TEXTURE_WRAP_R_EXT = GLenum::GL_TEXTURE_WRAP_R_EXT; // reuse GetTextureParameter
-// static const GLenum GL_DETAIL_TEXTURE_LEVEL_SGIS = GLenum::GL_DETAIL_TEXTURE_LEVEL_SGIS; // reuse GetTextureParameter
-// static const GLenum GL_DETAIL_TEXTURE_MODE_SGIS = GLenum::GL_DETAIL_TEXTURE_MODE_SGIS; // reuse GetTextureParameter
-// static const GLenum GL_SHADOW_AMBIENT_SGIX = GLenum::GL_SHADOW_AMBIENT_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_DUAL_TEXTURE_SELECT_SGIS = GLenum::GL_DUAL_TEXTURE_SELECT_SGIS; // reuse GetTextureParameter
-// static const GLenum GL_QUAD_TEXTURE_SELECT_SGIS = GLenum::GL_QUAD_TEXTURE_SELECT_SGIS; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_WRAP_Q_SGIS = GLenum::GL_TEXTURE_WRAP_Q_SGIS; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_CLIPMAP_CENTER_SGIX = GLenum::GL_TEXTURE_CLIPMAP_CENTER_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_CLIPMAP_FRAME_SGIX = GLenum::GL_TEXTURE_CLIPMAP_FRAME_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_CLIPMAP_OFFSET_SGIX = GLenum::GL_TEXTURE_CLIPMAP_OFFSET_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_CLIPMAP_VIRTUAL_DEPTH_SGIX = GLenum::GL_TEXTURE_CLIPMAP_VIRTUAL_DEPTH_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_CLIPMAP_LOD_OFFSET_SGIX = GLenum::GL_TEXTURE_CLIPMAP_LOD_OFFSET_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_CLIPMAP_DEPTH_SGIX = GLenum::GL_TEXTURE_CLIPMAP_DEPTH_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_POST_TEXTURE_FILTER_BIAS_SGIX = GLenum::GL_POST_TEXTURE_FILTER_BIAS_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_POST_TEXTURE_FILTER_SCALE_SGIX = GLenum::GL_POST_TEXTURE_FILTER_SCALE_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_LOD_BIAS_S_SGIX = GLenum::GL_TEXTURE_LOD_BIAS_S_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_LOD_BIAS_T_SGIX = GLenum::GL_TEXTURE_LOD_BIAS_T_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_LOD_BIAS_R_SGIX = GLenum::GL_TEXTURE_LOD_BIAS_R_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_WRAP_R_EXT = GLenum::GL_TEXTURE_WRAP_R_EXT; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_DETAIL_TEXTURE_LEVEL_SGIS = GLenum::GL_DETAIL_TEXTURE_LEVEL_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_DETAIL_TEXTURE_MODE_SGIS = GLenum::GL_DETAIL_TEXTURE_MODE_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_SHADOW_AMBIENT_SGIX = GLenum::GL_SHADOW_AMBIENT_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_DUAL_TEXTURE_SELECT_SGIS = GLenum::GL_DUAL_TEXTURE_SELECT_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_QUAD_TEXTURE_SELECT_SGIS = GLenum::GL_QUAD_TEXTURE_SELECT_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_WRAP_Q_SGIS = GLenum::GL_TEXTURE_WRAP_Q_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CLIPMAP_CENTER_SGIX = GLenum::GL_TEXTURE_CLIPMAP_CENTER_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CLIPMAP_FRAME_SGIX = GLenum::GL_TEXTURE_CLIPMAP_FRAME_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CLIPMAP_OFFSET_SGIX = GLenum::GL_TEXTURE_CLIPMAP_OFFSET_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CLIPMAP_VIRTUAL_DEPTH_SGIX = GLenum::GL_TEXTURE_CLIPMAP_VIRTUAL_DEPTH_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CLIPMAP_LOD_OFFSET_SGIX = GLenum::GL_TEXTURE_CLIPMAP_LOD_OFFSET_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CLIPMAP_DEPTH_SGIX = GLenum::GL_TEXTURE_CLIPMAP_DEPTH_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_TEXTURE_FILTER_BIAS_SGIX = GLenum::GL_POST_TEXTURE_FILTER_BIAS_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_POST_TEXTURE_FILTER_SCALE_SGIX = GLenum::GL_POST_TEXTURE_FILTER_SCALE_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_LOD_BIAS_S_SGIX = GLenum::GL_TEXTURE_LOD_BIAS_S_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_LOD_BIAS_T_SGIX = GLenum::GL_TEXTURE_LOD_BIAS_T_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_LOD_BIAS_R_SGIX = GLenum::GL_TEXTURE_LOD_BIAS_R_SGIX; // reuse GetTextureParameter
 static const GLenum GL_GENERATE_MIPMAP = GLenum::GL_GENERATE_MIPMAP;
-// static const GLenum GL_GENERATE_MIPMAP_SGIS = GLenum::GL_GENERATE_MIPMAP_SGIS; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_COMPARE_SGIX = GLenum::GL_TEXTURE_COMPARE_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_MAX_CLAMP_S_SGIX = GLenum::GL_TEXTURE_MAX_CLAMP_S_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_MAX_CLAMP_T_SGIX = GLenum::GL_TEXTURE_MAX_CLAMP_T_SGIX; // reuse GetTextureParameter
-// static const GLenum GL_TEXTURE_MAX_CLAMP_R_SGIX = GLenum::GL_TEXTURE_MAX_CLAMP_R_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_GENERATE_MIPMAP_SGIS = GLenum::GL_GENERATE_MIPMAP_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_COMPARE_SGIX = GLenum::GL_TEXTURE_COMPARE_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MAX_CLAMP_S_SGIX = GLenum::GL_TEXTURE_MAX_CLAMP_S_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MAX_CLAMP_T_SGIX = GLenum::GL_TEXTURE_MAX_CLAMP_T_SGIX; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MAX_CLAMP_R_SGIX = GLenum::GL_TEXTURE_MAX_CLAMP_R_SGIX; // reuse GetTextureParameter
 
 // TextureTarget
 
-// static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
-// static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
 static const GLenum GL_PROXY_TEXTURE_1D = GLenum::GL_PROXY_TEXTURE_1D;
 static const GLenum GL_PROXY_TEXTURE_1D_EXT = GLenum::GL_PROXY_TEXTURE_1D_EXT;
 static const GLenum GL_PROXY_TEXTURE_2D = GLenum::GL_PROXY_TEXTURE_2D;
 static const GLenum GL_PROXY_TEXTURE_2D_EXT = GLenum::GL_PROXY_TEXTURE_2D_EXT;
 static const GLenum GL_TEXTURE_3D = GLenum::GL_TEXTURE_3D;
-// static const GLenum GL_TEXTURE_3D_EXT = GLenum::GL_TEXTURE_3D_EXT; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_3D_EXT = GLenum::GL_TEXTURE_3D_EXT; // reuse EnableCap
 static const GLenum GL_PROXY_TEXTURE_3D = GLenum::GL_PROXY_TEXTURE_3D;
 static const GLenum GL_PROXY_TEXTURE_3D_EXT = GLenum::GL_PROXY_TEXTURE_3D_EXT;
 static const GLenum GL_DETAIL_TEXTURE_2D_SGIS = GLenum::GL_DETAIL_TEXTURE_2D_SGIS;
-// static const GLenum GL_TEXTURE_4D_SGIS = GLenum::GL_TEXTURE_4D_SGIS; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_4D_SGIS = GLenum::GL_TEXTURE_4D_SGIS; // reuse EnableCap
 static const GLenum GL_PROXY_TEXTURE_4D_SGIS = GLenum::GL_PROXY_TEXTURE_4D_SGIS;
 static const GLenum GL_TEXTURE_MIN_LOD = GLenum::GL_TEXTURE_MIN_LOD;
-// static const GLenum GL_TEXTURE_MIN_LOD_SGIS = GLenum::GL_TEXTURE_MIN_LOD_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MIN_LOD_SGIS = GLenum::GL_TEXTURE_MIN_LOD_SGIS; // reuse GetTextureParameter
 static const GLenum GL_TEXTURE_MAX_LOD = GLenum::GL_TEXTURE_MAX_LOD;
-// static const GLenum GL_TEXTURE_MAX_LOD_SGIS = GLenum::GL_TEXTURE_MAX_LOD_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MAX_LOD_SGIS = GLenum::GL_TEXTURE_MAX_LOD_SGIS; // reuse GetTextureParameter
 static const GLenum GL_TEXTURE_BASE_LEVEL = GLenum::GL_TEXTURE_BASE_LEVEL;
-// static const GLenum GL_TEXTURE_BASE_LEVEL_SGIS = GLenum::GL_TEXTURE_BASE_LEVEL_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_BASE_LEVEL_SGIS = GLenum::GL_TEXTURE_BASE_LEVEL_SGIS; // reuse GetTextureParameter
 static const GLenum GL_TEXTURE_MAX_LEVEL = GLenum::GL_TEXTURE_MAX_LEVEL;
-// static const GLenum GL_TEXTURE_MAX_LEVEL_SGIS = GLenum::GL_TEXTURE_MAX_LEVEL_SGIS; // reuse GetTextureParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MAX_LEVEL_SGIS = GLenum::GL_TEXTURE_MAX_LEVEL_SGIS; // reuse GetTextureParameter
 
 // TextureWrapMode
 
@@ -7025,10 +7027,10 @@ static const GLenum GL_CLAMP_TO_EDGE_SGIS = GLenum::GL_CLAMP_TO_EDGE_SGIS;
 
 // VertexPointerType
 
-// static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
-// static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
-// static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
-// static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_INT = GLenum::GL_INT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse ColorPointerType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse ColorPointerType
 
 // __UNGROUPED__
 

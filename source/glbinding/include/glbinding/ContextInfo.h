@@ -5,6 +5,7 @@
 #include <string>
 
 #include <glbinding/glbinding_api.h>
+#include <glbinding/glbinding_features.h>
 
 
 namespace gl
@@ -31,7 +32,7 @@ public:
      * @brief
      *   Deleted Constructor; this class is intended to be used without instantiation.
      */
-    ContextInfo() = delete;
+    ContextInfo() GLBINDING_DELETED_FUNCTION;
 
     /**
     * @brief
