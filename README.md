@@ -4,12 +4,13 @@
 
 *glbinding* is an [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
-See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0) and [glbinding-2.1.1](https://github.com/cginternals/glbinding/releases/tag/v2.1.1).
-
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
 all OpenGL symbols are real functions and variables. 
 It provides type-safe parameters, per feature API header, lazy function resolution, multi-context and multi-thread support, global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
+
+
+See what's new in [glbinding-2.0.0](https://github.com/cginternals/glbinding/releases/tag/v2.0.0) and [glbinding-2.1.1](https://github.com/cginternals/glbinding/releases/tag/v2.1.1).
 
 ![what-is-glbinding](https://raw.githubusercontent.com/cginternals/glbinding/master/docs/what-is-glbinding-v2.png)
 
@@ -19,9 +20,9 @@ Code that is written using a typical C binding for OpenGL, e.g., [GLEW](http://g
 #include <glbinding/gl/gl.h>
 using namespace gl;
   
-  // ...
-  auto shader = glCreateShader(GL_COMPUTE_SHADER);
-  // ...
+// ...
+auto shader = glCreateShader(GL_COMPUTE_SHADER);
+// ...
 ```
 
 ## Professional Support
@@ -31,9 +32,6 @@ We provide training and can help you integrate and customize *glbinding* in your
 
 Visit [Professional Support and Services](https://www.cginternals.com) for more details.
 
-
-
-
 ## Resources
 
 * [Tools](https://github.com/cginternals/glbinding/wiki/tools)
@@ -42,12 +40,14 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 * [Context Creation Cheat Sheet](https://github.com/cginternals/glbinding/wiki/Context-Creation-Cheat-Sheet)
 
 ###### Installation and Development
+
 * [Install Instructions](#install-instructions)
 * [Build form Source](#build-instructions)
 * [Tips for Linking](#tips-for-linking)
 * [Basic Example](#basic-example)
 
 ###### Feature Documentation and Code Snippets
+
 * [Type-safe Parameters](#type-safe-parameters)
 * [Compilation-Centered Header Design](#compilation-centered-header-design)
 * [Feature-Centered Header Design](#feature-centered-header-design)
@@ -59,11 +59,10 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 * [Meta Information System](#meta-information)
 * [Doxygen Documentation](https://cginternals.github.io/glbinding/documentation)
 
-
 ## Project Health
 
 | Service | System | Compiler | Status |
-| ------- | ------ | -------- | -----: |
+| :------ | ------ | -------- | -----: |
 |  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
 |  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | macOS | AppleClang 7.3 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
 | [AppVeyor]() | Windows | MSVC 2013<br>MSVC 2015<br>MSVC 2017 | [![Build status](https://ci.appveyor.com/api/projects/status/17tvc4tvdndv6xhh/branch/master?svg=true)](https://ci.appveyor.com/project/scheibel/glbinding/branch/master)|
@@ -91,6 +90,7 @@ Alternatively, download the source code and commence [building from source](#bui
 *glbinding* is provided on Ubuntu using PPAs.
 It is available in Ubuntu 16.10 (yakkety) universe. For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
 Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
+
 ```shell
 > sudo apt-add-repository ppa:cginternals/ppa
 > sudo apt-get update
@@ -98,10 +98,13 @@ Using the current PPA as example, the following lines install *glbinding* includ
 > # start example
 > /usr/share/glbinding/cubescape
 ```
+
 To use *glbinding* as dependency, install the development package:
+
 ```shell
 > sudo apt-get install libglbinding-dev libglbinding-dbg
 ```
+
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Arch Linux
@@ -114,7 +117,8 @@ Alternatively, download the source code and commence [building from source](#bui
 
 The package manager on macOS we depend on is homebrew. The package there is called [glbinding](http://brewformulas.org/Glbinding).
 To install *glbinding* using homebrew, execute the following line:
-```shell
+
+```bash
 > brew install glbinding
 ```
 
@@ -125,13 +129,13 @@ Alternatively, download the source code and commence [building from source](#bui
 There is currently no precompiled package maintained. 
 Please download the source code and commence [building from source](#build-instructions).
 
-
 ## Build Instructions
 
 ##### Prerequisites and Dependencies
 
 The only mandatory run-time dependencies of *glbinding* are the STL of the used compiler and an OpenGL driver library, dynamically linked with your application. 
 Building *glbinding* from source has several mandatory and optional dependencies:
+
 * [CMake](https://cmake.org/) 3.0 or higher for building *glbinding* from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
@@ -147,35 +151,41 @@ Building *glbinding* from source has several mandatory and optional dependencies
 ##### Compile Instructions
 
 For compilation, a C++11 compliant compiler, e.g., GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**, is required.
-
 First, download the source code [as archive](https://github.com/cginternals/glbinding/releases) or via git:
-```shell
+
+```bash
 > git clone https://github.com/cginternals/glbinding.git
 > cd glbinding
 ```
+
 Then, depending on the version of *glbinding* you want to build, choose the appropriate tag or branch, e.g., for the 2.1.1 release:
-```shell
+
+```bash
 > git fetch --tags
 > git checkout v2.1.1
 ```
+
 The actual compilation can be done using CMake and your favorite compiler and IDE.
 
 For building *glbinding* CMake via command line can be used (should work on all systems):
 
 First, create a build directory (we do not recommend in-source builds):
-```shell
+
+```bash
 > mkdir build
 > cd build
 ```
 
 Configure *glbinding* with your preferred or default generator, e.g., for Visual Studio 2015 in x64 use
 (note: some IDEs have integrated support for CMake projects, e.g., Qt Creator, and allow you to skip the manual project configuration):
-```shell
+
+```bash
 > cmake .. -G "Visual Studio 14 2015 Win64"
 ```
 
 In order to compile the project, either use you favorite Editor/IDE with the created project or use CMake as follows:
-```shell
+
+```bash
 > cmake --build .
 ```
 
@@ -185,26 +195,21 @@ For updating the ```gl.xml``` and the resulting *glbinding* interfaces python sc
 An additional ```patch.xml``` is used to resolve possible conflicts or missing specifications (with the ongoing development of the xml-based OpenGL API specification this could become obsolete in the future).
 For ease-of-use, the update and generation can be triggered using the generated build targets ```update``` and ```generate```.
 
-
-
-
 ## Tips for Linking
 
 We suggest using the build system of *glbinding* for a smooth integration: [CMake](https://cmake.org/)
 For it, *glbinding* provides a find configuration script that should be installed into your system or at least accessible by CMake. 
 In the projects CMakeLists.txt, add one of the following lines:
-```
+
+```cmake
 find_package(glbinding QUIET) # if you want to check for existence
 find_package(glbinding REQUIRED) # if it is really required in your project
 ```
 Finally, just link glbinding to your own library or executable:
-```
+
+```cmake
 target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
 ```
-
-
-
-
 
 ## Basic Example
 
@@ -232,9 +237,6 @@ int main()
 This example is valid for applications that use one context in one thread. 
 For multiple context or multi-threaded usage refer to [Multi-Context](..)
 
-
-
-
 ## Features
 
 ### Type-Safe Parameters
@@ -244,12 +246,15 @@ Hence, actual knowledge about each function and its parameters is required; ther
 As *glbinding* differentiates between all these types, IDEs and compilers can detect wrong usages of the OpenGL API.
 
 One example is the passing of a named constant in places where a bit combination is expected:
+
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT); // valid
 glClear(GL_FRAMEBUFFER);      // compilation error: bitfield of group ClearBufferMask expected, got GLenum
 ```
+
 In the case of bitfields, the OpenGL API offers groups and each parameter states the group valid values must come from. 
 *glbinding* uses this information to prevent invalid bit combinations:
+
 ```cpp
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // valid
 glClear(GL_COLOR_BUFFER_BIT | GL_MAP_READ_BIT);     // compile error: both bitfields share no group
@@ -258,15 +263,14 @@ glClear(GL_STENCIL_BUFFER_BIT | GL_LIGHTING_BIT);   // compile error: bitwise or
                                                     // the shared group is AttribMask, but the
                                                     // resulting group does not match the expected.
 ```
+
 Unfortunately, such groups are incomplete and unmaintained for enums (named values). 
 Thus, *glbinding* could not provide any assistance for cases such as:
+
 ```cpp
 GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER); // All good
 GLuint colorShader = glCreateShader(GL_COLOR);          // No compilation error but a runtime error!
 ```
-
-
-
 
 ### Compilation-Centered Header Design
 
@@ -288,12 +292,10 @@ In addition to the customary all-in-one header ```gl.h``` *glbinding* also provi
 ```
 
 There is one additional header that provides all extensions and provide them as an enumeration in terms of C++ enums.
+
 ```cpp
 #include <glbinding/gl/extension.h> 
 ```
-
-
-
 
 ### Feature-Centered Header Design
 
@@ -310,6 +312,7 @@ One tough task is to adhere to one agreed set of functions in your own OpenGL pr
 ##### All-Features OpenGL Headers
 
 If you do not use per-feature headers the OpenGL program can look like this:
+
 ```cpp
 #include <glbinding/gl/gl.h>
 
@@ -324,6 +327,7 @@ gl::glDrawElementsInstanced(gl::GL_TRIANGLES, 18, gl::GL_UNSIGNED_BYTE, 0, m_num
 When developing your code on Windows with latest drivers installed, the code above is likely to compile and run. 
 But if you want to port it to systems with less mature driver support (e.g., macOS or Linux using open source drivers), you may wonder if ```glDrawElementsInstanced``` is available.
 In this case, just switch to per-feature headers of *glbinding* and choose the OpenGL 3.2 Core headers (as you know that at least this version is available on all target platforms):
+
 ```cpp
 #include <glbinding/gl32core/gl.h>
 
@@ -332,11 +336,9 @@ gl32core::glClear(gl32core::GL_COLOR_BUFFER_BIT | gl32core::GL_DEPTH_BUFFER_BIT)
 gl32core::glUniform1i(u_numcubes, m_numcubes);
 gl32core::glDrawElementsInstanced(gl32core::GL_TRIANGLES, 18, gl32core::GL_UNSIGNED_BYTE, 0, m_numcubes * m_numcubes);
 ```
+
 If the code compiles than you can be sure it is OpenGL 3.2 Core compliant.
 Using functions that are not yet available or relying on deprecated functionality is prevented.
-
-
-
 
 ### Lazy Function Pointer Resolution
 
@@ -371,9 +373,6 @@ glbinding::Binding::useCurrentContext();
 glbinding::Binding::useContext(ContextHandle context); 
 ```
 
-
-
-
 ### Multi-Threading Support
 
 Concurrent use of *glbinding* is mainly intended for usage over multiple contexts in different threads (multiple threads operating on a single OpenGL context requires locking, which *glbinding* will not provide).
@@ -388,9 +387,6 @@ The combination of multiple OpenGL contexts and multiple threads for OpenGL usag
 You must tell *glbinding* which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::Binding::initialize()```) and if you want to switch the current context for one thread, you have to update the current context, too (```glbinding::Binding::useCurrentContext()```). 
 However, we strongly discourage the use of one context in multiple threads.
 
-
-
-
 ### Function Callbacks
 
 To support orthogonal features of the OpenGL API, glbinding allows attaching a number of callbacks to several concepts of the OpenGL API (e.g. a function). 
@@ -398,6 +394,7 @@ Such orthogonal features include runtime error checking (i.e., ```glGetError``` 
 
 *glbinding* supports different types of callbacks that can be registered.
 The main types are
+
  * global and local (per-function) before callbacks, that are called before the OpenGL function call,
  * global and local (per-function) after callbacks, that are called after the OpenGL function call,
  * unresolved callbacks, that are called each time an unresolved OpenGL function should be called (instead of a segmentation fault),
@@ -447,9 +444,6 @@ glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
 // OpenGL Code ...
 ```
 
-
-
-
 ### Alternative Signatures
 
 The OpenGL API is designed without function overloading using only simple parameter types. 
@@ -461,6 +455,7 @@ For most of those cases, we provide alternative *overloaded* function signatures
 Additionally, we also fix signatures that are semantically broken in the OpenGL API specification, i.e., when base types (C types) are similar such as in the case of enums and integers.
 
 Alternative function signatures are enabled by default, so the following example works out-of-the-box:
+
 ```cpp
 #include <glbinding/gl/gl.h>
 
@@ -473,8 +468,6 @@ glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terrain.data());
 ```
-
-
 
 ### Meta Information
 
@@ -494,4 +487,3 @@ using glbinding::Meta;
 for (const Version & v : Meta::versions())
   std::cout << v.toString() << std::endl;
 ```
-
