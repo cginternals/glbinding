@@ -57,7 +57,7 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 * [Global and Local Function Callbacks](#function-callbacks) 
 * [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
 * [Meta Information System](#meta-information)
-* [Doxygen Documentation](https://cginternals.github.io/glbinding/documentation)
+* [Doxygen Documentation](https://cginternals.github.io/glbinding/docs/2.1)
 
 ## Project Health
 
