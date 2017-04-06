@@ -184,19 +184,19 @@ public:
      * @brief
      *   Cast operator for a std::pair cast of type unsigned char.
      */
-    GLBINDING_CONSTEXPR operator std::pair<unsigned char, unsigned char>() const;
+    inline operator std::pair<unsigned char, unsigned char>() const;
 
     /**
      * @brief
      *   Cast operator for a std::pair cast of type unsigned short.
      */
-    GLBINDING_CONSTEXPR operator std::pair<unsigned short, unsigned short>() const;
+    inline operator std::pair<unsigned short, unsigned short>() const;
 
     /**
      * @brief
      *   Cast operator for a std::pair cast of type unsigned int.
      */
-    GLBINDING_CONSTEXPR operator std::pair<unsigned int, unsigned int>() const;
+    inline operator std::pair<unsigned int, unsigned int>() const;
 
     /**
      * @brief

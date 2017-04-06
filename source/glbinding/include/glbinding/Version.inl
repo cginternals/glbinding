@@ -94,17 +94,17 @@ GLBINDING_CONSTEXPR unsigned char Version::minorVersion() const
     return m_minor;
 }
 
-GLBINDING_CONSTEXPR Version::operator std::pair<unsigned char, unsigned char>() const
+Version::operator std::pair<unsigned char, unsigned char>() const
 {
     return std::pair<unsigned char, unsigned char>(m_major, m_minor);
 }
 
-GLBINDING_CONSTEXPR Version::operator std::pair<unsigned short, unsigned short>() const
+Version::operator std::pair<unsigned short, unsigned short>() const
 {
     return std::pair<unsigned short, unsigned short>(m_major, m_minor);
 }
 
-GLBINDING_CONSTEXPR Version::operator std::pair<unsigned int, unsigned int>() const
+Version::operator std::pair<unsigned int, unsigned int>() const
 {
     return std::pair<unsigned int, unsigned int>(m_major, m_minor);
 }
