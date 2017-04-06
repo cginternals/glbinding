@@ -28,7 +28,7 @@ GLBINDING_CONSTEXPR Version::Version(const Version & version)
 {
 }
 
-GLBINDING_CONSTEXPR Version::Version(Version && version)
+Version::Version(Version && version)
 : m_major(std::move(version.m_major))
 , m_minor(std::move(version.m_minor))
 {

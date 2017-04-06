@@ -250,7 +250,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    GLBINDING_CONSTEXPR auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
      * @brief

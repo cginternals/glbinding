@@ -64,7 +64,7 @@ public:
      * @param[in] version
      *   The Version the data is moved from
      */
-    GLBINDING_CONSTEXPR Version(Version && version);
+    inline Version(Version && version);
 
     /**
      * @brief

@@ -64,7 +64,7 @@ GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator&(SharedBitfield<T...> ot
 
 template <typename Type>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+auto SharedBitfield<Type>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
 {
     this->m_value &= static_cast<decltype(this->m_value)>(other);
 
