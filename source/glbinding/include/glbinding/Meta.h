@@ -30,7 +30,7 @@ public:
      * @brief
      *   Deleted Constructor as all functions are static.
      */
-    Meta() GLBINDING_DELETED_FUNCTION;
+    Meta() = delete;
 
     /**
      * @brief

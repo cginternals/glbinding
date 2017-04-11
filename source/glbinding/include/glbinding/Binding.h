@@ -35,7 +35,7 @@ public:
      * @brief
      *   Deleted Constructor as all functions are static.
      */
-    Binding() GLBINDING_DELETED_FUNCTION;
+    Binding() = delete;
 
     /**
      * @brief

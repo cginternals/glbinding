@@ -182,25 +182,7 @@ if (WriterCompilerDetectionHeaderFound)
             cxx_thread_local
             cxx_constexpr
             cxx_attribute_deprecated
-            cxx_nullptr
-            cxx_override
             cxx_noexcept
-            cxx_final
-            cxx_deleted_functions
-            cxx_variadic_templates
-            cxx_alias_templates
-            cxx_auto_type
-            cxx_delegating_constructors
-            cxx_inheriting_constructors
-            cxx_range_for
-            cxx_raw_string_literals
-            cxx_reference_qualified_functions
-            cxx_rvalue_references
-            cxx_strong_enums
-            cxx_trailing_return_types
-            cxx_uniform_initialization
-            cxx_variable_templates
-            cxx_template_template_parameters
         VERSION 3.2
     )
 else()

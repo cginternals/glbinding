@@ -32,7 +32,7 @@ public:
      * @brief
      *   Deleted Constructor; this class is intended to be used without instantiation.
      */
-    ContextInfo() GLBINDING_DELETED_FUNCTION;
+    ContextInfo() = delete;
 
     /**
     * @brief
@@ -56,7 +56,7 @@ public:
      * @deprecated
      *   This method will be removed in future major releases.
      */
-    static std::set<gl::GLextension> extensions(std::set<std::string> * unknown);
+    GLBINDING_DEPRECATED static std::set<gl::GLextension> extensions(std::set<std::string> * unknown);
 
     /**
      * @brief
@@ -116,7 +116,7 @@ public:
     * @param[in] extensions
     *   A set of extensions that are tested for availability in the current context.
     *
-    * @param[out] unknown
+    * @param[out] unsupported
     *   The subset of extensions (based on the given extensions) not supported by the current context.
     *
     * @return

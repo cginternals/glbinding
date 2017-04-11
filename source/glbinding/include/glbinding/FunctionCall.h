@@ -49,7 +49,7 @@ public:
      *
      * Deleted assigment operator; no memory management for dynamically allocated memory implemented.
      */
-    FunctionCall(const FunctionCall & other) GLBINDING_DELETED_FUNCTION;
+    FunctionCall(const FunctionCall & other) = delete;
 
     /**
      * @brief
@@ -64,7 +64,7 @@ public:
      * @brief
      *   Deleted assigment operator; no memory management for dynamically allocated memory implemented.
      */
-    FunctionCall & operator=(const FunctionCall &) GLBINDING_DELETED_FUNCTION;
+    FunctionCall & operator=(const FunctionCall &) = delete;
 
     /**
      * @brief
