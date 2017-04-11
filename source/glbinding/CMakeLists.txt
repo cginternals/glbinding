@@ -177,7 +177,7 @@ if (WriterCompilerDetectionHeaderFound)
         FILE ${feature_file}
         PREFIX ${target_id}
         COMPILERS AppleClang Clang GNU MSVC
-        FEATURES cxx_thread_local cxx_constexpr
+        FEATURES cxx_thread_local cxx_constexpr cxx_noexcept
         VERSION 3.2
     )
 else()

@@ -167,6 +167,12 @@
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 0
 #    endif
 
+#    if ((__clang_major__ * 100) + __clang_minor__) >= 400 && __has_feature(cxx_noexcept)
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 1
+#    else
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 0
+#    endif
+
 #  elif GLBINDING_COMPILER_IS_Clang
 
 #    if !(((__clang_major__ * 100) + __clang_minor__) >= 304)
@@ -194,6 +200,12 @@
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 0
 #    endif
 
+#    if ((__clang_major__ * 100) + __clang_minor__) >= 304 && __has_feature(cxx_noexcept)
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 1
+#    else
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 0
+#    endif
+
 #  elif GLBINDING_COMPILER_IS_GNU
 
 #    if !((__GNUC__ * 100 + __GNUC_MINOR__) >= 404)
@@ -218,6 +230,12 @@
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 1
 #    else
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 0
+#    endif
+
+#    if (__GNUC__ * 100 + __GNUC_MINOR__) >= 406 && (__cplusplus >= 201103L || (defined(__GXX_EXPERIMENTAL_CXX0X__) && __GXX_EXPERIMENTAL_CXX0X__))
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 1
+#    else
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 0
 #    endif
 
 #  elif GLBINDING_COMPILER_IS_MSVC
@@ -254,6 +272,12 @@
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 0
 #    endif
 
+#    if _MSC_VER >= 1900
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 1
+#    else
+#      define GLBINDING_COMPILER_CXX_NOEXCEPT 0
+#    endif
+
 #  else
 #    error Unsupported compiler
 #  endif
@@ -273,6 +297,15 @@
 #    define GLBINDING_CONSTEXPR constexpr
 #  else
 #    define GLBINDING_CONSTEXPR
+#  endif
+
+
+#  if GLBINDING_COMPILER_CXX_NOEXCEPT
+#    define GLBINDING_NOEXCEPT noexcept
+#    define GLBINDING_NOEXCEPT_EXPR(X) noexcept(X)
+#  else
+#    define GLBINDING_NOEXCEPT
+#    define GLBINDING_NOEXCEPT_EXPR(X)
 #  endif
 
 #endif
