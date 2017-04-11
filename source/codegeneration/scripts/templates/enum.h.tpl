@@ -34,7 +34,7 @@ enum class GLenum : unsigned int
 
 {{#items}}
 {{#isPrimary}}
-static const GLenum {{item.identifier}} = GLenum::{{item.identifier}};
+GLBINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}};
 {{/isPrimary}}
 {{#isSecondary}}
 // GLBINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}}; // reuse {{item.primaryGroup}}

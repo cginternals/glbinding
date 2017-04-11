@@ -11,33 +11,33 @@ namespace gl
 {
 
 
-class GLBINDING_API GLboolean
+class GLboolean
 {
 public:
     using underlying_type = unsigned char;
 
 public:
-    GLBINDING_CONSTEXPR GLboolean();
-    GLBINDING_CONSTEXPR GLboolean(bool on);
-    GLBINDING_CONSTEXPR GLboolean(char on);
-    GLBINDING_CONSTEXPR GLboolean(unsigned char on);
-    GLBINDING_CONSTEXPR GLboolean(int on);
-    GLBINDING_CONSTEXPR GLboolean(unsigned int on);
+    GLBINDING_CONSTEXPR inline GLboolean();
+    GLBINDING_CONSTEXPR inline GLboolean(bool on);
+    GLBINDING_CONSTEXPR inline GLboolean(char on);
+    GLBINDING_CONSTEXPR inline GLboolean(unsigned char on);
+    GLBINDING_CONSTEXPR inline GLboolean(int on);
+    GLBINDING_CONSTEXPR inline GLboolean(unsigned int on);
 
-    GLBINDING_CONSTEXPR explicit operator bool() const;
-    GLBINDING_CONSTEXPR explicit operator char() const;
-    GLBINDING_CONSTEXPR explicit operator unsigned char() const;
-    GLBINDING_CONSTEXPR explicit operator int() const;
-    GLBINDING_CONSTEXPR explicit operator unsigned int() const;
+    GLBINDING_CONSTEXPR inline explicit operator bool() const;
+    GLBINDING_CONSTEXPR inline explicit operator char() const;
+    GLBINDING_CONSTEXPR inline explicit operator unsigned char() const;
+    GLBINDING_CONSTEXPR inline explicit operator int() const;
+    GLBINDING_CONSTEXPR inline explicit operator unsigned int() const;
 
     inline GLboolean & operator=(const GLboolean & other);
-    GLBINDING_CONSTEXPR bool operator<(const GLboolean & other) const;
-    GLBINDING_CONSTEXPR bool operator>(const GLboolean & other) const;
-    GLBINDING_CONSTEXPR bool operator<=(const GLboolean & other) const;
-    GLBINDING_CONSTEXPR bool operator>=(const GLboolean & other) const;
+    GLBINDING_CONSTEXPR inline bool operator<(const GLboolean & other) const;
+    GLBINDING_CONSTEXPR inline bool operator>(const GLboolean & other) const;
+    GLBINDING_CONSTEXPR inline bool operator<=(const GLboolean & other) const;
+    GLBINDING_CONSTEXPR inline bool operator>=(const GLboolean & other) const;
 
-    GLBINDING_CONSTEXPR bool operator==(const GLboolean & other) const;
-    GLBINDING_CONSTEXPR bool operator!=(const GLboolean & other) const;
+    GLBINDING_CONSTEXPR inline bool operator==(const GLboolean & other) const;
+    GLBINDING_CONSTEXPR inline bool operator!=(const GLboolean & other) const;
 
 public:
     underlying_type m_value;

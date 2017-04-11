@@ -36,7 +36,7 @@ public:
      * @param[in] value
      *   The value that should be printed later.
      */
-    GLBINDING_CONSTEXPR Value(const T & value);
+    GLBINDING_CONSTEXPR inline Value(const T & value);
 
     /**
      * @brief

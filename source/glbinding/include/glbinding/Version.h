@@ -28,14 +28,14 @@ namespace glbinding
  * }
  * \endcode
  */
-class GLBINDING_API Version
+class Version
 {
 public:
     /**
      * @brief
      *   Default constructor, resulting in an invalid Version object.
      */
-    GLBINDING_CONSTEXPR Version();
+    GLBINDING_CONSTEXPR inline Version();
 
     /**
      * @brief
@@ -46,7 +46,7 @@ public:
      * @param[in] minorVersion
      *   The minor version
      */
-    GLBINDING_CONSTEXPR Version(unsigned char majorVersion, unsigned char minorVersion);
+    GLBINDING_CONSTEXPR inline Version(unsigned char majorVersion, unsigned char minorVersion);
 
     /**
      * @brief
@@ -55,7 +55,7 @@ public:
      * @param[in] version
      *   The Version the data is used from
      */
-    GLBINDING_CONSTEXPR Version(const Version & version);
+    GLBINDING_CONSTEXPR inline Version(const Version & version);
 
     /**
      * @brief
@@ -100,7 +100,7 @@ public:
      * @return
      *   true iff this Version is lesser than the other Version
      */
-    GLBINDING_CONSTEXPR bool operator<(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator<(const Version & version) const;
 
     /**
      * @brief
@@ -112,7 +112,7 @@ public:
      * @return
      *   true iff this Version is greater than the other Version
      */
-    GLBINDING_CONSTEXPR bool operator>(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator>(const Version & version) const;
 
     /**
      * @brief
@@ -124,7 +124,7 @@ public:
      * @return
      *   true iff this Version is equal to the other Version
      */
-    GLBINDING_CONSTEXPR bool operator==(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator==(const Version & version) const;
 
     /**
      * @brief
@@ -136,7 +136,7 @@ public:
      * @return
      *   true iff this Version is not equal to the other Version
      */
-    GLBINDING_CONSTEXPR bool operator!=(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator!=(const Version & version) const;
 
     /**
      * @brief
@@ -148,7 +148,7 @@ public:
      * @return
      *   true iff this Version is greater or equal than the other Version
      */
-    GLBINDING_CONSTEXPR bool operator>=(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator>=(const Version & version) const;
 
     /**
      * @brief
@@ -160,7 +160,7 @@ public:
      * @return
      *   true iff this Version is lesser or equal than the other Version
      */
-    GLBINDING_CONSTEXPR bool operator<=(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator<=(const Version & version) const;
 
     /**
      * @brief
@@ -169,7 +169,7 @@ public:
      * @return
      *   the major version
      */
-    GLBINDING_CONSTEXPR unsigned char majorVersion() const;
+    GLBINDING_CONSTEXPR inline unsigned char majorVersion() const;
 
     /**
      * @brief
@@ -178,7 +178,7 @@ public:
      * @return
      *   the minor version
      */
-    GLBINDING_CONSTEXPR unsigned char minorVersion() const;
+    GLBINDING_CONSTEXPR inline unsigned char minorVersion() const;
 
     /**
      * @brief
@@ -205,7 +205,7 @@ public:
      * @return
      *   The version as string, "-.-" iff the string is invalid.
      */
-    std::string toString() const;
+    GLBINDING_API std::string toString() const;
 
     /**
      * @brief
@@ -225,7 +225,7 @@ public:
      *
      * This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed.
      */
-    GLBINDING_CONSTEXPR bool isNull() const;
+    GLBINDING_CONSTEXPR inline bool isNull() const;
 
     /**
      * @brief
@@ -234,7 +234,7 @@ public:
      * @return
      *   the nearest valid Version that is either equal or lower than this Version.
      */
-    const Version & nearest() const;
+    GLBINDING_API const Version & nearest() const;
 
     /**
      * @brief
@@ -243,7 +243,7 @@ public:
      * @return
      *   the set of all valid Versions (= released OpenGL Features).
      */
-    static const std::set<Version> & versions();
+    GLBINDING_API static const std::set<Version> & versions();
 
     /**
     * @brief
@@ -252,7 +252,7 @@ public:
     * @return
     *   The list of all valid Versions (Features) with a version number below the provided one.
     */
-    static const std::set<Version> preceeding(const Version & version);
+    GLBINDING_API static const std::set<Version> preceeding(const Version & version);
 
     /**
     * @brief
@@ -261,7 +261,7 @@ public:
     * @return
     *   The list of all valid Versions (Features) with a version number above the provided one.
     */
-    static const std::set<Version> succeeding(const Version & version);
+    GLBINDING_API static const std::set<Version> succeeding(const Version & version);
 
     /**
      * @brief
@@ -270,7 +270,7 @@ public:
      * @return
      *   the most current Version from the set of all valid versions.
      */
-    static const Version & latest();
+    GLBINDING_API static const Version & latest();
 
 protected:
     unsigned char m_major; ///< The major version
