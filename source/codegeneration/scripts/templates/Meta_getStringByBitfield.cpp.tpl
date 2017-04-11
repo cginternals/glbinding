@@ -10,7 +10,7 @@ using namespace gl;
 
 namespace
 {
-    static const auto none = std::string{};
+    const auto none = std::string{};
 }
 
 

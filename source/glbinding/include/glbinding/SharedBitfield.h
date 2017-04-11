@@ -3,6 +3,8 @@
 
 #include <type_traits>
 
+#include <glbinding/glbinding_features.h>
+
 
 namespace glbinding 
 {
@@ -130,7 +132,7 @@ public:
      * @param[in] value
      *   The value encoded in this shared bitfield.
      */
-    SharedBitfieldBase(T value);
+    GLBINDING_CONSTEXPR SharedBitfieldBase(T value);
 
     /**
      * @brief
@@ -139,7 +141,7 @@ public:
      * @return
      *   The bitfield value.
      */
-    explicit operator T() const;
+    GLBINDING_CONSTEXPR explicit operator T() const;
 protected:
     T m_value; ///< The value of the SharedBitfield
 };
@@ -176,7 +178,7 @@ public:
      *   The value of this SharedBitfield.
      */
     template <typename ConstructionType>
-    SharedBitfield(ConstructionType value);
+    GLBINDING_CONSTEXPR SharedBitfield(ConstructionType value);
 
     /**
      * @brief
@@ -185,7 +187,7 @@ public:
      * @param[in] value
      *   The value of this SharedBitfield.
      */
-    SharedBitfield(typename std::underlying_type<Type>::type value);
+    GLBINDING_CONSTEXPR SharedBitfield(typename std::underlying_type<Type>::type value);
 
     /**
      * @brief
@@ -194,7 +196,7 @@ public:
      * @return
      *   The bitfield value as type of Type.
      */
-    operator Type() const;
+    GLBINDING_CONSTEXPR operator Type() const;
 
     /**
      * @brief
@@ -209,7 +211,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
 
     /**
      * @brief
@@ -221,7 +223,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
      * @brief
@@ -236,7 +238,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
 
     /**
      * @brief
@@ -248,7 +250,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
      * @brief
@@ -263,7 +265,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
 
     /**
      * @brief
@@ -275,7 +277,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
      * @brief
@@ -290,7 +292,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
+    GLBINDING_CONSTEXPR auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
 
     /**
      * @brief
@@ -307,7 +309,7 @@ public:
      * This method is not visible to the compiler if the this SharedBitfield type list contains the type T.
      */
     template <typename T>
-    auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type>::value, bool>::type;
+    GLBINDING_CONSTEXPR auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type>::value, bool>::type;
 };
 
 /**
@@ -335,7 +337,7 @@ public:
      *   The value of this SharedBitfield.
      */
     template <typename ConstructionType>
-    SharedBitfield(ConstructionType value);
+    GLBINDING_CONSTEXPR SharedBitfield(ConstructionType value);
 
     /**
      * @brief
@@ -344,7 +346,7 @@ public:
      * @param[in] value
      *   The value of this SharedBitfield.
      */
-    SharedBitfield(typename std::underlying_type<Type>::type value);
+    GLBINDING_CONSTEXPR SharedBitfield(typename std::underlying_type<Type>::type value);
 
     /**
      * @brief
@@ -353,7 +355,7 @@ public:
      * @return
      *   The bitfield value as type of Type.
      */
-    operator Type() const;
+    GLBINDING_CONSTEXPR operator Type() const;
 
     /**
      * @brief
@@ -368,7 +370,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
 
     /**
      * @brief
@@ -380,7 +382,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
      * @brief
@@ -395,7 +397,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
 
     /**
      * @brief
@@ -407,7 +409,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
      * @brief
@@ -422,7 +424,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
 
     /**
      * @brief
@@ -434,7 +436,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
      * @brief
@@ -449,7 +451,7 @@ public:
      * This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error.
      */
     template <typename... T>
-    auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
+    GLBINDING_CONSTEXPR auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
 
     /**
      * @brief
@@ -466,7 +468,7 @@ public:
      * This method is not visible to the compiler if the this SharedBitfield type list contains the type T.
      */
     template <typename T>
-    auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type, Types...>::value, bool>::type;
+    GLBINDING_CONSTEXPR auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type, Types...>::value, bool>::type;
 };
 
 
@@ -492,7 +494,7 @@ public:
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename Enum, typename ConvertibleEnum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+GLBINDING_CONSTEXPR typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator|(Enum a, ConvertibleEnum b);
 
 /**
@@ -514,7 +516,7 @@ operator|(Enum a, ConvertibleEnum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename ConvertibleEnum, typename Enum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+GLBINDING_CONSTEXPR typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator|(ConvertibleEnum a, Enum b);
 
 /**
@@ -536,7 +538,7 @@ operator|(ConvertibleEnum a, Enum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename Enum, typename ConvertibleEnum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+inline typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator|=(Enum & a, ConvertibleEnum b);
 
 /**
@@ -558,7 +560,7 @@ operator|=(Enum & a, ConvertibleEnum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename Enum, typename ConvertibleEnum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+GLBINDING_CONSTEXPR typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator&(Enum a, ConvertibleEnum b);
 
 /**
@@ -580,7 +582,7 @@ operator&(Enum a, ConvertibleEnum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename ConvertibleEnum, typename Enum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+GLBINDING_CONSTEXPR typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator&(ConvertibleEnum a, Enum b);
 
 /**
@@ -602,7 +604,7 @@ operator&(ConvertibleEnum a, Enum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename Enum, typename ConvertibleEnum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+inline typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator&=(Enum & a, ConvertibleEnum b);
 
 /**
@@ -624,7 +626,7 @@ operator&=(Enum & a, ConvertibleEnum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename Enum, typename ConvertibleEnum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+GLBINDING_CONSTEXPR typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator^(Enum a, ConvertibleEnum b);
 
 /**
@@ -646,7 +648,7 @@ operator^(Enum a, ConvertibleEnum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename ConvertibleEnum, typename Enum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+GLBINDING_CONSTEXPR typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator^(ConvertibleEnum a, Enum b);
 
 /**
@@ -668,7 +670,7 @@ operator^(ConvertibleEnum a, Enum b);
  * This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error.
  */
 template <typename Enum, typename ConvertibleEnum>
-typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
+inline typename std::enable_if<std::is_base_of<SharedBitfieldBase<typename std::underlying_type<typename std::enable_if<std::is_enum<Enum>::value, Enum>::type>::type>, ConvertibleEnum>::value, Enum>::type
 operator^=(Enum & a, ConvertibleEnum b);
 
 

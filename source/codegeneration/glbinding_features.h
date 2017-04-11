@@ -167,6 +167,12 @@
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 0
 #    endif
 
+#    if ((__clang_major__ * 100) + __clang_minor__) >= 501 && __cplusplus > 201103L
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 1
+#    else
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 0
+#    endif
+
 #    if ((__clang_major__ * 100) + __clang_minor__) >= 400 && __has_feature(cxx_noexcept)
 #      define GLBINDING_COMPILER_CXX_NOEXCEPT 1
 #    else
@@ -200,6 +206,12 @@
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 0
 #    endif
 
+#    if ((__clang_major__ * 100) + __clang_minor__) >= 304 && __cplusplus > 201103L
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 1
+#    else
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 0
+#    endif
+
 #    if ((__clang_major__ * 100) + __clang_minor__) >= 304 && __has_feature(cxx_noexcept)
 #      define GLBINDING_COMPILER_CXX_NOEXCEPT 1
 #    else
@@ -230,6 +242,12 @@
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 1
 #    else
 #      define GLBINDING_COMPILER_CXX_CONSTEXPR 0
+#    endif
+
+#    if (__GNUC__ * 100 + __GNUC_MINOR__) >= 409 && __cplusplus > 201103L
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 1
+#    else
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 0
 #    endif
 
 #    if (__GNUC__ * 100 + __GNUC_MINOR__) >= 406 && (__cplusplus >= 201103L || (defined(__GXX_EXPERIMENTAL_CXX0X__) && __GXX_EXPERIMENTAL_CXX0X__))
@@ -273,6 +291,12 @@
 #    endif
 
 #    if _MSC_VER >= 1900
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 1
+#    else
+#      define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 0
+#    endif
+
+#    if _MSC_VER >= 1900
 #      define GLBINDING_COMPILER_CXX_NOEXCEPT 1
 #    else
 #      define GLBINDING_COMPILER_CXX_NOEXCEPT 0
@@ -297,6 +321,23 @@
 #    define GLBINDING_CONSTEXPR constexpr
 #  else
 #    define GLBINDING_CONSTEXPR
+#  endif
+
+
+#  ifndef GLBINDING_DEPRECATED
+#    if GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED
+#      define GLBINDING_DEPRECATED [[deprecated]]
+#      define GLBINDING_DEPRECATED_MSG(MSG) [[deprecated(MSG)]]
+#    elif GLBINDING_COMPILER_IS_GNU || GLBINDING_COMPILER_IS_Clang
+#      define GLBINDING_DEPRECATED __attribute__((__deprecated__))
+#      define GLBINDING_DEPRECATED_MSG(MSG) __attribute__((__deprecated__(MSG)))
+#    elif GLBINDING_COMPILER_IS_MSVC
+#      define GLBINDING_DEPRECATED __declspec(deprecated)
+#      define GLBINDING_DEPRECATED_MSG(MSG) __declspec(deprecated(MSG))
+#    else
+#      define GLBINDING_DEPRECATED
+#      define GLBINDING_DEPRECATED_MSG(MSG)
+#    endif
 #  endif
 
 

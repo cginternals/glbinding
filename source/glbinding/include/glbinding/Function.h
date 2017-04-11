@@ -89,7 +89,7 @@ public:
      *
      * This method respect currently activated callbacks and logging.
      */
-    ReturnType operator()(Arguments&... arguments) const;
+    inline ReturnType operator()(Arguments&... arguments) const;
 
     /**
      * @brief
@@ -103,7 +103,7 @@ public:
      *
      * This method respect currently activated callbacks and logging.
      */
-    ReturnType call(Arguments&... arguments) const;
+    inline ReturnType call(Arguments&... arguments) const;
 
     /**
      * @brief
@@ -117,7 +117,7 @@ public:
      *
      * This method omits all currently activated callbacks and logging.
      */
-    ReturnType directCall(Arguments... arguments) const;
+    inline ReturnType directCall(Arguments... arguments) const;
 
     /**
      * @brief
@@ -128,13 +128,13 @@ public:
      *
      * Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the Before flag to enable the callback.
      */
-    void setBeforeCallback(BeforeCallback callback);
+    inline void setBeforeCallback(BeforeCallback callback);
 
     /**
      * @brief
      *   Clears any previously registered before callback.
      */
-    void clearBeforeCallback();
+    inline void clearBeforeCallback();
 
     /**
      * @brief
@@ -145,13 +145,13 @@ public:
      *
      * Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the After flag to enable the callback.
      */
-    void setAfterCallback(AfterCallback callback);
+    inline void setAfterCallback(AfterCallback callback);
 
     /**
      * @brief
      *   Clears any previously registered after callback.
      */
-    void clearAfterCallback();
+    inline void clearAfterCallback();
 
     /**
      * @brief
@@ -160,7 +160,7 @@ public:
      * @return
      *   The beforeCallback.
      */
-    BeforeCallback beforeCallback() const;
+    inline BeforeCallback beforeCallback() const;
 
     /**
      * @brief
@@ -169,7 +169,7 @@ public:
      * @return
      *   The afterCallback.
      */
-    AfterCallback afterCallback() const;
+    inline AfterCallback afterCallback() const;
 
 protected:
     BeforeCallback m_beforeCallback; ///< The currently registered before callback.

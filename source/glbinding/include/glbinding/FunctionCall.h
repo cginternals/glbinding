@@ -6,6 +6,7 @@
 #include <chrono>
 
 #include <glbinding/glbinding_api.h>
+#include <glbinding/glbinding_features.h>
 
 
 namespace glbinding
@@ -41,6 +42,17 @@ public:
 
     /**
      * @brief
+     *   Copy Constructor
+     *
+     * @param[in] other
+     *   The FunctionCall to copy the memory from.
+     *
+     * Deleted assigment operator; no memory management for dynamically allocated memory implemented.
+     */
+    FunctionCall(const FunctionCall & other) = delete;
+
+    /**
+     * @brief
      *   Move Constructor
      *
      * @param[in] other
@@ -53,7 +65,6 @@ public:
      *   Deleted assigment operator; no memory management for dynamically allocated memory implemented.
      */
     FunctionCall & operator=(const FunctionCall &) = delete;
-
 
     /**
      * @brief

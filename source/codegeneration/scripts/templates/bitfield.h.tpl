@@ -2,6 +2,8 @@
 
 #include <glbinding/no{{api}}.h>
 
+#include <glbinding/glbinding_features.h>
+
 #include <glbinding/SharedBitfield.h>
 
 
@@ -24,10 +26,10 @@ enum class {{name}} : unsigned int
 
 {{#bitfields.items}}
 {{#item.groups.multipleItems}}
-static const glbinding::SharedBitfield<{{#item.groups.items}}{{item}}{{^last}}, {{/last}}{{/item.groups.items}}> {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<{{#item.groups.items}}{{item}}{{^last}}, {{/last}}{{/item.groups.items}}> {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
 {{/item.groups.multipleItems}}
 {{^item.groups.multipleItems}}
-static const {{item.primaryGroup}} {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
+GLBINDING_CONSTEXPR static const {{item.primaryGroup}} {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
 {{/item.groups.multipleItems}}
 {{/bitfields.items}}
 
