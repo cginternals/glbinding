@@ -214,7 +214,7 @@ public:
      * @return
      *   true iff the version is valid (i.e., if this version is present in the set of valid versions).
      */
-    inline bool isValid() const;
+    GLBINDING_API bool isValid() const;
 
     /**
      * @brief
