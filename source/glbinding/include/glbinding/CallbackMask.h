@@ -36,7 +36,7 @@ enum class CallbackMask : unsigned char
  * @return
  *   The inverted CallbackMask.
  */
-GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator~(CallbackMask a);
+GLBINDING_CONSTEXPR inline CallbackMask operator~(CallbackMask a);
 
 /**
  * @brief
@@ -50,7 +50,7 @@ GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator~(CallbackMask a);
  * @return
  *   The compound CallbackMask.
  */
-GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator|(CallbackMask a, CallbackMask b);
+GLBINDING_CONSTEXPR inline CallbackMask operator|(CallbackMask a, CallbackMask b);
 
 /**
  * @brief
@@ -64,7 +64,7 @@ GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator|(CallbackMask a, Callbac
  * @return
  *   The compound CallbackMask.
  */
-GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator&(CallbackMask a, CallbackMask b);
+GLBINDING_CONSTEXPR inline CallbackMask operator&(CallbackMask a, CallbackMask b);
 
 /**
  * @brief
@@ -78,7 +78,7 @@ GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator&(CallbackMask a, Callbac
  * @return
  *   The compound CallbackMask.
  */
-GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator^(CallbackMask a, CallbackMask b);
+GLBINDING_CONSTEXPR inline CallbackMask operator^(CallbackMask a, CallbackMask b);
 
 /**
  * @brief
@@ -92,7 +92,7 @@ GLBINDING_API GLBINDING_CONSTEXPR CallbackMask operator^(CallbackMask a, Callbac
  * @return
  *   The first, now manipulated, CallbackMask.
  */
-GLBINDING_API inline CallbackMask& operator|=(CallbackMask& a, CallbackMask b);
+inline CallbackMask& operator|=(CallbackMask& a, CallbackMask b);
 
 /**
  * @brief
@@ -106,7 +106,7 @@ GLBINDING_API inline CallbackMask& operator|=(CallbackMask& a, CallbackMask b);
  * @return
  *   The first, now manipulated, CallbackMask.
  */
-GLBINDING_API inline CallbackMask& operator&=(CallbackMask& a, CallbackMask b);
+inline CallbackMask& operator&=(CallbackMask& a, CallbackMask b);
 
 /**
  * @brief
@@ -120,7 +120,7 @@ GLBINDING_API inline CallbackMask& operator&=(CallbackMask& a, CallbackMask b);
  * @return
  *   The first, now manipulated, CallbackMask.
  */
-GLBINDING_API inline CallbackMask& operator^=(CallbackMask& a, CallbackMask b);
+inline CallbackMask& operator^=(CallbackMask& a, CallbackMask b);
 
 
 } // namespace glbinding

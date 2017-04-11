@@ -158,12 +158,12 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR GLenum operator+(const GLenum & a, const std::underlying_type<GLenum>::type b)
+GLBINDING_CONSTEXPR inline GLenum operator+(const GLenum & a, const std::underlying_type<GLenum>::type b)
 {
     return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) + b);
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR GLenum operator-(const GLenum & a, const std::underlying_type<GLenum>::type b)
+GLBINDING_CONSTEXPR inline GLenum operator-(const GLenum & a, const std::underlying_type<GLenum>::type b)
 {
     return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) - b);
 }
@@ -172,7 +172,73 @@ GLBINDING_API GLBINDING_CONSTEXPR GLenum operator-(const GLenum & a, const std::
 } // namespace gl
 
 
-namespace gl{GLBINDING_API GLBINDING_CONSTEXPR bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLBINDING_API GLBINDING_CONSTEXPR bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLBINDING_API GLBINDING_CONSTEXPR bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLBINDING_API GLBINDING_CONSTEXPR bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLBINDING_API GLBINDING_CONSTEXPR bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLBINDING_API GLBINDING_CONSTEXPR bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLBINDING_API GLBINDING_CONSTEXPR bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_API GLBINDING_CONSTEXPR bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_API GLBINDING_CONSTEXPR bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_API GLBINDING_CONSTEXPR bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_API GLBINDING_CONSTEXPR bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_API GLBINDING_CONSTEXPR bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace gl
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) == b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) != b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) < b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) > b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;
+}
+
+
+GLBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a == static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a != static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a < static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a <= static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a > static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a >= static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+
+} // namespace gl
 
 
 namespace gl
@@ -218,36 +284,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR AttribMask operator|(const AttribMask & a, const AttribMask & b)
+GLBINDING_CONSTEXPR inline AttribMask operator|(const AttribMask & a, const AttribMask & b)
 {
     return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) | static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
-GLBINDING_API inline AttribMask & operator|=(AttribMask & a, const AttribMask & b)
+inline AttribMask & operator|=(AttribMask & a, const AttribMask & b)
 {
     a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) | static_cast<std::underlying_type<AttribMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR AttribMask operator&(const AttribMask & a, const AttribMask & b)
+GLBINDING_CONSTEXPR inline AttribMask operator&(const AttribMask & a, const AttribMask & b)
 {
     return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) & static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
-GLBINDING_API inline AttribMask & operator&=(AttribMask & a, const AttribMask & b)
+inline AttribMask & operator&=(AttribMask & a, const AttribMask & b)
 {
     a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) & static_cast<std::underlying_type<AttribMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR AttribMask operator^(const AttribMask & a, const AttribMask & b)
+GLBINDING_CONSTEXPR inline AttribMask operator^(const AttribMask & a, const AttribMask & b)
 {
     return static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
 }
 
-GLBINDING_API inline AttribMask & operator^=(AttribMask & a, const AttribMask & b)
+inline AttribMask & operator^=(AttribMask & a, const AttribMask & b)
 {
     a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
 
@@ -290,36 +356,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR ClearBufferMask operator|(const ClearBufferMask & a, const ClearBufferMask & b)
+GLBINDING_CONSTEXPR inline ClearBufferMask operator|(const ClearBufferMask & a, const ClearBufferMask & b)
 {
     return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) | static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
-GLBINDING_API inline ClearBufferMask & operator|=(ClearBufferMask & a, const ClearBufferMask & b)
+inline ClearBufferMask & operator|=(ClearBufferMask & a, const ClearBufferMask & b)
 {
     a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) | static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ClearBufferMask operator&(const ClearBufferMask & a, const ClearBufferMask & b)
+GLBINDING_CONSTEXPR inline ClearBufferMask operator&(const ClearBufferMask & a, const ClearBufferMask & b)
 {
     return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) & static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
-GLBINDING_API inline ClearBufferMask & operator&=(ClearBufferMask & a, const ClearBufferMask & b)
+inline ClearBufferMask & operator&=(ClearBufferMask & a, const ClearBufferMask & b)
 {
     a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) & static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ClearBufferMask operator^(const ClearBufferMask & a, const ClearBufferMask & b)
+GLBINDING_CONSTEXPR inline ClearBufferMask operator^(const ClearBufferMask & a, const ClearBufferMask & b)
 {
     return static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 }
 
-GLBINDING_API inline ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask & b)
+inline ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask & b)
 {
     a = static_cast<ClearBufferMask>(static_cast<std::underlying_type<ClearBufferMask>::type>(a) ^ static_cast<std::underlying_type<ClearBufferMask>::type>(b));
 
@@ -362,36 +428,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR ClientAttribMask operator|(const ClientAttribMask & a, const ClientAttribMask & b)
+GLBINDING_CONSTEXPR inline ClientAttribMask operator|(const ClientAttribMask & a, const ClientAttribMask & b)
 {
     return static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) | static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 }
 
-GLBINDING_API inline ClientAttribMask & operator|=(ClientAttribMask & a, const ClientAttribMask & b)
+inline ClientAttribMask & operator|=(ClientAttribMask & a, const ClientAttribMask & b)
 {
     a = static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) | static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ClientAttribMask operator&(const ClientAttribMask & a, const ClientAttribMask & b)
+GLBINDING_CONSTEXPR inline ClientAttribMask operator&(const ClientAttribMask & a, const ClientAttribMask & b)
 {
     return static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) & static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 }
 
-GLBINDING_API inline ClientAttribMask & operator&=(ClientAttribMask & a, const ClientAttribMask & b)
+inline ClientAttribMask & operator&=(ClientAttribMask & a, const ClientAttribMask & b)
 {
     a = static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) & static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ClientAttribMask operator^(const ClientAttribMask & a, const ClientAttribMask & b)
+GLBINDING_CONSTEXPR inline ClientAttribMask operator^(const ClientAttribMask & a, const ClientAttribMask & b)
 {
     return static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) ^ static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 }
 
-GLBINDING_API inline ClientAttribMask & operator^=(ClientAttribMask & a, const ClientAttribMask & b)
+inline ClientAttribMask & operator^=(ClientAttribMask & a, const ClientAttribMask & b)
 {
     a = static_cast<ClientAttribMask>(static_cast<std::underlying_type<ClientAttribMask>::type>(a) ^ static_cast<std::underlying_type<ClientAttribMask>::type>(b));
 
@@ -434,36 +500,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR ContextFlagMask operator|(const ContextFlagMask & a, const ContextFlagMask & b)
+GLBINDING_CONSTEXPR inline ContextFlagMask operator|(const ContextFlagMask & a, const ContextFlagMask & b)
 {
     return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) | static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
-GLBINDING_API inline ContextFlagMask & operator|=(ContextFlagMask & a, const ContextFlagMask & b)
+inline ContextFlagMask & operator|=(ContextFlagMask & a, const ContextFlagMask & b)
 {
     a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) | static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ContextFlagMask operator&(const ContextFlagMask & a, const ContextFlagMask & b)
+GLBINDING_CONSTEXPR inline ContextFlagMask operator&(const ContextFlagMask & a, const ContextFlagMask & b)
 {
     return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) & static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
-GLBINDING_API inline ContextFlagMask & operator&=(ContextFlagMask & a, const ContextFlagMask & b)
+inline ContextFlagMask & operator&=(ContextFlagMask & a, const ContextFlagMask & b)
 {
     a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) & static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ContextFlagMask operator^(const ContextFlagMask & a, const ContextFlagMask & b)
+GLBINDING_CONSTEXPR inline ContextFlagMask operator^(const ContextFlagMask & a, const ContextFlagMask & b)
 {
     return static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 }
 
-GLBINDING_API inline ContextFlagMask & operator^=(ContextFlagMask & a, const ContextFlagMask & b)
+inline ContextFlagMask & operator^=(ContextFlagMask & a, const ContextFlagMask & b)
 {
     a = static_cast<ContextFlagMask>(static_cast<std::underlying_type<ContextFlagMask>::type>(a) ^ static_cast<std::underlying_type<ContextFlagMask>::type>(b));
 
@@ -506,36 +572,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR ContextProfileMask operator|(const ContextProfileMask & a, const ContextProfileMask & b)
+GLBINDING_CONSTEXPR inline ContextProfileMask operator|(const ContextProfileMask & a, const ContextProfileMask & b)
 {
     return static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) | static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 }
 
-GLBINDING_API inline ContextProfileMask & operator|=(ContextProfileMask & a, const ContextProfileMask & b)
+inline ContextProfileMask & operator|=(ContextProfileMask & a, const ContextProfileMask & b)
 {
     a = static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) | static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ContextProfileMask operator&(const ContextProfileMask & a, const ContextProfileMask & b)
+GLBINDING_CONSTEXPR inline ContextProfileMask operator&(const ContextProfileMask & a, const ContextProfileMask & b)
 {
     return static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) & static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 }
 
-GLBINDING_API inline ContextProfileMask & operator&=(ContextProfileMask & a, const ContextProfileMask & b)
+inline ContextProfileMask & operator&=(ContextProfileMask & a, const ContextProfileMask & b)
 {
     a = static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) & static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR ContextProfileMask operator^(const ContextProfileMask & a, const ContextProfileMask & b)
+GLBINDING_CONSTEXPR inline ContextProfileMask operator^(const ContextProfileMask & a, const ContextProfileMask & b)
 {
     return static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 }
 
-GLBINDING_API inline ContextProfileMask & operator^=(ContextProfileMask & a, const ContextProfileMask & b)
+inline ContextProfileMask & operator^=(ContextProfileMask & a, const ContextProfileMask & b)
 {
     a = static_cast<ContextProfileMask>(static_cast<std::underlying_type<ContextProfileMask>::type>(a) ^ static_cast<std::underlying_type<ContextProfileMask>::type>(b));
 
@@ -578,36 +644,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR FfdMaskSGIX operator|(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
+GLBINDING_CONSTEXPR inline FfdMaskSGIX operator|(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
     return static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) | static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 }
 
-GLBINDING_API inline FfdMaskSGIX & operator|=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
+inline FfdMaskSGIX & operator|=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
     a = static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) | static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FfdMaskSGIX operator&(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
+GLBINDING_CONSTEXPR inline FfdMaskSGIX operator&(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
     return static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) & static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 }
 
-GLBINDING_API inline FfdMaskSGIX & operator&=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
+inline FfdMaskSGIX & operator&=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
     a = static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) & static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FfdMaskSGIX operator^(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
+GLBINDING_CONSTEXPR inline FfdMaskSGIX operator^(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
     return static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) ^ static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 }
 
-GLBINDING_API inline FfdMaskSGIX & operator^=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
+inline FfdMaskSGIX & operator^=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
     a = static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) ^ static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
 
@@ -650,36 +716,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderColorModMaskATI operator|(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderColorModMaskATI operator|(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
     return static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderColorModMaskATI & operator|=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
+inline FragmentShaderColorModMaskATI & operator|=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
     a = static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderColorModMaskATI operator&(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderColorModMaskATI operator&(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
     return static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderColorModMaskATI & operator&=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
+inline FragmentShaderColorModMaskATI & operator&=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
     a = static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderColorModMaskATI operator^(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderColorModMaskATI operator^(const FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
     return static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderColorModMaskATI & operator^=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
+inline FragmentShaderColorModMaskATI & operator^=(FragmentShaderColorModMaskATI & a, const FragmentShaderColorModMaskATI & b)
 {
     a = static_cast<FragmentShaderColorModMaskATI>(static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderColorModMaskATI>::type>(b));
 
@@ -722,36 +788,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderDestMaskATI operator|(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderDestMaskATI operator|(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
     return static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderDestMaskATI & operator|=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
+inline FragmentShaderDestMaskATI & operator|=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
     a = static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderDestMaskATI operator&(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderDestMaskATI operator&(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
     return static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderDestMaskATI & operator&=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
+inline FragmentShaderDestMaskATI & operator&=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
     a = static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderDestMaskATI operator^(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderDestMaskATI operator^(const FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
     return static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderDestMaskATI & operator^=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
+inline FragmentShaderDestMaskATI & operator^=(FragmentShaderDestMaskATI & a, const FragmentShaderDestMaskATI & b)
 {
     a = static_cast<FragmentShaderDestMaskATI>(static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestMaskATI>::type>(b));
 
@@ -794,36 +860,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderDestModMaskATI operator|(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderDestModMaskATI operator|(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
     return static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderDestModMaskATI & operator|=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
+inline FragmentShaderDestModMaskATI & operator|=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
     a = static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderDestModMaskATI operator&(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderDestModMaskATI operator&(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
     return static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderDestModMaskATI & operator&=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
+inline FragmentShaderDestModMaskATI & operator&=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
     a = static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) & static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR FragmentShaderDestModMaskATI operator^(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
+GLBINDING_CONSTEXPR inline FragmentShaderDestModMaskATI operator^(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
     return static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 }
 
-GLBINDING_API inline FragmentShaderDestModMaskATI & operator^=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
+inline FragmentShaderDestModMaskATI & operator^=(FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
     a = static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) ^ static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
 
@@ -866,36 +932,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR MapBufferUsageMask operator|(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
+GLBINDING_CONSTEXPR inline MapBufferUsageMask operator|(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
     return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
-GLBINDING_API inline MapBufferUsageMask & operator|=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
+inline MapBufferUsageMask & operator|=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
     a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) | static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR MapBufferUsageMask operator&(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
+GLBINDING_CONSTEXPR inline MapBufferUsageMask operator&(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
     return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
-GLBINDING_API inline MapBufferUsageMask & operator&=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
+inline MapBufferUsageMask & operator&=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
     a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) & static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR MapBufferUsageMask operator^(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
+GLBINDING_CONSTEXPR inline MapBufferUsageMask operator^(const MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
     return static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 }
 
-GLBINDING_API inline MapBufferUsageMask & operator^=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
+inline MapBufferUsageMask & operator^=(MapBufferUsageMask & a, const MapBufferUsageMask & b)
 {
     a = static_cast<MapBufferUsageMask>(static_cast<std::underlying_type<MapBufferUsageMask>::type>(a) ^ static_cast<std::underlying_type<MapBufferUsageMask>::type>(b));
 
@@ -938,36 +1004,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR MemoryBarrierMask operator|(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
+GLBINDING_CONSTEXPR inline MemoryBarrierMask operator|(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
     return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
-GLBINDING_API inline MemoryBarrierMask & operator|=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
+inline MemoryBarrierMask & operator|=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
     a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) | static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR MemoryBarrierMask operator&(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
+GLBINDING_CONSTEXPR inline MemoryBarrierMask operator&(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
     return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
-GLBINDING_API inline MemoryBarrierMask & operator&=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
+inline MemoryBarrierMask & operator&=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
     a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) & static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR MemoryBarrierMask operator^(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
+GLBINDING_CONSTEXPR inline MemoryBarrierMask operator^(const MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
     return static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 }
 
-GLBINDING_API inline MemoryBarrierMask & operator^=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
+inline MemoryBarrierMask & operator^=(MemoryBarrierMask & a, const MemoryBarrierMask & b)
 {
     a = static_cast<MemoryBarrierMask>(static_cast<std::underlying_type<MemoryBarrierMask>::type>(a) ^ static_cast<std::underlying_type<MemoryBarrierMask>::type>(b));
 
@@ -1010,36 +1076,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR PathRenderingMaskNV operator|(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+GLBINDING_CONSTEXPR inline PathRenderingMaskNV operator|(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
     return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
-GLBINDING_API inline PathRenderingMaskNV & operator|=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+inline PathRenderingMaskNV & operator|=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
     a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR PathRenderingMaskNV operator&(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+GLBINDING_CONSTEXPR inline PathRenderingMaskNV operator&(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
     return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
-GLBINDING_API inline PathRenderingMaskNV & operator&=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+inline PathRenderingMaskNV & operator&=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
     a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR PathRenderingMaskNV operator^(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+GLBINDING_CONSTEXPR inline PathRenderingMaskNV operator^(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
     return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 }
 
-GLBINDING_API inline PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
+inline PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
 {
     a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
 
@@ -1082,36 +1148,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR PerformanceQueryCapsMaskINTEL operator|(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+GLBINDING_CONSTEXPR inline PerformanceQueryCapsMaskINTEL operator|(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
-GLBINDING_API inline PerformanceQueryCapsMaskINTEL & operator|=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+inline PerformanceQueryCapsMaskINTEL & operator|=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) | static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR PerformanceQueryCapsMaskINTEL operator&(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+GLBINDING_CONSTEXPR inline PerformanceQueryCapsMaskINTEL operator&(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
-GLBINDING_API inline PerformanceQueryCapsMaskINTEL & operator&=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+inline PerformanceQueryCapsMaskINTEL & operator&=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) & static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR PerformanceQueryCapsMaskINTEL operator^(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+GLBINDING_CONSTEXPR inline PerformanceQueryCapsMaskINTEL operator^(const PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     return static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 }
 
-GLBINDING_API inline PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
+inline PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
 
@@ -1154,36 +1220,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR SyncObjectMask operator|(const SyncObjectMask & a, const SyncObjectMask & b)
+GLBINDING_CONSTEXPR inline SyncObjectMask operator|(const SyncObjectMask & a, const SyncObjectMask & b)
 {
     return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) | static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
-GLBINDING_API inline SyncObjectMask & operator|=(SyncObjectMask & a, const SyncObjectMask & b)
+inline SyncObjectMask & operator|=(SyncObjectMask & a, const SyncObjectMask & b)
 {
     a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) | static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR SyncObjectMask operator&(const SyncObjectMask & a, const SyncObjectMask & b)
+GLBINDING_CONSTEXPR inline SyncObjectMask operator&(const SyncObjectMask & a, const SyncObjectMask & b)
 {
     return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) & static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
-GLBINDING_API inline SyncObjectMask & operator&=(SyncObjectMask & a, const SyncObjectMask & b)
+inline SyncObjectMask & operator&=(SyncObjectMask & a, const SyncObjectMask & b)
 {
     a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) & static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR SyncObjectMask operator^(const SyncObjectMask & a, const SyncObjectMask & b)
+GLBINDING_CONSTEXPR inline SyncObjectMask operator^(const SyncObjectMask & a, const SyncObjectMask & b)
 {
     return static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 }
 
-GLBINDING_API inline SyncObjectMask & operator^=(SyncObjectMask & a, const SyncObjectMask & b)
+inline SyncObjectMask & operator^=(SyncObjectMask & a, const SyncObjectMask & b)
 {
     a = static_cast<SyncObjectMask>(static_cast<std::underlying_type<SyncObjectMask>::type>(a) ^ static_cast<std::underlying_type<SyncObjectMask>::type>(b));
 
@@ -1226,36 +1292,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR TextureStorageMaskAMD operator|(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
+GLBINDING_CONSTEXPR inline TextureStorageMaskAMD operator|(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
     return static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) | static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 }
 
-GLBINDING_API inline TextureStorageMaskAMD & operator|=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
+inline TextureStorageMaskAMD & operator|=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
     a = static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) | static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR TextureStorageMaskAMD operator&(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
+GLBINDING_CONSTEXPR inline TextureStorageMaskAMD operator&(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
     return static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) & static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 }
 
-GLBINDING_API inline TextureStorageMaskAMD & operator&=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
+inline TextureStorageMaskAMD & operator&=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
     a = static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) & static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR TextureStorageMaskAMD operator^(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
+GLBINDING_CONSTEXPR inline TextureStorageMaskAMD operator^(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
     return static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) ^ static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 }
 
-GLBINDING_API inline TextureStorageMaskAMD & operator^=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
+inline TextureStorageMaskAMD & operator^=(TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
     a = static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) ^ static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
 
@@ -1298,36 +1364,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR UseProgramStageMask operator|(const UseProgramStageMask & a, const UseProgramStageMask & b)
+GLBINDING_CONSTEXPR inline UseProgramStageMask operator|(const UseProgramStageMask & a, const UseProgramStageMask & b)
 {
     return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
-GLBINDING_API inline UseProgramStageMask & operator|=(UseProgramStageMask & a, const UseProgramStageMask & b)
+inline UseProgramStageMask & operator|=(UseProgramStageMask & a, const UseProgramStageMask & b)
 {
     a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) | static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR UseProgramStageMask operator&(const UseProgramStageMask & a, const UseProgramStageMask & b)
+GLBINDING_CONSTEXPR inline UseProgramStageMask operator&(const UseProgramStageMask & a, const UseProgramStageMask & b)
 {
     return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
-GLBINDING_API inline UseProgramStageMask & operator&=(UseProgramStageMask & a, const UseProgramStageMask & b)
+inline UseProgramStageMask & operator&=(UseProgramStageMask & a, const UseProgramStageMask & b)
 {
     a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) & static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR UseProgramStageMask operator^(const UseProgramStageMask & a, const UseProgramStageMask & b)
+GLBINDING_CONSTEXPR inline UseProgramStageMask operator^(const UseProgramStageMask & a, const UseProgramStageMask & b)
 {
     return static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 }
 
-GLBINDING_API inline UseProgramStageMask & operator^=(UseProgramStageMask & a, const UseProgramStageMask & b)
+inline UseProgramStageMask & operator^=(UseProgramStageMask & a, const UseProgramStageMask & b)
 {
     a = static_cast<UseProgramStageMask>(static_cast<std::underlying_type<UseProgramStageMask>::type>(a) ^ static_cast<std::underlying_type<UseProgramStageMask>::type>(b));
 
@@ -1370,36 +1436,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR VertexHintsMaskPGI operator|(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
+GLBINDING_CONSTEXPR inline VertexHintsMaskPGI operator|(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
     return static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) | static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 }
 
-GLBINDING_API inline VertexHintsMaskPGI & operator|=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
+inline VertexHintsMaskPGI & operator|=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
     a = static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) | static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR VertexHintsMaskPGI operator&(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
+GLBINDING_CONSTEXPR inline VertexHintsMaskPGI operator&(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
     return static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) & static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 }
 
-GLBINDING_API inline VertexHintsMaskPGI & operator&=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
+inline VertexHintsMaskPGI & operator&=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
     a = static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) & static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR VertexHintsMaskPGI operator^(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
+GLBINDING_CONSTEXPR inline VertexHintsMaskPGI operator^(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
     return static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) ^ static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 }
 
-GLBINDING_API inline VertexHintsMaskPGI & operator^=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
+inline VertexHintsMaskPGI & operator^=(VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
     a = static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) ^ static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
 
@@ -1442,36 +1508,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR UnusedMask operator|(const UnusedMask & a, const UnusedMask & b)
+GLBINDING_CONSTEXPR inline UnusedMask operator|(const UnusedMask & a, const UnusedMask & b)
 {
     return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) | static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
-GLBINDING_API inline UnusedMask & operator|=(UnusedMask & a, const UnusedMask & b)
+inline UnusedMask & operator|=(UnusedMask & a, const UnusedMask & b)
 {
     a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) | static_cast<std::underlying_type<UnusedMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR UnusedMask operator&(const UnusedMask & a, const UnusedMask & b)
+GLBINDING_CONSTEXPR inline UnusedMask operator&(const UnusedMask & a, const UnusedMask & b)
 {
     return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) & static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
-GLBINDING_API inline UnusedMask & operator&=(UnusedMask & a, const UnusedMask & b)
+inline UnusedMask & operator&=(UnusedMask & a, const UnusedMask & b)
 {
     a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) & static_cast<std::underlying_type<UnusedMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR UnusedMask operator^(const UnusedMask & a, const UnusedMask & b)
+GLBINDING_CONSTEXPR inline UnusedMask operator^(const UnusedMask & a, const UnusedMask & b)
 {
     return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) ^ static_cast<std::underlying_type<UnusedMask>::type>(b));
 }
 
-GLBINDING_API inline UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b)
+inline UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b)
 {
     a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) ^ static_cast<std::underlying_type<UnusedMask>::type>(b));
 
@@ -1514,36 +1580,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b)
+GLBINDING_CONSTEXPR inline BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b)
 {
     return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
-GLBINDING_API inline BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
+inline BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
 {
     a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
+GLBINDING_CONSTEXPR inline BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
 {
     return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
-GLBINDING_API inline BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
+inline BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
 {
     a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
+GLBINDING_CONSTEXPR inline BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
 {
     return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 }
 
-GLBINDING_API inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
+inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
 {
     a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 
@@ -1586,36 +1652,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR BufferStorageMask operator|(const BufferStorageMask & a, const BufferStorageMask & b)
+GLBINDING_CONSTEXPR inline BufferStorageMask operator|(const BufferStorageMask & a, const BufferStorageMask & b)
 {
     return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) | static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
-GLBINDING_API inline BufferStorageMask & operator|=(BufferStorageMask & a, const BufferStorageMask & b)
+inline BufferStorageMask & operator|=(BufferStorageMask & a, const BufferStorageMask & b)
 {
     a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) | static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR BufferStorageMask operator&(const BufferStorageMask & a, const BufferStorageMask & b)
+GLBINDING_CONSTEXPR inline BufferStorageMask operator&(const BufferStorageMask & a, const BufferStorageMask & b)
 {
     return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) & static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
-GLBINDING_API inline BufferStorageMask & operator&=(BufferStorageMask & a, const BufferStorageMask & b)
+inline BufferStorageMask & operator&=(BufferStorageMask & a, const BufferStorageMask & b)
 {
     a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) & static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR BufferStorageMask operator^(const BufferStorageMask & a, const BufferStorageMask & b)
+GLBINDING_CONSTEXPR inline BufferStorageMask operator^(const BufferStorageMask & a, const BufferStorageMask & b)
 {
     return static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 }
 
-GLBINDING_API inline BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorageMask & b)
+inline BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorageMask & b)
 {
     a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
 
@@ -1658,36 +1724,36 @@ namespace gl
 {
 
 
-GLBINDING_API GLBINDING_CONSTEXPR PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
+GLBINDING_CONSTEXPR inline PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
 {
     return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
-GLBINDING_API inline PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
+inline PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
 {
     a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
+GLBINDING_CONSTEXPR inline PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
 {
     return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
-GLBINDING_API inline PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
+inline PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
 {
     a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
 
     return a;
 }
 
-GLBINDING_API GLBINDING_CONSTEXPR PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
+GLBINDING_CONSTEXPR inline PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
 {
     return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
 }
 
-GLBINDING_API inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
+inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
 {
     a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
 
