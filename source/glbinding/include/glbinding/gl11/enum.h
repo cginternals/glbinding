@@ -132,6 +132,12 @@ using gl::GL_AUX1;
 using gl::GL_AUX2;
 using gl::GL_AUX3;
 
+// DrawElementsType
+
+// using gl::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
+
 // EnableCap
 
 using gl::GL_POINT_SMOOTH;
@@ -902,6 +908,12 @@ using gl::GL_SELECT;
 
 using gl::GL_FLAT;
 using gl::GL_SMOOTH;
+
+// StencilFaceDirection
+
+// using gl::GL_FRONT; // reuse ColorMaterialFace
+// using gl::GL_BACK; // reuse ColorMaterialFace
+// using gl::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
 
 // StencilFunction
 

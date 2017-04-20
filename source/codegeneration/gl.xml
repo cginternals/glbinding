@@ -242,6 +242,41 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_TRUE"/>
         </group>
 
+        <group name="BufferTargetARB">
+          <enum name="GL_ARRAY_BUFFER"/>
+          <enum name="GL_ATOMIC_COUNTER_BUFFER" />
+          <enum name="GL_COPY_READ_BUFFER" />
+          <enum name="GL_COPY_WRITE_BUFFER" />
+          <enum name="GL_DISPATCH_INDIRECT_BUFFER" />
+          <enum name="GL_DRAW_INDIRECT_BUFFER" />
+          <enum name="GL_ELEMENT_ARRAY_BUFFER" />
+          <enum name="GL_PIXEL_PACK_BUFFER" />
+          <enum name="GL_PIXEL_UNPACK_BUFFER" />
+          <enum name="GL_QUERY_BUFFER" />
+          <enum name="GL_SHADER_STORAGE_BUFFER" />
+          <enum name="GL_TEXTURE_BUFFER" />
+          <enum name="GL_TRANSFORM_FEEDBACK_BUFFER" />
+          <enum name="GL_UNIFORM_BUFFER" />
+        </group>
+
+        <group name="BufferUsageARB">
+          <enum name="GL_STREAM_DRAW"/>
+          <enum name="GL_STREAM_READ"/>
+          <enum name="GL_STREAM_COPY"/>
+          <enum name="GL_STATIC_DRAW"/>
+          <enum name="GL_STATIC_READ"/>
+          <enum name="GL_STATIC_COPY"/>
+          <enum name="GL_DYNAMIC_DRAW"/>
+          <enum name="GL_DYNAMIC_READ"/>
+          <enum name="GL_DYNAMIC_COPY"/>
+        </group>
+
+        <group name="BufferAccessARB">
+          <enum name="GL_READ_ONLY"/>
+          <enum name="GL_WRITE_ONLY"/>
+          <enum name="GL_READ_WRITE"/>
+        </group>
+
         <group name="ClearBufferMask">
             <enum name="GL_ACCUM_BUFFER_BIT"/>
             <enum name="GL_COLOR_BUFFER_BIT"/>
@@ -391,6 +426,12 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_NONE"/>
             <enum name="GL_NONE_OES"/>
             <enum name="GL_RIGHT"/>
+        </group>
+
+        <group name="DrawElementsType">
+            <enum name="GL_UNSIGNED_BYTE"/>
+            <enum name="GL_UNSIGNED_SHORT"/>
+            <enum name="GL_UNSIGNED_INT"/>
         </group>
 
         <group name="EnableCap">
@@ -1797,6 +1838,12 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_SMOOTH"/>
         </group>
 
+        <group name="StencilFaceDirection">
+             <enum name="GL_FRONT"/>
+             <enum name="GL_BACK"/>
+             <enum name="GL_FRONT_AND_BACK"/>
+        </group>
+
         <group name="StencilFunction">
             <enum name="GL_ALWAYS"/>
             <enum name="GL_EQUAL"/>
@@ -1822,6 +1869,7 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_RENDERER"/>
             <enum name="GL_VENDOR"/>
             <enum name="GL_VERSION"/>
+            <enum name="GL_SHADING_LANGUAGE_VERSION"/>
         </group>
 
         <group name="TexCoordPointerType">
@@ -1946,31 +1994,66 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_TEXTURE_WRAP_R_OES"/>
             <enum name="GL_TEXTURE_WRAP_S"/>
             <enum name="GL_TEXTURE_WRAP_T"/>
+            <enum name="GL_TEXTURE_BASE_LEVEL"/>
+            <enum name="GL_TEXTURE_COMPARE_MODE"/>
+            <enum name="GL_TEXTURE_COMPARE_FUNC"/>
+            <enum name="GL_TEXTURE_LOD_BIAS"/>
+            <enum name="GL_TEXTURE_MIN_LOD"/>
+            <enum name="GL_TEXTURE_MAX_LOD"/>
+            <enum name="GL_TEXTURE_MAX_LEVEL"/>
+            <enum name="GL_TEXTURE_SWIZZLE_R"/>
+            <enum name="GL_TEXTURE_SWIZZLE_G"/>
+            <enum name="GL_TEXTURE_SWIZZLE_B"/>
+            <enum name="GL_TEXTURE_SWIZZLE_A"/>
+            <enum name="GL_TEXTURE_SWIZZLE_RGBA"/>
+            <enum name="GL_DEPTH_STENCIL_TEXTURE_MODE"/>
         </group>
 
         <group name="TextureTarget">
             <enum name="GL_DETAIL_TEXTURE_2D_SGIS"/>
             <enum name="GL_PROXY_TEXTURE_1D"/>
+            <enum name="GL_PROXY_TEXTURE_1D_ARRAY"/>
+            <enum name="GL_PROXY_TEXTURE_1D_ARRAY_EXT"/>
             <enum name="GL_PROXY_TEXTURE_1D_EXT"/>
             <enum name="GL_PROXY_TEXTURE_2D"/>
+            <enum name="GL_PROXY_TEXTURE_2D_ARRAY"/>
+            <enum name="GL_PROXY_TEXTURE_2D_ARRAY_EXT"/>
             <enum name="GL_PROXY_TEXTURE_2D_EXT"/>
+            <enum name="GL_PROXY_TEXTURE_2D_MULTISAMPLE"/>
+            <enum name="GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY"/>
             <enum name="GL_PROXY_TEXTURE_3D"/>
             <enum name="GL_PROXY_TEXTURE_3D_EXT"/>
             <enum name="GL_PROXY_TEXTURE_4D_SGIS"/>
+            <enum name="GL_PROXY_TEXTURE_CUBE_MAP"/>
+            <enum name="GL_PROXY_TEXTURE_CUBE_MAP_ARB"/>
+            <enum name="GL_PROXY_TEXTURE_CUBE_MAP_EXT"/>
+            <enum name="GL_PROXY_TEXTURE_CUBE_MAP_ARRAY"/>
+            <enum name="GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB"/>
+            <enum name="GL_PROXY_TEXTURE_RECTANGLE"/>
+            <enum name="GL_PROXY_TEXTURE_RECTANGLE_ARB"/>
+            <enum name="GL_PROXY_TEXTURE_RECTANGLE_NV"/>
             <enum name="GL_TEXTURE_1D"/>
             <enum name="GL_TEXTURE_2D"/>
             <enum name="GL_TEXTURE_3D"/>
             <enum name="GL_TEXTURE_3D_EXT"/>
             <enum name="GL_TEXTURE_3D_OES"/>
             <enum name="GL_TEXTURE_4D_SGIS"/>
-            <enum name="GL_TEXTURE_BASE_LEVEL"/>
-            <enum name="GL_TEXTURE_BASE_LEVEL_SGIS"/>
-            <enum name="GL_TEXTURE_MAX_LEVEL"/>
-            <enum name="GL_TEXTURE_MAX_LEVEL_SGIS"/>
-            <enum name="GL_TEXTURE_MAX_LOD"/>
-            <enum name="GL_TEXTURE_MAX_LOD_SGIS"/>
-            <enum name="GL_TEXTURE_MIN_LOD"/>
-            <enum name="GL_TEXTURE_MIN_LOD_SGIS"/>
+            <enum name="GL_TEXTURE_RECTANGLE"/>
+            <enum name="GL_TEXTURE_CUBE_MAP"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_POSITIVE_X"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_NEGATIVE_X"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_POSITIVE_Y"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_NEGATIVE_Y"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_POSITIVE_Z"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_NEGATIVE_Z"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_ARRAY"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_ARRAY_ARB"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_ARRAY_EXT"/>
+            <enum name="GL_TEXTURE_CUBE_MAP_ARRAY_OES"/>
+            <enum name="GL_TEXTURE_1D_ARRAY"/>
+            <enum name="GL_TEXTURE_2D_ARRAY"/>
+            <enum name="GL_TEXTURE_2D_MULTISAMPLE"/>
+            <enum name="GL_TEXTURE_2D_MULTISAMPLE_ARRAY"/>
         </group>
 
         <group name="TextureWrapMode">
@@ -19143,14 +19226,14 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawArraysIndirect</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param len="COMPSIZE(drawcount,stride)">const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawcount</name></param>
             <param><ptype>GLsizei</ptype> <name>stride</name></param>
         </command>
         <command>
             <proto>void <name>glMultiDrawArraysIndirectAMD</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param>const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>primcount</name></param>
             <param><ptype>GLsizei</ptype> <name>stride</name></param>
@@ -19158,7 +19241,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawArraysIndirectBindlessCountNV</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param>const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawCount</name></param>
             <param><ptype>GLsizei</ptype> <name>maxDrawCount</name></param>
@@ -19167,7 +19250,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawArraysIndirectBindlessNV</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param>const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawCount</name></param>
             <param><ptype>GLsizei</ptype> <name>stride</name></param>
@@ -19175,7 +19258,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawArraysIndirectCountARB</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLintptr</ptype> <name>indirect</name></param>
             <param><ptype>GLintptr</ptype> <name>drawcount</name></param>
             <param><ptype>GLsizei</ptype> <name>maxdrawcount</name></param>
@@ -19183,7 +19266,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawArraysIndirectEXT</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param len="COMPSIZE(drawcount,stride)">const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawcount</name></param>
             <param><ptype>GLsizei</ptype> <name>stride</name></param>
@@ -19206,7 +19289,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsBaseVertex</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param len="COMPSIZE(drawcount)">const <ptype>GLsizei</ptype> *<name>count</name></param>
             <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
             <param len="COMPSIZE(drawcount)">const void *const*<name>indices</name></param>
@@ -19215,7 +19298,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsBaseVertexEXT</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param len="COMPSIZE(drawcount)">const <ptype>GLsizei</ptype> *<name>count</name></param>
             <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
             <param len="COMPSIZE(drawcount)">const void *const*<name>indices</name></param>
@@ -19225,7 +19308,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsBaseVertexOES</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param len="COMPSIZE(drawcount)">const <ptype>GLsizei</ptype> *<name>count</name></param>
             <param group="DrawElementsType"><ptype>GLenum</ptype> <name>type</name></param>
             <param len="COMPSIZE(drawcount)">const void *const*<name>indices</name></param>
@@ -19244,7 +19327,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsIndirect</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param len="COMPSIZE(drawcount,stride)">const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawcount</name></param>
@@ -19252,7 +19335,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsIndirectAMD</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param>const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>primcount</name></param>
@@ -19261,7 +19344,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsIndirectBindlessCountNV</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param>const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawCount</name></param>
@@ -19271,7 +19354,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsIndirectBindlessNV</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param>const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawCount</name></param>
@@ -19280,7 +19363,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsIndirectCountARB</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param><ptype>GLintptr</ptype> <name>indirect</name></param>
             <param><ptype>GLintptr</ptype> <name>drawcount</name></param>
@@ -19289,7 +19372,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto>void <name>glMultiDrawElementsIndirectEXT</name></proto>
-            <param><ptype>GLenum</ptype> <name>mode</name></param>
+            <param group="PrimitiveType"><ptype>GLenum</ptype> <name>mode</name></param>
             <param><ptype>GLenum</ptype> <name>type</name></param>
             <param len="COMPSIZE(drawcount,stride)">const void *<name>indirect</name></param>
             <param><ptype>GLsizei</ptype> <name>drawcount</name></param>
@@ -43687,7 +43770,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glResizeBuffersMESA"/>
             </require>
         </extension>
-        <extension name="GL_MESA_shader_integer_functions" supported="gl" comment="May be supported on gles2; see OpenGL-Registry #4"/>
+        <extension name="GL_MESA_shader_integer_functions" supported="gl|gles2"/>
         <extension name="GL_MESA_window_pos" supported="gl">
             <require>
                 <command name="glWindowPos2dMESA"/>
