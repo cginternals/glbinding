@@ -624,6 +624,10 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX"/>
         </group>
 
+        <group name="FramebufferFetchNoncoherent">
+            <enum name="GL_FRAMEBUFFER_FETCH_NONCOHERENT_QCOM"/>
+        </group>
+
         <group name="FrontFaceDirection">
             <enum name="GL_CCW"/>
             <enum name="GL_CW"/>
@@ -8659,7 +8663,9 @@ typedef unsigned int GLhandleARB;
     </enums>
 
     <enums namespace="GL" start="0x96A0" end="0x96AF" vendor="Qualcomm" comment="contact Maurice Ribble">
-            <unused start="0x96A0" end="0x96AF" vendor="Qualcomm"/>
+            <unused start="0x96A0" end="0x96A1" vendor="Qualcomm"/>
+        <enum value="0x96A2" name="GL_FRAMEBUFFER_FETCH_NONCOHERENT_QCOM"/>
+            <unused start="0x96A3" end="0x96AF" vendor="Qualcomm"/>
     </enums>
 
 <!-- Enums reservable for future use. To reserve a new range, allocate one
@@ -13774,6 +13780,9 @@ typedef unsigned int GLhandleARB;
             <param group="DrawBufferMode" len="n">const <ptype>GLenum</ptype> *<name>bufs</name></param>
         </command>
         <command>
+            <proto>void <name>glFramebufferFetchBarrierQCOM</name></proto>
+        </command>
+        <command>
             <proto>void <name>glFramebufferFoveationConfigQCOM</name></proto>
             <param group="Framebuffer"><ptype>GLuint</ptype> <name>framebuffer</name></param>
             <param><ptype>GLuint</ptype> <name>numLayers</name></param>
@@ -15088,6 +15097,7 @@ typedef unsigned int GLhandleARB;
         </command>
         <command>
             <proto><ptype>GLenum</ptype> <name>glGetGraphicsResetStatusEXT</name></proto>
+            <alias name="glGetGraphicsResetStatus"/>
         </command>
         <command>
             <proto><ptype>GLenum</ptype> <name>glGetGraphicsResetStatusKHR</name></proto>
@@ -17674,6 +17684,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>location</name></param>
             <param><ptype>GLsizei</ptype> <name>bufSize</name></param>
             <param len="bufSize"><ptype>GLfloat</ptype> *<name>params</name></param>
+            <alias name="glGetnUniformfv"/>
         </command>
         <command>
             <proto>void <name>glGetnUniformfvKHR</name></proto>
@@ -17710,6 +17721,7 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLint</ptype> <name>location</name></param>
             <param><ptype>GLsizei</ptype> <name>bufSize</name></param>
             <param len="bufSize"><ptype>GLint</ptype> *<name>params</name></param>
+            <alias name="glGetnUniformiv"/>
         </command>
         <command>
             <proto>void <name>glGetnUniformivKHR</name></proto>
@@ -46755,6 +46767,12 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_QCOM_perfmon_global_mode" supported="gles1|gles2">
             <require>
                 <enum name="GL_PERFMON_GLOBAL_MODE_QCOM"/>
+            </require>
+        </extension>
+        <extension name="GL_QCOM_shader_framebuffer_fetch_noncoherent" supported="gles2">
+            <require>
+                <enum name="GL_FRAMEBUFFER_FETCH_NONCOHERENT_QCOM"/>
+                <command name="glFramebufferFetchBarrierQCOM"/>
             </require>
         </extension>
         <extension name="GL_QCOM_tiled_rendering" supported="gles1|gles2">
