@@ -53,7 +53,7 @@ set(META_VERSION_PATCH       "1")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
-set(META_CMAKE_INIT_SHA      "754eda5fe2956294e1c7af6b30c10cb766ce2099")
+set(META_CMAKE_INIT_SHA      "ffb1664f554764c8db0dee05292d4fbc39791808")
 
 string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
 string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
@@ -103,6 +103,10 @@ include(cmake/CompileOptions.cmake)
 # Project Health Check Setup
 #
 
+# Add cmake-init template check cmake targets
+add_check_template_target(${META_CMAKE_INIT_SHA})
+
+# Configure health check tools
 enable_cppcheck(On)
 enable_clang_tidy(On)
 
