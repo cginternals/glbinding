@@ -3,6 +3,7 @@
 
 #include <type_traits>
 
+#include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
 
 
@@ -17,7 +18,7 @@ namespace glbinding
  *   The valid bitfield types for the given value.
  */
 template <typename... Types>
-class SharedBitfield;
+class GLBINDING_TEMPLATE_API SharedBitfield;
 
 // intersection
 
@@ -33,7 +34,7 @@ class SharedBitfield;
  * This template is used if the list of Types is empty.
  */
 template<typename T, typename... Types>
-struct is_member_of_SharedBitfield
+struct GLBINDING_TEMPLATE_API is_member_of_SharedBitfield
 {
     static const bool value = false; ///< result of the inclusion test; always false since the list of types to test against is empty
 };
@@ -50,7 +51,7 @@ struct is_member_of_SharedBitfield
  *   The tail of the list of Types.
  */
 template<typename T, typename U, typename... Types>
-struct is_member_of_SharedBitfield<T, U, Types...>
+struct GLBINDING_TEMPLATE_API is_member_of_SharedBitfield<T, U, Types...>
 {
     static const bool value = std::conditional<std::is_same<T, U>::value, std::true_type, is_member_of_SharedBitfield<T, Types...>>::type::value; ///< result of the inclusion test
 };
@@ -62,7 +63,7 @@ struct is_member_of_SharedBitfield<T, U, Types...>
  * This template is used if ...
  */
 template<typename, typename>
-struct prepend_to_SharedBitfield
+struct GLBINDING_TEMPLATE_API prepend_to_SharedBitfield
 {
 };
 
@@ -76,7 +77,7 @@ struct prepend_to_SharedBitfield
  *  The tail of the list of Types
  */
 template<typename T, typename... Types>
-struct prepend_to_SharedBitfield<T, SharedBitfield<Types...>>
+struct GLBINDING_TEMPLATE_API prepend_to_SharedBitfield<T, SharedBitfield<Types...>>
 {
     using type = SharedBitfield<T, Types...>; ///< the compound SharedBitfield type
 };
@@ -86,7 +87,7 @@ struct prepend_to_SharedBitfield<T, SharedBitfield<Types...>>
  *   Break condition for the SharedBitfield intersection.
  */
 template<typename, typename>
-struct intersect_SharedBitfield
+struct GLBINDING_TEMPLATE_API intersect_SharedBitfield
 {
     using type = SharedBitfield<>; ///< Result of the intersection; always empty for non-overlapping SharedBitfield type lists
 };
@@ -103,7 +104,7 @@ struct intersect_SharedBitfield
  *   Head and Tail of the second SharedBitfield type list.
  */
 template<typename T, typename... Types, typename... OtherTypes>
-struct intersect_SharedBitfield<SharedBitfield<T, Types...>, SharedBitfield<OtherTypes...>>
+struct GLBINDING_TEMPLATE_API intersect_SharedBitfield<SharedBitfield<T, Types...>, SharedBitfield<OtherTypes...>>
 {
     using type = typename std::conditional<!is_member_of_SharedBitfield<T, OtherTypes...>::value, typename intersect_SharedBitfield<SharedBitfield<Types...>, SharedBitfield<OtherTypes...>>::type, typename prepend_to_SharedBitfield<T, typename intersect_SharedBitfield<SharedBitfield<Types...>, SharedBitfield<OtherTypes...>>::type>::type>::type; ///< Result of the intersection
 };
@@ -120,7 +121,7 @@ struct intersect_SharedBitfield<SharedBitfield<T, Types...>, SharedBitfield<Othe
  *   The underlying type of the type-safe enum class.
  */
 template <typename T>
-class SharedBitfieldBase
+class GLBINDING_TEMPLATE_API SharedBitfieldBase
 {
 public:
     using UnderlyingType = T; ///< Propagate underlying type
@@ -151,7 +152,7 @@ protected:
  *   Invalid SharedBitfield class as it contains no valid bitfield types.
  */
 template <>
-class SharedBitfield<>
+class GLBINDING_TEMPLATE_API SharedBitfield<>
 {};
 
 /**
@@ -163,7 +164,7 @@ class SharedBitfield<>
  *   The one valid bitfield type for the given value.
  */
 template <typename Type>
-class SharedBitfield<Type> : public SharedBitfieldBase<typename std::underlying_type<Type>::type>
+class GLBINDING_TEMPLATE_API SharedBitfield<Type> : public SharedBitfieldBase<typename std::underlying_type<Type>::type>
 {
 public:
     using UnderlyingType = typename SharedBitfieldBase<typename std::underlying_type<Type>::type>::UnderlyingType; ///< inherit UnderlyingType declaration
@@ -322,7 +323,7 @@ public:
  *   The tail of valid bitfields type for the given value.
  */
 template <typename Type, typename... Types>
-class SharedBitfield<Type, Types...> : public SharedBitfield<Types...>
+class GLBINDING_TEMPLATE_API SharedBitfield<Type, Types...> : public SharedBitfield<Types...>
 {
 public:
     using UnderlyingType = typename SharedBitfield<Types...>::UnderlyingType; ///< inherit UnderlyingType declaration

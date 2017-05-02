@@ -28,7 +28,7 @@ namespace glbinding
  *   The types of the arguments
  */
 template <typename ReturnType, typename... Arguments>
-struct CallbackType
+struct GLBINDING_TEMPLATE_API CallbackType
 {
     using type = std::function<void(ReturnType, Arguments...)>; ///< Propagate the actual callable callback type.
 };
@@ -41,7 +41,7 @@ struct CallbackType
  *   The types of the arguments
  */
 template <typename... Arguments>
-struct CallbackType<void, Arguments...>
+struct GLBINDING_TEMPLATE_API CallbackType<void, Arguments...>
 {
     using type = std::function<void(Arguments...)>; ///< Propagate the actual callable callback type.
 };
@@ -59,7 +59,7 @@ struct CallbackType<void, Arguments...>
  *   The types of the arguments
  */
 template <typename ReturnType, typename... Arguments>
-class Function : public AbstractFunction
+class GLBINDING_TEMPLATE_API Function : public AbstractFunction
 {
 public:
     using Signature = ReturnType(WINAPI *) (Arguments...); ///< The c pointer type for a function call.

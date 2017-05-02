@@ -26,7 +26,7 @@ namespace glbinding
  * This class is mainly used when callbacks of OpenGL functions are used.
  */
 template <typename T>
-class Value : public AbstractValue
+class GLBINDING_TEMPLATE_API Value : public AbstractValue
 {
 public:
     /**
