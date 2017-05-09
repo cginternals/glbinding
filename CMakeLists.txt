@@ -6,8 +6,20 @@
 # CMake version
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
-# Include cmake modules
+#
+# Configure CMake environment
+#
 
+# Register general cmake commands
+include(cmake/Custom.cmake)
+
+# Set policies
+set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
+set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
+set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
+set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
+
+# Include cmake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(GenerateExportHeader)
@@ -19,15 +31,10 @@ if (${CMAKE_VERSION} VERSION_GREATER "3.2")
     include(WriteCompilerDetectionHeader OPTIONAL RESULT_VARIABLE WriterCompilerDetectionHeaderFound)
 endif()
 
+# Include custom cmake modules
 include(cmake/GetGitRevisionDescription.cmake)
-include(cmake/Custom.cmake)
 include(cmake/HealthCheck.cmake)
-
-# Set policies
-set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
-set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
-set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
-set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
+include(cmake/GenerateTemplateExportHeader.cmake)
 
 
 # 
@@ -53,7 +60,7 @@ set(META_VERSION_PATCH       "3")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
-set(META_CMAKE_INIT_SHA      "8f9950e7c13cf10521cb5d4c4d8be0d6bf8fcd0c")
+set(META_CMAKE_INIT_SHA      "689c8a9a22a77848c15209fc155afc368e3b9b59")
 
 string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
 string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
