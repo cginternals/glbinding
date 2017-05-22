@@ -37150,6 +37150,7 @@ typedef unsigned int GLhandleARB;
                 <command name="glStencilOpValueAMD"/>
             </require>
         </extension>
+        <extension name="GL_AMD_texture_gather_bias_lod" supported="gl"/>
         <extension name="GL_AMD_texture_texture4" supported="gl"/>
         <extension name="GL_AMD_transform_feedback3_lines_triangles" supported="gl"/>
         <extension name="GL_AMD_transform_feedback4" supported="gl">
@@ -40715,6 +40716,8 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_422_AVERAGE_EXT"/>
                 <enum name="GL_422_REV_AVERAGE_EXT"/>
             </require>
+        </extension>
+        <extension name="GL_EXT_EGL_image_array" supported="gles2">
         </extension>
         <extension name="GL_EXT_YUV_target" supported="gles2">
             <require>

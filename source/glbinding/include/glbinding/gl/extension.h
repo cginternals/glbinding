@@ -38,6 +38,7 @@ enum class GLextension : int // GLextension is not a type introduced by OpenGL A
     GL_AMD_shader_trinary_minmax,
     GL_AMD_sparse_texture,
     GL_AMD_stencil_operation_extended,
+    GL_AMD_texture_gather_bias_lod,
     GL_AMD_texture_texture4,
     GL_AMD_transform_feedback3_lines_triangles,
     GL_AMD_transform_feedback4,

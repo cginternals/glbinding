@@ -44,6 +44,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A =
     { "GL_AMD_shader_trinary_minmax", GLextension::GL_AMD_shader_trinary_minmax },
     { "GL_AMD_sparse_texture", GLextension::GL_AMD_sparse_texture },
     { "GL_AMD_stencil_operation_extended", GLextension::GL_AMD_stencil_operation_extended },
+    { "GL_AMD_texture_gather_bias_lod", GLextension::GL_AMD_texture_gather_bias_lod },
     { "GL_AMD_texture_texture4", GLextension::GL_AMD_texture_texture4 },
     { "GL_AMD_transform_feedback3_lines_triangles", GLextension::GL_AMD_transform_feedback3_lines_triangles },
     { "GL_AMD_transform_feedback4", GLextension::GL_AMD_transform_feedback4 },
