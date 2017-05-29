@@ -2,7 +2,15 @@
 #include <glbinding/Binding.h>
 
 #include <unordered_map>
+
+#ifdef GLBINDING_USE_BOOST_THREAD
+#include <boost/thread.hpp>
+namespace std_boost = boost;
+#else
 #include <mutex>
+namespace std_boost = std;
+#endif
+
 #include <cassert>
 
 #include "glbinding/glbinding_features.h"
@@ -13,7 +21,7 @@ namespace
 
 GLBINDING_THREAD_LOCAL glbinding::ContextHandle t_context = 0;
 
-std::recursive_mutex g_mutex;
+std_boost::recursive_mutex g_mutex;
 std::unordered_map<glbinding::ContextHandle, int> g_bindings;
 
 } // namespace
@@ -55,7 +63,7 @@ void Binding::initialize(
     const auto currentContext = resolveWOUse ? getCurrentContext() : static_cast<ContextHandle>(0);
 
     {
-        std::lock_guard<std::recursive_mutex> lock(g_mutex);
+        std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
 
         if (g_bindings.find(context) != g_bindings.cend())
         {
@@ -107,7 +115,7 @@ void Binding::useCurrentContext()
 
 void Binding::useContext(const ContextHandle context)
 {
-    std::lock_guard<std::recursive_mutex> lock(g_mutex);
+    std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
 
     t_context = context;
 
@@ -133,7 +141,7 @@ void Binding::releaseCurrentContext()
 
 void Binding::releaseContext(const ContextHandle context)
 {
-    std::lock_guard<std::recursive_mutex> lock(g_mutex);
+    std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
 
     AbstractFunction::neglectState(g_bindings[context]);
 
@@ -142,7 +150,7 @@ void Binding::releaseContext(const ContextHandle context)
 
 void Binding::addContextSwitchCallback(const ContextSwitchCallback callback)
 {
-    std::lock_guard<std::recursive_mutex> lock(g_mutex);
+    std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
 
     s_callbacks.push_back(std::move(callback));
 }
