@@ -1121,6 +1121,11 @@ void glCreateFramebuffers(GLsizei n, GLuint * framebuffers)
     return Binding::CreateFramebuffers(n, framebuffers);
 }
 
+void glCreateMemoryObjectsEXT(GLsizei n, GLuint * memoryObjects)
+{
+    return Binding::CreateMemoryObjectsEXT(n, memoryObjects);
+}
+
 void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle)
 {
     return Binding::CreatePerfQueryINTEL(queryId, queryHandle);

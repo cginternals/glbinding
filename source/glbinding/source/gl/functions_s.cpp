@@ -331,6 +331,11 @@ void glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint gro
     return Binding::SelectPerfMonitorCountersAMD(monitor, enable, group, numCounters, counterList);
 }
 
+void glSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, const GLuint64 * params)
+{
+    return Binding::SemaphoreParameterui64vEXT(semaphore, pname, params);
+}
+
 void glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column)
 {
     return Binding::SeparableFilter2D(target, internalformat, width, height, format, type, row, column);
@@ -414,6 +419,11 @@ void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuin
 void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points)
 {
     return Binding::SharpenTexFuncSGIS(target, n, points);
+}
+
+void glSignalSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * dstLayouts)
+{
+    return Binding::SignalSemaphoreEXT(semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, dstLayouts);
 }
 
 void glSignalVkFenceNV(GLuint64 vkFence)

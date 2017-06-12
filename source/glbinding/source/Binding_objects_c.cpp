@@ -230,6 +230,7 @@ Function<void, GLsizei, const GLfloat *> Binding::CoverageModulationTableNV("glC
 Function<void, GLsizei, GLuint *> Binding::CreateBuffers("glCreateBuffers");
 Function<void, GLsizei, GLuint *> Binding::CreateCommandListsNV("glCreateCommandListsNV");
 Function<void, GLsizei, GLuint *> Binding::CreateFramebuffers("glCreateFramebuffers");
+Function<void, GLsizei, GLuint *> Binding::CreateMemoryObjectsEXT("glCreateMemoryObjectsEXT");
 Function<void, GLuint, GLuint *> Binding::CreatePerfQueryINTEL("glCreatePerfQueryINTEL");
 Function<GLuint> Binding::CreateProgram("glCreateProgram");
 Function<GLhandleARB> Binding::CreateProgramObjectARB("glCreateProgramObjectARB");

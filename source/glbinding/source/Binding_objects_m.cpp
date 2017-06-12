@@ -88,6 +88,7 @@ Function<void, GLuint> Binding::MaxShaderCompilerThreadsARB("glMaxShaderCompiler
 Function<void, MemoryBarrierMask> Binding::MemoryBarrier("glMemoryBarrier");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierEXT("glMemoryBarrierEXT");
+Function<void, GLuint, GLenum, const GLint *> Binding::MemoryObjectParameterivEXT("glMemoryObjectParameterivEXT");
 Function<void, GLfloat> Binding::MinSampleShading("glMinSampleShading");
 Function<void, GLfloat> Binding::MinSampleShadingARB("glMinSampleShadingARB");
 Function<void, GLenum, GLenum, GLboolean> Binding::Minmax("glMinmax");

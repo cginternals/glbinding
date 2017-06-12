@@ -30,6 +30,7 @@ Function<void, GLuint> Binding::DeleteFragmentShaderATI("glDeleteFragmentShaderA
 Function<void, GLsizei, const GLuint *> Binding::DeleteFramebuffers("glDeleteFramebuffers");
 Function<void, GLsizei, const GLuint *> Binding::DeleteFramebuffersEXT("glDeleteFramebuffersEXT");
 Function<void, GLuint, GLsizei> Binding::DeleteLists("glDeleteLists");
+Function<void, GLsizei, const GLuint *> Binding::DeleteMemoryObjectsEXT("glDeleteMemoryObjectsEXT");
 Function<void, GLint, const GLchar *> Binding::DeleteNamedStringARB("glDeleteNamedStringARB");
 Function<void, GLenum, GLuint, const GLuint *> Binding::DeleteNamesAMD("glDeleteNamesAMD");
 Function<void, GLhandleARB> Binding::DeleteObjectARB("glDeleteObjectARB");
@@ -46,6 +47,7 @@ Function<void, GLsizei, const GLuint *> Binding::DeleteQueriesARB("glDeleteQueri
 Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffers("glDeleteRenderbuffers");
 Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffersEXT("glDeleteRenderbuffersEXT");
 Function<void, GLsizei, const GLuint *> Binding::DeleteSamplers("glDeleteSamplers");
+Function<void, GLsizei, const GLuint *> Binding::DeleteSemaphoresEXT("glDeleteSemaphoresEXT");
 Function<void, GLuint> Binding::DeleteShader("glDeleteShader");
 Function<void, GLsizei, const GLuint *> Binding::DeleteStatesNV("glDeleteStatesNV");
 Function<void, GLsync> Binding::DeleteSync("glDeleteSync");

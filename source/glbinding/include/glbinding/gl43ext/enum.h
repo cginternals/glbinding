@@ -135,6 +135,17 @@ using gl::GL_TABLE_TOO_LARGE;
 using gl::GL_TABLE_TOO_LARGE_EXT;
 using gl::GL_TEXTURE_TOO_LARGE_EXT;
 
+// ExternalHandleType
+
+using gl::GL_HANDLE_TYPE_OPAQUE_FD_EXT;
+using gl::GL_HANDLE_TYPE_OPAQUE_WIN32_EXT;
+using gl::GL_HANDLE_TYPE_OPAQUE_WIN32_KMT_EXT;
+using gl::GL_HANDLE_TYPE_D3D12_TILEPOOL_EXT;
+using gl::GL_HANDLE_TYPE_D3D12_RESOURCE_EXT;
+using gl::GL_HANDLE_TYPE_D3D11_IMAGE_EXT;
+using gl::GL_HANDLE_TYPE_D3D11_IMAGE_KMT_EXT;
+using gl::GL_HANDLE_TYPE_D3D12_FENCE_EXT;
+
 // FfdTargetSGIX
 
 using gl::GL_GEOMETRY_DEFORMATION_SGIX;
@@ -332,6 +343,10 @@ using gl::GL_PACK_RESAMPLE_SGIX;
 using gl::GL_UNPACK_RESAMPLE_SGIX;
 using gl::GL_PACK_SUBSAMPLE_RATE_SGIX;
 using gl::GL_UNPACK_SUBSAMPLE_RATE_SGIX;
+using gl::GL_DEVICE_UUID_EXT;
+using gl::GL_DRIVER_UUID_EXT;
+using gl::GL_DEVICE_LUID_EXT;
+using gl::GL_DEVICE_NODE_MASK_EXT;
 
 // GetPointervPName
 
@@ -500,6 +515,11 @@ using gl::GL_LAYOUT_LINEAR_CPU_CACHED_INTEL;
 
 using gl::GL_MODELVIEW0_EXT;
 
+// MemoryObjectParameterName
+
+using gl::GL_DEDICATED_MEMORY_OBJECT_EXT;
+using gl::GL_PROTECTED_MEMORY_OBJECT_EXT;
+
 // MinmaxTargetEXT
 
 using gl::GL_MINMAX;
@@ -647,6 +667,10 @@ using gl::GL_4PASS_2_SGIS;
 using gl::GL_4PASS_3_EXT;
 using gl::GL_4PASS_3_SGIS;
 
+// SemaphoreParameterName
+
+using gl::GL_D3D12_FENCE_VALUE_EXT;
+
 // SeparableTargetEXT
 
 using gl::GL_SEPARABLE_2D;
@@ -674,6 +698,16 @@ using gl::GL_EYE_POINT_SGIS;
 using gl::GL_OBJECT_POINT_SGIS;
 using gl::GL_EYE_LINE_SGIS;
 using gl::GL_OBJECT_LINE_SGIS;
+
+// TextureLayout
+
+using gl::GL_LAYOUT_GENERAL_EXT;
+using gl::GL_LAYOUT_COLOR_ATTACHMENT_EXT;
+using gl::GL_LAYOUT_DEPTH_STENCIL_ATTACHMENT_EXT;
+using gl::GL_LAYOUT_DEPTH_STENCIL_READ_ONLY_EXT;
+using gl::GL_LAYOUT_SHADER_READ_ONLY_EXT;
+using gl::GL_LAYOUT_TRANSFER_SRC_EXT;
+using gl::GL_LAYOUT_TRANSFER_DST_EXT;
 
 // TextureMagFilter
 
@@ -719,6 +753,7 @@ using gl::GL_TEXTURE_PRIORITY_EXT;
 // using gl::GL_TEXTURE_MAX_CLAMP_S_SGIX; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MAX_CLAMP_T_SGIX; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MAX_CLAMP_R_SGIX; // reuse GetTextureParameter
+using gl::GL_TEXTURE_TILING_EXT;
 
 // TextureTarget
 
@@ -3225,6 +3260,11 @@ using gl::GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV;
 using gl::GL_SHADER_BINARY_FORMAT_SPIR_V_ARB;
 using gl::GL_SPIR_V_BINARY_ARB;
 using gl::GL_RENDER_GPU_MASK_NV;
+using gl::GL_NUM_TILING_TYPES_EXT;
+using gl::GL_TILING_TYPES_EXT;
+using gl::GL_OPTIMAL_TILING_EXT;
+using gl::GL_LINEAR_TILING_EXT;
+using gl::GL_NUM_DEVICE_UUIDS_EXT;
 using gl::GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR;
 using gl::GL_MAX_VIEWS_OVR;
 using gl::GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR;
@@ -3268,6 +3308,8 @@ using gl::GL_TEXTURE_COORD_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_EDGE_FLAG_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM;
+using gl::GL_UUID_SIZE_EXT;
+using gl::GL_LUID_SIZE_EXT;
 
 
 } // namespace gl43ext

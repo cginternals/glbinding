@@ -411,6 +411,11 @@ void glMemoryBarrierEXT(MemoryBarrierMask barriers)
     return Binding::MemoryBarrierEXT(barriers);
 }
 
+void glMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, const GLint * params)
+{
+    return Binding::MemoryObjectParameterivEXT(memoryObject, pname, params);
+}
+
 void glMinSampleShading(GLfloat value)
 {
     return Binding::MinSampleShading(value);

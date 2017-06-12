@@ -121,6 +121,11 @@ void glDeleteLists(GLuint list, GLsizei range)
     return Binding::DeleteLists(list, range);
 }
 
+void glDeleteMemoryObjectsEXT(GLsizei n, const GLuint * memoryObjects)
+{
+    return Binding::DeleteMemoryObjectsEXT(n, memoryObjects);
+}
+
 void glDeleteNamedStringARB(GLint namelen, const GLchar * name)
 {
     return Binding::DeleteNamedStringARB(namelen, name);
@@ -199,6 +204,11 @@ void glDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers)
 void glDeleteSamplers(GLsizei count, const GLuint * samplers)
 {
     return Binding::DeleteSamplers(count, samplers);
+}
+
+void glDeleteSemaphoresEXT(GLsizei n, const GLuint * semaphores)
+{
+    return Binding::DeleteSemaphoresEXT(n, semaphores);
 }
 
 void glDeleteShader(GLuint shader)

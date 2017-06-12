@@ -41,6 +41,11 @@ void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, 
     return Binding::NamedBufferStorageEXT(buffer, size, data, flags);
 }
 
+void glNamedBufferStorageMemEXT(GLuint buffer, GLsizeiptr size, GLuint memory, GLuint64 offset)
+{
+    return Binding::NamedBufferStorageMemEXT(buffer, size, memory, offset);
+}
+
 void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data)
 {
     return Binding::NamedBufferSubData(buffer, offset, size, data);

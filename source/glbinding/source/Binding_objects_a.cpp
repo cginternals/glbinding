@@ -10,6 +10,7 @@ namespace glbinding
 
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
 Function<void, GLenum, GLfixed> Binding::AccumxOES("glAccumxOES");
+Function<GLboolean, GLuint, GLuint64, GLuint> Binding::AcquireKeyedMutexWin32EXT("glAcquireKeyedMutexWin32EXT");
 Function<void, GLuint> Binding::ActiveProgramEXT("glActiveProgramEXT");
 Function<void, GLuint, GLuint> Binding::ActiveShaderProgram("glActiveShaderProgram");
 Function<void, GLenum> Binding::ActiveStencilFaceEXT("glActiveStencilFaceEXT");
