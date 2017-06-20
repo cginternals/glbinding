@@ -275,7 +275,7 @@ target_compile_definitions(${target}
     # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
     # furthermore, this flag is not officially supported
     #$<$<CXX_COMPILER_ID:MSVC>:_HAS_EXCEPTIONS=0> 
-    $<$<BOOL:${OPTION_BUILD_WITH_BOOST_THREAD}>:GLBINDING_USE_BOOST_THREAD>
+    $<$<AND:$<BOOL:${OPTION_BUILD_WITH_BOOST_THREAD}>,$<BOOL:${Boost_FOUND}>>:GLBINDING_USE_BOOST_THREAD>
 
     PUBLIC
     $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_id}_STATIC_DEFINE>

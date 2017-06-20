@@ -77,7 +77,7 @@ option(OPTION_BUILD_GPU_TESTS         "Build tests that require an OpenGL contex
 option(OPTION_BUILD_DOCS              "Build documentation."                                   OFF)
 option(OPTION_BUILD_TOOLS             "Build tools."                                           ON)
 option(OPTION_BUILD_EXAMPLES          "Build examples."                                        OFF)
-option(OPTION_BUILD_WITH_BOOST_THREAD "Use std::regex instead of boost"                        OFF)
+option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."              OFF)
 
 
 # 
