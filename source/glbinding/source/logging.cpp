@@ -3,11 +3,20 @@
 
 #include <array>
 #include <atomic>
-#include <condition_variable>
+#include <chrono>
 #include <fstream>
-#include <mutex>
 #include <sstream>
+
+#ifdef GLBINDING_USE_BOOST_THREAD
+#include <boost/chrono.hpp>
+#include <boost/thread.hpp>
+namespace std_boost = boost;
+#else
+#include <condition_variable>
+#include <mutex>
 #include <thread>
+namespace std_boost = std;
+#endif
 
 #include "logging_private.h"
 #include "RingBuffer.h"
@@ -20,8 +29,8 @@ const unsigned int LOG_BUFFER_SIZE = 5000;
 
 std::atomic<bool> g_stop{false};
 std::atomic<bool> g_persisted{true};
-std::mutex g_lockfinish;
-std::condition_variable g_finishcheck;
+std_boost::mutex g_lockfinish;
+std_boost::condition_variable g_finishcheck;
 
 using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::LogEntry>;
 FunctionCallBuffer g_buffer{LOG_BUFFER_SIZE};
@@ -74,7 +83,7 @@ void stop()
     removeCallbackMask(CallbackMask::Logging);
 
     g_stop = true;
-    std::unique_lock<std::mutex> locker(g_lockfinish);
+    std_boost::unique_lock<std_boost::mutex> locker(g_lockfinish);
 
     // Spurious wake-ups: http://www.codeproject.com/Articles/598695/Cplusplus-threads-locks-and-condition-variables
     while(!g_persisted)
@@ -100,7 +109,7 @@ void log(FunctionCall * call)
 
     while (!available)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        std_boost::this_thread::sleep_for(std_boost::chrono::milliseconds(1));
         next = g_buffer.nextHead(available);
     }
 
@@ -115,7 +124,7 @@ void startWriter(const std::string & filepath)
     g_stop = false;
     g_persisted = false;
 
-    std::thread writer([filepath]()
+    std_boost::thread writer([filepath]()
     {
         const auto key = g_buffer.addTail();
         std::ofstream logfile;
@@ -133,7 +142,7 @@ void startWriter(const std::string & filepath)
 
             logfile.flush();
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            std_boost::this_thread::sleep_for(std_boost::chrono::milliseconds(1));
         }
 
         logfile.close();
