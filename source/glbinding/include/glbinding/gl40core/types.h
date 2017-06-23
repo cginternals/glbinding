@@ -26,6 +26,7 @@ using gl::GLfloat;
 using gl::GLclampf;
 using gl::GLdouble;
 using gl::GLclampd;
+using gl::GLeglClientBufferEXT;
 using gl::GLeglImageOES;
 using gl::GLchar;
 using gl::GLcharARB;

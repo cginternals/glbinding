@@ -28,7 +28,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t = std::array<AbstractFunction *, 2912>; ///< The type of the build-in functions collection.
+    using array_t = std::array<AbstractFunction *, 2914>; ///< The type of the build-in functions collection.
     using ContextSwitchCallback = std::function<void(ContextHandle)>; ///< The signature of the context switch callback.
 
     /**
@@ -285,6 +285,7 @@ public:
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> BufferPageCommitmentARB;
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> BufferParameteriAPPLE;
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::BufferStorageMask> BufferStorage;
+    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::GLbitfield> BufferStorageExternalEXT;
     static Function<void, gl::GLenum, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> BufferStorageMemEXT;
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData;
     static Function<void, gl::GLenum, gl::GLintptrARB, gl::GLsizeiptrARB, const void *> BufferSubDataARB;
@@ -1677,6 +1678,7 @@ public:
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentEXT;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorage;
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorageEXT;
+    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::GLbitfield> NamedBufferStorageExternalEXT;
     static Function<void, gl::GLuint, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> NamedBufferStorageMemEXT;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubData;
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubDataEXT;

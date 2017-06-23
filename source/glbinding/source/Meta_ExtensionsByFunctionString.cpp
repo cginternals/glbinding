@@ -134,6 +134,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glBufferPageCommitmentARB", { GLextension::GL_ARB_sparse_buffer } },
     { "glBufferParameteriAPPLE", { GLextension::GL_APPLE_flush_buffer_range } },
     { "glBufferStorage", { GLextension::GL_ARB_buffer_storage } },
+    { "glBufferStorageExternalEXT", { GLextension::GL_EXT_external_buffer } },
     { "glBufferStorageMemEXT", { GLextension::GL_EXT_memory_object } },
     { "glBufferSubDataARB", { GLextension::GL_ARB_vertex_buffer_object } }
 };
@@ -1265,6 +1266,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glNamedBufferPageCommitmentEXT", { GLextension::GL_ARB_sparse_buffer } },
     { "glNamedBufferStorage", { GLextension::GL_ARB_direct_state_access } },
     { "glNamedBufferStorageEXT", { GLextension::GL_EXT_direct_state_access } },
+    { "glNamedBufferStorageExternalEXT", { GLextension::GL_EXT_external_buffer } },
     { "glNamedBufferStorageMemEXT", { GLextension::GL_EXT_memory_object } },
     { "glNamedBufferSubData", { GLextension::GL_ARB_direct_state_access } },
     { "glNamedBufferSubDataEXT", { GLextension::GL_EXT_direct_state_access } },

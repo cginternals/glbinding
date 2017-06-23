@@ -41,6 +41,7 @@ using GLfloat = float;
 using GLclampf = float;
 using GLdouble = double;
 using GLclampd = double;
+using GLeglClientBufferEXT = void *;
 using GLeglImageOES = void *;
 using GLchar = char;
 using GLcharARB = char;

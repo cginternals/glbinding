@@ -83,6 +83,7 @@ typedef unsigned __int64 uint64_t;
         <type>typedef float <name>GLclampf</name>;</type>
         <type>typedef double <name>GLdouble</name>;</type>
         <type>typedef double <name>GLclampd</name>;</type>
+        <type>typedef void *<name>GLeglClientBufferEXT</name>;</type>
         <type>typedef void *<name>GLeglImageOES</name>;</type>
         <type>typedef char <name>GLchar</name>;</type>
         <type>typedef char <name>GLcharARB</name>;</type>
@@ -9859,6 +9860,14 @@ typedef unsigned int GLhandleARB;
             <param len="size">const void *<name>data</name></param>
             <param><ptype>GLbitfield</ptype> <name>flags</name></param>
             <alias name="glBufferStorage"/>
+        </command>
+        <command>
+            <proto>void <name>glBufferStorageExternalEXT</name></proto>
+            <param><ptype>GLenum</ptype> <name>target</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
+            <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
+            <param><ptype>GLeglClientBufferEXT</ptype> <name>clientBuffer</name></param>
+            <param><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
             <proto>void <name>glBufferStorageMemEXT</name></proto>
@@ -20607,6 +20616,14 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLuint</ptype> <name>buffer</name></param>
             <param group="BufferSize"><ptype>GLsizeiptr</ptype> <name>size</name></param>
             <param len="size">const void *<name>data</name></param>
+            <param><ptype>GLbitfield</ptype> <name>flags</name></param>
+        </command>
+        <command>
+            <proto>void <name>glNamedBufferStorageExternalEXT</name></proto>
+            <param><ptype>GLuint</ptype> <name>buffer</name></param>
+            <param><ptype>GLintptr</ptype> <name>offset</name></param>
+            <param><ptype>GLsizeiptr</ptype> <name>size</name></param>
+            <param><ptype>GLeglClientBufferEXT</ptype> <name>clientBuffer</name></param>
             <param><ptype>GLbitfield</ptype> <name>flags</name></param>
         </command>
         <command>
@@ -41839,6 +41856,12 @@ typedef unsigned int GLhandleARB;
             <require>
                 <command name="glDrawTransformFeedbackEXT"/>
                 <command name="glDrawTransformFeedbackInstancedEXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_external_buffer" supported="gl|gles2">
+            <require>
+                <command name="glBufferStorageExternalEXT"/>
+                <command name="glNamedBufferStorageExternalEXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_float_blend" supported="gles2"/>

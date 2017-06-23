@@ -150,6 +150,7 @@ GLBINDING_API void glBufferDataARB(GLenum target, GLsizeiptrARB size, const void
 GLBINDING_API void glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit);
 GLBINDING_API void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param);
 GLBINDING_API void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferStorageMask flags);
+GLBINDING_API void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, GLbitfield flags);
 GLBINDING_API void glBufferStorageMemEXT(GLenum target, GLsizeiptr size, GLuint memory, GLuint64 offset);
 GLBINDING_API void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void * data);
@@ -1554,6 +1555,7 @@ GLBINDING_API void glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset
 GLBINDING_API void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
 GLBINDING_API void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags);
 GLBINDING_API void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags);
+GLBINDING_API void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, GLbitfield flags);
 GLBINDING_API void glNamedBufferStorageMemEXT(GLuint buffer, GLsizeiptr size, GLuint memory, GLuint64 offset);
 GLBINDING_API void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);

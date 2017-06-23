@@ -150,6 +150,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_draw_buffers2, { "glColorMaskIndexedEXT", "glDisableIndexedEXT", "glEnableIndexedEXT", "glGetBooleanIndexedvEXT", "glGetIntegerIndexedvEXT", "glIsEnabledIndexedEXT" } },
     { GLextension::GL_EXT_draw_instanced, { "glDrawArraysInstancedEXT", "glDrawElementsInstancedEXT" } },
     { GLextension::GL_EXT_draw_range_elements, { "glDrawRangeElementsEXT" } },
+    { GLextension::GL_EXT_external_buffer, { "glBufferStorageExternalEXT", "glNamedBufferStorageExternalEXT" } },
     { GLextension::GL_EXT_fog_coord, { "glFogCoordPointerEXT", "glFogCoorddEXT", "glFogCoorddvEXT", "glFogCoordfEXT", "glFogCoordfvEXT" } },
     { GLextension::GL_EXT_framebuffer_blit, { "glBlitFramebufferEXT" } },
     { GLextension::GL_EXT_framebuffer_multisample, { "glRenderbufferStorageMultisampleEXT" } },
