@@ -6,8 +6,20 @@
 # CMake version
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
-# Include cmake modules
+#
+# Configure CMake environment
+#
 
+# Register general cmake commands
+include(cmake/Custom.cmake)
+
+# Set policies
+set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
+set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
+set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
+set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
+
+# Include cmake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(GenerateExportHeader)
@@ -19,14 +31,10 @@ if (${CMAKE_VERSION} VERSION_GREATER "3.2")
     include(WriteCompilerDetectionHeader OPTIONAL RESULT_VARIABLE WriterCompilerDetectionHeaderFound)
 endif()
 
+# Include custom cmake modules
 include(cmake/GetGitRevisionDescription.cmake)
-include(cmake/Custom.cmake)
-
-# Set policies
-set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
-set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
-set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
-set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
+include(cmake/HealthCheck.cmake)
+include(cmake/GenerateTemplateExportHeader.cmake)
 
 
 # 
@@ -46,13 +54,13 @@ set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using 
 set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
 set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
 set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
-set(META_VERSION_MAJOR       "2")
-set(META_VERSION_MINOR       "1")
-set(META_VERSION_PATCH       "1")
+set(META_VERSION_MAJOR       "3")
+set(META_VERSION_MINOR       "0")
+set(META_VERSION_PATCH       "0")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
-set(META_CMAKE_INIT_SHA      "70a376bc91291a73a976f96871a657d54a158dd5")
+set(META_CMAKE_INIT_SHA      "6a6f30b38a1cee31ccac3f091816f28e0f6bce4b")
 
 string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
 string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
@@ -62,13 +70,14 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS      "Build shared instead of static libraries."              ON)
-option(OPTION_SELF_CONTAINED  "Create a self-contained install with all dependencies." OFF)
-option(OPTION_BUILD_TESTS     "Build tests."                                           ON)
-option(OPTION_BUILD_GPU_TESTS "Build tests that require an OpenGL context."            ON)
-option(OPTION_BUILD_DOCS      "Build documentation."                                   OFF)
-option(OPTION_BUILD_TOOLS     "Build tools."                                           ON)
-option(OPTION_BUILD_EXAMPLES  "Build examples."                                        OFF)
+option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."              ON)
+option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies." OFF)
+option(OPTION_BUILD_TESTS             "Build tests."                                           ON)
+option(OPTION_BUILD_GPU_TESTS         "Build tests that require an OpenGL context."            ON)
+option(OPTION_BUILD_DOCS              "Build documentation."                                   OFF)
+option(OPTION_BUILD_TOOLS             "Build tools."                                           ON)
+option(OPTION_BUILD_EXAMPLES          "Build examples."                                        OFF)
+option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."              OFF)
 
 
 # 
@@ -96,6 +105,18 @@ file(WRITE "${PROJECT_BINARY_DIR}/VERSION" "${META_NAME_VERSION}")
 # 
 
 include(cmake/CompileOptions.cmake)
+
+
+#
+# Project Health Check Setup
+#
+
+# Add cmake-init template check cmake targets
+add_check_template_target(${META_CMAKE_INIT_SHA})
+
+# Configure health check tools
+enable_cppcheck(On)
+enable_clang_tidy(On)
 
 
 # 

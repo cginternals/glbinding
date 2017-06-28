@@ -11,6 +11,11 @@ namespace gl
 {
 
 
+void glWaitSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * srcLayouts)
+{
+    return Binding::WaitSemaphoreEXT(semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, srcLayouts);
+}
+
 void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout)
 {
     return Binding::WaitSync(sync, flags, timeout);

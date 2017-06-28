@@ -11,6 +11,21 @@ namespace gl
 {
 
 
+void glLGPUCopyImageSubDataNVX(GLuint sourceGpu, GLbitfield destinationGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srxY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
+{
+    return Binding::LGPUCopyImageSubDataNVX(sourceGpu, destinationGpuMask, srcName, srcTarget, srcLevel, srcX, srxY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
+}
+
+void glLGPUInterlockNVX()
+{
+    return Binding::LGPUInterlockNVX();
+}
+
+void glLGPUNamedBufferSubDataNVX(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data)
+{
+    return Binding::LGPUNamedBufferSubDataNVX(gpuMask, buffer, offset, size, data);
+}
+
 void glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar * label)
 {
     return Binding::LabelObjectEXT(type, object, length, label);

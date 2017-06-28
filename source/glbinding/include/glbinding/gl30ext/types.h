@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include <glbinding/nogl.h>
@@ -25,6 +26,7 @@ using gl::GLfloat;
 using gl::GLclampf;
 using gl::GLdouble;
 using gl::GLclampd;
+using gl::GLeglClientBufferEXT;
 using gl::GLeglImageOES;
 using gl::GLchar;
 using gl::GLcharARB;
@@ -49,7 +51,7 @@ using gl::GLDEBUGPROCKHR;
 using gl::GLDEBUGPROCAMD;
 using gl::GLhalfNV;
 using gl::GLvdpauSurfaceNV;
-using gl::VULKANPROCNV;
+using gl::GLVULKANPROCNV;
 using gl::GLuint_array_2;
 using gl::AttribMask;
 using gl::ClearBufferMask;

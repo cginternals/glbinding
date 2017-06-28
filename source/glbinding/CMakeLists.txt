@@ -5,6 +5,22 @@
 
 find_package(OpenGL REQUIRED)
 
+set(ADDITIONAL_LIBRARIES)
+set(ADDITIONAL_INCLUDES)
+if(OPTION_BUILD_WITH_BOOST_THREAD)
+    find_package(Boost COMPONENTS thread REQUIRED)
+    
+    if (Boost_FOUND)
+        message(STATUS "Use Boost for thread.")
+        
+        set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${Boost_LIBRARIES})
+        set(ADDITIONAL_INCLUDES ${ADDITIONAL_INCLUDES} ${Boost_INCLUDE_DIRS})
+    else()
+        message(WARNING "OPTION_BUILD_WITH_BOOST_THREAD is set to On: Boost not found.")
+        message(WARNING "Defaulting to C++11 thread.")
+    endif()
+endif()
+
 # 
 # Library name and options
 # 
@@ -18,9 +34,10 @@ message(STATUS "Lib ${target}")
 # Set API export file and macro
 string(MAKE_C_IDENTIFIER ${target} target_id)
 string(TOUPPER ${target_id} target_id)
-set(feature_file "include/${target}/${target}_features.h")
-set(export_file  "include/${target}/${target}_api.h")
-set(export_macro "${target_id}_API")
+set(feature_file         "include/${target}/${target}_features.h")
+set(export_file          "include/${target}/${target}_export.h")
+set(template_export_file "include/${target}/${target}_api.h")
+set(export_macro         "${target_id}_API")
 
 
 # 
@@ -37,6 +54,7 @@ set(headers
 
     ${include_path}/gl/bitfield.h
     ${include_path}/gl/boolean.h
+    ${include_path}/gl/boolean.inl
     ${include_path}/gl/enum.h
     ${include_path}/gl/extension.h
     ${include_path}/gl/functions.h
@@ -46,6 +64,7 @@ set(headers
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
     ${include_path}/CallbackMask.h
+    ${include_path}/CallbackMask.inl
     ${include_path}/Function.h
     ${include_path}/Function.inl
     ${include_path}/FunctionCall.h
@@ -57,6 +76,7 @@ set(headers
     ${include_path}/Value.h
     ${include_path}/Value.inl
     ${include_path}/Version.h
+    ${include_path}/Version.inl
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
 
@@ -76,7 +96,6 @@ set(sources
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
-    ${source_path}/CallbackMask.cpp
     ${source_path}/FunctionCall.cpp
 
     ${source_path}/ProcAddress.cpp
@@ -107,7 +126,6 @@ set(sources
     ${source_path}/logging.cpp
 
     ${source_path}/gl/types.cpp
-    ${source_path}/gl/boolean.cpp
     ${source_path}/gl/functions-patches.cpp
 
     ${source_path}/Binding_pch.h
@@ -171,13 +189,22 @@ generate_export_header(${target}
     EXPORT_MACRO_NAME ${export_macro}
 )
 
+generate_template_export_header(${target}
+    ${target_id}
+    ${template_export_file}
+)
+
 # Create feature detection header
 if (WriterCompilerDetectionHeaderFound)
     write_compiler_detection_header(
         FILE ${feature_file}
         PREFIX ${target_id}
         COMPILERS AppleClang Clang GNU MSVC
-        FEATURES cxx_thread_local
+        FEATURES
+            cxx_thread_local
+            cxx_constexpr
+            cxx_attribute_deprecated
+            cxx_noexcept
         VERSION 3.2
     )
 else()
@@ -211,6 +238,7 @@ target_include_directories(${target}
     ${PROJECT_BINARY_DIR}/source/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_BINARY_DIR}/include
+    ${ADDITIONAL_INCLUDES}
 
     PUBLIC
     ${DEFAULT_INCLUDE_DIRECTORIES}
@@ -228,6 +256,7 @@ target_include_directories(${target}
 
 target_link_libraries(${target}
     PRIVATE
+    ${ADDITIONAL_LIBRARIES}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
@@ -246,6 +275,7 @@ target_compile_definitions(${target}
     # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
     # furthermore, this flag is not officially supported
     #$<$<CXX_COMPILER_ID:MSVC>:_HAS_EXCEPTIONS=0> 
+    $<$<AND:$<BOOL:${OPTION_BUILD_WITH_BOOST_THREAD}>,$<BOOL:${Boost_FOUND}>>:GLBINDING_USE_BOOST_THREAD>
 
     PUBLIC
     $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_id}_STATIC_DEFINE>
@@ -301,6 +331,17 @@ if (MSVC_IDE)
     set_source_files_properties(${binding_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"Binding_pch.h")
     set_source_files_properties(${functions_pch_sources} PROPERTIES COMPILE_FLAGS /Yu"../Binding_pch.h")
 endif()
+
+
+#
+# Target Health
+#
+
+perform_health_checks(
+    ${target}
+    ${sources}
+    ${headers}
+)
 
 
 # 

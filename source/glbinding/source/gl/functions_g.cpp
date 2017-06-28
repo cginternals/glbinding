@@ -116,6 +116,11 @@ void glGenSamplers(GLsizei count, GLuint * samplers)
     return Binding::GenSamplers(count, samplers);
 }
 
+void glGenSemaphoresEXT(GLsizei n, GLuint * semaphores)
+{
+    return Binding::GenSemaphoresEXT(n, semaphores);
+}
+
 GLuint glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components)
 {
     return Binding::GenSymbolsEXT(datatype, storagetype, range, components);
@@ -891,6 +896,11 @@ void glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param)
     return Binding::GetMaterialxOES(face, pname, param);
 }
 
+void glGetMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, GLint * params)
+{
+    return Binding::GetMemoryObjectParameterivEXT(memoryObject, pname, params);
+}
+
 void glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values)
 {
     return Binding::GetMinmax(target, reset, format, type, values);
@@ -1596,6 +1606,11 @@ void glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint * params)
     return Binding::GetSamplerParameteriv(sampler, pname, params);
 }
 
+void glGetSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, GLuint64 * params)
+{
+    return Binding::GetSemaphoreParameterui64vEXT(semaphore, pname, params);
+}
+
 void glGetSeparableFilter(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span)
 {
     return Binding::GetSeparableFilter(target, format, type, row, column, span);
@@ -1996,6 +2011,16 @@ void glGetUniformuivEXT(GLuint program, GLint location, GLuint * params)
     return Binding::GetUniformuivEXT(program, location, params);
 }
 
+void glGetUnsignedBytei_vEXT(GLenum target, GLuint index, GLubyte * data)
+{
+    return Binding::GetUnsignedBytei_vEXT(target, index, data);
+}
+
+void glGetUnsignedBytevEXT(GLenum pname, GLubyte * data)
+{
+    return Binding::GetUnsignedBytevEXT(pname, data);
+}
+
 void glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat * params)
 {
     return Binding::GetVariantArrayObjectfvATI(id, pname, params);
@@ -2221,7 +2246,7 @@ void glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint * params)
     return Binding::GetVideouivNV(video_slot, pname, params);
 }
 
-VULKANPROCNV glGetVkProcAddrNV(const GLchar * name)
+GLVULKANPROCNV glGetVkProcAddrNV(const GLchar * name)
 {
     return Binding::GetVkProcAddrNV(name);
 }

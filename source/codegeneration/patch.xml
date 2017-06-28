@@ -48,8 +48,31 @@
 
         <!-- patch non-compliant parameter signatures -->
         <command>
+            <proto><ptype>void</ptype> <name>glClampColor</name></proto>
+            <param group="ClampColorTargetARB"><ptype>GLenum</ptype> <name>target</name></param>
+            <param group="ClampColorModeARB"><ptype>GLboolean</ptype> <name>clamp</name></param>
+        </command>
+        
+        <command>
+            <proto><ptype>void</ptype> <name>glClampColorARB</name></proto>
+            <param group="ClampColorTargetARB"><ptype>GLenum</ptype> <name>target</name></param>
+            <param group="ClampColorModeARB"><ptype>GLboolean</ptype> <name>clamp</name></param>
+        </command>
+        
+        <command>
             <proto><ptype>GLenum</ptype> <name>glPathGlyphIndexRangeNV</name></proto>
             <param><ptype>GLuint_array_2</ptype> <name>baseAndCount</name></param>
+        </command>
+
+        <command>
+            <proto>void <name>glListDrawCommandsStatesClientNV</name></proto>
+            <param><ptype>GLuint</ptype> <name>list</name></param>
+            <param><ptype>GLuint</ptype> <name>segment</name></param>
+            <param>const void **<name>indirects</name></param>
+            <param>const GLsizei *<name>sizes</name></param>
+            <param>const <ptype>GLuint</ptype> *<name>states</name></param>
+            <param>const <ptype>GLuint</ptype> *<name>fbos</name></param>
+            <param><ptype>GLuint</ptype> <name>count</name></param>
         </command>
 
         <!-- patch missing groups for parameter of type GLbitfield -->
@@ -158,17 +181,6 @@
             <param group="PathRenderingMaskNV"><ptype>GLbitfield</ptype> <name>metricQueryMask</name></param>
         </command>
 	
-	<command>
-            <proto>void <name>glListDrawCommandsStatesClientNV</name></proto>
-            <param><ptype>GLuint</ptype> <name>list</name></param>
-            <param><ptype>GLuint</ptype> <name>segment</name></param>
-            <param>const void **<name>indirects</name></param>
-            <param>const GLsizei *<name>sizes</name></param>
-            <param>const <ptype>GLuint</ptype> *<name>states</name></param>
-            <param>const <ptype>GLuint</ptype> *<name>fbos</name></param>
-            <param><ptype>GLuint</ptype> <name>count</name></param>
-        </command>
-
     </commands>
 
 </registry>

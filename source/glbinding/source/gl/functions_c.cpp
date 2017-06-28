@@ -46,12 +46,12 @@ GLenum glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target)
     return Binding::CheckNamedFramebufferStatusEXT(framebuffer, target);
 }
 
-void glClampColor(GLenum target, GLenum clamp)
+void glClampColor(GLenum target, GLboolean clamp)
 {
     return Binding::ClampColor(target, clamp);
 }
 
-void glClampColorARB(GLenum target, GLenum clamp)
+void glClampColorARB(GLenum target, GLboolean clamp)
 {
     return Binding::ClampColorARB(target, clamp);
 }
@@ -1119,6 +1119,11 @@ void glCreateCommandListsNV(GLsizei n, GLuint * lists)
 void glCreateFramebuffers(GLsizei n, GLuint * framebuffers)
 {
     return Binding::CreateFramebuffers(n, framebuffers);
+}
+
+void glCreateMemoryObjectsEXT(GLsizei n, GLuint * memoryObjects)
+{
+    return Binding::CreateMemoryObjectsEXT(n, memoryObjects);
 }
 
 void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle)

@@ -21,6 +21,11 @@ void glAccumxOES(GLenum op, GLfixed value)
     return Binding::AccumxOES(op, value);
 }
 
+GLboolean glAcquireKeyedMutexWin32EXT(GLuint memory, GLuint64 key, GLuint timeout)
+{
+    return Binding::AcquireKeyedMutexWin32EXT(memory, key, timeout);
+}
+
 void glActiveProgramEXT(GLuint program)
 {
     return Binding::ActiveProgramEXT(program);

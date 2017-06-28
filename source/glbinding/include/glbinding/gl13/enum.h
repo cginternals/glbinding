@@ -132,6 +132,12 @@ using gl::GL_AUX1;
 using gl::GL_AUX2;
 using gl::GL_AUX3;
 
+// DrawElementsType
+
+// using gl::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
+
 // EnableCap
 
 using gl::GL_POINT_SMOOTH;
@@ -923,6 +929,12 @@ using gl::GL_SELECT;
 using gl::GL_FLAT;
 using gl::GL_SMOOTH;
 
+// StencilFaceDirection
+
+// using gl::GL_FRONT; // reuse ColorMaterialFace
+// using gl::GL_BACK; // reuse ColorMaterialFace
+// using gl::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+
 // StencilFunction
 
 // using gl::GL_NEVER; // reuse AlphaFunction
@@ -1015,6 +1027,10 @@ using gl::GL_LINEAR_MIPMAP_LINEAR;
 // using gl::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_PRIORITY; // reuse GetTextureParameter
 using gl::GL_TEXTURE_WRAP_R;
+using gl::GL_TEXTURE_MIN_LOD;
+using gl::GL_TEXTURE_MAX_LOD;
+using gl::GL_TEXTURE_BASE_LEVEL;
+using gl::GL_TEXTURE_MAX_LEVEL;
 
 // TextureTarget
 
@@ -1024,10 +1040,14 @@ using gl::GL_PROXY_TEXTURE_1D;
 using gl::GL_PROXY_TEXTURE_2D;
 using gl::GL_TEXTURE_3D;
 using gl::GL_PROXY_TEXTURE_3D;
-using gl::GL_TEXTURE_MIN_LOD;
-using gl::GL_TEXTURE_MAX_LOD;
-using gl::GL_TEXTURE_BASE_LEVEL;
-using gl::GL_TEXTURE_MAX_LEVEL;
+using gl::GL_TEXTURE_CUBE_MAP;
+using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_X;
+using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_X;
+using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_Y;
+using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_Y;
+using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_Z;
+using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_Z;
+using gl::GL_PROXY_TEXTURE_CUBE_MAP;
 
 // TextureWrapMode
 
@@ -1115,15 +1135,7 @@ using gl::GL_COMPRESSED_RGB;
 using gl::GL_COMPRESSED_RGBA;
 using gl::GL_NORMAL_MAP;
 using gl::GL_REFLECTION_MAP;
-using gl::GL_TEXTURE_CUBE_MAP;
 using gl::GL_TEXTURE_BINDING_CUBE_MAP;
-using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_X;
-using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_X;
-using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_Y;
-using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_Y;
-using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_Z;
-using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_Z;
-using gl::GL_PROXY_TEXTURE_CUBE_MAP;
 using gl::GL_MAX_CUBE_MAP_TEXTURE_SIZE;
 using gl::GL_COMBINE;
 using gl::GL_COMBINE_RGB;

@@ -86,8 +86,7 @@ def parseExtensions(xml, features, api):
 		for extension in E.findall("extension"):
 
 			# enforce constraint (1)
-			if "supported" in extension.attrib and \
-			   api not in extension.attrib["supported"].split("|"):
+			if "supported" in extension.attrib and api not in extension.attrib["supported"].split("|"):
 				continue
 
 			extensions.append(Extension(extension, api))

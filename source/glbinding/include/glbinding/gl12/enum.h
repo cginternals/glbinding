@@ -132,6 +132,12 @@ using gl::GL_AUX1;
 using gl::GL_AUX2;
 using gl::GL_AUX3;
 
+// DrawElementsType
+
+// using gl::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
+
 // EnableCap
 
 using gl::GL_POINT_SMOOTH;
@@ -922,6 +928,12 @@ using gl::GL_SELECT;
 using gl::GL_FLAT;
 using gl::GL_SMOOTH;
 
+// StencilFaceDirection
+
+// using gl::GL_FRONT; // reuse ColorMaterialFace
+// using gl::GL_BACK; // reuse ColorMaterialFace
+// using gl::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+
 // StencilFunction
 
 // using gl::GL_NEVER; // reuse AlphaFunction
@@ -1014,6 +1026,10 @@ using gl::GL_LINEAR_MIPMAP_LINEAR;
 // using gl::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_PRIORITY; // reuse GetTextureParameter
 using gl::GL_TEXTURE_WRAP_R;
+using gl::GL_TEXTURE_MIN_LOD;
+using gl::GL_TEXTURE_MAX_LOD;
+using gl::GL_TEXTURE_BASE_LEVEL;
+using gl::GL_TEXTURE_MAX_LEVEL;
 
 // TextureTarget
 
@@ -1023,10 +1039,6 @@ using gl::GL_PROXY_TEXTURE_1D;
 using gl::GL_PROXY_TEXTURE_2D;
 using gl::GL_TEXTURE_3D;
 using gl::GL_PROXY_TEXTURE_3D;
-using gl::GL_TEXTURE_MIN_LOD;
-using gl::GL_TEXTURE_MAX_LOD;
-using gl::GL_TEXTURE_BASE_LEVEL;
-using gl::GL_TEXTURE_MAX_LEVEL;
 
 // TextureWrapMode
 

@@ -88,6 +88,7 @@ Function<void, GLuint> Binding::MaxShaderCompilerThreadsARB("glMaxShaderCompiler
 Function<void, MemoryBarrierMask> Binding::MemoryBarrier("glMemoryBarrier");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierEXT("glMemoryBarrierEXT");
+Function<void, GLuint, GLenum, const GLint *> Binding::MemoryObjectParameterivEXT("glMemoryObjectParameterivEXT");
 Function<void, GLfloat> Binding::MinSampleShading("glMinSampleShading");
 Function<void, GLfloat> Binding::MinSampleShadingARB("glMinSampleShadingARB");
 Function<void, GLenum, GLenum, GLboolean> Binding::Minmax("glMinmax");
@@ -240,6 +241,17 @@ Function<void, GLenum, GLenum, GLuint> Binding::MultiTexRenderbufferEXT("glMulti
 Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage1DEXT("glMultiTexSubImage1DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage2DEXT("glMultiTexSubImage2DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage3DEXT("glMultiTexSubImage3DEXT");
+Function<void> Binding::MulticastBarrierNV("glMulticastBarrierNV");
+Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum> Binding::MulticastBlitFramebufferNV("glMulticastBlitFramebufferNV");
+Function<void, GLbitfield, GLuint, GLintptr, GLsizeiptr, const GLvoid *> Binding::MulticastBufferSubDataNV("glMulticastBufferSubDataNV");
+Function<void, GLuint, GLbitfield, GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr> Binding::MulticastCopyBufferSubDataNV("glMulticastCopyBufferSubDataNV");
+Function<void, GLuint, GLbitfield, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::MulticastCopyImageSubDataNV("glMulticastCopyImageSubDataNV");
+Function<void, GLuint, GLuint, GLuint, GLsizei, const GLfloat *> Binding::MulticastFramebufferSampleLocationsfvNV("glMulticastFramebufferSampleLocationsfvNV");
+Function<void, GLuint, GLuint, GLenum, GLint64 *> Binding::MulticastGetQueryObjecti64vNV("glMulticastGetQueryObjecti64vNV");
+Function<void, GLuint, GLuint, GLenum, GLint *> Binding::MulticastGetQueryObjectivNV("glMulticastGetQueryObjectivNV");
+Function<void, GLuint, GLuint, GLenum, GLuint64 *> Binding::MulticastGetQueryObjectui64vNV("glMulticastGetQueryObjectui64vNV");
+Function<void, GLuint, GLuint, GLenum, GLuint *> Binding::MulticastGetQueryObjectuivNV("glMulticastGetQueryObjectuivNV");
+Function<void, GLuint, GLbitfield> Binding::MulticastWaitSyncNV("glMulticastWaitSyncNV");
 
 
 } // namespace glbinding
