@@ -106,6 +106,8 @@ file(WRITE "${PROJECT_BINARY_DIR}/VERSION" "${META_NAME_VERSION}")
 
 include(cmake/CompileOptions.cmake)
 
+# IDE visibility for cmake build files
+add_subdirectory(cmake)
 
 #
 # Project Health Check Setup
