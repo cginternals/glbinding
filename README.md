@@ -141,7 +141,7 @@ Building *glbinding* from source has several mandatory and optional dependencies
 * [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
   * [SVN](https://subversion.apache.org/) for updating the ```gl.xml```
   * [pystache](https://github.com/defunkt/pystache) for the template-based code generation 
-* [GLFW](http://www.glfw.org/) 3.0 or higher for examples and tools
+* [GLFW](http://www.glfw.org/) 3.2 or higher for examples and tools
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples
 * [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example
