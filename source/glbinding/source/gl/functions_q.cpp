@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -25,6 +25,7 @@ void glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint 
 {
     return Binding::QueryObjectParameteruiAMD(target, id, pname, param);
 }
+
 
 
 

@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -119,6 +121,7 @@ using gl::GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV;
 using gl::GL_TEXCOORD4_BIT_PGI;
 using gl::GL_ALL_BARRIER_BITS;
 using gl::GL_ALL_BARRIER_BITS_EXT;
+
 
 
 } // namespace gl41ext

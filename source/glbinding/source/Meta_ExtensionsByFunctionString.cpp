@@ -6,6 +6,7 @@
 
 using namespace gl;
 
+
 namespace glbinding
 {
 

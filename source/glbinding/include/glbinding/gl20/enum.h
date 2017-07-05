@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -1362,6 +1364,7 @@ using gl::GL_UPPER_LEFT;
 using gl::GL_STENCIL_BACK_REF;
 using gl::GL_STENCIL_BACK_VALUE_MASK;
 using gl::GL_STENCIL_BACK_WRITEMASK;
+
 
 
 } // namespace gl20

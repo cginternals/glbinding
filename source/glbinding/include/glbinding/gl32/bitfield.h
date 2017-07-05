@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -46,6 +48,7 @@ using gl::GL_MAP_UNSYNCHRONIZED_BIT;
 using gl::GL_MULTISAMPLE_BIT;
 using gl::GL_ALL_ATTRIB_BITS;
 using gl::GL_CLIENT_ALL_ATTRIB_BITS;
+
 
 
 } // namespace gl32

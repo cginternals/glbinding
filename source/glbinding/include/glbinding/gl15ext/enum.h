@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -4246,6 +4248,7 @@ using gl::GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM;
 using gl::GL_UUID_SIZE_EXT;
 using gl::GL_LUID_SIZE_EXT;
+
 
 
 } // namespace gl15ext

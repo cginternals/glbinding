@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -465,6 +465,7 @@ void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
 {
     return Binding::RotatexOES(angle, x, y, z);
 }
+
 
 
 

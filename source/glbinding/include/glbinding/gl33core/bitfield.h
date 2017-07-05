@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -24,6 +26,7 @@ using gl::GL_MAP_INVALIDATE_RANGE_BIT;
 using gl::GL_MAP_INVALIDATE_BUFFER_BIT;
 using gl::GL_MAP_FLUSH_EXPLICIT_BIT;
 using gl::GL_MAP_UNSYNCHRONIZED_BIT;
+
 
 
 } // namespace gl33core

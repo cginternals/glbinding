@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -1229,6 +1231,7 @@ using gl::GL_TEXTURE_DEPTH_SIZE;
 using gl::GL_DEPTH_TEXTURE_MODE;
 using gl::GL_COMPARE_REF_TO_TEXTURE;
 using gl::GL_COMPARE_R_TO_TEXTURE;
+
 
 
 } // namespace gl14

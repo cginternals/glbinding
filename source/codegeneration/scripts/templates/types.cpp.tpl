@@ -10,38 +10,38 @@
 template <typename T>
 std::string bitfieldString(T value)
 {
-	std::bitset<sizeof(gl::GLbitfield) * 8> bits(static_cast<gl::GLbitfield>(value));
+    std::bitset<sizeof(gl::GLbitfield) * 8> bits(static_cast<gl::GLbitfield>(value));
 
-	std::stringstream ss;
-	bool first = true;
+    std::stringstream ss;
+    bool first = true;
 
-	for (size_t i = 0; i < sizeof(gl::GLbitfield) * 8; ++i)
-	{
-        if (!bits.test(i))
-            continue;
+    for (size_t i = 0; i < sizeof(gl::GLbitfield) * 8; ++i)
+    {
+    if (!bits.test(i))
+        continue;
 
-        if (first)
-		{
-			first = false;
-		}
-		else
-		{
-			ss << " | ";
-		}
-
-        const gl::GLbitfield bit = 1 << i;
-
-        const auto identifier = glbinding::Meta::getString(static_cast<T>(bit));
-        if (identifier.empty())
+    if (first)
         {
-            ss << "1 << " << i;
+            first = false;
         }
         else
         {
-            ss << identifier;
+            ss << " | ";
         }
-	}
-	return ss.str();
+
+    const gl::GLbitfield bit = 1 << i;
+
+    const auto identifier = glbinding::Meta::getString(static_cast<T>(bit));
+    if (identifier.empty())
+    {
+        ss << "1 << " << i;
+    }
+    else
+    {
+        ss << identifier;
+    }
+    }
+    return ss.str();
 }
 
 {{#types.items}}

@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -99,6 +100,7 @@ Function<void> Binding::ResumeTransformFeedbackNV("glResumeTransformFeedbackNV")
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Rotated("glRotated");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::Rotatef("glRotatef");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::RotatexOES("glRotatexOES");
+
 
 
 } // namespace glbinding

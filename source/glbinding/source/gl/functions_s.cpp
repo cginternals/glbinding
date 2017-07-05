@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -585,6 +585,7 @@ void glSyncTextureINTEL(GLuint texture)
 {
     return Binding::SyncTextureINTEL(texture);
 }
+
 
 
 

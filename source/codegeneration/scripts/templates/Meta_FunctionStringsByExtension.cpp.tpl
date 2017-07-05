@@ -6,6 +6,7 @@
 
 using namespace gl;
 
+
 namespace glbinding
 {
 
@@ -15,5 +16,6 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
 {{#extensions.items}}{{^item.reqCommands.empty}}    { GLextension::{{item.identifier}}, { {{#item.reqCommands.items}}"{{item.name}}"{{^last}}, {{/last}}{{/item.reqCommands.items}} } }{{^last}},{{/last}}
 {{/item.reqCommands.empty}}{{/extensions.items}}
 };
+
 
 } // namespace glbinding

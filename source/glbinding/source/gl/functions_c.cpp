@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -1225,6 +1225,7 @@ void glCurrentPaletteMatrixARB(GLint index)
 {
     return Binding::CurrentPaletteMatrixARB(index);
 }
+
 
 
 

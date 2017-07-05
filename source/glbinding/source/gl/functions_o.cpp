@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -45,6 +45,7 @@ void glOrthoxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixed 
 {
     return Binding::OrthoxOES(l, r, b, t, n, f);
 }
+
 
 
 

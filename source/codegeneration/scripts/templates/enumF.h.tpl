@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/no{{api}}.h>
 
@@ -25,5 +27,6 @@ using {{api}}::{{item.identifier}};
 {{/items}}
 
 {{/enumsByGroup.groups}}
+
 
 } // namespace {{api}}{{memberSet}}

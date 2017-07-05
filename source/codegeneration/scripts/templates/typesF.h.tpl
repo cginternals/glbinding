@@ -1,6 +1,7 @@
 
 #pragma once
 
+
 #include <glbinding/no{{api}}.h>
 #include <glbinding/{{api}}/types.h>
 

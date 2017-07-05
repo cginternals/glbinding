@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -252,6 +253,7 @@ Function<void, GLuint, GLuint, GLenum, GLint *> Binding::MulticastGetQueryObject
 Function<void, GLuint, GLuint, GLenum, GLuint64 *> Binding::MulticastGetQueryObjectui64vNV("glMulticastGetQueryObjectui64vNV");
 Function<void, GLuint, GLuint, GLenum, GLuint *> Binding::MulticastGetQueryObjectuivNV("glMulticastGetQueryObjectuivNV");
 Function<void, GLuint, GLbitfield> Binding::MulticastWaitSyncNV("glMulticastWaitSyncNV");
+
 
 
 } // namespace glbinding

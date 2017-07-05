@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -1170,6 +1172,7 @@ using gl::GL_NUM_COMPRESSED_TEXTURE_FORMATS;
 using gl::GL_COMPRESSED_TEXTURE_FORMATS;
 using gl::GL_DOT3_RGB;
 using gl::GL_DOT3_RGBA;
+
 
 
 } // namespace gl13

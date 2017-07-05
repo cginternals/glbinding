@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -1275,6 +1277,7 @@ using gl::GL_BUFFER_ACCESS;
 using gl::GL_BUFFER_MAPPED;
 using gl::GL_BUFFER_MAP_POINTER;
 using gl::GL_SAMPLES_PASSED;
+
 
 
 } // namespace gl15

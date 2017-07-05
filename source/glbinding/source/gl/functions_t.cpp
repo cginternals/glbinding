@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -1150,6 +1150,7 @@ void glTranslatexOES(GLfixed x, GLfixed y, GLfixed z)
 {
     return Binding::TranslatexOES(x, y, z);
 }
+
 
 
 

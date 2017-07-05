@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -420,6 +420,7 @@ void glNormalStream3svATI(GLenum stream, const GLshort * coords)
 {
     return Binding::NormalStream3svATI(stream, coords);
 }
+
 
 
 

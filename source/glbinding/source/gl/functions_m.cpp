@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -1230,6 +1230,7 @@ void glMulticastWaitSyncNV(GLuint signalGpu, GLbitfield waitGpuMask)
 {
     return Binding::MulticastWaitSyncNV(signalGpu, waitGpuMask);
 }
+
 
 
 

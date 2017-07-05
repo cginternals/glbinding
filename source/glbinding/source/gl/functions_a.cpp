@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -140,6 +140,7 @@ void glAttachShader(GLuint program, GLuint shader)
 {
     return Binding::AttachShader(program, shader);
 }
+
 
 
 

@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -470,6 +470,7 @@ GLboolean glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname)
 {
     return Binding::IsVertexAttribEnabledAPPLE(index, pname);
 }
+
 
 
 

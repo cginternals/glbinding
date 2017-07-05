@@ -47,6 +47,7 @@
 #include <glbinding/gl45core/gl.h>
 #include <glbinding/gl45ext/gl.h>
 
+
 TEST(AllVersions, Compilation)
 {
     SUCCEED();  // compiling this file without errors and warnings results in successful test

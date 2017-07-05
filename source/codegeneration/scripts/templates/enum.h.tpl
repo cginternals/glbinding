@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/no{{api}}.h>
 
@@ -26,8 +28,8 @@ enum class GLenum : unsigned int
 {{/enumsByGroup.groups}}
 };
 
-// import enums to namespace
 
+// import enums to namespace
 
 {{#enumsByGroup.groups}}
 // {{name}}
@@ -42,5 +44,6 @@ GLBINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.ide
 {{/items}}
 
 {{/enumsByGroup.groups}}
+
 
 } // namespace {{api}}

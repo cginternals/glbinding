@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -15,6 +16,7 @@ Function<GLenum, GLenum, GLuint, GLenum> Binding::ObjectUnpurgeableAPPLE("glObje
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Ortho("glOrtho");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::OrthofOES("glOrthofOES");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed> Binding::OrthoxOES("glOrthoxOES");
+
 
 
 } // namespace glbinding

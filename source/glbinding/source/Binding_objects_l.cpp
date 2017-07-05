@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -50,6 +51,7 @@ Function<void, const GLfloat *> Binding::LoadTransposeMatrixfARB("glLoadTranspos
 Function<void, const GLfixed *> Binding::LoadTransposeMatrixxOES("glLoadTransposeMatrixxOES");
 Function<void, GLint, GLsizei> Binding::LockArraysEXT("glLockArraysEXT");
 Function<void, GLenum> Binding::LogicOp("glLogicOp");
+
 
 
 } // namespace glbinding

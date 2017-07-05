@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -94,6 +95,7 @@ Function<void, GLenum> Binding::FrontFace("glFrontFace");
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Frustum("glFrustum");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::FrustumfOES("glFrustumfOES");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed, GLfixed> Binding::FrustumxOES("glFrustumxOES");
+
 
 
 } // namespace glbinding

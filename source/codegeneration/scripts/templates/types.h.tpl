@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/no{{api}}.h>
 #include <glbinding/glbinding_api.h>
@@ -12,6 +14,7 @@
 #include <functional>
 #include <ostream>
 #include <string>
+
 
 #ifdef _MSC_VER
 #define GL_APIENTRY __stdcall

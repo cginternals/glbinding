@@ -6,8 +6,10 @@
 
 using namespace gl;
 
+
 namespace glbinding
 {
+
 
 {{#bitfieldsByGroup.groups}}
 const std::unordered_map<{{name}}, std::string> Meta_StringsBy{{name}} =
@@ -17,5 +19,8 @@ const std::unordered_map<{{name}}, std::string> Meta_StringsBy{{name}} =
 {{/items}}
 };
 
+
 {{/bitfieldsByGroup.groups}}
+
+
 } // namespace glbinding

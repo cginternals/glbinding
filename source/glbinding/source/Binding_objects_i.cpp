@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -100,6 +101,7 @@ Function<GLboolean, GLuint, GLenum> Binding::IsVariantEnabledEXT("glIsVariantEna
 Function<GLboolean, GLuint> Binding::IsVertexArray("glIsVertexArray");
 Function<GLboolean, GLuint> Binding::IsVertexArrayAPPLE("glIsVertexArrayAPPLE");
 Function<GLboolean, GLuint, GLenum> Binding::IsVertexAttribEnabledAPPLE("glIsVertexAttribEnabledAPPLE");
+
 
 
 } // namespace glbinding

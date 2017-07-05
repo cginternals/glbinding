@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -896,6 +898,7 @@ using gl::GL_REPEAT;
 // using gl::GL_SHORT; // reuse ColorPointerType
 // using gl::GL_INT; // reuse ColorPointerType
 // using gl::GL_FLOAT; // reuse ColorPointerType
+
 
 
 } // namespace gl10

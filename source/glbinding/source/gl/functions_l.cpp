@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -220,6 +220,7 @@ void glLogicOp(GLenum opcode)
 {
     return Binding::LogicOp(opcode);
 }
+
 
 
 

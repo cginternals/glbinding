@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -5407,8 +5409,8 @@ enum class GLenum : unsigned int
 
 };
 
-// import enums to namespace
 
+// import enums to namespace
 
 // AccumOp
 
@@ -10803,6 +10805,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_FOG_COORDINATE_ARRAY_LIST_STRIDE_IBM 
 GLBINDING_CONSTEXPR static const GLenum GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM = GLenum::GL_SECONDARY_COLOR_ARRAY_LIST_STRIDE_IBM;
 GLBINDING_CONSTEXPR static const GLenum GL_UUID_SIZE_EXT = GLenum::GL_UUID_SIZE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_LUID_SIZE_EXT = GLenum::GL_LUID_SIZE_EXT;
+
 
 
 } // namespace gl

@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -128,6 +130,7 @@ using gl::GL_TEXCOORD4_BIT_PGI;
 using gl::GL_ALL_BARRIER_BITS;
 using gl::GL_ALL_BARRIER_BITS_EXT;
 using gl::GL_ALL_SHADER_BITS;
+
 
 
 } // namespace gl30ext

@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -236,6 +237,7 @@ Function<void, GLuint, GLuint, GLenum, const GLfloat *> Binding::TransformPathNV
 Function<void, GLdouble, GLdouble, GLdouble> Binding::Translated("glTranslated");
 Function<void, GLfloat, GLfloat, GLfloat> Binding::Translatef("glTranslatef");
 Function<void, GLfixed, GLfixed, GLfixed> Binding::TranslatexOES("glTranslatexOES");
+
 
 
 } // namespace glbinding

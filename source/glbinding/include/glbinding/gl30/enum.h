@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -1606,6 +1608,7 @@ using gl::GL_QUERY_BY_REGION_NO_WAIT;
 using gl::GL_BUFFER_ACCESS_FLAGS;
 using gl::GL_BUFFER_MAP_LENGTH;
 using gl::GL_BUFFER_MAP_OFFSET;
+
 
 
 } // namespace gl30

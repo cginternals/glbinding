@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -1415,6 +1415,7 @@ void glPushName(GLuint name)
 {
     return Binding::PushName(name);
 }
+
 
 
 
