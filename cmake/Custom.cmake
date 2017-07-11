@@ -44,4 +44,3 @@ function(list_extract OUTPUT REGEX)
     set(${OUTPUT} ${${OUTPUT}} PARENT_SCOPE)
 
 endfunction(list_extract)
-
