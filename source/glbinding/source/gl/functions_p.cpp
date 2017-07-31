@@ -371,6 +371,11 @@ void glPolygonOffset(GLfloat factor, GLfloat units)
     return Binding::PolygonOffset(factor, units);
 }
 
+void glPolygonOffsetClamp(GLfloat factor, GLfloat units, GLfloat clamp)
+{
+    return Binding::PolygonOffsetClamp(factor, units, clamp);
+}
+
 void glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp)
 {
     return Binding::PolygonOffsetClampEXT(factor, units, clamp);

@@ -25,10 +25,11 @@ const std::set<Version> Version::s_validVersions =
     { 4, 2 },
     { 4, 3 },
     { 4, 4 },
-    { 4, 5 }
+    { 4, 5 },
+    { 4, 6 }
 };
 
-const Version Version::s_latest { 4, 5 };
+const Version Version::s_latest { 4, 6 };
 
 
 } // namespace glbinding

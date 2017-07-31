@@ -95,6 +95,7 @@ const std::unordered_map<ContextFlagMask, std::string> Meta_StringsByContextFlag
     { ContextFlagMask::GL_CONTEXT_FLAG_DEBUG_BIT, "GL_CONTEXT_FLAG_DEBUG_BIT" },
     { ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT, "GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT" },
     { ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB, "GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB" },
+    { ContextFlagMask::GL_CONTEXT_FLAG_NO_ERROR_BIT, "GL_CONTEXT_FLAG_NO_ERROR_BIT" },
     { ContextFlagMask::GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR, "GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR" }
 };
 

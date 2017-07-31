@@ -94,6 +94,7 @@ Function<void, GLenum, GLsizei, const GLfloat *> Binding::SharpenTexFuncSGIS("gl
 Function<void, GLuint, GLuint, const GLuint *, GLuint, const GLuint *, const GLenum *> Binding::SignalSemaphoreEXT("glSignalSemaphoreEXT");
 Function<void, GLuint64> Binding::SignalVkFenceNV("glSignalVkFenceNV");
 Function<void, GLuint64> Binding::SignalVkSemaphoreNV("glSignalVkSemaphoreNV");
+Function<void, GLuint, const GLchar *, GLuint, const GLuint *, const GLuint *> Binding::SpecializeShader("glSpecializeShader");
 Function<void, GLuint, const GLchar *, GLuint, const GLuint *, const GLuint *> Binding::SpecializeShaderARB("glSpecializeShaderARB");
 Function<void, GLenum, GLfloat> Binding::SpriteParameterfSGIX("glSpriteParameterfSGIX");
 Function<void, GLenum, const GLfloat *> Binding::SpriteParameterfvSGIX("glSpriteParameterfvSGIX");

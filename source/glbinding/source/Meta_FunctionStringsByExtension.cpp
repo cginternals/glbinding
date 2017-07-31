@@ -82,6 +82,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_ARB_occlusion_query, { "glBeginQueryARB", "glDeleteQueriesARB", "glEndQueryARB", "glGenQueriesARB", "glGetQueryObjectivARB", "glGetQueryObjectuivARB", "glGetQueryivARB", "glIsQueryARB" } },
     { GLextension::GL_ARB_parallel_shader_compile, { "glMaxShaderCompilerThreadsARB" } },
     { GLextension::GL_ARB_point_parameters, { "glPointParameterfARB", "glPointParameterfvARB" } },
+    { GLextension::GL_ARB_polygon_offset_clamp, { "glPolygonOffsetClamp" } },
     { GLextension::GL_ARB_program_interface_query, { "glGetProgramInterfaceiv", "glGetProgramResourceIndex", "glGetProgramResourceLocation", "glGetProgramResourceLocationIndex", "glGetProgramResourceName", "glGetProgramResourceiv" } },
     { GLextension::GL_ARB_provoking_vertex, { "glProvokingVertex" } },
     { GLextension::GL_ARB_robustness, { "glGetGraphicsResetStatusARB", "glGetnColorTableARB", "glGetnCompressedTexImageARB", "glGetnConvolutionFilterARB", "glGetnHistogramARB", "glGetnMapdvARB", "glGetnMapfvARB", "glGetnMapivARB", "glGetnMinmaxARB", "glGetnPixelMapfvARB", "glGetnPixelMapuivARB", "glGetnPixelMapusvARB", "glGetnPolygonStippleARB", "glGetnSeparableFilterARB", "glGetnTexImageARB", "glGetnUniformdvARB", "glGetnUniformfvARB", "glGetnUniformivARB", "glGetnUniformuivARB", "glReadnPixelsARB" } },

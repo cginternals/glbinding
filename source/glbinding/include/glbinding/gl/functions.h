@@ -1406,7 +1406,8 @@ GLBINDING_API void glMultiDrawArraysIndirect(GLenum mode, const void * indirect,
 GLBINDING_API void glMultiDrawArraysIndirectAMD(GLenum mode, const void * indirect, GLsizei primcount, GLsizei stride);
 GLBINDING_API void glMultiDrawArraysIndirectBindlessCountNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
 GLBINDING_API void glMultiDrawArraysIndirectBindlessNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
-GLBINDING_API void glMultiDrawArraysIndirectCountARB(GLenum mode, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawArraysIndirectCount(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawArraysIndirectCountARB(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawElementArrayAPPLE(GLenum mode, const GLint * first, const GLsizei * count, GLsizei primcount);
 GLBINDING_API void glMultiDrawElements(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount);
 GLBINDING_API void glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex);
@@ -1415,7 +1416,8 @@ GLBINDING_API void glMultiDrawElementsIndirect(GLenum mode, GLenum type, const v
 GLBINDING_API void glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const void * indirect, GLsizei primcount, GLsizei stride);
 GLBINDING_API void glMultiDrawElementsIndirectBindlessCountNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
 GLBINDING_API void glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
-GLBINDING_API void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawElementsIndirectCount(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount);
 GLBINDING_API void glMultiModeDrawArraysIBM(const GLenum * mode, const GLint * first, const GLsizei * count, GLsizei primcount, GLint modestride);
 GLBINDING_API void glMultiModeDrawElementsIBM(const GLenum * mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, GLint modestride);
@@ -1715,6 +1717,7 @@ GLBINDING_API GLint glPollAsyncSGIX(GLuint * markerp);
 GLBINDING_API GLint glPollInstrumentsSGIX(GLint * marker_p);
 GLBINDING_API void glPolygonMode(GLenum face, GLenum mode);
 GLBINDING_API void glPolygonOffset(GLfloat factor, GLfloat units);
+GLBINDING_API void glPolygonOffsetClamp(GLfloat factor, GLfloat units, GLfloat clamp);
 GLBINDING_API void glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp);
 GLBINDING_API void glPolygonOffsetEXT(GLfloat factor, GLfloat bias);
 GLBINDING_API void glPolygonOffsetxOES(GLfixed factor, GLfixed units);
@@ -2106,6 +2109,7 @@ GLBINDING_API void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat 
 GLBINDING_API void glSignalSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * dstLayouts);
 GLBINDING_API void glSignalVkFenceNV(GLuint64 vkFence);
 GLBINDING_API void glSignalVkSemaphoreNV(GLuint64 vkSemaphore);
+GLBINDING_API void glSpecializeShader(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue);
 GLBINDING_API void glSpecializeShaderARB(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue);
 GLBINDING_API void glSpriteParameterfSGIX(GLenum pname, GLfloat param);
 GLBINDING_API void glSpriteParameterfvSGIX(GLenum pname, const GLfloat * params);

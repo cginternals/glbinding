@@ -29,7 +29,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t               = std::array<AbstractFunction *, 2914>; ///< The type of the build-in functions collection
+    using array_t               = std::array<AbstractFunction *, 2918>; ///< The type of the build-in functions collection
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
 
     /**
@@ -1532,7 +1532,8 @@ public:
     static Function<void, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei> MultiDrawArraysIndirectAMD; ///< Wrapper for glMultiDrawArraysIndirectAMD
     static Function<void, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLint> MultiDrawArraysIndirectBindlessCountNV; ///< Wrapper for glMultiDrawArraysIndirectBindlessCountNV
     static Function<void, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLint> MultiDrawArraysIndirectBindlessNV; ///< Wrapper for glMultiDrawArraysIndirectBindlessNV
-    static Function<void, gl::GLenum, gl::GLintptr, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawArraysIndirectCountARB; ///< Wrapper for glMultiDrawArraysIndirectCountARB
+    static Function<void, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawArraysIndirectCount; ///< Wrapper for glMultiDrawArraysIndirectCount
+    static Function<void, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawArraysIndirectCountARB; ///< Wrapper for glMultiDrawArraysIndirectCountARB
     static Function<void, gl::GLenum, const gl::GLint *, const gl::GLsizei *, gl::GLsizei> MultiDrawElementArrayAPPLE; ///< Wrapper for glMultiDrawElementArrayAPPLE
     static Function<void, gl::GLenum, const gl::GLsizei *, gl::GLenum, const void *const*, gl::GLsizei> MultiDrawElements; ///< Wrapper for glMultiDrawElements
     static Function<void, gl::GLenum, const gl::GLsizei *, gl::GLenum, const void *const*, gl::GLsizei, const gl::GLint *> MultiDrawElementsBaseVertex; ///< Wrapper for glMultiDrawElementsBaseVertex
@@ -1541,7 +1542,8 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectAMD; ///< Wrapper for glMultiDrawElementsIndirectAMD
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLint> MultiDrawElementsIndirectBindlessCountNV; ///< Wrapper for glMultiDrawElementsIndirectBindlessCountNV
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLint> MultiDrawElementsIndirectBindlessNV; ///< Wrapper for glMultiDrawElementsIndirectBindlessNV
-    static Function<void, gl::GLenum, gl::GLenum, gl::GLintptr, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectCountARB; ///< Wrapper for glMultiDrawElementsIndirectCountARB
+    static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectCount; ///< Wrapper for glMultiDrawElementsIndirectCount
+    static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectCountARB; ///< Wrapper for glMultiDrawElementsIndirectCountARB
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, const gl::GLint *, const gl::GLsizei *, gl::GLsizei> MultiDrawRangeElementArrayAPPLE; ///< Wrapper for glMultiDrawRangeElementArrayAPPLE
     static Function<void, const gl::GLenum *, const gl::GLint *, const gl::GLsizei *, gl::GLsizei, gl::GLint> MultiModeDrawArraysIBM; ///< Wrapper for glMultiModeDrawArraysIBM
     static Function<void, const gl::GLenum *, const gl::GLsizei *, gl::GLenum, const void *const*, gl::GLsizei, gl::GLint> MultiModeDrawElementsIBM; ///< Wrapper for glMultiModeDrawElementsIBM
@@ -1838,6 +1840,7 @@ public:
     static Function<gl::GLint, gl::GLint *> PollInstrumentsSGIX; ///< Wrapper for glPollInstrumentsSGIX
     static Function<void, gl::GLenum, gl::GLenum> PolygonMode; ///< Wrapper for glPolygonMode
     static Function<void, gl::GLfloat, gl::GLfloat> PolygonOffset; ///< Wrapper for glPolygonOffset
+    static Function<void, gl::GLfloat, gl::GLfloat, gl::GLfloat> PolygonOffsetClamp; ///< Wrapper for glPolygonOffsetClamp
     static Function<void, gl::GLfloat, gl::GLfloat, gl::GLfloat> PolygonOffsetClampEXT; ///< Wrapper for glPolygonOffsetClampEXT
     static Function<void, gl::GLfloat, gl::GLfloat> PolygonOffsetEXT; ///< Wrapper for glPolygonOffsetEXT
     static Function<void, gl::GLfixed, gl::GLfixed> PolygonOffsetxOES; ///< Wrapper for glPolygonOffsetxOES
@@ -2226,6 +2229,7 @@ public:
     static Function<void, gl::GLuint, gl::GLuint, const gl::GLuint *, gl::GLuint, const gl::GLuint *, const gl::GLenum *> SignalSemaphoreEXT; ///< Wrapper for glSignalSemaphoreEXT
     static Function<void, gl::GLuint64> SignalVkFenceNV; ///< Wrapper for glSignalVkFenceNV
     static Function<void, gl::GLuint64> SignalVkSemaphoreNV; ///< Wrapper for glSignalVkSemaphoreNV
+    static Function<void, gl::GLuint, const gl::GLchar *, gl::GLuint, const gl::GLuint *, const gl::GLuint *> SpecializeShader; ///< Wrapper for glSpecializeShader
     static Function<void, gl::GLuint, const gl::GLchar *, gl::GLuint, const gl::GLuint *, const gl::GLuint *> SpecializeShaderARB; ///< Wrapper for glSpecializeShaderARB
     static Function<void, gl::GLenum, gl::GLfloat> SpriteParameterfSGIX; ///< Wrapper for glSpriteParameterfSGIX
     static Function<void, gl::GLenum, const gl::GLfloat *> SpriteParameterfvSGIX; ///< Wrapper for glSpriteParameterfvSGIX

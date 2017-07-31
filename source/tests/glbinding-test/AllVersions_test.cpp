@@ -46,6 +46,9 @@
 #include <glbinding/gl45/gl.h>
 #include <glbinding/gl45core/gl.h>
 #include <glbinding/gl45ext/gl.h>
+#include <glbinding/gl46/gl.h>
+#include <glbinding/gl46core/gl.h>
+#include <glbinding/gl46ext/gl.h>
 
 
 TEST(AllVersions, Compilation)
