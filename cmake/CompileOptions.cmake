@@ -32,6 +32,10 @@ set(DEFAULT_PROJECT_OPTIONS
 
 set(DEFAULT_INCLUDE_DIRECTORIES)
 
+if (CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+    include_directories("/usr/local/include")
+endif ()
+
 
 # 
 # Libraries
