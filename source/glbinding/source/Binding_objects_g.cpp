@@ -27,6 +27,7 @@ Function<void, GLsizei, GLuint *> Binding::GenProgramsARB("glGenProgramsARB");
 Function<void, GLsizei, GLuint *> Binding::GenProgramsNV("glGenProgramsNV");
 Function<void, GLsizei, GLuint *> Binding::GenQueries("glGenQueries");
 Function<void, GLsizei, GLuint *> Binding::GenQueriesARB("glGenQueriesARB");
+Function<void, GLsizei, GLint *> Binding::GenQueryResourceTagNV("glGenQueryResourceTagNV");
 Function<void, GLsizei, GLuint *> Binding::GenRenderbuffers("glGenRenderbuffers");
 Function<void, GLsizei, GLuint *> Binding::GenRenderbuffersEXT("glGenRenderbuffersEXT");
 Function<void, GLsizei, GLuint *> Binding::GenSamplers("glGenSamplers");

@@ -191,6 +191,11 @@ void glDeleteQueriesARB(GLsizei n, const GLuint * ids)
     return Binding::DeleteQueriesARB(n, ids);
 }
 
+void glDeleteQueryResourceTagNV(GLsizei n, const GLint * tagIds)
+{
+    return Binding::DeleteQueryResourceTagNV(n, tagIds);
+}
+
 void glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers)
 {
     return Binding::DeleteRenderbuffers(n, renderbuffers);

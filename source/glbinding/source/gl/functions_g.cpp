@@ -101,6 +101,11 @@ void glGenQueriesARB(GLsizei n, GLuint * ids)
     return Binding::GenQueriesARB(n, ids);
 }
 
+void glGenQueryResourceTagNV(GLsizei n, GLint * tagIds)
+{
+    return Binding::GenQueryResourceTagNV(n, tagIds);
+}
+
 void glGenRenderbuffers(GLsizei n, GLuint * renderbuffers)
 {
     return Binding::GenRenderbuffers(n, renderbuffers);

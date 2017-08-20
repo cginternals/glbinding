@@ -6804,11 +6804,12 @@ typedef unsigned int GLhandleARB;
         <enum value="0x8C93" name="GL_ATC_RGBA_EXPLICIT_ALPHA_AMD"/>
             <unused start="0x8C94" end="0x8C9F" vendor="QCOM"/>
     </enums>
-
     <enums namespace="GL" start="0x8CA0" end="0x8CAF" vendor="ARB">
         <enum value="0x8CA0" name="GL_POINT_SPRITE_COORD_ORIGIN"/>
         <enum value="0x8CA1" name="GL_LOWER_LEFT"/>
+        <enum value="0x8CA1" name="GL_LOWER_LEFT_EXT" alias="GL_LOWER_LEFT"/>
         <enum value="0x8CA2" name="GL_UPPER_LEFT"/>
+        <enum value="0x8CA2" name="GL_UPPER_LEFT_EXT" alias="GL_UPPER_LEFT"/>
         <enum value="0x8CA3" name="GL_STENCIL_BACK_REF"/>
         <enum value="0x8CA4" name="GL_STENCIL_BACK_VALUE_MASK"/>
         <enum value="0x8CA5" name="GL_STENCIL_BACK_WRITEMASK"/>
@@ -8187,8 +8188,10 @@ typedef unsigned int GLhandleARB;
             <unused start="0x91AB" end="0x91AD" vendor="AMD"/>
         <enum value="0x91AE" name="GL_PIXELS_PER_SAMPLE_PATTERN_X_AMD"/>
         <enum value="0x91AF" name="GL_PIXELS_PER_SAMPLE_PATTERN_Y_AMD"/>
-        <enum value="0x91B0" name="GL_MAX_SHADER_COMPILER_THREADS_ARB"/>
-        <enum value="0x91B1" name="GL_COMPLETION_STATUS_ARB"/>
+        <enum value="0x91B0" name="GL_MAX_SHADER_COMPILER_THREADS_KHR"/>
+        <enum value="0x91B0" name="GL_MAX_SHADER_COMPILER_THREADS_ARB" alias="GL_MAX_SHADER_COMPILER_THREADS_KHR"/>
+        <enum value="0x91B1" name="GL_COMPLETION_STATUS_KHR"/>
+        <enum value="0x91B1" name="GL_COMPLETION_STATUS_ARB" alias="GL_COMPLETION_STATUS_KHR"/>
             <unused start="0x91B2" end="0x91B8" vendor="AMD"/>
         <enum value="0x91B9" name="GL_COMPUTE_SHADER"/>
             <unused start="0x91BA" vendor="AMD"/>
@@ -8523,9 +8526,13 @@ typedef unsigned int GLhandleARB;
         <enum value="0x935A" name="GL_VIEWPORT_SWIZZLE_Z_NV"/>
         <enum value="0x935B" name="GL_VIEWPORT_SWIZZLE_W_NV"/>
         <enum value="0x935C" name="GL_CLIP_ORIGIN"/>
+        <enum value="0x935C" name="GL_CLIP_ORIGIN_EXT" alias="GL_CLIP_ORIGIN"/>
         <enum value="0x935D" name="GL_CLIP_DEPTH_MODE"/>
+        <enum value="0x935D" name="GL_CLIP_DEPTH_MODE_EXT" alias="GL_CLIP_DEPTH_MODE"/>
         <enum value="0x935E" name="GL_NEGATIVE_ONE_TO_ONE"/>
+        <enum value="0x935E" name="GL_NEGATIVE_ONE_TO_ONE_EXT" alias="GL_NEGATIVE_ONE_TO_ONE"/>
         <enum value="0x935F" name="GL_ZERO_TO_ONE"/>
+        <enum value="0x935F" name="GL_ZERO_TO_ONE_EXT" alias="GL_ZERO_TO_ONE"/>
             <unused start="0x9360" end="0x9364" vendor="NV"/>
         <enum value="0x9365" name="GL_CLEAR_TEXTURE"/>
         <enum value="0x9366" name="GL_TEXTURE_REDUCTION_MODE_ARB"/>
@@ -8687,7 +8694,15 @@ typedef unsigned int GLhandleARB;
     </enums>
 
     <enums namespace="GL" start="0x9530" end="0x962F" vendor="NV" comment="Khronos bug 12977">
-            <unused start="0x9530" end="0x9547" vendor="NV"/>
+            <unused start="0x9530" end="0x9539" vendor="NV"/>
+        <enum value="0x9540" name="GL_QUERY_RESOURCE_TYPE_VIDMEM_ALLOC_NV"/>
+            <unused start="0x9541" vendor="NV"/>
+        <enum value="0x9542" name="GL_QUERY_RESOURCE_MEMTYPE_VIDMEM_NV"/>
+            <unused start="0x9543" vendor="NV"/>
+        <enum value="0x9544" name="GL_QUERY_RESOURCE_SYS_RESERVED_NV"/>
+        <enum value="0x9545" name="GL_QUERY_RESOURCE_TEXTURE_NV"/>
+        <enum value="0x9546" name="GL_QUERY_RESOURCE_RENDERBUFFER_NV"/>
+        <enum value="0x9547" name="GL_QUERY_RESOURCE_BUFFEROBJECT_NV"/>
         <enum value="0x9548" name="GL_PER_GPU_STORAGE_NV"/>
         <enum value="0x9549" name="GL_MULTICAST_PROGRAMMABLE_SAMPLE_LOCATION_NV"/>
             <unused start="0x954A" end="0x954C" vendor="NV"/>
@@ -10265,6 +10280,12 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glClipControl</name></proto>
             <param><ptype>GLenum</ptype> <name>origin</name></param>
             <param><ptype>GLenum</ptype> <name>depth</name></param>
+        </command>
+        <command>
+            <proto>void <name>glClipControlEXT</name></proto>
+            <param><ptype>GLenum</ptype> <name>origin</name></param>
+            <param><ptype>GLenum</ptype> <name>depth</name></param>
+            <alias name="glClipControlEXT"/>
         </command>
         <command>
             <proto>void <name>glClipPlane</name></proto>
@@ -12363,6 +12384,11 @@ typedef unsigned int GLhandleARB;
             <param len="n">const <ptype>GLuint</ptype> *<name>ids</name></param>
         </command>
         <command>
+            <proto>void <name>glDeleteQueryResourceTagNV</name></proto>
+            <param><ptype>GLsizei</ptype> <name>n</name></param>
+            <param len="n">const <ptype>GLint</ptype> *<name>tagIds</name></param>
+        </command>
+        <command>
             <proto>void <name>glDeleteRenderbuffers</name></proto>
             <param><ptype>GLsizei</ptype> <name>n</name></param>
             <param len="n">const <ptype>GLuint</ptype> *<name>renderbuffers</name></param>
@@ -14369,6 +14395,11 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glGenQueriesEXT</name></proto>
             <param><ptype>GLsizei</ptype> <name>n</name></param>
             <param len="n"><ptype>GLuint</ptype> *<name>ids</name></param>
+        </command>
+        <command>
+            <proto>void <name>glGenQueryResourceTagNV</name></proto>
+            <param><ptype>GLsizei</ptype> <name>n</name></param>
+            <param len="n"><ptype>GLint</ptype> *<name>tagIds</name></param>
         </command>
         <command>
             <proto>void <name>glGenRenderbuffers</name></proto>
@@ -19341,8 +19372,13 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLfloat</ptype> <name>z</name></param>
         </command>
         <command>
+            <proto>void <name>glMaxShaderCompilerThreadsKHR</name></proto>
+            <param><ptype>GLuint</ptype> <name>count</name></param>
+        </command>
+        <command>
             <proto>void <name>glMaxShaderCompilerThreadsARB</name></proto>
             <param><ptype>GLuint</ptype> <name>count</name></param>
+            <alias name="glMaxShaderCompilerThreadsKHR"/>
         </command>
         <command>
             <proto>void <name>glMemoryBarrier</name></proto>
@@ -23437,6 +23473,18 @@ typedef unsigned int GLhandleARB;
             <param><ptype>GLuint</ptype> <name>id</name></param>
             <param><ptype>GLenum</ptype> <name>pname</name></param>
             <param group="OcclusionQueryEventMaskAMD"><ptype>GLuint</ptype> <name>param</name></param>
+        </command>
+        <command>
+            <proto>GLint <name>glQueryResourceNV</name></proto>
+            <param><ptype>GLenum</ptype> <name>queryType</name></param>
+            <param><ptype>GLint</ptype> <name>tagId</name></param>
+            <param><ptype>GLuint</ptype> <name>bufSize</name></param>
+            <param><ptype>GLint</ptype> *<name>buffer</name></param>
+        </command>
+        <command>
+            <proto>void <name>glQueryResourceTagNV</name></proto>
+            <param><ptype>GLint</ptype> <name>tagId</name></param>
+            <param>const <ptype>GLchar</ptype> *<name>tagString</name></param>
         </command>
         <command>
             <proto>void <name>glRasterPos2d</name></proto>
@@ -34900,6 +34948,12 @@ typedef unsigned int GLhandleARB;
 
     <!-- SECTION: OpenGL ES 1.0/1.1 API interface definitions. -->
     <feature api="gles1" name="GL_VERSION_ES_CM_1_0" number="1.0">
+        <require comment="Not used by the API, for compatibility with old gl.h">
+            <type name="GLbyte"/>
+            <type name="GLclampf"/>
+            <type name="GLshort"/>
+            <type name="GLushort"/>
+        </require>
         <require>
             <!-- Additional API definition macros - ES 1.0/1.1, common/common-lite all in one header -->
             <enum name="GL_VERSION_ES_CL_1_0"/>
@@ -41295,6 +41349,17 @@ typedef unsigned int GLhandleARB;
                 <command name="glClearTexSubImageEXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_clip_control" supported="gles2">
+            <require comment="Port of GL_ARB_clip_control">
+                <command name="glClipControlEXT"/>
+                <enum name="GL_LOWER_LEFT_EXT"/>
+                <enum name="GL_UPPER_LEFT_EXT"/>
+                <enum name="GL_NEGATIVE_ONE_TO_ONE_EXT"/>
+                <enum name="GL_ZERO_TO_ONE_EXT"/>
+                <enum name="GL_CLIP_ORIGIN_EXT"/>
+                <enum name="GL_CLIP_DEPTH_MODE_EXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_clip_cull_distance" supported="gles2">
             <require>
                 <enum name="GL_MAX_CLIP_DISTANCES_EXT"/>
@@ -43150,6 +43215,14 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_COMPRESSED_RGBA_S3TC_DXT5_EXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_texture_compression_s3tc_srgb" supported="gles2">
+            <require>
+                <enum name="GL_COMPRESSED_SRGB_S3TC_DXT1_EXT"/>
+                <enum name="GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT"/>
+                <enum name="GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT"/>
+                <enum name="GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_texture_cube_map" supported="gl" comment="Replaced by ARB_texture_cube_map, but was apparently shipped anyway?">
             <require>
                 <enum name="GL_NORMAL_MAP_EXT"/>
@@ -44346,6 +44419,13 @@ typedef unsigned int GLhandleARB;
             </require>
         </extension>
         <extension name="GL_KHR_texture_compression_astc_sliced_3d" supported="gl|glcore|gles2"/>
+        <extension name="GL_KHR_parallel_shader_compile" supported="gl|glcore|gles2">
+            <require>
+                <enum name="GL_MAX_SHADER_COMPILER_THREADS_KHR"/>
+                <enum name="GL_COMPLETION_STATUS_KHR"/>
+                <command name="glMaxShaderCompilerThreadsKHR"/>
+            </require>
+        </extension>
         <extension name="GL_MESAX_texture_stack" supported="gl">
             <require>
                 <enum name="GL_TEXTURE_1D_STACK_MESAX"/>
@@ -45552,6 +45632,24 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_PRIMITIVE_RESTART_INDEX_NV"/>
                 <command name="glPrimitiveRestartNV"/>
                 <command name="glPrimitiveRestartIndexNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_query_resource" supported="gl">
+            <require>
+                <enum name="GL_QUERY_RESOURCE_TYPE_VIDMEM_ALLOC_NV"/>
+                <enum name="GL_QUERY_RESOURCE_MEMTYPE_VIDMEM_NV"/>
+                <enum name="GL_QUERY_RESOURCE_SYS_RESERVED_NV"/>
+                <enum name="GL_QUERY_RESOURCE_TEXTURE_NV"/>
+                <enum name="GL_QUERY_RESOURCE_RENDERBUFFER_NV"/>
+                <enum name="GL_QUERY_RESOURCE_BUFFEROBJECT_NV"/>
+                <command name="glQueryResourceNV"/>
+            </require>
+        </extension>
+        <extension name="GL_NV_query_resource_tag" supported="gl">
+            <require>
+                <command name="glGenQueryResourceTagNV"/>
+                <command name="glDeleteQueryResourceTagNV"/>
+                <command name="glQueryResourceTagNV"/>
             </require>
         </extension>
         <extension name="GL_NV_read_buffer" supported="gles2">

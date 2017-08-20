@@ -396,6 +396,11 @@ void glMaxShaderCompilerThreadsARB(GLuint count)
     return Binding::MaxShaderCompilerThreadsARB(count);
 }
 
+void glMaxShaderCompilerThreadsKHR(GLuint count)
+{
+    return Binding::MaxShaderCompilerThreadsKHR(count);
+}
+
 void glMemoryBarrier(MemoryBarrierMask barriers)
 {
     return Binding::MemoryBarrier(barriers);

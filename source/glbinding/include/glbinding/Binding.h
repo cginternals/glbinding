@@ -29,7 +29,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t               = std::array<AbstractFunction *, 2918>; ///< The type of the build-in functions collection
+    using array_t               = std::array<AbstractFunction *, 2923>; ///< The type of the build-in functions collection
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
 
     /**
@@ -573,6 +573,7 @@ public:
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteProgramsNV; ///< Wrapper for glDeleteProgramsNV
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteQueries; ///< Wrapper for glDeleteQueries
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteQueriesARB; ///< Wrapper for glDeleteQueriesARB
+    static Function<void, gl::GLsizei, const gl::GLint *> DeleteQueryResourceTagNV; ///< Wrapper for glDeleteQueryResourceTagNV
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteRenderbuffers; ///< Wrapper for glDeleteRenderbuffers
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteRenderbuffersEXT; ///< Wrapper for glDeleteRenderbuffersEXT
     static Function<void, gl::GLsizei, const gl::GLuint *> DeleteSamplers; ///< Wrapper for glDeleteSamplers
@@ -819,6 +820,7 @@ public:
     static Function<void, gl::GLsizei, gl::GLuint *> GenProgramsNV; ///< Wrapper for glGenProgramsNV
     static Function<void, gl::GLsizei, gl::GLuint *> GenQueries; ///< Wrapper for glGenQueries
     static Function<void, gl::GLsizei, gl::GLuint *> GenQueriesARB; ///< Wrapper for glGenQueriesARB
+    static Function<void, gl::GLsizei, gl::GLint *> GenQueryResourceTagNV; ///< Wrapper for glGenQueryResourceTagNV
     static Function<void, gl::GLsizei, gl::GLuint *> GenRenderbuffers; ///< Wrapper for glGenRenderbuffers
     static Function<void, gl::GLsizei, gl::GLuint *> GenRenderbuffersEXT; ///< Wrapper for glGenRenderbuffersEXT
     static Function<void, gl::GLsizei, gl::GLuint *> GenSamplers; ///< Wrapper for glGenSamplers
@@ -1510,6 +1512,7 @@ public:
     static Function<void, gl::GLenum, gl::GLdouble, gl::GLdouble, gl::GLdouble> MatrixTranslatedEXT; ///< Wrapper for glMatrixTranslatedEXT
     static Function<void, gl::GLenum, gl::GLfloat, gl::GLfloat, gl::GLfloat> MatrixTranslatefEXT; ///< Wrapper for glMatrixTranslatefEXT
     static Function<void, gl::GLuint> MaxShaderCompilerThreadsARB; ///< Wrapper for glMaxShaderCompilerThreadsARB
+    static Function<void, gl::GLuint> MaxShaderCompilerThreadsKHR; ///< Wrapper for glMaxShaderCompilerThreadsKHR
     static Function<void, gl::MemoryBarrierMask> MemoryBarrier; ///< Wrapper for glMemoryBarrier
     static Function<void, gl::MemoryBarrierMask> MemoryBarrierByRegion; ///< Wrapper for glMemoryBarrierByRegion
     static Function<void, gl::MemoryBarrierMask> MemoryBarrierEXT; ///< Wrapper for glMemoryBarrierEXT
@@ -2053,6 +2056,8 @@ public:
     static Function<void, gl::GLuint, gl::GLenum> QueryCounter; ///< Wrapper for glQueryCounter
     static Function<gl::GLbitfield, gl::GLfixed *, gl::GLint *> QueryMatrixxOES; ///< Wrapper for glQueryMatrixxOES
     static Function<void, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLuint> QueryObjectParameteruiAMD; ///< Wrapper for glQueryObjectParameteruiAMD
+    static Function<gl::GLint, gl::GLenum, gl::GLint, gl::GLuint, gl::GLint *> QueryResourceNV; ///< Wrapper for glQueryResourceNV
+    static Function<void, gl::GLint, const gl::GLchar *> QueryResourceTagNV; ///< Wrapper for glQueryResourceTagNV
     static Function<void, gl::GLdouble, gl::GLdouble> RasterPos2d; ///< Wrapper for glRasterPos2d
     static Function<void, const gl::GLdouble *> RasterPos2dv; ///< Wrapper for glRasterPos2dv
     static Function<void, gl::GLfloat, gl::GLfloat> RasterPos2f; ///< Wrapper for glRasterPos2f

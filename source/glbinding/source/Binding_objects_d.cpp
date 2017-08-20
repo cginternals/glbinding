@@ -45,6 +45,7 @@ Function<void, GLsizei, const GLuint *> Binding::DeleteProgramsARB("glDeleteProg
 Function<void, GLsizei, const GLuint *> Binding::DeleteProgramsNV("glDeleteProgramsNV");
 Function<void, GLsizei, const GLuint *> Binding::DeleteQueries("glDeleteQueries");
 Function<void, GLsizei, const GLuint *> Binding::DeleteQueriesARB("glDeleteQueriesARB");
+Function<void, GLsizei, const GLint *> Binding::DeleteQueryResourceTagNV("glDeleteQueryResourceTagNV");
 Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffers("glDeleteRenderbuffers");
 Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffersEXT("glDeleteRenderbuffersEXT");
 Function<void, GLsizei, const GLuint *> Binding::DeleteSamplers("glDeleteSamplers");

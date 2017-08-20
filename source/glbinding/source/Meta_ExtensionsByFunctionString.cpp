@@ -354,6 +354,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glDeleteProgramsARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glDeleteProgramsNV", { GLextension::GL_NV_vertex_program } },
     { "glDeleteQueriesARB", { GLextension::GL_ARB_occlusion_query } },
+    { "glDeleteQueryResourceTagNV", { GLextension::GL_NV_query_resource_tag } },
     { "glDeleteRenderbuffers", { GLextension::GL_ARB_framebuffer_object } },
     { "glDeleteRenderbuffersEXT", { GLextension::GL_EXT_framebuffer_object } },
     { "glDeleteSamplers", { GLextension::GL_ARB_sampler_objects } },
@@ -552,6 +553,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glGenProgramsARB", { GLextension::GL_ARB_fragment_program, GLextension::GL_ARB_vertex_program } },
     { "glGenProgramsNV", { GLextension::GL_NV_vertex_program } },
     { "glGenQueriesARB", { GLextension::GL_ARB_occlusion_query } },
+    { "glGenQueryResourceTagNV", { GLextension::GL_NV_query_resource_tag } },
     { "glGenRenderbuffers", { GLextension::GL_ARB_framebuffer_object } },
     { "glGenRenderbuffersEXT", { GLextension::GL_EXT_framebuffer_object } },
     { "glGenSamplers", { GLextension::GL_ARB_sampler_objects } },
@@ -1129,6 +1131,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glMatrixTranslatedEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glMatrixTranslatefEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glMaxShaderCompilerThreadsARB", { GLextension::GL_ARB_parallel_shader_compile } },
+    { "glMaxShaderCompilerThreadsKHR", { GLextension::GL_KHR_parallel_shader_compile } },
     { "glMemoryBarrier", { GLextension::GL_ARB_shader_image_load_store } },
     { "glMemoryBarrierByRegion", { GLextension::GL_ARB_ES3_1_compatibility } },
     { "glMemoryBarrierEXT", { GLextension::GL_EXT_shader_image_load_store } },
@@ -1606,7 +1609,9 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
 {
     { "glQueryCounter", { GLextension::GL_ARB_timer_query } },
     { "glQueryMatrixxOES", { GLextension::GL_OES_query_matrix } },
-    { "glQueryObjectParameteruiAMD", { GLextension::GL_AMD_occlusion_query_event } }
+    { "glQueryObjectParameteruiAMD", { GLextension::GL_AMD_occlusion_query_event } },
+    { "glQueryResourceNV", { GLextension::GL_NV_query_resource } },
+    { "glQueryResourceTagNV", { GLextension::GL_NV_query_resource_tag } }
 };
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_R =
