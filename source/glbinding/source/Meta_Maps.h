@@ -42,6 +42,7 @@ extern const std::unordered_map<gl::FragmentShaderDestModMaskATI, std::string> M
 extern const std::unordered_map<gl::MapBufferUsageMask, std::string> Meta_StringsByMapBufferUsageMask;
 extern const std::unordered_map<gl::MemoryBarrierMask, std::string> Meta_StringsByMemoryBarrierMask;
 extern const std::unordered_map<gl::PathFontStyle, std::string> Meta_StringsByPathFontStyle;
+extern const std::unordered_map<gl::PathMetricMask, std::string> Meta_StringsByPathMetricMask;
 extern const std::unordered_map<gl::PathRenderingMaskNV, std::string> Meta_StringsByPathRenderingMaskNV;
 extern const std::unordered_map<gl::PerformanceQueryCapsMaskINTEL, std::string> Meta_StringsByPerformanceQueryCapsMaskINTEL;
 extern const std::unordered_map<gl::SyncObjectMask, std::string> Meta_StringsBySyncObjectMask;

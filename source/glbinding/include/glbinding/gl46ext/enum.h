@@ -14,6 +14,38 @@ namespace gl46ext
 // import enums to namespace
 
 
+// AttributeType
+
+using gl::GL_FLOAT_VEC2_ARB;
+using gl::GL_FLOAT_VEC3_ARB;
+using gl::GL_FLOAT_VEC4_ARB;
+using gl::GL_INT_VEC2_ARB;
+using gl::GL_INT_VEC3_ARB;
+using gl::GL_INT_VEC4_ARB;
+using gl::GL_BOOL_ARB;
+using gl::GL_BOOL_VEC2_ARB;
+using gl::GL_BOOL_VEC3_ARB;
+using gl::GL_BOOL_VEC4_ARB;
+using gl::GL_FLOAT_MAT2_ARB;
+using gl::GL_FLOAT_MAT3_ARB;
+using gl::GL_FLOAT_MAT4_ARB;
+using gl::GL_SAMPLER_1D_ARB;
+using gl::GL_SAMPLER_2D_ARB;
+using gl::GL_SAMPLER_3D_ARB;
+using gl::GL_SAMPLER_3D_OES;
+using gl::GL_SAMPLER_CUBE_ARB;
+using gl::GL_SAMPLER_1D_SHADOW_ARB;
+using gl::GL_SAMPLER_2D_SHADOW_ARB;
+using gl::GL_SAMPLER_2D_SHADOW_EXT;
+using gl::GL_SAMPLER_2D_RECT_ARB;
+using gl::GL_SAMPLER_2D_RECT_SHADOW_ARB;
+using gl::GL_FLOAT_MAT2x3_NV;
+using gl::GL_FLOAT_MAT2x4_NV;
+using gl::GL_FLOAT_MAT3x2_NV;
+using gl::GL_FLOAT_MAT3x4_NV;
+using gl::GL_FLOAT_MAT4x2_NV;
+using gl::GL_FLOAT_MAT4x3_NV;
+
 // BlendEquationModeEXT
 
 using gl::GL_FUNC_ADD_EXT;
@@ -24,20 +56,6 @@ using gl::GL_FUNC_REVERSE_SUBTRACT_EXT;
 using gl::GL_ALPHA_MIN_SGIX;
 using gl::GL_ALPHA_MAX_SGIX;
 
-// BlendingFactorDest
-
-using gl::GL_CONSTANT_COLOR_EXT;
-using gl::GL_ONE_MINUS_CONSTANT_COLOR_EXT;
-using gl::GL_CONSTANT_ALPHA_EXT;
-using gl::GL_ONE_MINUS_CONSTANT_ALPHA_EXT;
-
-// BlendingFactorSrc
-
-// using gl::GL_CONSTANT_COLOR_EXT; // reuse BlendingFactorDest
-// using gl::GL_ONE_MINUS_CONSTANT_COLOR_EXT; // reuse BlendingFactorDest
-// using gl::GL_CONSTANT_ALPHA_EXT; // reuse BlendingFactorDest
-// using gl::GL_ONE_MINUS_CONSTANT_ALPHA_EXT; // reuse BlendingFactorDest
-
 // ColorTableParameterPNameSGI
 
 using gl::GL_COLOR_TABLE_SCALE;
@@ -45,15 +63,21 @@ using gl::GL_COLOR_TABLE_SCALE_SGI;
 using gl::GL_COLOR_TABLE_BIAS;
 using gl::GL_COLOR_TABLE_BIAS_SGI;
 
+// ColorTableTarget
+
+using gl::GL_COLOR_TABLE;
+using gl::GL_POST_CONVOLUTION_COLOR_TABLE;
+using gl::GL_POST_COLOR_MATRIX_COLOR_TABLE;
+
 // ColorTableTargetSGI
 
 using gl::GL_TEXTURE_COLOR_TABLE_SGI;
 using gl::GL_PROXY_TEXTURE_COLOR_TABLE_SGI;
-using gl::GL_COLOR_TABLE;
+// using gl::GL_COLOR_TABLE; // reuse ColorTableTarget
 using gl::GL_COLOR_TABLE_SGI;
-using gl::GL_POST_CONVOLUTION_COLOR_TABLE;
+// using gl::GL_POST_CONVOLUTION_COLOR_TABLE; // reuse ColorTableTarget
 using gl::GL_POST_CONVOLUTION_COLOR_TABLE_SGI;
-using gl::GL_POST_COLOR_MATRIX_COLOR_TABLE;
+// using gl::GL_POST_COLOR_MATRIX_COLOR_TABLE; // reuse ColorTableTarget
 using gl::GL_POST_COLOR_MATRIX_COLOR_TABLE_SGI;
 using gl::GL_PROXY_COLOR_TABLE;
 using gl::GL_PROXY_COLOR_TABLE_SGI;
@@ -76,11 +100,16 @@ using gl::GL_CONVOLUTION_FILTER_SCALE_EXT;
 using gl::GL_CONVOLUTION_FILTER_BIAS;
 using gl::GL_CONVOLUTION_FILTER_BIAS_EXT;
 
-// ConvolutionTargetEXT
+// ConvolutionTarget
 
 using gl::GL_CONVOLUTION_1D;
-using gl::GL_CONVOLUTION_1D_EXT;
 using gl::GL_CONVOLUTION_2D;
+
+// ConvolutionTargetEXT
+
+// using gl::GL_CONVOLUTION_1D; // reuse ConvolutionTarget
+using gl::GL_CONVOLUTION_1D_EXT;
+// using gl::GL_CONVOLUTION_2D; // reuse ConvolutionTarget
 using gl::GL_CONVOLUTION_2D_EXT;
 
 // EnableCap
@@ -164,39 +193,101 @@ using gl::GL_FRAGMENT_LIGHT_MODEL_TWO_SIDE_SGIX;
 using gl::GL_FRAGMENT_LIGHT_MODEL_AMBIENT_SGIX;
 using gl::GL_FRAGMENT_LIGHT_MODEL_NORMAL_INTERPOLATION_SGIX;
 
+// FragmentOpATI
+
+using gl::GL_MOV_ATI;
+using gl::GL_ADD_ATI;
+using gl::GL_MUL_ATI;
+using gl::GL_SUB_ATI;
+using gl::GL_DOT3_ATI;
+using gl::GL_DOT4_ATI;
+using gl::GL_MAD_ATI;
+using gl::GL_LERP_ATI;
+using gl::GL_CND_ATI;
+using gl::GL_CND0_ATI;
+using gl::GL_DOT2_ADD_ATI;
+
+// FramebufferAttachment
+
+using gl::GL_MAX_COLOR_ATTACHMENTS_EXT;
+using gl::GL_COLOR_ATTACHMENT0_EXT;
+using gl::GL_COLOR_ATTACHMENT1_EXT;
+using gl::GL_COLOR_ATTACHMENT2_EXT;
+using gl::GL_COLOR_ATTACHMENT3_EXT;
+using gl::GL_COLOR_ATTACHMENT4_EXT;
+using gl::GL_COLOR_ATTACHMENT5_EXT;
+using gl::GL_COLOR_ATTACHMENT6_EXT;
+using gl::GL_COLOR_ATTACHMENT7_EXT;
+using gl::GL_COLOR_ATTACHMENT8_EXT;
+using gl::GL_COLOR_ATTACHMENT9_EXT;
+using gl::GL_COLOR_ATTACHMENT10_EXT;
+using gl::GL_COLOR_ATTACHMENT11_EXT;
+using gl::GL_COLOR_ATTACHMENT12_EXT;
+using gl::GL_COLOR_ATTACHMENT13_EXT;
+using gl::GL_COLOR_ATTACHMENT14_EXT;
+using gl::GL_COLOR_ATTACHMENT15_EXT;
+using gl::GL_DEPTH_ATTACHMENT_EXT;
+
 // GetColorTableParameterPNameSGI
 
+// using gl::GL_COLOR_TABLE_SCALE; // reuse ColorTableParameterPNameSGI
 // using gl::GL_COLOR_TABLE_SCALE_SGI; // reuse ColorTableParameterPNameSGI
+// using gl::GL_COLOR_TABLE_BIAS; // reuse ColorTableParameterPNameSGI
 // using gl::GL_COLOR_TABLE_BIAS_SGI; // reuse ColorTableParameterPNameSGI
+using gl::GL_COLOR_TABLE_FORMAT;
 using gl::GL_COLOR_TABLE_FORMAT_SGI;
+using gl::GL_COLOR_TABLE_WIDTH;
 using gl::GL_COLOR_TABLE_WIDTH_SGI;
+using gl::GL_COLOR_TABLE_RED_SIZE;
 using gl::GL_COLOR_TABLE_RED_SIZE_SGI;
+using gl::GL_COLOR_TABLE_GREEN_SIZE;
 using gl::GL_COLOR_TABLE_GREEN_SIZE_SGI;
+using gl::GL_COLOR_TABLE_BLUE_SIZE;
 using gl::GL_COLOR_TABLE_BLUE_SIZE_SGI;
+using gl::GL_COLOR_TABLE_ALPHA_SIZE;
 using gl::GL_COLOR_TABLE_ALPHA_SIZE_SGI;
+using gl::GL_COLOR_TABLE_LUMINANCE_SIZE;
 using gl::GL_COLOR_TABLE_LUMINANCE_SIZE_SGI;
+using gl::GL_COLOR_TABLE_INTENSITY_SIZE;
 using gl::GL_COLOR_TABLE_INTENSITY_SIZE_SGI;
 
 // GetConvolutionParameter
 
+// using gl::GL_CONVOLUTION_BORDER_MODE; // reuse ConvolutionParameterEXT
 // using gl::GL_CONVOLUTION_BORDER_MODE_EXT; // reuse ConvolutionParameterEXT
+// using gl::GL_CONVOLUTION_FILTER_SCALE; // reuse ConvolutionParameterEXT
 // using gl::GL_CONVOLUTION_FILTER_SCALE_EXT; // reuse ConvolutionParameterEXT
+// using gl::GL_CONVOLUTION_FILTER_BIAS; // reuse ConvolutionParameterEXT
 // using gl::GL_CONVOLUTION_FILTER_BIAS_EXT; // reuse ConvolutionParameterEXT
+using gl::GL_CONVOLUTION_FORMAT;
 using gl::GL_CONVOLUTION_FORMAT_EXT;
+using gl::GL_CONVOLUTION_WIDTH;
 using gl::GL_CONVOLUTION_WIDTH_EXT;
+using gl::GL_CONVOLUTION_HEIGHT;
 using gl::GL_CONVOLUTION_HEIGHT_EXT;
+using gl::GL_MAX_CONVOLUTION_WIDTH;
 using gl::GL_MAX_CONVOLUTION_WIDTH_EXT;
+using gl::GL_MAX_CONVOLUTION_HEIGHT;
 using gl::GL_MAX_CONVOLUTION_HEIGHT_EXT;
+using gl::GL_CONVOLUTION_BORDER_COLOR;
 
 // GetHistogramParameterPNameEXT
 
+using gl::GL_HISTOGRAM_WIDTH;
 using gl::GL_HISTOGRAM_WIDTH_EXT;
+using gl::GL_HISTOGRAM_FORMAT;
 using gl::GL_HISTOGRAM_FORMAT_EXT;
+using gl::GL_HISTOGRAM_RED_SIZE;
 using gl::GL_HISTOGRAM_RED_SIZE_EXT;
+using gl::GL_HISTOGRAM_GREEN_SIZE;
 using gl::GL_HISTOGRAM_GREEN_SIZE_EXT;
+using gl::GL_HISTOGRAM_BLUE_SIZE;
 using gl::GL_HISTOGRAM_BLUE_SIZE_EXT;
+using gl::GL_HISTOGRAM_ALPHA_SIZE;
 using gl::GL_HISTOGRAM_ALPHA_SIZE_EXT;
+using gl::GL_HISTOGRAM_LUMINANCE_SIZE;
 using gl::GL_HISTOGRAM_LUMINANCE_SIZE_EXT;
+using gl::GL_HISTOGRAM_SINK;
 using gl::GL_HISTOGRAM_SINK_EXT;
 
 // GetMinmaxParameterPNameEXT
@@ -446,6 +537,18 @@ using gl::GL_PROXY_HISTOGRAM_EXT;
 // InternalFormat
 
 using gl::GL_RGB2_EXT;
+using gl::GL_RGB4_EXT;
+using gl::GL_RGB5_EXT;
+using gl::GL_RGB8_EXT;
+using gl::GL_RGB10_EXT;
+using gl::GL_RGB12_EXT;
+using gl::GL_RGB16_EXT;
+using gl::GL_RGBA4_EXT;
+using gl::GL_RGB5_A1_EXT;
+using gl::GL_RGBA8_EXT;
+using gl::GL_RGB10_A2_EXT;
+using gl::GL_RGBA12_EXT;
+using gl::GL_RGBA16_EXT;
 using gl::GL_DUAL_ALPHA4_SGIS;
 using gl::GL_DUAL_ALPHA8_SGIS;
 using gl::GL_DUAL_ALPHA12_SGIS;
@@ -466,9 +569,36 @@ using gl::GL_QUAD_LUMINANCE4_SGIS;
 using gl::GL_QUAD_LUMINANCE8_SGIS;
 using gl::GL_QUAD_INTENSITY4_SGIS;
 using gl::GL_QUAD_INTENSITY8_SGIS;
+using gl::GL_DEPTH_COMPONENT16_ARB;
 using gl::GL_DEPTH_COMPONENT16_SGIX;
+using gl::GL_DEPTH_COMPONENT24_ARB;
 using gl::GL_DEPTH_COMPONENT24_SGIX;
+using gl::GL_DEPTH_COMPONENT32_ARB;
 using gl::GL_DEPTH_COMPONENT32_SGIX;
+using gl::GL_COMPRESSED_RGB_S3TC_DXT1_EXT;
+using gl::GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
+using gl::GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
+using gl::GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
+using gl::GL_DEPTH_STENCIL_EXT;
+using gl::GL_DEPTH_STENCIL_NV;
+using gl::GL_RGBA32F_ARB;
+using gl::GL_RGBA16F_ARB;
+using gl::GL_RGB16F_ARB;
+using gl::GL_DEPTH24_STENCIL8_EXT;
+using gl::GL_R11F_G11F_B10F_EXT;
+using gl::GL_RGB9_E5_EXT;
+using gl::GL_SRGB_EXT;
+using gl::GL_SRGB8_EXT;
+using gl::GL_SRGB_ALPHA_EXT;
+using gl::GL_SRGB8_ALPHA8_EXT;
+using gl::GL_COMPRESSED_SRGB_S3TC_DXT1_EXT;
+using gl::GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT;
+using gl::GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT;
+using gl::GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT;
+using gl::GL_DEPTH_COMPONENT32F_NV;
+using gl::GL_DEPTH32F_STENCIL8_NV;
+using gl::GL_COMPRESSED_RED_RGTC1_EXT;
+using gl::GL_COMPRESSED_SIGNED_RED_RGTC1_EXT;
 
 // LightEnvParameterSGIX
 
@@ -530,6 +660,93 @@ using gl::GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD;
 using gl::GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD;
 using gl::GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD;
 using gl::GL_QUERY_ALL_EVENT_BITS_AMD;
+
+// PathColor
+
+using gl::GL_PRIMARY_COLOR_NV;
+using gl::GL_SECONDARY_COLOR_NV;
+
+// PathCoverMode
+
+using gl::GL_PATH_FILL_COVER_MODE_NV;
+using gl::GL_CONVEX_HULL_NV;
+using gl::GL_BOUNDING_BOX_NV;
+using gl::GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV;
+
+// PathElementType
+
+using gl::GL_UTF8_NV;
+using gl::GL_UTF16_NV;
+
+// PathFillMode
+
+using gl::GL_PATH_FILL_MODE_NV;
+using gl::GL_COUNT_UP_NV;
+using gl::GL_COUNT_DOWN_NV;
+
+// PathFontTarget
+
+using gl::GL_STANDARD_FONT_NAME_NV;
+using gl::GL_SYSTEM_FONT_NAME_NV;
+using gl::GL_FILE_NAME_NV;
+
+// PathGenMode
+
+using gl::GL_PATH_OBJECT_BOUNDING_BOX_NV;
+
+// PathHandleMissingGlyphs
+
+using gl::GL_SKIP_MISSING_GLYPH_NV;
+using gl::GL_USE_MISSING_GLYPH_NV;
+
+// PathListMode
+
+using gl::GL_ACCUM_ADJACENT_PAIRS_NV;
+using gl::GL_ADJACENT_PAIRS_NV;
+using gl::GL_FIRST_TO_REST_NV;
+
+// PathParameter
+
+using gl::GL_PATH_STROKE_WIDTH_NV;
+using gl::GL_PATH_END_CAPS_NV;
+using gl::GL_PATH_INITIAL_END_CAP_NV;
+using gl::GL_PATH_TERMINAL_END_CAP_NV;
+using gl::GL_PATH_JOIN_STYLE_NV;
+using gl::GL_PATH_MITER_LIMIT_NV;
+using gl::GL_PATH_DASH_CAPS_NV;
+using gl::GL_PATH_INITIAL_DASH_CAP_NV;
+using gl::GL_PATH_TERMINAL_DASH_CAP_NV;
+using gl::GL_PATH_DASH_OFFSET_NV;
+using gl::GL_PATH_CLIENT_LENGTH_NV;
+// using gl::GL_PATH_FILL_MODE_NV; // reuse PathFillMode
+using gl::GL_PATH_FILL_MASK_NV;
+// using gl::GL_PATH_FILL_COVER_MODE_NV; // reuse PathCoverMode
+using gl::GL_PATH_STROKE_COVER_MODE_NV;
+using gl::GL_PATH_STROKE_MASK_NV;
+// using gl::GL_PATH_OBJECT_BOUNDING_BOX_NV; // reuse PathGenMode
+using gl::GL_PATH_COMMAND_COUNT_NV;
+using gl::GL_PATH_COORD_COUNT_NV;
+using gl::GL_PATH_DASH_ARRAY_COUNT_NV;
+using gl::GL_PATH_COMPUTED_LENGTH_NV;
+using gl::GL_PATH_FILL_BOUNDING_BOX_NV;
+using gl::GL_PATH_STROKE_BOUNDING_BOX_NV;
+using gl::GL_PATH_DASH_OFFSET_RESET_NV;
+
+// PathStringFormat
+
+using gl::GL_PATH_FORMAT_SVG_NV;
+using gl::GL_PATH_FORMAT_PS_NV;
+
+// PathTransformType
+
+using gl::GL_TRANSLATE_X_NV;
+using gl::GL_TRANSLATE_Y_NV;
+using gl::GL_TRANSLATE_2D_NV;
+using gl::GL_TRANSLATE_3D_NV;
+using gl::GL_AFFINE_2D_NV;
+using gl::GL_AFFINE_3D_NV;
+using gl::GL_TRANSPOSE_AFFINE_2D_NV;
+using gl::GL_TRANSPOSE_AFFINE_3D_NV;
 
 // PixelFormat
 
@@ -728,13 +945,22 @@ using gl::GL_LINEAR_CLIPMAP_NEAREST_SGIX;
 // TextureParameterName
 
 using gl::GL_TEXTURE_PRIORITY_EXT;
+// using gl::GL_TEXTURE_DEPTH_EXT; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_WRAP_R_EXT; // reuse GetTextureParameter
 // using gl::GL_DETAIL_TEXTURE_LEVEL_SGIS; // reuse GetTextureParameter
 // using gl::GL_DETAIL_TEXTURE_MODE_SGIS; // reuse GetTextureParameter
+// using gl::GL_DETAIL_TEXTURE_FUNC_POINTS_SGIS; // reuse GetTextureParameter
+// using gl::GL_SHARPEN_TEXTURE_FUNC_POINTS_SGIS; // reuse GetTextureParameter
 // using gl::GL_SHADOW_AMBIENT_SGIX; // reuse GetTextureParameter
 // using gl::GL_DUAL_TEXTURE_SELECT_SGIS; // reuse GetTextureParameter
 // using gl::GL_QUAD_TEXTURE_SELECT_SGIS; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_4DSIZE_SGIS; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_WRAP_Q_SGIS; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_MIN_LOD_SGIS; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_MAX_LOD_SGIS; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_BASE_LEVEL_SGIS; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_MAX_LEVEL_SGIS; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_FILTER4_SIZE_SGIS; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_CLIPMAP_CENTER_SGIX; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_CLIPMAP_FRAME_SGIX; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_CLIPMAP_OFFSET_SGIX; // reuse GetTextureParameter
@@ -748,6 +974,9 @@ using gl::GL_TEXTURE_PRIORITY_EXT;
 // using gl::GL_TEXTURE_LOD_BIAS_R_SGIX; // reuse GetTextureParameter
 // using gl::GL_GENERATE_MIPMAP_SGIS; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_COMPARE_SGIX; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_COMPARE_OPERATOR_SGIX; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_LEQUAL_R_SGIX; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_GEQUAL_R_SGIX; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MAX_CLAMP_S_SGIX; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MAX_CLAMP_T_SGIX; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MAX_CLAMP_R_SGIX; // reuse GetTextureParameter
@@ -861,22 +1090,13 @@ using gl::GL_NATIVE_GRAPHICS_HANDLE_PGI;
 using gl::GL_RELATIVE_CONIC_CURVE_TO_NV;
 using gl::GL_EYE_LINEAR_NV;
 using gl::GL_OBJECT_LINEAR_NV;
+using gl::GL_CONSTANT_COLOR_EXT;
+using gl::GL_ONE_MINUS_CONSTANT_COLOR_EXT;
+using gl::GL_CONSTANT_ALPHA_EXT;
+using gl::GL_ONE_MINUS_CONSTANT_ALPHA_EXT;
 using gl::GL_BLEND_COLOR;
 using gl::GL_BLEND_EQUATION;
 using gl::GL_BLEND_EQUATION_RGB_EXT;
-using gl::GL_CONVOLUTION_FORMAT;
-using gl::GL_CONVOLUTION_WIDTH;
-using gl::GL_CONVOLUTION_HEIGHT;
-using gl::GL_MAX_CONVOLUTION_WIDTH;
-using gl::GL_MAX_CONVOLUTION_HEIGHT;
-using gl::GL_HISTOGRAM_WIDTH;
-using gl::GL_HISTOGRAM_FORMAT;
-using gl::GL_HISTOGRAM_RED_SIZE;
-using gl::GL_HISTOGRAM_GREEN_SIZE;
-using gl::GL_HISTOGRAM_BLUE_SIZE;
-using gl::GL_HISTOGRAM_ALPHA_SIZE;
-using gl::GL_HISTOGRAM_LUMINANCE_SIZE;
-using gl::GL_HISTOGRAM_SINK;
 using gl::GL_POLYGON_OFFSET_EXT;
 using gl::GL_POLYGON_OFFSET_FACTOR_EXT;
 using gl::GL_ALPHA4_EXT;
@@ -898,19 +1118,7 @@ using gl::GL_INTENSITY4_EXT;
 using gl::GL_INTENSITY8_EXT;
 using gl::GL_INTENSITY12_EXT;
 using gl::GL_INTENSITY16_EXT;
-using gl::GL_RGB4_EXT;
-using gl::GL_RGB5_EXT;
-using gl::GL_RGB8_EXT;
-using gl::GL_RGB10_EXT;
-using gl::GL_RGB12_EXT;
-using gl::GL_RGB16_EXT;
 using gl::GL_RGBA2_EXT;
-using gl::GL_RGBA4_EXT;
-using gl::GL_RGB5_A1_EXT;
-using gl::GL_RGBA8_EXT;
-using gl::GL_RGB10_A2_EXT;
-using gl::GL_RGBA12_EXT;
-using gl::GL_RGBA16_EXT;
 using gl::GL_TEXTURE_RED_SIZE_EXT;
 using gl::GL_TEXTURE_GREEN_SIZE_EXT;
 using gl::GL_TEXTURE_BLUE_SIZE_EXT;
@@ -969,14 +1177,6 @@ using gl::GL_422_EXT;
 using gl::GL_422_REV_EXT;
 using gl::GL_422_AVERAGE_EXT;
 using gl::GL_422_REV_AVERAGE_EXT;
-using gl::GL_COLOR_TABLE_FORMAT;
-using gl::GL_COLOR_TABLE_WIDTH;
-using gl::GL_COLOR_TABLE_RED_SIZE;
-using gl::GL_COLOR_TABLE_GREEN_SIZE;
-using gl::GL_COLOR_TABLE_BLUE_SIZE;
-using gl::GL_COLOR_TABLE_ALPHA_SIZE;
-using gl::GL_COLOR_TABLE_LUMINANCE_SIZE;
-using gl::GL_COLOR_TABLE_INTENSITY_SIZE;
 using gl::GL_BGR_EXT;
 using gl::GL_BGRA_EXT;
 using gl::GL_COLOR_INDEX1_EXT;
@@ -998,7 +1198,6 @@ using gl::GL_CONSTANT_BORDER;
 using gl::GL_CONSTANT_BORDER_HP;
 using gl::GL_REPLICATE_BORDER;
 using gl::GL_REPLICATE_BORDER_HP;
-using gl::GL_CONVOLUTION_BORDER_COLOR;
 using gl::GL_CONVOLUTION_BORDER_COLOR_HP;
 using gl::GL_IMAGE_SCALE_X_HP;
 using gl::GL_IMAGE_SCALE_Y_HP;
@@ -1021,9 +1220,6 @@ using gl::GL_TEXTURE_LIGHTING_MODE_HP;
 using gl::GL_TEXTURE_POST_SPECULAR_HP;
 using gl::GL_TEXTURE_PRE_SPECULAR_HP;
 using gl::GL_MAX_DEFORMATION_ORDER_SGIX;
-using gl::GL_DEPTH_COMPONENT16_ARB;
-using gl::GL_DEPTH_COMPONENT24_ARB;
-using gl::GL_DEPTH_COMPONENT32_ARB;
 using gl::GL_ARRAY_ELEMENT_LOCK_FIRST_EXT;
 using gl::GL_ARRAY_ELEMENT_LOCK_COUNT_EXT;
 using gl::GL_CULL_VERTEX_EXT;
@@ -1107,10 +1303,6 @@ using gl::GL_RGBA_S3TC;
 using gl::GL_RGBA4_S3TC;
 using gl::GL_RGBA_DXT5_S3TC;
 using gl::GL_RGBA4_DXT5_S3TC;
-using gl::GL_COMPRESSED_RGB_S3TC_DXT1_EXT;
-using gl::GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
-using gl::GL_COMPRESSED_RGBA_S3TC_DXT3_EXT;
-using gl::GL_COMPRESSED_RGBA_S3TC_DXT5_EXT;
 using gl::GL_PARALLEL_ARRAYS_INTEL;
 using gl::GL_VERTEX_ARRAY_PARALLEL_POINTERS_INTEL;
 using gl::GL_NORMAL_ARRAY_PARALLEL_POINTERS_INTEL;
@@ -1212,8 +1404,6 @@ using gl::GL_TEXTURE_BINDING_RECTANGLE_ARB;
 using gl::GL_TEXTURE_BINDING_RECTANGLE_NV;
 using gl::GL_MAX_RECTANGLE_TEXTURE_SIZE_ARB;
 using gl::GL_MAX_RECTANGLE_TEXTURE_SIZE_NV;
-using gl::GL_DEPTH_STENCIL_EXT;
-using gl::GL_DEPTH_STENCIL_NV;
 using gl::GL_UNSIGNED_INT_24_8_EXT;
 using gl::GL_UNSIGNED_INT_24_8_NV;
 using gl::GL_MAX_TEXTURE_LOD_BIAS_EXT;
@@ -1277,8 +1467,6 @@ using gl::GL_VARIABLE_F_NV;
 using gl::GL_VARIABLE_G_NV;
 using gl::GL_CONSTANT_COLOR0_NV;
 using gl::GL_CONSTANT_COLOR1_NV;
-using gl::GL_PRIMARY_COLOR_NV;
-using gl::GL_SECONDARY_COLOR_NV;
 using gl::GL_SPARE0_NV;
 using gl::GL_SPARE1_NV;
 using gl::GL_DISCARD_NV;
@@ -1864,7 +2052,6 @@ using gl::GL_MAX_PROGRAM_TEX_INDIRECTIONS_ARB;
 using gl::GL_MAX_PROGRAM_NATIVE_ALU_INSTRUCTIONS_ARB;
 using gl::GL_MAX_PROGRAM_NATIVE_TEX_INSTRUCTIONS_ARB;
 using gl::GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB;
-using gl::GL_RGBA32F_ARB;
 using gl::GL_RGBA_FLOAT32_APPLE;
 using gl::GL_RGBA_FLOAT32_ATI;
 using gl::GL_RGB32F_ARB;
@@ -1882,10 +2069,8 @@ using gl::GL_LUMINANCE_FLOAT32_ATI;
 using gl::GL_LUMINANCE_ALPHA32F_ARB;
 using gl::GL_LUMINANCE_ALPHA_FLOAT32_APPLE;
 using gl::GL_LUMINANCE_ALPHA_FLOAT32_ATI;
-using gl::GL_RGBA16F_ARB;
 using gl::GL_RGBA_FLOAT16_APPLE;
 using gl::GL_RGBA_FLOAT16_ATI;
-using gl::GL_RGB16F_ARB;
 using gl::GL_RGB_FLOAT16_APPLE;
 using gl::GL_RGB_FLOAT16_ATI;
 using gl::GL_ALPHA16F_ARB;
@@ -2119,7 +2304,6 @@ using gl::GL_PIXEL_PACK_BUFFER_BINDING_ARB;
 using gl::GL_PIXEL_PACK_BUFFER_BINDING_EXT;
 using gl::GL_PIXEL_UNPACK_BUFFER_BINDING_ARB;
 using gl::GL_PIXEL_UNPACK_BUFFER_BINDING_EXT;
-using gl::GL_DEPTH24_STENCIL8_EXT;
 using gl::GL_TEXTURE_STENCIL_SIZE_EXT;
 using gl::GL_STENCIL_TAG_BITS_EXT;
 using gl::GL_STENCIL_CLEAR_TAG_VALUE_EXT;
@@ -2215,17 +2399,6 @@ using gl::GL_CON_28_ATI;
 using gl::GL_CON_29_ATI;
 using gl::GL_CON_30_ATI;
 using gl::GL_CON_31_ATI;
-using gl::GL_MOV_ATI;
-using gl::GL_ADD_ATI;
-using gl::GL_MUL_ATI;
-using gl::GL_SUB_ATI;
-using gl::GL_DOT3_ATI;
-using gl::GL_DOT4_ATI;
-using gl::GL_MAD_ATI;
-using gl::GL_LERP_ATI;
-using gl::GL_CND_ATI;
-using gl::GL_CND0_ATI;
-using gl::GL_DOT2_ADD_ATI;
 using gl::GL_SECONDARY_INTERPOLATOR_ATI;
 using gl::GL_NUM_FRAGMENT_REGISTERS_ATI;
 using gl::GL_NUM_FRAGMENT_CONSTANTS_ATI;
@@ -2295,27 +2468,6 @@ using gl::GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS_ARB;
 using gl::GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS_ARB;
 using gl::GL_OBJECT_TYPE_ARB;
 using gl::GL_OBJECT_SUBTYPE_ARB;
-using gl::GL_FLOAT_VEC2_ARB;
-using gl::GL_FLOAT_VEC3_ARB;
-using gl::GL_FLOAT_VEC4_ARB;
-using gl::GL_INT_VEC2_ARB;
-using gl::GL_INT_VEC3_ARB;
-using gl::GL_INT_VEC4_ARB;
-using gl::GL_BOOL_ARB;
-using gl::GL_BOOL_VEC2_ARB;
-using gl::GL_BOOL_VEC3_ARB;
-using gl::GL_BOOL_VEC4_ARB;
-using gl::GL_FLOAT_MAT2_ARB;
-using gl::GL_FLOAT_MAT3_ARB;
-using gl::GL_FLOAT_MAT4_ARB;
-using gl::GL_SAMPLER_1D_ARB;
-using gl::GL_SAMPLER_2D_ARB;
-using gl::GL_SAMPLER_3D_ARB;
-using gl::GL_SAMPLER_CUBE_ARB;
-using gl::GL_SAMPLER_1D_SHADOW_ARB;
-using gl::GL_SAMPLER_2D_SHADOW_ARB;
-using gl::GL_SAMPLER_2D_RECT_ARB;
-using gl::GL_SAMPLER_2D_RECT_SHADOW_ARB;
 using gl::GL_OBJECT_DELETE_STATUS_ARB;
 using gl::GL_OBJECT_COMPILE_STATUS_ARB;
 using gl::GL_OBJECT_LINK_STATUS_ARB;
@@ -2376,16 +2528,10 @@ using gl::GL_TEXTURE_BUFFER_FORMAT_ARB;
 using gl::GL_TEXTURE_BUFFER_FORMAT_EXT;
 using gl::GL_SAMPLE_SHADING_ARB;
 using gl::GL_MIN_SAMPLE_SHADING_VALUE_ARB;
-using gl::GL_R11F_G11F_B10F_EXT;
 using gl::GL_UNSIGNED_INT_10F_11F_11F_REV_EXT;
 using gl::GL_RGBA_SIGNED_COMPONENTS_EXT;
-using gl::GL_RGB9_E5_EXT;
 using gl::GL_UNSIGNED_INT_5_9_9_9_REV_EXT;
 using gl::GL_TEXTURE_SHARED_SIZE_EXT;
-using gl::GL_SRGB_EXT;
-using gl::GL_SRGB8_EXT;
-using gl::GL_SRGB_ALPHA_EXT;
-using gl::GL_SRGB8_ALPHA8_EXT;
 using gl::GL_SLUMINANCE_ALPHA_EXT;
 using gl::GL_SLUMINANCE8_ALPHA8_EXT;
 using gl::GL_SLUMINANCE_EXT;
@@ -2394,10 +2540,6 @@ using gl::GL_COMPRESSED_SRGB_EXT;
 using gl::GL_COMPRESSED_SRGB_ALPHA_EXT;
 using gl::GL_COMPRESSED_SLUMINANCE_EXT;
 using gl::GL_COMPRESSED_SLUMINANCE_ALPHA_EXT;
-using gl::GL_COMPRESSED_SRGB_S3TC_DXT1_EXT;
-using gl::GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT1_EXT;
-using gl::GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT3_EXT;
-using gl::GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT;
 using gl::GL_COMPRESSED_LUMINANCE_LATC1_EXT;
 using gl::GL_COMPRESSED_SIGNED_LUMINANCE_LATC1_EXT;
 using gl::GL_COMPRESSED_LUMINANCE_ALPHA_LATC2_EXT;
@@ -2466,24 +2608,6 @@ using gl::GL_FRAMEBUFFER_INCOMPLETE_FORMATS_EXT;
 using gl::GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER_EXT;
 using gl::GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER_EXT;
 using gl::GL_FRAMEBUFFER_UNSUPPORTED_EXT;
-using gl::GL_MAX_COLOR_ATTACHMENTS_EXT;
-using gl::GL_COLOR_ATTACHMENT0_EXT;
-using gl::GL_COLOR_ATTACHMENT1_EXT;
-using gl::GL_COLOR_ATTACHMENT2_EXT;
-using gl::GL_COLOR_ATTACHMENT3_EXT;
-using gl::GL_COLOR_ATTACHMENT4_EXT;
-using gl::GL_COLOR_ATTACHMENT5_EXT;
-using gl::GL_COLOR_ATTACHMENT6_EXT;
-using gl::GL_COLOR_ATTACHMENT7_EXT;
-using gl::GL_COLOR_ATTACHMENT8_EXT;
-using gl::GL_COLOR_ATTACHMENT9_EXT;
-using gl::GL_COLOR_ATTACHMENT10_EXT;
-using gl::GL_COLOR_ATTACHMENT11_EXT;
-using gl::GL_COLOR_ATTACHMENT12_EXT;
-using gl::GL_COLOR_ATTACHMENT13_EXT;
-using gl::GL_COLOR_ATTACHMENT14_EXT;
-using gl::GL_COLOR_ATTACHMENT15_EXT;
-using gl::GL_DEPTH_ATTACHMENT_EXT;
 using gl::GL_STENCIL_ATTACHMENT_EXT;
 using gl::GL_FRAMEBUFFER_EXT;
 using gl::GL_RENDERBUFFER_EXT;
@@ -2563,15 +2687,11 @@ using gl::GL_FRAMEBUFFER_INCOMPLETE_LAYER_TARGETS_EXT;
 using gl::GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_ARB;
 using gl::GL_FRAMEBUFFER_INCOMPLETE_LAYER_COUNT_EXT;
 using gl::GL_LAYER_NV;
-using gl::GL_DEPTH_COMPONENT32F_NV;
-using gl::GL_DEPTH32F_STENCIL8_NV;
 using gl::GL_FLOAT_32_UNSIGNED_INT_24_8_REV_NV;
 using gl::GL_SHADER_INCLUDE_ARB;
 using gl::GL_DEPTH_BUFFER_FLOAT_MODE_NV;
 using gl::GL_FRAMEBUFFER_SRGB_EXT;
 using gl::GL_FRAMEBUFFER_SRGB_CAPABLE_EXT;
-using gl::GL_COMPRESSED_RED_RGTC1_EXT;
-using gl::GL_COMPRESSED_SIGNED_RED_RGTC1_EXT;
 using gl::GL_COMPRESSED_RED_GREEN_RGTC2_EXT;
 using gl::GL_COMPRESSED_SIGNED_RED_GREEN_RGTC2_EXT;
 using gl::GL_SAMPLER_1D_ARRAY_EXT;
@@ -2869,67 +2989,18 @@ using gl::GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE_EXT;
 using gl::GL_UNSIGNED_INT_IMAGE_2D_MULTISAMPLE_ARRAY_EXT;
 using gl::GL_MAX_IMAGE_SAMPLES_EXT;
 using gl::GL_IMAGE_BINDING_FORMAT_EXT;
-using gl::GL_PATH_FORMAT_SVG_NV;
-using gl::GL_PATH_FORMAT_PS_NV;
-using gl::GL_STANDARD_FONT_NAME_NV;
-using gl::GL_SYSTEM_FONT_NAME_NV;
-using gl::GL_FILE_NAME_NV;
-using gl::GL_PATH_STROKE_WIDTH_NV;
-using gl::GL_PATH_END_CAPS_NV;
-using gl::GL_PATH_INITIAL_END_CAP_NV;
-using gl::GL_PATH_TERMINAL_END_CAP_NV;
-using gl::GL_PATH_JOIN_STYLE_NV;
-using gl::GL_PATH_MITER_LIMIT_NV;
-using gl::GL_PATH_DASH_CAPS_NV;
-using gl::GL_PATH_INITIAL_DASH_CAP_NV;
-using gl::GL_PATH_TERMINAL_DASH_CAP_NV;
-using gl::GL_PATH_DASH_OFFSET_NV;
-using gl::GL_PATH_CLIENT_LENGTH_NV;
-using gl::GL_PATH_FILL_MODE_NV;
-using gl::GL_PATH_FILL_MASK_NV;
-using gl::GL_PATH_FILL_COVER_MODE_NV;
-using gl::GL_PATH_STROKE_COVER_MODE_NV;
-using gl::GL_PATH_STROKE_MASK_NV;
-using gl::GL_COUNT_UP_NV;
-using gl::GL_COUNT_DOWN_NV;
-using gl::GL_PATH_OBJECT_BOUNDING_BOX_NV;
-using gl::GL_CONVEX_HULL_NV;
-using gl::GL_BOUNDING_BOX_NV;
-using gl::GL_TRANSLATE_X_NV;
-using gl::GL_TRANSLATE_Y_NV;
-using gl::GL_TRANSLATE_2D_NV;
-using gl::GL_TRANSLATE_3D_NV;
-using gl::GL_AFFINE_2D_NV;
-using gl::GL_AFFINE_3D_NV;
-using gl::GL_TRANSPOSE_AFFINE_2D_NV;
-using gl::GL_TRANSPOSE_AFFINE_3D_NV;
-using gl::GL_UTF8_NV;
-using gl::GL_UTF16_NV;
-using gl::GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV;
-using gl::GL_PATH_COMMAND_COUNT_NV;
-using gl::GL_PATH_COORD_COUNT_NV;
-using gl::GL_PATH_DASH_ARRAY_COUNT_NV;
-using gl::GL_PATH_COMPUTED_LENGTH_NV;
-using gl::GL_PATH_FILL_BOUNDING_BOX_NV;
-using gl::GL_PATH_STROKE_BOUNDING_BOX_NV;
 using gl::GL_SQUARE_NV;
 using gl::GL_ROUND_NV;
 using gl::GL_TRIANGULAR_NV;
 using gl::GL_BEVEL_NV;
 using gl::GL_MITER_REVERT_NV;
 using gl::GL_MITER_TRUNCATE_NV;
-using gl::GL_SKIP_MISSING_GLYPH_NV;
-using gl::GL_USE_MISSING_GLYPH_NV;
 using gl::GL_PATH_ERROR_POSITION_NV;
 using gl::GL_PATH_FOG_GEN_MODE_NV;
-using gl::GL_ACCUM_ADJACENT_PAIRS_NV;
-using gl::GL_ADJACENT_PAIRS_NV;
-using gl::GL_FIRST_TO_REST_NV;
 using gl::GL_PATH_GEN_MODE_NV;
 using gl::GL_PATH_GEN_COEFF_NV;
 using gl::GL_PATH_GEN_COLOR_FORMAT_NV;
 using gl::GL_PATH_GEN_COMPONENTS_NV;
-using gl::GL_PATH_DASH_OFFSET_RESET_NV;
 using gl::GL_MOVE_TO_RESETS_NV;
 using gl::GL_MOVE_TO_CONTINUES_NV;
 using gl::GL_PATH_STENCIL_FUNC_NV;

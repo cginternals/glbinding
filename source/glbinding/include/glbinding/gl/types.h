@@ -86,6 +86,8 @@ enum class FragmentShaderDestMaskATI : unsigned int;
 enum class FragmentShaderDestModMaskATI : unsigned int;
 enum class MapBufferUsageMask : unsigned int;
 enum class MemoryBarrierMask : unsigned int;
+enum class PathFontStyle : unsigned int;
+enum class PathMetricMask : unsigned int;
 enum class PathRenderingMaskNV : unsigned int;
 enum class PerformanceQueryCapsMaskINTEL : unsigned int;
 enum class SyncObjectMask : unsigned int;
@@ -95,7 +97,6 @@ enum class VertexHintsMaskPGI : unsigned int;
 enum class UnusedMask : unsigned int;
 enum class BufferAccessMask : unsigned int;
 enum class BufferStorageMask : unsigned int;
-enum class PathFontStyle : unsigned int;
 
 } // namespace gl
 
@@ -987,6 +988,150 @@ namespace std
 
 
 template<>
+struct hash<gl::PathFontStyle>
+{
+    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
+    {
+        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
+{
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
+}
+
+inline PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
+{
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
+}
+
+inline PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
+{
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
+}
+
+inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
+struct hash<gl::PathMetricMask>
+{
+    hash<std::underlying_type<gl::PathMetricMask>::type>::result_type operator()(const gl::PathMetricMask & t) const
+    {
+        return hash<std::underlying_type<gl::PathMetricMask>::type>()(static_cast<std::underlying_type<gl::PathMetricMask>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline PathMetricMask operator|(const PathMetricMask & a, const PathMetricMask & b)
+{
+    return static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) | static_cast<std::underlying_type<PathMetricMask>::type>(b));
+}
+
+inline PathMetricMask & operator|=(PathMetricMask & a, const PathMetricMask & b)
+{
+    a = static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) | static_cast<std::underlying_type<PathMetricMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathMetricMask operator&(const PathMetricMask & a, const PathMetricMask & b)
+{
+    return static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) & static_cast<std::underlying_type<PathMetricMask>::type>(b));
+}
+
+inline PathMetricMask & operator&=(PathMetricMask & a, const PathMetricMask & b)
+{
+    a = static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) & static_cast<std::underlying_type<PathMetricMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathMetricMask operator^(const PathMetricMask & a, const PathMetricMask & b)
+{
+    return static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) ^ static_cast<std::underlying_type<PathMetricMask>::type>(b));
+}
+
+inline PathMetricMask & operator^=(PathMetricMask & a, const PathMetricMask & b)
+{
+    a = static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) ^ static_cast<std::underlying_type<PathMetricMask>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
 struct hash<gl::PathRenderingMaskNV>
 {
     hash<std::underlying_type<gl::PathRenderingMaskNV>::type>::result_type operator()(const gl::PathRenderingMaskNV & t) const
@@ -1622,78 +1767,6 @@ GLBINDING_CONSTEXPR inline BufferStorageMask operator^(const BufferStorageMask &
 inline BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorageMask & b)
 {
     a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
-
-    return a;
-}
-
-
-} // namespace gl
-
-
-namespace std
-{
-
-
-template<>
-struct hash<gl::PathFontStyle>
-{
-    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
-    {
-        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
-    }
-};
-
-
-} // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
-GLBINDING_CONSTEXPR inline PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
-{
-    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
-}
-
-inline PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
-{
-    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
-{
-    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
-}
-
-inline PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
-{
-    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
-{
-    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
-}
-
-inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
-{
-    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
 
     return a;
 }

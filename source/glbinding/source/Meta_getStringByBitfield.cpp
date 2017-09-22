@@ -174,6 +174,17 @@ const std::string & Meta::getString(const PathFontStyle glbitfield)
 }
 
 
+const std::string & Meta::getString(const PathMetricMask glbitfield)
+{
+    const auto i = Meta_StringsByPathMetricMask.find(glbitfield);
+    if (i != Meta_StringsByPathMetricMask.end())
+    {
+        return i->second;
+    }
+    return none;
+}
+
+
 const std::string & Meta::getString(const PathRenderingMaskNV glbitfield)
 {
     const auto i = Meta_StringsByPathRenderingMaskNV.find(glbitfield);

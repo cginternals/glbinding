@@ -37,7 +37,7 @@ using gl::GL_ALWAYS;
 
 using gl::GL_LOGIC_OP;
 
-// BlendingFactorDest
+// BlendingFactor
 
 using gl::GL_ZERO;
 using gl::GL_SRC_COLOR;
@@ -46,19 +46,21 @@ using gl::GL_SRC_ALPHA;
 using gl::GL_ONE_MINUS_SRC_ALPHA;
 using gl::GL_DST_ALPHA;
 using gl::GL_ONE_MINUS_DST_ALPHA;
-using gl::GL_ONE;
-
-// BlendingFactorSrc
-
-// using gl::GL_ZERO; // reuse BlendingFactorDest
-// using gl::GL_SRC_ALPHA; // reuse BlendingFactorDest
-// using gl::GL_ONE_MINUS_SRC_ALPHA; // reuse BlendingFactorDest
-// using gl::GL_DST_ALPHA; // reuse BlendingFactorDest
-// using gl::GL_ONE_MINUS_DST_ALPHA; // reuse BlendingFactorDest
 using gl::GL_DST_COLOR;
 using gl::GL_ONE_MINUS_DST_COLOR;
 using gl::GL_SRC_ALPHA_SATURATE;
-// using gl::GL_ONE; // reuse BlendingFactorDest
+using gl::GL_ONE;
+
+// BlitFramebufferFilter
+
+using gl::GL_NEAREST;
+using gl::GL_LINEAR;
+
+// Buffer
+
+using gl::GL_COLOR;
+using gl::GL_DEPTH;
+using gl::GL_STENCIL;
 
 // ClipPlaneName
 
@@ -75,11 +77,24 @@ using gl::GL_CLIP_PLANE4;
 using gl::GL_CLIP_DISTANCE5;
 using gl::GL_CLIP_PLANE5;
 
-// ColorMaterialFace
+// ColorBuffer
 
+using gl::GL_NONE;
+using gl::GL_FRONT_LEFT;
+using gl::GL_FRONT_RIGHT;
+using gl::GL_BACK_LEFT;
+using gl::GL_BACK_RIGHT;
 using gl::GL_FRONT;
 using gl::GL_BACK;
+using gl::GL_LEFT;
+using gl::GL_RIGHT;
 using gl::GL_FRONT_AND_BACK;
+
+// ColorMaterialFace
+
+// using gl::GL_FRONT; // reuse ColorBuffer
+// using gl::GL_BACK; // reuse ColorBuffer
+// using gl::GL_FRONT_AND_BACK; // reuse ColorBuffer
 
 // ColorMaterialParameter
 
@@ -102,9 +117,21 @@ using gl::GL_DOUBLE;
 
 // CullFaceMode
 
-// using gl::GL_FRONT; // reuse ColorMaterialFace
-// using gl::GL_BACK; // reuse ColorMaterialFace
-// using gl::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+// using gl::GL_FRONT; // reuse ColorBuffer
+// using gl::GL_BACK; // reuse ColorBuffer
+// using gl::GL_FRONT_AND_BACK; // reuse ColorBuffer
+
+// DebugSeverity
+
+using gl::GL_DONT_CARE;
+
+// DebugSource
+
+// using gl::GL_DONT_CARE; // reuse DebugSeverity
+
+// DebugType
+
+// using gl::GL_DONT_CARE; // reuse DebugSeverity
 
 // DepthFunction
 
@@ -119,16 +146,16 @@ using gl::GL_DOUBLE;
 
 // DrawBufferMode
 
-using gl::GL_NONE;
-using gl::GL_FRONT_LEFT;
-using gl::GL_FRONT_RIGHT;
-using gl::GL_BACK_LEFT;
-using gl::GL_BACK_RIGHT;
-// using gl::GL_FRONT; // reuse ColorMaterialFace
-// using gl::GL_BACK; // reuse ColorMaterialFace
-using gl::GL_LEFT;
-using gl::GL_RIGHT;
-// using gl::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+// using gl::GL_NONE; // reuse ColorBuffer
+// using gl::GL_FRONT_LEFT; // reuse ColorBuffer
+// using gl::GL_FRONT_RIGHT; // reuse ColorBuffer
+// using gl::GL_BACK_LEFT; // reuse ColorBuffer
+// using gl::GL_BACK_RIGHT; // reuse ColorBuffer
+// using gl::GL_FRONT; // reuse ColorBuffer
+// using gl::GL_BACK; // reuse ColorBuffer
+// using gl::GL_LEFT; // reuse ColorBuffer
+// using gl::GL_RIGHT; // reuse ColorBuffer
+// using gl::GL_FRONT_AND_BACK; // reuse ColorBuffer
 using gl::GL_AUX0;
 using gl::GL_AUX1;
 using gl::GL_AUX2;
@@ -247,15 +274,23 @@ using gl::GL_4D_COLOR_TEXTURE;
 
 using gl::GL_EXP;
 using gl::GL_EXP2;
-using gl::GL_LINEAR;
+// using gl::GL_LINEAR; // reuse BlitFramebufferFilter
 
-// FogParameter
+// FogPName
 
 using gl::GL_FOG_INDEX;
 using gl::GL_FOG_DENSITY;
 using gl::GL_FOG_START;
 using gl::GL_FOG_END;
 using gl::GL_FOG_MODE;
+
+// FogParameter
+
+// using gl::GL_FOG_INDEX; // reuse FogPName
+// using gl::GL_FOG_DENSITY; // reuse FogPName
+// using gl::GL_FOG_START; // reuse FogPName
+// using gl::GL_FOG_END; // reuse FogPName
+// using gl::GL_FOG_MODE; // reuse FogPName
 using gl::GL_FOG_COLOR;
 
 // FogPointerTypeEXT
@@ -272,6 +307,11 @@ using gl::GL_FOG_COLOR;
 
 using gl::GL_CW;
 using gl::GL_CCW;
+
+// GetFramebufferParameter
+
+using gl::GL_DOUBLEBUFFER;
+using gl::GL_STEREO;
 
 // GetMapQuery
 
@@ -326,11 +366,11 @@ using gl::GL_COLOR_MATERIAL_FACE;
 using gl::GL_COLOR_MATERIAL_PARAMETER;
 // using gl::GL_COLOR_MATERIAL; // reuse EnableCap
 // using gl::GL_FOG; // reuse EnableCap
-// using gl::GL_FOG_INDEX; // reuse FogParameter
-// using gl::GL_FOG_DENSITY; // reuse FogParameter
-// using gl::GL_FOG_START; // reuse FogParameter
-// using gl::GL_FOG_END; // reuse FogParameter
-// using gl::GL_FOG_MODE; // reuse FogParameter
+// using gl::GL_FOG_INDEX; // reuse FogPName
+// using gl::GL_FOG_DENSITY; // reuse FogPName
+// using gl::GL_FOG_START; // reuse FogPName
+// using gl::GL_FOG_END; // reuse FogPName
+// using gl::GL_FOG_MODE; // reuse FogPName
 // using gl::GL_FOG_COLOR; // reuse FogParameter
 using gl::GL_DEPTH_RANGE;
 // using gl::GL_DEPTH_TEST; // reuse EnableCap
@@ -380,8 +420,8 @@ using gl::GL_COLOR_CLEAR_VALUE;
 using gl::GL_COLOR_WRITEMASK;
 using gl::GL_INDEX_MODE;
 using gl::GL_RGBA_MODE;
-using gl::GL_DOUBLEBUFFER;
-using gl::GL_STEREO;
+// using gl::GL_DOUBLEBUFFER; // reuse GetFramebufferParameter
+// using gl::GL_STEREO; // reuse GetFramebufferParameter
 using gl::GL_RENDER_MODE;
 using gl::GL_PERSPECTIVE_CORRECTION_HINT;
 using gl::GL_POINT_SMOOTH_HINT;
@@ -575,9 +615,13 @@ using gl::GL_TEXTURE_INTENSITY_SIZE;
 using gl::GL_TEXTURE_PRIORITY;
 using gl::GL_TEXTURE_RESIDENT;
 
+// GraphicsResetStatus
+
+// using gl::GL_NO_ERROR; // reuse ErrorCode
+
 // HintMode
 
-using gl::GL_DONT_CARE;
+// using gl::GL_DONT_CARE; // reuse DebugSeverity
 using gl::GL_FASTEST;
 using gl::GL_NICEST;
 
@@ -615,6 +659,10 @@ using gl::GL_T4F_C4F_N3F_V4F;
 
 // InternalFormat
 
+using gl::GL_DEPTH_COMPONENT;
+using gl::GL_RED;
+using gl::GL_RGB;
+using gl::GL_RGBA;
 using gl::GL_R3_G3_B2;
 using gl::GL_ALPHA4;
 using gl::GL_ALPHA8;
@@ -641,7 +689,6 @@ using gl::GL_RGB8;
 using gl::GL_RGB10;
 using gl::GL_RGB12;
 using gl::GL_RGB16;
-using gl::GL_RGBA2;
 using gl::GL_RGBA4;
 using gl::GL_RGB5_A1;
 using gl::GL_RGBA8;
@@ -728,6 +775,12 @@ using gl::GL_OR_INVERTED;
 using gl::GL_NAND;
 using gl::GL_SET;
 
+// MapQuery
+
+// using gl::GL_COEFF; // reuse GetMapQuery
+// using gl::GL_ORDER; // reuse GetMapQuery
+// using gl::GL_DOMAIN; // reuse GetMapQuery
+
 // MapTarget
 
 // using gl::GL_MAP1_COLOR_4; // reuse EnableCap
@@ -751,9 +804,9 @@ using gl::GL_SET;
 
 // MaterialFace
 
-// using gl::GL_FRONT; // reuse ColorMaterialFace
-// using gl::GL_BACK; // reuse ColorMaterialFace
-// using gl::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+// using gl::GL_FRONT; // reuse ColorBuffer
+// using gl::GL_BACK; // reuse ColorBuffer
+// using gl::GL_FRONT_AND_BACK; // reuse ColorBuffer
 
 // MaterialParameter
 
@@ -790,11 +843,34 @@ using gl::GL_FILL;
 // using gl::GL_FLOAT; // reuse ColorPointerType
 // using gl::GL_DOUBLE; // reuse ColorPointerType
 
+// ObjectIdentifier
+
+// using gl::GL_TEXTURE; // reuse MatrixMode
+// using gl::GL_VERTEX_ARRAY; // reuse EnableCap
+
+// PathFillMode
+
+// using gl::GL_INVERT; // reuse LogicOp
+
+// PathFontStyle
+
+// using gl::GL_NONE; // reuse ColorBuffer
+
+// PathGenMode
+
+// using gl::GL_NONE; // reuse ColorBuffer
+using gl::GL_EYE_LINEAR;
+using gl::GL_OBJECT_LINEAR;
+
+// PathTransformType
+
+// using gl::GL_NONE; // reuse ColorBuffer
+
 // PixelCopyType
 
-using gl::GL_COLOR;
-using gl::GL_DEPTH;
-using gl::GL_STENCIL;
+// using gl::GL_COLOR; // reuse Buffer
+// using gl::GL_DEPTH; // reuse Buffer
+// using gl::GL_STENCIL; // reuse Buffer
 
 // PixelFormat
 
@@ -802,13 +878,13 @@ using gl::GL_STENCIL;
 // using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
 using gl::GL_COLOR_INDEX;
 using gl::GL_STENCIL_INDEX;
-using gl::GL_DEPTH_COMPONENT;
-using gl::GL_RED;
+// using gl::GL_DEPTH_COMPONENT; // reuse InternalFormat
+// using gl::GL_RED; // reuse InternalFormat
 using gl::GL_GREEN;
 using gl::GL_BLUE;
 using gl::GL_ALPHA;
-using gl::GL_RGB;
-using gl::GL_RGBA;
+// using gl::GL_RGB; // reuse InternalFormat
+// using gl::GL_RGBA; // reuse InternalFormat
 using gl::GL_LUMINANCE;
 using gl::GL_LUMINANCE_ALPHA;
 
@@ -846,9 +922,9 @@ using gl::GL_UNPACK_IMAGE_HEIGHT;
 
 // PixelTexGenMode
 
-// using gl::GL_NONE; // reuse DrawBufferMode
-// using gl::GL_RGB; // reuse PixelFormat
-// using gl::GL_RGBA; // reuse PixelFormat
+// using gl::GL_NONE; // reuse ColorBuffer
+// using gl::GL_RGB; // reuse InternalFormat
+// using gl::GL_RGBA; // reuse InternalFormat
 // using gl::GL_LUMINANCE; // reuse PixelFormat
 // using gl::GL_LUMINANCE_ALPHA; // reuse PixelFormat
 
@@ -906,14 +982,14 @@ using gl::GL_POLYGON;
 
 // ReadBufferMode
 
-// using gl::GL_FRONT_LEFT; // reuse DrawBufferMode
-// using gl::GL_FRONT_RIGHT; // reuse DrawBufferMode
-// using gl::GL_BACK_LEFT; // reuse DrawBufferMode
-// using gl::GL_BACK_RIGHT; // reuse DrawBufferMode
-// using gl::GL_FRONT; // reuse ColorMaterialFace
-// using gl::GL_BACK; // reuse ColorMaterialFace
-// using gl::GL_LEFT; // reuse DrawBufferMode
-// using gl::GL_RIGHT; // reuse DrawBufferMode
+// using gl::GL_FRONT_LEFT; // reuse ColorBuffer
+// using gl::GL_FRONT_RIGHT; // reuse ColorBuffer
+// using gl::GL_BACK_LEFT; // reuse ColorBuffer
+// using gl::GL_BACK_RIGHT; // reuse ColorBuffer
+// using gl::GL_FRONT; // reuse ColorBuffer
+// using gl::GL_BACK; // reuse ColorBuffer
+// using gl::GL_LEFT; // reuse ColorBuffer
+// using gl::GL_RIGHT; // reuse ColorBuffer
 // using gl::GL_AUX0; // reuse DrawBufferMode
 // using gl::GL_AUX1; // reuse DrawBufferMode
 // using gl::GL_AUX2; // reuse DrawBufferMode
@@ -925,6 +1001,17 @@ using gl::GL_RENDER;
 using gl::GL_FEEDBACK;
 using gl::GL_SELECT;
 
+// SamplerParameterName
+
+// using gl::GL_TEXTURE_BORDER_COLOR; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_MAG_FILTER; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_MIN_FILTER; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_WRAP_S; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
+using gl::GL_TEXTURE_WRAP_R;
+using gl::GL_TEXTURE_MIN_LOD;
+using gl::GL_TEXTURE_MAX_LOD;
+
 // ShadingModel
 
 using gl::GL_FLAT;
@@ -932,9 +1019,9 @@ using gl::GL_SMOOTH;
 
 // StencilFaceDirection
 
-// using gl::GL_FRONT; // reuse ColorMaterialFace
-// using gl::GL_BACK; // reuse ColorMaterialFace
-// using gl::GL_FRONT_AND_BACK; // reuse ColorMaterialFace
+// using gl::GL_FRONT; // reuse ColorBuffer
+// using gl::GL_BACK; // reuse ColorBuffer
+// using gl::GL_FRONT_AND_BACK; // reuse ColorBuffer
 
 // StencilFunction
 
@@ -949,7 +1036,7 @@ using gl::GL_SMOOTH;
 
 // StencilOp
 
-// using gl::GL_ZERO; // reuse BlendingFactorDest
+// using gl::GL_ZERO; // reuse BlendingFactor
 // using gl::GL_INVERT; // reuse LogicOp
 using gl::GL_KEEP;
 // using gl::GL_REPLACE; // reuse LightEnvModeSGIX
@@ -995,8 +1082,8 @@ using gl::GL_TEXTURE_ENV;
 
 // TextureGenMode
 
-using gl::GL_EYE_LINEAR;
-using gl::GL_OBJECT_LINEAR;
+// using gl::GL_EYE_LINEAR; // reuse PathGenMode
+// using gl::GL_OBJECT_LINEAR; // reuse PathGenMode
 using gl::GL_SPHERE_MAP;
 
 // TextureGenParameter
@@ -1007,13 +1094,13 @@ using gl::GL_EYE_PLANE;
 
 // TextureMagFilter
 
-using gl::GL_NEAREST;
-// using gl::GL_LINEAR; // reuse FogMode
+// using gl::GL_NEAREST; // reuse BlitFramebufferFilter
+// using gl::GL_LINEAR; // reuse BlitFramebufferFilter
 
 // TextureMinFilter
 
-// using gl::GL_NEAREST; // reuse TextureMagFilter
-// using gl::GL_LINEAR; // reuse FogMode
+// using gl::GL_NEAREST; // reuse BlitFramebufferFilter
+// using gl::GL_LINEAR; // reuse BlitFramebufferFilter
 using gl::GL_NEAREST_MIPMAP_NEAREST;
 using gl::GL_LINEAR_MIPMAP_NEAREST;
 using gl::GL_NEAREST_MIPMAP_LINEAR;
@@ -1021,15 +1108,27 @@ using gl::GL_LINEAR_MIPMAP_LINEAR;
 
 // TextureParameterName
 
+// using gl::GL_TEXTURE_WIDTH; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_HEIGHT; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_COMPONENTS; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_INTERNAL_FORMAT; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_BORDER_COLOR; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_BORDER; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MAG_FILTER; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MIN_FILTER; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_WRAP_S; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_RED_SIZE; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_GREEN_SIZE; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_BLUE_SIZE; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_ALPHA_SIZE; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_LUMINANCE_SIZE; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_INTENSITY_SIZE; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_PRIORITY; // reuse GetTextureParameter
-using gl::GL_TEXTURE_WRAP_R;
-using gl::GL_TEXTURE_MIN_LOD;
-using gl::GL_TEXTURE_MAX_LOD;
+// using gl::GL_TEXTURE_RESIDENT; // reuse GetTextureParameter
+// using gl::GL_TEXTURE_WRAP_R; // reuse SamplerParameterName
+// using gl::GL_TEXTURE_MIN_LOD; // reuse SamplerParameterName
+// using gl::GL_TEXTURE_MAX_LOD; // reuse SamplerParameterName
 using gl::GL_TEXTURE_BASE_LEVEL;
 using gl::GL_TEXTURE_MAX_LEVEL;
 
@@ -1048,6 +1147,30 @@ using gl::GL_CLAMP;
 using gl::GL_REPEAT;
 using gl::GL_CLAMP_TO_EDGE;
 
+// VertexAttribPointerType
+
+// using gl::GL_BYTE; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// using gl::GL_SHORT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// using gl::GL_INT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
+// using gl::GL_FLOAT; // reuse ColorPointerType
+// using gl::GL_DOUBLE; // reuse ColorPointerType
+using gl::GL_UNSIGNED_INT_2_10_10_10_REV;
+
+// VertexAttribType
+
+// using gl::GL_BYTE; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// using gl::GL_SHORT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// using gl::GL_INT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
+// using gl::GL_FLOAT; // reuse ColorPointerType
+// using gl::GL_DOUBLE; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT_2_10_10_10_REV; // reuse VertexAttribPointerType
+
 // VertexPointerType
 
 // using gl::GL_SHORT; // reuse ColorPointerType
@@ -1058,6 +1181,7 @@ using gl::GL_CLAMP_TO_EDGE;
 // __UNGROUPED__
 
 using gl::GL_RESCALE_NORMAL;
+using gl::GL_RGBA2;
 using gl::GL_TEXTURE_DEPTH;
 using gl::GL_MAX_3D_TEXTURE_SIZE;
 using gl::GL_BGR;
@@ -1070,7 +1194,6 @@ using gl::GL_UNSIGNED_SHORT_5_6_5_REV;
 using gl::GL_UNSIGNED_SHORT_4_4_4_4_REV;
 using gl::GL_UNSIGNED_SHORT_1_5_5_5_REV;
 using gl::GL_UNSIGNED_INT_8_8_8_8_REV;
-using gl::GL_UNSIGNED_INT_2_10_10_10_REV;
 
 
 

@@ -38,6 +38,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_AMD_shader_atomic_counter_ops, "GL_AMD_shader_atomic_counter_ops" },
     { GLextension::GL_AMD_shader_ballot, "GL_AMD_shader_ballot" },
     { GLextension::GL_AMD_shader_explicit_vertex_parameter, "GL_AMD_shader_explicit_vertex_parameter" },
+    { GLextension::GL_AMD_shader_image_load_store_lod, "GL_AMD_shader_image_load_store_lod" },
     { GLextension::GL_AMD_shader_stencil_export, "GL_AMD_shader_stencil_export" },
     { GLextension::GL_AMD_shader_trinary_minmax, "GL_AMD_shader_trinary_minmax" },
     { GLextension::GL_AMD_sparse_texture, "GL_AMD_sparse_texture" },

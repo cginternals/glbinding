@@ -270,6 +270,38 @@ namespace gl
 {
 
 
+std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value)
+{
+    stream << bitfieldString<PathFontStyle>(value);
+    return stream;
+}
+
+
+} // namespace gl
+
+
+
+
+namespace gl
+{
+
+
+std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value)
+{
+    stream << bitfieldString<PathMetricMask>(value);
+    return stream;
+}
+
+
+} // namespace gl
+
+
+
+
+namespace gl
+{
+
+
 std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value)
 {
     stream << bitfieldString<PathRenderingMaskNV>(value);
@@ -401,22 +433,6 @@ namespace gl
 std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value)
 {
     stream << bitfieldString<BufferStorageMask>(value);
-    return stream;
-}
-
-
-} // namespace gl
-
-
-
-
-namespace gl
-{
-
-
-std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value)
-{
-    stream << bitfieldString<PathFontStyle>(value);
     return stream;
 }
 

@@ -65,6 +65,8 @@ using gl::FragmentShaderDestMaskATI;
 using gl::FragmentShaderDestModMaskATI;
 using gl::MapBufferUsageMask;
 using gl::MemoryBarrierMask;
+using gl::PathFontStyle;
+using gl::PathMetricMask;
 using gl::PathRenderingMaskNV;
 using gl::PerformanceQueryCapsMaskINTEL;
 using gl::SyncObjectMask;
@@ -74,7 +76,6 @@ using gl::VertexHintsMaskPGI;
 using gl::UnusedMask;
 using gl::BufferAccessMask;
 using gl::BufferStorageMask;
-using gl::PathFontStyle;
 
 
 } // namespace gl42core
