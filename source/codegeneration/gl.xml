@@ -33191,15 +33191,17 @@ typedef unsigned int GLhandleARB;
             <command name="glWindowPos3sv"/>
         </require>
         <require comment="Promoted from ARB_imaging subset to core">
-            <enum name="GL_FUNC_ADD"/>
-            <enum name="GL_FUNC_SUBTRACT"/>
-            <enum name="GL_FUNC_REVERSE_SUBTRACT"/>
-            <enum name="GL_MIN"/>
-            <enum name="GL_MAX"/>
+            <enum name="GL_BLEND_COLOR"/>
+            <enum name="GL_BLEND_EQUATION"/>
             <enum name="GL_CONSTANT_COLOR"/>
             <enum name="GL_ONE_MINUS_CONSTANT_COLOR"/>
             <enum name="GL_CONSTANT_ALPHA"/>
             <enum name="GL_ONE_MINUS_CONSTANT_ALPHA"/>
+            <enum name="GL_FUNC_ADD"/>
+            <enum name="GL_FUNC_REVERSE_SUBTRACT"/>
+            <enum name="GL_FUNC_SUBTRACT"/>
+            <enum name="GL_MIN"/>
+            <enum name="GL_MAX"/>
             <command name="glBlendColor"/>
             <command name="glBlendEquation"/>
         </require>
@@ -40048,17 +40050,17 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_ARB_imaging" supported="gl|glcore" comment="Now treating ARB_imaging as an extension, not a GL API version">
             <require>
+                <enum name="GL_BLEND_COLOR"/>
+                <enum name="GL_BLEND_EQUATION"/>
                 <enum name="GL_CONSTANT_COLOR"/>
                 <enum name="GL_ONE_MINUS_CONSTANT_COLOR"/>
                 <enum name="GL_CONSTANT_ALPHA"/>
                 <enum name="GL_ONE_MINUS_CONSTANT_ALPHA"/>
-                <enum name="GL_BLEND_COLOR"/>
                 <enum name="GL_FUNC_ADD"/>
+                <enum name="GL_FUNC_REVERSE_SUBTRACT"/>
+                <enum name="GL_FUNC_SUBTRACT"/>
                 <enum name="GL_MIN"/>
                 <enum name="GL_MAX"/>
-                <enum name="GL_BLEND_EQUATION"/>
-                <enum name="GL_FUNC_SUBTRACT"/>
-                <enum name="GL_FUNC_REVERSE_SUBTRACT"/>
                 <command name="glBlendColor"/>
                 <command name="glBlendEquation"/>
             </require>

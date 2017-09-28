@@ -1264,8 +1264,10 @@ using gl::GL_LAST_VERTEX_CONVENTION;
 
 // __UNGROUPED__
 
+using gl::GL_BLEND_COLOR;
 using gl::GL_MIN;
 using gl::GL_MAX;
+using gl::GL_BLEND_EQUATION;
 using gl::GL_BLEND_EQUATION_RGB;
 using gl::GL_RGBA2;
 using gl::GL_TEXTURE_DEPTH;
