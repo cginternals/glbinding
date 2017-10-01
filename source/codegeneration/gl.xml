@@ -44552,6 +44552,11 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_MIRROR_CLAMP_TO_BORDER_EXT"/>
             </require>
         </extension>
+        <extension name="GL_EXT_texture_mirror_clamp_to_edge" supported="gles2">
+            <require>
+                <enum name="GL_MIRROR_CLAMP_TO_EDGE_EXT"/>
+            </require>
+        </extension>
         <extension name="GL_EXT_texture_norm16" supported="gles2">
             <require>
                 <enum name="GL_R16_EXT"/>
