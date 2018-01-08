@@ -55,6 +55,7 @@ using gl::GLvdpauSurfaceNV;
 using gl::GLVULKANPROCNV;
 using gl::GLuint_array_2;
 using gl::AttribMask;
+using gl::BufferAccessMask;
 using gl::ClearBufferMask;
 using gl::ClientAttribMask;
 using gl::ContextFlagMask;
@@ -65,6 +66,7 @@ using gl::FragmentShaderDestMaskATI;
 using gl::FragmentShaderDestModMaskATI;
 using gl::MapBufferUsageMask;
 using gl::MemoryBarrierMask;
+using gl::OcclusionQueryEventMaskAMD;
 using gl::PathFontStyle;
 using gl::PathMetricMask;
 using gl::PathRenderingMaskNV;
@@ -74,7 +76,6 @@ using gl::TextureStorageMaskAMD;
 using gl::UseProgramStageMask;
 using gl::VertexHintsMaskPGI;
 using gl::UnusedMask;
-using gl::BufferAccessMask;
 using gl::BufferStorageMask;
 
 

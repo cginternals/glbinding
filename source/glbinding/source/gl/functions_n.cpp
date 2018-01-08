@@ -41,7 +41,7 @@ void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, 
     return Binding::NamedBufferStorageEXT(buffer, size, data, flags);
 }
 
-void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, GLbitfield flags)
+void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags)
 {
     return Binding::NamedBufferStorageExternalEXT(buffer, offset, size, clientBuffer, flags);
 }

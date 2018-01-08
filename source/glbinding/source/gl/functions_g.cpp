@@ -1276,7 +1276,7 @@ void glGetPerfMonitorGroupsAMD(GLint * numGroups, GLsizei groupsSize, GLuint * g
     return Binding::GetPerfMonitorGroupsAMD(numGroups, groupsSize, groups);
 }
 
-void glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, GLvoid * data, GLuint * bytesWritten)
+void glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, void * data, GLuint * bytesWritten)
 {
     return Binding::GetPerfQueryDataINTEL(queryHandle, flags, dataSize, data, bytesWritten);
 }

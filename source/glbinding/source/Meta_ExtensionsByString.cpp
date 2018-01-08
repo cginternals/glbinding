@@ -437,8 +437,10 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_M =
 {
     { "GL_MESAX_texture_stack", GLextension::GL_MESAX_texture_stack },
     { "GL_MESA_pack_invert", GLextension::GL_MESA_pack_invert },
+    { "GL_MESA_program_binary_formats", GLextension::GL_MESA_program_binary_formats },
     { "GL_MESA_resize_buffers", GLextension::GL_MESA_resize_buffers },
     { "GL_MESA_shader_integer_functions", GLextension::GL_MESA_shader_integer_functions },
+    { "GL_MESA_tile_raster_order", GLextension::GL_MESA_tile_raster_order },
     { "GL_MESA_window_pos", GLextension::GL_MESA_window_pos },
     { "GL_MESA_ycbcr_texture", GLextension::GL_MESA_ycbcr_texture }
 };
@@ -463,7 +465,9 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
     { "GL_NV_conditional_render", GLextension::GL_NV_conditional_render },
     { "GL_NV_conservative_raster", GLextension::GL_NV_conservative_raster },
     { "GL_NV_conservative_raster_dilate", GLextension::GL_NV_conservative_raster_dilate },
+    { "GL_NV_conservative_raster_pre_snap", GLextension::GL_NV_conservative_raster_pre_snap },
     { "GL_NV_conservative_raster_pre_snap_triangles", GLextension::GL_NV_conservative_raster_pre_snap_triangles },
+    { "GL_NV_conservative_raster_underestimation", GLextension::GL_NV_conservative_raster_underestimation },
     { "GL_NV_copy_depth_to_color", GLextension::GL_NV_copy_depth_to_color },
     { "GL_NV_copy_image", GLextension::GL_NV_copy_image },
     { "GL_NV_deep_texture3D", GLextension::GL_NV_deep_texture3D },

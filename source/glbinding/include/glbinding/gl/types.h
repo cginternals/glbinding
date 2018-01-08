@@ -76,6 +76,7 @@ using GLvdpauSurfaceNV = GLintptr;
 using GLVULKANPROCNV = void (GL_APIENTRY *)(void);
 using GLuint_array_2 = std::array<GLuint, 2>;
 enum class AttribMask : unsigned int;
+enum class BufferAccessMask : unsigned int;
 enum class ClearBufferMask : unsigned int;
 enum class ClientAttribMask : unsigned int;
 enum class ContextFlagMask : unsigned int;
@@ -86,6 +87,7 @@ enum class FragmentShaderDestMaskATI : unsigned int;
 enum class FragmentShaderDestModMaskATI : unsigned int;
 enum class MapBufferUsageMask : unsigned int;
 enum class MemoryBarrierMask : unsigned int;
+enum class OcclusionQueryEventMaskAMD : unsigned int;
 enum class PathFontStyle : unsigned int;
 enum class PathMetricMask : unsigned int;
 enum class PathRenderingMaskNV : unsigned int;
@@ -95,7 +97,6 @@ enum class TextureStorageMaskAMD : unsigned int;
 enum class UseProgramStageMask : unsigned int;
 enum class VertexHintsMaskPGI : unsigned int;
 enum class UnusedMask : unsigned int;
-enum class BufferAccessMask : unsigned int;
 enum class BufferStorageMask : unsigned int;
 
 } // namespace gl
@@ -255,6 +256,78 @@ GLBINDING_CONSTEXPR inline AttribMask operator^(const AttribMask & a, const Attr
 inline AttribMask & operator^=(AttribMask & a, const AttribMask & b)
 {
     a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
+struct hash<gl::BufferAccessMask>
+{
+    hash<std::underlying_type<gl::BufferAccessMask>::type>::result_type operator()(const gl::BufferAccessMask & t) const
+    {
+        return hash<std::underlying_type<gl::BufferAccessMask>::type>()(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b)
+{
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+}
+
+inline BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
+{
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+}
+
+inline BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
+{
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+}
+
+inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 
     return a;
 }
@@ -988,6 +1061,78 @@ namespace std
 
 
 template<>
+struct hash<gl::OcclusionQueryEventMaskAMD>
+{
+    hash<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>::result_type operator()(const gl::OcclusionQueryEventMaskAMD & t) const
+    {
+        return hash<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>()(static_cast<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline OcclusionQueryEventMaskAMD operator|(const OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    return static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) | static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+}
+
+inline OcclusionQueryEventMaskAMD & operator|=(OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    a = static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) | static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline OcclusionQueryEventMaskAMD operator&(const OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    return static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) & static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+}
+
+inline OcclusionQueryEventMaskAMD & operator&=(OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    a = static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) & static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline OcclusionQueryEventMaskAMD operator^(const OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    return static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) ^ static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+}
+
+inline OcclusionQueryEventMaskAMD & operator^=(OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    a = static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) ^ static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
 struct hash<gl::PathFontStyle>
 {
     hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
@@ -1623,78 +1768,6 @@ GLBINDING_CONSTEXPR inline UnusedMask operator^(const UnusedMask & a, const Unus
 inline UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b)
 {
     a = static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) ^ static_cast<std::underlying_type<UnusedMask>::type>(b));
-
-    return a;
-}
-
-
-} // namespace gl
-
-
-namespace std
-{
-
-
-template<>
-struct hash<gl::BufferAccessMask>
-{
-    hash<std::underlying_type<gl::BufferAccessMask>::type>::result_type operator()(const gl::BufferAccessMask & t) const
-    {
-        return hash<std::underlying_type<gl::BufferAccessMask>::type>()(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(t));
-    }
-};
-
-
-} // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
-GLBINDING_CONSTEXPR inline BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b)
-{
-    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-}
-
-inline BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
-{
-    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
-{
-    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-}
-
-inline BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
-{
-    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
-{
-    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-}
-
-inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
-{
-    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 
     return a;
 }

@@ -163,6 +163,17 @@ const std::string & Meta::getString(const MemoryBarrierMask glbitfield)
 }
 
 
+const std::string & Meta::getString(const OcclusionQueryEventMaskAMD glbitfield)
+{
+    const auto i = Meta_StringsByOcclusionQueryEventMaskAMD.find(glbitfield);
+    if (i != Meta_StringsByOcclusionQueryEventMaskAMD.end())
+    {
+        return i->second;
+    }
+    return none;
+}
+
+
 const std::string & Meta::getString(const PathFontStyle glbitfield)
 {
     const auto i = Meta_StringsByPathFontStyle.find(glbitfield);

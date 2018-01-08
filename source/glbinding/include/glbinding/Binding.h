@@ -290,7 +290,7 @@ public:
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> BufferPageCommitmentARB; ///< Wrapper for glBufferPageCommitmentARB
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> BufferParameteriAPPLE; ///< Wrapper for glBufferParameteriAPPLE
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::BufferStorageMask> BufferStorage; ///< Wrapper for glBufferStorage
-    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::GLbitfield> BufferStorageExternalEXT; ///< Wrapper for glBufferStorageExternalEXT
+    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::MapBufferUsageMask> BufferStorageExternalEXT; ///< Wrapper for glBufferStorageExternalEXT
     static Function<void, gl::GLenum, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> BufferStorageMemEXT; ///< Wrapper for glBufferStorageMemEXT
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData; ///< Wrapper for glBufferSubData
     static Function<void, gl::GLenum, gl::GLintptrARB, gl::GLsizeiptrARB, const void *> BufferSubDataARB; ///< Wrapper for glBufferSubDataARB
@@ -1055,7 +1055,7 @@ public:
     static Function<void, gl::GLuint, gl::GLint *, gl::GLint *, gl::GLsizei, gl::GLuint *> GetPerfMonitorCountersAMD; ///< Wrapper for glGetPerfMonitorCountersAMD
     static Function<void, gl::GLuint, gl::GLsizei, gl::GLsizei *, gl::GLchar *> GetPerfMonitorGroupStringAMD; ///< Wrapper for glGetPerfMonitorGroupStringAMD
     static Function<void, gl::GLint *, gl::GLsizei, gl::GLuint *> GetPerfMonitorGroupsAMD; ///< Wrapper for glGetPerfMonitorGroupsAMD
-    static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLvoid *, gl::GLuint *> GetPerfQueryDataINTEL; ///< Wrapper for glGetPerfQueryDataINTEL
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, void *, gl::GLuint *> GetPerfQueryDataINTEL; ///< Wrapper for glGetPerfQueryDataINTEL
     static Function<void, gl::GLchar *, gl::GLuint *> GetPerfQueryIdByNameINTEL; ///< Wrapper for glGetPerfQueryIdByNameINTEL
     static Function<void, gl::GLuint, gl::GLuint, gl::GLchar *, gl::GLuint *, gl::GLuint *, gl::GLuint *, gl::GLuint *> GetPerfQueryInfoINTEL; ///< Wrapper for glGetPerfQueryInfoINTEL
     static Function<void, gl::GLenum, gl::GLfloat *> GetPixelMapfv; ///< Wrapper for glGetPixelMapfv
@@ -1672,8 +1672,8 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage2DEXT; ///< Wrapper for glMultiTexSubImage2DEXT
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> MultiTexSubImage3DEXT; ///< Wrapper for glMultiTexSubImage3DEXT
     static Function<void> MulticastBarrierNV; ///< Wrapper for glMulticastBarrierNV
-    static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLbitfield, gl::GLenum> MulticastBlitFramebufferNV; ///< Wrapper for glMulticastBlitFramebufferNV
-    static Function<void, gl::GLbitfield, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const gl::GLvoid *> MulticastBufferSubDataNV; ///< Wrapper for glMulticastBufferSubDataNV
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> MulticastBlitFramebufferNV; ///< Wrapper for glMulticastBlitFramebufferNV
+    static Function<void, gl::GLbitfield, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> MulticastBufferSubDataNV; ///< Wrapper for glMulticastBufferSubDataNV
     static Function<void, gl::GLuint, gl::GLbitfield, gl::GLuint, gl::GLuint, gl::GLintptr, gl::GLintptr, gl::GLsizeiptr> MulticastCopyBufferSubDataNV; ///< Wrapper for glMulticastCopyBufferSubDataNV
     static Function<void, gl::GLuint, gl::GLbitfield, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei> MulticastCopyImageSubDataNV; ///< Wrapper for glMulticastCopyImageSubDataNV
     static Function<void, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> MulticastFramebufferSampleLocationsfvNV; ///< Wrapper for glMulticastFramebufferSampleLocationsfvNV
@@ -1688,7 +1688,7 @@ public:
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentEXT; ///< Wrapper for glNamedBufferPageCommitmentEXT
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorage; ///< Wrapper for glNamedBufferStorage
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorageEXT; ///< Wrapper for glNamedBufferStorageEXT
-    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::GLbitfield> NamedBufferStorageExternalEXT; ///< Wrapper for glNamedBufferStorageExternalEXT
+    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::MapBufferUsageMask> NamedBufferStorageExternalEXT; ///< Wrapper for glNamedBufferStorageExternalEXT
     static Function<void, gl::GLuint, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> NamedBufferStorageMemEXT; ///< Wrapper for glNamedBufferStorageMemEXT
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubData; ///< Wrapper for glNamedBufferSubData
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubDataEXT; ///< Wrapper for glNamedBufferSubDataEXT

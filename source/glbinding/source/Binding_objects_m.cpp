@@ -246,8 +246,8 @@ Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage2DEXT("glMultiTexSubImage2DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage3DEXT("glMultiTexSubImage3DEXT");
 Function<void> Binding::MulticastBarrierNV("glMulticastBarrierNV");
-Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLbitfield, GLenum> Binding::MulticastBlitFramebufferNV("glMulticastBlitFramebufferNV");
-Function<void, GLbitfield, GLuint, GLintptr, GLsizeiptr, const GLvoid *> Binding::MulticastBufferSubDataNV("glMulticastBufferSubDataNV");
+Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::MulticastBlitFramebufferNV("glMulticastBlitFramebufferNV");
+Function<void, GLbitfield, GLuint, GLintptr, GLsizeiptr, const void *> Binding::MulticastBufferSubDataNV("glMulticastBufferSubDataNV");
 Function<void, GLuint, GLbitfield, GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr> Binding::MulticastCopyBufferSubDataNV("glMulticastCopyBufferSubDataNV");
 Function<void, GLuint, GLbitfield, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::MulticastCopyImageSubDataNV("glMulticastCopyImageSubDataNV");
 Function<void, GLuint, GLuint, GLuint, GLsizei, const GLfloat *> Binding::MulticastFramebufferSampleLocationsfvNV("glMulticastFramebufferSampleLocationsfvNV");

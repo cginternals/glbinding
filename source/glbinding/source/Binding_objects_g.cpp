@@ -262,7 +262,7 @@ Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetPerfMon
 Function<void, GLuint, GLint *, GLint *, GLsizei, GLuint *> Binding::GetPerfMonitorCountersAMD("glGetPerfMonitorCountersAMD");
 Function<void, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetPerfMonitorGroupStringAMD("glGetPerfMonitorGroupStringAMD");
 Function<void, GLint *, GLsizei, GLuint *> Binding::GetPerfMonitorGroupsAMD("glGetPerfMonitorGroupsAMD");
-Function<void, GLuint, GLuint, GLsizei, GLvoid *, GLuint *> Binding::GetPerfQueryDataINTEL("glGetPerfQueryDataINTEL");
+Function<void, GLuint, GLuint, GLsizei, void *, GLuint *> Binding::GetPerfQueryDataINTEL("glGetPerfQueryDataINTEL");
 Function<void, GLchar *, GLuint *> Binding::GetPerfQueryIdByNameINTEL("glGetPerfQueryIdByNameINTEL");
 Function<void, GLuint, GLuint, GLchar *, GLuint *, GLuint *, GLuint *, GLuint *> Binding::GetPerfQueryInfoINTEL("glGetPerfQueryInfoINTEL");
 Function<void, GLenum, GLfloat *> Binding::GetPixelMapfv("glGetPixelMapfv");

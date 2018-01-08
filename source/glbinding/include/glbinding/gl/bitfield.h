@@ -48,13 +48,21 @@ enum class BufferAccessMask : unsigned int
 {
     GL_NONE_BIT                                = 0x0, // Generic GL_NONE_BIT
     GL_MAP_READ_BIT                            = 0x0001,
+    GL_MAP_READ_BIT_EXT                        = 0x0001,
     GL_MAP_WRITE_BIT                           = 0x0002,
+    GL_MAP_WRITE_BIT_EXT                       = 0x0002,
     GL_MAP_INVALIDATE_RANGE_BIT                = 0x0004,
+    GL_MAP_INVALIDATE_RANGE_BIT_EXT            = 0x0004,
     GL_MAP_INVALIDATE_BUFFER_BIT               = 0x0008,
+    GL_MAP_INVALIDATE_BUFFER_BIT_EXT           = 0x0008,
     GL_MAP_FLUSH_EXPLICIT_BIT                  = 0x0010,
+    GL_MAP_FLUSH_EXPLICIT_BIT_EXT              = 0x0010,
     GL_MAP_UNSYNCHRONIZED_BIT                  = 0x0020,
+    GL_MAP_UNSYNCHRONIZED_BIT_EXT              = 0x0020,
     GL_MAP_PERSISTENT_BIT                      = 0x0040,
+    GL_MAP_PERSISTENT_BIT_EXT                  = 0x0040,
     GL_MAP_COHERENT_BIT                        = 0x0080,
+    GL_MAP_COHERENT_BIT_EXT                    = 0x0080,
 };
 
 
@@ -153,18 +161,29 @@ enum class MapBufferUsageMask : unsigned int
 {
     GL_NONE_BIT                                = 0x0, // Generic GL_NONE_BIT
     GL_MAP_READ_BIT                            = 0x0001, // reuse from BufferAccessMask
+    GL_MAP_READ_BIT_EXT                        = 0x0001, // reuse from BufferAccessMask
     GL_MAP_WRITE_BIT                           = 0x0002, // reuse from BufferAccessMask
+    GL_MAP_WRITE_BIT_EXT                       = 0x0002, // reuse from BufferAccessMask
     GL_MAP_INVALIDATE_RANGE_BIT                = 0x0004, // reuse from BufferAccessMask
+    GL_MAP_INVALIDATE_RANGE_BIT_EXT            = 0x0004, // reuse from BufferAccessMask
     GL_MAP_INVALIDATE_BUFFER_BIT               = 0x0008, // reuse from BufferAccessMask
+    GL_MAP_INVALIDATE_BUFFER_BIT_EXT           = 0x0008, // reuse from BufferAccessMask
     GL_MAP_FLUSH_EXPLICIT_BIT                  = 0x0010, // reuse from BufferAccessMask
+    GL_MAP_FLUSH_EXPLICIT_BIT_EXT              = 0x0010, // reuse from BufferAccessMask
     GL_MAP_UNSYNCHRONIZED_BIT                  = 0x0020, // reuse from BufferAccessMask
+    GL_MAP_UNSYNCHRONIZED_BIT_EXT              = 0x0020, // reuse from BufferAccessMask
     GL_MAP_PERSISTENT_BIT                      = 0x0040, // reuse from BufferAccessMask
+    GL_MAP_PERSISTENT_BIT_EXT                  = 0x0040, // reuse from BufferAccessMask
     GL_MAP_COHERENT_BIT                        = 0x0080, // reuse from BufferAccessMask
+    GL_MAP_COHERENT_BIT_EXT                    = 0x0080, // reuse from BufferAccessMask
     GL_DYNAMIC_STORAGE_BIT                     = 0x0100, // reuse from BufferStorageMask
+    GL_DYNAMIC_STORAGE_BIT_EXT                 = 0x0100,
     GL_CLIENT_STORAGE_BIT                      = 0x0200, // reuse from BufferStorageMask
+    GL_CLIENT_STORAGE_BIT_EXT                  = 0x0200,
     GL_SPARSE_STORAGE_BIT_ARB                  = 0x0400,
     GL_LGPU_SEPARATE_STORAGE_BIT_NVX           = 0x0800,
     GL_PER_GPU_STORAGE_BIT_NV                  = 0x0800,
+    GL_EXTERNAL_STORAGE_BIT_NVX                = 0x2000,
 };
 
 
@@ -198,9 +217,21 @@ enum class MemoryBarrierMask : unsigned int
     GL_ATOMIC_COUNTER_BARRIER_BIT_EXT          = 0x00001000,
     GL_SHADER_STORAGE_BARRIER_BIT              = 0x00002000,
     GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT        = 0x00004000,
+    GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT    = 0x00004000,
     GL_QUERY_BUFFER_BARRIER_BIT                = 0x00008000,
     GL_ALL_BARRIER_BITS                        = 0xFFFFFFFF,
     GL_ALL_BARRIER_BITS_EXT                    = 0xFFFFFFFF,
+};
+
+
+enum class OcclusionQueryEventMaskAMD : unsigned int
+{
+    GL_NONE_BIT                                = 0x0, // Generic GL_NONE_BIT
+    GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD          = 0x00000001,
+    GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD          = 0x00000002,
+    GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD        = 0x00000004,
+    GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD   = 0x00000008,
+    GL_QUERY_ALL_EVENT_BITS_AMD                = 0xFFFFFFFF,
 };
 
 
@@ -284,6 +315,7 @@ enum class SyncObjectMask : unsigned int
 {
     GL_NONE_BIT                                = 0x0, // Generic GL_NONE_BIT
     GL_SYNC_FLUSH_COMMANDS_BIT                 = 0x00000001,
+    GL_SYNC_FLUSH_COMMANDS_BIT_APPLE           = 0x00000001,
 };
 
 
@@ -305,12 +337,21 @@ enum class UseProgramStageMask : unsigned int
 {
     GL_NONE_BIT                                = 0x0, // Generic GL_NONE_BIT
     GL_VERTEX_SHADER_BIT                       = 0x00000001,
+    GL_VERTEX_SHADER_BIT_EXT                   = 0x00000001,
     GL_FRAGMENT_SHADER_BIT                     = 0x00000002,
+    GL_FRAGMENT_SHADER_BIT_EXT                 = 0x00000002,
     GL_GEOMETRY_SHADER_BIT                     = 0x00000004,
+    GL_GEOMETRY_SHADER_BIT_EXT                 = 0x00000004,
+    GL_GEOMETRY_SHADER_BIT_OES                 = 0x00000004,
     GL_TESS_CONTROL_SHADER_BIT                 = 0x00000008,
+    GL_TESS_CONTROL_SHADER_BIT_EXT             = 0x00000008,
+    GL_TESS_CONTROL_SHADER_BIT_OES             = 0x00000008,
     GL_TESS_EVALUATION_SHADER_BIT              = 0x00000010,
+    GL_TESS_EVALUATION_SHADER_BIT_EXT          = 0x00000010,
+    GL_TESS_EVALUATION_SHADER_BIT_OES          = 0x00000010,
     GL_COMPUTE_SHADER_BIT                      = 0x00000020,
     GL_ALL_SHADER_BITS                         = 0xFFFFFFFF,
+    GL_ALL_SHADER_BITS_EXT                     = 0xFFFFFFFF,
 };
 
 
@@ -341,7 +382,7 @@ enum class VertexHintsMaskPGI : unsigned int
 
 // import bitfields to namespace
 
-GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<AttribMask, BufferAccessMask, BufferStorageMask, ClearBufferMask, ClientAttribMask, ContextFlagMask, ContextProfileMask, FfdMaskSGIX, FragmentShaderColorModMaskATI, FragmentShaderDestMaskATI, FragmentShaderDestModMaskATI, MapBufferUsageMask, MemoryBarrierMask, PathFontStyle, PathMetricMask, PathRenderingMaskNV, PerformanceQueryCapsMaskINTEL, SyncObjectMask, TextureStorageMaskAMD, UnusedMask, UseProgramStageMask, VertexHintsMaskPGI> GL_NONE_BIT = AttribMask::GL_NONE_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<AttribMask, BufferAccessMask, BufferStorageMask, ClearBufferMask, ClientAttribMask, ContextFlagMask, ContextProfileMask, FfdMaskSGIX, FragmentShaderColorModMaskATI, FragmentShaderDestMaskATI, FragmentShaderDestModMaskATI, MapBufferUsageMask, MemoryBarrierMask, OcclusionQueryEventMaskAMD, PathFontStyle, PathMetricMask, PathRenderingMaskNV, PerformanceQueryCapsMaskINTEL, SyncObjectMask, TextureStorageMaskAMD, UnusedMask, UseProgramStageMask, VertexHintsMaskPGI> GL_NONE_BIT = AttribMask::GL_NONE_BIT;
 GLBINDING_CONSTEXPR static const PerformanceQueryCapsMaskINTEL GL_PERFQUERY_SINGLE_CONTEXT_INTEL = PerformanceQueryCapsMaskINTEL::GL_PERFQUERY_SINGLE_CONTEXT_INTEL;
 GLBINDING_CONSTEXPR static const UnusedMask GL_UNUSED_BIT = UnusedMask::GL_UNUSED_BIT;
 GLBINDING_CONSTEXPR static const FragmentShaderDestModMaskATI GL_2X_BIT_ATI = FragmentShaderDestModMaskATI::GL_2X_BIT_ATI;
@@ -350,13 +391,16 @@ GLBINDING_CONSTEXPR static const ContextProfileMask GL_CONTEXT_CORE_PROFILE_BIT 
 GLBINDING_CONSTEXPR static const ContextFlagMask GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT = ContextFlagMask::GL_CONTEXT_FLAG_FORWARD_COMPATIBLE_BIT;
 GLBINDING_CONSTEXPR static const AttribMask GL_CURRENT_BIT = AttribMask::GL_CURRENT_BIT;
 GLBINDING_CONSTEXPR static const PerformanceQueryCapsMaskINTEL GL_PERFQUERY_GLOBAL_CONTEXT_INTEL = PerformanceQueryCapsMaskINTEL::GL_PERFQUERY_GLOBAL_CONTEXT_INTEL;
+GLBINDING_CONSTEXPR static const OcclusionQueryEventMaskAMD GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD = OcclusionQueryEventMaskAMD::GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD;
 GLBINDING_CONSTEXPR static const FragmentShaderDestMaskATI GL_RED_BIT_ATI = FragmentShaderDestMaskATI::GL_RED_BIT_ATI;
 GLBINDING_CONSTEXPR static const SyncObjectMask GL_SYNC_FLUSH_COMMANDS_BIT = SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT;
+GLBINDING_CONSTEXPR static const SyncObjectMask GL_SYNC_FLUSH_COMMANDS_BIT_APPLE = SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT_APPLE;
 GLBINDING_CONSTEXPR static const FfdMaskSGIX GL_TEXTURE_DEFORMATION_BIT_SGIX = FfdMaskSGIX::GL_TEXTURE_DEFORMATION_BIT_SGIX;
 GLBINDING_CONSTEXPR static const TextureStorageMaskAMD GL_TEXTURE_STORAGE_SPARSE_BIT_AMD = TextureStorageMaskAMD::GL_TEXTURE_STORAGE_SPARSE_BIT_AMD;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT = MemoryBarrierMask::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT = MemoryBarrierMask::GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT_EXT;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_VERTEX_SHADER_BIT = UseProgramStageMask::GL_VERTEX_SHADER_BIT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_VERTEX_SHADER_BIT_EXT = UseProgramStageMask::GL_VERTEX_SHADER_BIT_EXT;
 GLBINDING_CONSTEXPR static const FragmentShaderDestModMaskATI GL_4X_BIT_ATI = FragmentShaderDestModMaskATI::GL_4X_BIT_ATI;
 GLBINDING_CONSTEXPR static const ClientAttribMask GL_CLIENT_VERTEX_ARRAY_BIT = ClientAttribMask::GL_CLIENT_VERTEX_ARRAY_BIT;
 GLBINDING_CONSTEXPR static const FragmentShaderColorModMaskATI GL_COMP_BIT_ATI = FragmentShaderColorModMaskATI::GL_COMP_BIT_ATI;
@@ -365,16 +409,21 @@ GLBINDING_CONSTEXPR static const ContextFlagMask GL_CONTEXT_FLAG_DEBUG_BIT = Con
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_ELEMENT_ARRAY_BARRIER_BIT = MemoryBarrierMask::GL_ELEMENT_ARRAY_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_ELEMENT_ARRAY_BARRIER_BIT_EXT = MemoryBarrierMask::GL_ELEMENT_ARRAY_BARRIER_BIT_EXT;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_FRAGMENT_SHADER_BIT = UseProgramStageMask::GL_FRAGMENT_SHADER_BIT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_FRAGMENT_SHADER_BIT_EXT = UseProgramStageMask::GL_FRAGMENT_SHADER_BIT_EXT;
 GLBINDING_CONSTEXPR static const FfdMaskSGIX GL_GEOMETRY_DEFORMATION_BIT_SGIX = FfdMaskSGIX::GL_GEOMETRY_DEFORMATION_BIT_SGIX;
 GLBINDING_CONSTEXPR static const FragmentShaderDestMaskATI GL_GREEN_BIT_ATI = FragmentShaderDestMaskATI::GL_GREEN_BIT_ATI;
 GLBINDING_CONSTEXPR static const AttribMask GL_POINT_BIT = AttribMask::GL_POINT_BIT;
+GLBINDING_CONSTEXPR static const OcclusionQueryEventMaskAMD GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD = OcclusionQueryEventMaskAMD::GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD;
 GLBINDING_CONSTEXPR static const FragmentShaderDestModMaskATI GL_8X_BIT_ATI = FragmentShaderDestModMaskATI::GL_8X_BIT_ATI;
 GLBINDING_CONSTEXPR static const FragmentShaderDestMaskATI GL_BLUE_BIT_ATI = FragmentShaderDestMaskATI::GL_BLUE_BIT_ATI;
 GLBINDING_CONSTEXPR static const ContextFlagMask GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT = ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT;
 GLBINDING_CONSTEXPR static const ContextFlagMask GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB = ContextFlagMask::GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_GEOMETRY_SHADER_BIT = UseProgramStageMask::GL_GEOMETRY_SHADER_BIT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_GEOMETRY_SHADER_BIT_EXT = UseProgramStageMask::GL_GEOMETRY_SHADER_BIT_EXT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_GEOMETRY_SHADER_BIT_OES = UseProgramStageMask::GL_GEOMETRY_SHADER_BIT_OES;
 GLBINDING_CONSTEXPR static const AttribMask GL_LINE_BIT = AttribMask::GL_LINE_BIT;
 GLBINDING_CONSTEXPR static const FragmentShaderColorModMaskATI GL_NEGATE_BIT_ATI = FragmentShaderColorModMaskATI::GL_NEGATE_BIT_ATI;
+GLBINDING_CONSTEXPR static const OcclusionQueryEventMaskAMD GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD = OcclusionQueryEventMaskAMD::GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_UNIFORM_BARRIER_BIT = MemoryBarrierMask::GL_UNIFORM_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_UNIFORM_BARRIER_BIT_EXT = MemoryBarrierMask::GL_UNIFORM_BARRIER_BIT_EXT;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_VERTEX23_BIT_PGI = VertexHintsMaskPGI::GL_VERTEX23_BIT_PGI;
@@ -383,7 +432,10 @@ GLBINDING_CONSTEXPR static const ContextFlagMask GL_CONTEXT_FLAG_NO_ERROR_BIT = 
 GLBINDING_CONSTEXPR static const ContextFlagMask GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR = ContextFlagMask::GL_CONTEXT_FLAG_NO_ERROR_BIT_KHR;
 GLBINDING_CONSTEXPR static const FragmentShaderDestModMaskATI GL_HALF_BIT_ATI = FragmentShaderDestModMaskATI::GL_HALF_BIT_ATI;
 GLBINDING_CONSTEXPR static const AttribMask GL_POLYGON_BIT = AttribMask::GL_POLYGON_BIT;
+GLBINDING_CONSTEXPR static const OcclusionQueryEventMaskAMD GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD = OcclusionQueryEventMaskAMD::GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT_EXT = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT_EXT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT_OES = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT_OES;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_TEXTURE_FETCH_BARRIER_BIT = MemoryBarrierMask::GL_TEXTURE_FETCH_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_TEXTURE_FETCH_BARRIER_BIT_EXT = MemoryBarrierMask::GL_TEXTURE_FETCH_BARRIER_BIT_EXT;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_VERTEX4_BIT_PGI = VertexHintsMaskPGI::GL_VERTEX4_BIT_PGI;
@@ -391,6 +443,8 @@ GLBINDING_CONSTEXPR static const AttribMask GL_POLYGON_STIPPLE_BIT = AttribMask:
 GLBINDING_CONSTEXPR static const FragmentShaderDestModMaskATI GL_QUARTER_BIT_ATI = FragmentShaderDestModMaskATI::GL_QUARTER_BIT_ATI;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV = MemoryBarrierMask::GL_SHADER_GLOBAL_ACCESS_BARRIER_BIT_NV;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT = UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT_EXT = UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_EXT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT_OES = UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_OES;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_COMPUTE_SHADER_BIT = UseProgramStageMask::GL_COMPUTE_SHADER_BIT;
 GLBINDING_CONSTEXPR static const FragmentShaderDestModMaskATI GL_EIGHTH_BIT_ATI = FragmentShaderDestModMaskATI::GL_EIGHTH_BIT_ATI;
 GLBINDING_CONSTEXPR static const AttribMask GL_PIXEL_MODE_BIT = AttribMask::GL_PIXEL_MODE_BIT;
@@ -421,46 +475,57 @@ GLBINDING_CONSTEXPR static const AttribMask GL_TRANSFORM_BIT = AttribMask::GL_TR
 GLBINDING_CONSTEXPR static const AttribMask GL_ENABLE_BIT = AttribMask::GL_ENABLE_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_SHADER_STORAGE_BARRIER_BIT = MemoryBarrierMask::GL_SHADER_STORAGE_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT = MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT;
+GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT = MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<AttribMask, ClearBufferMask> GL_COLOR_BUFFER_BIT = AttribMask::GL_COLOR_BUFFER_BIT;
 GLBINDING_CONSTEXPR static const ClearBufferMask GL_COVERAGE_BUFFER_BIT_NV = ClearBufferMask::GL_COVERAGE_BUFFER_BIT_NV;
 GLBINDING_CONSTEXPR static const AttribMask GL_HINT_BIT = AttribMask::GL_HINT_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_QUERY_BUFFER_BARRIER_BIT = MemoryBarrierMask::GL_QUERY_BUFFER_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, BufferStorageMask, MapBufferUsageMask> GL_MAP_READ_BIT = BufferAccessMask::GL_MAP_READ_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_READ_BIT_EXT = BufferAccessMask::GL_MAP_READ_BIT_EXT;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_COLOR3_BIT_PGI = VertexHintsMaskPGI::GL_COLOR3_BIT_PGI;
 GLBINDING_CONSTEXPR static const AttribMask GL_EVAL_BIT = AttribMask::GL_EVAL_BIT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_X_MIN_BOUNDS_BIT_NV = PathMetricMask::GL_FONT_X_MIN_BOUNDS_BIT_NV;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, BufferStorageMask, MapBufferUsageMask> GL_MAP_WRITE_BIT = BufferAccessMask::GL_MAP_WRITE_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_WRITE_BIT_EXT = BufferAccessMask::GL_MAP_WRITE_BIT_EXT;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_COLOR4_BIT_PGI = VertexHintsMaskPGI::GL_COLOR4_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_Y_MIN_BOUNDS_BIT_NV = PathMetricMask::GL_FONT_Y_MIN_BOUNDS_BIT_NV;
 GLBINDING_CONSTEXPR static const AttribMask GL_LIST_BIT = AttribMask::GL_LIST_BIT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_INVALIDATE_RANGE_BIT = BufferAccessMask::GL_MAP_INVALIDATE_RANGE_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_INVALIDATE_RANGE_BIT_EXT = BufferAccessMask::GL_MAP_INVALIDATE_RANGE_BIT_EXT;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_EDGEFLAG_BIT_PGI = VertexHintsMaskPGI::GL_EDGEFLAG_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_X_MAX_BOUNDS_BIT_NV = PathMetricMask::GL_FONT_X_MAX_BOUNDS_BIT_NV;
 GLBINDING_CONSTEXPR static const AttribMask GL_TEXTURE_BIT = AttribMask::GL_TEXTURE_BIT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_INVALIDATE_BUFFER_BIT = BufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_INVALIDATE_BUFFER_BIT_EXT = BufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_Y_MAX_BOUNDS_BIT_NV = PathMetricMask::GL_FONT_Y_MAX_BOUNDS_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_INDEX_BIT_PGI = VertexHintsMaskPGI::GL_INDEX_BIT_PGI;
 GLBINDING_CONSTEXPR static const AttribMask GL_SCISSOR_BIT = AttribMask::GL_SCISSOR_BIT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_FLUSH_EXPLICIT_BIT = BufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_FLUSH_EXPLICIT_BIT_EXT = BufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_UNITS_PER_EM_BIT_NV = PathMetricMask::GL_FONT_UNITS_PER_EM_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_AMBIENT_BIT_PGI = VertexHintsMaskPGI::GL_MAT_AMBIENT_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_UNSYNCHRONIZED_BIT = BufferAccessMask::GL_MAP_UNSYNCHRONIZED_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_UNSYNCHRONIZED_BIT_EXT = BufferAccessMask::GL_MAP_UNSYNCHRONIZED_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_ASCENDER_BIT_NV = PathMetricMask::GL_FONT_ASCENDER_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_AMBIENT_AND_DIFFUSE_BIT_PGI = VertexHintsMaskPGI::GL_MAT_AMBIENT_AND_DIFFUSE_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, BufferStorageMask, MapBufferUsageMask> GL_MAP_PERSISTENT_BIT = BufferAccessMask::GL_MAP_PERSISTENT_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_PERSISTENT_BIT_EXT = BufferAccessMask::GL_MAP_PERSISTENT_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_DESCENDER_BIT_NV = PathMetricMask::GL_FONT_DESCENDER_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_DIFFUSE_BIT_PGI = VertexHintsMaskPGI::GL_MAT_DIFFUSE_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, BufferStorageMask, MapBufferUsageMask> GL_MAP_COHERENT_BIT = BufferAccessMask::GL_MAP_COHERENT_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferAccessMask, MapBufferUsageMask> GL_MAP_COHERENT_BIT_EXT = BufferAccessMask::GL_MAP_COHERENT_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_HEIGHT_BIT_NV = PathMetricMask::GL_FONT_HEIGHT_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_EMISSION_BIT_PGI = VertexHintsMaskPGI::GL_MAT_EMISSION_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathFontStyle, PathRenderingMaskNV> GL_BOLD_BIT_NV = PathFontStyle::GL_BOLD_BIT_NV;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_GLYPH_WIDTH_BIT_NV = PathMetricMask::GL_GLYPH_WIDTH_BIT_NV;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferStorageMask, MapBufferUsageMask> GL_DYNAMIC_STORAGE_BIT = BufferStorageMask::GL_DYNAMIC_STORAGE_BIT;
+GLBINDING_CONSTEXPR static const MapBufferUsageMask GL_DYNAMIC_STORAGE_BIT_EXT = MapBufferUsageMask::GL_DYNAMIC_STORAGE_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV = PathMetricMask::GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_COLOR_INDEXES_BIT_PGI = VertexHintsMaskPGI::GL_MAT_COLOR_INDEXES_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_GLYPH_HEIGHT_BIT_NV = PathMetricMask::GL_GLYPH_HEIGHT_BIT_NV;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathFontStyle, PathRenderingMaskNV> GL_ITALIC_BIT_NV = PathFontStyle::GL_ITALIC_BIT_NV;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferStorageMask, MapBufferUsageMask> GL_CLIENT_STORAGE_BIT = BufferStorageMask::GL_CLIENT_STORAGE_BIT;
+GLBINDING_CONSTEXPR static const MapBufferUsageMask GL_CLIENT_STORAGE_BIT_EXT = MapBufferUsageMask::GL_CLIENT_STORAGE_BIT_EXT;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV = PathMetricMask::GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_SHININESS_BIT_PGI = VertexHintsMaskPGI::GL_MAT_SHININESS_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV = PathMetricMask::GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV;
@@ -477,6 +542,7 @@ GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathR
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_HAS_KERNING_BIT_NV = PathMetricMask::GL_FONT_HAS_KERNING_BIT_NV;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_TEXCOORD1_BIT_PGI = VertexHintsMaskPGI::GL_TEXCOORD1_BIT_PGI;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_GLYPH_VERTICAL_BEARING_X_BIT_NV = PathMetricMask::GL_GLYPH_VERTICAL_BEARING_X_BIT_NV;
+GLBINDING_CONSTEXPR static const MapBufferUsageMask GL_EXTERNAL_STORAGE_BIT_NVX = MapBufferUsageMask::GL_EXTERNAL_STORAGE_BIT_NVX;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<PathMetricMask, PathRenderingMaskNV> GL_FONT_NUM_GLYPH_INDICES_BIT_NV = PathMetricMask::GL_FONT_NUM_GLYPH_INDICES_BIT_NV;
 GLBINDING_CONSTEXPR static const AttribMask GL_MULTISAMPLE_BIT = AttribMask::GL_MULTISAMPLE_BIT;
 GLBINDING_CONSTEXPR static const AttribMask GL_MULTISAMPLE_BIT_3DFX = AttribMask::GL_MULTISAMPLE_BIT_3DFX;
@@ -491,7 +557,9 @@ GLBINDING_CONSTEXPR static const AttribMask GL_ALL_ATTRIB_BITS = AttribMask::GL_
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_ALL_BARRIER_BITS = MemoryBarrierMask::GL_ALL_BARRIER_BITS;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_ALL_BARRIER_BITS_EXT = MemoryBarrierMask::GL_ALL_BARRIER_BITS_EXT;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_ALL_SHADER_BITS = UseProgramStageMask::GL_ALL_SHADER_BITS;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_ALL_SHADER_BITS_EXT = UseProgramStageMask::GL_ALL_SHADER_BITS_EXT;
 GLBINDING_CONSTEXPR static const ClientAttribMask GL_CLIENT_ALL_ATTRIB_BITS = ClientAttribMask::GL_CLIENT_ALL_ATTRIB_BITS;
+GLBINDING_CONSTEXPR static const OcclusionQueryEventMaskAMD GL_QUERY_ALL_EVENT_BITS_AMD = OcclusionQueryEventMaskAMD::GL_QUERY_ALL_EVENT_BITS_AMD;
 
 
 } // namespace gl

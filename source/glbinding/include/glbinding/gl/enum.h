@@ -398,6 +398,7 @@ enum class GLenum : unsigned int
 
 //  GL_DONT_CARE                                                  = 0x1100, // reuse DebugSeverity, decimal value: 4352
     GL_DEBUG_SOURCE_API                                           = 0x8246, // decimal value: 33350
+    GL_DEBUG_SOURCE_WINDOW_SYSTEM                                 = 0x8247, // decimal value: 33351
     GL_DEBUG_SOURCE_SHADER_COMPILER                               = 0x8248, // decimal value: 33352
     GL_DEBUG_SOURCE_THIRD_PARTY                                   = 0x8249, // decimal value: 33353
     GL_DEBUG_SOURCE_APPLICATION                                   = 0x824A, // decimal value: 33354
@@ -1888,14 +1889,6 @@ enum class GLenum : unsigned int
     GL_RENDERBUFFER                                               = 0x8D41, // decimal value: 36161
 //  GL_TRANSFORM_FEEDBACK                                         = 0x8E22, // reuse BindTransformFeedbackTarget, decimal value: 36386
 
-    // OcclusionQueryEventMaskAMD
-
-    GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD                             = 0x00000001, // decimal value: 1
-    GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD                             = 0x00000002, // decimal value: 2
-    GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD                           = 0x00000004, // decimal value: 4
-    GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD                      = 0x00000008, // decimal value: 8
-    GL_QUERY_ALL_EVENT_BITS_AMD                                   = 0xFFFFFFFF, // decimal value: 4294967295
-
     // PatchParameterName
 
     GL_PATCH_VERTICES                                             = 0x8E72, // decimal value: 36466
@@ -2419,7 +2412,9 @@ enum class GLenum : unsigned int
     // ShaderType
 
 //  GL_FRAGMENT_SHADER                                            = 0x8B30, // reuse PipelineParameterName, decimal value: 35632
+    GL_FRAGMENT_SHADER_ARB                                        = 0x8B30, // decimal value: 35632
 //  GL_VERTEX_SHADER                                              = 0x8B31, // reuse PipelineParameterName, decimal value: 35633
+    GL_VERTEX_SHADER_ARB                                          = 0x8B31, // decimal value: 35633
 //  GL_GEOMETRY_SHADER                                            = 0x8DD9, // reuse PipelineParameterName, decimal value: 36313
 //  GL_TESS_EVALUATION_SHADER                                     = 0x8E87, // reuse PipelineParameterName, decimal value: 36487
 //  GL_TESS_CONTROL_SHADER                                        = 0x8E88, // reuse PipelineParameterName, decimal value: 36488
@@ -2547,6 +2542,8 @@ enum class GLenum : unsigned int
 
     // TextureLayout
 
+    GL_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_EXT              = 0x9530, // decimal value: 38192
+    GL_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_EXT              = 0x9531, // decimal value: 38193
     GL_LAYOUT_GENERAL_EXT                                         = 0x958D, // decimal value: 38285
     GL_LAYOUT_COLOR_ATTACHMENT_EXT                                = 0x958E, // decimal value: 38286
     GL_LAYOUT_DEPTH_STENCIL_ATTACHMENT_EXT                        = 0x958F, // decimal value: 38287
@@ -3165,7 +3162,6 @@ enum class GLenum : unsigned int
     GL_DEBUG_CALLBACK_FUNCTION_ARB                                = 0x8244, // decimal value: 33348
     GL_DEBUG_CALLBACK_USER_PARAM_ARB                              = 0x8245, // decimal value: 33349
     GL_DEBUG_SOURCE_API_ARB                                       = 0x8246, // decimal value: 33350
-    GL_DEBUG_SOURCE_WINDOW_SYSTEM                                 = 0x8247, // decimal value: 33351
     GL_DEBUG_SOURCE_WINDOW_SYSTEM_ARB                             = 0x8247, // decimal value: 33351
     GL_DEBUG_SOURCE_SHADER_COMPILER_ARB                           = 0x8248, // decimal value: 33352
     GL_DEBUG_SOURCE_THIRD_PARTY_ARB                               = 0x8249, // decimal value: 33353
@@ -3981,6 +3977,7 @@ enum class GLenum : unsigned int
     GL_PROXY_TEXTURE_2D_STACK_MESAX                               = 0x875C, // decimal value: 34652
     GL_TEXTURE_1D_STACK_BINDING_MESAX                             = 0x875D, // decimal value: 34653
     GL_TEXTURE_2D_STACK_BINDING_MESAX                             = 0x875E, // decimal value: 34654
+    GL_PROGRAM_BINARY_FORMAT_MESA                                 = 0x875F, // decimal value: 34655
     GL_STATIC_ATI                                                 = 0x8760, // decimal value: 34656
     GL_DYNAMIC_ATI                                                = 0x8761, // decimal value: 34657
     GL_PRESERVE_ATI                                               = 0x8762, // decimal value: 34658
@@ -4631,8 +4628,6 @@ enum class GLenum : unsigned int
     GL_SKIP_DECODE_EXT                                            = 0x8A4A, // decimal value: 35402
     GL_PROGRAM_PIPELINE_OBJECT_EXT                                = 0x8A4F, // decimal value: 35407
     GL_RGB_RAW_422_APPLE                                          = 0x8A51, // decimal value: 35409
-    GL_FRAGMENT_SHADER_ARB                                        = 0x8B30, // decimal value: 35632
-    GL_VERTEX_SHADER_ARB                                          = 0x8B31, // decimal value: 35633
     GL_PROGRAM_OBJECT_ARB                                         = 0x8B40, // decimal value: 35648
     GL_PROGRAM_OBJECT_EXT                                         = 0x8B40, // decimal value: 35648
     GL_SHADER_OBJECT_ARB                                          = 0x8B48, // decimal value: 35656
@@ -4677,6 +4672,9 @@ enum class GLenum : unsigned int
     GL_PALETTE8_RGB5_A1_OES                                       = 0x8B99, // decimal value: 35737
     GL_IMPLEMENTATION_COLOR_READ_TYPE_OES                         = 0x8B9A, // decimal value: 35738
     GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES                       = 0x8B9B, // decimal value: 35739
+    GL_TILE_RASTER_ORDER_FIXED_MESA                               = 0x8BB8, // decimal value: 35768
+    GL_TILE_RASTER_ORDER_INCREASING_X_MESA                        = 0x8BB9, // decimal value: 35769
+    GL_TILE_RASTER_ORDER_INCREASING_Y_MESA                        = 0x8BBA, // decimal value: 35770
     GL_COUNTER_TYPE_AMD                                           = 0x8BC0, // decimal value: 35776
     GL_COUNTER_RANGE_AMD                                          = 0x8BC1, // decimal value: 35777
     GL_UNSIGNED_INT64_AMD                                         = 0x8BC2, // decimal value: 35778
@@ -5799,6 +5797,7 @@ enum class GLenum : unsigned int
     GL_CONSERVATIVE_RASTER_MODE_NV                                = 0x954D, // decimal value: 38221
     GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV                      = 0x954E, // decimal value: 38222
     GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV             = 0x954F, // decimal value: 38223
+    GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_NV                       = 0x9550, // decimal value: 38224
     GL_SHADER_BINARY_FORMAT_SPIR_V                                = 0x9551, // decimal value: 38225
     GL_SHADER_BINARY_FORMAT_SPIR_V_ARB                            = 0x9551, // decimal value: 38225
     GL_SPIR_V_BINARY                                              = 0x9552, // decimal value: 38226
@@ -6247,6 +6246,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SEVERITY_LOW = GLenum::GL_DEBUG
 
 // GLBINDING_CONSTEXPR static const GLenum GL_DONT_CARE = GLenum::GL_DONT_CARE; // reuse DebugSeverity
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_API = GLenum::GL_DEBUG_SOURCE_API;
+GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_WINDOW_SYSTEM = GLenum::GL_DEBUG_SOURCE_WINDOW_SYSTEM;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_SHADER_COMPILER = GLenum::GL_DEBUG_SOURCE_SHADER_COMPILER;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_THIRD_PARTY = GLenum::GL_DEBUG_SOURCE_THIRD_PARTY;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_APPLICATION = GLenum::GL_DEBUG_SOURCE_APPLICATION;
@@ -7737,14 +7737,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_SAMPLER = GLenum::GL_SAMPLER;
 GLBINDING_CONSTEXPR static const GLenum GL_RENDERBUFFER = GLenum::GL_RENDERBUFFER;
 // GLBINDING_CONSTEXPR static const GLenum GL_TRANSFORM_FEEDBACK = GLenum::GL_TRANSFORM_FEEDBACK; // reuse BindTransformFeedbackTarget
 
-// OcclusionQueryEventMaskAMD
-
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD = GLenum::GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD = GLenum::GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD = GLenum::GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD = GLenum::GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_ALL_EVENT_BITS_AMD = GLenum::GL_QUERY_ALL_EVENT_BITS_AMD;
-
 // PatchParameterName
 
 GLBINDING_CONSTEXPR static const GLenum GL_PATCH_VERTICES = GLenum::GL_PATCH_VERTICES;
@@ -8268,7 +8260,9 @@ GLBINDING_CONSTEXPR static const GLenum GL_SHADER_SOURCE_LENGTH = GLenum::GL_SHA
 // ShaderType
 
 // GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_SHADER = GLenum::GL_FRAGMENT_SHADER; // reuse PipelineParameterName
+GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_SHADER_ARB = GLenum::GL_FRAGMENT_SHADER_ARB;
 // GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_SHADER = GLenum::GL_VERTEX_SHADER; // reuse PipelineParameterName
+GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_SHADER_ARB = GLenum::GL_VERTEX_SHADER_ARB;
 // GLBINDING_CONSTEXPR static const GLenum GL_GEOMETRY_SHADER = GLenum::GL_GEOMETRY_SHADER; // reuse PipelineParameterName
 // GLBINDING_CONSTEXPR static const GLenum GL_TESS_EVALUATION_SHADER = GLenum::GL_TESS_EVALUATION_SHADER; // reuse PipelineParameterName
 // GLBINDING_CONSTEXPR static const GLenum GL_TESS_CONTROL_SHADER = GLenum::GL_TESS_CONTROL_SHADER; // reuse PipelineParameterName
@@ -8396,6 +8390,8 @@ GLBINDING_CONSTEXPR static const GLenum GL_OBJECT_LINE_SGIS = GLenum::GL_OBJECT_
 
 // TextureLayout
 
+GLBINDING_CONSTEXPR static const GLenum GL_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_EXT = GLenum::GL_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_EXT;
+GLBINDING_CONSTEXPR static const GLenum GL_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_EXT = GLenum::GL_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_LAYOUT_GENERAL_EXT = GLenum::GL_LAYOUT_GENERAL_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_LAYOUT_COLOR_ATTACHMENT_EXT = GLenum::GL_LAYOUT_COLOR_ATTACHMENT_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_LAYOUT_DEPTH_STENCIL_ATTACHMENT_EXT = GLenum::GL_LAYOUT_DEPTH_STENCIL_ATTACHMENT_EXT;
@@ -9014,7 +9010,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_ARB 
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_CALLBACK_FUNCTION_ARB = GLenum::GL_DEBUG_CALLBACK_FUNCTION_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_CALLBACK_USER_PARAM_ARB = GLenum::GL_DEBUG_CALLBACK_USER_PARAM_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_API_ARB = GLenum::GL_DEBUG_SOURCE_API_ARB;
-GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_WINDOW_SYSTEM = GLenum::GL_DEBUG_SOURCE_WINDOW_SYSTEM;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_WINDOW_SYSTEM_ARB = GLenum::GL_DEBUG_SOURCE_WINDOW_SYSTEM_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_SHADER_COMPILER_ARB = GLenum::GL_DEBUG_SOURCE_SHADER_COMPILER_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_DEBUG_SOURCE_THIRD_PARTY_ARB = GLenum::GL_DEBUG_SOURCE_THIRD_PARTY_ARB;
@@ -9830,6 +9825,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_1D_STACK_MESAX = GLenum
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D_STACK_MESAX = GLenum::GL_PROXY_TEXTURE_2D_STACK_MESAX;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D_STACK_BINDING_MESAX = GLenum::GL_TEXTURE_1D_STACK_BINDING_MESAX;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_STACK_BINDING_MESAX = GLenum::GL_TEXTURE_2D_STACK_BINDING_MESAX;
+GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_BINARY_FORMAT_MESA = GLenum::GL_PROGRAM_BINARY_FORMAT_MESA;
 GLBINDING_CONSTEXPR static const GLenum GL_STATIC_ATI = GLenum::GL_STATIC_ATI;
 GLBINDING_CONSTEXPR static const GLenum GL_DYNAMIC_ATI = GLenum::GL_DYNAMIC_ATI;
 GLBINDING_CONSTEXPR static const GLenum GL_PRESERVE_ATI = GLenum::GL_PRESERVE_ATI;
@@ -10480,8 +10476,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_DECODE_EXT = GLenum::GL_DECODE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_SKIP_DECODE_EXT = GLenum::GL_SKIP_DECODE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_PIPELINE_OBJECT_EXT = GLenum::GL_PROGRAM_PIPELINE_OBJECT_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB_RAW_422_APPLE = GLenum::GL_RGB_RAW_422_APPLE;
-GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_SHADER_ARB = GLenum::GL_FRAGMENT_SHADER_ARB;
-GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_SHADER_ARB = GLenum::GL_VERTEX_SHADER_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_OBJECT_ARB = GLenum::GL_PROGRAM_OBJECT_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_OBJECT_EXT = GLenum::GL_PROGRAM_OBJECT_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_SHADER_OBJECT_ARB = GLenum::GL_SHADER_OBJECT_ARB;
@@ -10526,6 +10520,9 @@ GLBINDING_CONSTEXPR static const GLenum GL_PALETTE8_RGBA4_OES = GLenum::GL_PALET
 GLBINDING_CONSTEXPR static const GLenum GL_PALETTE8_RGB5_A1_OES = GLenum::GL_PALETTE8_RGB5_A1_OES;
 GLBINDING_CONSTEXPR static const GLenum GL_IMPLEMENTATION_COLOR_READ_TYPE_OES = GLenum::GL_IMPLEMENTATION_COLOR_READ_TYPE_OES;
 GLBINDING_CONSTEXPR static const GLenum GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES = GLenum::GL_IMPLEMENTATION_COLOR_READ_FORMAT_OES;
+GLBINDING_CONSTEXPR static const GLenum GL_TILE_RASTER_ORDER_FIXED_MESA = GLenum::GL_TILE_RASTER_ORDER_FIXED_MESA;
+GLBINDING_CONSTEXPR static const GLenum GL_TILE_RASTER_ORDER_INCREASING_X_MESA = GLenum::GL_TILE_RASTER_ORDER_INCREASING_X_MESA;
+GLBINDING_CONSTEXPR static const GLenum GL_TILE_RASTER_ORDER_INCREASING_Y_MESA = GLenum::GL_TILE_RASTER_ORDER_INCREASING_Y_MESA;
 GLBINDING_CONSTEXPR static const GLenum GL_COUNTER_TYPE_AMD = GLenum::GL_COUNTER_TYPE_AMD;
 GLBINDING_CONSTEXPR static const GLenum GL_COUNTER_RANGE_AMD = GLenum::GL_COUNTER_RANGE_AMD;
 GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT64_AMD = GLenum::GL_UNSIGNED_INT64_AMD;
@@ -11648,6 +11645,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_MULTICAST_PROGRAMMABLE_SAMPLE_LOCATIO
 GLBINDING_CONSTEXPR static const GLenum GL_CONSERVATIVE_RASTER_MODE_NV = GLenum::GL_CONSERVATIVE_RASTER_MODE_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV = GLenum::GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV = GLenum::GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV;
+GLBINDING_CONSTEXPR static const GLenum GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_NV = GLenum::GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_SHADER_BINARY_FORMAT_SPIR_V = GLenum::GL_SHADER_BINARY_FORMAT_SPIR_V;
 GLBINDING_CONSTEXPR static const GLenum GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = GLenum::GL_SHADER_BINARY_FORMAT_SPIR_V_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_SPIR_V_BINARY = GLenum::GL_SPIR_V_BINARY;

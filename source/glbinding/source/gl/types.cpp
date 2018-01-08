@@ -110,6 +110,22 @@ namespace gl
 {
 
 
+std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value)
+{
+    stream << bitfieldString<BufferAccessMask>(value);
+    return stream;
+}
+
+
+} // namespace gl
+
+
+
+
+namespace gl
+{
+
+
 std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value)
 {
     stream << bitfieldString<ClearBufferMask>(value);
@@ -270,6 +286,22 @@ namespace gl
 {
 
 
+std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value)
+{
+    stream << bitfieldString<OcclusionQueryEventMaskAMD>(value);
+    return stream;
+}
+
+
+} // namespace gl
+
+
+
+
+namespace gl
+{
+
+
 std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value)
 {
     stream << bitfieldString<PathFontStyle>(value);
@@ -401,22 +433,6 @@ namespace gl
 std::ostream & operator<<(std::ostream & stream, const UnusedMask & value)
 {
     stream << bitfieldString<UnusedMask>(value);
-    return stream;
-}
-
-
-} // namespace gl
-
-
-
-
-namespace gl
-{
-
-
-std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value)
-{
-    stream << bitfieldString<BufferAccessMask>(value);
     return stream;
 }
 

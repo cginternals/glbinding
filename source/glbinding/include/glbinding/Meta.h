@@ -388,6 +388,17 @@ public:
     *  @return
     *    The string representation of the value
     */
+    static const std::string & getString(gl::OcclusionQueryEventMaskAMD glbitfield);
+
+    /**
+    *  @brief convert bitfield to symbol name string representation
+    *
+    *  @param[in] glbitfield
+    *    The bitfield value
+    *
+    *  @return
+    *    The string representation of the value
+    */
     static const std::string & getString(gl::PathFontStyle glbitfield);
 
     /**

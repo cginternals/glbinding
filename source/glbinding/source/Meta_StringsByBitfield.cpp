@@ -46,13 +46,21 @@ const std::unordered_map<BufferAccessMask, std::string> Meta_StringsByBufferAcce
 {
     { BufferAccessMask::GL_NONE_BIT, "GL_NONE_BIT" },
     { BufferAccessMask::GL_MAP_READ_BIT, "GL_MAP_READ_BIT" },
+    { BufferAccessMask::GL_MAP_READ_BIT_EXT, "GL_MAP_READ_BIT_EXT" },
     { BufferAccessMask::GL_MAP_WRITE_BIT, "GL_MAP_WRITE_BIT" },
+    { BufferAccessMask::GL_MAP_WRITE_BIT_EXT, "GL_MAP_WRITE_BIT_EXT" },
     { BufferAccessMask::GL_MAP_INVALIDATE_RANGE_BIT, "GL_MAP_INVALIDATE_RANGE_BIT" },
+    { BufferAccessMask::GL_MAP_INVALIDATE_RANGE_BIT_EXT, "GL_MAP_INVALIDATE_RANGE_BIT_EXT" },
     { BufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT, "GL_MAP_INVALIDATE_BUFFER_BIT" },
+    { BufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT_EXT, "GL_MAP_INVALIDATE_BUFFER_BIT_EXT" },
     { BufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT, "GL_MAP_FLUSH_EXPLICIT_BIT" },
+    { BufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT_EXT, "GL_MAP_FLUSH_EXPLICIT_BIT_EXT" },
     { BufferAccessMask::GL_MAP_UNSYNCHRONIZED_BIT, "GL_MAP_UNSYNCHRONIZED_BIT" },
+    { BufferAccessMask::GL_MAP_UNSYNCHRONIZED_BIT_EXT, "GL_MAP_UNSYNCHRONIZED_BIT_EXT" },
     { BufferAccessMask::GL_MAP_PERSISTENT_BIT, "GL_MAP_PERSISTENT_BIT" },
-    { BufferAccessMask::GL_MAP_COHERENT_BIT, "GL_MAP_COHERENT_BIT" }
+    { BufferAccessMask::GL_MAP_PERSISTENT_BIT_EXT, "GL_MAP_PERSISTENT_BIT_EXT" },
+    { BufferAccessMask::GL_MAP_COHERENT_BIT, "GL_MAP_COHERENT_BIT" },
+    { BufferAccessMask::GL_MAP_COHERENT_BIT_EXT, "GL_MAP_COHERENT_BIT_EXT" }
 };
 
 
@@ -151,18 +159,29 @@ const std::unordered_map<MapBufferUsageMask, std::string> Meta_StringsByMapBuffe
 {
     { MapBufferUsageMask::GL_NONE_BIT, "GL_NONE_BIT" },
     { MapBufferUsageMask::GL_MAP_READ_BIT, "GL_MAP_READ_BIT" },
+    { MapBufferUsageMask::GL_MAP_READ_BIT_EXT, "GL_MAP_READ_BIT_EXT" },
     { MapBufferUsageMask::GL_MAP_WRITE_BIT, "GL_MAP_WRITE_BIT" },
+    { MapBufferUsageMask::GL_MAP_WRITE_BIT_EXT, "GL_MAP_WRITE_BIT_EXT" },
     { MapBufferUsageMask::GL_MAP_INVALIDATE_RANGE_BIT, "GL_MAP_INVALIDATE_RANGE_BIT" },
+    { MapBufferUsageMask::GL_MAP_INVALIDATE_RANGE_BIT_EXT, "GL_MAP_INVALIDATE_RANGE_BIT_EXT" },
     { MapBufferUsageMask::GL_MAP_INVALIDATE_BUFFER_BIT, "GL_MAP_INVALIDATE_BUFFER_BIT" },
+    { MapBufferUsageMask::GL_MAP_INVALIDATE_BUFFER_BIT_EXT, "GL_MAP_INVALIDATE_BUFFER_BIT_EXT" },
     { MapBufferUsageMask::GL_MAP_FLUSH_EXPLICIT_BIT, "GL_MAP_FLUSH_EXPLICIT_BIT" },
+    { MapBufferUsageMask::GL_MAP_FLUSH_EXPLICIT_BIT_EXT, "GL_MAP_FLUSH_EXPLICIT_BIT_EXT" },
     { MapBufferUsageMask::GL_MAP_UNSYNCHRONIZED_BIT, "GL_MAP_UNSYNCHRONIZED_BIT" },
+    { MapBufferUsageMask::GL_MAP_UNSYNCHRONIZED_BIT_EXT, "GL_MAP_UNSYNCHRONIZED_BIT_EXT" },
     { MapBufferUsageMask::GL_MAP_PERSISTENT_BIT, "GL_MAP_PERSISTENT_BIT" },
+    { MapBufferUsageMask::GL_MAP_PERSISTENT_BIT_EXT, "GL_MAP_PERSISTENT_BIT_EXT" },
     { MapBufferUsageMask::GL_MAP_COHERENT_BIT, "GL_MAP_COHERENT_BIT" },
+    { MapBufferUsageMask::GL_MAP_COHERENT_BIT_EXT, "GL_MAP_COHERENT_BIT_EXT" },
     { MapBufferUsageMask::GL_DYNAMIC_STORAGE_BIT, "GL_DYNAMIC_STORAGE_BIT" },
+    { MapBufferUsageMask::GL_DYNAMIC_STORAGE_BIT_EXT, "GL_DYNAMIC_STORAGE_BIT_EXT" },
     { MapBufferUsageMask::GL_CLIENT_STORAGE_BIT, "GL_CLIENT_STORAGE_BIT" },
+    { MapBufferUsageMask::GL_CLIENT_STORAGE_BIT_EXT, "GL_CLIENT_STORAGE_BIT_EXT" },
     { MapBufferUsageMask::GL_SPARSE_STORAGE_BIT_ARB, "GL_SPARSE_STORAGE_BIT_ARB" },
     { MapBufferUsageMask::GL_LGPU_SEPARATE_STORAGE_BIT_NVX, "GL_LGPU_SEPARATE_STORAGE_BIT_NVX" },
-    { MapBufferUsageMask::GL_PER_GPU_STORAGE_BIT_NV, "GL_PER_GPU_STORAGE_BIT_NV" }
+    { MapBufferUsageMask::GL_PER_GPU_STORAGE_BIT_NV, "GL_PER_GPU_STORAGE_BIT_NV" },
+    { MapBufferUsageMask::GL_EXTERNAL_STORAGE_BIT_NVX, "GL_EXTERNAL_STORAGE_BIT_NVX" }
 };
 
 
@@ -196,9 +215,21 @@ const std::unordered_map<MemoryBarrierMask, std::string> Meta_StringsByMemoryBar
     { MemoryBarrierMask::GL_ATOMIC_COUNTER_BARRIER_BIT_EXT, "GL_ATOMIC_COUNTER_BARRIER_BIT_EXT" },
     { MemoryBarrierMask::GL_SHADER_STORAGE_BARRIER_BIT, "GL_SHADER_STORAGE_BARRIER_BIT" },
     { MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT, "GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT" },
+    { MemoryBarrierMask::GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT, "GL_CLIENT_MAPPED_BUFFER_BARRIER_BIT_EXT" },
     { MemoryBarrierMask::GL_QUERY_BUFFER_BARRIER_BIT, "GL_QUERY_BUFFER_BARRIER_BIT" },
     { MemoryBarrierMask::GL_ALL_BARRIER_BITS, "GL_ALL_BARRIER_BITS" },
     { MemoryBarrierMask::GL_ALL_BARRIER_BITS_EXT, "GL_ALL_BARRIER_BITS_EXT" }
+};
+
+
+const std::unordered_map<OcclusionQueryEventMaskAMD, std::string> Meta_StringsByOcclusionQueryEventMaskAMD =
+{
+    { OcclusionQueryEventMaskAMD::GL_NONE_BIT, "GL_NONE_BIT" },
+    { OcclusionQueryEventMaskAMD::GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD, "GL_QUERY_DEPTH_PASS_EVENT_BIT_AMD" },
+    { OcclusionQueryEventMaskAMD::GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD, "GL_QUERY_DEPTH_FAIL_EVENT_BIT_AMD" },
+    { OcclusionQueryEventMaskAMD::GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD, "GL_QUERY_STENCIL_FAIL_EVENT_BIT_AMD" },
+    { OcclusionQueryEventMaskAMD::GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD, "GL_QUERY_DEPTH_BOUNDS_FAIL_EVENT_BIT_AMD" },
+    { OcclusionQueryEventMaskAMD::GL_QUERY_ALL_EVENT_BITS_AMD, "GL_QUERY_ALL_EVENT_BITS_AMD" }
 };
 
 
@@ -281,7 +312,8 @@ const std::unordered_map<PerformanceQueryCapsMaskINTEL, std::string> Meta_String
 const std::unordered_map<SyncObjectMask, std::string> Meta_StringsBySyncObjectMask =
 {
     { SyncObjectMask::GL_NONE_BIT, "GL_NONE_BIT" },
-    { SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT, "GL_SYNC_FLUSH_COMMANDS_BIT" }
+    { SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT, "GL_SYNC_FLUSH_COMMANDS_BIT" },
+    { SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT_APPLE, "GL_SYNC_FLUSH_COMMANDS_BIT_APPLE" }
 };
 
 
@@ -303,12 +335,21 @@ const std::unordered_map<UseProgramStageMask, std::string> Meta_StringsByUseProg
 {
     { UseProgramStageMask::GL_NONE_BIT, "GL_NONE_BIT" },
     { UseProgramStageMask::GL_VERTEX_SHADER_BIT, "GL_VERTEX_SHADER_BIT" },
+    { UseProgramStageMask::GL_VERTEX_SHADER_BIT_EXT, "GL_VERTEX_SHADER_BIT_EXT" },
     { UseProgramStageMask::GL_FRAGMENT_SHADER_BIT, "GL_FRAGMENT_SHADER_BIT" },
+    { UseProgramStageMask::GL_FRAGMENT_SHADER_BIT_EXT, "GL_FRAGMENT_SHADER_BIT_EXT" },
     { UseProgramStageMask::GL_GEOMETRY_SHADER_BIT, "GL_GEOMETRY_SHADER_BIT" },
+    { UseProgramStageMask::GL_GEOMETRY_SHADER_BIT_EXT, "GL_GEOMETRY_SHADER_BIT_EXT" },
+    { UseProgramStageMask::GL_GEOMETRY_SHADER_BIT_OES, "GL_GEOMETRY_SHADER_BIT_OES" },
     { UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT, "GL_TESS_CONTROL_SHADER_BIT" },
+    { UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT_EXT, "GL_TESS_CONTROL_SHADER_BIT_EXT" },
+    { UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT_OES, "GL_TESS_CONTROL_SHADER_BIT_OES" },
     { UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT, "GL_TESS_EVALUATION_SHADER_BIT" },
+    { UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_EXT, "GL_TESS_EVALUATION_SHADER_BIT_EXT" },
+    { UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_OES, "GL_TESS_EVALUATION_SHADER_BIT_OES" },
     { UseProgramStageMask::GL_COMPUTE_SHADER_BIT, "GL_COMPUTE_SHADER_BIT" },
-    { UseProgramStageMask::GL_ALL_SHADER_BITS, "GL_ALL_SHADER_BITS" }
+    { UseProgramStageMask::GL_ALL_SHADER_BITS, "GL_ALL_SHADER_BITS" },
+    { UseProgramStageMask::GL_ALL_SHADER_BITS_EXT, "GL_ALL_SHADER_BITS_EXT" }
 };
 
 
