@@ -188,7 +188,6 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_texture3D, { "glTexImage3DEXT", "glTexSubImage3DEXT" } },
     { GLextension::GL_EXT_texture_array, { "glFramebufferTextureLayerEXT" } },
     { GLextension::GL_EXT_texture_buffer_object, { "glTexBufferEXT" } },
-    { GLextension::GL_EXT_texture_filter_minmax, { "glRasterSamplesEXT" } },
     { GLextension::GL_EXT_texture_integer, { "glClearColorIiEXT", "glClearColorIuiEXT", "glGetTexParameterIivEXT", "glGetTexParameterIuivEXT", "glTexParameterIivEXT", "glTexParameterIuivEXT" } },
     { GLextension::GL_EXT_texture_object, { "glAreTexturesResidentEXT", "glBindTextureEXT", "glDeleteTexturesEXT", "glGenTexturesEXT", "glIsTextureEXT", "glPrioritizeTexturesEXT" } },
     { GLextension::GL_EXT_texture_perturb_normal, { "glTextureNormalEXT" } },

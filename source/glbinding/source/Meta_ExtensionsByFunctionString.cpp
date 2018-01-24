@@ -1622,7 +1622,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glRasterPos3xvOES", { GLextension::GL_OES_fixed_point } },
     { "glRasterPos4xOES", { GLextension::GL_OES_fixed_point } },
     { "glRasterPos4xvOES", { GLextension::GL_OES_fixed_point } },
-    { "glRasterSamplesEXT", { GLextension::GL_EXT_raster_multisample, GLextension::GL_EXT_texture_filter_minmax, GLextension::GL_NV_framebuffer_mixed_samples } },
+    { "glRasterSamplesEXT", { GLextension::GL_EXT_raster_multisample, GLextension::GL_NV_framebuffer_mixed_samples } },
     { "glReadInstrumentsSGIX", { GLextension::GL_SGIX_instruments } },
     { "glReadnPixels", { GLextension::GL_KHR_robustness } },
     { "glReadnPixelsARB", { GLextension::GL_ARB_robustness } },

@@ -140,6 +140,8 @@ enum class GLenum : unsigned int
     GL_ONE_MINUS_CONSTANT_ALPHA                                   = 0x8004, // decimal value: 32772
     GL_SRC1_ALPHA                                                 = 0x8589, // decimal value: 34185
     GL_SRC1_COLOR                                                 = 0x88F9, // decimal value: 35065
+    GL_ONE_MINUS_SRC1_COLOR                                       = 0x88FA, // decimal value: 35066
+    GL_ONE_MINUS_SRC1_ALPHA                                       = 0x88FB, // decimal value: 35067
     GL_ONE                                                        = 1,
 
     // BlitFramebufferFilter
@@ -1246,6 +1248,7 @@ enum class GLenum : unsigned int
     GL_ALIASED_LINE_WIDTH_RANGE                                   = 0x846E, // decimal value: 33902
     GL_PACK_SUBSAMPLE_RATE_SGIX                                   = 0x85A0, // decimal value: 34208
     GL_UNPACK_SUBSAMPLE_RATE_SGIX                                 = 0x85A1, // decimal value: 34209
+    GL_NUM_DEVICE_UUIDS_EXT                                       = 0x9596, // decimal value: 38294
     GL_DEVICE_UUID_EXT                                            = 0x9597, // decimal value: 38295
     GL_DRIVER_UUID_EXT                                            = 0x9598, // decimal value: 38296
     GL_DEVICE_LUID_EXT                                            = 0x9599, // decimal value: 38297
@@ -4462,8 +4465,6 @@ enum class GLenum : unsigned int
     GL_MAX_PROGRAM_IF_DEPTH_NV                                    = 0x88F6, // decimal value: 35062
     GL_MAX_PROGRAM_LOOP_DEPTH_NV                                  = 0x88F7, // decimal value: 35063
     GL_MAX_PROGRAM_LOOP_COUNT_NV                                  = 0x88F8, // decimal value: 35064
-    GL_ONE_MINUS_SRC1_COLOR                                       = 0x88FA, // decimal value: 35066
-    GL_ONE_MINUS_SRC1_ALPHA                                       = 0x88FB, // decimal value: 35067
     GL_MAX_DUAL_SOURCE_DRAW_BUFFERS                               = 0x88FC, // decimal value: 35068
     GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT                            = 0x88FD, // decimal value: 35069
     GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV                             = 0x88FD, // decimal value: 35069
@@ -5721,7 +5722,9 @@ enum class GLenum : unsigned int
     GL_CLIP_ORIGIN                                                = 0x935C, // decimal value: 37724
     GL_CLIP_DEPTH_MODE                                            = 0x935D, // decimal value: 37725
     GL_TEXTURE_REDUCTION_MODE_ARB                                 = 0x9366, // decimal value: 37734
+    GL_TEXTURE_REDUCTION_MODE_EXT                                 = 0x9366, // decimal value: 37734
     GL_WEIGHTED_AVERAGE_ARB                                       = 0x9367, // decimal value: 37735
+    GL_WEIGHTED_AVERAGE_EXT                                       = 0x9367, // decimal value: 37735
     GL_FONT_GLYPHS_AVAILABLE_NV                                   = 0x9368, // decimal value: 37736
     GL_FONT_TARGET_UNAVAILABLE_NV                                 = 0x9369, // decimal value: 37737
     GL_FONT_UNAVAILABLE_NV                                        = 0x936A, // decimal value: 37738
@@ -5809,7 +5812,6 @@ enum class GLenum : unsigned int
     GL_TILING_TYPES_EXT                                           = 0x9583, // decimal value: 38275
     GL_OPTIMAL_TILING_EXT                                         = 0x9584, // decimal value: 38276
     GL_LINEAR_TILING_EXT                                          = 0x9585, // decimal value: 38277
-    GL_NUM_DEVICE_UUIDS_EXT                                       = 0x9596, // decimal value: 38294
     GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR               = 0x9630, // decimal value: 38448
     GL_MAX_VIEWS_OVR                                              = 0x9631, // decimal value: 38449
     GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR         = 0x9632, // decimal value: 38450
@@ -5988,6 +5990,8 @@ GLBINDING_CONSTEXPR static const GLenum GL_CONSTANT_ALPHA = GLenum::GL_CONSTANT_
 GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_CONSTANT_ALPHA = GLenum::GL_ONE_MINUS_CONSTANT_ALPHA;
 GLBINDING_CONSTEXPR static const GLenum GL_SRC1_ALPHA = GLenum::GL_SRC1_ALPHA;
 GLBINDING_CONSTEXPR static const GLenum GL_SRC1_COLOR = GLenum::GL_SRC1_COLOR;
+GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_SRC1_COLOR = GLenum::GL_ONE_MINUS_SRC1_COLOR;
+GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_SRC1_ALPHA = GLenum::GL_ONE_MINUS_SRC1_ALPHA;
 GLBINDING_CONSTEXPR static const GLenum GL_ONE = GLenum::GL_ONE;
 
 // BlitFramebufferFilter
@@ -7094,6 +7098,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_ALIASED_POINT_SIZE_RANGE = GLenum::GL
 GLBINDING_CONSTEXPR static const GLenum GL_ALIASED_LINE_WIDTH_RANGE = GLenum::GL_ALIASED_LINE_WIDTH_RANGE;
 GLBINDING_CONSTEXPR static const GLenum GL_PACK_SUBSAMPLE_RATE_SGIX = GLenum::GL_PACK_SUBSAMPLE_RATE_SGIX;
 GLBINDING_CONSTEXPR static const GLenum GL_UNPACK_SUBSAMPLE_RATE_SGIX = GLenum::GL_UNPACK_SUBSAMPLE_RATE_SGIX;
+GLBINDING_CONSTEXPR static const GLenum GL_NUM_DEVICE_UUIDS_EXT = GLenum::GL_NUM_DEVICE_UUIDS_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_DEVICE_UUID_EXT = GLenum::GL_DEVICE_UUID_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_DRIVER_UUID_EXT = GLenum::GL_DRIVER_UUID_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_DEVICE_LUID_EXT = GLenum::GL_DEVICE_LUID_EXT;
@@ -10310,8 +10315,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_MAX_PROGRAM_CALL_DEPTH_NV = GLenum::G
 GLBINDING_CONSTEXPR static const GLenum GL_MAX_PROGRAM_IF_DEPTH_NV = GLenum::GL_MAX_PROGRAM_IF_DEPTH_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_MAX_PROGRAM_LOOP_DEPTH_NV = GLenum::GL_MAX_PROGRAM_LOOP_DEPTH_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_MAX_PROGRAM_LOOP_COUNT_NV = GLenum::GL_MAX_PROGRAM_LOOP_COUNT_NV;
-GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_SRC1_COLOR = GLenum::GL_ONE_MINUS_SRC1_COLOR;
-GLBINDING_CONSTEXPR static const GLenum GL_ONE_MINUS_SRC1_ALPHA = GLenum::GL_ONE_MINUS_SRC1_ALPHA;
 GLBINDING_CONSTEXPR static const GLenum GL_MAX_DUAL_SOURCE_DRAW_BUFFERS = GLenum::GL_MAX_DUAL_SOURCE_DRAW_BUFFERS;
 GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT = GLenum::GL_VERTEX_ATTRIB_ARRAY_INTEGER_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV = GLenum::GL_VERTEX_ATTRIB_ARRAY_INTEGER_NV;
@@ -11569,7 +11572,9 @@ GLBINDING_CONSTEXPR static const GLenum GL_VIEWPORT_SWIZZLE_W_NV = GLenum::GL_VI
 GLBINDING_CONSTEXPR static const GLenum GL_CLIP_ORIGIN = GLenum::GL_CLIP_ORIGIN;
 GLBINDING_CONSTEXPR static const GLenum GL_CLIP_DEPTH_MODE = GLenum::GL_CLIP_DEPTH_MODE;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_REDUCTION_MODE_ARB = GLenum::GL_TEXTURE_REDUCTION_MODE_ARB;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_REDUCTION_MODE_EXT = GLenum::GL_TEXTURE_REDUCTION_MODE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_WEIGHTED_AVERAGE_ARB = GLenum::GL_WEIGHTED_AVERAGE_ARB;
+GLBINDING_CONSTEXPR static const GLenum GL_WEIGHTED_AVERAGE_EXT = GLenum::GL_WEIGHTED_AVERAGE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_FONT_GLYPHS_AVAILABLE_NV = GLenum::GL_FONT_GLYPHS_AVAILABLE_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_FONT_TARGET_UNAVAILABLE_NV = GLenum::GL_FONT_TARGET_UNAVAILABLE_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_FONT_UNAVAILABLE_NV = GLenum::GL_FONT_UNAVAILABLE_NV;
@@ -11657,7 +11662,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_NUM_TILING_TYPES_EXT = GLenum::GL_NUM
 GLBINDING_CONSTEXPR static const GLenum GL_TILING_TYPES_EXT = GLenum::GL_TILING_TYPES_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_OPTIMAL_TILING_EXT = GLenum::GL_OPTIMAL_TILING_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_LINEAR_TILING_EXT = GLenum::GL_LINEAR_TILING_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_NUM_DEVICE_UUIDS_EXT = GLenum::GL_NUM_DEVICE_UUIDS_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR = GLenum::GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR;
 GLBINDING_CONSTEXPR static const GLenum GL_MAX_VIEWS_OVR = GLenum::GL_MAX_VIEWS_OVR;
 GLBINDING_CONSTEXPR static const GLenum GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR = GLenum::GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_BASE_VIEW_INDEX_OVR;

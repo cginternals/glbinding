@@ -1000,7 +1000,7 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_NORMAL_ARRAY_COUNT_EXT"/>
             <enum name="GL_NORMAL_ARRAY_STRIDE"/>
             <enum name="GL_NORMAL_ARRAY_TYPE"/>
-            <enum name="GL_NUM_DEVICE_UUIDS"/>
+            <enum name="GL_NUM_DEVICE_UUIDS_EXT"/>
             <enum name="GL_PACK_ALIGNMENT"/>
             <enum name="GL_PACK_CMYK_HINT_EXT"/>
             <enum name="GL_PACK_IMAGE_DEPTH_SGIS"/>
@@ -2658,9 +2658,9 @@ typedef unsigned int GLhandleARB;
             <enum name="GL_ONE_MINUS_CONSTANT_ALPHA"/>
             <enum name="GL_SRC_ALPHA_SATURATE"/>
             <enum name="GL_SRC1_COLOR"/>
-            <enum name="GL_ONE_MINUS_SRC_COLOR"/>
+            <enum name="GL_ONE_MINUS_SRC1_COLOR"/>
             <enum name="GL_SRC1_ALPHA"/>
-            <enum name="GL_ONE_MINUS_SRC_ALPHA"/>
+            <enum name="GL_ONE_MINUS_SRC1_ALPHA"/>
         </group>
 
         <group name="BindTransformFeedbackTarget">
@@ -9804,7 +9804,9 @@ typedef unsigned int GLhandleARB;
             <unused start="0x9360" end="0x9364" vendor="NV"/>
         <enum value="0x9365" name="GL_CLEAR_TEXTURE"/>
         <enum value="0x9366" name="GL_TEXTURE_REDUCTION_MODE_ARB"/>
+        <enum value="0x9366" name="GL_TEXTURE_REDUCTION_MODE_EXT" alias="GL_TEXTURE_REDUCTION_MODE_ARB"/>
         <enum value="0x9367" name="GL_WEIGHTED_AVERAGE_ARB"/>
+        <enum value="0x9367" name="GL_WEIGHTED_AVERAGE_EXT" alias="GL_WEIGHTED_AVERAGE_ARB"/>
         <enum value="0x9368" name="GL_FONT_GLYPHS_AVAILABLE_NV"/>
         <enum value="0x9369" name="GL_FONT_TARGET_UNAVAILABLE_NV"/>
         <enum value="0x936A" name="GL_FONT_UNAVAILABLE_NV"/>
@@ -11562,7 +11564,7 @@ typedef unsigned int GLhandleARB;
             <proto>void <name>glClipControlEXT</name></proto>
             <param><ptype>GLenum</ptype> <name>origin</name></param>
             <param><ptype>GLenum</ptype> <name>depth</name></param>
-            <alias name="glClipControlEXT"/>
+            <alias name="glClipControl"/>
         </command>
         <command>
             <proto>void <name>glClipPlane</name></proto>
@@ -35952,7 +35954,6 @@ typedef unsigned int GLhandleARB;
         <require profile="core" comment="Restore functionality removed in GL 3.2 core to GL 4.3. Needed for debug interface.">
             <enum name="GL_STACK_UNDERFLOW"/>
             <enum name="GL_STACK_OVERFLOW"/>
-            <command name="glGetPointerv"/>
         </require>
         <!-- Deprecated in OpenGL 4.3 core;
              deprecate tag not defined/supported yet
@@ -44605,13 +44606,8 @@ typedef unsigned int GLhandleARB;
         </extension>
         <extension name="GL_EXT_texture_filter_minmax" supported="gl|glcore|gles2">
             <require>
-                <enum name="GL_RASTER_MULTISAMPLE_EXT"/>
-                <enum name="GL_RASTER_SAMPLES_EXT"/>
-                <enum name="GL_MAX_RASTER_SAMPLES_EXT"/>
-                <enum name="GL_RASTER_FIXED_SAMPLE_LOCATIONS_EXT"/>
-                <enum name="GL_MULTISAMPLE_RASTERIZATION_ALLOWED_EXT"/>
-                <enum name="GL_EFFECTIVE_RASTER_SAMPLES_EXT"/>
-                <command name="glRasterSamplesEXT"/>
+                <enum name="GL_TEXTURE_REDUCTION_MODE_EXT"/>
+                <enum name="GL_WEIGHTED_AVERAGE_EXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_texture_format_BGRA8888" supported="gles1|gles2">
