@@ -35,6 +35,6 @@ before_script:
   - if [ $CMAKE_CONFIGURATION == debug ]; then ./configure debug; fi
 
 script:
-  - cmake --build $BUILD_DIR
+  - travis_wait cmake --build $BUILD_DIR
   - cmake --build $BUILD_DIR --target test
   - cmake --build $BUILD_DIR --target check-all
