@@ -5,6 +5,7 @@
 *glbinding* is a cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
 [![Travis](https://img.shields.io/travis/cginternals/glbinding/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/glbinding)
+[![Appveyor](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg?style=flat&logo=appveyor)](https://ci.appveyor.com/project/scheibel/glbinding/branch/master)
 [![Coverity](https://img.shields.io/coverity/scan/6828.svg?style=flat&logo=coverity)](https://scan.coverity.com/projects/6828)
 [![Tokei](https://tokei.rs/b1/github/cginternals/glbinding)](https://github.com/Aaronepower/tokei)
 
@@ -66,16 +67,6 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 * [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
 * [Meta Information System](#meta-information)
 * [Doxygen Documentations](https://cginternals.github.io/glbinding/docs) ([stable](https://cginternals.github.io/glbinding/docs/v2.1), [master](https://cginternals.github.io/glbinding/docs/master))
-
-## Project Health
-
-| Service | System | Compiler | Status |
-| :------ | ------ | -------- | -----: |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | macOS | AppleClang 7.3 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
-| [AppVeyor]() | Windows | MSVC 2013<br>MSVC 2015<br>MSVC 2017 | [![Build status](https://ci.appveyor.com/api/projects/status/17tvc4tvdndv6xhh/branch/master?svg=true)](https://ci.appveyor.com/project/scheibel/glbinding/branch/master)|
-| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu 14.04 | GCC 5.4 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
-
 
 ## Install Instructions
 
