@@ -4,6 +4,7 @@
 #include <glbinding/gl/extension.h>
 #include <glbinding/Version.h>
 
+
 using namespace gl;
 
 
@@ -131,7 +132,18 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension =
     { GLextension::GL_ARB_shader_texture_image_samples, { 4, 5 } },
     { GLextension::GL_ARB_texture_barrier, { 4, 5 } },
     { GLextension::GL_KHR_context_flush_control, { 4, 5 } },
-    { GLextension::GL_KHR_robustness, { 4, 5 } }
+    { GLextension::GL_KHR_robustness, { 4, 5 } },
+    { GLextension::GL_ARB_gl_spirv, { 4, 6 } },
+    { GLextension::GL_ARB_indirect_parameters, { 4, 6 } },
+    { GLextension::GL_ARB_pipeline_statistics_query, { 4, 6 } },
+    { GLextension::GL_ARB_polygon_offset_clamp, { 4, 6 } },
+    { GLextension::GL_ARB_shader_atomic_counter_ops, { 4, 6 } },
+    { GLextension::GL_ARB_shader_draw_parameters, { 4, 6 } },
+    { GLextension::GL_ARB_shader_group_vote, { 4, 6 } },
+    { GLextension::GL_ARB_spirv_extensions, { 4, 6 } },
+    { GLextension::GL_ARB_texture_filter_anisotropic, { 4, 6 } },
+    { GLextension::GL_ARB_transform_feedback_overflow_query, { 4, 6 } },
+    { GLextension::GL_KHR_no_error, { 4, 6 } }
 };
 
 

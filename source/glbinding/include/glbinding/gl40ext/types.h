@@ -1,6 +1,7 @@
 
 #pragma once
 
+
 #include <glbinding/nogl.h>
 #include <glbinding/gl/types.h>
 
@@ -26,6 +27,7 @@ using gl::GLfloat;
 using gl::GLclampf;
 using gl::GLdouble;
 using gl::GLclampd;
+using gl::GLeglClientBufferEXT;
 using gl::GLeglImageOES;
 using gl::GLchar;
 using gl::GLcharARB;
@@ -53,6 +55,7 @@ using gl::GLvdpauSurfaceNV;
 using gl::GLVULKANPROCNV;
 using gl::GLuint_array_2;
 using gl::AttribMask;
+using gl::BufferAccessMask;
 using gl::ClearBufferMask;
 using gl::ClientAttribMask;
 using gl::ContextFlagMask;
@@ -63,6 +66,9 @@ using gl::FragmentShaderDestMaskATI;
 using gl::FragmentShaderDestModMaskATI;
 using gl::MapBufferUsageMask;
 using gl::MemoryBarrierMask;
+using gl::OcclusionQueryEventMaskAMD;
+using gl::PathFontStyle;
+using gl::PathMetricMask;
 using gl::PathRenderingMaskNV;
 using gl::PerformanceQueryCapsMaskINTEL;
 using gl::SyncObjectMask;
@@ -70,9 +76,7 @@ using gl::TextureStorageMaskAMD;
 using gl::UseProgramStageMask;
 using gl::VertexHintsMaskPGI;
 using gl::UnusedMask;
-using gl::BufferAccessMask;
 using gl::BufferStorageMask;
-using gl::PathFontStyle;
 
 
 } // namespace gl40ext

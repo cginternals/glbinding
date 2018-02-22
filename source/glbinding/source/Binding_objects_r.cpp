@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -55,6 +56,7 @@ Function<void, const GLshort *, const GLshort *> Binding::Rectsv("glRectsv");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::RectxOES("glRectxOES");
 Function<void, const GLfixed *, const GLfixed *> Binding::RectxvOES("glRectxvOES");
 Function<void, const GLdouble *> Binding::ReferencePlaneSGIX("glReferencePlaneSGIX");
+Function<GLboolean, GLuint, GLuint64> Binding::ReleaseKeyedMutexWin32EXT("glReleaseKeyedMutexWin32EXT");
 Function<void> Binding::ReleaseShaderCompiler("glReleaseShaderCompiler");
 Function<void, GLbitfield> Binding::RenderGpuMaskNV("glRenderGpuMaskNV");
 Function<GLint, GLenum> Binding::RenderMode("glRenderMode");
@@ -98,6 +100,7 @@ Function<void> Binding::ResumeTransformFeedbackNV("glResumeTransformFeedbackNV")
 Function<void, GLdouble, GLdouble, GLdouble, GLdouble> Binding::Rotated("glRotated");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::Rotatef("glRotatef");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::RotatexOES("glRotatexOES");
+
 
 
 } // namespace glbinding

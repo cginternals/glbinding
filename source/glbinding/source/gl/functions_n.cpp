@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -39,6 +39,16 @@ void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, Buf
 void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return Binding::NamedBufferStorageEXT(buffer, size, data, flags);
+}
+
+void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags)
+{
+    return Binding::NamedBufferStorageExternalEXT(buffer, offset, size, clientBuffer, flags);
+}
+
+void glNamedBufferStorageMemEXT(GLuint buffer, GLsizeiptr size, GLuint memory, GLuint64 offset)
+{
+    return Binding::NamedBufferStorageMemEXT(buffer, size, memory, offset);
 }
 
 void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data)
@@ -410,6 +420,7 @@ void glNormalStream3svATI(GLenum stream, const GLshort * coords)
 {
     return Binding::NormalStream3svATI(stream, coords);
 }
+
 
 
 

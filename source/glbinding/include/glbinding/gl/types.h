@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 #include <glbinding/glbinding_api.h>
@@ -12,6 +14,7 @@
 #include <functional>
 #include <ostream>
 #include <string>
+
 
 #ifdef _MSC_VER
 #define GL_APIENTRY __stdcall
@@ -41,6 +44,7 @@ using GLfloat = float;
 using GLclampf = float;
 using GLdouble = double;
 using GLclampd = double;
+using GLeglClientBufferEXT = void *;
 using GLeglImageOES = void *;
 using GLchar = char;
 using GLcharARB = char;
@@ -72,6 +76,7 @@ using GLvdpauSurfaceNV = GLintptr;
 using GLVULKANPROCNV = void (GL_APIENTRY *)(void);
 using GLuint_array_2 = std::array<GLuint, 2>;
 enum class AttribMask : unsigned int;
+enum class BufferAccessMask : unsigned int;
 enum class ClearBufferMask : unsigned int;
 enum class ClientAttribMask : unsigned int;
 enum class ContextFlagMask : unsigned int;
@@ -82,6 +87,9 @@ enum class FragmentShaderDestMaskATI : unsigned int;
 enum class FragmentShaderDestModMaskATI : unsigned int;
 enum class MapBufferUsageMask : unsigned int;
 enum class MemoryBarrierMask : unsigned int;
+enum class OcclusionQueryEventMaskAMD : unsigned int;
+enum class PathFontStyle : unsigned int;
+enum class PathMetricMask : unsigned int;
 enum class PathRenderingMaskNV : unsigned int;
 enum class PerformanceQueryCapsMaskINTEL : unsigned int;
 enum class SyncObjectMask : unsigned int;
@@ -89,9 +97,7 @@ enum class TextureStorageMaskAMD : unsigned int;
 enum class UseProgramStageMask : unsigned int;
 enum class VertexHintsMaskPGI : unsigned int;
 enum class UnusedMask : unsigned int;
-enum class BufferAccessMask : unsigned int;
 enum class BufferStorageMask : unsigned int;
-enum class PathFontStyle : unsigned int;
 
 } // namespace gl
 
@@ -250,6 +256,78 @@ GLBINDING_CONSTEXPR inline AttribMask operator^(const AttribMask & a, const Attr
 inline AttribMask & operator^=(AttribMask & a, const AttribMask & b)
 {
     a = static_cast<AttribMask>(static_cast<std::underlying_type<AttribMask>::type>(a) ^ static_cast<std::underlying_type<AttribMask>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
+struct hash<gl::BufferAccessMask>
+{
+    hash<std::underlying_type<gl::BufferAccessMask>::type>::result_type operator()(const gl::BufferAccessMask & t) const
+    {
+        return hash<std::underlying_type<gl::BufferAccessMask>::type>()(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b)
+{
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+}
+
+inline BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
+{
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+}
+
+inline BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
+{
+    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
+}
+
+inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
+{
+    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
 
     return a;
 }
@@ -983,6 +1061,222 @@ namespace std
 
 
 template<>
+struct hash<gl::OcclusionQueryEventMaskAMD>
+{
+    hash<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>::result_type operator()(const gl::OcclusionQueryEventMaskAMD & t) const
+    {
+        return hash<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>()(static_cast<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline OcclusionQueryEventMaskAMD operator|(const OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    return static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) | static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+}
+
+inline OcclusionQueryEventMaskAMD & operator|=(OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    a = static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) | static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline OcclusionQueryEventMaskAMD operator&(const OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    return static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) & static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+}
+
+inline OcclusionQueryEventMaskAMD & operator&=(OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    a = static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) & static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline OcclusionQueryEventMaskAMD operator^(const OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    return static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) ^ static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+}
+
+inline OcclusionQueryEventMaskAMD & operator^=(OcclusionQueryEventMaskAMD & a, const OcclusionQueryEventMaskAMD & b)
+{
+    a = static_cast<OcclusionQueryEventMaskAMD>(static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(a) ^ static_cast<std::underlying_type<OcclusionQueryEventMaskAMD>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
+struct hash<gl::PathFontStyle>
+{
+    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
+    {
+        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
+{
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
+}
+
+inline PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
+{
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
+}
+
+inline PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
+{
+    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
+}
+
+inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
+{
+    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
+struct hash<gl::PathMetricMask>
+{
+    hash<std::underlying_type<gl::PathMetricMask>::type>::result_type operator()(const gl::PathMetricMask & t) const
+    {
+        return hash<std::underlying_type<gl::PathMetricMask>::type>()(static_cast<std::underlying_type<gl::PathMetricMask>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline PathMetricMask operator|(const PathMetricMask & a, const PathMetricMask & b)
+{
+    return static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) | static_cast<std::underlying_type<PathMetricMask>::type>(b));
+}
+
+inline PathMetricMask & operator|=(PathMetricMask & a, const PathMetricMask & b)
+{
+    a = static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) | static_cast<std::underlying_type<PathMetricMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathMetricMask operator&(const PathMetricMask & a, const PathMetricMask & b)
+{
+    return static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) & static_cast<std::underlying_type<PathMetricMask>::type>(b));
+}
+
+inline PathMetricMask & operator&=(PathMetricMask & a, const PathMetricMask & b)
+{
+    a = static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) & static_cast<std::underlying_type<PathMetricMask>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline PathMetricMask operator^(const PathMetricMask & a, const PathMetricMask & b)
+{
+    return static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) ^ static_cast<std::underlying_type<PathMetricMask>::type>(b));
+}
+
+inline PathMetricMask & operator^=(PathMetricMask & a, const PathMetricMask & b)
+{
+    a = static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) ^ static_cast<std::underlying_type<PathMetricMask>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+namespace std
+{
+
+
+template<>
 struct hash<gl::PathRenderingMaskNV>
 {
     hash<std::underlying_type<gl::PathRenderingMaskNV>::type>::result_type operator()(const gl::PathRenderingMaskNV & t) const
@@ -1487,78 +1781,6 @@ namespace std
 
 
 template<>
-struct hash<gl::BufferAccessMask>
-{
-    hash<std::underlying_type<gl::BufferAccessMask>::type>::result_type operator()(const gl::BufferAccessMask & t) const
-    {
-        return hash<std::underlying_type<gl::BufferAccessMask>::type>()(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(t));
-    }
-};
-
-
-} // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
-GLBINDING_CONSTEXPR inline BufferAccessMask operator|(const BufferAccessMask & a, const BufferAccessMask & b)
-{
-    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-}
-
-inline BufferAccessMask & operator|=(BufferAccessMask & a, const BufferAccessMask & b)
-{
-    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) | static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline BufferAccessMask operator&(const BufferAccessMask & a, const BufferAccessMask & b)
-{
-    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-}
-
-inline BufferAccessMask & operator&=(BufferAccessMask & a, const BufferAccessMask & b)
-{
-    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) & static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline BufferAccessMask operator^(const BufferAccessMask & a, const BufferAccessMask & b)
-{
-    return static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-}
-
-inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMask & b)
-{
-    a = static_cast<BufferAccessMask>(static_cast<std::underlying_type<BufferAccessMask>::type>(a) ^ static_cast<std::underlying_type<BufferAccessMask>::type>(b));
-
-    return a;
-}
-
-
-} // namespace gl
-
-
-namespace std
-{
-
-
-template<>
 struct hash<gl::BufferStorageMask>
 {
     hash<std::underlying_type<gl::BufferStorageMask>::type>::result_type operator()(const gl::BufferStorageMask & t) const
@@ -1618,78 +1840,6 @@ GLBINDING_CONSTEXPR inline BufferStorageMask operator^(const BufferStorageMask &
 inline BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorageMask & b)
 {
     a = static_cast<BufferStorageMask>(static_cast<std::underlying_type<BufferStorageMask>::type>(a) ^ static_cast<std::underlying_type<BufferStorageMask>::type>(b));
-
-    return a;
-}
-
-
-} // namespace gl
-
-
-namespace std
-{
-
-
-template<>
-struct hash<gl::PathFontStyle>
-{
-    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
-    {
-        return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
-    }
-};
-
-
-} // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
-GLBINDING_CONSTEXPR inline PathFontStyle operator|(const PathFontStyle & a, const PathFontStyle & b)
-{
-    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
-}
-
-inline PathFontStyle & operator|=(PathFontStyle & a, const PathFontStyle & b)
-{
-    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) | static_cast<std::underlying_type<PathFontStyle>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline PathFontStyle operator&(const PathFontStyle & a, const PathFontStyle & b)
-{
-    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
-}
-
-inline PathFontStyle & operator&=(PathFontStyle & a, const PathFontStyle & b)
-{
-    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) & static_cast<std::underlying_type<PathFontStyle>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline PathFontStyle operator^(const PathFontStyle & a, const PathFontStyle & b)
-{
-    return static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
-}
-
-inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
-{
-    a = static_cast<PathFontStyle>(static_cast<std::underlying_type<PathFontStyle>::type>(a) ^ static_cast<std::underlying_type<PathFontStyle>::type>(b));
 
     return a;
 }

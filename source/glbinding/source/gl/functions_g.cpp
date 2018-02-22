@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -101,6 +101,11 @@ void glGenQueriesARB(GLsizei n, GLuint * ids)
     return Binding::GenQueriesARB(n, ids);
 }
 
+void glGenQueryResourceTagNV(GLsizei n, GLint * tagIds)
+{
+    return Binding::GenQueryResourceTagNV(n, tagIds);
+}
+
 void glGenRenderbuffers(GLsizei n, GLuint * renderbuffers)
 {
     return Binding::GenRenderbuffers(n, renderbuffers);
@@ -114,6 +119,11 @@ void glGenRenderbuffersEXT(GLsizei n, GLuint * renderbuffers)
 void glGenSamplers(GLsizei count, GLuint * samplers)
 {
     return Binding::GenSamplers(count, samplers);
+}
+
+void glGenSemaphoresEXT(GLsizei n, GLuint * semaphores)
+{
+    return Binding::GenSemaphoresEXT(n, semaphores);
 }
 
 GLuint glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components)
@@ -891,6 +901,11 @@ void glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param)
     return Binding::GetMaterialxOES(face, pname, param);
 }
 
+void glGetMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, GLint * params)
+{
+    return Binding::GetMemoryObjectParameterivEXT(memoryObject, pname, params);
+}
+
 void glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values)
 {
     return Binding::GetMinmax(target, reset, format, type, values);
@@ -1261,7 +1276,7 @@ void glGetPerfMonitorGroupsAMD(GLint * numGroups, GLsizei groupsSize, GLuint * g
     return Binding::GetPerfMonitorGroupsAMD(numGroups, groupsSize, groups);
 }
 
-void glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, GLvoid * data, GLuint * bytesWritten)
+void glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, void * data, GLuint * bytesWritten)
 {
     return Binding::GetPerfQueryDataINTEL(queryHandle, flags, dataSize, data, bytesWritten);
 }
@@ -1594,6 +1609,11 @@ void glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat * params)
 void glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint * params)
 {
     return Binding::GetSamplerParameteriv(sampler, pname, params);
+}
+
+void glGetSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, GLuint64 * params)
+{
+    return Binding::GetSemaphoreParameterui64vEXT(semaphore, pname, params);
 }
 
 void glGetSeparableFilter(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span)
@@ -1994,6 +2014,16 @@ void glGetUniformuiv(GLuint program, GLint location, GLuint * params)
 void glGetUniformuivEXT(GLuint program, GLint location, GLuint * params)
 {
     return Binding::GetUniformuivEXT(program, location, params);
+}
+
+void glGetUnsignedBytei_vEXT(GLenum target, GLuint index, GLubyte * data)
+{
+    return Binding::GetUnsignedBytei_vEXT(target, index, data);
+}
+
+void glGetUnsignedBytevEXT(GLenum pname, GLubyte * data)
+{
+    return Binding::GetUnsignedBytevEXT(pname, data);
 }
 
 void glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat * params)
@@ -2455,6 +2485,7 @@ void glGlobalAlphaFactorusSUN(GLushort factor)
 {
     return Binding::GlobalAlphaFactorusSUN(factor);
 }
+
 
 
 

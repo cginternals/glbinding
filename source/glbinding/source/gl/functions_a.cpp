@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -19,6 +19,11 @@ void glAccum(GLenum op, GLfloat value)
 void glAccumxOES(GLenum op, GLfixed value)
 {
     return Binding::AccumxOES(op, value);
+}
+
+GLboolean glAcquireKeyedMutexWin32EXT(GLuint memory, GLuint64 key, GLuint timeout)
+{
+    return Binding::AcquireKeyedMutexWin32EXT(memory, key, timeout);
 }
 
 void glActiveProgramEXT(GLuint program)
@@ -135,6 +140,7 @@ void glAttachShader(GLuint program, GLuint shader)
 {
     return Binding::AttachShader(program, shader);
 }
+
 
 
 

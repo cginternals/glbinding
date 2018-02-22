@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/{{api}}/functions.h>
+
 
 using namespace glbinding;
 
@@ -17,5 +17,6 @@ namespace {{api}}
 }
 
 {{/item}}{{/currentFunctionGroup.items}}
+
 
 } // namespace {{api}}

@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/glbinding_api.h>
 
@@ -10,8 +12,10 @@ namespace gl
 {
 
 
+
 GLBINDING_API void glAccum(GLenum op, GLfloat value);
 GLBINDING_API void glAccumxOES(GLenum op, GLfixed value);
+GLBINDING_API GLboolean glAcquireKeyedMutexWin32EXT(GLuint memory, GLuint64 key, GLuint timeout);
 GLBINDING_API void glActiveProgramEXT(GLuint program);
 GLBINDING_API void glActiveShaderProgram(GLuint pipeline, GLuint program);
 GLBINDING_API void glActiveStencilFaceEXT(GLenum face);
@@ -149,6 +153,8 @@ GLBINDING_API void glBufferDataARB(GLenum target, GLsizeiptrARB size, const void
 GLBINDING_API void glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit);
 GLBINDING_API void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param);
 GLBINDING_API void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferStorageMask flags);
+GLBINDING_API void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags);
+GLBINDING_API void glBufferStorageMemEXT(GLenum target, GLsizeiptr size, GLuint memory, GLuint64 offset);
 GLBINDING_API void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void * data);
 
@@ -374,6 +380,7 @@ GLBINDING_API void glCoverageModulationTableNV(GLsizei n, const GLfloat * v);
 GLBINDING_API void glCreateBuffers(GLsizei n, GLuint * buffers);
 GLBINDING_API void glCreateCommandListsNV(GLsizei n, GLuint * lists);
 GLBINDING_API void glCreateFramebuffers(GLsizei n, GLuint * framebuffers);
+GLBINDING_API void glCreateMemoryObjectsEXT(GLsizei n, GLuint * memoryObjects);
 GLBINDING_API void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle);
 GLBINDING_API GLuint glCreateProgram();
 GLBINDING_API GLhandleARB glCreateProgramObjectARB();
@@ -417,6 +424,7 @@ GLBINDING_API void glDeleteFragmentShaderATI(GLuint id);
 GLBINDING_API void glDeleteFramebuffers(GLsizei n, const GLuint * framebuffers);
 GLBINDING_API void glDeleteFramebuffersEXT(GLsizei n, const GLuint * framebuffers);
 GLBINDING_API void glDeleteLists(GLuint list, GLsizei range);
+GLBINDING_API void glDeleteMemoryObjectsEXT(GLsizei n, const GLuint * memoryObjects);
 GLBINDING_API void glDeleteNamedStringARB(GLint namelen, const GLchar * name);
 GLBINDING_API void glDeleteNamesAMD(GLenum identifier, GLuint num, const GLuint * names);
 GLBINDING_API void glDeleteObjectARB(GLhandleARB obj);
@@ -430,9 +438,11 @@ GLBINDING_API void glDeleteProgramsARB(GLsizei n, const GLuint * programs);
 GLBINDING_API void glDeleteProgramsNV(GLsizei n, const GLuint * programs);
 GLBINDING_API void glDeleteQueries(GLsizei n, const GLuint * ids);
 GLBINDING_API void glDeleteQueriesARB(GLsizei n, const GLuint * ids);
+GLBINDING_API void glDeleteQueryResourceTagNV(GLsizei n, const GLint * tagIds);
 GLBINDING_API void glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers);
 GLBINDING_API void glDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers);
 GLBINDING_API void glDeleteSamplers(GLsizei count, const GLuint * samplers);
+GLBINDING_API void glDeleteSemaphoresEXT(GLsizei n, const GLuint * semaphores);
 GLBINDING_API void glDeleteShader(GLuint shader);
 GLBINDING_API void glDeleteStatesNV(GLsizei n, const GLuint * states);
 GLBINDING_API void glDeleteSync(GLsync sync);
@@ -632,6 +642,7 @@ GLBINDING_API void glFrameTerminatorGREMEDY();
 GLBINDING_API void glFrameZoomSGIX(GLint factor);
 GLBINDING_API void glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode);
 GLBINDING_API void glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum * bufs);
+GLBINDING_API void glFramebufferFetchBarrierEXT();
 GLBINDING_API void glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
 GLBINDING_API void glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode);
 GLBINDING_API void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
@@ -678,9 +689,11 @@ GLBINDING_API void glGenProgramsARB(GLsizei n, GLuint * programs);
 GLBINDING_API void glGenProgramsNV(GLsizei n, GLuint * programs);
 GLBINDING_API void glGenQueries(GLsizei n, GLuint * ids);
 GLBINDING_API void glGenQueriesARB(GLsizei n, GLuint * ids);
+GLBINDING_API void glGenQueryResourceTagNV(GLsizei n, GLint * tagIds);
 GLBINDING_API void glGenRenderbuffers(GLsizei n, GLuint * renderbuffers);
 GLBINDING_API void glGenRenderbuffersEXT(GLsizei n, GLuint * renderbuffers);
 GLBINDING_API void glGenSamplers(GLsizei count, GLuint * samplers);
+GLBINDING_API void glGenSemaphoresEXT(GLsizei n, GLuint * semaphores);
 GLBINDING_API GLuint glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components);
 GLBINDING_API void glGenTextures(GLsizei n, GLuint * textures);
 GLBINDING_API void glGenTexturesEXT(GLsizei n, GLuint * textures);
@@ -836,6 +849,7 @@ GLBINDING_API void glGetMapxvOES(GLenum target, GLenum query, GLfixed * v);
 GLBINDING_API void glGetMaterialfv(GLenum face, GLenum pname, GLfloat * params);
 GLBINDING_API void glGetMaterialiv(GLenum face, GLenum pname, GLint * params);
 GLBINDING_API void glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param);
+GLBINDING_API void glGetMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, GLint * params);
 GLBINDING_API void glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
 GLBINDING_API void glGetMinmaxEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, void * values);
 GLBINDING_API void glGetMinmaxParameterfv(GLenum target, GLenum pname, GLfloat * params);
@@ -910,7 +924,7 @@ GLBINDING_API void glGetPerfMonitorCounterStringAMD(GLuint group, GLuint counter
 GLBINDING_API void glGetPerfMonitorCountersAMD(GLuint group, GLint * numCounters, GLint * maxActiveCounters, GLsizei counterSize, GLuint * counters);
 GLBINDING_API void glGetPerfMonitorGroupStringAMD(GLuint group, GLsizei bufSize, GLsizei * length, GLchar * groupString);
 GLBINDING_API void glGetPerfMonitorGroupsAMD(GLint * numGroups, GLsizei groupsSize, GLuint * groups);
-GLBINDING_API void glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, GLvoid * data, GLuint * bytesWritten);
+GLBINDING_API void glGetPerfQueryDataINTEL(GLuint queryHandle, GLuint flags, GLsizei dataSize, void * data, GLuint * bytesWritten);
 GLBINDING_API void glGetPerfQueryIdByNameINTEL(GLchar * queryName, GLuint * queryId);
 GLBINDING_API void glGetPerfQueryInfoINTEL(GLuint queryId, GLuint queryNameLength, GLchar * queryName, GLuint * dataSize, GLuint * noCounters, GLuint * noInstances, GLuint * capsMask);
 GLBINDING_API void glGetPixelMapfv(GLenum map, GLfloat * values);
@@ -977,6 +991,7 @@ GLBINDING_API void glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint 
 GLBINDING_API void glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint * params);
 GLBINDING_API void glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat * params);
 GLBINDING_API void glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint * params);
+GLBINDING_API void glGetSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, GLuint64 * params);
 GLBINDING_API void glGetSeparableFilter(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span);
 GLBINDING_API void glGetSeparableFilterEXT(GLenum target, GLenum format, GLenum type, void * row, void * column, void * span);
 GLBINDING_API void glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei * length, GLchar * infoLog);
@@ -1057,6 +1072,8 @@ GLBINDING_API void glGetUniformui64vARB(GLuint program, GLint location, GLuint64
 GLBINDING_API void glGetUniformui64vNV(GLuint program, GLint location, GLuint64EXT * params);
 GLBINDING_API void glGetUniformuiv(GLuint program, GLint location, GLuint * params);
 GLBINDING_API void glGetUniformuivEXT(GLuint program, GLint location, GLuint * params);
+GLBINDING_API void glGetUnsignedBytei_vEXT(GLenum target, GLuint index, GLubyte * data);
+GLBINDING_API void glGetUnsignedBytevEXT(GLenum pname, GLubyte * data);
 GLBINDING_API void glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat * params);
 GLBINDING_API void glGetVariantArrayObjectivATI(GLuint id, GLenum pname, GLint * params);
 GLBINDING_API void glGetVariantBooleanvEXT(GLuint id, GLenum value, GLboolean * data);
@@ -1160,6 +1177,12 @@ GLBINDING_API void glImageTransformParameterfHP(GLenum target, GLenum pname, GLf
 GLBINDING_API void glImageTransformParameterfvHP(GLenum target, GLenum pname, const GLfloat * params);
 GLBINDING_API void glImageTransformParameteriHP(GLenum target, GLenum pname, GLint param);
 GLBINDING_API void glImageTransformParameterivHP(GLenum target, GLenum pname, const GLint * params);
+GLBINDING_API void glImportMemoryFdEXT(GLuint memory, GLuint64 size, GLenum handleType, GLint fd);
+GLBINDING_API void glImportMemoryWin32HandleEXT(GLuint memory, GLuint64 size, GLenum handleType, void * handle);
+GLBINDING_API void glImportMemoryWin32NameEXT(GLuint memory, GLuint64 size, GLenum handleType, const void * name);
+GLBINDING_API void glImportSemaphoreFdEXT(GLuint semaphore, GLenum handleType, GLint fd);
+GLBINDING_API void glImportSemaphoreWin32HandleEXT(GLuint semaphore, GLenum handleType, void * handle);
+GLBINDING_API void glImportSemaphoreWin32NameEXT(GLuint semaphore, GLenum handleType, const void * name);
 GLBINDING_API GLsync glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, UnusedMask flags);
 GLBINDING_API void glIndexFormatNV(GLenum type, GLsizei stride);
 GLBINDING_API void glIndexFuncEXT(GLenum func, GLclampf ref);
@@ -1209,6 +1232,7 @@ GLBINDING_API GLboolean glIsFramebufferEXT(GLuint framebuffer);
 GLBINDING_API GLboolean glIsImageHandleResidentARB(GLuint64 handle);
 GLBINDING_API GLboolean glIsImageHandleResidentNV(GLuint64 handle);
 GLBINDING_API GLboolean glIsList(GLuint list);
+GLBINDING_API GLboolean glIsMemoryObjectEXT(GLuint memoryObject);
 GLBINDING_API GLboolean glIsNameAMD(GLenum identifier, GLuint name);
 GLBINDING_API GLboolean glIsNamedBufferResidentNV(GLuint buffer);
 GLBINDING_API GLboolean glIsNamedStringARB(GLint namelen, const GLchar * name);
@@ -1226,6 +1250,7 @@ GLBINDING_API GLboolean glIsQueryARB(GLuint id);
 GLBINDING_API GLboolean glIsRenderbuffer(GLuint renderbuffer);
 GLBINDING_API GLboolean glIsRenderbufferEXT(GLuint renderbuffer);
 GLBINDING_API GLboolean glIsSampler(GLuint sampler);
+GLBINDING_API GLboolean glIsSemaphoreEXT(GLuint semaphore);
 GLBINDING_API GLboolean glIsShader(GLuint shader);
 GLBINDING_API GLboolean glIsStateNV(GLuint state);
 GLBINDING_API GLboolean glIsSync(GLsync sync);
@@ -1362,9 +1387,11 @@ GLBINDING_API void glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat 
 GLBINDING_API void glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
 GLBINDING_API void glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
 GLBINDING_API void glMaxShaderCompilerThreadsARB(GLuint count);
+GLBINDING_API void glMaxShaderCompilerThreadsKHR(GLuint count);
 GLBINDING_API void glMemoryBarrier(MemoryBarrierMask barriers);
 GLBINDING_API void glMemoryBarrierByRegion(MemoryBarrierMask barriers);
 GLBINDING_API void glMemoryBarrierEXT(MemoryBarrierMask barriers);
+GLBINDING_API void glMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, const GLint * params);
 GLBINDING_API void glMinSampleShading(GLfloat value);
 GLBINDING_API void glMinSampleShadingARB(GLfloat value);
 GLBINDING_API void glMinmax(GLenum target, GLenum internalformat, GLboolean sink);
@@ -1383,7 +1410,8 @@ GLBINDING_API void glMultiDrawArraysIndirect(GLenum mode, const void * indirect,
 GLBINDING_API void glMultiDrawArraysIndirectAMD(GLenum mode, const void * indirect, GLsizei primcount, GLsizei stride);
 GLBINDING_API void glMultiDrawArraysIndirectBindlessCountNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
 GLBINDING_API void glMultiDrawArraysIndirectBindlessNV(GLenum mode, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
-GLBINDING_API void glMultiDrawArraysIndirectCountARB(GLenum mode, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawArraysIndirectCount(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawArraysIndirectCountARB(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawElementArrayAPPLE(GLenum mode, const GLint * first, const GLsizei * count, GLsizei primcount);
 GLBINDING_API void glMultiDrawElements(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount);
 GLBINDING_API void glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei drawcount, const GLint * basevertex);
@@ -1392,7 +1420,8 @@ GLBINDING_API void glMultiDrawElementsIndirect(GLenum mode, GLenum type, const v
 GLBINDING_API void glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const void * indirect, GLsizei primcount, GLsizei stride);
 GLBINDING_API void glMultiDrawElementsIndirectBindlessCountNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei maxDrawCount, GLsizei stride, GLint vertexBufferCount);
 GLBINDING_API void glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
-GLBINDING_API void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawElementsIndirectCount(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount);
 GLBINDING_API void glMultiModeDrawArraysIBM(const GLenum * mode, const GLint * first, const GLsizei * count, GLsizei primcount, GLint modestride);
 GLBINDING_API void glMultiModeDrawElementsIBM(const GLenum * mode, const GLsizei * count, GLenum type, const void *const* indices, GLsizei primcount, GLint modestride);
@@ -1518,8 +1547,8 @@ GLBINDING_API void glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint 
 GLBINDING_API void glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
 GLBINDING_API void glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const void * pixels);
 GLBINDING_API void glMulticastBarrierNV();
-GLBINDING_API void glMulticastBlitFramebufferNV(GLuint srcGpu, GLuint dstGpu, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
-GLBINDING_API void glMulticastBufferSubDataNV(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid * data);
+GLBINDING_API void glMulticastBlitFramebufferNV(GLuint srcGpu, GLuint dstGpu, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter);
+GLBINDING_API void glMulticastBufferSubDataNV(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glMulticastCopyBufferSubDataNV(GLuint readGpu, GLbitfield writeGpuMask, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
 GLBINDING_API void glMulticastCopyImageSubDataNV(GLuint srcGpu, GLbitfield dstGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
 GLBINDING_API void glMulticastFramebufferSampleLocationsfvNV(GLuint gpu, GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v);
@@ -1535,6 +1564,8 @@ GLBINDING_API void glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset
 GLBINDING_API void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
 GLBINDING_API void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags);
 GLBINDING_API void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags);
+GLBINDING_API void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags);
+GLBINDING_API void glNamedBufferStorageMemEXT(GLuint buffer, GLsizeiptr size, GLuint memory, GLuint64 offset);
 GLBINDING_API void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
@@ -1690,6 +1721,7 @@ GLBINDING_API GLint glPollAsyncSGIX(GLuint * markerp);
 GLBINDING_API GLint glPollInstrumentsSGIX(GLint * marker_p);
 GLBINDING_API void glPolygonMode(GLenum face, GLenum mode);
 GLBINDING_API void glPolygonOffset(GLfloat factor, GLfloat units);
+GLBINDING_API void glPolygonOffsetClamp(GLfloat factor, GLfloat units, GLfloat clamp);
 GLBINDING_API void glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp);
 GLBINDING_API void glPolygonOffsetEXT(GLfloat factor, GLfloat bias);
 GLBINDING_API void glPolygonOffsetxOES(GLfixed factor, GLfixed units);
@@ -1903,6 +1935,8 @@ GLBINDING_API void glPushName(GLuint name);
 GLBINDING_API void glQueryCounter(GLuint id, GLenum target);
 GLBINDING_API GLbitfield glQueryMatrixxOES(GLfixed * mantissa, GLint * exponent);
 GLBINDING_API void glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint param);
+GLBINDING_API GLint glQueryResourceNV(GLenum queryType, GLint tagId, GLuint bufSize, GLint * buffer);
+GLBINDING_API void glQueryResourceTagNV(GLint tagId, const GLchar * tagString);
 
 GLBINDING_API void glRasterPos2d(GLdouble x, GLdouble y);
 GLBINDING_API void glRasterPos2dv(const GLdouble * v);
@@ -1951,6 +1985,7 @@ GLBINDING_API void glRectsv(const GLshort * v1, const GLshort * v2);
 GLBINDING_API void glRectxOES(GLfixed x1, GLfixed y1, GLfixed x2, GLfixed y2);
 GLBINDING_API void glRectxvOES(const GLfixed * v1, const GLfixed * v2);
 GLBINDING_API void glReferencePlaneSGIX(const GLdouble * equation);
+GLBINDING_API GLboolean glReleaseKeyedMutexWin32EXT(GLuint memory, GLuint64 key);
 GLBINDING_API void glReleaseShaderCompiler();
 GLBINDING_API void glRenderGpuMaskNV(GLbitfield mask);
 GLBINDING_API GLint glRenderMode(GLenum mode);
@@ -2059,6 +2094,7 @@ GLBINDING_API void glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei s
 GLBINDING_API void glSecondaryColorPointerListIBM(GLint size, GLenum type, GLint stride, const void ** pointer, GLint ptrstride);
 GLBINDING_API void glSelectBuffer(GLsizei size, GLuint * buffer);
 GLBINDING_API void glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint * counterList);
+GLBINDING_API void glSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, const GLuint64 * params);
 GLBINDING_API void glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column);
 GLBINDING_API void glSeparableFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column);
 GLBINDING_API void glSetFenceAPPLE(GLuint fence);
@@ -2076,8 +2112,10 @@ GLBINDING_API void glShaderSource(GLuint shader, GLsizei count, const GLchar *co
 GLBINDING_API void glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB ** string, const GLint * length);
 GLBINDING_API void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
 GLBINDING_API void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points);
+GLBINDING_API void glSignalSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * dstLayouts);
 GLBINDING_API void glSignalVkFenceNV(GLuint64 vkFence);
 GLBINDING_API void glSignalVkSemaphoreNV(GLuint64 vkSemaphore);
+GLBINDING_API void glSpecializeShader(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue);
 GLBINDING_API void glSpecializeShaderARB(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue);
 GLBINDING_API void glSpriteParameterfSGIX(GLenum pname, GLfloat param);
 GLBINDING_API void glSpriteParameterfvSGIX(GLenum pname, const GLfloat * params);
@@ -2257,6 +2295,11 @@ GLBINDING_API void glTexStorage2D(GLenum target, GLsizei levels, GLenum internal
 GLBINDING_API void glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
 GLBINDING_API void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 GLBINDING_API void glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLBINDING_API void glTexStorageMem1DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTexStorageMem2DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTexStorageMem2DMultisampleEXT(GLenum target, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTexStorageMem3DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTexStorageMem3DMultisampleEXT(GLenum target, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
 GLBINDING_API void glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, TextureStorageMaskAMD flags);
 GLBINDING_API void glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 GLBINDING_API void glTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
@@ -2307,6 +2350,11 @@ GLBINDING_API void glTextureStorage3D(GLuint texture, GLsizei levels, GLenum int
 GLBINDING_API void glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 GLBINDING_API void glTextureStorage3DMultisample(GLuint texture, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 GLBINDING_API void glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+GLBINDING_API void glTextureStorageMem1DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTextureStorageMem2DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTextureStorageMem2DMultisampleEXT(GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTextureStorageMem3DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset);
+GLBINDING_API void glTextureStorageMem3DMultisampleEXT(GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset);
 GLBINDING_API void glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, TextureStorageMaskAMD flags);
 GLBINDING_API void glTextureSubImage1D(GLuint texture, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
 GLBINDING_API void glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const void * pixels);
@@ -2840,6 +2888,7 @@ GLBINDING_API void glViewportIndexedfv(GLuint index, const GLfloat * v);
 GLBINDING_API void glViewportPositionWScaleNV(GLuint index, GLfloat xcoeff, GLfloat ycoeff);
 GLBINDING_API void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew);
 
+GLBINDING_API void glWaitSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * srcLayouts);
 GLBINDING_API void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout);
 GLBINDING_API void glWaitVkSemaphoreNV(GLuint64 vkSemaphore);
 GLBINDING_API void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights);

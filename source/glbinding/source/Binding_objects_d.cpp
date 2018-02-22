@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -30,6 +31,7 @@ Function<void, GLuint> Binding::DeleteFragmentShaderATI("glDeleteFragmentShaderA
 Function<void, GLsizei, const GLuint *> Binding::DeleteFramebuffers("glDeleteFramebuffers");
 Function<void, GLsizei, const GLuint *> Binding::DeleteFramebuffersEXT("glDeleteFramebuffersEXT");
 Function<void, GLuint, GLsizei> Binding::DeleteLists("glDeleteLists");
+Function<void, GLsizei, const GLuint *> Binding::DeleteMemoryObjectsEXT("glDeleteMemoryObjectsEXT");
 Function<void, GLint, const GLchar *> Binding::DeleteNamedStringARB("glDeleteNamedStringARB");
 Function<void, GLenum, GLuint, const GLuint *> Binding::DeleteNamesAMD("glDeleteNamesAMD");
 Function<void, GLhandleARB> Binding::DeleteObjectARB("glDeleteObjectARB");
@@ -43,9 +45,11 @@ Function<void, GLsizei, const GLuint *> Binding::DeleteProgramsARB("glDeleteProg
 Function<void, GLsizei, const GLuint *> Binding::DeleteProgramsNV("glDeleteProgramsNV");
 Function<void, GLsizei, const GLuint *> Binding::DeleteQueries("glDeleteQueries");
 Function<void, GLsizei, const GLuint *> Binding::DeleteQueriesARB("glDeleteQueriesARB");
+Function<void, GLsizei, const GLint *> Binding::DeleteQueryResourceTagNV("glDeleteQueryResourceTagNV");
 Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffers("glDeleteRenderbuffers");
 Function<void, GLsizei, const GLuint *> Binding::DeleteRenderbuffersEXT("glDeleteRenderbuffersEXT");
 Function<void, GLsizei, const GLuint *> Binding::DeleteSamplers("glDeleteSamplers");
+Function<void, GLsizei, const GLuint *> Binding::DeleteSemaphoresEXT("glDeleteSemaphoresEXT");
 Function<void, GLuint> Binding::DeleteShader("glDeleteShader");
 Function<void, GLsizei, const GLuint *> Binding::DeleteStatesNV("glDeleteStatesNV");
 Function<void, GLsync> Binding::DeleteSync("glDeleteSync");
@@ -126,6 +130,7 @@ Function<void, GLenum, GLuint> Binding::DrawTransformFeedbackNV("glDrawTransform
 Function<void, GLenum, GLuint, GLuint> Binding::DrawTransformFeedbackStream("glDrawTransformFeedbackStream");
 Function<void, GLenum, GLuint, GLuint, GLsizei> Binding::DrawTransformFeedbackStreamInstanced("glDrawTransformFeedbackStreamInstanced");
 Function<void, GLuint64, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::DrawVkImageNV("glDrawVkImageNV");
+
 
 
 } // namespace glbinding

@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -388,6 +389,7 @@ Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> Binding::ViewportInde
 Function<void, GLuint, const GLfloat *> Binding::ViewportIndexedfv("glViewportIndexedfv");
 Function<void, GLuint, GLfloat, GLfloat> Binding::ViewportPositionWScaleNV("glViewportPositionWScaleNV");
 Function<void, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::ViewportSwizzleNV("glViewportSwizzleNV");
+
 
 
 } // namespace glbinding

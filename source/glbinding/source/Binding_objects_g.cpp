@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -26,9 +27,11 @@ Function<void, GLsizei, GLuint *> Binding::GenProgramsARB("glGenProgramsARB");
 Function<void, GLsizei, GLuint *> Binding::GenProgramsNV("glGenProgramsNV");
 Function<void, GLsizei, GLuint *> Binding::GenQueries("glGenQueries");
 Function<void, GLsizei, GLuint *> Binding::GenQueriesARB("glGenQueriesARB");
+Function<void, GLsizei, GLint *> Binding::GenQueryResourceTagNV("glGenQueryResourceTagNV");
 Function<void, GLsizei, GLuint *> Binding::GenRenderbuffers("glGenRenderbuffers");
 Function<void, GLsizei, GLuint *> Binding::GenRenderbuffersEXT("glGenRenderbuffersEXT");
 Function<void, GLsizei, GLuint *> Binding::GenSamplers("glGenSamplers");
+Function<void, GLsizei, GLuint *> Binding::GenSemaphoresEXT("glGenSemaphoresEXT");
 Function<GLuint, GLenum, GLenum, GLenum, GLuint> Binding::GenSymbolsEXT("glGenSymbolsEXT");
 Function<void, GLsizei, GLuint *> Binding::GenTextures("glGenTextures");
 Function<void, GLsizei, GLuint *> Binding::GenTexturesEXT("glGenTexturesEXT");
@@ -184,6 +187,7 @@ Function<void, GLenum, GLenum, GLfixed *> Binding::GetMapxvOES("glGetMapxvOES");
 Function<void, GLenum, GLenum, GLfloat *> Binding::GetMaterialfv("glGetMaterialfv");
 Function<void, GLenum, GLenum, GLint *> Binding::GetMaterialiv("glGetMaterialiv");
 Function<void, GLenum, GLenum, GLfixed> Binding::GetMaterialxOES("glGetMaterialxOES");
+Function<void, GLuint, GLenum, GLint *> Binding::GetMemoryObjectParameterivEXT("glGetMemoryObjectParameterivEXT");
 Function<void, GLenum, GLboolean, GLenum, GLenum, void *> Binding::GetMinmax("glGetMinmax");
 Function<void, GLenum, GLboolean, GLenum, GLenum, void *> Binding::GetMinmaxEXT("glGetMinmaxEXT");
 Function<void, GLenum, GLenum, GLfloat *> Binding::GetMinmaxParameterfv("glGetMinmaxParameterfv");
@@ -258,7 +262,7 @@ Function<void, GLuint, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetPerfMon
 Function<void, GLuint, GLint *, GLint *, GLsizei, GLuint *> Binding::GetPerfMonitorCountersAMD("glGetPerfMonitorCountersAMD");
 Function<void, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetPerfMonitorGroupStringAMD("glGetPerfMonitorGroupStringAMD");
 Function<void, GLint *, GLsizei, GLuint *> Binding::GetPerfMonitorGroupsAMD("glGetPerfMonitorGroupsAMD");
-Function<void, GLuint, GLuint, GLsizei, GLvoid *, GLuint *> Binding::GetPerfQueryDataINTEL("glGetPerfQueryDataINTEL");
+Function<void, GLuint, GLuint, GLsizei, void *, GLuint *> Binding::GetPerfQueryDataINTEL("glGetPerfQueryDataINTEL");
 Function<void, GLchar *, GLuint *> Binding::GetPerfQueryIdByNameINTEL("glGetPerfQueryIdByNameINTEL");
 Function<void, GLuint, GLuint, GLchar *, GLuint *, GLuint *, GLuint *, GLuint *> Binding::GetPerfQueryInfoINTEL("glGetPerfQueryInfoINTEL");
 Function<void, GLenum, GLfloat *> Binding::GetPixelMapfv("glGetPixelMapfv");
@@ -325,6 +329,7 @@ Function<void, GLuint, GLenum, GLint *> Binding::GetSamplerParameterIiv("glGetSa
 Function<void, GLuint, GLenum, GLuint *> Binding::GetSamplerParameterIuiv("glGetSamplerParameterIuiv");
 Function<void, GLuint, GLenum, GLfloat *> Binding::GetSamplerParameterfv("glGetSamplerParameterfv");
 Function<void, GLuint, GLenum, GLint *> Binding::GetSamplerParameteriv("glGetSamplerParameteriv");
+Function<void, GLuint, GLenum, GLuint64 *> Binding::GetSemaphoreParameterui64vEXT("glGetSemaphoreParameterui64vEXT");
 Function<void, GLenum, GLenum, GLenum, void *, void *, void *> Binding::GetSeparableFilter("glGetSeparableFilter");
 Function<void, GLenum, GLenum, GLenum, void *, void *, void *> Binding::GetSeparableFilterEXT("glGetSeparableFilterEXT");
 Function<void, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetShaderInfoLog("glGetShaderInfoLog");
@@ -405,6 +410,8 @@ Function<void, GLuint, GLint, GLuint64 *> Binding::GetUniformui64vARB("glGetUnif
 Function<void, GLuint, GLint, GLuint64EXT *> Binding::GetUniformui64vNV("glGetUniformui64vNV");
 Function<void, GLuint, GLint, GLuint *> Binding::GetUniformuiv("glGetUniformuiv");
 Function<void, GLuint, GLint, GLuint *> Binding::GetUniformuivEXT("glGetUniformuivEXT");
+Function<void, GLenum, GLuint, GLubyte *> Binding::GetUnsignedBytei_vEXT("glGetUnsignedBytei_vEXT");
+Function<void, GLenum, GLubyte *> Binding::GetUnsignedBytevEXT("glGetUnsignedBytevEXT");
 Function<void, GLuint, GLenum, GLfloat *> Binding::GetVariantArrayObjectfvATI("glGetVariantArrayObjectfvATI");
 Function<void, GLuint, GLenum, GLint *> Binding::GetVariantArrayObjectivATI("glGetVariantArrayObjectivATI");
 Function<void, GLuint, GLenum, GLboolean *> Binding::GetVariantBooleanvEXT("glGetVariantBooleanvEXT");
@@ -497,6 +504,7 @@ Function<void, GLshort> Binding::GlobalAlphaFactorsSUN("glGlobalAlphaFactorsSUN"
 Function<void, GLubyte> Binding::GlobalAlphaFactorubSUN("glGlobalAlphaFactorubSUN");
 Function<void, GLuint> Binding::GlobalAlphaFactoruiSUN("glGlobalAlphaFactoruiSUN");
 Function<void, GLushort> Binding::GlobalAlphaFactorusSUN("glGlobalAlphaFactorusSUN");
+
 
 
 } // namespace glbinding

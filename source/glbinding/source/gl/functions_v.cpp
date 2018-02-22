@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -1910,6 +1910,7 @@ void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum 
 {
     return Binding::ViewportSwizzleNV(index, swizzlex, swizzley, swizzlez, swizzlew);
 }
+
 
 
 

@@ -1,8 +1,18 @@
 [//]: # (Comment)
 
-![glbinding](glbinding-logo.png)
+<br><a href="https://glbinding.org/"><img src="https://raw.githubusercontent.com/cginternals/glbinding/master/glbinding-logo.svg?sanitize=true" width="50%"></a>
 
-*glbinding* is an [MIT licensed](http://opensource.org/licenses/MIT), cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
+*glbinding* is a cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
+
+[![Travis](https://img.shields.io/travis/cginternals/glbinding/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/glbinding)
+[![Appveyor](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg?style=flat&logo=appveyor)](https://ci.appveyor.com/project/scheibel/glbinding/branch/master)
+[![Coverity](https://img.shields.io/coverity/scan/6828.svg?style=flat&logo=coverity)](https://scan.coverity.com/projects/6828)
+[![Coveralls](https://img.shields.io/badge/coveralls-ToDo-lightgrey.svg?)](https://coveralls.io/github/cginternals/glbinding)
+[![Tokei](https://tokei.rs/b1/github/cginternals/glbinding)](https://github.com/Aaronepower/tokei)
+
+[![Documentation](https://img.shields.io/badge/documentation-online-blue.svg?style=flat&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMC41IDEzLjciPjxwYXRoIGQ9Ik0xMS41IDYuOGwtMy43IDYuNEwuNS41aDE0LjdsLTEuMyAyLjFINC4yTDcuOCA5bDIuNS00LjN6bTcuMyA0LjNsMS4yIDIuMWgtOS43TDE3LjYuNWwxLjIgMi4xLTQuOSA4LjV6IiBmaWxsPSIjZmZmIi8%2BPC9zdmc%2B)](http://cginternals.github.io/glbinding/docs/)
+[![Examples](https://img.shields.io/badge/examples-wiki-blue.svg?style=flat&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMC41IDEzLjciPjxwYXRoIGQ9Ik0xMS41IDYuOGwtMy43IDYuNEwuNS41aDE0LjdsLTEuMyAyLjFINC4yTDcuOCA5bDIuNS00LjN6bTcuMyA0LjNsMS4yIDIuMWgtOS43TDE3LjYuNWwxLjIgMi4xLTQuOSA4LjV6IiBmaWxsPSIjZmZmIi8%2BPC9zdmc%2B)](https://github.com/cginternals/glbinding/wiki/Examples)
+[![Tools](https://img.shields.io/badge/tools-wiki-blue.svg?style=flat&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMC41IDEzLjciPjxwYXRoIGQ9Ik0xMS41IDYuOGwtMy43IDYuNEwuNS41aDE0LjdsLTEuMyAyLjFINC4yTDcuOCA5bDIuNS00LjN6bTcuMyA0LjNsMS4yIDIuMWgtOS43TDE3LjYuNWwxLjIgMi4xLTQuOSA4LjV6IiBmaWxsPSIjZmZmIi8%2BPC9zdmc%2B)](https://github.com/cginternals/glbinding/wiki/Tools)
 
 *glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros; 
 all OpenGL symbols are real functions and variables. 
@@ -58,18 +68,6 @@ Visit [Professional Support and Services](https://www.cginternals.com) for more 
 * [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
 * [Meta Information System](#meta-information)
 * [Doxygen Documentations](https://cginternals.github.io/glbinding/docs) ([stable](https://cginternals.github.io/glbinding/docs/v2.1), [master](https://cginternals.github.io/glbinding/docs/master))
-
-## Project Health
-
-| Service | System | Compiler | Status |
-| :------ | ------ | -------- | -----: |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | Ubuntu 14.04 | GCC 4.8, Clang 3.5 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
-|  [Travis-CI](https://travis-ci.org/cginternals/glbinding) | macOS | AppleClang 7.3 | [![Build Status](https://travis-ci.org/cginternals/glbinding.svg?branch=master)](https://travis-ci.org/cginternals/glbinding) |
-| [AppVeyor]() | Windows | MSVC 2013<br>MSVC 2015<br>MSVC 2017 | [![Build status](https://ci.appveyor.com/api/projects/status/17tvc4tvdndv6xhh/branch/master?svg=true)](https://ci.appveyor.com/project/scheibel/glbinding/branch/master)|
-| Jenkins <br><br><br><br> | Ubuntu 14.04 <br><br><br><br> | GCC 4.8 <br> GCC 4.9 <br> GCC 5.4 <br> Clang 3.8 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.8)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.8) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc4.9)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc4.9) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-gcc5)](https://jenkins.hpi3d.de/job/glbinding-linux-gcc5.4) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-linux-clang3.8)](https://jenkins.hpi3d.de/job/glbinding-linux-clang3.8) <br> |
-| Jenkins <br><br> | Windows 10 <br><br> | MSVC 2013 Update 5 <br>  MSVC 2015 Update 1 <br> | [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2013)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2013) <br> [![Build Status](https://jenkins.hpi3d.de/buildStatus/icon?job=glbinding-windows-msvc2015)](https://jenkins.hpi3d.de/job/glbinding-windows-msvc2015) <br> |
-| [Coverity](https://scan.coverity.com/projects/6828?tab=overview) | Ubuntu 14.04 | GCC 5.4 | [![Coverity Status](https://scan.coverity.com/projects/6828/badge.svg)](https://scan.coverity.com/projects/6828) |
-
 
 ## Install Instructions
 
@@ -141,7 +139,7 @@ Building *glbinding* from source has several mandatory and optional dependencies
 * [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
   * [SVN](https://subversion.apache.org/) for updating the ```gl.xml```
   * [pystache](https://github.com/defunkt/pystache) for the template-based code generation 
-* [GLFW](http://www.glfw.org/) 3.0 or higher for examples and tools
+* [GLFW](http://www.glfw.org/) 3.2 or higher for examples and tools
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples
 * [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example

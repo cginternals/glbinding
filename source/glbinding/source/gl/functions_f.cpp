@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -306,6 +306,11 @@ void glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum * b
     return Binding::FramebufferDrawBuffersEXT(framebuffer, n, bufs);
 }
 
+void glFramebufferFetchBarrierEXT()
+{
+    return Binding::FramebufferFetchBarrierEXT();
+}
+
 void glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
 {
     return Binding::FramebufferParameteri(target, pname, param);
@@ -440,6 +445,7 @@ void glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixe
 {
     return Binding::FrustumxOES(l, r, b, t, n, f);
 }
+
 
 
 

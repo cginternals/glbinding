@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -369,6 +369,11 @@ void glPolygonMode(GLenum face, GLenum mode)
 void glPolygonOffset(GLfloat factor, GLfloat units)
 {
     return Binding::PolygonOffset(factor, units);
+}
+
+void glPolygonOffsetClamp(GLfloat factor, GLfloat units, GLfloat clamp)
+{
+    return Binding::PolygonOffsetClamp(factor, units, clamp);
 }
 
 void glPolygonOffsetClampEXT(GLfloat factor, GLfloat units, GLfloat clamp)
@@ -1415,6 +1420,7 @@ void glPushName(GLuint name)
 {
     return Binding::PushName(name);
 }
+
 
 
 

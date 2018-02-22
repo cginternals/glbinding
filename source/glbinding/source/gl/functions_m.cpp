@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -396,6 +396,11 @@ void glMaxShaderCompilerThreadsARB(GLuint count)
     return Binding::MaxShaderCompilerThreadsARB(count);
 }
 
+void glMaxShaderCompilerThreadsKHR(GLuint count)
+{
+    return Binding::MaxShaderCompilerThreadsKHR(count);
+}
+
 void glMemoryBarrier(MemoryBarrierMask barriers)
 {
     return Binding::MemoryBarrier(barriers);
@@ -409,6 +414,11 @@ void glMemoryBarrierByRegion(MemoryBarrierMask barriers)
 void glMemoryBarrierEXT(MemoryBarrierMask barriers)
 {
     return Binding::MemoryBarrierEXT(barriers);
+}
+
+void glMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, const GLint * params)
+{
+    return Binding::MemoryObjectParameterivEXT(memoryObject, pname, params);
 }
 
 void glMinSampleShading(GLfloat value)
@@ -501,7 +511,12 @@ void glMultiDrawArraysIndirectBindlessNV(GLenum mode, const void * indirect, GLs
     return Binding::MultiDrawArraysIndirectBindlessNV(mode, indirect, drawCount, stride, vertexBufferCount);
 }
 
-void glMultiDrawArraysIndirectCountARB(GLenum mode, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+void glMultiDrawArraysIndirectCount(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+{
+    return Binding::MultiDrawArraysIndirectCount(mode, indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawArraysIndirectCountARB(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
 {
     return Binding::MultiDrawArraysIndirectCountARB(mode, indirect, drawcount, maxdrawcount, stride);
 }
@@ -546,7 +561,12 @@ void glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void 
     return Binding::MultiDrawElementsIndirectBindlessNV(mode, type, indirect, drawCount, stride, vertexBufferCount);
 }
 
-void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+void glMultiDrawElementsIndirectCount(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+{
+    return Binding::MultiDrawElementsIndirectCount(mode, type, indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
 {
     return Binding::MultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride);
 }
@@ -1176,12 +1196,12 @@ void glMulticastBarrierNV()
     return Binding::MulticastBarrierNV();
 }
 
-void glMulticastBlitFramebufferNV(GLuint srcGpu, GLuint dstGpu, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+void glMulticastBlitFramebufferNV(GLuint srcGpu, GLuint dstGpu, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter)
 {
     return Binding::MulticastBlitFramebufferNV(srcGpu, dstGpu, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
-void glMulticastBufferSubDataNV(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid * data)
+void glMulticastBufferSubDataNV(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data)
 {
     return Binding::MulticastBufferSubDataNV(gpuMask, buffer, offset, size, data);
 }
@@ -1225,6 +1245,7 @@ void glMulticastWaitSyncNV(GLuint signalGpu, GLbitfield waitGpuMask)
 {
     return Binding::MulticastWaitSyncNV(signalGpu, waitGpuMask);
 }
+
 
 
 

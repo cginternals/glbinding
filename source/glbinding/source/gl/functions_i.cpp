@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -34,6 +34,36 @@ void glImageTransformParameteriHP(GLenum target, GLenum pname, GLint param)
 void glImageTransformParameterivHP(GLenum target, GLenum pname, const GLint * params)
 {
     return Binding::ImageTransformParameterivHP(target, pname, params);
+}
+
+void glImportMemoryFdEXT(GLuint memory, GLuint64 size, GLenum handleType, GLint fd)
+{
+    return Binding::ImportMemoryFdEXT(memory, size, handleType, fd);
+}
+
+void glImportMemoryWin32HandleEXT(GLuint memory, GLuint64 size, GLenum handleType, void * handle)
+{
+    return Binding::ImportMemoryWin32HandleEXT(memory, size, handleType, handle);
+}
+
+void glImportMemoryWin32NameEXT(GLuint memory, GLuint64 size, GLenum handleType, const void * name)
+{
+    return Binding::ImportMemoryWin32NameEXT(memory, size, handleType, name);
+}
+
+void glImportSemaphoreFdEXT(GLuint semaphore, GLenum handleType, GLint fd)
+{
+    return Binding::ImportSemaphoreFdEXT(semaphore, handleType, fd);
+}
+
+void glImportSemaphoreWin32HandleEXT(GLuint semaphore, GLenum handleType, void * handle)
+{
+    return Binding::ImportSemaphoreWin32HandleEXT(semaphore, handleType, handle);
+}
+
+void glImportSemaphoreWin32NameEXT(GLuint semaphore, GLenum handleType, const void * name)
+{
+    return Binding::ImportSemaphoreWin32NameEXT(semaphore, handleType, name);
 }
 
 GLsync glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, UnusedMask flags)
@@ -281,6 +311,11 @@ GLboolean glIsList(GLuint list)
     return Binding::IsList(list);
 }
 
+GLboolean glIsMemoryObjectEXT(GLuint memoryObject)
+{
+    return Binding::IsMemoryObjectEXT(memoryObject);
+}
+
 GLboolean glIsNameAMD(GLenum identifier, GLuint name)
 {
     return Binding::IsNameAMD(identifier, name);
@@ -366,6 +401,11 @@ GLboolean glIsSampler(GLuint sampler)
     return Binding::IsSampler(sampler);
 }
 
+GLboolean glIsSemaphoreEXT(GLuint semaphore)
+{
+    return Binding::IsSemaphoreEXT(semaphore);
+}
+
 GLboolean glIsShader(GLuint shader)
 {
     return Binding::IsShader(shader);
@@ -430,6 +470,7 @@ GLboolean glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname)
 {
     return Binding::IsVertexAttribEnabledAPPLE(index, pname);
 }
+
 
 
 

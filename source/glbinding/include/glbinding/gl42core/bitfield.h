@@ -1,4 +1,6 @@
+
 #pragma once
+
 
 #include <glbinding/nogl.h>
 
@@ -43,6 +45,7 @@ using gl::GL_MAP_FLUSH_EXPLICIT_BIT;
 using gl::GL_MAP_UNSYNCHRONIZED_BIT;
 using gl::GL_ALL_BARRIER_BITS;
 using gl::GL_ALL_SHADER_BITS;
+
 
 
 } // namespace gl42core

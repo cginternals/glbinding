@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -576,6 +576,16 @@ void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferSt
     return Binding::BufferStorage(target, size, data, flags);
 }
 
+void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags)
+{
+    return Binding::BufferStorageExternalEXT(target, offset, size, clientBuffer, flags);
+}
+
+void glBufferStorageMemEXT(GLenum target, GLsizeiptr size, GLuint memory, GLuint64 offset)
+{
+    return Binding::BufferStorageMemEXT(target, size, memory, offset);
+}
+
 void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data)
 {
     return Binding::BufferSubData(target, offset, size, data);
@@ -585,6 +595,7 @@ void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, c
 {
     return Binding::BufferSubDataARB(target, offset, size, data);
 }
+
 
 
 

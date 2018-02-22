@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -25,6 +25,17 @@ void glQueryObjectParameteruiAMD(GLenum target, GLuint id, GLenum pname, GLuint 
 {
     return Binding::QueryObjectParameteruiAMD(target, id, pname, param);
 }
+
+GLint glQueryResourceNV(GLenum queryType, GLint tagId, GLuint bufSize, GLint * buffer)
+{
+    return Binding::QueryResourceNV(queryType, tagId, bufSize, buffer);
+}
+
+void glQueryResourceTagNV(GLint tagId, const GLchar * tagString)
+{
+    return Binding::QueryResourceTagNV(tagId, tagString);
+}
+
 
 
 

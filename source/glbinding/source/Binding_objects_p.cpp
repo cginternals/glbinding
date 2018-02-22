@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -80,6 +81,7 @@ Function<GLint, GLuint *> Binding::PollAsyncSGIX("glPollAsyncSGIX");
 Function<GLint, GLint *> Binding::PollInstrumentsSGIX("glPollInstrumentsSGIX");
 Function<void, GLenum, GLenum> Binding::PolygonMode("glPolygonMode");
 Function<void, GLfloat, GLfloat> Binding::PolygonOffset("glPolygonOffset");
+Function<void, GLfloat, GLfloat, GLfloat> Binding::PolygonOffsetClamp("glPolygonOffsetClamp");
 Function<void, GLfloat, GLfloat, GLfloat> Binding::PolygonOffsetClampEXT("glPolygonOffsetClampEXT");
 Function<void, GLfloat, GLfloat> Binding::PolygonOffsetEXT("glPolygonOffsetEXT");
 Function<void, GLfixed, GLfixed> Binding::PolygonOffsetxOES("glPolygonOffsetxOES");
@@ -289,6 +291,7 @@ Function<void, GLenum, GLuint, GLsizei, const GLchar *> Binding::PushDebugGroup(
 Function<void, GLsizei, const GLchar *> Binding::PushGroupMarkerEXT("glPushGroupMarkerEXT");
 Function<void> Binding::PushMatrix("glPushMatrix");
 Function<void, GLuint> Binding::PushName("glPushName");
+
 
 
 } // namespace glbinding

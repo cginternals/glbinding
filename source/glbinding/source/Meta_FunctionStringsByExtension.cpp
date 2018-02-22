@@ -6,6 +6,7 @@
 
 using namespace gl;
 
+
 namespace glbinding
 {
 
@@ -81,6 +82,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_ARB_occlusion_query, { "glBeginQueryARB", "glDeleteQueriesARB", "glEndQueryARB", "glGenQueriesARB", "glGetQueryObjectivARB", "glGetQueryObjectuivARB", "glGetQueryivARB", "glIsQueryARB" } },
     { GLextension::GL_ARB_parallel_shader_compile, { "glMaxShaderCompilerThreadsARB" } },
     { GLextension::GL_ARB_point_parameters, { "glPointParameterfARB", "glPointParameterfvARB" } },
+    { GLextension::GL_ARB_polygon_offset_clamp, { "glPolygonOffsetClamp" } },
     { GLextension::GL_ARB_program_interface_query, { "glGetProgramInterfaceiv", "glGetProgramResourceIndex", "glGetProgramResourceLocation", "glGetProgramResourceLocationIndex", "glGetProgramResourceName", "glGetProgramResourceiv" } },
     { GLextension::GL_ARB_provoking_vertex, { "glProvokingVertex" } },
     { GLextension::GL_ARB_robustness, { "glGetGraphicsResetStatusARB", "glGetnColorTableARB", "glGetnCompressedTexImageARB", "glGetnConvolutionFilterARB", "glGetnHistogramARB", "glGetnMapdvARB", "glGetnMapfvARB", "glGetnMapivARB", "glGetnMinmaxARB", "glGetnPixelMapfvARB", "glGetnPixelMapuivARB", "glGetnPixelMapusvARB", "glGetnPolygonStippleARB", "glGetnSeparableFilterARB", "glGetnTexImageARB", "glGetnUniformdvARB", "glGetnUniformfvARB", "glGetnUniformivARB", "glGetnUniformuivARB", "glReadnPixelsARB" } },
@@ -150,6 +152,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_draw_buffers2, { "glColorMaskIndexedEXT", "glDisableIndexedEXT", "glEnableIndexedEXT", "glGetBooleanIndexedvEXT", "glGetIntegerIndexedvEXT", "glIsEnabledIndexedEXT" } },
     { GLextension::GL_EXT_draw_instanced, { "glDrawArraysInstancedEXT", "glDrawElementsInstancedEXT" } },
     { GLextension::GL_EXT_draw_range_elements, { "glDrawRangeElementsEXT" } },
+    { GLextension::GL_EXT_external_buffer, { "glBufferStorageExternalEXT", "glNamedBufferStorageExternalEXT" } },
     { GLextension::GL_EXT_fog_coord, { "glFogCoordPointerEXT", "glFogCoorddEXT", "glFogCoorddvEXT", "glFogCoordfEXT", "glFogCoordfvEXT" } },
     { GLextension::GL_EXT_framebuffer_blit, { "glBlitFramebufferEXT" } },
     { GLextension::GL_EXT_framebuffer_multisample, { "glRenderbufferStorageMultisampleEXT" } },
@@ -161,6 +164,9 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_index_func, { "glIndexFuncEXT" } },
     { GLextension::GL_EXT_index_material, { "glIndexMaterialEXT" } },
     { GLextension::GL_EXT_light_texture, { "glApplyTextureEXT", "glTextureLightEXT", "glTextureMaterialEXT" } },
+    { GLextension::GL_EXT_memory_object, { "glBufferStorageMemEXT", "glCreateMemoryObjectsEXT", "glDeleteMemoryObjectsEXT", "glGetMemoryObjectParameterivEXT", "glGetUnsignedBytei_vEXT", "glGetUnsignedBytevEXT", "glIsMemoryObjectEXT", "glMemoryObjectParameterivEXT", "glNamedBufferStorageMemEXT", "glTexStorageMem1DEXT", "glTexStorageMem2DEXT", "glTexStorageMem2DMultisampleEXT", "glTexStorageMem3DEXT", "glTexStorageMem3DMultisampleEXT", "glTextureStorageMem1DEXT", "glTextureStorageMem2DEXT", "glTextureStorageMem2DMultisampleEXT", "glTextureStorageMem3DEXT", "glTextureStorageMem3DMultisampleEXT" } },
+    { GLextension::GL_EXT_memory_object_fd, { "glImportMemoryFdEXT" } },
+    { GLextension::GL_EXT_memory_object_win32, { "glImportMemoryWin32HandleEXT", "glImportMemoryWin32NameEXT" } },
     { GLextension::GL_EXT_multi_draw_arrays, { "glMultiDrawArraysEXT", "glMultiDrawElementsEXT" } },
     { GLextension::GL_EXT_multisample, { "glSampleMaskEXT", "glSamplePatternEXT" } },
     { GLextension::GL_EXT_paletted_texture, { "glColorTableEXT", "glGetColorTableEXT", "glGetColorTableParameterfvEXT", "glGetColorTableParameterivEXT" } },
@@ -171,7 +177,11 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_provoking_vertex, { "glProvokingVertexEXT" } },
     { GLextension::GL_EXT_raster_multisample, { "glRasterSamplesEXT" } },
     { GLextension::GL_EXT_secondary_color, { "glSecondaryColor3bEXT", "glSecondaryColor3bvEXT", "glSecondaryColor3dEXT", "glSecondaryColor3dvEXT", "glSecondaryColor3fEXT", "glSecondaryColor3fvEXT", "glSecondaryColor3iEXT", "glSecondaryColor3ivEXT", "glSecondaryColor3sEXT", "glSecondaryColor3svEXT", "glSecondaryColor3ubEXT", "glSecondaryColor3ubvEXT", "glSecondaryColor3uiEXT", "glSecondaryColor3uivEXT", "glSecondaryColor3usEXT", "glSecondaryColor3usvEXT", "glSecondaryColorPointerEXT" } },
+    { GLextension::GL_EXT_semaphore, { "glDeleteSemaphoresEXT", "glGenSemaphoresEXT", "glGetSemaphoreParameterui64vEXT", "glGetUnsignedBytei_vEXT", "glGetUnsignedBytevEXT", "glIsSemaphoreEXT", "glSemaphoreParameterui64vEXT", "glSignalSemaphoreEXT", "glWaitSemaphoreEXT" } },
+    { GLextension::GL_EXT_semaphore_fd, { "glImportSemaphoreFdEXT" } },
+    { GLextension::GL_EXT_semaphore_win32, { "glImportSemaphoreWin32HandleEXT", "glImportSemaphoreWin32NameEXT" } },
     { GLextension::GL_EXT_separate_shader_objects, { "glActiveProgramEXT", "glCreateShaderProgramEXT", "glUseShaderProgramEXT" } },
+    { GLextension::GL_EXT_shader_framebuffer_fetch_non_coherent, { "glFramebufferFetchBarrierEXT" } },
     { GLextension::GL_EXT_shader_image_load_store, { "glBindImageTextureEXT", "glMemoryBarrierEXT" } },
     { GLextension::GL_EXT_stencil_clear_tag, { "glStencilClearTagEXT" } },
     { GLextension::GL_EXT_stencil_two_side, { "glActiveStencilFaceEXT" } },
@@ -179,7 +189,6 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_texture3D, { "glTexImage3DEXT", "glTexSubImage3DEXT" } },
     { GLextension::GL_EXT_texture_array, { "glFramebufferTextureLayerEXT" } },
     { GLextension::GL_EXT_texture_buffer_object, { "glTexBufferEXT" } },
-    { GLextension::GL_EXT_texture_filter_minmax, { "glRasterSamplesEXT" } },
     { GLextension::GL_EXT_texture_integer, { "glClearColorIiEXT", "glClearColorIuiEXT", "glGetTexParameterIivEXT", "glGetTexParameterIuivEXT", "glTexParameterIivEXT", "glTexParameterIuivEXT" } },
     { GLextension::GL_EXT_texture_object, { "glAreTexturesResidentEXT", "glBindTextureEXT", "glDeleteTexturesEXT", "glGenTexturesEXT", "glIsTextureEXT", "glPrioritizeTexturesEXT" } },
     { GLextension::GL_EXT_texture_perturb_normal, { "glTextureNormalEXT" } },
@@ -189,6 +198,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_vertex_attrib_64bit, { "glGetVertexAttribLdvEXT", "glVertexAttribL1dEXT", "glVertexAttribL1dvEXT", "glVertexAttribL2dEXT", "glVertexAttribL2dvEXT", "glVertexAttribL3dEXT", "glVertexAttribL3dvEXT", "glVertexAttribL4dEXT", "glVertexAttribL4dvEXT", "glVertexAttribLPointerEXT" } },
     { GLextension::GL_EXT_vertex_shader, { "glBeginVertexShaderEXT", "glBindLightParameterEXT", "glBindMaterialParameterEXT", "glBindParameterEXT", "glBindTexGenParameterEXT", "glBindTextureUnitParameterEXT", "glBindVertexShaderEXT", "glDeleteVertexShaderEXT", "glDisableVariantClientStateEXT", "glEnableVariantClientStateEXT", "glEndVertexShaderEXT", "glExtractComponentEXT", "glGenSymbolsEXT", "glGenVertexShadersEXT", "glGetInvariantBooleanvEXT", "glGetInvariantFloatvEXT", "glGetInvariantIntegervEXT", "glGetLocalConstantBooleanvEXT", "glGetLocalConstantFloatvEXT", "glGetLocalConstantIntegervEXT", "glGetVariantBooleanvEXT", "glGetVariantFloatvEXT", "glGetVariantIntegervEXT", "glGetVariantPointervEXT", "glInsertComponentEXT", "glIsVariantEnabledEXT", "glSetInvariantEXT", "glSetLocalConstantEXT", "glShaderOp1EXT", "glShaderOp2EXT", "glShaderOp3EXT", "glSwizzleEXT", "glVariantPointerEXT", "glVariantbvEXT", "glVariantdvEXT", "glVariantfvEXT", "glVariantivEXT", "glVariantsvEXT", "glVariantubvEXT", "glVariantuivEXT", "glVariantusvEXT", "glWriteMaskEXT" } },
     { GLextension::GL_EXT_vertex_weighting, { "glVertexWeightPointerEXT", "glVertexWeightfEXT", "glVertexWeightfvEXT" } },
+    { GLextension::GL_EXT_win32_keyed_mutex, { "glAcquireKeyedMutexWin32EXT", "glReleaseKeyedMutexWin32EXT" } },
     { GLextension::GL_EXT_window_rectangles, { "glWindowRectanglesEXT" } },
     { GLextension::GL_EXT_x11_sync_object, { "glImportSyncEXT" } },
     { GLextension::GL_GREMEDY_frame_terminator, { "glFrameTerminatorGREMEDY" } },
@@ -204,6 +214,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_INTEL_performance_query, { "glBeginPerfQueryINTEL", "glCreatePerfQueryINTEL", "glDeletePerfQueryINTEL", "glEndPerfQueryINTEL", "glGetFirstPerfQueryIdINTEL", "glGetNextPerfQueryIdINTEL", "glGetPerfCounterInfoINTEL", "glGetPerfQueryDataINTEL", "glGetPerfQueryIdByNameINTEL", "glGetPerfQueryInfoINTEL" } },
     { GLextension::GL_KHR_blend_equation_advanced, { "glBlendBarrierKHR" } },
     { GLextension::GL_KHR_debug, { "glDebugMessageCallback", "glDebugMessageControl", "glDebugMessageInsert", "glGetDebugMessageLog", "glGetObjectLabel", "glGetObjectPtrLabel", "glGetPointerv", "glObjectLabel", "glObjectPtrLabel", "glPopDebugGroup", "glPushDebugGroup" } },
+    { GLextension::GL_KHR_parallel_shader_compile, { "glMaxShaderCompilerThreadsKHR" } },
     { GLextension::GL_KHR_robustness, { "glGetGraphicsResetStatus", "glGetnUniformfv", "glGetnUniformiv", "glGetnUniformuiv", "glReadnPixels" } },
     { GLextension::GL_MESA_resize_buffers, { "glResizeBuffersMESA" } },
     { GLextension::GL_MESA_window_pos, { "glWindowPos2dMESA", "glWindowPos2dvMESA", "glWindowPos2fMESA", "glWindowPos2fvMESA", "glWindowPos2iMESA", "glWindowPos2ivMESA", "glWindowPos2sMESA", "glWindowPos2svMESA", "glWindowPos3dMESA", "glWindowPos3dvMESA", "glWindowPos3fMESA", "glWindowPos3fvMESA", "glWindowPos3iMESA", "glWindowPos3ivMESA", "glWindowPos3sMESA", "glWindowPos3svMESA", "glWindowPos4dMESA", "glWindowPos4dvMESA", "glWindowPos4fMESA", "glWindowPos4fvMESA", "glWindowPos4iMESA", "glWindowPos4ivMESA", "glWindowPos4sMESA", "glWindowPos4svMESA" } },
@@ -240,11 +251,13 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_NV_internalformat_sample_query, { "glGetInternalformatSampleivNV" } },
     { GLextension::GL_NV_occlusion_query, { "glBeginOcclusionQueryNV", "glDeleteOcclusionQueriesNV", "glEndOcclusionQueryNV", "glGenOcclusionQueriesNV", "glGetOcclusionQueryivNV", "glGetOcclusionQueryuivNV", "glIsOcclusionQueryNV" } },
     { GLextension::GL_NV_parameter_buffer_object, { "glProgramBufferParametersIivNV", "glProgramBufferParametersIuivNV", "glProgramBufferParametersfvNV" } },
-    { GLextension::GL_NV_path_rendering, { "glCopyPathNV", "glCoverFillPathInstancedNV", "glCoverFillPathNV", "glCoverStrokePathInstancedNV", "glCoverStrokePathNV", "glDeletePathsNV", "glGenPathsNV", "glGetPathColorGenfvNV", "glGetPathColorGenivNV", "glGetPathCommandsNV", "glGetPathCoordsNV", "glGetPathDashArrayNV", "glGetPathLengthNV", "glGetPathMetricRangeNV", "glGetPathMetricsNV", "glGetPathParameterfvNV", "glGetPathParameterivNV", "glGetPathSpacingNV", "glGetPathTexGenfvNV", "glGetPathTexGenivNV", "glGetProgramResourcefvNV", "glInterpolatePathsNV", "glIsPathNV", "glIsPointInFillPathNV", "glIsPointInStrokePathNV", "glMatrixLoad3x2fNV", "glMatrixLoad3x3fNV", "glMatrixLoadTranspose3x3fNV", "glMatrixMult3x2fNV", "glMatrixMult3x3fNV", "glMatrixMultTranspose3x3fNV", "glPathColorGenNV", "glPathCommandsNV", "glPathCoordsNV", "glPathCoverDepthFuncNV", "glPathDashArrayNV", "glPathFogGenNV", "glPathGlyphIndexArrayNV", "glPathGlyphIndexRangeNV", "glPathGlyphRangeNV", "glPathGlyphsNV", "glPathMemoryGlyphIndexArrayNV", "glPathParameterfNV", "glPathParameterfvNV", "glPathParameteriNV", "glPathParameterivNV", "glPathStencilDepthOffsetNV", "glPathStencilFuncNV", "glPathStringNV", "glPathSubCommandsNV", "glPathSubCoordsNV", "glPathTexGenNV", "glPointAlongPathNV", "glProgramPathFragmentInputGenNV", "glStencilFillPathInstancedNV", "glStencilFillPathNV", "glStencilStrokePathInstancedNV", "glStencilStrokePathNV", "glStencilThenCoverFillPathInstancedNV", "glStencilThenCoverFillPathNV", "glStencilThenCoverStrokePathInstancedNV", "glStencilThenCoverStrokePathNV", "glTransformPathNV", "glWeightPathsNV" } },
+    { GLextension::GL_NV_path_rendering, { "glCopyPathNV", "glCoverFillPathInstancedNV", "glCoverFillPathNV", "glCoverStrokePathInstancedNV", "glCoverStrokePathNV", "glDeletePathsNV", "glGenPathsNV", "glGetPathColorGenfvNV", "glGetPathColorGenivNV", "glGetPathCommandsNV", "glGetPathCoordsNV", "glGetPathDashArrayNV", "glGetPathLengthNV", "glGetPathMetricRangeNV", "glGetPathMetricsNV", "glGetPathParameterfvNV", "glGetPathParameterivNV", "glGetPathSpacingNV", "glGetPathTexGenfvNV", "glGetPathTexGenivNV", "glGetProgramResourcefvNV", "glInterpolatePathsNV", "glIsPathNV", "glIsPointInFillPathNV", "glIsPointInStrokePathNV", "glMatrixFrustumEXT", "glMatrixLoad3x2fNV", "glMatrixLoad3x3fNV", "glMatrixLoadIdentityEXT", "glMatrixLoadTranspose3x3fNV", "glMatrixLoadTransposedEXT", "glMatrixLoadTransposefEXT", "glMatrixLoaddEXT", "glMatrixLoadfEXT", "glMatrixMult3x2fNV", "glMatrixMult3x3fNV", "glMatrixMultTranspose3x3fNV", "glMatrixMultTransposedEXT", "glMatrixMultTransposefEXT", "glMatrixMultdEXT", "glMatrixMultfEXT", "glMatrixOrthoEXT", "glMatrixPopEXT", "glMatrixPushEXT", "glMatrixRotatedEXT", "glMatrixRotatefEXT", "glMatrixScaledEXT", "glMatrixScalefEXT", "glMatrixTranslatedEXT", "glMatrixTranslatefEXT", "glPathColorGenNV", "glPathCommandsNV", "glPathCoordsNV", "glPathCoverDepthFuncNV", "glPathDashArrayNV", "glPathFogGenNV", "glPathGlyphIndexArrayNV", "glPathGlyphIndexRangeNV", "glPathGlyphRangeNV", "glPathGlyphsNV", "glPathMemoryGlyphIndexArrayNV", "glPathParameterfNV", "glPathParameterfvNV", "glPathParameteriNV", "glPathParameterivNV", "glPathStencilDepthOffsetNV", "glPathStencilFuncNV", "glPathStringNV", "glPathSubCommandsNV", "glPathSubCoordsNV", "glPathTexGenNV", "glPointAlongPathNV", "glProgramPathFragmentInputGenNV", "glStencilFillPathInstancedNV", "glStencilFillPathNV", "glStencilStrokePathInstancedNV", "glStencilStrokePathNV", "glStencilThenCoverFillPathInstancedNV", "glStencilThenCoverFillPathNV", "glStencilThenCoverStrokePathInstancedNV", "glStencilThenCoverStrokePathNV", "glTransformPathNV", "glWeightPathsNV" } },
     { GLextension::GL_NV_pixel_data_range, { "glFlushPixelDataRangeNV", "glPixelDataRangeNV" } },
     { GLextension::GL_NV_point_sprite, { "glPointParameteriNV", "glPointParameterivNV" } },
     { GLextension::GL_NV_present_video, { "glGetVideoi64vNV", "glGetVideoivNV", "glGetVideoui64vNV", "glGetVideouivNV", "glPresentFrameDualFillNV", "glPresentFrameKeyedNV" } },
     { GLextension::GL_NV_primitive_restart, { "glPrimitiveRestartIndexNV", "glPrimitiveRestartNV" } },
+    { GLextension::GL_NV_query_resource, { "glQueryResourceNV" } },
+    { GLextension::GL_NV_query_resource_tag, { "glDeleteQueryResourceTagNV", "glGenQueryResourceTagNV", "glQueryResourceTagNV" } },
     { GLextension::GL_NV_register_combiners, { "glCombinerInputNV", "glCombinerOutputNV", "glCombinerParameterfNV", "glCombinerParameterfvNV", "glCombinerParameteriNV", "glCombinerParameterivNV", "glFinalCombinerInputNV", "glGetCombinerInputParameterfvNV", "glGetCombinerInputParameterivNV", "glGetCombinerOutputParameterfvNV", "glGetCombinerOutputParameterivNV", "glGetFinalCombinerInputParameterfvNV", "glGetFinalCombinerInputParameterivNV" } },
     { GLextension::GL_NV_register_combiners2, { "glCombinerStageParameterfvNV", "glGetCombinerStageParameterfvNV" } },
     { GLextension::GL_NV_sample_locations, { "glFramebufferSampleLocationsfvNV", "glNamedFramebufferSampleLocationsfvNV", "glResolveDepthValuesNV" } },
@@ -296,5 +309,6 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_SUN_vertex, { "glColor3fVertex3fSUN", "glColor3fVertex3fvSUN", "glColor4fNormal3fVertex3fSUN", "glColor4fNormal3fVertex3fvSUN", "glColor4ubVertex2fSUN", "glColor4ubVertex2fvSUN", "glColor4ubVertex3fSUN", "glColor4ubVertex3fvSUN", "glNormal3fVertex3fSUN", "glNormal3fVertex3fvSUN", "glReplacementCodeuiColor3fVertex3fSUN", "glReplacementCodeuiColor3fVertex3fvSUN", "glReplacementCodeuiColor4fNormal3fVertex3fSUN", "glReplacementCodeuiColor4fNormal3fVertex3fvSUN", "glReplacementCodeuiColor4ubVertex3fSUN", "glReplacementCodeuiColor4ubVertex3fvSUN", "glReplacementCodeuiNormal3fVertex3fSUN", "glReplacementCodeuiNormal3fVertex3fvSUN", "glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN", "glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN", "glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN", "glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN", "glReplacementCodeuiTexCoord2fVertex3fSUN", "glReplacementCodeuiTexCoord2fVertex3fvSUN", "glReplacementCodeuiVertex3fSUN", "glReplacementCodeuiVertex3fvSUN", "glTexCoord2fColor3fVertex3fSUN", "glTexCoord2fColor3fVertex3fvSUN", "glTexCoord2fColor4fNormal3fVertex3fSUN", "glTexCoord2fColor4fNormal3fVertex3fvSUN", "glTexCoord2fColor4ubVertex3fSUN", "glTexCoord2fColor4ubVertex3fvSUN", "glTexCoord2fNormal3fVertex3fSUN", "glTexCoord2fNormal3fVertex3fvSUN", "glTexCoord2fVertex3fSUN", "glTexCoord2fVertex3fvSUN", "glTexCoord4fColor4fNormal3fVertex4fSUN", "glTexCoord4fColor4fNormal3fVertex4fvSUN", "glTexCoord4fVertex4fSUN", "glTexCoord4fVertex4fvSUN" } },
 
 };
+
 
 } // namespace glbinding

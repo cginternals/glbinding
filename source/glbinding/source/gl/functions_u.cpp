@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -660,6 +660,7 @@ void glUseShaderProgramEXT(GLenum type, GLuint program)
 {
     return Binding::UseShaderProgramEXT(type, program);
 }
+
 
 
 

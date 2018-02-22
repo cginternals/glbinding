@@ -5,6 +5,22 @@
 
 find_package(OpenGL REQUIRED)
 
+set(ADDITIONAL_LIBRARIES)
+set(ADDITIONAL_INCLUDES)
+if(OPTION_BUILD_WITH_BOOST_THREAD)
+    find_package(Boost COMPONENTS thread REQUIRED)
+    
+    if (Boost_FOUND)
+        message(STATUS "Use Boost for thread.")
+        
+        set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${Boost_LIBRARIES})
+        set(ADDITIONAL_INCLUDES ${ADDITIONAL_INCLUDES} ${Boost_INCLUDE_DIRS})
+    else()
+        message(WARNING "OPTION_BUILD_WITH_BOOST_THREAD is set to On: Boost not found.")
+        message(WARNING "Defaulting to C++11 thread.")
+    endif()
+endif()
+
 # 
 # Library name and options
 # 
@@ -222,6 +238,7 @@ target_include_directories(${target}
     ${PROJECT_BINARY_DIR}/source/include
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${CMAKE_CURRENT_BINARY_DIR}/include
+    ${ADDITIONAL_INCLUDES}
 
     PUBLIC
     ${DEFAULT_INCLUDE_DIRECTORIES}
@@ -239,6 +256,7 @@ target_include_directories(${target}
 
 target_link_libraries(${target}
     PRIVATE
+    ${ADDITIONAL_LIBRARIES}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
@@ -257,6 +275,7 @@ target_compile_definitions(${target}
     # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
     # furthermore, this flag is not officially supported
     #$<$<CXX_COMPILER_ID:MSVC>:_HAS_EXCEPTIONS=0> 
+    $<$<AND:$<BOOL:${OPTION_BUILD_WITH_BOOST_THREAD}>,$<BOOL:${Boost_FOUND}>>:GLBINDING_USE_BOOST_THREAD>
 
     PUBLIC
     $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_id}_STATIC_DEFINE>

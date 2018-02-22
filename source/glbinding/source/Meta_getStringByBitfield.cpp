@@ -8,6 +8,7 @@
 
 using namespace gl;
 
+
 namespace
 {
     const auto none = std::string{};
@@ -162,10 +163,32 @@ const std::string & Meta::getString(const MemoryBarrierMask glbitfield)
 }
 
 
+const std::string & Meta::getString(const OcclusionQueryEventMaskAMD glbitfield)
+{
+    const auto i = Meta_StringsByOcclusionQueryEventMaskAMD.find(glbitfield);
+    if (i != Meta_StringsByOcclusionQueryEventMaskAMD.end())
+    {
+        return i->second;
+    }
+    return none;
+}
+
+
 const std::string & Meta::getString(const PathFontStyle glbitfield)
 {
     const auto i = Meta_StringsByPathFontStyle.find(glbitfield);
     if (i != Meta_StringsByPathFontStyle.end())
+    {
+        return i->second;
+    }
+    return none;
+}
+
+
+const std::string & Meta::getString(const PathMetricMask glbitfield)
+{
+    const auto i = Meta_StringsByPathMetricMask.find(glbitfield);
+    if (i != Meta_StringsByPathMetricMask.end())
     {
         return i->second;
     }
@@ -248,6 +271,7 @@ const std::string & Meta::getString(const VertexHintsMaskPGI glbitfield)
     }
     return none;
 }
+
 
 
 } // namespace glbinding

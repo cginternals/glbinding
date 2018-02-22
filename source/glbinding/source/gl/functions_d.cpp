@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -121,6 +121,11 @@ void glDeleteLists(GLuint list, GLsizei range)
     return Binding::DeleteLists(list, range);
 }
 
+void glDeleteMemoryObjectsEXT(GLsizei n, const GLuint * memoryObjects)
+{
+    return Binding::DeleteMemoryObjectsEXT(n, memoryObjects);
+}
+
 void glDeleteNamedStringARB(GLint namelen, const GLchar * name)
 {
     return Binding::DeleteNamedStringARB(namelen, name);
@@ -186,6 +191,11 @@ void glDeleteQueriesARB(GLsizei n, const GLuint * ids)
     return Binding::DeleteQueriesARB(n, ids);
 }
 
+void glDeleteQueryResourceTagNV(GLsizei n, const GLint * tagIds)
+{
+    return Binding::DeleteQueryResourceTagNV(n, tagIds);
+}
+
 void glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers)
 {
     return Binding::DeleteRenderbuffers(n, renderbuffers);
@@ -199,6 +209,11 @@ void glDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers)
 void glDeleteSamplers(GLsizei count, const GLuint * samplers)
 {
     return Binding::DeleteSamplers(count, samplers);
+}
+
+void glDeleteSemaphoresEXT(GLsizei n, const GLuint * semaphores)
+{
+    return Binding::DeleteSemaphoresEXT(n, semaphores);
 }
 
 void glDeleteShader(GLuint shader)
@@ -600,6 +615,7 @@ void glDrawVkImageNV(GLuint64 vkImage, GLuint sampler, GLfloat x0, GLfloat y0, G
 {
     return Binding::DrawVkImageNV(vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1);
 }
+
 
 
 
