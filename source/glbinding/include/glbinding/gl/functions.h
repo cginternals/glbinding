@@ -642,6 +642,7 @@ GLBINDING_API void glFrameTerminatorGREMEDY();
 GLBINDING_API void glFrameZoomSGIX(GLint factor);
 GLBINDING_API void glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode);
 GLBINDING_API void glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum * bufs);
+GLBINDING_API void glFramebufferFetchBarrierEXT();
 GLBINDING_API void glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
 GLBINDING_API void glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode);
 GLBINDING_API void glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);

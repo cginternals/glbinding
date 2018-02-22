@@ -510,6 +510,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glFrameZoomSGIX", { GLextension::GL_SGIX_framezoom } },
     { "glFramebufferDrawBufferEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glFramebufferDrawBuffersEXT", { GLextension::GL_EXT_direct_state_access } },
+    { "glFramebufferFetchBarrierEXT", { GLextension::GL_EXT_shader_framebuffer_fetch_non_coherent } },
     { "glFramebufferParameteri", { GLextension::GL_ARB_framebuffer_no_attachments } },
     { "glFramebufferReadBufferEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glFramebufferRenderbuffer", { GLextension::GL_ARB_framebuffer_object } },

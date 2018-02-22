@@ -635,6 +635,7 @@ const Binding::array_t Binding::s_functions =
     &FrameZoomSGIX,
     &FramebufferDrawBufferEXT,
     &FramebufferDrawBuffersEXT,
+    &FramebufferFetchBarrierEXT,
     &FramebufferParameteri,
     &FramebufferReadBufferEXT,
     &FramebufferRenderbuffer,

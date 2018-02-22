@@ -306,6 +306,11 @@ void glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum * b
     return Binding::FramebufferDrawBuffersEXT(framebuffer, n, bufs);
 }
 
+void glFramebufferFetchBarrierEXT()
+{
+    return Binding::FramebufferFetchBarrierEXT();
+}
+
 void glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
 {
     return Binding::FramebufferParameteri(target, pname, param);

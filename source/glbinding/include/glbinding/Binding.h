@@ -29,7 +29,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t               = std::array<AbstractFunction *, 2923>; ///< The type of the build-in functions collection
+    using array_t               = std::array<AbstractFunction *, 2924>; ///< The type of the build-in functions collection
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
 
     /**
@@ -775,6 +775,7 @@ public:
     static Function<void, gl::GLint> FrameZoomSGIX; ///< Wrapper for glFrameZoomSGIX
     static Function<void, gl::GLuint, gl::GLenum> FramebufferDrawBufferEXT; ///< Wrapper for glFramebufferDrawBufferEXT
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLenum *> FramebufferDrawBuffersEXT; ///< Wrapper for glFramebufferDrawBuffersEXT
+    static Function<void> FramebufferFetchBarrierEXT; ///< Wrapper for glFramebufferFetchBarrierEXT
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> FramebufferParameteri; ///< Wrapper for glFramebufferParameteri
     static Function<void, gl::GLuint, gl::GLenum> FramebufferReadBufferEXT; ///< Wrapper for glFramebufferReadBufferEXT
     static Function<void, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLuint> FramebufferRenderbuffer; ///< Wrapper for glFramebufferRenderbuffer

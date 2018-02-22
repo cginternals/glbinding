@@ -181,6 +181,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_semaphore_fd, { "glImportSemaphoreFdEXT" } },
     { GLextension::GL_EXT_semaphore_win32, { "glImportSemaphoreWin32HandleEXT", "glImportSemaphoreWin32NameEXT" } },
     { GLextension::GL_EXT_separate_shader_objects, { "glActiveProgramEXT", "glCreateShaderProgramEXT", "glUseShaderProgramEXT" } },
+    { GLextension::GL_EXT_shader_framebuffer_fetch_non_coherent, { "glFramebufferFetchBarrierEXT" } },
     { GLextension::GL_EXT_shader_image_load_store, { "glBindImageTextureEXT", "glMemoryBarrierEXT" } },
     { GLextension::GL_EXT_stencil_clear_tag, { "glStencilClearTagEXT" } },
     { GLextension::GL_EXT_stencil_two_side, { "glActiveStencilFaceEXT" } },

@@ -321,6 +321,8 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_EXT_semaphore_win32, "GL_EXT_semaphore_win32" },
     { GLextension::GL_EXT_separate_shader_objects, "GL_EXT_separate_shader_objects" },
     { GLextension::GL_EXT_separate_specular_color, "GL_EXT_separate_specular_color" },
+    { GLextension::GL_EXT_shader_framebuffer_fetch, "GL_EXT_shader_framebuffer_fetch" },
+    { GLextension::GL_EXT_shader_framebuffer_fetch_non_coherent, "GL_EXT_shader_framebuffer_fetch_non_coherent" },
     { GLextension::GL_EXT_shader_image_load_formatted, "GL_EXT_shader_image_load_formatted" },
     { GLextension::GL_EXT_shader_image_load_store, "GL_EXT_shader_image_load_store" },
     { GLextension::GL_EXT_shader_integer_mix, "GL_EXT_shader_integer_mix" },

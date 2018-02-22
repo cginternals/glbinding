@@ -442,6 +442,7 @@ using gl::glFrameTerminatorGREMEDY;
 using gl::glFrameZoomSGIX;
 using gl::glFramebufferDrawBufferEXT;
 using gl::glFramebufferDrawBuffersEXT;
+using gl::glFramebufferFetchBarrierEXT;
 using gl::glFramebufferParameteri;
 using gl::glFramebufferReadBufferEXT;
 using gl::glFramebufferRenderbufferEXT;

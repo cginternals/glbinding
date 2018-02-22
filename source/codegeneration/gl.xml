@@ -8911,7 +8911,7 @@ typedef unsigned int GLhandleARB;
             <unused start="0x8FBC" vendor="QCOM"/>
         <enum value="0x8FBD" name="GL_SR8_EXT"/>
         <enum value="0x8FBE" name="GL_SRG8_EXT"/>
-            <unused start="0x8FBF" vendor="QCOM"/>
+        <enum value="0x8FBF" name="GL_TEXTURE_FORMAT_SRGB_OVERRIDE_EXT"/>
     </enums>
 
     <enums namespace="GL" start="0x8FC0" end="0x8FDF" vendor="VIV" comment="For Frido Garritsen, bug 4526">
@@ -15219,6 +15219,9 @@ typedef unsigned int GLhandleARB;
             <param group="Framebuffer"><ptype>GLuint</ptype> <name>framebuffer</name></param>
             <param><ptype>GLsizei</ptype> <name>n</name></param>
             <param group="DrawBufferMode" len="n">const <ptype>GLenum</ptype> *<name>bufs</name></param>
+        </command>
+        <command>
+            <proto>void <name>glFramebufferFetchBarrierEXT</name></proto>
         </command>
         <command>
             <proto>void <name>glFramebufferFetchBarrierQCOM</name></proto>
@@ -44161,9 +44164,15 @@ typedef unsigned int GLhandleARB;
                 <enum name="GL_SEPARATE_SPECULAR_COLOR_EXT"/>
             </require>
         </extension>
-        <extension name="GL_EXT_shader_framebuffer_fetch" supported="gles2">
+        <extension name="GL_EXT_shader_framebuffer_fetch" supported="gl|glcore|gles2">
             <require>
                 <enum name="GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_shader_framebuffer_fetch_non_coherent" supported="gl|glcore|gles2">
+            <require>
+                <enum name="GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT"/>
+                <command name="glFramebufferFetchBarrierEXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_shader_group_vote" supported="gles2"/>
@@ -44614,6 +44623,11 @@ typedef unsigned int GLhandleARB;
         <extension name="GL_EXT_texture_format_BGRA8888" supported="gles1|gles2">
             <require>
                 <enum name="GL_BGRA_EXT"/>
+            </require>
+        </extension>
+        <extension name="GL_EXT_texture_format_sRGB_override" supported="gles2">
+            <require>
+                <enum name="GL_TEXTURE_FORMAT_SRGB_OVERRIDE_EXT"/>
             </require>
         </extension>
         <extension name="GL_EXT_texture_integer" supported="gl">

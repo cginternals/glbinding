@@ -4629,6 +4629,7 @@ enum class GLenum : unsigned int
     GL_SKIP_DECODE_EXT                                            = 0x8A4A, // decimal value: 35402
     GL_PROGRAM_PIPELINE_OBJECT_EXT                                = 0x8A4F, // decimal value: 35407
     GL_RGB_RAW_422_APPLE                                          = 0x8A51, // decimal value: 35409
+    GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT                       = 0x8A52, // decimal value: 35410
     GL_PROGRAM_OBJECT_ARB                                         = 0x8B40, // decimal value: 35648
     GL_PROGRAM_OBJECT_EXT                                         = 0x8B40, // decimal value: 35648
     GL_SHADER_OBJECT_ARB                                          = 0x8B48, // decimal value: 35656
@@ -10479,6 +10480,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_DECODE_EXT = GLenum::GL_DECODE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_SKIP_DECODE_EXT = GLenum::GL_SKIP_DECODE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_PIPELINE_OBJECT_EXT = GLenum::GL_PROGRAM_PIPELINE_OBJECT_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB_RAW_422_APPLE = GLenum::GL_RGB_RAW_422_APPLE;
+GLBINDING_CONSTEXPR static const GLenum GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT = GLenum::GL_FRAGMENT_SHADER_DISCARDS_SAMPLES_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_OBJECT_ARB = GLenum::GL_PROGRAM_OBJECT_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_OBJECT_EXT = GLenum::GL_PROGRAM_OBJECT_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_SHADER_OBJECT_ARB = GLenum::GL_SHADER_OBJECT_ARB;

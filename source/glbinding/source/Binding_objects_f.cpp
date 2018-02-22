@@ -68,6 +68,7 @@ Function<void> Binding::FrameTerminatorGREMEDY("glFrameTerminatorGREMEDY");
 Function<void, GLint> Binding::FrameZoomSGIX("glFrameZoomSGIX");
 Function<void, GLuint, GLenum> Binding::FramebufferDrawBufferEXT("glFramebufferDrawBufferEXT");
 Function<void, GLuint, GLsizei, const GLenum *> Binding::FramebufferDrawBuffersEXT("glFramebufferDrawBuffersEXT");
+Function<void> Binding::FramebufferFetchBarrierEXT("glFramebufferFetchBarrierEXT");
 Function<void, GLenum, GLenum, GLint> Binding::FramebufferParameteri("glFramebufferParameteri");
 Function<void, GLuint, GLenum> Binding::FramebufferReadBufferEXT("glFramebufferReadBufferEXT");
 Function<void, GLenum, GLenum, GLenum, GLuint> Binding::FramebufferRenderbuffer("glFramebufferRenderbuffer");
