@@ -1184,6 +1184,8 @@ GLBINDING_API void glGetProgramivARB(GLenum target, GLenum pname, GLboolean * pa
 GLBINDING_API void glGetProgramiv(GLuint program, GLenum pname, GLenum * params);
 GLBINDING_API void glGetProgramivARB(GLenum target, GLenum pname, GLenum * params);
 
+GLBINDING_API void glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLenum * params);
+
 GLBINDING_API void glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLboolean * params);
 
 GLBINDING_API void glGetQueryObjectiv(GLuint id, GLenum pname, GLboolean * params);

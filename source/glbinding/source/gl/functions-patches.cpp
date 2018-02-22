@@ -1456,6 +1456,11 @@ void glGetProgramivARB(GLenum target, GLenum pname, GLenum * params)
     glGetProgramivARB(target, pname, reinterpret_cast<GLint *>(params));
 }
 
+void glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLenum * params)
+{
+    glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, reinterpret_cast<GLint *>(params));
+}
+
 void glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLboolean * params)
 {
     GLint params_;
