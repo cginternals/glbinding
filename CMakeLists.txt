@@ -70,13 +70,14 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS      "Build shared instead of static libraries."              ON)
-option(OPTION_SELF_CONTAINED  "Create a self-contained install with all dependencies." OFF)
-option(OPTION_BUILD_TESTS     "Build tests."                                           ON)
-option(OPTION_BUILD_GPU_TESTS "Build tests that require an OpenGL context."            ON)
-option(OPTION_BUILD_DOCS      "Build documentation."                                   OFF)
-option(OPTION_BUILD_TOOLS     "Build tools."                                           ON)
-option(OPTION_BUILD_EXAMPLES  "Build examples."                                        OFF)
+option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."              ON)
+option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies." OFF)
+option(OPTION_BUILD_TESTS             "Build tests."                                           ON)
+option(OPTION_BUILD_GPU_TESTS         "Build tests that require an OpenGL context."            ON)
+option(OPTION_BUILD_DOCS              "Build documentation."                                   OFF)
+option(OPTION_BUILD_TOOLS             "Build tools."                                           ON)
+option(OPTION_BUILD_EXAMPLES          "Build examples."                                        OFF)
+option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."              OFF)
 
 
 # 
