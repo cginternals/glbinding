@@ -1,7 +1,7 @@
 
 #include <gmock/gmock.h>
 
-#include <glbinding/glsc2/gl.h>
+#include <glbinding/gl/gl.h>
 
 
 TEST(AllVersions, Compilation)

@@ -2,8 +2,8 @@
 #pragma once
 
 
-#include <glscglbinding/nogl.h>
-#include <glscglbinding/glsc/types.h>
+#include <glscbinding/nogl.h>
+#include <glscbinding/glsc/types.h>
 
 
 namespace glsc20

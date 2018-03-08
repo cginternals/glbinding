@@ -1,8 +1,8 @@
 
 #include <gmock/gmock.h>
 
-#include <glscbinding/glsc/glsc.h>
-#include <glscbinding/glsc20/glsc.h>
+#include <glscbinding/glsc/gl.h>
+#include <glscbinding/glsc20/gl.h>
 
 
 TEST(AllVersions, Compilation)

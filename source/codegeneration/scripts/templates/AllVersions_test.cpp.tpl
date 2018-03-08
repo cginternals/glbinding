@@ -2,7 +2,7 @@
 #include <gmock/gmock.h>
 
 {{#apiMemberSets.items}}
-#include <{{api}}binding/{{api}}{{item.memberSet}}/{{api}}.h>
+#include <{{api}}binding/{{api}}{{item.memberSet}}/gl.h>
 {{/apiMemberSets.items}}
 
 
