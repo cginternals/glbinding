@@ -9,17 +9,44 @@ if(PYTHON)
     message(STATUS "Command update")
     message(STATUS "Command generate")
     
-    add_custom_target(${update_target})
+    add_custom_target(${update_target}-gl)
+    add_custom_target(${update_target}-egl)
+    add_custom_target(${update_target}-glx)
+    add_custom_target(${update_target}-wgl)
     add_custom_target(${generate_target}-gl)
     add_custom_target(${generate_target}-gles)
     add_custom_target(${generate_target}-glsc)
 
     add_custom_command(
-        TARGET              ${update_target}
+        TARGET              ${update_target}-gl
         PRE_BUILD
         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
         COMMAND             ${PYTHON} scripts/update.py -f gl.xml
         COMMENT             "Updating gl.xml from public SVN."
+    )
+    
+    add_custom_command(
+        TARGET              ${update_target}-egl
+        PRE_BUILD
+        WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMAND             ${PYTHON} scripts/update.py -f egl.xml
+        COMMENT             "Updating egl.xml from public SVN."
+    )
+    
+    add_custom_command(
+        TARGET              ${update_target}-glx
+        PRE_BUILD
+        WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMAND             ${PYTHON} scripts/update.py -f glx.xml
+        COMMENT             "Updating glx.xml from public SVN."
+    )
+    
+    add_custom_command(
+        TARGET              ${update_target}wgl
+        PRE_BUILD
+        WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMAND             ${PYTHON} scripts/update.py -f wgl.xml
+        COMMENT             "Updating wgl.xml from public SVN."
     )
     
     add_custom_command(
@@ -48,6 +75,10 @@ if(PYTHON)
 
     # Declare target
     
+    set_target_properties(${update_target}-gl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+    set_target_properties(${update_target}-egl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+    set_target_properties(${update_target}-glx PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+    set_target_properties(${update_target}-wgl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${update_target} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${generate_target}-gl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${generate_target}-gles PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
