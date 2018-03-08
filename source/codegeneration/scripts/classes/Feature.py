@@ -1,8 +1,9 @@
 
 class Feature:
 
-	def __init__(self, xml, api):
-		self.api    = api if xml.attrib["api"] == api else None
+	def __init__(self, xml, api, apiRequire):
+		self.api    = api if xml.attrib["api"] == apiRequire else None
+		self.apiRequire = apiRequire if xml.attrib["api"] == apiRequire else None
 
 		self.name   = xml.attrib["name"]   # e.g., GL_VERSION_1_1
 		self.number = xml.attrib["number"] # e.g., 1.1
@@ -26,7 +27,7 @@ class Feature:
 
 		for require in xml.findall("require"):
 
-			if "api" in require.attrib and require.attrib["api"] != api:
+			if "api" in require.attrib and require.attrib["api"] != apiRequire:
 				continue
 
 			if "comment" in require.attrib:
@@ -40,7 +41,7 @@ class Feature:
 
 		for remove in xml.findall("remove"):
 
-			if "api" in require.attrib and require.attrib["api"] != api:
+			if "api" in require.attrib and require.attrib["api"] != apiRequire:
 				continue
 
 			for child in remove:
@@ -78,7 +79,7 @@ def parseFeatures(xml, api, apiRequire):
 		if "api" in feature.attrib and feature.attrib["api"] != apiRequire:
 			continue
 
-		features.append(Feature(feature, api))
+		features.append(Feature(feature, api, apiRequire))
 
 		# ToDo: there might be none requiring/removing features
 

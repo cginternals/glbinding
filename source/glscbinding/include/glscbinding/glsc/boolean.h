@@ -44,7 +44,7 @@ public:
 };
 
 
-} // namespace glsc2
+} // namespace glsc
 
 
 #include <glscbinding/glsc/boolean.inl>

@@ -17,6 +17,7 @@ add_subdirectory(codegeneration)
 
 # Libraries
 add_subdirectory(glbinding)
+add_subdirectory(glesbinding)
 add_subdirectory(glscbinding)
 
 # Examples

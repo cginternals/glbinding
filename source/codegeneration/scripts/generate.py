@@ -53,6 +53,8 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
     apiRequire = api
     if api == "glsc":
         apiRequire = "glsc2"
+    if api == "gles":
+        apiRequire = "gles2"
 
     print("")
     print("PARSING (" + api + " API)")

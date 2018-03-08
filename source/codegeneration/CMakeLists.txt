@@ -11,6 +11,7 @@ if(PYTHON)
     
     add_custom_target(${update_target})
     add_custom_target(${generate_target}-gl)
+    add_custom_target(${generate_target}-gles)
     add_custom_target(${generate_target}-glsc)
 
     add_custom_command(
@@ -30,6 +31,14 @@ if(PYTHON)
     )
     
     add_custom_command(
+        TARGET              ${generate_target}-gles
+        PRE_BUILD
+        WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
+        COMMAND             ${PYTHON} scripts/generate.py -a gles -s gl.xml -p patch.xml -d ../glesbinding -r gl.revision
+        COMMENT             "Generating OpenGL binding code."
+    )
+    
+    add_custom_command(
         TARGET              ${generate_target}-glsc
         PRE_BUILD
         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
@@ -41,6 +50,7 @@ if(PYTHON)
     
     set_target_properties(${update_target} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${generate_target}-gl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+    set_target_properties(${generate_target}-gles PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${generate_target}-glsc PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 
 else()
