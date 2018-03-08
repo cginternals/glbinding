@@ -42,7 +42,7 @@ if(PYTHON)
     )
     
     add_custom_command(
-        TARGET              ${update_target}wgl
+        TARGET              ${update_target}-wgl
         PRE_BUILD
         WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
         COMMAND             ${PYTHON} scripts/update.py -f wgl.xml
@@ -79,7 +79,6 @@ if(PYTHON)
     set_target_properties(${update_target}-egl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${update_target}-glx PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${update_target}-wgl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
-    set_target_properties(${update_target} PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${generate_target}-gl PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${generate_target}-gles PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
     set_target_properties(${generate_target}-glsc PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
