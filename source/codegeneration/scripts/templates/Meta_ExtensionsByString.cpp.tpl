@@ -1,13 +1,13 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/extension.h>
+#include <{{api}}binding/{{api}}/extension.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -25,7 +25,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_{{nam
 {{/empty}}
 
 {{/extensionsByInitial.groups}}
-const std::array<std::unordered_map<std::string, gl::GLextension>, {{extensionsByInitial.count}}> Meta_ExtensionsByStringMaps =
+const std::array<std::unordered_map<std::string, {{api}}::GLextension>, {{extensionsByInitial.count}}> Meta_ExtensionsByStringMaps =
 { {
 {{#extensionsByInitial.groups}}
     Meta_ExtensionsByString_{{name}}{{^last}},{{/last}}
@@ -33,4 +33,4 @@ const std::array<std::unordered_map<std::string, gl::GLextension>, {{extensionsB
 } };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

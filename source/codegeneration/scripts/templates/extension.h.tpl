@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <glbinding/no{{api}}.h>
+#include <{{api}}binding/nogl.h>
 
 
 namespace {{api}}

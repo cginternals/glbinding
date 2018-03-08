@@ -16,20 +16,21 @@ set(IDE_FOLDER "")
 add_subdirectory(codegeneration)
 
 # Libraries
-add_subdirectory(glbinding)
+#add_subdirectory(glbinding)
+add_subdirectory(glscbinding)
 
 # Examples
 set(IDE_FOLDER "Examples")
-add_subdirectory(examples)
+#add_subdirectory(examples)
 
 # Examples
 set(IDE_FOLDER "Tools")
-add_subdirectory(tools)
+#add_subdirectory(tools)
 
 # Tests
 if(OPTION_BUILD_TESTS)
     set(IDE_FOLDER "Tests")
-    add_subdirectory(tests)
+#    add_subdirectory(tests)
 endif()
 
 

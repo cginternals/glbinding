@@ -22,21 +22,21 @@ from context import Context
 def listApiMemberSets(features):
     apiMemberSetList = []
     for f in features:
+        apiMemberSetList.append( (f, False, False) )
         if f.api == "gl": # ToDo: probably seperate for all apis
-            apiMemberSetList.append( (f, False, False) )
             if f.major > 3 or (f.major == 3 and f.minor >= 2):
                 apiMemberSetList.append( (f, True, False) )
             apiMemberSetList.append( (f, False, True) )
     return apiMemberSetList
 
-def generate(inputfile, patchfile, targetdir, revisionfile):
+def generate(inputfile, patchfile, targetdir, api, revisionfile):
 
     # preparing
 
     print("")
     print("PREPARING")
 
-    api     = "gl" # ToDo: other apis are untested yet
+    # api     = "gl" # ToDo: other apis are untested yet
 
     print("checking revision")
     file = open(revisionfile, "r")
@@ -49,32 +49,36 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     registry   = tree.getroot()
 
     # parsing
+    
+    apiRequire = api
+    if api == "glsc":
+        apiRequire = "glsc2"
 
     print("")
     print("PARSING (" + api + " API)")
 
     print("parsing features")
-    features   = parseFeatures(registry, api)
+    features   = parseFeatures(registry, api, apiRequire)
     print(" # " + str(len(features)) + " features parsed")
 
     print("parsing types")
-    types      = parseTypes(registry, api)
+    types      = parseTypes(registry, api, apiRequire)
     print(" # " + str(len(types)) + " types parsed")
 
     print("parsing extensions")
-    extensions = parseExtensions(registry, features, api)
+    extensions = parseExtensions(registry, features, api, apiRequire)
     print(" # " + str(len(extensions)) + " extensions parsed")
 
     print("parsing commands")
-    commands   = parseCommands(registry, features, extensions, api)
+    commands   = parseCommands(registry, features, extensions, api, apiRequire)
     print(" # " + str(len(commands)) + " commands parsed")
 
     print("parsing enums")
-    enums      = parseEnums(registry, features, extensions, commands, api)
+    enums      = parseEnums(registry, features, extensions, commands, api, apiRequire)
     print(" # " + str(len(enums)) + " enums parsed")
 
     print("parsing enum groups")
-    groups     = parseGroups(registry, enums)
+    groups     = parseGroups(registry, enums, api, apiRequire)
     print(" # " + str(len(groups)) + " enum groups parsed")
 
     # patching
@@ -89,22 +93,22 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
         patchregistry = patchtree.getroot()
 
         print("patching types")
-        patch = parseTypes(patchregistry, api)
+        patch = parseTypes(patchregistry, api, apiRequire)
         patchTypes(types, patch)
 
         print("patching commands")
-        patch = parseCommands(patchregistry, features, extensions, api)
+        patch = parseCommands(patchregistry, features, extensions, api, apiRequire)
         patchCommands(commands, patch)
 
         print("patching features")
         print(" WARNING: todo")
 
         print("patching enums")
-        patch = parseEnums(patchregistry, features, extensions, commands, api)
+        patch = parseEnums(patchregistry, features, extensions, commands, api, apiRequire)
         patchEnums(enums, patch, groups)
 
         print("patching groups")
-        patch = parseGroups(patchregistry, enums)
+        patch = parseGroups(patchregistry, enums, api, apiRequire)
         patchGroups(groups, patch)
 
     # resolving references for classes
@@ -148,11 +152,11 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
     print("GENERATING")
     generateBegin = time.time()
 
-    includedir = pjoin(targetdir, "include/glbinding/")
+    includedir = pjoin(targetdir, "include/{api}binding/")
     includedir_api = pjoin(includedir, "{api}{memberSet}/")
     sourcedir  = pjoin(targetdir, "source/")
     sourcedir_api  = pjoin(sourcedir, "{api}/")
-    testdir    = pjoin(targetdir, "../tests/glbinding-test/")
+    testdir    = pjoin(targetdir, "../tests/{api}binding-test/")
 
     context = Context(api, revision, features, extensions, enums, bitfGroups, types, commands)
     generalContext = context.general()
@@ -217,16 +221,20 @@ def generate(inputfile, patchfile, targetdir, revisionfile):
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv[1:], "s:p:d:r:", ["spec=", "patch=", "directory=" , "revision="])
+        opts, args = getopt.getopt(argv[1:], "a:s:p:d:r:", ["api=", "spec=", "patch=", "directory=" , "revision="])
     except getopt.GetoptError:
-        print("usage: %s -s <GL spec> [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
+        print("usage: %s -s <GL spec> [-a <api>] [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
         sys.exit(1)
 
+    api = "gl"
     targetdir = "."
     inputfile = None
     patchfile = None
 
     for opt, arg in opts:
+        if opt in ("-a", "--api"):
+            api = arg
+        
         if opt in ("-s", "--spec"):
             inputfile = arg
 
@@ -245,7 +253,7 @@ def main(argv):
 
     Status.targetdir = targetdir
 
-    generate(inputfile, patchfile, targetdir, revision)
+    generate(inputfile, patchfile, targetdir, api, revision)
 
 if __name__ == "__main__":
     main(sys.argv)

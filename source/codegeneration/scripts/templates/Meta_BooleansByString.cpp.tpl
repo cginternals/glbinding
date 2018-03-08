@@ -1,22 +1,22 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/boolean.h>
+#include <{{api}}binding/{{api}}/boolean.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
 const std::unordered_map<std::string, GLboolean> Meta_BooleansByString =
 {
 {{#booleans.items}}
-    { "{{item.name}}", gl::{{item.identifier}} }{{^last}},{{/last}}
+    { "{{item.name}}", {{api}}::{{item.identifier}} }{{^last}},{{/last}}
 {{/booleans.items}}
 };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

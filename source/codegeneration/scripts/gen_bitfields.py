@@ -5,6 +5,10 @@ from context import Context
 
 def genBitfieldContexts(enums, bitfGroups):
     bitfieldEnums = [enum for enum in enums if enum.type == "GLbitfield"]
+    
+    if len(bitfieldEnums) == 0:
+        return []
+    
     maxLength = max([len(enumBID(enum)) for enum in bitfieldEnums])
 
     noneIdentifier = "GL_NONE_BIT"

@@ -127,7 +127,7 @@ class Group:
         return self.name < other.name
     
 
-def parseGroups(xml, enums):
+def parseGroups(xml, enums, api, apiRequire):
     
     groups = []
     groupsByName = dict()
@@ -217,7 +217,7 @@ def verifyGroups(groups, enums):
     #        print ("  %s groups for %s (%s)" % (str(len(enum.groups)), enum.name, ", ".join([g.name for g in enum.groups])))
 
 
-def parseEnums(xml, features, extensions, commands, api):
+def parseEnums(xml, features, extensions, commands, api, apiRequire):
 
     # create utility string sets to simplify application of constraints
 
@@ -259,7 +259,7 @@ def parseEnums(xml, features, extensions, commands, api):
             if name not in enumsRequired and groupString not in groupsUsed:
                 continue
 
-            if "api" in enum.attrib and enum.attrib["api"] != api:
+            if "api" in enum.attrib and enum.attrib["api"] != apiRequire:
                 continue
 
             enums.add(Enum(enum, features, extensions, groupString, groupType, api))

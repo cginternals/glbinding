@@ -1,13 +1,13 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/enum.h>
+#include <{{api}}binding/{{api}}/enum.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -19,4 +19,4 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
 };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

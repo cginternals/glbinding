@@ -1,13 +1,13 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/bitfield.h>
+#include <{{api}}binding/{{api}}/bitfield.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -23,4 +23,4 @@ const std::unordered_map<{{name}}, std::string> Meta_StringsBy{{name}} =
 {{/bitfieldsByGroup.groups}}
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

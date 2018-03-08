@@ -1,13 +1,13 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/enum.h>
+#include <{{api}}binding/{{api}}/enum.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -25,7 +25,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}}{};
 {{/empty}}
 
 {{/enumsByInitial.groups}}
-const std::array<std::unordered_map<std::string, gl::GLenum>, {{enumsByInitial.count}}> Meta_EnumsByStringMaps =
+const std::array<std::unordered_map<std::string, {{api}}::GLenum>, {{enumsByInitial.count}}> Meta_EnumsByStringMaps =
 { {
 {{#enumsByInitial.groups}}
     Meta_EnumsByString_{{name}}{{^last}},{{/last}}
@@ -33,4 +33,4 @@ const std::array<std::unordered_map<std::string, gl::GLenum>, {{enumsByInitial.c
 } };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

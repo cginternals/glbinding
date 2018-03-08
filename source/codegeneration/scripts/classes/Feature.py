@@ -2,7 +2,6 @@
 class Feature:
 
 	def __init__(self, xml, api):
-
 		self.api    = api if xml.attrib["api"] == api else None
 
 		self.name   = xml.attrib["name"]   # e.g., GL_VERSION_1_1
@@ -71,12 +70,12 @@ class Feature:
 			return self.major > other.major or (self.major == other.major and self.minor >= other.minor)
 
 
-def parseFeatures(xml, api):
+def parseFeatures(xml, api, apiRequire):
 
 	features = []
 	for feature in xml.iter("feature"):
 
-		if "api" in feature.attrib and feature.attrib["api"] != api:
+		if "api" in feature.attrib and feature.attrib["api"] != apiRequire:
 			continue
 
 		features.append(Feature(feature, api))

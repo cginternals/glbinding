@@ -8,13 +8,13 @@
 #include <set>
 #include <cstdint>
 
-#include <glbinding/glbinding_api.h>
-#include <glbinding/glbinding_features.h>
+#include <{{api}}binding/{{api}}binding_api.h>
+#include <{{api}}binding/{{api}}binding_features.h>
 
-#include <glbinding/gl/types.h>
+#include <{{api}}binding/{{api}}/types.h>
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -26,7 +26,7 @@ class Version;
 *  @brief
 *    Provisioning of meta information about OpenGL extensions, functions and conversion of strings and symbols of the OpenGL API
 */
-class GLBINDING_API Meta
+class {{ucapi}}BINDING_API Meta
 {
 public:
     /**
@@ -54,7 +54,7 @@ public:
     *  @return
     *    The symbol identified through the bitfield string, 0 if failed
     */
-    static gl::GLbitfield getBitfield(const std::string & glbitfield);
+    static {{api}}::GLbitfield getBitfield(const std::string & bitfield);
     
     /**
     *  @brief
@@ -63,7 +63,7 @@ public:
     *  @return
     *    The list of all bitfields known by the gl.xml
     */
-    static std::vector<gl::GLbitfield> bitfields();
+    static std::vector<{{api}}::GLbitfield> bitfields();
 
     /**
     *  @brief
@@ -78,7 +78,7 @@ public:
     *  @remarks
     *    Beware, that some enums in the OpenGL API have different symbol names but identical enum values and that this function cannot differentiate between them
     */
-    static const std::string & getString(gl::GLenum glenum);
+    static const std::string & getString({{api}}::GLenum glenum);
     
     /**
     *  @brief
@@ -90,7 +90,7 @@ public:
     *  @return
     *    The symbol identified through the enum string, 0 if failed
     */
-    static gl::GLenum getEnum(const std::string & glenum);
+    static {{api}}::GLenum getEnum(const std::string & glenum);
     
     /**
     *  @brief
@@ -99,7 +99,7 @@ public:
     *  @return
     *    The list of all enums known by the gl.xml
     */
-    static std::vector<gl::GLenum> enums();
+    static std::vector<{{api}}::GLenum> enums();
 
     /**
     *  @brief
@@ -114,7 +114,7 @@ public:
     *  @remarks
     *    Can either be 'GL_TRUE' or 'GL_FALSE'
     */
-    static const std::string & getString(const gl::GLboolean & glboolean);
+    static const std::string & getString(const {{api}}::GLboolean & glboolean);
     
     /**
     *  @brief
@@ -126,7 +126,7 @@ public:
     *  @return
     *    The symbol identified through the boolean string, 'GL_FALSE' if failed
     */
-    static gl::GLboolean getBoolean(const std::string & glboolean);
+    static {{api}}::GLboolean getBoolean(const std::string & glboolean);
 
     /**
     *  @brief
@@ -138,7 +138,7 @@ public:
     *  @return
     *    The string representation of the extension
     */
-    static const std::string & getString(gl::GLextension glextension);
+    static const std::string & getString({{api}}::GLextension glextension);
     
     /**
     *  @brief
@@ -150,7 +150,7 @@ public:
     *  @return
     *    The symbol identified through the extension string, 'UNKNOWN' if failed
     */
-    static gl::GLextension getExtension(const std::string & glextension);
+    static {{api}}::GLextension getExtension(const std::string & glextension);
 
     /**
     *  @brief
@@ -159,7 +159,7 @@ public:
     *  @return
     *    The set of all extensions known by the gl.xml
     */
-    static std::set<gl::GLextension> extensions();
+    static std::set<{{api}}::GLextension> extensions();
     
     /**
     *  @brief
@@ -174,7 +174,7 @@ public:
     *    The set of extensions that should be supported for the given version.
     *    All non versioned extensions can be queried by providing the null version
     */
-    static const std::set<gl::GLextension> extensions(const Version & version);
+    static const std::set<{{api}}::GLextension> extensions(const Version & version);
 
     /**
     *  @brief
@@ -186,7 +186,7 @@ public:
     *  @return
     *    The set of extensions that are requiring an OpenGL function
     */
-    static const std::set<gl::GLextension> extensions(const std::string & glfunction);
+    static const std::set<{{api}}::GLextension> extensions(const std::string & glfunction);
     
     /**
     *  @brief
@@ -213,7 +213,7 @@ public:
     *  @return
     *    The set of functions that are required for the extension
     */
-    static const std::set<AbstractFunction *> functions(gl::GLextension glextension);
+    static const std::set<AbstractFunction *> functions({{api}}::GLextension glextension);
 
     /**
     *  @brief
@@ -225,7 +225,7 @@ public:
     *  @return
     *    The first OpenGL Version (Feature) that required the extension
     */
-    static const Version & version(gl::GLextension glextension);
+    static const Version & version({{api}}::GLextension glextension);
     
     /**
     *  @brief
@@ -246,7 +246,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::{{item}} glbitfield);
+    static const std::string & getString({{api}}::{{item}} glbitfield);
 
 {{/bitfieldGroups.items}}
 
@@ -268,4 +268,4 @@ private:
 };
 
 
-} // namespace gl
+} // namespace {{api}}binding

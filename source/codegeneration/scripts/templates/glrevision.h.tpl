@@ -2,11 +2,11 @@
 #pragma once
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
 const unsigned int GL_REVISION = {{revision}}; ///< The revision of the gl.xml at the time of code generation.
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

@@ -105,8 +105,8 @@ class Context:
     def _listApiMemberSets(features):
         apiMemberSetList = []
         for f in features:
+            apiMemberSetList.append( (f, False, False) )
             if f.api == "gl": # ToDo: probably seperate for all apis
-                apiMemberSetList.append( (f, False, False) )
                 if f.major > 3 or (f.major == 3 and f.minor >= 2):
                     apiMemberSetList.append( (f, True, False) )
                 apiMemberSetList.append( (f, False, True) )
@@ -148,6 +148,7 @@ class Context:
     def general(self):
 
         context = {"api": self.api,
+                   "ucapi": self.api.upper(),
                    "memberSet": "",
                    "revision": self.revision}
 
@@ -213,6 +214,7 @@ class Context:
 
     def apiMemberSetSpecific(self, feature, core, ext):
         context = {"api": self.api,
+                           "ucapi": self.api.upper(),
                            "memberSet": versionBID(feature, core, ext),
                            "revision": self.revision}
 

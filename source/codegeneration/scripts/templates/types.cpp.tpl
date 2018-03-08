@@ -1,7 +1,7 @@
 
-#include <glbinding/{{api}}/types.h>
+#include <{{api}}binding/{{api}}/types.h>
 
-#include <glbinding/Meta.h>
+#include <{{api}}binding/Meta.h>
 
 #include <bitset>
 #include <sstream>
@@ -10,12 +10,12 @@
 template <typename T>
 std::string bitfieldString(T value)
 {
-    std::bitset<sizeof(gl::GLbitfield) * 8> bits(static_cast<gl::GLbitfield>(value));
+    std::bitset<sizeof({{api}}::GLbitfield) * 8> bits(static_cast<{{api}}::GLbitfield>(value));
 
     std::stringstream ss;
     bool first = true;
 
-    for (size_t i = 0; i < sizeof(gl::GLbitfield) * 8; ++i)
+    for (size_t i = 0; i < sizeof({{api}}::GLbitfield) * 8; ++i)
     {
     if (!bits.test(i))
         continue;
@@ -29,9 +29,9 @@ std::string bitfieldString(T value)
             ss << " | ";
         }
 
-    const gl::GLbitfield bit = 1 << i;
+    const {{api}}::GLbitfield bit = 1 << i;
 
-    const auto identifier = glbinding::Meta::getString(static_cast<T>(bit));
+    const auto identifier = {{api}}binding::Meta::getString(static_cast<T>(bit));
     if (identifier.empty())
     {
         ss << "1 << " << i;

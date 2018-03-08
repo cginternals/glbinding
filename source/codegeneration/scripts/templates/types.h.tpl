@@ -2,10 +2,10 @@
 #pragma once
 
 
-#include <glbinding/no{{api}}.h>
-#include <glbinding/glbinding_api.h>
-#include <glbinding/glbinding_features.h>
-#include <glbinding/gl/boolean.h>
+#include <{{api}}binding/nogl.h>
+#include <{{api}}binding/{{api}}binding_api.h>
+#include <{{api}}binding/{{api}}binding_features.h>
+#include <{{api}}binding/{{api}}/boolean.h>
 
 #include <cstddef>
 #include <cstdint>

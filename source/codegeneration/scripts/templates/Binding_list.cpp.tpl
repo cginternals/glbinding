@@ -2,10 +2,10 @@
 #include "Binding_pch.h"
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -17,4 +17,4 @@ const Binding::array_t Binding::s_functions =
 {{=| |=}}}}|={{ }}=|;
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

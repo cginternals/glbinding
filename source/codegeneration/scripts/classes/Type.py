@@ -32,7 +32,7 @@ class Type:
         return self.name < other.name
 
 
-def parseTypes(xml, api):
+def parseTypes(xml, api, apiRequire):
 
     types = []
     for T in xml.iter("types"):
@@ -42,11 +42,10 @@ def parseTypes(xml, api):
         # (2) starts with typedef or struct and or is exception, e.g., GLhandleARB 
 
         for type in T.findall("type"):
-
             # enorce constraint (1)
-            if "api" in type.attrib and type.attrib["api"] != api:
+            if "api" in type.attrib and type.attrib["api"] != apiRequire:
                 continue
-
+            
             # enorce constraint (2)
             if not inner(type).startswith("typedef ") and \
                not inner(type).startswith("struct ") \

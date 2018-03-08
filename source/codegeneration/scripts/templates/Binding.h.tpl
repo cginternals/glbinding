@@ -6,16 +6,16 @@
 #include <vector>
 #include <functional>
 
-#include <glbinding/glbinding_api.h>
-#include <glbinding/glbinding_features.h>
+#include <{{api}}binding/{{api}}binding_api.h>
+#include <{{api}}binding/{{api}}binding_features.h>
 
-#include <glbinding/ContextHandle.h>
-#include <glbinding/Function.h>
+#include <{{api}}binding/ContextHandle.h>
+#include <{{api}}binding/Function.h>
 
-#include <glbinding/gl/types.h>
+#include <{{api}}binding/{{api}}/types.h>
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -26,7 +26,7 @@ namespace glbinding
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-class GLBINDING_API Binding
+class {{ucapi}}BINDING_API Binding
 {
 public:
     using array_t               = std::array<AbstractFunction *, {{functions.count}}>; ///< The type of the build-in functions collection
@@ -83,14 +83,14 @@ public:
     
     /**
     *  @brief
-    *    Update the current context state in glbinding
+    *    Update the current context state in {{api}}binding
     *    This function queries the driver for the current OpenGL context
     */
     static void useCurrentContext();
     
     /**
     *  @brief
-    *    Update the current context state in glbinding
+    *    Update the current context state in {{api}}binding
     * 
     *  @param[in] context
     *    The context handle of the context to set current
@@ -99,14 +99,14 @@ public:
 
     /**
     *  @brief
-    *    Removes the current context from the state of glbinding
+    *    Removes the current context from the state of {{api}}binding
     *    This function queries the driver for the current OpenGL context
     */
     static void releaseCurrentContext();
     
     /**
     *  @brief
-    *    Removes the current context from the state of glbinding
+    *    Removes the current context from the state of {{api}}binding
     * 
     *  @param[in] context
     *    The context handle of the context to remove
@@ -163,4 +163,4 @@ protected:
 };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

@@ -1,13 +1,13 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/bitfield.h>
+#include <{{api}}binding/{{api}}/bitfield.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -25,7 +25,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_{{name}
 {{/empty}}
 
 {{/bitfieldsByInitial.groups}}
-const std::array<std::unordered_map<std::string, gl::GLbitfield>, {{bitfieldsByInitial.count}}> Meta_BitfieldsByStringMaps =
+const std::array<std::unordered_map<std::string, {{api}}::GLbitfield>, {{bitfieldsByInitial.count}}> Meta_BitfieldsByStringMaps =
 { {
 {{#bitfieldsByInitial.groups}}
     Meta_BitfieldsByString_{{name}}{{^last}},{{/last}}
@@ -33,4 +33,4 @@ const std::array<std::unordered_map<std::string, gl::GLbitfield>, {{bitfieldsByI
 } };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

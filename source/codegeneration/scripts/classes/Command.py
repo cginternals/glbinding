@@ -47,7 +47,7 @@ class Command:
 
     def __init__(self, xml, features, extensions, api):
 
-        self.api = api 
+        self.api = api
 
         proto = xml.find("proto")
 
@@ -110,7 +110,7 @@ class Command:
             return min(self.reqFeatures) <= feature
 
         
-def parseCommands(xml, features, extensions, api):
+def parseCommands(xml, features, extensions, api, apiRequire):
 
     commands = []
 
@@ -132,7 +132,7 @@ def parseCommands(xml, features, extensions, api):
                 for extension in extensions if len(extension.reqCommandStrings) > 0):
                     continue
 
-            if "api" in command.attrib and command.attrib["api"] != api:
+            if "api" in command.attrib and command.attrib["api"] != apiRequire:
                 continue
 
             commands.append(Command(command, features, extensions, api))

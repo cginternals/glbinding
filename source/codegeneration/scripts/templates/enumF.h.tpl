@@ -2,9 +2,9 @@
 #pragma once
 
 
-#include <glbinding/no{{api}}.h>
+#include <{{api}}binding/nogl.h>
 
-#include <glbinding/{{api}}/enum.h>
+#include <{{api}}binding/{{api}}/enum.h>
 
 
 namespace {{api}}{{memberSet}}

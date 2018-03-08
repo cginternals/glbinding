@@ -2,10 +2,10 @@
 #pragma once
 
 
-#include <glbinding/glbinding_features.h>
+#include <{{api}}binding/{{api}}binding_features.h>
 
-#include <glbinding/no{{api}}.h>
-#include <glbinding/{{api}}/types.h>
+#include <{{api}}binding/nogl.h>
+#include <{{api}}binding/{{api}}/types.h>
 
 
 namespace {{api}}
@@ -14,7 +14,7 @@ namespace {{api}}
 
 {{#valuesByType.groups}}
 {{#items}}
-GLBINDING_CONSTEXPR static const {{item.type}} {{item.identifier}} = {{item.value}};
+{{ucapi}}BINDING_CONSTEXPR static const {{item.type}} {{item.identifier}} = {{item.value}};
 {{/items}}
 {{^last}}
 

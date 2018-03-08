@@ -1,12 +1,12 @@
 
-#include <glbinding/Meta.h>
+#include <{{api}}binding/Meta.h>
 
-#include <glbinding/gl/bitfield.h>
+#include <{{api}}binding/{{api}}/bitfield.h>
 
 #include "Meta_Maps.h"
 
 
-using namespace gl;
+using namespace {{api}};
 
 
 namespace
@@ -15,15 +15,15 @@ namespace
 }
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
 {{#bitfieldGroups.items}}
 
-const std::string & Meta::getString(const {{item}} glbitfield)
+const std::string & Meta::getString(const {{item}} bitfield)
 {
-    const auto i = Meta_StringsBy{{item}}.find(glbitfield);
+    const auto i = Meta_StringsBy{{item}}.find(bitfield);
     if (i != Meta_StringsBy{{item}}.end())
     {
         return i->second;
@@ -34,4 +34,4 @@ const std::string & Meta::getString(const {{item}} glbitfield)
 {{/bitfieldGroups.items}}
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

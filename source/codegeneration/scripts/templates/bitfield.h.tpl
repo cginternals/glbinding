@@ -2,11 +2,11 @@
 #pragma once
 
 
-#include <glbinding/no{{api}}.h>
+#include <{{api}}binding/nogl.h>
 
-#include <glbinding/glbinding_features.h>
+#include <{{api}}binding/{{api}}binding_features.h>
 
-#include <glbinding/SharedBitfield.h>
+#include <{{api}}binding/SharedBitfield.h>
 
 
 namespace {{api}}
@@ -28,10 +28,10 @@ enum class {{name}} : unsigned int
 
 {{#bitfields.items}}
 {{#item.groups.multipleItems}}
-GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<{{#item.groups.items}}{{item}}{{^last}}, {{/last}}{{/item.groups.items}}> {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
+{{ucapi}}BINDING_CONSTEXPR static const {{api}}binding::SharedBitfield<{{#item.groups.items}}{{item}}{{^last}}, {{/last}}{{/item.groups.items}}> {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
 {{/item.groups.multipleItems}}
 {{^item.groups.multipleItems}}
-GLBINDING_CONSTEXPR static const {{item.primaryGroup}} {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
+{{ucapi}}BINDING_CONSTEXPR static const {{item.primaryGroup}} {{item.identifier}} = {{item.primaryGroup}}::{{item.identifier}};
 {{/item.groups.multipleItems}}
 {{/bitfields.items}}
 

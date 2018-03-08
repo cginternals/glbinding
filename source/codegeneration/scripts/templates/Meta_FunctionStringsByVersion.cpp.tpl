@@ -1,13 +1,13 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/Version.h>
+#include <{{api}}binding/Version.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -20,4 +20,4 @@ const std::map<Version, std::set<std::string>> Meta_FunctionStringsByVersion =
 };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

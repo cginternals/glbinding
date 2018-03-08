@@ -1,14 +1,14 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/extension.h>
-#include <glbinding/Version.h>
+#include <{{api}}binding/{{api}}/extension.h>
+#include <{{api}}binding/Version.h>
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -18,4 +18,4 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension =
 {{/item.incore}}{{/extensionsIncore.items}}};
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

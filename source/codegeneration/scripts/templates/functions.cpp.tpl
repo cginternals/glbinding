@@ -1,10 +1,10 @@
 
 #include "../Binding_pch.h"
 
-#include <glbinding/{{api}}/functions.h>
+#include <{{api}}binding/{{api}}/functions.h>
 
 
-using namespace glbinding;
+using namespace {{api}}binding;
 
 
 namespace {{api}}

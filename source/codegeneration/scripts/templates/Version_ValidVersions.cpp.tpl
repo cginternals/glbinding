@@ -1,8 +1,8 @@
 
-#include <glbinding/Version.h>
+#include <{{api}}binding/Version.h>
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -16,4 +16,4 @@ const std::set<Version> Version::s_validVersions =
 const Version Version::s_latest { {{latestFeature.major}}, {{latestFeature.minor}} };
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

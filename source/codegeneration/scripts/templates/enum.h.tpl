@@ -2,9 +2,9 @@
 #pragma once
 
 
-#include <glbinding/no{{api}}.h>
+#include <{{api}}binding/nogl.h>
 
-#include <glbinding/glbinding_features.h>
+#include <{{api}}binding/{{api}}binding_features.h>
 
 
 namespace {{api}}
@@ -36,10 +36,10 @@ enum class GLenum : unsigned int
 
 {{#items}}
 {{#isPrimary}}
-GLBINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}};
+{{ucapi}}BINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}};
 {{/isPrimary}}
 {{#isSecondary}}
-// GLBINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}}; // reuse {{item.primaryGroup}}
+// {{ucapi}}BINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}}; // reuse {{item.primaryGroup}}
 {{/isSecondary}}
 {{/items}}
 

@@ -2,10 +2,10 @@
 #include "Binding_pch.h"
 
 
-using namespace gl;
+using namespace {{api}};
 
 
-namespace glbinding
+namespace {{api}}binding
 {
 
 
@@ -13,4 +13,4 @@ namespace glbinding
 {{/item}}{{/currentFunctionGroup.items}}
 
 
-} // namespace glbinding
+} // namespace {{api}}binding

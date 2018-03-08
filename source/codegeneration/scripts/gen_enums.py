@@ -6,6 +6,10 @@ from context import Context
 def genEnumContexts(allEnums):
     ungroupedName = "__UNGROUPED__"
     enums = [enum for enum in allEnums if enum.type == "GLenum"]
+    
+    if len(enums) == 0:
+        return []
+    
     maxLength = max([len(enumBID(enum)) for enum in enums])
     enumContexts = []
     for enum in enums:

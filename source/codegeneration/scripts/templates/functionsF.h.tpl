@@ -2,8 +2,8 @@
 #pragma once
 
 
-#include <glbinding/no{{api}}.h>
-#include <glbinding/{{api}}/functions.h>
+#include <{{api}}binding/nogl.h>
+#include <{{api}}binding/{{api}}/functions.h>
 
 
 namespace {{api}}{{memberSet}}
