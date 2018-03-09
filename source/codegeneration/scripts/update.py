@@ -4,6 +4,8 @@ import os, sys, getopt, io, subprocess
 
 def update(outputfile):
     url = "https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/" + outputfile
+    if outputfile == "egl.xml":
+        url = "https://raw.githubusercontent.com/KhronosGroup/EGL-Registry/master/api/" + outputfile
     
     print("Retrieving latest revision of " + outputfile)
 

@@ -164,7 +164,7 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
     generalContext = context.general()
 
     # Generate files with common context
-    Generator.generate(generalContext, pjoin(sourcedir, "glrevision.h"))
+    Generator.generate(generalContext, pjoin(sourcedir, "{api}revision.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "extension.h"))
     # Generator.generate(generalContext, pjoin(includedir_api, "boolean.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "values.h"))
@@ -172,7 +172,7 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
     Generator.generate(generalContext, pjoin(includedir_api, "bitfield.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "enum.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "functions.h"))
-    Generator.generate(generalContext, pjoin(includedir_api, "gl.h"))
+    Generator.generate(generalContext, pjoin(includedir_api, "{api}.h"))
 
     Generator.generate(generalContext, pjoin(sourcedir_api, "types.cpp"))
     Generator.generate(generalContext, pjoin(testdir, "AllVersions_test.cpp"))
@@ -215,7 +215,7 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
         Generator.generate(specificContext, pjoin(includedir_api, "bitfield.h"), "bitfieldF.h")
         Generator.generate(specificContext, pjoin(includedir_api, "enum.h"), "enumF.h")
         Generator.generate(specificContext, pjoin(includedir_api, "functions.h"), "functionsF.h")
-        Generator.generate(specificContext, pjoin(includedir_api, "gl.h"), "glF.h")
+        Generator.generate(specificContext, pjoin(includedir_api, "{api}.h"), "{api}F.h")
 
     generateEnd = time.time()
     print("generation took {:.3f} seconds".format(generateEnd - generateBegin))
@@ -225,7 +225,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv[1:], "a:s:p:d:r:", ["api=", "spec=", "patch=", "directory=" , "revision="])
     except getopt.GetoptError:
-        print("usage: %s -s <GL spec> [-a <api>] [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
+        print("usage: %s -s <spec> [-a <api>] [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
         sys.exit(1)
 
     api = "gl"

@@ -60,13 +60,16 @@ class Generator:
                                                 escape=lambda u: u)
 
         outputDir = os.path.dirname(outputPath).format(**context)
+        
         if not os.path.exists(outputDir):
             os.makedirs(outputDir)
 
         outputFile = os.path.basename(outputPath)
+        outputFile = outputFile.format(**context)
         if templateName is None:
             templateName = outputFile
-        outputFile = outputFile.format(**context)
+        else:
+            templateName = templateName.format(**context)
 
         print("generating {} in {}".format(outputFile, outputDir)) #TODO-LW move logging to appropriate place
 

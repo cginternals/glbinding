@@ -7,8 +7,6 @@
 #include <glesbinding/glesbinding_features.h>
 #include <glesbinding/gles/boolean.h>
 
-#include <KHR/khrplatform.h>
-
 #include <cstddef>
 #include <cstdint>
 #include <array>
@@ -184,73 +182,7 @@ GLESBINDING_CONSTEXPR inline GLenum operator-(const GLenum & a, const std::under
 } // namespace gles
 
 
-namespace gles
-{
-
-
-GLESBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) == b;
-}
-
-GLESBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) != b;
-}
-
-GLESBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) < b;
-}
-
-GLESBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;
-}
-
-GLESBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) > b;
-}
-
-GLESBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;
-}
-
-
-GLESBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a == static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLESBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a != static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLESBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a < static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLESBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a <= static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLESBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a > static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLESBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a >= static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-
-} // namespace gles
+namespace gles{GLESBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLESBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLESBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLESBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLESBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLESBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLESBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace gles
 
 
 namespace gles

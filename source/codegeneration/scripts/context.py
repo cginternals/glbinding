@@ -1,4 +1,5 @@
 from binding import *
+import re
 
 class Context:
 
@@ -193,7 +194,7 @@ class Context:
                                                  groupSortKey = lambda g: g,
                                                  itemSortKey = lambda e: e["value"])
         context["enumsByValue"] = self.groupedContext(self.enumContexts,
-                                                 groupKey = lambda e: [ int(e["value"], 0) ],
+                                                 groupKey = lambda e: [ 0 if re.match(".*(CAST|GLX).*", e["value"]) else int(e["value"], 0) ],
                                                  groupSortKey = lambda g: g,
                                                  itemSortKey = lambda e: (enumSuffixPriority(e["identifier"]), e["identifier"]))
         context["enumsByInitial"] = self.groupedContext(self.enumContexts,

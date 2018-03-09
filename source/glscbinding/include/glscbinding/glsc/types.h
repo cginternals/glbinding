@@ -11,8 +11,6 @@
 #include <cstdint>
 #include <array>
 
-#include <KHR/khrplatform.h>
-
 #include <functional>
 #include <ostream>
 #include <string>
@@ -163,73 +161,7 @@ GLSCBINDING_CONSTEXPR inline GLenum operator-(const GLenum & a, const std::under
 } // namespace glsc
 
 
-namespace glsc
-{
-
-
-GLSCBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) == b;
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) != b;
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) < b;
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) > b;
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;
-}
-
-
-GLSCBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a == static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a != static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a < static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a <= static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a > static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLSCBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a >= static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-
-} // namespace glsc
+namespace glsc{GLSCBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLSCBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLSCBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLSCBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLSCBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLSCBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLSCBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace glsc
 
 
 namespace glsc
