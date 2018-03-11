@@ -68,7 +68,7 @@ Version printVersionOfContextRequest(
     }
 
     glfwMakeContextCurrent(window);
-    Binding::initialize();
+    Binding::initialize(*reinterpret_cast<Binding::GetProcAddress*>(&glfwGetProcAddress));
 
     auto result = ContextInfo::version();
     glfwMakeContextCurrent(window);
@@ -146,7 +146,7 @@ int main(int argc, char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize();
+    Binding::initialize(*reinterpret_cast<Binding::GetProcAddress*>(&glfwGetProcAddress));
 
     // print some gl infos (query)
 

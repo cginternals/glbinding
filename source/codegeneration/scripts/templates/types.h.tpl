@@ -10,6 +10,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <array>
+{{additionalTypeIncludes}}
 
 #include <functional>
 #include <ostream>

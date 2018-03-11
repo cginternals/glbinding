@@ -10,6 +10,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <array>
+#include <KHR/khrplatform.h>
 
 #include <functional>
 #include <ostream>

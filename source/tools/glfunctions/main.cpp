@@ -56,7 +56,7 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize();
+    Binding::initialize(*reinterpret_cast<Binding::GetProcAddress*>(&glfwGetProcAddress));
 
     // gather available extensions
 

@@ -31,6 +31,7 @@ class EGLBINDING_API Binding
 public:
     using array_t               = std::array<AbstractFunction *, 141>; ///< The type of the build-in functions collection
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
+    using GetProcAddress        = std::function<void*(const char*)>;    ///< The signature for the getProcAddress function
 
     /**
     *  @brief
@@ -42,13 +43,17 @@ public:
     *  @brief
     *    Initializes the binding for the current active OpenGL context
     * 
+    *  @param[in] functionPointerResolver
+    *    A function pointer to resolve binding functions for this context
     *  @param[in] resolveFunctions (optional)
     *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
     * 
     *  @remarks
-    *    After this call, the initialized context is already set active for the current thread
+    *    After this call, the initialized context is already set active for the current thread.
+    *    A functionPointerResolver with value 'nullptr' will get initialized with the function
+    *    pointer from the initial thread.
     */
-    static void initialize(bool resolveFunctions = true);
+    static void initialize(GetProcAddress functionPointerResolver, bool resolveFunctions = true);
     
     /**
     *  @brief
@@ -56,12 +61,18 @@ public:
     * 
     *  @param[in] context
     *    The context handle of the context to initialize
+    *  @param[in] functionPointerResolver
+    *    A function pointer to resolve binding functions for this context
     *  @param[in] useContext
     *    Whether to set the context active (useContext = true) after the initialization
     *  @param[in] resolveFunctions (optional)
     *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+    *
+    *  @remarks
+    *    A functionPointerResolver with value 'nullptr' will get initialized with the function
+    *    pointer from the initial thread.
     */
-    static void initialize(ContextHandle context, bool useContext = true, bool resolveFunctions = true);
+    static void initialize(ContextHandle context, GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true);
     
     /**
     *  @brief

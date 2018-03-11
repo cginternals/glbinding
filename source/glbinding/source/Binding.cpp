@@ -20,9 +20,11 @@ namespace
 {
 
 GLBINDING_THREAD_LOCAL glbinding::ContextHandle t_context = 0;
+GLBINDING_THREAD_LOCAL glbinding::Binding::GetProcAddress t_getProcAddress = nullptr;
 
 std_boost::recursive_mutex g_mutex;
 std::unordered_map<glbinding::ContextHandle, int> g_bindings;
+glbinding::Binding::GetProcAddress g_firstGetProcAddress = nullptr;
 
 } // namespace
 
@@ -49,13 +51,14 @@ size_t Binding::size()
     return s_functions.size() + s_additionalFunctions.size();
 }
 
-void Binding::initialize(const bool resolveFunctions)
+void Binding::initialize(const GetProcAddress functionPointerResolver, const bool resolveFunctions)
 {
-    initialize(getCurrentContext(), true, resolveFunctions);
+    initialize(getCurrentContext(), functionPointerResolver, true, resolveFunctions);
 }
 
 void Binding::initialize(
     const ContextHandle context
+,   const GetProcAddress functionPointerResolver
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
@@ -64,6 +67,13 @@ void Binding::initialize(
 
     {
         std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
+        
+        if (g_firstGetProcAddress == nullptr)
+        {
+            g_firstGetProcAddress = functionPointerResolver;
+        }
+        
+        t_getProcAddress = functionPointerResolver == nullptr ? g_firstGetProcAddress : functionPointerResolver;
 
         if (g_bindings.find(context) != g_bindings.cend())
         {
@@ -121,7 +131,7 @@ void Binding::useContext(const ContextHandle context)
 
     if (g_bindings.find(t_context) == g_bindings.cend())
     {
-        initialize(t_context);
+        initialize(t_context, nullptr);
 
         return;
     }

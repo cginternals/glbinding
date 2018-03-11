@@ -337,7 +337,7 @@ int main(int argc, const char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize();
+    Binding::initialize(*reinterpret_cast<Binding::GetProcAddress*>(&glfwGetProcAddress));
 
     std::cout << std::endl << "[QUERYING STATE VALUES]" << std::endl;
 

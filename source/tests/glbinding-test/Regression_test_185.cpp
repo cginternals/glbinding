@@ -46,7 +46,7 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
 
     glfwMakeContextCurrent(window);
 
-    glbinding::Binding::initialize();
+    glbinding::Binding::initialize(*reinterpret_cast<glbinding::Binding::GetProcAddress*>(&glfwGetProcAddress));
 
     ASSERT_EQ(gl::GL_NO_ERROR, gl::glGetError());
 

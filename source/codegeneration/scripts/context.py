@@ -151,7 +151,9 @@ class Context:
         context = {"api": self.api,
                    "ucapi": self.api.upper(),
                    "memberSet": "",
-                   "revision": self.revision}
+                   "revision": self.revision,
+                   "additionalTypeIncludes": self.additionalTypeIncludes()
+                }
 
         context["apiMemberSets"] = self.listContext( [{"memberSet": versionBID(feature, core, ext)}
                                                  for feature, core, ext in ( [(None, False, False)] + self.apiMemberSetList )] )
@@ -237,3 +239,9 @@ class Context:
                                                   filter = lambda f: f["supported"](feature, core, ext))
         
         return context
+
+    def additionalTypeIncludes(self):
+        if self.api == "gl":
+            return ""
+        else:
+            return "#include <KHR/khrplatform.h>"
