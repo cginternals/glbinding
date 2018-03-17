@@ -41,14 +41,14 @@ GLBINDING_CONSTEXPR SharedBitfield<Type>::operator Type() const
 
 template <typename Type>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type>::type
 {
-    return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value | static_cast<decltype(this->m_value)>(other));
+    return typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type(this->m_value | static_cast<decltype(this->m_value)>(other));
 }
 
 template <typename Type>
 template <typename... T>
-auto SharedBitfield<Type>::operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+auto SharedBitfield<Type>::operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
 {
     this->m_value |= static_cast<decltype(this->m_value)>(other);
 
@@ -57,14 +57,14 @@ auto SharedBitfield<Type>::operator|=(SharedBitfield<T...> other) -> typename st
 
 template <typename Type>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type>::type
 {
-    return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value & static_cast<decltype(this->m_value)>(other));
+    return typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type(this->m_value & static_cast<decltype(this->m_value)>(other));
 }
 
 template <typename Type>
 template <typename... T>
-auto SharedBitfield<Type>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+auto SharedBitfield<Type>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
 {
     this->m_value &= static_cast<decltype(this->m_value)>(other);
 
@@ -73,14 +73,14 @@ auto SharedBitfield<Type>::operator&=(SharedBitfield<T...> other) -> typename st
 
 template <typename Type>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type>::type
 {
-    return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
+    return typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
 }
 
 template <typename Type>
 template <typename... T>
-auto SharedBitfield<Type>::operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+auto SharedBitfield<Type>::operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
 {
     this->m_value ^= static_cast<decltype(this->m_value)>(other);
 
@@ -89,7 +89,7 @@ auto SharedBitfield<Type>::operator^=(SharedBitfield<T...> other) -> typename st
 
 template <typename Type>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type>::operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type
 {
     return static_cast<UnderlyingType>(*this) == static_cast<UnderlyingType>(other);
 }
@@ -124,14 +124,14 @@ GLBINDING_CONSTEXPR SharedBitfield<Type, Types...>::operator Type() const
 
 template <typename Type, typename... Types>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type>::type
 {
-    return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value | static_cast<decltype(this->m_value)>(other));
+    return typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type(this->m_value | static_cast<decltype(this->m_value)>(other));
 }
 
 template <typename Type, typename... Types>
 template <typename... T>
-auto SharedBitfield<Type, Types...>::operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+auto SharedBitfield<Type, Types...>::operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
 {
     this->m_value |= static_cast<decltype(this->m_value)>(other);
 
@@ -140,14 +140,14 @@ auto SharedBitfield<Type, Types...>::operator|=(SharedBitfield<T...> other) -> t
 
 template <typename Type, typename... Types>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type>::type
 {
-    return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value & static_cast<decltype(this->m_value)>(other));
+    return typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type(this->m_value & static_cast<decltype(this->m_value)>(other));
 }
 
 template <typename Type, typename... Types>
 template <typename... T>
-auto SharedBitfield<Type, Types...>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+auto SharedBitfield<Type, Types...>::operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
 {
     this->m_value &= static_cast<decltype(this->m_value)>(other);
 
@@ -156,14 +156,14 @@ auto SharedBitfield<Type, Types...>::operator&=(SharedBitfield<T...> other) -> t
 
 template <typename Type, typename... Types>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type>::type
 {
-    return typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
+    return typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type(this->m_value ^static_cast<decltype(this->m_value)>(other));
 }
 
 template <typename Type, typename... Types>
 template <typename... T>
-auto SharedBitfield<Type, Types...>::operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
+auto SharedBitfield<Type, Types...>::operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type
 {
     this->m_value ^= static_cast<decltype(this->m_value)>(other);
 
@@ -172,7 +172,7 @@ auto SharedBitfield<Type, Types...>::operator^=(SharedBitfield<T...> other) -> t
 
 template <typename Type, typename... Types>
 template <typename... T>
-GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type
+GLBINDING_CONSTEXPR auto SharedBitfield<Type, Types...>::operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type
 {
     return static_cast<UnderlyingType>(*this) == static_cast<UnderlyingType>(other);
 }
