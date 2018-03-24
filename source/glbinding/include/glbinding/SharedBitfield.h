@@ -227,7 +227,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR inline auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type>::type;
 
     /**
     *  @brief
@@ -240,7 +240,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    inline auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
     *  @brief
@@ -256,7 +256,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR inline auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type>::type;
 
     /**
     *  @brief
@@ -269,7 +269,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    inline auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
     *  @brief
@@ -285,7 +285,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR inline auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type>::type;
 
     /**
     *  @brief
@@ -298,7 +298,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    inline auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
     *  @brief
@@ -314,7 +314,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
+    GLBINDING_CONSTEXPR inline auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
 
     /**
     *  @brief
@@ -395,7 +395,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR inline auto operator|(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type>::type;
 
     /**
     *  @brief
@@ -408,7 +408,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    inline auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator|=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
     *  @brief
@@ -424,7 +424,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR inline auto operator&(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type>::type;
 
     /**
     *  @brief
@@ -437,7 +437,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    inline auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator&=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
     *  @brief
@@ -453,7 +453,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type>::type;
+    GLBINDING_CONSTEXPR inline auto operator^(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type>::type;
 
     /**
     *  @brief
@@ -466,7 +466,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    inline auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
+    inline auto operator^=(SharedBitfield<T...> other) -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, SharedBitfield &>::type;
 
     /**
     *  @brief
@@ -482,7 +482,7 @@ public:
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
-    GLBINDING_CONSTEXPR inline auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
+    GLBINDING_CONSTEXPR inline auto operator==(SharedBitfield<T...> other) const -> typename std::enable_if<!std::is_same<typename intersect_SharedBitfield<SharedBitfield<Type, Types...>, SharedBitfield<T...>>::type, SharedBitfield<>>::value, bool>::type;
 
     /**
     *  @brief
