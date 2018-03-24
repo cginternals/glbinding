@@ -51,7 +51,7 @@ namespace glbinding
 {
 
 
-GLBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const AbstractValue * value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AbstractValue * value);
 
 template <typename T>
 GLBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const Value<T> & value);

@@ -31,8 +31,6 @@ public:
     *    Destructor for correct memory deallocation on subclasses
     */
     virtual ~AbstractValue();
-
-    virtual void printOn(std::ostream & stream) const = 0;
 };
 
 

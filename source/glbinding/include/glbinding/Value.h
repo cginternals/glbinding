@@ -56,11 +56,8 @@ public:
     */
     GLBINDING_CONSTEXPR inline T value() const;
 
-    virtual void printOn(std::ostream & stream) const;
-
-
 protected:
-    const T m_value; ///< The value that should be printed later
+    const T m_value; ///< The value
 };
 
 

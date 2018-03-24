@@ -226,7 +226,42 @@ namespace glbinding
 
 std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
 {
-    value->printOn(stream);
+    if (typeid(*value) == typeid(Value<gl::GLint>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLint>*>(value);
+    }
+    else if (typeid(*value) == typeid(Value<gl::GLfloat>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLfloat>*>(value);
+    }
+    else if (typeid(*value) == typeid(Value<gl::GLenum>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLenum>*>(value);
+    }
+    else if (typeid(*value) == typeid(Value<gl::GLbitfield>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLbitfield>*>(value);
+    }
+    else if (typeid(*value) == typeid(Value<gl::GLboolean>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLboolean>*>(value);
+    }
+    else if (typeid(*value) == typeid(Value<gl::GLubyte *>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLubyte *>*>(value);
+    }
+    else if (typeid(*value) == typeid(Value<gl::GLchar *>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLchar *>*>(value);
+    }
+    else if (typeid(*value) == typeid(Value<gl::GLuint_array_2>))
+    {
+        stream << *reinterpret_cast<const Value<gl::GLuint_array_2>*>(value);
+    }
+    else
+    {
+        stream << "___";
+    }
 
     return stream;
 }
