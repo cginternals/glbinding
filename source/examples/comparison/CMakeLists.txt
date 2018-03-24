@@ -95,6 +95,7 @@ target_link_libraries(${target}
     glfw
     ${GLEW_LIBRARY}
     ${META_PROJECT_NAME}::glbinding
+    ${META_PROJECT_NAME}::glbinding-aux
 )
 
 

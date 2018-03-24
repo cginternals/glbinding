@@ -7,7 +7,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -379,4 +379,4 @@ const std::unordered_map<VertexHintsMaskPGI, std::string> Meta_StringsByVertexHi
 
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

@@ -10,6 +10,7 @@ namespace
 glbinding::SimpleFunctionCallback g_unresolvedCallback;
 glbinding::FunctionCallback g_beforeCallback;
 glbinding::FunctionCallback g_afterCallback;
+glbinding::FunctionLogCallback g_logCallback;
 
 } // namespace
 
@@ -105,6 +106,16 @@ void setAfterCallback(FunctionCallback callback)
     g_afterCallback = std::move(callback);
 }
 
+FunctionLogCallback logCallback()
+{
+    return g_logCallback;
+}
+
+void setLogCallback(FunctionLogCallback callback)
+{
+    g_logCallback = std::move(callback);
+}
+
 void unresolved(const AbstractFunction * function)
 {
     if (g_unresolvedCallback)
@@ -126,6 +137,14 @@ void after(const FunctionCall & call)
     if (g_afterCallback)
     {
         g_afterCallback(call);
+    }
+}
+
+void log(FunctionCall && call)
+{
+    if (g_logCallback)
+    {
+        g_logCallback(new FunctionCall(std::move(call)));
     }
 }
 

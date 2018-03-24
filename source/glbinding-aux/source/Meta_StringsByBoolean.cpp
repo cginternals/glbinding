@@ -7,7 +7,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -18,4 +18,4 @@ const std::unordered_map<GLboolean, std::string> Meta_StringsByBoolean =
 };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

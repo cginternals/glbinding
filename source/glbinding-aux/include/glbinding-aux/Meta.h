@@ -22,10 +22,7 @@ class AbstractFunction;
 class Version;
 
 
-} // namespace glbinding
-
-
-namespace glbinding { namespace aux
+namespace aux
 {
 
 
@@ -61,7 +58,7 @@ public:
     *  @return
     *    The symbol identified through the bitfield string, 0 if failed
     */
-    static gl::GLbitfield getBitfield(const std::string & bitfield);
+    static gl::GLbitfield getBitfield(const std::string & glbitfield);
     
     /**
     *  @brief
@@ -181,7 +178,7 @@ public:
     *    The set of extensions that should be supported for the given version.
     *    All non versioned extensions can be queried by providing the null version
     */
-    static const std::set<gl::GLextension> extensions(const glbinding::Version & version);
+    static const std::set<gl::GLextension> extensions(const Version & version);
 
     /**
     *  @brief

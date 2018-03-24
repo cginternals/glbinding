@@ -1,5 +1,5 @@
 
-#include <glbinding/logging.h>
+#include <glbinding-aux/logging.h>
 
 #include <array>
 #include <atomic>
@@ -18,6 +18,11 @@ namespace std_boost = boost;
 namespace std_boost = std;
 #endif
 
+#include <glbinding/AbstractFunction.h>
+#include <glbinding/callbacks.h>
+
+#include <glbinding-aux/types_to_string.h>
+
 #include "logging_private.h"
 #include "RingBuffer.h"
 
@@ -32,19 +37,57 @@ std::atomic<bool> g_persisted{true};
 std_boost::mutex g_lockfinish;
 std_boost::condition_variable g_finishcheck;
 
-using FunctionCallBuffer = glbinding::RingBuffer<glbinding::logging::LogEntry>;
+using FunctionCallBuffer = glbinding::aux::RingBuffer<glbinding::aux::LogEntry>;
 FunctionCallBuffer g_buffer{LOG_BUFFER_SIZE};
 
 
 } // namespace
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
-namespace logging
+std::ostream & operator<<(std::ostream & stream, const glbinding::FunctionCall * call)
 {
+    using microseconds = std::chrono::microseconds;
+    using milliseconds = std::chrono::milliseconds;
+
+    const auto now_micros = std::chrono::duration_cast<microseconds>(call->timestamp.time_since_epoch());
+    const auto micros = static_cast<std::size_t>(now_micros.count() % 1000);
+    std::ostringstream micros_os;
+    micros_os << std::setfill('0') << std::setw(3) << micros;
+
+    const auto now_millis = std::chrono::duration_cast<milliseconds>(now_micros);
+    const auto millis = static_cast<std::size_t>(now_millis.count() % 1000);
+    std::ostringstream millis_os;
+    millis_os << std::setfill('0') << std::setw(3) << millis;
+
+    const auto t = std::chrono::system_clock::to_time_t(call->timestamp);
+    std::array<char, 20> time_string;
+    std::strftime(time_string.data(), time_string.size(), "%Y-%m-%d_%H-%M-%S", std::localtime(&t));
+
+    stream << time_string.data() << ":" << millis_os.str() << ":" << micros_os.str() << " ";
+    stream << call->function->name() << "(";
+
+    for (size_t i = 0; i < call->parameters.size(); ++i)
+    {
+        stream << call->parameters[i].get();
+        if (i < call->parameters.size() - 1)
+            stream << ", ";
+    }
+
+    stream << ")";
+
+    if (call->returnValue)
+    {
+        stream << " -> " << call->returnValue.get();
+    }
+
+    stream << std::endl;
+
+    return stream;
+}
 
 
 void resize(const unsigned int newSize)
@@ -61,7 +104,8 @@ void start()
 
 void start(const std::string & filepath)
 {
-    addCallbackMask(CallbackMask::Logging);
+    setLogCallback(glbinding::aux::log);
+    addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
     startWriter(filepath);
 }
 
@@ -74,13 +118,13 @@ void startExcept(const std::set<std::string> & blackList)
 
 void startExcept(const std::string & filepath, const std::set<std::string> & blackList)
 {
-    addCallbackMaskExcept(CallbackMask::Logging, blackList);
+    addCallbackMaskExcept(CallbackMask::Timestamp | CallbackMask::Logging, blackList);
     startWriter(filepath);
 }
 
 void stop()
 {
-    removeCallbackMask(CallbackMask::Logging);
+    removeCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 
     g_stop = true;
     std_boost::unique_lock<std_boost::mutex> locker(g_lockfinish);
@@ -94,12 +138,12 @@ void stop()
 
 void pause()
 {
-    removeCallbackMask(CallbackMask::Logging);
+    removeCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 }
 
 void resume()
 {
-    addCallbackMask(CallbackMask::Logging);
+    addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 }
 
 void log(FunctionCall * call)
@@ -115,7 +159,6 @@ void log(FunctionCall * call)
 
     assert(!g_buffer.isFull());
 
-    delete next;
     g_buffer.push(call);
 }
 
@@ -136,7 +179,7 @@ void startWriter(const std::string & filepath)
 
             while (g_buffer.valid(key, i))
             {
-                logfile << (*i)->toString();
+                logfile << *i;
                 i = g_buffer.next(key, i);
             }
 
@@ -208,7 +251,4 @@ unsigned int size(TailIdentifier key)
 }
 
 
-} // namespace logging
-
-
-} // namespace glbinding
+} } // namespace glbinding::aux

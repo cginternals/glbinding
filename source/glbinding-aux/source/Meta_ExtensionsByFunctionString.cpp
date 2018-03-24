@@ -7,7 +7,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -2429,4 +2429,4 @@ const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27>
 } };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

@@ -9,6 +9,7 @@
 #include <RingBuffer.h>
 
 using namespace glbinding;
+using namespace glbinding::aux;
 
 class RingBuffer_test : public testing::Test
 {

@@ -2,7 +2,6 @@
 #pragma once
 
 
-#include <sstream>
 #include <string>
 #include <set>
 
@@ -108,6 +107,15 @@ Version::operator std::pair<unsigned short, unsigned short>() const
 Version::operator std::pair<unsigned int, unsigned int>() const
 {
     return std::pair<unsigned int, unsigned int>(m_major, m_minor);
+}
+
+std::string Version::toString() const
+{
+    if (isNull()) {
+        return "-.-";
+    }
+
+    return std::to_string(static_cast<int>(m_major)) + '.'  + std::to_string(static_cast<int>(m_minor));
 }
 
 GLBINDING_CONSTEXPR bool Version::isNull() const

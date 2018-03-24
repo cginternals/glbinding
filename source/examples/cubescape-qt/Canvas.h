@@ -16,6 +16,8 @@ class QKeyEvent;
 
 class Painter;
 
+using ProcAddress = void(*)();
+
 class Canvas : public QWindow
 {
     Q_OBJECT
@@ -77,4 +79,7 @@ protected:
     bool m_continuousRepaint;
 
     Painter * m_painter;
+
+protected:
+    ProcAddress getProcAddress(const char * name);
 };

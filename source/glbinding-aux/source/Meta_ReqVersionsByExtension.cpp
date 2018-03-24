@@ -8,7 +8,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -147,4 +147,4 @@ const std::unordered_map<GLextension, Version> Meta_ReqVersionsByExtension =
 };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

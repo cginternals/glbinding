@@ -6,6 +6,8 @@
 #include <functional>
 
 #include <glbinding/Value.h>
+#include <glbinding/FunctionCall.h>
+#include <glbinding/CallbackMask.h>
 #include <glbinding/gl/boolean.h>
 
 
@@ -74,6 +76,11 @@ struct FunctionHelper
             }
         }
 
+        if (function->isEnabled(glbinding::CallbackMask::Logging))
+        {
+            function->log(std::move(functionCall));
+        }
+
         return value;
     }
 };
@@ -111,6 +118,11 @@ struct FunctionHelper<void, Arguments...>
             {
                 function->afterCallback()(std::forward<Arguments>(arguments)...);
             }
+        }
+
+        if (function->isEnabled(glbinding::CallbackMask::Logging))
+        {
+            function->log(std::move(functionCall));
         }
     }
 };

@@ -89,6 +89,12 @@ using FunctionCallback = std::function<void(const FunctionCall &)>;
 
 /**
 *  @brief
+*    The callback type of a function log callback with parameters and return value
+*/
+using FunctionLogCallback = std::function<void(FunctionCall *)>;
+
+/**
+*  @brief
 *    Unresolved callback accessor
 *
 *  @return
@@ -161,6 +167,9 @@ GLBINDING_API FunctionCallback afterCallback();
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
 */
 GLBINDING_API void setAfterCallback(FunctionCallback callback);
+
+GLBINDING_API FunctionLogCallback logCallback();
+GLBINDING_API void setLogCallback(FunctionLogCallback callback);
 
 
 } // namespace glbinding

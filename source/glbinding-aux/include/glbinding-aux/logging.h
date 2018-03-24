@@ -2,9 +2,9 @@
 #pragma once
 
 
-#include <glbinding-aux/glbinding-aux_api.h>
+#include <glbinding/callbacks.h>
 
-#include <glbinding-aux/callbacks.h>
+#include <glbinding-aux/glbinding-aux_api.h>
 
 
 namespace glbinding { namespace aux
@@ -15,7 +15,7 @@ namespace glbinding { namespace aux
 *  @brief
 *    The type of an entry in the log buffer is a FunctionCall *
 */
-using LogEntry = FunctionCall*;
+using LogEntry = FunctionCall *;
 
 
 /**
@@ -25,7 +25,7 @@ using LogEntry = FunctionCall*;
 *  @param[in] newSize
 *    The new size of the buffer
 */
-GLBINDING_API void resize(unsigned int newSize);
+GLBINDING_AUX_API void resize(unsigned int newSize);
 
 /**
 *  @brief
@@ -34,7 +34,7 @@ GLBINDING_API void resize(unsigned int newSize);
 *  @remarks
 *    This function generates a file name and uses this as output
 */
-GLBINDING_API void start();
+GLBINDING_AUX_API void start();
 
 /**
 *  @brief
@@ -43,7 +43,7 @@ GLBINDING_API void start();
 *  @param[in] filepath
 *    The file to store the log into
 */
-GLBINDING_API void start(const std::string & filepath);
+GLBINDING_AUX_API void start(const std::string & filepath);
 
 /**
 *  @brief
@@ -55,7 +55,7 @@ GLBINDING_API void start(const std::string & filepath);
 *  @remarks
 *    This function generates a file name and uses this as output
 */
-GLBINDING_API void startExcept(const std::set<std::string> & blackList);
+GLBINDING_AUX_API void startExcept(const std::set<std::string> & blackList);
 
 /**
 *  @brief
@@ -66,13 +66,13 @@ GLBINDING_API void startExcept(const std::set<std::string> & blackList);
 *  @param[in] blackList
 *    The blacklist of function names
 */
-GLBINDING_API void startExcept(const std::string & filepath, const std::set<std::string> & blackList);
+GLBINDING_AUX_API void startExcept(const std::string & filepath, const std::set<std::string> & blackList);
 
 /**
 *  @brief
 *    Stops logging and flushing log file
 */
-GLBINDING_API void stop();
+GLBINDING_AUX_API void stop();
 
 /**
 *  @brief
@@ -81,13 +81,13 @@ GLBINDING_API void stop();
 *  @remarks
 *    While logging is started but paused, no OpenGL function calls are considered for the log file
 */
-GLBINDING_API void pause();
+GLBINDING_AUX_API void pause();
 
 /**
 *  @brief
 *    Resumes paused logging
 */
-GLBINDING_API void resume();
+GLBINDING_AUX_API void resume();
 
 /**
 *  @brief
@@ -96,7 +96,7 @@ GLBINDING_API void resume();
 *  @remarks
 *    This function is intended to get used by glbinding and not by a user of glbinding
 */
-GLBINDING_API void log(LogEntry call);
+GLBINDING_AUX_API void log(LogEntry call);
 
 
 } } // namespace glbinding::aux

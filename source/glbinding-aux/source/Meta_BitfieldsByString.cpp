@@ -7,7 +7,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -315,4 +315,4 @@ const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_Bitfi
 } };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

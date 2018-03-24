@@ -33,13 +33,15 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
-    ${include_path}/callbacks.h
-
+    ${include_path}/ContextInfo.h
     ${include_path}/Meta.h
-    ${include_path}/Value.h
-    ${include_path}/Value.inl
+
+    ${include_path}/ValidVersions.h
 
     ${include_path}/logging.h
+
+    ${include_path}/types_to_string.h
+    ${include_path}/types_to_string.inl
 )
 
 # add featured headers
@@ -48,13 +50,7 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND headers ${featured_includes})
 
 set(sources
-    ${source_path}/callbacks_private.h
-    ${source_path}/callbacks.cpp
-    
-    ${source_path}/FunctionCall.cpp
-
-    ${source_path}/ProcAddress.cpp
-    ${source_path}/Value.cpp
+    ${source_path}/ContextInfo.cpp
 
     ${source_path}/Meta.cpp
     ${source_path}/Meta_Maps.h
@@ -74,7 +70,13 @@ set(sources
 
     ${source_path}/RingBuffer.h
     ${source_path}/RingBuffer.inl
+
+    ${source_path}/ValidVersions.cpp
+
     ${source_path}/logging.cpp
+    ${source_path}/logging_private.h
+
+    ${source_path}/types_to_string.cpp
 )
 
 

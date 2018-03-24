@@ -1,8 +1,6 @@
 
 #include <glbinding/AbstractValue.h>
 
-#include <sstream>
-
 
 namespace glbinding
 {

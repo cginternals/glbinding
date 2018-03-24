@@ -42,10 +42,24 @@ namespace glbinding
 
 
 template <typename T>
-GLBINDING_CONSTEXPR Value<T>::Value(const T & _value)
-: value(_value)
+GLBINDING_CONSTEXPR Value<T>::Value(const T & value)
+: m_value(value)
 {
 }
+
+template <typename T>
+GLBINDING_CONSTEXPR T Value<T>::value() const
+{
+    return m_value;
+}
+
+template <typename T>
+void Value<T>::printOn(std::ostream & stream) const
+{
+    static const auto output = std::string("No print specified");
+    stream << output;
+}
+
 
 template <typename Argument>
 std::unique_ptr<AbstractValue> createValue(const Argument & argument)

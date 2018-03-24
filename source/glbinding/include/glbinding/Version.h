@@ -207,7 +207,7 @@ public:
     *  @return
     *    The version as string, "-.-" iff the string is invalid
     */
-    GLBINDING_API std::string toString() const;
+    GLBINDING_API inline std::string toString() const;
 
     /**
     *  @brief
@@ -229,13 +229,6 @@ protected:
 
 
 } // namespace glbinding
-
-
-/**
-*  @brief
-*    The operator to allow Versions to be printed onto a std::ostream
-*/
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version);
 
 
 #include <glbinding/Version.inl>

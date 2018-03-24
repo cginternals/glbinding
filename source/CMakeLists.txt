@@ -18,7 +18,7 @@ add_subdirectory(codegeneration)
 # Libraries
 # add_subdirectory(khrbinding)
 add_subdirectory(glbinding)
-# add_subdirectory(glbinding-aux)
+add_subdirectory(glbinding-aux)
 # add_subdirectory(glesbinding)
 # add_subdirectory(glscbinding)
 # add_subdirectory(glxbinding)
@@ -27,16 +27,16 @@ add_subdirectory(glbinding)
 
 # Examples
 set(IDE_FOLDER "Examples")
-# add_subdirectory(examples)
+add_subdirectory(examples)
 
 # Examples
 set(IDE_FOLDER "Tools")
-# add_subdirectory(tools)
+add_subdirectory(tools)
 
 # Tests
 if(OPTION_BUILD_TESTS)
     set(IDE_FOLDER "Tests")
-#     add_subdirectory(tests)
+    add_subdirectory(tests)
 endif()
 
 

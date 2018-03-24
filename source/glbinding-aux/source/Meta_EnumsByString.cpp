@@ -7,7 +7,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -4846,4 +4846,4 @@ const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_EnumsBySt
 } };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

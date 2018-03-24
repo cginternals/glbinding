@@ -39,7 +39,7 @@ T RingBuffer<T>::nextHead(bool & available) const
     }
 
     available = true;
-    return m_buffer[nextHead];
+    return std::move(m_buffer[nextHead]);
 }
 
 template <typename T>
@@ -58,38 +58,11 @@ bool RingBuffer<T>::push(T && entry)
     if (m_buffer.size() <= head)
     {
         // This should never happen because m_buffer is reserving m_size
-        m_buffer.push_back(entry);
+        m_buffer.push_back(std::move(entry));
     }
     else
     {
-        m_buffer[head] = entry;
-    }
-
-    m_head.store(nextHead, std::memory_order_release);
-
-    return true;
-}
-
-template <typename T>
-bool RingBuffer<T>::push(T & entry)
-{
-    auto head = m_head.load(std::memory_order_relaxed);
-    auto nextHead = next(head);
-
-    if (isFull(nextHead))
-    {
-        return false;
-    }
-
-    assert(head < m_size);
-
-    if (m_buffer.size() <= head)
-    {
-        m_buffer.push_back(entry);
-    }
-    else
-    {
-        m_buffer[head] = entry;
+        m_buffer[head] = std::move(entry);
     }
 
     m_head.store(nextHead, std::memory_order_release);

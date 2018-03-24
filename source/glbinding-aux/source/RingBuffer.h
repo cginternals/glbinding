@@ -6,7 +6,7 @@
 #include <vector>
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -53,7 +53,7 @@ protected:
 };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux
 
 
 #include "RingBuffer.inl"

@@ -1,16 +1,15 @@
 
-#include <glbinding/ContextInfo.h>
+#include <glbinding-aux/ContextInfo.h>
 
 #include <sstream>
 #include <iostream>
 
-#include <glbinding/Meta.h>
 #include <glbinding/Version.h>
-
 #include <glbinding/gl/gl.h>
-
 #include <glbinding/Binding.h>
-#include <glbinding/Meta.h>
+
+#include <glbinding-aux/Meta.h>
+
 
 using namespace gl;
 
@@ -24,7 +23,7 @@ void insertExtension(
 ,   std::set<GLextension> * extensions
 ,   std::set<std::string> * unknownExtensionNames)
 {
-    const auto extension = glbinding::Meta::getExtension(extensionName);
+    const auto extension = glbinding::aux::Meta::getExtension(extensionName);
 
     if (GLextension::UNKNOWN != extension)
     {
@@ -42,7 +41,7 @@ void insertExtension(
 
 std::set<GLextension> extensions(std::set<std::string> * const unknown)
 {
-    const auto v = glbinding::ContextInfo::version();
+    const auto v = glbinding::aux::ContextInfo::version();
 
     if (v <= glbinding::Version(1, 0)) // OpenGL 1.0 doesn't support extensions
     {
@@ -142,8 +141,8 @@ bool supported(const glbinding::Version & version
     , std::set<gl::GLextension> * unsupportedExtensions
     , std::set<glbinding::AbstractFunction *> * unsupportedFunctions)
 {
-    const auto requiredExtensions = glbinding::Meta::extensions(version);
-    const auto requiredFunctions = glbinding::Meta::functions(version);
+    const auto requiredExtensions = glbinding::aux::Meta::extensions(version);
+    const auto requiredFunctions = glbinding::aux::Meta::functions(version);
 
     auto support = true;
 
@@ -156,7 +155,7 @@ bool supported(const glbinding::Version & version
 } // namespace
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 std::string ContextInfo::renderer()
@@ -209,11 +208,6 @@ std::set<GLextension> ContextInfo::extensions()
     return ::extensions(nullptr);
 }
 
-std::set<GLextension> ContextInfo::extensions(std::set<std::string> * unknown)
-{
-    return ::extensions(unknown);
-}
-
 std::set<GLextension> ContextInfo::extensions(std::set<std::string> & unknown)
 {
     return ::extensions(&unknown);
@@ -243,4 +237,4 @@ bool ContextInfo::supported(const Version & version
 }
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

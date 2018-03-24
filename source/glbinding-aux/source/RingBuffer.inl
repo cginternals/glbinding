@@ -7,7 +7,7 @@
 #include <cmath>
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -249,4 +249,4 @@ typename RingBuffer<T>::SizeType RingBuffer<T>::size(SizeType head, SizeType tai
 }
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

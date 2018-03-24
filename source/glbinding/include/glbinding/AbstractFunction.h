@@ -160,6 +160,15 @@ public:
     */
     void after(const FunctionCall & call) const;
 
+    /**
+    *  @brief
+    *    Triggers a call of the after callback, passing the parameters and return value
+    *
+    *  @param[in] call
+    *    The parameters and the return value of the current function call
+    */
+    void log(FunctionCall && call) const;
+
 
 protected:
     /**

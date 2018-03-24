@@ -7,7 +7,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -37,4 +37,4 @@ const std::map<Version, std::set<std::string>> Meta_FunctionStringsByVersion =
 };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

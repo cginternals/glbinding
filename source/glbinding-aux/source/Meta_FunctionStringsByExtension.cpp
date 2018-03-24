@@ -7,7 +7,7 @@
 using namespace gl;
 
 
-namespace glbinding
+namespace glbinding { namespace aux
 {
 
 
@@ -311,4 +311,4 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
 };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

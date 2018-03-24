@@ -83,6 +83,7 @@ target_link_libraries(${target}
     ${DEFAULT_LIBRARIES}
     glfw
     ${META_PROJECT_NAME}::glbinding
+    ${META_PROJECT_NAME}::glbinding-aux
     cpplocate::cpplocate
 )
 

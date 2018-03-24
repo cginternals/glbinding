@@ -22,10 +22,11 @@ enum class CallbackMask : unsigned char
     After       = 1 << 2, ///< Enables the after callbacks
     Parameters  = 1 << 3, ///< Enables the provision of parameter values in the before and after callbacks
     ReturnValue = 1 << 4, ///< Enables the provision of a return value in the after callback
-    Timestamp   = 1 << 5, ///< Enables the provision of the timestamp
+    Logging     = 1 << 5, ///< Enables logging
+    Timestamp   = 1 << 6, ///< Enables the provision of the timestamp
     ParametersAndReturnValue = Parameters | ReturnValue,
     BeforeAndAfter = Before | After,
-    All         = Unresolved | Before | After | Parameters | ReturnValue | Timestamp
+    All         = Unresolved | Before | After | Parameters | ReturnValue | Logging | Timestamp
 };
 
 /**

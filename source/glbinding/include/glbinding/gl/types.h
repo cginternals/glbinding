@@ -10,10 +10,6 @@
 #include <cstddef>
 #include <cstdint>
 #include <array>
-
-
-#include <functional>
-#include <ostream>
 #include <string>
 
 
@@ -123,17 +119,6 @@ struct hash<gl::GLextension>
 } // namespace std
 
 
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
-
-
-} // namespace gl
-
-
-
 namespace std
 {
 
@@ -155,16 +140,6 @@ namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLenum & value);
-
-
-} // namespace gl
-
-
-namespace gl
-{
-
-
 GLBINDING_CONSTEXPR inline GLenum operator+(const GLenum & a, const std::underlying_type<GLenum>::type b)
 {
     return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) + b);
@@ -179,14 +154,70 @@ GLBINDING_CONSTEXPR inline GLenum operator-(const GLenum & a, const std::underly
 } // namespace gl
 
 
-namespace gl{GLBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace gl
-
-
 namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLboolean & value);
+GLBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) == b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) != b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) < b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) > b;
+}
+
+GLBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b)
+{
+    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;
+}
+
+
+GLBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a == static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a != static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a < static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a <= static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a > static_cast<std::underlying_type<GLenum>::type>(b);
+}
+
+GLBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b)
+{
+    return a >= static_cast<std::underlying_type<GLenum>::type>(b);
+}
 
 
 } // namespace gl
@@ -208,16 +239,6 @@ struct hash<gl::AttribMask>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const AttribMask & value);
-
-
-} // namespace gl
 
 
 
@@ -282,16 +303,6 @@ struct hash<gl::BufferAccessMask>
 } // namespace std
 
 
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
-
-
-} // namespace gl
-
-
 
 namespace gl
 {
@@ -352,16 +363,6 @@ struct hash<gl::ClearBufferMask>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value);
-
-
-} // namespace gl
 
 
 
@@ -426,16 +427,6 @@ struct hash<gl::ClientAttribMask>
 } // namespace std
 
 
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const ClientAttribMask & value);
-
-
-} // namespace gl
-
-
 
 namespace gl
 {
@@ -498,16 +489,6 @@ struct hash<gl::ContextFlagMask>
 } // namespace std
 
 
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const ContextFlagMask & value);
-
-
-} // namespace gl
-
-
 
 namespace gl
 {
@@ -568,16 +549,6 @@ struct hash<gl::ContextProfileMask>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const ContextProfileMask & value);
-
-
-} // namespace gl
 
 
 
@@ -646,17 +617,6 @@ namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const FfdMaskSGIX & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_CONSTEXPR inline FfdMaskSGIX operator|(const FfdMaskSGIX & a, const FfdMaskSGIX & b)
 {
     return static_cast<FfdMaskSGIX>(static_cast<std::underlying_type<FfdMaskSGIX>::type>(a) | static_cast<std::underlying_type<FfdMaskSGIX>::type>(b));
@@ -712,16 +672,6 @@ struct hash<gl::FragmentShaderColorModMaskATI>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const FragmentShaderColorModMaskATI & value);
-
-
-} // namespace gl
 
 
 
@@ -784,16 +734,6 @@ struct hash<gl::FragmentShaderDestMaskATI>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestMaskATI & value);
-
-
-} // namespace gl
 
 
 
@@ -862,17 +802,6 @@ namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestModMaskATI & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_CONSTEXPR inline FragmentShaderDestModMaskATI operator|(const FragmentShaderDestModMaskATI & a, const FragmentShaderDestModMaskATI & b)
 {
     return static_cast<FragmentShaderDestModMaskATI>(static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(a) | static_cast<std::underlying_type<FragmentShaderDestModMaskATI>::type>(b));
@@ -928,16 +857,6 @@ struct hash<gl::MapBufferUsageMask>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const MapBufferUsageMask & value);
-
-
-} // namespace gl
 
 
 
@@ -1002,16 +921,6 @@ struct hash<gl::MemoryBarrierMask>
 } // namespace std
 
 
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const MemoryBarrierMask & value);
-
-
-} // namespace gl
-
-
 
 namespace gl
 {
@@ -1074,16 +983,6 @@ struct hash<gl::OcclusionQueryEventMaskAMD>
 } // namespace std
 
 
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value);
-
-
-} // namespace gl
-
-
 
 namespace gl
 {
@@ -1144,16 +1043,6 @@ struct hash<gl::PathFontStyle>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
-
-
-} // namespace gl
 
 
 
@@ -1222,17 +1111,6 @@ namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_CONSTEXPR inline PathMetricMask operator|(const PathMetricMask & a, const PathMetricMask & b)
 {
     return static_cast<PathMetricMask>(static_cast<std::underlying_type<PathMetricMask>::type>(a) | static_cast<std::underlying_type<PathMetricMask>::type>(b));
@@ -1288,16 +1166,6 @@ struct hash<gl::PathRenderingMaskNV>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value);
-
-
-} // namespace gl
 
 
 
@@ -1362,16 +1230,6 @@ struct hash<gl::PerformanceQueryCapsMaskINTEL>
 } // namespace std
 
 
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value);
-
-
-} // namespace gl
-
-
 
 namespace gl
 {
@@ -1432,16 +1290,6 @@ struct hash<gl::SyncObjectMask>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value);
-
-
-} // namespace gl
 
 
 
@@ -1510,17 +1358,6 @@ namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const TextureStorageMaskAMD & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_CONSTEXPR inline TextureStorageMaskAMD operator|(const TextureStorageMaskAMD & a, const TextureStorageMaskAMD & b)
 {
     return static_cast<TextureStorageMaskAMD>(static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(a) | static_cast<std::underlying_type<TextureStorageMaskAMD>::type>(b));
@@ -1576,16 +1413,6 @@ struct hash<gl::UseProgramStageMask>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const UseProgramStageMask & value);
-
-
-} // namespace gl
 
 
 
@@ -1654,17 +1481,6 @@ namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const VertexHintsMaskPGI & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_CONSTEXPR inline VertexHintsMaskPGI operator|(const VertexHintsMaskPGI & a, const VertexHintsMaskPGI & b)
 {
     return static_cast<VertexHintsMaskPGI>(static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(a) | static_cast<std::underlying_type<VertexHintsMaskPGI>::type>(b));
@@ -1726,17 +1542,6 @@ namespace gl
 {
 
 
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const UnusedMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_CONSTEXPR inline UnusedMask operator|(const UnusedMask & a, const UnusedMask & b)
 {
     return static_cast<UnusedMask>(static_cast<std::underlying_type<UnusedMask>::type>(a) | static_cast<std::underlying_type<UnusedMask>::type>(b));
@@ -1792,16 +1597,6 @@ struct hash<gl::BufferStorageMask>
 
 
 } // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
-
-
-} // namespace gl
 
 
 

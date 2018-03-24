@@ -3,13 +3,17 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 #include <glbinding/callbacks.h>
-#include <glbinding/logging.h>
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl.h>
+
+#include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/Meta.h>
+#include <glbinding-aux/types_to_string.h>
+#include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/logging.h>
 
 #include "../cubescape/CubeScape.h"
 
@@ -94,16 +98,18 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize(false); // only resolve functions that are actually used (lazy)
+    Binding::initialize([](const char * name) {
+        return glfwGetProcAddress(name);
+    }, false); // only resolve functions that are actually used (lazy)
 
     // Logging start
-    logging::start();
+    aux::start();
 
     // print some gl infos (query)
     std::cout << std::endl
-        << "OpenGL Version:  " << ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl;
+        << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl;
 
 
     std::cout << std::endl
@@ -125,7 +131,7 @@ int main(int, char *[])
     cubescape = nullptr;
 
     // Logging end
-    logging::stop();
+    aux::stop();
 
     glfwTerminate();
     return 0;

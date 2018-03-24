@@ -25,7 +25,6 @@ public:
 
     T nextHead(bool & available) const;
     bool push(T && entry);
-    bool push(T & entry);
 
     TailIdentifier addTail();
     void removeTail(TailIdentifier);

@@ -5,8 +5,8 @@
 #include <set>
 #include <string>
 
-#include <glbinding/glbinding_api.h>
-#include <glbinding/glbinding_features.h>
+#include <glbinding-aux/glbinding-aux_api.h>
+#include <glbinding-aux/glbinding-aux_features.h>
 
 
 namespace gl
@@ -23,12 +23,16 @@ class AbstractFunction;
 class Version;
 
 
+namespace aux
+{
+
+
 /**
  * @brief
  *   The ContextInfo class allows for access to metainformation about a context.
  *   The information is only valid for the currently active context
 */
-class GLBINDING_API ContextInfo
+class GLBINDING_AUX_API ContextInfo
 {
 public:
     /**
@@ -45,21 +49,6 @@ public:
     *    The list of available extensions known by glbinding
     */
     static std::set<gl::GLextension> extensions();
-
-    /**
-    *  @brief
-    *    Gathers information about the available extensions in the current context
-    *
-    *  @param[out] unknown (optional)
-    *    The list of extension names for available extensions not known by glbinding
-    *
-    *  @return
-    *    The list of available extensions known by glbinding
-    *
-    *  @deprecated
-    *    This method will be removed in future major releases
-    */
-    GLBINDING_DEPRECATED static std::set<gl::GLextension> extensions(std::set<std::string> * unknown);
 
     /**
     *  @brief
@@ -164,4 +153,4 @@ public:
 };
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux

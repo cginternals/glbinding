@@ -1,5 +1,5 @@
 
-#include <glbinding/Meta.h>
+#include <glbinding-aux/Meta.h>
 
 #include <glbinding/gl/bitfield.h>
 
@@ -11,18 +11,22 @@ using namespace gl;
 
 namespace
 {
-    const auto none = std::string{};
-}
 
 
-namespace glbinding
+const auto none = std::string{};
+
+
+} // namespace
+
+
+namespace glbinding { namespace aux
 {
 
 
 
-const std::string & Meta::getString(const AttribMask bitfield)
+const std::string & Meta::getString(const AttribMask glbitfield)
 {
-    const auto i = Meta_StringsByAttribMask.find(bitfield);
+    const auto i = Meta_StringsByAttribMask.find(glbitfield);
     if (i != Meta_StringsByAttribMask.end())
     {
         return i->second;
@@ -31,9 +35,9 @@ const std::string & Meta::getString(const AttribMask bitfield)
 }
 
 
-const std::string & Meta::getString(const BufferAccessMask bitfield)
+const std::string & Meta::getString(const BufferAccessMask glbitfield)
 {
-    const auto i = Meta_StringsByBufferAccessMask.find(bitfield);
+    const auto i = Meta_StringsByBufferAccessMask.find(glbitfield);
     if (i != Meta_StringsByBufferAccessMask.end())
     {
         return i->second;
@@ -42,9 +46,9 @@ const std::string & Meta::getString(const BufferAccessMask bitfield)
 }
 
 
-const std::string & Meta::getString(const BufferStorageMask bitfield)
+const std::string & Meta::getString(const BufferStorageMask glbitfield)
 {
-    const auto i = Meta_StringsByBufferStorageMask.find(bitfield);
+    const auto i = Meta_StringsByBufferStorageMask.find(glbitfield);
     if (i != Meta_StringsByBufferStorageMask.end())
     {
         return i->second;
@@ -53,9 +57,9 @@ const std::string & Meta::getString(const BufferStorageMask bitfield)
 }
 
 
-const std::string & Meta::getString(const ClearBufferMask bitfield)
+const std::string & Meta::getString(const ClearBufferMask glbitfield)
 {
-    const auto i = Meta_StringsByClearBufferMask.find(bitfield);
+    const auto i = Meta_StringsByClearBufferMask.find(glbitfield);
     if (i != Meta_StringsByClearBufferMask.end())
     {
         return i->second;
@@ -64,9 +68,9 @@ const std::string & Meta::getString(const ClearBufferMask bitfield)
 }
 
 
-const std::string & Meta::getString(const ClientAttribMask bitfield)
+const std::string & Meta::getString(const ClientAttribMask glbitfield)
 {
-    const auto i = Meta_StringsByClientAttribMask.find(bitfield);
+    const auto i = Meta_StringsByClientAttribMask.find(glbitfield);
     if (i != Meta_StringsByClientAttribMask.end())
     {
         return i->second;
@@ -75,9 +79,9 @@ const std::string & Meta::getString(const ClientAttribMask bitfield)
 }
 
 
-const std::string & Meta::getString(const ContextFlagMask bitfield)
+const std::string & Meta::getString(const ContextFlagMask glbitfield)
 {
-    const auto i = Meta_StringsByContextFlagMask.find(bitfield);
+    const auto i = Meta_StringsByContextFlagMask.find(glbitfield);
     if (i != Meta_StringsByContextFlagMask.end())
     {
         return i->second;
@@ -86,9 +90,9 @@ const std::string & Meta::getString(const ContextFlagMask bitfield)
 }
 
 
-const std::string & Meta::getString(const ContextProfileMask bitfield)
+const std::string & Meta::getString(const ContextProfileMask glbitfield)
 {
-    const auto i = Meta_StringsByContextProfileMask.find(bitfield);
+    const auto i = Meta_StringsByContextProfileMask.find(glbitfield);
     if (i != Meta_StringsByContextProfileMask.end())
     {
         return i->second;
@@ -97,9 +101,9 @@ const std::string & Meta::getString(const ContextProfileMask bitfield)
 }
 
 
-const std::string & Meta::getString(const FfdMaskSGIX bitfield)
+const std::string & Meta::getString(const FfdMaskSGIX glbitfield)
 {
-    const auto i = Meta_StringsByFfdMaskSGIX.find(bitfield);
+    const auto i = Meta_StringsByFfdMaskSGIX.find(glbitfield);
     if (i != Meta_StringsByFfdMaskSGIX.end())
     {
         return i->second;
@@ -108,9 +112,9 @@ const std::string & Meta::getString(const FfdMaskSGIX bitfield)
 }
 
 
-const std::string & Meta::getString(const FragmentShaderColorModMaskATI bitfield)
+const std::string & Meta::getString(const FragmentShaderColorModMaskATI glbitfield)
 {
-    const auto i = Meta_StringsByFragmentShaderColorModMaskATI.find(bitfield);
+    const auto i = Meta_StringsByFragmentShaderColorModMaskATI.find(glbitfield);
     if (i != Meta_StringsByFragmentShaderColorModMaskATI.end())
     {
         return i->second;
@@ -119,9 +123,9 @@ const std::string & Meta::getString(const FragmentShaderColorModMaskATI bitfield
 }
 
 
-const std::string & Meta::getString(const FragmentShaderDestMaskATI bitfield)
+const std::string & Meta::getString(const FragmentShaderDestMaskATI glbitfield)
 {
-    const auto i = Meta_StringsByFragmentShaderDestMaskATI.find(bitfield);
+    const auto i = Meta_StringsByFragmentShaderDestMaskATI.find(glbitfield);
     if (i != Meta_StringsByFragmentShaderDestMaskATI.end())
     {
         return i->second;
@@ -130,9 +134,9 @@ const std::string & Meta::getString(const FragmentShaderDestMaskATI bitfield)
 }
 
 
-const std::string & Meta::getString(const FragmentShaderDestModMaskATI bitfield)
+const std::string & Meta::getString(const FragmentShaderDestModMaskATI glbitfield)
 {
-    const auto i = Meta_StringsByFragmentShaderDestModMaskATI.find(bitfield);
+    const auto i = Meta_StringsByFragmentShaderDestModMaskATI.find(glbitfield);
     if (i != Meta_StringsByFragmentShaderDestModMaskATI.end())
     {
         return i->second;
@@ -141,9 +145,9 @@ const std::string & Meta::getString(const FragmentShaderDestModMaskATI bitfield)
 }
 
 
-const std::string & Meta::getString(const MapBufferUsageMask bitfield)
+const std::string & Meta::getString(const MapBufferUsageMask glbitfield)
 {
-    const auto i = Meta_StringsByMapBufferUsageMask.find(bitfield);
+    const auto i = Meta_StringsByMapBufferUsageMask.find(glbitfield);
     if (i != Meta_StringsByMapBufferUsageMask.end())
     {
         return i->second;
@@ -152,9 +156,9 @@ const std::string & Meta::getString(const MapBufferUsageMask bitfield)
 }
 
 
-const std::string & Meta::getString(const MemoryBarrierMask bitfield)
+const std::string & Meta::getString(const MemoryBarrierMask glbitfield)
 {
-    const auto i = Meta_StringsByMemoryBarrierMask.find(bitfield);
+    const auto i = Meta_StringsByMemoryBarrierMask.find(glbitfield);
     if (i != Meta_StringsByMemoryBarrierMask.end())
     {
         return i->second;
@@ -163,9 +167,9 @@ const std::string & Meta::getString(const MemoryBarrierMask bitfield)
 }
 
 
-const std::string & Meta::getString(const OcclusionQueryEventMaskAMD bitfield)
+const std::string & Meta::getString(const OcclusionQueryEventMaskAMD glbitfield)
 {
-    const auto i = Meta_StringsByOcclusionQueryEventMaskAMD.find(bitfield);
+    const auto i = Meta_StringsByOcclusionQueryEventMaskAMD.find(glbitfield);
     if (i != Meta_StringsByOcclusionQueryEventMaskAMD.end())
     {
         return i->second;
@@ -174,9 +178,9 @@ const std::string & Meta::getString(const OcclusionQueryEventMaskAMD bitfield)
 }
 
 
-const std::string & Meta::getString(const PathFontStyle bitfield)
+const std::string & Meta::getString(const PathFontStyle glbitfield)
 {
-    const auto i = Meta_StringsByPathFontStyle.find(bitfield);
+    const auto i = Meta_StringsByPathFontStyle.find(glbitfield);
     if (i != Meta_StringsByPathFontStyle.end())
     {
         return i->second;
@@ -185,9 +189,9 @@ const std::string & Meta::getString(const PathFontStyle bitfield)
 }
 
 
-const std::string & Meta::getString(const PathMetricMask bitfield)
+const std::string & Meta::getString(const PathMetricMask glbitfield)
 {
-    const auto i = Meta_StringsByPathMetricMask.find(bitfield);
+    const auto i = Meta_StringsByPathMetricMask.find(glbitfield);
     if (i != Meta_StringsByPathMetricMask.end())
     {
         return i->second;
@@ -196,9 +200,9 @@ const std::string & Meta::getString(const PathMetricMask bitfield)
 }
 
 
-const std::string & Meta::getString(const PathRenderingMaskNV bitfield)
+const std::string & Meta::getString(const PathRenderingMaskNV glbitfield)
 {
-    const auto i = Meta_StringsByPathRenderingMaskNV.find(bitfield);
+    const auto i = Meta_StringsByPathRenderingMaskNV.find(glbitfield);
     if (i != Meta_StringsByPathRenderingMaskNV.end())
     {
         return i->second;
@@ -207,9 +211,9 @@ const std::string & Meta::getString(const PathRenderingMaskNV bitfield)
 }
 
 
-const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL bitfield)
+const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL glbitfield)
 {
-    const auto i = Meta_StringsByPerformanceQueryCapsMaskINTEL.find(bitfield);
+    const auto i = Meta_StringsByPerformanceQueryCapsMaskINTEL.find(glbitfield);
     if (i != Meta_StringsByPerformanceQueryCapsMaskINTEL.end())
     {
         return i->second;
@@ -218,9 +222,9 @@ const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL bitfield
 }
 
 
-const std::string & Meta::getString(const SyncObjectMask bitfield)
+const std::string & Meta::getString(const SyncObjectMask glbitfield)
 {
-    const auto i = Meta_StringsBySyncObjectMask.find(bitfield);
+    const auto i = Meta_StringsBySyncObjectMask.find(glbitfield);
     if (i != Meta_StringsBySyncObjectMask.end())
     {
         return i->second;
@@ -229,9 +233,9 @@ const std::string & Meta::getString(const SyncObjectMask bitfield)
 }
 
 
-const std::string & Meta::getString(const TextureStorageMaskAMD bitfield)
+const std::string & Meta::getString(const TextureStorageMaskAMD glbitfield)
 {
-    const auto i = Meta_StringsByTextureStorageMaskAMD.find(bitfield);
+    const auto i = Meta_StringsByTextureStorageMaskAMD.find(glbitfield);
     if (i != Meta_StringsByTextureStorageMaskAMD.end())
     {
         return i->second;
@@ -240,9 +244,9 @@ const std::string & Meta::getString(const TextureStorageMaskAMD bitfield)
 }
 
 
-const std::string & Meta::getString(const UnusedMask bitfield)
+const std::string & Meta::getString(const UnusedMask glbitfield)
 {
-    const auto i = Meta_StringsByUnusedMask.find(bitfield);
+    const auto i = Meta_StringsByUnusedMask.find(glbitfield);
     if (i != Meta_StringsByUnusedMask.end())
     {
         return i->second;
@@ -251,9 +255,9 @@ const std::string & Meta::getString(const UnusedMask bitfield)
 }
 
 
-const std::string & Meta::getString(const UseProgramStageMask bitfield)
+const std::string & Meta::getString(const UseProgramStageMask glbitfield)
 {
-    const auto i = Meta_StringsByUseProgramStageMask.find(bitfield);
+    const auto i = Meta_StringsByUseProgramStageMask.find(glbitfield);
     if (i != Meta_StringsByUseProgramStageMask.end())
     {
         return i->second;
@@ -262,9 +266,9 @@ const std::string & Meta::getString(const UseProgramStageMask bitfield)
 }
 
 
-const std::string & Meta::getString(const VertexHintsMaskPGI bitfield)
+const std::string & Meta::getString(const VertexHintsMaskPGI glbitfield)
 {
-    const auto i = Meta_StringsByVertexHintsMaskPGI.find(bitfield);
+    const auto i = Meta_StringsByVertexHintsMaskPGI.find(glbitfield);
     if (i != Meta_StringsByVertexHintsMaskPGI.end())
     {
         return i->second;
@@ -273,5 +277,4 @@ const std::string & Meta::getString(const VertexHintsMaskPGI bitfield)
 }
 
 
-
-} // namespace glbinding
+} } // namespace glbinding::aux

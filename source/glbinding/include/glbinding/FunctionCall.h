@@ -45,29 +45,12 @@ public:
 
     /**
     *  @brief
-    *    Copy Constructor
-    *
-    *  @param[in] other
-    *    The FunctionCall to copy the memory from
-    *
-    *  Deleted assigment operator; no memory management for dynamically allocated memory implemented
-    */
-    FunctionCall(const FunctionCall & other) = delete;
-
-    /**
-    *  @brief
     *    Move Constructor
     *
     *  @param[in] other
     *    The FunctionCall to move the memory from
     */
     FunctionCall(FunctionCall && other);
-
-    /**
-    *  @brief
-    *    Deleted assigment operator; no memory management for dynamically allocated memory implemented
-    */
-    FunctionCall & operator=(const FunctionCall &) = delete;
 
     /**
     *  @brief

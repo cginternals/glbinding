@@ -216,5 +216,10 @@ void AbstractFunction::after(const FunctionCall & call) const
     glbinding::after(call);
 }
 
+void AbstractFunction::log(FunctionCall && call) const
+{
+    glbinding::log(std::move(call));
+}
+
 
 } // namespace glbinding

@@ -3,6 +3,7 @@
 
 
 #include <vector>
+#include <memory>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
@@ -46,9 +47,20 @@ public:
     */
     Value & operator=(const Value &) = delete;
 
+    /**
+    *  @brief
+    *    Get the value
+    *
+    *  @return
+    *    The value
+    */
+    GLBINDING_CONSTEXPR inline T value() const;
+
+    virtual void printOn(std::ostream & stream) const;
+
 
 protected:
-    const T value; ///< The value that should be printed later
+    const T m_value; ///< The value that should be printed later
 };
 
 

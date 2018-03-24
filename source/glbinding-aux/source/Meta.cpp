@@ -7,8 +7,10 @@
 #include <glbinding/gl/extension.h>
 
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/Version.h>
 #include <glbinding/Binding.h>
+#include <glbinding/Version.h>
+
+#include <glbinding-aux/ValidVersions.h>
 
 #include "glrevision.h"
 #include "Meta_Maps.h"
@@ -285,7 +287,7 @@ const Version & Meta::version(const GLextension extension)
 
 const std::set<Version> & Meta::versions()
 {
-    return Version::versions();
+    return ValidVersions::versions();
 }
 
 

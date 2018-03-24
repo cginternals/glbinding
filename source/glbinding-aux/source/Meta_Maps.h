@@ -19,6 +19,10 @@ namespace glbinding
 
 class Version;
 
+
+namespace aux
+{
+
 extern const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_ExtensionsByStringMaps;
 extern const std::unordered_map<gl::GLextension, Version> Meta_ReqVersionsByExtension;
 
@@ -58,4 +62,4 @@ extern const std::array<std::unordered_map<std::string, gl::GLenum>, 27> Meta_En
 extern const std::array<std::unordered_map<std::string, std::set<gl::GLextension>>, 27> Meta_ExtensionsByFunctionStringMaps;
 
 
-} // namespace glbinding
+} } // namespace glbinding::aux
