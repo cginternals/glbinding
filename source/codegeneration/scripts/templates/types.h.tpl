@@ -12,8 +12,6 @@
 #include <array>
 {{additionalTypeIncludes}}
 
-#include <functional>
-#include <ostream>
 #include <string>
 
 
@@ -42,18 +40,10 @@ namespace {{api}}
 {{#item}}{{>partials/types_hashable.h}}{{/item}}
 
 {{/item.integrations.hashable}}
-{{#item.integrations.streamable}}
-{{#item}}{{>partials/types_streamable.h}}{{/item}}
-
-{{/item.integrations.streamable}}
 {{#item.integrations.addable}}
 {{#item}}{{>partials/types_addable.h}}{{/item}}
 
 {{/item.integrations.addable}}
-{{#item.integrations.bitfieldStreamable}}
-{{#item}}{{>partials/types_bitfieldStreamable.h}}{{/item}}
-
-{{/item.integrations.bitfieldStreamable}}
 {{#item.integrations.bitOperatable}}
 {{#item}}{{>partials/types_bitOperatable.h}}{{/item}}
 

@@ -88,6 +88,7 @@ set(sources
     ${source_path}/RingBuffer.inl
 
     ${source_path}/ValidVersions.cpp
+    ${source_path}/ValidVersions_list.cpp
 
     ${source_path}/logging.cpp
     ${source_path}/logging_private.h

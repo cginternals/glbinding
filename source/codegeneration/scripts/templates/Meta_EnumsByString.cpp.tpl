@@ -7,7 +7,7 @@
 using namespace {{api}};
 
 
-namespace {{api}}binding
+namespace {{api}}binding { namespace aux
 {
 
 
@@ -33,4 +33,4 @@ const std::array<std::unordered_map<std::string, {{api}}::GLenum>, {{enumsByInit
 } };
 
 
-} // namespace {{api}}binding
+} } // namespace {{api}}binding::aux

@@ -7,7 +7,7 @@
 using namespace {{api}};
 
 
-namespace {{api}}binding
+namespace {{api}}binding { namespace aux
 {
 
 
@@ -18,4 +18,4 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
 };
 
 
-} // namespace {{api}}binding
+} } // namespace {{api}}binding::aux

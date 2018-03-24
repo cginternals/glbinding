@@ -358,6 +358,8 @@ using gl::glDrawRangeElementsEXT;
 using gl::glDrawTextureNV;
 using gl::glDrawTransformFeedbackNV;
 using gl::glDrawVkImageNV;
+using gl::glEGLImageTargetTexStorageEXT;
+using gl::glEGLImageTargetTextureStorageEXT;
 using gl::glEdgeFlagFormatNV;
 using gl::glEdgeFlagPointerEXT;
 using gl::glEdgeFlagPointerListIBM;

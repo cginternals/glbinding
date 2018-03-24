@@ -425,6 +425,8 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
 
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_E =
 {
+    { "glEGLImageTargetTexStorageEXT", { GLextension::GL_EXT_EGL_image_storage } },
+    { "glEGLImageTargetTextureStorageEXT", { GLextension::GL_EXT_EGL_image_storage } },
     { "glEdgeFlagFormatNV", { GLextension::GL_NV_vertex_buffer_unified_memory } },
     { "glEdgeFlagPointerEXT", { GLextension::GL_EXT_vertex_array } },
     { "glEdgeFlagPointerListIBM", { GLextension::GL_IBM_vertex_array_lists } },

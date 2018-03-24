@@ -457,7 +457,7 @@ GLBINDING_API void glDepthBoundsEXT(GLclampd zmin, GLclampd zmax);
 GLBINDING_API void glDepthBoundsdNV(GLdouble zmin, GLdouble zmax);
 GLBINDING_API void glDepthFunc(GLenum func);
 GLBINDING_API void glDepthMask(GLboolean flag);
-GLBINDING_API void glDepthRange(GLdouble near_, GLdouble far_);
+GLBINDING_API void glDepthRange(GLdouble n, GLdouble f);
 GLBINDING_API void glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v);
 GLBINDING_API void glDepthRangeIndexed(GLuint index, GLdouble n, GLdouble f);
 GLBINDING_API void glDepthRangedNV(GLdouble zNear, GLdouble zFar);
@@ -524,6 +524,8 @@ GLBINDING_API void glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint 
 GLBINDING_API void glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei instancecount);
 GLBINDING_API void glDrawVkImageNV(GLuint64 vkImage, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
 
+GLBINDING_API void glEGLImageTargetTexStorageEXT(GLenum target, GLeglImageOES image, const GLint * attrib_list);
+GLBINDING_API void glEGLImageTargetTextureStorageEXT(GLuint texture, GLeglImageOES image, const GLint * attrib_list);
 GLBINDING_API void glEdgeFlag(GLboolean flag);
 GLBINDING_API void glEdgeFlagFormatNV(GLsizei stride);
 GLBINDING_API void glEdgeFlagPointer(GLsizei stride, const void * pointer);

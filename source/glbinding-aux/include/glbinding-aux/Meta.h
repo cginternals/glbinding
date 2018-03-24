@@ -58,7 +58,7 @@ public:
     *  @return
     *    The symbol identified through the bitfield string, 0 if failed
     */
-    static gl::GLbitfield getBitfield(const std::string & glbitfield);
+    static gl::GLbitfield getBitfield(const std::string & bitfield);
     
     /**
     *  @brief

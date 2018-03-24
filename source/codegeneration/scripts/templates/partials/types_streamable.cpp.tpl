@@ -4,7 +4,7 @@ namespace {{api}}
 
 std::ostream & operator<<(std::ostream & stream, const {{identifier}} & value)
 {
-    stream << {{api}}binding::Meta::getString(value);
+    stream << {{api}}binding::aux::Meta::getString(value);
     return stream;
 }
 

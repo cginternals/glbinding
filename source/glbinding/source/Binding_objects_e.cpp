@@ -9,6 +9,8 @@ namespace glbinding
 {
 
 
+Function<void, GLenum, GLeglImageOES, const GLint *> Binding::EGLImageTargetTexStorageEXT("glEGLImageTargetTexStorageEXT");
+Function<void, GLuint, GLeglImageOES, const GLint *> Binding::EGLImageTargetTextureStorageEXT("glEGLImageTargetTextureStorageEXT");
 Function<void, GLboolean> Binding::EdgeFlag("glEdgeFlag");
 Function<void, GLsizei> Binding::EdgeFlagFormatNV("glEdgeFlagFormatNV");
 Function<void, GLsizei, const void *> Binding::EdgeFlagPointer("glEdgeFlagPointer");

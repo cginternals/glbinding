@@ -269,6 +269,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_D{};
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E =
 {
     { "GL_EXT_422_pixels", GLextension::GL_EXT_422_pixels },
+    { "GL_EXT_EGL_image_storage", GLextension::GL_EXT_EGL_image_storage },
     { "GL_EXT_abgr", GLextension::GL_EXT_abgr },
     { "GL_EXT_bgra", GLextension::GL_EXT_bgra },
     { "GL_EXT_bindable_uniform", GLextension::GL_EXT_bindable_uniform },
@@ -409,6 +410,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_I =
     { "GL_INGR_blend_func_separate", GLextension::GL_INGR_blend_func_separate },
     { "GL_INGR_color_clamp", GLextension::GL_INGR_color_clamp },
     { "GL_INGR_interlace_read", GLextension::GL_INGR_interlace_read },
+    { "GL_INTEL_blackhole_render", GLextension::GL_INTEL_blackhole_render },
     { "GL_INTEL_conservative_rasterization", GLextension::GL_INTEL_conservative_rasterization },
     { "GL_INTEL_fragment_shader_ordering", GLextension::GL_INTEL_fragment_shader_ordering },
     { "GL_INTEL_framebuffer_CMAA", GLextension::GL_INTEL_framebuffer_CMAA },

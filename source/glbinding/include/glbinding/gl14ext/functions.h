@@ -435,6 +435,8 @@ using gl::glDrawTransformFeedbackNV;
 using gl::glDrawTransformFeedbackStream;
 using gl::glDrawTransformFeedbackStreamInstanced;
 using gl::glDrawVkImageNV;
+using gl::glEGLImageTargetTexStorageEXT;
+using gl::glEGLImageTargetTextureStorageEXT;
 using gl::glEdgeFlagFormatNV;
 using gl::glEdgeFlagPointerEXT;
 using gl::glEdgeFlagPointerListIBM;

@@ -29,7 +29,7 @@ namespace glbinding
 class GLBINDING_API Binding
 {
 public:
-    using array_t               = std::array<AbstractFunction *, 2924>; ///< The type of the build-in functions collection
+    using array_t               = std::array<AbstractFunction *, 2926>; ///< The type of the build-in functions collection
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
 
     /**
@@ -87,18 +87,18 @@ public:
 
     /**
     *  @brief
-    *    Resolves the funtion pointers of all registered OpenGL functions immediately for the current context
-    */
-    static void resolveFunctions();
-
-    /**
-    *  @brief
     *    Resolve a single function pointer by given name
     *
     *  @param[in] name
     *    The name of the function
     */
     static ProcAddress resolveFunction(const char * name);
+    
+    /**
+    *  @brief
+    *    Resolves the funtion pointers of all registered OpenGL functions immediately for the current context
+    */
+    static void resolveFunctions();
     
     /**
     *  @brief
@@ -677,6 +677,8 @@ public:
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint> DrawTransformFeedbackStream; ///< Wrapper for glDrawTransformFeedbackStream
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLsizei> DrawTransformFeedbackStreamInstanced; ///< Wrapper for glDrawTransformFeedbackStreamInstanced
     static Function<void, gl::GLuint64, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> DrawVkImageNV; ///< Wrapper for glDrawVkImageNV
+    static Function<void, gl::GLenum, gl::GLeglImageOES, const gl::GLint *> EGLImageTargetTexStorageEXT; ///< Wrapper for glEGLImageTargetTexStorageEXT
+    static Function<void, gl::GLuint, gl::GLeglImageOES, const gl::GLint *> EGLImageTargetTextureStorageEXT; ///< Wrapper for glEGLImageTargetTextureStorageEXT
     static Function<void, gl::GLboolean> EdgeFlag; ///< Wrapper for glEdgeFlag
     static Function<void, gl::GLsizei> EdgeFlagFormatNV; ///< Wrapper for glEdgeFlagFormatNV
     static Function<void, gl::GLsizei, const void *> EdgeFlagPointer; ///< Wrapper for glEdgeFlagPointer

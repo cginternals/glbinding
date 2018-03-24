@@ -7,7 +7,7 @@
 using namespace {{api}};
 
 
-namespace {{api}}binding
+namespace {{api}}binding { namespace aux
 {
 
 
@@ -19,4 +19,4 @@ const std::unordered_map<std::string, GLboolean> Meta_BooleansByString =
 };
 
 
-} // namespace {{api}}binding
+} } // namespace {{api}}binding::aux

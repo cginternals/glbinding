@@ -19,6 +19,11 @@ namespace {{api}}binding
 
 class Version;
 
+
+namespace aux
+{
+
+
 extern const std::array<std::unordered_map<std::string, {{api}}::GLextension>, 27> Meta_ExtensionsByStringMaps;
 extern const std::unordered_map<{{api}}::GLextension, Version> Meta_ReqVersionsByExtension;
 
@@ -38,4 +43,4 @@ extern const std::array<std::unordered_map<std::string, {{api}}::GLenum>, 27> Me
 extern const std::array<std::unordered_map<std::string, std::set<{{api}}::GLextension>>, 27> Meta_ExtensionsByFunctionStringMaps;
 
 
-} // namespace {{api}}binding
+} } // namespace {{api}}binding::aux

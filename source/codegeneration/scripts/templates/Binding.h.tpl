@@ -31,7 +31,6 @@ class {{ucapi}}BINDING_API Binding
 public:
     using array_t               = std::array<AbstractFunction *, {{functions.count}}>; ///< The type of the build-in functions collection
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
-    using GetProcAddress        = std::function<void*(const char*)>;    ///< The signature for the getProcAddress function
 
     /**
     *  @brief
@@ -86,6 +85,15 @@ public:
     */
     static void registerAdditionalFunction(AbstractFunction * function);
 
+    /**
+    *  @brief
+    *    Resolve a single function pointer by given name
+    *
+    *  @param[in] name
+    *    The name of the function
+    */
+    static ProcAddress resolveFunction(const char * name);
+    
     /**
     *  @brief
     *    Resolves the funtion pointers of all registered OpenGL functions immediately for the current context

@@ -23,6 +23,7 @@ class Version;
 namespace aux
 {
 
+
 extern const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Meta_ExtensionsByStringMaps;
 extern const std::unordered_map<gl::GLextension, Version> Meta_ReqVersionsByExtension;
 

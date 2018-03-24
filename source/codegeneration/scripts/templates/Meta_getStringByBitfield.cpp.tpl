@@ -1,5 +1,5 @@
 
-#include <{{api}}binding/Meta.h>
+#include <{{api}}binding-aux/Meta.h>
 
 #include <{{api}}binding/{{api}}/bitfield.h>
 
@@ -11,11 +11,15 @@ using namespace {{api}};
 
 namespace
 {
-    const auto none = std::string{};
-}
 
 
-namespace {{api}}binding
+const auto none = std::string{};
+
+
+} // namespace
+
+
+namespace {{api}}binding { namespace aux
 {
 
 
@@ -33,5 +37,4 @@ const std::string & Meta::getString(const {{item}} bitfield)
 
 {{/bitfieldGroups.items}}
 
-
-} // namespace {{api}}binding
+} } // namespace {{api}}binding::aux

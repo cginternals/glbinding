@@ -8,8 +8,8 @@
 #include <set>
 #include <cstdint>
 
-#include <{{api}}binding/{{api}}binding_api.h>
-#include <{{api}}binding/{{api}}binding_features.h>
+#include <{{api}}binding-aux/{{api}}binding-aux_api.h>
+#include <{{api}}binding-aux/{{api}}binding-aux_features.h>
 
 #include <{{api}}binding/{{api}}/types.h>
 
@@ -22,11 +22,15 @@ class AbstractFunction;
 class Version;
 
 
+namespace aux
+{
+
+
 /**
 *  @brief
 *    Provisioning of meta information about OpenGL extensions, functions and conversion of strings and symbols of the OpenGL API
 */
-class {{ucapi}}BINDING_API Meta
+class {{ucapi}}BINDING_AUX_API Meta
 {
 public:
     /**
@@ -268,4 +272,4 @@ private:
 };
 
 
-} // namespace {{api}}binding
+} } // namespace {{api}}binding::aux

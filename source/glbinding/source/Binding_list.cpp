@@ -518,6 +518,8 @@ const Binding::array_t Binding::s_functions =
     &DrawTransformFeedbackStream,
     &DrawTransformFeedbackStreamInstanced,
     &DrawVkImageNV,
+    &EGLImageTargetTexStorageEXT,
+    &EGLImageTargetTextureStorageEXT,
     &EdgeFlag,
     &EdgeFlagFormatNV,
     &EdgeFlagPointer,

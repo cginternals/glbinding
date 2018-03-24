@@ -7,7 +7,7 @@
 using namespace {{api}};
 
 
-namespace {{api}}binding
+namespace {{api}}binding { namespace aux
 {
 
 
@@ -20,4 +20,4 @@ const std::map<Version, std::set<std::string>> Meta_FunctionStringsByVersion =
 };
 
 
-} // namespace {{api}}binding
+} } // namespace {{api}}binding::aux

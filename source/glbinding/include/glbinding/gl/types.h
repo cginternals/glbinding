@@ -10,6 +10,8 @@
 #include <cstddef>
 #include <cstdint>
 #include <array>
+
+
 #include <string>
 
 
@@ -154,74 +156,7 @@ GLBINDING_CONSTEXPR inline GLenum operator-(const GLenum & a, const std::underly
 } // namespace gl
 
 
-namespace gl
-{
-
-
-GLBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) == b;
-}
-
-GLBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) != b;
-}
-
-GLBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) < b;
-}
-
-GLBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;
-}
-
-GLBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) > b;
-}
-
-GLBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b)
-{
-    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;
-}
-
-
-GLBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a == static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a != static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a < static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a <= static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a > static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-GLBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b)
-{
-    return a >= static_cast<std::underlying_type<GLenum>::type>(b);
-}
-
-
-} // namespace gl
-
+namespace gl{GLBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace gl
 
 
 namespace std
@@ -239,7 +174,6 @@ struct hash<gl::AttribMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -286,6 +220,7 @@ inline AttribMask & operator^=(AttribMask & a, const AttribMask & b)
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -301,7 +236,6 @@ struct hash<gl::BufferAccessMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -348,6 +282,7 @@ inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMas
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -363,7 +298,6 @@ struct hash<gl::ClearBufferMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -410,6 +344,7 @@ inline ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask &
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -425,7 +360,6 @@ struct hash<gl::ClientAttribMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -472,6 +406,7 @@ inline ClientAttribMask & operator^=(ClientAttribMask & a, const ClientAttribMas
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -487,7 +422,6 @@ struct hash<gl::ContextFlagMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -534,6 +468,7 @@ inline ContextFlagMask & operator^=(ContextFlagMask & a, const ContextFlagMask &
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -549,7 +484,6 @@ struct hash<gl::ContextProfileMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -594,6 +528,7 @@ inline ContextProfileMask & operator^=(ContextProfileMask & a, const ContextProf
 
 
 } // namespace gl
+
 
 
 namespace std
@@ -657,6 +592,7 @@ inline FfdMaskSGIX & operator^=(FfdMaskSGIX & a, const FfdMaskSGIX & b)
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -672,7 +608,6 @@ struct hash<gl::FragmentShaderColorModMaskATI>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -719,6 +654,7 @@ inline FragmentShaderColorModMaskATI & operator^=(FragmentShaderColorModMaskATI 
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -734,7 +670,6 @@ struct hash<gl::FragmentShaderDestMaskATI>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -779,6 +714,7 @@ inline FragmentShaderDestMaskATI & operator^=(FragmentShaderDestMaskATI & a, con
 
 
 } // namespace gl
+
 
 
 namespace std
@@ -842,6 +778,7 @@ inline FragmentShaderDestModMaskATI & operator^=(FragmentShaderDestModMaskATI & 
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -857,7 +794,6 @@ struct hash<gl::MapBufferUsageMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -904,6 +840,7 @@ inline MapBufferUsageMask & operator^=(MapBufferUsageMask & a, const MapBufferUs
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -919,7 +856,6 @@ struct hash<gl::MemoryBarrierMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -966,6 +902,7 @@ inline MemoryBarrierMask & operator^=(MemoryBarrierMask & a, const MemoryBarrier
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -981,7 +918,6 @@ struct hash<gl::OcclusionQueryEventMaskAMD>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -1028,6 +964,7 @@ inline OcclusionQueryEventMaskAMD & operator^=(OcclusionQueryEventMaskAMD & a, c
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -1043,7 +980,6 @@ struct hash<gl::PathFontStyle>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -1088,6 +1024,7 @@ inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
 
 
 } // namespace gl
+
 
 
 namespace std
@@ -1151,6 +1088,7 @@ inline PathMetricMask & operator^=(PathMetricMask & a, const PathMetricMask & b)
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -1166,7 +1104,6 @@ struct hash<gl::PathRenderingMaskNV>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -1213,6 +1150,7 @@ inline PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRende
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -1228,7 +1166,6 @@ struct hash<gl::PerformanceQueryCapsMaskINTEL>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -1275,6 +1212,7 @@ inline PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL 
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -1290,7 +1228,6 @@ struct hash<gl::SyncObjectMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -1335,6 +1272,7 @@ inline SyncObjectMask & operator^=(SyncObjectMask & a, const SyncObjectMask & b)
 
 
 } // namespace gl
+
 
 
 namespace std
@@ -1398,6 +1336,7 @@ inline TextureStorageMaskAMD & operator^=(TextureStorageMaskAMD & a, const Textu
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -1413,7 +1352,6 @@ struct hash<gl::UseProgramStageMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -1458,6 +1396,7 @@ inline UseProgramStageMask & operator^=(UseProgramStageMask & a, const UseProgra
 
 
 } // namespace gl
+
 
 
 namespace std
@@ -1521,6 +1460,7 @@ inline VertexHintsMaskPGI & operator^=(VertexHintsMaskPGI & a, const VertexHints
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -1582,6 +1522,7 @@ inline UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b)
 } // namespace gl
 
 
+
 namespace std
 {
 
@@ -1597,7 +1538,6 @@ struct hash<gl::BufferStorageMask>
 
 
 } // namespace std
-
 
 
 namespace gl
@@ -1642,4 +1582,5 @@ inline BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorage
 
 
 } // namespace gl
+
 

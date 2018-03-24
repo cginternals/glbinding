@@ -159,7 +159,7 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
     includedir_aux = pjoin(targetdir+"-aux", "include/{api}binding-aux/")
     sourcedir  = pjoin(targetdir, "source/")
     sourcedir_api  = pjoin(sourcedir, "{api}/")
-    sourcedir_aux  = pjoin(targetdir+"aux", "source/")
+    sourcedir_aux  = pjoin(targetdir+"-aux", "source/")
     testdir    = pjoin(targetdir, "../tests/{api}binding-test/")
 
     context = Context(api, revision, features, extensions, enums, bitfGroups, types, commands)

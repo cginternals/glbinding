@@ -4,12 +4,16 @@ from classes.Type import *
 
 
 REGULAR_TYPE_INTEGRATIONS = {
-    "GLextension" : [ "hashable", "streamable" ],
-    "GLboolean"   : [ "streamable" ],
-    "GLenum"      : [ "hashable", "streamable", "addable", "comparable" ]
+    "GLextension" : [ "hashable", "streamable", "valueRepresentable" ],
+    "GLboolean"   : [ "streamable", "valueRepresentable" ],
+    "GLenum"      : [ "hashable", "streamable", "addable", "comparable", "valueRepresentable" ],
+    "GLbitfield": [],
+    "GLvoid"      : [],
+    "_cl_context": [],
+    "_cl_event": []
 }
-BITFIELD_TYPE_INTEGRATIONS = [ "hashable", "bitfieldStreamable", "bitOperatable"]
-TYPE_INTEGRATIONS = [ "addable", "bitOperatable", "bitfieldStreamable", "comparable", "hashable", "streamable"]
+BITFIELD_TYPE_INTEGRATIONS = [ "hashable", "bitfieldStreamable", "bitOperatable", "valueRepresentable" ]
+TYPE_INTEGRATIONS = [ "addable", "bitOperatable", "bitfieldStreamable", "comparable", "hashable", "streamable", "valueRepresentable" ]
 
 
 def integrationMap(integrationList):
@@ -17,7 +21,7 @@ def integrationMap(integrationList):
 
 
 def typeIntegrationMap(type):
-    return integrationMap(REGULAR_TYPE_INTEGRATIONS[type.name] if type.name in REGULAR_TYPE_INTEGRATIONS else [])
+    return integrationMap(REGULAR_TYPE_INTEGRATIONS[type.name] if type.name in REGULAR_TYPE_INTEGRATIONS else ["valueRepresentable"])
 
 
 # ToDo: move this to Type class? (as well as convert an multiline convert)
@@ -62,7 +66,7 @@ def convertType(type):
 def genTypeContexts(types, bitfGroups):
     typeContexts = [{"identifier": "GLextension",
                      "definition": "enum class GLextension : int;",
-                     "integrations": integrationMap([ "hashable", "streamable" ]),
+                     "integrations": integrationMap([ "hashable", "streamable", "valueRepresentable" ]),
                      "hasIntegrations": True}]
     for type in types: #TODO-LW: explicitly sort types and bitfGroups
         integrations = typeIntegrationMap(type)
