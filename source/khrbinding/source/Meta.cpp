@@ -1,16 +1,16 @@
 
-#include <glbinding/Meta.h>
+#include <khrbinding/Meta.h>
 
-#include <glbinding/gl/bitfield.h>
-#include <glbinding/gl/boolean.h>
-#include <glbinding/gl/enum.h>
-#include <glbinding/gl/extension.h>
+#include <khrbinding/gl/bitfield.h>
+#include <khrbinding/gl/boolean.h>
+#include <khrbinding/gl/enum.h>
+#include <khrbinding/gl/extension.h>
 
 // ToDo: multiple APIs
 
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/Version.h>
-#include <glbinding/Binding.h>
+#include <khrbinding/AbstractFunction.h>
+#include <khrbinding/Version.h>
+#include <khrbinding/Binding.h>
 
 #include "glrevision.h"
 #include "Meta_Maps.h"
@@ -23,7 +23,7 @@ namespace
 
 
 static const auto none = std::string{};
-static const auto noneVersion = glbinding::Version{};
+static const auto noneVersion = khrbinding::Version{};
 static const auto noneStringSet = std::set<std::string>{};
 static const auto noneExtensions = std::set<gl::GLextension>{};
 
@@ -31,7 +31,7 @@ static const auto noneExtensions = std::set<gl::GLextension>{};
 } // namespace
 
 
-namespace glbinding
+namespace khrbinding
 {
 
 
@@ -291,4 +291,4 @@ const std::set<Version> & Meta::versions()
 }
 
 
-} // namespace glbinding
+} // namespace khrbinding

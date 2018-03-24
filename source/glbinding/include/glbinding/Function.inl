@@ -4,10 +4,9 @@
 
 #include <utility>
 #include <functional>
-#include <memory>
 
-#include <glbinding/logging.h>
 #include <glbinding/Value.h>
+#include <glbinding/gl/boolean.h>
 
 
 namespace
@@ -41,16 +40,16 @@ struct FunctionHelper
 {
     inline static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments)
     {
-        std::unique_ptr<glbinding::FunctionCall> functionCall{new glbinding::FunctionCall(function)};
+        glbinding::FunctionCall functionCall(function);
 
-        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters | glbinding::CallbackMask::Logging))
+        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters))
         {
-            functionCall->parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
+            functionCall.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
         }
 
         if (function->isEnabled(glbinding::CallbackMask::Before))
         {
-            function->before(*functionCall);
+            function->before(functionCall);
 
             if (function->beforeCallback())
             {
@@ -60,24 +59,19 @@ struct FunctionHelper
 
         auto value = BasicCallHelper<ReturnType, Arguments ...>::call(function, std::forward<Arguments>(arguments)...);
 
-        if (function->isAnyEnabled(glbinding::CallbackMask::ReturnValue | glbinding::CallbackMask::Logging))
+        if (function->isAnyEnabled(glbinding::CallbackMask::ReturnValue))
         {
-            functionCall->returnValue = glbinding::createValue(value);
+            functionCall.returnValue = glbinding::createValue(value);
         }
 
         if (function->isEnabled(glbinding::CallbackMask::After))
         {
-            function->after(*functionCall);
+            function->after(functionCall);
 
             if (function->afterCallback())
             {
                 function->afterCallback()(value, std::forward<Arguments>(arguments)...);
             }
-        }
-
-        if(function->isEnabled(glbinding::CallbackMask::Logging))
-        {
-            glbinding::logging::log(functionCall.release());
         }
 
         return value;
@@ -90,16 +84,16 @@ struct FunctionHelper<void, Arguments...>
 {
     inline static void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments)
     {
-        std::unique_ptr<glbinding::FunctionCall> functionCall(new glbinding::FunctionCall(function));
+        glbinding::FunctionCall functionCall(function);
 
-        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters | glbinding::CallbackMask::Logging))
+        if (function->isAnyEnabled(glbinding::CallbackMask::Parameters))
         {
-            functionCall->parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
+            functionCall.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
         }
 
         if (function->isEnabled(glbinding::CallbackMask::Before))
         {
-            function->before(*functionCall);
+            function->before(functionCall);
 
             if (function->beforeCallback())
             {
@@ -111,17 +105,12 @@ struct FunctionHelper<void, Arguments...>
 
         if (function->isEnabled(glbinding::CallbackMask::After))
         {
-            function->after(*functionCall);
+            function->after(functionCall);
 
             if (function->afterCallback())
             {
                 function->afterCallback()(std::forward<Arguments>(arguments)...);
             }
-        }
-
-        if (function->isEnabled(glbinding::CallbackMask::Logging))
-        {
-            glbinding::logging::log(functionCall.release());
         }
     }
 };
@@ -163,7 +152,7 @@ ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) con
         return ReturnType();
     }
 
-    if (isAnyEnabled(CallbackMask::Before | CallbackMask::After | CallbackMask::Logging))
+    if (isAnyEnabled(CallbackMask::Before | CallbackMask::After))
     {
         return FunctionHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
     }

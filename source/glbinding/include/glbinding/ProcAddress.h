@@ -2,6 +2,8 @@
 #pragma once
 
 
+#include <functional>
+
 #include <glbinding/glbinding_api.h>
 
 
@@ -17,18 +19,9 @@ using ProcAddress = void(*)();
 
 /**
 *  @brief
-*    Loads the function pointer of an OpenGL function and returns it
-*
-*  @param[in] name
-*    The name of the OpenGL function, including the 'gl' prefix
-*
-*  @return
-*    The function pointer
-*
-*  @remarks
-*    This function doesn't cache previously loaded function pointers
+*    The signature for the getProcAddress function
 */
-GLBINDING_API ProcAddress getProcAddress(const char * name);
+using GetProcAddress = std::function<ProcAddress(const char*)>;
 
 
 } // namespace glbinding

@@ -2,12 +2,12 @@
 #pragma once
 
 
-#include <glbinding/glbinding_api.h>
+#include <khrbinding/khrbinding_api.h>
 
-#include <glbinding/callbacks.h>
+#include <khrbinding/callbacks.h>
 
 
-namespace glbinding 
+namespace khrbinding 
 {
 
 
@@ -29,7 +29,7 @@ using LogEntry = FunctionCall*;
 *  @param[in] newSize
 *    The new size of the buffer
 */
-GLBINDING_API void resize(unsigned int newSize);
+KHRBINDING_API void resize(unsigned int newSize);
 
 /**
 *  @brief
@@ -38,7 +38,7 @@ GLBINDING_API void resize(unsigned int newSize);
 *  @remarks
 *    This function generates a file name and uses this as output
 */
-GLBINDING_API void start();
+KHRBINDING_API void start();
 
 /**
 *  @brief
@@ -47,7 +47,7 @@ GLBINDING_API void start();
 *  @param[in] filepath
 *    The file to store the log into
 */
-GLBINDING_API void start(const std::string & filepath);
+KHRBINDING_API void start(const std::string & filepath);
 
 /**
 *  @brief
@@ -59,7 +59,7 @@ GLBINDING_API void start(const std::string & filepath);
 *  @remarks
 *    This function generates a file name and uses this as output
 */
-GLBINDING_API void startExcept(const std::set<std::string> & blackList);
+KHRBINDING_API void startExcept(const std::set<std::string> & blackList);
 
 /**
 *  @brief
@@ -70,13 +70,13 @@ GLBINDING_API void startExcept(const std::set<std::string> & blackList);
 *  @param[in] blackList
 *    The blacklist of function names
 */
-GLBINDING_API void startExcept(const std::string & filepath, const std::set<std::string> & blackList);
+KHRBINDING_API void startExcept(const std::string & filepath, const std::set<std::string> & blackList);
 
 /**
 *  @brief
 *    Stops logging and flushing log file
 */
-GLBINDING_API void stop();
+KHRBINDING_API void stop();
 
 /**
 *  @brief
@@ -85,25 +85,25 @@ GLBINDING_API void stop();
 *  @remarks
 *    While logging is started but paused, no OpenGL function calls are considered for the log file
 */
-GLBINDING_API void pause();
+KHRBINDING_API void pause();
 
 /**
 *  @brief
 *    Resumes paused logging
 */
-GLBINDING_API void resume();
+KHRBINDING_API void resume();
 
 /**
 *  @brief
 *    Add a function call to the log
 *
 *  @remarks
-*    This function is intended to get used by glbinding and not by a user of glbinding
+*    This function is intended to get used by khrbinding and not by a user of khrbinding
 */
-GLBINDING_API void log(LogEntry call);
+KHRBINDING_API void log(LogEntry call);
 
 
 } // namespace logging
 
 
-} // namespace glbinding
+} // namespace khrbinding

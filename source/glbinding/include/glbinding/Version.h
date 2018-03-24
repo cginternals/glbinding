@@ -2,7 +2,6 @@
 #pragma once
 
 
-#include <iosfwd>
 #include <string>
 #include <set>
 #include <utility>
@@ -212,15 +211,6 @@ public:
 
     /**
     *  @brief
-    *    Check for validity of this Version, based on the list of all valid OpenGL feautures
-    *
-    *  @return
-    *    true iff the version is valid (i.e., if this version is present in the set of valid versions)
-    */
-    GLBINDING_API bool isValid() const;
-
-    /**
-    *  @brief
     *    Check if the Version was constructed using the default constructor
     *
     *  @return
@@ -231,58 +221,10 @@ public:
     */
     GLBINDING_CONSTEXPR inline bool isNull() const;
 
-    /**
-    *  @brief
-    *    Returns the nearest valid Version to this Version
-    *
-    *  @return
-    *    The nearest valid Version that is either equal or lower than this Version
-    */
-    GLBINDING_API const Version & nearest() const;
-
-    /**
-    *  @brief
-    *    Accessor for the list of all valid Versions (OpenGL features)
-    *
-    *  @return
-    *    The set of all valid Versions (= released OpenGL Features)
-    */
-    GLBINDING_API static const std::set<Version> & versions();
-
-    /**
-    * @brief
-    *   Returns the list of all valid, previous Versions (Features) known by the gl.xml
-    *
-    * @return
-    *   The list of all valid Versions (Features) with a version number below the provided one
-    */
-    GLBINDING_API static const std::set<Version> preceeding(const Version & version);
-
-    /**
-    * @brief
-    *   Returns the list of all valid, subsequent Versions (Features) known by the gl.xml
-    *
-    * @return
-    *   The list of all valid Versions (Features) with a version number above the provided one
-    */
-    GLBINDING_API static const std::set<Version> succeeding(const Version & version);
-
-    /**
-    *  @brief
-    *    Return the most current valid Version
-    *
-    *  @return
-    *    The most current Version from the set of all valid versions
-    */
-    GLBINDING_API static const Version & latest();
-
 
 protected:
     unsigned char m_major; ///< The major version
     unsigned char m_minor; ///< The minor version
-
-    static const std::set<Version> s_validVersions; ///< The set of all valid versions
-    static const Version           s_latest;        ///< The most current version
 };
 
 

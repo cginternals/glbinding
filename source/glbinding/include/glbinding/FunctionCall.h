@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <chrono>
+#include <memory>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
@@ -80,22 +81,13 @@ public:
     */
     FunctionCall & operator=(FunctionCall && other);
 
-    /**
-    *  @brief
-    *    Converts this FunctionCall to a string usable to put into a log
-    *
-    *  @return
-    *    A string representing the contents of this FunctionCall
-    */
-    std::string toString() const;
-
 
 public:
-    const AbstractFunction              * function;    ///< The function of this call
-    std::chrono::system_clock::time_point timestamp;   ///< The time of the call
+    const AbstractFunction                    * function;    ///< The function of this call
+    std::chrono::system_clock::time_point       timestamp;   ///< The time of the call
 
-    std::vector<AbstractValue *>          parameters;  ///< The list of parameter values; doesn't have to be filled
-    AbstractValue                       * returnValue; ///< The return value; doesn't have to be filled
+    std::vector<std::unique_ptr<AbstractValue>> parameters;  ///< The list of parameter values; doesn't have to be filled
+    std::unique_ptr<AbstractValue>              returnValue; ///< The return value; doesn't have to be filled
 };
 
 

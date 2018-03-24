@@ -69,18 +69,13 @@ set(headers
     ${include_path}/Function.inl
     ${include_path}/FunctionCall.h
     ${include_path}/Binding.h
-    ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
-    ${include_path}/ContextHandle.h
-    ${include_path}/ContextInfo.h
     ${include_path}/Value.h
     ${include_path}/Value.inl
     ${include_path}/Version.h
     ${include_path}/Version.inl
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
-
-    ${include_path}/logging.h
 )
 
 # add featured headers
@@ -98,34 +93,6 @@ set(sources
     ${source_path}/Binding_list.cpp
     ${source_path}/FunctionCall.cpp
 
-    ${source_path}/ProcAddress.cpp
-    ${source_path}/ContextHandle.cpp
-    ${source_path}/ContextInfo.cpp
-    ${source_path}/Value.cpp
-    ${source_path}/Version.cpp
-    ${source_path}/Version_ValidVersions.cpp
-
-    ${source_path}/Meta.cpp
-    ${source_path}/Meta_Maps.h
-    ${source_path}/Meta_getStringByBitfield.cpp
-    ${source_path}/Meta_BitfieldsByString.cpp
-    ${source_path}/Meta_BooleansByString.cpp
-    ${source_path}/Meta_EnumsByString.cpp
-    ${source_path}/Meta_ExtensionsByFunctionString.cpp
-    ${source_path}/Meta_ExtensionsByString.cpp
-    ${source_path}/Meta_FunctionStringsByExtension.cpp
-    ${source_path}/Meta_FunctionStringsByVersion.cpp
-    ${source_path}/Meta_ReqVersionsByExtension.cpp
-    ${source_path}/Meta_StringsByBitfield.cpp
-    ${source_path}/Meta_StringsByBoolean.cpp
-    ${source_path}/Meta_StringsByEnum.cpp
-    ${source_path}/Meta_StringsByExtension.cpp
-
-    ${source_path}/RingBuffer.h
-    ${source_path}/RingBuffer.inl
-    ${source_path}/logging.cpp
-
-    ${source_path}/gl/types.cpp
     ${source_path}/gl/functions-patches.cpp
 
     ${source_path}/Binding_pch.h

@@ -8,13 +8,13 @@
 #include <set>
 #include <cstdint>
 
-#include <glbinding/glbinding_api.h>
-#include <glbinding/glbinding_features.h>
+#include <khrbinding/khrbinding_api.h>
+#include <khrbinding/khrbinding_features.h>
 
-#include <glbinding/gl/types.h>
+#include <khrbinding/gl/types.h>
 
 
-namespace glbinding
+namespace khrbinding
 {
 
 
@@ -26,7 +26,7 @@ class Version;
 *  @brief
 *    Provisioning of meta information about OpenGL extensions, functions and conversion of strings and symbols of the OpenGL API
 */
-class GLBINDING_API Meta
+class KHRBINDING_API Meta
 {
 public:
     /**
@@ -508,4 +508,4 @@ private:
 };
 
 
-} // namespace glbinding
+} // namespace khrbinding

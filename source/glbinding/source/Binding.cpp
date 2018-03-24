@@ -20,11 +20,11 @@ namespace
 {
 
 GLBINDING_THREAD_LOCAL glbinding::ContextHandle t_context = 0;
-GLBINDING_THREAD_LOCAL glbinding::Binding::GetProcAddress t_getProcAddress = nullptr;
+GLBINDING_THREAD_LOCAL glbinding::GetProcAddress t_getProcAddress = nullptr;
 
 std_boost::recursive_mutex g_mutex;
 std::unordered_map<glbinding::ContextHandle, int> g_bindings;
-glbinding::Binding::GetProcAddress g_firstGetProcAddress = nullptr;
+glbinding::GetProcAddress g_firstGetProcAddress = nullptr;
 
 } // namespace
 
@@ -53,7 +53,7 @@ size_t Binding::size()
 
 void Binding::initialize(const GetProcAddress functionPointerResolver, const bool resolveFunctions)
 {
-    initialize(getCurrentContext(), functionPointerResolver, true, resolveFunctions);
+    initialize(0, functionPointerResolver, true, resolveFunctions);
 }
 
 void Binding::initialize(
@@ -62,8 +62,8 @@ void Binding::initialize(
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
-    const auto resolveWOUse = !_useContext & _resolveFunctions;
-    const auto currentContext = resolveWOUse ? getCurrentContext() : static_cast<ContextHandle>(0);
+    const auto resolveWOUse = !_useContext && _resolveFunctions;
+    const auto currentContext = resolveWOUse ? t_context : static_cast<ContextHandle>(0);
 
     {
         std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
@@ -100,6 +100,15 @@ void Binding::initialize(
         useContext(currentContext);
 }
 
+ProcAddress Binding::resolveFunction(const char * name)
+{
+    if (t_getProcAddress == nullptr) {
+        return nullptr;
+    }
+
+    return t_getProcAddress(name);
+}
+
 void Binding::registerAdditionalFunction(AbstractFunction * function)
 {
     s_additionalFunctions.push_back(function);
@@ -120,7 +129,7 @@ void Binding::resolveFunctions()
 
 void Binding::useCurrentContext()
 {
-    useContext(getCurrentContext());
+    useContext(0);
 }
 
 void Binding::useContext(const ContextHandle context)
@@ -146,7 +155,7 @@ void Binding::useContext(const ContextHandle context)
 
 void Binding::releaseCurrentContext()
 {
-    releaseContext(getCurrentContext());
+    releaseContext(0);
 }
 
 void Binding::releaseContext(const ContextHandle context)

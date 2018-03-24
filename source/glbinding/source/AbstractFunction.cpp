@@ -7,7 +7,6 @@
 #include <type_traits>
 
 #include <glbinding/Binding.h>
-#include <glbinding/Meta.h>
 
 #include "glbinding/glbinding_features.h"
 
@@ -24,7 +23,7 @@ GLBINDING_THREAD_LOCAL auto t_pos = -1;
 } // namespace
 
 
-namespace glbinding 
+namespace glbinding
 {
 
 
@@ -141,7 +140,7 @@ void AbstractFunction::resolveAddress()
         return;
     }
 
-    currentState.address = getProcAddress(m_name);
+    currentState.address = Binding::resolveFunction(m_name);
     currentState.initialized = true;
 }
 
