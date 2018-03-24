@@ -159,6 +159,7 @@ void log(FunctionCall * call)
 
     assert(!g_buffer.isFull());
 
+    delete next;
     g_buffer.push(call);
 }
 

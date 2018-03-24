@@ -164,7 +164,7 @@ ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) con
         return ReturnType();
     }
 
-    if (isAnyEnabled(CallbackMask::Before | CallbackMask::After))
+    if (isAnyEnabled(CallbackMask::Before | CallbackMask::After | CallbackMask::Logging))
     {
         return FunctionHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
     }

@@ -5,6 +5,22 @@
 
 # find_package(OpenGL REQUIRED)
 
+set(ADDITIONAL_LIBRARIES)
+set(ADDITIONAL_INCLUDES)
+if(OPTION_BUILD_WITH_BOOST_THREAD)
+    find_package(Boost COMPONENTS thread REQUIRED)
+
+    if (Boost_FOUND)
+        message(STATUS "Use Boost for thread.")
+
+        set(ADDITIONAL_LIBRARIES ${ADDITIONAL_LIBRARIES} ${Boost_LIBRARIES})
+        set(ADDITIONAL_INCLUDES ${ADDITIONAL_INCLUDES} ${Boost_INCLUDE_DIRS})
+    else()
+        message(WARNING "OPTION_BUILD_WITH_BOOST_THREAD is set to On: Boost not found.")
+        message(WARNING "Defaulting to C++11 thread.")
+    endif()
+endif()
+
 
 # 
 # Library name and options
@@ -201,6 +217,7 @@ target_link_libraries(${target}
 
 target_compile_definitions(${target}
     PRIVATE
+    $<$<AND:$<BOOL:${OPTION_BUILD_WITH_BOOST_THREAD}>,$<BOOL:${Boost_FOUND}>>:GLBINDING_USE_BOOST_THREAD>
 
     PUBLIC
     $<$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>:${target_id}_STATIC_DEFINE>
