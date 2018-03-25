@@ -9,11 +9,11 @@ namespace eglbinding
 {
 
 
-Function<EGLBoolean> Binding::eglWaitClient("eglWaitClient");
-Function<EGLBoolean> Binding::eglWaitGL("eglWaitGL");
-Function<EGLBoolean, EGLint> Binding::eglWaitNative("eglWaitNative");
-Function<EGLBoolean, EGLDisplay, EGLSync, EGLint> Binding::eglWaitSync("eglWaitSync");
-Function<EGLint, EGLDisplay, EGLSyncKHR, EGLint> Binding::eglWaitSyncKHR("eglWaitSyncKHR");
+Function<Binding, EGLBoolean> Binding::eglWaitClient("eglWaitClient");
+Function<Binding, EGLBoolean> Binding::eglWaitGL("eglWaitGL");
+Function<Binding, EGLBoolean, EGLint> Binding::eglWaitNative("eglWaitNative");
+Function<Binding, EGLBoolean, EGLDisplay, EGLSync, EGLint> Binding::eglWaitSync("eglWaitSync");
+Function<Binding, EGLint, EGLDisplay, EGLSyncKHR, EGLint> Binding::eglWaitSyncKHR("eglWaitSyncKHR");
 
 
 

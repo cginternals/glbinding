@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <eglbinding/nogl.h>
+#include <eglbinding/noegl.h>
 #include <eglbinding/eglbinding_api.h>
 #include <eglbinding/eglbinding_features.h>
 #include <eglbinding/egl/boolean.h>
@@ -11,9 +11,8 @@
 #include <cstdint>
 #include <array>
 #include <KHR/khrplatform.h>
+#include <EGL/eglplatform.h>
 
-#include <functional>
-#include <ostream>
 #include <string>
 
 
@@ -30,7 +29,9 @@ namespace egl
 
 enum class GLextension : int;
 struct AHardwareBuffer;
-using EGLBoolean = unsigned int;
+using EGLint = int;
+using EGLchar = char;
+// using EGLBoolean = unsigned int;
 using EGLenum = unsigned int;
 using EGLAttribKHR = intptr_t;
 using EGLAttrib = intptr_t;
@@ -68,7 +69,10 @@ struct EGLClientPixmapHI {
     EGLint iStride;
 };
 using EGLDEBUGPROCKHR = void (GL_APIENTRY *)(EGLenum error,const char *command,EGLint messageType,EGLLabelKHR threadLabel,EGLLabelKHR objectLabel,const char* message);
-using GLuint_array_2 = std::array<GLuint, 2>;
+using EGLNativeDisplayType = ::EGLNativeDisplayType;
+using EGLNativePixmapType = ::EGLNativePixmapType;
+using EGLNativeWindowType = ::EGLNativeWindowType;
+using __eglMustCastToProperFunctionPointerType = void (*)(void);
 
 } // namespace egl
 
@@ -91,15 +95,4 @@ struct hash<egl::GLextension>
 
 
 } // namespace std
-
-
-namespace egl
-{
-
-
-EGLBINDING_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
-
-
-} // namespace egl
-
 

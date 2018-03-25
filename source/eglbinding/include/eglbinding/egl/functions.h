@@ -4,7 +4,7 @@
 
 #include <eglbinding/eglbinding_api.h>
 
-#include <eglbinding/nogl.h>
+#include <eglbinding/noegl.h>
 #include <eglbinding/egl/types.h>
 
 

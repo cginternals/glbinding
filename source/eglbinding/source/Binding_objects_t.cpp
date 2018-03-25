@@ -9,7 +9,7 @@ namespace eglbinding
 {
 
 
-Function<EGLBoolean, EGLDisplay> Binding::eglTerminate("eglTerminate");
+Function<Binding, EGLBoolean, EGLDisplay> Binding::eglTerminate("eglTerminate");
 
 
 

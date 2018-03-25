@@ -9,8 +9,8 @@ namespace eglbinding
 {
 
 
-Function<EGLBoolean, EGLDisplay, EGLOutputLayerEXT, EGLint, EGLAttrib> Binding::eglOutputLayerAttribEXT("eglOutputLayerAttribEXT");
-Function<EGLBoolean, EGLDisplay, EGLOutputPortEXT, EGLint, EGLAttrib> Binding::eglOutputPortAttribEXT("eglOutputPortAttribEXT");
+Function<Binding, EGLBoolean, EGLDisplay, EGLOutputLayerEXT, EGLint, EGLAttrib> Binding::eglOutputLayerAttribEXT("eglOutputLayerAttribEXT");
+Function<Binding, EGLBoolean, EGLDisplay, EGLOutputPortEXT, EGLint, EGLAttrib> Binding::eglOutputPortAttribEXT("eglOutputPortAttribEXT");
 
 
 

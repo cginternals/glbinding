@@ -9,16 +9,16 @@ namespace eglbinding
 {
 
 
-Function<EGLint, EGLDEBUGPROCKHR, const EGLAttrib *> Binding::eglDebugMessageControlKHR("eglDebugMessageControlKHR");
-Function<EGLBoolean, EGLDisplay, EGLContext> Binding::eglDestroyContext("eglDestroyContext");
-Function<EGLBoolean, EGLDisplay, EGLImage> Binding::eglDestroyImage("eglDestroyImage");
-Function<EGLBoolean, EGLDisplay, EGLImageKHR> Binding::eglDestroyImageKHR("eglDestroyImageKHR");
-Function<EGLBoolean, EGLDisplay, EGLStreamKHR> Binding::eglDestroyStreamKHR("eglDestroyStreamKHR");
-Function<EGLBoolean, EGLDisplay, EGLSurface> Binding::eglDestroySurface("eglDestroySurface");
-Function<EGLBoolean, EGLDisplay, EGLSync> Binding::eglDestroySync("eglDestroySync");
-Function<EGLBoolean, EGLDisplay, EGLSyncKHR> Binding::eglDestroySyncKHR("eglDestroySyncKHR");
-Function<EGLBoolean, EGLSyncNV> Binding::eglDestroySyncNV("eglDestroySyncNV");
-Function<EGLint, EGLDisplay, EGLSyncKHR> Binding::eglDupNativeFenceFDANDROID("eglDupNativeFenceFDANDROID");
+Function<Binding, EGLint, EGLDEBUGPROCKHR, const EGLAttrib *> Binding::eglDebugMessageControlKHR("eglDebugMessageControlKHR");
+Function<Binding, EGLBoolean, EGLDisplay, EGLContext> Binding::eglDestroyContext("eglDestroyContext");
+Function<Binding, EGLBoolean, EGLDisplay, EGLImage> Binding::eglDestroyImage("eglDestroyImage");
+Function<Binding, EGLBoolean, EGLDisplay, EGLImageKHR> Binding::eglDestroyImageKHR("eglDestroyImageKHR");
+Function<Binding, EGLBoolean, EGLDisplay, EGLStreamKHR> Binding::eglDestroyStreamKHR("eglDestroyStreamKHR");
+Function<Binding, EGLBoolean, EGLDisplay, EGLSurface> Binding::eglDestroySurface("eglDestroySurface");
+Function<Binding, EGLBoolean, EGLDisplay, EGLSync> Binding::eglDestroySync("eglDestroySync");
+Function<Binding, EGLBoolean, EGLDisplay, EGLSyncKHR> Binding::eglDestroySyncKHR("eglDestroySyncKHR");
+Function<Binding, EGLBoolean, EGLSyncNV> Binding::eglDestroySyncNV("eglDestroySyncNV");
+Function<Binding, EGLint, EGLDisplay, EGLSyncKHR> Binding::eglDupNativeFenceFDANDROID("eglDupNativeFenceFDANDROID");
 
 
 

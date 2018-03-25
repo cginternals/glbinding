@@ -9,7 +9,7 @@ namespace eglbinding
 {
 
 
-Function<EGLBoolean, EGLDisplay, EGLint *, EGLint *> Binding::eglInitialize("eglInitialize");
+Function<Binding, EGLBoolean, EGLDisplay, EGLint *, EGLint *> Binding::eglInitialize("eglInitialize");
 
 
 

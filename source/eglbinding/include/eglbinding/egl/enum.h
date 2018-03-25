@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <eglbinding/nogl.h>
+#include <eglbinding/noegl.h>
 
 #include <eglbinding/eglbinding_features.h>
 

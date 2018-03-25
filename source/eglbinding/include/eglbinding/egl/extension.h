@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <eglbinding/nogl.h>
+#include <eglbinding/noegl.h>
 
 
 namespace egl

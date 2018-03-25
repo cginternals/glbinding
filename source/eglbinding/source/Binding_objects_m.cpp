@@ -9,7 +9,7 @@ namespace eglbinding
 {
 
 
-Function<EGLBoolean, EGLDisplay, EGLSurface, EGLSurface, EGLContext> Binding::eglMakeCurrent("eglMakeCurrent");
+Function<Binding, EGLBoolean, EGLDisplay, EGLSurface, EGLSurface, EGLContext> Binding::eglMakeCurrent("eglMakeCurrent");
 
 
 
