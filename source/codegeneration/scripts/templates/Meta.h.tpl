@@ -12,13 +12,13 @@
 #include <{{api}}binding-aux/{{api}}binding-aux_features.h>
 
 #include <{{api}}binding/{{api}}/types.h>
+#include <{{api}}binding/AbstractFunction.h>
 
 
 namespace {{api}}binding
 {
 
 
-class AbstractFunction;
 class Version;
 
 

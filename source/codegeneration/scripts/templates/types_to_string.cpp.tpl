@@ -26,9 +26,9 @@ namespace {{api}}binding
 {
 
 
-std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
+std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue * value)
 {
-    if (typeid(*value) == typeid(AbstractValue))
+    if (typeid(*value) == typeid(khrbinding::AbstractValue))
     {
         stream << reinterpret_cast<const void*>(value);
     }

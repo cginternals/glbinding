@@ -32,7 +32,7 @@ namespace glbinding
 class GLBINDING_API Binding : public khrbinding::Binding<Binding>
 {
 public:
-    using array_t               = std::array<khrbinding::AbstractFunction *, 2926>; ///< The type of the build-in functions collection
+    using array_t = std::array<khrbinding::AbstractFunction *, 2926>; ///< The type of the build-in functions collection
 
     /**
     *  @brief
@@ -2980,7 +2980,7 @@ public:
 
 
 protected:
-    static const array_t                      s_functions;           ///< The list of all build-in functions
+    static const array_t s_functions;           ///< The list of all build-in functions
 };
 
 

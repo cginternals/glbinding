@@ -28,7 +28,7 @@ namespace {{api}}binding
 {
 
 
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AbstractValue * value);
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue * value);
 
 template <typename T>
 {{ucapi}}BINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const Value<T> & value);
