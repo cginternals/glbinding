@@ -23,8 +23,6 @@ add_subdirectory(glbinding-aux)
 add_subdirectory(glesbinding)
 add_subdirectory(glesbinding-aux)
 add_subdirectory(glscbinding)
-# add_subdirectory(glxbinding)
-# add_subdirectory(wglbinding)
 add_subdirectory(eglbinding)
 # add_subdirectory(eglbinding-aux)
 
