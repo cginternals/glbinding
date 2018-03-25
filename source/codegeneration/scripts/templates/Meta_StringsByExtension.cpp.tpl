@@ -11,10 +11,10 @@ namespace {{api}}binding { namespace aux
 {
 
 
-const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
+const std::unordered_map<{{extensionType}}, std::string> Meta_StringsByExtension =
 {
 {{#extensions.items}}
-    { GLextension::{{item.identifier}}, "{{item.name}}" }{{^last}},{{/last}}
+    { {{extensionType}}::{{item.identifier}}, "{{item.name}}" }{{^last}},{{/last}}
 {{/extensions.items}}
 };
 

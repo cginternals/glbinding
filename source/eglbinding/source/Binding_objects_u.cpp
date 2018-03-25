@@ -9,7 +9,7 @@ namespace eglbinding
 {
 
 
-Function<Binding, EGLBoolean, EGLDisplay, EGLSurface> Binding::eglUnlockSurfaceKHR("eglUnlockSurfaceKHR");
+Function<Binding, EGLBoolean, EGLDisplay, EGLSurface> Binding::UnlockSurfaceKHR("eglUnlockSurfaceKHR");
 
 
 

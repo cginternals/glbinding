@@ -137,7 +137,7 @@ class Context:
         self.extensionContexts = gen_extensions.genExtensionContexts(extensions)
         self.booleanContexts = gen_booleans.genBooleanContexts(enums)
         self.valueContexts = gen_values.genValueContexts(enums)
-        self.typeContexts = gen_types.genTypeContexts(types, bitfGroups)
+        self.typeContexts = gen_types.genTypeContexts(types, bitfGroups,api)
         self.bitfieldContexts = gen_bitfields.genBitfieldContexts(enums, bitfGroups)
         self.enumContexts = gen_enums.genEnumContexts(enums)
         self.functionContexts = gen_functions.genFunctionContexts(commands)
@@ -152,7 +152,12 @@ class Context:
                    "ucapi": self.api.upper(),
                    "memberSet": "",
                    "revision": self.revision,
-                   "additionalTypeIncludes": self.additionalTypeIncludes()
+                   "additionalTypeIncludes": self.additionalTypeIncludes(),
+                   "additionalTypes": self.additionalTypes(),
+                   "bitfieldType": "EGLbitfield" if self.api == "egl" else "GLbitfield",
+                   "enumType": "EGLenum" if self.api == "egl" else "GLenum",
+                   "booleanType": "EGLBoolean" if self.api == "egl" else "GLboolean",
+                   "extensionType": "EGLextension" if self.api == "egl" else "GLextension"
                 }
 
         context["apiMemberSets"] = self.listContext( [{"memberSet": versionBID(feature, core, ext)}
@@ -161,7 +166,7 @@ class Context:
         extensionsByCommands = self.groupItems(self.extensionContexts, groupKey = lambda e: [ i["item"]["identifier"] for i in e["reqCommands"]["items"] ])
         extensionsByCommandsContexts = [{"command": c, "extensions": self.listContext(extensionsByCommands[c], sortKey = lambda e: e["identifier"])} for c in extensionsByCommands.keys()]
         context["extensionsByCommandsByInitial"] = self.groupedContext(extensionsByCommandsContexts,
-                                                                  groupKey = lambda e: [ alphabeticalGroupKey(e["command"], "gl") ],
+                                                                  groupKey = lambda e: [ alphabeticalGroupKey(e["command"], "egl" if self.api == "egl" else "gl") ],
                                                                   groupKeyList = alphabeticalGroupKeys(),
                                                                   groupSortKey = lambda i: str(i),
                                                                   itemSortKey = lambda e: e["command"])
@@ -170,7 +175,7 @@ class Context:
                                                   filter = lambda e: e["incore"],
                                                   sortKey = lambda e: (e["incoreMajor"] if e["incoreMajor"] else 0, e["incoreMinor"] if e["incoreMinor"] else 0))
         context["extensionsByInitial"] = self.groupedContext(self.extensionContexts,
-                                                        groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "GL_") ],
+                                                        groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "EGL_" if self.api == "egl" else "GL_") ],
                                                         groupKeyList = alphabeticalGroupKeys(),
                                                         groupSortKey = lambda k: k,
                                                         itemSortKey = lambda e: e["identifier"])
@@ -184,7 +189,7 @@ class Context:
                                                      groupSortKey = lambda g: g,
                                                      itemSortKey = lambda b: b["value"])
         context["bitfieldsByInitial"] = self.groupedContext(self.bitfieldContexts,
-                                                       groupKey = lambda b: [ alphabeticalGroupKey(b["identifier"], "GL_") ],
+                                                       groupKey = lambda b: [ alphabeticalGroupKey(b["identifier"], "EGL_" if self.api == "egl" else "GL_") ],
                                                        groupKeyList = alphabeticalGroupKeys(),
                                                        groupSortKey = lambda k: k,
                                                        itemSortKey = lambda b: b["identifier"])
@@ -200,13 +205,13 @@ class Context:
                                                  groupSortKey = lambda g: g,
                                                  itemSortKey = lambda e: (enumSuffixPriority(e["identifier"]), e["identifier"]))
         context["enumsByInitial"] = self.groupedContext(self.enumContexts,
-                                                   groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "GL_") ],
+                                                   groupKey = lambda e: [ alphabeticalGroupKey(e["identifier"], "EGL_" if self.api == "egl" else "GL_") ],
                                                    groupKeyList = alphabeticalGroupKeys(),
                                                    groupSortKey = lambda k: k,
                                                    itemSortKey = lambda e: e["identifier"])
         context["functions"] = self.listContext(self.functionContexts, sortKey = lambda f: f["identifier"])
         context["functionsByInitial"] = self.groupedContext(self.functionContexts,
-                                                       groupKey = lambda f: [ alphabeticalGroupKey(f["identifier"], "gl") ],
+                                                       groupKey = lambda f: [ alphabeticalGroupKey(f["identifier"], "egl" if self.api == "egl" else "gl") ],
                                                        groupKeyList = alphabeticalGroupKeys(),
                                                        groupSortKey = lambda k: k,
                                                        itemSortKey = lambda f: f["identifier"])
@@ -245,3 +250,9 @@ class Context:
             return ""
         else:
             return "#include <KHR/khrplatform.h>"
+
+    def additionalTypes(self):
+        if self.api == "gl":
+            return ""
+        else:
+            return "using EGLint = int;\nusing EGLchar = char;\nusing EGLNativeDisplayType = void*;\nusing EGLNativePixmapType = void*;\nusing EGLNativeWindowType = void*;"

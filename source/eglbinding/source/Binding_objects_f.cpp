@@ -9,7 +9,7 @@ namespace eglbinding
 {
 
 
-Function<Binding, EGLBoolean, EGLSyncNV> Binding::eglFenceNV("eglFenceNV");
+Function<Binding, EGLBoolean, EGLSyncNV> Binding::FenceNV("eglFenceNV");
 
 
 

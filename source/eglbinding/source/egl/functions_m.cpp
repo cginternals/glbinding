@@ -13,7 +13,7 @@ namespace egl
 
 EGLBoolean eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx)
 {
-    return Binding::eglMakeCurrent(dpy, draw, read, ctx);
+    return Binding::MakeCurrent(dpy, draw, read, ctx);
 }
 
 

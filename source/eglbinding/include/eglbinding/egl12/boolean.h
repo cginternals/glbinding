@@ -13,6 +13,8 @@ namespace egl12
 
 // import booleans to namespace
 
+using egl::EGL_FALSE;
+using egl::EGL_TRUE;
 
 
 } // namespace egl12

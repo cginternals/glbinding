@@ -16,7 +16,10 @@ namespace egl11
 
 // __UNGROUPED__
 
-using egl::EGL_FALSE;
+using egl::EGL_DONT_CARE;
+using egl::EGL_NO_CONTEXT;
+using egl::EGL_NO_DISPLAY;
+using egl::EGL_NO_SURFACE;
 using egl::EGL_SUCCESS;
 using egl::EGL_NOT_INITIALIZED;
 using egl::EGL_BAD_ACCESS;
@@ -81,11 +84,6 @@ using egl::EGL_TEXTURE_TARGET;
 using egl::EGL_MIPMAP_TEXTURE;
 using egl::EGL_MIPMAP_LEVEL;
 using egl::EGL_BACK_BUFFER;
-using egl::EGL_TRUE;
-using egl::EGL_NO_CONTEXT;
-using egl::EGL_NO_DISPLAY;
-using egl::EGL_NO_SURFACE;
-using egl::EGL_DONT_CARE;
 
 
 

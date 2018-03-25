@@ -13,7 +13,7 @@ namespace egl
 
 EGLBoolean eglUnlockSurfaceKHR(EGLDisplay dpy, EGLSurface surface)
 {
-    return Binding::eglUnlockSurfaceKHR(dpy, surface);
+    return Binding::UnlockSurfaceKHR(dpy, surface);
 }
 
 

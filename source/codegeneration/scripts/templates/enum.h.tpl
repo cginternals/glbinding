@@ -11,7 +11,7 @@ namespace {{api}}
 {
 
 
-enum class GLenum : unsigned int
+enum class {{enumType}} : unsigned int
 {
 {{#enumsByGroup.groups}}
     // {{name}}
@@ -36,10 +36,10 @@ enum class GLenum : unsigned int
 
 {{#items}}
 {{#isPrimary}}
-{{ucapi}}BINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}};
+{{ucapi}}BINDING_CONSTEXPR static const {{enumType}} {{item.identifier}} = {{enumType}}::{{item.identifier}};
 {{/isPrimary}}
 {{#isSecondary}}
-// {{ucapi}}BINDING_CONSTEXPR static const GLenum {{item.identifier}} = GLenum::{{item.identifier}}; // reuse {{item.primaryGroup}}
+// {{ucapi}}BINDING_CONSTEXPR static const {{enumType}} {{item.identifier}} = {{enumType}}::{{item.identifier}}; // reuse {{item.primaryGroup}}
 {{/isSecondary}}
 {{/items}}
 

@@ -10,7 +10,8 @@ namespace egl12
 {
 
 
-using egl::GLextension;
+using egl::EGLextension;
+using egl::EGLbitfield;
 using egl::AHardwareBuffer;
 using egl::EGLBoolean;
 using egl::EGLenum;
@@ -45,7 +46,14 @@ using egl::EGLSetBlobFuncANDROID;
 using egl::EGLGetBlobFuncANDROID;
 using egl::EGLClientPixmapHI;
 using egl::EGLDEBUGPROCKHR;
-using egl::GLuint_array_2;
+using egl::EGLContextFlagMask;
+using egl::EGLContextProfileMask;
+using egl::EGLDRMBufferUseMESAMask;
+using egl::EGLLockUsageHintKHRMask;
+using egl::EGLNativeBufferUsageFlags;
+using egl::EGLRenderableTypeMask;
+using egl::EGLSurfaceTypeMask;
+using egl::EGLSyncFlagsKHR;
 
 
 } // namespace egl12

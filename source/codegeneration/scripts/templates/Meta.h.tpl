@@ -46,19 +46,19 @@ public:
     *  @return
     *    The revision of the parsed gl.xml file
     */
-    static int glRevision();
+    static int {{api}}Revision();
 
     /**
     *  @brief
     *    Converts a string into a bitfield symbol
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *     The string representation of the bitfield
     *
     *  @return
     *    The symbol identified through the bitfield string, 0 if failed
     */
-    static {{api}}::GLbitfield getBitfield(const std::string & bitfield);
+    static {{api}}::{{bitfieldType}} getBitfield(const std::string & bitfield);
     
     /**
     *  @brief
@@ -67,13 +67,13 @@ public:
     *  @return
     *    The list of all bitfields known by the gl.xml
     */
-    static std::vector<{{api}}::GLbitfield> bitfields();
+    static std::vector<{{api}}::{{bitfieldType}}> bitfields();
 
     /**
     *  @brief
-    *    Converts a GLenum to a string
+    *    Converts a {{enumType}} to a string
     *
-    *  @param[in] glenum
+    *  @param[in] enum
     *    The enum to convert
     *
     *  @return
@@ -82,88 +82,88 @@ public:
     *  @remarks
     *    Beware, that some enums in the OpenGL API have different symbol names but identical enum values and that this function cannot differentiate between them
     */
-    static const std::string & getString({{api}}::GLenum glenum);
+    static const std::string & getString({{api}}::{{enumType}} {{api}}enum);
     
     /**
     *  @brief
-    *    Converts a string to a GLenum symbol
+    *    Converts a string to a enum symbol
     *
-    *  @param[in] glenum
+    *  @param[in] enum
     *    The string representation of the enum
     *
     *  @return
     *    The symbol identified through the enum string, 0 if failed
     */
-    static {{api}}::GLenum getEnum(const std::string & glenum);
+    static {{api}}::{{enumType}} getEnum(const std::string & {{api}}enum);
     
     /**
     *  @brief
-    *    Returns the list of all enums known by the gl.xml
+    *    Returns the list of all enums known by the {{api}}.xml
     *
     *  @return
-    *    The list of all enums known by the gl.xml
+    *    The list of all enums known by the {{api}}.xml
     */
-    static std::vector<{{api}}::GLenum> enums();
+    static std::vector<{{api}}::{{enumType}}> enums();
 
     /**
     *  @brief
-    *    Converts a GLboolean to a string
+    *    Converts a {{booleanType}} to a string
     *
-    *  @param[in] glboolean
+    *  @param[in] boolean
     *    The boolean to convert
     *
     *  @return
-    *    A string representation of the GLboolean symbol name
+    *    A string representation of the {{booleanType}} symbol name
     *
     *  @remarks
-    *    Can either be 'GL_TRUE' or 'GL_FALSE'
+    *    Can either be '{{ucapi}}_TRUE' or '{{ucapi}}_FALSE'
     */
-    static const std::string & getString(const {{api}}::GLboolean & glboolean);
+    static const std::string & getString(const {{api}}::{{booleanType}} & boolean);
     
     /**
     *  @brief
-    *    Converts a string to a GLboolean symbol
+    *    Converts a string to a {{booleanType}} symbol
     *
     *  @param[in] glboolean
-    *    The string representation of the GLboolean
+    *    The string representation of the {{booleanType}}
     *
     *  @return
-    *    The symbol identified through the boolean string, 'GL_FALSE' if failed
+    *    The symbol identified through the boolean string, '{{ucapi}}_FALSE' if failed
     */
-    static {{api}}::GLboolean getBoolean(const std::string & glboolean);
+    static {{api}}::{{booleanType}} getBoolean(const std::string & boolean);
 
     /**
     *  @brief
-    *    Converts a GLextension to its string representation
+    *    Converts a {{extensionType}} to its string representation
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The extension to convert
     *
     *  @return
     *    The string representation of the extension
     */
-    static const std::string & getString({{api}}::GLextension glextension);
+    static const std::string & getString({{api}}::{{extensionType}} extension);
     
     /**
     *  @brief
     *    Converts a string to an extension
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The string representation of the extension
     *
     *  @return
     *    The symbol identified through the extension string, 'UNKNOWN' if failed
     */
-    static {{api}}::GLextension getExtension(const std::string & glextension);
+    static {{api}}::{{extensionType}} getExtension(const std::string & extension);
 
     /**
     *  @brief
-    *    Returns the set of all extensions known by the gl.xml
+    *    Returns the set of all extensions known by the {{api}}.xml
     *
     *  @return
-    *    The set of all extensions known by the gl.xml
+    *    The set of all extensions known by the {{api}}.xml
     */
-    static std::set<{{api}}::GLextension> extensions();
+    static std::set<{{api}}::{{extensionType}}> extensions();
     
     /**
     *  @brief
@@ -178,19 +178,19 @@ public:
     *    The set of extensions that should be supported for the given version.
     *    All non versioned extensions can be queried by providing the null version
     */
-    static const std::set<{{api}}::GLextension> extensions(const Version & version);
+    static const std::set<{{api}}::{{extensionType}}> extensions(const Version & version);
 
     /**
     *  @brief
     *    Returns the list of extensions that are requiring an OpenGL function
     *
-    *  @param[in] glfunction
-    *    The name of the function, including the 'gl' prefix
+    *  @param[in] function
+    *    The name of the function, including the '{{api}}' prefix
     *
     *  @return
     *    The set of extensions that are requiring an OpenGL function
     */
-    static const std::set<{{api}}::GLextension> extensions(const std::string & glfunction);
+    static const std::set<{{api}}::{{extensionType}}> extensions(const std::string & {{api}}function);
     
     /**
     *  @brief
@@ -211,32 +211,32 @@ public:
     *  @brief
     *    Returns the set of functions that are required for the extension
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The extension to return the required functions for
     *
     *  @return
     *    The set of functions that are required for the extension
     */
-    static const std::set<AbstractFunction *> functions({{api}}::GLextension glextension);
+    static const std::set<AbstractFunction *> functions({{api}}::{{extensionType}} extension);
 
     /**
     *  @brief
     *    Returns the first OpenGL Version (Feature) that required the extension
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The extension
     *
     *  @return
-    *    The first OpenGL Version (Feature) that required the extension
+    *    The first {{ucapi}} Version (Feature) that required the extension
     */
-    static const Version & version({{api}}::GLextension glextension);
+    static const Version & version({{api}}::{{extensionType}} glextension);
     
     /**
     *  @brief
-    *    Returns the list of all Versions (Features) known by the gl.xml
+    *    Returns the list of all Versions (Features) known by the {{api}}.xml
     *
     *  @return
-    *    The list of all Versions (Features) known by the gl.xml
+    *    The list of all Versions (Features) known by the {{api}}.xml
     */
     static const std::set<Version> & versions();
 
@@ -250,7 +250,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString({{api}}::{{item}} glbitfield);
+    static const std::string & getString({{api}}::{{item}} bitfield);
 
 {{/bitfieldGroups.items}}
 
@@ -263,7 +263,7 @@ private:
     *    The identifier for the bucket lookup
     *
     *  @param[in] prefixLength
-    *    The length of the prefix (e.g., 'gl' or 'GL_') to omit to get the actual first character of the identifier
+    *    The length of the prefix (e.g., '{{api}}' or '{{ucapi}}_') to omit to get the actual first character of the identifier
     *
     *  @return
     *    The bucket index of an OpenGL identifier

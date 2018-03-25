@@ -45,21 +45,21 @@ template <typename T>
 *    A specialized ostream operator for the gl::GLenum Value template
 */
 template <>
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLenum> & value);
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<{{api}}::{{enumType}}> & value);
 
 /**
 *  @brief
 *    A specialized ostream operator for the gl::GLbitfield Value template
 */
 /*template <>
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLbitfield> & value);*/
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<{{api}}::{{bitfieldType}}> & value);*/
 
 /**
 *  @brief
 *    A specialized ostream operator for the gl::GLenum Value template
 */
 template <>
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLboolean> & value);
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<{{api}}::{{booleanType}}> & value);
 
 /**
 *  @brief

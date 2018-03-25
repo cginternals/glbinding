@@ -9,7 +9,7 @@ namespace egl
 {
 
 
-enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
+enum class EGLextension : int // EGLextension is not a type introduced by EGL API so far
 {
     UNKNOWN = -1,
     EGL_ANDROID_blob_cache,

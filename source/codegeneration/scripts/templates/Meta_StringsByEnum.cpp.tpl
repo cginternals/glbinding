@@ -11,10 +11,10 @@ namespace {{api}}binding { namespace aux
 {
 
 
-const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
+const std::unordered_map<{{enumType}}, std::string> Meta_StringsByEnum =
 {
 {{#enumsByValue.groups}}
-    { GLenum::{{firstItem.identifier}}, "{{firstItem.name}}" }{{^last}},{{/last}}
+    { {{enumType}}::{{firstItem.identifier}}, "{{firstItem.name}}" }{{^last}},{{/last}}
 {{/enumsByValue.groups}}
 };
 

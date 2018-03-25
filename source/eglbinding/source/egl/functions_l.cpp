@@ -13,12 +13,12 @@ namespace egl
 
 EGLint eglLabelObjectKHR(EGLDisplay display, EGLenum objectType, EGLObjectKHR object, EGLLabelKHR label)
 {
-    return Binding::eglLabelObjectKHR(display, objectType, object, label);
+    return Binding::LabelObjectKHR(display, objectType, object, label);
 }
 
 EGLBoolean eglLockSurfaceKHR(EGLDisplay dpy, EGLSurface surface, const EGLint * attrib_list)
 {
-    return Binding::eglLockSurfaceKHR(dpy, surface, attrib_list);
+    return Binding::LockSurfaceKHR(dpy, surface, attrib_list);
 }
 
 

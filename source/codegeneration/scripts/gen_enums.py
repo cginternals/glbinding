@@ -5,7 +5,7 @@ from context import Context
 
 def genEnumContexts(allEnums):
     ungroupedName = "__UNGROUPED__"
-    enums = [enum for enum in allEnums if enum.type == "GLenum"]
+    enums = [enum for enum in allEnums if enum.type == "GLenum" or enum.type == "EGLenum"]
     
     if len(enums) == 0:
         return []
@@ -17,6 +17,7 @@ def genEnumContexts(allEnums):
         enumContexts.append({"identifier": enumBID(enum),
                              "name": enum.name,
                              "value": enum.value,
+                             "type": enum.type,
                              "decimalValue": int(enum.value, 0) if enum.value.startswith("0x") else "",
                              "cast": enum.value.startswith("-"),
                              "spaces": " " * (maxLength - len(enumBID(enum))),

@@ -13,19 +13,19 @@ namespace {{api}}binding { namespace aux
 
 {{#enumsByInitial.groups}}
 {{^empty}}
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}} =
+const std::unordered_map<std::string, {{enumType}}> Meta_EnumsByString_{{name}} =
 {
 {{#items}}
-    { "{{item.name}}", GLenum::{{item.identifier}} }{{^last}},{{/last}}
+    { "{{item.name}}", {{enumType}}::{{item.identifier}} }{{^last}},{{/last}}
 {{/items}}
 };
 {{/empty}}
 {{#empty}}
-const std::unordered_map<std::string, GLenum> Meta_EnumsByString_{{name}}{};
+const std::unordered_map<std::string, {{enumType}}> Meta_EnumsByString_{{name}}{};
 {{/empty}}
 
 {{/enumsByInitial.groups}}
-const std::array<std::unordered_map<std::string, {{api}}::GLenum>, {{enumsByInitial.count}}> Meta_EnumsByStringMaps =
+const std::array<std::unordered_map<std::string, {{api}}::{{enumType}}>, {{enumsByInitial.count}}> Meta_EnumsByStringMaps =
 { {
 {{#enumsByInitial.groups}}
     Meta_EnumsByString_{{name}}{{^last}},{{/last}}

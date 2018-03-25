@@ -13,7 +13,7 @@ namespace egl
 
 EGLBoolean eglInitialize(EGLDisplay dpy, EGLint * major, EGLint * minor)
 {
-    return Binding::eglInitialize(dpy, major, minor);
+    return Binding::Initialize(dpy, major, minor);
 }
 
 

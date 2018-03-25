@@ -13,7 +13,7 @@ namespace egl
 
 EGLBoolean eglFenceNV(EGLSyncNV sync)
 {
-    return Binding::eglFenceNV(sync);
+    return Binding::FenceNV(sync);
 }
 
 

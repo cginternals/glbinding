@@ -1,6 +1,7 @@
 from classes.Feature import *
 from classes.Extension import *
 import bisect
+import re
 
 
 def translateType(t, name):
@@ -8,7 +9,14 @@ def translateType(t, name):
     if name in [ "GL_TRUE", "GL_FALSE" ]:
         return "GLboolean"
 
-    return { "u" : "GLuint", "ull" : "GLuint64"    }.get(t, "GLenum")
+    return { "u" : "GLuint", "ull" : "GLuint64" }.get(t, "GLenum")
+
+def translateEGLType(t, name):
+
+    if name in [ "EGL_TRUE", "EGL_FALSE" ]:
+        return "EGLBoolean"
+
+    return { "u" : "EGLuint", "ull" : "EGLuint64KHR" }.get(t, "EGLenum")
 
 # https://docs.python.org/2/library/bisect.html
 def find_le(a, x):
@@ -27,7 +35,11 @@ class Enum:
 
         self.name  = xml.attrib["name"]
         self.value = xml.attrib["value"]
-        self.type  = "GLenum"
+        self.type  = "None"
+
+        if self.value.startswith("EGL_CAST"):
+            self.value = self.value[self.value.find(",")+1:]
+            self.value = self.value[0:self.value.find(")")]
 
         self.aliasString = ""
         self.alias = None
@@ -39,7 +51,12 @@ class Enum:
 
         self.aliasString = xml.attrib.get("alias", None)
 
-        if groupString == "SpecialNumbers":
+        if self.name.startswith("EGL") and groupType == "bitmask":
+            self.type = "EGLbitfield"
+            self.groupString = groupString
+        elif self.name.startswith("EGL") and groupType != "bitmask":
+            self.type = translateEGLType(xml.attrib.get("type", ""), self.name)
+        elif groupString == "SpecialNumbers":
             self.type = translateType(xml.attrib.get("type", ""), self.name)
         elif groupType == "bitmask":
             self.type = "GLbitfield"
@@ -241,6 +258,10 @@ def parseEnums(xml, features, extensions, commands, api, apiRequire):
 
         groupString = E.attrib.get("group", None)
         groupType   = E.attrib.get("type", None)
+        groupNamespace = E.attrib.get("namespace", None)
+        
+        if groupNamespace:
+            groupString = groupNamespace
 
         # only parse enum if 
         # (1) no comment attribute exists for <enum> starting with "Not an API enum. ..."

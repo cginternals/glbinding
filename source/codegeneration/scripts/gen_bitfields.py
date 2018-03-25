@@ -5,13 +5,18 @@ from context import Context
 
 def genBitfieldContexts(enums, bitfGroups):
     bitfieldEnums = [enum for enum in enums if enum.type == "GLbitfield"]
+    eglBitfieldEnums = [enum for enum in enums if enum.type == "EGLbitfield"]
     
-    if len(bitfieldEnums) == 0:
+    if len(bitfieldEnums) == 0 and len(eglBitfieldEnums) == 0:
         return []
-    
-    maxLength = max([len(enumBID(enum)) for enum in bitfieldEnums])
 
     noneIdentifier = "GL_NONE_BIT"
+    if len(eglBitfieldEnums) > 0:
+        noneIdentifier = "EGL_NONE_BIT"
+        bitfieldEnums = eglBitfieldEnums
+
+    maxLength = max([len(enumBID(enum)) for enum in bitfieldEnums])
+    
     noneValue = "0x0"
     noneGroups = Context.listContext([g.name for g in bitfGroups], sortKey = lambda g: g)
 

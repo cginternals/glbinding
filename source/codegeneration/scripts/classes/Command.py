@@ -174,7 +174,7 @@ def verifyCommands(commands, bitfGroups):
         for param in (param for param in command.params):
 
             # check for bitfield groups (other enum groups not yet used in gl.xml)
-            if param.type != "GLbitfield":
+            if param.type != "GLbitfield" and param.type != "EGLbitfield":
                 continue
 
             if   param.groupString is None:

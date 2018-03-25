@@ -13,17 +13,17 @@ namespace egl
 
 EGLBoolean eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
-    return Binding::eglReleaseTexImage(dpy, surface, buffer);
+    return Binding::ReleaseTexImage(dpy, surface, buffer);
 }
 
 EGLBoolean eglReleaseThread()
 {
-    return Binding::eglReleaseThread();
+    return Binding::ReleaseThread();
 }
 
 EGLBoolean eglResetStreamNV(EGLDisplay dpy, EGLStreamKHR stream)
 {
-    return Binding::eglResetStreamNV(dpy, stream);
+    return Binding::ResetStreamNV(dpy, stream);
 }
 
 

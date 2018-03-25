@@ -16,7 +16,11 @@ namespace egl12
 
 // __UNGROUPED__
 
-using egl::EGL_FALSE;
+using egl::EGL_DONT_CARE;
+using egl::EGL_UNKNOWN;
+using egl::EGL_NO_CONTEXT;
+using egl::EGL_NO_DISPLAY;
+using egl::EGL_NO_SURFACE;
 using egl::EGL_SUCCESS;
 using egl::EGL_NOT_INITIALIZED;
 using egl::EGL_BAD_ACCESS;
@@ -112,13 +116,7 @@ using egl::EGL_OPENVG_IMAGE;
 using egl::EGL_CONTEXT_CLIENT_TYPE;
 using egl::EGL_OPENGL_ES_API;
 using egl::EGL_OPENVG_API;
-using egl::EGL_TRUE;
 using egl::EGL_DISPLAY_SCALING;
-using egl::EGL_NO_CONTEXT;
-using egl::EGL_NO_DISPLAY;
-using egl::EGL_NO_SURFACE;
-using egl::EGL_DONT_CARE;
-using egl::EGL_UNKNOWN;
 
 
 

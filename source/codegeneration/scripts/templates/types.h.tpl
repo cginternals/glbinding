@@ -16,16 +16,16 @@
 
 
 #ifdef _MSC_VER
-#define GL_APIENTRY __stdcall
+#define {{ucapi}}_APIENTRY __stdcall
 #else
-#define GL_APIENTRY
+#define {{ucapi}}_APIENTRY
 #endif
 
 
 namespace {{api}}
 {
 
-
+{{additionalTypes}}
 {{#types.items}}
 {{item.definition}}
 {{/types.items}}

@@ -4,9 +4,6 @@
 #include <{{api}}binding/Version.h>
 
 
-using namespace {{api}};
-
-
 namespace {{api}}binding { namespace aux
 {
 

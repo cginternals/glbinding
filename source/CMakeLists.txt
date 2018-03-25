@@ -23,8 +23,9 @@ add_subdirectory(glbinding-aux)
 add_subdirectory(glesbinding)
 add_subdirectory(glesbinding-aux)
 add_subdirectory(glscbinding)
+add_subdirectory(glscbinding-aux)
 add_subdirectory(eglbinding)
-# add_subdirectory(eglbinding-aux)
+add_subdirectory(eglbinding-aux)
 
 # Examples
 set(IDE_FOLDER "Examples")

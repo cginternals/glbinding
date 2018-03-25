@@ -13,12 +13,12 @@ namespace egl
 
 EGLBoolean eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height)
 {
-    return Binding::eglPostSubBufferNV(dpy, surface, x, y, width, height);
+    return Binding::PostSubBufferNV(dpy, surface, x, y, width, height);
 }
 
 EGLBoolean eglPresentationTimeANDROID(EGLDisplay dpy, EGLSurface surface, EGLnsecsANDROID time)
 {
-    return Binding::eglPresentationTimeANDROID(dpy, surface, time);
+    return Binding::PresentationTimeANDROID(dpy, surface, time);
 }
 
 

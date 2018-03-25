@@ -2,7 +2,7 @@ from binding import *
 
 
 def genValueContexts(enums):
-    typeBlacklist = ["GLboolean", "GLenum", "GLbitfield"]
+    typeBlacklist = ["GLboolean", "GLenum", "GLbitfield", "EGLBoolean", "EGLenum", "EGLbitfield"]
     valueEnums = [enum for enum in enums if enum.type not in typeBlacklist]
     valueContexts = []
     for enum in valueEnums:

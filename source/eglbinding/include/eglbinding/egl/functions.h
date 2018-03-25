@@ -81,7 +81,7 @@ EGLBINDING_API EGLDisplay eglGetDisplay(EGLNativeDisplayType display_id);
 EGLBINDING_API EGLint eglGetError();
 EGLBINDING_API EGLBoolean eglGetFrameTimestampSupportedANDROID(EGLDisplay dpy, EGLSurface surface, EGLint timestamp);
 EGLBINDING_API EGLBoolean eglGetFrameTimestampsANDROID(EGLDisplay dpy, EGLSurface surface, EGLuint64KHR frameId, EGLint numTimestamps, const EGLint * timestamps, EGLnsecsANDROID * values);
-EGLBINDING_API EGLClientBuffer eglGetNativeClientBufferANDROID(const struct AHardwareBuffer * buffer);
+EGLBINDING_API EGLClientBuffer eglGetNativeClientBufferANDROID(const AHardwareBuffer * buffer);
 EGLBINDING_API EGLBoolean eglGetNextFrameIdANDROID(EGLDisplay dpy, EGLSurface surface, EGLuint64KHR * frameId);
 EGLBINDING_API EGLBoolean eglGetOutputLayersEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputLayerEXT * layers, EGLint max_layers, EGLint * num_layers);
 EGLBINDING_API EGLBoolean eglGetOutputPortsEXT(EGLDisplay dpy, const EGLAttrib * attrib_list, EGLOutputPortEXT * ports, EGLint max_ports, EGLint * num_ports);

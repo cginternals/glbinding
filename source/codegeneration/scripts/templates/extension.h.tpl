@@ -9,7 +9,7 @@ namespace {{api}}
 {
 
 
-enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
+enum class {{extensionType}} : int // {{extensionType}} is not a type introduced by {{ucapi}} API so far
 {
     UNKNOWN = -1,
 {{#extensions.items}}

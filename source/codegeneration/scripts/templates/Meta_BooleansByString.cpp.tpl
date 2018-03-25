@@ -11,7 +11,7 @@ namespace {{api}}binding { namespace aux
 {
 
 
-const std::unordered_map<std::string, GLboolean> Meta_BooleansByString =
+const std::unordered_map<std::string, {{booleanType}}> Meta_BooleansByString =
 {
 {{#booleans.items}}
     { "{{item.name}}", {{api}}::{{item.identifier}} }{{^last}},{{/last}}

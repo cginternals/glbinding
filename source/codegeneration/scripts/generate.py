@@ -140,7 +140,7 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
     print("VERIFYING")
 
     bitfGroups = [ g for g in groups
-        if len(g.enums) > 0 and any(enum.type == "GLbitfield" for enum in g.enums) ]
+        if len(g.enums) > 0 and any(enum.type == "GLbitfield" or enum.type == "EGLbitfield" for enum in g.enums) ]
 
     print("verifying groups")
     verifyGroups(groups, enums)

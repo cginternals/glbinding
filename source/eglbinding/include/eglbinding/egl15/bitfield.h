@@ -12,7 +12,7 @@ namespace egl15
 
 
 // import bitfields to namespace
-using egl::GL_NONE_BIT;
+using egl::EGL_NONE_BIT;
 using egl::EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT;
 using egl::EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR;
 using egl::EGL_CONTEXT_OPENGL_COMPATIBILITY_PROFILE_BIT;

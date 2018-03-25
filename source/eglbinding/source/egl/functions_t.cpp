@@ -13,7 +13,7 @@ namespace egl
 
 EGLBoolean eglTerminate(EGLDisplay dpy)
 {
-    return Binding::eglTerminate(dpy);
+    return Binding::Terminate(dpy);
 }
 
 

@@ -16,7 +16,10 @@ namespace egl10
 
 // __UNGROUPED__
 
-using egl::EGL_FALSE;
+using egl::EGL_DONT_CARE;
+using egl::EGL_NO_CONTEXT;
+using egl::EGL_NO_DISPLAY;
+using egl::EGL_NO_SURFACE;
 using egl::EGL_SUCCESS;
 using egl::EGL_NOT_INITIALIZED;
 using egl::EGL_BAD_ACCESS;
@@ -67,11 +70,6 @@ using egl::EGL_LARGEST_PBUFFER;
 using egl::EGL_DRAW;
 using egl::EGL_READ;
 using egl::EGL_CORE_NATIVE_ENGINE;
-using egl::EGL_TRUE;
-using egl::EGL_NO_CONTEXT;
-using egl::EGL_NO_DISPLAY;
-using egl::EGL_NO_SURFACE;
-using egl::EGL_DONT_CARE;
 
 
 

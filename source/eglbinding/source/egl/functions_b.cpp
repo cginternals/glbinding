@@ -13,12 +13,12 @@ namespace egl
 
 EGLBoolean eglBindAPI(EGLenum api)
 {
-    return Binding::eglBindAPI(api);
+    return Binding::BindAPI(api);
 }
 
 EGLBoolean eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
-    return Binding::eglBindTexImage(dpy, surface, buffer);
+    return Binding::BindTexImage(dpy, surface, buffer);
 }
 
 

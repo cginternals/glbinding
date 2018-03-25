@@ -13,12 +13,12 @@ namespace egl
 
 EGLBoolean eglOutputLayerAttribEXT(EGLDisplay dpy, EGLOutputLayerEXT layer, EGLint attribute, EGLAttrib value)
 {
-    return Binding::eglOutputLayerAttribEXT(dpy, layer, attribute, value);
+    return Binding::OutputLayerAttribEXT(dpy, layer, attribute, value);
 }
 
 EGLBoolean eglOutputPortAttribEXT(EGLDisplay dpy, EGLOutputPortEXT port, EGLint attribute, EGLAttrib value)
 {
-    return Binding::eglOutputPortAttribEXT(dpy, port, attribute, value);
+    return Binding::OutputPortAttribEXT(dpy, port, attribute, value);
 }
 
 

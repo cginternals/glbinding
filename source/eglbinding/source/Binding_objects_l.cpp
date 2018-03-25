@@ -9,8 +9,8 @@ namespace eglbinding
 {
 
 
-Function<Binding, EGLint, EGLDisplay, EGLenum, EGLObjectKHR, EGLLabelKHR> Binding::eglLabelObjectKHR("eglLabelObjectKHR");
-Function<Binding, EGLBoolean, EGLDisplay, EGLSurface, const EGLint *> Binding::eglLockSurfaceKHR("eglLockSurfaceKHR");
+Function<Binding, EGLint, EGLDisplay, EGLenum, EGLObjectKHR, EGLLabelKHR> Binding::LabelObjectKHR("eglLabelObjectKHR");
+Function<Binding, EGLBoolean, EGLDisplay, EGLSurface, const EGLint *> Binding::LockSurfaceKHR("eglLockSurfaceKHR");
 
 
 
