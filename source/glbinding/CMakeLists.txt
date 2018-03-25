@@ -74,7 +74,6 @@ set(headers
     ${include_path}/Value.h
     ${include_path}/Value.inl
     ${include_path}/Version.h
-    ${include_path}/Version.inl
     ${include_path}/SharedBitfield.h
 )
 

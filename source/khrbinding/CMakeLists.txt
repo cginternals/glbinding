@@ -35,6 +35,8 @@ set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 set(headers
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
+    ${include_path}/Version.h
+    ${include_path}/Version.inl
 )
 
 set(sources
