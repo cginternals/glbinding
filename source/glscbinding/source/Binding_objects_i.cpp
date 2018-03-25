@@ -9,7 +9,7 @@ namespace glscbinding
 {
 
 
-Function<GLboolean, GLenum> Binding::IsEnabled("glIsEnabled");
+Function<Binding, GLboolean, GLenum> Binding::IsEnabled("glIsEnabled");
 
 
 

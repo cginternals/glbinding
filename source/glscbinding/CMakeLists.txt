@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(OpenGL REQUIRED)
+# find_package(OpenGL REQUIRED)
 
 set(ADDITIONAL_LIBRARIES)
 set(ADDITIONAL_INCLUDES)
@@ -48,13 +48,10 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
-    ${include_path}/callbacks.h
-
-    ${include_path}/nogl.h
+    ${include_path}/noglsc.h
 
     ${include_path}/glsc/bitfield.h
     ${include_path}/glsc/boolean.h
-    ${include_path}/glsc/boolean.inl
     ${include_path}/glsc/enum.h
     ${include_path}/glsc/extension.h
     ${include_path}/glsc/functions.h
@@ -62,71 +59,25 @@ set(headers
     ${include_path}/glsc/values.h
 
     ${include_path}/AbstractFunction.h
-    ${include_path}/AbstractValue.h
     ${include_path}/CallbackMask.h
-    ${include_path}/CallbackMask.inl
     ${include_path}/Function.h
-    ${include_path}/Function.inl
     ${include_path}/FunctionCall.h
     ${include_path}/Binding.h
-    ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
-    ${include_path}/ContextHandle.h
-    ${include_path}/ContextInfo.h
     ${include_path}/Value.h
-    ${include_path}/Value.inl
     ${include_path}/Version.h
     ${include_path}/Version.inl
     ${include_path}/SharedBitfield.h
-    ${include_path}/SharedBitfield.inl
-
-    ${include_path}/logging.h
 )
 
 # add featured headers
 
-file(GLOB featured_includes ${include_path}/gl*/*.h)
+file(GLOB featured_includes ${include_path}/glsc*/*.h)
 list(APPEND headers ${featured_includes})
 
 set(sources
-    ${source_path}/callbacks_private.h
-    ${source_path}/callbacks.cpp
-    
-    ${source_path}/AbstractFunction.cpp
-    ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
-    ${source_path}/FunctionCall.cpp
-
-    ${source_path}/ProcAddress.cpp
-    ${source_path}/ContextHandle.cpp
-    ${source_path}/ContextInfo.cpp
-    ${source_path}/Value.cpp
-    ${source_path}/Version.cpp
-    ${source_path}/Version_ValidVersions.cpp
-
-    ${source_path}/Meta.cpp
-    ${source_path}/Meta_Maps.h
-    ${source_path}/Meta_getStringByBitfield.cpp
-    ${source_path}/Meta_BitfieldsByString.cpp
-    ${source_path}/Meta_BooleansByString.cpp
-    ${source_path}/Meta_EnumsByString.cpp
-    ${source_path}/Meta_ExtensionsByFunctionString.cpp
-    ${source_path}/Meta_ExtensionsByString.cpp
-    ${source_path}/Meta_FunctionStringsByExtension.cpp
-    ${source_path}/Meta_FunctionStringsByVersion.cpp
-    ${source_path}/Meta_ReqVersionsByExtension.cpp
-    ${source_path}/Meta_StringsByBitfield.cpp
-    ${source_path}/Meta_StringsByBoolean.cpp
-    ${source_path}/Meta_StringsByEnum.cpp
-    ${source_path}/Meta_StringsByExtension.cpp
-
-    ${source_path}/RingBuffer.h
-    ${source_path}/RingBuffer.inl
-    ${source_path}/logging.cpp
-
-    ${source_path}/glsc/types.cpp
-    ${source_path}/glsc/functions-patches.cpp
 
     ${source_path}/Binding_pch.h
 )
@@ -260,7 +211,7 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
-    ${OPENGL_LIBRARIES}
+    ${META_PROJECT_NAME}::khrbinding
 
     INTERFACE
 )

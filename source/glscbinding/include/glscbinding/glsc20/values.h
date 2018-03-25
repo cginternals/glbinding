@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <glscbinding/nogl.h>
+#include <glscbinding/noglsc.h>
 #include <glscbinding/glsc/values.h>
 
 

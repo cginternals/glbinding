@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <glscbinding/nogl.h>
+#include <glscbinding/noglsc.h>
 #include <glscbinding/glscbinding_api.h>
 #include <glscbinding/glscbinding_features.h>
 #include <glscbinding/glsc/boolean.h>
@@ -12,8 +12,6 @@
 #include <array>
 #include <KHR/khrplatform.h>
 
-#include <functional>
-#include <ostream>
 #include <string>
 
 
@@ -106,17 +104,6 @@ struct hash<glsc::GLextension>
 } // namespace std
 
 
-namespace glsc
-{
-
-
-GLSCBINDING_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
-
-
-} // namespace glsc
-
-
-
 namespace std
 {
 
@@ -138,16 +125,6 @@ namespace glsc
 {
 
 
-GLSCBINDING_API std::ostream & operator<<(std::ostream & stream, const GLenum & value);
-
-
-} // namespace glsc
-
-
-namespace glsc
-{
-
-
 GLSCBINDING_CONSTEXPR inline GLenum operator+(const GLenum & a, const std::underlying_type<GLenum>::type b)
 {
     return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) + b);
@@ -162,18 +139,7 @@ GLSCBINDING_CONSTEXPR inline GLenum operator-(const GLenum & a, const std::under
 } // namespace glsc
 
 
-namespace glsc{GLSCBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLSCBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLSCBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLSCBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLSCBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLSCBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLSCBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace glsc
-
-
-namespace glsc
-{
-
-
-GLSCBINDING_API std::ostream & operator<<(std::ostream & stream, const GLboolean & value);
-
-
-} // namespace glsc
-
+namespace glsc{GLSCBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLSCBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLSCBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLSCBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLSCBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLSCBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLSCBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLSCBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace glsc
 
 
 namespace std
@@ -191,17 +157,6 @@ struct hash<glsc::AttribMask>
 
 
 } // namespace std
-
-
-namespace glsc
-{
-
-
-GLSCBINDING_API std::ostream & operator<<(std::ostream & stream, const AttribMask & value);
-
-
-} // namespace glsc
-
 
 
 namespace glsc
@@ -248,6 +203,7 @@ inline AttribMask & operator^=(AttribMask & a, const AttribMask & b)
 } // namespace glsc
 
 
+
 namespace std
 {
 
@@ -263,17 +219,6 @@ struct hash<glsc::ClearBufferMask>
 
 
 } // namespace std
-
-
-namespace glsc
-{
-
-
-GLSCBINDING_API std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value);
-
-
-} // namespace glsc
-
 
 
 namespace glsc
@@ -318,4 +263,5 @@ inline ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask &
 
 
 } // namespace glsc
+
 
