@@ -339,7 +339,7 @@ protected:
     static GetProcAddress & s_getProcAddress();
     static std_boost::recursive_mutex & s_mutex();
     static std::unordered_map<ContextHandle, int> & s_bindings();
-    static GetProcAddress s_firstGetProcAddress();
+    static GetProcAddress & s_firstGetProcAddress();
 };
 
 

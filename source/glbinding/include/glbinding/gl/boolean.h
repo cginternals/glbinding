@@ -1,6 +1,5 @@
 #pragma once
 
-#include <functional>
 
 #include <khrbinding/Boolean8.h>
 
@@ -29,20 +28,3 @@ GLBINDING_CONSTEXPR static const GLboolean GL_TRUE = GLboolean(1);
 
 
 } // namespace gl
-
-
-namespace std
-{
-
-
-template<>
-struct hash<gl::GLboolean>
-{
-    hash<char>::result_type operator()(const gl::GLboolean & boolean) const
-    {
-        return hash<gl::GLboolean::underlying_type>()(static_cast<gl::GLboolean::underlying_type>(boolean));
-    }
-};
-
-
-} // namespace std

@@ -1,8 +1,8 @@
 
 #include <khrbinding/Binding.h>
 
-
 #include <cassert>
+#include <iostream>
 
 #include <khrbinding/State.h>
 #include <khrbinding/AbstractFunction.h>
@@ -225,11 +225,17 @@ void Binding<Subclass>::initialize(
 template <typename Subclass>
 ProcAddress Binding<Subclass>::resolveFunction(const char * name)
 {
-    if (s_getProcAddress() == nullptr) {
-        return nullptr;
+    if (s_getProcAddress() != nullptr)
+    {
+        return s_getProcAddress()(name);
     }
 
-    return s_getProcAddress()(name);
+    if (s_firstGetProcAddress() != nullptr)
+    {
+        return s_firstGetProcAddress()(name);
+    }
+
+    return nullptr;
 }
 
 template <typename Subclass>
@@ -428,6 +434,7 @@ template <typename Subclass>
 int & Binding<Subclass>::s_pos()
 {
     KHRBINDING_THREAD_LOCAL int pos = 0;
+    //static int pos = 0;
 
     return pos;
 }
@@ -436,6 +443,7 @@ template <typename Subclass>
 ContextHandle & Binding<Subclass>::s_context()
 {
     KHRBINDING_THREAD_LOCAL ContextHandle context = 0;
+    //static ContextHandle context = 0;
 
     return context;
 }
@@ -444,6 +452,7 @@ template <typename Subclass>
 GetProcAddress & Binding<Subclass>::s_getProcAddress()
 {
     KHRBINDING_THREAD_LOCAL GetProcAddress getProcAddress = nullptr;
+    //static GetProcAddress getProcAddress = nullptr;
 
     return getProcAddress;
 }
@@ -465,7 +474,7 @@ std::unordered_map<ContextHandle, int> & Binding<Subclass>::s_bindings()
 }
 
 template <typename Subclass>
-GetProcAddress Binding<Subclass>::s_firstGetProcAddress()
+GetProcAddress & Binding<Subclass>::s_firstGetProcAddress()
 {
     static GetProcAddress getProcAddress = nullptr;
 
@@ -473,4 +482,4 @@ GetProcAddress Binding<Subclass>::s_firstGetProcAddress()
 }
 
 
-} // namespace glbinding
+} // namespace khrbinding
