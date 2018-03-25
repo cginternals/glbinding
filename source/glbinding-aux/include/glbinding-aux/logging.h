@@ -2,7 +2,9 @@
 #pragma once
 
 
-#include <glbinding/callbacks.h>
+#include <set>
+
+#include <glbinding/FunctionCall.h>
 
 #include <glbinding-aux/glbinding-aux_api.h>
 

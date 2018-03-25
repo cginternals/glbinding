@@ -1,11 +1,12 @@
 
-#include <glbinding/FunctionCall.h>
+#include <khrbinding/FunctionCall.h>
 
-#include <glbinding/AbstractFunction.h>
+#include <khrbinding/AbstractFunction.h>
 #include <khrbinding/AbstractValue.h>
+#include <khrbinding/CallbackMask.h>
 
 
-namespace glbinding
+namespace khrbinding
 {
 
 
@@ -42,4 +43,4 @@ FunctionCall & FunctionCall::operator=(FunctionCall && other)
 }
 
 
-} // namespace glbinding
+} // namespace khrbinding

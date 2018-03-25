@@ -6,9 +6,10 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/callbacks.h>
 #include <glbinding/Version.h>
 #include <glbinding/Binding.h>
+#include <glbinding/CallbackMask.h>
+#include <glbinding/FunctionCall.h>
 
 #include <glbinding/gl32/gl.h>
 
@@ -80,9 +81,9 @@ int main()
         << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
-    setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+    Binding::setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
-    setAfterCallback([](const FunctionCall & call) {
+    Binding::setAfterCallback([](const glbinding::FunctionCall & call) {
         std::cout << call.function->name() << "(";
 
         for (unsigned i = 0; i < call.parameters.size(); ++i)

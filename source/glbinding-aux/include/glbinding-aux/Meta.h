@@ -12,13 +12,13 @@
 #include <glbinding-aux/glbinding-aux_features.h>
 
 #include <glbinding/gl/types.h>
+#include <glbinding/AbstractFunction.h>
 
 
 namespace glbinding
 {
 
 
-class AbstractFunction;
 class Version;
 
 

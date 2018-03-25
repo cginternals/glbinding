@@ -5,32 +5,32 @@
 #include <type_traits>
 
 
-namespace glbinding
+namespace khrbinding
 {
 
 
-GLBINDING_CONSTEXPR CallbackMask operator~(const CallbackMask a)
+KHRBINDING_CONSTEXPR CallbackMask operator~(const CallbackMask a)
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
     return static_cast<CallbackMask>(~static_cast<callback_mask_t>(a));
 }
 
-GLBINDING_CONSTEXPR CallbackMask operator|(const CallbackMask a, const CallbackMask b)
+KHRBINDING_CONSTEXPR CallbackMask operator|(const CallbackMask a, const CallbackMask b)
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
     return static_cast<CallbackMask>(static_cast<callback_mask_t>(a) | static_cast<callback_mask_t>(b));
 }
 
-GLBINDING_CONSTEXPR CallbackMask operator&(const CallbackMask a, const CallbackMask b)
+KHRBINDING_CONSTEXPR CallbackMask operator&(const CallbackMask a, const CallbackMask b)
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
     return static_cast<CallbackMask>(static_cast<callback_mask_t>(a) & static_cast<callback_mask_t>(b));
 }
 
-GLBINDING_CONSTEXPR CallbackMask operator^(const CallbackMask a, const CallbackMask b)
+KHRBINDING_CONSTEXPR CallbackMask operator^(const CallbackMask a, const CallbackMask b)
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
@@ -56,4 +56,4 @@ CallbackMask& operator^=(CallbackMask& a, const CallbackMask b)
 }
 
 
-} // namespace glbinding
+} // namespace khrbinding

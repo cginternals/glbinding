@@ -9,6 +9,8 @@
 #include <khrbinding/khrbinding_api.h>
 #include <khrbinding/khrbinding_features.h>
 
+#include <khrbinding/AbstractVersion.h>
+
 
 namespace khrbinding
 {
@@ -31,25 +33,14 @@ namespace khrbinding
 *  \endcode
 */
 template <typename Subclass>
-class Version
+class Version : public AbstractVersion
 {
 public:
     /**
     *  @brief
-    *    Default constructor, resulting in an invalid Version object
+    *    Constructors inherited from base class.
     */
-    KHRBINDING_CONSTEXPR inline Version();
-
-    /**
-    *  @brief
-    *    Constructor for a Version object with the given major and minor version
-    *
-    *  @param[in] majorVersion
-    *    The major version
-    *  @param[in] minorVersion
-    *    The minor version
-    */
-    KHRBINDING_CONSTEXPR inline Version(unsigned char majorVersion, unsigned char minorVersion);
+    using AbstractVersion::AbstractVersion;
 
     /**
     *  @brief
@@ -164,68 +155,6 @@ public:
     *    'true' if this Version is lesser or equal than the other Version, else 'false'
     */
     KHRBINDING_CONSTEXPR inline bool operator<=(const Subclass & version) const;
-
-    /**
-    *  @brief
-    *    Accessor for the major version
-    *
-    *  @return
-    *    the major version
-    */
-    KHRBINDING_CONSTEXPR inline unsigned char majorVersion() const;
-
-    /**
-    *  @brief
-    *    Accessor for the minor version
-    *
-    *  @return
-    *    the minor version
-    */
-    KHRBINDING_CONSTEXPR inline unsigned char minorVersion() const;
-
-    /**
-    *  @brief
-    *    Cast operator for a std::pair cast of type unsigned char
-    */
-    inline operator std::pair<unsigned char, unsigned char>() const;
-
-    /**
-    *  @brief
-    *    Cast operator for a std::pair cast of type unsigned short
-    */
-    inline operator std::pair<unsigned short, unsigned short>() const;
-
-    /**
-    *  @brief
-    *    Cast operator for a std::pair cast of type unsigned int
-    */
-    inline operator std::pair<unsigned int, unsigned int>() const;
-
-    /**
-    *  @brief
-    *    Create a string representing the Version using the scheme "<majorVersion>.<minorVersion>"
-    *
-    *  @return
-    *    The version as string, "-.-" iff the string is invalid
-    */
-    KHRBINDING_API inline std::string toString() const;
-
-    /**
-    *  @brief
-    *    Check if the Version was constructed using the default constructor
-    *
-    *  @return
-    *    'true' if the major version is 0, else 'false'
-    *
-    *  @remarks
-    *    This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed
-    */
-    KHRBINDING_CONSTEXPR inline bool isNull() const;
-
-
-protected:
-    unsigned char m_major; ///< The major version
-    unsigned char m_minor; ///< The minor version
 };
 
 

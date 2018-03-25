@@ -19,7 +19,8 @@ namespace std_boost = std;
 #endif
 
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/callbacks.h>
+#include <glbinding/Binding.h>
+#include <glbinding/CallbackMask.h>
 
 #include <glbinding-aux/types_to_string.h>
 
@@ -104,8 +105,8 @@ void start()
 
 void start(const std::string & filepath)
 {
-    setLogCallback(glbinding::aux::log);
-    addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
+    Binding::setLogCallback(glbinding::aux::log);
+    Binding::addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
     startWriter(filepath);
 }
 
@@ -118,13 +119,13 @@ void startExcept(const std::set<std::string> & blackList)
 
 void startExcept(const std::string & filepath, const std::set<std::string> & blackList)
 {
-    addCallbackMaskExcept(CallbackMask::Timestamp | CallbackMask::Logging, blackList);
+    Binding::addCallbackMaskExcept(CallbackMask::Timestamp | CallbackMask::Logging, blackList);
     startWriter(filepath);
 }
 
 void stop()
 {
-    removeCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
+    Binding::removeCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 
     g_stop = true;
     std_boost::unique_lock<std_boost::mutex> locker(g_lockfinish);
@@ -138,12 +139,12 @@ void stop()
 
 void pause()
 {
-    removeCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
+    Binding::removeCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 }
 
 void resume()
 {
-    addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
+    Binding::addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 }
 
 void log(FunctionCall * call)

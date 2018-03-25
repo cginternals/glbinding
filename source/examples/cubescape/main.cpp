@@ -4,8 +4,9 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/Version.h>
-#include <glbinding/callbacks.h>
 #include <glbinding/Binding.h>
+#include <glbinding/FunctionCall.h>
+#include <glbinding/CallbackMask.h>
 
 #include <glbinding/gl/gl.h>
 
@@ -93,7 +94,7 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    setAfterCallback([](const FunctionCall &) 
+    Binding::setAfterCallback([](const FunctionCall &)
     {
         gl::GLenum error = glGetError();
         if (error != GL_NO_ERROR)

@@ -1,9 +1,6 @@
 #pragma once
 
 
-#include <glbinding/callbacks.h>
-
-
 namespace glbinding { namespace aux
 {
 

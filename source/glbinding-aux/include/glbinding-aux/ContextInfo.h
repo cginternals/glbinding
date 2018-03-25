@@ -5,6 +5,9 @@
 #include <set>
 #include <string>
 
+#include <glbinding/Version.h>
+#include <glbinding/AbstractFunction.h>
+
 #include <glbinding-aux/glbinding-aux_api.h>
 #include <glbinding-aux/glbinding-aux_features.h>
 
@@ -17,10 +20,6 @@ namespace gl
 
 namespace glbinding
 {
-
-
-class AbstractFunction;
-class Version;
 
 
 namespace aux

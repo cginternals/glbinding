@@ -7,12 +7,15 @@
 
 #include <glbinding/gl/gl.h>
 
-#include <glbinding/AbstractFunction.h> 
-#include <glbinding/callbacks.h>
+#include <glbinding/AbstractFunction.h>
 
 #include <glbinding-aux/types_to_string.h>
 
 #include <glbinding/Binding.h>
+
+#include <glbinding/CallbackMask.h>
+
+#include <glbinding/FunctionCall.h>
 
 
 using namespace gl;
@@ -41,9 +44,9 @@ void glbinding_error(bool enable)
 {
     if (enable)
     {
-        glbinding::setCallbackMaskExcept(glbinding::CallbackMask::After, { "glGetError" });
+        glbinding::Binding::setCallbackMaskExcept(glbinding::CallbackMask::After, { "glGetError" });
 
-        glbinding::setAfterCallback([](const glbinding::FunctionCall &)
+        glbinding::Binding::setAfterCallback([](const glbinding::FunctionCall &)
         {
             gl::GLenum error = gl::glGetError();
             if (error != gl::GL_NO_ERROR)
@@ -51,5 +54,5 @@ void glbinding_error(bool enable)
         });
     }
     else
-        glbinding::setCallbackMask(glbinding::CallbackMask::None);
+        glbinding::Binding::setCallbackMask(glbinding::CallbackMask::None);
 }

@@ -33,9 +33,24 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
+    ${include_path}/AbstractFunction.h
+    ${include_path}/AbstractState.h
     ${include_path}/AbstractValue.h
+    ${include_path}/AbstractVersion.h
+    ${include_path}/AbstractVersion.inl
+    ${include_path}/Binding.h
+    ${include_path}/Binding.inl
+    ${include_path}/CallbackMask.h
+    ${include_path}/CallbackMask.inl
+    ${include_path}/ContextHandle.h
+    ${include_path}/Function.h
+    ${include_path}/Function.inl
+    ${include_path}/FunctionCall.h
+    ${include_path}/ProcAddress.h
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
+    ${include_path}/State.h
+    ${include_path}/State.inl
     ${include_path}/Value.h
     ${include_path}/Value.inl
     ${include_path}/Version.h
@@ -43,7 +58,10 @@ set(headers
 )
 
 set(sources
+    ${source_path}/AbstractFunction.cpp
+    ${source_path}/AbstractState.cpp
     ${source_path}/AbstractValue.cpp
+    ${source_path}/FunctionCall.cpp
 )
 
 
