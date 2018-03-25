@@ -63,7 +63,6 @@ set(headers
     ${include_path}/gl/values.h
 
     ${include_path}/AbstractFunction.h
-    ${include_path}/AbstractValue.h
     ${include_path}/CallbackMask.h
     ${include_path}/CallbackMask.inl
     ${include_path}/Function.h
@@ -72,7 +71,6 @@ set(headers
     ${include_path}/Binding.h
     ${include_path}/ProcAddress.h
     ${include_path}/Value.h
-    ${include_path}/Value.inl
     ${include_path}/Version.h
     ${include_path}/SharedBitfield.h
 )
@@ -87,7 +85,6 @@ set(sources
     ${source_path}/callbacks.cpp
     
     ${source_path}/AbstractFunction.cpp
-    ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
     ${source_path}/FunctionCall.cpp

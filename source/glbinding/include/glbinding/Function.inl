@@ -46,7 +46,7 @@ struct FunctionHelper
 
         if (function->isAnyEnabled(glbinding::CallbackMask::Parameters))
         {
-            functionCall.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
+            functionCall.parameters = khrbinding::createValues(std::forward<Arguments>(arguments)...);
         }
 
         if (function->isEnabled(glbinding::CallbackMask::Before))
@@ -63,7 +63,7 @@ struct FunctionHelper
 
         if (function->isAnyEnabled(glbinding::CallbackMask::ReturnValue))
         {
-            functionCall.returnValue = glbinding::createValue(value);
+            functionCall.returnValue = khrbinding::createValue(value);
         }
 
         if (function->isEnabled(glbinding::CallbackMask::After))
@@ -95,7 +95,7 @@ struct FunctionHelper<void, Arguments...>
 
         if (function->isAnyEnabled(glbinding::CallbackMask::Parameters))
         {
-            functionCall.parameters = glbinding::createValues(std::forward<Arguments>(arguments)...);
+            functionCall.parameters = khrbinding::createValues(std::forward<Arguments>(arguments)...);
         }
 
         if (function->isEnabled(glbinding::CallbackMask::Before))

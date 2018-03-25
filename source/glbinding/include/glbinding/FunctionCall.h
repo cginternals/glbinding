@@ -11,12 +11,21 @@
 #include <glbinding/glbinding_features.h>
 
 
+namespace khrbinding
+{
+
+
+class AbstractValue;
+
+
+} // namespace khrbinding
+
+
 namespace glbinding
 {
 
 
 class AbstractFunction;
-class AbstractValue;
 
 
 /**
@@ -69,8 +78,8 @@ public:
     const AbstractFunction                    * function;    ///< The function of this call
     std::chrono::system_clock::time_point       timestamp;   ///< The time of the call
 
-    std::vector<std::unique_ptr<AbstractValue>> parameters;  ///< The list of parameter values; doesn't have to be filled
-    std::unique_ptr<AbstractValue>              returnValue; ///< The return value; doesn't have to be filled
+    std::vector<std::unique_ptr<khrbinding::AbstractValue>> parameters;  ///< The list of parameter values; doesn't have to be filled
+    std::unique_ptr<khrbinding::AbstractValue>              returnValue; ///< The return value; doesn't have to be filled
 };
 
 

@@ -2,7 +2,7 @@
 #include <glbinding/FunctionCall.h>
 
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/AbstractValue.h>
+#include <khrbinding/AbstractValue.h>
 
 
 namespace glbinding

@@ -33,13 +33,17 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
+    ${include_path}/AbstractValue.h
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
+    ${include_path}/Value.h
+    ${include_path}/Value.inl
     ${include_path}/Version.h
     ${include_path}/Version.inl
 )
 
 set(sources
+    ${source_path}/AbstractValue.cpp
 )
 
 

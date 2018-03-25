@@ -12,7 +12,7 @@ struct ValueAdder;
 template <>
 struct ValueAdder<>
 {
-    inline static void add(std::vector<std::unique_ptr<glbinding::AbstractValue>> &)
+    inline static void add(std::vector<std::unique_ptr<khrbinding::AbstractValue>> &)
     {
     }
 };
@@ -20,15 +20,15 @@ struct ValueAdder<>
 template <typename Argument, typename... Arguments>
 struct ValueAdder<Argument, Arguments...>
 {
-    inline static void add(std::vector<std::unique_ptr<glbinding::AbstractValue>> & values, Argument value, Arguments&&... rest)
+    inline static void add(std::vector<std::unique_ptr<khrbinding::AbstractValue>> & values, Argument value, Arguments&&... rest)
     {
-        values.push_back(glbinding::createValue<Argument>(value));
+        values.push_back(khrbinding::createValue<Argument>(value));
         ValueAdder<Arguments...>::add(values, std::forward<Arguments>(rest)...);
     }
 };
 
 template <typename... Arguments>
-inline void addValuesTo(std::vector<std::unique_ptr<glbinding::AbstractValue>> & values, Arguments&&... arguments)
+inline void addValuesTo(std::vector<std::unique_ptr<khrbinding::AbstractValue>> & values, Arguments&&... arguments)
 {
     ValueAdder<Arguments...>::add(values, std::forward<Arguments>(arguments)...);
 }
@@ -37,18 +37,18 @@ inline void addValuesTo(std::vector<std::unique_ptr<glbinding::AbstractValue>> &
 } // namespace
 
 
-namespace glbinding 
+namespace khrbinding
 {
 
 
 template <typename T>
-GLBINDING_CONSTEXPR Value<T>::Value(const T & value)
+KHRBINDING_CONSTEXPR Value<T>::Value(const T & value)
 : m_value(value)
 {
 }
 
 template <typename T>
-GLBINDING_CONSTEXPR T Value<T>::value() const
+KHRBINDING_CONSTEXPR T Value<T>::value() const
 {
     return m_value;
 }
@@ -69,4 +69,4 @@ std::vector<std::unique_ptr<AbstractValue>> createValues(Arguments&&... argument
 }
 
 
-} // namespace glbinding
+} // namespace khrbinding

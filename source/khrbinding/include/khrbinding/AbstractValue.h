@@ -2,12 +2,10 @@
 #pragma once
 
 
-#include <string>
-
-#include <glbinding/glbinding_api.h>
+#include <khrbinding/khrbinding_api.h>
 
 
-namespace glbinding
+namespace khrbinding
 {
 
 
@@ -17,7 +15,7 @@ namespace glbinding
 *
 *    This class and its subclasses Value<T> are mainly used when callbacks of OpenGL functions are used.
 */
-class GLBINDING_API AbstractValue
+class KHRBINDING_API AbstractValue
 {
 public:
     /**
@@ -34,4 +32,4 @@ public:
 };
 
 
-} // namespace glbinding
+} // namespace khrbinding
