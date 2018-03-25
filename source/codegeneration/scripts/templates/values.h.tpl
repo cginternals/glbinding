@@ -4,7 +4,7 @@
 
 #include <{{api}}binding/{{api}}binding_features.h>
 
-#include <{{api}}binding/nogl.h>
+#include <{{api}}binding/no{{api}}.h>
 #include <{{api}}binding/{{api}}/types.h>
 
 

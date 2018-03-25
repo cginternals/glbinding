@@ -17,8 +17,8 @@ class Version : public khrbinding::Version<glesbinding::Version>
 public:
     using khrbinding::Version<glesbinding::Version>::Version;
 
-    GLBINDING_CONSTEXPR inline Version(const Version &version);
-    GLBINDING_CONSTEXPR inline Version(Version && version);
+    GLESBINDING_CONSTEXPR inline Version(const Version &version);
+    GLESBINDING_CONSTEXPR inline Version(Version && version);
 
     inline Version & operator=(const Version &version);
     inline Version & operator=(Version && version);

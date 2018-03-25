@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <glesbinding/nogl.h>
+#include <glesbinding/nogles.h>
 #include <glesbinding/glesbinding_api.h>
 #include <glesbinding/glesbinding_features.h>
 #include <glesbinding/gles/boolean.h>

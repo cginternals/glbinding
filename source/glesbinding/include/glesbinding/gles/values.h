@@ -4,7 +4,7 @@
 
 #include <glesbinding/glesbinding_features.h>
 
-#include <glesbinding/nogl.h>
+#include <glesbinding/nogles.h>
 #include <glesbinding/gles/types.h>
 
 

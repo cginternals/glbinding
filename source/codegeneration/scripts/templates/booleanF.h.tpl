@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <{{api}}binding/nogl.h>
+#include <{{api}}binding/no{{api}}.h>
 
 #include <{{api}}binding/{{api}}/boolean.h>
 

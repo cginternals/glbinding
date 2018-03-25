@@ -48,7 +48,7 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
-    ${include_path}/nogl.h
+    ${include_path}/nogles.h
 
     ${include_path}/gles/bitfield.h
     ${include_path}/gles/boolean.h

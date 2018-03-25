@@ -2,6 +2,8 @@
 #pragma once
 
 
+#include <khrbinding-aux/types_to_string.h>
+
 #include <{{api}}binding/{{api}}/types.h>
 #include <{{api}}binding/Value.h>
 
@@ -27,6 +29,8 @@
 namespace {{api}}binding
 {
 
+
+using khrbinding::operator<<;
 
 {{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue * value);
 
