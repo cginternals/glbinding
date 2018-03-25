@@ -1591,6 +1591,7 @@ enum class GLenum : unsigned int
     GL_PERFQUERY_DONOT_FLUSH_INTEL                                           = 0x83F9, // decimal value: 33785
     GL_PERFQUERY_FLUSH_INTEL                                                 = 0x83FA, // decimal value: 33786
     GL_PERFQUERY_WAIT_INTEL                                                  = 0x83FB, // decimal value: 33787
+    GL_BLACKHOLE_RENDER_INTEL                                                = 0x83FC, // decimal value: 33788
     GL_CONSERVATIVE_RASTERIZATION_INTEL                                      = 0x83FE, // decimal value: 33790
     GL_ACTIVE_TEXTURE                                                        = 0x84E0, // decimal value: 34016
     GL_PATH_TRANSPOSE_MODELVIEW_MATRIX_NV                                    = 0x84E3, // decimal value: 34019
@@ -4290,6 +4291,7 @@ GLESBINDING_CONSTEXPR static const GLenum GL_COMPRESSED_RGBA_S3TC_DXT5_ANGLE = G
 GLESBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_DONOT_FLUSH_INTEL = GLenum::GL_PERFQUERY_DONOT_FLUSH_INTEL;
 GLESBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_FLUSH_INTEL = GLenum::GL_PERFQUERY_FLUSH_INTEL;
 GLESBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_WAIT_INTEL = GLenum::GL_PERFQUERY_WAIT_INTEL;
+GLESBINDING_CONSTEXPR static const GLenum GL_BLACKHOLE_RENDER_INTEL = GLenum::GL_BLACKHOLE_RENDER_INTEL;
 GLESBINDING_CONSTEXPR static const GLenum GL_CONSERVATIVE_RASTERIZATION_INTEL = GLenum::GL_CONSERVATIVE_RASTERIZATION_INTEL;
 GLESBINDING_CONSTEXPR static const GLenum GL_ACTIVE_TEXTURE = GLenum::GL_ACTIVE_TEXTURE;
 GLESBINDING_CONSTEXPR static const GLenum GL_PATH_TRANSPOSE_MODELVIEW_MATRIX_NV = GLenum::GL_PATH_TRANSPOSE_MODELVIEW_MATRIX_NV;

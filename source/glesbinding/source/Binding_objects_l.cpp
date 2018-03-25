@@ -9,9 +9,9 @@ namespace glesbinding
 {
 
 
-Function<void, GLenum, GLuint, GLsizei, const GLchar *> Binding::LabelObjectEXT("glLabelObjectEXT");
-Function<void, GLfloat> Binding::LineWidth("glLineWidth");
-Function<void, GLuint> Binding::LinkProgram("glLinkProgram");
+Function<Binding, void, GLenum, GLuint, GLsizei, const GLchar *> Binding::LabelObjectEXT("glLabelObjectEXT");
+Function<Binding, void, GLfloat> Binding::LineWidth("glLineWidth");
+Function<Binding, void, GLuint> Binding::LinkProgram("glLinkProgram");
 
 
 

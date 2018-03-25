@@ -12,8 +12,6 @@
 #include <array>
 #include <KHR/khrplatform.h>
 
-#include <functional>
-#include <ostream>
 #include <string>
 
 
@@ -127,17 +125,6 @@ struct hash<gles::GLextension>
 } // namespace std
 
 
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
-
-
-} // namespace gles
-
-
-
 namespace std
 {
 
@@ -159,16 +146,6 @@ namespace gles
 {
 
 
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const GLenum & value);
-
-
-} // namespace gles
-
-
-namespace gles
-{
-
-
 GLESBINDING_CONSTEXPR inline GLenum operator+(const GLenum & a, const std::underlying_type<GLenum>::type b)
 {
     return static_cast<GLenum>(static_cast<std::underlying_type<GLenum>::type>(a) + b);
@@ -183,18 +160,7 @@ GLESBINDING_CONSTEXPR inline GLenum operator-(const GLenum & a, const std::under
 } // namespace gles
 
 
-namespace gles{GLESBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLESBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLESBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLESBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLESBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLESBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLESBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace gles
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const GLboolean & value);
-
-
-} // namespace gles
-
+namespace gles{GLESBINDING_CONSTEXPR inline bool operator==(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) == b;}GLESBINDING_CONSTEXPR inline bool operator!=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) != b;}GLESBINDING_CONSTEXPR inline bool operator< (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) < b;}GLESBINDING_CONSTEXPR inline bool operator<=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) <= b;}GLESBINDING_CONSTEXPR inline bool operator> (const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) > b;}GLESBINDING_CONSTEXPR inline bool operator>=(const GLenum & a, std::underlying_type<GLenum>::type b){    return static_cast<std::underlying_type<GLenum>::type>(a) >= b;}GLESBINDING_CONSTEXPR inline bool operator==(std::underlying_type<GLenum>::type a, const GLenum & b){    return a == static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator!=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a != static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator< (std::underlying_type<GLenum>::type a, const GLenum & b){    return a < static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator<=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a <= static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator> (std::underlying_type<GLenum>::type a, const GLenum & b){    return a > static_cast<std::underlying_type<GLenum>::type>(b);}GLESBINDING_CONSTEXPR inline bool operator>=(std::underlying_type<GLenum>::type a, const GLenum & b){    return a >= static_cast<std::underlying_type<GLenum>::type>(b);}} // namespace gles
 
 
 namespace std
@@ -212,17 +178,6 @@ struct hash<gles::AttribMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const AttribMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -269,6 +224,7 @@ inline AttribMask & operator^=(AttribMask & a, const AttribMask & b)
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -284,17 +240,6 @@ struct hash<gles::BufferAccessMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -341,6 +286,7 @@ inline BufferAccessMask & operator^=(BufferAccessMask & a, const BufferAccessMas
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -356,17 +302,6 @@ struct hash<gles::BufferBitQCOM>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferBitQCOM & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -413,6 +348,7 @@ inline BufferBitQCOM & operator^=(BufferBitQCOM & a, const BufferBitQCOM & b)
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -428,17 +364,6 @@ struct hash<gles::ClearBufferMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -485,6 +410,7 @@ inline ClearBufferMask & operator^=(ClearBufferMask & a, const ClearBufferMask &
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -500,17 +426,6 @@ struct hash<gles::ContextFlagMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const ContextFlagMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -557,6 +472,7 @@ inline ContextFlagMask & operator^=(ContextFlagMask & a, const ContextFlagMask &
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -572,17 +488,6 @@ struct hash<gles::FoveationConfigBitQCOM>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const FoveationConfigBitQCOM & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -629,6 +534,7 @@ inline FoveationConfigBitQCOM & operator^=(FoveationConfigBitQCOM & a, const Fov
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -644,17 +550,6 @@ struct hash<gles::MapBufferUsageMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const MapBufferUsageMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -701,6 +596,7 @@ inline MapBufferUsageMask & operator^=(MapBufferUsageMask & a, const MapBufferUs
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -716,17 +612,6 @@ struct hash<gles::MemoryBarrierMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const MemoryBarrierMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -773,6 +658,7 @@ inline MemoryBarrierMask & operator^=(MemoryBarrierMask & a, const MemoryBarrier
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -788,17 +674,6 @@ struct hash<gles::PathFontStyle>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -845,6 +720,7 @@ inline PathFontStyle & operator^=(PathFontStyle & a, const PathFontStyle & b)
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -860,17 +736,6 @@ struct hash<gles::PathMetricMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -917,6 +782,7 @@ inline PathMetricMask & operator^=(PathMetricMask & a, const PathMetricMask & b)
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -932,17 +798,6 @@ struct hash<gles::PathRenderingMaskNV>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -989,6 +844,7 @@ inline PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRende
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -1004,17 +860,6 @@ struct hash<gles::PerformanceQueryCapsMaskINTEL>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -1061,6 +906,7 @@ inline PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL 
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -1076,17 +922,6 @@ struct hash<gles::SyncObjectMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -1133,6 +968,7 @@ inline SyncObjectMask & operator^=(SyncObjectMask & a, const SyncObjectMask & b)
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -1148,17 +984,6 @@ struct hash<gles::UseProgramStageMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const UseProgramStageMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -1205,6 +1030,7 @@ inline UseProgramStageMask & operator^=(UseProgramStageMask & a, const UseProgra
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -1220,17 +1046,6 @@ struct hash<gles::UnusedMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const UnusedMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -1277,6 +1092,7 @@ inline UnusedMask & operator^=(UnusedMask & a, const UnusedMask & b)
 } // namespace gles
 
 
+
 namespace std
 {
 
@@ -1292,17 +1108,6 @@ struct hash<gles::BufferStorageMask>
 
 
 } // namespace std
-
-
-namespace gles
-{
-
-
-GLESBINDING_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
-
-
-} // namespace gles
-
 
 
 namespace gles
@@ -1347,4 +1152,5 @@ inline BufferStorageMask & operator^=(BufferStorageMask & a, const BufferStorage
 
 
 } // namespace gles
+
 

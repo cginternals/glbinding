@@ -9,12 +9,12 @@ namespace glesbinding
 {
 
 
-Function<void, GLuint, GLuint, const GLuint *, GLuint, const GLuint *, const GLenum *> Binding::WaitSemaphoreEXT("glWaitSemaphoreEXT");
-Function<void, GLsync, UnusedMask, GLuint64> Binding::WaitSync("glWaitSync");
-Function<void, GLsync, GLbitfield, GLuint64> Binding::WaitSyncAPPLE("glWaitSyncAPPLE");
-Function<void, GLuint64> Binding::WaitVkSemaphoreNV("glWaitVkSemaphoreNV");
-Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> Binding::WeightPathsNV("glWeightPathsNV");
-Function<void, GLenum, GLsizei, const GLint *> Binding::WindowRectanglesEXT("glWindowRectanglesEXT");
+Function<Binding, void, GLuint, GLuint, const GLuint *, GLuint, const GLuint *, const GLenum *> Binding::WaitSemaphoreEXT("glWaitSemaphoreEXT");
+Function<Binding, void, GLsync, UnusedMask, GLuint64> Binding::WaitSync("glWaitSync");
+Function<Binding, void, GLsync, GLbitfield, GLuint64> Binding::WaitSyncAPPLE("glWaitSyncAPPLE");
+Function<Binding, void, GLuint64> Binding::WaitVkSemaphoreNV("glWaitVkSemaphoreNV");
+Function<Binding, void, GLuint, GLsizei, const GLuint *, const GLfloat *> Binding::WeightPathsNV("glWeightPathsNV");
+Function<Binding, void, GLenum, GLsizei, const GLint *> Binding::WindowRectanglesEXT("glWindowRectanglesEXT");
 
 
 

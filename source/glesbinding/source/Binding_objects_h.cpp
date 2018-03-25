@@ -9,7 +9,7 @@ namespace glesbinding
 {
 
 
-Function<void, GLenum, GLenum> Binding::Hint("glHint");
+Function<Binding, void, GLenum, GLenum> Binding::Hint("glHint");
 
 
 

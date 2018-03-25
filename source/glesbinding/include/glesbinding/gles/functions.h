@@ -201,7 +201,9 @@ GLESBINDING_API void glDrawTransformFeedbackInstancedEXT(GLenum mode, GLuint id,
 GLESBINDING_API void glDrawVkImageNV(GLuint64 vkImage, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
 
 GLESBINDING_API void glEGLImageTargetRenderbufferStorageOES(GLenum target, GLeglImageOES image);
+GLESBINDING_API void glEGLImageTargetTexStorageEXT(GLenum target, GLeglImageOES image, const GLint * attrib_list);
 GLESBINDING_API void glEGLImageTargetTexture2DOES(GLenum target, GLeglImageOES image);
+GLESBINDING_API void glEGLImageTargetTextureStorageEXT(GLuint texture, GLeglImageOES image, const GLint * attrib_list);
 GLESBINDING_API void glEnable(GLenum cap);
 GLESBINDING_API void glEnableDriverControlQCOM(GLuint driverControl);
 GLESBINDING_API void glEnableVertexAttribArray(GLuint index);

@@ -2,7 +2,7 @@
 #pragma once
 
 
-#include <glbinding/glbinding_api.h>
+#include <khrbinding/ContextHandle.h>
 
 
 namespace glbinding 
@@ -13,7 +13,7 @@ namespace glbinding
 *  @brief
 *    The data type of a context handle
 */
-using ContextHandle = long long;
+using ContextHandle = khrbinding::ContextHandle;
 
 
 } // namespace glbinding

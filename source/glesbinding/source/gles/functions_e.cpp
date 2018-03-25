@@ -16,9 +16,19 @@ void glEGLImageTargetRenderbufferStorageOES(GLenum target, GLeglImageOES image)
     return Binding::EGLImageTargetRenderbufferStorageOES(target, image);
 }
 
+void glEGLImageTargetTexStorageEXT(GLenum target, GLeglImageOES image, const GLint * attrib_list)
+{
+    return Binding::EGLImageTargetTexStorageEXT(target, image, attrib_list);
+}
+
 void glEGLImageTargetTexture2DOES(GLenum target, GLeglImageOES image)
 {
     return Binding::EGLImageTargetTexture2DOES(target, image);
+}
+
+void glEGLImageTargetTextureStorageEXT(GLuint texture, GLeglImageOES image, const GLint * attrib_list)
+{
+    return Binding::EGLImageTargetTextureStorageEXT(texture, image, attrib_list);
 }
 
 void glEnable(GLenum cap)

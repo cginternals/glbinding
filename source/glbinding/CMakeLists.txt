@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(OpenGL REQUIRED)
+# find_package(OpenGL REQUIRED)
 
 set(ADDITIONAL_LIBRARIES)
 set(ADDITIONAL_INCLUDES)
@@ -214,7 +214,6 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
-    ${OPENGL_LIBRARIES}
     ${META_PROJECT_NAME}::khrbinding
 
     INTERFACE
