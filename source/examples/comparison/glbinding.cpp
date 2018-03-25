@@ -3,10 +3,14 @@
 
 #include <iostream>
 
+#include <GLFW/glfw3.h>
+
 #include <glbinding/gl/gl.h>
 
 #include <glbinding/AbstractFunction.h> 
 #include <glbinding/callbacks.h>
+
+#include <glbinding-aux/types_to_string.h>
 
 #include <glbinding/Binding.h>
 
@@ -21,7 +25,9 @@ namespace
 
 void glbinding_init()
 {
-    glbinding::Binding::initialize(false);
+    glbinding::Binding::initialize([](const char * name) {
+        return glfwGetProcAddress(name);
+    }, false);
 }
 
 

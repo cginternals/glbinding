@@ -33,51 +33,11 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
-    ${include_path}/AbstractFunction.h
-    ${include_path}/AbstractValue.h
-    ${include_path}/Binding.h
-    ${include_path}/CallbackMask.h
-    ${include_path}/CallbackMask.inl
-    ${include_path}/ContextHandle.h
-    ${include_path}/Function.h
-    ${include_path}/Function.inl
-    ${include_path}/FunctionCall.h
-    ${include_path}/Meta.h
-    ${include_path}/ProcAddress.h
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
-    ${include_path}/Value.h
-    ${include_path}/Value.inl
-    ${include_path}/Version.h
-    ${include_path}/Version.inl
-
-    ${include_path}/callbacks.h
-    ${include_path}/logging.h
 )
 
-# add featured headers
-
-file(GLOB featured_includes ${include_path}/gl*/*.h)
-list(APPEND headers ${featured_includes})
-
 set(sources
-    ${source_path}/callbacks_private.h
-    ${source_path}/callbacks.cpp
-    
-    ${source_path}/AbstractFunction.cpp
-    ${source_path}/AbstractValue.cpp
-    ${source_path}/Binding.cpp
-    ${source_path}/FunctionCall.cpp
-
-    ${source_path}/ProcAddress.cpp
-    ${source_path}/Value.cpp
-    ${source_path}/Version.cpp
-
-    ${source_path}/Meta.cpp
-
-    ${source_path}/RingBuffer.h
-    ${source_path}/RingBuffer.inl
-    ${source_path}/logging.cpp
 )
 
 

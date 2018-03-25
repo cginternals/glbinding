@@ -76,7 +76,6 @@ set(headers
     ${include_path}/Version.h
     ${include_path}/Version.inl
     ${include_path}/SharedBitfield.h
-    ${include_path}/SharedBitfield.inl
 )
 
 # add featured headers
@@ -229,6 +228,7 @@ target_link_libraries(${target}
     PUBLIC
     ${DEFAULT_LIBRARIES}
     ${OPENGL_LIBRARIES}
+    ${META_PROJECT_NAME}::khrbinding
 
     INTERFACE
 )
