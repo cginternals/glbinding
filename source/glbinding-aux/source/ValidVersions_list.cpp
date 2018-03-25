@@ -4,11 +4,8 @@
 #include <glbinding/Version.h>
 
 
-namespace glbinding { namespace aux
-{
-
-
-const std::set<Version> ValidVersions::s_validVersions =
+template <>
+const std::set<glbinding::Version> khrbinding::aux::ValidVersions<glbinding::Version>::s_validVersions =
 {
     { 1, 0 },
     { 1, 1 },
@@ -31,7 +28,5 @@ const std::set<Version> ValidVersions::s_validVersions =
     { 4, 6 }
 };
 
-const Version ValidVersions::s_latest { 4, 6 };
-
-
-} } // namespace glbinding::aux
+template <>
+const glbinding::Version khrbinding::aux::ValidVersions<glbinding::Version>::s_latest { 4, 6 };

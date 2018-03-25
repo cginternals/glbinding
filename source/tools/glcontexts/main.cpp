@@ -17,6 +17,7 @@
 #include <glbinding/Binding.h>
 
 #include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/types_to_string.h>
 
 
 using namespace gl;

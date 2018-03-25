@@ -18,6 +18,8 @@ namespace std_boost = boost;
 namespace std_boost = std;
 #endif
 
+#include <khrbinding-aux/RingBuffer.h>
+
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Binding.h>
 #include <glbinding/CallbackMask.h>
@@ -25,7 +27,6 @@ namespace std_boost = std;
 #include <glbinding-aux/types_to_string.h>
 
 #include "logging_private.h"
-#include "RingBuffer.h"
 
 namespace
 {
@@ -38,7 +39,7 @@ std::atomic<bool> g_persisted{true};
 std_boost::mutex g_lockfinish;
 std_boost::condition_variable g_finishcheck;
 
-using FunctionCallBuffer = glbinding::aux::RingBuffer<glbinding::aux::LogEntry>;
+using FunctionCallBuffer = khrbinding::aux::RingBuffer<glbinding::aux::LogEntry>;
 FunctionCallBuffer g_buffer{LOG_BUFFER_SIZE};
 
 

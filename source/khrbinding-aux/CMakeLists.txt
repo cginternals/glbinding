@@ -27,7 +27,7 @@ endif()
 # 
 
 # Target name
-set(target glbinding-aux)
+set(target khrbinding-aux)
 
 # Exit here if required dependencies are not met
 message(STATUS "Lib ${target}")
@@ -49,15 +49,13 @@ set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target}")
 set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
-    ${include_path}/ContextInfo.h
-    ${include_path}/Meta.h
+    ${include_path}/RingBuffer.h
+    ${include_path}/RingBuffer.inl
 
     ${include_path}/ValidVersions.h
-
-    ${include_path}/logging.h
-
+    ${include_path}/ValidVersions.inl
+    
     ${include_path}/types_to_string.h
-    ${include_path}/types_to_string.inl
 )
 
 # add featured headers
@@ -66,32 +64,7 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND headers ${featured_includes})
 
 set(sources
-    ${source_path}/ContextInfo.cpp
-
-    ${source_path}/Meta.cpp
-    ${source_path}/Meta_Maps.h
-    ${source_path}/Meta_getStringByBitfield.cpp
-    ${source_path}/Meta_BitfieldsByString.cpp
-    ${source_path}/Meta_BooleansByString.cpp
-    ${source_path}/Meta_EnumsByString.cpp
-    ${source_path}/Meta_ExtensionsByFunctionString.cpp
-    ${source_path}/Meta_ExtensionsByString.cpp
-    ${source_path}/Meta_FunctionStringsByExtension.cpp
-    ${source_path}/Meta_FunctionStringsByVersion.cpp
-    ${source_path}/Meta_ReqVersionsByExtension.cpp
-    ${source_path}/Meta_StringsByBitfield.cpp
-    ${source_path}/Meta_StringsByBoolean.cpp
-    ${source_path}/Meta_StringsByEnum.cpp
-    ${source_path}/Meta_StringsByExtension.cpp
-
-    ${source_path}/ValidVersions_list.cpp
-
-    ${source_path}/logging.cpp
-    ${source_path}/logging_private.h
-
     ${source_path}/types_to_string.cpp
-    ${source_path}/types_to_string_private.cpp
-    ${source_path}/types_to_string_private.h
 )
 
 
@@ -113,7 +86,6 @@ source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.inl$"
     # workaround for removing default flags 
     # string(REPLACE "/EHsc" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}) 
 #endif ()
-
 
 # Build library
 add_library(${target}
@@ -204,8 +176,7 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
-    ${META_PROJECT_NAME}::glbinding
-    ${META_PROJECT_NAME}::khrbinding-aux
+    ${META_PROJECT_NAME}::khrbinding
 
     INTERFACE
 )

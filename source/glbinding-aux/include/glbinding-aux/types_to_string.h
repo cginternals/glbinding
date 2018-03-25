@@ -2,6 +2,8 @@
 #pragma once
 
 
+#include <khrbinding-aux/types_to_string.h>
+
 #include <glbinding/gl/types.h>
 #include <glbinding/Value.h>
 
@@ -303,6 +305,8 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferS
 namespace glbinding
 {
 
+
+using khrbinding::operator<<;
 
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue * value);
 

@@ -6,7 +6,7 @@
 #include <vector>
 
 
-namespace glbinding { namespace aux
+namespace khrbinding { namespace aux
 {
 
 
@@ -53,7 +53,7 @@ protected:
 };
 
 
-} } // namespace glbinding::aux
+} } // namespace khrbinding::aux
 
 
-#include "RingBuffer.inl"
+#include <khrbinding-aux/RingBuffer.inl>

@@ -7,7 +7,7 @@
 #include <cmath>
 
 
-namespace glbinding { namespace aux
+namespace khrbinding { namespace aux
 {
 
 

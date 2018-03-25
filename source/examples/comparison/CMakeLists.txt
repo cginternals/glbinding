@@ -3,6 +3,7 @@
 # External dependencies
 # 
 
+find_package(OpenGL)
 find_package(glfw3)
 find_package(GLEW)
 
@@ -93,6 +94,7 @@ target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
     glfw
+    ${OPENGL_LIBRARIES}
     ${GLEW_LIBRARY}
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
