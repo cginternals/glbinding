@@ -8,6 +8,8 @@
 #include <khrbinding/Value.h>
 #include <khrbinding/FunctionCall.h>
 #include <khrbinding/CallbackMask.h>
+#include <khrbinding/Boolean8.h>
+#include <khrbinding/Boolean32.h>
 
 
 namespace khrbinding
@@ -20,6 +22,28 @@ struct BasicCallHelper
     inline static ReturnType call(const khrbinding::Function<Binding, ReturnType, Arguments...> * function, Arguments&&... arguments)
     {
         return reinterpret_cast<typename khrbinding::Function<Binding, ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+    }
+};
+
+
+// Special case for booleans because of MSVC differing behavior
+
+template <typename Binding, typename... Arguments>
+struct BasicCallHelper<Binding, khrbinding::Boolean8, Arguments...>
+{
+    inline static khrbinding::Boolean8 call(const khrbinding::Function<Binding, khrbinding::Boolean8, Arguments...> * function, Arguments&&... arguments)
+    {
+        return reinterpret_cast<typename khrbinding::Function<Binding, khrbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+    }
+};
+
+
+template <typename Binding, typename... Arguments>
+struct BasicCallHelper<Binding, khrbinding::Boolean32, Arguments...>
+{
+    inline static khrbinding::Boolean32 call(const khrbinding::Function<Binding, khrbinding::Boolean32, Arguments...> * function, Arguments&&... arguments)
+    {
+        return reinterpret_cast<typename khrbinding::Function<Binding, khrbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
 
@@ -157,6 +181,11 @@ ReturnType Function<Binding, ReturnType, Arguments...>::call(Arguments&... argum
 template <typename Binding, typename ReturnType, typename... Arguments>
 ReturnType Function<Binding, ReturnType, Arguments...>::directCall(Arguments... arguments) const
 {
+    if (address() == nullptr)
+    {
+        return ReturnType();
+    }
+
     return BasicCallHelper<Binding, ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
 }
 

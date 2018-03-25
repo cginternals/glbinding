@@ -40,6 +40,10 @@ set(headers
     ${include_path}/AbstractVersion.inl
     ${include_path}/Binding.h
     ${include_path}/Binding.inl
+    ${include_path}/Boolean32.h
+    ${include_path}/Boolean32.inl
+    ${include_path}/Boolean8.h
+    ${include_path}/Boolean8.inl
     ${include_path}/CallbackMask.h
     ${include_path}/CallbackMask.inl
     ${include_path}/ContextHandle.h

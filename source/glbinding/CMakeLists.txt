@@ -53,7 +53,6 @@ set(headers
 
     ${include_path}/gl/bitfield.h
     ${include_path}/gl/boolean.h
-    ${include_path}/gl/boolean.inl
     ${include_path}/gl/enum.h
     ${include_path}/gl/extension.h
     ${include_path}/gl/functions.h
