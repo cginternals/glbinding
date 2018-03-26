@@ -3,6 +3,7 @@
 import sys, getopt
 
 import time
+import json
 
 from os.path import join as pjoin
 
@@ -29,7 +30,12 @@ def listApiMemberSets(features):
             apiMemberSetList.append( (f, False, True) )
     return apiMemberSetList
 
-def generate(inputfile, patchfile, targetdir, api, revisionfile):
+def generate(profile, targetdir, revisionfile):
+
+    api = profile["baseNamespace"]
+    inputfile = profile["sourceFile"]
+    patchfile = profile["patchFile"]
+    apiRequire = profile["apiIdentifier"]
 
     # preparing
 
@@ -50,12 +56,6 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
 
     # parsing
     
-    apiRequire = api
-    if api == "glsc":
-        apiRequire = "glsc2"
-    if api == "gles":
-        apiRequire = "gles2"
-
     print("")
     print("PARSING (" + api + " API)")
 
@@ -226,39 +226,32 @@ def generate(inputfile, patchfile, targetdir, api, revisionfile):
 
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv[1:], "a:s:p:d:r:", ["api=", "spec=", "patch=", "directory=" , "revision="])
+        opts, args = getopt.getopt(argv[1:], "p:d:r:", ["profile=", "directory=" , "revision="])
     except getopt.GetoptError:
-        print("usage: %s -s <spec> [-a <api>] [-p <patch spec file>] [-d <output directory>] [-r <revision file>]" % argv[0])
+        print("usage: %s -p <profile JSON> [-d <output directory>] [-r <revision file>]" % argv[0])
         sys.exit(1)
 
-    api = "gl"
+    profile = None
     targetdir = "."
-    inputfile = None
-    patchfile = None
+    revision = None
 
     for opt, arg in opts:
-        if opt in ("-a", "--api"):
-            api = arg
+        if opt in ("-p", "--profile"):
+            profile = arg
         
-        if opt in ("-s", "--spec"):
-            inputfile = arg
-
-        if opt in ("-p", "--patch"):
-            patchfile = arg
-
         if opt in ("-d", "--directory"):
             targetdir = arg
 
         if opt in ("-r", "--revision"):
             revision  = arg
 
-    if inputfile == None:
-        print("no GL spec file given")
+    if profile == None or not os.path.isfile(profile):
+        print("no profile given or not readable")
         sys.exit(1)
 
     Status.targetdir = targetdir
 
-    generate(inputfile, patchfile, targetdir, api, revision)
+    generate(json.load(open(profile)), targetdir, revision)
 
 if __name__ == "__main__":
     main(sys.argv)

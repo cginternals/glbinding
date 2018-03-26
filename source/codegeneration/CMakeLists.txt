@@ -62,7 +62,7 @@ add_custom_command(
     TARGET              ${generate_target}-gl
     PRE_BUILD
     WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND             ${PYTHON} scripts/generate.py -a gl -s gl.xml -p patch.xml -d ../glbinding -r gl.revision
+    COMMAND             ${PYTHON} scripts/generate.py -p ${CMAKE_CURRENT_SOURCE_DIR}/profiles/gl.json -d ../glbinding -r gl.revision
     COMMENT             "Generating OpenGL binding code."
 )
 
@@ -70,7 +70,7 @@ add_custom_command(
     TARGET              ${generate_target}-gles
     PRE_BUILD
     WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND             ${PYTHON} scripts/generate.py -a gles -s gl.xml -p patch.xml -d ../glesbinding -r gl.revision
+    COMMAND             ${PYTHON} scripts/generate.py -p ${CMAKE_CURRENT_SOURCE_DIR}/profiles/gles.json -d ../glesbinding -r gl.revision
     COMMENT             "Generating OpenGL ES binding code."
 )
 
@@ -78,7 +78,7 @@ add_custom_command(
     TARGET              ${generate_target}-glsc
     PRE_BUILD
     WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND             ${PYTHON} scripts/generate.py -a glsc -s gl.xml -p patch.xml -d ../glscbinding -r gl.revision
+    COMMAND             ${PYTHON} scripts/generate.py -p ${CMAKE_CURRENT_SOURCE_DIR}/profiles/glsc.json -d ../glscbinding -r gl.revision
     COMMENT             "Generating OpenGL SC binding code."
 )
 
@@ -86,7 +86,7 @@ add_custom_command(
     TARGET              ${generate_target}-egl
     PRE_BUILD
     WORKING_DIRECTORY   ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMAND             ${PYTHON} scripts/generate.py -a egl -s egl.xml -p patch.xml -d ../eglbinding -r gl.revision
+    COMMAND             ${PYTHON} scripts/generate.py -p ${CMAKE_CURRENT_SOURCE_DIR}/profiles/egl.json -d ../eglbinding -r gl.revision
     COMMENT             "Generating EGL binding code."
 )
 

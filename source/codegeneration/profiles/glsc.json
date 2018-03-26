@@ -3,7 +3,7 @@
 	"apiIdentifier": "glsc2",
 	"sourceUrl": "https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/gl.xml",
 	"sourceFile": "gl.xml",
-	"patchFile": "patches.xml",
+	"patchFile": "patch.xml",
 
 	"": "Identifier parsing",
 	"lowercasePrefix": "gl",
