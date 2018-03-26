@@ -9,7 +9,7 @@ namespace gles
 {
 
 
-enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
+enum class GLextension : int // GLextension is not a type introduced by GLES API so far
 {
     UNKNOWN = -1,
     GL_AMD_compressed_3DC_texture,

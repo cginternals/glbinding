@@ -35,7 +35,7 @@ namespace glscbinding { namespace aux
 {
 
 
-int Meta::glRevision()
+int Meta::glscRevision()
 {
     return GL_REVISION;
 }

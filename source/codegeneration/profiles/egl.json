@@ -10,6 +10,7 @@
 	"uppercasePrefix": "EGL_",
 
 	"": "Meta Feature management",
+	"bindingNamespace": "eglbinding",
 	"baseNamespace": "egl",
 	"generateFeatures": true,
 	"generateProfiles": false,

@@ -9,7 +9,7 @@ namespace glsc
 {
 
 
-enum class GLextension : int // GLextension is not a type introduced by OpenGL API so far
+enum class GLextension : int // GLextension is not a type introduced by GLSC API so far
 {
     UNKNOWN = -1,
     GL_EXT_texture_compression_s3tc,

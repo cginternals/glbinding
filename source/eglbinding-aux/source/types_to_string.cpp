@@ -153,11 +153,12 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
         stream << reinterpret_cast<const void*>(value);
     }
 
+
     else if (typeid(*value) == typeid(Value<egl::EGLextension>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLextension>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLextension *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLextension *>*>(value);
@@ -165,6 +166,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
 
 
     // Omit egl::EGLbitfield
+
 
     else if (typeid(*value) == typeid(Value<egl::AHardwareBuffer *>))
     {
@@ -175,7 +177,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLBoolean>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLBoolean *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLBoolean *>*>(value);
@@ -185,7 +187,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLenum>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLenum *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLenum *>*>(value);
@@ -195,7 +197,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLAttribKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLAttribKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLAttribKHR *>*>(value);
@@ -205,7 +207,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLAttrib>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLAttrib *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLAttrib *>*>(value);
@@ -215,7 +217,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLClientBuffer>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLClientBuffer *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLClientBuffer *>*>(value);
@@ -225,7 +227,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLConfig>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLConfig *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLConfig *>*>(value);
@@ -235,7 +237,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLContext>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLContext *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLContext *>*>(value);
@@ -245,7 +247,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLDeviceEXT>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLDeviceEXT *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLDeviceEXT *>*>(value);
@@ -255,7 +257,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLDisplay>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLDisplay *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLDisplay *>*>(value);
@@ -265,7 +267,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLImage>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLImage *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLImage *>*>(value);
@@ -275,7 +277,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLImageKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLImageKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLImageKHR *>*>(value);
@@ -285,7 +287,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLLabelKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLLabelKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLLabelKHR *>*>(value);
@@ -295,7 +297,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLObjectKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLObjectKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLObjectKHR *>*>(value);
@@ -305,7 +307,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLOutputLayerEXT>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLOutputLayerEXT *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLOutputLayerEXT *>*>(value);
@@ -315,7 +317,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLOutputPortEXT>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLOutputPortEXT *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLOutputPortEXT *>*>(value);
@@ -325,7 +327,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLStreamKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLStreamKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLStreamKHR *>*>(value);
@@ -335,7 +337,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLSurface>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLSurface *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLSurface *>*>(value);
@@ -345,7 +347,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLSync>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLSync *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLSync *>*>(value);
@@ -355,7 +357,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLSyncKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLSyncKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLSyncKHR *>*>(value);
@@ -365,7 +367,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLSyncNV>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLSyncNV *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLSyncNV *>*>(value);
@@ -375,7 +377,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::__eglMustCastToProperFunctionPointerType>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::__eglMustCastToProperFunctionPointerType *>))
     {
         stream << *reinterpret_cast<const Value<egl::__eglMustCastToProperFunctionPointerType *>*>(value);
@@ -385,7 +387,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLTimeKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLTimeKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLTimeKHR *>*>(value);
@@ -395,7 +397,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLTime>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLTime *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLTime *>*>(value);
@@ -405,7 +407,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLTimeNV>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLTimeNV *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLTimeNV *>*>(value);
@@ -415,7 +417,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLuint64NV>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLuint64NV *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLuint64NV *>*>(value);
@@ -425,7 +427,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLuint64KHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLuint64KHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLuint64KHR *>*>(value);
@@ -435,7 +437,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLnsecsANDROID>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLnsecsANDROID *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLnsecsANDROID *>*>(value);
@@ -445,7 +447,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLNativeFileDescriptorKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLNativeFileDescriptorKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLNativeFileDescriptorKHR *>*>(value);
@@ -455,7 +457,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLsizeiANDROID>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLsizeiANDROID *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLsizeiANDROID *>*>(value);
@@ -465,7 +467,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLSetBlobFuncANDROID>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLSetBlobFuncANDROID *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLSetBlobFuncANDROID *>*>(value);
@@ -475,12 +477,13 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLGetBlobFuncANDROID>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLGetBlobFuncANDROID *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLGetBlobFuncANDROID *>*>(value);
     }
-    
+
+
     else if (typeid(*value) == typeid(Value<egl::EGLClientPixmapHI *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLClientPixmapHI *>*>(value);
@@ -490,7 +493,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLDEBUGPROCKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLDEBUGPROCKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLDEBUGPROCKHR *>*>(value);
@@ -500,7 +503,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLContextFlagMask>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLContextFlagMask *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLContextFlagMask *>*>(value);
@@ -510,7 +513,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLContextProfileMask>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLContextProfileMask *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLContextProfileMask *>*>(value);
@@ -520,7 +523,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLDRMBufferUseMESAMask>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLDRMBufferUseMESAMask *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLDRMBufferUseMESAMask *>*>(value);
@@ -530,7 +533,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLLockUsageHintKHRMask>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLLockUsageHintKHRMask *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLLockUsageHintKHRMask *>*>(value);
@@ -540,7 +543,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLNativeBufferUsageFlags>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLNativeBufferUsageFlags *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLNativeBufferUsageFlags *>*>(value);
@@ -550,7 +553,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLRenderableTypeMask>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLRenderableTypeMask *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLRenderableTypeMask *>*>(value);
@@ -560,7 +563,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLSurfaceTypeMask>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLSurfaceTypeMask *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLSurfaceTypeMask *>*>(value);
@@ -570,7 +573,7 @@ std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue
     {
         stream << *reinterpret_cast<const Value<egl::EGLSyncFlagsKHR>*>(value);
     }
-    
+
     else if (typeid(*value) == typeid(Value<egl::EGLSyncFlagsKHR *>))
     {
         stream << *reinterpret_cast<const Value<egl::EGLSyncFlagsKHR *>*>(value);
@@ -594,7 +597,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<egl::EGLenum> & val
 }
 
 /*template <>
-std::ostream & operator<<(std::ostream & stream, const Value<gl::GLbitfield> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<egl::EGLbitfield> & value)
 {
     std::stringstream ss;
     ss << "0x" << std::hex << static_cast<unsigned>(value.value());
@@ -612,14 +615,6 @@ std::ostream & operator<<(std::ostream & stream, const Value<egl::EGLBoolean> & 
     return stream;
 }
 
-template <>
-std::ostream & operator<<(std::ostream & stream, const Value<egl::EGLchar *> & value)
-{
-    auto s = aux::wrapString(reinterpret_cast<const char*>(value.value()));
-    stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
-
-    return stream;
-}
 
 
 } // namespace eglbinding

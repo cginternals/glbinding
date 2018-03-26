@@ -159,7 +159,8 @@ class Context:
                    "enumType": "EGLenum" if self.api == "egl" else "GLenum",
                    "booleanType": "EGLBoolean" if self.api == "egl" else "GLboolean",
                    "extensionType": "EGLextension" if self.api == "egl" else "GLextension",
-                   "bindingType": "MultiContextBinding" if self.multiContextBinding else "SingleContextBinding"
+                   "bindingType": "MultiContextBinding" if self.multiContextBinding else "SingleContextBinding",
+                   "glapi": self.api.startswith("gl")
                 }
 
         context["apiMemberSets"] = self.listContext( [{"memberSet": versionBID(feature, core, ext)}

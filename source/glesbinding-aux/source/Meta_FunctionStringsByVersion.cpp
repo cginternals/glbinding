@@ -4,9 +4,6 @@
 #include <glesbinding/Version.h>
 
 
-using namespace gles;
-
-
 namespace glesbinding { namespace aux
 {
 

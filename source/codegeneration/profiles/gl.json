@@ -10,6 +10,7 @@
 	"uppercasePrefix": "GL_",
 
 	"": "Meta Feature management",
+	"bindingNamespace": "glbinding",
 	"baseNamespace": "gl",
 	"generateFeatures": true,
 	"generateProfiles": true,

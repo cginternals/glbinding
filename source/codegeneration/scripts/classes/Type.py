@@ -19,6 +19,9 @@ class Type:
             self.name = self.name[7:]
             self.typevalue = "struct"
 
+        if self.typevalue.startswith("struct "):
+             self.typevalue = "struct"
+
         # ToDo: required and removed ... for now glbinding discards this
 
 

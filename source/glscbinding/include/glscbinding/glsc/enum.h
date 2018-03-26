@@ -424,7 +424,7 @@ enum class GLenum : unsigned int
     GL_LINES                                     = 0x0001, // decimal value: 1
     GL_LINE_LOOP                                 = 0x0002, // decimal value: 2
     GL_LINE_STRIP                                = 0x0003, // decimal value: 3
-    GL_TRIANGLSC                                 = 0x0004, // decimal value: 4
+    GL_TRIANGLES                                 = 0x0004, // decimal value: 4
     GL_TRIANGLE_STRIP                            = 0x0005, // decimal value: 5
     GL_TRIANGLE_FAN                              = 0x0006, // decimal value: 6
 
@@ -1095,7 +1095,7 @@ GLSCBINDING_CONSTEXPR static const GLenum GL_POINTS = GLenum::GL_POINTS;
 GLSCBINDING_CONSTEXPR static const GLenum GL_LINES = GLenum::GL_LINES;
 GLSCBINDING_CONSTEXPR static const GLenum GL_LINE_LOOP = GLenum::GL_LINE_LOOP;
 GLSCBINDING_CONSTEXPR static const GLenum GL_LINE_STRIP = GLenum::GL_LINE_STRIP;
-GLSCBINDING_CONSTEXPR static const GLenum GL_TRIANGLSC = GLenum::GL_TRIANGLSC;
+GLSCBINDING_CONSTEXPR static const GLenum GL_TRIANGLES = GLenum::GL_TRIANGLES;
 GLSCBINDING_CONSTEXPR static const GLenum GL_TRIANGLE_STRIP = GLenum::GL_TRIANGLE_STRIP;
 GLSCBINDING_CONSTEXPR static const GLenum GL_TRIANGLE_FAN = GLenum::GL_TRIANGLE_FAN;
 

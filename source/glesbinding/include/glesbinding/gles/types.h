@@ -16,16 +16,20 @@
 
 
 #ifdef _MSC_VER
-#define GL_APIENTRY __stdcall
+#define GLES_APIENTRY __stdcall
 #else
-#define GL_APIENTRY
+#define GLES_APIENTRY
 #endif
 
 
 namespace gles
 {
 
-
+using EGLint = int;
+using EGLchar = char;
+using EGLNativeDisplayType = void*;
+using EGLNativePixmapType = void*;
+using EGLNativeWindowType = void*;
 enum class GLextension : int;
 enum class GLenum : unsigned int;
 // Import of GLboolean is an include
@@ -66,9 +70,9 @@ using GLuint64EXT = uint64_t;
 using GLsync = struct __GLsync *;
 struct _cl_context;
 struct _cl_event;
-using GLDEBUGPROC = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
-using GLDEBUGPROCARB = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
-using GLDEBUGPROCKHR = void (GL_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROC = void (GLES_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROCARB = void (GLES_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
+using GLDEBUGPROCKHR = void (GLES_APIENTRY *)(GLenum source,GLenum type,GLuint id,GLenum severity,GLsizei length,const GLchar *message,const void *userParam);
 using GLbyte = khronos_int8_t;
 using GLubyte = khronos_uint8_t;
 using GLfloat = khronos_float_t;
@@ -80,10 +84,10 @@ using GLint64EXT = khronos_int64_t;
 using GLuint64EXT = khronos_uint64_t;
 using GLintptr = khronos_intptr_t;
 using GLsizeiptr = khronos_ssize_t;
-using GLDEBUGPROCAMD = void (GL_APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
+using GLDEBUGPROCAMD = void (GLES_APIENTRY *)(GLuint id,GLenum category,GLenum severity,GLsizei length,const GLchar *message,void *userParam);
 using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
-using GLVULKANPROCNV = void (GL_APIENTRY *)(void);
+using GLVULKANPROCNV = void (GLES_APIENTRY *)(void);
 using GLuint_array_2 = std::array<GLuint, 2>;
 enum class AttribMask : unsigned int;
 enum class BufferAccessMask : unsigned int;

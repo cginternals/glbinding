@@ -416,7 +416,7 @@ using glsc::GL_POINTS;
 using glsc::GL_LINES;
 using glsc::GL_LINE_LOOP;
 using glsc::GL_LINE_STRIP;
-using glsc::GL_TRIANGLSC;
+using glsc::GL_TRIANGLES;
 using glsc::GL_TRIANGLE_STRIP;
 using glsc::GL_TRIANGLE_FAN;
 

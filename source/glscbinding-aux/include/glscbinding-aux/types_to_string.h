@@ -87,42 +87,42 @@ GLSCBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, co
 
 /**
 *  @brief
-*    A specialized ostream operator for the glsc::GLenum Value template
+*    A specialized ostream operator for the gl::GLenum Value template
 */
 template <>
 GLSCBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glsc::GLenum> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the glsc::GLbitfield Value template
+*    A specialized ostream operator for the gl::GLbitfield Value template
 */
 /*template <>
 GLSCBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glsc::GLbitfield> & value);*/
 
 /**
 *  @brief
-*    A specialized ostream operator for the glsc::GLenum Value template
+*    A specialized ostream operator for the gl::GLenum Value template
 */
 template <>
 GLSCBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glsc::GLboolean> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the glsc::GLubyte * Value template
+*    A specialized ostream operator for the gl::GLubyte * Value template
 */
 template <>
 GLSCBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glsc::GLubyte *> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the glsc::GLchar * Value template
+*    A specialized ostream operator for the gl::GLchar * Value template
 */
 template <>
 GLSCBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glsc::GLchar *> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the glsc::GLuint_array_2 Value template
+*    A specialized ostream operator for the gl::GLuint_array_2 Value template
 */
 template <>
 GLSCBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<glsc::GLuint_array_2> & value);

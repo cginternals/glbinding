@@ -46,13 +46,13 @@ public:
     *  @return
     *    The revision of the parsed gl.xml file
     */
-    static int glRevision();
+    static int glesRevision();
 
     /**
     *  @brief
     *    Converts a string into a bitfield symbol
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *     The string representation of the bitfield
     *
     *  @return
@@ -73,7 +73,7 @@ public:
     *  @brief
     *    Converts a GLenum to a string
     *
-    *  @param[in] glenum
+    *  @param[in] enum
     *    The enum to convert
     *
     *  @return
@@ -82,26 +82,26 @@ public:
     *  @remarks
     *    Beware, that some enums in the OpenGL API have different symbol names but identical enum values and that this function cannot differentiate between them
     */
-    static const std::string & getString(gles::GLenum glenum);
+    static const std::string & getString(gles::GLenum glesenum);
     
     /**
     *  @brief
-    *    Converts a string to a GLenum symbol
+    *    Converts a string to a enum symbol
     *
-    *  @param[in] glenum
+    *  @param[in] enum
     *    The string representation of the enum
     *
     *  @return
     *    The symbol identified through the enum string, 0 if failed
     */
-    static gles::GLenum getEnum(const std::string & glenum);
+    static gles::GLenum getEnum(const std::string & glesenum);
     
     /**
     *  @brief
-    *    Returns the list of all enums known by the gl.xml
+    *    Returns the list of all enums known by the gles.xml
     *
     *  @return
-    *    The list of all enums known by the gl.xml
+    *    The list of all enums known by the gles.xml
     */
     static std::vector<gles::GLenum> enums();
 
@@ -109,16 +109,16 @@ public:
     *  @brief
     *    Converts a GLboolean to a string
     *
-    *  @param[in] glboolean
+    *  @param[in] boolean
     *    The boolean to convert
     *
     *  @return
     *    A string representation of the GLboolean symbol name
     *
     *  @remarks
-    *    Can either be 'GL_TRUE' or 'GL_FALSE'
+    *    Can either be 'GLES_TRUE' or 'GLES_FALSE'
     */
-    static const std::string & getString(const gles::GLboolean & glboolean);
+    static const std::string & getString(const gles::GLboolean & boolean);
     
     /**
     *  @brief
@@ -128,40 +128,40 @@ public:
     *    The string representation of the GLboolean
     *
     *  @return
-    *    The symbol identified through the boolean string, 'GL_FALSE' if failed
+    *    The symbol identified through the boolean string, 'GLES_FALSE' if failed
     */
-    static gles::GLboolean getBoolean(const std::string & glboolean);
+    static gles::GLboolean getBoolean(const std::string & boolean);
 
     /**
     *  @brief
     *    Converts a GLextension to its string representation
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The extension to convert
     *
     *  @return
     *    The string representation of the extension
     */
-    static const std::string & getString(gles::GLextension glextension);
+    static const std::string & getString(gles::GLextension extension);
     
     /**
     *  @brief
     *    Converts a string to an extension
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The string representation of the extension
     *
     *  @return
     *    The symbol identified through the extension string, 'UNKNOWN' if failed
     */
-    static gles::GLextension getExtension(const std::string & glextension);
+    static gles::GLextension getExtension(const std::string & extension);
 
     /**
     *  @brief
-    *    Returns the set of all extensions known by the gl.xml
+    *    Returns the set of all extensions known by the gles.xml
     *
     *  @return
-    *    The set of all extensions known by the gl.xml
+    *    The set of all extensions known by the gles.xml
     */
     static std::set<gles::GLextension> extensions();
     
@@ -184,13 +184,25 @@ public:
     *  @brief
     *    Returns the list of extensions that are requiring an OpenGL function
     *
-    *  @param[in] glfunction
-    *    The name of the function, including the 'gl' prefix
+    *  @param[in] function
+    *    The name of the function, including the 'gles' prefix
     *
     *  @return
     *    The set of extensions that are requiring an OpenGL function
     */
-    static const std::set<gles::GLextension> extensions(const std::string & glfunction);
+    static const std::set<gles::GLextension> extensions(const std::string & glesfunction);
+
+    /**
+    *  @brief
+    *    Returns the list of features that are requiring an OpenGL function
+    *
+    *  @param[in] function
+    *    The name of the function, including the 'gles' prefix
+    *
+    *  @return
+    *    The set of features that are requiring an OpenGL function
+    */
+    static const std::set<Version> versions(const std::string & glesfunction);
     
     /**
     *  @brief
@@ -211,32 +223,32 @@ public:
     *  @brief
     *    Returns the set of functions that are required for the extension
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The extension to return the required functions for
     *
     *  @return
     *    The set of functions that are required for the extension
     */
-    static const std::set<AbstractFunction *> functions(gles::GLextension glextension);
+    static const std::set<AbstractFunction *> functions(gles::GLextension extension);
 
     /**
     *  @brief
     *    Returns the first OpenGL Version (Feature) that required the extension
     *
-    *  @param[in] glextension
+    *  @param[in] extension
     *    The extension
     *
     *  @return
-    *    The first OpenGL Version (Feature) that required the extension
+    *    The first GLES Version (Feature) that required the extension
     */
     static const Version & version(gles::GLextension glextension);
     
     /**
     *  @brief
-    *    Returns the list of all Versions (Features) known by the gl.xml
+    *    Returns the list of all Versions (Features) known by the gles.xml
     *
     *  @return
-    *    The list of all Versions (Features) known by the gl.xml
+    *    The list of all Versions (Features) known by the gles.xml
     */
     static const std::set<Version> & versions();
 
@@ -249,7 +261,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::AttribMask glbitfield);
+    static const std::string & getString(gles::AttribMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -260,7 +272,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::BufferAccessMask glbitfield);
+    static const std::string & getString(gles::BufferAccessMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -271,7 +283,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::BufferBitQCOM glbitfield);
+    static const std::string & getString(gles::BufferBitQCOM bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -282,7 +294,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::BufferStorageMask glbitfield);
+    static const std::string & getString(gles::BufferStorageMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -293,7 +305,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::ClearBufferMask glbitfield);
+    static const std::string & getString(gles::ClearBufferMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -304,7 +316,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::ContextFlagMask glbitfield);
+    static const std::string & getString(gles::ContextFlagMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -315,7 +327,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::FoveationConfigBitQCOM glbitfield);
+    static const std::string & getString(gles::FoveationConfigBitQCOM bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -326,7 +338,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::MapBufferUsageMask glbitfield);
+    static const std::string & getString(gles::MapBufferUsageMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -337,7 +349,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::MemoryBarrierMask glbitfield);
+    static const std::string & getString(gles::MemoryBarrierMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -348,7 +360,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::PathFontStyle glbitfield);
+    static const std::string & getString(gles::PathFontStyle bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -359,7 +371,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::PathMetricMask glbitfield);
+    static const std::string & getString(gles::PathMetricMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -370,7 +382,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::PathRenderingMaskNV glbitfield);
+    static const std::string & getString(gles::PathRenderingMaskNV bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -381,7 +393,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::PerformanceQueryCapsMaskINTEL glbitfield);
+    static const std::string & getString(gles::PerformanceQueryCapsMaskINTEL bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -392,7 +404,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::SyncObjectMask glbitfield);
+    static const std::string & getString(gles::SyncObjectMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -403,7 +415,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::UnusedMask glbitfield);
+    static const std::string & getString(gles::UnusedMask bitfield);
 
     /**
     *  @brief convert bitfield to symbol name string representation
@@ -414,7 +426,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gles::UseProgramStageMask glbitfield);
+    static const std::string & getString(gles::UseProgramStageMask bitfield);
 
 
 private:
@@ -426,7 +438,7 @@ private:
     *    The identifier for the bucket lookup
     *
     *  @param[in] prefixLength
-    *    The length of the prefix (e.g., 'gl' or 'GL_') to omit to get the actual first character of the identifier
+    *    The length of the prefix (e.g., 'gles' or 'GLES_') to omit to get the actual first character of the identifier
     *
     *  @return
     *    The bucket index of an OpenGL identifier

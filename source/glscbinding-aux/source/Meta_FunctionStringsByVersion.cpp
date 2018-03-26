@@ -4,9 +4,6 @@
 #include <glscbinding/Version.h>
 
 
-using namespace glsc;
-
-
 namespace glscbinding { namespace aux
 {
 

@@ -35,7 +35,7 @@ namespace glesbinding { namespace aux
 {
 
 
-int Meta::glRevision()
+int Meta::glesRevision()
 {
     return GLES_REVISION;
 }

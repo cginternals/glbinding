@@ -342,7 +342,7 @@ const std::unordered_map<std::string, GLenum> Meta_EnumsByString_T =
     { "GL_TEXTURE_MIN_FILTER", GLenum::GL_TEXTURE_MIN_FILTER },
     { "GL_TEXTURE_WRAP_S", GLenum::GL_TEXTURE_WRAP_S },
     { "GL_TEXTURE_WRAP_T", GLenum::GL_TEXTURE_WRAP_T },
-    { "GL_TRIANGLSC", GLenum::GL_TRIANGLSC },
+    { "GL_TRIANGLES", GLenum::GL_TRIANGLES },
     { "GL_TRIANGLE_FAN", GLenum::GL_TRIANGLE_FAN },
     { "GL_TRIANGLE_STRIP", GLenum::GL_TRIANGLE_STRIP }
 };

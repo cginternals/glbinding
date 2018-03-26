@@ -71,15 +71,18 @@ def convertType(type, api):
 
 
 def genTypeContexts(types, bitfGroups, api):
-    typeContexts = [{"identifier": api.upper()+"extension",
-                     "definition": "enum class "+api.upper()+"extension : int;",
+    extensionTypeName = ("EGL" if api == "egl" else "GL")+"extension"
+    typeContexts = [{"identifier": extensionTypeName,
+                     "definition": "enum class "+extensionTypeName+" : int;",
                      "integrations": integrationMap([ "hashable", "streamable", "valueRepresentable" ]),
-                     "hasIntegrations": True}]
+                     "hasIntegrations": True,
+                     "isStruct": False}]
     if api == "egl":
         typeContexts.append({"identifier": "EGLbitfield",
                              "definition": "enum class EGLbitfield : unsigned int;",
                              "integrations": integrationMap([]),
-                             "hasIntegrations": False })
+                             "hasIntegrations": False,
+                             "isStruct": False })
     for type in types: #TODO-LW: explicitly sort types and bitfGroups
         if type.name == "GLuint_array_2" and api=="egl":
             continue
@@ -87,11 +90,13 @@ def genTypeContexts(types, bitfGroups, api):
         typeContexts.append({"identifier": type.name,
                              "definition": convertType(type, api),
                              "integrations": integrations,
-                             "hasIntegrations": any(integrations.values()) })
+                             "hasIntegrations": any(integrations.values()),
+                             "isStruct": type.typevalue == "struct" })
     for bitf in bitfGroups:
         integrations = integrationMap(BITFIELD_TYPE_INTEGRATIONS)
         typeContexts.append({"identifier": bitf.name,
                              "definition": "enum class {} : unsigned int;".format(bitf.name),
                              "integrations": integrations,
-                             "hasIntegrations": any(integrations.values()) })
+                             "hasIntegrations": any(integrations.values()),
+                             "isStruct": type.typevalue == "struct" })
     return typeContexts

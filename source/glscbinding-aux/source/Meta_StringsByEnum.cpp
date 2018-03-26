@@ -17,7 +17,7 @@ const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
     { GLenum::GL_LINES, "GL_LINES" },
     { GLenum::GL_LINE_LOOP, "GL_LINE_LOOP" },
     { GLenum::GL_LINE_STRIP, "GL_LINE_STRIP" },
-    { GLenum::GL_TRIANGLSC, "GL_TRIANGLSC" },
+    { GLenum::GL_TRIANGLES, "GL_TRIANGLES" },
     { GLenum::GL_TRIANGLE_STRIP, "GL_TRIANGLE_STRIP" },
     { GLenum::GL_TRIANGLE_FAN, "GL_TRIANGLE_FAN" },
     { GLenum::GL_NEVER, "GL_NEVER" },

@@ -161,12 +161,6 @@ EGLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<
 template <>
 EGLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<egl::EGLBoolean> & value);
 
-/**
-*  @brief
-*    A specialized ostream operator for the gl::GLchar * Value template
-*/
-template <>
-EGLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<egl::EGLchar *> & value);
 
 
 } // namespace eglbinding

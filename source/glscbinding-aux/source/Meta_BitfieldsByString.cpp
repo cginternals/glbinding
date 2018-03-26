@@ -78,7 +78,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Y{};
 
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_Z{};
 
-const std::array<std::unordered_map<std::string, glsc::GLbitfield>, 27> Meta_BitfieldsByStringMaps =
+const std::array<std::unordered_map<std::string, GLbitfield>, 27> Meta_BitfieldsByStringMaps =
 { {
     Meta_BitfieldsByString_0,
     Meta_BitfieldsByString_A,

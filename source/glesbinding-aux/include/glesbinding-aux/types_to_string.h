@@ -241,42 +241,42 @@ GLESBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, co
 
 /**
 *  @brief
-*    A specialized ostream operator for the gles::GLenum Value template
+*    A specialized ostream operator for the gl::GLenum Value template
 */
 template <>
 GLESBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gles::GLenum> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the gles::GLbitfield Value template
+*    A specialized ostream operator for the gl::GLbitfield Value template
 */
 /*template <>
 GLESBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gles::GLbitfield> & value);*/
 
 /**
 *  @brief
-*    A specialized ostream operator for the gles::GLenum Value template
+*    A specialized ostream operator for the gl::GLenum Value template
 */
 template <>
 GLESBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gles::GLboolean> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the gles::GLubyte * Value template
+*    A specialized ostream operator for the gl::GLubyte * Value template
 */
 template <>
 GLESBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gles::GLubyte *> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the gles::GLchar * Value template
+*    A specialized ostream operator for the gl::GLchar * Value template
 */
 template <>
 GLESBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gles::GLchar *> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the gles::GLuint_array_2 Value template
+*    A specialized ostream operator for the gl::GLuint_array_2 Value template
 */
 template <>
 GLESBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gles::GLuint_array_2> & value);

@@ -61,26 +61,28 @@ template <>
 template <>
 {{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<{{api}}::{{booleanType}}> & value);
 
+{{#glapi}}
 /**
 *  @brief
 *    A specialized ostream operator for the gl::GLubyte * Value template
 */
 template <>
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLubyte *> & value);
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<{{api}}::GLubyte *> & value);
 
 /**
 *  @brief
 *    A specialized ostream operator for the gl::GLchar * Value template
 */
 template <>
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLchar *> & value);
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<{{api}}::GLchar *> & value);
 
 /**
 *  @brief
 *    A specialized ostream operator for the gl::GLuint_array_2 Value template
 */
 template <>
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLuint_array_2> & value);
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<{{api}}::GLuint_array_2> & value);
+{{/glapi}}
 
 
 } // namespace {{api}}binding
