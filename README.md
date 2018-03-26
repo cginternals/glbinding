@@ -58,7 +58,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 * [Global and Local Function Callbacks](#function-callbacks) 
 * [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
 * [Meta Information System](#meta-information)
-* [Doxygen Documentations](https://cginternals.github.io/glbinding/docs) ([stable](https://cginternals.github.io/glbinding/docs/v2.1), [master](https://cginternals.github.io/glbinding/docs/master))
+* [Doxygen Documentations](https://glbinding.org/docs.html) ([stable](https://www.glbinding.org/docs/v2.1/), [master](https://www.glbinding.org/docs/master))
 
 # Install Instructions
 
