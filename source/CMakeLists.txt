@@ -16,8 +16,6 @@ set(IDE_FOLDER "")
 add_subdirectory(codegeneration)
 
 # Libraries
-add_subdirectory(khrbinding)
-add_subdirectory(khrbinding-aux)
 add_subdirectory(glbinding)
 add_subdirectory(glbinding-aux)
 add_subdirectory(glesbinding)
