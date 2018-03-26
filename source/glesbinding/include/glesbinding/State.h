@@ -5,7 +5,7 @@
 #include <glesbinding/AbstractState.h>
 
 
-namespace khrbinding
+namespace glesbinding
 {
 
 

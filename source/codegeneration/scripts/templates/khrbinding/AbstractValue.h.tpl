@@ -15,7 +15,7 @@ namespace {{binding}}
 *
 *    This class and its subclasses Value<T> are mainly used when callbacks of OpenGL functions are used.
 */
-class KHRBINDING_API AbstractValue
+class {{ucbinding}}_API AbstractValue
 {
 public:
     /**

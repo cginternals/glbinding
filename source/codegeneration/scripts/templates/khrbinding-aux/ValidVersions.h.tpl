@@ -14,7 +14,7 @@ namespace {{binding}} { namespace aux
 
 
 template <typename VersionClass>
-class KHRBINDING_AUX_TEMPLATE_API ValidVersions
+class {{ucbinding}}_AUX_TEMPLATE_API ValidVersions
 {
 public:
     /**

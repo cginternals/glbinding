@@ -10,24 +10,24 @@ namespace {{binding}}
 {
 
 
-KHRBINDING_CONSTEXPR AbstractVersion::AbstractVersion()
+{{ucbinding}}_CONSTEXPR AbstractVersion::AbstractVersion()
 : m_major(0)
 , m_minor(0)
 {
 }
 
-KHRBINDING_CONSTEXPR AbstractVersion::AbstractVersion(unsigned char majorVersion, unsigned char minorVersion)
+{{ucbinding}}_CONSTEXPR AbstractVersion::AbstractVersion(unsigned char majorVersion, unsigned char minorVersion)
 : m_major(majorVersion)
 , m_minor(minorVersion)
 {
 }
 
-KHRBINDING_CONSTEXPR unsigned char AbstractVersion::majorVersion() const
+{{ucbinding}}_CONSTEXPR unsigned char AbstractVersion::majorVersion() const
 {
     return m_major;
 }
 
-KHRBINDING_CONSTEXPR unsigned char AbstractVersion::minorVersion() const
+{{ucbinding}}_CONSTEXPR unsigned char AbstractVersion::minorVersion() const
 {
     return m_minor;
 }
@@ -56,7 +56,7 @@ std::string AbstractVersion::toString() const
     return std::to_string(static_cast<int>(m_major)) + '.'  + std::to_string(static_cast<int>(m_minor));
 }
 
-KHRBINDING_CONSTEXPR bool AbstractVersion::isNull() const
+{{ucbinding}}_CONSTEXPR bool AbstractVersion::isNull() const
 {
     return m_major == 0;
 }

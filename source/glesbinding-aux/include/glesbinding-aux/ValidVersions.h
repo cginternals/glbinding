@@ -14,7 +14,7 @@ namespace glesbinding { namespace aux
 
 
 template <typename VersionClass>
-class KHRBINDING_AUX_TEMPLATE_API ValidVersions
+class GLESBINDING_AUX_TEMPLATE_API ValidVersions
 {
 public:
     /**

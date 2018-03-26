@@ -6,57 +6,57 @@ namespace glscbinding
 {
 
 
-KHRBINDING_CONSTEXPR Boolean8::Boolean8()
+GLSCBINDING_CONSTEXPR Boolean8::Boolean8()
 : Boolean8(false)
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean8::Boolean8(bool value)
+GLSCBINDING_CONSTEXPR Boolean8::Boolean8(bool value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean8::Boolean8(char value)
+GLSCBINDING_CONSTEXPR Boolean8::Boolean8(char value)
 : m_value(value)
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean8::Boolean8(unsigned char value)
+GLSCBINDING_CONSTEXPR Boolean8::Boolean8(unsigned char value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean8::Boolean8(int value)
+GLSCBINDING_CONSTEXPR Boolean8::Boolean8(int value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean8::Boolean8(unsigned int value)
+GLSCBINDING_CONSTEXPR Boolean8::Boolean8(unsigned int value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean8::operator bool() const
+GLSCBINDING_CONSTEXPR Boolean8::operator bool() const
 {
     return m_value != 0;
 }
 
-KHRBINDING_CONSTEXPR Boolean8::operator char() const
+GLSCBINDING_CONSTEXPR Boolean8::operator char() const
 {
     return m_value;
 }
 
-KHRBINDING_CONSTEXPR Boolean8::operator unsigned char() const
+GLSCBINDING_CONSTEXPR Boolean8::operator unsigned char() const
 {
     return m_value;
 }
 
-KHRBINDING_CONSTEXPR Boolean8::operator int() const
+GLSCBINDING_CONSTEXPR Boolean8::operator int() const
 {
     return m_value;
 }
 
-KHRBINDING_CONSTEXPR Boolean8::operator unsigned int() const
+GLSCBINDING_CONSTEXPR Boolean8::operator unsigned int() const
 {
     return m_value;
 }
@@ -68,32 +68,32 @@ Boolean8 & Boolean8::operator=(const Boolean8 & other)
     return *this;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean8::operator<(const Boolean8 & other) const
+GLSCBINDING_CONSTEXPR bool Boolean8::operator<(const Boolean8 & other) const
 {
     return m_value < other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean8::operator>(const Boolean8 & other) const
+GLSCBINDING_CONSTEXPR bool Boolean8::operator>(const Boolean8 & other) const
 {
     return m_value > other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean8::operator<=(const Boolean8 & other) const
+GLSCBINDING_CONSTEXPR bool Boolean8::operator<=(const Boolean8 & other) const
 {
     return m_value <= other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean8::operator>=(const Boolean8 & other) const
+GLSCBINDING_CONSTEXPR bool Boolean8::operator>=(const Boolean8 & other) const
 {
     return m_value >= other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean8::operator==(const Boolean8 & other) const
+GLSCBINDING_CONSTEXPR bool Boolean8::operator==(const Boolean8 & other) const
 {
     return m_value == other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean8::operator!=(const Boolean8 & other) const
+GLSCBINDING_CONSTEXPR bool Boolean8::operator!=(const Boolean8 & other) const
 {
     return m_value != other.m_value;
 }

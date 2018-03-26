@@ -35,7 +35,7 @@ struct FunctionHelper;
 *    The types of the arguments
 */
 template <typename ReturnType, typename... Arguments>
-struct KHRBINDING_TEMPLATE_API CallbackType
+struct EGLBINDING_TEMPLATE_API CallbackType
 {
     using type = std::function<void(ReturnType, Arguments...)>; ///< Propagate the actual callable callback type
 };
@@ -49,7 +49,7 @@ struct KHRBINDING_TEMPLATE_API CallbackType
 *    The types of the arguments
 */
 template <typename... Arguments>
-struct KHRBINDING_TEMPLATE_API CallbackType<void, Arguments...>
+struct EGLBINDING_TEMPLATE_API CallbackType<void, Arguments...>
 {
     using type = std::function<void(Arguments...)>; ///< Propagate the actual callable callback type
 };
@@ -68,7 +68,7 @@ struct KHRBINDING_TEMPLATE_API CallbackType<void, Arguments...>
 *    The types of the arguments
 */
 template <typename Binding, typename ReturnType, typename... Arguments>
-class KHRBINDING_TEMPLATE_API Function : public AbstractFunction
+class EGLBINDING_TEMPLATE_API Function : public AbstractFunction
 {
 public:
     friend struct FunctionHelper<Binding, ReturnType, Arguments...>;

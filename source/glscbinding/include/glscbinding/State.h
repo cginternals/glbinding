@@ -5,7 +5,7 @@
 #include <glscbinding/AbstractState.h>
 
 
-namespace khrbinding
+namespace glscbinding
 {
 
 

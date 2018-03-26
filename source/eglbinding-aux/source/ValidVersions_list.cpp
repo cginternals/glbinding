@@ -5,7 +5,7 @@
 
 
 template <>
-const std::set<eglbinding::Version> khrbinding::aux::ValidVersions<eglbinding::Version>::s_validVersions =
+const std::set<eglbinding::Version> eglbinding::aux::ValidVersions<eglbinding::Version>::s_validVersions =
 {
     { 1, 0 },
     { 1, 1 },
@@ -16,4 +16,4 @@ const std::set<eglbinding::Version> khrbinding::aux::ValidVersions<eglbinding::V
 };
 
 template <>
-const eglbinding::Version khrbinding::aux::ValidVersions<eglbinding::Version>::s_latest { 1, 5 };
+const eglbinding::Version eglbinding::aux::ValidVersions<eglbinding::Version>::s_latest { 1, 5 };

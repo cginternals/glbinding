@@ -14,7 +14,7 @@ namespace glbinding { namespace aux
 
 
 template <typename VersionClass>
-class KHRBINDING_AUX_TEMPLATE_API ValidVersions
+class GLBINDING_AUX_TEMPLATE_API ValidVersions
 {
 public:
     /**

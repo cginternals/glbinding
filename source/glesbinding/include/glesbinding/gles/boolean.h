@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <khrbinding/Boolean32.h>
+#include <glesbinding/Boolean32.h>
 
 #include <glesbinding/glesbinding_api.h>
 #include <glesbinding/glesbinding_features.h>
@@ -12,7 +12,7 @@ namespace gles
 {
 
 
-using GLboolean = khrbinding::Boolean32;
+using GLboolean = glesbinding::Boolean32;
 
 
 } // namespace gl

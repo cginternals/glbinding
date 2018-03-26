@@ -243,7 +243,7 @@ const std::set<Version> Meta::versions(const std::string & glfunction)
     {
         const auto functionSet = functions(version);
 
-        const auto it = std::find_if(functionSet.begin(), functionSet.end(), [& glfunction](khrbinding::AbstractFunction * function) {
+        const auto it = std::find_if(functionSet.begin(), functionSet.end(), [& glfunction](AbstractFunction * function) {
             return std::string(function->name()) == glfunction;
         });
         if (it != functionSet.end())
@@ -321,7 +321,7 @@ const Version & Meta::version(const GLextension extension)
 
 const std::set<Version> & Meta::versions()
 {
-    return ValidVersions::versions();
+    return ValidVersions<Version>::versions();
 }
 
 

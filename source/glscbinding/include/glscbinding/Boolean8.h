@@ -12,33 +12,33 @@ namespace glscbinding
 {
 
 
-class KHRBINDING_API Boolean8
+class GLSCBINDING_API Boolean8
 {
 public:
     using underlying_type = unsigned char;
 
 public:
-    KHRBINDING_CONSTEXPR inline Boolean8();
-    KHRBINDING_CONSTEXPR inline Boolean8(bool on);
-    KHRBINDING_CONSTEXPR inline Boolean8(char on);
-    KHRBINDING_CONSTEXPR inline Boolean8(unsigned char on);
-    KHRBINDING_CONSTEXPR inline Boolean8(int on);
-    KHRBINDING_CONSTEXPR inline Boolean8(unsigned int on);
+    GLSCBINDING_CONSTEXPR inline Boolean8();
+    GLSCBINDING_CONSTEXPR inline Boolean8(bool on);
+    GLSCBINDING_CONSTEXPR inline Boolean8(char on);
+    GLSCBINDING_CONSTEXPR inline Boolean8(unsigned char on);
+    GLSCBINDING_CONSTEXPR inline Boolean8(int on);
+    GLSCBINDING_CONSTEXPR inline Boolean8(unsigned int on);
 
-    KHRBINDING_CONSTEXPR inline explicit operator bool() const;
-    KHRBINDING_CONSTEXPR inline explicit operator char() const;
-    KHRBINDING_CONSTEXPR inline explicit operator unsigned char() const;
-    KHRBINDING_CONSTEXPR inline explicit operator int() const;
-    KHRBINDING_CONSTEXPR inline explicit operator unsigned int() const;
+    GLSCBINDING_CONSTEXPR inline explicit operator bool() const;
+    GLSCBINDING_CONSTEXPR inline explicit operator char() const;
+    GLSCBINDING_CONSTEXPR inline explicit operator unsigned char() const;
+    GLSCBINDING_CONSTEXPR inline explicit operator int() const;
+    GLSCBINDING_CONSTEXPR inline explicit operator unsigned int() const;
 
     inline Boolean8 & operator=(const Boolean8 & other);
-    KHRBINDING_CONSTEXPR inline bool operator<(const Boolean8 & other) const;
-    KHRBINDING_CONSTEXPR inline bool operator>(const Boolean8 & other) const;
-    KHRBINDING_CONSTEXPR inline bool operator<=(const Boolean8 & other) const;
-    KHRBINDING_CONSTEXPR inline bool operator>=(const Boolean8 & other) const;
+    GLSCBINDING_CONSTEXPR inline bool operator<(const Boolean8 & other) const;
+    GLSCBINDING_CONSTEXPR inline bool operator>(const Boolean8 & other) const;
+    GLSCBINDING_CONSTEXPR inline bool operator<=(const Boolean8 & other) const;
+    GLSCBINDING_CONSTEXPR inline bool operator>=(const Boolean8 & other) const;
 
-    KHRBINDING_CONSTEXPR inline bool operator==(const Boolean8 & other) const;
-    KHRBINDING_CONSTEXPR inline bool operator!=(const Boolean8 & other) const;
+    GLSCBINDING_CONSTEXPR inline bool operator==(const Boolean8 & other) const;
+    GLSCBINDING_CONSTEXPR inline bool operator!=(const Boolean8 & other) const;
 
 public:
     underlying_type m_value;

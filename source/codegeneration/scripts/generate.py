@@ -161,7 +161,7 @@ def generate(profile, targetdir, revisionfile):
     sourcedir_aux  = pjoin(targetdir+"-aux", "source/")
     testdir    = pjoin(targetdir, "../tests/{api}binding-test/")
 
-    context = Context(api, multiContextBinding, revision, features, extensions, enums, bitfGroups, types, commands)
+    context = Context(api, multiContextBinding, booleanWidth == 8, revision, features, extensions, enums, bitfGroups, types, commands)
     generalContext = context.general()
 
     # Generate files with common context

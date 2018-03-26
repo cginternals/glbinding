@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <khrbinding/Boolean8.h>
+#include <glscbinding/Boolean8.h>
 
 #include <glscbinding/glscbinding_api.h>
 #include <glscbinding/glscbinding_features.h>
@@ -12,7 +12,7 @@ namespace glsc
 {
 
 
-using GLboolean = khrbinding::Boolean8;
+using GLboolean = glscbinding::Boolean8;
 
 
 } // namespace gl

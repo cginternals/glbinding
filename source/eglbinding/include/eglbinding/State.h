@@ -5,7 +5,7 @@
 #include <eglbinding/AbstractState.h>
 
 
-namespace khrbinding
+namespace eglbinding
 {
 
 

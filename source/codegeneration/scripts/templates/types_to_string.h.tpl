@@ -2,13 +2,13 @@
 #pragma once
 
 
-#include <khrbinding-aux/types_to_string.h>
+#include <{{binding}}-aux/types_to_string.h>
 
-#include <{{api}}binding/{{api}}/types.h>
-#include <{{api}}binding/Value.h>
+#include <{{binding}}/{{api}}/types.h>
+#include <{{binding}}/Value.h>
 
-#include <{{api}}binding-aux/{{api}}binding-aux_api.h>
-#include <{{api}}binding-aux/{{api}}binding-aux_features.h>
+#include <{{binding}}-aux/{{binding}}-aux_api.h>
+#include <{{binding}}-aux/{{binding}}-aux_features.h>
 
 #include <iosfwd>
 #include <string>
@@ -30,9 +30,9 @@ namespace {{api}}binding
 {
 
 
-using khrbinding::operator<<;
+using {{binding}}::operator<<;
 
-{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractValue * value);
+{{ucapi}}BINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AbstractValue * value);
 
 template <typename T>
 {{ucapi}}BINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const Value<T> & value);

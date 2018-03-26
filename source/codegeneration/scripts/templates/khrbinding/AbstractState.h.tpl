@@ -17,7 +17,7 @@ namespace {{binding}}
 *    The State struct represents the configuration of an OpenGL function for one thread.
 *    This includes the driver function pointer (is allowed to differ between contexts) and the callback mask
 */
-class KHRBINDING_API AbstractState
+class {{ucbinding}}_API AbstractState
 {
 public:
     /**

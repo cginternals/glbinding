@@ -5,7 +5,7 @@
 
 
 template <>
-const std::set<glesbinding::Version> khrbinding::aux::ValidVersions<glesbinding::Version>::s_validVersions =
+const std::set<glesbinding::Version> glesbinding::aux::ValidVersions<glesbinding::Version>::s_validVersions =
 {
     { 2, 0 },
     { 3, 0 },
@@ -14,4 +14,4 @@ const std::set<glesbinding::Version> khrbinding::aux::ValidVersions<glesbinding:
 };
 
 template <>
-const glesbinding::Version khrbinding::aux::ValidVersions<glesbinding::Version>::s_latest { 3, 2 };
+const glesbinding::Version glesbinding::aux::ValidVersions<glesbinding::Version>::s_latest { 3, 2 };

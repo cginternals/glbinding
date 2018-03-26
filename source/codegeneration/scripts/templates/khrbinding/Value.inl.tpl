@@ -42,13 +42,13 @@ namespace {{binding}}
 
 
 template <typename T>
-KHRBINDING_CONSTEXPR Value<T>::Value(const T & value)
+{{ucbinding}}_CONSTEXPR Value<T>::Value(const T & value)
 : m_value(value)
 {
 }
 
 template <typename T>
-KHRBINDING_CONSTEXPR T Value<T>::value() const
+{{ucbinding}}_CONSTEXPR T Value<T>::value() const
 {
     return m_value;
 }

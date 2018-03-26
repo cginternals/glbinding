@@ -10,24 +10,24 @@ namespace glesbinding
 {
 
 
-KHRBINDING_CONSTEXPR AbstractVersion::AbstractVersion()
+GLESBINDING_CONSTEXPR AbstractVersion::AbstractVersion()
 : m_major(0)
 , m_minor(0)
 {
 }
 
-KHRBINDING_CONSTEXPR AbstractVersion::AbstractVersion(unsigned char majorVersion, unsigned char minorVersion)
+GLESBINDING_CONSTEXPR AbstractVersion::AbstractVersion(unsigned char majorVersion, unsigned char minorVersion)
 : m_major(majorVersion)
 , m_minor(minorVersion)
 {
 }
 
-KHRBINDING_CONSTEXPR unsigned char AbstractVersion::majorVersion() const
+GLESBINDING_CONSTEXPR unsigned char AbstractVersion::majorVersion() const
 {
     return m_major;
 }
 
-KHRBINDING_CONSTEXPR unsigned char AbstractVersion::minorVersion() const
+GLESBINDING_CONSTEXPR unsigned char AbstractVersion::minorVersion() const
 {
     return m_minor;
 }
@@ -56,7 +56,7 @@ std::string AbstractVersion::toString() const
     return std::to_string(static_cast<int>(m_major)) + '.'  + std::to_string(static_cast<int>(m_minor));
 }
 
-KHRBINDING_CONSTEXPR bool AbstractVersion::isNull() const
+GLESBINDING_CONSTEXPR bool AbstractVersion::isNull() const
 {
     return m_major == 0;
 }

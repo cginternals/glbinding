@@ -9,7 +9,6 @@
 #include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
 #include <glbinding/Boolean8.h>
-#include <glbinding/Boolean32.h>
 
 
 namespace glbinding
@@ -32,16 +31,6 @@ template <typename Binding, typename... Arguments>
 struct BasicCallHelper<Binding, glbinding::Boolean8, Arguments...>
 {
     inline static glbinding::Boolean8 call(const glbinding::Function<Binding, glbinding::Boolean8, Arguments...> * function, Arguments&&... arguments)
-    {
-        return reinterpret_cast<typename glbinding::Function<Binding, glbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
-    }
-};
-
-
-template <typename Binding, typename... Arguments>
-struct BasicCallHelper<Binding, glbinding::Boolean32, Arguments...>
-{
-    inline static glbinding::Boolean32 call(const glbinding::Function<Binding, glbinding::Boolean32, Arguments...> * function, Arguments&&... arguments)
     {
         return reinterpret_cast<typename glbinding::Function<Binding, glbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }

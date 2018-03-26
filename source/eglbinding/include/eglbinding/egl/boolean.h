@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <khrbinding/Boolean32.h>
+#include <eglbinding/Boolean32.h>
 
 #include <eglbinding/eglbinding_api.h>
 #include <eglbinding/eglbinding_features.h>
@@ -12,7 +12,7 @@ namespace egl
 {
 
 
-using EGLBoolean = khrbinding::Boolean32;
+using EGLBoolean = eglbinding::Boolean32;
 
 
 } // namespace egl

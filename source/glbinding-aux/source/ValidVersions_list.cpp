@@ -5,7 +5,7 @@
 
 
 template <>
-const std::set<glbinding::Version> khrbinding::aux::ValidVersions<glbinding::Version>::s_validVersions =
+const std::set<glbinding::Version> glbinding::aux::ValidVersions<glbinding::Version>::s_validVersions =
 {
     { 1, 0 },
     { 1, 1 },
@@ -29,4 +29,4 @@ const std::set<glbinding::Version> khrbinding::aux::ValidVersions<glbinding::Ver
 };
 
 template <>
-const glbinding::Version khrbinding::aux::ValidVersions<glbinding::Version>::s_latest { 4, 6 };
+const glbinding::Version glbinding::aux::ValidVersions<glbinding::Version>::s_latest { 4, 6 };

@@ -35,7 +35,7 @@ namespace {{binding}}
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
 template <typename Subclass>
-class KHRBINDING_TEMPLATE_API MultiContextBinding
+class {{ucbinding}}_TEMPLATE_API MultiContextBinding
 {
 public:
     /**

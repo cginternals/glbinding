@@ -39,7 +39,7 @@ enum class CallbackMask : unsigned char
 *  @return
 *    The inverted CallbackMask
 */
-KHRBINDING_CONSTEXPR inline CallbackMask operator~(CallbackMask a);
+{{ucbinding}}_CONSTEXPR inline CallbackMask operator~(CallbackMask a);
 
 /**
 *  @brief
@@ -53,7 +53,7 @@ KHRBINDING_CONSTEXPR inline CallbackMask operator~(CallbackMask a);
 *  @return
 *    The compound CallbackMask
 */
-KHRBINDING_CONSTEXPR inline CallbackMask operator|(CallbackMask a, CallbackMask b);
+{{ucbinding}}_CONSTEXPR inline CallbackMask operator|(CallbackMask a, CallbackMask b);
 
 /**
 *  @brief
@@ -67,7 +67,7 @@ KHRBINDING_CONSTEXPR inline CallbackMask operator|(CallbackMask a, CallbackMask 
 *  @return
 *    The compound CallbackMask
 */
-KHRBINDING_CONSTEXPR inline CallbackMask operator&(CallbackMask a, CallbackMask b);
+{{ucbinding}}_CONSTEXPR inline CallbackMask operator&(CallbackMask a, CallbackMask b);
 
 /**
 *  @brief
@@ -81,7 +81,7 @@ KHRBINDING_CONSTEXPR inline CallbackMask operator&(CallbackMask a, CallbackMask 
 *  @return
 *    The compound CallbackMask
 */
-KHRBINDING_CONSTEXPR inline CallbackMask operator^(CallbackMask a, CallbackMask b);
+{{ucbinding}}_CONSTEXPR inline CallbackMask operator^(CallbackMask a, CallbackMask b);
 
 /**
 *  @brief

@@ -5,7 +5,7 @@
 
 
 template <>
-const std::set<{{api}}binding::Version> khrbinding::aux::ValidVersions<{{api}}binding::Version>::s_validVersions =
+const std::set<{{binding}}::Version> {{binding}}::aux::ValidVersions<{{binding}}::Version>::s_validVersions =
 {
 {{#features.items}}
     { {{item.major}}, {{item.minor}} }{{^last}},{{/last}}
@@ -13,4 +13,4 @@ const std::set<{{api}}binding::Version> khrbinding::aux::ValidVersions<{{api}}bi
 };
 
 template <>
-const {{api}}binding::Version khrbinding::aux::ValidVersions<{{api}}binding::Version>::s_latest { {{latestFeature.major}}, {{latestFeature.minor}} };
+const {{binding}}::Version {{binding}}::aux::ValidVersions<{{binding}}::Version>::s_latest { {{latestFeature.major}}, {{latestFeature.minor}} };

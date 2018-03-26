@@ -23,7 +23,7 @@ class AbstractFunction;
 *  @brief
 *    A FunctionCall represents a function call of an OpenGL API function, including the parameter and return values
 */
-struct KHRBINDING_API FunctionCall
+struct {{ucbinding}}_API FunctionCall
 {
 public:
     /**

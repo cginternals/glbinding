@@ -25,7 +25,7 @@ class AbstractState;
 *    The AbstractFunction represents an OpenGL API function by its name
 *    and entry point after dynamic address resolution.
 */
-class KHRBINDING_API AbstractFunction
+class GLSCBINDING_API AbstractFunction
 {
 public:
     /**

@@ -15,7 +15,7 @@ namespace glscbinding
 *
 *    This class and its subclasses Value<T> are mainly used when callbacks of OpenGL functions are used.
 */
-class KHRBINDING_API AbstractValue
+class GLSCBINDING_API AbstractValue
 {
 public:
     /**

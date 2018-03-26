@@ -5,7 +5,7 @@
 #include <glbinding/AbstractState.h>
 
 
-namespace khrbinding
+namespace glbinding
 {
 
 

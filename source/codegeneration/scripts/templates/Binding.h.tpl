@@ -6,16 +6,16 @@
 #include <vector>
 #include <functional>
 
-#include <khrbinding/{{bindingType}}.h>
-#include <khrbinding/AbstractFunction.h>
+#include <{{binding}}/{{bindingType}}.h>
+#include <{{binding}}/AbstractFunction.h>
 
-#include <{{api}}binding/{{api}}binding_api.h>
-#include <{{api}}binding/{{api}}binding_features.h>
+#include <{{binding}}/{{binding}}_api.h>
+#include <{{binding}}/{{binding}}_features.h>
 
-#include <{{api}}binding/ContextHandle.h>
-#include <{{api}}binding/Function.h>
+#include <{{binding}}/ContextHandle.h>
+#include <{{binding}}/Function.h>
 
-#include <{{api}}binding/{{api}}/types.h>
+#include <{{binding}}/{{api}}/types.h>
 
 
 namespace {{api}}binding
@@ -29,10 +29,10 @@ namespace {{api}}binding
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-class {{ucapi}}BINDING_API Binding : public khrbinding::{{bindingType}}<Binding>
+class {{ucapi}}BINDING_API Binding : public {{bindingType}}<Binding>
 {
 public:
-    using array_t = std::array<khrbinding::AbstractFunction *, {{functions.count}}>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, {{functions.count}}>; ///< The type of the build-in functions collection
 
     /**
     *  @brief

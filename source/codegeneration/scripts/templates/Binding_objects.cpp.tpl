@@ -5,7 +5,7 @@
 using namespace {{api}};
 
 
-namespace {{api}}binding
+namespace {{binding}}
 {
 
 
@@ -13,4 +13,4 @@ namespace {{api}}binding
 {{/item}}{{/currentFunctionGroup.items}}
 
 
-} // namespace {{api}}binding
+} // namespace {{binding}}

@@ -18,7 +18,7 @@ class AbstractVersion;
 *  @brief
 *    The operator to allow Versions to be printed onto a std::ostream
 */
-KHRBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const khrbinding::AbstractVersion & version);
+EGLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const eglbinding::AbstractVersion & version);
 
 
 } // namespace eglbinding::aux

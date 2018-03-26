@@ -26,7 +26,7 @@ namespace eglbinding
 *    This class is mainly used when callbacks of OpenGL functions are used
 */
 template <typename T>
-class KHRBINDING_TEMPLATE_API Value : public AbstractValue
+class EGLBINDING_TEMPLATE_API Value : public AbstractValue
 {
 public:
     /**
@@ -36,7 +36,7 @@ public:
     *  @param[in] value
     *    The value that should be printed later
     */
-    KHRBINDING_CONSTEXPR inline Value(const T & value);
+    EGLBINDING_CONSTEXPR inline Value(const T & value);
 
     /**
     *  @brief
@@ -54,7 +54,7 @@ public:
     *  @return
     *    The value
     */
-    KHRBINDING_CONSTEXPR inline T value() const;
+    EGLBINDING_CONSTEXPR inline T value() const;
 
 protected:
     const T m_value; ///< The value

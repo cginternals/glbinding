@@ -6,57 +6,57 @@ namespace eglbinding
 {
 
 
-KHRBINDING_CONSTEXPR Boolean32::Boolean32()
+EGLBINDING_CONSTEXPR Boolean32::Boolean32()
 : Boolean32(false)
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean32::Boolean32(bool value)
+EGLBINDING_CONSTEXPR Boolean32::Boolean32(bool value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean32::Boolean32(char value)
+EGLBINDING_CONSTEXPR Boolean32::Boolean32(char value)
 : m_value(value)
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean32::Boolean32(unsigned char value)
+EGLBINDING_CONSTEXPR Boolean32::Boolean32(unsigned char value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean32::Boolean32(int value)
+EGLBINDING_CONSTEXPR Boolean32::Boolean32(int value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean32::Boolean32(unsigned int value)
+EGLBINDING_CONSTEXPR Boolean32::Boolean32(unsigned int value)
 : m_value(static_cast<underlying_type>(value))
 {
 }
 
-KHRBINDING_CONSTEXPR Boolean32::operator bool() const
+EGLBINDING_CONSTEXPR Boolean32::operator bool() const
 {
     return m_value != 0;
 }
 
-KHRBINDING_CONSTEXPR Boolean32::operator char() const
+EGLBINDING_CONSTEXPR Boolean32::operator char() const
 {
     return m_value;
 }
 
-KHRBINDING_CONSTEXPR Boolean32::operator unsigned char() const
+EGLBINDING_CONSTEXPR Boolean32::operator unsigned char() const
 {
     return m_value;
 }
 
-KHRBINDING_CONSTEXPR Boolean32::operator int() const
+EGLBINDING_CONSTEXPR Boolean32::operator int() const
 {
     return m_value;
 }
 
-KHRBINDING_CONSTEXPR Boolean32::operator unsigned int() const
+EGLBINDING_CONSTEXPR Boolean32::operator unsigned int() const
 {
     return m_value;
 }
@@ -68,32 +68,32 @@ Boolean32 & Boolean32::operator=(const Boolean32 & other)
     return *this;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean32::operator<(const Boolean32 & other) const
+EGLBINDING_CONSTEXPR bool Boolean32::operator<(const Boolean32 & other) const
 {
     return m_value < other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean32::operator>(const Boolean32 & other) const
+EGLBINDING_CONSTEXPR bool Boolean32::operator>(const Boolean32 & other) const
 {
     return m_value > other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean32::operator<=(const Boolean32 & other) const
+EGLBINDING_CONSTEXPR bool Boolean32::operator<=(const Boolean32 & other) const
 {
     return m_value <= other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean32::operator>=(const Boolean32 & other) const
+EGLBINDING_CONSTEXPR bool Boolean32::operator>=(const Boolean32 & other) const
 {
     return m_value >= other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean32::operator==(const Boolean32 & other) const
+EGLBINDING_CONSTEXPR bool Boolean32::operator==(const Boolean32 & other) const
 {
     return m_value == other.m_value;
 }
 
-KHRBINDING_CONSTEXPR bool Boolean32::operator!=(const Boolean32 & other) const
+EGLBINDING_CONSTEXPR bool Boolean32::operator!=(const Boolean32 & other) const
 {
     return m_value != other.m_value;
 }

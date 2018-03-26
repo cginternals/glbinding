@@ -37,7 +37,7 @@ public:
     *  @brief
     *    Default constructor, resulting in an invalid Version object
     */
-    KHRBINDING_CONSTEXPR inline AbstractVersion();
+    GLBINDING_CONSTEXPR inline AbstractVersion();
 
     /**
     *  @brief
@@ -48,7 +48,7 @@ public:
     *  @param[in] minorVersion
     *    The minor version
     */
-    KHRBINDING_CONSTEXPR inline AbstractVersion(unsigned char majorVersion, unsigned char minorVersion);
+    GLBINDING_CONSTEXPR inline AbstractVersion(unsigned char majorVersion, unsigned char minorVersion);
 
     /**
     *  @brief
@@ -57,7 +57,7 @@ public:
     *  @param[in] version
     *    The Version the data is used from
     */
-    KHRBINDING_CONSTEXPR inline AbstractVersion(const AbstractVersion & version) = delete;
+    GLBINDING_CONSTEXPR inline AbstractVersion(const AbstractVersion & version) = delete;
 
     /**
     *  @brief
@@ -75,7 +75,7 @@ public:
     *  @return
     *    the major version
     */
-    KHRBINDING_CONSTEXPR inline unsigned char majorVersion() const;
+    GLBINDING_CONSTEXPR inline unsigned char majorVersion() const;
 
     /**
     *  @brief
@@ -84,7 +84,7 @@ public:
     *  @return
     *    the minor version
     */
-    KHRBINDING_CONSTEXPR inline unsigned char minorVersion() const;
+    GLBINDING_CONSTEXPR inline unsigned char minorVersion() const;
 
     /**
     *  @brief
@@ -111,7 +111,7 @@ public:
     *  @return
     *    The version as string, "-.-" iff the string is invalid
     */
-    KHRBINDING_API inline std::string toString() const;
+    GLBINDING_API inline std::string toString() const;
 
     /**
     *  @brief
@@ -123,7 +123,7 @@ public:
     *  @remarks
     *    This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed
     */
-    KHRBINDING_CONSTEXPR inline bool isNull() const;
+    GLBINDING_CONSTEXPR inline bool isNull() const;
 
 
 protected:

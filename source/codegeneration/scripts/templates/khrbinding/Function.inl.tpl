@@ -8,8 +8,12 @@
 #include <{{binding}}/Value.h>
 #include <{{binding}}/FunctionCall.h>
 #include <{{binding}}/CallbackMask.h>
+{{#boolean8}}
 #include <{{binding}}/Boolean8.h>
+{{/boolean8}}
+{{^boolean8}}
 #include <{{binding}}/Boolean32.h>
+{{/boolean8}}
 
 
 namespace {{binding}}
@@ -28,6 +32,7 @@ struct BasicCallHelper
 
 // Special case for booleans because of MSVC differing behavior
 
+{{#boolean8}}
 template <typename Binding, typename... Arguments>
 struct BasicCallHelper<Binding, {{binding}}::Boolean8, Arguments...>
 {
@@ -36,16 +41,17 @@ struct BasicCallHelper<Binding, {{binding}}::Boolean8, Arguments...>
         return reinterpret_cast<typename {{binding}}::Function<Binding, {{binding}}::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
-
-
+{{/boolean8}}
+{{^boolean8}}
 template <typename Binding, typename... Arguments>
 struct BasicCallHelper<Binding, {{binding}}::Boolean32, Arguments...>
 {
     inline static {{binding}}::Boolean32 call(const {{binding}}::Function<Binding, {{binding}}::Boolean32, Arguments...> * function, Arguments&&... arguments)
     {
-        return reinterpret_cast<typename {{binding}}::Function<Binding, {{binding}}::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+        return reinterpret_cast<typename {{binding}}::Function<Binding, {{binding}}::Boolean32::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
+{{/boolean8}}
 
 
 template <typename Binding, typename ReturnType, typename... Arguments>

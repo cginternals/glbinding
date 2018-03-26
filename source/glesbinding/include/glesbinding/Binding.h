@@ -6,8 +6,8 @@
 #include <vector>
 #include <functional>
 
-#include <khrbinding/MultiContextBinding.h>
-#include <khrbinding/AbstractFunction.h>
+#include <glesbinding/MultiContextBinding.h>
+#include <glesbinding/AbstractFunction.h>
 
 #include <glesbinding/glesbinding_api.h>
 #include <glesbinding/glesbinding_features.h>
@@ -29,10 +29,10 @@ namespace glesbinding
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-class GLESBINDING_API Binding : public khrbinding::MultiContextBinding<Binding>
+class GLESBINDING_API Binding : public MultiContextBinding<Binding>
 {
 public:
-    using array_t = std::array<khrbinding::AbstractFunction *, 792>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 792>; ///< The type of the build-in functions collection
 
     /**
     *  @brief

@@ -287,7 +287,7 @@ const Version & Meta::version(const GLextension extension)
 
 const std::set<Version> & Meta::versions()
 {
-    return ValidVersions::versions();
+    return ValidVersions<Version>::versions();
 }
 
 

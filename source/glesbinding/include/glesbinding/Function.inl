@@ -8,7 +8,6 @@
 #include <glesbinding/Value.h>
 #include <glesbinding/FunctionCall.h>
 #include <glesbinding/CallbackMask.h>
-#include <glesbinding/Boolean8.h>
 #include <glesbinding/Boolean32.h>
 
 
@@ -29,21 +28,11 @@ struct BasicCallHelper
 // Special case for booleans because of MSVC differing behavior
 
 template <typename Binding, typename... Arguments>
-struct BasicCallHelper<Binding, glesbinding::Boolean8, Arguments...>
-{
-    inline static glesbinding::Boolean8 call(const glesbinding::Function<Binding, glesbinding::Boolean8, Arguments...> * function, Arguments&&... arguments)
-    {
-        return reinterpret_cast<typename glesbinding::Function<Binding, glesbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
-    }
-};
-
-
-template <typename Binding, typename... Arguments>
 struct BasicCallHelper<Binding, glesbinding::Boolean32, Arguments...>
 {
     inline static glesbinding::Boolean32 call(const glesbinding::Function<Binding, glesbinding::Boolean32, Arguments...> * function, Arguments&&... arguments)
     {
-        return reinterpret_cast<typename glesbinding::Function<Binding, glesbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+        return reinterpret_cast<typename glesbinding::Function<Binding, glesbinding::Boolean32::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
 

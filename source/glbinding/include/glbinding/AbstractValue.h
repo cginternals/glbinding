@@ -15,7 +15,7 @@ namespace glbinding
 *
 *    This class and its subclasses Value<T> are mainly used when callbacks of OpenGL functions are used.
 */
-class KHRBINDING_API AbstractValue
+class GLBINDING_API AbstractValue
 {
 public:
     /**

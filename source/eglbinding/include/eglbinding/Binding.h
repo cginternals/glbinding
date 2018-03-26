@@ -6,8 +6,8 @@
 #include <vector>
 #include <functional>
 
-#include <khrbinding/SingleContextBinding.h>
-#include <khrbinding/AbstractFunction.h>
+#include <eglbinding/SingleContextBinding.h>
+#include <eglbinding/AbstractFunction.h>
 
 #include <eglbinding/eglbinding_api.h>
 #include <eglbinding/eglbinding_features.h>
@@ -29,10 +29,10 @@ namespace eglbinding
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-class EGLBINDING_API Binding : public khrbinding::SingleContextBinding<Binding>
+class EGLBINDING_API Binding : public SingleContextBinding<Binding>
 {
 public:
-    using array_t = std::array<khrbinding::AbstractFunction *, 141>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 141>; ///< The type of the build-in functions collection
 
     /**
     *  @brief

@@ -5,7 +5,7 @@
 #include <{{binding}}/AbstractState.h>
 
 
-namespace khrbinding
+namespace {{binding}}
 {
 
 

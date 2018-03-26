@@ -113,9 +113,10 @@ class Context:
                 apiMemberSetList.append( (f, False, True) )
         return apiMemberSetList
 
-    def __init__(self, api, multiContextBinding, revision, features, extensions, enums, bitfGroups, types, commands):
+    def __init__(self, api, multiContextBinding, boolean8, revision, features, extensions, enums, bitfGroups, types, commands):
         self.api = api
         self.multiContextBinding = multiContextBinding
+        self.boolean8 = boolean8
         self.revision = revision
         self.features = features
         self.extensions = extensions
@@ -150,8 +151,9 @@ class Context:
     def general(self):
 
         context = {"api": self.api,
-                   "binding": self.api+"binding",
                    "ucapi": self.api.upper(),
+                   "binding": self.api+"binding",
+                   "ucbinding": (self.api+"binding").upper(),
                    "memberSet": "",
                    "revision": self.revision,
                    "additionalTypeIncludes": self.additionalTypeIncludes(),
@@ -161,7 +163,9 @@ class Context:
                    "booleanType": "EGLBoolean" if self.api == "egl" else "GLboolean",
                    "extensionType": "EGLextension" if self.api == "egl" else "GLextension",
                    "bindingType": "MultiContextBinding" if self.multiContextBinding else "SingleContextBinding",
-                   "glapi": self.api.startswith("gl")
+                   "glapi": self.api.startswith("gl"),
+                   "boolean8": self.boolean8,
+                   "boolean32": not self.boolean8
                 }
 
         context["apiMemberSets"] = self.listContext( [{"memberSet": versionBID(feature, core, ext)}

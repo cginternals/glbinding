@@ -6,8 +6,8 @@
 #include <vector>
 #include <functional>
 
-#include <khrbinding/MultiContextBinding.h>
-#include <khrbinding/AbstractFunction.h>
+#include <glscbinding/MultiContextBinding.h>
+#include <glscbinding/AbstractFunction.h>
 
 #include <glscbinding/glscbinding_api.h>
 #include <glscbinding/glscbinding_features.h>
@@ -29,10 +29,10 @@ namespace glscbinding
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-class GLSCBINDING_API Binding : public khrbinding::MultiContextBinding<Binding>
+class GLSCBINDING_API Binding : public MultiContextBinding<Binding>
 {
 public:
-    using array_t = std::array<khrbinding::AbstractFunction *, 111>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 111>; ///< The type of the build-in functions collection
 
     /**
     *  @brief

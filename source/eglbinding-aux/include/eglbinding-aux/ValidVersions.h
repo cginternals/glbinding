@@ -14,7 +14,7 @@ namespace eglbinding { namespace aux
 
 
 template <typename VersionClass>
-class KHRBINDING_AUX_TEMPLATE_API ValidVersions
+class EGLBINDING_AUX_TEMPLATE_API ValidVersions
 {
 public:
     /**

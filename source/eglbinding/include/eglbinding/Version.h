@@ -32,7 +32,6 @@ namespace eglbinding
 *  }
 *  \endcode
 */
-template <typename Subclass>
 class Version : public AbstractVersion
 {
 public:
@@ -49,7 +48,7 @@ public:
     *  @param[in] version
     *    The Version the data is used from
     */
-    KHRBINDING_CONSTEXPR inline Version(const Subclass & version);
+    EGLBINDING_CONSTEXPR inline Version(const Version & version);
 
     /**
     *  @brief
@@ -58,7 +57,7 @@ public:
     *  @param[in] version
     *    The Version the data is moved from
     */
-    inline Version(Subclass && version);
+    inline Version(Version && version);
 
     /**
     *  @brief
@@ -70,7 +69,7 @@ public:
     *  @return
     *    The reference to this Version
     */
-    inline Subclass & operator=(const Subclass & version);
+    inline Version & operator=(const Version & version);
 
     /**
     *  @brief
@@ -82,7 +81,7 @@ public:
     *  @return
     *    The reference to this Version
     */
-    inline Subclass & operator=(Subclass && version);
+    inline Version & operator=(Version && version);
 
     /**
     *  @brief
@@ -94,7 +93,7 @@ public:
     *  @return
     *    'true' if this Version is lesser than the other Version, else 'false'
     */
-    KHRBINDING_CONSTEXPR inline bool operator<(const Subclass & version) const;
+    EGLBINDING_CONSTEXPR inline bool operator<(const Version & version) const;
 
     /**
     *  @brief
@@ -106,7 +105,7 @@ public:
     *  @return
     *    'true' if this Version is greater than the other Version, else 'false'
     */
-    KHRBINDING_CONSTEXPR inline bool operator>(const Subclass & version) const;
+    EGLBINDING_CONSTEXPR inline bool operator>(const Version & version) const;
 
     /**
     *  @brief
@@ -118,7 +117,7 @@ public:
     *  @return
     *    'true' if this Version is equal to the other Version, else 'false'
     */
-    KHRBINDING_CONSTEXPR inline bool operator==(const Subclass & version) const;
+    EGLBINDING_CONSTEXPR inline bool operator==(const Version & version) const;
 
     /**
     *  @brief
@@ -130,7 +129,7 @@ public:
     *  @return
     *    'true' if this Version is not equal to the other Version, else 'false'
     */
-    KHRBINDING_CONSTEXPR inline bool operator!=(const Subclass & version) const;
+    EGLBINDING_CONSTEXPR inline bool operator!=(const Version & version) const;
 
     /**
     *  @brief
@@ -142,7 +141,7 @@ public:
     *  @return
     *    'true' if this Version is greater or equal than the other Version, else 'false'
     */
-    KHRBINDING_CONSTEXPR inline bool operator>=(const Subclass & version) const;
+    EGLBINDING_CONSTEXPR inline bool operator>=(const Version & version) const;
 
     /**
     *  @brief
@@ -154,7 +153,7 @@ public:
     *  @return
     *    'true' if this Version is lesser or equal than the other Version, else 'false'
     */
-    KHRBINDING_CONSTEXPR inline bool operator<=(const Subclass & version) const;
+    EGLBINDING_CONSTEXPR inline bool operator<=(const Version & version) const;
 };
 
 

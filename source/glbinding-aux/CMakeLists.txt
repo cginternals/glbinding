@@ -205,7 +205,6 @@ target_link_libraries(${target}
     PUBLIC
     ${DEFAULT_LIBRARIES}
     ${META_PROJECT_NAME}::glbinding
-    ${META_PROJECT_NAME}::khrbinding-aux
 
     INTERFACE
 )

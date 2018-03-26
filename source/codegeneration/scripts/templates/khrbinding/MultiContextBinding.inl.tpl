@@ -433,7 +433,7 @@ typename MultiContextBinding<Subclass>::FunctionLogCallback & MultiContextBindin
 template <typename Subclass>
 int & MultiContextBinding<Subclass>::s_pos()
 {
-    KHRBINDING_THREAD_LOCAL int pos = 0;
+    {{ucbinding}}_THREAD_LOCAL int pos = 0;
     //static int pos = 0;
 
     return pos;
@@ -442,7 +442,7 @@ int & MultiContextBinding<Subclass>::s_pos()
 template <typename Subclass>
 ContextHandle & MultiContextBinding<Subclass>::s_context()
 {
-    KHRBINDING_THREAD_LOCAL ContextHandle context = 0;
+    {{ucbinding}}_THREAD_LOCAL ContextHandle context = 0;
     //static ContextHandle context = 0;
 
     return context;
@@ -451,7 +451,7 @@ ContextHandle & MultiContextBinding<Subclass>::s_context()
 template <typename Subclass>
 GetProcAddress & MultiContextBinding<Subclass>::s_getProcAddress()
 {
-    KHRBINDING_THREAD_LOCAL GetProcAddress getProcAddress = nullptr;
+    {{ucbinding}}_THREAD_LOCAL GetProcAddress getProcAddress = nullptr;
     //static GetProcAddress getProcAddress = nullptr;
 
     return getProcAddress;
