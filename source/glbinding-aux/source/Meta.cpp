@@ -1,6 +1,8 @@
 
 #include <glbinding-aux/Meta.h>
 
+#include <algorithm>
+
 #include <glbinding/gl/bitfield.h>
 #include <glbinding/gl/boolean.h>
 #include <glbinding/gl/enum.h>
@@ -26,6 +28,7 @@ static const auto none = std::string{};
 static const auto noneVersion = glbinding::Version{};
 static const auto noneStringSet = std::set<std::string>{};
 static const auto noneExtensions = std::set<gl::GLextension>{};
+static const auto noneVersions = std::set<glbinding::Version>{};
 
 
 } // namespace
@@ -130,6 +133,18 @@ const std::string & Meta::getString(const GLboolean & glboolean)
     return none;
 }
 
+gl::GLboolean Meta::getBoolean(const std::string & glboolean)
+{
+    const auto i = Meta_BooleansByString.find(glboolean);
+
+    if (i != Meta_BooleansByString.cend())
+    {
+        return i->second;
+    }
+
+    return static_cast<GLboolean>(-1);
+}
+
 const std::string & Meta::getString(const GLenum glenum)
 {
     const auto i = Meta_StringsByEnum.find(glenum);
@@ -219,6 +234,25 @@ const std::set<GLextension> Meta::extensions(const std::string & glfunction)
     }
 
     return noneExtensions;
+}
+
+const std::set<Version> Meta::versions(const std::string & glfunction)
+{
+    std::set<Version> requiringVersions;
+    for (const auto version : versions())
+    {
+        const auto functionSet = functions(version);
+
+        const auto it = std::find_if(functionSet.begin(), functionSet.end(), [& glfunction](khrbinding::AbstractFunction * function) {
+            return std::string(function->name()) == glfunction;
+        });
+        if (it != functionSet.end())
+        {
+            requiringVersions.insert(version);
+        }
+    }
+
+    return requiringVersions;
 }
 
 const std::set<AbstractFunction *> Meta::functions(const Version & version)
