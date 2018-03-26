@@ -37,6 +37,7 @@ def generate(profile, targetdir, revisionfile):
     patchfile = profile["patchFile"]
     apiRequire = profile["apiIdentifier"]
     multiContextBinding = profile["multiContext"]
+    booleanWidth = profile["booleanWidth"]
 
     # preparing
 
@@ -196,6 +197,58 @@ def generate(profile, targetdir, revisionfile):
     Generator.generate(generalContext, pjoin(sourcedir_aux,  "Meta_FunctionStringsByExtension.cpp"))
     Generator.generate(generalContext, pjoin(sourcedir_aux,  "Meta_FunctionStringsByVersion.cpp"))
     Generator.generate(generalContext, pjoin(sourcedir_aux,  "Meta_ExtensionsByFunctionString.cpp"))
+    
+    # KHR binding
+    
+    if multiContextBinding:
+        Generator.generate(generalContext, pjoin(includedir, "MultiContextBinding.h"), "khrbinding/MultiContextBinding.h")
+        Generator.generate(generalContext, pjoin(includedir, "MultiContextBinding.inl"), "khrbinding/MultiContextBinding.inl")
+    else:
+        Generator.generate(generalContext, pjoin(includedir, "SingleContextBinding.h"), "khrbinding/SingleContextBinding.h")
+        Generator.generate(generalContext, pjoin(includedir, "SingleContextBinding.inl"), "khrbinding/SingleContextBinding.inl")
+
+    if booleanWidth == 8:
+        Generator.generate(generalContext, pjoin(includedir, "Boolean8.h"), "khrbinding/Boolean8.h")
+        Generator.generate(generalContext, pjoin(includedir, "Boolean8.inl"), "khrbinding/Boolean8.inl")
+    else:
+        Generator.generate(generalContext, pjoin(includedir, "Boolean32.h"), "khrbinding/Boolean32.h")
+        Generator.generate(generalContext, pjoin(includedir, "Boolean32.inl"), "khrbinding/Boolean32.inl")
+
+    Generator.generate(generalContext, pjoin(includedir, "AbstractFunction.h"), "khrbinding/AbstractFunction.h")
+    Generator.generate(generalContext, pjoin(includedir, "AbstractState.h"), "khrbinding/AbstractState.h")
+    Generator.generate(generalContext, pjoin(includedir, "AbstractValue.h"), "khrbinding/AbstractValue.h")
+    Generator.generate(generalContext, pjoin(includedir, "AbstractVersion.h"), "khrbinding/AbstractVersion.h")
+    Generator.generate(generalContext, pjoin(includedir, "AbstractVersion.inl"), "khrbinding/AbstractVersion.inl")
+    Generator.generate(generalContext, pjoin(includedir, "CallbackMask.h"), "khrbinding/CallbackMask.h")
+    Generator.generate(generalContext, pjoin(includedir, "CallbackMask.inl"), "khrbinding/CallbackMask.inl")
+    Generator.generate(generalContext, pjoin(includedir, "ContextHandle.h"), "khrbinding/ContextHandle.h")
+    Generator.generate(generalContext, pjoin(includedir, "Function.h"), "khrbinding/Function.h")
+    Generator.generate(generalContext, pjoin(includedir, "Function.inl"), "khrbinding/Function.inl")
+    Generator.generate(generalContext, pjoin(includedir, "FunctionCall.h"), "khrbinding/FunctionCall.h")
+    Generator.generate(generalContext, pjoin(includedir, "ProcAddress.h"), "khrbinding/ProcAddress.h")
+    Generator.generate(generalContext, pjoin(includedir, "SharedBitfield.h"), "khrbinding/SharedBitfield.h")
+    Generator.generate(generalContext, pjoin(includedir, "SharedBitfield.inl"), "khrbinding/SharedBitfield.inl")
+    Generator.generate(generalContext, pjoin(includedir, "State.h"), "khrbinding/State.h")
+    Generator.generate(generalContext, pjoin(includedir, "State.inl"), "khrbinding/State.inl")
+    Generator.generate(generalContext, pjoin(includedir, "Value.h"), "khrbinding/Value.h")
+    Generator.generate(generalContext, pjoin(includedir, "Value.inl"), "khrbinding/Value.inl")
+    Generator.generate(generalContext, pjoin(includedir, "Version.h"), "khrbinding/Version.h")
+    Generator.generate(generalContext, pjoin(includedir, "Version.inl"), "khrbinding/Version.inl")
+
+    Generator.generate(generalContext, pjoin(sourcedir, "AbstractFunction.cpp"), "khrbinding/AbstractFunction.cpp")
+    Generator.generate(generalContext, pjoin(sourcedir, "AbstractState.cpp"), "khrbinding/AbstractState.cpp")
+    Generator.generate(generalContext, pjoin(sourcedir, "AbstractValue.cpp"), "khrbinding/AbstractValue.cpp")
+    Generator.generate(generalContext, pjoin(sourcedir, "FunctionCall.cpp"), "khrbinding/FunctionCall.cpp")
+    
+    # KHR binding AUX
+
+    Generator.generate(generalContext, pjoin(includedir_aux, "RingBuffer.h"), "khrbinding-aux/RingBuffer.h")
+    Generator.generate(generalContext, pjoin(includedir_aux, "RingBuffer.inl"), "khrbinding-aux/RingBuffer.inl")
+    Generator.generate(generalContext, pjoin(includedir_aux, "types_to_string.h"), "khrbinding-aux/types_to_string.h")
+    Generator.generate(generalContext, pjoin(includedir_aux, "ValidVersions.h"), "khrbinding-aux/ValidVersions.h")
+    Generator.generate(generalContext, pjoin(includedir_aux, "ValidVersions.inl"), "khrbinding-aux/ValidVersions.inl")
+
+    Generator.generate(generalContext, pjoin(sourcedir_aux, "types_to_string.cpp"), "khrbinding-aux/types_to_string.cpp")
 
     # Generate function-related files with specific contexts for each initial letter of the function name
     for functionGroup in generalContext["functionsByInitial"]["groups"]:

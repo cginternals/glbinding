@@ -2,16 +2,26 @@
 #pragma once
 
 
-#include <khrbinding/ProcAddress.h>
+#include <functional>
+
+#include <eglbinding/eglbinding_api.h>
 
 
-namespace eglbinding 
+namespace eglbinding
 {
 
 
-using ProcAddress = khrbinding::ProcAddress;
+/**
+*  @brief
+*    The generic pointer to an OpenGL function
+*/
+using ProcAddress = void(*)();
 
-using GetProcAddress = khrbinding::GetProcAddress;
+/**
+*  @brief
+*    The signature for the getProcAddress function
+*/
+using GetProcAddress = std::function<ProcAddress(const char*)>;
 
 
 } // namespace eglbinding

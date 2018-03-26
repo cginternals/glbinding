@@ -150,6 +150,7 @@ class Context:
     def general(self):
 
         context = {"api": self.api,
+                   "binding": self.api+"binding",
                    "ucapi": self.api.upper(),
                    "memberSet": "",
                    "revision": self.revision,

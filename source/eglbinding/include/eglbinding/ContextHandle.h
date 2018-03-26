@@ -2,18 +2,11 @@
 #pragma once
 
 
-#include <khrbinding/ContextHandle.h>
-
-
-namespace glesbinding 
+namespace eglbinding
 {
 
 
-/**
-*  @brief
-*    The data type of a context handle
-*/
-using ContextHandle = khrbinding::ContextHandle;
+using ContextHandle = long long int;
 
 
-} // namespace glesbinding
+} // namespace eglbinding
