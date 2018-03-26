@@ -5,6 +5,8 @@
 #include <set>
 #include <utility>
 
+#include <{{binding}}/Version.h>
+
 #include <{{binding}}-aux/{{binding}}-aux_api.h>
 #include <{{binding}}-aux/{{binding}}-aux_features.h>
 
@@ -78,4 +80,14 @@ protected:
 };
 
 
+template <>
+{{ucbinding}}_AUX_API const std::set<{{binding}}::Version> {{binding}}::aux::ValidVersions<{{binding}}::Version>::s_validVersions;
+
+template <>
+{{ucbinding}}_AUX_API const {{binding}}::Version {{binding}}::aux::ValidVersions<{{binding}}::Version>::s_latest;
+
+
 } } // namespace {{binding}}::aux
+
+
+#include <{{binding}}-aux/ValidVersions.inl>

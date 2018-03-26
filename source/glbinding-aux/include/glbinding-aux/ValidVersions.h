@@ -5,6 +5,8 @@
 #include <set>
 #include <utility>
 
+#include <glbinding/Version.h>
+
 #include <glbinding-aux/glbinding-aux_api.h>
 #include <glbinding-aux/glbinding-aux_features.h>
 
@@ -78,4 +80,14 @@ protected:
 };
 
 
+template <>
+GLBINDING_AUX_API const std::set<glbinding::Version> glbinding::aux::ValidVersions<glbinding::Version>::s_validVersions;
+
+template <>
+GLBINDING_AUX_API const glbinding::Version glbinding::aux::ValidVersions<glbinding::Version>::s_latest;
+
+
 } } // namespace glbinding::aux
+
+
+#include <glbinding-aux/ValidVersions.inl>

@@ -68,6 +68,32 @@ set(headers
     ${include_path}/Version.h
     ${include_path}/Version.inl
     ${include_path}/SharedBitfield.h
+
+    # KHR binding
+    ${include_path}/AbstractFunction.h
+    ${include_path}/AbstractState.h
+    ${include_path}/AbstractValue.h
+    ${include_path}/AbstractVersion.h
+    ${include_path}/AbstractVersion.inl
+    ${include_path}/Boolean8.h
+    ${include_path}/Boolean8.inl
+    ${include_path}/CallbackMask.h
+    ${include_path}/CallbackMask.inl
+    ${include_path}/ContextHandle.h
+    ${include_path}/Function.h
+    ${include_path}/Function.inl
+    ${include_path}/FunctionCall.h
+    ${include_path}/MultiContextBinding.h
+    ${include_path}/MultiContextBinding.inl
+    ${include_path}/ProcAddress.h
+    ${include_path}/SharedBitfield.h
+    ${include_path}/SharedBitfield.inl
+    ${include_path}/State.h
+    ${include_path}/State.inl
+    ${include_path}/Value.h
+    ${include_path}/Value.inl
+    ${include_path}/Version.h
+    ${include_path}/Version.inl
 )
 
 # add featured headers
@@ -80,6 +106,12 @@ set(sources
     ${source_path}/Binding_list.cpp
 
     ${source_path}/Binding_pch.h
+    
+    # KHR binding
+    ${source_path}/AbstractFunction.cpp
+    ${source_path}/AbstractState.cpp
+    ${source_path}/AbstractValue.cpp
+    ${source_path}/FunctionCall.cpp
 )
 
 

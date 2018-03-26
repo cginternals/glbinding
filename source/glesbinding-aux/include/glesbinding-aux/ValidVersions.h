@@ -5,6 +5,8 @@
 #include <set>
 #include <utility>
 
+#include <glesbinding/Version.h>
+
 #include <glesbinding-aux/glesbinding-aux_api.h>
 #include <glesbinding-aux/glesbinding-aux_features.h>
 
@@ -78,4 +80,14 @@ protected:
 };
 
 
+template <>
+GLESBINDING_AUX_API const std::set<glesbinding::Version> glesbinding::aux::ValidVersions<glesbinding::Version>::s_validVersions;
+
+template <>
+GLESBINDING_AUX_API const glesbinding::Version glesbinding::aux::ValidVersions<glesbinding::Version>::s_latest;
+
+
 } } // namespace glesbinding::aux
+
+
+#include <glesbinding-aux/ValidVersions.inl>

@@ -5,6 +5,8 @@
 #include <set>
 #include <utility>
 
+#include <eglbinding/Version.h>
+
 #include <eglbinding-aux/eglbinding-aux_api.h>
 #include <eglbinding-aux/eglbinding-aux_features.h>
 
@@ -78,4 +80,14 @@ protected:
 };
 
 
+template <>
+EGLBINDING_AUX_API const std::set<eglbinding::Version> eglbinding::aux::ValidVersions<eglbinding::Version>::s_validVersions;
+
+template <>
+EGLBINDING_AUX_API const eglbinding::Version eglbinding::aux::ValidVersions<eglbinding::Version>::s_latest;
+
+
 } } // namespace eglbinding::aux
+
+
+#include <eglbinding-aux/ValidVersions.inl>
