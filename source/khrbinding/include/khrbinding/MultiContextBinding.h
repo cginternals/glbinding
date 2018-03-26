@@ -35,7 +35,7 @@ namespace khrbinding
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
 template <typename Subclass>
-class KHRBINDING_TEMPLATE_API Binding
+class KHRBINDING_TEMPLATE_API MultiContextBinding
 {
 public:
     /**
@@ -64,7 +64,7 @@ public:
     *  @brief
     *    Deleted Constructor as all functions are static
     */
-    Binding() = delete;
+    MultiContextBinding() = delete;
 
     /**
     *  @brief
@@ -346,4 +346,4 @@ protected:
 } // namespace khrbinding
 
 
-#include <khrbinding/Binding.inl>
+#include <khrbinding/MultiContextBinding.inl>

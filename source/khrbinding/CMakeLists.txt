@@ -38,8 +38,6 @@ set(headers
     ${include_path}/AbstractValue.h
     ${include_path}/AbstractVersion.h
     ${include_path}/AbstractVersion.inl
-    ${include_path}/Binding.h
-    ${include_path}/Binding.inl
     ${include_path}/Boolean32.h
     ${include_path}/Boolean32.inl
     ${include_path}/Boolean8.h
@@ -50,9 +48,13 @@ set(headers
     ${include_path}/Function.h
     ${include_path}/Function.inl
     ${include_path}/FunctionCall.h
+    ${include_path}/MultiContextBinding.h
+    ${include_path}/MultiContextBinding.inl
     ${include_path}/ProcAddress.h
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
+    ${include_path}/SingleContextBinding.h
+    ${include_path}/SingleContextBinding.inl
     ${include_path}/State.h
     ${include_path}/State.inl
     ${include_path}/Value.h

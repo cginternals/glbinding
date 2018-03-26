@@ -1,5 +1,5 @@
 
-#include <khrbinding/Binding.h>
+#include <khrbinding/MultiContextBinding.h>
 
 #include <cassert>
 #include <iostream>
@@ -13,7 +13,7 @@ namespace khrbinding
 
 
 template <typename Subclass>
-void Binding<Subclass>::setCallbackMask(const CallbackMask mask)
+void MultiContextBinding<Subclass>::setCallbackMask(const CallbackMask mask)
 {
     for (auto function : Subclass::functions())
     {
@@ -22,7 +22,7 @@ void Binding<Subclass>::setCallbackMask(const CallbackMask mask)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+void MultiContextBinding<Subclass>::setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (auto function : Subclass::functions())
     {
@@ -34,7 +34,7 @@ void Binding<Subclass>::setCallbackMaskExcept(const CallbackMask mask, const std
 }
 
 template <typename Subclass>
-void Binding<Subclass>::addCallbackMask(const CallbackMask mask)
+void MultiContextBinding<Subclass>::addCallbackMask(const CallbackMask mask)
 {
     for (auto function : Subclass::functions())
     {
@@ -43,7 +43,7 @@ void Binding<Subclass>::addCallbackMask(const CallbackMask mask)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+void MultiContextBinding<Subclass>::addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (auto function : Subclass::functions())
     {
@@ -55,7 +55,7 @@ void Binding<Subclass>::addCallbackMaskExcept(const CallbackMask mask, const std
 }
 
 template <typename Subclass>
-void Binding<Subclass>::removeCallbackMask(const CallbackMask mask)
+void MultiContextBinding<Subclass>::removeCallbackMask(const CallbackMask mask)
 {
     for (auto function : Subclass::functions())
     {
@@ -64,7 +64,7 @@ void Binding<Subclass>::removeCallbackMask(const CallbackMask mask)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::removeCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+void MultiContextBinding<Subclass>::removeCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (auto function : Subclass::functions())
     {
@@ -76,55 +76,55 @@ void Binding<Subclass>::removeCallbackMaskExcept(const CallbackMask mask, const 
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::SimpleFunctionCallback Binding<Subclass>::unresolvedCallback()
+typename MultiContextBinding<Subclass>::SimpleFunctionCallback MultiContextBinding<Subclass>::unresolvedCallback()
 {
     return s_unresolvedCallback();
 }
 
 template <typename Subclass>
-void Binding<Subclass>::setUnresolvedCallback(SimpleFunctionCallback callback)
+void MultiContextBinding<Subclass>::setUnresolvedCallback(SimpleFunctionCallback callback)
 {
     s_unresolvedCallback() = std::move(callback);
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::FunctionCallback Binding<Subclass>::beforeCallback()
+typename MultiContextBinding<Subclass>::FunctionCallback MultiContextBinding<Subclass>::beforeCallback()
 {
     return s_beforeCallback();
 }
 
 template <typename Subclass>
-void Binding<Subclass>::setBeforeCallback(FunctionCallback callback)
+void MultiContextBinding<Subclass>::setBeforeCallback(FunctionCallback callback)
 {
     s_beforeCallback() = std::move(callback);
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::FunctionCallback Binding<Subclass>::afterCallback()
+typename MultiContextBinding<Subclass>::FunctionCallback MultiContextBinding<Subclass>::afterCallback()
 {
     return s_afterCallback();
 }
 
 template <typename Subclass>
-void Binding<Subclass>::setAfterCallback(FunctionCallback callback)
+void MultiContextBinding<Subclass>::setAfterCallback(FunctionCallback callback)
 {
     s_afterCallback() = std::move(callback);
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::FunctionLogCallback Binding<Subclass>::logCallback()
+typename MultiContextBinding<Subclass>::FunctionLogCallback MultiContextBinding<Subclass>::logCallback()
 {
     return s_logCallback();
 }
 
 template <typename Subclass>
-void Binding<Subclass>::setLogCallback(Binding<Subclass>::FunctionLogCallback callback)
+void MultiContextBinding<Subclass>::setLogCallback(MultiContextBinding<Subclass>::FunctionLogCallback callback)
 {
     s_logCallback() = std::move(callback);
 }
 
 template <typename Subclass>
-void Binding<Subclass>::unresolved(const AbstractFunction * function)
+void MultiContextBinding<Subclass>::unresolved(const AbstractFunction * function)
 {
     if (s_unresolvedCallback())
     {
@@ -133,7 +133,7 @@ void Binding<Subclass>::unresolved(const AbstractFunction * function)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::before(const FunctionCall & call)
+void MultiContextBinding<Subclass>::before(const FunctionCall & call)
 {
     if (s_beforeCallback())
     {
@@ -142,7 +142,7 @@ void Binding<Subclass>::before(const FunctionCall & call)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::after(const FunctionCall & call)
+void MultiContextBinding<Subclass>::after(const FunctionCall & call)
 {
     if (s_afterCallback())
     {
@@ -151,7 +151,7 @@ void Binding<Subclass>::after(const FunctionCall & call)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::log(FunctionCall && call)
+void MultiContextBinding<Subclass>::log(FunctionCall && call)
 {
     if (s_logCallback())
     {
@@ -160,25 +160,25 @@ void Binding<Subclass>::log(FunctionCall && call)
 }
 
 template <typename Subclass>
-const std::vector<AbstractFunction *> & Binding<Subclass>::additionalFunctions()
+const std::vector<AbstractFunction *> & MultiContextBinding<Subclass>::additionalFunctions()
 {
     return s_additionalFunctions();
 }
 
 template <typename Subclass>
-size_t Binding<Subclass>::size()
+size_t MultiContextBinding<Subclass>::size()
 {
     return Subclass::functions().size() + s_additionalFunctions().size();
 }
 
 template <typename Subclass>
-void Binding<Subclass>::initialize(const GetProcAddress functionPointerResolver, const bool resolveFunctions)
+void MultiContextBinding<Subclass>::initialize(const GetProcAddress functionPointerResolver, const bool resolveFunctions)
 {
     initialize(0, functionPointerResolver, true, resolveFunctions);
 }
 
 template <typename Subclass>
-void Binding<Subclass>::initialize(
+void MultiContextBinding<Subclass>::initialize(
     const ContextHandle context
 ,   const GetProcAddress functionPointerResolver
 ,   const bool _useContext
@@ -223,7 +223,7 @@ void Binding<Subclass>::initialize(
 }
 
 template <typename Subclass>
-ProcAddress Binding<Subclass>::resolveFunction(const char * name)
+ProcAddress MultiContextBinding<Subclass>::resolveFunction(const char * name)
 {
     if (s_getProcAddress() != nullptr)
     {
@@ -239,13 +239,13 @@ ProcAddress Binding<Subclass>::resolveFunction(const char * name)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::registerAdditionalFunction(AbstractFunction * function)
+void MultiContextBinding<Subclass>::registerAdditionalFunction(AbstractFunction * function)
 {
     s_additionalFunctions().push_back(function);
 }
 
 template <typename Subclass>
-void Binding<Subclass>::resolveFunctions()
+void MultiContextBinding<Subclass>::resolveFunctions()
 {
     for (auto function : Subclass::functions())
     {
@@ -259,13 +259,13 @@ void Binding<Subclass>::resolveFunctions()
 }
 
 template <typename Subclass>
-void Binding<Subclass>::useCurrentContext()
+void MultiContextBinding<Subclass>::useCurrentContext()
 {
     useContext(0);
 }
 
 template <typename Subclass>
-void Binding<Subclass>::useContext(const ContextHandle context)
+void MultiContextBinding<Subclass>::useContext(const ContextHandle context)
 {
     std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
 
@@ -287,13 +287,13 @@ void Binding<Subclass>::useContext(const ContextHandle context)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::releaseCurrentContext()
+void MultiContextBinding<Subclass>::releaseCurrentContext()
 {
     releaseContext(0);
 }
 
 template <typename Subclass>
-void Binding<Subclass>::releaseContext(const ContextHandle context)
+void MultiContextBinding<Subclass>::releaseContext(const ContextHandle context)
 {
     std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
 
@@ -303,7 +303,7 @@ void Binding<Subclass>::releaseContext(const ContextHandle context)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::addContextSwitchCallback(const ContextSwitchCallback callback)
+void MultiContextBinding<Subclass>::addContextSwitchCallback(const ContextSwitchCallback callback)
 {
     std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
 
@@ -311,19 +311,19 @@ void Binding<Subclass>::addContextSwitchCallback(const ContextSwitchCallback cal
 }
 
 template <typename Subclass>
-int Binding<Subclass>::currentPos()
+int MultiContextBinding<Subclass>::currentPos()
 {
     return s_pos();
 }
 
 template <typename Subclass>
-int Binding<Subclass>::maxPos()
+int MultiContextBinding<Subclass>::maxPos()
 {
     return s_maxPos();
 }
 
 template <typename Subclass>
-void Binding<Subclass>::provideState(const int pos)
+void MultiContextBinding<Subclass>::provideState(const int pos)
 {
     assert(pos > -1);
 
@@ -340,7 +340,7 @@ void Binding<Subclass>::provideState(const int pos)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::neglectState(const int p)
+void MultiContextBinding<Subclass>::neglectState(const int p)
 {
     assert(p <= s_maxPos());
     assert(p > -1);
@@ -358,7 +358,7 @@ void Binding<Subclass>::neglectState(const int p)
     {
         for (AbstractFunction * function : Subclass::functions())
         {
-            function->state(p) = State<Binding>();
+            function->state(p) = State<Subclass>();
         }
     }
 
@@ -369,13 +369,13 @@ void Binding<Subclass>::neglectState(const int p)
 }
 
 template <typename Subclass>
-void Binding<Subclass>::setStatePos(const int p)
+void MultiContextBinding<Subclass>::setStatePos(const int p)
 {
     s_pos() = p;
 }
 
 template <typename Subclass>
-int & Binding<Subclass>::s_maxPos()
+int & MultiContextBinding<Subclass>::s_maxPos()
 {
     static int maxPos = -1;
 
@@ -383,7 +383,7 @@ int & Binding<Subclass>::s_maxPos()
 }
 
 template <typename Subclass>
-std::vector<AbstractFunction *> & Binding<Subclass>::s_additionalFunctions()
+std::vector<AbstractFunction *> & MultiContextBinding<Subclass>::s_additionalFunctions()
 {
     static std::vector<AbstractFunction *> additionalFunctions;
 
@@ -391,7 +391,7 @@ std::vector<AbstractFunction *> & Binding<Subclass>::s_additionalFunctions()
 }
 
 template <typename Subclass>
-std::vector<typename Binding<Subclass>::ContextSwitchCallback> & Binding<Subclass>::s_contextSwitchCallbacks()
+std::vector<typename MultiContextBinding<Subclass>::ContextSwitchCallback> & MultiContextBinding<Subclass>::s_contextSwitchCallbacks()
 {
     static std::vector<ContextSwitchCallback> callbacks;
 
@@ -399,7 +399,7 @@ std::vector<typename Binding<Subclass>::ContextSwitchCallback> & Binding<Subclas
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::SimpleFunctionCallback & Binding<Subclass>::s_unresolvedCallback()
+typename MultiContextBinding<Subclass>::SimpleFunctionCallback & MultiContextBinding<Subclass>::s_unresolvedCallback()
 {
     static SimpleFunctionCallback unresolvedCallback;
 
@@ -407,7 +407,7 @@ typename Binding<Subclass>::SimpleFunctionCallback & Binding<Subclass>::s_unreso
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::FunctionCallback & Binding<Subclass>::s_beforeCallback()
+typename MultiContextBinding<Subclass>::FunctionCallback & MultiContextBinding<Subclass>::s_beforeCallback()
 {
     static FunctionCallback beforeCallback;
 
@@ -415,7 +415,7 @@ typename Binding<Subclass>::FunctionCallback & Binding<Subclass>::s_beforeCallba
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::FunctionCallback & Binding<Subclass>::s_afterCallback()
+typename MultiContextBinding<Subclass>::FunctionCallback & MultiContextBinding<Subclass>::s_afterCallback()
 {
     static FunctionCallback afterCallback;
 
@@ -423,7 +423,7 @@ typename Binding<Subclass>::FunctionCallback & Binding<Subclass>::s_afterCallbac
 }
 
 template <typename Subclass>
-typename Binding<Subclass>::FunctionLogCallback & Binding<Subclass>::s_logCallback()
+typename MultiContextBinding<Subclass>::FunctionLogCallback & MultiContextBinding<Subclass>::s_logCallback()
 {
     static FunctionLogCallback logCallback;
 
@@ -431,7 +431,7 @@ typename Binding<Subclass>::FunctionLogCallback & Binding<Subclass>::s_logCallba
 }
 
 template <typename Subclass>
-int & Binding<Subclass>::s_pos()
+int & MultiContextBinding<Subclass>::s_pos()
 {
     KHRBINDING_THREAD_LOCAL int pos = 0;
     //static int pos = 0;
@@ -440,7 +440,7 @@ int & Binding<Subclass>::s_pos()
 }
 
 template <typename Subclass>
-ContextHandle & Binding<Subclass>::s_context()
+ContextHandle & MultiContextBinding<Subclass>::s_context()
 {
     KHRBINDING_THREAD_LOCAL ContextHandle context = 0;
     //static ContextHandle context = 0;
@@ -449,7 +449,7 @@ ContextHandle & Binding<Subclass>::s_context()
 }
 
 template <typename Subclass>
-GetProcAddress & Binding<Subclass>::s_getProcAddress()
+GetProcAddress & MultiContextBinding<Subclass>::s_getProcAddress()
 {
     KHRBINDING_THREAD_LOCAL GetProcAddress getProcAddress = nullptr;
     //static GetProcAddress getProcAddress = nullptr;
@@ -458,7 +458,7 @@ GetProcAddress & Binding<Subclass>::s_getProcAddress()
 }
 
 template <typename Subclass>
-std_boost::recursive_mutex & Binding<Subclass>::s_mutex()
+std_boost::recursive_mutex & MultiContextBinding<Subclass>::s_mutex()
 {
     static std_boost::recursive_mutex mutex;
 
@@ -466,7 +466,7 @@ std_boost::recursive_mutex & Binding<Subclass>::s_mutex()
 }
 
 template <typename Subclass>
-std::unordered_map<ContextHandle, int> & Binding<Subclass>::s_bindings()
+std::unordered_map<ContextHandle, int> & MultiContextBinding<Subclass>::s_bindings()
 {
     static std::unordered_map<ContextHandle, int> bindings;
 
@@ -474,7 +474,7 @@ std::unordered_map<ContextHandle, int> & Binding<Subclass>::s_bindings()
 }
 
 template <typename Subclass>
-GetProcAddress & Binding<Subclass>::s_firstGetProcAddress()
+GetProcAddress & MultiContextBinding<Subclass>::s_firstGetProcAddress()
 {
     static GetProcAddress getProcAddress = nullptr;
 
