@@ -191,6 +191,18 @@ public:
     *    The set of extensions that are requiring an OpenGL function
     */
     static const std::set<{{api}}::{{extensionType}}> extensions(const std::string & {{api}}function);
+
+    /**
+    *  @brief
+    *    Returns the list of features that are requiring an OpenGL function
+    *
+    *  @param[in] function
+    *    The name of the function, including the '{{api}}' prefix
+    *
+    *  @return
+    *    The set of features that are requiring an OpenGL function
+    */
+    static const std::set<Version> versions(const std::string & {{api}}function);
     
     /**
     *  @brief

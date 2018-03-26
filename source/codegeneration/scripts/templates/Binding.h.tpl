@@ -6,7 +6,7 @@
 #include <vector>
 #include <functional>
 
-#include <khrbinding/Binding.h>
+#include <khrbinding/{{bindingType}}.h>
 #include <khrbinding/AbstractFunction.h>
 
 #include <{{api}}binding/{{api}}binding_api.h>
@@ -29,7 +29,7 @@ namespace {{api}}binding
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-class {{ucapi}}BINDING_API Binding : public khrbinding::Binding<Binding>
+class {{ucapi}}BINDING_API Binding : public khrbinding::{{bindingType}}<Binding>
 {
 public:
     using array_t = std::array<khrbinding::AbstractFunction *, {{functions.count}}>; ///< The type of the build-in functions collection

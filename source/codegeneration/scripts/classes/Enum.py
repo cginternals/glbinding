@@ -61,6 +61,8 @@ class Enum:
         elif groupType == "bitmask":
             self.type = "GLbitfield"
             self.groupString = groupString
+        else:
+            self.type = "GLenum"
 
         self.reqFeatures   = []
         self.remFeatures   = [] # len(remF) should always be < 2
@@ -260,7 +262,7 @@ def parseEnums(xml, features, extensions, commands, api, apiRequire):
         groupType   = E.attrib.get("type", None)
         groupNamespace = E.attrib.get("namespace", None)
         
-        if groupNamespace:
+        if groupNamespace and not groupString:
             groupString = groupNamespace
 
         # only parse enum if 

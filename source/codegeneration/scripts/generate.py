@@ -36,6 +36,7 @@ def generate(profile, targetdir, revisionfile):
     inputfile = profile["sourceFile"]
     patchfile = profile["patchFile"]
     apiRequire = profile["apiIdentifier"]
+    multiContextBinding = profile["multiContext"]
 
     # preparing
 
@@ -83,12 +84,9 @@ def generate(profile, targetdir, revisionfile):
     groups     = parseGroups(registry, enums, api, apiRequire)
     print(" # " + str(len(groups)) + " enum groups parsed")
 
-    # patching
-
-    print("")
-    print("PATCHING")
-
-    if patchfile is not None:
+    if patchfile is not None: # patching
+        print("")
+        print("PATCHING")
 
         print("parsing " + patchfile)
         patchtree     = ET.parse(patchfile)
@@ -162,7 +160,7 @@ def generate(profile, targetdir, revisionfile):
     sourcedir_aux  = pjoin(targetdir+"-aux", "source/")
     testdir    = pjoin(targetdir, "../tests/{api}binding-test/")
 
-    context = Context(api, revision, features, extensions, enums, bitfGroups, types, commands)
+    context = Context(api, multiContextBinding, revision, features, extensions, enums, bitfGroups, types, commands)
     generalContext = context.general()
 
     # Generate files with common context

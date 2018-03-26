@@ -4,9 +4,6 @@
 #include <glbinding/Version.h>
 
 
-using namespace gl;
-
-
 namespace glbinding { namespace aux
 {
 

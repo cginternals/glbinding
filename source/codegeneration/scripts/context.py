@@ -113,8 +113,9 @@ class Context:
                 apiMemberSetList.append( (f, False, True) )
         return apiMemberSetList
 
-    def __init__(self, api, revision, features, extensions, enums, bitfGroups, types, commands):
+    def __init__(self, api, multiContextBinding, revision, features, extensions, enums, bitfGroups, types, commands):
         self.api = api
+        self.multiContextBinding = multiContextBinding
         self.revision = revision
         self.features = features
         self.extensions = extensions
@@ -157,7 +158,8 @@ class Context:
                    "bitfieldType": "EGLbitfield" if self.api == "egl" else "GLbitfield",
                    "enumType": "EGLenum" if self.api == "egl" else "GLenum",
                    "booleanType": "EGLBoolean" if self.api == "egl" else "GLboolean",
-                   "extensionType": "EGLextension" if self.api == "egl" else "GLextension"
+                   "extensionType": "EGLextension" if self.api == "egl" else "GLextension",
+                   "bindingType": "MultiContextBinding" if self.multiContextBinding else "SingleContextBinding"
                 }
 
         context["apiMemberSets"] = self.listContext( [{"memberSet": versionBID(feature, core, ext)}
