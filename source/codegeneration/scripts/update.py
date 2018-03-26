@@ -1,37 +1,37 @@
 #!/usr/bin/python
 
 import os, sys, getopt, io, subprocess
+import json
 
-def update(outputfile):
-    url = "https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/master/xml/" + outputfile
-    if outputfile == "egl.xml":
-        url = "https://raw.githubusercontent.com/KhronosGroup/EGL-Registry/master/api/" + outputfile
-    
+def update(url, outputfile):
     print("Retrieving latest revision of " + outputfile)
 
     os.system("curl " + url + " > " + outputfile)
     os.system("git diff " + outputfile)
 
-
 def main(argv):
     try:
-        opts, args = getopt.getopt(argv[1:], "f:", ["file="])
+        opts, args = getopt.getopt(argv[1:], "p:", ["profile="])
     except getopt.GetoptError:
-        print("usage: %s -f <XML>" % argv[0])
+        print("usage: %s -p <profile JSON>" % argv[0])
         sys.exit(1)
     
-    outputfile = None
+    profile = None
     
     for opt, arg in opts:
-        if opt in ("-f", "--file"):
-            outputfile = arg
+        if opt in ("-p", "--profile"):
+            profile = arg
 
-    if outputfile == None:
-        print("no XML file given")
+    if profile == None:
+        print("no profile given")
         sys.exit(1)
 
-    update(outputfile)
+    if not os.path.isfile(profile):
+        print("Profile not readable")
+        sys.exit(1)
 
+    p = json.load(open(profile))
+    update(p["sourceUrl"], p["sourceFile"])
 
 if __name__ == "__main__":
     main(sys.argv)
