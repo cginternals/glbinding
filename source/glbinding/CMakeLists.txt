@@ -59,6 +59,7 @@ set(headers
     ${include_path}/gl/types.h
     ${include_path}/gl/values.h
 
+    ${include_path}/glbinding.h
     ${include_path}/AbstractFunction.h
     ${include_path}/CallbackMask.h
     ${include_path}/Function.h
@@ -98,6 +99,7 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND headers ${featured_includes})
 
 set(sources
+    ${source_path}/glbinding.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
 
