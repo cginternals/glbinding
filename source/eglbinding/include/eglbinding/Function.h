@@ -22,7 +22,7 @@ namespace eglbinding
 {
 
 
-template <typename Binding, typename ReturnType, typename... Arguments>
+template <typename ReturnType, typename... Arguments>
 struct FunctionHelper;
 
 /**
@@ -67,11 +67,11 @@ struct EGLBINDING_TEMPLATE_API CallbackType<void, Arguments...>
 *  @tparam Arguments
 *    The types of the arguments
 */
-template <typename Binding, typename ReturnType, typename... Arguments>
+template <typename ReturnType, typename... Arguments>
 class EGLBINDING_TEMPLATE_API Function : public AbstractFunction
 {
 public:
-    friend struct FunctionHelper<Binding, ReturnType, Arguments...>;
+    friend struct FunctionHelper<ReturnType, Arguments...>;
 
     using Signature      = ReturnType(WINAPI *) (Arguments...);                   ///< The c pointer type for a function call
     using BeforeCallback = typename CallbackType<void, Arguments...>::type;       ///< The callback type for the before callback
@@ -196,7 +196,7 @@ public:
 
 
 protected:
-    mutable std::vector<State<Binding>> m_states;
+    mutable std::vector<State> m_states;
 
     BeforeCallback m_beforeCallback; ///< The currently registered before callback
     AfterCallback  m_afterCallback;  ///< The currently registered after callback

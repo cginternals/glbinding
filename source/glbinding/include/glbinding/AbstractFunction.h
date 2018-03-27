@@ -18,6 +18,7 @@ namespace glbinding
 
 
 class AbstractState;
+class Binding;
 
 
 /**
@@ -27,6 +28,7 @@ class AbstractState;
 */
 class GLBINDING_API AbstractFunction
 {
+    friend class Binding;
 public:
     /**
     *  @brief
@@ -138,6 +140,14 @@ public:
 
     virtual void resizeStates(int count) = 0;
 
+    static void unresolved(const AbstractFunction * function);
+    static void before(const FunctionCall & call);
+    static void after(const FunctionCall & call);
+    static void log(FunctionCall && call);
+
+    static int currentPos();
+    static int maxPos();
+
 
 protected:
     /**
@@ -184,7 +194,6 @@ protected:
     *    The state
     */
     virtual AbstractState & state(int pos) const = 0;
-
 
 protected:
     const char * m_name;   ///< The OpenGL API function name, including the 'gl' prefix

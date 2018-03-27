@@ -1,13 +1,14 @@
 
-#pragma once
+#include <glesbinding/State.h>
+
+#include <glesbinding/Binding.h>
 
 
 namespace glesbinding
 {
 
 
-template <typename Binding>
-void State<Binding>::resolve(const char * name)
+void State::resolve(const char * name)
 {
     if (m_initialized)
     {

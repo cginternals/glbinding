@@ -9,8 +9,8 @@ namespace eglbinding
 {
 
 
-Function<Binding, EGLBoolean, EGLenum> Binding::BindAPI("eglBindAPI");
-Function<Binding, EGLBoolean, EGLDisplay, EGLSurface, EGLint> Binding::BindTexImage("eglBindTexImage");
+Function<EGLBoolean, EGLenum> Binding::BindAPI("eglBindAPI");
+Function<EGLBoolean, EGLDisplay, EGLSurface, EGLint> Binding::BindTexImage("eglBindTexImage");
 
 
 

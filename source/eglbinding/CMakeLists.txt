@@ -86,10 +86,7 @@ set(headers
     ${include_path}/ProcAddress.h
     ${include_path}/SharedBitfield.h
     ${include_path}/SharedBitfield.inl
-    ${include_path}/SingleContextBinding.h
-    ${include_path}/SingleContextBinding.inl
     ${include_path}/State.h
-    ${include_path}/State.inl
     ${include_path}/Value.h
     ${include_path}/Value.inl
     ${include_path}/Version.h
@@ -112,6 +109,7 @@ set(sources
     ${source_path}/AbstractState.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/FunctionCall.cpp
+    ${source_path}/State.cpp
 )
 
 

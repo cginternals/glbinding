@@ -1,14 +1,14 @@
 
-#include <glbinding/Binding.h>
+#include <{{binding}}/Binding.h>
 
 #include <cassert>
 #include <iostream>
 
-#include <glbinding/State.h>
-#include <glbinding/AbstractFunction.h>
+#include <{{binding}}/State.h>
+#include <{{binding}}/AbstractFunction.h>
 
 
-namespace glbinding
+namespace {{binding}}
 {
 
 
@@ -151,14 +151,14 @@ size_t Binding::size()
     return Binding::functions().size() + s_additionalFunctions().size();
 }
 
-void Binding::initialize(const glbinding::GetProcAddress functionPointerResolver, const bool resolveFunctions)
+void Binding::initialize(const {{binding}}::GetProcAddress functionPointerResolver, const bool resolveFunctions)
 {
     initialize(0, functionPointerResolver, true, resolveFunctions);
 }
 
 void Binding::initialize(
     const ContextHandle context
-,   const glbinding::GetProcAddress functionPointerResolver
+,   const {{binding}}::GetProcAddress functionPointerResolver
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
@@ -395,7 +395,7 @@ typename Binding::FunctionLogCallback & Binding::s_logCallback()
 
 int & Binding::s_pos()
 {
-    GLBINDING_THREAD_LOCAL int pos = 0;
+    {{ucbinding}}_THREAD_LOCAL int pos = 0;
     //static int pos = 0;
 
     return pos;
@@ -403,16 +403,16 @@ int & Binding::s_pos()
 
 ContextHandle & Binding::s_context()
 {
-    GLBINDING_THREAD_LOCAL ContextHandle context = 0;
+    {{ucbinding}}_THREAD_LOCAL ContextHandle context = 0;
     //static ContextHandle context = 0;
 
     return context;
 }
 
-glbinding::GetProcAddress & Binding::s_getProcAddress()
+{{binding}}::GetProcAddress & Binding::s_getProcAddress()
 {
-    GLBINDING_THREAD_LOCAL glbinding::GetProcAddress getProcAddress = nullptr;
-    //static glbinding::GetProcAddress getProcAddress = nullptr;
+    {{ucbinding}}_THREAD_LOCAL {{binding}}::GetProcAddress getProcAddress = nullptr;
+    //static {{binding}}::GetProcAddress getProcAddress = nullptr;
 
     return getProcAddress;
 }
@@ -431,12 +431,12 @@ std::unordered_map<ContextHandle, int> & Binding::s_bindings()
     return bindings;
 }
 
-glbinding::GetProcAddress & Binding::s_firstGetProcAddress()
+{{binding}}::GetProcAddress & Binding::s_firstGetProcAddress()
 {
-    static glbinding::GetProcAddress getProcAddress = nullptr;
+    static {{binding}}::GetProcAddress getProcAddress = nullptr;
 
     return getProcAddress;
 }
 
 
-} // namespace glbinding
+} // namespace {{binding}}

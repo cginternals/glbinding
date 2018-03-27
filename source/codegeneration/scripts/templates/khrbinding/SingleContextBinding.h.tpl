@@ -3,8 +3,9 @@
 
 
 #include <set>
+#include <array>
+#include <vector>
 #include <functional>
-
 #include <unordered_map>
 
 #ifdef GLBINDING_USE_BOOST_THREAD
@@ -16,10 +17,16 @@ namespace std_boost = std;
 #endif
 
 #include <{{binding}}/{{binding}}_api.h>
+#include <{{binding}}/{{binding}}_features.h>
 
+#include <{{binding}}/AbstractFunction.h>
+#include <{{binding}}/ContextHandle.h>
+#include <{{binding}}/Function.h>
 #include <{{binding}}/CallbackMask.h>
 #include <{{binding}}/FunctionCall.h>
 #include <{{binding}}/ProcAddress.h>
+
+#include <{{binding}}/{{api}}/types.h>
 
 
 namespace {{binding}}
@@ -33,8 +40,7 @@ namespace {{binding}}
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-template <typename Subclass>
-class {{ucbinding}}_TEMPLATE_API SingleContextBinding
+class {{ucbinding}}_API Binding
 {
 public:
     /**
@@ -54,6 +60,8 @@ public:
     *    The callback type of a function log callback with parameters and return value
     */
     using FunctionLogCallback = std::function<void(FunctionCall *)>;
+    
+    using array_t = std::array<AbstractFunction *, {{functions.count}}>; ///< The type of the build-in functions collection
 
 
 public:
@@ -61,7 +69,7 @@ public:
     *  @brief
     *    Deleted Constructor as all functions are static
     */
-    SingleContextBinding() = delete;
+    Binding() = delete;
 
     /**
     *  @brief
@@ -77,7 +85,7 @@ public:
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
-    static void initialize(GetProcAddress functionPointerResolver, bool resolveFunctions = true);
+    static void initialize({{binding}}::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
 
     /**
     *  @brief
@@ -243,6 +251,15 @@ public:
 
     static FunctionLogCallback logCallback();
     static void setLogCallback(FunctionLogCallback callback);
+    
+    /**
+    *  @brief
+    *    The accessor for all build-in functions
+    * 
+    *  @return
+    *    The list of all build-in functions
+    */
+    static const array_t & functions();
 
     static const std::vector<AbstractFunction *> & additionalFunctions();
 
@@ -257,18 +274,22 @@ public:
     static int currentPos();
 
 
+public:
+{{#functions.items}}
+    {{#item}}static Function<{{>partials/general_typeNs}}{{^params.empty}}, {{>partials/general_paramSignatureNs}}{{/params.empty}}> {{identifierNoGl}}; ///< Wrapper for {{identifier}}{{/item}}
+{{/functions.items}}
+
+
 protected:
+    static const array_t s_functions;           ///< The list of all build-in functions
     static std::vector<AbstractFunction *> & s_additionalFunctions();
     static SimpleFunctionCallback & s_unresolvedCallback();
     static FunctionCallback & s_beforeCallback();
     static FunctionCallback & s_afterCallback();
     static FunctionLogCallback & s_logCallback();
-    static GetProcAddress & s_getProcAddress();
+    static {{binding}}::GetProcAddress & s_getProcAddress();
     static std_boost::recursive_mutex & s_mutex();
 };
 
 
 } // namespace {{binding}}
-
-
-#include <{{binding}}/SingleContextBinding.inl>

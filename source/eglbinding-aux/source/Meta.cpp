@@ -287,7 +287,7 @@ const Version & Meta::version(const EGLextension extension)
 
 const std::set<Version> & Meta::versions()
 {
-    return ValidVersions<Version>::versions();
+    return ValidVersions::versions();
 }
 
 

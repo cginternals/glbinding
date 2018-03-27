@@ -1,13 +1,14 @@
 
-#pragma once
+#include <eglbinding/State.h>
+
+#include <eglbinding/Binding.h>
 
 
 namespace eglbinding
 {
 
 
-template <typename Binding>
-void State<Binding>::resolve(const char * name)
+void State::resolve(const char * name)
 {
     if (m_initialized)
     {

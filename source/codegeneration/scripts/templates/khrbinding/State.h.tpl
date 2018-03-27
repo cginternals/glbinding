@@ -9,7 +9,6 @@ namespace {{binding}}
 {
 
 
-template <typename Binding>
 class State : public AbstractState
 {
 public:
@@ -20,6 +19,3 @@ public:
 
 
 } // namespace {{binding}}
-
-
-#include <{{binding}}/State.inl>

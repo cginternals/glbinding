@@ -9,7 +9,7 @@ namespace glscbinding
 {
 
 
-Function<Binding, void, GLenum> Binding::ActiveTexture("glActiveTexture");
+Function<void, GLenum> Binding::ActiveTexture("glActiveTexture");
 
 
 

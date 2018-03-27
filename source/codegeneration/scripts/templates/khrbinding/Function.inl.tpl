@@ -4,6 +4,7 @@
 
 #include <utility>
 #include <functional>
+#include <cassert>
 
 #include <{{binding}}/Value.h>
 #include <{{binding}}/FunctionCall.h>
@@ -20,12 +21,12 @@ namespace {{binding}}
 {
 
 
-template <typename Binding, typename ReturnType, typename... Arguments>
+template <typename ReturnType, typename... Arguments>
 struct BasicCallHelper
 {
-    inline static ReturnType call(const {{binding}}::Function<Binding, ReturnType, Arguments...> * function, Arguments&&... arguments)
+    inline static ReturnType call(const {{binding}}::Function<ReturnType, Arguments...> * function, Arguments&&... arguments)
     {
-        return reinterpret_cast<typename {{binding}}::Function<Binding, ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+        return reinterpret_cast<typename {{binding}}::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
 
@@ -33,31 +34,31 @@ struct BasicCallHelper
 // Special case for booleans because of MSVC differing behavior
 
 {{#boolean8}}
-template <typename Binding, typename... Arguments>
-struct BasicCallHelper<Binding, {{binding}}::Boolean8, Arguments...>
+template <typename... Arguments>
+struct BasicCallHelper<{{binding}}::Boolean8, Arguments...>
 {
-    inline static {{binding}}::Boolean8 call(const {{binding}}::Function<Binding, {{binding}}::Boolean8, Arguments...> * function, Arguments&&... arguments)
+    inline static {{binding}}::Boolean8 call(const {{binding}}::Function<{{binding}}::Boolean8, Arguments...> * function, Arguments&&... arguments)
     {
-        return reinterpret_cast<typename {{binding}}::Function<Binding, {{binding}}::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+        return reinterpret_cast<typename {{binding}}::Function<{{binding}}::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
 {{/boolean8}}
 {{^boolean8}}
-template <typename Binding, typename... Arguments>
-struct BasicCallHelper<Binding, {{binding}}::Boolean32, Arguments...>
+template <typename... Arguments>
+struct BasicCallHelper<{{binding}}::Boolean32, Arguments...>
 {
-    inline static {{binding}}::Boolean32 call(const {{binding}}::Function<Binding, {{binding}}::Boolean32, Arguments...> * function, Arguments&&... arguments)
+    inline static {{binding}}::Boolean32 call(const {{binding}}::Function<{{binding}}::Boolean32, Arguments...> * function, Arguments&&... arguments)
     {
-        return reinterpret_cast<typename {{binding}}::Function<Binding, {{binding}}::Boolean32::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
+        return reinterpret_cast<typename {{binding}}::Function<{{binding}}::Boolean32::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
 {{/boolean8}}
 
 
-template <typename Binding, typename ReturnType, typename... Arguments>
+template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
 {
-    inline static ReturnType call(const {{binding}}::Function<Binding, ReturnType, Arguments...> * function, Arguments&&... arguments)
+    inline static ReturnType call(const {{binding}}::Function<ReturnType, Arguments...> * function, Arguments&&... arguments)
     {
         {{binding}}::FunctionCall functionCall(function);
 
@@ -68,7 +69,7 @@ struct FunctionHelper
 
         if (function->isEnabled({{binding}}::CallbackMask::Before))
         {
-            Binding::before(functionCall);
+            AbstractFunction::before(functionCall);
 
             if (function->beforeCallback())
             {
@@ -76,7 +77,7 @@ struct FunctionHelper
             }
         }
 
-        auto value = BasicCallHelper<Binding, ReturnType, Arguments ...>::call(function, std::forward<Arguments>(arguments)...);
+        auto value = BasicCallHelper<ReturnType, Arguments ...>::call(function, std::forward<Arguments>(arguments)...);
 
         if (function->isAnyEnabled({{binding}}::CallbackMask::ReturnValue))
         {
@@ -85,7 +86,7 @@ struct FunctionHelper
 
         if (function->isEnabled({{binding}}::CallbackMask::After))
         {
-            Binding::after(functionCall);
+            AbstractFunction::after(functionCall);
 
             if (function->afterCallback())
             {
@@ -95,7 +96,7 @@ struct FunctionHelper
 
         if (function->isEnabled({{binding}}::CallbackMask::Logging))
         {
-            Binding::log(std::move(functionCall));
+            AbstractFunction::log(std::move(functionCall));
         }
 
         return value;
@@ -103,10 +104,10 @@ struct FunctionHelper
 };
 
 
-template <typename Binding, typename... Arguments>
-struct FunctionHelper<Binding, void, Arguments...>
+template <typename... Arguments>
+struct FunctionHelper<void, Arguments...>
 {
-    inline static void call(const {{binding}}::Function<Binding, void, Arguments...> * function, Arguments&&... arguments)
+    inline static void call(const {{binding}}::Function<void, Arguments...> * function, Arguments&&... arguments)
     {
         {{binding}}::FunctionCall functionCall(function);
 
@@ -117,7 +118,7 @@ struct FunctionHelper<Binding, void, Arguments...>
 
         if (function->isEnabled({{binding}}::CallbackMask::Before))
         {
-            Binding::before(functionCall);
+            AbstractFunction::before(functionCall);
 
             if (function->beforeCallback())
             {
@@ -125,11 +126,11 @@ struct FunctionHelper<Binding, void, Arguments...>
             }
         }
 
-        BasicCallHelper<Binding, void, Arguments ...>::call(function, std::forward<Arguments>(arguments)...);
+        BasicCallHelper<void, Arguments ...>::call(function, std::forward<Arguments>(arguments)...);
 
         if (function->isEnabled({{binding}}::CallbackMask::After))
         {
-            Binding::after(functionCall);
+            AbstractFunction::after(functionCall);
 
             if (function->afterCallback())
             {
@@ -139,28 +140,28 @@ struct FunctionHelper<Binding, void, Arguments...>
 
         if (function->isEnabled({{binding}}::CallbackMask::Logging))
         {
-            Binding::log(std::move(functionCall));
+            AbstractFunction::log(std::move(functionCall));
         }
     }
 };
 
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-Function<Binding, ReturnType, Arguments...>::Function(const char * _name)
+template <typename ReturnType, typename... Arguments>
+Function<ReturnType, Arguments...>::Function(const char * _name)
 : AbstractFunction{_name}
 , m_beforeCallback{nullptr}
 , m_afterCallback{nullptr}
 {
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-ReturnType Function<Binding, ReturnType, Arguments...>::operator()(Arguments&... arguments) const
+template <typename ReturnType, typename... Arguments>
+ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
 {
     return call(arguments...);
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-ReturnType Function<Binding, ReturnType, Arguments...>::call(Arguments&... arguments) const
+template <typename ReturnType, typename... Arguments>
+ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) const
 {
     const auto myAddress = address();
 
@@ -168,7 +169,7 @@ ReturnType Function<Binding, ReturnType, Arguments...>::call(Arguments&... argum
     {
         if (isEnabled(CallbackMask::Unresolved))
         {
-           Binding::unresolved(this);
+           AbstractFunction::unresolved(this);
         }
 
         return ReturnType();
@@ -176,90 +177,90 @@ ReturnType Function<Binding, ReturnType, Arguments...>::call(Arguments&... argum
 
     if (isAnyEnabled(CallbackMask::Before | CallbackMask::After | CallbackMask::Logging))
     {
-        return FunctionHelper<Binding, ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
+        return FunctionHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
     }
     else
     {
-        return BasicCallHelper<Binding, ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
+        return BasicCallHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
     }
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-ReturnType Function<Binding, ReturnType, Arguments...>::directCall(Arguments... arguments) const
+template <typename ReturnType, typename... Arguments>
+ReturnType Function<ReturnType, Arguments...>::directCall(Arguments... arguments) const
 {
     if (address() == nullptr)
     {
         return ReturnType();
     }
 
-    return BasicCallHelper<Binding, ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
+    return BasicCallHelper<ReturnType, Arguments...>::call(this, std::forward<Arguments>(arguments)...);
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-void Function<Binding, ReturnType, Arguments...>::setBeforeCallback(BeforeCallback callback)
+template <typename ReturnType, typename... Arguments>
+void Function<ReturnType, Arguments...>::setBeforeCallback(BeforeCallback callback)
 {
     m_beforeCallback = std::move(callback);
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-void Function<Binding, ReturnType, Arguments...>::clearBeforeCallback()
+template <typename ReturnType, typename... Arguments>
+void Function<ReturnType, Arguments...>::clearBeforeCallback()
 {
     m_beforeCallback = nullptr;
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-void Function<Binding, ReturnType, Arguments...>::setAfterCallback(AfterCallback callback)
+template <typename ReturnType, typename... Arguments>
+void Function<ReturnType, Arguments...>::setAfterCallback(AfterCallback callback)
 {
     m_afterCallback = std::move(callback);
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-void Function<Binding, ReturnType, Arguments...>::clearAfterCallback()
+template <typename ReturnType, typename... Arguments>
+void Function<ReturnType, Arguments...>::clearAfterCallback()
 {
     m_afterCallback = nullptr;
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-typename Function<Binding, ReturnType, Arguments...>::BeforeCallback Function<Binding, ReturnType, Arguments...>::beforeCallback() const
+template <typename ReturnType, typename... Arguments>
+typename Function<ReturnType, Arguments...>::BeforeCallback Function<ReturnType, Arguments...>::beforeCallback() const
 {
     return m_beforeCallback;
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-typename Function<Binding, ReturnType, Arguments...>::AfterCallback Function<Binding, ReturnType, Arguments...>::afterCallback() const
+template <typename ReturnType, typename... Arguments>
+typename Function<ReturnType, Arguments...>::AfterCallback Function<ReturnType, Arguments...>::afterCallback() const
 {
     return m_afterCallback;
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-bool Function<Binding, ReturnType, Arguments...>::hasState() const
+template <typename ReturnType, typename... Arguments>
+bool Function<ReturnType, Arguments...>::hasState() const
 {
-    return hasState(Binding::currentPos());
+    return hasState(AbstractFunction::currentPos());
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-bool Function<Binding, ReturnType, Arguments...>::hasState(const int pos) const
+template <typename ReturnType, typename... Arguments>
+bool Function<ReturnType, Arguments...>::hasState(const int pos) const
 {
-    return pos > -1 && Binding::maxPos() <= pos;
+    return pos > -1 && AbstractFunction::maxPos() <= pos;
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-AbstractState & Function<Binding, ReturnType, Arguments...>::state() const
+template <typename ReturnType, typename... Arguments>
+AbstractState & Function<ReturnType, Arguments...>::state() const
 {
-    return state(Binding::currentPos());
+    return state(AbstractFunction::currentPos());
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-AbstractState & Function<Binding, ReturnType, Arguments...>::state(const int pos) const
+template <typename ReturnType, typename... Arguments>
+AbstractState & Function<ReturnType, Arguments...>::state(const int pos) const
 {
-    assert(Binding::maxPos() >= pos);
+    assert(AbstractFunction::maxPos() >= pos);
     assert(pos > -1);
 
     return m_states.at(pos);
 }
 
-template <typename Binding, typename ReturnType, typename... Arguments>
-void Function<Binding, ReturnType, Arguments...>::resizeStates(int count)
+template <typename ReturnType, typename... Arguments>
+void Function<ReturnType, Arguments...>::resizeStates(int count)
 {
     m_states.resize(static_cast<std::size_t>(count));
 }

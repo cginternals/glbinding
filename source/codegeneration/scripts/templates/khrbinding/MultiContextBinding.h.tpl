@@ -3,8 +3,9 @@
 
 
 #include <set>
+#include <array>
+#include <vector>
 #include <functional>
-
 #include <unordered_map>
 
 #ifdef GLBINDING_USE_BOOST_THREAD
@@ -16,11 +17,16 @@ namespace std_boost = std;
 #endif
 
 #include <{{binding}}/{{binding}}_api.h>
+#include <{{binding}}/{{binding}}_features.h>
 
+#include <{{binding}}/AbstractFunction.h>
+#include <{{binding}}/ContextHandle.h>
+#include <{{binding}}/Function.h>
 #include <{{binding}}/CallbackMask.h>
 #include <{{binding}}/FunctionCall.h>
 #include <{{binding}}/ProcAddress.h>
-#include <{{binding}}/ContextHandle.h>
+
+#include <{{binding}}/{{api}}/types.h>
 
 
 namespace {{binding}}
@@ -34,8 +40,7 @@ namespace {{binding}}
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
 *  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
 */
-template <typename Subclass>
-class {{ucbinding}}_TEMPLATE_API MultiContextBinding
+class {{ucbinding}}_API Binding
 {
 public:
     /**
@@ -57,6 +62,8 @@ public:
     using FunctionLogCallback = std::function<void(FunctionCall *)>;
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
+    
+    using array_t = std::array<AbstractFunction *, {{functions.count}}>; ///< The type of the build-in functions collection
 
 
 public:
@@ -64,7 +71,7 @@ public:
     *  @brief
     *    Deleted Constructor as all functions are static
     */
-    MultiContextBinding() = delete;
+    Binding() = delete;
 
     /**
     *  @brief
@@ -80,7 +87,7 @@ public:
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
-    static void initialize(GetProcAddress functionPointerResolver, bool resolveFunctions = true);
+    static void initialize({{binding}}::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
 
     /**
     *  @brief
@@ -99,7 +106,7 @@ public:
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
-    static void initialize(ContextHandle context, GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true);
+    static void initialize(ContextHandle context, {{binding}}::GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true);
 
     /**
     *  @brief
@@ -306,6 +313,15 @@ public:
 
     static FunctionLogCallback logCallback();
     static void setLogCallback(FunctionLogCallback callback);
+    
+    /**
+    *  @brief
+    *    The accessor for all build-in functions
+    * 
+    *  @return
+    *    The list of all build-in functions
+    */
+    static const array_t & functions();
 
     static const std::vector<AbstractFunction *> & additionalFunctions();
 
@@ -320,6 +336,12 @@ public:
     static void log(FunctionCall && call);
 
 
+public:
+{{#functions.items}}
+    {{#item}}static Function<{{>partials/general_typeNs}}{{^params.empty}}, {{>partials/general_paramSignatureNs}}{{/params.empty}}> {{identifierNoGl}}; ///< Wrapper for {{identifier}}{{/item}}
+{{/functions.items}}
+
+
 protected:
     static void provideState(int pos);
     static void neglectState(int pos);
@@ -327,6 +349,7 @@ protected:
 
 
 protected:
+    static const array_t s_functions;           ///< The list of all build-in functions
     static int & s_maxPos();
     static std::vector<AbstractFunction *> & s_additionalFunctions();
     static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks();
@@ -336,14 +359,11 @@ protected:
     static FunctionLogCallback & s_logCallback();
     static int & s_pos();
     static ContextHandle & s_context();
-    static GetProcAddress & s_getProcAddress();
+    static {{binding}}::GetProcAddress & s_getProcAddress();
     static std_boost::recursive_mutex & s_mutex();
     static std::unordered_map<ContextHandle, int> & s_bindings();
-    static GetProcAddress & s_firstGetProcAddress();
+    static {{binding}}::GetProcAddress & s_firstGetProcAddress();
 };
 
 
 } // namespace {{binding}}
-
-
-#include <{{binding}}/MultiContextBinding.inl>

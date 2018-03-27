@@ -9,7 +9,7 @@ namespace glscbinding
 {
 
 
-Function<Binding, void, GLfloat> Binding::LineWidth("glLineWidth");
+Function<void, GLfloat> Binding::LineWidth("glLineWidth");
 
 
 

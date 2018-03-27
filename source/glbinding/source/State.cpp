@@ -1,13 +1,14 @@
 
-#pragma once
+#include <glbinding/State.h>
+
+#include <glbinding/Binding.h>
 
 
 namespace glbinding
 {
 
 
-template <typename Binding>
-void State<Binding>::resolve(const char * name)
+void State::resolve(const char * name)
 {
     if (m_initialized)
     {

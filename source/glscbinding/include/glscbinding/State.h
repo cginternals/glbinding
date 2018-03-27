@@ -9,7 +9,6 @@ namespace glscbinding
 {
 
 
-template <typename Binding>
 class State : public AbstractState
 {
 public:
@@ -20,6 +19,3 @@ public:
 
 
 } // namespace glscbinding
-
-
-#include <glscbinding/State.inl>

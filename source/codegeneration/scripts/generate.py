@@ -175,11 +175,7 @@ def generate(profile, targetdir, revisionfile):
     Generator.generate(generalContext, pjoin(includedir_api, "functions.h"))
     Generator.generate(generalContext, pjoin(includedir_api, "{api}.h"))
 
-    Generator.generate(generalContext, pjoin(sourcedir_aux, "types_to_string.cpp"))
-    Generator.generate(generalContext, pjoin(includedir_aux, "types_to_string.h"))
     Generator.generate(generalContext, pjoin(testdir, "AllVersions_test.cpp"))
-    Generator.generate(generalContext, pjoin(includedir, "Binding.h"))
-    Generator.generate(generalContext, pjoin(sourcedir, "Binding_list.cpp"))
     Generator.generate(generalContext, pjoin(sourcedir_aux, "ValidVersions_list.cpp"))
 
     Generator.generate(generalContext, pjoin(includedir_aux, "Meta.h"))
@@ -199,13 +195,15 @@ def generate(profile, targetdir, revisionfile):
     Generator.generate(generalContext, pjoin(sourcedir_aux,  "Meta_ExtensionsByFunctionString.cpp"))
     
     # KHR binding
-    
+
     if multiContextBinding:
-        Generator.generate(generalContext, pjoin(includedir, "MultiContextBinding.h"), "khrbinding/MultiContextBinding.h")
-        Generator.generate(generalContext, pjoin(includedir, "MultiContextBinding.inl"), "khrbinding/MultiContextBinding.inl")
+        Generator.generate(generalContext, pjoin(includedir, "Binding.h"), "khrbinding/MultiContextBinding.h")
+        Generator.generate(generalContext, pjoin(sourcedir, "Binding.cpp"), "khrbinding/MultiContextBinding.cpp")
     else:
-        Generator.generate(generalContext, pjoin(includedir, "SingleContextBinding.h"), "khrbinding/SingleContextBinding.h")
-        Generator.generate(generalContext, pjoin(includedir, "SingleContextBinding.inl"), "khrbinding/SingleContextBinding.inl")
+        Generator.generate(generalContext, pjoin(includedir, "Binding.h"), "khrbinding/SingleContextBinding.h")
+        Generator.generate(generalContext, pjoin(sourcedir, "Binding.cpp"), "khrbinding/SingleContextBinding.cpp")
+
+    Generator.generate(generalContext, pjoin(sourcedir, "Binding_list.cpp"))
 
     if booleanWidth == 8:
         Generator.generate(generalContext, pjoin(includedir, "Boolean8.h"), "khrbinding/Boolean8.h")
@@ -229,7 +227,6 @@ def generate(profile, targetdir, revisionfile):
     Generator.generate(generalContext, pjoin(includedir, "SharedBitfield.h"), "khrbinding/SharedBitfield.h")
     Generator.generate(generalContext, pjoin(includedir, "SharedBitfield.inl"), "khrbinding/SharedBitfield.inl")
     Generator.generate(generalContext, pjoin(includedir, "State.h"), "khrbinding/State.h")
-    Generator.generate(generalContext, pjoin(includedir, "State.inl"), "khrbinding/State.inl")
     Generator.generate(generalContext, pjoin(includedir, "Value.h"), "khrbinding/Value.h")
     Generator.generate(generalContext, pjoin(includedir, "Value.inl"), "khrbinding/Value.inl")
     Generator.generate(generalContext, pjoin(includedir, "Version.h"), "khrbinding/Version.h")
@@ -239,12 +236,14 @@ def generate(profile, targetdir, revisionfile):
     Generator.generate(generalContext, pjoin(sourcedir, "AbstractState.cpp"), "khrbinding/AbstractState.cpp")
     Generator.generate(generalContext, pjoin(sourcedir, "AbstractValue.cpp"), "khrbinding/AbstractValue.cpp")
     Generator.generate(generalContext, pjoin(sourcedir, "FunctionCall.cpp"), "khrbinding/FunctionCall.cpp")
+    Generator.generate(generalContext, pjoin(sourcedir, "State.cpp"), "khrbinding/State.cpp")
     
     # KHR binding AUX
 
     Generator.generate(generalContext, pjoin(includedir_aux, "RingBuffer.h"), "khrbinding-aux/RingBuffer.h")
     Generator.generate(generalContext, pjoin(includedir_aux, "RingBuffer.inl"), "khrbinding-aux/RingBuffer.inl")
     Generator.generate(generalContext, pjoin(includedir_aux, "types_to_string.h"), "khrbinding-aux/types_to_string.h")
+    Generator.generate(generalContext, pjoin(includedir_aux, "types_to_string.inl"), "khrbinding-aux/types_to_string.inl")
     Generator.generate(generalContext, pjoin(includedir_aux, "ValidVersions.h"), "khrbinding-aux/ValidVersions.h")
 
     Generator.generate(generalContext, pjoin(sourcedir_aux, "ValidVersions.cpp"), "khrbinding-aux/ValidVersions.cpp")

@@ -9,7 +9,6 @@ namespace eglbinding
 {
 
 
-template <typename Binding>
 class State : public AbstractState
 {
 public:
@@ -20,6 +19,3 @@ public:
 
 
 } // namespace eglbinding
-
-
-#include <eglbinding/State.inl>

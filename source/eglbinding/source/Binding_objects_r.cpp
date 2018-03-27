@@ -9,9 +9,9 @@ namespace eglbinding
 {
 
 
-Function<Binding, EGLBoolean, EGLDisplay, EGLSurface, EGLint> Binding::ReleaseTexImage("eglReleaseTexImage");
-Function<Binding, EGLBoolean> Binding::ReleaseThread("eglReleaseThread");
-Function<Binding, EGLBoolean, EGLDisplay, EGLStreamKHR> Binding::ResetStreamNV("eglResetStreamNV");
+Function<EGLBoolean, EGLDisplay, EGLSurface, EGLint> Binding::ReleaseTexImage("eglReleaseTexImage");
+Function<EGLBoolean> Binding::ReleaseThread("eglReleaseThread");
+Function<EGLBoolean, EGLDisplay, EGLStreamKHR> Binding::ResetStreamNV("eglResetStreamNV");
 
 
 

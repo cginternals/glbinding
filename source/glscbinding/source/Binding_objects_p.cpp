@@ -9,9 +9,9 @@ namespace glscbinding
 {
 
 
-Function<Binding, void, GLenum, GLint> Binding::PixelStorei("glPixelStorei");
-Function<Binding, void, GLfloat, GLfloat> Binding::PolygonOffset("glPolygonOffset");
-Function<Binding, void, GLuint, GLenum, const void *, GLsizei> Binding::ProgramBinary("glProgramBinary");
+Function<void, GLenum, GLint> Binding::PixelStorei("glPixelStorei");
+Function<void, GLfloat, GLfloat> Binding::PolygonOffset("glPolygonOffset");
+Function<void, GLuint, GLenum, const void *, GLsizei> Binding::ProgramBinary("glProgramBinary");
 
 
 

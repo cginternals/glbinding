@@ -9,7 +9,7 @@ namespace glesbinding
 {
 
 
-Function<Binding, void, GLuint, GLenum> Binding::QueryCounterEXT("glQueryCounterEXT");
+Function<void, GLuint, GLenum> Binding::QueryCounterEXT("glQueryCounterEXT");
 
 
 

@@ -10,6 +10,8 @@
 
 #include <glesbinding/AbstractState.h>
 
+#include <glesbinding/Binding.h>
+
 
 namespace glesbinding
 {
@@ -90,6 +92,36 @@ void AbstractFunction::addCallbackMask(const CallbackMask mask)
 void AbstractFunction::removeCallbackMask(const CallbackMask mask)
 {
     state().setCallbackMask(state().callbackMask() & ~mask);
+}
+
+void AbstractFunction::unresolved(const AbstractFunction * function)
+{
+    Binding::unresolved(function);
+}
+
+void AbstractFunction::before(const FunctionCall & call)
+{
+    Binding::before(call);
+}
+
+void AbstractFunction::after(const FunctionCall & call)
+{
+    Binding::after(call);
+}
+
+void AbstractFunction::log(FunctionCall && call)
+{
+    Binding::log(std::move(call));
+}
+
+int AbstractFunction::currentPos()
+{
+    return Binding::currentPos();
+}
+
+int AbstractFunction::maxPos()
+{
+    return Binding::maxPos();
 }
 
 

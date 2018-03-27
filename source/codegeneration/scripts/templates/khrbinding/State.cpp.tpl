@@ -1,13 +1,14 @@
 
-#pragma once
+#include <{{binding}}/State.h>
+
+#include <{{binding}}/Binding.h>
 
 
 namespace {{binding}}
 {
 
 
-template <typename Binding>
-void State<Binding>::resolve(const char * name)
+void State::resolve(const char * name)
 {
     if (m_initialized)
     {

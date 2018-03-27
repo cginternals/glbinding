@@ -9,7 +9,6 @@ namespace glesbinding
 {
 
 
-template <typename Binding>
 class State : public AbstractState
 {
 public:
@@ -20,6 +19,3 @@ public:
 
 
 } // namespace glesbinding
-
-
-#include <glesbinding/State.inl>

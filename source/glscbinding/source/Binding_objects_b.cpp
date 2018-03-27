@@ -9,17 +9,17 @@ namespace glscbinding
 {
 
 
-Function<Binding, void, GLenum, GLuint> Binding::BindBuffer("glBindBuffer");
-Function<Binding, void, GLenum, GLuint> Binding::BindFramebuffer("glBindFramebuffer");
-Function<Binding, void, GLenum, GLuint> Binding::BindRenderbuffer("glBindRenderbuffer");
-Function<Binding, void, GLenum, GLuint> Binding::BindTexture("glBindTexture");
-Function<Binding, void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::BlendColor("glBlendColor");
-Function<Binding, void, GLenum> Binding::BlendEquation("glBlendEquation");
-Function<Binding, void, GLenum, GLenum> Binding::BlendEquationSeparate("glBlendEquationSeparate");
-Function<Binding, void, GLenum, GLenum> Binding::BlendFunc("glBlendFunc");
-Function<Binding, void, GLenum, GLenum, GLenum, GLenum> Binding::BlendFuncSeparate("glBlendFuncSeparate");
-Function<Binding, void, GLenum, GLsizeiptr, const void *, GLenum> Binding::BufferData("glBufferData");
-Function<Binding, void, GLenum, GLintptr, GLsizeiptr, const void *> Binding::BufferSubData("glBufferSubData");
+Function<void, GLenum, GLuint> Binding::BindBuffer("glBindBuffer");
+Function<void, GLenum, GLuint> Binding::BindFramebuffer("glBindFramebuffer");
+Function<void, GLenum, GLuint> Binding::BindRenderbuffer("glBindRenderbuffer");
+Function<void, GLenum, GLuint> Binding::BindTexture("glBindTexture");
+Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::BlendColor("glBlendColor");
+Function<void, GLenum> Binding::BlendEquation("glBlendEquation");
+Function<void, GLenum, GLenum> Binding::BlendEquationSeparate("glBlendEquationSeparate");
+Function<void, GLenum, GLenum> Binding::BlendFunc("glBlendFunc");
+Function<void, GLenum, GLenum, GLenum, GLenum> Binding::BlendFuncSeparate("glBlendFuncSeparate");
+Function<void, GLenum, GLsizeiptr, const void *, GLenum> Binding::BufferData("glBufferData");
+Function<void, GLenum, GLintptr, GLsizeiptr, const void *> Binding::BufferSubData("glBufferSubData");
 
 
 

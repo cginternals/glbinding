@@ -9,8 +9,8 @@ namespace eglbinding
 {
 
 
-Function<Binding, EGLBoolean, EGLDisplay, EGLSurface, EGLint, EGLint, EGLint, EGLint> Binding::PostSubBufferNV("eglPostSubBufferNV");
-Function<Binding, EGLBoolean, EGLDisplay, EGLSurface, EGLnsecsANDROID> Binding::PresentationTimeANDROID("eglPresentationTimeANDROID");
+Function<EGLBoolean, EGLDisplay, EGLSurface, EGLint, EGLint, EGLint, EGLint> Binding::PostSubBufferNV("eglPostSubBufferNV");
+Function<EGLBoolean, EGLDisplay, EGLSurface, EGLnsecsANDROID> Binding::PresentationTimeANDROID("eglPresentationTimeANDROID");
 
 
 

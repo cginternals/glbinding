@@ -95,7 +95,6 @@ set(sources
     ${source_path}/logging.cpp
     ${source_path}/logging_private.h
 
-    ${source_path}/types_to_string.cpp
     ${source_path}/types_to_string_private.cpp
     ${source_path}/types_to_string_private.h
     
