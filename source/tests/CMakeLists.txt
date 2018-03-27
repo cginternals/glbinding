@@ -82,5 +82,3 @@ set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
 # 
 
 add_test_without_ctest(glbinding-test)
-# add_test_without_ctest(glesbinding-test)
-# add_test_without_ctest(glscbinding-test)

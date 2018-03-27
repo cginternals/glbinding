@@ -1,1 +1,0 @@
-{{#type.modifiers}}{{type.modifiers}} {{/type.modifiers}}{{type.type}}
