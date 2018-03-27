@@ -5,7 +5,7 @@
 #include <bitset>
 #include <sstream>
 
-#include <glbinding/AbstractVersion.h>
+#include <glbinding/Version.h>
 #include <glbinding-aux/Meta.h>
 
 #include "types_to_string_private.h"
@@ -411,7 +411,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLuint_array_2>
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const AbstractVersion & version)
+std::ostream & operator<<(std::ostream & stream, const Version & version)
 {
     stream << version.toString();
 

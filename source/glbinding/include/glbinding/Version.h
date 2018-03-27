@@ -9,8 +9,6 @@
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
 
-#include <glbinding/AbstractVersion.h>
-
 
 namespace glbinding
 {
@@ -32,14 +30,25 @@ namespace glbinding
 *  }
 *  \endcode
 */
-class Version : public AbstractVersion
+class Version
 {
 public:
     /**
     *  @brief
-    *    Constructors inherited from base class.
+    *    Default constructor, resulting in an invalid Version object
     */
-    using AbstractVersion::AbstractVersion;
+    GLBINDING_CONSTEXPR inline Version();
+
+    /**
+    *  @brief
+    *    Constructor for a Version object with the given major and minor version
+    *
+    *  @param[in] majorVersion
+    *    The major version
+    *  @param[in] minorVersion
+    *    The minor version
+    */
+    GLBINDING_CONSTEXPR inline Version(unsigned char majorVersion, unsigned char minorVersion);
 
     /**
     *  @brief
@@ -58,6 +67,63 @@ public:
     *    The Version the data is moved from
     */
     inline Version(Version && version);
+
+    /**
+    *  @brief
+    *    Accessor for the major version
+    *
+    *  @return
+    *    the major version
+    */
+    GLBINDING_CONSTEXPR inline unsigned char majorVersion() const;
+
+    /**
+    *  @brief
+    *    Accessor for the minor version
+    *
+    *  @return
+    *    the minor version
+    */
+    GLBINDING_CONSTEXPR inline unsigned char minorVersion() const;
+
+    /**
+    *  @brief
+    *    Cast operator for a std::pair cast of type unsigned char
+    */
+    inline operator std::pair<unsigned char, unsigned char>() const;
+
+    /**
+    *  @brief
+    *    Cast operator for a std::pair cast of type unsigned short
+    */
+    inline operator std::pair<unsigned short, unsigned short>() const;
+
+    /**
+    *  @brief
+    *    Cast operator for a std::pair cast of type unsigned int
+    */
+    inline operator std::pair<unsigned int, unsigned int>() const;
+
+    /**
+    *  @brief
+    *    Create a string representing the Version using the scheme "<majorVersion>.<minorVersion>"
+    *
+    *  @return
+    *    The version as string, "-.-" iff the string is invalid
+    */
+    GLBINDING_API inline std::string toString() const;
+
+    /**
+    *  @brief
+    *    Check if the Version was constructed using the default constructor
+    *
+    *  @return
+    *    'true' if the major version is 0, else 'false'
+    *
+    *  @remarks
+    *    This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed
+    */
+    GLBINDING_CONSTEXPR inline bool isNull() const;
 
     /**
     *  @brief
@@ -154,6 +220,11 @@ public:
     *    'true' if this Version is lesser or equal than the other Version, else 'false'
     */
     GLBINDING_CONSTEXPR inline bool operator<=(const Version & version) const;
+
+
+protected:
+    unsigned char m_major; ///< The major version
+    unsigned char m_minor; ///< The minor version
 };
 
 

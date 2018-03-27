@@ -74,8 +74,6 @@ set(headers
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractState.h
     ${include_path}/AbstractValue.h
-    ${include_path}/AbstractVersion.h
-    ${include_path}/AbstractVersion.inl
     ${include_path}/Boolean8.h
     ${include_path}/Boolean8.inl
     ${include_path}/CallbackMask.h

@@ -304,7 +304,7 @@ namespace glbinding
 {
 
 
-class AbstractVersion;
+class Version;
 
 
 template <typename T>
@@ -359,7 +359,7 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<g
 *  @brief
 *    The operator to allow Versions to be printed onto a std::ostream
 */
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AbstractVersion & version);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Version & version);
 
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AbstractValue * value);
 
