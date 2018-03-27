@@ -5,9 +5,12 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/ContextInfo.h>
-#include <glbinding/logging.h>
 #include <glbinding/Version.h>
+
+#include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/logging.h>
+#include <glbinding-aux/types_to_string.h>
+#include <glbinding-aux/ValidVersions.h>
 
 #include "Timer.h"
 #include <thread>
@@ -38,9 +41,9 @@ void compare()
 
 
     std::cout << std::endl
-        << "OpenGL Version:  " << glbinding::ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << glbinding::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << glbinding::ContextInfo::renderer() << std::endl;
+        << "OpenGL Version:  " << glbinding::aux::ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << glbinding::aux::ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << glbinding::aux::ContextInfo::renderer() << std::endl;
 
 
     std::cout << std::endl << "prep: warm-up ..." << std::endl;
@@ -88,14 +91,14 @@ void compare()
     glbinding_error(false);
 
     std::cout << std::endl << "test: again, now with logging ..." << std::endl;
-    glbinding::logging::start("logs/comparison");
+    glbinding::aux::start("logs/comparison");
     timer.start("      glbinding ");
 
     for (int i = 0; i < ITERATIONS; ++i)
         glbinding_test();
     
     long double glbinding_avg_log = timer.stop();
-    glbinding::logging::stop();
+    glbinding::aux::stop();
 
 
     std::cout << std::endl << "glbinding/glew decrease:                 " << (glbinding_avg / glew_avg - 1.0) * 100.0 << "%" << std::endl;

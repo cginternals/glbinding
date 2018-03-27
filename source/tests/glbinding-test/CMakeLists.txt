@@ -71,6 +71,7 @@ target_include_directories(${target}
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
     ${PROJECT_SOURCE_DIR}/../glbinding/source/
+    ${PROJECT_SOURCE_DIR}/../glbinding-aux/source/
 )
 
 # 
@@ -82,6 +83,7 @@ target_link_libraries(${target}
     ${DEFAULT_LIBRARIES}
     glfw
     ${META_PROJECT_NAME}::glbinding
+    ${META_PROJECT_NAME}::glbinding-aux
     gmock-dev
 )
 

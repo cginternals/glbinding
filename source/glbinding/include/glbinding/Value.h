@@ -3,17 +3,15 @@
 
 
 #include <vector>
+#include <memory>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
 
 #include <glbinding/AbstractValue.h>
 
-#include <glbinding/gl/types.h>
-#include <glbinding/gl/boolean.h>
 
-
-namespace glbinding 
+namespace glbinding
 {
 
 
@@ -51,59 +49,17 @@ public:
 
     /**
     *  @brief
-    *    Prints the contents of this Value on a stream
+    *    Get the value
     *
-    *  @param[in] stream
-    *    The stream to print on
+    *  @return
+    *    The value
     */
-    virtual void printOn(std::ostream & stream) const override;
-
+    GLBINDING_CONSTEXPR inline T value() const;
 
 protected:
-    const T value; ///< The value that should be printed later
+    const T m_value; ///< The value
 };
 
-
-/**
-*  @brief
-*    A specialized printOn method for the gl::GLenum Value template
-*/
-template <>
-GLBINDING_API void Value<gl::GLenum>::printOn(std::ostream & stream) const;
-
-///**
-//*  @brief
-//*    A specialized method for the gl::GLbitfield Value template
-//*/
-//template <> GLBINDING_API void Value<gl::GLbitfield>::printOn(std::ostream & stream) const;
-
-/**
-*  @brief
-*    A specialized printOn method for the gl::GLenum Value template
-*/
-template <>
-GLBINDING_API void Value<gl::GLboolean>::printOn(std::ostream & stream) const;
-
-/**
-*  @brief
-*    A specialized printOn method for the gl::GLubyte * Value template
-*/
-template <>
-GLBINDING_API void Value<const gl::GLubyte *>::printOn(std::ostream & stream) const;
-
-/**
-*  @brief
-*    A specialized printOn method for the gl::GLchar * Value template
-*/
-template <>
-GLBINDING_API void Value<const gl::GLchar *>::printOn(std::ostream & stream) const;
-
-/**
-*  @brief
-*    A specialized printOn method for the gl::GLuint_array_2 Value template
-*/
-template <>
-GLBINDING_API void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) const;
 
 /**
 *  @brief
@@ -115,7 +71,7 @@ GLBINDING_API void Value<gl::GLuint_array_2>::printOn(std::ostream & stream) con
 *    The argument to wrap into a Value of type Argument.
 */
 template <typename Argument>
-inline AbstractValue * createValue(const Argument & argument);
+inline std::unique_ptr<AbstractValue> createValue(const Argument & argument);
 
 /**
 *  @brief
@@ -130,7 +86,7 @@ inline AbstractValue * createValue(const Argument & argument);
 *    Internally uses the createValue function
 */
 template <typename... Arguments>
-inline std::vector<AbstractValue*> createValues(Arguments&&... arguments);
+inline std::vector<std::unique_ptr<AbstractValue>> createValues(Arguments&&... arguments);
 
 
 } // namespace glbinding

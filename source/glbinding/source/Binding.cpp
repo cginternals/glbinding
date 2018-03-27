@@ -1,80 +1,190 @@
 
 #include <glbinding/Binding.h>
 
-#include <unordered_map>
-
-#ifdef GLBINDING_USE_BOOST_THREAD
-#include <boost/thread.hpp>
-namespace std_boost = boost;
-#else
-#include <mutex>
-namespace std_boost = std;
-#endif
-
 #include <cassert>
+#include <iostream>
 
-#include "glbinding/glbinding_features.h"
-
-
-namespace
-{
-
-GLBINDING_THREAD_LOCAL glbinding::ContextHandle t_context = 0;
-
-std_boost::recursive_mutex g_mutex;
-std::unordered_map<glbinding::ContextHandle, int> g_bindings;
-
-} // namespace
+#include <glbinding/State.h>
+#include <glbinding/AbstractFunction.h>
 
 
-namespace glbinding 
+namespace glbinding
 {
 
 
-std::vector<AbstractFunction *> Binding::s_additionalFunctions;
-std::vector<Binding::ContextSwitchCallback> Binding::s_callbacks;
-
-const Binding::array_t & Binding::functions() 
+void Binding::setCallbackMask(const CallbackMask mask)
 {
-    return s_functions;
+    for (auto function : Binding::functions())
+    {
+        function->setCallbackMask(mask);
+    }
+}
+
+void Binding::setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+{
+    for (auto function : Binding::functions())
+    {
+        if (blackList.find(function->name()) == blackList.end())
+        {
+            function->setCallbackMask(mask);
+        }
+    }
+}
+
+void Binding::addCallbackMask(const CallbackMask mask)
+{
+    for (auto function : Binding::functions())
+    {
+        function->addCallbackMask(mask);
+    }
+}
+
+void Binding::addCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+{
+    for (auto function : Binding::functions())
+    {
+        if (blackList.find(function->name()) == blackList.end())
+        {
+            function->addCallbackMask(mask);
+        }
+    }
+}
+
+void Binding::removeCallbackMask(const CallbackMask mask)
+{
+    for (auto function : Binding::functions())
+    {
+        function->removeCallbackMask(mask);
+    }
+}
+
+void Binding::removeCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
+{
+    for (auto function : Binding::functions())
+    {
+        if (blackList.find(function->name()) == blackList.end())
+        {
+            function->removeCallbackMask(mask);
+        }
+    }
+}
+
+typename Binding::SimpleFunctionCallback Binding::unresolvedCallback()
+{
+    return s_unresolvedCallback();
+}
+
+void Binding::setUnresolvedCallback(SimpleFunctionCallback callback)
+{
+    s_unresolvedCallback() = std::move(callback);
+}
+
+typename Binding::FunctionCallback Binding::beforeCallback()
+{
+    return s_beforeCallback();
+}
+
+void Binding::setBeforeCallback(FunctionCallback callback)
+{
+    s_beforeCallback() = std::move(callback);
+}
+
+typename Binding::FunctionCallback Binding::afterCallback()
+{
+    return s_afterCallback();
+}
+
+void Binding::setAfterCallback(FunctionCallback callback)
+{
+    s_afterCallback() = std::move(callback);
+}
+
+typename Binding::FunctionLogCallback Binding::logCallback()
+{
+    return s_logCallback();
+}
+
+void Binding::setLogCallback(Binding::FunctionLogCallback callback)
+{
+    s_logCallback() = std::move(callback);
+}
+
+void Binding::unresolved(const AbstractFunction * function)
+{
+    if (s_unresolvedCallback())
+    {
+        s_unresolvedCallback()(*function);
+    }
+}
+
+void Binding::before(const FunctionCall & call)
+{
+    if (s_beforeCallback())
+    {
+        s_beforeCallback()(call);
+    }
+}
+
+void Binding::after(const FunctionCall & call)
+{
+    if (s_afterCallback())
+    {
+        s_afterCallback()(call);
+    }
+}
+
+void Binding::log(FunctionCall && call)
+{
+    if (s_logCallback())
+    {
+        s_logCallback()(new FunctionCall(std::move(call)));
+    }
 }
 
 const std::vector<AbstractFunction *> & Binding::additionalFunctions()
 {
-    return s_additionalFunctions;
+    return s_additionalFunctions();
 }
 
 size_t Binding::size()
 {
-    return s_functions.size() + s_additionalFunctions.size();
+    return Binding::functions().size() + s_additionalFunctions().size();
 }
 
-void Binding::initialize(const bool resolveFunctions)
+void Binding::initialize(const glbinding::GetProcAddress functionPointerResolver, const bool resolveFunctions)
 {
-    initialize(getCurrentContext(), true, resolveFunctions);
+    initialize(0, functionPointerResolver, true, resolveFunctions);
 }
 
 void Binding::initialize(
     const ContextHandle context
+,   const glbinding::GetProcAddress functionPointerResolver
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
 {
-    const auto resolveWOUse = !_useContext & _resolveFunctions;
-    const auto currentContext = resolveWOUse ? getCurrentContext() : static_cast<ContextHandle>(0);
+    const auto resolveWOUse = !_useContext && _resolveFunctions;
+    const auto currentContext = resolveWOUse ? s_context() : static_cast<ContextHandle>(0);
 
     {
-        std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
+        std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
 
-        if (g_bindings.find(context) != g_bindings.cend())
+        if (s_firstGetProcAddress() == nullptr)
+        {
+            s_firstGetProcAddress() = functionPointerResolver;
+        }
+
+        s_getProcAddress() = functionPointerResolver == nullptr ? s_firstGetProcAddress() : functionPointerResolver;
+
+        if (s_bindings().find(context) != s_bindings().cend())
         {
             return;
         }
 
-        const auto pos = static_cast<int>(g_bindings.size());
+        const auto pos = static_cast<int>(s_bindings().size());
 
-        g_bindings[context] = pos;
+        s_bindings()[context] = pos;
 
-        AbstractFunction::provideState(pos);
+        provideState(pos);
 
         if(_useContext)
             useContext(context);
@@ -90,9 +200,24 @@ void Binding::initialize(
         useContext(currentContext);
 }
 
+ProcAddress Binding::resolveFunction(const char * name)
+{
+    if (s_getProcAddress() != nullptr)
+    {
+        return s_getProcAddress()(name);
+    }
+
+    if (s_firstGetProcAddress() != nullptr)
+    {
+        return s_firstGetProcAddress()(name);
+    }
+
+    return nullptr;
+}
+
 void Binding::registerAdditionalFunction(AbstractFunction * function)
 {
-    s_additionalFunctions.push_back(function);
+    s_additionalFunctions().push_back(function);
 }
 
 void Binding::resolveFunctions()
@@ -110,49 +235,207 @@ void Binding::resolveFunctions()
 
 void Binding::useCurrentContext()
 {
-    useContext(getCurrentContext());
+    useContext(0);
 }
 
 void Binding::useContext(const ContextHandle context)
 {
-    std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
+    std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
 
-    t_context = context;
+    s_context() = context;
 
-    if (g_bindings.find(t_context) == g_bindings.cend())
+    if (s_bindings().find(s_context()) == s_bindings().cend())
     {
-        initialize(t_context);
+        initialize(s_context(), nullptr);
 
         return;
     }
 
-    AbstractFunction::setStatePos(g_bindings[t_context]);
+    setStatePos(s_bindings()[s_context()]);
 
-    for (const auto & callback : s_callbacks)
+    for (const auto & callback : s_contextSwitchCallbacks())
     {
-        callback(t_context);
+        callback(s_context());
     }
 }
 
 void Binding::releaseCurrentContext()
 {
-    releaseContext(getCurrentContext());
+    releaseContext(0);
 }
 
 void Binding::releaseContext(const ContextHandle context)
 {
-    std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
+    std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
 
-    AbstractFunction::neglectState(g_bindings[context]);
+    neglectState(s_bindings()[context]);
 
-    g_bindings.erase(context);
+    s_bindings().erase(context);
 }
 
 void Binding::addContextSwitchCallback(const ContextSwitchCallback callback)
 {
-    std_boost::lock_guard<std_boost::recursive_mutex> lock(g_mutex);
+    std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
 
-    s_callbacks.push_back(std::move(callback));
+    s_contextSwitchCallbacks().push_back(std::move(callback));
+}
+
+int Binding::currentPos()
+{
+    return s_pos();
+}
+
+int Binding::maxPos()
+{
+    return s_maxPos();
+}
+
+void Binding::provideState(const int pos)
+{
+    assert(pos > -1);
+
+    // if a state at pos exists, it is assumed to be neglected before
+    if (s_maxPos() < pos)
+    {
+        for (AbstractFunction * function : Binding::functions())
+        {
+            function->resizeStates(pos + 1);
+        }
+
+        s_maxPos() = pos;
+    }
+}
+
+void Binding::neglectState(const int p)
+{
+    assert(p <= s_maxPos());
+    assert(p > -1);
+
+    if (p == s_maxPos())
+    {
+        for (AbstractFunction * function : Binding::functions())
+        {
+            function->resizeStates(std::max(0, p - 1));
+        }
+
+        --s_maxPos();
+    }
+    else
+    {
+        for (AbstractFunction * function : Binding::functions())
+        {
+            function->state(p) = State();
+        }
+    }
+
+    if (p == s_pos())
+    {
+        s_pos() = -1;
+    }
+}
+
+void Binding::setStatePos(const int p)
+{
+    s_pos() = p;
+}
+
+int & Binding::s_maxPos()
+{
+    static int maxPos = -1;
+
+    return maxPos;
+}
+
+const Binding::array_t & Binding::functions()
+{
+    return s_functions;
+}
+
+std::vector<AbstractFunction *> & Binding::s_additionalFunctions()
+{
+    static std::vector<AbstractFunction *> additionalFunctions;
+
+    return additionalFunctions;
+}
+
+std::vector<typename Binding::ContextSwitchCallback> & Binding::s_contextSwitchCallbacks()
+{
+    static std::vector<ContextSwitchCallback> callbacks;
+
+    return callbacks;
+}
+
+typename Binding::SimpleFunctionCallback & Binding::s_unresolvedCallback()
+{
+    static SimpleFunctionCallback unresolvedCallback;
+
+    return unresolvedCallback;
+}
+
+typename Binding::FunctionCallback & Binding::s_beforeCallback()
+{
+    static FunctionCallback beforeCallback;
+
+    return beforeCallback;
+}
+
+typename Binding::FunctionCallback & Binding::s_afterCallback()
+{
+    static FunctionCallback afterCallback;
+
+    return afterCallback;
+}
+
+typename Binding::FunctionLogCallback & Binding::s_logCallback()
+{
+    static FunctionLogCallback logCallback;
+
+    return logCallback;
+}
+
+int & Binding::s_pos()
+{
+    GLBINDING_THREAD_LOCAL int pos = 0;
+    //static int pos = 0;
+
+    return pos;
+}
+
+ContextHandle & Binding::s_context()
+{
+    GLBINDING_THREAD_LOCAL ContextHandle context = 0;
+    //static ContextHandle context = 0;
+
+    return context;
+}
+
+glbinding::GetProcAddress & Binding::s_getProcAddress()
+{
+    GLBINDING_THREAD_LOCAL glbinding::GetProcAddress getProcAddress = nullptr;
+    //static glbinding::GetProcAddress getProcAddress = nullptr;
+
+    return getProcAddress;
+}
+
+std_boost::recursive_mutex & Binding::s_mutex()
+{
+    static std_boost::recursive_mutex mutex;
+
+    return mutex;
+}
+
+std::unordered_map<ContextHandle, int> & Binding::s_bindings()
+{
+    static std::unordered_map<ContextHandle, int> bindings;
+
+    return bindings;
+}
+
+glbinding::GetProcAddress & Binding::s_firstGetProcAddress()
+{
+    static glbinding::GetProcAddress getProcAddress = nullptr;
+
+    return getProcAddress;
 }
 
 

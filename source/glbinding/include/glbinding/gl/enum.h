@@ -3323,6 +3323,7 @@ enum class GLenum : unsigned int
     GL_PERFQUERY_DONOT_FLUSH_INTEL                                = 0x83F9, // decimal value: 33785
     GL_PERFQUERY_FLUSH_INTEL                                      = 0x83FA, // decimal value: 33786
     GL_PERFQUERY_WAIT_INTEL                                       = 0x83FB, // decimal value: 33787
+    GL_BLACKHOLE_RENDER_INTEL                                     = 0x83FC, // decimal value: 33788
     GL_CONSERVATIVE_RASTERIZATION_INTEL                           = 0x83FE, // decimal value: 33790
     GL_TEXTURE_MEMORY_LAYOUT_INTEL                                = 0x83FF, // decimal value: 33791
     GL_CURRENT_RASTER_NORMAL_SGIX                                 = 0x8406, // decimal value: 33798
@@ -9174,6 +9175,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS
 GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_DONOT_FLUSH_INTEL = GLenum::GL_PERFQUERY_DONOT_FLUSH_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_FLUSH_INTEL = GLenum::GL_PERFQUERY_FLUSH_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_WAIT_INTEL = GLenum::GL_PERFQUERY_WAIT_INTEL;
+GLBINDING_CONSTEXPR static const GLenum GL_BLACKHOLE_RENDER_INTEL = GLenum::GL_BLACKHOLE_RENDER_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_CONSERVATIVE_RASTERIZATION_INTEL = GLenum::GL_CONSERVATIVE_RASTERIZATION_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MEMORY_LAYOUT_INTEL = GLenum::GL_TEXTURE_MEMORY_LAYOUT_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_CURRENT_RASTER_NORMAL_SGIX = GLenum::GL_CURRENT_RASTER_NORMAL_SGIX;

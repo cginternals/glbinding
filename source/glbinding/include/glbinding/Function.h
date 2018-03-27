@@ -2,8 +2,10 @@
 #pragma once
 
 
+#include <vector>
 #include <functional>
 
+#include <glbinding/State.h>
 #include <glbinding/AbstractFunction.h>
 
 
@@ -16,9 +18,12 @@
 #endif
 
 
-namespace glbinding 
+namespace glbinding
 {
 
+
+template <typename ReturnType, typename... Arguments>
+struct FunctionHelper;
 
 /**
 *  @brief
@@ -66,6 +71,8 @@ template <typename ReturnType, typename... Arguments>
 class GLBINDING_TEMPLATE_API Function : public AbstractFunction
 {
 public:
+    friend struct FunctionHelper<ReturnType, Arguments...>;
+
     using Signature      = ReturnType(WINAPI *) (Arguments...);                   ///< The c pointer type for a function call
     using BeforeCallback = typename CallbackType<void, Arguments...>::type;       ///< The callback type for the before callback
     using AfterCallback  = typename CallbackType<ReturnType, Arguments...>::type; ///< The callback type for the after callback
@@ -179,8 +186,18 @@ public:
     */
     inline AfterCallback afterCallback() const;
 
+    virtual bool hasState() const override;
+    virtual bool hasState(int pos) const override;
+
+    virtual AbstractState & state() const override;
+    virtual AbstractState & state(int pos) const override;
+
+    virtual void resizeStates(int count) override;
+
 
 protected:
+    mutable std::vector<State> m_states;
+
     BeforeCallback m_beforeCallback; ///< The currently registered before callback
     AfterCallback  m_afterCallback;  ///< The currently registered after callback
 };

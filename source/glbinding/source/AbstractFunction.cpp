@@ -6,122 +6,16 @@
 #include <cassert>
 #include <type_traits>
 
+#include <glbinding/glbinding_features.h>
+
+#include <glbinding/AbstractState.h>
+
 #include <glbinding/Binding.h>
-#include <glbinding/Meta.h>
-
-#include "glbinding/glbinding_features.h"
-
-#include "callbacks_private.h"
 
 
-namespace
+namespace glbinding
 {
 
-
-GLBINDING_THREAD_LOCAL auto t_pos = -1;
-
-
-} // namespace
-
-
-namespace glbinding 
-{
-
-
-int AbstractFunction::s_maxpos = -1;
-
-AbstractFunction::State::State()
-: address(nullptr)
-, initialized(false)
-, callbackMask(CallbackMask::None)
-{
-}
-
-bool AbstractFunction::hasState() const
-{
-    return hasState(t_pos);
-}
-
-bool AbstractFunction::hasState(const int pos) const
-{
-    return pos > -1 && s_maxpos <= pos;
-}
-
-AbstractFunction::State & AbstractFunction::state() const
-{
-    return state(t_pos);
-}
-
-AbstractFunction::State & AbstractFunction::state(const int pos) const
-{
-    assert(s_maxpos >= pos);
-    assert(pos > -1);
-
-    return m_states.at(pos);
-}
-
-void AbstractFunction::provideState(const int pos)
-{
-    assert(pos > -1);
-
-    // if a state at pos exists, it is assumed to be neglected before
-    if (s_maxpos >= pos)
-        return;
-
-    for (auto function : Binding::functions())
-    {
-        function->m_states.resize(static_cast<std::size_t>(pos + 1));
-    }
-
-    for (auto function : Binding::additionalFunctions())
-    {
-        function->m_states.resize(static_cast<std::size_t>(pos + 1));
-    }
-
-    s_maxpos = pos;
-}
-
-void AbstractFunction::neglectState(const int pos)
-{
-    assert(pos <= s_maxpos);
-    assert(pos > -1);
-
-    if (pos == s_maxpos)
-    {
-        const auto size = static_cast<std::size_t>(std::max(0, pos - 1));
-        for (auto function : Binding::functions())
-        {
-            function->m_states.resize(size);
-        }
-        for (auto function : Binding::additionalFunctions())
-        {
-            function->m_states.resize(size);
-        }
-        --s_maxpos;
-    }
-    else
-    {
-        for (auto function : Binding::functions())
-        {
-            function->m_states[pos] = State();
-        }
-
-        for (auto function : Binding::additionalFunctions())
-        {
-            function->m_states[pos] = State();
-        }
-    }
-
-    if (pos == t_pos)
-    {
-        t_pos = -1;
-    }
-}
-
-void AbstractFunction::setStatePos(const int pos)
-{
-    t_pos = pos;
-}
 
 AbstractFunction::AbstractFunction(const char * _name)
 : m_name(_name)
@@ -136,13 +30,12 @@ void AbstractFunction::resolveAddress()
 {
     auto & currentState = state();
 
-    if (currentState.initialized)
+    if (currentState.isInitialized())
     {
         return;
     }
 
-    currentState.address = getProcAddress(m_name);
-    currentState.initialized = true;
+    currentState.resolve(m_name);
 }
 
 const char * AbstractFunction::name() const
@@ -152,24 +45,24 @@ const char * AbstractFunction::name() const
 
 bool AbstractFunction::isResolved() const
 {
-    return state().address != nullptr;
+    return state().isResolved();
 }
 
 ProcAddress AbstractFunction::address() const
 {
-    if (!state().initialized)
+    if (!state().isInitialized())
     {
         const_cast<AbstractFunction*>(this)->resolveAddress();
     }
 
-    return state().address;
+    return state().address();
 }
 
 bool AbstractFunction::isEnabled(const CallbackMask mask) const
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
     
-    return (static_cast<callback_mask_t>(state().callbackMask) 
+    return (static_cast<callback_mask_t>(state().callbackMask())
         & static_cast<callback_mask_t>(mask)) == static_cast<callback_mask_t>(mask);
 }
 
@@ -177,44 +70,58 @@ bool AbstractFunction::isAnyEnabled(const CallbackMask mask) const
 {   
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
     
-    return (static_cast<callback_mask_t>(state().callbackMask) 
+    return (static_cast<callback_mask_t>(state().callbackMask())
         & static_cast<callback_mask_t>(mask)) != 0;
 }
 
 CallbackMask AbstractFunction::callbackMask() const
 {
-    return state().callbackMask;
+    return state().callbackMask();
 }
 
 void AbstractFunction::setCallbackMask(const CallbackMask mask)
 {
-    state().callbackMask = mask;
+    state().setCallbackMask(mask);
 }
 
 void AbstractFunction::addCallbackMask(const CallbackMask mask)
 {
-    state().callbackMask |= mask;
+    state().setCallbackMask(state().callbackMask() | mask);
 }
 
 void AbstractFunction::removeCallbackMask(const CallbackMask mask)
 {
-    state().callbackMask &= ~mask;
+    state().setCallbackMask(state().callbackMask() & ~mask);
 }
 
-void AbstractFunction::unresolved() const
+void AbstractFunction::unresolved(const AbstractFunction * function)
 {
-    glbinding::unresolved(this);
+    Binding::unresolved(function);
 }
 
-void AbstractFunction::before(const FunctionCall & call) const
+void AbstractFunction::before(const FunctionCall & call)
 {
-    glbinding::before(call);
+    Binding::before(call);
 }
 
-
-void AbstractFunction::after(const FunctionCall & call) const
+void AbstractFunction::after(const FunctionCall & call)
 {
-    glbinding::after(call);
+    Binding::after(call);
+}
+
+void AbstractFunction::log(FunctionCall && call)
+{
+    Binding::log(std::move(call));
+}
+
+int AbstractFunction::currentPos()
+{
+    return Binding::currentPos();
+}
+
+int AbstractFunction::maxPos()
+{
+    return Binding::maxPos();
 }
 
 

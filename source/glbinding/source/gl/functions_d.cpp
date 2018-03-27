@@ -286,9 +286,9 @@ void glDepthMask(GLboolean flag)
     return Binding::DepthMask(flag);
 }
 
-void glDepthRange(GLdouble near_, GLdouble far_)
+void glDepthRange(GLdouble n, GLdouble f)
 {
-    return Binding::DepthRange(near_, far_);
+    return Binding::DepthRange(n, f);
 }
 
 void glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v)

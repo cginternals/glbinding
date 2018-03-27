@@ -2,13 +2,14 @@
 #pragma once
 
 
-#include <iosfwd>
 #include <string>
 #include <set>
 #include <utility>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
+
+#include <glbinding/AbstractVersion.h>
 
 
 namespace glbinding
@@ -23,7 +24,7 @@ namespace glbinding
 *
 *  Example code:
 *  \code{.cpp}
-*  const glbinding::Version currentVersion = glbinding::ContextInfo::version();
+*  const glbinding::Version currentVersion = glbinding::aux::ContextInfo::version();
 *
 *  if (currentVersion >= glbinding::Version(3, 2))
 *  {
@@ -31,25 +32,14 @@ namespace glbinding
 *  }
 *  \endcode
 */
-class Version
+class Version : public AbstractVersion
 {
 public:
     /**
     *  @brief
-    *    Default constructor, resulting in an invalid Version object
+    *    Constructors inherited from base class.
     */
-    GLBINDING_CONSTEXPR inline Version();
-
-    /**
-    *  @brief
-    *    Constructor for a Version object with the given major and minor version
-    *
-    *  @param[in] majorVersion
-    *    The major version
-    *  @param[in] minorVersion
-    *    The minor version
-    */
-    GLBINDING_CONSTEXPR inline Version(unsigned char majorVersion, unsigned char minorVersion);
+    using AbstractVersion::AbstractVersion;
 
     /**
     *  @brief
@@ -164,136 +154,10 @@ public:
     *    'true' if this Version is lesser or equal than the other Version, else 'false'
     */
     GLBINDING_CONSTEXPR inline bool operator<=(const Version & version) const;
-
-    /**
-    *  @brief
-    *    Accessor for the major version
-    *
-    *  @return
-    *    the major version
-    */
-    GLBINDING_CONSTEXPR inline unsigned char majorVersion() const;
-
-    /**
-    *  @brief
-    *    Accessor for the minor version
-    *
-    *  @return
-    *    the minor version
-    */
-    GLBINDING_CONSTEXPR inline unsigned char minorVersion() const;
-
-    /**
-    *  @brief
-    *    Cast operator for a std::pair cast of type unsigned char
-    */
-    inline operator std::pair<unsigned char, unsigned char>() const;
-
-    /**
-    *  @brief
-    *    Cast operator for a std::pair cast of type unsigned short
-    */
-    inline operator std::pair<unsigned short, unsigned short>() const;
-
-    /**
-    *  @brief
-    *    Cast operator for a std::pair cast of type unsigned int
-    */
-    inline operator std::pair<unsigned int, unsigned int>() const;
-
-    /**
-    *  @brief
-    *    Create a string representing the Version using the scheme "<majorVersion>.<minorVersion>"
-    *
-    *  @return
-    *    The version as string, "-.-" iff the string is invalid
-    */
-    GLBINDING_API std::string toString() const;
-
-    /**
-    *  @brief
-    *    Check for validity of this Version, based on the list of all valid OpenGL feautures
-    *
-    *  @return
-    *    true iff the version is valid (i.e., if this version is present in the set of valid versions)
-    */
-    GLBINDING_API bool isValid() const;
-
-    /**
-    *  @brief
-    *    Check if the Version was constructed using the default constructor
-    *
-    *  @return
-    *    'true' if the major version is 0, else 'false'
-    *
-    *  @remarks
-    *    This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed
-    */
-    GLBINDING_CONSTEXPR inline bool isNull() const;
-
-    /**
-    *  @brief
-    *    Returns the nearest valid Version to this Version
-    *
-    *  @return
-    *    The nearest valid Version that is either equal or lower than this Version
-    */
-    GLBINDING_API const Version & nearest() const;
-
-    /**
-    *  @brief
-    *    Accessor for the list of all valid Versions (OpenGL features)
-    *
-    *  @return
-    *    The set of all valid Versions (= released OpenGL Features)
-    */
-    GLBINDING_API static const std::set<Version> & versions();
-
-    /**
-    * @brief
-    *   Returns the list of all valid, previous Versions (Features) known by the gl.xml
-    *
-    * @return
-    *   The list of all valid Versions (Features) with a version number below the provided one
-    */
-    GLBINDING_API static const std::set<Version> preceeding(const Version & version);
-
-    /**
-    * @brief
-    *   Returns the list of all valid, subsequent Versions (Features) known by the gl.xml
-    *
-    * @return
-    *   The list of all valid Versions (Features) with a version number above the provided one
-    */
-    GLBINDING_API static const std::set<Version> succeeding(const Version & version);
-
-    /**
-    *  @brief
-    *    Return the most current valid Version
-    *
-    *  @return
-    *    The most current Version from the set of all valid versions
-    */
-    GLBINDING_API static const Version & latest();
-
-
-protected:
-    unsigned char m_major; ///< The major version
-    unsigned char m_minor; ///< The minor version
-
-    static const std::set<Version> s_validVersions; ///< The set of all valid versions
-    static const Version           s_latest;        ///< The most current version
 };
 
 
 } // namespace glbinding
-
-
-/**
-*  @brief
-*    The operator to allow Versions to be printed onto a std::ostream
-*/
-GLBINDING_API std::ostream & operator<<(std::ostream & stream, const glbinding::Version & version);
 
 
 #include <glbinding/Version.inl>
