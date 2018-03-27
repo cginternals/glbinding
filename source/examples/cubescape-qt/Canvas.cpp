@@ -279,5 +279,10 @@ ProcAddress Canvas::getProcAddress(const char * name)
 
     const auto symbol = std::string(name);
 
-    return m_context->getProcAddress(QByteArray::fromStdString(symbol));
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
+    const auto qtSymbol = QByteArray::fromStdString(symbol);
+#else
+    const auto qtSymbol = QByteArray::fromRawData(symbol.c_str(), symbol.size());
+#endif
+    return m_context->getProcAddress(qtSymbol);
 }
