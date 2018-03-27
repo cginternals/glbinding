@@ -7,14 +7,17 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Meta.h>
+#include <glbinding-aux/Meta.h>
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/ContextInfo.h>
+#include <glbinding-aux/ContextInfo.h>
 #include <glbinding/Version.h>
 
 #include <glbinding/gl/gl.h>
 
 #include <glbinding/Binding.h>
+
+#include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/types_to_string.h>
 
 
 using namespace gl;
@@ -68,9 +71,11 @@ Version printVersionOfContextRequest(
     }
 
     glfwMakeContextCurrent(window);
-    Binding::initialize();
+    Binding::initialize([](const char * name) {
+        return glfwGetProcAddress(name);
+    });
 
-    auto result = ContextInfo::version();
+    auto result = aux::ContextInfo::version();
     glfwMakeContextCurrent(window);
 
     print(version, forward, core, result, forward, isCore(result));
@@ -95,7 +100,7 @@ int main(int argc, char * argv[])
 
     std::map<Version, std::array<Version, 4>> markdown;
 
-    for (const auto & version : Version::versions())
+    for (const auto & version : aux::ValidVersions::versions())
     {
         markdown[version][0] = printVersionOfContextRequest(version, false, false);
         markdown[version][1] = printVersionOfContextRequest(version, false, true);
@@ -114,14 +119,14 @@ int main(int argc, char * argv[])
 
         std::cout << std::endl << "|";
 
-        for (const auto & version : Version::versions())
-            std::cout << version << (version != Version::latest() ? "<br>" : "");
+        for (const auto & version : aux::ValidVersions::versions())
+            std::cout << version << (version != aux::ValidVersions::latest() ? "<br>" : "");
 
         for (int i = 0; i < 4; ++i)
         {
             std::cout << "|";
-            for (const auto & version : Version::versions())
-                std::cout << markdown[version][i] << (version != Version::latest() ? "<br>" : "");
+            for (const auto & version : aux::ValidVersions::versions())
+                std::cout << markdown[version][i] << (version != aux::ValidVersions::latest() ? "<br>" : "");
         }
         std::cout << "|" << std::endl << std::endl;
     }
@@ -146,15 +151,17 @@ int main(int argc, char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize();
+    Binding::initialize([](const char * name) {
+        return glfwGetProcAddress(name);
+    });
 
     // print some gl infos (query)
 
     std::cout
-        << "OpenGL Version:  " << ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
+        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

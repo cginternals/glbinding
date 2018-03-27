@@ -11,12 +11,11 @@ configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_N
 # Sub-projects
 # 
 
-# Code generation
 set(IDE_FOLDER "")
-add_subdirectory(codegeneration)
 
 # Libraries
 add_subdirectory(glbinding)
+add_subdirectory(glbinding-aux)
 
 # Examples
 set(IDE_FOLDER "Examples")

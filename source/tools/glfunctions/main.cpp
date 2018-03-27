@@ -6,13 +6,16 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Meta.h>
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl.h>
+
+#include <glbinding-aux/Meta.h>
+#include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/types_to_string.h>
 
 
 using namespace gl;
@@ -56,7 +59,9 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize();
+    Binding::initialize([](const char * name) {
+        return glfwGetProcAddress(name);
+    });
 
     // gather available extensions
 
@@ -65,20 +70,20 @@ int main()
 
     std::set<std::string> unknownExts;
 
-    const auto supportedExts = ContextInfo::extensions(unknownExts);
-    const auto allExts = Meta::extensions();
+    const auto supportedExts = aux::ContextInfo::extensions(unknownExts);
+    const auto allExts = aux::Meta::extensions();
 
     // sort extensions by version
 
     auto extsByVer = std::map<Version, std::set<GLextension>>();
     auto suppByVer = std::map<Version, int>(); // num supported exts by version
 
-    auto versions = Meta::versions();
+    auto versions = aux::Meta::versions();
     versions.insert(Version{}); // provide NONE Version for extensions without associated version 
 
     for (auto & version : versions)
     {
-        const auto extensions = Meta::extensions(version);
+        const auto extensions = aux::Meta::extensions(version);
         if (extensions.empty())
             continue;
 
@@ -96,13 +101,13 @@ int main()
         if (function->isResolved())
             ++resolved;
 
-        if (Meta::extensions(function->name()).empty())
+        if (aux::Meta::extensions(function->name()).empty())
         {
             nonExtFuncs.insert(function);
         }
         else
         {
-            const auto extensions = Meta::extensions(function->name());
+            const auto extensions = aux::Meta::extensions(function->name());
             for (const auto & extension : extensions)
                 funcsByExt[extension].insert(function);
             ++assigned;
@@ -120,7 +125,7 @@ int main()
             if (supported)
                 ++suppByVer[i.first];
 
-            std::cout << std::endl << Meta::getString(ext) << (supported ? " (supported)" : "") << std::endl;
+            std::cout << std::endl << aux::Meta::getString(ext) << (supported ? " (supported)" : "") << std::endl;
             if (funcsByExt.find(ext) != funcsByExt.cend())
                 for (auto func : funcsByExt[ext])
                     coutFunc(func);
@@ -172,7 +177,7 @@ int main()
 
         unsupportedExtensions.clear();
         unsupportedFunctions.clear();
-        const auto supported = ContextInfo::supported(p.first, unsupportedExtensions, unsupportedFunctions);
+        const auto supported = aux::ContextInfo::supported(p.first, unsupportedExtensions, unsupportedFunctions);
 
         if (supported)
             continue;
@@ -181,7 +186,7 @@ int main()
         {
             std::cout << "  # " << p.first << " assoc. Extensions:" << std::endl;
             for (const auto extension : unsupportedExtensions)
-                std::cout << "                 " << Meta::getString(extension) << std::endl;
+                std::cout << "                 " << aux::Meta::getString(extension) << std::endl;
         }
         if(!unsupportedFunctions.empty())
         {
@@ -194,10 +199,10 @@ int main()
     // print some gl infos (query)
 
     std::cout << std::endl
-        << "OpenGL Version:  " << ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
+        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

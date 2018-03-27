@@ -2,7 +2,8 @@
 #include "Painter.h"
 
 #include <glbinding/Binding.h>
-#include <glbinding/ContextInfo.h>
+
+#include <glbinding-aux/ContextInfo.h>
 
 #include "../cubescape/CubeScape.h"
 
@@ -18,12 +19,12 @@ Painter::~Painter()
     delete m_cubescape;
 }
 
-void Painter::initialize()
+void Painter::initialize(GetProcAddress procAddressCallback)
 {
     if (m_initialized)
         return;
 
-    glbinding::Binding::initialize(false); // only resolve functions that are actually used (lazy)
+    glbinding::Binding::initialize(procAddressCallback, false); // only resolve functions that are actually used (lazy)
 
     m_cubescape = new CubeScape();
 

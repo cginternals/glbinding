@@ -7,14 +7,17 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Meta.h>
-#include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/types.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/functions.h>
+
+#include <glbinding-aux/Meta.h>
+#include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/types_to_string.h>
 
 
 using namespace gl;
@@ -166,15 +169,15 @@ namespace
         static const size_t MAX_PSTRING_LENGTH { 37 };    // actually, it's 44 / average is 23,
                                                           // but 37 works for 452 of 462 glGet enums (98%)
 
-        const std::string pstring{ glbinding::Meta::getString(pname) };
-        const std::string spaces{ std::string((glbinding::Meta::getString(pname).length() > 37) ? 0 : (MAX_PSTRING_LENGTH - pstring.length()), ' ') };
+        const std::string pstring{ glbinding::aux::Meta::getString(pname) };
+        const std::string spaces{ std::string((glbinding::aux::Meta::getString(pname).length() > 37) ? 0 : (MAX_PSTRING_LENGTH - pstring.length()), ' ') };
 
         if (glGetError() != gl::GL_NO_ERROR)
         {
             std::cout << "\t" << pstring << spaces << " = NOT AVAILABLE";
             return false;
         }
-        std::cout << "\t" << glbinding::Meta::getString(pname) << spaces << " = " << string<T, count>(data);
+        std::cout << "\t" << glbinding::aux::Meta::getString(pname) << spaces << " = " << string<T, count>(data);
         return true;
     }
 
@@ -186,7 +189,7 @@ namespace
         static const size_t MAX_PSTRING_LENGTH{ 37 };    // actually, it's 44 / average is 23,
         // but 37 works for 452 of 462 glGet enums (98%)
 
-        const std::string pstring{ glbinding::Meta::getString(pname) };
+        const std::string pstring{ glbinding::aux::Meta::getString(pname) };
         const std::string spaces{ std::string(MAX_PSTRING_LENGTH - pstring.length(), ' ') };
 
         if (glGetError() != gl::GL_NO_ERROR)
@@ -194,7 +197,7 @@ namespace
             std::cout << "\t" << pstring << spaces << " = NOT AVAILABLE";
             return false;
         }
-        std::cout << "\t" << glbinding::Meta::getString(pname) << spaces << " = " << string<T>(data, count);
+        std::cout << "\t" << glbinding::aux::Meta::getString(pname) << spaces << " = " << string<T>(data, count);
         return true;
     }
 
@@ -337,7 +340,9 @@ int main(int argc, const char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize();
+    Binding::initialize([](const char * name) {
+        return glfwGetProcAddress(name);
+    });
 
     std::cout << std::endl << "[QUERYING STATE VALUES]" << std::endl;
 
@@ -933,10 +938,10 @@ int main(int argc, const char * argv[])
 
 
     std::cout << std::endl
-        << "OpenGL Version:  " << ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
+        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

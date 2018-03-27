@@ -12,19 +12,21 @@ namespace glbinding
 
 /**
 *  @brief
-*    The CallbackMask is a bitfield to encode the states of callbacks and logging for the OpenGL API function calls
+*    The CallbackMask is a bitfield to encode the states of callbacks for the OpenGL API function calls
 */
 enum class CallbackMask : unsigned char
 {
-    None        = 0,      ///< All callbacks and logging is disabled
+    None        = 0,      ///< All callbacks are disabled
     Unresolved  = 1 << 0, ///< Enables the callback for unresolved function calls
     Before      = 1 << 1, ///< Enables the before callbacks
     After       = 1 << 2, ///< Enables the after callbacks
     Parameters  = 1 << 3, ///< Enables the provision of parameter values in the before and after callbacks
     ReturnValue = 1 << 4, ///< Enables the provision of a return value in the after callback
-    Logging     = 1 << 5, ///< Enables logging to file
+    Logging     = 1 << 5, ///< Enables logging
+    Timestamp   = 1 << 6, ///< Enables the provision of the timestamp
     ParametersAndReturnValue = Parameters | ReturnValue,
-    BeforeAndAfter = Before | After
+    BeforeAndAfter = Before | After,
+    All         = Unresolved | Before | After | Parameters | ReturnValue | Logging | Timestamp
 };
 
 /**

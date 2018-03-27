@@ -1,1 +1,0 @@
-{{#params.items}}{{#item}}{{>partials/general_typeNs}}{{/item}}{{^last}}, {{/last}}{{/params.items}}
