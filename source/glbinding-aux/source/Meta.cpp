@@ -25,7 +25,7 @@ namespace
 
 
 static const auto none = std::string{};
-static const auto noneVersion = glbinding::Version{};
+static const auto noneVersion = glbinding::Version(0, 0);
 static const auto noneStringSet = std::set<std::string>{};
 static const auto noneExtensions = std::set<gl::GLextension>{};
 static const auto noneVersions = std::set<glbinding::Version>{};
