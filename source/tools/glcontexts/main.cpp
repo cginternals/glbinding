@@ -100,7 +100,7 @@ int main(int argc, char * argv[])
 
     std::map<Version, std::array<Version, 4>> markdown;
 
-    for (const auto & version : aux::ValidVersions::versions())
+    for (const auto & version : aux::ValidVersions<Version>::versions())
     {
         markdown[version][0] = printVersionOfContextRequest(version, false, false);
         markdown[version][1] = printVersionOfContextRequest(version, false, true);
@@ -119,14 +119,14 @@ int main(int argc, char * argv[])
 
         std::cout << std::endl << "|";
 
-        for (const auto & version : aux::ValidVersions::versions())
-            std::cout << version << (version != aux::ValidVersions::latest() ? "<br>" : "");
+        for (const auto & version : aux::ValidVersions<Version>::versions())
+            std::cout << version << (version != aux::ValidVersions<Version>::latest() ? "<br>" : "");
 
         for (int i = 0; i < 4; ++i)
         {
             std::cout << "|";
-            for (const auto & version : aux::ValidVersions::versions())
-                std::cout << markdown[version][i] << (version != aux::ValidVersions::latest() ? "<br>" : "");
+            for (const auto & version : aux::ValidVersions<Version>::versions())
+                std::cout << markdown[version][i] << (version != aux::ValidVersions<Version>::latest() ? "<br>" : "");
         }
         std::cout << "|" << std::endl << std::endl;
     }

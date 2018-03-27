@@ -1,11 +1,8 @@
 
 #include <glbinding-aux/ValidVersions.h>
 
-#include <glbinding/Version.h>
 
-
-template <>
-const std::set<glbinding::Version> glbinding::aux::ValidVersions<glbinding::Version>::s_validVersions =
+const std::set<glbinding::Version> glbinding::aux::ValidVersions::s_validVersions =
 {
     { 1, 0 },
     { 1, 1 },
@@ -28,5 +25,4 @@ const std::set<glbinding::Version> glbinding::aux::ValidVersions<glbinding::Vers
     { 4, 6 }
 };
 
-template <>
-const glbinding::Version glbinding::aux::ValidVersions<glbinding::Version>::s_latest { 4, 6 };
+const glbinding::Version glbinding::aux::ValidVersions::s_latest { 4, 6 };

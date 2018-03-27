@@ -246,8 +246,8 @@ def generate(profile, targetdir, revisionfile):
     Generator.generate(generalContext, pjoin(includedir_aux, "RingBuffer.inl"), "khrbinding-aux/RingBuffer.inl")
     Generator.generate(generalContext, pjoin(includedir_aux, "types_to_string.h"), "khrbinding-aux/types_to_string.h")
     Generator.generate(generalContext, pjoin(includedir_aux, "ValidVersions.h"), "khrbinding-aux/ValidVersions.h")
-    Generator.generate(generalContext, pjoin(includedir_aux, "ValidVersions.inl"), "khrbinding-aux/ValidVersions.inl")
 
+    Generator.generate(generalContext, pjoin(sourcedir_aux, "ValidVersions.cpp"), "khrbinding-aux/ValidVersions.cpp")
     Generator.generate(generalContext, pjoin(sourcedir_aux, "types_to_string.cpp"), "khrbinding-aux/types_to_string.cpp")
 
     # Generate function-related files with specific contexts for each initial letter of the function name

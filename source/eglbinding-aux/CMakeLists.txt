@@ -63,7 +63,6 @@ set(headers
     ${include_path}/RingBuffer.h
     ${include_path}/RingBuffer.inl
     ${include_path}/ValidVersions.h
-    ${include_path}/ValidVersions.inl
     ${include_path}/types_to_string.h
 )
 
@@ -102,6 +101,7 @@ set(sources
     
     # KHR binding
     ${source_path}/types_to_string.cpp
+    ${source_path}/ValidVersions.cpp
 )
 
 

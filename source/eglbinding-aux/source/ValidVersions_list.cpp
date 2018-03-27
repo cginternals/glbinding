@@ -1,11 +1,8 @@
 
 #include <eglbinding-aux/ValidVersions.h>
 
-#include <eglbinding/Version.h>
 
-
-template <>
-const std::set<eglbinding::Version> eglbinding::aux::ValidVersions<eglbinding::Version>::s_validVersions =
+const std::set<eglbinding::Version> eglbinding::aux::ValidVersions::s_validVersions =
 {
     { 1, 0 },
     { 1, 1 },
@@ -15,5 +12,4 @@ const std::set<eglbinding::Version> eglbinding::aux::ValidVersions<eglbinding::V
     { 1, 5 }
 };
 
-template <>
-const eglbinding::Version eglbinding::aux::ValidVersions<eglbinding::Version>::s_latest { 1, 5 };
+const eglbinding::Version eglbinding::aux::ValidVersions::s_latest { 1, 5 };
