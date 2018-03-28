@@ -1,7 +1,7 @@
 
 #include <glbinding/State.h>
 
-#include <glbinding/glbinding.h>
+#include <glbinding/Binding.h>
 
 
 namespace glbinding
@@ -15,7 +15,7 @@ void State::resolve(const char * name)
         return;
     }
 
-    m_address = glbinding::resolveFunction(name);
+    m_address = Binding::resolveFunction(name);
     m_initialized = true;
 }
 
