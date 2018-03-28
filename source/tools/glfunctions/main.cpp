@@ -8,6 +8,7 @@
 
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Version.h>
+#include <glbinding/glbinding.h>
 #include <glbinding/Binding.h>
 
 #include <glbinding/gl/gl.h>
@@ -59,7 +60,7 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize([](const char * name) {
+    glbinding::initialize([](const char * name) {
         return glfwGetProcAddress(name);
     });
 

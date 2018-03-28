@@ -8,7 +8,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/Version.h>
-#include <glbinding/Binding.h>
+#include <glbinding/glbinding.h>
 
 #include <glbinding/gl/types.h>
 #include <glbinding/gl/enum.h>
@@ -340,7 +340,7 @@ int main(int argc, const char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize([](const char * name) {
+    glbinding::initialize([](const char * name) {
         return glfwGetProcAddress(name);
     });
 

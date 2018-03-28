@@ -9,7 +9,7 @@
 
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Version.h>
-#include <glbinding/Binding.h>
+#include <glbinding/glbinding.h>
 
 #include <glbinding/gl/gl.h>
 
