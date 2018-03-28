@@ -8,6 +8,7 @@
 # List of modules
 set(MODULE_NAMES
     glbinding
+    glbinding-aux
 )
 
 
