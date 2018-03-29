@@ -69,7 +69,7 @@ void Binding::removeCallbackMaskExcept(const CallbackMask mask, const std::set<s
     }
 }
 
-typename Binding::SimpleFunctionCallback Binding::unresolvedCallback()
+Binding::SimpleFunctionCallback Binding::unresolvedCallback()
 {
     return s_unresolvedCallback();
 }
@@ -79,7 +79,7 @@ void Binding::setUnresolvedCallback(SimpleFunctionCallback callback)
     s_unresolvedCallback() = std::move(callback);
 }
 
-typename Binding::FunctionCallback Binding::beforeCallback()
+Binding::FunctionCallback Binding::beforeCallback()
 {
     return s_beforeCallback();
 }
@@ -89,7 +89,7 @@ void Binding::setBeforeCallback(FunctionCallback callback)
     s_beforeCallback() = std::move(callback);
 }
 
-typename Binding::FunctionCallback Binding::afterCallback()
+Binding::FunctionCallback Binding::afterCallback()
 {
     return s_afterCallback();
 }
@@ -99,7 +99,7 @@ void Binding::setAfterCallback(FunctionCallback callback)
     s_afterCallback() = std::move(callback);
 }
 
-typename Binding::FunctionLogCallback Binding::logCallback()
+Binding::FunctionLogCallback Binding::logCallback()
 {
     return s_logCallback();
 }
@@ -358,35 +358,35 @@ std::vector<AbstractFunction *> & Binding::s_additionalFunctions()
     return additionalFunctions;
 }
 
-std::vector<typename Binding::ContextSwitchCallback> & Binding::s_contextSwitchCallbacks()
+std::vector<Binding::ContextSwitchCallback> & Binding::s_contextSwitchCallbacks()
 {
     static std::vector<ContextSwitchCallback> callbacks;
 
     return callbacks;
 }
 
-typename Binding::SimpleFunctionCallback & Binding::s_unresolvedCallback()
+Binding::SimpleFunctionCallback & Binding::s_unresolvedCallback()
 {
     static SimpleFunctionCallback unresolvedCallback;
 
     return unresolvedCallback;
 }
 
-typename Binding::FunctionCallback & Binding::s_beforeCallback()
+Binding::FunctionCallback & Binding::s_beforeCallback()
 {
     static FunctionCallback beforeCallback;
 
     return beforeCallback;
 }
 
-typename Binding::FunctionCallback & Binding::s_afterCallback()
+Binding::FunctionCallback & Binding::s_afterCallback()
 {
     static FunctionCallback afterCallback;
 
     return afterCallback;
 }
 
-typename Binding::FunctionLogCallback & Binding::s_logCallback()
+Binding::FunctionLogCallback & Binding::s_logCallback()
 {
     static FunctionLogCallback logCallback;
 

@@ -30,7 +30,7 @@ namespace glbinding
 *  }
 *  \endcode
 */
-class GLBINDING_API Version
+class GLBINDING_TEMPLATE_API Version
 {
 public:
     /**
@@ -111,7 +111,7 @@ public:
     *  @return
     *    The version as string, "-.-" iff the string is invalid
     */
-    GLBINDING_API inline std::string toString() const;
+    inline std::string toString() const;
 
     /**
     *  @brief
