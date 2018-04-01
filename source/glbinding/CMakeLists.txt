@@ -58,6 +58,8 @@ set(headers
     ${include_path}/gl/functions.h
     ${include_path}/gl/types.h
     ${include_path}/gl/values.h
+    
+    ${include_path}/glbinding.h
 
     ${include_path}/glbinding.h
     ${include_path}/AbstractFunction.h
@@ -103,6 +105,8 @@ set(sources
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
 
+    ${source_path}/glbinding.cpp
+    
     ${source_path}/gl/functions-patches.cpp
 
     ${source_path}/Binding_pch.h

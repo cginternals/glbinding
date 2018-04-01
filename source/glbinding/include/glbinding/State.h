@@ -9,7 +9,7 @@ namespace glbinding
 {
 
 
-class State : public AbstractState
+class GLBINDING_API State : public AbstractState
 {
 public:
     State() = default;

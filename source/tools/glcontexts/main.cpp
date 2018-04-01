@@ -11,10 +11,9 @@
 #include <glbinding/AbstractFunction.h>
 #include <glbinding-aux/ContextInfo.h>
 #include <glbinding/Version.h>
+#include <glbinding/glbinding.h>
 
 #include <glbinding/gl/gl.h>
-
-#include <glbinding/Binding.h>
 
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/types_to_string.h>
@@ -71,7 +70,7 @@ Version printVersionOfContextRequest(
     }
 
     glfwMakeContextCurrent(window);
-    Binding::initialize([](const char * name) {
+    glbinding::initialize([](const char * name) {
         return glfwGetProcAddress(name);
     });
 
@@ -151,7 +150,7 @@ int main(int argc, char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize([](const char * name) {
+    glbinding::initialize([](const char * name) {
         return glfwGetProcAddress(name);
     });
 

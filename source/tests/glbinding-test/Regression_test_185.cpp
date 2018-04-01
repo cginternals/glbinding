@@ -4,7 +4,7 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Binding.h>
+#include <glbinding/glbinding.h>
 #include <glbinding-aux/Meta.h>
 
 
@@ -48,7 +48,7 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
 
     glfwMakeContextCurrent(window);
 
-    glbinding::Binding::initialize([](const char * name) {
+    glbinding::initialize([](const char * name) {
         return glfwGetProcAddress(name);
     });
 
