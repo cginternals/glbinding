@@ -10,6 +10,7 @@
 #include <glbinding/Binding.h>
 #include <glbinding/CallbackMask.h>
 #include <glbinding/FunctionCall.h>
+#include <glbinding/glbinding.h>
 
 #include <glbinding/gl32/gl.h>
 
@@ -71,9 +72,7 @@ int main()
 
     // print some gl infos (query)
 
-    Binding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    }, false);
+    Binding::initialize(glfwGetProcAddress, false);
 
     std::cout << std::endl
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
@@ -81,9 +80,9 @@ int main()
         << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
         << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
-    Binding::setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
+    glbinding::setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
-    Binding::setAfterCallback([](const glbinding::FunctionCall & call) {
+    glbinding::setAfterCallback([](const glbinding::FunctionCall & call) {
         std::cout << call.function->name() << "(";
 
         for (unsigned i = 0; i < call.parameters.size(); ++i)

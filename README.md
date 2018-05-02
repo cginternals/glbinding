@@ -68,16 +68,19 @@ For systems providing package managers, we generally strive for packages in thes
 
 ###### Windows
 
-The various *glbinding* packages can be installed either by downloading an installer, e.g., the [latest x64 installer](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-runtime.zip),
+The various *glbinding* packages can be installed either by downloading an installer, e.g., the [x64 installer for glbinding v2.1.1](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-runtime.zip),
 [examples](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-examples.zip),
 [dev](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-dev.zip), and
 [tools](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-tools.zip).
+Since lately, glbinding is also available on [vcpkg](https://github.com/Microsoft/vcpkg/tree/master/ports/glbinding) with more recent releases:
+```bash
+> vcpkg install glbinding
+```
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
 ###### Ubuntu
 
-*glbinding* is provided on Ubuntu using PPAs.
-It is available in Ubuntu 16.10 (yakkety) universe. For Ubuntu 16.04 (xenial), 15.10 (wily), and 15.04 (vivid) use the [current PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
+*glbinding* is provided on Ubuntu using PPAs and in [Ubuntu universe](https://packages.ubuntu.com/source/artful/glbinding) since Artful Aardvark. We maintain our own PPA for most recent releases. For Ubuntu 16.04 (xenial), 17.10 (artful), and 18.04 (bionic) use the [standard PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
 Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
 
 ```shell
@@ -115,8 +118,8 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ###### Debian-based Systems
 
-There is currently no precompiled package maintained. 
-Please download the source code and commence [building from source](#build-instructions).
+glbinding is available for Debian 9 (Stretch), 10 (Buster) and Sid. Install it using `apt-get install glbinding`.
+For advanced use, download the source code and commence [building from source](#build-instructions).
 
 # Build Instructions
 
@@ -127,9 +130,6 @@ Building *glbinding* from source has several mandatory and optional dependencies
 
 * [CMake](https://cmake.org/) 3.0 or higher for building *glbinding* from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
-* [Python](https://www.python.org/) 2.7, 3.0 or higher for re-generating the binding
-  * [SVN](https://subversion.apache.org/) for updating the ```gl.xml```
-  * [pystache](https://github.com/defunkt/pystache) for the template-based code generation 
 * [GLFW](http://www.glfw.org/) 3.2 or higher for examples and tools
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples
@@ -147,11 +147,11 @@ First, download the source code [as archive](https://github.com/cginternals/glbi
 > cd glbinding
 ```
 
-Then, depending on the version of *glbinding* you want to build, choose the appropriate tag or branch, e.g., for the 2.1.1 release:
+Then, depending on the version of *glbinding* you want to build, choose the appropriate tag or branch, e.g., for the 2.1.4 release:
 
 ```bash
 > git fetch --tags
-> git checkout v2.1.1
+> git checkout v2.1.4
 ```
 
 The actual compilation can be done using CMake and your favorite compiler and IDE.
@@ -169,7 +169,7 @@ Configure *glbinding* with your preferred or default generator, e.g., for Visual
 (note: some IDEs have integrated support for CMake projects, e.g., Qt Creator, and allow you to skip the manual project configuration):
 
 ```bash
-> cmake .. -G "Visual Studio 14 2015 Win64"
+> cmake .. -G "Visual Studio 15 2017 Win64"
 ```
 
 In order to compile the project, either use you favorite Editor/IDE with the created project or use CMake as follows:
@@ -180,9 +180,7 @@ In order to compile the project, either use you favorite Editor/IDE with the cre
 
 #### Generating/Updating the Binding Manually
 
-For updating the ```gl.xml``` and the resulting *glbinding* interfaces python scripts are provided in ```codegeneration``` directory.
-An additional ```patch.xml``` is used to resolve possible conflicts or missing specifications (with the ongoing development of the xml-based OpenGL API specification this could become obsolete in the future).
-For ease-of-use, the update and generation can be triggered using the generated build targets ```update``` and ```generate```.
+The generation scripts for *glbinding* will get maintained within the [khrbinding-generator](https://github.com/cginternals/khrbinding-generator) project.
 
 # Tips for Linking
 
@@ -202,12 +200,14 @@ target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
 
 # Basic Example
 
-*glbinding* has to be initialized once on the active OpenGL context you want to use *glbinding* with. 
-In the most basic case, you call ```glbinding::Binding::initialize``` once:
+The following examples are tailored for use with glbinding 3.0 and above.
+
+*glbinding* has to be initialized once on the active OpenGL context you want to use *glbinding* with. For initialization, a callback for function pointer resolution must be passed, which your context creation API should provide.
+In the most basic case, you call ```glbinding::initialize``` once:
 
 ```cpp
 #include <glbinding/gl/gl.h>
-#include <glbinding/Binding.h>
+#include <glbinding/glbinding.h>
 
 using namespace gl;
 
@@ -215,7 +215,8 @@ int main()
 {
   // create context, e.g. using GLFW, Qt, SDL, GLUT, ...
 
-  glbinding::Binding::initialize();
+  // Assume context creation using GLFW
+  glbinding::initialize(glfwGetProcAddress);
 
   glBegin(GL_TRIANGLES);
   // ...
@@ -223,10 +224,10 @@ int main()
 }
 ```
 
-This example is valid for applications that use one context in one thread. 
-For multiple context or multi-threaded usage refer to [Multi-Context](..)
 
 # Features
+
+The following examples are tailored for use with glbinding 3.0 and above.
 
 #### Type-Safe Parameters
 
@@ -290,7 +291,7 @@ There is one additional header that provides all extensions and provide them as 
 
 The OpenGL API is iteratively developed and released in versions, internally (for the API specification) named *features*.
 The latest feature/version of OpenGL is 4.5.
-The previous version are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, and 4.4. 
+The previous version are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, 4.4., 4.5, and 4.6.
 OpenGL uses a deprecation model for removing outdated parts of its API which results in compatibility (with deprecated API) and core (without deprecated API) usage that is manifested in the targeted OpenGL context.
 On top of that, new API concepts are suggested as extensions (often vendor specific) that might be integrated into future versions.
 All this results in many possible specific manifestations of the OpenGL API you can use in your program.
@@ -334,13 +335,15 @@ Using functions that are not yet available or relying on deprecated functionalit
 By default, *glbinding* tries to resolve all OpenGL function pointers during initialization, which can consume some time:
 
 ```cpp
-glbinding::Binding::initialize(); // immediate function pointer resolution
+// Assume context creation using GLFW
+glbinding::initialize(glfwGetProcAddress); // immediate function pointer resolution
 ```
 
 Alternatively, the user can decide that functions pointers are resolved only when used for the first time. This is achieved by:
 
 ```cpp
-glbinding::Binding::initialize(false); // lazy function pointer resolution
+// Assume context creation using GLFW
+glbinding::initialize(glfwGetProcAddress, false); // lazy function pointer resolution
 ```
 
 #### Multi-Context Support
@@ -356,10 +359,10 @@ Thus, contexts switches have to be communicated to *glbinding* explicitly in ord
 
 ```cpp
 // use the current active context
-glbinding::Binding::useCurrentContext();
+glbinding::useCurrentContext();
 
 // use another context, identified by platform-specific handle
-glbinding::Binding::useContext(ContextHandle context); 
+glbinding::useContext(ContextHandle context); 
 ```
 
 #### Multi-Threading Support
@@ -373,8 +376,8 @@ To avoid this, semantic groups of OpenGL calls should be treated as critical sec
 #### Multiple OpenGL Contexts in Multiple Threads
 
 The combination of multiple OpenGL contexts and multiple threads for OpenGL usage is supported by *glbinding* in general. 
-You must tell *glbinding* which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::Binding::initialize()```) and if you want to switch the current context for one thread, you have to update the current context, too (```glbinding::Binding::useCurrentContext()```). 
-However, we strongly discourage the use of one context in multiple threads.
+You must tell *glbinding* which OpenGL context is used in which thread by calling the initialize method once the context is used first (```glbinding::initialize```) and if you want to switch the current context for one thread, you have to update the current context, too (```glbinding::useContext```). 
+However, we discourage the use of one context in multiple threads.
 
 #### Function Callbacks
 
@@ -413,7 +416,7 @@ Example for logging:
 
 ```cpp
 setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
-glbinding::setAfterCallback([](const glbinding::FunctionCall & call)
+setAfterCallback([](const FunctionCall & call)
 {
   std::cout << call.function->name() << "(";
   for (unsigned i = 0; i < call.parameters.size(); ++i)
@@ -460,7 +463,7 @@ glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terra
 
 #### Meta Information
 
-Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and runtime information about the gl.xml and your OpenGL driver.
+Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and runtime information about the gl.xml and your OpenGL driver within the *glbinding-aux* library. This library comes with own includes and needs to be linked seperately.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
 The following example prints out a list of all available OpenGL versions/features:
@@ -468,11 +471,13 @@ The following example prints out a list of all available OpenGL versions/feature
 ```cpp
 #include <iostream>
 
-#include <glbinding/Meta.h>
 #include <glbinding/Version.h>
+
+#include <glbinding-aux/Meta.h>
+#include <glbinding-aux/types_to_string.h>
 
 using glbinding::Meta;
 
 for (const Version & v : Meta::versions())
-  std::cout << v.toString() << std::endl;
+  std::cout << v << std::endl;
 ```

@@ -101,9 +101,7 @@ int main(int, char *[])
             std::cout << "error: " << error << std::endl;
     });
 
-    Binding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    }, false); // only resolve functions that are actually used (lazy)
+    Binding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
     // print some gl infos (query)
 
