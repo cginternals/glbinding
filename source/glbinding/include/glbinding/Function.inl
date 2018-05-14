@@ -154,6 +154,13 @@ ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) con
         {
            AbstractFunction::unresolved(this);
         }
+        else
+        {
+            // Trying to call a function without check if it is resolvable is considered a programming error.
+            // You may try to call AbstractFunction::resolve first and check the address for validity (a pointer
+            // unequal to nullptr is considered valid) or check the exposition of associated extensions.
+            assert(false);
+        }
 
         return ReturnType();
     }
