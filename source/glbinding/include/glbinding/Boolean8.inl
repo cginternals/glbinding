@@ -109,7 +109,7 @@ namespace std
 template<>
 struct hash<glbinding::Boolean8>
 {
-    hash<char>::result_type operator()(const glbinding::Boolean8 & boolean) const
+    std::size_t operator()(const glbinding::Boolean8 & boolean) const
     {
         return hash<glbinding::Boolean8::underlying_type>()(static_cast<glbinding::Boolean8::underlying_type>(boolean));
     }

@@ -111,7 +111,7 @@ namespace std
 template<>
 struct hash<gl::GLextension>
 {
-    hash<std::underlying_type<gl::GLextension>::type>::result_type operator()(const gl::GLextension & t) const
+    std::size_t operator()(const gl::GLextension & t) const
     {
         return hash<std::underlying_type<gl::GLextension>::type>()(static_cast<std::underlying_type<gl::GLextension>::type>(t));
     }
@@ -128,7 +128,7 @@ namespace std
 template<>
 struct hash<gl::GLenum>
 {
-    hash<std::underlying_type<gl::GLenum>::type>::result_type operator()(const gl::GLenum & t) const
+    std::size_t operator()(const gl::GLenum & t) const
     {
         return hash<std::underlying_type<gl::GLenum>::type>()(static_cast<std::underlying_type<gl::GLenum>::type>(t));
     }
@@ -166,7 +166,7 @@ namespace std
 template<>
 struct hash<gl::AttribMask>
 {
-    hash<std::underlying_type<gl::AttribMask>::type>::result_type operator()(const gl::AttribMask & t) const
+    std::size_t operator()(const gl::AttribMask & t) const
     {
         return hash<std::underlying_type<gl::AttribMask>::type>()(static_cast<std::underlying_type<gl::AttribMask>::type>(t));
     }
@@ -228,7 +228,7 @@ namespace std
 template<>
 struct hash<gl::BufferAccessMask>
 {
-    hash<std::underlying_type<gl::BufferAccessMask>::type>::result_type operator()(const gl::BufferAccessMask & t) const
+    std::size_t operator()(const gl::BufferAccessMask & t) const
     {
         return hash<std::underlying_type<gl::BufferAccessMask>::type>()(static_cast<std::underlying_type<gl::BufferAccessMask>::type>(t));
     }
@@ -290,7 +290,7 @@ namespace std
 template<>
 struct hash<gl::ClearBufferMask>
 {
-    hash<std::underlying_type<gl::ClearBufferMask>::type>::result_type operator()(const gl::ClearBufferMask & t) const
+    std::size_t operator()(const gl::ClearBufferMask & t) const
     {
         return hash<std::underlying_type<gl::ClearBufferMask>::type>()(static_cast<std::underlying_type<gl::ClearBufferMask>::type>(t));
     }
@@ -352,7 +352,7 @@ namespace std
 template<>
 struct hash<gl::ClientAttribMask>
 {
-    hash<std::underlying_type<gl::ClientAttribMask>::type>::result_type operator()(const gl::ClientAttribMask & t) const
+    std::size_t operator()(const gl::ClientAttribMask & t) const
     {
         return hash<std::underlying_type<gl::ClientAttribMask>::type>()(static_cast<std::underlying_type<gl::ClientAttribMask>::type>(t));
     }
@@ -414,7 +414,7 @@ namespace std
 template<>
 struct hash<gl::ContextFlagMask>
 {
-    hash<std::underlying_type<gl::ContextFlagMask>::type>::result_type operator()(const gl::ContextFlagMask & t) const
+    std::size_t operator()(const gl::ContextFlagMask & t) const
     {
         return hash<std::underlying_type<gl::ContextFlagMask>::type>()(static_cast<std::underlying_type<gl::ContextFlagMask>::type>(t));
     }
@@ -476,7 +476,7 @@ namespace std
 template<>
 struct hash<gl::ContextProfileMask>
 {
-    hash<std::underlying_type<gl::ContextProfileMask>::type>::result_type operator()(const gl::ContextProfileMask & t) const
+    std::size_t operator()(const gl::ContextProfileMask & t) const
     {
         return hash<std::underlying_type<gl::ContextProfileMask>::type>()(static_cast<std::underlying_type<gl::ContextProfileMask>::type>(t));
     }
@@ -538,7 +538,7 @@ namespace std
 template<>
 struct hash<gl::FfdMaskSGIX>
 {
-    hash<std::underlying_type<gl::FfdMaskSGIX>::type>::result_type operator()(const gl::FfdMaskSGIX & t) const
+    std::size_t operator()(const gl::FfdMaskSGIX & t) const
     {
         return hash<std::underlying_type<gl::FfdMaskSGIX>::type>()(static_cast<std::underlying_type<gl::FfdMaskSGIX>::type>(t));
     }
@@ -600,7 +600,7 @@ namespace std
 template<>
 struct hash<gl::FragmentShaderColorModMaskATI>
 {
-    hash<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>::result_type operator()(const gl::FragmentShaderColorModMaskATI & t) const
+    std::size_t operator()(const gl::FragmentShaderColorModMaskATI & t) const
     {
         return hash<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>()(static_cast<std::underlying_type<gl::FragmentShaderColorModMaskATI>::type>(t));
     }
@@ -662,7 +662,7 @@ namespace std
 template<>
 struct hash<gl::FragmentShaderDestMaskATI>
 {
-    hash<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>::result_type operator()(const gl::FragmentShaderDestMaskATI & t) const
+    std::size_t operator()(const gl::FragmentShaderDestMaskATI & t) const
     {
         return hash<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>()(static_cast<std::underlying_type<gl::FragmentShaderDestMaskATI>::type>(t));
     }
@@ -724,7 +724,7 @@ namespace std
 template<>
 struct hash<gl::FragmentShaderDestModMaskATI>
 {
-    hash<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>::result_type operator()(const gl::FragmentShaderDestModMaskATI & t) const
+    std::size_t operator()(const gl::FragmentShaderDestModMaskATI & t) const
     {
         return hash<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>()(static_cast<std::underlying_type<gl::FragmentShaderDestModMaskATI>::type>(t));
     }
@@ -786,7 +786,7 @@ namespace std
 template<>
 struct hash<gl::MapBufferUsageMask>
 {
-    hash<std::underlying_type<gl::MapBufferUsageMask>::type>::result_type operator()(const gl::MapBufferUsageMask & t) const
+    std::size_t operator()(const gl::MapBufferUsageMask & t) const
     {
         return hash<std::underlying_type<gl::MapBufferUsageMask>::type>()(static_cast<std::underlying_type<gl::MapBufferUsageMask>::type>(t));
     }
@@ -848,7 +848,7 @@ namespace std
 template<>
 struct hash<gl::MemoryBarrierMask>
 {
-    hash<std::underlying_type<gl::MemoryBarrierMask>::type>::result_type operator()(const gl::MemoryBarrierMask & t) const
+    std::size_t operator()(const gl::MemoryBarrierMask & t) const
     {
         return hash<std::underlying_type<gl::MemoryBarrierMask>::type>()(static_cast<std::underlying_type<gl::MemoryBarrierMask>::type>(t));
     }
@@ -910,7 +910,7 @@ namespace std
 template<>
 struct hash<gl::OcclusionQueryEventMaskAMD>
 {
-    hash<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>::result_type operator()(const gl::OcclusionQueryEventMaskAMD & t) const
+    std::size_t operator()(const gl::OcclusionQueryEventMaskAMD & t) const
     {
         return hash<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>()(static_cast<std::underlying_type<gl::OcclusionQueryEventMaskAMD>::type>(t));
     }
@@ -972,7 +972,7 @@ namespace std
 template<>
 struct hash<gl::PathFontStyle>
 {
-    hash<std::underlying_type<gl::PathFontStyle>::type>::result_type operator()(const gl::PathFontStyle & t) const
+    std::size_t operator()(const gl::PathFontStyle & t) const
     {
         return hash<std::underlying_type<gl::PathFontStyle>::type>()(static_cast<std::underlying_type<gl::PathFontStyle>::type>(t));
     }
@@ -1034,7 +1034,7 @@ namespace std
 template<>
 struct hash<gl::PathMetricMask>
 {
-    hash<std::underlying_type<gl::PathMetricMask>::type>::result_type operator()(const gl::PathMetricMask & t) const
+    std::size_t operator()(const gl::PathMetricMask & t) const
     {
         return hash<std::underlying_type<gl::PathMetricMask>::type>()(static_cast<std::underlying_type<gl::PathMetricMask>::type>(t));
     }
@@ -1096,7 +1096,7 @@ namespace std
 template<>
 struct hash<gl::PathRenderingMaskNV>
 {
-    hash<std::underlying_type<gl::PathRenderingMaskNV>::type>::result_type operator()(const gl::PathRenderingMaskNV & t) const
+    std::size_t operator()(const gl::PathRenderingMaskNV & t) const
     {
         return hash<std::underlying_type<gl::PathRenderingMaskNV>::type>()(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(t));
     }
@@ -1158,7 +1158,7 @@ namespace std
 template<>
 struct hash<gl::PerformanceQueryCapsMaskINTEL>
 {
-    hash<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>::result_type operator()(const gl::PerformanceQueryCapsMaskINTEL & t) const
+    std::size_t operator()(const gl::PerformanceQueryCapsMaskINTEL & t) const
     {
         return hash<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>()(static_cast<std::underlying_type<gl::PerformanceQueryCapsMaskINTEL>::type>(t));
     }
@@ -1220,7 +1220,7 @@ namespace std
 template<>
 struct hash<gl::SyncObjectMask>
 {
-    hash<std::underlying_type<gl::SyncObjectMask>::type>::result_type operator()(const gl::SyncObjectMask & t) const
+    std::size_t operator()(const gl::SyncObjectMask & t) const
     {
         return hash<std::underlying_type<gl::SyncObjectMask>::type>()(static_cast<std::underlying_type<gl::SyncObjectMask>::type>(t));
     }
@@ -1282,7 +1282,7 @@ namespace std
 template<>
 struct hash<gl::TextureStorageMaskAMD>
 {
-    hash<std::underlying_type<gl::TextureStorageMaskAMD>::type>::result_type operator()(const gl::TextureStorageMaskAMD & t) const
+    std::size_t operator()(const gl::TextureStorageMaskAMD & t) const
     {
         return hash<std::underlying_type<gl::TextureStorageMaskAMD>::type>()(static_cast<std::underlying_type<gl::TextureStorageMaskAMD>::type>(t));
     }
@@ -1344,7 +1344,7 @@ namespace std
 template<>
 struct hash<gl::UseProgramStageMask>
 {
-    hash<std::underlying_type<gl::UseProgramStageMask>::type>::result_type operator()(const gl::UseProgramStageMask & t) const
+    std::size_t operator()(const gl::UseProgramStageMask & t) const
     {
         return hash<std::underlying_type<gl::UseProgramStageMask>::type>()(static_cast<std::underlying_type<gl::UseProgramStageMask>::type>(t));
     }
@@ -1406,7 +1406,7 @@ namespace std
 template<>
 struct hash<gl::VertexHintsMaskPGI>
 {
-    hash<std::underlying_type<gl::VertexHintsMaskPGI>::type>::result_type operator()(const gl::VertexHintsMaskPGI & t) const
+    std::size_t operator()(const gl::VertexHintsMaskPGI & t) const
     {
         return hash<std::underlying_type<gl::VertexHintsMaskPGI>::type>()(static_cast<std::underlying_type<gl::VertexHintsMaskPGI>::type>(t));
     }
@@ -1468,7 +1468,7 @@ namespace std
 template<>
 struct hash<gl::UnusedMask>
 {
-    hash<std::underlying_type<gl::UnusedMask>::type>::result_type operator()(const gl::UnusedMask & t) const
+    std::size_t operator()(const gl::UnusedMask & t) const
     {
         return hash<std::underlying_type<gl::UnusedMask>::type>()(static_cast<std::underlying_type<gl::UnusedMask>::type>(t));
     }
@@ -1530,7 +1530,7 @@ namespace std
 template<>
 struct hash<gl::BufferStorageMask>
 {
-    hash<std::underlying_type<gl::BufferStorageMask>::type>::result_type operator()(const gl::BufferStorageMask & t) const
+    std::size_t operator()(const gl::BufferStorageMask & t) const
     {
         return hash<std::underlying_type<gl::BufferStorageMask>::type>()(static_cast<std::underlying_type<gl::BufferStorageMask>::type>(t));
     }
