@@ -1,10 +1,4 @@
 
-# Check if examples are enabled
-if(NOT OPTION_BUILD_EXAMPLES)
-    return()
-endif()
-
-
 # 
 # Configuration for all sub-projects
 # 

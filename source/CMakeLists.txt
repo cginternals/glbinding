@@ -17,13 +17,17 @@ set(IDE_FOLDER "")
 add_subdirectory(glbinding)
 add_subdirectory(glbinding-aux)
 
-# Examples
-set(IDE_FOLDER "Examples")
-add_subdirectory(examples)
+# Tools
+if(OPTION_BUILD_TOOLS)
+    set(IDE_FOLDER "Tools")
+    add_subdirectory(tools)
+endif()
 
 # Examples
-set(IDE_FOLDER "Tools")
-add_subdirectory(tools)
+if(OPTION_BUILD_EXAMPLES)
+    set(IDE_FOLDER "Examples")
+    add_subdirectory(examples)
+endif()
 
 # Tests
 if(OPTION_BUILD_TESTS)
