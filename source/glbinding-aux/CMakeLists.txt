@@ -54,6 +54,7 @@ set(headers
 
     ${include_path}/ValidVersions.h
 
+    ${include_path}/debug.h
     ${include_path}/logging.h
 
     ${include_path}/types_to_string.h
@@ -92,6 +93,7 @@ set(sources
 
     ${source_path}/ValidVersions_list.cpp
 
+    ${source_path}/debug.cpp
     ${source_path}/logging.cpp
     ${source_path}/logging_private.h
 

@@ -14,6 +14,7 @@
 #include <glbinding-aux/Meta.h>
 #include <glbinding-aux/types_to_string.h>
 #include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/debug.h>
 
 #include "CubeScape.h"
 
@@ -94,14 +95,8 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::setAfterCallback([](const FunctionCall &)
-    {
-        gl::GLenum error = glGetError();
-        if (error != GL_NO_ERROR)
-            std::cout << "error: " << error << std::endl;
-    });
-
     Binding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)
 
