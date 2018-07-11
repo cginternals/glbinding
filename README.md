@@ -180,7 +180,7 @@ In order to compile the project, either use you favorite Editor/IDE with the cre
 
 #### Generating/Updating the Binding Manually
 
-The generation scripts for *glbinding* will get maintained within the [khrbinding-generator](https://github.com/cginternals/khrbinding-generator) project.
+The generation scripts for *glbinding* are maintained within the [khrbinding-generator](https://github.com/cginternals/khrbinding-generator) project.
 
 # Tips for Linking
 
