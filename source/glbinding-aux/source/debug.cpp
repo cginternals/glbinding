@@ -14,7 +14,7 @@ namespace
 
 
 // Don't rely on Meta.h for now
-std::string readableErrorCode(gl::GLenum errorCode) const
+std::string readableErrorCode(gl::GLenum errorCode)
 {
     switch(errorCode)
     {
