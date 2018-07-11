@@ -151,7 +151,7 @@ Then, depending on the version of *glbinding* you want to build, choose the appr
 
 ```bash
 > git fetch --tags
-> git checkout v2.1.4
+> git checkout v3
 ```
 
 The actual compilation can be done using CMake and your favorite compiler and IDE.
@@ -195,7 +195,10 @@ find_package(glbinding REQUIRED) # if it is really required in your project
 Finally, just link glbinding to your own library or executable:
 
 ```cmake
-target_link_libraries(${target} ... PUBLIC glbinding::glbinding)
+target_link_libraries(${target} ... PUBLIC
+    glbinding::glbinding
+    glbinding::glbinding-aux # for additionaly, auxiliary features as logging, meta information, or debugging functionality
+)
 ```
 
 # Basic Example
@@ -290,8 +293,8 @@ There is one additional header that provides all extensions and provide them as 
 #### Feature-Centered Header Design
 
 The OpenGL API is iteratively developed and released in versions, internally (for the API specification) named *features*.
-The latest feature/version of OpenGL is 4.5.
-The previous version are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, 4.4., 4.5, and 4.6.
+The latest feature/version of OpenGL is 4.6.
+The previous version are 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 2.0, 2.1, 3.0, 3.1, 3.2, 3.3, 4.0, 4.1, 4.2, 4.3, 4.4., and 4.5.
 OpenGL uses a deprecation model for removing outdated parts of its API which results in compatibility (with deprecated API) and core (without deprecated API) usage that is manifested in the targeted OpenGL context.
 On top of that, new API concepts are suggested as extensions (often vendor specific) that might be integrated into future versions.
 All this results in many possible specific manifestations of the OpenGL API you can use in your program.
@@ -408,6 +411,16 @@ setAfterCallback([](const FunctionCall &)
   if (error != GL_NO_ERROR)
     std::cout << "error: " << std::hex << error << std::endl;
 });
+
+// OpenGL Code ...
+```
+
+As a shortcut, glbinding 3.0 introduced a debugging interface for error-checking after callbacks within the *glbinding-aux* library:
+
+```cpp
+#include <glbinding-aux/debug.h>
+
+glbinding::aux::enableGetErrorCallback();
 
 // OpenGL Code ...
 ```
