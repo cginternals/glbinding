@@ -18,8 +18,8 @@ void main()
 
     v_h = texture(terrain, uv * 0.5 + vec2(sin(time * 0.04), time * 0.02)).r * 2.0 / 3.0;
 
-    if(a_vertex.y > 0.0) 
+    if(a_vertex.y > 0.0)
         v.y += v_h;
 
-    gl_Position = vec4(v, 1.0); 
+    gl_Position = vec4(v, 1.0);
 }

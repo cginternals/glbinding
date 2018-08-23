@@ -15,11 +15,11 @@
 #include "ui_Viewer.h"
 
 
-namespace 
+namespace
 {
     const QString SETTINGS_GEOMETRY ("Geometry");
     const QString SETTINGS_STATE    ("State");
-    
+
     const QString SETTINGS_ADAPTIVE_GRID("ShowAdaptiveGrid");
 }
 

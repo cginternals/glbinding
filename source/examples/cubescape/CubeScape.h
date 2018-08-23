@@ -33,7 +33,7 @@ protected:
     gl::GLuint m_program;
 
     gl::GLuint m_textures[2];
-    
+
     float m_a;
     int m_numcubes;
 

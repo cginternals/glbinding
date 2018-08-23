@@ -122,7 +122,7 @@ mat4 mat4::lookAt(GLfloat eyex, GLfloat eyey, GLfloat eyez
     u = crossp(s, f);
 
     mat4 m;
-    
+
     m[ 0] =  s[0];
     m[ 4] =  s[1];
     m[ 8] =  s[2];
@@ -253,7 +253,7 @@ void vec3::normalize()
 
     v[0] *= s;
     v[1] *= s;
-    v[2] *= s;    
+    v[2] *= s;
 }
 
 vec3 crossp(const vec3 & a, const vec3 & b)

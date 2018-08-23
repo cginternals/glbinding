@@ -8,7 +8,7 @@
 #include <glbinding/glbinding_features.h>
 
 
-namespace glbinding 
+namespace glbinding
 {
 
 

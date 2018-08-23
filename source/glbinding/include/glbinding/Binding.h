@@ -62,7 +62,7 @@ public:
     using FunctionLogCallback = std::function<void(FunctionCall *)>;
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
-    
+
     using array_t = std::array<AbstractFunction *, 2926>; ///< The type of the build-in functions collection
 
 
@@ -313,11 +313,11 @@ public:
 
     static FunctionLogCallback logCallback();
     static void setLogCallback(FunctionLogCallback callback);
-    
+
     /**
     *  @brief
     *    The accessor for all build-in functions
-    * 
+    *
     *  @return
     *    The list of all build-in functions
     */

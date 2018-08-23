@@ -39,7 +39,7 @@ bool RawFile::readFile()
         std::cerr << "Reading from file \"" << m_filePath << "\" failed." << std::endl;
         return false;
     }
-    
+
     readRawData(ifs);
 
     ifs.close();

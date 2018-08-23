@@ -50,7 +50,7 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
     if (key == GLFW_KEY_I && (action == GLFW_PRESS || action == GLFW_REPEAT))
     {
         cubescape->setNumCubes(cubescape->numCubes() + 1);
-        numCubesChanged = true;        
+        numCubesChanged = true;
     }
 
     if (key == GLFW_KEY_D && (action == GLFW_PRESS || action == GLFW_REPEAT))
