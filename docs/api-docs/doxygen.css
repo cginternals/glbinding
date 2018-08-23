@@ -1,13 +1,13 @@
 div.row {
-	margin-top: 20px;
+    margin-top: 20px;
 }
 
 #projectlogo img {
-	margin: 2ex 4ex;
+    margin: 2ex 4ex;
 }
 
 span.icon {
-	padding: 4pt;
+    padding: 4pt;
 }
 
 .directory .levels {
@@ -33,6 +33,6 @@ span.icon {
 }
 
 div.dyncontent div.center {
-	text-align: center;
-	padding: 20px 0px;
+    text-align: center;
+    padding: 20px 0px;
 }
