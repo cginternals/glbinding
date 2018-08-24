@@ -14,7 +14,6 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 include(cmake/Custom.cmake)
 
 # Set policies
-set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
 set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
 set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
@@ -60,7 +59,7 @@ set(META_VERSION_PATCH       "2")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
-set(META_CMAKE_INIT_SHA      "6a6f30b38a1cee31ccac3f091816f28e0f6bce4b")
+set(META_CMAKE_INIT_SHA      "c472829f01df4c99c7bd3fa96bcf6854b3dd44f1")
 
 string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
 string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)

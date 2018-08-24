@@ -1,38 +1,64 @@
-language: cpp
-
-sudo: required
-dist: trusty
-
-os:
-  - linux
-  - osx
-
-compiler:
-  - gcc
-  - clang
+language: c++
 
 env:
   global:
     - CMAKE_OPTIONS="-DOPTION_BUILD_EXAMPLES=On -DOPTION_BUILD_TESTS=On"
-  matrix:
-    - CMAKE_CONFIGURATION=release BUILD_DIR=build
-    - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
 
 matrix:
-  exclude:
-  - os: osx
-    compiler: gcc
+  include:
+
+    - os: osx
+      osx_image: xcode9.1
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: osx
+      osx_image: xcode9.1
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      compiler: clang
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      compiler: clang
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      compiler: gcc
+      env:
+        - CMAKE_CONFIGURATION=release BUILD_DIR=build
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - cmake
+          - g++-5
+
+    - os: linux
+      compiler: gcc
+      env:
+        - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - cmake
+          - g++-5
 
 before_install:
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev cppcheck clang-tidy-3.8; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install qt5 cppcheck; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev libcpplocate-dev; fi
 
 before_script:
+  - eval "${MATRIX_EVAL}"
+  - chmod +x ./configure
   - ./configure
-  - if [ $CMAKE_CONFIGURATION == release ]; then ./configure; fi
-  - if [ $CMAKE_CONFIGURATION == debug ]; then ./configure debug; fi
+  - ./configure $CMAKE_CONFIGURATION
 
 script:
   - travis_wait cmake --build $BUILD_DIR
