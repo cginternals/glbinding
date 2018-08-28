@@ -13,9 +13,11 @@ namespace glbinding { namespace aux
 *  @brief
 *    Register the glGetError after callback
 *
-*  @remarks
+*  @remark
 *    This function just registers the global after callback within glbinding.
 *    For actual use, the callback has to be enabled, e.g., by a call to enableGetErrorCallback().
+*
+*  @remark
 *    Any previously registered after callback get overwritten.
 */
 GLBINDING_AUX_API void registerGetErrorCallback();

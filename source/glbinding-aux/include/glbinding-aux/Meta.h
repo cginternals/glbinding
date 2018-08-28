@@ -73,7 +73,7 @@ public:
     *  @brief
     *    Converts a GLenum to a string
     *
-    *  @param[in] enum
+    *  @param[in] glenum
     *    The enum to convert
     *
     *  @return
@@ -88,7 +88,7 @@ public:
     *  @brief
     *    Converts a string to a enum symbol
     *
-    *  @param[in] enum
+    *  @param[in] glenum
     *    The string representation of the enum
     *
     *  @return
@@ -116,7 +116,7 @@ public:
     *    A string representation of the GLboolean symbol name
     *
     *  @remarks
-    *    Can either be 'GL_TRUE' or 'GL_FALSE'
+    *    Can either be '`GL_TRUE`' or '`GL_FALSE`'
     */
     static const std::string & getString(const gl::GLboolean & boolean);
     
@@ -124,11 +124,11 @@ public:
     *  @brief
     *    Converts a string to a GLboolean symbol
     *
-    *  @param[in] glboolean
+    *  @param[in] boolean
     *    The string representation of the GLboolean
     *
     *  @return
-    *    The symbol identified through the boolean string, 'GL_FALSE' if failed
+    *    The symbol identified through the boolean string, '`GL_FALSE`' if failed
     */
     static gl::GLboolean getBoolean(const std::string & boolean);
 
@@ -152,7 +152,7 @@ public:
     *    The string representation of the extension
     *
     *  @return
-    *    The symbol identified through the extension string, 'UNKNOWN' if failed
+    *    The symbol identified through the extension string, '`UNKNOWN`' if failed
     */
     static gl::GLextension getExtension(const std::string & extension);
 
@@ -184,7 +184,7 @@ public:
     *  @brief
     *    Returns the list of extensions that are requiring an OpenGL function
     *
-    *  @param[in] function
+    *  @param[in] glfunction
     *    The name of the function, including the 'gl' prefix
     *
     *  @return
@@ -196,7 +196,7 @@ public:
     *  @brief
     *    Returns the list of features that are requiring an OpenGL function
     *
-    *  @param[in] function
+    *  @param[in] glfunction
     *    The name of the function, including the 'gl' prefix
     *
     *  @return
@@ -235,7 +235,7 @@ public:
     *  @brief
     *    Returns the first OpenGL Version (Feature) that required the extension
     *
-    *  @param[in] extension
+    *  @param[in] glextension
     *    The extension
     *
     *  @return
@@ -255,7 +255,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -266,7 +266,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -277,7 +277,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -288,7 +288,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -299,7 +299,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -310,7 +310,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -321,7 +321,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -332,7 +332,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -343,7 +343,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -354,7 +354,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -365,7 +365,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -376,7 +376,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -387,7 +387,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -398,7 +398,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -409,7 +409,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -420,7 +420,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -431,7 +431,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -442,7 +442,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -453,7 +453,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -464,7 +464,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -475,7 +475,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -486,7 +486,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
@@ -497,7 +497,7 @@ public:
     /**
     *  @brief convert bitfield to symbol name string representation
     *
-    *  @param[in] glbitfield
+    *  @param[in] bitfield
     *    The bitfield value
     *
     *  @return
