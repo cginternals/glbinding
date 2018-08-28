@@ -2,9 +2,10 @@
 #pragma once
 
 
+#include <glbinding/nogl.h>
+
 #include <glbinding/glbinding_features.h>
 
-#include <glbinding/nogl.h>
 #include <glbinding/gl/types.h>
 
 

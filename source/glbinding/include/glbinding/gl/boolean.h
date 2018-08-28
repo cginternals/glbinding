@@ -1,11 +1,13 @@
+
 #pragma once
 
 
-#include <glbinding/Boolean8.h>
+#include <glbinding/nogl.h>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
-#include <glbinding/nogl.h>
+
+#include <glbinding/Boolean8.h>
 
 
 namespace gl

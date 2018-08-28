@@ -3,16 +3,16 @@
 
 
 #include <glbinding/nogl.h>
-#include <glbinding/glbinding_api.h>
-#include <glbinding/glbinding_features.h>
-#include <glbinding/gl/boolean.h>
 
 #include <cstddef>
 #include <cstdint>
 #include <array>
-
-
 #include <string>
+
+#include <glbinding/glbinding_api.h>
+#include <glbinding/glbinding_features.h>
+
+#include <glbinding/gl/boolean.h>
 
 
 #ifdef _MSC_VER
