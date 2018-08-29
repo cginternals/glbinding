@@ -1,20 +1,20 @@
 
+#include <cstring>
+#include <array>
 #include <iostream>
 #include <map>
-#include <array>
 #include <set>
-#include <cstring>
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding-aux/Meta.h>
-#include <glbinding/AbstractFunction.h>
-#include <glbinding-aux/ContextInfo.h>
-#include <glbinding/Version.h>
 #include <glbinding/glbinding.h>
+#include <glbinding/AbstractFunction.h>
+#include <glbinding/Version.h>
 
 #include <glbinding/gl/gl.h>
 
+#include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/types_to_string.h>
 

@@ -1,21 +1,21 @@
 
+#include <array>
 #include <iostream>
 #include <sstream>
-#include <array>
 #include <string>
 #include <type_traits>
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Version.h>
 #include <glbinding/glbinding.h>
+#include <glbinding/Version.h>
 
 #include <glbinding/gl/types.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/functions.h>
 
-#include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/types_to_string.h>
 

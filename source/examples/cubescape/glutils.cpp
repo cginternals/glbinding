@@ -1,9 +1,8 @@
 
 #include "glutils.h"
 
+#include <cmath>
 #include <iostream>
-#include <math.h>
-
 
 #include <glbinding/gl32core/gl.h>
 

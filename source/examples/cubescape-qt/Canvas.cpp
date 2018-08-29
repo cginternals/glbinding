@@ -7,21 +7,22 @@
 #include <OpenGL/OpenGL.h>
 #endif
 
+#include <QApplication>
+#include <QBasicTimer>
+#include <QDebug>
+#include <QResizeEvent>
+#include <QString>
+
 #include <glbinding/Version.h>
 
 #include <glbinding-aux/ContextInfo.h>
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/types_to_string.h>
 
-#include <QDebug>
-#include <QString>
-#include <QApplication>
-#include <QBasicTimer>
-#include <QResizeEvent>
-
-#include <QOpenGLContext>
-
 #include "Painter.h"
+
+// included last because of gl.h
+#include <QOpenGLContext>
 
 
 Canvas::Canvas(

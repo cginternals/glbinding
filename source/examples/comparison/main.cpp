@@ -1,4 +1,5 @@
 
+#include <fstream>
 #include <iostream>
 #include <ratio>
 #include <thread>
@@ -12,12 +13,9 @@
 #include <glbinding-aux/types_to_string.h>
 #include <glbinding-aux/ValidVersions.h>
 
-#include "Timer.h"
-#include <thread>
-#include <fstream>
-
 #include "glbinding.h"
 #include "glew.h"
+#include "Timer.h"
 
 
 

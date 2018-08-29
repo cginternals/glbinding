@@ -1,9 +1,9 @@
 
 #include "glew.h"
 
-#include <GL/glew.h>
-
 #include <iostream>
+
+#include <GL/glew.h>
 
 
 namespace

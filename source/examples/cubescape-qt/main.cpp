@@ -1,8 +1,7 @@
 
+#include <QApplication>
 #include <QSurfaceFormat>
 #include <QWidget>
-
-#include <QApplication>
 
 #include "Viewer.h"
 

@@ -3,18 +3,18 @@
 
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Version.h>
 #include <glbinding/Binding.h>
-#include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
+#include <glbinding/FunctionCall.h>
+#include <glbinding/Version.h>
 
 #include <glbinding/gl/gl.h>
 
 #include <glbinding-aux/ContextInfo.h>
 #include <glbinding-aux/Meta.h>
-#include <glbinding-aux/types_to_string.h>
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/debug.h>
+#include <glbinding-aux/types_to_string.h>
 
 #include "CubeScape.h"
 

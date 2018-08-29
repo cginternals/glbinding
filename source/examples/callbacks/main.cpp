@@ -1,21 +1,21 @@
 
-#include <iostream>
 #include <algorithm>
+#include <iostream>
 #include <thread>
 
 #include <GLFW/glfw3.h>
 
+#include <glbinding/glbinding.h>
 #include <glbinding/AbstractFunction.h>
-#include <glbinding/Version.h>
 #include <glbinding/Binding.h>
 #include <glbinding/CallbackMask.h>
 #include <glbinding/FunctionCall.h>
-#include <glbinding/glbinding.h>
+#include <glbinding/Version.h>
 
 #include <glbinding/gl32/gl.h>
 
-#include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/types_to_string.h>
 

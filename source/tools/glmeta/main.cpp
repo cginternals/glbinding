@@ -1,8 +1,8 @@
 
-#include <iostream>
 #include <algorithm>
-#include <set>
 #include <iomanip>
+#include <iostream>
+#include <set>
 
 #include <glbinding/Version.h>
 

@@ -1,20 +1,20 @@
 
+#include <algorithm>
 #include <iostream>
 #include <map>
 #include <set>
 #include <vector>
-#include <algorithm>
 
 #include <GLFW/glfw3.h>
 
+#include <glbinding/glbinding.h>
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Version.h>
-#include <glbinding/glbinding.h>
 
 #include <glbinding/gl/gl.h>
 
-#include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/types_to_string.h>
 

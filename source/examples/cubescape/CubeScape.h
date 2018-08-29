@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include <glbinding/gl/types.h>
-
 #include <chrono>
+
+#include <glbinding/gl/types.h>
 
 #include "glutils.h"
 

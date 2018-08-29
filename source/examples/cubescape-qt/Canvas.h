@@ -1,18 +1,17 @@
 
 #pragma once
 
+#include <QList>
+#include <QScopedPointer>
+#include <QTime>
 #include <QWindow>
 
-#include <QList>
-#include <QTime>
-#include <QScopedPointer>
 
 class QOpenGLContext;
 class QSurfaceFormat;
 class QBasicTimer;
 class QTimerEvent;
 class QKeyEvent;
-
 
 class Painter;
 

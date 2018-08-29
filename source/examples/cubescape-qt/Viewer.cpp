@@ -1,17 +1,17 @@
 
-#include <sstream>
-#include <iomanip>
-#include <cassert>
-
-#include <QShortcut>
-#include <QSettings>
-#include <QLabel>
-#include <QVector3D>
-#include <QApplication>
-
-#include "Canvas.h"
 #include "Viewer.h"
 
+#include <cassert>
+#include <iomanip>
+#include <sstream>
+
+#include <QApplication>
+#include <QLabel>
+#include <QSettings>
+#include <QShortcut>
+#include <QVector3D>
+
+#include "Canvas.h"
 #include "ui_Viewer.h"
 
 

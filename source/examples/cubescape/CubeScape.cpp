@@ -1,10 +1,10 @@
 
 #include "CubeScape.h"
 
-#include <iostream>
+#include <cmath>
 #include <algorithm>
 #include <fstream>
-#include <cmath>
+#include <iostream>
 
 #include <cpplocate/cpplocate.h>
 

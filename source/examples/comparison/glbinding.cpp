@@ -5,17 +5,14 @@
 
 #include <GLFW/glfw3.h>
 
+#include <glbinding/AbstractFunction.h>
+#include <glbinding/Binding.h>
+#include <glbinding/CallbackMask.h>
+#include <glbinding/FunctionCall.h>
+
 #include <glbinding/gl/gl.h>
 
-#include <glbinding/AbstractFunction.h>
-
 #include <glbinding-aux/types_to_string.h>
-
-#include <glbinding/Binding.h>
-
-#include <glbinding/CallbackMask.h>
-
-#include <glbinding/FunctionCall.h>
 
 
 using namespace gl;
