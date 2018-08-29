@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include <glbinding/Version.h>
+
 #include <glbinding-aux/Meta.h>
 
 #include "types_to_string_private.h"

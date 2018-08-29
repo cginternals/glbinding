@@ -9,7 +9,6 @@
 #include <glbinding/glbinding_features.h>
 
 #include <glbinding/AbstractState.h>
-
 #include <glbinding/Binding.h>
 
 

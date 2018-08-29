@@ -1,8 +1,9 @@
 
 #include "Meta_Maps.h"
 
-#include <glbinding/gl/extension.h>
 #include <glbinding/Version.h>
+
+#include <glbinding/gl/extension.h>
 
 
 using namespace gl;

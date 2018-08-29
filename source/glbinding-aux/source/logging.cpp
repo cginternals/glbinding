@@ -18,12 +18,11 @@ namespace std_boost = boost;
 namespace std_boost = std;
 #endif
 
-#include <glbinding-aux/RingBuffer.h>
-
 #include <glbinding/glbinding.h>
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/CallbackMask.h>
 
+#include <glbinding-aux/RingBuffer.h>
 #include <glbinding-aux/types_to_string.h>
 
 #include "logging_private.h"

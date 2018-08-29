@@ -8,8 +8,9 @@
 #include <glbinding-aux/glbinding-aux_api.h>
 #include <glbinding-aux/glbinding-aux_features.h>
 
-#include <glbinding/gl/types.h>
 #include <glbinding/Value.h>
+
+#include <glbinding/gl/types.h>
 
 
 

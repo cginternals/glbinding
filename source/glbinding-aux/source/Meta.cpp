@@ -3,14 +3,14 @@
 
 #include <algorithm>
 
+#include <glbinding/AbstractFunction.h>
+#include <glbinding/Binding.h>
+#include <glbinding/Version.h>
+
 #include <glbinding/gl/bitfield.h>
 #include <glbinding/gl/boolean.h>
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/extension.h>
-
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/Binding.h>
-#include <glbinding/Version.h>
 
 #include <glbinding-aux/ValidVersions.h>
 

@@ -7,8 +7,9 @@
 #include <glbinding/AbstractFunction.h>
 
 #include <glbinding/Version.h>
-#include <glbinding/gl/gl.h>
 #include <glbinding/Binding.h>
+
+#include <glbinding/gl/gl.h>
 
 #include <glbinding-aux/Meta.h>
 
