@@ -2,11 +2,11 @@
 #pragma once
 
 
+#include <cstdint>
+#include <set>
 #include <string>
 #include <utility>
 #include <vector>
-#include <set>
-#include <cstdint>
 
 #include <glbinding-aux/glbinding-aux_api.h>
 #include <glbinding-aux/glbinding-aux_features.h>

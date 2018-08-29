@@ -2,10 +2,10 @@
 #pragma once
 
 
-#include <vector>
-#include <string>
 #include <chrono>
 #include <memory>
+#include <string>
+#include <vector>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>

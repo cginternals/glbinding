@@ -2,14 +2,14 @@
 #pragma once
 
 
-#include <utility>
-#include <functional>
 #include <cassert>
+#include <functional>
+#include <utility>
 
-#include <glbinding/Value.h>
-#include <glbinding/FunctionCall.h>
-#include <glbinding/CallbackMask.h>
 #include <glbinding/Boolean8.h>
+#include <glbinding/CallbackMask.h>
+#include <glbinding/FunctionCall.h>
+#include <glbinding/Value.h>
 
 
 namespace glbinding

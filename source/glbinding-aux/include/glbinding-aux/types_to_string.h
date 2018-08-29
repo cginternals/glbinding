@@ -2,8 +2,8 @@
 #pragma once
 
 
-#include <string>
 #include <iosfwd>
+#include <string>
 
 #include <glbinding-aux/glbinding-aux_api.h>
 #include <glbinding-aux/glbinding-aux_features.h>

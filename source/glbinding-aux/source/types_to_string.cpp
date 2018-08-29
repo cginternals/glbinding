@@ -1,8 +1,8 @@
 
 #include <glbinding-aux/types_to_string.h>
 
-#include <ostream>
 #include <bitset>
+#include <ostream>
 #include <sstream>
 
 #include <glbinding/Version.h>

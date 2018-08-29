@@ -1,10 +1,10 @@
 
 #pragma once
 
-#include <iomanip>
-#include <iterator>
 #include <cassert>
 #include <cmath>
+#include <iomanip>
+#include <iterator>
 
 
 namespace glbinding { namespace aux

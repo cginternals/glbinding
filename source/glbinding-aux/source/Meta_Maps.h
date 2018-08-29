@@ -2,15 +2,15 @@
 #pragma once
 
 
-#include <string>
+#include <array>
 #include <map>
+#include <set>
+#include <string>
 #include <unordered_map>
 #include <vector>
-#include <set>
-#include <array>
 
-#include <glbinding/gl/types.h>
 #include <glbinding/gl/extension.h>
+#include <glbinding/gl/types.h>
 
 
 namespace glbinding

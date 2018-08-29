@@ -2,11 +2,11 @@
 #pragma once
 
 
-#include <vector>
 #include <functional>
+#include <vector>
 
-#include <glbinding/State.h>
 #include <glbinding/AbstractFunction.h>
+#include <glbinding/State.h>
 
 
 #ifndef WINAPI

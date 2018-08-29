@@ -4,8 +4,8 @@
 #include <cassert>
 #include <iostream>
 
-#include <glbinding/State.h>
 #include <glbinding/AbstractFunction.h>
+#include <glbinding/State.h>
 
 
 namespace glbinding

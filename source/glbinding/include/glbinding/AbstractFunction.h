@@ -2,15 +2,15 @@
 #pragma once
 
 
-#include <string>
 #include <set>
+#include <string>
 #include <vector>
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/ProcAddress.h>
-#include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
+#include <glbinding/FunctionCall.h>
+#include <glbinding/ProcAddress.h>
 
 
 namespace glbinding

@@ -2,11 +2,11 @@
 #pragma once
 
 
-#include <set>
 #include <array>
-#include <vector>
 #include <functional>
+#include <set>
 #include <unordered_map>
+#include <vector>
 
 #ifdef GLBINDING_USE_BOOST_THREAD
 #include <boost/thread.hpp>
@@ -20,9 +20,9 @@ namespace std_boost = std;
 #include <glbinding/glbinding_features.h>
 
 #include <glbinding/AbstractFunction.h>
+#include <glbinding/CallbackMask.h>
 #include <glbinding/ContextHandle.h>
 #include <glbinding/Function.h>
-#include <glbinding/CallbackMask.h>
 #include <glbinding/FunctionCall.h>
 #include <glbinding/ProcAddress.h>
 
