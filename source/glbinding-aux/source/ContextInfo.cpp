@@ -1,14 +1,13 @@
 
 #include <glbinding-aux/ContextInfo.h>
 
-#include <iostream>
 #include <sstream>
 
-#include <glbinding/AbstractFunction.h>
 #include <glbinding/Binding.h>
-#include <glbinding/Version.h>
 
-#include <glbinding/gl/gl.h>
+#include <glbinding/gl/enum.h>
+#include <glbinding/gl/extension.h>
+#include <glbinding/gl/functions.h>
 
 #include <glbinding-aux/Meta.h>
 
