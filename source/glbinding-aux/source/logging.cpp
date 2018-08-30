@@ -15,6 +15,7 @@ namespace std_boost = boost;
 #else
 #include <condition_variable>
 #include <mutex>
+#include <thread>
 namespace std_boost = std;
 #endif
 
