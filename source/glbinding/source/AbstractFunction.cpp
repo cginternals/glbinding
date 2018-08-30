@@ -1,9 +1,7 @@
 
 #include <glbinding/AbstractFunction.h>
 
-#include <cassert>
-#include <memory>
-#include <set>
+#include <utility>
 #include <type_traits>
 
 #include <glbinding/glbinding_features.h>

@@ -2,10 +2,6 @@
 #pragma once
 
 
-#include <set>
-#include <string>
-#include <vector>
-
 #include <glbinding/glbinding_api.h>
 
 #include <glbinding/CallbackMask.h>
