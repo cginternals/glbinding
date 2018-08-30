@@ -2,8 +2,6 @@
 #pragma once
 
 
-#include <functional>
-
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
 
