@@ -3,12 +3,10 @@
 
 
 #include <set>
-#include <utility>
 
 #include <glbinding/Version.h>
 
 #include <glbinding-aux/glbinding-aux_api.h>
-#include <glbinding-aux/glbinding-aux_features.h>
 
 
 namespace glbinding { namespace aux
