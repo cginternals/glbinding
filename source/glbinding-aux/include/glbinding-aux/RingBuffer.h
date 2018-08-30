@@ -1,7 +1,6 @@
 #pragma once
 
 #include <atomic>
-#include <iterator>
 #include <map>
 #include <vector>
 

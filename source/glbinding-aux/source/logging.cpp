@@ -5,6 +5,7 @@
 #include <atomic>
 #include <chrono>
 #include <fstream>
+#include <iomanip>
 #include <sstream>
 
 #ifdef GLBINDING_USE_BOOST_THREAD
