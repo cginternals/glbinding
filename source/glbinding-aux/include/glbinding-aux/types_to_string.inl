@@ -2,9 +2,6 @@
 #pragma once
 
 
-#include <ostream>
-
-
 namespace glbinding
 {
 

@@ -2,11 +2,9 @@
 #pragma once
 
 
-#include <iosfwd>
-#include <string>
+#include <ostream>
 
 #include <glbinding-aux/glbinding-aux_api.h>
-#include <glbinding-aux/glbinding-aux_features.h>
 
 #include <glbinding/Value.h>
 

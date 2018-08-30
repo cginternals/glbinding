@@ -1,10 +1,6 @@
 
 #include <glbinding-aux/types_to_string.h>
 
-#include <bitset>
-#include <ostream>
-#include <sstream>
-
 #include <glbinding/Version.h>
 
 #include <glbinding-aux/Meta.h>
