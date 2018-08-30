@@ -102,7 +102,7 @@ public:
     *  @return
     *    The return value. (may be void and thus, nothing)
     *
-    *  @remarks
+    *  @remark
     *    This method respect currently activated callbacks and logging
     */
     inline ReturnType operator()(Arguments&... arguments) const;
@@ -117,7 +117,7 @@ public:
     *  @return
     *    The return value. (may be void and thus, nothing)
     *
-    *  @remarks
+    *  @remark
     *    This method respect currently activated callbacks and logging
     */
     inline ReturnType call(Arguments&... arguments) const;
@@ -132,7 +132,7 @@ public:
     *  @return
     *    The return value. (may be void and thus, nothing)
     *
-    *  @remarks
+    *  @remark
     *    This method omits all currently activated callbacks and logging
     */
     inline ReturnType directCall(Arguments... arguments) const;
@@ -144,7 +144,7 @@ public:
     *  @param[in] callback
     *    The callback to register
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the Before flag to enable the callback
     */
     inline void setBeforeCallback(BeforeCallback callback);
@@ -162,7 +162,7 @@ public:
     *  @param[in] callback
     *    The callback to register
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the After flag to enable the callback
     */
     inline void setAfterCallback(AfterCallback callback);

@@ -120,7 +120,7 @@ public:
     *  @return
     *    'true' if the major version is 0, else 'false'
     *
-    *  @remarks
+    *  @remark
     *    This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed
     */
     GLBINDING_CONSTEXPR inline bool isNull() const;

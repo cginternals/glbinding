@@ -33,7 +33,7 @@ GLBINDING_AUX_API void resize(unsigned int newSize);
 *  @brief
 *    Start logging to a file globally
 *
-*  @remarks
+*  @remark
 *    This function generates a file name and uses this as output
 */
 GLBINDING_AUX_API void start();
@@ -54,7 +54,7 @@ GLBINDING_AUX_API void start(const std::string & filepath);
 *  @param blackList
 *    The blacklist of function names
 *
-*  @remarks
+*  @remark
 *    This function generates a file name and uses this as output
 */
 GLBINDING_AUX_API void startExcept(const std::set<std::string> & blackList);
@@ -80,7 +80,7 @@ GLBINDING_AUX_API void stop();
 *  @brief
 *    Pauses logging for later stopping or resuming
 *
-*  @remarks
+*  @remark
 *    While logging is started but paused, no OpenGL function calls are considered for the log file
 */
 GLBINDING_AUX_API void pause();
@@ -95,7 +95,7 @@ GLBINDING_AUX_API void resume();
 *  @brief
 *    Add a function call to the log
 *
-*  @remarks
+*  @remark
 *    This function is intended to get used by glbinding and not by a user of glbinding
 */
 GLBINDING_AUX_API void log(LogEntry call);

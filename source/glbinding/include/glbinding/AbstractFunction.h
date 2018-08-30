@@ -157,7 +157,7 @@ protected:
     *  @return
     *    'true' if the current state still exists, else 'false'
     *
-    *  @remarks
+    *  @remark
     *    This method is usually used to detect invalid state clean up
     */
     virtual bool hasState() const = 0;

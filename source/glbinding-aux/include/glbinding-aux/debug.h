@@ -26,7 +26,7 @@ GLBINDING_AUX_API void registerGetErrorCallback();
 *  @brief
 *    Enable glGetError() after callback
 *
-*  @remarks
+*  @remark
 *    This registers the glGetError after callback if it wasn't registered before (by an internall call to registerGetErrorCallback()).
 *    Thus, any previously registered after callback get overwritten.
 */
@@ -36,7 +36,7 @@ GLBINDING_AUX_API void enableGetErrorCallback();
 *  @brief
 *    Disables calls to the glGetError() after callback.
 *
-*  @remarks
+*  @remark
 *    This does not unregister the after callback.
 */
 GLBINDING_AUX_API void disableGetErrorCallback();

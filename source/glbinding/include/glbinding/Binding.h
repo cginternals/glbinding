@@ -82,8 +82,10 @@ public:
     *  @param[in] resolveFunctions (optional)
     *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
     *
-    *  @remarks
+    *  @remark
     *    After this call, the initialized context is already set active for the current thread.
+    *
+    *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
@@ -102,7 +104,7 @@ public:
     *  @param[in] resolveFunctions (optional)
     *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
     *
-    *  @remarks
+    *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
@@ -115,7 +117,7 @@ public:
     *  @param[in] function
     *    The function to register
     *
-    *  @remarks
+    *  @remark
     *    The additional features are callbacks, and use in multi-context environments
     */
     static void registerAdditionalFunction(AbstractFunction * function);
@@ -171,7 +173,7 @@ public:
     *  @brief
     *    Registers an additional callback that gets called each time the context is switched using the useContext method
     *
-    *  @remarks
+    *  @remark
     *    There may be multiple context switch callbacks registered at once
     */
     static void addContextSwitchCallback(ContextSwitchCallback callback);
@@ -243,7 +245,7 @@ public:
     *  @return
     *    The callback to use instead of unresolved function calls
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static SimpleFunctionCallback unresolvedCallback();
@@ -255,7 +257,7 @@ public:
     *  @param[in] callback
     *    The callback to use instead of unresolved function calls
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
     */
@@ -268,7 +270,7 @@ public:
     *  @return
     *    The callback to use before an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static FunctionCallback beforeCallback();
@@ -280,8 +282,10 @@ public:
     *  @param[in] callback
     *    The callback to use before an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Before flag to enable the callback
     */
     static void setBeforeCallback(FunctionCallback callback);
@@ -293,7 +297,7 @@ public:
     *  @return
     *    The callback to use after an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static FunctionCallback afterCallback();
@@ -305,8 +309,10 @@ public:
     *  @param[in] callback
     *    The callback to use after an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static void setAfterCallback(FunctionCallback callback);

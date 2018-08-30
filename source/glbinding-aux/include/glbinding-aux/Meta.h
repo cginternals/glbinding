@@ -79,7 +79,7 @@ public:
     *  @return
     *    A string representation of the GLenum symbol name
     *
-    *  @remarks
+    *  @remark
     *    Beware, that some enums in the OpenGL API have different symbol names but identical enum values and that this function cannot differentiate between them
     */
     static const std::string & getString(gl::GLenum glenum);
@@ -115,7 +115,7 @@ public:
     *  @return
     *    A string representation of the GLboolean symbol name
     *
-    *  @remarks
+    *  @remark
     *    Can either be '`GL_TRUE`' or '`GL_FALSE`'
     */
     static const std::string & getString(const gl::GLboolean & boolean);
@@ -214,7 +214,7 @@ public:
     *  @return
     *    The set of functions that are required for the version
     *
-    *  @remarks
+    *  @remark
     *    This is exclusive (preceeding versions are ignored)
     */
     static const std::set<AbstractFunction *> functions(const Version & version);
