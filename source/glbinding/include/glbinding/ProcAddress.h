@@ -4,8 +4,6 @@
 
 #include <functional>
 
-#include <glbinding/glbinding_api.h>
-
 
 namespace glbinding
 {
