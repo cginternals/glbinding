@@ -7,7 +7,6 @@
 #include <set>
 #include <string>
 #include <unordered_map>
-#include <vector>
 
 #include <glbinding/gl/extension.h>
 #include <glbinding/gl/types.h>

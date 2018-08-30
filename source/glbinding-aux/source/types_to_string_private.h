@@ -3,7 +3,6 @@
 
 
 #include <bitset>
-#include <ostream>
 #include <sstream>
 
 #include <glbinding-aux/Meta.h>
