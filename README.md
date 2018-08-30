@@ -197,7 +197,7 @@ Finally, just link glbinding to your own library or executable:
 ```cmake
 target_link_libraries(${target} ... PUBLIC
     glbinding::glbinding
-    glbinding::glbinding-aux # for additionaly, auxiliary features as logging, meta information, or debugging functionality
+    glbinding::glbinding-aux # for additional, auxiliary features as logging, meta information, or debugging functionality
 )
 ```
 
