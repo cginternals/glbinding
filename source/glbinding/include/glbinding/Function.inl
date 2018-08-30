@@ -3,7 +3,6 @@
 
 
 #include <cassert>
-#include <functional>
 #include <utility>
 
 #include <glbinding/Boolean8.h>
