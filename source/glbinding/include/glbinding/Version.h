@@ -2,9 +2,7 @@
 #pragma once
 
 
-#include <set>
 #include <string>
-#include <utility>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
