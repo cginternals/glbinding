@@ -7,7 +7,7 @@
 #include <glbinding/Binding.h>
 #include <glbinding/FunctionCall.h>
 
-#include <glbinding/gl/gl.h>
+#include <glbinding/gl/enum.h>
 
 
 namespace
