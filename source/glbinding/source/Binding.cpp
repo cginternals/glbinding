@@ -2,10 +2,7 @@
 #include <glbinding/Binding.h>
 
 #include <cassert>
-#include <iostream>
-
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/State.h>
+#include <utility>
 
 
 namespace glbinding
