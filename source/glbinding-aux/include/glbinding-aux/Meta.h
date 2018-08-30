@@ -5,11 +5,9 @@
 #include <cstdint>
 #include <set>
 #include <string>
-#include <utility>
 #include <vector>
 
 #include <glbinding-aux/glbinding-aux_api.h>
-#include <glbinding-aux/glbinding-aux_features.h>
 
 #include <glbinding/AbstractFunction.h>
 
