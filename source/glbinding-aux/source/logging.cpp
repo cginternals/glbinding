@@ -22,6 +22,7 @@ namespace std_boost = std;
 #include <glbinding/glbinding.h>
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/CallbackMask.h>
+#include <glbinding/FunctionCall.h>
 
 #include <glbinding-aux/RingBuffer.h>
 #include <glbinding-aux/types_to_string.h>

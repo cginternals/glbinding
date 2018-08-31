@@ -1,4 +1,6 @@
 
+#include <glbinding/Version.h>
+
 #include <glbinding-aux/ValidVersions.h>
 
 

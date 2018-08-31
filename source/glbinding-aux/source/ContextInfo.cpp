@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include <glbinding/Binding.h>
+#include <glbinding/Version.h>
 
 #include <glbinding/gl/enum.h>
 #include <glbinding/gl/extension.h>

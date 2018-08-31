@@ -9,8 +9,6 @@
 
 #include <glbinding-aux/glbinding-aux_api.h>
 
-#include <glbinding/AbstractFunction.h>
-
 #include <glbinding/gl/types.h>
 
 
@@ -18,6 +16,7 @@ namespace glbinding
 {
 
 
+class AbstractFunction;
 class Version;
 
 

@@ -1,9 +1,7 @@
 
 #include <glbinding/glbinding.h>
 
-#include <glbinding/AbstractFunction.h>
 #include <glbinding/Binding.h>
-#include <glbinding/FunctionCall.h>
 
 
 namespace glbinding

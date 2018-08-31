@@ -19,11 +19,8 @@ namespace std_boost = std;
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
 
-#include <glbinding/AbstractFunction.h>
-#include <glbinding/CallbackMask.h>
 #include <glbinding/ContextHandle.h>
 #include <glbinding/Function.h>
-#include <glbinding/FunctionCall.h>
 #include <glbinding/ProcAddress.h>
 
 #include <glbinding/gl/types.h>
@@ -31,6 +28,11 @@ namespace std_boost = std;
 
 namespace glbinding
 {
+
+
+class AbstractFunction;
+enum class CallbackMask : unsigned char;
+class FunctionCall;
 
 
 /**

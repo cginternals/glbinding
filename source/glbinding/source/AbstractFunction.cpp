@@ -8,6 +8,7 @@
 
 #include <glbinding/AbstractState.h>
 #include <glbinding/Binding.h>
+#include <glbinding/CallbackMask.h>
 
 
 namespace glbinding

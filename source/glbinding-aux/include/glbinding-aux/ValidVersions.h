@@ -4,12 +4,17 @@
 
 #include <set>
 
-#include <glbinding/Version.h>
-
 #include <glbinding-aux/glbinding-aux_api.h>
 
 
-namespace glbinding { namespace aux
+namespace glbinding
+{
+
+
+class Version;
+
+
+namespace aux
 {
 
 

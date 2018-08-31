@@ -5,12 +5,17 @@
 #include <set>
 #include <string>
 
-#include <glbinding/FunctionCall.h>
-
 #include <glbinding-aux/glbinding-aux_api.h>
 
 
-namespace glbinding { namespace aux
+namespace glbinding
+{
+
+
+class FunctionCall;
+
+
+namespace aux
 {
 
 

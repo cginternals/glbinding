@@ -4,12 +4,14 @@
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/CallbackMask.h>
 #include <glbinding/ProcAddress.h>
 
 
 namespace glbinding
 {
+
+
+enum class CallbackMask : unsigned char;
 
 
 /**

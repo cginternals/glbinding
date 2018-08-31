@@ -4,6 +4,10 @@
 #include <cassert>
 #include <utility>
 
+#include <glbinding/AbstractFunction.h>
+#include <glbinding/FunctionCall.h>
+#include <glbinding/State.h>
+
 
 namespace glbinding
 {

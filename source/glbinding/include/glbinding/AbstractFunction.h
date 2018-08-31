@@ -4,8 +4,6 @@
 
 #include <glbinding/glbinding_api.h>
 
-#include <glbinding/CallbackMask.h>
-#include <glbinding/FunctionCall.h>
 #include <glbinding/ProcAddress.h>
 
 
@@ -15,6 +13,8 @@ namespace glbinding
 
 class AbstractState;
 class Binding;
+enum class CallbackMask : unsigned char;
+class FunctionCall;
 
 
 /**
