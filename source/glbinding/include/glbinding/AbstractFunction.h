@@ -138,14 +138,75 @@ public:
     */
     bool isAnyEnabled(CallbackMask mask) const;
 
+    /**
+    *  @brief
+    *    Resize internal cache of states
+    *
+    *  @param[in] count
+    *    New cache size
+    */
     virtual void resizeStates(int count) = 0;
 
+    /**
+    *  @brief
+    *    Call unresolved callback
+    *
+    *  @param[in] function
+    *    Parameter for callback
+    *
+    *  @see Binding::unresolvedCallback()
+    */
     static void unresolved(const AbstractFunction * function);
+
+    /**
+    *  @brief
+    *    Call before callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::beforeCallback()
+    */
     static void before(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call after callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::afterCallback()
+    */
     static void after(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call log callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::logCallback()
+    */
     static void log(FunctionCall && call);
 
+    /**
+    *  @brief
+    *    Get internal Id of current state
+    *
+    *  @return
+    *    Internal Id of current state
+    */
     static int currentPos();
+
+    /**
+    *  @brief
+    *    Get highest state Id currently used
+    *
+    *  @return
+    *    Highest state Id currently used
+    */
     static int maxPos();
 
 

@@ -307,9 +307,17 @@ namespace glbinding
 class Version;
 
 
+/**
+*  @brief
+*    Generic ostream operator for the Value template
+*/
 template <typename T>
 GLBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const Value<T> & value);
 
+/**
+*  @brief
+*    Generic ostream operator for the Value template with pointer types
+*/
 template <typename T>
 GLBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const Value<T *> & value);
 
@@ -361,6 +369,10 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<g
 */
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Version & version);
 
+/**
+*  @brief
+*    The operator to allow AbstractValues to be printed onto a std::ostream
+*/
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AbstractValue * value);
 
 

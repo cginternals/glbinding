@@ -140,6 +140,8 @@ public:
     /**
     *  @brief
     *    Update the current context state in glbinding
+    *
+    *  @remark
     *    This function queries the driver for the current OpenGL context
     */
     static void useCurrentContext();
@@ -156,6 +158,8 @@ public:
     /**
     *  @brief
     *    Removes the current context from the state of glbinding
+    *
+    *  @remark
     *    This function queries the driver for the current OpenGL context
     */
     static void releaseCurrentContext();
@@ -190,7 +194,7 @@ public:
     /**
     *  @brief
     *    Updates the callback mask of all registered OpenGL functions in the current state, excluding the blacklisted functions
-     *
+    *
     *  @param[in] mask
     *    The new CallbackMask
     *  @param[in] blackList
@@ -317,7 +321,31 @@ public:
     */
     static void setAfterCallback(FunctionCallback callback);
 
+    /**
+    *  @brief
+    *    Logging callback accessor
+    *
+    *  @return
+    *    The callback to use for logging an OpenGL function call
+    *
+    *  @remark
+    *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
+    */
     static FunctionLogCallback logCallback();
+
+    /**
+    *  @brief
+    *    Updates the logging callback that is called to log the actual OpenGL function invocation
+    *
+    *  @param[in] callback
+    *    The callback to use for logging an OpenGL function call
+    *
+    *  @remark
+    *    This callback is registered globally across all states.
+    *
+    *  @remark
+    *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
+    */
     static void setLogCallback(FunctionLogCallback callback);
     
     /**
@@ -329,16 +357,84 @@ public:
     */
     static const array_t & functions();
 
+    /**
+    *  @brief
+    *    Accessor for additional functions
+    *
+    *  @return
+    *    List of additional functions
+    */
     static const std::vector<AbstractFunction *> & additionalFunctions();
 
+    /**
+    *  @brief
+    *    Get internal Id of current state
+    *
+    *  @return
+    *    Internal Id of current state
+    */
     static int currentPos();
+
+    /**
+    *  @brief
+    *    Get highest state Id currently used
+    *
+    *  @return
+    *    Highest state Id currently used
+    */
     static int maxPos();
 
+    /**
+    *  @brief
+    *    Query total number of functions
+    *
+    *  @return
+    *    Total number of functions
+    */
     static size_t size();
 
+    /**
+    *  @brief
+    *    Call unresolved callback
+    *
+    *  @param[in] function
+    *    Parameter for callback
+    *
+    *  @see Binding::unresolvedCallback()
+    */
     static void unresolved(const AbstractFunction * function);
+
+    /**
+    *  @brief
+    *    Call before callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::beforeCallback()
+    */
     static void before(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call after callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::afterCallback()
+    */
     static void after(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call log callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::logCallback()
+    */
     static void log(FunctionCall && call);
 
 
@@ -3272,26 +3368,49 @@ public:
 
 
 protected:
+    /**
+    *  @brief
+    *    Provide additional State
+    *
+    *  @param[in] pos
+    *    Position of new State
+    */
     static void provideState(int pos);
+
+    /**
+    *  @brief
+    *    Neglect a previously provided state
+    *
+    *  @param[in] pos
+    *    Position of State to neglect
+    */
     static void neglectState(int pos);
+
+    /**
+    *  @brief
+    *    Set current State
+    *
+    *  @param[in] pos
+    *    Position of State
+    */
     static void setStatePos(int pos);
 
 
 protected:
-    static const array_t s_functions;           ///< The list of all build-in functions
-    static int & s_maxPos();
-    static std::vector<AbstractFunction *> & s_additionalFunctions();
-    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks();
-    static SimpleFunctionCallback & s_unresolvedCallback();
-    static FunctionCallback & s_beforeCallback();
-    static FunctionCallback & s_afterCallback();
-    static FunctionLogCallback & s_logCallback();
-    static int & s_pos();
-    static ContextHandle & s_context();
-    static glbinding::GetProcAddress & s_getProcAddress();
-    static std_boost::recursive_mutex & s_mutex();
-    static std::unordered_map<ContextHandle, int> & s_bindings();
-    static glbinding::GetProcAddress & s_firstGetProcAddress();
+    static const array_t s_functions;                                       ///< The list of all build-in functions
+    static int & s_maxPos();                                                ///< Maximum State position in use
+    static std::vector<AbstractFunction *> & s_additionalFunctions();       ///< List of additional OpenGL fucntions
+    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks(); ///< List of callbacks for context switch
+    static SimpleFunctionCallback & s_unresolvedCallback();                 ///< Callback for unresolved functions
+    static FunctionCallback & s_beforeCallback();                           ///< Callback for before function call
+    static FunctionCallback & s_afterCallback();                            ///< Callback for after function call
+    static FunctionLogCallback & s_logCallback();                           ///< Callback for logging a function call
+    static int & s_pos();                                                   ///< Position of current State
+    static ContextHandle & s_context();                                     ///< Handle of current context
+    static glbinding::GetProcAddress & s_getProcAddress();                  ///< Current address of function resolution method
+    static std_boost::recursive_mutex & s_mutex();                          ///< Mutex
+    static std::unordered_map<ContextHandle, int> & s_bindings();           ///< Map (handle->position) of initialized contexts
+    static glbinding::GetProcAddress & s_firstGetProcAddress();             ///< First address of function resolution method
 };
 
 
