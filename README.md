@@ -107,7 +107,7 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ###### macOS
 
-The package manager on macOS we depend on is homebrew. The package there is called [glbinding](http://brewformulas.org/Glbinding).
+The package manager on macOS we depend on is homebrew. The package there is called [glbinding](http://formulae.brew.sh/formula/glbinding).
 To install *glbinding* using homebrew, execute the following line:
 
 ```bash
