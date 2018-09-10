@@ -16,7 +16,7 @@ namespace glbinding
 *  @brief
 *    A representation of a bitfield value that could be member of multiple bitfield types as allowed in OpenGL
 *
-*  @param Types
+*  @tparam Types
 *    The valid bitfield types for the given value
 */
 template <typename... Types>
@@ -308,7 +308,7 @@ public:
     *    The SharedBitfield instance to operate with
     *
     *  @return
-    *    'true' if the values equals, else 'false'
+    *    `true` if the values equals, else `false`
     *
     *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
@@ -326,10 +326,10 @@ public:
     *    The bitfield value to operate with
     *
     *  @return
-    *    'true' if the values equals, else 'false'
+    *    `true` if the values equals, else `false`
     *
     *  @remark
-    *    This method is not visible to the compiler if the this SharedBitfield type list contains the type T
+    *    This method is only visible to the compiler if this SharedBitfield's type list contains the type T
     */
     template <typename T>
     GLBINDING_CONSTEXPR inline auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type>::value, bool>::type;
@@ -494,10 +494,10 @@ public:
     *     The bitfield value to operate with
     *
     *  @return
-    *    'true' if the values equals, else 'false'
+    *    `true` if the values equals, else `false`
     *
     *  @remark
-    *    This method is not visible to the compiler if the this SharedBitfield type list contains the type T
+    *    This method is only visible to the compiler if this SharedBitfield's type list contains the type T
     */
     template <typename T>
     GLBINDING_CONSTEXPR inline auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type, Types...>::value, bool>::type;
@@ -693,7 +693,7 @@ operator^(ConvertibleEnum a, Enum b);
 
 /**
 *  @brief
-*    External bit-wise 'xpyor' assignment operator for bitfield types on the left hand side
+*    External bit-wise 'xor' assignment operator for bitfield types on the left hand side
 *
 *  @tparam Enum
 *    The type of the bitfield

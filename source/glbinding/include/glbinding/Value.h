@@ -83,7 +83,7 @@ inline std::unique_ptr<AbstractValue> createValue(const Argument & argument);
 *    The variadic parameter list of all arguments to convert
 *
 *  @remark
-*    Internally uses the createValue function
+*    Internally uses the createValue() function
 */
 template <typename... Arguments>
 inline std::vector<std::unique_ptr<AbstractValue>> createValues(Arguments&&... arguments);

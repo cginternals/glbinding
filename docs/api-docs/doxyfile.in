@@ -165,7 +165,8 @@ STRIP_FROM_PATH        = @CMAKE_SOURCE_DIR@/source
 # specify the list of include paths that are normally passed to the compiler
 # using the -I flag.
 
-STRIP_FROM_INC_PATH    = @CMAKE_SOURCE_DIR@/source
+STRIP_FROM_INC_PATH    = @CMAKE_SOURCE_DIR@/source/glbinding/include \
+                         @CMAKE_SOURCE_DIR@/source/glbinding-aux/include
 
 # If the SHORT_NAMES tag is set to YES, doxygen will generate much shorter (but
 # less readable) file names. This can be useful is your file systems doesn't

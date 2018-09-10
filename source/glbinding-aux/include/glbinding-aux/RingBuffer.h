@@ -100,7 +100,7 @@ public:
 
     /**
     *  @brief
-    *    Retrieve iterator for a tail
+    *    Retrieve the iterator for a tail
     *
     *  @param[in] key
     *    Identifier for the tail
@@ -200,19 +200,19 @@ protected:
     *    Base index
     *
     *  @return
-    *    Index following \a index
+    *    Index following \a current
     */
     SizeType next(SizeType current) const;
 
     /**
     *  @brief
-    *    Check if head can advace
+    *    Check if head can advance
     *
     *  @param[in] nextHead
     *    Index to check
     *
     *  @return
-    *    `true` if head can advance to \a nextHead, `false` otherwise
+    *    `true` if \a nextHead is referenced by a tail, `false` otherwise
     */
     bool isFull(SizeType nextHead) const;
 

@@ -66,7 +66,9 @@ struct GLBINDING_TEMPLATE_API CallbackType<void, Arguments...>
 
 /**
 *  @brief
-*    The Function represents an OpenGL API function with additional features, including:
+*    The Function represents an OpenGL API function with additional features
+*
+*    These features include:
 *     * callbacks
 *     * direct call (omit all callbacks, logging, error checking, ...)
 *     * and function pointer resolving
@@ -104,10 +106,10 @@ public:
     *    The arguments for the function call
     *
     *  @return
-    *    The return value. (may be void and thus, nothing)
+    *    The return value (may be void and thus, nothing)
     *
     *  @remark
-    *    This method respect currently activated callbacks and logging
+    *    This method respects currently activated callbacks and logging
     */
     inline ReturnType operator()(Arguments&... arguments) const;
 
@@ -119,10 +121,10 @@ public:
     *    The arguments for the function call
     *
     *  @return
-    *    The return value. (may be void and thus, nothing)
+    *    The return value (may be void and thus, nothing)
     *
     *  @remark
-    *    This method respect currently activated callbacks and logging
+    *    This method respects currently activated callbacks and logging
     */
     inline ReturnType call(Arguments&... arguments) const;
 
@@ -134,7 +136,7 @@ public:
     *    The arguments for the function call
     *
     *  @return
-    *    The return value. (may be void and thus, nothing)
+    *    The return value (may be void and thus, nothing)
     *
     *  @remark
     *    This method omits all currently activated callbacks and logging

@@ -86,7 +86,7 @@ public:
     
     /**
     *  @brief
-    *    Converts a string to a enum symbol
+    *    Converts a string to an enum symbol
     *
     *  @param[in] glenum
     *    The string representation of the enum
@@ -176,7 +176,7 @@ public:
     *
     *  @return
     *    The set of extensions that should be supported for the given version.
-    *    All non versioned extensions can be queried by providing the null version
+    *    All non-versioned extensions can be queried by providing the null version
     */
     static const std::set<gl::GLextension> extensions(const Version & version);
 
@@ -253,7 +253,7 @@ public:
     static const std::set<Version> & versions();
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -264,7 +264,7 @@ public:
     static const std::string & getString(gl::AttribMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -275,7 +275,7 @@ public:
     static const std::string & getString(gl::BufferAccessMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -286,7 +286,7 @@ public:
     static const std::string & getString(gl::BufferStorageMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -297,7 +297,7 @@ public:
     static const std::string & getString(gl::ClearBufferMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -308,7 +308,7 @@ public:
     static const std::string & getString(gl::ClientAttribMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -319,7 +319,7 @@ public:
     static const std::string & getString(gl::ContextFlagMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -330,7 +330,7 @@ public:
     static const std::string & getString(gl::ContextProfileMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -341,7 +341,7 @@ public:
     static const std::string & getString(gl::FfdMaskSGIX bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -352,7 +352,7 @@ public:
     static const std::string & getString(gl::FragmentShaderColorModMaskATI bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -363,7 +363,7 @@ public:
     static const std::string & getString(gl::FragmentShaderDestMaskATI bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -374,7 +374,7 @@ public:
     static const std::string & getString(gl::FragmentShaderDestModMaskATI bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -385,7 +385,7 @@ public:
     static const std::string & getString(gl::MapBufferUsageMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -396,7 +396,7 @@ public:
     static const std::string & getString(gl::MemoryBarrierMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -407,7 +407,7 @@ public:
     static const std::string & getString(gl::OcclusionQueryEventMaskAMD bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -418,7 +418,7 @@ public:
     static const std::string & getString(gl::PathFontStyle bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -429,7 +429,7 @@ public:
     static const std::string & getString(gl::PathMetricMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -440,7 +440,7 @@ public:
     static const std::string & getString(gl::PathRenderingMaskNV bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -451,7 +451,7 @@ public:
     static const std::string & getString(gl::PerformanceQueryCapsMaskINTEL bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -462,7 +462,7 @@ public:
     static const std::string & getString(gl::SyncObjectMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -473,7 +473,7 @@ public:
     static const std::string & getString(gl::TextureStorageMaskAMD bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -484,7 +484,7 @@ public:
     static const std::string & getString(gl::UnusedMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value
@@ -495,7 +495,7 @@ public:
     static const std::string & getString(gl::UseProgramStageMask bitfield);
 
     /**
-    *  @brief convert bitfield to symbol name string representation
+    *  @brief Convert bitfield to symbol name string representation
     *
     *  @param[in] bitfield
     *    The bitfield value

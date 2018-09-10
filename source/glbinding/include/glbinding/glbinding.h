@@ -35,7 +35,7 @@ using ContextSwitchCallback = std::function<void(ContextHandle)>;             //
 *  @param[in] functionPointerResolver
 *    A function pointer to resolve binding functions for this context
 *  @param[in] resolveFunctions (optional)
-*    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+*    Whether to resolve function pointers lazily (\a resolveFunctions = `false`) or immediately
 *
 *  @remark
 *    After this call, the initialized context is already set active for the current thread.
@@ -54,7 +54,7 @@ GLBINDING_API void initialize(glbinding::GetProcAddress functionPointerResolver,
 *    The function to register
 *
 *  @remark
-*    The additional features are callbacks, and use in multi-context environments
+*    The additional features are callbacks, and used in multi-context environments
 */
 GLBINDING_API void registerAdditionalFunction(AbstractFunction * function);
 
@@ -154,6 +154,8 @@ GLBINDING_API SimpleFunctionCallback unresolvedCallback();
 *
 *  @remark
 *    This callback is registered globally across all states.
+*
+*  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
 */
 GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
@@ -257,9 +259,9 @@ GLBINDING_API void addContextSwitchCallback(ContextSwitchCallback callback);
 *  @param[in] functionPointerResolver
 *    A function pointer to resolve binding functions for this context
 *  @param[in] useContext
-*    Whether to set the context active (useContext = true) after the initialization
+*    Whether to set the context active (\a useContext = `true`) after the initialization
 *  @param[in] resolveFunctions (optional)
-*    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+*    Whether to resolve function pointers lazily (\a resolveFunctions = `false`) or immediately
 *
 *  @remark
 *    A functionPointerResolver with value 'nullptr' will get initialized with the function

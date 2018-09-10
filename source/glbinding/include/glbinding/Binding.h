@@ -38,7 +38,7 @@ namespace glbinding
 *    The main interface to handle additional features to OpenGL functions besides regular function calls
 *
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
-*  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
+*  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions.
 */
 class GLBINDING_API Binding
 {
@@ -80,7 +80,7 @@ public:
     *  @param[in] functionPointerResolver
     *    A function pointer to resolve binding functions for this context
     *  @param[in] resolveFunctions (optional)
-    *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+    *    Whether to resolve function pointers lazy (\a resolveFunctions = `false`) or immediately
     *
     *  @remark
     *    After this call, the initialized context is already set active for the current thread.
@@ -93,16 +93,16 @@ public:
 
     /**
     *  @brief
-    *    Initializes the binding for the current active OpenGL context
+    *    Initializes the binding for a specific OpenGL context
     *
     *  @param[in] context
     *    The context handle of the context to initialize
     *  @param[in] functionPointerResolver
     *    A function pointer to resolve binding functions for this context
     *  @param[in] useContext
-    *    Whether to set the context active (useContext = true) after the initialization
+    *    Whether to set the context active (\a useContext = `true`) after the initialization
     *  @param[in] resolveFunctions (optional)
-    *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+    *    Whether to resolve function pointers lazy (\a resolveFunctions = `false`) or immediately
     *
     *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
@@ -118,7 +118,7 @@ public:
     *    The function to register
     *
     *  @remark
-    *    The additional features are callbacks, and use in multi-context environments
+    *    The additional features are callbacks, and used in multi-context environments
     */
     static void registerAdditionalFunction(AbstractFunction * function);
 
@@ -256,13 +256,15 @@ public:
 
     /**
     *  @brief
-    *    Updates the unresolved callback that is called upon invocation of an OpenGL function which have no counterpart in the OpenGL driver
+    *    Updates the unresolved callback that is called upon invocation of an OpenGL function which has no counterpart in the OpenGL driver
     *
     *  @param[in] callback
     *    The callback to use instead of unresolved function calls
     *
     *  @remark
     *    This callback is registered globally across all states.
+    *
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
     */
     static void setUnresolvedCallback(SimpleFunctionCallback callback);
@@ -368,19 +370,19 @@ public:
 
     /**
     *  @brief
-    *    Get internal Id of current state
+    *    Get index of current state
     *
     *  @return
-    *    Internal Id of current state
+    *    Index of current state
     */
     static int currentPos();
 
     /**
     *  @brief
-    *    Get highest state Id currently used
+    *    Get highest state index currently used
     *
     *  @return
-    *    Highest state Id currently used
+    *    Highest state index currently used
     */
     static int maxPos();
 
@@ -3370,10 +3372,10 @@ public:
 protected:
     /**
     *  @brief
-    *    Provide additional State
+    *    Provide an additional State
     *
     *  @param[in] pos
-    *    Position of new State
+    *    Index of new State
     */
     static void provideState(int pos);
 
@@ -3382,7 +3384,7 @@ protected:
     *    Neglect a previously provided state
     *
     *  @param[in] pos
-    *    Position of State to neglect
+    *    Index of State to neglect
     */
     static void neglectState(int pos);
 
@@ -3391,14 +3393,14 @@ protected:
     *    Set current State
     *
     *  @param[in] pos
-    *    Position of State
+    *    Index of State
     */
     static void setStatePos(int pos);
 
 
 protected:
     static const array_t s_functions;                                       ///< The list of all build-in functions
-    static int & s_maxPos();                                                ///< Maximum State position in use
+    static int & s_maxPos();                                                ///< Maximum State index in use
     static std::vector<AbstractFunction *> & s_additionalFunctions();       ///< List of additional OpenGL fucntions
     static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks(); ///< List of callbacks for context switch
     static SimpleFunctionCallback & s_unresolvedCallback();                 ///< Callback for unresolved functions

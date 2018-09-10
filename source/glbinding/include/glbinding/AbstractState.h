@@ -14,7 +14,7 @@ namespace glbinding
 
 /**
 *  @brief
-*    The State struct represents the configuration of an OpenGL function for one thread.
+*    The State struct represents the configuration of a single OpenGL function for one thread.
 *    This includes the driver function pointer (is allowed to differ between contexts) and the callback mask
 */
 class GLBINDING_API AbstractState

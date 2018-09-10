@@ -34,7 +34,7 @@ GLBINDING_AUX_API void resize(unsigned int newSize);
 *    Start logging to a file globally
 *
 *  @remark
-*    This function generates a file name and uses this as output
+*    This function generates a file name and uses it for output
 */
 GLBINDING_AUX_API void start();
 
@@ -55,7 +55,7 @@ GLBINDING_AUX_API void start(const std::string & filepath);
 *    The blacklist of function names
 *
 *  @remark
-*    This function generates a file name and uses this as output
+*    This function generates a file name and uses it for output
 */
 GLBINDING_AUX_API void startExcept(const std::set<std::string> & blackList);
 
@@ -72,7 +72,7 @@ GLBINDING_AUX_API void startExcept(const std::string & filepath, const std::set<
 
 /**
 *  @brief
-*    Stops logging and flushing log file
+*    Stops logging and flushes log file
 */
 GLBINDING_AUX_API void stop();
 

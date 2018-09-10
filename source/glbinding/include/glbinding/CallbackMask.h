@@ -24,9 +24,9 @@ enum class CallbackMask : unsigned char
     ReturnValue = 1 << 4, ///< Enables the provision of a return value in the after callback
     Logging     = 1 << 5, ///< Enables logging
     Timestamp   = 1 << 6, ///< Enables the provision of the timestamp
-    ParametersAndReturnValue = Parameters | ReturnValue,
-    BeforeAndAfter = Before | After,
-    All         = Unresolved | Before | After | Parameters | ReturnValue | Logging | Timestamp
+    ParametersAndReturnValue = Parameters | ReturnValue,                                       ///< Shorthand for `Parameters | ReturnValue`
+    BeforeAndAfter = Before | After,                                                           ///< Shorthand for `Before | After`
+    All         = Unresolved | Before | After | Parameters | ReturnValue | Logging | Timestamp ///< Shorthand for all callbacks
 };
 
 /**
