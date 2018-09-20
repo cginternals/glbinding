@@ -13,7 +13,7 @@ class CubeScape;
 //       now the QOpenGLContext is tightly coupled with qopengl.h and QOpenGLFunctions.
 
 using ProcAddress = void(*)();
-using GetProcAddress = std::function<ProcAddress(const char *)>;
+using ProcAddressGetter = std::function<ProcAddress(const char *)>;
 
 class Painter
 {
@@ -21,7 +21,7 @@ public:
     Painter();
     ~Painter();
 
-    void initialize(GetProcAddress procAddressCallback);
+    void initialize(ProcAddressGetter procAddressCallback);
 
     void resize(int width, int height);
     void draw();
