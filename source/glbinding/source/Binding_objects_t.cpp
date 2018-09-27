@@ -27,6 +27,7 @@ Function<void, GLenum> Binding::TessellationModeAMD("glTessellationModeAMD");
 Function<GLboolean, GLuint> Binding::TestFenceAPPLE("glTestFenceAPPLE");
 Function<GLboolean, GLuint> Binding::TestFenceNV("glTestFenceNV");
 Function<GLboolean, GLenum, GLuint> Binding::TestObjectAPPLE("glTestObjectAPPLE");
+Function<void, GLenum, GLuint, GLuint64> Binding::TexAttachMemoryNV("glTexAttachMemoryNV");
 Function<void, GLenum, GLenum, GLuint> Binding::TexBuffer("glTexBuffer");
 Function<void, GLenum, GLenum, GLuint> Binding::TexBufferARB("glTexBufferARB");
 Function<void, GLenum, GLenum, GLuint> Binding::TexBufferEXT("glTexBufferEXT");
@@ -170,6 +171,7 @@ Function<void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, co
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage3D("glTexSubImage3D");
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage3DEXT("glTexSubImage3DEXT");
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage4DSGIS("glTexSubImage4DSGIS");
+Function<void, GLuint, GLuint, GLuint64> Binding::TextureAttachMemoryNV("glTextureAttachMemoryNV");
 Function<void> Binding::TextureBarrier("glTextureBarrier");
 Function<void> Binding::TextureBarrierNV("glTextureBarrierNV");
 Function<void, GLuint, GLenum, GLuint> Binding::TextureBuffer("glTextureBuffer");

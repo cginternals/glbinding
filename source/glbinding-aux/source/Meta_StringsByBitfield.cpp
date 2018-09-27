@@ -348,6 +348,8 @@ const std::unordered_map<UseProgramStageMask, std::string> Meta_StringsByUseProg
     { UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_EXT, "GL_TESS_EVALUATION_SHADER_BIT_EXT" },
     { UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT_OES, "GL_TESS_EVALUATION_SHADER_BIT_OES" },
     { UseProgramStageMask::GL_COMPUTE_SHADER_BIT, "GL_COMPUTE_SHADER_BIT" },
+    { UseProgramStageMask::GL_MESH_SHADER_BIT_NV, "GL_MESH_SHADER_BIT_NV" },
+    { UseProgramStageMask::GL_TASK_SHADER_BIT_NV, "GL_TASK_SHADER_BIT_NV" },
     { UseProgramStageMask::GL_ALL_SHADER_BITS, "GL_ALL_SHADER_BITS" },
     { UseProgramStageMask::GL_ALL_SHADER_BITS_EXT, "GL_ALL_SHADER_BITS_EXT" }
 };

@@ -350,6 +350,8 @@ enum class UseProgramStageMask : unsigned int
     GL_TESS_EVALUATION_SHADER_BIT_EXT          = 0x00000010,
     GL_TESS_EVALUATION_SHADER_BIT_OES          = 0x00000010,
     GL_COMPUTE_SHADER_BIT                      = 0x00000020,
+    GL_MESH_SHADER_BIT_NV                      = 0x00000040,
+    GL_TASK_SHADER_BIT_NV                      = 0x00000080,
     GL_ALL_SHADER_BITS                         = 0xFFFFFFFF,
     GL_ALL_SHADER_BITS_EXT                     = 0xFFFFFFFF,
 };
@@ -453,10 +455,12 @@ GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_SHADER_IMAGE_ACCESS_BARRIE
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_COMMAND_BARRIER_BIT = MemoryBarrierMask::GL_COMMAND_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_COMMAND_BARRIER_BIT_EXT = MemoryBarrierMask::GL_COMMAND_BARRIER_BIT_EXT;
 GLBINDING_CONSTEXPR static const AttribMask GL_LIGHTING_BIT = AttribMask::GL_LIGHTING_BIT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_MESH_SHADER_BIT_NV = UseProgramStageMask::GL_MESH_SHADER_BIT_NV;
 GLBINDING_CONSTEXPR static const FragmentShaderDestModMaskATI GL_SATURATE_BIT_ATI = FragmentShaderDestModMaskATI::GL_SATURATE_BIT_ATI;
 GLBINDING_CONSTEXPR static const AttribMask GL_FOG_BIT = AttribMask::GL_FOG_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_PIXEL_BUFFER_BARRIER_BIT = MemoryBarrierMask::GL_PIXEL_BUFFER_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_PIXEL_BUFFER_BARRIER_BIT_EXT = MemoryBarrierMask::GL_PIXEL_BUFFER_BARRIER_BIT_EXT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TASK_SHADER_BIT_NV = UseProgramStageMask::GL_TASK_SHADER_BIT_NV;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<AttribMask, ClearBufferMask> GL_DEPTH_BUFFER_BIT = AttribMask::GL_DEPTH_BUFFER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_TEXTURE_UPDATE_BARRIER_BIT = MemoryBarrierMask::GL_TEXTURE_UPDATE_BARRIER_BIT;
 GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_TEXTURE_UPDATE_BARRIER_BIT_EXT = MemoryBarrierMask::GL_TEXTURE_UPDATE_BARRIER_BIT_EXT;

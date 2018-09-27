@@ -546,6 +546,11 @@ using gl::GL_POLYGON_OFFSET_FACTOR;
 using gl::GL_TEXTURE_BINDING_1D;
 using gl::GL_TEXTURE_BINDING_2D;
 using gl::GL_TEXTURE_BINDING_3D;
+using gl::GL_PACK_SKIP_IMAGES;
+using gl::GL_PACK_IMAGE_HEIGHT;
+using gl::GL_UNPACK_SKIP_IMAGES;
+using gl::GL_UNPACK_IMAGE_HEIGHT;
+using gl::GL_MAX_3D_TEXTURE_SIZE;
 // using gl::GL_VERTEX_ARRAY; // reuse EnableCap
 // using gl::GL_NORMAL_ARRAY; // reuse EnableCap
 // using gl::GL_COLOR_ARRAY; // reuse EnableCap
@@ -566,6 +571,8 @@ using gl::GL_TEXTURE_COORD_ARRAY_SIZE;
 using gl::GL_TEXTURE_COORD_ARRAY_TYPE;
 using gl::GL_TEXTURE_COORD_ARRAY_STRIDE;
 using gl::GL_EDGE_FLAG_ARRAY_STRIDE;
+using gl::GL_MAX_ELEMENTS_VERTICES;
+using gl::GL_MAX_ELEMENTS_INDICES;
 using gl::GL_LIGHT_MODEL_COLOR_CONTROL;
 using gl::GL_ALIASED_POINT_SIZE_RANGE;
 using gl::GL_ALIASED_LINE_WIDTH_RANGE;
@@ -915,10 +922,10 @@ using gl::GL_LUMINANCE_ALPHA;
 // using gl::GL_PACK_SKIP_ROWS; // reuse GetPName
 // using gl::GL_PACK_SKIP_PIXELS; // reuse GetPName
 // using gl::GL_PACK_ALIGNMENT; // reuse GetPName
-using gl::GL_PACK_SKIP_IMAGES;
-using gl::GL_PACK_IMAGE_HEIGHT;
-using gl::GL_UNPACK_SKIP_IMAGES;
-using gl::GL_UNPACK_IMAGE_HEIGHT;
+// using gl::GL_PACK_SKIP_IMAGES; // reuse GetPName
+// using gl::GL_PACK_IMAGE_HEIGHT; // reuse GetPName
+// using gl::GL_UNPACK_SKIP_IMAGES; // reuse GetPName
+// using gl::GL_UNPACK_IMAGE_HEIGHT; // reuse GetPName
 
 // PixelTexGenMode
 
@@ -1183,11 +1190,8 @@ using gl::GL_UNSIGNED_INT_2_10_10_10_REV;
 using gl::GL_RESCALE_NORMAL;
 using gl::GL_RGBA2;
 using gl::GL_TEXTURE_DEPTH;
-using gl::GL_MAX_3D_TEXTURE_SIZE;
 using gl::GL_BGR;
 using gl::GL_BGRA;
-using gl::GL_MAX_ELEMENTS_VERTICES;
-using gl::GL_MAX_ELEMENTS_INDICES;
 using gl::GL_UNSIGNED_BYTE_2_3_3_REV;
 using gl::GL_UNSIGNED_SHORT_5_6_5;
 using gl::GL_UNSIGNED_SHORT_5_6_5_REV;
