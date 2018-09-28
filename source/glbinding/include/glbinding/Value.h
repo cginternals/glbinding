@@ -22,7 +22,7 @@ namespace glbinding
 *  @tparam T
 *    The data type of the wrapped value
 *
-*  @remarks
+*  @remark
 *    This class is mainly used when callbacks of OpenGL functions are used
 */
 template <typename T>
@@ -42,7 +42,7 @@ public:
     *  @brief
     *    The deleted assigment operator
     *
-    *  @remarks
+    *  @remark
     *    For this dynamically allocated Value, no contents should be changable
     */
     Value & operator=(const Value &) = delete;
@@ -82,8 +82,8 @@ inline std::unique_ptr<AbstractValue> createValue(const Argument & argument);
 *  @param[in] arguments
 *    The variadic parameter list of all arguments to convert
 *
-*  @remarks
-*    Internally uses the createValue function
+*  @remark
+*    Internally uses the createValue() function
 */
 template <typename... Arguments>
 inline std::vector<std::unique_ptr<AbstractValue>> createValues(Arguments&&... arguments);

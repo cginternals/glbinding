@@ -20,10 +20,10 @@ class GLBINDING_AUX_API ValidVersions
 public:
     /**
     *  @brief
-    *    Check for validity of this Version, based on the list of all valid OpenGL feautures
+    *    Check for validity of this Version, based on the list of all valid OpenGL features
     *
     *  @return
-    *    true iff the version is valid (i.e., if this version is present in the set of valid versions)
+    *    `true` iff the version is valid (i.e., if this version is present in the set of valid versions)
     */
     static bool isValid(const Version & version);
 

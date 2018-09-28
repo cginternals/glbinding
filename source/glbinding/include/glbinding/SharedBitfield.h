@@ -16,7 +16,7 @@ namespace glbinding
 *  @brief
 *    A representation of a bitfield value that could be member of multiple bitfield types as allowed in OpenGL
 *
-*  @param Types
+*  @tparam Types
 *    The valid bitfield types for the given value
 */
 template <typename... Types>
@@ -35,7 +35,7 @@ class GLBINDING_TEMPLATE_API SharedBitfield;
 *  @tparam Types
 *    The tail of the list of Types
 *
-*  @remarks
+*  @remark
 *    This template is used if the list of Types is empty
 */
 template<typename T, typename... Types>
@@ -223,7 +223,7 @@ public:
     *  @return
     *    The new SharedBitfield with intersected types list and computed value
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -236,7 +236,7 @@ public:
     *  @param[in] other
     *    The SharedBitfield instance to operate with
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -252,7 +252,7 @@ public:
     *  @return
     *    The new SharedBitfield with intersected types list and computed value
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -265,7 +265,7 @@ public:
     *  @param[in] other
     *    The SharedBitfield instance to operate with
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -281,7 +281,7 @@ public:
     *  @return
     *    The new SharedBitfield with intersected types list and computed value
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -294,7 +294,7 @@ public:
     *  @param[in] other
     *    The SharedBitfield instance to operate with
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -308,9 +308,9 @@ public:
     *    The SharedBitfield instance to operate with
     *
     *  @return
-    *    'true' if the values equals, else 'false'
+    *    `true` if the values equals, else `false`
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -326,10 +326,10 @@ public:
     *    The bitfield value to operate with
     *
     *  @return
-    *    'true' if the values equals, else 'false'
+    *    `true` if the values equals, else `false`
     *
-    *  @remarks
-    *    This method is not visible to the compiler if the this SharedBitfield type list contains the type T
+    *  @remark
+    *    This method is only visible to the compiler if this SharedBitfield's type list contains the type T
     */
     template <typename T>
     GLBINDING_CONSTEXPR inline auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type>::value, bool>::type;
@@ -391,7 +391,7 @@ public:
     *  @return
     *    The new SharedBitfield with intersected types list and computed value
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -404,7 +404,7 @@ public:
     *  @param[in] other
     *    The SharedBitfield instance to operate with
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -420,7 +420,7 @@ public:
     *  @return
     *    The new SharedBitfield with intersected types list and computed value
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -433,7 +433,7 @@ public:
     *  @param[in] other
     *    The SharedBitfield instance to operate with
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -449,7 +449,7 @@ public:
     *  @return
     *    The new SharedBitfield with intersected types list and computed value
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -462,7 +462,7 @@ public:
     *  @param[in] other
     *    The SharedBitfield instance to operate with
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -478,7 +478,7 @@ public:
     *  @return
     *    true iff the values equals
     *
-    *  @remarks
+    *  @remark
     *    This method is not visible to the compiler if the operands don't share any bitfield type (the intersection is empty) and thus results in a compiler error
     */
     template <typename... T>
@@ -494,10 +494,10 @@ public:
     *     The bitfield value to operate with
     *
     *  @return
-    *    'true' if the values equals, else 'false'
+    *    `true` if the values equals, else `false`
     *
-    *  @remarks
-    *    This method is not visible to the compiler if the this SharedBitfield type list contains the type T
+    *  @remark
+    *    This method is only visible to the compiler if this SharedBitfield's type list contains the type T
     */
     template <typename T>
     GLBINDING_CONSTEXPR inline auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type, Types...>::value, bool>::type;
@@ -523,7 +523,7 @@ public:
 *  @return
 *    A SharedBitfield with computed value
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename Enum, typename ConvertibleEnum>
@@ -546,7 +546,7 @@ operator|(Enum a, ConvertibleEnum b);
 *  @return
 *    A SharedBitfield with computed value
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename ConvertibleEnum, typename Enum>
@@ -569,7 +569,7 @@ operator|(ConvertibleEnum a, Enum b);
 *  @return
 *    The new value of the bitfield
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename Enum, typename ConvertibleEnum>
@@ -592,7 +592,7 @@ operator|=(Enum & a, ConvertibleEnum b);
 *  @return
 *    A SharedBitfield with computed value
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename Enum, typename ConvertibleEnum>
@@ -615,7 +615,7 @@ operator&(Enum a, ConvertibleEnum b);
 *  @return
 *    A SharedBitfield with computed value
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename ConvertibleEnum, typename Enum>
@@ -638,7 +638,7 @@ operator&(ConvertibleEnum a, Enum b);
 *  @return
 *    The new value of the bitfield
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename Enum, typename ConvertibleEnum>
@@ -661,7 +661,7 @@ operator&=(Enum & a, ConvertibleEnum b);
 *  @return
 *    A SharedBitfield with computed value
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename Enum, typename ConvertibleEnum>
@@ -684,7 +684,7 @@ operator^(Enum a, ConvertibleEnum b);
 *  @return
 *    A SharedBitfield with computed value
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename ConvertibleEnum, typename Enum>
@@ -693,7 +693,7 @@ operator^(ConvertibleEnum a, Enum b);
 
 /**
 *  @brief
-*    External bit-wise 'xpyor' assignment operator for bitfield types on the left hand side
+*    External bit-wise 'xor' assignment operator for bitfield types on the left hand side
 *
 *  @tparam Enum
 *    The type of the bitfield
@@ -707,7 +707,7 @@ operator^(ConvertibleEnum a, Enum b);
 *  @return
 *    The new value of the bitfield
 *
-*  @remarks
+*  @remark
 *    This method is not visible to the compiler if the bitfield type is not in the list of types of the SharedBitfield and thus results in a compiler error
 */
 template <typename Enum, typename ConvertibleEnum>

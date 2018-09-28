@@ -38,7 +38,7 @@ namespace glbinding
 *    The main interface to handle additional features to OpenGL functions besides regular function calls
 *
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
-*  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
+*  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions.
 */
 class GLBINDING_API Binding
 {
@@ -80,10 +80,12 @@ public:
     *  @param[in] functionPointerResolver
     *    A function pointer to resolve binding functions for this context
     *  @param[in] resolveFunctions (optional)
-    *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+    *    Whether to resolve function pointers lazy (\a resolveFunctions = `false`) or immediately
     *
-    *  @remarks
+    *  @remark
     *    After this call, the initialized context is already set active for the current thread.
+    *
+    *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
@@ -91,18 +93,18 @@ public:
 
     /**
     *  @brief
-    *    Initializes the binding for the current active OpenGL context
+    *    Initializes the binding for a specific OpenGL context
     *
     *  @param[in] context
     *    The context handle of the context to initialize
     *  @param[in] functionPointerResolver
     *    A function pointer to resolve binding functions for this context
     *  @param[in] useContext
-    *    Whether to set the context active (useContext = true) after the initialization
+    *    Whether to set the context active (\a useContext = `true`) after the initialization
     *  @param[in] resolveFunctions (optional)
-    *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+    *    Whether to resolve function pointers lazy (\a resolveFunctions = `false`) or immediately
     *
-    *  @remarks
+    *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
@@ -115,8 +117,8 @@ public:
     *  @param[in] function
     *    The function to register
     *
-    *  @remarks
-    *    The additional features are callbacks, and use in multi-context environments
+    *  @remark
+    *    The additional features are callbacks, and used in multi-context environments
     */
     static void registerAdditionalFunction(AbstractFunction * function);
 
@@ -138,6 +140,8 @@ public:
     /**
     *  @brief
     *    Update the current context state in glbinding
+    *
+    *  @remark
     *    This function queries the driver for the current OpenGL context
     */
     static void useCurrentContext();
@@ -154,6 +158,8 @@ public:
     /**
     *  @brief
     *    Removes the current context from the state of glbinding
+    *
+    *  @remark
     *    This function queries the driver for the current OpenGL context
     */
     static void releaseCurrentContext();
@@ -171,7 +177,7 @@ public:
     *  @brief
     *    Registers an additional callback that gets called each time the context is switched using the useContext method
     *
-    *  @remarks
+    *  @remark
     *    There may be multiple context switch callbacks registered at once
     */
     static void addContextSwitchCallback(ContextSwitchCallback callback);
@@ -188,7 +194,7 @@ public:
     /**
     *  @brief
     *    Updates the callback mask of all registered OpenGL functions in the current state, excluding the blacklisted functions
-     *
+    *
     *  @param[in] mask
     *    The new CallbackMask
     *  @param[in] blackList
@@ -243,20 +249,22 @@ public:
     *  @return
     *    The callback to use instead of unresolved function calls
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static SimpleFunctionCallback unresolvedCallback();
 
     /**
     *  @brief
-    *    Updates the unresolved callback that is called upon invocation of an OpenGL function which have no counterpart in the OpenGL driver
+    *    Updates the unresolved callback that is called upon invocation of an OpenGL function which has no counterpart in the OpenGL driver
     *
     *  @param[in] callback
     *    The callback to use instead of unresolved function calls
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
     */
     static void setUnresolvedCallback(SimpleFunctionCallback callback);
@@ -268,7 +276,7 @@ public:
     *  @return
     *    The callback to use before an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static FunctionCallback beforeCallback();
@@ -280,8 +288,10 @@ public:
     *  @param[in] callback
     *    The callback to use before an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Before flag to enable the callback
     */
     static void setBeforeCallback(FunctionCallback callback);
@@ -293,7 +303,7 @@ public:
     *  @return
     *    The callback to use after an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static FunctionCallback afterCallback();
@@ -305,13 +315,39 @@ public:
     *  @param[in] callback
     *    The callback to use after an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static void setAfterCallback(FunctionCallback callback);
 
+    /**
+    *  @brief
+    *    Logging callback accessor
+    *
+    *  @return
+    *    The callback to use for logging an OpenGL function call
+    *
+    *  @remark
+    *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
+    */
     static FunctionLogCallback logCallback();
+
+    /**
+    *  @brief
+    *    Updates the logging callback that is called to log the actual OpenGL function invocation
+    *
+    *  @param[in] callback
+    *    The callback to use for logging an OpenGL function call
+    *
+    *  @remark
+    *    This callback is registered globally across all states.
+    *
+    *  @remark
+    *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
+    */
     static void setLogCallback(FunctionLogCallback callback);
     
     /**
@@ -323,16 +359,84 @@ public:
     */
     static const array_t & functions();
 
+    /**
+    *  @brief
+    *    Accessor for additional functions
+    *
+    *  @return
+    *    List of additional functions
+    */
     static const std::vector<AbstractFunction *> & additionalFunctions();
 
+    /**
+    *  @brief
+    *    Get index of current state
+    *
+    *  @return
+    *    Index of current state
+    */
     static int currentPos();
+
+    /**
+    *  @brief
+    *    Get highest state index currently used
+    *
+    *  @return
+    *    Highest state index currently used
+    */
     static int maxPos();
 
+    /**
+    *  @brief
+    *    Query total number of functions
+    *
+    *  @return
+    *    Total number of functions
+    */
     static size_t size();
 
+    /**
+    *  @brief
+    *    Call unresolved callback
+    *
+    *  @param[in] function
+    *    Parameter for callback
+    *
+    *  @see Binding::unresolvedCallback()
+    */
     static void unresolved(const AbstractFunction * function);
+
+    /**
+    *  @brief
+    *    Call before callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::beforeCallback()
+    */
     static void before(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call after callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::afterCallback()
+    */
     static void after(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call log callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::logCallback()
+    */
     static void log(FunctionCall && call);
 
 
@@ -3287,26 +3391,49 @@ public:
 
 
 protected:
+    /**
+    *  @brief
+    *    Provide an additional State
+    *
+    *  @param[in] pos
+    *    Index of new State
+    */
     static void provideState(int pos);
+
+    /**
+    *  @brief
+    *    Neglect a previously provided state
+    *
+    *  @param[in] pos
+    *    Index of State to neglect
+    */
     static void neglectState(int pos);
+
+    /**
+    *  @brief
+    *    Set current State
+    *
+    *  @param[in] pos
+    *    Index of State
+    */
     static void setStatePos(int pos);
 
 
 protected:
-    static const array_t s_functions;           ///< The list of all build-in functions
-    static int & s_maxPos();
-    static std::vector<AbstractFunction *> & s_additionalFunctions();
-    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks();
-    static SimpleFunctionCallback & s_unresolvedCallback();
-    static FunctionCallback & s_beforeCallback();
-    static FunctionCallback & s_afterCallback();
-    static FunctionLogCallback & s_logCallback();
-    static int & s_pos();
-    static ContextHandle & s_context();
-    static glbinding::GetProcAddress & s_getProcAddress();
-    static std_boost::recursive_mutex & s_mutex();
-    static std::unordered_map<ContextHandle, int> & s_bindings();
-    static glbinding::GetProcAddress & s_firstGetProcAddress();
+    static const array_t s_functions;                                       ///< The list of all build-in functions
+    static int & s_maxPos();                                                ///< Maximum State index in use
+    static std::vector<AbstractFunction *> & s_additionalFunctions();       ///< List of additional OpenGL fucntions
+    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks(); ///< List of callbacks for context switch
+    static SimpleFunctionCallback & s_unresolvedCallback();                 ///< Callback for unresolved functions
+    static FunctionCallback & s_beforeCallback();                           ///< Callback for before function call
+    static FunctionCallback & s_afterCallback();                            ///< Callback for after function call
+    static FunctionLogCallback & s_logCallback();                           ///< Callback for logging a function call
+    static int & s_pos();                                                   ///< Position of current State
+    static ContextHandle & s_context();                                     ///< Handle of current context
+    static glbinding::GetProcAddress & s_getProcAddress();                  ///< Current address of function resolution method
+    static std_boost::recursive_mutex & s_mutex();                          ///< Mutex
+    static std::unordered_map<ContextHandle, int> & s_bindings();           ///< Map (handle->position) of initialized contexts
+    static glbinding::GetProcAddress & s_firstGetProcAddress();             ///< First address of function resolution method
 };
 
 
