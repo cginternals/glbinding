@@ -17,11 +17,6 @@
 #endif
 #endif
 
-#if defined _MSC_VER && _MSC_VER < 1910
-#pragma warning (push)
-#pragma warning (disable: 4505) // 'function': unreferenced local function has been removed
-#endif
-
 
 namespace glbinding
 {
@@ -212,7 +207,3 @@ protected:
 
 
 #include <glbinding/Function.inl>
-
-#if defined _MSC_VER && _MSC_VER < 1910
-#pragma warning (pop)
-#endif

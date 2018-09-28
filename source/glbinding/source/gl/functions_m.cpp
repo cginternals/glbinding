@@ -571,6 +571,16 @@ void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void * 
     return Binding::MultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride);
 }
 
+void glMultiDrawMeshTasksIndirectCountNV(GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+{
+    return Binding::MultiDrawMeshTasksIndirectCountNV(indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawMeshTasksIndirectNV(GLintptr indirect, GLsizei drawcount, GLsizei stride)
+{
+    return Binding::MultiDrawMeshTasksIndirectNV(indirect, drawcount, stride);
+}
+
 void glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount)
 {
     return Binding::MultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount);

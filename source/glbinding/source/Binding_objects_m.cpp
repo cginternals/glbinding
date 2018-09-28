@@ -121,6 +121,8 @@ Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei, GLsizei, GLint> B
 Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei, GLint> Binding::MultiDrawElementsIndirectBindlessNV("glMultiDrawElementsIndirectBindlessNV");
 Function<void, GLenum, GLenum, const void *, GLintptr, GLsizei, GLsizei> Binding::MultiDrawElementsIndirectCount("glMultiDrawElementsIndirectCount");
 Function<void, GLenum, GLenum, const void *, GLintptr, GLsizei, GLsizei> Binding::MultiDrawElementsIndirectCountARB("glMultiDrawElementsIndirectCountARB");
+Function<void, GLintptr, GLintptr, GLsizei, GLsizei> Binding::MultiDrawMeshTasksIndirectCountNV("glMultiDrawMeshTasksIndirectCountNV");
+Function<void, GLintptr, GLsizei, GLsizei> Binding::MultiDrawMeshTasksIndirectNV("glMultiDrawMeshTasksIndirectNV");
 Function<void, GLenum, GLuint, GLuint, const GLint *, const GLsizei *, GLsizei> Binding::MultiDrawRangeElementArrayAPPLE("glMultiDrawRangeElementArrayAPPLE");
 Function<void, const GLenum *, const GLint *, const GLsizei *, GLsizei, GLint> Binding::MultiModeDrawArraysIBM("glMultiModeDrawArraysIBM");
 Function<void, const GLenum *, const GLsizei *, GLenum, const void *const*, GLsizei, GLint> Binding::MultiModeDrawElementsIBM("glMultiModeDrawElementsIBM");

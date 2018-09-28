@@ -11,6 +11,11 @@ namespace gl
 {
 
 
+void glNamedBufferAttachMemoryNV(GLuint buffer, GLuint memory, GLuint64 offset)
+{
+    return Binding::NamedBufferAttachMemoryNV(buffer, memory, offset);
+}
+
 void glNamedBufferData(GLuint buffer, GLsizeiptr size, const void * data, GLenum usage)
 {
     return Binding::NamedBufferData(buffer, size, data, usage);
@@ -229,6 +234,11 @@ void glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, G
 void glNamedRenderbufferStorageMultisample(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
     return Binding::NamedRenderbufferStorageMultisample(renderbuffer, samples, internalformat, width, height);
+}
+
+void glNamedRenderbufferStorageMultisampleAdvancedAMD(GLuint renderbuffer, GLsizei samples, GLsizei storageSamples, GLenum internalformat, GLsizei width, GLsizei height)
+{
+    return Binding::NamedRenderbufferStorageMultisampleAdvancedAMD(renderbuffer, samples, storageSamples, internalformat, width, height);
 }
 
 void glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
