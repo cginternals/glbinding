@@ -27,6 +27,7 @@ message(STATUS "Example ${target}")
 # 
 
 set(sources
+    MACOSX_BUNDLE
     main.cpp
 )
 
