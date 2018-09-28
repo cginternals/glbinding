@@ -19,9 +19,9 @@ public:
     using SizeType = unsigned int;
     using TailIdentifier = unsigned int;
 
-    RingBuffer(const SizeType maxSize);
+    RingBuffer(SizeType maxSize);
 
-    void resize(const SizeType newSize);
+    void resize(SizeType newSize);
 
     T nextHead(bool & available) const;
     bool push(T && entry);
