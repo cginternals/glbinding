@@ -148,7 +148,7 @@ void resume()
     glbinding::addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 }
 
-void log(FunctionCall * call)
+void log(LogEntry call)
 {
     auto available = false;
     auto next = g_buffer.nextHead(available);

@@ -34,7 +34,7 @@ public:
     *  @return
     *    The nearest valid Version that is either equal or lower than this Version
     */
-    static const Version  & nearest(const Version & version);
+    static const Version & nearest(const Version & version);
 
     /**
     *  @brief
