@@ -37,7 +37,6 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 
 * [Tools](https://github.com/cginternals/glbinding/wiki/tools)
 * [Examples](https://github.com/cginternals/glbinding/wiki/examples)
-* [Project Health](#project-health)
 * [Context Creation Cheat Sheet](https://github.com/cginternals/glbinding/wiki/Context-Creation-Cheat-Sheet)
 
 ###### Installation and Development
