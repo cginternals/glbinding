@@ -24,7 +24,7 @@ void Painter::initialize(ProcAddressGetter procAddressCallback)
     if (m_initialized)
         return;
 
-    glbinding::Binding::initialize(procAddressCallback, false); // only resolve functions that are actually used (lazy)
+    glbinding::Binding::initialize(procAddressCallback.target<ProcAddress(const char*)>(), false); // only resolve functions that are actually used (lazy)
 
     m_cubescape = new CubeScape();
 
