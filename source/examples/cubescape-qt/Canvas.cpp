@@ -278,7 +278,7 @@ void Canvas::keyPressEvent(QKeyEvent * event)
 
 ProcAddress Canvas::getProcAddress(const char * name)
 {
-    if (name == nullptr)
+    if (!s_getProcAddressHelper || name == nullptr)
     {
         return nullptr;
     }
