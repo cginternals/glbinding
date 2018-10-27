@@ -1,6 +1,6 @@
 [//]: # (Comment)
 
-<br><a href="https://github.com/cginternals/glbinding/"><img src="https://raw.githubusercontent.com/cginternals/glbinding/master/glbinding-logo.svg?sanitize=true" width="50%"></a>
+<br><a href="https://glbinding.org"><img src="https://raw.githubusercontent.com/cginternals/glbinding/master/glbinding-logo.svg?sanitize=true" width="50%"></a>
 
 *glbinding* is a cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
