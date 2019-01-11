@@ -63,7 +63,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 2947>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 2948>; ///< The type of the build-in functions collection
 
 
 public:
@@ -116,9 +116,6 @@ public:
     *
     *  @param[in] function
     *    The function to register
-    *
-    *  @remark
-    *    The additional features are callbacks, and used in multi-context environments
     */
     static void registerAdditionalFunction(AbstractFunction * function);
 
@@ -263,7 +260,6 @@ public:
     *
     *  @remark
     *    This callback is registered globally across all states.
-    *
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
     */
@@ -290,7 +286,6 @@ public:
     *
     *  @remark
     *    This callback is registered globally across all states.
-    *
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Before flag to enable the callback
     */
@@ -317,7 +312,6 @@ public:
     *
     *  @remark
     *    This callback is registered globally across all states.
-    *
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
@@ -2944,6 +2938,7 @@ public:
     static Function<void, gl::GLsizei, const gl::GLvdpauSurfaceNV *> VDPAUMapSurfacesNV; ///< Wrapper for glVDPAUMapSurfacesNV
     static Function<gl::GLvdpauSurfaceNV, const void *, gl::GLenum, gl::GLsizei, const gl::GLuint *> VDPAURegisterOutputSurfaceNV; ///< Wrapper for glVDPAURegisterOutputSurfaceNV
     static Function<gl::GLvdpauSurfaceNV, const void *, gl::GLenum, gl::GLsizei, const gl::GLuint *> VDPAURegisterVideoSurfaceNV; ///< Wrapper for glVDPAURegisterVideoSurfaceNV
+    static Function<gl::GLvdpauSurfaceNV, const void *, gl::GLenum, gl::GLsizei, const gl::GLuint *, gl::GLboolean> VDPAURegisterVideoSurfaceWithPictureStructureNV; ///< Wrapper for glVDPAURegisterVideoSurfaceWithPictureStructureNV
     static Function<void, gl::GLvdpauSurfaceNV, gl::GLenum> VDPAUSurfaceAccessNV; ///< Wrapper for glVDPAUSurfaceAccessNV
     static Function<void, gl::GLsizei, const gl::GLvdpauSurfaceNV *> VDPAUUnmapSurfacesNV; ///< Wrapper for glVDPAUUnmapSurfacesNV
     static Function<void, gl::GLvdpauSurfaceNV> VDPAUUnregisterSurfaceNV; ///< Wrapper for glVDPAUUnregisterSurfaceNV

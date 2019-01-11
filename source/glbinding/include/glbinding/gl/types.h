@@ -10,7 +10,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <array>
-
+#include <KHR/khrplatform.h>
 
 #include <string>
 
@@ -31,16 +31,16 @@ enum class GLenum : unsigned int;
 // Import of GLboolean is an include
 using GLbitfield = unsigned int;
 using GLvoid = void;
-using GLbyte = signed char;
-using GLshort = short;
+using GLbyte = khronos_int8_t;
+using GLubyte = khronos_uint8_t;
+using GLshort = khronos_int16_t;
+using GLushort = khronos_uint16_t;
 using GLint = int;
-using GLclampx = int;
-using GLubyte = unsigned char;
-using GLushort = unsigned short;
 using GLuint = unsigned int;
+using GLclampx = khronos_int32_t;
 using GLsizei = int;
-using GLfloat = float;
-using GLclampf = float;
+using GLfloat = khronos_float_t;
+using GLclampf = khronos_float_t;
 using GLdouble = double;
 using GLclampd = double;
 using GLeglClientBufferEXT = void *;
@@ -52,17 +52,17 @@ using GLhandleARB = void *;
 #else
 using GLhandleARB = unsigned int;
 #endif
-using GLhalfARB = unsigned short;
-using GLhalf = unsigned short;
-using GLfixed = GLint;
+using GLhalf = khronos_uint16_t;
+using GLhalfARB = khronos_uint16_t;
+using GLfixed = khronos_int32_t;
 using GLintptr = ptrdiff_t;
+using GLintptrARB = khronos_intptr_t;
 using GLsizeiptr = size_t;
-using GLint64 = int64_t;
-using GLuint64 = uint64_t;
-using GLintptrARB = ptrdiff_t;
-using GLsizeiptrARB = ptrdiff_t;
-using GLint64EXT = int64_t;
-using GLuint64EXT = uint64_t;
+using GLsizeiptrARB = khronos_ssize_t;
+using GLint64 = khronos_int64_t;
+using GLint64EXT = khronos_int64_t;
+using GLuint64 = khronos_uint64_t;
+using GLuint64EXT = khronos_uint64_t;
 using GLsync = struct __GLsync *;
 struct _cl_context;
 struct _cl_event;

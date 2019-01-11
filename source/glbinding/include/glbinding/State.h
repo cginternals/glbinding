@@ -8,6 +8,7 @@
 namespace glbinding
 {
 
+
 /**
 *  @brief
 *    The State class represents the configuration of an OpenGL function for one thread.

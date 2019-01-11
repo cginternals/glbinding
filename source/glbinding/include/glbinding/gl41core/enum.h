@@ -62,6 +62,8 @@ using gl::GL_TRANSFORM_FEEDBACK;
 // BlendEquationModeEXT
 
 using gl::GL_FUNC_ADD;
+using gl::GL_MIN;
+using gl::GL_MAX;
 using gl::GL_FUNC_SUBTRACT;
 using gl::GL_FUNC_REVERSE_SUBTRACT;
 
@@ -334,6 +336,7 @@ using gl::GL_INVALID_FRAMEBUFFER_OPERATION;
 
 // FramebufferAttachment
 
+using gl::GL_DEPTH_STENCIL_ATTACHMENT;
 using gl::GL_MAX_COLOR_ATTACHMENTS;
 // using gl::GL_COLOR_ATTACHMENT0; // reuse ColorBuffer
 // using gl::GL_COLOR_ATTACHMENT1; // reuse ColorBuffer
@@ -859,6 +862,18 @@ using gl::GL_BLUE;
 using gl::GL_ALPHA;
 // using gl::GL_RGB; // reuse InternalFormat
 // using gl::GL_RGBA; // reuse InternalFormat
+using gl::GL_BGR;
+using gl::GL_BGRA;
+// using gl::GL_RG; // reuse InternalFormat
+using gl::GL_RG_INTEGER;
+// using gl::GL_DEPTH_STENCIL; // reuse InternalFormat
+using gl::GL_RED_INTEGER;
+using gl::GL_GREEN_INTEGER;
+using gl::GL_BLUE_INTEGER;
+using gl::GL_RGB_INTEGER;
+using gl::GL_RGBA_INTEGER;
+using gl::GL_BGR_INTEGER;
+using gl::GL_BGRA_INTEGER;
 
 // PixelStoreParameter
 
@@ -973,6 +988,10 @@ using gl::GL_ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS;
 using gl::GL_ACTIVE_SUBROUTINE_MAX_LENGTH;
 using gl::GL_ACTIVE_SUBROUTINE_UNIFORM_MAX_LENGTH;
 
+// QueryCounterTarget
+
+// using gl::GL_TIMESTAMP; // reuse GetPName
+
 // QueryObjectParameterName
 
 using gl::GL_QUERY_RESULT;
@@ -1073,6 +1092,8 @@ using gl::GL_KEEP;
 // using gl::GL_REPLACE; // reuse LightEnvModeSGIX
 using gl::GL_INCR;
 using gl::GL_DECR;
+using gl::GL_INCR_WRAP;
+using gl::GL_DECR_WRAP;
 
 // StringName
 
@@ -1359,8 +1380,6 @@ using gl::GL_LAST_VERTEX_CONVENTION;
 
 // __UNGROUPED__
 
-using gl::GL_MIN;
-using gl::GL_MAX;
 using gl::GL_BLEND_EQUATION;
 using gl::GL_RGBA2;
 using gl::GL_TEXTURE_DEPTH;
@@ -1368,13 +1387,9 @@ using gl::GL_MULTISAMPLE;
 using gl::GL_SAMPLE_ALPHA_TO_COVERAGE;
 using gl::GL_SAMPLE_ALPHA_TO_ONE;
 using gl::GL_SAMPLE_COVERAGE;
-using gl::GL_BGR;
-using gl::GL_BGRA;
 using gl::GL_DEPTH_COMPONENT24;
 using gl::GL_DEPTH_COMPONENT32;
 using gl::GL_FRAMEBUFFER_DEFAULT;
-using gl::GL_DEPTH_STENCIL_ATTACHMENT;
-using gl::GL_RG_INTEGER;
 using gl::GL_UNDEFINED_VERTEX;
 using gl::GL_UNSIGNED_BYTE_2_3_3_REV;
 using gl::GL_UNSIGNED_SHORT_5_6_5;
@@ -1384,8 +1399,6 @@ using gl::GL_UNSIGNED_SHORT_1_5_5_5_REV;
 using gl::GL_UNSIGNED_INT_8_8_8_8_REV;
 using gl::GL_MIRRORED_REPEAT;
 using gl::GL_UNSIGNED_INT_24_8;
-using gl::GL_INCR_WRAP;
-using gl::GL_DECR_WRAP;
 using gl::GL_VERTEX_PROGRAM_POINT_SIZE;
 using gl::GL_VERTEX_ATTRIB_ARRAY_POINTER;
 using gl::GL_DEPTH_CLAMP;
@@ -1445,13 +1458,6 @@ using gl::GL_STENCIL_INDEX8;
 using gl::GL_STENCIL_INDEX16;
 using gl::GL_MAX_SAMPLES;
 using gl::GL_RGB565;
-using gl::GL_RED_INTEGER;
-using gl::GL_GREEN_INTEGER;
-using gl::GL_BLUE_INTEGER;
-using gl::GL_RGB_INTEGER;
-using gl::GL_RGBA_INTEGER;
-using gl::GL_BGR_INTEGER;
-using gl::GL_BGRA_INTEGER;
 using gl::GL_FLOAT_32_UNSIGNED_INT_24_8_REV;
 using gl::GL_FRAMEBUFFER_SRGB;
 using gl::GL_SAMPLER_1D_ARRAY;

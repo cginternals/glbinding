@@ -2537,6 +2537,7 @@ GLBINDING_API GLboolean glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface);
 GLBINDING_API void glVDPAUMapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV * surfaces);
 GLBINDING_API GLvdpauSurfaceNV glVDPAURegisterOutputSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames);
 GLBINDING_API GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames);
+GLBINDING_API GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceWithPictureStructureNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames, GLboolean isFrameStructure);
 GLBINDING_API void glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access);
 GLBINDING_API void glVDPAUUnmapSurfacesNV(GLsizei numSurface, const GLvdpauSurfaceNV * surfaces);
 GLBINDING_API void glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface);

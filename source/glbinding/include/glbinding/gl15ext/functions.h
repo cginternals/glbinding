@@ -2103,6 +2103,7 @@ using gl::glVDPAUIsSurfaceNV;
 using gl::glVDPAUMapSurfacesNV;
 using gl::glVDPAURegisterOutputSurfaceNV;
 using gl::glVDPAURegisterVideoSurfaceNV;
+using gl::glVDPAURegisterVideoSurfaceWithPictureStructureNV;
 using gl::glVDPAUSurfaceAccessNV;
 using gl::glVDPAUUnmapSurfacesNV;
 using gl::glVDPAUUnregisterSurfaceNV;

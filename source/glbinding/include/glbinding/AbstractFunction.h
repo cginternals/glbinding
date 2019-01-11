@@ -157,7 +157,7 @@ public:
     *  @see Binding::unresolvedCallback()
     */
     static void unresolved(const AbstractFunction * function);
-
+    
     /**
     *  @brief
     *    Call before callback

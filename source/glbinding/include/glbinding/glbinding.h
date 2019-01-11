@@ -2,10 +2,9 @@
 #pragma once
 
 
-#include <functional>
 #include <set>
-#include <string>
 #include <vector>
+#include <functional>
 
 #include <glbinding/glbinding_api.h>
 #include <glbinding/glbinding_features.h>
@@ -27,7 +26,6 @@ using SimpleFunctionCallback = std::function<void(const AbstractFunction &)>; //
 using FunctionCallback = std::function<void(const FunctionCall &)>;           ///< The signature of the before and after callbacks
 using FunctionLogCallback = std::function<void(FunctionCall *)>;              ///< The signature of the log callback
 using ContextSwitchCallback = std::function<void(ContextHandle)>;             ///< The signature of the context switch callback
-
 
 /**
 *  @brief

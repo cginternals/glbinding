@@ -11,6 +11,7 @@
 namespace glbinding
 {
 
+
 /**
 *  @brief
 *    Boolean type based on an 8-bit integer

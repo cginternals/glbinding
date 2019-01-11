@@ -12,7 +12,7 @@ namespace glbinding { namespace aux
 
 
 template <typename T>
-RingBuffer<T>::RingBuffer(SizeType maxSize)
+RingBuffer<T>::RingBuffer(const SizeType maxSize)
 :   m_size{maxSize+1}
 ,   m_head{0}
 {
@@ -20,7 +20,7 @@ RingBuffer<T>::RingBuffer(SizeType maxSize)
 }
 
 template <typename T>
-void RingBuffer<T>::resize(SizeType newSize)
+void RingBuffer<T>::resize(const SizeType newSize)
 {
     m_size = newSize + 1;
     m_buffer.resize(m_size);

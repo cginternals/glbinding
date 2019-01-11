@@ -2066,6 +2066,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glVDPAUMapSurfacesNV", { GLextension::GL_NV_vdpau_interop } },
     { "glVDPAURegisterOutputSurfaceNV", { GLextension::GL_NV_vdpau_interop } },
     { "glVDPAURegisterVideoSurfaceNV", { GLextension::GL_NV_vdpau_interop } },
+    { "glVDPAURegisterVideoSurfaceWithPictureStructureNV", { GLextension::GL_NV_vdpau_interop2 } },
     { "glVDPAUSurfaceAccessNV", { GLextension::GL_NV_vdpau_interop } },
     { "glVDPAUUnmapSurfacesNV", { GLextension::GL_NV_vdpau_interop } },
     { "glVDPAUUnregisterSurfaceNV", { GLextension::GL_NV_vdpau_interop } },

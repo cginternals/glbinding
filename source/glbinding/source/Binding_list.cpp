@@ -2514,6 +2514,7 @@ const Binding::array_t Binding::s_functions =
     &VDPAUMapSurfacesNV,
     &VDPAURegisterOutputSurfaceNV,
     &VDPAURegisterVideoSurfaceNV,
+    &VDPAURegisterVideoSurfaceWithPictureStructureNV,
     &VDPAUSurfaceAccessNV,
     &VDPAUUnmapSurfacesNV,
     &VDPAUUnregisterSurfaceNV,

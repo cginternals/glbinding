@@ -103,7 +103,7 @@ public:
     *  @return
     *    The return value (may be void and thus, nothing)
     *
-    *  @remark
+    *  @remarks
     *    This method respects currently activated callbacks and logging
     */
     inline ReturnType operator()(Arguments&... arguments) const;
@@ -118,7 +118,7 @@ public:
     *  @return
     *    The return value (may be void and thus, nothing)
     *
-    *  @remark
+    *  @remarks
     *    This method respects currently activated callbacks and logging
     */
     inline ReturnType call(Arguments&... arguments) const;

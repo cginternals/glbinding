@@ -472,33 +472,6 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::GLbyte *>*>(value);
     }
 
-    if (typeid(*value) == typeid(Value<gl::GLshort>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLshort>*>(value);
-    }
-    if (typeid(*value) == typeid(Value<gl::GLshort *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLshort *>*>(value);
-    }
-
-    if (typeid(*value) == typeid(Value<gl::GLint>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLint>*>(value);
-    }
-    if (typeid(*value) == typeid(Value<gl::GLint *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLint *>*>(value);
-    }
-
-    if (typeid(*value) == typeid(Value<gl::GLclampx>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLclampx>*>(value);
-    }
-    if (typeid(*value) == typeid(Value<gl::GLclampx *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLclampx *>*>(value);
-    }
-
     if (typeid(*value) == typeid(Value<gl::GLubyte>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLubyte>*>(value);
@@ -506,6 +479,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
     if (typeid(*value) == typeid(Value<gl::GLubyte *>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLubyte *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::GLshort>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLshort>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::GLshort *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLshort *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::GLushort>))
@@ -517,6 +499,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::GLushort *>*>(value);
     }
 
+    if (typeid(*value) == typeid(Value<gl::GLint>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLint>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::GLint *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLint *>*>(value);
+    }
+
     if (typeid(*value) == typeid(Value<gl::GLuint>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLuint>*>(value);
@@ -524,6 +515,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
     if (typeid(*value) == typeid(Value<gl::GLuint *>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLuint *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::GLclampx>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLclampx>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::GLclampx *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLclampx *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::GLsizei>))
@@ -616,15 +616,6 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::GLhandleARB *>*>(value);
     }
 
-    if (typeid(*value) == typeid(Value<gl::GLhalfARB>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLhalfARB>*>(value);
-    }
-    if (typeid(*value) == typeid(Value<gl::GLhalfARB *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLhalfARB *>*>(value);
-    }
-
     if (typeid(*value) == typeid(Value<gl::GLhalf>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLhalf>*>(value);
@@ -632,6 +623,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
     if (typeid(*value) == typeid(Value<gl::GLhalf *>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLhalf *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::GLhalfARB>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLhalfARB>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::GLhalfARB *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLhalfARB *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::GLfixed>))
@@ -652,33 +652,6 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::GLintptr *>*>(value);
     }
 
-    if (typeid(*value) == typeid(Value<gl::GLsizeiptr>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLsizeiptr>*>(value);
-    }
-    if (typeid(*value) == typeid(Value<gl::GLsizeiptr *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLsizeiptr *>*>(value);
-    }
-
-    if (typeid(*value) == typeid(Value<gl::GLint64>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLint64>*>(value);
-    }
-    if (typeid(*value) == typeid(Value<gl::GLint64 *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLint64 *>*>(value);
-    }
-
-    if (typeid(*value) == typeid(Value<gl::GLuint64>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLuint64>*>(value);
-    }
-    if (typeid(*value) == typeid(Value<gl::GLuint64 *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::GLuint64 *>*>(value);
-    }
-
     if (typeid(*value) == typeid(Value<gl::GLintptrARB>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLintptrARB>*>(value);
@@ -686,6 +659,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
     if (typeid(*value) == typeid(Value<gl::GLintptrARB *>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLintptrARB *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::GLsizeiptr>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLsizeiptr>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::GLsizeiptr *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLsizeiptr *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::GLsizeiptrARB>))
@@ -697,6 +679,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::GLsizeiptrARB *>*>(value);
     }
 
+    if (typeid(*value) == typeid(Value<gl::GLint64>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLint64>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::GLint64 *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLint64 *>*>(value);
+    }
+
     if (typeid(*value) == typeid(Value<gl::GLint64EXT>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLint64EXT>*>(value);
@@ -704,6 +695,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
     if (typeid(*value) == typeid(Value<gl::GLint64EXT *>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLint64EXT *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::GLuint64>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLuint64>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::GLuint64 *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLuint64 *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::GLuint64EXT>))

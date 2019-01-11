@@ -94,7 +94,9 @@ using gl::GL_TRANSFORM_FEEDBACK;
 
 using gl::GL_FUNC_ADD;
 using gl::GL_FUNC_ADD_EXT;
+using gl::GL_MIN;
 using gl::GL_MIN_EXT;
+using gl::GL_MAX;
 using gl::GL_MAX_EXT;
 using gl::GL_FUNC_SUBTRACT;
 using gl::GL_FUNC_SUBTRACT_EXT;
@@ -139,6 +141,7 @@ using gl::GL_ATOMIC_COUNTER_BUFFER;
 
 // BufferTargetARB
 
+using gl::GL_PARAMETER_BUFFER;
 // using gl::GL_ARRAY_BUFFER; // reuse BufferStorageTarget
 // using gl::GL_ELEMENT_ARRAY_BUFFER; // reuse BufferStorageTarget
 // using gl::GL_PIXEL_PACK_BUFFER; // reuse BufferStorageTarget
@@ -301,6 +304,7 @@ using gl::GL_CONVOLUTION_2D_EXT;
 
 // DebugSeverity
 
+using gl::GL_DEBUG_SEVERITY_NOTIFICATION;
 using gl::GL_DEBUG_SEVERITY_HIGH;
 using gl::GL_DEBUG_SEVERITY_MEDIUM;
 using gl::GL_DEBUG_SEVERITY_LOW;
@@ -451,6 +455,7 @@ using gl::GL_DOT2_ADD_ATI;
 
 // FramebufferAttachment
 
+using gl::GL_DEPTH_STENCIL_ATTACHMENT;
 using gl::GL_MAX_COLOR_ATTACHMENTS;
 using gl::GL_MAX_COLOR_ATTACHMENTS_EXT;
 // using gl::GL_COLOR_ATTACHMENT0; // reuse ColorBuffer
@@ -1547,8 +1552,20 @@ using gl::GL_TESS_CONTROL_SHADER;
 using gl::GL_ABGR_EXT;
 using gl::GL_CMYK_EXT;
 using gl::GL_CMYKA_EXT;
+using gl::GL_BGR;
+using gl::GL_BGRA;
 using gl::GL_YCRCB_422_SGIX;
 using gl::GL_YCRCB_444_SGIX;
+// using gl::GL_RG; // reuse InternalFormat
+using gl::GL_RG_INTEGER;
+// using gl::GL_DEPTH_STENCIL; // reuse InternalFormat
+using gl::GL_RED_INTEGER;
+using gl::GL_GREEN_INTEGER;
+using gl::GL_BLUE_INTEGER;
+using gl::GL_RGB_INTEGER;
+using gl::GL_RGBA_INTEGER;
+using gl::GL_BGR_INTEGER;
+using gl::GL_BGRA_INTEGER;
 
 // PixelStoreParameter
 
@@ -1752,6 +1769,10 @@ using gl::GL_ACTIVE_SUBROUTINE_UNIFORM_LOCATIONS;
 using gl::GL_ACTIVE_SUBROUTINE_MAX_LENGTH;
 using gl::GL_ACTIVE_SUBROUTINE_UNIFORM_MAX_LENGTH;
 
+// QueryCounterTarget
+
+// using gl::GL_TIMESTAMP; // reuse GetPName
+
 // QueryObjectParameterName
 
 using gl::GL_QUERY_TARGET;
@@ -1842,6 +1863,11 @@ using gl::GL_VERTEX_SHADER_ARB;
 // using gl::GL_TESS_EVALUATION_SHADER; // reuse PipelineParameterName
 // using gl::GL_TESS_CONTROL_SHADER; // reuse PipelineParameterName
 using gl::GL_COMPUTE_SHADER;
+
+// StencilOp
+
+using gl::GL_INCR_WRAP;
+using gl::GL_DECR_WRAP;
 
 // StringName
 
@@ -2284,8 +2310,6 @@ using gl::GL_CONSTANT_COLOR_EXT;
 using gl::GL_ONE_MINUS_CONSTANT_COLOR_EXT;
 using gl::GL_CONSTANT_ALPHA_EXT;
 using gl::GL_ONE_MINUS_CONSTANT_ALPHA_EXT;
-using gl::GL_MIN;
-using gl::GL_MAX;
 using gl::GL_BLEND_EQUATION;
 using gl::GL_BLEND_EQUATION_RGB_EXT;
 using gl::GL_POLYGON_OFFSET_EXT;
@@ -2375,9 +2399,7 @@ using gl::GL_422_EXT;
 using gl::GL_422_REV_EXT;
 using gl::GL_422_AVERAGE_EXT;
 using gl::GL_422_REV_AVERAGE_EXT;
-using gl::GL_BGR;
 using gl::GL_BGR_EXT;
-using gl::GL_BGRA;
 using gl::GL_BGRA_EXT;
 using gl::GL_COLOR_INDEX1_EXT;
 using gl::GL_COLOR_INDEX2_EXT;
@@ -2390,7 +2412,6 @@ using gl::GL_MAX_ELEMENTS_INDICES_EXT;
 using gl::GL_PHONG_WIN;
 using gl::GL_FOG_SPECULAR_TEXTURE_WIN;
 using gl::GL_TEXTURE_INDEX_SIZE_EXT;
-using gl::GL_PARAMETER_BUFFER;
 using gl::GL_PARAMETER_BUFFER_ARB;
 using gl::GL_PARAMETER_BUFFER_BINDING;
 using gl::GL_PARAMETER_BUFFER_BINDING_ARB;
@@ -2455,10 +2476,8 @@ using gl::GL_GLOBAL_ALPHA_FACTOR_SUN;
 using gl::GL_TEXTURE_COLOR_WRITEMASK_SGIS;
 using gl::GL_TEXT_FRAGMENT_SHADER_ATI;
 using gl::GL_FRAMEBUFFER_DEFAULT;
-using gl::GL_DEPTH_STENCIL_ATTACHMENT;
 using gl::GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED;
 using gl::GL_INDEX;
-using gl::GL_RG_INTEGER;
 using gl::GL_SYNC_CL_EVENT_ARB;
 using gl::GL_SYNC_CL_EVENT_COMPLETE_ARB;
 using gl::GL_DEBUG_OUTPUT_SYNCHRONOUS;
@@ -2490,7 +2509,6 @@ using gl::GL_UNDEFINED_VERTEX;
 using gl::GL_NO_RESET_NOTIFICATION;
 using gl::GL_NO_RESET_NOTIFICATION_ARB;
 using gl::GL_MAX_COMPUTE_SHARED_MEMORY_SIZE;
-using gl::GL_DEBUG_SEVERITY_NOTIFICATION;
 using gl::GL_MAX_COMBINED_DIMENSIONS;
 using gl::GL_DEPTH_COMPONENTS;
 using gl::GL_STENCIL_COMPONENTS;
@@ -2750,9 +2768,7 @@ using gl::GL_COMBINE4_NV;
 using gl::GL_MAX_SHININESS_NV;
 using gl::GL_MAX_SPOT_EXPONENT_NV;
 using gl::GL_MODELVIEW1_MATRIX_EXT;
-using gl::GL_INCR_WRAP;
 using gl::GL_INCR_WRAP_EXT;
-using gl::GL_DECR_WRAP;
 using gl::GL_DECR_WRAP_EXT;
 using gl::GL_VERTEX_WEIGHTING_EXT;
 using gl::GL_MODELVIEW1_ARB;
@@ -4119,21 +4135,14 @@ using gl::GL_ALPHA8I_EXT;
 using gl::GL_INTENSITY8I_EXT;
 using gl::GL_LUMINANCE8I_EXT;
 using gl::GL_LUMINANCE_ALPHA8I_EXT;
-using gl::GL_RED_INTEGER;
 using gl::GL_RED_INTEGER_EXT;
-using gl::GL_GREEN_INTEGER;
 using gl::GL_GREEN_INTEGER_EXT;
-using gl::GL_BLUE_INTEGER;
 using gl::GL_BLUE_INTEGER_EXT;
 using gl::GL_ALPHA_INTEGER;
 using gl::GL_ALPHA_INTEGER_EXT;
-using gl::GL_RGB_INTEGER;
 using gl::GL_RGB_INTEGER_EXT;
-using gl::GL_RGBA_INTEGER;
 using gl::GL_RGBA_INTEGER_EXT;
-using gl::GL_BGR_INTEGER;
 using gl::GL_BGR_INTEGER_EXT;
-using gl::GL_BGRA_INTEGER;
 using gl::GL_BGRA_INTEGER_EXT;
 using gl::GL_LUMINANCE_INTEGER_EXT;
 using gl::GL_LUMINANCE_ALPHA_INTEGER_EXT;
@@ -4436,6 +4445,7 @@ using gl::GL_RGBA16_SNORM;
 using gl::GL_SIGNED_NORMALIZED;
 using gl::GL_PRIMITIVE_RESTART;
 using gl::GL_MAX_PROGRAM_TEXTURE_GATHER_COMPONENTS_ARB;
+using gl::GL_SR8_EXT;
 using gl::GL_INT8_NV;
 using gl::GL_INT8_VEC2_NV;
 using gl::GL_INT8_VEC3_NV;
@@ -4944,6 +4954,25 @@ using gl::GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV;
 using gl::GL_REPRESENTATIVE_FRAGMENT_TEST_NV;
 using gl::GL_MULTISAMPLE_LINE_WIDTH_RANGE_ARB;
 using gl::GL_MULTISAMPLE_LINE_WIDTH_GRANULARITY_ARB;
+using gl::GL_VIEW_CLASS_EAC_R11;
+using gl::GL_VIEW_CLASS_EAC_RG11;
+using gl::GL_VIEW_CLASS_ETC2_RGB;
+using gl::GL_VIEW_CLASS_ETC2_RGBA;
+using gl::GL_VIEW_CLASS_ETC2_EAC_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_4x4_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_5x4_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_5x5_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_6x5_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_6x6_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_8x5_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_8x6_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_8x8_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_10x5_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_10x6_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_10x8_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_10x10_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_12x10_RGBA;
+using gl::GL_VIEW_CLASS_ASTC_12x12_RGBA;
 using gl::GL_COMPRESSED_RGBA_ASTC_4x4_KHR;
 using gl::GL_COMPRESSED_RGBA_ASTC_5x4_KHR;
 using gl::GL_COMPRESSED_RGBA_ASTC_5x5_KHR;

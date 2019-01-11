@@ -395,7 +395,7 @@ Binding::FunctionLogCallback & Binding::s_logCallback()
 
 int & Binding::s_pos()
 {
-    GLBINDING_THREAD_LOCAL static int pos = 0;
+    GLBINDING_THREAD_LOCAL int pos = 0;
     //static int pos = 0;
 
     return pos;
@@ -403,7 +403,7 @@ int & Binding::s_pos()
 
 ContextHandle & Binding::s_context()
 {
-    GLBINDING_THREAD_LOCAL static ContextHandle context = 0;
+    GLBINDING_THREAD_LOCAL ContextHandle context = 0;
     //static ContextHandle context = 0;
 
     return context;
@@ -411,7 +411,7 @@ ContextHandle & Binding::s_context()
 
 glbinding::GetProcAddress & Binding::s_getProcAddress()
 {
-    GLBINDING_THREAD_LOCAL static glbinding::GetProcAddress getProcAddress = nullptr;
+    GLBINDING_THREAD_LOCAL glbinding::GetProcAddress getProcAddress = nullptr;
     //static glbinding::GetProcAddress getProcAddress = nullptr;
 
     return getProcAddress;

@@ -329,7 +329,7 @@ public:
     *    `true` if the values equals, else `false`
     *
     *  @remark
-    *    This method is only visible to the compiler if this SharedBitfield's type list contains the type T
+    *    This method is only visible to the compiler if the this SharedBitfield's type list contains the type T
     */
     template <typename T>
     GLBINDING_CONSTEXPR inline auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type>::value, bool>::type;
@@ -497,7 +497,7 @@ public:
     *    `true` if the values equals, else `false`
     *
     *  @remark
-    *    This method is only visible to the compiler if this SharedBitfield's type list contains the type T
+    *    This method is only visible to the compiler if the this SharedBitfield's type list contains the type T
     */
     template <typename T>
     GLBINDING_CONSTEXPR inline auto operator==(T other) const -> typename std::enable_if<is_member_of_SharedBitfield<T, Type, Types...>::value, bool>::type;
