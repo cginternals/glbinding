@@ -55,7 +55,6 @@ set(sources
 
 # Build executable
 add_executable(${target}
-    MACOSX_BUNDLE
     ${sources}
 )
 

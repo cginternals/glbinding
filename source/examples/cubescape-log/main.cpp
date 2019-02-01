@@ -73,10 +73,10 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
 
 int main(int, char *[])
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
 

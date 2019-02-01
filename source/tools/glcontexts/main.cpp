@@ -22,6 +22,11 @@
 using namespace gl;
 using namespace glbinding;
 
+void error(int errnum, const char * errmsg)
+{
+    std::cerr << errnum << ": " << errmsg << std::endl;
+}
+
 void print(
   const Version & version
 , const bool forward
@@ -89,10 +94,10 @@ Version printVersionOfContextRequest(
 
 int main(int argc, char * argv[])
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    //glfwSetErrorCallback(error);
 
     std::cout << std::endl << "test: requesting all context configurations ..." << std::endl
         << std::endl << "  scheme: <requested_version>  <forward> <core>  <created_version>" << std::endl << std::endl;

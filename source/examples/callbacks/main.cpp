@@ -42,10 +42,10 @@ void doGLStuff(GLFWwindow * window)
 
 int main()
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
