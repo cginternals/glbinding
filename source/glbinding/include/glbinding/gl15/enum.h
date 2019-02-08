@@ -277,6 +277,10 @@ using gl::GL_COLOR_ARRAY;
 using gl::GL_INDEX_ARRAY;
 using gl::GL_TEXTURE_COORD_ARRAY;
 using gl::GL_EDGE_FLAG_ARRAY;
+using gl::GL_MULTISAMPLE;
+using gl::GL_SAMPLE_ALPHA_TO_COVERAGE;
+using gl::GL_SAMPLE_ALPHA_TO_ONE;
+using gl::GL_SAMPLE_COVERAGE;
 
 // ErrorCode
 
@@ -1369,10 +1373,6 @@ using gl::GL_BLEND_EQUATION;
 using gl::GL_RESCALE_NORMAL;
 using gl::GL_RGBA2;
 using gl::GL_TEXTURE_DEPTH;
-using gl::GL_MULTISAMPLE;
-using gl::GL_SAMPLE_ALPHA_TO_COVERAGE;
-using gl::GL_SAMPLE_ALPHA_TO_ONE;
-using gl::GL_SAMPLE_COVERAGE;
 using gl::GL_DEPTH_COMPONENT24;
 using gl::GL_DEPTH_COMPONENT32;
 using gl::GL_UNSIGNED_BYTE_2_3_3_REV;
