@@ -5,6 +5,7 @@
 
 # find_package(OpenGL REQUIRED)
 
+
 set(ADDITIONAL_LIBRARIES)
 set(ADDITIONAL_INCLUDES)
 if(OPTION_BUILD_WITH_BOOST_THREAD)
@@ -248,6 +249,7 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
+    externals::KHRplatform
 
     INTERFACE
 )

@@ -7,6 +7,7 @@
 
 # List of modules
 set(MODULE_NAMES
+    KHRplatform
     glbinding
     glbinding-aux
 )

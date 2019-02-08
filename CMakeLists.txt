@@ -184,6 +184,7 @@ endif()
 # Project modules
 # 
 
+add_subdirectory(3rdparty)
 add_subdirectory(source)
 add_subdirectory(docs)
 add_subdirectory(deploy)
