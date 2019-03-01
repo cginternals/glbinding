@@ -155,7 +155,7 @@ GLBINDING_API void glBufferDataARB(GLenum target, GLsizeiptrARB size, const void
 GLBINDING_API void glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, GLboolean commit);
 GLBINDING_API void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param);
 GLBINDING_API void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferStorageMask flags);
-GLBINDING_API void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags);
+GLBINDING_API void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, BufferStorageMask flags);
 GLBINDING_API void glBufferStorageMemEXT(GLenum target, GLsizeiptr size, GLuint memory, GLuint64 offset);
 GLBINDING_API void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const void * data);
@@ -1339,7 +1339,7 @@ GLBINDING_API void glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride,
 GLBINDING_API void glMap2xOES(GLenum target, GLfixed u1, GLfixed u2, GLint ustride, GLint uorder, GLfixed v1, GLfixed v2, GLint vstride, GLint vorder, GLfixed points);
 GLBINDING_API void * glMapBuffer(GLenum target, GLenum access);
 GLBINDING_API void * glMapBufferARB(GLenum target, GLenum access);
-GLBINDING_API void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, BufferAccessMask access);
+GLBINDING_API void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, MapBufferAccessMask access);
 GLBINDING_API void glMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const void * points);
 GLBINDING_API void glMapGrid1d(GLint un, GLdouble u1, GLdouble u2);
 GLBINDING_API void glMapGrid1f(GLint un, GLfloat u1, GLfloat u2);
@@ -1350,11 +1350,11 @@ GLBINDING_API void glMapGrid2xOES(GLint n, GLfixed u1, GLfixed u2, GLfixed v1, G
 GLBINDING_API void * glMapNamedBuffer(GLuint buffer, GLenum access);
 GLBINDING_API void * glMapNamedBufferEXT(GLuint buffer, GLenum access);
 GLBINDING_API void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length, BufferAccessMask access);
-GLBINDING_API void * glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, BufferAccessMask access);
+GLBINDING_API void * glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, MapBufferAccessMask access);
 GLBINDING_API void * glMapObjectBufferATI(GLuint buffer);
 GLBINDING_API void glMapParameterfvNV(GLenum target, GLenum pname, const GLfloat * params);
 GLBINDING_API void glMapParameterivNV(GLenum target, GLenum pname, const GLint * params);
-GLBINDING_API void * glMapTexture2DINTEL(GLuint texture, GLint level, MapBufferUsageMask access, GLint * stride, GLenum * layout);
+GLBINDING_API void * glMapTexture2DINTEL(GLuint texture, GLint level, BufferAccessMask access, GLint * stride, GLenum * layout);
 GLBINDING_API void glMapVertexAttrib1dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble * points);
 GLBINDING_API void glMapVertexAttrib1fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat * points);
 GLBINDING_API void glMapVertexAttrib2dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble * points);
@@ -1576,7 +1576,7 @@ GLBINDING_API void glNamedBufferPageCommitmentARB(GLuint buffer, GLintptr offset
 GLBINDING_API void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLboolean commit);
 GLBINDING_API void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags);
 GLBINDING_API void glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags);
-GLBINDING_API void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags);
+GLBINDING_API void glNamedBufferStorageExternalEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, BufferStorageMask flags);
 GLBINDING_API void glNamedBufferStorageMemEXT(GLuint buffer, GLsizeiptr size, GLuint memory, GLuint64 offset);
 GLBINDING_API void glNamedBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);
 GLBINDING_API void glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data);

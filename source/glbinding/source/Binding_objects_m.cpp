@@ -29,7 +29,7 @@ Function<void, GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, 
 Function<void, GLenum, GLfixed, GLfixed, GLint, GLint, GLfixed, GLfixed, GLint, GLint, GLfixed> Binding::Map2xOES("glMap2xOES");
 Function<void *, GLenum, GLenum> Binding::MapBuffer("glMapBuffer");
 Function<void *, GLenum, GLenum> Binding::MapBufferARB("glMapBufferARB");
-Function<void *, GLenum, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapBufferRange("glMapBufferRange");
+Function<void *, GLenum, GLintptr, GLsizeiptr, MapBufferAccessMask> Binding::MapBufferRange("glMapBufferRange");
 Function<void, GLenum, GLuint, GLenum, GLsizei, GLsizei, GLint, GLint, GLboolean, const void *> Binding::MapControlPointsNV("glMapControlPointsNV");
 Function<void, GLint, GLdouble, GLdouble> Binding::MapGrid1d("glMapGrid1d");
 Function<void, GLint, GLfloat, GLfloat> Binding::MapGrid1f("glMapGrid1f");
@@ -40,11 +40,11 @@ Function<void, GLint, GLfixed, GLfixed, GLfixed, GLfixed> Binding::MapGrid2xOES(
 Function<void *, GLuint, GLenum> Binding::MapNamedBuffer("glMapNamedBuffer");
 Function<void *, GLuint, GLenum> Binding::MapNamedBufferEXT("glMapNamedBufferEXT");
 Function<void *, GLuint, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapNamedBufferRange("glMapNamedBufferRange");
-Function<void *, GLuint, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapNamedBufferRangeEXT("glMapNamedBufferRangeEXT");
+Function<void *, GLuint, GLintptr, GLsizeiptr, MapBufferAccessMask> Binding::MapNamedBufferRangeEXT("glMapNamedBufferRangeEXT");
 Function<void *, GLuint> Binding::MapObjectBufferATI("glMapObjectBufferATI");
 Function<void, GLenum, GLenum, const GLfloat *> Binding::MapParameterfvNV("glMapParameterfvNV");
 Function<void, GLenum, GLenum, const GLint *> Binding::MapParameterivNV("glMapParameterivNV");
-Function<void *, GLuint, GLint, MapBufferUsageMask, GLint *, GLenum *> Binding::MapTexture2DINTEL("glMapTexture2DINTEL");
+Function<void *, GLuint, GLint, BufferAccessMask, GLint *, GLenum *> Binding::MapTexture2DINTEL("glMapTexture2DINTEL");
 Function<void, GLuint, GLuint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> Binding::MapVertexAttrib1dAPPLE("glMapVertexAttrib1dAPPLE");
 Function<void, GLuint, GLuint, GLfloat, GLfloat, GLint, GLint, const GLfloat *> Binding::MapVertexAttrib1fAPPLE("glMapVertexAttrib1fAPPLE");
 Function<void, GLuint, GLuint, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> Binding::MapVertexAttrib2dAPPLE("glMapVertexAttrib2dAPPLE");

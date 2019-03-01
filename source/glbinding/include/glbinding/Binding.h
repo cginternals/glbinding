@@ -576,7 +576,7 @@ public:
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> BufferPageCommitmentARB; ///< Wrapper for glBufferPageCommitmentARB
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> BufferParameteriAPPLE; ///< Wrapper for glBufferParameteriAPPLE
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::BufferStorageMask> BufferStorage; ///< Wrapper for glBufferStorage
-    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::MapBufferUsageMask> BufferStorageExternalEXT; ///< Wrapper for glBufferStorageExternalEXT
+    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::BufferStorageMask> BufferStorageExternalEXT; ///< Wrapper for glBufferStorageExternalEXT
     static Function<void, gl::GLenum, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> BufferStorageMemEXT; ///< Wrapper for glBufferStorageMemEXT
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData; ///< Wrapper for glBufferSubData
     static Function<void, gl::GLenum, gl::GLintptrARB, gl::GLsizeiptrARB, const void *> BufferSubDataARB; ///< Wrapper for glBufferSubDataARB
@@ -1749,7 +1749,7 @@ public:
     static Function<void, gl::GLenum, gl::GLfixed, gl::GLfixed, gl::GLint, gl::GLint, gl::GLfixed, gl::GLfixed, gl::GLint, gl::GLint, gl::GLfixed> Map2xOES; ///< Wrapper for glMap2xOES
     static Function<void *, gl::GLenum, gl::GLenum> MapBuffer; ///< Wrapper for glMapBuffer
     static Function<void *, gl::GLenum, gl::GLenum> MapBufferARB; ///< Wrapper for glMapBufferARB
-    static Function<void *, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapBufferRange; ///< Wrapper for glMapBufferRange
+    static Function<void *, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::MapBufferAccessMask> MapBufferRange; ///< Wrapper for glMapBufferRange
     static Function<void, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLint, gl::GLint, gl::GLboolean, const void *> MapControlPointsNV; ///< Wrapper for glMapControlPointsNV
     static Function<void, gl::GLint, gl::GLdouble, gl::GLdouble> MapGrid1d; ///< Wrapper for glMapGrid1d
     static Function<void, gl::GLint, gl::GLfloat, gl::GLfloat> MapGrid1f; ///< Wrapper for glMapGrid1f
@@ -1760,11 +1760,11 @@ public:
     static Function<void *, gl::GLuint, gl::GLenum> MapNamedBuffer; ///< Wrapper for glMapNamedBuffer
     static Function<void *, gl::GLuint, gl::GLenum> MapNamedBufferEXT; ///< Wrapper for glMapNamedBufferEXT
     static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapNamedBufferRange; ///< Wrapper for glMapNamedBufferRange
-    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapNamedBufferRangeEXT; ///< Wrapper for glMapNamedBufferRangeEXT
+    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::MapBufferAccessMask> MapNamedBufferRangeEXT; ///< Wrapper for glMapNamedBufferRangeEXT
     static Function<void *, gl::GLuint> MapObjectBufferATI; ///< Wrapper for glMapObjectBufferATI
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLfloat *> MapParameterfvNV; ///< Wrapper for glMapParameterfvNV
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLint *> MapParameterivNV; ///< Wrapper for glMapParameterivNV
-    static Function<void *, gl::GLuint, gl::GLint, gl::MapBufferUsageMask, gl::GLint *, gl::GLenum *> MapTexture2DINTEL; ///< Wrapper for glMapTexture2DINTEL
+    static Function<void *, gl::GLuint, gl::GLint, gl::BufferAccessMask, gl::GLint *, gl::GLenum *> MapTexture2DINTEL; ///< Wrapper for glMapTexture2DINTEL
     static Function<void, gl::GLuint, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, const gl::GLdouble *> MapVertexAttrib1dAPPLE; ///< Wrapper for glMapVertexAttrib1dAPPLE
     static Function<void, gl::GLuint, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLint, gl::GLint, const gl::GLfloat *> MapVertexAttrib1fAPPLE; ///< Wrapper for glMapVertexAttrib1fAPPLE
     static Function<void, gl::GLuint, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, const gl::GLdouble *> MapVertexAttrib2dAPPLE; ///< Wrapper for glMapVertexAttrib2dAPPLE
@@ -1985,7 +1985,7 @@ public:
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentEXT; ///< Wrapper for glNamedBufferPageCommitmentEXT
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorage; ///< Wrapper for glNamedBufferStorage
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorageEXT; ///< Wrapper for glNamedBufferStorageEXT
-    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::MapBufferUsageMask> NamedBufferStorageExternalEXT; ///< Wrapper for glNamedBufferStorageExternalEXT
+    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::BufferStorageMask> NamedBufferStorageExternalEXT; ///< Wrapper for glNamedBufferStorageExternalEXT
     static Function<void, gl::GLuint, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> NamedBufferStorageMemEXT; ///< Wrapper for glNamedBufferStorageMemEXT
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubData; ///< Wrapper for glNamedBufferSubData
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubDataEXT; ///< Wrapper for glNamedBufferSubDataEXT

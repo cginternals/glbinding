@@ -67,9 +67,9 @@ namespace gl
 {
 
 
-std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value)
+std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value)
 {
-    stream << glbinding::aux::bitfieldString<BufferAccessMask>(value);
+    stream << glbinding::aux::bitfieldString<BufferStorageMask>(value);
     return stream;
 }
 
@@ -184,9 +184,9 @@ namespace gl
 {
 
 
-std::ostream & operator<<(std::ostream & stream, const MapBufferUsageMask & value)
+std::ostream & operator<<(std::ostream & stream, const MapBufferAccessMask & value)
 {
-    stream << glbinding::aux::bitfieldString<MapBufferUsageMask>(value);
+    stream << glbinding::aux::bitfieldString<MapBufferAccessMask>(value);
     return stream;
 }
 
@@ -340,9 +340,9 @@ namespace gl
 {
 
 
-std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value)
+std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value)
 {
-    stream << glbinding::aux::bitfieldString<BufferStorageMask>(value);
+    stream << glbinding::aux::bitfieldString<BufferAccessMask>(value);
     return stream;
 }
 
@@ -811,13 +811,13 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::AttribMask *>*>(value);
     }
 
-    if (typeid(*value) == typeid(Value<gl::BufferAccessMask>))
+    if (typeid(*value) == typeid(Value<gl::BufferStorageMask>))
     {
-        return stream << *reinterpret_cast<const Value<gl::BufferAccessMask>*>(value);
+        return stream << *reinterpret_cast<const Value<gl::BufferStorageMask>*>(value);
     }
-    if (typeid(*value) == typeid(Value<gl::BufferAccessMask *>))
+    if (typeid(*value) == typeid(Value<gl::BufferStorageMask *>))
     {
-        return stream << *reinterpret_cast<const Value<gl::BufferAccessMask *>*>(value);
+        return stream << *reinterpret_cast<const Value<gl::BufferStorageMask *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::ClearBufferMask>))
@@ -892,13 +892,13 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::FragmentShaderDestModMaskATI *>*>(value);
     }
 
-    if (typeid(*value) == typeid(Value<gl::MapBufferUsageMask>))
+    if (typeid(*value) == typeid(Value<gl::MapBufferAccessMask>))
     {
-        return stream << *reinterpret_cast<const Value<gl::MapBufferUsageMask>*>(value);
+        return stream << *reinterpret_cast<const Value<gl::MapBufferAccessMask>*>(value);
     }
-    if (typeid(*value) == typeid(Value<gl::MapBufferUsageMask *>))
+    if (typeid(*value) == typeid(Value<gl::MapBufferAccessMask *>))
     {
-        return stream << *reinterpret_cast<const Value<gl::MapBufferUsageMask *>*>(value);
+        return stream << *reinterpret_cast<const Value<gl::MapBufferAccessMask *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::MemoryBarrierMask>))
@@ -1000,13 +1000,13 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::UnusedMask *>*>(value);
     }
 
-    if (typeid(*value) == typeid(Value<gl::BufferStorageMask>))
+    if (typeid(*value) == typeid(Value<gl::BufferAccessMask>))
     {
-        return stream << *reinterpret_cast<const Value<gl::BufferStorageMask>*>(value);
+        return stream << *reinterpret_cast<const Value<gl::BufferAccessMask>*>(value);
     }
-    if (typeid(*value) == typeid(Value<gl::BufferStorageMask *>))
+    if (typeid(*value) == typeid(Value<gl::BufferAccessMask *>))
     {
-        return stream << *reinterpret_cast<const Value<gl::BufferStorageMask *>*>(value);
+        return stream << *reinterpret_cast<const Value<gl::BufferAccessMask *>*>(value);
     }
 
     // expect an AbstractValue with a pointer in first member

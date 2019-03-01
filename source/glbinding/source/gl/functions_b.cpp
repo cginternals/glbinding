@@ -586,7 +586,7 @@ void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferSt
     return Binding::BufferStorage(target, size, data, flags);
 }
 
-void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags)
+void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, BufferStorageMask flags)
 {
     return Binding::BufferStorageExternalEXT(target, offset, size, clientBuffer, flags);
 }

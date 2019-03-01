@@ -61,7 +61,7 @@ namespace gl
 {
 
 
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
 
 
 } // namespace gl
@@ -160,7 +160,7 @@ namespace gl
 {
 
 
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const MapBufferUsageMask & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const MapBufferAccessMask & value);
 
 
 } // namespace gl
@@ -292,7 +292,7 @@ namespace gl
 {
 
 
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
 
 
 } // namespace gl

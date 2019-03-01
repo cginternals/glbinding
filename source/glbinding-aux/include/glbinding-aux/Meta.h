@@ -394,7 +394,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::MapBufferUsageMask bitfield);
+    static const std::string & getString(gl::MapBufferAccessMask bitfield);
 
     /**
     *  @brief

@@ -145,10 +145,10 @@ const std::string & Meta::getString(const FragmentShaderDestModMaskATI bitfield)
 }
 
 
-const std::string & Meta::getString(const MapBufferUsageMask bitfield)
+const std::string & Meta::getString(const MapBufferAccessMask bitfield)
 {
-    const auto i = Meta_StringsByMapBufferUsageMask.find(bitfield);
-    if (i != Meta_StringsByMapBufferUsageMask.end())
+    const auto i = Meta_StringsByMapBufferAccessMask.find(bitfield);
+    if (i != Meta_StringsByMapBufferAccessMask.end())
     {
         return i->second;
     }
