@@ -5,14 +5,31 @@ if(WIN32 AND ENABLE_WIN_INSTALL_HACKS)
 
 	# Windows Installer Specials for Deployment
 
+	# ToDo - Targets are to specific - the ZIP comprising examples or tools also need all binaries ... same for ubuntu -> if not installed but downloaded as archive ...
+
+	find_package(OpenGL REQUIRED)
+
 
 	# GLEW Dependencies (currently relying on custom findGLEW script)
+	
+	find_package(GLEW REQUIRED)
 
 	install(FILES ${GLEW_BINARY} DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw)
 	message(STATUS ${GLEW_BINARY})
 
 
+	# ToDo: cpplocate Dependencies - there might already be a nice way to do this
+
+	find_package(cpplocate REQUIRED)
+
+	set(CPPLOCATE_BINARY "${cpplocate_DIR}/cpplocate.dll")
+	install(FILES ${CPPLOCATE_BINARY} DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw)
+	message(STATUS ${CPPLOCATE_BINARY})
+
+
 	# ToDo: glfw3 Dependencies - there might already be a nice way to do this -> see glfw3Targets-release.cmake ...
+
+	find_package(glfw3 REQUIRED)
 
 	set(GLFW3_BINARY "${glfw3_DIR}/../../../bin/glfw3.dll")
 	install(FILES ${GLFW3_BINARY} DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw)
