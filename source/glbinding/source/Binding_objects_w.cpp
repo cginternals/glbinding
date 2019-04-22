@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -8,7 +9,9 @@ namespace glbinding
 {
 
 
+Function<void, GLuint, GLuint, const GLuint *, GLuint, const GLuint *, const GLenum *> Binding::WaitSemaphoreEXT("glWaitSemaphoreEXT");
 Function<void, GLsync, UnusedMask, GLuint64> Binding::WaitSync("glWaitSync");
+Function<void, GLuint64> Binding::WaitVkSemaphoreNV("glWaitVkSemaphoreNV");
 Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> Binding::WeightPathsNV("glWeightPathsNV");
 Function<void, GLint, GLenum, GLsizei, const void *> Binding::WeightPointerARB("glWeightPointerARB");
 Function<void, GLint, const GLbyte *> Binding::WeightbvARB("glWeightbvARB");
@@ -77,6 +80,7 @@ Function<void, GLshort, GLshort, GLshort, GLshort> Binding::WindowPos4sMESA("glW
 Function<void, const GLshort *> Binding::WindowPos4svMESA("glWindowPos4svMESA");
 Function<void, GLenum, GLsizei, const GLint *> Binding::WindowRectanglesEXT("glWindowRectanglesEXT");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::WriteMaskEXT("glWriteMaskEXT");
+
 
 
 } // namespace glbinding

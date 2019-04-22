@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -306,6 +306,11 @@ void glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum * b
     return Binding::FramebufferDrawBuffersEXT(framebuffer, n, bufs);
 }
 
+void glFramebufferFetchBarrierEXT()
+{
+    return Binding::FramebufferFetchBarrierEXT();
+}
+
 void glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
 {
     return Binding::FramebufferParameteri(target, pname, param);
@@ -334,6 +339,11 @@ void glFramebufferSampleLocationsfvARB(GLenum target, GLuint start, GLsizei coun
 void glFramebufferSampleLocationsfvNV(GLenum target, GLuint start, GLsizei count, const GLfloat * v)
 {
     return Binding::FramebufferSampleLocationsfvNV(target, start, count, v);
+}
+
+void glFramebufferSamplePositionsfvAMD(GLenum target, GLuint numsamples, GLuint pixelindex, const GLfloat * values)
+{
+    return Binding::FramebufferSamplePositionsfvAMD(target, numsamples, pixelindex, values);
 }
 
 void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
@@ -435,6 +445,7 @@ void glFrustumxOES(GLfixed l, GLfixed r, GLfixed b, GLfixed t, GLfixed n, GLfixe
 {
     return Binding::FrustumxOES(l, r, b, t, n, f);
 }
+
 
 
 

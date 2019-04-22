@@ -4,7 +4,6 @@
 # 
 
 # Generate version-header
-string(TOUPPER ${META_PROJECT_NAME} META_PROJECT_NAME_UPPER)
 configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_NAME}/${META_PROJECT_NAME}-version.h)
 
 
@@ -12,21 +11,29 @@ configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_N
 # Sub-projects
 # 
 
-# Libraries
 set(IDE_FOLDER "")
+
+# Libraries
 add_subdirectory(glbinding)
+add_subdirectory(glbinding-aux)
+
+# Tools
+if(OPTION_BUILD_TOOLS)
+    set(IDE_FOLDER "Tools")
+    add_subdirectory(tools)
+endif()
 
 # Examples
-set(IDE_FOLDER "Examples")
-add_subdirectory(examples)
-
-# Examples
-set(IDE_FOLDER "Tools")
-add_subdirectory(tools)
+if(OPTION_BUILD_EXAMPLES)
+    set(IDE_FOLDER "Examples")
+    add_subdirectory(examples)
+endif()
 
 # Tests
-set(IDE_FOLDER "Tests")
-add_subdirectory(tests)
+if(OPTION_BUILD_TESTS AND NOT MINGW)
+    set(IDE_FOLDER "Tests")
+    add_subdirectory(tests)
+endif()
 
 
 # 

@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -10,6 +11,7 @@ namespace glbinding
 
 Function<void, GLenum, GLfloat> Binding::Accum("glAccum");
 Function<void, GLenum, GLfixed> Binding::AccumxOES("glAccumxOES");
+Function<GLboolean, GLuint, GLuint64, GLuint> Binding::AcquireKeyedMutexWin32EXT("glAcquireKeyedMutexWin32EXT");
 Function<void, GLuint> Binding::ActiveProgramEXT("glActiveProgramEXT");
 Function<void, GLuint, GLuint> Binding::ActiveShaderProgram("glActiveShaderProgram");
 Function<void, GLenum> Binding::ActiveStencilFaceEXT("glActiveStencilFaceEXT");
@@ -21,6 +23,7 @@ Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, G
 Function<void, GLenum, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> Binding::AlphaFragmentOp3ATI("glAlphaFragmentOp3ATI");
 Function<void, GLenum, GLfloat> Binding::AlphaFunc("glAlphaFunc");
 Function<void, GLenum, GLfixed> Binding::AlphaFuncxOES("glAlphaFuncxOES");
+Function<void, GLenum> Binding::AlphaToCoverageDitherControlNV("glAlphaToCoverageDitherControlNV");
 Function<void> Binding::ApplyFramebufferAttachmentCMAAINTEL("glApplyFramebufferAttachmentCMAAINTEL");
 Function<void, GLenum> Binding::ApplyTextureEXT("glApplyTextureEXT");
 Function<GLboolean, GLsizei, const GLuint *, GLboolean *> Binding::AreProgramsResidentNV("glAreProgramsResidentNV");
@@ -32,6 +35,7 @@ Function<void, GLenum, GLint, GLenum, GLsizei, GLuint, GLuint> Binding::ArrayObj
 Function<void, GLuint> Binding::AsyncMarkerSGIX("glAsyncMarkerSGIX");
 Function<void, GLhandleARB, GLhandleARB> Binding::AttachObjectARB("glAttachObjectARB");
 Function<void, GLuint, GLuint> Binding::AttachShader("glAttachShader");
+
 
 
 } // namespace glbinding

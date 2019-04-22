@@ -7,8 +7,11 @@
 #include <OpenGL/OpenGL.h>
 #endif
 
-#include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
+
+#include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/types_to_string.h>
 
 #include <QDebug>
 #include <QString>
@@ -19,6 +22,9 @@
 #include <QOpenGLContext>
 
 #include "Painter.h"
+
+
+Canvas * Canvas::s_getProcAddressHelper = nullptr;
 
 
 Canvas::Canvas(
@@ -34,6 +40,11 @@ Canvas::Canvas(
 , m_continuousRepaint(false)
 , m_painter(nullptr)
 {
+    if (!s_getProcAddressHelper)
+    {
+        s_getProcAddressHelper = this;
+    }
+
     setSurfaceType(OpenGLSurface);
 
     create();
@@ -85,7 +96,7 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
     if (!m_painter)
     {
         m_painter = new Painter();
-        m_painter->initialize();
+        m_painter->initialize(getProcAddress);
 
         emit numCubesUpdate(m_painter->numCubes());
     }
@@ -97,11 +108,11 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
     qDebug() << "OpenGL API:     " << (m_context->isOpenGLES() ? "GLES" : "GL");
 #endif
     qDebug() << "OpenGL Version: " << qPrintable(QString::fromStdString(
-        glbinding::ContextInfo::version().toString()));
+        glbinding::aux::ContextInfo::version().toString()));
     qDebug() << "OpenGL Vendor:  " << qPrintable(QString::fromStdString(
-        glbinding::ContextInfo::vendor()));
+        glbinding::aux::ContextInfo::vendor()));
     qDebug() << "OpenGL Renderer:" << qPrintable(QString::fromStdString(
-        glbinding::ContextInfo::renderer()));
+        glbinding::aux::ContextInfo::renderer()));
     qDebug();
 
     m_context->doneCurrent();
@@ -263,4 +274,21 @@ void Canvas::keyPressEvent(QKeyEvent * event)
 
     if (event->isAccepted())
         paintGL();
+}
+
+ProcAddress Canvas::getProcAddress(const char * name)
+{
+    if (!s_getProcAddressHelper || name == nullptr)
+    {
+        return nullptr;
+    }
+
+    const auto symbol = std::string(name);
+
+#if (QT_VERSION >= QT_VERSION_CHECK(5, 4, 0))
+    const auto qtSymbol = QByteArray::fromStdString(symbol);
+#else
+    const auto qtSymbol = QByteArray::fromRawData(symbol.c_str(), symbol.size());
+#endif
+    return s_getProcAddressHelper->m_context->getProcAddress(qtSymbol);
 }

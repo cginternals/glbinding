@@ -19,10 +19,11 @@ endif()
 
 set(DEFAULT_PROJECT_OPTIONS
     DEBUG_POSTFIX             "d"
-    CXX_STANDARD              11
+    CXX_STANDARD              11 # Not available before CMake 3.1; see below for manual command line argument addition
     LINKER_LANGUAGE           "CXX"
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET     "hidden"
+    CXX_EXTENSIONS            Off
 )
 
 
@@ -70,12 +71,14 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         /MP           # -> build with multiple processes
         /W4           # -> warning level 4
         # /WX         # -> treat warnings as errors
-        /Zm114        # -> Memory size for precompiled headers
-
         /wd4251       # -> disable warning: 'identifier': class 'type' needs to have dll-interface to be used by clients of class 'type2'
         /wd4592       # -> disable warning: 'identifier': symbol will be dynamically initialized (implementation limitation)
+        # /wd4201     # -> disable warning: nonstandard extension used: nameless struct/union (caused by GLM)
         /wd4127       # -> disable warning: conditional expression is constant (caused by Qt)
 
+        # /Zm114      # -> Memory size for precompiled headers (insufficient for msvc 2013)
+        /Zm200        # -> Memory size for precompiled headers
+        
         #$<$<CONFIG:Debug>:
         #/RTCc         # -> value is assigned to a smaller data type and results in a data loss
         #>
@@ -86,11 +89,11 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         /GL           # -> whole program optimization: enable link-time code generation (disables Zi)
         /GF           # -> enable string pooling
         >
+        
+        # No manual c++11 enable for MSVC as all supported MSVC versions for cmake-init have C++11 implicitly enabled (MSVC >=2013)
 
-    PUBLIC
-
+        PUBLIC
     )
-
 endif ()
 
 # GCC and Clang compiler options
@@ -114,6 +117,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
         
         $<$<CXX_COMPILER_ID:GNU>:
             -Wmaybe-uninitialized
+        
+            -Wno-unknown-pragmas
             
             $<$<VERSION_GREATER:$<CXX_COMPILER_VERSION>,4.8>:
                 -Wpedantic
@@ -121,17 +126,18 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
                 -Wreturn-local-addr
             >
         >
-
+        
         $<$<CXX_COMPILER_ID:Clang>:
             -Wpedantic
-            
-            -Wreturn-stack-address
+                
+            # -Wreturn-stack-address # gives false positives
         >
     PUBLIC
         $<$<PLATFORM_ID:Darwin>:
             -pthread
         >
-
+        
+        # Required for CMake < 3.1; should be removed if minimum required CMake version is raised.
         $<$<VERSION_LESS:${CMAKE_VERSION},3.1>:
             -std=c++11
         >

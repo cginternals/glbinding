@@ -1,15 +1,20 @@
 
 #include <iostream>
 
-#define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <glbinding/ContextInfo.h>
 #include <glbinding/Version.h>
-#include <glbinding/callbacks.h>
 #include <glbinding/Binding.h>
+#include <glbinding/FunctionCall.h>
+#include <glbinding/CallbackMask.h>
 
 #include <glbinding/gl/gl.h>
+
+#include <glbinding-aux/ContextInfo.h>
+#include <glbinding-aux/Meta.h>
+#include <glbinding-aux/types_to_string.h>
+#include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/debug.h>
 
 #include "CubeScape.h"
 
@@ -64,10 +69,10 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
 
 int main(int, char *[])
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
 
@@ -90,21 +95,15 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    setAfterCallback([](const FunctionCall &) 
-    {
-        gl::GLenum error = glGetError();
-        if (error != GL_NO_ERROR)
-            std::cout << "error: " << error << std::endl;
-    });
-
-    Binding::initialize(false); // only resolve functions that are actually used (lazy)
+    Binding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)
 
     std::cout << std::endl
-        << "OpenGL Version:  " << ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << ContextInfo::renderer() << std::endl;
+        << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
+        << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl;
 
     std::cout << std::endl
         << "Press i or d to either increase or decrease number of cubes." << std::endl << std::endl;

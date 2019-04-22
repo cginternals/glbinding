@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -259,6 +259,11 @@ void glBindSampler(GLuint unit, GLuint sampler)
 void glBindSamplers(GLuint first, GLsizei count, const GLuint * samplers)
 {
     return Binding::BindSamplers(first, count, samplers);
+}
+
+void glBindShadingRateImageNV(GLuint texture)
+{
+    return Binding::BindShadingRateImageNV(texture);
 }
 
 GLuint glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value)
@@ -551,6 +556,11 @@ void glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLs
     return Binding::BufferAddressRangeNV(pname, index, address, length);
 }
 
+void glBufferAttachMemoryNV(GLenum target, GLuint memory, GLuint64 offset)
+{
+    return Binding::BufferAttachMemoryNV(target, memory, offset);
+}
+
 void glBufferData(GLenum target, GLsizeiptr size, const void * data, GLenum usage)
 {
     return Binding::BufferData(target, size, data, usage);
@@ -576,6 +586,16 @@ void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferSt
     return Binding::BufferStorage(target, size, data, flags);
 }
 
+void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, BufferStorageMask flags)
+{
+    return Binding::BufferStorageExternalEXT(target, offset, size, clientBuffer, flags);
+}
+
+void glBufferStorageMemEXT(GLenum target, GLsizeiptr size, GLuint memory, GLuint64 offset)
+{
+    return Binding::BufferStorageMemEXT(target, size, memory, offset);
+}
+
 void glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const void * data)
 {
     return Binding::BufferSubData(target, offset, size, data);
@@ -585,6 +605,7 @@ void glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, c
 {
     return Binding::BufferSubDataARB(target, offset, size, data);
 }
+
 
 
 

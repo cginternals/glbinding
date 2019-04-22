@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -246,9 +246,19 @@ void glReferencePlaneSGIX(const GLdouble * equation)
     return Binding::ReferencePlaneSGIX(equation);
 }
 
+GLboolean glReleaseKeyedMutexWin32EXT(GLuint memory, GLuint64 key)
+{
+    return Binding::ReleaseKeyedMutexWin32EXT(memory, key);
+}
+
 void glReleaseShaderCompiler()
 {
     return Binding::ReleaseShaderCompiler();
+}
+
+void glRenderGpuMaskNV(GLbitfield mask)
+{
+    return Binding::RenderGpuMaskNV(mask);
 }
 
 GLint glRenderMode(GLenum mode)
@@ -269,6 +279,11 @@ void glRenderbufferStorageEXT(GLenum target, GLenum internalformat, GLsizei widt
 void glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
     return Binding::RenderbufferStorageMultisample(target, samples, internalformat, width, height);
+}
+
+void glRenderbufferStorageMultisampleAdvancedAMD(GLenum target, GLsizei samples, GLsizei storageSamples, GLenum internalformat, GLsizei width, GLsizei height)
+{
+    return Binding::RenderbufferStorageMultisampleAdvancedAMD(target, samples, storageSamples, internalformat, width, height);
 }
 
 void glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
@@ -411,6 +426,11 @@ void glResetHistogramEXT(GLenum target)
     return Binding::ResetHistogramEXT(target);
 }
 
+void glResetMemoryObjectParameterNV(GLuint memory, GLenum pname)
+{
+    return Binding::ResetMemoryObjectParameterNV(memory, pname);
+}
+
 void glResetMinmax(GLenum target)
 {
     return Binding::ResetMinmax(target);
@@ -455,6 +475,7 @@ void glRotatexOES(GLfixed angle, GLfixed x, GLfixed y, GLfixed z)
 {
     return Binding::RotatexOES(angle, x, y, z);
 }
+
 
 
 

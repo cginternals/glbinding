@@ -3,7 +3,8 @@
 # External dependencies
 # 
 
-find_package(GLFW)
+find_package(glfw3)
+find_package(${META_PROJECT_NAME} REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/../../../")
 
 
 # 
@@ -13,8 +14,8 @@ find_package(GLFW)
 # Target name
 set(target glbinding-test)
 
-if (NOT GLFW_FOUND)
-    message("Test ${target} skipped: GLFW not found")
+if (NOT glfw3_FOUND)
+    message("Test ${target} skipped: glfw3 not found")
     return()
 else()
     message(STATUS "Test ${target}")
@@ -69,11 +70,9 @@ target_include_directories(${target}
     PRIVATE
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
-    ${PROJECT_SOURCE_DIR}/source/glbinding/source/
-    SYSTEM
-    ${GLFW_INCLUDE_DIR}
+    ${PROJECT_SOURCE_DIR}/../glbinding/source/
+    ${PROJECT_SOURCE_DIR}/../glbinding-aux/source/
 )
-
 
 # 
 # Libraries
@@ -82,8 +81,9 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    ${GLFW_LIBRARIES}
+    glfw
     ${META_PROJECT_NAME}::glbinding
+    ${META_PROJECT_NAME}::glbinding-aux
     gmock-dev
 )
 
@@ -95,7 +95,7 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
- 	$<$<BOOL:${OPTION_BUILD_GPU_TESTS}>:BUILD_GPU_TESTS>   
+ 	BUILD_GPU_TESTS
 )
 
 

@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -26,6 +27,7 @@ Function<void, GLenum> Binding::TessellationModeAMD("glTessellationModeAMD");
 Function<GLboolean, GLuint> Binding::TestFenceAPPLE("glTestFenceAPPLE");
 Function<GLboolean, GLuint> Binding::TestFenceNV("glTestFenceNV");
 Function<GLboolean, GLenum, GLuint> Binding::TestObjectAPPLE("glTestObjectAPPLE");
+Function<void, GLenum, GLuint, GLuint64> Binding::TexAttachMemoryNV("glTexAttachMemoryNV");
 Function<void, GLenum, GLenum, GLuint> Binding::TexBuffer("glTexBuffer");
 Function<void, GLenum, GLenum, GLuint> Binding::TexBufferARB("glTexBufferARB");
 Function<void, GLenum, GLenum, GLuint> Binding::TexBufferEXT("glTexBufferEXT");
@@ -156,6 +158,11 @@ Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei> Binding::TexStorage2D(
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> Binding::TexStorage2DMultisample("glTexStorage2DMultisample");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TexStorage3D("glTexStorage3D");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexStorage3DMultisample("glTexStorage3DMultisample");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLuint, GLuint64> Binding::TexStorageMem1DEXT("glTexStorageMem1DEXT");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLuint, GLuint64> Binding::TexStorageMem2DEXT("glTexStorageMem2DEXT");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean, GLuint, GLuint64> Binding::TexStorageMem2DMultisampleEXT("glTexStorageMem2DMultisampleEXT");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLuint, GLuint64> Binding::TexStorageMem3DEXT("glTexStorageMem3DEXT");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean, GLuint, GLuint64> Binding::TexStorageMem3DMultisampleEXT("glTexStorageMem3DMultisampleEXT");
 Function<void, GLenum, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, TextureStorageMaskAMD> Binding::TexStorageSparseAMD("glTexStorageSparseAMD");
 Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage1D("glTexSubImage1D");
 Function<void, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage1DEXT("glTexSubImage1DEXT");
@@ -164,6 +171,7 @@ Function<void, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, co
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage3D("glTexSubImage3D");
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage3DEXT("glTexSubImage3DEXT");
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::TexSubImage4DSGIS("glTexSubImage4DSGIS");
+Function<void, GLuint, GLuint, GLuint64> Binding::TextureAttachMemoryNV("glTextureAttachMemoryNV");
 Function<void> Binding::TextureBarrier("glTextureBarrier");
 Function<void> Binding::TextureBarrierNV("glTextureBarrierNV");
 Function<void, GLuint, GLenum, GLuint> Binding::TextureBuffer("glTextureBuffer");
@@ -206,6 +214,11 @@ Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::Text
 Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TextureStorage3DEXT("glTextureStorage3DEXT");
 Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TextureStorage3DMultisample("glTextureStorage3DMultisample");
 Function<void, GLuint, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TextureStorage3DMultisampleEXT("glTextureStorage3DMultisampleEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLuint, GLuint64> Binding::TextureStorageMem1DEXT("glTextureStorageMem1DEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLuint, GLuint64> Binding::TextureStorageMem2DEXT("glTextureStorageMem2DEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLboolean, GLuint, GLuint64> Binding::TextureStorageMem2DMultisampleEXT("glTextureStorageMem2DMultisampleEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLuint, GLuint64> Binding::TextureStorageMem3DEXT("glTextureStorageMem3DEXT");
+Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean, GLuint, GLuint64> Binding::TextureStorageMem3DMultisampleEXT("glTextureStorageMem3DMultisampleEXT");
 Function<void, GLuint, GLenum, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, TextureStorageMaskAMD> Binding::TextureStorageSparseAMD("glTextureStorageSparseAMD");
 Function<void, GLuint, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage1D("glTextureSubImage1D");
 Function<void, GLuint, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::TextureSubImage1DEXT("glTextureSubImage1DEXT");
@@ -226,6 +239,7 @@ Function<void, GLuint, GLuint, GLenum, const GLfloat *> Binding::TransformPathNV
 Function<void, GLdouble, GLdouble, GLdouble> Binding::Translated("glTranslated");
 Function<void, GLfloat, GLfloat, GLfloat> Binding::Translatef("glTranslatef");
 Function<void, GLfixed, GLfixed, GLfixed> Binding::TranslatexOES("glTranslatexOES");
+
 
 
 } // namespace glbinding

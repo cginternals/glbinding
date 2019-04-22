@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -28,7 +29,7 @@ Function<void, GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, 
 Function<void, GLenum, GLfixed, GLfixed, GLint, GLint, GLfixed, GLfixed, GLint, GLint, GLfixed> Binding::Map2xOES("glMap2xOES");
 Function<void *, GLenum, GLenum> Binding::MapBuffer("glMapBuffer");
 Function<void *, GLenum, GLenum> Binding::MapBufferARB("glMapBufferARB");
-Function<void *, GLenum, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapBufferRange("glMapBufferRange");
+Function<void *, GLenum, GLintptr, GLsizeiptr, MapBufferAccessMask> Binding::MapBufferRange("glMapBufferRange");
 Function<void, GLenum, GLuint, GLenum, GLsizei, GLsizei, GLint, GLint, GLboolean, const void *> Binding::MapControlPointsNV("glMapControlPointsNV");
 Function<void, GLint, GLdouble, GLdouble> Binding::MapGrid1d("glMapGrid1d");
 Function<void, GLint, GLfloat, GLfloat> Binding::MapGrid1f("glMapGrid1f");
@@ -39,11 +40,11 @@ Function<void, GLint, GLfixed, GLfixed, GLfixed, GLfixed> Binding::MapGrid2xOES(
 Function<void *, GLuint, GLenum> Binding::MapNamedBuffer("glMapNamedBuffer");
 Function<void *, GLuint, GLenum> Binding::MapNamedBufferEXT("glMapNamedBufferEXT");
 Function<void *, GLuint, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapNamedBufferRange("glMapNamedBufferRange");
-Function<void *, GLuint, GLintptr, GLsizeiptr, BufferAccessMask> Binding::MapNamedBufferRangeEXT("glMapNamedBufferRangeEXT");
+Function<void *, GLuint, GLintptr, GLsizeiptr, MapBufferAccessMask> Binding::MapNamedBufferRangeEXT("glMapNamedBufferRangeEXT");
 Function<void *, GLuint> Binding::MapObjectBufferATI("glMapObjectBufferATI");
 Function<void, GLenum, GLenum, const GLfloat *> Binding::MapParameterfvNV("glMapParameterfvNV");
 Function<void, GLenum, GLenum, const GLint *> Binding::MapParameterivNV("glMapParameterivNV");
-Function<void *, GLuint, GLint, MapBufferUsageMask, GLint *, GLenum *> Binding::MapTexture2DINTEL("glMapTexture2DINTEL");
+Function<void *, GLuint, GLint, BufferAccessMask, GLint *, GLenum *> Binding::MapTexture2DINTEL("glMapTexture2DINTEL");
 Function<void, GLuint, GLuint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> Binding::MapVertexAttrib1dAPPLE("glMapVertexAttrib1dAPPLE");
 Function<void, GLuint, GLuint, GLfloat, GLfloat, GLint, GLint, const GLfloat *> Binding::MapVertexAttrib1fAPPLE("glMapVertexAttrib1fAPPLE");
 Function<void, GLuint, GLuint, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> Binding::MapVertexAttrib2dAPPLE("glMapVertexAttrib2dAPPLE");
@@ -85,9 +86,11 @@ Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixScalefEXT("glMa
 Function<void, GLenum, GLdouble, GLdouble, GLdouble> Binding::MatrixTranslatedEXT("glMatrixTranslatedEXT");
 Function<void, GLenum, GLfloat, GLfloat, GLfloat> Binding::MatrixTranslatefEXT("glMatrixTranslatefEXT");
 Function<void, GLuint> Binding::MaxShaderCompilerThreadsARB("glMaxShaderCompilerThreadsARB");
+Function<void, GLuint> Binding::MaxShaderCompilerThreadsKHR("glMaxShaderCompilerThreadsKHR");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrier("glMemoryBarrier");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierByRegion("glMemoryBarrierByRegion");
 Function<void, MemoryBarrierMask> Binding::MemoryBarrierEXT("glMemoryBarrierEXT");
+Function<void, GLuint, GLenum, const GLint *> Binding::MemoryObjectParameterivEXT("glMemoryObjectParameterivEXT");
 Function<void, GLfloat> Binding::MinSampleShading("glMinSampleShading");
 Function<void, GLfloat> Binding::MinSampleShadingARB("glMinSampleShadingARB");
 Function<void, GLenum, GLenum, GLboolean> Binding::Minmax("glMinmax");
@@ -106,7 +109,8 @@ Function<void, GLenum, const void *, GLsizei, GLsizei> Binding::MultiDrawArraysI
 Function<void, GLenum, const void *, GLsizei, GLsizei> Binding::MultiDrawArraysIndirectAMD("glMultiDrawArraysIndirectAMD");
 Function<void, GLenum, const void *, GLsizei, GLsizei, GLsizei, GLint> Binding::MultiDrawArraysIndirectBindlessCountNV("glMultiDrawArraysIndirectBindlessCountNV");
 Function<void, GLenum, const void *, GLsizei, GLsizei, GLint> Binding::MultiDrawArraysIndirectBindlessNV("glMultiDrawArraysIndirectBindlessNV");
-Function<void, GLenum, GLintptr, GLintptr, GLsizei, GLsizei> Binding::MultiDrawArraysIndirectCountARB("glMultiDrawArraysIndirectCountARB");
+Function<void, GLenum, const void *, GLintptr, GLsizei, GLsizei> Binding::MultiDrawArraysIndirectCount("glMultiDrawArraysIndirectCount");
+Function<void, GLenum, const void *, GLintptr, GLsizei, GLsizei> Binding::MultiDrawArraysIndirectCountARB("glMultiDrawArraysIndirectCountARB");
 Function<void, GLenum, const GLint *, const GLsizei *, GLsizei> Binding::MultiDrawElementArrayAPPLE("glMultiDrawElementArrayAPPLE");
 Function<void, GLenum, const GLsizei *, GLenum, const void *const*, GLsizei> Binding::MultiDrawElements("glMultiDrawElements");
 Function<void, GLenum, const GLsizei *, GLenum, const void *const*, GLsizei, const GLint *> Binding::MultiDrawElementsBaseVertex("glMultiDrawElementsBaseVertex");
@@ -115,7 +119,10 @@ Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei> Binding::MultiDra
 Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei> Binding::MultiDrawElementsIndirectAMD("glMultiDrawElementsIndirectAMD");
 Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei, GLsizei, GLint> Binding::MultiDrawElementsIndirectBindlessCountNV("glMultiDrawElementsIndirectBindlessCountNV");
 Function<void, GLenum, GLenum, const void *, GLsizei, GLsizei, GLint> Binding::MultiDrawElementsIndirectBindlessNV("glMultiDrawElementsIndirectBindlessNV");
-Function<void, GLenum, GLenum, GLintptr, GLintptr, GLsizei, GLsizei> Binding::MultiDrawElementsIndirectCountARB("glMultiDrawElementsIndirectCountARB");
+Function<void, GLenum, GLenum, const void *, GLintptr, GLsizei, GLsizei> Binding::MultiDrawElementsIndirectCount("glMultiDrawElementsIndirectCount");
+Function<void, GLenum, GLenum, const void *, GLintptr, GLsizei, GLsizei> Binding::MultiDrawElementsIndirectCountARB("glMultiDrawElementsIndirectCountARB");
+Function<void, GLintptr, GLintptr, GLsizei, GLsizei> Binding::MultiDrawMeshTasksIndirectCountNV("glMultiDrawMeshTasksIndirectCountNV");
+Function<void, GLintptr, GLsizei, GLsizei> Binding::MultiDrawMeshTasksIndirectNV("glMultiDrawMeshTasksIndirectNV");
 Function<void, GLenum, GLuint, GLuint, const GLint *, const GLsizei *, GLsizei> Binding::MultiDrawRangeElementArrayAPPLE("glMultiDrawRangeElementArrayAPPLE");
 Function<void, const GLenum *, const GLint *, const GLsizei *, GLsizei, GLint> Binding::MultiModeDrawArraysIBM("glMultiModeDrawArraysIBM");
 Function<void, const GLenum *, const GLsizei *, GLenum, const void *const*, GLsizei, GLint> Binding::MultiModeDrawElementsIBM("glMultiModeDrawElementsIBM");
@@ -240,6 +247,18 @@ Function<void, GLenum, GLenum, GLuint> Binding::MultiTexRenderbufferEXT("glMulti
 Function<void, GLenum, GLenum, GLint, GLint, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage1DEXT("glMultiTexSubImage1DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage2DEXT("glMultiTexSubImage2DEXT");
 Function<void, GLenum, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::MultiTexSubImage3DEXT("glMultiTexSubImage3DEXT");
+Function<void> Binding::MulticastBarrierNV("glMulticastBarrierNV");
+Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::MulticastBlitFramebufferNV("glMulticastBlitFramebufferNV");
+Function<void, GLbitfield, GLuint, GLintptr, GLsizeiptr, const void *> Binding::MulticastBufferSubDataNV("glMulticastBufferSubDataNV");
+Function<void, GLuint, GLbitfield, GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr> Binding::MulticastCopyBufferSubDataNV("glMulticastCopyBufferSubDataNV");
+Function<void, GLuint, GLbitfield, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::MulticastCopyImageSubDataNV("glMulticastCopyImageSubDataNV");
+Function<void, GLuint, GLuint, GLuint, GLsizei, const GLfloat *> Binding::MulticastFramebufferSampleLocationsfvNV("glMulticastFramebufferSampleLocationsfvNV");
+Function<void, GLuint, GLuint, GLenum, GLint64 *> Binding::MulticastGetQueryObjecti64vNV("glMulticastGetQueryObjecti64vNV");
+Function<void, GLuint, GLuint, GLenum, GLint *> Binding::MulticastGetQueryObjectivNV("glMulticastGetQueryObjectivNV");
+Function<void, GLuint, GLuint, GLenum, GLuint64 *> Binding::MulticastGetQueryObjectui64vNV("glMulticastGetQueryObjectui64vNV");
+Function<void, GLuint, GLuint, GLenum, GLuint *> Binding::MulticastGetQueryObjectuivNV("glMulticastGetQueryObjectuivNV");
+Function<void, GLuint, GLbitfield> Binding::MulticastWaitSyncNV("glMulticastWaitSyncNV");
+
 
 
 } // namespace glbinding

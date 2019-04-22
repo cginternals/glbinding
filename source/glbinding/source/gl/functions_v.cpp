@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -44,6 +44,11 @@ GLvdpauSurfaceNV glVDPAURegisterOutputSurfaceNV(const void * vdpSurface, GLenum 
 GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames)
 {
     return Binding::VDPAURegisterVideoSurfaceNV(vdpSurface, target, numTextureNames, textureNames);
+}
+
+GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceWithPictureStructureNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames, GLboolean isFrameStructure)
+{
+    return Binding::VDPAURegisterVideoSurfaceWithPictureStructureNV(vdpSurface, target, numTextureNames, textureNames, isFrameStructure);
 }
 
 void glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access)
@@ -1910,6 +1915,7 @@ void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum 
 {
     return Binding::ViewportSwizzleNV(index, swizzlex, swizzley, swizzlez, swizzlew);
 }
+
 
 
 

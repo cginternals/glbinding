@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -58,6 +59,7 @@ Function<void, GLenum, GLuint> Binding::BindRenderbuffer("glBindRenderbuffer");
 Function<void, GLenum, GLuint> Binding::BindRenderbufferEXT("glBindRenderbufferEXT");
 Function<void, GLuint, GLuint> Binding::BindSampler("glBindSampler");
 Function<void, GLuint, GLsizei, const GLuint *> Binding::BindSamplers("glBindSamplers");
+Function<void, GLuint> Binding::BindShadingRateImageNV("glBindShadingRateImageNV");
 Function<GLuint, GLenum, GLenum, GLenum> Binding::BindTexGenParameterEXT("glBindTexGenParameterEXT");
 Function<void, GLenum, GLuint> Binding::BindTexture("glBindTexture");
 Function<void, GLenum, GLuint> Binding::BindTextureEXT("glBindTextureEXT");
@@ -116,13 +118,17 @@ Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBuff
 Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebufferEXT("glBlitFramebufferEXT");
 Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitNamedFramebuffer("glBlitNamedFramebuffer");
 Function<void, GLenum, GLuint, GLuint64EXT, GLsizeiptr> Binding::BufferAddressRangeNV("glBufferAddressRangeNV");
+Function<void, GLenum, GLuint, GLuint64> Binding::BufferAttachMemoryNV("glBufferAttachMemoryNV");
 Function<void, GLenum, GLsizeiptr, const void *, GLenum> Binding::BufferData("glBufferData");
 Function<void, GLenum, GLsizeiptrARB, const void *, GLenum> Binding::BufferDataARB("glBufferDataARB");
 Function<void, GLenum, GLintptr, GLsizeiptr, GLboolean> Binding::BufferPageCommitmentARB("glBufferPageCommitmentARB");
 Function<void, GLenum, GLenum, GLint> Binding::BufferParameteriAPPLE("glBufferParameteriAPPLE");
 Function<void, GLenum, GLsizeiptr, const void *, BufferStorageMask> Binding::BufferStorage("glBufferStorage");
+Function<void, GLenum, GLintptr, GLsizeiptr, GLeglClientBufferEXT, BufferStorageMask> Binding::BufferStorageExternalEXT("glBufferStorageExternalEXT");
+Function<void, GLenum, GLsizeiptr, GLuint, GLuint64> Binding::BufferStorageMemEXT("glBufferStorageMemEXT");
 Function<void, GLenum, GLintptr, GLsizeiptr, const void *> Binding::BufferSubData("glBufferSubData");
 Function<void, GLenum, GLintptrARB, GLsizeiptrARB, const void *> Binding::BufferSubDataARB("glBufferSubDataARB");
+
 
 
 } // namespace glbinding

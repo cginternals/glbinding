@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -10,6 +10,16 @@ using namespace glbinding;
 namespace gl
 {
 
+
+void glEGLImageTargetTexStorageEXT(GLenum target, GLeglImageOES image, const GLint * attrib_list)
+{
+    return Binding::EGLImageTargetTexStorageEXT(target, image, attrib_list);
+}
+
+void glEGLImageTargetTextureStorageEXT(GLuint texture, GLeglImageOES image, const GLint * attrib_list)
+{
+    return Binding::EGLImageTargetTextureStorageEXT(texture, image, attrib_list);
+}
 
 void glEdgeFlag(GLboolean flag)
 {
@@ -300,6 +310,7 @@ void glExtractComponentEXT(GLuint res, GLuint src, GLuint num)
 {
     return Binding::ExtractComponentEXT(res, src, num);
 }
+
 
 
 

@@ -1,22 +1,65 @@
-language: cpp
+language: c++
 
-sudo: required
-dist: trusty
+env:
+  global:
+    - CMAKE_OPTIONS="-DOPTION_BUILD_EXAMPLES=On -DOPTION_BUILD_TESTS=On"
 
-compiler:
-  - gcc
-  - clang
+matrix:
+  include:
+
+    - os: osx
+      osx_image: xcode9.1
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: osx
+      osx_image: xcode9.1
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      compiler: clang
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      compiler: clang
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      compiler: gcc
+      env:
+        - CMAKE_CONFIGURATION=release BUILD_DIR=build
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - cmake
+          - g++-5
+
+    - os: linux
+      compiler: gcc
+      env:
+        - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
+          packages:
+          - cmake
+          - g++-5
 
 before_install:
-  - sudo apt-add-repository ppa:cginternals/backports-ppa -y
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq cmake libgl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev qt5-default libcpplocate-dev
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq libgl1-mesa-dev libegl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev libcpplocate-dev; fi
 
 before_script:
-  - mkdir build
-  - cd build
-  - cmake -DOPTION_BUILD_EXAMPLES=On ..
+  - eval "${MATRIX_EVAL}"
+  - chmod +x ./configure
+  - ./configure
+  - ./configure $CMAKE_CONFIGURATION
 
 script:
-  - make -j8
-  - make test
+  - travis_wait cmake --build $BUILD_DIR
+  - cmake --build $BUILD_DIR --target test

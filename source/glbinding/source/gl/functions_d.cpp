@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -121,6 +121,11 @@ void glDeleteLists(GLuint list, GLsizei range)
     return Binding::DeleteLists(list, range);
 }
 
+void glDeleteMemoryObjectsEXT(GLsizei n, const GLuint * memoryObjects)
+{
+    return Binding::DeleteMemoryObjectsEXT(n, memoryObjects);
+}
+
 void glDeleteNamedStringARB(GLint namelen, const GLchar * name)
 {
     return Binding::DeleteNamedStringARB(namelen, name);
@@ -186,6 +191,11 @@ void glDeleteQueriesARB(GLsizei n, const GLuint * ids)
     return Binding::DeleteQueriesARB(n, ids);
 }
 
+void glDeleteQueryResourceTagNV(GLsizei n, const GLint * tagIds)
+{
+    return Binding::DeleteQueryResourceTagNV(n, tagIds);
+}
+
 void glDeleteRenderbuffers(GLsizei n, const GLuint * renderbuffers)
 {
     return Binding::DeleteRenderbuffers(n, renderbuffers);
@@ -199,6 +209,11 @@ void glDeleteRenderbuffersEXT(GLsizei n, const GLuint * renderbuffers)
 void glDeleteSamplers(GLsizei count, const GLuint * samplers)
 {
     return Binding::DeleteSamplers(count, samplers);
+}
+
+void glDeleteSemaphoresEXT(GLsizei n, const GLuint * semaphores)
+{
+    return Binding::DeleteSemaphoresEXT(n, semaphores);
 }
 
 void glDeleteShader(GLuint shader)
@@ -271,9 +286,9 @@ void glDepthMask(GLboolean flag)
     return Binding::DepthMask(flag);
 }
 
-void glDepthRange(GLdouble near_, GLdouble far_)
+void glDepthRange(GLdouble n, GLdouble f)
 {
-    return Binding::DepthRange(near_, far_);
+    return Binding::DepthRange(n, f);
 }
 
 void glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v)
@@ -536,6 +551,16 @@ void glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width)
     return Binding::DrawMeshArraysSUN(mode, first, count, width);
 }
 
+void glDrawMeshTasksIndirectNV(GLintptr indirect)
+{
+    return Binding::DrawMeshTasksIndirectNV(indirect);
+}
+
+void glDrawMeshTasksNV(GLuint first, GLuint count)
+{
+    return Binding::DrawMeshTasksNV(first, count);
+}
+
 void glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
 {
     return Binding::DrawPixels(width, height, format, type, pixels);
@@ -595,6 +620,12 @@ void glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint strea
 {
     return Binding::DrawTransformFeedbackStreamInstanced(mode, id, stream, instancecount);
 }
+
+void glDrawVkImageNV(GLuint64 vkImage, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1)
+{
+    return Binding::DrawVkImageNV(vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1);
+}
+
 
 
 

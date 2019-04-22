@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -46,12 +46,12 @@ GLenum glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target)
     return Binding::CheckNamedFramebufferStatusEXT(framebuffer, target);
 }
 
-void glClampColor(GLenum target, GLenum clamp)
+void glClampColor(GLenum target, GLboolean clamp)
 {
     return Binding::ClampColor(target, clamp);
 }
 
-void glClampColorARB(GLenum target, GLenum clamp)
+void glClampColorARB(GLenum target, GLboolean clamp)
 {
     return Binding::ClampColorARB(target, clamp);
 }
@@ -1121,6 +1121,11 @@ void glCreateFramebuffers(GLsizei n, GLuint * framebuffers)
     return Binding::CreateFramebuffers(n, framebuffers);
 }
 
+void glCreateMemoryObjectsEXT(GLsizei n, GLuint * memoryObjects)
+{
+    return Binding::CreateMemoryObjectsEXT(n, memoryObjects);
+}
+
 void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle)
 {
     return Binding::CreatePerfQueryINTEL(queryId, queryHandle);
@@ -1220,6 +1225,7 @@ void glCurrentPaletteMatrixARB(GLint index)
 {
     return Binding::CurrentPaletteMatrixARB(index);
 }
+
 
 
 

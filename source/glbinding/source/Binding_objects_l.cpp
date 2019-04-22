@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -8,6 +9,9 @@ namespace glbinding
 {
 
 
+Function<void, GLuint, GLbitfield, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei> Binding::LGPUCopyImageSubDataNVX("glLGPUCopyImageSubDataNVX");
+Function<void> Binding::LGPUInterlockNVX("glLGPUInterlockNVX");
+Function<void, GLbitfield, GLuint, GLintptr, GLsizeiptr, const void *> Binding::LGPUNamedBufferSubDataNVX("glLGPUNamedBufferSubDataNVX");
 Function<void, GLenum, GLuint, GLsizei, const GLchar *> Binding::LabelObjectEXT("glLabelObjectEXT");
 Function<void, GLenum, GLint> Binding::LightEnviSGIX("glLightEnviSGIX");
 Function<void, GLenum, GLfloat> Binding::LightModelf("glLightModelf");
@@ -47,6 +51,7 @@ Function<void, const GLfloat *> Binding::LoadTransposeMatrixfARB("glLoadTranspos
 Function<void, const GLfixed *> Binding::LoadTransposeMatrixxOES("glLoadTransposeMatrixxOES");
 Function<void, GLint, GLsizei> Binding::LockArraysEXT("glLockArraysEXT");
 Function<void, GLenum> Binding::LogicOp("glLogicOp");
+
 
 
 } // namespace glbinding

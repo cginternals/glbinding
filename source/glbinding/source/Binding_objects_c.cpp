@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -15,8 +16,8 @@ Function<GLenum, GLenum> Binding::CheckFramebufferStatus("glCheckFramebufferStat
 Function<GLenum, GLenum> Binding::CheckFramebufferStatusEXT("glCheckFramebufferStatusEXT");
 Function<GLenum, GLuint, GLenum> Binding::CheckNamedFramebufferStatus("glCheckNamedFramebufferStatus");
 Function<GLenum, GLuint, GLenum> Binding::CheckNamedFramebufferStatusEXT("glCheckNamedFramebufferStatusEXT");
-Function<void, GLenum, GLenum> Binding::ClampColor("glClampColor");
-Function<void, GLenum, GLenum> Binding::ClampColorARB("glClampColorARB");
+Function<void, GLenum, GLboolean> Binding::ClampColor("glClampColor");
+Function<void, GLenum, GLboolean> Binding::ClampColorARB("glClampColorARB");
 Function<void, ClearBufferMask> Binding::Clear("glClear");
 Function<void, GLfloat, GLfloat, GLfloat, GLfloat> Binding::ClearAccum("glClearAccum");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::ClearAccumxOES("glClearAccumxOES");
@@ -230,6 +231,7 @@ Function<void, GLsizei, const GLfloat *> Binding::CoverageModulationTableNV("glC
 Function<void, GLsizei, GLuint *> Binding::CreateBuffers("glCreateBuffers");
 Function<void, GLsizei, GLuint *> Binding::CreateCommandListsNV("glCreateCommandListsNV");
 Function<void, GLsizei, GLuint *> Binding::CreateFramebuffers("glCreateFramebuffers");
+Function<void, GLsizei, GLuint *> Binding::CreateMemoryObjectsEXT("glCreateMemoryObjectsEXT");
 Function<void, GLuint, GLuint *> Binding::CreatePerfQueryINTEL("glCreatePerfQueryINTEL");
 Function<GLuint> Binding::CreateProgram("glCreateProgram");
 Function<GLhandleARB> Binding::CreateProgramObjectARB("glCreateProgramObjectARB");
@@ -250,6 +252,7 @@ Function<void, GLenum> Binding::CullFace("glCullFace");
 Function<void, GLenum, GLdouble *> Binding::CullParameterdvEXT("glCullParameterdvEXT");
 Function<void, GLenum, GLfloat *> Binding::CullParameterfvEXT("glCullParameterfvEXT");
 Function<void, GLint> Binding::CurrentPaletteMatrixARB("glCurrentPaletteMatrixARB");
+
 
 
 } // namespace glbinding

@@ -3,9 +3,9 @@
 # External dependencies
 # 
 
-find_package(Qt5Core    5.1)
-find_package(Qt5Gui     5.1)
-find_package(Qt5Widgets 5.1)
+find_package(Qt5Core    5.1 QUIET)
+find_package(Qt5Gui     5.1 QUIET)
+find_package(Qt5Widgets 5.1 QUIET)
 find_package(cpplocate  REQUIRED)
 
 # Enable automoc
@@ -106,6 +106,7 @@ target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
     ${META_PROJECT_NAME}::glbinding
+    ${META_PROJECT_NAME}::glbinding-aux
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
@@ -140,6 +141,16 @@ target_compile_options(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LINKER_OPTIONS}
+)
+
+
+#
+# Target Health
+#
+
+perform_health_checks(
+    ${target}
+    ${sources}
 )
 
 

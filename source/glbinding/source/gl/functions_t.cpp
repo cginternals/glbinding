@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -99,6 +99,11 @@ GLboolean glTestFenceNV(GLuint fence)
 GLboolean glTestObjectAPPLE(GLenum object, GLuint name)
 {
     return Binding::TestObjectAPPLE(object, name);
+}
+
+void glTexAttachMemoryNV(GLenum target, GLuint memory, GLuint64 offset)
+{
+    return Binding::TexAttachMemoryNV(target, memory, offset);
 }
 
 void glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
@@ -751,6 +756,31 @@ void glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalfo
     return Binding::TexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
 
+void glTexStorageMem1DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLuint memory, GLuint64 offset)
+{
+    return Binding::TexStorageMem1DEXT(target, levels, internalFormat, width, memory, offset);
+}
+
+void glTexStorageMem2DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLuint memory, GLuint64 offset)
+{
+    return Binding::TexStorageMem2DEXT(target, levels, internalFormat, width, height, memory, offset);
+}
+
+void glTexStorageMem2DMultisampleEXT(GLenum target, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset)
+{
+    return Binding::TexStorageMem2DMultisampleEXT(target, samples, internalFormat, width, height, fixedSampleLocations, memory, offset);
+}
+
+void glTexStorageMem3DEXT(GLenum target, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset)
+{
+    return Binding::TexStorageMem3DEXT(target, levels, internalFormat, width, height, depth, memory, offset);
+}
+
+void glTexStorageMem3DMultisampleEXT(GLenum target, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset)
+{
+    return Binding::TexStorageMem3DMultisampleEXT(target, samples, internalFormat, width, height, depth, fixedSampleLocations, memory, offset);
+}
+
 void glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, TextureStorageMaskAMD flags)
 {
     return Binding::TexStorageSparseAMD(target, internalFormat, width, height, depth, layers, flags);
@@ -789,6 +819,11 @@ void glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset
 void glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const void * pixels)
 {
     return Binding::TexSubImage4DSGIS(target, level, xoffset, yoffset, zoffset, woffset, width, height, depth, size4d, format, type, pixels);
+}
+
+void glTextureAttachMemoryNV(GLuint texture, GLuint memory, GLuint64 offset)
+{
+    return Binding::TextureAttachMemoryNV(texture, memory, offset);
 }
 
 void glTextureBarrier()
@@ -1001,6 +1036,31 @@ void glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei sam
     return Binding::TextureStorage3DMultisampleEXT(texture, target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
 
+void glTextureStorageMem1DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLuint memory, GLuint64 offset)
+{
+    return Binding::TextureStorageMem1DEXT(texture, levels, internalFormat, width, memory, offset);
+}
+
+void glTextureStorageMem2DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLuint memory, GLuint64 offset)
+{
+    return Binding::TextureStorageMem2DEXT(texture, levels, internalFormat, width, height, memory, offset);
+}
+
+void glTextureStorageMem2DMultisampleEXT(GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset)
+{
+    return Binding::TextureStorageMem2DMultisampleEXT(texture, samples, internalFormat, width, height, fixedSampleLocations, memory, offset);
+}
+
+void glTextureStorageMem3DEXT(GLuint texture, GLsizei levels, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset)
+{
+    return Binding::TextureStorageMem3DEXT(texture, levels, internalFormat, width, height, depth, memory, offset);
+}
+
+void glTextureStorageMem3DMultisampleEXT(GLuint texture, GLsizei samples, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations, GLuint memory, GLuint64 offset)
+{
+    return Binding::TextureStorageMem3DMultisampleEXT(texture, samples, internalFormat, width, height, depth, fixedSampleLocations, memory, offset);
+}
+
 void glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, TextureStorageMaskAMD flags)
 {
     return Binding::TextureStorageSparseAMD(texture, target, internalFormat, width, height, depth, layers, flags);
@@ -1100,6 +1160,7 @@ void glTranslatexOES(GLfixed x, GLfixed y, GLfixed z)
 {
     return Binding::TranslatexOES(x, y, z);
 }
+
 
 
 

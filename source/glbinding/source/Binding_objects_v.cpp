@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -15,6 +16,7 @@ Function<GLboolean, GLvdpauSurfaceNV> Binding::VDPAUIsSurfaceNV("glVDPAUIsSurfac
 Function<void, GLsizei, const GLvdpauSurfaceNV *> Binding::VDPAUMapSurfacesNV("glVDPAUMapSurfacesNV");
 Function<GLvdpauSurfaceNV, const void *, GLenum, GLsizei, const GLuint *> Binding::VDPAURegisterOutputSurfaceNV("glVDPAURegisterOutputSurfaceNV");
 Function<GLvdpauSurfaceNV, const void *, GLenum, GLsizei, const GLuint *> Binding::VDPAURegisterVideoSurfaceNV("glVDPAURegisterVideoSurfaceNV");
+Function<GLvdpauSurfaceNV, const void *, GLenum, GLsizei, const GLuint *, GLboolean> Binding::VDPAURegisterVideoSurfaceWithPictureStructureNV("glVDPAURegisterVideoSurfaceWithPictureStructureNV");
 Function<void, GLvdpauSurfaceNV, GLenum> Binding::VDPAUSurfaceAccessNV("glVDPAUSurfaceAccessNV");
 Function<void, GLsizei, const GLvdpauSurfaceNV *> Binding::VDPAUUnmapSurfacesNV("glVDPAUUnmapSurfacesNV");
 Function<void, GLvdpauSurfaceNV> Binding::VDPAUUnregisterSurfaceNV("glVDPAUUnregisterSurfaceNV");
@@ -388,6 +390,7 @@ Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> Binding::ViewportInde
 Function<void, GLuint, const GLfloat *> Binding::ViewportIndexedfv("glViewportIndexedfv");
 Function<void, GLuint, GLfloat, GLfloat> Binding::ViewportPositionWScaleNV("glViewportPositionWScaleNV");
 Function<void, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::ViewportSwizzleNV("glViewportSwizzleNV");
+
 
 
 } // namespace glbinding

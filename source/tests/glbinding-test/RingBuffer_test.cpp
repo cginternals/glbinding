@@ -6,9 +6,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <RingBuffer.h>
-
-using namespace glbinding;
+#include <glbinding-aux/RingBuffer.h>
 
 class RingBuffer_test : public testing::Test
 {
@@ -17,11 +15,11 @@ public:
 
 TEST_F(RingBuffer_test, SimpleTest)
 {
-    RingBuffer<int> buffer(10);
+    glbinding::aux::RingBuffer<int> buffer(10);
     EXPECT_EQ(10u, buffer.maxSize());
     EXPECT_EQ(true, buffer.isEmpty());
 
-    RingBuffer<int>::TailIdentifier tail = buffer.addTail();
+    glbinding::aux::RingBuffer<int>::TailIdentifier tail = buffer.addTail();
     auto it = buffer.cbegin(tail);
     EXPECT_FALSE(buffer.valid(tail, it));
     EXPECT_EQ(0u, buffer.size(tail));
@@ -86,11 +84,11 @@ TEST_F(RingBuffer_test, SimpleTest)
 
 TEST_F(RingBuffer_test, StringTest)
 {
-    RingBuffer<std::string> buffer(10);
+    glbinding::aux::RingBuffer<std::string> buffer(10);
     EXPECT_EQ(10u, buffer.maxSize());
     EXPECT_TRUE(buffer.isEmpty());
 
-    RingBuffer<int>::TailIdentifier tail = buffer.addTail();
+    glbinding::aux::RingBuffer<int>::TailIdentifier tail = buffer.addTail();
 
     for (int i = 0; i < 10; i++)
     {
@@ -124,7 +122,7 @@ struct MockObject {
 
 TEST_F(RingBuffer_test, ObjectTest)
 {
-    RingBuffer<MockObject> buffer(10);
+    glbinding::aux::RingBuffer<MockObject> buffer(10);
     EXPECT_EQ(10u, buffer.maxSize());
     EXPECT_TRUE(buffer.isEmpty());
 
@@ -139,7 +137,7 @@ TEST_F(RingBuffer_test, ObjectTest)
     int i4 = 4;
     MockObject obj4 = {4, &i4};
 
-    RingBuffer<int>::TailIdentifier tail = buffer.addTail();
+    glbinding::aux::RingBuffer<int>::TailIdentifier tail = buffer.addTail();
 
 
     buffer.push(obj0);
@@ -165,7 +163,7 @@ TEST_F(RingBuffer_test, ObjectTest)
 
 TEST_F(RingBuffer_test, ObjectPointerTest)
 {
-    RingBuffer<MockObject*> buffer(10);
+    glbinding::aux::RingBuffer<MockObject*> buffer(10);
     EXPECT_EQ(10u, buffer.maxSize());
     EXPECT_TRUE(buffer.isEmpty());
 
@@ -180,7 +178,7 @@ TEST_F(RingBuffer_test, ObjectPointerTest)
     int i4 = 4;
     MockObject obj4 = {4, &i4};
 
-    RingBuffer<int>::TailIdentifier tail = buffer.addTail();
+    glbinding::aux::RingBuffer<int>::TailIdentifier tail = buffer.addTail();
 
 
     buffer.push(&obj0);
@@ -207,9 +205,9 @@ TEST_F(RingBuffer_test, ObjectPointerTest)
 TEST_F(RingBuffer_test, SimpleMultiThreadedTest)
 {
 
-    RingBuffer<int> buffer(1000);
+    glbinding::aux::RingBuffer<int> buffer(1000);
     int testSize = 100000;
-    RingBuffer<int>::TailIdentifier tail = buffer.addTail();
+    glbinding::aux::RingBuffer<int>::TailIdentifier tail = buffer.addTail();
 
     std::thread t1([&]()
     {
@@ -243,10 +241,10 @@ TEST_F(RingBuffer_test, SimpleMultiThreadedTest)
 TEST_F(RingBuffer_test, MultiThreadedTest2)
 {
 
-    RingBuffer<int> buffer(1000);
+    glbinding::aux::RingBuffer<int> buffer(1000);
     int testSize = 100000;
-    RingBuffer<int>::TailIdentifier tail1 = buffer.addTail();
-    RingBuffer<int>::TailIdentifier tail2 = buffer.addTail();
+    glbinding::aux::RingBuffer<int>::TailIdentifier tail1 = buffer.addTail();
+    glbinding::aux::RingBuffer<int>::TailIdentifier tail2 = buffer.addTail();
 
     std::thread t1([&]()
     {
@@ -299,7 +297,7 @@ TEST_F(RingBuffer_test, MultiThreadedTest2)
 TEST_F(RingBuffer_test, ResizeTest)
 {
 
-    RingBuffer<int> buffer(10);
+    glbinding::aux::RingBuffer<int> buffer(10);
 
     EXPECT_EQ(0u, buffer.size());
     EXPECT_EQ(10u, buffer.maxSize());
@@ -309,5 +307,3 @@ TEST_F(RingBuffer_test, ResizeTest)
     EXPECT_EQ(0u, buffer.size());
     EXPECT_EQ(20u, buffer.maxSize());
 }
-
-

@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -111,7 +111,7 @@ void * glMapBufferARB(GLenum target, GLenum access)
     return Binding::MapBufferARB(target, access);
 }
 
-void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
+void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, MapBufferAccessMask access)
 {
     return Binding::MapBufferRange(target, offset, length, access);
 }
@@ -166,7 +166,7 @@ void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length, 
     return Binding::MapNamedBufferRange(buffer, offset, length, access);
 }
 
-void * glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
+void * glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, MapBufferAccessMask access)
 {
     return Binding::MapNamedBufferRangeEXT(buffer, offset, length, access);
 }
@@ -186,7 +186,7 @@ void glMapParameterivNV(GLenum target, GLenum pname, const GLint * params)
     return Binding::MapParameterivNV(target, pname, params);
 }
 
-void * glMapTexture2DINTEL(GLuint texture, GLint level, MapBufferUsageMask access, GLint * stride, GLenum * layout)
+void * glMapTexture2DINTEL(GLuint texture, GLint level, BufferAccessMask access, GLint * stride, GLenum * layout)
 {
     return Binding::MapTexture2DINTEL(texture, level, access, stride, layout);
 }
@@ -396,6 +396,11 @@ void glMaxShaderCompilerThreadsARB(GLuint count)
     return Binding::MaxShaderCompilerThreadsARB(count);
 }
 
+void glMaxShaderCompilerThreadsKHR(GLuint count)
+{
+    return Binding::MaxShaderCompilerThreadsKHR(count);
+}
+
 void glMemoryBarrier(MemoryBarrierMask barriers)
 {
     return Binding::MemoryBarrier(barriers);
@@ -409,6 +414,11 @@ void glMemoryBarrierByRegion(MemoryBarrierMask barriers)
 void glMemoryBarrierEXT(MemoryBarrierMask barriers)
 {
     return Binding::MemoryBarrierEXT(barriers);
+}
+
+void glMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, const GLint * params)
+{
+    return Binding::MemoryObjectParameterivEXT(memoryObject, pname, params);
 }
 
 void glMinSampleShading(GLfloat value)
@@ -501,7 +511,12 @@ void glMultiDrawArraysIndirectBindlessNV(GLenum mode, const void * indirect, GLs
     return Binding::MultiDrawArraysIndirectBindlessNV(mode, indirect, drawCount, stride, vertexBufferCount);
 }
 
-void glMultiDrawArraysIndirectCountARB(GLenum mode, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+void glMultiDrawArraysIndirectCount(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+{
+    return Binding::MultiDrawArraysIndirectCount(mode, indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawArraysIndirectCountARB(GLenum mode, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
 {
     return Binding::MultiDrawArraysIndirectCountARB(mode, indirect, drawcount, maxdrawcount, stride);
 }
@@ -546,9 +561,24 @@ void glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void 
     return Binding::MultiDrawElementsIndirectBindlessNV(mode, type, indirect, drawCount, stride, vertexBufferCount);
 }
 
-void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+void glMultiDrawElementsIndirectCount(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+{
+    return Binding::MultiDrawElementsIndirectCount(mode, type, indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
 {
     return Binding::MultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawMeshTasksIndirectCountNV(GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+{
+    return Binding::MultiDrawMeshTasksIndirectCountNV(indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawMeshTasksIndirectNV(GLintptr indirect, GLsizei drawcount, GLsizei stride)
+{
+    return Binding::MultiDrawMeshTasksIndirectNV(indirect, drawcount, stride);
 }
 
 void glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount)
@@ -1170,6 +1200,62 @@ void glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint x
 {
     return Binding::MultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
+
+void glMulticastBarrierNV()
+{
+    return Binding::MulticastBarrierNV();
+}
+
+void glMulticastBlitFramebufferNV(GLuint srcGpu, GLuint dstGpu, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, ClearBufferMask mask, GLenum filter)
+{
+    return Binding::MulticastBlitFramebufferNV(srcGpu, dstGpu, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+}
+
+void glMulticastBufferSubDataNV(GLbitfield gpuMask, GLuint buffer, GLintptr offset, GLsizeiptr size, const void * data)
+{
+    return Binding::MulticastBufferSubDataNV(gpuMask, buffer, offset, size, data);
+}
+
+void glMulticastCopyBufferSubDataNV(GLuint readGpu, GLbitfield writeGpuMask, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
+{
+    return Binding::MulticastCopyBufferSubDataNV(readGpu, writeGpuMask, readBuffer, writeBuffer, readOffset, writeOffset, size);
+}
+
+void glMulticastCopyImageSubDataNV(GLuint srcGpu, GLbitfield dstGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth)
+{
+    return Binding::MulticastCopyImageSubDataNV(srcGpu, dstGpuMask, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
+}
+
+void glMulticastFramebufferSampleLocationsfvNV(GLuint gpu, GLuint framebuffer, GLuint start, GLsizei count, const GLfloat * v)
+{
+    return Binding::MulticastFramebufferSampleLocationsfvNV(gpu, framebuffer, start, count, v);
+}
+
+void glMulticastGetQueryObjecti64vNV(GLuint gpu, GLuint id, GLenum pname, GLint64 * params)
+{
+    return Binding::MulticastGetQueryObjecti64vNV(gpu, id, pname, params);
+}
+
+void glMulticastGetQueryObjectivNV(GLuint gpu, GLuint id, GLenum pname, GLint * params)
+{
+    return Binding::MulticastGetQueryObjectivNV(gpu, id, pname, params);
+}
+
+void glMulticastGetQueryObjectui64vNV(GLuint gpu, GLuint id, GLenum pname, GLuint64 * params)
+{
+    return Binding::MulticastGetQueryObjectui64vNV(gpu, id, pname, params);
+}
+
+void glMulticastGetQueryObjectuivNV(GLuint gpu, GLuint id, GLenum pname, GLuint * params)
+{
+    return Binding::MulticastGetQueryObjectuivNV(gpu, id, pname, params);
+}
+
+void glMulticastWaitSyncNV(GLuint signalGpu, GLbitfield waitGpuMask)
+{
+    return Binding::MulticastWaitSyncNV(signalGpu, waitGpuMask);
+}
+
 
 
 

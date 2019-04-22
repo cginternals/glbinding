@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -11,9 +11,19 @@ namespace gl
 {
 
 
+void glWaitSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * srcLayouts)
+{
+    return Binding::WaitSemaphoreEXT(semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, srcLayouts);
+}
+
 void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout)
 {
     return Binding::WaitSync(sync, flags, timeout);
+}
+
+void glWaitVkSemaphoreNV(GLuint64 vkSemaphore)
+{
+    return Binding::WaitVkSemaphoreNV(vkSemaphore);
 }
 
 void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights)
@@ -355,6 +365,7 @@ void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ
 {
     return Binding::WriteMaskEXT(res, in, outX, outY, outZ, outW);
 }
+
 
 
 

@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -8,6 +9,8 @@ namespace glbinding
 {
 
 
+Function<void, GLenum, GLeglImageOES, const GLint *> Binding::EGLImageTargetTexStorageEXT("glEGLImageTargetTexStorageEXT");
+Function<void, GLuint, GLeglImageOES, const GLint *> Binding::EGLImageTargetTextureStorageEXT("glEGLImageTargetTextureStorageEXT");
 Function<void, GLboolean> Binding::EdgeFlag("glEdgeFlag");
 Function<void, GLsizei> Binding::EdgeFlagFormatNV("glEdgeFlagFormatNV");
 Function<void, GLsizei, const void *> Binding::EdgeFlagPointer("glEdgeFlagPointer");
@@ -66,6 +69,7 @@ Function<void, GLint, GLint> Binding::EvalPoint2("glEvalPoint2");
 Function<void> Binding::EvaluateDepthValuesARB("glEvaluateDepthValuesARB");
 Function<void, GLenum, GLuint, const GLfloat *> Binding::ExecuteProgramNV("glExecuteProgramNV");
 Function<void, GLuint, GLuint, GLuint> Binding::ExtractComponentEXT("glExtractComponentEXT");
+
 
 
 } // namespace glbinding

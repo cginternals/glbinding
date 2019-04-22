@@ -48,7 +48,7 @@ configure_file(${doxyfile_in} ${doxyfile})
 # Invoke doxygen
 add_custom_command(
     OUTPUT              ${doxyfile_html}
-    DEPENDS             ${doxyfile} ${META_PROJECT_NAME}::glbinding
+    DEPENDS             ${doxyfile} ${META_PROJECT_NAME}::glbinding ${META_PROJECT_NAME}::glbinding-aux
     WORKING_DIRECTORY   ${path}
     COMMAND             ${CMAKE_COMMAND} -E copy_directory ${path} ${doxyfile_directory} # ToDO, configure doxygen to use source as is
     COMMAND             ${DOXYGEN} \"${doxyfile}\"

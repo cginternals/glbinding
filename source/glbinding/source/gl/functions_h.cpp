@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -30,6 +30,7 @@ void glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboole
 {
     return Binding::HistogramEXT(target, width, internalformat, sink);
 }
+
 
 
 

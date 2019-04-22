@@ -4,8 +4,8 @@
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
-#include <glbinding/Binding.h>
-#include <glbinding/Meta.h>
+#include <glbinding/glbinding.h>
+#include <glbinding-aux/Meta.h>
 
 
 #include <glbinding/gl/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.cpp)
@@ -13,6 +13,8 @@
 #include <glbinding/gl/types.h>
 #include <glbinding/gl/functions.h>
 #include <glbinding/gl/enum.h>
+
+#include <glbinding-aux/types_to_string.h>
 
 
 
@@ -46,7 +48,9 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
 
     glfwMakeContextCurrent(window);
 
-    glbinding::Binding::initialize();
+    glbinding::initialize([](const char * name) {
+        return glfwGetProcAddress(name);
+    });
 
     ASSERT_EQ(gl::GL_NO_ERROR, gl::glGetError());
 
@@ -66,8 +70,8 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
 
 TEST(Regression_185, GetString)  // Static initializiation issue ...
 {
-    ASSERT_EQ(glbinding::Meta::getString(gl::GL_TRUE), "GL_TRUE");
-    ASSERT_EQ(glbinding::Meta::getString(gl::GL_FALSE), "GL_FALSE");
+    ASSERT_EQ(glbinding::aux::Meta::getString(gl::GL_TRUE), "GL_TRUE");
+    ASSERT_EQ(glbinding::aux::Meta::getString(gl::GL_FALSE), "GL_FALSE");
 
     SUCCEED();
 }

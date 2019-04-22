@@ -1,6 +1,7 @@
 
 #include "Binding_pch.h"
 
+
 using namespace gl;
 
 
@@ -28,6 +29,8 @@ Function<void, GLfloat, GLfloat, GLfloat> Binding::Scalef("glScalef");
 Function<void, GLfixed, GLfixed, GLfixed> Binding::ScalexOES("glScalexOES");
 Function<void, GLint, GLint, GLsizei, GLsizei> Binding::Scissor("glScissor");
 Function<void, GLuint, GLsizei, const GLint *> Binding::ScissorArrayv("glScissorArrayv");
+Function<void, GLuint, GLsizei, const GLint *> Binding::ScissorExclusiveArrayvNV("glScissorExclusiveArrayvNV");
+Function<void, GLint, GLint, GLsizei, GLsizei> Binding::ScissorExclusiveNV("glScissorExclusiveNV");
 Function<void, GLuint, GLint, GLint, GLsizei, GLsizei> Binding::ScissorIndexed("glScissorIndexed");
 Function<void, GLuint, const GLint *> Binding::ScissorIndexedv("glScissorIndexedv");
 Function<void, GLbyte, GLbyte, GLbyte> Binding::SecondaryColor3b("glSecondaryColor3b");
@@ -72,6 +75,7 @@ Function<void, GLint, GLenum, GLsizei, const void *> Binding::SecondaryColorPoin
 Function<void, GLint, GLenum, GLint, const void **, GLint> Binding::SecondaryColorPointerListIBM("glSecondaryColorPointerListIBM");
 Function<void, GLsizei, GLuint *> Binding::SelectBuffer("glSelectBuffer");
 Function<void, GLuint, GLboolean, GLuint, GLint, GLuint *> Binding::SelectPerfMonitorCountersAMD("glSelectPerfMonitorCountersAMD");
+Function<void, GLuint, GLenum, const GLuint64 *> Binding::SemaphoreParameterui64vEXT("glSemaphoreParameterui64vEXT");
 Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *, const void *> Binding::SeparableFilter2D("glSeparableFilter2D");
 Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *, const void *> Binding::SeparableFilter2DEXT("glSeparableFilter2DEXT");
 Function<void, GLuint> Binding::SetFenceAPPLE("glSetFenceAPPLE");
@@ -88,7 +92,16 @@ Function<void, GLenum, GLuint, GLuint, GLuint, GLuint> Binding::ShaderOp3EXT("gl
 Function<void, GLuint, GLsizei, const GLchar *const*, const GLint *> Binding::ShaderSource("glShaderSource");
 Function<void, GLhandleARB, GLsizei, const GLcharARB **, const GLint *> Binding::ShaderSourceARB("glShaderSourceARB");
 Function<void, GLuint, GLuint, GLuint> Binding::ShaderStorageBlockBinding("glShaderStorageBlockBinding");
+Function<void, GLboolean> Binding::ShadingRateImageBarrierNV("glShadingRateImageBarrierNV");
+Function<void, GLuint, GLuint, GLsizei, const GLenum *> Binding::ShadingRateImagePaletteNV("glShadingRateImagePaletteNV");
+Function<void, GLenum, GLuint, const GLint *> Binding::ShadingRateSampleOrderCustomNV("glShadingRateSampleOrderCustomNV");
+Function<void, GLenum> Binding::ShadingRateSampleOrderNV("glShadingRateSampleOrderNV");
 Function<void, GLenum, GLsizei, const GLfloat *> Binding::SharpenTexFuncSGIS("glSharpenTexFuncSGIS");
+Function<void, GLuint, GLuint, const GLuint *, GLuint, const GLuint *, const GLenum *> Binding::SignalSemaphoreEXT("glSignalSemaphoreEXT");
+Function<void, GLuint64> Binding::SignalVkFenceNV("glSignalVkFenceNV");
+Function<void, GLuint64> Binding::SignalVkSemaphoreNV("glSignalVkSemaphoreNV");
+Function<void, GLuint, const GLchar *, GLuint, const GLuint *, const GLuint *> Binding::SpecializeShader("glSpecializeShader");
+Function<void, GLuint, const GLchar *, GLuint, const GLuint *, const GLuint *> Binding::SpecializeShaderARB("glSpecializeShaderARB");
 Function<void, GLenum, GLfloat> Binding::SpriteParameterfSGIX("glSpriteParameterfSGIX");
 Function<void, GLenum, const GLfloat *> Binding::SpriteParameterfvSGIX("glSpriteParameterfvSGIX");
 Function<void, GLenum, GLint> Binding::SpriteParameteriSGIX("glSpriteParameteriSGIX");
@@ -118,6 +131,7 @@ Function<void, GLsizei, const void *> Binding::StringMarkerGREMEDY("glStringMark
 Function<void, GLuint, GLuint> Binding::SubpixelPrecisionBiasNV("glSubpixelPrecisionBiasNV");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::SwizzleEXT("glSwizzleEXT");
 Function<void, GLuint> Binding::SyncTextureINTEL("glSyncTextureINTEL");
+
 
 
 } // namespace glbinding

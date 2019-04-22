@@ -1,8 +1,8 @@
 
 #include "../Binding_pch.h"
 
-
 #include <glbinding/gl/functions.h>
+
 
 using namespace glbinding;
 
@@ -109,6 +109,16 @@ void glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
 void glScissorArrayv(GLuint first, GLsizei count, const GLint * v)
 {
     return Binding::ScissorArrayv(first, count, v);
+}
+
+void glScissorExclusiveArrayvNV(GLuint first, GLsizei count, const GLint * v)
+{
+    return Binding::ScissorExclusiveArrayvNV(first, count, v);
+}
+
+void glScissorExclusiveNV(GLint x, GLint y, GLsizei width, GLsizei height)
+{
+    return Binding::ScissorExclusiveNV(x, y, width, height);
 }
 
 void glScissorIndexed(GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height)
@@ -331,6 +341,11 @@ void glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint gro
     return Binding::SelectPerfMonitorCountersAMD(monitor, enable, group, numCounters, counterList);
 }
 
+void glSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, const GLuint64 * params)
+{
+    return Binding::SemaphoreParameterui64vEXT(semaphore, pname, params);
+}
+
 void glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const void * row, const void * column)
 {
     return Binding::SeparableFilter2D(target, internalformat, width, height, format, type, row, column);
@@ -411,9 +426,54 @@ void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuin
     return Binding::ShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
 }
 
+void glShadingRateImageBarrierNV(GLboolean synchronize)
+{
+    return Binding::ShadingRateImageBarrierNV(synchronize);
+}
+
+void glShadingRateImagePaletteNV(GLuint viewport, GLuint first, GLsizei count, const GLenum * rates)
+{
+    return Binding::ShadingRateImagePaletteNV(viewport, first, count, rates);
+}
+
+void glShadingRateSampleOrderCustomNV(GLenum rate, GLuint samples, const GLint * locations)
+{
+    return Binding::ShadingRateSampleOrderCustomNV(rate, samples, locations);
+}
+
+void glShadingRateSampleOrderNV(GLenum order)
+{
+    return Binding::ShadingRateSampleOrderNV(order);
+}
+
 void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points)
 {
     return Binding::SharpenTexFuncSGIS(target, n, points);
+}
+
+void glSignalSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * dstLayouts)
+{
+    return Binding::SignalSemaphoreEXT(semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, dstLayouts);
+}
+
+void glSignalVkFenceNV(GLuint64 vkFence)
+{
+    return Binding::SignalVkFenceNV(vkFence);
+}
+
+void glSignalVkSemaphoreNV(GLuint64 vkSemaphore)
+{
+    return Binding::SignalVkSemaphoreNV(vkSemaphore);
+}
+
+void glSpecializeShader(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue)
+{
+    return Binding::SpecializeShader(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
+}
+
+void glSpecializeShaderARB(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue)
+{
+    return Binding::SpecializeShaderARB(shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue);
 }
 
 void glSpriteParameterfSGIX(GLenum pname, GLfloat param)
@@ -560,6 +620,7 @@ void glSyncTextureINTEL(GLuint texture)
 {
     return Binding::SyncTextureINTEL(texture);
 }
+
 
 
 
