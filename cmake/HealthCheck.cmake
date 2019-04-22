@@ -7,6 +7,10 @@ set(OPTION_CLANG_TIDY_ENABLED Off)
 
 # Function to register a target for enabled health checks
 function(perform_health_checks target)
+    if(NOT OPTION_BUILD_CHECK)
+        return()
+    endif()
+
     if(NOT TARGET check-all)
         add_custom_target(check-all)
     
@@ -62,6 +66,10 @@ endfunction()
 
 # Enable or disable clang-tidy for health checks
 function(enable_clang_tidy status)
+    if(NOT OPTION_BUILD_CHECK)
+        return()
+    endif()
+
     if(NOT ${status})
         set(OPTION_CLANG_TIDY_ENABLED ${status} PARENT_SCOPE)
         message(STATUS "Check clang-tidy skipped: Manually disabled")
@@ -86,6 +94,10 @@ endfunction()
 
 # Configure cmake target to check for cmake-init template
 function(add_check_template_target current_template_sha)
+    if(NOT OPTION_BUILD_CHECK)
+        return()
+    endif()
+
     add_custom_target(
         check-template
         COMMAND ${CMAKE_COMMAND}
