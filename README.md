@@ -6,11 +6,7 @@
 
 ![GitHub release](https://img.shields.io/github/release/cginternals/glbinding.svg)
 [![Travis](https://img.shields.io/travis/cginternals/glbinding/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/glbinding)
-[![Appveyor](https://img.shields.io/appveyor/ci/scheibel/glbinding/master.svg?style=flat&logo=appveyor)](https://ci.appveyor.com/project/scheibel/glbinding/branch/master)
-[![Coverity](https://img.shields.io/coverity/scan/6828.svg?style=flat&logo=coverity)](https://scan.coverity.com/projects/6828)
-[![Coveralls](https://img.shields.io/badge/coveralls-ToDo-lightgrey.svg?)](https://coveralls.io/github/cginternals/glbinding)
 [![Tokei](https://tokei.rs/b1/github/cginternals/glbinding)](https://github.com/Aaronepower/tokei)
-[![Tokei](https://tokei.rs/b1/github/cginternals/glbinding?category=comments)](https://github.com/Aaronepower/tokei)
 
 [![Documentation](https://img.shields.io/badge/documentation-online-blue.svg?style=flat&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMC41IDEzLjciPjxwYXRoIGQ9Ik0xMS41IDYuOGwtMy43IDYuNEwuNS41aDE0LjdsLTEuMyAyLjFINC4yTDcuOCA5bDIuNS00LjN6bTcuMyA0LjNsMS4yIDIuMWgtOS43TDE3LjYuNWwxLjIgMi4xLTQuOSA4LjV6IiBmaWxsPSIjZmZmIi8%2BPC9zdmc%2B)](https://www.glbinding.org/docs.html)
 [![Examples](https://img.shields.io/badge/examples-wiki-blue.svg?style=flat&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMC41IDEzLjciPjxwYXRoIGQ9Ik0xMS41IDYuOGwtMy43IDYuNEwuNS41aDE0LjdsLTEuMyAyLjFINC4yTDcuOCA5bDIuNS00LjN6bTcuMyA0LjNsMS4yIDIuMWgtOS43TDE3LjYuNWwxLjIgMi4xLTQuOSA4LjV6IiBmaWxsPSIjZmZmIi8%2BPC9zdmc%2B)](https://github.com/cginternals/glbinding/wiki/Examples)
@@ -18,7 +14,7 @@
 
 [//]: # (HEADER_END)
 
-*glbinding* leverages modern C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros;
+*glbinding* leverages C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros;
 all OpenGL symbols are real functions and variables.
 It provides type-safe parameters, per feature API header, lazy function resolution, multi-context and multi-thread support, global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
 Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
