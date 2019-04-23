@@ -3,8 +3,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include <glbinding/glbinding.h>
 #include <glbinding/Version.h>
-#include <glbinding/Binding.h>
 #include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
 
@@ -99,7 +99,7 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize([](const char * name) {
+    glbinding::initialize([](const char * name) {
         return glfwGetProcAddress(name);
     }, false); // only resolve functions that are actually used (lazy)
 
