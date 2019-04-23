@@ -6,7 +6,8 @@
 find_package(Qt5Core    5.1 QUIET)
 find_package(Qt5Gui     5.1 QUIET)
 find_package(Qt5Widgets 5.1 QUIET)
-find_package(cpplocate  REQUIRED)
+find_package(cpplocate      QUIET)
+
 
 # Enable automoc
 set(CMAKE_AUTOMOC ON)
@@ -29,6 +30,10 @@ set(target cubescape-qt)
 if (NOT Qt5Core_FOUND)
     message(STATUS "Example ${target} skipped: Qt5 not found")
     return()
+endif()
+
+if (NOT cpplocate_FOUND)
+    message(STATUS "Example ${target}: using static data path (cpplocate not found)")
 else()
     message(STATUS "Example ${target}")
 endif()
@@ -110,7 +115,7 @@ target_link_libraries(${target}
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    cpplocate::cpplocate
+    $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
 )
 
 
@@ -121,6 +126,7 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
+    $<$<BOOL:${cpplocate_FOUND}>:cpplocate_FOUND>
 )
 
 

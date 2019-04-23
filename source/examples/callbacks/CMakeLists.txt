@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(glfw3)
+find_package(glfw3 QUIET)
 
 
 # 
@@ -27,7 +27,6 @@ message(STATUS "Example ${target}")
 # 
 
 set(sources
-    MACOSX_BUNDLE
     main.cpp
 )
 
