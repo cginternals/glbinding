@@ -9,6 +9,7 @@
 #include <glbinding/CallbackMask.h>
 
 #include <glbinding/gl/gl.h>
+#include <glbinding/getProcAddress.h>
 
 #include <glbinding-aux/ContextInfo.h>
 #include <glbinding-aux/Meta.h>

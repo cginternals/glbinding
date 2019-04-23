@@ -75,9 +75,7 @@ Version printVersionOfContextRequest(
     }
 
     glfwMakeContextCurrent(window);
-    glbinding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    });
+    glbinding::initialize(glfwGetProcAddress);
 
     auto result = aux::ContextInfo::version();
     glfwMakeContextCurrent(window);
@@ -155,9 +153,7 @@ int main(int argc, char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    });
+    glbinding::initialize(glfwGetProcAddress);
 
     // print some gl infos (query)
 

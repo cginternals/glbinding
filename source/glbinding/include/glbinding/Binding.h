@@ -79,7 +79,8 @@ public:
     *    Initializes the binding for the current active OpenGL context
     *
     *  @param[in] functionPointerResolver
-    *    A function pointer to resolve binding functions for this context
+    *    A function pointer to resolve binding functions for this context.
+    *    If `nullptr` is passed for first time initialization, `glbinding::getProcAddress` is used for convenience.
     *  @param[in] resolveFunctions (optional)
     *    Whether to resolve function pointers lazy (\a resolveFunctions = `false`) or immediately
     *
@@ -89,6 +90,14 @@ public:
     *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
+    *
+    *  @remark
+    *    Using glbinding::getProcAddress is provided for convenience only. Please don't use this in new code.
+    *    Instead, use an external function resolution callback, e.g.,
+    *     * wglGetProcAddress
+    *     * glxGetProcAddress
+    *     * glfwGetProcAddress
+    *     * QOpenGlContext::getProcAddress
     */
     static void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
 

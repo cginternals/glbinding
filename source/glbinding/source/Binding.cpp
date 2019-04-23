@@ -6,6 +6,7 @@
 
 #include <glbinding/State.h>
 #include <glbinding/AbstractFunction.h>
+#include <glbinding/getProcAddress.h>
 
 
 namespace glbinding
@@ -170,7 +171,9 @@ void Binding::initialize(
 
         if (s_firstGetProcAddress() == nullptr)
         {
-            s_firstGetProcAddress() = functionPointerResolver;
+            s_firstGetProcAddress() = functionPointerResolver == nullptr
+                ? glbinding::getProcAddress
+                : functionPointerResolver;
         }
 
         s_getProcAddress() = functionPointerResolver == nullptr ? s_firstGetProcAddress() : functionPointerResolver;

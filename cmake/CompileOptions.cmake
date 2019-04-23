@@ -158,3 +158,11 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "L
         -pthread
     )
 endif()
+
+if(NOT "${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+    set(DEFAULT_LINKER_OPTIONS ${DEFAULT_LINKER_OPTIONS}
+        PUBLIC
+            ${CMAKE_DL_LIBS}
+    )
+    
+endif()
