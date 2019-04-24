@@ -72,13 +72,12 @@ int main()
 
     // print some gl infos (query)
 
-    glbinding::initialize(glfwGetProcAddress, false);
+	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
     std::cout << std::endl
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
 
     glbinding::setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 

@@ -58,7 +58,13 @@ Version printVersionOfContextRequest(
 , const bool forward
 , const bool core)
 {
-    glfwDefaultWindowHints();
+	if (version < Version(3, 2) && (forward || core)) 
+	{
+		print(version, forward, core, Version(), false, false);
+		return Version();
+	}
+
+	glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, version.majorVersion());
@@ -75,7 +81,7 @@ Version printVersionOfContextRequest(
     }
 
     glfwMakeContextCurrent(window);
-    glbinding::initialize(glfwGetProcAddress);
+    glbinding::initialize(glfwGetProcAddress, true);
 
     auto result = aux::ContextInfo::version();
     glfwMakeContextCurrent(window);
@@ -104,10 +110,10 @@ int main(int argc, char * argv[])
 
     for (const auto & version : aux::ValidVersions::versions())
     {
-        markdown[version][0] = printVersionOfContextRequest(version, false, false);
-        markdown[version][1] = printVersionOfContextRequest(version, false, true);
-        markdown[version][2] = printVersionOfContextRequest(version, true, false);
-        markdown[version][3] = printVersionOfContextRequest(version, true, true);
+		markdown[version][0] = printVersionOfContextRequest(version, false, false);
+		markdown[version][1] = printVersionOfContextRequest(version, false, true);
+		markdown[version][2] = printVersionOfContextRequest(version, true, false);
+		markdown[version][3] = printVersionOfContextRequest(version, true, true);
         std::cout << std::endl;
     }
 
@@ -153,15 +159,14 @@ int main(int argc, char * argv[])
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize(glfwGetProcAddress);
+	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
     // print some gl infos (query)
 
     std::cout
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

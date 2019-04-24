@@ -50,10 +50,5 @@ int main(int, char * [])
         std::cout << " " << aux::Meta::getString(extension) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
     }
     
-    // print some gl infos (query)
-
-    std::cout << std::endl
-        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
-
     return 0;
 }
