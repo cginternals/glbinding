@@ -3,9 +3,9 @@
 # External dependencies
 # 
 
-find_package(OpenGL)
-find_package(glfw3)
-find_package(GLEW)
+find_package(OpenGL QUIET)
+find_package(glfw3 QUIET)
+find_package(GLEW QUIET)
 
 
 # 

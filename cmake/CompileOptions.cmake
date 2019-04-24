@@ -23,6 +23,7 @@ set(DEFAULT_PROJECT_OPTIONS
     LINKER_LANGUAGE           "CXX"
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET     "hidden"
+    CXX_EXTENSIONS            Off
 )
 
 
@@ -156,4 +157,12 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "L
     PUBLIC
         -pthread
     )
+endif()
+
+if(NOT "${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+    set(DEFAULT_LINKER_OPTIONS ${DEFAULT_LINKER_OPTIONS}
+        PUBLIC
+            ${CMAKE_DL_LIBS}
+    )
+    
 endif()

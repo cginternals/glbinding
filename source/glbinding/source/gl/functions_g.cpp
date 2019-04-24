@@ -901,6 +901,11 @@ void glGetMaterialxOES(GLenum face, GLenum pname, GLfixed param)
     return Binding::GetMaterialxOES(face, pname, param);
 }
 
+void glGetMemoryObjectDetachedResourcesuivNV(GLuint memory, GLenum pname, GLint first, GLsizei count, GLuint * params)
+{
+    return Binding::GetMemoryObjectDetachedResourcesuivNV(memory, pname, first, count, params);
+}
+
 void glGetMemoryObjectParameterivEXT(GLuint memoryObject, GLenum pname, GLint * params)
 {
     return Binding::GetMemoryObjectParameterivEXT(memoryObject, pname, params);
@@ -1649,6 +1654,16 @@ void glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei * length, 
 void glGetShaderiv(GLuint shader, GLenum pname, GLint * params)
 {
     return Binding::GetShaderiv(shader, pname, params);
+}
+
+void glGetShadingRateImagePaletteNV(GLuint viewport, GLuint entry, GLenum * rate)
+{
+    return Binding::GetShadingRateImagePaletteNV(viewport, entry, rate);
+}
+
+void glGetShadingRateSampleLocationivNV(GLenum rate, GLuint samples, GLuint index, GLint * location)
+{
+    return Binding::GetShadingRateSampleLocationivNV(rate, samples, index, location);
 }
 
 void glGetSharpenTexFuncSGIS(GLenum target, GLfloat * points)

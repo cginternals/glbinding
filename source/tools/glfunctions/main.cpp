@@ -34,11 +34,11 @@ inline void coutFunc(const AbstractFunction * func)
 }
 
 int main()
-{
+{    
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
@@ -60,9 +60,7 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    });
+    glbinding::initialize(glfwGetProcAddress, true);
 
     // gather available extensions
 
@@ -202,8 +200,7 @@ int main()
     std::cout << std::endl
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

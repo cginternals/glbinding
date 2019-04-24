@@ -111,7 +111,7 @@ void * glMapBufferARB(GLenum target, GLenum access)
     return Binding::MapBufferARB(target, access);
 }
 
-void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
+void * glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, MapBufferAccessMask access)
 {
     return Binding::MapBufferRange(target, offset, length, access);
 }
@@ -166,7 +166,7 @@ void * glMapNamedBufferRange(GLuint buffer, GLintptr offset, GLsizeiptr length, 
     return Binding::MapNamedBufferRange(buffer, offset, length, access);
 }
 
-void * glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, BufferAccessMask access)
+void * glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, MapBufferAccessMask access)
 {
     return Binding::MapNamedBufferRangeEXT(buffer, offset, length, access);
 }
@@ -186,7 +186,7 @@ void glMapParameterivNV(GLenum target, GLenum pname, const GLint * params)
     return Binding::MapParameterivNV(target, pname, params);
 }
 
-void * glMapTexture2DINTEL(GLuint texture, GLint level, MapBufferUsageMask access, GLint * stride, GLenum * layout)
+void * glMapTexture2DINTEL(GLuint texture, GLint level, BufferAccessMask access, GLint * stride, GLenum * layout)
 {
     return Binding::MapTexture2DINTEL(texture, level, access, stride, layout);
 }
@@ -569,6 +569,16 @@ void glMultiDrawElementsIndirectCount(GLenum mode, GLenum type, const void * ind
 void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
 {
     return Binding::MultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawMeshTasksIndirectCountNV(GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride)
+{
+    return Binding::MultiDrawMeshTasksIndirectCountNV(indirect, drawcount, maxdrawcount, stride);
+}
+
+void glMultiDrawMeshTasksIndirectNV(GLintptr indirect, GLsizei drawcount, GLsizei stride)
+{
+    return Binding::MultiDrawMeshTasksIndirectNV(indirect, drawcount, stride);
 }
 
 void glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount)

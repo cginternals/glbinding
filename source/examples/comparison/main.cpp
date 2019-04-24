@@ -116,10 +116,10 @@ void errorfun(int errnum, const char * errmsg)
 
 int main(int /*argc*/, char* /*argv*/[])
 {
+    glfwSetErrorCallback(errorfun);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(errorfun);
 
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);

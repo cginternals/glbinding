@@ -61,7 +61,7 @@ namespace gl
 {
 
 
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
 
 
 } // namespace gl
@@ -160,7 +160,7 @@ namespace gl
 {
 
 
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const MapBufferUsageMask & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const MapBufferAccessMask & value);
 
 
 } // namespace gl
@@ -292,7 +292,7 @@ namespace gl
 {
 
 
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
 
 
 } // namespace gl
@@ -307,9 +307,17 @@ namespace glbinding
 class Version;
 
 
+/**
+*  @brief
+*    Generic ostream operator for the Value template
+*/
 template <typename T>
 GLBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const Value<T> & value);
 
+/**
+*  @brief
+*    Generic ostream operator for the Value template with pointer types
+*/
 template <typename T>
 GLBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, const Value<T *> & value);
 
@@ -320,7 +328,7 @@ GLBINDING_AUX_TEMPLATE_API std::ostream & operator<<(std::ostream & stream, cons
 template <>
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLenum> & value);
 
-/**
+/* <- ToDo: Add back second * when implementing this function again
 *  @brief
 *    A specialized ostream operator for the gl::GLbitfield Value template
 */
@@ -361,6 +369,10 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<g
 */
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Version & version);
 
+/**
+*  @brief
+*    The operator to allow AbstractValues to be printed onto a std::ostream
+*/
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AbstractValue * value);
 
 

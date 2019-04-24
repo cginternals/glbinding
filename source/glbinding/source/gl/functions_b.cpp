@@ -261,6 +261,11 @@ void glBindSamplers(GLuint first, GLsizei count, const GLuint * samplers)
     return Binding::BindSamplers(first, count, samplers);
 }
 
+void glBindShadingRateImageNV(GLuint texture)
+{
+    return Binding::BindShadingRateImageNV(texture);
+}
+
 GLuint glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value)
 {
     return Binding::BindTexGenParameterEXT(unit, coord, value);
@@ -551,6 +556,11 @@ void glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLs
     return Binding::BufferAddressRangeNV(pname, index, address, length);
 }
 
+void glBufferAttachMemoryNV(GLenum target, GLuint memory, GLuint64 offset)
+{
+    return Binding::BufferAttachMemoryNV(target, memory, offset);
+}
+
 void glBufferData(GLenum target, GLsizeiptr size, const void * data, GLenum usage)
 {
     return Binding::BufferData(target, size, data, usage);
@@ -576,7 +586,7 @@ void glBufferStorage(GLenum target, GLsizeiptr size, const void * data, BufferSt
     return Binding::BufferStorage(target, size, data, flags);
 }
 
-void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, MapBufferUsageMask flags)
+void glBufferStorageExternalEXT(GLenum target, GLintptr offset, GLsizeiptr size, GLeglClientBufferEXT clientBuffer, BufferStorageMask flags)
 {
     return Binding::BufferStorageExternalEXT(target, offset, size, clientBuffer, flags);
 }

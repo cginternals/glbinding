@@ -3,8 +3,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include <glbinding/glbinding.h>
 #include <glbinding/Version.h>
-#include <glbinding/Binding.h>
 #include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
 
@@ -73,10 +73,10 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
 
 int main(int, char *[])
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
 
@@ -99,14 +99,15 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    }, false); // only resolve functions that are actually used (lazy)
+	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+
+	// Configure logging to also include parameter and return values
+	glbinding::addCallbackMask(CallbackMask::ParametersAndReturnValue);
 
     // Logging start
     aux::start();
 
-    // print some gl infos (query)
+    // Print some gl infos (query)
     std::cout << std::endl
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl

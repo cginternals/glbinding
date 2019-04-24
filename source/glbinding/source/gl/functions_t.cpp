@@ -101,6 +101,11 @@ GLboolean glTestObjectAPPLE(GLenum object, GLuint name)
     return Binding::TestObjectAPPLE(object, name);
 }
 
+void glTexAttachMemoryNV(GLenum target, GLuint memory, GLuint64 offset)
+{
+    return Binding::TexAttachMemoryNV(target, memory, offset);
+}
+
 void glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
 {
     return Binding::TexBuffer(target, internalformat, buffer);
@@ -814,6 +819,11 @@ void glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset
 void glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const void * pixels)
 {
     return Binding::TexSubImage4DSGIS(target, level, xoffset, yoffset, zoffset, woffset, width, height, depth, size4d, format, type, pixels);
+}
+
+void glTextureAttachMemoryNV(GLuint texture, GLuint memory, GLuint64 offset)
+{
+    return Binding::TextureAttachMemoryNV(texture, memory, offset);
 }
 
 void glTextureBarrier()

@@ -5,12 +5,12 @@
 
 #include <GLFW/glfw3.h>
 
+#include <glbinding/glbinding.h>
 #include <glbinding/AbstractFunction.h>
 #include <glbinding/Version.h>
-#include <glbinding/Binding.h>
 #include <glbinding/CallbackMask.h>
 #include <glbinding/FunctionCall.h>
-#include <glbinding/glbinding.h>
+#include <glbinding/Binding.h>
 
 #include <glbinding/gl32/gl.h>
 
@@ -42,10 +42,10 @@ void doGLStuff(GLFWwindow * window)
 
 int main()
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
@@ -64,7 +64,7 @@ int main()
         return -1;
     }
 
-    Binding::addContextSwitchCallback([](ContextHandle handle){
+    glbinding::addContextSwitchCallback([](ContextHandle handle){
         std::cout << "Activating context " << handle << std::endl;
     });
 
@@ -72,13 +72,12 @@ int main()
 
     // print some gl infos (query)
 
-    Binding::initialize(glfwGetProcAddress, false);
+	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
 
     std::cout << std::endl
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl
-        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
 
     glbinding::setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 

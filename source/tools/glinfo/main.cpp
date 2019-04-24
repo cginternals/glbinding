@@ -30,7 +30,7 @@ void error(int errnum, const char * errmsg)
 
 void printExtensions(const std::set<std::string> & extensions)
 {
-    auto column = 8;
+    size_t column = 8;
 
     for (auto it = extensions.begin(); it != extensions.end(); ++it)
     {
@@ -61,11 +61,6 @@ void printExtensions(const std::set<std::string> & extensions)
 
 void printInfos()
 {
-    std::cout << std::endl
-        << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl;
-
     // gather available extensions
 
     std::set<std::string> unknownExts;
@@ -119,10 +114,10 @@ void printInfos()
 
 int main()
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);
@@ -144,13 +139,16 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    }, true);
+	glbinding::initialize(glfwGetProcAddress, true);
 
     printInfos();
 
-    glfwMakeContextCurrent(nullptr);
+	// print some gl infos (query)
+
+	std::cout << std::endl
+		<< "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
+		<< "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
+		<< "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

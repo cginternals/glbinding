@@ -9,13 +9,14 @@ namespace glbinding
 {
 
 
+Function<void, GLuint, GLuint, GLuint64> Binding::NamedBufferAttachMemoryNV("glNamedBufferAttachMemoryNV");
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferData("glNamedBufferData");
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferDataEXT("glNamedBufferDataEXT");
 Function<void, GLuint, GLintptr, GLsizeiptr, GLboolean> Binding::NamedBufferPageCommitmentARB("glNamedBufferPageCommitmentARB");
 Function<void, GLuint, GLintptr, GLsizeiptr, GLboolean> Binding::NamedBufferPageCommitmentEXT("glNamedBufferPageCommitmentEXT");
 Function<void, GLuint, GLsizeiptr, const void *, BufferStorageMask> Binding::NamedBufferStorage("glNamedBufferStorage");
 Function<void, GLuint, GLsizeiptr, const void *, BufferStorageMask> Binding::NamedBufferStorageEXT("glNamedBufferStorageEXT");
-Function<void, GLuint, GLintptr, GLsizeiptr, GLeglClientBufferEXT, MapBufferUsageMask> Binding::NamedBufferStorageExternalEXT("glNamedBufferStorageExternalEXT");
+Function<void, GLuint, GLintptr, GLsizeiptr, GLeglClientBufferEXT, BufferStorageMask> Binding::NamedBufferStorageExternalEXT("glNamedBufferStorageExternalEXT");
 Function<void, GLuint, GLsizeiptr, GLuint, GLuint64> Binding::NamedBufferStorageMemEXT("glNamedBufferStorageMemEXT");
 Function<void, GLuint, GLintptr, GLsizeiptr, const void *> Binding::NamedBufferSubData("glNamedBufferSubData");
 Function<void, GLuint, GLintptr, GLsizeiptr, const void *> Binding::NamedBufferSubDataEXT("glNamedBufferSubDataEXT");
@@ -53,6 +54,7 @@ Function<void, GLuint, GLenum, GLenum, GLsizei, const void *> Binding::NamedProg
 Function<void, GLuint, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorage("glNamedRenderbufferStorage");
 Function<void, GLuint, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageEXT("glNamedRenderbufferStorageEXT");
 Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageMultisample("glNamedRenderbufferStorageMultisample");
+Function<void, GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageMultisampleAdvancedAMD("glNamedRenderbufferStorageMultisampleAdvancedAMD");
 Function<void, GLuint, GLsizei, GLsizei, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageMultisampleCoverageEXT("glNamedRenderbufferStorageMultisampleCoverageEXT");
 Function<void, GLuint, GLsizei, GLenum, GLsizei, GLsizei> Binding::NamedRenderbufferStorageMultisampleEXT("glNamedRenderbufferStorageMultisampleEXT");
 Function<void, GLenum, GLint, const GLchar *, GLint, const GLchar *> Binding::NamedStringARB("glNamedStringARB");
