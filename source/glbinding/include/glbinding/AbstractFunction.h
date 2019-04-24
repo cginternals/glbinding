@@ -65,7 +65,7 @@ public:
     *    Check for a valid function pointer in the current state
     *
     *  @return
-    *    'true' if a valid function pointer is stored in the current state, else 'false'
+    *    `true` if a valid function pointer is stored in the current state, else `false`
     */
     bool isResolved() const;
 
@@ -122,7 +122,7 @@ public:
     *    The mask to check against
     *
     *  @return
-    *    'true' if all bits are set, else 'false'
+    *    `true` if all bits are set, else `false`
     */
     bool isEnabled(CallbackMask mask) const;
 
@@ -134,43 +134,104 @@ public:
     *    The mask to check against
     *
     *  @return
-    *    'true' if at least one bit is set, else 'false'
+    *    `true` if at least one bit is set, else `false`
     */
     bool isAnyEnabled(CallbackMask mask) const;
 
+    /**
+    *  @brief
+    *    Resize internal cache of states
+    *
+    *  @param[in] count
+    *    New cache size
+    */
     virtual void resizeStates(int count) = 0;
 
+    /**
+    *  @brief
+    *    Call unresolved callback
+    *
+    *  @param[in] function
+    *    Parameter for callback
+    *
+    *  @see Binding::unresolvedCallback()
+    */
     static void unresolved(const AbstractFunction * function);
+    
+    /**
+    *  @brief
+    *    Call before callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::beforeCallback()
+    */
     static void before(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call after callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::afterCallback()
+    */
     static void after(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call log callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::logCallback()
+    */
     static void log(FunctionCall && call);
 
+    /**
+    *  @brief
+    *    Get index of current state
+    *
+    *  @return
+    *    Index of current state
+    */
     static int currentPos();
+
+    /**
+    *  @brief
+    *    Get highest state index currently used
+    *
+    *  @return
+    *    Highest state index currently used
+    */
     static int maxPos();
 
 
 protected:
     /**
     *  @brief
-    *    Checks for existance of the current configured state
+    *    Checks for existence of the current configured state
     *
     *  @return
-    *    'true' if the current state still exists, else 'false'
+    *    `true` if the current state still exists, else `false`
     *
-    *  @remarks
+    *  @remark
     *    This method is usually used to detect invalid state clean up
     */
     virtual bool hasState() const = 0;
 
     /**
     *  @brief
-    *    Checks for existance of a state
+    *    Checks for existence of a state
     *
     *  @param[in] pos
     *    The index of the state to check
     *
     *  @return
-    *    'true' if the state exists, else 'false'
+    *    `true` if the state exists, else `false`
     */
     virtual bool hasState(int pos) const = 0;
 

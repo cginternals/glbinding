@@ -81,5 +81,6 @@ protected:
     Painter * m_painter;
 
 protected:
-    ProcAddress getProcAddress(const char * name);
+    static Canvas * s_getProcAddressHelper;
+    static ProcAddress getProcAddress(const char * name);
 };

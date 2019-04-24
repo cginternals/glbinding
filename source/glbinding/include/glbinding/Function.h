@@ -22,6 +22,10 @@ namespace glbinding
 {
 
 
+/**
+*  @brief
+*    Helper struct for calling GL functions and registered callbacks
+*/
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper;
 
@@ -57,7 +61,9 @@ struct GLBINDING_TEMPLATE_API CallbackType<void, Arguments...>
 
 /**
 *  @brief
-*    The Function represents an OpenGL API function with additional features, including:
+*    The Function represents an OpenGL API function with additional features
+*
+*    These features include:
 *     * callbacks
 *     * direct call (omit all callbacks, logging, error checking, ...)
 *     * and function pointer resolving
@@ -95,10 +101,10 @@ public:
     *    The arguments for the function call
     *
     *  @return
-    *    The return value. (may be void and thus, nothing)
+    *    The return value (may be void and thus, nothing)
     *
     *  @remarks
-    *    This method respect currently activated callbacks and logging
+    *    This method respects currently activated callbacks and logging
     */
     inline ReturnType operator()(Arguments&... arguments) const;
 
@@ -110,10 +116,10 @@ public:
     *    The arguments for the function call
     *
     *  @return
-    *    The return value. (may be void and thus, nothing)
+    *    The return value (may be void and thus, nothing)
     *
     *  @remarks
-    *    This method respect currently activated callbacks and logging
+    *    This method respects currently activated callbacks and logging
     */
     inline ReturnType call(Arguments&... arguments) const;
 
@@ -125,9 +131,9 @@ public:
     *    The arguments for the function call
     *
     *  @return
-    *    The return value. (may be void and thus, nothing)
+    *    The return value (may be void and thus, nothing)
     *
-    *  @remarks
+    *  @remark
     *    This method omits all currently activated callbacks and logging
     */
     inline ReturnType directCall(Arguments... arguments) const;
@@ -139,7 +145,7 @@ public:
     *  @param[in] callback
     *    The callback to register
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the Before flag to enable the callback
     */
     inline void setBeforeCallback(BeforeCallback callback);
@@ -157,7 +163,7 @@ public:
     *  @param[in] callback
     *    The callback to register
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the After flag to enable the callback
     */
     inline void setAfterCallback(AfterCallback callback);
@@ -196,10 +202,10 @@ public:
 
 
 protected:
-    mutable std::vector<State> m_states;
+    mutable std::vector<State> m_states; ///< List of States the function is registered in
 
-    BeforeCallback m_beforeCallback; ///< The currently registered before callback
-    AfterCallback  m_afterCallback;  ///< The currently registered after callback
+    BeforeCallback m_beforeCallback;     ///< The currently registered before callback
+    AfterCallback  m_afterCallback;      ///< The currently registered after callback
 };
 
 

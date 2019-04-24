@@ -2,6 +2,7 @@
 #pragma once
 
 
+#include <string>
 #include <set>
 #include <array>
 #include <vector>
@@ -38,7 +39,7 @@ namespace glbinding
 *    The main interface to handle additional features to OpenGL functions besides regular function calls
 *
 *  Additional features include binding initialization (even for multi-threaded environments), additional function registration,
-*  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions
+*  context switches (for multi-context environments) and basic reflection in form of accessors to the full list of functions.
 */
 class GLBINDING_API Binding
 {
@@ -63,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 2926>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 2948>; ///< The type of the build-in functions collection
 
 
 public:
@@ -80,10 +81,12 @@ public:
     *  @param[in] functionPointerResolver
     *    A function pointer to resolve binding functions for this context
     *  @param[in] resolveFunctions (optional)
-    *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+    *    Whether to resolve function pointers lazy (\a resolveFunctions = `false`) or immediately
     *
-    *  @remarks
+    *  @remark
     *    After this call, the initialized context is already set active for the current thread.
+    *
+    *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
@@ -91,18 +94,18 @@ public:
 
     /**
     *  @brief
-    *    Initializes the binding for the current active OpenGL context
+    *    Initializes the binding for a specific OpenGL context
     *
     *  @param[in] context
     *    The context handle of the context to initialize
     *  @param[in] functionPointerResolver
     *    A function pointer to resolve binding functions for this context
     *  @param[in] useContext
-    *    Whether to set the context active (useContext = true) after the initialization
+    *    Whether to set the context active (\a useContext = `true`) after the initialization
     *  @param[in] resolveFunctions (optional)
-    *    Whether to resolve function pointers lazy (resolveFunctions = false) or immediately
+    *    Whether to resolve function pointers lazy (\a resolveFunctions = `false`) or immediately
     *
-    *  @remarks
+    *  @remark
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
@@ -114,9 +117,6 @@ public:
     *
     *  @param[in] function
     *    The function to register
-    *
-    *  @remarks
-    *    The additional features are callbacks, and use in multi-context environments
     */
     static void registerAdditionalFunction(AbstractFunction * function);
 
@@ -138,6 +138,8 @@ public:
     /**
     *  @brief
     *    Update the current context state in glbinding
+    *
+    *  @remark
     *    This function queries the driver for the current OpenGL context
     */
     static void useCurrentContext();
@@ -154,6 +156,8 @@ public:
     /**
     *  @brief
     *    Removes the current context from the state of glbinding
+    *
+    *  @remark
     *    This function queries the driver for the current OpenGL context
     */
     static void releaseCurrentContext();
@@ -171,7 +175,7 @@ public:
     *  @brief
     *    Registers an additional callback that gets called each time the context is switched using the useContext method
     *
-    *  @remarks
+    *  @remark
     *    There may be multiple context switch callbacks registered at once
     */
     static void addContextSwitchCallback(ContextSwitchCallback callback);
@@ -188,7 +192,7 @@ public:
     /**
     *  @brief
     *    Updates the callback mask of all registered OpenGL functions in the current state, excluding the blacklisted functions
-     *
+    *
     *  @param[in] mask
     *    The new CallbackMask
     *  @param[in] blackList
@@ -243,20 +247,21 @@ public:
     *  @return
     *    The callback to use instead of unresolved function calls
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static SimpleFunctionCallback unresolvedCallback();
 
     /**
     *  @brief
-    *    Updates the unresolved callback that is called upon invocation of an OpenGL function which have no counterpart in the OpenGL driver
+    *    Updates the unresolved callback that is called upon invocation of an OpenGL function which has no counterpart in the OpenGL driver
     *
     *  @param[in] callback
     *    The callback to use instead of unresolved function calls
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
     */
     static void setUnresolvedCallback(SimpleFunctionCallback callback);
@@ -268,7 +273,7 @@ public:
     *  @return
     *    The callback to use before an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static FunctionCallback beforeCallback();
@@ -280,8 +285,9 @@ public:
     *  @param[in] callback
     *    The callback to use before an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Before flag to enable the callback
     */
     static void setBeforeCallback(FunctionCallback callback);
@@ -293,7 +299,7 @@ public:
     *  @return
     *    The callback to use after an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static FunctionCallback afterCallback();
@@ -305,13 +311,38 @@ public:
     *  @param[in] callback
     *    The callback to use after an OpenGL function call
     *
-    *  @remarks
+    *  @remark
     *    This callback is registered globally across all states.
+    *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
     static void setAfterCallback(FunctionCallback callback);
 
+    /**
+    *  @brief
+    *    Logging callback accessor
+    *
+    *  @return
+    *    The callback to use for logging an OpenGL function call
+    *
+    *  @remark
+    *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
+    */
     static FunctionLogCallback logCallback();
+
+    /**
+    *  @brief
+    *    Updates the logging callback that is called to log the actual OpenGL function invocation
+    *
+    *  @param[in] callback
+    *    The callback to use for logging an OpenGL function call
+    *
+    *  @remark
+    *    This callback is registered globally across all states.
+    *
+    *  @remark
+    *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
+    */
     static void setLogCallback(FunctionLogCallback callback);
     
     /**
@@ -323,16 +354,84 @@ public:
     */
     static const array_t & functions();
 
+    /**
+    *  @brief
+    *    Accessor for additional functions
+    *
+    *  @return
+    *    List of additional functions
+    */
     static const std::vector<AbstractFunction *> & additionalFunctions();
 
+    /**
+    *  @brief
+    *    Get index of current state
+    *
+    *  @return
+    *    Index of current state
+    */
     static int currentPos();
+
+    /**
+    *  @brief
+    *    Get highest state index currently used
+    *
+    *  @return
+    *    Highest state index currently used
+    */
     static int maxPos();
 
+    /**
+    *  @brief
+    *    Query total number of functions
+    *
+    *  @return
+    *    Total number of functions
+    */
     static size_t size();
 
+    /**
+    *  @brief
+    *    Call unresolved callback
+    *
+    *  @param[in] function
+    *    Parameter for callback
+    *
+    *  @see Binding::unresolvedCallback()
+    */
     static void unresolved(const AbstractFunction * function);
+
+    /**
+    *  @brief
+    *    Call before callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::beforeCallback()
+    */
     static void before(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call after callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::afterCallback()
+    */
     static void after(const FunctionCall & call);
+
+    /**
+    *  @brief
+    *    Call log callback
+    *
+    *  @param[in] call
+    *    Parameter for callback
+    *
+    *  @see Binding::logCallback()
+    */
     static void log(FunctionCall && call);
 
 
@@ -413,6 +512,7 @@ public:
     static Function<void, gl::GLenum, gl::GLuint> BindRenderbufferEXT; ///< Wrapper for glBindRenderbufferEXT
     static Function<void, gl::GLuint, gl::GLuint> BindSampler; ///< Wrapper for glBindSampler
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *> BindSamplers; ///< Wrapper for glBindSamplers
+    static Function<void, gl::GLuint> BindShadingRateImageNV; ///< Wrapper for glBindShadingRateImageNV
     static Function<gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum> BindTexGenParameterEXT; ///< Wrapper for glBindTexGenParameterEXT
     static Function<void, gl::GLenum, gl::GLuint> BindTexture; ///< Wrapper for glBindTexture
     static Function<void, gl::GLenum, gl::GLuint> BindTextureEXT; ///< Wrapper for glBindTextureEXT
@@ -471,12 +571,13 @@ public:
     static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferEXT; ///< Wrapper for glBlitFramebufferEXT
     static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitNamedFramebuffer; ///< Wrapper for glBlitNamedFramebuffer
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64EXT, gl::GLsizeiptr> BufferAddressRangeNV; ///< Wrapper for glBufferAddressRangeNV
+    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64> BufferAttachMemoryNV; ///< Wrapper for glBufferAttachMemoryNV
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLenum> BufferData; ///< Wrapper for glBufferData
     static Function<void, gl::GLenum, gl::GLsizeiptrARB, const void *, gl::GLenum> BufferDataARB; ///< Wrapper for glBufferDataARB
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> BufferPageCommitmentARB; ///< Wrapper for glBufferPageCommitmentARB
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint> BufferParameteriAPPLE; ///< Wrapper for glBufferParameteriAPPLE
     static Function<void, gl::GLenum, gl::GLsizeiptr, const void *, gl::BufferStorageMask> BufferStorage; ///< Wrapper for glBufferStorage
-    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::MapBufferUsageMask> BufferStorageExternalEXT; ///< Wrapper for glBufferStorageExternalEXT
+    static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::BufferStorageMask> BufferStorageExternalEXT; ///< Wrapper for glBufferStorageExternalEXT
     static Function<void, gl::GLenum, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> BufferStorageMemEXT; ///< Wrapper for glBufferStorageMemEXT
     static Function<void, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, const void *> BufferSubData; ///< Wrapper for glBufferSubData
     static Function<void, gl::GLenum, gl::GLintptrARB, gl::GLsizeiptrARB, const void *> BufferSubDataARB; ///< Wrapper for glBufferSubDataARB
@@ -831,6 +932,8 @@ public:
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, const void *, gl::GLsizei, gl::GLint, gl::GLuint> DrawElementsInstancedBaseVertexBaseInstance; ///< Wrapper for glDrawElementsInstancedBaseVertexBaseInstance
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, const void *, gl::GLsizei> DrawElementsInstancedEXT; ///< Wrapper for glDrawElementsInstancedEXT
     static Function<void, gl::GLenum, gl::GLint, gl::GLsizei, gl::GLsizei> DrawMeshArraysSUN; ///< Wrapper for glDrawMeshArraysSUN
+    static Function<void, gl::GLintptr> DrawMeshTasksIndirectNV; ///< Wrapper for glDrawMeshTasksIndirectNV
+    static Function<void, gl::GLuint, gl::GLuint> DrawMeshTasksNV; ///< Wrapper for glDrawMeshTasksNV
     static Function<void, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> DrawPixels; ///< Wrapper for glDrawPixels
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLint, gl::GLsizei> DrawRangeElementArrayAPPLE; ///< Wrapper for glDrawRangeElementArrayAPPLE
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLsizei> DrawRangeElementArrayATI; ///< Wrapper for glDrawRangeElementArrayATI
@@ -1169,6 +1272,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLfloat *> GetMaterialfv; ///< Wrapper for glGetMaterialfv
     static Function<void, gl::GLenum, gl::GLenum, gl::GLint *> GetMaterialiv; ///< Wrapper for glGetMaterialiv
     static Function<void, gl::GLenum, gl::GLenum, gl::GLfixed> GetMaterialxOES; ///< Wrapper for glGetMaterialxOES
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLint, gl::GLsizei, gl::GLuint *> GetMemoryObjectDetachedResourcesuivNV; ///< Wrapper for glGetMemoryObjectDetachedResourcesuivNV
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetMemoryObjectParameterivEXT; ///< Wrapper for glGetMemoryObjectParameterivEXT
     static Function<void, gl::GLenum, gl::GLboolean, gl::GLenum, gl::GLenum, void *> GetMinmax; ///< Wrapper for glGetMinmax
     static Function<void, gl::GLenum, gl::GLboolean, gl::GLenum, gl::GLenum, void *> GetMinmaxEXT; ///< Wrapper for glGetMinmaxEXT
@@ -1319,6 +1423,8 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei, gl::GLsizei *, gl::GLchar *> GetShaderSource; ///< Wrapper for glGetShaderSource
     static Function<void, gl::GLhandleARB, gl::GLsizei, gl::GLsizei *, gl::GLcharARB *> GetShaderSourceARB; ///< Wrapper for glGetShaderSourceARB
     static Function<void, gl::GLuint, gl::GLenum, gl::GLint *> GetShaderiv; ///< Wrapper for glGetShaderiv
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum *> GetShadingRateImagePaletteNV; ///< Wrapper for glGetShadingRateImagePaletteNV
+    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLint *> GetShadingRateSampleLocationivNV; ///< Wrapper for glGetShadingRateSampleLocationivNV
     static Function<void, gl::GLenum, gl::GLfloat *> GetSharpenTexFuncSGIS; ///< Wrapper for glGetSharpenTexFuncSGIS
     static Function<gl::GLushort, gl::GLenum> GetStageIndexNV; ///< Wrapper for glGetStageIndexNV
     static Function<const gl::GLubyte *, gl::GLenum> GetString; ///< Wrapper for glGetString
@@ -1644,7 +1750,7 @@ public:
     static Function<void, gl::GLenum, gl::GLfixed, gl::GLfixed, gl::GLint, gl::GLint, gl::GLfixed, gl::GLfixed, gl::GLint, gl::GLint, gl::GLfixed> Map2xOES; ///< Wrapper for glMap2xOES
     static Function<void *, gl::GLenum, gl::GLenum> MapBuffer; ///< Wrapper for glMapBuffer
     static Function<void *, gl::GLenum, gl::GLenum> MapBufferARB; ///< Wrapper for glMapBufferARB
-    static Function<void *, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapBufferRange; ///< Wrapper for glMapBufferRange
+    static Function<void *, gl::GLenum, gl::GLintptr, gl::GLsizeiptr, gl::MapBufferAccessMask> MapBufferRange; ///< Wrapper for glMapBufferRange
     static Function<void, gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLint, gl::GLint, gl::GLboolean, const void *> MapControlPointsNV; ///< Wrapper for glMapControlPointsNV
     static Function<void, gl::GLint, gl::GLdouble, gl::GLdouble> MapGrid1d; ///< Wrapper for glMapGrid1d
     static Function<void, gl::GLint, gl::GLfloat, gl::GLfloat> MapGrid1f; ///< Wrapper for glMapGrid1f
@@ -1655,11 +1761,11 @@ public:
     static Function<void *, gl::GLuint, gl::GLenum> MapNamedBuffer; ///< Wrapper for glMapNamedBuffer
     static Function<void *, gl::GLuint, gl::GLenum> MapNamedBufferEXT; ///< Wrapper for glMapNamedBufferEXT
     static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapNamedBufferRange; ///< Wrapper for glMapNamedBufferRange
-    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::BufferAccessMask> MapNamedBufferRangeEXT; ///< Wrapper for glMapNamedBufferRangeEXT
+    static Function<void *, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::MapBufferAccessMask> MapNamedBufferRangeEXT; ///< Wrapper for glMapNamedBufferRangeEXT
     static Function<void *, gl::GLuint> MapObjectBufferATI; ///< Wrapper for glMapObjectBufferATI
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLfloat *> MapParameterfvNV; ///< Wrapper for glMapParameterfvNV
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLint *> MapParameterivNV; ///< Wrapper for glMapParameterivNV
-    static Function<void *, gl::GLuint, gl::GLint, gl::MapBufferUsageMask, gl::GLint *, gl::GLenum *> MapTexture2DINTEL; ///< Wrapper for glMapTexture2DINTEL
+    static Function<void *, gl::GLuint, gl::GLint, gl::BufferAccessMask, gl::GLint *, gl::GLenum *> MapTexture2DINTEL; ///< Wrapper for glMapTexture2DINTEL
     static Function<void, gl::GLuint, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, const gl::GLdouble *> MapVertexAttrib1dAPPLE; ///< Wrapper for glMapVertexAttrib1dAPPLE
     static Function<void, gl::GLuint, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLint, gl::GLint, const gl::GLfloat *> MapVertexAttrib1fAPPLE; ///< Wrapper for glMapVertexAttrib1fAPPLE
     static Function<void, gl::GLuint, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, gl::GLdouble, gl::GLdouble, gl::GLint, gl::GLint, const gl::GLdouble *> MapVertexAttrib2dAPPLE; ///< Wrapper for glMapVertexAttrib2dAPPLE
@@ -1736,6 +1842,8 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLint> MultiDrawElementsIndirectBindlessNV; ///< Wrapper for glMultiDrawElementsIndirectBindlessNV
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectCount; ///< Wrapper for glMultiDrawElementsIndirectCount
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectCountARB; ///< Wrapper for glMultiDrawElementsIndirectCountARB
+    static Function<void, gl::GLintptr, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawMeshTasksIndirectCountNV; ///< Wrapper for glMultiDrawMeshTasksIndirectCountNV
+    static Function<void, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawMeshTasksIndirectNV; ///< Wrapper for glMultiDrawMeshTasksIndirectNV
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, const gl::GLint *, const gl::GLsizei *, gl::GLsizei> MultiDrawRangeElementArrayAPPLE; ///< Wrapper for glMultiDrawRangeElementArrayAPPLE
     static Function<void, const gl::GLenum *, const gl::GLint *, const gl::GLsizei *, gl::GLsizei, gl::GLint> MultiModeDrawArraysIBM; ///< Wrapper for glMultiModeDrawArraysIBM
     static Function<void, const gl::GLenum *, const gl::GLsizei *, gl::GLenum, const void *const*, gl::GLsizei, gl::GLint> MultiModeDrawElementsIBM; ///< Wrapper for glMultiModeDrawElementsIBM
@@ -1871,13 +1979,14 @@ public:
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLuint64 *> MulticastGetQueryObjectui64vNV; ///< Wrapper for glMulticastGetQueryObjectui64vNV
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLuint *> MulticastGetQueryObjectuivNV; ///< Wrapper for glMulticastGetQueryObjectuivNV
     static Function<void, gl::GLuint, gl::GLbitfield> MulticastWaitSyncNV; ///< Wrapper for glMulticastWaitSyncNV
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLuint64> NamedBufferAttachMemoryNV; ///< Wrapper for glNamedBufferAttachMemoryNV
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferData; ///< Wrapper for glNamedBufferData
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferDataEXT; ///< Wrapper for glNamedBufferDataEXT
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentARB; ///< Wrapper for glNamedBufferPageCommitmentARB
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLboolean> NamedBufferPageCommitmentEXT; ///< Wrapper for glNamedBufferPageCommitmentEXT
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorage; ///< Wrapper for glNamedBufferStorage
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::BufferStorageMask> NamedBufferStorageEXT; ///< Wrapper for glNamedBufferStorageEXT
-    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::MapBufferUsageMask> NamedBufferStorageExternalEXT; ///< Wrapper for glNamedBufferStorageExternalEXT
+    static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, gl::GLeglClientBufferEXT, gl::BufferStorageMask> NamedBufferStorageExternalEXT; ///< Wrapper for glNamedBufferStorageExternalEXT
     static Function<void, gl::GLuint, gl::GLsizeiptr, gl::GLuint, gl::GLuint64> NamedBufferStorageMemEXT; ///< Wrapper for glNamedBufferStorageMemEXT
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubData; ///< Wrapper for glNamedBufferSubData
     static Function<void, gl::GLuint, gl::GLintptr, gl::GLsizeiptr, const void *> NamedBufferSubDataEXT; ///< Wrapper for glNamedBufferSubDataEXT
@@ -1915,6 +2024,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLsizei> NamedRenderbufferStorage; ///< Wrapper for glNamedRenderbufferStorage
     static Function<void, gl::GLuint, gl::GLenum, gl::GLsizei, gl::GLsizei> NamedRenderbufferStorageEXT; ///< Wrapper for glNamedRenderbufferStorageEXT
     static Function<void, gl::GLuint, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> NamedRenderbufferStorageMultisample; ///< Wrapper for glNamedRenderbufferStorageMultisample
+    static Function<void, gl::GLuint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> NamedRenderbufferStorageMultisampleAdvancedAMD; ///< Wrapper for glNamedRenderbufferStorageMultisampleAdvancedAMD
     static Function<void, gl::GLuint, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> NamedRenderbufferStorageMultisampleCoverageEXT; ///< Wrapper for glNamedRenderbufferStorageMultisampleCoverageEXT
     static Function<void, gl::GLuint, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> NamedRenderbufferStorageMultisampleEXT; ///< Wrapper for glNamedRenderbufferStorageMultisampleEXT
     static Function<void, gl::GLenum, gl::GLint, const gl::GLchar *, gl::GLint, const gl::GLchar *> NamedStringARB; ///< Wrapper for glNamedStringARB
@@ -2301,6 +2411,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorage; ///< Wrapper for glRenderbufferStorage
     static Function<void, gl::GLenum, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorageEXT; ///< Wrapper for glRenderbufferStorageEXT
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorageMultisample; ///< Wrapper for glRenderbufferStorageMultisample
+    static Function<void, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorageMultisampleAdvancedAMD; ///< Wrapper for glRenderbufferStorageMultisampleAdvancedAMD
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorageMultisampleCoverageNV; ///< Wrapper for glRenderbufferStorageMultisampleCoverageNV
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> RenderbufferStorageMultisampleEXT; ///< Wrapper for glRenderbufferStorageMultisampleEXT
     static Function<void, gl::GLenum, gl::GLsizei, const void **> ReplacementCodePointerSUN; ///< Wrapper for glReplacementCodePointerSUN
@@ -2329,6 +2440,7 @@ public:
     static Function<void, gl::GLsizei, const gl::GLuint *> RequestResidentProgramsNV; ///< Wrapper for glRequestResidentProgramsNV
     static Function<void, gl::GLenum> ResetHistogram; ///< Wrapper for glResetHistogram
     static Function<void, gl::GLenum> ResetHistogramEXT; ///< Wrapper for glResetHistogramEXT
+    static Function<void, gl::GLuint, gl::GLenum> ResetMemoryObjectParameterNV; ///< Wrapper for glResetMemoryObjectParameterNV
     static Function<void, gl::GLenum> ResetMinmax; ///< Wrapper for glResetMinmax
     static Function<void, gl::GLenum> ResetMinmaxEXT; ///< Wrapper for glResetMinmaxEXT
     static Function<void> ResizeBuffersMESA; ///< Wrapper for glResizeBuffersMESA
@@ -2358,6 +2470,8 @@ public:
     static Function<void, gl::GLfixed, gl::GLfixed, gl::GLfixed> ScalexOES; ///< Wrapper for glScalexOES
     static Function<void, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei> Scissor; ///< Wrapper for glScissor
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLint *> ScissorArrayv; ///< Wrapper for glScissorArrayv
+    static Function<void, gl::GLuint, gl::GLsizei, const gl::GLint *> ScissorExclusiveArrayvNV; ///< Wrapper for glScissorExclusiveArrayvNV
+    static Function<void, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei> ScissorExclusiveNV; ///< Wrapper for glScissorExclusiveNV
     static Function<void, gl::GLuint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei> ScissorIndexed; ///< Wrapper for glScissorIndexed
     static Function<void, gl::GLuint, const gl::GLint *> ScissorIndexedv; ///< Wrapper for glScissorIndexedv
     static Function<void, gl::GLbyte, gl::GLbyte, gl::GLbyte> SecondaryColor3b; ///< Wrapper for glSecondaryColor3b
@@ -2419,6 +2533,10 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLchar *const*, const gl::GLint *> ShaderSource; ///< Wrapper for glShaderSource
     static Function<void, gl::GLhandleARB, gl::GLsizei, const gl::GLcharARB **, const gl::GLint *> ShaderSourceARB; ///< Wrapper for glShaderSourceARB
     static Function<void, gl::GLuint, gl::GLuint, gl::GLuint> ShaderStorageBlockBinding; ///< Wrapper for glShaderStorageBlockBinding
+    static Function<void, gl::GLboolean> ShadingRateImageBarrierNV; ///< Wrapper for glShadingRateImageBarrierNV
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLenum *> ShadingRateImagePaletteNV; ///< Wrapper for glShadingRateImagePaletteNV
+    static Function<void, gl::GLenum, gl::GLuint, const gl::GLint *> ShadingRateSampleOrderCustomNV; ///< Wrapper for glShadingRateSampleOrderCustomNV
+    static Function<void, gl::GLenum> ShadingRateSampleOrderNV; ///< Wrapper for glShadingRateSampleOrderNV
     static Function<void, gl::GLenum, gl::GLsizei, const gl::GLfloat *> SharpenTexFuncSGIS; ///< Wrapper for glSharpenTexFuncSGIS
     static Function<void, gl::GLuint, gl::GLuint, const gl::GLuint *, gl::GLuint, const gl::GLuint *, const gl::GLenum *> SignalSemaphoreEXT; ///< Wrapper for glSignalSemaphoreEXT
     static Function<void, gl::GLuint64> SignalVkFenceNV; ///< Wrapper for glSignalVkFenceNV
@@ -2472,6 +2590,7 @@ public:
     static Function<gl::GLboolean, gl::GLuint> TestFenceAPPLE; ///< Wrapper for glTestFenceAPPLE
     static Function<gl::GLboolean, gl::GLuint> TestFenceNV; ///< Wrapper for glTestFenceNV
     static Function<gl::GLboolean, gl::GLenum, gl::GLuint> TestObjectAPPLE; ///< Wrapper for glTestObjectAPPLE
+    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64> TexAttachMemoryNV; ///< Wrapper for glTexAttachMemoryNV
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint> TexBuffer; ///< Wrapper for glTexBuffer
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint> TexBufferARB; ///< Wrapper for glTexBufferARB
     static Function<void, gl::GLenum, gl::GLenum, gl::GLuint> TexBufferEXT; ///< Wrapper for glTexBufferEXT
@@ -2615,6 +2734,7 @@ public:
     static Function<void, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TexSubImage3D; ///< Wrapper for glTexSubImage3D
     static Function<void, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TexSubImage3DEXT; ///< Wrapper for glTexSubImage3DEXT
     static Function<void, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> TexSubImage4DSGIS; ///< Wrapper for glTexSubImage4DSGIS
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLuint64> TextureAttachMemoryNV; ///< Wrapper for glTextureAttachMemoryNV
     static Function<void> TextureBarrier; ///< Wrapper for glTextureBarrier
     static Function<void> TextureBarrierNV; ///< Wrapper for glTextureBarrierNV
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint> TextureBuffer; ///< Wrapper for glTextureBuffer
@@ -2819,6 +2939,7 @@ public:
     static Function<void, gl::GLsizei, const gl::GLvdpauSurfaceNV *> VDPAUMapSurfacesNV; ///< Wrapper for glVDPAUMapSurfacesNV
     static Function<gl::GLvdpauSurfaceNV, const void *, gl::GLenum, gl::GLsizei, const gl::GLuint *> VDPAURegisterOutputSurfaceNV; ///< Wrapper for glVDPAURegisterOutputSurfaceNV
     static Function<gl::GLvdpauSurfaceNV, const void *, gl::GLenum, gl::GLsizei, const gl::GLuint *> VDPAURegisterVideoSurfaceNV; ///< Wrapper for glVDPAURegisterVideoSurfaceNV
+    static Function<gl::GLvdpauSurfaceNV, const void *, gl::GLenum, gl::GLsizei, const gl::GLuint *, gl::GLboolean> VDPAURegisterVideoSurfaceWithPictureStructureNV; ///< Wrapper for glVDPAURegisterVideoSurfaceWithPictureStructureNV
     static Function<void, gl::GLvdpauSurfaceNV, gl::GLenum> VDPAUSurfaceAccessNV; ///< Wrapper for glVDPAUSurfaceAccessNV
     static Function<void, gl::GLsizei, const gl::GLvdpauSurfaceNV *> VDPAUUnmapSurfacesNV; ///< Wrapper for glVDPAUUnmapSurfacesNV
     static Function<void, gl::GLvdpauSurfaceNV> VDPAUUnregisterSurfaceNV; ///< Wrapper for glVDPAUUnregisterSurfaceNV
@@ -3266,26 +3387,49 @@ public:
 
 
 protected:
+    /**
+    *  @brief
+    *    Provide an additional State
+    *
+    *  @param[in] pos
+    *    Index of new State
+    */
     static void provideState(int pos);
+
+    /**
+    *  @brief
+    *    Neglect a previously provided state
+    *
+    *  @param[in] pos
+    *    Index of State to neglect
+    */
     static void neglectState(int pos);
+
+    /**
+    *  @brief
+    *    Set current State
+    *
+    *  @param[in] pos
+    *    Index of State
+    */
     static void setStatePos(int pos);
 
 
 protected:
-    static const array_t s_functions;           ///< The list of all build-in functions
-    static int & s_maxPos();
-    static std::vector<AbstractFunction *> & s_additionalFunctions();
-    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks();
-    static SimpleFunctionCallback & s_unresolvedCallback();
-    static FunctionCallback & s_beforeCallback();
-    static FunctionCallback & s_afterCallback();
-    static FunctionLogCallback & s_logCallback();
-    static int & s_pos();
-    static ContextHandle & s_context();
-    static glbinding::GetProcAddress & s_getProcAddress();
-    static std_boost::recursive_mutex & s_mutex();
-    static std::unordered_map<ContextHandle, int> & s_bindings();
-    static glbinding::GetProcAddress & s_firstGetProcAddress();
+    static const array_t s_functions;                                       ///< The list of all build-in functions
+    static int & s_maxPos();                                                ///< Maximum State index in use
+    static std::vector<AbstractFunction *> & s_additionalFunctions();       ///< List of additional OpenGL fucntions
+    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks(); ///< List of callbacks for context switch
+    static SimpleFunctionCallback & s_unresolvedCallback();                 ///< Callback for unresolved functions
+    static FunctionCallback & s_beforeCallback();                           ///< Callback for before function call
+    static FunctionCallback & s_afterCallback();                            ///< Callback for after function call
+    static FunctionLogCallback & s_logCallback();                           ///< Callback for logging a function call
+    static int & s_pos();                                                   ///< Position of current State
+    static ContextHandle & s_context();                                     ///< Handle of current context
+    static glbinding::GetProcAddress & s_getProcAddress();                  ///< Current address of function resolution method
+    static std_boost::recursive_mutex & s_mutex();                          ///< Mutex
+    static std::unordered_map<ContextHandle, int> & s_bindings();           ///< Map (handle->position) of initialized contexts
+    static glbinding::GetProcAddress & s_firstGetProcAddress();             ///< First address of function resolution method
 };
 
 

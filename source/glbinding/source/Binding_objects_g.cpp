@@ -187,6 +187,7 @@ Function<void, GLenum, GLenum, GLfixed *> Binding::GetMapxvOES("glGetMapxvOES");
 Function<void, GLenum, GLenum, GLfloat *> Binding::GetMaterialfv("glGetMaterialfv");
 Function<void, GLenum, GLenum, GLint *> Binding::GetMaterialiv("glGetMaterialiv");
 Function<void, GLenum, GLenum, GLfixed> Binding::GetMaterialxOES("glGetMaterialxOES");
+Function<void, GLuint, GLenum, GLint, GLsizei, GLuint *> Binding::GetMemoryObjectDetachedResourcesuivNV("glGetMemoryObjectDetachedResourcesuivNV");
 Function<void, GLuint, GLenum, GLint *> Binding::GetMemoryObjectParameterivEXT("glGetMemoryObjectParameterivEXT");
 Function<void, GLenum, GLboolean, GLenum, GLenum, void *> Binding::GetMinmax("glGetMinmax");
 Function<void, GLenum, GLboolean, GLenum, GLenum, void *> Binding::GetMinmaxEXT("glGetMinmaxEXT");
@@ -337,6 +338,8 @@ Function<void, GLenum, GLenum, GLint *, GLint *> Binding::GetShaderPrecisionForm
 Function<void, GLuint, GLsizei, GLsizei *, GLchar *> Binding::GetShaderSource("glGetShaderSource");
 Function<void, GLhandleARB, GLsizei, GLsizei *, GLcharARB *> Binding::GetShaderSourceARB("glGetShaderSourceARB");
 Function<void, GLuint, GLenum, GLint *> Binding::GetShaderiv("glGetShaderiv");
+Function<void, GLuint, GLuint, GLenum *> Binding::GetShadingRateImagePaletteNV("glGetShadingRateImagePaletteNV");
+Function<void, GLenum, GLuint, GLuint, GLint *> Binding::GetShadingRateSampleLocationivNV("glGetShadingRateSampleLocationivNV");
 Function<void, GLenum, GLfloat *> Binding::GetSharpenTexFuncSGIS("glGetSharpenTexFuncSGIS");
 Function<GLushort, GLenum> Binding::GetStageIndexNV("glGetStageIndexNV");
 Function<const GLubyte *, GLenum> Binding::GetString("glGetString");

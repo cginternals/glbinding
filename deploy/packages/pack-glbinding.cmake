@@ -56,7 +56,9 @@ set(CPACK_COMPONENT_DEV_DEPENDS runtime)
 
 set(CPACK_COMPONENTS_ALL runtime dev)
 
-if (OPTION_BUILD_TOOLS)
+if (OPTION_BUILD_TOOLS AND (TARGET ${META_PROJECT_NAME}::glcontexts OR TARGET ${META_PROJECT_NAME}::glfunctions
+    OR TARGET ${META_PROJECT_NAME}::glinfo OR TARGET ${META_PROJECT_NAME}::glisdeprecated
+    OR TARGET ${META_PROJECT_NAME}::glmeta OR TARGET ${META_PROJECT_NAME}::glqueries))
     set(CPACK_COMPONENT_TOOLS_DISPLAY_NAME "Tools")
     set(CPACK_COMPONENT_TOOLS_DESCRIPTION "Tools for ${META_PROJECT_NAME} library")
     set(CPACK_COMPONENT_TOOLS_DEPENDS runtime)
@@ -65,22 +67,34 @@ if (OPTION_BUILD_TOOLS)
 endif()
 
 if (OPTION_BUILD_EXAMPLES)
-    set(CPACK_COMPONENT_EXAMPLES_DATA_DISPLAY_NAME "Example data")
-    set(CPACK_COMPONENT_EXAMPLES_DATA_DESCRIPTION "Example data for ${META_PROJECT_NAME} library")
-
-    set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} examples_data)
+    set(EXAMPLES_DATA_REQUIRED Off)
     
-    set(CPACK_COMPONENT_EXAMPLES_GLFW_DISPLAY_NAME "Example applications using GLFW")
-    set(CPACK_COMPONENT_EXAMPLES_GLFW_DESCRIPTION "Example applications for ${META_PROJECT_NAME} library based on GLFW")
-    set(CPACK_COMPONENT_EXAMPLES_GLFW_DEPENDS runtime examples_data)
+    if (TARGET ${META_PROJECT_NAME}::cubescape OR TARGET ${META_PROJECT_NAME}::cubescape-log)
+        set(CPACK_COMPONENT_EXAMPLES_GLFW_DISPLAY_NAME "Example applications using GLFW")
+        set(CPACK_COMPONENT_EXAMPLES_GLFW_DESCRIPTION "Example applications for ${META_PROJECT_NAME} library based on GLFW")
+        set(CPACK_COMPONENT_EXAMPLES_GLFW_DEPENDS runtime examples_data)
 
-    set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} examples_glfw)
+        set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} examples_glfw)
+        
+        set(EXAMPLES_DATA_REQUIRED On)
+    endif ()
     
-    set(CPACK_COMPONENT_EXAMPLES_QT_DISPLAY_NAME "Example applications using Qt5")
-    set(CPACK_COMPONENT_EXAMPLES_QT_DESCRIPTION "Example applications for ${META_PROJECT_NAME} library based on Qt5")
-    set(CPACK_COMPONENT_EXAMPLES_QT_DEPENDS runtime examples_data)
+    if (TARGET ${META_PROJECT_NAME}::cubescape-qt)
+        set(CPACK_COMPONENT_EXAMPLES_QT_DISPLAY_NAME "Example applications using Qt5")
+        set(CPACK_COMPONENT_EXAMPLES_QT_DESCRIPTION "Example applications for ${META_PROJECT_NAME} library based on Qt5")
+        set(CPACK_COMPONENT_EXAMPLES_QT_DEPENDS runtime examples_data)
 
-    set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} examples_qt)
+        set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} examples_qt)
+        
+        set(EXAMPLES_DATA_REQUIRED On)
+    endif ()
+    
+    if (EXAMPLES_DATA_REQUIRED)
+        set(CPACK_COMPONENT_EXAMPLES_DATA_DISPLAY_NAME "Example data")
+        set(CPACK_COMPONENT_EXAMPLES_DATA_DESCRIPTION "Example data for ${META_PROJECT_NAME} library")
+
+        set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} examples_data)
+    endif ()
 endif()
 
 if (OPTION_BUILD_DOCS)
@@ -149,7 +163,7 @@ set(CPACK_RESOURCE_FILE_LICENSE                "${PROJECT_SOURCE_DIR}/LICENSE")
 set(CPACK_RESOURCE_FILE_README                 "${PROJECT_SOURCE_DIR}/README.md")
 set(CPACK_RESOURCE_FILE_WELCOME                "${PROJECT_SOURCE_DIR}/README.md")
 set(CPACK_PACKAGE_DESCRIPTION_FILE             "${PROJECT_SOURCE_DIR}/README.md")
-set(CPACK_PACKAGE_ICON                         "${PROJECT_SOURCE_DIR}/deploy/images/logo.bmp")
+# set(CPACK_PACKAGE_ICON                       "${PROJECT_SOURCE_DIR}/deploy/images/logo.bmp")
 set(CPACK_PACKAGE_FILE_NAME                    "${package_name}-${CPACK_PACKAGE_VERSION}")
 set(CPACK_PACKAGE_INSTALL_DIRECTORY            "${package_name}")
 set(CPACK_PACKAGE_INSTALL_REGISTRY_KEY         "${package_name}")
@@ -181,9 +195,9 @@ if(X64)
 endif()
 
 # Package options
-#set(CPACK_NSIS_DISPLAY_NAME "${package_name}-${META_VERSION}")
-set(CPACK_NSIS_MUI_ICON      "${PROJECT_SOURCE_DIR}/deploy/images/logo.ico")
-set(CPACK_NSIS_MUI_UNIICON   "${PROJECT_SOURCE_DIR}/deploy/images/logo.ico")
+# set(CPACK_NSIS_DISPLAY_NAME  "${package_name}-${META_VERSION}")
+# set(CPACK_NSIS_MUI_ICON      "${PROJECT_SOURCE_DIR}/deploy/images/logo.ico")
+# set(CPACK_NSIS_MUI_UNIICON   "${PROJECT_SOURCE_DIR}/deploy/images/logo.ico")
 
 # Optional Preliminaries (i.e., silent Visual Studio Redistributable install)
 if(NOT INSTALL_MSVC_REDIST_FILEPATH)

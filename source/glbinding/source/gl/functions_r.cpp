@@ -281,6 +281,11 @@ void glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum int
     return Binding::RenderbufferStorageMultisample(target, samples, internalformat, width, height);
 }
 
+void glRenderbufferStorageMultisampleAdvancedAMD(GLenum target, GLsizei samples, GLsizei storageSamples, GLenum internalformat, GLsizei width, GLsizei height)
+{
+    return Binding::RenderbufferStorageMultisampleAdvancedAMD(target, samples, storageSamples, internalformat, width, height);
+}
+
 void glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
     return Binding::RenderbufferStorageMultisampleCoverageNV(target, coverageSamples, colorSamples, internalformat, width, height);
@@ -419,6 +424,11 @@ void glResetHistogram(GLenum target)
 void glResetHistogramEXT(GLenum target)
 {
     return Binding::ResetHistogramEXT(target);
+}
+
+void glResetMemoryObjectParameterNV(GLuint memory, GLenum pname)
+{
+    return Binding::ResetMemoryObjectParameterNV(memory, pname);
 }
 
 void glResetMinmax(GLenum target)

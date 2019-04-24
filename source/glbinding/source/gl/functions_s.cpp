@@ -111,6 +111,16 @@ void glScissorArrayv(GLuint first, GLsizei count, const GLint * v)
     return Binding::ScissorArrayv(first, count, v);
 }
 
+void glScissorExclusiveArrayvNV(GLuint first, GLsizei count, const GLint * v)
+{
+    return Binding::ScissorExclusiveArrayvNV(first, count, v);
+}
+
+void glScissorExclusiveNV(GLint x, GLint y, GLsizei width, GLsizei height)
+{
+    return Binding::ScissorExclusiveNV(x, y, width, height);
+}
+
 void glScissorIndexed(GLuint index, GLint left, GLint bottom, GLsizei width, GLsizei height)
 {
     return Binding::ScissorIndexed(index, left, bottom, width, height);
@@ -414,6 +424,26 @@ void glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB ** 
 void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding)
 {
     return Binding::ShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
+}
+
+void glShadingRateImageBarrierNV(GLboolean synchronize)
+{
+    return Binding::ShadingRateImageBarrierNV(synchronize);
+}
+
+void glShadingRateImagePaletteNV(GLuint viewport, GLuint first, GLsizei count, const GLenum * rates)
+{
+    return Binding::ShadingRateImagePaletteNV(viewport, first, count, rates);
+}
+
+void glShadingRateSampleOrderCustomNV(GLenum rate, GLuint samples, const GLint * locations)
+{
+    return Binding::ShadingRateSampleOrderCustomNV(rate, samples, locations);
+}
+
+void glShadingRateSampleOrderNV(GLenum order)
+{
+    return Binding::ShadingRateSampleOrderNV(order);
 }
 
 void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points)

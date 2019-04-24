@@ -14,4 +14,4 @@ CMakeLists.txt.*
 # IDE project files
 *.sublime-project
 *.sublime-workspace
-
+.vs/

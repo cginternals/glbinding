@@ -33,10 +33,6 @@ using gl::GL_NOTEQUAL;
 using gl::GL_GEQUAL;
 using gl::GL_ALWAYS;
 
-// BlendEquationModeEXT
-
-using gl::GL_LOGIC_OP;
-
 // BlendingFactor
 
 using gl::GL_ZERO;
@@ -390,7 +386,7 @@ using gl::GL_BLEND_DST;
 using gl::GL_BLEND_SRC;
 // using gl::GL_BLEND; // reuse EnableCap
 using gl::GL_LOGIC_OP_MODE;
-// using gl::GL_LOGIC_OP; // reuse BlendEquationModeEXT
+using gl::GL_LOGIC_OP;
 using gl::GL_AUX_BUFFERS;
 using gl::GL_DRAW_BUFFER;
 using gl::GL_READ_BUFFER;

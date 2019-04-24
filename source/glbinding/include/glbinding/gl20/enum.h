@@ -57,8 +57,9 @@ using gl::GL_SAMPLER_2D_SHADOW;
 
 // BlendEquationModeEXT
 
-using gl::GL_LOGIC_OP;
 using gl::GL_FUNC_ADD;
+using gl::GL_MIN;
+using gl::GL_MAX;
 using gl::GL_FUNC_SUBTRACT;
 using gl::GL_FUNC_REVERSE_SUBTRACT;
 
@@ -303,6 +304,11 @@ using gl::GL_COLOR_ARRAY;
 using gl::GL_INDEX_ARRAY;
 using gl::GL_TEXTURE_COORD_ARRAY;
 using gl::GL_EDGE_FLAG_ARRAY;
+using gl::GL_MULTISAMPLE;
+using gl::GL_SAMPLE_ALPHA_TO_COVERAGE;
+using gl::GL_SAMPLE_ALPHA_TO_ONE;
+using gl::GL_SAMPLE_COVERAGE;
+using gl::GL_PROGRAM_POINT_SIZE;
 
 // ErrorCode
 
@@ -478,7 +484,7 @@ using gl::GL_BLEND_SRC;
 // using gl::GL_BLEND; // reuse EnableCap
 using gl::GL_LOGIC_OP_MODE;
 // using gl::GL_INDEX_LOGIC_OP; // reuse EnableCap
-// using gl::GL_LOGIC_OP; // reuse BlendEquationModeEXT
+using gl::GL_LOGIC_OP;
 // using gl::GL_COLOR_LOGIC_OP; // reuse EnableCap
 using gl::GL_AUX_BUFFERS;
 using gl::GL_DRAW_BUFFER;
@@ -612,11 +618,18 @@ using gl::GL_POLYGON_OFFSET_UNITS;
 // using gl::GL_LIGHT5; // reuse EnableCap
 // using gl::GL_LIGHT6; // reuse EnableCap
 // using gl::GL_LIGHT7; // reuse EnableCap
+using gl::GL_BLEND_COLOR;
+using gl::GL_BLEND_EQUATION_RGB;
 // using gl::GL_POLYGON_OFFSET_FILL; // reuse EnableCap
 using gl::GL_POLYGON_OFFSET_FACTOR;
 using gl::GL_TEXTURE_BINDING_1D;
 using gl::GL_TEXTURE_BINDING_2D;
 using gl::GL_TEXTURE_BINDING_3D;
+using gl::GL_PACK_SKIP_IMAGES;
+using gl::GL_PACK_IMAGE_HEIGHT;
+using gl::GL_UNPACK_SKIP_IMAGES;
+using gl::GL_UNPACK_IMAGE_HEIGHT;
+using gl::GL_MAX_3D_TEXTURE_SIZE;
 // using gl::GL_VERTEX_ARRAY; // reuse EnableCap
 // using gl::GL_NORMAL_ARRAY; // reuse EnableCap
 // using gl::GL_COLOR_ARRAY; // reuse EnableCap
@@ -637,9 +650,49 @@ using gl::GL_TEXTURE_COORD_ARRAY_SIZE;
 using gl::GL_TEXTURE_COORD_ARRAY_TYPE;
 using gl::GL_TEXTURE_COORD_ARRAY_STRIDE;
 using gl::GL_EDGE_FLAG_ARRAY_STRIDE;
+// using gl::GL_SAMPLE_BUFFERS; // reuse GetFramebufferParameter
+// using gl::GL_SAMPLES; // reuse GetFramebufferParameter
+using gl::GL_SAMPLE_COVERAGE_VALUE;
+using gl::GL_SAMPLE_COVERAGE_INVERT;
+using gl::GL_BLEND_DST_RGB;
+using gl::GL_BLEND_SRC_RGB;
+using gl::GL_BLEND_DST_ALPHA;
+using gl::GL_BLEND_SRC_ALPHA;
+using gl::GL_MAX_ELEMENTS_VERTICES;
+using gl::GL_MAX_ELEMENTS_INDICES;
+using gl::GL_POINT_FADE_THRESHOLD_SIZE;
 using gl::GL_LIGHT_MODEL_COLOR_CONTROL;
 using gl::GL_ALIASED_POINT_SIZE_RANGE;
 using gl::GL_ALIASED_LINE_WIDTH_RANGE;
+using gl::GL_ACTIVE_TEXTURE;
+using gl::GL_TEXTURE_COMPRESSION_HINT;
+using gl::GL_MAX_TEXTURE_LOD_BIAS;
+using gl::GL_TEXTURE_BINDING_CUBE_MAP;
+using gl::GL_MAX_CUBE_MAP_TEXTURE_SIZE;
+// using gl::GL_PROGRAM_POINT_SIZE; // reuse EnableCap
+using gl::GL_NUM_COMPRESSED_TEXTURE_FORMATS;
+using gl::GL_COMPRESSED_TEXTURE_FORMATS;
+using gl::GL_STENCIL_BACK_FUNC;
+using gl::GL_STENCIL_BACK_FAIL;
+using gl::GL_STENCIL_BACK_PASS_DEPTH_FAIL;
+using gl::GL_STENCIL_BACK_PASS_DEPTH_PASS;
+using gl::GL_MAX_DRAW_BUFFERS;
+using gl::GL_BLEND_EQUATION_ALPHA;
+using gl::GL_MAX_VERTEX_ATTRIBS;
+using gl::GL_MAX_TEXTURE_IMAGE_UNITS;
+using gl::GL_ARRAY_BUFFER_BINDING;
+using gl::GL_ELEMENT_ARRAY_BUFFER_BINDING;
+using gl::GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
+using gl::GL_MAX_VERTEX_UNIFORM_COMPONENTS;
+using gl::GL_MAX_VARYING_COMPONENTS;
+using gl::GL_MAX_VARYING_FLOATS;
+using gl::GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
+using gl::GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
+using gl::GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
+using gl::GL_CURRENT_PROGRAM;
+using gl::GL_STENCIL_BACK_REF;
+using gl::GL_STENCIL_BACK_VALUE_MASK;
+using gl::GL_STENCIL_BACK_WRITEMASK;
 
 // GetPixelMap
 
@@ -704,8 +757,8 @@ using gl::GL_NICEST;
 // using gl::GL_POLYGON_SMOOTH_HINT; // reuse GetPName
 // using gl::GL_FOG_HINT; // reuse GetPName
 using gl::GL_GENERATE_MIPMAP_HINT;
-using gl::GL_TEXTURE_COMPRESSION_HINT;
-using gl::GL_FRAGMENT_SHADER_DERIVATIVE_HINT;
+// using gl::GL_TEXTURE_COMPRESSION_HINT; // reuse GetPName
+// using gl::GL_FRAGMENT_SHADER_DERIVATIVE_HINT; // reuse GetPName
 
 // IndexPointerType
 
@@ -981,6 +1034,8 @@ using gl::GL_ALPHA;
 // using gl::GL_RGBA; // reuse InternalFormat
 using gl::GL_LUMINANCE;
 using gl::GL_LUMINANCE_ALPHA;
+using gl::GL_BGR;
+using gl::GL_BGRA;
 
 // PixelMap
 
@@ -1009,10 +1064,10 @@ using gl::GL_LUMINANCE_ALPHA;
 // using gl::GL_PACK_SKIP_ROWS; // reuse GetPName
 // using gl::GL_PACK_SKIP_PIXELS; // reuse GetPName
 // using gl::GL_PACK_ALIGNMENT; // reuse GetPName
-using gl::GL_PACK_SKIP_IMAGES;
-using gl::GL_PACK_IMAGE_HEIGHT;
-using gl::GL_UNPACK_SKIP_IMAGES;
-using gl::GL_UNPACK_IMAGE_HEIGHT;
+// using gl::GL_PACK_SKIP_IMAGES; // reuse GetPName
+// using gl::GL_PACK_IMAGE_HEIGHT; // reuse GetPName
+// using gl::GL_UNPACK_SKIP_IMAGES; // reuse GetPName
+// using gl::GL_UNPACK_IMAGE_HEIGHT; // reuse GetPName
 
 // PixelTexGenMode
 
@@ -1059,7 +1114,7 @@ using gl::GL_UNSIGNED_INT_10_10_10_2;
 
 using gl::GL_POINT_SIZE_MIN;
 using gl::GL_POINT_SIZE_MAX;
-using gl::GL_POINT_FADE_THRESHOLD_SIZE;
+// using gl::GL_POINT_FADE_THRESHOLD_SIZE; // reuse GetPName
 using gl::GL_POINT_DISTANCE_ATTENUATION;
 
 // PolygonMode
@@ -1184,6 +1239,8 @@ using gl::GL_KEEP;
 // using gl::GL_REPLACE; // reuse LightEnvModeSGIX
 using gl::GL_INCR;
 using gl::GL_DECR;
+using gl::GL_INCR_WRAP;
+using gl::GL_DECR_WRAP;
 
 // StringName
 
@@ -1408,29 +1465,10 @@ using gl::GL_BUFFER_MAPPED;
 
 // __UNGROUPED__
 
-using gl::GL_BLEND_COLOR;
-using gl::GL_MIN;
-using gl::GL_MAX;
 using gl::GL_BLEND_EQUATION;
-using gl::GL_BLEND_EQUATION_RGB;
 using gl::GL_RESCALE_NORMAL;
 using gl::GL_RGBA2;
 using gl::GL_TEXTURE_DEPTH;
-using gl::GL_MAX_3D_TEXTURE_SIZE;
-using gl::GL_MULTISAMPLE;
-using gl::GL_SAMPLE_ALPHA_TO_COVERAGE;
-using gl::GL_SAMPLE_ALPHA_TO_ONE;
-using gl::GL_SAMPLE_COVERAGE;
-using gl::GL_SAMPLE_COVERAGE_VALUE;
-using gl::GL_SAMPLE_COVERAGE_INVERT;
-using gl::GL_BLEND_DST_RGB;
-using gl::GL_BLEND_SRC_RGB;
-using gl::GL_BLEND_DST_ALPHA;
-using gl::GL_BLEND_SRC_ALPHA;
-using gl::GL_BGR;
-using gl::GL_BGRA;
-using gl::GL_MAX_ELEMENTS_VERTICES;
-using gl::GL_MAX_ELEMENTS_INDICES;
 using gl::GL_DEPTH_COMPONENT24;
 using gl::GL_DEPTH_COMPONENT32;
 using gl::GL_UNSIGNED_BYTE_2_3_3_REV;
@@ -1461,7 +1499,6 @@ using gl::GL_SECONDARY_COLOR_ARRAY_TYPE;
 using gl::GL_SECONDARY_COLOR_ARRAY_STRIDE;
 using gl::GL_SECONDARY_COLOR_ARRAY_POINTER;
 using gl::GL_SECONDARY_COLOR_ARRAY;
-using gl::GL_ACTIVE_TEXTURE;
 using gl::GL_CLIENT_ACTIVE_TEXTURE;
 using gl::GL_MAX_TEXTURE_UNITS;
 using gl::GL_TRANSPOSE_MODELVIEW_MATRIX;
@@ -1473,14 +1510,9 @@ using gl::GL_COMPRESSED_ALPHA;
 using gl::GL_COMPRESSED_LUMINANCE;
 using gl::GL_COMPRESSED_LUMINANCE_ALPHA;
 using gl::GL_COMPRESSED_INTENSITY;
-using gl::GL_MAX_TEXTURE_LOD_BIAS;
 using gl::GL_TEXTURE_FILTER_CONTROL;
-using gl::GL_INCR_WRAP;
-using gl::GL_DECR_WRAP;
 using gl::GL_NORMAL_MAP;
 using gl::GL_REFLECTION_MAP;
-using gl::GL_TEXTURE_BINDING_CUBE_MAP;
-using gl::GL_MAX_CUBE_MAP_TEXTURE_SIZE;
 using gl::GL_COMBINE;
 using gl::GL_COMBINE_RGB;
 using gl::GL_COMBINE_ALPHA;
@@ -1505,20 +1537,12 @@ using gl::GL_OPERAND2_RGB;
 using gl::GL_OPERAND0_ALPHA;
 using gl::GL_OPERAND1_ALPHA;
 using gl::GL_OPERAND2_ALPHA;
-using gl::GL_PROGRAM_POINT_SIZE;
 using gl::GL_VERTEX_PROGRAM_POINT_SIZE;
 using gl::GL_VERTEX_PROGRAM_TWO_SIDE;
 using gl::GL_VERTEX_ATTRIB_ARRAY_POINTER;
 using gl::GL_TEXTURE_COMPRESSED_IMAGE_SIZE;
-using gl::GL_NUM_COMPRESSED_TEXTURE_FORMATS;
-using gl::GL_COMPRESSED_TEXTURE_FORMATS;
 using gl::GL_DOT3_RGB;
 using gl::GL_DOT3_RGBA;
-using gl::GL_STENCIL_BACK_FUNC;
-using gl::GL_STENCIL_BACK_FAIL;
-using gl::GL_STENCIL_BACK_PASS_DEPTH_FAIL;
-using gl::GL_STENCIL_BACK_PASS_DEPTH_PASS;
-using gl::GL_MAX_DRAW_BUFFERS;
 using gl::GL_DRAW_BUFFER0;
 using gl::GL_DRAW_BUFFER1;
 using gl::GL_DRAW_BUFFER2;
@@ -1535,18 +1559,13 @@ using gl::GL_DRAW_BUFFER12;
 using gl::GL_DRAW_BUFFER13;
 using gl::GL_DRAW_BUFFER14;
 using gl::GL_DRAW_BUFFER15;
-using gl::GL_BLEND_EQUATION_ALPHA;
 using gl::GL_TEXTURE_DEPTH_SIZE;
 using gl::GL_DEPTH_TEXTURE_MODE;
 using gl::GL_COMPARE_REF_TO_TEXTURE;
 using gl::GL_COMPARE_R_TO_TEXTURE;
 using gl::GL_POINT_SPRITE;
 using gl::GL_COORD_REPLACE;
-using gl::GL_MAX_VERTEX_ATTRIBS;
 using gl::GL_MAX_TEXTURE_COORDS;
-using gl::GL_MAX_TEXTURE_IMAGE_UNITS;
-using gl::GL_ARRAY_BUFFER_BINDING;
-using gl::GL_ELEMENT_ARRAY_BUFFER_BINDING;
 using gl::GL_VERTEX_ARRAY_BUFFER_BINDING;
 using gl::GL_NORMAL_ARRAY_BUFFER_BINDING;
 using gl::GL_COLOR_ARRAY_BUFFER_BINDING;
@@ -1558,18 +1577,8 @@ using gl::GL_FOG_COORDINATE_ARRAY_BUFFER_BINDING;
 using gl::GL_FOG_COORD_ARRAY_BUFFER_BINDING;
 using gl::GL_WEIGHT_ARRAY_BUFFER_BINDING;
 using gl::GL_BUFFER_MAP_POINTER;
-using gl::GL_MAX_FRAGMENT_UNIFORM_COMPONENTS;
-using gl::GL_MAX_VERTEX_UNIFORM_COMPONENTS;
-using gl::GL_MAX_VARYING_COMPONENTS;
-using gl::GL_MAX_VARYING_FLOATS;
-using gl::GL_MAX_VERTEX_TEXTURE_IMAGE_UNITS;
-using gl::GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
 using gl::GL_ACTIVE_PROGRAM_EXT;
-using gl::GL_CURRENT_PROGRAM;
 using gl::GL_POINT_SPRITE_COORD_ORIGIN;
-using gl::GL_STENCIL_BACK_REF;
-using gl::GL_STENCIL_BACK_VALUE_MASK;
-using gl::GL_STENCIL_BACK_WRITEMASK;
 
 
 

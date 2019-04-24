@@ -30,7 +30,7 @@ if(OPTION_BUILD_EXAMPLES)
 endif()
 
 # Tests
-if(OPTION_BUILD_TESTS)
+if(OPTION_BUILD_TESTS AND NOT MINGW)
     set(IDE_FOLDER "Tests")
     add_subdirectory(tests)
 endif()
@@ -42,3 +42,6 @@ endif()
 
 # Deploy generated headers
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_NAME} DESTINATION include COMPONENT dev)
+
+
+include("${CMAKE_SOURCE_DIR}/cmake/WinInstallHacks.cmake")

@@ -3,8 +3,8 @@
 
 #include <GLFW/glfw3.h>
 
+#include <glbinding/glbinding.h>
 #include <glbinding/Version.h>
-#include <glbinding/Binding.h>
 #include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
 
@@ -69,10 +69,10 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
 
 int main(int, char *[])
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
 
@@ -95,7 +95,7 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    Binding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
     glbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)

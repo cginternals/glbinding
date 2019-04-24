@@ -30,7 +30,7 @@ void error(int errnum, const char * errmsg)
 
 void printExtensions(const std::set<std::string> & extensions)
 {
-    auto column = 8;
+    size_t column = 8;
 
     for (auto it = extensions.begin(); it != extensions.end(); ++it)
     {
@@ -119,10 +119,10 @@ void printInfos()
 
 int main()
 {
+    glfwSetErrorCallback(error);
+
     if (!glfwInit())
         return 1;
-
-    glfwSetErrorCallback(error);
 
     glfwDefaultWindowHints();
     glfwWindowHint(GLFW_VISIBLE, false);

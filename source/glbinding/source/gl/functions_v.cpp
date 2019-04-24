@@ -46,6 +46,11 @@ GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceNV(const void * vdpSurface, GLenum t
     return Binding::VDPAURegisterVideoSurfaceNV(vdpSurface, target, numTextureNames, textureNames);
 }
 
+GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceWithPictureStructureNV(const void * vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint * textureNames, GLboolean isFrameStructure)
+{
+    return Binding::VDPAURegisterVideoSurfaceWithPictureStructureNV(vdpSurface, target, numTextureNames, textureNames, isFrameStructure);
+}
+
 void glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access)
 {
     return Binding::VDPAUSurfaceAccessNV(surface, access);

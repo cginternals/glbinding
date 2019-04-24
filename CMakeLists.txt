@@ -14,10 +14,11 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 include(cmake/Custom.cmake)
 
 # Set policies
-set_policy(CMP0028 NEW) # ENABLE CMP0028: Double colon in target name means ALIAS or IMPORTED target.
 set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
 set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
+set_policy(CMP0072 NEW) # ENABLE CMP0072: FindOpenGL prefers GLVND by default when available.
+set_policy(CMP0077 NEW) # ENABLE CMP0077: option() honors normal variables.
 
 # Include cmake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -56,11 +57,11 @@ set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
 set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
 set(META_VERSION_MAJOR       "3")
 set(META_VERSION_MINOR       "0")
-set(META_VERSION_PATCH       "2")
+set(META_VERSION_PATCH       "3")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
 set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
-set(META_CMAKE_INIT_SHA      "6a6f30b38a1cee31ccac3f091816f28e0f6bce4b")
+set(META_CMAKE_INIT_SHA      "c472829f01df4c99c7bd3fa96bcf6854b3dd44f1")
 
 string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
 string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
@@ -184,6 +185,7 @@ endif()
 # Project modules
 # 
 
+add_subdirectory(3rdparty)
 add_subdirectory(source)
 add_subdirectory(docs)
 add_subdirectory(deploy)

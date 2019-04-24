@@ -21,6 +21,8 @@ public:
     int numCubes() const;
 
 protected:
+    bool m_initialized;
+
     gl::GLint a_vertex;
     gl::GLint u_transform;
     gl::GLint u_time;

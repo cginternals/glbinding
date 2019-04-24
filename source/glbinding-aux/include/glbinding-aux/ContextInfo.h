@@ -96,7 +96,7 @@ public:
     *   A set of extensions that are tested for availability in the current context
     *
     * @return
-    *   'true' if all given extensions are supported by the current context, else 'false'
+    *   `true` if all given extensions are supported by the current context, else `false`
     */
     static bool supported(const std::set<gl::GLextension> & extensions);
 
@@ -111,7 +111,7 @@ public:
     *    The subset of extensions (based on the given extensions) not supported by the current context
     *
     *  @return
-    *    'true' if all given extensions are supported by the current context, else 'false'
+    *    `true` if all given extensions are supported by the current context, else `false`
     */
     static bool supported(const std::set<gl::GLextension> & extensions , std::set<gl::GLextension> & unsupported);
 
@@ -125,7 +125,7 @@ public:
     *    Specifies whether or not functions shall be explicitly resolved before querrying their status
     *
     *  @return
-    *    'true' if all extensions required for the given feature are supported, else 'false'
+    *    `true` if all extensions required for the given feature are supported, else `false`
     */
     static bool supported(const Version & version, bool resolve = false);
 
@@ -143,7 +143,7 @@ public:
     *    Specifies whether or not functions shall be explicitly resolved before querrying their status
     *
     *  @return
-    *   'true' if all extensions required for the given feature are supported, else 'false'
+    *   `true` if all extensions required for the given feature are supported, else `false`
     */
     static bool supported(const Version & version
         , std::set<gl::GLextension> & unsupportedExtensions

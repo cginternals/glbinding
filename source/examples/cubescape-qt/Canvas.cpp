@@ -24,6 +24,9 @@
 #include "Painter.h"
 
 
+Canvas * Canvas::s_getProcAddressHelper = nullptr;
+
+
 Canvas::Canvas(
   const QSurfaceFormat & format
 , QScreen * screen)
@@ -37,6 +40,11 @@ Canvas::Canvas(
 , m_continuousRepaint(false)
 , m_painter(nullptr)
 {
+    if (!s_getProcAddressHelper)
+    {
+        s_getProcAddressHelper = this;
+    }
+
     setSurfaceType(OpenGLSurface);
 
     create();
@@ -88,9 +96,7 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
     if (!m_painter)
     {
         m_painter = new Painter();
-        m_painter->initialize([this](const char * name) {
-            return getProcAddress(name);
-        });
+        m_painter->initialize(getProcAddress);
 
         emit numCubesUpdate(m_painter->numCubes());
     }
@@ -272,7 +278,7 @@ void Canvas::keyPressEvent(QKeyEvent * event)
 
 ProcAddress Canvas::getProcAddress(const char * name)
 {
-    if (name == nullptr)
+    if (!s_getProcAddressHelper || name == nullptr)
     {
         return nullptr;
     }
@@ -284,5 +290,5 @@ ProcAddress Canvas::getProcAddress(const char * name)
 #else
     const auto qtSymbol = QByteArray::fromRawData(symbol.c_str(), symbol.size());
 #endif
-    return m_context->getProcAddress(qtSymbol);
+    return s_getProcAddressHelper->m_context->getProcAddress(qtSymbol);
 }

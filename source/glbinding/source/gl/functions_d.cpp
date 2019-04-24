@@ -551,6 +551,16 @@ void glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width)
     return Binding::DrawMeshArraysSUN(mode, first, count, width);
 }
 
+void glDrawMeshTasksIndirectNV(GLintptr indirect)
+{
+    return Binding::DrawMeshTasksIndirectNV(indirect);
+}
+
+void glDrawMeshTasksNV(GLuint first, GLuint count)
+{
+    return Binding::DrawMeshTasksNV(first, count);
+}
+
 void glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels)
 {
     return Binding::DrawPixels(width, height, format, type, pixels);

@@ -16,19 +16,19 @@ namespace glbinding
 
 /**
 *  @brief
-*    The Version class represents an OpenGL feature, consisting of majow version and minor version, excluding the profile information.
+*    The Version class represents an OpenGL feature, consisting of major version and minor version, excluding the profile information.
 *
-*    This instance can represent both any officially released OpenGL feature and other combinations of major and minar version and provides methods for validity checking and comparison
+*    This instance can represent both any officially released OpenGL feature and other combinations of major and minor version, and provides methods for validity checking and comparison
 *
 *  Example code:
-*  \code{.cpp}
+*  @code{.cpp}
 *  const glbinding::Version currentVersion = glbinding::aux::ContextInfo::version();
 *
 *  if (currentVersion >= glbinding::Version(3, 2))
 *  {
 *      // do something
 *  }
-*  \endcode
+*  @endcode
 */
 class GLBINDING_TEMPLATE_API Version
 {
@@ -73,7 +73,7 @@ public:
     *    Accessor for the major version
     *
     *  @return
-    *    the major version
+    *    The major version
     */
     GLBINDING_CONSTEXPR inline unsigned char majorVersion() const;
 
@@ -82,7 +82,7 @@ public:
     *    Accessor for the minor version
     *
     *  @return
-    *    the minor version
+    *    The minor version
     */
     GLBINDING_CONSTEXPR inline unsigned char minorVersion() const;
 
@@ -109,7 +109,7 @@ public:
     *    Create a string representing the Version using the scheme "<majorVersion>.<minorVersion>"
     *
     *  @return
-    *    The version as string, "-.-" iff the string is invalid
+    *    The version as string, "-.-" iff the Version is invalid
     */
     inline std::string toString() const;
 
@@ -118,9 +118,9 @@ public:
     *    Check if the Version was constructed using the default constructor
     *
     *  @return
-    *    'true' if the major version is 0, else 'false'
+    *    `true` if the major version is 0, else `false`
     *
-    *  @remarks
+    *  @remark
     *    This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed
     */
     GLBINDING_CONSTEXPR inline bool isNull() const;
@@ -157,7 +157,7 @@ public:
     *    The Version to compare to
     *
     *  @return
-    *    'true' if this Version is lesser than the other Version, else 'false'
+    *    `true` if this Version is lower than the other Version, else `false`
     */
     GLBINDING_CONSTEXPR inline bool operator<(const Version & version) const;
 
@@ -169,7 +169,7 @@ public:
     *    The Version to compare to
     *
     *  @return
-    *    'true' if this Version is greater than the other Version, else 'false'
+    *    `true` if this Version is greater than the other Version, else `false`
     */
     GLBINDING_CONSTEXPR inline bool operator>(const Version & version) const;
 
@@ -181,7 +181,7 @@ public:
     *    The Version to compare to
     *
     *  @return
-    *    'true' if this Version is equal to the other Version, else 'false'
+    *    `true` if this Version is equal to the other Version, else `false`
     */
     GLBINDING_CONSTEXPR inline bool operator==(const Version & version) const;
 
@@ -193,7 +193,7 @@ public:
     *    The Version to compare to
     *
     *  @return
-    *    'true' if this Version is not equal to the other Version, else 'false'
+    *    `true` if this Version is not equal to the other Version, else `false`
     */
     GLBINDING_CONSTEXPR inline bool operator!=(const Version & version) const;
 
@@ -205,7 +205,7 @@ public:
     *    The Version to compare to
     *
     *  @return
-    *    'true' if this Version is greater or equal than the other Version, else 'false'
+    *    `true` if this Version is greater than or equal to the other Version, else `false`
     */
     GLBINDING_CONSTEXPR inline bool operator>=(const Version & version) const;
 
@@ -217,7 +217,7 @@ public:
     *    The Version to compare to
     *
     *  @return
-    *    'true' if this Version is lesser or equal than the other Version, else 'false'
+    *    `true` if this Version is lower than or equal to the other Version, else `false`
     */
     GLBINDING_CONSTEXPR inline bool operator<=(const Version & version) const;
 
