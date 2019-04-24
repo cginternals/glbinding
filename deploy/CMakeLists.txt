@@ -22,9 +22,11 @@ include(packages/pack-glbinding.cmake)
 # Target 'component_install'
 #
 
-add_custom_target(
-    component_install
-    COMMAND make preinstall
-    COMMAND ${CMAKE_COMMAND} -P ${PROJECT_SOURCE_DIR}/cmake/ComponentInstall.cmake
-    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
-)
+if(NOT WIN32)
+	add_custom_target(
+    	component_install
+    	COMMAND make preinstall
+    	COMMAND ${CMAKE_COMMAND} -P ${PROJECT_SOURCE_DIR}/cmake/ComponentInstall.cmake
+    	WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+	)
+endif()
