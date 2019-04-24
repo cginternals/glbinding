@@ -96,7 +96,7 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::initialize(nullptr, false); // only resolve functions that are actually used (lazy)
     glbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)

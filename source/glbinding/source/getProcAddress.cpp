@@ -1,12 +1,13 @@
 
 #include <glbinding/getProcAddress.h>
 
+#include <cassert>
+
 #ifdef SYSTEM_WINDOWS
     #include <string>
     #include <tchar.h>
     #include <windows.h>
 #else
-    #include <cassert>
     #include <dlfcn.h>
 #endif
 
@@ -18,8 +19,18 @@ namespace glbinding {
 ProcAddress getProcAddress(const char * name)
 {
     static auto module = LoadLibrary(_T("OPENGL32.DLL"));
-    auto procAddress = ::GetProcAddress(module, name);
 
+	// Prevent static linking of opengl32
+	static auto wglGetProcAddress_ = reinterpret_cast<void * (__stdcall *)(const char *)>(::GetProcAddress(module, "wglGetProcAddress"));
+	assert(wglGetProcAddress_ != nullptr);
+
+	auto procAddress = wglGetProcAddress_(name);
+	if (procAddress != nullptr)
+	{
+		return reinterpret_cast<ProcAddress>(procAddress);
+	}
+
+	procAddress = ::GetProcAddress(module, name);
     return reinterpret_cast<ProcAddress>(procAddress);
 }
 
