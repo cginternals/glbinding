@@ -61,11 +61,6 @@ void printExtensions(const std::set<std::string> & extensions)
 
 void printInfos()
 {
-    std::cout << std::endl
-        << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
-        << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl;
-
     // gather available extensions
 
     std::set<std::string> unknownExts;
@@ -144,13 +139,16 @@ int main()
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    }, true);
+	glbinding::initialize(glfwGetProcAddress, true);
 
     printInfos();
 
-    glfwMakeContextCurrent(nullptr);
+	// print some gl infos (query)
+
+	std::cout << std::endl
+		<< "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
+		<< "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
+		<< "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

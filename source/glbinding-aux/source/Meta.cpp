@@ -40,6 +40,7 @@ namespace glbinding { namespace aux
 
 int Meta::glRevision()
 {
+	// Since gl.xml moved to github repository, the revision is currently not available and always returns NULL.
     return GL_REVISION;
 }
 

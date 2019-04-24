@@ -51,6 +51,7 @@ set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
     ${include_path}/nogl.h
+    ${include_path}/getProcAddress.h
 
     ${include_path}/gl/bitfield.h
     ${include_path}/gl/boolean.h
@@ -102,6 +103,7 @@ file(GLOB featured_includes ${include_path}/gl*/*.h)
 list(APPEND headers ${featured_includes})
 
 set(sources
+    ${source_path}/getProcAddress.cpp
     ${source_path}/glbinding.cpp
     ${source_path}/Binding.cpp
     ${source_path}/Binding_list.cpp
