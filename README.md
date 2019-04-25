@@ -129,9 +129,9 @@ Building *glbinding* from source has several mandatory and optional dependencies
 * [CMake](https://cmake.org/) 3.0 or higher for building *glbinding* from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [GLFW](http://www.glfw.org/) 3.2 or higher for examples and tools
-* [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
-* [cpplocate](https://github.com/cginternals/cpplocate) for the examples
-* [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example
+* [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example (optional)
+* [cpplocate](https://github.com/cginternals/cpplocate) for the examples (optional)
+* [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example (optional)
 * [Doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8 or higher for generating the documentation on your system
   * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
 
