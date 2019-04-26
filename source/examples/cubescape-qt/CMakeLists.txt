@@ -32,6 +32,12 @@ if (NOT Qt5Core_FOUND)
     return()
 endif()
 
+# On macOS qt5 fails to link against opengl
+if(APPLE)
+    find_package(OpenGL     REQUIRED)
+endif()
+
+
 if (NOT cpplocate_FOUND)
     message(STATUS "Example ${target}: using static data path (cpplocate not found)")
 else()
@@ -115,7 +121,8 @@ target_link_libraries(${target}
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
+    "$<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>"
+    "$<$<PLATFORM_ID:Darwin>:${OPENGL_gl_LIBRARY}>"
 )
 
 

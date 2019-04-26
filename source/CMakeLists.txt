@@ -44,4 +44,4 @@ endif()
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_NAME} DESTINATION include COMPONENT dev)
 
 
-include("${CMAKE_SOURCE_DIR}/cmake/WinInstallHacks.cmake")
+include(${PROJECT_SOURCE_DIR}/cmake/WinInstallHacks.cmake)
