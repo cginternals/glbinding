@@ -56,7 +56,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 * [Global and Local Function Callbacks](#function-callbacks)
 * [Alternative Signatures for GLboolean and GLenum types](#alternative-signatures)
 * [Meta Information System](#meta-information)
-* [Doxygen Documentations](https://glbinding.org/docs.html) ([stable](https://www.glbinding.org/docs/v2.1/), [master](https://www.glbinding.org/docs/master))
+* [Doxygen Documentations](https://glbinding.org/docs.html) ([stable](https://www.glbinding.org/docs/v3.1/), [master](https://www.glbinding.org/docs/master))
 
 # Install Instructions
 
@@ -66,10 +66,10 @@ For systems providing package managers, we generally strive for packages in thes
 
 ###### Windows
 
-The various *glbinding* packages can be installed either by downloading an installer, e.g., the [x64 installer for glbinding v2.1.1](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-runtime.zip),
-[examples](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-examples.zip),
-[dev](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-dev.zip), and
-[tools](https://github.com/cginternals/glbinding/releases/download/v2.1.1/glbinding-2.1.1-msvc2015-x64-tools.zip).
+The various *glbinding* packages can be installed either by downloading an installer, e.g., the [x64 installer for glbinding v3.1.0](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-runtime.zip),
+[examples](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-examples.zip),
+[dev](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-dev.zip), and
+[tools](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-tools.zip).
 Since lately, glbinding is also available on [vcpkg](https://github.com/Microsoft/vcpkg/tree/master/ports/glbinding) with more recent releases:
 ```bash
 > vcpkg install glbinding
@@ -129,9 +129,9 @@ Building *glbinding* from source has several mandatory and optional dependencies
 * [CMake](https://cmake.org/) 3.0 or higher for building *glbinding* from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [GLFW](http://www.glfw.org/) 3.2 or higher for examples and tools
-* [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example
-* [cpplocate](https://github.com/cginternals/cpplocate) for the examples
-* [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example
+* [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example (optional)
+* [cpplocate](https://github.com/cginternals/cpplocate) for the examples (optional)
+* [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example (optional)
 * [Doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8 or higher for generating the documentation on your system
   * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
 
