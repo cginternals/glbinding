@@ -342,6 +342,17 @@ enum class GLenum : unsigned int
     GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE                        = 0x80D5, // decimal value: 32981
     GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE_SGI                    = 0x80D5, // decimal value: 32981
 
+    // ConditionalRenderMode
+
+    GL_QUERY_WAIT                                                 = 0x8E13, // decimal value: 36371
+    GL_QUERY_NO_WAIT                                              = 0x8E14, // decimal value: 36372
+    GL_QUERY_BY_REGION_WAIT                                       = 0x8E15, // decimal value: 36373
+    GL_QUERY_BY_REGION_NO_WAIT                                    = 0x8E16, // decimal value: 36374
+    GL_QUERY_WAIT_INVERTED                                        = 0x8E17, // decimal value: 36375
+    GL_QUERY_NO_WAIT_INVERTED                                     = 0x8E18, // decimal value: 36376
+    GL_QUERY_BY_REGION_WAIT_INVERTED                              = 0x8E19, // decimal value: 36377
+    GL_QUERY_BY_REGION_NO_WAIT_INVERTED                           = 0x8E1A, // decimal value: 36378
+
     // ConvolutionBorderModeEXT
 
     GL_REDUCE                                                     = 0x8016, // decimal value: 32790
@@ -2371,19 +2382,25 @@ enum class GLenum : unsigned int
     GL_UNSIGNED_INT_10_10_10_2                                    = 0x8036, // decimal value: 32822
     GL_UNSIGNED_INT_10_10_10_2_EXT                                = 0x8036, // decimal value: 32822
 
+    // PointParameterNameARB
+
+    GL_POINT_SIZE_MIN_EXT                                         = 0x8126, // decimal value: 33062
+    GL_POINT_SIZE_MAX_EXT                                         = 0x8127, // decimal value: 33063
+    GL_POINT_FADE_THRESHOLD_SIZE_EXT                              = 0x8128, // decimal value: 33064
+
     // PointParameterNameSGIS
 
     GL_POINT_SIZE_MIN                                             = 0x8126, // decimal value: 33062
     GL_POINT_SIZE_MIN_ARB                                         = 0x8126, // decimal value: 33062
-    GL_POINT_SIZE_MIN_EXT                                         = 0x8126, // decimal value: 33062
+//  GL_POINT_SIZE_MIN_EXT                                         = 0x8126, // reuse PointParameterNameARB, decimal value: 33062
 //  GL_POINT_SIZE_MIN_SGIS                                        = 0x8126, // reuse GetPName, decimal value: 33062
     GL_POINT_SIZE_MAX                                             = 0x8127, // decimal value: 33063
     GL_POINT_SIZE_MAX_ARB                                         = 0x8127, // decimal value: 33063
-    GL_POINT_SIZE_MAX_EXT                                         = 0x8127, // decimal value: 33063
+//  GL_POINT_SIZE_MAX_EXT                                         = 0x8127, // reuse PointParameterNameARB, decimal value: 33063
 //  GL_POINT_SIZE_MAX_SGIS                                        = 0x8127, // reuse GetPName, decimal value: 33063
 //  GL_POINT_FADE_THRESHOLD_SIZE                                  = 0x8128, // reuse GetPName, decimal value: 33064
     GL_POINT_FADE_THRESHOLD_SIZE_ARB                              = 0x8128, // decimal value: 33064
-    GL_POINT_FADE_THRESHOLD_SIZE_EXT                              = 0x8128, // decimal value: 33064
+//  GL_POINT_FADE_THRESHOLD_SIZE_EXT                              = 0x8128, // reuse PointParameterNameARB, decimal value: 33064
 //  GL_POINT_FADE_THRESHOLD_SIZE_SGIS                             = 0x8128, // reuse GetPName, decimal value: 33064
     GL_DISTANCE_ATTENUATION_EXT                                   = 0x8129, // decimal value: 33065
 //  GL_DISTANCE_ATTENUATION_SGIS                                  = 0x8129, // reuse GetPName, decimal value: 33065
@@ -2947,13 +2964,6 @@ enum class GLenum : unsigned int
 //  GL_TRANSFORM_FEEDBACK_BUFFER_BINDING                          = 0x8C8F, // reuse GetPName, decimal value: 35983
     GL_TRANSFORM_FEEDBACK_PAUSED                                  = 0x8E23, // decimal value: 36387
     GL_TRANSFORM_FEEDBACK_ACTIVE                                  = 0x8E24, // decimal value: 36388
-
-    // TypeEnum
-
-    GL_QUERY_WAIT                                                 = 0x8E13, // decimal value: 36371
-    GL_QUERY_NO_WAIT                                              = 0x8E14, // decimal value: 36372
-    GL_QUERY_BY_REGION_WAIT                                       = 0x8E15, // decimal value: 36373
-    GL_QUERY_BY_REGION_NO_WAIT                                    = 0x8E16, // decimal value: 36374
 
     // UniformBlockPName
 
@@ -5100,10 +5110,6 @@ enum class GLenum : unsigned int
     GL_QUERY_NO_WAIT_NV                                           = 0x8E14, // decimal value: 36372
     GL_QUERY_BY_REGION_WAIT_NV                                    = 0x8E15, // decimal value: 36373
     GL_QUERY_BY_REGION_NO_WAIT_NV                                 = 0x8E16, // decimal value: 36374
-    GL_QUERY_WAIT_INVERTED                                        = 0x8E17, // decimal value: 36375
-    GL_QUERY_NO_WAIT_INVERTED                                     = 0x8E18, // decimal value: 36376
-    GL_QUERY_BY_REGION_WAIT_INVERTED                              = 0x8E19, // decimal value: 36377
-    GL_QUERY_BY_REGION_NO_WAIT_INVERTED                           = 0x8E1A, // decimal value: 36378
     GL_POLYGON_OFFSET_CLAMP                                       = 0x8E1B, // decimal value: 36379
     GL_POLYGON_OFFSET_CLAMP_EXT                                   = 0x8E1B, // decimal value: 36379
     GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS               = 0x8E1E, // decimal value: 36382
@@ -6319,6 +6325,17 @@ GLBINDING_CONSTEXPR static const GLenum GL_PROXY_POST_CONVOLUTION_COLOR_TABLE = 
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_POST_CONVOLUTION_COLOR_TABLE_SGI = GLenum::GL_PROXY_POST_CONVOLUTION_COLOR_TABLE_SGI;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE = GLenum::GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE_SGI = GLenum::GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE_SGI;
+
+// ConditionalRenderMode
+
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_WAIT = GLenum::GL_QUERY_WAIT;
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_NO_WAIT = GLenum::GL_QUERY_NO_WAIT;
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_WAIT = GLenum::GL_QUERY_BY_REGION_WAIT;
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_NO_WAIT = GLenum::GL_QUERY_BY_REGION_NO_WAIT;
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_WAIT_INVERTED = GLenum::GL_QUERY_WAIT_INVERTED;
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_NO_WAIT_INVERTED = GLenum::GL_QUERY_NO_WAIT_INVERTED;
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_WAIT_INVERTED = GLenum::GL_QUERY_BY_REGION_WAIT_INVERTED;
+GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_NO_WAIT_INVERTED = GLenum::GL_QUERY_BY_REGION_NO_WAIT_INVERTED;
 
 // ConvolutionBorderModeEXT
 
@@ -8349,19 +8366,25 @@ GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_8_8_8_8_EXT = GLenum::GL
 GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_10_10_10_2 = GLenum::GL_UNSIGNED_INT_10_10_10_2;
 GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_10_10_10_2_EXT = GLenum::GL_UNSIGNED_INT_10_10_10_2_EXT;
 
+// PointParameterNameARB
+
+GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MIN_EXT = GLenum::GL_POINT_SIZE_MIN_EXT;
+GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MAX_EXT = GLenum::GL_POINT_SIZE_MAX_EXT;
+GLBINDING_CONSTEXPR static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_EXT = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_EXT;
+
 // PointParameterNameSGIS
 
 GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MIN = GLenum::GL_POINT_SIZE_MIN;
 GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MIN_ARB = GLenum::GL_POINT_SIZE_MIN_ARB;
-GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MIN_EXT = GLenum::GL_POINT_SIZE_MIN_EXT;
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MIN_EXT = GLenum::GL_POINT_SIZE_MIN_EXT; // reuse PointParameterNameARB
 // GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MIN_SGIS = GLenum::GL_POINT_SIZE_MIN_SGIS; // reuse GetPName
 GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MAX = GLenum::GL_POINT_SIZE_MAX;
 GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MAX_ARB = GLenum::GL_POINT_SIZE_MAX_ARB;
-GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MAX_EXT = GLenum::GL_POINT_SIZE_MAX_EXT;
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MAX_EXT = GLenum::GL_POINT_SIZE_MAX_EXT; // reuse PointParameterNameARB
 // GLBINDING_CONSTEXPR static const GLenum GL_POINT_SIZE_MAX_SGIS = GLenum::GL_POINT_SIZE_MAX_SGIS; // reuse GetPName
 // GLBINDING_CONSTEXPR static const GLenum GL_POINT_FADE_THRESHOLD_SIZE = GLenum::GL_POINT_FADE_THRESHOLD_SIZE; // reuse GetPName
 GLBINDING_CONSTEXPR static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_ARB = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_ARB;
-GLBINDING_CONSTEXPR static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_EXT = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_EXT;
+// GLBINDING_CONSTEXPR static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_EXT = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_EXT; // reuse PointParameterNameARB
 // GLBINDING_CONSTEXPR static const GLenum GL_POINT_FADE_THRESHOLD_SIZE_SGIS = GLenum::GL_POINT_FADE_THRESHOLD_SIZE_SGIS; // reuse GetPName
 GLBINDING_CONSTEXPR static const GLenum GL_DISTANCE_ATTENUATION_EXT = GLenum::GL_DISTANCE_ATTENUATION_EXT;
 // GLBINDING_CONSTEXPR static const GLenum GL_DISTANCE_ATTENUATION_SGIS = GLenum::GL_DISTANCE_ATTENUATION_SGIS; // reuse GetPName
@@ -8925,13 +8948,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_CLAMP_TO_EDGE_SGIS = GLenum::GL_CLAMP
 // GLBINDING_CONSTEXPR static const GLenum GL_TRANSFORM_FEEDBACK_BUFFER_BINDING = GLenum::GL_TRANSFORM_FEEDBACK_BUFFER_BINDING; // reuse GetPName
 GLBINDING_CONSTEXPR static const GLenum GL_TRANSFORM_FEEDBACK_PAUSED = GLenum::GL_TRANSFORM_FEEDBACK_PAUSED;
 GLBINDING_CONSTEXPR static const GLenum GL_TRANSFORM_FEEDBACK_ACTIVE = GLenum::GL_TRANSFORM_FEEDBACK_ACTIVE;
-
-// TypeEnum
-
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_WAIT = GLenum::GL_QUERY_WAIT;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_NO_WAIT = GLenum::GL_QUERY_NO_WAIT;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_WAIT = GLenum::GL_QUERY_BY_REGION_WAIT;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_NO_WAIT = GLenum::GL_QUERY_BY_REGION_NO_WAIT;
 
 // UniformBlockPName
 
@@ -11078,10 +11094,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_QUERY_WAIT_NV = GLenum::GL_QUERY_WAIT
 GLBINDING_CONSTEXPR static const GLenum GL_QUERY_NO_WAIT_NV = GLenum::GL_QUERY_NO_WAIT_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_WAIT_NV = GLenum::GL_QUERY_BY_REGION_WAIT_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_NO_WAIT_NV = GLenum::GL_QUERY_BY_REGION_NO_WAIT_NV;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_WAIT_INVERTED = GLenum::GL_QUERY_WAIT_INVERTED;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_NO_WAIT_INVERTED = GLenum::GL_QUERY_NO_WAIT_INVERTED;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_WAIT_INVERTED = GLenum::GL_QUERY_BY_REGION_WAIT_INVERTED;
-GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BY_REGION_NO_WAIT_INVERTED = GLenum::GL_QUERY_BY_REGION_NO_WAIT_INVERTED;
 GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_OFFSET_CLAMP = GLenum::GL_POLYGON_OFFSET_CLAMP;
 GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_OFFSET_CLAMP_EXT = GLenum::GL_POLYGON_OFFSET_CLAMP_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS = GLenum::GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS;
