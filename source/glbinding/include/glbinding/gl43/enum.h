@@ -269,6 +269,13 @@ using gl::GL_UNSIGNED_INT;
 using gl::GL_FLOAT;
 using gl::GL_DOUBLE;
 
+// ConditionalRenderMode
+
+using gl::GL_QUERY_WAIT;
+using gl::GL_QUERY_NO_WAIT;
+using gl::GL_QUERY_BY_REGION_WAIT;
+using gl::GL_QUERY_BY_REGION_NO_WAIT;
+
 // CopyBufferSubDataTarget
 
 // using gl::GL_ARRAY_BUFFER; // reuse BufferStorageTarget
@@ -2049,13 +2056,6 @@ using gl::GL_CLAMP_TO_EDGE;
 // using gl::GL_TRANSFORM_FEEDBACK_BUFFER_BINDING; // reuse GetPName
 using gl::GL_TRANSFORM_FEEDBACK_PAUSED;
 using gl::GL_TRANSFORM_FEEDBACK_ACTIVE;
-
-// TypeEnum
-
-using gl::GL_QUERY_WAIT;
-using gl::GL_QUERY_NO_WAIT;
-using gl::GL_QUERY_BY_REGION_WAIT;
-using gl::GL_QUERY_BY_REGION_NO_WAIT;
 
 // UniformBlockPName
 

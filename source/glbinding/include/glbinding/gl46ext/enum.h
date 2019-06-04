@@ -832,16 +832,22 @@ using gl::GL_UNSIGNED_SHORT_5_5_5_1_EXT;
 using gl::GL_UNSIGNED_INT_8_8_8_8_EXT;
 using gl::GL_UNSIGNED_INT_10_10_10_2_EXT;
 
+// PointParameterNameARB
+
+using gl::GL_POINT_SIZE_MIN_EXT;
+using gl::GL_POINT_SIZE_MAX_EXT;
+using gl::GL_POINT_FADE_THRESHOLD_SIZE_EXT;
+
 // PointParameterNameSGIS
 
 using gl::GL_POINT_SIZE_MIN_ARB;
-using gl::GL_POINT_SIZE_MIN_EXT;
+// using gl::GL_POINT_SIZE_MIN_EXT; // reuse PointParameterNameARB
 // using gl::GL_POINT_SIZE_MIN_SGIS; // reuse GetPName
 using gl::GL_POINT_SIZE_MAX_ARB;
-using gl::GL_POINT_SIZE_MAX_EXT;
+// using gl::GL_POINT_SIZE_MAX_EXT; // reuse PointParameterNameARB
 // using gl::GL_POINT_SIZE_MAX_SGIS; // reuse GetPName
 using gl::GL_POINT_FADE_THRESHOLD_SIZE_ARB;
-using gl::GL_POINT_FADE_THRESHOLD_SIZE_EXT;
+// using gl::GL_POINT_FADE_THRESHOLD_SIZE_EXT; // reuse PointParameterNameARB
 // using gl::GL_POINT_FADE_THRESHOLD_SIZE_SGIS; // reuse GetPName
 using gl::GL_DISTANCE_ATTENUATION_EXT;
 // using gl::GL_DISTANCE_ATTENUATION_SGIS; // reuse GetPName

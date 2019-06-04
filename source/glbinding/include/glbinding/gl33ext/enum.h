@@ -125,6 +125,13 @@ using gl::GL_PROXY_POST_CONVOLUTION_COLOR_TABLE_SGI;
 using gl::GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE;
 using gl::GL_PROXY_POST_COLOR_MATRIX_COLOR_TABLE_SGI;
 
+// ConditionalRenderMode
+
+using gl::GL_QUERY_WAIT_INVERTED;
+using gl::GL_QUERY_NO_WAIT_INVERTED;
+using gl::GL_QUERY_BY_REGION_WAIT_INVERTED;
+using gl::GL_QUERY_BY_REGION_NO_WAIT_INVERTED;
+
 // ConvolutionBorderModeEXT
 
 using gl::GL_REDUCE;
@@ -1104,16 +1111,22 @@ using gl::GL_UNSIGNED_SHORT_5_5_5_1_EXT;
 using gl::GL_UNSIGNED_INT_8_8_8_8_EXT;
 using gl::GL_UNSIGNED_INT_10_10_10_2_EXT;
 
+// PointParameterNameARB
+
+using gl::GL_POINT_SIZE_MIN_EXT;
+using gl::GL_POINT_SIZE_MAX_EXT;
+using gl::GL_POINT_FADE_THRESHOLD_SIZE_EXT;
+
 // PointParameterNameSGIS
 
 using gl::GL_POINT_SIZE_MIN_ARB;
-using gl::GL_POINT_SIZE_MIN_EXT;
+// using gl::GL_POINT_SIZE_MIN_EXT; // reuse PointParameterNameARB
 // using gl::GL_POINT_SIZE_MIN_SGIS; // reuse GetPName
 using gl::GL_POINT_SIZE_MAX_ARB;
-using gl::GL_POINT_SIZE_MAX_EXT;
+// using gl::GL_POINT_SIZE_MAX_EXT; // reuse PointParameterNameARB
 // using gl::GL_POINT_SIZE_MAX_SGIS; // reuse GetPName
 using gl::GL_POINT_FADE_THRESHOLD_SIZE_ARB;
-using gl::GL_POINT_FADE_THRESHOLD_SIZE_EXT;
+// using gl::GL_POINT_FADE_THRESHOLD_SIZE_EXT; // reuse PointParameterNameARB
 // using gl::GL_POINT_FADE_THRESHOLD_SIZE_SGIS; // reuse GetPName
 using gl::GL_DISTANCE_ATTENUATION_EXT;
 // using gl::GL_DISTANCE_ATTENUATION_SGIS; // reuse GetPName
@@ -3233,10 +3246,6 @@ using gl::GL_QUERY_WAIT_NV;
 using gl::GL_QUERY_NO_WAIT_NV;
 using gl::GL_QUERY_BY_REGION_WAIT_NV;
 using gl::GL_QUERY_BY_REGION_NO_WAIT_NV;
-using gl::GL_QUERY_WAIT_INVERTED;
-using gl::GL_QUERY_NO_WAIT_INVERTED;
-using gl::GL_QUERY_BY_REGION_WAIT_INVERTED;
-using gl::GL_QUERY_BY_REGION_NO_WAIT_INVERTED;
 using gl::GL_POLYGON_OFFSET_CLAMP;
 using gl::GL_POLYGON_OFFSET_CLAMP_EXT;
 using gl::GL_MAX_COMBINED_TESS_CONTROL_UNIFORM_COMPONENTS;
