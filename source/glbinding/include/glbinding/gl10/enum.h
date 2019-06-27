@@ -110,6 +110,14 @@ using gl::GL_INT;
 using gl::GL_UNSIGNED_INT;
 using gl::GL_FLOAT;
 
+// CombinerBiasNV
+
+// using gl::GL_NONE; // reuse ColorBuffer
+
+// CombinerScaleNV
+
+// using gl::GL_NONE; // reuse ColorBuffer
+
 // CullFaceMode
 
 // using gl::GL_FRONT; // reuse ColorBuffer
@@ -205,11 +213,17 @@ using gl::GL_MAP2_VERTEX_3;
 using gl::GL_MAP2_VERTEX_4;
 using gl::GL_TEXTURE_1D;
 using gl::GL_TEXTURE_2D;
+// using gl::GL_CLIP_DISTANCE0; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE0; // reuse ClipPlaneName
+// using gl::GL_CLIP_DISTANCE1; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE1; // reuse ClipPlaneName
+// using gl::GL_CLIP_DISTANCE2; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE2; // reuse ClipPlaneName
+// using gl::GL_CLIP_DISTANCE3; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE3; // reuse ClipPlaneName
+// using gl::GL_CLIP_DISTANCE4; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE4; // reuse ClipPlaneName
+// using gl::GL_CLIP_DISTANCE5; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE5; // reuse ClipPlaneName
 using gl::GL_LIGHT0;
 using gl::GL_LIGHT1;
@@ -538,6 +552,12 @@ using gl::GL_TEXTURE_MIN_FILTER;
 using gl::GL_TEXTURE_WRAP_S;
 using gl::GL_TEXTURE_WRAP_T;
 
+// GlslTypeToken
+
+// using gl::GL_INT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
+// using gl::GL_FLOAT; // reuse ColorPointerType
+
 // GraphicsResetStatus
 
 // using gl::GL_NO_ERROR; // reuse ErrorCode
@@ -857,9 +877,12 @@ using gl::GL_RENDER;
 using gl::GL_FEEDBACK;
 using gl::GL_SELECT;
 
-// SamplerParameterName
+// SamplerParameterF
 
 // using gl::GL_TEXTURE_BORDER_COLOR; // reuse GetTextureParameter
+
+// SamplerParameterI
+
 // using gl::GL_TEXTURE_MAG_FILTER; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_MIN_FILTER; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_WRAP_S; // reuse GetTextureParameter
@@ -908,6 +931,10 @@ using gl::GL_EXTENSIONS;
 // using gl::GL_SHORT; // reuse ColorPointerType
 // using gl::GL_INT; // reuse ColorPointerType
 // using gl::GL_FLOAT; // reuse ColorPointerType
+
+// TextureCompareMode
+
+// using gl::GL_NONE; // reuse ColorBuffer
 
 // TextureCoordName
 
@@ -970,6 +997,15 @@ using gl::GL_LINEAR_MIPMAP_LINEAR;
 // using gl::GL_TEXTURE_WRAP_S; // reuse GetTextureParameter
 // using gl::GL_TEXTURE_WRAP_T; // reuse GetTextureParameter
 
+// TextureSwizzle
+
+// using gl::GL_ZERO; // reuse BlendingFactor
+// using gl::GL_RED; // reuse InternalFormat
+// using gl::GL_GREEN; // reuse PixelFormat
+// using gl::GL_BLUE; // reuse PixelFormat
+// using gl::GL_ALPHA; // reuse PixelFormat
+// using gl::GL_ONE; // reuse BlendingFactor
+
 // TextureTarget
 
 // using gl::GL_TEXTURE_1D; // reuse EnableCap
@@ -977,8 +1013,24 @@ using gl::GL_LINEAR_MIPMAP_LINEAR;
 
 // TextureWrapMode
 
+// using gl::GL_LINEAR_MIPMAP_LINEAR; // reuse TextureMinFilter
 using gl::GL_CLAMP;
 using gl::GL_REPEAT;
+
+// UniformType
+
+// using gl::GL_INT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
+// using gl::GL_FLOAT; // reuse ColorPointerType
+
+// VertexAttribIType
+
+// using gl::GL_BYTE; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_BYTE; // reuse ColorPointerType
+// using gl::GL_SHORT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_SHORT; // reuse ColorPointerType
+// using gl::GL_INT; // reuse ColorPointerType
+// using gl::GL_UNSIGNED_INT; // reuse ColorPointerType
 
 // VertexAttribPointerType
 
