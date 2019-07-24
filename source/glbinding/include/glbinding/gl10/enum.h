@@ -118,6 +118,11 @@ using gl::GL_FLOAT;
 
 // using gl::GL_NONE; // reuse ColorBuffer
 
+// CopyImageSubDataTarget
+
+using gl::GL_TEXTURE_1D;
+using gl::GL_TEXTURE_2D;
+
 // CullFaceMode
 
 // using gl::GL_FRONT; // reuse ColorBuffer
@@ -211,8 +216,8 @@ using gl::GL_MAP2_TEXTURE_COORD_3;
 using gl::GL_MAP2_TEXTURE_COORD_4;
 using gl::GL_MAP2_VERTEX_3;
 using gl::GL_MAP2_VERTEX_4;
-using gl::GL_TEXTURE_1D;
-using gl::GL_TEXTURE_2D;
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 // using gl::GL_CLIP_DISTANCE0; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE0; // reuse ClipPlaneName
 // using gl::GL_CLIP_DISTANCE1; // reuse ClipPlaneName
@@ -510,8 +515,8 @@ using gl::GL_MAP1_GRID_DOMAIN;
 using gl::GL_MAP1_GRID_SEGMENTS;
 using gl::GL_MAP2_GRID_DOMAIN;
 using gl::GL_MAP2_GRID_SEGMENTS;
-// using gl::GL_TEXTURE_1D; // reuse EnableCap
-// using gl::GL_TEXTURE_2D; // reuse EnableCap
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 // using gl::GL_CLIP_PLANE0; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE1; // reuse ClipPlaneName
 // using gl::GL_CLIP_PLANE2; // reuse ClipPlaneName
@@ -1008,8 +1013,8 @@ using gl::GL_LINEAR_MIPMAP_LINEAR;
 
 // TextureTarget
 
-// using gl::GL_TEXTURE_1D; // reuse EnableCap
-// using gl::GL_TEXTURE_2D; // reuse EnableCap
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 
 // TextureWrapMode
 

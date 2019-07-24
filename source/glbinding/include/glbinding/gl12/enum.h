@@ -119,6 +119,12 @@ using gl::GL_DOUBLE;
 
 // using gl::GL_NONE; // reuse ColorBuffer
 
+// CopyImageSubDataTarget
+
+using gl::GL_TEXTURE_1D;
+using gl::GL_TEXTURE_2D;
+using gl::GL_TEXTURE_3D;
+
 // CullFaceMode
 
 // using gl::GL_FRONT; // reuse ColorBuffer
@@ -214,8 +220,8 @@ using gl::GL_MAP2_TEXTURE_COORD_3;
 using gl::GL_MAP2_TEXTURE_COORD_4;
 using gl::GL_MAP2_VERTEX_3;
 using gl::GL_MAP2_VERTEX_4;
-using gl::GL_TEXTURE_1D;
-using gl::GL_TEXTURE_2D;
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 using gl::GL_POLYGON_OFFSET_POINT;
 using gl::GL_POLYGON_OFFSET_LINE;
 // using gl::GL_CLIP_DISTANCE0; // reuse ClipPlaneName
@@ -529,8 +535,8 @@ using gl::GL_MAP1_GRID_DOMAIN;
 using gl::GL_MAP1_GRID_SEGMENTS;
 using gl::GL_MAP2_GRID_DOMAIN;
 using gl::GL_MAP2_GRID_SEGMENTS;
-// using gl::GL_TEXTURE_1D; // reuse EnableCap
-// using gl::GL_TEXTURE_2D; // reuse EnableCap
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 using gl::GL_FEEDBACK_BUFFER_SIZE;
 using gl::GL_FEEDBACK_BUFFER_TYPE;
 using gl::GL_SELECTION_BUFFER_SIZE;
@@ -1176,11 +1182,11 @@ using gl::GL_TEXTURE_MAX_LEVEL;
 
 // TextureTarget
 
-// using gl::GL_TEXTURE_1D; // reuse EnableCap
-// using gl::GL_TEXTURE_2D; // reuse EnableCap
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_1D;
 using gl::GL_PROXY_TEXTURE_2D;
-using gl::GL_TEXTURE_3D;
+// using gl::GL_TEXTURE_3D; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_3D;
 
 // TextureWrapMode

@@ -470,6 +470,20 @@ enum class GLenum : unsigned int
 //  GL_QUERY_BUFFER                                               = 0x9192, // reuse BufferStorageTarget, decimal value: 37266
 //  GL_ATOMIC_COUNTER_BUFFER                                      = 0x92C0, // reuse BufferStorageTarget, decimal value: 37568
 
+    // CopyImageSubDataTarget
+
+    GL_TEXTURE_1D                                                 = 0x0DE0, // decimal value: 3552
+    GL_TEXTURE_2D                                                 = 0x0DE1, // decimal value: 3553
+    GL_TEXTURE_3D                                                 = 0x806F, // decimal value: 32879
+    GL_TEXTURE_RECTANGLE                                          = 0x84F5, // decimal value: 34037
+    GL_TEXTURE_CUBE_MAP                                           = 0x8513, // decimal value: 34067
+    GL_TEXTURE_1D_ARRAY                                           = 0x8C18, // decimal value: 35864
+    GL_TEXTURE_2D_ARRAY                                           = 0x8C1A, // decimal value: 35866
+    GL_RENDERBUFFER                                               = 0x8D41, // decimal value: 36161
+    GL_TEXTURE_CUBE_MAP_ARRAY                                     = 0x9009, // decimal value: 36873
+    GL_TEXTURE_2D_MULTISAMPLE                                     = 0x9100, // decimal value: 37120
+    GL_TEXTURE_2D_MULTISAMPLE_ARRAY                               = 0x9102, // decimal value: 37122
+
     // CullFaceMode
 
 //  GL_FRONT                                                      = 0x0404, // reuse ColorBuffer, decimal value: 1028
@@ -550,6 +564,22 @@ enum class GLenum : unsigned int
 //  GL_COLOR_ATTACHMENT13                                         = 0x8CED, // reuse ColorBuffer, decimal value: 36077
 //  GL_COLOR_ATTACHMENT14                                         = 0x8CEE, // reuse ColorBuffer, decimal value: 36078
 //  GL_COLOR_ATTACHMENT15                                         = 0x8CEF, // reuse ColorBuffer, decimal value: 36079
+//  GL_COLOR_ATTACHMENT16                                         = 0x8CF0, // reuse ColorBuffer, decimal value: 36080
+//  GL_COLOR_ATTACHMENT17                                         = 0x8CF1, // reuse ColorBuffer, decimal value: 36081
+//  GL_COLOR_ATTACHMENT18                                         = 0x8CF2, // reuse ColorBuffer, decimal value: 36082
+//  GL_COLOR_ATTACHMENT19                                         = 0x8CF3, // reuse ColorBuffer, decimal value: 36083
+//  GL_COLOR_ATTACHMENT20                                         = 0x8CF4, // reuse ColorBuffer, decimal value: 36084
+//  GL_COLOR_ATTACHMENT21                                         = 0x8CF5, // reuse ColorBuffer, decimal value: 36085
+//  GL_COLOR_ATTACHMENT22                                         = 0x8CF6, // reuse ColorBuffer, decimal value: 36086
+//  GL_COLOR_ATTACHMENT23                                         = 0x8CF7, // reuse ColorBuffer, decimal value: 36087
+//  GL_COLOR_ATTACHMENT24                                         = 0x8CF8, // reuse ColorBuffer, decimal value: 36088
+//  GL_COLOR_ATTACHMENT25                                         = 0x8CF9, // reuse ColorBuffer, decimal value: 36089
+//  GL_COLOR_ATTACHMENT26                                         = 0x8CFA, // reuse ColorBuffer, decimal value: 36090
+//  GL_COLOR_ATTACHMENT27                                         = 0x8CFB, // reuse ColorBuffer, decimal value: 36091
+//  GL_COLOR_ATTACHMENT28                                         = 0x8CFC, // reuse ColorBuffer, decimal value: 36092
+//  GL_COLOR_ATTACHMENT29                                         = 0x8CFD, // reuse ColorBuffer, decimal value: 36093
+//  GL_COLOR_ATTACHMENT30                                         = 0x8CFE, // reuse ColorBuffer, decimal value: 36094
+//  GL_COLOR_ATTACHMENT31                                         = 0x8CFF, // reuse ColorBuffer, decimal value: 36095
 
     // DrawElementsType
 
@@ -600,8 +630,8 @@ enum class GLenum : unsigned int
     GL_MAP2_TEXTURE_COORD_4                                       = 0x0DB6, // decimal value: 3510
     GL_MAP2_VERTEX_3                                              = 0x0DB7, // decimal value: 3511
     GL_MAP2_VERTEX_4                                              = 0x0DB8, // decimal value: 3512
-    GL_TEXTURE_1D                                                 = 0x0DE0, // decimal value: 3552
-    GL_TEXTURE_2D                                                 = 0x0DE1, // decimal value: 3553
+//  GL_TEXTURE_1D                                                 = 0x0DE0, // reuse CopyImageSubDataTarget, decimal value: 3552
+//  GL_TEXTURE_2D                                                 = 0x0DE1, // reuse CopyImageSubDataTarget, decimal value: 3553
     GL_POLYGON_OFFSET_POINT                                       = 0x2A01, // decimal value: 10753
     GL_POLYGON_OFFSET_LINE                                        = 0x2A02, // decimal value: 10754
 //  GL_CLIP_DISTANCE0                                             = 0x3000, // reuse ClipPlaneName, decimal value: 12288
@@ -1215,8 +1245,8 @@ enum class GLenum : unsigned int
     GL_MAP1_GRID_SEGMENTS                                         = 0x0DD1, // decimal value: 3537
     GL_MAP2_GRID_DOMAIN                                           = 0x0DD2, // decimal value: 3538
     GL_MAP2_GRID_SEGMENTS                                         = 0x0DD3, // decimal value: 3539
-//  GL_TEXTURE_1D                                                 = 0x0DE0, // reuse EnableCap, decimal value: 3552
-//  GL_TEXTURE_2D                                                 = 0x0DE1, // reuse EnableCap, decimal value: 3553
+//  GL_TEXTURE_1D                                                 = 0x0DE0, // reuse CopyImageSubDataTarget, decimal value: 3552
+//  GL_TEXTURE_2D                                                 = 0x0DE1, // reuse CopyImageSubDataTarget, decimal value: 3553
     GL_FEEDBACK_BUFFER_SIZE                                       = 0x0DF1, // decimal value: 3569
     GL_FEEDBACK_BUFFER_TYPE                                       = 0x0DF2, // decimal value: 3570
     GL_SELECTION_BUFFER_SIZE                                      = 0x0DF4, // decimal value: 3572
@@ -1998,6 +2028,7 @@ enum class GLenum : unsigned int
     GL_DEPTH_STENCIL_NV                                           = 0x84F9, // decimal value: 34041
     GL_RGBA32F                                                    = 0x8814, // decimal value: 34836
     GL_RGBA32F_ARB                                                = 0x8814, // decimal value: 34836
+    GL_RGB32F                                                     = 0x8815, // decimal value: 34837
     GL_RGBA16F                                                    = 0x881A, // decimal value: 34842
     GL_RGBA16F_ARB                                                = 0x881A, // decimal value: 34842
     GL_RGB16F                                                     = 0x881B, // decimal value: 34843
@@ -2358,7 +2389,7 @@ enum class GLenum : unsigned int
     GL_PROGRAM_PIPELINE                                           = 0x82E4, // decimal value: 33508
     GL_SAMPLER                                                    = 0x82E6, // decimal value: 33510
 //  GL_FRAMEBUFFER                                                = 0x8D40, // reuse CheckFramebufferStatusTarget, decimal value: 36160
-    GL_RENDERBUFFER                                               = 0x8D41, // decimal value: 36161
+//  GL_RENDERBUFFER                                               = 0x8D41, // reuse CopyImageSubDataTarget, decimal value: 36161
 //  GL_TRANSFORM_FEEDBACK                                         = 0x8E22, // reuse BindTransformFeedbackTarget, decimal value: 36386
 
     // ObjectTypeAPPLE
@@ -2988,7 +3019,7 @@ enum class GLenum : unsigned int
 
     // RenderbufferTarget
 
-//  GL_RENDERBUFFER                                               = 0x8D41, // reuse ObjectIdentifier, decimal value: 36161
+//  GL_RENDERBUFFER                                               = 0x8D41, // reuse CopyImageSubDataTarget, decimal value: 36161
 
     // RenderingMode
 
@@ -3341,24 +3372,24 @@ enum class GLenum : unsigned int
 
     // TextureTarget
 
-//  GL_TEXTURE_1D                                                 = 0x0DE0, // reuse EnableCap, decimal value: 3552
-//  GL_TEXTURE_2D                                                 = 0x0DE1, // reuse EnableCap, decimal value: 3553
+//  GL_TEXTURE_1D                                                 = 0x0DE0, // reuse CopyImageSubDataTarget, decimal value: 3552
+//  GL_TEXTURE_2D                                                 = 0x0DE1, // reuse CopyImageSubDataTarget, decimal value: 3553
     GL_PROXY_TEXTURE_1D                                           = 0x8063, // decimal value: 32867
     GL_PROXY_TEXTURE_1D_EXT                                       = 0x8063, // decimal value: 32867
     GL_PROXY_TEXTURE_2D                                           = 0x8064, // decimal value: 32868
     GL_PROXY_TEXTURE_2D_EXT                                       = 0x8064, // decimal value: 32868
-    GL_TEXTURE_3D                                                 = 0x806F, // decimal value: 32879
+//  GL_TEXTURE_3D                                                 = 0x806F, // reuse CopyImageSubDataTarget, decimal value: 32879
 //  GL_TEXTURE_3D_EXT                                             = 0x806F, // reuse EnableCap, decimal value: 32879
     GL_PROXY_TEXTURE_3D                                           = 0x8070, // decimal value: 32880
     GL_PROXY_TEXTURE_3D_EXT                                       = 0x8070, // decimal value: 32880
     GL_DETAIL_TEXTURE_2D_SGIS                                     = 0x8095, // decimal value: 32917
 //  GL_TEXTURE_4D_SGIS                                            = 0x8134, // reuse EnableCap, decimal value: 33076
     GL_PROXY_TEXTURE_4D_SGIS                                      = 0x8135, // decimal value: 33077
-    GL_TEXTURE_RECTANGLE                                          = 0x84F5, // decimal value: 34037
+//  GL_TEXTURE_RECTANGLE                                          = 0x84F5, // reuse CopyImageSubDataTarget, decimal value: 34037
     GL_PROXY_TEXTURE_RECTANGLE                                    = 0x84F7, // decimal value: 34039
     GL_PROXY_TEXTURE_RECTANGLE_ARB                                = 0x84F7, // decimal value: 34039
     GL_PROXY_TEXTURE_RECTANGLE_NV                                 = 0x84F7, // decimal value: 34039
-    GL_TEXTURE_CUBE_MAP                                           = 0x8513, // decimal value: 34067
+//  GL_TEXTURE_CUBE_MAP                                           = 0x8513, // reuse CopyImageSubDataTarget, decimal value: 34067
     GL_TEXTURE_CUBE_MAP_POSITIVE_X                                = 0x8515, // decimal value: 34069
     GL_TEXTURE_CUBE_MAP_NEGATIVE_X                                = 0x8516, // decimal value: 34070
     GL_TEXTURE_CUBE_MAP_POSITIVE_Y                                = 0x8517, // decimal value: 34071
@@ -3368,19 +3399,19 @@ enum class GLenum : unsigned int
     GL_PROXY_TEXTURE_CUBE_MAP                                     = 0x851B, // decimal value: 34075
     GL_PROXY_TEXTURE_CUBE_MAP_ARB                                 = 0x851B, // decimal value: 34075
     GL_PROXY_TEXTURE_CUBE_MAP_EXT                                 = 0x851B, // decimal value: 34075
-    GL_TEXTURE_1D_ARRAY                                           = 0x8C18, // decimal value: 35864
+//  GL_TEXTURE_1D_ARRAY                                           = 0x8C18, // reuse CopyImageSubDataTarget, decimal value: 35864
     GL_PROXY_TEXTURE_1D_ARRAY                                     = 0x8C19, // decimal value: 35865
     GL_PROXY_TEXTURE_1D_ARRAY_EXT                                 = 0x8C19, // decimal value: 35865
-    GL_TEXTURE_2D_ARRAY                                           = 0x8C1A, // decimal value: 35866
+//  GL_TEXTURE_2D_ARRAY                                           = 0x8C1A, // reuse CopyImageSubDataTarget, decimal value: 35866
     GL_PROXY_TEXTURE_2D_ARRAY                                     = 0x8C1B, // decimal value: 35867
     GL_PROXY_TEXTURE_2D_ARRAY_EXT                                 = 0x8C1B, // decimal value: 35867
-    GL_TEXTURE_CUBE_MAP_ARRAY                                     = 0x9009, // decimal value: 36873
+//  GL_TEXTURE_CUBE_MAP_ARRAY                                     = 0x9009, // reuse CopyImageSubDataTarget, decimal value: 36873
     GL_TEXTURE_CUBE_MAP_ARRAY_ARB                                 = 0x9009, // decimal value: 36873
     GL_PROXY_TEXTURE_CUBE_MAP_ARRAY                               = 0x900B, // decimal value: 36875
     GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB                           = 0x900B, // decimal value: 36875
-    GL_TEXTURE_2D_MULTISAMPLE                                     = 0x9100, // decimal value: 37120
+//  GL_TEXTURE_2D_MULTISAMPLE                                     = 0x9100, // reuse CopyImageSubDataTarget, decimal value: 37120
     GL_PROXY_TEXTURE_2D_MULTISAMPLE                               = 0x9101, // decimal value: 37121
-    GL_TEXTURE_2D_MULTISAMPLE_ARRAY                               = 0x9102, // decimal value: 37122
+//  GL_TEXTURE_2D_MULTISAMPLE_ARRAY                               = 0x9102, // reuse CopyImageSubDataTarget, decimal value: 37122
     GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY                         = 0x9103, // decimal value: 37123
 
     // TextureUnit
@@ -3521,9 +3552,22 @@ enum class GLenum : unsigned int
 //  GL_UNSIGNED_INT_SAMPLER_1D_ARRAY                              = 0x8DD6, // reuse GlslTypeToken, decimal value: 36310
 //  GL_UNSIGNED_INT_SAMPLER_2D_ARRAY                              = 0x8DD7, // reuse GlslTypeToken, decimal value: 36311
 //  GL_UNSIGNED_INT_SAMPLER_BUFFER                                = 0x8DD8, // reuse GlslTypeToken, decimal value: 36312
+//  GL_DOUBLE_MAT2                                                = 0x8F46, // reuse GlslTypeToken, decimal value: 36678
+//  GL_DOUBLE_MAT3                                                = 0x8F47, // reuse GlslTypeToken, decimal value: 36679
+//  GL_DOUBLE_MAT4                                                = 0x8F48, // reuse GlslTypeToken, decimal value: 36680
+    GL_DOUBLE_MAT2x3                                              = 0x8F49, // decimal value: 36681
+    GL_DOUBLE_MAT2x4                                              = 0x8F4A, // decimal value: 36682
+    GL_DOUBLE_MAT3x2                                              = 0x8F4B, // decimal value: 36683
+    GL_DOUBLE_MAT3x4                                              = 0x8F4C, // decimal value: 36684
+    GL_DOUBLE_MAT4x2                                              = 0x8F4D, // decimal value: 36685
+    GL_DOUBLE_MAT4x3                                              = 0x8F4E, // decimal value: 36686
 //  GL_DOUBLE_VEC2                                                = 0x8FFC, // reuse GlslTypeToken, decimal value: 36860
 //  GL_DOUBLE_VEC3                                                = 0x8FFD, // reuse GlslTypeToken, decimal value: 36861
 //  GL_DOUBLE_VEC4                                                = 0x8FFE, // reuse GlslTypeToken, decimal value: 36862
+//  GL_SAMPLER_CUBE_MAP_ARRAY                                     = 0x900C, // reuse GlslTypeToken, decimal value: 36876
+//  GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW                              = 0x900D, // reuse GlslTypeToken, decimal value: 36877
+//  GL_INT_SAMPLER_CUBE_MAP_ARRAY                                 = 0x900E, // reuse GlslTypeToken, decimal value: 36878
+//  GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY                        = 0x900F, // reuse GlslTypeToken, decimal value: 36879
 //  GL_SAMPLER_2D_MULTISAMPLE                                     = 0x9108, // reuse GlslTypeToken, decimal value: 37128
 //  GL_INT_SAMPLER_2D_MULTISAMPLE                                 = 0x9109, // reuse GlslTypeToken, decimal value: 37129
 //  GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE                        = 0x910A, // reuse GlslTypeToken, decimal value: 37130
@@ -4789,7 +4833,6 @@ enum class GLenum : unsigned int
     GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB                    = 0x8810, // decimal value: 34832
     GL_RGBA_FLOAT32_APPLE                                         = 0x8814, // decimal value: 34836
     GL_RGBA_FLOAT32_ATI                                           = 0x8814, // decimal value: 34836
-    GL_RGB32F                                                     = 0x8815, // decimal value: 34837
     GL_RGB32F_ARB                                                 = 0x8815, // decimal value: 34837
     GL_RGB_FLOAT32_APPLE                                          = 0x8815, // decimal value: 34837
     GL_RGB_FLOAT32_ATI                                            = 0x8815, // decimal value: 34837
@@ -5714,17 +5757,11 @@ enum class GLenum : unsigned int
     GL_DOUBLE_MAT2_EXT                                            = 0x8F46, // decimal value: 36678
     GL_DOUBLE_MAT3_EXT                                            = 0x8F47, // decimal value: 36679
     GL_DOUBLE_MAT4_EXT                                            = 0x8F48, // decimal value: 36680
-    GL_DOUBLE_MAT2x3                                              = 0x8F49, // decimal value: 36681
     GL_DOUBLE_MAT2x3_EXT                                          = 0x8F49, // decimal value: 36681
-    GL_DOUBLE_MAT2x4                                              = 0x8F4A, // decimal value: 36682
     GL_DOUBLE_MAT2x4_EXT                                          = 0x8F4A, // decimal value: 36682
-    GL_DOUBLE_MAT3x2                                              = 0x8F4B, // decimal value: 36683
     GL_DOUBLE_MAT3x2_EXT                                          = 0x8F4B, // decimal value: 36683
-    GL_DOUBLE_MAT3x4                                              = 0x8F4C, // decimal value: 36684
     GL_DOUBLE_MAT3x4_EXT                                          = 0x8F4C, // decimal value: 36684
-    GL_DOUBLE_MAT4x2                                              = 0x8F4D, // decimal value: 36685
     GL_DOUBLE_MAT4x2_EXT                                          = 0x8F4D, // decimal value: 36685
-    GL_DOUBLE_MAT4x3                                              = 0x8F4E, // decimal value: 36686
     GL_DOUBLE_MAT4x3_EXT                                          = 0x8F4E, // decimal value: 36686
     GL_VERTEX_BINDING_BUFFER                                      = 0x8F4F, // decimal value: 36687
     GL_RED_SNORM                                                  = 0x8F90, // decimal value: 36752
@@ -6804,6 +6841,20 @@ GLBINDING_CONSTEXPR static const GLenum GL_CONVOLUTION_2D_EXT = GLenum::GL_CONVO
 // GLBINDING_CONSTEXPR static const GLenum GL_QUERY_BUFFER = GLenum::GL_QUERY_BUFFER; // reuse BufferStorageTarget
 // GLBINDING_CONSTEXPR static const GLenum GL_ATOMIC_COUNTER_BUFFER = GLenum::GL_ATOMIC_COUNTER_BUFFER; // reuse BufferStorageTarget
 
+// CopyImageSubDataTarget
+
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_3D = GLenum::GL_TEXTURE_3D;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_RECTANGLE = GLenum::GL_TEXTURE_RECTANGLE;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP = GLenum::GL_TEXTURE_CUBE_MAP;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D_ARRAY = GLenum::GL_TEXTURE_1D_ARRAY;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_ARRAY = GLenum::GL_TEXTURE_2D_ARRAY;
+GLBINDING_CONSTEXPR static const GLenum GL_RENDERBUFFER = GLenum::GL_RENDERBUFFER;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_ARRAY = GLenum::GL_TEXTURE_CUBE_MAP_ARRAY;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_MULTISAMPLE = GLenum::GL_TEXTURE_2D_MULTISAMPLE;
+GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_MULTISAMPLE_ARRAY = GLenum::GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
+
 // CullFaceMode
 
 // GLBINDING_CONSTEXPR static const GLenum GL_FRONT = GLenum::GL_FRONT; // reuse ColorBuffer
@@ -6884,6 +6935,22 @@ GLBINDING_CONSTEXPR static const GLenum GL_AUX3 = GLenum::GL_AUX3;
 // GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT13 = GLenum::GL_COLOR_ATTACHMENT13; // reuse ColorBuffer
 // GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT14 = GLenum::GL_COLOR_ATTACHMENT14; // reuse ColorBuffer
 // GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT15 = GLenum::GL_COLOR_ATTACHMENT15; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT16 = GLenum::GL_COLOR_ATTACHMENT16; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT17 = GLenum::GL_COLOR_ATTACHMENT17; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT18 = GLenum::GL_COLOR_ATTACHMENT18; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT19 = GLenum::GL_COLOR_ATTACHMENT19; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT20 = GLenum::GL_COLOR_ATTACHMENT20; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT21 = GLenum::GL_COLOR_ATTACHMENT21; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT22 = GLenum::GL_COLOR_ATTACHMENT22; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT23 = GLenum::GL_COLOR_ATTACHMENT23; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT24 = GLenum::GL_COLOR_ATTACHMENT24; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT25 = GLenum::GL_COLOR_ATTACHMENT25; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT26 = GLenum::GL_COLOR_ATTACHMENT26; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT27 = GLenum::GL_COLOR_ATTACHMENT27; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT28 = GLenum::GL_COLOR_ATTACHMENT28; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT29 = GLenum::GL_COLOR_ATTACHMENT29; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT30 = GLenum::GL_COLOR_ATTACHMENT30; // reuse ColorBuffer
+// GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ATTACHMENT31 = GLenum::GL_COLOR_ATTACHMENT31; // reuse ColorBuffer
 
 // DrawElementsType
 
@@ -6934,8 +7001,8 @@ GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_3 = GLenum::GL_MAP
 GLBINDING_CONSTEXPR static const GLenum GL_MAP2_TEXTURE_COORD_4 = GLenum::GL_MAP2_TEXTURE_COORD_4;
 GLBINDING_CONSTEXPR static const GLenum GL_MAP2_VERTEX_3 = GLenum::GL_MAP2_VERTEX_3;
 GLBINDING_CONSTEXPR static const GLenum GL_MAP2_VERTEX_4 = GLenum::GL_MAP2_VERTEX_4;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_OFFSET_POINT = GLenum::GL_POLYGON_OFFSET_POINT;
 GLBINDING_CONSTEXPR static const GLenum GL_POLYGON_OFFSET_LINE = GLenum::GL_POLYGON_OFFSET_LINE;
 // GLBINDING_CONSTEXPR static const GLenum GL_CLIP_DISTANCE0 = GLenum::GL_CLIP_DISTANCE0; // reuse ClipPlaneName
@@ -7549,8 +7616,8 @@ GLBINDING_CONSTEXPR static const GLenum GL_MAP1_GRID_DOMAIN = GLenum::GL_MAP1_GR
 GLBINDING_CONSTEXPR static const GLenum GL_MAP1_GRID_SEGMENTS = GLenum::GL_MAP1_GRID_SEGMENTS;
 GLBINDING_CONSTEXPR static const GLenum GL_MAP2_GRID_DOMAIN = GLenum::GL_MAP2_GRID_DOMAIN;
 GLBINDING_CONSTEXPR static const GLenum GL_MAP2_GRID_SEGMENTS = GLenum::GL_MAP2_GRID_SEGMENTS;
-// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
-// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_FEEDBACK_BUFFER_SIZE = GLenum::GL_FEEDBACK_BUFFER_SIZE;
 GLBINDING_CONSTEXPR static const GLenum GL_FEEDBACK_BUFFER_TYPE = GLenum::GL_FEEDBACK_BUFFER_TYPE;
 GLBINDING_CONSTEXPR static const GLenum GL_SELECTION_BUFFER_SIZE = GLenum::GL_SELECTION_BUFFER_SIZE;
@@ -8332,6 +8399,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_DEPTH_STENCIL_EXT = GLenum::GL_DEPTH_
 GLBINDING_CONSTEXPR static const GLenum GL_DEPTH_STENCIL_NV = GLenum::GL_DEPTH_STENCIL_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_RGBA32F = GLenum::GL_RGBA32F;
 GLBINDING_CONSTEXPR static const GLenum GL_RGBA32F_ARB = GLenum::GL_RGBA32F_ARB;
+GLBINDING_CONSTEXPR static const GLenum GL_RGB32F = GLenum::GL_RGB32F;
 GLBINDING_CONSTEXPR static const GLenum GL_RGBA16F = GLenum::GL_RGBA16F;
 GLBINDING_CONSTEXPR static const GLenum GL_RGBA16F_ARB = GLenum::GL_RGBA16F_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB16F = GLenum::GL_RGB16F;
@@ -8692,7 +8760,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_QUERY = GLenum::GL_QUERY;
 GLBINDING_CONSTEXPR static const GLenum GL_PROGRAM_PIPELINE = GLenum::GL_PROGRAM_PIPELINE;
 GLBINDING_CONSTEXPR static const GLenum GL_SAMPLER = GLenum::GL_SAMPLER;
 // GLBINDING_CONSTEXPR static const GLenum GL_FRAMEBUFFER = GLenum::GL_FRAMEBUFFER; // reuse CheckFramebufferStatusTarget
-GLBINDING_CONSTEXPR static const GLenum GL_RENDERBUFFER = GLenum::GL_RENDERBUFFER;
+// GLBINDING_CONSTEXPR static const GLenum GL_RENDERBUFFER = GLenum::GL_RENDERBUFFER; // reuse CopyImageSubDataTarget
 // GLBINDING_CONSTEXPR static const GLenum GL_TRANSFORM_FEEDBACK = GLenum::GL_TRANSFORM_FEEDBACK; // reuse BindTransformFeedbackTarget
 
 // ObjectTypeAPPLE
@@ -9322,7 +9390,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_RENDERBUFFER_STENCIL_SIZE = GLenum::G
 
 // RenderbufferTarget
 
-// GLBINDING_CONSTEXPR static const GLenum GL_RENDERBUFFER = GLenum::GL_RENDERBUFFER; // reuse ObjectIdentifier
+// GLBINDING_CONSTEXPR static const GLenum GL_RENDERBUFFER = GLenum::GL_RENDERBUFFER; // reuse CopyImageSubDataTarget
 
 // RenderingMode
 
@@ -9675,24 +9743,24 @@ GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_TILING_EXT = GLenum::GL_TEXTU
 
 // TextureTarget
 
-// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse EnableCap
-// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse EnableCap
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D = GLenum::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D = GLenum::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_1D = GLenum::GL_PROXY_TEXTURE_1D;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_1D_EXT = GLenum::GL_PROXY_TEXTURE_1D_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D = GLenum::GL_PROXY_TEXTURE_2D;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D_EXT = GLenum::GL_PROXY_TEXTURE_2D_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_3D = GLenum::GL_TEXTURE_3D;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_3D = GLenum::GL_TEXTURE_3D; // reuse CopyImageSubDataTarget
 // GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_3D_EXT = GLenum::GL_TEXTURE_3D_EXT; // reuse EnableCap
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_3D = GLenum::GL_PROXY_TEXTURE_3D;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_3D_EXT = GLenum::GL_PROXY_TEXTURE_3D_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_DETAIL_TEXTURE_2D_SGIS = GLenum::GL_DETAIL_TEXTURE_2D_SGIS;
 // GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_4D_SGIS = GLenum::GL_TEXTURE_4D_SGIS; // reuse EnableCap
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_4D_SGIS = GLenum::GL_PROXY_TEXTURE_4D_SGIS;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_RECTANGLE = GLenum::GL_TEXTURE_RECTANGLE;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_RECTANGLE = GLenum::GL_TEXTURE_RECTANGLE; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_RECTANGLE = GLenum::GL_PROXY_TEXTURE_RECTANGLE;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_RECTANGLE_ARB = GLenum::GL_PROXY_TEXTURE_RECTANGLE_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_RECTANGLE_NV = GLenum::GL_PROXY_TEXTURE_RECTANGLE_NV;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP = GLenum::GL_TEXTURE_CUBE_MAP;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP = GLenum::GL_TEXTURE_CUBE_MAP; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_POSITIVE_X = GLenum::GL_TEXTURE_CUBE_MAP_POSITIVE_X;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_NEGATIVE_X = GLenum::GL_TEXTURE_CUBE_MAP_NEGATIVE_X;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_POSITIVE_Y = GLenum::GL_TEXTURE_CUBE_MAP_POSITIVE_Y;
@@ -9702,19 +9770,19 @@ GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_NEGATIVE_Z = GLenum:
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_CUBE_MAP = GLenum::GL_PROXY_TEXTURE_CUBE_MAP;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_CUBE_MAP_ARB = GLenum::GL_PROXY_TEXTURE_CUBE_MAP_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_CUBE_MAP_EXT = GLenum::GL_PROXY_TEXTURE_CUBE_MAP_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D_ARRAY = GLenum::GL_TEXTURE_1D_ARRAY;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_1D_ARRAY = GLenum::GL_TEXTURE_1D_ARRAY; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_1D_ARRAY = GLenum::GL_PROXY_TEXTURE_1D_ARRAY;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_1D_ARRAY_EXT = GLenum::GL_PROXY_TEXTURE_1D_ARRAY_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_ARRAY = GLenum::GL_TEXTURE_2D_ARRAY;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_ARRAY = GLenum::GL_TEXTURE_2D_ARRAY; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D_ARRAY = GLenum::GL_PROXY_TEXTURE_2D_ARRAY;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D_ARRAY_EXT = GLenum::GL_PROXY_TEXTURE_2D_ARRAY_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_ARRAY = GLenum::GL_TEXTURE_CUBE_MAP_ARRAY;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_ARRAY = GLenum::GL_TEXTURE_CUBE_MAP_ARRAY; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_CUBE_MAP_ARRAY_ARB = GLenum::GL_TEXTURE_CUBE_MAP_ARRAY_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_CUBE_MAP_ARRAY = GLenum::GL_PROXY_TEXTURE_CUBE_MAP_ARRAY;
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB = GLenum::GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_MULTISAMPLE = GLenum::GL_TEXTURE_2D_MULTISAMPLE;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_MULTISAMPLE = GLenum::GL_TEXTURE_2D_MULTISAMPLE; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D_MULTISAMPLE = GLenum::GL_PROXY_TEXTURE_2D_MULTISAMPLE;
-GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_MULTISAMPLE_ARRAY = GLenum::GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
+// GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_2D_MULTISAMPLE_ARRAY = GLenum::GL_TEXTURE_2D_MULTISAMPLE_ARRAY; // reuse CopyImageSubDataTarget
 GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY = GLenum::GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY;
 
 // TextureUnit
@@ -9855,9 +9923,22 @@ GLBINDING_CONSTEXPR static const GLenum GL_UNIFORM_ATOMIC_COUNTER_BUFFER_INDEX =
 // GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_SAMPLER_1D_ARRAY = GLenum::GL_UNSIGNED_INT_SAMPLER_1D_ARRAY; // reuse GlslTypeToken
 // GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_SAMPLER_2D_ARRAY = GLenum::GL_UNSIGNED_INT_SAMPLER_2D_ARRAY; // reuse GlslTypeToken
 // GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_SAMPLER_BUFFER = GLenum::GL_UNSIGNED_INT_SAMPLER_BUFFER; // reuse GlslTypeToken
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2 = GLenum::GL_DOUBLE_MAT2; // reuse GlslTypeToken
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3 = GLenum::GL_DOUBLE_MAT3; // reuse GlslTypeToken
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4 = GLenum::GL_DOUBLE_MAT4; // reuse GlslTypeToken
+GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2x3 = GLenum::GL_DOUBLE_MAT2x3;
+GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2x4 = GLenum::GL_DOUBLE_MAT2x4;
+GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3x2 = GLenum::GL_DOUBLE_MAT3x2;
+GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3x4 = GLenum::GL_DOUBLE_MAT3x4;
+GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4x2 = GLenum::GL_DOUBLE_MAT4x2;
+GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4x3 = GLenum::GL_DOUBLE_MAT4x3;
 // GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_VEC2 = GLenum::GL_DOUBLE_VEC2; // reuse GlslTypeToken
 // GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_VEC3 = GLenum::GL_DOUBLE_VEC3; // reuse GlslTypeToken
 // GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_VEC4 = GLenum::GL_DOUBLE_VEC4; // reuse GlslTypeToken
+// GLBINDING_CONSTEXPR static const GLenum GL_SAMPLER_CUBE_MAP_ARRAY = GLenum::GL_SAMPLER_CUBE_MAP_ARRAY; // reuse GlslTypeToken
+// GLBINDING_CONSTEXPR static const GLenum GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW = GLenum::GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW; // reuse GlslTypeToken
+// GLBINDING_CONSTEXPR static const GLenum GL_INT_SAMPLER_CUBE_MAP_ARRAY = GLenum::GL_INT_SAMPLER_CUBE_MAP_ARRAY; // reuse GlslTypeToken
+// GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY = GLenum::GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY; // reuse GlslTypeToken
 // GLBINDING_CONSTEXPR static const GLenum GL_SAMPLER_2D_MULTISAMPLE = GLenum::GL_SAMPLER_2D_MULTISAMPLE; // reuse GlslTypeToken
 // GLBINDING_CONSTEXPR static const GLenum GL_INT_SAMPLER_2D_MULTISAMPLE = GLenum::GL_INT_SAMPLER_2D_MULTISAMPLE; // reuse GlslTypeToken
 // GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE = GLenum::GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE; // reuse GlslTypeToken
@@ -11123,7 +11204,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_MAX_PROGRAM_NATIVE_TEX_INSTRUCTIONS_A
 GLBINDING_CONSTEXPR static const GLenum GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB = GLenum::GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_RGBA_FLOAT32_APPLE = GLenum::GL_RGBA_FLOAT32_APPLE;
 GLBINDING_CONSTEXPR static const GLenum GL_RGBA_FLOAT32_ATI = GLenum::GL_RGBA_FLOAT32_ATI;
-GLBINDING_CONSTEXPR static const GLenum GL_RGB32F = GLenum::GL_RGB32F;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB32F_ARB = GLenum::GL_RGB32F_ARB;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB_FLOAT32_APPLE = GLenum::GL_RGB_FLOAT32_APPLE;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB_FLOAT32_ATI = GLenum::GL_RGB_FLOAT32_ATI;
@@ -12048,17 +12128,11 @@ GLBINDING_CONSTEXPR static const GLenum GL_MAX_PROGRAM_SUBROUTINE_NUM_NV = GLenu
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2_EXT = GLenum::GL_DOUBLE_MAT2_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3_EXT = GLenum::GL_DOUBLE_MAT3_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4_EXT = GLenum::GL_DOUBLE_MAT4_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2x3 = GLenum::GL_DOUBLE_MAT2x3;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2x3_EXT = GLenum::GL_DOUBLE_MAT2x3_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2x4 = GLenum::GL_DOUBLE_MAT2x4;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT2x4_EXT = GLenum::GL_DOUBLE_MAT2x4_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3x2 = GLenum::GL_DOUBLE_MAT3x2;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3x2_EXT = GLenum::GL_DOUBLE_MAT3x2_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3x4 = GLenum::GL_DOUBLE_MAT3x4;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT3x4_EXT = GLenum::GL_DOUBLE_MAT3x4_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4x2 = GLenum::GL_DOUBLE_MAT4x2;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4x2_EXT = GLenum::GL_DOUBLE_MAT4x2_EXT;
-GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4x3 = GLenum::GL_DOUBLE_MAT4x3;
 GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE_MAT4x3_EXT = GLenum::GL_DOUBLE_MAT4x3_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_BINDING_BUFFER = GLenum::GL_VERTEX_BINDING_BUFFER;
 GLBINDING_CONSTEXPR static const GLenum GL_RED_SNORM = GLenum::GL_RED_SNORM;

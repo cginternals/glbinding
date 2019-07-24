@@ -385,6 +385,18 @@ using gl::GL_CONVOLUTION_2D_EXT;
 // using gl::GL_QUERY_BUFFER; // reuse BufferStorageTarget
 // using gl::GL_ATOMIC_COUNTER_BUFFER; // reuse BufferStorageTarget
 
+// CopyImageSubDataTarget
+
+using gl::GL_TEXTURE_3D;
+using gl::GL_TEXTURE_RECTANGLE;
+using gl::GL_TEXTURE_CUBE_MAP;
+using gl::GL_TEXTURE_1D_ARRAY;
+using gl::GL_TEXTURE_2D_ARRAY;
+using gl::GL_RENDERBUFFER;
+using gl::GL_TEXTURE_CUBE_MAP_ARRAY;
+using gl::GL_TEXTURE_2D_MULTISAMPLE;
+using gl::GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
+
 // DebugSeverity
 
 using gl::GL_DEBUG_SEVERITY_NOTIFICATION;
@@ -431,6 +443,22 @@ using gl::GL_DEBUG_TYPE_POP_GROUP;
 // using gl::GL_COLOR_ATTACHMENT13; // reuse ColorBuffer
 // using gl::GL_COLOR_ATTACHMENT14; // reuse ColorBuffer
 // using gl::GL_COLOR_ATTACHMENT15; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT16; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT17; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT18; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT19; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT20; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT21; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT22; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT23; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT24; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT25; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT26; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT27; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT28; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT29; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT30; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT31; // reuse ColorBuffer
 
 // EnableCap
 
@@ -1502,6 +1530,7 @@ using gl::GL_DEPTH_STENCIL_EXT;
 using gl::GL_DEPTH_STENCIL_NV;
 using gl::GL_RGBA32F;
 using gl::GL_RGBA32F_ARB;
+using gl::GL_RGB32F;
 using gl::GL_RGBA16F;
 using gl::GL_RGBA16F_ARB;
 using gl::GL_RGB16F;
@@ -1736,7 +1765,7 @@ using gl::GL_QUERY;
 using gl::GL_PROGRAM_PIPELINE;
 using gl::GL_SAMPLER;
 // using gl::GL_FRAMEBUFFER; // reuse CheckFramebufferStatusTarget
-using gl::GL_RENDERBUFFER;
+// using gl::GL_RENDERBUFFER; // reuse CopyImageSubDataTarget
 // using gl::GL_TRANSFORM_FEEDBACK; // reuse BindTransformFeedbackTarget
 
 // ObjectTypeAPPLE
@@ -2255,7 +2284,7 @@ using gl::GL_RENDERBUFFER_STENCIL_SIZE;
 
 // RenderbufferTarget
 
-// using gl::GL_RENDERBUFFER; // reuse ObjectIdentifier
+// using gl::GL_RENDERBUFFER; // reuse CopyImageSubDataTarget
 
 // SamplePatternEXT
 
@@ -2513,18 +2542,18 @@ using gl::GL_PROXY_TEXTURE_1D;
 using gl::GL_PROXY_TEXTURE_1D_EXT;
 using gl::GL_PROXY_TEXTURE_2D;
 using gl::GL_PROXY_TEXTURE_2D_EXT;
-using gl::GL_TEXTURE_3D;
+// using gl::GL_TEXTURE_3D; // reuse CopyImageSubDataTarget
 // using gl::GL_TEXTURE_3D_EXT; // reuse EnableCap
 using gl::GL_PROXY_TEXTURE_3D;
 using gl::GL_PROXY_TEXTURE_3D_EXT;
 using gl::GL_DETAIL_TEXTURE_2D_SGIS;
 // using gl::GL_TEXTURE_4D_SGIS; // reuse EnableCap
 using gl::GL_PROXY_TEXTURE_4D_SGIS;
-using gl::GL_TEXTURE_RECTANGLE;
+// using gl::GL_TEXTURE_RECTANGLE; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_RECTANGLE;
 using gl::GL_PROXY_TEXTURE_RECTANGLE_ARB;
 using gl::GL_PROXY_TEXTURE_RECTANGLE_NV;
-using gl::GL_TEXTURE_CUBE_MAP;
+// using gl::GL_TEXTURE_CUBE_MAP; // reuse CopyImageSubDataTarget
 using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_X;
 using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_X;
 using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_Y;
@@ -2534,19 +2563,19 @@ using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_Z;
 using gl::GL_PROXY_TEXTURE_CUBE_MAP;
 using gl::GL_PROXY_TEXTURE_CUBE_MAP_ARB;
 using gl::GL_PROXY_TEXTURE_CUBE_MAP_EXT;
-using gl::GL_TEXTURE_1D_ARRAY;
+// using gl::GL_TEXTURE_1D_ARRAY; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_1D_ARRAY;
 using gl::GL_PROXY_TEXTURE_1D_ARRAY_EXT;
-using gl::GL_TEXTURE_2D_ARRAY;
+// using gl::GL_TEXTURE_2D_ARRAY; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_2D_ARRAY;
 using gl::GL_PROXY_TEXTURE_2D_ARRAY_EXT;
-using gl::GL_TEXTURE_CUBE_MAP_ARRAY;
+// using gl::GL_TEXTURE_CUBE_MAP_ARRAY; // reuse CopyImageSubDataTarget
 using gl::GL_TEXTURE_CUBE_MAP_ARRAY_ARB;
 using gl::GL_PROXY_TEXTURE_CUBE_MAP_ARRAY;
 using gl::GL_PROXY_TEXTURE_CUBE_MAP_ARRAY_ARB;
-using gl::GL_TEXTURE_2D_MULTISAMPLE;
+// using gl::GL_TEXTURE_2D_MULTISAMPLE; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_2D_MULTISAMPLE;
-using gl::GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
+// using gl::GL_TEXTURE_2D_MULTISAMPLE_ARRAY; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY;
 
 // TextureUnit
@@ -2681,9 +2710,22 @@ using gl::GL_UNIFORM_ATOMIC_COUNTER_BUFFER_INDEX;
 // using gl::GL_UNSIGNED_INT_SAMPLER_1D_ARRAY; // reuse GlslTypeToken
 // using gl::GL_UNSIGNED_INT_SAMPLER_2D_ARRAY; // reuse GlslTypeToken
 // using gl::GL_UNSIGNED_INT_SAMPLER_BUFFER; // reuse GlslTypeToken
+// using gl::GL_DOUBLE_MAT2; // reuse GlslTypeToken
+// using gl::GL_DOUBLE_MAT3; // reuse GlslTypeToken
+// using gl::GL_DOUBLE_MAT4; // reuse GlslTypeToken
+using gl::GL_DOUBLE_MAT2x3;
+using gl::GL_DOUBLE_MAT2x4;
+using gl::GL_DOUBLE_MAT3x2;
+using gl::GL_DOUBLE_MAT3x4;
+using gl::GL_DOUBLE_MAT4x2;
+using gl::GL_DOUBLE_MAT4x3;
 // using gl::GL_DOUBLE_VEC2; // reuse GlslTypeToken
 // using gl::GL_DOUBLE_VEC3; // reuse GlslTypeToken
 // using gl::GL_DOUBLE_VEC4; // reuse GlslTypeToken
+// using gl::GL_SAMPLER_CUBE_MAP_ARRAY; // reuse GlslTypeToken
+// using gl::GL_SAMPLER_CUBE_MAP_ARRAY_SHADOW; // reuse GlslTypeToken
+// using gl::GL_INT_SAMPLER_CUBE_MAP_ARRAY; // reuse GlslTypeToken
+// using gl::GL_UNSIGNED_INT_SAMPLER_CUBE_MAP_ARRAY; // reuse GlslTypeToken
 // using gl::GL_SAMPLER_2D_MULTISAMPLE; // reuse GlslTypeToken
 // using gl::GL_INT_SAMPLER_2D_MULTISAMPLE; // reuse GlslTypeToken
 // using gl::GL_UNSIGNED_INT_SAMPLER_2D_MULTISAMPLE; // reuse GlslTypeToken
@@ -3923,7 +3965,6 @@ using gl::GL_MAX_PROGRAM_NATIVE_TEX_INSTRUCTIONS_ARB;
 using gl::GL_MAX_PROGRAM_NATIVE_TEX_INDIRECTIONS_ARB;
 using gl::GL_RGBA_FLOAT32_APPLE;
 using gl::GL_RGBA_FLOAT32_ATI;
-using gl::GL_RGB32F;
 using gl::GL_RGB32F_ARB;
 using gl::GL_RGB_FLOAT32_APPLE;
 using gl::GL_RGB_FLOAT32_ATI;
@@ -4848,17 +4889,11 @@ using gl::GL_MAX_PROGRAM_SUBROUTINE_NUM_NV;
 using gl::GL_DOUBLE_MAT2_EXT;
 using gl::GL_DOUBLE_MAT3_EXT;
 using gl::GL_DOUBLE_MAT4_EXT;
-using gl::GL_DOUBLE_MAT2x3;
 using gl::GL_DOUBLE_MAT2x3_EXT;
-using gl::GL_DOUBLE_MAT2x4;
 using gl::GL_DOUBLE_MAT2x4_EXT;
-using gl::GL_DOUBLE_MAT3x2;
 using gl::GL_DOUBLE_MAT3x2_EXT;
-using gl::GL_DOUBLE_MAT3x4;
 using gl::GL_DOUBLE_MAT3x4_EXT;
-using gl::GL_DOUBLE_MAT4x2;
 using gl::GL_DOUBLE_MAT4x2_EXT;
-using gl::GL_DOUBLE_MAT4x3;
 using gl::GL_DOUBLE_MAT4x3_EXT;
 using gl::GL_VERTEX_BINDING_BUFFER;
 using gl::GL_RED_SNORM;

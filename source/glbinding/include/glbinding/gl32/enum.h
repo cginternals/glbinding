@@ -282,6 +282,19 @@ using gl::GL_QUERY_BY_REGION_NO_WAIT;
 // using gl::GL_COPY_READ_BUFFER; // reuse BufferStorageTarget
 // using gl::GL_COPY_WRITE_BUFFER; // reuse BufferStorageTarget
 
+// CopyImageSubDataTarget
+
+using gl::GL_TEXTURE_1D;
+using gl::GL_TEXTURE_2D;
+using gl::GL_TEXTURE_3D;
+using gl::GL_TEXTURE_RECTANGLE;
+using gl::GL_TEXTURE_CUBE_MAP;
+using gl::GL_TEXTURE_1D_ARRAY;
+using gl::GL_TEXTURE_2D_ARRAY;
+using gl::GL_RENDERBUFFER;
+using gl::GL_TEXTURE_2D_MULTISAMPLE;
+using gl::GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
+
 // CullFaceMode
 
 // using gl::GL_FRONT; // reuse ColorBuffer
@@ -343,6 +356,22 @@ using gl::GL_AUX3;
 // using gl::GL_COLOR_ATTACHMENT13; // reuse ColorBuffer
 // using gl::GL_COLOR_ATTACHMENT14; // reuse ColorBuffer
 // using gl::GL_COLOR_ATTACHMENT15; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT16; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT17; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT18; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT19; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT20; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT21; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT22; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT23; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT24; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT25; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT26; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT27; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT28; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT29; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT30; // reuse ColorBuffer
+// using gl::GL_COLOR_ATTACHMENT31; // reuse ColorBuffer
 
 // DrawElementsType
 
@@ -393,8 +422,8 @@ using gl::GL_MAP2_TEXTURE_COORD_3;
 using gl::GL_MAP2_TEXTURE_COORD_4;
 using gl::GL_MAP2_VERTEX_3;
 using gl::GL_MAP2_VERTEX_4;
-using gl::GL_TEXTURE_1D;
-using gl::GL_TEXTURE_2D;
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 using gl::GL_POLYGON_OFFSET_POINT;
 using gl::GL_POLYGON_OFFSET_LINE;
 // using gl::GL_CLIP_DISTANCE0; // reuse ClipPlaneName
@@ -802,8 +831,8 @@ using gl::GL_MAP1_GRID_DOMAIN;
 using gl::GL_MAP1_GRID_SEGMENTS;
 using gl::GL_MAP2_GRID_DOMAIN;
 using gl::GL_MAP2_GRID_SEGMENTS;
-// using gl::GL_TEXTURE_1D; // reuse EnableCap
-// using gl::GL_TEXTURE_2D; // reuse EnableCap
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 using gl::GL_FEEDBACK_BUFFER_SIZE;
 using gl::GL_FEEDBACK_BUFFER_TYPE;
 using gl::GL_SELECTION_BUFFER_SIZE;
@@ -1172,6 +1201,7 @@ using gl::GL_COMPRESSED_RGB;
 using gl::GL_COMPRESSED_RGBA;
 using gl::GL_DEPTH_STENCIL;
 using gl::GL_RGBA32F;
+using gl::GL_RGB32F;
 using gl::GL_RGBA16F;
 using gl::GL_RGB16F;
 using gl::GL_DEPTH24_STENCIL8;
@@ -1367,7 +1397,7 @@ using gl::GL_FILL;
 // using gl::GL_TEXTURE; // reuse MatrixMode
 // using gl::GL_VERTEX_ARRAY; // reuse EnableCap
 // using gl::GL_FRAMEBUFFER; // reuse CheckFramebufferStatusTarget
-using gl::GL_RENDERBUFFER;
+// using gl::GL_RENDERBUFFER; // reuse CopyImageSubDataTarget
 
 // PathColor
 
@@ -1626,7 +1656,7 @@ using gl::GL_RENDERBUFFER_STENCIL_SIZE;
 
 // RenderbufferTarget
 
-// using gl::GL_RENDERBUFFER; // reuse ObjectIdentifier
+// using gl::GL_RENDERBUFFER; // reuse CopyImageSubDataTarget
 
 // RenderingMode
 
@@ -1831,15 +1861,15 @@ using gl::GL_TEXTURE_LOD_BIAS;
 
 // TextureTarget
 
-// using gl::GL_TEXTURE_1D; // reuse EnableCap
-// using gl::GL_TEXTURE_2D; // reuse EnableCap
+// using gl::GL_TEXTURE_1D; // reuse CopyImageSubDataTarget
+// using gl::GL_TEXTURE_2D; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_1D;
 using gl::GL_PROXY_TEXTURE_2D;
-using gl::GL_TEXTURE_3D;
+// using gl::GL_TEXTURE_3D; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_3D;
-using gl::GL_TEXTURE_RECTANGLE;
+// using gl::GL_TEXTURE_RECTANGLE; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_RECTANGLE;
-using gl::GL_TEXTURE_CUBE_MAP;
+// using gl::GL_TEXTURE_CUBE_MAP; // reuse CopyImageSubDataTarget
 using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_X;
 using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_X;
 using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_Y;
@@ -1847,13 +1877,13 @@ using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_Y;
 using gl::GL_TEXTURE_CUBE_MAP_POSITIVE_Z;
 using gl::GL_TEXTURE_CUBE_MAP_NEGATIVE_Z;
 using gl::GL_PROXY_TEXTURE_CUBE_MAP;
-using gl::GL_TEXTURE_1D_ARRAY;
+// using gl::GL_TEXTURE_1D_ARRAY; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_1D_ARRAY;
-using gl::GL_TEXTURE_2D_ARRAY;
+// using gl::GL_TEXTURE_2D_ARRAY; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_2D_ARRAY;
-using gl::GL_TEXTURE_2D_MULTISAMPLE;
+// using gl::GL_TEXTURE_2D_MULTISAMPLE; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_2D_MULTISAMPLE;
-using gl::GL_TEXTURE_2D_MULTISAMPLE_ARRAY;
+// using gl::GL_TEXTURE_2D_MULTISAMPLE_ARRAY; // reuse CopyImageSubDataTarget
 using gl::GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY;
 
 // TextureUnit
@@ -2184,7 +2214,6 @@ using gl::GL_VERTEX_PROGRAM_TWO_SIDE;
 using gl::GL_TEXTURE_COMPRESSED_IMAGE_SIZE;
 using gl::GL_DOT3_RGB;
 using gl::GL_DOT3_RGBA;
-using gl::GL_RGB32F;
 using gl::GL_DRAW_BUFFER0;
 using gl::GL_DRAW_BUFFER1;
 using gl::GL_DRAW_BUFFER2;
