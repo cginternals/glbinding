@@ -1251,6 +1251,21 @@ void glMulticastGetQueryObjectuivNV(GLuint gpu, GLuint id, GLenum pname, GLuint 
     return Binding::MulticastGetQueryObjectuivNV(gpu, id, pname, params);
 }
 
+void glMulticastScissorArrayvNVX(GLuint gpu, GLuint first, GLsizei count, const GLint * v)
+{
+    return Binding::MulticastScissorArrayvNVX(gpu, first, count, v);
+}
+
+void glMulticastViewportArrayvNVX(GLuint gpu, GLuint first, GLsizei count, const GLfloat * v)
+{
+    return Binding::MulticastViewportArrayvNVX(gpu, first, count, v);
+}
+
+void glMulticastViewportPositionWScaleNVX(GLuint gpu, GLuint index, GLfloat xcoeff, GLfloat ycoeff)
+{
+    return Binding::MulticastViewportPositionWScaleNVX(gpu, index, xcoeff, ycoeff);
+}
+
 void glMulticastWaitSyncNV(GLuint signalGpu, GLbitfield waitGpuMask)
 {
     return Binding::MulticastWaitSyncNV(signalGpu, waitGpuMask);

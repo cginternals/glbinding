@@ -303,6 +303,21 @@ const std::unordered_map<PerformanceQueryCapsMaskINTEL, std::string> Meta_String
 };
 
 
+const std::unordered_map<SubgroupSupportedFeatures, std::string> Meta_StringsBySubgroupSupportedFeatures =
+{
+    { SubgroupSupportedFeatures::GL_NONE_BIT, "GL_NONE_BIT" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_BASIC_BIT_KHR, "GL_SUBGROUP_FEATURE_BASIC_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_VOTE_BIT_KHR, "GL_SUBGROUP_FEATURE_VOTE_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR, "GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR, "GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR, "GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR, "GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR, "GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_QUAD_BIT_KHR, "GL_SUBGROUP_FEATURE_QUAD_BIT_KHR" },
+    { SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV, "GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV" }
+};
+
+
 const std::unordered_map<SyncObjectMask, std::string> Meta_StringsBySyncObjectMask =
 {
     { SyncObjectMask::GL_NONE_BIT, "GL_NONE_BIT" },

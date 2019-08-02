@@ -91,6 +91,7 @@ enum class PathFontStyle : unsigned int;
 enum class PathMetricMask : unsigned int;
 enum class PathRenderingMaskNV : unsigned int;
 enum class PerformanceQueryCapsMaskINTEL : unsigned int;
+enum class SubgroupSupportedFeatures : unsigned int;
 enum class SyncObjectMask : unsigned int;
 enum class TextureStorageMaskAMD : unsigned int;
 enum class UseProgramStageMask : unsigned int;
@@ -1204,6 +1205,68 @@ GLBINDING_CONSTEXPR inline PerformanceQueryCapsMaskINTEL operator^(const Perform
 inline PerformanceQueryCapsMaskINTEL & operator^=(PerformanceQueryCapsMaskINTEL & a, const PerformanceQueryCapsMaskINTEL & b)
 {
     a = static_cast<PerformanceQueryCapsMaskINTEL>(static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(a) ^ static_cast<std::underlying_type<PerformanceQueryCapsMaskINTEL>::type>(b));
+
+    return a;
+}
+
+
+} // namespace gl
+
+
+
+namespace std
+{
+
+
+template<>
+struct hash<gl::SubgroupSupportedFeatures>
+{
+    std::size_t operator()(const gl::SubgroupSupportedFeatures & t) const
+    {
+        return hash<std::underlying_type<gl::SubgroupSupportedFeatures>::type>()(static_cast<std::underlying_type<gl::SubgroupSupportedFeatures>::type>(t));
+    }
+};
+
+
+} // namespace std
+
+
+namespace gl
+{
+
+
+GLBINDING_CONSTEXPR inline SubgroupSupportedFeatures operator|(const SubgroupSupportedFeatures & a, const SubgroupSupportedFeatures & b)
+{
+    return static_cast<SubgroupSupportedFeatures>(static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(a) | static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(b));
+}
+
+inline SubgroupSupportedFeatures & operator|=(SubgroupSupportedFeatures & a, const SubgroupSupportedFeatures & b)
+{
+    a = static_cast<SubgroupSupportedFeatures>(static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(a) | static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline SubgroupSupportedFeatures operator&(const SubgroupSupportedFeatures & a, const SubgroupSupportedFeatures & b)
+{
+    return static_cast<SubgroupSupportedFeatures>(static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(a) & static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(b));
+}
+
+inline SubgroupSupportedFeatures & operator&=(SubgroupSupportedFeatures & a, const SubgroupSupportedFeatures & b)
+{
+    a = static_cast<SubgroupSupportedFeatures>(static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(a) & static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(b));
+
+    return a;
+}
+
+GLBINDING_CONSTEXPR inline SubgroupSupportedFeatures operator^(const SubgroupSupportedFeatures & a, const SubgroupSupportedFeatures & b)
+{
+    return static_cast<SubgroupSupportedFeatures>(static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(a) ^ static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(b));
+}
+
+inline SubgroupSupportedFeatures & operator^=(SubgroupSupportedFeatures & a, const SubgroupSupportedFeatures & b)
+{
+    a = static_cast<SubgroupSupportedFeatures>(static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(a) ^ static_cast<std::underlying_type<SubgroupSupportedFeatures>::type>(b));
 
     return a;
 }

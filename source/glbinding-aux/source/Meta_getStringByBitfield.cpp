@@ -222,6 +222,17 @@ const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL bitfield
 }
 
 
+const std::string & Meta::getString(const SubgroupSupportedFeatures bitfield)
+{
+    const auto i = Meta_StringsBySubgroupSupportedFeatures.find(bitfield);
+    if (i != Meta_StringsBySubgroupSupportedFeatures.end())
+    {
+        return i->second;
+    }
+    return none;
+}
+
+
 const std::string & Meta::getString(const SyncObjectMask bitfield)
 {
     const auto i = Meta_StringsBySyncObjectMask.find(bitfield);

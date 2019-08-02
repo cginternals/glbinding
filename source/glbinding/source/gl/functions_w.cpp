@@ -16,6 +16,11 @@ void glWaitSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint
     return Binding::WaitSemaphoreEXT(semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, srcLayouts);
 }
 
+void glWaitSemaphoreui64NVX(GLuint waitGpu, GLsizei fenceObjectCount, const GLuint * semaphoreArray, const GLuint64 * fenceValueArray)
+{
+    return Binding::WaitSemaphoreui64NVX(waitGpu, fenceObjectCount, semaphoreArray, fenceValueArray);
+}
+
 void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout)
 {
     return Binding::WaitSync(sync, flags, timeout);

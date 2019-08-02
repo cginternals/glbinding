@@ -275,6 +275,19 @@ namespace gl
 {
 
 
+std::ostream & operator<<(std::ostream & stream, const SubgroupSupportedFeatures & value)
+{
+    stream << glbinding::aux::bitfieldString<SubgroupSupportedFeatures>(value);
+    return stream;
+}
+
+
+} // namespace gl
+
+namespace gl
+{
+
+
 std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value)
 {
     stream << glbinding::aux::bitfieldString<SyncObjectMask>(value);
@@ -953,6 +966,15 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
     if (typeid(*value) == typeid(Value<gl::PerformanceQueryCapsMaskINTEL *>))
     {
         return stream << *reinterpret_cast<const Value<gl::PerformanceQueryCapsMaskINTEL *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::SubgroupSupportedFeatures>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::SubgroupSupportedFeatures>*>(value);
+    }
+    if (typeid(*value) == typeid(Value<gl::SubgroupSupportedFeatures *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::SubgroupSupportedFeatures *>*>(value);
     }
 
     if (typeid(*value) == typeid(Value<gl::SyncObjectMask>))

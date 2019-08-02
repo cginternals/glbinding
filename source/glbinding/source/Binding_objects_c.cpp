@@ -52,6 +52,7 @@ Function<void, GLenum> Binding::ClientActiveTexture("glClientActiveTexture");
 Function<void, GLenum> Binding::ClientActiveTextureARB("glClientActiveTextureARB");
 Function<void, GLenum> Binding::ClientActiveVertexStreamATI("glClientActiveVertexStreamATI");
 Function<void, ClientAttribMask> Binding::ClientAttribDefaultEXT("glClientAttribDefaultEXT");
+Function<void, GLsizei, const GLuint *, const GLuint64 *> Binding::ClientWaitSemaphoreui64NVX("glClientWaitSemaphoreui64NVX");
 Function<GLenum, GLsync, SyncObjectMask, GLuint64> Binding::ClientWaitSync("glClientWaitSync");
 Function<void, GLenum, GLenum> Binding::ClipControl("glClipControl");
 Function<void, GLenum, const GLdouble *> Binding::ClipPlane("glClipPlane");
@@ -236,6 +237,7 @@ Function<void, GLuint, GLuint *> Binding::CreatePerfQueryINTEL("glCreatePerfQuer
 Function<GLuint> Binding::CreateProgram("glCreateProgram");
 Function<GLhandleARB> Binding::CreateProgramObjectARB("glCreateProgramObjectARB");
 Function<void, GLsizei, GLuint *> Binding::CreateProgramPipelines("glCreateProgramPipelines");
+Function<GLuint> Binding::CreateProgressFenceNVX("glCreateProgressFenceNVX");
 Function<void, GLenum, GLsizei, GLuint *> Binding::CreateQueries("glCreateQueries");
 Function<void, GLsizei, GLuint *> Binding::CreateRenderbuffers("glCreateRenderbuffers");
 Function<void, GLsizei, GLuint *> Binding::CreateSamplers("glCreateSamplers");

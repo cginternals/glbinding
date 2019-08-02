@@ -257,6 +257,9 @@ Function<void, GLuint, GLuint, GLenum, GLint64 *> Binding::MulticastGetQueryObje
 Function<void, GLuint, GLuint, GLenum, GLint *> Binding::MulticastGetQueryObjectivNV("glMulticastGetQueryObjectivNV");
 Function<void, GLuint, GLuint, GLenum, GLuint64 *> Binding::MulticastGetQueryObjectui64vNV("glMulticastGetQueryObjectui64vNV");
 Function<void, GLuint, GLuint, GLenum, GLuint *> Binding::MulticastGetQueryObjectuivNV("glMulticastGetQueryObjectuivNV");
+Function<void, GLuint, GLuint, GLsizei, const GLint *> Binding::MulticastScissorArrayvNVX("glMulticastScissorArrayvNVX");
+Function<void, GLuint, GLuint, GLsizei, const GLfloat *> Binding::MulticastViewportArrayvNVX("glMulticastViewportArrayvNVX");
+Function<void, GLuint, GLuint, GLfloat, GLfloat> Binding::MulticastViewportPositionWScaleNVX("glMulticastViewportPositionWScaleNVX");
 Function<void, GLuint, GLbitfield> Binding::MulticastWaitSyncNV("glMulticastWaitSyncNV");
 
 

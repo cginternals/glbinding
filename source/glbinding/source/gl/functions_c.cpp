@@ -226,6 +226,11 @@ void glClientAttribDefaultEXT(ClientAttribMask mask)
     return Binding::ClientAttribDefaultEXT(mask);
 }
 
+void glClientWaitSemaphoreui64NVX(GLsizei fenceObjectCount, const GLuint * semaphoreArray, const GLuint64 * fenceValueArray)
+{
+    return Binding::ClientWaitSemaphoreui64NVX(fenceObjectCount, semaphoreArray, fenceValueArray);
+}
+
 GLenum glClientWaitSync(GLsync sync, SyncObjectMask flags, GLuint64 timeout)
 {
     return Binding::ClientWaitSync(sync, flags, timeout);
@@ -1144,6 +1149,11 @@ GLhandleARB glCreateProgramObjectARB()
 void glCreateProgramPipelines(GLsizei n, GLuint * pipelines)
 {
     return Binding::CreateProgramPipelines(n, pipelines);
+}
+
+GLuint glCreateProgressFenceNVX()
+{
+    return Binding::CreateProgressFenceNVX();
 }
 
 void glCreateQueries(GLenum target, GLsizei n, GLuint * ids)

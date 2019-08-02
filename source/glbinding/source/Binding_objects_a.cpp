@@ -32,6 +32,8 @@ Function<GLboolean, GLsizei, const GLuint *, GLboolean *> Binding::AreTexturesRe
 Function<void, GLint> Binding::ArrayElement("glArrayElement");
 Function<void, GLint> Binding::ArrayElementEXT("glArrayElementEXT");
 Function<void, GLenum, GLint, GLenum, GLsizei, GLuint, GLuint> Binding::ArrayObjectATI("glArrayObjectATI");
+Function<GLuint, GLsizei, const GLuint *, const GLuint64 *, GLuint, GLbitfield, GLuint, GLuint, GLintptr, GLintptr, GLsizeiptr, GLsizei, const GLuint *, const GLuint64 *> Binding::AsyncCopyBufferSubDataNVX("glAsyncCopyBufferSubDataNVX");
+Function<GLuint, GLsizei, const GLuint *, const GLuint64 *, GLuint, GLbitfield, GLuint, GLenum, GLint, GLint, GLint, GLint, GLuint, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLsizei, const GLuint *, const GLuint64 *> Binding::AsyncCopyImageSubDataNVX("glAsyncCopyImageSubDataNVX");
 Function<void, GLuint> Binding::AsyncMarkerSGIX("glAsyncMarkerSGIX");
 Function<void, GLhandleARB, GLhandleARB> Binding::AttachObjectARB("glAttachObjectARB");
 Function<void, GLuint, GLuint> Binding::AttachShader("glAttachShader");

@@ -33,6 +33,8 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glAreTexturesResidentEXT", { GLextension::GL_EXT_texture_object } },
     { "glArrayElementEXT", { GLextension::GL_EXT_vertex_array } },
     { "glArrayObjectATI", { GLextension::GL_ATI_vertex_array_object } },
+    { "glAsyncCopyBufferSubDataNVX", { GLextension::GL_NVX_gpu_multicast2 } },
+    { "glAsyncCopyImageSubDataNVX", { GLextension::GL_NVX_gpu_multicast2 } },
     { "glAsyncMarkerSGIX", { GLextension::GL_SGIX_async } },
     { "glAttachObjectARB", { GLextension::GL_ARB_shader_objects } }
 };
@@ -173,6 +175,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glClientActiveTextureARB", { GLextension::GL_ARB_multitexture } },
     { "glClientActiveVertexStreamATI", { GLextension::GL_ATI_vertex_streams } },
     { "glClientAttribDefaultEXT", { GLextension::GL_EXT_direct_state_access } },
+    { "glClientWaitSemaphoreui64NVX", { GLextension::GL_NVX_progress_fence } },
     { "glClientWaitSync", { GLextension::GL_ARB_sync } },
     { "glClipControl", { GLextension::GL_ARB_clip_control } },
     { "glClipPlanefOES", { GLextension::GL_OES_single_precision } },
@@ -306,6 +309,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glCreatePerfQueryINTEL", { GLextension::GL_INTEL_performance_query } },
     { "glCreateProgramObjectARB", { GLextension::GL_ARB_shader_objects } },
     { "glCreateProgramPipelines", { GLextension::GL_ARB_direct_state_access } },
+    { "glCreateProgressFenceNVX", { GLextension::GL_NVX_progress_fence } },
     { "glCreateQueries", { GLextension::GL_ARB_direct_state_access } },
     { "glCreateRenderbuffers", { GLextension::GL_ARB_direct_state_access } },
     { "glCreateSamplers", { GLextension::GL_ARB_direct_state_access } },
@@ -1271,6 +1275,9 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glMulticastGetQueryObjectivNV", { GLextension::GL_NV_gpu_multicast } },
     { "glMulticastGetQueryObjectui64vNV", { GLextension::GL_NV_gpu_multicast } },
     { "glMulticastGetQueryObjectuivNV", { GLextension::GL_NV_gpu_multicast } },
+    { "glMulticastScissorArrayvNVX", { GLextension::GL_NVX_gpu_multicast2 } },
+    { "glMulticastViewportArrayvNVX", { GLextension::GL_NVX_gpu_multicast2 } },
+    { "glMulticastViewportPositionWScaleNVX", { GLextension::GL_NVX_gpu_multicast2 } },
     { "glMulticastWaitSyncNV", { GLextension::GL_NV_gpu_multicast } }
 };
 
@@ -1755,6 +1762,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glShadingRateSampleOrderNV", { GLextension::GL_NV_shading_rate_image } },
     { "glSharpenTexFuncSGIS", { GLextension::GL_SGIS_sharpen_texture } },
     { "glSignalSemaphoreEXT", { GLextension::GL_EXT_semaphore } },
+    { "glSignalSemaphoreui64NVX", { GLextension::GL_NVX_progress_fence } },
     { "glSignalVkFenceNV", { GLextension::GL_NV_draw_vulkan_image } },
     { "glSignalVkSemaphoreNV", { GLextension::GL_NV_draw_vulkan_image } },
     { "glSpecializeShaderARB", { GLextension::GL_ARB_gl_spirv } },
@@ -2052,6 +2060,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glUnmapObjectBufferATI", { GLextension::GL_ATI_map_object_buffer } },
     { "glUnmapTexture2DINTEL", { GLextension::GL_INTEL_map_texture } },
     { "glUpdateObjectBufferATI", { GLextension::GL_ATI_vertex_array_object } },
+    { "glUploadGpuMaskNVX", { GLextension::GL_NVX_gpu_multicast2 } },
     { "glUseProgramObjectARB", { GLextension::GL_ARB_shader_objects } },
     { "glUseProgramStages", { GLextension::GL_ARB_separate_shader_objects } },
     { "glUseShaderProgramEXT", { GLextension::GL_EXT_separate_shader_objects } }
@@ -2359,6 +2368,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
 const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFunctionString_W =
 {
     { "glWaitSemaphoreEXT", { GLextension::GL_EXT_semaphore } },
+    { "glWaitSemaphoreui64NVX", { GLextension::GL_NVX_progress_fence } },
     { "glWaitSync", { GLextension::GL_ARB_sync } },
     { "glWaitVkSemaphoreNV", { GLextension::GL_NV_draw_vulkan_image } },
     { "glWeightPathsNV", { GLextension::GL_NV_path_rendering } },

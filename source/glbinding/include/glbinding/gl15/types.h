@@ -71,6 +71,7 @@ using gl::PathFontStyle;
 using gl::PathMetricMask;
 using gl::PathRenderingMaskNV;
 using gl::PerformanceQueryCapsMaskINTEL;
+using gl::SubgroupSupportedFeatures;
 using gl::SyncObjectMask;
 using gl::TextureStorageMaskAMD;
 using gl::UseProgramStageMask;

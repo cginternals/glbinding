@@ -641,6 +641,11 @@ void glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const v
     return Binding::UpdateObjectBufferATI(buffer, offset, size, pointer, preserve);
 }
 
+void glUploadGpuMaskNVX(GLbitfield mask)
+{
+    return Binding::UploadGpuMaskNVX(mask);
+}
+
 void glUseProgram(GLuint program)
 {
     return Binding::UseProgram(program);

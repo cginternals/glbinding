@@ -237,6 +237,17 @@ namespace gl
 {
 
 
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const SubgroupSupportedFeatures & value);
+
+
+} // namespace gl
+
+
+
+namespace gl
+{
+
+
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value);
 
 

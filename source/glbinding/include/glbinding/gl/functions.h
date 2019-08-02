@@ -36,6 +36,8 @@ GLBINDING_API GLboolean glAreTexturesResidentEXT(GLsizei n, const GLuint * textu
 GLBINDING_API void glArrayElement(GLint i);
 GLBINDING_API void glArrayElementEXT(GLint i);
 GLBINDING_API void glArrayObjectATI(GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
+GLBINDING_API GLuint glAsyncCopyBufferSubDataNVX(GLsizei waitSemaphoreCount, const GLuint * waitSemaphoreArray, const GLuint64 * fenceValueArray, GLuint readGpu, GLbitfield writeGpuMask, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size, GLsizei signalSemaphoreCount, const GLuint * signalSemaphoreArray, const GLuint64 * signalValueArray);
+GLBINDING_API GLuint glAsyncCopyImageSubDataNVX(GLsizei waitSemaphoreCount, const GLuint * waitSemaphoreArray, const GLuint64 * waitValueArray, GLuint srcGpu, GLbitfield dstGpuMask, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth, GLsizei signalSemaphoreCount, const GLuint * signalSemaphoreArray, const GLuint64 * signalValueArray);
 GLBINDING_API void glAsyncMarkerSGIX(GLuint marker);
 GLBINDING_API void glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
 GLBINDING_API void glAttachShader(GLuint program, GLuint shader);
@@ -203,6 +205,7 @@ GLBINDING_API void glClientActiveTexture(GLenum texture);
 GLBINDING_API void glClientActiveTextureARB(GLenum texture);
 GLBINDING_API void glClientActiveVertexStreamATI(GLenum stream);
 GLBINDING_API void glClientAttribDefaultEXT(ClientAttribMask mask);
+GLBINDING_API void glClientWaitSemaphoreui64NVX(GLsizei fenceObjectCount, const GLuint * semaphoreArray, const GLuint64 * fenceValueArray);
 GLBINDING_API GLenum glClientWaitSync(GLsync sync, SyncObjectMask flags, GLuint64 timeout);
 GLBINDING_API void glClipControl(GLenum origin, GLenum depth);
 GLBINDING_API void glClipPlane(GLenum plane, const GLdouble * equation);
@@ -387,6 +390,7 @@ GLBINDING_API void glCreatePerfQueryINTEL(GLuint queryId, GLuint * queryHandle);
 GLBINDING_API GLuint glCreateProgram();
 GLBINDING_API GLhandleARB glCreateProgramObjectARB();
 GLBINDING_API void glCreateProgramPipelines(GLsizei n, GLuint * pipelines);
+GLBINDING_API GLuint glCreateProgressFenceNVX();
 GLBINDING_API void glCreateQueries(GLenum target, GLsizei n, GLuint * ids);
 GLBINDING_API void glCreateRenderbuffers(GLsizei n, GLuint * renderbuffers);
 GLBINDING_API void glCreateSamplers(GLsizei n, GLuint * samplers);
@@ -1567,6 +1571,9 @@ GLBINDING_API void glMulticastGetQueryObjecti64vNV(GLuint gpu, GLuint id, GLenum
 GLBINDING_API void glMulticastGetQueryObjectivNV(GLuint gpu, GLuint id, GLenum pname, GLint * params);
 GLBINDING_API void glMulticastGetQueryObjectui64vNV(GLuint gpu, GLuint id, GLenum pname, GLuint64 * params);
 GLBINDING_API void glMulticastGetQueryObjectuivNV(GLuint gpu, GLuint id, GLenum pname, GLuint * params);
+GLBINDING_API void glMulticastScissorArrayvNVX(GLuint gpu, GLuint first, GLsizei count, const GLint * v);
+GLBINDING_API void glMulticastViewportArrayvNVX(GLuint gpu, GLuint first, GLsizei count, const GLfloat * v);
+GLBINDING_API void glMulticastViewportPositionWScaleNVX(GLuint gpu, GLuint index, GLfloat xcoeff, GLfloat ycoeff);
 GLBINDING_API void glMulticastWaitSyncNV(GLuint signalGpu, GLbitfield waitGpuMask);
 
 GLBINDING_API void glNamedBufferAttachMemoryNV(GLuint buffer, GLuint memory, GLuint64 offset);
@@ -2134,6 +2141,7 @@ GLBINDING_API void glShadingRateSampleOrderCustomNV(GLenum rate, GLuint samples,
 GLBINDING_API void glShadingRateSampleOrderNV(GLenum order);
 GLBINDING_API void glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat * points);
 GLBINDING_API void glSignalSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * dstLayouts);
+GLBINDING_API void glSignalSemaphoreui64NVX(GLuint signalGpu, GLsizei fenceObjectCount, const GLuint * semaphoreArray, const GLuint64 * fenceValueArray);
 GLBINDING_API void glSignalVkFenceNV(GLuint64 vkFence);
 GLBINDING_API void glSignalVkSemaphoreNV(GLuint64 vkSemaphore);
 GLBINDING_API void glSpecializeShader(GLuint shader, const GLchar * pEntryPoint, GLuint numSpecializationConstants, const GLuint * pConstantIndex, const GLuint * pConstantValue);
@@ -2525,6 +2533,7 @@ GLBINDING_API GLboolean glUnmapNamedBufferEXT(GLuint buffer);
 GLBINDING_API void glUnmapObjectBufferATI(GLuint buffer);
 GLBINDING_API void glUnmapTexture2DINTEL(GLuint texture, GLint level);
 GLBINDING_API void glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const void * pointer, GLenum preserve);
+GLBINDING_API void glUploadGpuMaskNVX(GLbitfield mask);
 GLBINDING_API void glUseProgram(GLuint program);
 GLBINDING_API void glUseProgramObjectARB(GLhandleARB programObj);
 GLBINDING_API void glUseProgramStages(GLuint pipeline, UseProgramStageMask stages, GLuint program);
@@ -2913,6 +2922,7 @@ GLBINDING_API void glViewportPositionWScaleNV(GLuint index, GLfloat xcoeff, GLfl
 GLBINDING_API void glViewportSwizzleNV(GLuint index, GLenum swizzlex, GLenum swizzley, GLenum swizzlez, GLenum swizzlew);
 
 GLBINDING_API void glWaitSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLuint * buffers, GLuint numTextureBarriers, const GLuint * textures, const GLenum * srcLayouts);
+GLBINDING_API void glWaitSemaphoreui64NVX(GLuint waitGpu, GLsizei fenceObjectCount, const GLuint * semaphoreArray, const GLuint64 * fenceValueArray);
 GLBINDING_API void glWaitSync(GLsync sync, UnusedMask flags, GLuint64 timeout);
 GLBINDING_API void glWaitVkSemaphoreNV(GLuint64 vkSemaphore);
 GLBINDING_API void glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint * paths, const GLfloat * weights);

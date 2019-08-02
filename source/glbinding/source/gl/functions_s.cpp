@@ -456,6 +456,11 @@ void glSignalSemaphoreEXT(GLuint semaphore, GLuint numBufferBarriers, const GLui
     return Binding::SignalSemaphoreEXT(semaphore, numBufferBarriers, buffers, numTextureBarriers, textures, dstLayouts);
 }
 
+void glSignalSemaphoreui64NVX(GLuint signalGpu, GLsizei fenceObjectCount, const GLuint * semaphoreArray, const GLuint64 * fenceValueArray)
+{
+    return Binding::SignalSemaphoreui64NVX(signalGpu, fenceObjectCount, semaphoreArray, fenceValueArray);
+}
+
 void glSignalVkFenceNV(GLuint64 vkFence)
 {
     return Binding::SignalVkFenceNV(vkFence);

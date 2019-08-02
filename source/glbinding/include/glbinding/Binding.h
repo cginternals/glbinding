@@ -64,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 2948>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 2958>; ///< The type of the build-in functions collection
 
 
 public:
@@ -468,6 +468,8 @@ public:
     static Function<void, gl::GLint> ArrayElement; ///< Wrapper for glArrayElement
     static Function<void, gl::GLint> ArrayElementEXT; ///< Wrapper for glArrayElementEXT
     static Function<void, gl::GLenum, gl::GLint, gl::GLenum, gl::GLsizei, gl::GLuint, gl::GLuint> ArrayObjectATI; ///< Wrapper for glArrayObjectATI
+    static Function<gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLuint64 *, gl::GLuint, gl::GLbitfield, gl::GLuint, gl::GLuint, gl::GLintptr, gl::GLintptr, gl::GLsizeiptr, gl::GLsizei, const gl::GLuint *, const gl::GLuint64 *> AsyncCopyBufferSubDataNVX; ///< Wrapper for glAsyncCopyBufferSubDataNVX
+    static Function<gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLuint64 *, gl::GLuint, gl::GLbitfield, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLuint, gl::GLenum, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLsizei, const gl::GLuint *, const gl::GLuint64 *> AsyncCopyImageSubDataNVX; ///< Wrapper for glAsyncCopyImageSubDataNVX
     static Function<void, gl::GLuint> AsyncMarkerSGIX; ///< Wrapper for glAsyncMarkerSGIX
     static Function<void, gl::GLhandleARB, gl::GLhandleARB> AttachObjectARB; ///< Wrapper for glAttachObjectARB
     static Function<void, gl::GLuint, gl::GLuint> AttachShader; ///< Wrapper for glAttachShader
@@ -633,6 +635,7 @@ public:
     static Function<void, gl::GLenum> ClientActiveTextureARB; ///< Wrapper for glClientActiveTextureARB
     static Function<void, gl::GLenum> ClientActiveVertexStreamATI; ///< Wrapper for glClientActiveVertexStreamATI
     static Function<void, gl::ClientAttribMask> ClientAttribDefaultEXT; ///< Wrapper for glClientAttribDefaultEXT
+    static Function<void, gl::GLsizei, const gl::GLuint *, const gl::GLuint64 *> ClientWaitSemaphoreui64NVX; ///< Wrapper for glClientWaitSemaphoreui64NVX
     static Function<gl::GLenum, gl::GLsync, gl::SyncObjectMask, gl::GLuint64> ClientWaitSync; ///< Wrapper for glClientWaitSync
     static Function<void, gl::GLenum, gl::GLenum> ClipControl; ///< Wrapper for glClipControl
     static Function<void, gl::GLenum, const gl::GLdouble *> ClipPlane; ///< Wrapper for glClipPlane
@@ -817,6 +820,7 @@ public:
     static Function<gl::GLuint> CreateProgram; ///< Wrapper for glCreateProgram
     static Function<gl::GLhandleARB> CreateProgramObjectARB; ///< Wrapper for glCreateProgramObjectARB
     static Function<void, gl::GLsizei, gl::GLuint *> CreateProgramPipelines; ///< Wrapper for glCreateProgramPipelines
+    static Function<gl::GLuint> CreateProgressFenceNVX; ///< Wrapper for glCreateProgressFenceNVX
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLuint *> CreateQueries; ///< Wrapper for glCreateQueries
     static Function<void, gl::GLsizei, gl::GLuint *> CreateRenderbuffers; ///< Wrapper for glCreateRenderbuffers
     static Function<void, gl::GLsizei, gl::GLuint *> CreateSamplers; ///< Wrapper for glCreateSamplers
@@ -1987,6 +1991,9 @@ public:
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLint *> MulticastGetQueryObjectivNV; ///< Wrapper for glMulticastGetQueryObjectivNV
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLuint64 *> MulticastGetQueryObjectui64vNV; ///< Wrapper for glMulticastGetQueryObjectui64vNV
     static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLuint *> MulticastGetQueryObjectuivNV; ///< Wrapper for glMulticastGetQueryObjectuivNV
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLint *> MulticastScissorArrayvNVX; ///< Wrapper for glMulticastScissorArrayvNVX
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const gl::GLfloat *> MulticastViewportArrayvNVX; ///< Wrapper for glMulticastViewportArrayvNVX
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLfloat, gl::GLfloat> MulticastViewportPositionWScaleNVX; ///< Wrapper for glMulticastViewportPositionWScaleNVX
     static Function<void, gl::GLuint, gl::GLbitfield> MulticastWaitSyncNV; ///< Wrapper for glMulticastWaitSyncNV
     static Function<void, gl::GLuint, gl::GLuint, gl::GLuint64> NamedBufferAttachMemoryNV; ///< Wrapper for glNamedBufferAttachMemoryNV
     static Function<void, gl::GLuint, gl::GLsizeiptr, const void *, gl::GLenum> NamedBufferData; ///< Wrapper for glNamedBufferData
@@ -2548,6 +2555,7 @@ public:
     static Function<void, gl::GLenum> ShadingRateSampleOrderNV; ///< Wrapper for glShadingRateSampleOrderNV
     static Function<void, gl::GLenum, gl::GLsizei, const gl::GLfloat *> SharpenTexFuncSGIS; ///< Wrapper for glSharpenTexFuncSGIS
     static Function<void, gl::GLuint, gl::GLuint, const gl::GLuint *, gl::GLuint, const gl::GLuint *, const gl::GLenum *> SignalSemaphoreEXT; ///< Wrapper for glSignalSemaphoreEXT
+    static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLuint64 *> SignalSemaphoreui64NVX; ///< Wrapper for glSignalSemaphoreui64NVX
     static Function<void, gl::GLuint64> SignalVkFenceNV; ///< Wrapper for glSignalVkFenceNV
     static Function<void, gl::GLuint64> SignalVkSemaphoreNV; ///< Wrapper for glSignalVkSemaphoreNV
     static Function<void, gl::GLuint, const gl::GLchar *, gl::GLuint, const gl::GLuint *, const gl::GLuint *> SpecializeShader; ///< Wrapper for glSpecializeShader
@@ -2937,6 +2945,7 @@ public:
     static Function<void, gl::GLuint> UnmapObjectBufferATI; ///< Wrapper for glUnmapObjectBufferATI
     static Function<void, gl::GLuint, gl::GLint> UnmapTexture2DINTEL; ///< Wrapper for glUnmapTexture2DINTEL
     static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, const void *, gl::GLenum> UpdateObjectBufferATI; ///< Wrapper for glUpdateObjectBufferATI
+    static Function<void, gl::GLbitfield> UploadGpuMaskNVX; ///< Wrapper for glUploadGpuMaskNVX
     static Function<void, gl::GLuint> UseProgram; ///< Wrapper for glUseProgram
     static Function<void, gl::GLhandleARB> UseProgramObjectARB; ///< Wrapper for glUseProgramObjectARB
     static Function<void, gl::GLuint, gl::UseProgramStageMask, gl::GLuint> UseProgramStages; ///< Wrapper for glUseProgramStages
@@ -3323,6 +3332,7 @@ public:
     static Function<void, gl::GLuint, gl::GLfloat, gl::GLfloat> ViewportPositionWScaleNV; ///< Wrapper for glViewportPositionWScaleNV
     static Function<void, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> ViewportSwizzleNV; ///< Wrapper for glViewportSwizzleNV
     static Function<void, gl::GLuint, gl::GLuint, const gl::GLuint *, gl::GLuint, const gl::GLuint *, const gl::GLenum *> WaitSemaphoreEXT; ///< Wrapper for glWaitSemaphoreEXT
+    static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLuint64 *> WaitSemaphoreui64NVX; ///< Wrapper for glWaitSemaphoreui64NVX
     static Function<void, gl::GLsync, gl::UnusedMask, gl::GLuint64> WaitSync; ///< Wrapper for glWaitSync
     static Function<void, gl::GLuint64> WaitVkSemaphoreNV; ///< Wrapper for glWaitVkSemaphoreNV
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLuint *, const gl::GLfloat *> WeightPathsNV; ///< Wrapper for glWeightPathsNV

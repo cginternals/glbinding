@@ -230,6 +230,15 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_S =
     { "GL_SHADER_STORAGE_BARRIER_BIT", static_cast<GLbitfield>(MemoryBarrierMask::GL_SHADER_STORAGE_BARRIER_BIT) },
     { "GL_SPARSE_STORAGE_BIT_ARB", static_cast<GLbitfield>(BufferStorageMask::GL_SPARSE_STORAGE_BIT_ARB) },
     { "GL_STENCIL_BUFFER_BIT", static_cast<GLbitfield>(AttribMask::GL_STENCIL_BUFFER_BIT) },
+    { "GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_ARITHMETIC_BIT_KHR) },
+    { "GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_BALLOT_BIT_KHR) },
+    { "GL_SUBGROUP_FEATURE_BASIC_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_BASIC_BIT_KHR) },
+    { "GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_CLUSTERED_BIT_KHR) },
+    { "GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_PARTITIONED_BIT_NV) },
+    { "GL_SUBGROUP_FEATURE_QUAD_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_QUAD_BIT_KHR) },
+    { "GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_SHUFFLE_BIT_KHR) },
+    { "GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_SHUFFLE_RELATIVE_BIT_KHR) },
+    { "GL_SUBGROUP_FEATURE_VOTE_BIT_KHR", static_cast<GLbitfield>(SubgroupSupportedFeatures::GL_SUBGROUP_FEATURE_VOTE_BIT_KHR) },
     { "GL_SYNC_FLUSH_COMMANDS_BIT", static_cast<GLbitfield>(SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT) },
     { "GL_SYNC_FLUSH_COMMANDS_BIT_APPLE", static_cast<GLbitfield>(SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT_APPLE) }
 };

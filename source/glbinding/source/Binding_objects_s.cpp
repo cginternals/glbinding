@@ -98,6 +98,7 @@ Function<void, GLenum, GLuint, const GLint *> Binding::ShadingRateSampleOrderCus
 Function<void, GLenum> Binding::ShadingRateSampleOrderNV("glShadingRateSampleOrderNV");
 Function<void, GLenum, GLsizei, const GLfloat *> Binding::SharpenTexFuncSGIS("glSharpenTexFuncSGIS");
 Function<void, GLuint, GLuint, const GLuint *, GLuint, const GLuint *, const GLenum *> Binding::SignalSemaphoreEXT("glSignalSemaphoreEXT");
+Function<void, GLuint, GLsizei, const GLuint *, const GLuint64 *> Binding::SignalSemaphoreui64NVX("glSignalSemaphoreui64NVX");
 Function<void, GLuint64> Binding::SignalVkFenceNV("glSignalVkFenceNV");
 Function<void, GLuint64> Binding::SignalVkSemaphoreNV("glSignalVkSemaphoreNV");
 Function<void, GLuint, const GLchar *, GLuint, const GLuint *, const GLuint *> Binding::SpecializeShader("glSpecializeShader");
