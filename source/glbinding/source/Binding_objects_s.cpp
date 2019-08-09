@@ -11,18 +11,19 @@ namespace glbinding
 
 Function<void, GLfloat, GLboolean> Binding::SampleCoverage("glSampleCoverage");
 Function<void, GLfloat, GLboolean> Binding::SampleCoverageARB("glSampleCoverageARB");
+Function<void, GLclampx, GLboolean> Binding::SampleCoveragexOES("glSampleCoveragexOES");
 Function<void, GLuint, GLuint, GLenum> Binding::SampleMapATI("glSampleMapATI");
 Function<void, GLclampf, GLboolean> Binding::SampleMaskEXT("glSampleMaskEXT");
+Function<void, GLuint, GLbitfield> Binding::SampleMaski("glSampleMaski");
 Function<void, GLuint, GLbitfield> Binding::SampleMaskIndexedNV("glSampleMaskIndexedNV");
 Function<void, GLclampf, GLboolean> Binding::SampleMaskSGIS("glSampleMaskSGIS");
-Function<void, GLuint, GLbitfield> Binding::SampleMaski("glSampleMaski");
 Function<void, GLenum> Binding::SamplePatternEXT("glSamplePatternEXT");
 Function<void, GLenum> Binding::SamplePatternSGIS("glSamplePatternSGIS");
-Function<void, GLuint, GLenum, const GLint *> Binding::SamplerParameterIiv("glSamplerParameterIiv");
-Function<void, GLuint, GLenum, const GLuint *> Binding::SamplerParameterIuiv("glSamplerParameterIuiv");
 Function<void, GLuint, GLenum, GLfloat> Binding::SamplerParameterf("glSamplerParameterf");
 Function<void, GLuint, GLenum, const GLfloat *> Binding::SamplerParameterfv("glSamplerParameterfv");
 Function<void, GLuint, GLenum, GLint> Binding::SamplerParameteri("glSamplerParameteri");
+Function<void, GLuint, GLenum, const GLint *> Binding::SamplerParameterIiv("glSamplerParameterIiv");
+Function<void, GLuint, GLenum, const GLuint *> Binding::SamplerParameterIuiv("glSamplerParameterIuiv");
 Function<void, GLuint, GLenum, const GLint *> Binding::SamplerParameteriv("glSamplerParameteriv");
 Function<void, GLdouble, GLdouble, GLdouble> Binding::Scaled("glScaled");
 Function<void, GLfloat, GLfloat, GLfloat> Binding::Scalef("glScalef");
@@ -132,7 +133,6 @@ Function<void, GLsizei, const void *> Binding::StringMarkerGREMEDY("glStringMark
 Function<void, GLuint, GLuint> Binding::SubpixelPrecisionBiasNV("glSubpixelPrecisionBiasNV");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::SwizzleEXT("glSwizzleEXT");
 Function<void, GLuint> Binding::SyncTextureINTEL("glSyncTextureINTEL");
-
 
 
 } // namespace glbinding

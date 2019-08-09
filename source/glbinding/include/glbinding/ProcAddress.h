@@ -13,7 +13,7 @@ namespace glbinding
 
 /**
 *  @brief
-*    The generic pointer to an OpenGL function
+*    The generic pointer to a function
 */
 using ProcAddress = void(*)();
 

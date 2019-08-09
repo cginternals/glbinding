@@ -43,8 +43,6 @@ public:
     *  @brief
     *    Returns the revision of the parsed gl.xml file
     *
-    *  @deprecated
-    *
     *  @return
     *    The revision of the parsed gl.xml file
     */
@@ -111,16 +109,16 @@ public:
     *  @brief
     *    Converts a GLboolean to a string
     *
-    *  @param[in] boolean
+    *  @param[in] glboolean
     *    The boolean to convert
     *
     *  @return
     *    A string representation of the GLboolean symbol name
     *
     *  @remark
-    *    Can either be '`GL_TRUE`' or '`GL_FALSE`'
+    *    Can either be `GL_TRUE` or `GL_FALSE`
     */
-    static const std::string & getString(const gl::GLboolean & boolean);
+    static const std::string & getString(const gl::GLboolean & glboolean);
     
     /**
     *  @brief
@@ -130,7 +128,7 @@ public:
     *    The string representation of the GLboolean
     *
     *  @return
-    *    The symbol identified through the boolean string, '`GL_FALSE`' if failed
+    *    The symbol identified through the boolean string, `GL_FALSE` if failed
     */
     static gl::GLboolean getBoolean(const std::string & boolean);
 
@@ -138,23 +136,23 @@ public:
     *  @brief
     *    Converts a GLextension to its string representation
     *
-    *  @param[in] extension
+    *  @param[in] glextension
     *    The extension to convert
     *
     *  @return
     *    The string representation of the extension
     */
-    static const std::string & getString(gl::GLextension extension);
+    static const std::string & getString(gl::GLextension glextension);
     
     /**
     *  @brief
-    *    Converts a string to an extension
+    *    Converts a string to an GLextension
     *
     *  @param[in] extension
     *    The string representation of the extension
     *
     *  @return
-    *    The symbol identified through the extension string, '`UNKNOWN`' if failed
+    *    The symbol identified through the extension string, 'UNKNOWN' if failed
     */
     static gl::GLextension getExtension(const std::string & extension);
 
@@ -184,25 +182,25 @@ public:
 
     /**
     *  @brief
-    *    Returns the list of extensions that are requiring an OpenGL function
+    *    Returns the list of extensions that are requiring a function
     *
-    *  @param[in] glfunction
+    *  @param[in] function
     *    The name of the function, including the 'gl' prefix
     *
     *  @return
-    *    The set of extensions that are requiring an OpenGL function
+    *    The set of extensions that are requiring a function
     */
     static const std::set<gl::GLextension> extensions(const std::string & glfunction);
 
     /**
     *  @brief
-    *    Returns the list of features that are requiring an OpenGL function
+    *    Returns the list of features that are requiring a function
     *
-    *  @param[in] glfunction
+    *  @param[in] function
     *    The name of the function, including the 'gl' prefix
     *
     *  @return
-    *    The set of features that are requiring an OpenGL function
+    *    The set of features that are requiring a function
     */
     static const std::set<Version> versions(const std::string & glfunction);
     
@@ -235,13 +233,13 @@ public:
 
     /**
     *  @brief
-    *    Returns the first OpenGL Version (Feature) that required the extension
+    *    Returns the first Version (Feature) that required the extension
     *
     *  @param[in] glextension
     *    The extension
     *
     *  @return
-    *    The first GL Version (Feature) that required the extension
+    *    The first Version (Feature) that required the extension
     */
     static const Version & version(gl::GLextension glextension);
     
@@ -258,295 +256,283 @@ public:
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::AttribMask bitfield);
+    static const std::string & getString(gl::AttribMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::BufferAccessMask bitfield);
+    static const std::string & getString(gl::BufferStorageMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::BufferStorageMask bitfield);
+    static const std::string & getString(gl::ClearBufferMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ClearBufferMask bitfield);
+    static const std::string & getString(gl::ClientAttribMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ClientAttribMask bitfield);
+    static const std::string & getString(gl::ContextFlagMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ContextFlagMask bitfield);
+    static const std::string & getString(gl::ContextProfileMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ContextProfileMask bitfield);
+    static const std::string & getString(gl::FfdMaskSGIX glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FfdMaskSGIX bitfield);
+    static const std::string & getString(gl::FragmentShaderColorModMaskATI glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FragmentShaderColorModMaskATI bitfield);
+    static const std::string & getString(gl::FragmentShaderDestMaskATI glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FragmentShaderDestMaskATI bitfield);
+    static const std::string & getString(gl::FragmentShaderDestModMaskATI glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FragmentShaderDestModMaskATI bitfield);
+    static const std::string & getString(gl::MapBufferAccessMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::MapBufferAccessMask bitfield);
+    static const std::string & getString(gl::MemoryBarrierMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::MemoryBarrierMask bitfield);
+    static const std::string & getString(gl::OcclusionQueryEventMaskAMD glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::OcclusionQueryEventMaskAMD bitfield);
+    static const std::string & getString(gl::PathFontStyle glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PathFontStyle bitfield);
+    static const std::string & getString(gl::PathMetricMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PathMetricMask bitfield);
+    static const std::string & getString(gl::PathRenderingMaskNV glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PathRenderingMaskNV bitfield);
+    static const std::string & getString(gl::PerformanceQueryCapsMaskINTEL glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PerformanceQueryCapsMaskINTEL bitfield);
+    static const std::string & getString(gl::SyncObjectMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::SubgroupSupportedFeatures bitfield);
+    static const std::string & getString(gl::TextureStorageMaskAMD glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::SyncObjectMask bitfield);
+    static const std::string & getString(gl::TraceMaskMESA glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::TextureStorageMaskAMD bitfield);
+    static const std::string & getString(gl::UnusedMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::UnusedMask bitfield);
+    static const std::string & getString(gl::UseProgramStageMask glbitfield);
 
     /**
     *  @brief
     *    Convert bitfield to symbol name string representation
     *
-    *  @param[in] bitfield
+    *  @param[in] glbitfield
     *    The bitfield value
     *
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::UseProgramStageMask bitfield);
-
-    /**
-    *  @brief
-    *    Convert bitfield to symbol name string representation
-    *
-    *  @param[in] bitfield
-    *    The bitfield value
-    *
-    *  @return
-    *    The string representation of the value
-    */
-    static const std::string & getString(gl::VertexHintsMaskPGI bitfield);
+    static const std::string & getString(gl::VertexHintsMaskPGI glbitfield);
 
 
 private:
     /**
     *  @brief
-    *    Returns the bucket index of an OpenGL identifier used for the actual lookup into the compile-time maps
+    *    Returns the bucket index of an identifier used for the actual lookup into the compile-time maps
     *
     *  @param[in] identifier
     *    The identifier for the bucket lookup
@@ -555,7 +541,7 @@ private:
     *    The length of the prefix (e.g., 'gl' or 'GL_') to omit to get the actual first character of the identifier
     *
     *  @return
-    *    The bucket index of an OpenGL identifier
+    *    The bucket index of an identifier
     */
     static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
 };

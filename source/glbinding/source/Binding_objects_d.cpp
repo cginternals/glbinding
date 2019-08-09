@@ -12,15 +12,18 @@ namespace glbinding
 Function<void, GLDEBUGPROC, const void *> Binding::DebugMessageCallback("glDebugMessageCallback");
 Function<void, GLDEBUGPROCAMD, void *> Binding::DebugMessageCallbackAMD("glDebugMessageCallbackAMD");
 Function<void, GLDEBUGPROCARB, const void *> Binding::DebugMessageCallbackARB("glDebugMessageCallbackARB");
+Function<void, GLDEBUGPROCKHR, const void *> Binding::DebugMessageCallbackKHR("glDebugMessageCallbackKHR");
 Function<void, GLenum, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> Binding::DebugMessageControl("glDebugMessageControl");
 Function<void, GLenum, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> Binding::DebugMessageControlARB("glDebugMessageControlARB");
+Function<void, GLenum, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> Binding::DebugMessageControlKHR("glDebugMessageControlKHR");
 Function<void, GLenum, GLenum, GLsizei, const GLuint *, GLboolean> Binding::DebugMessageEnableAMD("glDebugMessageEnableAMD");
 Function<void, GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar *> Binding::DebugMessageInsert("glDebugMessageInsert");
 Function<void, GLenum, GLenum, GLuint, GLsizei, const GLchar *> Binding::DebugMessageInsertAMD("glDebugMessageInsertAMD");
 Function<void, GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar *> Binding::DebugMessageInsertARB("glDebugMessageInsertARB");
-Function<void, FfdMaskSGIX> Binding::DeformSGIX("glDeformSGIX");
+Function<void, GLenum, GLenum, GLuint, GLenum, GLsizei, const GLchar *> Binding::DebugMessageInsertKHR("glDebugMessageInsertKHR");
 Function<void, GLenum, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, GLdouble, GLdouble, GLint, GLint, const GLdouble *> Binding::DeformationMap3dSGIX("glDeformationMap3dSGIX");
 Function<void, GLenum, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, GLfloat, GLfloat, GLint, GLint, const GLfloat *> Binding::DeformationMap3fSGIX("glDeformationMap3fSGIX");
+Function<void, FfdMaskSGIX> Binding::DeformSGIX("glDeformSGIX");
 Function<void, GLuint, GLsizei> Binding::DeleteAsyncMarkersSGIX("glDeleteAsyncMarkersSGIX");
 Function<void, GLsizei, const GLuint *> Binding::DeleteBuffers("glDeleteBuffers");
 Function<void, GLsizei, const GLuint *> Binding::DeleteBuffersARB("glDeleteBuffersARB");
@@ -41,6 +44,7 @@ Function<void, GLsizei, GLuint *> Binding::DeletePerfMonitorsAMD("glDeletePerfMo
 Function<void, GLuint> Binding::DeletePerfQueryINTEL("glDeletePerfQueryINTEL");
 Function<void, GLuint> Binding::DeleteProgram("glDeleteProgram");
 Function<void, GLsizei, const GLuint *> Binding::DeleteProgramPipelines("glDeleteProgramPipelines");
+Function<void, GLsizei, const GLuint *> Binding::DeleteProgramPipelinesEXT("glDeleteProgramPipelinesEXT");
 Function<void, GLsizei, const GLuint *> Binding::DeleteProgramsARB("glDeleteProgramsARB");
 Function<void, GLsizei, const GLuint *> Binding::DeleteProgramsNV("glDeleteProgramsNV");
 Function<void, GLsizei, const GLuint *> Binding::DeleteQueries("glDeleteQueries");
@@ -60,24 +64,25 @@ Function<void, GLsizei, const GLuint *> Binding::DeleteTransformFeedbacksNV("glD
 Function<void, GLsizei, const GLuint *> Binding::DeleteVertexArrays("glDeleteVertexArrays");
 Function<void, GLsizei, const GLuint *> Binding::DeleteVertexArraysAPPLE("glDeleteVertexArraysAPPLE");
 Function<void, GLuint> Binding::DeleteVertexShaderEXT("glDeleteVertexShaderEXT");
-Function<void, GLclampd, GLclampd> Binding::DepthBoundsEXT("glDepthBoundsEXT");
 Function<void, GLdouble, GLdouble> Binding::DepthBoundsdNV("glDepthBoundsdNV");
+Function<void, GLclampd, GLclampd> Binding::DepthBoundsEXT("glDepthBoundsEXT");
 Function<void, GLenum> Binding::DepthFunc("glDepthFunc");
 Function<void, GLboolean> Binding::DepthMask("glDepthMask");
 Function<void, GLdouble, GLdouble> Binding::DepthRange("glDepthRange");
 Function<void, GLuint, GLsizei, const GLdouble *> Binding::DepthRangeArrayv("glDepthRangeArrayv");
-Function<void, GLuint, GLdouble, GLdouble> Binding::DepthRangeIndexed("glDepthRangeIndexed");
 Function<void, GLdouble, GLdouble> Binding::DepthRangedNV("glDepthRangedNV");
 Function<void, GLfloat, GLfloat> Binding::DepthRangef("glDepthRangef");
 Function<void, GLclampf, GLclampf> Binding::DepthRangefOES("glDepthRangefOES");
+Function<void, GLuint, GLdouble, GLdouble> Binding::DepthRangeIndexed("glDepthRangeIndexed");
 Function<void, GLfixed, GLfixed> Binding::DepthRangexOES("glDepthRangexOES");
 Function<void, GLhandleARB, GLhandleARB> Binding::DetachObjectARB("glDetachObjectARB");
 Function<void, GLuint, GLuint> Binding::DetachShader("glDetachShader");
 Function<void, GLenum, GLsizei, const GLfloat *> Binding::DetailTexFuncSGIS("glDetailTexFuncSGIS");
 Function<void, GLenum> Binding::Disable("glDisable");
 Function<void, GLenum> Binding::DisableClientState("glDisableClientState");
-Function<void, GLenum, GLuint> Binding::DisableClientStateIndexedEXT("glDisableClientStateIndexedEXT");
 Function<void, GLenum, GLuint> Binding::DisableClientStateiEXT("glDisableClientStateiEXT");
+Function<void, GLenum, GLuint> Binding::DisableClientStateIndexedEXT("glDisableClientStateIndexedEXT");
+Function<void, GLenum, GLuint> Binding::Disablei("glDisablei");
 Function<void, GLenum, GLuint> Binding::DisableIndexedEXT("glDisableIndexedEXT");
 Function<void, GLuint> Binding::DisableVariantClientStateEXT("glDisableVariantClientStateEXT");
 Function<void, GLuint, GLuint> Binding::DisableVertexArrayAttrib("glDisableVertexArrayAttrib");
@@ -86,7 +91,6 @@ Function<void, GLuint, GLenum> Binding::DisableVertexArrayEXT("glDisableVertexAr
 Function<void, GLuint, GLenum> Binding::DisableVertexAttribAPPLE("glDisableVertexAttribAPPLE");
 Function<void, GLuint> Binding::DisableVertexAttribArray("glDisableVertexAttribArray");
 Function<void, GLuint> Binding::DisableVertexAttribArrayARB("glDisableVertexAttribArrayARB");
-Function<void, GLenum, GLuint> Binding::Disablei("glDisablei");
 Function<void, GLuint, GLuint, GLuint> Binding::DispatchCompute("glDispatchCompute");
 Function<void, GLuint, GLuint, GLuint, GLuint, GLuint, GLuint> Binding::DispatchComputeGroupSizeARB("glDispatchComputeGroupSizeARB");
 Function<void, GLintptr> Binding::DispatchComputeIndirect("glDispatchComputeIndirect");
@@ -132,7 +136,6 @@ Function<void, GLenum, GLuint> Binding::DrawTransformFeedbackNV("glDrawTransform
 Function<void, GLenum, GLuint, GLuint> Binding::DrawTransformFeedbackStream("glDrawTransformFeedbackStream");
 Function<void, GLenum, GLuint, GLuint, GLsizei> Binding::DrawTransformFeedbackStreamInstanced("glDrawTransformFeedbackStreamInstanced");
 Function<void, GLuint64, GLuint, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat, GLfloat> Binding::DrawVkImageNV("glDrawVkImageNV");
-
 
 
 } // namespace glbinding

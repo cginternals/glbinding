@@ -14,6 +14,7 @@ Function<void, GLenum, GLfixed> Binding::AccumxOES("glAccumxOES");
 Function<GLboolean, GLuint, GLuint64, GLuint> Binding::AcquireKeyedMutexWin32EXT("glAcquireKeyedMutexWin32EXT");
 Function<void, GLuint> Binding::ActiveProgramEXT("glActiveProgramEXT");
 Function<void, GLuint, GLuint> Binding::ActiveShaderProgram("glActiveShaderProgram");
+Function<void, GLuint, GLuint> Binding::ActiveShaderProgramEXT("glActiveShaderProgramEXT");
 Function<void, GLenum> Binding::ActiveStencilFaceEXT("glActiveStencilFaceEXT");
 Function<void, GLenum> Binding::ActiveTexture("glActiveTexture");
 Function<void, GLenum> Binding::ActiveTextureARB("glActiveTextureARB");
@@ -37,7 +38,6 @@ Function<GLuint, GLsizei, const GLuint *, const GLuint64 *, GLuint, GLbitfield, 
 Function<void, GLuint> Binding::AsyncMarkerSGIX("glAsyncMarkerSGIX");
 Function<void, GLhandleARB, GLhandleARB> Binding::AttachObjectARB("glAttachObjectARB");
 Function<void, GLuint, GLuint> Binding::AttachShader("glAttachShader");
-
 
 
 } // namespace glbinding

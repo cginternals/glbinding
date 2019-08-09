@@ -9,7 +9,7 @@
 namespace gl13
 {
 
-
+// import functions
 using gl::glAccum;
 using gl::glActiveTexture;
 using gl::glAlphaFunc;
@@ -150,14 +150,14 @@ using gl::glGetTexLevelParameteriv;
 using gl::glGetTexParameterfv;
 using gl::glGetTexParameteriv;
 using gl::glHint;
-using gl::glIndexMask;
-using gl::glIndexPointer;
 using gl::glIndexd;
 using gl::glIndexdv;
 using gl::glIndexf;
 using gl::glIndexfv;
 using gl::glIndexi;
 using gl::glIndexiv;
+using gl::glIndexMask;
+using gl::glIndexPointer;
 using gl::glIndexs;
 using gl::glIndexsv;
 using gl::glIndexub;
@@ -167,14 +167,14 @@ using gl::glInterleavedArrays;
 using gl::glIsEnabled;
 using gl::glIsList;
 using gl::glIsTexture;
-using gl::glLightModelf;
-using gl::glLightModelfv;
-using gl::glLightModeli;
-using gl::glLightModeliv;
 using gl::glLightf;
 using gl::glLightfv;
 using gl::glLighti;
 using gl::glLightiv;
+using gl::glLightModelf;
+using gl::glLightModelfv;
+using gl::glLightModeli;
+using gl::glLightModeliv;
 using gl::glLineStipple;
 using gl::glLineWidth;
 using gl::glListBase;
@@ -198,10 +198,6 @@ using gl::glMaterialfv;
 using gl::glMateriali;
 using gl::glMaterialiv;
 using gl::glMatrixMode;
-using gl::glMultMatrixd;
-using gl::glMultMatrixf;
-using gl::glMultTransposeMatrixd;
-using gl::glMultTransposeMatrixf;
 using gl::glMultiTexCoord1d;
 using gl::glMultiTexCoord1dv;
 using gl::glMultiTexCoord1f;
@@ -234,6 +230,10 @@ using gl::glMultiTexCoord4i;
 using gl::glMultiTexCoord4iv;
 using gl::glMultiTexCoord4s;
 using gl::glMultiTexCoord4sv;
+using gl::glMultMatrixd;
+using gl::glMultMatrixf;
+using gl::glMultTransposeMatrixd;
+using gl::glMultTransposeMatrixf;
 using gl::glNewList;
 using gl::glNormal3b;
 using gl::glNormal3bv;
@@ -396,6 +396,5 @@ using gl::glVertex4s;
 using gl::glVertex4sv;
 using gl::glVertexPointer;
 using gl::glViewport;
-
 
 } // namespace gl13

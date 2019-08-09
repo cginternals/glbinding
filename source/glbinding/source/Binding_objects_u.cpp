@@ -139,8 +139,8 @@ Function<void, GLbitfield> Binding::UploadGpuMaskNVX("glUploadGpuMaskNVX");
 Function<void, GLuint> Binding::UseProgram("glUseProgram");
 Function<void, GLhandleARB> Binding::UseProgramObjectARB("glUseProgramObjectARB");
 Function<void, GLuint, UseProgramStageMask, GLuint> Binding::UseProgramStages("glUseProgramStages");
+Function<void, GLuint, UseProgramStageMask, GLuint> Binding::UseProgramStagesEXT("glUseProgramStagesEXT");
 Function<void, GLenum, GLuint> Binding::UseShaderProgramEXT("glUseShaderProgramEXT");
-
 
 
 } // namespace glbinding

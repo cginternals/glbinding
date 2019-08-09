@@ -34,7 +34,6 @@ extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_Fun
 extern const std::map<Version, std::set<std::string>> Meta_FunctionStringsByVersion;
 
 extern const std::unordered_map<gl::AttribMask, std::string> Meta_StringsByAttribMask;
-extern const std::unordered_map<gl::BufferAccessMask, std::string> Meta_StringsByBufferAccessMask;
 extern const std::unordered_map<gl::BufferStorageMask, std::string> Meta_StringsByBufferStorageMask;
 extern const std::unordered_map<gl::ClearBufferMask, std::string> Meta_StringsByClearBufferMask;
 extern const std::unordered_map<gl::ClientAttribMask, std::string> Meta_StringsByClientAttribMask;
@@ -51,9 +50,9 @@ extern const std::unordered_map<gl::PathFontStyle, std::string> Meta_StringsByPa
 extern const std::unordered_map<gl::PathMetricMask, std::string> Meta_StringsByPathMetricMask;
 extern const std::unordered_map<gl::PathRenderingMaskNV, std::string> Meta_StringsByPathRenderingMaskNV;
 extern const std::unordered_map<gl::PerformanceQueryCapsMaskINTEL, std::string> Meta_StringsByPerformanceQueryCapsMaskINTEL;
-extern const std::unordered_map<gl::SubgroupSupportedFeatures, std::string> Meta_StringsBySubgroupSupportedFeatures;
 extern const std::unordered_map<gl::SyncObjectMask, std::string> Meta_StringsBySyncObjectMask;
 extern const std::unordered_map<gl::TextureStorageMaskAMD, std::string> Meta_StringsByTextureStorageMaskAMD;
+extern const std::unordered_map<gl::TraceMaskMESA, std::string> Meta_StringsByTraceMaskMESA;
 extern const std::unordered_map<gl::UnusedMask, std::string> Meta_StringsByUnusedMask;
 extern const std::unordered_map<gl::UseProgramStageMask, std::string> Meta_StringsByUseProgramStageMask;
 extern const std::unordered_map<gl::VertexHintsMaskPGI, std::string> Meta_StringsByVertexHintsMaskPGI;

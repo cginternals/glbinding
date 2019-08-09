@@ -11,5 +11,4 @@ namespace glbinding
 
 
 
-
 } // namespace glbinding

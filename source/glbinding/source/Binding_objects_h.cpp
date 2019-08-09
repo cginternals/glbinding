@@ -15,5 +15,4 @@ Function<void, GLenum, GLsizei, GLenum, GLboolean> Binding::Histogram("glHistogr
 Function<void, GLenum, GLsizei, GLenum, GLboolean> Binding::HistogramEXT("glHistogramEXT");
 
 
-
 } // namespace glbinding

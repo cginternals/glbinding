@@ -39,7 +39,9 @@ std::set<Version> ValidVersions::preceeding(const Version & version)
     for (auto & v : s_validVersions)
     {
         if (v < version)
+        {
             preceedingVersions.insert(v);
+        }
     }
 
     return preceedingVersions;
@@ -51,7 +53,9 @@ std::set<Version> ValidVersions::succeeding(const Version & version)
     for (auto & v : s_validVersions)
     {
         if (v > version)
+        {
             succeedingVersions.insert(v);
+        }
     }
 
     return succeedingVersions;

@@ -59,6 +59,7 @@ set(headers
     ${include_path}/gl/extension.h
     ${include_path}/gl/functions.h
     ${include_path}/gl/types.h
+    ${include_path}/gl/types.inl
     ${include_path}/gl/values.h
     
     ${include_path}/glbinding.h

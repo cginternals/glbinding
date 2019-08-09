@@ -9,7 +9,9 @@
 #include <glbinding/Value.h>
 #include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
+
 #include <glbinding/Boolean8.h>
+
 
 
 namespace glbinding
@@ -28,6 +30,7 @@ struct BasicCallHelper
 
 // Special case for booleans because of MSVC differing behavior
 
+
 template <typename... Arguments>
 struct BasicCallHelper<glbinding::Boolean8, Arguments...>
 {
@@ -36,6 +39,7 @@ struct BasicCallHelper<glbinding::Boolean8, Arguments...>
         return reinterpret_cast<typename glbinding::Function<glbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
 };
+
 
 
 template <typename ReturnType, typename... Arguments>

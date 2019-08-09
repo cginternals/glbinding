@@ -190,7 +190,9 @@ void Binding::initialize(
         provideState(pos);
 
         if(_useContext)
+        {
             useContext(context);
+        }
 
         if (_resolveFunctions)
         {
@@ -200,7 +202,9 @@ void Binding::initialize(
 
     // restore previous context
     if(resolveWOUse)
+    {
         useContext(currentContext);
+    }
 }
 
 ProcAddress Binding::resolveFunction(const char * name)

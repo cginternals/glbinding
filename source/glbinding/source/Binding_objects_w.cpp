@@ -11,14 +11,14 @@ namespace glbinding
 
 Function<void, GLuint, GLuint, const GLuint *, GLuint, const GLuint *, const GLenum *> Binding::WaitSemaphoreEXT("glWaitSemaphoreEXT");
 Function<void, GLuint, GLsizei, const GLuint *, const GLuint64 *> Binding::WaitSemaphoreui64NVX("glWaitSemaphoreui64NVX");
-Function<void, GLsync, UnusedMask, GLuint64> Binding::WaitSync("glWaitSync");
+Function<void, GLsync, GLbitfield, GLuint64> Binding::WaitSync("glWaitSync");
 Function<void, GLuint64> Binding::WaitVkSemaphoreNV("glWaitVkSemaphoreNV");
-Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> Binding::WeightPathsNV("glWeightPathsNV");
-Function<void, GLint, GLenum, GLsizei, const void *> Binding::WeightPointerARB("glWeightPointerARB");
 Function<void, GLint, const GLbyte *> Binding::WeightbvARB("glWeightbvARB");
 Function<void, GLint, const GLdouble *> Binding::WeightdvARB("glWeightdvARB");
 Function<void, GLint, const GLfloat *> Binding::WeightfvARB("glWeightfvARB");
 Function<void, GLint, const GLint *> Binding::WeightivARB("glWeightivARB");
+Function<void, GLuint, GLsizei, const GLuint *, const GLfloat *> Binding::WeightPathsNV("glWeightPathsNV");
+Function<void, GLint, GLenum, GLsizei, const void *> Binding::WeightPointerARB("glWeightPointerARB");
 Function<void, GLint, const GLshort *> Binding::WeightsvARB("glWeightsvARB");
 Function<void, GLint, const GLubyte *> Binding::WeightubvARB("glWeightubvARB");
 Function<void, GLint, const GLuint *> Binding::WeightuivARB("glWeightuivARB");
@@ -81,7 +81,6 @@ Function<void, GLshort, GLshort, GLshort, GLshort> Binding::WindowPos4sMESA("glW
 Function<void, const GLshort *> Binding::WindowPos4svMESA("glWindowPos4svMESA");
 Function<void, GLenum, GLsizei, const GLint *> Binding::WindowRectanglesEXT("glWindowRectanglesEXT");
 Function<void, GLuint, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::WriteMaskEXT("glWriteMaskEXT");
-
 
 
 } // namespace glbinding
