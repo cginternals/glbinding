@@ -52,7 +52,6 @@ extern const std::unordered_map<gl::PathRenderingMaskNV, std::string> Meta_Strin
 extern const std::unordered_map<gl::PerformanceQueryCapsMaskINTEL, std::string> Meta_StringsByPerformanceQueryCapsMaskINTEL;
 extern const std::unordered_map<gl::SyncObjectMask, std::string> Meta_StringsBySyncObjectMask;
 extern const std::unordered_map<gl::TextureStorageMaskAMD, std::string> Meta_StringsByTextureStorageMaskAMD;
-extern const std::unordered_map<gl::TraceMaskMESA, std::string> Meta_StringsByTraceMaskMESA;
 extern const std::unordered_map<gl::UnusedMask, std::string> Meta_StringsByUnusedMask;
 extern const std::unordered_map<gl::UseProgramStageMask, std::string> Meta_StringsByUseProgramStageMask;
 extern const std::unordered_map<gl::VertexHintsMaskPGI, std::string> Meta_StringsByVertexHintsMaskPGI;

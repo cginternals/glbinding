@@ -38,7 +38,6 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PathRen
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const TextureStorageMaskAMD & value);
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const TraceMaskMESA & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const UnusedMask & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const UseProgramStageMask & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const VertexHintsMaskPGI & value);

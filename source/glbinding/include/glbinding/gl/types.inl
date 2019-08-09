@@ -1281,67 +1281,6 @@ namespace std
 
 
 template<>
-struct hash<gl::TraceMaskMESA>
-{
-    std::size_t operator()(const gl::TraceMaskMESA & t) const
-    {
-        return hash<std::underlying_type<gl::TraceMaskMESA>::type>()(static_cast<std::underlying_type<gl::TraceMaskMESA>::type>(t));
-    }
-};
-
-
-} // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_CONSTEXPR inline TraceMaskMESA operator|(const TraceMaskMESA & a, const TraceMaskMESA & b)
-{
-    return static_cast<TraceMaskMESA>(static_cast<std::underlying_type<TraceMaskMESA>::type>(a) | static_cast<std::underlying_type<TraceMaskMESA>::type>(b));
-}
-
-inline TraceMaskMESA & operator|=(TraceMaskMESA & a, const TraceMaskMESA & b)
-{
-    a = static_cast<TraceMaskMESA>(static_cast<std::underlying_type<TraceMaskMESA>::type>(a) | static_cast<std::underlying_type<TraceMaskMESA>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline TraceMaskMESA operator&(const TraceMaskMESA & a, const TraceMaskMESA & b)
-{
-    return static_cast<TraceMaskMESA>(static_cast<std::underlying_type<TraceMaskMESA>::type>(a) & static_cast<std::underlying_type<TraceMaskMESA>::type>(b));
-}
-
-inline TraceMaskMESA & operator&=(TraceMaskMESA & a, const TraceMaskMESA & b)
-{
-    a = static_cast<TraceMaskMESA>(static_cast<std::underlying_type<TraceMaskMESA>::type>(a) & static_cast<std::underlying_type<TraceMaskMESA>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline TraceMaskMESA operator^(const TraceMaskMESA & a, const TraceMaskMESA & b)
-{
-    return static_cast<TraceMaskMESA>(static_cast<std::underlying_type<TraceMaskMESA>::type>(a) ^ static_cast<std::underlying_type<TraceMaskMESA>::type>(b));
-}
-
-inline TraceMaskMESA & operator^=(TraceMaskMESA & a, const TraceMaskMESA & b)
-{
-    a = static_cast<TraceMaskMESA>(static_cast<std::underlying_type<TraceMaskMESA>::type>(a) ^ static_cast<std::underlying_type<TraceMaskMESA>::type>(b));
-
-    return a;
-}
-
-
-} // namespace gl
-
-
-namespace std
-{
-
-
-template<>
 struct hash<gl::UnusedMask>
 {
     std::size_t operator()(const gl::UnusedMask & t) const

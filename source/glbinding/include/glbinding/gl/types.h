@@ -89,7 +89,6 @@ enum class PathMetricMask : unsigned int;
 enum class FragmentShaderDestMaskATI : unsigned int;
 enum class FragmentShaderDestModMaskATI : unsigned int;
 enum class FragmentShaderColorModMaskATI : unsigned int;
-enum class TraceMaskMESA : unsigned int;
 enum class PathRenderingMaskNV : unsigned int;
 enum class PerformanceQueryCapsMaskINTEL : unsigned int;
 enum class VertexHintsMaskPGI : unsigned int;

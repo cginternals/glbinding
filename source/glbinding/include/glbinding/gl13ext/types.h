@@ -72,7 +72,6 @@ using gl::PathRenderingMaskNV;
 using gl::PerformanceQueryCapsMaskINTEL;
 using gl::SyncObjectMask;
 using gl::TextureStorageMaskAMD;
-using gl::TraceMaskMESA;
 using gl::UnusedMask;
 using gl::UseProgramStageMask;
 using gl::VertexHintsMaskPGI;

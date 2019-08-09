@@ -213,16 +213,6 @@ const std::string & Meta::getString(const TextureStorageMaskAMD glbitfield)
     return none;
 }
 
-const std::string & Meta::getString(const TraceMaskMESA glbitfield)
-{
-    const auto i = Meta_StringsByTraceMaskMESA.find(glbitfield);
-    if (i != Meta_StringsByTraceMaskMESA.end())
-    {
-        return i->second;
-    }
-    return none;
-}
-
 const std::string & Meta::getString(const UnusedMask glbitfield)
 {
     const auto i = Meta_StringsByUnusedMask.find(glbitfield);

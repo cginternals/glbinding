@@ -147,12 +147,6 @@ std::ostream & operator<<(std::ostream & stream, const TextureStorageMaskAMD & v
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const TraceMaskMESA & value)
-{
-    stream << glbinding::aux::bitfieldString<TraceMaskMESA>(value);
-    return stream;
-}
-
 std::ostream & operator<<(std::ostream & stream, const UnusedMask & value)
 {
     stream << glbinding::aux::bitfieldString<UnusedMask>(value);
@@ -976,18 +970,6 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
     if (typeid(*value) == typeid(Value<gl::TextureStorageMaskAMD *>))
     {
         return stream << *reinterpret_cast<const Value<gl::TextureStorageMaskAMD *>*>(value);
-    }
-
-    
-    if (typeid(*value) == typeid(Value<gl::TraceMaskMESA>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::TraceMaskMESA>*>(value);
-    }
-    
-    
-    if (typeid(*value) == typeid(Value<gl::TraceMaskMESA *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::TraceMaskMESA *>*>(value);
     }
 
     
