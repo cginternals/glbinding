@@ -25,7 +25,6 @@ namespace gl
 {
 
 
-
 enum class GLextension : int;
 enum class GLenum : unsigned int;
 using GLbitfield = unsigned int;
@@ -94,6 +93,7 @@ enum class PerformanceQueryCapsMaskINTEL : unsigned int;
 enum class VertexHintsMaskPGI : unsigned int;
 enum class FfdMaskSGIX : unsigned int;
 enum class UnusedMask : unsigned int;
+
 
 } // namespace gl
 

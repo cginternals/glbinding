@@ -240,30 +240,6 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << *reinterpret_cast<const Value<gl::GLvoid *>*>(value);
     }
 
-    /*
-    if (typeid(*value) == typeid(Value<gl::_cl_context>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::_cl_context>*>(value);
-    }
-    */
-    
-    if (typeid(*value) == typeid(Value<gl::_cl_context *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::_cl_context *>*>(value);
-    }
-
-    /*
-    if (typeid(*value) == typeid(Value<gl::_cl_event>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::_cl_event>*>(value);
-    }
-    */
-    
-    if (typeid(*value) == typeid(Value<gl::_cl_event *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::_cl_event *>*>(value);
-    }
-
     
     if (typeid(*value) == typeid(Value<gl::AttribMask>))
     {
