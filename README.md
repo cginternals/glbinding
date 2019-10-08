@@ -99,7 +99,11 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ###### Arch Linux
 
-On Arch, *glbinding* is currently provided using AUR in the package [glbinding-git](https://aur.archlinux.org/packages/glbinding-git/) that is currently not maintained by us. For build instructions, follow the [ARCH wiki](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages).
+On Arch, *glbinding* is provided by the [glbinding](https://www.archlinux.org/packages/community/x86_64/glbinding/) package in the community repository. To install *glbinding* execute the following line:
+
+```shell
+> sudo pacman -S glbinding
+```
 
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
