@@ -11,6 +11,10 @@ namespace gl46core
 {
 
 
+// use enum type
+using gl::GLenum;
+
+
 // import enums to namespace
 using gl::GL_ACTIVE_ATOMIC_COUNTER_BUFFERS;
 using gl::GL_ACTIVE_ATTRIBUTE_MAX_LENGTH;

@@ -240,7 +240,7 @@ const std::set<GLextension> Meta::extensions(const std::string & glfunction)
 const std::set<Version> Meta::versions(const std::string & glfunction)
 {
     std::set<Version> requiringVersions;
-    for (const auto version : versions())
+    for (const auto & version : versions())
     {
         const auto functionSet = functions(version);
 

@@ -11,6 +11,10 @@ namespace gl43ext
 {
 
 
+// use enum type
+using gl::GLenum;
+
+
 // import enums to namespace
 using gl::GL_1PASS_EXT;
 using gl::GL_1PASS_SGIS;

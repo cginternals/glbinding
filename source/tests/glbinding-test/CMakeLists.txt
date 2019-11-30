@@ -31,6 +31,7 @@ set(sources
     AllVersions_test.cpp
     RingBuffer_test.cpp
     SharedBitfield_test.cpp
+    Boolean_compilation_test.cpp
     
     # regession tests
     Regression_test_82.cpp
