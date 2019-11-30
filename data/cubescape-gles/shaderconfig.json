@@ -1,0 +1,33 @@
+[
+    {
+        "opengl": {
+            "major": 3,
+            "minor": 2,
+            "core": true,
+            "forward": true,
+            "debug": false
+        },
+        "programs": [
+            {
+                "name": "Cubescape",
+                "shaders": [
+                    {
+                        "name": "Cubescape Vertex Shader",
+                        "type": "GL_VERTEX_SHADER",
+                        "file": "cubescape.vert"
+                    },
+                    {
+                        "name": "Cubescape Geometry Shader",
+                        "type": "GL_GEOMETRY_SHADER",
+                        "file": "cubescape.geom"
+                    },
+                    {
+                        "name": "Cubescape Fragment Shader",
+                        "type": "GL_FRAGMENT_SHADER",
+                        "file": "cubescape.frag"
+                    }
+                ]
+            }
+        ]
+    }
+]
