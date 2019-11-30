@@ -83,9 +83,9 @@ void glVDPAUFiniNV()
     return glbinding::Binding::VDPAUFiniNV();
 }
 
-void glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values)
+void glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei count, GLsizei * length, GLint * values)
 {
-    return glbinding::Binding::VDPAUGetSurfaceivNV(surface, pname, bufSize, length, values);
+    return glbinding::Binding::VDPAUGetSurfaceivNV(surface, pname, count, length, values);
 }
 
 void glVDPAUInitNV(const void * vdpDevice, const void * getProcAddress)

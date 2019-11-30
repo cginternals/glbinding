@@ -281,6 +281,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_EXT_draw_instanced, "GL_EXT_draw_instanced" },
     { GLextension::GL_EXT_draw_range_elements, "GL_EXT_draw_range_elements" },
     { GLextension::GL_EXT_EGL_image_storage, "GL_EXT_EGL_image_storage" },
+    { GLextension::GL_EXT_EGL_sync, "GL_EXT_EGL_sync" },
     { GLextension::GL_EXT_external_buffer, "GL_EXT_external_buffer" },
     { GLextension::GL_EXT_fog_coord, "GL_EXT_fog_coord" },
     { GLextension::GL_EXT_framebuffer_blit, "GL_EXT_framebuffer_blit" },

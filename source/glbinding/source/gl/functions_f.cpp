@@ -303,6 +303,11 @@ void glFramebufferParameteri(GLenum target, GLenum pname, GLint param)
     return glbinding::Binding::FramebufferParameteri(target, pname, param);
 }
 
+void glFramebufferParameteriMESA(GLenum target, GLenum pname, GLint param)
+{
+    return glbinding::Binding::FramebufferParameteriMESA(target, pname, param);
+}
+
 void glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode)
 {
     return glbinding::Binding::FramebufferReadBufferEXT(framebuffer, mode);

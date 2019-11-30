@@ -208,9 +208,9 @@ void glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLengt
     return glbinding::Binding::GetActiveAttribARB(programObj, index, maxLength, length, size, type, name);
 }
 
-void glGetActiveSubroutineName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name)
+void glGetActiveSubroutineName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufSize, GLsizei * length, GLchar * name)
 {
-    return glbinding::Binding::GetActiveSubroutineName(program, shadertype, index, bufsize, length, name);
+    return glbinding::Binding::GetActiveSubroutineName(program, shadertype, index, bufSize, length, name);
 }
 
 void glGetActiveSubroutineUniformiv(GLuint program, GLenum shadertype, GLuint index, GLenum pname, GLint * values)
@@ -218,9 +218,9 @@ void glGetActiveSubroutineUniformiv(GLuint program, GLenum shadertype, GLuint in
     return glbinding::Binding::GetActiveSubroutineUniformiv(program, shadertype, index, pname, values);
 }
 
-void glGetActiveSubroutineUniformName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufsize, GLsizei * length, GLchar * name)
+void glGetActiveSubroutineUniformName(GLuint program, GLenum shadertype, GLuint index, GLsizei bufSize, GLsizei * length, GLchar * name)
 {
-    return glbinding::Binding::GetActiveSubroutineUniformName(program, shadertype, index, bufsize, length, name);
+    return glbinding::Binding::GetActiveSubroutineUniformName(program, shadertype, index, bufSize, length, name);
 }
 
 void glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei * length, GLint * size, GLenum * type, GLchar * name)
@@ -498,9 +498,9 @@ void glGetConvolutionParameterxvOES(GLenum target, GLenum pname, GLfixed * param
     return glbinding::Binding::GetConvolutionParameterxvOES(target, pname, params);
 }
 
-void glGetCoverageModulationTableNV(GLsizei bufsize, GLfloat * v)
+void glGetCoverageModulationTableNV(GLsizei bufSize, GLfloat * v)
 {
-    return glbinding::Binding::GetCoverageModulationTableNV(bufsize, v);
+    return glbinding::Binding::GetCoverageModulationTableNV(bufSize, v);
 }
 
 GLuint glGetDebugMessageLog(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog)
@@ -508,9 +508,9 @@ GLuint glGetDebugMessageLog(GLuint count, GLsizei bufSize, GLenum * sources, GLe
     return glbinding::Binding::GetDebugMessageLog(count, bufSize, sources, types, ids, severities, lengths, messageLog);
 }
 
-GLuint glGetDebugMessageLogAMD(GLuint count, GLsizei bufsize, GLenum * categories, GLuint * severities, GLuint * ids, GLsizei * lengths, GLchar * message)
+GLuint glGetDebugMessageLogAMD(GLuint count, GLsizei bufSize, GLenum * categories, GLuint * severities, GLuint * ids, GLsizei * lengths, GLchar * message)
 {
-    return glbinding::Binding::GetDebugMessageLogAMD(count, bufsize, categories, severities, ids, lengths, message);
+    return glbinding::Binding::GetDebugMessageLogAMD(count, bufSize, categories, severities, ids, lengths, message);
 }
 
 GLuint glGetDebugMessageLogARB(GLuint count, GLsizei bufSize, GLenum * sources, GLenum * types, GLuint * ids, GLenum * severities, GLsizei * lengths, GLchar * messageLog)
@@ -663,6 +663,11 @@ void glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint * pa
     return glbinding::Binding::GetFramebufferParameterivEXT(framebuffer, pname, params);
 }
 
+void glGetFramebufferParameterivMESA(GLenum target, GLenum pname, GLint * params)
+{
+    return glbinding::Binding::GetFramebufferParameterivMESA(target, pname, params);
+}
+
 GLenum glGetGraphicsResetStatus()
 {
     return glbinding::Binding::GetGraphicsResetStatus();
@@ -783,19 +788,19 @@ void glGetIntegerv(GLenum pname, GLint * data)
     return glbinding::Binding::GetIntegerv(pname, data);
 }
 
-void glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 * params)
+void glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei count, GLint64 * params)
 {
-    return glbinding::Binding::GetInternalformati64v(target, internalformat, pname, bufSize, params);
+    return glbinding::Binding::GetInternalformati64v(target, internalformat, pname, count, params);
 }
 
-void glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint * params)
+void glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei count, GLint * params)
 {
-    return glbinding::Binding::GetInternalformativ(target, internalformat, pname, bufSize, params);
+    return glbinding::Binding::GetInternalformativ(target, internalformat, pname, count, params);
 }
 
-void glGetInternalformatSampleivNV(GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei bufSize, GLint * params)
+void glGetInternalformatSampleivNV(GLenum target, GLenum internalformat, GLsizei samples, GLenum pname, GLsizei count, GLint * params)
 {
-    return glbinding::Binding::GetInternalformatSampleivNV(target, internalformat, samples, pname, bufSize, params);
+    return glbinding::Binding::GetInternalformatSampleivNV(target, internalformat, samples, pname, count, params);
 }
 
 void glGetInvariantBooleanvEXT(GLuint id, GLenum value, GLboolean * data)
@@ -1713,9 +1718,9 @@ void glGetProgramPipelineivEXT(GLuint pipeline, GLenum pname, GLint * params)
     return glbinding::Binding::GetProgramPipelineivEXT(pipeline, pname, params);
 }
 
-void glGetProgramResourcefvNV(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLfloat * params)
+void glGetProgramResourcefvNV(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei count, GLsizei * length, GLfloat * params)
 {
-    return glbinding::Binding::GetProgramResourcefvNV(program, programInterface, index, propCount, props, bufSize, length, params);
+    return glbinding::Binding::GetProgramResourcefvNV(program, programInterface, index, propCount, props, count, length, params);
 }
 
 GLuint glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar * name)
@@ -1723,9 +1728,9 @@ GLuint glGetProgramResourceIndex(GLuint program, GLenum programInterface, const 
     return glbinding::Binding::GetProgramResourceIndex(program, programInterface, name);
 }
 
-void glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei bufSize, GLsizei * length, GLint * params)
+void glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum * props, GLsizei count, GLsizei * length, GLint * params)
 {
-    return glbinding::Binding::GetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
+    return glbinding::Binding::GetProgramResourceiv(program, programInterface, index, propCount, props, count, length, params);
 }
 
 GLint glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar * name)
@@ -1948,9 +1953,9 @@ GLint glGetSubroutineUniformLocation(GLuint program, GLenum shadertype, const GL
     return glbinding::Binding::GetSubroutineUniformLocation(program, shadertype, name);
 }
 
-void glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei * length, GLint * values)
+void glGetSynciv(GLsync sync, GLenum pname, GLsizei count, GLsizei * length, GLint * values)
 {
-    return glbinding::Binding::GetSynciv(sync, pname, bufSize, length, values);
+    return glbinding::Binding::GetSynciv(sync, pname, count, length, values);
 }
 
 void glGetTexBumpParameterfvATI(GLenum pname, GLfloat * param)

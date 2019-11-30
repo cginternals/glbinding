@@ -140,6 +140,7 @@ Function<void, GLenum, GLenum, GLenum, GLint *> Binding::GetFramebufferAttachmen
 Function<void, GLenum, GLenum, GLuint, GLuint, GLsizei, GLfloat *> Binding::GetFramebufferParameterfvAMD("glGetFramebufferParameterfvAMD");
 Function<void, GLenum, GLenum, GLint *> Binding::GetFramebufferParameteriv("glGetFramebufferParameteriv");
 Function<void, GLuint, GLenum, GLint *> Binding::GetFramebufferParameterivEXT("glGetFramebufferParameterivEXT");
+Function<void, GLenum, GLenum, GLint *> Binding::GetFramebufferParameterivMESA("glGetFramebufferParameterivMESA");
 Function<GLenum> Binding::GetGraphicsResetStatus("glGetGraphicsResetStatus");
 Function<GLenum> Binding::GetGraphicsResetStatusARB("glGetGraphicsResetStatusARB");
 Function<GLenum> Binding::GetGraphicsResetStatusKHR("glGetGraphicsResetStatusKHR");

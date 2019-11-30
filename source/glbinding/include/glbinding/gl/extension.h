@@ -280,6 +280,7 @@ enum class GLextension : int // GLextension is not a type introduced by GL API s
     GL_EXT_draw_instanced,
     GL_EXT_draw_range_elements,
     GL_EXT_EGL_image_storage,
+    GL_EXT_EGL_sync,
     GL_EXT_external_buffer,
     GL_EXT_fog_coord,
     GL_EXT_framebuffer_blit,
