@@ -3001,7 +3001,7 @@ GLBINDING_API void glWindowPos4ivMESA(const GLint * v);
 GLBINDING_API void glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w);
 GLBINDING_API void glWindowPos4svMESA(const GLshort * v);
 GLBINDING_API void glWindowRectanglesEXT(GLenum mode, GLsizei count, const GLint * box);
-GLBINDING_API void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+GLBINDING_API void glWriteMaskEXT(GLuint res, GLuint in, VertexShaderWriteMaskEXT outX, VertexShaderWriteMaskEXT outY, VertexShaderWriteMaskEXT outZ, VertexShaderWriteMaskEXT outW);
 
 
 } // namespace gl

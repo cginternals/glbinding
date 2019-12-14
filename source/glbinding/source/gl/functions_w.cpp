@@ -363,7 +363,7 @@ void glWindowRectanglesEXT(GLenum mode, GLsizei count, const GLint * box)
     return glbinding::Binding::WindowRectanglesEXT(mode, count, box);
 }
 
-void glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW)
+void glWriteMaskEXT(GLuint res, GLuint in, VertexShaderWriteMaskEXT outX, VertexShaderWriteMaskEXT outY, VertexShaderWriteMaskEXT outZ, VertexShaderWriteMaskEXT outW)
 {
     return glbinding::Binding::WriteMaskEXT(res, in, outX, outY, outZ, outW);
 }

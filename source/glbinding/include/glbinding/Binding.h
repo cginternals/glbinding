@@ -3434,7 +3434,7 @@ public:
     static Function<void, gl::GLshort, gl::GLshort, gl::GLshort, gl::GLshort> WindowPos4sMESA; ///< Wrapper for glWindowPos4sMESA
     static Function<void, const gl::GLshort *> WindowPos4svMESA; ///< Wrapper for glWindowPos4svMESA
     static Function<void, gl::GLenum, gl::GLsizei, const gl::GLint *> WindowRectanglesEXT; ///< Wrapper for glWindowRectanglesEXT
-    static Function<void, gl::GLuint, gl::GLuint, gl::GLenum, gl::GLenum, gl::GLenum, gl::GLenum> WriteMaskEXT; ///< Wrapper for glWriteMaskEXT
+    static Function<void, gl::GLuint, gl::GLuint, gl::VertexShaderWriteMaskEXT, gl::VertexShaderWriteMaskEXT, gl::VertexShaderWriteMaskEXT, gl::VertexShaderWriteMaskEXT> WriteMaskEXT; ///< Wrapper for glWriteMaskEXT
 
 
 protected:

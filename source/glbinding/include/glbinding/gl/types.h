@@ -71,6 +71,7 @@ using GLDEBUGPROCAMD = void (GL_APIENTRY *)(GLuint id,GLenum category,GLenum sev
 using GLhalfNV = unsigned short;
 using GLvdpauSurfaceNV = GLintptr;
 using GLVULKANPROCNV = void (GL_APIENTRY *)(void);
+using VertexShaderWriteMaskEXT = GLboolean;
 enum class AttribMask : unsigned int;
 enum class BufferStorageMask : unsigned int;
 enum class ClearBufferMask : unsigned int;

@@ -76,6 +76,7 @@ using gl::TextureStorageMaskAMD;
 using gl::UnusedMask;
 using gl::UseProgramStageMask;
 using gl::VertexHintsMaskPGI;
+using gl::VertexShaderWriteMaskEXT;
 
 
 } // namespace gl43ext
