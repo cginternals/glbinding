@@ -90,6 +90,13 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<g
 
 /**
 *  @brief
+*    A specialized ostream operator for the const char * Value template
+*/
+template <>
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<const char *> & value);
+
+/**
+*  @brief
 *    A specialized ostream operator for the GLubyte * Value template
 */
 template <>

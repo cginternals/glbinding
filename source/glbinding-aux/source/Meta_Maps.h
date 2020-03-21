@@ -28,7 +28,7 @@ extern const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Me
 extern const std::unordered_map<gl::GLextension, Version> Meta_ReqVersionsByExtension;
 
 extern const std::unordered_map<gl::GLboolean, std::string> Meta_StringsByBoolean;
-extern const std::unordered_map<gl::GLenum, std::string> Meta_StringsByEnum;
+extern const std::multimap<gl::GLenum, std::string> Meta_StringsByEnum;
 extern const std::unordered_map<gl::GLextension, std::string> Meta_StringsByExtension;
 extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
 extern const std::map<Version, std::set<std::string>> Meta_FunctionStringsByVersion;

@@ -201,6 +201,15 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLboolean> & va
     return stream;
 }
 
+template <>
+std::ostream & operator<<(std::ostream & stream, const Value<const char *> & value)
+{
+    auto s = aux::wrapString(value.value());
+    stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
+
+    return stream;
+}
+
 
 template <>
 std::ostream & operator<<(std::ostream & stream, const Value<gl::GLchar *> & value)
@@ -235,9 +244,73 @@ std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
         return stream << reinterpret_cast<const void*>(value);
     }
 
+    if (typeid(*value) == typeid(Value<char>))
+    {
+        return stream << *reinterpret_cast<const Value<char>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<double>))
+    {
+        return stream << *reinterpret_cast<const Value<double>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<float>))
+    {
+        return stream << *reinterpret_cast<const Value<float>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<int>))
+    {
+        return stream << *reinterpret_cast<const Value<int>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<long>))
+    {
+        return stream << *reinterpret_cast<const Value<long>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<long long>))
+    {
+        return stream << *reinterpret_cast<const Value<long long>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<unsigned char>))
+    {
+        return stream << *reinterpret_cast<const Value<unsigned char>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<unsigned int>))
+    {
+        return stream << *reinterpret_cast<const Value<unsigned int>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<unsigned long>))
+    {
+        return stream << *reinterpret_cast<const Value<unsigned long>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<unsigned long long>))
+    {
+        return stream << *reinterpret_cast<const Value<unsigned long long>*>(value);
+    }
+
     if (typeid(*value) == typeid(Value<gl::GLvoid *>))
     {
         return stream << *reinterpret_cast<const Value<gl::GLvoid *>*>(value);
+    }
+if (typeid(*value) == typeid(Value<const char *>))
+    {
+        return stream << *reinterpret_cast<const Value<const char *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::GLchar *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLchar *>*>(value);
+    }
+
+    if (typeid(*value) == typeid(Value<gl::GLubyte *>))
+    {
+        return stream << *reinterpret_cast<const Value<gl::GLubyte *>*>(value);
     }
 
     

@@ -11,7 +11,7 @@ namespace glbinding { namespace aux
 {
 
 
-const std::unordered_map<GLenum, std::string> Meta_StringsByEnum =
+const std::multimap<GLenum, std::string> Meta_StringsByEnum =
 {
     { GLenum::GL_1PASS_EXT, "GL_1PASS_EXT" },
     { GLenum::GL_1PASS_SGIS, "GL_1PASS_SGIS" },
