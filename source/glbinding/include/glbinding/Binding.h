@@ -64,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 2990>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 2992>; ///< The type of the build-in functions collection
 
 
 public:
@@ -900,11 +900,13 @@ public:
     static Function<void, gl::GLenum> DepthFunc; ///< Wrapper for glDepthFunc
     static Function<void, gl::GLboolean> DepthMask; ///< Wrapper for glDepthMask
     static Function<void, gl::GLdouble, gl::GLdouble> DepthRange; ///< Wrapper for glDepthRange
+    static Function<void, gl::GLuint, gl::GLsizei, const gl::GLdouble *> DepthRangeArraydvNV; ///< Wrapper for glDepthRangeArraydvNV
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLdouble *> DepthRangeArrayv; ///< Wrapper for glDepthRangeArrayv
     static Function<void, gl::GLdouble, gl::GLdouble> DepthRangedNV; ///< Wrapper for glDepthRangedNV
     static Function<void, gl::GLfloat, gl::GLfloat> DepthRangef; ///< Wrapper for glDepthRangef
     static Function<void, gl::GLclampf, gl::GLclampf> DepthRangefOES; ///< Wrapper for glDepthRangefOES
     static Function<void, gl::GLuint, gl::GLdouble, gl::GLdouble> DepthRangeIndexed; ///< Wrapper for glDepthRangeIndexed
+    static Function<void, gl::GLuint, gl::GLdouble, gl::GLdouble> DepthRangeIndexeddNV; ///< Wrapper for glDepthRangeIndexeddNV
     static Function<void, gl::GLfixed, gl::GLfixed> DepthRangexOES; ///< Wrapper for glDepthRangexOES
     static Function<void, gl::GLhandleARB, gl::GLhandleARB> DetachObjectARB; ///< Wrapper for glDetachObjectARB
     static Function<void, gl::GLuint, gl::GLuint> DetachShader; ///< Wrapper for glDetachShader
