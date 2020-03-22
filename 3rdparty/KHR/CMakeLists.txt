@@ -118,21 +118,21 @@ target_include_directories(${target}
 
 # Library
 install(TARGETS ${target}
-    EXPORT  "${target}-export"            COMPONENT dev
-    RUNTIME DESTINATION ${INSTALL_BIN}    COMPONENT runtime
-    LIBRARY DESTINATION ${INSTALL_SHARED} COMPONENT runtime
-    ARCHIVE DESTINATION ${INSTALL_LIB}    COMPONENT dev
+    EXPORT  "${target}-export"            COMPONENT 3rdparty-dev
+    RUNTIME DESTINATION ${INSTALL_BIN}    COMPONENT 3rdparty-runtime
+    LIBRARY DESTINATION ${INSTALL_SHARED} COMPONENT 3rdparty-runtime
+    ARCHIVE DESTINATION ${INSTALL_LIB}    COMPONENT 3rdparty-dev
 )
 
 # Header files
 install(DIRECTORY
     ${CMAKE_CURRENT_SOURCE_DIR}/include/KHR DESTINATION ${INSTALL_INCLUDE}
-    COMPONENT dev
+    COMPONENT 3rdparty-dev
 )
 
 # CMake config
 install(EXPORT ${target}-export
     NAMESPACE   ${META_PROJECT_NAME}::
     DESTINATION ${INSTALL_CMAKE}/${target}
-    COMPONENT   dev
+    COMPONENT   3rdparty-dev
 )
