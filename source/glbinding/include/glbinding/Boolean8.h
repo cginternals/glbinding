@@ -35,6 +35,15 @@ public:
     *  @brief
     *    Constructor
     *
+    *  @remark
+    *    The value is set to `false`
+    */
+    GLBINDING_CONSTEXPR inline Boolean8(const Boolean8 & other);
+
+    /**
+    *  @brief
+    *    Constructor
+    *
     *  @param[in] on
     *    Initial value
     */

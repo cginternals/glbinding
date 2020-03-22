@@ -14,5 +14,9 @@ TEST(Boolean, Compilation)
     const gl::GLboolean b2 = gl::GL_TRUE;
     const GLboolean b3 = GL_TRUE;
 
+    (void)b1;
+    (void)b2;
+    (void)b3;
+
     SUCCEED();  // compiling this file without errors and warnings results in successful test
 }
