@@ -148,14 +148,21 @@ gl::GLboolean Meta::getBoolean(const std::string & glboolean)
 
 const std::string & Meta::getString(const GLenum glenum)
 {
-    const auto i = Meta_StringsByEnum.find(glenum);
+    const auto range = Meta_StringsByEnum.equal_range(glenum);
 
-    if (i != Meta_StringsByEnum.cend())
+    const std::string * shortest = &none;
+    for (auto i = range.first; i != range.second; ++i)
     {
-        return i->second;
+        if (i != Meta_StringsByEnum.cend())
+        {
+            if (shortest == &none || shortest->size() > i->second.size())
+            {
+                shortest = &(i->second);
+            }
+        }
     }
 
-    return none;
+    return *shortest;
 }
 
 const std::string & Meta::getString(const GLextension glextension)
@@ -240,7 +247,7 @@ const std::set<GLextension> Meta::extensions(const std::string & glfunction)
 const std::set<Version> Meta::versions(const std::string & glfunction)
 {
     std::set<Version> requiringVersions;
-    for (const auto version : versions())
+    for (const auto & version : versions())
     {
         const auto functionSet = functions(version);
 

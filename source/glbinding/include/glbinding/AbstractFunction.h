@@ -256,8 +256,9 @@ protected:
     */
     virtual AbstractState & state(int pos) const = 0;
 
+
 protected:
-    const char * m_name;   ///< The OpenGL API function name, including the 'gl' prefix
+    const char * m_name; ///< The function name, including the 'gl' prefix
 };
 
 

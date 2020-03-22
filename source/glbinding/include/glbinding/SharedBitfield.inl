@@ -2,7 +2,7 @@
 #pragma once
 
 
-namespace glbinding 
+namespace glbinding
 {
 
 

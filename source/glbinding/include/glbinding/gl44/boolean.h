@@ -11,8 +11,11 @@ namespace gl44
 {
 
 
-// import booleans to namespace
+// use boolean type
+using gl::GLboolean;
 
+
+// import booleans to namespace
 using gl::GL_FALSE;
 using gl::GL_TRUE;
 

@@ -72,10 +72,6 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A =
     { "GL_APPLE_vertex_array_range", GLextension::GL_APPLE_vertex_array_range },
     { "GL_APPLE_vertex_program_evaluators", GLextension::GL_APPLE_vertex_program_evaluators },
     { "GL_APPLE_ycbcr_422", GLextension::GL_APPLE_ycbcr_422 },
-    { "GL_ARB_ES2_compatibility", GLextension::GL_ARB_ES2_compatibility },
-    { "GL_ARB_ES3_1_compatibility", GLextension::GL_ARB_ES3_1_compatibility },
-    { "GL_ARB_ES3_2_compatibility", GLextension::GL_ARB_ES3_2_compatibility },
-    { "GL_ARB_ES3_compatibility", GLextension::GL_ARB_ES3_compatibility },
     { "GL_ARB_arrays_of_arrays", GLextension::GL_ARB_arrays_of_arrays },
     { "GL_ARB_base_instance", GLextension::GL_ARB_base_instance },
     { "GL_ARB_bindless_texture", GLextension::GL_ARB_bindless_texture },
@@ -107,6 +103,10 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_A =
     { "GL_ARB_draw_indirect", GLextension::GL_ARB_draw_indirect },
     { "GL_ARB_draw_instanced", GLextension::GL_ARB_draw_instanced },
     { "GL_ARB_enhanced_layouts", GLextension::GL_ARB_enhanced_layouts },
+    { "GL_ARB_ES2_compatibility", GLextension::GL_ARB_ES2_compatibility },
+    { "GL_ARB_ES3_1_compatibility", GLextension::GL_ARB_ES3_1_compatibility },
+    { "GL_ARB_ES3_2_compatibility", GLextension::GL_ARB_ES3_2_compatibility },
+    { "GL_ARB_ES3_compatibility", GLextension::GL_ARB_ES3_compatibility },
     { "GL_ARB_explicit_attrib_location", GLextension::GL_ARB_explicit_attrib_location },
     { "GL_ARB_explicit_uniform_location", GLextension::GL_ARB_explicit_uniform_location },
     { "GL_ARB_fragment_coord_conventions", GLextension::GL_ARB_fragment_coord_conventions },
@@ -270,7 +270,6 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_D{};
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E =
 {
     { "GL_EXT_422_pixels", GLextension::GL_EXT_422_pixels },
-    { "GL_EXT_EGL_image_storage", GLextension::GL_EXT_EGL_image_storage },
     { "GL_EXT_abgr", GLextension::GL_EXT_abgr },
     { "GL_EXT_bgra", GLextension::GL_EXT_bgra },
     { "GL_EXT_bindable_uniform", GLextension::GL_EXT_bindable_uniform },
@@ -295,6 +294,8 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E =
     { "GL_EXT_draw_buffers2", GLextension::GL_EXT_draw_buffers2 },
     { "GL_EXT_draw_instanced", GLextension::GL_EXT_draw_instanced },
     { "GL_EXT_draw_range_elements", GLextension::GL_EXT_draw_range_elements },
+    { "GL_EXT_EGL_image_storage", GLextension::GL_EXT_EGL_image_storage },
+    { "GL_EXT_EGL_sync", GLextension::GL_EXT_EGL_sync },
     { "GL_EXT_external_buffer", GLextension::GL_EXT_external_buffer },
     { "GL_EXT_fog_coord", GLextension::GL_EXT_fog_coord },
     { "GL_EXT_framebuffer_blit", GLextension::GL_EXT_framebuffer_blit },
@@ -370,12 +371,12 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_E =
     { "GL_EXT_texture_mirror_clamp", GLextension::GL_EXT_texture_mirror_clamp },
     { "GL_EXT_texture_object", GLextension::GL_EXT_texture_object },
     { "GL_EXT_texture_perturb_normal", GLextension::GL_EXT_texture_perturb_normal },
-    { "GL_EXT_texture_sRGB", GLextension::GL_EXT_texture_sRGB },
-    { "GL_EXT_texture_sRGB_R8", GLextension::GL_EXT_texture_sRGB_R8 },
-    { "GL_EXT_texture_sRGB_decode", GLextension::GL_EXT_texture_sRGB_decode },
     { "GL_EXT_texture_shadow_lod", GLextension::GL_EXT_texture_shadow_lod },
     { "GL_EXT_texture_shared_exponent", GLextension::GL_EXT_texture_shared_exponent },
     { "GL_EXT_texture_snorm", GLextension::GL_EXT_texture_snorm },
+    { "GL_EXT_texture_sRGB", GLextension::GL_EXT_texture_sRGB },
+    { "GL_EXT_texture_sRGB_decode", GLextension::GL_EXT_texture_sRGB_decode },
+    { "GL_EXT_texture_sRGB_R8", GLextension::GL_EXT_texture_sRGB_R8 },
     { "GL_EXT_texture_swizzle", GLextension::GL_EXT_texture_swizzle },
     { "GL_EXT_timer_query", GLextension::GL_EXT_timer_query },
     { "GL_EXT_transform_feedback", GLextension::GL_EXT_transform_feedback },
@@ -437,6 +438,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_K =
     { "GL_KHR_parallel_shader_compile", GLextension::GL_KHR_parallel_shader_compile },
     { "GL_KHR_robust_buffer_access_behavior", GLextension::GL_KHR_robust_buffer_access_behavior },
     { "GL_KHR_robustness", GLextension::GL_KHR_robustness },
+    { "GL_KHR_shader_subgroup", GLextension::GL_KHR_shader_subgroup },
     { "GL_KHR_texture_compression_astc_hdr", GLextension::GL_KHR_texture_compression_astc_hdr },
     { "GL_KHR_texture_compression_astc_ldr", GLextension::GL_KHR_texture_compression_astc_ldr },
     { "GL_KHR_texture_compression_astc_sliced_3d", GLextension::GL_KHR_texture_compression_astc_sliced_3d }
@@ -446,22 +448,19 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_L{};
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_M =
 {
-    { "GL_MESAX_texture_stack", GLextension::GL_MESAX_texture_stack },
+    { "GL_MESA_framebuffer_flip_y", GLextension::GL_MESA_framebuffer_flip_y },
     { "GL_MESA_pack_invert", GLextension::GL_MESA_pack_invert },
     { "GL_MESA_program_binary_formats", GLextension::GL_MESA_program_binary_formats },
     { "GL_MESA_resize_buffers", GLextension::GL_MESA_resize_buffers },
     { "GL_MESA_shader_integer_functions", GLextension::GL_MESA_shader_integer_functions },
     { "GL_MESA_tile_raster_order", GLextension::GL_MESA_tile_raster_order },
     { "GL_MESA_window_pos", GLextension::GL_MESA_window_pos },
-    { "GL_MESA_ycbcr_texture", GLextension::GL_MESA_ycbcr_texture }
+    { "GL_MESA_ycbcr_texture", GLextension::GL_MESA_ycbcr_texture },
+    { "GL_MESAX_texture_stack", GLextension::GL_MESAX_texture_stack }
 };
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
 {
-    { "GL_NVX_blend_equation_advanced_multi_draw_buffers", GLextension::GL_NVX_blend_equation_advanced_multi_draw_buffers },
-    { "GL_NVX_conditional_render", GLextension::GL_NVX_conditional_render },
-    { "GL_NVX_gpu_memory_info", GLextension::GL_NVX_gpu_memory_info },
-    { "GL_NVX_linked_gpu_multicast", GLextension::GL_NVX_linked_gpu_multicast },
     { "GL_NV_alpha_to_coverage_dither_control", GLextension::GL_NV_alpha_to_coverage_dither_control },
     { "GL_NV_bindless_multi_draw_indirect", GLextension::GL_NV_bindless_multi_draw_indirect },
     { "GL_NV_bindless_multi_draw_indirect_count", GLextension::GL_NV_bindless_multi_draw_indirect_count },
@@ -544,6 +543,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
     { "GL_NV_shader_buffer_load", GLextension::GL_NV_shader_buffer_load },
     { "GL_NV_shader_buffer_store", GLextension::GL_NV_shader_buffer_store },
     { "GL_NV_shader_storage_buffer_object", GLextension::GL_NV_shader_storage_buffer_object },
+    { "GL_NV_shader_subgroup_partitioned", GLextension::GL_NV_shader_subgroup_partitioned },
     { "GL_NV_shader_texture_footprint", GLextension::GL_NV_shader_texture_footprint },
     { "GL_NV_shader_thread_group", GLextension::GL_NV_shader_thread_group },
     { "GL_NV_shader_thread_shuffle", GLextension::GL_NV_shader_thread_shuffle },
@@ -579,7 +579,13 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_N =
     { "GL_NV_vertex_program4", GLextension::GL_NV_vertex_program4 },
     { "GL_NV_video_capture", GLextension::GL_NV_video_capture },
     { "GL_NV_viewport_array2", GLextension::GL_NV_viewport_array2 },
-    { "GL_NV_viewport_swizzle", GLextension::GL_NV_viewport_swizzle }
+    { "GL_NV_viewport_swizzle", GLextension::GL_NV_viewport_swizzle },
+    { "GL_NVX_blend_equation_advanced_multi_draw_buffers", GLextension::GL_NVX_blend_equation_advanced_multi_draw_buffers },
+    { "GL_NVX_conditional_render", GLextension::GL_NVX_conditional_render },
+    { "GL_NVX_gpu_memory_info", GLextension::GL_NVX_gpu_memory_info },
+    { "GL_NVX_gpu_multicast2", GLextension::GL_NVX_gpu_multicast2 },
+    { "GL_NVX_linked_gpu_multicast", GLextension::GL_NVX_linked_gpu_multicast },
+    { "GL_NVX_progress_fence", GLextension::GL_NVX_progress_fence }
 };
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_O =
@@ -613,6 +619,9 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_R =
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_S =
 {
     { "GL_S3_s3tc", GLextension::GL_S3_s3tc },
+    { "GL_SGI_color_matrix", GLextension::GL_SGI_color_matrix },
+    { "GL_SGI_color_table", GLextension::GL_SGI_color_table },
+    { "GL_SGI_texture_color_table", GLextension::GL_SGI_texture_color_table },
     { "GL_SGIS_detail_texture", GLextension::GL_SGIS_detail_texture },
     { "GL_SGIS_fog_function", GLextension::GL_SGIS_fog_function },
     { "GL_SGIS_generate_mipmap", GLextension::GL_SGIS_generate_mipmap },
@@ -666,16 +675,13 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_S =
     { "GL_SGIX_ycrcb", GLextension::GL_SGIX_ycrcb },
     { "GL_SGIX_ycrcb_subsample", GLextension::GL_SGIX_ycrcb_subsample },
     { "GL_SGIX_ycrcba", GLextension::GL_SGIX_ycrcba },
-    { "GL_SGI_color_matrix", GLextension::GL_SGI_color_matrix },
-    { "GL_SGI_color_table", GLextension::GL_SGI_color_table },
-    { "GL_SGI_texture_color_table", GLextension::GL_SGI_texture_color_table },
-    { "GL_SUNX_constant_data", GLextension::GL_SUNX_constant_data },
     { "GL_SUN_convolution_border_modes", GLextension::GL_SUN_convolution_border_modes },
     { "GL_SUN_global_alpha", GLextension::GL_SUN_global_alpha },
     { "GL_SUN_mesh_array", GLextension::GL_SUN_mesh_array },
     { "GL_SUN_slice_accum", GLextension::GL_SUN_slice_accum },
     { "GL_SUN_triangle_list", GLextension::GL_SUN_triangle_list },
-    { "GL_SUN_vertex", GLextension::GL_SUN_vertex }
+    { "GL_SUN_vertex", GLextension::GL_SUN_vertex },
+    { "GL_SUNX_constant_data", GLextension::GL_SUNX_constant_data }
 };
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_T{};

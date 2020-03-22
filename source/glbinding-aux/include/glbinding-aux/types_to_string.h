@@ -12,292 +12,38 @@
 #include <glbinding/Value.h>
 
 
-
-namespace gl
-{
-
-
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLenum & value);
-
-
-} // namespace gl
-
-
-
 namespace gl
 {
 
 
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLboolean & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLenum & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AttribMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const ClientAttribMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const ContextFlagMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const ContextProfileMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const FfdMaskSGIX & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const FragmentShaderColorModMaskATI & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestMaskATI & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestModMaskATI & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const MapBufferAccessMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const MemoryBarrierMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const TextureStorageMaskAMD & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const UnusedMask & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const UseProgramStageMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const VertexHintsMaskPGI & value);
 
 
 } // namespace gl
-
-
-
-namespace gl
-{
-
-
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const UnusedMask & value);
-
-
-} // namespace gl
-
-
-
-namespace gl
-{
-
-
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferAccessMask & value);
-
-
-} // namespace gl
-
-
 
 
 namespace glbinding
@@ -344,24 +90,24 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<g
 
 /**
 *  @brief
-*    A specialized ostream operator for the gl::GLubyte * Value template
+*    A specialized ostream operator for the const char * Value template
+*/
+template <>
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<const char *> & value);
+
+/**
+*  @brief
+*    A specialized ostream operator for the GLubyte * Value template
 */
 template <>
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLubyte *> & value);
 
 /**
 *  @brief
-*    A specialized ostream operator for the gl::GLchar * Value template
+*    A specialized ostream operator for the GLchar * Value template
 */
 template <>
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLchar *> & value);
-
-/**
-*  @brief
-*    A specialized ostream operator for the gl::GLuint_array_2 Value template
-*/
-template <>
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLuint_array_2> & value);
 
 /**
 *  @brief

@@ -9,6 +9,20 @@ namespace glbinding
 {
 
 
+Function<void, GLuint> Binding::ValidateProgram("glValidateProgram");
+Function<void, GLhandleARB> Binding::ValidateProgramARB("glValidateProgramARB");
+Function<void, GLuint> Binding::ValidateProgramPipeline("glValidateProgramPipeline");
+Function<void, GLuint> Binding::ValidateProgramPipelineEXT("glValidateProgramPipelineEXT");
+Function<void, GLuint, GLenum, GLsizei, GLuint, GLuint> Binding::VariantArrayObjectATI("glVariantArrayObjectATI");
+Function<void, GLuint, const GLbyte *> Binding::VariantbvEXT("glVariantbvEXT");
+Function<void, GLuint, const GLdouble *> Binding::VariantdvEXT("glVariantdvEXT");
+Function<void, GLuint, const GLfloat *> Binding::VariantfvEXT("glVariantfvEXT");
+Function<void, GLuint, const GLint *> Binding::VariantivEXT("glVariantivEXT");
+Function<void, GLuint, GLenum, GLuint, const void *> Binding::VariantPointerEXT("glVariantPointerEXT");
+Function<void, GLuint, const GLshort *> Binding::VariantsvEXT("glVariantsvEXT");
+Function<void, GLuint, const GLubyte *> Binding::VariantubvEXT("glVariantubvEXT");
+Function<void, GLuint, const GLuint *> Binding::VariantuivEXT("glVariantuivEXT");
+Function<void, GLuint, const GLushort *> Binding::VariantusvEXT("glVariantusvEXT");
 Function<void> Binding::VDPAUFiniNV("glVDPAUFiniNV");
 Function<void, GLvdpauSurfaceNV, GLenum, GLsizei, GLsizei *, GLint *> Binding::VDPAUGetSurfaceivNV("glVDPAUGetSurfaceivNV");
 Function<void, const void *, const void *> Binding::VDPAUInitNV("glVDPAUInitNV");
@@ -20,19 +34,6 @@ Function<GLvdpauSurfaceNV, const void *, GLenum, GLsizei, const GLuint *, GLbool
 Function<void, GLvdpauSurfaceNV, GLenum> Binding::VDPAUSurfaceAccessNV("glVDPAUSurfaceAccessNV");
 Function<void, GLsizei, const GLvdpauSurfaceNV *> Binding::VDPAUUnmapSurfacesNV("glVDPAUUnmapSurfacesNV");
 Function<void, GLvdpauSurfaceNV> Binding::VDPAUUnregisterSurfaceNV("glVDPAUUnregisterSurfaceNV");
-Function<void, GLuint> Binding::ValidateProgram("glValidateProgram");
-Function<void, GLhandleARB> Binding::ValidateProgramARB("glValidateProgramARB");
-Function<void, GLuint> Binding::ValidateProgramPipeline("glValidateProgramPipeline");
-Function<void, GLuint, GLenum, GLsizei, GLuint, GLuint> Binding::VariantArrayObjectATI("glVariantArrayObjectATI");
-Function<void, GLuint, GLenum, GLuint, const void *> Binding::VariantPointerEXT("glVariantPointerEXT");
-Function<void, GLuint, const GLbyte *> Binding::VariantbvEXT("glVariantbvEXT");
-Function<void, GLuint, const GLdouble *> Binding::VariantdvEXT("glVariantdvEXT");
-Function<void, GLuint, const GLfloat *> Binding::VariantfvEXT("glVariantfvEXT");
-Function<void, GLuint, const GLint *> Binding::VariantivEXT("glVariantivEXT");
-Function<void, GLuint, const GLshort *> Binding::VariantsvEXT("glVariantsvEXT");
-Function<void, GLuint, const GLubyte *> Binding::VariantubvEXT("glVariantubvEXT");
-Function<void, GLuint, const GLuint *> Binding::VariantuivEXT("glVariantuivEXT");
-Function<void, GLuint, const GLushort *> Binding::VariantusvEXT("glVariantusvEXT");
 Function<void, GLbyte, GLbyte> Binding::Vertex2bOES("glVertex2bOES");
 Function<void, const GLbyte *> Binding::Vertex2bvOES("glVertex2bvOES");
 Function<void, GLdouble, GLdouble> Binding::Vertex2d("glVertex2d");
@@ -79,8 +80,8 @@ Function<void, GLuint, GLuint, GLuint> Binding::VertexArrayAttribBinding("glVert
 Function<void, GLuint, GLuint, GLint, GLenum, GLboolean, GLuint> Binding::VertexArrayAttribFormat("glVertexArrayAttribFormat");
 Function<void, GLuint, GLuint, GLint, GLenum, GLuint> Binding::VertexArrayAttribIFormat("glVertexArrayAttribIFormat");
 Function<void, GLuint, GLuint, GLint, GLenum, GLuint> Binding::VertexArrayAttribLFormat("glVertexArrayAttribLFormat");
-Function<void, GLuint, GLuint, GLuint, GLintptr, GLsizei> Binding::VertexArrayBindVertexBufferEXT("glVertexArrayBindVertexBufferEXT");
 Function<void, GLuint, GLuint, GLuint> Binding::VertexArrayBindingDivisor("glVertexArrayBindingDivisor");
+Function<void, GLuint, GLuint, GLuint, GLintptr, GLsizei> Binding::VertexArrayBindVertexBufferEXT("glVertexArrayBindVertexBufferEXT");
 Function<void, GLuint, GLuint, GLint, GLenum, GLsizei, GLintptr> Binding::VertexArrayColorOffsetEXT("glVertexArrayColorOffsetEXT");
 Function<void, GLuint, GLuint, GLsizei, GLintptr> Binding::VertexArrayEdgeFlagOffsetEXT("glVertexArrayEdgeFlagOffsetEXT");
 Function<void, GLuint, GLuint> Binding::VertexArrayElementBuffer("glVertexArrayElementBuffer");
@@ -165,20 +166,6 @@ Function<void, GLuint, GLshort, GLshort, GLshort> Binding::VertexAttrib3sNV("glV
 Function<void, GLuint, const GLshort *> Binding::VertexAttrib3sv("glVertexAttrib3sv");
 Function<void, GLuint, const GLshort *> Binding::VertexAttrib3svARB("glVertexAttrib3svARB");
 Function<void, GLuint, const GLshort *> Binding::VertexAttrib3svNV("glVertexAttrib3svNV");
-Function<void, GLuint, const GLbyte *> Binding::VertexAttrib4Nbv("glVertexAttrib4Nbv");
-Function<void, GLuint, const GLbyte *> Binding::VertexAttrib4NbvARB("glVertexAttrib4NbvARB");
-Function<void, GLuint, const GLint *> Binding::VertexAttrib4Niv("glVertexAttrib4Niv");
-Function<void, GLuint, const GLint *> Binding::VertexAttrib4NivARB("glVertexAttrib4NivARB");
-Function<void, GLuint, const GLshort *> Binding::VertexAttrib4Nsv("glVertexAttrib4Nsv");
-Function<void, GLuint, const GLshort *> Binding::VertexAttrib4NsvARB("glVertexAttrib4NsvARB");
-Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte> Binding::VertexAttrib4Nub("glVertexAttrib4Nub");
-Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte> Binding::VertexAttrib4NubARB("glVertexAttrib4NubARB");
-Function<void, GLuint, const GLubyte *> Binding::VertexAttrib4Nubv("glVertexAttrib4Nubv");
-Function<void, GLuint, const GLubyte *> Binding::VertexAttrib4NubvARB("glVertexAttrib4NubvARB");
-Function<void, GLuint, const GLuint *> Binding::VertexAttrib4Nuiv("glVertexAttrib4Nuiv");
-Function<void, GLuint, const GLuint *> Binding::VertexAttrib4NuivARB("glVertexAttrib4NuivARB");
-Function<void, GLuint, const GLushort *> Binding::VertexAttrib4Nusv("glVertexAttrib4Nusv");
-Function<void, GLuint, const GLushort *> Binding::VertexAttrib4NusvARB("glVertexAttrib4NusvARB");
 Function<void, GLuint, const GLbyte *> Binding::VertexAttrib4bv("glVertexAttrib4bv");
 Function<void, GLuint, const GLbyte *> Binding::VertexAttrib4bvARB("glVertexAttrib4bvARB");
 Function<void, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> Binding::VertexAttrib4d("glVertexAttrib4d");
@@ -197,6 +184,20 @@ Function<void, GLuint, GLhalfNV, GLhalfNV, GLhalfNV, GLhalfNV> Binding::VertexAt
 Function<void, GLuint, const GLhalfNV *> Binding::VertexAttrib4hvNV("glVertexAttrib4hvNV");
 Function<void, GLuint, const GLint *> Binding::VertexAttrib4iv("glVertexAttrib4iv");
 Function<void, GLuint, const GLint *> Binding::VertexAttrib4ivARB("glVertexAttrib4ivARB");
+Function<void, GLuint, const GLbyte *> Binding::VertexAttrib4Nbv("glVertexAttrib4Nbv");
+Function<void, GLuint, const GLbyte *> Binding::VertexAttrib4NbvARB("glVertexAttrib4NbvARB");
+Function<void, GLuint, const GLint *> Binding::VertexAttrib4Niv("glVertexAttrib4Niv");
+Function<void, GLuint, const GLint *> Binding::VertexAttrib4NivARB("glVertexAttrib4NivARB");
+Function<void, GLuint, const GLshort *> Binding::VertexAttrib4Nsv("glVertexAttrib4Nsv");
+Function<void, GLuint, const GLshort *> Binding::VertexAttrib4NsvARB("glVertexAttrib4NsvARB");
+Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte> Binding::VertexAttrib4Nub("glVertexAttrib4Nub");
+Function<void, GLuint, GLubyte, GLubyte, GLubyte, GLubyte> Binding::VertexAttrib4NubARB("glVertexAttrib4NubARB");
+Function<void, GLuint, const GLubyte *> Binding::VertexAttrib4Nubv("glVertexAttrib4Nubv");
+Function<void, GLuint, const GLubyte *> Binding::VertexAttrib4NubvARB("glVertexAttrib4NubvARB");
+Function<void, GLuint, const GLuint *> Binding::VertexAttrib4Nuiv("glVertexAttrib4Nuiv");
+Function<void, GLuint, const GLuint *> Binding::VertexAttrib4NuivARB("glVertexAttrib4NuivARB");
+Function<void, GLuint, const GLushort *> Binding::VertexAttrib4Nusv("glVertexAttrib4Nusv");
+Function<void, GLuint, const GLushort *> Binding::VertexAttrib4NusvARB("glVertexAttrib4NusvARB");
 Function<void, GLuint, GLshort, GLshort, GLshort, GLshort> Binding::VertexAttrib4s("glVertexAttrib4s");
 Function<void, GLuint, GLshort, GLshort, GLshort, GLshort> Binding::VertexAttrib4sARB("glVertexAttrib4sARB");
 Function<void, GLuint, GLshort, GLshort, GLshort, GLshort> Binding::VertexAttrib4sNV("glVertexAttrib4sNV");
@@ -375,11 +376,11 @@ Function<void, GLenum, GLint, GLint, GLint, GLint> Binding::VertexStream4iATI("g
 Function<void, GLenum, const GLint *> Binding::VertexStream4ivATI("glVertexStream4ivATI");
 Function<void, GLenum, GLshort, GLshort, GLshort, GLshort> Binding::VertexStream4sATI("glVertexStream4sATI");
 Function<void, GLenum, const GLshort *> Binding::VertexStream4svATI("glVertexStream4svATI");
-Function<void, GLint, GLenum, GLsizei, const void *> Binding::VertexWeightPointerEXT("glVertexWeightPointerEXT");
 Function<void, GLfloat> Binding::VertexWeightfEXT("glVertexWeightfEXT");
 Function<void, const GLfloat *> Binding::VertexWeightfvEXT("glVertexWeightfvEXT");
 Function<void, GLhalfNV> Binding::VertexWeighthNV("glVertexWeighthNV");
 Function<void, const GLhalfNV *> Binding::VertexWeighthvNV("glVertexWeighthvNV");
+Function<void, GLint, GLenum, GLsizei, const void *> Binding::VertexWeightPointerEXT("glVertexWeightPointerEXT");
 Function<GLenum, GLuint, GLuint *, GLuint64EXT *> Binding::VideoCaptureNV("glVideoCaptureNV");
 Function<void, GLuint, GLuint, GLenum, const GLdouble *> Binding::VideoCaptureStreamParameterdvNV("glVideoCaptureStreamParameterdvNV");
 Function<void, GLuint, GLuint, GLenum, const GLfloat *> Binding::VideoCaptureStreamParameterfvNV("glVideoCaptureStreamParameterfvNV");
@@ -390,7 +391,6 @@ Function<void, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> Binding::ViewportInde
 Function<void, GLuint, const GLfloat *> Binding::ViewportIndexedfv("glViewportIndexedfv");
 Function<void, GLuint, GLfloat, GLfloat> Binding::ViewportPositionWScaleNV("glViewportPositionWScaleNV");
 Function<void, GLuint, GLenum, GLenum, GLenum, GLenum> Binding::ViewportSwizzleNV("glViewportSwizzleNV");
-
 
 
 } // namespace glbinding

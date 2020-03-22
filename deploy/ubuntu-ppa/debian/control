@@ -2,7 +2,7 @@ Source: libglbinding
 Section: misc
 Priority: optional
 Maintainer: Willy Scheibel <willy.scheibel@cginternals.com>
-Build-Depends: build-essential, cmake, libgl1-mesa-dev, libglfw3-dev, libcpplocate-dev, libcpplocate-dbg, qtbase5-dev, doxygen, graphviz, libx11-dev, libxrandr-dev, libxinerama-dev, libxcursor-dev
+Build-Depends: build-essential, cmake, libgl1-mesa-dev, libegl1-mesa-dev, libglfw3-dev, libcpplocate-dev, libcpplocate-dbg, qtbase5-dev, doxygen, graphviz, libx11-dev, libxrandr-dev, libxinerama-dev, libxcursor-dev
 Standards-Version: 3.8.0
 
 Package: libglbinding
@@ -13,7 +13,7 @@ Description: A C++ binding for the OpenGL API, generated using the gl.xml specif
 
 Package: libglbinding-dev
 Architecture: any
-Depends: libglbinding
+Depends: libglbinding, libegl1-mesa-dev
 Homepage: https://glbinding.org
 Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
 

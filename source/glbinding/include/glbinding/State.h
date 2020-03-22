@@ -11,7 +11,7 @@ namespace glbinding
 
 /**
 *  @brief
-*    The State class represents the configuration of an OpenGL function for one thread.
+*    The State class represents the configuration of a function for one thread.
 *    This includes the driver function pointer (is allowed to differ between contexts) and the callback mask
 */
 class GLBINDING_API State : public AbstractState

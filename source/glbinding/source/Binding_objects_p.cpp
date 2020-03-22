@@ -9,8 +9,6 @@ namespace glbinding
 {
 
 
-Function<void, GLenum, GLfloat> Binding::PNTrianglesfATI("glPNTrianglesfATI");
-Function<void, GLenum, GLint> Binding::PNTrianglesiATI("glPNTrianglesiATI");
 Function<void, GLuint, GLuint, GLenum> Binding::PassTexCoordATI("glPassTexCoordATI");
 Function<void, GLfloat> Binding::PassThrough("glPassThrough");
 Function<void, GLfixed> Binding::PassThroughxOES("glPassThroughxOES");
@@ -23,7 +21,7 @@ Function<void, GLenum> Binding::PathCoverDepthFuncNV("glPathCoverDepthFuncNV");
 Function<void, GLuint, GLsizei, const GLfloat *> Binding::PathDashArrayNV("glPathDashArrayNV");
 Function<void, GLenum> Binding::PathFogGenNV("glPathFogGenNV");
 Function<GLenum, GLuint, GLenum, const void *, PathFontStyle, GLuint, GLsizei, GLuint, GLfloat> Binding::PathGlyphIndexArrayNV("glPathGlyphIndexArrayNV");
-Function<GLenum, GLenum, const void *, PathFontStyle, GLuint, GLfloat, GLuint_array_2> Binding::PathGlyphIndexRangeNV("glPathGlyphIndexRangeNV");
+Function<GLenum, GLenum, const void *, PathFontStyle, GLuint, GLfloat, GLuint> Binding::PathGlyphIndexRangeNV("glPathGlyphIndexRangeNV");
 Function<void, GLuint, GLenum, const void *, PathFontStyle, GLuint, GLsizei, GLenum, GLuint, GLfloat> Binding::PathGlyphRangeNV("glPathGlyphRangeNV");
 Function<void, GLuint, GLenum, const void *, PathFontStyle, GLsizei, GLenum, const void *, GLenum, GLuint, GLfloat> Binding::PathGlyphsNV("glPathGlyphsNV");
 Function<GLenum, GLuint, GLenum, GLsizeiptr, const void *, GLsizei, GLuint, GLsizei, GLuint, GLfloat> Binding::PathMemoryGlyphIndexArrayNV("glPathMemoryGlyphIndexArrayNV");
@@ -61,6 +59,8 @@ Function<void, GLenum, GLenum, GLint> Binding::PixelTransformParameteriEXT("glPi
 Function<void, GLenum, GLenum, const GLint *> Binding::PixelTransformParameterivEXT("glPixelTransformParameterivEXT");
 Function<void, GLfloat, GLfloat> Binding::PixelZoom("glPixelZoom");
 Function<void, GLfixed, GLfixed> Binding::PixelZoomxOES("glPixelZoomxOES");
+Function<void, GLenum, GLfloat> Binding::PNTrianglesfATI("glPNTrianglesfATI");
+Function<void, GLenum, GLint> Binding::PNTrianglesiATI("glPNTrianglesiATI");
 Function<GLboolean, GLuint, GLsizei, GLsizei, GLfloat, GLfloat *, GLfloat *, GLfloat *, GLfloat *> Binding::PointAlongPathNV("glPointAlongPathNV");
 Function<void, GLenum, GLfloat> Binding::PointParameterf("glPointParameterf");
 Function<void, GLenum, GLfloat> Binding::PointParameterfARB("glPointParameterfARB");
@@ -74,6 +74,7 @@ Function<void, GLenum, GLint> Binding::PointParameteri("glPointParameteri");
 Function<void, GLenum, GLint> Binding::PointParameteriNV("glPointParameteriNV");
 Function<void, GLenum, const GLint *> Binding::PointParameteriv("glPointParameteriv");
 Function<void, GLenum, const GLint *> Binding::PointParameterivNV("glPointParameterivNV");
+Function<void, GLenum, GLfixed> Binding::PointParameterxOES("glPointParameterxOES");
 Function<void, GLenum, const GLfixed *> Binding::PointParameterxvOES("glPointParameterxvOES");
 Function<void, GLfloat> Binding::PointSize("glPointSize");
 Function<void, GLfixed> Binding::PointSizexOES("glPointSizexOES");
@@ -89,6 +90,7 @@ Function<void, const GLubyte *> Binding::PolygonStipple("glPolygonStipple");
 Function<void> Binding::PopAttrib("glPopAttrib");
 Function<void> Binding::PopClientAttrib("glPopClientAttrib");
 Function<void> Binding::PopDebugGroup("glPopDebugGroup");
+Function<void> Binding::PopDebugGroupKHR("glPopDebugGroupKHR");
 Function<void> Binding::PopGroupMarkerEXT("glPopGroupMarkerEXT");
 Function<void> Binding::PopMatrix("glPopMatrix");
 Function<void> Binding::PopName("glPopName");
@@ -102,9 +104,9 @@ Function<void, GLsizei, const GLuint *, const GLfloat *> Binding::PrioritizeText
 Function<void, GLsizei, const GLuint *, const GLclampf *> Binding::PrioritizeTexturesEXT("glPrioritizeTexturesEXT");
 Function<void, GLsizei, const GLuint *, const GLfixed *> Binding::PrioritizeTexturesxOES("glPrioritizeTexturesxOES");
 Function<void, GLuint, GLenum, const void *, GLsizei> Binding::ProgramBinary("glProgramBinary");
+Function<void, GLenum, GLuint, GLuint, GLsizei, const GLfloat *> Binding::ProgramBufferParametersfvNV("glProgramBufferParametersfvNV");
 Function<void, GLenum, GLuint, GLuint, GLsizei, const GLint *> Binding::ProgramBufferParametersIivNV("glProgramBufferParametersIivNV");
 Function<void, GLenum, GLuint, GLuint, GLsizei, const GLuint *> Binding::ProgramBufferParametersIuivNV("glProgramBufferParametersIuivNV");
-Function<void, GLenum, GLuint, GLuint, GLsizei, const GLfloat *> Binding::ProgramBufferParametersfvNV("glProgramBufferParametersfvNV");
 Function<void, GLenum, GLuint, GLdouble, GLdouble, GLdouble, GLdouble> Binding::ProgramEnvParameter4dARB("glProgramEnvParameter4dARB");
 Function<void, GLenum, GLuint, const GLdouble *> Binding::ProgramEnvParameter4dvARB("glProgramEnvParameter4dvARB");
 Function<void, GLenum, GLuint, GLfloat, GLfloat, GLfloat, GLfloat> Binding::ProgramEnvParameter4fARB("glProgramEnvParameter4fARB");
@@ -288,10 +290,10 @@ Function<void, AttribMask> Binding::PushAttrib("glPushAttrib");
 Function<void, ClientAttribMask> Binding::PushClientAttrib("glPushClientAttrib");
 Function<void, ClientAttribMask> Binding::PushClientAttribDefaultEXT("glPushClientAttribDefaultEXT");
 Function<void, GLenum, GLuint, GLsizei, const GLchar *> Binding::PushDebugGroup("glPushDebugGroup");
+Function<void, GLenum, GLuint, GLsizei, const GLchar *> Binding::PushDebugGroupKHR("glPushDebugGroupKHR");
 Function<void, GLsizei, const GLchar *> Binding::PushGroupMarkerEXT("glPushGroupMarkerEXT");
 Function<void> Binding::PushMatrix("glPushMatrix");
 Function<void, GLuint> Binding::PushName("glPushName");
-
 
 
 } // namespace glbinding

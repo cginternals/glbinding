@@ -9,20 +9,21 @@ namespace glbinding
 {
 
 
-Function<void, GLenum, GLeglImageOES, const GLint *> Binding::EGLImageTargetTexStorageEXT("glEGLImageTargetTexStorageEXT");
-Function<void, GLuint, GLeglImageOES, const GLint *> Binding::EGLImageTargetTextureStorageEXT("glEGLImageTargetTextureStorageEXT");
 Function<void, GLboolean> Binding::EdgeFlag("glEdgeFlag");
 Function<void, GLsizei> Binding::EdgeFlagFormatNV("glEdgeFlagFormatNV");
 Function<void, GLsizei, const void *> Binding::EdgeFlagPointer("glEdgeFlagPointer");
 Function<void, GLsizei, GLsizei, const GLboolean *> Binding::EdgeFlagPointerEXT("glEdgeFlagPointerEXT");
 Function<void, GLint, const GLboolean **, GLint> Binding::EdgeFlagPointerListIBM("glEdgeFlagPointerListIBM");
 Function<void, const GLboolean *> Binding::EdgeFlagv("glEdgeFlagv");
+Function<void, GLenum, GLeglImageOES, const GLint*> Binding::EGLImageTargetTexStorageEXT("glEGLImageTargetTexStorageEXT");
+Function<void, GLuint, GLeglImageOES, const GLint*> Binding::EGLImageTargetTextureStorageEXT("glEGLImageTargetTextureStorageEXT");
 Function<void, GLenum, const void *> Binding::ElementPointerAPPLE("glElementPointerAPPLE");
 Function<void, GLenum, const void *> Binding::ElementPointerATI("glElementPointerATI");
 Function<void, GLenum> Binding::Enable("glEnable");
 Function<void, GLenum> Binding::EnableClientState("glEnableClientState");
-Function<void, GLenum, GLuint> Binding::EnableClientStateIndexedEXT("glEnableClientStateIndexedEXT");
 Function<void, GLenum, GLuint> Binding::EnableClientStateiEXT("glEnableClientStateiEXT");
+Function<void, GLenum, GLuint> Binding::EnableClientStateIndexedEXT("glEnableClientStateIndexedEXT");
+Function<void, GLenum, GLuint> Binding::Enablei("glEnablei");
 Function<void, GLenum, GLuint> Binding::EnableIndexedEXT("glEnableIndexedEXT");
 Function<void, GLuint> Binding::EnableVariantClientStateEXT("glEnableVariantClientStateEXT");
 Function<void, GLuint, GLuint> Binding::EnableVertexArrayAttrib("glEnableVertexArrayAttrib");
@@ -31,7 +32,6 @@ Function<void, GLuint, GLenum> Binding::EnableVertexArrayEXT("glEnableVertexArra
 Function<void, GLuint, GLenum> Binding::EnableVertexAttribAPPLE("glEnableVertexAttribAPPLE");
 Function<void, GLuint> Binding::EnableVertexAttribArray("glEnableVertexAttribArray");
 Function<void, GLuint> Binding::EnableVertexAttribArrayARB("glEnableVertexAttribArrayARB");
-Function<void, GLenum, GLuint> Binding::Enablei("glEnablei");
 Function<void> Binding::End("glEnd");
 Function<void> Binding::EndConditionalRender("glEndConditionalRender");
 Function<void> Binding::EndConditionalRenderNV("glEndConditionalRenderNV");
@@ -69,7 +69,6 @@ Function<void, GLint, GLint> Binding::EvalPoint2("glEvalPoint2");
 Function<void> Binding::EvaluateDepthValuesARB("glEvaluateDepthValuesARB");
 Function<void, GLenum, GLuint, const GLfloat *> Binding::ExecuteProgramNV("glExecuteProgramNV");
 Function<void, GLuint, GLuint, GLuint> Binding::ExtractComponentEXT("glExtractComponentEXT");
-
 
 
 } // namespace glbinding
