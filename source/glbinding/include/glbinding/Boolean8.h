@@ -35,15 +35,6 @@ public:
     *  @brief
     *    Constructor
     *
-    *  @remark
-    *    The value is set to `false`
-    */
-    GLBINDING_CONSTEXPR inline Boolean8(const Boolean8 & other);
-
-    /**
-    *  @brief
-    *    Constructor
-    *
     *  @param[in] on
     *    Initial value
     */
@@ -129,18 +120,6 @@ public:
     *    %Value as `unsigned int`
     */
     GLBINDING_CONSTEXPR inline explicit operator unsigned int() const;
-
-    /**
-    *  @brief
-    *    Copy assignment operator
-    *
-    *  @param[in] other
-    *    %Value to copy from
-    *
-    *  @return
-    *    This
-    */
-    inline Boolean8 & operator=(const Boolean8 & other);
 
     /**
     *  @brief
