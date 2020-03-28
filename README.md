@@ -370,9 +370,52 @@ glbinding::useContext(ContextHandle context);
 
 Concurrent use of *glbinding* is mainly intended for usage over multiple contexts in different threads (multiple threads operating on a single OpenGL context requires locking, which *glbinding* will not provide).
 For it, *glbinding* supports multiple active contexts, one per thread.
-This necessitates that *glbinding* gets informed in each thread which context is currently active (see [multi-context](#multi-context-support)).
+This necessitates that *glbinding* gets informed in each thread which context is currently active (see [multi-context example](https://github.com/cginternals/glbinding/tree/master/source/examples/multi-context)).
+
 Note: multi-threaded communication with OpenGL will most likely result in a meaningless sequence of OpenGL calls.
 To avoid this, semantic groups of OpenGL calls should be treated as critical sections.
+
+Example for usage of multiple contexts:
+```cpp
+// Context 1 creation
+// GLFWwindow * window1 = glfwCreateWindow(640, 480, "", nullptr, nullptr);
+// glfwMakeContextCurrent(window1);
+glbinding::initialize(0, glbinding::getProcAddress); // 0 here is the context identifier
+// Context 1 initialization
+glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+
+// Context 2 creation
+// GLFWwindow * window2 = glfwCreateWindow(640, 480, "", nullptr, nullptr);
+// glfwMakeContextCurrent(window2);
+glbinding::initialize(1, glbinding::getProcAddress); // 1 here is the context identifier
+// Context 1 initialization
+glClearColor(0.0f, 1.0f, 0.0f, 0.0f);
+
+// Rendering
+while (doNotClose()) {
+  // Make context 1 active
+  // glfwMakeContextCurrent(window1);
+  glbinding::useContext(0);
+
+  // Context 1 rendering
+  glViewport(0, 0, width, height);
+  glClear(GL_COLOR_BUFFER_BIT);
+
+  // Swap buffer for context 1
+  // glfwSwapBuffers(window1);
+
+  // Make context 2 active
+  // glfwMakeContextCurrent(window2);
+  glbinding::useContext(1);
+
+  // Context 2 rendering
+  glViewport(0, 0, width, height);
+  glClear(GL_COLOR_BUFFER_BIT);
+
+  // Swap buffer for context 2
+  // glfwSwapBuffers(window2);
+}
+```
 
 #### Multiple OpenGL Contexts in Multiple Threads
 
