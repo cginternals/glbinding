@@ -103,7 +103,7 @@ public:
     *  @return
     *    The list of all enums known by the gl.xml
     */
-    static std::vector<gl::GLenum> enums();
+    static std::set<gl::GLenum> enums();
 
     /**
     *  @brief
@@ -527,7 +527,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::GLenum glenum);
+    static std::vector<std::string> getString(gl::GLenum glenum);
 
 
 private:

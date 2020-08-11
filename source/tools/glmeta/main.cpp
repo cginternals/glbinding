@@ -11,6 +11,7 @@
 
 #include <glbinding-aux/Meta.h>
 #include <glbinding-aux/ValidVersions.h>
+#include <glbinding-aux/types_to_string.h>
 
 using namespace gl; 
 using namespace glbinding;
@@ -32,9 +33,24 @@ int main(int, char * [])
 
     std::cout << "# Enums: " << aux::Meta::enums().size() << std::endl << std::endl;
 
-    for (GLenum e : aux::Meta::enums()) // c++ 14 ...
-        std::cout << " (" << std::hex << std::showbase << std::internal << std::setfill('0') << std::setw(8) 
-            << static_cast<std::underlying_type<GLenum>::type>(e) << ") " << aux::Meta::getString(e) << std::dec << std::endl;
+    for (GLenum e : aux::Meta::enums()) { // c++ 14 ...
+        const auto strings = aux::Meta::getString(e);
+        std::cout << " (" << std::hex << std::showbase << std::internal << std::setfill('0') << std::setw(8)
+            << static_cast<std::underlying_type<GLenum>::type>(e) << ") ";
+
+        std::cout << e;
+        /*for (auto i = 0; i < strings.size(); ++i)
+            std::cout << strings[i] << (strings.size() > 1 && i < (strings.size() - 1) ? " | " : "");*/
+
+        std::cout << std::dec << std::endl;
+    }
+
+    //for (auto i = 0; i < aux::Meta::enums().size(); ++i) {
+    //    const auto e = aux::Meta::enums()[i];
+    //    std::cout << " (" << std::hex << std::showbase << std::internal << std::setfill('0') << std::setw(8)
+    //        << static_cast<std::underlying_type<GLenum>::type>(e) << ") " << aux::Meta::getString(e) << std::dec << std::endl;
+    //}
+
 
     std::cout << std::dec;
     
