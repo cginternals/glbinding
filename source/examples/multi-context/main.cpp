@@ -101,7 +101,7 @@ int main(int, char *[])
     {
         glfwPollEvents();
 
-        // if ((activeWindow % 2) == 0)
+        if ((activeWindow % 2) == 0)
         {
             glfwGetFramebufferSize(window1, &width, &height);
 
@@ -114,7 +114,7 @@ int main(int, char *[])
 
             glfwSwapBuffers(window1);
         }
-        // else if ((activeWindow % 2) == 1)
+        else if ((activeWindow % 2) == 1)
         {
             glfwGetFramebufferSize(window2, &width, &height);
 
