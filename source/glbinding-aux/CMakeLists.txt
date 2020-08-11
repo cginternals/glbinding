@@ -133,6 +133,18 @@ add_library(${target}
     ${headers}
 )
 
+
+# Optional IPO. Do not use IPO if it's not supported by compiler.
+if(CheckIPOSupportedFound)
+    check_ipo_supported(RESULT result OUTPUT output)
+    if(result)
+        set_property(TARGET ${target} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+    else()
+        message(WARNING "IPO is not supported: ${output}")
+    endif()
+endif()
+
+
 # Create namespaced alias
 add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
