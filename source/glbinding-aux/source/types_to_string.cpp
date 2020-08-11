@@ -15,12 +15,6 @@ namespace gl
 {
 
 
-std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
-{
-    stream << glbinding::aux::Meta::getString(value);
-    return stream;
-}
-
 std::ostream & operator<<(std::ostream & stream, const GLenum & value)
 {
     const auto strings = glbinding::aux::Meta::getStrings(value);
@@ -38,9 +32,17 @@ std::ostream & operator<<(std::ostream & stream, const GLenum & value)
     return stream;
 }
 
+std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
+{
+    stream << glbinding::aux::Meta::getString(value);
+
+    return stream;
+}
+
 std::ostream & operator<<(std::ostream & stream, const GLextension & value)
 {
     stream << glbinding::aux::Meta::getString(value);
+
     return stream;
 }
 
