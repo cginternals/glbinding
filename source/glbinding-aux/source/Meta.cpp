@@ -38,13 +38,12 @@ namespace glbinding { namespace aux
 {
 
 
-int Meta::glRevision()
+int Meta::glRevision() GLBINDING_NOEXCEPT
 {
-	// Since gl.xml moved to github repository, the revision is currently not available and always returns NULL.
     return GL_REVISION;
 }
 
-size_t Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength)
+size_t Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength) GLBINDING_NOEXCEPT
 {
     auto index = static_cast<size_t>(identifier[prefixLength]); // ignore prefix ('GL_' or 'gl')
 
@@ -64,7 +63,7 @@ size_t Meta::alphabeticalGroupIndex(const std::string & identifier, const std::u
     return index;
 }
 
-std::vector<GLbitfield> Meta::bitfields()
+std::vector<GLbitfield> Meta::bitfields() GLBINDING_NOEXCEPT
 {
     auto bitfields = std::vector<GLbitfield>{};
 
@@ -79,7 +78,7 @@ std::vector<GLbitfield> Meta::bitfields()
     return bitfields;    
 }
 
-std::vector<GLenum> Meta::enums()
+std::vector<GLenum> Meta::enums() GLBINDING_NOEXCEPT
 {
     auto enums = std::vector<GLenum>{};
 
@@ -92,7 +91,7 @@ std::vector<GLenum> Meta::enums()
 }
 
 
-GLextension Meta::getExtension(const std::string & glextension)
+GLextension Meta::getExtension(const std::string & glextension) GLBINDING_NOEXCEPT
 {
     const auto index = alphabeticalGroupIndex(glextension, 3);
     const auto & map = Meta_ExtensionsByStringMaps[index];
@@ -106,7 +105,7 @@ GLextension Meta::getExtension(const std::string & glextension)
     return GLextension::UNKNOWN;
 }
 
-std::set<GLextension> Meta::extensions()
+std::set<GLextension> Meta::extensions() GLBINDING_NOEXCEPT
 {
     auto extensions = std::set<GLextension>{};
 
@@ -122,7 +121,7 @@ std::set<GLextension> Meta::extensions()
 }
 
 
-const std::string & Meta::getString(const GLboolean & glboolean)
+const std::string & Meta::getString(const GLboolean & glboolean) GLBINDING_NOEXCEPT
 {
     const auto i = Meta_StringsByBoolean.find(glboolean);
 
@@ -134,7 +133,7 @@ const std::string & Meta::getString(const GLboolean & glboolean)
     return none;
 }
 
-gl::GLboolean Meta::getBoolean(const std::string & glboolean)
+gl::GLboolean Meta::getBoolean(const std::string & glboolean) GLBINDING_NOEXCEPT
 {
     const auto i = Meta_BooleansByString.find(glboolean);
 
@@ -146,7 +145,7 @@ gl::GLboolean Meta::getBoolean(const std::string & glboolean)
     return static_cast<GLboolean>(-1);
 }
 
-const std::string & Meta::getString(const GLenum glenum)
+const std::string & Meta::getString(const GLenum glenum) GLBINDING_NOEXCEPT
 {
     const auto range = Meta_StringsByEnum.equal_range(glenum);
 
@@ -165,7 +164,7 @@ const std::string & Meta::getString(const GLenum glenum)
     return *shortest;
 }
 
-const std::string & Meta::getString(const GLextension glextension)
+const std::string & Meta::getString(const GLextension glextension) GLBINDING_NOEXCEPT
 {
     const auto i = Meta_StringsByExtension.find(glextension);
 
@@ -177,7 +176,7 @@ const std::string & Meta::getString(const GLextension glextension)
     return none;
 }
 
-GLbitfield Meta::getBitfield(const std::string & glbitfield)
+GLbitfield Meta::getBitfield(const std::string & glbitfield) GLBINDING_NOEXCEPT
 {
     const auto index = alphabeticalGroupIndex(glbitfield, 3);
     const auto & map = Meta_BitfieldsByStringMaps[index];
@@ -191,7 +190,7 @@ GLbitfield Meta::getBitfield(const std::string & glbitfield)
     return static_cast<GLbitfield>(-1);
 }
 
-GLenum Meta::getEnum(const std::string & glenum)
+GLenum Meta::getEnum(const std::string & glenum) GLBINDING_NOEXCEPT
 {
     const auto index = alphabeticalGroupIndex(glenum, 3);
     const auto & map = Meta_EnumsByStringMaps[index];
@@ -205,7 +204,7 @@ GLenum Meta::getEnum(const std::string & glenum)
     return static_cast<GLenum>(static_cast<unsigned int>(-1));
 }
 
-const std::set<GLextension> Meta::extensions(const Version & version)
+const std::set<GLextension> Meta::extensions(const Version & version) GLBINDING_NOEXCEPT
 {
     auto required = std::set<GLextension>{};
 
@@ -230,7 +229,7 @@ const std::set<GLextension> Meta::extensions(const Version & version)
     return required;
 }
 
-const std::set<GLextension> Meta::extensions(const std::string & glfunction)
+const std::set<GLextension> Meta::extensions(const std::string & glfunction) GLBINDING_NOEXCEPT
 {
     const auto index = alphabeticalGroupIndex(glfunction, 2);
     const auto & map = Meta_ExtensionsByFunctionStringMaps[index];
@@ -244,7 +243,7 @@ const std::set<GLextension> Meta::extensions(const std::string & glfunction)
     return noneExtensions;
 }
 
-const std::set<Version> Meta::versions(const std::string & glfunction)
+const std::set<Version> Meta::versions(const std::string & glfunction) GLBINDING_NOEXCEPT
 {
     std::set<Version> requiringVersions;
     for (const auto & version : versions())
@@ -263,7 +262,7 @@ const std::set<Version> Meta::versions(const std::string & glfunction)
     return requiringVersions;
 }
 
-const std::set<AbstractFunction *> Meta::functions(const Version & version)
+const std::set<AbstractFunction *> Meta::functions(const Version & version) GLBINDING_NOEXCEPT
 {
     const auto i = Meta_FunctionStringsByVersion.find(version);
 
@@ -293,7 +292,7 @@ const std::set<AbstractFunction *> Meta::functions(const Version & version)
     return requiredFunctions;
 }
 
-const std::set<AbstractFunction *> Meta::functions(const GLextension extension)
+const std::set<AbstractFunction *> Meta::functions(const GLextension extension) GLBINDING_NOEXCEPT
 {
     const auto i = Meta_FunctionStringsByExtension.find(extension);
 
@@ -315,7 +314,7 @@ const std::set<AbstractFunction *> Meta::functions(const GLextension extension)
     return requiredFunctions;
 }
 
-const Version & Meta::version(const GLextension extension)
+const Version & Meta::version(const GLextension extension) GLBINDING_NOEXCEPT
 {
     const auto i = Meta_ReqVersionsByExtension.find(extension);
 
@@ -327,7 +326,7 @@ const Version & Meta::version(const GLextension extension)
     return noneVersion;
 }
 
-const std::set<Version> & Meta::versions()
+const std::set<Version> & Meta::versions() GLBINDING_NOEXCEPT
 {
     return ValidVersions::versions();
 }

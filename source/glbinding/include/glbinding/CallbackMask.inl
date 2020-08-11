@@ -9,47 +9,47 @@ namespace glbinding
 {
 
 
-GLBINDING_CONSTEXPR CallbackMask operator~(const CallbackMask a)
+GLBINDING_CONSTEXPR CallbackMask operator~(const CallbackMask a) GLBINDING_NOEXCEPT
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
     return static_cast<CallbackMask>(~static_cast<callback_mask_t>(a));
 }
 
-GLBINDING_CONSTEXPR CallbackMask operator|(const CallbackMask a, const CallbackMask b)
+GLBINDING_CONSTEXPR CallbackMask operator|(const CallbackMask a, const CallbackMask b) GLBINDING_NOEXCEPT
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
     return static_cast<CallbackMask>(static_cast<callback_mask_t>(a) | static_cast<callback_mask_t>(b));
 }
 
-GLBINDING_CONSTEXPR CallbackMask operator&(const CallbackMask a, const CallbackMask b)
+GLBINDING_CONSTEXPR CallbackMask operator&(const CallbackMask a, const CallbackMask b) GLBINDING_NOEXCEPT
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
     return static_cast<CallbackMask>(static_cast<callback_mask_t>(a) & static_cast<callback_mask_t>(b));
 }
 
-GLBINDING_CONSTEXPR CallbackMask operator^(const CallbackMask a, const CallbackMask b)
+GLBINDING_CONSTEXPR CallbackMask operator^(const CallbackMask a, const CallbackMask b) GLBINDING_NOEXCEPT
 {
     using callback_mask_t = std::underlying_type<CallbackMask>::type;
 
     return static_cast<CallbackMask>(static_cast<callback_mask_t>(a) ^ static_cast<callback_mask_t>(b));
 }
 
-CallbackMask& operator|=(CallbackMask& a, const CallbackMask b)
+CallbackMask& operator|=(CallbackMask& a, const CallbackMask b) GLBINDING_NOEXCEPT
 {
     a = a | b;
     return a;
 }
 
-CallbackMask& operator&=(CallbackMask& a, const CallbackMask b)
+CallbackMask& operator&=(CallbackMask& a, const CallbackMask b) GLBINDING_NOEXCEPT
 {
     a = a & b;
     return a;
 }
 
-CallbackMask& operator^=(CallbackMask& a, const CallbackMask b)
+CallbackMask& operator^=(CallbackMask& a, const CallbackMask b) GLBINDING_NOEXCEPT
 {
     a = a ^ b;
     return a;

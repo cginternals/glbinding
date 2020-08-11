@@ -6,11 +6,11 @@ namespace glbinding
 {
 
 
-AbstractValue::AbstractValue()
+AbstractValue::AbstractValue() GLBINDING_NOEXCEPT
 {
 }
 
-AbstractValue::~AbstractValue()
+AbstractValue::~AbstractValue() GLBINDING_NOEXCEPT
 {
 }
 

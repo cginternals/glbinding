@@ -24,13 +24,13 @@ public:
     *  @brief
     *    Constructor that initializes all values with 0 / invalid
     */
-    AbstractState();
+    AbstractState() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Destructor
     */
-    virtual ~AbstractState();
+    virtual ~AbstractState() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -39,7 +39,7 @@ public:
     *  @return
     *    `true` if state is initialized, `false` otherwise
     */
-    bool isInitialized() const;
+    bool isInitialized() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -48,7 +48,7 @@ public:
     *  @return
     *    Address of OpenGL function
     */
-    ProcAddress address() const;
+    ProcAddress address() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -57,7 +57,7 @@ public:
     *  @return
     *    Callback mask
     */
-    CallbackMask callbackMask() const;
+    CallbackMask callbackMask() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -66,7 +66,7 @@ public:
     *  @param[in] mask
     *    New callback mask
     */
-    void setCallbackMask(CallbackMask mask);
+    void setCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -75,7 +75,7 @@ public:
     *  @param[in] name
     *    Name of the function to resolve
     */
-    virtual void resolve(const char * name) = 0;
+    virtual void resolve(const char * name) GLBINDING_NOEXCEPT = 0;
 
     /**
     *  @brief
@@ -84,7 +84,7 @@ public:
     *  @return
     *    `true` if function has been resolved, `false` otherwise
     */
-    bool isResolved() const;
+    bool isResolved() const GLBINDING_NOEXCEPT;
 
 protected:
     ProcAddress  m_address;      ///< The function pointer to the OpenGL function

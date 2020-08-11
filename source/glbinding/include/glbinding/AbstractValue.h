@@ -3,6 +3,7 @@
 
 
 #include <glbinding/glbinding_api.h>
+#include <glbinding/glbinding_features.h>
 
 
 namespace glbinding
@@ -22,13 +23,13 @@ public:
     *  @brief
     *    Constructor
     */
-    AbstractValue();
+    AbstractValue() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Destructor for correct memory deallocation on subclasses
     */
-    virtual ~AbstractValue();
+    virtual ~AbstractValue() GLBINDING_NOEXCEPT;
 };
 
 

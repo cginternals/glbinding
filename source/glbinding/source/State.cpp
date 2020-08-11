@@ -8,7 +8,7 @@ namespace glbinding
 {
 
 
-void State::resolve(const char * name)
+void State::resolve(const char * name) GLBINDING_NOEXCEPT
 {
     if (m_initialized)
     {

@@ -79,7 +79,7 @@ class GLBINDING_TEMPLATE_API Function : public AbstractFunction
 public:
     friend struct FunctionHelper<ReturnType, Arguments...>;
 
-    using Signature      = ReturnType(WINAPI *) (Arguments...);                   ///< The c pointer type for a function call
+    using Signature      = ReturnType(WINAPI *) (Arguments...); ///< The c pointer type for a function call
     using BeforeCallback = typename CallbackType<void, Arguments...>::type;       ///< The callback type for the before callback
     using AfterCallback  = typename CallbackType<ReturnType, Arguments...>::type; ///< The callback type for the after callback
 
@@ -91,7 +91,7 @@ public:
     *  @param[in] name
     *    The actual exported OpenGL API function name, including the 'gl' prefix
     */
-    Function(const char * name);
+    Function(const char * name) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -106,7 +106,7 @@ public:
     *  @remarks
     *    This method respects currently activated callbacks and logging
     */
-    inline ReturnType operator()(Arguments&... arguments) const;
+    inline ReturnType operator()(Arguments&... arguments) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -121,7 +121,7 @@ public:
     *  @remarks
     *    This method respects currently activated callbacks and logging
     */
-    inline ReturnType call(Arguments&... arguments) const;
+    inline ReturnType call(Arguments&... arguments) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -136,7 +136,7 @@ public:
     *  @remark
     *    This method omits all currently activated callbacks and logging
     */
-    inline ReturnType directCall(Arguments... arguments) const;
+    inline ReturnType directCall(Arguments... arguments) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -148,13 +148,13 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the Before flag to enable the callback
     */
-    inline void setBeforeCallback(BeforeCallback callback);
+    inline void setBeforeCallback(BeforeCallback callback) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Clears any previously registered before callback
     */
-    inline void clearBeforeCallback();
+    inline void clearBeforeCallback() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -166,13 +166,13 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of this Function has to include the After flag to enable the callback
     */
-    inline void setAfterCallback(AfterCallback callback);
+    inline void setAfterCallback(AfterCallback callback) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Clears any previously registered after callback
     */
-    inline void clearAfterCallback();
+    inline void clearAfterCallback() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -181,7 +181,7 @@ public:
     *  @return
     *    The beforeCallback
     */
-    inline BeforeCallback beforeCallback() const;
+    inline BeforeCallback beforeCallback() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -190,15 +190,15 @@ public:
     *  @return
     *    The afterCallback
     */
-    inline AfterCallback afterCallback() const;
+    inline AfterCallback afterCallback() const GLBINDING_NOEXCEPT;
 
-    virtual bool hasState() const override;
-    virtual bool hasState(int pos) const override;
+    virtual bool hasState() const GLBINDING_NOEXCEPT override;
+    virtual bool hasState(int pos) const GLBINDING_NOEXCEPT override;
 
-    virtual AbstractState & state() const override;
-    virtual AbstractState & state(int pos) const override;
+    virtual AbstractState & state() const GLBINDING_NOEXCEPT override;
+    virtual AbstractState & state(int pos) const GLBINDING_NOEXCEPT override;
 
-    virtual void resizeStates(int count) override;
+    virtual void resizeStates(int count) GLBINDING_NOEXCEPT override;
 
 
 protected:

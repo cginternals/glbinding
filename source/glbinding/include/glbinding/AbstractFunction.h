@@ -37,13 +37,13 @@ public:
     *  @param[in] name
     *    The actual exported OpenGL API function name, including the 'gl' prefix
     */
-    AbstractFunction(const char * name);
+    AbstractFunction(const char * name) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Destructor to guarantee correct memory deallocation of subclasses
     */
-    virtual ~AbstractFunction();
+    virtual ~AbstractFunction() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -52,13 +52,13 @@ public:
     *  @return
     *    The function name
     */
-    const char * name() const;
+    const char * name() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Lookup the function pointer and stores it in the current state
     */
-    void resolveAddress();
+    void resolveAddress() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -67,7 +67,7 @@ public:
     *  @return
     *    `true` if a valid function pointer is stored in the current state, else `false`
     */
-    bool isResolved() const;
+    bool isResolved() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -76,7 +76,7 @@ public:
     *  @return
     *    The function pointer
     */
-    ProcAddress address() const;
+    ProcAddress address() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -85,7 +85,7 @@ public:
     *  @return
     *    The currently configured callback mask for the current state
     */
-    CallbackMask callbackMask() const;
+    CallbackMask callbackMask() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -94,7 +94,7 @@ public:
     *  @param[in] mask
     *    The new callback mask
     */
-    void setCallbackMask(CallbackMask mask);
+    void setCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -103,7 +103,7 @@ public:
     *  @param[in] mask
     *    The callback mask to include
     */
-    void addCallbackMask(CallbackMask mask);
+    void addCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -112,7 +112,7 @@ public:
     *  @param[in] mask
     *    The callback mask to exclude
     */
-    void removeCallbackMask(CallbackMask mask);
+    void removeCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -124,7 +124,7 @@ public:
     *  @return
     *    `true` if all bits are set, else `false`
     */
-    bool isEnabled(CallbackMask mask) const;
+    bool isEnabled(CallbackMask mask) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -136,7 +136,7 @@ public:
     *  @return
     *    `true` if at least one bit is set, else `false`
     */
-    bool isAnyEnabled(CallbackMask mask) const;
+    bool isAnyEnabled(CallbackMask mask) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -145,7 +145,7 @@ public:
     *  @param[in] count
     *    New cache size
     */
-    virtual void resizeStates(int count) = 0;
+    virtual void resizeStates(int count) GLBINDING_NOEXCEPT = 0;
 
     /**
     *  @brief
@@ -156,7 +156,7 @@ public:
     *
     *  @see Binding::unresolvedCallback()
     */
-    static void unresolved(const AbstractFunction * function);
+    static void unresolved(const AbstractFunction * function) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -167,7 +167,7 @@ public:
     *
     *  @see Binding::beforeCallback()
     */
-    static void before(const FunctionCall & call);
+    static void before(const FunctionCall & call) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -178,7 +178,7 @@ public:
     *
     *  @see Binding::afterCallback()
     */
-    static void after(const FunctionCall & call);
+    static void after(const FunctionCall & call) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -189,7 +189,7 @@ public:
     *
     *  @see Binding::logCallback()
     */
-    static void log(FunctionCall && call);
+    static void log(FunctionCall && call) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -198,7 +198,7 @@ public:
     *  @return
     *    Index of current state
     */
-    static int currentPos();
+    static int currentPos() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -207,7 +207,7 @@ public:
     *  @return
     *    Highest state index currently used
     */
-    static int maxPos();
+    static int maxPos() GLBINDING_NOEXCEPT;
 
 
 protected:
@@ -221,7 +221,7 @@ protected:
     *  @remark
     *    This method is usually used to detect invalid state clean up
     */
-    virtual bool hasState() const = 0;
+    virtual bool hasState() const GLBINDING_NOEXCEPT = 0;
 
     /**
     *  @brief
@@ -233,7 +233,7 @@ protected:
     *  @return
     *    `true` if the state exists, else `false`
     */
-    virtual bool hasState(int pos) const = 0;
+    virtual bool hasState(int pos) const GLBINDING_NOEXCEPT = 0;
 
     /**
     *  @brief
@@ -242,7 +242,7 @@ protected:
     *  @return
     *    The current state
     */
-    virtual AbstractState & state() const = 0;
+    virtual AbstractState & state() const GLBINDING_NOEXCEPT = 0;
 
     /**
     *  @brief
@@ -254,7 +254,7 @@ protected:
     *  @return
     *    The state
     */
-    virtual AbstractState & state(int pos) const = 0;
+    virtual AbstractState & state(int pos) const GLBINDING_NOEXCEPT = 0;
 
 
 protected:

@@ -58,7 +58,7 @@ using ContextSwitchCallback = std::function<void(ContextHandle)>;             //
 *     * glfwGetProcAddress
 *     * QOpenGlContext::getProcAddress
 */
-GLBINDING_API void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
+GLBINDING_API void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -77,7 +77,7 @@ GLBINDING_API void initialize(glbinding::GetProcAddress functionPointerResolver,
 *    A functionPointerResolver with value 'nullptr' will get initialized with the function
 *    pointer from the initial thread.
 */
-GLBINDING_API void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true);
+GLBINDING_API void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -86,7 +86,7 @@ GLBINDING_API void initialize(ContextHandle context, glbinding::GetProcAddress f
 *  @remark
 *    This function queries the driver for the current OpenGL context
 */
-GLBINDING_API void useCurrentContext();
+GLBINDING_API void useCurrentContext() GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -95,7 +95,7 @@ GLBINDING_API void useCurrentContext();
 *  @param[in] context
 *    The context handle of the context to set current
 */
-GLBINDING_API void useContext(ContextHandle context);
+GLBINDING_API void useContext(ContextHandle context) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -104,7 +104,7 @@ GLBINDING_API void useContext(ContextHandle context);
 *  @remark
 *    This function queries the driver for the current OpenGL context
 */
-GLBINDING_API void releaseCurrentContext();
+GLBINDING_API void releaseCurrentContext() GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -113,7 +113,7 @@ GLBINDING_API void releaseCurrentContext();
 *  @param[in] context
 *    The context handle of the context to remove
 */
-GLBINDING_API void releaseContext(ContextHandle context);
+GLBINDING_API void releaseContext(ContextHandle context) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -125,7 +125,7 @@ GLBINDING_API void releaseContext(ContextHandle context);
 *  @remark
 *    The additional features are callbacks, and used in multi-context environments
 */
-GLBINDING_API void registerAdditionalFunction(AbstractFunction * function);
+GLBINDING_API void registerAdditionalFunction(AbstractFunction * function) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -134,13 +134,13 @@ GLBINDING_API void registerAdditionalFunction(AbstractFunction * function);
 *  @param[in] name
 *    The name of the function
 */
-GLBINDING_API ProcAddress resolveFunction(const char * name);
+GLBINDING_API ProcAddress resolveFunction(const char * name) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
 *    Resolves the funtion pointers of all registered OpenGL functions immediately for the current context
 */
-GLBINDING_API void resolveFunctions();
+GLBINDING_API void resolveFunctions() GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -149,7 +149,7 @@ GLBINDING_API void resolveFunctions();
 *  @param[in] mask
 *    The new CallbackMask
 */
-GLBINDING_API void setCallbackMask(CallbackMask mask);
+GLBINDING_API void setCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -160,7 +160,7 @@ GLBINDING_API void setCallbackMask(CallbackMask mask);
 *  @param[in] blackList
 *    The blacklist of functions to exclude in this update
 */
-GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
+GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -169,7 +169,7 @@ GLBINDING_API void setCallbackMaskExcept(CallbackMask mask, const std::set<std::
 *  @param[in] mask
 *    The CallbackMask to include
 */
-GLBINDING_API void addCallbackMask(CallbackMask mask);
+GLBINDING_API void addCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -180,7 +180,7 @@ GLBINDING_API void addCallbackMask(CallbackMask mask);
 *  @param[in] blackList
 *    The blacklist of functions to exclude in this update
 */
-GLBINDING_API void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
+GLBINDING_API void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -189,7 +189,7 @@ GLBINDING_API void addCallbackMaskExcept(CallbackMask mask, const std::set<std::
 *  @param[in] mask
 *    The CallbackMask to exclude
 */
-GLBINDING_API void removeCallbackMask(CallbackMask mask);
+GLBINDING_API void removeCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -200,7 +200,7 @@ GLBINDING_API void removeCallbackMask(CallbackMask mask);
 *  @param[in] blackList
 *    The blacklist of functions to exclude in this update
 */
-GLBINDING_API void removeCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
+GLBINDING_API void removeCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -212,7 +212,7 @@ GLBINDING_API void removeCallbackMaskExcept(CallbackMask mask, const std::set<st
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
 */
-GLBINDING_API SimpleFunctionCallback unresolvedCallback();
+GLBINDING_API SimpleFunctionCallback unresolvedCallback() GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -227,7 +227,7 @@ GLBINDING_API SimpleFunctionCallback unresolvedCallback();
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
 */
-GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
+GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -239,7 +239,7 @@ GLBINDING_API void setUnresolvedCallback(SimpleFunctionCallback callback);
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
 */
-GLBINDING_API FunctionCallback beforeCallback();
+GLBINDING_API FunctionCallback beforeCallback() GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -254,7 +254,7 @@ GLBINDING_API FunctionCallback beforeCallback();
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Before flag to enable the callback
 */
-GLBINDING_API void setBeforeCallback(FunctionCallback callback);
+GLBINDING_API void setBeforeCallback(FunctionCallback callback) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -266,7 +266,7 @@ GLBINDING_API void setBeforeCallback(FunctionCallback callback);
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
 */
-GLBINDING_API FunctionCallback afterCallback();
+GLBINDING_API FunctionCallback afterCallback() GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -281,7 +281,7 @@ GLBINDING_API FunctionCallback afterCallback();
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
 */
-GLBINDING_API void setAfterCallback(FunctionCallback callback);
+GLBINDING_API void setAfterCallback(FunctionCallback callback) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -293,7 +293,7 @@ GLBINDING_API void setAfterCallback(FunctionCallback callback);
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
 */
-GLBINDING_API FunctionLogCallback logCallback();
+GLBINDING_API FunctionLogCallback logCallback() GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -308,7 +308,7 @@ GLBINDING_API FunctionLogCallback logCallback();
 *  @remark
 *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
 */
-GLBINDING_API void setLogCallback(FunctionLogCallback callback);
+GLBINDING_API void setLogCallback(FunctionLogCallback callback) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -317,7 +317,7 @@ GLBINDING_API void setLogCallback(FunctionLogCallback callback);
 *  @remark
 *    There may be multiple context switch callbacks registered at once
 */
-GLBINDING_API void addContextSwitchCallback(ContextSwitchCallback callback);
+GLBINDING_API void addContextSwitchCallback(ContextSwitchCallback callback) GLBINDING_NOEXCEPT;
 
 
 } // namespace glbinding

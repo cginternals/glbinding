@@ -21,7 +21,7 @@ public:
     *  @brief
     *    Constructor
     */
-    State() = default;
+    State() GLBINDING_NOEXCEPT = default;
 
     /**
     *  @brief
@@ -30,7 +30,7 @@ public:
     *  @param[in] name
     *    Name of the function to be resolved
     */
-    virtual void resolve(const char * name) override;
+    virtual void resolve(const char * name) GLBINDING_NOEXCEPT override;
 };
 
 

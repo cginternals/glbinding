@@ -35,13 +35,13 @@ public:
     *
     *  This FunctionCall is initialized with empty parameters and return values with the current time
     */
-    FunctionCall(const AbstractFunction * _function);
+    FunctionCall(const AbstractFunction * _function) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Destructor
     */
-    virtual ~FunctionCall();
+    virtual ~FunctionCall() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -50,7 +50,7 @@ public:
     *  @param[in] other
     *    The FunctionCall to move the memory from
     */
-    FunctionCall(FunctionCall && other);
+    FunctionCall(FunctionCall && other) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -62,7 +62,7 @@ public:
     *  @return
     *    This FunctionCall
     */
-    FunctionCall & operator=(FunctionCall && other);
+    FunctionCall & operator=(FunctionCall && other) GLBINDING_NOEXCEPT;
 
 
 public:

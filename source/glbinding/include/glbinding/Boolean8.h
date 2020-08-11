@@ -29,7 +29,7 @@ public:
     *  @remark
     *    The value is set to `false`
     */
-    GLBINDING_CONSTEXPR inline Boolean8();
+    GLBINDING_CONSTEXPR inline Boolean8() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -38,7 +38,7 @@ public:
     *  @param[in] on
     *    Initial value
     */
-    GLBINDING_CONSTEXPR inline Boolean8(bool on);
+    GLBINDING_CONSTEXPR inline Boolean8(bool on) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -47,7 +47,7 @@ public:
     *  @param[in] on
     *    Initial value
     */
-    GLBINDING_CONSTEXPR inline Boolean8(char on);
+    GLBINDING_CONSTEXPR inline Boolean8(char on) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -56,7 +56,7 @@ public:
     *  @param[in] on
     *    Initial value
     */
-    GLBINDING_CONSTEXPR inline Boolean8(unsigned char on);
+    GLBINDING_CONSTEXPR inline Boolean8(unsigned char on) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -65,7 +65,7 @@ public:
     *  @param[in] on
     *    Initial value
     */
-    GLBINDING_CONSTEXPR inline Boolean8(int on);
+    GLBINDING_CONSTEXPR inline Boolean8(int on) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -74,7 +74,7 @@ public:
     *  @param[in] on
     *    Initial value
     */
-    GLBINDING_CONSTEXPR inline Boolean8(unsigned int on);
+    GLBINDING_CONSTEXPR inline Boolean8(unsigned int on) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -83,7 +83,7 @@ public:
     *  @return
     *    %Value as `bool`
     */
-    GLBINDING_CONSTEXPR inline explicit operator bool() const;
+    GLBINDING_CONSTEXPR inline explicit operator bool() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -92,7 +92,7 @@ public:
     *  @return
     *    %Value as `char`
     */
-    GLBINDING_CONSTEXPR inline explicit operator char() const;
+    GLBINDING_CONSTEXPR inline explicit operator char() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -101,7 +101,7 @@ public:
     *  @return
     *    %Value as `unsigned char`
     */
-    GLBINDING_CONSTEXPR inline explicit operator unsigned char() const;
+    GLBINDING_CONSTEXPR inline explicit operator unsigned char() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -110,7 +110,7 @@ public:
     *  @return
     *    %Value as `int`
     */
-    GLBINDING_CONSTEXPR inline explicit operator int() const;
+    GLBINDING_CONSTEXPR inline explicit operator int() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -119,7 +119,7 @@ public:
     *  @return
     *    %Value as `unsigned int`
     */
-    GLBINDING_CONSTEXPR inline explicit operator unsigned int() const;
+    GLBINDING_CONSTEXPR inline explicit operator unsigned int() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -134,7 +134,7 @@ public:
     *  @remark
     *    Comparison uses numeric comparison of #underlying_type
     */
-    GLBINDING_CONSTEXPR inline bool operator<(const Boolean8 & other) const;
+    GLBINDING_CONSTEXPR inline bool operator<(const Boolean8 & other) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -149,7 +149,7 @@ public:
     *  @remark
     *    Comparison uses numeric comparison of #underlying_type
     */
-    GLBINDING_CONSTEXPR inline bool operator>(const Boolean8 & other) const;
+    GLBINDING_CONSTEXPR inline bool operator>(const Boolean8 & other) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -164,7 +164,7 @@ public:
     *  @remark
     *    Comparison uses numeric comparison of #underlying_type
     */
-    GLBINDING_CONSTEXPR inline bool operator<=(const Boolean8 & other) const;
+    GLBINDING_CONSTEXPR inline bool operator<=(const Boolean8 & other) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -179,7 +179,7 @@ public:
     *  @remark
     *    Comparison uses numeric comparison of #underlying_type
     */
-    GLBINDING_CONSTEXPR inline bool operator>=(const Boolean8 & other) const;
+    GLBINDING_CONSTEXPR inline bool operator>=(const Boolean8 & other) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -194,7 +194,7 @@ public:
     *  @remark
     *    Comparison uses numeric comparison of #underlying_type
     */
-    GLBINDING_CONSTEXPR inline bool operator==(const Boolean8 & other) const;
+    GLBINDING_CONSTEXPR inline bool operator==(const Boolean8 & other) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -209,7 +209,7 @@ public:
     *  @remark
     *    Comparison uses numeric comparison of #underlying_type
     */
-    GLBINDING_CONSTEXPR inline bool operator!=(const Boolean8 & other) const;
+    GLBINDING_CONSTEXPR inline bool operator!=(const Boolean8 & other) const GLBINDING_NOEXCEPT;
 
 public:
     underlying_type m_value; ///< %Value

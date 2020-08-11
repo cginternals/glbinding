@@ -15,151 +15,151 @@ namespace gl
 {
 
 
-std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
+std::ostream & operator<<(std::ostream & stream, const GLboolean & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::Meta::getString(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const GLenum & value)
+std::ostream & operator<<(std::ostream & stream, const GLenum & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::Meta::getString(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const GLextension & value)
+std::ostream & operator<<(std::ostream & stream, const GLextension & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::Meta::getString(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const AttribMask & value)
+std::ostream & operator<<(std::ostream & stream, const AttribMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<AttribMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value)
+std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<BufferStorageMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value)
+std::ostream & operator<<(std::ostream & stream, const ClearBufferMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<ClearBufferMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const ClientAttribMask & value)
+std::ostream & operator<<(std::ostream & stream, const ClientAttribMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<ClientAttribMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const ContextFlagMask & value)
+std::ostream & operator<<(std::ostream & stream, const ContextFlagMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<ContextFlagMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const ContextProfileMask & value)
+std::ostream & operator<<(std::ostream & stream, const ContextProfileMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<ContextProfileMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const FfdMaskSGIX & value)
+std::ostream & operator<<(std::ostream & stream, const FfdMaskSGIX & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<FfdMaskSGIX>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const FragmentShaderColorModMaskATI & value)
+std::ostream & operator<<(std::ostream & stream, const FragmentShaderColorModMaskATI & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<FragmentShaderColorModMaskATI>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestMaskATI & value)
+std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestMaskATI & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<FragmentShaderDestMaskATI>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestModMaskATI & value)
+std::ostream & operator<<(std::ostream & stream, const FragmentShaderDestModMaskATI & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<FragmentShaderDestModMaskATI>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const MapBufferAccessMask & value)
+std::ostream & operator<<(std::ostream & stream, const MapBufferAccessMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<MapBufferAccessMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const MemoryBarrierMask & value)
+std::ostream & operator<<(std::ostream & stream, const MemoryBarrierMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<MemoryBarrierMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value)
+std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<OcclusionQueryEventMaskAMD>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value)
+std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<PathFontStyle>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value)
+std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<PathMetricMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value)
+std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<PathRenderingMaskNV>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value)
+std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<PerformanceQueryCapsMaskINTEL>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value)
+std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<SyncObjectMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const TextureStorageMaskAMD & value)
+std::ostream & operator<<(std::ostream & stream, const TextureStorageMaskAMD & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<TextureStorageMaskAMD>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const UnusedMask & value)
+std::ostream & operator<<(std::ostream & stream, const UnusedMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<UnusedMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const UseProgramStageMask & value)
+std::ostream & operator<<(std::ostream & stream, const UseProgramStageMask & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<UseProgramStageMask>(value);
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const VertexHintsMaskPGI & value)
+std::ostream & operator<<(std::ostream & stream, const VertexHintsMaskPGI & value) GLBINDING_NOEXCEPT
 {
     stream << glbinding::aux::bitfieldString<VertexHintsMaskPGI>(value);
     return stream;
@@ -174,7 +174,7 @@ namespace glbinding
 
 
 template <>
-std::ostream & operator<<(std::ostream & stream, const Value<gl::GLenum> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<gl::GLenum> & value) GLBINDING_NOEXCEPT
 {
     const auto & name = aux::Meta::getString(value.value());
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
@@ -183,7 +183,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLenum> & value
 }
 
 /*template <>
-std::ostream & operator<<(std::ostream & stream, const Value<gl::GLbitfield> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<gl::GLbitfield> & value) GLBINDING_NOEXCEPT
 {
     std::stringstream ss;
     ss << "0x" << std::hex << static_cast<unsigned>(value.value());
@@ -193,7 +193,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLbitfield> & v
 }*/
 
 template <>
-std::ostream & operator<<(std::ostream & stream, const Value<gl::GLboolean> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<gl::GLboolean> & value) GLBINDING_NOEXCEPT
 {
     const auto & name = aux::Meta::getString(value.value());
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
@@ -202,7 +202,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLboolean> & va
 }
 
 template <>
-std::ostream & operator<<(std::ostream & stream, const Value<const char *> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<const char *> & value) GLBINDING_NOEXCEPT
 {
     auto s = aux::wrapString(value.value());
     stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
@@ -212,7 +212,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<const char *> & val
 
 
 template <>
-std::ostream & operator<<(std::ostream & stream, const Value<gl::GLchar *> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<gl::GLchar *> & value) GLBINDING_NOEXCEPT
 {
     auto s = aux::wrapString(reinterpret_cast<const char*>(value.value()));
     stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
@@ -221,7 +221,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLchar *> & val
 }
 
 template <>
-std::ostream & operator<<(std::ostream & stream, const Value<gl::GLubyte *> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<gl::GLubyte *> & value) GLBINDING_NOEXCEPT
 {
     auto s = aux::wrapString(reinterpret_cast<const char*>(value.value()));
     stream.write(s.c_str(), static_cast<std::streamsize>(s.size()));
@@ -230,14 +230,14 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLubyte *> & va
 }
 
 
-std::ostream & operator<<(std::ostream & stream, const Version & version)
+std::ostream & operator<<(std::ostream & stream, const Version & version) GLBINDING_NOEXCEPT
 {
     stream << version.toString();
 
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const AbstractValue * value)
+std::ostream & operator<<(std::ostream & stream, const AbstractValue * value) GLBINDING_NOEXCEPT
 {
     if (typeid(*value) == typeid(AbstractValue))
     {

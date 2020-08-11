@@ -10,122 +10,122 @@ namespace glbinding
 {
 
 
-void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions)
+void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions) GLBINDING_NOEXCEPT
 {
     Binding::initialize(functionPointerResolver, resolveFunctions);
 }
 
-void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext, bool resolveFunctions)
+void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext, bool resolveFunctions) GLBINDING_NOEXCEPT
 {
     Binding::initialize(context, functionPointerResolver, useContext, resolveFunctions);
 }
 
-void useCurrentContext()
+void useCurrentContext() GLBINDING_NOEXCEPT
 {
     Binding::useCurrentContext();
 }
 
-void useContext(ContextHandle context)
+void useContext(ContextHandle context) GLBINDING_NOEXCEPT
 {
     Binding::useContext(context);
 }
 
-void releaseCurrentContext()
+void releaseCurrentContext() GLBINDING_NOEXCEPT
 {
     Binding::releaseCurrentContext();
 }
 
-void releaseContext(ContextHandle context)
+void releaseContext(ContextHandle context) GLBINDING_NOEXCEPT
 {
     Binding::releaseContext(context);
 }
 
-void registerAdditionalFunction(AbstractFunction * function)
+void registerAdditionalFunction(AbstractFunction * function) GLBINDING_NOEXCEPT
 {
     Binding::registerAdditionalFunction(function);
 }
 
-ProcAddress resolveFunction(const char * name)
+ProcAddress resolveFunction(const char * name) GLBINDING_NOEXCEPT
 {
     return Binding::resolveFunction(name);
 }
 
-void resolveFunctions()
+void resolveFunctions() GLBINDING_NOEXCEPT
 {
     Binding::resolveFunctions();
 }
 
-void addContextSwitchCallback(ContextSwitchCallback callback)
+void addContextSwitchCallback(ContextSwitchCallback callback) GLBINDING_NOEXCEPT
 {
     Binding::addContextSwitchCallback(callback);
 }
 
-void setCallbackMask(CallbackMask mask)
+void setCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT
 {
     Binding::setCallbackMask(mask);
 }
 
-void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList)
+void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT
 {
     Binding::setCallbackMaskExcept(mask, blackList);
 }
 
-void addCallbackMask(CallbackMask mask)
+void addCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT
 {
     Binding::addCallbackMask(mask);
 }
 
-void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList)
+void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT
 {
     Binding::addCallbackMaskExcept(mask, blackList);
 }
 
-void removeCallbackMask(CallbackMask mask)
+void removeCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT
 {
     Binding::removeCallbackMask(mask);
 }
 
-void removeCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList)
+void removeCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT
 {
     Binding::removeCallbackMaskExcept(mask, blackList);
 }
 
-SimpleFunctionCallback unresolvedCallback()
+SimpleFunctionCallback unresolvedCallback() GLBINDING_NOEXCEPT
 {
     return Binding::unresolvedCallback();
 }
 
-void setUnresolvedCallback(SimpleFunctionCallback callback)
+void setUnresolvedCallback(SimpleFunctionCallback callback) GLBINDING_NOEXCEPT
 {
     Binding::setUnresolvedCallback(callback);
 }
 
-FunctionCallback beforeCallback()
+FunctionCallback beforeCallback() GLBINDING_NOEXCEPT
 {
     return Binding::beforeCallback();
 }
 
-void setBeforeCallback(FunctionCallback callback)
+void setBeforeCallback(FunctionCallback callback) GLBINDING_NOEXCEPT
 {
     Binding::setBeforeCallback(callback);
 }
 
-FunctionCallback afterCallback()
+FunctionCallback afterCallback() GLBINDING_NOEXCEPT
 {
     return Binding::afterCallback();
 }
 
-void setAfterCallback(FunctionCallback callback)
+void setAfterCallback(FunctionCallback callback) GLBINDING_NOEXCEPT
 {
     Binding::setAfterCallback(callback);
 }
 
-FunctionLogCallback logCallback()
+FunctionLogCallback logCallback() GLBINDING_NOEXCEPT
 {
     return Binding::logCallback();
 }
 
-void setLogCallback(FunctionLogCallback callback)
+void setLogCallback(FunctionLogCallback callback) GLBINDING_NOEXCEPT
 {
     Binding::setLogCallback(callback);
 }

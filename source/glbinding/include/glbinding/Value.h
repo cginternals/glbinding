@@ -36,7 +36,7 @@ public:
     *  @param[in] value
     *    The value that should be printed later
     */
-    GLBINDING_CONSTEXPR inline Value(const T & value);
+    GLBINDING_CONSTEXPR inline Value(const T & value) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -54,7 +54,7 @@ public:
     *  @return
     *    The value
     */
-    GLBINDING_CONSTEXPR inline T value() const;
+    GLBINDING_CONSTEXPR inline T value() const GLBINDING_NOEXCEPT;
 
 protected:
     const T m_value; ///< The value
@@ -71,7 +71,7 @@ protected:
 *    The argument to wrap into a Value of type Argument.
 */
 template <typename Argument>
-inline std::unique_ptr<AbstractValue> createValue(const Argument & argument);
+inline std::unique_ptr<AbstractValue> createValue(const Argument & argument) GLBINDING_NOEXCEPT;
 
 /**
 *  @brief
@@ -86,7 +86,7 @@ inline std::unique_ptr<AbstractValue> createValue(const Argument & argument);
 *    Internally uses the createValue() function
 */
 template <typename... Arguments>
-inline std::vector<std::unique_ptr<AbstractValue>> createValues(Arguments&&... arguments);
+inline std::vector<std::unique_ptr<AbstractValue>> createValues(Arguments&&... arguments) GLBINDING_NOEXCEPT;
 
 
 } // namespace glbinding

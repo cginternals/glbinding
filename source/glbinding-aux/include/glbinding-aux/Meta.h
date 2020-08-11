@@ -46,7 +46,7 @@ public:
     *  @return
     *    The revision of the parsed gl.xml file
     */
-    static int glRevision();
+    static int glRevision() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -58,7 +58,7 @@ public:
     *  @return
     *    The symbol identified through the bitfield string, 0 if failed
     */
-    static gl::GLbitfield getBitfield(const std::string & bitfield);
+    static gl::GLbitfield getBitfield(const std::string & bitfield) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -67,7 +67,7 @@ public:
     *  @return
     *    The list of all bitfields known by the gl.xml
     */
-    static std::vector<gl::GLbitfield> bitfields();
+    static std::vector<gl::GLbitfield> bitfields() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -94,7 +94,7 @@ public:
     *  @return
     *    The symbol identified through the enum string, 0 if failed
     */
-    static gl::GLenum getEnum(const std::string & glenum);
+    static gl::GLenum getEnum(const std::string & glenum) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -103,7 +103,7 @@ public:
     *  @return
     *    The list of all enums known by the gl.xml
     */
-    static std::vector<gl::GLenum> enums();
+    static std::vector<gl::GLenum> enums() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -118,7 +118,7 @@ public:
     *  @remark
     *    Can either be `GL_TRUE` or `GL_FALSE`
     */
-    static const std::string & getString(const gl::GLboolean & glboolean);
+    static const std::string & getString(const gl::GLboolean & glboolean) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -130,7 +130,7 @@ public:
     *  @return
     *    The symbol identified through the boolean string, `GL_FALSE` if failed
     */
-    static gl::GLboolean getBoolean(const std::string & boolean);
+    static gl::GLboolean getBoolean(const std::string & boolean) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -142,7 +142,7 @@ public:
     *  @return
     *    The string representation of the extension
     */
-    static const std::string & getString(gl::GLextension glextension);
+    static const std::string & getString(gl::GLextension glextension) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -154,7 +154,7 @@ public:
     *  @return
     *    The symbol identified through the extension string, 'UNKNOWN' if failed
     */
-    static gl::GLextension getExtension(const std::string & extension);
+    static gl::GLextension getExtension(const std::string & extension) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -163,7 +163,7 @@ public:
     *  @return
     *    The set of all extensions known by the gl.xml
     */
-    static std::set<gl::GLextension> extensions();
+    static std::set<gl::GLextension> extensions() GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -178,7 +178,7 @@ public:
     *    The set of extensions that should be supported for the given version.
     *    All non-versioned extensions can be queried by providing the null version
     */
-    static const std::set<gl::GLextension> extensions(const Version & version);
+    static const std::set<gl::GLextension> extensions(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -190,7 +190,7 @@ public:
     *  @return
     *    The set of extensions that are requiring a function
     */
-    static const std::set<gl::GLextension> extensions(const std::string & glfunction);
+    static const std::set<gl::GLextension> extensions(const std::string & glfunction) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -202,7 +202,7 @@ public:
     *  @return
     *    The set of features that are requiring a function
     */
-    static const std::set<Version> versions(const std::string & glfunction);
+    static const std::set<Version> versions(const std::string & glfunction) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -217,7 +217,7 @@ public:
     *  @remark
     *    This is exclusive (preceeding versions are ignored)
     */
-    static const std::set<AbstractFunction *> functions(const Version & version);
+    static const std::set<AbstractFunction *> functions(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -229,7 +229,7 @@ public:
     *  @return
     *    The set of functions that are required for the extension
     */
-    static const std::set<AbstractFunction *> functions(gl::GLextension extension);
+    static const std::set<AbstractFunction *> functions(gl::GLextension extension) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -241,7 +241,7 @@ public:
     *  @return
     *    The first Version (Feature) that required the extension
     */
-    static const Version & version(gl::GLextension glextension);
+    static const Version & version(gl::GLextension glextension) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -250,7 +250,7 @@ public:
     *  @return
     *    The list of all Versions (Features) known by the gl.xml
     */
-    static const std::set<Version> & versions();
+    static const std::set<Version> & versions() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -262,7 +262,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::AttribMask glbitfield);
+    static const std::string & getString(gl::AttribMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -274,7 +274,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::BufferStorageMask glbitfield);
+    static const std::string & getString(gl::BufferStorageMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -286,7 +286,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ClearBufferMask glbitfield);
+    static const std::string & getString(gl::ClearBufferMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -298,7 +298,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ClientAttribMask glbitfield);
+    static const std::string & getString(gl::ClientAttribMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -310,7 +310,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ContextFlagMask glbitfield);
+    static const std::string & getString(gl::ContextFlagMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -322,7 +322,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::ContextProfileMask glbitfield);
+    static const std::string & getString(gl::ContextProfileMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -334,7 +334,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FfdMaskSGIX glbitfield);
+    static const std::string & getString(gl::FfdMaskSGIX glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -346,7 +346,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FragmentShaderColorModMaskATI glbitfield);
+    static const std::string & getString(gl::FragmentShaderColorModMaskATI glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -358,7 +358,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FragmentShaderDestMaskATI glbitfield);
+    static const std::string & getString(gl::FragmentShaderDestMaskATI glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -370,7 +370,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::FragmentShaderDestModMaskATI glbitfield);
+    static const std::string & getString(gl::FragmentShaderDestModMaskATI glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -382,7 +382,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::MapBufferAccessMask glbitfield);
+    static const std::string & getString(gl::MapBufferAccessMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -394,7 +394,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::MemoryBarrierMask glbitfield);
+    static const std::string & getString(gl::MemoryBarrierMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -406,7 +406,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::OcclusionQueryEventMaskAMD glbitfield);
+    static const std::string & getString(gl::OcclusionQueryEventMaskAMD glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -418,7 +418,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PathFontStyle glbitfield);
+    static const std::string & getString(gl::PathFontStyle glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -430,7 +430,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PathMetricMask glbitfield);
+    static const std::string & getString(gl::PathMetricMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -442,7 +442,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PathRenderingMaskNV glbitfield);
+    static const std::string & getString(gl::PathRenderingMaskNV glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -454,7 +454,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::PerformanceQueryCapsMaskINTEL glbitfield);
+    static const std::string & getString(gl::PerformanceQueryCapsMaskINTEL glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -466,7 +466,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::SyncObjectMask glbitfield);
+    static const std::string & getString(gl::SyncObjectMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -478,7 +478,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::TextureStorageMaskAMD glbitfield);
+    static const std::string & getString(gl::TextureStorageMaskAMD glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -490,7 +490,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::UnusedMask glbitfield);
+    static const std::string & getString(gl::UnusedMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -502,7 +502,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::UseProgramStageMask glbitfield);
+    static const std::string & getString(gl::UseProgramStageMask glbitfield) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -514,7 +514,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::VertexHintsMaskPGI glbitfield);
+    static const std::string & getString(gl::VertexHintsMaskPGI glbitfield) GLBINDING_NOEXCEPT;
 
 
     /**
@@ -527,7 +527,7 @@ public:
     *  @return
     *    The string representation of the value
     */
-    static const std::string & getString(gl::GLenum glenum);
+    static const std::string & getString(gl::GLenum glenum) GLBINDING_NOEXCEPT;
 
 
 private:
@@ -544,7 +544,7 @@ private:
     *  @return
     *    The bucket index of an identifier
     */
-    static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength);
+    static size_t alphabeticalGroupIndex(const std::string & identifier, std::uint8_t prefixLength) GLBINDING_NOEXCEPT;
 };
 
 

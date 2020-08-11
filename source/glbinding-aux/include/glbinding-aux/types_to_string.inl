@@ -10,7 +10,7 @@ namespace glbinding
 
 
 template <typename T>
-std::ostream & operator<<(std::ostream & stream, const Value<T> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<T> & value) GLBINDING_NOEXCEPT
 {
     stream << value.value();
 
@@ -18,7 +18,7 @@ std::ostream & operator<<(std::ostream & stream, const Value<T> & value)
 }
 
 template <typename T>
-std::ostream & operator<<(std::ostream & stream, const Value<T *> & value)
+std::ostream & operator<<(std::ostream & stream, const Value<T *> & value) GLBINDING_NOEXCEPT
 {
     stream << std::hex << value.value() << std::dec;
 

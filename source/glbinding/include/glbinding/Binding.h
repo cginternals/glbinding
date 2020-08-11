@@ -99,7 +99,7 @@ public:
     *     * glfwGetProcAddress
     *     * QOpenGlContext::getProcAddress
     */
-    static void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
+    static void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -118,7 +118,7 @@ public:
     *    A functionPointerResolver with value 'nullptr' will get initialized with the function
     *    pointer from the initial thread.
     */
-    static void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true);
+    static void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -127,7 +127,7 @@ public:
     *  @param[in] function
     *    The function to register
     */
-    static void registerAdditionalFunction(AbstractFunction * function);
+    static void registerAdditionalFunction(AbstractFunction * function) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -136,13 +136,13 @@ public:
     *  @param[in] name
     *    The name of the function
     */
-    static ProcAddress resolveFunction(const char * name);
+    static ProcAddress resolveFunction(const char * name) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Resolves the funtion pointers of all registered OpenGL functions immediately for the current context
     */
-    static void resolveFunctions();
+    static void resolveFunctions() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -151,7 +151,7 @@ public:
     *  @remark
     *    This function queries the driver for the current OpenGL context
     */
-    static void useCurrentContext();
+    static void useCurrentContext() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -160,7 +160,7 @@ public:
     *  @param[in] context
     *    The context handle of the context to set current
     */
-    static void useContext(ContextHandle context);
+    static void useContext(ContextHandle context) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -169,7 +169,7 @@ public:
     *  @remark
     *    This function queries the driver for the current OpenGL context
     */
-    static void releaseCurrentContext();
+    static void releaseCurrentContext() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -178,7 +178,7 @@ public:
     *  @param[in] context
     *    The context handle of the context to remove
     */
-    static void releaseContext(ContextHandle context);
+    static void releaseContext(ContextHandle context) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -187,7 +187,7 @@ public:
     *  @remark
     *    There may be multiple context switch callbacks registered at once
     */
-    static void addContextSwitchCallback(ContextSwitchCallback callback);
+    static void addContextSwitchCallback(ContextSwitchCallback callback) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -196,7 +196,7 @@ public:
     *  @param[in] mask
     *    The new CallbackMask
     */
-    static void setCallbackMask(CallbackMask mask);
+    static void setCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -207,7 +207,7 @@ public:
     *  @param[in] blackList
     *    The blacklist of functions to exclude in this update
     */
-    static void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
+    static void setCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -216,7 +216,7 @@ public:
     *  @param[in] mask
     *    The CallbackMask to include
     */
-    static void addCallbackMask(CallbackMask mask);
+    static void addCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -227,7 +227,7 @@ public:
     *  @param[in] blackList
     *    The blacklist of functions to exclude in this update
     */
-    static void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
+    static void addCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -236,7 +236,7 @@ public:
     *  @param[in] mask
     *    The CallbackMask to exclude
     */
-    static void removeCallbackMask(CallbackMask mask);
+    static void removeCallbackMask(CallbackMask mask) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -247,7 +247,7 @@ public:
     *  @param[in] blackList
     *    The blacklist of functions to exclude in this update
     */
-    static void removeCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList);
+    static void removeCallbackMaskExcept(CallbackMask mask, const std::set<std::string> & blackList) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -259,7 +259,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
-    static SimpleFunctionCallback unresolvedCallback();
+    static SimpleFunctionCallback unresolvedCallback() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -273,7 +273,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Unresolved flag to enable the callback
     */
-    static void setUnresolvedCallback(SimpleFunctionCallback callback);
+    static void setUnresolvedCallback(SimpleFunctionCallback callback) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -285,7 +285,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
-    static FunctionCallback beforeCallback();
+    static FunctionCallback beforeCallback() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -299,7 +299,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Before flag to enable the callback
     */
-    static void setBeforeCallback(FunctionCallback callback);
+    static void setBeforeCallback(FunctionCallback callback) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -311,7 +311,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
-    static FunctionCallback afterCallback();
+    static FunctionCallback afterCallback() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -325,7 +325,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the After flag to enable the callback
     */
-    static void setAfterCallback(FunctionCallback callback);
+    static void setAfterCallback(FunctionCallback callback) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -337,7 +337,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
     */
-    static FunctionLogCallback logCallback();
+    static FunctionLogCallback logCallback() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -352,7 +352,7 @@ public:
     *  @remark
     *    Keep in mind that in addition to a registered callback, the callback mask of the current Function has to include the Logging flag to enable the callback
     */
-    static void setLogCallback(FunctionLogCallback callback);
+    static void setLogCallback(FunctionLogCallback callback) GLBINDING_NOEXCEPT;
     
     /**
     *  @brief
@@ -361,7 +361,7 @@ public:
     *  @return
     *    The list of all build-in functions
     */
-    static const array_t & functions();
+    static const array_t & functions() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -370,7 +370,7 @@ public:
     *  @return
     *    List of additional functions
     */
-    static const std::vector<AbstractFunction *> & additionalFunctions();
+    static const std::vector<AbstractFunction *> & additionalFunctions() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -379,7 +379,7 @@ public:
     *  @return
     *    Index of current state
     */
-    static int currentPos();
+    static int currentPos() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -388,7 +388,7 @@ public:
     *  @return
     *    Highest state index currently used
     */
-    static int maxPos();
+    static int maxPos() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -397,7 +397,7 @@ public:
     *  @return
     *    Total number of functions
     */
-    static size_t size();
+    static size_t size() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -408,7 +408,7 @@ public:
     *
     *  @see Binding::unresolvedCallback()
     */
-    static void unresolved(const AbstractFunction * function);
+    static void unresolved(const AbstractFunction * function) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -419,7 +419,7 @@ public:
     *
     *  @see Binding::beforeCallback()
     */
-    static void before(const FunctionCall & call);
+    static void before(const FunctionCall & call) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -430,7 +430,7 @@ public:
     *
     *  @see Binding::afterCallback()
     */
-    static void after(const FunctionCall & call);
+    static void after(const FunctionCall & call) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -441,7 +441,7 @@ public:
     *
     *  @see Binding::logCallback()
     */
-    static void log(FunctionCall && call);
+    static void log(FunctionCall && call) GLBINDING_NOEXCEPT;
 
 
 public:
@@ -3447,7 +3447,7 @@ protected:
     *  @param[in] pos
     *    Index of new State
     */
-    static void provideState(int pos);
+    static void provideState(int pos) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -3456,7 +3456,7 @@ protected:
     *  @param[in] pos
     *    Index of State to neglect
     */
-    static void neglectState(int pos);
+    static void neglectState(int pos) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -3465,24 +3465,24 @@ protected:
     *  @param[in] pos
     *    Index of State
     */
-    static void setStatePos(int pos);
+    static void setStatePos(int pos) GLBINDING_NOEXCEPT;
 
 
 protected:
-    static const array_t s_functions;                                       ///< The list of all build-in functions
-    static int & s_maxPos();                                                ///< Maximum State index in use
-    static std::vector<AbstractFunction *> & s_additionalFunctions();       ///< List of additional OpenGL fucntions
-    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks(); ///< List of callbacks for context switch
-    static SimpleFunctionCallback & s_unresolvedCallback();                 ///< Callback for unresolved functions
-    static FunctionCallback & s_beforeCallback();                           ///< Callback for before function call
-    static FunctionCallback & s_afterCallback();                            ///< Callback for after function call
-    static FunctionLogCallback & s_logCallback();                           ///< Callback for logging a function call
-    static int & s_pos();                                                   ///< Position of current State
-    static ContextHandle & s_context();                                     ///< Handle of current context
-    static glbinding::GetProcAddress & s_getProcAddress();                  ///< Current address of function resolution method
-    static std_boost::recursive_mutex & s_mutex();                          ///< Mutex
-    static std::unordered_map<ContextHandle, int> & s_bindings();           ///< Map (handle->position) of initialized contexts
-    static glbinding::GetProcAddress & s_firstGetProcAddress();             ///< First address of function resolution method
+    static const array_t s_functions; ///< The list of all build-in functions
+    static int & s_maxPos() GLBINDING_NOEXCEPT;                                                ///< Maximum State index in use
+    static std::vector<AbstractFunction *> & s_additionalFunctions() GLBINDING_NOEXCEPT;       ///< List of additional OpenGL fucntions
+    static std::vector<ContextSwitchCallback> & s_contextSwitchCallbacks() GLBINDING_NOEXCEPT; ///< List of callbacks for context switch
+    static SimpleFunctionCallback & s_unresolvedCallback() GLBINDING_NOEXCEPT;                 ///< Callback for unresolved functions
+    static FunctionCallback & s_beforeCallback() GLBINDING_NOEXCEPT;                           ///< Callback for before function call
+    static FunctionCallback & s_afterCallback() GLBINDING_NOEXCEPT;                            ///< Callback for after function call
+    static FunctionLogCallback & s_logCallback() GLBINDING_NOEXCEPT;                           ///< Callback for logging a function call
+    static int & s_pos() GLBINDING_NOEXCEPT;                                                   ///< Position of current State
+    static ContextHandle & s_context() GLBINDING_NOEXCEPT;                                     ///< Handle of current context
+    static glbinding::GetProcAddress & s_getProcAddress() GLBINDING_NOEXCEPT;                  ///< Current address of function resolution method
+    static std_boost::recursive_mutex & s_mutex() GLBINDING_NOEXCEPT;                          ///< Mutex
+    static std::unordered_map<ContextHandle, int> & s_bindings() GLBINDING_NOEXCEPT;           ///< Map (handle->position) of initialized contexts
+    static glbinding::GetProcAddress & s_firstGetProcAddress() GLBINDING_NOEXCEPT;             ///< First address of function resolution method
 };
 
 

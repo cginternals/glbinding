@@ -37,7 +37,7 @@ public:
     *  @brief
     *    Default constructor, resulting in an invalid Version object
     */
-    GLBINDING_CONSTEXPR inline Version();
+    GLBINDING_CONSTEXPR inline Version() GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -48,7 +48,7 @@ public:
     *  @param[in] minorVersion
     *    The minor version
     */
-    GLBINDING_CONSTEXPR inline Version(unsigned char majorVersion, unsigned char minorVersion);
+    GLBINDING_CONSTEXPR inline Version(unsigned char majorVersion, unsigned char minorVersion) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -57,7 +57,7 @@ public:
     *  @param[in] version
     *    The Version the data is used from
     */
-    GLBINDING_CONSTEXPR inline Version(const Version & version);
+    GLBINDING_CONSTEXPR inline Version(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -66,7 +66,7 @@ public:
     *  @param[in] version
     *    The Version the data is moved from
     */
-    inline Version(Version && version);
+    inline Version(Version && version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -75,7 +75,7 @@ public:
     *  @return
     *    The major version
     */
-    GLBINDING_CONSTEXPR inline unsigned char majorVersion() const;
+    GLBINDING_CONSTEXPR inline unsigned char majorVersion() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -84,25 +84,25 @@ public:
     *  @return
     *    The minor version
     */
-    GLBINDING_CONSTEXPR inline unsigned char minorVersion() const;
+    GLBINDING_CONSTEXPR inline unsigned char minorVersion() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Cast operator for a std::pair cast of type unsigned char
     */
-    inline operator std::pair<unsigned char, unsigned char>() const;
+    inline operator std::pair<unsigned char, unsigned char>() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Cast operator for a std::pair cast of type unsigned short
     */
-    inline operator std::pair<unsigned short, unsigned short>() const;
+    inline operator std::pair<unsigned short, unsigned short>() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
     *    Cast operator for a std::pair cast of type unsigned int
     */
-    inline operator std::pair<unsigned int, unsigned int>() const;
+    inline operator std::pair<unsigned int, unsigned int>() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -111,7 +111,7 @@ public:
     *  @return
     *    The version as string, "-.-" iff the Version is invalid
     */
-    inline std::string toString() const;
+    inline std::string toString() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -123,7 +123,7 @@ public:
     *  @remark
     *    This method can be used to check if this Version was constructed using the default constructor or is otherwise malformed
     */
-    GLBINDING_CONSTEXPR inline bool isNull() const;
+    GLBINDING_CONSTEXPR inline bool isNull() const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -135,7 +135,7 @@ public:
     *  @return
     *    The reference to this Version
     */
-    inline Version & operator=(const Version & version);
+    inline Version & operator=(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -147,7 +147,7 @@ public:
     *  @return
     *    The reference to this Version
     */
-    inline Version & operator=(Version && version);
+    inline Version & operator=(Version && version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -159,7 +159,7 @@ public:
     *  @return
     *    `true` if this Version is lower than the other Version, else `false`
     */
-    GLBINDING_CONSTEXPR inline bool operator<(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator<(const Version & version) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -171,7 +171,7 @@ public:
     *  @return
     *    `true` if this Version is greater than the other Version, else `false`
     */
-    GLBINDING_CONSTEXPR inline bool operator>(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator>(const Version & version) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -183,7 +183,7 @@ public:
     *  @return
     *    `true` if this Version is equal to the other Version, else `false`
     */
-    GLBINDING_CONSTEXPR inline bool operator==(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator==(const Version & version) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -195,7 +195,7 @@ public:
     *  @return
     *    `true` if this Version is not equal to the other Version, else `false`
     */
-    GLBINDING_CONSTEXPR inline bool operator!=(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator!=(const Version & version) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -207,7 +207,7 @@ public:
     *  @return
     *    `true` if this Version is greater than or equal to the other Version, else `false`
     */
-    GLBINDING_CONSTEXPR inline bool operator>=(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator>=(const Version & version) const GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -219,7 +219,7 @@ public:
     *  @return
     *    `true` if this Version is lower than or equal to the other Version, else `false`
     */
-    GLBINDING_CONSTEXPR inline bool operator<=(const Version & version) const;
+    GLBINDING_CONSTEXPR inline bool operator<=(const Version & version) const GLBINDING_NOEXCEPT;
 
 
 protected:

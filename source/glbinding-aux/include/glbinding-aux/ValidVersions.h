@@ -25,7 +25,7 @@ public:
     *  @return
     *    `true` iff the version is valid (i.e., if this version is present in the set of valid versions)
     */
-    static bool isValid(const Version & version);
+    static bool isValid(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -34,7 +34,7 @@ public:
     *  @return
     *    The nearest valid Version that is either equal or lower than this Version
     */
-    static const Version & nearest(const Version & version);
+    static const Version & nearest(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -43,7 +43,7 @@ public:
     *  @return
     *    The set of all valid Versions (= released OpenGL Features)
     */
-    static const std::set<Version> & versions();
+    static const std::set<Version> & versions() GLBINDING_NOEXCEPT;
 
     /**
     * @brief
@@ -52,7 +52,7 @@ public:
     * @return
     *   The list of all valid Versions (Features) with a version number below the provided one
     */
-    static std::set<Version> preceeding(const Version & version);
+    static std::set<Version> preceeding(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     * @brief
@@ -61,7 +61,7 @@ public:
     * @return
     *   The list of all valid Versions (Features) with a version number above the provided one
     */
-    static std::set<Version> succeeding(const Version & version);
+    static std::set<Version> succeeding(const Version & version) GLBINDING_NOEXCEPT;
 
     /**
     *  @brief
@@ -70,7 +70,7 @@ public:
     *  @return
     *    The most current Version from the set of all valid versions
     */
-    static const Version & latest();
+    static const Version & latest() GLBINDING_NOEXCEPT;
 
 
 protected:

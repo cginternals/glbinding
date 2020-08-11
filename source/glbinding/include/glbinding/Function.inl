@@ -21,7 +21,7 @@ namespace glbinding
 template <typename ReturnType, typename... Arguments>
 struct BasicCallHelper
 {
-    inline static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments)
+    inline static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) GLBINDING_NOEXCEPT
     {
         return reinterpret_cast<typename glbinding::Function<ReturnType, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
@@ -34,7 +34,7 @@ struct BasicCallHelper
 template <typename... Arguments>
 struct BasicCallHelper<glbinding::Boolean8, Arguments...>
 {
-    inline static glbinding::Boolean8 call(const glbinding::Function<glbinding::Boolean8, Arguments...> * function, Arguments&&... arguments)
+    inline static glbinding::Boolean8 call(const glbinding::Function<glbinding::Boolean8, Arguments...> * function, Arguments&&... arguments) GLBINDING_NOEXCEPT
     {
         return reinterpret_cast<typename glbinding::Function<glbinding::Boolean8::underlying_type, Arguments...>::Signature>(function->address())(std::forward<Arguments>(arguments)...);
     }
@@ -45,7 +45,7 @@ struct BasicCallHelper<glbinding::Boolean8, Arguments...>
 template <typename ReturnType, typename... Arguments>
 struct FunctionHelper
 {
-    inline static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments)
+    inline static ReturnType call(const glbinding::Function<ReturnType, Arguments...> * function, Arguments&&... arguments) GLBINDING_NOEXCEPT
     {
         glbinding::FunctionCall functionCall(function);
 
@@ -94,7 +94,7 @@ struct FunctionHelper
 template <typename... Arguments>
 struct FunctionHelper<void, Arguments...>
 {
-    inline static void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments)
+    inline static void call(const glbinding::Function<void, Arguments...> * function, Arguments&&... arguments) GLBINDING_NOEXCEPT
     {
         glbinding::FunctionCall functionCall(function);
 
@@ -134,7 +134,7 @@ struct FunctionHelper<void, Arguments...>
 
 
 template <typename ReturnType, typename... Arguments>
-Function<ReturnType, Arguments...>::Function(const char * _name)
+Function<ReturnType, Arguments...>::Function(const char * _name) GLBINDING_NOEXCEPT
 : AbstractFunction{_name}
 , m_beforeCallback{nullptr}
 , m_afterCallback{nullptr}
@@ -142,13 +142,13 @@ Function<ReturnType, Arguments...>::Function(const char * _name)
 }
 
 template <typename ReturnType, typename... Arguments>
-ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const
+ReturnType Function<ReturnType, Arguments...>::operator()(Arguments&... arguments) const GLBINDING_NOEXCEPT
 {
     return call(arguments...);
 }
 
 template <typename ReturnType, typename... Arguments>
-ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) const
+ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) const GLBINDING_NOEXCEPT
 {
     const auto myAddress = address();
 
@@ -180,7 +180,7 @@ ReturnType Function<ReturnType, Arguments...>::call(Arguments&... arguments) con
 }
 
 template <typename ReturnType, typename... Arguments>
-ReturnType Function<ReturnType, Arguments...>::directCall(Arguments... arguments) const
+ReturnType Function<ReturnType, Arguments...>::directCall(Arguments... arguments) const GLBINDING_NOEXCEPT
 {
     if (address() == nullptr)
     {
@@ -191,61 +191,61 @@ ReturnType Function<ReturnType, Arguments...>::directCall(Arguments... arguments
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::setBeforeCallback(BeforeCallback callback)
+void Function<ReturnType, Arguments...>::setBeforeCallback(BeforeCallback callback) GLBINDING_NOEXCEPT
 {
     m_beforeCallback = std::move(callback);
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::clearBeforeCallback()
+void Function<ReturnType, Arguments...>::clearBeforeCallback() GLBINDING_NOEXCEPT
 {
     m_beforeCallback = nullptr;
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::setAfterCallback(AfterCallback callback)
+void Function<ReturnType, Arguments...>::setAfterCallback(AfterCallback callback) GLBINDING_NOEXCEPT
 {
     m_afterCallback = std::move(callback);
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::clearAfterCallback()
+void Function<ReturnType, Arguments...>::clearAfterCallback() GLBINDING_NOEXCEPT
 {
     m_afterCallback = nullptr;
 }
 
 template <typename ReturnType, typename... Arguments>
-typename Function<ReturnType, Arguments...>::BeforeCallback Function<ReturnType, Arguments...>::beforeCallback() const
+typename Function<ReturnType, Arguments...>::BeforeCallback Function<ReturnType, Arguments...>::beforeCallback() const GLBINDING_NOEXCEPT
 {
     return m_beforeCallback;
 }
 
 template <typename ReturnType, typename... Arguments>
-typename Function<ReturnType, Arguments...>::AfterCallback Function<ReturnType, Arguments...>::afterCallback() const
+typename Function<ReturnType, Arguments...>::AfterCallback Function<ReturnType, Arguments...>::afterCallback() const GLBINDING_NOEXCEPT
 {
     return m_afterCallback;
 }
 
 template <typename ReturnType, typename... Arguments>
-bool Function<ReturnType, Arguments...>::hasState() const
+bool Function<ReturnType, Arguments...>::hasState() const GLBINDING_NOEXCEPT
 {
     return hasState(AbstractFunction::currentPos());
 }
 
 template <typename ReturnType, typename... Arguments>
-bool Function<ReturnType, Arguments...>::hasState(const int pos) const
+bool Function<ReturnType, Arguments...>::hasState(const int pos) const GLBINDING_NOEXCEPT
 {
     return pos > -1 && AbstractFunction::maxPos() <= pos;
 }
 
 template <typename ReturnType, typename... Arguments>
-AbstractState & Function<ReturnType, Arguments...>::state() const
+AbstractState & Function<ReturnType, Arguments...>::state() const GLBINDING_NOEXCEPT
 {
     return state(AbstractFunction::currentPos());
 }
 
 template <typename ReturnType, typename... Arguments>
-AbstractState & Function<ReturnType, Arguments...>::state(const int pos) const
+AbstractState & Function<ReturnType, Arguments...>::state(const int pos) const GLBINDING_NOEXCEPT
 {
     assert(AbstractFunction::maxPos() >= pos);
     assert(pos > -1);
@@ -254,7 +254,7 @@ AbstractState & Function<ReturnType, Arguments...>::state(const int pos) const
 }
 
 template <typename ReturnType, typename... Arguments>
-void Function<ReturnType, Arguments...>::resizeStates(int count)
+void Function<ReturnType, Arguments...>::resizeStates(int count) GLBINDING_NOEXCEPT
 {
     m_states.resize(static_cast<std::size_t>(count));
 }
