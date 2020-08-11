@@ -448,7 +448,9 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_L{};
 
 const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_M =
 {
+    { "GL_MESA_framebuffer_flip_x", GLextension::GL_MESA_framebuffer_flip_x },
     { "GL_MESA_framebuffer_flip_y", GLextension::GL_MESA_framebuffer_flip_y },
+    { "GL_MESA_framebuffer_swap_xy", GLextension::GL_MESA_framebuffer_swap_xy },
     { "GL_MESA_pack_invert", GLextension::GL_MESA_pack_invert },
     { "GL_MESA_program_binary_formats", GLextension::GL_MESA_program_binary_formats },
     { "GL_MESA_resize_buffers", GLextension::GL_MESA_resize_buffers },
