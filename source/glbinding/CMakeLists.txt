@@ -264,7 +264,7 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
-    externals::KHRplatform
+    $<IF:$<TARGET_EXISTS:KHR::KHR>,KHR::KHR,externals::KHRplatform>
 
     INTERFACE
 )

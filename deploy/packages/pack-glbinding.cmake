@@ -54,7 +54,11 @@ set(CPACK_COMPONENT_DEV_DISPLAY_NAME "C/C++ development files")
 set(CPACK_COMPONENT_DEV_DESCRIPTION "Development files for ${META_PROJECT_NAME} library")
 set(CPACK_COMPONENT_DEV_DEPENDS runtime)
 
-set(CPACK_COMPONENTS_ALL runtime dev 3rdparty-dev)
+set(CPACK_COMPONENTS_ALL runtime dev)
+
+if (OPTION_BUILD_OWN_KHR_HEADERS)
+    set(CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} 3rdparty-dev)
+endif()
 
 if (OPTION_BUILD_TOOLS AND (TARGET ${META_PROJECT_NAME}::glcontexts OR TARGET ${META_PROJECT_NAME}::glfunctions
     OR TARGET ${META_PROJECT_NAME}::glinfo OR TARGET ${META_PROJECT_NAME}::glisdeprecated

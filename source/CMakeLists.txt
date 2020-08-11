@@ -11,9 +11,16 @@ configure_file(version.h.in ${CMAKE_CURRENT_BINARY_DIR}/include/${META_PROJECT_N
 # Sub-projects
 # 
 
-set(IDE_FOLDER "")
+# 3rdParties
+set(IDE_FOLDER "3rdparty")
+if (OPTION_BUILD_OWN_KHR_HEADERS)
+    add_subdirectory("3rdparty/KHR")
+else ()
+    find_package(KHR)
+endif ()
 
 # Libraries
+set(IDE_FOLDER "")
 add_subdirectory(glbinding)
 add_subdirectory(glbinding-aux)
 

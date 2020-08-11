@@ -85,6 +85,7 @@ option(OPTION_BUILD_TOOLS             "Build tools."                            
 option(OPTION_BUILD_EXAMPLES          "Build examples."                                        ON)
 option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."              OFF)
 option(OPTION_BUILD_CHECK             "Enable source code check targets"                       OFF)
+option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers." OFF)
 
 
 # 
@@ -191,7 +192,6 @@ endif()
 # Project modules
 # 
 
-add_subdirectory(3rdparty)
 add_subdirectory(source)
 add_subdirectory(docs)
 add_subdirectory(deploy)
