@@ -6,7 +6,9 @@
 #include <fstream>
 #include <cmath>
 
+#ifdef cpplocate_FOUND
 #include <cpplocate/cpplocate.h>
+#endif
 
 #include <glbinding/gl/gl.h>
 
@@ -43,9 +45,13 @@ std::string readFile(const std::string & filePath)
 
 std::string determineDataPath()
 {
+#ifdef cpplocate_FOUND
     std::string path = cpplocate::locatePath("data/cubescape-gles", "share/glbinding/cubescape-gles", reinterpret_cast<void *>(&gl::glCreateShader));
     if (path.empty()) path = "./data";
     else              path = path + "/data";
+#else
+    const std::string path = "./data";
+#endif
 
     return path;
 }
