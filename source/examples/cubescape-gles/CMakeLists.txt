@@ -4,7 +4,7 @@
 # 
 
 find_package(glfw3)
-find_package(cpplocate REQUIRED)
+find_package(cpplocate QUIET)
 
 
 # 
@@ -20,7 +20,11 @@ if (NOT glfw3_FOUND)
     return()
 endif()
 
-message(STATUS "Example ${target}")
+if (NOT cpplocate_FOUND)
+    message(STATUS "Example ${target}: using static data path (cpplocate not found)")
+else()
+    message(STATUS "Example ${target}")
+endif()
 
 
 # 
@@ -84,7 +88,7 @@ target_link_libraries(${target}
     glfw
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    cpplocate::cpplocate
+    $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
 )
 
 
@@ -96,6 +100,7 @@ target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
     GLFW_INCLUDE_NONE
+    $<$<BOOL:${cpplocate_FOUND}>:cpplocate_FOUND>
 )
 
 

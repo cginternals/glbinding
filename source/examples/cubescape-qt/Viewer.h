@@ -22,7 +22,7 @@ public:
     Viewer(
         const QSurfaceFormat & format
     ,   QWidget * parent = nullptr
-    ,   Qt::WindowFlags flags = NULL);
+    ,   Qt::WindowFlags flags = Qt::WindowFlags());
 
     virtual ~Viewer();
 
