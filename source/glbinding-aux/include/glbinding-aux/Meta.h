@@ -525,9 +525,25 @@ public:
     *    The enum value
     *
     *  @return
-    *    The string representation of the value
+    *    Shortest string representation of the value
+    *
+    *  @remark
+    *    Beware, that some enums in the OpenGL API have different symbol names but identical enum values and that this function cannot differentiate between them
     */
-    static std::vector<std::string> getString(gl::GLenum glenum);
+    static const std::string & getString(gl::GLenum glenum);
+
+
+    /**
+    *  @brief
+    *    Convert enum to symbol name string representation
+    *
+    *  @param[in] enum
+    *    The enum value
+    *
+    *  @return
+    *    All string representations of the value
+    */
+    static std::vector<std::string> getStrings(gl::GLenum glenum);
 
 
 private:

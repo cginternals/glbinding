@@ -23,13 +23,16 @@ std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
 
 std::ostream & operator<<(std::ostream & stream, const GLenum & value)
 {
-    const auto strings = glbinding::aux::Meta::getString(value);
+    const auto strings = glbinding::aux::Meta::getStrings(value);
+
     if (strings.size() == 0)
+    {
         return stream;
+    }
 
     stream << strings[0];
 
-    for (auto i = 1; i < strings.size(); ++i)
+    for (auto i = static_cast<std::size_t>(1); i < strings.size(); ++i)
         stream << " | " << strings[i];
 
     return stream;
@@ -184,17 +187,7 @@ namespace glbinding
 template <>
 std::ostream & operator<<(std::ostream & stream, const Value<gl::GLenum> & value)
 {
-    const auto names = aux::Meta::getString(value.value());
-
-    if (names.size() == 0)
-        return stream;
-
-    stream.write(names[0].c_str(), static_cast<std::streamsize>(names[0].size()));
-
-    for (auto i = 1; i < names.size(); ++i) {
-        stream.write(" | ", 3);
-        stream.write(names[i].c_str(), static_cast<std::streamsize>(names[i].size()));
-    }
+    stream << value.value();
 
     return stream;
 }

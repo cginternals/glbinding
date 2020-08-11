@@ -146,23 +146,34 @@ gl::GLboolean Meta::getBoolean(const std::string & glboolean)
     return static_cast<GLboolean>(-1);
 }
 
-std::vector<std::string> Meta::getString(const GLenum glenum)
+const std::string & Meta::getString(const GLenum glenum)
 {
     const auto range = Meta_StringsByEnum.equal_range(glenum);
 
-    auto result = std::vector<std::string>();
-
-    //const std::string * shortest = &none;
+    const std::string * shortest = &none;
     
     for (auto i = range.first; i != range.second; ++i)
     {
-        /*if (i != Meta_StringsByEnum.cend())
+        if (i != Meta_StringsByEnum.cend())
         {
             if (shortest == &none || shortest->size() > i->second.size())
             {
                 shortest = &(i->second);
             }
-        }*/
+        }
+    }
+
+    return *shortest;
+}
+
+std::vector<std::string> Meta::getStrings(const GLenum glenum)
+{
+    const auto range = Meta_StringsByEnum.equal_range(glenum);
+
+    auto result = std::vector<std::string>();
+
+    for (auto i = range.first; i != range.second; ++i)
+    {
         result.push_back(i->second);
     }
 
