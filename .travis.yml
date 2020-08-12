@@ -167,11 +167,11 @@ matrix:
 
 before_install:
   - cmake --version
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/ppa -y || true; fi
-  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y || true; fi
+  - if [ $TRAVIS_OS_NAME == linux ] && [ "$TRAVIS_DIST" != "precise" ]; then sudo apt-add-repository ppa:cginternals/ppa -y; fi
+  - if [ $TRAVIS_OS_NAME == linux ] && [ "$TRAVIS_DIST" == "precise" ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq libgl1-mesa-dev libegl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev libcpplocate-dev; fi
-  - if [ $TRAVIS_OS_NAME == osx ]; then brew install glfw; fi
+  - if [ $TRAVIS_OS_NAME == osx-test ]; then brew install glfw; fi
 
 before_script:
   - eval "${MATRIX_EVAL}"
