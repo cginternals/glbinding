@@ -8,22 +8,137 @@ matrix:
   include:
 
     - os: osx
-      osx_image: xcode9.1
+      osx_image: xcode12
       env: CMAKE_CONFIGURATION=release BUILD_DIR=build
 
     - os: osx
-      osx_image: xcode9.1
+      osx_image: xcode12
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: osx
+      osx_image: xcode11.6
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: osx
+      osx_image: xcode11.6
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: osx
+      osx_image: xcode10.3
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: osx
+      osx_image: xcode10.3
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: osx
+      osx_image: xcode9.4
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: osx
+      osx_image: xcode9.4
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: osx
+      osx_image: xcode8
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: osx
+      osx_image: xcode8
       env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
 
     - os: linux
+      dist: focal
       compiler: clang
       env: CMAKE_CONFIGURATION=release BUILD_DIR=build
 
     - os: linux
+      dist: focal
       compiler: clang
       env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
 
     - os: linux
+      dist: focal
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: focal
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: bionic
+      compiler: clang
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: bionic
+      compiler: clang
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: bionic
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: bionic
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: xenial
+      compiler: clang
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: xenial
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: xenial
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: trusty
+      compiler: clang
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: trusty
+      compiler: clang
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: trusty
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: trusty
+      compiler: gcc
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: precise
+      compiler: clang
+      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
+
+    - os: linux
+      dist: precise
+      compiler: clang
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+
+    - os: linux
+      dist: precise
       compiler: gcc
       env:
         - CMAKE_CONFIGURATION=release BUILD_DIR=build
@@ -37,6 +152,7 @@ matrix:
           - g++-5
 
     - os: linux
+      dist: precise
       compiler: gcc
       env:
         - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
@@ -52,8 +168,10 @@ matrix:
 before_install:
   - cmake --version
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/ppa -y; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq libgl1-mesa-dev libegl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev libcpplocate-dev; fi
+  - if [ $TRAVIS_OS_NAME == osx ]; then brew install glfw; fi
 
 before_script:
   - eval "${MATRIX_EVAL}"
