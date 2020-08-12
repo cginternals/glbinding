@@ -16,7 +16,10 @@ set(IDE_FOLDER "3rdparty")
 if (OPTION_BUILD_OWN_KHR_HEADERS)
     add_subdirectory("3rdparty/KHR")
 else ()
-    find_package(KHR)
+    find_package(KHR QUIET)
+    if(NOT TARGET KHR::KHR)
+        add_subdirectory("3rdparty/KHR")
+    endif()
 endif ()
 
 # Libraries
