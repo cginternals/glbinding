@@ -120,26 +120,6 @@ matrix:
     - os: linux
       dist: trusty
       compiler: gcc
-      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
-
-    - os: linux
-      dist: trusty
-      compiler: gcc
-      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
-
-    - os: linux
-      dist: precise
-      compiler: clang
-      env: CMAKE_CONFIGURATION=release BUILD_DIR=build
-
-    - os: linux
-      dist: precise
-      compiler: clang
-      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
-
-    - os: linux
-      dist: precise
-      compiler: gcc
       env:
         - CMAKE_CONFIGURATION=release BUILD_DIR=build
         - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
@@ -152,7 +132,7 @@ matrix:
           - g++-5
 
     - os: linux
-      dist: precise
+      dist: trusty
       compiler: gcc
       env:
         - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
@@ -167,8 +147,8 @@ matrix:
 
 before_install:
   - cmake --version
-  - if [ $TRAVIS_OS_NAME == linux ] && [ "$TRAVIS_DIST" != "precise" ]; then sudo apt-add-repository ppa:cginternals/ppa -y; fi
-  - if [ $TRAVIS_OS_NAME == linux ] && [ "$TRAVIS_DIST" == "precise" ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
+  - if [ $TRAVIS_OS_NAME == linux ] && [ "$TRAVIS_DIST" != "trusty" ]; then sudo apt-add-repository ppa:cginternals/ppa -y; fi
+  - if [ $TRAVIS_OS_NAME == linux ] && [ "$TRAVIS_DIST" == "trusty" ]; then sudo apt-add-repository ppa:cginternals/backports-ppa -y; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update -qq; fi
   - if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get install -qq libgl1-mesa-dev libegl1-mesa-dev mesa-common-dev libglew-dev libglfw3-dev libcpplocate-dev; fi
   - if [ $TRAVIS_OS_NAME == osx-test ]; then brew install glfw; fi
