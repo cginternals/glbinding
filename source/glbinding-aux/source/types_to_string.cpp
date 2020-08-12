@@ -15,21 +15,34 @@ namespace gl
 {
 
 
-std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
+std::ostream & operator<<(std::ostream & stream, const GLenum & value)
 {
-    stream << glbinding::aux::Meta::getString(value);
+    const auto strings = glbinding::aux::Meta::getStrings(value);
+
+    if (strings.size() == 0)
+    {
+        return stream;
+    }
+
+    stream << strings[0];
+
+    for (auto i = static_cast<std::size_t>(1); i < strings.size(); ++i)
+        stream << " | " << strings[i];
+
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const GLenum & value)
+std::ostream & operator<<(std::ostream & stream, const GLboolean & value)
 {
     stream << glbinding::aux::Meta::getString(value);
+
     return stream;
 }
 
 std::ostream & operator<<(std::ostream & stream, const GLextension & value)
 {
     stream << glbinding::aux::Meta::getString(value);
+
     return stream;
 }
 
@@ -176,8 +189,7 @@ namespace glbinding
 template <>
 std::ostream & operator<<(std::ostream & stream, const Value<gl::GLenum> & value)
 {
-    const auto & name = aux::Meta::getString(value.value());
-    stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
+    stream << value.value();
 
     return stream;
 }
