@@ -65,6 +65,9 @@ int main(int, char * [])
         const Version v = aux::Meta::version(extension);
         std::cout << " " << aux::Meta::getString(extension) << " " << (v.isNull() ? "" : v.toString()) << std::endl;
     }
+
+    std::cout << std::endl
+        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
     
     return 0;
 }
