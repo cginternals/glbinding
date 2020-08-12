@@ -495,14 +495,14 @@ setAfterCallback([](const FunctionCall & call)
   std::cout << call.function->name() << "(";
   for (unsigned i = 0; i < call.parameters.size(); ++i)
   {
-    std::cout << call.parameters[i]->asString();
+    std::cout << call.parameters[i].get();
     if (i < call.parameters.size() - 1)
       std::cout << ", ";
   }
   std::cout << ")";
 
   if (call.returnValue)
-    std::cout << " -> " << call.returnValue->asString();
+    std::cout << " -> " << call.returnValue.get();
 
   std::cout << std::endl;
 });
