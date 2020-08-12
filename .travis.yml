@@ -13,7 +13,7 @@ matrix:
 
     - os: osx
       osx_image: xcode9.1
-      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
+      env: CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug VERBOSE=1
 
     - os: linux
       compiler: clang
