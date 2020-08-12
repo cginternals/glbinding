@@ -22,6 +22,7 @@ matrix:
 
 # skip unsupported combinations
 init:
+- choco install glfw3
 - set arch=
 - if "%arch%"=="Win64" ( set arch= Win64)
 - echo %arch%
