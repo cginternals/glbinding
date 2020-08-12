@@ -4,6 +4,12 @@
 # 
 
 # find_package(OpenGL REQUIRED)
+find_package(KHR QUIET)
+
+set(KHR_TARGET "KHR::KHR")
+if (NOT TARGET KHR::KHR OR OPTION_BUILD_OWN_KHR_HEADERS)
+    set(KHR_TARGET "externals::KHRplatform")
+endif ()
 
 
 set(ADDITIONAL_LIBRARIES)
@@ -264,7 +270,7 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
-    $<IF:$<TARGET_EXISTS:KHR::KHR>,KHR::KHR,externals::KHRplatform>
+    ${KHR_TARGET}
 
     INTERFACE
 )
