@@ -77,15 +77,16 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."              ON)
-option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies." OFF)
-option(OPTION_BUILD_TESTS             "Build tests."                                           OFF)
-option(OPTION_BUILD_DOCS              "Build documentation."                                   OFF)
-option(OPTION_BUILD_TOOLS             "Build tools."                                           ON)
-option(OPTION_BUILD_EXAMPLES          "Build examples."                                        ON)
-option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."              OFF)
-option(OPTION_BUILD_CHECK             "Enable source code check targets"                       OFF)
-option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers." OFF)
+option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."                ON)
+option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies."   OFF)
+option(OPTION_BUILD_TESTS             "Build tests."                                             OFF)
+option(OPTION_BUILD_DOCS              "Build documentation."                                     OFF)
+option(OPTION_BUILD_TOOLS             "Build tools."                                             ON)
+option(OPTION_BUILD_EXAMPLES          "Build examples."                                          ON)
+option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."                OFF)
+option(OPTION_BUILD_CHECK             "Enable source code check targets"                         OFF)
+option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers."   OFF)
+option(OPTION_BUILD_WITH_LTO          "Build with Link-time Optimization (may break AppleClang)" OFF)
 
 
 # 

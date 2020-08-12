@@ -135,7 +135,7 @@ add_library(${target}
 
 
 # Optional IPO. Do not use IPO if it's not supported by compiler.
-if(CheckIPOSupportedFound)
+if(OPTION_BUILD_WITH_LTO AND CheckIPOSupportedFound)
     check_ipo_supported(RESULT result OUTPUT output)
     if(result)
         set_property(TARGET ${target} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
