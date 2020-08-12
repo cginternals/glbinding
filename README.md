@@ -6,6 +6,7 @@
 
 ![GitHub release](https://img.shields.io/github/release/cginternals/glbinding.svg)
 [![Travis](https://img.shields.io/travis/cginternals/glbinding/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/glbinding)
+[![Appveyor](https://img.shields.io/appveyor/build/scheibel/glbinding/master.svg?style=flat&logo=appveyor)](https://ci.appveyor.com/project/scheibel/glbinding)
 [![Tokei](https://tokei.rs/b1/github/cginternals/glbinding)](https://github.com/Aaronepower/tokei)
 
 [![Documentation](https://img.shields.io/badge/documentation-online-blue.svg?style=flat&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMC41IDEzLjciPjxwYXRoIGQ9Ik0xMS41IDYuOGwtMy43IDYuNEwuNS41aDE0LjdsLTEuMyAyLjFINC4yTDcuOCA5bDIuNS00LjN6bTcuMyA0LjNsMS4yIDIuMWgtOS43TDE3LjYuNWwxLjIgMi4xLTQuOSA4LjV6IiBmaWxsPSIjZmZmIi8%2BPC9zdmc%2B)](https://www.glbinding.org/docs.html)
@@ -180,6 +181,13 @@ In order to compile the project, either use you favorite Editor/IDE with the cre
 
 ```bash
 > cmake --build .
+```
+
+For multi-configuration projects specific configuration (e.g., on Windows using MSVC) can be built using:
+
+```bash
+> cmake --build . --config Release
+> cmake --build . --config Debug
 ```
 
 ### Update Generated Source Code
@@ -487,14 +495,14 @@ setAfterCallback([](const FunctionCall & call)
   std::cout << call.function->name() << "(";
   for (unsigned i = 0; i < call.parameters.size(); ++i)
   {
-    std::cout << call.parameters[i]->asString();
+    std::cout << call.parameters[i].get();
     if (i < call.parameters.size() - 1)
       std::cout << ", ";
   }
   std::cout << ")";
 
   if (call.returnValue)
-    std::cout << " -> " << call.returnValue->asString();
+    std::cout << " -> " << call.returnValue.get();
 
   std::cout << std::endl;
 });
