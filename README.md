@@ -183,6 +183,13 @@ In order to compile the project, either use you favorite Editor/IDE with the cre
 > cmake --build .
 ```
 
+For multi-configuration projects specific configuration (e.g., on Windows using MSVC) can be built using:
+
+```bash
+> cmake --build . --config Release
+> cmake --build . --config Debug
+```
+
 ### Update Generated Source Code
 
 The generation scripts for *glbinding* are maintained within the [khrbinding-generator](https://github.com/cginternals/khrbinding-generator) project.
