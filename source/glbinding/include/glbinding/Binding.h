@@ -122,6 +122,12 @@ public:
 
     /**
     *  @brief
+    *    Destroys the internal state
+    */
+    static void destroy();
+
+    /**
+    *  @brief
     *    Registers an additional function for the additional features
     *
     *  @param[in] function
