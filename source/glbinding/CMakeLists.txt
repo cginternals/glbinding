@@ -4,6 +4,12 @@
 # 
 
 # find_package(OpenGL REQUIRED)
+find_package(KHR QUIET)
+
+set(KHR_TARGET "KHR::KHR")
+if (NOT TARGET KHR::KHR OR OPTION_BUILD_OWN_KHR_HEADERS)
+    set(KHR_TARGET "externals::KHRplatform")
+endif ()
 
 
 set(ADDITIONAL_LIBRARIES)
@@ -169,6 +175,18 @@ add_library(${target}
     ${headers}
 )
 
+
+# Optional IPO. Do not use IPO if it's not supported by compiler.
+if(OPTION_BUILD_WITH_LTO AND CheckIPOSupportedFound)
+    check_ipo_supported(RESULT result OUTPUT output)
+    if(result)
+        set_property(TARGET ${target} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+    else()
+        message(WARNING "IPO is not supported: ${output}")
+    endif()
+endif()
+
+
 # Create namespaced alias
 add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
@@ -252,7 +270,7 @@ target_link_libraries(${target}
 
     PUBLIC
     ${DEFAULT_LIBRARIES}
-    externals::KHRplatform
+    ${KHR_TARGET}
 
     INTERFACE
 )

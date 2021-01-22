@@ -4,7 +4,7 @@
 #include <QWindow>
 
 #include <QList>
-#include <QTime>
+#include <QElapsedTimer>
 #include <QScopedPointer>
 
 class QOpenGLContext;
@@ -69,7 +69,7 @@ protected:
     SwapInterval m_swapInterval;    ///< required for toggle
 
     QScopedPointer<QBasicTimer> m_repaintTimer;
-    QTime m_fpsTimer;
+    QElapsedTimer m_fpsTimer;
 
     long double m_swapts;
     unsigned int m_swaps;

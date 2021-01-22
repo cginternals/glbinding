@@ -39,6 +39,11 @@ using ContextSwitchCallback = std::function<void(ContextHandle)>;             //
 *    Whether to resolve function pointers lazily (\a resolveFunctions = `false`) or immediately
 *
 *  @remark
+*    This function is a convenience interface for applications that use only one OpenGL context.
+*    If you want to use more than one context, use explicit context identifiers and the dedicated
+*    Initialization interface initialize(ContextHandle, glbinding::GetProcAddress, bool, bool).
+*
+*  @remark
 *    After this call, the initialized context is already set active for the current thread.
 *
 *  @remark
@@ -54,6 +59,61 @@ using ContextSwitchCallback = std::function<void(ContextHandle)>;             //
 *     * QOpenGlContext::getProcAddress
 */
 GLBINDING_API void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
+
+/**
+*  @brief
+*    Initializes the binding for the current active OpenGL context
+*
+*  @param[in] context
+*    The context handle of the context to initialize
+*  @param[in] functionPointerResolver
+*    A function pointer to resolve binding functions for this context
+*  @param[in] useContext
+*    Whether to set the context active (\a useContext = `true`) after the initialization
+*  @param[in] resolveFunctions (optional)
+*    Whether to resolve function pointers lazily (\a resolveFunctions = `false`) or immediately
+*
+*  @remark
+*    A functionPointerResolver with value 'nullptr' will get initialized with the function
+*    pointer from the initial thread.
+*/
+GLBINDING_API void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true);
+
+/**
+*  @brief
+*    Update the current context state in glbinding
+*
+*  @remark
+*    This function queries the driver for the current OpenGL context
+*/
+GLBINDING_API void useCurrentContext();
+
+/**
+*  @brief
+*    Update the current context state in glbinding
+*
+*  @param[in] context
+*    The context handle of the context to set current
+*/
+GLBINDING_API void useContext(ContextHandle context);
+
+/**
+*  @brief
+*    Removes the current context from the state of glbinding
+*
+*  @remark
+*    This function queries the driver for the current OpenGL context
+*/
+GLBINDING_API void releaseCurrentContext();
+
+/**
+*  @brief
+*    Removes the current context from the state of glbinding
+*
+*  @param[in] context
+*    The context handle of the context to remove
+*/
+GLBINDING_API void releaseContext(ContextHandle context);
 
 /**
 *  @brief
@@ -258,61 +318,6 @@ GLBINDING_API void setLogCallback(FunctionLogCallback callback);
 *    There may be multiple context switch callbacks registered at once
 */
 GLBINDING_API void addContextSwitchCallback(ContextSwitchCallback callback);
-
-/**
-*  @brief
-*    Initializes the binding for the current active OpenGL context
-*
-*  @param[in] context
-*    The context handle of the context to initialize
-*  @param[in] functionPointerResolver
-*    A function pointer to resolve binding functions for this context
-*  @param[in] useContext
-*    Whether to set the context active (\a useContext = `true`) after the initialization
-*  @param[in] resolveFunctions (optional)
-*    Whether to resolve function pointers lazily (\a resolveFunctions = `false`) or immediately
-*
-*  @remark
-*    A functionPointerResolver with value 'nullptr' will get initialized with the function
-*    pointer from the initial thread.
-*/
-GLBINDING_API void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext = true, bool resolveFunctions = true);
-
-/**
-*  @brief
-*    Update the current context state in glbinding
-*
-*  @remark
-*    This function queries the driver for the current OpenGL context
-*/
-GLBINDING_API void useCurrentContext();
-
-/**
-*  @brief
-*    Update the current context state in glbinding
-*
-*  @param[in] context
-*    The context handle of the context to set current
-*/
-GLBINDING_API void useContext(ContextHandle context);
-
-/**
-*  @brief
-*    Removes the current context from the state of glbinding
-*
-*  @remark
-*    This function queries the driver for the current OpenGL context
-*/
-GLBINDING_API void releaseCurrentContext();
-
-/**
-*  @brief
-*    Removes the current context from the state of glbinding
-*
-*  @param[in] context
-*    The context handle of the context to remove
-*/
-GLBINDING_API void releaseContext(ContextHandle context);
 
 
 } // namespace glbinding
