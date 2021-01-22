@@ -60,7 +60,7 @@ export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_
 target_include_directories(${target}
     INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include>
+    $<INSTALL_INTERFACE:include/${META_PROJECT_NAME}>/3rdparty
 )
 
 
@@ -118,21 +118,21 @@ target_include_directories(${target}
 
 # Library
 install(TARGETS ${target}
-    EXPORT  "${target}-export"            COMPONENT 3rdparty-dev
-    RUNTIME DESTINATION ${INSTALL_BIN}    COMPONENT 3rdparty-runtime
-    LIBRARY DESTINATION ${INSTALL_SHARED} COMPONENT 3rdparty-runtime
-    ARCHIVE DESTINATION ${INSTALL_LIB}    COMPONENT 3rdparty-dev
+    EXPORT  "${target}-export"            COMPONENT dev
+    RUNTIME DESTINATION ${INSTALL_BIN}    COMPONENT runtime
+    LIBRARY DESTINATION ${INSTALL_SHARED} COMPONENT runtime
+    ARCHIVE DESTINATION ${INSTALL_LIB}    COMPONENT dev
 )
 
 # Header files
 install(DIRECTORY
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/KHR DESTINATION ${INSTALL_INCLUDE}
-    COMPONENT 3rdparty-dev
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/KHR DESTINATION ${INSTALL_INCLUDE}/${META_PROJECT_NAME}/3rdparty
+    COMPONENT dev
 )
 
 # CMake config
 install(EXPORT ${target}-export
     NAMESPACE   ${META_PROJECT_NAME}::
     DESTINATION ${INSTALL_CMAKE}/${target}
-    COMPONENT   3rdparty-dev
+    COMPONENT   dev
 )

@@ -4,6 +4,13 @@
 # 
 # Please adjust the list of submodules to search for.
 
+include(CMakeFindDependencyMacro)
+
+if (NOT TARGET "KHR::KHR")
+    message(STATUS "${CMAKE_CURRENT_LIST_DIR}/cmake")
+    list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+    find_dependency(KHR)
+endif ()
 
 # List of modules
 set(MODULE_NAMES

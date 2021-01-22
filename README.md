@@ -230,13 +230,19 @@ For those cases, glbinding comes with a copy of the headers for internal use.
 
 This solution has one significant downside: As those headers are used by the types of the OpenGL API and the types are used within the public interface of glbinding, the `khrplatform.h` headers needs to be present when building downstream projects, i.e., they need to be installed along glbinding. In order to not conflict with packages providing the official headers, this internal header has to be installed on a separate location. This complicates the project setup and results in the following usage scenarios for you to choose from:
 
-## KHR/khrplatform.h Usage
+### KHR/khrplatform.h Usage
 
 For this usage scenario, glbinding needs to get built with the CMake option `OPTION_BUILD_OWN_KHR_HEADERS` set to `Off` and system-wide availability of the `KHR/khrplatform.h` headers, e.g., by having `libegl1-mesa-dev` installed. If either the option is `On` or the system-wide headers are not found, the internally provided headers are used instead.
 
-## glbinding-internal khrplatform.h Usage
+This decision is stored as property of the glbinding CMake target and will be used for downstream projects as well.
+The use and propagation of this decision is transparent to the user as well, i.e., the user should not need to handle this downstream. The only thing to consider is to have the system-wide `KHR/khrplatform.h` headers available when building the downstream project.
+
+### glbinding-internal khrplatform.h Usage
 
 For this usage scenario, glbinding should get built with the CMake option `OPTION_BUILD_OWN_KHR_HEADERS` set to `On`. Alternatively, this scenario is the fallback if the official `KHR/khrplatform.h` headers are not found.
+
+This decision is stored as property of the glbinding CMake target and will be used for downstream projects as well.
+The use and propagation of this decision is transparent to the user as well, i.e., the user should not need to handle this downstream.
 
 # Basic Example
 
