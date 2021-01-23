@@ -17,6 +17,7 @@ include(cmake/Custom.cmake)
 set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
 set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
+set_policy(CMP0069 NEW) # ENABLE CMP0069: prefer to add IPO flags whenever the INTERPROCEDURAL_OPTIMIZATION target property is enabled
 set_policy(CMP0072 NEW) # ENABLE CMP0072: FindOpenGL prefers GLVND by default when available.
 set_policy(CMP0077 NEW) # ENABLE CMP0077: option() honors normal variables.
 
@@ -31,6 +32,11 @@ set(WriterCompilerDetectionHeaderFound NOTFOUND)
 if (${CMAKE_VERSION} VERSION_GREATER "3.2")
     include(WriteCompilerDetectionHeader OPTIONAL RESULT_VARIABLE WriterCompilerDetectionHeaderFound)
 endif()
+
+if (${CMAKE_VERSION} VERSION_GREATER "3.9")
+    include(CheckIPOSupported OPTIONAL RESULT_VARIABLE CheckIPOSupportedFound)
+endif()
+
 
 # Include custom cmake modules
 include(cmake/GetGitRevisionDescription.cmake)
@@ -71,14 +77,16 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."              ON)
-option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies." OFF)
-option(OPTION_BUILD_TESTS             "Build tests."                                           OFF)
-option(OPTION_BUILD_DOCS              "Build documentation."                                   OFF)
-option(OPTION_BUILD_TOOLS             "Build tools."                                           ON)
-option(OPTION_BUILD_EXAMPLES          "Build examples."                                        ON)
-option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."              OFF)
-option(OPTION_BUILD_CHECK             "Enable source code check targets"                       OFF)
+option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."                ON)
+option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies."   OFF)
+option(OPTION_BUILD_TESTS             "Build tests."                                             OFF)
+option(OPTION_BUILD_DOCS              "Build documentation."                                     OFF)
+option(OPTION_BUILD_TOOLS             "Build tools."                                             ON)
+option(OPTION_BUILD_EXAMPLES          "Build examples."                                          ON)
+option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."                OFF)
+option(OPTION_BUILD_CHECK             "Enable source code check targets"                         OFF)
+option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers."   OFF)
+option(OPTION_BUILD_WITH_LTO          "Build with Link-time Optimization (may break AppleClang)" OFF)
 
 
 # 
@@ -185,7 +193,6 @@ endif()
 # Project modules
 # 
 
-add_subdirectory(3rdparty)
 add_subdirectory(source)
 add_subdirectory(docs)
 add_subdirectory(deploy)
@@ -200,6 +207,7 @@ install(FILES "${PROJECT_BINARY_DIR}/VERSION" DESTINATION ${INSTALL_ROOT} COMPON
 
 # Install cmake find script for the project
 install(FILES ${META_PROJECT_NAME}-config.cmake DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+install(FILES cmake/FindKHR.cmake DESTINATION ${INSTALL_CMAKE} COMPONENT dev)
 
 # Install the project meta files
 install(FILES AUTHORS   DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
