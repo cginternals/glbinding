@@ -7,8 +7,10 @@
 include(CMakeFindDependencyMacro)
 
 if (NOT TARGET "KHR::KHR")
-    list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
-    find_dependency(KHR QUIET)
+    # prepend to current CMAKE_MODULE_PATH
+    # original command: list(PREPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+    set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake;${CMAKE_MODULE_PATH}")
+    find_package(KHR QUIET)
 endif ()
 
 # List of modules
