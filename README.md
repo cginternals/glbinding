@@ -17,12 +17,12 @@
 
 *glbinding* leverages C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros;
 all OpenGL symbols are real functions and variables.
-It provides type-safe parameters, per feature API header, lazy function resolution, multi-context and multi-thread support, global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
-Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) *glbinding* is generated using python scripts and templates that can be easily adapted to fit custom needs.
+It provides type-safe parameters, per-feature API headers, lazy function resolution, multi-context and multi-thread support, global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
+Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) *glbinding* is generated using [python scripts and templates](https://github.com/cginternals/khrbinding-generator) that can be easily adapted to fit custom needs.
 
 ![what-is-glbinding](https://raw.githubusercontent.com/cginternals/glbinding/master/docs/what-is-glbinding-v2.png)
 
-Code that is written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding* and causes no significant impact on runtime performance (see [compare example](https://github.com/cginternals/glbinding/wiki/examples#compare)): just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl```.
+Code that is written using a typical C binding for OpenGL, e.g., [GLEW](http://glew.sourceforge.net/), is fully compatible for the use with *glbinding* and causes no significant impact on runtime performance (see [compare example](https://github.com/cginternals/glbinding/wiki/examples#compare)): just replace all includes to the former binding, replace the initialization code and *use* the appropriate API namespace, e.g., ```gl``` for full availability of the OpenGL API.
 
 ```cpp
 #include <glbinding/gl/gl.h>
@@ -45,6 +45,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 * [Build form Source](#build-instructions)
 * [Updating the Generated Source Code](#update-generated-source-code)
 * [Tips for Linking](#tips-for-linking)
+* [Dependency on KHR Headers](#dependency-on-khr-headers)
 * [Basic Example](#basic-example)
 
 ### Feature Documentation and Code Snippets
@@ -202,14 +203,15 @@ Assuming a directory structure with both projects such as `<projects>/glbinding`
 
 # Tips for Linking
 
-We suggest using the build system of *glbinding* for a smooth integration: [CMake](https://cmake.org/)
-For it, *glbinding* provides a find configuration script that should be installed into your system or at least accessible by CMake.
-In the projects CMakeLists.txt, add one of the following lines:
+We suggest using the build system [CMake](https://cmake.org/) for a smooth integration.
+For it, *glbinding* provides a configuration script that should be installed into your system or at least accessible by CMake.
+In your projects' `CMakeLists.txt`, add one of the following lines:
 
 ```cmake
 find_package(glbinding QUIET) # if you want to check for existence
 find_package(glbinding REQUIRED) # if it is really required in your project
 ```
+
 Finally, just link *glbinding* to your own library or executable:
 
 ```cmake
@@ -218,6 +220,29 @@ target_link_libraries(${target} ... PUBLIC
     glbinding::glbinding-aux # for additional, auxiliary features as logging, meta information, or debugging functionality
 )
 ```
+
+# Dependency on KHR Headers
+
+As of mid 2019, the OpenGL API depends on the platform headers from the Khronos group, even on desktop systems.
+This introduced a direct dependency of *glbinding* to the `KHR/khrplatform.h` header file. For most Linux systems, these headers are easily available (e.g., by installing `libegl1-mesa-dev` on Ubuntu), whereas on other systems, pre-existing packages are scarce. Even in the case of Ubuntu, one can argue that installing the EGL dependency is strange, as glbinding does not depend on EGL in any way.
+
+For those cases, glbinding comes with a copy of the headers for internal use.
+
+This solution has one significant downside: As those headers are used by the types of the OpenGL API and the types are used within the public interface of glbinding, the `khrplatform.h` headers needs to be present when building downstream projects, i.e., they need to be installed along glbinding. In order to not conflict with packages providing the official headers, this internal header has to be installed on a separate location. This complicates the project setup and results in the following usage scenarios for you to choose from:
+
+### KHR/khrplatform.h Usage
+
+For this usage scenario, glbinding needs to get built with the CMake option `OPTION_BUILD_OWN_KHR_HEADERS` set to `Off` and system-wide availability of the `KHR/khrplatform.h` headers, e.g., by having `libegl1-mesa-dev` installed. If either the option is `On` or the system-wide headers are not found, the internally provided headers are used instead.
+
+This decision is stored as property of the glbinding CMake target and will be used for downstream projects as well.
+The use and propagation of this decision is transparent to the user as well, i.e., the user should not need to handle this downstream. The only thing to consider is to have the system-wide `KHR/khrplatform.h` headers available when building the downstream project.
+
+### glbinding-internal khrplatform.h Usage
+
+For this usage scenario, glbinding should get built with the CMake option `OPTION_BUILD_OWN_KHR_HEADERS` set to `On`. Alternatively, this scenario is the fallback if the official `KHR/khrplatform.h` headers are not found.
+
+This decision is stored as property of the glbinding CMake target and will be used for downstream projects as well.
+The use and propagation of this decision is transparent to the user as well, i.e., the user should not need to handle this downstream.
 
 # Basic Example
 
