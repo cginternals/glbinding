@@ -16,17 +16,7 @@ endfunction(set_policy)
 # source_group_by_path("${CMAKE_CURRENT_SOURCE_DIR}/src" "\\\\.h$|\\\\.inl$|\\\\.cpp$|\\\\.c$|\\\\.ui$|\\\\.qrc$" "Source Files" ${sources})
 function(source_group_by_path PARENT_PATH REGEX GROUP)
 
-    foreach (FILENAME ${ARGN})
-        
-        get_filename_component(FILEPATH "${FILENAME}" REALPATH)
-        file(RELATIVE_PATH FILEPATH ${PARENT_PATH} ${FILEPATH})
-        get_filename_component(FILEPATH "${FILEPATH}" DIRECTORY)
-
-        string(REPLACE "/" "\\" FILEPATH "${FILEPATH}")
-
-    source_group("${GROUP}\\${FILEPATH}" REGULAR_EXPRESSION "${REGEX}" FILES ${FILENAME})
-
-    endforeach()
+    source_group(TREE "${PARENT_PATH}" PREFIX "${GROUP}" REGULAR_EXPRESSION "${REGEX}" FILES ${ARGN})
 
 endfunction(source_group_by_path)
 
