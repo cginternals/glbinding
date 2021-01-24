@@ -67,7 +67,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 You can either download the source and manually [compile](#build-instructions) it or use one of the [pre-compiled releases](https://github.com/cginternals/glbinding/releases) of this repository.
 For systems providing package managers, we generally strive for packages in these package managers.
 
-### Windows
+## Windows
 
 The various *glbinding* packages can be installed either by downloading an installer, e.g., the [x64 installer for glbinding v3.1.0](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-installer.exe) for Microsoft Visual Studio 2015, or downloading and extracting one of the precompiled archives, e.g. [runtime](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-runtime.zip),
 [examples](https://github.com/cginternals/glbinding/releases/download/v3.1.0/glbinding-3.1.0-msvc2017-x64-examples.zip),
@@ -79,7 +79,7 @@ Since lately, glbinding is also available on [vcpkg](https://github.com/Microsof
 ```
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
-### Ubuntu
+## Ubuntu
 
 *glbinding* is provided on Ubuntu using PPAs and in [Ubuntu universe](https://packages.ubuntu.com/source/artful/glbinding) since Artful Aardvark. We maintain our own PPA for most recent releases. For Ubuntu 16.04 (xenial), 17.10 (artful), and 18.04 (bionic) use the [standard PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
 Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
@@ -100,7 +100,7 @@ To use *glbinding* as dependency, install the development package:
 
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
-### Arch Linux
+## Arch Linux
 
 On Arch, *glbinding* is provided by the [glbinding](https://www.archlinux.org/packages/community/x86_64/glbinding/) package in the community repository. To install *glbinding* execute the following line:
 
@@ -110,7 +110,7 @@ On Arch, *glbinding* is provided by the [glbinding](https://www.archlinux.org/pa
 
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
-### macOS
+## macOS
 
 The package manager on macOS we depend on is homebrew. The package there is called [glbinding](http://formulae.brew.sh/formula/glbinding).
 To install *glbinding* using homebrew, execute the following line:
@@ -121,10 +121,19 @@ To install *glbinding* using homebrew, execute the following line:
 
 Alternatively, download the source code and commence [building from source](#build-instructions).
 
-### Debian-based Systems
+## Debian-based Systems
 
 *glbinding* is available for Debian 9 (Stretch), 10 (Buster) and Sid. Install it using `apt-get install glbinding`.
 For advanced use, download the source code and commence [building from source](#build-instructions).
+
+
+## Cross-Platform Package Managers
+
+As one of the cross-platform package managers, *conan* provides glbinding in its [center index](https://conan.io/center/glbinding). You can use the folling line to install glbinding using conan:
+
+```bash
+> conan install glbinding/3.1.0@
+```
 
 
 # Build Instructions
