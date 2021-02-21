@@ -241,6 +241,7 @@ Function<GLuint> Binding::CreateProgressFenceNVX("glCreateProgressFenceNVX");
 Function<void, GLenum, GLsizei, GLuint *> Binding::CreateQueries("glCreateQueries");
 Function<void, GLsizei, GLuint *> Binding::CreateRenderbuffers("glCreateRenderbuffers");
 Function<void, GLsizei, GLuint *> Binding::CreateSamplers("glCreateSamplers");
+Function<void, GLsizei, GLuint *> Binding::CreateSemaphoresNV("glCreateSemaphoresNV");
 Function<GLuint, GLenum> Binding::CreateShader("glCreateShader");
 Function<GLhandleARB, GLenum> Binding::CreateShaderObjectARB("glCreateShaderObjectARB");
 Function<GLuint, GLenum, const GLchar *> Binding::CreateShaderProgramEXT("glCreateShaderProgramEXT");

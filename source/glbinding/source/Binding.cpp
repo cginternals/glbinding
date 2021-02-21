@@ -207,24 +207,6 @@ void Binding::initialize(
     }
 }
 
-void Binding::destroy()
-{
-    std_boost::lock_guard<std_boost::recursive_mutex> lock(s_mutex());
-
-    s_maxPos() = -1;
-    s_additionalFunctions() = {};
-    s_contextSwitchCallbacks() = {};
-    s_unresolvedCallback() = {};
-    s_beforeCallback() = {};
-    s_afterCallback() = {};
-    s_logCallback() = {};
-    s_pos() = {};
-    s_context() = {};
-    s_getProcAddress() = {};
-    s_bindings() = {};
-    s_firstGetProcAddress() = {};
-}
-
 ProcAddress Binding::resolveFunction(const char * name)
 {
     if (s_getProcAddress() != nullptr)

@@ -20,11 +20,6 @@ void initialize(ContextHandle context, glbinding::GetProcAddress functionPointer
     Binding::initialize(context, functionPointerResolver, useContext, resolveFunctions);
 }
 
-void destroy()
-{
-    Binding::destroy();
-}
-
 void useCurrentContext()
 {
     Binding::useCurrentContext();

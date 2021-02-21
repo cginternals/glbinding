@@ -142,6 +142,7 @@ Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Bi
 Function<void, GLenum, GLsizei, GLsizei, GLint, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexImage3DMultisampleCoverageNV("glTexImage3DMultisampleCoverageNV");
 Function<void, GLenum, GLint, GLenum, GLsizei, GLsizei, GLsizei, GLsizei, GLint, GLenum, GLenum, const void *> Binding::TexImage4DSGIS("glTexImage4DSGIS");
 Function<void, GLenum, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexPageCommitmentARB("glTexPageCommitmentARB");
+Function<void, GLenum, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLuint, GLuint64, GLboolean> Binding::TexPageCommitmentMemNV("glTexPageCommitmentMemNV");
 Function<void, GLenum, GLenum, GLfloat> Binding::TexParameterf("glTexParameterf");
 Function<void, GLenum, GLenum, const GLfloat *> Binding::TexParameterfv("glTexParameterfv");
 Function<void, GLenum, GLenum, GLint> Binding::TexParameteri("glTexParameteri");
@@ -190,6 +191,7 @@ Function<void, GLenum> Binding::TextureLightEXT("glTextureLightEXT");
 Function<void, GLenum, GLenum> Binding::TextureMaterialEXT("glTextureMaterialEXT");
 Function<void, GLenum> Binding::TextureNormalEXT("glTextureNormalEXT");
 Function<void, GLuint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexturePageCommitmentEXT("glTexturePageCommitmentEXT");
+Function<void, GLuint, GLint, GLint, GLint, GLint, GLint, GLsizei, GLsizei, GLsizei, GLuint, GLuint64, GLboolean> Binding::TexturePageCommitmentMemNV("glTexturePageCommitmentMemNV");
 Function<void, GLuint, GLenum, GLfloat> Binding::TextureParameterf("glTextureParameterf");
 Function<void, GLuint, GLenum, GLenum, GLfloat> Binding::TextureParameterfEXT("glTextureParameterfEXT");
 Function<void, GLuint, GLenum, const GLfloat *> Binding::TextureParameterfv("glTextureParameterfv");

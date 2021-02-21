@@ -578,6 +578,11 @@ void glBufferPageCommitmentARB(GLenum target, GLintptr offset, GLsizeiptr size, 
     return glbinding::Binding::BufferPageCommitmentARB(target, offset, size, commit);
 }
 
+void glBufferPageCommitmentMemNV(GLenum target, GLintptr offset, GLsizeiptr size, GLuint memory, GLuint64 memOffset, GLboolean commit)
+{
+    return glbinding::Binding::BufferPageCommitmentMemNV(target, offset, size, memory, memOffset, commit);
+}
+
 void glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param)
 {
     return glbinding::Binding::BufferParameteriAPPLE(target, pname, param);

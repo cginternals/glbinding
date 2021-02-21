@@ -343,6 +343,11 @@ void glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint gro
     return glbinding::Binding::SelectPerfMonitorCountersAMD(monitor, enable, group, numCounters, counterList);
 }
 
+void glSemaphoreParameterivNV(GLuint semaphore, GLenum pname, const GLint * params)
+{
+    return glbinding::Binding::SemaphoreParameterivNV(semaphore, pname, params);
+}
+
 void glSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, const GLuint64 * params)
 {
     return glbinding::Binding::SemaphoreParameterui64vEXT(semaphore, pname, params);
@@ -393,9 +398,9 @@ void glShadeModel(GLenum mode)
     return glbinding::Binding::ShadeModel(mode);
 }
 
-void glShaderBinary(GLsizei count, const GLuint * shaders, GLenum binaryformat, const void * binary, GLsizei length)
+void glShaderBinary(GLsizei count, const GLuint * shaders, GLenum binaryFormat, const void * binary, GLsizei length)
 {
-    return glbinding::Binding::ShaderBinary(count, shaders, binaryformat, binary, length);
+    return glbinding::Binding::ShaderBinary(count, shaders, binaryFormat, binary, length);
 }
 
 void glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1)

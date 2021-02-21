@@ -382,6 +382,7 @@ Function<void, GLuint, GLenum, GLfloat *> Binding::GetSamplerParameterfv("glGetS
 Function<void, GLuint, GLenum, GLint *> Binding::GetSamplerParameterIiv("glGetSamplerParameterIiv");
 Function<void, GLuint, GLenum, GLuint *> Binding::GetSamplerParameterIuiv("glGetSamplerParameterIuiv");
 Function<void, GLuint, GLenum, GLint *> Binding::GetSamplerParameteriv("glGetSamplerParameteriv");
+Function<void, GLuint, GLenum, GLint *> Binding::GetSemaphoreParameterivNV("glGetSemaphoreParameterivNV");
 Function<void, GLuint, GLenum, GLuint64 *> Binding::GetSemaphoreParameterui64vEXT("glGetSemaphoreParameterui64vEXT");
 Function<void, GLenum, GLenum, GLenum, void *, void *, void *> Binding::GetSeparableFilter("glGetSeparableFilter");
 Function<void, GLenum, GLenum, GLenum, void *, void *, void *> Binding::GetSeparableFilterEXT("glGetSeparableFilterEXT");

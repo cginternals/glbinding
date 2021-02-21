@@ -81,12 +81,6 @@ GLBINDING_API void initialize(ContextHandle context, glbinding::GetProcAddress f
 
 /**
 *  @brief
-*    Destroys the internal state
-*/
-GLBINDING_API void destroy();
-
-/**
-*  @brief
 *    Update the current context state in glbinding
 *
 *  @remark
