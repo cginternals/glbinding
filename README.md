@@ -123,7 +123,7 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ## Debian-based Systems
 
-*glbinding* is available for Debian 9 (Stretch), 10 (Buster) and Sid. Install it using `apt-get install glbinding`.
+*glbinding* is available for Debian 9 (Stretch), 10 (Buster), 11 (Bullseye) and Sid. Install it using `apt install libglbinding-dev`.
 For advanced use, download the source code and commence [building from source](#build-instructions).
 
 
