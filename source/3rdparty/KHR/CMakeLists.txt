@@ -87,8 +87,10 @@ target_include_directories(${target}
 #
 
 # target_compile_options(${target}
-#     INTERFACE
-#     ${DEFAULT_COMPILE_OPTIONS}
+#     PRIVATE
+#     ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
+#     PUBLIC
+#     ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
 # )
 
 
