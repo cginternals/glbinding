@@ -62,12 +62,12 @@ endif ()
 # Compile options
 # 
 
-set(DEFAULT_COMPILE_OPTIONS)
+set(DEFAULT_COMPILE_OPTIONS_PRIVATE)
+set(DEFAULT_COMPILE_OPTIONS_PUBLIC)
 
 # MSVC compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
-    set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
-    PRIVATE
+    set(DEFAULT_COMPILE_OPTIONS_PRIVATE ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
         /MP           # -> build with multiple processes
         /W4           # -> warning level 4
         # /WX         # -> treat warnings as errors
@@ -91,15 +91,12 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
         >
         
         # No manual c++11 enable for MSVC as all supported MSVC versions for cmake-init have C++11 implicitly enabled (MSVC >=2013)
-
-        PUBLIC
     )
 endif ()
 
 # GCC and Clang compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-    set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
-    PRIVATE
+    set(DEFAULT_COMPILE_OPTIONS_PRIVATE ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
         #-fno-exceptions # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
 
         -Wall
@@ -132,7 +129,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
                 
             # -Wreturn-stack-address # gives false positives
         >
-    PUBLIC
+    )
+    set(DEFAULT_COMPILE_OPTIONS_PUBLIC ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
         $<$<PLATFORM_ID:Darwin>:
             -pthread
         >
