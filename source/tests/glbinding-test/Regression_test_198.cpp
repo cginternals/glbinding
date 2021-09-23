@@ -4,16 +4,7 @@
 #include <GLFW/glfw3.h>
 
 #include <glbinding/glbinding.h>
-#include <glbinding-aux/Meta.h>
-
-
-#include <glbinding/gl/functions.h>  // < imagine this was included by a 3rd party library (e.g., globjects.cpp)
-
-#include <glbinding/gl/types.h>
-#include <glbinding/gl/functions.h>
-#include <glbinding/gl/enum.h>
-
-#include <glbinding-aux/types_to_string.h>
+#include <glbinding/gl/gl.h>
 
 #include <stdexcept>
 
@@ -29,7 +20,7 @@ class Regression_198 : public testing::Test
 public:
 };
 
-TEST(Regression_198, releaseContext)  // GL calls fail if function returns GLboolean
+TEST(Regression_198, releaseContext)  // releaseContext(ctx) wipes out functions on contexts other than ctx #198
 {
     try {
         if (!glfwInit())
@@ -40,13 +31,6 @@ TEST(Regression_198, releaseContext)  // GL calls fail if function returns GLboo
 
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, false);
-
-        #ifdef SYSTEM_DARWIN
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-            glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);
-            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-        #endif
 
         auto context_A = glfwCreateWindow(320, 240, "Regession198-A", nullptr, nullptr);
         ASSERT_NE(nullptr, context_A);
@@ -59,6 +43,7 @@ TEST(Regression_198, releaseContext)  // GL calls fail if function returns GLboo
         glbinding::initialize(context_B_gl, ::glfwGetProcAddress, true, true);
 
         glbinding::releaseContext(context_B_gl);
+        glfwDestroyWindow(context_B);
 
         glfwMakeContextCurrent(context_A);
         glbinding::useContext(context_A_gl);
@@ -66,6 +51,7 @@ TEST(Regression_198, releaseContext)  // GL calls fail if function returns GLboo
         glGetIntegerv(gl::GL_MAJOR_VERSION, &major);
 
         glbinding::releaseContext(context_A_gl);
+        glfwDestroyWindow(context_A);
         glfwTerminate();
     } catch (std::out_of_range & ex) {
         FAIL() << "Unexpected exception std::out_of_range thrown with message: " << ex.what();
