@@ -64,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 2999>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 3002>; ///< The type of the build-in functions collection
 
 
 public:
@@ -2129,7 +2129,7 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei, const gl::GLfloat *> PathDashArrayNV; ///< Wrapper for glPathDashArrayNV
     static Function<void, gl::GLenum> PathFogGenNV; ///< Wrapper for glPathFogGenNV
     static Function<gl::GLenum, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLsizei, gl::GLuint, gl::GLfloat> PathGlyphIndexArrayNV; ///< Wrapper for glPathGlyphIndexArrayNV
-    static Function<gl::GLenum, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLfloat, gl::GLuint> PathGlyphIndexRangeNV; ///< Wrapper for glPathGlyphIndexRangeNV
+    static Function<gl::GLenum, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLfloat, gl::GLuint *> PathGlyphIndexRangeNV; ///< Wrapper for glPathGlyphIndexRangeNV
     static Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLuint, gl::GLsizei, gl::GLenum, gl::GLuint, gl::GLfloat> PathGlyphRangeNV; ///< Wrapper for glPathGlyphRangeNV
     static Function<void, gl::GLuint, gl::GLenum, const void *, gl::PathFontStyle, gl::GLsizei, gl::GLenum, const void *, gl::GLenum, gl::GLuint, gl::GLfloat> PathGlyphsNV; ///< Wrapper for glPathGlyphsNV
     static Function<gl::GLenum, gl::GLuint, gl::GLenum, gl::GLsizeiptr, const void *, gl::GLsizei, gl::GLuint, gl::GLsizei, gl::GLuint, gl::GLfloat> PathMemoryGlyphIndexArrayNV; ///< Wrapper for glPathMemoryGlyphIndexArrayNV
@@ -2772,9 +2772,12 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, const gl::GLfixed *> TexParameterxvOES; ///< Wrapper for glTexParameterxvOES
     static Function<void, gl::GLenum, gl::GLuint> TexRenderbufferNV; ///< Wrapper for glTexRenderbufferNV
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei> TexStorage1D; ///< Wrapper for glTexStorage1D
+    static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei> TexStorage1DEXT; ///< Wrapper for glTexStorage1DEXT
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> TexStorage2D; ///< Wrapper for glTexStorage2D
+    static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei> TexStorage2DEXT; ///< Wrapper for glTexStorage2DEXT
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLboolean> TexStorage2DMultisample; ///< Wrapper for glTexStorage2DMultisample
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei> TexStorage3D; ///< Wrapper for glTexStorage3D
+    static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei> TexStorage3DEXT; ///< Wrapper for glTexStorage3DEXT
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLsizei, gl::GLboolean> TexStorage3DMultisample; ///< Wrapper for glTexStorage3DMultisample
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLuint, gl::GLuint64> TexStorageMem1DEXT; ///< Wrapper for glTexStorageMem1DEXT
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLsizei, gl::GLsizei, gl::GLuint, gl::GLuint64> TexStorageMem2DEXT; ///< Wrapper for glTexStorageMem2DEXT

@@ -363,6 +363,7 @@ enum class GLextension : int // GLextension is not a type introduced by GL API s
     GL_EXT_texture_sRGB_decode,
     GL_EXT_texture_sRGB_R8,
     GL_EXT_texture_sRGB_RG8,
+    GL_EXT_texture_storage,
     GL_EXT_texture_swizzle,
     GL_EXT_timer_query,
     GL_EXT_transform_feedback,

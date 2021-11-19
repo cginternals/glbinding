@@ -155,9 +155,12 @@ Function<void, GLenum, GLenum, GLfixed> Binding::TexParameterxOES("glTexParamete
 Function<void, GLenum, GLenum, const GLfixed *> Binding::TexParameterxvOES("glTexParameterxvOES");
 Function<void, GLenum, GLuint> Binding::TexRenderbufferNV("glTexRenderbufferNV");
 Function<void, GLenum, GLsizei, GLenum, GLsizei> Binding::TexStorage1D("glTexStorage1D");
+Function<void, GLenum, GLsizei, GLenum, GLsizei> Binding::TexStorage1DEXT("glTexStorage1DEXT");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei> Binding::TexStorage2D("glTexStorage2D");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei> Binding::TexStorage2DEXT("glTexStorage2DEXT");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLboolean> Binding::TexStorage2DMultisample("glTexStorage2DMultisample");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TexStorage3D("glTexStorage3D");
+Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei> Binding::TexStorage3DEXT("glTexStorage3DEXT");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLsizei, GLboolean> Binding::TexStorage3DMultisample("glTexStorage3DMultisample");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLuint, GLuint64> Binding::TexStorageMem1DEXT("glTexStorageMem1DEXT");
 Function<void, GLenum, GLsizei, GLenum, GLsizei, GLsizei, GLuint, GLuint64> Binding::TexStorageMem2DEXT("glTexStorageMem2DEXT");

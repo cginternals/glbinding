@@ -364,6 +364,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_EXT_texture_sRGB_decode, "GL_EXT_texture_sRGB_decode" },
     { GLextension::GL_EXT_texture_sRGB_R8, "GL_EXT_texture_sRGB_R8" },
     { GLextension::GL_EXT_texture_sRGB_RG8, "GL_EXT_texture_sRGB_RG8" },
+    { GLextension::GL_EXT_texture_storage, "GL_EXT_texture_storage" },
     { GLextension::GL_EXT_texture_swizzle, "GL_EXT_texture_swizzle" },
     { GLextension::GL_EXT_timer_query, "GL_EXT_timer_query" },
     { GLextension::GL_EXT_transform_feedback, "GL_EXT_transform_feedback" },

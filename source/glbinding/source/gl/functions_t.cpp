@@ -738,9 +738,19 @@ void glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsize
     return glbinding::Binding::TexStorage1D(target, levels, internalformat, width);
 }
 
+void glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+{
+    return glbinding::Binding::TexStorage1DEXT(target, levels, internalformat, width);
+}
+
 void glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
     return glbinding::Binding::TexStorage2D(target, levels, internalformat, width, height);
+}
+
+void glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+{
+    return glbinding::Binding::TexStorage2DEXT(target, levels, internalformat, width, height);
 }
 
 void glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
@@ -751,6 +761,11 @@ void glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalfo
 void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
     return glbinding::Binding::TexStorage3D(target, levels, internalformat, width, height, depth);
+}
+
+void glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+{
+    return glbinding::Binding::TexStorage3DEXT(target, levels, internalformat, width, height, depth);
 }
 
 void glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
