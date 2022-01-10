@@ -8,6 +8,7 @@
 
 #include <stdexcept>
 
+
 glbinding::ContextHandle context_cast(GLFWwindow* context) {
     static_assert(
         sizeof(glbinding::ContextHandle) >= sizeof(GLFWwindow*), 
@@ -19,6 +20,7 @@ class Regression_198 : public testing::Test
 {
 public:
 };
+
 
 TEST(Regression_198, releaseContext)  // releaseContext(ctx) wipes out functions on contexts other than ctx #198
 {
@@ -32,15 +34,15 @@ TEST(Regression_198, releaseContext)  // releaseContext(ctx) wipes out functions
         glfwDefaultWindowHints();
         glfwWindowHint(GLFW_VISIBLE, false);
 
-        auto context_A = glfwCreateWindow(320, 240, "Regession198-A", nullptr, nullptr);
+        auto context_A = glfwCreateWindow(320, 240, "Regression198-A", nullptr, nullptr);
         ASSERT_NE(nullptr, context_A);
         auto context_A_gl = context_cast(context_A);
-        glbinding::initialize(context_A_gl, ::glfwGetProcAddress, true, true);
+        glbinding::initialize(context_A_gl, ::glfwGetProcAddress, true, false);
 
-        auto context_B = glfwCreateWindow(320, 240, "Regession198-B", nullptr, nullptr);
+        auto context_B = glfwCreateWindow(320, 240, "Regression198-B", nullptr, nullptr);
         ASSERT_NE(nullptr, context_B);
         auto context_B_gl = context_cast(context_B);
-        glbinding::initialize(context_B_gl, ::glfwGetProcAddress, true, true);
+        glbinding::initialize(context_B_gl, ::glfwGetProcAddress, true, false);
 
         glbinding::releaseContext(context_B_gl);
         glfwDestroyWindow(context_B);
@@ -60,5 +62,3 @@ TEST(Regression_198, releaseContext)  // releaseContext(ctx) wipes out functions
     }
     SUCCEED();
 }
-
-
