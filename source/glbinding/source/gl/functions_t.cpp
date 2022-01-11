@@ -673,6 +673,11 @@ void glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yof
     return glbinding::Binding::TexPageCommitmentARB(target, level, xoffset, yoffset, zoffset, width, height, depth, commit);
 }
 
+void glTexPageCommitmentMemNV(GLenum target, GLint layer, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset, GLboolean commit)
+{
+    return glbinding::Binding::TexPageCommitmentMemNV(target, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit);
+}
+
 void glTexParameterf(GLenum target, GLenum pname, GLfloat param)
 {
     return glbinding::Binding::TexParameterf(target, pname, param);
@@ -733,9 +738,19 @@ void glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsize
     return glbinding::Binding::TexStorage1D(target, levels, internalformat, width);
 }
 
+void glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+{
+    return glbinding::Binding::TexStorage1DEXT(target, levels, internalformat, width);
+}
+
 void glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
     return glbinding::Binding::TexStorage2D(target, levels, internalformat, width, height);
+}
+
+void glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+{
+    return glbinding::Binding::TexStorage2DEXT(target, levels, internalformat, width, height);
 }
 
 void glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
@@ -746,6 +761,11 @@ void glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalfo
 void glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
     return glbinding::Binding::TexStorage3D(target, levels, internalformat, width, height, depth);
+}
+
+void glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+{
+    return glbinding::Binding::TexStorage3DEXT(target, levels, internalformat, width, height, depth);
 }
 
 void glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
@@ -911,6 +931,11 @@ void glTextureNormalEXT(GLenum mode)
 void glTexturePageCommitmentEXT(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit)
 {
     return glbinding::Binding::TexturePageCommitmentEXT(texture, level, xoffset, yoffset, zoffset, width, height, depth, commit);
+}
+
+void glTexturePageCommitmentMemNV(GLuint texture, GLint layer, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLuint memory, GLuint64 offset, GLboolean commit)
+{
+    return glbinding::Binding::TexturePageCommitmentMemNV(texture, layer, level, xoffset, yoffset, zoffset, width, height, depth, memory, offset, commit);
 }
 
 void glTextureParameterf(GLuint texture, GLenum pname, GLfloat param)

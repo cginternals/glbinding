@@ -21,7 +21,7 @@ Function<void, GLenum> Binding::PathCoverDepthFuncNV("glPathCoverDepthFuncNV");
 Function<void, GLuint, GLsizei, const GLfloat *> Binding::PathDashArrayNV("glPathDashArrayNV");
 Function<void, GLenum> Binding::PathFogGenNV("glPathFogGenNV");
 Function<GLenum, GLuint, GLenum, const void *, PathFontStyle, GLuint, GLsizei, GLuint, GLfloat> Binding::PathGlyphIndexArrayNV("glPathGlyphIndexArrayNV");
-Function<GLenum, GLenum, const void *, PathFontStyle, GLuint, GLfloat, GLuint> Binding::PathGlyphIndexRangeNV("glPathGlyphIndexRangeNV");
+Function<GLenum, GLenum, const void *, PathFontStyle, GLuint, GLfloat, GLuint *> Binding::PathGlyphIndexRangeNV("glPathGlyphIndexRangeNV");
 Function<void, GLuint, GLenum, const void *, PathFontStyle, GLuint, GLsizei, GLenum, GLuint, GLfloat> Binding::PathGlyphRangeNV("glPathGlyphRangeNV");
 Function<void, GLuint, GLenum, const void *, PathFontStyle, GLsizei, GLenum, const void *, GLenum, GLuint, GLfloat> Binding::PathGlyphsNV("glPathGlyphsNV");
 Function<GLenum, GLuint, GLenum, GLsizeiptr, const void *, GLsizei, GLuint, GLsizei, GLuint, GLfloat> Binding::PathMemoryGlyphIndexArrayNV("glPathMemoryGlyphIndexArrayNV");

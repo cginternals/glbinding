@@ -1168,6 +1168,11 @@ void glCreateSamplers(GLsizei n, GLuint * samplers)
     return glbinding::Binding::CreateSamplers(n, samplers);
 }
 
+void glCreateSemaphoresNV(GLsizei n, GLuint * semaphores)
+{
+    return glbinding::Binding::CreateSemaphoresNV(n, semaphores);
+}
+
 GLuint glCreateShader(GLenum type)
 {
     return glbinding::Binding::CreateShader(type);

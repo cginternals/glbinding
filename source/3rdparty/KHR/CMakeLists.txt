@@ -60,7 +60,7 @@ export(TARGETS ${target} NAMESPACE ${META_PROJECT_NAME}:: FILE ${PROJECT_BINARY_
 target_include_directories(${target}
     INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-    $<INSTALL_INTERFACE:include/${META_PROJECT_NAME}>/3rdparty
+    $<INSTALL_INTERFACE:include/${META_PROJECT_NAME}/3rdparty>
 )
 
 
@@ -87,8 +87,10 @@ target_include_directories(${target}
 #
 
 # target_compile_options(${target}
-#     INTERFACE
-#     ${DEFAULT_COMPILE_OPTIONS}
+#     PRIVATE
+#     ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
+#     PUBLIC
+#     ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
 # )
 
 

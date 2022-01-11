@@ -36,6 +36,7 @@ set(sources
     # regession tests
     Regression_test_82.cpp
     Regression_test_185.cpp
+    Regression_test_198.cpp
 )
 
 
@@ -106,7 +107,9 @@ target_compile_definitions(${target}
 
 target_compile_options(${target}
     PRIVATE
-    ${DEFAULT_COMPILE_OPTIONS}
+    ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
+    PUBLIC
+    ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
 )
 
 

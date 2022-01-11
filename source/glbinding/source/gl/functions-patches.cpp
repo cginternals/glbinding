@@ -78,6 +78,11 @@ void glGetIntegeri_v(GLenum target, GLuint index, GLenum * data)
     glGetIntegeri_v(target, index, reinterpret_cast<GLint *>(data));
 }
 
+void glGetIntegerv(GLenum pname, ContextFlagMask * data)
+{
+    glGetIntegerv(pname, reinterpret_cast<GLint *>(data));
+}
+
 void glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLenum * params)
 {
     glGetFramebufferAttachmentParameteriv(target, attachment, pname, reinterpret_cast<GLint *>(params));

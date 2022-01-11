@@ -318,21 +318,10 @@ void Binding::neglectState(const int p)
     assert(p <= s_maxPos());
     assert(p > -1);
 
-    if (p == s_maxPos())
+    // Todo: reintegrate dynamic shrinking of state vectors.
+    for (AbstractFunction * function : Binding::functions())
     {
-        for (AbstractFunction * function : Binding::functions())
-        {
-            function->resizeStates(std::max(0, p - 1));
-        }
-
-        --s_maxPos();
-    }
-    else
-    {
-        for (AbstractFunction * function : Binding::functions())
-        {
-            function->state(p) = State();
-        }
+        function->state(p) = State();
     }
 
     if (p == s_pos())

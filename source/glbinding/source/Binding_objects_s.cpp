@@ -76,6 +76,7 @@ Function<void, GLint, GLenum, GLsizei, const void *> Binding::SecondaryColorPoin
 Function<void, GLint, GLenum, GLint, const void **, GLint> Binding::SecondaryColorPointerListIBM("glSecondaryColorPointerListIBM");
 Function<void, GLsizei, GLuint *> Binding::SelectBuffer("glSelectBuffer");
 Function<void, GLuint, GLboolean, GLuint, GLint, GLuint *> Binding::SelectPerfMonitorCountersAMD("glSelectPerfMonitorCountersAMD");
+Function<void, GLuint, GLenum, const GLint *> Binding::SemaphoreParameterivNV("glSemaphoreParameterivNV");
 Function<void, GLuint, GLenum, const GLuint64 *> Binding::SemaphoreParameterui64vEXT("glSemaphoreParameterui64vEXT");
 Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *, const void *> Binding::SeparableFilter2D("glSeparableFilter2D");
 Function<void, GLenum, GLenum, GLsizei, GLsizei, GLenum, GLenum, const void *, const void *> Binding::SeparableFilter2DEXT("glSeparableFilter2DEXT");

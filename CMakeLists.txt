@@ -6,6 +6,20 @@
 # CMake version
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
+
+#
+# Detect type of CMake setup
+#
+
+# Use PROJECT_IS_TOP_LEVEL once we bump the required CMake version up to 3.21
+get_directory_property(GLBINDING_HAS_PARENT PARENT_DIRECTORY)
+if(GLBINDING_HAS_PARENT)
+  set(GLBINDING_BUILD_AS_ROOT Off)
+else()
+  set(GLBINDING_BUILD_AS_ROOT On)
+endif()
+
+
 #
 # Configure CMake environment
 #
@@ -37,7 +51,6 @@ if (${CMAKE_VERSION} VERSION_GREATER "3.9")
     include(CheckIPOSupported OPTIONAL RESULT_VARIABLE CheckIPOSupportedFound)
 endif()
 
-
 # Include custom cmake modules
 include(cmake/GetGitRevisionDescription.cmake)
 include(cmake/HealthCheck.cmake)
@@ -48,13 +61,6 @@ include(cmake/GenerateTemplateExportHeader.cmake)
 # Project description and (meta) information
 # 
 
-# Get git revision
-get_git_head_revision(GIT_REFSPEC GIT_SHA1)
-string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
-if(NOT GIT_SHA1)
-    set(GIT_REV "0")
-endif()
-
 # Meta information about the project
 set(META_PROJECT_NAME        "glbinding")
 set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
@@ -62,7 +68,7 @@ set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
 set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
 set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
 set(META_VERSION_MAJOR       "3")
-set(META_VERSION_MINOR       "2")
+set(META_VERSION_MINOR       "3")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
@@ -77,16 +83,17 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."                ON)
-option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies."   OFF)
-option(OPTION_BUILD_TESTS             "Build tests."                                             OFF)
-option(OPTION_BUILD_DOCS              "Build documentation."                                     OFF)
-option(OPTION_BUILD_TOOLS             "Build tools."                                             ON)
-option(OPTION_BUILD_EXAMPLES          "Build examples."                                          ON)
-option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."                OFF)
-option(OPTION_BUILD_CHECK             "Enable source code check targets"                         OFF)
-option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers."   OFF)
-option(OPTION_BUILD_WITH_LTO          "Build with Link-time Optimization (may break AppleClang)" OFF)
+option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."                 ON)
+option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies."    OFF)
+option(OPTION_BUILD_TESTS             "Build tests."                                              OFF)
+option(OPTION_BUILD_DOCS              "Build documentation."                                      OFF)
+option(OPTION_BUILD_TOOLS             "Build tools."                                              ON)
+option(OPTION_BUILD_EXAMPLES          "Build examples."                                           ON)
+option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."                 OFF)
+option(OPTION_BUILD_CHECK             "Enable source code check targets"                          OFF)
+option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers."    OFF)
+option(OPTION_BUILD_WITH_LTO          "Build with Link-time Optimization (may break AppleClang)"  OFF)
+option(OPTION_USE_GIT_INFORMATION     "Fetches commit information from the git source repository" ON)
 
 
 # 
@@ -99,6 +106,18 @@ set(IDE_FOLDER "")
 
 # Declare project
 project(${META_PROJECT_NAME} C CXX)
+
+# Get git revision
+if (OPTION_USE_GIT_INFORMATION AND GLBINDING_BUILD_AS_ROOT)
+  get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+  string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
+  if(NOT GIT_SHA1)
+      set(GIT_REV "0")
+  endif()
+else()
+  set(GIT_SHA1 "")
+  set(GIT_REV "0")
+endif()
 
 # Set output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})

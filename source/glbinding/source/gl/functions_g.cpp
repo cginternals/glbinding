@@ -1873,6 +1873,11 @@ void glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint * params)
     return glbinding::Binding::GetSamplerParameteriv(sampler, pname, params);
 }
 
+void glGetSemaphoreParameterivNV(GLuint semaphore, GLenum pname, GLint * params)
+{
+    return glbinding::Binding::GetSemaphoreParameterivNV(semaphore, pname, params);
+}
+
 void glGetSemaphoreParameterui64vEXT(GLuint semaphore, GLenum pname, GLuint64 * params)
 {
     return glbinding::Binding::GetSemaphoreParameterui64vEXT(semaphore, pname, params);
