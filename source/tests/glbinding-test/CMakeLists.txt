@@ -86,7 +86,7 @@ target_link_libraries(${target}
     glfw
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    gmock-dev
+    googletest::googletest
 )
 
 
