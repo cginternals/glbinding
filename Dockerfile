@@ -63,13 +63,18 @@ FROM $BASE AS glbinding
 
 ARG PROJECT_NAME
 ARG WORKSPACE
+ENV PROJECT_DIR="$WORKSPACE/$PROJECT_NAME"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update
-RUN apt install -y --no-install-recommends cmake
+RUN apt install -y --no-install-recommends cmake libx11-6 nvidia-driver-470
+
+WORKDIR $PROJECT_DIR
 
 COPY --from=glbinding-build $WORKSPACE/cpplocate $WORKSPACE/cpplocate
 COPY --from=glbinding-build $WORKSPACE/glfw $WORKSPACE/glfw
 
 COPY --from=glbinding-build $WORKSPACE/$PROJECT_NAME-install $WORKSPACE/$PROJECT_NAME
+
+ENV LD_LIBRARY_PATH=$WORKSPACE/cpplocate/lib:$WORKSPACE/glfw/lib
