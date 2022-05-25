@@ -15,7 +15,6 @@ project("${META_PROJECT_NAME}-tests" C CXX)
 set_policy(CMP0054 NEW) # ENABLE  CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
 set_policy(CMP0042 NEW) # ENABLE  CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE  CMP0063: Honor visibility properties for all target types.
-set_policy(CMP0037 OLD) # DISABLE CMP0037: Target names should not be reserved and should match a validity pattern.
 
 # Compiler settings and options
 
@@ -54,8 +53,16 @@ endif ()
 # Target 'test'
 # 
 
-add_custom_target(test)
-set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+if (${CMAKE_VERSION} VERSION_LESS "3.11")
+    set_policy(CMP0037 OLD) # DISABLE CMP0037: Target names should be reserved and should match a validity pattern.
+    add_custom_target(test)
+    set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+else ()
+    if (NOT TARGET test)
+        add_custom_target(test)
+        set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
+    endif()
+endif ()
 
 
 # 
