@@ -1,0 +1,57 @@
+version: "3.0"
+
+services:
+  debian-stretch:
+    build:
+      context: 'debian-stretch'
+      dockerfile: 'Dockerfile'
+
+  debian-buster:
+    build:
+      context: 'debian-buster'
+      dockerfile: 'Dockerfile'
+
+  debian-bullseye:
+    build:
+      context: 'debian-bullseye'
+      dockerfile: 'Dockerfile'
+
+  debian-testing:
+    build:
+      context: 'debian-testing'
+      dockerfile: 'Dockerfile'
+
+  ubuntu-xenial-ppa:
+    build:
+      context: 'ubuntu-xenial-ppa'
+      dockerfile: 'Dockerfile'
+
+  ubuntu-bionic:
+    build:
+      context: 'ubuntu-bionic'
+      dockerfile: 'Dockerfile'
+
+  ubuntu-bionic-ppa:
+    build:
+      context: 'ubuntu-bionic-ppa'
+      dockerfile: 'Dockerfile'
+
+  ubuntu-focal:
+    build:
+      context: 'ubuntu-focal'
+      dockerfile: 'Dockerfile'
+
+  ubuntu-focal-ppa:
+    build:
+      context: 'ubuntu-focal-ppa'
+      dockerfile: 'Dockerfile'
+
+  ubuntu-jammy:
+    build:
+      context: 'ubuntu-jammy'
+      dockerfile: 'Dockerfile'
+
+  ubuntu-jammy-ppa:
+    build:
+      context: 'ubuntu-jammy-ppa'
+      dockerfile: 'Dockerfile'
