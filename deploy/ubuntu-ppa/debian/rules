@@ -55,6 +55,7 @@ libglbinding-dbg:
 	rm debian/tmp/usr/share/*/README.md
 	rm debian/tmp/usr/share/*/VERSION
 	rm debian/tmp/usr/share/*/cmake/*/*-export.cmake
+	rm debian/tmp/usr/share/*/cmake/Find*.cmake
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-dbg
 	dpkg --build debian/tmp ..
