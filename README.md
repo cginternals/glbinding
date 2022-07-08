@@ -81,7 +81,7 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ## Ubuntu
 
-*glbinding* is provided on Ubuntu using PPAs and in [Ubuntu universe](https://packages.ubuntu.com/source/artful/glbinding) since Artful Aardvark. We maintain our own PPA for most recent releases. For Ubuntu 16.04 (xenial), 17.10 (artful), and 18.04 (bionic) use the [standard PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
+*glbinding* is provided on Ubuntu using PPAs and in [Ubuntu universe](https://packages.ubuntu.com/source/artful/glbinding) since Artful Aardvark. We maintain our own [PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa) for most recent releases.
 Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
 
 ```shell
@@ -149,6 +149,7 @@ Building *glbinding* from source has several mandatory and optional dependencies
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example (optional)
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples (optional)
 * [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example (optional)
+* [googletest](https://github.com/google/googletest) for tests (optional)
 * [Doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8 or higher for generating the documentation on your system
   * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
 
@@ -585,8 +586,8 @@ The following example prints out a list of all available OpenGL versions/feature
 #include <glbinding-aux/types_to_string.h>
 
 // ...
-using glbinding::Meta;
+using namespace glbinding;
 
-for (const Version & v : Meta::versions())
+for (const Version & v : aux::Meta::versions())
   std::cout << v << std::endl;
 ```
