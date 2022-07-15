@@ -5,6 +5,7 @@
 *glbinding* is a cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
 ![GitHub release](https://img.shields.io/github/release/cginternals/glbinding.svg)
+![C++ CI](https://github.com/cginternals/glbinding/actions/workflows/ci.yml/badge.svg)
 [![Travis](https://img.shields.io/travis/cginternals/glbinding/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/glbinding)
 [![Appveyor](https://img.shields.io/appveyor/build/scheibel/glbinding/master.svg?style=flat&logo=appveyor)](https://ci.appveyor.com/project/scheibel/glbinding)
 [![Tokei](https://tokei.rs/b1/github/cginternals/glbinding)](https://github.com/Aaronepower/tokei)
