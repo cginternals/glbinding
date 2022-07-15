@@ -1,0 +1,44 @@
+name: C++ CI
+
+on:
+  push:
+      branches: [ master ]
+  pull_request:
+      branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install cmake libgl1-mesa-dev libegl1-mesa-dev libglfw3-dev libcpplocate-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev
+        run: sudo apt install -y cmake
+      - name: configure
+        run: ./configure && ./configure
+      - name: make
+        run: make
+        working-directory: build
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install cmake and googletest
+        run: sudo apt install -y cmake libgl1-mesa-dev libegl1-mesa-dev libglfw3-dev libcpplocate-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libgmock-dev
+      - name: configure
+        run: ./configure && ./configure
+      - name: tests
+        run: make test
+        working-directory: build
+  check:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install cmake
+        run: sudo apt install -y cmake libgl1-mesa-dev libegl1-mesa-dev libglfw3-dev libcpplocate-dev libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev cppcheck clang-tidy
+      - name: configure
+        run: ./configure && ./configure
+      - name: check
+        run: make check-all
+        working-directory: build
