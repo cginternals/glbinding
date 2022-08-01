@@ -130,7 +130,7 @@ For advanced use, download the source code and commence [building from source](#
 
 ## Cross-Platform Package Managers
 
-As one of the cross-platform package managers, *conan* provides glbinding in its [center index](https://conan.io/center/glbinding). You can use the folling line to install glbinding using conan:
+As one of the cross-platform package managers, *conan* provides glbinding in its [center index](https://conan.io/center/glbinding). You can use the following line to install glbinding using conan:
 
 ```bash
 > conan install glbinding/3.1.0@
@@ -573,7 +573,7 @@ glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terra
 
 ### Meta Information
 
-Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and runtime information about the gl.xml and your OpenGL driver within the *glbinding-aux* library. This library comes with own includes and needs to be linked seperately.
+Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and runtime information about the gl.xml and your OpenGL driver within the *glbinding-aux* library. This library comes with own includes and needs to be linked separately.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
 The following example prints out a list of all available OpenGL versions/features:
