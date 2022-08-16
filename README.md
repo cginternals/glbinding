@@ -43,7 +43,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 ### Installation and Development
 
 * [Install Instructions](#install-instructions)
-* [Build form Source](#build-instructions)
+* [Build from Source](#build-instructions)
 * [Updating the Generated Source Code](#update-generated-source-code)
 * [Tips for Linking](#tips-for-linking)
 * [Dependency on KHR Headers](#dependency-on-khr-headers)
