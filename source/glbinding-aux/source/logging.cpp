@@ -6,6 +6,7 @@
 #include <chrono>
 #include <fstream>
 #include <sstream>
+#include <utility>
 
 #ifdef GLBINDING_USE_BOOST_THREAD
 #include <boost/chrono.hpp>
@@ -148,7 +149,7 @@ void resume()
     glbinding::addCallbackMask(CallbackMask::Timestamp | CallbackMask::Logging);
 }
 
-void log(LogEntry call)
+void log(FunctionCall && call)
 {
     auto available = false;
     auto next = g_buffer.nextHead(available);
@@ -162,7 +163,7 @@ void log(LogEntry call)
     assert(!g_buffer.isFull());
 
     delete next;
-    g_buffer.push(call);
+    g_buffer.push(new FunctionCall(std::move(call)));
 }
 
 void startWriter(const std::string & filepath)
