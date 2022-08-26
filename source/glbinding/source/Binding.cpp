@@ -138,7 +138,7 @@ void Binding::log(FunctionCall && call)
 {
     if (s_logCallback())
     {
-        s_logCallback()(new FunctionCall(std::move(call)));
+        s_logCallback()(std::move(call));
     }
 }
 
