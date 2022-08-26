@@ -60,7 +60,7 @@ public:
     *  @brief
     *    The callback type of a function log callback with parameters and return value
     */
-    using FunctionLogCallback = std::function<void(FunctionCall *)>;
+    using FunctionLogCallback = std::function<void(FunctionCall &&)>;
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
