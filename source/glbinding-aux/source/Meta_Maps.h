@@ -28,7 +28,7 @@ extern const std::array<std::unordered_map<std::string, gl::GLextension>, 27> Me
 extern const std::unordered_map<gl::GLextension, Version> Meta_ReqVersionsByExtension;
 
 extern const std::unordered_map<gl::GLboolean, std::string> Meta_StringsByBoolean;
-extern const std::unordered_map<gl::GLenum, std::string> Meta_StringsByEnum;
+extern const std::multimap<gl::GLenum, std::string> Meta_StringsByEnum;
 extern const std::unordered_map<gl::GLextension, std::string> Meta_StringsByExtension;
 extern const std::unordered_map<gl::GLextension, std::set<std::string>> Meta_FunctionStringsByExtension;
 extern const std::map<Version, std::set<std::string>> Meta_FunctionStringsByVersion;
@@ -55,6 +55,7 @@ extern const std::unordered_map<gl::TextureStorageMaskAMD, std::string> Meta_Str
 extern const std::unordered_map<gl::UnusedMask, std::string> Meta_StringsByUnusedMask;
 extern const std::unordered_map<gl::UseProgramStageMask, std::string> Meta_StringsByUseProgramStageMask;
 extern const std::unordered_map<gl::VertexHintsMaskPGI, std::string> Meta_StringsByVertexHintsMaskPGI;
+
 
 extern const std::array<std::unordered_map<std::string, gl::GLbitfield>, 27> Meta_BitfieldsByStringMaps;
 extern const std::unordered_map<std::string, gl::GLboolean> Meta_BooleansByString;

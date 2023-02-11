@@ -133,6 +133,18 @@ add_library(${target}
     ${headers}
 )
 
+
+# Optional IPO. Do not use IPO if it's not supported by compiler.
+if(OPTION_BUILD_WITH_LTO AND CheckIPOSupportedFound)
+    check_ipo_supported(RESULT result OUTPUT output)
+    if(result)
+        set_property(TARGET ${target} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+    else()
+        message(WARNING "IPO is not supported: ${output}")
+    endif()
+endif()
+
+
 # Create namespaced alias
 add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
@@ -179,9 +191,10 @@ endif()
 set_target_properties(${target}
     PROPERTIES
     ${DEFAULT_PROJECT_OPTIONS}
+    INSTALL_RPATH "${LIBRARY_INSTALL_RPATH}"
     FOLDER "${IDE_FOLDER}"
-    VERSION ${META_VERSION}
-    SOVERSION ${META_VERSION_MAJOR}
+    VERSION "${META_VERSION}"
+    SOVERSION "${META_VERSION_MAJOR}"
 )
 
 
@@ -244,11 +257,9 @@ target_compile_definitions(${target}
 
 target_compile_options(${target}
     PRIVATE
-
+    ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
     PUBLIC
-    ${DEFAULT_COMPILE_OPTIONS}
-
-    INTERFACE
+    ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
 )
 
 

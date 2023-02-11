@@ -11,6 +11,10 @@ namespace gl33
 {
 
 
+// use enum type
+using gl::GLenum;
+
+
 // import enums to namespace
 using gl::GL_ACTIVE_ATTRIBUTE_MAX_LENGTH;
 using gl::GL_ACTIVE_ATTRIBUTES;

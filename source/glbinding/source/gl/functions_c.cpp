@@ -498,17 +498,17 @@ void glColorFormatNV(GLint size, GLenum type, GLsizei stride)
     return glbinding::Binding::ColorFormatNV(size, type, stride);
 }
 
-void glColorFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod)
+void glColorFragmentOp1ATI(GLenum op, GLuint dst, FragmentShaderDestMaskATI dstMask, FragmentShaderDestModMaskATI dstMod, GLuint arg1, GLuint arg1Rep, FragmentShaderColorModMaskATI arg1Mod)
 {
     return glbinding::Binding::ColorFragmentOp1ATI(op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod);
 }
 
-void glColorFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod)
+void glColorFragmentOp2ATI(GLenum op, GLuint dst, FragmentShaderDestMaskATI dstMask, FragmentShaderDestModMaskATI dstMod, GLuint arg1, GLuint arg1Rep, FragmentShaderColorModMaskATI arg1Mod, GLuint arg2, GLuint arg2Rep, FragmentShaderColorModMaskATI arg2Mod)
 {
     return glbinding::Binding::ColorFragmentOp2ATI(op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod);
 }
 
-void glColorFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod)
+void glColorFragmentOp3ATI(GLenum op, GLuint dst, FragmentShaderDestMaskATI dstMask, FragmentShaderDestModMaskATI dstMod, GLuint arg1, GLuint arg1Rep, FragmentShaderColorModMaskATI arg1Mod, GLuint arg2, GLuint arg2Rep, FragmentShaderColorModMaskATI arg2Mod, GLuint arg3, GLuint arg3Rep, FragmentShaderColorModMaskATI arg3Mod)
 {
     return glbinding::Binding::ColorFragmentOp3ATI(op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod);
 }
@@ -1168,6 +1168,11 @@ void glCreateSamplers(GLsizei n, GLuint * samplers)
     return glbinding::Binding::CreateSamplers(n, samplers);
 }
 
+void glCreateSemaphoresNV(GLsizei n, GLuint * semaphores)
+{
+    return glbinding::Binding::CreateSemaphoresNV(n, semaphores);
+}
+
 GLuint glCreateShader(GLenum type)
 {
     return glbinding::Binding::CreateShader(type);
@@ -1188,7 +1193,7 @@ GLuint glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar *const* s
     return glbinding::Binding::CreateShaderProgramv(type, count, strings);
 }
 
-GLuint glCreateShaderProgramvEXT(GLenum type, GLsizei count, const GLchar ** strings)
+GLuint glCreateShaderProgramvEXT(GLenum type, GLsizei count, const GLchar *const* strings)
 {
     return glbinding::Binding::CreateShaderProgramvEXT(type, count, strings);
 }

@@ -71,7 +71,9 @@ Version printVersionOfContextRequest(
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version.minorVersion());
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, forward);
     if (core)
+    {
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    }
 
     GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     if (!window)
@@ -166,7 +168,8 @@ int main(int argc, char * argv[])
     std::cout
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
-        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl << std::endl;
+        << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl 
+        << "OpenGL Revision: " << aux::Meta::glRevision() << " (gl.xml)" << std::endl << std::endl;
 
     glfwTerminate();
     return 0;

@@ -33,6 +33,10 @@ set(DEFAULT_PROJECT_OPTIONS
 
 set(DEFAULT_INCLUDE_DIRECTORIES)
 
+if (CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
+    LIST(APPEND DEFAULT_INCLUDE_DIRECTORIES "/usr/local/include")
+endif ()
+
 
 # 
 # Libraries
@@ -63,7 +67,8 @@ endif ()
 # Compile options
 # 
 
-set(DEFAULT_COMPILE_OPTIONS)
+set(DEFAULT_COMPILE_OPTIONS_PRIVATE)
+set(DEFAULT_COMPILE_OPTIONS_PUBLIC)
 
 # MSVC compiler options
 if (MSVC)
@@ -98,8 +103,6 @@ if (MSVC)
         >
         
         # No manual c++11 enable for MSVC as all supported MSVC versions for cmake-init have C++11 implicitly enabled (MSVC >=2013)
-
-        PUBLIC
     )
 endif ()
 
@@ -144,7 +147,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
 
             # -Wreturn-stack-address # gives false positives
         >
-    PUBLIC
+    )
+    set(DEFAULT_COMPILE_OPTIONS_PUBLIC ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
         $<$<PLATFORM_ID:Darwin>:
             -pthread
         >

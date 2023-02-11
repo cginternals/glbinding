@@ -33,6 +33,11 @@ void glNamedBufferPageCommitmentEXT(GLuint buffer, GLintptr offset, GLsizeiptr s
     return glbinding::Binding::NamedBufferPageCommitmentEXT(buffer, offset, size, commit);
 }
 
+void glNamedBufferPageCommitmentMemNV(GLuint buffer, GLintptr offset, GLsizeiptr size, GLuint memory, GLuint64 memOffset, GLboolean commit)
+{
+    return glbinding::Binding::NamedBufferPageCommitmentMemNV(buffer, offset, size, memory, memOffset, commit);
+}
+
 void glNamedBufferStorage(GLuint buffer, GLsizeiptr size, const void * data, BufferStorageMask flags)
 {
     return glbinding::Binding::NamedBufferStorage(buffer, size, data, flags);

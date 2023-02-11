@@ -28,6 +28,8 @@ GLBINDING_API void glGetConvolutionParameterivEXT(GLenum target, GLenum pname, G
 GLBINDING_API void glGetIntegerv(GLenum pname, GLenum * data);
 GLBINDING_API void glGetIntegeri_v(GLenum target, GLuint index, GLenum * data);
 
+GLBINDING_API void glGetIntegerv(GLenum pname, ContextFlagMask * data);
+
 GLBINDING_API void glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLenum * params);
 GLBINDING_API void glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLenum * params);
 

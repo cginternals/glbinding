@@ -123,18 +123,6 @@ public:
 
     /**
     *  @brief
-    *    Copy assignment operator
-    *
-    *  @param[in] other
-    *    %Value to copy from
-    *
-    *  @return
-    *    This
-    */
-    inline Boolean8 & operator=(const Boolean8 & other);
-
-    /**
-    *  @brief
     *    Comparison operator
     *
     *  @param[in] other

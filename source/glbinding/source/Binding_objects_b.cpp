@@ -123,6 +123,7 @@ Function<void, GLenum, GLuint, GLuint64> Binding::BufferAttachMemoryNV("glBuffer
 Function<void, GLenum, GLsizeiptr, const void *, GLenum> Binding::BufferData("glBufferData");
 Function<void, GLenum, GLsizeiptrARB, const void *, GLenum> Binding::BufferDataARB("glBufferDataARB");
 Function<void, GLenum, GLintptr, GLsizeiptr, GLboolean> Binding::BufferPageCommitmentARB("glBufferPageCommitmentARB");
+Function<void, GLenum, GLintptr, GLsizeiptr, GLuint, GLuint64, GLboolean> Binding::BufferPageCommitmentMemNV("glBufferPageCommitmentMemNV");
 Function<void, GLenum, GLenum, GLint> Binding::BufferParameteriAPPLE("glBufferParameteriAPPLE");
 Function<void, GLenum, GLsizeiptr, const void *, BufferStorageMask> Binding::BufferStorage("glBufferStorage");
 Function<void, GLenum, GLintptr, GLsizeiptr, GLeglClientBufferEXT, BufferStorageMask> Binding::BufferStorageExternalEXT("glBufferStorageExternalEXT");

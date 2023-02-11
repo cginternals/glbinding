@@ -61,13 +61,6 @@ GLBINDING_CONSTEXPR Boolean8::operator unsigned int() const
     return m_value;
 }
 
-Boolean8 & Boolean8::operator=(const Boolean8 & other)
-{
-    m_value = other.m_value;
-
-    return *this;
-}
-
 GLBINDING_CONSTEXPR bool Boolean8::operator<(const Boolean8 & other) const
 {
     return m_value < other.m_value;

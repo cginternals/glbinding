@@ -3,6 +3,7 @@ build*
 /install
 /logs/*
 CMakeLists.txt.*
+out/*
 
 # backup files
 *~
@@ -15,3 +16,5 @@ CMakeLists.txt.*
 *.sublime-project
 *.sublime-workspace
 .vs/
+CmakeSettings.json
+CppProperties.json

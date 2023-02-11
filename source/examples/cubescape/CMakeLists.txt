@@ -63,6 +63,7 @@ add_executable(${META_PROJECT_NAME}::${target} ALIAS ${target})
 set_target_properties(${target}
     PROPERTIES
     ${DEFAULT_PROJECT_OPTIONS}
+    INSTALL_RPATH "${EXECUTABLE_INSTALL_RPATH}"
     FOLDER "${IDE_FOLDER}"
 )
 
@@ -111,7 +112,9 @@ target_compile_definitions(${target}
 
 target_compile_options(${target}
     PRIVATE
-    ${DEFAULT_COMPILE_OPTIONS}
+    ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
+    PUBLIC
+    ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
 )
 
 

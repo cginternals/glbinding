@@ -15,6 +15,31 @@ void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveF
     Binding::initialize(functionPointerResolver, resolveFunctions);
 }
 
+void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext, bool resolveFunctions)
+{
+    Binding::initialize(context, functionPointerResolver, useContext, resolveFunctions);
+}
+
+void useCurrentContext()
+{
+    Binding::useCurrentContext();
+}
+
+void useContext(ContextHandle context)
+{
+    Binding::useContext(context);
+}
+
+void releaseCurrentContext()
+{
+    Binding::releaseCurrentContext();
+}
+
+void releaseContext(ContextHandle context)
+{
+    Binding::releaseContext(context);
+}
+
 void registerAdditionalFunction(AbstractFunction * function)
 {
     Binding::registerAdditionalFunction(function);
@@ -103,31 +128,6 @@ FunctionLogCallback logCallback()
 void setLogCallback(FunctionLogCallback callback)
 {
     Binding::setLogCallback(callback);
-}
-
-void initialize(ContextHandle context, glbinding::GetProcAddress functionPointerResolver, bool useContext, bool resolveFunctions)
-{
-    Binding::initialize(context, functionPointerResolver, useContext, resolveFunctions);
-}
-
-void useCurrentContext()
-{
-    Binding::useCurrentContext();
-}
-
-void useContext(ContextHandle context)
-{
-    Binding::useContext(context);
-}
-
-void releaseCurrentContext()
-{
-    Binding::releaseCurrentContext();
-}
-
-void releaseContext(ContextHandle context)
-{
-    Binding::releaseContext(context);
 }
 
 

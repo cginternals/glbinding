@@ -14,6 +14,7 @@ Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferDat
 Function<void, GLuint, GLsizeiptr, const void *, GLenum> Binding::NamedBufferDataEXT("glNamedBufferDataEXT");
 Function<void, GLuint, GLintptr, GLsizeiptr, GLboolean> Binding::NamedBufferPageCommitmentARB("glNamedBufferPageCommitmentARB");
 Function<void, GLuint, GLintptr, GLsizeiptr, GLboolean> Binding::NamedBufferPageCommitmentEXT("glNamedBufferPageCommitmentEXT");
+Function<void, GLuint, GLintptr, GLsizeiptr, GLuint, GLuint64, GLboolean> Binding::NamedBufferPageCommitmentMemNV("glNamedBufferPageCommitmentMemNV");
 Function<void, GLuint, GLsizeiptr, const void *, BufferStorageMask> Binding::NamedBufferStorage("glNamedBufferStorage");
 Function<void, GLuint, GLsizeiptr, const void *, BufferStorageMask> Binding::NamedBufferStorageEXT("glNamedBufferStorageEXT");
 Function<void, GLuint, GLintptr, GLsizeiptr, GLeglClientBufferEXT, BufferStorageMask> Binding::NamedBufferStorageExternalEXT("glNamedBufferStorageExternalEXT");

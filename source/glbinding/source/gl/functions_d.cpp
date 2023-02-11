@@ -308,6 +308,11 @@ void glDepthRange(GLdouble n, GLdouble f)
     return glbinding::Binding::DepthRange(n, f);
 }
 
+void glDepthRangeArraydvNV(GLuint first, GLsizei count, const GLdouble * v)
+{
+    return glbinding::Binding::DepthRangeArraydvNV(first, count, v);
+}
+
 void glDepthRangeArrayv(GLuint first, GLsizei count, const GLdouble * v)
 {
     return glbinding::Binding::DepthRangeArrayv(first, count, v);
@@ -331,6 +336,11 @@ void glDepthRangefOES(GLclampf n, GLclampf f)
 void glDepthRangeIndexed(GLuint index, GLdouble n, GLdouble f)
 {
     return glbinding::Binding::DepthRangeIndexed(index, n, f);
+}
+
+void glDepthRangeIndexeddNV(GLuint index, GLdouble n, GLdouble f)
+{
+    return glbinding::Binding::DepthRangeIndexeddNV(index, n, f);
 }
 
 void glDepthRangexOES(GLfixed n, GLfixed f)

@@ -24,6 +24,7 @@ using gl::FragmentShaderColorModMaskATI;
 using gl::FragmentShaderDestMaskATI;
 using gl::FragmentShaderDestModMaskATI;
 using gl::GLbitfield;
+using gl::GLboolean;
 using gl::GLbyte;
 using gl::GLchar;
 using gl::GLcharARB;
@@ -75,6 +76,7 @@ using gl::TextureStorageMaskAMD;
 using gl::UnusedMask;
 using gl::UseProgramStageMask;
 using gl::VertexHintsMaskPGI;
+using gl::VertexShaderWriteMaskEXT;
 
 
 } // namespace gl45ext

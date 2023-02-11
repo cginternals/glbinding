@@ -11,6 +11,10 @@ namespace gl30
 {
 
 
+// use enum type
+using gl::GLenum;
+
+
 // import enums to namespace
 using gl::GL_2_BYTES;
 using gl::GL_2D;

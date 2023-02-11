@@ -16,8 +16,8 @@ namespace gl
 {
 
 
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLboolean & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLenum & value);
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLboolean & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const GLextension & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const AttribMask & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const BufferStorageMask & value);
@@ -87,6 +87,13 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<g
 */
 template <>
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<gl::GLboolean> & value);
+
+/**
+*  @brief
+*    A specialized ostream operator for the const char * Value template
+*/
+template <>
+GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const Value<const char *> & value);
 
 /**
 *  @brief

@@ -31,10 +31,12 @@ set(sources
     AllVersions_test.cpp
     RingBuffer_test.cpp
     SharedBitfield_test.cpp
+    Boolean_compilation_test.cpp
     
     # regession tests
     Regression_test_82.cpp
     Regression_test_185.cpp
+    Regression_test_198.cpp
 )
 
 
@@ -84,7 +86,7 @@ target_link_libraries(${target}
     glfw
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    gmock-dev
+    googletest::googletest
 )
 
 
@@ -105,7 +107,9 @@ target_compile_definitions(${target}
 
 target_compile_options(${target}
     PRIVATE
-    ${DEFAULT_COMPILE_OPTIONS}
+    ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
+    PUBLIC
+    ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
 )
 
 

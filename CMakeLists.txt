@@ -6,6 +6,20 @@
 # CMake version
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
+
+#
+# Detect type of CMake setup
+#
+
+# Use PROJECT_IS_TOP_LEVEL once we bump the required CMake version up to 3.21
+get_directory_property(GLBINDING_HAS_PARENT PARENT_DIRECTORY)
+if(GLBINDING_HAS_PARENT)
+  set(GLBINDING_BUILD_AS_ROOT Off)
+else()
+  set(GLBINDING_BUILD_AS_ROOT On)
+endif()
+
+
 #
 # Configure CMake environment
 #
@@ -17,7 +31,7 @@ include(cmake/Custom.cmake)
 set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
 set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
-set_policy(CMP0069 NEW) # ENABLE CMP0054: INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
+set_policy(CMP0069 NEW) # ENABLE CMP0069: INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
 set_policy(CMP0072 NEW) # ENABLE CMP0072: FindOpenGL prefers GLVND by default when available.
 set_policy(CMP0077 NEW) # ENABLE CMP0077: option() honors normal variables.
 
@@ -33,6 +47,10 @@ if (${CMAKE_VERSION} VERSION_GREATER "3.2")
     include(WriteCompilerDetectionHeader OPTIONAL RESULT_VARIABLE WriterCompilerDetectionHeaderFound)
 endif()
 
+if (${CMAKE_VERSION} VERSION_GREATER "3.9")
+    include(CheckIPOSupported OPTIONAL RESULT_VARIABLE CheckIPOSupportedFound)
+endif()
+
 # Include custom cmake modules
 include(cmake/GetGitRevisionDescription.cmake)
 include(cmake/HealthCheck.cmake)
@@ -43,13 +61,6 @@ include(cmake/GenerateTemplateExportHeader.cmake)
 # Project description and (meta) information
 # 
 
-# Get git revision
-get_git_head_revision(GIT_REFSPEC GIT_SHA1)
-string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
-if(NOT GIT_SHA1)
-    set(GIT_REV "0")
-endif()
-
 # Meta information about the project
 set(META_PROJECT_NAME        "glbinding")
 set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
@@ -57,7 +68,7 @@ set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
 set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
 set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
 set(META_VERSION_MAJOR       "3")
-set(META_VERSION_MINOR       "1")
+set(META_VERSION_MINOR       "3")
 set(META_VERSION_PATCH       "0")
 set(META_VERSION_REVISION    "${GIT_REV}")
 set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
@@ -72,14 +83,17 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 # 
 
 # Project options
-option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."              ON)
-option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies." OFF)
-option(OPTION_BUILD_TESTS             "Build tests."                                           OFF)
-option(OPTION_BUILD_DOCS              "Build documentation."                                   OFF)
-option(OPTION_BUILD_TOOLS             "Build tools."                                           ON)
-option(OPTION_BUILD_EXAMPLES          "Build examples."                                        ON)
-option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."              OFF)
-option(OPTION_BUILD_CHECK             "Enable source code check targets"                       OFF)
+option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."                 ON)
+option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies."    OFF)
+option(OPTION_BUILD_TESTS             "Build tests."                                              OFF)
+option(OPTION_BUILD_DOCS              "Build documentation."                                      OFF)
+option(OPTION_BUILD_TOOLS             "Build tools."                                              ON)
+option(OPTION_BUILD_EXAMPLES          "Build examples."                                           ON)
+option(OPTION_BUILD_WITH_BOOST_THREAD "Use boost::thread instead of std::thread."                 OFF)
+option(OPTION_BUILD_CHECK             "Enable source code check targets"                          OFF)
+option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers."    OFF)
+option(OPTION_BUILD_WITH_LTO          "Build with Link-time Optimization (may break AppleClang)"  OFF)
+option(OPTION_USE_GIT_INFORMATION     "Fetches commit information from the git source repository" ON)
 
 
 # 
@@ -92,6 +106,18 @@ set(IDE_FOLDER "")
 
 # Declare project
 project(${META_PROJECT_NAME} C CXX)
+
+# Get git revision
+if (OPTION_USE_GIT_INFORMATION AND GLBINDING_BUILD_AS_ROOT)
+  get_git_head_revision(GIT_REFSPEC GIT_SHA1)
+  string(SUBSTRING "${GIT_SHA1}" 0 12 GIT_REV)
+  if(NOT GIT_SHA1)
+      set(GIT_REV "0")
+  endif()
+else()
+  set(GIT_SHA1 "")
+  set(GIT_REV "0")
+endif()
 
 # Set output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
@@ -175,9 +201,11 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH FALSE) # Do NOT add path to dependencies f
 if(NOT SYSTEM_DIR_INSTALL)
     # Find libraries relative to binary
     if(APPLE)
-        set(CMAKE_INSTALL_RPATH "@loader_path/../../../${INSTALL_LIB}")
+        set(EXECUTABLE_INSTALL_RPATH "@loader_path/../../../${INSTALL_LIB}")
+        set(LIBRARY_INSTALL_RPATH    "@loader_path/../../../${INSTALL_LIB}")
     else()
-        set(CMAKE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")       
+        set(EXECUTABLE_INSTALL_RPATH "$ORIGIN/${INSTALL_LIB}")
+        set(LIBRARY_INSTALL_RPATH    "$ORIGIN")
     endif()
 endif()
 
@@ -186,7 +214,6 @@ endif()
 # Project modules
 # 
 
-add_subdirectory(3rdparty)
 add_subdirectory(source)
 add_subdirectory(docs)
 add_subdirectory(deploy)
@@ -201,6 +228,7 @@ install(FILES "${PROJECT_BINARY_DIR}/VERSION" DESTINATION ${INSTALL_ROOT} COMPON
 
 # Install cmake find script for the project
 install(FILES ${META_PROJECT_NAME}-config.cmake DESTINATION ${INSTALL_ROOT} COMPONENT dev)
+install(FILES cmake/FindKHR.cmake DESTINATION ${INSTALL_CMAKE} COMPONENT dev)
 
 # Install the project meta files
 install(FILES AUTHORS   DESTINATION ${INSTALL_ROOT} COMPONENT runtime)
