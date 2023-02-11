@@ -436,14 +436,14 @@ Example for usage of multiple contexts:
 // Context 1 creation
 // GLFWwindow * window1 = glfwCreateWindow(640, 480, "", nullptr, nullptr);
 // glfwMakeContextCurrent(window1);
-glbinding::initialize(0, glbinding::getProcAddress); // 0 here is the context identifier
+glbinding::initialize(0, glfwGetProcAddress); // 0 here is the context identifier
 // Context 1 initialization
 glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
 
 // Context 2 creation
 // GLFWwindow * window2 = glfwCreateWindow(640, 480, "", nullptr, nullptr);
 // glfwMakeContextCurrent(window2);
-glbinding::initialize(1, glbinding::getProcAddress); // 1 here is the context identifier
+glbinding::initialize(1, glfwGetProcAddress); // 1 here is the context identifier
 // Context 1 initialization
 glClearColor(0.0f, 1.0f, 0.0f, 0.0f);
 
