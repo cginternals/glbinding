@@ -71,7 +71,9 @@ Version printVersionOfContextRequest(
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, version.minorVersion());
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, forward);
     if (core)
+    {
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    }
 
     GLFWwindow * window = glfwCreateWindow(320, 240, "", nullptr, nullptr);
     if (!window)

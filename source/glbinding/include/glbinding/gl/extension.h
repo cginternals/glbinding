@@ -331,6 +331,7 @@ enum class GLextension : int // GLextension is not a type introduced by GL API s
     GL_EXT_shader_image_load_formatted,
     GL_EXT_shader_image_load_store,
     GL_EXT_shader_integer_mix,
+    GL_EXT_shader_samples_identical,
     GL_EXT_shadow_funcs,
     GL_EXT_shared_texture_palette,
     GL_EXT_sparse_texture2,

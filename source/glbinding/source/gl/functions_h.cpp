@@ -13,7 +13,7 @@ void glHint(GLenum target, GLenum mode)
     return glbinding::Binding::Hint(target, mode);
 }
 
-void glHintPGI(GLenum target, GLint mode)
+void glHintPGI(GLenum target, VertexHintsMaskPGI mode)
 {
     return glbinding::Binding::HintPGI(target, mode);
 }

@@ -100,6 +100,7 @@ const std::unordered_map<FfdMaskSGIX, std::string> Meta_StringsByFfdMaskSGIX =
 
 const std::unordered_map<FragmentShaderColorModMaskATI, std::string> Meta_StringsByFragmentShaderColorModMaskATI =
 {
+    { FragmentShaderColorModMaskATI::GL_2X_BIT_ATI, "GL_2X_BIT_ATI" },
     { FragmentShaderColorModMaskATI::GL_BIAS_BIT_ATI, "GL_BIAS_BIT_ATI" },
     { FragmentShaderColorModMaskATI::GL_COMP_BIT_ATI, "GL_COMP_BIT_ATI" },
     { FragmentShaderColorModMaskATI::GL_NEGATE_BIT_ATI, "GL_NEGATE_BIT_ATI" },

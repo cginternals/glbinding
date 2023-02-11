@@ -58,17 +58,17 @@ void glActiveVaryingNV(GLuint program, const GLchar * name)
     return glbinding::Binding::ActiveVaryingNV(program, name);
 }
 
-void glAlphaFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod)
+void glAlphaFragmentOp1ATI(GLenum op, GLuint dst, FragmentShaderDestModMaskATI dstMod, GLuint arg1, GLuint arg1Rep, FragmentShaderColorModMaskATI arg1Mod)
 {
     return glbinding::Binding::AlphaFragmentOp1ATI(op, dst, dstMod, arg1, arg1Rep, arg1Mod);
 }
 
-void glAlphaFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod)
+void glAlphaFragmentOp2ATI(GLenum op, GLuint dst, FragmentShaderDestModMaskATI dstMod, GLuint arg1, GLuint arg1Rep, FragmentShaderColorModMaskATI arg1Mod, GLuint arg2, GLuint arg2Rep, FragmentShaderColorModMaskATI arg2Mod)
 {
     return glbinding::Binding::AlphaFragmentOp2ATI(op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod);
 }
 
-void glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod)
+void glAlphaFragmentOp3ATI(GLenum op, GLuint dst, FragmentShaderDestModMaskATI dstMod, GLuint arg1, GLuint arg1Rep, FragmentShaderColorModMaskATI arg1Mod, GLuint arg2, GLuint arg2Rep, FragmentShaderColorModMaskATI arg2Mod, GLuint arg3, GLuint arg3Rep, FragmentShaderColorModMaskATI arg3Mod)
 {
     return glbinding::Binding::AlphaFragmentOp3ATI(op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod);
 }

@@ -1,6 +1,4 @@
-#version 300 es
-
-#extension GL_EXT_geometry_shader : enable
+#version 320 es
 
 precision highp float;
 precision highp int;

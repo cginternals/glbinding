@@ -318,7 +318,10 @@ void Binding::neglectState(const int p)
     assert(p <= s_maxPos());
     assert(p > -1);
 
-    // Todo: reintegrate dynamic shrinking of state vectors.
+    /*
+     * Todo: reintegrate dynamic shrinking of state vectors.
+     * Further details: https://github.com/cginternals/glbinding/issues/198
+     */
     for (AbstractFunction * function : Binding::functions())
     {
         function->state(p) = State();

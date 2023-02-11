@@ -332,6 +332,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_EXT_shader_image_load_formatted, "GL_EXT_shader_image_load_formatted" },
     { GLextension::GL_EXT_shader_image_load_store, "GL_EXT_shader_image_load_store" },
     { GLextension::GL_EXT_shader_integer_mix, "GL_EXT_shader_integer_mix" },
+    { GLextension::GL_EXT_shader_samples_identical, "GL_EXT_shader_samples_identical" },
     { GLextension::GL_EXT_shadow_funcs, "GL_EXT_shadow_funcs" },
     { GLextension::GL_EXT_shared_texture_palette, "GL_EXT_shared_texture_palette" },
     { GLextension::GL_EXT_sparse_texture2, "GL_EXT_sparse_texture2" },
