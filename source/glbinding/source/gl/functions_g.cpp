@@ -508,7 +508,7 @@ GLuint glGetDebugMessageLog(GLuint count, GLsizei bufSize, GLenum * sources, GLe
     return glbinding::Binding::GetDebugMessageLog(count, bufSize, sources, types, ids, severities, lengths, messageLog);
 }
 
-GLuint glGetDebugMessageLogAMD(GLuint count, GLsizei bufSize, GLenum * categories, GLuint * severities, GLuint * ids, GLsizei * lengths, GLchar * message)
+GLuint glGetDebugMessageLogAMD(GLuint count, GLsizei bufSize, GLenum * categories, GLenum * severities, GLuint * ids, GLsizei * lengths, GLchar * message)
 {
     return glbinding::Binding::GetDebugMessageLogAMD(count, bufSize, categories, severities, ids, lengths, message);
 }
@@ -1533,7 +1533,7 @@ void glGetPerfQueryIdByNameINTEL(GLchar * queryName, GLuint * queryId)
     return glbinding::Binding::GetPerfQueryIdByNameINTEL(queryName, queryId);
 }
 
-void glGetPerfQueryInfoINTEL(GLuint queryId, GLuint queryNameLength, GLchar * queryName, GLuint * dataSize, GLuint * noCounters, GLuint * noInstances, GLuint * capsMask)
+void glGetPerfQueryInfoINTEL(GLuint queryId, GLuint queryNameLength, GLchar * queryName, GLuint * dataSize, GLuint * noCounters, GLuint * noInstances, PerformanceQueryCapsMaskINTEL capsMask)
 {
     return glbinding::Binding::GetPerfQueryInfoINTEL(queryId, queryNameLength, queryName, dataSize, noCounters, noInstances, capsMask);
 }

@@ -455,9 +455,9 @@ public:
     static Function<void, gl::GLenum> ActiveTexture; ///< Wrapper for glActiveTexture
     static Function<void, gl::GLenum> ActiveTextureARB; ///< Wrapper for glActiveTextureARB
     static Function<void, gl::GLuint, const gl::GLchar *> ActiveVaryingNV; ///< Wrapper for glActiveVaryingNV
-    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> AlphaFragmentOp1ATI; ///< Wrapper for glAlphaFragmentOp1ATI
-    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> AlphaFragmentOp2ATI; ///< Wrapper for glAlphaFragmentOp2ATI
-    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> AlphaFragmentOp3ATI; ///< Wrapper for glAlphaFragmentOp3ATI
+    static Function<void, gl::GLenum, gl::GLuint, gl::FragmentShaderDestModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI> AlphaFragmentOp1ATI; ///< Wrapper for glAlphaFragmentOp1ATI
+    static Function<void, gl::GLenum, gl::GLuint, gl::FragmentShaderDestModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI> AlphaFragmentOp2ATI; ///< Wrapper for glAlphaFragmentOp2ATI
+    static Function<void, gl::GLenum, gl::GLuint, gl::FragmentShaderDestModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI> AlphaFragmentOp3ATI; ///< Wrapper for glAlphaFragmentOp3ATI
     static Function<void, gl::GLenum, gl::GLfloat> AlphaFunc; ///< Wrapper for glAlphaFunc
     static Function<void, gl::GLenum, gl::GLfixed> AlphaFuncxOES; ///< Wrapper for glAlphaFuncxOES
     static Function<void, gl::GLenum> AlphaToCoverageDitherControlNV; ///< Wrapper for glAlphaToCoverageDitherControlNV
@@ -693,9 +693,9 @@ public:
     static Function<void, gl::GLfixed, gl::GLfixed, gl::GLfixed, gl::GLfixed> Color4xOES; ///< Wrapper for glColor4xOES
     static Function<void, const gl::GLfixed *> Color4xvOES; ///< Wrapper for glColor4xvOES
     static Function<void, gl::GLint, gl::GLenum, gl::GLsizei> ColorFormatNV; ///< Wrapper for glColorFormatNV
-    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> ColorFragmentOp1ATI; ///< Wrapper for glColorFragmentOp1ATI
-    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> ColorFragmentOp2ATI; ///< Wrapper for glColorFragmentOp2ATI
-    static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint, gl::GLuint> ColorFragmentOp3ATI; ///< Wrapper for glColorFragmentOp3ATI
+    static Function<void, gl::GLenum, gl::GLuint, gl::FragmentShaderDestMaskATI, gl::FragmentShaderDestModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI> ColorFragmentOp1ATI; ///< Wrapper for glColorFragmentOp1ATI
+    static Function<void, gl::GLenum, gl::GLuint, gl::FragmentShaderDestMaskATI, gl::FragmentShaderDestModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI> ColorFragmentOp2ATI; ///< Wrapper for glColorFragmentOp2ATI
+    static Function<void, gl::GLenum, gl::GLuint, gl::FragmentShaderDestMaskATI, gl::FragmentShaderDestModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI, gl::GLuint, gl::GLuint, gl::FragmentShaderColorModMaskATI> ColorFragmentOp3ATI; ///< Wrapper for glColorFragmentOp3ATI
     static Function<void, gl::GLboolean, gl::GLboolean, gl::GLboolean, gl::GLboolean> ColorMask; ///< Wrapper for glColorMask
     static Function<void, gl::GLuint, gl::GLboolean, gl::GLboolean, gl::GLboolean, gl::GLboolean> ColorMaski; ///< Wrapper for glColorMaski
     static Function<void, gl::GLuint, gl::GLboolean, gl::GLboolean, gl::GLboolean, gl::GLboolean> ColorMaskIndexedEXT; ///< Wrapper for glColorMaskIndexedEXT
@@ -832,7 +832,7 @@ public:
     static Function<gl::GLhandleARB, gl::GLenum> CreateShaderObjectARB; ///< Wrapper for glCreateShaderObjectARB
     static Function<gl::GLuint, gl::GLenum, const gl::GLchar *> CreateShaderProgramEXT; ///< Wrapper for glCreateShaderProgramEXT
     static Function<gl::GLuint, gl::GLenum, gl::GLsizei, const gl::GLchar *const*> CreateShaderProgramv; ///< Wrapper for glCreateShaderProgramv
-    static Function<gl::GLuint, gl::GLenum, gl::GLsizei, const gl::GLchar **> CreateShaderProgramvEXT; ///< Wrapper for glCreateShaderProgramvEXT
+    static Function<gl::GLuint, gl::GLenum, gl::GLsizei, const gl::GLchar *const*> CreateShaderProgramvEXT; ///< Wrapper for glCreateShaderProgramvEXT
     static Function<void, gl::GLsizei, gl::GLuint *> CreateStatesNV; ///< Wrapper for glCreateStatesNV
     static Function<gl::GLsync, gl::_cl_context *, gl::_cl_event *, gl::GLbitfield> CreateSyncFromCLeventARB; ///< Wrapper for glCreateSyncFromCLeventARB
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLuint *> CreateTextures; ///< Wrapper for glCreateTextures
@@ -1219,7 +1219,7 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, gl::GLfixed *> GetConvolutionParameterxvOES; ///< Wrapper for glGetConvolutionParameterxvOES
     static Function<void, gl::GLsizei, gl::GLfloat *> GetCoverageModulationTableNV; ///< Wrapper for glGetCoverageModulationTableNV
     static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLenum *, gl::GLuint *, gl::GLenum *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLog; ///< Wrapper for glGetDebugMessageLog
-    static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLuint *, gl::GLuint *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLogAMD; ///< Wrapper for glGetDebugMessageLogAMD
+    static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLenum *, gl::GLuint *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLogAMD; ///< Wrapper for glGetDebugMessageLogAMD
     static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLenum *, gl::GLuint *, gl::GLenum *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLogARB; ///< Wrapper for glGetDebugMessageLogARB
     static Function<gl::GLuint, gl::GLuint, gl::GLsizei, gl::GLenum *, gl::GLenum *, gl::GLuint *, gl::GLenum *, gl::GLsizei *, gl::GLchar *> GetDebugMessageLogKHR; ///< Wrapper for glGetDebugMessageLogKHR
     static Function<void, gl::GLenum, gl::GLfloat *> GetDetailTexFuncSGIS; ///< Wrapper for glGetDetailTexFuncSGIS
@@ -1424,7 +1424,7 @@ public:
     static Function<void, gl::GLuint, gl::GLsizei, gl::GLsizei *, gl::GLchar *> GetPerfMonitorGroupStringAMD; ///< Wrapper for glGetPerfMonitorGroupStringAMD
     static Function<void, gl::GLuint, gl::GLuint, gl::GLsizei, void *, gl::GLuint *> GetPerfQueryDataINTEL; ///< Wrapper for glGetPerfQueryDataINTEL
     static Function<void, gl::GLchar *, gl::GLuint *> GetPerfQueryIdByNameINTEL; ///< Wrapper for glGetPerfQueryIdByNameINTEL
-    static Function<void, gl::GLuint, gl::GLuint, gl::GLchar *, gl::GLuint *, gl::GLuint *, gl::GLuint *, gl::GLuint *> GetPerfQueryInfoINTEL; ///< Wrapper for glGetPerfQueryInfoINTEL
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLchar *, gl::GLuint *, gl::GLuint *, gl::GLuint *, gl::PerformanceQueryCapsMaskINTEL> GetPerfQueryInfoINTEL; ///< Wrapper for glGetPerfQueryInfoINTEL
     static Function<void, gl::GLenum, gl::GLfloat *> GetPixelMapfv; ///< Wrapper for glGetPixelMapfv
     static Function<void, gl::GLenum, gl::GLuint *> GetPixelMapuiv; ///< Wrapper for glGetPixelMapuiv
     static Function<void, gl::GLenum, gl::GLushort *> GetPixelMapusv; ///< Wrapper for glGetPixelMapusv
@@ -1633,7 +1633,7 @@ public:
     static Function<void, gl::GLuint> GlobalAlphaFactoruiSUN; ///< Wrapper for glGlobalAlphaFactoruiSUN
     static Function<void, gl::GLushort> GlobalAlphaFactorusSUN; ///< Wrapper for glGlobalAlphaFactorusSUN
     static Function<void, gl::GLenum, gl::GLenum> Hint; ///< Wrapper for glHint
-    static Function<void, gl::GLenum, gl::GLint> HintPGI; ///< Wrapper for glHintPGI
+    static Function<void, gl::GLenum, gl::VertexHintsMaskPGI> HintPGI; ///< Wrapper for glHintPGI
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLboolean> Histogram; ///< Wrapper for glHistogram
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, gl::GLboolean> HistogramEXT; ///< Wrapper for glHistogramEXT
     static Function<void, gl::GLenum, const void *> IglooInterfaceSGIX; ///< Wrapper for glIglooInterfaceSGIX

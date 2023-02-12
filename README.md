@@ -5,6 +5,7 @@
 *glbinding* is a cross-platform C++ binding for the [OpenGL API](http://www.opengl.org).
 
 ![GitHub release](https://img.shields.io/github/release/cginternals/glbinding.svg)
+![C++ CI](https://github.com/cginternals/glbinding/actions/workflows/ci.yml/badge.svg)
 [![Travis](https://img.shields.io/travis/cginternals/glbinding/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/glbinding)
 [![Appveyor](https://img.shields.io/appveyor/build/scheibel/glbinding/master.svg?style=flat&logo=appveyor)](https://ci.appveyor.com/project/scheibel/glbinding)
 [![Tokei](https://tokei.rs/b1/github/cginternals/glbinding)](https://github.com/Aaronepower/tokei)
@@ -18,7 +19,7 @@
 *glbinding* leverages C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros;
 all OpenGL symbols are real functions and variables.
 It provides type-safe parameters, per-feature API headers, lazy function resolution, multi-context and multi-thread support, global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
-Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) *glbinding* is generated using [python scripts and templates](https://github.com/cginternals/khrbinding-generator) that can be easily adapted to fit custom needs.
+Based on the OpenGL API specification ([gl.xml](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml)) *glbinding* is generated using [python scripts and templates](https://github.com/cginternals/khrbinding-generator) that can be easily adapted to fit custom needs.
 
 ![what-is-glbinding](https://raw.githubusercontent.com/cginternals/glbinding/master/docs/what-is-glbinding-v2.png)
 
@@ -42,7 +43,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 ### Installation and Development
 
 * [Install Instructions](#install-instructions)
-* [Build form Source](#build-instructions)
+* [Build from Source](#build-instructions)
 * [Updating the Generated Source Code](#update-generated-source-code)
 * [Tips for Linking](#tips-for-linking)
 * [Dependency on KHR Headers](#dependency-on-khr-headers)
@@ -66,6 +67,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 *glbinding* is available for different platforms using different distribution channels.
 You can either download the source and manually [compile](#build-instructions) it or use one of the [pre-compiled releases](https://github.com/cginternals/glbinding/releases) of this repository.
 For systems providing package managers, we generally strive for packages in these package managers.
+An overview on availability of glbinding can be found on [repology.org](https://repology.org/project/glbinding/versions).
 
 ## Windows
 
@@ -81,7 +83,7 @@ Alternatively, download the source code and commence [building from source](#bui
 
 ## Ubuntu
 
-*glbinding* is provided on Ubuntu using PPAs and in [Ubuntu universe](https://packages.ubuntu.com/source/artful/glbinding) since Artful Aardvark. We maintain our own PPA for most recent releases. For Ubuntu 16.04 (xenial), 17.10 (artful), and 18.04 (bionic) use the [standard PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa), for Ubuntu 14.04 (trusty) use the [backports PPA](https://launchpad.net/~cginternals/+archive/ubuntu/backports-ppa).
+*glbinding* is provided on Ubuntu using PPAs and in [Ubuntu universe](https://packages.ubuntu.com/source/artful/glbinding) since Artful Aardvark. We maintain our own [PPA](https://launchpad.net/~cginternals/+archive/ubuntu/ppa) for most recent releases.
 Using the current PPA as example, the following lines install *glbinding* including the GLFW examples:
 
 ```shell
@@ -129,7 +131,7 @@ For advanced use, download the source code and commence [building from source](#
 
 ## Cross-Platform Package Managers
 
-As one of the cross-platform package managers, *conan* provides glbinding in its [center index](https://conan.io/center/glbinding). You can use the folling line to install glbinding using conan:
+As one of the cross-platform package managers, *conan* provides glbinding in its [center index](https://conan.io/center/glbinding). You can use the following line to install glbinding using conan:
 
 ```bash
 > conan install glbinding/3.1.0@
@@ -149,6 +151,7 @@ Building *glbinding* from source has several mandatory and optional dependencies
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example (optional)
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples (optional)
 * [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example (optional)
+* [googletest](https://github.com/google/googletest) for tests (optional)
 * [Doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8 or higher for generating the documentation on your system
   * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
 
@@ -180,11 +183,11 @@ First, create a build directory (we do not recommend in-source builds):
 > cd build
 ```
 
-Configure *glbinding* with your preferred or default generator, e.g., for Visual Studio 2015 in x64 use
+Configure *glbinding* with your preferred or default generator, e.g., for Visual Studio 2017 in x64 use
 (note: some IDEs have integrated support for CMake projects, e.g., Qt Creator, and allow you to skip the manual project configuration):
 
 ```bash
-> cmake .. -G "Visual Studio 14 2015 Win64"
+> cmake .. -G "Visual Studio 17 2022" -A x64
 ```
 
 In order to compile the project, either use you favorite Editor/IDE with the created project or use CMake as follows:
@@ -434,14 +437,14 @@ Example for usage of multiple contexts:
 // Context 1 creation
 // GLFWwindow * window1 = glfwCreateWindow(640, 480, "", nullptr, nullptr);
 // glfwMakeContextCurrent(window1);
-glbinding::initialize(0, glbinding::getProcAddress); // 0 here is the context identifier
+glbinding::initialize(0, glfwGetProcAddress); // 0 here is the context identifier
 // Context 1 initialization
 glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
 
 // Context 2 creation
 // GLFWwindow * window2 = glfwCreateWindow(640, 480, "", nullptr, nullptr);
 // glfwMakeContextCurrent(window2);
-glbinding::initialize(1, glbinding::getProcAddress); // 1 here is the context identifier
+glbinding::initialize(1, glfwGetProcAddress); // 1 here is the context identifier
 // Context 1 initialization
 glClearColor(0.0f, 1.0f, 0.0f, 0.0f);
 
@@ -571,7 +574,7 @@ glTexImage2D(GL_TEXTURE_2D, 0, GL_R8, 64, 64, 0, GL_RED, GL_UNSIGNED_BYTE, terra
 
 ### Meta Information
 
-Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and runtime information about the gl.xml and your OpenGL driver within the *glbinding-aux* library. This library comes with own includes and needs to be linked seperately.
+Besides an actual OpenGL binding, *glbinding* also supports queries for both compile time and runtime information about the gl.xml and your OpenGL driver within the *glbinding-aux* library. This library comes with own includes and needs to be linked separately.
 Typical use cases are querying the available OpenGL extensions or the associated extensions to an OpenGL feature and their functions and enums.
 
 The following example prints out a list of all available OpenGL versions/features:
@@ -585,8 +588,8 @@ The following example prints out a list of all available OpenGL versions/feature
 #include <glbinding-aux/types_to_string.h>
 
 // ...
-using glbinding::Meta;
+using namespace glbinding;
 
-for (const Version & v : Meta::versions())
+for (const Version & v : aux::Meta::versions())
   std::cout << v << std::endl;
 ```

@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(glfw3)
+find_package(glfw3 QUIET)
 find_package(cpplocate QUIET)
 
 
