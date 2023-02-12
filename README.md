@@ -19,7 +19,7 @@
 *glbinding* leverages C++11 features like enum classes, lambdas, and variadic templates, instead of relying on macros;
 all OpenGL symbols are real functions and variables.
 It provides type-safe parameters, per-feature API headers, lazy function resolution, multi-context and multi-thread support, global and local function callbacks, meta information about the generated OpenGL binding and the OpenGL runtime, as well as tools and examples for quick-starting your projects.
-Based on the OpenGL API specification ([gl.xml](https://cvs.khronos.org/svn/repos/ogl/trunk/doc/registry/public/api/gl.xml)) *glbinding* is generated using [python scripts and templates](https://github.com/cginternals/khrbinding-generator) that can be easily adapted to fit custom needs.
+Based on the OpenGL API specification ([gl.xml](https://github.com/KhronosGroup/OpenGL-Registry/blob/main/xml/gl.xml)) *glbinding* is generated using [python scripts and templates](https://github.com/cginternals/khrbinding-generator) that can be easily adapted to fit custom needs.
 
 ![what-is-glbinding](https://raw.githubusercontent.com/cginternals/glbinding/master/docs/what-is-glbinding-v2.png)
 
@@ -67,6 +67,7 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 *glbinding* is available for different platforms using different distribution channels.
 You can either download the source and manually [compile](#build-instructions) it or use one of the [pre-compiled releases](https://github.com/cginternals/glbinding/releases) of this repository.
 For systems providing package managers, we generally strive for packages in these package managers.
+An overview on availability of glbinding can be found on [repology.org](https://repology.org/project/glbinding/versions).
 
 ## Windows
 
@@ -182,11 +183,11 @@ First, create a build directory (we do not recommend in-source builds):
 > cd build
 ```
 
-Configure *glbinding* with your preferred or default generator, e.g., for Visual Studio 2015 in x64 use
+Configure *glbinding* with your preferred or default generator, e.g., for Visual Studio 2017 in x64 use
 (note: some IDEs have integrated support for CMake projects, e.g., Qt Creator, and allow you to skip the manual project configuration):
 
 ```bash
-> cmake .. -G "Visual Studio 14 2015 Win64"
+> cmake .. -G "Visual Studio 17 2022" -A x64
 ```
 
 In order to compile the project, either use you favorite Editor/IDE with the created project or use CMake as follows:
