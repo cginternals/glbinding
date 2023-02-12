@@ -72,8 +72,7 @@ set(DEFAULT_COMPILE_OPTIONS_PUBLIC)
 
 # MSVC compiler options
 if (MSVC)
-    set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
-    PRIVATE
+    set(DEFAULT_COMPILE_OPTIONS_PRIVATE ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
         $<$<CXX_COMPILER_ID:MSVC>:
             /MP           # -> build with multiple processes
         >
@@ -108,8 +107,7 @@ endif ()
 
 # GCC and Clang compiler options
 if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang" AND NOT MSVC)
-    set(DEFAULT_COMPILE_OPTIONS ${DEFAULT_COMPILE_OPTIONS}
-    PRIVATE
+    set(DEFAULT_COMPILE_OPTIONS_PRIVATE ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
         #-fno-exceptions # since we use stl and stl is intended to use exceptions, exceptions should not be disabled
 
         -Wall
@@ -159,7 +157,6 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
         >
     )
 endif ()
-
 
 # 
 # Linker options
