@@ -25,7 +25,7 @@ class FunctionCall;
 
 using SimpleFunctionCallback = std::function<void(const AbstractFunction &)>; ///< The signature of the unresolved callback
 using FunctionCallback = std::function<void(const FunctionCall &)>;           ///< The signature of the before and after callbacks
-using FunctionLogCallback = std::function<void(FunctionCall *)>;              ///< The signature of the log callback
+using FunctionLogCallback = std::function<void(FunctionCall &&)>;             ///< The signature of the log callback
 using ContextSwitchCallback = std::function<void(ContextHandle)>;             ///< The signature of the context switch callback
 
 /**
