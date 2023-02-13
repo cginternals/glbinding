@@ -19,6 +19,7 @@ Description: A C++ binding for the OpenGL API, generated using the gl.xml specif
 
 Package: libglbinding-examples-data
 Architecture: any
+Depends: libcpplocate
 Homepage: https://glbinding.org
 Description: A C++ binding for the OpenGL API, generated using the gl.xml specification.
 
