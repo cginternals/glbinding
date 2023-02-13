@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
 # 
 
 # Target name
-set(target glcontexts)
+set(target ${META_PROJECT_NAME}-glcontexts)
 
 # Exit here if required dependencies are not met
 if (NOT glfw3_FOUND)
