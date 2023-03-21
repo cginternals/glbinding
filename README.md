@@ -152,7 +152,7 @@ Building *glbinding* from source has several mandatory and optional dependencies
 * [cpplocate](https://github.com/cginternals/cpplocate) for the examples (optional)
 * [Qt5](http://www.qt.io/developers/) 5.0 or higher for the qt-based example (optional)
 * [googletest](https://github.com/google/googletest) for tests (optional)
-* [Doxygen](http://www.stack.nl/~dimitri/doxygen/) 1.8 or higher for generating the documentation on your system
+* [Doxygen](https://www.doxygen.nl/) 1.8 or higher for generating the documentation on your system
   * [graphviz](http://www.graphviz.org/) for generating diagrams (optional)
 
 ### Compile Instructions
