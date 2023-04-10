@@ -74,9 +74,9 @@ TEST_F(MultiContext_test, Test)
            return glfwGetProcAddress(name);
     });
 
-    Binding::releaseCurrentContext();
+    Binding::releaseContext(1);
     glfwMakeContextCurrent(window1);
-    Binding::releaseCurrentContext();
+    Binding::releaseContext(2);
 
     glfwTerminate();
 }
