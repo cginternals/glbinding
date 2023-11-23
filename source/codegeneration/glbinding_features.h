@@ -301,8 +301,8 @@
 
 # elif GLBINDING_COMPILER_IS_Intel
 
-#    if (__INTEL_LLVM_COMPILER < 202400)
-#      error Unsupported Intel compiler: mimimum version is 2024.0
+#    if (__INTEL_LLVM_COMPILER < 20230000)
+#      error Unsupported Intel compiler: mimimum version is 2023.0
 #    endif
 #    define GLBINDING_COMPILER_CXX_ATTRIBUTE_DEPRECATED 1
 #    define GLBINDING_COMPILER_CXX_CONSTEXPR 1
