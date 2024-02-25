@@ -144,7 +144,6 @@ void activate(GtkApplication* app, gpointer /*user_data*/)
 
     gtk_window_set_child(GTK_WINDOW(window), GTK_WIDGET(glarea));
     
-    g_signal_connect (G_OBJECT(window), "key_press_event", G_CALLBACK(key_press), NULL);
     g_signal_connect(G_OBJECT(glarea), "realize", G_CALLBACK(realize), NULL);
     g_signal_connect(G_OBJECT(glarea), "resize", G_CALLBACK(resize), NULL);
     g_signal_connect(G_OBJECT(glarea), "render", G_CALLBACK (render), NULL);
