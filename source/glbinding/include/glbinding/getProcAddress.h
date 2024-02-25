@@ -28,6 +28,7 @@ namespace glbinding
 *     * glxGetProcAddress
 *     * glfwGetProcAddress
 *     * QOpenGlContext::getProcAddress
+*     * reinterpret_cast<glbinding::ProcAddress(*)(const char*)>(SDL_GL_GetProcAddress)
 */
 GLBINDING_API ProcAddress getProcAddress(const char * name);
 

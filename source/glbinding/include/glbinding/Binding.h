@@ -98,6 +98,7 @@ public:
     *     * glxGetProcAddress
     *     * glfwGetProcAddress
     *     * QOpenGlContext::getProcAddress
+    *     * reinterpret_cast<glbinding::ProcAddress(*)(const char*)>(SDL_GL_GetProcAddress)
     */
     static void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
 
