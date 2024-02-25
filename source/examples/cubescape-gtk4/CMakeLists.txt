@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(GTK3 QUIET)
+find_package(GTK4 REQUIRED)
 find_package(cpplocate QUIET)
 
 
@@ -12,11 +12,11 @@ find_package(cpplocate QUIET)
 # 
 
 # Target name
-set(target cubescape-gtk)
+set(target cubescape-gtk4)
 
 # Exit here if required dependencies are not met
-if (NOT TARGET GTK3::GTK3)
-    message("Example ${target} skipped: GTK+ 3 not found")
+if (NOT TARGET GTK4::GTK4)
+    message("Example ${target} skipped: GTK 4 not found")
     return()
 endif()
 
@@ -87,7 +87,7 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    GTK3::GTK3
+    GTK4::GTK4
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
     $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
