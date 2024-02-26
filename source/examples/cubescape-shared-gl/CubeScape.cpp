@@ -223,6 +223,7 @@ void CubeScape::setNumCubes(int _numCubes)
 {
     m_numcubes = std::min(4096, std::max(1, _numCubes));
 }
+
 int CubeScape::numCubes() const
 {
     return m_numcubes;
