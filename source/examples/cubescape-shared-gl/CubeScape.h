@@ -11,6 +11,7 @@
 class CubeScape
 {
     using clock = std::chrono::system_clock;
+
 public:
     CubeScape();
     ~CubeScape();
