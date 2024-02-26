@@ -15,7 +15,7 @@ find_package(cpplocate QUIET)
 set(target cubescape-sdl)
 
 # Exit here if required dependencies are not met
-if (NOT SDL2_FOUND)
+if (NOT TARGET SDL2::SDL2)
     message("Example ${target} skipped: SDL2 not found")
     return()
 endif()

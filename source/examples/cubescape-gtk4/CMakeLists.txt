@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(GTK4 REQUIRED)
+find_package(GTK4 QUIET)
 find_package(cpplocate QUIET)
 
 
