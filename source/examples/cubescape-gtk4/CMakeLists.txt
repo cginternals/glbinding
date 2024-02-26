@@ -26,12 +26,6 @@ endif()
 
 set(sources
     main.cpp
-    CubeScape.cpp
-    CubeScape.h
-    glutils.cpp
-    glutils.h
-    RawFile.cpp
-    RawFile.h
 )
 
 
