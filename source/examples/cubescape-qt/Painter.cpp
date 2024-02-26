@@ -5,7 +5,7 @@
 
 #include <glbinding-aux/ContextInfo.h>
 
-#include "../cubescape/CubeScape.h"
+#include <CubeScape.h>
 
 
 Painter::Painter()

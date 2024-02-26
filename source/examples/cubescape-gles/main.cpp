@@ -15,7 +15,7 @@
 #include <glbinding-aux/types_to_string.h>
 #include <glbinding-aux/ValidVersions.h>
 
-#include "CubeScape.h"
+#include <CubeScape.h>
 
 
 using namespace gl;

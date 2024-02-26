@@ -4,7 +4,6 @@
 # 
 
 find_package(SDL2 QUIET)
-find_package(cpplocate QUIET)
 
 
 # 
@@ -20,12 +19,6 @@ if (NOT TARGET SDL2::SDL2)
     return()
 endif()
 
-if (NOT cpplocate_FOUND)
-    message(STATUS "Example ${target}: using static data path (cpplocate not found)")
-else()
-    message(STATUS "Example ${target}")
-endif()
-
 
 # 
 # Sources
@@ -33,12 +26,6 @@ endif()
 
 set(sources
     main.cpp
-    CubeScape.cpp
-    CubeScape.h
-    glutils.cpp
-    glutils.h
-    RawFile.cpp
-    RawFile.h
 )
 
 
@@ -91,7 +78,7 @@ target_link_libraries(${target}
     SDL2::SDL2main
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
+    ${META_PROJECT_NAME}::cubescape-shared-gl
 )
 
 
@@ -102,7 +89,6 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate_FOUND>
 )
 
 

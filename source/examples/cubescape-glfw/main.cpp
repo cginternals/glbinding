@@ -1,10 +1,6 @@
 
 #include <iostream>
 
-#include <thread>
-#include <fstream>
-#include <sstream>
-
 #include <GLFW/glfw3.h>
 
 #include <glbinding/glbinding.h>
@@ -13,15 +9,16 @@
 #include <glbinding/CallbackMask.h>
 
 #include <glbinding/gl/gl.h>
+#include <glbinding/getProcAddress.h>
 
 #include <glbinding-aux/ContextInfo.h>
 #include <glbinding-aux/Meta.h>
 #include <glbinding-aux/types_to_string.h>
 #include <glbinding-aux/ValidVersions.h>
-#include <glbinding-aux/logging.h>
+#include <glbinding-aux/debug.h>
 
 #include <CubeScape.h>
-#include <glutils.h>
+
 
 using namespace gl;
 using namespace glbinding;
@@ -54,7 +51,7 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
     if (key == GLFW_KEY_I && (action == GLFW_PRESS || action == GLFW_REPEAT))
     {
         cubescape->setNumCubes(cubescape->numCubes() + 1);
-        numCubesChanged = true;         
+        numCubesChanged = true;        
     }
 
     if (key == GLFW_KEY_D && (action == GLFW_PRESS || action == GLFW_REPEAT))
@@ -69,6 +66,7 @@ void key_callback(GLFWwindow * window, int key, int /*scancode*/, int action, in
         std::cout << "#cubes = " << n << " * " << n << " = " << n * n << std::endl;
     }
 }
+
 
 int main(int, char *[])
 {
@@ -86,7 +84,7 @@ int main(int, char *[])
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 
-    GLFWwindow * window = glfwCreateWindow(640, 480, "CubeScape", nullptr, nullptr);
+    GLFWwindow * window = glfwCreateWindow(640, 480, "", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -98,23 +96,19 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window);
 
-	glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::initialize(glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::aux::enableGetErrorCallback();
 
-	// Configure logging to also include parameter and return values
-	glbinding::addCallbackMask(CallbackMask::ParametersAndReturnValue);
+    // print some gl infos (query)
 
-    // Logging start
-    aux::start();
-
-    // Print some gl infos (query)
     std::cout << std::endl
         << "OpenGL Version:  " << aux::ContextInfo::version() << std::endl
         << "OpenGL Vendor:   " << aux::ContextInfo::vendor() << std::endl
         << "OpenGL Renderer: " << aux::ContextInfo::renderer() << std::endl;
 
-
     std::cout << std::endl
         << "Press i or d to either increase or decrease number of cubes." << std::endl << std::endl;
+
 
     cubescape = new CubeScape();
 
@@ -130,9 +124,6 @@ int main(int, char *[])
 
     delete cubescape;
     cubescape = nullptr;
-
-    // Logging end
-    aux::stop();
 
     glfwTerminate();
     return 0;

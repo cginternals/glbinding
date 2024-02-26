@@ -4,7 +4,6 @@
 # 
 
 find_package(GTK4 QUIET)
-find_package(cpplocate QUIET)
 
 
 # 
@@ -18,12 +17,6 @@ set(target cubescape-gtk4)
 if (NOT TARGET GTK4::GTK4)
     message("Example ${target} skipped: GTK 4 not found")
     return()
-endif()
-
-if (NOT cpplocate_FOUND)
-    message(STATUS "Example ${target}: using static data path (cpplocate not found)")
-else()
-    message(STATUS "Example ${target}")
 endif()
 
 
@@ -90,7 +83,7 @@ target_link_libraries(${target}
     GTK4::GTK4
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
+    ${META_PROJECT_NAME}::cubescape-shared-gl
 )
 
 
@@ -101,7 +94,6 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate_FOUND>
 )
 
 

@@ -6,7 +6,6 @@
 find_package(Qt5Core    5.1 QUIET)
 find_package(Qt5Gui     5.1 QUIET)
 find_package(Qt5Widgets 5.1 QUIET)
-find_package(cpplocate      QUIET)
 
 
 # Enable automoc
@@ -38,18 +37,9 @@ if(APPLE)
 endif()
 
 
-if (NOT cpplocate_FOUND)
-    message(STATUS "Example ${target}: using static data path (cpplocate not found)")
-else()
-    message(STATUS "Example ${target}")
-endif()
-
-
 # 
 # Sources
 # 
-
-set(cubscape_path ../cubescape)
 
 set(sources
     main.cpp
@@ -61,13 +51,6 @@ set(sources
     Viewer.cpp
     Viewer.h
     Viewer.ui
-
-    ${cubscape_path}/CubeScape.cpp
-    ${cubscape_path}/CubeScape.h
-    ${cubscape_path}/glutils.cpp
-    ${cubscape_path}/glutils.h
-    ${cubscape_path}/RawFile.cpp
-    ${cubscape_path}/RawFile.h
 )
 
 
@@ -119,10 +102,10 @@ target_link_libraries(${target}
     ${DEFAULT_LIBRARIES}
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
+    ${META_PROJECT_NAME}::cubescape-shared-gl
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
-    "$<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>"
     "$<$<PLATFORM_ID:Darwin>:${OPENGL_gl_LIBRARY}>"
 )
 
@@ -134,7 +117,6 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate_FOUND>
 )
 
 

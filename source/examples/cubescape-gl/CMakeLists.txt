@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
 # 
 
 # Target name
-set(target cubescape-log)
+set(target cubescape-gl)
 
 # Exit here if required dependencies are not met
 if (NOT glfw3_FOUND)
@@ -35,6 +35,7 @@ set(sources
 
 # Build executable
 add_executable(${target}
+    MACOSX_BUNDLE
     ${sources}
 )
 

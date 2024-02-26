@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(glfw3 QUIET)
+find_package(cpplocate QUIET)
 
 
 # 
@@ -11,12 +11,12 @@ find_package(glfw3 QUIET)
 # 
 
 # Target name
-set(target cubescape-log)
+set(target cubescape-shared-gl)
 
-# Exit here if required dependencies are not met
-if (NOT glfw3_FOUND)
-    message("Example ${target} skipped: glfw3 not found")
-    return()
+if (NOT cpplocate_FOUND)
+    message(STATUS "Example Lib ${target}: using static data path (cpplocate not found)")
+else()
+    message(STATUS "Example Lib ${target}")
 endif()
 
 
@@ -25,21 +25,26 @@ endif()
 # 
 
 set(sources
-    main.cpp
+    CubeScape.cpp
+    CubeScape.h
+    glutils.cpp
+    glutils.h
+    RawFile.cpp
+    RawFile.h
 )
 
 
 # 
-# Create executable
+# Create library
 # 
 
-# Build executable
-add_executable(${target}
+# Build library
+add_library(${target} STATIC
     ${sources}
 )
 
 # Create namespaced alias
-add_executable(${META_PROJECT_NAME}::${target} ALIAS ${target})
+add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
 
 # 
@@ -49,7 +54,6 @@ add_executable(${META_PROJECT_NAME}::${target} ALIAS ${target})
 set_target_properties(${target}
     PROPERTIES
     ${DEFAULT_PROJECT_OPTIONS}
-    INSTALL_RPATH "${EXECUTABLE_INSTALL_RPATH}"
     FOLDER "${IDE_FOLDER}"
 )
 
@@ -62,6 +66,10 @@ target_include_directories(${target}
     PRIVATE
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
+
+    PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}
+
     SYSTEM
 )
 
@@ -73,10 +81,9 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    glfw
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    ${META_PROJECT_NAME}::cubescape-shared-gl
+    $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
 )
 
 
@@ -87,7 +94,7 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
-    GLFW_INCLUDE_NONE
+    $<$<BOOL:${cpplocate_FOUND}>:cpplocate_FOUND>
 )
 
 
@@ -120,15 +127,4 @@ target_link_libraries(${target}
 perform_health_checks(
     ${target}
     ${sources}
-)
-
-
-# 
-# Deployment
-# 
-
-# Executable
-install(TARGETS ${target}
-    RUNTIME DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw
-    BUNDLE  DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw
 )

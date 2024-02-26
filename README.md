@@ -34,6 +34,14 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 // ...
 ```
 
+*glbinding* is compatible with OpenGL-compatible windowing toolkits and we provide example integrations for the following ones within the examples:
+
+* [GLFW](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-glfw)
+* [GTK 3](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk3)
+* [GTK 4](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk4)
+* [Qt 5](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-qt)
+* [SDL](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-sdl)
+
 # Resources
 
 * [Tools](https://github.com/cginternals/glbinding/wiki/tools)
