@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(glfw3 QUIET)
+find_package(SDL2 QUIET)
 
 
 # 
@@ -11,11 +11,11 @@ find_package(glfw3 QUIET)
 # 
 
 # Target name
-set(target cubescape-gl)
+set(target cubescape-sdl-gles)
 
 # Exit here if required dependencies are not met
-if (NOT glfw3_FOUND)
-    message("Example ${target} skipped: glfw3 not found")
+if (NOT TARGET SDL2::SDL2)
+    message("Example ${target} skipped: SDL2 not found")
     return()
 else()
     message(STATUS "Example ${target}")
@@ -76,10 +76,11 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    glfw
+    SDL2::SDL2
+    SDL2::SDL2main
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    ${META_PROJECT_NAME}::cubescape-shared-gl
+    ${META_PROJECT_NAME}::cubescape-shared-gles
 )
 
 
@@ -90,7 +91,6 @@ target_link_libraries(${target}
 target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
-    GLFW_INCLUDE_NONE
 )
 
 
@@ -132,6 +132,6 @@ perform_health_checks(
 
 # Executable
 install(TARGETS ${target}
-    RUNTIME DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw
-    BUNDLE  DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_glfw
+    RUNTIME DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_sdl
+    BUNDLE  DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_sdl
 )

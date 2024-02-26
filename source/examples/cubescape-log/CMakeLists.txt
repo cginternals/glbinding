@@ -17,6 +17,8 @@ set(target cubescape-log)
 if (NOT glfw3_FOUND)
     message("Example ${target} skipped: glfw3 not found")
     return()
+else()
+    message(STATUS "Example ${target}")
 endif()
 
 

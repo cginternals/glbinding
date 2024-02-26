@@ -11,12 +11,14 @@ find_package(GTK3 QUIET)
 # 
 
 # Target name
-set(target cubescape-gtk3)
+set(target cubescape-gtk3-gl)
 
 # Exit here if required dependencies are not met
 if (NOT TARGET GTK3::GTK3)
     message("Example ${target} skipped: GTK 3 not found")
     return()
+else()
+    message(STATUS "Example ${target}")
 endif()
 
 

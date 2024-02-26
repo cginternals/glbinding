@@ -10,6 +10,7 @@
 
 class CubeScape
 {
+    using clock = std::chrono::system_clock;
 public:
     CubeScape();
     ~CubeScape();
@@ -44,6 +45,5 @@ protected:
     mat4 m_view;
     mat4 m_projection;
 
-    using clock = std::chrono::system_clock;
     clock::time_point m_time;
 };

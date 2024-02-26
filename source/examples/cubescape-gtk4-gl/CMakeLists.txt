@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(SDL2 QUIET)
+find_package(GTK4 QUIET)
 
 
 # 
@@ -11,12 +11,14 @@ find_package(SDL2 QUIET)
 # 
 
 # Target name
-set(target cubescape-sdl)
+set(target cubescape-gtk4-gl)
 
 # Exit here if required dependencies are not met
-if (NOT TARGET SDL2::SDL2)
-    message("Example ${target} skipped: SDL2 not found")
+if (NOT TARGET GTK4::GTK4)
+    message("Example ${target} skipped: GTK 4 not found")
     return()
+else()
+    message(STATUS "Example ${target}")
 endif()
 
 
@@ -74,8 +76,7 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    SDL2::SDL2
-    SDL2::SDL2main
+    GTK4::GTK4
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
     ${META_PROJECT_NAME}::cubescape-shared-gl

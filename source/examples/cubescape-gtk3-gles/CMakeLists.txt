@@ -3,7 +3,7 @@
 # External dependencies
 # 
 
-find_package(GTK4 QUIET)
+find_package(GTK3 QUIET)
 
 
 # 
@@ -11,12 +11,14 @@ find_package(GTK4 QUIET)
 # 
 
 # Target name
-set(target cubescape-gtk4)
+set(target cubescape-gtk3-gles)
 
 # Exit here if required dependencies are not met
-if (NOT TARGET GTK4::GTK4)
-    message("Example ${target} skipped: GTK 4 not found")
+if (NOT TARGET GTK3::GTK3)
+    message("Example ${target} skipped: GTK 3 not found")
     return()
+else()
+    message(STATUS "Example ${target}")
 endif()
 
 
@@ -74,10 +76,10 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
-    GTK4::GTK4
+    GTK3::GTK3
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    ${META_PROJECT_NAME}::cubescape-shared-gl
+    ${META_PROJECT_NAME}::cubescape-shared-gles
 )
 
 

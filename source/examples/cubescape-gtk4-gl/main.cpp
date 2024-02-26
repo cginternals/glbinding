@@ -135,10 +135,15 @@ void activate(GtkApplication* app, gpointer /*user_data*/)
     GtkWidget *window;
 
     window = gtk_application_window_new (app);
-    gtk_window_set_title (GTK_WINDOW (window), "Cubescape GTK 4");
+    gtk_window_set_title (GTK_WINDOW (window), "Cubescape GTK 4 OpenGL");
     gtk_window_set_default_size (GTK_WINDOW (window), 800, 800);
 
     glarea = reinterpret_cast<GtkGLArea *>(gtk_gl_area_new());
+    // until of GTK 4.6
+    gtk_gl_area_set_use_es(glarea, false);
+    gtk_gl_area_set_required_version(glarea, 3, 3);
+    // as of GTK 4.6
+    //gtk_gl_area_set_allowed_apis(glarea, GDK_GL_API_GL);
     gtk_gl_area_set_has_depth_buffer(glarea, true);
     gtk_gl_area_set_auto_render(glarea, true);
 
@@ -170,7 +175,7 @@ int main(int argc, char * argv[])
     flags = G_APPLICATION_FLAGS_NONE;
     #endif
 
-    app = gtk_application_new("org.glbinding.example-gtk4", flags);
+    app = gtk_application_new("org.glbinding.example-gtk4-gl", flags);
     g_signal_connect(app, "activate", G_CALLBACK (activate), NULL);
     status = g_application_run(G_APPLICATION (app), argc, argv);
     g_object_unref(app);

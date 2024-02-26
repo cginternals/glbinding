@@ -36,11 +36,11 @@ auto shader = glCreateShader(GL_COMPUTE_SHADER);
 
 *glbinding* is compatible with OpenGL-compatible windowing toolkits and we provide example integrations for the following ones within the examples:
 
-* [GLFW](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-glfw)
-* [GTK 3](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk3)
-* [GTK 4](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk4)
-* [Qt 5](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-qt)
-* [SDL](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-sdl)
+* [GLFW OpenGL](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-glfw-gl)
+* [GTK 3 OpenGL](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk3-gl) and [GTK 3 OpenGL ES](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk3-gles) (may require `GDK_GL=gles` environment variable)
+* [GTK 4 OpenGL](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk4-gl) and [GTK 4 OpenGL ES](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-gtk3-gles)
+* [Qt 5 OpenGL](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-qt-gl) and [Qt 5 OpenGL ES](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-qt-gles)
+* [SDL OpenGL](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-sdl-gl) and [SDL OpenGL ES](https://github.com/cginternals/glbinding/tree/master/source/examples/cubescape-sdl-gles)
 
 # Resources
 

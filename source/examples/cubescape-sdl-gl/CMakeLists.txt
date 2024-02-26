@@ -3,37 +3,22 @@
 # External dependencies
 # 
 
-find_package(Qt5Core    5.1 QUIET)
-find_package(Qt5Gui     5.1 QUIET)
-find_package(Qt5Widgets 5.1 QUIET)
-
-
-# Enable automoc
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(AUTOMOC_MOC_OPTIONS PROPERTIES FOLDER CMakeAutomocTargets)
-set_property(GLOBAL PROPERTY AUTOMOC_FOLDER CMakeAutomocTargets)
-
-# ENABLE CMP0020: Automatically link Qt executables to qtmain target on Windows.
-cmake_policy(SET CMP0020 NEW)
+find_package(SDL2 QUIET)
 
 
 # 
-# Library name and options
+# Executable name and options
 # 
 
 # Target name
-set(target cubescape-qt)
+set(target cubescape-sdl-gl)
 
 # Exit here if required dependencies are not met
-if (NOT Qt5Core_FOUND)
-    message(STATUS "Example ${target} skipped: Qt5 not found")
+if (NOT TARGET SDL2::SDL2)
+    message("Example ${target} skipped: SDL2 not found")
     return()
-endif()
-
-# On macOS qt5 fails to link against opengl
-if(APPLE)
-    find_package(OpenGL     REQUIRED)
+else()
+    message(STATUS "Example ${target}")
 endif()
 
 
@@ -43,14 +28,6 @@ endif()
 
 set(sources
     main.cpp
-
-    Canvas.cpp
-    Canvas.h
-    Painter.cpp
-    Painter.h
-    Viewer.cpp
-    Viewer.h
-    Viewer.ui
 )
 
 
@@ -88,8 +65,7 @@ target_include_directories(${target}
     PRIVATE
     ${DEFAULT_INCLUDE_DIRECTORIES}
     ${PROJECT_BINARY_DIR}/source/include
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${CMAKE_CURRENT_BINARY_DIR} # for UIC generated headers
+    SYSTEM
 )
 
 
@@ -100,13 +76,11 @@ target_include_directories(${target}
 target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
+    SDL2::SDL2
+    SDL2::SDL2main
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
     ${META_PROJECT_NAME}::cubescape-shared-gl
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Widgets
-    "$<$<PLATFORM_ID:Darwin>:${OPENGL_gl_LIBRARY}>"
 )
 
 
@@ -158,6 +132,6 @@ perform_health_checks(
 
 # Executable
 install(TARGETS ${target}
-    RUNTIME DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_qt
-    BUNDLE  DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_qt
+    RUNTIME DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_sdl
+    BUNDLE  DESTINATION ${INSTALL_EXAMPLES} COMPONENT examples_sdl
 )

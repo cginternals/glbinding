@@ -11,7 +11,7 @@ find_package(glfw3 QUIET)
 # 
 
 # Target name
-set(target cubescape-gl)
+set(target cubescape-glfw-gles)
 
 # Exit here if required dependencies are not met
 if (NOT glfw3_FOUND)
@@ -79,7 +79,7 @@ target_link_libraries(${target}
     glfw
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    ${META_PROJECT_NAME}::cubescape-shared-gl
+    ${META_PROJECT_NAME}::cubescape-shared-gles
 )
 
 
