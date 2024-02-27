@@ -136,12 +136,6 @@ std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value)
     return stream;
 }
 
-std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value)
-{
-    stream << glbinding::aux::bitfieldString<PathRenderingMaskNV>(value);
-    return stream;
-}
-
 std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value)
 {
     stream << glbinding::aux::bitfieldString<PerformanceQueryCapsMaskINTEL>(value);
@@ -539,18 +533,6 @@ if (typeid(*value) == typeid(Value<const char *>))
     if (typeid(*value) == typeid(Value<gl::PathMetricMask *>))
     {
         return stream << *reinterpret_cast<const Value<gl::PathMetricMask *>*>(value);
-    }
-
-    
-    if (typeid(*value) == typeid(Value<gl::PathRenderingMaskNV>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::PathRenderingMaskNV>*>(value);
-    }
-    
-    
-    if (typeid(*value) == typeid(Value<gl::PathRenderingMaskNV *>))
-    {
-        return stream << *reinterpret_cast<const Value<gl::PathRenderingMaskNV *>*>(value);
     }
 
     

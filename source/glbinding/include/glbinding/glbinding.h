@@ -57,7 +57,6 @@ using ContextSwitchCallback = std::function<void(ContextHandle)>;             //
 *     * glxGetProcAddress
 *     * glfwGetProcAddress
 *     * QOpenGlContext::getProcAddress
-*     * reinterpret_cast<glbinding::ProcAddress(*)(const char*)>(SDL_GL_GetProcAddress)
 */
 GLBINDING_API void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
 

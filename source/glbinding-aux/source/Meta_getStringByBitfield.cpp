@@ -173,16 +173,6 @@ const std::string & Meta::getString(const PathMetricMask glbitfield)
     return none;
 }
 
-const std::string & Meta::getString(const PathRenderingMaskNV glbitfield)
-{
-    const auto i = Meta_StringsByPathRenderingMaskNV.find(glbitfield);
-    if (i != Meta_StringsByPathRenderingMaskNV.end())
-    {
-        return i->second;
-    }
-    return none;
-}
-
 const std::string & Meta::getString(const PerformanceQueryCapsMaskINTEL glbitfield)
 {
     const auto i = Meta_StringsByPerformanceQueryCapsMaskINTEL.find(glbitfield);

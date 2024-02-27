@@ -157,6 +157,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_external_buffer, { "glBufferStorageExternalEXT", "glNamedBufferStorageExternalEXT" } },
     { GLextension::GL_EXT_fog_coord, { "glFogCoorddEXT", "glFogCoorddvEXT", "glFogCoordfEXT", "glFogCoordfvEXT", "glFogCoordPointerEXT" } },
     { GLextension::GL_EXT_framebuffer_blit, { "glBlitFramebufferEXT" } },
+    { GLextension::GL_EXT_framebuffer_blit_layers, { "glBlitFramebufferLayerEXT", "glBlitFramebufferLayersEXT" } },
     { GLextension::GL_EXT_framebuffer_multisample, { "glRenderbufferStorageMultisampleEXT" } },
     { GLextension::GL_EXT_framebuffer_object, { "glBindFramebufferEXT", "glBindRenderbufferEXT", "glCheckFramebufferStatusEXT", "glDeleteFramebuffersEXT", "glDeleteRenderbuffersEXT", "glFramebufferRenderbufferEXT", "glFramebufferTexture1DEXT", "glFramebufferTexture2DEXT", "glFramebufferTexture3DEXT", "glGenerateMipmapEXT", "glGenFramebuffersEXT", "glGenRenderbuffersEXT", "glGetFramebufferAttachmentParameterivEXT", "glGetRenderbufferParameterivEXT", "glIsFramebufferEXT", "glIsRenderbufferEXT", "glRenderbufferStorageEXT" } },
     { GLextension::GL_EXT_geometry_shader4, { "glProgramParameteriEXT" } },

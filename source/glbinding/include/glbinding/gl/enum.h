@@ -428,8 +428,12 @@ enum class GLenum : unsigned int
 
 //  GL_BYTE                                                       = 0x1400, // reuse BinormalPointerTypeEXT
     GL_UNSIGNED_BYTE                                              = 0x1401,
+//  GL_SHORT                                                      = 0x1402, // reuse BinormalPointerTypeEXT
     GL_UNSIGNED_SHORT                                             = 0x1403,
+//  GL_INT                                                        = 0x1404, // reuse AttributeType
 //  GL_UNSIGNED_INT                                               = 0x1405, // reuse AttributeType
+//  GL_FLOAT                                                      = 0x1406, // reuse AttributeType
+//  GL_DOUBLE                                                     = 0x140A, // reuse AttributeType
 
     // ColorTableParameterPName
 
@@ -2245,6 +2249,13 @@ enum class GLenum : unsigned int
 //  GL_FLOAT                                                      = 0x1406, // reuse AttributeType
 //  GL_DOUBLE                                                     = 0x140A, // reuse AttributeType
 
+    // InstancedPathCoverMode
+
+    GL_PATH_FILL_COVER_MODE_NV                                    = 0x9082,
+    GL_CONVEX_HULL_NV                                             = 0x908B,
+    GL_BOUNDING_BOX_NV                                            = 0x908D,
+    GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV                          = 0x909C,
+
     // InterleavedArrayFormat
 
     GL_V2F                                                        = 0x2A20,
@@ -2738,6 +2749,9 @@ enum class GLenum : unsigned int
 
     // LightParameter
 
+//  GL_AMBIENT                                                    = 0x1200, // reuse ColorMaterialParameter
+//  GL_DIFFUSE                                                    = 0x1201, // reuse ColorMaterialParameter
+//  GL_SPECULAR                                                   = 0x1202, // reuse ColorMaterialParameter
 //  GL_POSITION                                                   = 0x1203, // reuse FragmentLightParameterSGIX
 //  GL_SPOT_DIRECTION                                             = 0x1204, // reuse FragmentLightParameterSGIX
 //  GL_SPOT_EXPONENT                                              = 0x1205, // reuse FragmentLightParameterSGIX
@@ -3006,10 +3020,9 @@ enum class GLenum : unsigned int
 
     // PathCoverMode
 
-    GL_PATH_FILL_COVER_MODE_NV                                    = 0x9082,
-    GL_CONVEX_HULL_NV                                             = 0x908B,
-    GL_BOUNDING_BOX_NV                                            = 0x908D,
-    GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV                          = 0x909C,
+//  GL_PATH_FILL_COVER_MODE_NV                                    = 0x9082, // reuse InstancedPathCoverMode
+//  GL_CONVEX_HULL_NV                                             = 0x908B, // reuse InstancedPathCoverMode
+//  GL_BOUNDING_BOX_NV                                            = 0x908D, // reuse InstancedPathCoverMode
 
     // PathElementType
 
@@ -3063,7 +3076,7 @@ enum class GLenum : unsigned int
     GL_PATH_CLIENT_LENGTH_NV                                      = 0x907F,
 //  GL_PATH_FILL_MODE_NV                                          = 0x9080, // reuse PathFillMode
     GL_PATH_FILL_MASK_NV                                          = 0x9081,
-//  GL_PATH_FILL_COVER_MODE_NV                                    = 0x9082, // reuse PathCoverMode
+//  GL_PATH_FILL_COVER_MODE_NV                                    = 0x9082, // reuse InstancedPathCoverMode
     GL_PATH_STROKE_COVER_MODE_NV                                  = 0x9083,
     GL_PATH_STROKE_MASK_NV                                        = 0x9084,
 //  GL_PATH_OBJECT_BOUNDING_BOX_NV                                = 0x908A, // reuse PathGenMode
@@ -3140,6 +3153,12 @@ enum class GLenum : unsigned int
     GL_AFFINE_3D_NV                                               = 0x9094,
     GL_TRANSPOSE_AFFINE_2D_NV                                     = 0x9096,
     GL_TRANSPOSE_AFFINE_3D_NV                                     = 0x9098,
+
+    // PerfQueryDataFlags
+
+    GL_PERFQUERY_DONOT_FLUSH_INTEL                                = 0x83F9,
+    GL_PERFQUERY_FLUSH_INTEL                                      = 0x83FA,
+    GL_PERFQUERY_WAIT_INTEL                                       = 0x83FB,
 
     // PipelineParameterName
 
@@ -4491,7 +4510,6 @@ enum class GLenum : unsigned int
 
     // TextureWrapMode
 
-//  GL_LINEAR_MIPMAP_LINEAR                                       = 0x2703, // reuse TextureMinFilter
     GL_CLAMP                                                      = 0x2900,
     GL_REPEAT                                                     = 0x2901,
     GL_CLAMP_TO_BORDER                                            = 0x812D,
@@ -4500,6 +4518,8 @@ enum class GLenum : unsigned int
     GL_CLAMP_TO_EDGE                                              = 0x812F,
     GL_CLAMP_TO_EDGE_SGIS                                         = 0x812F,
     GL_MIRRORED_REPEAT                                            = 0x8370,
+    GL_MIRRORED_REPEAT_ARB                                        = 0x8370,
+    GL_MIRRORED_REPEAT_IBM                                        = 0x8370,
 
     // TransformFeedbackBufferMode
 
@@ -4838,8 +4858,6 @@ enum class GLenum : unsigned int
     GL_TEXTURE_MATERIAL_FACE_EXT                                  = 0x8351,
     GL_TEXTURE_MATERIAL_PARAMETER_EXT                             = 0x8352,
     GL_PIXEL_GROUP_COLOR_SGIS                                     = 0x8356,
-    GL_MIRRORED_REPEAT_ARB                                        = 0x8370,
-    GL_MIRRORED_REPEAT_IBM                                        = 0x8370,
     GL_RGB_S3TC                                                   = 0x83A0,
     GL_RGB4_S3TC                                                  = 0x83A1,
     GL_RGBA_S3TC                                                  = 0x83A2,
@@ -4851,9 +4869,6 @@ enum class GLenum : unsigned int
     GL_NORMAL_ARRAY_PARALLEL_POINTERS_INTEL                       = 0x83F6,
     GL_COLOR_ARRAY_PARALLEL_POINTERS_INTEL                        = 0x83F7,
     GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL                = 0x83F8,
-    GL_PERFQUERY_DONOT_FLUSH_INTEL                                = 0x83F9,
-    GL_PERFQUERY_FLUSH_INTEL                                      = 0x83FA,
-    GL_PERFQUERY_WAIT_INTEL                                       = 0x83FB,
     GL_BLACKHOLE_RENDER_INTEL                                     = 0x83FC,
     GL_CONSERVATIVE_RASTERIZATION_INTEL                           = 0x83FE,
     GL_CURRENT_RASTER_NORMAL_SGIX                                 = 0x8406,
@@ -7533,8 +7548,12 @@ GLBINDING_CONSTEXPR static const GLenum GL_AMBIENT_AND_DIFFUSE = GLenum::GL_AMBI
 
 // GLBINDING_CONSTEXPR static const GLenum GL_BYTE = GLenum::GL_BYTE; // reuse BinormalPointerTypeEXT
 GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_BYTE = GLenum::GL_UNSIGNED_BYTE;
+// GLBINDING_CONSTEXPR static const GLenum GL_SHORT = GLenum::GL_SHORT; // reuse BinormalPointerTypeEXT
 GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_SHORT = GLenum::GL_UNSIGNED_SHORT;
+// GLBINDING_CONSTEXPR static const GLenum GL_INT = GLenum::GL_INT; // reuse AttributeType
 // GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT = GLenum::GL_UNSIGNED_INT; // reuse AttributeType
+// GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse AttributeType
+// GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse AttributeType
 
 // ColorTableParameterPName
 
@@ -9350,6 +9369,13 @@ GLBINDING_CONSTEXPR static const GLenum GL_IMAGE_TRANSFORM_2D_HP = GLenum::GL_IM
 // GLBINDING_CONSTEXPR static const GLenum GL_FLOAT = GLenum::GL_FLOAT; // reuse AttributeType
 // GLBINDING_CONSTEXPR static const GLenum GL_DOUBLE = GLenum::GL_DOUBLE; // reuse AttributeType
 
+// InstancedPathCoverMode
+
+GLBINDING_CONSTEXPR static const GLenum GL_PATH_FILL_COVER_MODE_NV = GLenum::GL_PATH_FILL_COVER_MODE_NV;
+GLBINDING_CONSTEXPR static const GLenum GL_CONVEX_HULL_NV = GLenum::GL_CONVEX_HULL_NV;
+GLBINDING_CONSTEXPR static const GLenum GL_BOUNDING_BOX_NV = GLenum::GL_BOUNDING_BOX_NV;
+GLBINDING_CONSTEXPR static const GLenum GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV = GLenum::GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV;
+
 // InterleavedArrayFormat
 
 GLBINDING_CONSTEXPR static const GLenum GL_V2F = GLenum::GL_V2F;
@@ -9843,6 +9869,9 @@ GLBINDING_CONSTEXPR static const GLenum GL_LIGHT_MODEL_COLOR_CONTROL_EXT = GLenu
 
 // LightParameter
 
+// GLBINDING_CONSTEXPR static const GLenum GL_AMBIENT = GLenum::GL_AMBIENT; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_DIFFUSE = GLenum::GL_DIFFUSE; // reuse ColorMaterialParameter
+// GLBINDING_CONSTEXPR static const GLenum GL_SPECULAR = GLenum::GL_SPECULAR; // reuse ColorMaterialParameter
 // GLBINDING_CONSTEXPR static const GLenum GL_POSITION = GLenum::GL_POSITION; // reuse FragmentLightParameterSGIX
 // GLBINDING_CONSTEXPR static const GLenum GL_SPOT_DIRECTION = GLenum::GL_SPOT_DIRECTION; // reuse FragmentLightParameterSGIX
 // GLBINDING_CONSTEXPR static const GLenum GL_SPOT_EXPONENT = GLenum::GL_SPOT_EXPONENT; // reuse FragmentLightParameterSGIX
@@ -10111,10 +10140,9 @@ GLBINDING_CONSTEXPR static const GLenum GL_RELATIVE_ARC_TO_NV = GLenum::GL_RELAT
 
 // PathCoverMode
 
-GLBINDING_CONSTEXPR static const GLenum GL_PATH_FILL_COVER_MODE_NV = GLenum::GL_PATH_FILL_COVER_MODE_NV;
-GLBINDING_CONSTEXPR static const GLenum GL_CONVEX_HULL_NV = GLenum::GL_CONVEX_HULL_NV;
-GLBINDING_CONSTEXPR static const GLenum GL_BOUNDING_BOX_NV = GLenum::GL_BOUNDING_BOX_NV;
-GLBINDING_CONSTEXPR static const GLenum GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV = GLenum::GL_BOUNDING_BOX_OF_BOUNDING_BOXES_NV;
+// GLBINDING_CONSTEXPR static const GLenum GL_PATH_FILL_COVER_MODE_NV = GLenum::GL_PATH_FILL_COVER_MODE_NV; // reuse InstancedPathCoverMode
+// GLBINDING_CONSTEXPR static const GLenum GL_CONVEX_HULL_NV = GLenum::GL_CONVEX_HULL_NV; // reuse InstancedPathCoverMode
+// GLBINDING_CONSTEXPR static const GLenum GL_BOUNDING_BOX_NV = GLenum::GL_BOUNDING_BOX_NV; // reuse InstancedPathCoverMode
 
 // PathElementType
 
@@ -10168,7 +10196,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_PATH_DASH_OFFSET_NV = GLenum::GL_PATH
 GLBINDING_CONSTEXPR static const GLenum GL_PATH_CLIENT_LENGTH_NV = GLenum::GL_PATH_CLIENT_LENGTH_NV;
 // GLBINDING_CONSTEXPR static const GLenum GL_PATH_FILL_MODE_NV = GLenum::GL_PATH_FILL_MODE_NV; // reuse PathFillMode
 GLBINDING_CONSTEXPR static const GLenum GL_PATH_FILL_MASK_NV = GLenum::GL_PATH_FILL_MASK_NV;
-// GLBINDING_CONSTEXPR static const GLenum GL_PATH_FILL_COVER_MODE_NV = GLenum::GL_PATH_FILL_COVER_MODE_NV; // reuse PathCoverMode
+// GLBINDING_CONSTEXPR static const GLenum GL_PATH_FILL_COVER_MODE_NV = GLenum::GL_PATH_FILL_COVER_MODE_NV; // reuse InstancedPathCoverMode
 GLBINDING_CONSTEXPR static const GLenum GL_PATH_STROKE_COVER_MODE_NV = GLenum::GL_PATH_STROKE_COVER_MODE_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_PATH_STROKE_MASK_NV = GLenum::GL_PATH_STROKE_MASK_NV;
 // GLBINDING_CONSTEXPR static const GLenum GL_PATH_OBJECT_BOUNDING_BOX_NV = GLenum::GL_PATH_OBJECT_BOUNDING_BOX_NV; // reuse PathGenMode
@@ -10245,6 +10273,12 @@ GLBINDING_CONSTEXPR static const GLenum GL_AFFINE_2D_NV = GLenum::GL_AFFINE_2D_N
 GLBINDING_CONSTEXPR static const GLenum GL_AFFINE_3D_NV = GLenum::GL_AFFINE_3D_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_TRANSPOSE_AFFINE_2D_NV = GLenum::GL_TRANSPOSE_AFFINE_2D_NV;
 GLBINDING_CONSTEXPR static const GLenum GL_TRANSPOSE_AFFINE_3D_NV = GLenum::GL_TRANSPOSE_AFFINE_3D_NV;
+
+// PerfQueryDataFlags
+
+GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_DONOT_FLUSH_INTEL = GLenum::GL_PERFQUERY_DONOT_FLUSH_INTEL;
+GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_FLUSH_INTEL = GLenum::GL_PERFQUERY_FLUSH_INTEL;
+GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_WAIT_INTEL = GLenum::GL_PERFQUERY_WAIT_INTEL;
 
 // PipelineParameterName
 
@@ -11596,7 +11630,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_PROXY_TEXTURE_2D_MULTISAMPLE_ARRAY = 
 
 // TextureWrapMode
 
-// GLBINDING_CONSTEXPR static const GLenum GL_LINEAR_MIPMAP_LINEAR = GLenum::GL_LINEAR_MIPMAP_LINEAR; // reuse TextureMinFilter
 GLBINDING_CONSTEXPR static const GLenum GL_CLAMP = GLenum::GL_CLAMP;
 GLBINDING_CONSTEXPR static const GLenum GL_REPEAT = GLenum::GL_REPEAT;
 GLBINDING_CONSTEXPR static const GLenum GL_CLAMP_TO_BORDER = GLenum::GL_CLAMP_TO_BORDER;
@@ -11605,6 +11638,8 @@ GLBINDING_CONSTEXPR static const GLenum GL_CLAMP_TO_BORDER_SGIS = GLenum::GL_CLA
 GLBINDING_CONSTEXPR static const GLenum GL_CLAMP_TO_EDGE = GLenum::GL_CLAMP_TO_EDGE;
 GLBINDING_CONSTEXPR static const GLenum GL_CLAMP_TO_EDGE_SGIS = GLenum::GL_CLAMP_TO_EDGE_SGIS;
 GLBINDING_CONSTEXPR static const GLenum GL_MIRRORED_REPEAT = GLenum::GL_MIRRORED_REPEAT;
+GLBINDING_CONSTEXPR static const GLenum GL_MIRRORED_REPEAT_ARB = GLenum::GL_MIRRORED_REPEAT_ARB;
+GLBINDING_CONSTEXPR static const GLenum GL_MIRRORED_REPEAT_IBM = GLenum::GL_MIRRORED_REPEAT_IBM;
 
 // TransformFeedbackBufferMode
 
@@ -11943,8 +11978,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_LIGHT_EXT = GLenum::GL_TEXTUR
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MATERIAL_FACE_EXT = GLenum::GL_TEXTURE_MATERIAL_FACE_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_MATERIAL_PARAMETER_EXT = GLenum::GL_TEXTURE_MATERIAL_PARAMETER_EXT;
 GLBINDING_CONSTEXPR static const GLenum GL_PIXEL_GROUP_COLOR_SGIS = GLenum::GL_PIXEL_GROUP_COLOR_SGIS;
-GLBINDING_CONSTEXPR static const GLenum GL_MIRRORED_REPEAT_ARB = GLenum::GL_MIRRORED_REPEAT_ARB;
-GLBINDING_CONSTEXPR static const GLenum GL_MIRRORED_REPEAT_IBM = GLenum::GL_MIRRORED_REPEAT_IBM;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB_S3TC = GLenum::GL_RGB_S3TC;
 GLBINDING_CONSTEXPR static const GLenum GL_RGB4_S3TC = GLenum::GL_RGB4_S3TC;
 GLBINDING_CONSTEXPR static const GLenum GL_RGBA_S3TC = GLenum::GL_RGBA_S3TC;
@@ -11956,9 +11989,6 @@ GLBINDING_CONSTEXPR static const GLenum GL_VERTEX_ARRAY_PARALLEL_POINTERS_INTEL 
 GLBINDING_CONSTEXPR static const GLenum GL_NORMAL_ARRAY_PARALLEL_POINTERS_INTEL = GLenum::GL_NORMAL_ARRAY_PARALLEL_POINTERS_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_COLOR_ARRAY_PARALLEL_POINTERS_INTEL = GLenum::GL_COLOR_ARRAY_PARALLEL_POINTERS_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL = GLenum::GL_TEXTURE_COORD_ARRAY_PARALLEL_POINTERS_INTEL;
-GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_DONOT_FLUSH_INTEL = GLenum::GL_PERFQUERY_DONOT_FLUSH_INTEL;
-GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_FLUSH_INTEL = GLenum::GL_PERFQUERY_FLUSH_INTEL;
-GLBINDING_CONSTEXPR static const GLenum GL_PERFQUERY_WAIT_INTEL = GLenum::GL_PERFQUERY_WAIT_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_BLACKHOLE_RENDER_INTEL = GLenum::GL_BLACKHOLE_RENDER_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_CONSERVATIVE_RASTERIZATION_INTEL = GLenum::GL_CONSERVATIVE_RASTERIZATION_INTEL;
 GLBINDING_CONSTEXPR static const GLenum GL_CURRENT_RASTER_NORMAL_SGIX = GLenum::GL_CURRENT_RASTER_NORMAL_SGIX;

@@ -117,6 +117,8 @@ Function<void, GLenum, GLenum, GLenum, GLenum> Binding::BlendFuncSeparateINGR("g
 Function<void, GLenum, GLint> Binding::BlendParameteriNV("glBlendParameteriNV");
 Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebuffer("glBlitFramebuffer");
 Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebufferEXT("glBlitFramebufferEXT");
+Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebufferLayerEXT("glBlitFramebufferLayerEXT");
+Function<void, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitFramebufferLayersEXT("glBlitFramebufferLayersEXT");
 Function<void, GLuint, GLuint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, GLint, ClearBufferMask, GLenum> Binding::BlitNamedFramebuffer("glBlitNamedFramebuffer");
 Function<void, GLenum, GLuint, GLuint64EXT, GLsizeiptr> Binding::BufferAddressRangeNV("glBufferAddressRangeNV");
 Function<void, GLenum, GLuint, GLuint64> Binding::BufferAttachMemoryNV("glBufferAttachMemoryNV");

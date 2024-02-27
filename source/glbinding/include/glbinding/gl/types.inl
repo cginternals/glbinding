@@ -1037,67 +1037,6 @@ namespace std
 
 
 template<>
-struct hash<gl::PathRenderingMaskNV>
-{
-    std::size_t operator()(const gl::PathRenderingMaskNV & t) const
-    {
-        return hash<std::underlying_type<gl::PathRenderingMaskNV>::type>()(static_cast<std::underlying_type<gl::PathRenderingMaskNV>::type>(t));
-    }
-};
-
-
-} // namespace std
-
-
-namespace gl
-{
-
-
-GLBINDING_CONSTEXPR inline PathRenderingMaskNV operator|(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
-{
-    return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
-}
-
-inline PathRenderingMaskNV & operator|=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
-{
-    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) | static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline PathRenderingMaskNV operator&(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
-{
-    return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
-}
-
-inline PathRenderingMaskNV & operator&=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
-{
-    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) & static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
-
-    return a;
-}
-
-GLBINDING_CONSTEXPR inline PathRenderingMaskNV operator^(const PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
-{
-    return static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
-}
-
-inline PathRenderingMaskNV & operator^=(PathRenderingMaskNV & a, const PathRenderingMaskNV & b)
-{
-    a = static_cast<PathRenderingMaskNV>(static_cast<std::underlying_type<PathRenderingMaskNV>::type>(a) ^ static_cast<std::underlying_type<PathRenderingMaskNV>::type>(b));
-
-    return a;
-}
-
-
-} // namespace gl
-
-
-namespace std
-{
-
-
-template<>
 struct hash<gl::PerformanceQueryCapsMaskINTEL>
 {
     std::size_t operator()(const gl::PerformanceQueryCapsMaskINTEL & t) const

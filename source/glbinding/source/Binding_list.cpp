@@ -148,6 +148,8 @@ const Binding::array_t Binding::s_functions =
     &BlendParameteriNV,
     &BlitFramebuffer,
     &BlitFramebufferEXT,
+    &BlitFramebufferLayerEXT,
+    &BlitFramebufferLayersEXT,
     &BlitNamedFramebuffer,
     &BufferAddressRangeNV,
     &BufferAttachMemoryNV,

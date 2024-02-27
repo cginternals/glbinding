@@ -220,36 +220,6 @@ const std::unordered_map<PathMetricMask, std::string> Meta_StringsByPathMetricMa
     { PathMetricMask::GL_NONE_BIT, "GL_NONE_BIT" }
 };
 
-const std::unordered_map<PathRenderingMaskNV, std::string> Meta_StringsByPathRenderingMaskNV =
-{
-    { PathRenderingMaskNV::GL_BOLD_BIT_NV, "GL_BOLD_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_ASCENDER_BIT_NV, "GL_FONT_ASCENDER_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_DESCENDER_BIT_NV, "GL_FONT_DESCENDER_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_HAS_KERNING_BIT_NV, "GL_FONT_HAS_KERNING_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_HEIGHT_BIT_NV, "GL_FONT_HEIGHT_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV, "GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV, "GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_NUM_GLYPH_INDICES_BIT_NV, "GL_FONT_NUM_GLYPH_INDICES_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_UNDERLINE_POSITION_BIT_NV, "GL_FONT_UNDERLINE_POSITION_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_UNDERLINE_THICKNESS_BIT_NV, "GL_FONT_UNDERLINE_THICKNESS_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_UNITS_PER_EM_BIT_NV, "GL_FONT_UNITS_PER_EM_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_X_MAX_BOUNDS_BIT_NV, "GL_FONT_X_MAX_BOUNDS_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_X_MIN_BOUNDS_BIT_NV, "GL_FONT_X_MIN_BOUNDS_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_Y_MAX_BOUNDS_BIT_NV, "GL_FONT_Y_MAX_BOUNDS_BIT_NV" },
-    { PathRenderingMaskNV::GL_FONT_Y_MIN_BOUNDS_BIT_NV, "GL_FONT_Y_MIN_BOUNDS_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_HAS_KERNING_BIT_NV, "GL_GLYPH_HAS_KERNING_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_HEIGHT_BIT_NV, "GL_GLYPH_HEIGHT_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_ADVANCE_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV, "GL_GLYPH_HORIZONTAL_BEARING_Y_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_ADVANCE_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_X_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_X_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV, "GL_GLYPH_VERTICAL_BEARING_Y_BIT_NV" },
-    { PathRenderingMaskNV::GL_GLYPH_WIDTH_BIT_NV, "GL_GLYPH_WIDTH_BIT_NV" },
-    { PathRenderingMaskNV::GL_ITALIC_BIT_NV, "GL_ITALIC_BIT_NV" },
-    { PathRenderingMaskNV::GL_NONE_BIT, "GL_NONE_BIT" }
-};
-
 const std::unordered_map<PerformanceQueryCapsMaskINTEL, std::string> Meta_StringsByPerformanceQueryCapsMaskINTEL =
 {
     { PerformanceQueryCapsMaskINTEL::GL_NONE_BIT, "GL_NONE_BIT" },

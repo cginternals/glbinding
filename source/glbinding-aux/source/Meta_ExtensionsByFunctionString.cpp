@@ -132,6 +132,8 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glBlendParameteriNV", { GLextension::GL_NV_blend_equation_advanced } },
     { "glBlitFramebuffer", { GLextension::GL_ARB_framebuffer_object } },
     { "glBlitFramebufferEXT", { GLextension::GL_EXT_framebuffer_blit } },
+    { "glBlitFramebufferLayerEXT", { GLextension::GL_EXT_framebuffer_blit_layers } },
+    { "glBlitFramebufferLayersEXT", { GLextension::GL_EXT_framebuffer_blit_layers } },
     { "glBlitNamedFramebuffer", { GLextension::GL_ARB_direct_state_access } },
     { "glBufferAddressRangeNV", { GLextension::GL_NV_vertex_buffer_unified_memory } },
     { "glBufferAttachMemoryNV", { GLextension::GL_NV_memory_attachment } },

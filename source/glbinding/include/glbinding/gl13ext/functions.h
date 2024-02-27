@@ -138,6 +138,8 @@ using gl::glBlendFuncSeparateINGR;
 using gl::glBlendParameteriNV;
 using gl::glBlitFramebuffer;
 using gl::glBlitFramebufferEXT;
+using gl::glBlitFramebufferLayerEXT;
+using gl::glBlitFramebufferLayersEXT;
 using gl::glBlitNamedFramebuffer;
 using gl::glBufferAddressRangeNV;
 using gl::glBufferAttachMemoryNV;

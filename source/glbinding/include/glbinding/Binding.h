@@ -64,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 3002>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 3004>; ///< The type of the build-in functions collection
 
 
 public:
@@ -98,7 +98,6 @@ public:
     *     * glxGetProcAddress
     *     * glfwGetProcAddress
     *     * QOpenGlContext::getProcAddress
-    *     * reinterpret_cast<glbinding::ProcAddress(*)(const char*)>(SDL_GL_GetProcAddress)
     */
     static void initialize(glbinding::GetProcAddress functionPointerResolver, bool resolveFunctions = true);
 
@@ -583,6 +582,8 @@ public:
     static Function<void, gl::GLenum, gl::GLint> BlendParameteriNV; ///< Wrapper for glBlendParameteriNV
     static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebuffer; ///< Wrapper for glBlitFramebuffer
     static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferEXT; ///< Wrapper for glBlitFramebufferEXT
+    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferLayerEXT; ///< Wrapper for glBlitFramebufferLayerEXT
+    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferLayersEXT; ///< Wrapper for glBlitFramebufferLayersEXT
     static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitNamedFramebuffer; ///< Wrapper for glBlitNamedFramebuffer
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64EXT, gl::GLsizeiptr> BufferAddressRangeNV; ///< Wrapper for glBufferAddressRangeNV
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64> BufferAttachMemoryNV; ///< Wrapper for glBufferAttachMemoryNV

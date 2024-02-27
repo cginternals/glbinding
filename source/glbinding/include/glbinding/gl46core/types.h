@@ -69,7 +69,6 @@ using gl::MemoryBarrierMask;
 using gl::OcclusionQueryEventMaskAMD;
 using gl::PathFontStyle;
 using gl::PathMetricMask;
-using gl::PathRenderingMaskNV;
 using gl::PerformanceQueryCapsMaskINTEL;
 using gl::SyncObjectMask;
 using gl::TextureStorageMaskAMD;

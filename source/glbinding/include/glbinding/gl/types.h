@@ -49,7 +49,6 @@ enum class MemoryBarrierMask : unsigned int;
 enum class OcclusionQueryEventMaskAMD : unsigned int;
 enum class PathFontStyle : unsigned int;
 enum class PathMetricMask : unsigned int;
-enum class PathRenderingMaskNV : unsigned int;
 enum class PerformanceQueryCapsMaskINTEL : unsigned int;
 enum class SyncObjectMask : unsigned int;
 enum class TextureStorageMaskAMD : unsigned int;
