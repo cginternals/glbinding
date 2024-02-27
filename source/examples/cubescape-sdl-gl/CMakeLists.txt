@@ -77,7 +77,6 @@ target_link_libraries(${target}
     PRIVATE
     ${DEFAULT_LIBRARIES}
     SDL2::SDL2
-    SDL2::SDL2main
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
     ${META_PROJECT_NAME}::cubescape-shared-gl
