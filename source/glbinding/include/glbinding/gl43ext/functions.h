@@ -1162,6 +1162,7 @@ using gl::glNamedFramebufferTextureEXT;
 using gl::glNamedFramebufferTextureFaceEXT;
 using gl::glNamedFramebufferTextureLayer;
 using gl::glNamedFramebufferTextureLayerEXT;
+using gl::glNamedFramebufferTextureMultiviewOVR;
 using gl::glNamedProgramLocalParameter4dEXT;
 using gl::glNamedProgramLocalParameter4dvEXT;
 using gl::glNamedProgramLocalParameter4fEXT;

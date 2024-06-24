@@ -1330,6 +1330,7 @@ const std::unordered_map<std::string, std::set<GLextension>> Meta_ExtensionsByFu
     { "glNamedFramebufferTextureFaceEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glNamedFramebufferTextureLayer", { GLextension::GL_ARB_direct_state_access } },
     { "glNamedFramebufferTextureLayerEXT", { GLextension::GL_EXT_direct_state_access } },
+    { "glNamedFramebufferTextureMultiviewOVR", { GLextension::GL_OVR_multiview } },
     { "glNamedProgramLocalParameter4dEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glNamedProgramLocalParameter4dvEXT", { GLextension::GL_EXT_direct_state_access } },
     { "glNamedProgramLocalParameter4fEXT", { GLextension::GL_EXT_direct_state_access } },

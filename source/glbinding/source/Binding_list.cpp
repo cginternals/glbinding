@@ -1622,6 +1622,7 @@ const Binding::array_t Binding::s_functions =
     &NamedFramebufferTextureFaceEXT,
     &NamedFramebufferTextureLayer,
     &NamedFramebufferTextureLayerEXT,
+    &NamedFramebufferTextureMultiviewOVR,
     &NamedProgramLocalParameter4dEXT,
     &NamedProgramLocalParameter4dvEXT,
     &NamedProgramLocalParameter4fEXT,

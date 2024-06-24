@@ -64,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 3004>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 3005>; ///< The type of the build-in functions collection
 
 
 public:
@@ -2056,6 +2056,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLenum> NamedFramebufferTextureFaceEXT; ///< Wrapper for glNamedFramebufferTextureFaceEXT
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint> NamedFramebufferTextureLayer; ///< Wrapper for glNamedFramebufferTextureLayer
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint> NamedFramebufferTextureLayerEXT; ///< Wrapper for glNamedFramebufferTextureLayerEXT
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint, gl::GLsizei> NamedFramebufferTextureMultiviewOVR; ///< Wrapper for glNamedFramebufferTextureMultiviewOVR
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLdouble, gl::GLdouble> NamedProgramLocalParameter4dEXT; ///< Wrapper for glNamedProgramLocalParameter4dEXT
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, const gl::GLdouble *> NamedProgramLocalParameter4dvEXT; ///< Wrapper for glNamedProgramLocalParameter4dvEXT
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> NamedProgramLocalParameter4fEXT; ///< Wrapper for glNamedProgramLocalParameter4fEXT
