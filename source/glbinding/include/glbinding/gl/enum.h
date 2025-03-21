@@ -5841,6 +5841,7 @@ enum class GLenum : unsigned int
     GL_FRAMEBUFFER_FLIP_Y_MESA                                    = 0x8BBB,
     GL_FRAMEBUFFER_FLIP_X_MESA                                    = 0x8BBC,
     GL_FRAMEBUFFER_SWAP_XY_MESA                                   = 0x8BBD,
+    GL_CONST_BW_TILING_MESA                                       = 0x8BBE,
     GL_COUNTER_TYPE_AMD                                           = 0x8BC0,
     GL_COUNTER_RANGE_AMD                                          = 0x8BC1,
     GL_UNSIGNED_INT64_AMD                                         = 0x8BC2,
@@ -12961,6 +12962,7 @@ GLBINDING_CONSTEXPR static const GLenum GL_TILE_RASTER_ORDER_INCREASING_Y_MESA =
 GLBINDING_CONSTEXPR static const GLenum GL_FRAMEBUFFER_FLIP_Y_MESA = GLenum::GL_FRAMEBUFFER_FLIP_Y_MESA;
 GLBINDING_CONSTEXPR static const GLenum GL_FRAMEBUFFER_FLIP_X_MESA = GLenum::GL_FRAMEBUFFER_FLIP_X_MESA;
 GLBINDING_CONSTEXPR static const GLenum GL_FRAMEBUFFER_SWAP_XY_MESA = GLenum::GL_FRAMEBUFFER_SWAP_XY_MESA;
+GLBINDING_CONSTEXPR static const GLenum GL_CONST_BW_TILING_MESA = GLenum::GL_CONST_BW_TILING_MESA;
 GLBINDING_CONSTEXPR static const GLenum GL_COUNTER_TYPE_AMD = GLenum::GL_COUNTER_TYPE_AMD;
 GLBINDING_CONSTEXPR static const GLenum GL_COUNTER_RANGE_AMD = GLenum::GL_COUNTER_RANGE_AMD;
 GLBINDING_CONSTEXPR static const GLenum GL_UNSIGNED_INT64_AMD = GLenum::GL_UNSIGNED_INT64_AMD;

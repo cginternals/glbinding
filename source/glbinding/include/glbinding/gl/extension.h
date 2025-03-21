@@ -418,6 +418,7 @@ enum class GLextension : int // GLextension is not a type introduced by GL API s
     GL_MESA_program_binary_formats,
     GL_MESA_resize_buffers,
     GL_MESA_shader_integer_functions,
+    GL_MESA_texture_const_bandwidth,
     GL_MESA_tile_raster_order,
     GL_MESA_window_pos,
     GL_MESA_ycbcr_texture,

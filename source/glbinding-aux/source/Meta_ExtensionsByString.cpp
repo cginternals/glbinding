@@ -459,6 +459,7 @@ const std::unordered_map<std::string, GLextension> Meta_ExtensionsByString_M =
     { "GL_MESA_program_binary_formats", GLextension::GL_MESA_program_binary_formats },
     { "GL_MESA_resize_buffers", GLextension::GL_MESA_resize_buffers },
     { "GL_MESA_shader_integer_functions", GLextension::GL_MESA_shader_integer_functions },
+    { "GL_MESA_texture_const_bandwidth", GLextension::GL_MESA_texture_const_bandwidth },
     { "GL_MESA_tile_raster_order", GLextension::GL_MESA_tile_raster_order },
     { "GL_MESA_window_pos", GLextension::GL_MESA_window_pos },
     { "GL_MESA_ycbcr_texture", GLextension::GL_MESA_ycbcr_texture },
