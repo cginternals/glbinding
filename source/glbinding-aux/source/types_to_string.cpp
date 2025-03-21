@@ -201,7 +201,8 @@ std::ostream & operator<<(std::ostream & stream, const Value<gl::GLbitfield> & v
 template <>
 std::ostream & operator<<(std::ostream & stream, const Value<gl::GLboolean> & value)
 {
-    const auto & name = aux::Meta::getString(value.value());
+    const auto glvalue = value.value();
+    const auto & name = aux::Meta::getString(glvalue);
     stream.write(name.c_str(), static_cast<std::streamsize>(name.size()));
 
     return stream;
