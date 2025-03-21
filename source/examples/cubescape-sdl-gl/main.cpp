@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include <glbinding/glbinding.h>
+#include <glbinding/gl/types.h>
 #include <glbinding/Version.h>
 #include <glbinding/FunctionCall.h>
 #include <glbinding/CallbackMask.h>
