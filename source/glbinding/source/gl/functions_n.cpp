@@ -163,6 +163,11 @@ void glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GL
     return glbinding::Binding::NamedFramebufferTextureLayerEXT(framebuffer, attachment, texture, level, layer);
 }
 
+void glNamedFramebufferTextureMultiviewOVR(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint baseViewIndex, GLsizei numViews)
+{
+    return glbinding::Binding::NamedFramebufferTextureMultiviewOVR(framebuffer, attachment, texture, level, baseViewIndex, numViews);
+}
+
 void glNamedProgramLocalParameter4dEXT(GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
     return glbinding::Binding::NamedProgramLocalParameter4dEXT(program, target, index, x, y, z, w);
