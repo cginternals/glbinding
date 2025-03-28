@@ -22,5 +22,9 @@ if(TARGET PkgConfig::GTK4)
 
 endif()
 
-find_package_handle_standard_args(GTK4 DEFAULT_MSG GTK4_FOUND)
+find_package_handle_standard_args(GTK4
+  DEFAULT_MSG
+  REQUIRED_VARS
+    GTK4_FOUND
+)
 mark_as_advanced(GTK4_FOUND)
