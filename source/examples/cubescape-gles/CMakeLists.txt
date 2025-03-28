@@ -4,7 +4,6 @@
 # 
 
 find_package(glfw3 QUIET)
-find_package(cpplocate QUIET)
 
 
 # 
@@ -18,10 +17,6 @@ set(target cubescape-gles)
 if (NOT glfw3_FOUND)
     message("Example ${target} skipped: glfw3 not found")
     return()
-endif()
-
-if (NOT cpplocate_FOUND)
-    message(STATUS "Example ${target}: using static data path (cpplocate not found)")
 else()
     message(STATUS "Example ${target}")
 endif()
@@ -33,12 +28,6 @@ endif()
 
 set(sources
     main.cpp
-    CubeScape.cpp
-    CubeScape.h
-    glutils.cpp
-    glutils.h
-    RawFile.cpp
-    RawFile.h
 )
 
 
@@ -89,7 +78,7 @@ target_link_libraries(${target}
     glfw
     ${META_PROJECT_NAME}::glbinding
     ${META_PROJECT_NAME}::glbinding-aux
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate::cpplocate>
+    ${META_PROJECT_NAME}::cubescape-shared-gles
 )
 
 
@@ -101,7 +90,6 @@ target_compile_definitions(${target}
     PRIVATE
     ${DEFAULT_COMPILE_DEFINITIONS}
     GLFW_INCLUDE_NONE
-    $<$<BOOL:${cpplocate_FOUND}>:cpplocate_FOUND>
 )
 
 

@@ -207,7 +207,7 @@ void Canvas::setSwapInterval(SwapInterval swapInterval)
     if (!glXSwapIntervalSGI)
         glXSwapIntervalSGI = reinterpret_cast<SWAPINTERVALEXTPROC>(m_context->getProcAddress("glXSwapIntervalSGI"));
     if (glXSwapIntervalSGI)
-        result = glXSwapIntervalSGI(swapInterval);
+        result = !glXSwapIntervalSGI(swapInterval);
 
 #endif
 

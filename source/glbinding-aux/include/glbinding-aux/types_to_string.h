@@ -34,7 +34,6 @@ GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const MemoryB
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const OcclusionQueryEventMaskAMD & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PathFontStyle & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PathMetricMask & value);
-GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PathRenderingMaskNV & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const PerformanceQueryCapsMaskINTEL & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const SyncObjectMask & value);
 GLBINDING_AUX_API std::ostream & operator<<(std::ostream & stream, const TextureStorageMaskAMD & value);

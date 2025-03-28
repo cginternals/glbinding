@@ -57,6 +57,8 @@ CubeScape::CubeScape()
 , u_transform(-1)
 , u_time(-1)
 , u_numcubes(-1)
+, u_terrain(-1)
+, u_patches(-1)
 , m_vao(0)
 , m_indices(0)
 , m_vertices(0)
@@ -110,6 +112,23 @@ CubeScape::CubeScape()
     glLinkProgram(m_program);
     link_info(m_program);
 
+    glUseProgram(m_program);
+
+    // setup uniforms
+
+    u_transform = glGetUniformLocation(m_program, "modelViewProjection");
+    u_time = glGetUniformLocation(m_program, "time");
+    u_numcubes = glGetUniformLocation(m_program, "numcubes");
+
+    m_time = clock::now();
+
+    u_terrain = glGetUniformLocation(m_program, "terrain");
+    u_patches = glGetUniformLocation(m_program, "patches");
+
+    a_vertex = glGetAttribLocation(m_program, "a_vertex");
+
+    glUseProgram(0);
+
     // create textures
 
     glGenTextures(2, m_textures);
@@ -146,7 +165,6 @@ CubeScape::CubeScape()
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB8, 64, 16, 0, GL_RGB, GL_UNSIGNED_BYTE, patches.data());
     }
 
-
     // create cube
 
     static const GLfloat vertices_data[24] =
@@ -175,37 +193,11 @@ CubeScape::CubeScape()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indices);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, (6 * 3) * sizeof(GLubyte), indices_data, GL_STATIC_DRAW);
 
-    // setup uniforms
-
-    a_vertex = glGetAttribLocation(m_program, "a_vertex");
     glEnableVertexAttribArray(static_cast<GLuint>(a_vertex));
 
     glVertexAttribPointer(static_cast<GLuint>(a_vertex), 3, GL_FLOAT, GL_FALSE, 0, nullptr);
-
-    u_transform = glGetUniformLocation(m_program, "modelViewProjection");
-    u_time = glGetUniformLocation(m_program, "time");
-    u_numcubes = glGetUniformLocation(m_program, "numcubes");
-
-    m_time = clock::now();
-
-    GLint terrain = glGetUniformLocation(m_program, "terrain");
-    GLint patches = glGetUniformLocation(m_program, "patches");
-
-    // since only single program and single data is used, bind only once 
-
-    glEnable(GL_DEPTH_TEST);
     
-    glClearColor(0.f, 0.f, 0.f, 1.0f);
-
-    glUseProgram(m_program);
-
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, m_textures[0]);
-    glUniform1i(terrain, 0);
-
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, m_textures[1]);
-    glUniform1i(patches, 1);
+    glBindVertexArray(0);
 
     // view
 
@@ -231,6 +223,7 @@ void CubeScape::setNumCubes(int _numCubes)
 {
     m_numcubes = std::min(4096, std::max(1, _numCubes));
 }
+
 int CubeScape::numCubes() const
 {
     return m_numcubes;
@@ -250,7 +243,19 @@ void CubeScape::draw()
         return;
     }
 
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    glUseProgram(m_program);
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_textures[0]);
+    glUniform1i(u_terrain, 0);
+
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, m_textures[1]);
+    glUniform1i(u_patches, 1);
 
     auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(clock::now() - m_time);
     float t = static_cast<float>(ms.count()) * 1e-3f;
@@ -261,5 +266,11 @@ void CubeScape::draw()
     glUniform1f(u_time, t);
     glUniform1i(u_numcubes, m_numcubes);
 
+    glEnable(GL_DEPTH_TEST);
+
+    glBindVertexArray(m_vao);
     glDrawElementsInstanced(GL_TRIANGLES, 18, GL_UNSIGNED_BYTE, 0, m_numcubes * m_numcubes);
+
+    glBindVertexArray(0);
+    glUseProgram(0);
 }

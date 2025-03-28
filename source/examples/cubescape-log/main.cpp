@@ -1,6 +1,10 @@
 
 #include <iostream>
 
+#include <thread>
+#include <fstream>
+#include <sstream>
+
 #include <GLFW/glfw3.h>
 
 #include <glbinding/glbinding.h>
@@ -16,13 +20,8 @@
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/logging.h>
 
-#include "../cubescape/CubeScape.h"
-
-#include "../cubescape/glutils.h"
-
-#include <thread>
-#include <fstream>
-#include <sstream>
+#include <CubeScape.h>
+#include <glutils.h>
 
 using namespace gl;
 using namespace glbinding;

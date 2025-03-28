@@ -11,7 +11,7 @@
 # 
 
 # Target name
-set(target glmeta)
+set(target ${META_PROJECT_NAME}-glmeta)
 
 message(STATUS "Tool ${target}")
 

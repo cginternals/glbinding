@@ -17,7 +17,7 @@
 #include <glbinding-aux/ValidVersions.h>
 #include <glbinding-aux/debug.h>
 
-#include "CubeScape.h"
+#include <CubeScape.h>
 
 
 using namespace gl;

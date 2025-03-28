@@ -64,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 3002>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 3005>; ///< The type of the build-in functions collection
 
 
 public:
@@ -582,6 +582,8 @@ public:
     static Function<void, gl::GLenum, gl::GLint> BlendParameteriNV; ///< Wrapper for glBlendParameteriNV
     static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebuffer; ///< Wrapper for glBlitFramebuffer
     static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferEXT; ///< Wrapper for glBlitFramebufferEXT
+    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferLayerEXT; ///< Wrapper for glBlitFramebufferLayerEXT
+    static Function<void, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitFramebufferLayersEXT; ///< Wrapper for glBlitFramebufferLayersEXT
     static Function<void, gl::GLuint, gl::GLuint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::GLint, gl::ClearBufferMask, gl::GLenum> BlitNamedFramebuffer; ///< Wrapper for glBlitNamedFramebuffer
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64EXT, gl::GLsizeiptr> BufferAddressRangeNV; ///< Wrapper for glBufferAddressRangeNV
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint64> BufferAttachMemoryNV; ///< Wrapper for glBufferAttachMemoryNV
@@ -2054,6 +2056,7 @@ public:
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLenum> NamedFramebufferTextureFaceEXT; ///< Wrapper for glNamedFramebufferTextureFaceEXT
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint> NamedFramebufferTextureLayer; ///< Wrapper for glNamedFramebufferTextureLayer
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint> NamedFramebufferTextureLayerEXT; ///< Wrapper for glNamedFramebufferTextureLayerEXT
+    static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLint, gl::GLint, gl::GLsizei> NamedFramebufferTextureMultiviewOVR; ///< Wrapper for glNamedFramebufferTextureMultiviewOVR
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLdouble, gl::GLdouble, gl::GLdouble, gl::GLdouble> NamedProgramLocalParameter4dEXT; ///< Wrapper for glNamedProgramLocalParameter4dEXT
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, const gl::GLdouble *> NamedProgramLocalParameter4dvEXT; ///< Wrapper for glNamedProgramLocalParameter4dvEXT
     static Function<void, gl::GLuint, gl::GLenum, gl::GLuint, gl::GLfloat, gl::GLfloat, gl::GLfloat, gl::GLfloat> NamedProgramLocalParameter4fEXT; ///< Wrapper for glNamedProgramLocalParameter4fEXT
