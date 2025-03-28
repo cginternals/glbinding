@@ -24,28 +24,28 @@ binary: binary-arch
 
 binary-arch: libglbinding libglbinding-dev libglbinding-docs libglbinding-dbg libglbinding-examples-data libglbinding-examples-glfw libglbinding-examples-qt libglbinding-tools libglbinding-all
 
-libglbinding:
+libglbinding: build
 	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=runtime make component_install
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-dev:
+libglbinding-dev: build
 	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=dev make component_install
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-dev
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-docs:
+libglbinding-docs: build
 	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=docs make component_install
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-docs
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-dbg:
+libglbinding-dbg: build
 	cd $(BUILDDEBUGDIR); DESTDIR=../debian/tmp COMPONENT=runtime make component_install
 	cd $(BUILDDEBUGDIR); DESTDIR=../debian/tmp COMPONENT=dev make component_install
 	rm -rf debian/tmp/usr/include
@@ -61,35 +61,35 @@ libglbinding-dbg:
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-examples-data:
+libglbinding-examples-data: build
 	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=examples_data make component_install
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-examples-data
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-examples-glfw:
+libglbinding-examples-glfw: build
 	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=examples_glfw make component_install
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-examples-glfw
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-examples-qt:
+libglbinding-examples-qt: build
 	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=examples_qt make component_install
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-examples-qt
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-tools:
+libglbinding-tools: build
 	cd $(BUILDDIR); DESTDIR=../debian/tmp COMPONENT=tools make component_install
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-tools
 	dpkg --build debian/tmp ..
 	rm -rf debian/tmp
 
-libglbinding-all:
+libglbinding-all: build
 	mkdir -p debian/tmp/DEBIAN
 	dpkg-gencontrol -plibglbinding-all
 	dpkg --build debian/tmp ..
