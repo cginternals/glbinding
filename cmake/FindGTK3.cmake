@@ -23,5 +23,10 @@ if(GTK3_FOUND)
     
 endif()
 
-find_package_handle_standard_args(GTK3 DEFAULT_MSG REQUIRED_VARS GTK3_FOUND)
+find_package_handle_standard_args(GTK3
+  DEFAULT_MSG
+  REQUIRED_VARS
+    GTK3_FOUND
+)
+
 mark_as_advanced(GTK3_FOUND GTK3_INCLUDE_DIRS GTK3_LIBRARIES)

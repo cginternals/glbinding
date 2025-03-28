@@ -23,5 +23,11 @@ if(SDL2_FOUND)
     
 endif()
 
-find_package_handle_standard_args(SDL2 DEFAULT_MSG)
+find_package_handle_standard_args(SDL2
+  DEFAULT_MSG
+  REQUIRED_VARS
+    SDL2_INCLUDE_DIRS
+    SDL2_LIBRARIES
+)
+
 mark_as_advanced(SDL2_FOUND SDL2_INCLUDE_DIRS SDL2_LIBRARIES)

@@ -30,5 +30,10 @@ if(KHR_INCLUDE_DIR)
     
 endif()
 
-find_package_handle_standard_args(KHR REQUIRED_VARS KHR_INCLUDE_DIR)
+find_package_handle_standard_args(KHR
+  DEFAULT_MSG
+  REQUIRED_VARS
+    KHR_INCLUDE_DIR
+)
+
 mark_as_advanced(KHR_INCLUDE_DIR KHR_LIBRARY)
