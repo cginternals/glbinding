@@ -3,7 +3,7 @@
 # Configure test project and environment
 #
 
-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
 
 # Meta information about the project
 set(META_PROJECT_NAME "glbinding")
