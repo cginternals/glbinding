@@ -66,7 +66,7 @@ int main(int, char *[])
 
     glfwMakeContextCurrent(window1);
 
-    glbinding::initialize(0, glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::initialize(0, glfwGetProcAddress, true, false); // only resolve functions that are actually used (lazy)
     glbinding::aux::enableGetErrorCallback();
 
     // Initialize window 2
@@ -82,7 +82,7 @@ int main(int, char *[])
 
     glfwSetKeyCallback(window2, key_callback);
 
-    glbinding::initialize(1, glfwGetProcAddress, false); // only resolve functions that are actually used (lazy)
+    glbinding::initialize(1, glfwGetProcAddress, true, false); // only resolve functions that are actually used (lazy)
     glbinding::aux::enableGetErrorCallback();
 
     // print some gl infos (query)

@@ -28,9 +28,7 @@ namespace
 
 void glbinding_init()
 {
-    glbinding::Binding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    }, false);
+    glbinding::Binding::initialize(glfwGetProcAddress, false);
 }
 
 

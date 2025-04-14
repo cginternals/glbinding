@@ -48,9 +48,7 @@ TEST(Regression_185, GLbooleanReturnValueCall)  // GL calls fail if function ret
 
     glfwMakeContextCurrent(window);
 
-    glbinding::initialize([](const char * name) {
-        return glfwGetProcAddress(name);
-    });
+    glbinding::initialize(glfwGetProcAddress);
 
     ASSERT_EQ(gl::GL_NO_ERROR, gl::glGetError());
 
