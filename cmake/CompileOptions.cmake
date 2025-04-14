@@ -165,8 +165,8 @@ endif ()
 
 set(DEFAULT_LINKER_OPTIONS)
 
-# Use pthreads on mingw and linux
-if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
+# Use pthreads on MinGW, Linux, and FreeBSD
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR "${CMAKE_SYSTEM_NAME}" MATCHES "FreeBSD")
     set(DEFAULT_LINKER_OPTIONS ${DEFAULT_LINKER_OPTIONS}
     PUBLIC
         -pthread
