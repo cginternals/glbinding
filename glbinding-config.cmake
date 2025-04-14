@@ -4,6 +4,7 @@
 # 
 # Please adjust the list of submodules to search for.
 
+# Find depencencies
 include(CMakeFindDependencyMacro)
 
 if (NOT TARGET "KHR::KHR")
