@@ -163,25 +163,17 @@ generate_template_export_header(${target}
 )
 
 # Create feature detection header
-if (WriterCompilerDetectionHeaderFound)
-    write_compiler_detection_header(
-        FILE ${feature_file}
-        PREFIX ${target_id}
-        COMPILERS AppleClang Clang GNU MSVC
-        FEATURES
-            cxx_thread_local
-            cxx_constexpr
-            cxx_attribute_deprecated
-            cxx_noexcept
-        VERSION 3.2
-    )
-else()
-    file(
-        COPY ${PROJECT_SOURCE_DIR}/source/codegeneration/${target}_features.h
-        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/${target}
-        USE_SOURCE_PERMISSIONS
-    )
-endif()
+write_compiler_detection_header(
+    FILE ${feature_file}
+    PREFIX ${target_id}
+    COMPILERS AppleClang Clang GNU MSVC
+    FEATURES
+        cxx_thread_local
+        cxx_constexpr
+        cxx_attribute_deprecated
+        cxx_noexcept
+    VERSION 3.15
+)
 
 
 # 

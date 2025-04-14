@@ -19,7 +19,7 @@ endif()
 
 set(DEFAULT_PROJECT_OPTIONS
     DEBUG_POSTFIX             "d"
-    CXX_STANDARD              11 # Not available before CMake 3.1; see below for manual command line argument addition
+    CXX_STANDARD              11
     LINKER_LANGUAGE           "CXX"
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET     "hidden"
@@ -71,7 +71,7 @@ set(DEFAULT_COMPILE_OPTIONS_PRIVATE)
 set(DEFAULT_COMPILE_OPTIONS_PUBLIC)
 
 # MSVC compiler options
-if (MSVC)
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
     set(DEFAULT_COMPILE_OPTIONS_PRIVATE ${DEFAULT_COMPILE_OPTIONS_PRIVATE}
         $<$<CXX_COMPILER_ID:MSVC>:
             /MP           # -> build with multiple processes
@@ -145,15 +145,16 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_CXX_COMPILER_ID}" MATCH
 
             # -Wreturn-stack-address # gives false positives
         >
+
+        $<$<BOOL:${OPTION_COVERAGE_ENABLED}>:
+            -fprofile-arcs
+            -ftest-coverage
+        >
+        
     )
     set(DEFAULT_COMPILE_OPTIONS_PUBLIC ${DEFAULT_COMPILE_OPTIONS_PUBLIC}
         $<$<PLATFORM_ID:Darwin>:
             -pthread
-        >
-        
-        # Required for CMake < 3.1; should be removed if minimum required CMake version is raised.
-        $<$<VERSION_LESS:${CMAKE_VERSION},3.1>:
-            -std=c++11
         >
     )
 endif ()
@@ -166,10 +167,18 @@ set(DEFAULT_LINKER_OPTIONS)
 
 # Use pthreads on mingw and linux
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU" OR "${CMAKE_SYSTEM_NAME}" MATCHES "Linux")
-    set(DEFAULT_LINKER_OPTIONS
+    set(DEFAULT_LINKER_OPTIONS ${DEFAULT_LINKER_OPTIONS}
     PUBLIC
         -pthread
     )
+
+    if (${OPTION_COVERAGE_ENABLED})
+        set(DEFAULT_LINKER_OPTIONS ${DEFAULT_LINKER_OPTIONS}
+            PUBLIC
+                -fprofile-arcs
+                -ftest-coverage
+        )
+    endif ()
 endif()
 
 if(NOT "${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")

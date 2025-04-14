@@ -1,3 +1,9 @@
+libglbinding (3.5.0-0) UNRELEASED; urgency=medium
+
+  * Minor release 3.5.0
+
+ -- Willy Scheibel <willy.scheibel@cginternals.com>  Mon, 14 Apr 2025 18:45:00 +0100
+
 libglbinding (3.4.0-0) UNRELEASED; urgency=medium
 
   * Minor release 3.4.0

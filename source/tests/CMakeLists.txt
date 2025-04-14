@@ -3,13 +3,16 @@
 # Configure test project and environment
 #
 
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 # Meta information about the project
 set(META_PROJECT_NAME "glbinding")
 
 # Declare project
-project("${META_PROJECT_NAME}-tests" C CXX)
+project("${META_PROJECT_NAME}-tests")
+
+enable_language(C)
+enable_language(CXX)
 
 # Set policies
 set_policy(CMP0054 NEW) # ENABLE  CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
@@ -40,6 +43,8 @@ function(add_test_without_ctest target)
     add_custom_command(TARGET test POST_BUILD 
         COMMAND $<TARGET_FILE:${target}> --gtest_output=xml:gtests-${target}.xml
     )
+
+    generate_coverage_report(${target})
 endfunction()
 
 find_package(googletest QUIET)
@@ -53,16 +58,10 @@ endif ()
 # Target 'test'
 # 
 
-if (${CMAKE_VERSION} VERSION_LESS "3.11")
-    set_policy(CMP0037 OLD) # DISABLE CMP0037: Target names should be reserved and should match a validity pattern.
+if (NOT TARGET test)
     add_custom_target(test)
     set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
-else ()
-    if (NOT TARGET test)
-        add_custom_target(test)
-        set_target_properties(test PROPERTIES EXCLUDE_FROM_DEFAULT_BUILD 1)
-    endif()
-endif ()
+endif()
 
 
 # 

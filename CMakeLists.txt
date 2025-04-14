@@ -4,7 +4,7 @@
 # 
 
 # CMake version
-cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 
 
 #
@@ -28,55 +28,26 @@ endif()
 include(cmake/Custom.cmake)
 
 # Set policies
-set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
-set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
-set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
-set_policy(CMP0069 NEW) # ENABLE CMP0069: INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
-set_policy(CMP0072 NEW) # ENABLE CMP0072: FindOpenGL prefers GLVND by default when available.
-set_policy(CMP0077 NEW) # ENABLE CMP0077: option() honors normal variables.
+set_policy(CMP0054 NEW) # ENABLE  CMP0054: Only interpret if() arguments as variables or keywords when unquoted.
+set_policy(CMP0042 NEW) # ENABLE  CMP0042: MACOSX_RPATH is enabled by default.
+set_policy(CMP0063 NEW) # ENABLE  CMP0063: Honor visibility properties for all target types.
+set_policy(CMP0069 NEW) # ENABLE  CMP0069: INTERPROCEDURAL_OPTIMIZATION is enforced when enabled.
+set_policy(CMP0072 NEW) # ENABLE  CMP0072: FindOpenGL prefers GLVND by default when available.
+set_policy(CMP0077 NEW) # ENABLE  CMP0077: option() honors normal variables.
+set_policy(CMP0120 OLD) # DISABLE CMP0120: The WriteCompilerDetectionHeader module is removed.
 
 # Include cmake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(GenerateExportHeader)
-
-set(WriterCompilerDetectionHeaderFound NOTFOUND)
-# This module is only available with CMake >=3.1, so check whether it could be found
-# BUT in CMake 3.1 this module doesn't recognize AppleClang as compiler, so just use it as of CMake 3.2
-if (${CMAKE_VERSION} VERSION_GREATER "3.2")
-    include(WriteCompilerDetectionHeader OPTIONAL RESULT_VARIABLE WriterCompilerDetectionHeaderFound)
-endif()
-
-if (${CMAKE_VERSION} VERSION_GREATER "3.9")
-    include(CheckIPOSupported OPTIONAL RESULT_VARIABLE CheckIPOSupportedFound)
-endif()
+include(WriteCompilerDetectionHeader)
+include(CheckIPOSupported OPTIONAL RESULT_VARIABLE CheckIPOSupportedFound)
 
 # Include custom cmake modules
+include(cmake/Coverage.cmake)
+include(cmake/GenerateTemplateExportHeader.cmake)
 include(cmake/GetGitRevisionDescription.cmake)
 include(cmake/HealthCheck.cmake)
-include(cmake/GenerateTemplateExportHeader.cmake)
-
-
-# 
-# Project description and (meta) information
-# 
-
-# Meta information about the project
-set(META_PROJECT_NAME        "glbinding")
-set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
-set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
-set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
-set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
-set(META_VERSION_MAJOR       "3")
-set(META_VERSION_MINOR       "4")
-set(META_VERSION_PATCH       "0")
-set(META_VERSION_REVISION    "${GIT_REV}")
-set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
-set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
-set(META_CMAKE_INIT_SHA      "c472829f01df4c99c7bd3fa96bcf6854b3dd44f1")
-
-string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
-string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 
 # 
 # Project configuration options
@@ -94,18 +65,7 @@ option(OPTION_BUILD_CHECK             "Enable source code check targets"        
 option(OPTION_BUILD_OWN_KHR_HEADERS   "Build and deploy glbinding with in-source KHR headers."    OFF)
 option(OPTION_BUILD_WITH_LTO          "Build with Link-time Optimization (may break AppleClang)"  OFF)
 option(OPTION_USE_GIT_INFORMATION     "Fetches commit information from the git source repository" ON)
-
-
-# 
-# Declare project
-# 
-
-# Generate folders for IDE targets (e.g., VisualStudio solutions)
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-set(IDE_FOLDER "")
-
-# Declare project
-project(${META_PROJECT_NAME} C CXX)
+option(OPTION_ENABLE_COVERAGE         "Add coverage information."                                 OFF)
 
 # Get git revision
 if (OPTION_USE_GIT_INFORMATION AND GLBINDING_BUILD_AS_ROOT)
@@ -119,6 +79,47 @@ else()
   set(GIT_REV "0")
 endif()
 
+
+# 
+# Project description and (meta) information
+# 
+
+# Meta information about the project
+set(META_PROJECT_NAME        "glbinding")
+set(META_PROJECT_DESCRIPTION "A C++ binding for the OpenGL API, generated using the gl.xml specification.")
+set(META_AUTHOR_ORGANIZATION "CG Internals GmbH")
+set(META_AUTHOR_DOMAIN       "https://github.com/cginternals/glbinding/")
+set(META_AUTHOR_MAINTAINER   "opensource@cginternals.com")
+set(META_VERSION_MAJOR       "3")
+set(META_VERSION_MINOR       "5")
+set(META_VERSION_PATCH       "0")
+set(META_VERSION_REVISION    "${GIT_REV}")
+set(META_VERSION             "${META_VERSION_MAJOR}.${META_VERSION_MINOR}.${META_VERSION_PATCH}")
+set(META_NAME_VERSION        "${META_PROJECT_NAME} v${META_VERSION} (${META_VERSION_REVISION})")
+set(META_CMAKE_INIT_SHA      "1915e8c3eb77bc67c14de7ced94f0623e889416a")
+set(META_CMAKE_INIT_BRANCH   "cmake-3.15")
+
+string(MAKE_C_IDENTIFIER ${META_PROJECT_NAME} META_PROJECT_ID)
+string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
+
+
+# 
+# Declare project
+# 
+
+# Generate folders for IDE targets (e.g., VisualStudio solutions)
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+set(IDE_FOLDER "")
+
+# Declare project
+project(${META_PROJECT_NAME}
+    VERSION ${META_VERSION}
+    DESCRIPTION ${META_PROJECT_DESCRIPTION}
+)
+
+enable_language(C)
+enable_language(CXX)
+
 # Set output directories
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
@@ -128,25 +129,24 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR})
 file(WRITE "${PROJECT_BINARY_DIR}/VERSION" "${META_NAME_VERSION}")
 
 
-# 
-# Compiler settings and options
-# 
-
-include(cmake/CompileOptions.cmake)
-
-
 #
 # Project Health Check Setup
 #
 
 # Add cmake-init template check cmake targets
-add_check_template_target(${META_CMAKE_INIT_SHA})
+add_check_template_target(${META_CMAKE_INIT_SHA} ${META_CMAKE_INIT_BRANCH})
 
 # Configure health check tools
-if(OPTION_BUILD_CHECK)
-    enable_cppcheck(On)
-    enable_clang_tidy(On)
-endif()
+enable_cppcheck(ON)
+enable_clang_tidy(ON)
+enable_coverage(${OPTION_ENABLE_COVERAGE})
+
+
+# 
+# Compiler settings and options
+# 
+
+include(cmake/CompileOptions.cmake)
 
 
 # 
