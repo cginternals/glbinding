@@ -4,6 +4,8 @@
 
 #include <glbinding/gl/types.h>
 
+#include <type_traits>
+
 
 namespace std
 {

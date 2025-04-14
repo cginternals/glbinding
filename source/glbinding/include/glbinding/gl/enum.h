@@ -6,6 +6,8 @@
 
 #include <glbinding/glbinding_features.h>
 
+#include <type_traits>
+
 
 namespace gl
 {
