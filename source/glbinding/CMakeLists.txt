@@ -175,18 +175,6 @@ add_library(${target}
     ${headers}
 )
 
-
-# Optional IPO. Do not use IPO if it's not supported by compiler.
-if(OPTION_BUILD_WITH_LTO AND CheckIPOSupportedFound)
-    check_ipo_supported(RESULT result OUTPUT output)
-    if(result)
-        set_property(TARGET ${target} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
-    else()
-        message(WARNING "IPO is not supported: ${output}")
-    endif()
-endif()
-
-
 # Create namespaced alias
 add_library(${META_PROJECT_NAME}::${target} ALIAS ${target})
 
@@ -205,25 +193,17 @@ generate_template_export_header(${target}
 )
 
 # Create feature detection header
-if (WriterCompilerDetectionHeaderFound)
-    write_compiler_detection_header(
-        FILE ${feature_file}
-        PREFIX ${target_id}
-        COMPILERS AppleClang Clang GNU MSVC
-        FEATURES
-            cxx_thread_local
-            cxx_constexpr
-            cxx_attribute_deprecated
-            cxx_noexcept
-        VERSION 3.2
-    )
-else()
-    file(
-        COPY ${PROJECT_SOURCE_DIR}/source/codegeneration/${target}_features.h
-        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/include/${target}
-        USE_SOURCE_PERMISSIONS
-    )
-endif()
+write_compiler_detection_header(
+    FILE ${feature_file}
+    PREFIX ${target_id}
+    COMPILERS AppleClang Clang GNU MSVC
+    FEATURES
+        cxx_thread_local
+        cxx_constexpr
+        cxx_attribute_deprecated
+        cxx_noexcept
+    VERSION 3.15
+)
 
 
 # 
@@ -238,6 +218,16 @@ set_target_properties(${target}
     VERSION "${META_VERSION}"
     SOVERSION "${META_VERSION_MAJOR}"
 )
+
+# Optional IPO. Do not use IPO if it's not supported by compiler.
+if(OPTION_BUILD_WITH_LTO AND CheckIPOSupportedFound)
+    check_ipo_supported(RESULT result OUTPUT output)
+    if(result)
+        set_property(TARGET ${target} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+    else()
+        message(WARNING "IPO is not supported: ${output}")
+    endif()
+endif()
 
 
 # 

@@ -3,6 +3,8 @@
 # External dependencies
 #
 
+# None
+
 
 #
 # Library name and options
@@ -20,7 +22,7 @@ message(STATUS "External ${target}")
 #
 
 set(include_path "${CMAKE_CURRENT_SOURCE_DIR}/include/KHR")
-# set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
+set(source_path  "${CMAKE_CURRENT_SOURCE_DIR}/source")
 
 set(headers
     ${include_path}/khrplatform.h
@@ -28,6 +30,14 @@ set(headers
 
 set(sources
 )
+
+# Group source files
+set(header_group "Header Files (API)")
+set(source_group "Source Files")
+source_group_by_path(${include_path} "\\\\.h$|\\\\.hpp$" 
+    ${header_group} ${headers})
+source_group_by_path(${source_path}  "\\\\.cpp$|\\\\.c$|\\\\.h$|\\\\.hpp$" 
+    ${source_group} ${sources})
 
 
 #

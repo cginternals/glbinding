@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <set>
 #include <iomanip>
+#include <type_traits>
 
 #include <glbinding/Version.h>
 
