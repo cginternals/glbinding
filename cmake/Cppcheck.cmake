@@ -9,7 +9,7 @@ function(perform_cppcheck check_target target)
             ${cppcheck_EXECUTABLE}
                 "$<$<BOOL:${includes}>:-I$<JOIN:${includes},\t-I>>"
                 --enable=all
-                --std=c++11
+                --std=c++${CXX_STANDARD_TO_USE}
                 --verbose
                 --suppress=missingIncludeSystem
                 ${ARGN}

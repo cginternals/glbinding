@@ -165,7 +165,10 @@ Building *glbinding* from source has several mandatory and optional dependencies
 
 ### Compile Instructions
 
-For compilation, a C++11 compliant compiler, e.g., GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**, is required.
+For compilation, at least C++11 compliant compiler, e.g., GCC 4.8, Clang 3.3, MSVC 2013 **Update 3**, is required.
+The current release of glbinding defaults to use of C++17, but can be configured to use C++14 and even C++11 as a fallback.
+These fallbacks are available with using the CMake options `OPTION_CXX_11_COMPATABILITY` and `OPTION_CXX_14_COMPATABILITY`.
+
 First, download the source code [as archive](https://github.com/cginternals/glbinding/releases) or via git:
 
 ```bash
@@ -173,11 +176,11 @@ First, download the source code [as archive](https://github.com/cginternals/glbi
 > cd glbinding
 ```
 
-Then, depending on the version of *glbinding* you want to build, choose the appropriate tag or branch, e.g., for the 2.1.4 release:
+Then, depending on the version of *glbinding* you want to build, choose the appropriate tag or branch, e.g., for the 3.5.0 release:
 
 ```bash
 > git fetch --tags
-> git checkout v2.1.4
+> git checkout v3.5.0
 ```
 
 The actual compilation can be done using CMake and your favorite compiler and IDE.

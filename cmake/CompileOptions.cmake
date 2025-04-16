@@ -12,6 +12,7 @@ if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(X64 ON)
 endif()
 
+message(STATUS "Use C++ Standard ${CXX_STANDARD_TO_USE}")
 
 # 
 # Project options
@@ -19,7 +20,7 @@ endif()
 
 set(DEFAULT_PROJECT_OPTIONS
     DEBUG_POSTFIX             "d"
-    CXX_STANDARD              11
+    CXX_STANDARD              ${CXX_STANDARD_TO_USE}
     LINKER_LANGUAGE           "CXX"
     POSITION_INDEPENDENT_CODE ON
     CXX_VISIBILITY_PRESET     "hidden"

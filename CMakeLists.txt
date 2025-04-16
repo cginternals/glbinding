@@ -56,6 +56,8 @@ include(cmake/HealthCheck.cmake)
 # Project options
 option(BUILD_SHARED_LIBS              "Build shared instead of static libraries."                 ON)
 option(OPTION_SELF_CONTAINED          "Create a self-contained install with all dependencies."    OFF)
+option(OPTION_CXX_11_COMPATABILITY    "Ensure build on a C++11 compiler."                         OFF)
+option(OPTION_CXX_14_COMPATABILITY    "Ensure build on a C++14 compiler."                         OFF)
 option(OPTION_BUILD_TESTS             "Build tests."                                              OFF)
 option(OPTION_BUILD_DOCS              "Build documentation."                                      OFF)
 option(OPTION_BUILD_TOOLS             "Build tools."                                              ON)
@@ -145,6 +147,18 @@ enable_coverage(${OPTION_ENABLE_COVERAGE})
 # 
 # Compiler settings and options
 # 
+
+# Determine CXX_STANDARD
+
+set(CXX_STANDARD_TO_USE 17)
+if (OPTION_CXX_14_COMPATABILITY)
+    set(CXX_STANDARD_TO_USE 14)
+endif ()
+if (OPTION_CXX_11_COMPATABILITY)
+    set(CXX_STANDARD_TO_USE 11)
+endif ()
+
+# Initialize default compiler options
 
 include(cmake/CompileOptions.cmake)
 
