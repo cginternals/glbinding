@@ -10,8 +10,8 @@
 #include <KHR/khrplatform.h>
 
 
-#ifdef _MSC_VER
-#define GL_APIENTRY __stdcall
+#ifdef WINAPI
+#define GL_APIENTRY WINAPI
 #else
 #define GL_APIENTRY
 #endif
