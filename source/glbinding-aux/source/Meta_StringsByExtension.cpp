@@ -302,6 +302,7 @@ const std::unordered_map<GLextension, std::string> Meta_StringsByExtension =
     { GLextension::GL_EXT_memory_object, "GL_EXT_memory_object" },
     { GLextension::GL_EXT_memory_object_fd, "GL_EXT_memory_object_fd" },
     { GLextension::GL_EXT_memory_object_win32, "GL_EXT_memory_object_win32" },
+    { GLextension::GL_EXT_mesh_shader, "GL_EXT_mesh_shader" },
     { GLextension::GL_EXT_misc_attribute, "GL_EXT_misc_attribute" },
     { GLextension::GL_EXT_multi_draw_arrays, "GL_EXT_multi_draw_arrays" },
     { GLextension::GL_EXT_multisample, "GL_EXT_multisample" },

@@ -161,6 +161,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_M =
     { "GL_MAT_EMISSION_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_MAT_EMISSION_BIT_PGI) },
     { "GL_MAT_SHININESS_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_MAT_SHININESS_BIT_PGI) },
     { "GL_MAT_SPECULAR_BIT_PGI", static_cast<GLbitfield>(VertexHintsMaskPGI::GL_MAT_SPECULAR_BIT_PGI) },
+    { "GL_MESH_SHADER_BIT_EXT", static_cast<GLbitfield>(UseProgramStageMask::GL_MESH_SHADER_BIT_EXT) },
     { "GL_MESH_SHADER_BIT_NV", static_cast<GLbitfield>(UseProgramStageMask::GL_MESH_SHADER_BIT_NV) },
     { "GL_MULTISAMPLE_BIT", static_cast<GLbitfield>(AttribMask::GL_MULTISAMPLE_BIT) },
     { "GL_MULTISAMPLE_BIT_3DFX", static_cast<GLbitfield>(AttribMask::GL_MULTISAMPLE_BIT_3DFX) },
@@ -221,6 +222,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_S =
 
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_T =
 {
+    { "GL_TASK_SHADER_BIT_EXT", static_cast<GLbitfield>(UseProgramStageMask::GL_TASK_SHADER_BIT_EXT) },
     { "GL_TASK_SHADER_BIT_NV", static_cast<GLbitfield>(UseProgramStageMask::GL_TASK_SHADER_BIT_NV) },
     { "GL_TESS_CONTROL_SHADER_BIT", static_cast<GLbitfield>(UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT) },
     { "GL_TESS_EVALUATION_SHADER_BIT", static_cast<GLbitfield>(UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT) },

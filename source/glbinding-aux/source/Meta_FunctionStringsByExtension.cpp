@@ -170,6 +170,7 @@ const std::unordered_map<GLextension, std::set<std::string>> Meta_FunctionString
     { GLextension::GL_EXT_memory_object, { "glBufferStorageMemEXT", "glCreateMemoryObjectsEXT", "glDeleteMemoryObjectsEXT", "glGetMemoryObjectParameterivEXT", "glGetUnsignedBytei_vEXT", "glGetUnsignedBytevEXT", "glIsMemoryObjectEXT", "glMemoryObjectParameterivEXT", "glNamedBufferStorageMemEXT", "glTexStorageMem1DEXT", "glTexStorageMem2DEXT", "glTexStorageMem2DMultisampleEXT", "glTexStorageMem3DEXT", "glTexStorageMem3DMultisampleEXT", "glTextureStorageMem1DEXT", "glTextureStorageMem2DEXT", "glTextureStorageMem2DMultisampleEXT", "glTextureStorageMem3DEXT", "glTextureStorageMem3DMultisampleEXT" } },
     { GLextension::GL_EXT_memory_object_fd, { "glImportMemoryFdEXT" } },
     { GLextension::GL_EXT_memory_object_win32, { "glImportMemoryWin32HandleEXT", "glImportMemoryWin32NameEXT" } },
+    { GLextension::GL_EXT_mesh_shader, { "glDrawMeshTasksEXT", "glDrawMeshTasksIndirectEXT", "glMultiDrawMeshTasksIndirectCountEXT", "glMultiDrawMeshTasksIndirectEXT" } },
     { GLextension::GL_EXT_multi_draw_arrays, { "glMultiDrawArraysEXT", "glMultiDrawElementsEXT" } },
     { GLextension::GL_EXT_multisample, { "glSampleMaskEXT", "glSamplePatternEXT" } },
     { GLextension::GL_EXT_paletted_texture, { "glColorTableEXT", "glGetColorTableEXT", "glGetColorTableParameterfvEXT", "glGetColorTableParameterivEXT" } },

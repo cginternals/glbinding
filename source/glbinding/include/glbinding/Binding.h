@@ -64,7 +64,7 @@ public:
 
     using ContextSwitchCallback = std::function<void(ContextHandle)>;   ///< The signature of the context switch callback
     
-    using array_t = std::array<AbstractFunction *, 3005>; ///< The type of the build-in functions collection
+    using array_t = std::array<AbstractFunction *, 3009>; ///< The type of the build-in functions collection
 
 
 public:
@@ -958,6 +958,8 @@ public:
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, const void *, gl::GLsizei, gl::GLint, gl::GLuint> DrawElementsInstancedBaseVertexBaseInstance; ///< Wrapper for glDrawElementsInstancedBaseVertexBaseInstance
     static Function<void, gl::GLenum, gl::GLsizei, gl::GLenum, const void *, gl::GLsizei> DrawElementsInstancedEXT; ///< Wrapper for glDrawElementsInstancedEXT
     static Function<void, gl::GLenum, gl::GLint, gl::GLsizei, gl::GLsizei> DrawMeshArraysSUN; ///< Wrapper for glDrawMeshArraysSUN
+    static Function<void, gl::GLuint, gl::GLuint, gl::GLuint> DrawMeshTasksEXT; ///< Wrapper for glDrawMeshTasksEXT
+    static Function<void, gl::GLintptr> DrawMeshTasksIndirectEXT; ///< Wrapper for glDrawMeshTasksIndirectEXT
     static Function<void, gl::GLintptr> DrawMeshTasksIndirectNV; ///< Wrapper for glDrawMeshTasksIndirectNV
     static Function<void, gl::GLuint, gl::GLuint> DrawMeshTasksNV; ///< Wrapper for glDrawMeshTasksNV
     static Function<void, gl::GLsizei, gl::GLsizei, gl::GLenum, gl::GLenum, const void *> DrawPixels; ///< Wrapper for glDrawPixels
@@ -1891,7 +1893,9 @@ public:
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLsizei, gl::GLsizei, gl::GLint> MultiDrawElementsIndirectBindlessNV; ///< Wrapper for glMultiDrawElementsIndirectBindlessNV
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectCount; ///< Wrapper for glMultiDrawElementsIndirectCount
     static Function<void, gl::GLenum, gl::GLenum, const void *, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawElementsIndirectCountARB; ///< Wrapper for glMultiDrawElementsIndirectCountARB
+    static Function<void, gl::GLintptr, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawMeshTasksIndirectCountEXT; ///< Wrapper for glMultiDrawMeshTasksIndirectCountEXT
     static Function<void, gl::GLintptr, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawMeshTasksIndirectCountNV; ///< Wrapper for glMultiDrawMeshTasksIndirectCountNV
+    static Function<void, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawMeshTasksIndirectEXT; ///< Wrapper for glMultiDrawMeshTasksIndirectEXT
     static Function<void, gl::GLintptr, gl::GLsizei, gl::GLsizei> MultiDrawMeshTasksIndirectNV; ///< Wrapper for glMultiDrawMeshTasksIndirectNV
     static Function<void, gl::GLenum, gl::GLuint, gl::GLuint, const gl::GLint *, const gl::GLsizei *, gl::GLsizei> MultiDrawRangeElementArrayAPPLE; ///< Wrapper for glMultiDrawRangeElementArrayAPPLE
     static Function<void, const gl::GLenum *, const gl::GLint *, const gl::GLsizei *, gl::GLsizei, gl::GLint> MultiModeDrawArraysIBM; ///< Wrapper for glMultiModeDrawArraysIBM

@@ -301,6 +301,7 @@ enum class GLextension : int // GLextension is not a type introduced by GL API s
     GL_EXT_memory_object,
     GL_EXT_memory_object_fd,
     GL_EXT_memory_object_win32,
+    GL_EXT_mesh_shader,
     GL_EXT_misc_attribute,
     GL_EXT_multi_draw_arrays,
     GL_EXT_multisample,

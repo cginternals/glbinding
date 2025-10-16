@@ -525,6 +525,8 @@ GLBINDING_API void glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count,
 GLBINDING_API void glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei instancecount, GLint basevertex, GLuint baseinstance);
 GLBINDING_API void glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const void * indices, GLsizei primcount);
 GLBINDING_API void glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width);
+GLBINDING_API void glDrawMeshTasksEXT(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+GLBINDING_API void glDrawMeshTasksIndirectEXT(GLintptr indirect);
 GLBINDING_API void glDrawMeshTasksIndirectNV(GLintptr indirect);
 GLBINDING_API void glDrawMeshTasksNV(GLuint first, GLuint count);
 GLBINDING_API void glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const void * pixels);
@@ -1458,7 +1460,9 @@ GLBINDING_API void glMultiDrawElementsIndirectBindlessCountNV(GLenum mode, GLenu
 GLBINDING_API void glMultiDrawElementsIndirectBindlessNV(GLenum mode, GLenum type, const void * indirect, GLsizei drawCount, GLsizei stride, GLint vertexBufferCount);
 GLBINDING_API void glMultiDrawElementsIndirectCount(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const void * indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawMeshTasksIndirectCountEXT(GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawMeshTasksIndirectCountNV(GLintptr indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+GLBINDING_API void glMultiDrawMeshTasksIndirectEXT(GLintptr indirect, GLsizei drawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawMeshTasksIndirectNV(GLintptr indirect, GLsizei drawcount, GLsizei stride);
 GLBINDING_API void glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint * first, const GLsizei * count, GLsizei primcount);
 GLBINDING_API void glMultiModeDrawArraysIBM(const GLenum * mode, const GLint * first, const GLsizei * count, GLsizei primcount, GLint modestride);

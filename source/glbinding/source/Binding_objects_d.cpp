@@ -123,6 +123,8 @@ Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint> Binding::D
 Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei, GLint, GLuint> Binding::DrawElementsInstancedBaseVertexBaseInstance("glDrawElementsInstancedBaseVertexBaseInstance");
 Function<void, GLenum, GLsizei, GLenum, const void *, GLsizei> Binding::DrawElementsInstancedEXT("glDrawElementsInstancedEXT");
 Function<void, GLenum, GLint, GLsizei, GLsizei> Binding::DrawMeshArraysSUN("glDrawMeshArraysSUN");
+Function<void, GLuint, GLuint, GLuint> Binding::DrawMeshTasksEXT("glDrawMeshTasksEXT");
+Function<void, GLintptr> Binding::DrawMeshTasksIndirectEXT("glDrawMeshTasksIndirectEXT");
 Function<void, GLintptr> Binding::DrawMeshTasksIndirectNV("glDrawMeshTasksIndirectNV");
 Function<void, GLuint, GLuint> Binding::DrawMeshTasksNV("glDrawMeshTasksNV");
 Function<void, GLsizei, GLsizei, GLenum, GLenum, const void *> Binding::DrawPixels("glDrawPixels");
