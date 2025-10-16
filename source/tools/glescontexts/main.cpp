@@ -22,12 +22,12 @@
 using namespace gl;
 using namespace glbinding;
 
-const auto gles_versions = std::set<glbinding::Version>({
+const auto gles_versions = std::set<glbinding::Version>{
     glbinding::Version(2, 0),
     glbinding::Version(3, 0),
     glbinding::Version(3, 1),
     glbinding::Version(3, 2),
-});
+};
 
 void error(int errnum, const char * errmsg)
 {
@@ -71,7 +71,7 @@ Version printVersionOfContextRequest(const Version & version)
     return result;
 }
 
-int main(int argc, char * argv[])
+int main(int /*argc*/, char * /*argv*/[])
 {
     glfwSetErrorCallback(error);
 
