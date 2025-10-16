@@ -24,6 +24,10 @@ if (NOT GLEW_FOUND)
     message("Example ${target} skipped: GLEW not found")
     return()
 endif()
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Example ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
 
 message(STATUS "Example ${target}")
 

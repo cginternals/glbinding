@@ -17,9 +17,13 @@ set(target cubescape-sdl-gl)
 if (NOT TARGET SDL2::SDL2)
     message("Example ${target} skipped: SDL2 not found")
     return()
-else()
-    message(STATUS "Example ${target}")
-endif()
+endif ()
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Example ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
+
+message(STATUS "Example ${target}")
 
 
 # 

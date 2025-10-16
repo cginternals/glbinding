@@ -7,6 +7,11 @@ find_package(Qt5Core    5.1 QUIET)
 find_package(Qt5Gui     5.1 QUIET)
 find_package(Qt5Widgets 5.1 QUIET)
 
+# On macOS qt5 fails to link against opengl
+if(APPLE)
+    find_package(OpenGL     REQUIRED)
+endif()
+
 
 # Enable automoc
 set(CMAKE_AUTOMOC ON)
@@ -29,14 +34,13 @@ set(target cubescape-qt-gles)
 if (NOT Qt5Core_FOUND)
     message(STATUS "Example ${target} skipped: Qt5 not found")
     return()
-else()
-    message(STATUS "Example ${target}")
-endif()
+endif ()
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Example ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
 
-# On macOS qt5 fails to link against opengl
-if(APPLE)
-    find_package(OpenGL     REQUIRED)
-endif()
+message(STATUS "Example ${target}")
 
 
 # 

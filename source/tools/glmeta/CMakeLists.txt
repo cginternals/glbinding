@@ -13,6 +13,11 @@
 # Target name
 set(target ${META_PROJECT_NAME}-glmeta)
 
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Tool ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
+
 message(STATUS "Tool ${target}")
 
 

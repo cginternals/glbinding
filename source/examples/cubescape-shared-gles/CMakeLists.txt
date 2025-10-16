@@ -13,6 +13,12 @@ find_package(cpplocate QUIET)
 # Target name
 set(target cubescape-shared-gles)
 
+
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Example Lib ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
+
 if (NOT cpplocate_FOUND)
     message(STATUS "Example Lib ${target}: using static data path (cpplocate not found)")
 else()

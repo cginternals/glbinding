@@ -18,7 +18,9 @@ add_subdirectory("3rdparty/KHR")
 # Libraries
 set(IDE_FOLDER "")
 add_subdirectory(glbinding)
-add_subdirectory(glbinding-aux)
+if (OPTION_BUILD_AUX)
+    add_subdirectory(glbinding-aux)
+endif ()
 
 # Tools
 if(OPTION_BUILD_TOOLS)

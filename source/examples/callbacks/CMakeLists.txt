@@ -18,6 +18,10 @@ if (NOT glfw3_FOUND)
     message("Example ${target} skipped: glfw3 not found")
     return()
 endif()
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Example ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
 
 message(STATUS "Example ${target}")
 

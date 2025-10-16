@@ -17,9 +17,14 @@ set(target glbinding-test)
 if (NOT glfw3_FOUND)
     message("Test ${target} skipped: glfw3 not found")
     return()
-else()
-    message(STATUS "Test ${target}")
-endif()
+endif ()
+
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Test ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
+
+message(STATUS "Test ${target}")
 
 
 # 

@@ -17,9 +17,13 @@ set(target cubescape-gtk3-gles)
 if (NOT TARGET GTK3::GTK3)
     message("Example ${target} skipped: GTK 3 not found")
     return()
-else()
-    message(STATUS "Example ${target}")
-endif()
+endif ()
+if (NOT TARGET ${META_PROJECT_NAME}::glbinding-aux)
+    message("Example ${target} skipped: glbinding-aux not build")
+    return()
+endif ()
+
+message(STATUS "Example ${target}")
 
 
 # 
