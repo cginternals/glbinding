@@ -46,6 +46,10 @@ int Meta::glRevision()
 
 size_t Meta::alphabeticalGroupIndex(const std::string & identifier, const std::uint8_t prefixLength)
 {
+    if (identifier.size() < prefixLength) {
+        return -1;
+    }
+
     auto index = static_cast<size_t>(identifier[prefixLength]); // ignore prefix ('GL_' or 'gl')
 
     // bold uppercase conversion -> non letters are discarded in next step
@@ -95,6 +99,11 @@ std::set<GLenum> Meta::enums()
 GLextension Meta::getExtension(const std::string & glextension)
 {
     const auto index = alphabeticalGroupIndex(glextension, 3);
+
+    if (index >= Meta_ExtensionsByStringMaps.size()) {
+        return GLextension::UNKNOWN;
+    }
+
     const auto & map = Meta_ExtensionsByStringMaps[index];
     const auto i = map.find(glextension);
 
@@ -195,6 +204,11 @@ const std::string & Meta::getString(const GLextension glextension)
 GLbitfield Meta::getBitfield(const std::string & glbitfield)
 {
     const auto index = alphabeticalGroupIndex(glbitfield, 3);
+
+    if (index >= Meta_BitfieldsByStringMaps.size()) {
+        return static_cast<GLbitfield>(-1);
+    }
+
     const auto & map = Meta_BitfieldsByStringMaps[index];
     const auto i = map.find(glbitfield);
 
@@ -209,6 +223,11 @@ GLbitfield Meta::getBitfield(const std::string & glbitfield)
 GLenum Meta::getEnum(const std::string & glenum)
 {
     const auto index = alphabeticalGroupIndex(glenum, 3);
+
+    if (index >= Meta_EnumsByStringMaps.size()) {
+        return static_cast<GLenum>(static_cast<unsigned int>(-1));
+    }
+
     const auto & map = Meta_EnumsByStringMaps[index];
     const auto i = map.find(glenum);
 
@@ -248,6 +267,11 @@ const std::set<GLextension> Meta::extensions(const Version & version)
 const std::set<GLextension> Meta::extensions(const std::string & glfunction)
 {
     const auto index = alphabeticalGroupIndex(glfunction, 2);
+
+    if (index >= Meta_ExtensionsByFunctionStringMaps.size()) {
+        return noneExtensions;
+    }
+
     const auto & map = Meta_ExtensionsByFunctionStringMaps[index];
     const auto i = map.find(glfunction);
 
