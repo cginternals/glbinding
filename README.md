@@ -153,7 +153,7 @@ As one of the cross-platform package managers, *conan* provides glbinding in its
 The only mandatory run-time dependencies of *glbinding* are the STL of the used compiler and an OpenGL driver library, dynamically linked with your application.
 Building *glbinding* from source has several mandatory and optional dependencies:
 
-* [CMake](https://cmake.org/) 3.0 or higher for building *glbinding* from source (mandatory for any build from source)
+* [CMake](https://cmake.org/) 3.15 or higher for building *glbinding* from source (mandatory for any build from source)
 * [git](https://git-scm.com/) for version control and script supporting tasks
 * [GLFW](http://www.glfw.org/) 3.2 or higher for examples and tools
 * [GLEW](http://glew.sourceforge.net/) 1.6 or higher for the comparison example (optional)
