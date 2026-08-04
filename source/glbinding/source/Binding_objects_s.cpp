@@ -94,6 +94,8 @@ Function<void, GLenum, GLuint, GLuint, GLuint, GLuint> Binding::ShaderOp3EXT("gl
 Function<void, GLuint, GLsizei, const GLchar *const*, const GLint *> Binding::ShaderSource("glShaderSource");
 Function<void, GLhandleARB, GLsizei, const GLcharARB **, const GLint *> Binding::ShaderSourceARB("glShaderSourceARB");
 Function<void, GLuint, GLuint, GLuint> Binding::ShaderStorageBlockBinding("glShaderStorageBlockBinding");
+Function<void, GLenum, GLenum> Binding::ShadingRateCombinerOpsEXT("glShadingRateCombinerOpsEXT");
+Function<void, GLenum> Binding::ShadingRateEXT("glShadingRateEXT");
 Function<void, GLboolean> Binding::ShadingRateImageBarrierNV("glShadingRateImageBarrierNV");
 Function<void, GLuint, GLuint, GLsizei, const GLenum *> Binding::ShadingRateImagePaletteNV("glShadingRateImagePaletteNV");
 Function<void, GLenum, GLuint, const GLint *> Binding::ShadingRateSampleOrderCustomNV("glShadingRateSampleOrderCustomNV");

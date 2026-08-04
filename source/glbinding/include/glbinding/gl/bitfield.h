@@ -55,7 +55,8 @@ enum class BufferStorageMask : unsigned int
     GL_CLIENT_STORAGE_BIT                      = 0x0200,
     GL_SPARSE_STORAGE_BIT_ARB                  = 0x0400,
     GL_LGPU_SEPARATE_STORAGE_BIT_NVX           = 0x0800,
-    GL_PER_GPU_STORAGE_BIT_NV                  = 0x0800
+    GL_PER_GPU_STORAGE_BIT_NV                  = 0x0800,
+    GL_MAP_CLIENT_POINTER_BIT_MESA             = 0x4000
 };
 
 
@@ -149,7 +150,8 @@ enum class MapBufferAccessMask : unsigned int
     GL_MAP_FLUSH_EXPLICIT_BIT                  = 0x0010,
     GL_MAP_UNSYNCHRONIZED_BIT                  = 0x0020,
     GL_MAP_PERSISTENT_BIT                      = 0x0040, // reuse from BufferStorageMask
-    GL_MAP_COHERENT_BIT                        = 0x0080 // reuse from BufferStorageMask
+    GL_MAP_COHERENT_BIT                        = 0x0080, // reuse from BufferStorageMask
+    GL_MAP_CLIENT_POINTER_BIT_MESA             = 0x4000 // reuse from BufferStorageMask
 };
 
 
@@ -396,6 +398,7 @@ GLBINDING_CONSTEXPR static const BufferStorageMask GL_LGPU_SEPARATE_STORAGE_BIT_
 GLBINDING_CONSTEXPR static const AttribMask GL_LIGHTING_BIT = AttribMask::GL_LIGHTING_BIT;
 GLBINDING_CONSTEXPR static const AttribMask GL_LINE_BIT = AttribMask::GL_LINE_BIT;
 GLBINDING_CONSTEXPR static const AttribMask GL_LIST_BIT = AttribMask::GL_LIST_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferStorageMask, MapBufferAccessMask> GL_MAP_CLIENT_POINTER_BIT_MESA = BufferStorageMask::GL_MAP_CLIENT_POINTER_BIT_MESA;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferStorageMask, MapBufferAccessMask> GL_MAP_COHERENT_BIT = BufferStorageMask::GL_MAP_COHERENT_BIT;
 GLBINDING_CONSTEXPR static const MapBufferAccessMask GL_MAP_FLUSH_EXPLICIT_BIT = MapBufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT;
 GLBINDING_CONSTEXPR static const MapBufferAccessMask GL_MAP_INVALIDATE_BUFFER_BIT = MapBufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT;

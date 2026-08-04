@@ -58,6 +58,11 @@ void glActiveVaryingNV(GLuint program, const GLchar * name)
     return glbinding::Binding::ActiveVaryingNV(program, name);
 }
 
+void glAddClientPointerRangeMESA(void * addr, GLsizeiptr size)
+{
+    return glbinding::Binding::AddClientPointerRangeMESA(addr, size);
+}
+
 void glAlphaFragmentOp1ATI(GLenum op, GLuint dst, FragmentShaderDestModMaskATI dstMod, GLuint arg1, GLuint arg1Rep, FragmentShaderColorModMaskATI arg1Mod)
 {
     return glbinding::Binding::AlphaFragmentOp1ATI(op, dst, dstMod, arg1, arg1Rep, arg1Mod);

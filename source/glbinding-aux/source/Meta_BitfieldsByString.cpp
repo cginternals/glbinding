@@ -146,6 +146,7 @@ const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_L =
 
 const std::unordered_map<std::string, GLbitfield> Meta_BitfieldsByString_M =
 {
+    { "GL_MAP_CLIENT_POINTER_BIT_MESA", static_cast<GLbitfield>(BufferStorageMask::GL_MAP_CLIENT_POINTER_BIT_MESA) },
     { "GL_MAP_COHERENT_BIT", static_cast<GLbitfield>(BufferStorageMask::GL_MAP_COHERENT_BIT) },
     { "GL_MAP_FLUSH_EXPLICIT_BIT", static_cast<GLbitfield>(MapBufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT) },
     { "GL_MAP_INVALIDATE_BUFFER_BIT", static_cast<GLbitfield>(MapBufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT) },

@@ -338,6 +338,11 @@ void glFramebufferSamplePositionsfvAMD(GLenum target, GLuint numsamples, GLuint 
     return glbinding::Binding::FramebufferSamplePositionsfvAMD(target, numsamples, pixelindex, values);
 }
 
+void glFramebufferShadingRateEXT(GLenum target, GLenum attachment, GLuint texture, GLint baseLayer, GLsizei numLayers, GLsizei texelWidth, GLsizei texelHeight)
+{
+    return glbinding::Binding::FramebufferShadingRateEXT(target, attachment, texture, baseLayer, numLayers, texelWidth, texelHeight);
+}
+
 void glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
     return glbinding::Binding::FramebufferTexture(target, attachment, texture, level);

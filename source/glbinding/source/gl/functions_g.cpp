@@ -638,6 +638,11 @@ void glGetFragmentMaterialivSGIX(GLenum face, GLenum pname, GLint * params)
     return glbinding::Binding::GetFragmentMaterialivSGIX(face, pname, params);
 }
 
+void glGetFragmentShadingRatesEXT(GLsizei samples, GLsizei maxCount, GLsizei * count, GLenum * shadingRates)
+{
+    return glbinding::Binding::GetFragmentShadingRatesEXT(samples, maxCount, count, shadingRates);
+}
+
 void glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint * params)
 {
     return glbinding::Binding::GetFramebufferAttachmentParameteriv(target, attachment, pname, params);
