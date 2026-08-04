@@ -19,6 +19,7 @@ Function<void, GLenum> Binding::ActiveStencilFaceEXT("glActiveStencilFaceEXT");
 Function<void, GLenum> Binding::ActiveTexture("glActiveTexture");
 Function<void, GLenum> Binding::ActiveTextureARB("glActiveTextureARB");
 Function<void, GLuint, const GLchar *> Binding::ActiveVaryingNV("glActiveVaryingNV");
+Function<void, void *, GLsizeiptr> Binding::AddClientPointerRangeMESA("glAddClientPointerRangeMESA");
 Function<void, GLenum, GLuint, FragmentShaderDestModMaskATI, GLuint, GLuint, FragmentShaderColorModMaskATI> Binding::AlphaFragmentOp1ATI("glAlphaFragmentOp1ATI");
 Function<void, GLenum, GLuint, FragmentShaderDestModMaskATI, GLuint, GLuint, FragmentShaderColorModMaskATI, GLuint, GLuint, FragmentShaderColorModMaskATI> Binding::AlphaFragmentOp2ATI("glAlphaFragmentOp2ATI");
 Function<void, GLenum, GLuint, FragmentShaderDestModMaskATI, GLuint, GLuint, FragmentShaderColorModMaskATI, GLuint, GLuint, FragmentShaderColorModMaskATI, GLuint, GLuint, FragmentShaderColorModMaskATI> Binding::AlphaFragmentOp3ATI("glAlphaFragmentOp3ATI");

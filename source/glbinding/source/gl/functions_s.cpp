@@ -433,6 +433,16 @@ void glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuin
     return glbinding::Binding::ShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
 }
 
+void glShadingRateCombinerOpsEXT(GLenum combinerOp0, GLenum combinerOp1)
+{
+    return glbinding::Binding::ShadingRateCombinerOpsEXT(combinerOp0, combinerOp1);
+}
+
+void glShadingRateEXT(GLenum rate)
+{
+    return glbinding::Binding::ShadingRateEXT(rate);
+}
+
 void glShadingRateImageBarrierNV(GLboolean synchronize)
 {
     return glbinding::Binding::ShadingRateImageBarrierNV(synchronize);

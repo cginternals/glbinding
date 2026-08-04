@@ -55,7 +55,8 @@ enum class BufferStorageMask : unsigned int
     GL_CLIENT_STORAGE_BIT                      = 0x0200,
     GL_SPARSE_STORAGE_BIT_ARB                  = 0x0400,
     GL_LGPU_SEPARATE_STORAGE_BIT_NVX           = 0x0800,
-    GL_PER_GPU_STORAGE_BIT_NV                  = 0x0800
+    GL_PER_GPU_STORAGE_BIT_NV                  = 0x0800,
+    GL_MAP_CLIENT_POINTER_BIT_MESA             = 0x4000
 };
 
 
@@ -149,7 +150,8 @@ enum class MapBufferAccessMask : unsigned int
     GL_MAP_FLUSH_EXPLICIT_BIT                  = 0x0010,
     GL_MAP_UNSYNCHRONIZED_BIT                  = 0x0020,
     GL_MAP_PERSISTENT_BIT                      = 0x0040, // reuse from BufferStorageMask
-    GL_MAP_COHERENT_BIT                        = 0x0080 // reuse from BufferStorageMask
+    GL_MAP_COHERENT_BIT                        = 0x0080, // reuse from BufferStorageMask
+    GL_MAP_CLIENT_POINTER_BIT_MESA             = 0x4000 // reuse from BufferStorageMask
 };
 
 
@@ -277,7 +279,9 @@ enum class UseProgramStageMask : unsigned int
     GL_TESS_EVALUATION_SHADER_BIT              = 0x00000010,
     GL_COMPUTE_SHADER_BIT                      = 0x00000020,
     GL_MESH_SHADER_BIT_NV                      = 0x00000040,
+    GL_MESH_SHADER_BIT_EXT                     = 0x00000040,
     GL_TASK_SHADER_BIT_NV                      = 0x00000080,
+    GL_TASK_SHADER_BIT_EXT                     = 0x00000080,
     GL_ALL_SHADER_BITS                         = 0xFFFFFFFF,
     GL_ALL_SHADER_BITS_EXT                     = 0xFFFFFFFF
 };
@@ -394,6 +398,7 @@ GLBINDING_CONSTEXPR static const BufferStorageMask GL_LGPU_SEPARATE_STORAGE_BIT_
 GLBINDING_CONSTEXPR static const AttribMask GL_LIGHTING_BIT = AttribMask::GL_LIGHTING_BIT;
 GLBINDING_CONSTEXPR static const AttribMask GL_LINE_BIT = AttribMask::GL_LINE_BIT;
 GLBINDING_CONSTEXPR static const AttribMask GL_LIST_BIT = AttribMask::GL_LIST_BIT;
+GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferStorageMask, MapBufferAccessMask> GL_MAP_CLIENT_POINTER_BIT_MESA = BufferStorageMask::GL_MAP_CLIENT_POINTER_BIT_MESA;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<BufferStorageMask, MapBufferAccessMask> GL_MAP_COHERENT_BIT = BufferStorageMask::GL_MAP_COHERENT_BIT;
 GLBINDING_CONSTEXPR static const MapBufferAccessMask GL_MAP_FLUSH_EXPLICIT_BIT = MapBufferAccessMask::GL_MAP_FLUSH_EXPLICIT_BIT;
 GLBINDING_CONSTEXPR static const MapBufferAccessMask GL_MAP_INVALIDATE_BUFFER_BIT = MapBufferAccessMask::GL_MAP_INVALIDATE_BUFFER_BIT;
@@ -409,6 +414,7 @@ GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_DIFFUSE_BIT_PGI = Ver
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_EMISSION_BIT_PGI = VertexHintsMaskPGI::GL_MAT_EMISSION_BIT_PGI;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_SHININESS_BIT_PGI = VertexHintsMaskPGI::GL_MAT_SHININESS_BIT_PGI;
 GLBINDING_CONSTEXPR static const VertexHintsMaskPGI GL_MAT_SPECULAR_BIT_PGI = VertexHintsMaskPGI::GL_MAT_SPECULAR_BIT_PGI;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_MESH_SHADER_BIT_EXT = UseProgramStageMask::GL_MESH_SHADER_BIT_EXT;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_MESH_SHADER_BIT_NV = UseProgramStageMask::GL_MESH_SHADER_BIT_NV;
 GLBINDING_CONSTEXPR static const AttribMask GL_MULTISAMPLE_BIT = AttribMask::GL_MULTISAMPLE_BIT;
 GLBINDING_CONSTEXPR static const AttribMask GL_MULTISAMPLE_BIT_3DFX = AttribMask::GL_MULTISAMPLE_BIT_3DFX;
@@ -443,6 +449,7 @@ GLBINDING_CONSTEXPR static const MemoryBarrierMask GL_SHADER_STORAGE_BARRIER_BIT
 GLBINDING_CONSTEXPR static const BufferStorageMask GL_SPARSE_STORAGE_BIT_ARB = BufferStorageMask::GL_SPARSE_STORAGE_BIT_ARB;
 GLBINDING_CONSTEXPR static const glbinding::SharedBitfield<AttribMask, ClearBufferMask> GL_STENCIL_BUFFER_BIT = AttribMask::GL_STENCIL_BUFFER_BIT;
 GLBINDING_CONSTEXPR static const SyncObjectMask GL_SYNC_FLUSH_COMMANDS_BIT = SyncObjectMask::GL_SYNC_FLUSH_COMMANDS_BIT;
+GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TASK_SHADER_BIT_EXT = UseProgramStageMask::GL_TASK_SHADER_BIT_EXT;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TASK_SHADER_BIT_NV = UseProgramStageMask::GL_TASK_SHADER_BIT_NV;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_CONTROL_SHADER_BIT = UseProgramStageMask::GL_TESS_CONTROL_SHADER_BIT;
 GLBINDING_CONSTEXPR static const UseProgramStageMask GL_TESS_EVALUATION_SHADER_BIT = UseProgramStageMask::GL_TESS_EVALUATION_SHADER_BIT;

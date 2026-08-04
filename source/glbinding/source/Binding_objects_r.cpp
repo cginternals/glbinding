@@ -57,6 +57,7 @@ Function<void, const GLshort *, const GLshort *> Binding::Rectsv("glRectsv");
 Function<void, GLfixed, GLfixed, GLfixed, GLfixed> Binding::RectxOES("glRectxOES");
 Function<void, const GLfixed *, const GLfixed *> Binding::RectxvOES("glRectxvOES");
 Function<void, const GLdouble *> Binding::ReferencePlaneSGIX("glReferencePlaneSGIX");
+Function<void*, GLbitfield, GLsizeiptr *> Binding::ReleaseClientPointerRangeMESA("glReleaseClientPointerRangeMESA");
 Function<GLboolean, GLuint, GLuint64> Binding::ReleaseKeyedMutexWin32EXT("glReleaseKeyedMutexWin32EXT");
 Function<void> Binding::ReleaseShaderCompiler("glReleaseShaderCompiler");
 Function<void, GLenum, GLenum, GLsizei, GLsizei> Binding::RenderbufferStorage("glRenderbufferStorage");

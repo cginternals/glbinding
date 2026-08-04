@@ -135,6 +135,7 @@ Function<void, GLenum, GLenum, GLfloat *> Binding::GetFragmentLightfvSGIX("glGet
 Function<void, GLenum, GLenum, GLint *> Binding::GetFragmentLightivSGIX("glGetFragmentLightivSGIX");
 Function<void, GLenum, GLenum, GLfloat *> Binding::GetFragmentMaterialfvSGIX("glGetFragmentMaterialfvSGIX");
 Function<void, GLenum, GLenum, GLint *> Binding::GetFragmentMaterialivSGIX("glGetFragmentMaterialivSGIX");
+Function<void, GLsizei, GLsizei, GLsizei *, GLenum *> Binding::GetFragmentShadingRatesEXT("glGetFragmentShadingRatesEXT");
 Function<void, GLenum, GLenum, GLenum, GLint *> Binding::GetFramebufferAttachmentParameteriv("glGetFramebufferAttachmentParameteriv");
 Function<void, GLenum, GLenum, GLenum, GLint *> Binding::GetFramebufferAttachmentParameterivEXT("glGetFramebufferAttachmentParameterivEXT");
 Function<void, GLenum, GLenum, GLuint, GLuint, GLsizei, GLfloat *> Binding::GetFramebufferParameterfvAMD("glGetFramebufferParameterfvAMD");

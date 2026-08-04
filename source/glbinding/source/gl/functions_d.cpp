@@ -578,6 +578,16 @@ void glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width)
     return glbinding::Binding::DrawMeshArraysSUN(mode, first, count, width);
 }
 
+void glDrawMeshTasksEXT(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z)
+{
+    return glbinding::Binding::DrawMeshTasksEXT(num_groups_x, num_groups_y, num_groups_z);
+}
+
+void glDrawMeshTasksIndirectEXT(GLintptr indirect)
+{
+    return glbinding::Binding::DrawMeshTasksIndirectEXT(indirect);
+}
+
 void glDrawMeshTasksIndirectNV(GLintptr indirect)
 {
     return glbinding::Binding::DrawMeshTasksIndirectNV(indirect);

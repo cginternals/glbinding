@@ -248,6 +248,11 @@ void glReferencePlaneSGIX(const GLdouble * equation)
     return glbinding::Binding::ReferencePlaneSGIX(equation);
 }
 
+void* glReleaseClientPointerRangeMESA(GLbitfield flags, GLsizeiptr * size)
+{
+    return glbinding::Binding::ReleaseClientPointerRangeMESA(flags, size);
+}
+
 GLboolean glReleaseKeyedMutexWin32EXT(GLuint memory, GLuint64 key)
 {
     return glbinding::Binding::ReleaseKeyedMutexWin32EXT(memory, key);

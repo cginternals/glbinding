@@ -75,6 +75,7 @@ Function<void, GLenum, GLenum, GLenum, GLuint> Binding::FramebufferRenderbufferE
 Function<void, GLenum, GLuint, GLsizei, const GLfloat *> Binding::FramebufferSampleLocationsfvARB("glFramebufferSampleLocationsfvARB");
 Function<void, GLenum, GLuint, GLsizei, const GLfloat *> Binding::FramebufferSampleLocationsfvNV("glFramebufferSampleLocationsfvNV");
 Function<void, GLenum, GLuint, GLuint, const GLfloat *> Binding::FramebufferSamplePositionsfvAMD("glFramebufferSamplePositionsfvAMD");
+Function<void, GLenum, GLenum, GLuint, GLint, GLsizei, GLsizei, GLsizei> Binding::FramebufferShadingRateEXT("glFramebufferShadingRateEXT");
 Function<void, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture("glFramebufferTexture");
 Function<void, GLenum, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture1D("glFramebufferTexture1D");
 Function<void, GLenum, GLenum, GLenum, GLuint, GLint> Binding::FramebufferTexture1DEXT("glFramebufferTexture1DEXT");
